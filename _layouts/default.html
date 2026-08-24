@@ -4,10 +4,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title | default: site.title | escape }}</title>
+    <link rel="icon" type="image/png" href="{{ '/assets/images/joshternet-icon.png' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   </head>
-  <body>
-    <main>
-      {{ content }}
+  <body class="site-shell">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-identity" href="{{ '/' | relative_url }}">Joshternet</a>
+      </div>
+    </header>
+
+    <main class="site-main" id="main-content" tabindex="-1">
+      <div class="prose">
+        {{ content }}
+      </div>
     </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>Joshternet</span>
+      </div>
+    </footer>
   </body>
 </html>
