@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ page.title | default: site.title | escape }}</title>
+    <title>{% if page.url == '/' %}{{ site.title | escape }}{% else %}{{ page.title | default: site.title | escape }} | {{ site.title | escape }}{% endif %}</title>
+    {% seo title=false %}
     <link rel="icon" type="image/png" href="{{ '/assets/images/joshternet-icon.png' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
     {% assign page_slug = page.url | remove_first: '/' | split: '/' | first | default: 'home' %}

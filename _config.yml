@@ -1,5 +1,19 @@
 title: Joshternet
+description: >-
+  The Joshternet is an open, decentralized network for people who identify as
+  Josh and the independent websites they call home.
+url: https://joshternet.org
+baseurl: ""
+lang: en
+locale: en_US
 theme: null
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+include:
+  - .well-known
 
 exclude:
   - Gemfile

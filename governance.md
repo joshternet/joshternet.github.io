@@ -1,6 +1,9 @@
 ---
 layout: default
 title: Governance
+description: >-
+  How the Joshternet develops Draft specifications in public while keeping
+  project governance separate from network control and Josh identity.
 permalink: /governance/
 ---
 

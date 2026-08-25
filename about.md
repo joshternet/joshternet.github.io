@@ -1,6 +1,12 @@
 ---
 layout: default
 title: About
+description: >-
+  How the Joshternet began, why it starts with Joshes and independent websites,
+  and how open standards keep the network decentralized.
+seo:
+  type: WebPage
+  name: About
 permalink: /about/
 ---
 
