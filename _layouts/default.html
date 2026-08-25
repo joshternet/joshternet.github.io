@@ -6,8 +6,9 @@
     <title>{{ page.title | default: site.title | escape }}</title>
     <link rel="icon" type="image/png" href="{{ '/assets/images/joshternet-icon.png' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    {% assign page_slug = page.url | remove_first: '/' | split: '/' | first | default: 'home' %}
   </head>
-  <body class="site-shell">
+  <body class="site-shell page page--{{ page_slug }}">
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <header class="site-header">
