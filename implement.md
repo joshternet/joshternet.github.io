@@ -1,6 +1,9 @@
 ---
 layout: default
 title: Implementation Guide
+description: >-
+  A practical, non-normative guide to publishing and validating the version 1
+  /.well-known/josh declaration used to participate in the Joshternet.
 permalink: /implement/
 ---
 
