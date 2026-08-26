@@ -5,7 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% if page.url == '/' %}{{ site.title | escape }}{% else %}{{ page.title | default: site.title | escape }} | {{ site.title | escape }}{% endif %}</title>
     {% seo title=false %}
-    <link rel="icon" type="image/png" href="{{ '/assets/images/joshternet-icon.png' | relative_url }}">
+    {% if page.url == '/' %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Project",
+      "@id": {{ '/#project' | absolute_url | jsonify }},
+      "name": {{ site.title | jsonify }},
+      "description": {{ site.description | jsonify }},
+      "url": {{ '/' | absolute_url | jsonify }},
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": {{ '/' | absolute_url | jsonify }}
+      }
+    }
+    </script>
+    {% endif %}
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ '/apple-touch-icon.png' | relative_url }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon-32x32.png' | relative_url }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ '/favicon-16x16.png' | relative_url }}">
+    <link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
     {% assign page_slug = page.url | remove_first: '/' | split: '/' | first | default: 'home' %}
   </head>
@@ -14,7 +33,7 @@
 
     <header class="site-header">
       <div class="site-header__inner">
-        <a class="site-identity" href="{{ '/' | relative_url }}">Joshternet</a>
+        <a class="site-identity h-card p-name p-org u-url u-uid" href="{{ '/' | relative_url }}">Joshternet</a>
 
         <nav class="site-nav" aria-label="Primary">
           <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a>
