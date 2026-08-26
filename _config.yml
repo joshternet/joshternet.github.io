@@ -12,6 +12,16 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
+defaults:
+  - scope:
+      path: ""
+    values:
+      image:
+        path: /assets/images/joshternet-social.png
+        height: 630
+        width: 1200
+        alt: Joshternet logo
+
 include:
   - .well-known
 
