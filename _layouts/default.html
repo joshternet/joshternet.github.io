@@ -27,6 +27,13 @@
     <link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
     {% assign page_slug = page.url | remove_first: '/' | split: '/' | first | default: 'home' %}
+
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="809e87e4-2ed7-4fac-a144-10d194eb44cd"
+      data-domains="joshternet.org,www.joshternet.org"
+    ></script>
   </head>
   <body class="site-shell page page--{{ page_slug }}">
     <a class="skip-link" href="#main-content">Skip to main content</a>
