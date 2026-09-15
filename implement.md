@@ -117,6 +117,18 @@ curl -i https://example.invalid/.well-known/josh
 
 Check the status, content type, and JSON body.
 
+## Participation and discovery are separate
+
+Publishing a valid `/.well-known/josh` declaration establishes participation according to RFC-JOSH-0002. It does not notify JoshBot or any other discovery service, and it does not guarantee that an origin will appear in a registry.
+
+Discovery systems are separate implementations built on top of the Joshternet specifications.
+
+JoshBot independently verifies origins that it learns about. An origin must publish a valid declaration and pass verification before JoshBot can represent it as a participating origin in its public registry.
+
+The reverse is also important: being discovered or crawled by JoshBot does not establish Joshternet participation or Josh identity.
+
+Crawler permission is separate as well. A valid Joshternet declaration does not require an origin to permit JoshBot crawling, and allowing JoshBot to crawl a site does not create a Joshternet declaration.
+
 ## Validate version 1
 
 A valid version 1 declaration must:

@@ -550,7 +550,10 @@ video {
 .site-footer__inner {
     display: flex;
     min-block-size: 6rem;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4) var(--space-6);
     padding-block: var(--space-5);
 }
 
@@ -569,6 +572,28 @@ video {
     border: 0.15rem solid var(--color-accent);
     border-radius: 50%;
     content: "";
+}
+
+.site-footer__nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--space-5);
+}
+
+.site-footer__nav a {
+    display: inline-flex;
+    min-block-size: 2.75rem;
+    align-items: center;
+    color: var(--color-muted);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.site-footer__nav a:hover {
+    color: var(--color-link);
+    text-decoration: underline;
+    text-decoration-color: var(--color-link-underline);
+    text-underline-offset: 0.2em;
 }
 
 @media (min-width: 52rem) {
