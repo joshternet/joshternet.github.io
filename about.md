@@ -20,7 +20,7 @@ It uses voluntary participation, self-declared Josh identity, open specification
 
 Joshua Morris conceived and started the Joshternet as several ideas came together.
 
-There are a remarkable number of people named Josh or Joshua working in technology and on the web. Many have created notable websites, software, companies, tools, standards, projects, and communities.
+There are a remarkable number of people named Josh or Joshua creating things and maintaining their own places on the web. They write, make art, build software, document projects, publish ideas, create communities, and do plenty of other things that do not fit neatly into one category.
 
 The question was straightforward: what would it take to build an actual open network for Joshes?
 
@@ -68,17 +68,11 @@ The [current specifications][specifications] define the Joshternet’s foundatio
 
 The project prefers boring protocols, small representations, existing web standards, understandable implementations, and independently deployable sites. Participation should not depend on proprietary infrastructure or a particular technology stack.
 
-The project remains **PRE-JOSH**. Its three current RFCs are Drafts, and none have been Accepted. The foundational rules are still being defined and tested in public.
-
 ## The network is decentralized
 
 No single website, organization, registry, crawler, directory, server, or implementation should be necessary for the Joshternet itself to exist.
 
-joshternet.org documents the project. It is not the network.
-
-The GitHub organization hosts project development. It is not the network.
-
-Joshua Morris started the project. He is not the network.
+joshternet.org documents the project, and the GitHub organization hosts its development. Neither is the network. Joshua Morris started the project, but maintaining the project does not confer control over the network.
 
 The network is formed by participating nodes and interoperating infrastructure using shared specifications. Registries, crawlers, validators, and other services may be useful, but they should remain replaceable and must not become authorities over Josh identity.
 

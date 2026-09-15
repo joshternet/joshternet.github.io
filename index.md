@@ -54,15 +54,19 @@ A person's name, domain, biography, or page content does not establish Joshness.
 
 [RFC-JOSH-0002][rfc-0002] is the authoritative definition of this protocol.
 
-## PRE-JOSH
+## Current state
 
-The Joshternet is currently **PRE-JOSH**.
+The Joshternet is currently **PRE-JOSH**. Its three current RFCs are Drafts, and none have been Accepted.
 
-There are three Draft RFCs. None have been accepted yet. The foundational rules are still being defined, tested, and argued with where necessary.
+Working implementations now exist alongside the Draft specifications:
 
-There is [one known operational implementation of RFC-JOSH-0002][implementation]. It demonstrates that the declaration can be published. It does not make that site an authority or privileged node, and it does not mean that a functioning inter-Josh network has arrived.
+- [joshuamorris.info][implementation-josh] participates according to RFC-JOSH-0002 with Affirmed Josh Identity;
+- [joshternet.org][implementation-project] participates according to RFC-JOSH-0002 with Undeclared Josh Identity;
+- [JoshBot][joshbot] [v1.0.0][joshbot-release] is the first supported release of the Joshternet discovery, verification, and public registry crawler.
 
-PRE-JOSH is not a failure state. It is an honest description of where the project is.
+These implementations let the project test the separation between participation, identity, discovery, and registry infrastructure in practice. Neither participating origin is an authority or privileged node, and JoshBot does not define participation or Josh identity.
+
+PRE-JOSH remains the project's bootstrap state while the foundational specifications and governance continue to develop. The [Governance page][governance] explains the current process.
 
 ## Principles
 
@@ -81,27 +85,13 @@ The Joshternet starts with a few rules:
 
 A registry may help people find participating sites. It is not the Joshternet, and it does not get to decide who is a Josh.
 
-## The current RFCs
+## Learn more
 
-The current specification set contains three Draft RFCs:
+The [About page][about] explains where the Joshternet came from, why it starts with Joshes and independent websites, and the larger experiment behind it.
 
-- [RFC-JOSH-0000: The Joshternet][rfc-0000] defines the network, its scope, terminology, and foundational principles.
-- [RFC-JOSH-0001: Josh Identity][rfc-0001] defines voluntary Josh identity and keeps identity separate from participation.
-- [RFC-JOSH-0002: `/.well-known/josh`][rfc-0002] defines the version 1 declaration for participation and optional Josh identity.
+The [Specifications page][specifications] maps the current RFCs and their reading order. The [Governance page][governance] documents how the Draft specifications are maintained today.
 
-These summaries are introductions. The RFCs are authoritative.
-
-## The larger experiment
-
-We are starting with Joshes because there is already a recognizable community of Joshes maintaining independent websites.
-
-Starting with a real, specific community lets us test how people can declare participation voluntarily, remain on their own sites, discover one another, interoperate without a central platform, and develop conventions and governance from actual participation.
-
-The Joshternet remains specifically the Joshternet.
-
-If the experiment works, other well-known communities may be able to study and reuse what we learn. That does not mean a generic community-network standard already exists.
-
-It does not.
+If you want to participate, the [implementation guide][implementation] explains how to publish a `/.well-known/josh` declaration. The [JoshBot page][joshbot] documents the current discovery, verification, and registry crawler.
 
 ## Help define it
 
@@ -121,7 +111,12 @@ Non-Joshes may also participate, contribute, operate compatible infrastructure, 
 The [Joshternet specification repository][spec] is the canonical project source. Specifications are developed publicly through issues, discussion, and pull requests.
 
 [spec]: https://github.com/joshternet/spec
-[rfc-0000]: https://github.com/joshternet/spec/blob/main/rfcs/0000-the-joshternet.md
-[rfc-0001]: https://github.com/joshternet/spec/blob/main/rfcs/0001-josh-identity.md
 [rfc-0002]: https://github.com/joshternet/spec/blob/main/rfcs/0002-well-known-josh.md
-[implementation]: https://joshuamorris.info/.well-known/josh
+[about]: /about/
+[specifications]: /specs/
+[governance]: /governance/
+[implementation]: /implement/
+[joshbot]: /joshbot/
+[implementation-josh]: https://joshuamorris.info/.well-known/josh
+[implementation-project]: https://joshternet.org/.well-known/josh
+[joshbot-release]: https://github.com/joshternet/joshbot/releases/tag/v1.0.0

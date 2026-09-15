@@ -15,7 +15,7 @@ The canonical RFC text lives in the [Joshternet specification repository][spec].
 
 ## Current status
 
-The specification repository is currently **PRE-JOSH**.
+The Joshternet is currently **PRE-JOSH**.
 
 All three current RFCs are Drafts. None are Accepted. The foundational specifications are still being developed through public issues, discussion, and pull requests.
 

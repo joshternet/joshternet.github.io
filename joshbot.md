@@ -125,11 +125,13 @@ It does not retain:
 - page depth;
 - an interrupted crawl’s in-memory frontier.
 
-## Report a crawler problem
+## Report a problem
 
-For incorrect crawling, unexpected traffic, robots behavior, or another operational problem, [open a JoshBot bug report][bug-report].
+For incorrect crawling, unexpected traffic, robots behavior, or another crawler-specific operational problem, [open a JoshBot crawler report][crawler-report].
 
-Please include:
+For a reproducible software defect that is not specific to crawler behavior, [open a JoshBot bug report][bug-report].
+
+For crawler reports, please include:
 
 - the affected origin or URL;
 - the approximate request time and timezone;
@@ -153,5 +155,6 @@ If the report would disclose a security vulnerability, use [GitHub Private Vulne
 [source]: https://github.com/joshternet/joshbot
 [specifications]: https://github.com/joshternet/spec
 [implementation]: https://joshternet.org/implement/
+[crawler-report]: https://github.com/joshternet/joshbot/issues/new?template=crawler_report.yml
 [bug-report]: https://github.com/joshternet/joshbot/issues/new?template=bug_report.yml
 [security-report]: https://github.com/joshternet/joshbot/security/advisories/new
