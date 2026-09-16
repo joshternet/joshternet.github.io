@@ -6,7 +6,7 @@
   "workers_dev": true,
   "vars": {
     "ALLOWED_ORIGIN": "https://joshternet.org",
-    "SUBMISSIONS_ENABLED": "false",
+    "SUBMISSIONS_ENABLED": "true",
     "TURNSTILE_EXPECTED_HOSTNAME": "joshternet.org",
     "TURNSTILE_EXPECTED_ACTION": "seed-nomination"
   },
