@@ -43,7 +43,7 @@ It establishes Affirmed, Declined, and Undeclared identity; separates identity f
 
 Its central rule is simple:
 
-**Joshness is declared, never derived.**
+<p class="prose-emphasis"><strong>Joshness is declared, never derived.</strong></p>
 
 Read this RFC when the question is who may be represented as a Josh, how identity may change, or how Josh identity relates to participation.
 

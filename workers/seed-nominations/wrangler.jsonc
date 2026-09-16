@@ -1,0 +1,41 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "joshternet-seed-nominations",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-15",
+  "workers_dev": true,
+  "vars": {
+    "ALLOWED_ORIGIN": "https://joshternet.org",
+    "SUBMISSIONS_ENABLED": "false",
+    "TURNSTILE_EXPECTED_HOSTNAME": "joshternet.org",
+    "TURNSTILE_EXPECTED_ACTION": "seed-nomination"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "joshternet-seed-nominations",
+      "database_id": "e33932ff-98a2-4936-ac1b-3c07a93cc97b",
+      "preview_database_id": "joshternet-seed-nominations-local",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "account_id": "f578c2fa49cafc49ee039b79b5663a26",
+  "ratelimits": [
+    {
+      "name": "NOMINATION_ROUTE_RATE_LIMITER",
+      "namespace_id": "91001",
+      "simple": {
+        "limit": 60,
+        "period": 60
+      }
+    },
+    {
+      "name": "NOMINATION_ORIGIN_RATE_LIMITER",
+      "namespace_id": "91002",
+      "simple": {
+        "limit": 5,
+        "period": 60
+      }
+    }
+  ]
+}

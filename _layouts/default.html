@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' https://cloud.umami.is; connect-src 'self' https://gateway.umami.is; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src {% if page.allow_frames %}https:{% else %}'none'{% endif %}; media-src 'none'; manifest-src 'self'; worker-src 'none'"
+      content="default-src 'self'; script-src 'self' https://cloud.umami.is{% if page.turnstile %} https://challenges.cloudflare.com{% endif %}; connect-src 'self' https://gateway.umami.is{% if page.seed_nomination %}{% if jekyll.environment == "development" %} http://127.0.0.1:8787{% else %} {{ site.seed_nominations.api_origin }}{% endif %}{% endif %}; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src {% if page.allow_frames %}https:{% elsif page.turnstile %}https://challenges.cloudflare.com{% else %}'none'{% endif %}; media-src 'none'; manifest-src 'self'; worker-src 'none'"
     >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% if page.url == '/' %}{{ site.title | escape }}{% else %}{{ page.title | default: site.title | escape }} | {{ site.title | escape }}{% endif %}</title>
@@ -45,6 +45,13 @@
 
     {% if page.script %}
     <script defer src="{{ page.script | relative_url }}?v={{ asset_version }}"></script>
+    {% endif %}
+
+    {% if page.turnstile %}
+    <script
+      defer
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+    ></script>
     {% endif %}
   </head>
   <body class="site-shell page page--{{ page_slug }}{% if page.chrome == false %} site-shell--chrome-free{% endif %}">

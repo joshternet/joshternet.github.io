@@ -7,7 +7,7 @@ title: Joshternet
 
 The Joshternet is an open, decentralized network for people who identify as Josh and the independent websites they call home.
 
-**Joshness is declared, never derived.**
+<p class="prose-emphasis"><strong>Joshness is declared, never derived.</strong></p>
 
 The work begins with a focused goal: help Joshes find one another, visit each other's sites, and see what they are making without moving everyone onto another platform.
 
