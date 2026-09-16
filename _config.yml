@@ -34,3 +34,9 @@ exclude:
   - package-lock.json
   - scripts
   - test
+  - workers
+
+seed_nominations:
+  api_origin: "https://joshternet-seed-nominations.joshternet.workers.dev"
+  api_path: "/v1/seed-nominations"
+  turnstile_sitekey: "0x4AAAAAAE35BSLuSiXLrlih"

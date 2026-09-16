@@ -127,7 +127,7 @@ Joshua Morris started and maintains the project. He is not the network.
 
 The network is formed by independently operated nodes and interoperating infrastructure using shared specifications.
 
-**No Josh outranks another Josh.**
+<p class="prose-emphasis"><strong>No Josh outranks another Josh.</strong></p>
 
 ## Identity remains self-declared
 
@@ -144,7 +144,7 @@ According to [RFC-JOSH-0001][rfc-identity]:
 
 A maintainer, contributor, website, registry, or governance process must not override a person’s current authoritative declaration.
 
-**Joshness is declared, never derived.**
+<p class="prose-emphasis"><strong>Joshness is declared, never derived.</strong></p>
 
 ## Contribute to the specifications
 

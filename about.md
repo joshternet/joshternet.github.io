@@ -36,7 +36,7 @@ That gives the project a real community rather than a hypothetical user base. It
 
 Josh identity remains voluntary:
 
-**Joshness is declared, never derived.**
+<p class="prose-emphasis"><strong>Joshness is declared, never derived.</strong></p>
 
 A name, domain, biography, or third-party assertion does not determine Joshness. A person may affirm Josh identity, decline it, or leave it undeclared.
 
