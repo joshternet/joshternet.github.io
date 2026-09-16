@@ -1,1 +1,24 @@
-[]
+[
+  {
+    "origin": "https://joshternet.org",
+    "domain": "joshternet.org",
+    "identity": "undeclared",
+    "title": "Joshternet",
+    "description": "The Joshternet is an open, decentralized network for people who identify as Josh and the independent websites they call home.",
+    "screenshot": "/assets/network/sites/fd528f9955dc5fe4fc96345ae2d3023d3a05fa1cfa166efa85de9a48aa5853b7.webp",
+    "embeddable": true,
+    "frame_reason": "allowed",
+    "captured_at": "2026-09-16T00:30:10.714Z"
+  },
+  {
+    "origin": "https://joshuamorris.info",
+    "domain": "joshuamorris.info",
+    "identity": "affirmed",
+    "title": "Joshua Morris",
+    "description": "I build software, write about what I’m learning, and explore ideas that sit at the intersection of technology, freedom, and curiosity.",
+    "screenshot": "/assets/network/sites/96e5b600de4a31e77df2925d7e56dc12bc14ffd484452ca9b51ed4aa37813705.webp",
+    "embeddable": false,
+    "frame_reason": "blocked-by-site",
+    "captured_at": "2026-09-16T00:30:12.832Z"
+  }
+]
