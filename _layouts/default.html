@@ -29,7 +29,11 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon-32x32.png' | relative_url }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ '/favicon-16x16.png' | relative_url }}">
     <link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
-    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    {% assign asset_version = site.github.build_revision %}
+    {% unless asset_version %}
+      {% assign asset_version = site.time | date: "%s" %}
+    {% endunless %}
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ asset_version }}">
     {% assign page_slug = page.url | remove_first: '/' | split: '/' | first | default: 'home' %}
 
     <script
@@ -40,7 +44,7 @@
     ></script>
 
     {% if page.script %}
-    <script defer src="{{ page.script | relative_url }}"></script>
+    <script defer src="{{ page.script | relative_url }}?v={{ asset_version }}"></script>
     {% endif %}
   </head>
   <body class="site-shell page page--{{ page_slug }}{% if page.chrome == false %} site-shell--chrome-free{% endif %}">
