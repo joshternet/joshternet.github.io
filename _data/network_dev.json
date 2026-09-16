@@ -1,0 +1,35 @@
+[
+  {
+    "origin": "https://josh.example.invalid",
+    "domain": "josh.example.invalid",
+    "identity": "affirmed",
+    "title": "Joshua Example",
+    "description": "A development fixture for previewing a Josh-declared site in the Network.",
+    "screenshot": "/assets/images/joshternet-social.png",
+    "embeddable": false,
+    "captured_at": "1970-01-01T00:00:00Z",
+    "frame_reason": "blocked-by-site"
+  },
+  {
+    "origin": "https://non-josh.example.invalid",
+    "domain": "non-josh.example.invalid",
+    "identity": "declined",
+    "title": "Someone Else's Excellent Website",
+    "description": "A development fixture for previewing a participating site that explicitly declares itself Non-Josh.",
+    "screenshot": "/assets/images/joshternet-social.png",
+    "embeddable": false,
+    "captured_at": "1970-01-01T00:00:00Z",
+    "frame_reason": "http"
+  },
+  {
+    "origin": "https://undeclared.example.invalid",
+    "domain": "undeclared.example.invalid",
+    "identity": "undeclared",
+    "title": "The Mysterious Website",
+    "description": "A development fixture for a participating site that leaves Josh identity undeclared.",
+    "screenshot": "/assets/images/joshternet-social.png",
+    "embeddable": false,
+    "captured_at": "1970-01-01T00:00:00Z",
+    "frame_reason": "unknown"
+  }
+]

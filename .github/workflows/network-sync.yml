@@ -1,0 +1,214 @@
+name: Update Joshternet Network
+
+on:
+  workflow_dispatch:
+    inputs:
+      refresh_all:
+        description: Refresh every participant screenshot and metadata
+        required: false
+        type: boolean
+        default: false
+
+  schedule:
+    - cron: "17 * * * *"
+
+  repository_dispatch:
+    types:
+      - joshternet-registry-updated
+
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/network-sync.yml"
+      - "scripts/network/**"
+      - "test/network/**"
+      - "package.json"
+      - "package-lock.json"
+      - "_config.yml"
+      - "_layouts/default.html"
+      - "_includes/**"
+      - "network.md"
+      - "wander.md"
+      - "network-data.json"
+      - "assets/js/network.js"
+      - "assets/js/wander.js"
+      - "assets/css/main.css"
+
+concurrency:
+  group: joshternet-network-sync
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  scrape:
+    name: Capture participant sites
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    outputs:
+      needs_sync: ${{ steps.preflight.outputs.needs_sync }}
+
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Decide whether sync is needed
+        id: preflight
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          if [ "$EVENT_NAME" != "schedule" ]; then
+            echo "needs_sync=true" >> "$GITHUB_OUTPUT"
+            echo "Non-scheduled event: running full network sync."
+          else
+            NEEDS_SYNC="$(node scripts/network/preflight.mjs)"
+            echo "needs_sync=$NEEDS_SYNC" >> "$GITHUB_OUTPUT"
+
+            if [ "$NEEDS_SYNC" = "true" ]; then
+              echo "Scheduled preflight found work to do."
+            else
+              echo "Scheduled preflight found the network current."
+            fi
+          fi
+
+      - name: Install dependencies
+        if: steps.preflight.outputs.needs_sync == 'true'
+        run: npm ci
+
+      - name: Run network tests
+        if: steps.preflight.outputs.needs_sync == 'true'
+        run: npm test
+
+      - name: Install Playwright Chromium
+        if: steps.preflight.outputs.needs_sync == 'true'
+        run: npx playwright install --with-deps chromium
+
+      - name: Update generated network data
+        if: steps.preflight.outputs.needs_sync == 'true'
+        env:
+          NETWORK_REFRESH_ALL: ${{ inputs.refresh_all || 'false' }}
+        run: npm run network:sync
+
+      - name: Validate generated JSON
+        if: steps.preflight.outputs.needs_sync == 'true'
+        run: |
+          node - <<'NODE'
+          const fs = require("node:fs");
+
+          const data = JSON.parse(
+              fs.readFileSync("_data/network.json", "utf8"),
+          );
+
+          if (!Array.isArray(data)) {
+              throw new Error(
+                  "_data/network.json must contain an array",
+              );
+          }
+
+          for (const entry of data) {
+              if (
+                  !entry ||
+                  typeof entry !== "object" ||
+                  typeof entry.origin !== "string" ||
+                  typeof entry.domain !== "string" ||
+                  ![
+                      "affirmed",
+                      "declined",
+                      "undeclared",
+                  ].includes(entry.identity)
+              ) {
+                  throw new Error(
+                      "Invalid generated network entry: " +
+                      JSON.stringify(entry),
+                  );
+              }
+          }
+
+          console.log(
+              `Validated ${data.length} generated network ` +
+              `${data.length === 1 ? "entry" : "entries"}.`,
+          );
+          NODE
+
+      - name: Upload generated network
+        if: steps.preflight.outputs.needs_sync == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: network-generated
+          retention-days: 1
+          if-no-files-found: error
+          path: |
+            _data/network.json
+            assets/network/sites/
+
+  publish:
+    name: Publish generated network
+    needs:
+      - scrape
+    if: needs.scrape.outputs.needs_sync == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out latest main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Download generated network
+        uses: actions/download-artifact@v4
+        with:
+          name: network-generated
+          path: .network-sync-output
+
+      - name: Replace generated files
+        run: |
+          test -f .network-sync-output/_data/network.json
+
+          mkdir -p _data
+
+          cp \
+            .network-sync-output/_data/network.json \
+            _data/network.json
+
+          rm -rf assets/network/sites
+          mkdir -p assets/network/sites
+
+          if [ -d .network-sync-output/assets/network/sites ]; then
+            cp -R \
+              .network-sync-output/assets/network/sites/. \
+              assets/network/sites/
+          fi
+
+      - name: Commit generated changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -- \
+            _data/network.json \
+            assets/network/sites
+
+          if git diff --cached --quiet; then
+            echo "Network data is already current."
+            exit 0
+          fi
+
+          git commit -m "Update Joshternet network"
+          git push origin HEAD:main

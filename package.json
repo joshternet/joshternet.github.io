@@ -1,0 +1,13 @@
+{
+  "name": "joshternet-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/network/*.test.mjs",
+    "network:sync": "node scripts/network/sync.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0",
+    "sharp": "^0.35.4"
+  }
+}

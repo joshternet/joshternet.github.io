@@ -1,0 +1,20 @@
+{
+  "format_version": 1,
+  "nodes": [
+    {
+      "origin": "https://joshuamorris.info",
+      "path": "nodes/dev-joshua.json",
+      "declaration": {
+        "version": 1,
+        "josh": true
+      }
+    },
+    {
+      "origin": "https://joshternet.org",
+      "path": "nodes/dev-joshternet.json",
+      "declaration": {
+        "version": 1
+      }
+    }
+  ]
+}
