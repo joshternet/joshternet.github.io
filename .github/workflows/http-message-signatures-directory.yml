@@ -1,0 +1,51 @@
+name: HTTP Message Signatures Directory
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/http-message-signatures-directory.yml"
+      - "workers/http-message-signatures-directory/**"
+
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/http-message-signatures-directory.yml"
+      - "workers/http-message-signatures-directory/**"
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify signed directory Worker
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    defaults:
+      run:
+        working-directory: workers/http-message-signatures-directory
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: workers/http-message-signatures-directory/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run directory tests
+        run: npm test
+
+      - name: Validate Worker bundle
+        run: npm run check

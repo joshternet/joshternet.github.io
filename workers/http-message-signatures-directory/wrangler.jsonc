@@ -1,0 +1,8 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "joshternet-http-message-signatures-directory",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-17",
+  "workers_dev": true,
+  "account_id": "f578c2fa49cafc49ee039b79b5663a26"
+}
