@@ -6,20 +6,19 @@
     }
 
     const stage = consoleElement.querySelector("[data-wander-stage]");
-    const domain = consoleElement.querySelector("[data-wander-domain]");
-    const previousButton = consoleElement.querySelector("[data-wander-previous]");
-    const nextButton = consoleElement.querySelector("[data-wander-next]");
-    const filter = consoleElement.querySelector("[data-wander-filter]");
-    const openLink = consoleElement.querySelector("[data-wander-open]");
-    const networkLink = consoleElement.querySelector("[data-wander-network]");
+    const goButton = consoleElement.querySelector("[data-wander-go]");
+    const addressInput = consoleElement.querySelector("[data-wander-address]");
+    const openButton = consoleElement.querySelector("[data-wander-open]");
 
-    const storageKey = "joshternet-wander-v1";
+    if (!stage || !goButton || !addressInput || !openButton) {
+        return;
+    }
+
+    const storageKey = "joshternet-wander-v2";
 
     let sites = [];
-    let pool = [];
     let bag = [];
-    let history = [];
-    let historyIndex = -1;
+    let currentOrigin = null;
 
     function shuffle(values) {
         const copy = values.slice();
@@ -32,25 +31,20 @@
         return copy;
     }
 
-    function currentFilter() {
-        return filter ? filter.value : "all";
-    }
-
-    function rebuildPool() {
-        const identity = currentFilter();
-
-        pool = sites.filter((site) => {
-            return identity === "all" || site.identity === identity;
-        });
-
-        bag = shuffle(pool.map((site) => site.origin));
-        history = [];
-        historyIndex = -1;
-        persist();
-    }
-
     function findSite(origin) {
         return sites.find((site) => site.origin === origin);
+    }
+
+    function rebuildBag() {
+        bag = shuffle(sites.map((site) => site.origin));
+
+        if (
+            currentOrigin &&
+            bag.length > 1 &&
+            bag[0] === currentOrigin
+        ) {
+            [bag[0], bag[1]] = [bag[1], bag[0]];
+        }
     }
 
     function persist() {
@@ -58,58 +52,40 @@
             sessionStorage.setItem(
                 storageKey,
                 JSON.stringify({
-                    filter: currentFilter(),
                     bag,
-                    history,
-                    historyIndex,
+                    currentOrigin,
                 }),
             );
         } catch {
-            // Session history is optional.
+            // Session state is optional.
         }
     }
 
     function restore() {
         try {
-            const stored = JSON.parse(sessionStorage.getItem(storageKey));
+            const stored = JSON.parse(
+                sessionStorage.getItem(storageKey),
+            );
 
             if (!stored || typeof stored !== "object") {
                 return false;
             }
 
-            if (
-                filter &&
-                ["all", "affirmed", "declined", "undeclared"].includes(
-                    stored.filter,
-                )
-            ) {
-                filter.value = stored.filter;
-            }
-
-            const allowedOrigins = new Set(
-                sites
-                    .filter((site) => {
-                        return (
-                            currentFilter() === "all" ||
-                            site.identity === currentFilter()
-                        );
-                    })
-                    .map((site) => site.origin),
+            const validOrigins = new Set(
+                sites.map((site) => site.origin),
             );
 
             bag = Array.isArray(stored.bag)
-                ? stored.bag.filter((origin) => allowedOrigins.has(origin))
+                ? stored.bag.filter((origin) => {
+                    return validOrigins.has(origin);
+                })
                 : [];
 
-            history = Array.isArray(stored.history)
-                ? stored.history.filter((origin) => allowedOrigins.has(origin))
-                : [];
-
-            historyIndex = Number.isInteger(stored.historyIndex)
-                ? Math.min(stored.historyIndex, history.length - 1)
-                : -1;
-
-            pool = sites.filter((site) => allowedOrigins.has(site.origin));
+            currentOrigin =
+                typeof stored.currentOrigin === "string" &&
+                validOrigins.has(stored.currentOrigin)
+                    ? stored.currentOrigin
+                    : null;
 
             return true;
         } catch {
@@ -121,7 +97,7 @@
         if (site.origin === window.location.origin) {
             return {
                 message:
-                    "Wander doesn’t embed Joshternet inside itself. Here’s its Network card instead.",
+                    "Joshternet isn’t embedded inside its own Wander view.",
                 kind: "self",
             };
         }
@@ -129,7 +105,7 @@
         if (site.frame_reason === "blocked-by-site") {
             return {
                 message:
-                    "This site doesn’t allow itself to be displayed inside another site, and we respect that. Here’s its Joshternet card instead.",
+                    "This site doesn’t allow itself to be displayed inside another site, and we respect that.",
                 kind: "blocked-by-site",
             };
         }
@@ -137,14 +113,14 @@
         if (site.frame_reason === "http") {
             return {
                 message:
-                    "This site can’t be displayed securely inside Wander because it is served over HTTP. Here’s its Joshternet card instead.",
+                    "This site can’t be displayed securely inside Wander because it is served over HTTP.",
                 kind: "http",
             };
         }
 
         return {
             message:
-                "We can’t safely display this site inside Wander right now. Here’s its Joshternet card instead.",
+                "This site can’t be displayed inside Wander right now.",
             kind: "unknown",
         };
     }
@@ -161,6 +137,10 @@
         return "undeclared";
     }
 
+    function networkURL(site) {
+        return `/network/?site=${encodeURIComponent(site.domain)}`;
+    }
+
     function fallbackMarkup(site) {
         const identity = identityClass(site);
         const reason = fallbackReason(site);
@@ -174,11 +154,15 @@
                 decoding="async"
               >`
             : `<div class="network-card__fallback" aria-hidden="true">
-                <span>${escapeHTML((site.domain || "?").slice(0, 1).toUpperCase())}</span>
+                <span>${escapeHTML(
+                    (site.domain || "?").slice(0, 1).toUpperCase(),
+                )}</span>
               </div>`;
 
         const description = site.description
-            ? `<p class="network-card__description">${escapeHTML(site.description)}</p>`
+            ? `<p class="network-card__description">${escapeHTML(
+                site.description,
+            )}</p>`
             : "";
 
         return `
@@ -186,17 +170,6 @@
                 class="wander-fallback"
                 data-frame-reason="${escapeAttribute(reason.kind)}"
             >
-                <div class="wander-fallback__notice">
-                    <p>${escapeHTML(reason.message)}</p>
-                    <a
-                        href="${escapeAttribute(site.origin)}"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Visit ${escapeHTML(site.domain)} ↗
-                    </a>
-                </div>
-
                 <div class="wander-fallback__card">
                     <article
                         class="network-card network-card--${escapeAttribute(identity)}"
@@ -227,13 +200,16 @@
                     </article>
                 </div>
 
-                <button
-                    class="wander-again"
-                    type="button"
-                    data-wander-again
-                >
-                    Keep wandering →
-                </button>
+                <div class="wander-fallback__notice">
+                    <p>${escapeHTML(reason.message)}</p>
+
+                    <a
+                        class="wander-fallback__network"
+                        href="${escapeAttribute(networkURL(site))}"
+                    >
+                        View in Network →
+                    </a>
+                </div>
             </div>
         `;
     }
@@ -251,28 +227,62 @@
         return escapeHTML(value);
     }
 
-    function render(site) {
-        if (!site) {
-            domain.textContent = "No sites available";
-            openLink.hidden = true;
-            networkLink.href = "/network/";
-            stage.innerHTML = `
-                <div class="wander-empty">
-                    <p>There are no participating sites in this Wander view yet.</p>
-                    <a href="/network/">Return to The Network</a>
-                </div>
-            `;
-            previousButton.disabled = true;
-            nextButton.disabled = true;
+    function parseAddress() {
+        try {
+            const url = new URL(addressInput.value.trim());
+
+            if (
+                url.protocol !== "https:" &&
+                url.protocol !== "http:"
+            ) {
+                return null;
+            }
+
+            return url;
+        } catch {
+            return null;
+        }
+    }
+
+    function updateOpenState() {
+        openButton.disabled = !parseAddress();
+    }
+
+    function openAddress() {
+        const url = parseAddress();
+
+        if (!url) {
+            addressInput.focus();
             return;
         }
 
-        domain.textContent = site.domain;
-        openLink.href = site.origin;
-        openLink.hidden = false;
-        networkLink.href = `/network/?site=${encodeURIComponent(site.domain)}`;
-        nextButton.disabled = false;
-        previousButton.disabled = historyIndex <= 0;
+        window.open(
+            url.href,
+            "_blank",
+            "noopener,noreferrer",
+        );
+    }
+
+    function render(site) {
+        if (!site) {
+            currentOrigin = null;
+            addressInput.value = "";
+            openButton.disabled = true;
+
+            stage.innerHTML = `
+                <div class="wander-empty">
+                    <p>There are no participating sites in Wander yet.</p>
+                    <a href="/network/">Browse The Network</a>
+                </div>
+            `;
+
+            persist();
+            return;
+        }
+
+        currentOrigin = site.origin;
+        addressInput.value = site.origin;
+        updateOpenState();
 
         if (
             site.embeddable &&
@@ -290,56 +300,40 @@
             `;
         } else {
             stage.innerHTML = fallbackMarkup(site);
-
-            const again = stage.querySelector("[data-wander-again]");
-
-            if (again) {
-                again.addEventListener("click", next);
-            }
         }
 
         persist();
     }
 
-    function next() {
-        if (historyIndex < history.length - 1) {
-            historyIndex += 1;
-            render(findSite(history[historyIndex]));
-            return;
-        }
-
-        if (pool.length === 0) {
+    function go() {
+        if (sites.length === 0) {
             render(null);
             return;
         }
 
         if (bag.length === 0) {
-            const currentOrigin =
-                historyIndex >= 0 ? history[historyIndex] : null;
+            rebuildBag();
+        }
 
-            bag = shuffle(pool.map((site) => site.origin));
+        let origin = bag.shift();
 
-            if (bag.length > 1 && bag[0] === currentOrigin) {
-                [bag[0], bag[1]] = [bag[1], bag[0]];
+        if (
+            sites.length > 1 &&
+            origin === currentOrigin
+        ) {
+            if (bag.length === 0) {
+                rebuildBag();
+            }
+
+            const alternative = bag.shift();
+
+            if (alternative) {
+                bag.push(origin);
+                origin = alternative;
             }
         }
 
-        const origin = bag.shift();
-
-        history = history.slice(0, historyIndex + 1);
-        history.push(origin);
-        historyIndex = history.length - 1;
-
         render(findSite(origin));
-    }
-
-    function previous() {
-        if (historyIndex <= 0) {
-            return;
-        }
-
-        historyIndex -= 1;
-        render(findSite(history[historyIndex]));
     }
 
     fetch("/network/data.json", {
@@ -350,7 +344,9 @@
     })
         .then((response) => {
             if (!response.ok) {
-                throw new Error(`Network data request failed: ${response.status}`);
+                throw new Error(
+                    `Network data request failed: ${response.status}`,
+                );
             }
 
             return response.json();
@@ -365,35 +361,36 @@
             const restored = restore();
 
             if (!restored) {
-                rebuildPool();
+                rebuildBag();
             }
 
-            if (historyIndex >= 0 && history[historyIndex]) {
-                render(findSite(history[historyIndex]));
-            } else {
-                next();
-            }
+            go();
         })
         .catch(() => {
-            domain.textContent = "Network unavailable";
-            previousButton.disabled = true;
-            nextButton.disabled = true;
-            openLink.hidden = true;
+            currentOrigin = null;
+            addressInput.value = "";
+            openButton.disabled = true;
+
             stage.innerHTML = `
                 <div class="wander-empty">
                     <p>The network data could not be loaded right now.</p>
-                    <a href="/network/">Return to The Network</a>
+                    <a href="/network/">Browse The Network</a>
                 </div>
             `;
         });
 
-    previousButton.addEventListener("click", previous);
-    nextButton.addEventListener("click", next);
+    goButton.addEventListener("click", go);
 
-    if (filter) {
-        filter.addEventListener("change", () => {
-            rebuildPool();
-            next();
-        });
-    }
+    openButton.addEventListener("click", openAddress);
+
+    addressInput.addEventListener("input", updateOpenState);
+
+    addressInput.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter") {
+            return;
+        }
+
+        event.preventDefault();
+        openAddress();
+    });
 })();
