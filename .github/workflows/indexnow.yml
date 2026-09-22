@@ -1,12 +1,7 @@
 name: Submit IndexNow URLs
 
 on:
-  workflow_run:
-    workflows:
-      - pages build and deployment
-    types:
-      - completed
-
+  page_build:
   workflow_dispatch:
 
 permissions:
@@ -23,21 +18,21 @@ jobs:
 
     if: >-
       github.event_name == 'workflow_dispatch' ||
-      github.event.workflow_run.conclusion == 'success'
+      github.event.build.status == 'built'
 
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
     steps:
       - name: Check out deployed revision
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
-          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          ref: ${{ github.event.build.commit || github.sha }}
           fetch-depth: 0
           persist-credentials: false
 
       - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 22
 
@@ -45,7 +40,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
-          CURRENT_PAGES_RUN_ID: ${{ github.event.workflow_run.id || '' }}
-          CURRENT_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+          CURRENT_SHA: ${{ github.event.build.commit || github.sha }}
           FORCE_FULL: ${{ github.event_name == 'workflow_dispatch' }}
         run: node scripts/indexnow.mjs
