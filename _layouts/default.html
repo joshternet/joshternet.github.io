@@ -65,8 +65,8 @@
 
     {% if page.chrome != false %}
       <header class="site-header">
-        <div class="site-header__inner">
-          <a class="site-identity h-card p-name p-org u-url u-uid" href="{{ '/' | relative_url }}">Joshternet</a>
+        <div class="site-header__inner h-card">
+          <a class="site-identity p-name p-org u-url u-uid" href="{{ '/' | relative_url }}">Joshternet</a>
 
           <details class="site-nav-menu">
             <summary>Menu</summary>
@@ -105,7 +105,11 @@
             <a href="{{ '/privacy/' | relative_url }}">Privacy</a>
             <a href="{{ '/security/' | relative_url }}">Security</a>
             <a href="mailto:hello@joshternet.org">Contact</a>
-            <a href="https://github.com/joshternet">GitHub</a>
+            {% if page.url == '/' %}
+              <a href="https://github.com/joshternet" rel="me">GitHub</a>
+            {% else %}
+              <a href="https://github.com/joshternet">GitHub</a>
+            {% endif %}
           </nav>
         </div>
       </footer>
