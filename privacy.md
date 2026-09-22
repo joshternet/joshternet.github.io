@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Privacy
+title: Privacy and Analytics
 description: >-
   Privacy information for joshternet.org, including the site's use of
   privacy-focused web analytics.

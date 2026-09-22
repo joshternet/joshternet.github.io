@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Governance
+title: Project Governance and Specification Process
 description: >-
   How the Joshternet develops Draft specifications in public while keeping
   project governance separate from network control and Josh identity.

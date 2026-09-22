@@ -1,6 +1,6 @@
 ---
 layout: default
-title: JoshBot
+title: JoshBot Discovery and Registry Crawler
 description: >-
   Information for website operators about the Joshternet discovery,
   verification, and public registry crawler.

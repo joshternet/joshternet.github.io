@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
       {% if page.url == '/' -%}
-        {{- site.title | escape -}}
+        {{- page.title | default: site.title | escape -}}
       {%- else -%}
         {{- page.title | default: site.title | escape }} | {{ site.title | escape -}}
       {%- endif %}

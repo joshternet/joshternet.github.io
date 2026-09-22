@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Implementation Guide
+title: Implement /.well-known/josh
 description: >-
   A practical, non-normative guide to publishing and validating the version 1
   /.well-known/josh declaration used to participate in the Joshternet.

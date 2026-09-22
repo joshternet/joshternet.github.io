@@ -1,6 +1,6 @@
 ---
 layout: default
-title: The Network
+title: Participating Independent Websites
 description: >-
   Independent websites participating in the Joshternet, discovered and
   verified by JoshBot.

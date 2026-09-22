@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Nominate a Site
+title: Nominate a Website for JoshBot
 description: >-
   Nominate a website you control as a discovery seed for JoshBot.
 seo:
