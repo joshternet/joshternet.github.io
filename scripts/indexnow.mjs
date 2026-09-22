@@ -8,8 +8,6 @@ const INDEXNOW_ENDPOINT = "https://api.indexnow.org/indexnow";
 const githubToken = process.env.GITHUB_TOKEN ?? "";
 const repository = process.env.GITHUB_REPOSITORY ?? "";
 const currentRunId = process.env.GITHUB_RUN_ID ?? "";
-const currentPagesRunId =
-    process.env.CURRENT_PAGES_RUN_ID ?? "";
 const currentSha = process.env.CURRENT_SHA ?? "";
 const indexNowKey = process.env.INDEXNOW_KEY ?? "";
 const forceFull = process.env.FORCE_FULL === "true";
@@ -191,71 +189,6 @@ async function previousIndexNowRun() {
                 String(currentRunId);
         },
     ) ?? null;
-}
-
-async function previousPagesSha() {
-    if (!currentPagesRunId) {
-        return null;
-    }
-
-    const currentPagesRun = await github(
-        `/actions/runs/${currentPagesRunId}`,
-    );
-
-    const params = new URLSearchParams({
-        status: "success",
-        per_page: "100",
-    });
-
-    if (currentPagesRun.head_branch) {
-        params.set(
-            "branch",
-            currentPagesRun.head_branch,
-        );
-    }
-
-    for (
-        let page = 1;
-        page <= 5;
-        page += 1
-    ) {
-        params.set(
-            "page",
-            String(page),
-        );
-
-        const result = await github(
-            `/actions/workflows/` +
-            `${currentPagesRun.workflow_id}/runs?` +
-            params,
-        );
-
-        const previousRun =
-            result.workflow_runs.find(
-                (run) => {
-                    return (
-                        String(run.id) !==
-                            String(currentPagesRun.id) &&
-                        new Date(run.created_at) <
-                            new Date(
-                                currentPagesRun.created_at,
-                            )
-                    );
-                },
-            );
-
-        if (previousRun?.head_sha) {
-            return previousRun.head_sha;
-        }
-
-        if (
-            result.workflow_runs.length < 100
-        ) {
-            break;
-        }
-    }
-
-    return null;
 }
 
 function git(...args) {
@@ -816,13 +749,12 @@ async function main() {
     }
 
     const previousSha =
-        await previousPagesSha();
+        previousRun.head_sha;
 
     if (!previousSha) {
         console.log(
-            "No previous successful Pages deployment " +
-            "could be resolved. Submitting the complete " +
-            "production sitemap.",
+            "The previous IndexNow run has no commit SHA. " +
+            "Submitting the complete production sitemap.",
         );
 
         await submit(sitemapUrls);
