@@ -1,6 +1,6 @@
 ---
 layout: default
-title: About
+title: About the Open Josh Network
 description: >-
   How the Joshternet began, why it starts with Joshes and independent websites,
   and how open standards keep the network decentralized.

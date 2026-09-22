@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Joshternet
+title: "Joshternet: An Open Network for Joshes and Independent Websites"
 ---
 
 # Joshternet

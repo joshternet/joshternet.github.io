@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Security
+title: Security and Vulnerability Reporting
 description: >-
   How to report security vulnerabilities affecting joshternet.org and
   Joshternet projects.

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Wander
+title: Explore Participating Websites
 description: Wander through independent websites participating in the Joshternet.
 seo:
   type: WebPage
@@ -10,6 +10,8 @@ script: /assets/js/wander.js
 full_bleed: true
 allow_frames: true
 ---
+
+<h1 class="visually-hidden">Wander the Joshternet</h1>
 
 <div data-wander-console>
   <header class="wander-bar">
@@ -47,11 +49,11 @@ allow_frames: true
   </header>
 
   <div class="wander-app">
-    <main class="wander-stage" data-wander-stage>
+    <section class="wander-stage" data-wander-stage>
       <div class="wander-empty">
         <p>Looking for somewhere to wander.</p>
       </div>
-    </main>
+    </section>
   </div>
 </div>
 
