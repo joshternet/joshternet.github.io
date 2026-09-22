@@ -3,7 +3,7 @@ layout: null
 permalink: /network/data.json
 ---
 {% assign network_sites = site.data.network %}
-{% if jekyll.environment == "development" %}
+{% if jekyll.environment == 'development' %}
   {% assign network_sites = network_sites | concat: site.data.network_dev %}
 {% endif %}
 {{ network_sites | jsonify }}

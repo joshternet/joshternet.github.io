@@ -52,19 +52,13 @@ function validationError(code, message) {
 
 function normalizeSeedOrigin(value) {
   if (typeof value !== "string") {
-    return validationError(
-      "url_required",
-      "A website URL is required.",
-    );
+    return validationError("url_required", "A website URL is required.");
   }
 
   const input = value.trim();
 
   if (!input || input.length > MAX_URL_LENGTH) {
-    return validationError(
-      "invalid_url",
-      "Enter a valid public website URL.",
-    );
+    return validationError("invalid_url", "Enter a valid public website URL.");
   }
 
   let url;
@@ -72,10 +66,7 @@ function normalizeSeedOrigin(value) {
   try {
     url = new URL(input);
   } catch {
-    return validationError(
-      "invalid_url",
-      "Enter a valid public website URL.",
-    );
+    return validationError("invalid_url", "Enter a valid public website URL.");
   }
 
   if (url.protocol !== "http:" && url.protocol !== "https:") {
@@ -95,10 +86,7 @@ function normalizeSeedOrigin(value) {
   let hostname = url.hostname.toLowerCase().replace(/\.+$/, "");
 
   if (!hostname) {
-    return validationError(
-      "invalid_host",
-      "Enter a valid public website URL.",
-    );
+    return validationError("invalid_host", "Enter a valid public website URL.");
   }
 
   if (
@@ -120,10 +108,7 @@ function normalizeSeedOrigin(value) {
    * nominated host. IP literals are rejected here so nominations remain
    * ordinary public website origins.
    */
-  if (
-    hostname.includes(":") ||
-    /^\d{1,3}(?:\.\d{1,3}){3}$/.test(hostname)
-  ) {
+  if (hostname.includes(":") || /^\d{1,3}(?:\.\d{1,3}){3}$/.test(hostname)) {
     return validationError(
       "ip_literal_not_allowed",
       "Nominate a website by hostname rather than IP address.",
@@ -156,10 +141,7 @@ async function readJson(request) {
 
   const contentLength = Number(request.headers.get("Content-Length"));
 
-  if (
-    Number.isFinite(contentLength) &&
-    contentLength > MAX_REQUEST_BYTES
-  ) {
+  if (Number.isFinite(contentLength) && contentLength > MAX_REQUEST_BYTES) {
     return {
       ok: false,
       response: json(
@@ -376,10 +358,7 @@ async function nominate(request, env) {
     );
   }
 
-  const rateLimit = await applyNominationRateLimits(
-    normalized.origin,
-    env,
-  );
+  const rateLimit = await applyNominationRateLimits(normalized.origin, env);
 
   if (!rateLimit.ok) {
     return json(
@@ -472,10 +451,7 @@ export default {
       });
     }
 
-    if (
-      request.method === "POST" &&
-      url.pathname === "/v1/seed-nominations"
-    ) {
+    if (request.method === "POST" && url.pathname === "/v1/seed-nominations") {
       if (!originIsAllowed(request, env)) {
         return json(
           { error: "origin_not_allowed" },

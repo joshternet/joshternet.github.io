@@ -1,11 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import {
-  component,
-  verifySignature,
-  webcrypto,
-} from "http-message-sig";
+import { component, verifySignature, webcrypto } from "http-message-sig";
 
 import worker from "../src/index.js";
 
@@ -15,8 +11,7 @@ const DIRECTORY_URL =
 const DIRECTORY_CONTENT_TYPE =
   "application/http-message-signatures-directory+json";
 
-const DIRECTORY_SIGNATURE_TAG =
-  "http-message-signatures-directory";
+const DIRECTORY_SIGNATURE_TAG = "http-message-signatures-directory";
 
 const encoder = new TextEncoder();
 
@@ -33,15 +28,9 @@ async function generateIdentity() {
     ["sign", "verify"],
   );
 
-  const pkcs8 = await crypto.subtle.exportKey(
-    "pkcs8",
-    pair.privateKey,
-  );
+  const pkcs8 = await crypto.subtle.exportKey("pkcs8", pair.privateKey);
 
-  const publicJwk = await crypto.subtle.exportKey(
-    "jwk",
-    pair.publicKey,
-  );
+  const publicJwk = await crypto.subtle.exportKey("jwk", pair.publicKey);
 
   const pemBody = Buffer.from(pkcs8)
     .toString("base64")
@@ -78,27 +67,16 @@ async function thumbprint(jwk) {
   return base64Url(new Uint8Array(digest));
 }
 
-function makeRequest({
-  method = "GET",
-  url = DIRECTORY_URL,
-} = {}) {
-  return new Request(
-    url,
-    {
-      method,
-    },
-  );
+function makeRequest({ method = "GET", url = DIRECTORY_URL } = {}) {
+  return new Request(url, {
+    method,
+  });
 }
 
-function makeEnv({
-  active,
-  transition,
-} = {}) {
+function makeEnv({ active, transition } = {}) {
   return {
-    WEB_BOT_AUTH_ACTIVE_PRIVATE_KEY_PEM:
-      active ?? "",
-    WEB_BOT_AUTH_TRANSITION_PRIVATE_KEY_PEM:
-      transition ?? "",
+    WEB_BOT_AUTH_ACTIVE_PRIVATE_KEY_PEM: active ?? "",
+    WEB_BOT_AUTH_TRANSITION_PRIVATE_KEY_PEM: transition ?? "",
   };
 }
 
@@ -107,30 +85,21 @@ function requestDescriptor(request) {
     kind: "request",
     method: request.method,
     targetUri: request.url,
-    fields: Array.from(
-      request.headers.entries(),
-      ([name, value]) => ({
-        name,
-        value,
-      }),
-    ),
+    fields: Array.from(request.headers.entries(), ([name, value]) => ({
+      name,
+      value,
+    })),
   };
 }
 
-function responseDescriptor(
-  request,
-  response,
-) {
+function responseDescriptor(request, response) {
   return {
     kind: "response",
     status: response.status,
-    fields: Array.from(
-      response.headers.entries(),
-      ([name, value]) => ({
-        name,
-        value,
-      }),
-    ),
+    fields: Array.from(response.headers.entries(), ([name, value]) => ({
+      name,
+      value,
+    })),
     request: requestDescriptor(request),
   };
 }
@@ -149,88 +118,49 @@ async function verifierFor(jwk) {
   return webcrypto.verifier(publicKey);
 }
 
-async function verifyDirectorySignature({
-  request,
-  response,
-  jwk,
-  label,
-}) {
+async function verifyDirectorySignature({ request, response, jwk, label }) {
   const verifier = await verifierFor(jwk);
   const expectedKeyId = await thumbprint(jwk);
 
   const verified = await verifySignature(
-    responseDescriptor(
-      request,
-      response,
-    ),
+    responseDescriptor(request, response),
     {
       label,
       policy: {
         algorithms: ["ed25519"],
         requiredComponents: [
-          component(
-            "@authority",
-            {
-              req: true,
-            },
-          ),
+          component("@authority", {
+            req: true,
+          }),
           "content-digest",
         ],
-        requiredParameters: [
-          "created",
-          "expires",
-          "keyid",
-          "alg",
-          "tag",
-        ],
+        requiredParameters: ["created", "expires", "keyid", "alg", "tag"],
         clockSkew: 5,
         validate(signature) {
-          assert.equal(
-            signature.parameters.keyid,
-            expectedKeyId,
-          );
+          assert.equal(signature.parameters.keyid, expectedKeyId);
 
-          assert.equal(
-            signature.parameters.alg,
-            "ed25519",
-          );
+          assert.equal(signature.parameters.alg, "ed25519");
 
-          assert.equal(
-            signature.parameters.tag,
-            DIRECTORY_SIGNATURE_TAG,
-          );
+          assert.equal(signature.parameters.tag, DIRECTORY_SIGNATURE_TAG);
 
-          assert.equal(
-            typeof signature.parameters.created,
-            "number",
-          );
+          assert.equal(typeof signature.parameters.created, "number");
 
-          assert.equal(
-            typeof signature.parameters.expires,
-            "number",
-          );
+          assert.equal(typeof signature.parameters.expires, "number");
 
           assert.ok(
-            signature.parameters.expires >
-              signature.parameters.created,
+            signature.parameters.expires > signature.parameters.created,
           );
         },
       },
       resolveVerifier(candidate) {
-        assert.equal(
-          candidate.parameters.keyid,
-          expectedKeyId,
-        );
+        assert.equal(candidate.parameters.keyid, expectedKeyId);
 
         return verifier;
       },
     },
   );
 
-  assert.equal(
-    verified.label,
-    label,
-  );
+  assert.equal(verified.label, label);
 }
 
 test("publishes one public Ed25519 JWK with the required content type", async () => {
@@ -247,47 +177,23 @@ test("publishes one public Ed25519 JWK with the required content type", async ()
 
   assert.equal(response.status, 200);
 
-  assert.equal(
-    response.headers.get("Content-Type"),
-    DIRECTORY_CONTENT_TYPE,
-  );
+  assert.equal(response.headers.get("Content-Type"), DIRECTORY_CONTENT_TYPE);
 
-  assert.equal(
-    response.headers.get("Cache-Control"),
-    "no-store",
-  );
+  assert.equal(response.headers.get("Cache-Control"), "no-store");
 
-  assert.ok(
-    response.headers.get("Content-Digest"),
-  );
+  assert.ok(response.headers.get("Content-Digest"));
 
-  assert.ok(
-    response.headers.get("Signature"),
-  );
+  assert.ok(response.headers.get("Signature"));
 
-  assert.ok(
-    response.headers.get("Signature-Input"),
-  );
+  assert.ok(response.headers.get("Signature-Input"));
 
   const body = await response.json();
 
-  assert.deepEqual(
-    body,
-    {
-      keys: [
-        identity.publicJwk,
-      ],
-    },
-  );
+  assert.deepEqual(body, {
+    keys: [identity.publicJwk],
+  });
 
-  assert.deepEqual(
-    Object.keys(body.keys[0]).sort(),
-    [
-      "crv",
-      "kty",
-      "x",
-    ],
-  );
+  assert.deepEqual(Object.keys(body.keys[0]).sort(), ["crv", "kty", "x"]);
 });
 
 test("directory signature verifies against the published JWK thumbprint", async () => {
@@ -324,18 +230,11 @@ test("content digest matches the exact directory response body", async () => {
 
   const body = await response.text();
 
-  const digest = await crypto.subtle.digest(
-    "SHA-256",
-    encoder.encode(body),
-  );
+  const digest = await crypto.subtle.digest("SHA-256", encoder.encode(body));
 
-  const expected =
-    `sha-256=:${Buffer.from(digest).toString("base64")}:`;
+  const expected = `sha-256=:${Buffer.from(digest).toString("base64")}:`;
 
-  assert.equal(
-    response.headers.get("Content-Digest"),
-    expected,
-  );
+  assert.equal(response.headers.get("Content-Digest"), expected);
 });
 
 test("publishes active and transition keys with independently valid signatures", async () => {
@@ -356,28 +255,15 @@ test("publishes active and transition keys with independently valid signatures",
 
   const body = await response.clone().json();
 
-  assert.deepEqual(
-    body,
-    {
-      keys: [
-        active.publicJwk,
-        transition.publicJwk,
-      ],
-    },
-  );
+  assert.deepEqual(body, {
+    keys: [active.publicJwk, transition.publicJwk],
+  });
 
-  const signatureInput =
-    response.headers.get("Signature-Input");
+  const signatureInput = response.headers.get("Signature-Input");
 
-  assert.match(
-    signatureInput,
-    /binding0=/u,
-  );
+  assert.match(signatureInput, /binding0=/u);
 
-  assert.match(
-    signatureInput,
-    /binding1=/u,
-  );
+  assert.match(signatureInput, /binding1=/u);
 
   await verifyDirectorySignature({
     request,
@@ -407,44 +293,28 @@ test("duplicate active and transition identities fail closed", async () => {
 
   assert.equal(response.status, 503);
 
-  assert.equal(
-    await response.text(),
-    "Web Bot Auth directory unavailable.\n",
-  );
+  assert.equal(await response.text(), "Web Bot Auth directory unavailable.\n");
 
-  assert.equal(
-    response.headers.get("Signature"),
-    null,
-  );
+  assert.equal(response.headers.get("Signature"), null);
 });
 
 test("missing signing identity fails closed", async () => {
-  const response = await worker.fetch(
-    makeRequest(),
-    makeEnv(),
-  );
+  const response = await worker.fetch(makeRequest(), makeEnv());
 
   assert.equal(response.status, 503);
 
-  assert.equal(
-    await response.text(),
-    "Web Bot Auth directory unavailable.\n",
-  );
+  assert.equal(await response.text(), "Web Bot Auth directory unavailable.\n");
 
   assert.equal(
     response.headers.get("Content-Type"),
     "text/plain; charset=utf-8",
   );
 
-  assert.equal(
-    response.headers.get("Signature"),
-    null,
-  );
+  assert.equal(response.headers.get("Signature"), null);
 });
 
 test("malformed private key fails closed without exposing key material", async () => {
-  const privateMaterial =
-    "definitely-not-a-private-key";
+  const privateMaterial = "definitely-not-a-private-key";
 
   const response = await worker.fetch(
     makeRequest(),
@@ -457,19 +327,10 @@ test("malformed private key fails closed without exposing key material", async (
 
   const output = [
     await response.text(),
-    ...response.headers.entries().map(
-      ([name, value]) =>
-        `${name}: ${value}`,
-    ),
+    ...response.headers.entries().map(([name, value]) => `${name}: ${value}`),
   ].join("\n");
 
-  assert.doesNotMatch(
-    output,
-    new RegExp(
-      privateMaterial,
-      "u",
-    ),
-  );
+  assert.doesNotMatch(output, new RegExp(privateMaterial, "u"));
 });
 
 test("private key material is absent from the successful response", async () => {
@@ -486,39 +347,22 @@ test("private key material is absent from the successful response", async () => 
 
   assert.equal(response.status, 200);
 
-  const responseText =
-    await response.clone().text();
+  const responseText = await response.clone().text();
 
   const responseHeaders = Array.from(
     response.headers.entries(),
-    ([name, value]) =>
-      `${name}: ${value}`,
+    ([name, value]) => `${name}: ${value}`,
   ).join("\n");
 
-  const combined =
-    `${responseText}\n${responseHeaders}`;
+  const combined = `${responseText}\n${responseHeaders}`;
 
-  assert.doesNotMatch(
-    combined,
-    /BEGIN PRIVATE KEY/u,
-  );
+  assert.doesNotMatch(combined, /BEGIN PRIVATE KEY/u);
 
-  assert.doesNotMatch(
-    combined,
-    /"d"\s*:/u,
-  );
+  assert.doesNotMatch(combined, /"d"\s*:/u);
 
-  const body = JSON.parse(
-    responseText,
-  );
+  const body = JSON.parse(responseText);
 
-  assert.equal(
-    Object.hasOwn(
-      body.keys[0],
-      "d",
-    ),
-    false,
-  );
+  assert.equal(Object.hasOwn(body.keys[0], "d"), false);
 });
 
 test("unrelated paths return 404 without loading signing identity", async () => {
@@ -531,10 +375,7 @@ test("unrelated paths return 404 without loading signing identity", async () => 
 
   assert.equal(response.status, 404);
 
-  assert.equal(
-    await response.text(),
-    "Not found.\n",
-  );
+  assert.equal(await response.text(), "Not found.\n");
 });
 
 test("non-GET requests return 405 without loading signing identity", async () => {
@@ -547,13 +388,7 @@ test("non-GET requests return 405 without loading signing identity", async () =>
 
   assert.equal(response.status, 405);
 
-  assert.equal(
-    response.headers.get("Allow"),
-    "GET",
-  );
+  assert.equal(response.headers.get("Allow"), "GET");
 
-  assert.equal(
-    await response.text(),
-    "Method not allowed.\n",
-  );
+  assert.equal(await response.text(), "Method not allowed.\n");
 });

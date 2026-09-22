@@ -4,10 +4,14 @@
   "type": "module",
   "scripts": {
     "test": "node --test test/network/*.test.mjs",
-    "network:sync": "node scripts/network/sync.mjs"
+    "network:sync": "node scripts/network/sync.mjs",
+    "format": "prettier . --write --ignore-unknown",
+    "format:check": "prettier . --check --ignore-unknown"
   },
   "devDependencies": {
+    "@shopify/prettier-plugin-liquid": "1.11.0",
     "playwright": "^1.63.0",
+    "prettier": "3.9.8",
     "sharp": "^0.35.4"
   }
 }

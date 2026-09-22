@@ -1,171 +1,161 @@
 (() => {
-    const consoleElement = document.querySelector("[data-wander-console]");
+  const consoleElement = document.querySelector("[data-wander-console]");
 
-    if (!consoleElement) {
-        return;
+  if (!consoleElement) {
+    return;
+  }
+
+  const stage = consoleElement.querySelector("[data-wander-stage]");
+  const goButton = consoleElement.querySelector("[data-wander-go]");
+  const addressInput = consoleElement.querySelector("[data-wander-address]");
+  const openButton = consoleElement.querySelector("[data-wander-open]");
+
+  if (!stage || !goButton || !addressInput || !openButton) {
+    return;
+  }
+
+  const storageKey = "joshternet-wander-v2";
+
+  let sites = [];
+  let bag = [];
+  let currentOrigin = null;
+
+  function shuffle(values) {
+    const copy = values.slice();
+
+    for (let index = copy.length - 1; index > 0; index -= 1) {
+      const target = Math.floor(Math.random() * (index + 1));
+      [copy[index], copy[target]] = [copy[target], copy[index]];
     }
 
-    const stage = consoleElement.querySelector("[data-wander-stage]");
-    const goButton = consoleElement.querySelector("[data-wander-go]");
-    const addressInput = consoleElement.querySelector("[data-wander-address]");
-    const openButton = consoleElement.querySelector("[data-wander-open]");
+    return copy;
+  }
 
-    if (!stage || !goButton || !addressInput || !openButton) {
-        return;
+  function findSite(origin) {
+    return sites.find((site) => site.origin === origin);
+  }
+
+  function rebuildBag() {
+    bag = shuffle(sites.map((site) => site.origin));
+
+    if (currentOrigin && bag.length > 1 && bag[0] === currentOrigin) {
+      [bag[0], bag[1]] = [bag[1], bag[0]];
+    }
+  }
+
+  function persist() {
+    try {
+      sessionStorage.setItem(
+        storageKey,
+        JSON.stringify({
+          bag,
+          currentOrigin,
+        }),
+      );
+    } catch {
+      // Session state is optional.
+    }
+  }
+
+  function restore() {
+    try {
+      const stored = JSON.parse(sessionStorage.getItem(storageKey));
+
+      if (!stored || typeof stored !== "object") {
+        return false;
+      }
+
+      const validOrigins = new Set(sites.map((site) => site.origin));
+
+      bag = Array.isArray(stored.bag)
+        ? stored.bag.filter((origin) => {
+            return validOrigins.has(origin);
+          })
+        : [];
+
+      currentOrigin =
+        typeof stored.currentOrigin === "string" &&
+        validOrigins.has(stored.currentOrigin)
+          ? stored.currentOrigin
+          : null;
+
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  function fallbackReason(site) {
+    if (site.origin === window.location.origin) {
+      return {
+        message: "Joshternet isn’t embedded inside its own Wander view.",
+        kind: "self",
+      };
     }
 
-    const storageKey = "joshternet-wander-v2";
-
-    let sites = [];
-    let bag = [];
-    let currentOrigin = null;
-
-    function shuffle(values) {
-        const copy = values.slice();
-
-        for (let index = copy.length - 1; index > 0; index -= 1) {
-            const target = Math.floor(Math.random() * (index + 1));
-            [copy[index], copy[target]] = [copy[target], copy[index]];
-        }
-
-        return copy;
+    if (site.frame_reason === "blocked-by-site") {
+      return {
+        message:
+          "This site doesn’t allow itself to be displayed inside another site, and we respect that.",
+        kind: "blocked-by-site",
+      };
     }
 
-    function findSite(origin) {
-        return sites.find((site) => site.origin === origin);
+    if (site.frame_reason === "http") {
+      return {
+        message:
+          "This site can’t be displayed securely inside Wander because it is served over HTTP.",
+        kind: "http",
+      };
     }
 
-    function rebuildBag() {
-        bag = shuffle(sites.map((site) => site.origin));
+    return {
+      message: "This site can’t be displayed inside Wander right now.",
+      kind: "unknown",
+    };
+  }
 
-        if (
-            currentOrigin &&
-            bag.length > 1 &&
-            bag[0] === currentOrigin
-        ) {
-            [bag[0], bag[1]] = [bag[1], bag[0]];
-        }
+  function identityClass(site) {
+    if (
+      site.identity === "affirmed" ||
+      site.identity === "declined" ||
+      site.identity === "undeclared"
+    ) {
+      return site.identity;
     }
 
-    function persist() {
-        try {
-            sessionStorage.setItem(
-                storageKey,
-                JSON.stringify({
-                    bag,
-                    currentOrigin,
-                }),
-            );
-        } catch {
-            // Session state is optional.
-        }
-    }
+    return "undeclared";
+  }
 
-    function restore() {
-        try {
-            const stored = JSON.parse(
-                sessionStorage.getItem(storageKey),
-            );
+  function networkURL(site) {
+    return `/network/?site=${encodeURIComponent(site.domain)}`;
+  }
 
-            if (!stored || typeof stored !== "object") {
-                return false;
-            }
+  function fallbackMarkup(site) {
+    const identity = identityClass(site);
+    const reason = fallbackReason(site);
 
-            const validOrigins = new Set(
-                sites.map((site) => site.origin),
-            );
-
-            bag = Array.isArray(stored.bag)
-                ? stored.bag.filter((origin) => {
-                    return validOrigins.has(origin);
-                })
-                : [];
-
-            currentOrigin =
-                typeof stored.currentOrigin === "string" &&
-                validOrigins.has(stored.currentOrigin)
-                    ? stored.currentOrigin
-                    : null;
-
-            return true;
-        } catch {
-            return false;
-        }
-    }
-
-    function fallbackReason(site) {
-        if (site.origin === window.location.origin) {
-            return {
-                message:
-                    "Joshternet isn’t embedded inside its own Wander view.",
-                kind: "self",
-            };
-        }
-
-        if (site.frame_reason === "blocked-by-site") {
-            return {
-                message:
-                    "This site doesn’t allow itself to be displayed inside another site, and we respect that.",
-                kind: "blocked-by-site",
-            };
-        }
-
-        if (site.frame_reason === "http") {
-            return {
-                message:
-                    "This site can’t be displayed securely inside Wander because it is served over HTTP.",
-                kind: "http",
-            };
-        }
-
-        return {
-            message:
-                "This site can’t be displayed inside Wander right now.",
-            kind: "unknown",
-        };
-    }
-
-    function identityClass(site) {
-        if (
-            site.identity === "affirmed" ||
-            site.identity === "declined" ||
-            site.identity === "undeclared"
-        ) {
-            return site.identity;
-        }
-
-        return "undeclared";
-    }
-
-    function networkURL(site) {
-        return `/network/?site=${encodeURIComponent(site.domain)}`;
-    }
-
-    function fallbackMarkup(site) {
-        const identity = identityClass(site);
-        const reason = fallbackReason(site);
-
-        const preview = site.screenshot
-            ? `<img
+    const preview = site.screenshot
+      ? `<img
                 class="network-card__image"
                 src="${escapeAttribute(site.screenshot)}"
                 alt="Screenshot of ${escapeAttribute(site.title || site.domain)}"
                 loading="eager"
                 decoding="async"
               >`
-            : `<div class="network-card__fallback" aria-hidden="true">
+      : `<div class="network-card__fallback" aria-hidden="true">
                 <span>${escapeHTML(
-                    (site.domain || "?").slice(0, 1).toUpperCase(),
+                  (site.domain || "?").slice(0, 1).toUpperCase(),
                 )}</span>
               </div>`;
 
-        const description = site.description
-            ? `<p class="network-card__description">${escapeHTML(
-                site.description,
-            )}</p>`
-            : "";
+    const description = site.description
+      ? `<p class="network-card__description">${escapeHTML(
+          site.description,
+        )}</p>`
+      : "";
 
-        return `
+    return `
             <div
                 class="wander-fallback"
                 data-frame-reason="${escapeAttribute(reason.kind)}"
@@ -212,84 +202,77 @@
                 </div>
             </div>
         `;
+  }
+
+  function escapeHTML(value) {
+    return String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function escapeAttribute(value) {
+    return escapeHTML(value);
+  }
+
+  function parseAddress() {
+    try {
+      const url = new URL(addressInput.value.trim());
+
+      if (url.protocol !== "https:" && url.protocol !== "http:") {
+        return null;
+      }
+
+      return url;
+    } catch {
+      return null;
+    }
+  }
+
+  function updateOpenState() {
+    openButton.disabled = !parseAddress();
+  }
+
+  function openAddress() {
+    const url = parseAddress();
+
+    if (!url) {
+      addressInput.focus();
+      return;
     }
 
-    function escapeHTML(value) {
-        return String(value)
-            .replaceAll("&", "&amp;")
-            .replaceAll("<", "&lt;")
-            .replaceAll(">", "&gt;")
-            .replaceAll('"', "&quot;")
-            .replaceAll("'", "&#039;");
-    }
+    window.open(url.href, "_blank", "noopener,noreferrer");
+  }
 
-    function escapeAttribute(value) {
-        return escapeHTML(value);
-    }
+  function render(site) {
+    if (!site) {
+      currentOrigin = null;
+      addressInput.value = "";
+      openButton.disabled = true;
 
-    function parseAddress() {
-        try {
-            const url = new URL(addressInput.value.trim());
-
-            if (
-                url.protocol !== "https:" &&
-                url.protocol !== "http:"
-            ) {
-                return null;
-            }
-
-            return url;
-        } catch {
-            return null;
-        }
-    }
-
-    function updateOpenState() {
-        openButton.disabled = !parseAddress();
-    }
-
-    function openAddress() {
-        const url = parseAddress();
-
-        if (!url) {
-            addressInput.focus();
-            return;
-        }
-
-        window.open(
-            url.href,
-            "_blank",
-            "noopener,noreferrer",
-        );
-    }
-
-    function render(site) {
-        if (!site) {
-            currentOrigin = null;
-            addressInput.value = "";
-            openButton.disabled = true;
-
-            stage.innerHTML = `
+      stage.innerHTML = `
                 <div class="wander-empty">
                     <p>There are no participating sites in Wander yet.</p>
                     <a href="/network/">Browse The Network</a>
                 </div>
             `;
 
-            persist();
-            return;
-        }
+      persist();
+      return;
+    }
 
-        currentOrigin = site.origin;
-        addressInput.value = site.origin;
-        updateOpenState();
+    currentOrigin = site.origin;
+    addressInput.value = site.origin;
+    updateOpenState();
 
-        if (
-            site.embeddable &&
-            site.origin.startsWith("https://") &&
-            site.origin !== window.location.origin
-        ) {
-            stage.innerHTML = `
+    if (
+      site.embeddable &&
+      site.origin.startsWith("https://") &&
+      site.origin !== window.location.origin
+    ) {
+      stage.innerHTML = `
                 <iframe
                     class="wander-frame"
                     src="${escapeAttribute(site.origin)}"
@@ -298,99 +281,94 @@
                     referrerpolicy="no-referrer"
                 ></iframe>
             `;
-        } else {
-            stage.innerHTML = fallbackMarkup(site);
-        }
-
-        persist();
+    } else {
+      stage.innerHTML = fallbackMarkup(site);
     }
 
-    function go() {
-        if (sites.length === 0) {
-            render(null);
-            return;
-        }
+    persist();
+  }
 
-        if (bag.length === 0) {
-            rebuildBag();
-        }
-
-        let origin = bag.shift();
-
-        if (
-            sites.length > 1 &&
-            origin === currentOrigin
-        ) {
-            if (bag.length === 0) {
-                rebuildBag();
-            }
-
-            const alternative = bag.shift();
-
-            if (alternative) {
-                bag.push(origin);
-                origin = alternative;
-            }
-        }
-
-        render(findSite(origin));
+  function go() {
+    if (sites.length === 0) {
+      render(null);
+      return;
     }
 
-    fetch("/network/data.json", {
-        credentials: "same-origin",
-        headers: {
-            Accept: "application/json",
-        },
+    if (bag.length === 0) {
+      rebuildBag();
+    }
+
+    let origin = bag.shift();
+
+    if (sites.length > 1 && origin === currentOrigin) {
+      if (bag.length === 0) {
+        rebuildBag();
+      }
+
+      const alternative = bag.shift();
+
+      if (alternative) {
+        bag.push(origin);
+        origin = alternative;
+      }
+    }
+
+    render(findSite(origin));
+  }
+
+  fetch("/network/data.json", {
+    credentials: "same-origin",
+    headers: {
+      Accept: "application/json",
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Network data request failed: ${response.status}`);
+      }
+
+      return response.json();
     })
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error(
-                    `Network data request failed: ${response.status}`,
-                );
-            }
+    .then((data) => {
+      if (!Array.isArray(data)) {
+        throw new Error("Network data is not an array");
+      }
 
-            return response.json();
-        })
-        .then((data) => {
-            if (!Array.isArray(data)) {
-                throw new Error("Network data is not an array");
-            }
+      sites = data;
 
-            sites = data;
+      const restored = restore();
 
-            const restored = restore();
+      if (!restored) {
+        rebuildBag();
+      }
 
-            if (!restored) {
-                rebuildBag();
-            }
+      go();
+    })
+    .catch(() => {
+      currentOrigin = null;
+      addressInput.value = "";
+      openButton.disabled = true;
 
-            go();
-        })
-        .catch(() => {
-            currentOrigin = null;
-            addressInput.value = "";
-            openButton.disabled = true;
-
-            stage.innerHTML = `
+      stage.innerHTML = `
                 <div class="wander-empty">
                     <p>The network data could not be loaded right now.</p>
                     <a href="/network/">Browse The Network</a>
                 </div>
             `;
-        });
-
-    goButton.addEventListener("click", go);
-
-    openButton.addEventListener("click", openAddress);
-
-    addressInput.addEventListener("input", updateOpenState);
-
-    addressInput.addEventListener("keydown", (event) => {
-        if (event.key !== "Enter") {
-            return;
-        }
-
-        event.preventDefault();
-        openAddress();
     });
+
+  goButton.addEventListener("click", go);
+
+  openButton.addEventListener("click", openAddress);
+
+  addressInput.addEventListener("input", updateOpenState);
+
+  addressInput.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter") {
+      return;
+    }
+
+    event.preventDefault();
+    openAddress();
+  });
 })();
