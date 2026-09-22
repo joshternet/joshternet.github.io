@@ -18,8 +18,7 @@ function makeLimiter(results = [true]) {
     async limit({ key }) {
       calls.push(key);
 
-      const result =
-        results[Math.min(index, results.length - 1)];
+      const result = results[Math.min(index, results.length - 1)];
 
       index += 1;
 
@@ -81,11 +80,7 @@ function makeDb() {
         };
       }
 
-      if (
-        sql.includes(
-          "SELECT id, origin, status, submitted_at",
-        )
-      ) {
+      if (sql.includes("SELECT id, origin, status, submitted_at")) {
         return {
           bind(origin) {
             return {
@@ -187,19 +182,11 @@ async function withTurnstile(result, callback) {
 }
 
 test("disabled mode rejects nominations before other work", async () => {
-  const {
-    env,
-    db,
-    routeLimiter,
-    originLimiter,
-  } = makeEnv({
+  const { env, db, routeLimiter, originLimiter } = makeEnv({
     submissionsEnabled: false,
   });
 
-  const response = await worker.fetch(
-    nominationRequest(),
-    env,
-  );
+  const response = await worker.fetch(nominationRequest(), env);
 
   assert.equal(response.status, 503);
 
@@ -243,12 +230,7 @@ test("allowed-origin preflight returns Joshternet CORS headers", async () => {
 });
 
 test("foreign origins are rejected before nomination processing", async () => {
-  const {
-    env,
-    db,
-    routeLimiter,
-    originLimiter,
-  } = makeEnv();
+  const { env, db, routeLimiter, originLimiter } = makeEnv();
 
   const response = await worker.fetch(
     nominationRequest({
@@ -269,12 +251,7 @@ test("foreign origins are rejected before nomination processing", async () => {
 });
 
 test("owner attestation is required before rate limiting or D1", async () => {
-  const {
-    env,
-    db,
-    routeLimiter,
-    originLimiter,
-  } = makeEnv();
+  const { env, db, routeLimiter, originLimiter } = makeEnv();
 
   const response = await worker.fetch(
     nominationRequest({
@@ -294,12 +271,7 @@ test("owner attestation is required before rate limiting or D1", async () => {
 });
 
 test("invalid private-style hostnames are rejected before D1", async () => {
-  const {
-    env,
-    db,
-    routeLimiter,
-    originLimiter,
-  } = makeEnv();
+  const { env, db, routeLimiter, originLimiter } = makeEnv();
 
   const response = await worker.fetch(
     nominationRequest({
@@ -319,12 +291,7 @@ test("invalid private-style hostnames are rejected before D1", async () => {
 });
 
 test("route rate limit returns 429 before Turnstile or D1", async () => {
-  const {
-    env,
-    db,
-    routeLimiter,
-    originLimiter,
-  } = makeEnv({
+  const { env, db, routeLimiter, originLimiter } = makeEnv({
     routeResults: [false],
   });
 
@@ -335,10 +302,7 @@ test("route rate limit returns 429 before Turnstile or D1", async () => {
   };
 
   try {
-    const response = await worker.fetch(
-      nominationRequest(),
-      env,
-    );
+    const response = await worker.fetch(nominationRequest(), env);
 
     assert.equal(response.status, 429);
     assert.equal(response.headers.get("Retry-After"), "60");
@@ -347,10 +311,7 @@ test("route rate limit returns 429 before Turnstile or D1", async () => {
 
     assert.equal(body.error, "rate_limited");
 
-    assert.deepEqual(
-      routeLimiter.calls,
-      ["seed-nominations"],
-    );
+    assert.deepEqual(routeLimiter.calls, ["seed-nominations"]);
 
     assert.deepEqual(originLimiter.calls, []);
     assert.equal(db.stats.runCalls, 0);
@@ -360,12 +321,7 @@ test("route rate limit returns 429 before Turnstile or D1", async () => {
 });
 
 test("normalized-origin rate limit returns 429 before Turnstile or D1", async () => {
-  const {
-    env,
-    db,
-    routeLimiter,
-    originLimiter,
-  } = makeEnv({
+  const { env, db, routeLimiter, originLimiter } = makeEnv({
     originResults: [false],
   });
 
@@ -390,15 +346,9 @@ test("normalized-origin rate limit returns 429 before Turnstile or D1", async ()
 
     assert.equal(body.error, "origin_rate_limited");
 
-    assert.deepEqual(
-      routeLimiter.calls,
-      ["seed-nominations"],
-    );
+    assert.deepEqual(routeLimiter.calls, ["seed-nominations"]);
 
-    assert.deepEqual(
-      originLimiter.calls,
-      ["https://example.com"],
-    );
+    assert.deepEqual(originLimiter.calls, ["https://example.com"]);
 
     assert.equal(db.stats.runCalls, 0);
   } finally {
@@ -407,21 +357,14 @@ test("normalized-origin rate limit returns 429 before Turnstile or D1", async ()
 });
 
 test("failed Turnstile verification never writes to D1", async () => {
-  const {
-    env,
-    db,
-  } = makeEnv();
+  const { env, db } = makeEnv();
 
   const { value: response, calls } = await withTurnstile(
     {
       success: false,
       "error-codes": ["invalid-input-response"],
     },
-    () =>
-      worker.fetch(
-        nominationRequest(),
-        env,
-      ),
+    () => worker.fetch(nominationRequest(), env),
   );
 
   assert.equal(response.status, 400);
@@ -435,10 +378,7 @@ test("failed Turnstile verification never writes to D1", async () => {
 });
 
 test("Turnstile action mismatch never writes to D1", async () => {
-  const {
-    env,
-    db,
-  } = makeEnv();
+  const { env, db } = makeEnv();
 
   const { value: response } = await withTurnstile(
     {
@@ -446,11 +386,7 @@ test("Turnstile action mismatch never writes to D1", async () => {
       hostname: "joshternet.org",
       action: "something-else",
     },
-    () =>
-      worker.fetch(
-        nominationRequest(),
-        env,
-      ),
+    () => worker.fetch(nominationRequest(), env),
   );
 
   assert.equal(response.status, 400);
@@ -462,12 +398,7 @@ test("Turnstile action mismatch never writes to D1", async () => {
 });
 
 test("valid nomination normalizes the URL and inserts one pending origin", async () => {
-  const {
-    env,
-    db,
-    routeLimiter,
-    originLimiter,
-  } = makeEnv();
+  const { env, db, routeLimiter, originLimiter } = makeEnv();
 
   const { value: response, calls } = await withTurnstile(
     {
@@ -489,21 +420,12 @@ test("valid nomination normalizes the URL and inserts one pending origin", async
   const body = await bodyJson(response);
 
   assert.equal(body.status, "accepted");
-  assert.equal(
-    body.nomination.origin,
-    "https://example.com",
-  );
+  assert.equal(body.nomination.origin, "https://example.com");
   assert.equal(body.nomination.status, "pending");
 
-  assert.deepEqual(
-    routeLimiter.calls,
-    ["seed-nominations"],
-  );
+  assert.deepEqual(routeLimiter.calls, ["seed-nominations"]);
 
-  assert.deepEqual(
-    originLimiter.calls,
-    ["https://example.com"],
-  );
+  assert.deepEqual(originLimiter.calls, ["https://example.com"]);
 
   assert.equal(calls.length, 1);
   assert.equal(db.stats.runCalls, 1);
@@ -512,10 +434,7 @@ test("valid nomination normalizes the URL and inserts one pending origin", async
 });
 
 test("duplicate nomination returns already_nominated without creating another row", async () => {
-  const {
-    env,
-    db,
-  } = makeEnv();
+  const { env, db } = makeEnv();
 
   const turnstileResult = {
     success: true,
@@ -553,19 +472,14 @@ test("duplicate nomination returns already_nominated without creating another ro
   const secondBody = await bodyJson(responses.second);
 
   assert.equal(secondBody.status, "already_nominated");
-  assert.equal(
-    secondBody.nomination.origin,
-    "https://example.com",
-  );
+  assert.equal(secondBody.nomination.origin, "https://example.com");
 
   assert.equal(db.rows.size, 1);
   assert.equal(db.stats.runCalls, 2);
 });
 
 test("successful Turnstile verification sends the configured secret and token", async () => {
-  const {
-    env,
-  } = makeEnv({
+  const { env } = makeEnv({
     secret: "configured-secret",
   });
 
@@ -579,11 +493,7 @@ test("successful Turnstile verification sends the configured secret and token", 
       hostname: "joshternet.org",
       action: "seed-nomination",
     },
-    () =>
-      worker.fetch(
-        request,
-        env,
-      ),
+    () => worker.fetch(request, env),
   );
 
   assert.equal(response.status, 202);

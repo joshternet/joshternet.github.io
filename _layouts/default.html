@@ -7,23 +7,29 @@
       content="default-src 'self'; script-src 'self' https://cloud.umami.is{% if page.turnstile %} https://challenges.cloudflare.com{% endif %}; connect-src 'self' https://gateway.umami.is{% if page.seed_nomination %}{% if jekyll.environment == "development" %} http://127.0.0.1:8787{% else %} {{ site.seed_nominations.api_origin }}{% endif %}{% endif %}; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src {% if page.allow_frames %}https:{% elsif page.turnstile %}https://challenges.cloudflare.com{% else %}'none'{% endif %}; media-src 'none'; manifest-src 'self'; worker-src 'none'"
     >
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% if page.url == '/' %}{{ site.title | escape }}{% else %}{{ page.title | default: site.title | escape }} | {{ site.title | escape }}{% endif %}</title>
+    <title>
+      {% if page.url == '/' -%}
+        {{- site.title | escape -}}
+      {%- else -%}
+        {{- page.title | default: site.title | escape }} | {{ site.title | escape -}}
+      {%- endif %}
+    </title>
     {% seo title=false %}
     {% if page.url == '/' %}
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Project",
-      "@id": {{ '/#project' | absolute_url | jsonify }},
-      "name": {{ site.title | jsonify }},
-      "description": {{ site.description | jsonify }},
-      "url": {{ '/' | absolute_url | jsonify }},
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": {{ '/' | absolute_url | jsonify }}
-      }
-    }
-    </script>
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Project",
+          "@id": {{ '/#project' | absolute_url | jsonify }},
+          "name": {{ site.title | jsonify }},
+          "description": {{ site.description | jsonify }},
+          "url": {{ '/' | absolute_url | jsonify }},
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": {{ '/' | absolute_url | jsonify }}
+          }
+        }
+      </script>
     {% endif %}
     <link rel="apple-touch-icon" sizes="180x180" href="{{ '/apple-touch-icon.png' | relative_url }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon-32x32.png' | relative_url }}">
@@ -31,7 +37,7 @@
     <link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
     {% assign asset_version = site.github.build_revision %}
     {% unless asset_version %}
-      {% assign asset_version = site.time | date: "%s" %}
+      {% assign asset_version = site.time | date: '%s' %}
     {% endunless %}
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ asset_version }}">
     {% assign page_slug = page.url | remove_first: '/' | split: '/' | first | default: 'home' %}
@@ -44,61 +50,65 @@
     ></script>
 
     {% if page.script %}
-    <script defer src="{{ page.script | relative_url }}?v={{ asset_version }}"></script>
+      <script defer src="{{ page.script | relative_url }}?v={{ asset_version }}"></script>
     {% endif %}
 
     {% if page.turnstile %}
-    <script
-      defer
-      src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
-    ></script>
+      <script
+        defer
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+      ></script>
     {% endif %}
   </head>
   <body class="site-shell page page--{{ page_slug }}{% if page.chrome == false %} site-shell--chrome-free{% endif %}">
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
     {% if page.chrome != false %}
-    <header class="site-header">
-      <div class="site-header__inner">
-        <a class="site-identity h-card p-name p-org u-url u-uid" href="{{ '/' | relative_url }}">Joshternet</a>
+      <header class="site-header">
+        <div class="site-header__inner">
+          <a class="site-identity h-card p-name p-org u-url u-uid" href="{{ '/' | relative_url }}">Joshternet</a>
 
-        <details class="site-nav-menu">
-          <summary>Menu</summary>
-          <nav class="site-nav site-nav--compact" aria-label="Primary">
+          <details class="site-nav-menu">
+            <summary>Menu</summary>
+            <nav class="site-nav site-nav--compact" aria-label="Primary">
+              {% include site-nav-links.html %}
+            </nav>
+          </details>
+
+          <nav class="site-nav site-nav--tablet" aria-label="Primary">
             {% include site-nav-links.html %}
           </nav>
-        </details>
 
-        <nav class="site-nav site-nav--tablet" aria-label="Primary">
-          {% include site-nav-links.html %}
-        </nav>
-
-        <nav class="site-nav site-nav--desktop" aria-label="Primary">
-          {% include site-nav-links.html %}
-        </nav>
-      </div>
-    </header>
+          <nav class="site-nav site-nav--desktop" aria-label="Primary">
+            {% include site-nav-links.html %}
+          </nav>
+        </div>
+      </header>
     {% endif %}
 
-    <main class="site-main{% if page.chrome == false %} site-main--chrome-free{% endif %}" id="main-content" tabindex="-1">
+    <main
+      class="site-main{% if page.chrome == false %} site-main--chrome-free{% endif %}"
+      id="main-content"
+      tabindex="-1"
+    >
       <div class="{% if page.full_bleed %}full-bleed{% else %}prose{% endif %}">
         {{ content }}
       </div>
     </main>
 
     {% if page.chrome != false %}
-    <footer class="site-footer">
-      <div class="site-footer__inner">
-        <span>Joshternet</span>
+      <footer class="site-footer">
+        <div class="site-footer__inner">
+          <span>Joshternet</span>
 
-        <nav class="site-footer__nav" aria-label="Footer">
-          <a href="{{ '/privacy/' | relative_url }}">Privacy</a>
-          <a href="{{ '/security/' | relative_url }}">Security</a>
-          <a href="mailto:hello@joshternet.org">Contact</a>
-          <a href="https://github.com/joshternet">GitHub</a>
-        </nav>
-      </div>
-    </footer>
+          <nav class="site-footer__nav" aria-label="Footer">
+            <a href="{{ '/privacy/' | relative_url }}">Privacy</a>
+            <a href="{{ '/security/' | relative_url }}">Security</a>
+            <a href="mailto:hello@joshternet.org">Contact</a>
+            <a href="https://github.com/joshternet">GitHub</a>
+          </nav>
+        </div>
+      </footer>
     {% endif %}
   </body>
 </html>
