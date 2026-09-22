@@ -1,0 +1,51 @@
+name: Submit IndexNow URLs
+
+on:
+  workflow_run:
+    workflows:
+      - pages build and deployment
+    types:
+      - completed
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: indexnow-production
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    name: Submit production URLs to IndexNow
+
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out deployed revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Submit URLs to IndexNow
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          CURRENT_PAGES_RUN_ID: ${{ github.event.workflow_run.id || '' }}
+          CURRENT_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+          FORCE_FULL: ${{ github.event_name == 'workflow_dispatch' }}
+        run: node scripts/indexnow.mjs
