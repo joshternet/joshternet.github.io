@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 
-import { projectRegistry } from "./lib.mjs";
+import { partitionPublicParticipants, projectRegistry } from "./lib.mjs";
 
 import { registryNeedsSync } from "./state.mjs";
 
@@ -66,9 +66,28 @@ async function screenshotExists(entry) {
   }
 }
 
+function reportRejectedParticipants(rejected) {
+  for (const { participant, error } of rejected) {
+    const origin =
+      participant && typeof participant.origin === "string"
+        ? participant.origin
+        : "<invalid origin>";
+
+    process.stderr.write(
+      `Network participant rejected before publication: ${origin}: ` +
+        `${error.message}\n`,
+    );
+  }
+}
+
 const registry = await loadRegistry(registrySource);
 
-const participants = projectRegistry(registry);
+const projected = projectRegistry(registry);
+
+const { accepted: participants, rejected } =
+  await partitionPublicParticipants(projected);
+
+reportRejectedParticipants(rejected);
 
 const existing = await readJSONIfExists(DEFAULT_DATA_PATH, []);
 

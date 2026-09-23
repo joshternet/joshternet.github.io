@@ -12,7 +12,7 @@ permalink: /joshbot/
 
 # JoshBot
 
-JoshBot is the discovery, verification, and public registry crawler operated for the [Joshternet][joshternet].
+JoshBot is the discovery, verification, and public registry crawler operated for the Joshternet.
 
 If you found this page after seeing JoshBot in a server log, you are in the right place. The name is silly. The HTTP requests are real.
 
@@ -61,7 +61,7 @@ A curated seed may be crawled for discovery when its robots policy permits it, e
 
 Links found on a page are not automatically trusted. External HTTP or HTTPS links contribute candidate origins that must pass the same declaration verification before they can appear in the public registry.
 
-The [Joshternet specifications][specifications] define participation and Josh identity. They do not require anyone to permit crawling.
+The [canonical Joshternet specifications][specifications] define participation and Josh identity. They do not require anyone to permit crawling.
 
 ## How JoshBot crawls
 
@@ -147,14 +147,12 @@ If the report would disclose a security vulnerability, use [GitHub Private Vulne
 ## More information
 
 - [JoshBot source and documentation][source]
-- [Joshternet specifications][specifications]
+- [Canonical Joshternet specification repository][specifications]
 - [Joshternet implementation guide][implementation]
-- [Joshternet project overview][joshternet]
 
-[joshternet]: https://joshternet.org/
 [source]: https://github.com/joshternet/joshbot
 [specifications]: https://github.com/joshternet/spec
-[implementation]: https://joshternet.org/implement/
+[implementation]: /implement/
 [crawler-report]: https://github.com/joshternet/joshbot/issues/new?template=crawler_report.yml
 [bug-report]: https://github.com/joshternet/joshbot/issues/new?template=bug_report.yml
 [security-report]: https://github.com/joshternet/joshbot/security/advisories/new

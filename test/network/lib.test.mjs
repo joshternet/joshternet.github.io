@@ -4,11 +4,13 @@ import test from "node:test";
 import {
   assertPublicURL,
   canFrame,
+  canonicalOrigin,
   chooseDescription,
   chooseTitle,
   framePolicy,
   identityFromDeclaration,
   isForbiddenAddress,
+  partitionPublicParticipants,
   projectRegistry,
   screenshotPath,
   stableSiteID,
@@ -107,6 +109,35 @@ test("rejects duplicate registry origins", () => {
       ],
     });
   });
+});
+
+test("canonical origins allow only plain HTTP or HTTPS origins", () => {
+  assert.equal(canonicalOrigin("https://example.com"), "https://example.com");
+
+  assert.equal(canonicalOrigin("http://example.com"), "http://example.com");
+
+  for (const origin of [
+    "",
+    " https://example.com",
+    "https://example.com ",
+    "https://example.com/",
+    "https://example.com/path",
+    "https://example.com?query=yes",
+    "https://example.com#fragment",
+    "https://user:password@example.com",
+    "ftp://example.com",
+    "javascript:alert(1)",
+    "data:text/plain,hello",
+    "file:///tmp/example",
+  ]) {
+    assert.throws(
+      () => {
+        canonicalOrigin(origin);
+      },
+      undefined,
+      origin,
+    );
+  }
 });
 
 test("stable IDs and screenshot paths are deterministic", () => {
@@ -250,30 +281,107 @@ test("reports allowed framing", () => {
   );
 });
 
-test("blocks common private and reserved IPv4 ranges", () => {
+test("blocks private, local, shared, reserved, and non-public IPv4", () => {
   for (const address of [
-    "127.0.0.1",
+    "0.0.0.1",
     "10.0.0.1",
-    "172.16.0.1",
-    "192.168.1.1",
-    "169.254.1.1",
     "100.64.0.1",
+    "127.0.0.1",
+    "169.254.1.1",
+    "172.16.0.1",
+    "192.0.0.1",
+    "192.0.2.1",
+    "192.88.99.1",
+    "192.168.1.1",
+    "198.18.0.1",
+    "198.51.100.1",
+    "203.0.113.1",
     "224.0.0.1",
+    "240.0.0.1",
+    "255.255.255.255",
   ]) {
     assert.equal(isForbiddenAddress(address), true, address);
   }
 });
 
 test("allows ordinary public IPv4 addresses", () => {
-  assert.equal(isForbiddenAddress("8.8.8.8"), false);
-
-  assert.equal(isForbiddenAddress("1.1.1.1"), false);
+  for (const address of ["1.1.1.1", "8.8.8.8", "93.184.216.34"]) {
+    assert.equal(isForbiddenAddress(address), false, address);
+  }
 });
 
-test("blocks loopback, unique-local, link-local, and multicast IPv6", () => {
-  for (const address of ["::1", "fc00::1", "fd00::1", "fe80::1", "ff02::1"]) {
+test("blocks non-global and special-purpose IPv6 addresses", () => {
+  for (const address of [
+    "::",
+    "::1",
+    "::ffff:127.0.0.1",
+    "fc00::1",
+    "fd00::1",
+    "fe80::1",
+    "ff02::1",
+    "2001::1",
+    "2001:2::1",
+    "2001:10::1",
+    "2001:100::1",
+    "2001:db8::1",
+    "2002::1",
+    "3fff::1",
+  ]) {
     assert.equal(isForbiddenAddress(address), true, address);
   }
+});
+
+test("allows ordinary global IPv6 addresses", () => {
+  for (const address of ["2606:4700:4700::1111", "2001:4860:4860::8888"]) {
+    assert.equal(isForbiddenAddress(address), false, address);
+  }
+});
+
+test("rejects invalid IP address strings", () => {
+  for (const address of ["", "localhost", "example.com", "999.999.999.999"]) {
+    assert.equal(isForbiddenAddress(address), true, address);
+  }
+});
+
+test("assertPublicURL rejects localhost without resolving it", async () => {
+  let lookupCalled = false;
+
+  await assert.rejects(
+    assertPublicURL("https://localhost/", {
+      lookup: async () => {
+        lookupCalled = true;
+
+        return [
+          {
+            address: "127.0.0.1",
+            family: 4,
+          },
+        ];
+      },
+    }),
+  );
+
+  assert.equal(lookupCalled, false);
+});
+
+test("assertPublicURL rejects credential-bearing URLs", async () => {
+  await assert.rejects(
+    assertPublicURL("https://user:password@example.test/", {
+      lookup: async () => {
+        throw new Error("lookup should not run");
+      },
+    }),
+  );
+});
+
+test("assertPublicURL rejects unsupported URL schemes", async () => {
+  await assert.rejects(
+    assertPublicURL("ftp://example.test/", {
+      lookup: async () => {
+        throw new Error("lookup should not run");
+      },
+    }),
+  );
 });
 
 test("assertPublicURL rejects a host resolving privately", async () => {
@@ -284,6 +392,40 @@ test("assertPublicURL rejects a host resolving privately", async () => {
           {
             address: "127.0.0.1",
             family: 4,
+          },
+        ];
+      },
+    }),
+  );
+});
+
+test("assertPublicURL rejects mixed public and prohibited DNS answers", async () => {
+  await assert.rejects(
+    assertPublicURL("https://example.test/", {
+      lookup: async () => {
+        return [
+          {
+            address: "93.184.216.34",
+            family: 4,
+          },
+          {
+            address: "192.168.1.10",
+            family: 4,
+          },
+        ];
+      },
+    }),
+  );
+});
+
+test("assertPublicURL rejects a host resolving to prohibited IPv6", async () => {
+  await assert.rejects(
+    assertPublicURL("https://example.test/", {
+      lookup: async () => {
+        return [
+          {
+            address: "2001:db8::1",
+            family: 6,
           },
         ];
       },
@@ -304,4 +446,125 @@ test("assertPublicURL accepts a host resolving publicly", async () => {
   });
 
   assert.equal(result.href, "https://example.test/");
+});
+
+test("assertPublicURL accepts a host resolving to global IPv6", async () => {
+  const result = await assertPublicURL("https://example.test/", {
+    lookup: async () => {
+      return [
+        {
+          address: "2606:4700:4700::1111",
+          family: 6,
+        },
+      ];
+    },
+  });
+
+  assert.equal(result.href, "https://example.test/");
+});
+
+test("partitions public participants from unsafe participants", async () => {
+  const publicParticipant = {
+    origin: "https://public.example",
+    domain: "public.example",
+    identity: "affirmed",
+  };
+
+  const privateParticipant = {
+    origin: "https://private.example",
+    domain: "private.example",
+    identity: "undeclared",
+  };
+
+  const result = await partitionPublicParticipants(
+    [publicParticipant, privateParticipant],
+    {
+      lookup: async (hostname) => {
+        if (hostname === "public.example") {
+          return [
+            {
+              address: "93.184.216.34",
+              family: 4,
+            },
+          ];
+        }
+
+        if (hostname === "private.example") {
+          return [
+            {
+              address: "192.168.1.10",
+              family: 4,
+            },
+          ];
+        }
+
+        throw new Error(`unexpected hostname: ${hostname}`);
+      },
+    },
+  );
+
+  assert.deepEqual(result.accepted, [publicParticipant]);
+
+  assert.equal(result.rejected.length, 1);
+  assert.equal(result.rejected[0].participant, privateParticipant);
+  assert.ok(result.rejected[0].error instanceof Error);
+});
+
+test("partition rejects malformed origins before publication", async () => {
+  const malformed = {
+    origin: "https://example.com/path",
+    domain: "example.com",
+    identity: "undeclared",
+  };
+
+  let lookupCalled = false;
+
+  const result = await partitionPublicParticipants([malformed], {
+    lookup: async () => {
+      lookupCalled = true;
+
+      return [
+        {
+          address: "93.184.216.34",
+          family: 4,
+        },
+      ];
+    },
+  });
+
+  assert.deepEqual(result.accepted, []);
+  assert.equal(result.rejected.length, 1);
+  assert.equal(result.rejected[0].participant, malformed);
+  assert.equal(lookupCalled, false);
+});
+
+test("partition fails closed when any DNS answer is prohibited", async () => {
+  const participant = {
+    origin: "https://mixed.example",
+    domain: "mixed.example",
+    identity: "declined",
+  };
+
+  const result = await partitionPublicParticipants([participant], {
+    lookup: async () => {
+      return [
+        {
+          address: "93.184.216.34",
+          family: 4,
+        },
+        {
+          address: "127.0.0.1",
+          family: 4,
+        },
+      ];
+    },
+  });
+
+  assert.deepEqual(result.accepted, []);
+  assert.equal(result.rejected.length, 1);
+  assert.equal(result.rejected[0].participant, participant);
+});
+
+test("partition requires an array of participants", async () => {
+  await assert.rejects(partitionPublicParticipants(null));
 });

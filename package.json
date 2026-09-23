@@ -4,6 +4,8 @@
   "type": "module",
   "scripts": {
     "test": "node --test test/network/*.test.mjs",
+    "test:browser": "node --test test/browser/*.test.mjs",
+    "test:site": "node --test test/site/*.test.mjs",
     "network:sync": "node scripts/network/sync.mjs",
     "format": "prettier . --write --ignore-unknown",
     "format:check": "prettier . --check --ignore-unknown"

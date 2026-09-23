@@ -10,6 +10,7 @@ import {
   chooseDescription,
   framePolicy,
   chooseTitle,
+  partitionPublicParticipants,
   projectRegistry,
   screenshotPath,
   stableSiteID,
@@ -104,6 +105,20 @@ function headerObject(headers) {
   }
 
   return result;
+}
+
+function reportRejectedParticipants(rejected) {
+  for (const { participant, error } of rejected) {
+    const origin =
+      participant && typeof participant.origin === "string"
+        ? participant.origin
+        : "<invalid origin>";
+
+    process.stderr.write(
+      `Network participant rejected before publication: ${origin}: ` +
+        `${error.message}\n`,
+    );
+  }
 }
 
 async function captureParticipant(browser, participant) {
@@ -272,15 +287,21 @@ async function writeJSONAtomic(filePath, value) {
 }
 
 const registry = await loadRegistry(registrySource);
-const participants = projectRegistry(registry);
+const projected = projectRegistry(registry);
+
+const { accepted: participants, rejected } =
+  await partitionPublicParticipants(projected);
+
+reportRejectedParticipants(rejected);
 
 const existing = await readJSONIfExists(DEFAULT_DATA_PATH, []);
 
 const previous = existingByOrigin(existing);
 
 process.stdout.write(
-  `Registry contains ${participants.length} participant` +
-    `${participants.length === 1 ? "" : "s"}.\n`,
+  `Registry contains ${projected.length} participant` +
+    `${projected.length === 1 ? "" : "s"}; ` +
+    `${participants.length} passed the publication boundary.\n`,
 );
 
 const browser = await chromium.launch({

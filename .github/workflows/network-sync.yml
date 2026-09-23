@@ -23,6 +23,7 @@ on:
       - ".github/workflows/network-sync.yml"
       - "scripts/network/**"
       - "test/network/**"
+      - "test/browser/**"
       - "package.json"
       - "package-lock.json"
       - "_config.yml"
@@ -94,6 +95,10 @@ jobs:
       - name: Install Playwright Chromium
         if: steps.preflight.outputs.needs_sync == 'true'
         run: npx playwright install --with-deps chromium
+
+      - name: Run browser security tests
+        if: steps.preflight.outputs.needs_sync == 'true'
+        run: npm run test:browser
 
       - name: Update generated network data
         if: steps.preflight.outputs.needs_sync == 'true'

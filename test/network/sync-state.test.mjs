@@ -4,7 +4,10 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 
-import { screenshotPath } from "../../scripts/network/lib.mjs";
+import {
+  partitionPublicParticipants,
+  screenshotPath,
+} from "../../scripts/network/lib.mjs";
 
 import {
   fallbackEntry,
@@ -60,6 +63,91 @@ test("new participant survives a first capture failure", () => {
     frame_reason: "unknown",
     captured_at: "",
   });
+});
+
+test("public participant remains eligible for fallback after boundary validation", async () => {
+  const participant = {
+    origin: "https://example.com",
+    domain: "example.com",
+    identity: "declined",
+  };
+
+  const previous = {
+    origin: "https://example.com",
+    domain: "example.com",
+    identity: "affirmed",
+    title: "Existing title",
+    description: "Existing description",
+    screenshot: screenshotPath("https://example.com"),
+    embeddable: true,
+    frame_reason: "allowed",
+    captured_at: "2026-09-14T12:00:00Z",
+  };
+
+  const { accepted, rejected } = await partitionPublicParticipants(
+    [participant],
+    {
+      lookup: async () => {
+        return [
+          {
+            address: "93.184.216.34",
+            family: 4,
+          },
+        ];
+      },
+    },
+  );
+
+  assert.deepEqual(accepted, [participant]);
+  assert.deepEqual(rejected, []);
+
+  const result = fallbackEntry(accepted[0], previous);
+
+  assert.equal(result.origin, participant.origin);
+  assert.equal(result.identity, "declined");
+  assert.equal(result.title, previous.title);
+  assert.equal(result.screenshot, previous.screenshot);
+  assert.equal(result.captured_at, previous.captured_at);
+});
+
+test("unsafe participant is removed from desired publication state", async () => {
+  const participant = {
+    origin: "https://example.com",
+    domain: "example.com",
+    identity: "affirmed",
+  };
+
+  const existing = [
+    {
+      ...participant,
+      title: "Existing title",
+      description: "Existing description",
+      screenshot: screenshotPath(participant.origin),
+      embeddable: true,
+      frame_reason: "allowed",
+      captured_at: new Date().toISOString(),
+    },
+  ];
+
+  const { accepted, rejected } = await partitionPublicParticipants(
+    [participant],
+    {
+      lookup: async () => {
+        return [
+          {
+            address: "127.0.0.1",
+            family: 4,
+          },
+        ];
+      },
+    },
+  );
+
+  assert.deepEqual(accepted, []);
+  assert.equal(rejected.length, 1);
+  assert.equal(rejected[0].participant, participant);
+
+  assert.equal(registryNeedsSync(accepted, existing), true);
 });
 
 test("removed participant screenshot is deleted as an orphan", async () => {

@@ -13,6 +13,13 @@ allow_frames: true
 
 <h1 class="visually-hidden">Wander the Joshternet</h1>
 
+<p
+  class="visually-hidden"
+  data-wander-status
+  role="status"
+  aria-live="polite"
+></p>
+
 <div data-wander-console>
   <header class="wander-bar">
     <button
