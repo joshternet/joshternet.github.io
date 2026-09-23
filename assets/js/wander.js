@@ -9,6 +9,7 @@
   const goButton = consoleElement.querySelector("[data-wander-go]");
   const addressInput = consoleElement.querySelector("[data-wander-address]");
   const openButton = consoleElement.querySelector("[data-wander-open]");
+  const statusElement = document.querySelector("[data-wander-status]");
 
   if (!stage || !goButton || !addressInput || !openButton) {
     return;
@@ -16,9 +17,162 @@
 
   const storageKey = "joshternet-wander-v2";
 
+  const identities = new Set(["affirmed", "declined", "undeclared"]);
+
+  const frameReasons = new Set([
+    "allowed",
+    "blocked-by-site",
+    "http",
+    "unknown",
+  ]);
+
   let sites = [];
   let bag = [];
   let currentOrigin = null;
+
+  function announce(message) {
+    if (statusElement) {
+      statusElement.textContent = message;
+    }
+  }
+
+  function canonicalOrigin(value) {
+    if (typeof value !== "string" || value === "" || value.trim() !== value) {
+      return null;
+    }
+
+    try {
+      const url = new URL(value);
+
+      if (url.protocol !== "https:" && url.protocol !== "http:") {
+        return null;
+      }
+
+      if (url.username || url.password) {
+        return null;
+      }
+
+      if (url.pathname !== "/" || url.search || url.hash) {
+        return null;
+      }
+
+      if (url.origin !== value) {
+        return null;
+      }
+
+      return url;
+    } catch {
+      return null;
+    }
+  }
+
+  function textValue(value, maximumLength) {
+    if (typeof value !== "string") {
+      return "";
+    }
+
+    return value.slice(0, maximumLength);
+  }
+
+  function screenshotPath(value) {
+    if (value === "") {
+      return "";
+    }
+
+    if (typeof value !== "string" || !value.startsWith("/assets/")) {
+      return "";
+    }
+
+    if (value.includes("\\") || value.includes("%") || value.includes("//")) {
+      return "";
+    }
+
+    try {
+      const url = new URL(value, window.location.origin);
+
+      if (
+        url.origin !== window.location.origin ||
+        url.search ||
+        url.hash ||
+        url.pathname !== value ||
+        !url.pathname.startsWith("/assets/")
+      ) {
+        return "";
+      }
+
+      return url.pathname;
+    } catch {
+      return "";
+    }
+  }
+
+  function validateSite(value) {
+    if (!value || typeof value !== "object" || Array.isArray(value)) {
+      return null;
+    }
+
+    const origin = canonicalOrigin(value.origin);
+
+    if (!origin) {
+      return null;
+    }
+
+    if (typeof value.domain !== "string" || value.domain !== origin.host) {
+      return null;
+    }
+
+    if (!identities.has(value.identity)) {
+      return null;
+    }
+
+    if (typeof value.embeddable !== "boolean") {
+      return null;
+    }
+
+    if (!frameReasons.has(value.frame_reason)) {
+      return null;
+    }
+
+    if (
+      value.embeddable &&
+      (origin.protocol !== "https:" || value.frame_reason !== "allowed")
+    ) {
+      return null;
+    }
+
+    return {
+      origin: origin.origin,
+      domain: origin.host,
+      identity: value.identity,
+      title: textValue(value.title, 256),
+      description: textValue(value.description, 2_000),
+      screenshot: screenshotPath(value.screenshot),
+      embeddable: value.embeddable,
+      frame_reason: value.frame_reason,
+    };
+  }
+
+  function validateSites(data) {
+    if (!Array.isArray(data)) {
+      throw new Error("Network data is not an array");
+    }
+
+    const accepted = [];
+    const seen = new Set();
+
+    for (const value of data) {
+      const site = validateSite(value);
+
+      if (!site || seen.has(site.origin)) {
+        continue;
+      }
+
+      seen.add(site.origin);
+      accepted.push(site);
+    }
+
+    return accepted;
+  }
 
   function shuffle(values) {
     const copy = values.slice();
@@ -116,15 +270,7 @@
   }
 
   function identityClass(site) {
-    if (
-      site.identity === "affirmed" ||
-      site.identity === "declined" ||
-      site.identity === "undeclared"
-    ) {
-      return site.identity;
-    }
-
-    return "undeclared";
+    return site.identity;
   }
 
   function networkURL(site) {
@@ -218,17 +364,13 @@
   }
 
   function parseAddress() {
-    try {
-      const url = new URL(addressInput.value.trim());
+    const site = findSite(addressInput.value.trim());
 
-      if (url.protocol !== "https:" && url.protocol !== "http:") {
-        return null;
-      }
-
-      return url;
-    } catch {
+    if (!site) {
       return null;
     }
+
+    return new URL(site.origin);
   }
 
   function updateOpenState() {
@@ -259,6 +401,7 @@
                 </div>
             `;
 
+      announce("There are no participating sites in Wander yet.");
       persist();
       return;
     }
@@ -269,6 +412,7 @@
 
     if (
       site.embeddable &&
+      site.frame_reason === "allowed" &&
       site.origin.startsWith("https://") &&
       site.origin !== window.location.origin
     ) {
@@ -277,7 +421,7 @@
                     class="wander-frame"
                     src="${escapeAttribute(site.origin)}"
                     title="${escapeAttribute(site.title || site.domain)}"
-                    sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+                    sandbox="allow-scripts"
                     referrerpolicy="no-referrer"
                 ></iframe>
             `;
@@ -285,6 +429,7 @@
       stage.innerHTML = fallbackMarkup(site);
     }
 
+    announce(`Now viewing ${site.title || site.domain}.`);
     persist();
   }
 
@@ -330,11 +475,7 @@
       return response.json();
     })
     .then((data) => {
-      if (!Array.isArray(data)) {
-        throw new Error("Network data is not an array");
-      }
-
-      sites = data;
+      sites = validateSites(data);
 
       const restored = restore();
 
@@ -355,6 +496,8 @@
                     <a href="/network/">Browse The Network</a>
                 </div>
             `;
+
+      announce("The network data could not be loaded right now.");
     });
 
   goButton.addEventListener("click", go);

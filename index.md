@@ -61,7 +61,7 @@ The Joshternet is currently **PRE-JOSH**. Its three current RFCs are Drafts, and
 Working implementations now exist alongside the Draft specifications:
 
 - [joshuamorris.info][implementation-josh] participates according to RFC-JOSH-0002 with Affirmed Josh Identity;
-- [joshternet.org][implementation-project] participates according to RFC-JOSH-0002 with Undeclared Josh Identity;
+- joshternet.org participates according to RFC-JOSH-0002 with Undeclared Josh Identity, demonstrated by its [live `/.well-known/josh` declaration][implementation-project];
 - [JoshBot][joshbot] [v1.0.0][joshbot-release] is the first supported release of the Joshternet discovery, verification, and public registry crawler.
 
 These implementations let the project test the separation between participation, identity, discovery, and registry infrastructure in practice. Neither participating origin is an authority or privileged node, and JoshBot does not define participation or Josh identity.
@@ -118,5 +118,5 @@ The [Joshternet specification repository][spec] is the canonical project source.
 [implementation]: /implement/
 [joshbot]: /joshbot/
 [implementation-josh]: https://joshuamorris.info/.well-known/josh
-[implementation-project]: https://joshternet.org/.well-known/josh
+[implementation-project]: /.well-known/josh
 [joshbot-release]: https://github.com/joshternet/joshbot/releases/tag/v1.0.0

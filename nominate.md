@@ -66,7 +66,6 @@ JoshBot still follows its normal rules. It respects `robots.txt`, applies its cr
   <div
     class="seed-nomination-turnstile"
     data-seed-nomination-turnstile
-    aria-label="Spam protection"
   ></div>
 
   <button

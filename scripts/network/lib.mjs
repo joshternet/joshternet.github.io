@@ -4,6 +4,42 @@ import net from "node:net";
 
 export const REGISTRY_FORMAT_VERSION = 1;
 
+const forbiddenIPv4 = new net.BlockList();
+
+for (const [address, prefix] of [
+  ["0.0.0.0", 8],
+  ["10.0.0.0", 8],
+  ["100.64.0.0", 10],
+  ["127.0.0.0", 8],
+  ["169.254.0.0", 16],
+  ["172.16.0.0", 12],
+  ["192.0.0.0", 24],
+  ["192.0.2.0", 24],
+  ["192.88.99.0", 24],
+  ["192.168.0.0", 16],
+  ["198.18.0.0", 15],
+  ["198.51.100.0", 24],
+  ["203.0.113.0", 24],
+  ["224.0.0.0", 4],
+  ["240.0.0.0", 4],
+]) {
+  forbiddenIPv4.addSubnet(address, prefix, "ipv4");
+}
+
+const globalIPv6 = new net.BlockList();
+globalIPv6.addSubnet("2000::", 3, "ipv6");
+
+const forbiddenIPv6 = new net.BlockList();
+
+for (const [address, prefix] of [
+  ["2001::", 23],
+  ["2001:db8::", 32],
+  ["2002::", 16],
+  ["3fff::", 20],
+]) {
+  forbiddenIPv6.addSubnet(address, prefix, "ipv6");
+}
+
 export function normalizeText(value) {
   if (typeof value !== "string") {
     return "";
@@ -245,79 +281,22 @@ export function canFrame(options = {}) {
   return framePolicy(options).embeddable;
 }
 
-function ipv4Parts(address) {
-  const parts = address.split(".").map(Number);
-
-  if (
-    parts.length !== 4 ||
-    parts.some((part) => {
-      return !Number.isInteger(part) || part < 0 || part > 255;
-    })
-  ) {
-    return null;
-  }
-
-  return parts;
-}
-
 export function isForbiddenAddress(address) {
   const version = net.isIP(address);
 
-  if (version === 0) {
-    return true;
+  if (version === 4) {
+    return forbiddenIPv4.check(address, "ipv4");
   }
 
-  if (version === 4) {
-    const parts = ipv4Parts(address);
-
-    if (!parts) {
+  if (version === 6) {
+    if (!globalIPv6.check(address, "ipv6")) {
       return true;
     }
 
-    const [a, b, c] = parts;
-
-    return (
-      a === 0 ||
-      a === 10 ||
-      a === 127 ||
-      (a === 100 && b >= 64 && b <= 127) ||
-      (a === 169 && b === 254) ||
-      (a === 172 && b >= 16 && b <= 31) ||
-      (a === 192 && b === 0 && c === 0) ||
-      (a === 192 && b === 0 && c === 2) ||
-      (a === 192 && b === 168) ||
-      (a === 198 && (b === 18 || b === 19)) ||
-      (a === 198 && b === 51 && c === 100) ||
-      (a === 203 && b === 0 && c === 113) ||
-      a >= 224
-    );
+    return forbiddenIPv6.check(address, "ipv6");
   }
 
-  const normalized = address.toLowerCase();
-
-  if (
-    normalized === "::" ||
-    normalized === "::1" ||
-    normalized.startsWith("fc") ||
-    normalized.startsWith("fd") ||
-    normalized.startsWith("fe8") ||
-    normalized.startsWith("fe9") ||
-    normalized.startsWith("fea") ||
-    normalized.startsWith("feb") ||
-    normalized.startsWith("ff")
-  ) {
-    return true;
-  }
-
-  if (normalized.startsWith("::ffff:")) {
-    const embedded = normalized.slice("::ffff:".length);
-
-    if (net.isIP(embedded) === 4) {
-      return isForbiddenAddress(embedded);
-    }
-  }
-
-  return false;
+  return true;
 }
 
 export async function assertPublicURL(
@@ -362,4 +341,39 @@ export async function assertPublicURL(
   }
 
   return url;
+}
+
+export async function partitionPublicParticipants(
+  participants,
+  { lookup = dns.lookup, cache = new Map() } = {},
+) {
+  if (!Array.isArray(participants)) {
+    throw new Error("participants must be an array");
+  }
+
+  const accepted = [];
+  const rejected = [];
+
+  for (const participant of participants) {
+    try {
+      const origin = canonicalOrigin(participant?.origin);
+
+      await assertPublicURL(origin, {
+        lookup,
+        cache,
+      });
+
+      accepted.push(participant);
+    } catch (error) {
+      rejected.push({
+        participant,
+        error: error instanceof Error ? error : new Error(String(error)),
+      });
+    }
+  }
+
+  return {
+    accepted,
+    rejected,
+  };
 }

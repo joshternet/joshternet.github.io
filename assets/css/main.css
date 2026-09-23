@@ -704,6 +704,12 @@ video {
 
   pre {
     padding: var(--space-4);
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  pre code {
+    overflow-wrap: anywhere;
   }
 }
 

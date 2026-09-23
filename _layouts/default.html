@@ -2,9 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    {% assign frame_sites = site.data.network %}
+    {% if jekyll.environment == 'development' %}
+      {% assign frame_sites = frame_sites | concat: site.data.network_dev %}
+    {% endif %}
+    {% capture wander_frame_sources %}
+      {% for network_site in frame_sites %}
+        {% assign origin_prefix = network_site.origin | slice: 0, 8 %}
+        {% if network_site.embeddable
+          and network_site.frame_reason == "allowed"
+          and origin_prefix == "https://"
+          and network_site.origin != site.url
+        %}
+          {{ network_site.origin }}
+        {% endif %}
+      {% endfor %}
+    {% endcapture %}
+    {% assign wander_frame_sources = wander_frame_sources | strip %}
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' https://cloud.umami.is https://static.cloudflareinsights.com{% if page.turnstile %} https://challenges.cloudflare.com{% endif %}; connect-src 'self' https://gateway.umami.is https://cloudflareinsights.com{% if page.turnstile %} https://challenges.cloudflare.com{% endif %}{% if page.seed_nomination %}{% if jekyll.environment == "development" %} http://127.0.0.1:8787{% else %} {{ site.seed_nominations.api_origin }}{% endif %}{% endif %}; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src {% if page.allow_frames %}https:{% elsif page.turnstile %}https://challenges.cloudflare.com{% else %}'none'{% endif %}; media-src 'none'; manifest-src 'self'; worker-src 'none'"
+      content="default-src 'self'; script-src 'self' https://cloud.umami.is{% if page.turnstile %} https://challenges.cloudflare.com{% endif %}; connect-src 'self' https://gateway.umami.is{% if page.turnstile %} https://challenges.cloudflare.com{% endif %}{% if page.seed_nomination %}{% if jekyll.environment == "development" %} http://127.0.0.1:8787{% else %} {{ site.seed_nominations.api_origin }}{% endif %}{% endif %}; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src {% if page.allow_frames %}{% if wander_frame_sources != "" %}{{ wander_frame_sources }}{% else %}'none'{% endif %}{% elsif page.turnstile %}https://challenges.cloudflare.com{% else %}'none'{% endif %}; media-src 'none'; manifest-src 'self'; worker-src 'none'"
     >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
