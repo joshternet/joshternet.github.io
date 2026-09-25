@@ -16,6 +16,8 @@ import {
   stableSiteID,
 } from "./lib.mjs";
 
+import { extractPageMetadata } from "./metadata.mjs";
+
 import {
   captureIsFresh,
   fallbackEntry,
@@ -185,20 +187,7 @@ async function captureParticipant(browser, participant) {
 
     await page.waitForTimeout(SETTLE_TIME_MS);
 
-    const metadata = await page.evaluate(() => {
-      function meta(selector) {
-        return document.querySelector(selector)?.getAttribute("content") || "";
-      }
-
-      return {
-        ogSiteName: meta('meta[property="og:site_name"]'),
-        applicationName: meta('meta[name="application-name"]'),
-        ogTitle: meta('meta[property="og:title"]'),
-        documentTitle: document.title || "",
-        description: meta('meta[name="description"]'),
-        ogDescription: meta('meta[property="og:description"]'),
-      };
-    });
+    const metadata = await page.evaluate(extractPageMetadata);
 
     const png = await page.screenshot({
       type: "png",

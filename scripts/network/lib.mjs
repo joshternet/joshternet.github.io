@@ -112,22 +112,84 @@ export function screenshotPath(origin) {
   return `/assets/network/sites/${stableSiteID(origin)}.webp`;
 }
 
+function comparableText(value) {
+  return normalizeText(value)
+    .normalize("NFKD")
+    .toLocaleLowerCase("en-US")
+    .replace(/\p{M}/gu, "")
+    .replace(/[^\p{L}\p{N}]+/gu, "");
+}
+
+function titleBrandFromDomain(title, domain) {
+  const normalizedTitle = normalizeText(title);
+  const normalizedDomain = normalizeText(domain).toLocaleLowerCase("en-US");
+
+  if (!normalizedTitle || !normalizedDomain) {
+    return "";
+  }
+
+  const hostname = normalizedDomain.replace(/\.$/, "");
+  const labels = hostname.split(".").filter(Boolean);
+
+  if (labels.length < 2) {
+    return "";
+  }
+
+  const domainLabel = labels[0] === "www" ? labels[1] : labels[0];
+  const comparableDomain = comparableText(domainLabel);
+
+  if (!comparableDomain) {
+    return "";
+  }
+
+  const titleParts = normalizedTitle
+    .split(/\s+(?:[-|·–—])\s+/u)
+    .map((part) => normalizeText(part))
+    .filter(Boolean);
+
+  if (titleParts.length < 2) {
+    return "";
+  }
+
+  for (const part of titleParts) {
+    if (comparableText(part) === comparableDomain) {
+      return part;
+    }
+  }
+
+  return "";
+}
+
 export function chooseTitle({
   ogSiteName = "",
   applicationName = "",
+  jsonLdSiteName = "",
   ogTitle = "",
+  twitterTitle = "",
   documentTitle = "",
   domain = "",
 } = {}) {
-  const candidates = [
-    ogSiteName,
-    applicationName,
-    ogTitle,
-    documentTitle,
-    domain,
-  ];
+  const siteNameCandidates = [ogSiteName, applicationName, jsonLdSiteName];
 
-  for (const candidate of candidates) {
+  for (const candidate of siteNameCandidates) {
+    const normalized = normalizeText(candidate);
+
+    if (normalized) {
+      return normalized;
+    }
+  }
+
+  for (const candidate of [ogTitle, twitterTitle, documentTitle]) {
+    const brand = titleBrandFromDomain(candidate, domain);
+
+    if (brand) {
+      return brand;
+    }
+  }
+
+  const pageTitleCandidates = [ogTitle, twitterTitle, documentTitle, domain];
+
+  for (const candidate of pageTitleCandidates) {
     const normalized = normalizeText(candidate);
 
     if (normalized) {
@@ -141,8 +203,27 @@ export function chooseTitle({
 export function chooseDescription({
   description = "",
   ogDescription = "",
+  twitterDescription = "",
+  jsonLdDescription = "",
+  mainDescription = "",
 } = {}) {
-  return normalizeText(description) || normalizeText(ogDescription);
+  const candidates = [
+    description,
+    ogDescription,
+    twitterDescription,
+    jsonLdDescription,
+    mainDescription,
+  ];
+
+  for (const candidate of candidates) {
+    const normalized = normalizeText(candidate);
+
+    if (normalized) {
+      return normalized;
+    }
+  }
+
+  return "";
 }
 
 export function projectRegistry(registry) {

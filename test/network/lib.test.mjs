@@ -175,6 +175,87 @@ test("metadata title falls back to domain", () => {
   );
 });
 
+test("metadata title recognizes site name embedded in document title", () => {
+  assert.equal(
+    chooseTitle({
+      documentTitle: "Shipping Fixes Everything - Joshtronic",
+      domain: "joshtronic.com",
+    }),
+    "Joshtronic",
+  );
+});
+
+test("metadata title recognizes a spaced site name from the domain", () => {
+  assert.equal(
+    chooseTitle({
+      documentTitle: "Projects | Joshua Morris",
+      domain: "joshuamorris.info",
+    }),
+    "Joshua Morris",
+  );
+});
+
+test("metadata title prefers JSON-LD website name before page title", () => {
+  assert.equal(
+    chooseTitle({
+      jsonLdSiteName: "Example Garden",
+      ogTitle: "Home - Example Garden",
+      documentTitle: "Home - Example Garden",
+      domain: "example.com",
+    }),
+    "Example Garden",
+  );
+});
+
+test("metadata title supports Twitter title before raw document title", () => {
+  assert.equal(
+    chooseTitle({
+      twitterTitle: "Example Site",
+      documentTitle: "Home",
+      domain: "example.com",
+    }),
+    "Example Site",
+  );
+});
+
+test("description falls back through social and structured metadata", () => {
+  assert.equal(
+    chooseDescription({
+      twitterDescription: "A description from Twitter metadata.",
+      jsonLdDescription: "A description from structured data.",
+      mainDescription: "A description from visible content.",
+    }),
+    "A description from Twitter metadata.",
+  );
+
+  assert.equal(
+    chooseDescription({
+      jsonLdDescription: "A description from structured data.",
+      mainDescription: "A description from visible content.",
+    }),
+    "A description from structured data.",
+  );
+
+  assert.equal(
+    chooseDescription({
+      mainDescription:
+        "A useful introduction taken from the visible content of the homepage.",
+    }),
+    "A useful introduction taken from the visible content of the homepage.",
+  );
+});
+
+test("description prefers explicit metadata over visible page content", () => {
+  assert.equal(
+    chooseDescription({
+      description: "The site's authored meta description.",
+      ogDescription: "The Open Graph description.",
+      mainDescription: "Some introductory homepage text.",
+    }),
+    "The site's authored meta description.",
+  );
+});
+
 test("description normalizes whitespace", () => {
   assert.equal(
     chooseDescription({
