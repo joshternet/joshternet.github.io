@@ -168,6 +168,7 @@ jobs:
 
     permissions:
       contents: write
+      pages: write
 
     steps:
       - name: Check out latest main
@@ -201,6 +202,7 @@ jobs:
           fi
 
       - name: Commit generated changes
+        id: commit_network
         run: |
           git config user.name "github-actions[bot]"
           git config user.email \
@@ -212,8 +214,22 @@ jobs:
 
           if git diff --cached --quiet; then
             echo "Network data is already current."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
           git commit -m "Update Joshternet network"
           git push origin HEAD:main
+
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Request GitHub Pages rebuild
+        if: steps.commit_network.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api \
+            --method POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2026-03-10" \
+            "/repos/${GITHUB_REPOSITORY}/pages/builds"
