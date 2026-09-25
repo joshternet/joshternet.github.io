@@ -41,6 +41,13 @@
   >Specifications</a
 >
 <a
+  href="{{ '/community/' | relative_url }}"
+  {% if page.url == '/community/' %}
+    aria-current="page"
+  {% endif %}
+  >Community</a
+>
+<a
   href="{{ '/governance/' | relative_url }}"
   {% if page.url == '/governance/' %}
     aria-current="page"

@@ -23,6 +23,16 @@ During PRE-JOSH, the founding maintainer maintains the project repositories and 
 
 This maintenance role applies to the project repositories, specifications, and documentation. It does not grant authority over another person’s Josh identity, ownership of participating websites, or operational control of the network.
 
+## Community principles and stewardship
+
+Project governance and community stewardship are related, but they are not the same thing.
+
+The [Community Principles and Stewardship Commitment][community] describes the kind of community the Joshternet intends to foster, the behavior expected within Joshternet-operated community spaces, and the responsibilities accepted by people entrusted with shared project infrastructure.
+
+That document is a living community commitment rather than a normative protocol specification. It does not replace the Joshternet RFCs, establish Josh identity, create authority over independently operated websites, or make participation in the network dependent on membership in a centralized community.
+
+Community stewardship should follow the same boundaries established by the technical architecture: people retain control of their identities and independent places, shared infrastructure remains a responsibility rather than a source of authority, and no Josh outranks another Josh.
+
 ## PRE-JOSH governance
 
 PRE-JOSH is the project’s current bootstrap state.
@@ -162,6 +172,7 @@ There is no Joshternet membership or signup process for contribution. Josh ident
 
 Specification history, issues, and proposed changes remain public in the canonical repository.
 
+[community]: /community/
 [specifications]: /specs/
 [spec]: https://github.com/joshternet/spec
 [issues]: https://github.com/joshternet/spec/issues
