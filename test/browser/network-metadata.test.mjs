@@ -4,6 +4,9 @@ import test from "node:test";
 import { chromium } from "playwright";
 
 import { extractPageMetadata } from "../../scripts/network/metadata.mjs";
+import { elsewhereHostCatalog } from "../../scripts/network/elsewhere.mjs";
+
+const elsewhereCatalog = elsewhereHostCatalog();
 
 async function withPage(html, callback) {
   const browser = await chromium.launch({
@@ -294,6 +297,290 @@ test("does not invent a visible description when no useful prose exists", async 
       const metadata = await page.evaluate(extractPageMetadata);
 
       assert.equal(metadata.mainDescription, "");
+      assert.deepEqual(metadata.feeds, []);
+    },
+  );
+});
+
+test("extracts advertised RSS, Atom, and JSON Feed links", async () => {
+  await withPage(
+    `
+      <!doctype html>
+      <html>
+        <head>
+          <base href="https://feeds.example/">
+          <title>Feeds</title>
+          <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="Site RSS"
+            href="/rss.xml"
+          >
+          <link
+            rel="alternate stylesheet"
+            type="application/atom+xml"
+            href="https://feeds.example/atom.xml"
+          >
+          <link
+            rel="alternate"
+            type="application/feed+json"
+            href="feed.json"
+          >
+          <link
+            rel="alternate"
+            type="application/rss+xml"
+            href="http://["
+          >
+          <link
+            rel="alternate"
+            type="text/html"
+            href="https://feeds.example/about"
+          >
+          <link rel="stylesheet" href="/site.css">
+        </head>
+        <body>
+          <main>
+            <h1>Feeds</h1>
+            <p>
+              This visible introduction is long enough that ordinary metadata
+              extraction still works when a feed declaration is broken.
+            </p>
+          </main>
+        </body>
+      </html>
+    `,
+    async (page) => {
+      const metadata = await page.evaluate(extractPageMetadata);
+
+      assert.deepEqual(metadata.feeds, [
+        {
+          href: "https://feeds.example/rss.xml",
+          type: "application/rss+xml",
+          title: "Site RSS",
+        },
+        {
+          href: "https://feeds.example/atom.xml",
+          type: "application/atom+xml",
+        },
+        {
+          href: "https://feeds.example/feed.json",
+          type: "application/feed+json",
+        },
+      ]);
+      assert.match(
+        metadata.mainDescription,
+        /^This visible introduction is long enough/,
+      );
+    },
+  );
+});
+
+test("returns an empty feeds array when no alternate feeds are advertised", async () => {
+  await withPage(
+    `
+      <!doctype html>
+      <html>
+        <head>
+          <title>No Feeds</title>
+          <link rel="stylesheet" href="/site.css">
+        </head>
+        <body>
+          <main>
+            <h1>No Feeds</h1>
+          </main>
+        </body>
+      </html>
+    `,
+    async (page) => {
+      const metadata = await page.evaluate(extractPageMetadata);
+
+      assert.deepEqual(metadata.feeds, []);
+      assert.deepEqual(metadata.blogrolls, []);
+      assert.deepEqual(metadata.elsewhere, []);
+    },
+  );
+});
+
+test("extracts advertised blogroll OPML links", async () => {
+  await withPage(
+    `
+      <!doctype html>
+      <html>
+        <head>
+          <base href="https://blogroll.example/">
+          <title>Blogroll</title>
+          <link
+            rel="blogroll"
+            type="text/xml"
+            href="/blogroll.opml"
+          >
+          <link
+            rel="blogroll"
+            type="application/xml"
+            href="/wrong-type.opml"
+          >
+          <link
+            rel="alternate"
+            type="text/xml"
+            href="/not-a-blogroll.opml"
+          >
+        </head>
+        <body>
+          <main>
+            <h1>Blogroll</h1>
+          </main>
+        </body>
+      </html>
+    `,
+    async (page) => {
+      const metadata = await page.evaluate(extractPageMetadata);
+
+      assert.deepEqual(metadata.blogrolls, [
+        {
+          href: "https://blogroll.example/blogroll.opml",
+          type: "text/xml",
+        },
+      ]);
+    },
+  );
+});
+
+test("extracts advertised rel=me elsewhere links", async () => {
+  await withPage(
+    `
+      <!doctype html>
+      <html>
+        <head>
+          <base href="https://elsewhere.example/">
+          <title>Elsewhere</title>
+          <link rel="me" href="https://github.com/somejosh">
+          <link rel="noopener" href="https://ignored.example/">
+        </head>
+        <body>
+          <main>
+            <h1>Elsewhere</h1>
+            <a rel="me" href="https://bsky.app/profile/example.com">Bluesky</a>
+            <a rel="me nofollow" href="/about">About</a>
+            <a href="https://github.com/not-me">Not me</a>
+            <a rel="me" href="mailto:josh@example.com">Email</a>
+            <a rel="me" href="">Empty</a>
+          </main>
+        </body>
+      </html>
+    `,
+    async (page) => {
+      const metadata = await page.evaluate(
+        extractPageMetadata,
+        elsewhereCatalog,
+      );
+
+      assert.deepEqual(metadata.elsewhere, [
+        {
+          href: "https://github.com/somejosh",
+          me: true,
+        },
+        {
+          href: "https://bsky.app/profile/example.com",
+          text: "Bluesky",
+          me: true,
+        },
+        {
+          href: "https://elsewhere.example/about",
+          text: "About",
+          me: true,
+        },
+        {
+          href: "mailto:josh@example.com",
+          text: "Email",
+          me: true,
+        },
+        {
+          href: "https://github.com/not-me",
+          text: "Not me",
+          me: false,
+        },
+      ]);
+    },
+  );
+});
+
+test("extracts catalog social links without rel=me", async () => {
+  await withPage(
+    `
+      <!doctype html>
+      <html>
+        <head>
+          <base href="https://baker.example/">
+          <title>Baker</title>
+        </head>
+        <body>
+          <main>
+            <a href="https://github.com/joshuabaker">GitHub</a>
+            <a href="https://github.com/joshuabaker/site">Repo</a>
+            <a href="https://www.linkedin.com/in/thejoshuabaker">LinkedIn</a>
+            <a href="https://x.com/joshuabaker">X/Twitter</a>
+            <a href="https://friend.example/">Friend</a>
+          </main>
+        </body>
+      </html>
+    `,
+    async (page) => {
+      const metadata = await page.evaluate(
+        extractPageMetadata,
+        elsewhereCatalog,
+      );
+
+      assert.deepEqual(metadata.elsewhere, [
+        {
+          href: "https://github.com/joshuabaker",
+          text: "GitHub",
+          me: false,
+        },
+        {
+          href: "https://github.com/joshuabaker/site",
+          text: "Repo",
+          me: false,
+        },
+        {
+          href: "https://www.linkedin.com/in/thejoshuabaker",
+          text: "LinkedIn",
+          me: false,
+        },
+        {
+          href: "https://x.com/joshuabaker",
+          text: "X/Twitter",
+          me: false,
+        },
+      ]);
+      assert.equal(metadata.aboutPageHref, "");
+    },
+  );
+});
+
+test("extracts same-origin about page href", async () => {
+  await withPage(
+    `
+      <!doctype html>
+      <html>
+        <head>
+          <base href="https://about.example/">
+          <title>Home</title>
+        </head>
+        <body>
+          <nav>
+            <a href="/blog">Blog</a>
+            <a href="/about/">About</a>
+          </nav>
+        </body>
+      </html>
+    `,
+    async (page) => {
+      const metadata = await page.evaluate(
+        extractPageMetadata,
+        elsewhereCatalog,
+      );
+
+      assert.equal(metadata.aboutPageHref, "https://about.example/about/");
     },
   );
 });

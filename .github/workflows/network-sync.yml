@@ -67,22 +67,11 @@ jobs:
       - name: Decide whether sync is needed
         id: preflight
         shell: bash
-        env:
-          EVENT_NAME: ${{ github.event_name }}
         run: |
-          if [ "$EVENT_NAME" != "schedule" ]; then
-            echo "needs_sync=true" >> "$GITHUB_OUTPUT"
-            echo "Non-scheduled event: running full network sync."
-          else
-            NEEDS_SYNC="$(node scripts/network/preflight.mjs)"
-            echo "needs_sync=$NEEDS_SYNC" >> "$GITHUB_OUTPUT"
-
-            if [ "$NEEDS_SYNC" = "true" ]; then
-              echo "Scheduled preflight found work to do."
-            else
-              echo "Scheduled preflight found the network current."
-            fi
-          fi
+          # Always run: registry membership, feeds, blogrolls, and elsewhere
+          # must stay aligned even when screenshots are still fresh.
+          echo "needs_sync=true" >> "$GITHUB_OUTPUT"
+          echo "Running network sync for membership, feeds, elsewhere, and captures."
 
       - name: Install dependencies
         if: steps.preflight.outputs.needs_sync == 'true'
@@ -139,11 +128,74 @@ jobs:
                       JSON.stringify(entry),
                   );
               }
+
+              if (Object.hasOwn(entry, "elsewhere")) {
+                  if (!Array.isArray(entry.elsewhere)) {
+                      throw new Error(
+                          "elsewhere must be an array: " + entry.origin,
+                      );
+                  }
+
+                  for (const item of entry.elsewhere) {
+                      if (
+                          !item ||
+                          typeof item !== "object" ||
+                          typeof item.url !== "string" ||
+                          typeof item.network !== "string" ||
+                          typeof item.label !== "string"
+                      ) {
+                          throw new Error(
+                              "Invalid elsewhere item for " +
+                              entry.origin +
+                              ": " +
+                              JSON.stringify(item),
+                          );
+                      }
+                  }
+              }
+          }
+
+          const blogrolls = JSON.parse(
+              fs.readFileSync("_data/blogrolls.json", "utf8"),
+          );
+
+          if (!Array.isArray(blogrolls)) {
+              throw new Error(
+                  "_data/blogrolls.json must contain an array",
+              );
+          }
+
+          for (const edge of blogrolls) {
+              if (
+                  !edge ||
+                  typeof edge !== "object" ||
+                  typeof edge.from !== "string" ||
+                  typeof edge.to !== "string" ||
+                  typeof edge.blogroll !== "string"
+              ) {
+                  throw new Error(
+                      "Invalid generated blogroll edge: " +
+                      JSON.stringify(edge),
+                  );
+              }
+          }
+
+          const opml = fs.readFileSync(
+              "assets/network/joshternet.opml",
+              "utf8",
+          );
+
+          if (!opml.includes("<opml")) {
+              throw new Error(
+                  "assets/network/joshternet.opml must contain OPML",
+              );
           }
 
           console.log(
               `Validated ${data.length} generated network ` +
-              `${data.length === 1 ? "entry" : "entries"}.`,
+              `${data.length === 1 ? "entry" : "entries"} and ` +
+              `${blogrolls.length} blogroll ` +
+              `${blogrolls.length === 1 ? "edge" : "edges"}.`,
           );
           NODE
 
@@ -156,6 +208,8 @@ jobs:
           if-no-files-found: error
           path: |
             _data/network.json
+            _data/blogrolls.json
+            assets/network/joshternet.opml
             assets/network/sites/
 
   publish:
@@ -185,12 +239,23 @@ jobs:
       - name: Replace generated files
         run: |
           test -f .network-sync-output/_data/network.json
+          test -f .network-sync-output/_data/blogrolls.json
+          test -f .network-sync-output/assets/network/joshternet.opml
 
           mkdir -p _data
+          mkdir -p assets/network
 
           cp \
             .network-sync-output/_data/network.json \
             _data/network.json
+
+          cp \
+            .network-sync-output/_data/blogrolls.json \
+            _data/blogrolls.json
+
+          cp \
+            .network-sync-output/assets/network/joshternet.opml \
+            assets/network/joshternet.opml
 
           rm -rf assets/network/sites
           mkdir -p assets/network/sites
@@ -210,6 +275,8 @@ jobs:
 
           git add -- \
             _data/network.json \
+            _data/blogrolls.json \
+            assets/network/joshternet.opml \
             assets/network/sites
 
           if git diff --cached --quiet; then

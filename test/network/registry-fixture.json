@@ -4,6 +4,13 @@
     {
       "origin": "https://joshuamorris.info",
       "path": "nodes/dev-joshua.json",
+      "first_participated_at": "2026-09-06T22:51:38.044013Z",
+      "initial_declaration": {
+        "version": 1,
+        "josh": true
+      },
+      "latest_declaration_check_at": "2026-09-30T18:51:42.892671Z",
+      "latest_declaration_check_outcome": "valid",
       "declaration": {
         "version": 1,
         "josh": true
@@ -12,8 +19,29 @@
     {
       "origin": "https://joshternet.org",
       "path": "nodes/dev-joshternet.json",
+      "first_participated_at": "2026-09-06T22:52:08.890744Z",
+      "initial_declaration": {
+        "version": 1
+      },
+      "latest_declaration_check_at": "2026-09-30T18:51:42.892671Z",
+      "latest_declaration_check_outcome": "valid",
       "declaration": {
         "version": 1
+      }
+    },
+    {
+      "origin": "https://former.example",
+      "path": "nodes/dev-former.json",
+      "first_participated_at": "2026-08-01T00:00:00.000Z",
+      "initial_declaration": {
+        "version": 1,
+        "josh": true
+      },
+      "latest_declaration_check_at": "2026-09-30T18:51:42.892671Z",
+      "latest_declaration_check_outcome": "missing",
+      "declaration": {
+        "version": 1,
+        "josh": true
       }
     }
   ]

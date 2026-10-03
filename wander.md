@@ -9,6 +9,7 @@ permalink: /wander/
 script: /assets/js/wander.js
 full_bleed: true
 allow_frames: true
+footer: false
 ---
 
 <h1 class="visually-hidden">Wander the Joshternet</h1>

@@ -101,6 +101,149 @@ export function identityFromDeclaration(declaration) {
   throw new Error("declaration.josh must be true, false, or absent");
 }
 
+/**
+ * Copies a version 1 declaration object for publication.
+ * @param {unknown} declaration
+ * @returns {{ version: 1, josh?: boolean }}
+ */
+export function cloneDeclaration(declaration) {
+  identityFromDeclaration(declaration);
+
+  const cloned = {
+    version: 1,
+  };
+
+  if (Object.hasOwn(declaration, "josh")) {
+    cloned.josh = declaration.josh;
+  }
+
+  return cloned;
+}
+
+/**
+ * Requires an RFC 3339 / ISO-8601 timestamp string from the registry.
+ * @param {unknown} value
+ * @param {string} field
+ * @returns {string}
+ */
+export function registryTimestamp(value, field) {
+  if (typeof value !== "string" || value.trim() === "") {
+    throw new Error(`invalid registry ${field}`);
+  }
+
+  const parsed = Date.parse(value);
+
+  if (!Number.isFinite(parsed)) {
+    throw new Error(`invalid registry ${field}`);
+  }
+
+  return value;
+}
+
+/**
+ * A node participates in Network and Wander only while JoshBot's latest
+ * declaration check is valid.
+ * @param {unknown} node
+ * @returns {boolean}
+ */
+export function isParticipatingNode(node) {
+  if (!node || typeof node !== "object" || Array.isArray(node)) {
+    return false;
+  }
+
+  return node.latest_declaration_check_outcome === "valid";
+}
+
+/**
+ * Registry participation facts carried into Network / Wander publication.
+ * Enrichment fields (title, screenshot, framing) stay separate.
+ * @param {{
+ *   origin: string,
+ *   domain: string,
+ *   identity: string,
+ *   declaration: { version: 1, josh?: boolean },
+ *   initial_declaration: { version: 1, josh?: boolean },
+ *   first_participated_at: string,
+ *   latest_declaration_check_at: string,
+ *   latest_declaration_check_outcome: string
+ * }} participant
+ * @returns {object}
+ */
+export function registryParticipationFields(participant) {
+  return {
+    origin: participant.origin,
+    domain: participant.domain,
+    identity: participant.identity,
+    declaration: cloneDeclaration(participant.declaration),
+    initial_declaration: cloneDeclaration(participant.initial_declaration),
+    first_participated_at: participant.first_participated_at,
+    latest_declaration_check_at: participant.latest_declaration_check_at,
+    latest_declaration_check_outcome:
+      participant.latest_declaration_check_outcome,
+  };
+}
+
+export function projectRegistry(registry) {
+  if (
+    !registry ||
+    typeof registry !== "object" ||
+    Array.isArray(registry) ||
+    registry.format_version !== REGISTRY_FORMAT_VERSION ||
+    !Array.isArray(registry.nodes)
+  ) {
+    throw new Error("invalid JoshBot registry");
+  }
+
+  const seen = new Set();
+
+  const projected = [];
+
+  for (const node of registry.nodes) {
+    if (!node || typeof node !== "object" || Array.isArray(node)) {
+      throw new Error("invalid registry node");
+    }
+
+    const origin = canonicalOrigin(node.origin);
+
+    if (seen.has(origin)) {
+      throw new Error(`duplicate registry origin: ${origin}`);
+    }
+
+    seen.add(origin);
+
+    if (!isParticipatingNode(node)) {
+      continue;
+    }
+
+    const declaration = cloneDeclaration(node.declaration);
+    const initialDeclaration = cloneDeclaration(node.initial_declaration);
+    const url = new URL(origin);
+
+    projected.push({
+      origin,
+      domain: url.host,
+      identity: identityFromDeclaration(declaration),
+      declaration,
+      initial_declaration: initialDeclaration,
+      first_participated_at: registryTimestamp(
+        node.first_participated_at,
+        "first_participated_at",
+      ),
+      latest_declaration_check_at: registryTimestamp(
+        node.latest_declaration_check_at,
+        "latest_declaration_check_at",
+      ),
+      latest_declaration_check_outcome: "valid",
+    });
+  }
+
+  projected.sort((left, right) => {
+    return left.origin.localeCompare(right.origin);
+  });
+
+  return projected;
+}
+
 export function stableSiteID(origin) {
   return crypto
     .createHash("sha256")
@@ -224,48 +367,6 @@ export function chooseDescription({
   }
 
   return "";
-}
-
-export function projectRegistry(registry) {
-  if (
-    !registry ||
-    typeof registry !== "object" ||
-    Array.isArray(registry) ||
-    registry.format_version !== REGISTRY_FORMAT_VERSION ||
-    !Array.isArray(registry.nodes)
-  ) {
-    throw new Error("invalid JoshBot registry");
-  }
-
-  const seen = new Set();
-
-  const projected = registry.nodes.map((node) => {
-    if (!node || typeof node !== "object" || Array.isArray(node)) {
-      throw new Error("invalid registry node");
-    }
-
-    const origin = canonicalOrigin(node.origin);
-
-    if (seen.has(origin)) {
-      throw new Error(`duplicate registry origin: ${origin}`);
-    }
-
-    seen.add(origin);
-
-    const url = new URL(origin);
-
-    return {
-      origin,
-      domain: url.host,
-      identity: identityFromDeclaration(node.declaration),
-    };
-  });
-
-  projected.sort((left, right) => {
-    return left.origin.localeCompare(right.origin);
-  });
-
-  return projected;
 }
 
 export function framePolicy({
@@ -457,4 +558,93 @@ export async function partitionPublicParticipants(
     accepted,
     rejected,
   };
+}
+
+export const MAX_FEEDS_PER_PARTICIPANT = 5;
+
+const FEED_MIME_TYPES = new Set([
+  "application/rss+xml",
+  "application/atom+xml",
+  "application/feed+json",
+]);
+
+/**
+ * Validates and normalizes advertised feed declarations for publication.
+ * Bad items are skipped; they do not reject the participant.
+ * @param {unknown} rawFeeds
+ * @param {{
+ *   lookup?: typeof dns.lookup,
+ *   cache?: Map<string, unknown>,
+ * }} [options]
+ * @returns {Promise<Array<{url: string, type: string, title?: string}>>}
+ */
+export async function sanitizeFeeds(
+  rawFeeds,
+  { lookup = dns.lookup, cache = new Map() } = {},
+) {
+  if (!Array.isArray(rawFeeds)) {
+    return [];
+  }
+
+  const feeds = [];
+  const seen = new Set();
+
+  for (const candidate of rawFeeds) {
+    if (feeds.length >= MAX_FEEDS_PER_PARTICIPANT) {
+      break;
+    }
+
+    if (!candidate || typeof candidate !== "object") {
+      continue;
+    }
+
+    const type =
+      typeof candidate.type === "string" ? normalizeText(candidate.type) : "";
+
+    if (!FEED_MIME_TYPES.has(type)) {
+      continue;
+    }
+
+    let href = "";
+
+    if (typeof candidate.href === "string") {
+      href = candidate.href;
+    } else if (typeof candidate.url === "string") {
+      href = candidate.url;
+    }
+
+    if (!href) {
+      continue;
+    }
+
+    try {
+      const url = await assertPublicURL(href, {
+        lookup,
+        cache,
+      });
+      const normalized = url.href;
+
+      if (seen.has(normalized)) {
+        continue;
+      }
+
+      seen.add(normalized);
+
+      const feed = {
+        url: normalized,
+        type,
+      };
+      const title = normalizeText(candidate.title);
+
+      if (title) {
+        feed.title = title;
+      }
+
+      feeds.push(feed);
+    } catch {
+      continue;
+    }
+  }
+
+  return feeds;
 }

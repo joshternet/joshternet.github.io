@@ -9,15 +9,21 @@ permalink: /community/
 
 # Community Principles and Stewardship Commitment
 
-**Status:** Draft
-
 The Joshternet started with a deliberately strange idea: connect Joshes and the independent places they maintain on the web without building another platform that owns the people, their identities, or their work.
 
 That only works if the community surrounding the technology follows the same principles as the technology itself.
 
-This document describes the community we want to build, the behavior expected within Joshternet community spaces, and the commitments expected from anyone entrusted with stewardship of the Joshternet project, its specifications, repositories, services, and shared infrastructure.
+This is the Joshternet commitment. It states the community we are building, the behavior expected within Joshternet community spaces, and the commitments accepted by anyone entrusted with stewardship of the Joshternet project, its specifications, repositories, services, and shared infrastructure.
 
 It is a living community document rather than a normative protocol specification. It does not replace the Joshternet RFCs. It does not define who is a Josh. It does not give the Joshternet authority over independently operated websites or the people behind them.
+
+## #joshternet
+
+The project talks in `#joshternet` on Libera.Chat. This page points at that channel. It does not embed the chat.
+
+[Join `#joshternet` in Libera's web client](https://web.libera.chat/#joshternet).
+
+A normal IRC client connects to `irc.libera.chat` on port `6697` with TLS, then joins `#joshternet`.
 
 ## Community principles
 

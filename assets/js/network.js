@@ -5,7 +5,6 @@
   const filters = Array.from(
     document.querySelectorAll("[data-network-filter]"),
   );
-  const sort = document.querySelector("[data-network-sort]");
   const count = document.querySelector("[data-network-count]");
   const countLabel = document.querySelector("[data-network-count-label]");
 
@@ -15,10 +14,29 @@
 
   toolbar.hidden = false;
 
-  const collator = new Intl.Collator(undefined, {
-    numeric: true,
-    sensitivity: "base",
-  });
+  /**
+   * Returns a new array in Fisher-Yates order.
+   * Shuffled once per visit so filters do not put one site back above another.
+   * @param {Element[]} values
+   * @returns {Element[]}
+   */
+  function shuffle(values) {
+    const copy = values.slice();
+
+    for (let index = copy.length - 1; index > 0; index -= 1) {
+      const target = Math.floor(Math.random() * (index + 1));
+      [copy[index], copy[target]] = [copy[target], copy[index]];
+    }
+
+    return copy;
+  }
+
+  const ordered = shuffle(cards);
+  const surprise = grid.querySelector(".network-surprise-card");
+
+  for (const card of ordered) {
+    grid.insertBefore(card, surprise);
+  }
 
   const params = new URLSearchParams(window.location.search);
   const requestedIdentity = params.get("identity");
@@ -73,16 +91,7 @@
 
   let targetRevealed = false;
 
-  function cardName(card) {
-    return card.dataset.title || card.dataset.domain || "";
-  }
-
   function apply() {
-    const direction = sort && sort.value === "desc" ? -1 : 1;
-    const ordered = cards.slice().sort((left, right) => {
-      return collator.compare(cardName(left), cardName(right)) * direction;
-    });
-
     let visible = 0;
 
     for (const card of ordered) {
@@ -92,8 +101,6 @@
       if (show) {
         visible += 1;
       }
-
-      grid.insertBefore(card, grid.querySelector(".network-surprise-card"));
     }
 
     for (const filter of filters) {
@@ -157,10 +164,6 @@
       identity = filter.dataset.networkFilter;
       apply();
     });
-  }
-
-  if (sort) {
-    sort.addEventListener("change", apply);
   }
 
   apply();

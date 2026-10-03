@@ -1,4 +1,4 @@
-export function extractPageMetadata() {
+export function extractPageMetadata(hostCatalog) {
   function normalizeText(value) {
     if (typeof value !== "string") {
       return "";
@@ -144,7 +144,338 @@ export function extractPageMetadata() {
     return "";
   }
 
+  function extractFeeds() {
+    const allowedTypes = new Set([
+      "application/rss+xml",
+      "application/atom+xml",
+      "application/feed+json",
+    ]);
+    const feeds = [];
+
+    for (const link of document.querySelectorAll("link[href]")) {
+      if (!(link instanceof HTMLLinkElement)) {
+        continue;
+      }
+
+      if (!link.relList.contains("alternate")) {
+        continue;
+      }
+
+      const type = normalizeText(link.getAttribute("type") || "");
+
+      if (!allowedTypes.has(type)) {
+        continue;
+      }
+
+      const hrefAttribute = normalizeText(link.getAttribute("href") || "");
+
+      if (!hrefAttribute) {
+        continue;
+      }
+
+      let href;
+
+      try {
+        href = new URL(hrefAttribute, document.baseURI).href;
+      } catch {
+        continue;
+      }
+
+      const title = normalizeText(
+        link.title || link.getAttribute("title") || "",
+      );
+      const feed = {
+        href,
+        type,
+      };
+
+      if (title) {
+        feed.title = title;
+      }
+
+      feeds.push(feed);
+    }
+
+    return feeds;
+  }
+
+  function extractBlogrolls() {
+    const blogrolls = [];
+
+    for (const link of document.querySelectorAll("link[href]")) {
+      if (!(link instanceof HTMLLinkElement)) {
+        continue;
+      }
+
+      if (!link.relList.contains("blogroll")) {
+        continue;
+      }
+
+      const type = normalizeText(link.getAttribute("type") || "");
+
+      if (type !== "text/xml") {
+        continue;
+      }
+
+      const hrefAttribute = normalizeText(link.getAttribute("href") || "");
+
+      if (!hrefAttribute) {
+        continue;
+      }
+
+      let href;
+
+      try {
+        href = new URL(hrefAttribute, document.baseURI).href;
+      } catch {
+        continue;
+      }
+
+      blogrolls.push({
+        href,
+        type,
+      });
+    }
+
+    return blogrolls;
+  }
+
+  /**
+   * Finds a same-origin about page linked from the current document.
+   * @returns {string}
+   */
+  function extractAboutPageHref() {
+    let pageOrigin = "";
+
+    try {
+      pageOrigin = new URL(document.baseURI).origin;
+    } catch {
+      return "";
+    }
+
+    /** @type {string[]} */
+    const byPath = [];
+    /** @type {string[]} */
+    const byLabel = [];
+
+    for (const element of document.querySelectorAll("a[href]")) {
+      if (!(element instanceof HTMLAnchorElement)) {
+        continue;
+      }
+
+      const hrefAttribute = normalizeText(element.getAttribute("href") || "");
+
+      if (!hrefAttribute || hrefAttribute.startsWith("#")) {
+        continue;
+      }
+
+      let url;
+
+      try {
+        url = new URL(hrefAttribute, document.baseURI);
+      } catch {
+        continue;
+      }
+
+      if (url.origin !== pageOrigin) {
+        continue;
+      }
+
+      if (url.protocol !== "https:" && url.protocol !== "http:") {
+        continue;
+      }
+
+      const path = url.pathname.replace(/\/+$/, "") || "/";
+      const label = normalizeText(element.textContent || "").toLowerCase();
+
+      if (
+        path === "/about" ||
+        path === "/about-me" ||
+        path === "/aboutme" ||
+        path === "/bio"
+      ) {
+        byPath.push(url.href);
+        continue;
+      }
+
+      if (
+        (label === "about" || label === "about me" || label === "about.") &&
+        path !== "/"
+      ) {
+        byLabel.push(url.href);
+      }
+    }
+
+    const ranked = [...byPath, ...byLabel];
+
+    if (ranked.length === 0) {
+      return "";
+    }
+
+    const aboutExact = ranked.find((href) => {
+      try {
+        const path = new URL(href).pathname.replace(/\/+$/, "") || "/";
+        return path === "/about";
+      } catch {
+        return false;
+      }
+    });
+
+    return aboutExact || ranked[0];
+  }
+
+  /**
+   * Collects homepage elsewhere links: `rel="me"` ads, plus catalog social
+   * profile links that omit rel.
+   * @param {{
+   *   hosts?: Record<string, string>,
+   *   suffixes?: Array<{suffix: string, network: string}>,
+   * }} [hostCatalog]
+   * @returns {Array<{href: string, text?: string, me?: boolean}>}
+   */
+  function extractElsewhere(hostCatalog = {}) {
+    const elsewhere = [];
+    const seen = new Set();
+    const hosts =
+      hostCatalog && typeof hostCatalog.hosts === "object" && hostCatalog.hosts
+        ? hostCatalog.hosts
+        : {};
+    const suffixes = Array.isArray(hostCatalog?.suffixes)
+      ? hostCatalog.suffixes
+      : [];
+
+    /**
+     * @param {string} hostname
+     * @returns {boolean}
+     */
+    function isKnownSocialHost(hostname) {
+      const host = String(hostname || "")
+        .trim()
+        .toLowerCase();
+
+      if (!host) {
+        return false;
+      }
+
+      if (Object.prototype.hasOwnProperty.call(hosts, host)) {
+        return true;
+      }
+
+      for (const entry of suffixes) {
+        if (
+          entry &&
+          typeof entry.suffix === "string" &&
+          host.endsWith(entry.suffix)
+        ) {
+          return true;
+        }
+      }
+
+      return false;
+    }
+
+    /**
+     * @param {Element} element
+     * @param {boolean} me
+     */
+    function pushLink(element, me) {
+      if (
+        !(element instanceof HTMLAnchorElement) &&
+        !(element instanceof HTMLLinkElement)
+      ) {
+        return;
+      }
+
+      const hrefAttribute = normalizeText(element.getAttribute("href") || "");
+
+      if (!hrefAttribute) {
+        return;
+      }
+
+      let href;
+
+      try {
+        href = new URL(hrefAttribute, document.baseURI).href;
+      } catch {
+        return;
+      }
+
+      const key = href;
+
+      if (seen.has(key)) {
+        return;
+      }
+
+      seen.add(key);
+
+      const entry = {
+        href,
+        me,
+      };
+
+      if (element instanceof HTMLAnchorElement) {
+        const text = normalizeText(element.textContent || "");
+
+        if (text) {
+          entry.text = text;
+        }
+      }
+
+      elsewhere.push(entry);
+    }
+
+    for (const element of document.querySelectorAll("a[href], link[href]")) {
+      if (
+        !(element instanceof HTMLAnchorElement) &&
+        !(element instanceof HTMLLinkElement)
+      ) {
+        continue;
+      }
+
+      if (element.relList.contains("me")) {
+        pushLink(element, true);
+      }
+    }
+
+    for (const element of document.querySelectorAll("a[href], link[href]")) {
+      if (
+        !(element instanceof HTMLAnchorElement) &&
+        !(element instanceof HTMLLinkElement)
+      ) {
+        continue;
+      }
+
+      if (element.relList.contains("me")) {
+        continue;
+      }
+
+      const hrefAttribute = normalizeText(element.getAttribute("href") || "");
+
+      if (!hrefAttribute) {
+        continue;
+      }
+
+      let url;
+
+      try {
+        url = new URL(hrefAttribute, document.baseURI);
+      } catch {
+        continue;
+      }
+
+      if (!isKnownSocialHost(url.hostname)) {
+        continue;
+      }
+
+      pushLink(element, false);
+    }
+
+    return elsewhere;
+  }
+
   const jsonLdWebsite = extractJsonLdWebsite();
+  const catalog =
+    hostCatalog && typeof hostCatalog === "object" ? hostCatalog : {};
 
   return {
     ogSiteName: meta('meta[property="og:site_name"]'),
@@ -158,5 +489,9 @@ export function extractPageMetadata() {
     twitterDescription: meta('meta[name="twitter:description"]'),
     jsonLdDescription: jsonLdWebsite.description,
     mainDescription: extractMainDescription(),
+    feeds: extractFeeds(),
+    blogrolls: extractBlogrolls(),
+    elsewhere: extractElsewhere(catalog),
+    aboutPageHref: extractAboutPageHref(),
   };
 }

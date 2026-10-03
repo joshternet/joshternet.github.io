@@ -7,6 +7,7 @@
     "test:browser": "node --test test/browser/*.test.mjs",
     "test:site": "node --test test/site/*.test.mjs",
     "network:sync": "node scripts/network/sync.mjs",
+    "elsewhere:glyphs": "node scripts/network/generate-elsewhere-glyphs.mjs",
     "format": "prettier . --write --ignore-unknown",
     "format:check": "prettier . --check --ignore-unknown"
   },

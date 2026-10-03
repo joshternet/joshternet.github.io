@@ -1,0 +1,17 @@
+{% comment %}
+  Goal: Render Implement second-level links from _data/implement_nav.yml.
+  Inputs: site.data.implement_nav, page.url for aria-current.
+  Output: list items (caller wraps in ul).
+{% endcomment %}
+{% for item in site.data.implement_nav %}
+  <li class="site-nav-secondary__item">
+    <a
+      href="{{ item.path | relative_url }}"
+      {% if page.url == item.path %}
+        aria-current="page"
+      {% endif %}
+    >
+      {{- item.title -}}
+    </a>
+  </li>
+{% endfor %}

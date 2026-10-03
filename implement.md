@@ -87,7 +87,11 @@ Omitting `josh` is different from setting it to `false`. An omitted member means
 
 ## Publish the declaration
 
-The declaration can be an ordinary static file named `josh` inside a `.well-known` directory at the site's public root.
+The public resource is exactly `/.well-known/josh`. That path is defined by the protocol. It does not become `/.well-known/josh.json`.
+
+Where practical, keep the declaration in source control as a normal JSON file named `josh.json`, so editors and validators recognize it. The site's build then publishes that file at the extensionless public path. `josh.json` is an authoring detail. `/.well-known/josh` is the resource clients request.
+
+A site can also place an ordinary static file named `josh` inside a `.well-known` directory at the public root. That file is the published resource itself.
 
 It does not require an API, database, middleware, framework, or client-side JavaScript. Handwritten sites, static generators, blogs, and web applications can all publish the same resource.
 
@@ -115,7 +119,16 @@ After deployment, replace the fictional domain below with your own origin and in
 curl -i https://example.invalid/.well-known/josh
 ```
 
-Check the status, content type, and JSON body.
+Check the status, content type, and JSON body. You can also paste the file, or ask this site to read a live origin, on the [declaration checker](/implement/validate/).
+
+## Platform recipes
+
+These recipes are non-normative. [RFC-JOSH-0002][rfc-0002] remains authoritative. Each tested platform has its own page, so the file layout, build step, host headers, and deployment check for that platform stay together.
+
+- [Eleventy](/implement/eleventy/) publishes `josh.json` at `/.well-known/josh`.
+- [Jekyll](/implement/jekyll/) publishes `.well-known/josh` after including that directory.
+
+A platform page is added after that recipe has been tested. The public resource stays `/.well-known/josh` on every one of them.
 
 ## Participation and discovery are separate
 
