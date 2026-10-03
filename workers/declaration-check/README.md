@@ -9,7 +9,7 @@ publishers do not send CORS headers.
 This endpoint is on the open web. Controls:
 
 - **Allowlisted browser `Origin` required** (missing Origin is denied)
-- Production allowlist is only `https://joshternet.org`
+- Production allowlist is `https://joshternet.org` and `https://www.joshternet.org`
 - Local Wrangler overrides via `.dev.vars` (gitignored)
 - **Rate limits**: 30 checks / minute / client IP, 20 / minute / target origin
 - Fetches **only** `/.well-known/josh` (no query/fragment)
@@ -44,6 +44,7 @@ npm test
 npm run deploy
 ```
 
-Confirm production `ALLOWED_ORIGINS` is exactly `https://joshternet.org`, then
-smoke-test from https://joshternet.org/implement/validate/ against a known
-participant such as `https://joshuamorris.info`.
+Confirm production `ALLOWED_ORIGINS` includes `https://joshternet.org` and
+`https://www.joshternet.org`, then smoke-test from
+https://joshternet.org/implement/validate/ against a known participant such as
+`https://joshuamorris.info`.

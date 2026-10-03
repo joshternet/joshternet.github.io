@@ -96,6 +96,23 @@ test("a missing declaration and a read failure are not invalid files", () => {
   assert.match(unread.details.join(" "), /application\/json/);
 });
 
+test("client and server errors other than 404/410 are unread, not invalid", () => {
+  for (const status of [401, 403, 429, 418, 301]) {
+    const blocked = classifyLiveResponse({
+      requestedOrigin: "https://example.invalid",
+      finalURL: "https://example.invalid/.well-known/josh",
+      status,
+      contentType: "text/html",
+      body: "<html><title>Blocked</title></html>",
+    });
+
+    assert.equal(blocked.kind, "unread", `HTTP ${status}`);
+    assert.equal(blocked.declaration, null, `HTTP ${status}`);
+    assert.match(blocked.summary, /could not be read/);
+    assert.match(blocked.details.join(" "), new RegExp(`HTTP ${status}`));
+  }
+});
+
 test("a cross-origin redirect is not the typed origin's declaration", () => {
   const redirected = classifyLiveResponse({
     requestedOrigin: "https://example.invalid",

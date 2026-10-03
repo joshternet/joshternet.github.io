@@ -76,7 +76,7 @@ const RULES = {
   retrieval: {
     rfc: "RFC-JOSH-0002",
     section: "§11 Removal and §9 Retrieval",
-    text: "A timeout, DNS failure, TLS failure, or server error does not establish withdrawal and is not an invalid declaration.",
+    text: "A timeout, DNS failure, TLS failure, client error other than 404/410, or server error does not establish withdrawal and is not an invalid declaration.",
   },
   path: {
     rfc: "RFC-JOSH-0002",
@@ -280,7 +280,11 @@ export function classifyLiveResponse(response) {
     };
   }
 
-  if (response.status === null || response.status >= 500) {
+  if (
+    response.status === null ||
+    response.status < 200 ||
+    response.status >= 300
+  ) {
     return {
       kind: "unread",
       summary:

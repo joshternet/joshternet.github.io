@@ -7,6 +7,7 @@ import test from "node:test";
 import {
   blogrollEdges,
   buildJoshternetOpml,
+  carryForwardBlogrollEdges,
   fetchBlogrollOpml,
   MAX_BLOGROLL_OPML_BYTES,
   originsFromBlogrollUrls,
@@ -165,4 +166,53 @@ test("withBlogroll publishes or omits the advertisement URL", () => {
   );
   assert.equal(Object.hasOwn(withBlogroll(base, ""), "blogroll"), false);
   assert.equal(Object.hasOwn(withBlogroll(base, null), "blogroll"), false);
+});
+
+test("carryForwardBlogrollEdges keeps only prior edges for the failed origin", () => {
+  const previous = [
+    {
+      from: "https://alpha.example",
+      to: "https://beta.example",
+      blogroll: "https://alpha.example/blogroll.opml",
+    },
+    {
+      from: "https://beta.example",
+      to: "https://alpha.example",
+      blogroll: "https://beta.example/blogroll.opml",
+    },
+    {
+      from: "https://alpha.example",
+      to: "https://gamma.example",
+      blogroll: "https://alpha.example/blogroll.opml",
+    },
+    {
+      from: "https://alpha.example",
+      to: 12,
+      blogroll: "https://alpha.example/bad.opml",
+    },
+  ];
+
+  assert.deepEqual(
+    carryForwardBlogrollEdges(previous, "https://alpha.example"),
+    [
+      {
+        from: "https://alpha.example",
+        to: "https://beta.example",
+        blogroll: "https://alpha.example/blogroll.opml",
+      },
+      {
+        from: "https://alpha.example",
+        to: "https://gamma.example",
+        blogroll: "https://alpha.example/blogroll.opml",
+      },
+    ],
+  );
+  assert.deepEqual(
+    carryForwardBlogrollEdges(previous, "https://missing.example"),
+    [],
+  );
+  assert.deepEqual(
+    carryForwardBlogrollEdges(null, "https://alpha.example"),
+    [],
+  );
 });

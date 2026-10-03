@@ -8,6 +8,7 @@ import sharp from "sharp";
 import {
   blogrollEdges,
   buildJoshternetOpml,
+  carryForwardBlogrollEdges,
   fetchBlogrollOpml,
   originsFromBlogrollUrls,
   parseOpmlOutlineUrls,
@@ -345,13 +346,59 @@ function withEnrichment(entry, feeds, blogrollUrl, elsewhere) {
   );
 }
 
+/**
+ * Shared feeds / blogroll / elsewhere enrichment from an opened homepage.
+ * @param {{
+ *   metadata: Record<string, unknown>,
+ *   dnsCache: Map<string, unknown>,
+ *   page: import("playwright").Page,
+ * }} opened
+ * @param {{ origin: string }} participant
+ * @param {Set<string>} participantOrigins
+ * @returns {Promise<{
+ *   feeds: Array<{url: string, type: string, title?: string}>,
+ *   blogrollUrl: string,
+ *   elsewhere: Array<{url: string, network: string, label: string}>,
+ *   edges: Array<{from: string, to: string, blogroll: string}>,
+ * }>}
+ */
+async function enrichFromOpenedPage(opened, participant, participantOrigins) {
+  const { metadata, dnsCache, page } = opened;
+  const feeds = await sanitizeFeeds(metadata.feeds, {
+    cache: dnsCache,
+  });
+  const blogrollUrls = await sanitizeBlogrollUrls(metadata.blogrolls, {
+    cache: dnsCache,
+  });
+  const blogrollUrl = blogrollUrls[0] || "";
+  const elsewhere = await collectElsewhereLinks(
+    page,
+    metadata,
+    dnsCache,
+    participant.origin,
+  );
+  const edges = await edgesFromBlogrollAds(
+    participant.origin,
+    blogrollUrls,
+    participantOrigins,
+    dnsCache,
+  );
+
+  return {
+    feeds,
+    blogrollUrl,
+    elsewhere,
+    edges,
+  };
+}
+
 async function captureParticipant(browser, participant, participantOrigins) {
   const opened = await openParticipantHomepage(browser, participant, {
     settle: true,
   });
 
   try {
-    const { metadata, headers, dnsCache, page } = opened;
+    const { metadata, headers, page } = opened;
 
     const png = await page.screenshot({
       type: "png",
@@ -389,24 +436,10 @@ async function captureParticipant(browser, participant, participantOrigins) {
       headers,
     });
 
-    const feeds = await sanitizeFeeds(metadata.feeds, {
-      cache: dnsCache,
-    });
-    const blogrollUrls = await sanitizeBlogrollUrls(metadata.blogrolls, {
-      cache: dnsCache,
-    });
-    const blogrollUrl = blogrollUrls[0] || "";
-    const elsewhere = await collectElsewhereLinks(
-      page,
-      metadata,
-      dnsCache,
-      participant.origin,
-    );
-    const edges = await edgesFromBlogrollAds(
-      participant.origin,
-      blogrollUrls,
+    const enrichment = await enrichFromOpenedPage(
+      opened,
+      participant,
       participantOrigins,
-      dnsCache,
     );
 
     const entry = withEnrichment(
@@ -419,14 +452,14 @@ async function captureParticipant(browser, participant, participantOrigins) {
         frame_reason: framing.reason,
         captured_at: nowISO(),
       },
-      feeds,
-      blogrollUrl,
-      elsewhere,
+      enrichment.feeds,
+      enrichment.blogrollUrl,
+      enrichment.elsewhere,
     );
 
     return {
       entry,
-      edges,
+      edges: enrichment.edges,
     };
   } finally {
     await opened.context.close();
@@ -452,33 +485,7 @@ async function discoverHomepageEnrichment(
   const opened = await openParticipantHomepage(browser, participant);
 
   try {
-    const { metadata, dnsCache, page } = opened;
-    const feeds = await sanitizeFeeds(metadata.feeds, {
-      cache: dnsCache,
-    });
-    const blogrollUrls = await sanitizeBlogrollUrls(metadata.blogrolls, {
-      cache: dnsCache,
-    });
-    const blogrollUrl = blogrollUrls[0] || "";
-    const elsewhere = await collectElsewhereLinks(
-      page,
-      metadata,
-      dnsCache,
-      participant.origin,
-    );
-    const edges = await edgesFromBlogrollAds(
-      participant.origin,
-      blogrollUrls,
-      participantOrigins,
-      dnsCache,
-    );
-
-    return {
-      feeds,
-      blogrollUrl,
-      elsewhere,
-      edges,
-    };
+    return await enrichFromOpenedPage(opened, participant, participantOrigins);
   } finally {
     await opened.context.close();
   }
@@ -539,6 +546,10 @@ const { accepted: participants, rejected } =
 reportRejectedParticipants(rejected);
 
 const existing = await readJSONIfExists(DEFAULT_DATA_PATH, []);
+const previousBlogrollEdges = await readJSONIfExists(
+  DEFAULT_BLOGROLLS_PATH,
+  [],
+);
 
 const previous = existingByOrigin(existing);
 const participantOrigins = new Set(
@@ -600,6 +611,12 @@ try {
             oldEntry.elsewhere,
           ),
         );
+        nextEdges.push(
+          ...carryForwardBlogrollEdges(
+            previousBlogrollEdges,
+            participant.origin,
+          ),
+        );
         process.stderr.write(
           `enrichment refresh failed ${participant.origin}: ${error.message}\n`,
         );
@@ -623,6 +640,9 @@ try {
       process.stdout.write(`captured ${participant.origin}\n`);
     } catch (error) {
       nextEntries.push(fallbackEntry(participant, oldEntry));
+      nextEdges.push(
+        ...carryForwardBlogrollEdges(previousBlogrollEdges, participant.origin),
+      );
 
       process.stderr.write(
         `capture failed ${participant.origin}: ` + `${error.message}\n`,

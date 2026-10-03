@@ -86,6 +86,10 @@
       {% assign asset_version = site.time | date: '%s' %}
     {% endunless %}
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ asset_version }}">
+    <link
+      rel="stylesheet"
+      href="{{ '/assets/css/elsewhere-glyphs.css' | relative_url }}?v={{ asset_version }}"
+    >
     {% assign page_slug = page.url | remove_first: '/' | split: '/' | first | default: 'home' %}
 
     <script

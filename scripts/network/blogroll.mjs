@@ -239,6 +239,41 @@ export function sortBlogrollEdges(edges) {
 }
 
 /**
+ * Keeps prior blogroll edges for one publisher when a sync attempt fails.
+ * Prevents rebuilding blogrolls.json from wiping edges after a transient error.
+ * @param {unknown} previousEdges
+ * @param {string} fromOrigin
+ * @returns {Array<{from: string, to: string, blogroll: string}>}
+ */
+export function carryForwardBlogrollEdges(previousEdges, fromOrigin) {
+  if (!Array.isArray(previousEdges) || typeof fromOrigin !== "string") {
+    return [];
+  }
+
+  const edges = [];
+
+  for (const edge of previousEdges) {
+    if (
+      !edge ||
+      typeof edge !== "object" ||
+      edge.from !== fromOrigin ||
+      typeof edge.to !== "string" ||
+      typeof edge.blogroll !== "string"
+    ) {
+      continue;
+    }
+
+    edges.push({
+      from: edge.from,
+      to: edge.to,
+      blogroll: edge.blogroll,
+    });
+  }
+
+  return edges;
+}
+
+/**
  * @param {string} url
  * @param {{
  *   lookup?: typeof dns.lookup,

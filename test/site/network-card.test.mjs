@@ -19,7 +19,10 @@ async function read(relativePath) {
 
 test("network cards link the primary feed outside the origin card link", async () => {
   const page = await read("network.md");
-  const styles = await read("assets/css/main.css");
+  const styles = [
+    await read("assets/css/main.css"),
+    await read("assets/css/elsewhere-glyphs.css"),
+  ].join("\n");
   const networkDev = await read("_data/network_dev.json");
 
   assert.match(page, /network_site\.feeds/);
@@ -59,7 +62,10 @@ test("network cards link the primary feed outside the origin card link", async (
 
 test("network cards expose elsewhere icons outside the origin link", async () => {
   const page = await read("network.md");
-  const styles = await read("assets/css/main.css");
+  const styles = [
+    await read("assets/css/main.css"),
+    await read("assets/css/elsewhere-glyphs.css"),
+  ].join("\n");
   const sprite = await read("assets/icons/elsewhere-sprite.svg");
   const networkDev = await read("_data/network_dev.json");
 

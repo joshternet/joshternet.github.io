@@ -67,19 +67,11 @@ jobs:
       - name: Decide whether sync is needed
         id: preflight
         shell: bash
-        env:
-          EVENT_NAME: ${{ github.event_name }}
         run: |
-          if [ "$EVENT_NAME" != "schedule" ]; then
-            echo "needs_sync=true" >> "$GITHUB_OUTPUT"
-            echo "Non-scheduled event: running full network sync."
-          else
-            # Hourly sync always runs so registry membership, advertised
-            # feeds, and elsewhere (rel=me) icons stay aligned even when
-            # screenshots are still fresh.
-            echo "needs_sync=true" >> "$GITHUB_OUTPUT"
-            echo "Scheduled event: running network sync for membership, feeds, and elsewhere."
-          fi
+          # Always run: registry membership, feeds, blogrolls, and elsewhere
+          # must stay aligned even when screenshots are still fresh.
+          echo "needs_sync=true" >> "$GITHUB_OUTPUT"
+          echo "Running network sync for membership, feeds, elsewhere, and captures."
 
       - name: Install dependencies
         if: steps.preflight.outputs.needs_sync == 'true'
