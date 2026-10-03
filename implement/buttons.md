@@ -1,18 +1,18 @@
 ---
 layout: default
-title: Joshternet buttons
+title: Official Joshternet web buttons and embeds
 description: >-
-  Official Joshternet web buttons. One embed snippet shows the registry state
-  for the current site, or invites the site to join.
+  Official Joshternet web buttons: one embed snippet shows registry state for
+  the current site—Verified Josh, Verified Non-Josh, Undeclared, or Join.
+keywords: >-
+  Joshternet button, web button embed, registry badge, /.well-known/josh
 permalink: /implement/buttons/
 nav_title: Buttons
 ---
 
 # Joshternet buttons
 
-Official IndieWeb-style web buttons for independent sites. The Joshternet
-registry is the only source of truth for which button appears. The embed does
-not read `/.well-known/josh` and does not decide Josh identity on its own.
+One embed shows the registry state for the current site.
 
 ## Embed
 
@@ -25,8 +25,8 @@ code your domain.
 <script async src="http://127.0.0.1:8790/embed/joshternet-button.js"></script>
 ```
 
-Start the button Worker locally with `npm --prefix workers/joshternet-button run
-dev` so that development embed works.
+Start the local stack with `npm run dev` (Jekyll plus this Worker on
+`:8790`) so that development embed works.
 
 {% else %}
 

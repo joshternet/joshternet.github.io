@@ -19,18 +19,73 @@
       {% endfor %}
     {% endcapture %}
     {% assign wander_frame_sources = wander_frame_sources | strip %}
+    {% capture activity_image_origins %}
+      {% assign seen_activity_image_origins = " " %}
+      {% if page.url == '/activity/' %}
+        {% for item in site.data.activity.primary %}
+          {% include csp-https-origin.html origin=item.image_origin %}
+          {% if csp_https_origin != "" %}
+            {% assign origin_token = " " | append: csp_https_origin | append: " " %}
+            {% unless seen_activity_image_origins contains origin_token %}
+              {{ csp_https_origin }}
+              {% assign seen_activity_image_origins = seen_activity_image_origins | append: csp_https_origin | append: " " %}
+            {% endunless %}
+          {% endif %}
+        {% endfor %}
+      {% elsif page.url == '/search/' %}
+        {% for item in site.data.search_index.documents %}
+          {% include csp-https-origin.html origin=item.image_origin %}
+          {% if csp_https_origin != "" %}
+            {% assign origin_token = " " | append: csp_https_origin | append: " " %}
+            {% unless seen_activity_image_origins contains origin_token %}
+              {{ csp_https_origin }}
+              {% assign seen_activity_image_origins = seen_activity_image_origins | append: csp_https_origin | append: " " %}
+            {% endunless %}
+          {% endif %}
+        {% endfor %}
+      {% elsif page.url contains '/topics/' %}
+        {% for neighborhood in site.data.topic_views.neighborhoods %}
+          {% for member in neighborhood.members %}
+            {% for item in member.articles %}
+              {% include csp-https-origin.html origin=item.image_origin %}
+              {% if csp_https_origin != "" %}
+                {% assign origin_token = " " | append: csp_https_origin | append: " " %}
+                {% unless seen_activity_image_origins contains origin_token %}
+                  {{ csp_https_origin }}
+                  {% assign seen_activity_image_origins = seen_activity_image_origins | append: csp_https_origin | append: " " %}
+                {% endunless %}
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        {% endfor %}
+      {% endif %}
+    {% endcapture %}
+    {% assign activity_image_origins = activity_image_origins | strip_newlines | strip | split: ' ' | join: ' ' %}
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' https://cloud.umami.is{% if jekyll.environment == "development" %} http://127.0.0.1:8790{% endif %}{% if page.turnstile %} https://challenges.cloudflare.com{% endif %}; connect-src 'self' https://gateway.umami.is{% if jekyll.environment == "development" %} http://127.0.0.1:8790{% endif %}{% if page.turnstile %} https://challenges.cloudflare.com{% endif %}{% if page.declaration_check %}{% if jekyll.environment == "development" %} http://127.0.0.1:8789{% else %} {{ site.declaration_check.api_origin }}{% endif %}{% endif %}{% if page.seed_nomination %}{% if jekyll.environment == "development" %} http://127.0.0.1:8787{% else %} {{ site.seed_nominations.api_origin }}{% endif %}{% endif %}; style-src 'self'; img-src 'self' data:{% if jekyll.environment == "development" %} https://joshternet.org http://127.0.0.1:8790{% endif %}; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src {% if page.allow_frames %}{% if wander_frame_sources != "" %}{{ wander_frame_sources }}{% else %}'none'{% endif %}{% elsif page.turnstile %}https://challenges.cloudflare.com{% else %}'none'{% endif %}; media-src 'none'; manifest-src 'self'; worker-src 'none'"
+      content="default-src 'self'; script-src 'self' https://cloud.umami.is{% if jekyll.environment == "development" %} http://127.0.0.1:8790 http://127.0.0.1:35729{% endif %}{% if page.turnstile %} https://challenges.cloudflare.com{% endif %}; connect-src 'self' https://gateway.umami.is{% if jekyll.environment == "development" %} http://127.0.0.1:8790 ws://127.0.0.1:35729 http://127.0.0.1:35729{% endif %}{% if page.turnstile %} https://challenges.cloudflare.com{% endif %}{% if page.declaration_check %}{% if jekyll.environment == "development" %} http://127.0.0.1:8789{% else %} {{ site.declaration_check.api_origin }}{% endif %}{% endif %}{% if page.seed_nomination %}{% if jekyll.environment == "development" %} http://127.0.0.1:8787{% else %} {{ site.seed_nominations.api_origin }}{% endif %}{% endif %}; style-src 'self'; img-src 'self' data:{% if jekyll.environment == "development" %} https://joshternet.org http://127.0.0.1:8790{% endif %}{% if activity_image_origins != "" %} {{ activity_image_origins }}{% endif %}; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src {% if page.allow_frames %}{% if wander_frame_sources != "" %}{{ wander_frame_sources }}{% else %}'none'{% endif %}{% elsif page.turnstile %}https://challenges.cloudflare.com{% else %}'none'{% endif %}; media-src 'none'; manifest-src 'self'; worker-src 'none'"
     >
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if page.joshternet_analysis == 'derived' or layout.joshternet_analysis == 'derived' %}
+      <meta name="joshternet-analysis" content="derived">
+    {% endif %}
+    {% if page.robots %}
+      <meta name="robots" content="{{ page.robots | escape }}">
+    {% endif %}
     <title>
       {% if page.url == '/' -%}
         {{- page.title | default: site.title | escape -}}
+      {%- elsif page.title and page.title contains site.title -%}
+        {{- page.title | escape -}}
       {%- else -%}
         {{- page.title | default: site.title | escape }} | {{ site.title | escape -}}
       {%- endif %}
     </title>
+    {% if page.keywords %}
+      <meta name="keywords" content="{{ page.keywords | escape }}">
+    {% elsif site.keywords %}
+      <meta name="keywords" content="{{ site.keywords | escape }}">
+    {% endif %}
     {% capture jekyll_seo %}{% seo title=false %}{% endcapture %}
     {% assign jekyll_generator_meta = '<meta name="generator" content="Jekyll v'
       | append: jekyll.version
@@ -52,6 +107,7 @@
       {% endfor %}
     {% endif %}
     {{ jekyll_seo | strip }}
+    {% include derived-jsonld.html %}
     {% if page.url == '/' %}
       <script type="application/ld+json">
         {
@@ -77,6 +133,9 @@
       type="text/xml"
       href="{{ '/assets/network/joshternet.opml' | relative_url }}"
     >
+    {% if site.webmention.endpoint %}
+      <link rel="webmention" href="{{ site.webmention.endpoint }}">
+    {% endif %}
     {% if jekyll.environment == 'development' %}
       {% assign asset_version = site.time | date: '%s' %}
     {% else %}
@@ -118,12 +177,9 @@
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
     {% if page.chrome != false %}
-      {% assign implement_section = false %}
-      {% if page.url == '/implement/' or page.url contains '/implement/' %}
-        {% assign implement_section = true %}
-      {% endif %}
+      {% include site-nav-sections.html %}
       <header
-        class="site-header{% if implement_section %} site-header--section-implement{% endif %}"
+        class="site-header{% if about_section %} site-header--section-about{% endif %}{% if network_section %} site-header--section-network{% endif %}{% if implement_section %} site-header--section-implement{% endif %}{% if joshbot_section %} site-header--section-joshbot{% endif %}"
       >
         <div class="site-header__top">
           <div class="site-header__inner h-card">
@@ -144,7 +200,34 @@
         </div>
 
         <nav
+          class="site-nav-secondary site-nav-secondary--about{% if about_section %} is-current-section{% endif %}"
+          data-nav-secondary="about"
+          aria-label="About"
+          {% unless about_section %}
+            hidden
+          {% endunless %}
+        >
+          <ul class="site-nav-secondary__list">
+            {% include site-nav-about-children.html %}
+          </ul>
+        </nav>
+
+        <nav
+          class="site-nav-secondary site-nav-secondary--network{% if network_section %} is-current-section{% endif %}"
+          data-nav-secondary="network"
+          aria-label="Network"
+          {% unless network_section %}
+            hidden
+          {% endunless %}
+        >
+          <ul class="site-nav-secondary__list">
+            {% include site-nav-network-children.html %}
+          </ul>
+        </nav>
+
+        <nav
           class="site-nav-secondary site-nav-secondary--implement{% if implement_section %} is-current-section{% endif %}"
+          data-nav-secondary="implement"
           aria-label="Implement"
           {% unless implement_section %}
             hidden
@@ -154,8 +237,21 @@
             {% include site-nav-implement-children.html %}
           </ul>
         </nav>
+
+        <nav
+          class="site-nav-secondary site-nav-secondary--joshbot{% if joshbot_section %} is-current-section{% endif %}"
+          data-nav-secondary="joshbot"
+          aria-label="JoshBot"
+          {% unless joshbot_section %}
+            hidden
+          {% endunless %}
+        >
+          <ul class="site-nav-secondary__list">
+            {% include site-nav-joshbot-children.html %}
+          </ul>
+        </nav>
       </header>
-      <script src="{{ '/assets/js/site-nav.js' | relative_url }}" defer></script>
+      <script src="{{ '/assets/js/site-nav.js' | relative_url }}?v={{ asset_version }}" defer></script>
     {% endif %}
 
     <main
@@ -171,17 +267,32 @@
     {% if page.chrome != false and page.footer != false %}
       <footer class="site-footer">
         <div class="site-footer__inner">
-          <span>Joshternet</span>
+          <span class="site-footer__brand">Joshternet</span>
 
           <nav class="site-footer__nav" aria-label="Footer">
             <a href="{{ '/privacy/' | relative_url }}">Privacy</a>
             <a href="{{ '/security/' | relative_url }}">Security</a>
             <a href="mailto:hello@joshternet.org">Contact</a>
-            <a href="https://web.libera.chat/#joshternet">#joshternet</a>
+            <a
+              href="https://web.libera.chat/#joshternet"
+              target="_blank"
+              rel="noopener noreferrer"
+              >#joshternet<span aria-hidden="true">↗</span><span class="visually-hidden">(opens off this site)</span></a
+            >
             {% if page.url == '/' %}
-              <a href="https://github.com/joshternet" rel="me">GitHub</a>
+              <a
+                href="https://github.com/joshternet"
+                rel="me noopener noreferrer"
+                target="_blank"
+                >GitHub<span aria-hidden="true">↗</span><span class="visually-hidden">(opens off this site)</span></a
+              >
             {% else %}
-              <a href="https://github.com/joshternet">GitHub</a>
+              <a
+                href="https://github.com/joshternet"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub<span aria-hidden="true">↗</span><span class="visually-hidden">(opens off this site)</span></a
+              >
             {% endif %}
           </nav>
 

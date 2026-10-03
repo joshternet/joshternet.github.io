@@ -2,8 +2,10 @@
 layout: default
 title: JoshBot Discovery and Registry Crawler
 description: >-
-  Information for website operators about the Joshternet discovery,
-  verification, and public registry crawler.
+  How JoshBot discovers, verifies, and lists participating websites for the
+  Joshternet public registry—what operators can expect from the crawler.
+keywords: >-
+  JoshBot, Joshternet crawler, registry discovery, /.well-known/josh, verification
 seo:
   type: WebPage
   name: JoshBot

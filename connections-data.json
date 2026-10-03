@@ -1,0 +1,23 @@
+---
+layout: null
+permalink: /connections/data.json
+---
+{% assign network_sites = site.data.network %}
+{% if jekyll.environment == 'development' %}
+  {% assign network_sites = network_sites | concat: site.data.network_dev %}
+{% endif %}
+{% assign connection_edges = site.data.connections.edges | default: empty %}
+{
+  "participants": [
+    {% for network_site in network_sites %}
+      {
+        "origin": {{ network_site.origin | jsonify }},
+        "domain": {{ network_site.domain | jsonify }},
+        "title": {{ network_site.title | default: network_site.domain | jsonify }},
+        "description": {{ network_site.description | default: "" | jsonify }},
+        "screenshot": {{ network_site.screenshot | default: "" | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ],
+  "connections": {{ connection_edges | jsonify }}
+}

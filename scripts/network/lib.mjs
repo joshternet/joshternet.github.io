@@ -48,6 +48,40 @@ export function normalizeText(value) {
   return value.replace(/\s+/g, " ").trim();
 }
 
+const NAMED_ENTITIES = {
+  amp: "&",
+  lt: "<",
+  gt: ">",
+  quot: '"',
+  apos: "'",
+  nbsp: " ",
+};
+
+/**
+ * Decodes HTML character references (for URLs and text before semantics).
+ * @param {string} input
+ * @returns {string}
+ */
+export function decodeHtmlEntities(input) {
+  if (typeof input !== "string" || !input) {
+    return "";
+  }
+
+  return input
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => {
+      const code = Number.parseInt(hex, 16);
+      return Number.isFinite(code) ? String.fromCodePoint(code) : "";
+    })
+    .replace(/&#(\d+);/g, (_, dec) => {
+      const code = Number.parseInt(dec, 10);
+      return Number.isFinite(code) ? String.fromCodePoint(code) : "";
+    })
+    .replace(/&([a-zA-Z]+);/g, (match, name) => {
+      const key = name.toLowerCase();
+      return Object.hasOwn(NAMED_ENTITIES, key) ? NAMED_ENTITIES[key] : match;
+    });
+}
+
 export function canonicalOrigin(value) {
   if (typeof value !== "string" || value.trim() !== value || value === "") {
     throw new Error("origin must be a non-empty canonical URL");

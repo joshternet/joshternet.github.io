@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://joshternet.org/schemas/blogrolls.schema.json",
+  "title": "Joshternet publisher blogroll observations",
+  "type": "object",
+  "required": ["schema_version", "edge_count"],
+  "properties": {
+    "schema_version": { "type": "integer", "minimum": 1 },
+    "generated_at": { "type": "string" },
+    "edge_count": { "type": "integer", "minimum": 0 },
+    "advertisement_count": { "type": "integer", "minimum": 0 },
+    "advertisements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["origin", "blogroll", "source_authority"],
+        "properties": {
+          "origin": { "type": "string" },
+          "blogroll": { "type": "string" },
+          "source_authority": { "type": "string" },
+          "relationship_evidence": { "type": "boolean" },
+          "reason": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "edges": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "blogroll"],
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "blogroll": { "type": "string" },
+          "source_authority": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

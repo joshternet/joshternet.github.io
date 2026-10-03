@@ -1,6 +1,12 @@
 ---
 layout: default
 title: "Joshternet: An Open Network for Joshes and Independent Websites"
+description: >-
+  Joshternet connects people who identify as Josh and the independent websites
+  they call home—an open, decentralized network built on shared web conventions.
+keywords: >-
+  Joshternet, Josh network, independent websites, indie web, open web,
+  /.well-known/josh, personal websites
 ---
 
 # Joshternet

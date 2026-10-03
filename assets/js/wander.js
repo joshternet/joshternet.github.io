@@ -239,8 +239,24 @@
     }
   }
 
-  function fallbackReason(site) {
+  /**
+   * Hub origin must not be framed from local Jekyll (`127.0.0.1`) either:
+   * CSP omits `site.url`, so an iframe would fail closed.
+   * @param {{origin: string, domain: string}} site
+   * @returns {boolean}
+   */
+  function isHubOrigin(site) {
     if (site.origin === window.location.origin) {
+      return true;
+    }
+
+    return (
+      site.domain === "joshternet.org" || site.domain === "www.joshternet.org"
+    );
+  }
+
+  function fallbackReason(site) {
+    if (isHubOrigin(site)) {
       return {
         message: "Joshternet isn’t embedded inside its own Wander view.",
         kind: "self",
@@ -414,7 +430,7 @@
       site.embeddable &&
       site.frame_reason === "allowed" &&
       site.origin.startsWith("https://") &&
-      site.origin !== window.location.origin
+      !isHubOrigin(site)
     ) {
       stage.innerHTML = `
                 <iframe
@@ -463,9 +479,7 @@
 
   fetch("/network/data.json", {
     credentials: "same-origin",
-    headers: {
-      Accept: "application/json",
-    },
+    headers: { Accept: "application/json" },
   })
     .then((response) => {
       if (!response.ok) {
@@ -476,10 +490,14 @@
     })
     .then((data) => {
       sites = validateSites(data);
+      restore();
 
-      const restored = restore();
+      if (currentOrigin) {
+        render(findSite(currentOrigin));
+        return;
+      }
 
-      if (!restored) {
+      if (bag.length === 0) {
         rebuildBag();
       }
 

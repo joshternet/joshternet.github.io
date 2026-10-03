@@ -1,0 +1,5 @@
+---
+layout: null
+permalink: /search/index.json
+---
+{{ site.data.search_index | jsonify }}

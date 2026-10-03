@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-03T12:01:53.395Z",
+  "participant_count": 5,
+  "community_count": 291,
+  "publication_count": 399,
+  "connection_count": 2,
+  "selection": {
+    "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
+    "connection": "first edge after stable from, to, relation sort"
+  },
+  "fresh": [
+    {
+      "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
+      "title": "Worth Wandering: Low-tech Magazine",
+      "summary": "A magazine about questioning technological progress, served from a tiny computer on a balcony in Barcelona that occasionally disappears from the internet because the sun stopped cooperating.",
+      "published_at": "2026-10-02T08:00:00.000Z",
+      "content_type": "article",
+      "language": "en",
+      "site_origin": "https://joshuamorris.info",
+      "site_title": "Joshua Morris",
+      "domain": "joshuamorris.info",
+      "tags": [
+        {
+          "slug": "notes",
+          "label": "notes"
+        },
+        {
+          "slug": "hardware",
+          "label": "hardware"
+        },
+        {
+          "slug": "web-development",
+          "label": "web development"
+        },
+        {
+          "slug": "worth-wandering",
+          "label": "worth wandering"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "hardware",
+          "label": "hardware"
+        },
+        {
+          "slug": "web-development",
+          "label": "web development"
+        }
+      ],
+      "image": "",
+      "image_origin": ""
+    },
+    {
+      "url": "https://joshtronic.com/2026/09/27/rediscovering-long-form-email/",
+      "title": "Rediscovering Long-Form Email",
+      "summary": "From humble beginnings in eLearning, I have somehow spent the majority of my career thus far in or around email. Not to flex, but I am an email expert. Cold, hot, and everything in between. I'm one of very few people on the planet that can say they've personally been responsible for sending 10,000,000 emails a day. I've recently nurtured an email-infrastructure-as-a-service platform from the groun",
+      "published_at": "2026-09-27T00:00:00.000Z",
+      "content_type": "article",
+      "language": "en",
+      "site_origin": "https://joshtronic.com",
+      "site_title": "Joshtronic",
+      "domain": "joshtronic.com",
+      "tags": [],
+      "neighborhoods": [],
+      "image": "",
+      "image_origin": ""
+    }
+  ],
+  "neighborhood": {
+    "slug": "design",
+    "label": "design",
+    "member_count": 3
+  },
+  "connection": {
+    "from": "https://joshuamorris.info",
+    "to": "https://joshternet.org",
+    "relation": "content-link",
+    "label": "linked to",
+    "from_title": "Joshua Morris",
+    "to_title": "Joshternet",
+    "href": "https://joshternet.org/",
+    "page": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
+    "text": "Joshternet.org",
+    "evidence_count": 4
+  }
+}

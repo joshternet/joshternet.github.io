@@ -2,18 +2,18 @@
 layout: default
 title: Publish /.well-known/josh with Eleventy
 description: >-
-  How to keep a Joshternet declaration as josh.json in an Eleventy site and
-  publish it at the extensionless /.well-known/josh path.
+  Keep a Joshternet declaration as josh.json in an Eleventy site and publish it
+  at the extensionless /.well-known/josh path with the right Content-Type checks.
+keywords: >-
+  Eleventy, /.well-known/josh, Joshternet declaration, static site recipe
 seo:
   type: WebPage
   name: Eleventy
-permalink: /implement/eleventy/
+permalink: /implement/platforms/eleventy/
 nav_title: Eleventy
 ---
 
 # Publish with Eleventy
-
-This page is the Eleventy recipe. It is non-normative. [RFC-JOSH-0002][rfc-0002] defines the protocol, and the [implementation guide][implement] explains participation and Josh identity. Eleventy's job is only to publish the declaration at the path the protocol already requires.
 
 The public resource is exactly `/.well-known/josh`. It does not become `/.well-known/josh.json`.
 
@@ -89,5 +89,4 @@ Confirm all of the following:
 - the extensionless path `/.well-known/josh`
 - no redirect to a different origin
 
-[rfc-0002]: https://github.com/joshternet/spec/blob/main/rfcs/0002-well-known-josh.md
 [implement]: /implement/

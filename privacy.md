@@ -1,9 +1,11 @@
 ---
 layout: default
-title: Privacy and Analytics
+title: Privacy and Analytics on joshternet.org
 description: >-
-  Privacy information for joshternet.org, including the site's use of
-  privacy-focused web analytics.
+  Privacy information for joshternet.org, including how the site uses
+  privacy-focused web analytics and what is—and is not—collected about visitors.
+keywords: >-
+  Joshternet privacy, analytics, Umami, visitor data, independent websites
 permalink: /privacy/
 ---
 

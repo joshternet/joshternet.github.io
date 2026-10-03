@@ -1,0 +1,41 @@
+{% comment %}
+  Goal: Page-specific JSON-LD for derived exploration pages. Complements
+  jekyll-seo-tag. Search stays noindex and skips this graph. Homepage already
+  publishes the Project node.
+{% endcomment %}
+{% if page.robots == 'noindex' %}
+{% elsif page.url == '/' %}
+
+{% elsif page.seo.type %}
+  {% assign jsonld_type = page.seo.type | default: 'WebPage' %}
+  {% assign jsonld_name = page.seo.name | default: page.title %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": {{ jsonld_type | jsonify }},
+      "@id": {{ page.url | absolute_url | append: '#page' | jsonify }},
+      "name": {{ jsonld_name | jsonify }},
+      "headline": {{ page.title | jsonify }},
+      "description": {{ page.description | jsonify }},
+      "url": {{ page.url | absolute_url | jsonify }},
+      "inLanguage": {{ site.lang | default: 'en' | jsonify }},
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": {{ site.title | jsonify }},
+        "url": {{ '/' | absolute_url | jsonify }}
+      },
+      "about": {
+        "@id": {{ '/#project' | absolute_url | jsonify }}
+      }
+      {%- if page.url contains '/topics/' and page.slug -%}
+      ,
+      "mainEntity": {
+        "@type": "DefinedTerm",
+        "name": {{ jsonld_name | jsonify }},
+        "url": {{ page.url | absolute_url | jsonify }},
+        "inDefinedTermSet": {{ '/topics/' | absolute_url | jsonify }}
+      }
+      {%- endif -%}
+    }
+  </script>
+{% endif %}

@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-03T12:00:56.613Z",
+  "edge_count": 2,
+  "edges": [
+    {
+      "from": "https://joshuamorris.info",
+      "to": "https://joshternet.org",
+      "relation": "content-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://joshternet.org/",
+      "text": "Joshternet.org",
+      "rel": [
+        "noopener",
+        "noreferrer",
+        "octo:cites"
+      ],
+      "page": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
+      "evidence_count": 4,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
+          "href": "https://joshternet.org/",
+          "text": "Joshternet.org",
+          "rel": [
+            "noopener",
+            "noreferrer",
+            "octo:cites"
+          ]
+        },
+        {
+          "class": "observed",
+          "page": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
+          "href": "https://joshternet.org/?utm_source=joshuamorris.info&utm_medium=referral",
+          "text": "Joshternet.org",
+          "rel": [
+            "noopener",
+            "noreferrer"
+          ]
+        },
+        {
+          "class": "observed",
+          "page": "https://joshuamorris.info/now/",
+          "href": "https://joshternet.org/?utm_source=joshuamorris.info&utm_medium=referral",
+          "text": "The Joshternet",
+          "rel": [
+            "noopener",
+            "noreferrer"
+          ]
+        },
+        {
+          "class": "observed",
+          "page": "https://joshuamorris.info/seeking/",
+          "href": "https://joshternet.org/implement/",
+          "text": "I'm seeking participants in the Joshternet to test out the JoshBot crawler and prove it works.",
+          "rel": [
+            "noopener",
+            "noreferrer"
+          ]
+        }
+      ]
+    },
+    {
+      "from": "https://joshuamorris.info",
+      "to": "https://joshtronic.com",
+      "relation": "content-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://joshtronic.com/?utm_source=joshuamorris.info&utm_medium=referral",
+      "text": "Josh Sherman",
+      "rel": [
+        "noopener",
+        "noreferrer"
+      ],
+      "page": "https://joshuamorris.info/friends/",
+      "evidence_count": 1,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://joshuamorris.info/friends/",
+          "href": "https://joshtronic.com/?utm_source=joshuamorris.info&utm_medium=referral",
+          "text": "Josh Sherman",
+          "rel": [
+            "noopener",
+            "noreferrer"
+          ]
+        }
+      ]
+    }
+  ]
+}

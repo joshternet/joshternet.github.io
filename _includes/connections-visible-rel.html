@@ -1,0 +1,16 @@
+{% comment %}
+  Goal: Show publisher rel tokens in connection cards, never browser target
+  tokens such as noopener/noreferrer. Those stay on the <a> element.
+{% endcomment %}
+{% assign visible_rel = '' %}
+{% for token in include.rel %}
+  {% if token != 'noopener' and token != 'noreferrer' %}
+    {% if visible_rel != '' %}
+      {% assign visible_rel = visible_rel | append: ' ' %}
+    {% endif %}
+    {% assign visible_rel = visible_rel | append: token %}
+  {% endif %}
+{% endfor %}
+{% if visible_rel != '' %}
+  · rel={{ visible_rel | escape }}
+{% endif %}

@@ -1,0 +1,277 @@
+/**
+ * Goal: Stable first-party NLP topics from offline HTML fixtures.
+ */
+import assert from "node:assert/strict";
+import test from "node:test";
+
+import {
+  contentIndexChildUrls,
+  contentIndexSeedUrls,
+  topicHubChildUrls,
+  topicHubSeedUrls,
+  urlsFromSitemap,
+} from "../../scripts/nlp/crawl.mjs";
+import { isNonSubjectSlug } from "../../scripts/nlp/evidence.mjs";
+import {
+  candidatePhrases,
+  extractTopicsFromPages,
+  tokenize,
+} from "../../scripts/nlp/extract.mjs";
+import {
+  buildAllConnections,
+  buildTopicsHub,
+  mergeSubjects,
+  subjectsFromHtml,
+} from "../../scripts/nlp/subjects.mjs";
+import { mentionConnections } from "../../scripts/nlp/webmentions.mjs";
+import { subjectsFromRssOrAtom } from "../../scripts/nlp/feeds.mjs";
+
+test("tokenize drops stopwords and short tokens", () => {
+  assert.deepEqual(tokenize("The car and the programming language"), [
+    "car",
+    "programming",
+    "language",
+  ]);
+  assert.ok(!tokenize("another first every made page").includes("another"));
+});
+
+test("candidatePhrases emits unigrams and bigrams", () => {
+  assert.deepEqual(candidatePhrases(["open", "source", "software"]), [
+    "open",
+    "source",
+    "software",
+    "open source",
+    "source software",
+  ]);
+});
+
+test("filler unigrams are not subjects", () => {
+  assert.equal(isNonSubjectSlug("another"), true);
+  assert.equal(isNonSubjectSlug("first"), true);
+  assert.equal(isNonSubjectSlug("page"), true);
+  assert.equal(isNonSubjectSlug("notes"), true);
+  assert.equal(isNonSubjectSlug("across"), true);
+  assert.equal(isNonSubjectSlug("about-joshcanhelp"), true);
+  assert.equal(isNonSubjectSlug("about-joshcanhelp-27-posts"), true);
+  assert.equal(isNonSubjectSlug("ai"), false);
+  assert.equal(isNonSubjectSlug("landscaping"), false);
+  assert.equal(isNonSubjectSlug("computer-science"), false);
+  assert.equal(isNonSubjectSlug("artificial-intelligence"), false);
+  assert.equal(isNonSubjectSlug("dewey-decimal-system"), false);
+});
+
+test("extractTopicsFromPages invents stable shared topics from body text", () => {
+  const topics = extractTopicsFromPages(
+    [
+      {
+        url: "https://a.example/posts/rust",
+        title: "Rust notes",
+        text: "Rust programming language systems programming language memory safety",
+      },
+      {
+        url: "https://a.example/about",
+        title: "About",
+        text: "I write about programming language design and systems",
+      },
+    ],
+    8,
+  );
+
+  assert.ok(topics.length > 0);
+  assert.ok(topics.every((topic) => topic.sources.includes("nlp")));
+  assert.ok(topics.some((topic) => topic.slug.includes("programming")));
+});
+
+test("urlsFromSitemap keeps same-origin locs and skips well-known", () => {
+  const urls = urlsFromSitemap(
+    `<?xml version="1.0"?>
+    <urlset>
+      <url><loc>https://a.example/posts/one</loc></url>
+      <url><loc>https://a.example/.well-known/josh</loc></url>
+      <url><loc>https://other.example/out</loc></url>
+    </urlset>`,
+    "https://a.example",
+  );
+
+  assert.deepEqual(urls, ["https://a.example/posts/one"]);
+});
+
+test("writing indexes are seeded even when they are missing from the sitemap", () => {
+  const seeds = contentIndexSeedUrls("https://joshtronic.com");
+  assert.ok(seeds.includes("https://joshtronic.com/notes/"));
+  assert.ok(seeds.includes("https://joshtronic.com/blog/"));
+  assert.deepEqual(
+    contentIndexChildUrls(
+      "https://joshtronic.com",
+      "https://joshtronic.com/notes/",
+      [
+        { href: "/notes/css-grid/" },
+        { href: "/notes/" },
+        { href: "/notes/photo.png" },
+        { href: "mailto:hi@example.com" },
+        { href: "https://other.example/notes/css-grid/" },
+      ],
+    ),
+    ["https://joshtronic.com/notes/css-grid/"],
+  );
+});
+
+test("topic hubs are seeded even when they are missing from the sitemap", () => {
+  const seeds = topicHubSeedUrls("https://joshuamorris.info");
+  assert.ok(seeds.includes("https://joshuamorris.info/topics/"));
+  assert.ok(seeds.includes("https://joshuamorris.info/tags/"));
+  assert.deepEqual(
+    topicHubChildUrls(
+      "https://joshuamorris.info",
+      "https://joshuamorris.info/topics/",
+      [
+        { href: "/topics/ai/" },
+        { href: "/topics/another/" },
+        { href: "/topics/" },
+        { href: "https://other.example/topics/ai/" },
+      ],
+    ),
+    ["https://joshuamorris.info/topics/ai/"],
+  );
+});
+
+test("subjectsFromHtml reads a publisher topics directory", () => {
+  const subjects = subjectsFromHtml(
+    `<html><body>
+      <a href="/topics/ai/">Artificial intelligence</a>
+      <a href="/topics/another/">Another</a>
+      <a href="/about/">About</a>
+    </body></html>`,
+    "https://joshuamorris.info/topics/",
+  );
+  const slugs = subjects.map((subject) => subject.slug).sort();
+
+  assert.deepEqual(slugs, ["artificial-intelligence"]);
+  assert.equal(subjects[0].community_eligible, true);
+  assert.ok(subjects[0].sources.includes("topic-hub"));
+});
+
+test("subjectsFromHtml reads microformats, meta, and octothorpes", () => {
+  const subjects = subjectsFromHtml(
+    `<html><body>
+      <span class="p-category">Indieweb</span>
+      <a rel="octo:octothorpes" href="https://octothorp.es/~/cars">cars</a>
+      <meta property="article:tag" content="Gardening">
+      <meta name="keywords" content="bicycles, maps">
+    </body></html>`,
+    "https://a.example/post",
+  );
+  const slugs = subjects.map((subject) => subject.slug).sort();
+
+  assert.deepEqual(slugs, [
+    "bicycles",
+    "cars",
+    "gardening",
+    "indieweb",
+    "maps",
+  ]);
+});
+
+test("mergeSubjects unions sources without inventing synonyms", () => {
+  const merged = mergeSubjects(
+    [{ slug: "cars", label: "cars", sources: ["nlp"], score: 0.5 }],
+    [{ slug: "cars", label: "Cars", sources: ["octothorpe"], pages: [] }],
+  );
+
+  assert.equal(merged.length, 1);
+  assert.deepEqual(merged[0].sources.sort(), ["nlp", "octothorpe"]);
+});
+
+test("shared subjects do not create topic pair edges", () => {
+  const edges = buildAllConnections({
+    participantOrigins: new Set(["https://a.example", "https://b.example"]),
+    originLinks: [],
+    originSubjects: [
+      {
+        origin: "https://a.example",
+        subjects: [
+          {
+            slug: "programming",
+            label: "programming",
+            sources: ["nlp"],
+            pages: [{ url: "https://a.example/p", title: "P" }],
+          },
+        ],
+      },
+      {
+        origin: "https://b.example",
+        subjects: [
+          {
+            slug: "programming",
+            label: "programming",
+            sources: ["feed"],
+            pages: [{ url: "https://b.example/q", title: "Q" }],
+          },
+        ],
+      },
+    ],
+  });
+
+  assert.equal(edges.length, 0);
+});
+
+test("buildTopicsHub lists equal-weight sites per slug", () => {
+  const hub = buildTopicsHub([
+    {
+      origin: "https://b.example",
+      domain: "b.example",
+      title: "B",
+      subjects: [{ slug: "maps", label: "maps", sources: ["nlp"], pages: [] }],
+    },
+    {
+      origin: "https://a.example",
+      domain: "a.example",
+      title: "A",
+      subjects: [
+        { slug: "maps", label: "Maps", sources: ["octothorpe"], pages: [] },
+      ],
+    },
+  ]);
+
+  assert.equal(hub.length, 1);
+  assert.equal(hub[0].sites.length, 2);
+  assert.equal(hub[0].sites[0].domain, "a.example");
+});
+
+test("subjectsFromRssOrAtom parses category tags", () => {
+  const subjects = subjectsFromRssOrAtom(`<?xml version="1.0"?>
+    <rss><channel>
+      <item>
+        <title>Hello</title>
+        <link>https://a.example/1</link>
+        <category>Photography</category>
+      </item>
+    </channel></rss>`);
+
+  assert.equal(subjects[0].slug, "photography");
+  assert.ok(subjects[0].sources.includes("feed"));
+  assert.equal(subjects[0].community_eligible, true);
+});
+
+test("mentionConnections only bridges current participants", () => {
+  const edges = mentionConnections(
+    {
+      "https://b.example/post": [
+        {
+          url: "https://a.example/reply",
+          content: { text: "nice post" },
+        },
+        {
+          url: "https://outsider.example/reply",
+          content: { text: "hi" },
+        },
+      ],
+    },
+    new Set(["https://a.example", "https://b.example"]),
+  );
+
+  assert.equal(edges.length, 1);
+  assert.equal(edges[0].relation, "mention");
+  assert.equal(edges[0].from, "https://a.example");
+  assert.equal(edges[0].to, "https://b.example");
+});

@@ -1,0 +1,31 @@
+{% comment %}
+  Goal: Shared About/Network/Implement/JoshBot section flags for layout and nav.
+  Sets about_section, network_section, implement_section, joshbot_section.
+{% endcomment %}
+{% assign about_section = false %}
+{% if page.url == '/about/'
+  or page.url == '/community/'
+  or page.url == '/governance/'
+  or page.url == '/privacy/'
+  or page.url == '/security/'
+%}
+  {% assign about_section = true %}
+{% endif %}
+{% assign network_section = false %}
+{% if page.url == '/network/'
+  or page.url == '/connections/'
+  or page.url == '/topics/'
+  or page.url contains '/topics/'
+  or page.url == '/activity/'
+  or page.url == '/data/'
+%}
+  {% assign network_section = true %}
+{% endif %}
+{% assign implement_section = false %}
+{% if page.url == '/implement/' or page.url contains '/implement/' %}
+  {% assign implement_section = true %}
+{% endif %}
+{% assign joshbot_section = false %}
+{% if page.url == '/joshbot/' or page.url == '/nominate/' %}
+  {% assign joshbot_section = true %}
+{% endif %}

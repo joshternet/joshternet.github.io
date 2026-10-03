@@ -1,0 +1,20 @@
+{% comment %}
+  Goal: Emit a CSP-safe https origin from include.origin, or leave empty.
+  Accepts https://host or https://host:port only. Rejects userinfo, paths,
+  queries, fragments, and non-https schemes.
+  Output assign: csp_https_origin
+{% endcomment %}
+{% assign csp_https_origin = '' %}
+{% assign candidate = include.origin | strip %}
+{% assign candidate_scheme = candidate | slice: 0, 8 %}
+{% if candidate_scheme == 'https://' %}
+  {% assign candidate_rest = candidate | remove_first: 'https://' %}
+  {% unless candidate_rest contains '@'
+    or candidate_rest contains '/'
+    or candidate_rest contains '?'
+    or candidate_rest contains '#'
+    or candidate_rest == ''
+  %}
+    {% assign csp_https_origin = 'https://' | append: candidate_rest %}
+  {% endunless %}
+{% endif %}

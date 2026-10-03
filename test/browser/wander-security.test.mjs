@@ -441,3 +441,93 @@ test("duplicate network origins cannot create duplicate Wander destinations", as
     await context.close();
   }
 });
+
+test("restored site stays until Go is clicked", async () => {
+  const { context, page } = await wanderPage(
+    [
+      {
+        origin: "https://first.example",
+        domain: "first.example",
+        identity: "affirmed",
+        title: "First Example",
+        description: "",
+        screenshot: "",
+        embeddable: true,
+        frame_reason: "allowed",
+      },
+      {
+        origin: "https://second.example",
+        domain: "second.example",
+        identity: "affirmed",
+        title: "Second Example",
+        description: "",
+        screenshot: "",
+        embeddable: true,
+        frame_reason: "allowed",
+      },
+    ],
+    {
+      sessionState: {
+        bag: ["https://second.example"],
+        currentOrigin: "https://first.example",
+      },
+    },
+  );
+
+  try {
+    await page.waitForFunction(() => {
+      return (
+        document.querySelector("[data-wander-address]")?.value ===
+        "https://first.example"
+      );
+    });
+
+    assert.equal(
+      await page.locator("[data-wander-address]").inputValue(),
+      "https://first.example",
+    );
+
+    await page.locator("[data-wander-go]").click();
+
+    await page.waitForFunction(() => {
+      return (
+        document.querySelector("[data-wander-address]")?.value ===
+        "https://second.example"
+      );
+    });
+  } finally {
+    await context.close();
+  }
+});
+
+test("Joshternet hub uses the self-host fallback instead of a CSP-blocked iframe", async () => {
+  const { context, page } = await wanderPage([
+    {
+      origin: "https://joshternet.org",
+      domain: "joshternet.org",
+      identity: "undeclared",
+      title: "Joshternet",
+      description: "",
+      screenshot: "",
+      embeddable: true,
+      frame_reason: "allowed",
+    },
+  ]);
+
+  try {
+    await page.waitForFunction(() => {
+      return (
+        document.querySelector("[data-wander-address]")?.value ===
+        "https://joshternet.org"
+      );
+    });
+
+    assert.equal(await page.locator(".wander-frame").count(), 0);
+    assert.equal(
+      await page.locator(".wander-fallback").getAttribute("data-frame-reason"),
+      "self",
+    );
+  } finally {
+    await context.close();
+  }
+});

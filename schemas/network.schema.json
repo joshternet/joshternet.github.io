@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://joshternet.org/schemas/network.schema.json",
+  "title": "Joshternet network participants",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["origin", "domain"],
+    "properties": {
+      "origin": { "type": "string" },
+      "domain": { "type": "string" },
+      "title": { "type": "string" },
+      "description": { "type": "string" },
+      "screenshot": { "type": "string" },
+      "josh": { "type": "string" },
+      "feeds": { "type": "array" },
+      "elsewhere": { "type": "array" },
+      "blogroll": { "type": "string" }
+    },
+    "additionalProperties": true
+  }
+}

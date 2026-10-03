@@ -6,9 +6,11 @@ import test from "node:test";
 
 import {
   blogrollEdges,
+  buildBlogrollsDocument,
   buildJoshternetOpml,
   carryForwardBlogrollEdges,
   fetchBlogrollOpml,
+  isJoshternetGeneratedOpml,
   MAX_BLOGROLL_OPML_BYTES,
   originsFromBlogrollUrls,
   parseOpmlOutlineUrls,
@@ -215,4 +217,61 @@ test("carryForwardBlogrollEdges keeps only prior edges for the failed origin", (
     carryForwardBlogrollEdges(null, "https://alpha.example"),
     [],
   );
+});
+
+test("isJoshternetGeneratedOpml detects hub subscription OPML", () => {
+  assert.equal(
+    isJoshternetGeneratedOpml(
+      "https://joshternet.org/assets/network/joshternet.opml",
+    ),
+    true,
+  );
+  assert.equal(
+    isJoshternetGeneratedOpml("https://alpha.example/blogroll.opml"),
+    false,
+  );
+});
+
+test("buildBlogrollsDocument records advertisements and omits empty edges", () => {
+  const doc = buildBlogrollsDocument({
+    generatedAt: "2026-10-03T00:00:00.000Z",
+    edges: [],
+    entries: [
+      {
+        origin: "https://joshternet.org",
+        blogroll: "https://joshternet.org/assets/network/joshternet.opml",
+      },
+      { origin: "https://alpha.example" },
+    ],
+  });
+
+  assert.equal(doc.schema_version, 1);
+  assert.equal(doc.edge_count, 0);
+  assert.equal(doc.advertisement_count, 1);
+  assert.equal(Object.hasOwn(doc, "edges"), false);
+  assert.equal(doc.advertisements[0].source_authority, "joshternet-generated");
+  assert.equal(doc.advertisements[0].relationship_evidence, false);
+});
+
+test("buildBlogrollsDocument includes publisher edges when present", () => {
+  const doc = buildBlogrollsDocument({
+    generatedAt: "2026-10-03T00:00:00.000Z",
+    edges: [
+      {
+        from: "https://alpha.example",
+        to: "https://beta.example",
+        blogroll: "https://alpha.example/blogroll.opml",
+      },
+    ],
+    entries: [
+      {
+        origin: "https://alpha.example",
+        blogroll: "https://alpha.example/blogroll.opml",
+      },
+    ],
+  });
+
+  assert.equal(doc.edge_count, 1);
+  assert.equal(doc.edges.length, 1);
+  assert.equal(doc.advertisements[0].relationship_evidence, true);
 });

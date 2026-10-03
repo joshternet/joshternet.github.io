@@ -1,9 +1,11 @@
 ---
 layout: default
-title: RFCs and Specifications
+title: Joshternet RFCs and Draft Specifications
 description: >-
   The three current Draft Joshternet RFCs define the network's architecture,
   voluntary Josh identity, and the /.well-known/josh participation protocol.
+keywords: >-
+  Joshternet RFC, specifications, /.well-known/josh, Draft RFCs, open standards
 permalink: /specs/
 ---
 

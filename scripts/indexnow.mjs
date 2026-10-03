@@ -235,11 +235,24 @@ function affectsEveryPage(path) {
 }
 
 const routeDependencies = new Map([
-  ["_data/network.json", ["/network/", "/wander/"]],
+  [
+    "_data/network.json",
+    ["/network/", "/wander/", "/connections/", "/topics/"],
+  ],
+  ["_data/connections.json", ["/connections/"]],
+  ["_data/topics.json", ["/topics/"]],
+  ["_data/site_signals.json", ["/topics/", "/connections/"]],
+  ["_data/mentions.json", ["/topics/", "/connections/"]],
+  ["_data/platforms_nav.yml", ["/implement/platforms/"]],
+  ["_data/implement_nav.yml", ["/implement/"]],
   ["network-data.json", ["/wander/"]],
+  ["connections-data.json", ["/connections/"]],
   ["assets/js/network.js", ["/network/"]],
   ["assets/js/wander.js", ["/wander/"]],
+  ["assets/js/connections.js", ["/connections/"]],
   ["assets/js/nominate.js", ["/nominate/"]],
+  ["topics/index.md", ["/topics/"]],
+  ["implement/platforms.md", ["/implement/platforms/"]],
 ]);
 
 function addRouteDependencies(urls, path) {
@@ -248,6 +261,26 @@ function addRouteDependencies(urls, path) {
     urls.add(productionUrl("/wander/"));
 
     return true;
+  }
+
+  if (path.startsWith("topics/") && path.endsWith(".md")) {
+    const slug = path.slice("topics/".length, -".md".length);
+
+    if (slug && slug !== "index") {
+      urls.add(productionUrl(`/topics/${slug}/`));
+      urls.add(productionUrl("/topics/"));
+      return true;
+    }
+  }
+
+  if (path.startsWith("implement/platforms/") && path.endsWith(".md")) {
+    const slug = path.slice("implement/platforms/".length, -".md".length);
+
+    if (slug) {
+      urls.add(productionUrl(`/implement/platforms/${slug}/`));
+      urls.add(productionUrl("/implement/platforms/"));
+      return true;
+    }
   }
 
   const routes = routeDependencies.get(path);

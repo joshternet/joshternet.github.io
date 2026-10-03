@@ -396,7 +396,69 @@ test("returns an empty feeds array when no alternate feeds are advertised", asyn
 
       assert.deepEqual(metadata.feeds, []);
       assert.deepEqual(metadata.blogrolls, []);
+      assert.deepEqual(metadata.links, []);
       assert.deepEqual(metadata.elsewhere, []);
+    },
+  );
+});
+
+test("extracts outbound participant page links", async () => {
+  await withPage(
+    `
+      <!doctype html>
+      <html>
+        <head>
+          <base href="https://a.example/">
+          <title>Links</title>
+        </head>
+        <body>
+          <main>
+            <h1>Links</h1>
+            <a href="https://b.example/posts">B</a>
+            <a href="https://b.example/posts#frag">B again</a>
+            <a href="/about">Same origin</a>
+            <a href="//c.example/path">Protocol relative</a>
+            <a rel="nofollow" href="https://d.example/">Nofollow</a>
+            <a href="mailto:josh@example.com">Email</a>
+            <a href="tel:+15551212">Phone</a>
+            <a href="javascript:void(0)">JS</a>
+            <a href="data:text/plain,hi">Data</a>
+            <a href="#top">Fragment only</a>
+            <a href="">Empty</a>
+          </main>
+        </body>
+      </html>
+    `,
+    async (page) => {
+      const metadata = await page.evaluate(extractPageMetadata);
+
+      assert.deepEqual(metadata.links, [
+        {
+          href: "https://b.example/posts",
+          text: "B",
+          rel: [],
+        },
+        {
+          href: "https://b.example/posts#frag",
+          text: "B again",
+          rel: [],
+        },
+        {
+          href: "https://a.example/about",
+          text: "Same origin",
+          rel: [],
+        },
+        {
+          href: "https://c.example/path",
+          text: "Protocol relative",
+          rel: [],
+        },
+        {
+          href: "https://d.example/",
+          text: "Nofollow",
+          rel: ["nofollow"],
+        },
+      ]);
     },
   );
 });

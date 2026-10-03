@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://joshternet.org/schemas/connections.schema.json",
+  "title": "Joshternet observed connections",
+  "type": "object",
+  "required": ["schema_version", "edge_count"],
+  "properties": {
+    "schema_version": { "type": "integer", "minimum": 1 },
+    "generated_at": { "type": "string" },
+    "edge_count": { "type": "integer", "minimum": 0 },
+    "edges": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "relation", "href"],
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "homepage-link",
+              "content-link",
+              "blogroll",
+              "mention",
+              "reply-to",
+              "repost-of",
+              "syndication"
+            ]
+          },
+          "directed": { "type": "boolean" },
+          "href": { "type": "string" },
+          "page": { "type": "string" },
+          "text": { "type": "string" },
+          "via": { "type": "string", "minLength": 1 },
+          "source": { "type": "string" },
+          "rel": { "type": "array", "items": { "type": "string" } },
+          "evidence_count": { "type": "integer", "minimum": 1 },
+          "evidence": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "object" }
+          }
+        },
+        "dependentRequired": {
+          "evidence": ["evidence_count"]
+        },
+        "additionalProperties": true,
+        "description": "One edge per unique (from, to, relation); observations live in evidence[]."
+      }
+    }
+  },
+  "additionalProperties": true
+}

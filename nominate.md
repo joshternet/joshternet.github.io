@@ -2,7 +2,10 @@
 layout: default
 title: Nominate a Website for JoshBot
 description: >-
-  Nominate a website you control as a discovery seed for JoshBot.
+  Nominate a website you control as a discovery seed for JoshBot so it can be
+  considered for verification and listing in the Joshternet public registry.
+keywords: >-
+  nominate website, JoshBot seed, Joshternet registry, /.well-known/josh
 seo:
   type: WebPage
   name: Nominate a Site

@@ -110,7 +110,7 @@ await about.hover();
 await page.waitForTimeout(100);
 await report("hover About from community (expect hide)");
 
-await page.goto("http://127.0.0.1:4000/implement/jekyll/", {
+await page.goto("http://127.0.0.1:4000/implement/platforms/jekyll/", {
   waitUntil: "networkidle",
 });
 await report("jekyll sticky initial");
@@ -140,7 +140,7 @@ try {
   console.log("Home click FAIL", error.message);
 }
 
-await page.goto("http://127.0.0.1:4000/implement/jekyll/", {
+await page.goto("http://127.0.0.1:4000/implement/platforms/jekyll/", {
   waitUntil: "networkidle",
 });
 await about.hover();
