@@ -165,7 +165,9 @@ if (cb && ib) {
       (cb.y + cb.height / 2 - (ib.y + ib.height / 2)) * (i / 10);
     await page.mouse.move(x, y);
     await page.waitForTimeout(50);
-    console.log(`jekyll path step ${i} shown=${(await secondaryState()).shown}`);
+    console.log(
+      `jekyll path step ${i} shown=${(await secondaryState()).shown}`,
+    );
   }
   try {
     await check.click({ timeout: 2000 });

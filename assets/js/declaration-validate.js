@@ -105,7 +105,8 @@ export function validateDeclaration(source) {
     value = parseJson(source);
   } catch (error) {
     const span = error instanceof Error ? error.span : null;
-    const rule = error instanceof Error && error.rule ? error.rule : RULES.representation;
+    const rule =
+      error instanceof Error && error.rule ? error.rule : RULES.representation;
 
     return fail(
       error instanceof Error ? error.message : "The text is not valid JSON.",
@@ -125,11 +126,10 @@ export function validateDeclaration(source) {
   const version = value.members.get("version");
 
   if (!version) {
-    return fail(
-      "The declaration is missing version.",
-      RULES.versionPresent,
-      { start: value.start, end: value.end },
-    );
+    return fail("The declaration is missing version.", RULES.versionPresent, {
+      start: value.start,
+      end: value.end,
+    });
   }
 
   if (version.kind !== "number" || version.raw !== "1") {
@@ -222,9 +222,9 @@ export function declarationURL(originText) {
 
   if (url.protocol !== "https:" && url.protocol !== "http:") {
     return {
-    error: "The origin must use http or https.",
-    rule: RULES.retrieval,
-  };
+      error: "The origin must use http or https.",
+      rule: RULES.retrieval,
+    };
   }
 
   if (url.username || url.password) {
@@ -286,7 +286,9 @@ export function classifyLiveResponse(response) {
       summary:
         "The declaration could not be read. That is not an invalid file, and it is not a withdrawal.",
       details: [
-        response.status === null ? "No HTTP status." : `HTTP ${response.status}`,
+        response.status === null
+          ? "No HTTP status."
+          : `HTTP ${response.status}`,
         typeNote,
       ].filter(Boolean),
       declaration: null,

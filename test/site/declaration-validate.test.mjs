@@ -48,19 +48,13 @@ test("version must be the integer token 1", () => {
 });
 
 test("josh must be a boolean when it is present", () => {
-  assert.equal(
-    validateDeclaration('{"version":1,"josh":"true"}').ok,
-    false,
-  );
+  assert.equal(validateDeclaration('{"version":1,"josh":"true"}').ok, false);
   assert.equal(validateDeclaration('{"version":1,"josh":1}').ok, false);
   assert.equal(validateDeclaration('{"version":1,"josh":null}').ok, false);
 });
 
 test("unknown members stay valid and repeated members do not", () => {
-  assert.equal(
-    validateDeclaration('{"version":1,"note":"hello"}').ok,
-    true,
-  );
+  assert.equal(validateDeclaration('{"version":1,"note":"hello"}').ok, true);
   assert.match(
     validateDeclaration('{"version":1,"version":1}').reasons[0],
     /repeated/,

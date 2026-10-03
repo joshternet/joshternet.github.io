@@ -39,10 +39,7 @@
     {% assign jekyll_seo = jekyll_seo | remove: jekyll_generator_meta %}
     {% assign jekyll_seo = jekyll_seo | remove: '<!-- End Jekyll SEO tag -->' %}
     {% if jekyll_seo contains '<!-- Begin Jekyll SEO tag v' %}
-      {% assign jekyll_seo_after_begin = jekyll_seo
-        | split: '<!-- Begin Jekyll SEO tag v'
-        | last
-      %}
+      {% assign jekyll_seo_after_begin = jekyll_seo | split: '<!-- Begin Jekyll SEO tag v' | last %}
       {% assign jekyll_seo_bits = jekyll_seo_after_begin | split: '-->' %}
       {% assign jekyll_seo = '' %}
       {% for jekyll_seo_bit in jekyll_seo_bits %}

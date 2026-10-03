@@ -319,7 +319,9 @@ export function isElsewhereProfileUrl(url, network) {
   switch (network) {
     case "github":
     case "gitlab":
-      return segments.length === 1 && first !== "" && !GITHUB_RESERVED.has(first);
+      return (
+        segments.length === 1 && first !== "" && !GITHUB_RESERVED.has(first)
+      );
     case "linkedin":
       return first === "in" && segments.length >= 2;
     case "x":
@@ -337,9 +339,14 @@ export function isElsewhereProfileUrl(url, network) {
     case "zhihu":
     case "weibo":
     case "naver":
-      return segments.length >= 1 && !["share", "intent", "login", "signup"].includes(first);
+      return (
+        segments.length >= 1 &&
+        !["share", "intent", "login", "signup"].includes(first)
+      );
     case "threads":
-      return segments.length >= 1 && (first.startsWith("@") || segments.length >= 1);
+      return (
+        segments.length >= 1 && (first.startsWith("@") || segments.length >= 1)
+      );
     case "bluesky":
       return first === "profile" && segments.length >= 2;
     case "youtube":
@@ -351,11 +358,18 @@ export function isElsewhereProfileUrl(url, network) {
         first === "watch"
       );
     case "facebook":
-      return segments.length >= 1 && !["share", "dialog", "login", "watch"].includes(first);
+      return (
+        segments.length >= 1 &&
+        !["share", "dialog", "login", "watch"].includes(first)
+      );
     case "mastodon":
-      return segments.length >= 1 && (first.startsWith("@") || segments.length === 1);
+      return (
+        segments.length >= 1 && (first.startsWith("@") || segments.length === 1)
+      );
     case "discord":
-      return first === "users" || first === "invite" || url.hostname === "discord.gg";
+      return (
+        first === "users" || first === "invite" || url.hostname === "discord.gg"
+      );
     case "telegram":
       return segments.length >= 1;
     case "medium":

@@ -334,144 +334,144 @@ export function extractPageMetadata(hostCatalog) {
    * @returns {Array<{href: string, text?: string, me?: boolean}>}
    */
   function extractElsewhere(hostCatalog = {}) {
-  const elsewhere = [];
-  const seen = new Set();
-  const hosts =
-    hostCatalog && typeof hostCatalog.hosts === "object" && hostCatalog.hosts
-      ? hostCatalog.hosts
-      : {};
-  const suffixes = Array.isArray(hostCatalog?.suffixes)
-    ? hostCatalog.suffixes
-    : [];
+    const elsewhere = [];
+    const seen = new Set();
+    const hosts =
+      hostCatalog && typeof hostCatalog.hosts === "object" && hostCatalog.hosts
+        ? hostCatalog.hosts
+        : {};
+    const suffixes = Array.isArray(hostCatalog?.suffixes)
+      ? hostCatalog.suffixes
+      : [];
 
-  /**
-   * @param {string} hostname
-   * @returns {boolean}
-   */
-  function isKnownSocialHost(hostname) {
-    const host = String(hostname || "")
-      .trim()
-      .toLowerCase();
+    /**
+     * @param {string} hostname
+     * @returns {boolean}
+     */
+    function isKnownSocialHost(hostname) {
+      const host = String(hostname || "")
+        .trim()
+        .toLowerCase();
 
-    if (!host) {
+      if (!host) {
+        return false;
+      }
+
+      if (Object.prototype.hasOwnProperty.call(hosts, host)) {
+        return true;
+      }
+
+      for (const entry of suffixes) {
+        if (
+          entry &&
+          typeof entry.suffix === "string" &&
+          host.endsWith(entry.suffix)
+        ) {
+          return true;
+        }
+      }
+
       return false;
     }
 
-    if (Object.prototype.hasOwnProperty.call(hosts, host)) {
-      return true;
-    }
-
-    for (const entry of suffixes) {
+    /**
+     * @param {Element} element
+     * @param {boolean} me
+     */
+    function pushLink(element, me) {
       if (
-        entry &&
-        typeof entry.suffix === "string" &&
-        host.endsWith(entry.suffix)
+        !(element instanceof HTMLAnchorElement) &&
+        !(element instanceof HTMLLinkElement)
       ) {
-        return true;
+        return;
+      }
+
+      const hrefAttribute = normalizeText(element.getAttribute("href") || "");
+
+      if (!hrefAttribute) {
+        return;
+      }
+
+      let href;
+
+      try {
+        href = new URL(hrefAttribute, document.baseURI).href;
+      } catch {
+        return;
+      }
+
+      const key = href;
+
+      if (seen.has(key)) {
+        return;
+      }
+
+      seen.add(key);
+
+      const entry = {
+        href,
+        me,
+      };
+
+      if (element instanceof HTMLAnchorElement) {
+        const text = normalizeText(element.textContent || "");
+
+        if (text) {
+          entry.text = text;
+        }
+      }
+
+      elsewhere.push(entry);
+    }
+
+    for (const element of document.querySelectorAll("a[href], link[href]")) {
+      if (
+        !(element instanceof HTMLAnchorElement) &&
+        !(element instanceof HTMLLinkElement)
+      ) {
+        continue;
+      }
+
+      if (element.relList.contains("me")) {
+        pushLink(element, true);
       }
     }
 
-    return false;
-  }
-
-  /**
-   * @param {Element} element
-   * @param {boolean} me
-   */
-  function pushLink(element, me) {
-    if (
-      !(element instanceof HTMLAnchorElement) &&
-      !(element instanceof HTMLLinkElement)
-    ) {
-      return;
-    }
-
-    const hrefAttribute = normalizeText(element.getAttribute("href") || "");
-
-    if (!hrefAttribute) {
-      return;
-    }
-
-    let href;
-
-    try {
-      href = new URL(hrefAttribute, document.baseURI).href;
-    } catch {
-      return;
-    }
-
-    const key = href;
-
-    if (seen.has(key)) {
-      return;
-    }
-
-    seen.add(key);
-
-    const entry = {
-      href,
-      me,
-    };
-
-    if (element instanceof HTMLAnchorElement) {
-      const text = normalizeText(element.textContent || "");
-
-      if (text) {
-        entry.text = text;
+    for (const element of document.querySelectorAll("a[href], link[href]")) {
+      if (
+        !(element instanceof HTMLAnchorElement) &&
+        !(element instanceof HTMLLinkElement)
+      ) {
+        continue;
       }
+
+      if (element.relList.contains("me")) {
+        continue;
+      }
+
+      const hrefAttribute = normalizeText(element.getAttribute("href") || "");
+
+      if (!hrefAttribute) {
+        continue;
+      }
+
+      let url;
+
+      try {
+        url = new URL(hrefAttribute, document.baseURI);
+      } catch {
+        continue;
+      }
+
+      if (!isKnownSocialHost(url.hostname)) {
+        continue;
+      }
+
+      pushLink(element, false);
     }
 
-    elsewhere.push(entry);
+    return elsewhere;
   }
-
-  for (const element of document.querySelectorAll("a[href], link[href]")) {
-    if (
-      !(element instanceof HTMLAnchorElement) &&
-      !(element instanceof HTMLLinkElement)
-    ) {
-      continue;
-    }
-
-    if (element.relList.contains("me")) {
-      pushLink(element, true);
-    }
-  }
-
-  for (const element of document.querySelectorAll("a[href], link[href]")) {
-    if (
-      !(element instanceof HTMLAnchorElement) &&
-      !(element instanceof HTMLLinkElement)
-    ) {
-      continue;
-    }
-
-    if (element.relList.contains("me")) {
-      continue;
-    }
-
-    const hrefAttribute = normalizeText(element.getAttribute("href") || "");
-
-    if (!hrefAttribute) {
-      continue;
-    }
-
-    let url;
-
-    try {
-      url = new URL(hrefAttribute, document.baseURI);
-    } catch {
-      continue;
-    }
-
-    if (!isKnownSocialHost(url.hostname)) {
-      continue;
-    }
-
-    pushLink(element, false);
-  }
-
-  return elsewhere;
-}
 
   const jsonLdWebsite = extractJsonLdWebsite();
   const catalog =

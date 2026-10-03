@@ -34,7 +34,9 @@ export function validateDeclaration(source) {
   try {
     value = parseJson(source);
   } catch (error) {
-    return fail(error instanceof Error ? error.message : "The text is not valid JSON.");
+    return fail(
+      error instanceof Error ? error.message : "The text is not valid JSON.",
+    );
   }
 
   if (!value || value.kind !== "object") {
@@ -48,9 +50,7 @@ export function validateDeclaration(source) {
   }
 
   if (version.kind !== "number" || version.raw !== "1") {
-    return fail(
-      `version must be the JSON integer 1. Received ${version.raw}.`,
-    );
+    return fail(`version must be the JSON integer 1. Received ${version.raw}.`);
   }
 
   const josh = value.members.get("josh");
@@ -175,7 +175,9 @@ export function classifyLiveResponse(response) {
       summary:
         "The declaration could not be read. That is not an invalid file, and it is not a withdrawal.",
       details: [
-        response.status === null ? "No HTTP status." : `HTTP ${response.status}`,
+        response.status === null
+          ? "No HTTP status."
+          : `HTTP ${response.status}`,
         typeNote,
       ].filter(Boolean),
       declaration: null,
