@@ -22,6 +22,8 @@ test("community page and footer point at #joshternet without embedding chat", as
   assert.doesNotMatch(community, /<iframe/i);
   assert.match(layout, /https:\/\/web\.libera\.chat\/#joshternet/);
   assert.match(layout, />#joshternet</);
+  assert.match(layout, /site-footer__button/);
+  assert.match(layout, /joshternet-button\.js/);
 });
 
 test("primary navigation keeps top-level labels and Implement children", async () => {
@@ -57,6 +59,7 @@ test("primary navigation keeps top-level labels and Implement children", async (
   assert.match(data, /path: \/implement\/validate\//);
   assert.match(data, /path: \/implement\/eleventy\//);
   assert.match(data, /path: \/implement\/jekyll\//);
+  assert.match(data, /path: \/implement\/buttons\//);
   assert.match(layout, /site-nav-secondary--implement/);
   assert.match(layout, /site-header__top/);
   assert.match(layout, /site-header__motif/);

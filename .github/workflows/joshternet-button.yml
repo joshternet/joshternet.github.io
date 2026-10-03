@@ -1,0 +1,53 @@
+name: Joshternet button Worker
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/joshternet-button.yml"
+      - "workers/joshternet-button/**"
+      - "assets/buttons/**"
+
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/joshternet-button.yml"
+      - "workers/joshternet-button/**"
+      - "assets/buttons/**"
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify Joshternet button Worker
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    defaults:
+      run:
+        working-directory: workers/joshternet-button
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: workers/joshternet-button/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Worker tests
+        run: npm test
+
+      - name: Validate Worker bundle
+        run: npm run check

@@ -43,3 +43,7 @@ seed_nominations:
 
 declaration_check:
   api_origin: "https://joshternet-declaration-check.joshternet.workers.dev"
+
+joshternet_button:
+  api_origin: "https://joshternet.org"
+  embed_src: "https://joshternet.org/embed/joshternet-button.js"
