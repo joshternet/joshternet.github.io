@@ -1,18 +1,16 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-03T12:01:53.395Z",
+  "generated_at": "2026-10-03T21:51:24.424Z",
   "window_days": 7,
   "primary_count": 2,
-  "item_count": 399,
-  "content_types": [
-    "article"
-  ],
+  "item_count": 402,
+  "content_types": ["article"],
   "primary": [
     {
-      "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
-      "title": "Worth Wandering: Low-tech Magazine",
-      "summary": "A magazine about questioning technological progress, served from a tiny computer on a balcony in Barcelona that occasionally disappears from the internet because the sun stopped cooperating.",
-      "published_at": "2026-10-02T08:00:00.000Z",
+      "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
+      "title": "Prop. 42 is about a tax on owning savings, not the tax on income they earn",
+      "summary": "Proposition 42 would forbid a new state tax on owning personal property, including retirement accounts, and would limit taxes that reach backward.",
+      "published_at": "2026-10-03T09:00:00.000Z",
       "content_type": "article",
       "language": "en",
       "site_origin": "https://joshuamorris.info",
@@ -24,26 +22,38 @@
           "label": "notes"
         },
         {
-          "slug": "hardware",
-          "label": "hardware"
+          "slug": "california-ballot-2026",
+          "label": "california ballot 2026"
         },
         {
-          "slug": "web-development",
-          "label": "web development"
+          "slug": "economics",
+          "label": "economics"
         },
         {
-          "slug": "worth-wandering",
-          "label": "worth wandering"
+          "slug": "government-ethics",
+          "label": "government ethics"
+        },
+        {
+          "slug": "public-systems",
+          "label": "public systems"
         }
       ],
       "neighborhoods": [
         {
-          "slug": "hardware",
-          "label": "hardware"
+          "slug": "california-ballot-2026",
+          "label": "california ballot 2026"
         },
         {
-          "slug": "web-development",
-          "label": "web development"
+          "slug": "economics",
+          "label": "economics"
+        },
+        {
+          "slug": "government-ethics",
+          "label": "government ethics"
+        },
+        {
+          "slug": "public-systems",
+          "label": "public systems"
         }
       ],
       "image": "",

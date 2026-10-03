@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-03T12:01:53.395Z",
+  "generated_at": "2026-10-03T21:51:24.424Z",
   "sites": [
     {
       "origin": "https://joshternet.org",
@@ -57,7 +57,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-03T12:00:56.613Z"
+      "crawled_at": "2026-10-03T21:50:07.756Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -337,7 +337,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-03T12:00:56.613Z"
+      "crawled_at": "2026-10-03T21:50:07.756Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -486,6 +486,14 @@
           "label": "business 26"
         },
         {
+          "slug": "california-ballot-2026",
+          "label": "california ballot 2026"
+        },
+        {
+          "slug": "california-ballot-2026-4",
+          "label": "california ballot 2026 4"
+        },
+        {
           "slug": "canada",
           "label": "canada"
         },
@@ -630,8 +638,8 @@
           "label": "economics"
         },
         {
-          "slug": "economics-22",
-          "label": "economics 22"
+          "slug": "economics-25",
+          "label": "economics 25"
         },
         {
           "slug": "education",
@@ -722,8 +730,8 @@
           "label": "government ethics"
         },
         {
-          "slug": "government-ethics-15",
-          "label": "government ethics 15"
+          "slug": "government-ethics-18",
+          "label": "government ethics 18"
         },
         {
           "slug": "hardware",
@@ -778,10 +786,6 @@
           "label": "institutions 1"
         },
         {
-          "slug": "intellectual-property",
-          "label": "intellectual property"
-        },
-        {
           "slug": "intellectual-property-5",
           "label": "intellectual property 5"
         },
@@ -822,8 +826,8 @@
           "label": "law"
         },
         {
-          "slug": "law-11",
-          "label": "law 11"
+          "slug": "law-14",
+          "label": "law 14"
         },
         {
           "slug": "lego-2",
@@ -880,10 +884,6 @@
         {
           "slug": "medical-research",
           "label": "medical research"
-        },
-        {
-          "slug": "medical-research-1",
-          "label": "medical research 1"
         },
         {
           "slug": "mentorship",
@@ -998,6 +998,10 @@
           "label": "programming 2"
         },
         {
+          "slug": "property",
+          "label": "property"
+        },
+        {
           "slug": "propulsion",
           "label": "propulsion"
         },
@@ -1006,8 +1010,8 @@
           "label": "public systems"
         },
         {
-          "slug": "public-systems-20",
-          "label": "public systems 20"
+          "slug": "public-systems-23",
+          "label": "public systems 23"
         },
         {
           "slug": "python",
@@ -1276,7 +1280,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-03T12:00:56.613Z"
+      "crawled_at": "2026-10-03T21:50:07.756Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -1522,7 +1526,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-03T12:00:56.613Z"
+      "crawled_at": "2026-10-03T21:50:07.756Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -1750,7 +1754,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-03T12:00:56.613Z",
+      "crawled_at": "2026-10-03T21:50:07.756Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 145,

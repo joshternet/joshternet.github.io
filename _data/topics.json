@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-03T12:00:56.613Z",
+  "generated_at": "2026-10-03T21:50:07.756Z",
   "community_count": 291,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
@@ -34,16 +34,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/21/amazon-is-destroying-books-to-train-ai-we-should-have-built-the-library-instead/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/21/homeos-looks-like-apple-is-finally-treating-the-home-as-a-platform/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/21/terafab-is-more-interesting-than-its-100-million-square-foot-headline/",
               "title": "",
               "source": "microformat:p-category"
@@ -70,6 +60,16 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/28/what-does-unlawful-mean-if-the-damage-happens-first/",
               "title": "",
               "source": "microformat:p-category"
             }
@@ -142,9 +142,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -203,9 +201,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -229,9 +225,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -275,9 +269,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -301,9 +293,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -327,9 +317,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -423,9 +411,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -454,10 +440,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -486,9 +469,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -512,9 +493,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -558,10 +537,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "visible-text"
-      ],
+      "sources": ["microformat:p-category", "visible-text"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
@@ -594,9 +570,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -640,9 +614,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -666,9 +638,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -692,9 +662,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -723,10 +691,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -765,9 +730,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T12:00:56.613Z",
       "last_changed_at": "2026-10-03T12:00:56.613Z",
       "active": true
@@ -791,9 +754,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -817,9 +778,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -843,9 +802,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -869,9 +826,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -913,11 +868,7 @@
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category",
-        "visible-text"
-      ],
+      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -941,9 +892,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -973,11 +922,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/21/amazon-is-destroying-books-to-train-ai-we-should-have-built-the-library-instead/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/13/an-online-book-club-across-our-own-websites/",
               "title": "",
               "source": "microformat:p-category"
@@ -985,10 +929,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1012,9 +953,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1038,9 +977,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1112,9 +1049,7 @@
           ]
         }
       ],
-      "sources": [
-        "visible-text"
-      ],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
@@ -1200,9 +1135,7 @@
           ]
         }
       ],
-      "sources": [
-        "visible-text"
-      ],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1279,10 +1212,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "visible-text"
-      ],
+      "sources": ["microformat:p-category", "visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1306,11 +1236,72 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "active": true
+    },
+    {
+      "slug": "california-ballot-2026",
+      "label": "california ballot 2026",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/30/prop-40-without-the-commercials-what-californias-billionaire-tax-actually-says/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category"],
+      "first_seen_at": "2026-10-03T21:50:07.756Z",
+      "last_changed_at": "2026-10-03T21:50:07.756Z",
+      "active": true
+    },
+    {
+      "slug": "california-ballot-2026-4",
+      "label": "california ballot 2026 4",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-03T21:50:07.756Z",
+      "last_changed_at": "2026-10-03T21:50:07.756Z",
       "active": true
     },
     {
@@ -1332,9 +1323,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1358,9 +1347,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1412,11 +1399,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1440,9 +1423,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1466,9 +1447,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1517,9 +1496,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -1543,9 +1520,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1569,9 +1544,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1613,9 +1586,7 @@
           ]
         }
       ],
-      "sources": [
-        "visible-text"
-      ],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -1644,9 +1615,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1670,9 +1639,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1696,9 +1663,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -1742,9 +1707,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -1796,11 +1759,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "topic-hub:page",
-        "visible-text"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:page", "visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
@@ -1833,9 +1792,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1859,9 +1816,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1885,9 +1840,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1921,9 +1874,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1947,9 +1898,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1983,9 +1932,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -2009,9 +1956,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2035,9 +1980,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2061,10 +2004,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page",
-        "visible-text"
-      ],
+      "sources": ["topic-hub:page", "visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true,
@@ -2097,9 +2037,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2123,9 +2061,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2184,9 +2120,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -2215,10 +2149,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2242,9 +2173,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2268,9 +2197,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2294,9 +2221,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2353,9 +2278,7 @@
           ]
         }
       ],
-      "sources": [
-        "visible-text"
-      ],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2379,9 +2302,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2405,9 +2326,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2444,11 +2363,7 @@
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category",
-        "visible-text"
-      ],
+      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2472,9 +2387,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2503,10 +2416,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2639,9 +2549,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2670,9 +2578,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2696,9 +2602,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2727,10 +2631,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2754,9 +2655,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2795,9 +2694,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2821,9 +2718,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2875,10 +2770,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "visible-text"
-      ],
+      "sources": ["microformat:p-category", "visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2902,9 +2794,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2928,9 +2818,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2954,9 +2842,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2980,9 +2866,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3022,20 +2906,33 @@
               "url": "https://joshuamorris.info/notes/2026/09/15/the-us-fuel-crisis-is-making-canadas-oil-more-valuable-than-ever/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
+              "title": "",
+              "source": "microformat:p-category"
             }
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
-      "slug": "economics-22",
-      "label": "economics 22",
+      "slug": "economics-25",
+      "label": "economics 25",
       "member_count": 1,
       "sites": [
         {
@@ -3052,11 +2949,9 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-03T21:50:07.756Z",
+      "last_changed_at": "2026-10-03T21:50:07.756Z",
       "active": true
     },
     {
@@ -3152,9 +3047,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3178,9 +3071,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3204,9 +3095,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3240,9 +3129,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3266,9 +3153,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3356,11 +3241,7 @@
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category",
-        "visible-text"
-      ],
+      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3384,9 +3265,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3410,9 +3289,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3436,9 +3313,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3462,9 +3337,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3488,9 +3361,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3514,9 +3385,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3545,9 +3414,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3571,9 +3438,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3597,9 +3462,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3658,9 +3521,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -3719,9 +3580,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -3745,9 +3604,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3771,9 +3628,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3790,16 +3645,6 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/20/voyagers-doctor-is-the-ai-future-i-hope-we-have-to-think-about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/26/having-regulations-is-not-the-same-thing-as-having-accountability/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
               "title": "",
               "source": "visible-text"
@@ -3810,7 +3655,17 @@
               "source": "visible-text"
             },
             {
+              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
               "title": "",
               "source": "visible-text"
             }
@@ -3835,9 +3690,7 @@
           ]
         }
       ],
-      "sources": [
-        "visible-text"
-      ],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
@@ -3870,9 +3723,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3901,10 +3752,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3928,9 +3776,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3954,9 +3800,7 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
+      "sources": ["meta:keywords"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3980,9 +3824,7 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
+      "sources": ["meta:keywords"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -4006,9 +3848,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -4032,9 +3872,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4058,9 +3896,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4084,9 +3920,7 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
+      "sources": ["meta:keywords"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -4110,9 +3944,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -4159,10 +3991,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4186,9 +4015,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4260,10 +4087,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "portfolio:sector"
-      ],
+      "sources": ["microformat:p-category", "portfolio:sector"],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4287,9 +4111,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4324,20 +4146,33 @@
               "url": "https://joshuamorris.info/notes/2026/09/26/having-regulations-is-not-the-same-thing-as-having-accountability/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
+              "title": "",
+              "source": "microformat:p-category"
             }
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
-      "slug": "government-ethics-15",
-      "label": "government ethics 15",
+      "slug": "government-ethics-18",
+      "label": "government ethics 18",
       "member_count": 1,
       "sites": [
         {
@@ -4354,11 +4189,9 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-03T21:50:07.756Z",
+      "last_changed_at": "2026-10-03T21:50:07.756Z",
       "active": true
     },
     {
@@ -4415,9 +4248,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -4441,9 +4272,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4505,10 +4334,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "topic-hub:page"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4532,9 +4358,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4576,10 +4400,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "portfolio:sector"
-      ],
+      "sources": ["microformat:p-category", "portfolio:sector"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -4603,9 +4424,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4642,10 +4461,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -4694,9 +4510,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -4720,9 +4534,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -4769,9 +4581,7 @@
           ]
         }
       ],
-      "sources": [
-        "visible-text"
-      ],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
       "last_changed_at": "2026-10-03T08:29:09.357Z",
       "active": true
@@ -4833,9 +4643,7 @@
           ]
         }
       ],
-      "sources": [
-        "visible-text"
-      ],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4894,9 +4702,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4920,9 +4726,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4981,9 +4785,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5007,9 +4809,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5084,11 +4884,7 @@
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category",
-        "visible-text"
-      ],
+      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5112,9 +4908,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5138,9 +4932,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5164,35 +4956,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "intellectual-property",
-      "label": "intellectual property",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/21/amazon-is-destroying-books-to-train-ai-we-should-have-built-the-library-instead/",
-              "title": "",
-              "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5216,9 +4980,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5242,9 +5004,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5268,9 +5028,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5299,9 +5057,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5325,9 +5081,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5344,11 +5098,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/21/homeos-looks-like-apple-is-finally-treating-the-home-as-a-platform/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/21/the-real-homeos-risk-is-not-homebridge-it-is-what-apple-does-with-hap/",
               "title": "",
               "source": "microformat:p-category"
@@ -5361,9 +5110,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5387,9 +5134,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5428,10 +5173,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "visible-text"
-      ],
+      "sources": ["microformat:p-category", "visible-text"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
@@ -5464,9 +5206,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5490,9 +5230,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -5516,9 +5254,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -5576,6 +5312,16 @@
               "url": "https://joshuamorris.info/notes/2026/09/26/having-regulations-is-not-the-same-thing-as-having-accountability/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
+              "title": "",
+              "source": "microformat:p-category"
             }
           ]
         },
@@ -5613,18 +5359,14 @@
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category",
-        "visible-text"
-      ],
+      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
-      "slug": "law-11",
-      "label": "law 11",
+      "slug": "law-14",
+      "label": "law 14",
       "member_count": 1,
       "sites": [
         {
@@ -5641,11 +5383,9 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-03T21:50:07.756Z",
+      "last_changed_at": "2026-10-03T21:50:07.756Z",
       "active": true
     },
     {
@@ -5667,9 +5407,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5704,11 +5442,6 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/28/a-satellite-that-breathes-the-atmosphere-trying-to-pull-it-down/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
               "title": "",
               "source": "visible-text"
@@ -5724,6 +5457,11 @@
               "source": "visible-text"
             },
             {
+              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
               "title": "",
               "source": "visible-text"
@@ -5731,9 +5469,7 @@
           ]
         }
       ],
-      "sources": [
-        "visible-text"
-      ],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5775,11 +5511,7 @@
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category",
-        "visible-text"
-      ],
+      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5803,9 +5535,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5829,9 +5559,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5878,10 +5606,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5905,9 +5630,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5949,11 +5672,7 @@
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category",
-        "visible-text"
-      ],
+      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5977,9 +5696,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6003,9 +5720,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6029,9 +5744,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6055,9 +5768,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6075,11 +5786,6 @@
           "pages": [
             {
               "url": "https://joshuamorris.info/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/21/homeos-looks-like-apple-is-finally-treating-the-home-as-a-platform/",
               "title": "",
               "source": "visible-text"
             },
@@ -6114,9 +5820,7 @@
           ]
         }
       ],
-      "sources": [
-        "visible-text"
-      ],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6178,9 +5882,7 @@
           ]
         }
       ],
-      "sources": [
-        "visible-text"
-      ],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6237,10 +5939,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page",
-        "visible-text"
-      ],
+      "sources": ["topic-hub:page", "visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6264,9 +5963,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -6325,9 +6022,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -6351,35 +6046,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "medical-research-1",
-      "label": "medical research 1",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6403,9 +6070,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6429,9 +6094,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6468,10 +6131,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6506,27 +6166,27 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/28/a-satellite-that-breathes-the-atmosphere-trying-to-pull-it-down/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/29/the-internet-saw-a-few-seconds-and-invented-the-rest/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
               "title": "",
               "source": "visible-text"
             },
             {
+              "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
               "title": "",
               "source": "visible-text"
             }
@@ -6561,9 +6221,7 @@
           ]
         }
       ],
-      "sources": [
-        "visible-text"
-      ],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6587,9 +6245,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6613,9 +6269,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6639,9 +6293,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6665,9 +6317,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -6716,9 +6366,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -6742,9 +6390,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -6768,9 +6414,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -6799,9 +6443,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6825,9 +6467,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6851,9 +6491,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6877,9 +6515,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6903,9 +6539,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6934,11 +6568,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/21/go-1_27-shipped-and-some-of-the-best-parts-barely-made-the-release-notes/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/08/21/the-real-homeos-risk-is-not-homebridge-it-is-what-apple-does-with-hap/",
               "title": "",
@@ -6971,6 +6600,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/09/11/worth-wandering-hundred-rabbits/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/23/apple-finally-made-the-xcode-project-file-understandable/",
               "title": "",
               "source": "microformat:p-category"
             }
@@ -7019,9 +6653,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7060,9 +6692,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7086,9 +6716,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7122,9 +6750,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7148,9 +6774,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7187,10 +6811,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7214,9 +6835,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -7246,27 +6865,27 @@
           "membership": "heuristic",
           "pages": [
             {
+              "url": "https://joshuamorris.info/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
               "url": "https://joshuamorris.info/about/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/09/26/having-regulations-is-not-the-same-thing-as-having-accountability/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/28/sometimes-i-dont-want-an-llm-to-answer-me/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/29/the-internet-saw-a-few-seconds-and-invented-the-rest/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
               "title": "",
               "source": "visible-text"
             }
@@ -7291,10 +6910,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link",
-        "visible-text"
-      ],
+      "sources": ["topic-hub:link", "visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7318,9 +6934,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -7344,9 +6958,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -7370,9 +6982,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7396,9 +7006,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -7457,9 +7065,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -7483,9 +7089,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:index"
-      ],
+      "sources": ["portfolio:index"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -7509,9 +7113,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7535,9 +7137,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7553,11 +7153,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/21/homeos-looks-like-apple-is-finally-treating-the-home-as-a-platform/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/08/21/the-real-homeos-risk-is-not-homebridge-it-is-what-apple-does-with-hap/",
               "title": "",
@@ -7592,6 +7187,11 @@
               "url": "https://joshuamorris.info/notes/2026/09/26/having-regulations-is-not-the-same-thing-as-having-accountability/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/27/safe-not-safe-is-the-kind-of-developer-resource-i-want-more-of/",
+              "title": "",
+              "source": "microformat:p-category"
             }
           ]
         },
@@ -7609,10 +7209,7 @@
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category"
-      ],
+      "sources": ["catalog-match", "microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7636,9 +7233,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7662,9 +7257,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7688,9 +7281,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7714,9 +7305,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -7745,9 +7334,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7771,9 +7358,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7781,8 +7366,41 @@
     {
       "slug": "property",
       "label": "property",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/20/voyagers-doctor-is-the-ai-future-i-hope-we-have-to-think-about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/28/a-satellite-that-breathes-the-atmosphere-trying-to-pull-it-down/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
         {
           "origin": "https://www.joshuabaker.com",
           "domain": "www.joshuabaker.com",
@@ -7832,11 +7450,9 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector", "visible-text"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
-      "last_changed_at": "2026-10-03T11:57:33.407Z",
+      "last_changed_at": "2026-10-03T21:50:07.756Z",
       "active": true
     },
     {
@@ -7893,9 +7509,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -7919,9 +7533,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7938,11 +7550,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/21/amazon-is-destroying-books-to-train-ai-we-should-have-built-the-library-instead/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/24/ai-is-exposing-how-much-government-capacity-depends-on-making-services-hard-to-use/",
               "title": "",
               "source": "microformat:p-category"
@@ -7956,20 +7563,33 @@
               "url": "https://joshuamorris.info/notes/2026/09/02/the-netherlands-is-making-its-gold-easier-to-reach-in-a-crisis/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
+              "title": "",
+              "source": "microformat:p-category"
             }
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
-      "slug": "public-systems-20",
-      "label": "public systems 20",
+      "slug": "public-systems-23",
+      "label": "public systems 23",
       "member_count": 1,
       "sites": [
         {
@@ -7986,11 +7606,9 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-03T21:50:07.756Z",
+      "last_changed_at": "2026-10-03T21:50:07.756Z",
       "active": true
     },
     {
@@ -8012,9 +7630,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8031,17 +7647,7 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/28/a-satellite-that-breathes-the-atmosphere-trying-to-pull-it-down/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/29/the-internet-saw-a-few-seconds-and-invented-the-rest/",
               "title": "",
               "source": "visible-text"
             },
@@ -8051,7 +7657,17 @@
               "source": "visible-text"
             },
             {
+              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
               "title": "",
               "source": "visible-text"
             }
@@ -8081,9 +7697,7 @@
           ]
         }
       ],
-      "sources": [
-        "visible-text"
-      ],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
@@ -8136,9 +7750,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -8172,9 +7784,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8198,9 +7808,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8224,9 +7832,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8263,10 +7869,7 @@
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category"
-      ],
+      "sources": ["catalog-match", "microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:59:21.002Z",
       "active": true
@@ -8290,9 +7893,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8316,9 +7917,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8342,9 +7941,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8368,9 +7965,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8394,9 +7989,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8425,9 +8018,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8451,9 +8042,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8477,9 +8066,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8503,9 +8090,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8539,9 +8124,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8565,9 +8148,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8604,10 +8185,7 @@
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category"
-      ],
+      "sources": ["catalog-match", "microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -8631,9 +8209,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8662,11 +8238,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/21/go-1_27-shipped-and-some-of-the-best-parts-barely-made-the-release-notes/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/08/22/decayfmt-is-not-a-self-destructing-file-format-but-i-like-the-idea/",
               "title": "",
@@ -8701,15 +8272,16 @@
               "url": "https://joshuamorris.info/notes/2026/08/30/one-machine-several-linux-kernels-no-hypervisor/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
+              "title": "",
+              "source": "microformat:p-category"
             }
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category",
-        "visible-text"
-      ],
+      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8733,9 +8305,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8759,9 +8329,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8785,9 +8353,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -8811,9 +8377,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -8837,9 +8401,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8863,9 +8425,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8915,11 +8475,7 @@
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category",
-        "topic-hub:page"
-      ],
+      "sources": ["catalog-match", "microformat:p-category", "topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -8976,10 +8532,7 @@
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category"
-      ],
+      "sources": ["catalog-match", "microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9003,9 +8556,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9029,9 +8580,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -9083,7 +8632,7 @@
               "source": "meta:keywords"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/08/21/amazon-is-destroying-books-to-train-ai-we-should-have-built-the-library-instead/",
+              "url": "https://joshuamorris.info/notes/2026/08/21/terafab-is-more-interesting-than-its-100-million-square-foot-headline/",
               "title": "",
               "source": "meta:keywords"
             }
@@ -9103,10 +8652,7 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords",
-        "topic-hub:page"
-      ],
+      "sources": ["meta:keywords", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9130,9 +8676,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9156,9 +8700,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9182,9 +8724,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9218,9 +8758,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9244,9 +8782,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9283,10 +8819,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9310,9 +8843,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9329,11 +8860,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/21/homeos-looks-like-apple-is-finally-treating-the-home-as-a-platform/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/10/apples-new-watch-is-listening-but-it-is-not-recording-everything/",
               "title": "",
               "source": "microformat:p-category"
@@ -9346,9 +8872,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9372,9 +8896,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9398,9 +8920,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -9462,9 +8982,7 @@
           ]
         }
       ],
-      "sources": [
-        "visible-text"
-      ],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
@@ -9497,9 +9015,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9641,9 +9157,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9667,9 +9181,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9693,9 +9205,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9719,9 +9229,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9745,9 +9253,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9782,16 +9288,6 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/26/the-work-required-to-make-something-look-simple/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/27/safe-not-safe-is-the-kind-of-developer-resource-i-want-more-of/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
               "title": "",
               "source": "visible-text"
@@ -9805,13 +9301,21 @@
               "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
               "title": "",
               "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
+              "title": "",
+              "source": "visible-text"
             }
           ]
         }
       ],
-      "sources": [
-        "visible-text"
-      ],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9835,9 +9339,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -9884,10 +9386,7 @@
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category"
-      ],
+      "sources": ["catalog-match", "microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -9911,9 +9410,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9937,9 +9434,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9963,9 +9458,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -10002,10 +9495,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10029,9 +9519,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10055,9 +9543,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -10081,9 +9567,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10107,9 +9591,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10133,9 +9615,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -10159,9 +9639,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10185,9 +9663,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10226,9 +9702,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10252,9 +9726,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10278,9 +9750,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -10304,9 +9774,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10343,10 +9811,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10370,9 +9835,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10406,9 +9869,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10432,9 +9893,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10458,9 +9917,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -10484,9 +9941,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
