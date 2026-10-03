@@ -7,15 +7,25 @@ import sharp from "sharp";
 
 import {
   blogrollEdges,
+  buildBlogrollsDocument,
   buildJoshternetOpml,
   carryForwardBlogrollEdges,
   fetchBlogrollOpml,
+  isJoshternetGeneratedOpml,
   originsFromBlogrollUrls,
   parseOpmlOutlineUrls,
   sanitizeBlogrollUrls,
   sortBlogrollEdges,
   withBlogroll,
 } from "./blogroll.mjs";
+import { itemsFromCollection } from "./collections.mjs";
+
+import {
+  HUB_ORIGIN,
+  carryForwardConnectionEdges,
+  connectionObservations,
+  sortConnectionEdges,
+} from "./connections.mjs";
 
 import {
   elsewhereHostCatalog,
@@ -50,6 +60,7 @@ const DEFAULT_REGISTRY_URL =
 
 const DEFAULT_DATA_PATH = "_data/network.json";
 const DEFAULT_BLOGROLLS_PATH = "_data/blogrolls.json";
+const DEFAULT_CONNECTIONS_PATH = "_data/connections.json";
 const DEFAULT_OPML_PATH = "assets/network/joshternet.opml";
 const DEFAULT_SCREENSHOT_ROOT = "assets/network/sites";
 
@@ -275,20 +286,65 @@ async function edgesFromBlogrollAds(
 }
 
 /**
- * Collects elsewhere links from the current page metadata and an optional about page.
+ * Stamps the page URL onto each outbound link record for connection evidence.
+ * @param {unknown} links
+ * @param {string} pageUrl
+ * @returns {Array<{href: string, text: string, rel: string[], page: string}>}
+ */
+function stampLinkPages(links, pageUrl) {
+  if (!Array.isArray(links) || typeof pageUrl !== "string" || !pageUrl) {
+    return [];
+  }
+
+  const stamped = [];
+
+  for (const link of links) {
+    if (typeof link === "string") {
+      stamped.push({
+        href: link,
+        text: "",
+        rel: [],
+        page: pageUrl,
+      });
+      continue;
+    }
+
+    if (!link || typeof link !== "object" || typeof link.href !== "string") {
+      continue;
+    }
+
+    stamped.push({
+      href: link.href,
+      text: typeof link.text === "string" ? link.text : "",
+      rel: Array.isArray(link.rel) ? link.rel : [],
+      page: pageUrl,
+    });
+  }
+
+  return stamped;
+}
+
+/**
+ * Collects elsewhere links and outbound page links from homepage metadata and
+ * an optional same-origin about page already fetched during enrichment.
  * @param {import("playwright").Page} page
  * @param {Record<string, unknown>} metadata
  * @param {Map<string, unknown>} dnsCache
  * @param {string} participantOrigin
- * @returns {Promise<Array<{url: string, network: string, label: string}>>}
+ * @returns {Promise<{
+ *   elsewhere: Array<{url: string, network: string, label: string}>,
+ *   links: Array<{href: string, text: string, rel: string[], page: string}>,
+ * }>}
  */
-async function collectElsewhereLinks(
+async function collectElsewhereAndLinks(
   page,
   metadata,
   dnsCache,
   participantOrigin,
 ) {
   const raw = Array.isArray(metadata.elsewhere) ? [...metadata.elsewhere] : [];
+  const homepagePageUrl = page.url();
+  const links = stampLinkPages(metadata.links, homepagePageUrl);
   const aboutPageHref =
     typeof metadata.aboutPageHref === "string" ? metadata.aboutPageHref : "";
 
@@ -318,6 +374,10 @@ async function collectElsewhereLinks(
           if (Array.isArray(aboutMetadata.elsewhere)) {
             raw.push(...aboutMetadata.elsewhere);
           }
+
+          if (Array.isArray(aboutMetadata.links)) {
+            links.push(...stampLinkPages(aboutMetadata.links, page.url()));
+          }
         }
       }
     } catch (error) {
@@ -327,9 +387,12 @@ async function collectElsewhereLinks(
     }
   }
 
-  return sanitizeElsewhere(raw, {
-    cache: dnsCache,
-  });
+  return {
+    elsewhere: await sanitizeElsewhere(raw, {
+      cache: dnsCache,
+    }),
+    links,
+  };
 }
 
 /**
@@ -360,6 +423,18 @@ function withEnrichment(entry, feeds, blogrollUrl, elsewhere) {
  *   blogrollUrl: string,
  *   elsewhere: Array<{url: string, network: string, label: string}>,
  *   edges: Array<{from: string, to: string, blogroll: string}>,
+ *   connections: Array<{
+ *     from: string,
+ *     to: string,
+ *     kind: string,
+ *     via: string,
+ *     source: string,
+ *     href: string,
+ *     text: string,
+ *     rel: string[],
+ *     page: string,
+ *   }>,
+ *   links: Array<{href: string, text: string, rel: string[], page: string}>,
  * }>}
  */
 async function enrichFromOpenedPage(opened, participant, participantOrigins) {
@@ -371,7 +446,8 @@ async function enrichFromOpenedPage(opened, participant, participantOrigins) {
     cache: dnsCache,
   });
   const blogrollUrl = blogrollUrls[0] || "";
-  const elsewhere = await collectElsewhereLinks(
+  const homepagePageUrl = page.url();
+  const { elsewhere, links } = await collectElsewhereAndLinks(
     page,
     metadata,
     dnsCache,
@@ -383,12 +459,20 @@ async function enrichFromOpenedPage(opened, participant, participantOrigins) {
     participantOrigins,
     dnsCache,
   );
+  const connections = connectionObservations({
+    sourceOrigin: participant.origin,
+    pageUrl: homepagePageUrl,
+    links,
+    participantOrigins,
+  });
 
   return {
     feeds,
     blogrollUrl,
     elsewhere,
     edges,
+    connections,
+    links,
   };
 }
 
@@ -460,6 +544,8 @@ async function captureParticipant(browser, participant, participantOrigins) {
     return {
       entry,
       edges: enrichment.edges,
+      connections: enrichment.connections,
+      links: enrichment.links,
     };
   } finally {
     await opened.context.close();
@@ -475,6 +561,8 @@ async function captureParticipant(browser, participant, participantOrigins) {
  *   blogrollUrl: string,
  *   elsewhere: Array<{url: string, network: string, label: string}>,
  *   edges: Array<{from: string, to: string, blogroll: string}>,
+ *   connections: Array<Record<string, unknown>>,
+ *   links: Array<{href: string, text: string, rel: string[], page: string}>,
  * }>}
  */
 async function discoverHomepageEnrichment(
@@ -546,9 +634,13 @@ const { accepted: participants, rejected } =
 reportRejectedParticipants(rejected);
 
 const existing = await readJSONIfExists(DEFAULT_DATA_PATH, []);
-const previousBlogrollEdges = await readJSONIfExists(
-  DEFAULT_BLOGROLLS_PATH,
-  [],
+const previousBlogrollEdges = itemsFromCollection(
+  await readJSONIfExists(DEFAULT_BLOGROLLS_PATH, {}),
+  "edges",
+);
+const previousConnectionEdges = itemsFromCollection(
+  await readJSONIfExists(DEFAULT_CONNECTIONS_PATH, {}),
+  "edges",
 );
 
 const previous = existingByOrigin(existing);
@@ -569,6 +661,9 @@ const browser = await chromium.launch({
 
 const nextEntries = [];
 const nextEdges = [];
+const nextConnections = [];
+/** @type {Array<{origin: string, links: Array<{href: string, text: string, rel: string[], page: string}>}>} */
+const originLinkBundles = [];
 
 try {
   for (const participant of participants) {
@@ -599,8 +694,13 @@ try {
           ),
         );
         nextEdges.push(...enrichment.edges);
+        nextConnections.push(...enrichment.connections);
+        originLinkBundles.push({
+          origin: participant.origin,
+          links: enrichment.links,
+        });
         process.stdout.write(
-          `keep ${participant.origin} (feeds, blogrolls, and elsewhere refreshed)\n`,
+          `keep ${participant.origin} (feeds, blogrolls, elsewhere, and connections refreshed)\n`,
         );
       } catch (error) {
         nextEntries.push(
@@ -614,6 +714,12 @@ try {
         nextEdges.push(
           ...carryForwardBlogrollEdges(
             previousBlogrollEdges,
+            participant.origin,
+          ),
+        );
+        nextConnections.push(
+          ...carryForwardConnectionEdges(
+            previousConnectionEdges,
             participant.origin,
           ),
         );
@@ -636,12 +742,23 @@ try {
 
       nextEntries.push(captured.entry);
       nextEdges.push(...captured.edges);
+      nextConnections.push(...captured.connections);
+      originLinkBundles.push({
+        origin: participant.origin,
+        links: captured.links || [],
+      });
 
       process.stdout.write(`captured ${participant.origin}\n`);
     } catch (error) {
       nextEntries.push(fallbackEntry(participant, oldEntry));
       nextEdges.push(
         ...carryForwardBlogrollEdges(previousBlogrollEdges, participant.origin),
+      );
+      nextConnections.push(
+        ...carryForwardConnectionEdges(
+          previousConnectionEdges,
+          participant.origin,
+        ),
       );
 
       process.stderr.write(
@@ -660,17 +777,35 @@ nextEntries.sort((left, right) => {
   });
 });
 
-const blogrollEdgeList = sortBlogrollEdges(nextEdges);
+const blogrollEdgeList = sortBlogrollEdges(
+  nextEdges.filter(
+    (edge) => !isJoshternetGeneratedOpml(edge.blogroll, HUB_ORIGIN),
+  ),
+);
+const blogrollsDocument = buildBlogrollsDocument({
+  generatedAt: new Date().toISOString(),
+  edges: blogrollEdgeList,
+  entries: nextEntries,
+  hubOrigin: HUB_ORIGIN,
+});
+const connectionEdgeList = sortConnectionEdges(
+  nextConnections.filter((edge) => {
+    const relation = edge.relation || edge.kind;
+    return relation !== "friend" && relation !== "topic";
+  }),
+);
 const opml = buildJoshternetOpml(nextEntries);
 
 await removeOrphanScreenshots(nextEntries, DEFAULT_SCREENSHOT_ROOT);
 await writeJSONAtomic(DEFAULT_DATA_PATH, nextEntries);
-await writeJSONAtomic(DEFAULT_BLOGROLLS_PATH, blogrollEdgeList);
+await writeJSONAtomic(DEFAULT_BLOGROLLS_PATH, blogrollsDocument);
 await writeTextAtomic(DEFAULT_OPML_PATH, opml);
 
 process.stdout.write(
   `Wrote ${nextEntries.length} network entr` +
     `${nextEntries.length === 1 ? "y" : "ies"}, ` +
-    `${blogrollEdgeList.length} blogroll edge` +
-    `${blogrollEdgeList.length === 1 ? "" : "s"}, and joshternet.opml.\n`,
+    `${blogrollEdgeList.length} publisher blogroll edge` +
+    `${blogrollEdgeList.length === 1 ? "" : "s"}, ` +
+    `${connectionEdgeList.length} homepage connection observation` +
+    `${connectionEdgeList.length === 1 ? "" : "s"} (connections.json is published by nlp:sync), and joshternet.opml.\n`,
 );

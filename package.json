@@ -3,16 +3,23 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test test/network/*.test.mjs",
+    "test": "node --test test/network/*.test.mjs test/nlp/*.test.mjs test/views/*.test.mjs",
+    "views:build": "node scripts/views/build.mjs",
     "test:browser": "node --test test/browser/*.test.mjs",
     "test:site": "node --test test/site/*.test.mjs",
     "network:sync": "node scripts/network/sync.mjs",
+    "nlp:sync": "node scripts/nlp/sync.mjs",
+    "nlp:validate": "node scripts/nlp/validate-generated.mjs",
     "elsewhere:glyphs": "node scripts/network/generate-elsewhere-glyphs.mjs",
+    "build": "bash scripts/build.sh",
+    "dev": "bash scripts/dev.sh",
     "format": "prettier . --write --ignore-unknown",
     "format:check": "prettier . --check --ignore-unknown"
   },
   "devDependencies": {
     "@shopify/prettier-plugin-liquid": "1.11.0",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
     "playwright": "^1.63.0",
     "prettier": "3.9.8",
     "sharp": "^0.35.4"

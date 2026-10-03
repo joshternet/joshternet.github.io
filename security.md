@@ -2,8 +2,10 @@
 layout: default
 title: Security and Vulnerability Reporting
 description: >-
-  How to report security vulnerabilities affecting joshternet.org and
-  Joshternet projects.
+  How to report security vulnerabilities affecting joshternet.org and related
+  Joshternet projects, including responsible disclosure expectations.
+keywords: >-
+  Joshternet security, vulnerability reporting, responsible disclosure
 permalink: /security/
 ---
 

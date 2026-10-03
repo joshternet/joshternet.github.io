@@ -1,0 +1,61 @@
+{% comment %}
+  Goal: One What's New-style card. Expects include.item with title, url,
+  published_at, site_title, summary, tags, domain, optional image.
+{% endcomment %}
+<li class="activity-card h-entry">
+  <article>
+    {% if include.item.image and include.item.image != '' %}
+      <a
+        class="activity-card__media"
+        href="{{ include.item.url | escape }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <img
+          class="u-photo"
+          src="{{ include.item.image | escape }}"
+          alt=""
+          loading="lazy"
+          decoding="async"
+          referrerpolicy="no-referrer"
+        >
+      </a>
+    {% endif %}
+    <div class="activity-card__body">
+      <div class="activity-card__heading">
+        <h2 class="activity-card__title p-name">
+          <a class="u-url" href="{{ include.item.url | escape }}" target="_blank" rel="noopener noreferrer">
+            {{ include.item.title | escape }}
+            <span aria-hidden="true">↗</span>
+            <span class="visually-hidden">(opens on the publisher’s site)</span>
+          </a>
+        </h2>
+        {% if include.item.published_at and include.item.published_at != '' %}
+          <time class="activity-card__date dt-published" datetime="{{ include.item.published_at | escape }}">
+            {{- include.item.published_at | date: '%b %-d, %Y' -}}
+          </time>
+        {% endif %}
+      </div>
+      {% if include.item.site_title and include.item.site_title != '' %}
+        <p class="activity-card__author p-author h-card">
+          <span class="p-name">{{ include.item.site_title | escape }}</span>
+        </p>
+      {% endif %}
+      {% if include.item.summary and include.item.summary != '' %}
+        <p class="activity-card__summary p-summary">{{ include.item.summary | escape }}</p>
+      {% endif %}
+      <div class="activity-card__footer">
+        <p class="activity-card__topics">
+          {% for topic in include.item.tags %}
+            <span class="p-category">{{ topic.label | escape }}</span>
+          {% endfor %}
+        </p>
+        {% if include.item.domain and include.item.domain != '' %}
+          <p class="activity-card__domain">{{ include.item.domain | escape }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </article>
+</li>

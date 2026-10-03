@@ -1,0 +1,49 @@
+---
+layout: default
+joshternet_analysis: derived
+---
+{% assign topic_slug = page.slug %}
+{% assign topic = null %}
+{% assign topic_list = site.data.topic_views.neighborhoods | default: empty %}
+{% for candidate in topic_list %}
+  {% if candidate.slug == topic_slug %}
+    {% assign topic = candidate %}
+  {% endif %}
+{% endfor %}
+
+{% if topic %}
+  <article class="h-feed">
+    <p>
+      <a href="{{ '/topics/' | relative_url }}">← All topics</a>
+    </p>
+
+    <h1 class="p-name">{{ topic.label | escape }}</h1>
+
+    {% assign members = topic.members | default: empty %}
+    {% if members.size > 0 %}
+      {% for site_entry in members %}
+        {% assign articles = site_entry.articles | default: empty %}
+        {% if articles.size > 0 %}
+          <section class="topic-site h-card">
+            <h2 class="topic-site__heading p-name">
+              <a class="u-url" href="{{ site_entry.origin | escape }}" target="_blank" rel="noopener noreferrer">
+                {{ site_entry.title | default: site_entry.domain | escape }}
+                <span aria-hidden="true">↗</span>
+                <span class="visually-hidden">(opens on the publisher’s site)</span>
+              </a>
+            </h2>
+            <p class="activity-card__domain p-org">{{ site_entry.domain | escape }}</p>
+            <ol class="activity-list">
+              {% for item in articles %}
+                {% include activity-card.html item=item %}
+              {% endfor %}
+            </ol>
+          </section>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </article>
+{% else %}
+  <h1>{{ page.title | escape }}</h1>
+  <p><a href="{{ '/topics/' | relative_url }}">Back to topics</a></p>
+{% endif %}

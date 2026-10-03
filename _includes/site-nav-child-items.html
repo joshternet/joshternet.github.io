@@ -1,0 +1,38 @@
+{% comment %}
+  Goal: Render second-level nav links from a data list.
+  Supports internal `path` (site-relative) or external/mailto `url`.
+  Optional match: prefix marks children under that path current
+  (for Platforms, Topics). Exact path match is the default.
+  include.items: array of { title, path? | url?, match? }
+{% endcomment %}
+{% for item in include.items %}
+  {% if item.url %}
+    {% assign item_href = item.url %}
+    {% assign item_current = false %}
+  {% else %}
+    {% assign item_href = item.path | relative_url %}
+    {% assign item_current = false %}
+    {% if page.url == item.path %}
+      {% assign item_current = true %}
+    {% elsif item.match == 'prefix' and item.path and page.url contains item.path %}
+      {% assign item_current = true %}
+    {% endif %}
+  {% endif %}
+  <li class="site-nav-secondary__item">
+    <a
+      href="{{ item_href }}"
+      {% if item_current %}
+        aria-current="page"
+      {% endif %}
+      {% if item.url contains '://' %}
+        target="_blank"
+        rel="noopener noreferrer"
+      {% endif %}
+    >
+      {{- item.title -}}
+      {%- if item.url contains '://' -%}
+        <span aria-hidden="true">↗</span><span class="visually-hidden">(opens off this site)</span>
+      {%- endif -%}
+    </a>
+  </li>
+{% endfor %}

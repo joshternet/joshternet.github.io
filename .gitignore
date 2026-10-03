@@ -6,6 +6,7 @@ vendor/
 Gemfile.lock
 node_modules/
 .network-sync/
+.tmp/
 workers/seed-nominations/.wrangler/
 workers/http-message-signatures-directory/.wrangler/
 workers/declaration-check/.wrangler/

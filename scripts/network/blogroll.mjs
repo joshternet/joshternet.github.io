@@ -394,3 +394,89 @@ export function withBlogroll(entry, blogrollUrl) {
 
   return next;
 }
+
+/**
+ * Joshternet-generated OPML is a subscription file, not publisher blogroll
+ * relationship evidence.
+ * @param {string} blogrollUrl
+ * @param {string} [hubOrigin]
+ * @returns {boolean}
+ */
+export function isJoshternetGeneratedOpml(
+  blogrollUrl,
+  hubOrigin = "https://joshternet.org",
+) {
+  if (typeof blogrollUrl !== "string" || !blogrollUrl) {
+    return false;
+  }
+
+  try {
+    const origin = originFromHttpUrl(blogrollUrl);
+    const url = new URL(blogrollUrl);
+    return (
+      origin === hubOrigin &&
+      (url.pathname.endsWith("/joshternet.opml") ||
+        url.pathname.includes("/assets/network/joshternet.opml"))
+    );
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Public blogrolls.json document. Omits `edges` when none qualify.
+ * Advertisements remain so the file records what was observed.
+ * @param {{
+ *   generatedAt: string,
+ *   edges: Array<{from: string, to: string, blogroll: string}>,
+ *   entries: Array<{origin?: string, blogroll?: string}>,
+ *   hubOrigin?: string,
+ * }} input
+ * @returns {Record<string, unknown>}
+ */
+export function buildBlogrollsDocument(input) {
+  const hubOrigin = input.hubOrigin || "https://joshternet.org";
+  const edges = Array.isArray(input.edges) ? input.edges : [];
+  /** @type {Array<Record<string, unknown>>} */
+  const advertisements = [];
+
+  for (const entry of input.entries || []) {
+    if (!entry || typeof entry.origin !== "string" || !entry.blogroll) {
+      continue;
+    }
+
+    const generated = isJoshternetGeneratedOpml(entry.blogroll, hubOrigin);
+    /** @type {Record<string, unknown>} */
+    const advertisement = {
+      origin: entry.origin,
+      blogroll: entry.blogroll,
+      source_authority: generated ? "joshternet-generated" : "publisher",
+      relationship_evidence: !generated,
+    };
+
+    if (generated) {
+      advertisement.reason =
+        "Hub-generated OPML is a subscription file, not independent blogroll evidence.";
+    }
+
+    advertisements.push(advertisement);
+  }
+
+  /** @type {Record<string, unknown>} */
+  const doc = {
+    schema_version: 1,
+    generated_at: input.generatedAt,
+    edge_count: edges.length,
+    advertisement_count: advertisements.length,
+  };
+
+  if (advertisements.length > 0) {
+    doc.advertisements = advertisements;
+  }
+
+  if (edges.length > 0) {
+    doc.edges = edges;
+  }
+
+  return doc;
+}

@@ -2,12 +2,15 @@
 layout: default
 title: Participating Independent Websites
 description: >-
-  Independent websites participating in the Joshternet, discovered and
-  verified by JoshBot.
+  Browse independent websites participating in the Joshternet—discovered and
+  verified by JoshBot, with screenshots, feeds, and elsewhere profiles when published.
+keywords: >-
+  Joshternet network, participating websites, JoshBot registry, independent websites
 seo:
-  type: WebPage
+  type: CollectionPage
   name: The Network
 permalink: /network/
+joshternet_analysis: derived
 script: /assets/js/network.js
 ---
 
@@ -62,12 +65,6 @@ Independent websites participating in the Joshternet, discovered and verified by
       Undeclared
     </button>
   </div>
-
-  <div class="network-toolbar__secondary">
-    <a class="network-wander-action" href="{{ '/wander/' | relative_url }}">
-      Wander the Joshternet →
-    </a>
-  </div>
 </div>
 
 <p class="network-count" aria-live="polite">
@@ -90,14 +87,14 @@ Independent websites participating in the Joshternet, discovered and verified by
     {% endcase %}
 
     <article
-      class="network-card network-card--{{ network_site.identity }}"
+      class="network-card network-card--{{ network_site.identity }} h-card"
       data-network-card
       data-identity="{{ network_site.identity }}"
       data-title="{{ network_site.title | default: network_site.domain | downcase | escape }}"
       data-domain="{{ network_site.domain | downcase | escape }}"
     >
       <a
-        class="network-card__link"
+        class="network-card__link u-url"
         href="{{ network_site.origin | escape }}"
         target="_blank"
         rel="noopener noreferrer"
@@ -105,7 +102,7 @@ Independent websites participating in the Joshternet, discovered and verified by
         <div class="network-card__preview">
           {% if network_site.screenshot %}
             <img
-              class="network-card__image"
+              class="network-card__image u-photo"
               src="{{ network_site.screenshot | relative_url }}"
               alt="Screenshot of {{ network_site.title | default: network_site.domain | escape }}"
               loading="lazy"
@@ -123,13 +120,13 @@ Independent websites participating in the Joshternet, discovered and verified by
             {{ identity_label }} Joshternet participant.
           </span>
 
-          <h2 class="network-card__title">
+          <h2 class="network-card__title p-name">
             {{ network_site.title | default: network_site.domain | escape }}
             <span aria-hidden="true">↗</span>
           </h2>
 
           {% if network_site.description and network_site.description != "" %}
-            <p class="network-card__description">
+            <p class="network-card__description p-note">
               {{ network_site.description | escape }}
             </p>
           {% endif %}
@@ -200,7 +197,7 @@ Independent websites participating in the Joshternet, discovered and verified by
           </div>
         {% endif %}
         <a
-          class="network-card__domain"
+          class="network-card__domain u-url"
           href="{{ network_site.origin | escape }}"
           target="_blank"
           rel="noopener noreferrer"

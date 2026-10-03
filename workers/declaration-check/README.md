@@ -34,7 +34,8 @@ npm run dev                      # wrangler on :8789
 npm run dev:local                # Python stand-in on :8789
 ```
 
-Jekyll development points the validate page at
+From the site root, `npm run dev` starts Jekyll with LiveReload and this
+Worker together. Jekyll development points the validate page at
 `http://127.0.0.1:8789/v1/declaration-check`.
 
 ## Deploy

@@ -1,40 +1,90 @@
 /**
- * Goal: Reliable Implement submenu open/close without layout shift.
- * Inputs: .site-header, .site-nav__item--implement, .site-nav-secondary--implement
- * Output: toggles [hidden] / .is-open; sticky on Implement section pages;
- * closes when another top-level item is entered (sticky still wins on section pages)
- * or when the pointer leaves the header (non-sticky).
- * The header is the hover zone so the gap under the circle-dot rule cannot drop the menu.
+ * Goal: Reliable submenu open/close for About, Network, Implement, and JoshBot.
+ * Inputs: .site-header, [data-nav-branch], [data-nav-secondary]
+ * Output: toggles [hidden] / .is-open; sticky on matching section pages.
+ * Fine-pointer hover opens the row. Touch/pen: first tap opens without
+ * navigating; a later tap on the same top-level link follows it.
  */
 (() => {
   const header = document.querySelector(".site-header");
+
   if (!header) {
     return;
   }
 
-  const implementItem = header.querySelector(
-    ".site-nav--wide .site-nav__item--implement",
+  const branchItems = Array.from(
+    header.querySelectorAll(".site-nav--wide [data-nav-branch]"),
   );
-  const secondary = header.querySelector(".site-nav-secondary--implement");
-  if (!implementItem || !secondary) {
+  const secondaries = Array.from(
+    header.querySelectorAll("[data-nav-secondary]"),
+  );
+
+  if (branchItems.length === 0 || secondaries.length === 0) {
     return;
   }
 
-  const stickySection = header.classList.contains(
-    "site-header--section-implement",
-  );
+  let stickyBranch = null;
+
+  if (header.classList.contains("site-header--section-about")) {
+    stickyBranch = "about";
+  } else if (header.classList.contains("site-header--section-network")) {
+    stickyBranch = "network";
+  } else if (header.classList.contains("site-header--section-implement")) {
+    stickyBranch = "implement";
+  } else if (header.classList.contains("site-header--section-joshbot")) {
+    stickyBranch = "joshbot";
+  }
+
   const leaveMs = 160;
   let activeBranch = null;
   let leaveTimer = 0;
+  /** @type {string | null} */
+  let openBeforeGesture = null;
+
+  /**
+   * iPad and other coarse pointers have no persistent hover.
+   * @returns {boolean}
+   */
+  function useHoverSubmenus() {
+    return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  }
+
+  /**
+   * @param {PointerEvent} event
+   * @returns {boolean}
+   */
+  function isCoarsePointer(event) {
+    return event.pointerType === "touch" || event.pointerType === "pen";
+  }
+
+  /**
+   * @returns {string | null}
+   */
+  function openName() {
+    return activeBranch || stickyBranch;
+  }
 
   /**
    * @returns {void}
    */
   function sync() {
-    const open =
-      activeBranch === "implement" || (stickySection && !activeBranch);
-    secondary.hidden = !open;
-    secondary.classList.toggle("is-open", open);
+    const current = openName();
+
+    for (const secondary of secondaries) {
+      const name = secondary.getAttribute("data-nav-secondary");
+      const open = current === name;
+      secondary.hidden = !open;
+      secondary.classList.toggle("is-open", open);
+    }
+
+    for (const item of branchItems) {
+      const name = item.getAttribute("data-nav-branch");
+      const link = item.querySelector(":scope > a");
+
+      if (link) {
+        link.setAttribute("aria-expanded", current === name ? "true" : "false");
+      }
+    }
   }
 
   /**
@@ -57,7 +107,7 @@
   }
 
   /**
-   * @param {"implement"} branch
+   * @param {string} branch
    * @returns {void}
    */
   function openBranch(branch) {
@@ -67,7 +117,6 @@
   }
 
   /**
-   * Dismiss the hover-opened branch. Sticky section pages stay open.
    * @returns {void}
    */
   function clearBranch() {
@@ -80,55 +129,113 @@
    * @param {FocusEvent} event
    * @returns {void}
    */
-  function onFocusOut(event) {
-    const next = event.relatedTarget;
-    if (
-      next instanceof Node &&
-      (implementItem.contains(next) || secondary.contains(next))
-    ) {
+  function onFocusIn(event) {
+    const target = event.target;
+
+    if (!(target instanceof Element)) {
       return;
     }
-    if (
-      next instanceof Node &&
-      header.contains(next) &&
-      !implementItem.contains(next) &&
-      !secondary.contains(next)
-    ) {
+
+    const branchItem = target.closest("[data-nav-branch]");
+
+    if (branchItem && header.contains(branchItem)) {
+      openBranch(branchItem.getAttribute("data-nav-branch") || "");
+      return;
+    }
+
+    if (target.closest("[data-nav-secondary]")) {
+      cancelLeave();
+    }
+  }
+
+  for (const item of branchItems) {
+    const name = item.getAttribute("data-nav-branch");
+    const link = item.querySelector(":scope > a");
+
+    item.addEventListener("pointerenter", (event) => {
+      if (!useHoverSubmenus() || isCoarsePointer(event)) {
+        return;
+      }
+
+      openBranch(name || "");
+    });
+
+    if (link) {
+      link.addEventListener("pointerdown", () => {
+        openBeforeGesture = openName();
+      });
+
+      link.addEventListener("click", (event) => {
+        const prior = openBeforeGesture;
+        openBeforeGesture = null;
+
+        if (prior === name) {
+          return;
+        }
+
+        event.preventDefault();
+        openBranch(name || "");
+      });
+    }
+  }
+
+  for (const item of header.querySelectorAll(
+    ".site-nav--wide .site-nav__item:not([data-nav-branch])",
+  )) {
+    item.addEventListener("pointerenter", (event) => {
+      if (!useHoverSubmenus() || isCoarsePointer(event)) {
+        return;
+      }
+
       clearBranch();
+    });
+  }
+
+  header.addEventListener("pointerleave", (event) => {
+    if (!useHoverSubmenus() || isCoarsePointer(event)) {
       return;
     }
+
     scheduleLeave();
-  }
+  });
 
-  implementItem.addEventListener("pointerenter", () => {
-    openBranch("implement");
-  });
-  implementItem.addEventListener("focusin", () => {
-    openBranch("implement");
-  });
-  implementItem.addEventListener("focusout", onFocusOut);
-
-  secondary.addEventListener("pointerenter", () => {
-    openBranch("implement");
-  });
-  secondary.addEventListener("focusin", () => {
-    openBranch("implement");
-  });
-  secondary.addEventListener("focusout", onFocusOut);
-
-  const siblingItems = header.querySelectorAll(
-    ".site-nav--wide .site-nav__list > .site-nav__item",
-  );
-  for (const item of siblingItems) {
-    if (item === implementItem) {
-      continue;
+  header.addEventListener("pointerenter", (event) => {
+    if (!useHoverSubmenus() || isCoarsePointer(event)) {
+      return;
     }
-    item.addEventListener("pointerenter", clearBranch);
-    item.addEventListener("focusin", clearBranch);
-  }
 
-  header.addEventListener("pointerleave", scheduleLeave);
-  header.addEventListener("pointerenter", cancelLeave);
+    cancelLeave();
+  });
+
+  header.addEventListener("focusin", onFocusIn);
+
+  header.addEventListener("focusout", (event) => {
+    const next = event.relatedTarget;
+
+    if (next instanceof Node && header.contains(next)) {
+      return;
+    }
+
+    if (!useHoverSubmenus()) {
+      return;
+    }
+
+    scheduleLeave();
+  });
+
+  document.addEventListener("pointerdown", (event) => {
+    if (!isCoarsePointer(event) && useHoverSubmenus()) {
+      return;
+    }
+
+    const target = event.target;
+
+    if (!(target instanceof Node) || header.contains(target)) {
+      return;
+    }
+
+    clearBranch();
+  });
 
   sync();
 })();

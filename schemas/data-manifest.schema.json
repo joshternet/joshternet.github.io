@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://joshternet.org/schemas/data-manifest.schema.json",
+  "title": "Joshternet generated data manifest",
+  "type": "object",
+  "required": ["schema_version", "datasets", "semantic_hashes"],
+  "properties": {
+    "schema_version": { "type": "integer", "minimum": 1 },
+    "generated_at": { "type": "string" },
+    "datasets": {
+      "type": "object",
+      "required": [
+        "network",
+        "site_signals",
+        "content",
+        "topics",
+        "connections",
+        "blogrolls",
+        "mentions"
+      ],
+      "additionalProperties": { "type": "integer" }
+    },
+    "extractors": {
+      "type": "object",
+      "additionalProperties": { "type": "integer" }
+    },
+    "semantic_hashes": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "schemas": {
+      "type": "object",
+      "additionalProperties": { "type": "string" },
+      "description": "Optional map of dataset name → schema $id"
+    }
+  },
+  "additionalProperties": true
+}

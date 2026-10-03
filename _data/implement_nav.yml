@@ -1,10 +1,12 @@
 # Second-level Implement navigation. Section home is the top-level Implement
-# link; this list is the child pages only.
+# link; this list is the child pages only. Platform recipes live under
+# Platforms (/implement/platforms/) and are listed in platforms_nav.yml.
 - title: Check a declaration
   path: /implement/validate/
-- title: Eleventy
-  path: /implement/eleventy/
-- title: Jekyll
-  path: /implement/jekyll/
+- title: Platforms
+  path: /implement/platforms/
+  match: prefix
 - title: Buttons
   path: /implement/buttons/
+- title: Connections
+  path: /implement/connections/

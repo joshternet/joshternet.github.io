@@ -22,18 +22,27 @@ on:
     paths:
       - ".github/workflows/network-sync.yml"
       - "scripts/network/**"
+      - "scripts/nlp/**"
+      - "scripts/views/**"
+      - "schemas/**"
       - "test/network/**"
+      - "test/nlp/**"
       - "test/browser/**"
       - "package.json"
       - "package-lock.json"
       - "_config.yml"
       - "_layouts/default.html"
+      - "_layouts/topic.html"
       - "_includes/**"
       - "network.md"
       - "wander.md"
+      - "connections.md"
+      - "topics/**"
       - "network-data.json"
+      - "connections-data.json"
       - "assets/js/network.js"
       - "assets/js/wander.js"
+      - "assets/js/connections.js"
       - "assets/css/main.css"
 
 concurrency:
@@ -94,6 +103,14 @@ jobs:
         env:
           NETWORK_REFRESH_ALL: ${{ inputs.refresh_all || 'false' }}
         run: npm run network:sync
+
+      - name: Crawl sites and rebuild topics/connections
+        if: steps.preflight.outputs.needs_sync == 'true'
+        run: npm run nlp:sync
+
+      - name: Validate graph invariants
+        if: steps.preflight.outputs.needs_sync == 'true'
+        run: npm run nlp:validate
 
       - name: Validate generated JSON
         if: steps.preflight.outputs.needs_sync == 'true'
@@ -159,13 +176,26 @@ jobs:
               fs.readFileSync("_data/blogrolls.json", "utf8"),
           );
 
-          if (!Array.isArray(blogrolls)) {
+          if (
+              !blogrolls ||
+              typeof blogrolls !== "object" ||
+              Array.isArray(blogrolls) ||
+              typeof blogrolls.edge_count !== "number"
+          ) {
               throw new Error(
-                  "_data/blogrolls.json must contain an array",
+                  "_data/blogrolls.json must be a collection document",
               );
           }
 
-          for (const edge of blogrolls) {
+          if (JSON.stringify(blogrolls) === "[]") {
+              throw new Error("_data/blogrolls.json must not be an empty array");
+          }
+
+          const blogrollEdges = Array.isArray(blogrolls.edges)
+              ? blogrolls.edges
+              : [];
+
+          for (const edge of blogrollEdges) {
               if (
                   !edge ||
                   typeof edge !== "object" ||
@@ -191,11 +221,79 @@ jobs:
               );
           }
 
+          const connections = JSON.parse(
+              fs.readFileSync("_data/connections.json", "utf8"),
+          );
+
+          if (
+              !connections ||
+              typeof connections !== "object" ||
+              Array.isArray(connections) ||
+              typeof connections.edge_count !== "number"
+          ) {
+              throw new Error(
+                  "_data/connections.json must be a collection document",
+              );
+          }
+
+          const connectionEdges = Array.isArray(connections.edges)
+              ? connections.edges
+              : [];
+
+          for (const edge of connectionEdges) {
+              if (
+                  !edge ||
+                  typeof edge !== "object" ||
+                  typeof edge.from !== "string" ||
+                  typeof edge.to !== "string" ||
+                  typeof edge.href !== "string" ||
+                  String(edge.href).includes("/.well-known/josh")
+              ) {
+                  throw new Error(
+                      "Invalid connection edge: " +
+                      JSON.stringify(edge),
+                  );
+              }
+          }
+
+          const topics = JSON.parse(
+              fs.readFileSync("_data/topics.json", "utf8"),
+          );
+
+          if (
+              !topics ||
+              typeof topics !== "object" ||
+              Array.isArray(topics) ||
+              typeof topics.community_count !== "number"
+          ) {
+              throw new Error(
+                  "_data/topics.json must be a collection document",
+              );
+          }
+
+          const signals = JSON.parse(
+              fs.readFileSync("_data/site_signals.json", "utf8"),
+          );
+
+          if (
+              !signals ||
+              typeof signals !== "object" ||
+              !Array.isArray(signals.origins)
+          ) {
+              throw new Error(
+                  "_data/site_signals.json must have origins[]",
+              );
+          }
+
           console.log(
               `Validated ${data.length} generated network ` +
-              `${data.length === 1 ? "entry" : "entries"} and ` +
+              `${data.length === 1 ? "entry" : "entries"}, ` +
               `${blogrolls.length} blogroll ` +
-              `${blogrolls.length === 1 ? "edge" : "edges"}.`,
+              `${blogrolls.length === 1 ? "edge" : "edges"}, ` +
+              `${connections.length} connection ` +
+              `${connections.length === 1 ? "edge" : "edges"}, and ` +
+              `${topics.length} topic` +
+              `${topics.length === 1 ? "" : "s"}.`,
           );
           NODE
 
@@ -209,6 +307,19 @@ jobs:
           path: |
             _data/network.json
             _data/blogrolls.json
+            _data/connections.json
+            _data/topics.json
+            _data/site_signals.json
+            _data/mentions.json
+            _data/content.json
+            _data/data_manifest.json
+            _data/activity.json
+            _data/explore.json
+            _data/topic_views.json
+            _data/connection_topics.json
+            _data/site_views.json
+            _data/search_index.json
+            topics/
             assets/network/joshternet.opml
             assets/network/sites/
 
@@ -240,10 +351,14 @@ jobs:
         run: |
           test -f .network-sync-output/_data/network.json
           test -f .network-sync-output/_data/blogrolls.json
+          test -f .network-sync-output/_data/connections.json
+          test -f .network-sync-output/_data/topics.json
+          test -f .network-sync-output/_data/site_signals.json
           test -f .network-sync-output/assets/network/joshternet.opml
 
           mkdir -p _data
           mkdir -p assets/network
+          mkdir -p topics
 
           cp \
             .network-sync-output/_data/network.json \
@@ -252,6 +367,63 @@ jobs:
           cp \
             .network-sync-output/_data/blogrolls.json \
             _data/blogrolls.json
+
+          cp \
+            .network-sync-output/_data/connections.json \
+            _data/connections.json
+
+          cp \
+            .network-sync-output/_data/topics.json \
+            _data/topics.json
+
+          cp \
+            .network-sync-output/_data/site_signals.json \
+            _data/site_signals.json
+
+          if [ -f .network-sync-output/_data/mentions.json ]; then
+            cp \
+              .network-sync-output/_data/mentions.json \
+              _data/mentions.json
+          fi
+
+          if [ -f .network-sync-output/_data/content.json ]; then
+            cp \
+              .network-sync-output/_data/content.json \
+              _data/content.json
+          fi
+
+          if [ -f .network-sync-output/_data/data_manifest.json ]; then
+            cp \
+              .network-sync-output/_data/data_manifest.json \
+              _data/data_manifest.json
+          fi
+
+          for dataset in \
+            activity.json \
+            explore.json \
+            topic_views.json \
+            connection_topics.json \
+            site_views.json \
+            search_index.json
+          do
+            test -f ".network-sync-output/_data/${dataset}"
+            cp \
+              ".network-sync-output/_data/${dataset}" \
+              "_data/${dataset}"
+          done
+
+          find topics -maxdepth 1 -type f -name '*.md' ! -name 'index.md' -delete
+          mkdir -p topics
+
+          if [ -d .network-sync-output/topics ]; then
+            for page in .network-sync-output/topics/*.md; do
+              [ -f "$page" ] || continue
+              base="$(basename "$page")"
+              if [ "$base" != "index.md" ]; then
+                cp "$page" "topics/$base"
+              fi
+            done
+          fi
 
           cp \
             .network-sync-output/assets/network/joshternet.opml \
@@ -276,6 +448,19 @@ jobs:
           git add -- \
             _data/network.json \
             _data/blogrolls.json \
+            _data/connections.json \
+            _data/topics.json \
+            _data/site_signals.json \
+            _data/mentions.json \
+            _data/content.json \
+            _data/data_manifest.json \
+            _data/activity.json \
+            _data/explore.json \
+            _data/topic_views.json \
+            _data/connection_topics.json \
+            _data/site_views.json \
+            _data/search_index.json \
+            topics \
             assets/network/joshternet.opml \
             assets/network/sites
 

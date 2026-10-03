@@ -3,7 +3,9 @@ layout: default
 title: About the Open Josh Network
 description: >-
   How the Joshternet began, why it starts with Joshes and independent websites,
-  and how open standards keep the network decentralized.
+  and how open standards keep the network decentralized without a central platform.
+keywords: >-
+  about Joshternet, open Josh network, independent websites, decentralized web
 seo:
   type: WebPage
   name: About

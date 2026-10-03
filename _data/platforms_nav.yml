@@ -1,0 +1,9 @@
+# Platform-specific /.well-known/josh recipes under /implement/platforms/.
+# Add a page here after the recipe has been tested. Do not put these in
+# implement_nav.yml — that row stays a single Platforms link.
+- title: Eleventy
+  path: /implement/platforms/eleventy/
+  summary: publishes josh.json at /.well-known/josh
+- title: Jekyll
+  path: /implement/platforms/jekyll/
+  summary: publishes .well-known/josh after including that directory

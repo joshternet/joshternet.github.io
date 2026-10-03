@@ -2,19 +2,18 @@
 layout: default
 title: Publish /.well-known/josh with Jekyll
 description: >-
-  How to publish a Joshternet declaration from a Jekyll site at the extensionless
-  /.well-known/josh path, including the include rule Jekyll needs for that
-  directory.
+  Publish a Joshternet declaration from a Jekyll site at the extensionless
+  /.well-known/josh path, including the include rule Jekyll needs for that directory.
+keywords: >-
+  Jekyll, /.well-known/josh, Joshternet declaration, include .well-known
 seo:
   type: WebPage
   name: Jekyll
-permalink: /implement/jekyll/
+permalink: /implement/platforms/jekyll/
 nav_title: Jekyll
 ---
 
 # Publish with Jekyll
-
-This page is the Jekyll recipe. It is non-normative. [RFC-JOSH-0002][rfc-0002] defines the protocol, and the [implementation guide][implement] explains participation and Josh identity. Jekyll's job is only to publish the declaration at the path the protocol already requires.
 
 The public resource is exactly `/.well-known/josh`. It does not become `/.well-known/josh.json`.
 
@@ -95,5 +94,4 @@ Confirm all of the following:
 - the extensionless path `/.well-known/josh`
 - no redirect to a different origin
 
-[rfc-0002]: https://github.com/joshternet/spec/blob/main/rfcs/0002-well-known-josh.md
 [implement]: /implement/

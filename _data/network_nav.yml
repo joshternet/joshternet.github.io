@@ -1,0 +1,8 @@
+# Second-level Network navigation. Wander and Search stay top-level.
+- title: What's New
+  path: /activity/
+- title: Topics
+  path: /topics/
+  match: prefix
+- title: Connections
+  path: /connections/

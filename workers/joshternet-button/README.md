@@ -25,7 +25,8 @@ npm test
 npm run dev
 ```
 
-Wrangler listens on `http://127.0.0.1:8790`. Optional `.dev.vars` can set
+From the site root, `npm run dev` starts Jekyll with LiveReload and this
+Worker together. Wrangler listens on `http://127.0.0.1:8790`. Optional `.dev.vars` can set
 `SITE_ORIGIN=http://127.0.0.1:4000` so image and link URLs point at the local
 Jekyll preview instead of production.
 

@@ -1,0 +1,1781 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-03T21:51:24.424Z",
+  "sites": [
+    {
+      "origin": "https://joshternet.org",
+      "domain": "joshternet.org",
+      "title": "Joshternet",
+      "description": "The Joshternet is an open, decentralized network for people who identify as Josh and the independent websites they call home.",
+      "identity": "undeclared",
+      "feeds": [],
+      "elsewhere": [
+        {
+          "url": "https://github.com/joshternet",
+          "network": "github",
+          "label": "GitHub"
+        }
+      ],
+      "community_topics": [
+        {
+          "slug": "discovery",
+          "label": "discovery"
+        },
+        {
+          "slug": "identity",
+          "label": "identity"
+        },
+        {
+          "slug": "independent",
+          "label": "independent"
+        },
+        {
+          "slug": "infrastructure",
+          "label": "infrastructure"
+        },
+        {
+          "slug": "network",
+          "label": "network"
+        }
+      ],
+      "recent_content": null,
+      "outgoing": [],
+      "incoming": [
+        {
+          "from": "https://joshuamorris.info",
+          "relation": "content-link",
+          "label": "linked to",
+          "href": "https://joshternet.org/",
+          "page": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
+          "evidence_count": 4
+        }
+      ],
+      "coverage": {
+        "pages_discovered": 16,
+        "pages_fetched": 16,
+        "fetch_limit": 80,
+        "limit_reached": false,
+        "selection_strategy": "bounded-site-crawl-v1"
+      },
+      "crawled_at": "2026-10-03T21:50:07.756Z"
+    },
+    {
+      "origin": "https://joshtronic.com",
+      "domain": "joshtronic.com",
+      "title": "Joshtronic",
+      "description": "Code is a medium that found me at an impressionable young age. I've been fortunate to make a career out of it, even if I say things like, \"I'm not sure what I want to do when I grow up.\"",
+      "identity": "affirmed",
+      "feeds": [
+        {
+          "url": "https://joshtronic.com/rss.xml",
+          "type": "application/rss+xml",
+          "title": "Joshtronic - RSS Feed"
+        },
+        {
+          "url": "https://joshtronic.com/atom.xml",
+          "type": "application/atom+xml",
+          "title": "Joshtronic - Atom Feed"
+        }
+      ],
+      "elsewhere": [],
+      "community_topics": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "apple",
+          "label": "apple"
+        },
+        {
+          "slug": "arch-linux",
+          "label": "arch linux"
+        },
+        {
+          "slug": "aws",
+          "label": "aws"
+        },
+        {
+          "slug": "blogging",
+          "label": "blogging"
+        },
+        {
+          "slug": "books",
+          "label": "books"
+        },
+        {
+          "slug": "career",
+          "label": "career"
+        },
+        {
+          "slug": "city",
+          "label": "city"
+        },
+        {
+          "slug": "command-line-interface",
+          "label": "Command-line Interface"
+        },
+        {
+          "slug": "css",
+          "label": "css"
+        },
+        {
+          "slug": "databases",
+          "label": "databases"
+        },
+        {
+          "slug": "debian-ubuntu",
+          "label": "debian ubuntu"
+        },
+        {
+          "slug": "devops",
+          "label": "devops"
+        },
+        {
+          "slug": "education",
+          "label": "education"
+        },
+        {
+          "slug": "engineering",
+          "label": "engineering"
+        },
+        {
+          "slug": "entrepreneurship",
+          "label": "Entrepreneurship"
+        },
+        {
+          "slug": "food",
+          "label": "food"
+        },
+        {
+          "slug": "forge",
+          "label": "forge"
+        },
+        {
+          "slug": "forgejo",
+          "label": "forgejo"
+        },
+        {
+          "slug": "git",
+          "label": "git"
+        },
+        {
+          "slug": "gnome",
+          "label": "GNOME"
+        },
+        {
+          "slug": "google",
+          "label": "google"
+        },
+        {
+          "slug": "health-fitness",
+          "label": "health fitness"
+        },
+        {
+          "slug": "hosting-domains",
+          "label": "Hosting / Domains"
+        },
+        {
+          "slug": "infrastructure",
+          "label": "infrastructure"
+        },
+        {
+          "slug": "javascript",
+          "label": "JavaScript"
+        },
+        {
+          "slug": "law",
+          "label": "law"
+        },
+        {
+          "slug": "less",
+          "label": "less"
+        },
+        {
+          "slug": "life",
+          "label": "life"
+        },
+        {
+          "slug": "linux",
+          "label": "linux"
+        },
+        {
+          "slug": "llm",
+          "label": "llm"
+        },
+        {
+          "slug": "making",
+          "label": "making"
+        },
+        {
+          "slug": "marketing-advertising",
+          "label": "Marketing / Advertising"
+        },
+        {
+          "slug": "money",
+          "label": "money"
+        },
+        {
+          "slug": "node-js",
+          "label": "Node.js"
+        },
+        {
+          "slug": "nosql",
+          "label": "NoSQL"
+        },
+        {
+          "slug": "open-source",
+          "label": "open source"
+        },
+        {
+          "slug": "parenting",
+          "label": "parenting"
+        },
+        {
+          "slug": "personal",
+          "label": "Personal"
+        },
+        {
+          "slug": "php",
+          "label": "PHP"
+        },
+        {
+          "slug": "productivity",
+          "label": "Productivity"
+        },
+        {
+          "slug": "security",
+          "label": "security"
+        },
+        {
+          "slug": "servers-serverless",
+          "label": "Servers / Serverless"
+        },
+        {
+          "slug": "shell-script",
+          "label": "Shell Script"
+        },
+        {
+          "slug": "software-development",
+          "label": "Software Development"
+        },
+        {
+          "slug": "sql",
+          "label": "sql"
+        },
+        {
+          "slug": "technical",
+          "label": "technical"
+        },
+        {
+          "slug": "technology",
+          "label": "technology"
+        },
+        {
+          "slug": "two",
+          "label": "two"
+        },
+        {
+          "slug": "typescript",
+          "label": "TypeScript"
+        },
+        {
+          "slug": "version-control",
+          "label": "Version Control"
+        },
+        {
+          "slug": "video-games",
+          "label": "video games"
+        },
+        {
+          "slug": "vim-neovim",
+          "label": "Vim / Neovim"
+        },
+        {
+          "slug": "vps-showdown",
+          "label": "VPS Showdown"
+        },
+        {
+          "slug": "web-servers",
+          "label": "Web Servers"
+        },
+        {
+          "slug": "wordpress",
+          "label": "wordpress"
+        }
+      ],
+      "recent_content": {
+        "url": "https://joshtronic.com/2026/07/12/sandbox-coding-agents/",
+        "title": "Sandbox Coding Agents with a Separate User Account",
+        "summary": "I don't trust our new robot overlords at all. I also don't fully believe that agents are out there dropping production databases without some serious coercion to do so. And while I don't trust the robots, I trust myself only a trivial amount more, so my local access tends to be extremely thin. But not so thin that a rogue agent couldn't do a little damage. That all said, I am constantly calibratin",
+        "published_at": "2026-07-12T00:00:00.000Z",
+        "content_type": "article",
+        "language": "en",
+        "site_origin": "https://joshtronic.com",
+        "site_title": "Joshtronic",
+        "domain": "joshtronic.com",
+        "tags": [],
+        "neighborhoods": [],
+        "image": "",
+        "image_origin": ""
+      },
+      "outgoing": [],
+      "incoming": [
+        {
+          "from": "https://joshuamorris.info",
+          "relation": "content-link",
+          "label": "linked to",
+          "href": "https://joshtronic.com/?utm_source=joshuamorris.info&utm_medium=referral",
+          "page": "https://joshuamorris.info/friends/",
+          "evidence_count": 1
+        }
+      ],
+      "coverage": {
+        "pages_discovered": 80,
+        "pages_fetched": 80,
+        "fetch_limit": 80,
+        "limit_reached": true,
+        "selection_strategy": "bounded-site-crawl-v1"
+      },
+      "crawled_at": "2026-10-03T21:50:07.756Z"
+    },
+    {
+      "origin": "https://joshuamorris.info",
+      "domain": "joshuamorris.info",
+      "title": "Joshua Morris",
+      "description": "I build software, write about what I’m learning, and explore ideas that sit at the intersection of technology, freedom, and curiosity.",
+      "identity": "affirmed",
+      "feeds": [
+        {
+          "url": "https://joshuamorris.info/atom.xml",
+          "type": "application/atom+xml",
+          "title": "Joshua Morris Atom feed"
+        },
+        {
+          "url": "https://joshuamorris.info/feed.xml",
+          "type": "application/rss+xml",
+          "title": "Joshua Morris feed"
+        },
+        {
+          "url": "https://joshuamorris.info/feed.json",
+          "type": "application/feed+json",
+          "title": "Joshua Morris JSON Feed"
+        }
+      ],
+      "elsewhere": [
+        {
+          "url": "https://github.com/JoshuaMorris",
+          "network": "github",
+          "label": "GitHub"
+        },
+        {
+          "url": "https://www.linkedin.com/in/~joshuamorris",
+          "network": "linkedin",
+          "label": "LinkedIn"
+        },
+        {
+          "url": "https://x.com/TheWoollyBully",
+          "network": "x",
+          "label": "X"
+        },
+        {
+          "url": "https://bsky.app/profile/joshuamorris.info",
+          "network": "bluesky",
+          "label": "Bluesky"
+        }
+      ],
+      "community_topics": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "ai-78",
+          "label": "ai 78"
+        },
+        {
+          "slug": "ai-agents",
+          "label": "ai agents"
+        },
+        {
+          "slug": "ai-agents-23",
+          "label": "ai agents 23"
+        },
+        {
+          "slug": "ai-security",
+          "label": "ai security"
+        },
+        {
+          "slug": "ai-security-13",
+          "label": "ai security 13"
+        },
+        {
+          "slug": "apple",
+          "label": "apple"
+        },
+        {
+          "slug": "apple-1",
+          "label": "apple 1"
+        },
+        {
+          "slug": "architecture",
+          "label": "architecture"
+        },
+        {
+          "slug": "architecture-2",
+          "label": "architecture 2"
+        },
+        {
+          "slug": "art",
+          "label": "art"
+        },
+        {
+          "slug": "art-5",
+          "label": "art 5"
+        },
+        {
+          "slug": "benchmarks",
+          "label": "benchmarks"
+        },
+        {
+          "slug": "benchmarks-3",
+          "label": "benchmarks 3"
+        },
+        {
+          "slug": "biology",
+          "label": "biology"
+        },
+        {
+          "slug": "biology-1",
+          "label": "biology 1"
+        },
+        {
+          "slug": "blogging",
+          "label": "blogging"
+        },
+        {
+          "slug": "blogging-3",
+          "label": "blogging 3"
+        },
+        {
+          "slug": "books",
+          "label": "books"
+        },
+        {
+          "slug": "books-27",
+          "label": "books 27"
+        },
+        {
+          "slug": "browsers-8",
+          "label": "browsers 8"
+        },
+        {
+          "slug": "building",
+          "label": "building"
+        },
+        {
+          "slug": "built",
+          "label": "built"
+        },
+        {
+          "slug": "business",
+          "label": "business"
+        },
+        {
+          "slug": "business-26",
+          "label": "business 26"
+        },
+        {
+          "slug": "california-ballot-2026",
+          "label": "california ballot 2026"
+        },
+        {
+          "slug": "california-ballot-2026-4",
+          "label": "california ballot 2026 4"
+        },
+        {
+          "slug": "canada",
+          "label": "canada"
+        },
+        {
+          "slug": "canada-1",
+          "label": "canada 1"
+        },
+        {
+          "slug": "career",
+          "label": "career"
+        },
+        {
+          "slug": "career-4",
+          "label": "career 4"
+        },
+        {
+          "slug": "cars-5",
+          "label": "cars 5"
+        },
+        {
+          "slug": "chromebooks",
+          "label": "chromebooks"
+        },
+        {
+          "slug": "chromebooks-1",
+          "label": "chromebooks 1"
+        },
+        {
+          "slug": "civil-liberties",
+          "label": "civil liberties"
+        },
+        {
+          "slug": "civil-liberties-7",
+          "label": "civil liberties 7"
+        },
+        {
+          "slug": "community",
+          "label": "community"
+        },
+        {
+          "slug": "community-5",
+          "label": "community 5"
+        },
+        {
+          "slug": "computer-vision",
+          "label": "computer vision"
+        },
+        {
+          "slug": "computer-vision-1",
+          "label": "computer vision 1"
+        },
+        {
+          "slug": "computing-history",
+          "label": "computing history"
+        },
+        {
+          "slug": "computing-history-12",
+          "label": "computing history 12"
+        },
+        {
+          "slug": "consumer-protection",
+          "label": "consumer protection"
+        },
+        {
+          "slug": "consumer-protection-1",
+          "label": "consumer protection 1"
+        },
+        {
+          "slug": "craftsmanship",
+          "label": "craftsmanship"
+        },
+        {
+          "slug": "craftsmanship-7",
+          "label": "craftsmanship 7"
+        },
+        {
+          "slug": "css-3",
+          "label": "css 3"
+        },
+        {
+          "slug": "cyber-deck-1",
+          "label": "cyber deck 1"
+        },
+        {
+          "slug": "data-brokers",
+          "label": "data brokers"
+        },
+        {
+          "slug": "data-brokers-4",
+          "label": "data brokers 4"
+        },
+        {
+          "slug": "databases",
+          "label": "databases"
+        },
+        {
+          "slug": "databases-1",
+          "label": "databases 1"
+        },
+        {
+          "slug": "design",
+          "label": "design"
+        },
+        {
+          "slug": "design-16",
+          "label": "design 16"
+        },
+        {
+          "slug": "developer-tools",
+          "label": "developer tools"
+        },
+        {
+          "slug": "developer-tools-2",
+          "label": "developer tools 2"
+        },
+        {
+          "slug": "digital-rights",
+          "label": "digital rights"
+        },
+        {
+          "slug": "digital-rights-18",
+          "label": "digital rights 18"
+        },
+        {
+          "slug": "discovery",
+          "label": "discovery"
+        },
+        {
+          "slug": "discovery-6",
+          "label": "discovery 6"
+        },
+        {
+          "slug": "earth-observation",
+          "label": "earth observation"
+        },
+        {
+          "slug": "earth-observation-1",
+          "label": "earth observation 1"
+        },
+        {
+          "slug": "economics",
+          "label": "economics"
+        },
+        {
+          "slug": "economics-25",
+          "label": "economics 25"
+        },
+        {
+          "slug": "education",
+          "label": "education"
+        },
+        {
+          "slug": "education-6",
+          "label": "education 6"
+        },
+        {
+          "slug": "energy",
+          "label": "energy"
+        },
+        {
+          "slug": "energy-9",
+          "label": "energy 9"
+        },
+        {
+          "slug": "engineering",
+          "label": "engineering"
+        },
+        {
+          "slug": "engineering-2",
+          "label": "engineering 2"
+        },
+        {
+          "slug": "ethics",
+          "label": "ethics"
+        },
+        {
+          "slug": "ethics-1",
+          "label": "ethics 1"
+        },
+        {
+          "slug": "evolution",
+          "label": "evolution"
+        },
+        {
+          "slug": "evolution-1",
+          "label": "evolution 1"
+        },
+        {
+          "slug": "executive-power",
+          "label": "executive power"
+        },
+        {
+          "slug": "executive-power-2",
+          "label": "executive power 2"
+        },
+        {
+          "slug": "financial-markets",
+          "label": "financial markets"
+        },
+        {
+          "slug": "financial-markets-4",
+          "label": "financial markets 4"
+        },
+        {
+          "slug": "find",
+          "label": "find"
+        },
+        {
+          "slug": "friendship",
+          "label": "friendship"
+        },
+        {
+          "slug": "friendship-2",
+          "label": "friendship 2"
+        },
+        {
+          "slug": "google",
+          "label": "google"
+        },
+        {
+          "slug": "google-3",
+          "label": "google 3"
+        },
+        {
+          "slug": "government",
+          "label": "government"
+        },
+        {
+          "slug": "government-1",
+          "label": "government 1"
+        },
+        {
+          "slug": "government-ethics",
+          "label": "government ethics"
+        },
+        {
+          "slug": "government-ethics-18",
+          "label": "government ethics 18"
+        },
+        {
+          "slug": "hardware",
+          "label": "hardware"
+        },
+        {
+          "slug": "hardware-9",
+          "label": "hardware 9"
+        },
+        {
+          "slug": "health",
+          "label": "health"
+        },
+        {
+          "slug": "health-5",
+          "label": "health 5"
+        },
+        {
+          "slug": "independent",
+          "label": "independent"
+        },
+        {
+          "slug": "independent-web",
+          "label": "independent web"
+        },
+        {
+          "slug": "independent-web-18",
+          "label": "independent web 18"
+        },
+        {
+          "slug": "indieweb",
+          "label": "indieweb"
+        },
+        {
+          "slug": "indieweb-17",
+          "label": "indieweb 17"
+        },
+        {
+          "slug": "infrastructure",
+          "label": "infrastructure"
+        },
+        {
+          "slug": "infrastructure-14",
+          "label": "infrastructure 14"
+        },
+        {
+          "slug": "institutions",
+          "label": "institutions"
+        },
+        {
+          "slug": "institutions-1",
+          "label": "institutions 1"
+        },
+        {
+          "slug": "intellectual-property-5",
+          "label": "intellectual property 5"
+        },
+        {
+          "slug": "interactive-essays",
+          "label": "interactive essays"
+        },
+        {
+          "slug": "interactive-essays-1",
+          "label": "interactive essays 1"
+        },
+        {
+          "slug": "internet-culture",
+          "label": "internet culture"
+        },
+        {
+          "slug": "internet-culture-2",
+          "label": "internet culture 2"
+        },
+        {
+          "slug": "internet-of-things",
+          "label": "internet of things"
+        },
+        {
+          "slug": "internet-of-things-6",
+          "label": "internet of things 6"
+        },
+        {
+          "slug": "interoperability",
+          "label": "interoperability"
+        },
+        {
+          "slug": "interoperability-10",
+          "label": "interoperability 10"
+        },
+        {
+          "slug": "law",
+          "label": "law"
+        },
+        {
+          "slug": "law-14",
+          "label": "law 14"
+        },
+        {
+          "slug": "lego-2",
+          "label": "lego 2"
+        },
+        {
+          "slug": "less",
+          "label": "less"
+        },
+        {
+          "slug": "life",
+          "label": "life"
+        },
+        {
+          "slug": "life-12",
+          "label": "life 12"
+        },
+        {
+          "slug": "linux",
+          "label": "linux"
+        },
+        {
+          "slug": "linux-5",
+          "label": "linux 5"
+        },
+        {
+          "slug": "llm",
+          "label": "llm"
+        },
+        {
+          "slug": "llm-2",
+          "label": "llm 2"
+        },
+        {
+          "slug": "lock-in",
+          "label": "lock in"
+        },
+        {
+          "slug": "lock-in-1",
+          "label": "lock in 1"
+        },
+        {
+          "slug": "machine-learning-5",
+          "label": "machine learning 5"
+        },
+        {
+          "slug": "magazine",
+          "label": "magazine"
+        },
+        {
+          "slug": "making",
+          "label": "making"
+        },
+        {
+          "slug": "medical-research",
+          "label": "medical research"
+        },
+        {
+          "slug": "mentorship",
+          "label": "mentorship"
+        },
+        {
+          "slug": "mentorship-2",
+          "label": "mentorship 2"
+        },
+        {
+          "slug": "network",
+          "label": "network"
+        },
+        {
+          "slug": "networking-10",
+          "label": "networking 10"
+        },
+        {
+          "slug": "neuroscience",
+          "label": "neuroscience"
+        },
+        {
+          "slug": "neuroscience-3",
+          "label": "neuroscience 3"
+        },
+        {
+          "slug": "oil",
+          "label": "oil"
+        },
+        {
+          "slug": "oil-2",
+          "label": "oil 2"
+        },
+        {
+          "slug": "online-advertising",
+          "label": "online advertising"
+        },
+        {
+          "slug": "online-book-club",
+          "label": "online book club"
+        },
+        {
+          "slug": "online-book-club-23",
+          "label": "online book club 23"
+        },
+        {
+          "slug": "open-source",
+          "label": "open source"
+        },
+        {
+          "slug": "open-source-30",
+          "label": "open source 30"
+        },
+        {
+          "slug": "ownership",
+          "label": "ownership"
+        },
+        {
+          "slug": "ownership-13",
+          "label": "ownership 13"
+        },
+        {
+          "slug": "painting",
+          "label": "painting"
+        },
+        {
+          "slug": "painting-3",
+          "label": "painting 3"
+        },
+        {
+          "slug": "parenting",
+          "label": "parenting"
+        },
+        {
+          "slug": "personal",
+          "label": "Personal"
+        },
+        {
+          "slug": "personhood",
+          "label": "personhood"
+        },
+        {
+          "slug": "postgres",
+          "label": "postgres"
+        },
+        {
+          "slug": "postgresql",
+          "label": "postgresql"
+        },
+        {
+          "slug": "privacy",
+          "label": "privacy"
+        },
+        {
+          "slug": "privacy-45",
+          "label": "privacy 45"
+        },
+        {
+          "slug": "private-ai",
+          "label": "private ai"
+        },
+        {
+          "slug": "private-ai-4",
+          "label": "private ai 4"
+        },
+        {
+          "slug": "programming",
+          "label": "programming"
+        },
+        {
+          "slug": "programming-2",
+          "label": "programming 2"
+        },
+        {
+          "slug": "property",
+          "label": "property"
+        },
+        {
+          "slug": "propulsion",
+          "label": "propulsion"
+        },
+        {
+          "slug": "public-systems",
+          "label": "public systems"
+        },
+        {
+          "slug": "public-systems-23",
+          "label": "public systems 23"
+        },
+        {
+          "slug": "python",
+          "label": "python"
+        },
+        {
+          "slug": "real",
+          "label": "real"
+        },
+        {
+          "slug": "regulation",
+          "label": "regulation"
+        },
+        {
+          "slug": "regulation-5",
+          "label": "regulation 5"
+        },
+        {
+          "slug": "rememberance",
+          "label": "rememberance"
+        },
+        {
+          "slug": "research",
+          "label": "research"
+        },
+        {
+          "slug": "research-3",
+          "label": "research 3"
+        },
+        {
+          "slug": "resilience",
+          "label": "resilience"
+        },
+        {
+          "slug": "reward-hacking-3",
+          "label": "reward hacking 3"
+        },
+        {
+          "slug": "satellites",
+          "label": "satellites"
+        },
+        {
+          "slug": "schools",
+          "label": "schools"
+        },
+        {
+          "slug": "science",
+          "label": "science"
+        },
+        {
+          "slug": "science-2",
+          "label": "science 2"
+        },
+        {
+          "slug": "science-fiction",
+          "label": "science fiction"
+        },
+        {
+          "slug": "science-fiction-15",
+          "label": "science fiction 15"
+        },
+        {
+          "slug": "scientific-evidence",
+          "label": "scientific evidence"
+        },
+        {
+          "slug": "scientific-evidence-12",
+          "label": "scientific evidence 12"
+        },
+        {
+          "slug": "search",
+          "label": "search"
+        },
+        {
+          "slug": "security",
+          "label": "security"
+        },
+        {
+          "slug": "security-48",
+          "label": "security 48"
+        },
+        {
+          "slug": "simplicity",
+          "label": "simplicity"
+        },
+        {
+          "slug": "social-media",
+          "label": "social media"
+        },
+        {
+          "slug": "software",
+          "label": "software"
+        },
+        {
+          "slug": "software-11",
+          "label": "software 11"
+        },
+        {
+          "slug": "software-engineering",
+          "label": "software engineering"
+        },
+        {
+          "slug": "software-engineering-44",
+          "label": "software engineering 44"
+        },
+        {
+          "slug": "software-preservation-5",
+          "label": "software preservation 5"
+        },
+        {
+          "slug": "space",
+          "label": "space"
+        },
+        {
+          "slug": "space-exploration",
+          "label": "space exploration"
+        },
+        {
+          "slug": "space-exploration-12",
+          "label": "space exploration 12"
+        },
+        {
+          "slug": "sql",
+          "label": "sql"
+        },
+        {
+          "slug": "star-trek",
+          "label": "star trek"
+        },
+        {
+          "slug": "surveillance",
+          "label": "surveillance"
+        },
+        {
+          "slug": "surveillance-18",
+          "label": "surveillance 18"
+        },
+        {
+          "slug": "technical",
+          "label": "technical"
+        },
+        {
+          "slug": "technical-debt",
+          "label": "technical debt"
+        },
+        {
+          "slug": "technology",
+          "label": "technology"
+        },
+        {
+          "slug": "technology-5",
+          "label": "technology 5"
+        },
+        {
+          "slug": "trade",
+          "label": "trade"
+        },
+        {
+          "slug": "two",
+          "label": "two"
+        },
+        {
+          "slug": "united-states",
+          "label": "united states"
+        },
+        {
+          "slug": "user-experience",
+          "label": "user experience"
+        },
+        {
+          "slug": "user-experience-5",
+          "label": "user experience 5"
+        },
+        {
+          "slug": "video-games",
+          "label": "video games"
+        },
+        {
+          "slug": "video-games-8",
+          "label": "video games 8"
+        },
+        {
+          "slug": "visualization",
+          "label": "visualization"
+        },
+        {
+          "slug": "vleo",
+          "label": "vleo"
+        },
+        {
+          "slug": "wearable-ai",
+          "label": "wearable ai"
+        },
+        {
+          "slug": "wearable-ai-3",
+          "label": "wearable ai 3"
+        },
+        {
+          "slug": "web-development",
+          "label": "web development"
+        },
+        {
+          "slug": "web-development-16",
+          "label": "web development 16"
+        },
+        {
+          "slug": "workplace-2",
+          "label": "workplace 2"
+        },
+        {
+          "slug": "writing",
+          "label": "writing"
+        },
+        {
+          "slug": "writing-5",
+          "label": "writing 5"
+        },
+        {
+          "slug": "youtube",
+          "label": "youtube"
+        }
+      ],
+      "recent_content": {
+        "url": "https://joshuamorris.info/experiments/corkboard/",
+        "title": "Corkboard",
+        "summary": "A corkboard for notes, pins, and connecting threads in the browser—an open-web experiment for exploring ideas together and leaving a mark.",
+        "published_at": "2026-07-15T00:00:00.000Z",
+        "content_type": "article",
+        "language": "",
+        "site_origin": "https://joshuamorris.info",
+        "site_title": "Joshua Morris",
+        "domain": "joshuamorris.info",
+        "tags": [
+          {
+            "slug": "experiments",
+            "label": "experiments"
+          }
+        ],
+        "neighborhoods": [],
+        "image": "",
+        "image_origin": ""
+      },
+      "outgoing": [
+        {
+          "to": "https://joshternet.org",
+          "relation": "content-link",
+          "label": "linked to",
+          "href": "https://joshternet.org/",
+          "page": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
+          "evidence_count": 4
+        },
+        {
+          "to": "https://joshtronic.com",
+          "relation": "content-link",
+          "label": "linked to",
+          "href": "https://joshtronic.com/?utm_source=joshuamorris.info&utm_medium=referral",
+          "page": "https://joshuamorris.info/friends/",
+          "evidence_count": 1
+        }
+      ],
+      "incoming": [],
+      "coverage": {
+        "pages_discovered": 80,
+        "pages_fetched": 80,
+        "fetch_limit": 80,
+        "limit_reached": true,
+        "selection_strategy": "bounded-site-crawl-v1"
+      },
+      "crawled_at": "2026-10-03T21:50:07.756Z"
+    },
+    {
+      "origin": "https://www.joshcanhelp.com",
+      "domain": "www.joshcanhelp.com",
+      "title": "Josh Can Help",
+      "description": "I’ve been working on the web since 2007 as an architect, engineer, writer, designer, strategist, user interface consultant, team lead, project manager, and product builder. I’ve been working IRL since 2010 as a husband and since 2013 as a dad. I like riding bikes, reading books, writing code and words, and eating good food.",
+      "identity": "affirmed",
+      "feeds": [
+        {
+          "url": "https://www.joshcanhelp.com/rss.xml",
+          "type": "application/atom+xml",
+          "title": "RSS Feed for joshcanhelp.com"
+        }
+      ],
+      "elsewhere": [
+        {
+          "url": "https://github.com/joshcanhelp",
+          "network": "github",
+          "label": "GitHub"
+        },
+        {
+          "url": "https://www.linkedin.com/in/joshcanhelp/",
+          "network": "linkedin",
+          "label": "LinkedIn"
+        },
+        {
+          "url": "https://x.com/joshcanhelp",
+          "network": "x",
+          "label": "X"
+        }
+      ],
+      "community_topics": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "analytics",
+          "label": "analytics"
+        },
+        {
+          "slug": "async-communication",
+          "label": "async communication"
+        },
+        {
+          "slug": "auth0",
+          "label": "auth0"
+        },
+        {
+          "slug": "community",
+          "label": "community"
+        },
+        {
+          "slug": "covid-19",
+          "label": "covid 19"
+        },
+        {
+          "slug": "customer-service",
+          "label": "customer service"
+        },
+        {
+          "slug": "data",
+          "label": "data"
+        },
+        {
+          "slug": "design",
+          "label": "design"
+        },
+        {
+          "slug": "digital-identity",
+          "label": "digital identity"
+        },
+        {
+          "slug": "documentation",
+          "label": "documentation"
+        },
+        {
+          "slug": "eleventy",
+          "label": "eleventy"
+        },
+        {
+          "slug": "email",
+          "label": "email"
+        },
+        {
+          "slug": "engineering",
+          "label": "engineering"
+        },
+        {
+          "slug": "facebook",
+          "label": "facebook"
+        },
+        {
+          "slug": "find",
+          "label": "find"
+        },
+        {
+          "slug": "focus",
+          "label": "focus"
+        },
+        {
+          "slug": "food-drink",
+          "label": "food drink"
+        },
+        {
+          "slug": "freelancing",
+          "label": "freelancing"
+        },
+        {
+          "slug": "graffiti",
+          "label": "graffiti"
+        },
+        {
+          "slug": "hardware",
+          "label": "hardware"
+        },
+        {
+          "slug": "health-fitness",
+          "label": "health fitness"
+        },
+        {
+          "slug": "identity",
+          "label": "identity"
+        },
+        {
+          "slug": "javascript-typescript",
+          "label": "javascript typescript"
+        },
+        {
+          "slug": "linkedin",
+          "label": "linkedin"
+        },
+        {
+          "slug": "marketing",
+          "label": "marketing"
+        },
+        {
+          "slug": "money",
+          "label": "money"
+        },
+        {
+          "slug": "obsidian",
+          "label": "obsidian"
+        },
+        {
+          "slug": "open-source",
+          "label": "open source"
+        },
+        {
+          "slug": "paris",
+          "label": "paris"
+        },
+        {
+          "slug": "personal",
+          "label": "Personal"
+        },
+        {
+          "slug": "personal-data",
+          "label": "personal data"
+        },
+        {
+          "slug": "personal-development",
+          "label": "personal development"
+        },
+        {
+          "slug": "privacy",
+          "label": "privacy"
+        },
+        {
+          "slug": "seattle",
+          "label": "seattle"
+        },
+        {
+          "slug": "seo",
+          "label": "seo"
+        },
+        {
+          "slug": "site-optimization",
+          "label": "site optimization"
+        },
+        {
+          "slug": "social-media",
+          "label": "social media"
+        },
+        {
+          "slug": "software",
+          "label": "software"
+        },
+        {
+          "slug": "software-engineering",
+          "label": "software engineering"
+        },
+        {
+          "slug": "team-dynamics",
+          "label": "team dynamics"
+        },
+        {
+          "slug": "testing",
+          "label": "testing"
+        },
+        {
+          "slug": "throwback",
+          "label": "throwback"
+        },
+        {
+          "slug": "twitter",
+          "label": "twitter"
+        },
+        {
+          "slug": "web-strategy",
+          "label": "web strategy"
+        },
+        {
+          "slug": "wordpress",
+          "label": "wordpress"
+        },
+        {
+          "slug": "writing-publishing",
+          "label": "writing publishing"
+        }
+      ],
+      "recent_content": {
+        "url": "https://www.joshcanhelp.com/agentic-identity/",
+        "title": "Do we need 'agentic identity'?",
+        "summary": "Agents are here, there, and everywhere, growing in numbers at a pace between fast and breakneck, generating or completing work at some other velocity, and poised to change the world entirely or, like, not much at all. Something must be done.",
+        "published_at": "2025-10-14T00:00:00.000Z",
+        "content_type": "article",
+        "language": "en-us",
+        "site_origin": "https://www.joshcanhelp.com",
+        "site_title": "Josh Can Help",
+        "domain": "www.joshcanhelp.com",
+        "tags": [],
+        "neighborhoods": [],
+        "image": "",
+        "image_origin": ""
+      },
+      "outgoing": [],
+      "incoming": [],
+      "coverage": {
+        "pages_discovered": 80,
+        "pages_fetched": 80,
+        "fetch_limit": 80,
+        "limit_reached": true,
+        "selection_strategy": "bounded-site-crawl-v1"
+      },
+      "crawled_at": "2026-10-03T21:50:07.756Z"
+    },
+    {
+      "origin": "https://www.joshuabaker.com",
+      "domain": "www.joshuabaker.com",
+      "title": "Joshua Baker",
+      "description": "Software engineer and designer with 20+ years of building, designing, and leading products that move revenue, valuations, fundraising, even the law. Now building at the AI frontier.",
+      "identity": "affirmed",
+      "feeds": [],
+      "elsewhere": [
+        {
+          "url": "https://www.linkedin.com/in/thejoshuabaker",
+          "network": "linkedin",
+          "label": "LinkedIn"
+        },
+        {
+          "url": "https://github.com/joshuabaker",
+          "network": "github",
+          "label": "GitHub"
+        },
+        {
+          "url": "https://www.instagram.com/joshuabaker/",
+          "network": "instagram",
+          "label": "Instagram"
+        },
+        {
+          "url": "https://www.threads.net/@joshuabaker",
+          "network": "threads",
+          "label": "Threads"
+        },
+        {
+          "url": "https://x.com/joshuabaker",
+          "network": "x",
+          "label": "X"
+        }
+      ],
+      "community_topics": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "apple",
+          "label": "apple"
+        },
+        {
+          "slug": "arts-culture",
+          "label": "arts & culture"
+        },
+        {
+          "slug": "banking",
+          "label": "banking"
+        },
+        {
+          "slug": "building",
+          "label": "building"
+        },
+        {
+          "slug": "built",
+          "label": "built"
+        },
+        {
+          "slug": "business",
+          "label": "business"
+        },
+        {
+          "slug": "charity-nonprofit",
+          "label": "charity & nonprofit"
+        },
+        {
+          "slug": "city",
+          "label": "city"
+        },
+        {
+          "slug": "communications-pr",
+          "label": "communications & pr"
+        },
+        {
+          "slug": "consumer",
+          "label": "consumer"
+        },
+        {
+          "slug": "creative-design",
+          "label": "creative & design"
+        },
+        {
+          "slug": "data",
+          "label": "data"
+        },
+        {
+          "slug": "design",
+          "label": "design"
+        },
+        {
+          "slug": "education",
+          "label": "education"
+        },
+        {
+          "slug": "engineering",
+          "label": "engineering"
+        },
+        {
+          "slug": "fashion-retail",
+          "label": "fashion & retail"
+        },
+        {
+          "slug": "finance",
+          "label": "finance"
+        },
+        {
+          "slug": "government",
+          "label": "government"
+        },
+        {
+          "slug": "government-policy",
+          "label": "government & policy"
+        },
+        {
+          "slug": "health",
+          "label": "health"
+        },
+        {
+          "slug": "hospitality",
+          "label": "hospitality"
+        },
+        {
+          "slug": "law",
+          "label": "law"
+        },
+        {
+          "slug": "magazine",
+          "label": "magazine"
+        },
+        {
+          "slug": "marketing",
+          "label": "marketing"
+        },
+        {
+          "slug": "media-publishing",
+          "label": "media & publishing"
+        },
+        {
+          "slug": "network",
+          "label": "network"
+        },
+        {
+          "slug": "nonprofit",
+          "label": "nonprofit"
+        },
+        {
+          "slug": "policy",
+          "label": "policy"
+        },
+        {
+          "slug": "portfolio",
+          "label": "portfolio"
+        },
+        {
+          "slug": "property",
+          "label": "property"
+        },
+        {
+          "slug": "property-real-estate",
+          "label": "property & real estate"
+        },
+        {
+          "slug": "real",
+          "label": "real"
+        },
+        {
+          "slug": "recruitment",
+          "label": "recruitment"
+        },
+        {
+          "slug": "research",
+          "label": "research"
+        },
+        {
+          "slug": "search",
+          "label": "search"
+        },
+        {
+          "slug": "social-media",
+          "label": "social media"
+        },
+        {
+          "slug": "technology",
+          "label": "technology"
+        },
+        {
+          "slug": "united-states",
+          "label": "united states"
+        }
+      ],
+      "recent_content": {
+        "url": "https://www.joshuabaker.com/work/?work=aiglon-aiglon-2013",
+        "title": "Aiglon",
+        "summary": "2013 · Aiglon · Education · Switzerland",
+        "published_at": "",
+        "content_type": "project",
+        "language": "en",
+        "site_origin": "https://www.joshuabaker.com",
+        "site_title": "Joshua Baker",
+        "domain": "www.joshuabaker.com",
+        "tags": [
+          {
+            "slug": "education",
+            "label": "education"
+          }
+        ],
+        "neighborhoods": [
+          {
+            "slug": "education",
+            "label": "education"
+          }
+        ],
+        "image": "",
+        "image_origin": ""
+      },
+      "outgoing": [],
+      "incoming": [],
+      "coverage": {
+        "pages_discovered": 27,
+        "pages_fetched": 27,
+        "fetch_limit": 80,
+        "limit_reached": false,
+        "selection_strategy": "bounded-site-crawl-v1"
+      },
+      "crawled_at": "2026-10-03T21:50:07.756Z",
+      "portfolio": {
+        "url": "https://www.joshuabaker.com/work/",
+        "work_count": 145,
+        "sectors": [
+          "Arts & Culture",
+          "Charity & Nonprofit",
+          "Communications & PR",
+          "Consumer",
+          "Creative & Design",
+          "Education",
+          "Fashion & Retail",
+          "Finance",
+          "Government & Policy",
+          "Health",
+          "Hospitality",
+          "Media & Publishing",
+          "Property & Real Estate",
+          "Recruitment",
+          "Technology"
+        ]
+      }
+    }
+  ]
+}

@@ -1,5 +1,19 @@
 # Third-party licenses
 
+## Build / CI tooling
+
+### Ajv
+
+- Package: [ajv](https://ajv.js.org/) (`ajv@8`)
+- License: [MIT](https://github.com/ajv-validator/ajv/blob/master/LICENSE)
+- Use: validates generated `_data/*.json` against `schemas/*.schema.json` in `npm run nlp:validate` (CI only; not shipped to site visitors)
+
+### Ajv Formats
+
+- Package: [ajv-formats](https://github.com/ajv-validator/ajv-formats) (`ajv-formats@3`)
+- License: [MIT](https://github.com/ajv-validator/ajv-formats/blob/master/LICENSE)
+- Use: JSON Schema format validators (e.g. URI) alongside Ajv in `nlp:validate`
+
 ## Elsewhere network icons
 
 Joshternet Network cards show brand marks only to identify profile links that participating sites published themselves (`rel="me"`). That use does not imply partnership, sponsorship, or endorsement by those brands.

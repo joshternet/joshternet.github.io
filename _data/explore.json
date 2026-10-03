@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-03T21:51:24.424Z",
+  "participant_count": 5,
+  "community_count": 291,
+  "publication_count": 402,
+  "connection_count": 2,
+  "selection": {
+    "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
+    "connection": "first edge after stable from, to, relation sort"
+  },
+  "fresh": [
+    {
+      "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
+      "title": "Prop. 42 is about a tax on owning savings, not the tax on income they earn",
+      "summary": "Proposition 42 would forbid a new state tax on owning personal property, including retirement accounts, and would limit taxes that reach backward.",
+      "published_at": "2026-10-03T09:00:00.000Z",
+      "content_type": "article",
+      "language": "en",
+      "site_origin": "https://joshuamorris.info",
+      "site_title": "Joshua Morris",
+      "domain": "joshuamorris.info",
+      "tags": [
+        {
+          "slug": "notes",
+          "label": "notes"
+        },
+        {
+          "slug": "california-ballot-2026",
+          "label": "california ballot 2026"
+        },
+        {
+          "slug": "economics",
+          "label": "economics"
+        },
+        {
+          "slug": "government-ethics",
+          "label": "government ethics"
+        },
+        {
+          "slug": "public-systems",
+          "label": "public systems"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "california-ballot-2026",
+          "label": "california ballot 2026"
+        },
+        {
+          "slug": "economics",
+          "label": "economics"
+        },
+        {
+          "slug": "government-ethics",
+          "label": "government ethics"
+        },
+        {
+          "slug": "public-systems",
+          "label": "public systems"
+        }
+      ],
+      "image": "",
+      "image_origin": ""
+    },
+    {
+      "url": "https://joshtronic.com/2026/09/27/rediscovering-long-form-email/",
+      "title": "Rediscovering Long-Form Email",
+      "summary": "From humble beginnings in eLearning, I have somehow spent the majority of my career thus far in or around email. Not to flex, but I am an email expert. Cold, hot, and everything in between. I'm one of very few people on the planet that can say they've personally been responsible for sending 10,000,000 emails a day. I've recently nurtured an email-infrastructure-as-a-service platform from the groun",
+      "published_at": "2026-09-27T00:00:00.000Z",
+      "content_type": "article",
+      "language": "en",
+      "site_origin": "https://joshtronic.com",
+      "site_title": "Joshtronic",
+      "domain": "joshtronic.com",
+      "tags": [],
+      "neighborhoods": [],
+      "image": "",
+      "image_origin": ""
+    }
+  ],
+  "neighborhood": {
+    "slug": "databases-1",
+    "label": "databases 1",
+    "member_count": 1
+  },
+  "connection": {
+    "from": "https://joshuamorris.info",
+    "to": "https://joshternet.org",
+    "relation": "content-link",
+    "label": "linked to",
+    "from_title": "Joshua Morris",
+    "to_title": "Joshternet",
+    "href": "https://joshternet.org/",
+    "page": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
+    "text": "Joshternet.org",
+    "evidence_count": 4
+  }
+}

@@ -1,11 +1,16 @@
 ---
 layout: default
-title: Explore Participating Websites
-description: Wander through independent websites participating in the Joshternet.
+title: Wander through independent Joshternet websites
+description: >-
+  Wander through independent websites participating in the Joshternet—open a
+  random participant, follow on-page trails, and visit sites without leaving the network map.
+keywords: >-
+  wander Joshternet, explore websites, independent websites, Josh network
 seo:
-  type: WebPage
+  type: CollectionPage
   name: Wander
 permalink: /wander/
+joshternet_analysis: derived
 script: /assets/js/wander.js
 full_bleed: true
 allow_frames: true
@@ -68,6 +73,9 @@ footer: false
 <noscript>
   <div class="wander-noscript">
     Wander needs JavaScript to move between sites.
-    <a href="{{ '/network/' | relative_url }}">Browse The Network instead.</a>
+    <a href="{{ '/network/' | relative_url }}">Browse The Network</a>
+    or
+    <a href="{{ '/connections/' | relative_url }}">see Connections</a>
+    instead.
   </div>
 </noscript>

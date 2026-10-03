@@ -3,7 +3,9 @@ layout: default
 title: Project Governance and Specification Process
 description: >-
   How the Joshternet develops Draft specifications in public while keeping
-  project governance separate from network control and Josh identity.
+  project governance separate from network control and voluntary Josh identity.
+keywords: >-
+  Joshternet governance, RFC process, specifications, open standards, Draft RFCs
 permalink: /governance/
 ---
 

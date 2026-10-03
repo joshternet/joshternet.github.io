@@ -241,6 +241,78 @@ export function extractPageMetadata(hostCatalog) {
   }
 
   /**
+   * Collects ordinary outbound `<a href>` links already resolved by the browser.
+   * Keeps http(s) only. Includes nofollow. Drops mailto/tel/javascript/data and
+   * fragment-only hrefs. Relative and protocol-relative hrefs are normalized.
+   * Returns the publisher's own bridge evidence: href, anchor text, and rel.
+   * @returns {Array<{href: string, text: string, rel: string[]}>}
+   */
+  function extractOutboundLinks() {
+    const links = [];
+    const seen = new Set();
+
+    for (const element of document.querySelectorAll("a[href]")) {
+      if (!(element instanceof HTMLAnchorElement)) {
+        continue;
+      }
+
+      const hrefAttribute = normalizeText(element.getAttribute("href") || "");
+
+      if (!hrefAttribute || hrefAttribute.startsWith("#")) {
+        continue;
+      }
+
+      let url;
+
+      try {
+        url = new URL(hrefAttribute, document.baseURI);
+      } catch {
+        continue;
+      }
+
+      if (url.protocol !== "http:" && url.protocol !== "https:") {
+        continue;
+      }
+
+      if (url.username || url.password) {
+        continue;
+      }
+
+      const href = url.href;
+
+      if (seen.has(href)) {
+        continue;
+      }
+
+      seen.add(href);
+
+      const rel = [];
+      const seenRel = new Set();
+
+      for (const token of element.relList || []) {
+        const normalized = normalizeText(token).toLowerCase();
+
+        if (!normalized || seenRel.has(normalized)) {
+          continue;
+        }
+
+        seenRel.add(normalized);
+        rel.push(normalized);
+      }
+
+      rel.sort((left, right) => left.localeCompare(right));
+
+      links.push({
+        href,
+        text: normalizeText(element.textContent || "").slice(0, 200),
+        rel,
+      });
+    }
+
+    return links;
+  }
+
+  /**
    * Finds a same-origin about page linked from the current document.
    * @returns {string}
    */
@@ -491,6 +563,7 @@ export function extractPageMetadata(hostCatalog) {
     mainDescription: extractMainDescription(),
     feeds: extractFeeds(),
     blogrolls: extractBlogrolls(),
+    links: extractOutboundLinks(),
     elsewhere: extractElsewhere(catalog),
     aboutPageHref: extractAboutPageHref(),
   };

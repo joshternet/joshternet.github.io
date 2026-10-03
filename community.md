@@ -2,8 +2,10 @@
 layout: default
 title: Community Principles and Stewardship Commitment
 description: >-
-  The principles, behavior expectations, and stewardship commitments that guide
-  the Joshternet community and its shared project infrastructure.
+  Principles, behavior expectations, and stewardship commitments that guide the
+  Joshternet community and its shared project infrastructure—without controlling member sites.
+keywords: >-
+  Joshternet community, stewardship, principles, independent websites, open network
 permalink: /community/
 ---
 

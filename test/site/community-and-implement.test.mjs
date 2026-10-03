@@ -21,7 +21,8 @@ test("community page and footer point at #joshternet without embedding chat", as
   assert.match(community, /TLS/);
   assert.doesNotMatch(community, /<iframe/i);
   assert.match(layout, /https:\/\/web\.libera\.chat\/#joshternet/);
-  assert.match(layout, />#joshternet</);
+  assert.match(layout, />#joshternet<span aria-hidden="true">↗<\/span/);
+  assert.match(layout, /github.com\/joshternet[\s\S]*target="_blank"/);
   assert.match(layout, /site-footer__button/);
   assert.match(layout, /joshternet-button\.js/);
 });
@@ -29,6 +30,8 @@ test("community page and footer point at #joshternet without embedding chat", as
 test("primary navigation keeps top-level labels and Implement children", async () => {
   const links = await read("_includes/site-nav-links.html");
   const children = await read("_includes/site-nav-implement-children.html");
+  const networkNav = await read("_data/network_nav.yml");
+  const aboutNav = await read("_data/about_nav.yml");
   const layout = await read("_layouts/default.html");
   const data = await read("_data/implement_nav.yml");
   const styles = await read("assets/css/main.css");
@@ -38,29 +41,91 @@ test("primary navigation keeps top-level labels and Implement children", async (
     "About",
     "Network",
     "Wander",
-    "Nominate",
+    "Search",
     "Specifications",
-    "Community",
-    "Governance",
     "Implement",
     "JoshBot",
   ]) {
     assert.match(links, new RegExp(`>${label}</a`));
   }
 
+  assert.match(networkNav, /title: Connections/);
+  assert.doesNotMatch(networkNav, /title: Nominate/);
+  assert.match(await read("_data/joshbot_nav.yml"), /title: Nominate/);
+  assert.match(networkNav, /title: Topics/);
+  assert.match(aboutNav, /title: Community/);
+  assert.match(aboutNav, /title: Governance/);
+  assert.match(aboutNav, /title: Privacy/);
+  assert.match(aboutNav, /path: \/privacy\//);
+  assert.match(aboutNav, /title: Security/);
+  assert.match(aboutNav, /path: \/security\//);
+  assert.match(aboutNav, /title: Contact/);
+  assert.match(aboutNav, /mailto:hello@joshternet\.org/);
+  assert.match(aboutNav, /#joshternet/);
+  assert.match(aboutNav, /web\.libera\.chat/);
+  assert.match(aboutNav, /title: GitHub/);
+  assert.match(aboutNav, /github\.com\/joshternet/);
+  assert.match(
+    await read("_includes/site-nav-about-children.html"),
+    /about_nav/,
+  );
+  assert.match(await read("_includes/site-nav-child-items.html"), /item\.url/);
+  assert.match(
+    await read("_includes/site-nav-child-items.html"),
+    /item\.url contains ':\/\/'[\s\S]*target="_blank"/,
+  );
+  assert.match(links, /site-nav__item--joshbot/);
+  assert.match(links, /JoshBot submenu/);
   assert.match(links, /site-nav__item--implement/);
+  assert.match(links, /site-nav__item--network/);
+  assert.match(links, /site-nav__item--about/);
   assert.match(links, /site-nav__raindrop/);
   assert.match(links, /Implement submenu/);
+  assert.match(links, /Network submenu/);
+  assert.match(links, /About submenu/);
   assert.match(links, /aria-current="true"/);
   assert.match(links, /variant == ['"]compact['"]/);
   assert.match(children, /site\.data\.implement_nav/);
   assert.doesNotMatch(data, /title: Guide/);
   assert.doesNotMatch(data, /path: \/implement\/\n/);
   assert.match(data, /path: \/implement\/validate\//);
-  assert.match(data, /path: \/implement\/eleventy\//);
-  assert.match(data, /path: \/implement\/jekyll\//);
+  assert.match(data, /title: Platforms/);
+  assert.match(data, /path: \/implement\/platforms\//);
+  assert.doesNotMatch(data, /title: Eleventy/);
+  assert.doesNotMatch(data, /title: Jekyll/);
   assert.match(data, /path: \/implement\/buttons\//);
+  assert.match(data, /path: \/implement\/connections\//);
+  assert.match(data, /title: Connections/);
+  const platformsNav = await read("_data/platforms_nav.yml");
+  assert.match(platformsNav, /path: \/implement\/platforms\/eleventy\//);
+  assert.match(platformsNav, /path: \/implement\/platforms\/jekyll\//);
+  assert.match(
+    await read("_includes/site-nav-child-items.html"),
+    /item\.match == ['"]prefix['"]/,
+  );
+  assert.match(data, /match: prefix/);
+  assert.match(await read("_data/network_nav.yml"), /match: prefix/);
+  assert.match(
+    await read("_includes/site-nav-links.html"),
+    /include site-nav-sections\.html/,
+  );
+  assert.match(
+    await read("_layouts/default.html"),
+    /include site-nav-sections\.html/,
+  );
+  assert.match(
+    await read("_includes/site-nav-sections.html"),
+    /assign about_section/,
+  );
+  assert.match(layout, /include csp-https-origin\.html/);
+  assert.match(
+    await read("_includes/csp-https-origin.html"),
+    /csp_https_origin/,
+  );
+  assert.match(layout, /site-nav-secondary--joshbot/);
   assert.match(layout, /site-nav-secondary--implement/);
+  assert.match(layout, /site-nav-secondary--network/);
+  assert.match(layout, /site-nav-secondary--about/);
   assert.match(layout, /site-header__top/);
   assert.match(layout, /site-header__motif/);
   assert.match(layout, /variant="compact"/);
@@ -68,23 +133,44 @@ test("primary navigation keeps top-level labels and Implement children", async (
   assert.match(styles, /site-header__top/);
   assert.match(styles, /site-nav-secondary/);
   assert.match(styles, /site-nav__raindrop/);
-  assert.match(layout, /site-nav\.js/);
+  assert.match(layout, /site-nav\.js['"] \| relative_url \}\}\?v=/);
   const navScript = await read("assets/js/site-nav.js");
   assert.match(navScript, /pointerenter/);
   assert.match(navScript, /scheduleLeave/);
-  assert.doesNotMatch(styles, /site-nav-secondary[^{]*\{[^}]*box-shadow/);
+  assert.match(navScript, /isCoarsePointer/);
+  assert.match(navScript, /useHoverSubmenus/);
+  assert.match(navScript, /openBeforeGesture/);
+  assert.match(navScript, /preventDefault/);
+  assert.match(navScript, /aria-expanded/);
+  assert.match(navScript, /section-joshbot/);
+  // Secondary panel itself stays frameless; link underlines may use box-shadow.
+  assert.doesNotMatch(styles, /\.site-nav-secondary\s*\{[^}]*box-shadow/);
+  assert.match(
+    styles,
+    /\.site-nav-secondary a\[aria-current="page"\]\s*\{[^}]*box-shadow/,
+  );
+  assert.match(
+    styles,
+    /\.site-nav-secondary__list \{[^}]*padding-inline:\s*var\(--gutter\)/,
+  );
+  assert.match(styles, /\.site-nav-secondary \{[^}]*padding-inline:\s*0/);
   assert.doesNotMatch(links, /aria-expanded/);
 });
 
-test("Eleventy recipe is its own page under the implementation guide", async () => {
+test("Eleventy recipe is its own page under Platforms", async () => {
   const guide = await read("implement.md");
-  const eleventy = await read("implement/eleventy.md");
+  const hubs = await read("implement/platforms.md");
+  const eleventy = await read("implement/platforms/eleventy.md");
+  const redirect = await read("implement/eleventy.html");
 
-  assert.match(guide, /\/implement\/eleventy\//);
+  assert.match(guide, /\/implement\/platforms\//);
+  assert.doesNotMatch(guide, /\/implement\/eleventy\//);
   assert.match(guide, /does not become `\/\.well-known\/josh\.json`/);
   assert.doesNotMatch(guide, /addPassthroughCopy/);
 
-  assert.match(eleventy, /permalink: \/implement\/eleventy\//);
+  assert.match(hubs, /permalink: \/implement\/platforms\//);
+  assert.match(hubs, /site\.data\.platforms_nav/);
+  assert.match(eleventy, /permalink: \/implement\/platforms\/eleventy\//);
   assert.match(eleventy, /josh\.json/);
   assert.match(eleventy, /\/\.well-known\/josh/);
   assert.match(eleventy, /does not become `\/\.well-known\/josh\.json`/);
@@ -98,17 +184,27 @@ test("Eleventy recipe is its own page under the implementation guide", async () 
   );
   assert.match(eleventy, /\[implementation guide\]\[implement\]/);
   assert.match(eleventy, /\[implement\]: \/implement\//);
+  assert.doesNotMatch(eleventy, /This page is the Eleventy recipe/);
+  assert.doesNotMatch(eleventy, /Other platforms are listed/);
+  assert.match(redirect, /permalink: \/implement\/eleventy\//);
+  assert.match(redirect, /\/implement\/platforms\/eleventy\//);
+  assert.match(redirect, /http-equiv="refresh"/);
+  assert.match(redirect, /sitemap: false/);
+  assert.match(redirect, /robots: noindex/);
+  assert.match(redirect, /name="robots" content="noindex"/);
 });
 
-test("Jekyll recipe is its own page under the implementation guide", async () => {
+test("Jekyll recipe is its own page under Platforms", async () => {
   const guide = await read("implement.md");
-  const jekyll = await read("implement/jekyll.md");
+  const jekyll = await read("implement/platforms/jekyll.md");
+  const redirect = await read("implement/jekyll.html");
   const config = await read("_config.yml");
 
-  assert.match(guide, /\/implement\/jekyll\//);
+  assert.match(guide, /\/implement\/platforms\//);
+  assert.doesNotMatch(guide, /\/implement\/jekyll\//);
   assert.doesNotMatch(guide, /include:\n\s+- \.well-known/);
 
-  assert.match(jekyll, /permalink: \/implement\/jekyll\//);
+  assert.match(jekyll, /permalink: \/implement\/platforms\/jekyll\//);
   assert.match(jekyll, /\.well-known\/\n\s+josh/);
   assert.match(jekyll, /\/\.well-known\/josh/);
   assert.match(jekyll, /does not become `\/\.well-known\/josh\.json`/);
@@ -121,7 +217,88 @@ test("Jekyll recipe is its own page under the implementation guide", async () =>
   );
   assert.match(jekyll, /\[implementation guide\]\[implement\]/);
   assert.match(jekyll, /\[implement\]: \/implement\//);
+  assert.doesNotMatch(jekyll, /This page is the Jekyll recipe/);
+  assert.doesNotMatch(jekyll, /Other platforms are listed/);
   assert.match(config, /include:\n\s+- \.well-known/);
+  assert.match(redirect, /permalink: \/implement\/jekyll\//);
+  assert.match(redirect, /\/implement\/platforms\/jekyll\//);
+  assert.match(redirect, /http-equiv="refresh"/);
+  assert.match(redirect, /sitemap: false/);
+  assert.match(redirect, /robots: noindex/);
+  assert.match(redirect, /name="robots" content="noindex"/);
+});
+
+test("connections crawl page documents sync signals under Implement", async () => {
+  const guide = await read("implement.md");
+  const page = await read("implement/connections.md");
+
+  assert.match(guide, /\/implement\/connections\//);
+  assert.match(page, /permalink: \/implement\/connections\//);
+  assert.match(page, /type: TechArticle/);
+  assert.match(page, /npm run nlp:sync/);
+  assert.match(page, /JoshternetNLP\/1\.0/);
+  assert.match(page, /p-category/);
+  assert.match(page, /octo:octothorpes/);
+  assert.match(page, /Webmention/);
+  assert.doesNotMatch(page, /_data\//);
+  assert.doesNotMatch(page, /topics\.json/);
+  assert.doesNotMatch(page, /connections\.json/);
+  assert.doesNotMatch(page, /\.tmp\//);
+  assert.match(page, /homepage-link/);
+  assert.match(page, /content-link/);
+  assert.match(page, /blogroll/);
+  assert.match(page, /\bmention\b/);
+  assert.match(page, /declared/);
+  assert.match(page, /heuristic/);
+  assert.match(page, /\/connections\//);
+  assert.match(page, /\/topics\//);
+  assert.match(page, /Feed entries/);
+  assert.match(page, /Catalog source/);
+  assert.match(page, /Repeat build/);
+});
+
+test("visitor pages do not lecture under the title", async () => {
+  const pages = [
+    "implement.md",
+    "implement/connections.md",
+    "implement/buttons.md",
+    "implement/explore.md",
+    "implement/platforms.md",
+    "implement/platforms/eleventy.md",
+    "implement/platforms/jekyll.md",
+    "implement/validate.md",
+    "data.md",
+    "connections.md",
+  ];
+
+  for (const relativePath of pages) {
+    const page = await read(relativePath);
+    assert.doesNotMatch(
+      page,
+      /This page explains/,
+      `${relativePath} must not lecture under the title`,
+    );
+    assert.doesNotMatch(
+      page,
+      /It is practical documentation/,
+      `${relativePath} must not lecture under the title`,
+    );
+    assert.doesNotMatch(
+      page,
+      /This is a practical, non-normative/,
+      `${relativePath} must not lecture under the title`,
+    );
+    assert.doesNotMatch(
+      page,
+      /This page is the .+ recipe/,
+      `${relativePath} must not lecture under the title`,
+    );
+    assert.doesNotMatch(
+      page,
+      /two separate checks/,
+      `${relativePath} must not lecture under the title`,
+    );
+  }
 });
 
 test("declaration check keeps paste and origin feedback in separate forms", async () => {
@@ -142,6 +319,8 @@ test("declaration check keeps paste and origin feedback in separate forms", asyn
   assert.ok(originInputAt < originErrorAt);
   assert.match(page, /placeholder='\{\n  "version": 1\n\}'/);
   assert.match(page, /placeholder="https:\/\/example\.invalid"/);
+  assert.doesNotMatch(page, /two separate checks/);
+  assert.doesNotMatch(page, /This page does not crawl/);
   assert.doesNotMatch(page, /<textarea[^>]*>\s*\{/);
   assert.doesNotMatch(page, /data-declaration-result[^-]/);
   assert.match(script, /markField\(pasteField/);

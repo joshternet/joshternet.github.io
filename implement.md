@@ -3,15 +3,16 @@ layout: default
 title: Implement /.well-known/josh
 description: >-
   A practical, non-normative guide to publishing and validating the version 1
-  /.well-known/josh declaration used to participate in the Joshternet.
+  /.well-known/josh declaration used to participate in the Joshternet network.
+keywords: >-
+  /.well-known/josh, Joshternet declaration, implement Joshternet, indie web protocol
 permalink: /implement/
 ---
 
 # Implement the Joshternet
 
-This is a practical, non-normative guide to the participation mechanism that exists today.
-
-[RFC-JOSH-0002][rfc-0002] defines the protocol and remains authoritative. [RFC-JOSH-0001][rfc-0001] defines the Josh identity semantics used by the optional `josh` member.
+Publish `/.well-known/josh`. [RFC-JOSH-0002][rfc-0002] is authoritative.
+[RFC-JOSH-0001][rfc-0001] covers the optional `josh` member.
 
 ## What implementation requires today
 
@@ -123,11 +124,12 @@ Check the status, content type, and JSON body. You can also paste the file, or a
 
 ## Platform recipes
 
-These recipes are non-normative. [RFC-JOSH-0002][rfc-0002] remains authoritative. Each tested platform has its own page, so the file layout, build step, host headers, and deployment check for that platform stay together.
+These recipes are non-normative. [RFC-JOSH-0002][rfc-0002] remains authoritative. Tested site software recipes live under [Platforms](/implement/platforms/), so the file layout, build step, host headers, and deployment check for each platform stay together without crowding the Implement nav.
 
-- [Eleventy](/implement/eleventy/) publishes `josh.json` at `/.well-known/josh`.
-- [Jekyll](/implement/jekyll/) publishes `.well-known/josh` after including that directory.
+- [Platforms](/implement/platforms/) — Eleventy, Jekyll, and later recipes for popular independent-web software.
 - [Buttons](/implement/buttons/) embed the registry membership state on independent sites.
+- [Connections](/implement/connections/) describes the build-time crawl that gathers Connections and Topics from Network sites.
+- [Explore](/implement/explore/) describes presentation projections for What's New, Topics, and Search.
 
 A platform page is added after that recipe has been tested. The public resource stays `/.well-known/josh` on every one of them.
 
