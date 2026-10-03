@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-03T21:50:07.756Z",
+  "generated_at": "2026-10-03T22:07:27.916Z",
   "community_count": 291,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
@@ -142,7 +142,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -201,7 +203,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -225,7 +229,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -269,7 +275,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -293,7 +301,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -317,7 +327,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -411,7 +423,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -440,7 +454,10 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -469,7 +486,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -493,7 +512,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -537,7 +558,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "visible-text"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
@@ -570,7 +593,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -614,7 +639,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -638,7 +665,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -662,7 +691,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -691,7 +722,10 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -730,7 +764,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T12:00:56.613Z",
       "last_changed_at": "2026-10-03T12:00:56.613Z",
       "active": true
@@ -754,7 +790,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -778,7 +816,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -802,7 +842,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -826,7 +868,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -868,7 +912,10 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -892,7 +939,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -929,7 +978,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -953,7 +1005,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -977,7 +1031,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1049,7 +1105,9 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": [
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
@@ -1135,7 +1193,9 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": [
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1212,7 +1272,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "visible-text"],
+      "sources": [
+        "microformat:p-category",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1236,7 +1299,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1275,7 +1340,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T21:50:07.756Z",
       "last_changed_at": "2026-10-03T21:50:07.756Z",
       "active": true
@@ -1299,7 +1366,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T21:50:07.756Z",
       "last_changed_at": "2026-10-03T21:50:07.756Z",
       "active": true
@@ -1323,7 +1392,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1347,7 +1418,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1399,7 +1472,11 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1423,7 +1500,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1447,7 +1526,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1496,7 +1577,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -1520,7 +1603,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1544,7 +1629,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1586,7 +1673,9 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": [
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -1615,7 +1704,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1639,7 +1730,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1663,7 +1756,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -1707,7 +1802,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -1759,7 +1856,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:page", "visible-text"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
@@ -1792,7 +1892,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1816,7 +1918,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1840,7 +1944,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1874,7 +1980,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1898,7 +2006,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1932,7 +2042,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -1956,7 +2068,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1980,7 +2094,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2004,7 +2120,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page", "visible-text"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true,
@@ -2037,7 +2155,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2061,7 +2181,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2120,7 +2242,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -2149,7 +2273,10 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2173,7 +2300,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2197,7 +2326,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2221,7 +2352,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2278,7 +2411,9 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": [
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2302,7 +2437,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2326,7 +2463,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2363,7 +2502,10 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2387,7 +2529,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2416,7 +2560,10 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2549,7 +2696,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2578,7 +2727,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2602,7 +2753,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2631,7 +2784,10 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2655,7 +2811,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2694,7 +2852,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2718,7 +2878,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2770,7 +2932,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "visible-text"],
+      "sources": [
+        "microformat:p-category",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2794,7 +2959,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2818,7 +2985,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2842,7 +3011,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2866,7 +3037,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2925,7 +3098,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2949,7 +3124,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T21:50:07.756Z",
       "last_changed_at": "2026-10-03T21:50:07.756Z",
       "active": true
@@ -3047,7 +3224,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3071,7 +3250,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3095,7 +3276,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3129,7 +3312,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3153,7 +3338,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3204,6 +3391,16 @@
               "url": "https://www.joshcanhelp.com/ai/",
               "title": "",
               "source": "catalog-match"
+            },
+            {
+              "url": "https://www.joshcanhelp.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshcanhelp.com/about/",
+              "title": "",
+              "source": "visible-text"
             }
           ]
         },
@@ -3241,7 +3438,11 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3265,7 +3466,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3289,7 +3492,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3313,7 +3518,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3337,7 +3544,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3361,7 +3570,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3385,7 +3596,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3414,7 +3627,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3438,7 +3653,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3462,7 +3679,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3521,7 +3740,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -3580,7 +3801,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -3604,7 +3827,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3628,7 +3853,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3690,7 +3917,9 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": [
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
@@ -3723,7 +3952,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3752,7 +3983,10 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3776,7 +4010,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3800,7 +4036,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3824,7 +4062,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3848,7 +4088,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3872,7 +4114,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3896,7 +4140,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3920,7 +4166,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3944,7 +4192,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3991,7 +4241,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4015,7 +4268,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4087,7 +4342,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "portfolio:sector"],
+      "sources": [
+        "microformat:p-category",
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4111,7 +4369,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4165,7 +4425,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4189,7 +4451,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T21:50:07.756Z",
       "last_changed_at": "2026-10-03T21:50:07.756Z",
       "active": true
@@ -4248,7 +4512,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -4272,7 +4538,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4334,7 +4602,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:page"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4358,7 +4629,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4400,7 +4673,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "portfolio:sector"],
+      "sources": [
+        "microformat:p-category",
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -4424,7 +4700,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4461,7 +4739,10 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -4510,7 +4791,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -4534,7 +4817,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -4581,7 +4866,9 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": [
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
       "last_changed_at": "2026-10-03T08:29:09.357Z",
       "active": true
@@ -4643,7 +4930,9 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": [
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4702,7 +4991,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4726,7 +5017,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4785,7 +5078,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4809,7 +5104,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4884,7 +5181,11 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4908,7 +5209,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4932,7 +5235,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4956,7 +5261,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4980,7 +5287,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5004,7 +5313,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5028,7 +5339,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5057,7 +5370,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5081,7 +5396,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5110,7 +5427,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5134,7 +5453,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5173,7 +5494,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "visible-text"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
@@ -5206,7 +5529,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5230,7 +5555,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -5254,7 +5581,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -5359,7 +5688,11 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5383,7 +5716,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T21:50:07.756Z",
       "last_changed_at": "2026-10-03T21:50:07.756Z",
       "active": true
@@ -5407,7 +5742,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5469,7 +5806,9 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": [
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5511,7 +5850,10 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5535,7 +5877,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5559,7 +5903,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5606,7 +5952,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5630,7 +5979,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5672,7 +6023,10 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5696,7 +6050,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5720,7 +6076,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5744,7 +6102,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5768,7 +6128,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5820,7 +6182,9 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": [
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5882,7 +6246,9 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": [
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5939,7 +6305,10 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page", "visible-text"],
+      "sources": [
+        "topic-hub:page",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5963,7 +6332,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -6022,7 +6393,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -6046,7 +6419,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6070,7 +6445,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6094,7 +6471,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6131,7 +6510,10 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6221,7 +6603,9 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": [
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6245,7 +6629,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6269,7 +6655,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6293,7 +6681,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6317,7 +6707,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -6366,7 +6758,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -6390,7 +6784,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -6414,7 +6810,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -6443,7 +6841,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6467,7 +6867,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6491,7 +6893,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6515,7 +6919,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6539,7 +6945,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6627,8 +7035,7 @@
       "sources": [
         "catalog-match",
         "microformat:p-category",
-        "topic-hub:page",
-        "visible-text"
+        "topic-hub:page"
       ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
@@ -6653,7 +7060,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6692,7 +7101,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6716,7 +7127,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6750,7 +7163,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6774,7 +7189,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6811,7 +7228,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6835,7 +7255,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -6910,7 +7332,10 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "visible-text"],
+      "sources": [
+        "topic-hub:link",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6934,7 +7359,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -6958,7 +7385,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -6982,7 +7411,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7006,7 +7437,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -7065,7 +7498,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -7089,7 +7524,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:index"],
+      "sources": [
+        "portfolio:index"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -7113,7 +7550,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7137,7 +7576,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7205,11 +7646,20 @@
               "url": "https://www.joshcanhelp.com/data-privacy/",
               "title": "",
               "source": "catalog-match"
+            },
+            {
+              "url": "https://www.joshcanhelp.com/",
+              "title": "",
+              "source": "visible-text"
             }
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7233,7 +7683,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7257,7 +7709,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7281,7 +7735,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7305,7 +7761,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -7334,7 +7792,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7358,7 +7818,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7450,7 +7912,10 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector", "visible-text"],
+      "sources": [
+        "portfolio:sector",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T21:50:07.756Z",
       "active": true
@@ -7509,7 +7974,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -7533,7 +8000,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7582,7 +8051,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7606,7 +8077,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T21:50:07.756Z",
       "last_changed_at": "2026-10-03T21:50:07.756Z",
       "active": true
@@ -7630,7 +8103,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7697,7 +8172,9 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": [
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
@@ -7750,7 +8227,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -7784,7 +8263,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7808,7 +8289,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7832,7 +8315,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7869,7 +8354,10 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:59:21.002Z",
       "active": true
@@ -7893,7 +8381,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7917,7 +8407,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7941,7 +8433,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7965,7 +8459,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7989,7 +8485,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8018,7 +8516,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8042,7 +8542,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8066,7 +8568,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8090,7 +8594,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8124,7 +8630,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8148,7 +8656,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8185,7 +8695,10 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -8209,7 +8722,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8281,7 +8796,10 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8305,7 +8823,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8329,7 +8849,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8353,7 +8875,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -8377,7 +8901,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -8401,7 +8927,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8425,7 +8953,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8475,7 +9005,11 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "topic-hub:page"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -8528,11 +9062,20 @@
               "url": "https://www.joshcanhelp.com/ai/",
               "title": "",
               "source": "catalog-match"
+            },
+            {
+              "url": "https://www.joshcanhelp.com/",
+              "title": "",
+              "source": "visible-text"
             }
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8556,7 +9099,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8580,7 +9125,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -8652,7 +9199,10 @@
           ]
         }
       ],
-      "sources": ["meta:keywords", "topic-hub:page"],
+      "sources": [
+        "meta:keywords",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8676,7 +9226,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8700,7 +9252,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8724,7 +9278,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8758,7 +9314,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8782,7 +9340,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8819,7 +9379,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8843,7 +9406,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8872,7 +9437,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8896,7 +9463,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8920,7 +9489,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -8982,7 +9553,9 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": [
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
@@ -9015,7 +9588,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9157,7 +9732,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9181,7 +9758,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9205,7 +9784,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9229,7 +9810,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9253,7 +9836,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9315,7 +9900,9 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": [
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9339,7 +9926,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -9382,11 +9971,20 @@
               "url": "https://www.joshuabaker.com/work/?work=legatum-institute-united-states-prosperity-index-2023",
               "title": "",
               "source": "catalog-match"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/",
+              "title": "",
+              "source": "visible-text"
             }
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -9410,7 +10008,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9434,7 +10034,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9458,7 +10060,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -9495,7 +10099,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9519,7 +10126,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9543,7 +10152,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -9567,7 +10178,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9591,7 +10204,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9615,7 +10230,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -9639,7 +10256,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9663,7 +10282,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9702,7 +10323,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9726,7 +10349,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9750,7 +10375,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -9774,7 +10401,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9811,7 +10440,10 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9835,7 +10467,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9869,7 +10503,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9893,7 +10529,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9917,7 +10555,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -9941,7 +10581,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
