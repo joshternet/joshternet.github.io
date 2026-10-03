@@ -21,6 +21,7 @@
 
 ### Fixed
 
+- Joshternet button Worker route for `/button` uses a trailing `*` so requests with `?origin=` match Cloudflare Worker routes (exact `/button` only matches URLs without a query string).
 - Joshternet button Worker registry fetch uses `redirect: "manual"` (Workers reject `redirect: "error"`), so local and edge registry reads succeed instead of failing closed with 503.
 - Development CSP allows Joshternet button images from `https://joshternet.org` and the local Worker on `:8790` so the footer embed can paint during `jekyll serve`.
 - Button embed loads artwork from the Worker `/button` route (same origin as the script) so local previews do not depend on production Pages assets.

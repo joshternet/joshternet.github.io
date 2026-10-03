@@ -64,7 +64,7 @@ test("button page documents all four states and the one-line embed", async () =>
   assert.match(layout, /site-footer__button/);
   assert.match(layout, /joshternet-button\.js/);
   assert.match(wrangler, /joshternet\.org\/embed\/\*/);
-  assert.match(wrangler, /joshternet\.org\/button"/);
+  assert.match(wrangler, /joshternet\.org\/button\*/);
   assert.match(wrangler, /joshternet\.org\/api\/button-state\*/);
   assert.match(wrangler, /www\.joshternet\.org\/embed\/\*/);
 });
