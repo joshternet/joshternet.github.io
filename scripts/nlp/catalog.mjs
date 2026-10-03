@@ -7,7 +7,11 @@
  * connections.
  */
 
-import { buildTopicEvidence, isNonSubjectSlug } from "./evidence.mjs";
+import {
+  buildTopicEvidence,
+  dedupeEvidence,
+  isNonSubjectSlug,
+} from "./evidence.mjs";
 import { itemMentionsTopic } from "./match.mjs";
 
 /** Preferred catalog origin while it remains a Network participant. */
@@ -238,7 +242,12 @@ export function applyCatalogMatches(
         existing.sources = [
           ...new Set([...(existing.sources || []), "catalog-match"]),
         ];
-        existing.evidence = evidence;
+        const merged = dedupeEvidence([
+          ...(Array.isArray(existing.evidence) ? existing.evidence : []),
+          ...evidence,
+        ]);
+        existing.evidence = merged;
+        existing.evidence_count = merged.length;
         continue;
       }
 
@@ -248,6 +257,7 @@ export function applyCatalogMatches(
         evidence_class: "heuristic",
         community_eligible: true,
         sources: ["catalog-match"],
+        evidence_count: evidence.length,
         evidence,
       });
     }
