@@ -1,0 +1,14 @@
+{
+  "name": "joshternet-button",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --port 8790",
+    "check": "wrangler deploy --dry-run",
+    "deploy": "wrangler deploy",
+    "test": "node --test test/*.test.js"
+  },
+  "devDependencies": {
+    "wrangler": "^4.132.0"
+  }
+}

@@ -127,6 +127,7 @@ These recipes are non-normative. [RFC-JOSH-0002][rfc-0002] remains authoritative
 
 - [Eleventy](/implement/eleventy/) publishes `josh.json` at `/.well-known/josh`.
 - [Jekyll](/implement/jekyll/) publishes `.well-known/josh` after including that directory.
+- [Buttons](/implement/buttons/) embed the registry membership state on independent sites.
 
 A platform page is added after that recipe has been tested. The public resource stays `/.well-known/josh` on every one of them.
 

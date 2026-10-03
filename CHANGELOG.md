@@ -4,6 +4,7 @@
 
 ### Added
 
+- Official Joshternet web buttons (#32): four pixel-art PNGs, a Cloudflare Worker on joshternet.org (`/embed/joshternet-button.js`, `/button`, `/api/button-state`) that maps JoshBot registry membership to Verified Josh / Verified Non-Josh / Undeclared / Join (failing closed when the registry is unavailable), a one-line async embed, docs at `/implement/buttons/`, and the matching button in the site footer.
 - Joshes Elsewhere (#37): network enrichment discovers homepage and same-origin about-page `rel="me"` links and catalog social profile links (even without `rel`), publishes an optional `elsewhere` array on participants (email, unsafe URLs, and non-profile paths like GitHub repos dropped), and shows those profiles as icon links on taller Network cards. Icons use brand marks on a single `/assets/icons/elsewhere-sprite.svg` sheet (CSS mask-position)—Simple Icons CC0 paths plus the LinkedIn brand-guidelines mark, with a first-party `web` glyph—documented in `THIRD_PARTY_LICENSES.md`. Marks identify participant-published links only. Feed and elsewhere icons share a compact bottom-left grid. Every network sync (including keep-path / hourly) refreshes elsewhere so cards stay current without a full screenshot recapture.
 - Network enrichment discovers advertised blogroll OPML (`rel=blogroll` `text/xml`), publishes participant-to-participant edges to `_data/blogrolls.json`, and writes `/assets/network/joshternet.opml` listing every current Network site (with primary feed and nested blogroll link when available). Refreshed on every network sync.
 - Site-wide `<head>` advertises the aggregate blogroll with `<link rel="blogroll" type="text/xml" href="/assets/network/joshternet.opml">` so feed readers can discover it from any page. The Network page no longer shows a duplicate body subscribe link.
@@ -14,11 +15,15 @@
 
 ### Changed
 
+- Site footer keeps Privacy / Security / Contact / chat / GitHub links flush against the Joshternet button on the right instead of floating in the middle.
 - Tablet primary nav matches the desktop top-row pattern instead of the three-column chip grid.
 - Implement second-level links overlay under the circle-dot rule without a panel background or page shift; the current section stays visible unless another top-level branch with its own subnav is hovered.
 
 ### Fixed
 
+- Joshternet button Worker registry fetch uses `redirect: "manual"` (Workers reject `redirect: "error"`), so local and edge registry reads succeed instead of failing closed with 503.
+- Development CSP allows Joshternet button images from `https://joshternet.org` and the local Worker on `:8790` so the footer embed can paint during `jekyll serve`.
+- Button embed loads artwork from the Worker `/button` route (same origin as the script) so local previews do not depend on production Pages assets.
 - Review follow-ups for #51: live declaration checks treat non-404/410 HTTP failures (401/403/429/etc.) as unread instead of invalid; network sync retains prior blogroll edges when enrichment or capture fails; orphan `declaration-*.mjs` twins removed; declaration-check Worker tests run in CI; elsewhere glyph mask positions are generated from `elsewhere-sprite-order.json` into `assets/css/elsewhere-glyphs.css`; PR keeps existing Network screenshot webps instead of recaptures; declaration-check allowlist includes `https://www.joshternet.org`.
 - Drop jekyll-seo-tag advertisements from rendered HTML: the `generator` meta tag and the Begin/End Jekyll SEO HTML comments.
 - Implement submenu: keep the hover path open across the gap under the circle-dot rule by treating the whole header as the open zone, dismiss immediately when another top-level item is entered, and keep sticky overlay behavior on Implement section pages without pushing page content.
