@@ -6,12 +6,31 @@ import { chromium } from "playwright";
 import sharp from "sharp";
 
 import {
+  blogrollEdges,
+  buildJoshternetOpml,
+  fetchBlogrollOpml,
+  originsFromBlogrollUrls,
+  parseOpmlOutlineUrls,
+  sanitizeBlogrollUrls,
+  sortBlogrollEdges,
+  withBlogroll,
+} from "./blogroll.mjs";
+
+import {
+  elsewhereHostCatalog,
+  sanitizeElsewhere,
+  withElsewhere,
+} from "./elsewhere.mjs";
+
+import {
   assertPublicURL,
   chooseDescription,
   framePolicy,
   chooseTitle,
   partitionPublicParticipants,
   projectRegistry,
+  registryParticipationFields,
+  sanitizeFeeds,
   screenshotPath,
   stableSiteID,
 } from "./lib.mjs";
@@ -22,12 +41,15 @@ import {
   captureIsFresh,
   fallbackEntry,
   removeOrphanScreenshots,
+  withFeeds,
 } from "./state.mjs";
 
 const DEFAULT_REGISTRY_URL =
   "https://raw.githubusercontent.com/joshternet/index-data/main/registry.json";
 
 const DEFAULT_DATA_PATH = "_data/network.json";
+const DEFAULT_BLOGROLLS_PATH = "_data/blogrolls.json";
+const DEFAULT_OPML_PATH = "assets/network/joshternet.opml";
 const DEFAULT_SCREENSHOT_ROOT = "assets/network/sites";
 
 const NAVIGATION_TIMEOUT_MS = 20_000;
@@ -99,16 +121,6 @@ function existingByOrigin(entries) {
   return index;
 }
 
-function headerObject(headers) {
-  const result = {};
-
-  for (const header of headers) {
-    result[header.name.toLowerCase()] = header.value;
-  }
-
-  return result;
-}
-
 function reportRejectedParticipants(rejected) {
   for (const { participant, error } of rejected) {
     const origin =
@@ -123,7 +135,23 @@ function reportRejectedParticipants(rejected) {
   }
 }
 
-async function captureParticipant(browser, participant) {
+/**
+ * @param {import("playwright").Browser} browser
+ * @param {{ origin: string }} participant
+ * @param {{ settle?: boolean }} [options]
+ * @returns {Promise<{
+ *   metadata: Record<string, unknown>,
+ *   headers: Record<string, string>,
+ *   dnsCache: Map<string, unknown>,
+ *   context: import("playwright").BrowserContext,
+ *   page: import("playwright").Page,
+ * }>}
+ */
+async function openParticipantHomepage(
+  browser,
+  participant,
+  { settle = false } = {},
+) {
   const dnsCache = new Map();
 
   await assertPublicURL(participant.origin, {
@@ -143,8 +171,6 @@ async function captureParticipant(browser, participant) {
   });
 
   const page = await context.newPage();
-
-  let mainResponseHeaders = {};
 
   await page.route("**/*", async (route) => {
     const request = route.request();
@@ -177,17 +203,155 @@ async function captureParticipant(browser, participant) {
       throw new Error("homepage returned no main response");
     }
 
-    const finalURL = new URL(page.url());
-
-    await assertPublicURL(finalURL.href, {
+    await assertPublicURL(page.url(), {
       cache: dnsCache,
     });
 
-    mainResponseHeaders = await response.allHeaders();
+    const headers = await response.allHeaders();
 
-    await page.waitForTimeout(SETTLE_TIME_MS);
+    if (settle) {
+      await page.waitForTimeout(SETTLE_TIME_MS);
+    }
 
-    const metadata = await page.evaluate(extractPageMetadata);
+    const metadata = await page.evaluate(
+      extractPageMetadata,
+      elsewhereHostCatalog(),
+    );
+
+    return {
+      metadata,
+      headers,
+      dnsCache,
+      context,
+      page,
+    };
+  } catch (error) {
+    await context.close();
+    throw error;
+  }
+}
+
+/**
+ * @param {string} sourceOrigin
+ * @param {string[]} blogrollUrls
+ * @param {Set<string>} participantOrigins
+ * @param {Map<string, unknown>} dnsCache
+ * @returns {Promise<Array<{from: string, to: string, blogroll: string}>>}
+ */
+async function edgesFromBlogrollAds(
+  sourceOrigin,
+  blogrollUrls,
+  participantOrigins,
+  dnsCache,
+) {
+  const edges = [];
+
+  for (const blogrollUrl of blogrollUrls) {
+    try {
+      const opmlText = await fetchBlogrollOpml(blogrollUrl, {
+        cache: dnsCache,
+      });
+      const outlineOrigins = originsFromBlogrollUrls(
+        parseOpmlOutlineUrls(opmlText),
+      );
+
+      edges.push(
+        ...blogrollEdges({
+          sourceOrigin,
+          blogrollUrl,
+          outlineOrigins,
+          participantOrigins,
+        }),
+      );
+    } catch (error) {
+      process.stderr.write(
+        `blogroll fetch failed ${sourceOrigin} (${blogrollUrl}): ${error.message}\n`,
+      );
+    }
+  }
+
+  return edges;
+}
+
+/**
+ * Collects elsewhere links from the current page metadata and an optional about page.
+ * @param {import("playwright").Page} page
+ * @param {Record<string, unknown>} metadata
+ * @param {Map<string, unknown>} dnsCache
+ * @param {string} participantOrigin
+ * @returns {Promise<Array<{url: string, network: string, label: string}>>}
+ */
+async function collectElsewhereLinks(
+  page,
+  metadata,
+  dnsCache,
+  participantOrigin,
+) {
+  const raw = Array.isArray(metadata.elsewhere) ? [...metadata.elsewhere] : [];
+  const aboutPageHref =
+    typeof metadata.aboutPageHref === "string" ? metadata.aboutPageHref : "";
+
+  if (aboutPageHref) {
+    try {
+      const aboutURL = await assertPublicURL(aboutPageHref, {
+        cache: dnsCache,
+      });
+      const participantURL = new URL(participantOrigin);
+
+      if (aboutURL.origin === participantURL.origin) {
+        const response = await page.goto(aboutURL.href, {
+          waitUntil: "domcontentloaded",
+          timeout: NAVIGATION_TIMEOUT_MS,
+        });
+
+        if (response) {
+          await assertPublicURL(page.url(), {
+            cache: dnsCache,
+          });
+
+          const aboutMetadata = await page.evaluate(
+            extractPageMetadata,
+            elsewhereHostCatalog(),
+          );
+
+          if (Array.isArray(aboutMetadata.elsewhere)) {
+            raw.push(...aboutMetadata.elsewhere);
+          }
+        }
+      }
+    } catch (error) {
+      process.stderr.write(
+        `about-page elsewhere failed ${participantOrigin}: ${error.message}\n`,
+      );
+    }
+  }
+
+  return sanitizeElsewhere(raw, {
+    cache: dnsCache,
+  });
+}
+
+/**
+ * @param {Record<string, unknown>} entry
+ * @param {unknown} feeds
+ * @param {unknown} blogrollUrl
+ * @param {unknown} elsewhere
+ * @returns {Record<string, unknown>}
+ */
+function withEnrichment(entry, feeds, blogrollUrl, elsewhere) {
+  return withElsewhere(
+    withBlogroll(withFeeds(entry, feeds), blogrollUrl),
+    elsewhere,
+  );
+}
+
+async function captureParticipant(browser, participant, participantOrigins) {
+  const opened = await openParticipantHomepage(browser, participant, {
+    settle: true,
+  });
+
+  try {
+    const { metadata, headers, dnsCache, page } = opened;
 
     const png = await page.screenshot({
       type: "png",
@@ -222,22 +386,101 @@ async function captureParticipant(browser, participant) {
 
     const framing = framePolicy({
       origin: participant.origin,
-      headers: mainResponseHeaders,
+      headers,
     });
 
+    const feeds = await sanitizeFeeds(metadata.feeds, {
+      cache: dnsCache,
+    });
+    const blogrollUrls = await sanitizeBlogrollUrls(metadata.blogrolls, {
+      cache: dnsCache,
+    });
+    const blogrollUrl = blogrollUrls[0] || "";
+    const elsewhere = await collectElsewhereLinks(
+      page,
+      metadata,
+      dnsCache,
+      participant.origin,
+    );
+    const edges = await edgesFromBlogrollAds(
+      participant.origin,
+      blogrollUrls,
+      participantOrigins,
+      dnsCache,
+    );
+
+    const entry = withEnrichment(
+      {
+        ...registryParticipationFields(participant),
+        title,
+        description,
+        screenshot: screenshotPath(participant.origin),
+        embeddable: framing.embeddable,
+        frame_reason: framing.reason,
+        captured_at: nowISO(),
+      },
+      feeds,
+      blogrollUrl,
+      elsewhere,
+    );
+
     return {
-      origin: participant.origin,
-      domain: participant.domain,
-      identity: participant.identity,
-      title,
-      description,
-      screenshot: screenshotPath(participant.origin),
-      embeddable: framing.embeddable,
-      frame_reason: framing.reason,
-      captured_at: nowISO(),
+      entry,
+      edges,
     };
   } finally {
-    await context.close();
+    await opened.context.close();
+  }
+}
+
+/**
+ * @param {import("playwright").Browser} browser
+ * @param {{ origin: string }} participant
+ * @param {Set<string>} participantOrigins
+ * @returns {Promise<{
+ *   feeds: Array<{url: string, type: string, title?: string}>,
+ *   blogrollUrl: string,
+ *   elsewhere: Array<{url: string, network: string, label: string}>,
+ *   edges: Array<{from: string, to: string, blogroll: string}>,
+ * }>}
+ */
+async function discoverHomepageEnrichment(
+  browser,
+  participant,
+  participantOrigins,
+) {
+  const opened = await openParticipantHomepage(browser, participant);
+
+  try {
+    const { metadata, dnsCache, page } = opened;
+    const feeds = await sanitizeFeeds(metadata.feeds, {
+      cache: dnsCache,
+    });
+    const blogrollUrls = await sanitizeBlogrollUrls(metadata.blogrolls, {
+      cache: dnsCache,
+    });
+    const blogrollUrl = blogrollUrls[0] || "";
+    const elsewhere = await collectElsewhereLinks(
+      page,
+      metadata,
+      dnsCache,
+      participant.origin,
+    );
+    const edges = await edgesFromBlogrollAds(
+      participant.origin,
+      blogrollUrls,
+      participantOrigins,
+      dnsCache,
+    );
+
+    return {
+      feeds,
+      blogrollUrl,
+      elsewhere,
+      edges,
+    };
+  } finally {
+    await opened.context.close();
   }
 }
 
@@ -275,6 +518,18 @@ async function writeJSONAtomic(filePath, value) {
   await fs.rename(temporary, filePath);
 }
 
+async function writeTextAtomic(filePath, value) {
+  const directory = path.dirname(filePath);
+  const temporary = `${filePath}.tmp-${process.pid}`;
+
+  await fs.mkdir(directory, {
+    recursive: true,
+  });
+
+  await fs.writeFile(temporary, value, "utf8");
+  await fs.rename(temporary, filePath);
+}
+
 const registry = await loadRegistry(registrySource);
 const projected = projectRegistry(registry);
 
@@ -286,6 +541,9 @@ reportRejectedParticipants(rejected);
 const existing = await readJSONIfExists(DEFAULT_DATA_PATH, []);
 
 const previous = existingByOrigin(existing);
+const participantOrigins = new Set(
+  participants.map((participant) => participant.origin),
+);
 
 process.stdout.write(
   `Registry contains ${projected.length} participant` +
@@ -299,22 +557,53 @@ const browser = await chromium.launch({
 });
 
 const nextEntries = [];
+const nextEdges = [];
 
 try {
   for (const participant of participants) {
     const oldEntry = previous.get(participant.origin);
 
     if (!shouldRefresh(oldEntry)) {
-      nextEntries.push({
+      const kept = {
         ...oldEntry,
-        identity: participant.identity,
-        domain: participant.domain,
+        ...registryParticipationFields(participant),
         frame_reason:
           oldEntry.frame_reason ||
           (oldEntry.embeddable ? "allowed" : "unknown"),
-      });
+      };
 
-      process.stdout.write(`keep ${participant.origin}\n`);
+      try {
+        const enrichment = await withTimeout(
+          discoverHomepageEnrichment(browser, participant, participantOrigins),
+          SITE_TIMEOUT_MS,
+          `${participant.origin} enrichment`,
+        );
+
+        nextEntries.push(
+          withEnrichment(
+            kept,
+            enrichment.feeds,
+            enrichment.blogrollUrl,
+            enrichment.elsewhere,
+          ),
+        );
+        nextEdges.push(...enrichment.edges);
+        process.stdout.write(
+          `keep ${participant.origin} (feeds, blogrolls, and elsewhere refreshed)\n`,
+        );
+      } catch (error) {
+        nextEntries.push(
+          withEnrichment(
+            kept,
+            oldEntry.feeds,
+            oldEntry.blogroll,
+            oldEntry.elsewhere,
+          ),
+        );
+        process.stderr.write(
+          `enrichment refresh failed ${participant.origin}: ${error.message}\n`,
+        );
+      }
 
       continue;
     }
@@ -323,12 +612,13 @@ try {
 
     try {
       const captured = await withTimeout(
-        captureParticipant(browser, participant),
+        captureParticipant(browser, participant, participantOrigins),
         SITE_TIMEOUT_MS,
         participant.origin,
       );
 
-      nextEntries.push(captured);
+      nextEntries.push(captured.entry);
+      nextEdges.push(...captured.edges);
 
       process.stdout.write(`captured ${participant.origin}\n`);
     } catch (error) {
@@ -350,10 +640,17 @@ nextEntries.sort((left, right) => {
   });
 });
 
+const blogrollEdgeList = sortBlogrollEdges(nextEdges);
+const opml = buildJoshternetOpml(nextEntries);
+
 await removeOrphanScreenshots(nextEntries, DEFAULT_SCREENSHOT_ROOT);
 await writeJSONAtomic(DEFAULT_DATA_PATH, nextEntries);
+await writeJSONAtomic(DEFAULT_BLOGROLLS_PATH, blogrollEdgeList);
+await writeTextAtomic(DEFAULT_OPML_PATH, opml);
 
 process.stdout.write(
   `Wrote ${nextEntries.length} network entr` +
-    `${nextEntries.length === 1 ? "y" : "ies"}.\n`,
+    `${nextEntries.length === 1 ? "y" : "ies"}, ` +
+    `${blogrollEdgeList.length} blogroll edge` +
+    `${blogrollEdgeList.length === 1 ? "" : "s"}, and joshternet.opml.\n`,
 );

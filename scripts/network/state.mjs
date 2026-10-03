@@ -1,6 +1,10 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
+import { withBlogroll } from "./blogroll.mjs";
+import { withElsewhere } from "./elsewhere.mjs";
+import { registryParticipationFields } from "./lib.mjs";
+
 export const CAPTURE_MAX_AGE_MS = 24 * 60 * 60 * 1000;
 
 export function captureIsFresh(entry, currentTime = Date.now()) {
@@ -15,6 +19,22 @@ export function captureIsFresh(entry, currentTime = Date.now()) {
   }
 
   return currentTime - capturedAt < CAPTURE_MAX_AGE_MS;
+}
+
+function participationChanged(entry, participant) {
+  const facts = registryParticipationFields(participant);
+
+  return (
+    entry.domain !== facts.domain ||
+    entry.identity !== facts.identity ||
+    entry.first_participated_at !== facts.first_participated_at ||
+    entry.latest_declaration_check_at !== facts.latest_declaration_check_at ||
+    entry.latest_declaration_check_outcome !==
+      facts.latest_declaration_check_outcome ||
+    JSON.stringify(entry.declaration) !== JSON.stringify(facts.declaration) ||
+    JSON.stringify(entry.initial_declaration) !==
+      JSON.stringify(facts.initial_declaration)
+  );
 }
 
 export function registryNeedsSync(
@@ -51,10 +71,7 @@ export function registryNeedsSync(
       return true;
     }
 
-    if (
-      entry.domain !== participant.domain ||
-      entry.identity !== participant.identity
-    ) {
+    if (participationChanged(entry, participant)) {
       return true;
     }
 
@@ -67,10 +84,8 @@ export function registryNeedsSync(
 }
 
 export function fallbackEntry(participant, previous = null) {
-  return {
-    origin: participant.origin,
-    domain: participant.domain,
-    identity: participant.identity,
+  const entry = {
+    ...registryParticipationFields(participant),
     title: previous?.title || participant.domain,
     description:
       typeof previous?.description === "string" ? previous.description : "",
@@ -83,6 +98,31 @@ export function fallbackEntry(participant, previous = null) {
         : "unknown",
     captured_at: previous?.captured_at || "",
   };
+
+  return withElsewhere(
+    withBlogroll(withFeeds(entry, previous?.feeds), previous?.blogroll),
+    previous?.elsewhere,
+  );
+}
+
+/**
+ * Publishes feeds when present; omits the field when there are none.
+ * @param {Record<string, unknown>} entry
+ * @param {unknown} feeds
+ * @returns {Record<string, unknown>}
+ */
+export function withFeeds(entry, feeds) {
+  const next = {
+    ...entry,
+  };
+
+  delete next.feeds;
+
+  if (Array.isArray(feeds) && feeds.length > 0) {
+    next.feeds = feeds;
+  }
+
+  return next;
 }
 
 export async function removeOrphanScreenshots(entries, screenshotRoot) {

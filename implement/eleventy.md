@@ -1,0 +1,93 @@
+---
+layout: default
+title: Publish /.well-known/josh with Eleventy
+description: >-
+  How to keep a Joshternet declaration as josh.json in an Eleventy site and
+  publish it at the extensionless /.well-known/josh path.
+seo:
+  type: WebPage
+  name: Eleventy
+permalink: /implement/eleventy/
+nav_title: Eleventy
+---
+
+# Publish with Eleventy
+
+This page is the Eleventy recipe. It is non-normative. [RFC-JOSH-0002][rfc-0002] defines the protocol, and the [implementation guide][implement] explains participation and Josh identity. Eleventy's job is only to publish the declaration at the path the protocol already requires.
+
+The public resource is exactly `/.well-known/josh`. It does not become `/.well-known/josh.json`.
+
+## Keep the source as JSON
+
+Put the declaration in the Eleventy input directory as `josh.json`, so editors and validators treat it as JSON:
+
+```text
+input/
+  josh.json
+```
+
+A participant affirming Josh identity:
+
+```json
+{
+  "version": 1,
+  "josh": true
+}
+```
+
+`josh` may instead be `false` for Declined Josh Identity, or omitted for Undeclared Josh Identity. The [implementation guide][implement] defines those three declarations. Do not invent other values.
+
+## Copy it to the protocol path
+
+Passthrough copy paths are relative to the project root, not the input directory. The object form of `addPassthroughCopy()` sets the published path, so Eleventy writes an extensionless file:
+
+```js
+eleventyConfig.addPassthroughCopy({
+  "input/josh.json": ".well-known/josh",
+});
+```
+
+The generated site then contains:
+
+```text
+.well-known/
+  josh
+```
+
+The deployed resource is `https://example.invalid/.well-known/josh`.
+
+## Serve it as JSON
+
+The response should use `Content-Type: application/json`. Eleventy does not choose that media type for an extensionless file. The host does.
+
+On Netlify:
+
+```toml
+[[headers]]
+  for = "/.well-known/josh"
+
+  [headers.values]
+    Content-Type = "application/json"
+```
+
+A different host needs its own header rule for the same path. The path and the media type do not change.
+
+## Check the deployed URL
+
+Check the live URL, not only `josh.json`:
+
+```sh
+curl -i https://example.invalid/.well-known/josh
+```
+
+Confirm all of the following:
+
+- `200 OK`
+- `Content-Type: application/json`
+- a valid JSON body
+- the expected version 1 declaration
+- the extensionless path `/.well-known/josh`
+- no redirect to a different origin
+
+[rfc-0002]: https://github.com/joshternet/spec/blob/main/rfcs/0002-well-known-josh.md
+[implement]: /implement/

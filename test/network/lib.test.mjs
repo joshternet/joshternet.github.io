@@ -10,8 +10,10 @@ import {
   framePolicy,
   identityFromDeclaration,
   isForbiddenAddress,
+  MAX_FEEDS_PER_PARTICIPANT,
   partitionPublicParticipants,
   projectRegistry,
+  sanitizeFeeds,
   screenshotPath,
   stableSiteID,
 } from "../../scripts/network/lib.mjs";
@@ -56,6 +58,13 @@ test("projects and sorts registry participants", () => {
     nodes: [
       {
         origin: "https://z.example",
+        first_participated_at: "2026-09-01T00:00:00.000Z",
+        initial_declaration: {
+          version: 1,
+          josh: false,
+        },
+        latest_declaration_check_at: "2026-09-15T00:00:00.000Z",
+        latest_declaration_check_outcome: "valid",
         declaration: {
           version: 1,
           josh: false,
@@ -63,6 +72,13 @@ test("projects and sorts registry participants", () => {
       },
       {
         origin: "https://a.example",
+        first_participated_at: "2026-09-02T00:00:00.000Z",
+        initial_declaration: {
+          version: 1,
+          josh: true,
+        },
+        latest_declaration_check_at: "2026-09-15T00:00:00.000Z",
+        latest_declaration_check_outcome: "valid",
         declaration: {
           version: 1,
           josh: true,
@@ -70,8 +86,28 @@ test("projects and sorts registry participants", () => {
       },
       {
         origin: "https://m.example",
+        first_participated_at: "2026-09-03T00:00:00.000Z",
+        initial_declaration: {
+          version: 1,
+        },
+        latest_declaration_check_at: "2026-09-15T00:00:00.000Z",
+        latest_declaration_check_outcome: "valid",
         declaration: {
           version: 1,
+        },
+      },
+      {
+        origin: "https://gone.example",
+        first_participated_at: "2026-08-01T00:00:00.000Z",
+        initial_declaration: {
+          version: 1,
+          josh: true,
+        },
+        latest_declaration_check_at: "2026-09-15T00:00:00.000Z",
+        latest_declaration_check_outcome: "missing",
+        declaration: {
+          version: 1,
+          josh: true,
         },
       },
     ],
@@ -79,14 +115,24 @@ test("projects and sorts registry participants", () => {
 
   assert.deepEqual(
     result.map((entry) => {
-      return [entry.origin, entry.identity];
+      return [entry.origin, entry.identity, entry.first_participated_at];
     }),
     [
-      ["https://a.example", "affirmed"],
-      ["https://m.example", "undeclared"],
-      ["https://z.example", "declined"],
+      ["https://a.example", "affirmed", "2026-09-02T00:00:00.000Z"],
+      ["https://m.example", "undeclared", "2026-09-03T00:00:00.000Z"],
+      ["https://z.example", "declined", "2026-09-01T00:00:00.000Z"],
     ],
   );
+
+  assert.deepEqual(result[0].declaration, {
+    version: 1,
+    josh: true,
+  });
+  assert.deepEqual(result[0].initial_declaration, {
+    version: 1,
+    josh: true,
+  });
+  assert.equal(result[0].latest_declaration_check_outcome, "valid");
 });
 
 test("rejects duplicate registry origins", () => {
@@ -96,12 +142,24 @@ test("rejects duplicate registry origins", () => {
       nodes: [
         {
           origin: "https://example.com",
+          first_participated_at: "2026-09-01T00:00:00.000Z",
+          initial_declaration: {
+            version: 1,
+          },
+          latest_declaration_check_at: "2026-09-15T00:00:00.000Z",
+          latest_declaration_check_outcome: "valid",
           declaration: {
             version: 1,
           },
         },
         {
           origin: "https://example.com",
+          first_participated_at: "2026-09-01T00:00:00.000Z",
+          initial_declaration: {
+            version: 1,
+          },
+          latest_declaration_check_at: "2026-09-15T00:00:00.000Z",
+          latest_declaration_check_outcome: "valid",
           declaration: {
             version: 1,
           },
@@ -648,4 +706,173 @@ test("partition fails closed when any DNS answer is prohibited", async () => {
 
 test("partition requires an array of participants", async () => {
   await assert.rejects(partitionPublicParticipants(null));
+});
+
+function publicLookup() {
+  return async () => {
+    return [
+      {
+        address: "93.184.216.34",
+        family: 4,
+      },
+    ];
+  };
+}
+
+test("sanitizeFeeds keeps valid RSS, Atom, and JSON Feed URLs", async () => {
+  const result = await sanitizeFeeds(
+    [
+      {
+        href: "https://example.test/rss.xml",
+        type: "application/rss+xml",
+        title: "  Site RSS  ",
+      },
+      {
+        href: "https://example.test/atom.xml",
+        type: "application/atom+xml",
+      },
+      {
+        href: "https://example.test/feed.json",
+        type: "application/feed+json",
+        title: "",
+      },
+    ],
+    {
+      lookup: publicLookup(),
+    },
+  );
+
+  assert.deepEqual(result, [
+    {
+      url: "https://example.test/rss.xml",
+      type: "application/rss+xml",
+      title: "Site RSS",
+    },
+    {
+      url: "https://example.test/atom.xml",
+      type: "application/atom+xml",
+    },
+    {
+      url: "https://example.test/feed.json",
+      type: "application/feed+json",
+    },
+  ]);
+});
+
+test("sanitizeFeeds drops duplicates, unsafe URLs, and unsupported types", async () => {
+  const result = await sanitizeFeeds(
+    [
+      {
+        href: "https://example.test/rss.xml",
+        type: "application/rss+xml",
+      },
+      {
+        href: "https://example.test/rss.xml",
+        type: "application/rss+xml",
+        title: "Duplicate",
+      },
+      {
+        href: "https://user:secret@example.test/private.xml",
+        type: "application/rss+xml",
+      },
+      {
+        href: "ftp://example.test/feed.xml",
+        type: "application/rss+xml",
+      },
+      {
+        href: "https://example.test/about",
+        type: "text/html",
+      },
+      {
+        href: "https://private.test/rss.xml",
+        type: "application/rss+xml",
+      },
+      {
+        href: "https://example.test/good.xml",
+        type: "application/atom+xml",
+      },
+    ],
+    {
+      lookup: async (hostname) => {
+        if (hostname === "private.test") {
+          return [
+            {
+              address: "127.0.0.1",
+              family: 4,
+            },
+          ];
+        }
+
+        return [
+          {
+            address: "93.184.216.34",
+            family: 4,
+          },
+        ];
+      },
+    },
+  );
+
+  assert.deepEqual(result, [
+    {
+      url: "https://example.test/rss.xml",
+      type: "application/rss+xml",
+    },
+    {
+      url: "https://example.test/good.xml",
+      type: "application/atom+xml",
+    },
+  ]);
+});
+
+test("sanitizeFeeds enforces the per-participant cap", async () => {
+  const raw = [];
+
+  for (let index = 0; index < MAX_FEEDS_PER_PARTICIPANT + 3; index += 1) {
+    raw.push({
+      href: `https://example.test/feed-${index}.xml`,
+      type: "application/rss+xml",
+    });
+  }
+
+  const result = await sanitizeFeeds(raw, {
+    lookup: publicLookup(),
+  });
+
+  assert.equal(result.length, MAX_FEEDS_PER_PARTICIPANT);
+  assert.equal(result[0].url, "https://example.test/feed-0.xml");
+  assert.equal(
+    result[MAX_FEEDS_PER_PARTICIPANT - 1].url,
+    `https://example.test/feed-${MAX_FEEDS_PER_PARTICIPANT - 1}.xml`,
+  );
+});
+
+test("sanitizeFeeds returns an empty array for non-arrays and isolates bad items", async () => {
+  assert.deepEqual(await sanitizeFeeds(null), []);
+  assert.deepEqual(await sanitizeFeeds(undefined), []);
+
+  const result = await sanitizeFeeds(
+    [
+      null,
+      "nope",
+      {
+        href: "https://example.test/ok.xml",
+        type: "application/rss+xml",
+      },
+      {
+        href: "https://",
+        type: "application/rss+xml",
+      },
+    ],
+    {
+      lookup: publicLookup(),
+    },
+  );
+
+  assert.deepEqual(result, [
+    {
+      url: "https://example.test/ok.xml",
+      type: "application/rss+xml",
+    },
+  ]);
 });

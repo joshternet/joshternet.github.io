@@ -64,14 +64,6 @@ Independent websites participating in the Joshternet, discovered and verified by
   </div>
 
   <div class="network-toolbar__secondary">
-    <label class="network-sort">
-      <span>Sort</span>
-      <select data-network-sort>
-        <option value="asc">A–Z</option>
-        <option value="desc">Z–A</option>
-      </select>
-    </label>
-
     <a class="network-wander-action" href="{{ '/wander/' | relative_url }}">
       Wander the Joshternet →
     </a>
@@ -141,12 +133,81 @@ Independent websites participating in the Joshternet, discovered and verified by
               {{ network_site.description | escape }}
             </p>
           {% endif %}
-
-          <span class="network-card__domain">
-            {{ network_site.domain | escape }}
-          </span>
         </div>
       </a>
+      {% assign show_elsewhere = false %}
+      {% if network_site.elsewhere and network_site.elsewhere.size > 0 %}
+        {% assign show_elsewhere = true %}
+      {% endif %}
+      {% assign show_feed = false %}
+      {% if network_site.feeds and network_site.feeds.size > 0 %}
+        {% assign show_feed = true %}
+      {% endif %}
+      <div class="network-card__footer">
+        {% if show_elsewhere or show_feed %}
+          <div class="network-card__actions">
+            {% if show_feed %}
+              {% assign primary_feed = network_site.feeds | first %}
+              <a
+                class="network-card__feed"
+                href="{{ primary_feed.url | escape }}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg
+                  class="network-card__feed-icon"
+                  viewBox="0 0 16 16"
+                  width="16"
+                  height="16"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M2.5 12.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm0-5.5a7 7 0 0 1 7 7h-2a5 5 0 0 0-5-5v-2Zm0-5.5A12.5 12.5 0 0 1 15 13.5h-2A10.5 10.5 0 0 0 2.5 3.5v-2Z"
+                  />
+                </svg>
+                <span class="visually-hidden">
+                  Open feed for
+                  {{ network_site.title | default: network_site.domain | escape }}
+                </span>
+              </a>
+            {% endif %}
+            {% if show_elsewhere %}
+              <ul class="network-card__elsewhere">
+                {% for elsewhere_link in network_site.elsewhere %}
+                  {% assign elsewhere_network = elsewhere_link.network | default: "web" %}
+                  <li>
+                    <a
+                      class="network-card__elsewhere-link"
+                      href="{{ elsewhere_link.url | escape }}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span
+                        class="network-card__elsewhere-glyph network-card__elsewhere-glyph--{{ elsewhere_network | escape }}"
+                        aria-hidden="true"
+                      ></span>
+                      <span class="visually-hidden">
+                        {{ elsewhere_link.label | default: elsewhere_network | escape }}
+                        profile linked from this participant site
+                      </span>
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        {% endif %}
+        <a
+          class="network-card__domain"
+          href="{{ network_site.origin | escape }}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {{ network_site.domain | escape }}
+        </a>
+      </div>
     </article>
   {% endfor %}
 

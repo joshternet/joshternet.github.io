@@ -21,7 +21,7 @@
     {% assign wander_frame_sources = wander_frame_sources | strip %}
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' https://cloud.umami.is{% if page.turnstile %} https://challenges.cloudflare.com{% endif %}; connect-src 'self' https://gateway.umami.is{% if page.turnstile %} https://challenges.cloudflare.com{% endif %}{% if page.seed_nomination %}{% if jekyll.environment == "development" %} http://127.0.0.1:8787{% else %} {{ site.seed_nominations.api_origin }}{% endif %}{% endif %}; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src {% if page.allow_frames %}{% if wander_frame_sources != "" %}{{ wander_frame_sources }}{% else %}'none'{% endif %}{% elsif page.turnstile %}https://challenges.cloudflare.com{% else %}'none'{% endif %}; media-src 'none'; manifest-src 'self'; worker-src 'none'"
+      content="default-src 'self'; script-src 'self' https://cloud.umami.is{% if page.turnstile %} https://challenges.cloudflare.com{% endif %}; connect-src 'self' https://gateway.umami.is{% if page.turnstile %} https://challenges.cloudflare.com{% endif %}{% if page.declaration_check %}{% if jekyll.environment == "development" %} http://127.0.0.1:8789{% else %} {{ site.declaration_check.api_origin }}{% endif %}{% endif %}{% if page.seed_nomination %}{% if jekyll.environment == "development" %} http://127.0.0.1:8787{% else %} {{ site.seed_nominations.api_origin }}{% endif %}{% endif %}; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src {% if page.allow_frames %}{% if wander_frame_sources != "" %}{{ wander_frame_sources }}{% else %}'none'{% endif %}{% elsif page.turnstile %}https://challenges.cloudflare.com{% else %}'none'{% endif %}; media-src 'none'; manifest-src 'self'; worker-src 'none'"
     >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
@@ -31,7 +31,30 @@
         {{- page.title | default: site.title | escape }} | {{ site.title | escape -}}
       {%- endif %}
     </title>
-    {% seo title=false %}
+    {% capture jekyll_seo %}{% seo title=false %}{% endcapture %}
+    {% assign jekyll_generator_meta = '<meta name="generator" content="Jekyll v'
+      | append: jekyll.version
+      | append: '" />'
+    %}
+    {% assign jekyll_seo = jekyll_seo | remove: jekyll_generator_meta %}
+    {% assign jekyll_seo = jekyll_seo | remove: '<!-- End Jekyll SEO tag -->' %}
+    {% if jekyll_seo contains '<!-- Begin Jekyll SEO tag v' %}
+      {% assign jekyll_seo_after_begin = jekyll_seo
+        | split: '<!-- Begin Jekyll SEO tag v'
+        | last
+      %}
+      {% assign jekyll_seo_bits = jekyll_seo_after_begin | split: '-->' %}
+      {% assign jekyll_seo = '' %}
+      {% for jekyll_seo_bit in jekyll_seo_bits %}
+        {% unless forloop.first %}
+          {% if jekyll_seo != '' %}
+            {% assign jekyll_seo = jekyll_seo | append: '-->' %}
+          {% endif %}
+          {% assign jekyll_seo = jekyll_seo | append: jekyll_seo_bit %}
+        {% endunless %}
+      {% endfor %}
+    {% endif %}
+    {{ jekyll_seo | strip }}
     {% if page.url == '/' %}
       <script type="application/ld+json">
         {
@@ -52,7 +75,16 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon-32x32.png' | relative_url }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ '/favicon-16x16.png' | relative_url }}">
     <link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
-    {% assign asset_version = site.github.build_revision %}
+    <link
+      rel="blogroll"
+      type="text/xml"
+      href="{{ '/assets/network/joshternet.opml' | relative_url }}"
+    >
+    {% if jekyll.environment == 'development' %}
+      {% assign asset_version = site.time | date: '%s' %}
+    {% else %}
+      {% assign asset_version = site.github.build_revision %}
+    {% endif %}
     {% unless asset_version %}
       {% assign asset_version = site.time | date: '%s' %}
     {% endunless %}
@@ -70,6 +102,10 @@
       <script defer src="{{ page.script | relative_url }}?v={{ asset_version }}"></script>
     {% endif %}
 
+    {% if page.module %}
+      <script type="module" src="{{ page.module | relative_url }}?v={{ asset_version }}"></script>
+    {% endif %}
+
     {% if page.turnstile %}
       <script
         defer
@@ -81,26 +117,44 @@
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
     {% if page.chrome != false %}
-      <header class="site-header">
-        <div class="site-header__inner h-card">
-          <a class="site-identity p-name p-org u-url u-uid" href="{{ '/' | relative_url }}">Joshternet</a>
+      {% assign implement_section = false %}
+      {% if page.url == '/implement/' or page.url contains '/implement/' %}
+        {% assign implement_section = true %}
+      {% endif %}
+      <header
+        class="site-header{% if implement_section %} site-header--section-implement{% endif %}"
+      >
+        <div class="site-header__top">
+          <div class="site-header__inner h-card">
+            <a class="site-identity p-name p-org u-url u-uid" href="{{ '/' | relative_url }}">Joshternet</a>
 
-          <details class="site-nav-menu">
-            <summary>Menu</summary>
-            <nav class="site-nav site-nav--compact" aria-label="Primary">
-              {% include site-nav-links.html %}
+            <details class="site-nav-menu">
+              <summary>Menu</summary>
+              <nav class="site-nav site-nav--compact" aria-label="Primary">
+                {% include site-nav-links.html variant="compact" %}
+              </nav>
+            </details>
+
+            <nav class="site-nav site-nav--wide" aria-label="Primary">
+              {% include site-nav-links.html variant="wide" %}
             </nav>
-          </details>
-
-          <nav class="site-nav site-nav--tablet" aria-label="Primary">
-            {% include site-nav-links.html %}
-          </nav>
-
-          <nav class="site-nav site-nav--desktop" aria-label="Primary">
-            {% include site-nav-links.html %}
-          </nav>
+          </div>
+          <div class="site-header__motif" aria-hidden="true"></div>
         </div>
+
+        <nav
+          class="site-nav-secondary site-nav-secondary--implement{% if implement_section %} is-current-section{% endif %}"
+          aria-label="Implement"
+          {% unless implement_section %}
+            hidden
+          {% endunless %}
+        >
+          <ul class="site-nav-secondary__list">
+            {% include site-nav-implement-children.html %}
+          </ul>
+        </nav>
       </header>
+      <script src="{{ '/assets/js/site-nav.js' | relative_url }}" defer></script>
     {% endif %}
 
     <main
@@ -113,7 +167,7 @@
       </div>
     </main>
 
-    {% if page.chrome != false %}
+    {% if page.chrome != false and page.footer != false %}
       <footer class="site-footer">
         <div class="site-footer__inner">
           <span>Joshternet</span>
@@ -122,6 +176,7 @@
             <a href="{{ '/privacy/' | relative_url }}">Privacy</a>
             <a href="{{ '/security/' | relative_url }}">Security</a>
             <a href="mailto:hello@joshternet.org">Contact</a>
+            <a href="https://web.libera.chat/#joshternet">#joshternet</a>
             {% if page.url == '/' %}
               <a href="https://github.com/joshternet" rel="me">GitHub</a>
             {% else %}

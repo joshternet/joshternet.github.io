@@ -3,17 +3,73 @@
     "origin": "https://josh.example.invalid",
     "domain": "josh.example.invalid",
     "identity": "affirmed",
+    "declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "initial_declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "first_participated_at": "1970-01-01T00:00:00Z",
+    "latest_declaration_check_at": "1970-01-01T00:00:00Z",
+    "latest_declaration_check_outcome": "valid",
     "title": "Joshua Example",
     "description": "A development fixture for previewing a Josh-declared site in the Network.",
     "screenshot": "/assets/images/joshternet-social.png",
     "embeddable": false,
     "captured_at": "1970-01-01T00:00:00Z",
-    "frame_reason": "blocked-by-site"
+    "frame_reason": "blocked-by-site",
+    "feeds": [
+      {
+        "url": "https://josh.example.invalid/rss.xml",
+        "type": "application/rss+xml",
+        "title": "Joshua Example RSS"
+      }
+    ],
+    "elsewhere": [
+      {
+        "url": "https://github.com/josh-example",
+        "network": "github",
+        "label": "GitHub"
+      },
+      {
+        "url": "https://bsky.app/profile/josh.example.invalid",
+        "network": "bluesky",
+        "label": "Bluesky"
+      },
+      {
+        "url": "https://mastodon.social/@josh",
+        "network": "mastodon",
+        "label": "Mastodon"
+      },
+      {
+        "url": "https://weibo.com/u/josh",
+        "network": "weibo",
+        "label": "Weibo"
+      },
+      {
+        "url": "https://notes.example.invalid/",
+        "network": "web",
+        "label": "notes.example.invalid"
+      }
+    ]
   },
   {
     "origin": "https://non-josh.example.invalid",
     "domain": "non-josh.example.invalid",
     "identity": "declined",
+    "declaration": {
+      "version": 1,
+      "josh": false
+    },
+    "initial_declaration": {
+      "version": 1,
+      "josh": false
+    },
+    "first_participated_at": "1970-01-01T00:00:00Z",
+    "latest_declaration_check_at": "1970-01-01T00:00:00Z",
+    "latest_declaration_check_outcome": "valid",
     "title": "Someone Else's Excellent Website",
     "description": "A development fixture for previewing a participating site that explicitly declares itself Non-Josh.",
     "screenshot": "/assets/images/joshternet-social.png",
@@ -25,6 +81,15 @@
     "origin": "https://undeclared.example.invalid",
     "domain": "undeclared.example.invalid",
     "identity": "undeclared",
+    "declaration": {
+      "version": 1
+    },
+    "initial_declaration": {
+      "version": 1
+    },
+    "first_participated_at": "1970-01-01T00:00:00Z",
+    "latest_declaration_check_at": "1970-01-01T00:00:00Z",
+    "latest_declaration_check_outcome": "valid",
     "title": "The Mysterious Website",
     "description": "A development fixture for a participating site that leaves Josh identity undeclared.",
     "screenshot": "/assets/images/joshternet-social.png",
