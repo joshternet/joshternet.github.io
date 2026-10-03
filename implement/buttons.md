@@ -5,7 +5,7 @@ description: >-
   Official Joshternet web buttons: one embed snippet shows registry state for
   the current site—Verified Josh, Verified Non-Josh, Undeclared, or Join.
 keywords: >-
-  Joshternet button, web button embed, registry badge, /.well-known/josh
+  Joshternet button, web button embed, registry membership, /.well-known/josh
 permalink: /implement/buttons/
 nav_title: Buttons
 ---
