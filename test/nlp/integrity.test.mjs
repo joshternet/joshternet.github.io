@@ -3,7 +3,13 @@
  * hub-scoped exclusions, and no friend/topic pair edges.
  */
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import path from "node:path";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
+
+import Ajv2020 from "ajv/dist/2020.js";
+import addFormats from "ajv-formats";
 
 import {
   aggregateConnectionEdges,
@@ -213,6 +219,85 @@ test("one qualifying origin is enough for a public topic", () => {
   assert.equal(communities.length, 1);
   assert.equal(communities[0].slug, "ai");
   assert.equal(communities[0].member_count, 1);
+});
+
+test("declared-only topics omit visible-text sources from below-threshold heuristics", () => {
+  const { communities } = buildTopicCommunities([
+    {
+      origin: "https://a.example",
+      domain: "a.example",
+      title: "A",
+      declared_topics: [
+        {
+          slug: "art",
+          label: "art",
+          community_eligible: true,
+          evidence: [
+            {
+              class: "declared",
+              source: "rss:category",
+              community_eligible: true,
+              page: "https://a.example/1",
+            },
+          ],
+        },
+      ],
+      subject_signals: [
+        {
+          slug: "art",
+          label: "art",
+          evidence_class: "heuristic",
+          community_eligible: false,
+          evidence: [
+            {
+              class: "heuristic",
+              source: "visible-text",
+              community_eligible: false,
+              page: "https://a.example/2",
+            },
+          ],
+        },
+      ],
+    },
+  ]);
+
+  assert.equal(communities.length, 1);
+  assert.equal(communities[0].member_count, 1);
+  assert.equal(communities[0].sites[0].membership, "declared");
+  assert.deepEqual(communities[0].sources, ["rss:category"]);
+  assert.doesNotMatch(JSON.stringify(communities[0].sources), /visible-text/);
+});
+
+test("topics schema accepts single-member public communities", () => {
+  const root = fileURLToPath(new URL("../../", import.meta.url));
+  const schema = JSON.parse(
+    readFileSync(path.join(root, "schemas/topics.schema.json"), "utf8"),
+  );
+  const ajv = new Ajv2020({ allErrors: true, strict: false });
+  addFormats(ajv);
+  const validate = ajv.compile(schema);
+  const ok = validate({
+    schema_version: 1,
+    community_count: 1,
+    membership_rule:
+      "Public topics require at least one current participating origin with qualifying declared or heuristic evidence.",
+    communities: [
+      {
+        slug: "ai",
+        label: "AI",
+        member_count: 1,
+        sites: [
+          {
+            origin: "https://a.example",
+            domain: "a.example",
+            membership: "declared",
+          },
+        ],
+      },
+    ],
+  });
+
+  assert.equal(ok, true, JSON.stringify(validate.errors));
 });
 
 test("two declared members still form one public topic", () => {

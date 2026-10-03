@@ -114,8 +114,8 @@ for (const topic of topicList) {
     fail(`invalid topic: ${JSON.stringify(topic)}`);
   }
 
-  if (!Array.isArray(topic.sites) || topic.sites.length < 2) {
-    fail(`public topic must have ≥2 sites: ${topic.slug}`);
+  if (!Array.isArray(topic.sites) || topic.sites.length < 1) {
+    fail(`public topic must have ≥1 site: ${topic.slug}`);
   }
 
   if (

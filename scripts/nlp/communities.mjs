@@ -273,7 +273,7 @@ export function buildTopicCommunities(origins, options = {}) {
 
       const topic = bySlug.get(slug) || {
         label: String(signal.label || slug),
-        sources: new Set(["visible-text"]),
+        sources: new Set(),
         sites: new Map(),
         heuristicSites: new Map(),
       };
@@ -293,10 +293,15 @@ export function buildTopicCommunities(origins, options = {}) {
 
       if (heuristicSignalIsCommunityEligible(signal)) {
         if (!topic.sites.has(originEntry.origin)) {
+          let addedSource = false;
           for (const item of signal.evidence || []) {
             if (item?.source) {
               topic.sources.add(String(item.source));
+              addedSource = true;
             }
+          }
+          if (!addedSource) {
+            topic.sources.add("visible-text");
           }
 
           topic.sites.set(originEntry.origin, {
@@ -358,13 +363,25 @@ export function buildTopicCommunities(origins, options = {}) {
     );
 
     if (memberSites.length >= 2 || hasDeclared) {
+      const hasHeuristicMember = memberSites.some(
+        (site) => site.membership === "heuristic",
+      );
+      const sources = [...topic.sources]
+        .filter((source) => {
+          if (source === "visible-text" || source === "nlp") {
+            return hasHeuristicMember;
+          }
+          return true;
+        })
+        .sort();
+
       /** @type {Record<string, unknown>} */
       const community = {
         slug,
         label: topic.label,
         member_count: memberSites.length,
         sites: memberSites,
-        sources: [...topic.sources].sort(),
+        sources,
         first_seen_at: firstSeen,
         last_changed_at: lastChanged,
         active: true,

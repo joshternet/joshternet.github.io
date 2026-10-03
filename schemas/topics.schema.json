@@ -18,10 +18,10 @@
         "properties": {
           "slug": { "type": "string", "minLength": 1 },
           "label": { "type": "string" },
-          "member_count": { "type": "integer", "minimum": 2 },
+          "member_count": { "type": "integer", "minimum": 1 },
           "sites": {
             "type": "array",
-            "minItems": 2,
+            "minItems": 1,
             "items": {
               "type": "object",
               "required": ["origin", "domain"],

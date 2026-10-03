@@ -63,6 +63,8 @@
 
 ### Fixed
 
+- Topic schema and `nlp:validate` accept single-member public communities again (one qualifying site is enough). The old ≥2-site rule was left behind after Topics started listing declared single-site subjects, which broke CI `npm run build`.
+- Declared-only topic communities no longer advertise `visible-text` / `nlp` in `sources` when the only heuristic evidence was below the membership threshold (related discovery). That mismatch also failed `nlp:validate`.
 - Wander keeps a desktop gap under the top nav matching the second-level row, so that overlay has a place to sit above the wander bar without covering Go / Open.
 - Wander bar draws a top border so the blue nav gap meets the white toolbar.
 - Local Wander no longer iframes `joshternet.org` (CSP omits the hub), so it uses the self-host fallback instead of a blank frame.
