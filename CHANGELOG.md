@@ -13,12 +13,6 @@
 - Implementation guide: Jekyll recipe for publishing `.well-known/josh`, including the `include` rule and Content-Type / curl checks.
 - Primary nav: Implement second-level links (validate, Eleventy, Jekyll) in a frameless row under the header circle-dot motif on tablet/desktop, with raindrop disclosures in the mobile Menu. The Implement item itself opens `/implement/`.
 
-### Fixed
-
-- Joshternet button Worker registry fetch uses `redirect: "manual"` (Workers reject `redirect: "error"`), so local and edge registry reads succeed instead of failing closed with 503.
-- Development CSP allows Joshternet button images from `https://joshternet.org` and the local Worker on `:8790` so the footer embed can paint during `jekyll serve`.
-- Button embed loads artwork from the Worker `/button` route (same origin as the script) so local previews do not depend on production Pages assets.
-
 ### Changed
 
 - Site footer keeps Privacy / Security / Contact / chat / GitHub links flush against the Joshternet button on the right instead of floating in the middle.
@@ -27,6 +21,9 @@
 
 ### Fixed
 
+- Joshternet button Worker registry fetch uses `redirect: "manual"` (Workers reject `redirect: "error"`), so local and edge registry reads succeed instead of failing closed with 503.
+- Development CSP allows Joshternet button images from `https://joshternet.org` and the local Worker on `:8790` so the footer embed can paint during `jekyll serve`.
+- Button embed loads artwork from the Worker `/button` route (same origin as the script) so local previews do not depend on production Pages assets.
 - Review follow-ups for #51: live declaration checks treat non-404/410 HTTP failures (401/403/429/etc.) as unread instead of invalid; network sync retains prior blogroll edges when enrichment or capture fails; orphan `declaration-*.mjs` twins removed; declaration-check Worker tests run in CI; elsewhere glyph mask positions are generated from `elsewhere-sprite-order.json` into `assets/css/elsewhere-glyphs.css`; PR keeps existing Network screenshot webps instead of recaptures; declaration-check allowlist includes `https://www.joshternet.org`.
 - Drop jekyll-seo-tag advertisements from rendered HTML: the `generator` meta tag and the Begin/End Jekyll SEO HTML comments.
 - Implement submenu: keep the hover path open across the gap under the circle-dot rule by treating the whole header as the open zone, dismiss immediately when another top-level item is entered, and keep sticky overlay behavior on Implement section pages without pushing page content.
