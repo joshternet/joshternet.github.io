@@ -100,32 +100,43 @@ A robots rule that blocks JoshBot prevents the affected URI from being fetched. 
 
 ## Data JoshBot retains
 
-JoshBot retains limited origin-level operational information:
+JoshBot retains origin-level semantic and operational data so it can retry work, keep discovery provenance, stay polite, and build the public registry. That includes:
 
-- whether an origin is an operator-curated seed;
+- explicit seed status, automatic-source status, and operator crawl-block status;
 - when a source was last attempted;
-- source-to-candidate origin relationships;
-- first and last discovery times;
-- declaration verification observations;
-- verification queue state.
+- source-to-candidate origin relationships with first and latest discovery times;
+- declaration observations and effective participant state;
+- verification queue and lease state, plus recent verification queue transition history;
+- compact per-origin reprobe scheduling state;
+- bounded crawl-run summaries and stop reasons;
+- sanitized requested and final page URLs without queries, fragments, or credentials;
+- per-page HTTP status, duration, response size, media type, redirect count, robots decision, link totals, URLs found or enqueued, typed failure category, bounded outcome, and crawl depth;
+- per-run admitted or deferred promotions, blocked or failed pages, URLs found or enqueued, and remaining frontier size at stop;
+- worker and discovery service heartbeats with idle, paused, failed, and current-origin state;
+- persistent discovery, verification, and automatic-expansion pause state.
 
-The public registry contains deterministic information derived from successfully verified declarations. Private discovery and queue state are not included.
+Completed crawl telemetry and disposable verification history are cleaned on a limited schedule (default about 30 days). Cleanup keeps the newest observation and newest authoritative declaration observation for each origin when those rows are still needed. Durable participation metadata, discovery provenance, current queue state, and compact reprobe state are not age-deleted the same way. The full table-by-table policy lives in the [JoshBot data retention documentation][retention].
+
+The public registry contains deterministic information derived from successfully verified declarations. Private discovery, queue, and telemetry state are not published there.
 
 ## What JoshBot does not archive
 
-JoshBot is not a web archive.
+JoshBot is not a web archive and does not train models on crawled pages.
 
 It does not retain:
 
-- HTML pages;
-- complete response bodies;
+- HTML archives;
+- complete page bodies;
+- complete declaration bodies;
 - page titles;
 - anchor text;
-- response headers;
+- screenshots;
 - cookies;
-- internal page history;
-- page depth;
-- an interrupted crawl’s in-memory frontier.
+- full response headers;
+- query strings or fragments from stored page URLs;
+- URL credentials;
+- the in-memory crawl frontier;
+- arbitrary page content.
 
 ## Report a problem
 
@@ -153,6 +164,7 @@ If the report would disclose a security vulnerability, use [GitHub Private Vulne
 - [Joshternet implementation guide][implementation]
 
 [source]: https://github.com/joshternet/joshbot
+[retention]: https://github.com/joshternet/joshbot/blob/main/docs/retention.md
 [specifications]: https://github.com/joshternet/spec
 [implementation]: /implement/
 [crawler-report]: https://github.com/joshternet/joshbot/issues/new?template=crawler_report.yml
