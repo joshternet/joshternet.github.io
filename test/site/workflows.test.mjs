@@ -74,3 +74,18 @@ test("site-quality runs coverage, browser, build, and site tests", async () => {
   assert.match(quality, /npm run test:site/);
   assert.doesNotMatch(quality, /^\s*run:\s*npm test\s*$/m);
 });
+
+test("seed-nominations Worker workflow matches the other public Workers", async () => {
+  const workflow = await read(".github/workflows/seed-nominations.yml");
+
+  assert.match(workflow, /pull_request:/);
+  assert.match(workflow, /workflow_dispatch:/);
+  assert.match(workflow, /permissions:\s*\n\s*contents: read/);
+  assert.match(workflow, /persist-credentials: false/);
+  assert.match(workflow, /node-version: 22/);
+  assert.match(workflow, /working-directory: workers\/seed-nominations/);
+  assert.match(workflow, /workers\/seed-nominations\/\*\*/);
+  assert.match(workflow, /npm ci/);
+  assert.match(workflow, /npm test/);
+  assert.match(workflow, /npm run check/);
+});

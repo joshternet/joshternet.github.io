@@ -4,6 +4,7 @@
 
 ### Added
 
+- Seed-nominations Worker CI workflow (`.github/workflows/seed-nominations.yml`) and operational README: `npm ci` / tests / Wrangler dry-run on PRs and `main`, plus public API, D1 migrations, abuse controls, failure modes, and production smoke (#55).
 - Ghost platform recipe at `/implement/platforms/ghost/`: self-hosted Nginx exact-path `/.well-known/josh`, why not `routes.yaml`, and Ghost(Pro) only when a controllable reverse proxy already sits in front.
 - `npm run test:coverage` gates `scripts/{network,nlp,views}` library modules at 100% lines/branches/functions (Node `--experimental-test-coverage`; excludes sync/preflight/glyphs/validate/views CLI entrypoints). Expanded offline unit tests and `test/helpers/mock-fetch.mjs`. `site-quality` and `network-sync` run the gate. Workflow contract tests lock hourly cron `17 * * * *`, `joshternet-registry-updated`, and the quality pipeline. Nav submenu browser tests use fixture HTML (no live `:4000`). CSP site tests skip non-production `_site` (localhost/dev hosts). Topic stub checks no longer hardcode a nightly slug. `npm test` and `npm run test:coverage` both print the coverage report to stdout every run.
 
