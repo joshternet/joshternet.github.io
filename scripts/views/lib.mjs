@@ -98,77 +98,6 @@ export function publicCommunities(topicsDoc) {
 }
 
 /**
- * Single-site declared subjects still belong on the Topics hub when they have
- * matching articles.
- * @param {Array<Record<string, unknown>>} contentItems
- * @param {Map<string, Record<string, unknown>>} sites
- * @param {Set<string>} existingSlugs
- * @returns {Array<Record<string, unknown>>}
- */
-export function communitiesFromDeclaredContent(
-  contentItems,
-  sites,
-  existingSlugs,
-) {
-  const bySlug = new Map();
-
-  for (const item of contentItems) {
-    if (!item || typeof item !== "object") {
-      continue;
-    }
-
-    const origin = typeof item.site_origin === "string" ? item.site_origin : "";
-    const site = origin ? sites.get(origin) : undefined;
-
-    if (!origin || !site) {
-      continue;
-    }
-
-    for (const tag of item.declared_topics || []) {
-      if (!tag || typeof tag !== "object") {
-        continue;
-      }
-
-      const slug = typeof tag.slug === "string" ? tag.slug : "";
-
-      if (!slug || isNonSubjectSlug(slug) || existingSlugs.has(slug)) {
-        continue;
-      }
-
-      let community = bySlug.get(slug);
-
-      if (!community) {
-        community = {
-          slug,
-          label: typeof tag.label === "string" && tag.label ? tag.label : slug,
-          member_count: 0,
-          sites: [],
-          last_changed_at: "",
-          related_discoveries: [],
-        };
-        bySlug.set(slug, community);
-      }
-
-      if (community.sites.some((member) => member.origin === origin)) {
-        continue;
-      }
-
-      community.sites.push({
-        origin,
-        domain: site.domain || origin,
-        title: site.title || site.domain || origin,
-        membership: "declared",
-      });
-      community.member_count = community.sites.length;
-    }
-  }
-
-  return [...bySlug.values()].sort((left, right) =>
-    String(left.slug).localeCompare(String(right.slug)),
-  );
-}
-
-/**
  * @param {Array<Record<string, unknown>>} communities
  * @returns {Set<string>}
  */
@@ -867,13 +796,9 @@ export function buildViewDocuments(input) {
   const signalsOrigins = Array.isArray(input.siteSignals?.origins)
     ? input.siteSignals.origins
     : [];
-  const twoSiteCommunities = publicCommunities(input.topics);
-  const extraCommunities = communitiesFromDeclaredContent(
-    contentItems,
-    sites,
-    publicCommunitySlugSet(twoSiteCommunities),
-  );
-  const communities = [...twoSiteCommunities, ...extraCommunities];
+  // Topic pages from nlp:sync are the source of truth — do not invent
+  // /topics/{slug}/ URLs from content tags that were never published.
+  const communities = publicCommunities(input.topics);
   const publicSlugs = publicCommunitySlugSet(communities);
   const edges = itemsFromCollection(input.connections, "edges").filter(
     (edge) =>
@@ -933,7 +858,7 @@ export function buildViewDocuments(input) {
       });
     const memberOrigins = new Set();
 
-    for (const member of community.sites || []) {
+    for (const member of community.sites) {
       if (member && typeof member.origin === "string" && member.origin) {
         memberOrigins.add(member.origin);
       }
@@ -947,7 +872,7 @@ export function buildViewDocuments(input) {
 
     const members = [...memberOrigins]
       .map((origin) => {
-        const listed = (community.sites || []).find(
+        const listed = community.sites.find(
           (member) => member.origin === origin,
         );
         const signal = signalsOrigins.find((entry) => entry.origin === origin);
@@ -1039,7 +964,7 @@ export function buildViewDocuments(input) {
     const incoming = edges.filter((edge) => edge.to === origin);
     const communityTopics = communities
       .filter((community) =>
-        (community.sites || []).some((member) => member.origin === origin),
+        community.sites.some((member) => member.origin === origin),
       )
       .map((community) => ({ slug: community.slug, label: community.label }));
     const recent = compactItems.find((item) => item.site_origin === origin);
@@ -1103,8 +1028,7 @@ export function buildViewDocuments(input) {
             slug: featuredCommunity.slug,
             label: featuredCommunity.label,
             member_count:
-              featuredCommunity.member_count ||
-              (featuredCommunity.sites || []).length,
+              featuredCommunity.member_count || featuredCommunity.sites.length,
           },
         }
       : {}),

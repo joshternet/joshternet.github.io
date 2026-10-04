@@ -86,15 +86,11 @@ test("connections page is HTML-first and cross-linked", async () => {
   assert.match(page, /id="connections-bootstrap"/);
   assert.match(page, /Connections from around the Joshternet/);
   assert.match(page, /connections-howto/);
-  assert.match(page, /Observed links/);
-  assert.match(page, /verified\s+Webmention/);
-  assert.match(page, /not stored as a\s+directed link/);
   assert.doesNotMatch(page, /80 feed/);
   assert.doesNotMatch(page, /Heuristics never become/);
   assert.doesNotMatch(page, /Josh identity stays declared/);
   assert.match(page, /\/implement\/connections\//);
-  assert.match(page, /\/data\//);
-  assert.match(styles, /\.connections-howto__kinds \{[^}]*display:\s*grid/);
+  assert.doesNotMatch(page, /['"]\/data\/['"]\s*\|\s*relative_url/);
   assert.doesNotMatch(page, /friendship, endorsement/);
   assert.match(page, /\/network\//);
   assert.match(

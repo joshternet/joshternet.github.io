@@ -1,5 +1,5 @@
 /**
- * Goal: What's New, Search, and Data routes stay HTML-first.
+ * Goal: What's New and Search routes stay HTML-first.
  */
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
@@ -17,11 +17,10 @@ async function read(relativePath) {
   return readFile(path.join(root, relativePath), "utf8");
 }
 
-test("activity, search, and data pages avoid popularity language", async () => {
+test("activity and search pages avoid popularity language", async () => {
   const activity = await read("activity.md");
   const card = await read("_includes/activity-card.html");
   const search = await read("search.md");
-  const data = await read("data.md");
 
   assert.match(activity, /permalink: \/activity\//);
   assert.doesNotMatch(activity, /social feed/);
@@ -35,7 +34,6 @@ test("activity, search, and data pages avoid popularity language", async () => {
   assert.match(card, /p-category/);
   assert.match(activity, /h-feed/);
   assert.match(search, /h-feed/);
-  assert.match(data, /type: Dataset/);
   assert.match(card, /activity-card__footer/);
   const titleAt = card.indexOf("activity-card__title");
   const authorAt = card.indexOf("activity-card__author");
@@ -55,13 +53,6 @@ test("activity, search, and data pages avoid popularity language", async () => {
   assert.match(search, /data-search-input/);
   assert.match(await read("assets/js/search.js"), /activity-card__heading/);
   assert.match(search, /<noscript>/);
-  assert.match(data, /permalink: \/data\//);
-  assert.match(data, /Declared/);
-  assert.match(data, /Observed/);
-  assert.match(data, /Heuristic/);
-  assert.doesNotMatch(data, /_data/);
-  assert.doesNotMatch(data, /topics\.json/);
-  assert.doesNotMatch(data, /does not infer friendship/);
   assert.doesNotMatch(await read("implement/explore.md"), /topics\.json/);
   assert.doesNotMatch(await read("implement/explore.md"), /activity\.json/);
   assert.doesNotMatch(

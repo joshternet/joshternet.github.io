@@ -4,19 +4,23 @@
 
 ### Added
 
-- Exploration pages (`/connections/`, `/topics/`, `/activity/`, `/explore/`, `/data/`, `/network/`, `/wander/`) publish CollectionPage or Dataset JSON-LD that points at the homepage Project, with TechArticle JSON-LD on the connections and explore implementation notes. Topic neighborhood stubs get descriptions and CollectionPage SEO. Lists use `h-feed`; activity and search cards are `h-entry` with `p-author` / `p-category` / `u-photo`; connection and network cards are `h-card`. Search stays `noindex`.
+- `npm run test:coverage` gates `scripts/{network,nlp,views}` library modules at 100% lines/branches/functions (Node `--experimental-test-coverage`; excludes sync/preflight/glyphs/validate/views CLI entrypoints). Expanded offline unit tests and `test/helpers/mock-fetch.mjs`. `site-quality` and `network-sync` run the gate. Workflow contract tests lock hourly cron `17 * * * *`, `joshternet-registry-updated`, and the quality pipeline. Nav submenu browser tests use fixture HTML (no live `:4000`). CSP site tests skip non-production `_site` (localhost/dev hosts). Topic stub checks no longer hardcode a nightly slug. `npm test` and `npm run test:coverage` both print the coverage report to stdout every run.
+
+### Added
+
+- Exploration pages (`/connections/`, `/topics/`, `/activity/`, `/explore/`, `/network/`, `/wander/`) publish CollectionPage JSON-LD that points at the homepage Project, with TechArticle JSON-LD on the connections and explore implementation notes. Topic neighborhood stubs get descriptions and CollectionPage SEO. Lists use `h-feed`; activity and search cards are `h-entry` with `p-author` / `p-category` / `u-photo`; connection and network cards are `h-card`. Search stays `noindex`.
 - Portfolio indexes (`/work/`, `/projects/`, `/portfolio/`) are read during `nlp:sync`. Each work-table row becomes a project in `content.json`, the origin records that it has an online portfolio, and sectors such as banking, government, and health become declared topics that can join topic connections.
 - `npm run dev` / `./scripts/dev.sh` starts Jekyll with LiveReload on `0.0.0.0:4000` (`http://127.0.0.1:4000/` locally, or this machine’s LAN IP from other devices) plus the local button (`:8790`), declaration-check (`:8789`), and seed-nominations (`:8787`) Workers. `--dry-run` prints the plan; the script does not kill other servers.
 - Data integrity layer for topic/connection intelligence: evidence classes (`declared` / `observed` / `heuristic`), community-eligible topic source whitelist, page roles, HTML entity decoding, hub-scoped derived-page exclusions (`joshternet-analysis=derived`), `_data/content.json` feed items with cross-feed identity, `_data/data_manifest.json` + semantic hashes, explicit `topic_aliases` / `topic_denylist`, build-only `.tmp/topic_candidates.json`, JSON Schema contracts under `schemas/` (network, site-signals, content, topics, connections, blogrolls, mentions, data-manifest) validated by Ajv in `npm run nlp:validate`, Members vs Related discoveries on topic pages, blogroll/IndieWeb relations in `connections.json`, and sensitive-heuristic suppression for public participant attachment.
 - Implementation guide: [Connections crawl](/implement/connections/) documents evidence authority, public community rules, observed relationship vocabulary, and the one-way pipeline.
-- Exploration UI: `/activity/` (What's New, one item per origin), `/search/`, `/data/`, topic neighborhoods with why-here disclosures, connection evidence panels and relation line styles, bounded Wander link trails, and presentation projections from `npm run views:build` (`activity.json`, `explore.json`, `topic_views.json`, `site_views.json`, `search_index.json`).
+- Exploration UI: `/activity/` (What's New, one item per origin), `/search/`, topic neighborhoods with why-here disclosures, connection evidence panels and relation line styles, bounded Wander link trails, and presentation projections from `npm run views:build` (`activity.json`, `explore.json`, `topic_views.json`, `site_views.json`, `search_index.json`).
 
 ### Changed
 
 - Page SEO titles, descriptions, and keywords are sized for search results: topic stubs use ~50–60 character titles and ~120–160 character descriptions, main pages carry matching meta, the layout emits `keywords`, and document titles skip a duplicate `| Joshternet` when the page title already names the brand.
-- Nav current-state matching is exact by default; Platforms and Topics opt into prefix match. Section flags live in one include. CSP only allows https host origins for activity images. Platform recipe redirects are HTML stubs with `sitemap: false` / `noindex`. IndexNow tracks platform recipe paths. `/explore/` was never on production, so it is omitted rather than redirected.
-- After-title lecture copy is gone on Implement, Platforms, Buttons, Connections crawl notes, Explore notes, and Data. Pages keep a short lead or go straight into the work.
-- Implement second-level nav keeps a single Platforms link. Eleventy and Jekyll recipes live under `/implement/platforms/` and are listed from `_data/platforms_nav.yml`. Old `/implement/eleventy/` and `/implement/jekyll/` URLs redirect.
+- Nav current-state matching is exact by default; Platforms and Topics opt into prefix match. Section flags live in one include. CSP only allows https host origins for activity images. IndexNow tracks platform recipe paths. `/explore/` was never on production, so it is omitted rather than redirected.
+- After-title lecture copy is gone on Implement, Platforms, Buttons, Connections crawl notes, and Explore notes. Pages keep a short lead or go straight into the work.
+- Implement second-level nav keeps a single Platforms link. Eleventy and Jekyll recipes live under `/implement/platforms/` and are listed from `_data/platforms_nav.yml`. Old `/implement/eleventy/` and `/implement/jekyll/` URLs were never on production, so they are omitted rather than redirected.
 - Second-level nav on tablet/touch opens with a tap (first tap shows the row, a second tap on the same top-level item follows its link). Hover on a fine pointer is unchanged.
 - Nominate lives under the JoshBot top-level item (`_data/joshbot_nav.yml`), not Network. The Network row is What’s New, Topics, Connections.
 - The Topics hub packs neighborhood cards into a compact mosaic grid instead of full-width rows with empty title-to-count space.
@@ -60,8 +64,14 @@
 
 - Wander mode chooser (“How should curiosity move?”, Random site / Follow the links).
 - `/explore/` hub page. `explore.json` and `views:build` stay.
+- HTML redirect stubs for `/implement/eleventy/` and `/implement/jekyll/` (#63). Those paths were never published on production; recipes live only under `/implement/platforms/`.
+- Root `/data/` page (`data.md`). Topic neighborhood `/topics/data/` and `_data/` artifacts stay.
 
 ### Fixed
+
+- Search topic results only link to neighborhoods published as `topics/*.md` (#61). Topic-hub link text with trailing counts (e.g. `privacy 45`) no longer invents `/topics/privacy-45/` slugs; views no longer invent page-less topic URLs from content tags alone.
+- `/search/` stays `robots: noindex` and is excluded from `sitemap.xml` via `sitemap: false` (#62).
+- Filler unigrams such as `two`, `less`, `find`, `real`, `built`, and `making` are non-subjects, so they do not become public topic neighborhoods or search topic hits (#64).
 
 - Topic schema and `nlp:validate` accept single-member public communities again (one qualifying site is enough). The old ≥2-site rule was left behind after Topics started listing declared single-site subjects, which broke CI `npm run build`.
 - Declared-only topic communities no longer advertise `visible-text` / `nlp` in `sources` when the only heuristic evidence was below the membership threshold (related discovery). That mismatch also failed `nlp:validate`.

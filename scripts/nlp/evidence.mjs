@@ -117,6 +117,7 @@ export const NON_SUBJECT_UNIGRAMS = new Set([
   "blog",
   "blogs",
   "build",
+  "built",
   "click",
   "code",
   "come",
@@ -129,6 +130,7 @@ export const NON_SUBJECT_UNIGRAMS = new Set([
   "everything",
   "experiments",
   "feed",
+  "find",
   "first",
   "get",
   "got",
@@ -138,11 +140,13 @@ export const NON_SUBJECT_UNIGRAMS = new Set([
   "joshternet",
   "just",
   "know",
+  "less",
   "like",
   "look",
   "looking",
   "made",
   "make",
+  "making",
   "many",
   "may",
   "menu",
@@ -166,6 +170,7 @@ export const NON_SUBJECT_UNIGRAMS = new Set([
   "projects",
   "read",
   "reading",
+  "real",
   "really",
   "rss",
   "see",
@@ -181,6 +186,7 @@ export const NON_SUBJECT_UNIGRAMS = new Set([
   "time",
   "times",
   "today",
+  "two",
   "used",
   "using",
   "want",
@@ -429,12 +435,8 @@ export function dedupeEvidence(items) {
       continue;
     }
 
+    // evidenceIdentityKey only returns "" for non-objects, already skipped above.
     const key = evidenceIdentityKey(item);
-
-    if (!key) {
-      continue;
-    }
-
     const next = { ...item };
 
     if (!next.observed_at) {

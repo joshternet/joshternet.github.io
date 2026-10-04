@@ -178,8 +178,8 @@ export function extractTopicsFromPages(pages, limitOrOptions = {}) {
     })
     .filter(Boolean)
     .sort((left, right) => {
-      const leftValue = left.relevance?.value || 0;
-      const rightValue = right.relevance?.value || 0;
+      const leftValue = left.relevance.value;
+      const rightValue = right.relevance.value;
 
       if (rightValue !== leftValue) {
         return rightValue - leftValue;

@@ -16,6 +16,20 @@ bundle install
 npm ci
 ```
 
+### Quality checks
+
+| Script | Purpose |
+| --- | --- |
+| `npm test` | Library unit tests (`test/network`, `test/nlp`, `test/views`) with the coverage report printed every run |
+| `npm run test:coverage` | Same suites and report; **fails unless** lines/branches/functions are **100%** on the included library surface |
+| `npm run test:browser` | Playwright tests with offline HTML fixtures (no live Jekyll server) |
+| `npm run test:site` | Source + production `_site` checks (run after `npm run build`) |
+| `npm run format:check` | Prettier |
+
+Coverage includes `scripts/{network,nlp,views}/**/*.mjs` and excludes CLI/orchestration entrypoints (`network/sync`, `network/preflight`, `network/generate-elsewhere-glyphs`, `nlp/sync`, `nlp/validate-generated`, `views/build`). Do not assert nightly topic slugs or live participant counts as oracles—use synthetic fixtures. Site CSP tests skip when `_site` is missing or was built with localhost/dev hosts; use `npm run build` for a production `_site`.
+
+`site-quality` and `network-sync` GitHub Actions run `npm run test:coverage` (not plain `npm test`). Network sync stays on hourly cron `17 * * * *` and `repository_dispatch` `joshternet-registry-updated`.
+
 Rebuild datasets from the current registry, then build the site:
 
 ```sh

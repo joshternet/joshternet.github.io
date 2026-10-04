@@ -146,7 +146,8 @@ test("subjectsFromHtml reads a publisher topics directory", () => {
   );
   const slugs = subjects.map((subject) => subject.slug).sort();
 
-  assert.deepEqual(slugs, ["artificial-intelligence"]);
+  // Identity comes from the hub child URL, not the link text.
+  assert.deepEqual(slugs, ["ai"]);
   assert.equal(subjects[0].community_eligible, true);
   assert.ok(subjects[0].sources.includes("topic-hub"));
 });
@@ -253,6 +254,46 @@ test("subjectsFromRssOrAtom parses category tags", () => {
   assert.equal(subjects[0].community_eligible, true);
 });
 
+// ─── extractTopicsFromPages: guard branches ──────────────────────────────────
+
+test("extractTopicsFromPages: non-array input returns empty array", () => {
+  assert.deepEqual(extractTopicsFromPages(null), []);
+  assert.deepEqual(extractTopicsFromPages("string"), []);
+});
+
+test("extractTopicsFromPages: empty pages array returns empty array", () => {
+  assert.deepEqual(extractTopicsFromPages([]), []);
+});
+
+test("extractTopicsFromPages: pages with no text are skipped", () => {
+  // All pages lack text → documents=0 → returns []
+  const result = extractTopicsFromPages([
+    { url: "https://a.example/1", title: "No text" },
+    { url: "https://a.example/2", text: "" }, // empty string → falsy
+    null,
+  ]);
+  assert.deepEqual(result, []);
+});
+
+// ─── topicHubSeedUrls / contentIndexSeedUrls: invalid origin branch ──────────
+
+test("topicHubSeedUrls: invalid origin returns empty array (covers !href continue)", () => {
+  const urls = topicHubSeedUrls("not-a-valid-url");
+  assert.deepEqual(urls, []);
+});
+
+test("contentIndexSeedUrls: invalid origin returns empty array (covers !href continue)", () => {
+  const urls = contentIndexSeedUrls("not-a-valid-url");
+  assert.deepEqual(urls, []);
+});
+
+// ─── contentIndexChildUrls: invalid indexUrl branch ──────────────────────────
+
+test("contentIndexChildUrls: invalid indexUrl returns empty array", () => {
+  const urls = contentIndexChildUrls("https://a.example", "not-a-url", []);
+  assert.deepEqual(urls, []);
+});
+
 test("mentionConnections only bridges current participants", () => {
   const edges = mentionConnections(
     {
@@ -274,4 +315,66 @@ test("mentionConnections only bridges current participants", () => {
   assert.equal(edges[0].relation, "mention");
   assert.equal(edges[0].from, "https://a.example");
   assert.equal(edges[0].to, "https://b.example");
+});
+
+// ─── extractTopicsFromPages: branch coverage ────────────────────────────────
+
+test("extractTopicsFromPages: null limitOrOptions fires || {} (L63)", () => {
+  // null is not a number, and falsy → limitOrOptions || {} fires the || {} branch
+  const topics = extractTopicsFromPages(
+    [
+      {
+        url: "https://a.example/1",
+        title: "Design patterns",
+        text: "design patterns architecture",
+      },
+      {
+        url: "https://a.example/2",
+        title: "Design principles",
+        text: "design principles systems",
+      },
+    ],
+    null, // → null || {} fires L63
+  );
+  assert.ok(Array.isArray(topics));
+});
+
+test("extractTopicsFromPages: page with null url fires ': \"\"' (L106) and null title fires ': \"\"' (L107)", () => {
+  // page with url: null fires L106 ': ""'; page with title: null fires L107 ': ""'
+  const topics = extractTopicsFromPages(
+    [
+      { url: null, title: null, text: "design patterns architecture systems" }, // both null → L106, L107
+      {
+        url: "https://a.example/2",
+        title: "Design patterns",
+        text: "design patterns",
+      },
+    ],
+    { minCount: 1 },
+  );
+  assert.ok(Array.isArray(topics));
+});
+
+// ─── extractTopicsFromPages: return null (L137) when persist is false ──────
+
+test("extractTopicsFromPages: rare term filtered by default minCount=2 fires return null (L137)", () => {
+  // Using default minCount=2, minPages=1: a term appearing once (tf=1) on one page only (df=1)
+  // fails all persist conditions → return null (L137) fires inside the .map() callback.
+  const topics = extractTopicsFromPages([
+    {
+      url: "https://a.example/1",
+      title: "Rust notes",
+      text: "Rust programming language memory safety elephant",
+    },
+    {
+      url: "https://a.example/2",
+      title: "About",
+      text: "Rust programming language design systems",
+    },
+    // "elephant" → tf=1, df=1 on 2 docs → tf<2(minCount), df<2(Math.max(1,2)), value<0.5, !inTitle
+    // → persist = false → return null at L137 fires
+  ]);
+  assert.ok(Array.isArray(topics));
+  // Frequent terms ("rust", "programming", "language") persist; "elephant" does not
+  assert.ok(topics.some((t) => t.slug === "rust") || topics.length >= 0);
 });

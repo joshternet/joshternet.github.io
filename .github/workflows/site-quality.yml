@@ -28,8 +28,8 @@ jobs:
       - name: Install Node dependencies
         run: npm ci
 
-      - name: Run network tests
-        run: npm test
+      - name: Run library tests with 100% coverage gate
+        run: npm run test:coverage
 
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium

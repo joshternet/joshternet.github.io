@@ -22,10 +22,7 @@ export function textMentionsSlug(text, slug, label = "") {
   }
 
   const phrases = new Set();
-  const slugText = String(slug || "")
-    .toLowerCase()
-    .replace(/-/g, " ")
-    .trim();
+  const slugText = String(slug).toLowerCase().replace(/-/g, " ").trim();
 
   if (slugText) {
     phrases.add(slugText);

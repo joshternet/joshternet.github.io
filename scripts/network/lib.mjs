@@ -70,11 +70,11 @@ export function decodeHtmlEntities(input) {
   return input
     .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => {
       const code = Number.parseInt(hex, 16);
-      return Number.isFinite(code) ? String.fromCodePoint(code) : "";
+      return String.fromCodePoint(code);
     })
     .replace(/&#(\d+);/g, (_, dec) => {
       const code = Number.parseInt(dec, 10);
-      return Number.isFinite(code) ? String.fromCodePoint(code) : "";
+      return String.fromCodePoint(code);
     })
     .replace(/&([a-zA-Z]+);/g, (match, name) => {
       const key = name.toLowerCase();

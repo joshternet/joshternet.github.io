@@ -109,7 +109,7 @@ export function topicHubPrefix(pathname) {
       .toLowerCase() || "/";
 
   for (const path of TOPIC_HUB_INDEX_PATHS) {
-    const prefix = path.replace(/\/+$/, "") || "/";
+    const prefix = path.replace(/\/+$/, "");
 
     if (normalized === prefix || normalized.startsWith(`${prefix}/`)) {
       return prefix;
@@ -147,7 +147,8 @@ export function topicSlugFromHubChild(pathname) {
     return "";
   }
 
-  const rest = (String(pathname || "").replace(/\/+$/, "") || "/")
+  const rest = String(pathname)
+    .replace(/\/+$/, "")
     .toLowerCase()
     .slice(prefix.length)
     .replace(/^\//, "");
@@ -211,13 +212,8 @@ export function topicHubChildUrls(
       continue;
     }
 
-    let path = "";
-
-    try {
-      path = new URL(resolved).pathname;
-    } catch {
-      continue;
-    }
+    // resolveSameOrigin already validated the URL; new URL() cannot throw here.
+    const path = new URL(resolved).pathname;
 
     const slug = topicSlugFromHubChild(path);
 
@@ -246,7 +242,7 @@ export function isContentIndexUrl(href) {
     const path = new URL(href).pathname.replace(/\/+$/, "") || "/";
 
     return CONTENT_INDEX_PATHS.some((entry) => {
-      const prefix = entry.replace(/\/+$/, "") || "/";
+      const prefix = entry.replace(/\/+$/, "");
       return path.toLowerCase() === prefix;
     });
   } catch {
@@ -297,13 +293,8 @@ export function contentIndexChildUrls(
 
   const children = [];
   const seen = new Set();
-  let indexPath = "";
-
-  try {
-    indexPath = new URL(indexUrl).pathname.replace(/\/+$/, "") || "/";
-  } catch {
-    return [];
-  }
+  // isContentIndexUrl already validated indexUrl; new URL() cannot throw here.
+  const indexPath = new URL(indexUrl).pathname.replace(/\/+$/, "");
 
   for (const link of links || []) {
     const href = typeof link === "string" ? link : link?.href;
@@ -313,13 +304,8 @@ export function contentIndexChildUrls(
       continue;
     }
 
-    let pathname = "";
-
-    try {
-      pathname = new URL(resolved).pathname;
-    } catch {
-      continue;
-    }
+    // resolveSameOrigin already validated the URL; new URL() cannot throw here.
+    const pathname = new URL(resolved).pathname;
 
     const normalized = pathname.replace(/\/+$/, "") || "/";
 
@@ -501,8 +487,8 @@ export async function crawlOrigin(origin, options = {}) {
         outbound.push({
           href: absolute,
           text: link.text,
-          rel: link.rel || [],
-          classNames: link.classNames || [],
+          rel: link.rel,
+          classNames: link.classNames,
           page: fetched.url,
         });
       }

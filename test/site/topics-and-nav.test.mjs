@@ -41,7 +41,14 @@ test("topics hub and layout are wired", async () => {
   assert.match(layout, /articles.size > 0/);
   assert.doesNotMatch(layout, /Related discoveries/);
   assert.doesNotMatch(config, /^collections:/m);
-  assert.match(await read("topics/design.md"), /permalink: \/topics\/design\//);
+  const topicStubs = (await readdir(path.join(root, "topics"))).filter(
+    (file) => file.endsWith(".md") && file !== "index.md",
+  );
+  assert.ok(topicStubs.length > 0, "nlp:sync must write topics/*.md stubs");
+  assert.match(
+    await read(`topics/${topicStubs[0]}`),
+    /permalink: \/topics\/[^/]+\//,
+  );
   assert.match(layout, /h-feed/);
   assert.match(page, /type: CollectionPage/);
   assert.match(defaultLayout, /rel="webmention"/);
