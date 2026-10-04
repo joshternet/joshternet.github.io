@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-04T01:50:22.034Z",
+  "generated_at": "2026-10-04T08:00:08.817Z",
   "sites": [
     {
       "origin": "https://joshternet.org",
       "domain": "joshternet.org",
       "title": "Joshternet",
-      "description": "The Joshternet is an open, decentralized network for people who identify as Josh and the independent websites they call home.",
+      "description": "Joshternet connects people who identify as Josh and the independent websites they call home—an open, decentralized network built on shared web conventions.",
       "identity": "undeclared",
       "feeds": [],
       "elsewhere": [
@@ -40,6 +40,14 @@
         {
           "slug": "evidence-classes",
           "label": "evidence classes"
+        },
+        {
+          "slug": "ghost",
+          "label": "Ghost"
+        },
+        {
+          "slug": "ghost-pro",
+          "label": "Ghost Pro"
         },
         {
           "slug": "identity",
@@ -140,6 +148,10 @@
         {
           "slug": "network",
           "label": "network"
+        },
+        {
+          "slug": "nginx",
+          "label": "Nginx"
         },
         {
           "slug": "nominate-website",
@@ -247,13 +259,13 @@
         }
       ],
       "coverage": {
-        "pages_discovered": 17,
-        "pages_fetched": 17,
+        "pages_discovered": 18,
+        "pages_fetched": 18,
         "fetch_limit": 80,
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-04T01:48:41.305Z"
+      "crawled_at": "2026-10-04T07:59:34.677Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -521,7 +533,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-04T01:48:41.305Z"
+      "crawled_at": "2026-10-04T07:59:34.677Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -1112,7 +1124,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-04T01:48:41.305Z"
+      "crawled_at": "2026-10-04T07:59:34.677Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -1354,7 +1366,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-04T01:48:41.305Z"
+      "crawled_at": "2026-10-04T07:59:34.677Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -1574,7 +1586,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-04T01:48:41.305Z",
+      "crawled_at": "2026-10-04T07:59:34.677Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 145,
