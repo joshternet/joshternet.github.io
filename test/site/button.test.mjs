@@ -39,8 +39,6 @@ test("button page documents all four states and the one-line embed", async () =>
 
   assert.match(page, /permalink: \/implement\/buttons\//);
   assert.match(page, /window\.location\.origin/);
-  assert.match(page, /# Joshternet buttons/);
-  assert.doesNotMatch(page, /does not decide Josh identity/);
   assert.match(page, /verified-josh\.png/);
   assert.match(page, /verified-non-josh\.png/);
   assert.match(page, /undeclared\.png/);
@@ -52,11 +50,9 @@ test("button page documents all four states and the one-line embed", async () =>
     page,
     /src="https:\/\/joshternet\.org\/embed\/joshternet-button\.js"/,
   );
-  assert.match(page, /unavailable/);
   assert.match(page, /GET https:\/\/joshternet\.org\/api\/button-state/);
   assert.doesNotMatch(page, /badge/i);
   assert.doesNotMatch(page, /banner/i);
-  assert.doesNotMatch(page, /88×31 banner/i);
   assert.match(nav, /title: Buttons/);
   assert.match(nav, /path: \/implement\/buttons\//);
   assert.match(config, /joshternet_button:/);

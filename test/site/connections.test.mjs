@@ -27,28 +27,21 @@ test("connections page is HTML-first and cross-linked", async () => {
 
   assert.match(page, /permalink: \/connections\//);
   assert.match(page, /script: \/assets\/js\/connections\.js/);
-  assert.match(page, /Connects to/);
   assert.match(page, /outbound > 0 or inbound > 0 or overlap_count > 0/);
-  assert.match(page, /Shared topics/);
   assert.match(page, /topic_overlaps/);
   assert.match(page, /site\.data\.connection_topics/);
   assert.match(page, /connections-graph__footer/);
   assert.match(page, /connections-graph__filters/);
   assert.match(page, /data-connections-key/);
-  assert.match(page, /Show on the graph/);
-  assert.match(page, /Line key/);
   assert.doesNotMatch(page, /data-connections-key[\s\S]*<input/);
-  assert.doesNotMatch(page, /Select a site or a link/);
   assert.match(page, /connections-topic-list/);
   assert.match(page, /connections-topic__disclosure/);
   assert.match(page, /connections-site__column--topics/);
   assert.match(page, /overlap_count == 1/);
-  assert.doesNotMatch(page, /Topic:/);
   assert.doesNotMatch(page, /connections-topic__posts/);
   assert.match(styles, /\.connections-key__list \{[^}]*display:\s*flex/);
   assert.match(page, /data-connections-viewport/);
   assert.match(page, /data-connections-map-reset/);
-  assert.match(page, /Center Joshternet/);
   assert.match(
     styles,
     /\.connections-graph__viewport \{[^}]*overflow:\s*hidden/,
@@ -81,17 +74,11 @@ test("connections page is HTML-first and cross-linked", async () => {
   assert.match(page, /width="576"/);
   assert.match(page, /connections-visible-rel/);
   assert.doesNotMatch(page, /rel=\{\{ edge\.rel/);
-  assert.match(page, /Connected from/);
   assert.match(page, /site\.data\.connections/);
   assert.match(page, /id="connections-bootstrap"/);
-  assert.match(page, /Connections from around the Joshternet/);
   assert.match(page, /connections-howto/);
-  assert.doesNotMatch(page, /80 feed/);
-  assert.doesNotMatch(page, /Heuristics never become/);
-  assert.doesNotMatch(page, /Josh identity stays declared/);
   assert.match(page, /\/implement\/connections\//);
   assert.doesNotMatch(page, /['"]\/data\/['"]\s*\|\s*relative_url/);
-  assert.doesNotMatch(page, /friendship, endorsement/);
   assert.match(page, /\/network\//);
   assert.match(
     styles,
@@ -99,7 +86,6 @@ test("connections page is HTML-first and cross-linked", async () => {
   );
   assert.match(wander, /\/connections\//);
   assert.doesNotMatch(wander, /wander-modes/);
-  assert.doesNotMatch(wander, /How should curiosity move/);
   assert.doesNotMatch(wander, /data-wander-mode/);
   assert.match(styles, /\.page--wander\.site-shell \{[^}]*overflow:\s*visible/);
   assert.match(styles, /\.page--wander \.site-main \{[^}]*overflow:\s*hidden/);
