@@ -1,6 +1,6 @@
 /**
- * Goal: Added exploration pages publish CollectionPage/Dataset JSON-LD,
- * jekyll-seo-tag types, and IndieWeb microformats on lists and cards.
+ * Goal: Exploration pages publish CollectionPage JSON-LD, jekyll-seo-tag
+ * types, and IndieWeb microformats on lists and cards.
  */
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
@@ -40,8 +40,8 @@ test("derived pages declare schema.org types and extra JSON-LD", async () => {
   assert.match(await read("topics/index.md"), /type: CollectionPage/);
   assert.match(await read("activity.md"), /type: CollectionPage/);
   assert.match(await read("network.md"), /type: CollectionPage/);
-  assert.match(await read("data.md"), /type: Dataset/);
   assert.match(await read("search.md"), /robots: noindex/);
+  assert.match(await read("search.md"), /sitemap: false/);
   assert.match(await read("_layouts/default.html"), /page\.robots/);
   assert.match(await read("implement/connections.md"), /type: TechArticle/);
 });

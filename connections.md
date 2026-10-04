@@ -479,49 +479,11 @@ Connections from around the Joshternet.
 {% endif %}
 
 <div class="connections-howto">
-  <dl class="connections-howto__kinds">
-    <div class="connections-howto__kind">
-      <dt>
-        <svg
-          class="connections-key-line"
-          data-connection-kind="content-link"
-          viewBox="0 0 48 10"
-          aria-hidden="true"
-        >
-          <line x1="2" y1="5" x2="46" y2="5"></line>
-        </svg>
-        Observed links
-      </dt>
-      <dd>
-        A directed homepage or content link, blogroll, verified Webmention, or
-        explicit reply, repost, or syndication between participants.
-      </dd>
-    </div>
-    <div class="connections-howto__kind">
-      <dt>
-        <svg
-          class="connections-key-line"
-          data-connection-kind="shared-topic"
-          viewBox="0 0 48 10"
-          aria-hidden="true"
-        >
-          <line x1="2" y1="5" x2="46" y2="5"></line>
-        </svg>
-        Shared topics
-      </dt>
-      <dd>
-        Matching articles on two or more members. Shown here, not stored as a
-        directed link.
-      </dd>
-    </div>
-  </dl>
   <p class="connections-howto__note">
     <span class="connections-howto__links">
       <a href="{{ '/implement/connections/' | relative_url }}"
         >How Joshternet gathers connections</a
       >
-      ·
-      <a href="{{ '/data/' | relative_url }}">Data</a>
     </span>
   </p>
 </div>

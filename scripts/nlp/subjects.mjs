@@ -121,15 +121,15 @@ export function subjectsFromHtml(html, pageUrl, options = {}) {
           continue;
         }
 
-        if (/\(\s*\d+\s*posts?\s*\)/i.test(link.text || "")) {
+        const linkText = String(link.text || "").trim();
+
+        // Skip "(N posts)" hub chrome. Bare trailing counts ("privacy 45") are
+        // normalized away because identity always comes from the URL slug.
+        if (/\(\s*\d+\s*posts?\s*\)/i.test(linkText)) {
           continue;
         }
 
-        const label =
-          typeof link.text === "string" && link.text.trim()
-            ? link.text.trim()
-            : slug.replace(/-/g, " ");
-        add(label, "topic-hub:link", true);
+        add(slug.replace(/-/g, " "), "topic-hub:link", true);
       }
     } else {
       const slug = topicSlugFromHubChild(page.pathname);

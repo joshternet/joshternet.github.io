@@ -12,6 +12,7 @@ seo:
 permalink: /search/
 joshternet_analysis: derived
 robots: noindex
+sitemap: false
 script: /assets/js/search.js
 ---
 

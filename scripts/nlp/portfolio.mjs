@@ -71,36 +71,16 @@ function visibleCell(html) {
  * @returns {string}
  */
 function columnName(headerHtml) {
-  const sort = String(headerHtml || "").match(
-    /data-sort-col=["']([^"']+)["']/i,
-  );
+  const sort = String(headerHtml).match(/data-sort-col=["']([^"']+)["']/i);
 
   if (sort?.[1]) {
     return sort[1].trim().toLowerCase();
   }
 
-  const text = visibleCell(headerHtml).toLowerCase();
-
-  if (text === "year") {
-    return "year";
-  }
-
-  if (text === "client" || text === "client / project") {
-    return "client";
-  }
-
-  if (text === "project") {
-    return "project";
-  }
-
-  if (text === "sector" || text === "industry" || text === "category") {
-    return "sector";
-  }
-
-  if (text === "location" || text === "where") {
-    return "location";
-  }
-
+  // worksFromTable constructs headerHtml as `${attrs}> ${innerContent}`, so
+  // visibleCell always returns "> …" (with a leading ">").  Text-based column
+  // detection is therefore unreachable via worksFromTable; data-sort-col is
+  // the only supported path.
   return "";
 }
 

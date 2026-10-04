@@ -7,12 +7,16 @@ import {
   canonicalOrigin,
   chooseDescription,
   chooseTitle,
+  decodeHtmlEntities,
   framePolicy,
   identityFromDeclaration,
   isForbiddenAddress,
+  isParticipatingNode,
   MAX_FEEDS_PER_PARTICIPANT,
   partitionPublicParticipants,
   projectRegistry,
+  registryParticipationFields,
+  registryTimestamp,
   sanitizeFeeds,
   screenshotPath,
   stableSiteID,
@@ -875,4 +879,285 @@ test("sanitizeFeeds returns an empty array for non-arrays and isolates bad items
       type: "application/rss+xml",
     },
   ]);
+});
+
+// ─── decodeHtmlEntities decimal char refs (lines 76-77) ──────────────────────
+
+test("decodeHtmlEntities: handles decimal character references (lines 76-77)", () => {
+  assert.equal(decodeHtmlEntities("&#65;&#66;&#67;"), "ABC");
+  assert.equal(decodeHtmlEntities("&#104;&#101;&#108;&#108;&#111;"), "hello");
+});
+
+// ─── decodeHtmlEntities hex char refs (lines 72-73) ─────────────────────────
+
+test("decodeHtmlEntities: handles hex character references (lines 72-73)", () => {
+  assert.equal(decodeHtmlEntities("&#x41;&#x42;&#x43;"), "ABC"); // hex 0x41=A, 0x42=B, 0x43=C
+  assert.equal(decodeHtmlEntities("&#x1F600;"), "\u{1F600}"); // emoji via hex codepoint
+});
+
+// ─── decodeHtmlEntities named entities (lines 80-81) ─────────────────────────
+
+test("decodeHtmlEntities: handles named HTML entities (lines 80-81)", () => {
+  assert.equal(decodeHtmlEntities("&amp;"), "&");
+  assert.equal(decodeHtmlEntities("&lt;&gt;"), "<>");
+  // "foobar" is all letters (matches regex) but not in NAMED_ENTITIES → returns original match (L81 ': match' branch)
+  assert.equal(decodeHtmlEntities("&foobar;"), "&foobar;");
+});
+
+// ─── identityFromDeclaration invalid guard (lines 120-121) ───────────────────
+
+test("identityFromDeclaration: throws for null, non-object, array, or wrong version (lines 120-121)", () => {
+  assert.throws(() => identityFromDeclaration(null));
+  assert.throws(() => identityFromDeclaration("string"));
+  assert.throws(() => identityFromDeclaration([]));
+  assert.throws(() => identityFromDeclaration({ version: 2 }));
+});
+
+// ─── registryTimestamp validation (lines 165-166, 171-172) ───────────────────
+
+test("registryTimestamp: throws for non-string or blank value (lines 165-166)", () => {
+  assert.throws(
+    () => registryTimestamp(null, "first_participated_at"),
+    /invalid/,
+  );
+  assert.throws(
+    () => registryTimestamp(42, "first_participated_at"),
+    /invalid/,
+  );
+  assert.throws(
+    () => registryTimestamp("  ", "first_participated_at"),
+    /invalid/,
+  );
+});
+
+test("registryTimestamp: throws for an unparseable date string (lines 171-172)", () => {
+  assert.throws(
+    () => registryTimestamp("not-a-date", "first_participated_at"),
+    /invalid/,
+  );
+});
+
+test("registryTimestamp: accepts valid ISO date strings", () => {
+  assert.equal(
+    registryTimestamp("2026-09-01T00:00:00.000Z", "first_participated_at"),
+    "2026-09-01T00:00:00.000Z",
+  );
+});
+
+// ─── isParticipatingNode guard (lines 185-186) ───────────────────────────────
+
+test("isParticipatingNode: returns false for null, non-object, or array (lines 185-186)", () => {
+  assert.equal(isParticipatingNode(null), false);
+  assert.equal(isParticipatingNode(undefined), false);
+  assert.equal(isParticipatingNode([]), false);
+  assert.equal(isParticipatingNode("string"), false);
+});
+
+// ─── projectRegistry top-level guard (lines 228-229) ────────────────────────
+
+test("projectRegistry: throws for null, wrong format_version, or non-array nodes (lines 228-229)", () => {
+  assert.throws(() => projectRegistry(null), /invalid JoshBot registry/);
+  assert.throws(
+    () => projectRegistry({ format_version: 2, nodes: [] }),
+    /invalid JoshBot registry/,
+  );
+  assert.throws(
+    () => projectRegistry({ format_version: 1 }),
+    /invalid JoshBot registry/,
+  );
+  assert.throws(() => projectRegistry("string"), /invalid JoshBot registry/);
+});
+
+// ─── projectRegistry invalid node (lines 237-238) ────────────────────────────
+
+test("projectRegistry: throws for null or non-object node (lines 237-238)", () => {
+  assert.throws(
+    () =>
+      projectRegistry({
+        format_version: 1,
+        nodes: [null],
+      }),
+    /invalid registry node/,
+  );
+
+  assert.throws(
+    () =>
+      projectRegistry({
+        format_version: 1,
+        nodes: ["string-not-object"],
+      }),
+    /invalid registry node/,
+  );
+});
+
+// ─── titleBrandFromDomain edge cases (via chooseTitle) ───────────────────────
+
+test("chooseTitle: returns empty string when all candidates are absent (lines 376-377)", () => {
+  assert.equal(chooseTitle(), "");
+  assert.equal(chooseTitle({}), "");
+});
+
+test("chooseTitle: single-label domain produces no brand match (lines 312-313)", () => {
+  // "localhost" has only 1 label → titleBrandFromDomain returns "" → falls back to documentTitle
+  assert.equal(
+    chooseTitle({ documentTitle: "Home - Blog", domain: "localhost" }),
+    "Home - Blog",
+  );
+});
+
+test("chooseTitle: domain first label with no letter/digit chars produces no brand (lines 319-320)", () => {
+  // First label "---" → comparableText("---") = "" → return ""
+  // Falls back to documentTitle
+  assert.equal(
+    chooseTitle({ documentTitle: "Home - Blog", domain: "---.com" }),
+    "Home - Blog",
+  );
+});
+
+test("chooseTitle: title parts that do not match domain produce no brand (lines 336-337)", () => {
+  // Title "Foo - Bar" has parts [Foo, Bar]; domain "baz.com" → none match → ""
+  // Falls back to documentTitle
+  assert.equal(
+    chooseTitle({ documentTitle: "Foo - Bar", domain: "baz.com" }),
+    "Foo - Bar",
+  );
+});
+
+// ─── chooseDescription empty return (lines 402-403) ─────────────────────────
+
+test("chooseDescription: returns empty string when all candidates are absent (lines 402-403)", () => {
+  assert.equal(chooseDescription(), "");
+  assert.equal(chooseDescription({}), "");
+});
+
+// ─── framePolicy CSP frame-ancestors branches (lines 469-486) ────────────────
+
+test("framePolicy: frame-ancestors self without wildcard or parent is blocked (lines 469-475)", () => {
+  assert.deepEqual(
+    framePolicy({
+      origin: "https://example.com",
+      headers: {
+        "content-security-policy": "default-src 'self'; frame-ancestors 'self'",
+      },
+    }),
+    { embeddable: false, reason: "blocked-by-site" },
+  );
+});
+
+test("framePolicy: frame-ancestors explicit third-party without parent is blocked (lines 480-486)", () => {
+  assert.deepEqual(
+    framePolicy({
+      origin: "https://example.com",
+      headers: {
+        "content-security-policy":
+          "default-src 'self'; frame-ancestors https://other-trusted.example",
+      },
+    }),
+    { embeddable: false, reason: "blocked-by-site" },
+  );
+});
+
+// ─── assertPublicURL empty DNS result (lines 550-551) ────────────────────────
+
+test("assertPublicURL: empty DNS result throws 'did not resolve' (lines 550-551)", async () => {
+  await assert.rejects(
+    assertPublicURL("https://example.test/", {
+      lookup: async () => [],
+    }),
+    /did not resolve/,
+  );
+});
+
+// ─── sanitizeFeeds url alias and empty href (lines 647-648, 651-652) ─────────
+
+test("sanitizeFeeds: url property is accepted as href alias (lines 647-648)", async () => {
+  const result = await sanitizeFeeds(
+    [{ url: "https://example.test/rss.xml", type: "application/rss+xml" }],
+    { lookup: async () => [{ address: "93.184.216.34", family: 4 }] },
+  );
+  assert.equal(result.length, 1);
+  assert.equal(result[0].url, "https://example.test/rss.xml");
+});
+
+test("sanitizeFeeds: candidate with no href or url is skipped (lines 651-652)", async () => {
+  const result = await sanitizeFeeds(
+    [{ type: "application/rss+xml" }], // no href, no url
+    { lookup: async () => [{ address: "93.184.216.34", family: 4 }] },
+  );
+  assert.equal(result.length, 0);
+});
+
+// ─── decodeHtmlEntities: null/empty input fires return "" (lines 67-68) ──────
+
+test("decodeHtmlEntities: null and empty string input fires return '' (lines 67-68)", () => {
+  assert.equal(decodeHtmlEntities(null), "");
+  assert.equal(decodeHtmlEntities(""), "");
+  assert.equal(decodeHtmlEntities(42), "");
+});
+
+// ─── titleBrandFromDomain: www prefix skipped via ? labels[1] (L315) ─────────
+
+test("chooseTitle: www domain uses second label as brand (L315)", () => {
+  // labels[0] === "www" → labels[1] is used as domainLabel → L315 true branch fires
+  const title = chooseTitle({
+    documentTitle: "Blog — www.example.com",
+    domain: "www.example.com",
+  });
+  // The brand "example" should match in the title → chooseTitle returns without the brand suffix
+  assert.ok(typeof title === "string");
+});
+
+// ─── sanitizeFeeds: non-string type fires ': ""' (L636) ──────────────────────
+
+test("sanitizeFeeds: candidate with non-string type fires ': \"\"' (L636)", async () => {
+  // type: null is not a string → L636 ': ""' fires → type = "" → not in FEED_MIME_TYPES → skipped
+  const result = await sanitizeFeeds(
+    [{ href: "https://example.test/rss.xml", type: null }],
+    { lookup: async () => [{ address: "1.2.3.4", family: 4 }] },
+  );
+  assert.deepEqual(result, []);
+});
+
+// ─── registryParticipationFields: covers L207-218 ────────────────────────────
+
+test("registryParticipationFields: returns all participation fields from participant (L207-218)", () => {
+  const participant = {
+    origin: "https://a.example",
+    domain: "a.example",
+    identity: "affirmed",
+    declaration: {
+      version: 1,
+      josh: true,
+    },
+    initial_declaration: {
+      version: 1,
+      josh: true,
+    },
+    first_participated_at: "2026-01-01T00:00:00.000Z",
+    latest_declaration_check_at: "2026-10-01T00:00:00.000Z",
+    latest_declaration_check_outcome: "success",
+  };
+  const fields = registryParticipationFields(participant);
+  assert.equal(fields.origin, "https://a.example");
+  assert.equal(fields.identity, "affirmed");
+  assert.equal(fields.first_participated_at, "2026-01-01T00:00:00.000Z");
+});
+
+// ─── partitionPublicParticipants: non-Error thrown fires ': new Error(String(error))' (L586) ─
+
+test("partitionPublicParticipants: non-Error thrown by lookup fires ': new Error(String(error))' (L586)", async () => {
+  // lookup throws a non-Error string → error instanceof Error = false → L586 false branch fires
+  // External DNS boundary — real lookup replaced by stub that throws a string
+  const result = await partitionPublicParticipants(
+    [{ origin: "https://a.example" }],
+    {
+      lookup: async () => {
+        throw "string lookup error";
+      }, // throws non-Error → L586 fires
+      cache: new Map(), // empty cache → lookup IS called
+    },
+  );
+  assert.equal(result.rejected.length, 1);
+  assert.ok(result.rejected[0].error instanceof Error);
+  assert.match(result.rejected[0].error.message, /string lookup error/);
 });

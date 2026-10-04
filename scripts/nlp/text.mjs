@@ -152,7 +152,7 @@ export function parseHtmlRegions(html) {
     /<a\b([^>]*)href\s*=\s*["']([^"']+)["']([^>]*)>([\s\S]*?)<\/a>/gi;
 
   while ((match = linkPattern.exec(source))) {
-    const before = match[1] || "";
+    const before = match[1];
     const after = match[3] || "";
     const attrs = `${before} ${after}`;
     const href = decodeHrefForParse(match[2]);

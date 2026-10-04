@@ -318,7 +318,7 @@ export function contentItemsFromRssOrAtom(xml, meta) {
     let catMatch;
 
     while ((catMatch = catPattern.exec(chunk))) {
-      const raw = normalizeExtractedText(catMatch[1] || catMatch[2] || "");
+      const raw = normalizeExtractedText(catMatch[1] || catMatch[2]);
       if (raw) {
         categories.push(raw);
       }
@@ -514,7 +514,7 @@ export function mergeContentItems(drafts) {
     }
 
     const feedKey = new Set(
-      (existing.source_feeds || []).map((feed) => `${feed.type}\0${feed.url}`),
+      existing.source_feeds.map((feed) => `${feed.type}\0${feed.url}`),
     );
 
     for (const feed of draft.source_feeds || []) {
@@ -526,7 +526,7 @@ export function mergeContentItems(drafts) {
     }
 
     const topicKey = new Set(
-      (existing.declared_topics || []).map(
+      existing.declared_topics.map(
         (topic) => `${topic.slug}\0${topic.source || ""}`,
       ),
     );

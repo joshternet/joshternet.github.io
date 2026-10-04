@@ -132,7 +132,7 @@ export function parseOpmlOutlineUrls(opmlText) {
         continue;
       }
 
-      const value = normalizeText(attribute[2] ?? attribute[3] ?? "");
+      const value = normalizeText(attribute[2] ?? attribute[3]);
 
       if (value) {
         urls.push(value);

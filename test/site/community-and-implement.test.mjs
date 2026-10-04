@@ -1,13 +1,29 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 const root = fileURLToPath(new URL("../../", import.meta.url));
 
+/**
+ * Reads a UTF-8 file relative to the repository root.
+ * @param {string} relativePath - Path under the repo root.
+ * @returns {Promise<string>} File contents.
+ */
 async function read(relativePath) {
   return readFile(path.join(root, relativePath), "utf8");
+}
+
+/**
+ * Asserts that a source path under the repo root does not exist.
+ * @param {string} relativePath - Path under the repo root.
+ * @returns {Promise<void>}
+ */
+async function assertMissing(relativePath) {
+  await assert.rejects(() => access(path.join(root, relativePath)), {
+    code: "ENOENT",
+  });
 }
 
 test("community page and footer point at #joshternet without embedding chat", async () => {
@@ -161,7 +177,6 @@ test("Eleventy recipe is its own page under Platforms", async () => {
   const guide = await read("implement.md");
   const hubs = await read("implement/platforms.md");
   const eleventy = await read("implement/platforms/eleventy.md");
-  const redirect = await read("implement/eleventy.html");
 
   assert.match(guide, /\/implement\/platforms\//);
   assert.doesNotMatch(guide, /\/implement\/eleventy\//);
@@ -186,18 +201,12 @@ test("Eleventy recipe is its own page under Platforms", async () => {
   assert.match(eleventy, /\[implement\]: \/implement\//);
   assert.doesNotMatch(eleventy, /This page is the Eleventy recipe/);
   assert.doesNotMatch(eleventy, /Other platforms are listed/);
-  assert.match(redirect, /permalink: \/implement\/eleventy\//);
-  assert.match(redirect, /\/implement\/platforms\/eleventy\//);
-  assert.match(redirect, /http-equiv="refresh"/);
-  assert.match(redirect, /sitemap: false/);
-  assert.match(redirect, /robots: noindex/);
-  assert.match(redirect, /name="robots" content="noindex"/);
+  await assertMissing("implement/eleventy.html");
 });
 
 test("Jekyll recipe is its own page under Platforms", async () => {
   const guide = await read("implement.md");
   const jekyll = await read("implement/platforms/jekyll.md");
-  const redirect = await read("implement/jekyll.html");
   const config = await read("_config.yml");
 
   assert.match(guide, /\/implement\/platforms\//);
@@ -220,12 +229,7 @@ test("Jekyll recipe is its own page under Platforms", async () => {
   assert.doesNotMatch(jekyll, /This page is the Jekyll recipe/);
   assert.doesNotMatch(jekyll, /Other platforms are listed/);
   assert.match(config, /include:\n\s+- \.well-known/);
-  assert.match(redirect, /permalink: \/implement\/jekyll\//);
-  assert.match(redirect, /\/implement\/platforms\/jekyll\//);
-  assert.match(redirect, /http-equiv="refresh"/);
-  assert.match(redirect, /sitemap: false/);
-  assert.match(redirect, /robots: noindex/);
-  assert.match(redirect, /name="robots" content="noindex"/);
+  await assertMissing("implement/jekyll.html");
 });
 
 test("connections crawl page documents sync signals under Implement", async () => {
@@ -267,7 +271,6 @@ test("visitor pages do not lecture under the title", async () => {
     "implement/platforms/eleventy.md",
     "implement/platforms/jekyll.md",
     "implement/validate.md",
-    "data.md",
     "connections.md",
   ];
 

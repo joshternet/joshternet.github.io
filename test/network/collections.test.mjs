@@ -41,3 +41,21 @@ test("sparseCollectionDocument omits empty item lists", () => {
   });
   assert.equal(present.edges.length, 1);
 });
+
+test("sparseCollectionDocument: non-array items defaults to empty; extra is optional", () => {
+  // Array.isArray(undefined) → false → items = [] branch (ternary false side)
+  const doc = sparseCollectionDocument({
+    generatedAt: "2026-10-03T00:00:00.000Z",
+    key: "edges",
+    items: undefined,
+    // no extra → input.extra || {} → falsy path (spread {})
+  });
+  assert.equal(doc.schema_version, 1);
+  assert.equal(Object.hasOwn(doc, "edges"), false);
+});
+
+test("itemsFromCollection: null and non-matching inputs return empty", () => {
+  assert.deepEqual(itemsFromCollection(null, "edges"), []);
+  assert.deepEqual(itemsFromCollection(undefined, "edges"), []);
+  assert.deepEqual(itemsFromCollection("string", "edges"), []);
+});

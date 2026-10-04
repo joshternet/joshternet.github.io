@@ -10,6 +10,7 @@ import {
 } from "../../scripts/network/lib.mjs";
 
 import {
+  captureIsFresh,
   fallbackEntry,
   registryNeedsSync,
   removeOrphanScreenshots,
@@ -370,4 +371,83 @@ test("stale capture requires sync", () => {
   ];
 
   assert.equal(registryNeedsSync(participants, existing, now), true);
+});
+
+// ─── captureIsFresh edge cases ────────────────────────────────────────────────
+
+test("captureIsFresh: returns false when entry has no captured_at", () => {
+  assert.equal(captureIsFresh({}), false);
+  assert.equal(captureIsFresh(null), false);
+});
+
+test("captureIsFresh: returns false when captured_at is not a valid date string", () => {
+  assert.equal(captureIsFresh({ captured_at: "not-a-date" }), false);
+  assert.equal(captureIsFresh({ captured_at: "" }), false);
+});
+
+// ─── registryNeedsSync edge cases ────────────────────────────────────────────
+
+test("registryNeedsSync: returns true when inputs are not arrays", () => {
+  assert.equal(registryNeedsSync(null, []), true);
+  assert.equal(registryNeedsSync([], null), true);
+});
+
+test("registryNeedsSync: returns true when existing entry has invalid origin", () => {
+  const participants = [participating()];
+  const existing = [{ captured_at: new Date().toISOString() }]; // no origin
+
+  assert.equal(registryNeedsSync(participants, existing), true);
+});
+
+test("registryNeedsSync: returns true when existing has duplicate origins", () => {
+  const a = participating({ origin: "https://a.example" });
+  const b = participating({ origin: "https://b.example" });
+  const entryA = { ...a, captured_at: new Date().toISOString() };
+
+  // Same participant count (2) but both existing entries share the same origin
+  // → existingByOrigin.size (1) !== existing.length (2) → returns true (lines 64-65)
+  assert.equal(registryNeedsSync([a, b], [entryA, entryA]), true);
+});
+
+test("registryNeedsSync: returns true when participant not in existing", () => {
+  const a = participating({ origin: "https://a.example" });
+  const b = participating({ origin: "https://b.example" });
+  const existing = [
+    { ...a, captured_at: new Date().toISOString() },
+    { ...b, captured_at: new Date().toISOString() },
+  ];
+
+  const c = participating({ origin: "https://c.example" });
+  // 3 participants but only 2 in existing (length mismatch caught earlier)
+  // Use same length but a participant missing from the map:
+  const existingWithWrongOrigin = [
+    { ...a, captured_at: new Date().toISOString() },
+    {
+      ...b,
+      origin: "https://wrong.example",
+      captured_at: new Date().toISOString(),
+    },
+  ];
+  assert.equal(registryNeedsSync([a, c], existingWithWrongOrigin), true);
+});
+
+// ─── removeOrphanScreenshots non-ENOENT rethrow (lines 146-148) ──────────────
+
+test("removeOrphanScreenshots: non-ENOENT readdir error is rethrown (lines 146-148)", async () => {
+  // Create a regular FILE (not directory) so readdir throws ENOTDIR, not ENOENT.
+  const file = path.join(
+    os.tmpdir(),
+    `joshternet-test-file-${process.pid}-${Date.now()}.webp`,
+  );
+  await fs.writeFile(file, "not-a-directory");
+
+  try {
+    // Should reject because ENOTDIR is not swallowed — only ENOENT is.
+    await assert.rejects(
+      removeOrphanScreenshots([], file),
+      (error) => error?.code !== "ENOENT",
+    );
+  } finally {
+    await fs.rm(file, { force: true });
+  }
 });

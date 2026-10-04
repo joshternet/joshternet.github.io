@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-03T23:04:35.822Z",
-  "community_count": 338,
+  "generated_at": "2026-10-04T01:48:41.305Z",
+  "community_count": 249,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
@@ -124,32 +124,6 @@
       "active": true
     },
     {
-      "slug": "ai-78",
-      "label": "ai 78",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
       "slug": "ai-agents",
       "label": "ai agents",
       "member_count": 1,
@@ -203,35 +177,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "ai-agents-23",
-      "label": "ai agents 23",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -271,28 +217,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "ai-security-13",
-      "label": "ai security 13",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -301,9 +226,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -327,9 +250,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -367,6 +288,11 @@
               "url": "https://joshuamorris.info/notes/2026/09/26/the-work-required-to-make-something-look-simple/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         },
@@ -405,32 +331,6 @@
       "active": true
     },
     {
-      "slug": "apple-1",
-      "label": "apple 1",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
       "slug": "arch-linux",
       "label": "arch linux",
       "member_count": 1,
@@ -454,10 +354,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -482,28 +379,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/09/tristan-eaton-makes-walls-feel-too-small-for-the-art/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "architecture-2",
-      "label": "architecture 2",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -512,9 +388,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -554,13 +428,16 @@
               "url": "https://joshuamorris.info/notes/2026/09/18/worth-wandering-robin-sloan/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
@@ -573,32 +450,6 @@
           "note": "Below the community quality threshold; not membership."
         }
       ]
-    },
-    {
-      "slug": "art-5",
-      "label": "art 5",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
     },
     {
       "slug": "arts-culture",
@@ -639,9 +490,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -665,9 +514,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -691,9 +538,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -722,10 +567,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -764,9 +606,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T12:00:56.613Z",
       "last_changed_at": "2026-10-03T12:00:56.613Z",
       "active": true
@@ -786,28 +626,7 @@
               "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "benchmarks-3",
-      "label": "benchmarks 3",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -816,9 +635,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -838,28 +655,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/19/the-brain-may-have-two-developmental-origins-that-is-interesting-enough/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "biology-1",
-      "label": "biology 1",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -868,9 +664,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -908,29 +702,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/10/keep-the-internet-funky/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "blogging-3",
-      "label": "blogging 3",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -939,9 +711,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -974,21 +744,23 @@
               "url": "https://joshuamorris.info/notes/2026/09/13/an-online-book-club-across-our-own-websites/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
-      "slug": "books-27",
-      "label": "books 27",
+      "slug": "browsers",
+      "label": "browsers",
       "member_count": 1,
       "sites": [
         {
@@ -1005,37 +777,9 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "browsers-8",
-      "label": "browsers 8",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -1105,9 +849,7 @@
           ]
         }
       ],
-      "sources": [
-        "visible-text"
-      ],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
@@ -1120,85 +862,6 @@
           "note": "Below the community quality threshold; not membership."
         }
       ]
-    },
-    {
-      "slug": "built",
-      "label": "built",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/25/worth-wandering-bartosz-ciechanowski/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://www.joshuabaker.com",
-          "domain": "www.joshuabaker.com",
-          "title": "Joshua Baker",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://www.joshuabaker.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshuabaker.com/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/banked-pay-by-bank/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/not-optional/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/the-dots/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "visible-text"
-      ],
-      "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
     },
     {
       "slug": "business",
@@ -1235,6 +898,11 @@
               "url": "https://joshuamorris.info/notes/2026/08/30/apples-repair-restrictions-are-back-in-court-and-the-reason-matters/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         },
@@ -1272,37 +940,8 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "visible-text"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link", "visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "business-26",
-      "label": "business 26",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
@@ -1336,28 +975,7 @@
               "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T21:50:07.756Z",
-      "last_changed_at": "2026-10-03T21:50:07.756Z",
-      "active": true
-    },
-    {
-      "slug": "california-ballot-2026-4",
-      "label": "california ballot 2026 4",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -1366,9 +984,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T21:50:07.756Z",
       "last_changed_at": "2026-10-03T21:50:07.756Z",
       "active": true
@@ -1388,28 +1004,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/15/the-us-fuel-crisis-is-making-canadas-oil-more-valuable-than-ever/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "canada-1",
-      "label": "canada 1",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -1418,9 +1013,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1468,22 +1061,23 @@
               "url": "https://joshuamorris.info/notes/2026/09/13/ai-is-making-code-cheap-it-is-making-judgment-more-valuable/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
-      "slug": "career-4",
-      "label": "career 4",
+      "slug": "cars",
+      "label": "cars",
       "member_count": 1,
       "sites": [
         {
@@ -1500,37 +1094,9 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "cars-5",
-      "label": "cars 5",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -1577,9 +1143,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -1599,28 +1163,7 @@
               "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "chromebooks-1",
-      "label": "chromebooks 1",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -1629,9 +1172,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1673,9 +1214,7 @@
           ]
         }
       ],
-      "sources": [
-        "visible-text"
-      ],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -1700,28 +1239,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/13/flock-employees-dont-like-being-watched-either/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "civil-liberties-7",
-      "label": "civil liberties 7",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -1730,16 +1248,14 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
       "slug": "command-line-interface",
-      "label": "Command-line Interface",
+      "label": "command line interface",
       "member_count": 1,
       "sites": [
         {
@@ -1756,9 +1272,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -1802,9 +1316,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -1839,6 +1351,11 @@
               "url": "https://joshuamorris.info/notes/2026/09/29/the-internet-saw-a-few-seconds-and-invented-the-rest/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         },
@@ -1856,10 +1373,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "topic-hub:page"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
@@ -1872,32 +1386,6 @@
           "note": "Below the community quality threshold; not membership."
         }
       ]
-    },
-    {
-      "slug": "community-5",
-      "label": "community 5",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
     },
     {
       "slug": "computer-vision",
@@ -1914,28 +1402,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/28/sometimes-i-dont-want-an-llm-to-answer-me/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "computer-vision-1",
-      "label": "computer vision 1",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -1944,9 +1411,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1976,28 +1441,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/26/the-work-required-to-make-something-look-simple/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "computing-history-12",
-      "label": "computing history 12",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -2006,9 +1450,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2042,9 +1484,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -2064,28 +1504,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/26/having-regulations-is-not-the-same-thing-as-having-accountability/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "consumer-protection-1",
-      "label": "consumer protection 1",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -2094,9 +1513,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2120,9 +1537,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true,
@@ -2151,28 +1566,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/13/ai-is-making-code-cheap-it-is-making-judgment-more-valuable/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "craftsmanship-7",
-      "label": "craftsmanship 7",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -2181,9 +1575,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2207,11 +1599,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -2268,9 +1658,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -2278,7 +1666,7 @@
     {
       "slug": "css",
       "label": "css",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
         {
           "origin": "https://joshtronic.com",
@@ -2297,21 +1685,7 @@
               "source": "topic-hub:page"
             }
           ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
-      "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T09:36:17.761Z",
-      "active": true
-    },
-    {
-      "slug": "css-3",
-      "label": "css 3",
-      "member_count": 1,
-      "sites": [
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -2326,11 +1700,9 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "sources": ["topic-hub:link", "topic-hub:page"],
+      "first_seen_at": "2026-10-03T09:36:17.761Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -2352,16 +1724,14 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
     },
     {
-      "slug": "cyber-deck-1",
-      "label": "cyber deck 1",
+      "slug": "cyber-deck",
+      "label": "cyber deck",
       "member_count": 1,
       "sites": [
         {
@@ -2378,11 +1748,9 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -2437,9 +1805,7 @@
           ]
         }
       ],
-      "sources": [
-        "visible-text"
-      ],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2459,28 +1825,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/26/having-regulations-is-not-the-same-thing-as-having-accountability/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "data-brokers-4",
-      "label": "data brokers 4",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -2489,9 +1834,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2524,29 +1867,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/27/safe-not-safe-is-the-kind-of-developer-resource-i-want-more-of/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "databases-1",
-      "label": "databases 1",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -2555,9 +1876,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2586,10 +1905,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2613,11 +1929,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -2655,6 +1969,11 @@
               "url": "https://joshuamorris.info/notes/2026/09/26/the-work-required-to-make-something-look-simple/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         },
@@ -2723,35 +2042,10 @@
       "sources": [
         "microformat:p-category",
         "portfolio:sector",
+        "topic-hub:link",
         "topic-hub:page"
       ],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "design-16",
-      "label": "design 16",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
@@ -2775,28 +2069,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/28/sometimes-i-dont-want-an-llm-to-answer-me/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "developer-tools-2",
-      "label": "developer tools 2",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -2805,9 +2078,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2836,10 +2107,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2863,9 +2131,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2900,28 +2166,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/13/flock-employees-dont-like-being-watched-either/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "digital-rights-18",
-      "label": "digital rights 18",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -2930,9 +2175,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2980,29 +2223,7 @@
               "url": "https://joshuamorris.info/notes/2026/08/28/worth-wandering-ytoo/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category",
-        "visible-text"
-      ],
-      "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "discovery-6",
-      "label": "discovery 6",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -3011,10 +2232,8 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
+      "sources": ["microformat:p-category", "topic-hub:link", "visible-text"],
+      "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
@@ -3037,9 +2256,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3068,11 +2285,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -3090,28 +2305,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/28/a-satellite-that-breathes-the-atmosphere-trying-to-pull-it-down/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "earth-observation-1",
-      "label": "earth observation 1",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -3120,9 +2314,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3181,37 +2373,9 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "economics-25",
-      "label": "economics 25",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T21:50:07.756Z",
-      "last_changed_at": "2026-10-03T21:50:07.756Z",
       "active": true
     },
     {
@@ -3252,6 +2416,11 @@
               "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         },
@@ -3286,32 +2455,6 @@
       ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
-      "active": true
-    },
-    {
-      "slug": "education-6",
-      "label": "education 6",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
@@ -3351,12 +2494,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords",
-        "topic-hub:page"
-      ],
+      "sources": ["meta:keywords", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -3378,9 +2518,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3410,28 +2548,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/15/the-us-fuel-crisis-is-making-canadas-oil-more-valuable-than-ever/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "energy-9",
-      "label": "energy 9",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -3440,9 +2557,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3480,6 +2595,11 @@
               "url": "https://joshuamorris.info/notes/2026/09/28/a-satellite-that-breathes-the-atmosphere-trying-to-pull-it-down/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         },
@@ -3543,6 +2663,7 @@
       "sources": [
         "catalog-match",
         "microformat:p-category",
+        "topic-hub:link",
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
@@ -3550,34 +2671,8 @@
       "active": true
     },
     {
-      "slug": "engineering-2",
-      "label": "engineering 2",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
       "slug": "entrepreneurship",
-      "label": "Entrepreneurship",
+      "label": "entrepreneurship",
       "member_count": 1,
       "sites": [
         {
@@ -3594,9 +2689,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3616,28 +2709,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/20/voyagers-doctor-is-the-ai-future-i-hope-we-have-to-think-about/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "ethics-1",
-      "label": "ethics 1",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -3646,9 +2718,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3672,11 +2742,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -3694,28 +2762,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/19/the-brain-may-have-two-developmental-origins-that-is-interesting-enough/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "evolution-1",
-      "label": "evolution 1",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -3724,9 +2771,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3751,28 +2796,7 @@
               "url": "https://joshuamorris.info/notes/2026/08/28/what-does-unlawful-mean-if-the-damage-happens-first/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "executive-power-2",
-      "label": "executive power 2",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -3781,9 +2805,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3807,9 +2829,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3868,9 +2888,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -3929,9 +2947,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -3951,28 +2967,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/02/the-netherlands-is-making-its-gold-easier-to-reach-in-a-crisis/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "financial-markets-4",
-      "label": "financial markets 4",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -3981,85 +2976,10 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
-    },
-    {
-      "slug": "find",
-      "label": "find",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/29/the-internet-saw-a-few-seconds-and-invented-the-rest/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://www.joshcanhelp.com",
-          "domain": "www.joshcanhelp.com",
-          "title": "Josh Can Help",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://www.joshcanhelp.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshcanhelp.com/about/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "visible-text"
-      ],
-      "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
     },
     {
       "slug": "focus",
@@ -4080,9 +3000,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -4111,10 +3029,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -4138,9 +3053,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -4164,9 +3077,7 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
+      "sources": ["meta:keywords"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -4190,9 +3101,7 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
+      "sources": ["meta:keywords"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -4216,9 +3125,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -4238,28 +3145,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/08/my-small-answer-to-the-friendship-recession-is-to-tell-my-friends-they-matter/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "friendship-2",
-      "label": "friendship 2",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -4268,9 +3154,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4294,16 +3178,14 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
+      "sources": ["meta:keywords"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
     },
     {
       "slug": "gnome",
-      "label": "GNOME",
+      "label": "gnome",
       "member_count": 1,
       "sites": [
         {
@@ -4320,9 +3202,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -4365,29 +3245,7 @@
               "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category",
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "google-3",
-      "label": "google 3",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -4396,10 +3254,8 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
+      "sources": ["microformat:p-category", "topic-hub:link"],
+      "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
@@ -4418,6 +3274,11 @@
               "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         },
@@ -4472,35 +3333,10 @@
       ],
       "sources": [
         "microformat:p-category",
-        "portfolio:sector"
-      ],
-      "first_seen_at": "2026-10-03T08:29:09.357Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "government-1",
-      "label": "government 1",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
+        "portfolio:sector",
         "topic-hub:link"
       ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
+      "first_seen_at": "2026-10-03T08:29:09.357Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
@@ -4549,28 +3385,7 @@
               "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "government-ethics-18",
-      "label": "government ethics 18",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -4579,11 +3394,9 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T21:50:07.756Z",
-      "last_changed_at": "2026-10-03T21:50:07.756Z",
+      "sources": ["microformat:p-category", "topic-hub:link"],
+      "first_seen_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
@@ -4640,9 +3453,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -4666,9 +3477,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4713,6 +3522,11 @@
               "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         },
@@ -4730,36 +3544,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "topic-hub:page"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "hardware-9",
-      "label": "hardware 9",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4779,6 +3564,11 @@
               "url": "https://joshuamorris.info/notes/2026/09/04/a-kidney-disease-linked-to-extreme-heat-is-showing-up-in-texas/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         },
@@ -4803,36 +3593,11 @@
       ],
       "sources": [
         "microformat:p-category",
-        "portfolio:sector"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:57:33.407Z",
-      "active": true
-    },
-    {
-      "slug": "health-5",
-      "label": "health 5",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
+        "portfolio:sector",
         "topic-hub:link"
       ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
     },
     {
@@ -4867,10 +3632,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -4919,16 +3681,14 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
     },
     {
       "slug": "hosting-domains",
-      "label": "Hosting / Domains",
+      "label": "hosting domains",
       "member_count": 1,
       "sites": [
         {
@@ -4945,9 +3705,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -4994,9 +3752,7 @@
           ]
         }
       ],
-      "sources": [
-        "visible-text"
-      ],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
       "last_changed_at": "2026-10-03T08:29:09.357Z",
       "active": true
@@ -5020,11 +3776,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -5046,11 +3800,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -5110,9 +3862,7 @@
           ]
         }
       ],
-      "sources": [
-        "visible-text"
-      ],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5171,35 +3921,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "independent-web-18",
-      "label": "independent web 18",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5233,11 +3955,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -5259,11 +3979,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -5285,11 +4003,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -5346,35 +4062,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "indieweb-17",
-      "label": "indieweb 17",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5445,30 +4133,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/15/the-us-fuel-crisis-is-making-canadas-oil-more-valuable-than-ever/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category",
-        "visible-text"
-      ],
-      "first_seen_at": "2026-10-03T08:29:09.357Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "infrastructure-14",
-      "label": "infrastructure 14",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -5478,9 +4143,12 @@
         }
       ],
       "sources": [
-        "topic-hub:link"
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:link",
+        "visible-text"
       ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
+      "first_seen_at": "2026-10-03T08:29:09.357Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
@@ -5499,20 +4167,23 @@
               "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
-      "slug": "institutions-1",
-      "label": "institutions 1",
+      "slug": "intellectual-property",
+      "label": "intellectual property",
       "member_count": 1,
       "sites": [
         {
@@ -5529,37 +4200,9 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "intellectual-property-5",
-      "label": "intellectual property 5",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -5577,28 +4220,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/25/worth-wandering-bartosz-ciechanowski/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "interactive-essays-1",
-      "label": "interactive essays 1",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -5607,9 +4229,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5634,28 +4254,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/29/the-internet-saw-a-few-seconds-and-invented-the-rest/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "internet-culture-2",
-      "label": "internet culture 2",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -5664,9 +4263,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5691,28 +4288,7 @@
               "url": "https://joshuamorris.info/notes/2026/08/29/plugging-in-a-display-should-not-install-adware-on-my-computer/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "internet-of-things-6",
-      "label": "internet of things 6",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -5721,9 +4297,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5758,13 +4332,16 @@
               "url": "https://joshuamorris.info/notes/2026/09/09/my-box-of-cables-is-thirty-years-of-backwards-compatibility/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
@@ -5779,34 +4356,8 @@
       ]
     },
     {
-      "slug": "interoperability-10",
-      "label": "interoperability 10",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
       "slug": "javascript",
-      "label": "JavaScript",
+      "label": "javascript",
       "member_count": 1,
       "sites": [
         {
@@ -5823,9 +4374,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -5849,9 +4398,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -5880,11 +4427,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -5906,11 +4451,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -5932,11 +4475,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -5958,11 +4499,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -5984,11 +4523,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -6010,11 +4547,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -6036,11 +4571,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -6062,11 +4595,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -6103,11 +4634,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -6129,11 +4658,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -6155,11 +4682,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -6181,11 +4706,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -6207,11 +4730,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -6233,11 +4754,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -6259,11 +4778,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -6285,11 +4802,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -6392,18 +4907,14 @@
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category",
-        "visible-text"
-      ],
+      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
-      "slug": "law-14",
-      "label": "law 14",
+      "slug": "lego",
+      "label": "lego",
       "member_count": 1,
       "sites": [
         {
@@ -6420,101 +4931,9 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T21:50:07.756Z",
-      "last_changed_at": "2026-10-03T21:50:07.756Z",
-      "active": true
-    },
-    {
-      "slug": "lego-2",
-      "label": "lego 2",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "less",
-      "label": "less",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://joshtronic.com",
-          "domain": "joshtronic.com",
-          "title": "Joshtronic",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshtronic.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshtronic.com/about/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/29/the-internet-saw-a-few-seconds-and-invented-the-rest/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "visible-text"
-      ],
-      "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -6550,29 +4969,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/09/matthew-grabelsky-turns-the-subway-into-modern-mythology/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "life-12",
-      "label": "life 12",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -6581,9 +4978,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6607,9 +5002,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6652,29 +5045,7 @@
               "url": "https://joshuamorris.info/notes/2026/08/30/one-machine-several-linux-kernels-no-hypervisor/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category",
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "linux-5",
-      "label": "linux 5",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -6683,10 +5054,8 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
+      "sources": ["microformat:p-category", "topic-hub:link"],
+      "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
@@ -6723,29 +5092,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "llm-2",
-      "label": "llm 2",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -6754,9 +5101,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6776,20 +5121,23 @@
               "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
-      "slug": "lock-in-1",
-      "label": "lock in 1",
+      "slug": "machine-learning",
+      "label": "machine learning",
       "member_count": 1,
       "sites": [
         {
@@ -6806,37 +5154,9 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "machine-learning-5",
-      "label": "machine learning 5",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -6886,74 +5206,8 @@
           ]
         }
       ],
-      "sources": [
-        "visible-text"
-      ],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "making",
-      "label": "making",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://joshtronic.com",
-          "domain": "joshtronic.com",
-          "title": "Joshtronic",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshtronic.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshtronic.com/about/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/28/a-satellite-that-breathes-the-atmosphere-trying-to-pull-it-down/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/29/the-internet-saw-a-few-seconds-and-invented-the-rest/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "visible-text"
-      ],
-      "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
@@ -7009,17 +5263,14 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page",
-        "visible-text"
-      ],
+      "sources": ["topic-hub:page", "visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
       "slug": "marketing-advertising",
-      "label": "Marketing / Advertising",
+      "label": "marketing advertising",
       "member_count": 1,
       "sites": [
         {
@@ -7036,9 +5287,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -7097,9 +5346,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -7123,9 +5370,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7145,28 +5390,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/07/jan-conroy-saw-what-others-missed/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "mentorship-2",
-      "label": "mentorship 2",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -7175,9 +5399,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7214,10 +5436,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7307,16 +5526,14 @@
           ]
         }
       ],
-      "sources": [
-        "visible-text"
-      ],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
-      "slug": "networking-10",
-      "label": "networking 10",
+      "slug": "networking",
+      "label": "networking",
       "member_count": 1,
       "sites": [
         {
@@ -7333,11 +5550,9 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -7355,28 +5570,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/19/the-brain-may-have-two-developmental-origins-that-is-interesting-enough/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "neuroscience-3",
-      "label": "neuroscience 3",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -7385,16 +5579,14 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
       "slug": "node-js",
-      "label": "Node.js",
+      "label": "node.js",
       "member_count": 1,
       "sites": [
         {
@@ -7411,9 +5603,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -7437,11 +5627,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -7488,16 +5676,14 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
     },
     {
       "slug": "nosql",
-      "label": "NoSQL",
+      "label": "nosql",
       "member_count": 1,
       "sites": [
         {
@@ -7514,9 +5700,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -7540,9 +5724,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -7567,28 +5749,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/15/the-us-fuel-crisis-is-making-canadas-oil-more-valuable-than-ever/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "oil-2",
-      "label": "oil 2",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -7597,9 +5758,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7623,9 +5782,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7645,28 +5802,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/13/an-online-book-club-across-our-own-websites/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "online-book-club-23",
-      "label": "online book club 23",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -7675,9 +5811,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7701,11 +5835,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -7727,11 +5859,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -7814,38 +5944,8 @@
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category",
-        "topic-hub:page"
-      ],
+      "sources": ["catalog-match", "microformat:p-category", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "open-source-30",
-      "label": "open source 30",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
@@ -7873,11 +5973,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -7910,28 +6008,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/09/my-box-of-cables-is-thirty-years-of-backwards-compatibility/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "ownership-13",
-      "label": "ownership 13",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -7940,9 +6017,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7972,28 +6047,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/09/tristan-eaton-makes-walls-feel-too-small-for-the-art/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "painting-3",
-      "label": "painting 3",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -8002,9 +6056,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8041,10 +6093,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8068,16 +6117,14 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
     },
     {
       "slug": "personal",
-      "label": "Personal",
+      "label": "personal",
       "member_count": 3,
       "sites": [
         {
@@ -8145,10 +6192,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link",
-        "visible-text"
-      ],
+      "sources": ["topic-hub:link", "visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8172,9 +6216,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -8198,9 +6240,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -8224,16 +6264,14 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
       "slug": "php",
-      "label": "PHP",
+      "label": "php",
       "member_count": 1,
       "sites": [
         {
@@ -8250,9 +6288,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -8276,11 +6312,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -8337,9 +6371,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -8363,9 +6395,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:index"
-      ],
+      "sources": ["portfolio:index"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -8389,9 +6419,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8415,9 +6443,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8441,11 +6467,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -8467,11 +6491,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -8546,37 +6568,7 @@
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category",
-        "visible-text"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "privacy-45",
-      "label": "privacy 45",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8596,28 +6588,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/28/sometimes-i-dont-want-an-llm-to-answer-me/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "private-ai-4",
-      "label": "private ai 4",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -8626,16 +6597,14 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
       "slug": "productivity",
-      "label": "Productivity",
+      "label": "productivity",
       "member_count": 1,
       "sites": [
         {
@@ -8652,9 +6621,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -8679,28 +6646,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "programming-2",
-      "label": "programming 2",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -8709,9 +6655,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8803,10 +6747,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector",
-        "visible-text"
-      ],
+      "sources": ["portfolio:sector", "visible-text"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T21:50:07.756Z",
       "active": true
@@ -8865,9 +6806,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -8891,9 +6830,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8938,28 +6875,7 @@
               "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "public-systems-23",
-      "label": "public systems 23",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -8968,11 +6884,9 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T21:50:07.756Z",
-      "last_changed_at": "2026-10-03T21:50:07.756Z",
+      "sources": ["microformat:p-category", "topic-hub:link"],
+      "first_seen_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
@@ -8994,90 +6908,10 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
-    },
-    {
-      "slug": "real",
-      "label": "real",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://www.joshuabaker.com",
-          "domain": "www.joshuabaker.com",
-          "title": "Joshua Baker",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://www.joshuabaker.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/banked-pay-by-bank/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "visible-text"
-      ],
-      "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
     },
     {
       "slug": "recruitment",
@@ -9118,9 +6952,7 @@
           ]
         }
       ],
-      "sources": [
-        "portfolio:sector"
-      ],
+      "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -9144,11 +6976,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -9170,11 +7000,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -9202,28 +7030,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/26/having-regulations-is-not-the-same-thing-as-having-accountability/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "regulation-5",
-      "label": "regulation 5",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -9232,9 +7039,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9258,9 +7063,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9280,6 +7083,11 @@
               "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         },
@@ -9297,38 +7105,9 @@
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category"
-      ],
+      "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:59:21.002Z",
-      "active": true
-    },
-    {
-      "slug": "research-3",
-      "label": "research 3",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
@@ -9350,9 +7129,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9376,16 +7153,14 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
-      "slug": "reward-hacking-3",
-      "label": "reward hacking 3",
+      "slug": "reward-hacking",
+      "label": "reward hacking",
       "member_count": 1,
       "sites": [
         {
@@ -9402,11 +7177,9 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -9428,11 +7201,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -9454,9 +7225,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9480,9 +7249,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9507,28 +7274,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/28/a-satellite-that-breathes-the-atmosphere-trying-to-pull-it-down/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "science-2",
-      "label": "science 2",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -9537,9 +7283,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9559,28 +7303,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/20/voyagers-doctor-is-the-ai-future-i-hope-we-have-to-think-about/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "science-fiction-15",
-      "label": "science fiction 15",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -9589,9 +7312,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9621,28 +7342,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/19/the-brain-may-have-two-developmental-origins-that-is-interesting-enough/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "scientific-evidence-12",
-      "label": "scientific evidence 12",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -9651,9 +7351,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9703,13 +7401,9 @@
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "meta:keywords",
-        "microformat:p-category"
-      ],
+      "sources": ["catalog-match", "meta:keywords", "microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -9731,9 +7425,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9805,36 +7497,7 @@
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "security-48",
-      "label": "security 48",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["catalog-match", "microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9858,16 +7521,14 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
       "slug": "servers-serverless",
-      "label": "Servers / Serverless",
+      "label": "servers serverless",
       "member_count": 1,
       "sites": [
         {
@@ -9884,16 +7545,14 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
     },
     {
       "slug": "shell-script",
-      "label": "Shell Script",
+      "label": "shell script",
       "member_count": 1,
       "sites": [
         {
@@ -9910,9 +7569,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -9936,9 +7593,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9962,9 +7617,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10014,11 +7667,7 @@
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category",
-        "topic-hub:page"
-      ],
+      "sources": ["catalog-match", "microformat:p-category", "topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -10058,6 +7707,11 @@
               "url": "https://joshuamorris.info/notes/2026/09/09/ai-helped-turn-a-wechat-bug-into-a-zero-click-worm-in-about-a-week/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         },
@@ -10083,6 +7737,7 @@
       "sources": [
         "catalog-match",
         "microformat:p-category",
+        "topic-hub:link",
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
@@ -10090,34 +7745,8 @@
       "active": true
     },
     {
-      "slug": "software-11",
-      "label": "software 11",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
       "slug": "software-development",
-      "label": "Software Development",
+      "label": "software development",
       "member_count": 1,
       "sites": [
         {
@@ -10134,9 +7763,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -10208,17 +7835,14 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords",
-        "topic-hub:page"
-      ],
+      "sources": ["meta:keywords", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
-      "slug": "software-engineering-44",
-      "label": "software engineering 44",
+      "slug": "software-preservation",
+      "label": "software preservation",
       "member_count": 1,
       "sites": [
         {
@@ -10235,37 +7859,9 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "software-preservation-5",
-      "label": "software preservation 5",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -10287,9 +7883,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10319,28 +7913,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/28/a-satellite-that-breathes-the-atmosphere-trying-to-pull-it-down/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "space-exploration-12",
-      "label": "space exploration 12",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -10349,9 +7922,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10380,11 +7951,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -10419,10 +7988,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10446,9 +8012,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10472,11 +8036,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -10498,11 +8060,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -10525,28 +8085,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/13/flock-employees-dont-like-being-watched-either/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "surveillance-18",
-      "label": "surveillance 18",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -10555,9 +8094,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10581,9 +8118,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -10645,9 +8180,7 @@
           ]
         }
       ],
-      "sources": [
-        "visible-text"
-      ],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
@@ -10680,9 +8213,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10735,6 +8266,11 @@
               "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         },
@@ -10806,32 +8342,6 @@
       ]
     },
     {
-      "slug": "technology-5",
-      "label": "technology 5",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
       "slug": "testing",
       "label": "testing",
       "member_count": 1,
@@ -10850,9 +8360,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10876,9 +8384,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10902,11 +8408,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -10928,11 +8432,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -10954,9 +8456,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -10980,80 +8480,14 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
-      "slug": "two",
-      "label": "two",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://joshtronic.com",
-          "domain": "joshtronic.com",
-          "title": "Joshtronic",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshtronic.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshtronic.com/about/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/29/the-internet-saw-a-few-seconds-and-invented-the-rest/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "visible-text"
-      ],
-      "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
       "slug": "typescript",
-      "label": "TypeScript",
+      "label": "typescript",
       "member_count": 1,
       "sites": [
         {
@@ -11070,9 +8504,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -11124,11 +8556,7 @@
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category",
-        "visible-text"
-      ],
+      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -11148,28 +8576,7 @@
               "url": "https://joshuamorris.info/notes/2026/08/24/ai-is-exposing-how-much-government-capacity-depends-on-making-services-hard-to-use/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "user-experience-5",
-      "label": "user experience 5",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -11178,9 +8585,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -11204,11 +8609,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -11230,16 +8633,14 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
       "slug": "version-control",
-      "label": "Version Control",
+      "label": "version control",
       "member_count": 1,
       "sites": [
         {
@@ -11256,9 +8657,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -11291,29 +8690,7 @@
               "url": "https://joshuamorris.info/notes/2026/08/29/europes-new-packaging-rules-may-make-small-sellers-stop-shipping-there/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category",
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "video-games-8",
-      "label": "video games 8",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -11322,16 +8699,14 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
+      "sources": ["microformat:p-category", "topic-hub:link"],
+      "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
       "slug": "vim-neovim",
-      "label": "Vim / Neovim",
+      "label": "vim neovim",
       "member_count": 1,
       "sites": [
         {
@@ -11348,9 +8723,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -11374,9 +8747,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -11400,16 +8771,14 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
       "slug": "vps-showdown",
-      "label": "VPS Showdown",
+      "label": "vps showdown",
       "member_count": 1,
       "sites": [
         {
@@ -11426,9 +8795,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -11452,11 +8819,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -11474,28 +8839,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/10/apples-new-watch-is-listening-but-it-is-not-recording-everything/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "wearable-ai-3",
-      "label": "wearable ai 3",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -11504,9 +8848,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -11530,11 +8872,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -11567,28 +8907,7 @@
               "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "web-development-16",
-      "label": "web development 16",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -11597,16 +8916,14 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
       "slug": "web-servers",
-      "label": "Web Servers",
+      "label": "web servers",
       "member_count": 1,
       "sites": [
         {
@@ -11623,9 +8940,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -11649,9 +8964,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -11710,11 +9023,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -11736,11 +9047,9 @@
           ]
         }
       ],
-      "sources": [
-        "meta:keywords"
-      ],
-      "first_seen_at": "2026-10-03T23:04:35.822Z",
-      "last_changed_at": "2026-10-03T23:04:35.822Z",
+      "sources": ["meta:keywords"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -11775,17 +9084,14 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
-      "slug": "workplace-2",
-      "label": "workplace 2",
+      "slug": "workplace",
+      "label": "workplace",
       "member_count": 1,
       "sites": [
         {
@@ -11802,11 +9108,9 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -11834,28 +9138,7 @@
               "url": "https://joshuamorris.info/notes/2026/09/29/the-internet-saw-a-few-seconds-and-invented-the-rest/",
               "title": "",
               "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        "microformat:p-category"
-      ],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "writing-5",
-      "label": "writing 5",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
+            },
             {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
@@ -11864,9 +9147,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -11890,9 +9171,7 @@
           ]
         }
       ],
-      "sources": [
-        "topic-hub:page"
-      ],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -11916,9 +9195,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category"
-      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true

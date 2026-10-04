@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-03T21:51:24.424Z",
+  "generated_at": "2026-10-04T01:50:22.034Z",
   "overlap_count": 6,
   "pairs": [
     {
@@ -52,10 +52,6 @@
           "label": "law"
         },
         {
-          "slug": "less",
-          "label": "less"
-        },
-        {
           "slug": "life",
           "label": "life"
         },
@@ -70,10 +66,6 @@
         {
           "slug": "security",
           "label": "security"
-        },
-        {
-          "slug": "two",
-          "label": "two"
         }
       ]
     },
@@ -131,7 +123,7 @@
         },
         {
           "slug": "personal",
-          "label": "Personal"
+          "label": "personal"
         },
         {
           "slug": "privacy",
@@ -210,10 +202,6 @@
         {
           "slug": "property",
           "label": "property"
-        },
-        {
-          "slug": "real",
-          "label": "real"
         },
         {
           "slug": "research",
@@ -686,37 +674,6 @@
           ]
         },
         {
-          "slug": "less",
-          "label": "less",
-          "articles": [
-            {
-              "url": "https://joshtronic.com/2026/09/13/new-pic-who-dis/",
-              "title": "New pic, who dis?"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/21/homeos-looks-like-apple-is-finally-treating-the-home-as-a-platform/",
-                  "title": "homeOS Looks Like Apple Is Finally Treating the Home as a Platform"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/13/grok-4_6-makes-my-switch-away-from-claude-look-less-unusual/",
-                  "title": "Grok 4.6 Makes My Switch Away from Claude Look Less Unusual"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/07/we-moved-the-goalposts-when-the-machines-started-talking-back/",
-                  "title": "We Moved the Goalposts When the Machines Started Talking Back"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "life",
           "label": "life",
           "articles": [
@@ -891,49 +848,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/22/decayfmt-is-not-a-self-destructing-file-format-but-i-like-the-idea/",
                   "title": "decayfmt Is Not a Self-Destructing File Format, but I Like the Idea"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "two",
-          "label": "two",
-          "articles": [
-            {
-              "url": "https://joshtronic.com/2026/09/06/i-ran-my-agents-from-my-phone-for-two-weeks/",
-              "title": "I ran my agents from my phone for two weeks"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/19/the-brain-may-have-two-developmental-origins-that-is-interesting-enough/",
-                  "title": "The Brain May Have Two Developmental Origins. That Is Interesting Enough."
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/15/the-us-fuel-crisis-is-making-canadas-oil-more-valuable-than-ever/",
-                  "title": "The U.S. Fuel Crisis Is Making Canada's Oil More Valuable Than Ever"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/11/worth-wandering-hundred-rabbits/",
-                  "title": "Worth Wandering: Hundred Rabbits"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/18/camera-equipped-airpods-could-turn-siri-into-a-wearable-ai/",
-                  "title": "Camera-Equipped AirPods Could Turn Siri Into a Wearable AI"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/09/six-more-employees-fired-for-abusing-flock-camera-data/",
-                  "title": "Six More Employees Fired for Abusing Flock Camera Data"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/20/a-title-change-is-a-trade/",
-                  "title": "A Title Change Is a Trade"
                 }
               ]
             }
@@ -1856,37 +1770,6 @@
           ]
         },
         {
-          "slug": "less",
-          "label": "less",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/21/homeos-looks-like-apple-is-finally-treating-the-home-as-a-platform/",
-              "title": "homeOS Looks Like Apple Is Finally Treating the Home as a Platform"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/13/grok-4_6-makes-my-switch-away-from-claude-look-less-unusual/",
-              "title": "Grok 4.6 Makes My Switch Away from Claude Look Less Unusual"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/07/we-moved-the-goalposts-when-the-machines-started-talking-back/",
-              "title": "We Moved the Goalposts When the Machines Started Talking Back"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Joshtronic",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/09/13/new-pic-who-dis/",
-                  "title": "New pic, who dis?"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "life",
           "label": "life",
           "articles": [
@@ -2146,7 +2029,7 @@
         },
         {
           "slug": "personal",
-          "label": "Personal",
+          "label": "personal",
           "articles": [
             {
               "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
@@ -2320,85 +2203,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/07/24/a-duress-password-is-now-being-treated-as-destruction-of-evidence/",
               "title": "A Duress Password Is Now Being Treated as Destruction of Evidence"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.joshuabaker.com",
-              "domain": "www.joshuabaker.com",
-              "title": "Joshua Baker",
-              "articles": [
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=aldworth-james-bond-aldworth-james-bond-2011",
-                  "title": "Aldworth James & Bond"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=allstruct-allstruct-2015",
-                  "title": "AllStruct"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=anthology-london-anthology-london-2015",
-                  "title": "Anthology London"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=anthology-london-business-intelligence-platform-2023",
-                  "title": "Business Intelligence Platform"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=anthology-london-salesforce-platform-integrations-2023",
-                  "title": "Salesforce Platform & Integrations"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=dandara-dandara-living-2021",
-                  "title": "Dandara Living"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=dandara-operations-platform-2021",
-                  "title": "Operations Platform"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=landsec-wellington-house-2013",
-                  "title": "Wellington House"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "real",
-          "label": "real",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
-              "title": "The Interesting Part of an AI Force Is What Comes After the Name"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/01/a-summer-camp-helped-every-student-earn-a-ham-radio-license/",
-              "title": "A Summer Camp Helped Every Student Earn a Ham Radio License"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/23/mcp-is-finally-becoming-boring-http-now-it-needs-real-agent-delegation/",
-              "title": "MCP Is Finally Becoming Boring HTTP. Now It Needs Real Agent Delegation"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/21/the-real-homeos-risk-is-not-homebridge-it-is-what-apple-does-with-hap/",
-              "title": "The Real homeOS Risk Is Not Homebridge. It Is What Apple Does With HAP."
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/21/unbricking-a-cricut-is-better-than-throwing-it-away-but-i-want-the-cricut-removed/",
-              "title": "Unbricking a Cricut Is Better Than Throwing It Away, but I Want the Cricut Removed"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/19/inflation-stopped-rising-so-quickly-the-pay-cut-never-came-back/",
-              "title": "Inflation Stopped Rising So Quickly. The Pay Cut Never Came Back."
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/16/ian-cortina-put-a-real-telnet-bbs-on-a-casio-vx-4/",
-              "title": "Ian Cortina Put a Real Telnet BBS on a Casio VX-4"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/15/the-ai-manifesto-is-becoming-the-second-half-of-the-layoff-memo/",
-              "title": "The AI Manifesto Is Becoming the Second Half of the Layoff Memo"
             }
           ],
           "sites": [
@@ -2796,49 +2600,6 @@
           ]
         },
         {
-          "slug": "two",
-          "label": "two",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/19/the-brain-may-have-two-developmental-origins-that-is-interesting-enough/",
-              "title": "The Brain May Have Two Developmental Origins. That Is Interesting Enough."
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/15/the-us-fuel-crisis-is-making-canadas-oil-more-valuable-than-ever/",
-              "title": "The U.S. Fuel Crisis Is Making Canada's Oil More Valuable Than Ever"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/11/worth-wandering-hundred-rabbits/",
-              "title": "Worth Wandering: Hundred Rabbits"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/18/camera-equipped-airpods-could-turn-siri-into-a-wearable-ai/",
-              "title": "Camera-Equipped AirPods Could Turn Siri Into a Wearable AI"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/09/six-more-employees-fired-for-abusing-flock-camera-data/",
-              "title": "Six More Employees Fired for Abusing Flock Camera Data"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/07/20/a-title-change-is-a-trade/",
-              "title": "A Title Change Is a Trade"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Joshtronic",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/09/06/i-ran-my-agents-from-my-phone-for-two-weeks/",
-                  "title": "I ran my agents from my phone for two weeks"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "united-states",
           "label": "united states",
           "articles": [
@@ -3155,7 +2916,7 @@
         },
         {
           "slug": "personal",
-          "label": "Personal",
+          "label": "personal",
           "articles": [
             {
               "url": "https://www.joshcanhelp.com/personal-data-pipeline-update/",
@@ -4080,85 +3841,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/24/a-duress-password-is-now-being-treated-as-destruction-of-evidence/",
                   "title": "A Duress Password Is Now Being Treated as Destruction of Evidence"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "real",
-          "label": "real",
-          "articles": [
-            {
-              "url": "https://www.joshuabaker.com/work/?work=aldworth-james-bond-aldworth-james-bond-2011",
-              "title": "Aldworth James & Bond"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=allstruct-allstruct-2015",
-              "title": "AllStruct"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=anthology-london-anthology-london-2015",
-              "title": "Anthology London"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=anthology-london-business-intelligence-platform-2023",
-              "title": "Business Intelligence Platform"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=anthology-london-salesforce-platform-integrations-2023",
-              "title": "Salesforce Platform & Integrations"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=dandara-dandara-living-2021",
-              "title": "Dandara Living"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=dandara-operations-platform-2021",
-              "title": "Operations Platform"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=landsec-wellington-house-2013",
-              "title": "Wellington House"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
-                  "title": "The Interesting Part of an AI Force Is What Comes After the Name"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/01/a-summer-camp-helped-every-student-earn-a-ham-radio-license/",
-                  "title": "A Summer Camp Helped Every Student Earn a Ham Radio License"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/23/mcp-is-finally-becoming-boring-http-now-it-needs-real-agent-delegation/",
-                  "title": "MCP Is Finally Becoming Boring HTTP. Now It Needs Real Agent Delegation"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/21/the-real-homeos-risk-is-not-homebridge-it-is-what-apple-does-with-hap/",
-                  "title": "The Real homeOS Risk Is Not Homebridge. It Is What Apple Does With HAP."
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/21/unbricking-a-cricut-is-better-than-throwing-it-away-but-i-want-the-cricut-removed/",
-                  "title": "Unbricking a Cricut Is Better Than Throwing It Away, but I Want the Cricut Removed"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/19/inflation-stopped-rising-so-quickly-the-pay-cut-never-came-back/",
-                  "title": "Inflation Stopped Rising So Quickly. The Pay Cut Never Came Back."
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/16/ian-cortina-put-a-real-telnet-bbs-on-a-casio-vx-4/",
-                  "title": "Ian Cortina Put a Real Telnet BBS on a Casio VX-4"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/15/the-ai-manifesto-is-becoming-the-second-half-of-the-layoff-memo/",
-                  "title": "The AI Manifesto Is Becoming the Second Half of the Layoff Memo"
                 }
               ]
             }

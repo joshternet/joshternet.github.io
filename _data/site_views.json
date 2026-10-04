@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-03T23:05:30.341Z",
+  "generated_at": "2026-10-04T01:50:22.034Z",
   "sites": [
     {
       "origin": "https://joshternet.org",
@@ -253,7 +253,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-03T23:04:35.822Z"
+      "crawled_at": "2026-10-04T01:48:41.305Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -309,7 +309,7 @@
         },
         {
           "slug": "command-line-interface",
-          "label": "Command-line Interface"
+          "label": "command line interface"
         },
         {
           "slug": "css",
@@ -337,7 +337,7 @@
         },
         {
           "slug": "entrepreneurship",
-          "label": "Entrepreneurship"
+          "label": "entrepreneurship"
         },
         {
           "slug": "food",
@@ -357,7 +357,7 @@
         },
         {
           "slug": "gnome",
-          "label": "GNOME"
+          "label": "gnome"
         },
         {
           "slug": "google",
@@ -369,7 +369,7 @@
         },
         {
           "slug": "hosting-domains",
-          "label": "Hosting / Domains"
+          "label": "hosting domains"
         },
         {
           "slug": "infrastructure",
@@ -377,15 +377,11 @@
         },
         {
           "slug": "javascript",
-          "label": "JavaScript"
+          "label": "javascript"
         },
         {
           "slug": "law",
           "label": "law"
-        },
-        {
-          "slug": "less",
-          "label": "less"
         },
         {
           "slug": "life",
@@ -400,12 +396,8 @@
           "label": "llm"
         },
         {
-          "slug": "making",
-          "label": "making"
-        },
-        {
           "slug": "marketing-advertising",
-          "label": "Marketing / Advertising"
+          "label": "marketing advertising"
         },
         {
           "slug": "money",
@@ -413,11 +405,11 @@
         },
         {
           "slug": "node-js",
-          "label": "Node.js"
+          "label": "node.js"
         },
         {
           "slug": "nosql",
-          "label": "NoSQL"
+          "label": "nosql"
         },
         {
           "slug": "open-source",
@@ -429,15 +421,15 @@
         },
         {
           "slug": "personal",
-          "label": "Personal"
+          "label": "personal"
         },
         {
           "slug": "php",
-          "label": "PHP"
+          "label": "php"
         },
         {
           "slug": "productivity",
-          "label": "Productivity"
+          "label": "productivity"
         },
         {
           "slug": "security",
@@ -445,15 +437,15 @@
         },
         {
           "slug": "servers-serverless",
-          "label": "Servers / Serverless"
+          "label": "servers serverless"
         },
         {
           "slug": "shell-script",
-          "label": "Shell Script"
+          "label": "shell script"
         },
         {
           "slug": "software-development",
-          "label": "Software Development"
+          "label": "software development"
         },
         {
           "slug": "sql",
@@ -468,16 +460,12 @@
           "label": "technology"
         },
         {
-          "slug": "two",
-          "label": "two"
-        },
-        {
           "slug": "typescript",
-          "label": "TypeScript"
+          "label": "typescript"
         },
         {
           "slug": "version-control",
-          "label": "Version Control"
+          "label": "version control"
         },
         {
           "slug": "video-games",
@@ -485,15 +473,15 @@
         },
         {
           "slug": "vim-neovim",
-          "label": "Vim / Neovim"
+          "label": "vim neovim"
         },
         {
           "slug": "vps-showdown",
-          "label": "VPS Showdown"
+          "label": "vps showdown"
         },
         {
           "slug": "web-servers",
-          "label": "Web Servers"
+          "label": "web servers"
         },
         {
           "slug": "wordpress",
@@ -533,7 +521,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-03T23:04:35.822Z"
+      "crawled_at": "2026-10-04T01:48:41.305Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -586,364 +574,188 @@
           "label": "ai"
         },
         {
-          "slug": "ai-78",
-          "label": "ai 78"
-        },
-        {
           "slug": "ai-agents",
           "label": "ai agents"
-        },
-        {
-          "slug": "ai-agents-23",
-          "label": "ai agents 23"
         },
         {
           "slug": "ai-security",
           "label": "ai security"
         },
         {
-          "slug": "ai-security-13",
-          "label": "ai security 13"
-        },
-        {
           "slug": "apple",
           "label": "apple"
-        },
-        {
-          "slug": "apple-1",
-          "label": "apple 1"
         },
         {
           "slug": "architecture",
           "label": "architecture"
         },
         {
-          "slug": "architecture-2",
-          "label": "architecture 2"
-        },
-        {
           "slug": "art",
           "label": "art"
-        },
-        {
-          "slug": "art-5",
-          "label": "art 5"
         },
         {
           "slug": "benchmarks",
           "label": "benchmarks"
         },
         {
-          "slug": "benchmarks-3",
-          "label": "benchmarks 3"
-        },
-        {
           "slug": "biology",
           "label": "biology"
-        },
-        {
-          "slug": "biology-1",
-          "label": "biology 1"
         },
         {
           "slug": "blogging",
           "label": "blogging"
         },
         {
-          "slug": "blogging-3",
-          "label": "blogging 3"
-        },
-        {
           "slug": "books",
           "label": "books"
         },
         {
-          "slug": "books-27",
-          "label": "books 27"
-        },
-        {
-          "slug": "browsers-8",
-          "label": "browsers 8"
+          "slug": "browsers",
+          "label": "browsers"
         },
         {
           "slug": "building",
           "label": "building"
         },
         {
-          "slug": "built",
-          "label": "built"
-        },
-        {
           "slug": "business",
           "label": "business"
-        },
-        {
-          "slug": "business-26",
-          "label": "business 26"
         },
         {
           "slug": "california-ballot-2026",
           "label": "california ballot 2026"
         },
         {
-          "slug": "california-ballot-2026-4",
-          "label": "california ballot 2026 4"
-        },
-        {
           "slug": "canada",
           "label": "canada"
-        },
-        {
-          "slug": "canada-1",
-          "label": "canada 1"
         },
         {
           "slug": "career",
           "label": "career"
         },
         {
-          "slug": "career-4",
-          "label": "career 4"
-        },
-        {
-          "slug": "cars-5",
-          "label": "cars 5"
+          "slug": "cars",
+          "label": "cars"
         },
         {
           "slug": "chromebooks",
           "label": "chromebooks"
         },
         {
-          "slug": "chromebooks-1",
-          "label": "chromebooks 1"
-        },
-        {
           "slug": "civil-liberties",
           "label": "civil liberties"
-        },
-        {
-          "slug": "civil-liberties-7",
-          "label": "civil liberties 7"
         },
         {
           "slug": "community",
           "label": "community"
         },
         {
-          "slug": "community-5",
-          "label": "community 5"
-        },
-        {
           "slug": "computer-vision",
           "label": "computer vision"
-        },
-        {
-          "slug": "computer-vision-1",
-          "label": "computer vision 1"
         },
         {
           "slug": "computing-history",
           "label": "computing history"
         },
         {
-          "slug": "computing-history-12",
-          "label": "computing history 12"
-        },
-        {
           "slug": "consumer-protection",
           "label": "consumer protection"
-        },
-        {
-          "slug": "consumer-protection-1",
-          "label": "consumer protection 1"
         },
         {
           "slug": "craftsmanship",
           "label": "craftsmanship"
         },
         {
-          "slug": "craftsmanship-7",
-          "label": "craftsmanship 7"
+          "slug": "css",
+          "label": "css"
         },
         {
-          "slug": "css-3",
-          "label": "css 3"
-        },
-        {
-          "slug": "cyber-deck-1",
-          "label": "cyber deck 1"
+          "slug": "cyber-deck",
+          "label": "cyber deck"
         },
         {
           "slug": "data-brokers",
           "label": "data brokers"
         },
         {
-          "slug": "data-brokers-4",
-          "label": "data brokers 4"
-        },
-        {
           "slug": "databases",
           "label": "databases"
-        },
-        {
-          "slug": "databases-1",
-          "label": "databases 1"
         },
         {
           "slug": "design",
           "label": "design"
         },
         {
-          "slug": "design-16",
-          "label": "design 16"
-        },
-        {
           "slug": "developer-tools",
           "label": "developer tools"
-        },
-        {
-          "slug": "developer-tools-2",
-          "label": "developer tools 2"
         },
         {
           "slug": "digital-rights",
           "label": "digital rights"
         },
         {
-          "slug": "digital-rights-18",
-          "label": "digital rights 18"
-        },
-        {
           "slug": "discovery",
           "label": "discovery"
-        },
-        {
-          "slug": "discovery-6",
-          "label": "discovery 6"
         },
         {
           "slug": "earth-observation",
           "label": "earth observation"
         },
         {
-          "slug": "earth-observation-1",
-          "label": "earth observation 1"
-        },
-        {
           "slug": "economics",
           "label": "economics"
-        },
-        {
-          "slug": "economics-25",
-          "label": "economics 25"
         },
         {
           "slug": "education",
           "label": "education"
         },
         {
-          "slug": "education-6",
-          "label": "education 6"
-        },
-        {
           "slug": "energy",
           "label": "energy"
-        },
-        {
-          "slug": "energy-9",
-          "label": "energy 9"
         },
         {
           "slug": "engineering",
           "label": "engineering"
         },
         {
-          "slug": "engineering-2",
-          "label": "engineering 2"
-        },
-        {
           "slug": "ethics",
           "label": "ethics"
-        },
-        {
-          "slug": "ethics-1",
-          "label": "ethics 1"
         },
         {
           "slug": "evolution",
           "label": "evolution"
         },
         {
-          "slug": "evolution-1",
-          "label": "evolution 1"
-        },
-        {
           "slug": "executive-power",
           "label": "executive power"
-        },
-        {
-          "slug": "executive-power-2",
-          "label": "executive power 2"
         },
         {
           "slug": "financial-markets",
           "label": "financial markets"
         },
         {
-          "slug": "financial-markets-4",
-          "label": "financial markets 4"
-        },
-        {
-          "slug": "find",
-          "label": "find"
-        },
-        {
           "slug": "friendship",
           "label": "friendship"
-        },
-        {
-          "slug": "friendship-2",
-          "label": "friendship 2"
         },
         {
           "slug": "google",
           "label": "google"
         },
         {
-          "slug": "google-3",
-          "label": "google 3"
-        },
-        {
           "slug": "government",
           "label": "government"
-        },
-        {
-          "slug": "government-1",
-          "label": "government 1"
         },
         {
           "slug": "government-ethics",
           "label": "government ethics"
         },
         {
-          "slug": "government-ethics-18",
-          "label": "government ethics 18"
-        },
-        {
           "slug": "hardware",
           "label": "hardware"
         },
         {
-          "slug": "hardware-9",
-          "label": "hardware 9"
-        },
-        {
           "slug": "health",
           "label": "health"
-        },
-        {
-          "slug": "health-5",
-          "label": "health 5"
         },
         {
           "slug": "independent",
@@ -954,128 +766,68 @@
           "label": "independent web"
         },
         {
-          "slug": "independent-web-18",
-          "label": "independent web 18"
-        },
-        {
           "slug": "indieweb",
           "label": "indieweb"
-        },
-        {
-          "slug": "indieweb-17",
-          "label": "indieweb 17"
         },
         {
           "slug": "infrastructure",
           "label": "infrastructure"
         },
         {
-          "slug": "infrastructure-14",
-          "label": "infrastructure 14"
-        },
-        {
           "slug": "institutions",
           "label": "institutions"
         },
         {
-          "slug": "institutions-1",
-          "label": "institutions 1"
-        },
-        {
-          "slug": "intellectual-property-5",
-          "label": "intellectual property 5"
+          "slug": "intellectual-property",
+          "label": "intellectual property"
         },
         {
           "slug": "interactive-essays",
           "label": "interactive essays"
         },
         {
-          "slug": "interactive-essays-1",
-          "label": "interactive essays 1"
-        },
-        {
           "slug": "internet-culture",
           "label": "internet culture"
-        },
-        {
-          "slug": "internet-culture-2",
-          "label": "internet culture 2"
         },
         {
           "slug": "internet-of-things",
           "label": "internet of things"
         },
         {
-          "slug": "internet-of-things-6",
-          "label": "internet of things 6"
-        },
-        {
           "slug": "interoperability",
           "label": "interoperability"
-        },
-        {
-          "slug": "interoperability-10",
-          "label": "interoperability 10"
         },
         {
           "slug": "law",
           "label": "law"
         },
         {
-          "slug": "law-14",
-          "label": "law 14"
-        },
-        {
-          "slug": "lego-2",
-          "label": "lego 2"
-        },
-        {
-          "slug": "less",
-          "label": "less"
+          "slug": "lego",
+          "label": "lego"
         },
         {
           "slug": "life",
           "label": "life"
         },
         {
-          "slug": "life-12",
-          "label": "life 12"
-        },
-        {
           "slug": "linux",
           "label": "linux"
-        },
-        {
-          "slug": "linux-5",
-          "label": "linux 5"
         },
         {
           "slug": "llm",
           "label": "llm"
         },
         {
-          "slug": "llm-2",
-          "label": "llm 2"
-        },
-        {
           "slug": "lock-in",
           "label": "lock in"
         },
         {
-          "slug": "lock-in-1",
-          "label": "lock in 1"
-        },
-        {
-          "slug": "machine-learning-5",
-          "label": "machine learning 5"
+          "slug": "machine-learning",
+          "label": "machine learning"
         },
         {
           "slug": "magazine",
           "label": "magazine"
-        },
-        {
-          "slug": "making",
-          "label": "making"
         },
         {
           "slug": "medical-research",
@@ -1086,32 +838,20 @@
           "label": "mentorship"
         },
         {
-          "slug": "mentorship-2",
-          "label": "mentorship 2"
-        },
-        {
           "slug": "network",
           "label": "network"
         },
         {
-          "slug": "networking-10",
-          "label": "networking 10"
+          "slug": "networking",
+          "label": "networking"
         },
         {
           "slug": "neuroscience",
           "label": "neuroscience"
         },
         {
-          "slug": "neuroscience-3",
-          "label": "neuroscience 3"
-        },
-        {
           "slug": "oil",
           "label": "oil"
-        },
-        {
-          "slug": "oil-2",
-          "label": "oil 2"
         },
         {
           "slug": "online-advertising",
@@ -1122,32 +862,16 @@
           "label": "online book club"
         },
         {
-          "slug": "online-book-club-23",
-          "label": "online book club 23"
-        },
-        {
           "slug": "open-source",
           "label": "open source"
-        },
-        {
-          "slug": "open-source-30",
-          "label": "open source 30"
         },
         {
           "slug": "ownership",
           "label": "ownership"
         },
         {
-          "slug": "ownership-13",
-          "label": "ownership 13"
-        },
-        {
           "slug": "painting",
           "label": "painting"
-        },
-        {
-          "slug": "painting-3",
-          "label": "painting 3"
         },
         {
           "slug": "parenting",
@@ -1155,7 +879,7 @@
         },
         {
           "slug": "personal",
-          "label": "Personal"
+          "label": "personal"
         },
         {
           "slug": "personhood",
@@ -1174,24 +898,12 @@
           "label": "privacy"
         },
         {
-          "slug": "privacy-45",
-          "label": "privacy 45"
-        },
-        {
           "slug": "private-ai",
           "label": "private ai"
         },
         {
-          "slug": "private-ai-4",
-          "label": "private ai 4"
-        },
-        {
           "slug": "programming",
           "label": "programming"
-        },
-        {
-          "slug": "programming-2",
-          "label": "programming 2"
         },
         {
           "slug": "property",
@@ -1206,24 +918,12 @@
           "label": "public systems"
         },
         {
-          "slug": "public-systems-23",
-          "label": "public systems 23"
-        },
-        {
           "slug": "python",
           "label": "python"
         },
         {
-          "slug": "real",
-          "label": "real"
-        },
-        {
           "slug": "regulation",
           "label": "regulation"
-        },
-        {
-          "slug": "regulation-5",
-          "label": "regulation 5"
         },
         {
           "slug": "rememberance",
@@ -1234,16 +934,12 @@
           "label": "research"
         },
         {
-          "slug": "research-3",
-          "label": "research 3"
-        },
-        {
           "slug": "resilience",
           "label": "resilience"
         },
         {
-          "slug": "reward-hacking-3",
-          "label": "reward hacking 3"
+          "slug": "reward-hacking",
+          "label": "reward hacking"
         },
         {
           "slug": "satellites",
@@ -1258,24 +954,12 @@
           "label": "science"
         },
         {
-          "slug": "science-2",
-          "label": "science 2"
-        },
-        {
           "slug": "science-fiction",
           "label": "science fiction"
         },
         {
-          "slug": "science-fiction-15",
-          "label": "science fiction 15"
-        },
-        {
           "slug": "scientific-evidence",
           "label": "scientific evidence"
-        },
-        {
-          "slug": "scientific-evidence-12",
-          "label": "scientific evidence 12"
         },
         {
           "slug": "search",
@@ -1284,10 +968,6 @@
         {
           "slug": "security",
           "label": "security"
-        },
-        {
-          "slug": "security-48",
-          "label": "security 48"
         },
         {
           "slug": "simplicity",
@@ -1302,20 +982,12 @@
           "label": "software"
         },
         {
-          "slug": "software-11",
-          "label": "software 11"
-        },
-        {
           "slug": "software-engineering",
           "label": "software engineering"
         },
         {
-          "slug": "software-engineering-44",
-          "label": "software engineering 44"
-        },
-        {
-          "slug": "software-preservation-5",
-          "label": "software preservation 5"
+          "slug": "software-preservation",
+          "label": "software preservation"
         },
         {
           "slug": "space",
@@ -1324,10 +996,6 @@
         {
           "slug": "space-exploration",
           "label": "space exploration"
-        },
-        {
-          "slug": "space-exploration-12",
-          "label": "space exploration 12"
         },
         {
           "slug": "sql",
@@ -1342,10 +1010,6 @@
           "label": "surveillance"
         },
         {
-          "slug": "surveillance-18",
-          "label": "surveillance 18"
-        },
-        {
           "slug": "technical",
           "label": "technical"
         },
@@ -1358,16 +1022,8 @@
           "label": "technology"
         },
         {
-          "slug": "technology-5",
-          "label": "technology 5"
-        },
-        {
           "slug": "trade",
           "label": "trade"
-        },
-        {
-          "slug": "two",
-          "label": "two"
         },
         {
           "slug": "united-states",
@@ -1378,16 +1034,8 @@
           "label": "user experience"
         },
         {
-          "slug": "user-experience-5",
-          "label": "user experience 5"
-        },
-        {
           "slug": "video-games",
           "label": "video games"
-        },
-        {
-          "slug": "video-games-8",
-          "label": "video games 8"
         },
         {
           "slug": "visualization",
@@ -1402,28 +1050,16 @@
           "label": "wearable ai"
         },
         {
-          "slug": "wearable-ai-3",
-          "label": "wearable ai 3"
-        },
-        {
           "slug": "web-development",
           "label": "web development"
         },
         {
-          "slug": "web-development-16",
-          "label": "web development 16"
-        },
-        {
-          "slug": "workplace-2",
-          "label": "workplace 2"
+          "slug": "workplace",
+          "label": "workplace"
         },
         {
           "slug": "writing",
           "label": "writing"
-        },
-        {
-          "slug": "writing-5",
-          "label": "writing 5"
         },
         {
           "slug": "youtube",
@@ -1476,7 +1112,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-03T23:04:35.822Z"
+      "crawled_at": "2026-10-04T01:48:41.305Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -1570,10 +1206,6 @@
           "label": "facebook"
         },
         {
-          "slug": "find",
-          "label": "find"
-        },
-        {
           "slug": "focus",
           "label": "focus"
         },
@@ -1631,7 +1263,7 @@
         },
         {
           "slug": "personal",
-          "label": "Personal"
+          "label": "personal"
         },
         {
           "slug": "personal-data",
@@ -1722,7 +1354,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-03T23:04:35.822Z"
+      "crawled_at": "2026-10-04T01:48:41.305Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -1778,10 +1410,6 @@
         {
           "slug": "building",
           "label": "building"
-        },
-        {
-          "slug": "built",
-          "label": "built"
         },
         {
           "slug": "business",
@@ -1888,10 +1516,6 @@
           "label": "property & real estate"
         },
         {
-          "slug": "real",
-          "label": "real"
-        },
-        {
           "slug": "recruitment",
           "label": "recruitment"
         },
@@ -1950,7 +1574,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-03T23:04:35.822Z",
+      "crawled_at": "2026-10-04T01:48:41.305Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 145,

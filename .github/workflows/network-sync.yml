@@ -86,9 +86,9 @@ jobs:
         if: steps.preflight.outputs.needs_sync == 'true'
         run: npm ci
 
-      - name: Run network tests
+      - name: Run library tests with 100% coverage gate
         if: steps.preflight.outputs.needs_sync == 'true'
-        run: npm test
+        run: npm run test:coverage
 
       - name: Install Playwright Chromium
         if: steps.preflight.outputs.needs_sync == 'true'
