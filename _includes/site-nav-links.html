@@ -1,7 +1,7 @@
 {% comment %}
   Goal: Primary nav. About, Network, Implement, and JoshBot nest children.
-  Wander and Search stay top-level. variant=compact uses raindrop
-  disclosures; wide leaves children to site-nav-secondary rows.
+  Wander and Search stay top-level. Compact uses a full-row accordion;
+  wide leaves children to site-nav-secondary rows.
 {% endcomment %}
 {% include site-nav-sections.html %}
 {% assign variant = include.variant | default: 'wide' %}
@@ -21,31 +21,13 @@
     data-nav-branch="about"
   >
     {% if variant == 'compact' %}
-      <div class="site-nav__branch-row">
-        <a
-          href="{{ '/about/' | relative_url }}"
-          {% if page.url == '/about/' %}
-            aria-current="page"
-          {% elsif about_section %}
-            aria-current="true"
-          {% endif %}
-          >About</a
-        >
-        <details
-          class="site-nav__branch"
-          {% if about_section %}
-            open
-          {% endif %}
-        >
-          <summary>
-            <span class="site-nav__raindrop" aria-hidden="true"></span>
-            <span class="visually-hidden">About submenu</span>
-          </summary>
-          <ul class="site-nav__children">
-            {% include site-nav-about-children.html %}
-          </ul>
-        </details>
-      </div>
+      {%
+        include site-nav-compact-branch.html
+        label="About"
+        path="/about/"
+        children="site-nav-about-children.html"
+        open=about_section
+      %}
     {% else %}
       <a
         href="{{ '/about/' | relative_url }}"
@@ -63,31 +45,13 @@
     data-nav-branch="network"
   >
     {% if variant == 'compact' %}
-      <div class="site-nav__branch-row">
-        <a
-          href="{{ '/network/' | relative_url }}"
-          {% if page.url == '/network/' %}
-            aria-current="page"
-          {% elsif network_section %}
-            aria-current="true"
-          {% endif %}
-          >Network</a
-        >
-        <details
-          class="site-nav__branch"
-          {% if network_section %}
-            open
-          {% endif %}
-        >
-          <summary>
-            <span class="site-nav__raindrop" aria-hidden="true"></span>
-            <span class="visually-hidden">Network submenu</span>
-          </summary>
-          <ul class="site-nav__children">
-            {% include site-nav-network-children.html %}
-          </ul>
-        </details>
-      </div>
+      {%
+        include site-nav-compact-branch.html
+        label="Network"
+        path="/network/"
+        children="site-nav-network-children.html"
+        open=network_section
+      %}
     {% else %}
       <a
         href="{{ '/network/' | relative_url }}"
@@ -132,31 +96,13 @@
     data-nav-branch="implement"
   >
     {% if variant == 'compact' %}
-      <div class="site-nav__branch-row">
-        <a
-          href="{{ '/implement/' | relative_url }}"
-          {% if page.url == '/implement/' %}
-            aria-current="page"
-          {% elsif implement_section %}
-            aria-current="true"
-          {% endif %}
-          >Implement</a
-        >
-        <details
-          class="site-nav__branch"
-          {% if implement_section %}
-            open
-          {% endif %}
-        >
-          <summary>
-            <span class="site-nav__raindrop" aria-hidden="true"></span>
-            <span class="visually-hidden">Implement submenu</span>
-          </summary>
-          <ul class="site-nav__children">
-            {% include site-nav-implement-children.html %}
-          </ul>
-        </details>
-      </div>
+      {%
+        include site-nav-compact-branch.html
+        label="Implement"
+        path="/implement/"
+        children="site-nav-implement-children.html"
+        open=implement_section
+      %}
     {% else %}
       <a
         href="{{ '/implement/' | relative_url }}"
@@ -174,31 +120,13 @@
     data-nav-branch="joshbot"
   >
     {% if variant == 'compact' %}
-      <div class="site-nav__branch-row">
-        <a
-          href="{{ '/joshbot/' | relative_url }}"
-          {% if page.url == '/joshbot/' %}
-            aria-current="page"
-          {% elsif joshbot_section %}
-            aria-current="true"
-          {% endif %}
-          >JoshBot</a
-        >
-        <details
-          class="site-nav__branch"
-          {% if joshbot_section %}
-            open
-          {% endif %}
-        >
-          <summary>
-            <span class="site-nav__raindrop" aria-hidden="true"></span>
-            <span class="visually-hidden">JoshBot submenu</span>
-          </summary>
-          <ul class="site-nav__children">
-            {% include site-nav-joshbot-children.html %}
-          </ul>
-        </details>
-      </div>
+      {%
+        include site-nav-compact-branch.html
+        label="JoshBot"
+        path="/joshbot/"
+        children="site-nav-joshbot-children.html"
+        open=joshbot_section
+      %}
     {% else %}
       <a
         href="{{ '/joshbot/' | relative_url }}"

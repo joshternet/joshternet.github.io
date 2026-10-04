@@ -90,14 +90,18 @@ test("primary navigation keeps top-level labels and Implement children", async (
     /item\.url contains ':\/\/'[\s\S]*target="_blank"/,
   );
   assert.match(links, /site-nav__item--joshbot/);
-  assert.match(links, /JoshBot submenu/);
+  assert.match(links, /site-nav-compact-branch\.html/);
+  assert.match(
+    await read("_includes/site-nav-compact-branch.html"),
+    /include site-nav-about-children\.html/,
+  );
   assert.match(links, /site-nav__item--implement/);
   assert.match(links, /site-nav__item--network/);
   assert.match(links, /site-nav__item--about/);
-  assert.match(links, /site-nav__raindrop/);
-  assert.match(links, /Implement submenu/);
-  assert.match(links, /Network submenu/);
-  assert.match(links, /About submenu/);
+  assert.match(styles, /site-nav-secondary/);
+  assert.match(links, /label="Implement"/);
+  assert.match(links, /label="Network"/);
+  assert.match(links, /label="About"/);
   assert.match(links, /aria-current="true"/);
   assert.match(links, /variant == ['"]compact['"]/);
   assert.match(children, /site\.data\.implement_nav/);
@@ -148,7 +152,37 @@ test("primary navigation keeps top-level labels and Implement children", async (
   assert.match(layout, /variant="wide"/);
   assert.match(styles, /site-header__top/);
   assert.match(styles, /site-nav-secondary/);
-  assert.match(styles, /site-nav__raindrop/);
+  assert.match(
+    styles,
+    /\.site-nav--compact\s*\{[^}]*max-height:\s*min\(36rem, calc\(100dvh - 5\.5rem\)\)/,
+  );
+  assert.match(
+    styles,
+    /\.site-nav--compact \.site-nav__children\s*\{[^}]*border-inline-start/,
+  );
+  assert.match(
+    styles,
+    /\.site-nav--compact \.site-nav__list\s*\{[^}]*align-items:\s*stretch/,
+  );
+  assert.match(
+    styles,
+    /\.site-nav--compact \.site-nav__branch > summary\s*\{[^}]*width:\s*100%/,
+  );
+  assert.match(
+    styles,
+    /\.site-nav--compact \.site-nav__branch\[open\] > summary::after\s*\{[^}]*transform:\s*rotate\(180deg\)/,
+  );
+  assert.match(styles, /\.site-nav-menu > summary\s*\{/);
+  assert.doesNotMatch(styles, /\.site-nav-menu\[open\] summary\s*\{/);
+  assert.match(
+    await read("_includes/site-nav-compact-branch.html"),
+    /<details/,
+  );
+  assert.match(
+    await read("_includes/site-nav-compact-branch.html"),
+    /<summary>\{\{ include\.label \}\}<\/summary>/,
+  );
+  assert.doesNotMatch(links, /site-nav__branch-row/);
   assert.match(layout, /site-nav\.js['"] \| relative_url \}\}\?v=/);
   const navScript = await read("assets/js/site-nav.js");
   assert.match(navScript, /pointerenter/);
