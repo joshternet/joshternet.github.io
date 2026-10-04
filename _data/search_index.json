@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-04T15:33:18.390Z",
+  "generated_at": "2026-10-04T23:11:15.950Z",
   "document_count": 727,
   "documents": [
     {
@@ -179,18 +179,6 @@
     },
     {
       "type": "topic",
-      "title": "agent",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/agent/",
-      "topics": [
-        "agent",
-        "agent"
-      ]
-    },
-    {
-      "type": "topic",
       "title": "infrastructure",
       "summary": "3 participating sites",
       "domain": "",
@@ -223,6 +211,18 @@
       "topics": [
         "property",
         "property"
+      ]
+    },
+    {
+      "type": "topic",
+      "title": "agent",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/agent/",
+      "topics": [
+        "agent",
+        "agent"
       ]
     },
     {
@@ -1211,18 +1211,6 @@
     },
     {
       "type": "topic",
-      "title": "databases",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/databases/",
-      "topics": [
-        "databases",
-        "databases"
-      ]
-    },
-    {
-      "type": "topic",
       "title": "email",
       "summary": "2 participating sites",
       "domain": "",
@@ -1255,6 +1243,18 @@
       "topics": [
         "linkedin",
         "linkedin"
+      ]
+    },
+    {
+      "type": "topic",
+      "title": "money",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/money/",
+      "topics": [
+        "money",
+        "money"
       ]
     },
     {
@@ -1619,6 +1619,18 @@
     },
     {
       "type": "topic",
+      "title": "databases",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/databases/",
+      "topics": [
+        "databases",
+        "databases"
+      ]
+    },
+    {
+      "type": "topic",
       "title": "devops",
       "summary": "1 participating sites",
       "domain": "",
@@ -1795,18 +1807,6 @@
       "topics": [
         "mentorship",
         "mentorship"
-      ]
-    },
-    {
-      "type": "topic",
-      "title": "money",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/money/",
-      "topics": [
-        "money",
-        "money"
       ]
     },
     {
@@ -4035,19 +4035,6 @@
     },
     {
       "type": "content",
-      "title": "Sandbox Coding Agents with a Separate User Account",
-      "summary": "I don't trust our new robot overlords at all. I also don't fully believe that agents are out there dropping production databases without some serious coercion to do so. And while I don't trust the robots, I trust myself only a trivial amount more, so my local access tends to be extremely thin. But not so thin that a rogue agent couldn't do a little damage. That all said, I am constantly calibratin",
-      "domain": "joshtronic.com",
-      "origin": "https://joshtronic.com",
-      "url": "https://joshtronic.com/2026/07/12/sandbox-coding-agents/",
-      "topics": [],
-      "site_title": "Joshtronic",
-      "published_at": "2026-07-12T00:00:00.000Z",
-      "image": "",
-      "image_origin": ""
-    },
-    {
-      "type": "content",
       "title": "Invite Systems are an Open Relay",
       "summary": "Every time I think I've seen it all from spammers, they do something that surprises me. The ingenuity of bad actors is an interesting thing. I always wonder what sort of world we'd live in if their efforts were focused on good. What sucks the most is when they abuse something that's intended to bring people together. Case in point, an invite system. It exists to allow somebody the chance to get th",
       "domain": "joshtronic.com",
@@ -4186,6 +4173,19 @@
       "topics": [],
       "site_title": "Joshtronic",
       "published_at": "2026-09-27T00:00:00.000Z",
+      "image": "",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
+      "title": "Confessions of a Middle-Aged Domain Hoarder",
+      "summary": "I personally own well over 100 domains. A select few of them are actually live. The rest? Parked, forwarded, or none of the above. These domains cost me real money. For whatever reason, I've chosen to be loyal to a domain registrar that doesn't have the best prices, unless you jump through some weird hoops with their discount program. I've been thinking a lot about the cost of things, especially t",
+      "domain": "joshtronic.com",
+      "origin": "https://joshtronic.com",
+      "url": "https://joshtronic.com/2026/10/04/confessions-domain-hoarder/",
+      "topics": [],
+      "site_title": "Joshtronic",
+      "published_at": "2026-10-04T00:00:00.000Z",
       "image": "",
       "image_origin": ""
     },

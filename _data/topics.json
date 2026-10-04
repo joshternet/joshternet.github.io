@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-04T19:37:51.679Z",
+  "generated_at": "2026-10-04T23:10:26.695Z",
   "community_count": 262,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
@@ -2434,21 +2434,8 @@
     {
       "slug": "databases",
       "label": "databases",
-      "member_count": 2,
+      "member_count": 1,
       "sites": [
-        {
-          "origin": "https://joshtronic.com",
-          "domain": "joshtronic.com",
-          "title": "Joshtronic",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshtronic.com/2026/07/12/sandbox-coding-agents/",
-              "title": "",
-              "source": "catalog-match"
-            }
-          ]
-        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -2469,13 +2456,13 @@
         }
       ],
       "sources": [
-        "catalog-match",
         "microformat:p-category",
         "topic-hub:link"
       ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
+      "last_changed_at": "2026-10-04T23:10:26.695Z",
+      "active": true,
+      "stale_since": "2026-10-04T23:10:26.695Z"
     },
     {
       "slug": "debian-ubuntu",

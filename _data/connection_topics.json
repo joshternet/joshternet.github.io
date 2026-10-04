@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-04T15:33:18.390Z",
+  "generated_at": "2026-10-04T23:11:15.950Z",
   "overlap_count": 10,
   "pairs": [
     {
@@ -280,10 +280,6 @@
           "label": "claude"
         },
         {
-          "slug": "databases",
-          "label": "databases"
-        },
-        {
           "slug": "email",
           "label": "email"
         },
@@ -358,6 +354,10 @@
         {
           "slug": "ai",
           "label": "ai"
+        },
+        {
+          "slug": "money",
+          "label": "money"
         }
       ]
     },
@@ -2248,10 +2248,6 @@
             {
               "url": "https://joshtronic.com/2026/08/02/observations-building-pr-review-loop/",
               "title": "Observations From Building a PR Review Loop"
-            },
-            {
-              "url": "https://joshtronic.com/2026/07/12/sandbox-coding-agents/",
-              "title": "Sandbox Coding Agents with a Separate User Account"
             }
           ],
           "sites": [
@@ -2583,29 +2579,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/25/context-engineering-has-to-evolve-with-the-model/",
                   "title": "Context Engineering Has to Evolve with the Model"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "databases",
-          "label": "databases",
-          "articles": [
-            {
-              "url": "https://joshtronic.com/2026/07/12/sandbox-coding-agents/",
-              "title": "Sandbox Coding Agents with a Separate User Account"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/27/safe-not-safe-is-the-kind-of-developer-resource-i-want-more-of/",
-                  "title": "Safe / Not Safe Is the Kind of Developer Resource I Want More Of"
                 }
               ]
             }
@@ -2967,6 +2940,29 @@
           ]
         },
         {
+          "slug": "money",
+          "label": "money",
+          "articles": [
+            {
+              "url": "https://joshtronic.com/2026/10/04/confessions-domain-hoarder/",
+              "title": "Confessions of a Middle-Aged Domain Hoarder"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=money-advice-service-money-map-2011",
+                  "title": "Money Map"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "open-source",
           "label": "open source",
           "articles": [
@@ -3172,10 +3168,6 @@
                 {
                   "url": "https://joshtronic.com/2026/08/02/observations-building-pr-review-loop/",
                   "title": "Observations From Building a PR Review Loop"
-                },
-                {
-                  "url": "https://joshtronic.com/2026/07/12/sandbox-coding-agents/",
-                  "title": "Sandbox Coding Agents with a Separate User Account"
                 }
               ]
             },
@@ -3873,29 +3865,6 @@
                 {
                   "url": "https://www.joshcanhelp.com/personal-data-pipeline/",
                   "title": "Imagining a Personal Data Pipeline"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "databases",
-          "label": "databases",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/27/safe-not-safe-is-the-kind-of-developer-resource-i-want-more-of/",
-              "title": "Safe / Not Safe Is the Kind of Developer Resource I Want More Of"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Joshtronic",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/07/12/sandbox-coding-agents/",
-                  "title": "Sandbox Coding Agents with a Separate User Account"
                 }
               ]
             }
@@ -6674,10 +6643,6 @@
                 {
                   "url": "https://joshtronic.com/2026/08/02/observations-building-pr-review-loop/",
                   "title": "Observations From Building a PR Review Loop"
-                },
-                {
-                  "url": "https://joshtronic.com/2026/07/12/sandbox-coding-agents/",
-                  "title": "Sandbox Coding Agents with a Separate User Account"
                 }
               ]
             },
@@ -7350,6 +7315,29 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/26/superhuman-mutants-may-still-be-on-the-evolutionary-roadmap/",
                   "title": "Superhuman Mutants May Still Be on the Evolutionary Roadmap"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "money",
+          "label": "money",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/?work=money-advice-service-money-map-2011",
+              "title": "Money Map"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Joshtronic",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/04/confessions-domain-hoarder/",
+                  "title": "Confessions of a Middle-Aged Domain Hoarder"
                 }
               ]
             }
