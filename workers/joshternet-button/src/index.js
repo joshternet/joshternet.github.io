@@ -3,11 +3,12 @@
  * Public Joshternet membership button service. Registry is the only membership
  * source. Never fetch the supplied origin or /.well-known/josh. Fail closed
  * when the registry cannot be read (never show Join on registry failure).
+ * Artwork is inline SVG from the embed after a successful state check, not a
+ * downloadable image file.
  *
  * Routes:
  * - GET /embed/joshternet-button.js
  * - GET /api/button-state?origin=
- * - GET /button?origin=  (PNG via ASSETS or 204 when unavailable)
  */
 
 import {
@@ -33,7 +34,7 @@ const DEFAULT_REGISTRY_URL =
   "https://raw.githubusercontent.com/joshternet/index-data/main/registry.json";
 
 const DEFAULT_SITE_ORIGIN = "https://joshternet.org";
-const EMBED_VERSION = "20261003";
+const EMBED_VERSION = "20261004";
 const REGISTRY_CACHE_TTL_SECONDS = 300;
 const STATE_CACHE_TTL_SECONDS = 300;
 
@@ -83,15 +84,6 @@ function config(env) {
 
 /**
  * @param {string} siteOrigin
- * @param {string} file
- * @returns {string}
- */
-function staticButtonURL(siteOrigin, file) {
-  return `${siteOrigin}/assets/buttons/${file}`;
-}
-
-/**
- * @param {string} siteOrigin
  * @param {ReturnType<typeof buttonStateForOrigin>} state
  * @returns {string}
  */
@@ -109,11 +101,10 @@ function hrefForState(siteOrigin, state) {
  *   SITE_ORIGIN?: string,
  *   REGISTRY_URL?: string,
  *   EMBED_VERSION?: string,
- *   ASSETS?: { fetch: (input: RequestInfo) => Promise<Response> },
  * }} env
  * @param {string} origin
  * @returns {Promise<
- *   | { ok: true, state: ReturnType<typeof buttonStateForOrigin>, imageURL: string, href: string }
+ *   | { ok: true, state: ReturnType<typeof buttonStateForOrigin>, href: string }
  *   | { ok: false, reason: "unavailable" }
  * >}
  */
@@ -127,7 +118,6 @@ async function resolveButton(request, env, origin) {
     return {
       ok: true,
       state,
-      imageURL: staticButtonURL(siteOrigin, state.file),
       href: hrefForState(siteOrigin, state),
     };
   } catch (error) {
@@ -248,7 +238,7 @@ async function handleButtonState(request, env) {
     );
   }
 
-  const { state, imageURL, href } = resolved;
+  const { state, href } = resolved;
 
   return json(
     {
@@ -257,7 +247,6 @@ async function handleButtonState(request, env) {
       state: state.state,
       alt: state.alt,
       linkLabel: state.linkLabel,
-      imageURL,
       href,
       member: state.member,
     },
@@ -268,64 +257,6 @@ async function handleButtonState(request, env) {
       Vary: "Origin",
     },
   );
-}
-
-/**
- * @param {Request} request
- * @param {Env} env
- * @returns {Promise<Response>}
- */
-async function handleButtonImage(request, env) {
-  const url = new URL(request.url);
-  const normalized = normalizeButtonOrigin(url.searchParams.get("origin"));
-
-  if (!normalized.ok) {
-    return new Response(null, {
-      status: 400,
-      headers: {
-        "Cache-Control": "no-store",
-        "X-Content-Type-Options": "nosniff",
-      },
-    });
-  }
-
-  const resolved = await resolveButton(request, env, normalized.origin);
-
-  if (!resolved.ok) {
-    return new Response(null, {
-      status: 204,
-      headers: {
-        "Cache-Control": "no-store",
-        "X-Content-Type-Options": "nosniff",
-      },
-    });
-  }
-
-  if (env.ASSETS) {
-    const asset = await env.ASSETS.fetch(
-      new Request(new URL(`/buttons/${resolved.state.file}`, request.url), {
-        method: "GET",
-      }),
-    );
-
-    if (asset.ok) {
-      const headers = new Headers(asset.headers);
-      headers.set("Content-Type", "image/png");
-      headers.set("X-Content-Type-Options", "nosniff");
-      headers.set(
-        "Cache-Control",
-        `public, max-age=${STATE_CACHE_TTL_SECONDS}`,
-      );
-      headers.set("X-Joshternet-Button-State", resolved.state.state);
-
-      return new Response(asset.body, {
-        status: 200,
-        headers,
-      });
-    }
-  }
-
-  return Response.redirect(resolved.imageURL, 302);
 }
 
 /**
@@ -354,7 +285,6 @@ function handleEmbedScript(env) {
  *   SITE_ORIGIN?: string,
  *   REGISTRY_URL?: string,
  *   EMBED_VERSION?: string,
- *   ASSETS?: { fetch: (input: RequestInfo) => Promise<Response> },
  * }} Env
  */
 
@@ -370,7 +300,6 @@ export default {
     if (request.method === "OPTIONS") {
       if (
         url.pathname === "/api/button-state" ||
-        url.pathname === "/button" ||
         url.pathname === "/embed/joshternet-button.js"
       ) {
         return new Response(null, {
@@ -404,27 +333,6 @@ export default {
 
     if (url.pathname === "/api/button-state") {
       return handleButtonState(request, env);
-    }
-
-    if (url.pathname === "/button") {
-      return handleButtonImage(request, env);
-    }
-
-    if (url.pathname === "/buttons" || url.pathname.startsWith("/buttons/")) {
-      if (env.ASSETS) {
-        const asset = await env.ASSETS.fetch(request);
-
-        if (asset.ok) {
-          const headers = new Headers(asset.headers);
-          headers.set("Content-Type", "image/png");
-          headers.set("X-Content-Type-Options", "nosniff");
-          headers.set("Cache-Control", "public, max-age=31536000, immutable");
-          return new Response(asset.body, {
-            status: 200,
-            headers,
-          });
-        }
-      }
     }
 
     return json(

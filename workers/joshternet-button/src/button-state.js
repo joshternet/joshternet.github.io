@@ -8,28 +8,24 @@
 export const BUTTON_STATES = {
   "verified-josh": {
     state: "verified-josh",
-    file: "verified-josh.png",
     alt: "Verified Josh, Joshternet site",
     linkLabel: "Verified Josh on the Joshternet",
     member: true,
   },
   "verified-non-josh": {
     state: "verified-non-josh",
-    file: "verified-non-josh.png",
     alt: "Verified Non-Josh, Joshternet site",
     linkLabel: "Verified Non-Josh on the Joshternet",
     member: true,
   },
   undeclared: {
     state: "undeclared",
-    file: "undeclared.png",
     alt: "Undeclared, Joshternet site",
     linkLabel: "Undeclared Joshternet site",
     member: true,
   },
   join: {
     state: "join",
-    file: "join-the-joshternet.png",
     alt: "Join the Joshternet",
     linkLabel: "Join the Joshternet",
     member: false,

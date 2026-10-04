@@ -5,7 +5,6 @@ on:
     paths:
       - ".github/workflows/joshternet-button.yml"
       - "workers/joshternet-button/**"
-      - "assets/buttons/**"
 
   push:
     branches:
@@ -13,7 +12,6 @@ on:
     paths:
       - ".github/workflows/joshternet-button.yml"
       - "workers/joshternet-button/**"
-      - "assets/buttons/**"
 
   workflow_dispatch:
 

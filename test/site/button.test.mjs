@@ -1,8 +1,8 @@
 /**
- * Goal: Button docs and assets for Joshternet web buttons.
+ * Goal: Button docs and embed contract without reusable image files.
  */
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
@@ -17,18 +17,6 @@ async function read(relativePath) {
   return readFile(path.join(root, relativePath), "utf8");
 }
 
-/**
- * @param {Buffer} bytes
- * @returns {{ width: number, height: number }}
- */
-function pngDimensions(bytes) {
-  assert.equal(bytes.subarray(0, 8).toString("binary"), "\x89PNG\r\n\x1a\n");
-  return {
-    width: bytes.readUInt32BE(16),
-    height: bytes.readUInt32BE(20),
-  };
-}
-
 test("button page documents all four states and the one-line embed", async () => {
   const page = await read("implement/buttons.md");
   const nav = await read("_data/implement_nav.yml");
@@ -39,13 +27,17 @@ test("button page documents all four states and the one-line embed", async () =>
 
   assert.match(page, /permalink: \/implement\/buttons\//);
   assert.match(page, /window\.location\.origin/);
-  assert.match(page, /verified-josh\.png/);
-  assert.match(page, /verified-non-josh\.png/);
-  assert.match(page, /undeclared\.png/);
-  assert.match(page, /join-the-joshternet\.png/);
+  assert.match(page, /Verified Josh/);
+  assert.match(page, /Verified Non-Josh/);
+  assert.match(page, /Undeclared/);
+  assert.match(page, /Join the Joshternet/);
+  assert.match(page, /joshternet-button\.js/);
   assert.match(page, /script-src https:\/\/joshternet\.org/);
-  assert.match(page, /img-src https:\/\/joshternet\.org/);
   assert.match(page, /connect-src https:\/\/joshternet\.org/);
+  assert.doesNotMatch(page, /img-src https:\/\/joshternet\.org/);
+  assert.doesNotMatch(page, /\.png/);
+  assert.doesNotMatch(page, /assets\/buttons/);
+  assert.doesNotMatch(page, /imageURL/);
   assert.match(
     page,
     /src="https:\/\/joshternet\.org\/embed\/joshternet-button\.js"/,
@@ -61,21 +53,35 @@ test("button page documents all four states and the one-line embed", async () =>
   assert.match(layout, /site-footer__button/);
   assert.match(layout, /joshternet-button\.js/);
   assert.match(wrangler, /joshternet\.org\/embed\/\*/);
-  assert.match(wrangler, /joshternet\.org\/button\*/);
   assert.match(wrangler, /joshternet\.org\/api\/button-state\*/);
+  assert.doesNotMatch(wrangler, /joshternet\.org\/button\*/);
+  assert.doesNotMatch(wrangler, /assets:\s*\{/);
+  assert.doesNotMatch(wrangler, /"directory": "\.\/public"/);
   assert.match(wrangler, /www\.joshternet\.org\/embed\/\*/);
 });
 
-test("official button assets are 88 by 31 PNGs", async () => {
-  for (const file of [
-    "verified-josh.png",
-    "verified-non-josh.png",
-    "undeclared.png",
-    "join-the-joshternet.png",
+test("official button files are not published under assets/buttons", async () => {
+  for (const relativePath of [
+    "assets/buttons",
+    "assets/buttons/verified-josh.png",
+    "assets/buttons/verified-non-josh.png",
+    "assets/buttons/undeclared.png",
+    "assets/buttons/join-the-joshternet.png",
+    "workers/joshternet-button/public/buttons/verified-josh.png",
+    "workers/joshternet-button/public/buttons/verified-non-josh.png",
+    "workers/joshternet-button/public/buttons/undeclared.png",
+    "workers/joshternet-button/public/buttons/join-the-joshternet.png",
   ]) {
-    const bytes = await readFile(path.join(root, "assets/buttons", file));
-    const size = pngDimensions(bytes);
-    assert.equal(size.width, 88, file);
-    assert.equal(size.height, 31, file);
+    await assert.rejects(
+      () => access(path.join(root, relativePath)),
+      (error) => {
+        assert.equal(
+          /** @type {NodeJS.ErrnoException} */ (error).code,
+          "ENOENT",
+        );
+        return true;
+      },
+      `${relativePath} must not be published`,
+    );
   }
 });

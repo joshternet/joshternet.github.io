@@ -68,7 +68,13 @@ test("dev script and development CSP do not kill processes", async () => {
   assert.doesNotMatch(script, /pkill|kill -9|lsof|fuser/i);
   assert.match(layout, /http:\/\/127\.0\.0\.1:35729/);
   assert.match(layout, /ws:\/\/127\.0\.0\.1:35729/);
-  assert.match(buttonPkg, /--ip 127\.0\.0\.1 --port 8790/);
-  assert.match(checkPkg, /--ip 127\.0\.0\.1 --port 8789/);
-  assert.match(nominatePkg, /--ip 127\.0\.0\.1 --port 8787/);
+  assert.match(
+    buttonPkg,
+    /--ip 127\.0\.0\.1 --port 8790 --inspector-port 9230/,
+  );
+  assert.match(checkPkg, /--ip 127\.0\.0\.1 --port 8789 --inspector-port 9231/);
+  assert.match(
+    nominatePkg,
+    /--ip 127\.0\.0\.1 --port 8787 --inspector-port 9232/,
+  );
 });

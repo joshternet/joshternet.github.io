@@ -19,6 +19,8 @@
 
 ### Changed
 
+- Local `npm run dev` gives each Worker its own Wrangler inspector port (`9230` / `9231` / `9232`) so the three `wrangler dev` processes do not collide on the default `127.0.0.1:9230`.
+- Official Joshternet buttons render as registry-validated inline SVG from the one-line embed. `/api/button-state` keeps `ok`, `state`, `href`, `alt`, and `linkLabel` and no longer returns `imageURL`. Worker image routes and `/assets/buttons/` files are gone (#59).
 - `/joshbot/` retention disclosure aligned to JoshBot v1.1.0 using the JoshBot README, `docs/crawler.md`, `docs/retention.md`, and crawl telemetry schema: sanitized crawl telemetry and durable ops state are stated; false “no page depth / page history” claims removed; default ~30-day cleanup called out; still not a web archive (#54).
 - Feature PRs no longer ship regenerated crawl/view `_data` JSON; hourly `network-sync` owns that publish set on `main` (hand-edited nav/config under `_data/` still belongs in PRs).
 - Ghost platform recipe fact-hardening: `routes.yaml` trailing-slash rules (required + forced), `content_type` cannot satisfy the exact path, Ghost(Pro) subdirectory/proxy as a paid Business-plan add-on, and citations to Ghost reverse-proxy, routing, and subdirectory help. Dropped the after-title “exact path / not `.json`” lecture; title and recipe steps already carry that.
