@@ -1,9 +1,11 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
-import path from "node:path";
 import test from "node:test";
-import { fileURLToPath } from "node:url";
 
+import {
+  BUTTON_ARTWORK_HEIGHT,
+  BUTTON_ARTWORK_WIDTH,
+  svgMarkupForState,
+} from "../src/button-artwork.js";
 import {
   BUTTON_STATES,
   buttonStateForOrigin,
@@ -14,21 +16,6 @@ import {
 import { buildEmbedScript } from "../src/embed-script.js";
 import { normalizeButtonOrigin } from "../src/origin.js";
 import worker from "../src/index.js";
-
-const root = fileURLToPath(new URL("..", import.meta.url));
-const siteButtons = path.resolve(root, "../../assets/buttons");
-
-/**
- * @param {Buffer} bytes
- * @returns {{ width: number, height: number }}
- */
-function pngDimensions(bytes) {
-  assert.equal(bytes.subarray(0, 8).toString("binary"), "\x89PNG\r\n\x1a\n");
-  return {
-    width: bytes.readUInt32BE(16),
-    height: bytes.readUInt32BE(20),
-  };
-}
 
 const registryFixture = {
   format_version: 1,
@@ -157,17 +144,29 @@ test("normalizeButtonOrigin accepts defaults ports and rejects credentials", () 
   assert.equal(normalizeButtonOrigin("").ok, false);
 });
 
-test("shipped button PNGs are exactly 88 by 31", async () => {
-  for (const file of Object.values(BUTTON_STATES).map((state) => state.file)) {
-    const bytes = await readFile(path.join(siteButtons, file));
-    const size = pngDimensions(bytes);
+test("each official state has 88 by 31 crisp SVG with a title and no raster", () => {
+  for (const meta of Object.values(BUTTON_STATES)) {
+    const markup = svgMarkupForState(meta.state, meta.alt);
 
-    assert.equal(size.width, 88, file);
-    assert.equal(size.height, 31, file);
+    assert.match(
+      markup,
+      new RegExp(
+        `viewBox="0 0 ${BUTTON_ARTWORK_WIDTH} ${BUTTON_ARTWORK_HEIGHT}"`,
+      ),
+    );
+    assert.match(markup, /width="88"/);
+    assert.match(markup, /height="31"/);
+    assert.match(markup, /shape-rendering="crispEdges"/);
+    assert.match(markup, new RegExp(`<title>${meta.alt}</title>`));
+    assert.doesNotMatch(markup, /<image\b/i);
+    assert.doesNotMatch(markup, /data:image/i);
+    assert.doesNotMatch(markup, /\.png/i);
   }
+
+  assert.equal(svgMarkupForState("unavailable", "x"), "");
 });
 
-test("affirmed registry origin returns verified-josh JSON", async () => {
+test("affirmed registry origin returns verified-josh JSON without imageURL", async () => {
   const previous = globalThis.fetch;
   globalThis.fetch = async () => registryResponse(registryFixture);
 
@@ -191,11 +190,9 @@ test("affirmed registry origin returns verified-josh JSON", async () => {
     assert.equal(body.ok, true);
     assert.equal(body.state, "verified-josh");
     assert.equal(body.alt, BUTTON_STATES["verified-josh"].alt);
-    assert.equal(
-      body.imageURL,
-      "https://joshternet.org/assets/buttons/verified-josh.png",
-    );
+    assert.equal(body.linkLabel, BUTTON_STATES["verified-josh"].linkLabel);
     assert.equal(body.href, "https://joshternet.org/network/");
+    assert.equal(Object.hasOwn(body, "imageURL"), false);
   } finally {
     globalThis.fetch = previous;
   }
@@ -222,6 +219,8 @@ test("unknown origin returns join and declined maps to verified-non-josh", async
 
     assert.equal(unknown.state, "join");
     assert.equal(unknown.href, "https://joshternet.org/implement/");
+    assert.equal(unknown.linkLabel, BUTTON_STATES.join.linkLabel);
+    assert.equal(Object.hasOwn(unknown, "imageURL"), false);
     assert.equal(declined.state, "verified-non-josh");
   } finally {
     globalThis.fetch = previous;
@@ -282,26 +281,36 @@ test("registry redirect fails closed instead of following", async () => {
   }
 });
 
-test("button image returns 204 when the registry is unavailable", async () => {
+test("retired image routes fail closed", async () => {
   const previous = globalThis.fetch;
-  globalThis.fetch = async () => registryResponse({ error: true }, 500);
+  globalThis.fetch = async () => registryResponse(registryFixture);
 
   try {
-    const response = await worker.fetch(
+    const button = await worker.fetch(
       request("/button", "https://affirmed.example"),
       {
         SITE_ORIGIN: "https://joshternet.org",
       },
     );
+    const asset = await worker.fetch(
+      request("/buttons/verified-josh.png", null),
+      {
+        SITE_ORIGIN: "https://joshternet.org",
+      },
+    );
+    const buttonBody = await button.json();
+    const assetBody = await asset.json();
 
-    assert.equal(response.status, 204);
-    assert.equal(await response.text(), "");
+    assert.equal(button.status, 404);
+    assert.equal(asset.status, 404);
+    assert.equal(buttonBody.code, "not_found");
+    assert.equal(assetBody.code, "not_found");
   } finally {
     globalThis.fetch = previous;
   }
 });
 
-test("embed script detects location.origin and requests button-state", () => {
+test("embed script inserts inline SVG after button-state and never loads an image file", () => {
   const source = buildEmbedScript({
     version: "test",
     siteOrigin: "https://joshternet.org",
@@ -309,10 +318,14 @@ test("embed script detects location.origin and requests button-state", () => {
 
   assert.match(source, /window\.location\.origin/);
   assert.match(source, /\/api\/button-state\?origin=/);
-  assert.match(source, /\/button\?origin=/);
-  assert.match(source, /img\.width = 88/);
-  assert.match(source, /img\.height = 31/);
   assert.match(source, /state === "unavailable"/);
+  assert.match(source, /innerHTML = artwork\[payload\.state\]/);
+  assert.doesNotMatch(source, /\/button\?origin=/);
+  assert.doesNotMatch(source, /img\.src/);
+  assert.doesNotMatch(source, /imageURL/);
+  assert.match(source, /viewBox=\\"0 0 88 31\\"/);
+  assert.match(source, /<title>Verified Josh, Joshternet site<\/title>/);
+  assert.doesNotMatch(source, /<image\b/i);
 });
 
 test("embed route returns javascript with nosniff", async () => {
@@ -332,4 +345,5 @@ test("embed route returns javascript with nosniff", async () => {
   );
   assert.equal(response.headers.get("x-content-type-options"), "nosniff");
   assert.match(body, /Joshternet button embed test/);
+  assert.match(body, /innerHTML = artwork\[payload\.state\]/);
 });

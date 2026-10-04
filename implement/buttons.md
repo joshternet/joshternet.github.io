@@ -39,58 +39,30 @@ Start the local stack with `npm run dev` (Jekyll plus this Worker on
 After JoshBot verifies a declaration and the registry updates, the button
 changes automatically. Site owners do not need to edit the embed again.
 
+The graphic is inline SVG created by that script after a registry check. Do
+not host or hotlink a standalone button image.
+
 ## Button states
 
-<div class="button-gallery">
-  <figure class="button-gallery__item">
-    <img
-      src="{{ '/assets/buttons/verified-josh.png' | relative_url }}"
-      width="88"
-      height="31"
-      alt="Verified Josh, Joshternet site"
-    >
-    <figcaption>
-      <strong>Verified Josh</strong>
-      Registry member with Affirmed Josh Identity.
-    </figcaption>
-  </figure>
-  <figure class="button-gallery__item">
-    <img
-      src="{{ '/assets/buttons/verified-non-josh.png' | relative_url }}"
-      width="88"
-      height="31"
-      alt="Verified Non-Josh, Joshternet site"
-    >
-    <figcaption>
-      <strong>Verified Non-Josh</strong>
-      Registry member with Declined Josh Identity.
-    </figcaption>
-  </figure>
-  <figure class="button-gallery__item">
-    <img
-      src="{{ '/assets/buttons/undeclared.png' | relative_url }}"
-      width="88"
-      height="31"
-      alt="Undeclared, Joshternet site"
-    >
-    <figcaption>
-      <strong>Undeclared</strong>
-      Registry member with Undeclared Josh Identity.
-    </figcaption>
-  </figure>
-  <figure class="button-gallery__item">
-    <img
-      src="{{ '/assets/buttons/join-the-joshternet.png' | relative_url }}"
-      width="88"
-      height="31"
-      alt="Join the Joshternet"
-    >
-    <figcaption>
-      <strong>Join the Joshternet</strong>
-      Registry lookup succeeded and the origin is not a member.
-    </figcaption>
-  </figure>
-</div>
+The live embed below is the official face for this site’s current registry
+state.
+
+{% if jekyll.environment == "development" %}
+<script async src="http://127.0.0.1:8790/embed/joshternet-button.js"></script>
+{% else %}
+<script
+  async
+  src="https://joshternet.org/embed/joshternet-button.js"
+></script>
+{% endif %}
+
+The other faces exist only inside that same embed, after a successful lookup:
+
+- **Verified Josh** — registry member with Affirmed Josh Identity.
+- **Verified Non-Josh** — registry member with Declined Josh Identity.
+- **Undeclared** — registry member with Undeclared Josh Identity.
+- **Join the Joshternet** — registry lookup succeeded and the origin is not a
+  member.
 
 If the registry cannot be read, the embed renders nothing. A temporary
 Joshternet outage must never make an existing member look like they left.
@@ -111,9 +83,10 @@ Sites with a restrictive CSP need to allow Joshternet for the embed:
 
 ```text
 script-src https://joshternet.org
-img-src https://joshternet.org
 connect-src https://joshternet.org
 ```
+
+The graphic is inline SVG, so the embed does not need `img-src`.
 
 ## Accessibility
 
@@ -128,6 +101,7 @@ does not shift.
 GET https://joshternet.org/api/button-state?origin=https://example.invalid
 ```
 
-Returns JSON for the registry-backed state, including `imageURL`, `href`, and
-`alt`. Registry failures return `state: "unavailable"` and must not be treated
-as Join.
+Returns JSON for the registry-backed state, including `state`, `href`, `alt`,
+and `linkLabel`. It does not include a file URL for a standalone image.
+Registry failures return `state: "unavailable"` and must not be treated as
+Join.

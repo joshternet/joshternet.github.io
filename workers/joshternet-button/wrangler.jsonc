@@ -7,15 +7,11 @@
   "vars": {
     "SITE_ORIGIN": "https://joshternet.org",
     "REGISTRY_URL": "https://raw.githubusercontent.com/joshternet/index-data/main/registry.json",
-    "EMBED_VERSION": "20261003",
+    "EMBED_VERSION": "20261004",
   },
   "routes": [
     {
       "pattern": "joshternet.org/embed/*",
-      "zone_name": "joshternet.org",
-    },
-    {
-      "pattern": "joshternet.org/button*",
       "zone_name": "joshternet.org",
     },
     {
@@ -27,18 +23,9 @@
       "zone_name": "joshternet.org",
     },
     {
-      "pattern": "www.joshternet.org/button*",
-      "zone_name": "joshternet.org",
-    },
-    {
       "pattern": "www.joshternet.org/api/button-state*",
       "zone_name": "joshternet.org",
     },
   ],
-  "assets": {
-    "directory": "./public",
-    "binding": "ASSETS",
-    "run_worker_first": true,
-  },
   "account_id": "f578c2fa49cafc49ee039b79b5663a26",
 }

@@ -1,7 +1,8 @@
 # Joshternet button Worker
 
-Serves IndieWeb-style Joshternet membership buttons and the one-line embed
-script on joshternet.org.
+Serves the one-line Joshternet membership embed on joshternet.org. After a
+registry-backed state check, the embed inserts inline SVG. This Worker does
+not publish downloadable button image files.
 
 Registry membership is the only source of truth. This Worker never fetches
 the supplied origin or `/.well-known/josh`.
@@ -12,10 +13,13 @@ Wrangler attaches these Cloudflare zone routes on deploy:
 
 - `https://joshternet.org/embed/joshternet-button.js`
 - `https://joshternet.org/api/button-state?origin=…`
-- `https://joshternet.org/button?origin=…`
 
-The same paths are routed on `www.joshternet.org`. Static button artwork stays
-on GitHub Pages at `/assets/buttons/`. Docs live at `/implement/buttons/`.
+The same paths are routed on `www.joshternet.org`. Docs live at
+`/implement/buttons/`.
+
+`/api/button-state` returns `ok`, `state`, `href`, `alt`, and `linkLabel`.
+It does not return an image file URL. WordPress and other clients that map
+`state` onto their own local artwork can keep doing that.
 
 ## Local development
 
@@ -26,9 +30,9 @@ npm run dev
 ```
 
 From the site root, `npm run dev` starts Jekyll with LiveReload and this
-Worker together. Wrangler listens on `http://127.0.0.1:8790`. Optional `.dev.vars` can set
-`SITE_ORIGIN=http://127.0.0.1:4000` so image and link URLs point at the local
-Jekyll preview instead of production.
+Worker together. Wrangler listens on `http://127.0.0.1:8790`. Optional
+`.dev.vars` can set `SITE_ORIGIN=http://127.0.0.1:4000` so link URLs point
+at the local Jekyll preview instead of production.
 
 ```html
 <script async src="http://127.0.0.1:8790/embed/joshternet-button.js"></script>
@@ -38,5 +42,6 @@ Jekyll preview instead of production.
 
 ```bash
 npm test
+npm run check
 npm run deploy
 ```
