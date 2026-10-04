@@ -959,11 +959,12 @@ test("search topics only come from published topic communities", () => {
     content: {
       items: [
         {
-          url: "https://a.example/aws-note",
+          url: "https://a.example/privacy-note",
           site_origin: "https://a.example",
-          title: "AWS note",
+          title: "Notes on privacy",
           published_at: "2026-10-01T00:00:00.000Z",
           declared_topics: [
+            { slug: "privacy", label: "privacy", community_eligible: true },
             { slug: "aws", label: "AWS", community_eligible: true },
             { slug: "eleventy", label: "Eleventy", community_eligible: true },
           ],
@@ -999,10 +1000,87 @@ test("search topics only come from published topic communities", () => {
     "/topics/privacy/",
   ]);
   assert.ok(
+    views.topic_views.neighborhoods.some((item) => item.slug === "privacy"),
+  );
+  assert.ok(
     !views.topic_views.neighborhoods.some((item) => item.slug === "aws"),
   );
   assert.ok(
     !views.topic_views.neighborhoods.some((item) => item.slug === "eleventy"),
+  );
+});
+
+test("search omits topic communities with no matching article members", () => {
+  const views = buildViewDocuments({
+    network: [
+      { origin: "https://a.example", domain: "a.example", title: "A" },
+      { origin: "https://b.example", domain: "b.example", title: "B" },
+    ],
+    content: {
+      items: [
+        {
+          url: "https://a.example/privacy-note",
+          site_origin: "https://a.example",
+          title: "Notes on privacy",
+          published_at: "2026-10-01T00:00:00.000Z",
+          declared_topics: [
+            { slug: "privacy", label: "privacy", community_eligible: true },
+          ],
+        },
+      ],
+    },
+    topics: {
+      communities: [
+        {
+          slug: "privacy",
+          label: "privacy",
+          member_count: 1,
+          sites: [
+            {
+              origin: "https://a.example",
+              domain: "a.example",
+              membership: "declared",
+            },
+          ],
+        },
+        {
+          slug: "eleventy",
+          label: "Eleventy",
+          member_count: 2,
+          sites: [
+            {
+              origin: "https://a.example",
+              domain: "a.example",
+              membership: "declared",
+            },
+            {
+              origin: "https://b.example",
+              domain: "b.example",
+              membership: "declared",
+            },
+          ],
+        },
+      ],
+    },
+    connections: {},
+    siteSignals: { origins: [] },
+    generatedAt: "2026-10-03T12:00:00.000Z",
+    now: new Date("2026-10-03T12:00:00.000Z"),
+  });
+
+  const topicUrls = views.search_index.documents
+    .filter((document) => document.type === "topic")
+    .map((document) => document.url)
+    .sort();
+  assert.deepEqual(topicUrls, ["/topics/privacy/"]);
+  assert.ok(
+    !views.topic_views.neighborhoods.some((item) => item.slug === "eleventy"),
+  );
+  assert.equal(
+    views.search_index.documents.some(
+      (document) => document.url === "/topics/eleventy/",
+    ),
+    false,
   );
 });
 
