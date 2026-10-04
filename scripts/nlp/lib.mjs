@@ -84,15 +84,26 @@ export async function writeTextAtomic(filePath, text) {
 }
 
 /**
- * Fetches a public URL with timeout and byte cap.
+ * Fetches a public URL with timeout and byte cap. Oversized bodies are
+ * truncated so a huge feed or homepage does not abort the crawl.
  * @param {string} href
- * @param {{ cache?: Map<string, unknown>, accept?: string }} [options]
+ * @param {{
+ *   cache?: Map<string, unknown>,
+ *   accept?: string,
+ *   maxBytes?: number,
+ *   overflow?: "truncate" | "throw",
+ * }} [options]
  * @returns {Promise<{url: string, contentType: string, body: string}>}
  */
 export async function fetchPublicText(href, options = {}) {
   const url = await assertPublicURL(href, { cache: options.cache });
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+  const maxBytes =
+    typeof options.maxBytes === "number" && options.maxBytes > 0
+      ? options.maxBytes
+      : MAX_BYTES_PER_RESPONSE;
+  const overflow = options.overflow === "throw" ? "throw" : "truncate";
 
   try {
     const response = await fetch(url.href, {
@@ -121,10 +132,14 @@ export async function fetchPublicText(href, options = {}) {
     }
 
     const contentType = response.headers.get("content-type") || "";
-    const buffer = Buffer.from(await response.arrayBuffer());
+    let buffer = Buffer.from(await response.arrayBuffer());
 
-    if (buffer.byteLength > MAX_BYTES_PER_RESPONSE) {
-      throw new Error(`response too large for ${url.href}`);
+    if (buffer.byteLength > maxBytes) {
+      if (overflow === "throw") {
+        throw new Error(`response too large for ${url.href}`);
+      }
+
+      buffer = buffer.subarray(0, maxBytes);
     }
 
     return {

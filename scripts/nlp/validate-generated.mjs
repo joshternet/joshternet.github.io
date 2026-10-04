@@ -70,9 +70,22 @@ function assertSchema(name, data) {
   const validate = validators[name];
 
   if (!validate(data)) {
+    const items =
+      name === "content" && data && typeof data === "object"
+        ? /** @type {{ items?: Array<{ identity?: string, url?: string }> }} */ (
+            data
+          ).items
+        : null;
     const detail = (validate.errors || [])
       .slice(0, 5)
-      .map((error) => `${error.instancePath || "/"} ${error.message}`)
+      .map((error) => {
+        const match = /^\/items\/(\d+)/.exec(error.instancePath || "");
+        const item =
+          match && Array.isArray(items) ? items[Number(match[1])] : null;
+        const who = item?.identity || item?.url;
+        const suffix = who ? ` (${who})` : "";
+        return `${error.instancePath || "/"} ${error.message}${suffix}`;
+      })
       .join("; ");
     fail(`${name} failed schema validation: ${detail}`);
   }

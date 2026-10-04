@@ -1,0 +1,34 @@
+{% comment %}
+  Goal: Compact accordion. The whole summary row toggles children.
+  The hub page is the first child so the section landing stays reachable.
+  Inputs: label, path, children (include filename), open (boolean).
+{% endcomment %}
+<details
+  class="site-nav__branch"
+  {% if include.open %}
+    open
+  {% endif %}
+>
+  <summary>{{ include.label }}</summary>
+  <ul class="site-nav__children">
+    <li>
+      <a
+        href="{{ include.path | relative_url }}"
+        {% if page.url == include.path %}
+          aria-current="page"
+        {% endif %}
+      >
+        {{- include.label -}}
+      </a>
+    </li>
+    {% if include.children == 'site-nav-about-children.html' %}
+      {% include site-nav-about-children.html %}
+    {% elsif include.children == 'site-nav-network-children.html' %}
+      {% include site-nav-network-children.html %}
+    {% elsif include.children == 'site-nav-implement-children.html' %}
+      {% include site-nav-implement-children.html %}
+    {% elsif include.children == 'site-nav-joshbot-children.html' %}
+      {% include site-nav-joshbot-children.html %}
+    {% endif %}
+  </ul>
+</details>

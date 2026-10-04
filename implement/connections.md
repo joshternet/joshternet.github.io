@@ -153,5 +153,9 @@ JoshternetNLP/1.0 (+https://joshternet.org; topic-hub build crawl)
 | Presentation views     | Published with the graph                                                                                                                       |
 | Repeat build           | Unchanged data stays in place when only a timestamp would change                                                                               |
 
+## Local directory probe
+
+`npm run nlp:probe-directory` fetches [joshing.you](https://joshing.you) listings, keeps origins whose `robots.txt` allows `JoshternetNLP/1.0`, samples up to 100 sites, reads homepage feeds, and checks the same content schema as `nlp:validate`. It is a local script, not the hourly registry job, and it does not publish Network data.
+
 See also the main [implementation guide](/implement/), the
 [Network](/network/), [Connections](/connections/), and [Topics](/topics/).

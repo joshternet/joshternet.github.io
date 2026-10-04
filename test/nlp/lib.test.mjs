@@ -11,6 +11,7 @@ import test from "node:test";
 
 import {
   FETCH_TIMEOUT_MS,
+  MAX_BYTES_PER_RESPONSE,
   fetchPublicText,
   parseHtmlDocument,
   readJSONIfExists,
@@ -141,9 +142,51 @@ test("fetchPublicText: throws on non-OK HTTP status", async () => {
   }
 });
 
-test("fetchPublicText: throws when response exceeds MAX_BYTES_PER_RESPONSE", async () => {
+test("fetchPublicText: truncates when response exceeds MAX_BYTES_PER_RESPONSE", async () => {
   const cache = dnsCache(["a.example"]);
-  // Create a buffer larger than 1_500_000 bytes
+  const bigBuffer = Buffer.alloc(1_500_001, "x");
+  install();
+  try {
+    globalThis.fetch = async () => ({
+      ok: true,
+      status: 200,
+      headers: new Headers({ "content-type": "text/html" }),
+      arrayBuffer: async () => bigBuffer,
+    });
+    const result = await fetchPublicText("https://a.example/huge", { cache });
+    assert.equal(result.body.length, MAX_BYTES_PER_RESPONSE);
+  } finally {
+    restore();
+  }
+});
+
+test("fetchPublicText: maxBytes truncates; non-positive maxBytes uses the default cap", async () => {
+  const cache = dnsCache(["a.example"]);
+  install();
+  try {
+    globalThis.fetch = async () => ({
+      ok: true,
+      status: 200,
+      headers: new Headers({ "content-type": "text/plain" }),
+      arrayBuffer: async () => Buffer.from("abcdefghij"),
+    });
+    const short = await fetchPublicText("https://a.example/cap", {
+      cache,
+      maxBytes: 4,
+    });
+    assert.equal(short.body, "abcd");
+    const full = await fetchPublicText("https://a.example/cap", {
+      cache,
+      maxBytes: 0,
+    });
+    assert.equal(full.body, "abcdefghij");
+  } finally {
+    restore();
+  }
+});
+
+test("fetchPublicText: throws when overflow is throw and the body is too large", async () => {
+  const cache = dnsCache(["a.example"]);
   const bigBuffer = Buffer.alloc(1_500_001, "x");
   install();
   try {
@@ -154,7 +197,11 @@ test("fetchPublicText: throws when response exceeds MAX_BYTES_PER_RESPONSE", asy
       arrayBuffer: async () => bigBuffer,
     });
     await assert.rejects(
-      () => fetchPublicText("https://a.example/huge", { cache }),
+      () =>
+        fetchPublicText("https://a.example/huge", {
+          cache,
+          overflow: "throw",
+        }),
       /response too large/,
     );
   } finally {
