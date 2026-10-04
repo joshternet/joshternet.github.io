@@ -252,10 +252,7 @@ test("Ghost recipe is its own page under Platforms", async () => {
     /location = \/\.well-known\/josh \{\s*default_type application\/json;\s*return 200 '{"version":1,"josh":true}';\s*\}/,
   );
   assert.match(ghost, /\/implement\/validate\//);
-  assert.match(
-    ghost,
-    /curl -i https:\/\/example\.invalid\/\.well-known\/josh/,
-  );
+  assert.match(ghost, /curl -i https:\/\/example\.invalid\/\.well-known\/josh/);
   assert.match(ghost, /\[implement\]: \/implement\//);
   assert.match(
     ghost,
