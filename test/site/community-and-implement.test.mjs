@@ -34,7 +34,6 @@ test("community page and footer point at #joshternet without embedding chat", as
   assert.match(community, /https:\/\/web\.libera\.chat\/#joshternet/);
   assert.match(community, /irc\.libera\.chat/);
   assert.match(community, /6697/);
-  assert.match(community, /TLS/);
   assert.doesNotMatch(community, /<iframe/i);
   assert.match(layout, /https:\/\/web\.libera\.chat\/#joshternet/);
   assert.match(layout, />#joshternet<span aria-hidden="true">↗<\/span/);
@@ -114,6 +113,7 @@ test("primary navigation keeps top-level labels and Implement children", async (
   assert.match(data, /title: Connections/);
   const platformsNav = await read("_data/platforms_nav.yml");
   assert.match(platformsNav, /path: \/implement\/platforms\/eleventy\//);
+  assert.match(platformsNav, /path: \/implement\/platforms\/ghost\//);
   assert.match(platformsNav, /path: \/implement\/platforms\/jekyll\//);
   assert.match(
     await read("_includes/site-nav-child-items.html"),
@@ -176,28 +176,30 @@ test("primary navigation keeps top-level labels and Implement children", async (
 test("Eleventy recipe is its own page under Platforms", async () => {
   const guide = await read("implement.md");
   const hubs = await read("implement/platforms.md");
+  const platformsNav = await read("_data/platforms_nav.yml");
   const eleventy = await read("implement/platforms/eleventy.md");
 
   assert.match(guide, /\/implement\/platforms\//);
   assert.doesNotMatch(guide, /\/implement\/eleventy\//);
-  assert.match(guide, /does not become `\/\.well-known\/josh\.json`/);
   assert.doesNotMatch(guide, /addPassthroughCopy/);
 
   assert.match(hubs, /permalink: \/implement\/platforms\//);
   assert.match(hubs, /site\.data\.platforms_nav/);
+  assert.match(platformsNav, /path: \/implement\/platforms\/eleventy\//);
   assert.match(eleventy, /permalink: \/implement\/platforms\/eleventy\//);
-  assert.match(eleventy, /josh\.json/);
-  assert.match(eleventy, /\/\.well-known\/josh/);
-  assert.match(eleventy, /does not become `\/\.well-known\/josh\.json`/);
-  assert.match(eleventy, /addPassthroughCopy\(\{/);
-  assert.match(eleventy, /"input\/josh\.json": "\.well-known\/josh"/);
-  assert.match(eleventy, /Content-Type: application\/json/);
-  assert.match(eleventy, /\[\[headers\]\]/);
+  assert.match(
+    eleventy,
+    /addPassthroughCopy\(\{\s*"input\/josh\.json": "\.well-known\/josh",\s*\}\)/,
+  );
+  assert.match(
+    eleventy,
+    /\[\[headers\]\]\s*for = "\/\.well-known\/josh"[\s\S]*Content-Type = "application\/json"/,
+  );
+  assert.match(eleventy, /\/implement\/validate\//);
   assert.match(
     eleventy,
     /curl -i https:\/\/example\.invalid\/\.well-known\/josh/,
   );
-  assert.match(eleventy, /\[implementation guide\]\[implement\]/);
   assert.match(eleventy, /\[implement\]: \/implement\//);
   assert.doesNotMatch(eleventy, /This page is the Eleventy recipe/);
   assert.doesNotMatch(eleventy, /Other platforms are listed/);
@@ -206,6 +208,7 @@ test("Eleventy recipe is its own page under Platforms", async () => {
 
 test("Jekyll recipe is its own page under Platforms", async () => {
   const guide = await read("implement.md");
+  const platformsNav = await read("_data/platforms_nav.yml");
   const jekyll = await read("implement/platforms/jekyll.md");
   const config = await read("_config.yml");
 
@@ -213,23 +216,55 @@ test("Jekyll recipe is its own page under Platforms", async () => {
   assert.doesNotMatch(guide, /\/implement\/jekyll\//);
   assert.doesNotMatch(guide, /include:\n\s+- \.well-known/);
 
+  assert.match(platformsNav, /path: \/implement\/platforms\/jekyll\//);
   assert.match(jekyll, /permalink: \/implement\/platforms\/jekyll\//);
   assert.match(jekyll, /\.well-known\/\n\s+josh/);
-  assert.match(jekyll, /\/\.well-known\/josh/);
-  assert.match(jekyll, /does not become `\/\.well-known\/josh\.json`/);
   assert.match(jekyll, /include:\n\s+- \.well-known/);
-  assert.match(jekyll, /Content-Type: application\/json/);
-  assert.match(jekyll, /\[\[headers\]\]/);
+  assert.match(
+    jekyll,
+    /\[\[headers\]\]\s*for = "\/\.well-known\/josh"[\s\S]*Content-Type = "application\/json"/,
+  );
+  assert.match(jekyll, /\/implement\/validate\//);
   assert.match(
     jekyll,
     /curl -i https:\/\/example\.invalid\/\.well-known\/josh/,
   );
-  assert.match(jekyll, /\[implementation guide\]\[implement\]/);
   assert.match(jekyll, /\[implement\]: \/implement\//);
   assert.doesNotMatch(jekyll, /This page is the Jekyll recipe/);
   assert.doesNotMatch(jekyll, /Other platforms are listed/);
   assert.match(config, /include:\n\s+- \.well-known/);
   await assertMissing("implement/jekyll.html");
+});
+
+test("Ghost recipe is its own page under Platforms", async () => {
+  const guide = await read("implement.md");
+  const hubs = await read("implement/platforms.md");
+  const platformsNav = await read("_data/platforms_nav.yml");
+  const ghost = await read("implement/platforms/ghost.md");
+
+  assert.match(guide, /\/implement\/platforms\//);
+  assert.match(hubs, /permalink: \/implement\/platforms\//);
+  assert.match(hubs, /site\.data\.platforms_nav/);
+  assert.match(platformsNav, /path: \/implement\/platforms\/ghost\//);
+  assert.match(ghost, /permalink: \/implement\/platforms\/ghost\//);
+  assert.match(
+    ghost,
+    /location = \/\.well-known\/josh \{\s*default_type application\/json;\s*return 200 '{"version":1,"josh":true}';\s*\}/,
+  );
+  assert.match(ghost, /\/implement\/validate\//);
+  assert.match(ghost, /curl -i https:\/\/example\.invalid\/\.well-known\/josh/);
+  assert.match(ghost, /\[implement\]: \/implement\//);
+  assert.match(
+    ghost,
+    /https:\/\/ghost\.org\/docs\/faq\/proxying-https-infinite-loops\//,
+  );
+  assert.match(ghost, /https:\/\/docs\.ghost\.org\/themes\/routing/);
+  assert.match(
+    ghost,
+    /https:\/\/ghost\.org\/help\/run-ghost-from-a-subdirectory\//,
+  );
+  assert.doesNotMatch(ghost, /This page is the Ghost recipe/);
+  assert.doesNotMatch(ghost, /Other platforms are listed/);
 });
 
 test("connections crawl page documents sync signals under Implement", async () => {
@@ -243,22 +278,14 @@ test("connections crawl page documents sync signals under Implement", async () =
   assert.match(page, /JoshternetNLP\/1\.0/);
   assert.match(page, /p-category/);
   assert.match(page, /octo:octothorpes/);
-  assert.match(page, /Webmention/);
+  assert.match(page, /homepage-link/);
+  assert.match(page, /content-link/);
+  assert.match(page, /\/connections\//);
+  assert.match(page, /\/topics\//);
   assert.doesNotMatch(page, /_data\//);
   assert.doesNotMatch(page, /topics\.json/);
   assert.doesNotMatch(page, /connections\.json/);
   assert.doesNotMatch(page, /\.tmp\//);
-  assert.match(page, /homepage-link/);
-  assert.match(page, /content-link/);
-  assert.match(page, /blogroll/);
-  assert.match(page, /\bmention\b/);
-  assert.match(page, /declared/);
-  assert.match(page, /heuristic/);
-  assert.match(page, /\/connections\//);
-  assert.match(page, /\/topics\//);
-  assert.match(page, /Feed entries/);
-  assert.match(page, /Catalog source/);
-  assert.match(page, /Repeat build/);
 });
 
 test("visitor pages do not lecture under the title", async () => {
@@ -269,6 +296,7 @@ test("visitor pages do not lecture under the title", async () => {
     "implement/explore.md",
     "implement/platforms.md",
     "implement/platforms/eleventy.md",
+    "implement/platforms/ghost.md",
     "implement/platforms/jekyll.md",
     "implement/validate.md",
     "connections.md",

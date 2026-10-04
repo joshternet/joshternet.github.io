@@ -25,7 +25,6 @@ test("topics hub and layout are wired", async () => {
 
   assert.match(page, /permalink: \/topics\//);
   assert.match(page, /site\.data\.topic_views/);
-  assert.match(page, /Topics from around the Joshternet/);
   assert.match(page, /activity-card/);
   assert.match(page, /topics-index/);
   assert.match(page, /occurrence_count/);
@@ -33,7 +32,6 @@ test("topics hub and layout are wired", async () => {
     await read("assets/css/main.css"),
     /\.activity-list\.topics-index \{[^}]*grid-template-columns:\s*repeat\(auto-fill, minmax\(9\.25rem/,
   );
-  assert.doesNotMatch(page, /Alphabetical/);
   assert.match(layout, /site\.data\.topic_views/);
   assert.match(layout, /\/topics\//);
   assert.match(layout, /topic-site/);

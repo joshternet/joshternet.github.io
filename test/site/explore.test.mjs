@@ -25,7 +25,6 @@ test("activity and search pages avoid popularity language", async () => {
   assert.match(activity, /permalink: \/activity\//);
   assert.doesNotMatch(activity, /social feed/);
   assert.doesNotMatch(activity, /prolific publisher/);
-  assert.match(activity, /Recent articles from around the Joshternet/);
   assert.doesNotMatch(activity, /One piece per site/);
   assert.match(activity, /include activity-card.html/);
   assert.match(card, /activity-card__heading/);
@@ -48,17 +47,12 @@ test("activity and search pages avoid popularity language", async () => {
   assert.doesNotMatch(activity, /data-activity-filter/);
   assert.doesNotMatch(activity, /activity\.js/);
   assert.match(search, /permalink: \/search\//);
-  assert.match(search, /Search from around the Joshternet/);
   assert.doesNotMatch(search, /does not boost sites/);
   assert.match(search, /data-search-input/);
   assert.match(await read("assets/js/search.js"), /activity-card__heading/);
   assert.match(search, /<noscript>/);
   assert.doesNotMatch(await read("implement/explore.md"), /topics\.json/);
   assert.doesNotMatch(await read("implement/explore.md"), /activity\.json/);
-  assert.doesNotMatch(
-    await read("implement/explore.md"),
-    /not raw crawl\s+inventories/,
-  );
 
   for (const page of [activity, search]) {
     assert.doesNotMatch(page, /trending/i);

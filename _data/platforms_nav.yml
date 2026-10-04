@@ -4,6 +4,9 @@
 - title: Eleventy
   path: /implement/platforms/eleventy/
   summary: publishes josh.json at /.well-known/josh
+- title: Ghost
+  path: /implement/platforms/ghost/
+  summary: serves /.well-known/josh at the reverse-proxy layer
 - title: Jekyll
   path: /implement/platforms/jekyll/
   summary: publishes .well-known/josh after including that directory

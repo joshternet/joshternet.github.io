@@ -1068,15 +1068,17 @@ export function buildViewDocuments(input) {
     });
   }
 
-  for (const community of communities) {
+  // Same neighborhoods as the Topics hub — never link Search to empty
+  // communities that have no published matching articles / pages.
+  for (const neighborhood of neighborhoods) {
     searchDocuments.push({
       type: "topic",
-      title: community.label,
-      summary: `${community.member_count || community.sites.length} participating sites`,
+      title: neighborhood.label,
+      summary: `${neighborhood.member_count} participating sites`,
       domain: "",
       origin: "",
-      url: `/topics/${community.slug}/`,
-      topics: [community.slug, community.label],
+      url: `/topics/${neighborhood.slug}/`,
+      topics: [neighborhood.slug, neighborhood.label],
     });
   }
 

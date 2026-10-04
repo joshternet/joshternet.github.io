@@ -4,6 +4,7 @@
 
 ### Added
 
+- Ghost platform recipe at `/implement/platforms/ghost/`: self-hosted Nginx exact-path `/.well-known/josh`, why not `routes.yaml`, and Ghost(Pro) only when a controllable reverse proxy already sits in front.
 - `npm run test:coverage` gates `scripts/{network,nlp,views}` library modules at 100% lines/branches/functions (Node `--experimental-test-coverage`; excludes sync/preflight/glyphs/validate/views CLI entrypoints). Expanded offline unit tests and `test/helpers/mock-fetch.mjs`. `site-quality` and `network-sync` run the gate. Workflow contract tests lock hourly cron `17 * * * *`, `joshternet-registry-updated`, and the quality pipeline. Nav submenu browser tests use fixture HTML (no live `:4000`). CSP site tests skip non-production `_site` (localhost/dev hosts). Topic stub checks no longer hardcode a nightly slug. `npm test` and `npm run test:coverage` both print the coverage report to stdout every run.
 
 ### Added
@@ -17,6 +18,10 @@
 
 ### Changed
 
+- Feature PRs no longer ship regenerated crawl/view `_data` JSON; hourly `network-sync` owns that publish set on `main` (hand-edited nav/config under `_data/` still belongs in PRs).
+- Ghost platform recipe fact-hardening: `routes.yaml` trailing-slash rules (required + forced), `content_type` cannot satisfy the exact path, Ghost(Pro) subdirectory/proxy as a paid Business-plan add-on, and citations to Ghost reverse-proxy, routing, and subdirectory help. Dropped the after-title “exact path / not `.json`” lecture; title and recipe steps already carry that.
+- Site tests stop matching visitor-facing prose (recipe leads, UI labels, marketing blurbs). They lock permalinks, nav paths, snippets, selectors, microformats, and forbidden-pattern bans instead.
+- Platform recipes (Eleventy, Ghost, Jekyll) lead deploy checks with `/implement/validate/` and keep the curl checklist as the direct alternative.
 - Page SEO titles, descriptions, and keywords are sized for search results: topic stubs use ~50–60 character titles and ~120–160 character descriptions, main pages carry matching meta, the layout emits `keywords`, and document titles skip a duplicate `| Joshternet` when the page title already names the brand.
 - Nav current-state matching is exact by default; Platforms and Topics opt into prefix match. Section flags live in one include. CSP only allows https host origins for activity images. IndexNow tracks platform recipe paths. `/explore/` was never on production, so it is omitted rather than redirected.
 - After-title lecture copy is gone on Implement, Platforms, Buttons, Connections crawl notes, and Explore notes. Pages keep a short lead or go straight into the work.
@@ -69,7 +74,7 @@
 
 ### Fixed
 
-- Search topic results only link to neighborhoods published as `topics/*.md` (#61). Topic-hub link text with trailing counts (e.g. `privacy 45`) no longer invents `/topics/privacy-45/` slugs; views no longer invent page-less topic URLs from content tags alone.
+- Search topic results only link to Topics-hub neighborhoods (communities with matching article members), so Search no longer points at empty `/topics/{slug}/` URLs that 404 (#61). Topic-hub link text with trailing counts (e.g. `privacy 45`) no longer invents `/topics/privacy-45/` slugs; views no longer invent page-less topic URLs from content tags alone.
 - `/search/` stays `robots: noindex` and is excluded from `sitemap.xml` via `sitemap: false` (#62).
 - Filler unigrams such as `two`, `less`, `find`, `real`, `built`, and `making` are non-subjects, so they do not become public topic neighborhoods or search topic hits (#64).
 

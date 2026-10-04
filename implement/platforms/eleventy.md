@@ -74,7 +74,9 @@ A different host needs its own header rule for the same path. The path and the m
 
 ## Check the deployed URL
 
-Check the live URL, not only `josh.json`:
+Check the live origin with [Check a declaration](/implement/validate/).
+
+Or check the live URL directly (not only `josh.json`):
 
 ```sh
 curl -i https://example.invalid/.well-known/josh

@@ -28,11 +28,8 @@ test("network cards link the primary feed outside the origin card link", async (
   assert.match(page, /network-card--{{ network_site.identity }} h-card/);
   assert.match(page, /network_site\.feeds/);
   assert.match(page, /network-card__feed/);
-  assert.match(page, /Open feed for/);
   assert.match(page, /network-card__actions/);
   assert.match(page, /network-card__footer/);
-  assert.doesNotMatch(page, /Publishing in/);
-  assert.doesNotMatch(page, /How Joshternet sees this site/);
   assert.doesNotMatch(page, /site\.data\.site_views/);
   assert.doesNotMatch(page, /recent_content/);
 
@@ -77,9 +74,6 @@ test("network cards expose elsewhere icons outside the origin link", async () =>
   assert.match(page, /network_site\.elsewhere/);
   assert.match(page, /network-card__elsewhere/);
   assert.match(page, /network-card__elsewhere-glyph--/);
-  assert.match(page, /linked from this participant site/);
-  assert.doesNotMatch(page, /does not verify ownership/);
-  assert.doesNotMatch(page, /Profile icons on cards/);
 
   const elsewhereAt = page.indexOf('class="network-card__elsewhere"');
   const linkCloseAt = page.indexOf(
@@ -104,10 +98,6 @@ test("network cards expose elsewhere icons outside the origin link", async () =>
   );
   assert.match(sprite, /id="github"/);
   assert.match(sprite, /id="web"/);
-  assert.match(
-    sprite,
-    /Brand marks identify participant-published profile links/,
-  );
   assert.match(sprite, /Simple Icons \(CC0\)/);
   assert.match(
     await read("THIRD_PARTY_LICENSES.md"),

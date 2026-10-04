@@ -82,12 +82,12 @@ test("topic stubs include descriptions and CollectionPage SEO", () => {
   assert.match(markdown, /type: CollectionPage/);
   assert.match(markdown, /permalink: \/topics\/ai\//);
   assert.match(markdown, /name: "AI"/);
-  assert.match(title, /AI articles from Joshternet websites/);
+  assert.match(title, /\bAI\b/);
   assert.ok(title.length >= 30 && title.length <= 60);
   assert.ok(description.length >= 120 && description.length <= 170);
   assert.match(keywords, /AI,/);
   assert.match(keywords, /Joshternet/);
-  assert.doesNotMatch(description, /ai from around the Joshternet/i);
+  assert.doesNotMatch(description, /from around the Joshternet/i);
 });
 
 test("layout emits keywords and avoids duplicate Joshternet in titles", async () => {
