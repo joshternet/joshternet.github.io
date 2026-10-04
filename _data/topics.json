@@ -1,14 +1,116 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-04T09:47:44.722Z",
-  "community_count": 252,
+  "generated_at": "2026-10-04T15:32:37.678Z",
+  "community_count": 262,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
+      "slug": "agent",
+      "label": "agent",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/work/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/23/apple-finally-made-the-xcode-project-file-understandable/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/28/sometimes-i-dont-want-an-llm-to-answer-me/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        "visible-text"
+      ],
+      "first_seen_at": "2026-10-04T15:32:37.678Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
+      "active": true
+    },
+    {
       "slug": "ai",
       "label": "ai",
-      "member_count": 4,
+      "member_count": 5,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/how-i-build-products-with-ai/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshghent.com/repowarden/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshghent.com/thoughts-on-llms/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshghent.com/will-ai-take-my-job/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -120,7 +222,7 @@
         "topic-hub:page"
       ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:57:33.407Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -177,7 +279,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -226,7 +330,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -250,9 +357,70 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
+      "active": true
+    },
+    {
+      "slug": "app",
+      "label": "app",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/work/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshuabaker.com",
+          "domain": "www.joshuabaker.com",
+          "title": "Joshua Baker",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuabaker.com/work/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/the-dots/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        "visible-text"
+      ],
+      "first_seen_at": "2026-10-04T15:32:37.678Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -354,7 +522,10 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -362,8 +533,36 @@
     {
       "slug": "architecture",
       "label": "architecture",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/architecture-diagrams/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshghent.com/eda-rules-of-thumb/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshghent.com/rules-of-thumb/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshghent.com/solutions-architecture/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -388,16 +587,33 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
       "slug": "art",
       "label": "art",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/good-code-review/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -437,9 +653,13 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true,
       "related_discoveries": [
         {
@@ -490,7 +710,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -514,7 +736,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -538,7 +762,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -567,7 +793,10 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -606,7 +835,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T12:00:56.613Z",
       "last_changed_at": "2026-10-03T12:00:56.613Z",
       "active": true
@@ -635,7 +866,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -664,7 +898,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -711,7 +948,11 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -719,8 +960,21 @@
     {
       "slug": "books",
       "label": "books",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/five-books/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -753,9 +1007,13 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -777,7 +1035,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -785,8 +1045,36 @@
     {
       "slug": "building",
       "label": "building",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/work/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -849,9 +1137,11 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": [
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true,
       "related_discoveries": [
         {
@@ -866,8 +1156,21 @@
     {
       "slug": "business",
       "label": "business",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/consulting-launch-2023/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -940,9 +1243,14 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link", "visible-text"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:link",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -984,7 +1292,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T21:50:07.756Z",
       "last_changed_at": "2026-10-03T21:50:07.756Z",
       "active": true
@@ -1013,9 +1324,86 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "active": true
+    },
+    {
+      "slug": "capacity",
+      "label": "capacity",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/work/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/15/the-fuel-crisis-is-exposing-how-little-spare-capacity-we-have-left/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/15/the-us-fuel-crisis-is-making-canadas-oil-more-valuable-than-ever/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/23/apple-finally-made-the-xcode-project-file-understandable/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        "visible-text"
+      ],
+      "first_seen_at": "2026-10-04T15:32:37.678Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -1070,7 +1458,11 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1094,9 +1486,85 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
+      "active": true
+    },
+    {
+      "slug": "changes",
+      "label": "changes",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/work/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/28/a-satellite-that-breathes-the-atmosphere-trying-to-pull-it-down/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/29/the-internet-saw-a-few-seconds-and-invented-the-rest/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        "visible-text"
+      ],
+      "first_seen_at": "2026-10-04T15:32:37.678Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -1143,7 +1611,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -1172,7 +1642,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1214,7 +1687,9 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": [
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -1248,9 +1723,86 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "active": true
+    },
+    {
+      "slug": "claude",
+      "label": "claude",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/work/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        "visible-text"
+      ],
+      "first_seen_at": "2026-10-04T15:32:37.678Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -1272,7 +1824,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -1316,7 +1870,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -1373,7 +1929,11 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
@@ -1411,7 +1971,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1450,7 +2013,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1484,7 +2050,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -1513,7 +2081,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1537,7 +2108,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true,
@@ -1575,7 +2148,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1599,7 +2175,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -1658,7 +2236,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -1700,7 +2280,10 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -1724,7 +2307,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -1748,7 +2333,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -1805,7 +2392,9 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": [
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -1834,7 +2423,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1876,7 +2468,11 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -1905,7 +2501,10 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -1929,7 +2528,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -1937,8 +2538,26 @@
     {
       "slug": "design",
       "label": "design",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/database-design/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshghent.com/resiliency-by-design/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -2040,13 +2659,14 @@
         }
       ],
       "sources": [
+        "catalog-match",
         "microformat:p-category",
         "portfolio:sector",
         "topic-hub:link",
         "topic-hub:page"
       ],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -2078,7 +2698,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2107,7 +2730,10 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2131,7 +2757,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2175,7 +2803,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2183,8 +2814,21 @@
     {
       "slug": "discovery",
       "label": "discovery",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/technical-discovery-checklist/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshternet.org",
           "domain": "joshternet.org",
@@ -2232,9 +2876,14 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link", "visible-text"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:link",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -2256,7 +2905,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2285,7 +2936,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -2314,7 +2967,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2373,7 +3029,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2494,7 +3152,10 @@
           ]
         }
       ],
-      "sources": ["meta:keywords", "topic-hub:page"],
+      "sources": [
+        "meta:keywords",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -2518,7 +3179,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2557,7 +3220,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2565,8 +3231,36 @@
     {
       "slug": "engineering",
       "label": "engineering",
-      "member_count": 4,
+      "member_count": 5,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/work/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -2667,7 +3361,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -2689,7 +3383,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2718,7 +3414,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2742,7 +3441,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -2771,7 +3472,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2805,7 +3509,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2829,7 +3536,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -2888,7 +3597,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -2947,7 +3658,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -2976,7 +3689,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3000,7 +3716,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3029,7 +3747,10 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3053,7 +3774,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3077,7 +3800,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3101,7 +3826,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3125,7 +3852,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3154,7 +3883,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3183,7 +3915,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T07:59:34.677Z",
       "last_changed_at": "2026-10-04T07:59:34.677Z",
       "active": true
@@ -3207,7 +3941,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T07:59:34.677Z",
       "last_changed_at": "2026-10-04T07:59:34.677Z",
       "active": true
@@ -3231,7 +3967,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3255,7 +3993,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3263,8 +4003,21 @@
     {
       "slug": "google",
       "label": "google",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/google-psi-problems/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -3307,9 +4060,13 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -3447,7 +4204,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3506,7 +4266,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -3530,7 +4292,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3597,7 +4361,11 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3605,8 +4373,36 @@
     {
       "slug": "health",
       "label": "health",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/work/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -3647,10 +4443,11 @@
       "sources": [
         "microformat:p-category",
         "portfolio:sector",
-        "topic-hub:link"
+        "topic-hub:link",
+        "visible-text"
       ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:57:33.407Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -3685,7 +4482,10 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3734,7 +4534,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -3758,7 +4560,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -3805,7 +4609,9 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": [
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
       "last_changed_at": "2026-10-03T08:29:09.357Z",
       "active": true
@@ -3829,7 +4635,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -3853,7 +4661,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -3915,7 +4725,9 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": [
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3974,7 +4786,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4008,7 +4822,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -4032,7 +4848,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -4056,7 +4874,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -4115,7 +4935,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4123,8 +4945,21 @@
     {
       "slug": "infrastructure",
       "label": "infrastructure",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/personal-infra/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshternet.org",
           "domain": "joshternet.org",
@@ -4202,7 +5037,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -4229,7 +5064,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4253,7 +5091,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -4282,7 +5122,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4316,7 +5159,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4350,7 +5196,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4394,7 +5243,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
@@ -4411,8 +5263,36 @@
     {
       "slug": "javascript",
       "label": "javascript",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/work/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -4427,9 +5307,12 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T09:36:17.761Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -4451,7 +5334,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -4480,7 +5365,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -4504,7 +5391,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -4528,7 +5417,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -4552,7 +5443,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -4576,7 +5469,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -4600,7 +5495,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -4624,7 +5521,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -4648,7 +5547,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -4692,7 +5593,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -4716,7 +5619,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -4740,7 +5645,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -4764,7 +5671,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -4788,7 +5697,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -4812,7 +5723,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -4836,7 +5749,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -4860,7 +5775,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -4965,9 +5882,87 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "active": true
+    },
+    {
+      "slug": "lead",
+      "label": "lead",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/work/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshuabaker.com",
+          "domain": "www.joshuabaker.com",
+          "title": "Joshua Baker",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuabaker.com/work/banked-pay-by-bank/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/banked/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/not-optional/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/pure-sports-medicine/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/the-dots/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        "visible-text"
+      ],
+      "first_seen_at": "2026-10-04T15:32:37.678Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -4989,7 +5984,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -4997,8 +5994,26 @@
     {
       "slug": "life",
       "label": "life",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/part-time/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshghent.com/quarterly-plan/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -5036,9 +6051,13 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -5060,9 +6079,85 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "active": true
+    },
+    {
+      "slug": "links",
+      "label": "links",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/work/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/08/my-small-answer-to-the-friendship-recession-is-to-tell-my-friends-they-matter/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/10/keep-the-internet-funky/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/11/worth-wandering-hundred-rabbits/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/12/google-search-keeps-moving-away-from-the-web/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/18/worth-wandering-robin-sloan/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        "visible-text"
+      ],
+      "first_seen_at": "2026-10-04T15:32:37.678Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -5112,7 +6207,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5159,7 +6257,11 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5188,7 +6290,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5212,7 +6317,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -5264,7 +6371,9 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": [
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5321,7 +6430,10 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page", "visible-text"],
+      "sources": [
+        "topic-hub:page",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5345,7 +6457,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -5404,7 +6518,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -5428,7 +6544,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5457,7 +6575,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5494,7 +6615,10 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5584,7 +6708,9 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": [
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5592,8 +6718,21 @@
     {
       "slug": "networking",
       "label": "networking",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/meetup-networking/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -5608,9 +6747,12 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "catalog-match",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -5637,7 +6779,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5661,7 +6806,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T07:59:34.677Z",
       "last_changed_at": "2026-10-04T07:59:34.677Z",
       "active": true
@@ -5685,7 +6832,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -5709,7 +6858,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -5758,7 +6909,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -5782,7 +6935,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -5806,7 +6961,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -5840,7 +6997,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5864,7 +7024,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5893,7 +7055,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5917,7 +7082,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -5941,7 +7108,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -5949,8 +7118,36 @@
     {
       "slug": "open-source",
       "label": "open source",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/work/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -6026,9 +7223,14 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "topic-hub:page"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:page",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -6055,7 +7257,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -6099,7 +7303,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6138,7 +7345,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6175,7 +7385,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6199,7 +7412,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -6274,7 +7489,10 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "visible-text"],
+      "sources": [
+        "topic-hub:link",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6298,7 +7516,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -6322,7 +7542,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -6346,7 +7568,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6370,9 +7594,85 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
+      "active": true
+    },
+    {
+      "slug": "place",
+      "label": "place",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/work/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        "visible-text"
+      ],
+      "first_seen_at": "2026-10-04T15:32:37.678Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -6394,7 +7694,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -6453,7 +7755,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -6477,7 +7781,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:index"],
+      "sources": [
+        "portfolio:index"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -6501,7 +7807,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6525,7 +7833,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6549,7 +7859,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -6573,7 +7885,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -6581,8 +7895,21 @@
     {
       "slug": "privacy",
       "label": "privacy",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/redesign/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -6650,9 +7977,13 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -6679,7 +8010,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6703,7 +8037,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -6711,8 +8047,31 @@
     {
       "slug": "programming",
       "label": "programming",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/attending-meetups/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshghent.com/how-to-learn-programming/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshghent.com/what-lang-to-learn/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -6737,9 +8096,13 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -6829,7 +8192,10 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector", "visible-text"],
+      "sources": [
+        "portfolio:sector",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T21:50:07.756Z",
       "active": true
@@ -6888,7 +8254,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -6912,7 +8280,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6966,7 +8336,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -6990,7 +8363,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7034,7 +8409,9 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": [
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -7058,7 +8435,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -7082,7 +8461,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -7121,7 +8502,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7145,7 +8529,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7187,7 +8573,11 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:59:21.002Z",
       "active": true
@@ -7211,7 +8601,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7235,7 +8627,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -7259,7 +8653,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -7283,7 +8679,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -7307,7 +8705,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7331,7 +8731,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7365,7 +8767,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7394,7 +8799,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7433,7 +8841,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7483,7 +8894,11 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "meta:keywords", "microformat:p-category"],
+      "sources": [
+        "catalog-match",
+        "meta:keywords",
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -7507,7 +8922,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7515,8 +8932,21 @@
     {
       "slug": "security",
       "label": "security",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/bulletproof-node/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -7579,9 +9009,12 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -7603,7 +9036,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7627,7 +9062,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -7651,7 +9088,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -7675,7 +9114,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7699,7 +9140,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7749,7 +9192,11 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "topic-hub:page"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
@@ -7757,8 +9204,36 @@
     {
       "slug": "software",
       "label": "software",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/work/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -7823,7 +9298,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -7845,7 +9320,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -7917,7 +9394,10 @@
           ]
         }
       ],
-      "sources": ["meta:keywords", "topic-hub:page"],
+      "sources": [
+        "meta:keywords",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7941,7 +9421,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -7965,7 +9447,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8004,7 +9488,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8033,7 +9520,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -8070,7 +9559,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8094,7 +9586,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8118,7 +9612,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -8142,7 +9638,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -8176,7 +9674,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8200,7 +9701,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -8262,7 +9765,9 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": [
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
@@ -8295,7 +9800,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8442,7 +9949,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8466,7 +9975,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8490,7 +10001,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -8514,7 +10027,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -8538,7 +10053,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8562,7 +10079,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8586,7 +10105,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -8638,10 +10159,97 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
+    },
+    {
+      "slug": "use",
+      "label": "use",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/work/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/28/a-satellite-that-breathes-the-atmosphere-trying-to-pull-it-down/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/28/sometimes-i-dont-want-an-llm-to-answer-me/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        "visible-text"
+      ],
+      "first_seen_at": "2026-10-04T15:32:37.678Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "user-experience",
@@ -8667,7 +10275,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8691,7 +10302,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -8715,7 +10328,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -8739,7 +10354,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -8781,7 +10398,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8805,7 +10425,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -8829,7 +10451,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8853,7 +10477,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8877,7 +10503,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -8901,7 +10529,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -8930,7 +10560,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -8954,7 +10587,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -8998,7 +10633,10 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9022,7 +10660,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -9046,7 +10686,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9105,7 +10747,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -9129,7 +10773,9 @@
           ]
         }
       ],
-      "sources": ["meta:keywords"],
+      "sources": [
+        "meta:keywords"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -9166,7 +10812,10 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -9190,16 +10839,120 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": [
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
+      "slug": "write",
+      "label": "write",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/work/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        "visible-text"
+      ],
+      "first_seen_at": "2026-10-04T15:32:37.678Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
+      "active": true
+    },
+    {
       "slug": "writing",
       "label": "writing",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/work/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -9229,9 +10982,13 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -9253,7 +11010,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": [
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
@@ -9261,8 +11020,21 @@
     {
       "slug": "youtube",
       "label": "youtube",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/youtube-playlist-downloader/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -9277,9 +11049,12 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     }
   ]

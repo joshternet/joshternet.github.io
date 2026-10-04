@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-04T08:00:08.817Z",
-  "participant_count": 5,
-  "community_count": 252,
-  "publication_count": 402,
+  "generated_at": "2026-10-04T15:33:18.390Z",
+  "participant_count": 6,
+  "community_count": 262,
+  "publication_count": 550,
   "connection_count": 2,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
@@ -65,9 +65,9 @@
     }
   ],
   "neighborhood": {
-    "slug": "executive-power",
-    "label": "executive power",
-    "member_count": 1
+    "slug": "claude",
+    "label": "claude",
+    "member_count": 2
   },
   "connection": {
     "from": "https://joshuamorris.info",

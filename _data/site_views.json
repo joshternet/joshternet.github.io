@@ -1,7 +1,183 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-04T08:00:08.817Z",
+  "generated_at": "2026-10-04T15:33:18.390Z",
   "sites": [
+    {
+      "origin": "https://joshghent.com",
+      "domain": "joshghent.com",
+      "title": "Developer Musings",
+      "description": "Writing on software engineering, engineering leadership, and building products, by Josh Ghent.",
+      "identity": "affirmed",
+      "feeds": [
+        {
+          "url": "https://joshghent.com/rss.xml",
+          "type": "application/atom+xml",
+          "title": "Developer Musings"
+        }
+      ],
+      "elsewhere": [
+        {
+          "url": "https://github.com/joshghent",
+          "network": "github",
+          "label": "GitHub"
+        }
+      ],
+      "community_topics": [
+        {
+          "slug": "agent",
+          "label": "agent"
+        },
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "app",
+          "label": "app"
+        },
+        {
+          "slug": "architecture",
+          "label": "architecture"
+        },
+        {
+          "slug": "art",
+          "label": "art"
+        },
+        {
+          "slug": "books",
+          "label": "books"
+        },
+        {
+          "slug": "building",
+          "label": "building"
+        },
+        {
+          "slug": "business",
+          "label": "business"
+        },
+        {
+          "slug": "capacity",
+          "label": "capacity"
+        },
+        {
+          "slug": "changes",
+          "label": "changes"
+        },
+        {
+          "slug": "claude",
+          "label": "claude"
+        },
+        {
+          "slug": "design",
+          "label": "design"
+        },
+        {
+          "slug": "discovery",
+          "label": "discovery"
+        },
+        {
+          "slug": "engineering",
+          "label": "engineering"
+        },
+        {
+          "slug": "google",
+          "label": "google"
+        },
+        {
+          "slug": "health",
+          "label": "health"
+        },
+        {
+          "slug": "infrastructure",
+          "label": "infrastructure"
+        },
+        {
+          "slug": "javascript",
+          "label": "javascript"
+        },
+        {
+          "slug": "lead",
+          "label": "lead"
+        },
+        {
+          "slug": "life",
+          "label": "life"
+        },
+        {
+          "slug": "links",
+          "label": "links"
+        },
+        {
+          "slug": "networking",
+          "label": "networking"
+        },
+        {
+          "slug": "open-source",
+          "label": "open source"
+        },
+        {
+          "slug": "place",
+          "label": "place"
+        },
+        {
+          "slug": "privacy",
+          "label": "privacy"
+        },
+        {
+          "slug": "programming",
+          "label": "programming"
+        },
+        {
+          "slug": "security",
+          "label": "security"
+        },
+        {
+          "slug": "software",
+          "label": "software"
+        },
+        {
+          "slug": "use",
+          "label": "use"
+        },
+        {
+          "slug": "write",
+          "label": "write"
+        },
+        {
+          "slug": "writing",
+          "label": "writing"
+        },
+        {
+          "slug": "youtube",
+          "label": "youtube"
+        }
+      ],
+      "recent_content": {
+        "url": "https://joshghent.com/11ty-or-bust/",
+        "title": "11ty or Bust",
+        "summary": "",
+        "published_at": "2024-01-03T00:00:00.000Z",
+        "content_type": "article",
+        "language": "en",
+        "site_origin": "https://joshghent.com",
+        "site_title": "Developer Musings",
+        "domain": "joshghent.com",
+        "tags": [],
+        "neighborhoods": [],
+        "image": "",
+        "image_origin": ""
+      },
+      "outgoing": [],
+      "incoming": [],
+      "coverage": {
+        "pages_discovered": 80,
+        "pages_fetched": 80,
+        "fetch_limit": 80,
+        "limit_reached": true,
+        "selection_strategy": "bounded-site-crawl-v1"
+      },
+      "crawled_at": "2026-10-04T15:32:37.678Z"
+    },
     {
       "origin": "https://joshternet.org",
       "domain": "joshternet.org",
@@ -265,7 +441,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-04T07:59:34.677Z"
+      "crawled_at": "2026-10-04T15:32:37.678Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -533,7 +709,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-04T07:59:34.677Z"
+      "crawled_at": "2026-10-04T15:32:37.678Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -581,6 +757,10 @@
         }
       ],
       "community_topics": [
+        {
+          "slug": "agent",
+          "label": "agent"
+        },
         {
           "slug": "ai",
           "label": "ai"
@@ -642,6 +822,10 @@
           "label": "canada"
         },
         {
+          "slug": "capacity",
+          "label": "capacity"
+        },
+        {
           "slug": "career",
           "label": "career"
         },
@@ -650,12 +834,20 @@
           "label": "cars"
         },
         {
+          "slug": "changes",
+          "label": "changes"
+        },
+        {
           "slug": "chromebooks",
           "label": "chromebooks"
         },
         {
           "slug": "civil-liberties",
           "label": "civil liberties"
+        },
+        {
+          "slug": "claude",
+          "label": "claude"
         },
         {
           "slug": "community",
@@ -822,6 +1014,10 @@
           "label": "life"
         },
         {
+          "slug": "links",
+          "label": "links"
+        },
+        {
           "slug": "linux",
           "label": "linux"
         },
@@ -896,6 +1092,10 @@
         {
           "slug": "personhood",
           "label": "personhood"
+        },
+        {
+          "slug": "place",
+          "label": "place"
         },
         {
           "slug": "postgres",
@@ -1042,6 +1242,10 @@
           "label": "united states"
         },
         {
+          "slug": "use",
+          "label": "use"
+        },
+        {
           "slug": "user-experience",
           "label": "user experience"
         },
@@ -1068,6 +1272,10 @@
         {
           "slug": "workplace",
           "label": "workplace"
+        },
+        {
+          "slug": "write",
+          "label": "write"
         },
         {
           "slug": "writing",
@@ -1124,7 +1332,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-04T07:59:34.677Z"
+      "crawled_at": "2026-10-04T15:32:37.678Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -1366,7 +1574,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-04T07:59:34.677Z"
+      "crawled_at": "2026-10-04T15:32:37.678Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -1406,6 +1614,10 @@
         {
           "slug": "ai",
           "label": "ai"
+        },
+        {
+          "slug": "app",
+          "label": "app"
         },
         {
           "slug": "apple",
@@ -1490,6 +1702,10 @@
         {
           "slug": "law",
           "label": "law"
+        },
+        {
+          "slug": "lead",
+          "label": "lead"
         },
         {
           "slug": "magazine",
@@ -1586,7 +1802,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-04T07:59:34.677Z",
+      "crawled_at": "2026-10-04T15:32:37.678Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 145,
