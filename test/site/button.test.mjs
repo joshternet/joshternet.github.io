@@ -61,11 +61,27 @@ test("button page documents all four states and the one-line embed", async () =>
 });
 
 test("official button files are not published under assets/buttons", async () => {
-  await assert.rejects(
-    () => access(path.join(root, "assets/buttons")),
-    (error) => {
-      assert.equal(/** @type {NodeJS.ErrnoException} */ (error).code, "ENOENT");
-      return true;
-    },
-  );
+  for (const relativePath of [
+    "assets/buttons",
+    "assets/buttons/verified-josh.png",
+    "assets/buttons/verified-non-josh.png",
+    "assets/buttons/undeclared.png",
+    "assets/buttons/join-the-joshternet.png",
+    "workers/joshternet-button/public/buttons/verified-josh.png",
+    "workers/joshternet-button/public/buttons/verified-non-josh.png",
+    "workers/joshternet-button/public/buttons/undeclared.png",
+    "workers/joshternet-button/public/buttons/join-the-joshternet.png",
+  ]) {
+    await assert.rejects(
+      () => access(path.join(root, relativePath)),
+      (error) => {
+        assert.equal(
+          /** @type {NodeJS.ErrnoException} */ (error).code,
+          "ENOENT",
+        );
+        return true;
+      },
+      `${relativePath} must not be published`,
+    );
+  }
 });
