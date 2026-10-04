@@ -414,7 +414,7 @@ export function contentItemsFromPortfolio(works, meta) {
       url: work.url,
       site_origin: meta.siteOrigin,
       title,
-      summary: summary || null,
+      summary,
       content_type: "project",
       page_role: "project",
       language: "en",

@@ -26,7 +26,7 @@ npm ci
 | `npm run test:site` | Source + production `_site` checks (run after `npm run build`) |
 | `npm run format:check` | Prettier |
 
-Coverage includes `scripts/{network,nlp,views}/**/*.mjs` and excludes CLI/orchestration entrypoints (`network/sync`, `network/preflight`, `network/generate-elsewhere-glyphs`, `nlp/sync`, `nlp/validate-generated`, `views/build`). Do not assert nightly topic slugs or live participant counts as oracles—use synthetic fixtures. Site CSP tests skip when `_site` is missing or was built with localhost/dev hosts; use `npm run build` for a production `_site`.
+Coverage includes `scripts/{network,nlp,views}/**/*.mjs` and excludes CLI/orchestration entrypoints (`network/sync`, `network/preflight`, `network/generate-elsewhere-glyphs`, `nlp/sync`, `nlp/validate-generated`, `nlp/probe-directory`, `views/build`). Do not assert nightly topic slugs or live participant counts as oracles—use synthetic fixtures. Site CSP tests skip when `_site` is missing or was built with localhost/dev hosts; use `npm run build` for a production `_site`.
 
 `site-quality` and `network-sync` GitHub Actions run `npm run test:coverage` (not plain `npm test`). Network sync stays on hourly cron `17 * * * *` and `repository_dispatch` `joshternet-registry-updated`.
 

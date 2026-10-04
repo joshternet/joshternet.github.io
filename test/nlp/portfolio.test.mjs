@@ -520,8 +520,7 @@ test("contentItemsFromPortfolio: work with no project or client uses 'Work' titl
 
 // ─── Line 419: summary || null ────────────────────────────────────────────────
 
-test("contentItemsFromPortfolio: work with all empty fields has null summary (line 419)", () => {
-  // All fields empty → summary="" → || null fires
+test("contentItemsFromPortfolio: work with all empty fields has empty string summary (line 419)", () => {
   const items = contentItemsFromPortfolio(
     [
       {
@@ -539,7 +538,7 @@ test("contentItemsFromPortfolio: work with all empty fields has null summary (li
     },
   );
   assert.equal(items.length, 1);
-  assert.equal(items[0].summary, null);
+  assert.equal(items[0].summary, "");
   assert.equal(items[0].title, "Work");
 });
 

@@ -62,6 +62,101 @@ export function plainTextSummary(htmlOrText) {
   return capRemoteString(withoutTags, MAX_SUMMARY_CHARS);
 }
 
+/**
+ * Returns an ISO timestamp when value parses as a date, otherwise empty.
+ * @param {unknown} value
+ * @returns {string}
+ */
+export function isoDateString(value) {
+  if (typeof value !== "string" || !value.trim()) {
+    return "";
+  }
+
+  const time = Date.parse(value);
+
+  if (Number.isNaN(time)) {
+    return "";
+  }
+
+  return new Date(time).toISOString();
+}
+
+/**
+ * Returns an http(s) URL without credentials or hash, otherwise empty.
+ * @param {unknown} value
+ * @returns {string}
+ */
+export function httpContentUrl(value) {
+  if (typeof value !== "string" || !value.trim()) {
+    return "";
+  }
+
+  try {
+    const parsed = new URL(value);
+
+    if (
+      (parsed.protocol !== "http:" && parsed.protocol !== "https:") ||
+      parsed.username ||
+      parsed.password
+    ) {
+      return "";
+    }
+
+    parsed.hash = "";
+    return parsed.href;
+  } catch {
+    return "";
+  }
+}
+
+/**
+ * Shapes a content item for content.schema.json. Drops items without identity
+ * or an http(s) url. Empty summaries become "".
+ * @param {unknown} item
+ * @returns {Record<string, unknown> | null}
+ */
+export function normalizeContentItemForPublish(item) {
+  if (!item || typeof item !== "object" || Array.isArray(item)) {
+    return null;
+  }
+
+  const record = /** @type {Record<string, unknown>} */ (item);
+
+  if (typeof record.identity !== "string" || !record.identity.trim()) {
+    return null;
+  }
+
+  const url = httpContentUrl(record.url);
+
+  if (!url) {
+    return null;
+  }
+
+  const title =
+    capRemoteString(String(record.title || "").trim(), MAX_TITLE_CHARS) ||
+    "Untitled";
+  const published = isoDateString(record.published_at);
+  const updated = isoDateString(record.updated_at);
+  const next = { ...record, identity: record.identity, url, title };
+  next.summary = plainTextSummary(
+    typeof record.summary === "string" ? record.summary : "",
+  );
+
+  if (published) {
+    next.published_at = published;
+  } else {
+    delete next.published_at;
+  }
+
+  if (updated) {
+    next.updated_at = updated;
+  } else {
+    delete next.updated_at;
+  }
+
+  return next;
+}
+
 const FEED_IMAGE_EXTENSION = /\.(?:avif|gif|jpe?g|png|webp)(?:[?#]|$)/i;
 
 /**
@@ -376,7 +471,7 @@ export function contentItemsFromRssOrAtom(xml, meta) {
       updated_at: null,
       content_type: "article",
       language: null,
-      summary: summary || null,
+      summary,
       declared_topics,
       source: { kind: isAtom ? "atom" : "rss", feed: meta.feedUrl },
       source_feeds: [{ type: isAtom ? "atom" : "rss", url: meta.feedUrl }],
@@ -476,7 +571,7 @@ export function contentItemsFromJsonFeed(jsonText, meta) {
         : null,
       content_type: "article",
       language: typeof data.language === "string" ? data.language : null,
-      summary: plainTextSummary(String(item.summary || "")) || null,
+      summary: plainTextSummary(String(item.summary || "")),
       declared_topics,
       source: { kind: "json-feed", feed: meta.feedUrl },
       source_feeds: [{ type: "json-feed", url: meta.feedUrl }],
@@ -552,11 +647,10 @@ export function mergeContentItems(drafts) {
     }
   }
 
-  return [...byId.values()].sort((left, right) => {
-    const leftUrl = String(left.url || left.title || "");
-    const rightUrl = String(right.url || right.title || "");
-    return leftUrl.localeCompare(rightUrl);
-  });
+  return [...byId.values()]
+    .map((item) => normalizeContentItemForPublish(item))
+    .filter((item) => item !== null)
+    .sort((left, right) => String(left.url).localeCompare(String(right.url)));
 }
 
 /**
@@ -664,9 +758,9 @@ export function joinContentWithPageSignals(items, originSignals) {
       }
     }
 
-    if (typeof next.summary === "string") {
-      next.summary = plainTextSummary(next.summary) || null;
-    }
+    next.summary = plainTextSummary(
+      typeof next.summary === "string" ? next.summary : "",
+    );
 
     return next;
   });

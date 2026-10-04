@@ -3,7 +3,12 @@
  * All tests are offline — no network, no live data files as oracles.
  */
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
+
+import Ajv2020 from "ajv/dist/2020.js";
+import addFormats from "ajv-formats";
 
 import {
   absoluteHttpsImageUrl,
@@ -12,8 +17,11 @@ import {
   contentItemsFromRssOrAtom,
   feedImageFromJsonItem,
   feedImageFromXml,
+  httpContentUrl,
+  isoDateString,
   joinContentWithPageSignals,
   mergeContentItems,
+  normalizeContentItemForPublish,
   plainTextSummary,
   siteOriginFromContentUrl,
 } from "../../scripts/nlp/content.mjs";
@@ -1171,14 +1179,13 @@ test("mergeContentItems: existing+draft without arrays fires || [] in merge path
 });
 
 // mergeContentItems: items without url/title fires || "" in sort (L556-557)
-test("mergeContentItems: items without url/title fires || '' in sort (L556-L557)", () => {
-  // left.url = null, left.title = null → null || null || "" fires at L556
+test("mergeContentItems: items without http urls are dropped", () => {
   const drafts = [
     { identity: "id:abc", url: null, title: null },
     { identity: "id:def", url: null, title: null },
   ];
   const result = mergeContentItems(drafts);
-  assert.equal(result.length, 2);
+  assert.equal(result.length, 0);
 });
 
 // joinContentWithPageSignals: null originSignals fires || [] (L593)
@@ -1435,27 +1442,25 @@ test("mergeContentItems: draft without source_feeds or declared_topics fires || 
 
 // ─── mergeContentItems: sort with null url uses title (L556-557) ─────────────
 
-test("mergeContentItems: items with null url sort by title fallback (lines 556-557)", () => {
-  // url=null → left.url || left.title || "" fires L556-557
+test("mergeContentItems: sorts remaining items by url", () => {
   const a = {
-    identity: "url:null:1",
-    url: null,
+    identity: "url:https://a.example/z/",
+    url: "https://a.example/z/",
     title: "Zebra",
     source_feeds: [],
     declared_topics: [],
   };
   const b = {
-    identity: "url:null:2",
-    url: null,
+    identity: "url:https://a.example/a/",
+    url: "https://a.example/a/",
     title: "Alpha",
     source_feeds: [],
     declared_topics: [],
   };
   const result = mergeContentItems([a, b]);
   assert.equal(result.length, 2);
-  // Alpha sorts before Zebra
-  assert.equal(result[0].title, "Alpha");
-  assert.equal(result[1].title, "Zebra");
+  assert.equal(result[0].url, "https://a.example/a/");
+  assert.equal(result[1].url, "https://a.example/z/");
 });
 
 // ─── joinContentWithPageSignals: non-empty declared_topics fires anon fn (L645-647) ─
@@ -1618,4 +1623,162 @@ test("mergeContentItems: two items with same identity fires merge path with topi
   assert.ok(result[0].source_feeds.some((f) => f.type === "atom"));
   assert.ok(result[0].declared_topics.some((t) => t.slug === "photography"));
   assert.ok(result[0].declared_topics.some((t) => t.slug === "design"));
+});
+
+test("contentItemsFromRssOrAtom: missing description becomes empty summary string", () => {
+  const xml = `<rss><channel>
+    <item>
+      <title>No blurb</title>
+      <link>https://a.example/no-blurb</link>
+    </item>
+  </channel></rss>`;
+  const items = contentItemsFromRssOrAtom(xml, RSS_META);
+  assert.equal(items[0].summary, "");
+});
+
+test("contentItemsFromJsonFeed: missing summary becomes empty string", () => {
+  const items = contentItemsFromJsonFeed(
+    JSON.stringify({
+      items: [{ url: "https://a.example/json-quiet", title: "Quiet" }],
+    }),
+    {
+      feedUrl: "https://a.example/feed.json",
+      siteOrigin: "https://a.example",
+      observedAt: "2026-10-03T22:00:00.000Z",
+    },
+  );
+  assert.equal(items[0].summary, "");
+});
+
+test("isoDateString and httpContentUrl reject junk", () => {
+  assert.equal(isoDateString(""), "");
+  assert.equal(isoDateString("   "), "");
+  assert.equal(isoDateString(12), "");
+  assert.equal(isoDateString("not-a-date"), "");
+  assert.equal(
+    isoDateString("2024-01-02T00:00:00.000Z"),
+    "2024-01-02T00:00:00.000Z",
+  );
+  assert.equal(httpContentUrl(""), "");
+  assert.equal(httpContentUrl("   "), "");
+  assert.equal(httpContentUrl("ftp://a.example/x"), "");
+  assert.equal(httpContentUrl("https://user:pass@a.example/x"), "");
+  assert.equal(httpContentUrl("not a url"), "");
+  assert.equal(
+    httpContentUrl("http://a.example/p/#hash"),
+    "http://a.example/p/",
+  );
+});
+
+test("normalizeContentItemForPublish drops invalid items and stringifies summary", () => {
+  assert.equal(normalizeContentItemForPublish(null), null);
+  assert.equal(normalizeContentItemForPublish(5), null);
+  assert.equal(normalizeContentItemForPublish("x"), null);
+  assert.equal(normalizeContentItemForPublish([]), null);
+  assert.equal(
+    normalizeContentItemForPublish({ url: "https://a.example/" }),
+    null,
+  );
+  assert.equal(
+    normalizeContentItemForPublish({ identity: 3, url: "https://a.example/" }),
+    null,
+  );
+  assert.equal(
+    normalizeContentItemForPublish({
+      identity: "  ",
+      url: "https://a.example/",
+    }),
+    null,
+  );
+  assert.equal(
+    normalizeContentItemForPublish({
+      identity: "url:https://a.example/x",
+      url: "mailto:hi@a.example",
+    }),
+    null,
+  );
+
+  const published = normalizeContentItemForPublish({
+    identity: "url:https://a.example/post/",
+    url: "https://a.example/post/#frag",
+    title: "",
+    summary: 12,
+    published_at: "not-a-date",
+    updated_at: "2024-06-01T00:00:00.000Z",
+  });
+  assert.equal(published.url, "https://a.example/post/");
+  assert.equal(published.title, "Untitled");
+  assert.equal(published.summary, "");
+  assert.equal("published_at" in published, false);
+  assert.equal(published.updated_at, "2024-06-01T00:00:00.000Z");
+
+  const titled = normalizeContentItemForPublish({
+    identity: "url:https://a.example/named/",
+    url: "https://a.example/named/",
+    title: "Named",
+    summary: "<p>Hi</p>",
+    published_at: "2024-01-01T00:00:00.000Z",
+  });
+  assert.equal(titled.title, "Named");
+  assert.equal(titled.summary, "Hi");
+  assert.equal(titled.published_at, "2024-01-01T00:00:00.000Z");
+  assert.equal("updated_at" in titled, false);
+});
+
+test("mergeContentItems drops guid-only drafts without http urls", () => {
+  const merged = mergeContentItems([
+    { identity: "id:https://a.example:1", url: null, title: "Ghost" },
+    {
+      identity: "url:https://a.example/real/",
+      url: "https://a.example/real/",
+      title: "Real",
+      summary: null,
+    },
+  ]);
+  assert.equal(merged.length, 1);
+  assert.equal(merged[0].url, "https://a.example/real/");
+  assert.equal(merged[0].summary, "");
+});
+
+test("joinContentWithPageSignals never restores a null summary", () => {
+  const joined = joinContentWithPageSignals(
+    [
+      {
+        identity: "url:https://a.example/p/",
+        url: "https://a.example/p/",
+        summary: 9,
+        declared_topics: [],
+      },
+    ],
+    [],
+  );
+  assert.equal(joined[0].summary, "");
+});
+
+test("merged empty summaries satisfy content.schema.json", async () => {
+  const schema = JSON.parse(
+    await readFile(
+      fileURLToPath(
+        new URL("../../schemas/content.schema.json", import.meta.url),
+      ),
+      "utf8",
+    ),
+  );
+  const xml = `<rss><channel>
+    <item><title>A</title><link>https://a.example/a</link></item>
+    <item><title>B</title><link>https://a.example/b</link></item>
+  </channel></rss>`;
+  const items = mergeContentItems(contentItemsFromRssOrAtom(xml, RSS_META));
+  const ajv = new Ajv2020({ allErrors: true, strict: false });
+  addFormats(ajv);
+  const validate = ajv.compile(schema);
+  assert.equal(
+    validate({
+      schema_version: 1,
+      item_count: items.length,
+      items,
+    }),
+    true,
+    JSON.stringify(validate.errors),
+  );
 });
