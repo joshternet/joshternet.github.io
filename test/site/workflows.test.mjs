@@ -34,6 +34,36 @@ test("network-sync keeps hourly and registry triggers plus sync steps", async ()
   assert.match(sync, /npm run nlp:validate/);
 });
 
+test("network-sync publish set lists CI-owned generated paths", async () => {
+  const sync = await read(".github/workflows/network-sync.yml");
+
+  for (const relativePath of [
+    "_data/network.json",
+    "_data/blogrolls.json",
+    "_data/connections.json",
+    "_data/topics.json",
+    "_data/site_signals.json",
+    "_data/mentions.json",
+    "_data/content.json",
+    "_data/data_manifest.json",
+    "_data/activity.json",
+    "_data/explore.json",
+    "_data/topic_views.json",
+    "_data/connection_topics.json",
+    "_data/site_views.json",
+    "_data/search_index.json",
+    "topics/",
+    "assets/network/joshternet.opml",
+    "assets/network/sites/",
+  ]) {
+    assert.match(
+      sync,
+      new RegExp(relativePath.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+      `network-sync must publish ${relativePath}`,
+    );
+  }
+});
+
 test("site-quality runs coverage, browser, build, and site tests", async () => {
   const quality = await read(".github/workflows/site-quality.yml");
 
