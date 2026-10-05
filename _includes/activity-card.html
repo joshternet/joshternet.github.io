@@ -5,11 +5,12 @@
 <li class="activity-card h-entry">
   <article>
     {% if include.item.image and include.item.image != '' %}
+      {% include outbound-href.html url=include.item.url %}
       <a
         class="activity-card__media"
-        href="{{ include.item.url | escape }}"
+        href="{{ outbound_href | escape }}"
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener"
         tabindex="-1"
         aria-hidden="true"
       >
@@ -26,7 +27,8 @@
     <div class="activity-card__body">
       <div class="activity-card__heading">
         <h2 class="activity-card__title p-name">
-          <a class="u-url" href="{{ include.item.url | escape }}" target="_blank" rel="noopener noreferrer">
+          {% include outbound-href.html url=include.item.url %}
+          <a class="u-url" href="{{ outbound_href | escape }}" target="_blank" rel="noopener">
             {{ include.item.title | escape }}
             <span aria-hidden="true">↗</span>
             <span class="visually-hidden">(opens on the publisher’s site)</span>

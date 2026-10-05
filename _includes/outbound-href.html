@@ -1,0 +1,64 @@
+{% comment %}
+  Goal: Assign outbound_href to include.url plus Joshternet UTM params so
+  destination analytics can attribute the click. HTTPS only. Skips mailto,
+  credentials, non-https schemes, rel-me (caller should not invoke), and URLs
+  that already have utm_source. Preserves fragments.
+  include.url: destination href
+  include.campaign: optional utm_campaign (default: first page URL segment)
+  include.content: optional utm_content (default: page.url)
+{% endcomment %}
+{% assign outbound_href = include.url | strip %}
+{% assign outbound_campaign = include.campaign | default: '' | strip %}
+{% if outbound_campaign == '' %}
+  {% assign outbound_path_parts = page.url | split: '/' %}
+  {% assign outbound_campaign = outbound_path_parts[1] | default: 'home' %}
+{% endif %}
+{% assign outbound_content = include.content | default: page.url %}
+{% assign outbound_campaign_enc = outbound_campaign | url_encode %}
+{% assign outbound_content_enc = outbound_content | url_encode %}
+{% assign outbound_lower = outbound_href | downcase %}
+{% assign outbound_scheme = outbound_lower | slice: 0, 8 %}
+{% assign outbound_skip = false %}
+{% assign outbound_fragment = '' %}
+{% unless outbound_scheme == 'https://' %}
+  {% assign outbound_skip = true %}
+{% endunless %}
+{% if outbound_href contains 'utm_source=' %}
+  {% assign outbound_skip = true %}
+{% endif %}
+{% assign outbound_host = outbound_lower
+  | remove_first: 'https://'
+  | split: '/'
+  | first
+  | split: '?'
+  | first
+  | split: '#'
+  | first
+%}
+{% if outbound_host contains '@' %}
+  {% assign outbound_skip = true %}
+{% endif %}
+{% if outbound_lower contains 'javascript:' or outbound_lower contains 'mailto:' or outbound_lower contains 'tel:' %}
+  {% assign outbound_skip = true %}
+{% endif %}
+{% unless outbound_skip %}
+  {% if outbound_href contains '#' %}
+    {% assign outbound_hash_parts = outbound_href | split: '#' %}
+    {% assign outbound_href = outbound_hash_parts | first %}
+    {% assign outbound_fragment = outbound_hash_parts | slice: 1, 32 | join: '#' %}
+  {% endif %}
+  {% assign outbound_joiner = '?' %}
+  {% if outbound_href contains '?' %}
+    {% assign outbound_joiner = '&' %}
+  {% endif %}
+  {% assign outbound_href = outbound_href
+    | append: outbound_joiner
+    | append: 'utm_source=joshternet.org&utm_medium=referral&utm_campaign='
+    | append: outbound_campaign_enc
+    | append: '&utm_content='
+    | append: outbound_content_enc
+  %}
+  {% if outbound_fragment != '' %}
+    {% assign outbound_href = outbound_href | append: '#' | append: outbound_fragment %}
+  {% endif %}
+{% endunless %}

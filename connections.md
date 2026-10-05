@@ -206,11 +206,12 @@ Connections from around the Joshternet.
               {{ site_title | escape }}
             </button>
           </h2>
+          {% include outbound-href.html url=site_origin %}
           <a
             class="connections-site__domain u-url"
-            href="{{ site_origin | escape }}"
+            href="{{ outbound_href | escape }}"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener"
           >
             {{ site_domain | escape }}
           </a>
@@ -262,38 +263,42 @@ Connections from around the Joshternet.
                     <span class="connections-edge__direction" aria-hidden="true">→</span>
                     <div class="connections-edge__body">
                       <span class="connections-edge__kind">{{ kind_label | escape }}</span>
+                      {% include outbound-href.html url=edge.href %}
                       <a
-                        href="{{ edge.href | escape }}"
+                        href="{{ outbound_href | escape }}"
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noopener"
                       >
                         {{ link_label | escape }}
                       </a>
                       <span class="connections-edge__meta">
                         to
+                        {% include outbound-href.html url=edge.to %}
                         <a
-                          href="{{ edge.to | escape }}"
+                          href="{{ outbound_href | escape }}"
                           target="_blank"
-                          rel="noopener noreferrer"
+                          rel="noopener"
                         >
                           {{ target_domain | escape }}
                         </a>
                         {% if edge.via and edge.via != "" %}
                           · via
+                            {% include outbound-href.html url=edge.via %}
                             <a
-                              href="{{ edge.via | escape }}"
+                              href="{{ outbound_href | escape }}"
                               target="_blank"
-                              rel="noopener noreferrer"
+                              rel="noopener"
                             >
                               {{ edge.via | escape }}
                             </a>
                         {% endif %}
                         {% if edge.page and edge.page != "" %}
                           · seen on
+                          {% include outbound-href.html url=edge.page %}
                           <a
-                            href="{{ edge.page | escape }}"
+                            href="{{ outbound_href | escape }}"
                             target="_blank"
-                            rel="noopener noreferrer"
+                            rel="noopener"
                           >
                             {{ edge.page | escape }}
                           </a>
@@ -352,38 +357,42 @@ Connections from around the Joshternet.
                     <span class="connections-edge__direction" aria-hidden="true">←</span>
                     <div class="connections-edge__body">
                       <span class="connections-edge__kind">{{ kind_label | escape }}</span>
+                      {% include outbound-href.html url=edge.href %}
                       <a
-                        href="{{ edge.href | escape }}"
+                        href="{{ outbound_href | escape }}"
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noopener"
                       >
                         {{ link_label | escape }}
                       </a>
                       <span class="connections-edge__meta">
                         from
+                        {% include outbound-href.html url=edge.from %}
                         <a
-                          href="{{ edge.from | escape }}"
+                          href="{{ outbound_href | escape }}"
                           target="_blank"
-                          rel="noopener noreferrer"
+                          rel="noopener"
                         >
                           {{ source_domain | escape }}
                         </a>
                         {% if edge.via and edge.via != "" %}
                           · via
+                            {% include outbound-href.html url=edge.via %}
                             <a
-                              href="{{ edge.via | escape }}"
+                              href="{{ outbound_href | escape }}"
                               target="_blank"
-                              rel="noopener noreferrer"
+                              rel="noopener"
                             >
                               {{ edge.via | escape }}
                             </a>
                         {% endif %}
                         {% if edge.page and edge.page != "" %}
                           · seen on
+                          {% include outbound-href.html url=edge.page %}
                           <a
-                            href="{{ edge.page | escape }}"
+                            href="{{ outbound_href | escape }}"
                             target="_blank"
-                            rel="noopener noreferrer"
+                            rel="noopener"
                           >
                             {{ edge.page | escape }}
                           </a>

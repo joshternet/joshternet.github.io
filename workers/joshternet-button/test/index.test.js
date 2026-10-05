@@ -320,6 +320,9 @@ test("embed script inserts inline SVG after button-state and never loads an imag
   assert.match(source, /\/api\/button-state\?origin=/);
   assert.match(source, /state === "unavailable"/);
   assert.match(source, /innerHTML = artwork\[payload\.state\]/);
+  assert.match(source, /link\.rel = "noopener"/);
+  assert.doesNotMatch(source, /noreferrer/);
+  assert.match(source, /dest\.origin !== expectedOrigin/);
   assert.doesNotMatch(source, /\/button\?origin=/);
   assert.doesNotMatch(source, /img\.src/);
   assert.doesNotMatch(source, /imageURL/);

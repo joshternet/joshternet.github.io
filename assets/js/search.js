@@ -48,6 +48,17 @@
   }
 
   /**
+   * Appends Joshternet UTM params when the shared helper is loaded.
+   * @param {string} href
+   * @returns {string}
+   */
+  function outboundHref(href) {
+    const decorate = globalThis.joshternetOutboundHref;
+
+    return typeof decorate === "function" ? decorate(href) : href;
+  }
+
+  /**
    * Renders one hit with the What's New activity-card markup.
    * @param {Record<string, unknown>} document
    * @returns {string}
@@ -55,6 +66,7 @@
   function renderCard(document) {
     const href = String(document.url || "");
     const external = href.startsWith("http");
+    const outboundHrefValue = external ? outboundHref(href) : href;
     const title = escapeHTML(String(document.title || href));
     const summary = String(document.summary || "");
     const author = String(document.site_title || "");
@@ -63,19 +75,19 @@
     const image = String(document.image || "");
     const topics = Array.isArray(document.topics) ? document.topics : [];
     const dateLabel = formatPublishedDate(publishedAt);
-    let titleLink = `<a class="u-url" href="${escapeHTML(href)}">${title}</a>`;
+    let titleLink = `<a class="u-url" href="${escapeHTML(outboundHrefValue)}">${title}</a>`;
 
     if (external) {
-      titleLink = `<a class="u-url" href="${escapeHTML(href)}" target="_blank" rel="noopener noreferrer">${title} <span aria-hidden="true">↗</span><span class="visually-hidden">(opens on the publisher’s site)</span></a>`;
+      titleLink = `<a class="u-url" href="${escapeHTML(outboundHrefValue)}" target="_blank" rel="noopener">${title} <span aria-hidden="true">↗</span><span class="visually-hidden">(opens on the publisher’s site)</span></a>`;
     }
 
     let media = "";
 
     if (image.startsWith("https://")) {
-      let mediaAttrs = `class="activity-card__media" href="${escapeHTML(href)}" tabindex="-1" aria-hidden="true"`;
+      let mediaAttrs = `class="activity-card__media" href="${escapeHTML(outboundHrefValue)}" tabindex="-1" aria-hidden="true"`;
 
       if (external) {
-        mediaAttrs += ' target="_blank" rel="noopener noreferrer"';
+        mediaAttrs += ' target="_blank" rel="noopener"';
       }
 
       media = `<a ${mediaAttrs}><img class="u-photo" src="${escapeHTML(image)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a>`;

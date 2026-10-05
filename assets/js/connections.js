@@ -43,6 +43,17 @@
   }
 
   /**
+   * Appends Joshternet UTM params when the shared helper is loaded.
+   * @param {string} href
+   * @returns {string}
+   */
+  function outboundHref(href) {
+    const decorate = globalThis.joshternetOutboundHref;
+
+    return typeof decorate === "function" ? decorate(href) : href;
+  }
+
+  /**
    * @param {unknown} value
    * @returns {URL | null}
    */
@@ -942,7 +953,7 @@
     const peerTitle = peer ? peer.title : peerOrigin;
     const arrow = side === "to" ? "→" : "←";
 
-    return `<li class="connections-bubble__row connections-bubble__row--directed"><span class="connections-bubble__dir" aria-hidden="true">${arrow}</span><span class="connections-bubble__row-text">${escapeHTML(bubbleRelation(edge))} <a href="${escapeAttribute(edge.href)}" target="_blank" rel="noopener noreferrer">${escapeHTML(peerTitle)}</a></span></li>`;
+    return `<li class="connections-bubble__row connections-bubble__row--directed"><span class="connections-bubble__dir" aria-hidden="true">${arrow}</span><span class="connections-bubble__row-text">${escapeHTML(bubbleRelation(edge))} <a href="${escapeAttribute(outboundHref(edge.href))}" target="_blank" rel="noopener">${escapeHTML(peerTitle)}</a></span></li>`;
   }
 
   /**
@@ -1024,9 +1035,10 @@
 
             seen.add(label);
             const href = safeHttpHref(item.href || edge.href);
+            const decorated = href ? outboundHref(href) : "";
 
-            return href
-              ? `<li class="connections-bubble__row"><a href="${escapeAttribute(href)}" target="_blank" rel="noopener noreferrer">${escapeHTML(label)}</a></li>`
+            return decorated
+              ? `<li class="connections-bubble__row"><a href="${escapeAttribute(decorated)}" target="_blank" rel="noopener">${escapeHTML(label)}</a></li>`
               : `<li class="connections-bubble__row">${escapeHTML(label)}</li>`;
           })
           .join("");

@@ -71,9 +71,24 @@ export function buildEmbedScript({ version, siteOrigin }) {
         return;
       }
 
+      var dest;
+      var expectedOrigin;
+
+      try {
+        dest = new URL(payload.href);
+        expectedOrigin = new URL(siteOrigin).origin;
+      } catch {
+        return;
+      }
+
+      if (dest.origin !== expectedOrigin) {
+        return;
+      }
+
       var link = document.createElement("a");
-      link.href = payload.href;
-      link.rel = "noopener noreferrer";
+      link.href = dest.href;
+      link.rel = "noopener";
+      link.referrerPolicy = "origin";
       link.setAttribute(
         "aria-label",
         typeof payload.linkLabel === "string" && payload.linkLabel
