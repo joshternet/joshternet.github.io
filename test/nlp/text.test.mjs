@@ -11,6 +11,7 @@ import {
   isEnglishLanguage,
   normalizeExtractedText,
   parseHtmlRegions,
+  unwrapXmlCdata,
 } from "../../scripts/nlp/text.mjs";
 
 // ─── isEnglishLanguage ────────────────────────────────────────────────────────
@@ -225,6 +226,23 @@ test("normalizeExtractedText: null input fires typeof !== 'string' branch (L24)"
   assert.equal(normalizeExtractedText(null), "");
   assert.equal(normalizeExtractedText(42), "");
   assert.equal(normalizeExtractedText(undefined), "");
+});
+
+test("unwrapXmlCdata: strips wrappers and leftover markers", () => {
+  assert.equal(unwrapXmlCdata(""), "");
+  assert.equal(unwrapXmlCdata(null), "");
+  assert.equal(unwrapXmlCdata("Heathcliff"), "Heathcliff");
+  assert.equal(unwrapXmlCdata("<![CDATA[Heathcliff]]>"), "Heathcliff");
+  assert.equal(
+    unwrapXmlCdata("<![CDATA[Heathcliff]]><![CDATA[Marvin]]>"),
+    "HeathcliffMarvin",
+  );
+  assert.equal(unwrapXmlCdata("<![CDATA[open"), "open");
+  assert.equal(unwrapXmlCdata("close]]>"), "close");
+});
+
+test("normalizeExtractedText: CDATA categories become plain labels", () => {
+  assert.equal(normalizeExtractedText("<![CDATA[Heathcliff]]>"), "Heathcliff");
 });
 
 // ─── decodeHrefForParse: non-empty string fires the TRUE path (L57-62) ────────

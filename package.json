@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test --experimental-test-coverage --test-reporter=spec --test-reporter-destination=stdout --test-coverage-include=scripts/network/**/*.mjs --test-coverage-include=scripts/nlp/**/*.mjs --test-coverage-include=scripts/views/**/*.mjs --test-coverage-exclude=scripts/network/sync.mjs --test-coverage-exclude=scripts/network/preflight.mjs --test-coverage-exclude=scripts/network/generate-elsewhere-glyphs.mjs --test-coverage-exclude=scripts/nlp/sync.mjs --test-coverage-exclude=scripts/nlp/validate-generated.mjs --test-coverage-exclude=scripts/nlp/probe-directory.mjs --test-coverage-exclude=scripts/views/build.mjs test/network/*.test.mjs test/nlp/*.test.mjs test/views/*.test.mjs",
-    "test:coverage": "node --test --experimental-test-coverage --test-reporter=spec --test-reporter-destination=stdout --test-coverage-lines=100 --test-coverage-branches=100 --test-coverage-functions=100 --test-coverage-include=scripts/network/**/*.mjs --test-coverage-include=scripts/nlp/**/*.mjs --test-coverage-include=scripts/views/**/*.mjs --test-coverage-exclude=scripts/network/sync.mjs --test-coverage-exclude=scripts/network/preflight.mjs --test-coverage-exclude=scripts/network/generate-elsewhere-glyphs.mjs --test-coverage-exclude=scripts/nlp/sync.mjs --test-coverage-exclude=scripts/nlp/validate-generated.mjs --test-coverage-exclude=scripts/nlp/probe-directory.mjs --test-coverage-exclude=scripts/views/build.mjs test/network/*.test.mjs test/nlp/*.test.mjs test/views/*.test.mjs",
+    "test": "node --test --experimental-test-coverage --test-reporter=spec --test-reporter-destination=stdout --test-coverage-include=scripts/network/**/*.mjs --test-coverage-include=scripts/nlp/**/*.mjs --test-coverage-include=scripts/views/**/*.mjs --test-coverage-exclude=scripts/network/sync.mjs --test-coverage-exclude=scripts/network/preflight.mjs --test-coverage-exclude=scripts/network/generate-elsewhere-glyphs.mjs --test-coverage-exclude=scripts/nlp/sync.mjs --test-coverage-exclude=scripts/nlp/validate-generated.mjs --test-coverage-exclude=scripts/nlp/probe-directory.mjs --test-coverage-exclude=scripts/nlp/scale-probe.mjs --test-coverage-exclude=scripts/views/build.mjs test/network/*.test.mjs test/nlp/*.test.mjs test/views/*.test.mjs",
+    "test:coverage": "node --test --experimental-test-coverage --test-reporter=spec --test-reporter-destination=stdout --test-coverage-lines=100 --test-coverage-branches=100 --test-coverage-functions=100 --test-coverage-include=scripts/network/**/*.mjs --test-coverage-include=scripts/nlp/**/*.mjs --test-coverage-include=scripts/views/**/*.mjs --test-coverage-exclude=scripts/network/sync.mjs --test-coverage-exclude=scripts/network/preflight.mjs --test-coverage-exclude=scripts/network/generate-elsewhere-glyphs.mjs --test-coverage-exclude=scripts/nlp/sync.mjs --test-coverage-exclude=scripts/nlp/validate-generated.mjs --test-coverage-exclude=scripts/nlp/probe-directory.mjs --test-coverage-exclude=scripts/nlp/scale-probe.mjs --test-coverage-exclude=scripts/views/build.mjs test/network/*.test.mjs test/nlp/*.test.mjs test/views/*.test.mjs",
     "views:build": "node scripts/views/build.mjs",
     "test:browser": "node --test test/browser/*.test.mjs",
     "test:site": "node --test test/site/*.test.mjs",
@@ -12,6 +12,7 @@
     "nlp:sync": "node scripts/nlp/sync.mjs",
     "nlp:validate": "node scripts/nlp/validate-generated.mjs",
     "nlp:probe-directory": "node scripts/nlp/probe-directory.mjs",
+    "nlp:scale-probe": "node scripts/nlp/scale-probe.mjs",
     "elsewhere:glyphs": "node scripts/network/generate-elsewhere-glyphs.mjs",
     "build": "bash scripts/build.sh",
     "dev": "bash scripts/dev.sh",

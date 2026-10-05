@@ -4,7 +4,12 @@
  * feed must not fail the sync.
  */
 
-import { buildTopicEvidence } from "./evidence.mjs";
+import {
+  buildTopicEvidence,
+  canonicalTopicLabel,
+  isNonSubjectSlug,
+  isParserArtifactSlug,
+} from "./evidence.mjs";
 import { slugifyTopic, fetchPublicText, normalizeText } from "./lib.mjs";
 import { decodeHtmlEntities } from "./text.mjs";
 
@@ -30,16 +35,16 @@ export function subjectsFromRssOrAtom(xml, options = {}) {
       (titleMatch?.[1] || "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1"),
     );
     const categoryPattern =
-      /<category[^>]*(?:term=["']([^"']+)["'])?[^>]*>([^<]*)<\/category>|<category[^>]*term=["']([^"']+)["'][^>]*\/?>/gi;
+      /<category[^>]*(?:term=["']([^"']+)["'])?[^>]*>([\s\S]*?)<\/category>|<category[^>]*term=["']([^"']+)["'][^>]*\/?>/gi;
     let category;
 
     while ((category = categoryPattern.exec(block))) {
-      const label = normalizeText(
+      const label = canonicalTopicLabel(
         category[1] || category[3] || category[2] || "",
       );
       const slug = slugifyTopic(label);
 
-      if (!slug) {
+      if (!slug || isNonSubjectSlug(slug) || isParserArtifactSlug(slug)) {
         continue;
       }
 
@@ -116,10 +121,10 @@ export function subjectsFromJsonFeed(jsonText, options = {}) {
         continue;
       }
 
-      const label = normalizeText(tag);
+      const label = canonicalTopicLabel(tag);
       const slug = slugifyTopic(label);
 
-      if (!slug) {
+      if (!slug || isNonSubjectSlug(slug) || isParserArtifactSlug(slug)) {
         continue;
       }
 

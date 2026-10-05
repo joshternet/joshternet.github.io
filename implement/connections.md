@@ -62,11 +62,11 @@ Joshternet opt-in. Participation is `/.well-known/josh`.
 - JSON Feed tag
 - Microformats `p-category`
 - `article:tag` / `article:section`
-- Schema.org `keywords` on a content entity
-- `meta keywords`
 - Octothorpes
+- Topic-hub child pages
+- Portfolio **sectors** (banking, health), not the word “portfolio”
 
-Descriptions, titles, and Open Graph type stay discovery signals, not membership.
+`meta keywords`, Schema.org `keywords` dumps, titles, descriptions, and Open Graph type stay discovery signals, not membership.
 Heuristic visible-text analysis may qualify when it clears the quality bar
 (multiple eligible pages, repeated occurrence, not boilerplate or parser noise).
 
@@ -156,6 +156,8 @@ JoshternetNLP/1.0 (+https://joshternet.org; topic-hub build crawl)
 ## Local directory probe
 
 `npm run nlp:probe-directory` fetches [joshing.you](https://joshing.you) listings, keeps origins whose `robots.txt` allows `JoshternetNLP/1.0`, samples up to 100 sites, reads homepage feeds, and checks the same content schema as `nlp:validate`. It is a local script, not the hourly registry job, and it does not publish Network data.
+
+`npm run nlp:scale-probe` walks every listing page, harvests robots-allowed member sites (skipping joshing.you itself), then replays the same parsers used by `nlp:sync` thousands of times. Use `--replay-only` after a harvest, or `--harvest` to refresh. It is local-only and does not publish Network data.
 
 See also the main [implementation guide](/implement/), the
 [Network](/network/), [Connections](/connections/), and [Topics](/topics/).

@@ -582,6 +582,7 @@ test("subjectsFromHtml: keywords meta adds each keyword as a subject (lines 96-9
   const subjects = subjectsFromHtml(html, "https://a.example/post/");
   const photo = subjects.find((s) => s.slug === "photography");
   assert.ok(photo, "should find photography subject from keywords meta");
+  assert.equal(photo.community_eligible, false);
   assert.ok(subjects.find((s) => s.slug === "travel"));
   assert.ok(subjects.find((s) => s.slug === "design"));
 });

@@ -309,7 +309,8 @@ export function worksFromPortfolioHtml(html, pageUrl) {
 }
 
 /**
- * Declared subjects: the site is an online portfolio, plus each work's sectors.
+ * Declared subjects from each work's sectors. The fact that a site has a
+ * portfolio index is not a visitor-facing topic.
  * @param {Array<Record<string, string>>} works
  * @param {string} pageUrl
  * @param {string} [observedAt]
@@ -322,12 +323,6 @@ export function subjectsFromPortfolio(works, pageUrl, observedAt = "") {
 
   /** @type {Map<string, {label: string, source: string, pages: Array<{url: string, title: string}>}>} */
   const bySlug = new Map();
-
-  bySlug.set("portfolio", {
-    label: "portfolio",
-    source: "portfolio:index",
-    pages: [{ url: pageUrl, title: "portfolio" }],
-  });
 
   for (const work of works) {
     const title = work.project || work.client || "Work";

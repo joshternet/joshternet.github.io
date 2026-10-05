@@ -457,7 +457,7 @@ export function contentItemsFromRssOrAtom(xml, meta) {
           label: evidence.value,
           raw_value: evidence.raw_value,
           source: sourceKey,
-          community_eligible: true,
+          community_eligible: evidence.community_eligible === true,
         });
       }
     }
@@ -467,7 +467,7 @@ export function contentItemsFromRssOrAtom(xml, meta) {
       url: absoluteUrl || null,
       site_origin: meta.siteOrigin,
       title: title || slugifyTopic(absoluteUrl) || "Untitled",
-      published_at: published ? new Date(published).toISOString() : null,
+      published_at: isoDateString(published) || null,
       updated_at: null,
       content_type: "article",
       language: null,
@@ -553,7 +553,7 @@ export function contentItemsFromJsonFeed(jsonText, meta) {
           label: evidence.value,
           raw_value: evidence.raw_value,
           source: "json-feed:tag",
-          community_eligible: true,
+          community_eligible: evidence.community_eligible === true,
         });
       }
     }
@@ -563,12 +563,14 @@ export function contentItemsFromJsonFeed(jsonText, meta) {
       url: absoluteUrl || null,
       site_origin: meta.siteOrigin,
       title: capRemoteString(String(item.title || "Untitled"), MAX_TITLE_CHARS),
-      published_at: item.date_published
-        ? new Date(item.date_published).toISOString()
-        : null,
-      updated_at: item.date_modified
-        ? new Date(item.date_modified).toISOString()
-        : null,
+      published_at:
+        isoDateString(
+          typeof item.date_published === "string" ? item.date_published : "",
+        ) || null,
+      updated_at:
+        isoDateString(
+          typeof item.date_modified === "string" ? item.date_modified : "",
+        ) || null,
       content_type: "article",
       language: typeof data.language === "string" ? data.language : null,
       summary: plainTextSummary(String(item.summary || "")),
@@ -723,7 +725,7 @@ export function joinContentWithPageSignals(items, originSignals) {
           label: topic.label,
           raw_value: item.raw_value || topic.label,
           source: item.source,
-          community_eligible: true,
+          community_eligible: item.community_eligible === true,
         });
         declaredByUrl.set(key, list);
       }

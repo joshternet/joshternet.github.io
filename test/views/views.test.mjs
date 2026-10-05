@@ -6,11 +6,14 @@ import test from "node:test";
 
 import {
   buildViewDocuments,
+  capPresentationList,
   capSameOriginResults,
   compactContentItem,
   compactWhyHere,
   connectionTopicOverlaps,
   contentTopicLabels,
+  MAX_CONNECTION_TOPIC_PAIRS,
+  MAX_COOCCURRENCE_PAIRS,
   oneLatestPerOrigin,
   pickFeaturedCommunity,
   pickFeaturedConnection,
@@ -2317,4 +2320,54 @@ test("buildViewDocuments: community without label fires label||slug fallback; me
   assert.ok(photoRelated, "photo should appear in design related");
   // "photo" community has no label field → optional chain gives undefined → || other fires → "photo"
   assert.equal(photoRelated.label, "photo");
+});
+
+test("capPresentationList: missing list, under max, over max, invalid max", () => {
+  assert.deepEqual(capPresentationList(null, 3), []);
+  assert.deepEqual(capPresentationList([1, 2], 3), [1, 2]);
+  assert.deepEqual(capPresentationList([1, 2, 3, 4], 2), [1, 2]);
+  assert.deepEqual(capPresentationList([1, 2], Number.NaN), [1, 2]);
+  assert.deepEqual(capPresentationList([1, 2], -1), [1, 2]);
+  assert.deepEqual(capPresentationList([1, 2], 0), []);
+});
+
+test("connectionTopicOverlaps: caps pair overlay size", () => {
+  const members = [];
+
+  for (let index = 0; index < 30; index += 1) {
+    members.push({
+      origin: `https://n${index}.example`,
+      domain: `n${index}.example`,
+      title: `N${index}`,
+      articles: [{ url: `https://n${index}.example/a`, title: "A" }],
+    });
+  }
+
+  const overlay = connectionTopicOverlaps([
+    { slug: "shared", label: "Shared", members },
+  ]);
+  assert.equal(overlay.pairs.length, MAX_CONNECTION_TOPIC_PAIRS);
+  assert.equal(overlay.overlap_count, MAX_CONNECTION_TOPIC_PAIRS);
+});
+
+test("topicCooccurrence: caps presentation pairs", () => {
+  const slugs = [];
+
+  for (let index = 0; index < 21; index += 1) {
+    slugs.push(`t${String(index).padStart(2, "0")}`);
+  }
+
+  const publicSlugs = new Set(slugs);
+  const pairs = topicCooccurrence(
+    [
+      {
+        declared_topics: slugs.map((slug) => ({
+          slug,
+          community_eligible: true,
+        })),
+      },
+    ],
+    publicSlugs,
+  );
+  assert.equal(pairs.length, MAX_COOCCURRENCE_PAIRS);
 });

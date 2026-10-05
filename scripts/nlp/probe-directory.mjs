@@ -1,6 +1,6 @@
 /**
- * Goal: Local-only schema probe against robots-allowed joshing.you sites.
- * Not hourly CI. Does not write _data. Excluded from coverage.
+ * Goal: Local-only schema probe against a sample of robots-allowed member
+ * sites listed on joshing.you. Not hourly CI. Does not write _data.
  *
  * Usage: npm run nlp:probe-directory -- --limit 100 --seed 1
  */
@@ -12,7 +12,6 @@ import process from "node:process";
 import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 
-import { originFromHttpUrl } from "../network/blogroll.mjs";
 import { assertPublicURL } from "../network/lib.mjs";
 import {
   contentItemsFromJsonFeed,
@@ -20,150 +19,21 @@ import {
   mergeContentItems,
 } from "./content.mjs";
 import {
-  USER_AGENT,
-  fetchPublicText,
-  parseHtmlDocument,
-  writeJSONAtomic,
-} from "./lib.mjs";
+  DIRECTORY_ORIGIN,
+  FEED_ACCEPT,
+  MAX_DIRECTORY_PAGES,
+  accumulateListedOrigins,
+  advertisedFeeds,
+  directoryPageUrls,
+  flagValue,
+  mulberry32,
+  shuffle,
+} from "./directory.mjs";
+import { USER_AGENT, fetchPublicText, writeJSONAtomic } from "./lib.mjs";
 import { robotsAllowsPath } from "./robots.mjs";
 
-const DIRECTORY_ORIGIN = "https://joshing.you";
 const DEFAULT_LIMIT = 100;
 const DEFAULT_SEED = 1;
-const DIRECTORY_PAGES = 12;
-const MAX_FEEDS_PER_ORIGIN = 2;
-
-/**
- * @param {string[]} argv
- * @param {string} flag
- * @param {string} fallback
- * @returns {string}
- */
-function flagValue(argv, flag, fallback) {
-  const index = argv.indexOf(flag);
-
-  if (index < 0 || !argv[index + 1]) {
-    return fallback;
-  }
-
-  return argv[index + 1];
-}
-
-/**
- * @param {number} seed
- * @returns {() => number}
- */
-function mulberry32(seed) {
-  let state = seed >>> 0;
-
-  return () => {
-    state += 0x6d2b79f5;
-    let next = Math.imul(state ^ (state >>> 15), 1 | state);
-    next ^= next + Math.imul(next ^ (next >>> 7), 61 | next);
-    return ((next ^ (next >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-/**
- * @template T
- * @param {T[]} list
- * @param {() => number} random
- * @returns {T[]}
- */
-function shuffle(list, random) {
-  const copy = [...list];
-
-  for (let index = copy.length - 1; index > 0; index -= 1) {
-    const swap = Math.floor(random() * (index + 1));
-    const temp = copy[index];
-    copy[index] = copy[swap];
-    copy[swap] = temp;
-  }
-
-  return copy;
-}
-
-/**
- * @param {string} html
- * @param {string} base
- * @returns {string[]}
- */
-function originsFromDirectoryHtml(html, base) {
-  const origins = [];
-  const seen = new Set();
-
-  for (const link of parseHtmlDocument(html).links) {
-    try {
-      const parsed = new URL(link.href, base);
-
-      if (parsed.protocol !== "http:" && parsed.protocol !== "https:") {
-        continue;
-      }
-
-      if (
-        parsed.hostname === "joshing.you" ||
-        parsed.hostname === "www.joshing.you"
-      ) {
-        continue;
-      }
-
-      const origin = originFromHttpUrl(parsed.href);
-
-      if (!seen.has(origin)) {
-        seen.add(origin);
-        origins.push(origin);
-      }
-    } catch {
-      continue;
-    }
-  }
-
-  return origins;
-}
-
-/**
- * @param {string} html
- * @param {string} origin
- * @returns {Array<{ url: string, type: string }>}
- */
-function advertisedFeeds(html, origin) {
-  const feeds = [];
-  const seen = new Set();
-
-  for (const link of parseHtmlDocument(html).links) {
-    const rel = (link.rel || []).join(" ").toLowerCase();
-    const href = String(link.href || "");
-
-    if (
-      !/\balternate\b/.test(rel) &&
-      !/\.(rss|atom|xml|json)(?:$|[?#])/i.test(href) &&
-      !/\/feed\b/i.test(href)
-    ) {
-      continue;
-    }
-
-    try {
-      const url = new URL(href, origin).href;
-
-      if (seen.has(url)) {
-        continue;
-      }
-
-      seen.add(url);
-      const blob = `${rel} ${href}`;
-      const type = /json/i.test(blob)
-        ? "json"
-        : /atom/i.test(blob)
-          ? "atom"
-          : "rss";
-      feeds.push({ url, type });
-    } catch {
-      continue;
-    }
-  }
-
-  return feeds.slice(0, MAX_FEEDS_PER_ORIGIN);
-}
 
 /**
  * @returns {Promise<void>}
@@ -180,31 +50,28 @@ async function main() {
     10,
   );
   const dnsCache = new Map();
-  const listed = [];
-  const listedSeen = new Set();
+  let listed = [];
 
-  for (let page = 1; page <= DIRECTORY_PAGES; page += 1) {
-    const href =
-      page === 1 ? `${DIRECTORY_ORIGIN}/` : `${DIRECTORY_ORIGIN}/?page=${page}`;
+  for (let page = 1; page <= MAX_DIRECTORY_PAGES; page += 1) {
+    let added = 0;
 
-    try {
-      const fetched = await fetchPublicText(href, { cache: dnsCache });
-      const found = originsFromDirectoryHtml(fetched.body, fetched.url);
-      let added = 0;
-
-      for (const origin of found) {
-        if (!listedSeen.has(origin)) {
-          listedSeen.add(origin);
-          listed.push(origin);
-          added += 1;
-        }
+    for (const href of directoryPageUrls(page)) {
+      try {
+        const fetched = await fetchPublicText(href, { cache: dnsCache });
+        const next = accumulateListedOrigins(
+          listed,
+          fetched.body,
+          fetched.url || DIRECTORY_ORIGIN,
+        );
+        listed = next.origins;
+        added += next.added;
+      } catch {
+        continue;
       }
+    }
 
-      if (page > 1 && added === 0) {
-        break;
-      }
-    } catch {
-      continue;
+    if (page > 1 && added === 0) {
+      break;
     }
   }
 
@@ -261,8 +128,7 @@ async function main() {
         try {
           const fetched = await fetchPublicText(feed.url, {
             cache: dnsCache,
-            accept:
-              "application/feed+json, application/json, application/rss+xml, application/atom+xml, application/xml, text/xml, */*;q=0.1",
+            accept: FEED_ACCEPT,
           });
           const kind = feed.type;
           const items =

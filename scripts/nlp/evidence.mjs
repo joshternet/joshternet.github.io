@@ -33,16 +33,16 @@ export const COMMUNITY_ELIGIBLE_SOURCES = new Set([
   "schema:keywords",
   "octothorpe",
   "article:section",
-  "meta:keywords",
   "topic-hub:link",
   "topic-hub:page",
-  "portfolio:index",
   "portfolio:sector",
 ]);
 
 /** Descriptive metadata that is not a topic label (discovery, not membership). */
 export const DISCOVERY_ONLY_SOURCES = new Set([
   "meta:description",
+  "meta:keywords",
+  "schema:keywords",
   "og:description",
   "twitter:description",
   "json-ld:about",
@@ -52,10 +52,12 @@ export const DISCOVERY_ONLY_SOURCES = new Set([
   "title",
   "heading",
   "og:type",
+  "portfolio:index",
 ]);
 
 const PARSER_ARTIFACT_SLUG =
   /^(quot|x27|nbsp|amp|class|span|div|script|style)$/;
+const TAXONOMY_PATH_SLUG = /^(?:feeds?|keywords?|tags?)-/;
 
 /**
  * @param {string} source
@@ -83,9 +85,41 @@ export function isParserArtifactSlug(slug) {
 
   return (
     PARSER_ARTIFACT_SLUG.test(value) ||
+    TAXONOMY_PATH_SLUG.test(value) ||
     value.startsWith("class-") ||
     /^\d{4}$/.test(value)
   );
+}
+
+/**
+ * Turns a raw feed/HTML label into a topic phrase. Path-shaped CMS chrome
+ * (`feeds/default`, `keywords/Government`) is not a topic.
+ * @param {unknown} raw
+ * @returns {string}
+ */
+export function canonicalTopicLabel(raw) {
+  const value = normalizeExtractedText(raw);
+
+  if (!value) {
+    return "";
+  }
+
+  if (/[\\/]/.test(value)) {
+    return "";
+  }
+
+  const slug = slugifyTopic(value);
+
+  if (
+    !slug ||
+    slug.length < 2 ||
+    isNonSubjectSlug(slug) ||
+    isParserArtifactSlug(slug)
+  ) {
+    return "";
+  }
+
+  return value;
 }
 
 /**
@@ -106,42 +140,90 @@ const NON_SUBJECT_PHRASES = new Set([
  * Function words and publishing chrome that must not become topics.
  */
 export const NON_SUBJECT_UNIGRAMS = new Set([
+  "actually",
+  "advice",
   "another",
+  "application",
+  "applications",
   "article",
   "articles",
   "across",
+  "active",
   "alongside",
+  "amazing",
   "among",
   "around",
+  "awesome",
   "back",
+  "bad",
+  "best",
+  "better",
   "blog",
   "blogs",
+  "bruh",
   "build",
   "built",
+  "case",
   "click",
   "code",
+  "coder",
   "come",
   "coming",
+  "companies",
+  "contact",
   "content",
+  "cool",
+  "creative",
+  "date",
   "day",
   "days",
+  "default",
+  "designed",
+  "developer",
+  "developed",
+  "didn",
+  "directory",
+  "doesn",
+  "don",
+  "dude",
+  "enable",
+  "engineer",
   "even",
   "every",
   "everything",
+  "excellent",
+  "experience",
   "experiments",
+  "fastest",
   "feed",
+  "feeds",
   "find",
   "first",
+  "founder",
+  "freely",
+  "fun",
+  "funny",
   "get",
+  "good",
   "got",
+  "great",
   "home",
+  "ideas",
+  "inclusive",
   "index",
+  "info",
+  "isn",
   "josh",
+  "joshua",
   "joshternet",
   "just",
+  "key",
+  "keyword",
+  "keywords",
   "know",
   "less",
   "like",
+  "lists",
   "look",
   "looking",
   "made",
@@ -150,45 +232,67 @@ export const NON_SUBJECT_UNIGRAMS = new Set([
   "many",
   "may",
   "menu",
+  "modern",
   "much",
   "need",
   "needed",
   "newsletter",
   "new",
+  "nice",
+  "night",
+  "nine",
   "nothing",
   "now",
   "notes",
+  "official",
   "one",
   "open",
   "page",
   "pages",
   "people",
+  "personal",
   "platform",
+  "portfolio",
   "post",
   "posts",
   "project",
   "projects",
+  "random",
   "read",
   "reading",
   "real",
   "really",
+  "recent",
+  "resume",
   "rss",
   "see",
+  "service",
+  "showcase",
   "site",
   "sites",
+  "skills",
   "something",
   "still",
   "system",
   "systems",
+  "tagline",
   "take",
+  "team",
+  "template",
+  "theme",
   "thing",
   "things",
+  "thoughts",
   "time",
   "times",
   "today",
+  "top",
   "two",
+  "uncategorized",
+  "united",
   "used",
   "using",
+  "visual",
   "want",
   "way",
   "web",
@@ -196,10 +300,27 @@ export const NON_SUBJECT_UNIGRAMS = new Set([
   "websites",
   "well",
   "without",
+  "won",
   "work",
   "works",
+  "writer",
   "year",
   "years",
+]);
+
+/**
+ * Leading tokens that make a hyphenated slug a sentence fragment, not a subject.
+ */
+const LEADING_FILLER_UNIGRAMS = new Set([
+  "actually",
+  "basically",
+  "currently",
+  "definitely",
+  "freely",
+  "probably",
+  "really",
+  "simply",
+  "usually",
 ]);
 
 /**
@@ -228,6 +349,10 @@ export function isNonSubjectSlug(slug) {
 
   const parts = value.split("-").filter(Boolean);
 
+  if (parts.length >= 2 && LEADING_FILLER_UNIGRAMS.has(parts[0])) {
+    return true;
+  }
+
   if (
     parts.length === 0 ||
     parts.every(
@@ -240,11 +365,7 @@ export function isNonSubjectSlug(slug) {
     return true;
   }
 
-  if (value.includes("-")) {
-    return isParserArtifactSlug(value);
-  }
-
-  return STOPWORDS.has(value) || isParserArtifactSlug(value);
+  return isParserArtifactSlug(value);
 }
 
 /**
@@ -344,10 +465,15 @@ export function buildTopicEvidence(input) {
     return null;
   }
 
-  const value = normalizeExtractedText(rawValue);
+  const value = canonicalTopicLabel(rawValue);
   const slug = slugifyTopic(value);
 
-  if (!slug || slug.length < 2) {
+  if (
+    !slug ||
+    slug.length < 2 ||
+    isNonSubjectSlug(slug) ||
+    isParserArtifactSlug(slug)
+  ) {
     return null;
   }
 

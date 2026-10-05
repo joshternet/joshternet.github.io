@@ -94,7 +94,7 @@ export function subjectsFromHtml(html, pageUrl, options = {}) {
 
   if (keywords?.[1]) {
     for (const part of keywords[1].split(",")) {
-      add(part, "meta:keywords", true);
+      add(part, "meta:keywords", false);
     }
   }
 
