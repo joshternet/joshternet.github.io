@@ -404,11 +404,21 @@ h3 {
   text-wrap: pretty;
 }
 
+.prose > h1 + h2 {
+  margin-block-start: var(--space-5);
+}
+
 .prose > .prose-emphasis {
   padding-inline-start: var(--space-5);
   border-inline-start: 0.2rem solid var(--color-accent);
   font-size: 1.08em;
   line-height: 1.5;
+}
+
+.prose > .legal-dates {
+  margin-block-start: var(--space-8);
+  color: var(--color-muted);
+  font-size: var(--type-small);
 }
 
 p,
@@ -638,6 +648,36 @@ video {
   text-decoration: underline;
   text-decoration-color: var(--color-link-underline);
   text-underline-offset: 0.2em;
+}
+
+.site-footer__actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.site-footer__icon-link {
+  display: inline-flex;
+  min-inline-size: 2.75rem;
+  min-block-size: 2.75rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-muted);
+  text-decoration: none;
+}
+
+.site-footer__icon-link:hover,
+.site-footer__icon-link:focus-visible {
+  color: var(--color-link);
+  outline: none;
+}
+
+.site-footer__github-icon {
+  display: block;
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
 }
 
 .site-footer__button {

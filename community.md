@@ -11,9 +11,11 @@ permalink: /community/
 
 # Community Principles and Stewardship Commitment
 
-The Joshternet started with a deliberately strange idea: connect Joshes and the independent places they maintain on the web without building another platform that owns the people, their identities, or their work.
+The Joshternet is a hub for Joshes and non-Joshes alike. It is meant to be fun, not exclusive. Everyone is welcome to join in the joshing.
 
-That only works if the community surrounding the technology follows the same principles as the technology itself.
+Independent sites stay independent. The network connects people and the places they maintain without owning their identities or their work.
+
+That only works if the community surrounding the technology follows the same spirit as the technology itself.
 
 This is the Joshternet commitment. It states the community we are building, the behavior expected within Joshternet community spaces, and the commitments accepted by anyone entrusted with stewardship of the Joshternet project, its specifications, repositories, services, and shared infrastructure.
 

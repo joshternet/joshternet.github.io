@@ -26,7 +26,7 @@ async function assertMissing(relativePath) {
   });
 }
 
-test("community page and footer point at #joshternet without embedding chat", async () => {
+test("community page points at #joshternet without embedding chat; footer omits IRC", async () => {
   const community = await read("community.md");
   const layout = await read("_layouts/default.html");
 
@@ -35,9 +35,20 @@ test("community page and footer point at #joshternet without embedding chat", as
   assert.match(community, /irc\.libera\.chat/);
   assert.match(community, /6697/);
   assert.doesNotMatch(community, /<iframe/i);
-  assert.match(layout, /https:\/\/web\.libera\.chat\/#joshternet/);
-  assert.match(layout, />#joshternet<span aria-hidden="true">↗<\/span/);
+  assert.doesNotMatch(layout, /web\.libera\.chat/);
+  assert.doesNotMatch(layout, /site-footer__nav[\s\S]*#joshternet/);
   assert.match(layout, /github.com\/joshternet[\s\S]*target="_blank"/);
+  assert.match(layout, /site-footer__actions/);
+  assert.match(layout, /site-footer__icon-link/);
+  assert.match(layout, /site-footer__github-icon/);
+  assert.doesNotMatch(
+    layout,
+    /site-footer[\s\S]*network-card__elsewhere-glyph--github/,
+  );
+  assert.doesNotMatch(
+    layout,
+    /site-footer__nav[\s\S]*>GitHub<span aria-hidden="true">↗/,
+  );
   assert.match(layout, /site-footer__button/);
   assert.match(layout, /joshternet-button\.js/);
 });
@@ -78,8 +89,10 @@ test("primary navigation keeps top-level labels and Implement children", async (
   assert.match(aboutNav, /mailto:hello@joshternet\.org/);
   assert.match(aboutNav, /#joshternet/);
   assert.match(aboutNav, /web\.libera\.chat/);
-  assert.match(aboutNav, /title: GitHub/);
-  assert.match(aboutNav, /github\.com\/joshternet/);
+  assert.doesNotMatch(aboutNav, /title: GitHub/);
+  assert.doesNotMatch(aboutNav, /github\.com\/joshternet/);
+  assert.match(layout, /site-footer__icon-link/);
+  assert.match(layout, /site-footer__github-icon/);
   assert.match(
     await read("_includes/site-nav-about-children.html"),
     /about_nav/,

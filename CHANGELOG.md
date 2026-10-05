@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+### Changed
+
+- About second-level nav drops GitHub; footer GitHub is a plain icon link (inline Simple Icons SVG) beside the JOIN button, with a visually hidden label. Footer drops the #joshternet IRC link (still on Community / About nav).
+
+### Added
+
+- Canonical Privacy (`/privacy/`) and Terms (`/terms/`) for Joshternet-operated services, written for visitors: hub hosting, Umami, official buttons, nominations/Turnstile, declaration checker, JoshBot, public registry, Wander, OPML, Webmentions. Button lookup facts stay (site address only, no visit of that site, brief cache) without API syntax; WordPress shortcode lookups are the site server’s connection, not each visitor’s browser. Avoids raw hub asset paths. Footer is Privacy, Terms, Security, Contact. WordPress.org External services copy stays in `joshternet/wordpress`.
+- Explicit hub licensing (#58): project-owned code BSD-3-Clause (`LICENSE`), prose/docs CC BY 4.0, brand marks not open-licensed; participant screenshots and third-party attribution excluded. Policy in `LICENSING.md` and `/licensing/`; README and Terms point at it. Third-party attribution page at `/licensing/third-party-licenses/` (sitemap, not nav); repo file `THIRD_PARTY_LICENSES.md` stays the source list with markdown Source links.
+
 ### Added
 
 - Seed-nominations Worker CI workflow (`.github/workflows/seed-nominations.yml`) and operational README: `npm ci` / tests / Wrangler dry-run on PRs and `main`, plus public API, D1 migrations, abuse controls, failure modes, and production smoke (#55).

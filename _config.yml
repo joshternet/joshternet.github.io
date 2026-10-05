@@ -36,6 +36,9 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - LICENSE
+  - LICENSING.md
+  - THIRD_PARTY_LICENSES.md
   - node_modules
   - package.json
   - package-lock.json
