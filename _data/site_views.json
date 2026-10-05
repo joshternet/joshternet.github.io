@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-04T23:11:15.950Z",
+  "generated_at": "2026-10-05T16:18:43.645Z",
   "sites": [
     {
       "origin": "https://joshghent.com",
@@ -108,6 +108,10 @@
           "label": "links"
         },
         {
+          "slug": "linux",
+          "label": "linux"
+        },
+        {
           "slug": "networking",
           "label": "networking"
         },
@@ -176,7 +180,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-04T23:10:26.695Z"
+      "crawled_at": "2026-10-05T16:17:44.426Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -194,232 +198,24 @@
       ],
       "community_topics": [
         {
-          "slug": "crawl-notes",
-          "label": "crawl notes"
-        },
-        {
-          "slug": "decentralized-web",
-          "label": "decentralized web"
-        },
-        {
           "slug": "discovery",
           "label": "discovery"
-        },
-        {
-          "slug": "draft-rfcs",
-          "label": "Draft RFCs"
-        },
-        {
-          "slug": "eleventy",
-          "label": "eleventy"
-        },
-        {
-          "slug": "evidence-classes",
-          "label": "evidence classes"
-        },
-        {
-          "slug": "ghost",
-          "label": "Ghost"
-        },
-        {
-          "slug": "ghost-pro",
-          "label": "Ghost Pro"
         },
         {
           "slug": "identity",
           "label": "identity"
         },
         {
-          "slug": "implement-joshternet",
-          "label": "implement Joshternet"
-        },
-        {
-          "slug": "include-well-known",
-          "label": "include .well-known"
-        },
-        {
           "slug": "independent",
           "label": "independent"
-        },
-        {
-          "slug": "independent-websites",
-          "label": "independent websites"
-        },
-        {
-          "slug": "indie-web",
-          "label": "indie web"
-        },
-        {
-          "slug": "indie-web-protocol",
-          "label": "indie web protocol"
         },
         {
           "slug": "infrastructure",
           "label": "infrastructure"
         },
         {
-          "slug": "jekyll",
-          "label": "Jekyll"
-        },
-        {
-          "slug": "josh-network",
-          "label": "Josh network"
-        },
-        {
-          "slug": "joshbot",
-          "label": "JoshBot"
-        },
-        {
-          "slug": "joshbot-seed",
-          "label": "JoshBot seed"
-        },
-        {
-          "slug": "joshternet-button",
-          "label": "Joshternet button"
-        },
-        {
-          "slug": "joshternet-community",
-          "label": "Joshternet community"
-        },
-        {
-          "slug": "joshternet-connections",
-          "label": "Joshternet connections"
-        },
-        {
-          "slug": "joshternet-crawler",
-          "label": "Joshternet crawler"
-        },
-        {
-          "slug": "joshternet-declaration",
-          "label": "Joshternet declaration"
-        },
-        {
-          "slug": "joshternet-declaration-checker",
-          "label": "Joshternet declaration checker"
-        },
-        {
-          "slug": "joshternet-explore-views",
-          "label": "Joshternet explore views"
-        },
-        {
-          "slug": "joshternet-governance",
-          "label": "Joshternet governance"
-        },
-        {
-          "slug": "joshternet-registry",
-          "label": "Joshternet registry"
-        },
-        {
-          "slug": "joshternet-rfc",
-          "label": "Joshternet RFC"
-        },
-        {
-          "slug": "joshternet-security",
-          "label": "Joshternet security"
-        },
-        {
-          "slug": "json-validation",
-          "label": "JSON validation"
-        },
-        {
           "slug": "network",
           "label": "network"
-        },
-        {
-          "slug": "nginx",
-          "label": "Nginx"
-        },
-        {
-          "slug": "nominate-website",
-          "label": "nominate website"
-        },
-        {
-          "slug": "open-josh-network",
-          "label": "open Josh network"
-        },
-        {
-          "slug": "open-network",
-          "label": "open network"
-        },
-        {
-          "slug": "open-standards",
-          "label": "open standards"
-        },
-        {
-          "slug": "platform-recipes",
-          "label": "platform recipes"
-        },
-        {
-          "slug": "presentation-projections",
-          "label": "presentation projections"
-        },
-        {
-          "slug": "principles",
-          "label": "principles"
-        },
-        {
-          "slug": "registry-discovery",
-          "label": "registry discovery"
-        },
-        {
-          "slug": "registry-membership",
-          "label": "registry membership"
-        },
-        {
-          "slug": "responsible-disclosure",
-          "label": "responsible disclosure"
-        },
-        {
-          "slug": "rfc-process",
-          "label": "RFC process"
-        },
-        {
-          "slug": "search",
-          "label": "search"
-        },
-        {
-          "slug": "specifications",
-          "label": "specifications"
-        },
-        {
-          "slug": "static-site-recipe",
-          "label": "static site recipe"
-        },
-        {
-          "slug": "stewardship",
-          "label": "stewardship"
-        },
-        {
-          "slug": "topic-communities",
-          "label": "topic communities"
-        },
-        {
-          "slug": "topics",
-          "label": "Topics"
-        },
-        {
-          "slug": "validate-well-known-josh",
-          "label": "validate /.well-known/josh"
-        },
-        {
-          "slug": "verification",
-          "label": "verification"
-        },
-        {
-          "slug": "vulnerability-reporting",
-          "label": "vulnerability reporting"
-        },
-        {
-          "slug": "web-button-embed",
-          "label": "web button embed"
-        },
-        {
-          "slug": "well-known-josh",
-          "label": "/.well-known/josh"
-        },
-        {
-          "slug": "what-s-new",
-          "label": "What's New"
         }
       ],
       "recent_content": null,
@@ -441,7 +237,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-04T23:10:26.695Z"
+      "crawled_at": "2026-10-05T16:17:44.426Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -528,18 +324,6 @@
           "label": "food"
         },
         {
-          "slug": "forge",
-          "label": "forge"
-        },
-        {
-          "slug": "forgejo",
-          "label": "forgejo"
-        },
-        {
-          "slug": "git",
-          "label": "git"
-        },
-        {
           "slug": "gnome",
           "label": "gnome"
         },
@@ -602,10 +386,6 @@
         {
           "slug": "parenting",
           "label": "parenting"
-        },
-        {
-          "slug": "personal",
-          "label": "personal"
         },
         {
           "slug": "php",
@@ -705,7 +485,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-04T23:10:26.695Z"
+      "crawled_at": "2026-10-05T16:17:44.426Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -1082,10 +862,6 @@
           "label": "parenting"
         },
         {
-          "slug": "personal",
-          "label": "personal"
-        },
-        {
           "slug": "personhood",
           "label": "personhood"
         },
@@ -1190,10 +966,6 @@
           "label": "software"
         },
         {
-          "slug": "software-engineering",
-          "label": "software engineering"
-        },
-        {
           "slug": "software-preservation",
           "label": "software preservation"
         },
@@ -1292,12 +1064,7 @@
         "site_origin": "https://joshuamorris.info",
         "site_title": "Joshua Morris",
         "domain": "joshuamorris.info",
-        "tags": [
-          {
-            "slug": "experiments",
-            "label": "experiments"
-          }
-        ],
+        "tags": [],
         "neighborhoods": [],
         "image": "",
         "image_origin": ""
@@ -1328,7 +1095,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-04T23:10:26.695Z"
+      "crawled_at": "2026-10-05T16:17:44.426Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -1478,10 +1245,6 @@
           "label": "paris"
         },
         {
-          "slug": "personal",
-          "label": "personal"
-        },
-        {
           "slug": "personal-data",
           "label": "personal data"
         },
@@ -1570,7 +1333,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-04T23:10:26.695Z"
+      "crawled_at": "2026-10-05T16:17:44.426Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -1728,10 +1491,6 @@
           "label": "policy"
         },
         {
-          "slug": "portfolio",
-          "label": "portfolio"
-        },
-        {
           "slug": "property",
           "label": "property"
         },
@@ -1798,7 +1557,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-04T23:10:26.695Z",
+      "crawled_at": "2026-10-05T16:17:44.426Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 145,

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-05T09:04:35.581Z",
-  "community_count": 262,
+  "generated_at": "2026-10-05T16:17:44.426Z",
+  "community_count": 207,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
@@ -2054,30 +2054,6 @@
       "active": true
     },
     {
-      "slug": "crawl-notes",
-      "label": "crawl notes",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/connections/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
       "slug": "creative-design",
       "label": "creative & design",
       "member_count": 1,
@@ -2368,30 +2344,6 @@
       "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
-      "active": true
-    },
-    {
-      "slug": "decentralized-web",
-      "label": "decentralized web",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/about/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -2759,35 +2711,6 @@
       "active": true
     },
     {
-      "slug": "draft-rfcs",
-      "label": "Draft RFCs",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/governance/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshternet.org/specs/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
       "slug": "earth-observation",
       "label": "earth observation",
       "member_count": 1,
@@ -2957,26 +2880,8 @@
     {
       "slug": "eleventy",
       "label": "eleventy",
-      "member_count": 2,
+      "member_count": 1,
       "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/platforms/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshternet.org/implement/platforms/eleventy/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        },
         {
           "origin": "https://www.joshcanhelp.com",
           "domain": "www.joshcanhelp.com",
@@ -2991,10 +2896,11 @@
           ]
         }
       ],
-      "sources": ["meta:keywords", "topic-hub:page"],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
+      "last_changed_at": "2026-10-05T16:17:44.426Z",
+      "active": true,
+      "stale_since": "2026-10-05T16:17:44.426Z"
     },
     {
       "slug": "email",
@@ -3246,30 +3152,6 @@
       "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "evidence-classes",
-      "label": "evidence classes",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/connections/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -3584,54 +3466,6 @@
       "active": true
     },
     {
-      "slug": "forge",
-      "label": "forge",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshtronic.com",
-          "domain": "joshtronic.com",
-          "title": "Joshtronic",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://git.sherver.org/joshtronic/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T09:36:17.761Z",
-      "active": true
-    },
-    {
-      "slug": "forgejo",
-      "label": "forgejo",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshtronic.com",
-          "domain": "joshtronic.com",
-          "title": "Joshtronic",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://git.sherver.org/joshtronic/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T09:36:17.761Z",
-      "active": true
-    },
-    {
       "slug": "freelancing",
       "label": "freelancing",
       "member_count": 1,
@@ -3682,83 +3516,6 @@
       "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "ghost",
-      "label": "Ghost",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/platforms/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshternet.org/implement/platforms/ghost/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T07:59:34.677Z",
-      "last_changed_at": "2026-10-04T07:59:34.677Z",
-      "active": true
-    },
-    {
-      "slug": "ghost-pro",
-      "label": "Ghost Pro",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/platforms/ghost/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T07:59:34.677Z",
-      "last_changed_at": "2026-10-04T07:59:34.677Z",
-      "active": true
-    },
-    {
-      "slug": "git",
-      "label": "git",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshtronic.com",
-          "domain": "joshtronic.com",
-          "title": "Joshtronic",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://git.sherver.org/joshtronic/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
     },
     {
@@ -4378,54 +4135,6 @@
       "active": true
     },
     {
-      "slug": "implement-joshternet",
-      "label": "implement Joshternet",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "include-well-known",
-      "label": "include .well-known",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/platforms/jekyll/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
       "slug": "independent",
       "label": "independent",
       "member_count": 2,
@@ -4544,88 +4253,6 @@
       "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "independent-websites",
-      "label": "independent websites",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshternet.org/about/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshternet.org/community/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "indie-web",
-      "label": "indie web",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "indie-web-protocol",
-      "label": "indie web protocol",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -5065,415 +4692,6 @@
       "active": true
     },
     {
-      "slug": "jekyll",
-      "label": "Jekyll",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/platforms/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshternet.org/implement/platforms/jekyll/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "josh-network",
-      "label": "Josh network",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "joshbot",
-      "label": "JoshBot",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/joshbot/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "joshbot-seed",
-      "label": "JoshBot seed",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/nominate/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "joshternet-button",
-      "label": "Joshternet button",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/buttons/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "joshternet-community",
-      "label": "Joshternet community",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/community/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "joshternet-connections",
-      "label": "Joshternet connections",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/connections/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "joshternet-crawler",
-      "label": "Joshternet crawler",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/joshbot/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "joshternet-declaration",
-      "label": "Joshternet declaration",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshternet.org/implement/platforms/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshternet.org/implement/platforms/eleventy/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshternet.org/implement/platforms/ghost/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshternet.org/implement/platforms/jekyll/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "joshternet-declaration-checker",
-      "label": "Joshternet declaration checker",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/validate/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "joshternet-explore-views",
-      "label": "Joshternet explore views",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/explore/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "joshternet-governance",
-      "label": "Joshternet governance",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/governance/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "joshternet-registry",
-      "label": "Joshternet registry",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/nominate/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "joshternet-rfc",
-      "label": "Joshternet RFC",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/specs/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "joshternet-security",
-      "label": "Joshternet security",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/security/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "json-validation",
-      "label": "JSON validation",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/validate/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
       "slug": "law",
       "label": "law",
       "member_count": 3,
@@ -5838,8 +5056,36 @@
     {
       "slug": "linux",
       "label": "linux",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/work/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -5882,9 +5128,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["microformat:p-category", "topic-hub:link", "visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-05T16:17:44.426Z",
       "active": true
     },
     {
@@ -6426,30 +5672,6 @@
       "active": true
     },
     {
-      "slug": "nginx",
-      "label": "Nginx",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/platforms/ghost/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T07:59:34.677Z",
-      "last_changed_at": "2026-10-04T07:59:34.677Z",
-      "active": true
-    },
-    {
       "slug": "node-js",
       "label": "node.js",
       "member_count": 1,
@@ -6471,30 +5693,6 @@
       "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
-      "active": true
-    },
-    {
-      "slug": "nominate-website",
-      "label": "nominate website",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/nominate/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -6682,54 +5880,6 @@
       "active": true
     },
     {
-      "slug": "open-josh-network",
-      "label": "open Josh network",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/about/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "open-network",
-      "label": "open network",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/community/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
       "slug": "open-source",
       "label": "open source",
       "member_count": 4,
@@ -6845,35 +5995,6 @@
       ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-04T15:32:37.678Z",
-      "active": true
-    },
-    {
-      "slug": "open-standards",
-      "label": "open standards",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/governance/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshternet.org/specs/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -7018,81 +6139,6 @@
       "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
-      "active": true
-    },
-    {
-      "slug": "personal",
-      "label": "personal",
-      "member_count": 3,
-      "sites": [
-        {
-          "origin": "https://joshtronic.com",
-          "domain": "joshtronic.com",
-          "title": "Joshtronic",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshtronic.com/categories/",
-              "title": "",
-              "source": "topic-hub:link"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://www.joshcanhelp.com",
-          "domain": "www.joshcanhelp.com",
-          "title": "Josh Can Help",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://www.joshcanhelp.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshcanhelp.com/about/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["topic-hub:link", "visible-text"],
-      "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
     },
     {
@@ -7264,30 +6310,6 @@
       "active": true
     },
     {
-      "slug": "platform-recipes",
-      "label": "platform recipes",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/platforms/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
       "slug": "policy",
       "label": "policy",
       "member_count": 1,
@@ -7347,30 +6369,6 @@
       "active": true
     },
     {
-      "slug": "portfolio",
-      "label": "portfolio",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://www.joshuabaker.com",
-          "domain": "www.joshuabaker.com",
-          "title": "Joshua Baker",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://www.joshuabaker.com/work/",
-              "title": "",
-              "source": "portfolio:index"
-            }
-          ]
-        }
-      ],
-      "sources": ["portfolio:index"],
-      "first_seen_at": "2026-10-03T11:57:33.407Z",
-      "last_changed_at": "2026-10-03T11:57:33.407Z",
-      "active": true
-    },
-    {
       "slug": "postgres",
       "label": "postgres",
       "member_count": 1,
@@ -7416,54 +6414,6 @@
       "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "presentation-projections",
-      "label": "presentation projections",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/explore/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "principles",
-      "label": "principles",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/community/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -7964,54 +6914,6 @@
       "active": true
     },
     {
-      "slug": "registry-discovery",
-      "label": "registry discovery",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/joshbot/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "registry-membership",
-      "label": "registry membership",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/buttons/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
       "slug": "regulation",
       "label": "regulation",
       "member_count": 1,
@@ -8141,30 +7043,6 @@
       "active": true
     },
     {
-      "slug": "responsible-disclosure",
-      "label": "responsible disclosure",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/security/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
       "slug": "reward-hacking",
       "label": "reward hacking",
       "member_count": 1,
@@ -8184,30 +7062,6 @@
         }
       ],
       "sources": ["topic-hub:link"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "rfc-process",
-      "label": "RFC process",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/governance/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
@@ -8365,21 +7219,8 @@
     {
       "slug": "search",
       "label": "search",
-      "member_count": 3,
+      "member_count": 2,
       "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/explore/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -8407,10 +7248,11 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "meta:keywords", "microformat:p-category"],
+      "sources": ["catalog-match", "microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
+      "last_changed_at": "2026-10-05T16:17:44.426Z",
+      "active": true,
+      "stale_since": "2026-10-05T16:17:44.426Z"
     },
     {
       "slug": "seattle",
@@ -8818,56 +7660,8 @@
     {
       "slug": "software-engineering",
       "label": "software engineering",
-      "member_count": 2,
+      "member_count": 1,
       "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshuamorris.info/about/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshuamorris.info/experiments/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/reveal/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshuamorris.info/friends/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/21/terafab-is-more-interesting-than-its-100-million-square-foot-headline/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        },
         {
           "origin": "https://www.joshcanhelp.com",
           "domain": "www.joshcanhelp.com",
@@ -8882,10 +7676,11 @@
           ]
         }
       ],
-      "sources": ["meta:keywords", "topic-hub:page"],
+      "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
+      "last_changed_at": "2026-10-05T16:17:44.426Z",
+      "active": true,
+      "stale_since": "2026-10-05T16:17:44.426Z"
     },
     {
       "slug": "software-preservation",
@@ -8975,35 +7770,6 @@
       "active": true
     },
     {
-      "slug": "specifications",
-      "label": "specifications",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/governance/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshternet.org/specs/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
       "slug": "sql",
       "label": "sql",
       "member_count": 2,
@@ -9062,54 +7828,6 @@
       "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "static-site-recipe",
-      "label": "static site recipe",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/platforms/eleventy/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "stewardship",
-      "label": "stewardship",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/community/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -9437,54 +8155,6 @@
       "active": true
     },
     {
-      "slug": "topic-communities",
-      "label": "topic communities",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/connections/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "topics",
-      "label": "Topics",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/explore/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
       "slug": "trade",
       "label": "trade",
       "member_count": 1,
@@ -9719,54 +8389,6 @@
       "active": true
     },
     {
-      "slug": "validate-well-known-josh",
-      "label": "validate /.well-known/josh",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/validate/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "verification",
-      "label": "verification",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/joshbot/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
       "slug": "version-control",
       "label": "version control",
       "member_count": 1,
@@ -9929,30 +8551,6 @@
       "active": true
     },
     {
-      "slug": "vulnerability-reporting",
-      "label": "vulnerability reporting",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/security/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
       "slug": "wearable-ai",
       "label": "wearable ai",
       "member_count": 1,
@@ -9979,30 +8577,6 @@
       "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "web-button-embed",
-      "label": "web button embed",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/buttons/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {
@@ -10095,89 +8669,6 @@
       "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "well-known-josh",
-      "label": "/.well-known/josh",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshternet.org/implement/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshternet.org/implement/buttons/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshternet.org/implement/platforms/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshternet.org/implement/platforms/eleventy/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshternet.org/implement/platforms/ghost/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshternet.org/implement/platforms/jekyll/",
-              "title": "",
-              "source": "meta:keywords"
-            },
-            {
-              "url": "https://joshternet.org/joshbot/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "what-s-new",
-      "label": "What's New",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/explore/",
-              "title": "",
-              "source": "meta:keywords"
-            }
-          ]
-        }
-      ],
-      "sources": ["meta:keywords"],
-      "first_seen_at": "2026-10-04T01:48:41.305Z",
-      "last_changed_at": "2026-10-04T01:48:41.305Z",
       "active": true
     },
     {

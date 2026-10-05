@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-04T23:11:15.950Z",
+  "generated_at": "2026-10-05T16:18:43.645Z",
   "overlap_count": 10,
   "pairs": [
     {
@@ -22,10 +22,6 @@
         {
           "slug": "engineering",
           "label": "engineering"
-        },
-        {
-          "slug": "git",
-          "label": "git"
         },
         {
           "slug": "infrastructure",
@@ -102,10 +98,6 @@
           "label": "finance"
         },
         {
-          "slug": "git",
-          "label": "git"
-        },
-        {
           "slug": "google",
           "label": "google"
         },
@@ -136,10 +128,6 @@
         {
           "slug": "open-source",
           "label": "open source"
-        },
-        {
-          "slug": "personal",
-          "label": "personal"
         },
         {
           "slug": "privacy",
@@ -198,10 +186,6 @@
         {
           "slug": "engineering",
           "label": "engineering"
-        },
-        {
-          "slug": "personal",
-          "label": "personal"
         },
         {
           "slug": "privacy",
@@ -286,14 +270,6 @@
         {
           "slug": "engineering",
           "label": "engineering"
-        },
-        {
-          "slug": "forge",
-          "label": "forge"
-        },
-        {
-          "slug": "git",
-          "label": "git"
         },
         {
           "slug": "infrastructure",
@@ -386,20 +362,12 @@
           "label": "identity"
         },
         {
-          "slug": "personal",
-          "label": "personal"
-        },
-        {
           "slug": "privacy",
           "label": "privacy"
         },
         {
           "slug": "software",
           "label": "software"
-        },
-        {
-          "slug": "software-engineering",
-          "label": "software engineering"
         },
         {
           "slug": "technical",
@@ -1299,44 +1267,6 @@
           ]
         },
         {
-          "slug": "git",
-          "label": "git",
-          "articles": [
-            {
-              "url": "https://joshghent.com/gitleaks-travis/",
-              "title": "Monitoring Git Leaks in Travis"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Joshtronic",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
-                  "title": "Security Caveat: Locked out of my server while traveling"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/23/codeberg-is-deciding-which-technologies-belong/",
-                  "title": "Codeberg Is Deciding Which Technologies Belong"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/22/the-interview-assignment-was-the-attack/",
-                  "title": "The Interview Assignment Was the Attack"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "google",
           "label": "google",
           "articles": [
@@ -1695,80 +1625,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/21/the-real-homeos-risk-is-not-homebridge-it-is-what-apple-does-with-hap/",
                   "title": "The Real homeOS Risk Is Not Homebridge. It Is What Apple Does With HAP."
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "personal",
-          "label": "personal",
-          "articles": [
-            {
-              "url": "https://joshghent.com/webstagram/",
-              "title": "Creating my own personal Instagram"
-            },
-            {
-              "url": "https://joshghent.com/personal-infra/",
-              "title": "Personal Infrastructure"
-            },
-            {
-              "url": "https://joshghent.com/tracking-personal-finance/",
-              "title": "What Tracking My Expenses for a Year Taught Me About Personal Finance"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.joshcanhelp.com",
-              "domain": "www.joshcanhelp.com",
-              "title": "Josh Can Help",
-              "articles": [
-                {
-                  "url": "https://www.joshcanhelp.com/personal-data-pipeline-update/",
-                  "title": "Personal Data Pipeline Update"
-                },
-                {
-                  "url": "https://www.joshcanhelp.com/personal-data-pipeline/",
-                  "title": "Imagining a Personal Data Pipeline"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
-                  "title": "Prop. 42 is about a tax on owning savings, not the tax on income they earn"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/18/worth-wandering-robin-sloan/",
-                  "title": "Worth Wandering: Robin Sloan"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/13/an-online-book-club-across-our-own-websites/",
-                  "title": "An Online Book Club Across Our Own Websites"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/20/i-found-more-than-2000-joshes-on-the-independent-web/",
-                  "title": "I Found More Than 2,000 Joshes on the Independent Web"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/09/six-more-employees-fired-for-abusing-flock-camera-data/",
-                  "title": "Six More Employees Fired for Abusing Flock Camera Data"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/03/flock-has-already-become-a-police-stalking-tool/",
-                  "title": "Flock Has Already Become a Police Stalking Tool"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/24/privacy-should-be-the-default-not-a-form-you-have-to-fill-out/",
-                  "title": "Privacy Should Be the Default, Not a Form You Have to Fill Out"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/16/ai-agents-need-their-own-keys/",
-                  "title": "AI Agents Need Their Own Keys"
                 }
               ]
             }
@@ -2667,67 +2523,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/22/walk-through-video-game-history/",
                   "title": "Walk Through Video Game History"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "forge",
-          "label": "forge",
-          "articles": [
-            {
-              "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
-              "title": "Security Caveat: Locked out of my server while traveling"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/23/codeberg-is-deciding-which-technologies-belong/",
-                  "title": "Codeberg Is Deciding Which Technologies Belong"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "git",
-          "label": "git",
-          "articles": [
-            {
-              "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
-              "title": "Security Caveat: Locked out of my server while traveling"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/gitleaks-travis/",
-                  "title": "Monitoring Git Leaks in Travis"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/23/codeberg-is-deciding-which-technologies-belong/",
-                  "title": "Codeberg Is Deciding Which Technologies Belong"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/22/the-interview-assignment-was-the-attack/",
-                  "title": "The Interview Assignment Was the Attack"
                 }
               ]
             }
@@ -4193,67 +3988,6 @@
           ]
         },
         {
-          "slug": "forge",
-          "label": "forge",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/07/23/codeberg-is-deciding-which-technologies-belong/",
-              "title": "Codeberg Is Deciding Which Technologies Belong"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Joshtronic",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
-                  "title": "Security Caveat: Locked out of my server while traveling"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "git",
-          "label": "git",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/07/23/codeberg-is-deciding-which-technologies-belong/",
-              "title": "Codeberg Is Deciding Which Technologies Belong"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/07/22/the-interview-assignment-was-the-attack/",
-              "title": "The Interview Assignment Was the Attack"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/gitleaks-travis/",
-                  "title": "Monitoring Git Leaks in Travis"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Joshtronic",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
-                  "title": "Security Caveat: Locked out of my server while traveling"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "google",
           "label": "google",
           "articles": [
@@ -4915,80 +4649,6 @@
           ]
         },
         {
-          "slug": "personal",
-          "label": "personal",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
-              "title": "Prop. 42 is about a tax on owning savings, not the tax on income they earn"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/18/worth-wandering-robin-sloan/",
-              "title": "Worth Wandering: Robin Sloan"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/13/an-online-book-club-across-our-own-websites/",
-              "title": "An Online Book Club Across Our Own Websites"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/20/i-found-more-than-2000-joshes-on-the-independent-web/",
-              "title": "I Found More Than 2,000 Joshes on the Independent Web"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/09/six-more-employees-fired-for-abusing-flock-camera-data/",
-              "title": "Six More Employees Fired for Abusing Flock Camera Data"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/03/flock-has-already-become-a-police-stalking-tool/",
-              "title": "Flock Has Already Become a Police Stalking Tool"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/07/24/privacy-should-be-the-default-not-a-form-you-have-to-fill-out/",
-              "title": "Privacy Should Be the Default, Not a Form You Have to Fill Out"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/07/16/ai-agents-need-their-own-keys/",
-              "title": "AI Agents Need Their Own Keys"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/webstagram/",
-                  "title": "Creating my own personal Instagram"
-                },
-                {
-                  "url": "https://joshghent.com/personal-infra/",
-                  "title": "Personal Infrastructure"
-                },
-                {
-                  "url": "https://joshghent.com/tracking-personal-finance/",
-                  "title": "What Tracking My Expenses for a Year Taught Me About Personal Finance"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshcanhelp.com",
-              "domain": "www.joshcanhelp.com",
-              "title": "Josh Can Help",
-              "articles": [
-                {
-                  "url": "https://www.joshcanhelp.com/personal-data-pipeline-update/",
-                  "title": "Personal Data Pipeline Update"
-                },
-                {
-                  "url": "https://www.joshcanhelp.com/personal-data-pipeline/",
-                  "title": "Imagining a Personal Data Pipeline"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "place",
           "label": "place",
           "articles": [
@@ -5482,37 +5142,6 @@
                 }
               ]
             },
-            {
-              "origin": "https://www.joshcanhelp.com",
-              "domain": "www.joshcanhelp.com",
-              "title": "Josh Can Help",
-              "articles": [
-                {
-                  "url": "https://www.joshcanhelp.com/ai/",
-                  "title": "Thoughts on AI"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "software-engineering",
-          "label": "software engineering",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/",
-              "title": "Weird Web October 2026"
-            },
-            {
-              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/reveal/",
-              "title": "Reveal"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/21/terafab-is-more-interesting-than-its-100-million-square-foot-headline/",
-              "title": "Terafab Is More Interesting Than Its 100-Million-Square-Foot Headline"
-            }
-          ],
-          "sites": [
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
@@ -6229,80 +5858,6 @@
           ]
         },
         {
-          "slug": "personal",
-          "label": "personal",
-          "articles": [
-            {
-              "url": "https://www.joshcanhelp.com/personal-data-pipeline-update/",
-              "title": "Personal Data Pipeline Update"
-            },
-            {
-              "url": "https://www.joshcanhelp.com/personal-data-pipeline/",
-              "title": "Imagining a Personal Data Pipeline"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/webstagram/",
-                  "title": "Creating my own personal Instagram"
-                },
-                {
-                  "url": "https://joshghent.com/personal-infra/",
-                  "title": "Personal Infrastructure"
-                },
-                {
-                  "url": "https://joshghent.com/tracking-personal-finance/",
-                  "title": "What Tracking My Expenses for a Year Taught Me About Personal Finance"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
-                  "title": "Prop. 42 is about a tax on owning savings, not the tax on income they earn"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/18/worth-wandering-robin-sloan/",
-                  "title": "Worth Wandering: Robin Sloan"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/13/an-online-book-club-across-our-own-websites/",
-                  "title": "An Online Book Club Across Our Own Websites"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/20/i-found-more-than-2000-joshes-on-the-independent-web/",
-                  "title": "I Found More Than 2,000 Joshes on the Independent Web"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/09/six-more-employees-fired-for-abusing-flock-camera-data/",
-                  "title": "Six More Employees Fired for Abusing Flock Camera Data"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/03/flock-has-already-become-a-police-stalking-tool/",
-                  "title": "Flock Has Already Become a Police Stalking Tool"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/24/privacy-should-be-the-default-not-a-form-you-have-to-fill-out/",
-                  "title": "Privacy Should Be the Default, Not a Form You Have to Fill Out"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/16/ai-agents-need-their-own-keys/",
-                  "title": "AI Agents Need Their Own Keys"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "privacy",
           "label": "privacy",
           "articles": [
@@ -6449,37 +6004,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/28/the-sockets-interface-quietly-connected-the-computing-world/",
                   "title": "The Sockets Interface Quietly Connected the Computing World"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "software-engineering",
-          "label": "software engineering",
-          "articles": [
-            {
-              "url": "https://www.joshcanhelp.com/ai/",
-              "title": "Thoughts on AI"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/",
-                  "title": "Weird Web October 2026"
-                },
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/reveal/",
-                  "title": "Reveal"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/21/terafab-is-more-interesting-than-its-100-million-square-foot-headline/",
-                  "title": "Terafab Is More Interesting Than Its 100-Million-Square-Foot Headline"
                 }
               ]
             }
