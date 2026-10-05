@@ -31,6 +31,33 @@ test("subjectsFromRssOrAtom: RSS category with term attribute", () => {
   );
 });
 
+test("subjectsFromRssOrAtom: CMS feed-path categories are dropped", () => {
+  const xml = `<?xml version="1.0"?>
+    <rss><channel>
+      <item>
+        <title>Campus news</title>
+        <link>https://www.cs.cmu.edu/news</link>
+        <category>feeds/default</category>
+      </item>
+    </channel></rss>`;
+  const subjects = subjectsFromRssOrAtom(xml);
+  assert.equal(subjects.length, 0);
+});
+
+test("subjectsFromRssOrAtom: CDATA category labels unwrap", () => {
+  const xml = `<?xml version="1.0"?>
+    <rss><channel>
+      <item>
+        <title>Goals achieved</title>
+        <link>https://joshreads.com/goals</link>
+        <category><![CDATA[Heathcliff]]></category>
+      </item>
+    </channel></rss>`;
+  const subjects = subjectsFromRssOrAtom(xml);
+  assert.equal(subjects[0]?.label, "Heathcliff");
+  assert.equal(subjects[0]?.slug, "heathcliff");
+});
+
 test("subjectsFromRssOrAtom: Atom category with term attribute", () => {
   const xml = `<?xml version="1.0"?>
     <feed xmlns="http://www.w3.org/2005/Atom">

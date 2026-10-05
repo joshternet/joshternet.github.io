@@ -70,7 +70,7 @@ test("sector language becomes subjects without turning the client into a topic",
   assert.equal(finance.includes("banked"), false);
 });
 
-test("a portfolio table becomes works, a portfolio fact, and shared topics", () => {
+test("a portfolio table becomes works and sector topics", () => {
   const collected = collectPortfolio([{ url: PAGE, html: HTML }], {
     siteOrigin: "https://portfolio.example",
     observedAt: "2026-10-03T00:00:00.000Z",
@@ -91,7 +91,7 @@ test("a portfolio table becomes works, a portfolio fact, and shared topics", () 
   assert.equal(bank.summary.includes("Banked"), true);
 
   const slugs = collected.subjects.map((subject) => subject.slug).sort();
-  assert.ok(slugs.includes("portfolio"));
+  assert.equal(slugs.includes("portfolio"), false);
   assert.ok(slugs.includes("government"));
   assert.ok(slugs.includes("banking"));
   assert.equal(slugs.includes("pr"), false);
@@ -819,11 +819,15 @@ test("contentItemsFromPortfolio: null works fires || [] (L390)", () => {
 // subjectsFromPortfolio: work without url fires || pageUrl (L346)
 // work with no url + topicsForWork returning topics fires || work.client || "Work" at L335
 test("subjectsFromPortfolio: work without sector fires || work.client || 'Work' (L335)", () => {
-  // work.project = "" (falsy) → L335: || work.client fires; work.client = "" → || "Work" fires
-  const works = [{ url: "https://a.example/portfolio/project-1" }]; // no project/client → "Work"
+  const works = [
+    {
+      url: "https://a.example/portfolio/project-1",
+      sector: "Health",
+    },
+  ];
   const subjects = subjectsFromPortfolio(works, "https://a.example/portfolio/");
-  // Only "portfolio" subject since no sector
-  assert.ok(subjects.find((s) => s.slug === "portfolio"));
+  assert.ok(!subjects.find((s) => s.slug === "portfolio"));
+  assert.ok(subjects.find((s) => s.slug === "health"));
 });
 
 // workSlug resulting in "" fires || "work" (L236)

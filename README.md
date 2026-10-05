@@ -26,7 +26,7 @@ npm ci
 | `npm run test:site` | Source + production `_site` checks (run after `npm run build`) |
 | `npm run format:check` | Prettier |
 
-Coverage includes `scripts/{network,nlp,views}/**/*.mjs` and excludes CLI/orchestration entrypoints (`network/sync`, `network/preflight`, `network/generate-elsewhere-glyphs`, `nlp/sync`, `nlp/validate-generated`, `nlp/probe-directory`, `views/build`). Do not assert nightly topic slugs or live participant counts as oracles—use synthetic fixtures. Site CSP tests skip when `_site` is missing or was built with localhost/dev hosts; use `npm run build` for a production `_site`.
+Coverage includes `scripts/{network,nlp,views}/**/*.mjs` and excludes CLI/orchestration entrypoints (`network/sync`, `network/preflight`, `network/generate-elsewhere-glyphs`, `nlp/sync`, `nlp/validate-generated`, `nlp/probe-directory`, `nlp/scale-probe`, `views/build`). Do not assert nightly topic slugs or live participant counts as oracles—use synthetic fixtures. Site CSP tests skip when `_site` is missing or was built with localhost/dev hosts; use `npm run build` for a production `_site`.
 
 `site-quality` and `network-sync` GitHub Actions run `npm run test:coverage` (not plain `npm test`). Network sync stays on hourly cron `17 * * * *` and `repository_dispatch` `joshternet-registry-updated`.
 
@@ -36,7 +36,7 @@ Rebuild datasets from the current registry, then build the site:
 npm run build
 ```
 
-That always runs `network:sync`, then `nlp:sync`, then `nlp:validate`, then `JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter`. Running it again with the same registry and pages does not rewrite a dataset whose only change is a timestamp. `./scripts/build.sh --dry-run` prints those steps without fetching anything.
+That always runs `network:sync`, then `nlp:sync`, then `format:data` (Prettier on `_data/*.json`), then `nlp:validate`, then `JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter`. Running it again with the same registry and pages does not rewrite a dataset whose only change is a timestamp. `./scripts/build.sh --dry-run` prints those steps without fetching anything. Hourly `network-sync` runs the same `format:data` step before it commits generated datasets.
 
 `nlp:sync` crawls each Network origin (homepage, advertised topic directories and common writing indexes even when they are missing from `sitemap.xml`, sitemap locs, and feed entries), then matches a topic catalog from joshuamorris.info (or the richest remaining member) onto the rest of the network. It also runs `views:build` to write compact UI projections (`activity`, `explore`, `topic_views`, `connection_topics`, `site_views`, `search_index`) without changing canonical graph semantics. Below-threshold heuristic candidates stay under `.tmp/` and are not committed; qualifying heuristic subjects may appear as public community members with `membership: "heuristic"`. `nlp:validate` checks graph invariants plus JSON Schema contracts in `schemas/`. List artifacts are sparse documents: empty arrays are omitted rather than committed as `[]`.
 

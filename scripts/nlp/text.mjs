@@ -16,6 +16,23 @@ export const MAX_RAW_TOPIC_CHARS = 120;
 export const MAX_SUMMARY_CHARS = 400;
 
 /**
+ * Unwraps XML CDATA so feed categories become plain labels.
+ * Leftover open or close markers are stripped.
+ * @param {unknown} input
+ * @returns {string}
+ */
+export function unwrapXmlCdata(input) {
+  if (typeof input !== "string" || !input) {
+    return "";
+  }
+
+  return input
+    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/gi, "$1")
+    .replace(/<!\[CDATA\[/gi, "")
+    .replace(/\]\]>/g, "");
+}
+
+/**
  * Unicode NFC + whitespace + control-character cleanup after entity decode.
  * @param {string} input
  * @returns {string}
@@ -25,7 +42,7 @@ export function normalizeExtractedText(input) {
     return "";
   }
 
-  const decoded = decodeHtmlEntities(input);
+  const decoded = decodeHtmlEntities(unwrapXmlCdata(input));
   const unicode = decoded.normalize("NFC");
   const withoutControls = unicode.replace(
     /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g,

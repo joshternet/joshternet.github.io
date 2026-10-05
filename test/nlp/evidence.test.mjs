@@ -19,6 +19,7 @@ import {
   isSensitiveHeuristicSlug,
   legacySubjectsFromSignals,
   mergeEvidenceBySlug,
+  canonicalTopicLabel,
 } from "../../scripts/nlp/evidence.mjs";
 import { MAX_RAW_TOPIC_CHARS } from "../../scripts/nlp/text.mjs";
 
@@ -397,9 +398,24 @@ test("isNonSubjectSlug: empty string → true", () => {
 });
 
 test("isNonSubjectSlug: filler unigrams from live Topics hub are non-subjects", () => {
-  for (const slug of ["two", "less", "find", "real", "built", "making"]) {
+  for (const slug of [
+    "two",
+    "less",
+    "find",
+    "real",
+    "built",
+    "making",
+    "good",
+    "personal",
+    "portfolio",
+    "joshua",
+    "don",
+    "team",
+  ]) {
     assert.equal(isNonSubjectSlug(slug), true, slug);
   }
+  assert.equal(isNonSubjectSlug("joshua-morris"), true);
+  assert.equal(isNonSubjectSlug("notes-2"), true);
 });
 
 test("isNonSubjectSlug: null/undefined coerced to empty → true", () => {
@@ -620,6 +636,53 @@ test("isParserArtifactSlug: null slug fires || '' fallback (L82)", () => {
   // null → String(null || "") = "" → tested by PARSER_ARTIFACT_SLUG.test("") = false
   assert.equal(isParserArtifactSlug(null), false);
   assert.equal(isParserArtifactSlug(undefined), false);
+  assert.equal(isParserArtifactSlug("feeds-default"), true);
+  assert.equal(isParserArtifactSlug("keywords-speech"), true);
+});
+
+test("canonicalTopicLabel: strips CMS feed/keyword paths and drops leftovers", () => {
+  assert.equal(canonicalTopicLabel(""), "");
+  assert.equal(canonicalTopicLabel(null), "");
+  assert.equal(canonicalTopicLabel("Photography"), "Photography");
+  assert.equal(canonicalTopicLabel("feeds/default"), "");
+  assert.equal(canonicalTopicLabel("feeds/Partnerships"), "");
+  assert.equal(canonicalTopicLabel("feeds/"), "");
+  assert.equal(canonicalTopicLabel("keywords/Government"), "");
+  assert.equal(canonicalTopicLabel("keywords/Artificial Intelligence"), "");
+  assert.equal(canonicalTopicLabel("feeds/lti/extra"), "");
+  assert.equal(canonicalTopicLabel("foo/bar"), "");
+  assert.equal(canonicalTopicLabel("foo\\bar"), "");
+  assert.equal(canonicalTopicLabel("A"), "");
+  assert.equal(canonicalTopicLabel("class"), "");
+  assert.equal(canonicalTopicLabel("default"), "");
+  assert.equal(canonicalTopicLabel("good"), "");
+});
+
+test("buildTopicEvidence: CMS path categories are not topics", () => {
+  assert.equal(
+    buildTopicEvidence({
+      rawValue: "feeds/Partnerships",
+      source: "rss:category",
+      page: "https://www.cs.cmu.edu/news",
+    }),
+    null,
+  );
+  assert.equal(
+    buildTopicEvidence({
+      rawValue: "keywords/Government",
+      source: "rss:category",
+      page: "https://www.cs.cmu.edu/news",
+    }),
+    null,
+  );
+  assert.equal(
+    buildTopicEvidence({
+      rawValue: "keywords/Artificial Intelligence",
+      source: "rss:category",
+      page: "https://www.cs.cmu.edu/news",
+    }),
+    null,
+  );
 });
 
 // dedupeEvidence: null input fires || [] (L427)
@@ -707,6 +770,8 @@ test("isNonSubjectSlug: hyphenated slug with all non-subject parts fires L234-23
   // "article" and "post" are both in NON_SUBJECT_UNIGRAMS → parts.every() is true → L234-235 fires
   assert.equal(isNonSubjectSlug("article-post"), true);
   assert.equal(isNonSubjectSlug("page-post"), true);
+  assert.equal(isNonSubjectSlug("actually-hair"), true);
+  assert.equal(isNonSubjectSlug("basically-ok"), true);
 });
 
 // buildTopicEvidence: observedAt field is included when non-empty string (L378-379)
@@ -744,6 +809,7 @@ test("isNonSubjectSlug: slug starting with 'about-' fires L220-221", () => {
 test("isNonSubjectSlug: hyphenated valid slug reaches isParserArtifactSlug call (L238-239)", () => {
   // "food-health" → not in stopwords, no digit+post, no about-, parts aren't all stopwords
   // → value.includes("-") is true → isParserArtifactSlug("food-health") called (L238-239)
+  assert.equal(isNonSubjectSlug("---"), true);
   assert.equal(isNonSubjectSlug("food-health"), false);
   assert.equal(isNonSubjectSlug("machine-learning"), false);
 });
@@ -798,6 +864,8 @@ test("isCommunityEligibleSource: null source fires || '' (L65)", () => {
 test("isDiscoveryOnlySource: null source fires || '' (L73)", () => {
   // String(null || "") = "" → fires (L73 false branch)
   assert.equal(isDiscoveryOnlySource(null), false);
+  assert.equal(isDiscoveryOnlySource("meta:keywords"), true);
+  assert.equal(isDiscoveryOnlySource("portfolio:index"), true);
 });
 
 // isSensitiveHeuristicSlug: null fires || "" (L276)

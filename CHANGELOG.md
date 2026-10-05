@@ -19,7 +19,10 @@
 
 ### Changed
 
-- Content items always publish `summary` as a plain-text string (empty when a feed has no description). Oversized fetches are truncated instead of aborting. `nlp:validate` names the failing item identity. Local `npm run nlp:probe-directory` samples robots-allowed joshing.you sites against the same schema.
+- Hourly `network-sync` and `npm run build` run `npm run format:data` on generated `_data/*.json` before commit/validate, so Prettier stops failing after Actions rewrites network datasets.
+- RSS/Atom category labels unwrap XML CDATA, so tags like Heathcliff are stored as `Heathcliff` instead of `<![CDATA[Heathcliff]]>`. Path-shaped CMS chrome (`feeds/default`, `keywords/Government`) is not a topic. SEO `meta:keywords` / `schema:keywords` and portfolio-index chrome do not enroll communities. Evaluative filler such as `good` is not a topic.
+- Content items always publish `summary` as a plain-text string (empty when a feed has no description). Unparseable feed dates stay omitted instead of throwing. Oversized fetches are truncated instead of aborting. `nlp:validate` names the failing item identity. Local `npm run nlp:probe-directory` samples robots-allowed joshing.you sites against the same schema.
+- Local `npm run nlp:scale-probe` harvests every member origin listed on joshing.you (not the directory host), runs the topic/content/connection/views pipeline as synthetic members, and replays parsers thousands of times offline. Presentation overlays cap pair/search/co-occurrence size; canonical graph files are not truncated. Does not publish Network data.
 - Compact (mobile) Menu uses a full-row accordion: tap About / Network / Implement / JoshBot to reveal indented children. The hub page is the first child. The ↓ rotates when the section is open.
 - Local `npm run dev` gives each Worker its own Wrangler inspector port (`9230` / `9231` / `9232`) so the three `wrangler dev` processes do not collide on the default `127.0.0.1:9230`.
 - Official Joshternet buttons render as registry-validated inline SVG from the one-line embed. `/api/button-state` keeps `ok`, `state`, `href`, `alt`, and `linkLabel` and no longer returns `imageURL`. Worker image routes and `/assets/buttons/` files are gone (#59).

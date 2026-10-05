@@ -183,7 +183,7 @@ test("declared topic-label sources qualify immediately", () => {
   assert.equal(isCommunityEligibleSource("json-feed:tag"), true);
   assert.equal(isCommunityEligibleSource("microformat:p-category"), true);
   assert.equal(isCommunityEligibleSource("article:tag"), true);
-  assert.equal(isCommunityEligibleSource("meta:keywords"), true);
+  assert.equal(isCommunityEligibleSource("meta:keywords"), false);
   assert.equal(isCommunityEligibleSource("octothorpe"), true);
   assert.equal(isCommunityEligibleSource("topic-hub:link"), true);
   assert.equal(isCommunityEligibleSource("topic-hub:page"), true);
@@ -419,7 +419,7 @@ test("error and legal pages are classified", () => {
   );
 });
 
-test("meta keywords may enroll as declared topic labels", () => {
+test("meta keywords are discovery, not community enrollment", () => {
   const subjects = subjectsFromHtml(
     `<meta name="keywords" content="AI, Privacy"><span class="p-category">Design</span>`,
     "https://a.example/",
@@ -427,7 +427,7 @@ test("meta keywords may enroll as declared topic labels", () => {
   const keywords = subjects.find((subject) => subject.slug === "ai");
   const design = subjects.find((subject) => subject.slug === "design");
   assert.ok(keywords);
-  assert.equal(keywords.community_eligible, true);
+  assert.equal(keywords.community_eligible, false);
   assert.ok(design);
   assert.equal(design.community_eligible, true);
   assert.ok(signalIsCommunityEligible(design));

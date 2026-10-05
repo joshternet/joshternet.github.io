@@ -438,6 +438,18 @@ jobs:
               assets/network/sites/
           fi
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Format generated datasets
+        run: npm run format:data
+
       - name: Commit generated changes
         id: commit_network
         run: |

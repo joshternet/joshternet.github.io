@@ -23,6 +23,33 @@ export const RELATION_LABELS = {
   syndication: "syndicated to",
 };
 
+/** Pair overlays on /connections/; evidence stays in connections.json. */
+export const MAX_CONNECTION_TOPIC_PAIRS = 400;
+
+/** Topic co-occurrence chips on topic views. */
+export const MAX_COOCCURRENCE_PAIRS = 200;
+
+/** Search documents (sites + topics + content). */
+export const MAX_SEARCH_INDEX_DOCUMENTS = 2500;
+
+/**
+ * Truncates a presentation list. Does not drop canonical graph evidence.
+ * @template T
+ * @param {T[]} list
+ * @param {number} max
+ * @returns {T[]}
+ */
+export function capPresentationList(list, max) {
+  const rows = Array.isArray(list) ? list : [];
+  const limit = Number(max);
+
+  if (!Number.isFinite(limit) || limit < 0 || rows.length <= limit) {
+    return rows;
+  }
+
+  return rows.slice(0, limit);
+}
+
 export const SOURCE_LABELS = {
   "microformat:p-category": "Microformats category",
   "rss:category": "RSS category",
@@ -375,7 +402,7 @@ export function topicCooccurrence(contentItems, publicSlugs) {
     }
   }
 
-  return [...counts.entries()]
+  const ranked = [...counts.entries()]
     .map(([key, content_count]) => {
       const [left, right] = key.split("\0");
       return { left, right, content_count };
@@ -389,6 +416,8 @@ export function topicCooccurrence(contentItems, publicSlugs) {
 
       return `${a.left}:${a.right}`.localeCompare(`${b.left}:${b.right}`);
     });
+
+  return capPresentationList(ranked, MAX_COOCCURRENCE_PAIRS);
 }
 
 /**
@@ -573,6 +602,7 @@ export function connectionTopicOverlaps(neighborhoods) {
     .sort((left, right) =>
       `${left.a}:${left.b}`.localeCompare(`${right.a}:${right.b}`),
     );
+  const cappedPairs = capPresentationList(pairs, MAX_CONNECTION_TOPIC_PAIRS);
 
   const sites = [...byOrigin.entries()]
     .sort(([left], [right]) => left.localeCompare(right))
@@ -591,8 +621,8 @@ export function connectionTopicOverlaps(neighborhoods) {
     }));
 
   return {
-    overlap_count: pairs.length,
-    pairs,
+    overlap_count: cappedPairs.length,
+    pairs: cappedPairs,
     sites,
   };
 }
@@ -1098,6 +1128,11 @@ export function buildViewDocuments(input) {
     });
   }
 
+  const searchIndexDocuments = capPresentationList(
+    searchDocuments,
+    MAX_SEARCH_INDEX_DOCUMENTS,
+  );
+
   return {
     activity,
     explore,
@@ -1123,8 +1158,8 @@ export function buildViewDocuments(input) {
     search_index: {
       schema_version: 1,
       generated_at: input.generatedAt,
-      document_count: searchDocuments.length,
-      documents: searchDocuments,
+      document_count: searchIndexDocuments.length,
+      documents: searchIndexDocuments,
     },
   };
 }

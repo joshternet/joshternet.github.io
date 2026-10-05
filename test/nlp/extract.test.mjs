@@ -58,6 +58,8 @@ test("filler unigrams are not subjects", () => {
   assert.equal(isNonSubjectSlug("computer-science"), false);
   assert.equal(isNonSubjectSlug("artificial-intelligence"), false);
   assert.equal(isNonSubjectSlug("dewey-decimal-system"), false);
+  assert.equal(isNonSubjectSlug("feeds-default"), true);
+  assert.equal(isNonSubjectSlug("default"), true);
 });
 
 test("extractTopicsFromPages invents stable shared topics from body text", () => {

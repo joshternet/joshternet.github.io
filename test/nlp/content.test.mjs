@@ -381,6 +381,52 @@ test("contentItemsFromRssOrAtom: RSS item with URL and category", () => {
   assert.equal(items[0].source.kind, "rss");
 });
 
+test("contentItemsFromRssOrAtom: CMS feed-path categories are dropped", () => {
+  const xml = `<rss><channel>
+    <item>
+      <title>Campus news</title>
+      <link>https://www.cs.cmu.edu/news</link>
+      <category>feeds/default</category>
+      <category>keywords/Government</category>
+      <category>Photography</category>
+    </item>
+  </channel></rss>`;
+  const items = contentItemsFromRssOrAtom(xml, RSS_META);
+  const labels = items[0].declared_topics.map((topic) => topic.label);
+  assert.equal(labels.includes("feeds/default"), false);
+  assert.equal(labels.includes("keywords/Government"), false);
+  assert.deepEqual(labels, ["Photography"]);
+});
+
+test("contentItemsFromRssOrAtom: CDATA categories become plain topic labels", () => {
+  const xml = `<rss><channel>
+    <item>
+      <title>Goals achieved</title>
+      <link>https://joshreads.com/goals</link>
+      <category><![CDATA[Heathcliff]]></category>
+      <category><![CDATA[Marvin]]></category>
+    </item>
+  </channel></rss>`;
+  const items = contentItemsFromRssOrAtom(xml, RSS_META);
+  const labels = items[0].declared_topics.map((topic) => topic.label);
+  const slugs = items[0].declared_topics.map((topic) => topic.slug);
+  assert.deepEqual(labels, ["Heathcliff", "Marvin"]);
+  assert.deepEqual(slugs, ["heathcliff", "marvin"]);
+});
+
+test("contentItemsFromRssOrAtom: unparseable pubDate stays null", () => {
+  const xml = `<rss><channel>
+    <item>
+      <title>Dated badly</title>
+      <link>https://a.example/bad-date</link>
+      <pubDate>not a real date</pubDate>
+    </item>
+  </channel></rss>`;
+  const items = contentItemsFromRssOrAtom(xml, RSS_META);
+  assert.equal(items.length, 1);
+  assert.equal(items[0].published_at, null);
+});
+
 test("contentItemsFromRssOrAtom: Atom entry with alternate link", () => {
   // Note: the content.mjs Atom category regex requires a text node or non-self-closing form.
   // Self-closing <category term="X"/> alone is not captured; use text-content form.
@@ -549,6 +595,23 @@ test("contentItemsFromJsonFeed: invalid date fields produce null timestamps", ()
         title: "P",
         date_published: null,
         date_modified: null,
+      },
+    ],
+  });
+  const items = contentItemsFromJsonFeed(json, JSON_META);
+  assert.equal(items[0].published_at, null);
+  assert.equal(items[0].updated_at, null);
+});
+
+test("contentItemsFromJsonFeed: unparseable date strings stay null", () => {
+  const json = JSON.stringify({
+    items: [
+      {
+        id: "1",
+        url: "https://a.example/p",
+        title: "P",
+        date_published: "whenever",
+        date_modified: 12,
       },
     ],
   });
