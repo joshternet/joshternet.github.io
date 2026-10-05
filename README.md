@@ -36,7 +36,7 @@ Rebuild datasets from the current registry, then build the site:
 npm run build
 ```
 
-That always runs `network:sync`, then `nlp:sync`, then `nlp:validate`, then `JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter`. Running it again with the same registry and pages does not rewrite a dataset whose only change is a timestamp. `./scripts/build.sh --dry-run` prints those steps without fetching anything.
+That always runs `network:sync`, then `nlp:sync`, then `format:data` (Prettier on `_data/*.json`), then `nlp:validate`, then `JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter`. Running it again with the same registry and pages does not rewrite a dataset whose only change is a timestamp. `./scripts/build.sh --dry-run` prints those steps without fetching anything. Hourly `network-sync` runs the same `format:data` step before it commits generated datasets.
 
 `nlp:sync` crawls each Network origin (homepage, advertised topic directories and common writing indexes even when they are missing from `sitemap.xml`, sitemap locs, and feed entries), then matches a topic catalog from joshuamorris.info (or the richest remaining member) onto the rest of the network. It also runs `views:build` to write compact UI projections (`activity`, `explore`, `topic_views`, `connection_topics`, `site_views`, `search_index`) without changing canonical graph semantics. Below-threshold heuristic candidates stay under `.tmp/` and are not committed; qualifying heuristic subjects may appear as public community members with `membership: "heuristic"`. `nlp:validate` checks graph invariants plus JSON Schema contracts in `schemas/`. List artifacts are sparse documents: empty arrays are omitted rather than committed as `[]`.
 

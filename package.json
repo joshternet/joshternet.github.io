@@ -17,7 +17,8 @@
     "build": "bash scripts/build.sh",
     "dev": "bash scripts/dev.sh",
     "format": "prettier . --write --ignore-unknown",
-    "format:check": "prettier . --check --ignore-unknown"
+    "format:check": "prettier . --check --ignore-unknown",
+    "format:data": "prettier --write --ignore-unknown \"_data/*.json\""
   },
   "devDependencies": {
     "@shopify/prettier-plugin-liquid": "1.11.0",

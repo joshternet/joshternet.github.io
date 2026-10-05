@@ -32,6 +32,7 @@ test("network-sync keeps hourly and registry triggers plus sync steps", async ()
   assert.match(sync, /npm run network:sync/);
   assert.match(sync, /npm run nlp:sync/);
   assert.match(sync, /npm run nlp:validate/);
+  assert.match(sync, /npm run format:data/);
 });
 
 test("network-sync publish set lists CI-owned generated paths", async () => {
