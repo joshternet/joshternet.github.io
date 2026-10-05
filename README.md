@@ -2,6 +2,10 @@
 
 The GitHub Pages website for Joshternet. The canonical specifications are maintained in [joshternet/spec](https://github.com/joshternet/spec).
 
+## License
+
+Project-owned **code** is [BSD-3-Clause](LICENSE). **Prose and docs** are [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). **Brand assets** are not open-licensed. Participant screenshots and third-party material are not relicensed here. Full split: [Licensing](https://joshternet.org/licensing/). Third-party dependency attribution: [Third-party licenses](https://joshternet.org/licensing/third-party-licenses/).
+
 ## Requirements
 
 - Ruby 3.3

@@ -61,7 +61,7 @@ test("hub outbound navigation builders omit noreferrer and keep noopener", async
     );
     assert.match(
       source,
-      /rel="(?:me )?noopener"/,
+      /rel="(?:me )?noopener"|footer_github_rel = '(?:me )?noopener'/,
       `${relativePath} must keep noopener on outbound navigations`,
     );
   }
@@ -81,13 +81,13 @@ test("privacy discloses bidirectional referrers and UTM parameters", async () =>
   const privacy = await read("privacy.md");
 
   assert.match(privacy, /permalink: \/privacy\//);
-  assert.match(privacy, /## Referrers and outbound links/);
+  assert.match(privacy, /## When you follow a link/);
   assert.match(privacy, /utm_source=joshternet\.org/);
   assert.match(privacy, /utm_medium=referral/);
   assert.match(privacy, /utm_campaign/);
   assert.match(privacy, /utm_content/);
   assert.match(privacy, /Referer/);
-  assert.match(privacy, /strict-origin-when-cross-origin|hub origin/);
+  assert.match(privacy, /came from `https:\/\/joshternet\.org`/);
   assert.match(privacy, /rel="me"/);
   assert.match(privacy, /Wander/);
   assert.match(privacy, /Joshternet button/);
@@ -102,19 +102,13 @@ test("network cards and layout attach UTM params to outbound hrefs", async () =>
 
   assert.match(include, /utm_source=joshternet\.org/);
   assert.match(include, /outbound_scheme == 'https:\/\/'/);
-  assert.match(layout, /rel="me noopener"/);
-  assert.match(
-    layout,
-    /href="https:\/\/github\.com\/joshternet"[\s\S]*rel="me noopener"/,
-  );
+  assert.match(layout, /footer_github_rel = 'me noopener'/);
+  assert.match(layout, /rel="\{\{\s*footer_github_rel\s*\}\}"/);
   assert.match(network, /include outbound-href\.html url=network_site\.origin/);
   assert.match(network, /include outbound-href\.html url=primary_feed\.url/);
   assert.match(network, /include outbound-href\.html url=elsewhere_link\.url/);
   assert.match(layout, /assets\/js\/outbound-referrer\.js/);
-  assert.match(
-    layout,
-    /include outbound-href\.html url="https:\/\/web\.libera\.chat\/#joshternet"/,
-  );
+  assert.doesNotMatch(layout, /web\.libera\.chat/);
   assert.match(
     layout,
     /include outbound-href\.html url="https:\/\/github\.com\/joshternet"/,
