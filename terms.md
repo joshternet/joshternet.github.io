@@ -1,18 +1,20 @@
 ---
 layout: default
-title: Terms for Joshternet-operated services
+title: Terms of Service for Joshternet-operated services
 description: >-
-  Terms for joshternet.org and other Joshternet-operated services. Independent
-  participating websites keep their own terms. Hub source licensing is separate.
+  Terms of Service for joshternet.org and other Joshternet-operated services.
+  Independent participating websites keep their own terms. Hub source licensing
+  is separate.
 keywords: >-
-  Joshternet terms, joshternet.org, operated services, independent websites
+  Joshternet terms of service, joshternet.org, operated services, independent
+  websites
 permalink: /terms/
 seo:
   type: WebPage
-  name: Terms
+  name: Terms of Service
 ---
 
-# Terms
+# Terms of Service
 
 Use joshternet.org and other Joshternet-operated services under these rules. Independent participating sites keep their own.
 
@@ -43,6 +45,10 @@ The official button asks the hub whether a **website** (not a page) is listed in
 ## Availability
 
 Services are provided as-is, without uptime promises. Buttons, checks, and nominations may fail, return an empty state, or be turned off. We may change, slow down, or withdraw operated services.
+
+## Infrastructure
+
+Joshternet may choose, change, or discontinue infrastructure providers used to operate Joshternet services. The [Joshternet Infrastructure Principles](/infrastructure/) guide those choices. Those principles apply to Joshternet-operated infrastructure and Joshternet’s own provider relationships. They do not dictate which hosting, CDN, analytics, DNS, email, or other infrastructure independently operated participating websites may use.
 
 ## Licenses and third-party material
 

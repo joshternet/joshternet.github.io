@@ -1,6 +1,7 @@
 /**
- * Goal: Lock permalinks, footer order, and contractual facts on Privacy and
- * Terms without treating visitor prose as an oracle.
+ * Goal: Lock permalinks, footer order, and contractual facts on Privacy,
+ * Terms of Service, and Infrastructure Principles without treating visitor
+ * prose as an oracle.
  */
 import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
@@ -55,9 +56,22 @@ test("privacy and terms keep permalinks and operated-service facts", async () =>
   );
   assert.doesNotMatch(
     terms,
-    /# Terms\s*\n\s*Effective/,
-    "dates must not lead the Terms page",
+    /# Terms of Service\s*\n\s*Effective/,
+    "dates must not lead the Terms of Service page",
   );
+
+  assert.match(
+    terms,
+    /^title: Terms of Service for Joshternet-operated services/m,
+  );
+  assert.match(terms, /name: Terms of Service/);
+  assert.match(terms, /^# Terms of Service$/m);
+  assert.match(
+    terms,
+    /do not cover independently operated participating websites/,
+  );
+  assert.match(terms, /\]\(\/infrastructure\/\)/);
+  assert.match(terms, /## Infrastructure/);
 
   assert.match(privacy, /## Official buttons/);
   assert.doesNotMatch(
@@ -65,9 +79,16 @@ test("privacy and terms keep permalinks and operated-service facts", async () =>
     /GET https:\/\/joshternet\.org\/api\/button-state/,
   );
   assert.match(privacy, /does not visit/);
-  assert.match(privacy, /site’s server/);
-  assert.match(privacy, /not each visitor’s browser/);
+  assert.match(privacy, /WordPress server/);
   assert.match(privacy, /\/\.well-known\/josh/);
+  assert.match(privacy, /approximately five minutes/);
+  assert.match(privacy, /up to 15 minutes/);
+  assert.match(
+    privacy,
+    /does not write submitted lookup origins to a Joshternet application database/,
+  );
+  assert.match(privacy, /bundled button image locally/);
+  assert.match(privacy, /\]\(\/infrastructure\/\)/);
   assert.match(privacy, /Turnstile/);
   assert.match(privacy, /not stored/);
   assert.match(privacy, /\/joshbot\//);
@@ -117,6 +138,62 @@ test("privacy and terms keep permalinks and operated-service facts", async () =>
   assert.doesNotMatch(terms, /\bCCPA\b/);
 });
 
+test("privacy distinguishes Joshternet and WordPress button caches", async () => {
+  const privacy = await read("privacy.md");
+  const buttons =
+    privacy.split("## Official buttons")[1]?.split("## ")[0] ?? "";
+
+  assert.match(buttons, /approximately five minutes/);
+  assert.match(buttons, /up to 15 minutes/);
+  assert.match(buttons, /WordPress/);
+  assert.match(
+    buttons,
+    /Joshternet service may cache|cache registry and state/i,
+  );
+  assert.doesNotMatch(
+    buttons,
+    /remembered for a few minutes \(about five\)/,
+    "must not collapse both caches into one five-minute phrase",
+  );
+});
+
+test("infrastructure principles protect decentralization and provider lifecycle", async () => {
+  const page = await read("infrastructure.md");
+  const aboutNav = await read("_data/about_nav.yml");
+  const layout = await read("_layouts/default.html");
+
+  assert.match(page, /permalink: \/infrastructure\//);
+  assert.match(page, /^# Joshternet Infrastructure Principles$/m);
+  assert.match(page, /5 October 2026/);
+  assert.match(page, /\{: \.legal-dates\}/);
+  assert.match(page, /hello@joshternet\.org/);
+  assert.match(page, /Data minimization/i);
+  assert.match(page, /behavioral advertising/i);
+  assert.match(page, /model-training|machine-learning/i);
+  assert.match(page, /### 4\. Security/);
+  assert.match(page, /Incident transparency/i);
+  assert.match(page, /Retention and deletion/i);
+  assert.match(page, /Subprocessor/i);
+  assert.match(page, /Portability and exit/i);
+  assert.match(page, /secondary use/i);
+  assert.match(page, /Abuse protection/i);
+  assert.match(page, /Open-web compatibility/i);
+  assert.match(page, /Contact and accountability/i);
+  assert.match(page, /Provider removal/i);
+  assert.match(page, /may discontinue use of an infrastructure provider/);
+  assert.match(
+    page,
+    /not excluded from Joshternet participation merely because/,
+  );
+  assert.match(page, /Provider disqualification is not network blocking/);
+  assert.match(page, /Operational blocking/);
+  assert.match(page, /Currently used providers/);
+  assert.doesNotMatch(page, /\bcertified\b/i);
+  assert.doesNotMatch(page, /\bapproved providers?\b/i);
+  assert.doesNotMatch(aboutNav, /path: \/infrastructure\//);
+  assert.doesNotMatch(layout, /\/infrastructure\//);
+});
+
 test("footer lists Privacy, Terms, Security, then Contact", async () => {
   const layout = await read("_layouts/default.html");
   const aboutNav = await read("_data/about_nav.yml");
@@ -131,9 +208,10 @@ test("footer lists Privacy, Terms, Security, then Contact", async () => {
   assert.ok(securityAt < contactAt);
   assert.match(layout, />Terms</);
   assert.doesNotMatch(aboutNav, /path: \/terms\//);
+  assert.doesNotMatch(aboutNav, /path: \/infrastructure\//);
 });
 
-test("built sitemap lists privacy, terms, licensing, and third-party licenses when _site exists", async () => {
+test("built sitemap lists privacy, terms, infrastructure, licensing when _site exists", async () => {
   if (!(await exists("_site/sitemap.xml"))) {
     return;
   }
@@ -144,6 +222,7 @@ test("built sitemap lists privacy, terms, licensing, and third-party licenses wh
   // https://joshternet.org/. Lock the path locs either way.
   assert.match(sitemap, /<loc>[^<]*\/privacy\/<\/loc>/);
   assert.match(sitemap, /<loc>[^<]*\/terms\/<\/loc>/);
+  assert.match(sitemap, /<loc>[^<]*\/infrastructure\/<\/loc>/);
   if (await exists("_site/licensing/third-party-licenses/index.html")) {
     assert.match(
       sitemap,
