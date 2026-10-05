@@ -27,13 +27,27 @@ The Joshternet does not use this analytics data for advertising, targeting peopl
 
 ## Official buttons
 
-Some sites show an official Joshternet button. When that button loads, it asks the hub whether that **website** is listed in the public registry—for example `https://example.com`, not the specific page you were reading.
+Some sites show an official Joshternet button. The button service checks whether a website origin, such as `https://example.com`, appears in the public Joshternet registry.
 
-The answer comes from the public registry files on GitHub. The lookup **does not visit** the website in the question and **does not download** that site’s `/.well-known/josh` file. A recent answer may be remembered for a few minutes (about five) so the check stays quick.
+The Button State service receives the normalized website origin. It compares that origin with the public Joshternet registry and returns the appropriate button state.
 
-Using the official embed or the WordPress plugin’s Joshternet button is what triggers this lookup. Putting a participation file on your own site does not, by itself, call it. Button behavior for site owners is documented on [Buttons](/implement/buttons/).
+The Button State service **does not visit** the supplied website and does not retrieve that site’s `/.well-known/josh` resource as part of this lookup.
 
-With the official embed, the visitor’s browser asks the hub. With the WordPress plugin’s Joshternet button, the **site’s server** asks the hub, so Cloudflare sees that host’s connection details—not each visitor’s browser. GitHub may see that the hub downloaded the public registry files.
+The Joshternet service may cache registry and state information for approximately five minutes to reduce repeated registry work.
+
+The current Button State application does not write submitted lookup origins to a Joshternet application database. Requests still pass through the infrastructure that operates the service, and infrastructure providers may process or retain ordinary connection, security and operational information under their own policies.
+
+Using the official browser embed or the WordPress plugin’s optional Joshternet button triggers a Button State lookup.
+
+Publishing `/.well-known/josh` by itself does not call the Button State service.
+
+With the official browser embed, the visitor’s browser makes the request.
+
+With the WordPress plugin’s `[joshternet_button]` shortcode, the WordPress server makes the request. The plugin sends the site’s normalized origin and currently caches the returned button state locally in WordPress for up to 15 minutes.
+
+The WordPress plugin serves its bundled button image locally and does not load a remote button image or Joshternet script into the visitor’s page.
+
+Button behavior for site owners is documented on [Buttons](/implement/buttons/).
 
 ## When you follow a link
 
@@ -96,6 +110,8 @@ Operators can use `robots.txt` as described on [JoshBot](/joshbot/). A nominatio
 
 ## Providers
 
+Joshternet chooses infrastructure providers for Joshternet-operated services according to the [Joshternet Infrastructure Principles](/infrastructure/). Those principles guide Joshternet’s own provider relationships; they do not replace each provider’s Terms or Privacy Policy.
+
 We link provider policies rather than copying them:
 
 - [Umami platform][umami] and [Umami privacy][umami-privacy]
@@ -105,7 +121,7 @@ We link provider policies rather than copying them:
 
 Third-party software and brand marks used on this hub are listed on [Third-party licenses](/licensing/third-party-licenses/).
 
-Infrastructure operators may keep ordinary connection logs (IP, browser software, timestamps). We do not publish those logs on this site.
+Infrastructure operators may keep ordinary connection logs (IP, browser software, timestamps) under their own policies. Joshternet does not publish those logs.
 
 ## Questions
 

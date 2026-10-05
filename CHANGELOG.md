@@ -4,6 +4,14 @@
 
 ### Changed
 
+- Privacy Official buttons distinguishes Joshternet’s ~five-minute Button State cache from the WordPress plugin’s up-to-15-minute local cache, states that the Button State application does not write lookup origins to a Joshternet application database, and documents WordPress local artwork. Terms is labeled Terms of Service and links Infrastructure Principles. Privacy Providers links `/infrastructure/`.
+
+### Added
+
+- Joshternet Infrastructure Principles at `/infrastructure/`: provider selection standards for Joshternet-operated services only, independent-site boundary, provider lifecycle and removal, and currently used inventory (GitHub, Cloudflare, Umami, webmention.io, IndexNow, octothorp.es).
+
+### Changed
+
 - About second-level nav drops GitHub; footer GitHub is a plain icon link (inline Simple Icons SVG) beside the JOIN button, with a visually hidden label. Footer drops the #joshternet IRC link (still on Community / About nav).
 
 ### Added
