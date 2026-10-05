@@ -26,7 +26,8 @@ joshternet_analysis: derived
         {% if articles.size > 0 %}
           <section class="topic-site h-card">
             <h2 class="topic-site__heading p-name">
-              <a class="u-url" href="{{ site_entry.origin | escape }}" target="_blank" rel="noopener noreferrer">
+              {% include outbound-href.html url=site_entry.origin %}
+              <a class="u-url" href="{{ outbound_href | escape }}" target="_blank" rel="noopener">
                 {{ site_entry.title | default: site_entry.domain | escape }}
                 <span aria-hidden="true">↗</span>
                 <span class="visually-hidden">(opens on the publisher’s site)</span>

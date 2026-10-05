@@ -93,11 +93,12 @@ Independent websites participating in the Joshternet, discovered and verified by
       data-title="{{ network_site.title | default: network_site.domain | downcase | escape }}"
       data-domain="{{ network_site.domain | downcase | escape }}"
     >
+      {% include outbound-href.html url=network_site.origin %}
       <a
         class="network-card__link u-url"
-        href="{{ network_site.origin | escape }}"
+        href="{{ outbound_href | escape }}"
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener"
       >
         <div class="network-card__preview">
           {% if network_site.screenshot %}
@@ -145,11 +146,12 @@ Independent websites participating in the Joshternet, discovered and verified by
           <div class="network-card__actions">
             {% if show_feed %}
               {% assign primary_feed = network_site.feeds | first %}
+              {% include outbound-href.html url=primary_feed.url %}
               <a
                 class="network-card__feed"
-                href="{{ primary_feed.url | escape }}"
+                href="{{ outbound_href | escape }}"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
               >
                 <svg
                   class="network-card__feed-icon"
@@ -175,11 +177,12 @@ Independent websites participating in the Joshternet, discovered and verified by
                 {% for elsewhere_link in network_site.elsewhere %}
                   {% assign elsewhere_network = elsewhere_link.network | default: "web" %}
                   <li>
+                    {% include outbound-href.html url=elsewhere_link.url %}
                     <a
                       class="network-card__elsewhere-link"
-                      href="{{ elsewhere_link.url | escape }}"
+                      href="{{ outbound_href | escape }}"
                       target="_blank"
-                      rel="noopener noreferrer"
+                      rel="noopener"
                     >
                       <span
                         class="network-card__elsewhere-glyph network-card__elsewhere-glyph--{{ elsewhere_network | escape }}"
@@ -196,11 +199,12 @@ Independent websites participating in the Joshternet, discovered and verified by
             {% endif %}
           </div>
         {% endif %}
+        {% include outbound-href.html url=network_site.origin %}
         <a
           class="network-card__domain u-url"
-          href="{{ network_site.origin | escape }}"
+          href="{{ outbound_href | escape }}"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener"
         >
           {{ network_site.domain | escape }}
         </a>

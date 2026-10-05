@@ -19,6 +19,17 @@
 
   const identities = new Set(["affirmed", "declined", "undeclared"]);
 
+  /**
+   * Appends Joshternet UTM params when the shared helper is loaded.
+   * @param {string} href
+   * @returns {string}
+   */
+  function outboundHref(href) {
+    const decorate = globalThis.joshternetOutboundHref;
+
+    return typeof decorate === "function" ? decorate(href) : href;
+  }
+
   const frameReasons = new Set([
     "allowed",
     "blocked-by-site",
@@ -328,9 +339,9 @@
                     >
                         <a
                             class="network-card__link"
-                            href="${escapeAttribute(site.origin)}"
+                            href="${escapeAttribute(outboundHref(site.origin))}"
                             target="_blank"
-                            rel="noopener noreferrer"
+                            rel="noopener"
                         >
                             <div class="network-card__preview">
                                 ${preview}
@@ -401,7 +412,7 @@
       return;
     }
 
-    window.open(url.href, "_blank", "noopener,noreferrer");
+    window.open(outboundHref(url.href), "_blank", "noopener");
   }
 
   function render(site) {

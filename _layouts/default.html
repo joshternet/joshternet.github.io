@@ -65,6 +65,7 @@
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self' https://cloud.umami.is{% if jekyll.environment == "development" %} http://127.0.0.1:8790 http://127.0.0.1:35729{% endif %}{% if page.turnstile %} https://challenges.cloudflare.com{% endif %}; connect-src 'self' https://gateway.umami.is{% if jekyll.environment == "development" %} http://127.0.0.1:8790 ws://127.0.0.1:35729 http://127.0.0.1:35729{% endif %}{% if page.turnstile %} https://challenges.cloudflare.com{% endif %}{% if page.declaration_check %}{% if jekyll.environment == "development" %} http://127.0.0.1:8789{% else %} {{ site.declaration_check.api_origin }}{% endif %}{% endif %}{% if page.seed_nomination %}{% if jekyll.environment == "development" %} http://127.0.0.1:8787{% else %} {{ site.seed_nominations.api_origin }}{% endif %}{% endif %}; style-src 'self'; img-src 'self' data:{% if jekyll.environment == "development" %} https://joshternet.org{% endif %}{% if activity_image_origins != "" %} {{ activity_image_origins }}{% endif %}; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src {% if page.allow_frames %}{% if wander_frame_sources != "" %}{{ wander_frame_sources }}{% else %}'none'{% endif %}{% elsif page.turnstile %}https://challenges.cloudflare.com{% else %}'none'{% endif %}; media-src 'none'; manifest-src 'self'; worker-src 'none'"
     >
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% if page.joshternet_analysis == 'derived' or layout.joshternet_analysis == 'derived' %}
       <meta name="joshternet-analysis" content="derived">
@@ -156,6 +157,11 @@
       src="https://cloud.umami.is/script.js"
       data-website-id="809e87e4-2ed7-4fac-a144-10d194eb44cd"
       data-domains="joshternet.org,www.joshternet.org"
+    ></script>
+
+    <script
+      defer
+      src="{{ '/assets/js/outbound-referrer.js' | relative_url }}?v={{ asset_version }}"
     ></script>
 
     {% if page.script %}
@@ -273,24 +279,26 @@
             <a href="{{ '/privacy/' | relative_url }}">Privacy</a>
             <a href="{{ '/security/' | relative_url }}">Security</a>
             <a href="mailto:hello@joshternet.org">Contact</a>
+            {% include outbound-href.html url="https://web.libera.chat/#joshternet" %}
             <a
-              href="https://web.libera.chat/#joshternet"
+              href="{{ outbound_href | escape }}"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
               >#joshternet<span aria-hidden="true">↗</span><span class="visually-hidden">(opens off this site)</span></a
             >
             {% if page.url == '/' %}
               <a
                 href="https://github.com/joshternet"
-                rel="me noopener noreferrer"
+                rel="me noopener"
                 target="_blank"
                 >GitHub<span aria-hidden="true">↗</span><span class="visually-hidden">(opens off this site)</span></a
               >
             {% else %}
+              {% include outbound-href.html url="https://github.com/joshternet" %}
               <a
-                href="https://github.com/joshternet"
+                href="{{ outbound_href | escape }}"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
                 >GitHub<span aria-hidden="true">↗</span><span class="visually-hidden">(opens off this site)</span></a
               >
             {% endif %}

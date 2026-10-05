@@ -9,7 +9,28 @@ const wanderScriptPath = fileURLToPath(
   new URL("../../assets/js/wander.js", import.meta.url),
 );
 
+const outboundScriptPath = fileURLToPath(
+  new URL("../../assets/js/outbound-referrer.js", import.meta.url),
+);
+
 const wanderScript = await readFile(wanderScriptPath, "utf8");
+const outboundScript = await readFile(outboundScriptPath, "utf8");
+
+/**
+ * Expected Wander Open / fallback href with Joshternet UTM params.
+ * @param {string} href
+ * @returns {string}
+ */
+function wanderOutbound(href) {
+  const url = new URL(href);
+
+  url.searchParams.set("utm_source", "joshternet.org");
+  url.searchParams.set("utm_medium", "referral");
+  url.searchParams.set("utm_campaign", "wander");
+  url.searchParams.set("utm_content", "/wander/");
+
+  return url.href;
+}
 
 const fixture = `
 <!doctype html>
@@ -106,6 +127,10 @@ async function wanderPage(data, { sessionState } = {}) {
   }, sessionState);
 
   await page.addScriptTag({
+    content: outboundScript,
+  });
+
+  await page.addScriptTag({
     content: wanderScript,
   });
 
@@ -156,7 +181,7 @@ test("validated HTTPS participant uses the constrained iframe sandbox", async ()
     });
 
     assert.deepEqual(calls, [
-      ["https://safe.example/", "_blank", "noopener,noreferrer"],
+      [wanderOutbound("https://safe.example/"), "_blank", "noopener"],
     ]);
   } finally {
     await context.close();
@@ -312,7 +337,7 @@ test("malformed and hostile network entries cannot become Wander destinations", 
 
     const href = await page.locator(".network-card__link").getAttribute("href");
 
-    assert.equal(href, "https://safe.example");
+    assert.equal(href, wanderOutbound("https://safe.example"));
   } finally {
     await context.close();
   }
@@ -386,7 +411,7 @@ test("session state and address tampering cannot create an arbitrary Open destin
       await page.evaluate(() => {
         return window.__wanderOpenCalls;
       }),
-      [["https://safe.example/", "_blank", "noopener,noreferrer"]],
+      [[wanderOutbound("https://safe.example/"), "_blank", "noopener"]],
     );
   } finally {
     await context.close();

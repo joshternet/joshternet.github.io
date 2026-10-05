@@ -8,6 +8,10 @@
 {% for item in include.items %}
   {% if item.url %}
     {% assign item_href = item.url %}
+    {% if item.url contains '://' %}
+      {% include outbound-href.html url=item.url %}
+      {% assign item_href = outbound_href %}
+    {% endif %}
     {% assign item_current = false %}
   {% else %}
     {% assign item_href = item.path | relative_url %}
@@ -20,13 +24,13 @@
   {% endif %}
   <li class="site-nav-secondary__item">
     <a
-      href="{{ item_href }}"
+      href="{{ item_href | escape }}"
       {% if item_current %}
         aria-current="page"
       {% endif %}
       {% if item.url contains '://' %}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener"
       {% endif %}
     >
       {{- item.title -}}
