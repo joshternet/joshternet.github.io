@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-06T15:12:47.435Z",
-  "community_count": 208,
+  "generated_at": "2026-10-06T20:20:38.881Z",
+  "community_count": 206,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
@@ -3980,24 +3980,9 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshghent.com/",
+              "url": "https://joshghent.com/health-checks/",
               "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/projects/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/work/",
-              "title": "",
-              "source": "visible-text"
+              "source": "catalog-match"
             }
           ]
         },
@@ -4039,10 +4024,10 @@
         }
       ],
       "sources": [
+        "catalog-match",
         "microformat:p-category",
         "portfolio:sector",
-        "topic-hub:link",
-        "visible-text"
+        "topic-hub:link"
       ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-04T15:32:37.678Z",
@@ -4689,36 +4674,8 @@
     {
       "slug": "javascript",
       "label": "javascript",
-      "member_count": 2,
+      "member_count": 1,
       "sites": [
-        {
-          "origin": "https://joshghent.com",
-          "domain": "joshghent.com",
-          "title": "Developer Musings",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshghent.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/projects/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/work/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -4733,10 +4690,11 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "visible-text"],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-04T15:32:37.678Z",
-      "active": true
+      "last_changed_at": "2026-10-06T20:20:38.881Z",
+      "active": true,
+      "stale_since": "2026-10-06T20:20:38.881Z"
     },
     {
       "slug": "javascript-typescript",
@@ -4868,78 +4826,6 @@
       "active": true
     },
     {
-      "slug": "lead",
-      "label": "lead",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://joshghent.com",
-          "domain": "joshghent.com",
-          "title": "Developer Musings",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshghent.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/projects/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/work/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://www.joshuabaker.com",
-          "domain": "www.joshuabaker.com",
-          "title": "Joshua Baker",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://www.joshuabaker.com/work/banked-pay-by-bank/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/banked/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/not-optional/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/pure-sports-medicine/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/the-dots/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["visible-text"],
-      "first_seen_at": "2026-10-04T15:32:37.678Z",
-      "last_changed_at": "2026-10-04T15:32:37.678Z",
-      "active": true
-    },
-    {
       "slug": "lego",
       "label": "lego",
       "member_count": 1,
@@ -5053,110 +4939,10 @@
       "active": true
     },
     {
-      "slug": "links",
-      "label": "links",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://joshghent.com",
-          "domain": "joshghent.com",
-          "title": "Developer Musings",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshghent.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/projects/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/work/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/08/my-small-answer-to-the-friendship-recession-is-to-tell-my-friends-they-matter/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/10/keep-the-internet-funky/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/11/worth-wandering-hundred-rabbits/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/12/google-search-keeps-moving-away-from-the-web/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/18/worth-wandering-robin-sloan/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["visible-text"],
-      "first_seen_at": "2026-10-04T15:32:37.678Z",
-      "last_changed_at": "2026-10-04T15:32:37.678Z",
-      "active": true
-    },
-    {
       "slug": "linux",
       "label": "linux",
-      "member_count": 3,
+      "member_count": 2,
       "sites": [
-        {
-          "origin": "https://joshghent.com",
-          "domain": "joshghent.com",
-          "title": "Developer Musings",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshghent.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/projects/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/work/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -5199,10 +4985,11 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link", "visible-text"],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-05T16:17:44.426Z",
-      "active": true
+      "last_changed_at": "2026-10-06T20:20:38.881Z",
+      "active": true,
+      "stale_since": "2026-10-06T20:20:38.881Z"
     },
     {
       "slug": "llm",

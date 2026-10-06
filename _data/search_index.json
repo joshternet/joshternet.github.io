@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-06T07:36:04.558Z",
-  "document_count": 720,
+  "generated_at": "2026-10-06T20:21:51.837Z",
+  "document_count": 719,
   "documents": [
     {
       "type": "site",
@@ -689,15 +689,6 @@
     },
     {
       "type": "topic",
-      "title": "links",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/links/",
-      "topics": ["links", "links"]
-    },
-    {
-      "type": "topic",
       "title": "llm",
       "summary": "2 participating sites",
       "domain": "",
@@ -1262,15 +1253,6 @@
       "origin": "",
       "url": "/topics/javascript/",
       "topics": ["javascript", "javascript"]
-    },
-    {
-      "type": "topic",
-      "title": "lead",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/lead/",
-      "topics": ["lead", "lead"]
     },
     {
       "type": "topic",
@@ -2914,6 +2896,19 @@
       "published_at": "2021-02-03T00:00:00.000Z",
       "image": "",
       "image_origin": ""
+    },
+    {
+      "type": "content",
+      "title": "Ring is deliberately nefarious when you E2E encrypt your video",
+      "summary": "",
+      "domain": "joshghent.com",
+      "origin": "https://joshghent.com",
+      "url": "https://joshghent.com/ring-e2ee/",
+      "topics": [],
+      "site_title": "Developer Musings",
+      "published_at": "2026-10-06T00:00:00.000Z",
+      "image": "https://joshghent.com/assets/images/ring/e2ee-explainer.jpg",
+      "image_origin": "https://joshghent.com"
     },
     {
       "type": "content",

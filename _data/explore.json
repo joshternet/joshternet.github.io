@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-06T07:36:04.558Z",
+  "generated_at": "2026-10-06T20:21:51.837Z",
   "participant_count": 6,
-  "community_count": 208,
-  "publication_count": 551,
+  "community_count": 206,
+  "publication_count": 552,
   "connection_count": 2,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
@@ -11,10 +11,10 @@
   },
   "fresh": [
     {
-      "url": "https://joshghent.com/created-my-own-status-page/",
-      "title": "I created my own status page",
+      "url": "https://joshghent.com/ring-e2ee/",
+      "title": "Ring is deliberately nefarious when you E2E encrypt your video",
       "summary": "",
-      "published_at": "2026-10-05T00:00:00.000Z",
+      "published_at": "2026-10-06T00:00:00.000Z",
       "content_type": "article",
       "language": "en",
       "site_origin": "https://joshghent.com",
@@ -22,7 +22,7 @@
       "domain": "joshghent.com",
       "tags": [],
       "neighborhoods": [],
-      "image": "https://joshghent.com/assets/images/uptime/status-page.png",
+      "image": "https://joshghent.com/assets/images/ring/e2ee-explainer.jpg",
       "image_origin": "https://joshghent.com"
     },
     {
@@ -91,8 +91,8 @@
     }
   ],
   "neighborhood": {
-    "slug": "postgres",
-    "label": "postgres",
+    "slug": "personal-data",
+    "label": "personal data",
     "member_count": 1
   },
   "connection": {
