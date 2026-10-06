@@ -310,7 +310,6 @@ jobs:
             _data/connections.json
             _data/topics.json
             _data/site_signals.json
-            _data/mentions.json
             _data/content.json
             _data/data_manifest.json
             _data/activity.json
@@ -379,12 +378,6 @@ jobs:
           cp \
             .network-sync-output/_data/site_signals.json \
             _data/site_signals.json
-
-          if [ -f .network-sync-output/_data/mentions.json ]; then
-            cp \
-              .network-sync-output/_data/mentions.json \
-              _data/mentions.json
-          fi
 
           if [ -f .network-sync-output/_data/content.json ]; then
             cp \
@@ -463,7 +456,6 @@ jobs:
             _data/connections.json \
             _data/topics.json \
             _data/site_signals.json \
-            _data/mentions.json \
             _data/content.json \
             _data/data_manifest.json \
             _data/activity.json \

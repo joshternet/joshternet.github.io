@@ -54,7 +54,6 @@ import {
   writeJSONAtomic,
   writeTextAtomic,
 } from "./lib.mjs";
-import { subjectsFromOctothorpes } from "./octothorpes.mjs";
 import { collectPortfolio } from "./portfolio.mjs";
 import {
   allowsCommunityTopics,
@@ -73,14 +72,20 @@ import {
   subjectsFromHtml,
 } from "./subjects.mjs";
 import { isEnglishLanguage, parseHtmlRegions } from "./text.mjs";
-import { fetchMentionsForTargets, mentionConnections } from "./webmentions.mjs";
+
+/**
+ * Topic and relationship evidence must come from public information Joshternet
+ * directly observes on participating sites or from Joshternet-owned data.
+ * External semantic-enrichment providers require an explicit architectural
+ * decision and must not be added incidentally. Joshternet infrastructure
+ * choices do not constrain technologies used by independent participating sites.
+ */
 
 const ROOT = process.cwd();
 const NETWORK_PATH = path.join(ROOT, "_data/network.json");
 const CONNECTIONS_PATH = path.join(ROOT, "_data/connections.json");
 const SIGNALS_PATH = path.join(ROOT, "_data/site_signals.json");
 const TOPICS_PATH = path.join(ROOT, "_data/topics.json");
-const MENTIONS_PATH = path.join(ROOT, "_data/mentions.json");
 const CONTENT_PATH = path.join(ROOT, "_data/content.json");
 const BLOGROLLS_PATH = path.join(ROOT, "_data/blogrolls.json");
 const MANIFEST_PATH = path.join(ROOT, "_data/data_manifest.json");
@@ -138,11 +143,6 @@ async function main() {
         },
       }),
     );
-    await writeJSONAtomic(MENTIONS_PATH, {
-      schema_version: 1,
-      generated_at: now,
-      mention_count: 0,
-    });
     await writeJSONAtomic(
       CONNECTIONS_PATH,
       sparseCollectionDocument({
@@ -312,11 +312,9 @@ async function main() {
         observedAt: now,
         minCount: 2,
       });
-      const octoSubjects = await subjectsFromOctothorpes(origin, dnsCache);
       const subjects = mergeSubjects(
         nlpSubjects,
         feedData.subjects,
-        octoSubjects,
         htmlSubjects,
       );
       const split = splitDeclaredAndSignals(subjects);
@@ -487,71 +485,6 @@ async function main() {
   }
 
   const contentItems = joinContentWithPageSignals(draftItems, originSignals);
-  const topicTargets = [
-    `${SITE_URL}/network/`,
-    `${SITE_URL}/connections/`,
-    `${SITE_URL}/topics/`,
-    ...communities
-      .slice(0, 30)
-      .map((topic) => `${SITE_URL}/topics/${topic.slug}/`),
-  ];
-  const rawMentions = await fetchMentionsForTargets(topicTargets, dnsCache);
-  /** @type {Record<string, unknown>} */
-  const sparseMentions = {
-    schema_version: 1,
-    generated_at: now,
-    mention_count: 0,
-  };
-  /** @type {Record<string, Array<Record<string, unknown>>>} */
-  const mentionTargets = {};
-
-  for (const [target, list] of Object.entries(rawMentions || {})) {
-    if (Array.isArray(list) && list.length > 0) {
-      mentionTargets[target] = list.map((mention) => ({
-        source_url: mention.url,
-        source_origin: (() => {
-          try {
-            return new URL(mention.url).origin;
-          } catch {
-            return "";
-          }
-        })(),
-        relation: "mention",
-        source_scope: participantOrigins.has(
-          (() => {
-            try {
-              return new URL(mention.url).origin;
-            } catch {
-              return "";
-            }
-          })(),
-        )
-          ? "participant"
-          : "external",
-        verified_at: now,
-      }));
-    }
-  }
-
-  const mentionLists = Object.values(mentionTargets);
-  sparseMentions.mention_count = mentionLists.reduce(
-    (total, list) => total + list.length,
-    0,
-  );
-
-  if (mentionLists.length > 0) {
-    sparseMentions.targets = mentionTargets;
-  }
-
-  const mentionEdges = mentionConnections(rawMentions, participantOrigins).map(
-    (edge) => ({
-      ...edge,
-      relation: "mention",
-      directed: true,
-      kind: undefined,
-    }),
-  );
-
   const previousConnections = itemsFromCollection(
     await readJSONIfExists(CONNECTIONS_PATH, {}),
     "edges",
@@ -580,7 +513,6 @@ async function main() {
           relation !== "content-link" &&
           relation !== "link" &&
           relation !== "blogroll" &&
-          relation !== "mention" &&
           relation !== "reply-to" &&
           relation !== "repost-of" &&
           relation !== "syndication"
@@ -621,7 +553,6 @@ async function main() {
     ...buildAllConnections({
       participantOrigins,
       originLinks,
-      mentionEdges,
       blogrollEdges: blogrollConnectionObservations(
         itemsFromCollection(
           await readJSONIfExists(BLOGROLLS_PATH, {}),
@@ -673,7 +604,6 @@ async function main() {
     connections: semanticHash(connectionsDoc),
     content: semanticHash(contentDoc),
     blogrolls: semanticHash(await readJSONIfExists(BLOGROLLS_PATH, {})),
-    mentions: semanticHash(sparseMentions),
   };
   const previousHashes =
     previousManifest && typeof previousManifest === "object"
@@ -699,7 +629,6 @@ async function main() {
 
   await writeJSONAtomic(SIGNALS_PATH, signalsDoc);
   await writeJSONAtomic(TOPICS_PATH, topicsDoc);
-  await writeJSONAtomic(MENTIONS_PATH, sparseMentions);
   await writeJSONAtomic(CONNECTIONS_PATH, connectionsDoc);
   await writeJSONAtomic(CONTENT_PATH, contentDoc);
   await writeJSONAtomic(

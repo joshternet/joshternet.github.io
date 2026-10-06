@@ -197,10 +197,10 @@ test("buildDataManifest: includes all expected dataset keys", () => {
     "topics",
     "connections",
     "blogrolls",
-    "mentions",
   ]) {
     assert.ok(datasets.includes(key), `missing dataset: ${key}`);
   }
+  assert.ok(!datasets.includes("mentions"), "mentions dataset must be retired");
 });
 
 test("buildDataManifest: includes all expected extractor keys", () => {

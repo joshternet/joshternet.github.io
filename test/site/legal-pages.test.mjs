@@ -101,7 +101,8 @@ test("privacy and terms keep permalinks and operated-service facts", async () =>
   assert.match(privacy, /this browser tab/);
   assert.match(privacy, /public blogroll/);
   assert.doesNotMatch(privacy, /\/assets\//);
-  assert.match(privacy, /webmention\.io\/joshternet\.org\/webmention/);
+  assert.doesNotMatch(privacy, /webmention\.io/);
+  assert.match(privacy, /Independent sites may use Webmentions/);
   assert.match(privacy, /does not use cookies/);
   assert.match(privacy, /account IDs/);
   assert.match(privacy, /utm_source=joshternet\.org/);
@@ -188,6 +189,9 @@ test("infrastructure principles protect decentralization and provider lifecycle"
   assert.match(page, /Provider disqualification is not network blocking/);
   assert.match(page, /Operational blocking/);
   assert.match(page, /Currently used providers/);
+  assert.match(page, /IndexNow/);
+  assert.doesNotMatch(page, /webmention\.io/);
+  assert.doesNotMatch(page, /octothorp\.es/);
   assert.doesNotMatch(page, /\bcertified\b/i);
   assert.doesNotMatch(page, /\bapproved providers?\b/i);
   assert.doesNotMatch(aboutNav, /path: \/infrastructure\//);
@@ -223,6 +227,8 @@ test("built sitemap lists privacy, terms, infrastructure, licensing when _site e
   assert.match(sitemap, /<loc>[^<]*\/privacy\/<\/loc>/);
   assert.match(sitemap, /<loc>[^<]*\/terms\/<\/loc>/);
   assert.match(sitemap, /<loc>[^<]*\/infrastructure\/<\/loc>/);
+  assert.doesNotMatch(sitemap, /CHANGELOG\.html/i);
+  assert.doesNotMatch(sitemap, /\/CHANGELOG/i);
   if (await exists("_site/licensing/third-party-licenses/index.html")) {
     assert.match(
       sitemap,
@@ -232,6 +238,14 @@ test("built sitemap lists privacy, terms, infrastructure, licensing when _site e
   if (await exists("_site/licensing/index.html")) {
     assert.match(sitemap, /<loc>[^<]*\/licensing\/<\/loc>/);
   }
+});
+
+test("repo CHANGELOG is excluded from the published site", async () => {
+  const config = await read("_config.yml");
+  assert.match(config, /^exclude:/m);
+  assert.match(config, /^\s+- CHANGELOG\.md$/m);
+  assert.equal(await exists("_site/CHANGELOG.html"), false);
+  assert.equal(await exists("_site/CHANGELOG/index.html"), false);
 });
 
 test("hub licensing split is documented for #58", async () => {

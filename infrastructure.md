@@ -167,9 +167,7 @@ The following relationships are confirmed by current Joshternet repository confi
 | GitHub | Source hosting, Actions, GitHub Pages, public registry files |
 | Cloudflare | Edge Workers, Turnstile, nominations D1, Cache API, rate limiting |
 | Umami Cloud | Hub analytics |
-| webmention.io | Webmention endpoint for joshternet.org |
 | IndexNow | Search-engine URL submission after deploy |
-| octothorp.es | Build-time topic enrichment |
 
 Joshternet may add, change, or discontinue providers. Independent participating websites remain free to choose their own.
 

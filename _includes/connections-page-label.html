@@ -1,0 +1,65 @@
+{% comment %}
+  Goal: Assign connections_page_label to a visitor-facing title for include.url
+  (the page where a connection was observed). Prefer content.json, then
+  site_signals page titles. Never use the raw URL as the label.
+  include.url: absolute page URL from a connection edge
+{% endcomment %}
+{% assign connections_page_label = '' %}
+{% assign page_want = include.url | default: '' | strip | split: '?' | first | split: '#' | first %}
+{% if page_want != '' %}
+  {% assign page_want_end = page_want | slice: -1, 1 %}
+  {% assign page_want_key = page_want %}
+  {% unless page_want_end == '/' %}
+    {% assign page_want_key = page_want | append: '/' %}
+  {% endunless %}
+
+  {% assign content_items = site.data.content.items | default: empty %}
+  {% for item in content_items %}
+    {% if connections_page_label == '' %}
+      {% assign item_url = item.url | default: '' | strip | split: '?' | first | split: '#' | first %}
+      {% if item_url != '' %}
+        {% assign item_end = item_url | slice: -1, 1 %}
+        {% assign item_key = item_url %}
+        {% unless item_end == '/' %}
+          {% assign item_key = item_url | append: '/' %}
+        {% endunless %}
+        {% if item_key == page_want_key and item.title and item.title != '' %}
+          {% assign connections_page_label = item.title %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% if connections_page_label == '' %}
+    {% assign signal_origins = site.data.site_signals.origins | default: empty %}
+    {% for origin_entry in signal_origins %}
+      {% if connections_page_label == '' %}
+        {% assign signal_pages = origin_entry.pages | default: empty %}
+        {% for signal_page in signal_pages %}
+          {% if connections_page_label == '' %}
+            {% assign signal_url = signal_page.url | default: '' | strip | split: '?' | first | split: '#' | first %}
+            {% if signal_url != '' %}
+              {% assign signal_end = signal_url | slice: -1, 1 %}
+              {% assign signal_key = signal_url %}
+              {% unless signal_end == '/' %}
+                {% assign signal_key = signal_url | append: '/' %}
+              {% endunless %}
+              {% if signal_key == page_want_key and signal_page.title and signal_page.title != '' %}
+                {% assign connections_page_label = signal_page.title %}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if connections_page_label == '' %}
+    {% assign path_tail = page_want | split: '/' | last %}
+    {% if path_tail == '' %}
+      {% assign connections_page_label = 'Home' %}
+    {% else %}
+      {% assign connections_page_label = path_tail | replace: '-', ' ' | replace: '_', ' ' %}
+    {% endif %}
+  {% endif %}
+{% endif %}

@@ -242,7 +242,6 @@ const routeDependencies = new Map([
   ["_data/connections.json", ["/connections/"]],
   ["_data/topics.json", ["/topics/"]],
   ["_data/site_signals.json", ["/topics/", "/connections/"]],
-  ["_data/mentions.json", ["/topics/", "/connections/"]],
   ["_data/platforms_nav.yml", ["/implement/platforms/"]],
   ["_data/implement_nav.yml", ["/implement/"]],
   ["network-data.json", ["/wander/"]],

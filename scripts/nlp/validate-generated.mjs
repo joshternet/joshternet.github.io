@@ -51,7 +51,6 @@ const schemaFiles = {
   topics: "topics.schema.json",
   connections: "connections.schema.json",
   blogrolls: "blogrolls.schema.json",
-  mentions: "mentions.schema.json",
   data_manifest: "data-manifest.schema.json",
 };
 
@@ -95,7 +94,6 @@ const network = readJSON("_data/network.json");
 const topics = readJSON("_data/topics.json");
 const connections = readJSON("_data/connections.json");
 const signals = readJSON("_data/site_signals.json");
-const mentions = readJSON("_data/mentions.json");
 const blogrolls = readJSON("_data/blogrolls.json");
 const content = readJSON("_data/content.json");
 const manifest = readJSON("_data/data_manifest.json");
@@ -104,7 +102,6 @@ assertSchema("network", network);
 assertSchema("topics", topics);
 assertSchema("connections", connections);
 assertSchema("site_signals", signals);
-assertSchema("mentions", mentions);
 assertSchema("blogrolls", blogrolls);
 assertSchema("content", content);
 assertSchema("data_manifest", manifest);
@@ -209,7 +206,6 @@ const allowedRelations = new Set([
   "homepage-link",
   "content-link",
   "blogroll",
-  "mention",
   "reply-to",
   "repost-of",
   "syndication",
@@ -348,30 +344,6 @@ for (const edge of blogrollList) {
     edge.blogroll.includes("/assets/network/joshternet.opml")
   ) {
     fail("generated hub OPML must not appear as blogroll evidence");
-  }
-}
-
-if (mentions && typeof mentions === "object" && !Array.isArray(mentions)) {
-  if (mentions.targets && typeof mentions.targets === "object") {
-    if (Object.keys(mentions.targets).length === 0) {
-      fail("mentions.json must omit empty targets");
-    }
-
-    for (const [target, list] of Object.entries(mentions.targets)) {
-      if (!Array.isArray(list) || list.length === 0) {
-        fail(`mentions target must be non-empty sparse entry: ${target}`);
-      }
-
-      for (const item of list) {
-        if (
-          item.source_scope &&
-          item.source_scope !== "participant" &&
-          item.source_scope !== "external"
-        ) {
-          fail(`invalid source_scope on ${target}`);
-        }
-      }
-    }
   }
 }
 

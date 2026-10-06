@@ -485,7 +485,11 @@ test("featured community rotates by UTC date, not member count", () => {
 
 test("featured connection is first stable edge", () => {
   const edge = pickFeaturedConnection([
-    { from: "https://b.example", to: "https://c.example", relation: "mention" },
+    {
+      from: "https://b.example",
+      to: "https://c.example",
+      relation: "reply-to",
+    },
     {
       from: "https://a.example",
       to: "https://c.example",
@@ -752,14 +756,18 @@ test("pickFeaturedConnection: fires 'to' comparison when from values match (line
 test("pickFeaturedConnection: fires 'relation' comparison when from and to match (lines 405-407)", () => {
   // Same from, same to, different relation → relation comparison fires
   const edge = pickFeaturedConnection([
-    { from: "https://a.example", to: "https://b.example", relation: "mention" },
+    {
+      from: "https://a.example",
+      to: "https://b.example",
+      relation: "reply-to",
+    },
     {
       from: "https://a.example",
       to: "https://b.example",
       relation: "blogroll",
     },
   ]);
-  assert.equal(edge.relation, "blogroll"); // blogroll < mention
+  assert.equal(edge.relation, "blogroll"); // blogroll < reply-to
 });
 
 // ─── topicCooccurrence sort comparator (lines 455-461) ───────────────────────

@@ -327,7 +327,8 @@ test("connections crawl page documents sync signals under Implement", async () =
   assert.match(page, /joshing\.you/);
   assert.match(page, /JoshternetNLP\/1\.0/);
   assert.match(page, /p-category/);
-  assert.match(page, /octo:octothorpes/);
+  assert.doesNotMatch(page, /octo:octothorpes/);
+  assert.doesNotMatch(page, /Verified Webmention/);
   assert.match(page, /homepage-link/);
   assert.match(page, /content-link/);
   assert.match(page, /\/connections\//);

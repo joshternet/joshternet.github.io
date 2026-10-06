@@ -527,7 +527,7 @@ test("sortConnectionEdges: sorts by from, to, relation, via, href, page", () => 
     {
       from: "https://b.example",
       to: "https://c.example",
-      relation: "mention",
+      relation: "reply-to",
       via: "",
       href: "https://c.example/b",
       page: "https://b.example/p2",
@@ -858,7 +858,7 @@ test("sortConnectionEdges: returns relation when from and to match (lines 542-54
     {
       from: "https://a.example",
       to: "https://b.example",
-      relation: "mention",
+      relation: "reply-to",
       via: "",
       href: "https://b.example/",
       page: "https://a.example/",
@@ -872,8 +872,8 @@ test("sortConnectionEdges: returns relation when from and to match (lines 542-54
       page: "https://a.example/",
     },
   ]);
-  assert.equal(edges[0].relation, "blogroll"); // "blogroll" < "mention"
-  assert.equal(edges[1].relation, "mention");
+  assert.equal(edges[0].relation, "blogroll"); // "blogroll" < "reply-to"
+  assert.equal(edges[1].relation, "reply-to");
 });
 
 test("sortConnectionEdges: falls back to page when all preceding keys tie (line 556)", () => {

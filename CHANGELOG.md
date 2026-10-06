@@ -4,11 +4,15 @@
 
 ### Changed
 
+- Connections “seen on” links show the article title (from content or crawl signals) instead of the raw page URL; Octothorpes `octo:*` rel tokens are not shown in connection cards.
+- Connected from rows name the linking site (“linked from Joshua Morris”) instead of reusing outbound “linked to” wording aimed at this card’s own site.
+- Empty Shared topics and Connected from sections are omitted from connection cards.
+- `CHANGELOG.md` is excluded from the Jekyll publish set (repo history only; not an HTML page or sitemap entry).
 - Privacy Official buttons distinguishes Joshternet’s ~five-minute Button State cache from the WordPress plugin’s up-to-15-minute local cache, states that the Button State application does not write lookup origins to a Joshternet application database, and documents WordPress local artwork. Terms is labeled Terms of Service and links Infrastructure Principles. Privacy Providers links `/infrastructure/`.
 
 ### Added
 
-- Joshternet Infrastructure Principles at `/infrastructure/`: provider selection standards for Joshternet-operated services only, independent-site boundary, provider lifecycle and removal, and currently used inventory (GitHub, Cloudflare, Umami, webmention.io, IndexNow, octothorp.es).
+- Joshternet Infrastructure Principles at `/infrastructure/`: provider selection standards for Joshternet-operated services only, independent-site boundary, provider lifecycle and removal, and currently used inventory (GitHub, Cloudflare, Umami, IndexNow).
 
 ### Changed
 
@@ -16,7 +20,7 @@
 
 ### Added
 
-- Canonical Privacy (`/privacy/`) and Terms (`/terms/`) for Joshternet-operated services, written for visitors: hub hosting, Umami, official buttons, nominations/Turnstile, declaration checker, JoshBot, public registry, Wander, OPML, Webmentions. Button lookup facts stay (site address only, no visit of that site, brief cache) without API syntax; WordPress shortcode lookups are the site server’s connection, not each visitor’s browser. Avoids raw hub asset paths. Footer is Privacy, Terms, Security, Contact. WordPress.org External services copy stays in `joshternet/wordpress`.
+- Canonical Privacy (`/privacy/`) and Terms (`/terms/`) for Joshternet-operated services, written for visitors: hub hosting, Umami, official buttons, nominations/Turnstile, declaration checker, JoshBot, public registry, Wander, OPML. Button lookup facts stay (site address only, no visit of that site, brief cache) without API syntax; WordPress shortcode lookups are the site server’s connection, not each visitor’s browser. Avoids raw hub asset paths. Footer is Privacy, Terms, Security, Contact. WordPress.org External services copy stays in `joshternet/wordpress`.
 - Explicit hub licensing (#58): project-owned code BSD-3-Clause (`LICENSE`), prose/docs CC BY 4.0, brand marks not open-licensed; participant screenshots and third-party attribution excluded. Policy in `LICENSING.md` and `/licensing/`; README and Terms point at it. Third-party attribution page at `/licensing/third-party-licenses/` (sitemap, not nav); repo file `THIRD_PARTY_LICENSES.md` stays the source list with markdown Source links.
 
 ### Added
@@ -30,7 +34,7 @@
 - Exploration pages (`/connections/`, `/topics/`, `/activity/`, `/explore/`, `/network/`, `/wander/`) publish CollectionPage JSON-LD that points at the homepage Project, with TechArticle JSON-LD on the connections and explore implementation notes. Topic neighborhood stubs get descriptions and CollectionPage SEO. Lists use `h-feed`; activity and search cards are `h-entry` with `p-author` / `p-category` / `u-photo`; connection and network cards are `h-card`. Search stays `noindex`.
 - Portfolio indexes (`/work/`, `/projects/`, `/portfolio/`) are read during `nlp:sync`. Each work-table row becomes a project in `content.json`, the origin records that it has an online portfolio, and sectors such as banking, government, and health become declared topics that can join topic connections.
 - `npm run dev` / `./scripts/dev.sh` starts Jekyll with LiveReload on `0.0.0.0:4000` (`http://127.0.0.1:4000/` locally, or this machine’s LAN IP from other devices) plus the local button (`:8790`), declaration-check (`:8789`), and seed-nominations (`:8787`) Workers. `--dry-run` prints the plan; the script does not kill other servers.
-- Data integrity layer for topic/connection intelligence: evidence classes (`declared` / `observed` / `heuristic`), community-eligible topic source whitelist, page roles, HTML entity decoding, hub-scoped derived-page exclusions (`joshternet-analysis=derived`), `_data/content.json` feed items with cross-feed identity, `_data/data_manifest.json` + semantic hashes, explicit `topic_aliases` / `topic_denylist`, build-only `.tmp/topic_candidates.json`, JSON Schema contracts under `schemas/` (network, site-signals, content, topics, connections, blogrolls, mentions, data-manifest) validated by Ajv in `npm run nlp:validate`, Members vs Related discoveries on topic pages, blogroll/IndieWeb relations in `connections.json`, and sensitive-heuristic suppression for public participant attachment.
+- Data integrity layer for topic/connection intelligence: evidence classes (`declared` / `observed` / `heuristic`), community-eligible topic source whitelist, page roles, HTML entity decoding, hub-scoped derived-page exclusions (`joshternet-analysis=derived`), `_data/content.json` feed items with cross-feed identity, `_data/data_manifest.json` + semantic hashes, explicit `topic_aliases` / `topic_denylist`, build-only `.tmp/topic_candidates.json`, JSON Schema contracts under `schemas/` (network, site-signals, content, topics, connections, blogrolls, data-manifest) validated by Ajv in `npm run nlp:validate`, Members vs Related discoveries on topic pages, blogroll/IndieWeb relations in `connections.json`, and sensitive-heuristic suppression for public participant attachment.
 - Implementation guide: [Connections crawl](/implement/connections/) documents evidence authority, public community rules, observed relationship vocabulary, and the one-way pipeline.
 - Exploration UI: `/activity/` (What's New, one item per origin), `/search/`, topic neighborhoods with why-here disclosures, connection evidence panels and relation line styles, bounded Wander link trails, and presentation projections from `npm run views:build` (`activity.json`, `explore.json`, `topic_views.json`, `site_views.json`, `search_index.json`).
 

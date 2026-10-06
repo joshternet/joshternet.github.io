@@ -44,7 +44,6 @@ test("network-sync publish set lists CI-owned generated paths", async () => {
     "_data/connections.json",
     "_data/topics.json",
     "_data/site_signals.json",
-    "_data/mentions.json",
     "_data/content.json",
     "_data/data_manifest.json",
     "_data/activity.json",

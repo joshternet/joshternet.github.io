@@ -169,14 +169,13 @@
 
   /**
    * @param {unknown} value
-   * @returns {"link" | "friend" | "topic" | "mention"}
+   * @returns {string}
    */
   function connectionRelation(value) {
     if (
       value === "homepage-link" ||
       value === "content-link" ||
       value === "blogroll" ||
-      value === "mention" ||
       value === "reply-to" ||
       value === "repost-of" ||
       value === "syndication"
@@ -190,6 +189,11 @@
 
     // Drop inferred friend/topic edges if they appear in bootstrap JSON.
     if (value === "friend" || value === "topic") {
+      return "";
+    }
+
+    // Retired Webmention.io enrichment relation — not a Joshternet edge type.
+    if (value === "mention") {
       return "";
     }
 
@@ -294,7 +298,7 @@
 
     let via = textValue(value.via, 500);
 
-    if (relation === "mention" || relation === "blogroll") {
+    if (relation === "blogroll") {
       via = safeHttpHref(via) || textValue(value.via, 500);
     }
 
@@ -691,8 +695,6 @@
     switch (relation) {
       case "blogroll":
         return "8 6";
-      case "mention":
-        return "2 6";
       case "reply-to":
       case "repost-of":
       case "syndication":
@@ -763,10 +765,32 @@
 
   /**
    * @param {typeof connections[number]} edge
+   * @param {"to" | "from"} [side]
    * @returns {string}
    */
-  function kindLabel(edge) {
+  function kindLabel(edge, side = "to") {
     const relation = edge.relation || edge.kind;
+
+    if (side === "from") {
+      switch (relation) {
+        case "homepage-link":
+          return "linked from the homepage";
+        case "content-link":
+          return "linked from";
+        case "blogroll":
+          return "listed in a blogroll";
+        case "reply-to":
+          return "received a reply from";
+        case "repost-of":
+          return "was reposted by";
+        case "syndication":
+          return "syndicated from";
+        case "shared-topic":
+          return "shared topic";
+        default:
+          return "linked from";
+      }
+    }
 
     switch (relation) {
       case "homepage-link":
@@ -775,8 +799,6 @@
         return "linked to";
       case "blogroll":
         return "includes in a blogroll";
-      case "mention":
-        return "mentioned";
       case "reply-to":
         return "replied to";
       case "repost-of":
@@ -935,8 +957,13 @@
    * @param {typeof connections[number]} edge
    * @returns {string}
    */
-  function bubbleRelation(edge) {
-    const label = kindLabel(edge);
+  /**
+   * @param {typeof connections[number]} edge
+   * @param {"to" | "from"} [side]
+   * @returns {string}
+   */
+  function bubbleRelation(edge, side = "to") {
+    const label = kindLabel(edge, side);
 
     return `${label.charAt(0).toUpperCase()}${label.slice(1)}`;
   }
@@ -952,8 +979,11 @@
     const peer = byOrigin.get(peerOrigin);
     const peerTitle = peer ? peer.title : peerOrigin;
     const arrow = side === "to" ? "→" : "←";
+    const peerHref =
+      side === "to" ? edge.href || edge.to : edge.from || peerOrigin;
+    const decorated = outboundHref(peerHref);
 
-    return `<li class="connections-bubble__row connections-bubble__row--directed"><span class="connections-bubble__dir" aria-hidden="true">${arrow}</span><span class="connections-bubble__row-text">${escapeHTML(bubbleRelation(edge))} <a href="${escapeAttribute(outboundHref(edge.href))}" target="_blank" rel="noopener">${escapeHTML(peerTitle)}</a></span></li>`;
+    return `<li class="connections-bubble__row connections-bubble__row--directed"><span class="connections-bubble__dir" aria-hidden="true">${arrow}</span><span class="connections-bubble__row-text">${escapeHTML(bubbleRelation(edge, side))} <a href="${escapeAttribute(decorated)}" target="_blank" rel="noopener">${escapeHTML(peerTitle)}</a></span></li>`;
   }
 
   /**

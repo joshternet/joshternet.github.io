@@ -62,7 +62,6 @@ Joshternet opt-in. Participation is `/.well-known/josh`.
 - JSON Feed tag
 - Microformats `p-category`
 - `article:tag` / `article:section`
-- Octothorpes
 - Topic-hub child pages
 - Portfolio **sectors** (banking, health), not the word “portfolio”
 
@@ -93,7 +92,6 @@ participants:
 | `homepage-link`                          | Ordinary link from the home page  |
 | `content-link`                           | Ordinary link from a content page |
 | `blogroll`                               | Explicit publisher blogroll       |
-| `mention`                                | Verified Webmention               |
 | `reply-to` / `repost-of` / `syndication` | Explicit IndieWeb equivalents     |
 
 Joshternet does **not** invent friendship from shared third-party links, and does
@@ -131,7 +129,7 @@ JoshternetNLP/1.0 (+https://joshternet.org; topic-hub build crawl)
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Links             | Ordinary links                                                                                                                                                       |
 | Visible prose     | Not script, style, or nav chrome                                                                                                                                     |
-| Declared labels   | Microformats `p-category`, `article:tag`, feed categories, `rel="octo:octothorpes"`                                                                                  |
+| Declared labels   | Microformats `p-category`, `article:tag`, feed categories                                                                                                            |
 | Topic directories | `/topics/`, `/tags/`, `/categories/` even when missing from `sitemap.xml`                                                                                            |
 | Writing indexes   | `/notes/`, `/blog/`, `/posts/`, `/now/`, `/friends/`, `/about/`, `/archive/`, and similar, also independent of the sitemap                                            |
 | Catalog source    | `joshuamorris.info` while it remains a member, otherwise the origin with the most declared subjects |
