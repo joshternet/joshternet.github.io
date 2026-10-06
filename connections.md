@@ -127,12 +127,6 @@ Connections from around the Joshternet.
             <span>Blogroll</span>
           </li>
           <li>
-            <svg class="connections-key-line" data-connection-kind="mention" viewBox="0 0 48 10" aria-hidden="true">
-              <line x1="2" y1="5" x2="46" y2="5"></line>
-            </svg>
-            <span>Mention</span>
-          </li>
-          <li>
             <svg class="connections-key-line" data-connection-kind="reply-to" viewBox="0 0 48 10" aria-hidden="true">
               <line x1="2" y1="5" x2="46" y2="5"></line>
             </svg>
@@ -248,8 +242,6 @@ Connections from around the Joshternet.
                       {% assign kind_label = "links to from the homepage" %}
                     {% when "blogroll" %}
                       {% assign kind_label = "includes in a blogroll" %}
-                    {% when "mention" %}
-                      {% assign kind_label = "mentioned" %}
                     {% when "reply-to" %}
                       {% assign kind_label = "replied to" %}
                     {% when "repost-of" %}
@@ -295,12 +287,13 @@ Connections from around the Joshternet.
                         {% if edge.page and edge.page != "" %}
                           · seen on
                           {% include outbound-href.html url=edge.page %}
+                          {% include connections-page-label.html url=edge.page %}
                           <a
                             href="{{ outbound_href | escape }}"
                             target="_blank"
                             rel="noopener"
                           >
-                            {{ edge.page | escape }}
+                            {{ connections_page_label | escape }}
                           </a>
                         {% endif %}
                         {% if edge.source and edge.source != "" and edge.source != "content" %}
@@ -318,9 +311,9 @@ Connections from around the Joshternet.
         </div>
         {% endif %}
 
+        {% if inbound > 0 %}
         <div class="connections-site__column">
           <h3>Connected from</h3>
-          {% if inbound > 0 %}
             <ul class="connections-edge-list">
               {% for edge in connection_edges %}
                 {% if edge.to == site_origin %}
@@ -332,51 +325,42 @@ Connections from around the Joshternet.
                       {% assign source_domain = candidate.domain %}
                     {% endif %}
                   {% endfor %}
-                  {% assign link_label = edge.text %}
-                  {% if link_label == nil or link_label == "" %}
-                    {% assign link_label = source_title %}
-                  {% endif %}
                   {% assign edge_kind = edge.relation | default: edge.kind | default: "content-link" %}
                   {% case edge_kind %}
                     {% when "homepage-link" %}
-                      {% assign kind_label = "links to from the homepage" %}
+                      {% assign kind_label = "linked from the homepage" %}
                     {% when "blogroll" %}
-                      {% assign kind_label = "includes in a blogroll" %}
-                    {% when "mention" %}
-                      {% assign kind_label = "mentioned" %}
+                      {% assign kind_label = "listed in a blogroll" %}
                     {% when "reply-to" %}
-                      {% assign kind_label = "replied to" %}
+                      {% assign kind_label = "received a reply from" %}
                     {% when "repost-of" %}
-                      {% assign kind_label = "reposted" %}
+                      {% assign kind_label = "was reposted by" %}
                     {% when "syndication" %}
-                      {% assign kind_label = "syndicated to" %}
+                      {% assign kind_label = "syndicated from" %}
                     {% else %}
-                      {% assign kind_label = "linked to" %}
+                      {% assign kind_label = "linked from" %}
                   {% endcase %}
                   <li class="connections-edge" data-connection-kind="{{ edge_kind | escape }}">
                     <span class="connections-edge__direction" aria-hidden="true">←</span>
                     <div class="connections-edge__body">
                       <span class="connections-edge__kind">{{ kind_label | escape }}</span>
-                      {% include outbound-href.html url=edge.href %}
+                      {% include outbound-href.html url=edge.from %}
                       <a
                         href="{{ outbound_href | escape }}"
                         target="_blank"
                         rel="noopener"
                       >
-                        {{ link_label | escape }}
+                        {{ source_title | escape }}
                       </a>
                       <span class="connections-edge__meta">
-                        from
-                        {% include outbound-href.html url=edge.from %}
-                        <a
-                          href="{{ outbound_href | escape }}"
-                          target="_blank"
-                          rel="noopener"
-                        >
+                        {% assign inbound_meta = false %}
+                        {% if source_domain and source_domain != source_title %}
                           {{ source_domain | escape }}
-                        </a>
+                          {% assign inbound_meta = true %}
+                        {% endif %}
                         {% if edge.via and edge.via != "" %}
-                          · via
+                          {% if inbound_meta %} · {% endif %}
+                          via
                             {% include outbound-href.html url=edge.via %}
                             <a
                               href="{{ outbound_href | escape }}"
@@ -385,23 +369,20 @@ Connections from around the Joshternet.
                             >
                               {{ edge.via | escape }}
                             </a>
+                          {% assign inbound_meta = true %}
                         {% endif %}
                         {% if edge.page and edge.page != "" %}
-                          · seen on
+                          {% if inbound_meta %} · {% endif %}
+                          seen on
                           {% include outbound-href.html url=edge.page %}
+                          {% include connections-page-label.html url=edge.page %}
                           <a
                             href="{{ outbound_href | escape }}"
                             target="_blank"
                             rel="noopener"
                           >
-                            {{ edge.page | escape }}
+                            {{ connections_page_label | escape }}
                           </a>
-                        {% endif %}
-                        {% if edge.source and edge.source != "" and edge.source != "content" %}
-                          · {{ edge.source | escape }}
-                        {% endif %}
-                        {% if edge.rel and edge.rel.size > 0 %}
-                          {% include connections-visible-rel.html rel=edge.rel %}
                         {% endif %}
                       </span>
                     </div>
@@ -409,13 +390,11 @@ Connections from around the Joshternet.
                 {% endif %}
               {% endfor %}
             </ul>
-          {% else %}
-            <p class="connections-empty-note">No observed incoming bridges from other participants yet.</p>
-          {% endif %}
         </div>
+        {% endif %}
 
+        {% if overlap_count > 0 %}
         <div class="connections-site__column connections-site__column--topics">
-          {% if overlap_count > 0 %}
             <details class="connections-topic__disclosure">
               <summary>
                 <h3>Shared topics</h3>
@@ -446,11 +425,8 @@ Connections from around the Joshternet.
                 {% endfor %}
               </ul>
             </details>
-          {% else %}
-            <h3>Shared topics</h3>
-            <p class="connections-empty-note">No shared topics with other participants yet.</p>
-          {% endif %}
         </div>
+        {% endif %}
       </div>
     </section>
     {% endif %}

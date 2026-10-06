@@ -96,13 +96,9 @@ Search uses a list of pages from this same website. It is not a third-party sear
 
 The hub publishes a public blogroll of participant feed addresses found on public pages.
 
-## Webmentions
-
-Pages may advertise a Webmention endpoint at [webmention.io][webmention] for joshternet.org. Browsing the hub does not send a Webmention. Sending or receiving one is a separate, intentional request handled by that service.
-
 ## Independent websites
 
-Participating sites keep their own privacy practices. Participation is declared per website at `/.well-known/josh`. The hub publishes Network, Topics, Connections, and activity views from public pages and feeds.
+Participating sites keep their own privacy practices. Participation is declared per website at `/.well-known/josh`. The hub publishes Network, Topics, Connections, and activity views from public pages and feeds. Independent sites may use Webmentions, Octothorpes, or other tools on their own sites; that choice does not change how Joshternet processes ordinary public information from them.
 
 ## Choices
 
@@ -117,7 +113,6 @@ We link provider policies rather than copying them:
 - [Umami platform][umami] and [Umami privacy][umami-privacy]
 - [Cloudflare Privacy Policy][cloudflare-privacy] and [Turnstile Privacy Addendum][turnstile-privacy]
 - [GitHub Privacy Statement][github-privacy]
-- [webmention.io][webmention]
 
 Third-party software and brand marks used on this hub are listed on [Third-party licenses](/licensing/third-party-licenses/).
 
@@ -137,4 +132,3 @@ Effective 5 October 2026. Last updated 5 October 2026.
 [cloudflare-privacy]: https://www.cloudflare.com/privacypolicy/
 [joshbot-retention]: https://github.com/joshternet/joshbot/blob/main/docs/retention.md
 [index-data]: https://github.com/joshternet/index-data
-[webmention]: https://webmention.io/joshternet.org/webmention

@@ -23,7 +23,6 @@ import {
   mergeSubjects,
   subjectsFromHtml,
 } from "../../scripts/nlp/subjects.mjs";
-import { mentionConnections } from "../../scripts/nlp/webmentions.mjs";
 import { subjectsFromRssOrAtom } from "../../scripts/nlp/feeds.mjs";
 
 test("tokenize drops stopwords and short tokens", () => {
@@ -154,7 +153,7 @@ test("subjectsFromHtml reads a publisher topics directory", () => {
   assert.ok(subjects[0].sources.includes("topic-hub"));
 });
 
-test("subjectsFromHtml reads microformats, meta, and octothorpes", () => {
+test("subjectsFromHtml reads microformats and meta without promoting Octothorpes markup", () => {
   const subjects = subjectsFromHtml(
     `<html><body>
       <span class="p-category">Indieweb</span>
@@ -166,23 +165,20 @@ test("subjectsFromHtml reads microformats, meta, and octothorpes", () => {
   );
   const slugs = subjects.map((subject) => subject.slug).sort();
 
-  assert.deepEqual(slugs, [
-    "bicycles",
-    "cars",
-    "gardening",
-    "indieweb",
-    "maps",
-  ]);
+  assert.deepEqual(slugs, ["bicycles", "gardening", "indieweb", "maps"]);
+  assert.ok(
+    !subjects.some((subject) => subject.sources.includes("octothorpe")),
+  );
 });
 
 test("mergeSubjects unions sources without inventing synonyms", () => {
   const merged = mergeSubjects(
     [{ slug: "cars", label: "cars", sources: ["nlp"], score: 0.5 }],
-    [{ slug: "cars", label: "Cars", sources: ["octothorpe"], pages: [] }],
+    [{ slug: "cars", label: "Cars", sources: ["rss:category"], pages: [] }],
   );
 
   assert.equal(merged.length, 1);
-  assert.deepEqual(merged[0].sources.sort(), ["nlp", "octothorpe"]);
+  assert.deepEqual(merged[0].sources.sort(), ["nlp", "rss:category"]);
 });
 
 test("shared subjects do not create topic pair edges", () => {
@@ -231,7 +227,7 @@ test("buildTopicsHub lists equal-weight sites per slug", () => {
       domain: "a.example",
       title: "A",
       subjects: [
-        { slug: "maps", label: "Maps", sources: ["octothorpe"], pages: [] },
+        { slug: "maps", label: "Maps", sources: ["rss:category"], pages: [] },
       ],
     },
   ]);
@@ -294,29 +290,6 @@ test("contentIndexSeedUrls: invalid origin returns empty array (covers !href con
 test("contentIndexChildUrls: invalid indexUrl returns empty array", () => {
   const urls = contentIndexChildUrls("https://a.example", "not-a-url", []);
   assert.deepEqual(urls, []);
-});
-
-test("mentionConnections only bridges current participants", () => {
-  const edges = mentionConnections(
-    {
-      "https://b.example/post": [
-        {
-          url: "https://a.example/reply",
-          content: { text: "nice post" },
-        },
-        {
-          url: "https://outsider.example/reply",
-          content: { text: "hi" },
-        },
-      ],
-    },
-    new Set(["https://a.example", "https://b.example"]),
-  );
-
-  assert.equal(edges.length, 1);
-  assert.equal(edges[0].relation, "mention");
-  assert.equal(edges[0].from, "https://a.example");
-  assert.equal(edges[0].to, "https://b.example");
 });
 
 // ─── extractTopicsFromPages: branch coverage ────────────────────────────────

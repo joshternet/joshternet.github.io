@@ -134,9 +134,6 @@
       type="text/xml"
       href="{{ '/assets/network/joshternet.opml' | relative_url }}"
     >
-    {% if site.webmention.endpoint %}
-      <link rel="webmention" href="{{ site.webmention.endpoint }}">
-    {% endif %}
     {% if jekyll.environment == 'development' %}
       {% assign asset_version = site.time | date: '%s' %}
     {% else %}

@@ -49,8 +49,8 @@ test("topics hub and layout are wired", async () => {
   );
   assert.match(layout, /h-feed/);
   assert.match(page, /type: CollectionPage/);
-  assert.match(defaultLayout, /rel="webmention"/);
-  assert.match(defaultLayout, /site\.webmention\.endpoint/);
+  assert.doesNotMatch(defaultLayout, /rel="webmention"/);
+  assert.doesNotMatch(defaultLayout, /site\.webmention\.endpoint/);
 });
 
 test("built neighborhood pages exist for every topics stub", async () => {

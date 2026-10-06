@@ -31,7 +31,6 @@ export const COMMUNITY_ELIGIBLE_SOURCES = new Set([
   "microformat:p-category",
   "article:tag",
   "schema:keywords",
-  "octothorpe",
   "article:section",
   "topic-hub:link",
   "topic-hub:page",

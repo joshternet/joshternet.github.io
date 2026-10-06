@@ -2223,10 +2223,6 @@ video {
   stroke-dasharray: 8 6;
 }
 
-.connections-key-line[data-connection-kind="mention"] line {
-  stroke-dasharray: 2 6;
-}
-
 .connections-key-line[data-connection-kind="reply-to"] line {
   stroke: var(--color-accent);
   stroke-dasharray: 10 4 2 4;
@@ -2254,10 +2250,6 @@ video {
 
 .connections-swatch[data-connection-kind="blogroll"] {
   border-block-start-style: dashed;
-}
-
-.connections-swatch[data-connection-kind="mention"] {
-  border-block-start-style: dotted;
 }
 
 .connections-swatch[data-connection-kind="reply-to"],

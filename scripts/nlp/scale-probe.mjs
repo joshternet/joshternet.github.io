@@ -91,7 +91,6 @@ const SCHEMA_FILES = {
   topics: "topics.schema.json",
   connections: "connections.schema.json",
   blogrolls: "blogrolls.schema.json",
-  mentions: "mentions.schema.json",
   data_manifest: "data-manifest.schema.json",
 };
 
@@ -467,7 +466,6 @@ async function parseHarvestedOrigin(meta, now) {
  *   topicsDoc: Record<string, unknown>,
  *   connectionsDoc: Record<string, unknown>,
  *   blogrollsDoc: Record<string, unknown>,
- *   mentionsDoc: Record<string, unknown>,
  *   manifest: Record<string, unknown>,
  *   members: number,
  *   items: number,
@@ -559,7 +557,6 @@ async function writeSyntheticGraph(parsed, now, aliases, denylist) {
   }
 
   const contentItems = joinContentWithPageSignals(draftItems, originSignals);
-  const mentionEdges = [];
   const connections = aggregateConnectionEdges([
     ...members.flatMap((entry) =>
       connectionObservations({
@@ -569,7 +566,6 @@ async function writeSyntheticGraph(parsed, now, aliases, denylist) {
         participantOrigins,
       }),
     ),
-    ...mentionEdges,
   ]);
   const dataDir = path.join(SCALE_ROOT, "_data");
   await fs.mkdir(dataDir, { recursive: true });
@@ -600,11 +596,6 @@ async function writeSyntheticGraph(parsed, now, aliases, denylist) {
     generated_at: now,
     origins: originSignals,
   };
-  const mentionsDoc = {
-    schema_version: 1,
-    generated_at: now,
-    mention_count: 0,
-  };
   const blogrollsDoc = sparseCollectionDocument({
     generatedAt: now,
     key: "edges",
@@ -618,7 +609,6 @@ async function writeSyntheticGraph(parsed, now, aliases, denylist) {
     topics: semanticHash(topicsDoc),
     connections: semanticHash(connectionsDoc),
     blogrolls: semanticHash(blogrollsDoc),
-    mentions: semanticHash(mentionsDoc),
   };
   const manifest = buildDataManifest({ generatedAt: now, hashes });
 
@@ -628,7 +618,6 @@ async function writeSyntheticGraph(parsed, now, aliases, denylist) {
   await writeJSONAtomic(path.join(dataDir, "topics.json"), topicsDoc);
   await writeJSONAtomic(path.join(dataDir, "connections.json"), connectionsDoc);
   await writeJSONAtomic(path.join(dataDir, "blogrolls.json"), blogrollsDoc);
-  await writeJSONAtomic(path.join(dataDir, "mentions.json"), mentionsDoc);
   await writeJSONAtomic(path.join(dataDir, "data_manifest.json"), manifest);
   await buildViewProjections(SCALE_ROOT);
 
@@ -639,7 +628,6 @@ async function writeSyntheticGraph(parsed, now, aliases, denylist) {
     topicsDoc,
     connectionsDoc,
     blogrollsDoc,
-    mentionsDoc,
     manifest,
     members: members.length,
     items: contentItems.length,
@@ -669,7 +657,6 @@ async function validateGraph(graph) {
   assertSchema("topics", graph.topicsDoc, validators.topics);
   assertSchema("connections", graph.connectionsDoc, validators.connections);
   assertSchema("blogrolls", graph.blogrollsDoc, validators.blogrolls);
-  assertSchema("mentions", graph.mentionsDoc, validators.mentions);
   assertSchema("data_manifest", graph.manifest, validators.data_manifest);
 }
 

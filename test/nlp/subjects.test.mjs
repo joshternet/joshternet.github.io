@@ -1,7 +1,7 @@
 /**
  * Goal: Branch coverage for scripts/nlp/subjects.mjs, targeting previously
  * uncovered exports (mergeSubjects, buildTopicsHub, buildAllConnections,
- * normalizeMentionEdge, subjectsFromHtml article:section / topic-hub:page).
+ * subjectsFromHtml article:section / topic-hub:page).
  * All tests are offline — no network, no live data files as oracles.
  */
 import assert from "node:assert/strict";
@@ -349,9 +349,9 @@ test("buildTopicsHub: subject label falls back to slug when absent", () => {
   assert.equal(hub[0].label, "photography");
 });
 
-// ─── buildAllConnections (normalizeMentionEdge) ───────────────────────────────
+// ─── buildAllConnections (no Webmention mentionEdges) ─────────────────────────
 
-test("buildAllConnections: mention edge with relation=mention passes through unchanged", () => {
+test("buildAllConnections: ignores retired mentionEdges input", () => {
   const edges = buildAllConnections({
     participantOrigins: new Set(["https://a.example", "https://b.example"]),
     originLinks: [],
@@ -370,52 +370,27 @@ test("buildAllConnections: mention edge with relation=mention passes through unc
       },
     ],
   });
-  assert.ok(edges.some((e) => e.relation === "mention"));
+  assert.equal(edges.length, 0);
 });
 
-test("buildAllConnections: edge with non-mention relation gets normalized", () => {
-  // normalizeMentionEdge converts any other edge to mention shape
+test("buildAllConnections: ordinary participant links still create edges", () => {
   const edges = buildAllConnections({
     participantOrigins: new Set(["https://a.example", "https://b.example"]),
-    originLinks: [],
-    mentionEdges: [
+    originLinks: [
       {
-        from: "https://a.example",
-        to: "https://b.example",
-        relation: "webmention", // not 'mention' → normalized
-        href: "https://a.example/post",
-        source: "webmention",
+        origin: "https://a.example",
+        links: [{ href: "https://b.example/", text: "B site", rel: [] }],
       },
     ],
   });
-  const edge = edges.find((e) => e.from === "https://a.example");
-  assert.ok(edge);
-  assert.equal(edge.relation, "mention");
-  assert.equal(edge.directed, true);
-  assert.ok(Array.isArray(edge.evidence));
-  assert.equal(edge.evidence[0].class, "observed");
-  assert.equal(edge.evidence[0].source, "webmention");
-});
-
-test("buildAllConnections: normalizeMentionEdge fills optional fields with defaults", () => {
-  const edges = buildAllConnections({
-    participantOrigins: new Set(["https://a.example", "https://b.example"]),
-    originLinks: [],
-    mentionEdges: [
-      {
-        from: "https://a.example",
-        to: "https://b.example",
-        relation: "other",
-        href: "https://a.example/post",
-        // no via, source, text, rel, page
-      },
-    ],
-  });
-  const edge = edges[0];
-  assert.equal(edge.via, "");
-  assert.equal(edge.source, "webmention");
-  assert.equal(edge.text, "");
-  assert.deepEqual(edge.rel, []);
+  assert.ok(
+    edges.some(
+      (e) =>
+        e.from === "https://a.example" &&
+        e.to === "https://b.example" &&
+        e.relation !== "mention",
+    ),
+  );
 });
 
 // ─── splitDeclaredAndSignals ──────────────────────────────────────────────────
@@ -543,18 +518,14 @@ test("buildAllConnections: linkEdges from originLinks are included", () => {
   );
 });
 
-// ─── subjectsFromHtml: octo:octothorpes rel link (lines 70-74) ───────────────
+// ─── subjectsFromHtml: Octothorpes markup is not topic evidence ───────────────
 
-test("subjectsFromHtml: octo:octothorpes link adds octothorpe subject (lines 70-74)", () => {
-  // The octoRel while-loop body (L70-74) fires with this HTML
+test("subjectsFromHtml: octo:octothorpes link is not promoted to topic evidence", () => {
   const html = `<html><body>
     <a rel="octo:octothorpes" href="/~/photography">Photography</a>
   </body></html>`;
   const subjects = subjectsFromHtml(html, "https://a.example/post/");
-  const photo = subjects.find((s) => s.slug === "photography");
-  assert.ok(photo, "should find photography subject from octothorpe link");
-  // legacySourceName("octothorpe") → "octothorpe" → fires L190-191
-  assert.ok(photo.sources.includes("octothorpe"));
+  assert.equal(subjects.length, 0);
 });
 
 // ─── subjectsFromHtml: article:tag meta fires L80-81 and L186-187 ────────────
@@ -866,16 +837,13 @@ test("buildTopicsHub: page with no subject.sources fires (sources && sources[0])
 
 // ─── Additional branch coverage ───────────────────────────────────────────────
 
-// subjectsFromHtml: octothorpe href without /~/ fires || text (L72)
-test("subjectsFromHtml: octothorpe anchor href without /~/ fires || text (L72)", () => {
-  // href = "/tags/design" → /\/~\/([^/?#]+)/ doesn't match → undefined || text fires (L72)
+// subjectsFromHtml: Octothorpes markup without /~/ is still not topic evidence
+test("subjectsFromHtml: octothorpe anchor without /~/ is not topic evidence", () => {
   const html = `<html><body>
     <a rel="octo:octothorpes" href="/tags/design">Design</a>
   </body></html>`;
   const subjects = subjectsFromHtml(html, "https://a.example/post/");
-  // "Design" decoded from text → slug = "design"
-  const design = subjects.find((s) => s.slug === "design");
-  assert.ok(design, "expected design subject from text fallback");
+  assert.equal(subjects.length, 0);
 });
 
 // subjectsFromHtml: empty pageUrl fires ': []' (L168)

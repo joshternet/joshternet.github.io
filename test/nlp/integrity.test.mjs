@@ -184,7 +184,7 @@ test("declared topic-label sources qualify immediately", () => {
   assert.equal(isCommunityEligibleSource("microformat:p-category"), true);
   assert.equal(isCommunityEligibleSource("article:tag"), true);
   assert.equal(isCommunityEligibleSource("meta:keywords"), false);
-  assert.equal(isCommunityEligibleSource("octothorpe"), true);
+  assert.equal(isCommunityEligibleSource("octothorpe"), false);
   assert.equal(isCommunityEligibleSource("topic-hub:link"), true);
   assert.equal(isCommunityEligibleSource("topic-hub:page"), true);
   assert.equal(isCommunityEligibleSource("meta:description"), false);

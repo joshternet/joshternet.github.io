@@ -118,7 +118,6 @@ export function buildDataManifest(input) {
       topics: 1,
       connections: 1,
       blogrolls: 1,
-      mentions: 1,
     },
     extractors: {
       html: 1,
@@ -133,7 +132,6 @@ export function buildDataManifest(input) {
       topics: "https://joshternet.org/schemas/topics.schema.json",
       connections: "https://joshternet.org/schemas/connections.schema.json",
       blogrolls: "https://joshternet.org/schemas/blogrolls.schema.json",
-      mentions: "https://joshternet.org/schemas/mentions.schema.json",
       data_manifest: "https://joshternet.org/schemas/data-manifest.schema.json",
     },
     semantic_hashes: input.hashes,

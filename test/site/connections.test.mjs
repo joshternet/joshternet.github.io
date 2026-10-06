@@ -38,6 +38,12 @@ test("connections page is HTML-first and cross-linked", async () => {
   assert.match(page, /connections-topic__disclosure/);
   assert.match(page, /connections-site__column--topics/);
   assert.match(page, /overlap_count == 1/);
+  assert.match(page, /overlap_count > 0/);
+  assert.doesNotMatch(page, /No shared topics with other participants yet/);
+  assert.doesNotMatch(
+    page,
+    /No observed incoming bridges from other participants yet/,
+  );
   assert.doesNotMatch(page, /connections-topic__posts/);
   assert.match(styles, /\.connections-key__list \{[^}]*display:\s*flex/);
   assert.match(page, /data-connections-viewport/);
@@ -73,7 +79,27 @@ test("connections page is HTML-first and cross-linked", async () => {
   assert.match(page, /data-connection-keys/);
   assert.match(page, /width="576"/);
   assert.match(page, /connections-visible-rel/);
+  assert.match(page, /connections-page-label/);
+  assert.doesNotMatch(page, /\{\{\s*edge\.page\s*\|\s*escape\s*\}\}/);
+  assert.match(page, /linked from/);
+  assert.match(page, /source_title/);
+  assert.match(page, /Connected from[\s\S]*outbound-href\.html url=edge\.from/);
+  assert.doesNotMatch(
+    page,
+    /Connected from[\s\S]{0,800}assign kind_label = "linked to"/,
+  );
   assert.doesNotMatch(page, /rel=\{\{ edge\.rel/);
+
+  const pageLabel = await read("_includes/connections-page-label.html");
+  assert.match(pageLabel, /connections_page_label/);
+  assert.match(pageLabel, /site\.data\.content\.items/);
+  assert.match(pageLabel, /site\.data\.site_signals\.origins/);
+  assert.doesNotMatch(pageLabel, /connections_page_label = include\.url/);
+
+  const visibleRel = await read("_includes/connections-visible-rel.html");
+  assert.match(visibleRel, /octo:/);
+  assert.match(visibleRel, /noopener/);
+  assert.match(visibleRel, /noreferrer/);
   assert.match(page, /site\.data\.connections/);
   assert.match(page, /id="connections-bootstrap"/);
   assert.match(page, /connections-howto/);

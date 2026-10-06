@@ -16,9 +16,6 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
-webmention:
-  endpoint: "https://webmention.io/joshternet.org/webmention"
-
 defaults:
   - scope:
       path: ""
@@ -36,6 +33,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - CHANGELOG.md
   - LICENSE
   - LICENSING.md
   - THIRD_PARTY_LICENSES.md

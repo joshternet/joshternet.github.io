@@ -1,7 +1,7 @@
 /**
  * Goal & Constraints:
  * Observed participant relationships only (homepage-link, content-link,
- * blogroll, mention, reply-to, repost-of, syndication). No inferred friendship,
+ * blogroll, reply-to, repost-of, syndication). No inferred friendship,
  * no dual topic edges, no popularity. /.well-known/josh never creates a link.
  */
 
@@ -9,7 +9,7 @@ import { originFromHttpUrl } from "./blogroll.mjs";
 import { decodeHtmlEntities, normalizeText } from "./lib.mjs";
 
 /**
- * @typedef {'homepage-link' | 'content-link' | 'blogroll' | 'mention' | 'reply-to' | 'repost-of' | 'syndication'} ConnectionRelation
+ * @typedef {'homepage-link' | 'content-link' | 'blogroll' | 'reply-to' | 'repost-of' | 'syndication'} ConnectionRelation
  */
 
 /**
@@ -735,7 +735,6 @@ export function carryForwardConnectionEdges(previousEdges, fromOrigin) {
       relationRaw === "homepage-link" ||
       relationRaw === "content-link" ||
       relationRaw === "blogroll" ||
-      relationRaw === "mention" ||
       relationRaw === "reply-to" ||
       relationRaw === "repost-of" ||
       relationRaw === "syndication"

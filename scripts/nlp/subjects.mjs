@@ -63,16 +63,6 @@ export function subjectsFromHtml(html, pageUrl, options = {}) {
     add(match[1], "microformat:p-category", true);
   }
 
-  const octoRel =
-    /<a\b[^>]*rel=["'][^"']*octo:octothorpes[^"']*["'][^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
-
-  while ((match = octoRel.exec(html))) {
-    const href = match[1];
-    const text = normalizeExtractedText(match[2].replace(/<[^>]+>/g, " "));
-    const term = href.match(/\/~\/([^/?#]+)/)?.[1] || text;
-    add(decodeURIComponent(term), "octothorpe", true);
-  }
-
   const articleTag =
     /<meta\b[^>]*property=["']article:tag["'][^>]*content=["']([^"']+)["'][^>]*>/gi;
 
@@ -184,10 +174,6 @@ function legacySourceName(source) {
 
   if (source === "article:tag" || source.startsWith("meta:")) {
     return "meta";
-  }
-
-  if (source === "octothorpe") {
-    return "octothorpe";
   }
 
   if (source.startsWith("topic-hub")) {
@@ -437,12 +423,12 @@ export function buildTopicsHub(origins) {
 export { topicCollectionMarkdown } from "./communities.mjs";
 
 /**
- * Merges observed link + mention + blogroll relationships (no friend/topic edges).
+ * Merges observed link + blogroll relationships (no friend/topic edges).
+ * Connections come from ordinary crawled hyperlinks and approved blogrolls only.
  * @param {{
  *   participantOrigins: Set<string> | string[],
  *   originLinks: Array<{origin: string, links: Array<{href: string, text?: string, page?: string, rel?: string[], classNames?: string[]}>}>,
  *   originSubjects?: unknown,
- *   mentionEdges?: Array<Record<string, unknown>>,
  *   blogrollEdges?: Array<Record<string, unknown>>,
  * }} input
  * @returns {Array<Record<string, unknown>>}
@@ -461,44 +447,9 @@ export function buildAllConnections(input) {
     );
   }
 
-  const mentionEdges = Array.isArray(input.mentionEdges)
-    ? input.mentionEdges.map((edge) => normalizeMentionEdge(edge))
-    : [];
-
   const blogrollEdges = Array.isArray(input.blogrollEdges)
     ? input.blogrollEdges
     : [];
 
-  return sortConnectionEdges([...linkEdges, ...mentionEdges, ...blogrollEdges]);
-}
-
-/**
- * @param {Record<string, unknown>} edge
- * @returns {Record<string, unknown>}
- */
-function normalizeMentionEdge(edge) {
-  if (edge.relation === "mention") {
-    return edge;
-  }
-
-  return {
-    from: edge.from,
-    to: edge.to,
-    relation: "mention",
-    directed: true,
-    via: edge.via || "",
-    source: edge.source || "webmention",
-    href: edge.href,
-    text: edge.text || "",
-    rel: edge.rel || [],
-    page: edge.page || edge.href,
-    evidence: [
-      {
-        class: "observed",
-        source: "webmention",
-        page: edge.page || edge.href,
-        href: edge.href,
-      },
-    ],
-  };
+  return sortConnectionEdges([...linkEdges, ...blogrollEdges]);
 }

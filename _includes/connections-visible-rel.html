@@ -1,15 +1,24 @@
 {% comment %}
   Goal: Show publisher rel tokens in connection cards, never browser target
-  tokens such as noopener/noreferrer. Those stay on the <a> element.
+  tokens (noopener/noreferrer) or Octothorpes protocol tokens (octo:*).
+  Those may still exist on the observed <a>; they are not visitor UI.
 {% endcomment %}
 {% assign visible_rel = '' %}
 {% for token in include.rel %}
-  {% if token != 'noopener' and token != 'noreferrer' %}
+  {% assign rel_token = token | default: '' | strip | downcase %}
+  {% assign hide_rel = false %}
+  {% if rel_token == '' or rel_token == 'noopener' or rel_token == 'noreferrer' %}
+    {% assign hide_rel = true %}
+  {% endif %}
+  {% if rel_token contains 'octo:' %}
+    {% assign hide_rel = true %}
+  {% endif %}
+  {% unless hide_rel %}
     {% if visible_rel != '' %}
       {% assign visible_rel = visible_rel | append: ' ' %}
     {% endif %}
     {% assign visible_rel = visible_rel | append: token %}
-  {% endif %}
+  {% endunless %}
 {% endfor %}
 {% if visible_rel != '' %}
   · rel={{ visible_rel | escape }}
