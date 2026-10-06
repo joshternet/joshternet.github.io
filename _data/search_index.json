@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-05T16:18:43.645Z",
-  "document_count": 718,
+  "generated_at": "2026-10-06T07:36:04.558Z",
+  "document_count": 720,
   "documents": [
     {
       "type": "site",
@@ -131,6 +131,15 @@
     },
     {
       "type": "topic",
+      "title": "agents",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/agents/",
+      "topics": ["agents", "agents"]
+    },
+    {
+      "type": "topic",
       "title": "apple",
       "summary": "1 participating sites",
       "domain": "",
@@ -182,15 +191,6 @@
       "origin": "",
       "url": "/topics/ai-agents/",
       "topics": ["ai-agents", "ai agents"]
-    },
-    {
-      "type": "topic",
-      "title": "claude",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/claude/",
-      "topics": ["claude", "claude"]
     },
     {
       "type": "topic",
@@ -803,6 +803,15 @@
       "origin": "",
       "url": "/topics/place/",
       "topics": ["place", "place"]
+    },
+    {
+      "type": "topic",
+      "title": "almost",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/almost/",
+      "topics": ["almost", "almost"]
     },
     {
       "type": "topic",
@@ -1930,6 +1939,19 @@
       "published_at": "2024-03-11T00:00:00.000Z",
       "image": "",
       "image_origin": ""
+    },
+    {
+      "type": "content",
+      "title": "I created my own status page",
+      "summary": "",
+      "domain": "joshghent.com",
+      "origin": "https://joshghent.com",
+      "url": "https://joshghent.com/created-my-own-status-page/",
+      "topics": [],
+      "site_title": "Developer Musings",
+      "published_at": "2026-10-05T00:00:00.000Z",
+      "image": "https://joshghent.com/assets/images/uptime/status-page.png",
+      "image_origin": "https://joshghent.com"
     },
     {
       "type": "content",

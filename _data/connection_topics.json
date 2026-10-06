@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-05T16:18:43.645Z",
+  "generated_at": "2026-10-06T07:36:04.558Z",
   "overlap_count": 10,
   "pairs": [
     {
@@ -14,10 +14,6 @@
         {
           "slug": "building",
           "label": "building"
-        },
-        {
-          "slug": "claude",
-          "label": "claude"
         },
         {
           "slug": "engineering",
@@ -76,10 +72,6 @@
         {
           "slug": "changes",
           "label": "changes"
-        },
-        {
-          "slug": "claude",
-          "label": "claude"
         },
         {
           "slug": "design",
@@ -244,6 +236,10 @@
           "label": "agent"
         },
         {
+          "slug": "agents",
+          "label": "agents"
+        },
+        {
           "slug": "ai",
           "label": "ai"
         },
@@ -258,10 +254,6 @@
         {
           "slug": "career",
           "label": "career"
-        },
-        {
-          "slug": "claude",
-          "label": "claude"
         },
         {
           "slug": "email",
@@ -306,6 +298,10 @@
       "b": "https://www.joshcanhelp.com",
       "topics": [
         {
+          "slug": "agents",
+          "label": "agents"
+        },
+        {
           "slug": "ai",
           "label": "ai"
         },
@@ -341,6 +337,10 @@
       "a": "https://joshuamorris.info",
       "b": "https://www.joshcanhelp.com",
       "topics": [
+        {
+          "slug": "agents",
+          "label": "agents"
+        },
         {
           "slug": "ai",
           "label": "ai"
@@ -939,68 +939,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/20/science-fiction-and-technology-in-bpls-250/",
                   "title": "Science Fiction and Technology in BPL’s 250"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "claude",
-          "label": "claude",
-          "articles": [
-            {
-              "url": "https://joshghent.com/claude-migrated-me-off-authy/",
-              "title": "Claude migrated me off Authy"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Joshtronic",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/08/16/taught-robot-detect-joshes/",
-                  "title": "I taught a robot to detect Joshes"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
-                  "title": "How Much AI Slop Does It Take to Unslop the AI Slop?"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
-                  "title": "Claude Opus 5.5 Is Interesting Because It Keeps Working"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
-                  "title": "An AI Watermark Can't Tell You Whether Anyone Was Thinking"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/13/grok-4_6-makes-my-switch-away-from-claude-look-less-unusual/",
-                  "title": "Grok 4.6 Makes My Switch Away from Claude Look Less Unusual"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/02/more-than-one-ai-company-has-lost-control-of-a-cybersecurity-test/",
-                  "title": "More Than One AI Company Has Lost Control of a Cybersecurity Test"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/28/claude-discovered-weaknesses-in-cryptographic-algorithms/",
-                  "title": "Claude Discovered Weaknesses in Cryptographic Algorithms"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/28/artificial-intelligence-inherits-our-cultural-blind-spots/",
-                  "title": "Artificial Intelligence Inherits Our Cultural Blind Spots"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/25/context-engineering-has-to-evolve-with-the-model/",
-                  "title": "Context Engineering Has to Evolve with the Model"
                 }
               ]
             }
@@ -2160,6 +2098,68 @@
           ]
         },
         {
+          "slug": "agents",
+          "label": "agents",
+          "articles": [
+            {
+              "url": "https://joshtronic.com/2026/09/06/i-ran-my-agents-from-my-phone-for-two-weeks/",
+              "title": "I ran my agents from my phone for two weeks"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshcanhelp.com",
+              "domain": "www.joshcanhelp.com",
+              "title": "Josh Can Help",
+              "articles": [
+                {
+                  "url": "https://www.joshcanhelp.com/agentic-identity/",
+                  "title": "Do we need 'agentic identity'?"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/23/apple-finally-made-the-xcode-project-file-understandable/",
+                  "title": "Apple Finally Made the Xcode Project File Understandable"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/16/a-20-youtube-promotion-turned-into-a-118000-lesson-in-guardrails/",
+                  "title": "A $20 YouTube Promotion Turned Into a $118,000 Lesson in Guardrails"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
+                  "title": "AI Agents Found an Abandoned Wiki and Turned It Into a Message Board"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
+                  "title": "Terminal-Bench-Science Is Testing Agents on Actual Scientific Work"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/23/mcp-is-finally-becoming-boring-http-now-it-needs-real-agent-delegation/",
+                  "title": "MCP Is Finally Becoming Boring HTTP. Now It Needs Real Agent Delegation"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/06/prime-agent-can-improve-the-system-around-itself/",
+                  "title": "Prime Agent Can Improve the System Around Itself"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/flint-gives-ai-agents-a-better-way-to-create-charts/",
+                  "title": "Flint Gives AI Agents a Better Way to Create Charts"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/more-than-one-ai-company-has-lost-control-of-a-cybersecurity-test/",
+                  "title": "More Than One AI Company Has Lost Control of a Cybersecurity Test"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "ai",
           "label": "ai",
           "articles": [
@@ -2373,68 +2373,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/24/the-best-staff-engineering-work-often-starts-before-anyone-assigns-it/",
                   "title": "The Best Staff Engineering Work Often Starts Before Anyone Assigns It"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "claude",
-          "label": "claude",
-          "articles": [
-            {
-              "url": "https://joshtronic.com/2026/08/16/taught-robot-detect-joshes/",
-              "title": "I taught a robot to detect Joshes"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/claude-migrated-me-off-authy/",
-                  "title": "Claude migrated me off Authy"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
-                  "title": "How Much AI Slop Does It Take to Unslop the AI Slop?"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
-                  "title": "Claude Opus 5.5 Is Interesting Because It Keeps Working"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
-                  "title": "An AI Watermark Can't Tell You Whether Anyone Was Thinking"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/13/grok-4_6-makes-my-switch-away-from-claude-look-less-unusual/",
-                  "title": "Grok 4.6 Makes My Switch Away from Claude Look Less Unusual"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/02/more-than-one-ai-company-has-lost-control-of-a-cybersecurity-test/",
-                  "title": "More Than One AI Company Has Lost Control of a Cybersecurity Test"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/28/claude-discovered-weaknesses-in-cryptographic-algorithms/",
-                  "title": "Claude Discovered Weaknesses in Cryptographic Algorithms"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/28/artificial-intelligence-inherits-our-cultural-blind-spots/",
-                  "title": "Artificial Intelligence Inherits Our Cultural Blind Spots"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/25/context-engineering-has-to-evolve-with-the-model/",
-                  "title": "Context Engineering Has to Evolve with the Model"
                 }
               ]
             }
@@ -2980,6 +2918,68 @@
           ]
         },
         {
+          "slug": "agents",
+          "label": "agents",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/23/apple-finally-made-the-xcode-project-file-understandable/",
+              "title": "Apple Finally Made the Xcode Project File Understandable"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/16/a-20-youtube-promotion-turned-into-a-118000-lesson-in-guardrails/",
+              "title": "A $20 YouTube Promotion Turned Into a $118,000 Lesson in Guardrails"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
+              "title": "AI Agents Found an Abandoned Wiki and Turned It Into a Message Board"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
+              "title": "Terminal-Bench-Science Is Testing Agents on Actual Scientific Work"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/23/mcp-is-finally-becoming-boring-http-now-it-needs-real-agent-delegation/",
+              "title": "MCP Is Finally Becoming Boring HTTP. Now It Needs Real Agent Delegation"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/06/prime-agent-can-improve-the-system-around-itself/",
+              "title": "Prime Agent Can Improve the System Around Itself"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/02/flint-gives-ai-agents-a-better-way-to-create-charts/",
+              "title": "Flint Gives AI Agents a Better Way to Create Charts"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/02/more-than-one-ai-company-has-lost-control-of-a-cybersecurity-test/",
+              "title": "More Than One AI Company Has Lost Control of a Cybersecurity Test"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshcanhelp.com",
+              "domain": "www.joshcanhelp.com",
+              "title": "Josh Can Help",
+              "articles": [
+                {
+                  "url": "https://www.joshcanhelp.com/agentic-identity/",
+                  "title": "Do we need 'agentic identity'?"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Joshtronic",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/09/06/i-ran-my-agents-from-my-phone-for-two-weeks/",
+                  "title": "I ran my agents from my phone for two weeks"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "ai",
           "label": "ai",
           "articles": [
@@ -3492,68 +3492,6 @@
                 {
                   "url": "https://www.joshuabaker.com/work/?work=city-outdoor-media-city-outdoor-media-2021",
                   "title": "City Outdoor Media"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "claude",
-          "label": "claude",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
-              "title": "How Much AI Slop Does It Take to Unslop the AI Slop?"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
-              "title": "Claude Opus 5.5 Is Interesting Because It Keeps Working"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
-              "title": "An AI Watermark Can't Tell You Whether Anyone Was Thinking"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/13/grok-4_6-makes-my-switch-away-from-claude-look-less-unusual/",
-              "title": "Grok 4.6 Makes My Switch Away from Claude Look Less Unusual"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/02/more-than-one-ai-company-has-lost-control-of-a-cybersecurity-test/",
-              "title": "More Than One AI Company Has Lost Control of a Cybersecurity Test"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/07/28/claude-discovered-weaknesses-in-cryptographic-algorithms/",
-              "title": "Claude Discovered Weaknesses in Cryptographic Algorithms"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/07/28/artificial-intelligence-inherits-our-cultural-blind-spots/",
-              "title": "Artificial Intelligence Inherits Our Cultural Blind Spots"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/07/25/context-engineering-has-to-evolve-with-the-model/",
-              "title": "Context Engineering Has to Evolve with the Model"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/claude-migrated-me-off-authy/",
-                  "title": "Claude migrated me off Authy"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Joshtronic",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/08/16/taught-robot-detect-joshes/",
-                  "title": "I taught a robot to detect Joshes"
                 }
               ]
             }
@@ -5518,6 +5456,68 @@
     {
       "origin": "https://www.joshcanhelp.com",
       "topics": [
+        {
+          "slug": "agents",
+          "label": "agents",
+          "articles": [
+            {
+              "url": "https://www.joshcanhelp.com/agentic-identity/",
+              "title": "Do we need 'agentic identity'?"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Joshtronic",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/09/06/i-ran-my-agents-from-my-phone-for-two-weeks/",
+                  "title": "I ran my agents from my phone for two weeks"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/23/apple-finally-made-the-xcode-project-file-understandable/",
+                  "title": "Apple Finally Made the Xcode Project File Understandable"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/16/a-20-youtube-promotion-turned-into-a-118000-lesson-in-guardrails/",
+                  "title": "A $20 YouTube Promotion Turned Into a $118,000 Lesson in Guardrails"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
+                  "title": "AI Agents Found an Abandoned Wiki and Turned It Into a Message Board"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
+                  "title": "Terminal-Bench-Science Is Testing Agents on Actual Scientific Work"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/23/mcp-is-finally-becoming-boring-http-now-it-needs-real-agent-delegation/",
+                  "title": "MCP Is Finally Becoming Boring HTTP. Now It Needs Real Agent Delegation"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/06/prime-agent-can-improve-the-system-around-itself/",
+                  "title": "Prime Agent Can Improve the System Around Itself"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/flint-gives-ai-agents-a-better-way-to-create-charts/",
+                  "title": "Flint Gives AI Agents a Better Way to Create Charts"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/more-than-one-ai-company-has-lost-control-of-a-cybersecurity-test/",
+                  "title": "More Than One AI Company Has Lost Control of a Cybersecurity Test"
+                }
+              ]
+            }
+          ]
+        },
         {
           "slug": "ai",
           "label": "ai",

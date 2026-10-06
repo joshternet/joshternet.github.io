@@ -1,15 +1,30 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-06T00:52:19.881Z",
+  "generated_at": "2026-10-06T07:36:04.558Z",
   "participant_count": 6,
-  "community_count": 207,
-  "publication_count": 550,
+  "community_count": 208,
+  "publication_count": 551,
   "connection_count": 2,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
     "connection": "first edge after stable from, to, relation sort"
   },
   "fresh": [
+    {
+      "url": "https://joshghent.com/created-my-own-status-page/",
+      "title": "I created my own status page",
+      "summary": "",
+      "published_at": "2026-10-05T00:00:00.000Z",
+      "content_type": "article",
+      "language": "en",
+      "site_origin": "https://joshghent.com",
+      "site_title": "Developer Musings",
+      "domain": "joshghent.com",
+      "tags": [],
+      "neighborhoods": [],
+      "image": "https://joshghent.com/assets/images/uptime/status-page.png",
+      "image_origin": "https://joshghent.com"
+    },
     {
       "url": "https://joshtronic.com/2026/10/04/confessions-domain-hoarder/",
       "title": "Confessions of a Middle-Aged Domain Hoarder",
@@ -76,9 +91,9 @@
     }
   ],
   "neighborhood": {
-    "slug": "claude",
-    "label": "claude",
-    "member_count": 2
+    "slug": "postgres",
+    "label": "postgres",
+    "member_count": 1
   },
   "connection": {
     "from": "https://joshuamorris.info",

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-06T00:52:19.881Z",
+  "generated_at": "2026-10-06T07:36:04.558Z",
   "sites": [
     {
       "origin": "https://joshghent.com",
@@ -28,8 +28,16 @@
           "label": "agent"
         },
         {
+          "slug": "agents",
+          "label": "agents"
+        },
+        {
           "slug": "ai",
           "label": "ai"
+        },
+        {
+          "slug": "almost",
+          "label": "almost"
         },
         {
           "slug": "app",
@@ -62,10 +70,6 @@
         {
           "slug": "changes",
           "label": "changes"
-        },
-        {
-          "slug": "claude",
-          "label": "claude"
         },
         {
           "slug": "design",
@@ -180,7 +184,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-06T00:51:00.428Z"
+      "crawled_at": "2026-10-06T07:35:22.305Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -237,7 +241,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-06T00:51:00.428Z"
+      "crawled_at": "2026-10-06T07:35:22.305Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -485,7 +489,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-06T00:51:00.428Z"
+      "crawled_at": "2026-10-06T07:35:22.305Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -538,6 +542,10 @@
           "label": "agent"
         },
         {
+          "slug": "agents",
+          "label": "agents"
+        },
+        {
           "slug": "ai",
           "label": "ai"
         },
@@ -548,6 +556,10 @@
         {
           "slug": "ai-security",
           "label": "ai security"
+        },
+        {
+          "slug": "almost",
+          "label": "almost"
         },
         {
           "slug": "apple",
@@ -620,10 +632,6 @@
         {
           "slug": "civil-liberties",
           "label": "civil liberties"
-        },
-        {
-          "slug": "claude",
-          "label": "claude"
         },
         {
           "slug": "community",
@@ -1095,7 +1103,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-06T00:51:00.428Z"
+      "crawled_at": "2026-10-06T07:35:22.305Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -1333,7 +1341,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-06T00:51:00.428Z"
+      "crawled_at": "2026-10-06T07:35:22.305Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -1557,7 +1565,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-06T00:51:00.428Z",
+      "crawled_at": "2026-10-06T07:35:22.305Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 145,
