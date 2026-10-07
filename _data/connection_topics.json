@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-06T20:21:51.837Z",
+  "generated_at": "2026-10-07T00:43:42.939Z",
   "overlap_count": 10,
   "pairs": [
     {
@@ -252,6 +252,10 @@
           "label": "career"
         },
         {
+          "slug": "company",
+          "label": "company"
+        },
+        {
           "slug": "email",
           "label": "email"
         },
@@ -322,6 +326,10 @@
         {
           "slug": "ai",
           "label": "ai"
+        },
+        {
+          "slug": "company",
+          "label": "company"
         },
         {
           "slug": "money",
@@ -402,6 +410,10 @@
         {
           "slug": "city",
           "label": "city"
+        },
+        {
+          "slug": "company",
+          "label": "company"
         },
         {
           "slug": "consumer",
@@ -553,6 +565,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
+                  "title": "Maybe Someone Needs to Build Google Again"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
                   "title": "How Much AI Slop Does It Take to Unslop the AI Slop?"
                 },
@@ -579,10 +595,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
                   "title": "An AI Watermark Can't Tell You Whether Anyone Was Thinking"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
-                  "title": "The AI Industry Is Saying the Current Security Baseline Is Not Enough"
                 }
               ]
             }
@@ -832,6 +844,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
+                  "title": "Anthropic Is Trying to Give Claude a Moral Character"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
                   "title": "The Interesting Part of an AI Force Is What Comes After the Name"
                 },
@@ -888,10 +904,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/24/the-best-staff-engineering-work-often-starts-before-anyone-assigns-it/",
                   "title": "The Best Staff Engineering Work Often Starts Before Anyone Assigns It"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/22/walmart-is-finally-adding-apple-pay-after-more-than-a-decade-of-holding-out/",
-                  "title": "Walmart Is Finally Adding Apple Pay After More Than a Decade of Holding Out"
                 },
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/10/ransomware-gangs-learned-to-target-the-org-chart/",
@@ -1050,6 +1062,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
+                  "title": "Maybe Someone Needs to Build Google Again"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/09/13/an-online-book-club-across-our-own-websites/",
                   "title": "An Online Book Club Across Our Own Websites"
                 },
@@ -1060,10 +1076,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
                   "title": "Joshternet.org Is Live"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/22/i-may-have-accidentally-started-the-joshternet/",
-                  "title": "I May Have Accidentally Started the Joshternet"
                 }
               ]
             }
@@ -1216,6 +1228,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
+                  "title": "Maybe Someone Needs to Build Google Again"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
                   "title": "The Chromebook Support Story Is More Complicated Than the Headline"
                 },
@@ -1242,10 +1258,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/28/more-than-1100-ai-researchers-want-a-brake-pedal-not-a-pause/",
                   "title": "More than 1,100 AI Researchers Want a Brake Pedal, Not a Pause"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/26/grapheneos-is-getting-closer-to-having-hardware-built-for-its-requirements/",
-                  "title": "GrapheneOS Is Getting Closer to Having Hardware Built for Its Requirements"
                 }
               ]
             }
@@ -1340,10 +1352,6 @@
                   "title": "One Machine, Several Linux Kernels, No Hypervisor"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/08/21/terafab-is-more-interesting-than-its-100-million-square-foot-headline/",
-                  "title": "Terafab Is More Interesting Than Its 100-Million-Square-Foot Headline"
-                },
-                {
                   "url": "https://joshuamorris.info/notes/2026/08/17/the-next-moon-race-is-about-infrastructure-not-flags/",
                   "title": "The Next Moon Race Is About Infrastructure, Not Flags"
                 },
@@ -1354,6 +1362,10 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/05/ai-may-reduce-hiring-before-it-creates-more-work/",
                   "title": "AI May Reduce Hiring Before It Creates More Work"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/03/phantom-twist-hides-a-drone-with-motion-blur/",
+                  "title": "Phantom Twist Hides a Drone with Motion Blur"
                 }
               ]
             }
@@ -1518,16 +1530,12 @@
                   "title": "Headlong Gives a Persistent Agent an Inner Monologue"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/08/22/linus-torvalds-used-ai-to-debug-the-linux-kernel-but-he-had-to-keep-it-from-giving-up/",
-                  "title": "Linus Torvalds Used AI to Debug the Linux Kernel, but He Had to Keep It From Giving Up"
+                  "url": "https://joshuamorris.info/notes/2026/08/02/holocloth-turns-uploaded-artwork-into-interactive-holographic-fabric/",
+                  "title": "Holocloth Turns Uploaded Artwork into Interactive Holographic Fabric"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/08/22/decayfmt-is-not-a-self-destructing-file-format-but-i-like-the-idea/",
-                  "title": "decayfmt Is Not a Self-Destructing File Format, but I Like the Idea"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/21/the-real-homeos-risk-is-not-homebridge-it-is-what-apple-does-with-hap/",
-                  "title": "The Real homeOS Risk Is Not Homebridge. It Is What Apple Does With HAP."
+                  "url": "https://joshuamorris.info/notes/2026/07/19/what-open-source-doesnt-show/",
+                  "title": "What Open Source Doesn’t Show"
                 }
               ]
             }
@@ -1560,6 +1568,14 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
+                  "title": "A Federal Judge Finally Called Flock What It Is"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
+                  "title": "The Chromebook Support Story Is More Complicated Than the Headline"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/09/27/safe-not-safe-is-the-kind-of-developer-resource-i-want-more-of/",
                   "title": "Safe / Not Safe Is the Kind of Developer Resource I Want More Of"
                 },
@@ -1582,14 +1598,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/29/plugging-in-a-display-should-not-install-adware-on-my-computer/",
                   "title": "Plugging In a Display Should Not Install Adware on My Computer"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/22/walmart-is-finally-adding-apple-pay-after-more-than-a-decade-of-holding-out/",
-                  "title": "Walmart Is Finally Adding Apple Pay After More Than a Decade of Holding Out"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/22/the-grapheneos-duress-password-case-is-becoming-a-test-of-whether-privacy-can-be-treated-as-obstruction/",
-                  "title": "The GrapheneOS Duress Password Case Is Becoming a Test of Whether Privacy Can Be Treated as Obstruction"
                 }
               ]
             }
@@ -1661,6 +1669,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/09/09/ai-helped-turn-a-wechat-bug-into-a-zero-click-worm-in-about-a-week/",
+                  "title": "AI Helped Turn a WeChat Bug Into a Zero-Click Worm in About a Week"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
                   "title": "AI Agents Found an Abandoned Wiki and Turned It Into a Message Board"
                 },
@@ -1687,10 +1699,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/23/mcp-is-finally-becoming-boring-http-now-it-needs-real-agent-delegation/",
                   "title": "MCP Is Finally Becoming Boring HTTP. Now It Needs Real Agent Delegation"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/22/decayfmt-is-not-a-self-destructing-file-format-but-i-like-the-idea/",
-                  "title": "decayfmt Is Not a Self-Destructing File Format, but I Like the Idea"
                 }
               ]
             }
@@ -1767,10 +1775,6 @@
                   "title": "Columbia House Looks a Lot Like SaaS in Hindsight"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/08/22/decayfmt-is-not-a-self-destructing-file-format-but-i-like-the-idea/",
-                  "title": "decayfmt Is Not a Self-Destructing File Format, but I Like the Idea"
-                },
-                {
                   "url": "https://joshuamorris.info/notes/2026/08/09/code-was-never-the-hard-part-rewrites-the-history-of-programming/",
                   "title": "“Code Was Never the Hard Part” Rewrites the History of Programming"
                 },
@@ -1781,6 +1785,10 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/28/the-sockets-interface-quietly-connected-the-computing-world/",
                   "title": "The Sockets Interface Quietly Connected the Computing World"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/28/grapheneos-says-strong-mobile-security-is-legal-and-should-remain-that-way/",
+                  "title": "GrapheneOS Says Strong Mobile Security Is Legal and Should Remain That Way"
                 }
               ]
             }
@@ -2193,6 +2201,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
+                  "title": "Maybe Someone Needs to Build Google Again"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
                   "title": "How Much AI Slop Does It Take to Unslop the AI Slop?"
                 },
@@ -2219,10 +2231,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
                   "title": "An AI Watermark Can't Tell You Whether Anyone Was Thinking"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
-                  "title": "The AI Industry Is Saying the Current Security Baseline Is Not Enough"
                 }
               ]
             }
@@ -2297,6 +2305,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
+                  "title": "Anthropic Is Trying to Give Claude a Moral Character"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
                   "title": "The Interesting Part of an AI Force Is What Comes After the Name"
                 },
@@ -2338,6 +2350,60 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/24/the-best-staff-engineering-work-often-starts-before-anyone-assigns-it/",
                   "title": "The Best Staff Engineering Work Often Starts Before Anyone Assigns It"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "company",
+          "label": "company",
+          "articles": [
+            {
+              "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
+              "title": "Security Caveat: Locked out of my server while traveling"
+            },
+            {
+              "url": "https://joshtronic.com/2026/08/09/reverse-engineering-posthog-superday/",
+              "title": "Reverse Engineering a PostHog SuperDay"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=coors-brewing-company-training-platform-2008",
+                  "title": "Training Platform"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/05/electronic-arts-is-now-a-privately-owned-company/",
+                  "title": "Electronic Arts Is Now a Privately Owned Company"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/bmw-turned-its-customers-dashboards-into-advertising-space/",
+                  "title": "BMW Turned Its Customers’ Dashboards into Advertising Space"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/more-than-one-ai-company-has-lost-control-of-a-cybersecurity-test/",
+                  "title": "More Than One AI Company Has Lost Control of a Cybersecurity Test"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/25/google-used-to-be-the-company-everyone-wanted-sending-them-traffic/",
+                  "title": "Google Used to Be the Company Everyone Wanted Sending Them Traffic"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/19/what-open-source-doesnt-show/",
+                  "title": "What Open Source Doesn’t Show"
                 }
               ]
             }
@@ -2474,10 +2540,6 @@
                   "title": "One Machine, Several Linux Kernels, No Hypervisor"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/08/21/terafab-is-more-interesting-than-its-100-million-square-foot-headline/",
-                  "title": "Terafab Is More Interesting Than Its 100-Million-Square-Foot Headline"
-                },
-                {
                   "url": "https://joshuamorris.info/notes/2026/08/17/the-next-moon-race-is-about-infrastructure-not-flags/",
                   "title": "The Next Moon Race Is About Infrastructure, Not Flags"
                 },
@@ -2488,6 +2550,10 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/05/ai-may-reduce-hiring-before-it-creates-more-work/",
                   "title": "AI May Reduce Hiring Before It Creates More Work"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/03/phantom-twist-hides-a-drone-with-motion-blur/",
+                  "title": "Phantom Twist Hides a Drone with Motion Blur"
                 }
               ]
             }
@@ -2707,16 +2773,12 @@
                   "title": "Headlong Gives a Persistent Agent an Inner Monologue"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/08/22/linus-torvalds-used-ai-to-debug-the-linux-kernel-but-he-had-to-keep-it-from-giving-up/",
-                  "title": "Linus Torvalds Used AI to Debug the Linux Kernel, but He Had to Keep It From Giving Up"
+                  "url": "https://joshuamorris.info/notes/2026/08/02/holocloth-turns-uploaded-artwork-into-interactive-holographic-fabric/",
+                  "title": "Holocloth Turns Uploaded Artwork into Interactive Holographic Fabric"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/08/22/decayfmt-is-not-a-self-destructing-file-format-but-i-like-the-idea/",
-                  "title": "decayfmt Is Not a Self-Destructing File Format, but I Like the Idea"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/21/the-real-homeos-risk-is-not-homebridge-it-is-what-apple-does-with-hap/",
-                  "title": "The Real homeOS Risk Is Not Homebridge. It Is What Apple Does With HAP."
+                  "url": "https://joshuamorris.info/notes/2026/07/19/what-open-source-doesnt-show/",
+                  "title": "What Open Source Doesn’t Show"
                 }
               ]
             }
@@ -2776,6 +2838,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/09/09/ai-helped-turn-a-wechat-bug-into-a-zero-click-worm-in-about-a-week/",
+                  "title": "AI Helped Turn a WeChat Bug Into a Zero-Click Worm in About a Week"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
                   "title": "AI Agents Found an Abandoned Wiki and Turned It Into a Message Board"
                 },
@@ -2802,10 +2868,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/23/mcp-is-finally-becoming-boring-http-now-it-needs-real-agent-delegation/",
                   "title": "MCP Is Finally Becoming Boring HTTP. Now It Needs Real Agent Delegation"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/22/decayfmt-is-not-a-self-destructing-file-format-but-i-like-the-idea/",
-                  "title": "decayfmt Is Not a Self-Destructing File Format, but I Like the Idea"
                 }
               ]
             }
@@ -2949,6 +3011,10 @@
           "label": "ai",
           "articles": [
             {
+              "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
+              "title": "Maybe Someone Needs to Build Google Again"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
               "title": "How Much AI Slop Does It Take to Unslop the AI Slop?"
             },
@@ -2975,10 +3041,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
               "title": "An AI Watermark Can't Tell You Whether Anyone Was Thinking"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
-              "title": "The AI Industry Is Saying the Current Security Baseline Is Not Enough"
             }
           ],
           "sites": [
@@ -3259,6 +3321,10 @@
           "label": "building",
           "articles": [
             {
+              "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
+              "title": "Anthropic Is Trying to Give Claude a Moral Character"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
               "title": "The Interesting Part of an AI Force Is What Comes After the Name"
             },
@@ -3330,10 +3396,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/08/24/the-best-staff-engineering-work-often-starts-before-anyone-assigns-it/",
               "title": "The Best Staff Engineering Work Often Starts Before Anyone Assigns It"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/22/walmart-is-finally-adding-apple-pay-after-more-than-a-decade-of-holding-out/",
-              "title": "Walmart Is Finally Adding Apple Pay After More Than a Decade of Holding Out"
             },
             {
               "url": "https://joshuamorris.info/notes/2026/08/10/ransomware-gangs-learned-to-target-the-org-chart/",
@@ -3463,6 +3525,60 @@
           ]
         },
         {
+          "slug": "company",
+          "label": "company",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/05/electronic-arts-is-now-a-privately-owned-company/",
+              "title": "Electronic Arts Is Now a Privately Owned Company"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/02/bmw-turned-its-customers-dashboards-into-advertising-space/",
+              "title": "BMW Turned Its Customers’ Dashboards into Advertising Space"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/02/more-than-one-ai-company-has-lost-control-of-a-cybersecurity-test/",
+              "title": "More Than One AI Company Has Lost Control of a Cybersecurity Test"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/25/google-used-to-be-the-company-everyone-wanted-sending-them-traffic/",
+              "title": "Google Used to Be the Company Everyone Wanted Sending Them Traffic"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/19/what-open-source-doesnt-show/",
+              "title": "What Open Source Doesn’t Show"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Joshtronic",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
+                  "title": "Security Caveat: Locked out of my server while traveling"
+                },
+                {
+                  "url": "https://joshtronic.com/2026/08/09/reverse-engineering-posthog-superday/",
+                  "title": "Reverse Engineering a PostHog SuperDay"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=coors-brewing-company-training-platform-2008",
+                  "title": "Training Platform"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "consumer",
           "label": "consumer",
           "articles": [
@@ -3514,6 +3630,10 @@
           "label": "data",
           "articles": [
             {
+              "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
+              "title": "A Federal Judge Finally Called Flock What It Is"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/08/09/six-more-employees-fired-for-abusing-flock-camera-data/",
               "title": "Six More Employees Fired for Abusing Flock Camera Data"
             },
@@ -3540,10 +3660,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/07/23/ai-is-consuming-the-web-it-depends-on/",
               "title": "AI Is Consuming the Web It Depends On"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/07/23/a-correct-query-can-still-answer-the-wrong-question/",
-              "title": "A Correct Query Can Still Answer the Wrong Question"
             }
           ],
           "sites": [
@@ -3667,6 +3783,10 @@
           "label": "discovery",
           "articles": [
             {
+              "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
+              "title": "Maybe Someone Needs to Build Google Again"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/09/13/an-online-book-club-across-our-own-websites/",
               "title": "An Online Book Club Across Our Own Websites"
             },
@@ -3677,10 +3797,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
               "title": "Joshternet.org Is Live"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/22/i-may-have-accidentally-started-the-joshternet/",
-              "title": "I May Have Accidentally Started the Joshternet"
             }
           ],
           "sites": [
@@ -3895,6 +4011,10 @@
           "label": "google",
           "articles": [
             {
+              "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
+              "title": "Maybe Someone Needs to Build Google Again"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
               "title": "The Chromebook Support Story Is More Complicated Than the Headline"
             },
@@ -3921,10 +4041,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/07/28/more-than-1100-ai-researchers-want-a-brake-pedal-not-a-pause/",
               "title": "More than 1,100 AI Researchers Want a Brake Pedal, Not a Pause"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/07/26/grapheneos-is-getting-closer-to-having-hardware-built-for-its-requirements/",
-              "title": "GrapheneOS Is Getting Closer to Having Hardware Built for Its Requirements"
             }
           ],
           "sites": [
@@ -4094,10 +4210,6 @@
               "title": "One Machine, Several Linux Kernels, No Hypervisor"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/08/21/terafab-is-more-interesting-than-its-100-million-square-foot-headline/",
-              "title": "Terafab Is More Interesting Than Its 100-Million-Square-Foot Headline"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/17/the-next-moon-race-is-about-infrastructure-not-flags/",
               "title": "The Next Moon Race Is About Infrastructure, Not Flags"
             },
@@ -4108,6 +4220,10 @@
             {
               "url": "https://joshuamorris.info/notes/2026/08/05/ai-may-reduce-hiring-before-it-creates-more-work/",
               "title": "AI May Reduce Hiring Before It Creates More Work"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/03/phantom-twist-hides-a-drone-with-motion-blur/",
+              "title": "Phantom Twist Hides a Drone with Motion Blur"
             }
           ],
           "sites": [
@@ -4483,16 +4599,12 @@
               "title": "Headlong Gives a Persistent Agent an Inner Monologue"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/08/22/linus-torvalds-used-ai-to-debug-the-linux-kernel-but-he-had-to-keep-it-from-giving-up/",
-              "title": "Linus Torvalds Used AI to Debug the Linux Kernel, but He Had to Keep It From Giving Up"
+              "url": "https://joshuamorris.info/notes/2026/08/02/holocloth-turns-uploaded-artwork-into-interactive-holographic-fabric/",
+              "title": "Holocloth Turns Uploaded Artwork into Interactive Holographic Fabric"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/08/22/decayfmt-is-not-a-self-destructing-file-format-but-i-like-the-idea/",
-              "title": "decayfmt Is Not a Self-Destructing File Format, but I Like the Idea"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/21/the-real-homeos-risk-is-not-homebridge-it-is-what-apple-does-with-hap/",
-              "title": "The Real homeOS Risk Is Not Homebridge. It Is What Apple Does With HAP."
+              "url": "https://joshuamorris.info/notes/2026/07/19/what-open-source-doesnt-show/",
+              "title": "What Open Source Doesn’t Show"
             }
           ],
           "sites": [
@@ -4611,6 +4723,14 @@
           "label": "privacy",
           "articles": [
             {
+              "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
+              "title": "A Federal Judge Finally Called Flock What It Is"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
+              "title": "The Chromebook Support Story Is More Complicated Than the Headline"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/09/27/safe-not-safe-is-the-kind-of-developer-resource-i-want-more-of/",
               "title": "Safe / Not Safe Is the Kind of Developer Resource I Want More Of"
             },
@@ -4633,14 +4753,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/08/29/plugging-in-a-display-should-not-install-adware-on-my-computer/",
               "title": "Plugging In a Display Should Not Install Adware on My Computer"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/22/walmart-is-finally-adding-apple-pay-after-more-than-a-decade-of-holding-out/",
-              "title": "Walmart Is Finally Adding Apple Pay After More Than a Decade of Holding Out"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/22/the-grapheneos-duress-password-case-is-becoming-a-test-of-whether-privacy-can-be-treated-as-obstruction/",
-              "title": "The GrapheneOS Duress Password Case Is Becoming a Test of Whether Privacy Can Be Treated as Obstruction"
             }
           ],
           "sites": [
@@ -4814,6 +4926,10 @@
           "label": "search",
           "articles": [
             {
+              "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
+              "title": "Maybe Someone Needs to Build Google Again"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/09/12/google-search-keeps-moving-away-from-the-web/",
               "title": "Google Search Keeps Moving Away From the Web"
             },
@@ -4857,6 +4973,10 @@
           "label": "security",
           "articles": [
             {
+              "url": "https://joshuamorris.info/notes/2026/09/09/ai-helped-turn-a-wechat-bug-into-a-zero-click-worm-in-about-a-week/",
+              "title": "AI Helped Turn a WeChat Bug Into a Zero-Click Worm in About a Week"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
               "title": "AI Agents Found an Abandoned Wiki and Turned It Into a Message Board"
             },
@@ -4883,10 +5003,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/08/23/mcp-is-finally-becoming-boring-http-now-it-needs-real-agent-delegation/",
               "title": "MCP Is Finally Becoming Boring HTTP. Now It Needs Real Agent Delegation"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/22/decayfmt-is-not-a-self-destructing-file-format-but-i-like-the-idea/",
-              "title": "decayfmt Is Not a Self-Destructing File Format, but I Like the Idea"
             }
           ],
           "sites": [
@@ -4958,10 +5074,6 @@
               "title": "Columbia House Looks a Lot Like SaaS in Hindsight"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/08/22/decayfmt-is-not-a-self-destructing-file-format-but-i-like-the-idea/",
-              "title": "decayfmt Is Not a Self-Destructing File Format, but I Like the Idea"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/09/code-was-never-the-hard-part-rewrites-the-history-of-programming/",
               "title": "“Code Was Never the Hard Part” Rewrites the History of Programming"
             },
@@ -4972,6 +5084,10 @@
             {
               "url": "https://joshuamorris.info/notes/2026/07/28/the-sockets-interface-quietly-connected-the-computing-world/",
               "title": "The Sockets Interface Quietly Connected the Computing World"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/28/grapheneos-says-strong-mobile-security-is-legal-and-should-remain-that-way/",
+              "title": "GrapheneOS Says Strong Mobile Security Is Legal and Should Remain That Way"
             }
           ],
           "sites": [
@@ -5521,6 +5637,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
+                  "title": "Maybe Someone Needs to Build Google Again"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
                   "title": "How Much AI Slop Does It Take to Unslop the AI Slop?"
                 },
@@ -5547,10 +5667,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
                   "title": "An AI Watermark Can't Tell You Whether Anyone Was Thinking"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
-                  "title": "The AI Industry Is Saying the Current Security Baseline Is Not Enough"
                 }
               ]
             }
@@ -5621,6 +5737,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
+                  "title": "Anthropic Is Trying to Give Claude a Moral Character"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
                   "title": "The Interesting Part of an AI Force Is What Comes After the Name"
                 },
@@ -5660,6 +5780,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
+                  "title": "A Federal Judge Finally Called Flock What It Is"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/08/09/six-more-employees-fired-for-abusing-flock-camera-data/",
                   "title": "Six More Employees Fired for Abusing Flock Camera Data"
                 },
@@ -5686,10 +5810,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/23/ai-is-consuming-the-web-it-depends-on/",
                   "title": "AI Is Consuming the Web It Depends On"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/23/a-correct-query-can-still-answer-the-wrong-question/",
-                  "title": "A Correct Query Can Still Answer the Wrong Question"
                 }
               ]
             }
@@ -5818,6 +5938,14 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
+                  "title": "A Federal Judge Finally Called Flock What It Is"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
+                  "title": "The Chromebook Support Story Is More Complicated Than the Headline"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/09/27/safe-not-safe-is-the-kind-of-developer-resource-i-want-more-of/",
                   "title": "Safe / Not Safe Is the Kind of Developer Resource I Want More Of"
                 },
@@ -5840,14 +5968,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/29/plugging-in-a-display-should-not-install-adware-on-my-computer/",
                   "title": "Plugging In a Display Should Not Install Adware on My Computer"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/22/walmart-is-finally-adding-apple-pay-after-more-than-a-decade-of-holding-out/",
-                  "title": "Walmart Is Finally Adding Apple Pay After More Than a Decade of Holding Out"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/22/the-grapheneos-duress-password-case-is-becoming-a-test-of-whether-privacy-can-be-treated-as-obstruction/",
-                  "title": "The GrapheneOS Duress Password Case Is Becoming a Test of Whether Privacy Can Be Treated as Obstruction"
                 }
               ]
             }
@@ -5924,10 +6044,6 @@
                   "title": "Columbia House Looks a Lot Like SaaS in Hindsight"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/08/22/decayfmt-is-not-a-self-destructing-file-format-but-i-like-the-idea/",
-                  "title": "decayfmt Is Not a Self-Destructing File Format, but I Like the Idea"
-                },
-                {
                   "url": "https://joshuamorris.info/notes/2026/08/09/code-was-never-the-hard-part-rewrites-the-history-of-programming/",
                   "title": "“Code Was Never the Hard Part” Rewrites the History of Programming"
                 },
@@ -5938,6 +6054,10 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/28/the-sockets-interface-quietly-connected-the-computing-world/",
                   "title": "The Sockets Interface Quietly Connected the Computing World"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/28/grapheneos-says-strong-mobile-security-is-legal-and-should-remain-that-way/",
+                  "title": "GrapheneOS Says Strong Mobile Security Is Legal and Should Remain That Way"
                 }
               ]
             }
@@ -6214,6 +6334,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
+                  "title": "Maybe Someone Needs to Build Google Again"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
                   "title": "How Much AI Slop Does It Take to Unslop the AI Slop?"
                 },
@@ -6240,10 +6364,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
                   "title": "An AI Watermark Can't Tell You Whether Anyone Was Thinking"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
-                  "title": "The AI Industry Is Saying the Current Security Baseline Is Not Enough"
                 }
               ]
             }
@@ -6350,10 +6470,6 @@
                   "title": "The Best Staff Engineering Work Often Starts Before Anyone Assigns It"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/08/22/walmart-is-finally-adding-apple-pay-after-more-than-a-decade-of-holding-out/",
-                  "title": "Walmart Is Finally Adding Apple Pay After More Than a Decade of Holding Out"
-                },
-                {
                   "url": "https://joshuamorris.info/notes/2026/08/10/ransomware-gangs-learned-to-target-the-org-chart/",
                   "title": "Ransomware Gangs Learned to Target the Org Chart"
                 },
@@ -6391,6 +6507,60 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/25/even-when-cities-want-flock-gone-getting-rid-of-it-isnt-always-easy/",
                   "title": "Even When Cities Want Flock Gone, Getting Rid of It Isn’t Always Easy"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "company",
+          "label": "company",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/?work=coors-brewing-company-training-platform-2008",
+              "title": "Training Platform"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Joshtronic",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
+                  "title": "Security Caveat: Locked out of my server while traveling"
+                },
+                {
+                  "url": "https://joshtronic.com/2026/08/09/reverse-engineering-posthog-superday/",
+                  "title": "Reverse Engineering a PostHog SuperDay"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/05/electronic-arts-is-now-a-privately-owned-company/",
+                  "title": "Electronic Arts Is Now a Privately Owned Company"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/bmw-turned-its-customers-dashboards-into-advertising-space/",
+                  "title": "BMW Turned Its Customers’ Dashboards into Advertising Space"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/more-than-one-ai-company-has-lost-control-of-a-cybersecurity-test/",
+                  "title": "More Than One AI Company Has Lost Control of a Cybersecurity Test"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/25/google-used-to-be-the-company-everyone-wanted-sending-them-traffic/",
+                  "title": "Google Used to Be the Company Everyone Wanted Sending Them Traffic"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/19/what-open-source-doesnt-show/",
+                  "title": "What Open Source Doesn’t Show"
                 }
               ]
             }
@@ -7071,6 +7241,10 @@
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
               "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
+                  "title": "Maybe Someone Needs to Build Google Again"
+                },
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/12/google-search-keeps-moving-away-from-the-web/",
                   "title": "Google Search Keeps Moving Away From the Web"

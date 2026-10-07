@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-06T20:20:38.881Z",
-  "community_count": 206,
+  "generated_at": "2026-10-07T00:42:51.529Z",
+  "community_count": 210,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
@@ -44,11 +44,6 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
               "title": "",
               "source": "visible-text"
@@ -65,6 +60,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
               "title": "",
               "source": "visible-text"
             }
@@ -116,11 +116,6 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/13/ai-is-making-code-cheap-it-is-making-judgment-more-valuable/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/20/voyagers-doctor-is-the-ai-future-i-hope-we-have-to-think-about/",
               "title": "",
               "source": "visible-text"
@@ -137,6 +132,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
               "title": "",
               "source": "visible-text"
             }
@@ -206,16 +206,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/21/terafab-is-more-interesting-than-its-100-million-square-foot-headline/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/22/linus-torvalds-used-ai-to-debug-the-linux-kernel-but-he-had-to-keep-it-from-giving-up/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/23/mcp-is-finally-becoming-boring-http-now-it-needs-real-agent-delegation/",
               "title": "",
               "source": "microformat:p-category"
@@ -242,6 +232,16 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/08/28/what-does-unlawful-mean-if-the-damage-happens-first/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
               "title": "",
               "source": "microformat:p-category"
             }
@@ -355,6 +355,35 @@
       "active": true
     },
     {
+      "slug": "ai-safety",
+      "label": "ai safety",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
+      "first_seen_at": "2026-10-07T00:42:51.529Z",
+      "last_changed_at": "2026-10-07T00:42:51.529Z",
+      "active": true
+    },
+    {
       "slug": "ai-security",
       "label": "ai security",
       "member_count": 1,
@@ -443,17 +472,7 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/28/a-satellite-that-breathes-the-atmosphere-trying-to-pull-it-down/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/29/the-internet-saw-a-few-seconds-and-invented-the-rest/",
+              "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
               "title": "",
               "source": "visible-text"
             },
@@ -464,6 +483,16 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/04/prop-39-would-ask-for-an-id-in-person-and-four-digits-on-a-mail-ballot/",
               "title": "",
               "source": "visible-text"
             }
@@ -497,6 +526,35 @@
       "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
+      "active": true
+    },
+    {
+      "slug": "antitrust",
+      "label": "antitrust",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
+      "first_seen_at": "2026-10-07T00:42:51.529Z",
+      "last_changed_at": "2026-10-07T00:42:51.529Z",
       "active": true
     },
     {
@@ -1177,27 +1235,27 @@
           "membership": "heuristic",
           "pages": [
             {
+              "url": "https://joshuamorris.info/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
               "url": "https://joshuamorris.info/about/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/09/25/worth-wandering-bartosz-ciechanowski/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/28/sometimes-i-dont-want-an-llm-to-answer-me/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
               "title": "",
               "source": "visible-text"
             }
@@ -1270,11 +1328,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/22/walmart-is-finally-adding-apple-pay-after-more-than-a-decade-of-holding-out/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/08/24/the-best-staff-engineering-work-often-starts-before-anyone-assigns-it/",
               "title": "",
@@ -1378,6 +1431,21 @@
               "source": "microformat:p-category"
             },
             {
+              "url": "https://joshuamorris.info/notes/2026/10/04/prop-39-would-ask-for-an-id-in-person-and-four-digits-on-a-mail-ballot/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/05/most-of-prop-1-is-a-loan-the-general-budget-pays-back-with-interest/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -1417,78 +1485,6 @@
       "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
-    },
-    {
-      "slug": "capacity",
-      "label": "capacity",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://joshghent.com",
-          "domain": "joshghent.com",
-          "title": "Developer Musings",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshghent.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/projects/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/work/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/15/the-fuel-crisis-is-exposing-how-little-spare-capacity-we-have-left/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/15/the-us-fuel-crisis-is-making-canadas-oil-more-valuable-than-ever/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/23/apple-finally-made-the-xcode-project-file-understandable/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["visible-text"],
-      "first_seen_at": "2026-10-04T15:32:37.678Z",
-      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -1612,27 +1608,27 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/28/a-satellite-that-breathes-the-atmosphere-trying-to-pull-it-down/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/29/the-internet-saw-a-few-seconds-and-invented-the-rest/",
+              "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
               "title": "",
               "source": "visible-text"
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/04/prop-39-would-ask-for-an-id-in-person-and-four-digits-on-a-mail-ballot/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
               "title": "",
               "source": "visible-text"
             }
@@ -1786,6 +1782,11 @@
               "source": "microformat:p-category"
             },
             {
+              "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -1933,6 +1934,73 @@
       ]
     },
     {
+      "slug": "company",
+      "label": "company",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshuabaker.com",
+          "domain": "www.joshuabaker.com",
+          "title": "Joshua Baker",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuabaker.com/work/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/not-optional/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/the-dots/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": ["visible-text"],
+      "first_seen_at": "2026-10-07T00:42:51.529Z",
+      "last_changed_at": "2026-10-07T00:42:51.529Z",
+      "active": true
+    },
+    {
       "slug": "computer-vision",
       "label": "computer vision",
       "member_count": 1,
@@ -1998,6 +2066,35 @@
       "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "active": true
+    },
+    {
+      "slug": "consciousness",
+      "label": "consciousness",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
+      "first_seen_at": "2026-10-07T00:42:51.529Z",
+      "last_changed_at": "2026-10-07T00:42:51.529Z",
       "active": true
     },
     {
@@ -2671,6 +2768,11 @@
               "source": "microformat:p-category"
             },
             {
+              "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -2726,17 +2828,17 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/22/i-may-have-accidentally-started-the-joshternet/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
               "title": "",
               "source": "microformat:p-category"
             },
             {
               "url": "https://joshuamorris.info/notes/2026/08/28/worth-wandering-ytoo/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
               "title": "",
               "source": "microformat:p-category"
             },
@@ -2823,11 +2925,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/21/terafab-is-more-interesting-than-its-100-million-square-foot-headline/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/30/prop-40-without-the-commercials-what-californias-billionaire-tax-actually-says/",
               "title": "",
               "source": "microformat:p-category"
@@ -2859,6 +2956,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/05/most-of-prop-1-is-a-loan-the-general-budget-pays-back-with-interest/",
               "title": "",
               "source": "microformat:p-category"
             }
@@ -3213,6 +3315,11 @@
               "source": "microformat:p-category"
             },
             {
+              "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -3240,16 +3347,11 @@
               "url": "https://joshuamorris.info/notes/2026/09/19/the-brain-may-have-two-developmental-origins-that-is-interesting-enough/",
               "title": "",
               "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
             }
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3661,6 +3763,11 @@
               "source": "microformat:p-category"
             },
             {
+              "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
               "title": "",
               "source": "microformat:p-category"
@@ -3693,11 +3800,6 @@
               "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
               "title": "",
               "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
             }
           ]
         },
@@ -3750,11 +3852,7 @@
           ]
         }
       ],
-      "sources": [
-        "microformat:p-category",
-        "portfolio:sector",
-        "topic-hub:link"
-      ],
+      "sources": ["microformat:p-category", "portfolio:sector"],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -3801,19 +3899,19 @@
               "source": "microformat:p-category"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
+              "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
               "title": "",
               "source": "microformat:p-category"
             },
             {
-              "url": "https://joshuamorris.info/topics/",
+              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
               "title": "",
-              "source": "topic-hub:link"
+              "source": "microformat:p-category"
             }
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4220,11 +4318,6 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
               "title": "",
               "source": "visible-text"
@@ -4236,6 +4329,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/09/26/having-regulations-is-not-the-same-thing-as-having-accountability/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
               "title": "",
               "source": "visible-text"
             },
@@ -4263,11 +4361,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/22/i-may-have-accidentally-started-the-joshternet/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
               "title": "",
@@ -4302,6 +4395,11 @@
               "url": "https://joshuamorris.info/notes/2026/09/11/worth-wandering-hundred-rabbits/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/12/google-search-keeps-moving-away-from-the-web/",
+              "title": "",
+              "source": "microformat:p-category"
             }
           ]
         }
@@ -4322,11 +4420,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/22/i-may-have-accidentally-started-the-joshternet/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
               "title": "",
@@ -4359,6 +4452,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/09/12/google-search-keeps-moving-away-from-the-web/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/13/an-online-book-club-across-our-own-websites/",
               "title": "",
               "source": "microformat:p-category"
             }
@@ -4426,11 +4524,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/21/terafab-is-more-interesting-than-its-100-million-square-foot-headline/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/30/one-machine-several-linux-kernels-no-hypervisor/",
               "title": "",
               "source": "microformat:p-category"
@@ -4483,16 +4576,11 @@
               "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
               "title": "",
               "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
             }
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4536,16 +4624,11 @@
               "url": "https://joshuamorris.info/notes/2026/09/25/worth-wandering-bartosz-ciechanowski/",
               "title": "",
               "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
             }
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -4596,11 +4679,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/21/the-real-homeos-risk-is-not-homebridge-it-is-what-apple-does-with-hap/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/29/plugging-in-a-display-should-not-install-adware-on-my-computer/",
               "title": "",
               "source": "microformat:p-category"
@@ -4629,16 +4707,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/21/the-real-homeos-risk-is-not-homebridge-it-is-what-apple-does-with-hap/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/22/walmart-is-finally-adding-apple-pay-after-more-than-a-decade-of-holding-out/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
               "title": "",
@@ -4693,8 +4761,7 @@
       "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-06T20:20:38.881Z",
-      "active": true,
-      "stale_since": "2026-10-06T20:20:38.881Z"
+      "active": true
     },
     {
       "slug": "javascript-typescript",
@@ -4963,11 +5030,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/22/linus-torvalds-used-ai-to-debug-the-linux-kernel-but-he-had-to-keep-it-from-giving-up/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/30/california-is-carving-linux-out-of-its-age-gating-law/",
               "title": "",
               "source": "microformat:p-category"
@@ -4988,8 +5050,7 @@
       "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-06T20:20:38.881Z",
-      "active": true,
-      "stale_since": "2026-10-06T20:20:38.881Z"
+      "active": true
     },
     {
       "slug": "llm",
@@ -5053,16 +5114,11 @@
               "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
               "title": "",
               "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
             }
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -5339,7 +5395,7 @@
     {
       "slug": "money",
       "label": "money",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://joshtronic.com",
@@ -5351,6 +5407,39 @@
               "url": "https://joshtronic.com/categories/",
               "title": "",
               "source": "topic-hub:link"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/05/most-of-prop-1-is-a-loan-the-general-budget-pays-back-with-interest/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
+              "title": "",
+              "source": "visible-text"
             }
           ]
         },
@@ -5368,9 +5457,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "topic-hub:page"],
+      "sources": ["topic-hub:link", "topic-hub:page", "visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-07T00:42:51.529Z",
       "active": true
     },
     {
@@ -5403,27 +5492,27 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
+              "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
+              "url": "https://joshuamorris.info/notes/2026/10/04/prop-39-would-ask-for-an-id-in-person-and-four-digits-on-a-mail-ballot/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
+              "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
+              "url": "https://joshuamorris.info/notes/2026/10/05/most-of-prop-1-is-a-loan-the-general-budget-pays-back-with-interest/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
+              "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
               "title": "",
               "source": "visible-text"
             }
@@ -5790,21 +5879,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/21/the-real-homeos-risk-is-not-homebridge-it-is-what-apple-does-with-hap/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/22/decayfmt-is-not-a-self-destructing-file-format-but-i-like-the-idea/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/22/linus-torvalds-used-ai-to-debug-the-linux-kernel-but-he-had-to-keep-it-from-giving-up/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/25/headlong-gives-a-persistent-agent-an-inner-monologue/",
               "title": "",
               "source": "microformat:p-category"
@@ -5828,6 +5902,11 @@
               "url": "https://joshuamorris.info/notes/2026/09/23/apple-finally-made-the-xcode-project-file-understandable/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         },
@@ -5848,6 +5927,7 @@
       "sources": [
         "catalog-match",
         "microformat:p-category",
+        "topic-hub:link",
         "topic-hub:page",
         "visible-text"
       ],
@@ -6062,13 +6142,47 @@
               "url": "https://joshuamorris.info/notes/2026/09/20/voyagers-doctor-is-the-ai-future-i-hope-we-have-to-think-about/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
+      "first_seen_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "active": true
+    },
+    {
+      "slug": "philosophy",
+      "label": "philosophy",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
+              "title": "",
+              "source": "microformat:p-category"
             }
           ]
         }
       ],
       "sources": ["microformat:p-category"],
-      "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "first_seen_at": "2026-10-07T00:42:51.529Z",
+      "last_changed_at": "2026-10-07T00:42:51.529Z",
       "active": true
     },
     {
@@ -6140,22 +6254,22 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
+              "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
               "title": "",
               "source": "visible-text"
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
               "title": "",
               "source": "visible-text"
             }
@@ -6299,16 +6413,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/21/the-real-homeos-risk-is-not-homebridge-it-is-what-apple-does-with-hap/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/22/walmart-is-finally-adding-apple-pay-after-more-than-a-decade-of-holding-out/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/29/plugging-in-a-display-should-not-install-adware-on-my-computer/",
               "title": "",
               "source": "microformat:p-category"
@@ -6335,6 +6439,16 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/09/27/safe-not-safe-is-the-kind-of-developer-resource-i-want-more-of/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
               "title": "",
               "source": "microformat:p-category"
             }
@@ -6486,11 +6600,6 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/20/voyagers-doctor-is-the-ai-future-i-hope-we-have-to-think-about/",
               "title": "",
               "source": "visible-text"
@@ -6502,6 +6611,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
               "title": "",
               "source": "visible-text"
             },
@@ -6691,14 +6805,19 @@
               "source": "microformat:p-category"
             },
             {
-              "url": "https://joshuamorris.info/topics/",
+              "url": "https://joshuamorris.info/notes/2026/10/04/prop-39-would-ask-for-an-id-in-person-and-four-digits-on-a-mail-ballot/",
               "title": "",
-              "source": "topic-hub:link"
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/05/most-of-prop-1-is-a-loan-the-general-budget-pays-back-with-interest/",
+              "title": "",
+              "source": "microformat:p-category"
             }
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -7089,6 +7208,16 @@
               "url": "https://joshuamorris.info/notes/2026/09/12/google-search-keeps-moving-away-from-the-web/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         },
@@ -7106,7 +7235,7 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category"],
+      "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-05T16:17:44.426Z",
       "active": true
@@ -7173,11 +7302,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/22/decayfmt-is-not-a-self-destructing-file-format-but-i-like-the-idea/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/23/mcp-is-finally-becoming-boring-http-now-it-needs-real-agent-delegation/",
               "title": "",
               "source": "microformat:p-category"
@@ -7209,6 +7333,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/09/ai-helped-turn-a-wechat-bug-into-a-zero-click-worm-in-about-a-week/",
               "title": "",
               "source": "microformat:p-category"
             }
@@ -7430,11 +7559,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/22/decayfmt-is-not-a-self-destructing-file-format-but-i-like-the-idea/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/25/columbia-house-looks-a-lot-like-saas-in-hindsight/",
               "title": "",
               "source": "microformat:p-category"
@@ -7598,11 +7722,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/21/terafab-is-more-interesting-than-its-100-million-square-foot-headline/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/30/spacelabs-128-kb-of-ram-was-more-than-a-million-tiny-ferrite-rings/",
               "title": "",
               "source": "microformat:p-category"
@@ -7708,6 +7827,11 @@
               "source": "microformat:p-category"
             },
             {
+              "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -7774,17 +7898,12 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/28/a-satellite-that-breathes-the-atmosphere-trying-to-pull-it-down/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/28/sometimes-i-dont-want-an-llm-to-answer-me/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
               "title": "",
               "source": "visible-text"
             },
@@ -7795,6 +7914,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
               "title": "",
               "source": "visible-text"
             }
@@ -8174,27 +8298,27 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/28/a-satellite-that-breathes-the-atmosphere-trying-to-pull-it-down/",
+              "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/09/28/sometimes-i-dont-want-an-llm-to-answer-me/",
+              "url": "https://joshuamorris.info/notes/2026/10/04/prop-39-would-ask-for-an-id-in-person-and-four-digits-on-a-mail-ballot/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
+              "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
+              "url": "https://joshuamorris.info/notes/2026/10/05/most-of-prop-1-is-a-loan-the-general-budget-pays-back-with-interest/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
+              "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
               "title": "",
               "source": "visible-text"
             }
@@ -8638,17 +8762,17 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
               "title": "",
               "source": "visible-text"
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/04/prop-39-would-ask-for-an-id-in-person-and-four-digits-on-a-mail-ballot/",
               "title": "",
               "source": "visible-text"
             }

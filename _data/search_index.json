@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-06T20:21:51.837Z",
-  "document_count": 719,
+  "generated_at": "2026-10-07T00:43:42.939Z",
+  "document_count": 730,
   "documents": [
     {
       "type": "site",
@@ -158,15 +158,6 @@
     },
     {
       "type": "topic",
-      "title": "infrastructure",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/infrastructure/",
-      "topics": ["infrastructure", "infrastructure"]
-    },
-    {
-      "type": "topic",
       "title": "property",
       "summary": "2 participating sites",
       "domain": "",
@@ -182,6 +173,15 @@
       "origin": "",
       "url": "/topics/agent/",
       "topics": ["agent", "agent"]
+    },
+    {
+      "type": "topic",
+      "title": "infrastructure",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/infrastructure/",
+      "topics": ["infrastructure", "infrastructure"]
     },
     {
       "type": "topic",
@@ -203,12 +203,12 @@
     },
     {
       "type": "topic",
-      "title": "open source",
-      "summary": "3 participating sites",
+      "title": "data",
+      "summary": "2 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/open-source/",
-      "topics": ["open-source", "open source"]
+      "url": "/topics/data/",
+      "topics": ["data", "data"]
     },
     {
       "type": "topic",
@@ -248,12 +248,12 @@
     },
     {
       "type": "topic",
-      "title": "data",
+      "title": "google",
       "summary": "2 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/data/",
-      "topics": ["data", "data"]
+      "url": "/topics/google/",
+      "topics": ["google", "google"]
     },
     {
       "type": "topic",
@@ -266,15 +266,6 @@
     },
     {
       "type": "topic",
-      "title": "business",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/business/",
-      "topics": ["business", "business"]
-    },
-    {
-      "type": "topic",
       "title": "life",
       "summary": "3 participating sites",
       "domain": "",
@@ -284,21 +275,21 @@
     },
     {
       "type": "topic",
-      "title": "google",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/google/",
-      "topics": ["google", "google"]
-    },
-    {
-      "type": "topic",
       "title": "writing",
       "summary": "2 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/writing/",
       "topics": ["writing", "writing"]
+    },
+    {
+      "type": "topic",
+      "title": "independent web",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/independent-web/",
+      "topics": ["independent-web", "independent web"]
     },
     {
       "type": "topic",
@@ -326,6 +317,24 @@
       "origin": "",
       "url": "/topics/app/",
       "topics": ["app", "app"]
+    },
+    {
+      "type": "topic",
+      "title": "business",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/business/",
+      "topics": ["business", "business"]
+    },
+    {
+      "type": "topic",
+      "title": "open source",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/open-source/",
+      "topics": ["open-source", "open source"]
     },
     {
       "type": "topic",
@@ -365,12 +374,21 @@
     },
     {
       "type": "topic",
-      "title": "independent web",
-      "summary": "1 participating sites",
+      "title": "building",
+      "summary": "4 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/independent-web/",
-      "topics": ["independent-web", "independent web"]
+      "url": "/topics/building/",
+      "topics": ["building", "building"]
+    },
+    {
+      "type": "topic",
+      "title": "company",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/company/",
+      "topics": ["company", "company"]
     },
     {
       "type": "topic",
@@ -401,6 +419,24 @@
     },
     {
       "type": "topic",
+      "title": "search",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/search/",
+      "topics": ["search", "search"]
+    },
+    {
+      "type": "topic",
+      "title": "government ethics",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/government-ethics/",
+      "topics": ["government-ethics", "government ethics"]
+    },
+    {
+      "type": "topic",
       "title": "indieweb",
       "summary": "1 participating sites",
       "domain": "",
@@ -410,12 +446,12 @@
     },
     {
       "type": "topic",
-      "title": "building",
-      "summary": "4 participating sites",
+      "title": "public systems",
+      "summary": "1 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/building/",
-      "topics": ["building", "building"]
+      "url": "/topics/public-systems/",
+      "topics": ["public-systems", "public systems"]
     },
     {
       "type": "topic",
@@ -437,15 +473,6 @@
     },
     {
       "type": "topic",
-      "title": "search",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/search/",
-      "topics": ["search", "search"]
-    },
-    {
-      "type": "topic",
       "title": "united states",
       "summary": "2 participating sites",
       "domain": "",
@@ -455,12 +482,12 @@
     },
     {
       "type": "topic",
-      "title": "government ethics",
+      "title": "california ballot 2026",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/government-ethics/",
-      "topics": ["government-ethics", "government ethics"]
+      "url": "/topics/california-ballot-2026/",
+      "topics": ["california-ballot-2026", "california ballot 2026"]
     },
     {
       "type": "topic",
@@ -470,6 +497,15 @@
       "origin": "",
       "url": "/topics/space/",
       "topics": ["space", "space"]
+    },
+    {
+      "type": "topic",
+      "title": "surveillance",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/surveillance/",
+      "topics": ["surveillance", "surveillance"]
     },
     {
       "type": "topic",
@@ -536,24 +572,6 @@
     },
     {
       "type": "topic",
-      "title": "public systems",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/public-systems/",
-      "topics": ["public-systems", "public systems"]
-    },
-    {
-      "type": "topic",
-      "title": "surveillance",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/surveillance/",
-      "topics": ["surveillance", "surveillance"]
-    },
-    {
-      "type": "topic",
       "title": "discovery",
       "summary": "2 participating sites",
       "domain": "",
@@ -590,21 +608,21 @@
     },
     {
       "type": "topic",
-      "title": "capacity",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/capacity/",
-      "topics": ["capacity", "capacity"]
-    },
-    {
-      "type": "topic",
       "title": "communications & pr",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/communications-pr/",
       "topics": ["communications-pr", "communications & pr"]
+    },
+    {
+      "type": "topic",
+      "title": "digital rights",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/digital-rights/",
+      "topics": ["digital-rights", "digital rights"]
     },
     {
       "type": "topic",
@@ -623,15 +641,6 @@
       "origin": "",
       "url": "/topics/independent/",
       "topics": ["independent", "independent"]
-    },
-    {
-      "type": "topic",
-      "title": "interoperability",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/interoperability/",
-      "topics": ["interoperability", "interoperability"]
     },
     {
       "type": "topic",
@@ -725,30 +734,12 @@
     },
     {
       "type": "topic",
-      "title": "california ballot 2026",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/california-ballot-2026/",
-      "topics": ["california-ballot-2026", "california ballot 2026"]
-    },
-    {
-      "type": "topic",
       "title": "community",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/community/",
       "topics": ["community", "community"]
-    },
-    {
-      "type": "topic",
-      "title": "digital rights",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/digital-rights/",
-      "topics": ["digital-rights", "digital rights"]
     },
     {
       "type": "topic",
@@ -815,6 +806,15 @@
     },
     {
       "type": "topic",
+      "title": "civil liberties",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/civil-liberties/",
+      "topics": ["civil-liberties", "civil liberties"]
+    },
+    {
+      "type": "topic",
       "title": "computing history",
       "summary": "1 participating sites",
       "domain": "",
@@ -830,6 +830,15 @@
       "origin": "",
       "url": "/topics/data-brokers/",
       "topics": ["data-brokers", "data brokers"]
+    },
+    {
+      "type": "topic",
+      "title": "interoperability",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/interoperability/",
+      "topics": ["interoperability", "interoperability"]
     },
     {
       "type": "topic",
@@ -866,15 +875,6 @@
       "origin": "",
       "url": "/topics/scientific-evidence/",
       "topics": ["scientific-evidence", "scientific evidence"]
-    },
-    {
-      "type": "topic",
-      "title": "space exploration",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/space-exploration/",
-      "topics": ["space-exploration", "space exploration"]
     },
     {
       "type": "topic",
@@ -959,15 +959,6 @@
     },
     {
       "type": "topic",
-      "title": "civil liberties",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/civil-liberties/",
-      "topics": ["civil-liberties", "civil liberties"]
-    },
-    {
-      "type": "topic",
       "title": "css",
       "summary": "1 participating sites",
       "domain": "",
@@ -983,6 +974,15 @@
       "origin": "",
       "url": "/topics/developer-tools/",
       "topics": ["developer-tools", "developer tools"]
+    },
+    {
+      "type": "topic",
+      "title": "ethics",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/ethics/",
+      "topics": ["ethics", "ethics"]
     },
     {
       "type": "topic",
@@ -1013,15 +1013,6 @@
     },
     {
       "type": "topic",
-      "title": "internet of things",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/internet-of-things/",
-      "topics": ["internet-of-things", "internet of things"]
-    },
-    {
-      "type": "topic",
       "title": "lego",
       "summary": "1 participating sites",
       "domain": "",
@@ -1049,6 +1040,15 @@
     },
     {
       "type": "topic",
+      "title": "personhood",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/personhood/",
+      "topics": ["personhood", "personhood"]
+    },
+    {
+      "type": "topic",
       "title": "resilience",
       "summary": "1 participating sites",
       "domain": "",
@@ -1064,6 +1064,15 @@
       "origin": "",
       "url": "/topics/reward-hacking/",
       "topics": ["reward-hacking", "reward hacking"]
+    },
+    {
+      "type": "topic",
+      "title": "space exploration",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/space-exploration/",
+      "topics": ["space-exploration", "space exploration"]
     },
     {
       "type": "topic",
@@ -1103,12 +1112,30 @@
     },
     {
       "type": "topic",
+      "title": "ai safety",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/ai-safety/",
+      "topics": ["ai-safety", "ai safety"]
+    },
+    {
+      "type": "topic",
       "title": "analytics",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/analytics/",
       "topics": ["analytics", "analytics"]
+    },
+    {
+      "type": "topic",
+      "title": "antitrust",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/antitrust/",
+      "topics": ["antitrust", "antitrust"]
     },
     {
       "type": "topic",
@@ -1145,6 +1172,15 @@
       "origin": "",
       "url": "/topics/computer-vision/",
       "topics": ["computer-vision", "computer vision"]
+    },
+    {
+      "type": "topic",
+      "title": "consciousness",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/consciousness/",
+      "topics": ["consciousness", "consciousness"]
     },
     {
       "type": "topic",
@@ -1193,15 +1229,6 @@
     },
     {
       "type": "topic",
-      "title": "ethics",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/ethics/",
-      "topics": ["ethics", "ethics"]
-    },
-    {
-      "type": "topic",
       "title": "facebook",
       "summary": "1 participating sites",
       "domain": "",
@@ -1244,6 +1271,15 @@
       "origin": "",
       "url": "/topics/interactive-essays/",
       "topics": ["interactive-essays", "interactive essays"]
+    },
+    {
+      "type": "topic",
+      "title": "internet of things",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/internet-of-things/",
+      "topics": ["internet-of-things", "internet of things"]
     },
     {
       "type": "topic",
@@ -1337,12 +1373,12 @@
     },
     {
       "type": "topic",
-      "title": "personhood",
+      "title": "philosophy",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/personhood/",
-      "topics": ["personhood", "personhood"]
+      "url": "/topics/philosophy/",
+      "topics": ["philosophy", "philosophy"]
     },
     {
       "type": "topic",
@@ -3666,6 +3702,19 @@
     },
     {
       "type": "content",
+      "title": "Spark",
+      "summary": "You're alone in the dark with only a few matches left.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spark/",
+      "topics": [],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-02T00:00:00.000Z",
+      "image": "",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
       "title": "A Website That Moves With the Day",
       "summary": "A personal site can gradually change with the visitor’s day—personality and experimentation in the interface, not only utility or static branding.",
       "domain": "joshuamorris.info",
@@ -5738,7 +5787,7 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/08/21/terafab-is-more-interesting-than-its-100-million-square-foot-headline/",
-      "topics": ["ai", "economics", "infrastructure", "space exploration"],
+      "topics": [],
       "site_title": "Joshua Morris",
       "published_at": "2026-08-21T19:05:00.000Z",
       "image": "",
@@ -5751,12 +5800,7 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/08/21/the-real-homeos-risk-is-not-homebridge-it-is-what-apple-does-with-hap/",
-      "topics": [
-        "internet of things",
-        "interoperability",
-        "open source",
-        "privacy"
-      ],
+      "topics": [],
       "site_title": "Joshua Morris",
       "published_at": "2026-08-21T19:08:00.000Z",
       "image": "",
@@ -5782,7 +5826,7 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/08/22/decayfmt-is-not-a-self-destructing-file-format-but-i-like-the-idea/",
-      "topics": ["open source", "security", "software"],
+      "topics": [],
       "site_title": "Joshua Morris",
       "published_at": "2026-08-22T03:00:00.000Z",
       "image": "",
@@ -5795,7 +5839,7 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/08/22/i-may-have-accidentally-started-the-joshternet/",
-      "topics": ["discovery", "independent web", "indieweb"],
+      "topics": [],
       "site_title": "Joshua Morris",
       "published_at": "2026-08-22T20:09:00.000Z",
       "image": "",
@@ -5808,7 +5852,7 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/08/22/linus-torvalds-used-ai-to-debug-the-linux-kernel-but-he-had-to-keep-it-from-giving-up/",
-      "topics": ["ai", "linux", "open source"],
+      "topics": [],
       "site_title": "Joshua Morris",
       "published_at": "2026-08-22T17:30:00.000Z",
       "image": "",
@@ -5834,7 +5878,7 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/08/22/walmart-is-finally-adding-apple-pay-after-more-than-a-decade-of-holding-out/",
-      "topics": ["business", "interoperability", "privacy"],
+      "topics": [],
       "site_title": "Joshua Morris",
       "published_at": "2026-08-22T06:02:00.000Z",
       "image": "",
@@ -6211,7 +6255,7 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
-      "topics": ["education", "writing"],
+      "topics": ["ai", "education", "writing"],
       "site_title": "Joshua Morris",
       "published_at": "2026-09-06T23:36:00.000Z",
       "image": "",
@@ -6250,7 +6294,7 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
-      "topics": ["ai agents", "ai security", "security"],
+      "topics": ["ai", "ai agents", "ai security", "security"],
       "site_title": "Joshua Morris",
       "published_at": "2026-09-09T19:37:00.000Z",
       "image": "",
@@ -6263,7 +6307,7 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/09/09/ai-helped-turn-a-wechat-bug-into-a-zero-click-worm-in-about-a-week/",
-      "topics": ["ai agents", "ai security", "software"],
+      "topics": ["ai agents", "ai security", "security", "software"],
       "site_title": "Joshua Morris",
       "published_at": "2026-09-09T23:59:00.000Z",
       "image": "",
@@ -6386,7 +6430,13 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/09/12/google-search-keeps-moving-away-from-the-web/",
-      "topics": ["google", "indieweb", "internet culture", "search"],
+      "topics": [
+        "google",
+        "independent web",
+        "indieweb",
+        "internet culture",
+        "search"
+      ],
       "site_title": "Joshua Morris",
       "published_at": "2026-09-12T13:42:00.000Z",
       "image": "",
@@ -6412,7 +6462,7 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/09/13/an-online-book-club-across-our-own-websites/",
-      "topics": ["books", "online book club"],
+      "topics": ["books", "indieweb", "online book club"],
       "site_title": "Joshua Morris",
       "published_at": "2026-09-13T06:22:00.000Z",
       "image": "",
@@ -6723,6 +6773,19 @@
     },
     {
       "type": "content",
+      "title": "Maybe Someone Needs to Build Google Again",
+      "summary": "Judge Mehta dismissed publisher suits over AI Overviews. The harder question is whether search should still send us to the weird web.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
+      "topics": ["antitrust", "discovery", "google", "search"],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-01T15:00:00.000Z",
+      "image": "",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
       "title": "The Chromebook Support Story Is More Complicated Than the Headline",
       "summary": "Google will keep ChromeOS updates through mid-2034 while moving many devices to Googlebook OS. That is not the ten years of ChromeOS advertised since 2023.",
       "domain": "joshuamorris.info",
@@ -6733,6 +6796,7 @@
         "education",
         "google",
         "lock in",
+        "privacy",
         "schools",
         "technology"
       ],
@@ -6794,6 +6858,25 @@
     },
     {
       "type": "content",
+      "title": "A Federal Judge Finally Called Flock What It Is",
+      "summary": "Judge Sara Hill called Flock-style ALPR history indiscriminate mass surveillance and suppressed a warrantless month of travel data.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
+      "topics": [
+        "civil liberties",
+        "digital rights",
+        "government ethics",
+        "privacy",
+        "surveillance"
+      ],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-03T17:04:00.000Z",
+      "image": "",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
       "title": "Prop. 42 is about a tax on owning savings, not the tax on income they earn",
       "summary": "Proposition 42 would forbid a new state tax on owning personal property, including retirement accounts, and would limit taxes that reach backward.",
       "domain": "joshuamorris.info",
@@ -6807,6 +6890,64 @@
       ],
       "site_title": "Joshua Morris",
       "published_at": "2026-10-03T09:00:00.000Z",
+      "image": "",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
+      "title": "Prop. 39 would ask for an ID in person, and four digits on a mail ballot",
+      "summary": "Proposition 39 adds an identification check every time someone votes, a match on the mail envelope, and a best-effort citizenship review of the rolls.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/notes/2026/10/04/prop-39-would-ask-for-an-id-in-person-and-four-digits-on-a-mail-ballot/",
+      "topics": ["california ballot 2026", "public systems"],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-04T09:00:00.000Z",
+      "image": "",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
+      "title": "Anthropic Is Trying to Give Claude a Moral Character",
+      "summary": "Anthropic is building Claude a moral character with scholars and a constitution, while staying uncertain about consciousness.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
+      "topics": [
+        "ai safety",
+        "consciousness",
+        "ethics",
+        "personhood",
+        "philosophy"
+      ],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-05T00:27:00.000Z",
+      "image": "",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
+      "title": "Most of Prop. 1 is a loan the general budget pays back, with interest",
+      "summary": "Proposition 1 authorizes $11.25 billion in housing bonds. Ten billion is repaid from the General Fund. The veterans' piece is repaid by the veterans.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/notes/2026/10/05/most-of-prop-1-is-a-loan-the-general-budget-pays-back-with-interest/",
+      "topics": ["california ballot 2026", "economics", "public systems"],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-05T09:00:00.000Z",
+      "image": "",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
+      "title": "Prop. 3 would keep a high-income tax that is already being collected",
+      "summary": "Proposition 3 would make California's existing extra tax rates on high incomes permanent instead of letting them expire.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
+      "topics": ["california ballot 2026"],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-06T09:00:00.000Z",
       "image": "",
       "image_origin": ""
     },

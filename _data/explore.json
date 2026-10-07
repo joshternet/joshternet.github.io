@@ -1,15 +1,40 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-06T20:21:51.837Z",
+  "generated_at": "2026-10-07T00:43:42.939Z",
   "participant_count": 6,
-  "community_count": 206,
-  "publication_count": 552,
+  "community_count": 210,
+  "publication_count": 559,
   "connection_count": 2,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
     "connection": "first edge after stable from, to, relation sort"
   },
   "fresh": [
+    {
+      "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
+      "title": "Prop. 3 would keep a high-income tax that is already being collected",
+      "summary": "Proposition 3 would make California's existing extra tax rates on high incomes permanent instead of letting them expire.",
+      "published_at": "2026-10-06T09:00:00.000Z",
+      "content_type": "article",
+      "language": "en",
+      "site_origin": "https://joshuamorris.info",
+      "site_title": "Joshua Morris",
+      "domain": "joshuamorris.info",
+      "tags": [
+        {
+          "slug": "california-ballot-2026",
+          "label": "california ballot 2026"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "california-ballot-2026",
+          "label": "california ballot 2026"
+        }
+      ],
+      "image": "",
+      "image_origin": ""
+    },
     {
       "url": "https://joshghent.com/ring-e2ee/",
       "title": "Ring is deliberately nefarious when you E2E encrypt your video",
@@ -39,60 +64,11 @@
       "neighborhoods": [],
       "image": "",
       "image_origin": ""
-    },
-    {
-      "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
-      "title": "Prop. 42 is about a tax on owning savings, not the tax on income they earn",
-      "summary": "Proposition 42 would forbid a new state tax on owning personal property, including retirement accounts, and would limit taxes that reach backward.",
-      "published_at": "2026-10-03T09:00:00.000Z",
-      "content_type": "article",
-      "language": "en",
-      "site_origin": "https://joshuamorris.info",
-      "site_title": "Joshua Morris",
-      "domain": "joshuamorris.info",
-      "tags": [
-        {
-          "slug": "california-ballot-2026",
-          "label": "california ballot 2026"
-        },
-        {
-          "slug": "economics",
-          "label": "economics"
-        },
-        {
-          "slug": "government-ethics",
-          "label": "government ethics"
-        },
-        {
-          "slug": "public-systems",
-          "label": "public systems"
-        }
-      ],
-      "neighborhoods": [
-        {
-          "slug": "california-ballot-2026",
-          "label": "california ballot 2026"
-        },
-        {
-          "slug": "economics",
-          "label": "economics"
-        },
-        {
-          "slug": "government-ethics",
-          "label": "government ethics"
-        },
-        {
-          "slug": "public-systems",
-          "label": "public systems"
-        }
-      ],
-      "image": "",
-      "image_origin": ""
     }
   ],
   "neighborhood": {
-    "slug": "personal-data",
-    "label": "personal data",
+    "slug": "recruitment",
+    "label": "recruitment",
     "member_count": 1
   },
   "connection": {

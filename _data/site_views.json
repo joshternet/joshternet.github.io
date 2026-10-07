@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-06T20:21:51.837Z",
+  "generated_at": "2026-10-07T00:43:42.939Z",
   "sites": [
     {
       "origin": "https://joshghent.com",
@@ -62,10 +62,6 @@
         {
           "slug": "business",
           "label": "business"
-        },
-        {
-          "slug": "capacity",
-          "label": "capacity"
         },
         {
           "slug": "changes",
@@ -168,7 +164,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-06T20:20:38.881Z"
+      "crawled_at": "2026-10-07T00:42:51.529Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -225,7 +221,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-06T20:20:38.881Z"
+      "crawled_at": "2026-10-07T00:42:51.529Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -473,7 +469,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-06T20:20:38.881Z"
+      "crawled_at": "2026-10-07T00:42:51.529Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -538,12 +534,20 @@
           "label": "ai agents"
         },
         {
+          "slug": "ai-safety",
+          "label": "ai safety"
+        },
+        {
           "slug": "ai-security",
           "label": "ai security"
         },
         {
           "slug": "almost",
           "label": "almost"
+        },
+        {
+          "slug": "antitrust",
+          "label": "antitrust"
         },
         {
           "slug": "apple",
@@ -594,10 +598,6 @@
           "label": "canada"
         },
         {
-          "slug": "capacity",
-          "label": "capacity"
-        },
-        {
           "slug": "career",
           "label": "career"
         },
@@ -622,12 +622,20 @@
           "label": "community"
         },
         {
+          "slug": "company",
+          "label": "company"
+        },
+        {
           "slug": "computer-vision",
           "label": "computer vision"
         },
         {
           "slug": "computing-history",
           "label": "computing history"
+        },
+        {
+          "slug": "consciousness",
+          "label": "consciousness"
         },
         {
           "slug": "consumer-protection",
@@ -810,6 +818,10 @@
           "label": "mentorship"
         },
         {
+          "slug": "money",
+          "label": "money"
+        },
+        {
           "slug": "network",
           "label": "network"
         },
@@ -852,6 +864,10 @@
         {
           "slug": "personhood",
           "label": "personhood"
+        },
+        {
+          "slug": "philosophy",
+          "label": "philosophy"
         },
         {
           "slug": "place",
@@ -1083,7 +1099,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-06T20:20:38.881Z"
+      "crawled_at": "2026-10-07T00:42:51.529Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -1321,7 +1337,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-06T20:20:38.881Z"
+      "crawled_at": "2026-10-07T00:42:51.529Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -1397,6 +1413,10 @@
         {
           "slug": "communications-pr",
           "label": "communications & pr"
+        },
+        {
+          "slug": "company",
+          "label": "company"
         },
         {
           "slug": "consumer",
@@ -1541,7 +1561,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-06T20:20:38.881Z",
+      "crawled_at": "2026-10-07T00:42:51.529Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 145,
