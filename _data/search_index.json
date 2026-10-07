@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-07T00:43:42.939Z",
-  "document_count": 730,
+  "generated_at": "2026-10-07T07:16:31.691Z",
+  "document_count": 731,
   "documents": [
     {
       "type": "site",
@@ -590,15 +590,6 @@
     },
     {
       "type": "topic",
-      "title": "ai security",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/ai-security/",
-      "topics": ["ai-security", "ai security"]
-    },
-    {
-      "type": "topic",
       "title": "arts & culture",
       "summary": "1 participating sites",
       "domain": "",
@@ -722,6 +713,15 @@
       "origin": "",
       "url": "/topics/write/",
       "topics": ["write", "write"]
+    },
+    {
+      "type": "topic",
+      "title": "ai security",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/ai-security/",
+      "topics": ["ai-security", "ai security"]
     },
     {
       "type": "topic",
@@ -3689,6 +3689,19 @@
     },
     {
       "type": "content",
+      "title": "Fake",
+      "summary": "A normal verification flow, until it isn’t.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/experiments/weird-web-october-2026/fake/",
+      "topics": [],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-03T00:00:00.000Z",
+      "image": "",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
       "title": "Reveal",
       "summary": "Think of a question, then turn.",
       "domain": "joshuamorris.info",
@@ -5891,7 +5904,7 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/08/23/mcp-is-finally-becoming-boring-http-now-it-needs-real-agent-delegation/",
-      "topics": ["ai", "ai agents", "ai security", "security"],
+      "topics": [],
       "site_title": "Joshua Morris",
       "published_at": "2026-08-23T18:31:00.000Z",
       "image": "",
@@ -6307,7 +6320,7 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/09/09/ai-helped-turn-a-wechat-bug-into-a-zero-click-worm-in-about-a-week/",
-      "topics": ["ai agents", "ai security", "security", "software"],
+      "topics": ["ai", "ai agents", "ai security", "security", "software"],
       "site_title": "Joshua Morris",
       "published_at": "2026-09-09T23:59:00.000Z",
       "image": "",
@@ -6378,7 +6391,13 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/09/10/apples-new-watch-is-listening-but-it-is-not-recording-everything/",
-      "topics": ["hardware", "privacy", "surveillance", "wearable ai"],
+      "topics": [
+        "hardware",
+        "privacy",
+        "security",
+        "surveillance",
+        "wearable ai"
+      ],
       "site_title": "Joshua Morris",
       "published_at": "2026-09-10T15:35:00.000Z",
       "image": "",
@@ -6752,7 +6771,7 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
-      "topics": ["llm", "programming", "technical debt"],
+      "topics": ["ai agents", "llm", "programming", "technical debt"],
       "site_title": "Joshua Morris",
       "published_at": "2026-09-29T12:25:00.000Z",
       "image": "",
