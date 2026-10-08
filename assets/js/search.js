@@ -83,7 +83,10 @@
 
     let media = "";
 
-    if (image.startsWith("https://")) {
+    if (
+      image.startsWith("https://") ||
+      image.startsWith("/assets/activity/posters/")
+    ) {
       let mediaAttrs = `class="activity-card__media" href="${escapeHTML(outboundHrefValue)}" tabindex="-1" aria-hidden="true"`;
 
       if (external) {

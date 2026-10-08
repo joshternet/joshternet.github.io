@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-07T00:43:42.939Z",
+  "generated_at": "2026-10-08T03:59:00.601Z",
   "sites": [
     {
       "origin": "https://joshghent.com",
@@ -36,14 +36,6 @@
           "label": "ai"
         },
         {
-          "slug": "almost",
-          "label": "almost"
-        },
-        {
-          "slug": "app",
-          "label": "app"
-        },
-        {
           "slug": "architecture",
           "label": "architecture"
         },
@@ -56,16 +48,12 @@
           "label": "books"
         },
         {
-          "slug": "building",
-          "label": "building"
-        },
-        {
           "slug": "business",
           "label": "business"
         },
         {
-          "slug": "changes",
-          "label": "changes"
+          "slug": "capacity",
+          "label": "capacity"
         },
         {
           "slug": "design",
@@ -104,10 +92,6 @@
           "label": "open source"
         },
         {
-          "slug": "place",
-          "label": "place"
-        },
-        {
           "slug": "privacy",
           "label": "privacy"
         },
@@ -124,14 +108,6 @@
           "label": "software"
         },
         {
-          "slug": "use",
-          "label": "use"
-        },
-        {
-          "slug": "write",
-          "label": "write"
-        },
-        {
           "slug": "writing",
           "label": "writing"
         },
@@ -143,7 +119,7 @@
       "recent_content": {
         "url": "https://joshghent.com/11ty-or-bust/",
         "title": "11ty or Bust",
-        "summary": "",
+        "summary": "The story of how I migrated my site from Gatsby to 11ty",
         "published_at": "2024-01-03T00:00:00.000Z",
         "content_type": "article",
         "language": "en",
@@ -152,8 +128,8 @@
         "domain": "joshghent.com",
         "tags": [],
         "neighborhoods": [],
-        "image": "",
-        "image_origin": ""
+        "image": "https://v1.screenshot.11ty.dev/https%3A%2F%2Fjoshghent.com%2Fsocial%2F11ty-or-bust%2F/opengraph/_1791312060801",
+        "image_origin": "https://v1.screenshot.11ty.dev"
       },
       "outgoing": [],
       "incoming": [],
@@ -164,7 +140,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-07T00:42:51.529Z"
+      "crawled_at": "2026-10-08T03:57:41.433Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -221,7 +197,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-07T00:42:51.529Z"
+      "crawled_at": "2026-10-08T03:57:41.433Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -400,10 +376,6 @@
           "label": "sql"
         },
         {
-          "slug": "technical",
-          "label": "technical"
-        },
-        {
           "slug": "technology",
           "label": "technology"
         },
@@ -469,7 +441,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-07T00:42:51.529Z"
+      "crawled_at": "2026-10-08T03:57:41.433Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -542,10 +514,6 @@
           "label": "ai security"
         },
         {
-          "slug": "almost",
-          "label": "almost"
-        },
-        {
           "slug": "antitrust",
           "label": "antitrust"
         },
@@ -582,10 +550,6 @@
           "label": "browsers"
         },
         {
-          "slug": "building",
-          "label": "building"
-        },
-        {
           "slug": "business",
           "label": "business"
         },
@@ -598,16 +562,16 @@
           "label": "canada"
         },
         {
+          "slug": "capacity",
+          "label": "capacity"
+        },
+        {
           "slug": "career",
           "label": "career"
         },
         {
           "slug": "cars",
           "label": "cars"
-        },
-        {
-          "slug": "changes",
-          "label": "changes"
         },
         {
           "slug": "chromebooks",
@@ -870,10 +834,6 @@
           "label": "philosophy"
         },
         {
-          "slug": "place",
-          "label": "place"
-        },
-        {
           "slug": "postgres",
           "label": "postgres"
         },
@@ -994,10 +954,6 @@
           "label": "surveillance"
         },
         {
-          "slug": "technical",
-          "label": "technical"
-        },
-        {
           "slug": "technical-debt",
           "label": "technical debt"
         },
@@ -1012,10 +968,6 @@
         {
           "slug": "united-states",
           "label": "united states"
-        },
-        {
-          "slug": "use",
-          "label": "use"
         },
         {
           "slug": "user-experience",
@@ -1044,10 +996,6 @@
         {
           "slug": "workplace",
           "label": "workplace"
-        },
-        {
-          "slug": "write",
-          "label": "write"
         },
         {
           "slug": "writing",
@@ -1099,7 +1047,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-07T00:42:51.529Z"
+      "crawled_at": "2026-10-08T03:57:41.433Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -1325,7 +1273,7 @@
         "domain": "www.joshcanhelp.com",
         "tags": [],
         "neighborhoods": [],
-        "image": "",
+        "image": "/assets/activity/posters/49f4c342fe2daee21aa6a6396bd4de1aec2a45464a48416f5f701cb11ff727cb.webp",
         "image_origin": ""
       },
       "outgoing": [],
@@ -1337,7 +1285,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-07T00:42:51.529Z"
+      "crawled_at": "2026-10-08T03:57:41.433Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -1379,10 +1327,6 @@
           "label": "ai"
         },
         {
-          "slug": "app",
-          "label": "app"
-        },
-        {
           "slug": "apple",
           "label": "apple"
         },
@@ -1393,10 +1337,6 @@
         {
           "slug": "banking",
           "label": "banking"
-        },
-        {
-          "slug": "building",
-          "label": "building"
         },
         {
           "slug": "business",
@@ -1561,7 +1501,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-07T00:42:51.529Z",
+      "crawled_at": "2026-10-08T03:57:41.433Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 145,

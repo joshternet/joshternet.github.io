@@ -321,6 +321,7 @@ jobs:
             topics/
             assets/network/joshternet.opml
             assets/network/sites/
+            assets/activity/posters/
 
   publish:
     name: Publish generated network
@@ -431,6 +432,15 @@ jobs:
               assets/network/sites/
           fi
 
+          rm -rf assets/activity/posters
+          mkdir -p assets/activity/posters
+
+          if [ -d .network-sync-output/assets/activity/posters ]; then
+            cp -R \
+              .network-sync-output/assets/activity/posters/. \
+              assets/activity/posters/
+          fi
+
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
@@ -466,7 +476,8 @@ jobs:
             _data/search_index.json \
             topics \
             assets/network/joshternet.opml \
-            assets/network/sites
+            assets/network/sites \
+            assets/activity/posters
 
           if git diff --cached --quiet; then
             echo "Network data is already current."

@@ -3,11 +3,10 @@ layout: default
 title: Platform recipes for /.well-known/josh
 description: >-
   Tested, non-normative recipes for publishing a Joshternet /.well-known/josh
-  declaration on common independent-web platforms such as Eleventy, Ghost, and
-  Jekyll.
+  declaration on independent-web site software.
 keywords: >-
-  /.well-known/josh, platform recipes, Eleventy, Ghost, Jekyll, Joshternet
-  declaration
+  /.well-known/josh, platform recipes, Astro, Eleventy, Ghost, Hugo, Jekyll,
+  Next.js, Nuxt, SvelteKit, WordPress, Joshternet declaration
 seo:
   type: CollectionPage
   name: Platforms
@@ -17,7 +16,7 @@ nav_title: Platforms
 
 # Platforms
 
-Recipes for publishing `/.well-known/josh`.
+Recipes for publishing the well-known josh file on your favorite web platform.
 
 <ul class="platforms-list">
 {% for platform in site.data.platforms_nav %}

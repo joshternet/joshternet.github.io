@@ -43,6 +43,7 @@ exclude:
   - scripts
   - test
   - workers
+  - docs
 
 seed_nominations:
   api_origin: "https://joshternet-seed-nominations.joshternet.workers.dev"

@@ -160,6 +160,10 @@
       defer
       src="{{ '/assets/js/outbound-referrer.js' | relative_url }}?v={{ asset_version }}"
     ></script>
+    <script
+      defer
+      src="{{ '/assets/js/activity-card.js' | relative_url }}?v={{ asset_version }}"
+    ></script>
 
     {% if page.script %}
       <script defer src="{{ page.script | relative_url }}?v={{ asset_version }}"></script>

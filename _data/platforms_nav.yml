@@ -1,12 +1,30 @@
 # Platform-specific /.well-known/josh recipes under /implement/platforms/.
 # Add a page here after the recipe has been tested. Do not put these in
 # implement_nav.yml — that row stays a single Platforms link.
+- title: Astro
+  path: /implement/platforms/astro/
+  summary: copies public/.well-known/josh into dist/
 - title: Eleventy
   path: /implement/platforms/eleventy/
-  summary: publishes josh.json at /.well-known/josh
+  summary: copies josh.json to /.well-known/josh with addPassthroughCopy
 - title: Ghost
   path: /implement/platforms/ghost/
   summary: serves /.well-known/josh at the reverse-proxy layer
+- title: Hugo
+  path: /implement/platforms/hugo/
+  summary: publishes static/.well-known/josh into public/
 - title: Jekyll
   path: /implement/platforms/jekyll/
   summary: publishes .well-known/josh after including that directory
+- title: Next.js
+  path: /implement/platforms/nextjs/
+  summary: serves public/.well-known/josh (including static export)
+- title: Nuxt
+  path: /implement/platforms/nuxt/
+  summary: copies public/.well-known/josh into Nuxt 4 generate output
+- title: SvelteKit
+  path: /implement/platforms/sveltekit/
+  summary: copies static/.well-known/josh with adapter-static
+- title: WordPress
+  path: /implement/platforms/wordpress/
+  summary: Joshternet plugin serves /.well-known/josh

@@ -126,7 +126,7 @@ Check the status, content type, and JSON body. You can also paste the file, or a
 
 These recipes are non-normative. [RFC-JOSH-0002][rfc-0002] remains authoritative. Tested site software recipes live under [Platforms](/implement/platforms/), so the file layout, build step, host headers, and deployment check for each platform stay together without crowding the Implement nav.
 
-- [Platforms](/implement/platforms/) — Eleventy, Jekyll, and later recipes for popular independent-web software.
+- [Platforms](/implement/platforms/) — tested site-software recipes for publishing `/.well-known/josh`.
 - [Buttons](/implement/buttons/) embed the registry membership state on independent sites.
 - [Connections](/implement/connections/) describes the build-time crawl that gathers Connections and Topics from Network sites.
 - [Explore](/implement/explore/) describes presentation projections for What's New, Topics, and Search.
