@@ -1,12 +1,20 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-08T06:19:07.917Z",
+  "generated_at": "2026-10-08T07:26:12.391Z",
   "overlap_count": 10,
   "pairs": [
     {
       "a": "https://joshghent.com",
       "b": "https://joshtronic.com",
       "topics": [
+        {
+          "slug": "agent",
+          "label": "agent"
+        },
+        {
+          "slug": "agents",
+          "label": "agents"
+        },
         {
           "slug": "ai",
           "label": "ai"
@@ -50,6 +58,14 @@
       "b": "https://joshuamorris.info",
       "topics": [
         {
+          "slug": "agent",
+          "label": "agent"
+        },
+        {
+          "slug": "agents",
+          "label": "agents"
+        },
+        {
           "slug": "ai",
           "label": "ai"
         },
@@ -62,7 +78,7 @@
           "label": "art"
         },
         {
-          "slug": "book",
+          "slug": "books",
           "label": "books"
         },
         {
@@ -70,12 +86,12 @@
           "label": "business"
         },
         {
-          "slug": "career",
-          "label": "career"
+          "slug": "capacity",
+          "label": "capacity"
         },
         {
-          "slug": "database",
-          "label": "databases"
+          "slug": "career",
+          "label": "career"
         },
         {
           "slug": "design",
@@ -168,6 +184,10 @@
       "b": "https://www.joshcanhelp.com",
       "topics": [
         {
+          "slug": "agents",
+          "label": "agents"
+        },
+        {
           "slug": "ai",
           "label": "ai"
         },
@@ -193,6 +213,10 @@
       "a": "https://joshghent.com",
       "b": "https://www.joshuabaker.com",
       "topics": [
+        {
+          "slug": "agent",
+          "label": "agent"
+        },
         {
           "slug": "ai",
           "label": "ai"
@@ -232,6 +256,14 @@
       "b": "https://joshuamorris.info",
       "topics": [
         {
+          "slug": "agent",
+          "label": "agent"
+        },
+        {
+          "slug": "agents",
+          "label": "agents"
+        },
+        {
           "slug": "ai",
           "label": "ai"
         },
@@ -242,6 +274,10 @@
         {
           "slug": "career",
           "label": "career"
+        },
+        {
+          "slug": "company",
+          "label": "company"
         },
         {
           "slug": "email",
@@ -282,6 +318,10 @@
       "b": "https://www.joshcanhelp.com",
       "topics": [
         {
+          "slug": "agents",
+          "label": "agents"
+        },
+        {
           "slug": "ai",
           "label": "ai"
         },
@@ -296,8 +336,16 @@
       "b": "https://www.joshuabaker.com",
       "topics": [
         {
+          "slug": "agent",
+          "label": "agent"
+        },
+        {
           "slug": "ai",
           "label": "ai"
+        },
+        {
+          "slug": "company",
+          "label": "company"
         },
         {
           "slug": "money",
@@ -310,12 +358,24 @@
       "b": "https://www.joshcanhelp.com",
       "topics": [
         {
+          "slug": "agents",
+          "label": "agents"
+        },
+        {
           "slug": "ai",
           "label": "ai"
         },
         {
+          "slug": "data",
+          "label": "data"
+        },
+        {
           "slug": "engineering",
           "label": "engineering"
+        },
+        {
+          "slug": "identity",
+          "label": "identity"
         },
         {
           "slug": "privacy",
@@ -332,16 +392,24 @@
       "b": "https://www.joshuabaker.com",
       "topics": [
         {
+          "slug": "agent",
+          "label": "agent"
+        },
+        {
           "slug": "ai",
           "label": "ai"
         },
         {
-          "slug": "ai-agent",
-          "label": "ai agents"
-        },
-        {
           "slug": "business",
           "label": "business"
+        },
+        {
+          "slug": "city",
+          "label": "city"
+        },
+        {
+          "slug": "company",
+          "label": "company"
         },
         {
           "slug": "consumer",
@@ -366,6 +434,14 @@
         {
           "slug": "health",
           "label": "health"
+        },
+        {
+          "slug": "magazine",
+          "label": "magazine"
+        },
+        {
+          "slug": "network",
+          "label": "network"
         },
         {
           "slug": "nonprofit",
@@ -416,6 +492,156 @@
     {
       "origin": "https://joshghent.com",
       "topics": [
+        {
+          "slug": "agent",
+          "label": "agent",
+          "articles": [
+            {
+              "url": "https://joshghent.com/how-i-build-products-with-ai/",
+              "title": "How I build products with AI"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Joshtronic",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/08/16/taught-robot-detect-joshes/",
+                  "title": "I taught a robot to detect Joshes"
+                },
+                {
+                  "url": "https://joshtronic.com/2026/08/02/observations-building-pr-review-loop/",
+                  "title": "Observations From Building a PR Review Loop"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/pure-sports-medicine/",
+                  "title": "Reception & Booking AI Agent"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
+                  "title": "The AI Industry Is Saying the Current Security Baseline Is Not Enough"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/25/headlong-gives-a-persistent-agent-an-inner-monologue/",
+                  "title": "Headlong Gives a Persistent Agent an Inner Monologue"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/23/mcp-is-finally-becoming-boring-http-now-it-needs-real-agent-delegation/",
+                  "title": "MCP Is Finally Becoming Boring HTTP. Now It Needs Real Agent Delegation"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/19/fx-asks-how-small-a-coding-agent-actually-needs-to-be/",
+                  "title": "fx Asks How Small a Coding Agent Actually Needs to Be"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/15/cloudflare-is-treating-mcp-like-network-traffic-that-needs-a-firewall/",
+                  "title": "Cloudflare Is Treating MCP Like Network Traffic That Needs a Firewall"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/13/codex-finally-feels-like-it-belongs-on-linux/",
+                  "title": "Codex Finally Feels Like It Belongs on Linux"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/06/prime-agent-can-improve-the-system-around-itself/",
+                  "title": "Prime Agent Can Improve the System Around Itself"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/05/cloudflare-built-an-operating-system-for-ai-work/",
+                  "title": "Cloudflare Built an Operating System for AI Work"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "agents",
+          "label": "agents",
+          "articles": [
+            {
+              "url": "https://joshghent.com/created-my-own-status-page/",
+              "title": "I created my own status page"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshcanhelp.com",
+              "domain": "www.joshcanhelp.com",
+              "title": "Josh Can Help",
+              "articles": [
+                {
+                  "url": "https://www.joshcanhelp.com/agentic-identity/",
+                  "title": "Do we need 'agentic identity'?"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Joshtronic",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/09/06/i-ran-my-agents-from-my-phone-for-two-weeks/",
+                  "title": "I ran my agents from my phone for two weeks"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/23/apple-finally-made-the-xcode-project-file-understandable/",
+                  "title": "Apple Finally Made the Xcode Project File Understandable"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/16/a-20-youtube-promotion-turned-into-a-118000-lesson-in-guardrails/",
+                  "title": "A $20 YouTube Promotion Turned Into a $118,000 Lesson in Guardrails"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
+                  "title": "AI Agents Found an Abandoned Wiki and Turned It Into a Message Board"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
+                  "title": "Terminal-Bench-Science Is Testing Agents on Actual Scientific Work"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/23/mcp-is-finally-becoming-boring-http-now-it-needs-real-agent-delegation/",
+                  "title": "MCP Is Finally Becoming Boring HTTP. Now It Needs Real Agent Delegation"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/06/prime-agent-can-improve-the-system-around-itself/",
+                  "title": "Prime Agent Can Improve the System Around Itself"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/flint-gives-ai-agents-a-better-way-to-create-charts/",
+                  "title": "Flint Gives AI Agents a Better Way to Create Charts"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/more-than-one-ai-company-has-lost-control-of-a-cybersecurity-test/",
+                  "title": "More Than One AI Company Has Lost Control of a Cybersecurity Test"
+                }
+              ]
+            }
+          ]
+        },
         {
           "slug": "ai",
           "label": "ai",
@@ -634,28 +860,12 @@
           ]
         },
         {
-          "slug": "book",
+          "slug": "books",
           "label": "books",
           "articles": [
             {
-              "url": "https://joshghent.com/antibook-book-club/",
-              "title": "Anti-Book Book club"
-            },
-            {
-              "url": "https://joshghent.com/the-mezzanine/",
-              "title": "Book Notes - The Mezzanine"
-            },
-            {
-              "url": "https://joshghent.com/seven-deaths-evelyn-hardcastle/",
-              "title": "Book notes - The Seven Deaths of Evelyn Hardcastle"
-            },
-            {
               "url": "https://joshghent.com/five-books/",
               "title": "Five books"
-            },
-            {
-              "url": "https://joshghent.com/project-hail-mary/",
-              "title": "Book notes - Project Hail Mary"
             }
           ],
           "sites": [
@@ -671,10 +881,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/21/amazon-is-destroying-books-to-train-ai-we-should-have-built-the-library-instead/",
                   "title": "Amazon Is Destroying Books to Train AI. We Should Have Built the Library Instead."
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/20/judge-a-book-by-its-first-page/",
-                  "title": "Judge a Book by Its First Page"
                 },
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/20/science-fiction-and-technology-in-bpls-250/",
@@ -743,6 +949,45 @@
           ]
         },
         {
+          "slug": "capacity",
+          "label": "capacity",
+          "articles": [
+            {
+              "url": "https://joshghent.com/is-software-ever-done/",
+              "title": "Is software ever done?"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
+                  "title": "The Interesting Part of an AI Force Is What Comes After the Name"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/15/the-fuel-crisis-is-exposing-how-little-spare-capacity-we-have-left/",
+                  "title": "The Fuel Crisis Is Exposing How Little Spare Capacity We Have Left"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/15/the-us-fuel-crisis-is-making-canadas-oil-more-valuable-than-ever/",
+                  "title": "The U.S. Fuel Crisis Is Making Canada's Oil More Valuable Than Ever"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/24/ai-is-exposing-how-much-government-capacity-depends-on-making-services-hard-to-use/",
+                  "title": "AI Is Exposing How Much Government Capacity Depends on Making Services Hard to Use"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/07/ram-prices-may-be-showing-us-the-shape-of-the-ai-boom/",
+                  "title": "RAM Prices May Be Showing Us the Shape of the AI Boom"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "career",
           "label": "career",
           "articles": [
@@ -775,41 +1020,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/07/jan-conroy-saw-what-others-missed/",
                   "title": "Jan Conroy Saw What Others Missed"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "database",
-          "label": "databases",
-          "articles": [
-            {
-              "url": "https://joshghent.com/claude-migrated-me-off-authy/",
-              "title": "Claude migrated me off Authy"
-            },
-            {
-              "url": "https://joshghent.com/database-design/",
-              "title": "Beginners Database Design Primer"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/27/safe-not-safe-is-the-kind-of-developer-resource-i-want-more-of/",
-                  "title": "Safe / Not Safe Is the Kind of Developer Resource I Want More Of"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/03/flock-has-already-become-a-police-stalking-tool/",
-                  "title": "Flock Has Already Become a Police Stalking Tool"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/24/reward-hacking-now-has-an-incident-database/",
-                  "title": "Reward Hacking Now Has an Incident Database"
                 }
               ]
             }
@@ -2016,6 +2226,156 @@
       "origin": "https://joshtronic.com",
       "topics": [
         {
+          "slug": "agent",
+          "label": "agent",
+          "articles": [
+            {
+              "url": "https://joshtronic.com/2026/08/16/taught-robot-detect-joshes/",
+              "title": "I taught a robot to detect Joshes"
+            },
+            {
+              "url": "https://joshtronic.com/2026/08/02/observations-building-pr-review-loop/",
+              "title": "Observations From Building a PR Review Loop"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Developer Musings",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/how-i-build-products-with-ai/",
+                  "title": "How I build products with AI"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/pure-sports-medicine/",
+                  "title": "Reception & Booking AI Agent"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
+                  "title": "The AI Industry Is Saying the Current Security Baseline Is Not Enough"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/25/headlong-gives-a-persistent-agent-an-inner-monologue/",
+                  "title": "Headlong Gives a Persistent Agent an Inner Monologue"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/23/mcp-is-finally-becoming-boring-http-now-it-needs-real-agent-delegation/",
+                  "title": "MCP Is Finally Becoming Boring HTTP. Now It Needs Real Agent Delegation"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/19/fx-asks-how-small-a-coding-agent-actually-needs-to-be/",
+                  "title": "fx Asks How Small a Coding Agent Actually Needs to Be"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/15/cloudflare-is-treating-mcp-like-network-traffic-that-needs-a-firewall/",
+                  "title": "Cloudflare Is Treating MCP Like Network Traffic That Needs a Firewall"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/13/codex-finally-feels-like-it-belongs-on-linux/",
+                  "title": "Codex Finally Feels Like It Belongs on Linux"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/06/prime-agent-can-improve-the-system-around-itself/",
+                  "title": "Prime Agent Can Improve the System Around Itself"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/05/cloudflare-built-an-operating-system-for-ai-work/",
+                  "title": "Cloudflare Built an Operating System for AI Work"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "agents",
+          "label": "agents",
+          "articles": [
+            {
+              "url": "https://joshtronic.com/2026/09/06/i-ran-my-agents-from-my-phone-for-two-weeks/",
+              "title": "I ran my agents from my phone for two weeks"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Developer Musings",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/created-my-own-status-page/",
+                  "title": "I created my own status page"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshcanhelp.com",
+              "domain": "www.joshcanhelp.com",
+              "title": "Josh Can Help",
+              "articles": [
+                {
+                  "url": "https://www.joshcanhelp.com/agentic-identity/",
+                  "title": "Do we need 'agentic identity'?"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/23/apple-finally-made-the-xcode-project-file-understandable/",
+                  "title": "Apple Finally Made the Xcode Project File Understandable"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/16/a-20-youtube-promotion-turned-into-a-118000-lesson-in-guardrails/",
+                  "title": "A $20 YouTube Promotion Turned Into a $118,000 Lesson in Guardrails"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
+                  "title": "AI Agents Found an Abandoned Wiki and Turned It Into a Message Board"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
+                  "title": "Terminal-Bench-Science Is Testing Agents on Actual Scientific Work"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/23/mcp-is-finally-becoming-boring-http-now-it-needs-real-agent-delegation/",
+                  "title": "MCP Is Finally Becoming Boring HTTP. Now It Needs Real Agent Delegation"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/06/prime-agent-can-improve-the-system-around-itself/",
+                  "title": "Prime Agent Can Improve the System Around Itself"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/flint-gives-ai-agents-a-better-way-to-create-charts/",
+                  "title": "Flint Gives AI Agents a Better Way to Create Charts"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/more-than-one-ai-company-has-lost-control-of-a-cybersecurity-test/",
+                  "title": "More Than One AI Company Has Lost Control of a Cybersecurity Test"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "ai",
           "label": "ai",
           "articles": [
@@ -2179,6 +2539,60 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/07/jan-conroy-saw-what-others-missed/",
                   "title": "Jan Conroy Saw What Others Missed"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "company",
+          "label": "company",
+          "articles": [
+            {
+              "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
+              "title": "Security Caveat: Locked out of my server while traveling"
+            },
+            {
+              "url": "https://joshtronic.com/2026/08/09/reverse-engineering-posthog-superday/",
+              "title": "Reverse Engineering a PostHog SuperDay"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=coors-brewing-company-training-platform-2008",
+                  "title": "Training Platform"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/05/electronic-arts-is-now-a-privately-owned-company/",
+                  "title": "Electronic Arts Is Now a Privately Owned Company"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/bmw-turned-its-customers-dashboards-into-advertising-space/",
+                  "title": "BMW Turned Its Customers’ Dashboards into Advertising Space"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/more-than-one-ai-company-has-lost-control-of-a-cybersecurity-test/",
+                  "title": "More Than One AI Company Has Lost Control of a Cybersecurity Test"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/25/google-used-to-be-the-company-everyone-wanted-sending-them-traffic/",
+                  "title": "Google Used to Be the Company Everyone Wanted Sending Them Traffic"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/19/what-open-source-doesnt-show/",
+                  "title": "What Open Source Doesn’t Show"
                 }
               ]
             }
@@ -2665,6 +3079,156 @@
       "origin": "https://joshuamorris.info",
       "topics": [
         {
+          "slug": "agent",
+          "label": "agent",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
+              "title": "The AI Industry Is Saying the Current Security Baseline Is Not Enough"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/25/headlong-gives-a-persistent-agent-an-inner-monologue/",
+              "title": "Headlong Gives a Persistent Agent an Inner Monologue"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/23/mcp-is-finally-becoming-boring-http-now-it-needs-real-agent-delegation/",
+              "title": "MCP Is Finally Becoming Boring HTTP. Now It Needs Real Agent Delegation"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/19/fx-asks-how-small-a-coding-agent-actually-needs-to-be/",
+              "title": "fx Asks How Small a Coding Agent Actually Needs to Be"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/15/cloudflare-is-treating-mcp-like-network-traffic-that-needs-a-firewall/",
+              "title": "Cloudflare Is Treating MCP Like Network Traffic That Needs a Firewall"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/13/codex-finally-feels-like-it-belongs-on-linux/",
+              "title": "Codex Finally Feels Like It Belongs on Linux"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/06/prime-agent-can-improve-the-system-around-itself/",
+              "title": "Prime Agent Can Improve the System Around Itself"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/05/cloudflare-built-an-operating-system-for-ai-work/",
+              "title": "Cloudflare Built an Operating System for AI Work"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Developer Musings",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/how-i-build-products-with-ai/",
+                  "title": "How I build products with AI"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Joshtronic",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/08/16/taught-robot-detect-joshes/",
+                  "title": "I taught a robot to detect Joshes"
+                },
+                {
+                  "url": "https://joshtronic.com/2026/08/02/observations-building-pr-review-loop/",
+                  "title": "Observations From Building a PR Review Loop"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/pure-sports-medicine/",
+                  "title": "Reception & Booking AI Agent"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "agents",
+          "label": "agents",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/23/apple-finally-made-the-xcode-project-file-understandable/",
+              "title": "Apple Finally Made the Xcode Project File Understandable"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/16/a-20-youtube-promotion-turned-into-a-118000-lesson-in-guardrails/",
+              "title": "A $20 YouTube Promotion Turned Into a $118,000 Lesson in Guardrails"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
+              "title": "AI Agents Found an Abandoned Wiki and Turned It Into a Message Board"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
+              "title": "Terminal-Bench-Science Is Testing Agents on Actual Scientific Work"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/23/mcp-is-finally-becoming-boring-http-now-it-needs-real-agent-delegation/",
+              "title": "MCP Is Finally Becoming Boring HTTP. Now It Needs Real Agent Delegation"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/06/prime-agent-can-improve-the-system-around-itself/",
+              "title": "Prime Agent Can Improve the System Around Itself"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/02/flint-gives-ai-agents-a-better-way-to-create-charts/",
+              "title": "Flint Gives AI Agents a Better Way to Create Charts"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/02/more-than-one-ai-company-has-lost-control-of-a-cybersecurity-test/",
+              "title": "More Than One AI Company Has Lost Control of a Cybersecurity Test"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Developer Musings",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/created-my-own-status-page/",
+                  "title": "I created my own status page"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshcanhelp.com",
+              "domain": "www.joshcanhelp.com",
+              "title": "Josh Can Help",
+              "articles": [
+                {
+                  "url": "https://www.joshcanhelp.com/agentic-identity/",
+                  "title": "Do we need 'agentic identity'?"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Joshtronic",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/09/06/i-ran-my-agents-from-my-phone-for-two-weeks/",
+                  "title": "I ran my agents from my phone for two weeks"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "ai",
           "label": "ai",
           "articles": [
@@ -2760,57 +3324,6 @@
                   "url": "https://www.joshuabaker.com/work/?work=undisclosed-consumer-ai-platform-2026",
                   "title": "Consumer AI Platform"
                 },
-                {
-                  "url": "https://www.joshuabaker.com/work/pure-sports-medicine/",
-                  "title": "Reception & Booking AI Agent"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "ai-agent",
-          "label": "ai agents",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
-              "title": "How Much AI Slop Does It Take to Unslop the AI Slop?"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/23/apple-finally-made-the-xcode-project-file-understandable/",
-              "title": "Apple Finally Made the Xcode Project File Understandable"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
-              "title": "Claude Opus 5.5 Is Interesting Because It Keeps Working"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/09/ai-helped-turn-a-wechat-bug-into-a-zero-click-worm-in-about-a-week/",
-              "title": "AI Helped Turn a WeChat Bug Into a Zero-Click Worm in About a Week"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
-              "title": "AI Agents Found an Abandoned Wiki and Turned It Into a Message Board"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
-              "title": "The AI Industry Is Saying the Current Security Baseline Is Not Enough"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
-              "title": "Terminal-Bench-Science Is Testing Agents on Actual Scientific Work"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/25/headlong-gives-a-persistent-agent-an-inner-monologue/",
-              "title": "Headlong Gives a Persistent Agent an Inner Monologue"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.joshuabaker.com",
-              "domain": "www.joshuabaker.com",
-              "title": "Joshua Baker",
-              "articles": [
                 {
                   "url": "https://www.joshuabaker.com/work/pure-sports-medicine/",
                   "title": "Reception & Booking AI Agent"
@@ -2937,7 +3450,7 @@
           ]
         },
         {
-          "slug": "book",
+          "slug": "books",
           "label": "books",
           "articles": [
             {
@@ -2947,10 +3460,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/08/21/amazon-is-destroying-books-to-train-ai-we-should-have-built-the-library-instead/",
               "title": "Amazon Is Destroying Books to Train AI. We Should Have Built the Library Instead."
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/07/20/judge-a-book-by-its-first-page/",
-              "title": "Judge a Book by Its First Page"
             },
             {
               "url": "https://joshuamorris.info/notes/2026/07/20/science-fiction-and-technology-in-bpls-250/",
@@ -2964,24 +3473,8 @@
               "title": "Developer Musings",
               "articles": [
                 {
-                  "url": "https://joshghent.com/antibook-book-club/",
-                  "title": "Anti-Book Book club"
-                },
-                {
-                  "url": "https://joshghent.com/the-mezzanine/",
-                  "title": "Book Notes - The Mezzanine"
-                },
-                {
-                  "url": "https://joshghent.com/seven-deaths-evelyn-hardcastle/",
-                  "title": "Book notes - The Seven Deaths of Evelyn Hardcastle"
-                },
-                {
                   "url": "https://joshghent.com/five-books/",
                   "title": "Five books"
-                },
-                {
-                  "url": "https://joshghent.com/project-hail-mary/",
-                  "title": "Book notes - Project Hail Mary"
                 }
               ]
             }
@@ -3046,6 +3539,45 @@
           ]
         },
         {
+          "slug": "capacity",
+          "label": "capacity",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
+              "title": "The Interesting Part of an AI Force Is What Comes After the Name"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/15/the-fuel-crisis-is-exposing-how-little-spare-capacity-we-have-left/",
+              "title": "The Fuel Crisis Is Exposing How Little Spare Capacity We Have Left"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/15/the-us-fuel-crisis-is-making-canadas-oil-more-valuable-than-ever/",
+              "title": "The U.S. Fuel Crisis Is Making Canada's Oil More Valuable Than Ever"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/24/ai-is-exposing-how-much-government-capacity-depends-on-making-services-hard-to-use/",
+              "title": "AI Is Exposing How Much Government Capacity Depends on Making Services Hard to Use"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/07/ram-prices-may-be-showing-us-the-shape-of-the-ai-boom/",
+              "title": "RAM Prices May Be Showing Us the Shape of the AI Boom"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Developer Musings",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/is-software-ever-done/",
+                  "title": "Is software ever done?"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "career",
           "label": "career",
           "articles": [
@@ -3078,6 +3610,87 @@
                 {
                   "url": "https://joshtronic.com/2026/09/27/rediscovering-long-form-email/",
                   "title": "Rediscovering Long-Form Email"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "city",
+          "label": "city",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/25/even-when-cities-want-flock-gone-getting-rid-of-it-isnt-always-easy/",
+              "title": "Even When Cities Want Flock Gone, Getting Rid of It Isn’t Always Easy"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=city-outdoor-media-city-outdoor-media-2014",
+                  "title": "City Outdoor Media"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=city-outdoor-media-city-outdoor-media-2021",
+                  "title": "City Outdoor Media"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "company",
+          "label": "company",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/05/electronic-arts-is-now-a-privately-owned-company/",
+              "title": "Electronic Arts Is Now a Privately Owned Company"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/02/bmw-turned-its-customers-dashboards-into-advertising-space/",
+              "title": "BMW Turned Its Customers’ Dashboards into Advertising Space"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/02/more-than-one-ai-company-has-lost-control-of-a-cybersecurity-test/",
+              "title": "More Than One AI Company Has Lost Control of a Cybersecurity Test"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/25/google-used-to-be-the-company-everyone-wanted-sending-them-traffic/",
+              "title": "Google Used to Be the Company Everyone Wanted Sending Them Traffic"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/19/what-open-source-doesnt-show/",
+              "title": "What Open Source Doesn’t Show"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Joshtronic",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
+                  "title": "Security Caveat: Locked out of my server while traveling"
+                },
+                {
+                  "url": "https://joshtronic.com/2026/08/09/reverse-engineering-posthog-superday/",
+                  "title": "Reverse Engineering a PostHog SuperDay"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=coors-brewing-company-training-platform-2008",
+                  "title": "Training Platform"
                 }
               ]
             }
@@ -3131,35 +3744,59 @@
           ]
         },
         {
-          "slug": "database",
-          "label": "databases",
+          "slug": "data",
+          "label": "data",
           "articles": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/27/safe-not-safe-is-the-kind-of-developer-resource-i-want-more-of/",
-              "title": "Safe / Not Safe Is the Kind of Developer Resource I Want More Of"
+              "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
+              "title": "A Federal Judge Finally Called Flock What It Is"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/08/03/flock-has-already-become-a-police-stalking-tool/",
-              "title": "Flock Has Already Become a Police Stalking Tool"
+              "url": "https://joshuamorris.info/notes/2026/08/09/six-more-employees-fired-for-abusing-flock-camera-data/",
+              "title": "Six More Employees Fired for Abusing Flock Camera Data"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/07/24/reward-hacking-now-has-an-incident-database/",
-              "title": "Reward Hacking Now Has an Incident Database"
+              "url": "https://joshuamorris.info/notes/2026/08/08/voyager-2-was-built-to-last-five-years-it-is-about-to-turn-49/",
+              "title": "Voyager 2 Was Built to Last Five Years. It Is About to Turn 49."
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/03/california-can-finally-make-data-brokers-delete-what-they-know-about-us/",
+              "title": "California Can Finally Make Data Brokers Delete What They Know About Us"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/28/the-sockets-interface-quietly-connected-the-computing-world/",
+              "title": "The Sockets Interface Quietly Connected the Computing World"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/25/even-when-cities-want-flock-gone-getting-rid-of-it-isnt-always-easy/",
+              "title": "Even When Cities Want Flock Gone, Getting Rid of It Isn’t Always Easy"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/24/privacy-should-be-the-default-not-a-form-you-have-to-fill-out/",
+              "title": "Privacy Should Be the Default, Not a Form You Have to Fill Out"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/23/ai-is-consuming-the-web-it-depends-on/",
+              "title": "AI Is Consuming the Web It Depends On"
             }
           ],
           "sites": [
             {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "origin": "https://www.joshcanhelp.com",
+              "domain": "www.joshcanhelp.com",
+              "title": "Josh Can Help",
               "articles": [
                 {
-                  "url": "https://joshghent.com/claude-migrated-me-off-authy/",
-                  "title": "Claude migrated me off Authy"
+                  "url": "https://www.joshcanhelp.com/data-privacy/",
+                  "title": "Fighting for My Data Privacy"
                 },
                 {
-                  "url": "https://joshghent.com/database-design/",
-                  "title": "Beginners Database Design Primer"
+                  "url": "https://www.joshcanhelp.com/personal-data-pipeline-update/",
+                  "title": "Personal Data Pipeline Update"
+                },
+                {
+                  "url": "https://www.joshcanhelp.com/personal-data-pipeline/",
+                  "title": "Imagining a Personal Data Pipeline"
                 }
               ]
             }
@@ -3659,6 +4296,37 @@
           ]
         },
         {
+          "slug": "identity",
+          "label": "identity",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/29/plugging-in-a-display-should-not-install-adware-on-my-computer/",
+              "title": "Plugging In a Display Should Not Install Adware on My Computer"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/23/safari-is-testing-bigint-math-early/",
+              "title": "Safari Is Testing BigInt Math Early"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/21/a-clubhouse-through-ssh/",
+              "title": "A Clubhouse Through SSH"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshcanhelp.com",
+              "domain": "www.joshcanhelp.com",
+              "title": "Josh Can Help",
+              "articles": [
+                {
+                  "url": "https://www.joshcanhelp.com/agentic-identity/",
+                  "title": "Do we need 'agentic identity'?"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "infrastructure",
           "label": "infrastructure",
           "articles": [
@@ -3882,6 +4550,92 @@
                 {
                   "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
                   "title": "Security Caveat: Locked out of my server while traveling"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "magazine",
+          "label": "magazine",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
+              "title": "Worth Wandering: Low-tech Magazine"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/26/superhuman-mutants-may-still-be-on-the-evolutionary-roadmap/",
+              "title": "Superhuman Mutants May Still Be on the Evolutionary Roadmap"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=benetton-group-colors-magazine-2012",
+                  "title": "Colors Magazine"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=eye-magazine-eye-magazine-2012",
+                  "title": "Eye Magazine"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=front-magazine-front-magazine-2007",
+                  "title": "Front Magazine"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "network",
+          "label": "network",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/17/reticulum-treats-the-network-underneath-it-as-replaceable/",
+              "title": "Reticulum Treats the Network Underneath It as Replaceable"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/15/cloudflare-is-treating-mcp-like-network-traffic-that-needs-a-firewall/",
+              "title": "Cloudflare Is Treating MCP Like Network Traffic That Needs a Firewall"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/12/a-fake-airline-hotspot-picked-the-worst-possible-flight/",
+              "title": "A Fake Airline Hotspot Picked the Worst Possible Flight"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/28/the-sockets-interface-quietly-connected-the-computing-world/",
+              "title": "The Sockets Interface Quietly Connected the Computing World"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/27/github-is-still-struggling-with-obvious-malware-repositories/",
+              "title": "GitHub Is Still Struggling With Obvious Malware Repositories"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/25/a-masked-vigilante-is-taking-on-flocks-growing-surveillance-network/",
+              "title": "A Masked Vigilante Is Taking On Flock’s Growing Surveillance Network"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/12/when-compatibility-becomes-the-vulnerability/",
+              "title": "When Compatibility Becomes the Vulnerability"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=equipo-nizkor-nizkor-network-2012",
+                  "title": "Nizkor Network"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=getty-images-agency-network-platform-2010",
+                  "title": "Agency Network Platform"
                 }
               ]
             }
@@ -4766,6 +5520,79 @@
       "origin": "https://www.joshcanhelp.com",
       "topics": [
         {
+          "slug": "agents",
+          "label": "agents",
+          "articles": [
+            {
+              "url": "https://www.joshcanhelp.com/agentic-identity/",
+              "title": "Do we need 'agentic identity'?"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Developer Musings",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/created-my-own-status-page/",
+                  "title": "I created my own status page"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Joshtronic",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/09/06/i-ran-my-agents-from-my-phone-for-two-weeks/",
+                  "title": "I ran my agents from my phone for two weeks"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/23/apple-finally-made-the-xcode-project-file-understandable/",
+                  "title": "Apple Finally Made the Xcode Project File Understandable"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/16/a-20-youtube-promotion-turned-into-a-118000-lesson-in-guardrails/",
+                  "title": "A $20 YouTube Promotion Turned Into a $118,000 Lesson in Guardrails"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
+                  "title": "AI Agents Found an Abandoned Wiki and Turned It Into a Message Board"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
+                  "title": "Terminal-Bench-Science Is Testing Agents on Actual Scientific Work"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/23/mcp-is-finally-becoming-boring-http-now-it-needs-real-agent-delegation/",
+                  "title": "MCP Is Finally Becoming Boring HTTP. Now It Needs Real Agent Delegation"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/06/prime-agent-can-improve-the-system-around-itself/",
+                  "title": "Prime Agent Can Improve the System Around Itself"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/flint-gives-ai-agents-a-better-way-to-create-charts/",
+                  "title": "Flint Gives AI Agents a Better Way to Create Charts"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/more-than-one-ai-company-has-lost-control-of-a-cybersecurity-test/",
+                  "title": "More Than One AI Company Has Lost Control of a Cybersecurity Test"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "ai",
           "label": "ai",
           "articles": [
@@ -4893,6 +5720,65 @@
           ]
         },
         {
+          "slug": "data",
+          "label": "data",
+          "articles": [
+            {
+              "url": "https://www.joshcanhelp.com/data-privacy/",
+              "title": "Fighting for My Data Privacy"
+            },
+            {
+              "url": "https://www.joshcanhelp.com/personal-data-pipeline-update/",
+              "title": "Personal Data Pipeline Update"
+            },
+            {
+              "url": "https://www.joshcanhelp.com/personal-data-pipeline/",
+              "title": "Imagining a Personal Data Pipeline"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
+                  "title": "A Federal Judge Finally Called Flock What It Is"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/09/six-more-employees-fired-for-abusing-flock-camera-data/",
+                  "title": "Six More Employees Fired for Abusing Flock Camera Data"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/08/voyager-2-was-built-to-last-five-years-it-is-about-to-turn-49/",
+                  "title": "Voyager 2 Was Built to Last Five Years. It Is About to Turn 49."
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/03/california-can-finally-make-data-brokers-delete-what-they-know-about-us/",
+                  "title": "California Can Finally Make Data Brokers Delete What They Know About Us"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/28/the-sockets-interface-quietly-connected-the-computing-world/",
+                  "title": "The Sockets Interface Quietly Connected the Computing World"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/25/even-when-cities-want-flock-gone-getting-rid-of-it-isnt-always-easy/",
+                  "title": "Even When Cities Want Flock Gone, Getting Rid of It Isn’t Always Easy"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/24/privacy-should-be-the-default-not-a-form-you-have-to-fill-out/",
+                  "title": "Privacy Should Be the Default, Not a Form You Have to Fill Out"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/23/ai-is-consuming-the-web-it-depends-on/",
+                  "title": "AI Is Consuming the Web It Depends On"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "engineering",
           "label": "engineering",
           "articles": [
@@ -4960,6 +5846,37 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/22/walk-through-video-game-history/",
                   "title": "Walk Through Video Game History"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "identity",
+          "label": "identity",
+          "articles": [
+            {
+              "url": "https://www.joshcanhelp.com/agentic-identity/",
+              "title": "Do we need 'agentic identity'?"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/29/plugging-in-a-display-should-not-install-adware-on-my-computer/",
+                  "title": "Plugging In a Display Should Not Install Adware on My Computer"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/23/safari-is-testing-bigint-math-early/",
+                  "title": "Safari Is Testing BigInt Math Early"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/21/a-clubhouse-through-ssh/",
+                  "title": "A Clubhouse Through SSH"
                 }
               ]
             }
@@ -5127,6 +6044,83 @@
       "origin": "https://www.joshuabaker.com",
       "topics": [
         {
+          "slug": "agent",
+          "label": "agent",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/pure-sports-medicine/",
+              "title": "Reception & Booking AI Agent"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Developer Musings",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/how-i-build-products-with-ai/",
+                  "title": "How I build products with AI"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Joshtronic",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/08/16/taught-robot-detect-joshes/",
+                  "title": "I taught a robot to detect Joshes"
+                },
+                {
+                  "url": "https://joshtronic.com/2026/08/02/observations-building-pr-review-loop/",
+                  "title": "Observations From Building a PR Review Loop"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
+                  "title": "The AI Industry Is Saying the Current Security Baseline Is Not Enough"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/25/headlong-gives-a-persistent-agent-an-inner-monologue/",
+                  "title": "Headlong Gives a Persistent Agent an Inner Monologue"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/23/mcp-is-finally-becoming-boring-http-now-it-needs-real-agent-delegation/",
+                  "title": "MCP Is Finally Becoming Boring HTTP. Now It Needs Real Agent Delegation"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/19/fx-asks-how-small-a-coding-agent-actually-needs-to-be/",
+                  "title": "fx Asks How Small a Coding Agent Actually Needs to Be"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/15/cloudflare-is-treating-mcp-like-network-traffic-that-needs-a-firewall/",
+                  "title": "Cloudflare Is Treating MCP Like Network Traffic That Needs a Firewall"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/13/codex-finally-feels-like-it-belongs-on-linux/",
+                  "title": "Codex Finally Feels Like It Belongs on Linux"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/06/prime-agent-can-improve-the-system-around-itself/",
+                  "title": "Prime Agent Can Improve the System Around Itself"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/05/cloudflare-built-an-operating-system-for-ai-work/",
+                  "title": "Cloudflare Built an Operating System for AI Work"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "ai",
           "label": "ai",
           "articles": [
@@ -5231,57 +6225,6 @@
           ]
         },
         {
-          "slug": "ai-agent",
-          "label": "ai agents",
-          "articles": [
-            {
-              "url": "https://www.joshuabaker.com/work/pure-sports-medicine/",
-              "title": "Reception & Booking AI Agent"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
-                  "title": "How Much AI Slop Does It Take to Unslop the AI Slop?"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/23/apple-finally-made-the-xcode-project-file-understandable/",
-                  "title": "Apple Finally Made the Xcode Project File Understandable"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
-                  "title": "Claude Opus 5.5 Is Interesting Because It Keeps Working"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/09/ai-helped-turn-a-wechat-bug-into-a-zero-click-worm-in-about-a-week/",
-                  "title": "AI Helped Turn a WeChat Bug Into a Zero-Click Worm in About a Week"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
-                  "title": "AI Agents Found an Abandoned Wiki and Turned It Into a Message Board"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
-                  "title": "The AI Industry Is Saying the Current Security Baseline Is Not Enough"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
-                  "title": "Terminal-Bench-Science Is Testing Agents on Actual Scientific Work"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/25/headlong-gives-a-persistent-agent-an-inner-monologue/",
-                  "title": "Headlong Gives a Persistent Agent an Inner Monologue"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "business",
           "label": "business",
           "articles": [
@@ -5334,6 +6277,87 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/17/walking-a-fine-line/",
                   "title": "Walking a Fine Line"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "city",
+          "label": "city",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/?work=city-outdoor-media-city-outdoor-media-2014",
+              "title": "City Outdoor Media"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=city-outdoor-media-city-outdoor-media-2021",
+              "title": "City Outdoor Media"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/25/even-when-cities-want-flock-gone-getting-rid-of-it-isnt-always-easy/",
+                  "title": "Even When Cities Want Flock Gone, Getting Rid of It Isn’t Always Easy"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "company",
+          "label": "company",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/?work=coors-brewing-company-training-platform-2008",
+              "title": "Training Platform"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Joshtronic",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
+                  "title": "Security Caveat: Locked out of my server while traveling"
+                },
+                {
+                  "url": "https://joshtronic.com/2026/08/09/reverse-engineering-posthog-superday/",
+                  "title": "Reverse Engineering a PostHog SuperDay"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/05/electronic-arts-is-now-a-privately-owned-company/",
+                  "title": "Electronic Arts Is Now a Privately Owned Company"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/bmw-turned-its-customers-dashboards-into-advertising-space/",
+                  "title": "BMW Turned Its Customers’ Dashboards into Advertising Space"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/more-than-one-ai-company-has-lost-control-of-a-cybersecurity-test/",
+                  "title": "More Than One AI Company Has Lost Control of a Cybersecurity Test"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/25/google-used-to-be-the-company-everyone-wanted-sending-them-traffic/",
+                  "title": "Google Used to Be the Company Everyone Wanted Sending Them Traffic"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/19/what-open-source-doesnt-show/",
+                  "title": "What Open Source Doesn’t Show"
                 }
               ]
             }
@@ -5687,6 +6711,41 @@
           ]
         },
         {
+          "slug": "magazine",
+          "label": "magazine",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/?work=benetton-group-colors-magazine-2012",
+              "title": "Colors Magazine"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=eye-magazine-eye-magazine-2012",
+              "title": "Eye Magazine"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=front-magazine-front-magazine-2007",
+              "title": "Front Magazine"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
+                  "title": "Worth Wandering: Low-tech Magazine"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/26/superhuman-mutants-may-still-be-on-the-evolutionary-roadmap/",
+                  "title": "Superhuman Mutants May Still Be on the Evolutionary Roadmap"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "money",
           "label": "money",
           "articles": [
@@ -5715,6 +6774,57 @@
                 {
                   "url": "https://joshtronic.com/2026/10/04/confessions-domain-hoarder/",
                   "title": "Confessions of a Middle-Aged Domain Hoarder"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "network",
+          "label": "network",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/?work=equipo-nizkor-nizkor-network-2012",
+              "title": "Nizkor Network"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=getty-images-agency-network-platform-2010",
+              "title": "Agency Network Platform"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/17/reticulum-treats-the-network-underneath-it-as-replaceable/",
+                  "title": "Reticulum Treats the Network Underneath It as Replaceable"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/15/cloudflare-is-treating-mcp-like-network-traffic-that-needs-a-firewall/",
+                  "title": "Cloudflare Is Treating MCP Like Network Traffic That Needs a Firewall"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/12/a-fake-airline-hotspot-picked-the-worst-possible-flight/",
+                  "title": "A Fake Airline Hotspot Picked the Worst Possible Flight"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/28/the-sockets-interface-quietly-connected-the-computing-world/",
+                  "title": "The Sockets Interface Quietly Connected the Computing World"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/27/github-is-still-struggling-with-obvious-malware-repositories/",
+                  "title": "GitHub Is Still Struggling With Obvious Malware Repositories"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/25/a-masked-vigilante-is-taking-on-flocks-growing-surveillance-network/",
+                  "title": "A Masked Vigilante Is Taking On Flock’s Growing Surveillance Network"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/12/when-compatibility-becomes-the-vulnerability/",
+                  "title": "When Compatibility Becomes the Vulnerability"
                 }
               ]
             }
