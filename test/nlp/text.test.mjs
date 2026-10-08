@@ -9,8 +9,11 @@ import test from "node:test";
 import {
   decodeHrefForParse,
   isEnglishLanguage,
+  metaContent,
   normalizeExtractedText,
   parseHtmlRegions,
+  posterImageFromHtml,
+  shareDescriptionFromHtml,
   unwrapXmlCdata,
 } from "../../scripts/nlp/text.mjs";
 
@@ -285,4 +288,56 @@ test("parseHtmlRegions: html with title tag fires titleMatch truthy path (L108)"
   </body></html>`;
   const result = parseHtmlRegions(html);
   assert.ok(result.title.toLowerCase().includes("photography"));
+});
+
+test("posterImageFromHtml prefers og:image and resolves a relative URL", () => {
+  const html = `<head>
+    <meta name="twitter:image" content="https://cdn.example/twitter.jpg">
+    <meta content="https://cdn.example/og.jpg" property="og:image">
+  </head>`;
+  assert.equal(
+    posterImageFromHtml(html, "https://a.example/post/"),
+    "https://cdn.example/og.jpg",
+  );
+  assert.equal(
+    posterImageFromHtml(
+      `<meta property="og:image" content="/social.jpg">`,
+      "https://a.example/post/",
+    ),
+    "https://a.example/social.jpg",
+  );
+  assert.equal(posterImageFromHtml(""), "");
+  assert.equal(metaContent("", "og:image"), "");
+  assert.equal(metaContent("<meta>", ""), "");
+});
+
+test("posterImageFromHtml rejects an unparseable poster URL", () => {
+  assert.equal(
+    posterImageFromHtml(
+      `<meta property="og:image" content="https://exa mple.com/og.jpg">`,
+    ),
+    "",
+  );
+});
+
+test("posterImageFromHtml rejects non-https posters", () => {
+  assert.equal(
+    posterImageFromHtml(
+      `<meta property="og:image" content="http://cdn.example/og.jpg">`,
+    ),
+    "",
+  );
+});
+
+test("shareDescriptionFromHtml prefers the Open Graph description", () => {
+  const html = `<head>
+    <meta name="description" content="Meta blurb">
+    <meta property="og:description" content="Social blurb &amp; more">
+  </head>`;
+  assert.equal(shareDescriptionFromHtml(html), "Social blurb & more");
+  assert.equal(
+    shareDescriptionFromHtml(`<meta name="description" content="Only meta">`),
+    "Only meta",
+  );
+  assert.equal(shareDescriptionFromHtml(""), "");
 });

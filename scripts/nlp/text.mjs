@@ -216,6 +216,95 @@ export function parseHtmlRegions(html) {
 }
 
 /**
+ * Content of a meta tag matched by property or name, attribute order aside.
+ * @param {string} html
+ * @param {string} key
+ * @returns {string}
+ */
+export function metaContent(html, key) {
+  const source = typeof html === "string" ? html : "";
+  const name = String(key || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+  if (!name) {
+    return "";
+  }
+
+  const patterns = [
+    new RegExp(
+      `<meta\\b[^>]*\\b(?:property|name)=["']${name}["'][^>]*\\bcontent=["']([^"']*)["']`,
+      "i",
+    ),
+    new RegExp(
+      `<meta\\b[^>]*\\bcontent=["']([^"']*)["'][^>]*\\b(?:property|name)=["']${name}["']`,
+      "i",
+    ),
+  ];
+
+  for (const pattern of patterns) {
+    const value = pattern.exec(source)?.[1];
+
+    if (value) {
+      return decodeHtmlEntities(unwrapXmlCdata(value)).trim();
+    }
+  }
+
+  return "";
+}
+
+/**
+ * https URL with no credentials, resolved against a page when relative.
+ * @param {string} value
+ * @param {string} [base]
+ * @returns {string}
+ */
+function httpsResourceHref(value, base) {
+  if (!value) {
+    return "";
+  }
+
+  try {
+    const parsed = base ? new URL(value, base) : new URL(value);
+
+    if (parsed.protocol !== "https:" || parsed.username || parsed.password) {
+      return "";
+    }
+
+    return parsed.href;
+  } catch {
+    return "";
+  }
+}
+
+/**
+ * Social poster declared on a page (Open Graph, then Twitter).
+ * @param {string} html
+ * @param {string} [pageUrl]
+ * @returns {string}
+ */
+export function posterImageFromHtml(html, pageUrl = "") {
+  const raw =
+    metaContent(html, "og:image") ||
+    metaContent(html, "twitter:image") ||
+    metaContent(html, "twitter:image:src");
+
+  return httpsResourceHref(raw, pageUrl);
+}
+
+/**
+ * Share blurb declared on a page (Open Graph, then meta description).
+ * @param {string} html
+ * @returns {string}
+ */
+export function shareDescriptionFromHtml(html) {
+  const raw =
+    metaContent(html, "og:description") ||
+    metaContent(html, "description") ||
+    metaContent(html, "twitter:description");
+
+  return capRemoteString(normalizeExtractedText(raw), MAX_SUMMARY_CHARS);
+}
+
+/**
  * True when language looks English enough for English stopword NLP.
  * @param {string} lang
  * @returns {boolean}

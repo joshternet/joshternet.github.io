@@ -47,6 +47,12 @@ import {
 } from "./lib.mjs";
 
 import { extractPageMetadata } from "./metadata.mjs";
+import {
+  localPreviewEnabled,
+  mergePreviewParticipants,
+  readPreviewFile,
+  simulatedParticipants,
+} from "./preview.mjs";
 
 import {
   captureIsFresh,
@@ -626,7 +632,30 @@ async function writeTextAtomic(filePath, value) {
 }
 
 const registry = await loadRegistry(registrySource);
-const projected = projectRegistry(registry);
+let projected = projectRegistry(registry);
+
+if (localPreviewEnabled()) {
+  const previewPath = path.join(process.cwd(), "_data/network_preview.json");
+  const preview = await readPreviewFile(previewPath);
+  const simulated = await simulatedParticipants(preview.participants, {
+    fetchImpl: fetch,
+  });
+
+  for (const skipped of simulated.skipped) {
+    process.stderr.write(
+      `Local preview skipped ${skipped.origin}: ${skipped.reason}\n`,
+    );
+  }
+
+  projected = mergePreviewParticipants(projected, simulated.participants);
+
+  if (simulated.participants.length > 0) {
+    process.stdout.write(
+      `Local preview added ${simulated.participants.length} participant` +
+        `${simulated.participants.length === 1 ? "" : "s"} not yet in the JoshBot registry.\n`,
+    );
+  }
+}
 
 const { accepted: participants, rejected } =
   await partitionPublicParticipants(projected);

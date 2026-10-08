@@ -790,7 +790,7 @@ test("feed images come from advertised media, never http", () => {
       `<item><description>&lt;img src=&quot;https://a.example/photo.jpg&quot; /&gt;</description></item>`,
       "https://a.example/rss.xml",
     ),
-    "https://a.example/photo.jpg",
+    "",
   );
   assert.equal(
     feedImageFromJsonItem(

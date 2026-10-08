@@ -159,6 +159,12 @@ export function normalizeContentItemForPublish(item) {
 
 const FEED_IMAGE_EXTENSION = /\.(?:avif|gif|jpe?g|png|webp)(?:[?#]|$)/i;
 
+/** Minimum width for What's New / Search card images when dimensions are known. */
+export const ACTIVITY_IMAGE_MIN_WIDTH = 480;
+
+/** Minimum height for What's New / Search card images when dimensions are known. */
+export const ACTIVITY_IMAGE_MIN_HEIGHT = 270;
+
 /**
  * Resolves a feed image candidate to an https URL with no credentials.
  * @param {unknown} value
@@ -202,7 +208,76 @@ function looksLikeFeedImage(url, type = "") {
 }
 
 /**
+ * Positive integer from a width/height attribute, else 0.
+ * @param {unknown} value
+ * @returns {number}
+ */
+function positiveIntAttr(value) {
+  const n = Number.parseInt(String(value || ""), 10);
+  return Number.isFinite(n) && n > 0 ? n : 0;
+}
+
+/**
+ * Width and height from markup attributes when present.
+ * @param {string} attrs
+ * @returns {{ width: number, height: number }}
+ */
+export function imageDimensionsFromAttrs(attrs) {
+  if (typeof attrs !== "string" || !attrs) {
+    return { width: 0, height: 0 };
+  }
+
+  return {
+    width: positiveIntAttr(attrs.match(/\bwidth=["']?(\d+)/i)?.[1]),
+    height: positiveIntAttr(attrs.match(/\bheight=["']?(\d+)/i)?.[1]),
+  };
+}
+
+/**
+ * Whether advertised pixel size is large enough for an activity card.
+ * Unknown dimensions are allowed; undersized known edges are not.
+ * @param {number} [width]
+ * @param {number} [height]
+ * @returns {boolean}
+ */
+export function isUsableCardImageSize(width = 0, height = 0) {
+  const w = Number(width) || 0;
+  const h = Number(height) || 0;
+
+  if (w > 0 && w < ACTIVITY_IMAGE_MIN_WIDTH) {
+    return false;
+  }
+
+  if (h > 0 && h < ACTIVITY_IMAGE_MIN_HEIGHT) {
+    return false;
+  }
+
+  return true;
+}
+
+/**
+ * Adds a candidate when the URL looks like a card image and passes size gates.
+ * @param {string[]} out
+ * @param {string} url
+ * @param {number} [width]
+ * @param {number} [height]
+ * @returns {void}
+ */
+function pushCardImageCandidate(out, url, width = 0, height = 0) {
+  if (!url || out.includes(url)) {
+    return;
+  }
+
+  if (!isUsableCardImageSize(width, height)) {
+    return;
+  }
+
+  out.push(url);
+}
+
+/**
  * First image URL advertised on an RSS or Atom entry.
+ * Skips candidates whose advertised width/height are below card minimums.
  * @param {string} chunk
  * @param {string} feedUrl
  * @returns {string}
@@ -212,6 +287,9 @@ export function feedImageFromXml(chunk, feedUrl) {
     return "";
   }
 
+  /** @type {string[]} */
+  const candidates = [];
+
   for (const match of chunk.matchAll(/<enclosure\b([^>]*)\/?>/gi)) {
     const attrs = match[1] || "";
     const type = attrs.match(/\btype=["']([^"']+)["']/i)?.[1] || "";
@@ -219,9 +297,10 @@ export function feedImageFromXml(chunk, feedUrl) {
       attrs.match(/\burl=["']([^"']+)["']/i)?.[1],
       feedUrl,
     );
+    const { width, height } = imageDimensionsFromAttrs(attrs);
 
     if (abs && looksLikeFeedImage(abs, type)) {
-      return abs;
+      pushCardImageCandidate(candidates, abs, width, height);
     }
   }
 
@@ -235,23 +314,34 @@ export function feedImageFromXml(chunk, feedUrl) {
       attrs.match(/\burl=["']([^"']+)["']/i)?.[1],
       feedUrl,
     );
+    const { width, height } = imageDimensionsFromAttrs(attrs);
 
     if (!abs || (medium && medium !== "image")) {
       continue;
     }
 
     if (looksLikeFeedImage(abs, type) || medium === "image") {
-      return abs;
+      pushCardImageCandidate(candidates, abs, width, height);
     }
   }
 
+  const itunesAttrs =
+    chunk.match(/<itunes:image\b([^>]*)\/?>/i)?.[1] ||
+    chunk.match(/<itunes:image\b([^>]*)>/i)?.[1] ||
+    "";
   const itunes = absoluteHttpsImageUrl(
     chunk.match(/<itunes:image\b[^>]*href=["']([^"']+)["']/i)?.[1],
     feedUrl,
   );
+  const itunesSize = imageDimensionsFromAttrs(itunesAttrs);
 
   if (itunes) {
-    return itunes;
+    pushCardImageCandidate(
+      candidates,
+      itunes,
+      itunesSize.width,
+      itunesSize.height,
+    );
   }
 
   for (const match of chunk.matchAll(/<link\b([^>]*)\/?>/gi)) {
@@ -267,29 +357,14 @@ export function feedImageFromXml(chunk, feedUrl) {
       attrs.match(/\bhref=["']([^"']+)["']/i)?.[1],
       feedUrl,
     );
+    const { width, height } = imageDimensionsFromAttrs(attrs);
 
     if (abs && looksLikeFeedImage(abs, type)) {
-      return abs;
+      pushCardImageCandidate(candidates, abs, width, height);
     }
   }
 
-  const html =
-    chunk.match(
-      /<(?:content:encoded|content|description|summary)\b[^>]*>([\s\S]*?)<\/(?:content:encoded|content|description|summary)>/i,
-    )?.[1] || "";
-  const decoded = decodeHtmlEntities(
-    html.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1"),
-  );
-  const fromHtml = absoluteHttpsImageUrl(
-    decoded.match(/<img\b[^>]*src=["']([^"']+)["']/i)?.[1],
-    feedUrl,
-  );
-
-  if (fromHtml && looksLikeFeedImage(fromHtml, "image/jpeg")) {
-    return fromHtml;
-  }
-
-  return "";
+  return candidates[0] || "";
 }
 
 /**
@@ -303,6 +378,9 @@ export function feedImageFromJsonItem(item, feedUrl) {
     return "";
   }
 
+  /** @type {string[]} */
+  const candidates = [];
+
   for (const candidate of [item.image, item.banner_image]) {
     const raw =
       typeof candidate === "string"
@@ -313,9 +391,17 @@ export function feedImageFromJsonItem(item, feedUrl) {
           ? candidate.url
           : "";
     const abs = absoluteHttpsImageUrl(raw, feedUrl);
+    const width =
+      candidate && typeof candidate === "object"
+        ? positiveIntAttr(candidate.width)
+        : 0;
+    const height =
+      candidate && typeof candidate === "object"
+        ? positiveIntAttr(candidate.height)
+        : 0;
 
     if (abs && looksLikeFeedImage(abs, "image/jpeg")) {
-      return abs;
+      pushCardImageCandidate(candidates, abs, width, height);
     }
   }
 
@@ -328,24 +414,16 @@ export function feedImageFromJsonItem(item, feedUrl) {
       const mime =
         typeof attachment.mime_type === "string" ? attachment.mime_type : "";
       const abs = absoluteHttpsImageUrl(attachment.url, feedUrl);
+      const width = positiveIntAttr(attachment.width);
+      const height = positiveIntAttr(attachment.height);
 
       if (abs && looksLikeFeedImage(abs, mime)) {
-        return abs;
+        pushCardImageCandidate(candidates, abs, width, height);
       }
     }
   }
 
-  const html = typeof item.content_html === "string" ? item.content_html : "";
-  const fromHtml = absoluteHttpsImageUrl(
-    html.match(/<img\b[^>]*src=["']([^"']+)["']/i)?.[1],
-    feedUrl,
-  );
-
-  if (fromHtml && looksLikeFeedImage(fromHtml, "image/jpeg")) {
-    return fromHtml;
-  }
-
-  return "";
+  return candidates[0] || "";
 }
 
 /**
@@ -698,6 +776,12 @@ export function joinContentWithPageSignals(items, originSignals) {
         pages.set(key, {
           lang: page.lang,
           page_role: page.page_role,
+          poster_image:
+            typeof page.poster_image === "string" ? page.poster_image : "",
+          share_description:
+            typeof page.share_description === "string"
+              ? page.share_description
+              : "",
         });
       }
     }
@@ -749,6 +833,14 @@ export function joinContentWithPageSignals(items, originSignals) {
 
     if (page?.page_role) {
       next.page_role = page.page_role;
+    }
+
+    if (!next.image && page?.poster_image) {
+      next.image = page.poster_image;
+    }
+
+    if (!plainTextSummary(next.summary) && page?.share_description) {
+      next.summary = page.share_description;
     }
 
     for (const topic of pageTopics) {

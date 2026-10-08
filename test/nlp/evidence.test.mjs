@@ -411,11 +411,27 @@ test("isNonSubjectSlug: filler unigrams from live Topics hub are non-subjects", 
     "joshua",
     "don",
     "team",
+    "almost",
+    "change",
+    "changes",
+    "use",
+    "write",
+    "list",
+    "place",
+    "building",
+    "favorite",
+    "technical",
+    "app",
+    "say",
   ]) {
     assert.equal(isNonSubjectSlug(slug), true, slug);
   }
   assert.equal(isNonSubjectSlug("joshua-morris"), true);
   assert.equal(isNonSubjectSlug("notes-2"), true);
+  assert.equal(isNonSubjectSlug("privacy"), false);
+  assert.equal(isNonSubjectSlug("writing"), false);
+  assert.equal(isNonSubjectSlug("open-source"), false);
+  assert.equal(isNonSubjectSlug("change-management"), false);
 });
 
 test("isNonSubjectSlug: null/undefined coerced to empty → true", () => {

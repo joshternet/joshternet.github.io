@@ -12,13 +12,17 @@ import addFormats from "ajv-formats";
 
 import {
   absoluteHttpsImageUrl,
+  ACTIVITY_IMAGE_MIN_HEIGHT,
+  ACTIVITY_IMAGE_MIN_WIDTH,
   contentIdentityKey,
   contentItemsFromJsonFeed,
   contentItemsFromRssOrAtom,
   feedImageFromJsonItem,
   feedImageFromXml,
   httpContentUrl,
+  imageDimensionsFromAttrs,
   isoDateString,
+  isUsableCardImageSize,
   joinContentWithPageSignals,
   mergeContentItems,
   normalizeContentItemForPublish,
@@ -219,19 +223,68 @@ test("feedImageFromXml: link with unrelated rel is skipped", () => {
   assert.equal(feedImageFromXml(chunk, "https://a.example/rss.xml"), "");
 });
 
-test("feedImageFromXml: img in description HTML", () => {
-  const chunk = `<item><description>&lt;img src=&quot;https://a.example/photo.jpg&quot; /&gt;</description></item>`;
+test("feedImageFromXml: a repeated enclosure URL is kept once", () => {
+  const chunk = `<item>
+    <enclosure url="https://a.example/hero.jpg" type="image/jpeg" />
+    <enclosure url="https://a.example/hero.jpg" type="image/jpeg" />
+  </item>`;
   assert.equal(
     feedImageFromXml(chunk, "https://a.example/rss.xml"),
-    "https://a.example/photo.jpg",
+    "https://a.example/hero.jpg",
   );
 });
 
-test("feedImageFromXml: img in content:encoded", () => {
+test("feedImageFromXml: ignores images embedded in the article body", () => {
+  const chunk = `<item><description>&lt;img src=&quot;https://a.example/photo.jpg&quot; /&gt; A paragraph.</description></item>`;
+  assert.equal(feedImageFromXml(chunk, "https://a.example/rss.xml"), "");
+});
+
+test("feedImageFromXml: ignores images in content:encoded", () => {
   const chunk = `<item><content:encoded><![CDATA[<img src="https://a.example/content.png" />]]></content:encoded></item>`;
+  assert.equal(feedImageFromXml(chunk, "https://a.example/rss.xml"), "");
+});
+
+test("isUsableCardImageSize: unknown dimensions are allowed", () => {
+  assert.equal(isUsableCardImageSize(0, 0), true);
+  assert.equal(isUsableCardImageSize(), true);
+});
+
+test("isUsableCardImageSize: rejects undersized known edges", () => {
+  assert.equal(isUsableCardImageSize(ACTIVITY_IMAGE_MIN_WIDTH - 1, 800), false);
+  assert.equal(
+    isUsableCardImageSize(800, ACTIVITY_IMAGE_MIN_HEIGHT - 1),
+    false,
+  );
+  assert.equal(
+    isUsableCardImageSize(ACTIVITY_IMAGE_MIN_WIDTH, ACTIVITY_IMAGE_MIN_HEIGHT),
+    true,
+  );
+});
+
+test("imageDimensionsFromAttrs: reads width and height", () => {
+  assert.deepEqual(imageDimensionsFromAttrs('width="1200" height="630"'), {
+    width: 1200,
+    height: 630,
+  });
+  assert.deepEqual(imageDimensionsFromAttrs(""), { width: 0, height: 0 });
+});
+
+test("feedImageFromXml: skips an undersized media:thumbnail for a declared hero", () => {
+  const chunk = `<item>
+    <media:thumbnail url="https://cdn.example/thumb.jpg" width="75" height="75" />
+    <media:content url="https://cdn.example/hero.jpg" medium="image" width="1200" height="630" />
+  </item>`;
   assert.equal(
     feedImageFromXml(chunk, "https://a.example/rss.xml"),
-    "https://a.example/content.png",
+    "https://cdn.example/hero.jpg",
+  );
+});
+
+test("feedImageFromXml: keeps undimensioned thumbnail", () => {
+  const chunk = `<item><media:thumbnail url="https://cdn.example/thumb.jpg" /></item>`;
+  assert.equal(
+    feedImageFromXml(chunk, "https://a.example/rss.xml"),
+    "https://cdn.example/thumb.jpg",
   );
 });
 
@@ -319,7 +372,7 @@ test("feedImageFromJsonItem: null attachment in array is skipped", () => {
   );
 });
 
-test("feedImageFromJsonItem: image in content_html", () => {
+test("feedImageFromJsonItem: ignores images embedded in content_html", () => {
   assert.equal(
     feedImageFromJsonItem(
       {
@@ -327,7 +380,7 @@ test("feedImageFromJsonItem: image in content_html", () => {
       },
       "https://a.example/feed.json",
     ),
-    "https://a.example/inline.jpg",
+    "",
   );
 });
 
@@ -773,6 +826,64 @@ test("joinContentWithPageSignals: joins language and page_role", () => {
   assert.equal(joined[0].language, "en");
   assert.equal(joined[0].page_role, "article");
   assert.equal(joined[0].summary, "Hello");
+});
+
+test("joinContentWithPageSignals: uses the page poster and share description when the feed omitted them", () => {
+  const joined = joinContentWithPageSignals(
+    [
+      {
+        identity: "url:https://a.example/post/",
+        url: "https://a.example/post/",
+        language: "en",
+        summary: "",
+        declared_topics: [],
+      },
+    ],
+    [
+      {
+        pages: [
+          {
+            url: "https://a.example/post/",
+            lang: "en",
+            page_role: "article",
+            poster_image: "https://cdn.example/social.jpg",
+            share_description: "What the publisher wrote for sharing.",
+          },
+        ],
+        declared_topics: [],
+      },
+    ],
+  );
+  assert.equal(joined[0].image, "https://cdn.example/social.jpg");
+  assert.equal(joined[0].summary, "What the publisher wrote for sharing.");
+});
+
+test("joinContentWithPageSignals: keeps a feed poster and summary", () => {
+  const joined = joinContentWithPageSignals(
+    [
+      {
+        identity: "url:https://a.example/post/",
+        url: "https://a.example/post/",
+        summary: "Feed blurb",
+        image: "https://cdn.example/feed.jpg",
+        declared_topics: [],
+      },
+    ],
+    [
+      {
+        pages: [
+          {
+            url: "https://a.example/post/",
+            poster_image: "https://cdn.example/social.jpg",
+            share_description: "Page blurb",
+          },
+        ],
+        declared_topics: [],
+      },
+    ],
+  );
+  assert.equal(joined[0].image, "https://cdn.example/feed.jpg");
+  assert.equal(joined[0].summary, "Feed blurb");
 });
 
 test("joinContentWithPageSignals: does not overwrite existing language", () => {

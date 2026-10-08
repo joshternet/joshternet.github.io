@@ -71,7 +71,12 @@ import {
   splitDeclaredAndSignals,
   subjectsFromHtml,
 } from "./subjects.mjs";
-import { isEnglishLanguage, parseHtmlRegions } from "./text.mjs";
+import {
+  isEnglishLanguage,
+  parseHtmlRegions,
+  posterImageFromHtml,
+  shareDescriptionFromHtml,
+} from "./text.mjs";
 
 /**
  * Topic and relationship evidence must come from public information Joshternet
@@ -254,6 +259,8 @@ async function main() {
           page_role: role,
           noindex,
           lang: regions.lang || "",
+          poster_image: posterImageFromHtml(page.html || "", page.url),
+          share_description: shareDescriptionFromHtml(page.html || ""),
         });
 
         if (regions.lang) {

@@ -123,6 +123,8 @@ test("primary navigation keeps top-level labels and Implement children", async (
   assert.match(data, /path: \/implement\/validate\//);
   assert.match(data, /title: Platforms/);
   assert.match(data, /path: \/implement\/platforms\//);
+  assert.doesNotMatch(data, /title: Hosting/);
+  assert.doesNotMatch(data, /path: \/implement\/hosting\//);
   assert.doesNotMatch(data, /title: Eleventy/);
   assert.doesNotMatch(data, /title: Jekyll/);
   assert.match(data, /path: \/implement\/buttons\//);
@@ -220,87 +222,159 @@ test("primary navigation keeps top-level labels and Implement children", async (
   assert.doesNotMatch(links, /aria-expanded/);
 });
 
-test("Eleventy recipe is its own page under Platforms", async () => {
+/**
+ * Platform recipe sources under implement/platforms/.
+ * @type {ReadonlyArray<{slug: string, file: string, navTitle: string}>}
+ */
+const PLATFORM_RECIPES = [
+  { slug: "astro", file: "implement/platforms/astro.md", navTitle: "Astro" },
+  {
+    slug: "eleventy",
+    file: "implement/platforms/eleventy.md",
+    navTitle: "Eleventy",
+  },
+  { slug: "ghost", file: "implement/platforms/ghost.md", navTitle: "Ghost" },
+  { slug: "hugo", file: "implement/platforms/hugo.md", navTitle: "Hugo" },
+  { slug: "jekyll", file: "implement/platforms/jekyll.md", navTitle: "Jekyll" },
+  {
+    slug: "nextjs",
+    file: "implement/platforms/nextjs.md",
+    navTitle: "Next.js",
+  },
+  { slug: "nuxt", file: "implement/platforms/nuxt.md", navTitle: "Nuxt" },
+  {
+    slug: "sveltekit",
+    file: "implement/platforms/sveltekit.md",
+    navTitle: "SvelteKit",
+  },
+  {
+    slug: "wordpress",
+    file: "implement/platforms/wordpress.md",
+    navTitle: "WordPress",
+  },
+];
+
+/**
+ * Asserts the shared documentation contract every platform recipe must satisfy.
+ * @param {string} relativePath - Recipe markdown path under the repo root.
+ * @param {string} body - Recipe file contents.
+ * @param {string} platformsNav - Contents of `_data/platforms_nav.yml`.
+ * @returns {void}
+ */
+function assertPlatformRecipeContract(relativePath, body, platformsNav) {
+  const permalink = relativePath
+    .replace(/^implement\/platforms\//, "/implement/platforms/")
+    .replace(/\.md$/, "/");
+
+  assert.match(
+    platformsNav,
+    new RegExp(`path: ${permalink.replaceAll("/", "\\/")}`),
+    `${relativePath} must appear in platforms_nav.yml`,
+  );
+  assert.match(
+    body,
+    new RegExp(`permalink: ${permalink.replaceAll("/", "\\/")}`),
+    `${relativePath} must declare its permalink`,
+  );
+  assert.match(body, /\/\.well-known\/josh/);
+  assert.match(
+    body,
+    /no `?\.json`? extension|without `?\.json`? extension|Do not publish the protocol resource as `\/\.well-known\/josh\.json`/i,
+  );
+  assert.match(body, /no trailing slash/i);
+  assert.doesNotMatch(
+    body,
+    /The public resource is exactly/,
+    `${relativePath} must not lecture the exact-path opener under the title`,
+  );
+  assert.doesNotMatch(
+    body,
+    /permalink:\s*\/\.well-known\/josh/,
+    `${relativePath} must not use /.well-known/josh as the page permalink`,
+  );
+  assert.doesNotMatch(
+    body,
+    /the (?:public|canonical) (?:resource|path) is exactly `\/\.well-known\/josh\//i,
+    `${relativePath} must not present /.well-known/josh/ as the canonical resource`,
+  );
+  assert.match(body, /\/implement\/validate\//);
+  assert.match(body, /curl -i https:\/\/example\.invalid\/\.well-known\/josh/);
+  assert.match(body, /origin root|root of an origin|belongs at the root/i);
+  assert.match(
+    body,
+    /does not separately notify JoshBot|does not notify JoshBot/i,
+  );
+  assert.match(body, /## Stop publishing/);
+  assert.match(body, /404 Not Found/);
+  assert.match(body, /410 Gone/);
+  assert.match(body, /## Tested/);
+  assert.match(body, /RFC-JOSH-0002 version 1/);
+  assert.match(body, /Verified:\s*\d{4}-\d{2}-\d{2}/);
+  assert.match(body, /\[implement\]: \/implement\//);
+  assert.doesNotMatch(body, /This page is the .+ recipe/);
+  assert.doesNotMatch(body, /Other platforms are listed/);
+}
+
+test("platform recipes satisfy the shared documentation contract", async () => {
   const guide = await read("implement.md");
   const hubs = await read("implement/platforms.md");
   const platformsNav = await read("_data/platforms_nav.yml");
-  const eleventy = await read("implement/platforms/eleventy.md");
 
   assert.match(guide, /\/implement\/platforms\//);
+  assert.doesNotMatch(guide, /\/implement\/hosting\//);
+  assert.match(guide, /Platforms/);
   assert.doesNotMatch(guide, /\/implement\/eleventy\//);
+  assert.doesNotMatch(guide, /\/implement\/jekyll\//);
   assert.doesNotMatch(guide, /addPassthroughCopy/);
+  assert.doesNotMatch(guide, /include:\n\s+- \.well-known/);
+  assert.doesNotMatch(guide, /include-hidden-files/);
 
   assert.match(hubs, /permalink: \/implement\/platforms\//);
   assert.match(hubs, /site\.data\.platforms_nav/);
-  assert.match(platformsNav, /path: \/implement\/platforms\/eleventy\//);
-  assert.match(eleventy, /permalink: \/implement\/platforms\/eleventy\//);
+  assert.match(hubs, /Hugo/);
+
+  for (const recipe of PLATFORM_RECIPES) {
+    const body = await read(recipe.file);
+    assertPlatformRecipeContract(recipe.file, body, platformsNav);
+  }
+});
+
+test("Eleventy recipe keeps passthrough copy to /.well-known/josh", async () => {
+  const eleventy = await read("implement/platforms/eleventy.md");
+
   assert.match(
     eleventy,
     /addPassthroughCopy\(\{\s*"input\/josh\.json": "\.well-known\/josh",\s*\}\)/,
   );
-  assert.match(
-    eleventy,
-    /\[\[headers\]\]\s*for = "\/\.well-known\/josh"[\s\S]*Content-Type = "application\/json"/,
-  );
-  assert.match(eleventy, /\/implement\/validate\//);
-  assert.match(
-    eleventy,
-    /curl -i https:\/\/example\.invalid\/\.well-known\/josh/,
-  );
-  assert.match(eleventy, /\[implement\]: \/implement\//);
-  assert.doesNotMatch(eleventy, /This page is the Eleventy recipe/);
-  assert.doesNotMatch(eleventy, /Other platforms are listed/);
+  assert.match(eleventy, /test -f _site\/\.well-known\/josh/);
+  assert.match(eleventy, /include-hidden-files: true/);
   await assertMissing("implement/eleventy.html");
 });
 
-test("Jekyll recipe is its own page under Platforms", async () => {
-  const guide = await read("implement.md");
-  const platformsNav = await read("_data/platforms_nav.yml");
+test("Jekyll recipe keeps include for .well-known and _site verification", async () => {
   const jekyll = await read("implement/platforms/jekyll.md");
   const config = await read("_config.yml");
 
-  assert.match(guide, /\/implement\/platforms\//);
-  assert.doesNotMatch(guide, /\/implement\/jekyll\//);
-  assert.doesNotMatch(guide, /include:\n\s+- \.well-known/);
-
-  assert.match(platformsNav, /path: \/implement\/platforms\/jekyll\//);
-  assert.match(jekyll, /permalink: \/implement\/platforms\/jekyll\//);
   assert.match(jekyll, /\.well-known\/\n\s+josh/);
   assert.match(jekyll, /include:\n\s+- \.well-known/);
+  assert.match(jekyll, /test -f _site\/\.well-known\/josh/);
+  assert.match(jekyll, /include-hidden-files: true/);
   assert.match(
     jekyll,
-    /\[\[headers\]\]\s*for = "\/\.well-known\/josh"[\s\S]*Content-Type = "application\/json"/,
+    /Including `\.well-known` in Jekyll and preserving `\.well-known` in a later deploy/,
   );
-  assert.match(jekyll, /\/implement\/validate\//);
-  assert.match(
-    jekyll,
-    /curl -i https:\/\/example\.invalid\/\.well-known\/josh/,
-  );
-  assert.match(jekyll, /\[implement\]: \/implement\//);
-  assert.doesNotMatch(jekyll, /This page is the Jekyll recipe/);
-  assert.doesNotMatch(jekyll, /Other platforms are listed/);
   assert.match(config, /include:\n\s+- \.well-known/);
   await assertMissing("implement/jekyll.html");
 });
 
-test("Ghost recipe is its own page under Platforms", async () => {
-  const guide = await read("implement.md");
-  const hubs = await read("implement/platforms.md");
-  const platformsNav = await read("_data/platforms_nav.yml");
+test("Ghost recipe keeps exact Nginx location and Ghost references", async () => {
   const ghost = await read("implement/platforms/ghost.md");
 
-  assert.match(guide, /\/implement\/platforms\//);
-  assert.match(hubs, /permalink: \/implement\/platforms\//);
-  assert.match(hubs, /site\.data\.platforms_nav/);
-  assert.match(platformsNav, /path: \/implement\/platforms\/ghost\//);
-  assert.match(ghost, /permalink: \/implement\/platforms\/ghost\//);
   assert.match(
     ghost,
     /location = \/\.well-known\/josh \{\s*default_type application\/json;\s*return 200 '{"version":1,"josh":true}';\s*\}/,
   );
-  assert.match(ghost, /\/implement\/validate\//);
-  assert.match(ghost, /curl -i https:\/\/example\.invalid\/\.well-known\/josh/);
-  assert.match(ghost, /\[implement\]: \/implement\//);
+  assert.match(ghost, /sudo nginx -t/);
   assert.match(
     ghost,
     /https:\/\/ghost\.org\/docs\/faq\/proxying-https-infinite-loops\//,
@@ -310,8 +384,21 @@ test("Ghost recipe is its own page under Platforms", async () => {
     ghost,
     /https:\/\/ghost\.org\/help\/run-ghost-from-a-subdirectory\//,
   );
-  assert.doesNotMatch(ghost, /This page is the Ghost recipe/);
-  assert.doesNotMatch(ghost, /Other platforms are listed/);
+});
+
+test("Hugo recipe publishes static/.well-known/josh into public/", async () => {
+  const hugo = await read("implement/platforms/hugo.md");
+
+  assert.match(hugo, /static\/\n\s+\.well-known\/\n\s+josh/);
+  assert.match(hugo, /public\/\n\s+\.well-known\/\n\s+josh/);
+  assert.match(hugo, /test -f public\/\.well-known\/josh/);
+  assert.match(hugo, /include-hidden-files: true/);
+  assert.match(hugo, /source = "static"/);
+  assert.match(
+    hugo,
+    /\[\[headers\]\]\s*for = "\/\.well-known\/josh"[\s\S]*Content-Type = "application\/json"/,
+  );
+  assert.match(hugo, /static\/_headers/);
 });
 
 test("connections crawl page documents sync signals under Implement", async () => {
@@ -346,9 +433,15 @@ test("visitor pages do not lecture under the title", async () => {
     "implement/buttons.md",
     "implement/explore.md",
     "implement/platforms.md",
+    "implement/platforms/astro.md",
     "implement/platforms/eleventy.md",
     "implement/platforms/ghost.md",
+    "implement/platforms/hugo.md",
     "implement/platforms/jekyll.md",
+    "implement/platforms/nextjs.md",
+    "implement/platforms/nuxt.md",
+    "implement/platforms/sveltekit.md",
+    "implement/platforms/wordpress.md",
     "implement/validate.md",
     "connections.md",
   ];
@@ -379,6 +472,30 @@ test("visitor pages do not lecture under the title", async () => {
       page,
       /two separate checks/,
       `${relativePath} must not lecture under the title`,
+    );
+  }
+
+  for (const relativePath of [
+    "implement/platforms/eleventy.md",
+    "implement/platforms/ghost.md",
+    "implement/platforms/hugo.md",
+    "implement/platforms/jekyll.md",
+    "implement/platforms/astro.md",
+    "implement/platforms/nextjs.md",
+    "implement/platforms/nuxt.md",
+    "implement/platforms/sveltekit.md",
+    "implement/platforms/wordpress.md",
+  ]) {
+    const page = await read(relativePath);
+    assert.doesNotMatch(
+      page,
+      /The public resource is exactly/,
+      `${relativePath} must not lecture the exact-path opener under the title`,
+    );
+    assert.doesNotMatch(
+      page,
+      /It does not become `\/\.well-known\/josh\.json`/,
+      `${relativePath} must not lecture the .json opener under the title`,
     );
   }
 });

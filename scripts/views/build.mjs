@@ -18,6 +18,7 @@ import {
 } from "../nlp/lib.mjs";
 import { semanticallyEqual } from "../nlp/publish.mjs";
 import { buildViewDocuments } from "./lib.mjs";
+import { materializeActivityPosters } from "./posters.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "../..");
 
@@ -82,6 +83,8 @@ export async function buildViewProjections(root = ROOT) {
   if (!views.connection_topics.sites.length) {
     delete views.connection_topics.sites;
   }
+
+  await materializeActivityPosters(views, root);
 
   await writeStableJSON(path.join(dataDir, "activity.json"), views.activity);
   await writeStableJSON(path.join(dataDir, "explore.json"), views.explore);

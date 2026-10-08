@@ -4,6 +4,14 @@
 
 ### Changed
 
+- Feed posters stay limited to advertised media. An image that only appears inside the article body is not a card poster.
+- On a phone, What's New and Search cards put the poster above the title and description. On a tablet, those cards span the page width.
+- What's New and Search cards share one poster-column width, so titles and descriptions on cards with a poster line up down the page. A card with no poster spans the page, and its title and description use that full width.
+- Ordinary English words such as “almost”, “change”, “use”, and “say” are not public topics. Shared topic lists keep subjects such as privacy, design, and open source.
+- What's New and Search cards use a feed-declared poster when the feed names one, otherwise the page Open Graph or Twitter image. In-article pictures are not used. Cards show the article title and the feed or social description beside a poster scaled to the height of that copy. The poster sits flush with the card's left edge so the card's rounded corners clip it, and the copy starts at the poster's right edge. While an article is shown, the build stores a Sharp-resized WebP of that poster in `assets/activity/posters/` and removes the file when the article is no longer shown.
+- Removed the Hosting hub, Nginx hosting recipe, and Implement nav Hosting link.
+- Removed the Plain HTML platform recipe (page, nav, fixture, and evidence).
+- Rewrote new platform recipes in the same developer-facing voice as Eleventy/Hugo/Jekyll (full declaration copy, build trees, Serve it as JSON, deploy checklist). Jekyll opener now explains that joshternet.org itself publishes this way, instead of “This is the layout joshternet.org uses.”
 - Connections “seen on” links show the article title (from content or crawl signals) instead of the raw page URL; Octothorpes `octo:*` rel tokens are not shown in connection cards.
 - Connected from rows name the linking site (“linked from Joshua Morris”) instead of reusing outbound “linked to” wording aimed at this card’s own site.
 - Empty Shared topics and Connected from sections are omitted from connection cards.
@@ -12,7 +20,9 @@
 
 ### Added
 
-- Joshternet Infrastructure Principles at `/infrastructure/`: provider selection standards for Joshternet-operated services only, independent-site boundary, provider lifecycle and removal, and currently used inventory (GitHub, Cloudflare, Umami, IndexNow).
+- Local registry preview (`_data/network_preview.json`) so `network:sync` can scrape an origin that already publishes `/.well-known/josh` before JoshBot records it. CI ignores the file. The preview list is empty, so local data comes from the JoshBot registry.
+- `npm run declaration:verify` checks a live `/.well-known/josh` response. Temporary platform fixtures and recipe-evidence notes used to proof the pages were removed after the recipes were written (#50 remains open).
+- Platform recipes: Astro, Next.js, SvelteKit, Nuxt 4, WordPress (plugin-first; lab-verified).
 
 ### Changed
 

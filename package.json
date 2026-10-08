@@ -9,6 +9,8 @@
     "views:build": "node scripts/views/build.mjs",
     "test:browser": "node --test test/browser/*.test.mjs",
     "test:site": "node --test test/site/*.test.mjs",
+    "declaration:verify": "node scripts/declaration-verify.mjs",
+    "test:declaration-verify": "node --test scripts/declaration-verify.test.mjs",
     "network:sync": "node scripts/network/sync.mjs",
     "nlp:sync": "node scripts/nlp/sync.mjs",
     "nlp:validate": "node scripts/nlp/validate-generated.mjs",

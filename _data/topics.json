@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-08T01:01:00.570Z",
-  "community_count": 210,
+  "generated_at": "2026-10-08T03:57:41.433Z",
+  "community_count": 203,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
@@ -428,78 +428,6 @@
       "active": true
     },
     {
-      "slug": "almost",
-      "label": "almost",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://joshghent.com",
-          "domain": "joshghent.com",
-          "title": "Developer Musings",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshghent.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/projects/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/work/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/04/prop-39-would-ask-for-an-id-in-person-and-four-digits-on-a-mail-ballot/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["visible-text"],
-      "first_seen_at": "2026-10-06T07:35:22.305Z",
-      "last_changed_at": "2026-10-06T07:35:22.305Z",
-      "active": true
-    },
-    {
       "slug": "analytics",
       "label": "analytics",
       "member_count": 1,
@@ -550,63 +478,6 @@
       "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-07T00:42:51.529Z",
       "last_changed_at": "2026-10-07T00:42:51.529Z",
-      "active": true
-    },
-    {
-      "slug": "app",
-      "label": "app",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://joshghent.com",
-          "domain": "joshghent.com",
-          "title": "Developer Musings",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshghent.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/projects/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/work/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://www.joshuabaker.com",
-          "domain": "www.joshuabaker.com",
-          "title": "Joshua Baker",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://www.joshuabaker.com/work/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/the-dots/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["visible-text"],
-      "first_seen_at": "2026-10-04T15:32:37.678Z",
-      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -1191,115 +1062,6 @@
       "active": true
     },
     {
-      "slug": "building",
-      "label": "building",
-      "member_count": 3,
-      "sites": [
-        {
-          "origin": "https://joshghent.com",
-          "domain": "joshghent.com",
-          "title": "Developer Musings",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshghent.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/projects/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/work/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://www.joshuabaker.com",
-          "domain": "www.joshuabaker.com",
-          "title": "Joshua Baker",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://www.joshuabaker.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshuabaker.com/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/dandara-living/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["visible-text"],
-      "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-04T15:32:37.678Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://www.joshcanhelp.com",
-          "domain": "www.joshcanhelp.com",
-          "title": "Josh Can Help",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
-    },
-    {
       "slug": "business",
       "label": "business",
       "member_count": 3,
@@ -1483,6 +1245,78 @@
       "active": true
     },
     {
+      "slug": "capacity",
+      "label": "capacity",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/work/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/15/the-fuel-crisis-is-exposing-how-little-spare-capacity-we-have-left/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/15/the-us-fuel-crisis-is-making-canadas-oil-more-valuable-than-ever/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/23/apple-finally-made-the-xcode-project-file-understandable/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": ["visible-text"],
+      "first_seen_at": "2026-10-08T03:57:41.433Z",
+      "last_changed_at": "2026-10-08T03:57:41.433Z",
+      "active": true
+    },
+    {
       "slug": "career",
       "label": "career",
       "member_count": 2,
@@ -1561,78 +1395,6 @@
       "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "changes",
-      "label": "changes",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://joshghent.com",
-          "domain": "joshghent.com",
-          "title": "Developer Musings",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshghent.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/projects/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/work/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/04/prop-39-would-ask-for-an-id-in-person-and-four-digits-on-a-mail-ballot/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["visible-text"],
-      "first_seen_at": "2026-10-04T15:32:37.678Z",
-      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
@@ -4073,9 +3835,24 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshghent.com/health-checks/",
+              "url": "https://joshghent.com/",
               "title": "",
-              "source": "catalog-match"
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/work/",
+              "title": "",
+              "source": "visible-text"
             }
           ]
         },
@@ -4117,10 +3894,10 @@
         }
       ],
       "sources": [
-        "catalog-match",
         "microformat:p-category",
         "portfolio:sector",
-        "topic-hub:link"
+        "topic-hub:link",
+        "visible-text"
       ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-04T15:32:37.678Z",
@@ -6205,78 +5982,6 @@
       "active": true
     },
     {
-      "slug": "place",
-      "label": "place",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://joshghent.com",
-          "domain": "joshghent.com",
-          "title": "Developer Musings",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshghent.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/projects/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/work/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["visible-text"],
-      "first_seen_at": "2026-10-04T15:32:37.678Z",
-      "last_changed_at": "2026-10-04T15:32:37.678Z",
-      "active": true
-    },
-    {
       "slug": "policy",
       "label": "policy",
       "member_count": 1,
@@ -7607,7 +7312,16 @@
       ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-04T15:32:37.678Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "software-development",
@@ -7862,77 +7576,6 @@
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
-    },
-    {
-      "slug": "technical",
-      "label": "technical",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://joshtronic.com",
-          "domain": "joshtronic.com",
-          "title": "Joshtronic",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshtronic.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshtronic.com/about/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["visible-text"],
-      "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://www.joshcanhelp.com",
-          "domain": "www.joshcanhelp.com",
-          "title": "Josh Can Help",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
     },
     {
       "slug": "technical-debt",
@@ -8252,87 +7895,6 @@
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
       "active": true
-    },
-    {
-      "slug": "use",
-      "label": "use",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://joshghent.com",
-          "domain": "joshghent.com",
-          "title": "Developer Musings",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshghent.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/projects/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/work/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/04/prop-39-would-ask-for-an-id-in-person-and-four-digits-on-a-mail-ballot/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/05/most-of-prop-1-is-a-loan-the-general-budget-pays-back-with-interest/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["visible-text"],
-      "first_seen_at": "2026-10-04T15:32:37.678Z",
-      "last_changed_at": "2026-10-04T15:32:37.678Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://www.joshcanhelp.com",
-          "domain": "www.joshcanhelp.com",
-          "title": "Josh Can Help",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
     },
     {
       "slug": "user-experience",
@@ -8705,78 +8267,6 @@
       "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
-    },
-    {
-      "slug": "write",
-      "label": "write",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://joshghent.com",
-          "domain": "joshghent.com",
-          "title": "Developer Musings",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshghent.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/projects/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/work/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/04/prop-39-would-ask-for-an-id-in-person-and-four-digits-on-a-mail-ballot/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["visible-text"],
-      "first_seen_at": "2026-10-04T15:32:37.678Z",
-      "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
     },
     {
