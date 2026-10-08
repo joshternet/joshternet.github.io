@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-08T03:59:00.601Z",
-  "document_count": 725,
+  "generated_at": "2026-10-08T07:26:12.391Z",
+  "document_count": 726,
   "documents": [
     {
       "type": "site",
@@ -266,15 +266,6 @@
     },
     {
       "type": "topic",
-      "title": "business",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/business/",
-      "topics": ["business", "business"]
-    },
-    {
-      "type": "topic",
       "title": "life",
       "summary": "3 participating sites",
       "domain": "",
@@ -317,6 +308,15 @@
       "origin": "",
       "url": "/topics/science/",
       "topics": ["science", "science"]
+    },
+    {
+      "type": "topic",
+      "title": "business",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/business/",
+      "topics": ["business", "business"]
     },
     {
       "type": "topic",
@@ -554,15 +554,6 @@
     },
     {
       "type": "topic",
-      "title": "career",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/career/",
-      "topics": ["career", "career"]
-    },
-    {
-      "type": "topic",
       "title": "discovery",
       "summary": "2 participating sites",
       "domain": "",
@@ -641,6 +632,15 @@
       "origin": "",
       "url": "/topics/recruitment/",
       "topics": ["recruitment", "recruitment"]
+    },
+    {
+      "type": "topic",
+      "title": "career",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/career/",
+      "topics": ["career", "career"]
     },
     {
       "type": "topic",
@@ -3636,7 +3636,7 @@
     {
       "type": "content",
       "title": "Fake",
-      "summary": "A normal verification flow, until it isn’t.",
+      "summary": "Weird Web October 2026, day three. Fake.",
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/experiments/weird-web-october-2026/fake/",
@@ -3648,8 +3648,21 @@
     },
     {
       "type": "content",
+      "title": "Plastic",
+      "summary": "Weird Web October 2026, day four. Plastic.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
+      "topics": [],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-04T00:00:00.000Z",
+      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
       "title": "Reveal",
-      "summary": "Think of a question, then turn.",
+      "summary": "Weird Web October 2026, day one. Reveal.",
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/experiments/weird-web-october-2026/reveal/",
@@ -3662,7 +3675,7 @@
     {
       "type": "content",
       "title": "Spark",
-      "summary": "You're alone in the dark with only a few matches left.",
+      "summary": "Weird Web October 2026, day two. Spark.",
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spark/",
@@ -5883,10 +5896,10 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/08/24/the-best-staff-engineering-work-often-starts-before-anyone-assigns-it/",
-      "topics": ["business", "career"],
+      "topics": [],
       "site_title": "Joshua Morris",
       "published_at": "2026-08-24T05:39:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "",
       "image_origin": ""
     },
     {
