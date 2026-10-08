@@ -1,4 +1,27 @@
 {
   "version": 1,
-  "aliases": []
+  "aliases": [
+    {
+      "from": "postgres",
+      "to": "postgresql",
+      "kind": "equivalent"
+    }
+  ],
+  "relationships": [
+    {
+      "from": "web-development",
+      "to": "software-development",
+      "kind": "broader"
+    },
+    {
+      "from": "privacy",
+      "to": "surveillance",
+      "kind": "related"
+    },
+    {
+      "from": "photography",
+      "to": "art",
+      "kind": "related"
+    }
+  ]
 }

@@ -144,7 +144,7 @@ test("subjectsFromRssOrAtom: observedAt propagates to evidence", () => {
   const subjects = subjectsFromRssOrAtom(xml, {
     observedAt: "2026-10-03T22:00:00.000Z",
   });
-  const books = subjects.find((s) => s.slug === "books");
+  const books = subjects.find((s) => s.slug === "book");
   assert.ok(books);
   assert.ok(Array.isArray(books.evidence));
 });
@@ -221,7 +221,7 @@ test("subjectsFromJsonFeed: empty tag string is skipped via slugify", () => {
   });
   const subjects = subjectsFromJsonFeed(json);
   assert.equal(subjects.length, 1);
-  assert.equal(subjects[0].slug, "books");
+  assert.equal(subjects[0].slug, "book");
 });
 
 test("subjectsFromJsonFeed: empty items array → empty result", () => {

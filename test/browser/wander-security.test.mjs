@@ -172,6 +172,18 @@ test("validated HTTPS participant uses the constrained iframe sandbox", async ()
 
     assert.equal(await frame.getAttribute("referrerpolicy"), "no-referrer");
 
+    assert.equal(
+      await page.locator("[data-wander-link-notice]").innerText(),
+      "Wander blocks links that leave that site, and Open opens the publisher's site in another tab.",
+    );
+
+    assert.equal(
+      await page.locator("[data-wander-status]").innerText(),
+      "Wander blocks links that leave that site, and Open opens the publisher's site in another tab.",
+    );
+
+    assert.equal(await page.locator(".wander-embed__poster").count(), 1);
+
     assert.equal(await page.locator("[data-wander-open]").isDisabled(), false);
 
     await page.locator("[data-wander-open]").click();

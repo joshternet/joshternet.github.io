@@ -8,6 +8,11 @@
 
 import { slugifyTopic } from "../network/connections.mjs";
 import { isSensitiveHeuristicSlug, isNonSubjectSlug } from "./evidence.mjs";
+import {
+  equivalentAliases,
+  foldPluralSlug,
+  topicRelations,
+} from "./normalize.mjs";
 
 /**
  * @param {unknown} aliasesDoc
@@ -16,29 +21,12 @@ import { isSensitiveHeuristicSlug, isNonSubjectSlug } from "./evidence.mjs";
 export function loadAliasMap(aliasesDoc) {
   const map = new Map();
 
-  if (!aliasesDoc || typeof aliasesDoc !== "object") {
-    return map;
-  }
-
-  const list = Array.isArray(aliasesDoc.aliases) ? aliasesDoc.aliases : [];
-
-  for (const entry of list) {
-    if (
-      !entry ||
-      typeof entry.from !== "string" ||
-      typeof entry.to !== "string"
-    ) {
+  for (const entry of equivalentAliases(aliasesDoc)) {
+    if (entry.kind !== "equivalent") {
       continue;
     }
 
-    const from = slugifyTopic(entry.from);
-    const to = slugifyTopic(entry.to);
-
-    if (!from || !to || from === to) {
-      continue;
-    }
-
-    map.set(from, to);
+    map.set(entry.from, entry.to);
   }
 
   return map;
@@ -62,7 +50,12 @@ export function loadDenylist(denylistDoc) {
       continue;
     }
 
-    const slug = slugifyTopic(entry.slug);
+    const raw = slugifyTopic(entry.slug);
+    const slug = foldPluralSlug(raw);
+
+    if (raw) {
+      set.add(raw);
+    }
 
     if (slug) {
       set.add(slug);
@@ -167,6 +160,9 @@ function membershipFingerprint(sites) {
 export function buildTopicCommunities(origins, options = {}) {
   const aliases = options.aliases || new Map();
   const denylist = options.denylist || new Set();
+  const relations = Array.isArray(options.relations)
+    ? options.relations
+    : topicRelations(options.aliasesDoc);
   const now = options.now || new Date().toISOString();
   const previous = new Map(
     (Array.isArray(options.previousTopics) ? options.previousTopics : [])
@@ -208,7 +204,7 @@ export function buildTopicCommunities(origins, options = {}) {
       }
 
       const slug = resolveAlias(
-        slugifyTopic(String(signal.slug || "")),
+        foldPluralSlug(slugifyTopic(String(signal.slug || ""))),
         aliases,
       );
 
@@ -258,7 +254,7 @@ export function buildTopicCommunities(origins, options = {}) {
       }
 
       const slug = resolveAlias(
-        slugifyTopic(String(signal.slug || "")),
+        foldPluralSlug(slugifyTopic(String(signal.slug || ""))),
         aliases,
       );
 
@@ -395,6 +391,25 @@ export function buildTopicCommunities(origins, options = {}) {
         community.stale_since = staleSince;
       }
 
+      const broader = relations
+        .filter((item) => item && item.kind === "broader" && item.from === slug)
+        .map((item) => item.to);
+      const relatedSlugs = relations
+        .filter(
+          (item) =>
+            item &&
+            item.kind === "related" &&
+            (item.from === slug || item.to === slug),
+        )
+        .map((item) => (item.from === slug ? item.to : item.from));
+
+      if (broader.length > 0 || relatedSlugs.length > 0) {
+        community.relationships = {
+          broader,
+          related: relatedSlugs,
+        };
+      }
+
       communities.push(community);
     } else {
       candidates.push({
@@ -510,5 +525,27 @@ seo:
   type: CollectionPage
   name: ${JSON.stringify(name)}
 ---
+`;
+}
+
+/**
+ * Compatibility page for an old slug. GitHub Pages is not assumed to redirect.
+ * The page points at the canonical topic and is not a second community.
+ * @param {string} fromSlug
+ * @param {string} toSlug
+ * @returns {string}
+ */
+export function aliasCompatibilityMarkdown(fromSlug, toSlug) {
+  const from = slugifyTopic(fromSlug);
+  const to = slugifyTopic(toSlug);
+
+  return `---
+layout: default
+title: ${JSON.stringify(from)}
+permalink: /topics/${from}/
+joshternet_analysis: derived
+---
+
+This name is filed under [${to}](/topics/${to}/).
 `;
 }

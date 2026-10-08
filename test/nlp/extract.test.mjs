@@ -165,7 +165,7 @@ test("subjectsFromHtml reads microformats and meta without promoting Octothorpes
   );
   const slugs = subjects.map((subject) => subject.slug).sort();
 
-  assert.deepEqual(slugs, ["bicycles", "gardening", "indieweb", "maps"]);
+  assert.deepEqual(slugs, ["bicycle", "gardening", "indieweb", "maps"]);
   assert.ok(
     !subjects.some((subject) => subject.sources.includes("octothorpe")),
   );

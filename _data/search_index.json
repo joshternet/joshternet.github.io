@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-08T07:26:12.391Z",
-  "document_count": 726,
+  "generated_at": "2026-10-08T07:59:45.116Z",
+  "document_count": 715,
   "documents": [
     {
       "type": "site",
@@ -68,615 +68,21 @@
     },
     {
       "type": "topic",
-      "title": "design",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/design/",
-      "topics": ["design", "design"]
-    },
-    {
-      "type": "topic",
-      "title": "creative & design",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/creative-design/",
-      "topics": ["creative-design", "creative & design"]
-    },
-    {
-      "type": "topic",
-      "title": "software",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/software/",
-      "topics": ["software", "software"]
-    },
-    {
-      "type": "topic",
-      "title": "technology",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/technology/",
-      "topics": ["technology", "technology"]
-    },
-    {
-      "type": "topic",
-      "title": "privacy",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/privacy/",
-      "topics": ["privacy", "privacy"]
-    },
-    {
-      "type": "topic",
-      "title": "security",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/security/",
-      "topics": ["security", "security"]
-    },
-    {
-      "type": "topic",
-      "title": "media & publishing",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/media-publishing/",
-      "topics": ["media-publishing", "media & publishing"]
-    },
-    {
-      "type": "topic",
-      "title": "agents",
-      "summary": "4 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/agents/",
-      "topics": ["agents", "agents"]
-    },
-    {
-      "type": "topic",
-      "title": "apple",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/apple/",
-      "topics": ["apple", "apple"]
-    },
-    {
-      "type": "topic",
-      "title": "fashion & retail",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/fashion-retail/",
-      "topics": ["fashion-retail", "fashion & retail"]
-    },
-    {
-      "type": "topic",
-      "title": "agent",
-      "summary": "4 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/agent/",
-      "topics": ["agent", "agent"]
-    },
-    {
-      "type": "topic",
-      "title": "property",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/property/",
-      "topics": ["property", "property"]
-    },
-    {
-      "type": "topic",
-      "title": "infrastructure",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/infrastructure/",
-      "topics": ["infrastructure", "infrastructure"]
-    },
-    {
-      "type": "topic",
-      "title": "policy",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/policy/",
-      "topics": ["policy", "policy"]
-    },
-    {
-      "type": "topic",
       "title": "ai agents",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/ai-agents/",
-      "topics": ["ai-agents", "ai agents"]
-    },
-    {
-      "type": "topic",
-      "title": "finance",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/finance/",
-      "topics": ["finance", "finance"]
-    },
-    {
-      "type": "topic",
-      "title": "data",
       "summary": "2 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/data/",
-      "topics": ["data", "data"]
+      "url": "/topics/ai-agent/",
+      "topics": ["ai-agent", "ai agents"]
     },
     {
       "type": "topic",
-      "title": "hardware",
+      "title": "ai safety",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/hardware/",
-      "topics": ["hardware", "hardware"]
-    },
-    {
-      "type": "topic",
-      "title": "property & real estate",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/property-real-estate/",
-      "topics": ["property-real-estate", "property & real estate"]
-    },
-    {
-      "type": "topic",
-      "title": "engineering",
-      "summary": "4 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/engineering/",
-      "topics": ["engineering", "engineering"]
-    },
-    {
-      "type": "topic",
-      "title": "google",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/google/",
-      "topics": ["google", "google"]
-    },
-    {
-      "type": "topic",
-      "title": "government",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/government/",
-      "topics": ["government", "government"]
-    },
-    {
-      "type": "topic",
-      "title": "life",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/life/",
-      "topics": ["life", "life"]
-    },
-    {
-      "type": "topic",
-      "title": "open source",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/open-source/",
-      "topics": ["open-source", "open source"]
-    },
-    {
-      "type": "topic",
-      "title": "writing",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/writing/",
-      "topics": ["writing", "writing"]
-    },
-    {
-      "type": "topic",
-      "title": "independent web",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/independent-web/",
-      "topics": ["independent-web", "independent web"]
-    },
-    {
-      "type": "topic",
-      "title": "science",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/science/",
-      "topics": ["science", "science"]
-    },
-    {
-      "type": "topic",
-      "title": "business",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/business/",
-      "topics": ["business", "business"]
-    },
-    {
-      "type": "topic",
-      "title": "law",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/law/",
-      "topics": ["law", "law"]
-    },
-    {
-      "type": "topic",
-      "title": "network",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/network/",
-      "topics": ["network", "network"]
-    },
-    {
-      "type": "topic",
-      "title": "economics",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/economics/",
-      "topics": ["economics", "economics"]
-    },
-    {
-      "type": "topic",
-      "title": "government & policy",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/government-policy/",
-      "topics": ["government-policy", "government & policy"]
-    },
-    {
-      "type": "topic",
-      "title": "company",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/company/",
-      "topics": ["company", "company"]
-    },
-    {
-      "type": "topic",
-      "title": "architecture",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/architecture/",
-      "topics": ["architecture", "architecture"]
-    },
-    {
-      "type": "topic",
-      "title": "consumer",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/consumer/",
-      "topics": ["consumer", "consumer"]
-    },
-    {
-      "type": "topic",
-      "title": "research",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/research/",
-      "topics": ["research", "research"]
-    },
-    {
-      "type": "topic",
-      "title": "search",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/search/",
-      "topics": ["search", "search"]
-    },
-    {
-      "type": "topic",
-      "title": "government ethics",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/government-ethics/",
-      "topics": ["government-ethics", "government ethics"]
-    },
-    {
-      "type": "topic",
-      "title": "indieweb",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/indieweb/",
-      "topics": ["indieweb", "indieweb"]
-    },
-    {
-      "type": "topic",
-      "title": "public systems",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/public-systems/",
-      "topics": ["public-systems", "public systems"]
-    },
-    {
-      "type": "topic",
-      "title": "art",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/art/",
-      "topics": ["art", "art"]
-    },
-    {
-      "type": "topic",
-      "title": "nonprofit",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/nonprofit/",
-      "topics": ["nonprofit", "nonprofit"]
-    },
-    {
-      "type": "topic",
-      "title": "united states",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/united-states/",
-      "topics": ["united-states", "united states"]
-    },
-    {
-      "type": "topic",
-      "title": "california ballot 2026",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/california-ballot-2026/",
-      "topics": ["california-ballot-2026", "california ballot 2026"]
-    },
-    {
-      "type": "topic",
-      "title": "space",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/space/",
-      "topics": ["space", "space"]
-    },
-    {
-      "type": "topic",
-      "title": "surveillance",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/surveillance/",
-      "topics": ["surveillance", "surveillance"]
-    },
-    {
-      "type": "topic",
-      "title": "health",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/health/",
-      "topics": ["health", "health"]
-    },
-    {
-      "type": "topic",
-      "title": "capacity",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/capacity/",
-      "topics": ["capacity", "capacity"]
-    },
-    {
-      "type": "topic",
-      "title": "education",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/education/",
-      "topics": ["education", "education"]
-    },
-    {
-      "type": "topic",
-      "title": "programming",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/programming/",
-      "topics": ["programming", "programming"]
-    },
-    {
-      "type": "topic",
-      "title": "charity & nonprofit",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/charity-nonprofit/",
-      "topics": ["charity-nonprofit", "charity & nonprofit"]
-    },
-    {
-      "type": "topic",
-      "title": "hospitality",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/hospitality/",
-      "topics": ["hospitality", "hospitality"]
-    },
-    {
-      "type": "topic",
-      "title": "linux",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/linux/",
-      "topics": ["linux", "linux"]
-    },
-    {
-      "type": "topic",
-      "title": "ownership",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/ownership/",
-      "topics": ["ownership", "ownership"]
-    },
-    {
-      "type": "topic",
-      "title": "discovery",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/discovery/",
-      "topics": ["discovery", "discovery"]
-    },
-    {
-      "type": "topic",
-      "title": "magazine",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/magazine/",
-      "topics": ["magazine", "magazine"]
-    },
-    {
-      "type": "topic",
-      "title": "arts & culture",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/arts-culture/",
-      "topics": ["arts-culture", "arts & culture"]
-    },
-    {
-      "type": "topic",
-      "title": "aws",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/aws/",
-      "topics": ["aws", "aws"]
-    },
-    {
-      "type": "topic",
-      "title": "communications & pr",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/communications-pr/",
-      "topics": ["communications-pr", "communications & pr"]
-    },
-    {
-      "type": "topic",
-      "title": "digital rights",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/digital-rights/",
-      "topics": ["digital-rights", "digital rights"]
-    },
-    {
-      "type": "topic",
-      "title": "energy",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/energy/",
-      "topics": ["energy", "energy"]
-    },
-    {
-      "type": "topic",
-      "title": "independent",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/independent/",
-      "topics": ["independent", "independent"]
-    },
-    {
-      "type": "topic",
-      "title": "recruitment",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/recruitment/",
-      "topics": ["recruitment", "recruitment"]
-    },
-    {
-      "type": "topic",
-      "title": "career",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/career/",
-      "topics": ["career", "career"]
-    },
-    {
-      "type": "topic",
-      "title": "books",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/books/",
-      "topics": ["books", "books"]
-    },
-    {
-      "type": "topic",
-      "title": "identity",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/identity/",
-      "topics": ["identity", "identity"]
-    },
-    {
-      "type": "topic",
-      "title": "llm",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/llm/",
-      "topics": ["llm", "llm"]
-    },
-    {
-      "type": "topic",
-      "title": "testing",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/testing/",
-      "topics": ["testing", "testing"]
+      "url": "/topics/ai-safety/",
+      "topics": ["ai-safety", "ai safety"]
     },
     {
       "type": "topic",
@@ -689,147 +95,57 @@
     },
     {
       "type": "topic",
-      "title": "banking",
+      "title": "analytics",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/banking/",
-      "topics": ["banking", "banking"]
+      "url": "/topics/analytic/",
+      "topics": ["analytic", "analytics"]
     },
     {
       "type": "topic",
-      "title": "community",
+      "title": "antitrust",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/community/",
-      "topics": ["community", "community"]
+      "url": "/topics/antitrust/",
+      "topics": ["antitrust", "antitrust"]
     },
     {
       "type": "topic",
-      "title": "web development",
+      "title": "apple",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/web-development/",
-      "topics": ["web-development", "web development"]
+      "url": "/topics/apple/",
+      "topics": ["apple", "apple"]
     },
     {
       "type": "topic",
-      "title": "email",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/email/",
-      "topics": ["email", "email"]
-    },
-    {
-      "type": "topic",
-      "title": "money",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/money/",
-      "topics": ["money", "money"]
-    },
-    {
-      "type": "topic",
-      "title": "blogging",
+      "title": "architecture",
       "summary": "2 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/blogging/",
-      "topics": ["blogging", "blogging"]
+      "url": "/topics/architecture/",
+      "topics": ["architecture", "architecture"]
     },
     {
       "type": "topic",
-      "title": "city",
+      "title": "art",
       "summary": "2 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/city/",
-      "topics": ["city", "city"]
+      "url": "/topics/art/",
+      "topics": ["art", "art"]
     },
     {
       "type": "topic",
-      "title": "networking",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/networking/",
-      "topics": ["networking", "networking"]
-    },
-    {
-      "type": "topic",
-      "title": "civil liberties",
+      "title": "arts & culture",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/civil-liberties/",
-      "topics": ["civil-liberties", "civil liberties"]
-    },
-    {
-      "type": "topic",
-      "title": "computing history",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/computing-history/",
-      "topics": ["computing-history", "computing history"]
-    },
-    {
-      "type": "topic",
-      "title": "data brokers",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/data-brokers/",
-      "topics": ["data-brokers", "data brokers"]
-    },
-    {
-      "type": "topic",
-      "title": "interoperability",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/interoperability/",
-      "topics": ["interoperability", "interoperability"]
-    },
-    {
-      "type": "topic",
-      "title": "painting",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/painting/",
-      "topics": ["painting", "painting"]
-    },
-    {
-      "type": "topic",
-      "title": "regulation",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/regulation/",
-      "topics": ["regulation", "regulation"]
-    },
-    {
-      "type": "topic",
-      "title": "science fiction",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/science-fiction/",
-      "topics": ["science-fiction", "science fiction"]
-    },
-    {
-      "type": "topic",
-      "title": "scientific evidence",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/scientific-evidence/",
-      "topics": ["scientific-evidence", "scientific evidence"]
+      "url": "/topics/arts-culture/",
+      "topics": ["arts-culture", "arts & culture"]
     },
     {
       "type": "topic",
@@ -842,30 +158,21 @@
     },
     {
       "type": "topic",
-      "title": "linkedin",
-      "summary": "2 participating sites",
+      "title": "aws",
+      "summary": "1 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/linkedin/",
-      "topics": ["linkedin", "linkedin"]
+      "url": "/topics/aws/",
+      "topics": ["aws", "aws"]
     },
     {
       "type": "topic",
-      "title": "social media",
-      "summary": "2 participating sites",
+      "title": "banking",
+      "summary": "1 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/social-media/",
-      "topics": ["social-media", "social media"]
-    },
-    {
-      "type": "topic",
-      "title": "youtube",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/youtube/",
-      "topics": ["youtube", "youtube"]
+      "url": "/topics/banking/",
+      "topics": ["banking", "banking"]
     },
     {
       "type": "topic",
@@ -873,8 +180,62 @@
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/benchmarks/",
-      "topics": ["benchmarks", "benchmarks"]
+      "url": "/topics/benchmark/",
+      "topics": ["benchmark", "benchmarks"]
+    },
+    {
+      "type": "topic",
+      "title": "biology",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/biology/",
+      "topics": ["biology", "biology"]
+    },
+    {
+      "type": "topic",
+      "title": "blogging",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/blogging/",
+      "topics": ["blogging", "blogging"]
+    },
+    {
+      "type": "topic",
+      "title": "books",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/book/",
+      "topics": ["book", "books"]
+    },
+    {
+      "type": "topic",
+      "title": "browsers",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/browser/",
+      "topics": ["browser", "browsers"]
+    },
+    {
+      "type": "topic",
+      "title": "business",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/business/",
+      "topics": ["business", "business"]
+    },
+    {
+      "type": "topic",
+      "title": "california ballot 2026",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/california-ballot-2026/",
+      "topics": ["california-ballot-2026", "california ballot 2026"]
     },
     {
       "type": "topic",
@@ -887,12 +248,129 @@
     },
     {
       "type": "topic",
+      "title": "career",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/career/",
+      "topics": ["career", "career"]
+    },
+    {
+      "type": "topic",
       "title": "cars",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/cars/",
       "topics": ["cars", "cars"]
+    },
+    {
+      "type": "topic",
+      "title": "charity & nonprofit",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/charity-nonprofit/",
+      "topics": ["charity-nonprofit", "charity & nonprofit"]
+    },
+    {
+      "type": "topic",
+      "title": "chromebooks",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/chromebook/",
+      "topics": ["chromebook", "chromebooks"]
+    },
+    {
+      "type": "topic",
+      "title": "civil liberties",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/civil-liberty/",
+      "topics": ["civil-liberty", "civil liberties"]
+    },
+    {
+      "type": "topic",
+      "title": "communications & pr",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/communication-pr/",
+      "topics": ["communication-pr", "communications & pr"]
+    },
+    {
+      "type": "topic",
+      "title": "community",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/community/",
+      "topics": ["community", "community"]
+    },
+    {
+      "type": "topic",
+      "title": "computer vision",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/computer-vision/",
+      "topics": ["computer-vision", "computer vision"]
+    },
+    {
+      "type": "topic",
+      "title": "computing history",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/computing-history/",
+      "topics": ["computing-history", "computing history"]
+    },
+    {
+      "type": "topic",
+      "title": "consciousness",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/consciousness/",
+      "topics": ["consciousness", "consciousness"]
+    },
+    {
+      "type": "topic",
+      "title": "consumer",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/consumer/",
+      "topics": ["consumer", "consumer"]
+    },
+    {
+      "type": "topic",
+      "title": "consumer protection",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/consumer-protection/",
+      "topics": ["consumer-protection", "consumer protection"]
+    },
+    {
+      "type": "topic",
+      "title": "craftsmanship",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/craftsmanship/",
+      "topics": ["craftsmanship", "craftsmanship"]
+    },
+    {
+      "type": "topic",
+      "title": "creative & design",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/creative-design/",
+      "topics": ["creative-design", "creative & design"]
     },
     {
       "type": "topic",
@@ -905,12 +383,120 @@
     },
     {
       "type": "topic",
+      "title": "data brokers",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/data-broker/",
+      "topics": ["data-broker", "data brokers"]
+    },
+    {
+      "type": "topic",
+      "title": "databases",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/database/",
+      "topics": ["database", "databases"]
+    },
+    {
+      "type": "topic",
+      "title": "design",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/design/",
+      "topics": ["design", "design"]
+    },
+    {
+      "type": "topic",
       "title": "developer tools",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/developer-tools/",
-      "topics": ["developer-tools", "developer tools"]
+      "url": "/topics/developer-tool/",
+      "topics": ["developer-tool", "developer tools"]
+    },
+    {
+      "type": "topic",
+      "title": "devops",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/devop/",
+      "topics": ["devop", "devops"]
+    },
+    {
+      "type": "topic",
+      "title": "digital rights",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/digital-right/",
+      "topics": ["digital-right", "digital rights"]
+    },
+    {
+      "type": "topic",
+      "title": "discovery",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/discovery/",
+      "topics": ["discovery", "discovery"]
+    },
+    {
+      "type": "topic",
+      "title": "earth observation",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/earth-observation/",
+      "topics": ["earth-observation", "earth observation"]
+    },
+    {
+      "type": "topic",
+      "title": "economics",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/economics/",
+      "topics": ["economics", "economics"]
+    },
+    {
+      "type": "topic",
+      "title": "education",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/education/",
+      "topics": ["education", "education"]
+    },
+    {
+      "type": "topic",
+      "title": "email",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/email/",
+      "topics": ["email", "email"]
+    },
+    {
+      "type": "topic",
+      "title": "energy",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/energy/",
+      "topics": ["energy", "energy"]
+    },
+    {
+      "type": "topic",
+      "title": "engineering",
+      "summary": "4 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/engineering/",
+      "topics": ["engineering", "engineering"]
     },
     {
       "type": "topic",
@@ -941,240 +527,6 @@
     },
     {
       "type": "topic",
-      "title": "freelancing",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/freelancing/",
-      "topics": ["freelancing", "freelancing"]
-    },
-    {
-      "type": "topic",
-      "title": "internet culture",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/internet-culture/",
-      "topics": ["internet-culture", "internet culture"]
-    },
-    {
-      "type": "topic",
-      "title": "lego",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/lego/",
-      "topics": ["lego", "lego"]
-    },
-    {
-      "type": "topic",
-      "title": "oil",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/oil/",
-      "topics": ["oil", "oil"]
-    },
-    {
-      "type": "topic",
-      "title": "personal data",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/personal-data/",
-      "topics": ["personal-data", "personal data"]
-    },
-    {
-      "type": "topic",
-      "title": "personhood",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/personhood/",
-      "topics": ["personhood", "personhood"]
-    },
-    {
-      "type": "topic",
-      "title": "resilience",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/resilience/",
-      "topics": ["resilience", "resilience"]
-    },
-    {
-      "type": "topic",
-      "title": "reward hacking",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/reward-hacking/",
-      "topics": ["reward-hacking", "reward hacking"]
-    },
-    {
-      "type": "topic",
-      "title": "space exploration",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/space-exploration/",
-      "topics": ["space-exploration", "space exploration"]
-    },
-    {
-      "type": "topic",
-      "title": "sql",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/sql/",
-      "topics": ["sql", "sql"]
-    },
-    {
-      "type": "topic",
-      "title": "trade",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/trade/",
-      "topics": ["trade", "trade"]
-    },
-    {
-      "type": "topic",
-      "title": "visualization",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/visualization/",
-      "topics": ["visualization", "visualization"]
-    },
-    {
-      "type": "topic",
-      "title": "wearable ai",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/wearable-ai/",
-      "topics": ["wearable-ai", "wearable ai"]
-    },
-    {
-      "type": "topic",
-      "title": "ai safety",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/ai-safety/",
-      "topics": ["ai-safety", "ai safety"]
-    },
-    {
-      "type": "topic",
-      "title": "analytics",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/analytics/",
-      "topics": ["analytics", "analytics"]
-    },
-    {
-      "type": "topic",
-      "title": "antitrust",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/antitrust/",
-      "topics": ["antitrust", "antitrust"]
-    },
-    {
-      "type": "topic",
-      "title": "biology",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/biology/",
-      "topics": ["biology", "biology"]
-    },
-    {
-      "type": "topic",
-      "title": "browsers",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/browsers/",
-      "topics": ["browsers", "browsers"]
-    },
-    {
-      "type": "topic",
-      "title": "chromebooks",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/chromebooks/",
-      "topics": ["chromebooks", "chromebooks"]
-    },
-    {
-      "type": "topic",
-      "title": "computer vision",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/computer-vision/",
-      "topics": ["computer-vision", "computer vision"]
-    },
-    {
-      "type": "topic",
-      "title": "consciousness",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/consciousness/",
-      "topics": ["consciousness", "consciousness"]
-    },
-    {
-      "type": "topic",
-      "title": "consumer protection",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/consumer-protection/",
-      "topics": ["consumer-protection", "consumer protection"]
-    },
-    {
-      "type": "topic",
-      "title": "craftsmanship",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/craftsmanship/",
-      "topics": ["craftsmanship", "craftsmanship"]
-    },
-    {
-      "type": "topic",
-      "title": "databases",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/databases/",
-      "topics": ["databases", "databases"]
-    },
-    {
-      "type": "topic",
-      "title": "devops",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/devops/",
-      "topics": ["devops", "devops"]
-    },
-    {
-      "type": "topic",
-      "title": "earth observation",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/earth-observation/",
-      "topics": ["earth-observation", "earth observation"]
-    },
-    {
-      "type": "topic",
       "title": "facebook",
       "summary": "1 participating sites",
       "domain": "",
@@ -1184,12 +536,39 @@
     },
     {
       "type": "topic",
+      "title": "fashion & retail",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/fashion-retail/",
+      "topics": ["fashion-retail", "fashion & retail"]
+    },
+    {
+      "type": "topic",
+      "title": "finance",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/finance/",
+      "topics": ["finance", "finance"]
+    },
+    {
+      "type": "topic",
       "title": "financial markets",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/financial-markets/",
-      "topics": ["financial-markets", "financial markets"]
+      "url": "/topics/financial-market/",
+      "topics": ["financial-market", "financial markets"]
+    },
+    {
+      "type": "topic",
+      "title": "freelancing",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/freelancing/",
+      "topics": ["freelancing", "freelancing"]
     },
     {
       "type": "topic",
@@ -1202,12 +581,102 @@
     },
     {
       "type": "topic",
+      "title": "google",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/google/",
+      "topics": ["google", "google"]
+    },
+    {
+      "type": "topic",
+      "title": "government",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/government/",
+      "topics": ["government", "government"]
+    },
+    {
+      "type": "topic",
+      "title": "government & policy",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/government-policy/",
+      "topics": ["government-policy", "government & policy"]
+    },
+    {
+      "type": "topic",
+      "title": "government ethics",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/government-ethics/",
+      "topics": ["government-ethics", "government ethics"]
+    },
+    {
+      "type": "topic",
+      "title": "hardware",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/hardware/",
+      "topics": ["hardware", "hardware"]
+    },
+    {
+      "type": "topic",
+      "title": "health",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/health/",
+      "topics": ["health", "health"]
+    },
+    {
+      "type": "topic",
+      "title": "hospitality",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/hospitality/",
+      "topics": ["hospitality", "hospitality"]
+    },
+    {
+      "type": "topic",
+      "title": "independent web",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/independent-web/",
+      "topics": ["independent-web", "independent web"]
+    },
+    {
+      "type": "topic",
+      "title": "indieweb",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/indieweb/",
+      "topics": ["indieweb", "indieweb"]
+    },
+    {
+      "type": "topic",
+      "title": "infrastructure",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/infrastructure/",
+      "topics": ["infrastructure", "infrastructure"]
+    },
+    {
+      "type": "topic",
       "title": "institutions",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/institutions/",
-      "topics": ["institutions", "institutions"]
+      "url": "/topics/institution/",
+      "topics": ["institution", "institutions"]
     },
     {
       "type": "topic",
@@ -1215,8 +684,17 @@
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/interactive-essays/",
-      "topics": ["interactive-essays", "interactive essays"]
+      "url": "/topics/interactive-essay/",
+      "topics": ["interactive-essay", "interactive essays"]
+    },
+    {
+      "type": "topic",
+      "title": "internet culture",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/internet-culture/",
+      "topics": ["internet-culture", "internet culture"]
     },
     {
       "type": "topic",
@@ -1224,8 +702,17 @@
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/internet-of-things/",
-      "topics": ["internet-of-things", "internet of things"]
+      "url": "/topics/internet-of-thing/",
+      "topics": ["internet-of-thing", "internet of things"]
+    },
+    {
+      "type": "topic",
+      "title": "interoperability",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/interoperability/",
+      "topics": ["interoperability", "interoperability"]
     },
     {
       "type": "topic",
@@ -1235,6 +722,60 @@
       "origin": "",
       "url": "/topics/javascript/",
       "topics": ["javascript", "javascript"]
+    },
+    {
+      "type": "topic",
+      "title": "law",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/law/",
+      "topics": ["law", "law"]
+    },
+    {
+      "type": "topic",
+      "title": "lego",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/lego/",
+      "topics": ["lego", "lego"]
+    },
+    {
+      "type": "topic",
+      "title": "life",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/life/",
+      "topics": ["life", "life"]
+    },
+    {
+      "type": "topic",
+      "title": "linkedin",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/linkedin/",
+      "topics": ["linkedin", "linkedin"]
+    },
+    {
+      "type": "topic",
+      "title": "linux",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/linux/",
+      "topics": ["linux", "linux"]
+    },
+    {
+      "type": "topic",
+      "title": "llm",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/llm/",
+      "topics": ["llm", "llm"]
     },
     {
       "type": "topic",
@@ -1265,6 +806,15 @@
     },
     {
       "type": "topic",
+      "title": "media & publishing",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/media-publishing/",
+      "topics": ["media-publishing", "media & publishing"]
+    },
+    {
+      "type": "topic",
       "title": "medical research",
       "summary": "1 participating sites",
       "domain": "",
@@ -1283,12 +833,48 @@
     },
     {
       "type": "topic",
+      "title": "money",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/money/",
+      "topics": ["money", "money"]
+    },
+    {
+      "type": "topic",
+      "title": "networking",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/networking/",
+      "topics": ["networking", "networking"]
+    },
+    {
+      "type": "topic",
       "title": "neuroscience",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/neuroscience/",
       "topics": ["neuroscience", "neuroscience"]
+    },
+    {
+      "type": "topic",
+      "title": "nonprofit",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/nonprofit/",
+      "topics": ["nonprofit", "nonprofit"]
+    },
+    {
+      "type": "topic",
+      "title": "oil",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/oil/",
+      "topics": ["oil", "oil"]
     },
     {
       "type": "topic",
@@ -1310,12 +896,57 @@
     },
     {
       "type": "topic",
+      "title": "open source",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/open-source/",
+      "topics": ["open-source", "open source"]
+    },
+    {
+      "type": "topic",
+      "title": "ownership",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/ownership/",
+      "topics": ["ownership", "ownership"]
+    },
+    {
+      "type": "topic",
+      "title": "painting",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/painting/",
+      "topics": ["painting", "painting"]
+    },
+    {
+      "type": "topic",
       "title": "parenting",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/parenting/",
       "topics": ["parenting", "parenting"]
+    },
+    {
+      "type": "topic",
+      "title": "personal data",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/personal-data/",
+      "topics": ["personal-data", "personal data"]
+    },
+    {
+      "type": "topic",
+      "title": "personhood",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/personhood/",
+      "topics": ["personhood", "personhood"]
     },
     {
       "type": "topic",
@@ -1337,12 +968,12 @@
     },
     {
       "type": "topic",
-      "title": "postgres",
-      "summary": "1 participating sites",
+      "title": "policy",
+      "summary": "3 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/postgres/",
-      "topics": ["postgres", "postgres"]
+      "url": "/topics/policy/",
+      "topics": ["policy", "policy"]
     },
     {
       "type": "topic",
@@ -1355,12 +986,48 @@
     },
     {
       "type": "topic",
+      "title": "privacy",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/privacy/",
+      "topics": ["privacy", "privacy"]
+    },
+    {
+      "type": "topic",
       "title": "private ai",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/private-ai/",
       "topics": ["private-ai", "private ai"]
+    },
+    {
+      "type": "topic",
+      "title": "programming",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/programming/",
+      "topics": ["programming", "programming"]
+    },
+    {
+      "type": "topic",
+      "title": "property",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/property/",
+      "topics": ["property", "property"]
+    },
+    {
+      "type": "topic",
+      "title": "property & real estate",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/property-real-estate/",
+      "topics": ["property-real-estate", "property & real estate"]
     },
     {
       "type": "topic",
@@ -1373,12 +1040,39 @@
     },
     {
       "type": "topic",
+      "title": "public systems",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/public-system/",
+      "topics": ["public-system", "public systems"]
+    },
+    {
+      "type": "topic",
       "title": "python",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/python/",
       "topics": ["python", "python"]
+    },
+    {
+      "type": "topic",
+      "title": "recruitment",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/recruitment/",
+      "topics": ["recruitment", "recruitment"]
+    },
+    {
+      "type": "topic",
+      "title": "regulation",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/regulation/",
+      "topics": ["regulation", "regulation"]
     },
     {
       "type": "topic",
@@ -1391,12 +1085,39 @@
     },
     {
       "type": "topic",
+      "title": "research",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/research/",
+      "topics": ["research", "research"]
+    },
+    {
+      "type": "topic",
+      "title": "resilience",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/resilience/",
+      "topics": ["resilience", "resilience"]
+    },
+    {
+      "type": "topic",
+      "title": "reward hacking",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/reward-hacking/",
+      "topics": ["reward-hacking", "reward hacking"]
+    },
+    {
+      "type": "topic",
       "title": "satellites",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/satellites/",
-      "topics": ["satellites", "satellites"]
+      "url": "/topics/satellite/",
+      "topics": ["satellite", "satellites"]
     },
     {
       "type": "topic",
@@ -1404,8 +1125,53 @@
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/schools/",
-      "topics": ["schools", "schools"]
+      "url": "/topics/school/",
+      "topics": ["school", "schools"]
+    },
+    {
+      "type": "topic",
+      "title": "science",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/science/",
+      "topics": ["science", "science"]
+    },
+    {
+      "type": "topic",
+      "title": "science fiction",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/science-fiction/",
+      "topics": ["science-fiction", "science fiction"]
+    },
+    {
+      "type": "topic",
+      "title": "scientific evidence",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/scientific-evidence/",
+      "topics": ["scientific-evidence", "scientific evidence"]
+    },
+    {
+      "type": "topic",
+      "title": "search",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/search/",
+      "topics": ["search", "search"]
+    },
+    {
+      "type": "topic",
+      "title": "security",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/security/",
+      "topics": ["security", "security"]
     },
     {
       "type": "topic",
@@ -1418,12 +1184,57 @@
     },
     {
       "type": "topic",
+      "title": "social media",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/social-media/",
+      "topics": ["social-media", "social media"]
+    },
+    {
+      "type": "topic",
+      "title": "software",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/software/",
+      "topics": ["software", "software"]
+    },
+    {
+      "type": "topic",
       "title": "software engineering",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/software-engineering/",
       "topics": ["software-engineering", "software engineering"]
+    },
+    {
+      "type": "topic",
+      "title": "space",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/space/",
+      "topics": ["space", "space"]
+    },
+    {
+      "type": "topic",
+      "title": "space exploration",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/space-exploration/",
+      "topics": ["space-exploration", "space exploration"]
+    },
+    {
+      "type": "topic",
+      "title": "sql",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/sql/",
+      "topics": ["sql", "sql"]
     },
     {
       "type": "topic",
@@ -1436,6 +1247,15 @@
     },
     {
       "type": "topic",
+      "title": "surveillance",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/surveillance/",
+      "topics": ["surveillance", "surveillance"]
+    },
+    {
+      "type": "topic",
       "title": "technical debt",
       "summary": "1 participating sites",
       "domain": "",
@@ -1445,12 +1265,48 @@
     },
     {
       "type": "topic",
+      "title": "technology",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/technology/",
+      "topics": ["technology", "technology"]
+    },
+    {
+      "type": "topic",
+      "title": "testing",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/testing/",
+      "topics": ["testing", "testing"]
+    },
+    {
+      "type": "topic",
+      "title": "trade",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/trade/",
+      "topics": ["trade", "trade"]
+    },
+    {
+      "type": "topic",
       "title": "typescript",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/typescript/",
       "topics": ["typescript", "typescript"]
+    },
+    {
+      "type": "topic",
+      "title": "united states",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/united-states/",
+      "topics": ["united-states", "united states"]
     },
     {
       "type": "topic",
@@ -1467,8 +1323,17 @@
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/video-games/",
-      "topics": ["video-games", "video games"]
+      "url": "/topics/video-game/",
+      "topics": ["video-game", "video games"]
+    },
+    {
+      "type": "topic",
+      "title": "visualization",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/visualization/",
+      "topics": ["visualization", "visualization"]
     },
     {
       "type": "topic",
@@ -1481,12 +1346,48 @@
     },
     {
       "type": "topic",
+      "title": "wearable ai",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/wearable-ai/",
+      "topics": ["wearable-ai", "wearable ai"]
+    },
+    {
+      "type": "topic",
+      "title": "web development",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/web-development/",
+      "topics": ["web-development", "web development"]
+    },
+    {
+      "type": "topic",
       "title": "wordpress",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/wordpress/",
       "topics": ["wordpress", "wordpress"]
+    },
+    {
+      "type": "topic",
+      "title": "writing",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/writing/",
+      "topics": ["writing", "writing"]
+    },
+    {
+      "type": "topic",
+      "title": "youtube",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/youtube/",
+      "topics": ["youtube", "youtube"]
     },
     {
       "type": "content",

@@ -522,3 +522,32 @@ export async function crawlOrigin(origin, options = {}) {
     html_subjects: [],
   };
 }
+
+/**
+ * Record for one origin that failed to crawl. Other origins keep their data.
+ * @param {string} origin
+ * @param {string} now
+ * @param {unknown} error
+ * @returns {Record<string, unknown>}
+ */
+export function originFailureSignal(origin, now, error) {
+  return {
+    origin,
+    crawled_at: now,
+    coverage: {
+      pages_discovered: 0,
+      pages_fetched: 0,
+      fetch_limit: MAX_PAGES_PER_ORIGIN,
+      limit_reached: false,
+      selection_strategy: "bounded-site-crawl-v1",
+    },
+    pages: [],
+    declared_topics: [],
+    subject_signals: [],
+    subjects: [],
+    outbound_links: [],
+    community_slugs: [],
+    stats: {},
+    error: error instanceof Error ? error.message : String(error),
+  };
+}

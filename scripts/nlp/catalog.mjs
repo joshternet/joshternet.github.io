@@ -1,10 +1,8 @@
 /**
  * Goal & Constraints:
- * Build a repeatable topic lexicon from the richest publisher catalog
- * (joshuamorris.info when it participates) and match it against other
- * members’ titles and summaries, including sites with no structured metadata.
- * Nightly nlp:sync rebuilds this as membership changes. Does not invent
- * connections.
+ * Build a topic lexicon from every participating publisher's declared
+ * subjects. No origin is a preferred vocabulary. Match that lexicon against
+ * other members' titles and summaries. Does not invent connections.
  */
 
 import {
@@ -14,29 +12,17 @@ import {
 } from "./evidence.mjs";
 import { itemMentionsTopic } from "./match.mjs";
 
-/** Preferred catalog origin while it remains a Network participant. */
+/** Historical participant URL. Not a vocabulary authority. */
 export const CATALOG_SEED_ORIGIN = "https://joshuamorris.info";
 
 /**
- * Origin whose declared topics seed the network-wide search list.
- * Falls back to the participant with the most declared subjects.
+ * Origin with the most declared subjects. Ties break on origin string.
+ * This does not grant that origin authority over other publishers' labels.
  * @param {Array<{origin?: string, declared_topics?: unknown}>} originSignals
  * @returns {string}
  */
 export function selectCatalogOrigin(originSignals) {
   const list = Array.isArray(originSignals) ? originSignals : [];
-  const present = new Set(
-    list
-      .map((entry) =>
-        entry && typeof entry.origin === "string" ? entry.origin : "",
-      )
-      .filter(Boolean),
-  );
-
-  if (present.has(CATALOG_SEED_ORIGIN)) {
-    return CATALOG_SEED_ORIGIN;
-  }
-
   let best = "";
   let bestCount = -1;
 
@@ -55,13 +41,13 @@ export function selectCatalogOrigin(originSignals) {
         !isNonSubjectSlug(topic.slug),
     ).length;
 
-    if (count > bestCount) {
+    if (count > bestCount || (count === bestCount && entry.origin < best)) {
       bestCount = count;
       best = entry.origin;
     }
   }
 
-  return best;
+  return bestCount > 0 ? best : "";
 }
 
 /**
@@ -163,8 +149,65 @@ export function mergeCatalogs(originSignals, contentItems, origin) {
 }
 
 /**
- * Attach catalog matches as heuristic, community-eligible evidence on origins
- * that mention the subject in indexed writing.
+ * Declared subjects from every participant, sorted by slug.
+ * Input order does not change the result.
+ * @param {Array<Record<string, unknown>>} originSignals
+ * @param {Array<Record<string, unknown>>} contentItems
+ * @returns {Array<{slug: string, label: string}>}
+ */
+export function networkCatalog(originSignals, contentItems) {
+  const origins = [
+    ...new Set(
+      (originSignals || [])
+        .map((entry) =>
+          entry && typeof entry.origin === "string" ? entry.origin : "",
+        )
+        .filter(Boolean),
+    ),
+  ].sort();
+  const bySlug = new Map();
+
+  for (const origin of origins) {
+    for (const topic of mergeCatalogs(originSignals, contentItems, origin)) {
+      if (!bySlug.has(topic.slug)) {
+        bySlug.set(topic.slug, topic);
+      }
+    }
+  }
+
+  return [...bySlug.values()].sort((left, right) =>
+    left.slug.localeCompare(right.slug),
+  );
+}
+
+/**
+ * A catalog mention is community-eligible from a title or from two items.
+ * One summary mention is not enough.
+ * @param {Array<Record<string, unknown>>} hits
+ * @param {{slug: string, label: string}} topic
+ * @returns {boolean}
+ */
+function catalogMentionQualifies(hits, topic) {
+  if (hits.length >= 2) {
+    return true;
+  }
+
+  return hits.some((item) =>
+    itemMentionsTopic(
+      {
+        title: item.title,
+        summary: "",
+        declared_topics: [],
+      },
+      topic.slug,
+      topic.label,
+    ),
+  );
+}
+
+/**
+ * Attach catalog matches as heuristic evidence on origins that mention the
+ * subject in indexed writing. A single summary mention stays ineligible.
  * @param {Array<Record<string, unknown>>} originSignals
  * @param {Array<Record<string, unknown>>} contentItems
  * @param {Array<{slug: string, label: string}>} catalog
@@ -221,6 +264,7 @@ export function applyCatalogMatches(
         continue;
       }
 
+      const qualifies = catalogMentionQualifies(hits, topic);
       const evidence = hits
         .slice(0, 8)
         .map((item) =>
@@ -229,7 +273,7 @@ export function applyCatalogMatches(
             source: "catalog-match",
             page: typeof item.url === "string" ? item.url : "",
             evidenceClass: "heuristic",
-            communityEligible: true,
+            communityEligible: qualifies,
             observedAt,
             count: hits.length,
           }),
@@ -237,7 +281,7 @@ export function applyCatalogMatches(
         .filter(Boolean);
 
       if (existing) {
-        existing.community_eligible = true;
+        existing.community_eligible = qualifies;
         existing.evidence_class = "heuristic";
         existing.sources = [
           ...new Set([...(existing.sources || []), "catalog-match"]),
@@ -255,7 +299,7 @@ export function applyCatalogMatches(
         slug: topic.slug,
         label: topic.label,
         evidence_class: "heuristic",
-        community_eligible: true,
+        community_eligible: qualifies,
         sources: ["catalog-match"],
         evidence_count: evidence.length,
         evidence,

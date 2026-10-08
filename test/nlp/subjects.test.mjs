@@ -85,7 +85,7 @@ test("subjectsFromHtml: topic-hub link with bare trailing count uses URL slug", 
     !subjects.find((s) => s.slug === "privacy-45"),
     "must not invent privacy-45 from link text",
   );
-  assert.ok(subjects.find((s) => s.slug === "books"));
+  assert.ok(subjects.find((s) => s.slug === "book"));
 });
 
 test("subjectsFromHtml: topic-hub link with no text uses slug as label", () => {

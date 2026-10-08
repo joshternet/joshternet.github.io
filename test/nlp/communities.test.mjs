@@ -67,6 +67,17 @@ test("loadAliasMap: self-alias (from === to after slugify) is skipped", () => {
   assert.equal(map.size, 0);
 });
 
+test("loadAliasMap: a broader relationship filed as an alias is not merged", () => {
+  const map = loadAliasMap({
+    aliases: [
+      { from: "privacy", to: "surveillance", kind: "broader" },
+      { from: "postgres", to: "postgresql", kind: "equivalent" },
+    ],
+  });
+  assert.equal(map.size, 1);
+  assert.equal(map.get("postgres"), "postgresql");
+});
+
 test("loadAliasMap: empty slugs are skipped", () => {
   const map = loadAliasMap({
     aliases: [{ from: "   ", to: "ai" }],
@@ -108,6 +119,14 @@ test("loadDenylist: entry with empty slug after slugify is skipped", () => {
     entries: [{ slug: "   " }],
   });
   assert.equal(set.size, 0);
+});
+
+test("loadDenylist: a plural slug also blocks the folded form", () => {
+  const set = loadDenylist({
+    entries: [{ slug: "Agents" }],
+  });
+  assert.ok(set.has("agents"));
+  assert.ok(set.has("agent"));
 });
 
 // ─── resolveAlias ─────────────────────────────────────────────────────────────

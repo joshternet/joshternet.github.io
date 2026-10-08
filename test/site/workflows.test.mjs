@@ -32,6 +32,7 @@ test("network-sync keeps hourly and registry triggers plus sync steps", async ()
   assert.match(sync, /npm run network:sync/);
   assert.match(sync, /npm run nlp:sync/);
   assert.match(sync, /npm run nlp:validate/);
+  assert.match(sync, /npm run nlp:quality/);
   assert.match(sync, /npm run format:data/);
 });
 
@@ -89,4 +90,20 @@ test("seed-nominations Worker workflow matches the other public Workers", async 
   assert.match(workflow, /npm ci/);
   assert.match(workflow, /npm test/);
   assert.match(workflow, /npm run check/);
+});
+
+test("production smoke is scheduled and is not a pull request check", async () => {
+  const workflow = await read(".github/workflows/production-smoke.yml");
+
+  assert.match(workflow, /schedule:/);
+  assert.match(workflow, /workflow_dispatch:/);
+  assert.doesNotMatch(workflow, /pull_request:/);
+  assert.match(workflow, /https:\/\/joshternet\.org\//);
+  assert.match(workflow, /latest_declaration_check_at/);
+  assert.match(workflow, /hours=6/);
+  assert.match(workflow, /button-state/);
+  assert.match(workflow, /declaration-check/);
+  assert.match(workflow, /seed-nominations/);
+  assert.match(workflow, /http-message-signatures-directory/);
+  assert.doesNotMatch(workflow, /secrets\./);
 });

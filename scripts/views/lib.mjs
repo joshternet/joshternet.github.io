@@ -439,6 +439,86 @@ function compactTopicArticle(item) {
 }
 
 /**
+ * Round-robin articles across publishers so one site does not fill the list.
+ * Origins are alphabetical. Within an origin, the incoming order is kept.
+ * @param {Array<Record<string, unknown>>} items
+ * @param {number} limit
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function fairTopicArticles(items, limit) {
+  const groups = new Map();
+
+  for (const item of items || []) {
+    if (!item || typeof item !== "object") {
+      continue;
+    }
+
+    const key = typeof item.site_origin === "string" ? item.site_origin : "";
+    const list = groups.get(key) || [];
+    list.push(item);
+    groups.set(key, list);
+  }
+
+  const keys = [...groups.keys()].sort();
+  /** @type {Array<Record<string, unknown>>} */
+  const recent = [];
+  let index = 0;
+
+  while (recent.length < limit) {
+    let added = false;
+
+    for (const key of keys) {
+      const list = groups.get(key);
+      const item = list[index];
+
+      if (!item) {
+        continue;
+      }
+
+      recent.push(item);
+      added = true;
+
+      if (recent.length >= limit) {
+        break;
+      }
+    }
+
+    if (!added) {
+      break;
+    }
+
+    index += 1;
+  }
+
+  return recent;
+}
+
+/**
+ * Curated broader and related slugs on a community.
+ * These are links, not extra members.
+ * @param {Record<string, unknown>} community
+ * @returns {string[]}
+ */
+function relationshipTargets(community) {
+  const relationships = community.relationships;
+
+  if (!relationships || typeof relationships !== "object") {
+    return [];
+  }
+
+  const broader = Array.isArray(relationships.broader)
+    ? relationships.broader
+    : [];
+  const related = Array.isArray(relationships.related)
+    ? relationships.related
+    : [];
+
+  return [...broader, ...related].filter(
+    (slug) => typeof slug === "string" && slug,
+  );
+}
+
+/**
  * Undirected participant pairs that share a public topic with articles on
  * both sites. Presentation only; never written to connections.json.
  * Groups by topic, with each origin's own posts and the other members indented.
@@ -884,6 +964,27 @@ export function buildViewDocuments(input) {
           content_count: pair.content_count,
         };
       });
+
+    for (const slug of relationshipTargets(community)) {
+      if (related.some((item) => item.slug === slug)) {
+        continue;
+      }
+
+      const otherCommunity = communities.find((item) => item.slug === slug);
+
+      if (!otherCommunity) {
+        continue;
+      }
+
+      related.push({
+        slug,
+        label:
+          typeof otherCommunity.label === "string" && otherCommunity.label
+            ? otherCommunity.label
+            : slug,
+        content_count: 0,
+      });
+    }
     const memberOrigins = new Set();
 
     for (const member of community.sites) {
@@ -934,15 +1035,11 @@ export function buildViewDocuments(input) {
         (member) => member.articles.length > 0 && sites.has(member.origin),
       );
 
-    members.sort((left, right) => {
-      const count = right.occurrence_count - left.occurrence_count;
-
-      if (count !== 0) {
-        return count;
-      }
-
-      return String(left.title).localeCompare(String(right.title));
-    });
+    members.sort((left, right) =>
+      String(left.domain || left.title).localeCompare(
+        String(right.domain || right.title),
+      ),
+    );
 
     const occurrence_count = members.reduce(
       (total, member) => total + member.occurrence_count,
@@ -956,7 +1053,7 @@ export function buildViewDocuments(input) {
       occurrence_count,
       last_changed_at: community.last_changed_at || "",
       related_discoveries: community.related_discoveries || [],
-      recent: matching.slice(0, 12),
+      recent: fairTopicArticles(matching, 12),
       recent_count: matching.length,
       members,
       related,
@@ -967,21 +1064,9 @@ export function buildViewDocuments(input) {
     (neighborhood) => neighborhood.members.length > 0,
   );
 
-  neighborhoods.sort((left, right) => {
-    const occurrence = right.occurrence_count - left.occurrence_count;
-
-    if (occurrence !== 0) {
-      return occurrence;
-    }
-
-    const members = right.member_count - left.member_count;
-
-    if (members !== 0) {
-      return members;
-    }
-
-    return String(left.label).localeCompare(String(right.label));
-  });
+  neighborhoods.sort((left, right) =>
+    String(left.label).localeCompare(String(right.label)),
+  );
 
   const connectionTopics = connectionTopicOverlaps(neighborhoods);
 

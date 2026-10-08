@@ -188,5 +188,5 @@ test("direct-observation topic evidence still works without Octothorpes", () => 
     "https://a.example/post/",
   );
   const slugs = subjects.map((subject) => subject.slug).sort();
-  assert.deepEqual(slugs, ["essays", "photography", "travel"]);
+  assert.deepEqual(slugs, ["essay", "photography", "travel"]);
 });

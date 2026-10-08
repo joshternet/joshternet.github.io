@@ -112,6 +112,10 @@ jobs:
         if: steps.preflight.outputs.needs_sync == 'true'
         run: npm run nlp:validate
 
+      - name: Validate topic quality
+        if: steps.preflight.outputs.needs_sync == 'true'
+        run: npm run nlp:quality
+
       - name: Validate generated JSON
         if: steps.preflight.outputs.needs_sync == 'true'
         run: |

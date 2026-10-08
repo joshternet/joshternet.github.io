@@ -262,7 +262,9 @@ test("topic pages omit sites with no matching articles", () => {
           site_origin: "https://a.example",
           title: "A design note",
           published_at: "2026-10-01T00:00:00.000Z",
-          declared_topics: [{ slug: "design", label: "Design" }],
+          declared_topics: [
+            { slug: "design", label: "Design", community_eligible: true },
+          ],
         },
       ],
     },
@@ -1264,7 +1266,7 @@ test("buildViewDocuments: with connections and cooccurrence covers site views an
 
 // ─── neighborhoods member sort and community sort tie-breaks (lines 988-989, 1027-1028) ─
 
-test("buildViewDocuments: members sorted by occurrence; communities sorted by member_count when occurrence ties (lines 988-989, 1027-1028)", () => {
+test("buildViewDocuments: members and communities are alphabetical", () => {
   // This test drives two scenarios:
   // 1) Same community has 2 members with DIFFERENT occurrence counts → lines 988-989
   // 2) Two communities have the SAME occurrence_count but different member_count → lines 1027-1028
@@ -1409,18 +1411,18 @@ test("buildViewDocuments: members sorted by occurrence; communities sorted by me
   assert.ok(neighborhoods.length >= 1);
   assert.equal(neighborhoods[0].slug, "design");
 
-  // Within "design", a.example has 2 articles and b.example has 1 →
-  // member sort by occurrence fires (lines 988-989)
-  const designNeighborhood = neighborhoods[0];
+  // Publishers are listed by domain, not by how many articles they have.
+  const designNeighborhood = neighborhoods.find(
+    (item) => item.slug === "design",
+  );
   assert.ok(designNeighborhood.members.length >= 2);
   assert.equal(designNeighborhood.members[0].origin, "https://a.example");
+  assert.equal(designNeighborhood.members[1].origin, "https://b.example");
 
-  // "ux" and "minimal" both have occurrence=2 → member_count diff fires (lines 1027-1028)
   const uxIdx = neighborhoods.findIndex((n) => n.slug === "ux");
   const minIdx = neighborhoods.findIndex((n) => n.slug === "minimal");
   assert.ok(uxIdx >= 0 && minIdx >= 0);
-  // ux has member_count=2 > minimal member_count=1 → ux comes before minimal after design
-  assert.ok(uxIdx < minIdx);
+  assert.ok(minIdx < uxIdx);
 });
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -2378,4 +2380,182 @@ test("topicCooccurrence: caps presentation pairs", () => {
     publicSlugs,
   );
   assert.equal(pairs.length, MAX_COOCCURRENCE_PAIRS);
+});
+
+test("topic members with no domain sort by title", () => {
+  const views = buildViewDocuments({
+    network: [
+      { origin: "https://a.example", title: "Alpha" },
+      { origin: "https://b.example", title: "Beta" },
+    ],
+    content: {
+      items: [
+        {
+          url: "https://a.example/1",
+          site_origin: "https://a.example",
+          title: "A",
+          published_at: "2026-01-01T00:00:00.000Z",
+          declared_topics: [
+            { slug: "design", label: "Design", community_eligible: true },
+          ],
+        },
+        {
+          url: "https://b.example/1",
+          site_origin: "https://b.example",
+          title: "B",
+          published_at: "2026-01-02T00:00:00.000Z",
+          declared_topics: [
+            { slug: "design", label: "Design", community_eligible: true },
+          ],
+        },
+      ],
+    },
+    topics: {
+      communities: [
+        {
+          slug: "design",
+          label: "Design",
+          sites: [
+            {
+              origin: "https://a.example",
+              title: "Alpha",
+              membership: "declared",
+            },
+            {
+              origin: "https://b.example",
+              title: "Beta",
+              membership: "declared",
+            },
+          ],
+        },
+      ],
+    },
+    connections: {},
+    siteSignals: { origins: [] },
+    generatedAt: "2026-01-02T00:00:00.000Z",
+  });
+  const members = views.topic_views.neighborhoods[0].members;
+
+  assert.deepEqual(
+    members.map((member) => member.title),
+    ["Alpha", "Beta"],
+  );
+});
+
+test("topic pages include curated related subjects that are public", () => {
+  const views = buildViewDocuments({
+    network: [
+      { origin: "https://a.example", title: "Alpha" },
+      { origin: "https://b.example", title: "Beta" },
+    ],
+    content: {
+      items: [
+        {
+          url: "https://a.example/1",
+          site_origin: "https://a.example",
+          title: "A",
+          published_at: "2026-01-01T00:00:00.000Z",
+          declared_topics: [
+            { slug: "design", label: "Design", community_eligible: true },
+            { slug: "privacy", label: "Privacy", community_eligible: true },
+          ],
+        },
+      ],
+    },
+    topics: {
+      communities: [
+        {
+          slug: "design",
+          label: "Design",
+          relationships: {
+            broader: ["nolabel", "unlabeled"],
+            related: ["privacy", "art", "", 4, "missing"],
+          },
+          sites: [
+            {
+              origin: "https://a.example",
+              title: "Alpha",
+              membership: "declared",
+            },
+          ],
+        },
+        {
+          slug: "privacy",
+          label: "Privacy",
+          sites: [
+            {
+              origin: "https://a.example",
+              membership: "declared",
+            },
+          ],
+        },
+        {
+          slug: "art",
+          label: "Art",
+          sites: [
+            {
+              origin: "https://b.example",
+              membership: "declared",
+            },
+          ],
+        },
+        {
+          slug: "nolabel",
+          label: "",
+          sites: [
+            {
+              origin: "https://a.example",
+              membership: "declared",
+            },
+          ],
+        },
+        {
+          slug: "unlabeled",
+          sites: [
+            {
+              origin: "https://a.example",
+              membership: "declared",
+            },
+          ],
+        },
+        {
+          slug: "writing",
+          label: "Writing",
+          relationships: "nope",
+          sites: [
+            {
+              origin: "https://a.example",
+              membership: "declared",
+            },
+          ],
+        },
+        {
+          slug: "gardening",
+          label: "Gardening",
+          relationships: { broader: "privacy", related: null },
+          sites: [
+            {
+              origin: "https://b.example",
+              membership: "declared",
+            },
+          ],
+        },
+      ],
+    },
+    connections: {},
+    siteSignals: { origins: [] },
+    generatedAt: "2026-01-02T00:00:00.000Z",
+  });
+  const design = views.topic_views.neighborhoods.find(
+    (topic) => topic.slug === "design",
+  );
+
+  assert.deepEqual(
+    design.related.map((topic) => topic.slug),
+    ["privacy", "nolabel", "unlabeled", "art"],
+  );
+  assert.equal(
+    design.related.find((topic) => topic.slug === "nolabel").label,
+    "nolabel",
+  );
 });

@@ -8,6 +8,7 @@
 
 import { slugifyTopic } from "../network/connections.mjs";
 import { STOPWORDS } from "./lib.mjs";
+import { foldPluralSlug } from "./normalize.mjs";
 import {
   MAX_RAW_TOPIC_CHARS,
   capRemoteString,
@@ -18,7 +19,7 @@ import {
 
 export const EXTRACTOR_VERSION = {
   html: 1,
-  topics: 1,
+  topics: 2,
   relationships: 1,
   feeds: 1,
 };
@@ -491,6 +492,10 @@ export function heuristicQualifiesForCommunity(input) {
     return false;
   }
 
+  if (input?.contextual === false) {
+    return false;
+  }
+
   const df = Number(input?.df) || 0;
   const tf = Number(input?.tf) || 0;
 
@@ -525,11 +530,13 @@ export function buildTopicEvidence(input) {
   }
 
   const value = canonicalTopicLabel(rawValue);
-  const slug = slugifyTopic(value);
+  const unfolded = slugifyTopic(value);
+  const slug = foldPluralSlug(unfolded);
 
   if (
     !slug ||
     slug.length < 2 ||
+    isNonSubjectSlug(unfolded) ||
     isNonSubjectSlug(slug) ||
     isParserArtifactSlug(slug)
   ) {
@@ -547,6 +554,10 @@ export function buildTopicEvidence(input) {
 
   /** @type {string[]} */
   const transformations = ["trim", "case-normalize", "slugify"];
+
+  if (slug !== unfolded) {
+    transformations.push("plural-fold");
+  }
 
   if (rawValue !== value) {
     transformations.unshift("decoded");

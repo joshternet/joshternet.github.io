@@ -43,6 +43,20 @@ joshternet_analysis: derived
         {% endif %}
       {% endfor %}
     {% endif %}
+
+    {% assign related = topic.related | default: empty %}
+    {% if related.size > 0 %}
+      <nav class="topic-related" aria-label="Related topics">
+        <h2>Related topics</h2>
+        <ul>
+          {% for item in related %}
+            <li>
+              <a href="{{ '/topics/' | append: item.slug | append: '/' | relative_url }}">{{ item.label | escape }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endif %}
   </article>
 {% else %}
   <h1>{{ page.title | escape }}</h1>

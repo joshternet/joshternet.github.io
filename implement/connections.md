@@ -82,6 +82,10 @@ Below-threshold heuristic matches may appear as related discoveries. Qualifying
 heuristic evidence is ordinary membership. Profiles describe the **fetched
 corpus**, not every page ever published.
 
+Topic pages list members alphabetically and rotate recent articles across
+publishers. Related topics are subjects that share an indexed article, plus
+broader and related subjects.
+
 ## Connections
 
 Joshternet records **observed** directed relations between current
@@ -132,8 +136,8 @@ JoshternetNLP/1.0 (+https://joshternet.org; topic-hub build crawl)
 | Declared labels   | Microformats `p-category`, `article:tag`, feed categories                                                                                                            |
 | Topic directories | `/topics/`, `/tags/`, `/categories/` even when missing from `sitemap.xml`                                                                                            |
 | Writing indexes   | `/notes/`, `/blog/`, `/posts/`, `/now/`, `/friends/`, `/about/`, `/archive/`, and similar, also independent of the sitemap                                            |
-| Catalog source    | `joshuamorris.info` while it remains a member, otherwise the origin with the most declared subjects |
-| Catalog match     | Other members’ titles and summaries, after every origin is fetched. Sites without Microformats or JSON-LD can still contribute matching articles. |
+| Catalog source    | Declared subjects from every participant, combined. No single site supplies the vocabulary.                                                                          |
+| Catalog match     | Other members’ titles and summaries, after every origin is fetched. Sites without Microformats or JSON-LD can still contribute matching articles.                   |
 | Feed cap          | 80 URLs per origin                                                                                                                                                   |
 | Heuristic TF–IDF  | Persist as signals; public community enrollment only when the quality bar passes                                                                                     |
 
@@ -150,12 +154,6 @@ JoshternetNLP/1.0 (+https://joshternet.org; topic-hub build crawl)
 | Also runs              | Registry updates, scheduled sync, and relevant pushes                                                                                          |
 | Presentation views     | Published with the graph                                                                                                                       |
 | Repeat build           | Unchanged data stays in place when only a timestamp would change                                                                               |
-
-## Local directory probe
-
-`npm run nlp:probe-directory` fetches [joshing.you](https://joshing.you) listings, keeps origins whose `robots.txt` allows `JoshternetNLP/1.0`, samples up to 100 sites, reads homepage feeds, and checks the same content schema as `nlp:validate`. It is a local script, not the hourly registry job, and it does not publish Network data.
-
-`npm run nlp:scale-probe` walks every listing page, harvests robots-allowed member sites (skipping joshing.you itself), then replays the same parsers used by `nlp:sync` thousands of times. Use `--replay-only` after a harvest, or `--harvest` to refresh. It is local-only and does not publish Network data.
 
 See also the main [implementation guide](/implement/), the
 [Network](/network/), [Connections](/connections/), and [Topics](/topics/).

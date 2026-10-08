@@ -6,6 +6,7 @@
  */
 
 import { isNonSubjectSlug } from "./evidence.mjs";
+import { foldPluralSlug } from "./normalize.mjs";
 
 /**
  * True when title or summary names a topic slug/label as a whole phrase.
@@ -68,13 +69,21 @@ export function itemMentionsTopic(item, slug, label = "") {
     ? item.declared_topics
     : [];
 
-  if (declared.some((topic) => topic && topic.slug === slug)) {
+  if (
+    declared.some(
+      (topic) => topic && foldPluralSlug(topic.slug) === foldPluralSlug(slug),
+    )
+  ) {
     return true;
   }
 
   const tags = Array.isArray(item.tags) ? item.tags : [];
 
-  if (tags.some((topic) => topic && topic.slug === slug)) {
+  if (
+    tags.some(
+      (topic) => topic && foldPluralSlug(topic.slug) === foldPluralSlug(slug),
+    )
+  ) {
     return true;
   }
 
@@ -82,7 +91,11 @@ export function itemMentionsTopic(item, slug, label = "") {
     ? item.neighborhoods
     : [];
 
-  if (neighborhoods.some((topic) => topic && topic.slug === slug)) {
+  if (
+    neighborhoods.some(
+      (topic) => topic && foldPluralSlug(topic.slug) === foldPluralSlug(slug),
+    )
+  ) {
     return true;
   }
 

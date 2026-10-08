@@ -10,8 +10,15 @@ import {
   heuristicQualifiesForCommunity,
   isNonSubjectSlug,
   isParserArtifactSlug,
+  isSensitiveHeuristicSlug,
 } from "./evidence.mjs";
 import { STOPWORDS, slugifyTopic } from "./lib.mjs";
+import {
+  AMBIGUOUS_UNIGRAMS,
+  allowsAmbiguousUnigram,
+  foldPluralSlug,
+  heuristicRejectionReason,
+} from "./normalize.mjs";
 import { normalizeExtractedText } from "./text.mjs";
 
 /**
@@ -51,6 +58,87 @@ export function candidatePhrases(tokens) {
 }
 
 /**
+ * Content tokens in one sentence, keeping original adjacency.
+ * Stopwords stay in the raw list so they cannot be jumped over.
+ * @param {string} sentence
+ * @returns {{raw: string[], content: string[]}}
+ */
+function sentenceTokens(sentence) {
+  const raw = normalizeExtractedText(sentence)
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, " ")
+    .split(/\s+/)
+    .filter(Boolean);
+  const content = raw.filter((token) => {
+    if (STOPWORDS.has(token)) {
+      return false;
+    }
+
+    if (AMBIGUOUS_UNIGRAMS.has(token)) {
+      return allowsAmbiguousUnigram(sentence, token);
+    }
+
+    return token.length > 2;
+  });
+
+  return { raw, content };
+}
+
+/**
+ * Unigrams and bigrams that respect sentence boundaries and stopwords.
+ * A bigram is emitted only when the two words were neighbors in the sentence.
+ * @param {string} text
+ * @returns {string[]}
+ */
+export function phrasesFromText(text) {
+  const sentences = String(text || "").split(/[.!?\n]+/);
+  /** @type {string[]} */
+  const phrases = [];
+
+  for (const sentence of sentences) {
+    const { raw, content } = sentenceTokens(sentence);
+
+    for (const token of content) {
+      phrases.push(token);
+    }
+
+    for (let index = 0; index < raw.length - 1; index += 1) {
+      const left = raw[index];
+      const right = raw[index + 1];
+
+      if (!content.includes(left) || !content.includes(right)) {
+        continue;
+      }
+
+      phrases.push(`${left} ${right}`);
+    }
+  }
+
+  return phrases;
+}
+
+/**
+ * True when a phrase is a multiword subject or appears in a page title.
+ * Frequency in the body is not context.
+ * @param {string} label
+ * @param {Map<string, string>} pages
+ * @returns {boolean}
+ */
+function phraseHasContext(label, pages) {
+  if (label.includes(" ")) {
+    return true;
+  }
+
+  const slug = foldPluralSlug(slugifyTopic(label));
+
+  return [...pages.values()].some((title) =>
+    tokenize(title).some(
+      (token) => foldPluralSlug(slugifyTopic(token)) === slug,
+    ),
+  );
+}
+
+/**
  * Extracts heuristic subject signals from pages (persistence thresholds applied).
  * @param {PageInput[]} pages
  * @param {{ minCount?: number, minPages?: number, limit?: number, observedAt?: string }} [options]
@@ -80,11 +168,11 @@ export function extractTopicsFromPages(pages, limitOrOptions = {}) {
     }
 
     documents += 1;
-    const phrases = candidatePhrases(tokenize(page.text));
+    const phrases = phrasesFromText(page.text);
     const unique = new Set();
 
     for (const phrase of phrases) {
-      const slug = slugifyTopic(phrase);
+      const slug = foldPluralSlug(slugifyTopic(phrase));
 
       if (
         !slug ||
@@ -125,7 +213,9 @@ export function extractTopicsFromPages(pages, limitOrOptions = {}) {
       const idf = Math.log(1 + documents / (1 + entry.df));
       const value = Number(((entry.tf / documents) * idf).toFixed(6));
       const inTitle = [...entry.pages.values()].some((title) =>
-        tokenize(title).some((token) => slugifyTopic(token) === slug),
+        tokenize(title).some(
+          (token) => foldPluralSlug(slugifyTopic(token)) === slug,
+        ),
       );
       const persist =
         entry.tf >= minCount ||
@@ -137,12 +227,17 @@ export function extractTopicsFromPages(pages, limitOrOptions = {}) {
         return null;
       }
 
-      const qualifies = heuristicQualifiesForCommunity({
-        slug,
-        tf: entry.tf,
-        df: entry.df,
-        evidence_class: "heuristic",
-      });
+      const boilerplate = documents >= 8 && entry.df / documents >= 0.8;
+      const contextual = phraseHasContext(entry.label, entry.pages);
+      const qualifies =
+        !boilerplate &&
+        heuristicQualifiesForCommunity({
+          slug,
+          tf: entry.tf,
+          df: entry.df,
+          evidence_class: "heuristic",
+          contextual,
+        });
 
       const evidenceItems = [...entry.pages.entries()]
         .filter(([url]) => url)
@@ -166,6 +261,15 @@ export function extractTopicsFromPages(pages, limitOrOptions = {}) {
         label: entry.label,
         evidence_class: "heuristic",
         community_eligible: qualifies,
+        status: qualifies ? "accepted" : "pending",
+        rejection_reason: qualifies
+          ? ""
+          : heuristicRejectionReason({
+              slug,
+              contextual,
+              boilerplate,
+              sensitive: isSensitiveHeuristicSlug(slug),
+            }),
         relevance: { method: "tfidf-v1", value },
         evidence_count: evidenceItems.length,
         evidence: evidenceItems,

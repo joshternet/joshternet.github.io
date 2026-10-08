@@ -26,12 +26,11 @@ nlp:sync
 
 ## Rules
 
-- Public neighborhoods come from published topics, declared article tags, and a catalog lexicon matched onto other members’ writing. One site with matching articles is enough; sites with none are omitted.
+- Public neighborhoods come from published topics, declared article tags, and the combined declared subjects of every participant. One site with matching articles is enough; sites with none are omitted. Members are alphabetical, and recent articles rotate across publishers.
 - What's New shows one latest item per origin, then newest first.
 - Explore's featured neighborhood is a UTC-date rotation over alphabetical slugs.
-- Related topics are co-tags on the same indexed content item.
+- Related topics are co-tags on the same indexed content item, plus curated broader and related links when that subject is public.
 - Search ranks title, topics, summary, and domain text only.
-- Development fixtures use `*.example.invalid` and Jekyll development only.
 
 ## Accessibility
 
