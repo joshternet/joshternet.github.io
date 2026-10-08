@@ -4,6 +4,7 @@
 
 ### Changed
 
+- Feed image and page meta parsing cover an empty itunes:image tag and a non-string meta document.
 - Feed posters stay limited to advertised media. An image that only appears inside the article body is not a card poster.
 - On a phone, What's New and Search cards put the poster above the title and description. On a tablet, those cards span the page width.
 - What's New and Search cards share one poster-column width, so titles and descriptions on cards with a poster line up down the page. A card with no poster spans the page, and its title and description use that full width.

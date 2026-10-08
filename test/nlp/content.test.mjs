@@ -202,6 +202,16 @@ test("feedImageFromXml: itunes:image with href", () => {
   );
 });
 
+test("feedImageFromXml: itunes:image with an empty tag still parses", () => {
+  assert.equal(
+    feedImageFromXml(
+      "<item><itunes:image></itunes:image></item>",
+      "https://a.example/rss.xml",
+    ),
+    "",
+  );
+});
+
 test("feedImageFromXml: link rel=enclosure with image type", () => {
   const chunk = `<item><link rel="enclosure" type="image/png" href="https://a.example/img.png" /></item>`;
   assert.equal(

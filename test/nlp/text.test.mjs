@@ -309,6 +309,7 @@ test("posterImageFromHtml prefers og:image and resolves a relative URL", () => {
   assert.equal(posterImageFromHtml(""), "");
   assert.equal(metaContent("", "og:image"), "");
   assert.equal(metaContent("<meta>", ""), "");
+  assert.equal(metaContent(null, "og:image"), "");
 });
 
 test("posterImageFromHtml rejects an unparseable poster URL", () => {
