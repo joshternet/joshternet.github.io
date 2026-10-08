@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-08T04:15:48.068Z",
+  "generated_at": "2026-10-08T06:19:07.917Z",
   "sites": [
     {
       "origin": "https://joshghent.com",
@@ -24,14 +24,6 @@
       ],
       "community_topics": [
         {
-          "slug": "agent",
-          "label": "agent"
-        },
-        {
-          "slug": "agents",
-          "label": "agents"
-        },
-        {
           "slug": "ai",
           "label": "ai"
         },
@@ -44,7 +36,15 @@
           "label": "art"
         },
         {
-          "slug": "books",
+          "slug": "auth0",
+          "label": "auth0"
+        },
+        {
+          "slug": "aws",
+          "label": "aws"
+        },
+        {
+          "slug": "book",
           "label": "books"
         },
         {
@@ -52,12 +52,16 @@
           "label": "business"
         },
         {
-          "slug": "capacity",
-          "label": "capacity"
+          "slug": "database",
+          "label": "databases"
         },
         {
           "slug": "design",
           "label": "design"
+        },
+        {
+          "slug": "devop",
+          "label": "devops"
         },
         {
           "slug": "discovery",
@@ -66,6 +70,10 @@
         {
           "slug": "engineering",
           "label": "engineering"
+        },
+        {
+          "slug": "finance",
+          "label": "finance"
         },
         {
           "slug": "google",
@@ -84,12 +92,20 @@
           "label": "life"
         },
         {
+          "slug": "linkedin",
+          "label": "linkedin"
+        },
+        {
           "slug": "networking",
           "label": "networking"
         },
         {
           "slug": "open-source",
           "label": "open source"
+        },
+        {
+          "slug": "php",
+          "label": "php"
         },
         {
           "slug": "privacy",
@@ -106,6 +122,10 @@
         {
           "slug": "software",
           "label": "software"
+        },
+        {
+          "slug": "testing",
+          "label": "testing"
         },
         {
           "slug": "writing",
@@ -140,7 +160,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-08T04:15:20.733Z"
+      "crawled_at": "2026-10-08T06:17:32.386Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -156,28 +176,7 @@
           "label": "GitHub"
         }
       ],
-      "community_topics": [
-        {
-          "slug": "discovery",
-          "label": "discovery"
-        },
-        {
-          "slug": "identity",
-          "label": "identity"
-        },
-        {
-          "slug": "independent",
-          "label": "independent"
-        },
-        {
-          "slug": "infrastructure",
-          "label": "infrastructure"
-        },
-        {
-          "slug": "network",
-          "label": "network"
-        }
-      ],
+      "community_topics": [],
       "recent_content": null,
       "outgoing": [],
       "incoming": [
@@ -197,7 +196,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-08T04:15:20.733Z"
+      "crawled_at": "2026-10-08T06:17:32.386Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -236,20 +235,12 @@
           "label": "aws"
         },
         {
-          "slug": "blogging",
-          "label": "blogging"
-        },
-        {
-          "slug": "books",
+          "slug": "book",
           "label": "books"
         },
         {
           "slug": "career",
           "label": "career"
-        },
-        {
-          "slug": "city",
-          "label": "city"
         },
         {
           "slug": "command-line-interface",
@@ -264,12 +255,16 @@
           "label": "debian ubuntu"
         },
         {
-          "slug": "devops",
+          "slug": "devop",
           "label": "devops"
         },
         {
           "slug": "education",
           "label": "education"
+        },
+        {
+          "slug": "email",
+          "label": "email"
         },
         {
           "slug": "engineering",
@@ -296,20 +291,12 @@
           "label": "health fitness"
         },
         {
-          "slug": "hosting-domains",
+          "slug": "hosting-domain",
           "label": "hosting domains"
-        },
-        {
-          "slug": "infrastructure",
-          "label": "infrastructure"
         },
         {
           "slug": "javascript",
           "label": "javascript"
-        },
-        {
-          "slug": "law",
-          "label": "law"
         },
         {
           "slug": "life",
@@ -318,10 +305,6 @@
         {
           "slug": "linux",
           "label": "linux"
-        },
-        {
-          "slug": "llm",
-          "label": "llm"
         },
         {
           "slug": "marketing-advertising",
@@ -340,10 +323,6 @@
           "label": "nosql"
         },
         {
-          "slug": "open-source",
-          "label": "open source"
-        },
-        {
           "slug": "parenting",
           "label": "parenting"
         },
@@ -360,7 +339,7 @@
           "label": "security"
         },
         {
-          "slug": "servers-serverless",
+          "slug": "server-serverless",
           "label": "servers serverless"
         },
         {
@@ -388,7 +367,7 @@
           "label": "version control"
         },
         {
-          "slug": "video-games",
+          "slug": "video-game",
           "label": "video games"
         },
         {
@@ -400,7 +379,7 @@
           "label": "vps showdown"
         },
         {
-          "slug": "web-servers",
+          "slug": "web-server",
           "label": "web servers"
         },
         {
@@ -441,7 +420,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-08T04:15:20.733Z"
+      "crawled_at": "2026-10-08T06:17:32.386Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -490,19 +469,11 @@
       ],
       "community_topics": [
         {
-          "slug": "agent",
-          "label": "agent"
-        },
-        {
-          "slug": "agents",
-          "label": "agents"
-        },
-        {
           "slug": "ai",
           "label": "ai"
         },
         {
-          "slug": "ai-agents",
+          "slug": "ai-agent",
           "label": "ai agents"
         },
         {
@@ -530,7 +501,7 @@
           "label": "art"
         },
         {
-          "slug": "benchmarks",
+          "slug": "benchmark",
           "label": "benchmarks"
         },
         {
@@ -542,11 +513,11 @@
           "label": "blogging"
         },
         {
-          "slug": "books",
+          "slug": "book",
           "label": "books"
         },
         {
-          "slug": "browsers",
+          "slug": "browser",
           "label": "browsers"
         },
         {
@@ -562,10 +533,6 @@
           "label": "canada"
         },
         {
-          "slug": "capacity",
-          "label": "capacity"
-        },
-        {
           "slug": "career",
           "label": "career"
         },
@@ -574,20 +541,16 @@
           "label": "cars"
         },
         {
-          "slug": "chromebooks",
+          "slug": "chromebook",
           "label": "chromebooks"
         },
         {
-          "slug": "civil-liberties",
+          "slug": "civil-liberty",
           "label": "civil liberties"
         },
         {
           "slug": "community",
           "label": "community"
-        },
-        {
-          "slug": "company",
-          "label": "company"
         },
         {
           "slug": "computer-vision",
@@ -600,6 +563,10 @@
         {
           "slug": "consciousness",
           "label": "consciousness"
+        },
+        {
+          "slug": "consumer",
+          "label": "consumer"
         },
         {
           "slug": "consumer-protection",
@@ -618,11 +585,11 @@
           "label": "cyber deck"
         },
         {
-          "slug": "data-brokers",
+          "slug": "data-broker",
           "label": "data brokers"
         },
         {
-          "slug": "databases",
+          "slug": "database",
           "label": "databases"
         },
         {
@@ -630,11 +597,11 @@
           "label": "design"
         },
         {
-          "slug": "developer-tools",
+          "slug": "developer-tool",
           "label": "developer tools"
         },
         {
-          "slug": "digital-rights",
+          "slug": "digital-right",
           "label": "digital rights"
         },
         {
@@ -674,7 +641,11 @@
           "label": "executive power"
         },
         {
-          "slug": "financial-markets",
+          "slug": "finance",
+          "label": "finance"
+        },
+        {
+          "slug": "financial-market",
           "label": "financial markets"
         },
         {
@@ -702,10 +673,6 @@
           "label": "health"
         },
         {
-          "slug": "independent",
-          "label": "independent"
-        },
-        {
           "slug": "independent-web",
           "label": "independent web"
         },
@@ -718,7 +685,7 @@
           "label": "infrastructure"
         },
         {
-          "slug": "institutions",
+          "slug": "institution",
           "label": "institutions"
         },
         {
@@ -726,7 +693,7 @@
           "label": "intellectual property"
         },
         {
-          "slug": "interactive-essays",
+          "slug": "interactive-essay",
           "label": "interactive essays"
         },
         {
@@ -734,7 +701,7 @@
           "label": "internet culture"
         },
         {
-          "slug": "internet-of-things",
+          "slug": "internet-of-thing",
           "label": "internet of things"
         },
         {
@@ -770,24 +737,12 @@
           "label": "machine learning"
         },
         {
-          "slug": "magazine",
-          "label": "magazine"
-        },
-        {
           "slug": "medical-research",
           "label": "medical research"
         },
         {
           "slug": "mentorship",
           "label": "mentorship"
-        },
-        {
-          "slug": "money",
-          "label": "money"
-        },
-        {
-          "slug": "network",
-          "label": "network"
         },
         {
           "slug": "networking",
@@ -834,8 +789,8 @@
           "label": "philosophy"
         },
         {
-          "slug": "postgres",
-          "label": "postgres"
+          "slug": "policy",
+          "label": "policy"
         },
         {
           "slug": "postgresql",
@@ -862,7 +817,7 @@
           "label": "propulsion"
         },
         {
-          "slug": "public-systems",
+          "slug": "public-system",
           "label": "public systems"
         },
         {
@@ -890,11 +845,11 @@
           "label": "reward hacking"
         },
         {
-          "slug": "satellites",
+          "slug": "satellite",
           "label": "satellites"
         },
         {
-          "slug": "schools",
+          "slug": "school",
           "label": "schools"
         },
         {
@@ -962,6 +917,10 @@
           "label": "technology"
         },
         {
+          "slug": "testing",
+          "label": "testing"
+        },
+        {
           "slug": "trade",
           "label": "trade"
         },
@@ -974,7 +933,7 @@
           "label": "user experience"
         },
         {
-          "slug": "video-games",
+          "slug": "video-game",
           "label": "video games"
         },
         {
@@ -1047,7 +1006,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-08T04:15:20.733Z"
+      "crawled_at": "2026-10-08T06:17:32.386Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -1085,7 +1044,7 @@
           "label": "ai"
         },
         {
-          "slug": "analytics",
+          "slug": "analytic",
           "label": "analytics"
         },
         {
@@ -1109,10 +1068,6 @@
           "label": "customer service"
         },
         {
-          "slug": "data",
-          "label": "data"
-        },
-        {
           "slug": "design",
           "label": "design"
         },
@@ -1131,10 +1086,6 @@
         {
           "slug": "email",
           "label": "email"
-        },
-        {
-          "slug": "engineering",
-          "label": "engineering"
         },
         {
           "slug": "facebook",
@@ -1163,10 +1114,6 @@
         {
           "slug": "health-fitness",
           "label": "health fitness"
-        },
-        {
-          "slug": "identity",
-          "label": "identity"
         },
         {
           "slug": "javascript-typescript",
@@ -1225,15 +1172,11 @@
           "label": "social media"
         },
         {
-          "slug": "software",
-          "label": "software"
-        },
-        {
           "slug": "software-engineering",
           "label": "software engineering"
         },
         {
-          "slug": "team-dynamics",
+          "slug": "team-dynamic",
           "label": "team dynamics"
         },
         {
@@ -1247,6 +1190,10 @@
         {
           "slug": "twitter",
           "label": "twitter"
+        },
+        {
+          "slug": "typescript",
+          "label": "typescript"
         },
         {
           "slug": "web-strategy",
@@ -1273,8 +1220,8 @@
         "domain": "www.joshcanhelp.com",
         "tags": [],
         "neighborhoods": [],
-        "image": "/assets/activity/posters/49f4c342fe2daee21aa6a6396bd4de1aec2a45464a48416f5f701cb11ff727cb.webp",
-        "image_origin": ""
+        "image": "https://www.joshcanhelp.com/_images/2025/sammy_sandwich_robot_THUMB.jpeg",
+        "image_origin": "https://www.joshcanhelp.com"
       },
       "outgoing": [],
       "incoming": [],
@@ -1285,7 +1232,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-08T04:15:20.733Z"
+      "crawled_at": "2026-10-08T06:17:32.386Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -1327,8 +1274,8 @@
           "label": "ai"
         },
         {
-          "slug": "apple",
-          "label": "apple"
+          "slug": "ai-agent",
+          "label": "ai agents"
         },
         {
           "slug": "arts-culture",
@@ -1347,16 +1294,8 @@
           "label": "charity & nonprofit"
         },
         {
-          "slug": "city",
-          "label": "city"
-        },
-        {
-          "slug": "communications-pr",
+          "slug": "communication-pr",
           "label": "communications & pr"
-        },
-        {
-          "slug": "company",
-          "label": "company"
         },
         {
           "slug": "consumer",
@@ -1367,20 +1306,12 @@
           "label": "creative & design"
         },
         {
-          "slug": "data",
-          "label": "data"
-        },
-        {
           "slug": "design",
           "label": "design"
         },
         {
           "slug": "education",
           "label": "education"
-        },
-        {
-          "slug": "engineering",
-          "label": "engineering"
         },
         {
           "slug": "fashion-retail",
@@ -1407,14 +1338,6 @@
           "label": "hospitality"
         },
         {
-          "slug": "law",
-          "label": "law"
-        },
-        {
-          "slug": "magazine",
-          "label": "magazine"
-        },
-        {
           "slug": "marketing",
           "label": "marketing"
         },
@@ -1423,8 +1346,8 @@
           "label": "media & publishing"
         },
         {
-          "slug": "network",
-          "label": "network"
+          "slug": "money",
+          "label": "money"
         },
         {
           "slug": "nonprofit",
@@ -1501,7 +1424,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-08T04:15:20.733Z",
+      "crawled_at": "2026-10-08T06:17:32.386Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 145,

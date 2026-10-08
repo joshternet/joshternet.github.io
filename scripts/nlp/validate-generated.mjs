@@ -12,7 +12,9 @@ import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 
 import { itemsFromCollection } from "../network/collections.mjs";
+import { loadAliasMap, resolveAlias } from "./communities.mjs";
 import { evidenceIdentityKey } from "./evidence.mjs";
+import { foldPluralSlug } from "./normalize.mjs";
 
 const ROOT = process.cwd();
 const SCHEMAS_DIR = path.join(ROOT, "schemas");
@@ -106,6 +108,18 @@ assertSchema("blogrolls", blogrolls);
 assertSchema("content", content);
 assertSchema("data_manifest", manifest);
 
+const aliases = loadAliasMap(readJSON("_data/topic_aliases.json"));
+
+/**
+ * Community slugs are folded and aliased. Publisher evidence keeps the
+ * original slug, so membership checks use the same canonical form.
+ * @param {unknown} slug
+ * @returns {string}
+ */
+function canonicalTopicSlug(slug) {
+  return resolveAlias(foldPluralSlug(String(slug || "")), aliases);
+}
+
 const topicList = itemsFromCollection(topics, "communities");
 const connectionList = itemsFromCollection(connections, "edges");
 const blogrollList = itemsFromCollection(blogrolls, "edges");
@@ -164,12 +178,17 @@ for (const topic of topicList) {
       );
     }
 
+    const topicSlug = canonicalTopicSlug(topic.slug);
     const declared = (origin.declared_topics || []).some(
-      (item) => item.slug === topic.slug && item.community_eligible === true,
+      (item) =>
+        item &&
+        canonicalTopicSlug(item.slug) === topicSlug &&
+        item.community_eligible === true,
     );
     const heuristic = (origin.subject_signals || []).some(
       (item) =>
-        item.slug === topic.slug &&
+        item &&
+        canonicalTopicSlug(item.slug) === topicSlug &&
         item.evidence_class === "heuristic" &&
         item.community_eligible === true,
     );
