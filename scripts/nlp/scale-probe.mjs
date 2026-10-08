@@ -22,11 +22,7 @@ import {
 } from "../network/connections.mjs";
 import { sparseCollectionDocument } from "../network/collections.mjs";
 import { assertPublicURL } from "../network/lib.mjs";
-import {
-  applyCatalogMatches,
-  mergeCatalogs,
-  selectCatalogOrigin,
-} from "./catalog.mjs";
+import { applyCatalogMatches, networkCatalog } from "./catalog.mjs";
 import {
   buildTopicCommunities,
   loadAliasMap,
@@ -514,8 +510,7 @@ async function writeSyntheticGraph(parsed, now, aliases, denylist) {
   }));
   const contentDrafts = members.flatMap((entry) => entry.contentDrafts);
   const draftItems = mergeContentItems(contentDrafts);
-  const catalogOrigin = selectCatalogOrigin(communityOrigins);
-  const catalog = mergeCatalogs(communityOrigins, draftItems, catalogOrigin);
+  const catalog = networkCatalog(communityOrigins, draftItems);
   const matchedOrigins = applyCatalogMatches(
     communityOrigins,
     draftItems,

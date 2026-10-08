@@ -1,9 +1,9 @@
 /**
  * Goal & Constraints:
  * Full-site crawl + evidence-aware topic/content/connection rebuild.
- * Catalog lexicon from the richest publisher (joshuamorris.info when present)
- * is matched onto other members, including sites without structured metadata.
- * One-way pipeline: derived hub pages never become semantic evidence.
+ * Catalog lexicon is the union of every participant's declared subjects.
+ * No publisher is the vocabulary authority. One-way pipeline: derived hub
+ * pages never become semantic evidence.
  * Does not commit. Semantic hash skips timestamp-only churn when unchanged.
  */
 
@@ -23,12 +23,9 @@ import {
   sparseCollectionDocument,
 } from "../network/collections.mjs";
 import { buildViewProjections } from "../views/build.mjs";
+import { applyCatalogMatches, networkCatalog } from "./catalog.mjs";
 import {
-  applyCatalogMatches,
-  mergeCatalogs,
-  selectCatalogOrigin,
-} from "./catalog.mjs";
-import {
+  aliasCompatibilityMarkdown,
   buildTopicCommunities,
   loadAliasMap,
   loadDenylist,
@@ -40,12 +37,14 @@ import {
   joinContentWithPageSignals,
   mergeContentItems,
 } from "./content.mjs";
-import { crawlOrigin } from "./crawl.mjs";
+import { crawlOrigin, originFailureSignal } from "./crawl.mjs";
 import {
   isSensitiveHeuristicSlug,
   legacySubjectsFromSignals,
 } from "./evidence.mjs";
 import { extractTopicsFromPages } from "./extract.mjs";
+import { foldPluralSlug } from "./normalize.mjs";
+import { topicQualityReport } from "./quality.mjs";
 import { subjectsFromFeeds } from "./feeds.mjs";
 import {
   MAX_PAGES_PER_ORIGIN,
@@ -416,25 +415,7 @@ async function main() {
       process.stderr.write(
         `nlp failed ${origin}: ${error instanceof Error ? error.message : error}\n`,
       );
-      originSignals.push({
-        origin,
-        crawled_at: now,
-        coverage: {
-          pages_discovered: 0,
-          pages_fetched: 0,
-          fetch_limit: MAX_PAGES_PER_ORIGIN,
-          limit_reached: false,
-          selection_strategy: "bounded-site-crawl-v1",
-        },
-        pages: [],
-        declared_topics: [],
-        subject_signals: [],
-        subjects: [],
-        outbound_links: [],
-        community_slugs: [],
-        stats: {},
-        error: error instanceof Error ? error.message : String(error),
-      });
+      originSignals.push(originFailureSignal(origin, now, error));
       originLinks.push({ origin, links: [] });
       communityOrigins.push({
         origin,
@@ -447,8 +428,8 @@ async function main() {
   }
 
   const draftItems = mergeContentItems(contentDrafts);
-  const catalogOrigin = selectCatalogOrigin(communityOrigins);
-  const catalog = mergeCatalogs(communityOrigins, draftItems, catalogOrigin);
+  const aliasesDoc = await readJSONIfExists(ALIASES_PATH, { aliases: [] });
+  const catalog = networkCatalog(communityOrigins, draftItems);
   const matchedOrigins = applyCatalogMatches(
     communityOrigins,
     draftItems,
@@ -459,6 +440,7 @@ async function main() {
   const { communities, candidates } = buildTopicCommunities(matchedOrigins, {
     aliases,
     denylist,
+    aliasesDoc,
     previousTopics: Array.isArray(previousTopics) ? previousTopics : [],
     now,
   });
@@ -634,6 +616,19 @@ async function main() {
     return;
   }
 
+  const quality = topicQualityReport({
+    topics: topicsDoc,
+    content: contentDoc,
+    aliasesDoc,
+    previousTopics,
+  });
+
+  if (!quality.ok) {
+    process.stderr.write(`${JSON.stringify(quality.errors)}\n`);
+    process.exitCode = 1;
+    return;
+  }
+
   await writeJSONAtomic(SIGNALS_PATH, signalsDoc);
   await writeJSONAtomic(TOPICS_PATH, topicsDoc);
   await writeJSONAtomic(CONNECTIONS_PATH, connectionsDoc);
@@ -646,6 +641,32 @@ async function main() {
   await fs.mkdir(TOPICS_DIR, { recursive: true });
   const existing = await fs.readdir(TOPICS_DIR).catch(() => []);
   const desired = new Set(communities.map((topic) => `${topic.slug}.md`));
+
+  for (const [from, to] of aliases) {
+    if (desired.has(`${to}.md`) && !desired.has(`${from}.md`)) {
+      desired.add(`${from}.md`);
+    }
+  }
+
+  const pluralPages = [];
+
+  for (const prior of Array.isArray(previousTopics) ? previousTopics : []) {
+    const from = typeof prior?.slug === "string" ? prior.slug : "";
+    const to = foldPluralSlug(from);
+
+    if (
+      !from ||
+      !to ||
+      from === to ||
+      !desired.has(`${to}.md`) ||
+      desired.has(`${from}.md`)
+    ) {
+      continue;
+    }
+
+    desired.add(`${from}.md`);
+    pluralPages.push({ from, to });
+  }
 
   for (const file of existing) {
     if (file === "index.md") {
@@ -661,6 +682,25 @@ async function main() {
     await writeTextAtomic(
       path.join(TOPICS_DIR, `${topic.slug}.md`),
       topicCollectionMarkdown(topic),
+    );
+  }
+
+  for (const [from, to] of aliases) {
+    if (
+      communities.some((topic) => topic.slug === to) &&
+      !communities.some((topic) => topic.slug === from)
+    ) {
+      await writeTextAtomic(
+        path.join(TOPICS_DIR, `${from}.md`),
+        aliasCompatibilityMarkdown(from, to),
+      );
+    }
+  }
+
+  for (const page of pluralPages) {
+    await writeTextAtomic(
+      path.join(TOPICS_DIR, `${page.from}.md`),
+      aliasCompatibilityMarkdown(page.from, page.to),
     );
   }
 

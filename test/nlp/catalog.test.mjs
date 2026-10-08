@@ -1,5 +1,5 @@
 /**
- * Goal: Catalog lexicon from the richest publisher, matched onto other sites.
+ * Goal: Catalog lexicon from every participant, matched onto other sites.
  */
 import assert from "node:assert/strict";
 import test from "node:test";
@@ -10,20 +10,28 @@ import {
   catalogFromContent,
   catalogFromOrigin,
   mergeCatalogs,
+  networkCatalog,
   selectCatalogOrigin,
 } from "../../scripts/nlp/catalog.mjs";
 import { itemMentionsTopic } from "../../scripts/nlp/match.mjs";
 
-test("catalog origin prefers joshuamorris.info when it participates", () => {
+test("catalog origin does not prefer one publisher", () => {
   assert.equal(
     selectCatalogOrigin([
-      { origin: "https://joshtronic.com", declared_topics: [{ slug: "php" }] },
+      {
+        origin: "https://joshtronic.com",
+        declared_topics: [
+          { slug: "php" },
+          { slug: "privacy" },
+          { slug: "writing" },
+        ],
+      },
       {
         origin: CATALOG_SEED_ORIGIN,
-        declared_topics: [{ slug: "ai" }, { slug: "privacy" }],
+        declared_topics: [{ slug: "ai" }],
       },
     ]),
-    CATALOG_SEED_ORIGIN,
+    "https://joshtronic.com",
   );
 });
 
@@ -504,8 +512,8 @@ test("selectCatalogOrigin: entry with null declared_topics fires ': []' fallback
   const result = selectCatalogOrigin([
     { origin: "https://a.example", declared_topics: null },
   ]);
-  // null declared_topics → count = 0 > bestCount = -1 → still selected as best
-  assert.equal(result, "https://a.example");
+  // null declared_topics → no declared subjects → no catalog origin
+  assert.equal(result, "");
 });
 
 // catalogFromOrigin: null originSignals fires || [] (L74)
@@ -650,4 +658,130 @@ test("applyCatalogMatches: signal with null declared_topics fires || [] (L190)",
   assert.ok(Array.isArray(result));
   // declared_topics is null → declared set is empty → catalog match fires
   assert.equal(result.length, 1);
+});
+
+test("network catalog includes every participant and ignores input order", () => {
+  const first = [
+    {
+      origin: "https://b.example",
+      declared_topics: [{ slug: "privacy", label: "Privacy" }],
+    },
+    {
+      origin: "https://a.example",
+      declared_topics: [{ slug: "amateur-radio", label: "Amateur Radio" }],
+    },
+  ];
+  const second = [...first].reverse();
+
+  assert.deepEqual(
+    networkCatalog(first, []).map((topic) => topic.slug),
+    networkCatalog(second, []).map((topic) => topic.slug),
+  );
+  assert.deepEqual(
+    networkCatalog([null, { origin: 1 }], null).map((topic) => topic.slug),
+    [],
+  );
+  assert.deepEqual(
+    networkCatalog(null, null).map((topic) => topic.slug),
+    [],
+  );
+  assert.equal(
+    networkCatalog(
+      [
+        {
+          origin: "https://b.example",
+          declared_topics: [{ slug: "privacy", label: "Later" }],
+        },
+        {
+          origin: "https://a.example",
+          declared_topics: [{ slug: "privacy", label: "Privacy" }],
+        },
+      ],
+      [],
+    )[0].label,
+    "Privacy",
+  );
+});
+
+test("selectCatalogOrigin breaks ties by origin and ignores filler-only sites", () => {
+  assert.equal(
+    selectCatalogOrigin([
+      { origin: "https://b.example", declared_topics: [{ slug: "ai" }] },
+      { origin: "https://a.example", declared_topics: [{ slug: "law" }] },
+    ]),
+    "https://a.example",
+  );
+  assert.equal(
+    selectCatalogOrigin([
+      { origin: "https://a.example", declared_topics: [{ slug: "ai" }] },
+      { origin: "https://b.example", declared_topics: [{ slug: "law" }] },
+    ]),
+    "https://a.example",
+  );
+  assert.equal(
+    selectCatalogOrigin([
+      { origin: "https://a.example", declared_topics: [{ slug: "another" }] },
+    ]),
+    "",
+  );
+  assert.equal(
+    selectCatalogOrigin([
+      { origin: "", declared_topics: [{ slug: "ai" }] },
+      { origin: "https://a.example", declared_topics: [{ slug: "law" }] },
+    ]),
+    "https://a.example",
+  );
+});
+
+test("one summary mention does not make a catalog match public", () => {
+  const matched = applyCatalogMatches(
+    [
+      {
+        origin: "https://b.example",
+        declared_topics: [],
+        subject_signals: [],
+      },
+    ],
+    [
+      {
+        site_origin: "https://b.example",
+        url: "https://b.example/post",
+        title: "Hello",
+        summary: "privacy matters here",
+      },
+    ],
+    [{ slug: "privacy", label: "privacy" }],
+  );
+
+  assert.equal(matched[0].subject_signals[0].community_eligible, false);
+  assert.equal(matched[0].subject_signals[0].evidence_class, "heuristic");
+});
+
+test("two catalog mentions qualify without a title hit", () => {
+  const matched = applyCatalogMatches(
+    [
+      {
+        origin: "https://b.example",
+        declared_topics: [],
+        subject_signals: [],
+      },
+    ],
+    [
+      {
+        site_origin: "https://b.example",
+        url: "https://b.example/one",
+        title: "One",
+        summary: "privacy",
+      },
+      {
+        site_origin: "https://b.example",
+        url: "https://b.example/two",
+        title: "Two",
+        summary: "privacy",
+      },
+    ],
+    [{ slug: "privacy", label: "privacy" }],
+  );
+
+  assert.equal(matched[0].subject_signals[0].community_eligible, true);
 });

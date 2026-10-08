@@ -1753,6 +1753,46 @@ video {
   background: #ffffff;
 }
 
+.wander-embed {
+  display: flex;
+  flex-direction: column;
+  block-size: 100%;
+  min-block-size: 100%;
+}
+
+.wander-embed__notice {
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font: var(--type-small) var(--font-sans);
+}
+
+.wander-embed__stage {
+  position: relative;
+  flex: 1;
+  min-block-size: 0;
+}
+
+.wander-embed__poster {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.wander-embed .wander-frame {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+.wander-embed--ready .wander-embed__poster {
+  display: none;
+}
+
 .wander-empty {
   display: grid;
   min-block-size: 100%;

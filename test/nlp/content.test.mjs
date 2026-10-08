@@ -553,7 +553,7 @@ test("contentItemsFromRssOrAtom: RSS category as text content", () => {
     </item>
   </channel></rss>`;
   const items = contentItemsFromRssOrAtom(xml, RSS_META);
-  assert.ok(items[0].declared_topics.some((t) => t.slug === "books"));
+  assert.ok(items[0].declared_topics.some((t) => t.slug === "book"));
 });
 
 test("contentItemsFromRssOrAtom: image from enclosure", () => {

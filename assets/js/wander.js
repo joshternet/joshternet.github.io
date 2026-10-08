@@ -37,6 +37,9 @@
     "unknown",
   ]);
 
+  const linkNotice =
+    "Wander blocks links that leave that site, and Open opens the publisher's site in another tab.";
+
   let sites = [];
   let bag = [];
   let currentOrigin = null;
@@ -443,20 +446,43 @@
       site.origin.startsWith("https://") &&
       !isHubOrigin(site)
     ) {
+      const poster = site.screenshot
+        ? `<img class="wander-embed__poster" src="${escapeAttribute(site.screenshot)}" alt="">`
+        : "";
+
       stage.innerHTML = `
-                <iframe
-                    class="wander-frame"
-                    src="${escapeAttribute(site.origin)}"
-                    title="${escapeAttribute(site.title || site.domain)}"
-                    sandbox="allow-scripts"
-                    referrerpolicy="no-referrer"
-                ></iframe>
+                <div class="wander-embed">
+                    <p class="wander-embed__notice" data-wander-link-notice>${escapeHTML(linkNotice)}</p>
+                    <div class="wander-embed__stage">
+                        ${poster}
+                        <iframe
+                            class="wander-frame"
+                            src="${escapeAttribute(site.origin)}"
+                            title="${escapeAttribute(site.title || site.domain)}"
+                            sandbox="allow-scripts"
+                            referrerpolicy="no-referrer"
+                        ></iframe>
+                    </div>
+                </div>
             `;
+
+      const frame = stage.querySelector(".wander-frame");
+      const posterImage = stage.querySelector(".wander-embed__poster");
+
+      if (frame && posterImage) {
+        frame.addEventListener("load", () => {
+          stage
+            .querySelector(".wander-embed")
+            ?.classList.add("wander-embed--ready");
+        });
+      }
+
+      announce(linkNotice);
     } else {
       stage.innerHTML = fallbackMarkup(site);
+      announce(`Now viewing ${site.title || site.domain}.`);
     }
 
-    announce(`Now viewing ${site.title || site.domain}.`);
     persist();
   }
 

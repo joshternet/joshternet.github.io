@@ -11,6 +11,7 @@ import {
   isParserArtifactSlug,
 } from "./evidence.mjs";
 import { slugifyTopic, fetchPublicText, normalizeText } from "./lib.mjs";
+import { foldPluralSlug } from "./normalize.mjs";
 import { decodeHtmlEntities } from "./text.mjs";
 
 /**
@@ -42,7 +43,7 @@ export function subjectsFromRssOrAtom(xml, options = {}) {
       const label = canonicalTopicLabel(
         category[1] || category[3] || category[2] || "",
       );
-      const slug = slugifyTopic(label);
+      const slug = foldPluralSlug(slugifyTopic(label));
 
       if (!slug || isNonSubjectSlug(slug) || isParserArtifactSlug(slug)) {
         continue;
@@ -122,7 +123,7 @@ export function subjectsFromJsonFeed(jsonText, options = {}) {
       }
 
       const label = canonicalTopicLabel(tag);
-      const slug = slugifyTopic(label);
+      const slug = foldPluralSlug(slugifyTopic(label));
 
       if (!slug || isNonSubjectSlug(slug) || isParserArtifactSlug(slug)) {
         continue;

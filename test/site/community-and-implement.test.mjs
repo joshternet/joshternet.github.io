@@ -409,9 +409,10 @@ test("connections crawl page documents sync signals under Implement", async () =
   assert.match(page, /permalink: \/implement\/connections\//);
   assert.match(page, /type: TechArticle/);
   assert.match(page, /npm run nlp:sync/);
-  assert.match(page, /npm run nlp:probe-directory/);
-  assert.match(page, /npm run nlp:scale-probe/);
-  assert.match(page, /joshing\.you/);
+  assert.doesNotMatch(page, /nlp:probe-directory/);
+  assert.doesNotMatch(page, /nlp:scale-probe/);
+  assert.doesNotMatch(page, /joshing\.you/);
+  assert.doesNotMatch(page, /Local directory probe/);
   assert.match(page, /JoshternetNLP\/1\.0/);
   assert.match(page, /p-category/);
   assert.doesNotMatch(page, /octo:octothorpes/);
