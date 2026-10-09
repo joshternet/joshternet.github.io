@@ -119,6 +119,11 @@ test("nav keeps Wander top-level and nests About/Network children", async () => 
   assert.doesNotMatch(topics, /connections-toolbar__lead/);
   assert.doesNotMatch(connections, /connections-toolbar__actions/);
   assert.doesNotMatch(topicLayout, /Explore<\/a>/);
+  assert.match(topicLayout, /<h1 class="p-name">/);
+  assert.match(topicLayout, /aria-label="Related topics"/);
+  assert.match(topicLayout, /visually-hidden/);
+  assert.match(topics, /role="status"/);
+  assert.match(topics, /type="search"/);
   assert.doesNotMatch(networkPage, /network-toolbar__secondary/);
   assert.match(aboutNav, /title: Community/);
   assert.match(aboutNav, /path: \/community\//);

@@ -18,6 +18,7 @@ export const PLURAL_EXCEPTIONS = new Set([
   "acoustics",
   "alias",
   "analysis",
+  "analytics",
   "athletics",
   "atlas",
   "business",
@@ -25,6 +26,7 @@ export const PLURAL_EXCEPTIONS = new Set([
   "chaos",
   "classics",
   "css",
+  "devops",
   "economics",
   "ethics",
   "gas",
@@ -51,7 +53,7 @@ export const PLURAL_EXCEPTIONS = new Set([
  * Full slugs that must not be folded token by token.
  * @type {Set<string>}
  */
-const SLUG_EXCEPTIONS = new Set(["united-states"]);
+const SLUG_EXCEPTIONS = new Set(["internet-of-things", "united-states"]);
 
 /**
  * Short subjects whose lowercase form is not enough to publish a topic.

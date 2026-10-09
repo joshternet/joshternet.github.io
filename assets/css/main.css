@@ -1632,7 +1632,7 @@ video {
   margin: 0;
   padding: 0;
   min-block-size: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 /*
@@ -1744,11 +1744,17 @@ video {
   );
 }
 
+.wander-stage:has(.wander-embed) {
+  overflow: visible;
+}
+
 .wander-frame {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
   display: block;
   inline-size: 100%;
   block-size: 100%;
-  min-block-size: 100%;
   border: 0;
   background: #ffffff;
 }
@@ -1760,37 +1766,73 @@ video {
   min-block-size: 100%;
 }
 
-.wander-embed__notice {
-  margin: 0;
-  padding: 0.5rem 0.75rem;
+.wander-pointer-grid {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  display: grid;
+  pointer-events: none;
+}
+
+.wander-pointer-grid > div {
+  pointer-events: auto;
+}
+
+@media (pointer: coarse) {
+  .wander-pointer-grid {
+    display: none;
+  }
+}
+
+.wander-link-bubble {
+  position: absolute;
+  z-index: 3;
+  inset-block-start: 0.75rem;
+  inset-inline-start: 0.75rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  max-inline-size: min(28rem, calc(100% - 1.5rem));
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-medium);
   background: var(--color-surface);
+  box-shadow: 0 0.2rem 0.75rem var(--color-shadow);
   color: var(--color-ink);
   font: var(--type-small) var(--font-sans);
+}
+
+.wander-link-bubble[hidden] {
+  display: none;
+}
+
+.wander-link-bubble p {
+  margin: 0;
+}
+
+.wander-link-bubble button {
+  flex: none;
+  min-block-size: 2.25rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.wander-link-bubble button:hover,
+.wander-link-bubble button:focus-visible {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
 }
 
 .wander-embed__stage {
   position: relative;
   flex: 1;
   min-block-size: 0;
-}
-
-.wander-embed__poster {
-  position: absolute;
-  inset: 0;
-  inline-size: 100%;
-  block-size: 100%;
-  object-fit: cover;
-  object-position: top;
-}
-
-.wander-embed .wander-frame {
-  position: relative;
-  z-index: 1;
-  background: transparent;
-}
-
-.wander-embed--ready .wander-embed__poster {
-  display: none;
 }
 
 .wander-empty {

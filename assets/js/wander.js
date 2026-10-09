@@ -43,11 +43,252 @@
   let sites = [];
   let bag = [];
   let currentOrigin = null;
+  let linkNoticeOpen = false;
+  let lastPointer = null;
+  let stopWatchingFrame = () => {};
 
   function announce(message) {
     if (statusElement) {
       statusElement.textContent = message;
     }
+  }
+
+  /**
+   * Places the blocked-link bubble beside the pointer that tried to leave.
+   * The framed document is cross-origin, so this uses the last pointer position
+   * recorded over the frame. Without one, the bubble stays at the top of the stage.
+   * @param {HTMLElement} bubble - Notice shown for a blocked departure.
+   * @returns {void}
+   */
+  function placeLinkBubble(bubble) {
+    const embedStage = bubble.closest(".wander-embed__stage");
+
+    if (!embedStage || !lastPointer) {
+      return;
+    }
+
+    const bounds = embedStage.getBoundingClientRect();
+    const width = bubble.offsetWidth;
+    const height = bubble.offsetHeight;
+    let left = lastPointer.x - bounds.left + 12;
+    let top = lastPointer.y - bounds.top + 12;
+
+    if (left + width > bounds.width - 8) {
+      left = lastPointer.x - bounds.left - width - 12;
+    }
+
+    if (top + height > bounds.height - 8) {
+      top = lastPointer.y - bounds.top - height - 12;
+    }
+
+    const maxLeft = Math.max(8, bounds.width - width - 8);
+    const maxTop = Math.max(8, bounds.height - height - 8);
+
+    bubble.style.insetInlineStart = `${Math.min(Math.max(8, left), maxLeft)}px`;
+    bubble.style.insetBlockStart = `${Math.min(Math.max(8, top), maxTop)}px`;
+  }
+
+  /**
+   * Shows the blocked-link bubble beside the click and says the sentence once.
+   * Focus stays on Dismiss without scrolling the page to that button.
+   * @returns {void}
+   */
+  function showLinkBubble() {
+    const bubble = stage.querySelector("[data-wander-link-notice]");
+
+    if (!bubble) {
+      return;
+    }
+
+    bubble.hidden = false;
+    placeLinkBubble(bubble);
+
+    if (linkNoticeOpen) {
+      return;
+    }
+
+    linkNoticeOpen = true;
+    announce(linkNotice);
+    bubble.querySelector("[data-wander-dismiss-link]")?.focus({
+      preventScroll: true,
+    });
+  }
+
+  /**
+   * Records the pointer over the framed site without taking its clicks or scrolling.
+   * The cell under the pointer ignores later events so they reach the site.
+   * @param {Element | null} embedStage - Stage that contains the frame.
+   * @returns {ResizeObserver | null} Observer disconnected when the frame changes.
+   */
+  function watchPointerGrid(embedStage) {
+    const grid = embedStage?.querySelector("[data-wander-pointer-grid]");
+
+    if (!grid || !(embedStage instanceof HTMLElement)) {
+      return null;
+    }
+
+    const cellSize = 32;
+    let openCell = null;
+
+    /**
+     * @param {PointerEvent} event
+     * @returns {void}
+     */
+    function rememberPointer(event) {
+      const cell = event.currentTarget;
+
+      if (!(cell instanceof HTMLElement)) {
+        return;
+      }
+
+      lastPointer = { x: event.clientX, y: event.clientY };
+
+      if (openCell && openCell !== cell) {
+        openCell.style.pointerEvents = "";
+      }
+
+      cell.style.pointerEvents = "none";
+      openCell = cell;
+    }
+
+    function fillGrid() {
+      const columns = Math.max(1, Math.ceil(embedStage.clientWidth / cellSize));
+      const rows = Math.max(1, Math.ceil(embedStage.clientHeight / cellSize));
+      const count = columns * rows;
+
+      if (grid.childElementCount === count) {
+        return;
+      }
+
+      openCell = null;
+      grid.replaceChildren();
+      grid.style.gridTemplateColumns = `repeat(${columns}, ${cellSize}px)`;
+      grid.style.gridAutoRows = `${cellSize}px`;
+
+      const fragment = document.createDocumentFragment();
+
+      for (let index = 0; index < count; index += 1) {
+        const cell = document.createElement("div");
+
+        cell.addEventListener("pointerover", rememberPointer);
+        fragment.append(cell);
+      }
+
+      grid.append(fragment);
+    }
+
+    fillGrid();
+
+    const observer = new ResizeObserver(fillGrid);
+
+    observer.observe(embedStage);
+
+    return observer;
+  }
+
+  /**
+   * Hides the blocked-link bubble so another click can show it again.
+   * @returns {void}
+   */
+  function hideLinkBubble() {
+    const bubble = stage.querySelector("[data-wander-link-notice]");
+
+    if (bubble) {
+      bubble.hidden = true;
+    }
+
+    linkNoticeOpen = false;
+  }
+
+  /**
+   * Loads the participant in the frame the visitor scrolls and clicks.
+   * A blocked departure shows the bubble and steps back to the open page.
+   * @param {HTMLIFrameElement} frame - Direct frame for the participant.
+   * @param {string} origin - Framed participant origin.
+   * @returns {void}
+   */
+  function watchFramedSite(frame, origin) {
+    stopWatchingFrame();
+
+    let departure = "idle";
+    const gridObserver = watchPointerGrid(
+      frame.closest(".wander-embed__stage"),
+    );
+
+    /**
+     * Steps back over the browser's blocked-navigation entry.
+     * The blank document is same-origin, so its history can return to the page
+     * that was open. Loading the site root again would discard that page.
+     * @returns {void}
+     */
+    function returnToOpenPage() {
+      let href = null;
+
+      try {
+        href = frame.contentWindow.location.href;
+      } catch {
+        href = null;
+      }
+
+      if (departure === "blank" && href === "about:blank") {
+        const steps = frame.contentWindow.history.length > 2 ? -2 : -1;
+
+        departure = "back";
+
+        try {
+          frame.contentWindow.history.go(steps);
+        } catch {
+          departure = "idle";
+          frame.src = origin;
+        }
+
+        return;
+      }
+
+      if (departure === "back") {
+        departure = "idle";
+      }
+    }
+
+    /**
+     * @param {SecurityPolicyViolationEvent} event
+     * @returns {void}
+     */
+    const onViolation = (event) => {
+      if (event.effectiveDirective !== "frame-src" || departure !== "idle") {
+        return;
+      }
+
+      let blockedOrigin = "";
+
+      try {
+        blockedOrigin = new URL(event.blockedURI).origin;
+      } catch {
+        return;
+      }
+
+      if (
+        blockedOrigin === "" ||
+        blockedOrigin === "null" ||
+        blockedOrigin === origin
+      ) {
+        return;
+      }
+
+      departure = "blank";
+      showLinkBubble();
+      frame.src = "about:blank";
+    };
+
+    document.addEventListener("securitypolicyviolation", onViolation);
+    stopWatchingFrame = () => {
+      document.removeEventListener("securitypolicyviolation", onViolation);
+      gridObserver?.disconnect();
+    };
+
+    frame.addEventListener("load", returnToOpenPage);
+
+    frame.src = origin;
   }
 
   function canonicalOrigin(value) {
@@ -419,6 +660,8 @@
   }
 
   function render(site) {
+    stopWatchingFrame();
+
     if (!site) {
       currentOrigin = null;
       addressInput.value = "";
@@ -446,38 +689,34 @@
       site.origin.startsWith("https://") &&
       !isHubOrigin(site)
     ) {
-      const poster = site.screenshot
-        ? `<img class="wander-embed__poster" src="${escapeAttribute(site.screenshot)}" alt="">`
-        : "";
+      linkNoticeOpen = false;
+      lastPointer = null;
 
       stage.innerHTML = `
                 <div class="wander-embed">
-                    <p class="wander-embed__notice" data-wander-link-notice>${escapeHTML(linkNotice)}</p>
                     <div class="wander-embed__stage">
-                        ${poster}
                         <iframe
                             class="wander-frame"
-                            src="${escapeAttribute(site.origin)}"
                             title="${escapeAttribute(site.title || site.domain)}"
-                            sandbox="allow-scripts"
+                            sandbox="allow-scripts allow-same-origin"
                             referrerpolicy="no-referrer"
                         ></iframe>
+                        <div class="wander-pointer-grid" data-wander-pointer-grid aria-hidden="true"></div>
+                        <div class="wander-link-bubble" data-wander-link-notice hidden>
+                            <p>${escapeHTML(linkNotice)}</p>
+                            <button type="button" data-wander-dismiss-link>Dismiss</button>
+                        </div>
                     </div>
                 </div>
             `;
 
       const frame = stage.querySelector(".wander-frame");
-      const posterImage = stage.querySelector(".wander-embed__poster");
 
-      if (frame && posterImage) {
-        frame.addEventListener("load", () => {
-          stage
-            .querySelector(".wander-embed")
-            ?.classList.add("wander-embed--ready");
-        });
+      if (frame instanceof HTMLIFrameElement) {
+        watchFramedSite(frame, site.origin);
       }
 
-      announce(linkNotice);
+      announce(`Now viewing ${site.title || site.domain}.`);
     } else {
       stage.innerHTML = fallbackMarkup(site);
       announce(`Now viewing ${site.title || site.domain}.`);
@@ -554,6 +793,20 @@
 
       announce("The network data could not be loaded right now.");
     });
+
+  stage.addEventListener("click", (event) => {
+    const target = event.target;
+
+    if (!(target instanceof Element)) {
+      return;
+    }
+
+    if (!target.closest("[data-wander-dismiss-link]")) {
+      return;
+    }
+
+    hideLinkBubble();
+  });
 
   goButton.addEventListener("click", go);
 

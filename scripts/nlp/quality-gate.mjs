@@ -41,7 +41,9 @@ const report = topicQualityReport({
   searchUrls,
 });
 
-process.stdout.write(`${JSON.stringify(report.diff)}\n`);
+process.stdout.write(
+  `${JSON.stringify({ ...report.diff, rejections: report.rejections })}\n`,
+);
 
 if (!report.ok) {
   process.stderr.write(`${JSON.stringify(report.errors)}\n`);

@@ -63,6 +63,15 @@ test("plural tokens fold only when the singular is the same word", () => {
   assert.equal(foldPluralSlug("politics"), "politics");
   assert.equal(foldPluralSlug("united-states"), "united-states");
   assert.equal(foldPluralSlug("databases"), "database");
+  assert.equal(foldPluralToken("devops"), "devops");
+  assert.equal(foldPluralToken("analytics"), "analytics");
+  assert.equal(foldPluralToken("topics"), "topic");
+  assert.equal(foldPluralToken("laptops"), "laptop");
+  assert.equal(foldPluralToken("shops"), "shop");
+  assert.equal(foldPluralToken("desktops"), "desktop");
+  assert.equal(foldPluralSlug("web-topics"), "web-topic");
+  assert.equal(foldPluralSlug("internet-of-things"), "internet-of-things");
+  assert.equal(foldPluralSlug("communications-pr"), "communication-pr");
   assert.notEqual(
     foldPluralSlug("ai-agents"),
     foldPluralSlug("real-estate-agents"),
@@ -621,6 +630,51 @@ test("topic quality report rejects broken aliases, artifacts, and phantom links"
     { communities: [{ slug: "t-0" }] },
   );
 
+  const mergedDiff = topicDiff(
+    { communities: [{ slug: "postgres" }, { slug: "agents" }] },
+    { communities: [{ slug: "postgresql" }, { slug: "agent" }] },
+    {
+      aliases: [{ from: "postgres", to: "postgresql", kind: "equivalent" }],
+    },
+  );
+  assert.deepEqual(mergedDiff.merged, [{ from: "postgres", to: "postgresql" }]);
+  assert.deepEqual(mergedDiff.renamed, [{ from: "agents", to: "agent" }]);
+  assert.deepEqual(mergedDiff.added, []);
+  assert.deepEqual(mergedDiff.removed, []);
+  const broaderDiff = topicDiff(
+    { communities: [{ slug: "agents" }, { slug: "privacy" }] },
+    { communities: [{ slug: "agent" }, { slug: "surveillance" }] },
+    {
+      aliases: [{ from: "privacy", to: "surveillance", kind: "broader" }],
+    },
+  );
+  assert.deepEqual(broaderDiff.renamed, [{ from: "agents", to: "agent" }]);
+  assert.deepEqual(broaderDiff.merged, []);
+  assert.deepEqual(broaderDiff.added, ["surveillance"]);
+  assert.deepEqual(broaderDiff.removed, ["privacy"]);
+  assert.deepEqual(
+    topicDiff(
+      { communities: [{ slug: "postgres" }] },
+      { communities: [{ slug: "design" }] },
+      {
+        aliases: [{ from: "postgres", to: "postgresql", kind: "equivalent" }],
+      },
+    ).merged,
+    [],
+  );
+  const repeated = topicQualityReport({
+    topics: {
+      communities: [
+        { slug: "page", sites: [] },
+        { slug: "page", sites: [] },
+      ],
+    },
+  });
+  assert.equal(
+    repeated.rejections.find((row) => row.code === "invalid-public-topic")
+      ?.count,
+    2,
+  );
   assert.ok(shrunk.review.length > 0);
   assert.ok(report.diff.review.some((line) => line.includes("fell")));
   const grew = topicDiff(

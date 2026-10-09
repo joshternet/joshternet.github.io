@@ -7,7 +7,11 @@
  */
 
 import { isNonSubjectSlug, isParserArtifactSlug } from "./evidence.mjs";
-import { aliasConfigurationErrors } from "./normalize.mjs";
+import {
+  aliasConfigurationErrors,
+  equivalentAliases,
+  foldPluralSlug,
+} from "./normalize.mjs";
 
 /**
  * @param {unknown} topics
@@ -25,18 +29,22 @@ function communitiesOf(topics) {
 
 /**
  * Slugs added and removed between two topic documents.
+ * Merged and renamed slugs are left out of those lists.
  * A large count change is reported and is not itself a failure.
  * @param {unknown} previous
  * @param {unknown} next
+ * @param {unknown} [aliasesDoc]
  * @returns {{
  *   added: string[],
  *   removed: string[],
+ *   merged: Array<{from: string, to: string}>,
+ *   renamed: Array<{from: string, to: string}>,
  *   review: string[],
  * }}
  */
-export function topicDiff(previous, next) {
+export function topicDiff(previous, next, aliasesDoc) {
   if (previous == null) {
-    return { added: [], removed: [], review: [] };
+    return { added: [], removed: [], review: [], merged: [], renamed: [] };
   }
 
   const before = communitiesOf(previous).map((topic) => topic.slug);
@@ -56,7 +64,45 @@ export function topicDiff(previous, next) {
     review.push(`topic count fell from ${before.length} to ${after.length}`);
   }
 
-  return { added, removed, review };
+  const equivalents = new Map(
+    equivalentAliases(aliasesDoc)
+      .filter((entry) => entry.kind === "equivalent")
+      .map((entry) => [entry.from, entry.to]),
+  );
+  /** @type {Array<{from: string, to: string}>} */
+  const merged = [];
+  /** @type {Array<{from: string, to: string}>} */
+  const renamed = [];
+
+  for (const slug of removed) {
+    const alias = equivalents.get(slug);
+
+    if (alias && afterSet.has(alias)) {
+      merged.push({ from: slug, to: alias });
+      continue;
+    }
+
+    const folded = foldPluralSlug(slug);
+
+    if (folded !== slug && afterSet.has(folded)) {
+      renamed.push({ from: slug, to: folded });
+    }
+  }
+
+  const mergedFrom = new Set(merged.map((entry) => entry.from));
+  const mergedTo = new Set(merged.map((entry) => entry.to));
+  const renamedFrom = new Set(renamed.map((entry) => entry.from));
+  const renamedTo = new Set(renamed.map((entry) => entry.to));
+
+  return {
+    added: added.filter((slug) => !mergedTo.has(slug) && !renamedTo.has(slug)),
+    removed: removed.filter(
+      (slug) => !mergedFrom.has(slug) && !renamedFrom.has(slug),
+    ),
+    review,
+    merged,
+    renamed,
+  };
 }
 
 /**
@@ -83,7 +129,8 @@ function originOf(url) {
  * @returns {{
  *   ok: boolean,
  *   errors: Array<{code: string, slug: string, detail: string}>,
- *   diff: {added: string[], removed: string[], review: string[]},
+ *   rejections: Array<{code: string, count: number}>,
+ *   diff: {added: string[], removed: string[], merged: Array<{from: string, to: string}>, renamed: Array<{from: string, to: string}>, review: string[]},
  * }}
  */
 export function topicQualityReport(input) {
@@ -187,9 +234,21 @@ export function topicQualityReport(input) {
     }
   }
 
+  /** @type {Map<string, number>} */
+  const rejectionCounts = new Map();
+
+  for (const error of errors) {
+    rejectionCounts.set(error.code, (rejectionCounts.get(error.code) || 0) + 1);
+  }
+
+  const rejections = [...rejectionCounts.entries()]
+    .sort((left, right) => left[0].localeCompare(right[0]))
+    .map(([code, count]) => ({ code, count }));
+
   return {
     ok: errors.length === 0,
     errors,
-    diff: topicDiff(input?.previousTopics, topics),
+    rejections,
+    diff: topicDiff(input?.previousTopics, topics, input?.aliasesDoc),
   };
 }

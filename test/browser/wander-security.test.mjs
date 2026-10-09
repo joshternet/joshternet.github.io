@@ -13,8 +13,13 @@ const outboundScriptPath = fileURLToPath(
   new URL("../../assets/js/outbound-referrer.js", import.meta.url),
 );
 
+const mainStylesPath = fileURLToPath(
+  new URL("../../assets/css/main.css", import.meta.url),
+);
+
 const wanderScript = await readFile(wanderScriptPath, "utf8");
 const outboundScript = await readFile(outboundScriptPath, "utf8");
+const mainStyles = await readFile(mainStylesPath, "utf8");
 
 /**
  * Expected Wander Open / fallback href with Joshternet UTM params.
@@ -35,6 +40,13 @@ function wanderOutbound(href) {
 const fixture = `
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="frame-src https://safe.example https://first.example https://second.example https://joshternet.org"
+    >
+    <link rel="stylesheet" href="/assets/css/main.css">
+  </head>
   <body>
     <p
       data-wander-status
@@ -64,7 +76,7 @@ const fixture = `
         Open
       </button>
 
-      <div data-wander-stage></div>
+      <div data-wander-stage style="block-size: 40rem"></div>
     </div>
   </body>
 </html>
@@ -80,7 +92,7 @@ after(async () => {
   await browser.close();
 });
 
-async function wanderPage(data, { sessionState } = {}) {
+async function wanderPage(data, { sessionState, prepare } = {}) {
   const context = await browser.newContext();
   const page = await context.newPage();
 
@@ -92,6 +104,16 @@ async function wanderPage(data, { sessionState } = {}) {
         status: 200,
         contentType: "text/html",
         body: fixture,
+      });
+
+      return;
+    }
+
+    if (url.pathname === "/assets/css/main.css") {
+      await route.fulfill({
+        status: 200,
+        contentType: "text/css",
+        body: mainStyles,
       });
 
       return;
@@ -109,6 +131,10 @@ async function wanderPage(data, { sessionState } = {}) {
 
     await route.abort();
   });
+
+  if (prepare) {
+    await prepare(page);
+  }
 
   await page.goto("http://joshternet.test/wander/");
 
@@ -168,21 +194,24 @@ test("validated HTTPS participant uses the constrained iframe sandbox", async ()
 
     assert.equal(await frame.getAttribute("src"), "https://safe.example");
 
-    assert.equal(await frame.getAttribute("sandbox"), "allow-scripts");
+    assert.equal(
+      await frame.getAttribute("sandbox"),
+      "allow-scripts allow-same-origin",
+    );
 
     assert.equal(await frame.getAttribute("referrerpolicy"), "no-referrer");
 
     assert.equal(
-      await page.locator("[data-wander-link-notice]").innerText(),
-      "Wander blocks links that leave that site, and Open opens the publisher's site in another tab.",
+      await page.locator("[data-wander-link-notice]").isHidden(),
+      true,
     );
 
     assert.equal(
       await page.locator("[data-wander-status]").innerText(),
-      "Wander blocks links that leave that site, and Open opens the publisher's site in another tab.",
+      "Now viewing Safe Example.",
     );
 
-    assert.equal(await page.locator(".wander-embed__poster").count(), 1);
+    assert.equal(await page.locator(".wander-embed__poster").count(), 0);
 
     assert.equal(await page.locator("[data-wander-open]").isDisabled(), false);
 
@@ -195,6 +224,163 @@ test("validated HTTPS participant uses the constrained iframe sandbox", async ()
     assert.deepEqual(calls, [
       [wanderOutbound("https://safe.example/"), "_blank", "noopener"],
     ]);
+  } finally {
+    await context.close();
+  }
+});
+
+test("an external link shows the blocked-link bubble and a same-site link does not", async () => {
+  const notice =
+    "Wander blocks links that leave that site, and Open opens the publisher's site in another tab.";
+
+  const { context, page } = await wanderPage(
+    [
+      {
+        origin: "https://safe.example",
+        domain: "safe.example",
+        identity: "affirmed",
+        title: "Safe Example",
+        description: "A valid Wander participant.",
+        screenshot: "/assets/network/sites/safe.webp",
+        embeddable: true,
+        frame_reason: "allowed",
+      },
+    ],
+    {
+      prepare: async (readyPage) => {
+        await readyPage.route("https://safe.example/**", async (route) => {
+          const url = new URL(route.request().url());
+
+          if (url.pathname === "/notes") {
+            await route.fulfill({
+              status: 200,
+              contentType: "text/html",
+              body: '<a id="leave" href="https://left.example/" style="position:absolute;left:64px;top:280px">Leave</a>',
+            });
+
+            return;
+          }
+
+          await route.fulfill({
+            status: 200,
+            contentType: "text/html",
+            body: '<div style="height:2400px"><a id="notes" href="https://safe.example/notes">Notes</a><a id="leave" href="https://left.example/">Leave</a></div>',
+          });
+        });
+      },
+    },
+  );
+
+  try {
+    const framed = page.frameLocator(".wander-frame");
+
+    await framed.locator("#notes").waitFor();
+
+    const siteFrame = page.frames().find((frame) => {
+      return frame.url().startsWith("https://safe.example");
+    });
+    const frameBox = await page.locator(".wander-frame").boundingBox();
+
+    await page.mouse.move(
+      frameBox.x + frameBox.width / 2,
+      frameBox.y + Math.min(120, frameBox.height / 2),
+    );
+
+    const scrollBefore = await siteFrame.evaluate(() => window.scrollY);
+
+    await page.mouse.wheel(0, 700);
+    await page.waitForTimeout(200);
+
+    assert.ok((await siteFrame.evaluate(() => window.scrollY)) > scrollBefore);
+
+    await framed.locator("#notes").scrollIntoViewIfNeeded();
+
+    const notesBox = await framed.locator("#notes").boundingBox();
+
+    await page.mouse.click(
+      notesBox.x + notesBox.width / 2,
+      notesBox.y + notesBox.height / 2,
+    );
+
+    await framed.locator("#leave").waitFor();
+
+    assert.equal(
+      await page.locator("[data-wander-link-notice]").isHidden(),
+      true,
+    );
+
+    await page.evaluate(() => {
+      document.body.style.minBlockSize = "4000px";
+      window.scrollTo(0, 360);
+    });
+
+    const scrollBeforeNotice = await page.evaluate(() => window.scrollY);
+    const leaveBox = await framed.locator("#leave").boundingBox();
+
+    await page.mouse.click(
+      leaveBox.x + leaveBox.width / 2,
+      leaveBox.y + leaveBox.height / 2,
+    );
+
+    await page.waitForFunction(() => {
+      return (
+        document.querySelector(".wander-frame")?.getAttribute("src") ===
+        "about:blank"
+      );
+    });
+
+    await framed.locator("#leave").waitFor();
+
+    await page
+      .locator("[data-wander-link-notice]")
+      .waitFor({ state: "visible" });
+
+    assert.equal(await page.evaluate(() => window.scrollY), scrollBeforeNotice);
+
+    const bubbleBox = await page
+      .locator("[data-wander-link-notice]")
+      .boundingBox();
+
+    assert.ok(Math.abs(bubbleBox.x - leaveBox.x) < 160);
+    assert.ok(Math.abs(bubbleBox.y - leaveBox.y) < 160);
+
+    assert.equal(
+      await page.locator("[data-wander-link-notice] p").innerText(),
+      notice,
+    );
+
+    assert.equal(
+      await page.locator("[data-wander-status]").innerText(),
+      notice,
+    );
+
+    assert.equal(
+      await page.locator("[data-wander-dismiss-link]").evaluate((button) => {
+        return button === document.activeElement;
+      }),
+      true,
+    );
+
+    assert.equal(
+      page
+        .frames()
+        .some((frame) => frame.url().startsWith("https://left.example")),
+      false,
+    );
+
+    assert.equal(
+      page
+        .frames()
+        .some((frame) => frame.url().startsWith("https://safe.example/notes")),
+      true,
+    );
+
+    await page.locator("[data-wander-dismiss-link]").click();
+
+    assert.equal(
+      await page.locator("[data-wander-link-notice]").isHidden(),
+      true,
+    );
   } finally {
     await context.close();
   }
