@@ -1,5 +1,7 @@
 # Topic intelligence audit
 
+Review status: the topic pipeline, Wander sandbox, and production smoke workflow described in the plan are in the working tree. Plural folding leaves devops, analytics, and internet-of-things unchanged and still folds regular plurals such as topics and laptops. The quality report lists added, removed, merged, and renamed topics plus rejection counts. A merge or plural rename is not also listed as an add and a removal, and a failed report does not replace published datasets. Wander keeps `sandbox="allow-scripts allow-same-origin"`, loads the member site in the frame, and shows the blocked-link sentence in a bubble beside the click that would leave the framed site, leaves that page in place, and Dismiss takes focus without scrolling. The smoke workflow is scheduled and is not a pull-request check. Generated network files already on disk keep the previous crawl until the next sync.
+
 Measured on the local tree after the phrase, catalog, and normalization changes. Production crawl datasets were not regenerated. The next network sync applies the new rules.
 
 ## A. Executive assessment
@@ -30,7 +32,7 @@ Missing before this change, now present in code:
 
 - Equivalent aliases, broader and related links that are not merged, alias cycle and conflict checks.
 - A quality report that fails the hourly job before artifact upload.
-- Fair topic-page order and a Wander poster plus blocked-link notice.
+- Fair topic-page order and a Wander blocked-link notice.
 
 Open limit: a bare `agent` and `agents` share one slug. `ai-agent` and `real-estate-agent` stay separate. The pipeline does not split two meanings of the same word when the publisher did not. Missing `lang` is still treated as English, which matches the previous `isEnglishLanguage("")` behavior, because many pages omit the attribute. Explicit non-English pages do not get English heuristic phrases. Declared tags on those pages are kept.
 
@@ -64,7 +66,7 @@ Changed path:
 - `scripts/nlp/sync.mjs` — uses the network catalog and writes compatibility pages for aliases and folded previous slugs.
 - `scripts/views/lib.mjs` — alphabetical members and rotated articles.
 - `_layouts/topic.html` — related topic links.
-- `assets/js/wander.js` — screenshot under the frame and the blocked-link notice. Sandbox stays `allow-scripts`.
+- `assets/js/wander.js` — member site in the frame and the blocked-link notice. Sandbox stays `allow-scripts allow-same-origin`.
 - `.github/workflows/production-smoke.yml` — scheduled public checks, not on pull requests.
 - `_data/topic_aliases.json` — Postgres to PostgreSQL, plus broader and related links that are not merged.
 
@@ -103,7 +105,7 @@ Public precision and recall against a hand-labeled crawl of every live page were
 4. Membership. Contextual heuristic bar, network catalog, declared tags unchanged in class.
 5. Publication. Quality report, fair article order, related links.
 6. CI. `nlp:quality` before artifact upload. Failure skips upload, so publish does not replace production files.
-7. Discovery. Alphabetical members, rotated recent articles, Wander poster and notice, production smoke workflow.
+7. Discovery. Alphabetical members, rotated recent articles, Wander blocked-link notice, production smoke workflow.
 
 Rollback: remove the workflow step and revert the library files. The committed datasets stay until a sync run.
 
