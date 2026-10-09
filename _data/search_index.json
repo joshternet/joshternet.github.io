@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-08T19:40:21.076Z",
-  "document_count": 715,
+  "generated_at": "2026-10-09T20:55:59.986Z",
+  "document_count": 718,
   "documents": [
     {
       "type": "site",
@@ -834,7 +834,7 @@
     {
       "type": "topic",
       "title": "money",
-      "summary": "3 participating sites",
+      "summary": "4 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/money/",
@@ -1307,15 +1307,6 @@
       "origin": "",
       "url": "/topics/united-states/",
       "topics": ["united-states", "united states"]
-    },
-    {
-      "type": "topic",
-      "title": "user experience",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/user-experience/",
-      "topics": ["user-experience", "user experience"]
     },
     {
       "type": "topic",
@@ -5777,17 +5768,10 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/08/24/ai-is-exposing-how-much-government-capacity-depends-on-making-services-hard-to-use/",
-      "topics": [
-        "ai",
-        "digital rights",
-        "executive power",
-        "government ethics",
-        "public systems",
-        "user experience"
-      ],
+      "topics": [],
       "site_title": "Joshua Morris",
       "published_at": "2026-08-24T18:55:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "",
       "image_origin": ""
     },
     {
@@ -5810,10 +5794,10 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/08/25/columbia-house-looks-a-lot-like-saas-in-hindsight/",
-      "topics": ["business", "software"],
+      "topics": [],
       "site_title": "Joshua Morris",
       "published_at": "2026-08-25T05:49:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "",
       "image_origin": ""
     },
     {
@@ -5823,10 +5807,10 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/08/25/headlong-gives-a-persistent-agent-an-inner-monologue/",
-      "topics": ["ai", "ai agents", "open source", "security"],
+      "topics": [],
       "site_title": "Joshua Morris",
       "published_at": "2026-08-25T05:26:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "",
       "image_origin": ""
     },
     {
@@ -5836,10 +5820,10 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
-      "topics": ["discovery", "independent web", "indieweb"],
+      "topics": [],
       "site_title": "Joshua Morris",
       "published_at": "2026-08-26T07:29:00.000Z",
-      "image": "/assets/activity/posters/c872d675e5bff4fb1ab7d09790515e87fcd4181a3e4993588e4eb28e3ea599b0.webp",
+      "image": "",
       "image_origin": ""
     },
     {
@@ -5849,16 +5833,10 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
-      "topics": [
-        "ai",
-        "ai agents",
-        "benchmarks",
-        "research",
-        "scientific evidence"
-      ],
+      "topics": [],
       "site_title": "Joshua Morris",
       "published_at": "2026-08-28T00:15:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "",
       "image_origin": ""
     },
     {
@@ -6252,6 +6230,7 @@
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/09/10/apples-new-watch-is-listening-but-it-is-not-recording-everything/",
       "topics": [
+        "ai",
         "hardware",
         "privacy",
         "security",
@@ -6310,6 +6289,7 @@
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/09/12/google-search-keeps-moving-away-from-the-web/",
       "topics": [
+        "ai",
         "google",
         "independent web",
         "indieweb",
@@ -6328,7 +6308,7 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/09/13/ai-is-making-code-cheap-it-is-making-judgment-more-valuable/",
-      "topics": ["career", "craftsmanship"],
+      "topics": ["ai", "career", "craftsmanship"],
       "site_title": "Joshua Morris",
       "published_at": "2026-09-13T00:49:00.000Z",
       "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
@@ -6410,6 +6390,7 @@
         "google",
         "online advertising",
         "parenting",
+        "security",
         "technology",
         "youtube"
       ],
@@ -6425,7 +6406,7 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/09/18/worth-wandering-robin-sloan/",
-      "topics": ["art", "technology", "writing"],
+      "topics": ["art", "independent web", "indieweb", "technology", "writing"],
       "site_title": "Joshua Morris",
       "published_at": "2026-09-18T07:30:00.000Z",
       "image": "/assets/activity/posters/c318944ae9bba68d63bb961cdd11297b7704f7671988c8b172be9475a75b5c9a.webp",
@@ -6779,7 +6760,11 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/10/04/prop-39-would-ask-for-an-id-in-person-and-four-digits-on-a-mail-ballot/",
-      "topics": ["california ballot 2026", "public systems"],
+      "topics": [
+        "california ballot 2026",
+        "government ethics",
+        "public systems"
+      ],
       "site_title": "Joshua Morris",
       "published_at": "2026-10-04T09:00:00.000Z",
       "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
@@ -6824,7 +6809,7 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
-      "topics": ["california ballot 2026"],
+      "topics": ["california ballot 2026", "public systems"],
       "site_title": "Joshua Morris",
       "published_at": "2026-10-06T09:00:00.000Z",
       "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
@@ -6832,14 +6817,66 @@
     },
     {
       "type": "content",
+      "title": "Prop. 45 offers some projects a faster environmental review",
+      "summary": "Proposition 45 lets certain projects use tighter deadlines and a narrower court fight under California's environmental review law.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/notes/2026/10/07/prop-45-offers-some-projects-a-faster-environmental-review/",
+      "topics": ["california ballot 2026"],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-07T09:00:00.000Z",
+      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
+      "title": "Tomorrow I Start Chemotherapy, but I Don't Have Cancer",
+      "summary": "Tomorrow I go in for my first chemotherapy treatment for a foot problem and a bone spur, not cancer. I am hoping the appointment is uneventful and that walking can become boring again.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/notes/2026/10/07/tomorrow-i-start-chemotherapy-but-i-dont-have-cancer/",
+      "topics": ["health", "life"],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-07T21:14:00.000Z",
+      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
+      "title": "The 17 percent in Prop. 37 is a loan the buyer pays back",
+      "summary": "Proposition 37 would let the state sell up to $25 billion in revenue bonds so some buyers of new homes can borrow part of the down payment.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/notes/2026/10/08/the-17-percent-in-prop-37-is-a-loan-the-buyer-pays-back/",
+      "topics": [],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-08T09:00:00.000Z",
+      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
+      "title": "Prop. 4 clears a path for public campaign money. It does not spend any.",
+      "summary": "Proposition 4 would lift California's ban on public financing of campaigns and leave the size of any future program to later governments.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/notes/2026/10/09/prop-4-clears-a-path-for-public-campaign-money-it-does-not-spend-any/",
+      "topics": [],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-09T09:00:00.000Z",
+      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
       "title": "Joshua Morris: Outside",
-      "summary": "Fall is getting closer, which means I am looking forward to cooler weather and more excuses to get outside. I have been thinking about places to wander with the kids, getting out in the 4Runner, and generally spending a little more time away from a screen. I am also rearranging things around the house and office again, because apparently no room in my house is ever actually finished.",
+      "summary": "October is here, and I am looking forward to cooler weather and spending more time outdoors. Between work, raising my kids, and an ever-growing collection of projects, finding time for everything continues to be a challenge. This year has thrown quite a few unexpected things my way, and I am trying to get better at recognizing when I need to slow down. There is always something else I want to buil",
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/now/",
       "topics": [],
       "site_title": "Joshua Morris",
-      "published_at": "2026-09-18T20:53:00.000Z",
+      "published_at": "2026-10-08T20:07:00.000Z",
       "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
       "image_origin": ""
     },

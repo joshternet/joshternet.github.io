@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-09T09:04:23.564Z",
+  "generated_at": "2026-10-09T20:54:55.543Z",
   "edge_count": 2,
   "edges": [
     {
@@ -13,7 +13,7 @@
       "text": "Joshternet.org",
       "rel": ["noopener", "noreferrer", "octo:cites"],
       "page": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
-      "evidence_count": 4,
+      "evidence_count": 5,
       "evidence": [
         {
           "class": "observed",
@@ -41,6 +41,13 @@
           "page": "https://joshuamorris.info/seeking/",
           "href": "https://joshternet.org/implement/",
           "text": "I'm seeking participants in the Joshternet to test out the JoshBot crawler and prove it works.",
+          "rel": ["noopener", "noreferrer"]
+        },
+        {
+          "class": "observed",
+          "page": "https://joshuamorris.info/privacy/",
+          "href": "https://joshternet.org/implement/buttons/?utm_source=joshuamorris.info&utm_medium=referral",
+          "text": "official Joshternet button",
           "rel": ["noopener", "noreferrer"]
         }
       ]

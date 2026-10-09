@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-08T07:59:45.116Z",
+  "generated_at": "2026-10-09T20:55:59.986Z",
   "overlap_count": 10,
   "pairs": [
     {
@@ -116,6 +116,10 @@
         {
           "slug": "linkedin",
           "label": "linkedin"
+        },
+        {
+          "slug": "money",
+          "label": "money"
         },
         {
           "slug": "networking",
@@ -268,6 +272,10 @@
           "label": "llm"
         },
         {
+          "slug": "money",
+          "label": "money"
+        },
+        {
           "slug": "open-source",
           "label": "open source"
         },
@@ -366,6 +374,10 @@
         {
           "slug": "health",
           "label": "health"
+        },
+        {
+          "slug": "money",
+          "label": "money"
         },
         {
           "slug": "nonprofit",
@@ -505,16 +517,16 @@
                   "title": "AI Is Making Code Cheap. It Is Making Judgment More Valuable."
                 },
                 {
+                  "url": "https://joshuamorris.info/notes/2026/09/12/google-search-keeps-moving-away-from-the-web/",
+                  "title": "Google Search Keeps Moving Away From the Web"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/10/apples-new-watch-is-listening-but-it-is-not-recording-everything/",
+                  "title": "Apple's New Watch Is Listening, but It Is Not Recording Everything"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/09/09/ai-helped-turn-a-wechat-bug-into-a-zero-click-worm-in-about-a-week/",
                   "title": "AI Helped Turn a WeChat Bug Into a Zero-Click Worm in About a Week"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
-                  "title": "AI Agents Found an Abandoned Wiki and Turned It Into a Message Board"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
-                  "title": "An AI Watermark Can't Tell You Whether Anyone Was Thinking"
                 }
               ]
             }
@@ -721,10 +733,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/29/europes-new-packaging-rules-may-make-small-sellers-stop-shipping-there/",
                   "title": "Europe's New Packaging Rules May Make Small Sellers Stop Shipping There"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/25/columbia-house-looks-a-lot-like-saas-in-hindsight/",
-                  "title": "Columbia House Looks a Lot Like SaaS in Hindsight"
                 },
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/10/ransomware-gangs-learned-to-target-the-org-chart/",
@@ -935,10 +943,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/28/worth-wandering-ytoo/",
                   "title": "Worth Wandering: Ytoo!"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
-                  "title": "Joshternet.org Is Live"
                 }
               ]
             }
@@ -1199,6 +1203,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/07/tomorrow-i-start-chemotherapy-but-i-dont-have-cancer/",
+                  "title": "Tomorrow I Start Chemotherapy, but I Don't Have Cancer"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/09/04/a-kidney-disease-linked-to-extreme-heat-is-showing-up-in-texas/",
                   "title": "A Kidney Disease Linked to Extreme Heat Is Showing Up in Texas"
                 },
@@ -1311,6 +1319,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/07/tomorrow-i-start-chemotherapy-but-i-dont-have-cancer/",
+                  "title": "Tomorrow I Start Chemotherapy, but I Don't Have Cancer"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/09/09/matthew-grabelsky-turns-the-subway-into-modern-mythology/",
                   "title": "Matthew Grabelsky Turns the Subway Into Modern Mythology"
                 },
@@ -1392,6 +1404,17 @@
                   "title": "Money Map"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/09/prop-4-clears-a-path-for-public-campaign-money-it-does-not-spend-any/",
+                  "title": "Prop. 4 clears a path for public campaign money. It does not spend any."
+                }
+              ]
             }
           ]
         },
@@ -1467,10 +1490,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/30/california-is-carving-linux-out-of-its-age-gating-law/",
                   "title": "California Is Carving Linux Out of Its Age-Gating Law"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/25/headlong-gives-a-persistent-agent-an-inner-monologue/",
-                  "title": "Headlong Gives a Persistent Agent an Inner Monologue"
                 },
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/02/holocloth-turns-uploaded-artwork-into-interactive-holographic-fabric/",
@@ -1690,6 +1709,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/09/16/a-20-youtube-promotion-turned-into-a-118000-lesson-in-guardrails/",
+                  "title": "A $20 YouTube Promotion Turned Into a $118,000 Lesson in Guardrails"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/09/10/apples-new-watch-is-listening-but-it-is-not-recording-everything/",
                   "title": "Apple's New Watch Is Listening, but It Is Not Recording Everything"
                 },
@@ -1716,10 +1739,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
                   "title": "The AI Industry Is Saying the Current Security Baseline Is Not Enough"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/25/headlong-gives-a-persistent-agent-an-inner-monologue/",
-                  "title": "Headlong Gives a Persistent Agent an Inner Monologue"
                 }
               ]
             }
@@ -1792,10 +1811,6 @@
                   "title": "Plugging In a Display Should Not Install Adware on My Computer"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/08/25/columbia-house-looks-a-lot-like-saas-in-hindsight/",
-                  "title": "Columbia House Looks a Lot Like SaaS in Hindsight"
-                },
-                {
                   "url": "https://joshuamorris.info/notes/2026/08/09/code-was-never-the-hard-part-rewrites-the-history-of-programming/",
                   "title": "“Code Was Never the Hard Part” Rewrites the History of Programming"
                 },
@@ -1810,6 +1825,10 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/28/grapheneos-says-strong-mobile-security-is-legal-and-should-remain-that-way/",
                   "title": "GrapheneOS Says Strong Mobile Security Is Legal and Should Remain That Way"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/28/letsseal-makes-file-integrity-verification-simple/",
+                  "title": "LetsSeal Makes File Integrity Verification Simple"
                 }
               ]
             }
@@ -2104,16 +2123,16 @@
                   "title": "AI Is Making Code Cheap. It Is Making Judgment More Valuable."
                 },
                 {
+                  "url": "https://joshuamorris.info/notes/2026/09/12/google-search-keeps-moving-away-from-the-web/",
+                  "title": "Google Search Keeps Moving Away From the Web"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/10/apples-new-watch-is-listening-but-it-is-not-recording-everything/",
+                  "title": "Apple's New Watch Is Listening, but It Is Not Recording Everything"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/09/09/ai-helped-turn-a-wechat-bug-into-a-zero-click-worm-in-about-a-week/",
                   "title": "AI Helped Turn a WeChat Bug Into a Zero-Click Worm in About a Week"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
-                  "title": "AI Agents Found an Abandoned Wiki and Turned It Into a Message Board"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
-                  "title": "An AI Watermark Can't Tell You Whether Anyone Was Thinking"
                 }
               ]
             }
@@ -2369,6 +2388,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/07/prop-45-offers-some-projects-a-faster-environmental-review/",
+                  "title": "Prop. 45 offers some projects a faster environmental review"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
                   "title": "California's November 2026 Ballot"
                 },
@@ -2395,10 +2418,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/30/california-is-carving-linux-out-of-its-age-gating-law/",
                   "title": "California Is Carving Linux Out of Its Age-Gating Law"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/28/what-does-unlawful-mean-if-the-damage-happens-first/",
-                  "title": "What Does \"Unlawful\" Mean If the Damage Happens First?"
                 }
               ]
             }
@@ -2438,6 +2457,10 @@
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
               "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/07/tomorrow-i-start-chemotherapy-but-i-dont-have-cancer/",
+                  "title": "Tomorrow I Start Chemotherapy, but I Don't Have Cancer"
+                },
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/09/matthew-grabelsky-turns-the-subway-into-modern-mythology/",
                   "title": "Matthew Grabelsky Turns the Subway Into Modern Mythology"
@@ -2528,6 +2551,17 @@
                   "title": "Money Map"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/09/prop-4-clears-a-path-for-public-campaign-money-it-does-not-spend-any/",
+                  "title": "Prop. 4 clears a path for public campaign money. It does not spend any."
+                }
+              ]
             }
           ]
         },
@@ -2578,10 +2612,6 @@
                   "title": "California Is Carving Linux Out of Its Age-Gating Law"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/08/25/headlong-gives-a-persistent-agent-an-inner-monologue/",
-                  "title": "Headlong Gives a Persistent Agent an Inner Monologue"
-                },
-                {
                   "url": "https://joshuamorris.info/notes/2026/08/02/holocloth-turns-uploaded-artwork-into-interactive-holographic-fabric/",
                   "title": "Holocloth Turns Uploaded Artwork into Interactive Holographic Fabric"
                 },
@@ -2624,6 +2654,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/09/16/a-20-youtube-promotion-turned-into-a-118000-lesson-in-guardrails/",
+                  "title": "A $20 YouTube Promotion Turned Into a $118,000 Lesson in Guardrails"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/09/10/apples-new-watch-is-listening-but-it-is-not-recording-everything/",
                   "title": "Apple's New Watch Is Listening, but It Is Not Recording Everything"
                 },
@@ -2650,10 +2684,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
                   "title": "The AI Industry Is Saying the Current Security Baseline Is Not Enough"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/25/headlong-gives-a-persistent-agent-an-inner-monologue/",
-                  "title": "Headlong Gives a Persistent Agent an Inner Monologue"
                 }
               ]
             }
@@ -2689,16 +2719,16 @@
               "title": "AI Is Making Code Cheap. It Is Making Judgment More Valuable."
             },
             {
+              "url": "https://joshuamorris.info/notes/2026/09/12/google-search-keeps-moving-away-from-the-web/",
+              "title": "Google Search Keeps Moving Away From the Web"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/10/apples-new-watch-is-listening-but-it-is-not-recording-everything/",
+              "title": "Apple's New Watch Is Listening, but It Is Not Recording Everything"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/09/09/ai-helped-turn-a-wechat-bug-into-a-zero-click-worm-in-about-a-week/",
               "title": "AI Helped Turn a WeChat Bug Into a Zero-Click Worm in About a Week"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
-              "title": "AI Agents Found an Abandoned Wiki and Turned It Into a Message Board"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
-              "title": "An AI Watermark Can't Tell You Whether Anyone Was Thinking"
             }
           ],
           "sites": [
@@ -2797,12 +2827,12 @@
               "title": "The AI Industry Is Saying the Current Security Baseline Is Not Enough"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
-              "title": "Terminal-Bench-Science Is Testing Agents on Actual Scientific Work"
+              "url": "https://joshuamorris.info/notes/2026/08/05/cloudflare-built-an-operating-system-for-ai-work/",
+              "title": "Cloudflare Built an Operating System for AI Work"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/08/25/headlong-gives-a-persistent-agent-an-inner-monologue/",
-              "title": "Headlong Gives a Persistent Agent an Inner Monologue"
+              "url": "https://joshuamorris.info/notes/2026/08/02/flint-gives-ai-agents-a-better-way-to-create-charts/",
+              "title": "Flint Gives AI Agents a Better Way to Create Charts"
             }
           ],
           "sites": [
@@ -2998,10 +3028,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/08/29/europes-new-packaging-rules-may-make-small-sellers-stop-shipping-there/",
               "title": "Europe's New Packaging Rules May Make Small Sellers Stop Shipping There"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/25/columbia-house-looks-a-lot-like-saas-in-hindsight/",
-              "title": "Columbia House Looks a Lot Like SaaS in Hindsight"
             },
             {
               "url": "https://joshuamorris.info/notes/2026/08/10/ransomware-gangs-learned-to-target-the-org-chart/",
@@ -3274,10 +3300,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/08/28/worth-wandering-ytoo/",
               "title": "Worth Wandering: Ytoo!"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
-              "title": "Joshternet.org Is Live"
             }
           ],
           "sites": [
@@ -3617,6 +3639,10 @@
           "label": "health",
           "articles": [
             {
+              "url": "https://joshuamorris.info/notes/2026/10/07/tomorrow-i-start-chemotherapy-but-i-dont-have-cancer/",
+              "title": "Tomorrow I Start Chemotherapy, but I Don't Have Cancer"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/09/04/a-kidney-disease-linked-to-extreme-heat-is-showing-up-in-texas/",
               "title": "A Kidney Disease Linked to Extreme Heat Is Showing Up in Texas"
             },
@@ -3725,6 +3751,10 @@
           "label": "law",
           "articles": [
             {
+              "url": "https://joshuamorris.info/notes/2026/10/07/prop-45-offers-some-projects-a-faster-environmental-review/",
+              "title": "Prop. 45 offers some projects a faster environmental review"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
               "title": "California's November 2026 Ballot"
             },
@@ -3751,10 +3781,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/08/30/california-is-carving-linux-out-of-its-age-gating-law/",
               "title": "California Is Carving Linux Out of Its Age-Gating Law"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/28/what-does-unlawful-mean-if-the-damage-happens-first/",
-              "title": "What Does \"Unlawful\" Mean If the Damage Happens First?"
             }
           ],
           "sites": [
@@ -3775,6 +3801,10 @@
           "slug": "life",
           "label": "life",
           "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/07/tomorrow-i-start-chemotherapy-but-i-dont-have-cancer/",
+              "title": "Tomorrow I Start Chemotherapy, but I Don't Have Cancer"
+            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/09/matthew-grabelsky-turns-the-subway-into-modern-mythology/",
               "title": "Matthew Grabelsky Turns the Subway Into Modern Mythology"
@@ -3888,6 +3918,51 @@
           ]
         },
         {
+          "slug": "money",
+          "label": "money",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/09/prop-4-clears-a-path-for-public-campaign-money-it-does-not-spend-any/",
+              "title": "Prop. 4 clears a path for public campaign money. It does not spend any."
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Developer Musings",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/how-to-buy-car/",
+                  "title": "How to buy a car"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Joshtronic",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/04/confessions-domain-hoarder/",
+                  "title": "Confessions of a Middle-Aged Domain Hoarder"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=money-advice-service-money-map-2011",
+                  "title": "Money Map"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "networking",
           "label": "networking",
           "articles": [
@@ -3976,10 +4051,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/08/30/california-is-carving-linux-out-of-its-age-gating-law/",
               "title": "California Is Carving Linux Out of Its Age-Gating Law"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/25/headlong-gives-a-persistent-agent-an-inner-monologue/",
-              "title": "Headlong Gives a Persistent Agent an Inner Monologue"
             },
             {
               "url": "https://joshuamorris.info/notes/2026/08/02/holocloth-turns-uploaded-artwork-into-interactive-holographic-fabric/",
@@ -4254,10 +4325,6 @@
           "label": "research",
           "articles": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
-              "title": "Terminal-Bench-Science Is Testing Agents on Actual Scientific Work"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/08/the-department-of-energy-is-building-an-american-open-model-for-science/",
               "title": "The Department of Energy Is Building an American Open Model for Science"
             },
@@ -4348,6 +4415,10 @@
           "label": "security",
           "articles": [
             {
+              "url": "https://joshuamorris.info/notes/2026/09/16/a-20-youtube-promotion-turned-into-a-118000-lesson-in-guardrails/",
+              "title": "A $20 YouTube Promotion Turned Into a $118,000 Lesson in Guardrails"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/09/10/apples-new-watch-is-listening-but-it-is-not-recording-everything/",
               "title": "Apple's New Watch Is Listening, but It Is Not Recording Everything"
             },
@@ -4374,10 +4445,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
               "title": "The AI Industry Is Saying the Current Security Baseline Is Not Enough"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/25/headlong-gives-a-persistent-agent-an-inner-monologue/",
-              "title": "Headlong Gives a Persistent Agent an Inner Monologue"
             }
           ],
           "sites": [
@@ -4449,10 +4516,6 @@
               "title": "Plugging In a Display Should Not Install Adware on My Computer"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/08/25/columbia-house-looks-a-lot-like-saas-in-hindsight/",
-              "title": "Columbia House Looks a Lot Like SaaS in Hindsight"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/09/code-was-never-the-hard-part-rewrites-the-history-of-programming/",
               "title": "“Code Was Never the Hard Part” Rewrites the History of Programming"
             },
@@ -4467,6 +4530,10 @@
             {
               "url": "https://joshuamorris.info/notes/2026/07/28/grapheneos-says-strong-mobile-security-is-legal-and-should-remain-that-way/",
               "title": "GrapheneOS Says Strong Mobile Security Is Legal and Should Remain That Way"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/28/letsseal-makes-file-integrity-verification-simple/",
+              "title": "LetsSeal Makes File Integrity Verification Simple"
             }
           ],
           "sites": [
@@ -4854,16 +4921,16 @@
                   "title": "AI Is Making Code Cheap. It Is Making Judgment More Valuable."
                 },
                 {
+                  "url": "https://joshuamorris.info/notes/2026/09/12/google-search-keeps-moving-away-from-the-web/",
+                  "title": "Google Search Keeps Moving Away From the Web"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/10/apples-new-watch-is-listening-but-it-is-not-recording-everything/",
+                  "title": "Apple's New Watch Is Listening, but It Is Not Recording Everything"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/09/09/ai-helped-turn-a-wechat-bug-into-a-zero-click-worm-in-about-a-week/",
                   "title": "AI Helped Turn a WeChat Bug Into a Zero-Click Worm in About a Week"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
-                  "title": "AI Agents Found an Abandoned Wiki and Turned It Into a Message Board"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
-                  "title": "An AI Watermark Can't Tell You Whether Anyone Was Thinking"
                 }
               ]
             }
@@ -5098,10 +5165,6 @@
                   "title": "Plugging In a Display Should Not Install Adware on My Computer"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/08/25/columbia-house-looks-a-lot-like-saas-in-hindsight/",
-                  "title": "Columbia House Looks a Lot Like SaaS in Hindsight"
-                },
-                {
                   "url": "https://joshuamorris.info/notes/2026/08/09/code-was-never-the-hard-part-rewrites-the-history-of-programming/",
                   "title": "“Code Was Never the Hard Part” Rewrites the History of Programming"
                 },
@@ -5116,6 +5179,10 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/28/grapheneos-says-strong-mobile-security-is-legal-and-should-remain-that-way/",
                   "title": "GrapheneOS Says Strong Mobile Security Is Legal and Should Remain That Way"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/28/letsseal-makes-file-integrity-verification-simple/",
+                  "title": "LetsSeal Makes File Integrity Verification Simple"
                 }
               ]
             }
@@ -5215,16 +5282,16 @@
                   "title": "AI Is Making Code Cheap. It Is Making Judgment More Valuable."
                 },
                 {
+                  "url": "https://joshuamorris.info/notes/2026/09/12/google-search-keeps-moving-away-from-the-web/",
+                  "title": "Google Search Keeps Moving Away From the Web"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/10/apples-new-watch-is-listening-but-it-is-not-recording-everything/",
+                  "title": "Apple's New Watch Is Listening, but It Is Not Recording Everything"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/09/09/ai-helped-turn-a-wechat-bug-into-a-zero-click-worm-in-about-a-week/",
                   "title": "AI Helped Turn a WeChat Bug Into a Zero-Click Worm in About a Week"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
-                  "title": "AI Agents Found an Abandoned Wiki and Turned It Into a Message Board"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
-                  "title": "An AI Watermark Can't Tell You Whether Anyone Was Thinking"
                 }
               ]
             }
@@ -5270,12 +5337,12 @@
                   "title": "The AI Industry Is Saying the Current Security Baseline Is Not Enough"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
-                  "title": "Terminal-Bench-Science Is Testing Agents on Actual Scientific Work"
+                  "url": "https://joshuamorris.info/notes/2026/08/05/cloudflare-built-an-operating-system-for-ai-work/",
+                  "title": "Cloudflare Built an Operating System for AI Work"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/08/25/headlong-gives-a-persistent-agent-an-inner-monologue/",
-                  "title": "Headlong Gives a Persistent Agent an Inner Monologue"
+                  "url": "https://joshuamorris.info/notes/2026/08/02/flint-gives-ai-agents-a-better-way-to-create-charts/",
+                  "title": "Flint Gives AI Agents a Better Way to Create Charts"
                 }
               ]
             }
@@ -5318,10 +5385,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/29/europes-new-packaging-rules-may-make-small-sellers-stop-shipping-there/",
                   "title": "Europe's New Packaging Rules May Make Small Sellers Stop Shipping There"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/25/columbia-house-looks-a-lot-like-saas-in-hindsight/",
-                  "title": "Columbia House Looks a Lot Like SaaS in Hindsight"
                 },
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/10/ransomware-gangs-learned-to-target-the-org-chart/",
@@ -5671,6 +5734,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/07/tomorrow-i-start-chemotherapy-but-i-dont-have-cancer/",
+                  "title": "Tomorrow I Start Chemotherapy, but I Don't Have Cancer"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/09/04/a-kidney-disease-linked-to-extreme-heat-is-showing-up-in-texas/",
                   "title": "A Kidney Disease Linked to Extreme Heat Is Showing Up in Texas"
                 },
@@ -5715,6 +5782,17 @@
                 {
                   "url": "https://joshtronic.com/2026/10/04/confessions-domain-hoarder/",
                   "title": "Confessions of a Middle-Aged Domain Hoarder"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/09/prop-4-clears-a-path-for-public-campaign-money-it-does-not-spend-any/",
+                  "title": "Prop. 4 clears a path for public campaign money. It does not spend any."
                 }
               ]
             }
@@ -5903,10 +5981,6 @@
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
               "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
-                  "title": "Terminal-Bench-Science Is Testing Agents on Actual Scientific Work"
-                },
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/08/the-department-of-energy-is-building-an-american-open-model-for-science/",
                   "title": "The Department of Energy Is Building an American Open Model for Science"

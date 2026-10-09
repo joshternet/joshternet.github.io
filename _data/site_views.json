@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-08T19:40:21.076Z",
+  "generated_at": "2026-10-09T20:55:59.986Z",
   "sites": [
     {
       "origin": "https://joshghent.com",
@@ -160,7 +160,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-08T19:38:44.771Z"
+      "crawled_at": "2026-10-09T20:54:55.543Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -186,7 +186,7 @@
           "label": "linked to",
           "href": "https://joshternet.org/",
           "page": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
-          "evidence_count": 4
+          "evidence_count": 5
         }
       ],
       "coverage": {
@@ -196,7 +196,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-08T19:38:44.771Z"
+      "crawled_at": "2026-10-09T20:54:55.543Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -420,7 +420,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-08T19:38:44.771Z"
+      "crawled_at": "2026-10-09T20:54:55.543Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -745,6 +745,10 @@
           "label": "mentorship"
         },
         {
+          "slug": "money",
+          "label": "money"
+        },
+        {
           "slug": "networking",
           "label": "networking"
         },
@@ -987,7 +991,7 @@
           "label": "linked to",
           "href": "https://joshternet.org/",
           "page": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
-          "evidence_count": 4
+          "evidence_count": 5
         },
         {
           "to": "https://joshtronic.com",
@@ -1006,7 +1010,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-08T19:38:44.771Z"
+      "crawled_at": "2026-10-09T20:54:55.543Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -1232,7 +1236,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-08T19:38:44.771Z"
+      "crawled_at": "2026-10-09T20:54:55.543Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -1424,7 +1428,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-08T19:38:44.771Z",
+      "crawled_at": "2026-10-09T20:54:55.543Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 145,
