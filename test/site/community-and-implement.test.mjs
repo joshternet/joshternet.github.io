@@ -242,6 +242,7 @@ const PLATFORM_RECIPES = [
     navTitle: "Next.js",
   },
   { slug: "nuxt", file: "implement/platforms/nuxt.md", navTitle: "Nuxt" },
+  { slug: "quartz", file: "implement/platforms/quartz.md", navTitle: "Quartz" },
   {
     slug: "sveltekit",
     file: "implement/platforms/sveltekit.md",
@@ -401,6 +402,20 @@ test("Hugo recipe publishes static/.well-known/josh into public/", async () => {
   assert.match(hugo, /static\/_headers/);
 });
 
+test("Quartz recipe copies josh.json into public/.well-known/josh after the build", async () => {
+  const quartz = await read("implement/platforms/quartz.md");
+
+  assert.match(quartz, /mkdir -p public\/\.well-known/);
+  assert.match(quartz, /cp josh\.json public\/\.well-known\/josh/);
+  assert.match(quartz, /test -f public\/\.well-known\/josh/);
+  assert.match(quartz, /include-hidden-files: true/);
+  assert.match(quartz, /Quartz copies `quartz\/static` to `public\/static`/);
+  assert.doesNotMatch(
+    quartz,
+    /quartz\/static\/\.well-known\/josh` is the deployed resource/,
+  );
+});
+
 test("connections crawl page documents sync signals under Implement", async () => {
   const guide = await read("implement.md");
   const page = await read("implement/connections.md");
@@ -441,6 +456,7 @@ test("visitor pages do not lecture under the title", async () => {
     "implement/platforms/jekyll.md",
     "implement/platforms/nextjs.md",
     "implement/platforms/nuxt.md",
+    "implement/platforms/quartz.md",
     "implement/platforms/sveltekit.md",
     "implement/platforms/wordpress.md",
     "implement/validate.md",
@@ -484,6 +500,7 @@ test("visitor pages do not lecture under the title", async () => {
     "implement/platforms/astro.md",
     "implement/platforms/nextjs.md",
     "implement/platforms/nuxt.md",
+    "implement/platforms/quartz.md",
     "implement/platforms/sveltekit.md",
     "implement/platforms/wordpress.md",
   ]) {

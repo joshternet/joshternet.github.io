@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+- Quartz 5 platform recipe at `/implement/platforms/quartz/`: copy `josh.json` to `public/.well-known/josh` after `npx quartz build`, because Quartz emits `quartz/static` under `/static/` and skips dot directories.
+
 ### Changed
 
 - The site test expects Wander’s main area to use overflow visible so the blocked-link bubble is not clipped.

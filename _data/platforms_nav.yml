@@ -22,6 +22,9 @@
 - title: Nuxt
   path: /implement/platforms/nuxt/
   summary: copies public/.well-known/josh into Nuxt 4 generate output
+- title: Quartz
+  path: /implement/platforms/quartz/
+  summary: copies josh.json into public/.well-known/josh after npx quartz build
 - title: SvelteKit
   path: /implement/platforms/sveltekit/
   summary: copies static/.well-known/josh with adapter-static
