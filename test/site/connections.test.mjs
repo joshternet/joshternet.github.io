@@ -114,7 +114,7 @@ test("connections page is HTML-first and cross-linked", async () => {
   assert.doesNotMatch(wander, /wander-modes/);
   assert.doesNotMatch(wander, /data-wander-mode/);
   assert.match(styles, /\.page--wander\.site-shell \{[^}]*overflow:\s*visible/);
-  assert.match(styles, /\.page--wander \.site-main \{[^}]*overflow:\s*hidden/);
+  assert.match(styles, /\.page--wander \.site-main \{[^}]*overflow:\s*visible/);
   assert.match(
     styles,
     /@media \(min-width: 40rem\) \{\s*\.page--wander \.site-main \{[^}]*padding-block-start:/,
