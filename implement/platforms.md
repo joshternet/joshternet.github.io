@@ -6,7 +6,7 @@ description: >-
   declaration on independent-web site software.
 keywords: >-
   /.well-known/josh, platform recipes, Astro, Eleventy, Ghost, Hugo, Jekyll,
-  Next.js, Nuxt, SvelteKit, WordPress, Joshternet declaration
+  Next.js, Nuxt, Quartz, SvelteKit, WordPress, Joshternet declaration
 seo:
   type: CollectionPage
   name: Platforms
