@@ -5,6 +5,7 @@
 ### Changed
 
 - Removed the scheduled Production smoke workflow. It requested the live site every six hours and failed when declaration checks were older than six hours, which is the registry's normal overnight pause. It did not build or publish the site.
+- Wander stays on the framed page that was open when a link would leave that site. Browsers that do not keep a history entry for the blocked navigation no longer step back to the site root.
 - Plural folding leaves listed exceptions such as devops, analytics, and internet-of-things unchanged, and still folds regular plurals such as topics and laptops. The topic quality report lists merges and plural renames separately from added and removed topics, plus rejection counts, before a dataset is published.
 - Feed image and page meta parsing cover an empty itunes:image tag and a non-string meta document.
 - Feed posters stay limited to advertised media. An image that only appears inside the article body is not a card poster.

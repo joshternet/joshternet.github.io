@@ -211,14 +211,42 @@
     stopWatchingFrame();
 
     let departure = "idle";
+    let settleTimer = 0;
+    let skippedBlockedEntry = false;
     const gridObserver = watchPointerGrid(
       frame.closest(".wander-embed__stage"),
     );
 
     /**
-     * Steps back over the browser's blocked-navigation entry.
-     * The blank document is same-origin, so its history can return to the page
-     * that was open. Loading the site root again would discard that page.
+     * Moves back toward the framed page while about:blank is still current.
+     * Loading the site root again would discard the open page.
+     * @param {number} steps - Negative history delta.
+     * @returns {void}
+     */
+    function stepBack(steps) {
+      try {
+        frame.contentWindow.history.go(steps);
+      } catch {
+        departure = "idle";
+        frame.src = origin;
+      }
+    }
+
+    /**
+     * Marks the return finished on the next turn.
+     * @returns {void}
+     */
+    function settleBack() {
+      window.clearTimeout(settleTimer);
+      settleTimer = window.setTimeout(() => {
+        if (departure === "back") {
+          departure = "idle";
+        }
+      }, 0);
+    }
+
+    /**
+     * After about:blank loads, steps back to the open page.
      * @returns {void}
      */
     function returnToOpenPage() {
@@ -231,22 +259,14 @@
       }
 
       if (departure === "blank" && href === "about:blank") {
-        const steps = frame.contentWindow.history.length > 2 ? -2 : -1;
-
         departure = "back";
-
-        try {
-          frame.contentWindow.history.go(steps);
-        } catch {
-          departure = "idle";
-          frame.src = origin;
-        }
+        stepBack(-1);
 
         return;
       }
 
       if (departure === "back") {
-        departure = "idle";
+        settleBack();
       }
     }
 
@@ -255,7 +275,22 @@
      * @returns {void}
      */
     const onViolation = (event) => {
-      if (event.effectiveDirective !== "frame-src" || departure !== "idle") {
+      if (event.effectiveDirective !== "frame-src") {
+        return;
+      }
+
+      if (departure === "back") {
+        if (!skippedBlockedEntry) {
+          skippedBlockedEntry = true;
+          window.clearTimeout(settleTimer);
+          stepBack(-2);
+          settleBack();
+        }
+
+        return;
+      }
+
+      if (departure !== "idle") {
         return;
       }
 
@@ -276,18 +311,19 @@
       }
 
       departure = "blank";
+      skippedBlockedEntry = false;
       showLinkBubble();
       frame.src = "about:blank";
     };
 
     document.addEventListener("securitypolicyviolation", onViolation);
     stopWatchingFrame = () => {
+      window.clearTimeout(settleTimer);
       document.removeEventListener("securitypolicyviolation", onViolation);
       gridObserver?.disconnect();
     };
 
     frame.addEventListener("load", returnToOpenPage);
-
     frame.src = origin;
   }
 
