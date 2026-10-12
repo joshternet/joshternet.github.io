@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-11T20:17:42.778Z",
+  "generated_at": "2026-10-12T18:53:56.963Z",
   "sites": [
     {
       "origin": "https://joshghent.com",
@@ -160,7 +160,330 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-11T20:17:07.618Z"
+      "crawled_at": "2026-10-12T18:51:53.092Z"
+    },
+    {
+      "origin": "https://joshmuller.ca",
+      "domain": "joshmuller.ca",
+      "title": "Josh's site",
+      "description": "Personal Website of Josh Müller — Technologist | Leader | Regenerative Systems Designer",
+      "identity": "affirmed",
+      "feeds": [
+        {
+          "url": "https://joshmuller.ca/index.xml",
+          "type": "application/rss+xml",
+          "title": "rss"
+        }
+      ],
+      "elsewhere": [
+        {
+          "url": "https://joshmuller.ca/say-hi",
+          "network": "web",
+          "label": "joshmuller.ca"
+        },
+        {
+          "url": "https://resume.joshmuller.ca/",
+          "network": "web",
+          "label": "resume.joshmuller.ca"
+        },
+        {
+          "url": "https://www.linkedin.com/in/thejoshmuller/",
+          "network": "linkedin",
+          "label": "LinkedIn"
+        },
+        {
+          "url": "https://github.com/theJoshMuller",
+          "network": "github",
+          "label": "GitHub"
+        },
+        {
+          "url": "https://mas.to/@theJoshMuller",
+          "network": "mastodon",
+          "label": "Mastodon"
+        },
+        {
+          "url": "https://bsky.app/profile/thejoshmuller.bsky.social",
+          "network": "bluesky",
+          "label": "Bluesky"
+        },
+        {
+          "url": "https://twitter.com/thejoshmuller",
+          "network": "x",
+          "label": "X"
+        },
+        {
+          "url": "https://instagram.com/theJoshMuller",
+          "network": "instagram",
+          "label": "Instagram"
+        },
+        {
+          "url": "https://youtube.com/@joshmuller",
+          "network": "youtube",
+          "label": "YouTube"
+        },
+        {
+          "url": "https://discordapp.com/users/thejoshmuller",
+          "network": "web",
+          "label": "discordapp.com"
+        },
+        {
+          "url": "https://t.me/theJoshMuller",
+          "network": "telegram",
+          "label": "Telegram"
+        },
+        {
+          "url": "https://joshmuller.ca/feed",
+          "network": "web",
+          "label": "joshmuller.ca"
+        }
+      ],
+      "community_topics": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "apple",
+          "label": "apple"
+        },
+        {
+          "slug": "book",
+          "label": "books"
+        },
+        {
+          "slug": "book-review",
+          "label": "book reviews"
+        },
+        {
+          "slug": "browser",
+          "label": "browsers"
+        },
+        {
+          "slug": "case-study",
+          "label": "case study"
+        },
+        {
+          "slug": "design",
+          "label": "design"
+        },
+        {
+          "slug": "digital-minimalism",
+          "label": "digital minimalism"
+        },
+        {
+          "slug": "discovery",
+          "label": "discovery"
+        },
+        {
+          "slug": "email",
+          "label": "email"
+        },
+        {
+          "slug": "engineering",
+          "label": "engineering"
+        },
+        {
+          "slug": "facebook",
+          "label": "facebook"
+        },
+        {
+          "slug": "fitness",
+          "label": "Fitness"
+        },
+        {
+          "slug": "focus",
+          "label": "focus"
+        },
+        {
+          "slug": "food",
+          "label": "food"
+        },
+        {
+          "slug": "forced-alignment",
+          "label": "Forced Alignment"
+        },
+        {
+          "slug": "friend",
+          "label": "Friends"
+        },
+        {
+          "slug": "google",
+          "label": "google"
+        },
+        {
+          "slug": "gpt-4",
+          "label": "GPT-4"
+        },
+        {
+          "slug": "habit",
+          "label": "habits"
+        },
+        {
+          "slug": "health",
+          "label": "health"
+        },
+        {
+          "slug": "language-learning",
+          "label": "Language Learning"
+        },
+        {
+          "slug": "law",
+          "label": "law"
+        },
+        {
+          "slug": "life",
+          "label": "life"
+        },
+        {
+          "slug": "lifestyle",
+          "label": "Lifestyle"
+        },
+        {
+          "slug": "linux",
+          "label": "linux"
+        },
+        {
+          "slug": "llm",
+          "label": "llm"
+        },
+        {
+          "slug": "mental-health",
+          "label": "mental health"
+        },
+        {
+          "slug": "money",
+          "label": "money"
+        },
+        {
+          "slug": "nlp",
+          "label": "NLP"
+        },
+        {
+          "slug": "nutrici-c3-b3n",
+          "label": "nutrici%c3%b3n"
+        },
+        {
+          "slug": "nutrici-n",
+          "label": "Nutrición"
+        },
+        {
+          "slug": "nutrition",
+          "label": "Nutrition"
+        },
+        {
+          "slug": "oil",
+          "label": "oil"
+        },
+        {
+          "slug": "open-source",
+          "label": "open source"
+        },
+        {
+          "slug": "photos",
+          "label": "photos"
+        },
+        {
+          "slug": "policy",
+          "label": "policy"
+        },
+        {
+          "slug": "privacy",
+          "label": "privacy"
+        },
+        {
+          "slug": "privacy-policy",
+          "label": "privacy policy"
+        },
+        {
+          "slug": "productivity",
+          "label": "productivity"
+        },
+        {
+          "slug": "quote",
+          "label": "quotes"
+        },
+        {
+          "slug": "recetas",
+          "label": "recetas"
+        },
+        {
+          "slug": "recipe",
+          "label": "recipes"
+        },
+        {
+          "slug": "rhythm",
+          "label": "Rhythms"
+        },
+        {
+          "slug": "simplicity",
+          "label": "simplicity"
+        },
+        {
+          "slug": "social-media",
+          "label": "social media"
+        },
+        {
+          "slug": "software",
+          "label": "software"
+        },
+        {
+          "slug": "space",
+          "label": "space"
+        },
+        {
+          "slug": "technology",
+          "label": "technology"
+        },
+        {
+          "slug": "tutorial",
+          "label": "tutorial"
+        },
+        {
+          "slug": "tweet",
+          "label": "tweets"
+        },
+        {
+          "slug": "wordpress",
+          "label": "wordpress"
+        },
+        {
+          "slug": "writing",
+          "label": "writing"
+        },
+        {
+          "slug": "x-is-cool",
+          "label": "x is cool"
+        },
+        {
+          "slug": "youtube",
+          "label": "youtube"
+        }
+      ],
+      "recent_content": {
+        "url": "https://joshmuller.ca/dads-service/",
+        "title": "Memorial Service for Jerry Müller",
+        "summary": "Obituary / Write a Tribute Spotify playlist of Dad's favorite songs Dad's anniversary playlist note (separate from the Spotify playlist) Mom's reflections, one year later Photos of Jerry over the years: Additional photos that family and friends shared by email after Dad passed away. Click any image to open it full size.",
+        "published_at": "2022-01-07T20:00:00.000Z",
+        "content_type": "article",
+        "language": "",
+        "site_origin": "https://joshmuller.ca",
+        "site_title": "Josh's site",
+        "domain": "joshmuller.ca",
+        "tags": [],
+        "neighborhoods": [],
+        "image": "/assets/activity/posters/8ece6662947fc1e10b7c545f03ecfb73e47ea42615a22acb19fcc9d72bcd5791.webp",
+        "image_origin": ""
+      },
+      "outgoing": [],
+      "incoming": [],
+      "coverage": {
+        "pages_discovered": 80,
+        "pages_fetched": 80,
+        "fetch_limit": 80,
+        "limit_reached": true,
+        "selection_strategy": "bounded-site-crawl-v1"
+      },
+      "crawled_at": "2026-10-12T18:51:53.092Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -196,7 +519,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-11T20:17:07.618Z"
+      "crawled_at": "2026-10-12T18:51:53.092Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -420,7 +743,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-11T20:17:07.618Z"
+      "crawled_at": "2026-10-12T18:51:53.092Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -641,12 +964,20 @@
           "label": "executive power"
         },
         {
+          "slug": "family",
+          "label": "family"
+        },
+        {
           "slug": "finance",
           "label": "finance"
         },
         {
           "slug": "financial-market",
           "label": "financial markets"
+        },
+        {
+          "slug": "friend",
+          "label": "Friends"
         },
         {
           "slug": "friendship",
@@ -741,6 +1072,10 @@
           "label": "medical research"
         },
         {
+          "slug": "mental-health",
+          "label": "mental health"
+        },
+        {
           "slug": "mentorship",
           "label": "mentorship"
         },
@@ -785,8 +1120,16 @@
           "label": "parenting"
         },
         {
+          "slug": "personal-growth",
+          "label": "personal growth"
+        },
+        {
           "slug": "personhood",
           "label": "personhood"
+        },
+        {
+          "slug": "philanthropy",
+          "label": "philanthropy"
         },
         {
           "slug": "philosophy",
@@ -909,6 +1252,10 @@
           "label": "star trek"
         },
         {
+          "slug": "support",
+          "label": "support"
+        },
+        {
           "slug": "surveillance",
           "label": "surveillance"
         },
@@ -937,6 +1284,10 @@
           "label": "user experience"
         },
         {
+          "slug": "veteran",
+          "label": "veterans"
+        },
+        {
           "slug": "video-game",
           "label": "video games"
         },
@@ -959,6 +1310,10 @@
         {
           "slug": "workplace",
           "label": "workplace"
+        },
+        {
+          "slug": "world-mental-health-day",
+          "label": "world mental health day"
         },
         {
           "slug": "writing",
@@ -1010,7 +1365,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-11T20:17:07.618Z"
+      "crawled_at": "2026-10-12T18:51:53.092Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -1236,7 +1591,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-11T20:17:07.618Z"
+      "crawled_at": "2026-10-12T18:51:53.092Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -1292,6 +1647,10 @@
         {
           "slug": "business",
           "label": "business"
+        },
+        {
+          "slug": "case-study",
+          "label": "case study"
         },
         {
           "slug": "charity-nonprofit",
@@ -1428,7 +1787,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-11T20:17:07.618Z",
+      "crawled_at": "2026-10-12T18:51:53.092Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 145,

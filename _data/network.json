@@ -36,6 +36,97 @@
     ]
   },
   {
+    "origin": "https://joshmuller.ca",
+    "domain": "joshmuller.ca",
+    "identity": "affirmed",
+    "declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "initial_declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "first_participated_at": "2026-10-12T18:37:30.47824Z",
+    "latest_declaration_check_at": "2026-10-12T18:37:30.47824Z",
+    "latest_declaration_check_outcome": "valid",
+    "title": "Josh's site",
+    "description": "Personal Website of Josh Müller — Technologist | Leader | Regenerative Systems Designer",
+    "screenshot": "/assets/network/sites/109045b15bd95901ad279f4aaa398ce4bd73d622e4d5f75db2bcad8f94d2b1e5.webp",
+    "embeddable": true,
+    "frame_reason": "allowed",
+    "captured_at": "2026-10-12T18:51:47.410Z",
+    "feeds": [
+      {
+        "url": "https://joshmuller.ca/index.xml",
+        "type": "application/rss+xml",
+        "title": "rss"
+      }
+    ],
+    "elsewhere": [
+      {
+        "url": "https://joshmuller.ca/say-hi",
+        "network": "web",
+        "label": "joshmuller.ca"
+      },
+      {
+        "url": "https://resume.joshmuller.ca/",
+        "network": "web",
+        "label": "resume.joshmuller.ca"
+      },
+      {
+        "url": "https://www.linkedin.com/in/thejoshmuller/",
+        "network": "linkedin",
+        "label": "LinkedIn"
+      },
+      {
+        "url": "https://github.com/theJoshMuller",
+        "network": "github",
+        "label": "GitHub"
+      },
+      {
+        "url": "https://mas.to/@theJoshMuller",
+        "network": "mastodon",
+        "label": "Mastodon"
+      },
+      {
+        "url": "https://bsky.app/profile/thejoshmuller.bsky.social",
+        "network": "bluesky",
+        "label": "Bluesky"
+      },
+      {
+        "url": "https://twitter.com/thejoshmuller",
+        "network": "x",
+        "label": "X"
+      },
+      {
+        "url": "https://instagram.com/theJoshMuller",
+        "network": "instagram",
+        "label": "Instagram"
+      },
+      {
+        "url": "https://youtube.com/@joshmuller",
+        "network": "youtube",
+        "label": "YouTube"
+      },
+      {
+        "url": "https://discordapp.com/users/thejoshmuller",
+        "network": "web",
+        "label": "discordapp.com"
+      },
+      {
+        "url": "https://t.me/theJoshMuller",
+        "network": "telegram",
+        "label": "Telegram"
+      },
+      {
+        "url": "https://joshmuller.ca/feed",
+        "network": "web",
+        "label": "joshmuller.ca"
+      }
+    ]
+  },
+  {
     "origin": "https://joshternet.org",
     "domain": "joshternet.org",
     "identity": "undeclared",

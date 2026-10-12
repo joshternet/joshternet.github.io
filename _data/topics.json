@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-12T15:24:52.410Z",
-  "community_count": 192,
+  "generated_at": "2026-10-12T18:51:53.092Z",
+  "community_count": 222,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
       "slug": "ai",
       "label": "ai",
-      "member_count": 5,
+      "member_count": 6,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -38,6 +38,34 @@
           ]
         },
         {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2023/use-llm-for-subtitles/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2024/interlinear-audiobible/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2024/translation-workflow/",
+              "title": "",
+              "source": "article:tag"
+            }
+          ]
+        },
+        {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
           "title": "Joshtronic",
@@ -61,16 +89,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/28/what-does-unlawful-mean-if-the-damage-happens-first/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
               "title": "",
@@ -98,6 +116,16 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/09/13/ai-is-making-code-cheap-it-is-making-judgment-more-valuable/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/20/voyagers-doctor-is-the-ai-future-i-hope-we-have-to-think-about/",
               "title": "",
               "source": "microformat:p-category"
             }
@@ -141,6 +169,7 @@
         }
       ],
       "sources": [
+        "article:tag",
         "catalog-match",
         "microformat:p-category",
         "portfolio:sector",
@@ -148,7 +177,7 @@
         "topic-hub:page"
       ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-04T15:32:37.678Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
@@ -162,11 +191,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
               "title": "",
@@ -259,11 +283,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
               "title": "",
               "source": "microformat:p-category"
@@ -316,6 +335,13 @@
       "active": true,
       "related_discoveries": [
         {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
           "title": "Joshtronic",
@@ -356,8 +382,31 @@
     {
       "slug": "apple",
       "label": "apple",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/recipes/sauces/bone-broth/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/why-to-stop-using-chrome-safari-edge/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/if-you-can-see-it-its-legal/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -395,9 +444,14 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
-      "last_changed_at": "2026-10-08T07:58:36.941Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
@@ -537,6 +591,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/09/18/worth-wandering-robin-sloan/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/09/worth-wandering-camerons-world/",
               "title": "",
               "source": "microformat:p-category"
             },
@@ -850,6 +909,13 @@
       "active": true,
       "related_discoveries": [
         {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
           "title": "Joshtronic",
@@ -861,7 +927,7 @@
     {
       "slug": "book",
       "label": "books",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -891,6 +957,39 @@
             },
             {
               "url": "https://joshghent.com/the-mezzanine/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/posts/thoughts-on-guns/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/4-days-to-save-6-million-lives/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/public-wifi/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2024/3-books/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/digital-minimalism-2019/",
               "title": "",
               "source": "catalog-match"
             }
@@ -930,14 +1029,56 @@
       ],
       "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-08T07:58:36.941Z",
-      "last_changed_at": "2026-10-08T07:58:36.941Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
+    },
+    {
+      "slug": "book-review",
+      "label": "book reviews",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/categories/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
       "slug": "browser",
       "label": "browsers",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2022/improve-youtube/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/why-to-stop-using-chrome-safari-edge/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -952,9 +1093,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": ["catalog-match", "topic-hub:link"],
       "first_seen_at": "2026-10-08T07:58:36.941Z",
-      "last_changed_at": "2026-10-08T07:58:36.941Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
@@ -981,11 +1122,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/29/europes-new-packaging-rules-may-make-small-sellers-stop-shipping-there/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/08/30/apples-repair-restrictions-are-back-in-court-and-the-reason-matters/",
               "title": "",
@@ -1133,7 +1269,16 @@
       "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "career",
@@ -1185,7 +1330,16 @@
       "sources": ["microformat:p-category", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "cars",
@@ -1209,6 +1363,72 @@
       "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
+    },
+    {
+      "slug": "case-study",
+      "label": "case study",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/categories/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshuabaker.com",
+          "domain": "www.joshuabaker.com",
+          "title": "Joshua Baker",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuabaker.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/banked-pay-by-bank/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/banked/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/not-optional/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/the-dots/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:link", "visible-text"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
@@ -1301,17 +1521,17 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/28/what-does-unlawful-mean-if-the-damage-happens-first/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/13/flock-employees-dont-like-being-watched-either/",
               "title": "",
               "source": "microformat:p-category"
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/10/flock-got-the-plate-right-and-the-person-was-still-wrongly-accused/",
               "title": "",
               "source": "microformat:p-category"
             },
@@ -1428,6 +1648,16 @@
               "source": "microformat:p-category"
             },
             {
+              "url": "https://joshuamorris.info/notes/2026/10/08/what-one-promise-can-become-after-thirteen-years/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/09/please-ask-for-help-when-you-need-it/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -1453,6 +1683,13 @@
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
       "related_discoveries": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
         {
           "origin": "https://joshternet.org",
           "domain": "joshternet.org",
@@ -1514,6 +1751,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/09/26/the-work-required-to-make-something-look-simple/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/09/worth-wandering-camerons-world/",
               "title": "",
               "source": "microformat:p-category"
             },
@@ -1614,7 +1856,16 @@
       "sources": ["catalog-match", "portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-08T07:58:36.941Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "consumer-protection",
@@ -1959,7 +2210,7 @@
     {
       "slug": "design",
       "label": "design",
-      "member_count": 4,
+      "member_count": 5,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -1996,6 +2247,29 @@
               "url": "https://joshghent.com/work/",
               "title": "",
               "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2022/create-something-today/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/desert-greening-reading/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2025/no-water-toilets/",
+              "title": "",
+              "source": "catalog-match"
             }
           ]
         },
@@ -2108,7 +2382,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
-      "last_changed_at": "2026-10-04T15:32:37.678Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
@@ -2212,6 +2486,30 @@
       "active": true
     },
     {
+      "slug": "digital-minimalism",
+      "label": "digital minimalism",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
+    },
+    {
       "slug": "digital-right",
       "label": "digital rights",
       "member_count": 1,
@@ -2228,17 +2526,17 @@
               "source": "microformat:p-category"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/08/30/california-is-carving-linux-out-of-its-age-gating-law/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/13/flock-employees-dont-like-being-watched-either/",
               "title": "",
               "source": "microformat:p-category"
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/10/flock-got-the-plate-right-and-the-person-was-still-wrongly-accused/",
               "title": "",
               "source": "microformat:p-category"
             },
@@ -2258,7 +2556,7 @@
     {
       "slug": "discovery",
       "label": "discovery",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -2274,16 +2572,24 @@
           ]
         },
         {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2022/1805-discovery-could-have-prevented-the-cold-war/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/28/worth-wandering-ytoo/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
               "title": "",
@@ -2299,7 +2605,7 @@
       ],
       "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-08T07:58:36.941Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true,
       "related_discoveries": [
         {
@@ -2350,16 +2656,11 @@
               "url": "https://joshuamorris.info/notes/2026/09/28/a-satellite-that-breathes-the-atmosphere-trying-to-pull-it-down/",
               "title": "",
               "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
             }
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2463,6 +2764,11 @@
               "source": "microformat:p-category"
             },
             {
+              "url": "https://joshuamorris.info/notes/2026/10/08/what-one-promise-can-become-after-thirteen-years/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -2500,7 +2806,16 @@
       ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "eleventy",
@@ -2529,8 +2844,56 @@
     {
       "slug": "email",
       "label": "email",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/dads-service/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/hello/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/privacy-policy/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/say-hi/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/subscribe/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/write-a-letter/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/subscribe-to-mailchimp-newsletters-with-rss/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/you-need-a-password-manager/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -2560,7 +2923,7 @@
       ],
       "sources": ["catalog-match", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-08T07:58:36.941Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true,
       "related_discoveries": [
         {
@@ -2614,7 +2977,7 @@
     {
       "slug": "engineering",
       "label": "engineering",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -2646,6 +3009,19 @@
               "url": "https://joshghent.com/work/",
               "title": "",
               "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2025/how-i-prompt-engineer/",
+              "title": "",
+              "source": "catalog-match"
             }
           ]
         },
@@ -2693,7 +3069,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
-      "last_changed_at": "2026-10-08T07:58:36.941Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true,
       "related_discoveries": [
         {
@@ -2806,11 +3182,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/28/what-does-unlawful-mean-if-the-damage-happens-first/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -2818,7 +3189,7 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
@@ -2826,8 +3197,36 @@
     {
       "slug": "facebook",
       "label": "facebook",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2022/how-to-message-someone-on-whatsapp-without-saving-them-as-a-contact/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/make-friends-with-one-of-them/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/palihapitya-on-attention-extraction/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/digital-minimalism-2019/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://www.joshcanhelp.com",
           "domain": "www.joshcanhelp.com",
@@ -2842,15 +3241,48 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": ["catalog-match", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T09:36:17.761Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true,
       "related_discoveries": [
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
           "title": "Joshua Morris",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
+    },
+    {
+      "slug": "family",
+      "label": "family",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/09/please-ask-for-help-when-you-need-it/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
@@ -3035,10 +3467,57 @@
       "active": true
     },
     {
-      "slug": "focus",
-      "label": "focus",
+      "slug": "fitness",
+      "label": "Fitness",
       "member_count": 1,
       "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/kamis-workout-plan/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["article:tag", "topic-hub:link"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
+    },
+    {
+      "slug": "focus",
+      "label": "focus",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2024/3-books/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2025/dopamine/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://www.joshcanhelp.com",
           "domain": "www.joshcanhelp.com",
@@ -3053,16 +3532,59 @@
           ]
         }
       ],
-      "sources": ["topic-hub:page"],
+      "sources": ["catalog-match", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T09:36:17.761Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
       "slug": "food",
       "label": "food",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/daily/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/kamis-eating-plan/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/snacks/hummus/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/cycles/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/desert-greening-reading/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/spring-cleaning/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2025/innate-regenerative-resources/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -3082,9 +3604,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "topic-hub:page"],
+      "sources": ["catalog-match", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T09:36:17.761Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
@@ -3112,6 +3634,35 @@
       "active": true
     },
     {
+      "slug": "forced-alignment",
+      "label": "Forced Alignment",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2024/interlinear-audiobible/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["article:tag", "topic-hub:link"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
+    },
+    {
       "slug": "freelancing",
       "label": "freelancing",
       "member_count": 1,
@@ -3133,6 +3684,48 @@
       "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
+      "active": true
+    },
+    {
+      "slug": "friend",
+      "label": "Friends",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2023/use-llm-for-subtitles/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/08/my-small-answer-to-the-friendship-recession-is-to-tell-my-friends-they-matter/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        }
+      ],
+      "sources": ["article:tag", "catalog-match", "topic-hub:link"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
@@ -3191,7 +3784,7 @@
     {
       "slug": "google",
       "label": "google",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -3201,6 +3794,24 @@
           "pages": [
             {
               "url": "https://joshghent.com/google-psi-problems/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/privacy-policy/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2024/follow-substack-with-rss/",
               "title": "",
               "source": "catalog-match"
             }
@@ -3255,7 +3866,7 @@
       ],
       "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-04T15:32:37.678Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
@@ -3342,11 +3953,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/28/what-does-unlawful-mean-if-the-damage-happens-first/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/30/prop-40-without-the-commercials-what-californias-billionaire-tax-actually-says/",
               "title": "",
               "source": "microformat:p-category"
@@ -3378,6 +3984,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/04/prop-39-would-ask-for-an-id-in-person-and-four-digits-on-a-mail-ballot/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/05/most-of-prop-1-is-a-loan-the-general-budget-pays-back-with-interest/",
               "title": "",
               "source": "microformat:p-category"
             }
@@ -3449,6 +4060,35 @@
       "active": true
     },
     {
+      "slug": "gpt-4",
+      "label": "GPT-4",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2024/translation-workflow/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["article:tag", "topic-hub:link"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
+    },
+    {
       "slug": "graffiti",
       "label": "graffiti",
       "member_count": 1,
@@ -3473,6 +4113,39 @@
       "active": true
     },
     {
+      "slug": "habit",
+      "label": "habits",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
+    },
+    {
       "slug": "hardware",
       "label": "hardware",
       "member_count": 2,
@@ -3483,11 +4156,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/29/plugging-in-a-display-should-not-install-adware-on-my-computer/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/08/30/spacelabs-128-kb-of-ram-was-more-than-a-million-tiny-ferrite-rings/",
               "title": "",
@@ -3542,7 +4210,7 @@
     {
       "slug": "health",
       "label": "health",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -3574,6 +4242,24 @@
               "url": "https://joshghent.com/work/",
               "title": "",
               "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/kamis-workout-plan/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/tags/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         },
@@ -3620,6 +4306,7 @@
         }
       ],
       "sources": [
+        "article:tag",
         "catalog-match",
         "microformat:p-category",
         "portfolio:sector",
@@ -3627,7 +4314,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-04T15:32:37.678Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
@@ -3752,16 +4439,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/28/worth-wandering-ytoo/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/29/europes-new-packaging-rules-may-make-small-sellers-stop-shipping-there/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/04/worth-wandering-html-energy/",
               "title": "",
               "source": "microformat:p-category"
@@ -3790,6 +4467,16 @@
               "url": "https://joshuamorris.info/notes/2026/09/18/worth-wandering-robin-sloan/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/25/worth-wandering-bartosz-ciechanowski/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
+              "title": "",
+              "source": "microformat:p-category"
             }
           ]
         }
@@ -3810,11 +4497,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/28/worth-wandering-ytoo/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/04/worth-wandering-html-energy/",
               "title": "",
@@ -3847,6 +4529,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/09/18/worth-wandering-robin-sloan/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
               "title": "",
               "source": "microformat:p-category"
             }
@@ -3899,6 +4586,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/09/15/the-us-fuel-crisis-is-making-canadas-oil-more-valuable-than-ever/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/10/the-internet-is-held-together-by-people-we-forgot-to-support/",
               "title": "",
               "source": "microformat:p-category"
             },
@@ -4049,11 +4741,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/29/plugging-in-a-display-should-not-install-adware-on-my-computer/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -4061,7 +4748,7 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-08T19:38:44.771Z",
       "last_changed_at": "2026-10-08T19:38:44.771Z",
       "active": true
@@ -4077,11 +4764,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/09/my-box-of-cables-is-thirty-years-of-backwards-compatibility/",
               "title": "",
@@ -4100,6 +4782,13 @@
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true,
       "related_discoveries": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
         {
           "origin": "https://joshternet.org",
           "domain": "joshternet.org",
@@ -4174,10 +4863,57 @@
       "active": true
     },
     {
-      "slug": "law",
-      "label": "law",
+      "slug": "language-learning",
+      "label": "Language Learning",
       "member_count": 1,
       "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2024/interlinear-audiobible/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["article:tag", "topic-hub:link"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
+    },
+    {
+      "slug": "law",
+      "label": "law",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/recipes/desserts/katie-s-tahini-cookies/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/meals/ajiaco-santafereno/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -4185,17 +4921,7 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/28/what-does-unlawful-mean-if-the-damage-happens-first/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/30/apples-repair-restrictions-are-back-in-court-and-the-reason-matters/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/30/california-is-carving-linux-out-of-its-age-gating-law/",
               "title": "",
               "source": "microformat:p-category"
             },
@@ -4223,13 +4949,23 @@
               "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/04/prop-39-would-ask-for-an-id-in-person-and-four-digits-on-a-mail-ballot/",
+              "title": "",
+              "source": "microformat:p-category"
             }
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": ["catalog-match", "microformat:p-category"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-08T07:58:36.941Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true,
       "related_discoveries": [
         {
@@ -4275,7 +5011,7 @@
     {
       "slug": "life",
       "label": "life",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -4290,6 +5026,54 @@
             },
             {
               "url": "https://joshghent.com/quarterly-plan/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/hello/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/now/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/why/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/add-an-acid/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/attention-and-life/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/epictetus-on-using-the-internet/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/redemption-culture/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/solutions-and-implementations/",
               "title": "",
               "source": "catalog-match"
             }
@@ -4330,6 +5114,11 @@
               "source": "microformat:p-category"
             },
             {
+              "url": "https://joshuamorris.info/notes/2026/10/09/please-ask-for-help-when-you-need-it/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -4339,7 +5128,36 @@
       ],
       "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-04T15:32:37.678Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
+    },
+    {
+      "slug": "lifestyle",
+      "label": "Lifestyle",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2023/never-do-the-same-task-thrice/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["article:tag", "topic-hub:link"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
@@ -4380,6 +5198,13 @@
       "active": true,
       "related_discoveries": [
         {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
           "title": "Joshua Morris",
@@ -4391,8 +5216,36 @@
     {
       "slug": "linux",
       "label": "linux",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2023/never-do-the-same-task-thrice/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/use-llm-for-subtitles/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -4413,11 +5266,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/30/california-is-carving-linux-out-of-its-age-gating-law/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/30/one-machine-several-linux-kernels-no-hypervisor/",
               "title": "",
               "source": "microformat:p-category"
@@ -4430,9 +5278,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["article:tag", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-06T20:20:38.881Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true,
       "related_discoveries": [
         {
@@ -4447,8 +5295,31 @@
     {
       "slug": "llm",
       "label": "llm",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2024/translation-workflow/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -4473,9 +5344,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["article:tag", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-08T07:58:36.941Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true,
       "related_discoveries": [
         {
@@ -4533,7 +5404,16 @@
       "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "marketing",
@@ -4595,7 +5475,16 @@
       "sources": ["catalog-match", "topic-hub:page", "visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "marketing-advertising",
@@ -4705,6 +5594,48 @@
       "active": true
     },
     {
+      "slug": "mental-health",
+      "label": "mental health",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2023/fill-up-your-hope-meter/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/sharpen-your-ax/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/09/please-ask-for-help-when-you-need-it/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["catalog-match", "microformat:p-category"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
+    },
+    {
       "slug": "mentorship",
       "label": "mentorship",
       "member_count": 1,
@@ -4736,8 +5667,26 @@
     {
       "slug": "money",
       "label": "money",
-      "member_count": 4,
+      "member_count": 5,
       "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2025/innate-regenerative-resources/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -4768,22 +5717,22 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/05/most-of-prop-1-is-a-loan-the-general-budget-pays-back-with-interest/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/08/the-17-percent-in-prop-37-is-a-loan-the-buyer-pays-back/",
+              "url": "https://joshuamorris.info/notes/2026/10/09/please-ask-for-help-when-you-need-it/",
               "title": "",
               "source": "visible-text"
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/09/prop-4-clears-a-path-for-public-campaign-money-it-does-not-spend-any/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/10/flock-got-the-plate-right-and-the-person-was-still-wrongly-accused/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/10/the-internet-is-held-together-by-people-we-forgot-to-support/",
               "title": "",
               "source": "visible-text"
             }
@@ -4823,7 +5772,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-09T20:54:55.543Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
@@ -4890,6 +5839,45 @@
       "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "active": true
+    },
+    {
+      "slug": "nlp",
+      "label": "NLP",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2023/use-llm-for-subtitles/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2024/interlinear-audiobible/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2024/translation-workflow/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["article:tag", "topic-hub:link"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
@@ -4999,6 +5987,88 @@
       "active": true
     },
     {
+      "slug": "nutrici-c3-b3n",
+      "label": "nutrici%c3%b3n",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
+    },
+    {
+      "slug": "nutrici-n",
+      "label": "Nutrición",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/es/plan-de-comida/",
+              "title": "",
+              "source": "article:tag"
+            }
+          ]
+        }
+      ],
+      "sources": ["article:tag"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
+    },
+    {
+      "slug": "nutrition",
+      "label": "Nutrition",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/kamis-eating-plan/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/meal-prepping/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["article:tag", "topic-hub:link"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
+    },
+    {
       "slug": "obsidian",
       "label": "obsidian",
       "member_count": 1,
@@ -5025,8 +6095,36 @@
     {
       "slug": "oil",
       "label": "oil",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/recipes/meals/butter-chicken/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/meals/falafel/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/snacks/high-protein-banana-bread/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/snacks/hummus/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -5051,9 +6149,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
@@ -5112,7 +6210,7 @@
     {
       "slug": "open-source",
       "label": "open source",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -5143,16 +6241,29 @@
           ]
         },
         {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        },
+        {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/30/california-is-carving-linux-out-of-its-age-gating-law/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/08/30/one-machine-several-linux-kernels-no-hypervisor/",
               "title": "",
@@ -5165,6 +6276,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/09/23/apple-finally-made-the-xcode-project-file-understandable/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/10/the-internet-is-held-together-by-people-we-forgot-to-support/",
               "title": "",
               "source": "microformat:p-category"
             },
@@ -5190,13 +6306,14 @@
         }
       ],
       "sources": [
+        "article:tag",
         "microformat:p-category",
         "topic-hub:link",
         "topic-hub:page",
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-08T07:58:36.941Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true,
       "related_discoveries": [
         {
@@ -5219,16 +6336,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/29/europes-new-packaging-rules-may-make-small-sellers-stop-shipping-there/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/29/plugging-in-a-display-should-not-install-adware-on-my-computer/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/08/30/apples-repair-restrictions-are-back-in-court-and-the-reason-matters/",
               "title": "",
@@ -5401,6 +6508,30 @@
       "active": true
     },
     {
+      "slug": "personal-growth",
+      "label": "personal growth",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/08/what-one-promise-can-become-after-thirteen-years/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
+    },
+    {
       "slug": "personhood",
       "label": "personhood",
       "member_count": 1,
@@ -5435,6 +6566,30 @@
       "active": true
     },
     {
+      "slug": "philanthropy",
+      "label": "philanthropy",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/08/what-one-promise-can-become-after-thirteen-years/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
+    },
+    {
       "slug": "philosophy",
       "label": "philosophy",
       "member_count": 1,
@@ -5456,6 +6611,30 @@
       "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-07T00:42:51.529Z",
       "last_changed_at": "2026-10-07T00:42:51.529Z",
+      "active": true
+    },
+    {
+      "slug": "photos",
+      "label": "photos",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/categories/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
@@ -5498,8 +6677,21 @@
     {
       "slug": "policy",
       "label": "policy",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/privacy-policy/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -5574,7 +6766,7 @@
       ],
       "sources": ["catalog-match", "portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
-      "last_changed_at": "2026-10-08T07:58:36.941Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
@@ -5604,7 +6796,7 @@
     {
       "slug": "privacy",
       "label": "privacy",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -5640,21 +6832,24 @@
           ]
         },
         {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/privacy-policy/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/29/plugging-in-a-display-should-not-install-adware-on-my-computer/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/30/california-is-carving-linux-out-of-its-age-gating-law/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/10/apples-new-watch-is-listening-but-it-is-not-recording-everything/",
               "title": "",
@@ -5684,6 +6879,16 @@
               "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/10/flock-got-the-plate-right-and-the-person-was-still-wrongly-accused/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         },
@@ -5706,14 +6911,43 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:link",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-04T15:32:37.678Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true,
       "relationships": {
         "broader": [],
         "related": ["surveillance"]
       }
+    },
+    {
+      "slug": "privacy-policy",
+      "label": "privacy policy",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
     },
     {
       "slug": "private-ai",
@@ -5747,8 +6981,31 @@
     {
       "slug": "productivity",
       "label": "productivity",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2024/translation-workflow/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -5763,9 +7020,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": ["article:tag", "topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T09:36:17.761Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
@@ -6069,6 +7326,118 @@
       "active": true
     },
     {
+      "slug": "quote",
+      "label": "quotes",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/categories/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
+    },
+    {
+      "slug": "recetas",
+      "label": "recetas",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/es/recetas/salsa-casera/",
+              "title": "",
+              "source": "article:section"
+            },
+            {
+              "url": "https://joshmuller.ca/es/recetas/super-vegetal/",
+              "title": "",
+              "source": "article:section"
+            }
+          ]
+        }
+      ],
+      "sources": ["article:section"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
+    },
+    {
+      "slug": "recipe",
+      "label": "recipes",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/es/recetas/ajiaco-santafereno/",
+              "title": "",
+              "source": "article:section"
+            },
+            {
+              "url": "https://joshmuller.ca/es/recetas/pollo-a-la-mantequilla/",
+              "title": "",
+              "source": "article:section"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/desserts/flapper-pie/",
+              "title": "",
+              "source": "article:section"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/desserts/fudgy-brownies/",
+              "title": "",
+              "source": "article:section"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/desserts/graham-crackers/",
+              "title": "",
+              "source": "article:section"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/desserts/pumpkin-pie/",
+              "title": "",
+              "source": "article:section"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/meals/ajiaco-santafereno/",
+              "title": "",
+              "source": "article:section"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/meals/butter-chicken/",
+              "title": "",
+              "source": "article:section"
+            }
+          ]
+        }
+      ],
+      "sources": ["article:section"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
+    },
+    {
       "slug": "recruitment",
       "label": "recruitment",
       "member_count": 1,
@@ -6123,16 +7492,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/29/europes-new-packaging-rules-may-make-small-sellers-stop-shipping-there/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/30/california-is-carving-linux-out-of-its-age-gating-law/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/26/having-regulations-is-not-the-same-thing-as-having-accountability/",
               "title": "",
@@ -6258,6 +7617,35 @@
       "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T01:48:41.305Z",
+      "active": true
+    },
+    {
+      "slug": "rhythm",
+      "label": "Rhythms",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/daily/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["article:tag", "topic-hub:link"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
@@ -6450,7 +7838,16 @@
       "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-05T16:17:44.426Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "seattle",
@@ -6514,16 +7911,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/29/plugging-in-a-display-should-not-install-adware-on-my-computer/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/30/json-is-cheap-to-send-and-expensive-to-believe/",
               "title": "",
               "source": "microformat:p-category"
@@ -6550,6 +7937,16 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/09/16/a-20-youtube-promotion-turned-into-a-118000-lesson-in-guardrails/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/10/ai-is-making-it-easier-to-manufacture-credibility/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/10/the-internet-is-held-together-by-people-we-forgot-to-support/",
               "title": "",
               "source": "microformat:p-category"
             }
@@ -6636,8 +8033,21 @@
     {
       "slug": "simplicity",
       "label": "simplicity",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2022/3-quotes-on-simplicity/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -6652,9 +8062,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": ["catalog-match", "microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
@@ -6684,8 +8094,21 @@
     {
       "slug": "social-media",
       "label": "social media",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -6696,6 +8119,16 @@
               "url": "https://joshuamorris.info/notes/2026/09/29/the-internet-saw-a-few-seconds-and-invented-the-rest/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/10/ai-is-making-it-easier-to-manufacture-credibility/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         },
@@ -6726,9 +8159,14 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "topic-hub:page"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:57:33.407Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true,
       "related_discoveries": [
         {
@@ -6743,7 +8181,7 @@
     {
       "slug": "software",
       "label": "software",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -6794,23 +8232,31 @@
           ]
         },
         {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        },
+        {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/29/plugging-in-a-display-should-not-install-adware-on-my-computer/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/30/california-is-carving-linux-out-of-its-age-gating-law/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/09/ai-helped-turn-a-wechat-bug-into-a-zero-click-worm-in-about-a-week/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/10/the-internet-is-held-together-by-people-we-forgot-to-support/",
               "title": "",
               "source": "microformat:p-category"
             },
@@ -6824,7 +8270,7 @@
       ],
       "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-08T07:58:36.941Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true,
       "related_discoveries": [
         {
@@ -6925,8 +8371,26 @@
     {
       "slug": "space",
       "label": "space",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2022/jwst-is-cool/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/fill-up-your-hope-meter/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -6941,9 +8405,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": ["catalog-match", "microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
@@ -7042,6 +8506,46 @@
       "active": true
     },
     {
+      "slug": "support",
+      "label": "support",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/09/please-ask-for-help-when-you-need-it/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshtronic.com",
+          "domain": "joshtronic.com",
+          "title": "Joshtronic",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuabaker.com",
+          "domain": "www.joshuabaker.com",
+          "title": "Joshua Baker",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
+    },
+    {
       "slug": "surveillance",
       "label": "surveillance",
       "member_count": 1,
@@ -7064,6 +8568,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/03/a-federal-judge-finally-called-flock-what-it-is/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/10/flock-got-the-plate-right-and-the-person-was-still-wrongly-accused/",
               "title": "",
               "source": "microformat:p-category"
             },
@@ -7135,8 +8644,31 @@
     {
       "slug": "technology",
       "label": "technology",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2023/never-do-the-same-task-thrice/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2024/follow-substack-with-rss/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
+              "url": "https://joshmuller.ca/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -7238,12 +8770,13 @@
         }
       ],
       "sources": [
+        "article:tag",
         "microformat:p-category",
         "portfolio:sector",
         "topic-hub:link"
       ],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true,
       "related_discoveries": [
         {
@@ -7320,7 +8853,16 @@
       "sources": ["catalog-match", "topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-08T07:58:36.941Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "throwback",
@@ -7378,6 +8920,74 @@
           "note": "Below the community quality threshold; not membership."
         }
       ]
+    },
+    {
+      "slug": "tutorial",
+      "label": "tutorial",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/categories/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
+    },
+    {
+      "slug": "tweet",
+      "label": "tweets",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/tweets/2024-12-01-20-59-30/",
+              "title": "",
+              "source": "article:section"
+            },
+            {
+              "url": "https://joshmuller.ca/tweets/2025-03-19-15-19-12/",
+              "title": "",
+              "source": "article:section"
+            },
+            {
+              "url": "https://joshmuller.ca/tweets/2025-03-19-15-26-51/",
+              "title": "",
+              "source": "article:section"
+            },
+            {
+              "url": "https://joshmuller.ca/tweets/tweet/",
+              "title": "",
+              "source": "article:section"
+            },
+            {
+              "url": "https://joshmuller.ca/categories/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["article:section", "topic-hub:link"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
     },
     {
       "slug": "twitter",
@@ -7541,6 +9151,30 @@
       "active": true
     },
     {
+      "slug": "veteran",
+      "label": "veterans",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/09/please-ask-for-help-when-you-need-it/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
+    },
+    {
       "slug": "video-game",
       "label": "video games",
       "member_count": 2,
@@ -7565,11 +9199,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/29/europes-new-packaging-rules-may-make-small-sellers-stop-shipping-there/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -7577,7 +9206,7 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-08T07:58:36.941Z",
       "last_changed_at": "2026-10-08T07:58:36.941Z",
       "active": true
@@ -7739,6 +9368,11 @@
               "source": "microformat:p-category"
             },
             {
+              "url": "https://joshuamorris.info/notes/2026/10/09/worth-wandering-camerons-world/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -7806,8 +9440,21 @@
     {
       "slug": "wordpress",
       "label": "wordpress",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2022/fix-wordpress-nginx-502-bad-gateway-error-after-debian-upgrade/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -7835,9 +9482,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "topic-hub:page"],
+      "sources": ["catalog-match", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
@@ -7865,9 +9512,33 @@
       "active": true
     },
     {
+      "slug": "world-mental-health-day",
+      "label": "world mental health day",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/09/please-ask-for-help-when-you-need-it/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
+    },
+    {
       "slug": "writing",
       "label": "writing",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -7903,6 +9574,54 @@
           ]
         },
         {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/es/writings/2025/climate-change/",
+              "title": "",
+              "source": "article:section"
+            },
+            {
+              "url": "https://joshmuller.ca/es/writings/2026/use-ai-to-be-a-better-human/",
+              "title": "",
+              "source": "article:section"
+            },
+            {
+              "url": "https://joshmuller.ca/tr/writings/2026/use-ai-to-be-a-better-human/",
+              "title": "",
+              "source": "article:section"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/dont-ration-love/",
+              "title": "",
+              "source": "article:section"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/eulogy-for-dad/",
+              "title": "",
+              "source": "article:section"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/fight-for-rest/",
+              "title": "",
+              "source": "article:section"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/never-do-the-same-task-thrice/",
+              "title": "",
+              "source": "article:section"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/note-to-future-self-exercise/",
+              "title": "",
+              "source": "article:section"
+            }
+          ]
+        },
+        {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
           "title": "Joshua Morris",
@@ -7932,13 +9651,14 @@
         }
       ],
       "sources": [
+        "article:section",
         "catalog-match",
         "microformat:p-category",
         "topic-hub:link",
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-04T15:32:37.678Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     },
     {
@@ -7966,9 +9686,33 @@
       "active": true
     },
     {
+      "slug": "x-is-cool",
+      "label": "x is cool",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:link"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
+    },
+    {
       "slug": "youtube",
       "label": "youtube",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -7978,6 +9722,29 @@
           "pages": [
             {
               "url": "https://joshghent.com/youtube-playlist-downloader/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2022/improve-youtube/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/how-to-turn-a-youtube-channel-into-a-torrent/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2025/artificial-insights/",
               "title": "",
               "source": "catalog-match"
             }
@@ -7999,7 +9766,7 @@
       ],
       "sources": ["catalog-match", "microformat:p-category"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-04T15:32:37.678Z",
+      "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
     }
   ]
