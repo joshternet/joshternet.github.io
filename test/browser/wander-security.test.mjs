@@ -255,7 +255,7 @@ test("an external link shows the blocked-link bubble and a same-site link does n
             await route.fulfill({
               status: 200,
               contentType: "text/html",
-              body: '<a id="leave" href="https://left.example/" style="position:absolute;left:64px;top:280px">Leave</a>',
+              body: '<main id="notes-page"><a id="leave" href="https://left.example/" style="position:absolute;left:64px;top:280px">Leave</a></main>',
             });
 
             return;
@@ -302,7 +302,7 @@ test("an external link shows the blocked-link bubble and a same-site link does n
       notesBox.y + notesBox.height / 2,
     );
 
-    await framed.locator("#leave").waitFor();
+    await siteFrame.waitForURL(/https:\/\/safe\.example\/notes/);
 
     assert.equal(
       await page.locator("[data-wander-link-notice]").isHidden(),
@@ -323,10 +323,10 @@ test("an external link shows the blocked-link bubble and a same-site link does n
     );
 
     await page.waitForFunction(() => {
-      return (
-        document.querySelector(".wander-frame")?.getAttribute("src") ===
-        "about:blank"
-      );
+      const src =
+        document.querySelector(".wander-frame")?.getAttribute("src") ?? "";
+
+      return src === "about:blank" || src.startsWith("about:blank#");
     });
 
     await framed.locator("#leave").waitFor();
@@ -368,11 +368,14 @@ test("an external link shows the blocked-link bubble and a same-site link does n
       false,
     );
 
+    assert.equal(await framed.locator("#notes-page").count(), 1);
+
+    const frameUrls = page.frames().map((frame) => frame.url());
+
     assert.equal(
-      page
-        .frames()
-        .some((frame) => frame.url().startsWith("https://safe.example/notes")),
+      frameUrls.some((url) => url.startsWith("https://safe.example/notes")),
       true,
+      frameUrls.join(", "),
     );
 
     await page.locator("[data-wander-dismiss-link]").click();
