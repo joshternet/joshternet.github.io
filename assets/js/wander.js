@@ -213,13 +213,51 @@
     let departure = "idle";
     let settleTimer = 0;
     let skippedBlockedEntry = false;
+    let returnSteps = -1;
     const gridObserver = watchPointerGrid(
       frame.closest(".wander-embed__stage"),
     );
 
     /**
-     * Moves back toward the framed page while about:blank is still current.
-     * Loading the site root again would discard the open page.
+     * Reads the framed URL when the document is same-origin with this page.
+     * @returns {string | null}
+     */
+    function framedHref() {
+      try {
+        return frame.contentWindow ? frame.contentWindow.location.href : null;
+      } catch {
+        return null;
+      }
+    }
+
+    /**
+     * @param {string | null} href - Framed document URL, when readable.
+     * @returns {boolean}
+     */
+    function isBlankDocument(href) {
+      return href === "about:blank" || href === "about:blank#";
+    }
+
+    /**
+     * Loads about:blank so the next history step runs on a same-origin document.
+     * The src attribute stays about:blank after the first bridge, and assigning
+     * that same value does not navigate, so a committed blocked entry uses a
+     * fragment to open the bridge again.
+     * @returns {void}
+     */
+    function openBlankBridge() {
+      if (frame.getAttribute("src") === "about:blank") {
+        frame.src = "about:blank#";
+
+        return;
+      }
+
+      frame.src = "about:blank";
+    }
+
+    /**
+     * Steps back through session history while about:blank is current.
+     * Does not load the participant origin, which would discard the open page.
      * @param {number} steps - Negative history delta.
      * @returns {void}
      */
@@ -227,8 +265,8 @@
       try {
         frame.contentWindow.history.go(steps);
       } catch {
-        departure = "idle";
-        frame.src = origin;
+        // A foreign document cannot be stepped. The violation handler
+        // bridges through about:blank instead of loading the site root.
       }
     }
 
@@ -250,17 +288,9 @@
      * @returns {void}
      */
     function returnToOpenPage() {
-      let href = null;
-
-      try {
-        href = frame.contentWindow.location.href;
-      } catch {
-        href = null;
-      }
-
-      if (departure === "blank" && href === "about:blank") {
+      if (departure === "blank" && isBlankDocument(framedHref())) {
         departure = "back";
-        stepBack(-1);
+        stepBack(returnSteps);
 
         return;
       }
@@ -280,12 +310,24 @@
       }
 
       if (departure === "back") {
-        if (!skippedBlockedEntry) {
-          skippedBlockedEntry = true;
-          window.clearTimeout(settleTimer);
+        if (skippedBlockedEntry) {
+          return;
+        }
+
+        skippedBlockedEntry = true;
+        window.clearTimeout(settleTimer);
+
+        if (isBlankDocument(framedHref())) {
+          returnSteps = -2;
           stepBack(-2);
           settleBack();
+
+          return;
         }
+
+        returnSteps = -2;
+        departure = "blank";
+        openBlankBridge();
 
         return;
       }
@@ -311,9 +353,10 @@
       }
 
       departure = "blank";
+      returnSteps = -1;
       skippedBlockedEntry = false;
       showLinkBubble();
-      frame.src = "about:blank";
+      openBlankBridge();
     };
 
     document.addEventListener("securitypolicyviolation", onViolation);
