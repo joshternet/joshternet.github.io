@@ -340,6 +340,17 @@ test("platform recipes satisfy the shared documentation contract", async () => {
   }
 });
 
+test("WordPress recipe installs from the plugin directory", async () => {
+  const wordpress = await read("implement/platforms/wordpress.md");
+
+  assert.match(wordpress, /https:\/\/wordpress\.org\/plugins\/joshternet\//);
+  assert.match(wordpress, /https:\/\/github\.com\/joshternet\/wordpress/);
+  assert.match(wordpress, /Releases are published on WordPress\.org/);
+  assert.match(wordpress, /It is not the release channel/);
+  assert.doesNotMatch(wordpress, /until the plugin is listed/);
+  assert.doesNotMatch(wordpress, /After directory acceptance/);
+});
+
 test("Eleventy recipe keeps passthrough copy to /.well-known/josh", async () => {
   const eleventy = await read("implement/platforms/eleventy.md");
 

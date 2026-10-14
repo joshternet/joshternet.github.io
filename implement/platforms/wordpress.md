@@ -19,7 +19,9 @@ Publish your declaration with the Joshternet plugin for WordPress.
 
 ## Install the Joshternet plugin
 
-Install from the project’s [published repository][plugin-source] (release package or development checkout) until the plugin is listed in the WordPress.org directory. After directory acceptance, prefer search-and-install from wp-admin.
+Install [Joshternet][plugin-directory] from the WordPress.org plugin directory. In wp-admin, search for Joshternet and install it, or use the directory page. Releases are published on WordPress.org.
+
+The [source repository][plugin-source] remains available. It is not the release channel.
 
 Requires WordPress 6.0+ and PHP 7.4+.
 
@@ -88,4 +90,5 @@ A deliberate `404 Not Found` or `410 Gone` at `/.well-known/josh` indicates that
 - Protocol: RFC-JOSH-0002 version 1
 
 [implement]: /implement/
+[plugin-directory]: https://wordpress.org/plugins/joshternet/
 [plugin-source]: https://github.com/joshternet/wordpress

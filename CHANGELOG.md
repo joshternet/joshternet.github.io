@@ -8,6 +8,7 @@
 
 ### Changed
 
+- The WordPress platform recipe installs from the WordPress.org plugin directory. GitHub remains the source repository; releases ship through WordPress.org.
 - The site test expects Wander’s main area to use overflow visible so the blocked-link bubble is not clipped.
 - Removed the scheduled Production smoke workflow. It requested the live site every six hours and failed when declaration checks were older than six hours, which is the registry's normal overnight pause. It did not build or publish the site.
 - Wander stays on the framed page that was open when a link would leave that site. Browsers that keep a history entry for the blocked navigation, and browsers that do not, stay on that page instead of stepping back to the site root.
