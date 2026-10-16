@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-16T17:25:30.586Z",
+  "generated_at": "2026-10-16T21:10:08.315Z",
   "sites": [
     {
       "origin": "https://joshghent.com",
@@ -160,7 +160,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-16T17:24:21.487Z"
+      "crawled_at": "2026-10-16T21:08:33.932Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -483,7 +483,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-16T17:24:21.487Z"
+      "crawled_at": "2026-10-16T21:08:33.932Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -519,7 +519,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-16T17:24:21.487Z"
+      "crawled_at": "2026-10-16T21:08:33.932Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -743,7 +743,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-16T17:24:21.487Z"
+      "crawled_at": "2026-10-16T21:08:33.932Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -1365,7 +1365,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-16T17:24:21.487Z"
+      "crawled_at": "2026-10-16T21:08:33.932Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -1591,7 +1591,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-16T17:24:21.487Z"
+      "crawled_at": "2026-10-16T21:08:33.932Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -1649,16 +1649,16 @@
           "label": "business"
         },
         {
-          "slug": "case-study",
-          "label": "case study"
-        },
-        {
           "slug": "charity-nonprofit",
           "label": "charity & nonprofit"
         },
         {
           "slug": "communication-pr",
           "label": "communications & pr"
+        },
+        {
+          "slug": "community",
+          "label": "community"
         },
         {
           "slug": "consumer",
@@ -1754,9 +1754,9 @@
         }
       ],
       "recent_content": {
-        "url": "https://www.joshuabaker.com/work/?work=aiglon-aiglon-2013",
+        "url": "https://www.joshuabaker.com/work/?work=aiglon-aiglon-aiglon-span-flex-row-reverse-button-span-align-top-button-span-spa",
         "title": "Aiglon",
-        "summary": "2013 · Aiglon · Education · Switzerland",
+        "summary": "span]:flex-row-reverse [&_button>span]:align-top [&_button>span>span:last-child]:ml-0 [&_button>span>span:last-child]:mr-1\">2013 · Aiglon Aiglon · Aiglon · Education · Switzerland",
         "published_at": "",
         "content_type": "project",
         "language": "en",
@@ -1787,10 +1787,10 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-16T17:24:21.487Z",
+      "crawled_at": "2026-10-16T21:08:33.932Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
-        "work_count": 145,
+        "work_count": 146,
         "sectors": [
           "Arts & Culture",
           "Charity & Nonprofit",
