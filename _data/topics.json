@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-16T01:20:51.367Z",
+  "generated_at": "2026-10-16T17:24:21.487Z",
   "community_count": 222,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
@@ -2151,6 +2151,26 @@
               "url": "https://joshghent.com/database-design/",
               "title": "",
               "source": "catalog-match"
+            },
+            {
+              "url": "https://joshghent.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/work/",
+              "title": "",
+              "source": "visible-text"
             }
           ]
         },
@@ -2173,7 +2193,12 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:link",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-08T07:58:36.941Z",
       "last_changed_at": "2026-10-08T07:58:36.941Z",
       "active": true

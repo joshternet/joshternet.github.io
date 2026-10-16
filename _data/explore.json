@@ -1,15 +1,30 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-16T01:22:01.865Z",
+  "generated_at": "2026-10-16T17:25:30.586Z",
   "participant_count": 7,
   "community_count": 222,
-  "publication_count": 759,
+  "publication_count": 760,
   "connection_count": 2,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
     "connection": "first edge after stable from, to, relation sort"
   },
   "fresh": [
+    {
+      "url": "https://joshghent.com/groundwork/",
+      "title": "/groundwork: a skill that makes any repo runnable from a fresh clone",
+      "summary": "Most repos only run on the machines of the few developers who set them up. /groundwork is an agent skill that finds the missing env files, databases and docs, then fixes them.",
+      "published_at": "2026-10-16T00:00:00.000Z",
+      "content_type": "article",
+      "language": "en",
+      "site_origin": "https://joshghent.com",
+      "site_title": "Developer Musings",
+      "domain": "joshghent.com",
+      "tags": [],
+      "neighborhoods": [],
+      "image": "/assets/activity/posters/6686276a508ac4569d55e55e69faa4368dca489012c26e839155fee75c974f79.webp",
+      "image_origin": ""
+    },
     {
       "url": "https://joshtronic.com/2026/10/11/pros-cons-self-hosted-git/",
       "title": "Pros and Cons of Self-hosting a Public Git Forge",
