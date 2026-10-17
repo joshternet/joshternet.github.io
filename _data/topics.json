@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-16T23:35:50.575Z",
-  "community_count": 222,
+  "generated_at": "2026-10-17T04:25:36.365Z",
+  "community_count": 226,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
@@ -1123,11 +1123,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/30/apples-repair-restrictions-are-back-in-court-and-the-reason-matters/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -1173,12 +1168,7 @@
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category",
-        "topic-hub:link",
-        "visible-text"
-      ],
+      "sources": ["catalog-match", "topic-hub:link", "visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
@@ -1194,11 +1184,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/30/prop-40-without-the-commercials-what-californias-billionaire-tax-actually-says/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
               "title": "",
@@ -1231,6 +1216,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/07/prop-45-offers-some-projects-a-faster-environmental-review/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/08/the-17-percent-in-prop-37-is-a-loan-the-buyer-pays-back/",
               "title": "",
               "source": "microformat:p-category"
             }
@@ -1738,11 +1728,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/30/spacelabs-128-kb-of-ram-was-more-than-a-million-tiny-ferrite-rings/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/09/my-box-of-cables-is-thirty-years-of-backwards-compatibility/",
               "title": "",
@@ -2534,6 +2519,30 @@
       "active": true
     },
     {
+      "slug": "digital-ownership",
+      "label": "digital ownership",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category"],
+      "first_seen_at": "2026-10-17T04:25:36.365Z",
+      "last_changed_at": "2026-10-17T04:25:36.365Z",
+      "active": true
+    },
+    {
       "slug": "digital-right",
       "label": "digital rights",
       "member_count": 1,
@@ -2544,11 +2553,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/30/apples-repair-restrictions-are-back-in-court-and-the-reason-matters/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/13/flock-employees-dont-like-being-watched-either/",
               "title": "",
@@ -2701,11 +2705,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/30/prop-40-without-the-commercials-what-californias-billionaire-tax-actually-says/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/02/the-netherlands-is-making-its-gold-easier-to-reach-in-a-crisis/",
               "title": "",
               "source": "microformat:p-category"
@@ -2737,6 +2736,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/05/most-of-prop-1-is-a-loan-the-general-budget-pays-back-with-interest/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
               "title": "",
               "source": "microformat:p-category"
             }
@@ -3977,11 +3981,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/30/prop-40-without-the-commercials-what-californias-billionaire-tax-actually-says/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/26/having-regulations-is-not-the-same-thing-as-having-accountability/",
               "title": "",
               "source": "microformat:p-category"
@@ -4013,6 +4012,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/05/most-of-prop-1-is-a-loan-the-general-budget-pays-back-with-interest/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
               "title": "",
               "source": "microformat:p-category"
             }
@@ -4180,11 +4184,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/30/spacelabs-128-kb-of-ram-was-more-than-a-million-tiny-ferrite-rings/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/10/apples-new-watch-is-listening-but-it-is-not-recording-everything/",
               "title": "",
@@ -4594,11 +4593,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/30/one-machine-several-linux-kernels-no-hypervisor/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/09/my-box-of-cables-is-thirty-years-of-backwards-compatibility/",
               "title": "",
               "source": "microformat:p-category"
@@ -4794,6 +4788,11 @@
               "source": "microformat:p-category"
             },
             {
+              "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -4945,21 +4944,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/30/apples-repair-restrictions-are-back-in-court-and-the-reason-matters/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/30/prop-40-without-the-commercials-what-californias-billionaire-tax-actually-says/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/31/there-is-finally-a-murder-conviction-in-tupac-shakurs-killing/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/26/having-regulations-is-not-the-same-thing-as-having-accountability/",
               "title": "",
               "source": "microformat:p-category"
@@ -4981,6 +4965,21 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/04/prop-39-would-ask-for-an-id-in-person-and-four-digits-on-a-mail-ballot/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/05/most-of-prop-1-is-a-loan-the-general-budget-pays-back-with-interest/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/07/prop-45-offers-some-projects-a-faster-environmental-review/",
               "title": "",
               "source": "microformat:p-category"
             }
@@ -5283,11 +5282,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/30/one-machine-several-linux-kernels-no-hypervisor/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -5295,7 +5289,7 @@
           ]
         }
       ],
-      "sources": ["article:tag", "microformat:p-category", "topic-hub:link"],
+      "sources": ["article:tag", "topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true,
@@ -5431,6 +5425,43 @@
           "note": "Below the community quality threshold; not membership."
         }
       ]
+    },
+    {
+      "slug": "markdown",
+      "label": "markdown",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/marp/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["catalog-match", "microformat:p-category"],
+      "first_seen_at": "2026-10-17T04:25:36.365Z",
+      "last_changed_at": "2026-10-17T04:25:36.365Z",
+      "active": true
     },
     {
       "slug": "marketing",
@@ -5729,27 +5760,32 @@
               "source": "catalog-match"
             },
             {
+              "url": "https://joshuamorris.info/notes/2026/10/12/prop-38-borrows-for-immune-research-and-takes-a-cut-if-a-drug-pays-off/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
               "url": "https://joshuamorris.info/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/09/please-ask-for-help-when-you-need-it/",
+              "url": "https://joshuamorris.info/notes/2026/10/11/prop-43-would-make-some-local-taxes-need-two-yes-votes-for-every-no/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/09/prop-4-clears-a-path-for-public-campaign-money-it-does-not-spend-any/",
+              "url": "https://joshuamorris.info/notes/2026/10/12/prop-38-borrows-for-immune-research-and-takes-a-cut-if-a-drug-pays-off/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/10/flock-got-the-plate-right-and-the-person-was-still-wrongly-accused/",
+              "url": "https://joshuamorris.info/notes/2026/10/13/prop-44s-90-percent-starts-on-a-clinics-tax-form-not-in-the-exam-room/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/10/the-internet-is-held-together-by-people-we-forgot-to-support/",
+              "url": "https://joshuamorris.info/notes/2026/10/14/prop-2-lets-the-rainy-day-fund-grow-taller-it-does-not-fill-the-jar/",
               "title": "",
               "source": "visible-text"
             }
@@ -5924,8 +5960,26 @@
     {
       "slug": "nonprofit",
       "label": "nonprofit",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/28/grapheneos-says-strong-mobile-security-is-legal-and-should-remain-that-way/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/13/prop-44s-90-percent-starts-on-a-clinics-tax-form-not-in-the-exam-room/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://www.joshuabaker.com",
           "domain": "www.joshuabaker.com",
@@ -5965,19 +6019,10 @@
           ]
         }
       ],
-      "sources": ["portfolio:sector"],
+      "sources": ["catalog-match", "portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
-      "last_changed_at": "2026-10-03T11:57:33.407Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
+      "last_changed_at": "2026-10-17T04:25:36.365Z",
+      "active": true
     },
     {
       "slug": "nosql",
@@ -6282,11 +6327,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/30/one-machine-several-linux-kernels-no-hypervisor/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/11/worth-wandering-hundred-rabbits/",
               "title": "",
               "source": "microformat:p-category"
@@ -6343,6 +6383,54 @@
       ]
     },
     {
+      "slug": "open-standard",
+      "label": "open standards",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category"],
+      "first_seen_at": "2026-10-17T04:25:36.365Z",
+      "last_changed_at": "2026-10-17T04:25:36.365Z",
+      "active": true
+    },
+    {
+      "slug": "operating-system",
+      "label": "operating systems",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category"],
+      "first_seen_at": "2026-10-17T04:25:36.365Z",
+      "last_changed_at": "2026-10-17T04:25:36.365Z",
+      "active": true
+    },
+    {
       "slug": "ownership",
       "label": "ownership",
       "member_count": 1,
@@ -6353,11 +6441,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/30/apples-repair-restrictions-are-back-in-court-and-the-reason-matters/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/09/my-box-of-cables-is-thirty-years-of-backwards-compatibility/",
               "title": "",
@@ -7271,11 +7354,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/30/prop-40-without-the-commercials-what-californias-billionaire-tax-actually-says/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/02/the-netherlands-is-making-its-gold-easier-to-reach-in-a-crisis/",
               "title": "",
               "source": "microformat:p-category"
@@ -7307,6 +7385,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/07/prop-45-offers-some-projects-a-faster-environmental-review/",
               "title": "",
               "source": "microformat:p-category"
             }
@@ -7933,16 +8016,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/08/30/json-is-cheap-to-send-and-expensive-to-believe/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/30/one-machine-several-linux-kernels-no-hypervisor/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
               "title": "",
               "source": "microformat:p-category"
@@ -7971,11 +8044,16 @@
               "url": "https://joshuamorris.info/notes/2026/10/10/the-internet-is-held-together-by-people-we-forgot-to-support/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category"],
+      "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
@@ -8283,6 +8361,11 @@
               "source": "microformat:p-category"
             },
             {
+              "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -8443,11 +8526,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/30/spacelabs-128-kb-of-ram-was-more-than-a-million-tiny-ferrite-rings/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/28/a-satellite-that-breathes-the-atmosphere-trying-to-pull-it-down/",
               "title": "",
@@ -8725,6 +8803,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
               "title": "",
               "source": "microformat:p-category"
             },
@@ -9362,11 +9445,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/30/json-is-cheap-to-send-and-expensive-to-believe/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/04/worth-wandering-html-energy/",
               "title": "",

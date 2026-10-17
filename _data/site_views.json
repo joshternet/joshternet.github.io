@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-16T21:10:08.315Z",
+  "generated_at": "2026-10-17T04:26:36.130Z",
   "sites": [
     {
       "origin": "https://joshghent.com",
@@ -96,6 +96,10 @@
           "label": "linkedin"
         },
         {
+          "slug": "markdown",
+          "label": "markdown"
+        },
+        {
           "slug": "networking",
           "label": "networking"
         },
@@ -160,7 +164,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-16T21:08:33.932Z"
+      "crawled_at": "2026-10-17T04:25:36.365Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -483,7 +487,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-16T21:08:33.932Z"
+      "crawled_at": "2026-10-17T04:25:36.365Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -519,7 +523,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-16T21:08:33.932Z"
+      "crawled_at": "2026-10-17T04:25:36.365Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -743,7 +747,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-16T21:08:33.932Z"
+      "crawled_at": "2026-10-17T04:25:36.365Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -924,6 +928,10 @@
           "label": "developer tools"
         },
         {
+          "slug": "digital-ownership",
+          "label": "digital ownership"
+        },
+        {
           "slug": "digital-right",
           "label": "digital rights"
         },
@@ -1068,6 +1076,10 @@
           "label": "machine learning"
         },
         {
+          "slug": "markdown",
+          "label": "markdown"
+        },
+        {
           "slug": "medical-research",
           "label": "medical research"
         },
@@ -1092,6 +1104,10 @@
           "label": "neuroscience"
         },
         {
+          "slug": "nonprofit",
+          "label": "nonprofit"
+        },
+        {
           "slug": "oil",
           "label": "oil"
         },
@@ -1106,6 +1122,14 @@
         {
           "slug": "open-source",
           "label": "open source"
+        },
+        {
+          "slug": "open-standard",
+          "label": "open standards"
+        },
+        {
+          "slug": "operating-system",
+          "label": "operating systems"
         },
         {
           "slug": "ownership",
@@ -1365,7 +1389,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-16T21:08:33.932Z"
+      "crawled_at": "2026-10-17T04:25:36.365Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -1591,7 +1615,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-16T21:08:33.932Z"
+      "crawled_at": "2026-10-17T04:25:36.365Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -1787,7 +1811,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-16T21:08:33.932Z",
+      "crawled_at": "2026-10-17T04:25:36.365Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,

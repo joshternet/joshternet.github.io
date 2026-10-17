@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-16T21:10:08.315Z",
+  "generated_at": "2026-10-17T04:26:36.130Z",
   "overlap_count": 15,
   "pairs": [
     {
@@ -210,6 +210,10 @@
         {
           "slug": "linkedin",
           "label": "linkedin"
+        },
+        {
+          "slug": "markdown",
+          "label": "markdown"
         },
         {
           "slug": "money",
@@ -1203,10 +1207,6 @@
               "title": "Joshua Morris",
               "articles": [
                 {
-                  "url": "https://joshuamorris.info/notes/2026/08/30/apples-repair-restrictions-are-back-in-court-and-the-reason-matters/",
-                  "title": "Apple's Repair Restrictions Are Back in Court, and the Reason Matters"
-                },
-                {
                   "url": "https://joshuamorris.info/notes/2026/08/10/ransomware-gangs-learned-to-target-the-org-chart/",
                   "title": "Ransomware Gangs Learned to Target the Org Chart"
                 },
@@ -1908,10 +1908,6 @@
                   "title": "My Box of Cables Is Thirty Years of Backwards Compatibility"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/08/30/one-machine-several-linux-kernels-no-hypervisor/",
-                  "title": "One Machine, Several Linux Kernels, No Hypervisor"
-                },
-                {
                   "url": "https://joshuamorris.info/notes/2026/08/17/the-next-moon-race-is-about-infrastructure-not-flags/",
                   "title": "The Next Moon Race Is About Infrastructure, Not Flags"
                 },
@@ -1922,6 +1918,10 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/05/ai-may-reduce-hiring-before-it-creates-more-work/",
                   "title": "AI May Reduce Hiring Before It Creates More Work"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/03/phantom-twist-hides-a-drone-with-motion-blur/",
+                  "title": "Phantom Twist Hides a Drone with Motion Blur"
                 }
               ]
             }
@@ -2071,6 +2071,29 @@
           ]
         },
         {
+          "slug": "markdown",
+          "label": "markdown",
+          "articles": [
+            {
+              "url": "https://joshghent.com/marp/",
+              "title": "Markdown for Slides"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+                  "title": "A Markdown File Should Just Open"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "money",
           "label": "money",
           "articles": [
@@ -2122,6 +2145,10 @@
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
               "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/12/prop-38-borrows-for-immune-research-and-takes-a-cut-if-a-drug-pays-off/",
+                  "title": "Prop. 38 borrows for immune research, and takes a cut if a drug pays off"
+                },
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/09/prop-4-clears-a-path-for-public-campaign-money-it-does-not-spend-any/",
                   "title": "Prop. 4 clears a path for public campaign money. It does not spend any."
@@ -2229,10 +2256,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/11/worth-wandering-hundred-rabbits/",
                   "title": "Worth Wandering: Hundred Rabbits"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/30/one-machine-several-linux-kernels-no-hypervisor/",
-                  "title": "One Machine, Several Linux Kernels, No Hypervisor"
                 },
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/02/holocloth-turns-uploaded-artwork-into-interactive-holographic-fabric/",
@@ -2498,12 +2521,12 @@
                   "title": "AI Agents Found an Abandoned Wiki and Turned It Into a Message Board"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/08/30/one-machine-several-linux-kernels-no-hypervisor/",
-                  "title": "One Machine, Several Linux Kernels, No Hypervisor"
+                  "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
+                  "title": "The AI Industry Is Saying the Current Security Baseline Is Not Enough"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/08/30/json-is-cheap-to-send-and-expensive-to-believe/",
-                  "title": "JSON Is Cheap to Send and Expensive to Believe"
+                  "url": "https://joshuamorris.info/notes/2026/08/12/a-fake-airline-hotspot-picked-the-worst-possible-flight/",
+                  "title": "A Fake Airline Hotspot Picked the Worst Possible Flight"
                 }
               ]
             }
@@ -2579,6 +2602,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+                  "title": "A Markdown File Should Just Open"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/10/10/the-internet-is-held-together-by-people-we-forgot-to-support/",
                   "title": "The Internet Is Held Together by People We Forgot to Support"
                 },
@@ -2605,10 +2632,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/28/grapheneos-says-strong-mobile-security-is-legal-and-should-remain-that-way/",
                   "title": "GrapheneOS Says Strong Mobile Security Is Legal and Should Remain That Way"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/28/letsseal-makes-file-integrity-verification-simple/",
-                  "title": "LetsSeal Makes File Integrity Verification Simple"
                 }
               ]
             }
@@ -2708,6 +2731,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+                  "title": "A Markdown File Should Just Open"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
                   "title": "The Chromebook Support Story Is More Complicated Than the Headline"
                 },
@@ -2734,10 +2761,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/23/codeberg-is-deciding-which-technologies-belong/",
                   "title": "Codeberg Is Deciding Which Technologies Belong"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/23/safari-is-testing-bigint-math-early/",
-                  "title": "Safari Is Testing BigInt Math Early"
                 }
               ]
             }
@@ -4209,6 +4232,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+                  "title": "A Markdown File Should Just Open"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/09/09/my-box-of-cables-is-thirty-years-of-backwards-compatibility/",
                   "title": "My Box of Cables Is Thirty Years of Backwards Compatibility"
                 },
@@ -4255,6 +4282,14 @@
                   "title": "Prop. 45 offers some projects a faster environmental review"
                 },
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
+                  "title": "Prop. 3 would keep a high-income tax that is already being collected"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/05/most-of-prop-1-is-a-loan-the-general-budget-pays-back-with-interest/",
+                  "title": "Most of Prop. 1 is a loan the general budget pays back, with interest"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/10/04/prop-39-would-ask-for-an-id-in-person-and-four-digits-on-a-mail-ballot/",
                   "title": "Prop. 39 would ask for an ID in person, and four digits on a mail ballot"
                 },
@@ -4273,14 +4308,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/26/having-regulations-is-not-the-same-thing-as-having-accountability/",
                   "title": "Having Regulations Is Not the Same Thing as Having Accountability"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/31/there-is-finally-a-murder-conviction-in-tupac-shakurs-killing/",
-                  "title": "There Is Finally a Murder Conviction in Tupac Shakur's Killing"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/30/prop-40-without-the-commercials-what-californias-billionaire-tax-actually-says/",
-                  "title": "Prop. 40 Without the Commercials: What California's Billionaire Tax Actually Says"
                 }
               ]
             }
@@ -4664,6 +4691,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/12/prop-38-borrows-for-immune-research-and-takes-a-cut-if-a-drug-pays-off/",
+                  "title": "Prop. 38 borrows for immune research, and takes a cut if a drug pays off"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/10/09/prop-4-clears-a-path-for-public-campaign-money-it-does-not-spend-any/",
                   "title": "Prop. 4 clears a path for public campaign money. It does not spend any."
                 }
@@ -4782,10 +4813,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/11/worth-wandering-hundred-rabbits/",
                   "title": "Worth Wandering: Hundred Rabbits"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/30/one-machine-several-linux-kernels-no-hypervisor/",
-                  "title": "One Machine, Several Linux Kernels, No Hypervisor"
                 },
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/02/holocloth-turns-uploaded-artwork-into-interactive-holographic-fabric/",
@@ -5166,6 +5193,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+                  "title": "A Markdown File Should Just Open"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/10/10/the-internet-is-held-together-by-people-we-forgot-to-support/",
                   "title": "The Internet Is Held Together by People We Forgot to Support"
                 },
@@ -5192,10 +5223,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/28/grapheneos-says-strong-mobile-security-is-legal-and-should-remain-that-way/",
                   "title": "GrapheneOS Says Strong Mobile Security Is Legal and Should Remain That Way"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/28/letsseal-makes-file-integrity-verification-simple/",
-                  "title": "LetsSeal Makes File Integrity Verification Simple"
                 }
               ]
             }
@@ -5346,6 +5373,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+                  "title": "A Markdown File Should Just Open"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
                   "title": "The Chromebook Support Story Is More Complicated Than the Headline"
                 },
@@ -5372,10 +5403,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/23/codeberg-is-deciding-which-technologies-belong/",
                   "title": "Codeberg Is Deciding Which Technologies Belong"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/23/safari-is-testing-bigint-math-early/",
-                  "title": "Safari Is Testing BigInt Math Early"
                 }
               ]
             }
@@ -6036,10 +6063,6 @@
                   "title": "My Box of Cables Is Thirty Years of Backwards Compatibility"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/08/30/one-machine-several-linux-kernels-no-hypervisor/",
-                  "title": "One Machine, Several Linux Kernels, No Hypervisor"
-                },
-                {
                   "url": "https://joshuamorris.info/notes/2026/08/17/the-next-moon-race-is-about-infrastructure-not-flags/",
                   "title": "The Next Moon Race Is About Infrastructure, Not Flags"
                 },
@@ -6050,6 +6073,10 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/05/ai-may-reduce-hiring-before-it-creates-more-work/",
                   "title": "AI May Reduce Hiring Before It Creates More Work"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/03/phantom-twist-hides-a-drone-with-motion-blur/",
+                  "title": "Phantom Twist Hides a Drone with Motion Blur"
                 }
               ]
             }
@@ -6090,6 +6117,14 @@
                   "title": "Prop. 45 offers some projects a faster environmental review"
                 },
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
+                  "title": "Prop. 3 would keep a high-income tax that is already being collected"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/05/most-of-prop-1-is-a-loan-the-general-budget-pays-back-with-interest/",
+                  "title": "Most of Prop. 1 is a loan the general budget pays back, with interest"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/10/04/prop-39-would-ask-for-an-id-in-person-and-four-digits-on-a-mail-ballot/",
                   "title": "Prop. 39 would ask for an ID in person, and four digits on a mail ballot"
                 },
@@ -6108,14 +6143,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/26/having-regulations-is-not-the-same-thing-as-having-accountability/",
                   "title": "Having Regulations Is Not the Same Thing as Having Accountability"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/31/there-is-finally-a-murder-conviction-in-tupac-shakurs-killing/",
-                  "title": "There Is Finally a Murder Conviction in Tupac Shakur's Killing"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/30/prop-40-without-the-commercials-what-californias-billionaire-tax-actually-says/",
-                  "title": "Prop. 40 Without the Commercials: What California's Billionaire Tax Actually Says"
                 }
               ]
             }
@@ -6333,6 +6360,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/12/prop-38-borrows-for-immune-research-and-takes-a-cut-if-a-drug-pays-off/",
+                  "title": "Prop. 38 borrows for immune research, and takes a cut if a drug pays off"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/10/09/prop-4-clears-a-path-for-public-campaign-money-it-does-not-spend-any/",
                   "title": "Prop. 4 clears a path for public campaign money. It does not spend any."
                 }
@@ -6414,10 +6445,6 @@
                   "title": "Worth Wandering: Hundred Rabbits"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/08/30/one-machine-several-linux-kernels-no-hypervisor/",
-                  "title": "One Machine, Several Linux Kernels, No Hypervisor"
-                },
-                {
                   "url": "https://joshuamorris.info/notes/2026/08/02/holocloth-turns-uploaded-artwork-into-interactive-holographic-fabric/",
                   "title": "Holocloth Turns Uploaded Artwork into Interactive Holographic Fabric"
                 },
@@ -6484,12 +6511,12 @@
                   "title": "AI Agents Found an Abandoned Wiki and Turned It Into a Message Board"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/08/30/one-machine-several-linux-kernels-no-hypervisor/",
-                  "title": "One Machine, Several Linux Kernels, No Hypervisor"
+                  "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
+                  "title": "The AI Industry Is Saying the Current Security Baseline Is Not Enough"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/08/30/json-is-cheap-to-send-and-expensive-to-believe/",
-                  "title": "JSON Is Cheap to Send and Expensive to Believe"
+                  "url": "https://joshuamorris.info/notes/2026/08/12/a-fake-airline-hotspot-picked-the-worst-possible-flight/",
+                  "title": "A Fake Airline Hotspot Picked the Worst Possible Flight"
                 }
               ]
             }
@@ -7045,10 +7072,6 @@
           "slug": "business",
           "label": "business",
           "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/30/apples-repair-restrictions-are-back-in-court-and-the-reason-matters/",
-              "title": "Apple's Repair Restrictions Are Back in Court, and the Reason Matters"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/08/10/ransomware-gangs-learned-to-target-the-org-chart/",
               "title": "Ransomware Gangs Learned to Target the Org Chart"
@@ -8147,10 +8170,6 @@
               "title": "My Box of Cables Is Thirty Years of Backwards Compatibility"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/08/30/one-machine-several-linux-kernels-no-hypervisor/",
-              "title": "One Machine, Several Linux Kernels, No Hypervisor"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/08/17/the-next-moon-race-is-about-infrastructure-not-flags/",
               "title": "The Next Moon Race Is About Infrastructure, Not Flags"
             },
@@ -8161,6 +8180,10 @@
             {
               "url": "https://joshuamorris.info/notes/2026/08/05/ai-may-reduce-hiring-before-it-creates-more-work/",
               "title": "AI May Reduce Hiring Before It Creates More Work"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/03/phantom-twist-hides-a-drone-with-motion-blur/",
+              "title": "Phantom Twist Hides a Drone with Motion Blur"
             }
           ],
           "sites": [
@@ -8193,6 +8216,10 @@
           "label": "interoperability",
           "articles": [
             {
+              "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+              "title": "A Markdown File Should Just Open"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/09/09/my-box-of-cables-is-thirty-years-of-backwards-compatibility/",
               "title": "My Box of Cables Is Thirty Years of Backwards Compatibility"
             },
@@ -8224,6 +8251,14 @@
               "title": "Prop. 45 offers some projects a faster environmental review"
             },
             {
+              "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
+              "title": "Prop. 3 would keep a high-income tax that is already being collected"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/05/most-of-prop-1-is-a-loan-the-general-budget-pays-back-with-interest/",
+              "title": "Most of Prop. 1 is a loan the general budget pays back, with interest"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/10/04/prop-39-would-ask-for-an-id-in-person-and-four-digits-on-a-mail-ballot/",
               "title": "Prop. 39 would ask for an ID in person, and four digits on a mail ballot"
             },
@@ -8242,14 +8277,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/09/26/having-regulations-is-not-the-same-thing-as-having-accountability/",
               "title": "Having Regulations Is Not the Same Thing as Having Accountability"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/31/there-is-finally-a-murder-conviction-in-tupac-shakurs-killing/",
-              "title": "There Is Finally a Murder Conviction in Tupac Shakur's Killing"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/30/prop-40-without-the-commercials-what-californias-billionaire-tax-actually-says/",
-              "title": "Prop. 40 Without the Commercials: What California's Billionaire Tax Actually Says"
             }
           ],
           "sites": [
@@ -8553,6 +8580,29 @@
           ]
         },
         {
+          "slug": "markdown",
+          "label": "markdown",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+              "title": "A Markdown File Should Just Open"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Developer Musings",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/marp/",
+                  "title": "Markdown for Slides"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "mental-health",
           "label": "mental health",
           "articles": [
@@ -8587,6 +8637,10 @@
           "slug": "money",
           "label": "money",
           "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/12/prop-38-borrows-for-immune-research-and-takes-a-cut-if-a-drug-pays-off/",
+              "title": "Prop. 38 borrows for immune research, and takes a cut if a drug pays off"
+            },
             {
               "url": "https://joshuamorris.info/notes/2026/10/09/prop-4-clears-a-path-for-public-campaign-money-it-does-not-spend-any/",
               "title": "Prop. 4 clears a path for public campaign money. It does not spend any."
@@ -8674,6 +8728,10 @@
           "slug": "nonprofit",
           "label": "nonprofit",
           "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/13/prop-44s-90-percent-starts-on-a-clinics-tax-form-not-in-the-exam-room/",
+              "title": "Prop. 44's 90 percent starts on a clinic's tax form, not in the exam room"
+            },
             {
               "url": "https://joshuamorris.info/notes/2026/07/28/grapheneos-says-strong-mobile-security-is-legal-and-should-remain-that-way/",
               "title": "GrapheneOS Says Strong Mobile Security Is Legal and Should Remain That Way"
@@ -8767,10 +8825,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/09/11/worth-wandering-hundred-rabbits/",
               "title": "Worth Wandering: Hundred Rabbits"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/30/one-machine-several-linux-kernels-no-hypervisor/",
-              "title": "One Machine, Several Linux Kernels, No Hypervisor"
             },
             {
               "url": "https://joshuamorris.info/notes/2026/08/02/holocloth-turns-uploaded-artwork-into-interactive-holographic-fabric/",
@@ -9098,6 +9152,10 @@
           "label": "research",
           "articles": [
             {
+              "url": "https://joshuamorris.info/notes/2026/10/12/prop-38-borrows-for-immune-research-and-takes-a-cut-if-a-drug-pays-off/",
+              "title": "Prop. 38 borrows for immune research, and takes a cut if a drug pays off"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/10/10/ai-is-making-it-easier-to-manufacture-credibility/",
               "title": "AI Is Making It Easier to Manufacture Credibility"
             },
@@ -9227,12 +9285,12 @@
               "title": "AI Agents Found an Abandoned Wiki and Turned It Into a Message Board"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/08/30/one-machine-several-linux-kernels-no-hypervisor/",
-              "title": "One Machine, Several Linux Kernels, No Hypervisor"
+              "url": "https://joshuamorris.info/notes/2026/08/28/the-ai-industry-is-saying-the-current-security-baseline-is-not-enough/",
+              "title": "The AI Industry Is Saying the Current Security Baseline Is Not Enough"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/08/30/json-is-cheap-to-send-and-expensive-to-believe/",
-              "title": "JSON Is Cheap to Send and Expensive to Believe"
+              "url": "https://joshuamorris.info/notes/2026/08/12/a-fake-airline-hotspot-picked-the-worst-possible-flight/",
+              "title": "A Fake Airline Hotspot Picked the Worst Possible Flight"
             }
           ],
           "sites": [
@@ -9350,6 +9408,10 @@
           "label": "software",
           "articles": [
             {
+              "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+              "title": "A Markdown File Should Just Open"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/10/10/the-internet-is-held-together-by-people-we-forgot-to-support/",
               "title": "The Internet Is Held Together by People We Forgot to Support"
             },
@@ -9376,10 +9438,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/07/28/grapheneos-says-strong-mobile-security-is-legal-and-should-remain-that-way/",
               "title": "GrapheneOS Says Strong Mobile Security Is Legal and Should Remain That Way"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/07/28/letsseal-makes-file-integrity-verification-simple/",
-              "title": "LetsSeal Makes File Integrity Verification Simple"
             }
           ],
           "sites": [
@@ -9506,6 +9564,10 @@
           "label": "technology",
           "articles": [
             {
+              "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+              "title": "A Markdown File Should Just Open"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
               "title": "The Chromebook Support Story Is More Complicated Than the Headline"
             },
@@ -9532,10 +9594,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/07/23/codeberg-is-deciding-which-technologies-belong/",
               "title": "Codeberg Is Deciding Which Technologies Belong"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/07/23/safari-is-testing-bigint-math-early/",
-              "title": "Safari Is Testing BigInt Math Early"
             }
           ],
           "sites": [
@@ -10249,6 +10307,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+                  "title": "A Markdown File Should Just Open"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/10/10/the-internet-is-held-together-by-people-we-forgot-to-support/",
                   "title": "The Internet Is Held Together by People We Forgot to Support"
                 },
@@ -10275,10 +10337,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/28/grapheneos-says-strong-mobile-security-is-legal-and-should-remain-that-way/",
                   "title": "GrapheneOS Says Strong Mobile Security Is Legal and Should Remain That Way"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/28/letsseal-makes-file-integrity-verification-simple/",
-                  "title": "LetsSeal Makes File Integrity Verification Simple"
                 }
               ]
             }
@@ -10513,10 +10571,6 @@
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
               "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/30/apples-repair-restrictions-are-back-in-court-and-the-reason-matters/",
-                  "title": "Apple's Repair Restrictions Are Back in Court, and the Reason Matters"
-                },
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/10/ransomware-gangs-learned-to-target-the-org-chart/",
                   "title": "Ransomware Gangs Learned to Target the Org Chart"
@@ -11094,6 +11148,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/12/prop-38-borrows-for-immune-research-and-takes-a-cut-if-a-drug-pays-off/",
+                  "title": "Prop. 38 borrows for immune research, and takes a cut if a drug pays off"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/10/09/prop-4-clears-a-path-for-public-campaign-money-it-does-not-spend-any/",
                   "title": "Prop. 4 clears a path for public campaign money. It does not spend any."
                 }
@@ -11136,6 +11194,10 @@
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
               "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/13/prop-44s-90-percent-starts-on-a-clinics-tax-form-not-in-the-exam-room/",
+                  "title": "Prop. 44's 90 percent starts on a clinic's tax form, not in the exam room"
+                },
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/28/grapheneos-says-strong-mobile-security-is-legal-and-should-remain-that-way/",
                   "title": "GrapheneOS Says Strong Mobile Security Is Legal and Should Remain That Way"
@@ -11295,6 +11357,10 @@
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
               "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/12/prop-38-borrows-for-immune-research-and-takes-a-cut-if-a-drug-pays-off/",
+                  "title": "Prop. 38 borrows for immune research, and takes a cut if a drug pays off"
+                },
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/10/ai-is-making-it-easier-to-manufacture-credibility/",
                   "title": "AI Is Making It Easier to Manufacture Credibility"
@@ -11537,6 +11603,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+                  "title": "A Markdown File Should Just Open"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
                   "title": "The Chromebook Support Story Is More Complicated Than the Headline"
                 },
@@ -11563,10 +11633,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/23/codeberg-is-deciding-which-technologies-belong/",
                   "title": "Codeberg Is Deciding Which Technologies Belong"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/23/safari-is-testing-bigint-math-early/",
-                  "title": "Safari Is Testing BigInt Math Early"
                 }
               ]
             }

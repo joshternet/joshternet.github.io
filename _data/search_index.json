@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-16T21:10:08.315Z",
-  "document_count": 942,
+  "generated_at": "2026-10-17T04:26:36.130Z",
+  "document_count": 953,
   "documents": [
     {
       "type": "site",
@@ -446,6 +446,15 @@
     },
     {
       "type": "topic",
+      "title": "digital ownership",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/digital-ownership/",
+      "topics": ["digital-ownership", "digital ownership"]
+    },
+    {
+      "type": "topic",
       "title": "digital rights",
       "summary": "1 participating sites",
       "domain": "",
@@ -887,6 +896,15 @@
     },
     {
       "type": "topic",
+      "title": "markdown",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/markdown/",
+      "topics": ["markdown", "markdown"]
+    },
+    {
+      "type": "topic",
       "title": "marketing",
       "summary": "2 participating sites",
       "domain": "",
@@ -1028,6 +1046,24 @@
       "origin": "",
       "url": "/topics/open-source/",
       "topics": ["open-source", "open source"]
+    },
+    {
+      "type": "topic",
+      "title": "open standards",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/open-standard/",
+      "topics": ["open-standard", "open standards"]
+    },
+    {
+      "type": "topic",
+      "title": "operating systems",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/operating-system/",
+      "topics": ["operating-system", "operating systems"]
     },
     {
       "type": "topic",
@@ -6275,6 +6311,19 @@
     },
     {
       "type": "content",
+      "title": "Sheet",
+      "summary": "Weird Web October 2026, day five. Sheet.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/experiments/weird-web-october-2026/sheet/",
+      "topics": [],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-05T00:00:00.000Z",
+      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
       "title": "Spark",
       "summary": "Weird Web October 2026, day two. Spark.",
       "domain": "joshuamorris.info",
@@ -8620,10 +8669,10 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/08/30/apples-repair-restrictions-are-back-in-court-and-the-reason-matters/",
-      "topics": ["business", "digital rights", "law", "ownership"],
+      "topics": [],
       "site_title": "Joshua Morris",
       "published_at": "2026-08-30T21:28:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "",
       "image_origin": ""
     },
     {
@@ -8646,10 +8695,10 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/08/30/json-is-cheap-to-send-and-expensive-to-believe/",
-      "topics": ["security", "web development"],
+      "topics": [],
       "site_title": "Joshua Morris",
       "published_at": "2026-08-30T14:58:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "",
       "image_origin": ""
     },
     {
@@ -8659,10 +8708,10 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/08/30/one-machine-several-linux-kernels-no-hypervisor/",
-      "topics": ["infrastructure", "linux", "open source", "security"],
+      "topics": [],
       "site_title": "Joshua Morris",
       "published_at": "2026-08-30T22:19:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "",
       "image_origin": ""
     },
     {
@@ -8672,16 +8721,10 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/08/30/prop-40-without-the-commercials-what-californias-billionaire-tax-actually-says/",
-      "topics": [
-        "california ballot 2026",
-        "economics",
-        "government ethics",
-        "law",
-        "public systems"
-      ],
+      "topics": [],
       "site_title": "Joshua Morris",
       "published_at": "2026-08-30T22:10:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "",
       "image_origin": ""
     },
     {
@@ -8691,10 +8734,10 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/08/30/spacelabs-128-kb-of-ram-was-more-than-a-million-tiny-ferrite-rings/",
-      "topics": ["computing history", "hardware", "space exploration"],
+      "topics": [],
       "site_title": "Joshua Morris",
       "published_at": "2026-08-30T19:13:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "",
       "image_origin": ""
     },
     {
@@ -8704,10 +8747,10 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/08/31/there-is-finally-a-murder-conviction-in-tupac-shakurs-killing/",
-      "topics": ["law"],
+      "topics": [],
       "site_title": "Joshua Morris",
       "published_at": "2026-08-31T23:56:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "",
       "image_origin": ""
     },
     {
@@ -8733,7 +8776,7 @@
       "topics": [],
       "site_title": "Joshua Morris",
       "published_at": "2026-09-01T07:00:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "",
       "image_origin": ""
     },
     {
@@ -9487,6 +9530,7 @@
         "california ballot 2026",
         "economics",
         "government ethics",
+        "law",
         "public systems"
       ],
       "site_title": "Joshua Morris",
@@ -9501,7 +9545,13 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
-      "topics": ["california ballot 2026", "public systems"],
+      "topics": [
+        "california ballot 2026",
+        "economics",
+        "government ethics",
+        "law",
+        "public systems"
+      ],
       "site_title": "Joshua Morris",
       "published_at": "2026-10-06T09:00:00.000Z",
       "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
@@ -9514,7 +9564,7 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/10/07/prop-45-offers-some-projects-a-faster-environmental-review/",
-      "topics": ["california ballot 2026"],
+      "topics": ["california ballot 2026", "law", "public systems"],
       "site_title": "Joshua Morris",
       "published_at": "2026-10-07T09:00:00.000Z",
       "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
@@ -9540,7 +9590,7 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/10/08/the-17-percent-in-prop-37-is-a-loan-the-buyer-pays-back/",
-      "topics": [],
+      "topics": ["california ballot 2026"],
       "site_title": "Joshua Morris",
       "published_at": "2026-10-08T09:00:00.000Z",
       "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
@@ -9639,6 +9689,19 @@
     },
     {
       "type": "content",
+      "title": "Prop. 5 still asks whether to fire an official. It stops asking who replaces them.",
+      "summary": "Proposition 5 would remove the replacement contest from a California recall and fill the empty office the way a vacancy is filled.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/notes/2026/10/10/prop-5-still-asks-whether-to-fire-an-official-it-stops-asking-who-replaces-them/",
+      "topics": [],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-10T09:00:00.000Z",
+      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
       "title": "The Internet Is Held Together by People We Forgot to Support",
       "summary": "A year of public commits shows that software used by billions of devices often depends on one or two people, while the companies built on that work still rarely pay for it.",
       "domain": "joshuamorris.info",
@@ -9647,6 +9710,79 @@
       "topics": ["infrastructure", "open source", "security", "software"],
       "site_title": "Joshua Morris",
       "published_at": "2026-10-10T17:15:00.000Z",
+      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
+      "title": "Prop. 43 would make some local taxes need two yes votes for every no",
+      "summary": "Starting in 2027, Proposition 43 would require a two-thirds local vote to impose, extend, or increase a voter-proposed special tax.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/notes/2026/10/11/prop-43-would-make-some-local-taxes-need-two-yes-votes-for-every-no/",
+      "topics": [],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-11T09:00:00.000Z",
+      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
+      "title": "Prop. 38 borrows for immune research, and takes a cut if a drug pays off",
+      "summary": "Proposition 38 would authorize $8.4 billion in general-obligation bonds for immunology research, repaid from the General Fund unless discoveries bring money back.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/notes/2026/10/12/prop-38-borrows-for-immune-research-and-takes-a-cut-if-a-drug-pays-off/",
+      "topics": [],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-12T09:00:00.000Z",
+      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
+      "title": "A Markdown File Should Just Open",
+      "summary": "A Markdown file should open as a document on an ordinary computer or phone, without installing anything else.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+      "topics": [
+        "digital ownership",
+        "interoperability",
+        "markdown",
+        "open standards",
+        "operating systems",
+        "software",
+        "technology"
+      ],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-13T18:00:00.000Z",
+      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
+      "title": "Prop. 44's 90 percent starts on a clinic's tax form, not in the exam room",
+      "summary": "Proposition 44 would penalize certain nonprofit clinics whose program-service spending, measured from their IRS filing, falls below 90 percent of revenue.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/notes/2026/10/13/prop-44s-90-percent-starts-on-a-clinics-tax-form-not-in-the-exam-room/",
+      "topics": [],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-13T09:00:00.000Z",
+      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
+      "title": "Prop. 2 lets the rainy-day fund grow taller. It does not fill the jar.",
+      "summary": "Proposition 2 would raise California's rainy-day cap from 10 percent to 20 percent of General Fund taxes and change when those deposits count toward the spending limit.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/notes/2026/10/14/prop-2-lets-the-rainy-day-fund-grow-taller-it-does-not-fill-the-jar/",
+      "topics": [],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-14T09:00:00.000Z",
       "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
       "image_origin": ""
     },
