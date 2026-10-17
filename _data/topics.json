@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-17T04:25:36.365Z",
-  "community_count": 226,
+  "generated_at": "2026-10-17T13:43:44.298Z",
+  "community_count": 224,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
@@ -2516,30 +2516,6 @@
       "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-12T18:51:53.092Z",
       "last_changed_at": "2026-10-12T18:51:53.092Z",
-      "active": true
-    },
-    {
-      "slug": "digital-ownership",
-      "label": "digital ownership",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
-              "title": "",
-              "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": ["microformat:p-category"],
-      "first_seen_at": "2026-10-17T04:25:36.365Z",
-      "last_changed_at": "2026-10-17T04:25:36.365Z",
       "active": true
     },
     {
@@ -5977,6 +5953,11 @@
               "url": "https://joshuamorris.info/notes/2026/10/13/prop-44s-90-percent-starts-on-a-clinics-tax-form-not-in-the-exam-room/",
               "title": "",
               "source": "catalog-match"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/16/worth-wandering-public-domain-review/",
+              "title": "",
+              "source": "catalog-match"
             }
           ]
         },
@@ -6381,30 +6362,6 @@
           "note": "Below the community quality threshold; not membership."
         }
       ]
-    },
-    {
-      "slug": "open-standard",
-      "label": "open standards",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
-              "title": "",
-              "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": ["microformat:p-category"],
-      "first_seen_at": "2026-10-17T04:25:36.365Z",
-      "last_changed_at": "2026-10-17T04:25:36.365Z",
-      "active": true
     },
     {
       "slug": "operating-system",
