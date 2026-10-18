@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-17T13:45:08.522Z",
+  "generated_at": "2026-10-18T18:07:11.247Z",
   "overlap_count": 15,
   "pairs": [
     {
@@ -358,8 +358,8 @@
           "label": "engineering"
         },
         {
-          "slug": "law",
-          "label": "law"
+          "slug": "family",
+          "label": "family"
         },
         {
           "slug": "life",
@@ -662,12 +662,12 @@
           "label": "engineering"
         },
         {
-          "slug": "infrastructure",
-          "label": "infrastructure"
+          "slug": "family",
+          "label": "family"
         },
         {
-          "slug": "law",
-          "label": "law"
+          "slug": "infrastructure",
+          "label": "infrastructure"
         },
         {
           "slug": "life",
@@ -3972,6 +3972,17 @@
           ],
           "sites": [
             {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Joshtronic",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/18/halloween-movies-watch-list-2026/",
+                  "title": "Halloween Movies Watch List 2026"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
@@ -4265,17 +4276,6 @@
             }
           ],
           "sites": [
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Joshtronic",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/07/26/new-feature-games/",
-                  "title": "New Feature: Games"
-                }
-              ]
-            },
             {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
@@ -6025,6 +6025,44 @@
           ]
         },
         {
+          "slug": "family",
+          "label": "family",
+          "articles": [
+            {
+              "url": "https://joshtronic.com/2026/10/18/halloween-movies-watch-list-2026/",
+              "title": "Halloween Movies Watch List 2026"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh's site",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/dads-service/",
+                  "title": "Memorial Service for Jerry Müller"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/09/please-ask-for-help-when-you-need-it/",
+                  "title": "Please Ask for Help When You Need It"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/21/homeos-looks-like-apple-is-finally-treating-the-home-as-a-platform/",
+                  "title": "homeOS Looks Like Apple Is Finally Treating the Home as a Platform"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "infrastructure",
           "label": "infrastructure",
           "articles": [
@@ -6081,72 +6119,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/03/phantom-twist-hides-a-drone-with-motion-blur/",
                   "title": "Phantom Twist Hides a Drone with Motion Blur"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "law",
-          "label": "law",
-          "articles": [
-            {
-              "url": "https://joshtronic.com/2026/07/26/new-feature-games/",
-              "title": "New Feature: Games"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshmuller.ca",
-              "domain": "joshmuller.ca",
-              "title": "Josh's site",
-              "articles": [
-                {
-                  "url": "https://joshmuller.ca/recipes/meals/ajiaco-santafereno/",
-                  "title": "Mom's Ajiaco Santafereño"
-                },
-                {
-                  "url": "https://joshmuller.ca/recipes/desserts/katie-s-tahini-cookies/",
-                  "title": "4 Ingredient Tahin Cookies"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/07/prop-45-offers-some-projects-a-faster-environmental-review/",
-                  "title": "Prop. 45 offers some projects a faster environmental review"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
-                  "title": "Prop. 3 would keep a high-income tax that is already being collected"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/05/most-of-prop-1-is-a-loan-the-general-budget-pays-back-with-interest/",
-                  "title": "Most of Prop. 1 is a loan the general budget pays back, with interest"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/04/prop-39-would-ask-for-an-id-in-person-and-four-digits-on-a-mail-ballot/",
-                  "title": "Prop. 39 would ask for an ID in person, and four digits on a mail ballot"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
-                  "title": "Prop. 42 is about a tax on owning savings, not the tax on income they earn"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
-                  "title": "California's November 2026 Ballot"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
-                  "title": "Prop. 41 would send in the auditor, and it would fence the spending limit"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/26/having-regulations-is-not-the-same-thing-as-having-accountability/",
-                  "title": "Having Regulations Is Not the Same Thing as Having Accountability"
                 }
               ]
             }
@@ -7801,6 +7773,17 @@
                   "title": "Memorial Service for Jerry Müller"
                 }
               ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Joshtronic",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/18/halloween-movies-watch-list-2026/",
+                  "title": "Halloween Movies Watch List 2026"
+                }
+              ]
             }
           ]
         },
@@ -8300,17 +8283,6 @@
                 {
                   "url": "https://joshmuller.ca/recipes/desserts/katie-s-tahini-cookies/",
                   "title": "4 Ingredient Tahin Cookies"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Joshtronic",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/07/26/new-feature-games/",
-                  "title": "New Feature: Games"
                 }
               ]
             }

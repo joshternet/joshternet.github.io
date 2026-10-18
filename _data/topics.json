@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-18T11:04:35.009Z",
+  "generated_at": "2026-10-18T18:05:58.046Z",
   "community_count": 224,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
@@ -3289,6 +3289,13 @@
           "title": "Josh's site",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://joshtronic.com",
+          "domain": "joshtronic.com",
+          "title": "Joshtronic",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
         }
       ]
     },
@@ -4960,16 +4967,7 @@
       "sources": ["catalog-match", "microformat:p-category"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-12T18:51:53.092Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshtronic.com",
-          "domain": "joshtronic.com",
-          "title": "Joshtronic",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
+      "active": true
     },
     {
       "slug": "lego",
