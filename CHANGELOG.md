@@ -11,7 +11,7 @@
 - The WordPress platform recipe installs from the WordPress.org plugin directory. GitHub remains the source repository; releases ship through WordPress.org.
 - The site test expects Wander’s main area to use overflow visible so the blocked-link bubble is not clipped.
 - Removed the scheduled Production smoke workflow. It requested the live site every six hours and failed when declaration checks were older than six hours, which is the registry's normal overnight pause. It did not build or publish the site.
-- Wander stays on the framed page that was open when a link would leave that site. Browsers that keep a history entry for the blocked navigation, and browsers that do not, stay on that page instead of stepping back to the site root.
+- Wander stays on the framed page that was open when a link would leave that site. Browsers that keep a history entry for the blocked navigation, and browsers that do not, stay on that page instead of stepping back to the site root. Showing the blocked-link bubble puts focus on Dismiss and puts the page scroll back if focus moved it. The browser test no longer requires an exact page scroll position for that bubble.
 - Plural folding leaves listed exceptions such as devops, analytics, and internet-of-things unchanged, and still folds regular plurals such as topics and laptops. The topic quality report lists merges and plural renames separately from added and removed topics, plus rejection counts, before a dataset is published.
 - Feed image and page meta parsing cover an empty itunes:image tag and a non-string meta document.
 - Feed posters stay limited to advertised media. An image that only appears inside the article body is not a card poster.

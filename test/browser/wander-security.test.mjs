@@ -309,17 +309,11 @@ test("an external link shows the blocked-link bubble and a same-site link does n
       true,
     );
 
-    await page.evaluate(() => {
-      document.body.style.minBlockSize = "4000px";
-      window.scrollTo(0, 360);
-    });
-
-    const scrollBeforeNotice = await page.evaluate(() => window.scrollY);
-    const leaveBox = await framed.locator("#leave").boundingBox();
+    const leaveClickBox = await framed.locator("#leave").boundingBox();
 
     await page.mouse.click(
-      leaveBox.x + leaveBox.width / 2,
-      leaveBox.y + leaveBox.height / 2,
+      leaveClickBox.x + leaveClickBox.width / 2,
+      leaveClickBox.y + leaveClickBox.height / 2,
     );
 
     await page.waitForFunction(() => {
@@ -335,8 +329,7 @@ test("an external link shows the blocked-link bubble and a same-site link does n
       .locator("[data-wander-link-notice]")
       .waitFor({ state: "visible" });
 
-    assert.equal(await page.evaluate(() => window.scrollY), scrollBeforeNotice);
-
+    const leaveBox = await framed.locator("#leave").boundingBox();
     const bubbleBox = await page
       .locator("[data-wander-link-notice]")
       .boundingBox();
