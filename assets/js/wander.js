@@ -109,9 +109,15 @@
 
     linkNoticeOpen = true;
     announce(linkNotice);
-    bubble.querySelector("[data-wander-dismiss-link]")?.focus({
+
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const dismiss = bubble.querySelector("[data-wander-dismiss-link]");
+
+    dismiss?.focus({
       preventScroll: true,
     });
+    window.scrollTo(scrollX, scrollY);
   }
 
   /**
