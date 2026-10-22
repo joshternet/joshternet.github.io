@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-22T13:48:38.022Z",
-  "community_count": 198,
+  "generated_at": "2026-10-22T18:33:03.284Z",
+  "community_count": 225,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
@@ -309,6 +309,46 @@
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
       "active": true
+    },
+    {
+      "slug": "analytics",
+      "label": "analytics",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/analytics/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://joshtronic.com",
+          "domain": "joshtronic.com",
+          "title": "Joshtronic",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "antitrust",
@@ -651,6 +691,43 @@
       "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
+      "active": true
+    },
+    {
+      "slug": "auth0",
+      "label": "auth0",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/auth0-cache/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/auth0/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["catalog-match", "topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
       "active": true
     },
     {
@@ -1508,7 +1585,7 @@
     {
       "slug": "community",
       "label": "community",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://joshuamorris.info",
@@ -1554,6 +1631,19 @@
           ]
         },
         {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/community/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        },
+        {
           "origin": "https://www.joshuabaker.com",
           "domain": "www.joshuabaker.com",
           "title": "Joshua Baker",
@@ -1572,9 +1662,14 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-22T13:48:38.022Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
       "active": true,
       "related_discoveries": [
         {
@@ -1591,8 +1686,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-10-22T13:48:38.022Z"
+      ]
     },
     {
       "slug": "computer-vision",
@@ -1787,6 +1881,39 @@
       "active": true
     },
     {
+      "slug": "covid-19",
+      "label": "covid 19",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/covid-19/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshtronic.com",
+          "domain": "joshtronic.com",
+          "title": "Joshtronic",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
+    },
+    {
       "slug": "craftsmanship",
       "label": "craftsmanship",
       "member_count": 1,
@@ -1946,6 +2073,30 @@
       "active": true
     },
     {
+      "slug": "customer-service",
+      "label": "customer service",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/customer-service/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true
+    },
+    {
       "slug": "cyber-deck",
       "label": "cyber deck",
       "member_count": 1,
@@ -2087,7 +2238,7 @@
     {
       "slug": "design",
       "label": "design",
-      "member_count": 4,
+      "member_count": 5,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -2189,6 +2340,19 @@
           ]
         },
         {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/design/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        },
+        {
           "origin": "https://www.joshuabaker.com",
           "domain": "www.joshuabaker.com",
           "title": "Joshua Baker",
@@ -2242,12 +2406,12 @@
         "microformat:p-category",
         "portfolio:sector",
         "topic-hub:link",
+        "topic-hub:page",
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
-      "last_changed_at": "2026-10-22T13:48:38.022Z",
-      "active": true,
-      "stale_since": "2026-10-22T13:48:38.022Z"
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true
     },
     {
       "slug": "developer-tool",
@@ -2323,6 +2487,30 @@
       "sources": ["catalog-match", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-08T19:38:44.771Z",
       "last_changed_at": "2026-10-08T19:38:44.771Z",
+      "active": true
+    },
+    {
+      "slug": "digital-identity",
+      "label": "digital identity",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/digital-identity/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
       "active": true
     },
     {
@@ -2451,6 +2639,30 @@
           "note": "Below the community quality threshold; not membership."
         }
       ]
+    },
+    {
+      "slug": "documentation",
+      "label": "documentation",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/documentation/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true
     },
     {
       "slug": "earth-observation",
@@ -2623,6 +2835,124 @@
           "origin": "https://joshmuller.ca",
           "domain": "joshmuller.ca",
           "title": "Josh's site",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
+    },
+    {
+      "slug": "eleventy",
+      "label": "eleventy",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/eleventy/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true
+    },
+    {
+      "slug": "email",
+      "label": "email",
+      "member_count": 3,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/dads-service/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/hello/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/privacy-policy/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/say-hi/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/subscribe/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/write-a-letter/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/subscribe-to-mailchimp-newsletters-with-rss/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/you-need-a-password-manager/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshtronic.com",
+          "domain": "joshtronic.com",
+          "title": "Joshtronic",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshtronic.com/2026/09/27/rediscovering-long-form-email/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/email/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["catalog-match", "topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
@@ -2888,6 +3218,67 @@
       "active": true
     },
     {
+      "slug": "facebook",
+      "label": "facebook",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2022/how-to-message-someone-on-whatsapp-without-saving-them-as-a-contact/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/make-friends-with-one-of-them/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/palihapitya-on-attention-extraction/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/digital-minimalism-2019/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/facebook/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["catalog-match", "topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
+    },
+    {
       "slug": "family",
       "label": "family",
       "member_count": 1,
@@ -3130,6 +3521,48 @@
       "active": true
     },
     {
+      "slug": "focus",
+      "label": "focus",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2024/3-books/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2025/dopamine/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/focus/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["catalog-match", "topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true
+    },
+    {
       "slug": "food",
       "label": "food",
       "member_count": 2,
@@ -3192,6 +3625,30 @@
       "active": true
     },
     {
+      "slug": "food-drink",
+      "label": "food drink",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/food-drink/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true
+    },
+    {
       "slug": "forced-alignment",
       "label": "Forced Alignment",
       "member_count": 1,
@@ -3218,6 +3675,30 @@
       "sources": ["article:tag", "topic-hub:link"],
       "first_seen_at": "2026-10-12T18:51:53.092Z",
       "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
+    },
+    {
+      "slug": "freelancing",
+      "label": "freelancing",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/freelancing/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
       "active": true
     },
     {
@@ -3623,6 +4104,30 @@
       "active": true
     },
     {
+      "slug": "graffiti",
+      "label": "graffiti",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/graffiti/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true
+    },
+    {
       "slug": "habit",
       "label": "habits",
       "member_count": 1,
@@ -3658,7 +4163,7 @@
     {
       "slug": "hardware",
       "label": "hardware",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
         {
           "origin": "https://joshuamorris.info",
@@ -3692,13 +4197,25 @@
               "source": "topic-hub:link"
             }
           ]
+        },
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/hardware/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["microformat:p-category", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-22T13:48:38.022Z",
-      "active": true,
-      "stale_since": "2026-10-22T13:48:38.022Z"
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true
     },
     {
       "slug": "health",
@@ -3808,7 +4325,7 @@
     {
       "slug": "health-fitness",
       "label": "health fitness",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
         {
           "origin": "https://joshtronic.com",
@@ -3822,13 +4339,25 @@
               "source": "topic-hub:link"
             }
           ]
+        },
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/health-fitness/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-22T13:48:38.022Z",
-      "active": true,
-      "stale_since": "2026-10-22T13:48:38.022Z"
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true
     },
     {
       "slug": "hospitality",
@@ -4320,6 +4849,30 @@
       ]
     },
     {
+      "slug": "javascript-typescript",
+      "label": "javascript typescript",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/javascript-typescript/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true
+    },
+    {
       "slug": "language-learning",
       "label": "Language Learning",
       "member_count": 1,
@@ -4597,6 +5150,59 @@
       "active": true
     },
     {
+      "slug": "linkedin",
+      "label": "linkedin",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/linkedin-for-developers/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/linkedin/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["catalog-match", "topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
+    },
+    {
       "slug": "linux",
       "label": "linux",
       "member_count": 3,
@@ -4831,6 +5437,77 @@
       "active": true
     },
     {
+      "slug": "marketing",
+      "label": "marketing",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/marketing/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshuabaker.com",
+          "domain": "www.joshuabaker.com",
+          "title": "Joshua Baker",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuabaker.com/work/?work=harknesskennett-harknesskennett-marketing-harknesskennett-marketing-span-flex-ro",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://www.joshuabaker.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/banked-pay-by-bank/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/banked/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/pure-sports-medicine/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": ["catalog-match", "topic-hub:page", "visible-text"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
+    },
+    {
       "slug": "marketing-advertising",
       "label": "marketing advertising",
       "member_count": 1,
@@ -5011,7 +5688,7 @@
     {
       "slug": "money",
       "label": "money",
-      "member_count": 4,
+      "member_count": 5,
       "sites": [
         {
           "origin": "https://joshmuller.ca",
@@ -5088,6 +5765,19 @@
           ]
         },
         {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/money/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        },
+        {
           "origin": "https://www.joshuabaker.com",
           "domain": "www.joshuabaker.com",
           "title": "Joshua Baker",
@@ -5101,11 +5791,15 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "topic-hub:link", "visible-text"],
+      "sources": [
+        "catalog-match",
+        "topic-hub:link",
+        "topic-hub:page",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-22T13:48:38.022Z",
-      "active": true,
-      "stale_since": "2026-10-22T13:48:38.022Z"
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true
     },
     {
       "slug": "networking",
@@ -5561,7 +6255,7 @@
     {
       "slug": "open-source",
       "label": "open source",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -5636,16 +6330,30 @@
               "source": "topic-hub:link"
             }
           ]
+        },
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/open-source/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
         }
       ],
       "sources": [
         "article:tag",
         "microformat:p-category",
         "topic-hub:link",
+        "topic-hub:page",
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-22T13:48:38.022Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
       "active": true,
       "related_discoveries": [
         {
@@ -5654,16 +6362,8 @@
           "title": "Joshtronic",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://www.joshcanhelp.com",
-          "domain": "www.joshcanhelp.com",
-          "title": "Josh Can Help",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-10-22T13:48:38.022Z"
+      ]
     },
     {
       "slug": "operating-system",
@@ -5795,6 +6495,30 @@
       "active": true
     },
     {
+      "slug": "paris",
+      "label": "paris",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/paris/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true
+    },
+    {
       "slug": "personal-data",
       "label": "personal data",
       "member_count": 1,
@@ -5816,6 +6540,30 @@
       "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
+      "active": true
+    },
+    {
+      "slug": "personal-development",
+      "label": "personal development",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/personal-development/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
       "active": true
     },
     {
@@ -7166,6 +7914,30 @@
       ]
     },
     {
+      "slug": "seattle",
+      "label": "seattle",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/seattle/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true
+    },
+    {
       "slug": "security",
       "label": "security",
       "member_count": 3,
@@ -7248,6 +8020,30 @@
       "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-04T15:32:37.678Z",
+      "active": true
+    },
+    {
+      "slug": "seo",
+      "label": "seo",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/seo/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
       "active": true
     },
     {
@@ -7336,9 +8132,33 @@
       "active": true
     },
     {
+      "slug": "site-optimization",
+      "label": "site optimization",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/site-optimization/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true
+    },
+    {
       "slug": "social-media",
       "label": "social media",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
         {
           "origin": "https://joshmuller.ca",
@@ -7377,6 +8197,19 @@
           ]
         },
         {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/social-media/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        },
+        {
           "origin": "https://www.joshuabaker.com",
           "domain": "www.joshuabaker.com",
           "title": "Joshua Baker",
@@ -7390,9 +8223,14 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-22T13:48:38.022Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
       "active": true,
       "related_discoveries": [
         {
@@ -7402,8 +8240,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-10-22T13:48:38.022Z"
+      ]
     },
     {
       "slug": "software",
@@ -7550,6 +8387,30 @@
       "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
+      "active": true
+    },
+    {
+      "slug": "software-engineering",
+      "label": "software engineering",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/software-engineering/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
       "active": true
     },
     {
@@ -7790,6 +8651,30 @@
       }
     },
     {
+      "slug": "team-dynamic",
+      "label": "team dynamics",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/team-dynamics/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true
+    },
+    {
       "slug": "technical-debt",
       "label": "technical debt",
       "member_count": 1,
@@ -7973,6 +8858,99 @@
       ]
     },
     {
+      "slug": "testing",
+      "label": "testing",
+      "member_count": 3,
+      "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/github-actions-perf/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/20/the-model-wouldnt-give-up/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/23/safari-is-testing-bigint-math-early/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/testing/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["catalog-match", "topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
+    },
+    {
+      "slug": "throwback",
+      "label": "throwback",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/throwback/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true
+    },
+    {
       "slug": "trade",
       "label": "trade",
       "member_count": 1,
@@ -8071,6 +9049,30 @@
       "sources": ["article:section", "topic-hub:link"],
       "first_seen_at": "2026-10-12T18:51:53.092Z",
       "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "active": true
+    },
+    {
+      "slug": "twitter",
+      "label": "twitter",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/twitter/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
       "active": true
     },
     {
@@ -8469,9 +9471,33 @@
       "active": true
     },
     {
+      "slug": "web-strategy",
+      "label": "web strategy",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/web-strategy/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-22T18:33:03.284Z",
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true
+    },
+    {
       "slug": "wordpress",
       "label": "wordpress",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://joshmuller.ca",
@@ -8498,13 +9524,25 @@
               "source": "topic-hub:link"
             }
           ]
+        },
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Can Help",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshcanhelp.com/tag/wordpress/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
         }
       ],
-      "sources": ["catalog-match", "topic-hub:link"],
+      "sources": ["catalog-match", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-22T13:48:38.022Z",
-      "active": true,
-      "stale_since": "2026-10-22T13:48:38.022Z"
+      "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true
     },
     {
       "slug": "workplace",

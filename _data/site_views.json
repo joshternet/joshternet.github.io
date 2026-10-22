@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-22T13:50:25.676Z",
+  "generated_at": "2026-10-22T18:34:36.459Z",
   "sites": [
     {
       "origin": "https://joshghent.com",
@@ -34,6 +34,10 @@
         {
           "slug": "art",
           "label": "art"
+        },
+        {
+          "slug": "auth0",
+          "label": "auth0"
         },
         {
           "slug": "aws",
@@ -88,6 +92,10 @@
           "label": "life"
         },
         {
+          "slug": "linkedin",
+          "label": "linkedin"
+        },
+        {
           "slug": "markdown",
           "label": "markdown"
         },
@@ -118,6 +126,10 @@
         {
           "slug": "software",
           "label": "software"
+        },
+        {
+          "slug": "testing",
+          "label": "testing"
         },
         {
           "slug": "writing",
@@ -152,7 +164,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-22T13:48:38.022Z"
+      "crawled_at": "2026-10-22T18:33:03.284Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -267,12 +279,24 @@
           "label": "discovery"
         },
         {
+          "slug": "email",
+          "label": "email"
+        },
+        {
           "slug": "engineering",
           "label": "engineering"
         },
         {
+          "slug": "facebook",
+          "label": "facebook"
+        },
+        {
           "slug": "fitness",
           "label": "Fitness"
+        },
+        {
+          "slug": "focus",
+          "label": "focus"
         },
         {
           "slug": "food",
@@ -463,7 +487,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-22T13:48:38.022Z"
+      "crawled_at": "2026-10-22T18:33:03.284Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -499,7 +523,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-22T13:48:38.022Z"
+      "crawled_at": "2026-10-22T18:33:03.284Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -564,6 +588,10 @@
         {
           "slug": "education",
           "label": "education"
+        },
+        {
+          "slug": "email",
+          "label": "email"
         },
         {
           "slug": "engineering",
@@ -719,7 +747,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-22T13:48:38.022Z"
+      "crawled_at": "2026-10-22T18:33:03.284Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -1260,6 +1288,10 @@
           "label": "technology"
         },
         {
+          "slug": "testing",
+          "label": "testing"
+        },
+        {
           "slug": "trade",
           "label": "trade"
         },
@@ -1353,7 +1385,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-22T13:48:38.022Z"
+      "crawled_at": "2026-10-22T18:33:03.284Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -1391,24 +1423,164 @@
           "label": "ai"
         },
         {
+          "slug": "analytics",
+          "label": "analytics"
+        },
+        {
           "slug": "async-communication",
           "label": "async communication"
+        },
+        {
+          "slug": "auth0",
+          "label": "auth0"
+        },
+        {
+          "slug": "community",
+          "label": "community"
+        },
+        {
+          "slug": "covid-19",
+          "label": "covid 19"
+        },
+        {
+          "slug": "customer-service",
+          "label": "customer service"
+        },
+        {
+          "slug": "design",
+          "label": "design"
+        },
+        {
+          "slug": "digital-identity",
+          "label": "digital identity"
+        },
+        {
+          "slug": "documentation",
+          "label": "documentation"
+        },
+        {
+          "slug": "eleventy",
+          "label": "eleventy"
+        },
+        {
+          "slug": "email",
+          "label": "email"
+        },
+        {
+          "slug": "facebook",
+          "label": "facebook"
+        },
+        {
+          "slug": "focus",
+          "label": "focus"
+        },
+        {
+          "slug": "food-drink",
+          "label": "food drink"
+        },
+        {
+          "slug": "freelancing",
+          "label": "freelancing"
+        },
+        {
+          "slug": "graffiti",
+          "label": "graffiti"
+        },
+        {
+          "slug": "hardware",
+          "label": "hardware"
+        },
+        {
+          "slug": "health-fitness",
+          "label": "health fitness"
+        },
+        {
+          "slug": "javascript-typescript",
+          "label": "javascript typescript"
+        },
+        {
+          "slug": "linkedin",
+          "label": "linkedin"
+        },
+        {
+          "slug": "marketing",
+          "label": "marketing"
+        },
+        {
+          "slug": "money",
+          "label": "money"
         },
         {
           "slug": "obsidian",
           "label": "obsidian"
         },
         {
+          "slug": "open-source",
+          "label": "open source"
+        },
+        {
+          "slug": "paris",
+          "label": "paris"
+        },
+        {
           "slug": "personal-data",
           "label": "personal data"
+        },
+        {
+          "slug": "personal-development",
+          "label": "personal development"
         },
         {
           "slug": "privacy",
           "label": "privacy"
         },
         {
+          "slug": "seattle",
+          "label": "seattle"
+        },
+        {
+          "slug": "seo",
+          "label": "seo"
+        },
+        {
+          "slug": "site-optimization",
+          "label": "site optimization"
+        },
+        {
+          "slug": "social-media",
+          "label": "social media"
+        },
+        {
+          "slug": "software-engineering",
+          "label": "software engineering"
+        },
+        {
+          "slug": "team-dynamic",
+          "label": "team dynamics"
+        },
+        {
+          "slug": "testing",
+          "label": "testing"
+        },
+        {
+          "slug": "throwback",
+          "label": "throwback"
+        },
+        {
+          "slug": "twitter",
+          "label": "twitter"
+        },
+        {
           "slug": "typescript",
           "label": "typescript"
+        },
+        {
+          "slug": "web-strategy",
+          "label": "web strategy"
+        },
+        {
+          "slug": "wordpress",
+          "label": "wordpress"
         },
         {
           "slug": "writing-publishing",
@@ -1439,7 +1611,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-22T13:48:38.022Z"
+      "crawled_at": "2026-10-22T18:33:03.284Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -1549,6 +1721,10 @@
           "label": "hospitality"
         },
         {
+          "slug": "marketing",
+          "label": "marketing"
+        },
+        {
           "slug": "media-publishing",
           "label": "media & publishing"
         },
@@ -1631,7 +1807,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-22T13:48:38.022Z",
+      "crawled_at": "2026-10-22T18:33:03.284Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,

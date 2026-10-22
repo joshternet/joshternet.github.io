@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-22T13:50:25.676Z",
+  "generated_at": "2026-10-22T18:34:36.459Z",
   "overlap_count": 15,
   "pairs": [
     {
@@ -28,6 +28,10 @@
           "label": "discovery"
         },
         {
+          "slug": "email",
+          "label": "email"
+        },
+        {
           "slug": "engineering",
           "label": "engineering"
         },
@@ -46,6 +50,10 @@
         {
           "slug": "life",
           "label": "life"
+        },
+        {
+          "slug": "linkedin",
+          "label": "linkedin"
         },
         {
           "slug": "money",
@@ -72,6 +80,10 @@
           "label": "technology"
         },
         {
+          "slug": "testing",
+          "label": "testing"
+        },
+        {
           "slug": "writing",
           "label": "writing"
         },
@@ -92,6 +104,10 @@
         {
           "slug": "career",
           "label": "career"
+        },
+        {
+          "slug": "email",
+          "label": "email"
         },
         {
           "slug": "engineering",
@@ -160,6 +176,10 @@
           "label": "discovery"
         },
         {
+          "slug": "email",
+          "label": "email"
+        },
+        {
           "slug": "engineering",
           "label": "engineering"
         },
@@ -186,6 +206,10 @@
         {
           "slug": "life",
           "label": "life"
+        },
+        {
+          "slug": "linkedin",
+          "label": "linkedin"
         },
         {
           "slug": "markdown",
@@ -228,6 +252,10 @@
           "label": "technology"
         },
         {
+          "slug": "testing",
+          "label": "testing"
+        },
+        {
           "slug": "writing",
           "label": "writing"
         },
@@ -244,6 +272,10 @@
         {
           "slug": "ai",
           "label": "ai"
+        },
+        {
+          "slug": "auth0",
+          "label": "auth0"
         },
         {
           "slug": "engineering",
@@ -306,12 +338,20 @@
           "label": "ai"
         },
         {
+          "slug": "analytics",
+          "label": "analytics"
+        },
+        {
           "slug": "blogging",
           "label": "blogging"
         },
         {
           "slug": "career",
           "label": "career"
+        },
+        {
+          "slug": "email",
+          "label": "email"
         },
         {
           "slug": "engineering",
@@ -400,8 +440,16 @@
           "label": "education"
         },
         {
+          "slug": "email",
+          "label": "email"
+        },
+        {
           "slug": "engineering",
           "label": "engineering"
+        },
+        {
+          "slug": "facebook",
+          "label": "facebook"
         },
         {
           "slug": "family",
@@ -434,6 +482,10 @@
         {
           "slug": "life",
           "label": "life"
+        },
+        {
+          "slug": "linkedin",
+          "label": "linkedin"
         },
         {
           "slug": "linux",
@@ -496,6 +548,10 @@
           "label": "technology"
         },
         {
+          "slug": "testing",
+          "label": "testing"
+        },
+        {
           "slug": "writing",
           "label": "writing"
         },
@@ -556,6 +612,10 @@
           "label": "health"
         },
         {
+          "slug": "marketing",
+          "label": "marketing"
+        },
+        {
           "slug": "money",
           "label": "money"
         },
@@ -592,6 +652,10 @@
         {
           "slug": "career",
           "label": "career"
+        },
+        {
+          "slug": "email",
+          "label": "email"
         },
         {
           "slug": "engineering",
@@ -1016,6 +1080,29 @@
           ]
         },
         {
+          "slug": "auth0",
+          "label": "auth0",
+          "articles": [
+            {
+              "url": "https://joshghent.com/auth0-cache/",
+              "title": "Cache Auth0 M2M Tokens"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshcanhelp.com",
+              "domain": "www.joshcanhelp.com",
+              "title": "Josh Can Help",
+              "articles": [
+                {
+                  "url": "https://www.joshcanhelp.com/goodbye-auth0/",
+                  "title": "Goodbye Auth0"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "book",
           "label": "books",
           "articles": [
@@ -1373,6 +1460,79 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/13/an-online-book-club-across-our-own-websites/",
                   "title": "An Online Book Club Across Our Own Websites"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "email",
+          "label": "email",
+          "articles": [
+            {
+              "url": "https://joshghent.com/online-shopping/",
+              "title": "One item purchased, Ten emails"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh's site",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/privacy-policy/",
+                  "title": "Privacy Policy"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/subscribe-to-mailchimp-newsletters-with-rss/",
+                  "title": "How to Subscribe to Mailchimp Newsletters With RSS"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/write-a-letter/",
+                  "title": "📄 Write Someone a Letter (Today)"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/you-need-a-password-manager/",
+                  "title": "You Need a Password Manager"
+                },
+                {
+                  "url": "https://joshmuller.ca/dads-service/",
+                  "title": "Memorial Service for Jerry Müller"
+                },
+                {
+                  "url": "https://joshmuller.ca/hello/",
+                  "title": "Hello! 👋🏻"
+                },
+                {
+                  "url": "https://joshmuller.ca/say-hi/",
+                  "title": "Say Hi!"
+                },
+                {
+                  "url": "https://joshmuller.ca/subscribe/",
+                  "title": "Subscribe!"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Joshtronic",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/09/27/rediscovering-long-form-email/",
+                  "title": "Rediscovering Long-Form Email"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/21/it-should-not-take-public-pressure/",
+                  "title": "It Should Not Take Public Pressure"
                 }
               ]
             }
@@ -1867,6 +2027,40 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/15/the-people-who-make-ordinary-life-better/",
                   "title": "The People Who Make Ordinary Life Better"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "linkedin",
+          "label": "linkedin",
+          "articles": [
+            {
+              "url": "https://joshghent.com/linkedin-for-developers/",
+              "title": "LinkedIn For Developers"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh's site",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/subscribe/",
+                  "title": "Subscribe!"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/22/the-interview-assignment-was-the-attack/",
+                  "title": "The Interview Assignment Was the Attack"
                 }
               ]
             }
@@ -2573,6 +2767,48 @@
           ]
         },
         {
+          "slug": "testing",
+          "label": "testing",
+          "articles": [
+            {
+              "url": "https://joshghent.com/github-actions-perf/",
+              "title": "Super Fast React/Node App Testing with GitHub Actions"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh's site",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2023/never-do-the-same-task-thrice/",
+                  "title": "Never Do the Same Task Thrice"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
+                  "title": "Terminal-Bench-Science Is Testing Agents on Actual Scientific Work"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/23/safari-is-testing-bigint-math-early/",
+                  "title": "Safari Is Testing BigInt Math Early"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/20/the-model-wouldnt-give-up/",
+                  "title": "The Model Wouldn’t Give Up"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "writing",
           "label": "writing",
           "articles": [
@@ -2847,6 +3083,29 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/10/apples-new-watch-is-listening-but-it-is-not-recording-everything/",
                   "title": "Apple's New Watch Is Listening, but It Is Not Recording Everything"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "analytics",
+          "label": "analytics",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/privacy-policy/",
+              "title": "Privacy Policy"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Joshtronic",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/08/09/reverse-engineering-posthog-superday/",
+                  "title": "Reverse Engineering a PostHog SuperDay"
                 }
               ]
             }
@@ -3507,6 +3766,79 @@
           ]
         },
         {
+          "slug": "email",
+          "label": "email",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/privacy-policy/",
+              "title": "Privacy Policy"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/subscribe-to-mailchimp-newsletters-with-rss/",
+              "title": "How to Subscribe to Mailchimp Newsletters With RSS"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/write-a-letter/",
+              "title": "📄 Write Someone a Letter (Today)"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/you-need-a-password-manager/",
+              "title": "You Need a Password Manager"
+            },
+            {
+              "url": "https://joshmuller.ca/dads-service/",
+              "title": "Memorial Service for Jerry Müller"
+            },
+            {
+              "url": "https://joshmuller.ca/hello/",
+              "title": "Hello! 👋🏻"
+            },
+            {
+              "url": "https://joshmuller.ca/say-hi/",
+              "title": "Say Hi!"
+            },
+            {
+              "url": "https://joshmuller.ca/subscribe/",
+              "title": "Subscribe!"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Developer Musings",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/online-shopping/",
+                  "title": "One item purchased, Ten emails"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Joshtronic",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/09/27/rediscovering-long-form-email/",
+                  "title": "Rediscovering Long-Form Email"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/21/it-should-not-take-public-pressure/",
+                  "title": "It Should Not Take Public Pressure"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "engineering",
           "label": "engineering",
           "articles": [
@@ -3585,6 +3917,41 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/22/walk-through-video-game-history/",
                   "title": "Walk Through Video Game History"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "facebook",
+          "label": "facebook",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/writings/2022/make-friends-with-one-of-them/",
+              "title": "Make Friends With \"One of Them\""
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/palihapitya-on-attention-extraction/",
+              "title": "Former Facebook Exec.'s Thoughts on Attention Extraction"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/how-to-message-someone-on-whatsapp-without-saving-them-as-a-contact/",
+              "title": "How to Message Someone on WhatsApp Without Saving Them as a Contact"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/digital-minimalism-2019/",
+              "title": "Digital Minimalism: Book recommendation"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/26/having-regulations-is-not-the-same-thing-as-having-accountability/",
+                  "title": "Having Regulations Is Not the Same Thing as Having Accountability"
                 }
               ]
             }
@@ -4048,6 +4415,40 @@
           ]
         },
         {
+          "slug": "linkedin",
+          "label": "linkedin",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/subscribe/",
+              "title": "Subscribe!"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Developer Musings",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/linkedin-for-developers/",
+                  "title": "LinkedIn For Developers"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/22/the-interview-assignment-was-the-attack/",
+                  "title": "The Interview Assignment Was the Attack"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "linux",
           "label": "linux",
           "articles": [
@@ -4170,6 +4571,29 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/22/listening-to-the-hive/",
                   "title": "Listening to the Hive"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "marketing",
+          "label": "marketing",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/writings/2023/subscribe-to-mailchimp-newsletters-with-rss/",
+              "title": "How to Subscribe to Mailchimp Newsletters With RSS"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=harknesskennett-harknesskennett-marketing-harknesskennett-marketing-span-flex-ro",
+                  "title": "HarknessKennett Marketing"
                 }
               ]
             }
@@ -4977,6 +5401,48 @@
           ]
         },
         {
+          "slug": "testing",
+          "label": "testing",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/writings/2023/never-do-the-same-task-thrice/",
+              "title": "Never Do the Same Task Thrice"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Developer Musings",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/github-actions-perf/",
+                  "title": "Super Fast React/Node App Testing with GitHub Actions"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
+                  "title": "Terminal-Bench-Science Is Testing Agents on Actual Scientific Work"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/23/safari-is-testing-bigint-math-early/",
+                  "title": "Safari Is Testing BigInt Math Early"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/20/the-model-wouldnt-give-up/",
+                  "title": "The Model Wouldn’t Give Up"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "wordpress",
           "label": "wordpress",
           "articles": [
@@ -5280,6 +5746,29 @@
           ]
         },
         {
+          "slug": "analytics",
+          "label": "analytics",
+          "articles": [
+            {
+              "url": "https://joshtronic.com/2026/08/09/reverse-engineering-posthog-superday/",
+              "title": "Reverse Engineering a PostHog SuperDay"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh's site",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/privacy-policy/",
+                  "title": "Privacy Policy"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "blogging",
           "label": "blogging",
           "articles": [
@@ -5361,6 +5850,79 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/07/jan-conroy-saw-what-others-missed/",
                   "title": "Jan Conroy Saw What Others Missed"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "email",
+          "label": "email",
+          "articles": [
+            {
+              "url": "https://joshtronic.com/2026/09/27/rediscovering-long-form-email/",
+              "title": "Rediscovering Long-Form Email"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Developer Musings",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/online-shopping/",
+                  "title": "One item purchased, Ten emails"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh's site",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/privacy-policy/",
+                  "title": "Privacy Policy"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/subscribe-to-mailchimp-newsletters-with-rss/",
+                  "title": "How to Subscribe to Mailchimp Newsletters With RSS"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/write-a-letter/",
+                  "title": "📄 Write Someone a Letter (Today)"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/you-need-a-password-manager/",
+                  "title": "You Need a Password Manager"
+                },
+                {
+                  "url": "https://joshmuller.ca/dads-service/",
+                  "title": "Memorial Service for Jerry Müller"
+                },
+                {
+                  "url": "https://joshmuller.ca/hello/",
+                  "title": "Hello! 👋🏻"
+                },
+                {
+                  "url": "https://joshmuller.ca/say-hi/",
+                  "title": "Say Hi!"
+                },
+                {
+                  "url": "https://joshmuller.ca/subscribe/",
+                  "title": "Subscribe!"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/21/it-should-not-take-public-pressure/",
+                  "title": "It Should Not Take Public Pressure"
                 }
               ]
             }
@@ -6980,6 +7542,79 @@
           ]
         },
         {
+          "slug": "email",
+          "label": "email",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/21/it-should-not-take-public-pressure/",
+              "title": "It Should Not Take Public Pressure"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Developer Musings",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/online-shopping/",
+                  "title": "One item purchased, Ten emails"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh's site",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/privacy-policy/",
+                  "title": "Privacy Policy"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/subscribe-to-mailchimp-newsletters-with-rss/",
+                  "title": "How to Subscribe to Mailchimp Newsletters With RSS"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/write-a-letter/",
+                  "title": "📄 Write Someone a Letter (Today)"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/you-need-a-password-manager/",
+                  "title": "You Need a Password Manager"
+                },
+                {
+                  "url": "https://joshmuller.ca/dads-service/",
+                  "title": "Memorial Service for Jerry Müller"
+                },
+                {
+                  "url": "https://joshmuller.ca/hello/",
+                  "title": "Hello! 👋🏻"
+                },
+                {
+                  "url": "https://joshmuller.ca/say-hi/",
+                  "title": "Say Hi!"
+                },
+                {
+                  "url": "https://joshmuller.ca/subscribe/",
+                  "title": "Subscribe!"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Joshtronic",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/09/27/rediscovering-long-form-email/",
+                  "title": "Rediscovering Long-Form Email"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "engineering",
           "label": "engineering",
           "articles": [
@@ -7058,6 +7693,41 @@
                 {
                   "url": "https://joshtronic.com/2026/08/09/reverse-engineering-posthog-superday/",
                   "title": "Reverse Engineering a PostHog SuperDay"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "facebook",
+          "label": "facebook",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/26/having-regulations-is-not-the-same-thing-as-having-accountability/",
+              "title": "Having Regulations Is Not the Same Thing as Having Accountability"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh's site",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2022/make-friends-with-one-of-them/",
+                  "title": "Make Friends With \"One of Them\""
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/palihapitya-on-attention-extraction/",
+                  "title": "Former Facebook Exec.'s Thoughts on Attention Extraction"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/how-to-message-someone-on-whatsapp-without-saving-them-as-a-contact/",
+                  "title": "How to Message Someone on WhatsApp Without Saving Them as a Contact"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/digital-minimalism-2019/",
+                  "title": "Digital Minimalism: Book recommendation"
                 }
               ]
             }
@@ -7698,6 +8368,40 @@
                 {
                   "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
                   "title": "Security Caveat: Locked out of my server while traveling"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "linkedin",
+          "label": "linkedin",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/22/the-interview-assignment-was-the-attack/",
+              "title": "The Interview Assignment Was the Attack"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Developer Musings",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/linkedin-for-developers/",
+                  "title": "LinkedIn For Developers"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh's site",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/subscribe/",
+                  "title": "Subscribe!"
                 }
               ]
             }
@@ -8949,6 +9653,48 @@
           ]
         },
         {
+          "slug": "testing",
+          "label": "testing",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
+              "title": "Terminal-Bench-Science Is Testing Agents on Actual Scientific Work"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/23/safari-is-testing-bigint-math-early/",
+              "title": "Safari Is Testing BigInt Math Early"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/20/the-model-wouldnt-give-up/",
+              "title": "The Model Wouldn’t Give Up"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Developer Musings",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/github-actions-perf/",
+                  "title": "Super Fast React/Node App Testing with GitHub Actions"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh's site",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2023/never-do-the-same-task-thrice/",
+                  "title": "Never Do the Same Task Thrice"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "united-states",
           "label": "united states",
           "articles": [
@@ -9266,6 +10012,29 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/10/apples-new-watch-is-listening-but-it-is-not-recording-everything/",
                   "title": "Apple's New Watch Is Listening, but It Is Not Recording Everything"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "auth0",
+          "label": "auth0",
+          "articles": [
+            {
+              "url": "https://www.joshcanhelp.com/goodbye-auth0/",
+              "title": "Goodbye Auth0"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Developer Musings",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/auth0-cache/",
+                  "title": "Cache Auth0 M2M Tokens"
                 }
               ]
             }
@@ -10258,6 +11027,29 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/20/good-insurance-wasnt-enough/",
                   "title": "Good Insurance Wasn’t Enough"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "marketing",
+          "label": "marketing",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/?work=harknesskennett-harknesskennett-marketing-harknesskennett-marketing-span-flex-ro",
+              "title": "HarknessKennett Marketing"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh's site",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2023/subscribe-to-mailchimp-newsletters-with-rss/",
+                  "title": "How to Subscribe to Mailchimp Newsletters With RSS"
                 }
               ]
             }
