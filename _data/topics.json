@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-22T01:32:27.755Z",
-  "community_count": 224,
+  "generated_at": "2026-10-22T07:37:20.462Z",
+  "community_count": 225,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
@@ -2002,6 +2002,35 @@
       "active": true
     },
     {
+      "slug": "cryptography",
+      "label": "cryptography",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
+      "first_seen_at": "2026-10-22T07:37:20.462Z",
+      "last_changed_at": "2026-10-22T07:37:20.462Z",
+      "active": true
+    },
+    {
       "slug": "css",
       "label": "css",
       "member_count": 2,
@@ -2168,21 +2197,11 @@
               "url": "https://joshuamorris.info/notes/2026/09/27/safe-not-safe-is-the-kind-of-developer-resource-i-want-more-of/",
               "title": "",
               "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
             }
           ]
         }
       ],
-      "sources": [
-        "catalog-match",
-        "microformat:p-category",
-        "topic-hub:link",
-        "visible-text"
-      ],
+      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
       "first_seen_at": "2026-10-08T07:58:36.941Z",
       "last_changed_at": "2026-10-08T07:58:36.941Z",
       "active": true
@@ -2681,11 +2700,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/02/the-netherlands-is-making-its-gold-easier-to-reach-in-a-crisis/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/15/the-fuel-crisis-is-exposing-how-little-spare-capacity-we-have-left/",
               "title": "",
               "source": "microformat:p-category"
@@ -2717,6 +2731,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/06/prop-3-would-keep-a-high-income-tax-that-is-already-being-collected/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/08/the-17-percent-in-prop-37-is-a-loan-the-buyer-pays-back/",
               "title": "",
               "source": "microformat:p-category"
             }
@@ -3460,11 +3479,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/02/the-netherlands-is-making-its-gold-easier-to-reach-in-a-crisis/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -3472,7 +3486,7 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-08T07:58:36.941Z",
       "last_changed_at": "2026-10-08T07:58:36.941Z",
       "active": true
@@ -4271,11 +4285,6 @@
               "source": "microformat:p-category"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/07/tomorrow-i-start-chemotherapy-but-i-dont-have-cancer/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -4582,6 +4591,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/10/the-internet-is-held-together-by-people-we-forgot-to-support/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
               "title": "",
               "source": "microformat:p-category"
             },
@@ -5085,11 +5099,6 @@
           "pages": [
             {
               "url": "https://joshuamorris.info/notes/2026/09/09/matthew-grabelsky-turns-the-subway-into-modern-mythology/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/07/tomorrow-i-start-chemotherapy-but-i-dont-have-cancer/",
               "title": "",
               "source": "microformat:p-category"
             },
@@ -5729,7 +5738,7 @@
               "source": "catalog-match"
             },
             {
-              "url": "https://joshuamorris.info/",
+              "url": "https://joshuamorris.info/notes/2026/10/10/flock-got-the-plate-right-and-the-person-was-still-wrongly-accused/",
               "title": "",
               "source": "visible-text"
             },
@@ -5817,6 +5826,11 @@
           "membership": "declared",
           "pages": [
             {
+              "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -5824,7 +5838,7 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "topic-hub:link"],
+      "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-04T01:48:41.305Z",
       "last_changed_at": "2026-10-04T15:32:37.678Z",
       "active": true
@@ -7299,11 +7313,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/02/the-netherlands-is-making-its-gold-easier-to-reach-in-a-crisis/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
               "title": "",
               "source": "microformat:p-category"
@@ -7335,6 +7344,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/07/prop-45-offers-some-projects-a-faster-environmental-review/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/08/the-17-percent-in-prop-37-is-a-loan-the-buyer-pays-back/",
               "title": "",
               "source": "microformat:p-category"
             }
@@ -7987,6 +8001,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/10/the-internet-is-held-together-by-people-we-forgot-to-support/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
               "title": "",
               "source": "microformat:p-category"
             },

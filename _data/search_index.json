@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-21T07:41:12.640Z",
-  "document_count": 952,
+  "generated_at": "2026-10-22T07:38:44.584Z",
+  "document_count": 953,
   "documents": [
     {
       "type": "site",
@@ -383,6 +383,15 @@
     },
     {
       "type": "topic",
+      "title": "cryptography",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/cryptography/",
+      "topics": ["cryptography", "cryptography"]
+    },
+    {
+      "type": "topic",
       "title": "css",
       "summary": "1 participating sites",
       "domain": "",
@@ -569,15 +578,6 @@
       "origin": "",
       "url": "/topics/finance/",
       "topics": ["finance", "finance"]
-    },
-    {
-      "type": "topic",
-      "title": "financial markets",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/financial-market/",
-      "topics": ["financial-market", "financial markets"]
     },
     {
       "type": "topic",
@@ -6242,7 +6242,7 @@
     {
       "type": "content",
       "title": "Weird Web October 2026",
-      "summary": "One small weird website each day of October.",
+      "summary": "Interactive Halloween browser toys and games, one October theme at a time.",
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/experiments/weird-web-october-2026/",
@@ -6254,8 +6254,21 @@
     },
     {
       "type": "content",
+      "title": "Analog",
+      "summary": "A Fisher-Price Model 825 record player and a cabinet of complete Internet Archive albums.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
+      "topics": [],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-06T00:00:00.000Z",
+      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
       "title": "Fake",
-      "summary": "Weird Web October 2026, day three. Fake.",
+      "summary": "HumanCheck: a creepy CAPTCHA game with increasingly unsettling image challenges.",
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/experiments/weird-web-october-2026/fake/",
@@ -6268,7 +6281,7 @@
     {
       "type": "content",
       "title": "Plastic",
-      "summary": "Weird Web October 2026, day four. Plastic.",
+      "summary": "A haunted Speak & Spell with working keys, vintage speech and a strange spelling lesson.",
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
@@ -6281,7 +6294,7 @@
     {
       "type": "content",
       "title": "Reveal",
-      "summary": "Weird Web October 2026, day one. Reveal.",
+      "summary": "An interactive Magic 8-Ball with fortunes rising through dark liquid.",
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/experiments/weird-web-october-2026/reveal/",
@@ -6294,7 +6307,7 @@
     {
       "type": "content",
       "title": "Sheet",
-      "summary": "Weird Web October 2026, day five. Sheet.",
+      "summary": "Recreate the Tomy Mighty Men and Monster Maker with plates, crayons, paper, Save and Print.",
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/experiments/weird-web-october-2026/sheet/",
@@ -6307,7 +6320,7 @@
     {
       "type": "content",
       "title": "Spark",
-      "summary": "Weird Web October 2026, day two. Spark.",
+      "summary": "The Last Match: a short horror game about three matches and a changing room.",
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spark/",
@@ -8768,10 +8781,10 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/09/02/the-netherlands-is-making-its-gold-easier-to-reach-in-a-crisis/",
-      "topics": ["economics", "financial markets", "public systems"],
+      "topics": [],
       "site_title": "Joshua Morris",
       "published_at": "2026-09-02T22:15:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "",
       "image_origin": ""
     },
     {
@@ -9012,7 +9025,7 @@
       "topics": ["ai", "career", "craftsmanship"],
       "site_title": "Joshua Morris",
       "published_at": "2026-09-13T00:49:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "/assets/activity/posters/1942735fb98e561ac27ba109f20e99a413bd3e7d8bf8ede7c7db9d9d3a096089.webp",
       "image_origin": ""
     },
     {
@@ -9025,7 +9038,7 @@
       "topics": ["books", "indieweb", "online book club"],
       "site_title": "Joshua Morris",
       "published_at": "2026-09-13T06:22:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "/assets/activity/posters/3deb7bdcf07bdfeb9ea22e6e2a0fcf2a291bb4bc8b5609f9fe832bb662438f67.webp",
       "image_origin": ""
     },
     {
@@ -9077,7 +9090,7 @@
       ],
       "site_title": "Joshua Morris",
       "published_at": "2026-09-15T00:00:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "/assets/activity/posters/8e0f78ef336b429cccb2d7d1971ff469f9f9369be177df30e77a4fb72d805045.webp",
       "image_origin": ""
     },
     {
@@ -9129,7 +9142,7 @@
       ],
       "site_title": "Joshua Morris",
       "published_at": "2026-09-19T12:06:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "/assets/activity/posters/8aed47f51ca56178faaff2f5973bf02aceaa410263e1757d6b1511e8d0bed39b.webp",
       "image_origin": ""
     },
     {
@@ -9142,7 +9155,7 @@
       "topics": ["ai", "government", "institutions", "technology"],
       "site_title": "Joshua Morris",
       "published_at": "2026-09-20T14:57:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "/assets/activity/posters/6375e09cba04e8b1f7a7b43b5f8ddd9cb542413e5a9999fb2a103fdbb6e0168d.webp",
       "image_origin": ""
     },
     {
@@ -9162,7 +9175,7 @@
       ],
       "site_title": "Joshua Morris",
       "published_at": "2026-09-20T11:26:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "/assets/activity/posters/5713962ad58936111c3ab3430de790a05b5667c3c3c40f2d880e57cdb4fff5fa.webp",
       "image_origin": ""
     },
     {
@@ -9175,7 +9188,7 @@
       "topics": ["ai agents", "ai security"],
       "site_title": "Joshua Morris",
       "published_at": "2026-09-22T12:49:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "/assets/activity/posters/f9715ef672b79ff5318d2fede786b03462407166a06e8eafae71b67764a2e4ba.webp",
       "image_origin": ""
     },
     {
@@ -9554,25 +9567,12 @@
     },
     {
       "type": "content",
-      "title": "Tomorrow I Start Chemotherapy, but I Don't Have Cancer",
-      "summary": "Tomorrow I go in for my first chemotherapy treatment for a foot problem and a bone spur, not cancer. I am hoping the appointment is uneventful and that walking can become boring again.",
-      "domain": "joshuamorris.info",
-      "origin": "https://joshuamorris.info",
-      "url": "https://joshuamorris.info/notes/2026/10/07/tomorrow-i-start-chemotherapy-but-i-dont-have-cancer/",
-      "topics": ["health", "life"],
-      "site_title": "Joshua Morris",
-      "published_at": "2026-10-07T21:14:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
-      "image_origin": ""
-    },
-    {
-      "type": "content",
       "title": "The 17 percent in Prop. 37 is a loan the buyer pays back",
       "summary": "Proposition 37 would let the state sell up to $25 billion in revenue bonds so some buyers of new homes can borrow part of the down payment.",
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/10/08/the-17-percent-in-prop-37-is-a-loan-the-buyer-pays-back/",
-      "topics": ["california ballot 2026"],
+      "topics": ["california ballot 2026", "economics", "public systems"],
       "site_title": "Joshua Morris",
       "published_at": "2026-10-08T09:00:00.000Z",
       "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
@@ -9609,7 +9609,7 @@
       ],
       "site_title": "Joshua Morris",
       "published_at": "2026-10-09T11:00:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "/assets/activity/posters/1e4932c53c718b59d946b66c952f21a7b2f2acc0a0736aa002058a9e933caa37.webp",
       "image_origin": ""
     },
     {
@@ -9737,7 +9737,7 @@
       ],
       "site_title": "Joshua Morris",
       "published_at": "2026-10-13T18:00:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "/assets/activity/posters/2b97e8146e9a054b4a48278f6d114ac5b4f952231ee66ba9bb2458baf591cf20.webp",
       "image_origin": ""
     },
     {
@@ -9777,6 +9777,19 @@
       "site_title": "Joshua Morris",
       "published_at": "2026-10-16T10:00:00.000Z",
       "image": "/assets/activity/posters/5de1ed66ce36e9b8753bda96e30de89a73207960bf8d8d236c90933f5a8a4587.webp",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
+      "title": "The Internet's Trust Problem Was a Private Key With the Value 4",
+      "summary": "Eight eMudhra intermediate CA certificates used private keys as small as 4, forcing a broad cleanup of TLS trust across browsers and software.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
+      "topics": ["cryptography", "infrastructure", "networking", "security"],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-20T19:39:00.000Z",
+      "image": "/assets/activity/posters/3dc1ea72c8a6cecceb15ae55a2fd8257f761895db5c41529a608cc6686f0aafb.webp",
       "image_origin": ""
     },
     {

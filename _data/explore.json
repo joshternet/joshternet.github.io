@@ -1,15 +1,64 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-22T01:33:23.727Z",
+  "generated_at": "2026-10-22T07:38:44.584Z",
   "participant_count": 7,
-  "community_count": 224,
-  "publication_count": 769,
+  "community_count": 225,
+  "publication_count": 770,
   "connection_count": 2,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
     "connection": "first edge after stable from, to, relation sort"
   },
   "fresh": [
+    {
+      "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
+      "title": "The Internet's Trust Problem Was a Private Key With the Value 4",
+      "summary": "Eight eMudhra intermediate CA certificates used private keys as small as 4, forcing a broad cleanup of TLS trust across browsers and software.",
+      "published_at": "2026-10-20T19:39:00.000Z",
+      "content_type": "article",
+      "language": "en",
+      "site_origin": "https://joshuamorris.info",
+      "site_title": "Joshua Morris",
+      "domain": "joshuamorris.info",
+      "tags": [
+        {
+          "slug": "cryptography",
+          "label": "cryptography"
+        },
+        {
+          "slug": "infrastructure",
+          "label": "infrastructure"
+        },
+        {
+          "slug": "networking",
+          "label": "networking"
+        },
+        {
+          "slug": "security",
+          "label": "security"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "cryptography",
+          "label": "cryptography"
+        },
+        {
+          "slug": "infrastructure",
+          "label": "infrastructure"
+        },
+        {
+          "slug": "networking",
+          "label": "networking"
+        },
+        {
+          "slug": "security",
+          "label": "security"
+        }
+      ],
+      "image": "/assets/activity/posters/3dc1ea72c8a6cecceb15ae55a2fd8257f761895db5c41529a608cc6686f0aafb.webp",
+      "image_origin": ""
+    },
     {
       "url": "https://joshtronic.com/2026/10/18/halloween-movies-watch-list-2026/",
       "title": "Halloween Movies Watch List 2026",
@@ -23,21 +72,6 @@
       "tags": [],
       "neighborhoods": [],
       "image": "",
-      "image_origin": ""
-    },
-    {
-      "url": "https://joshuamorris.info/notes/2026/10/16/worth-wandering-public-domain-review/",
-      "title": "Worth Wandering: The Public Domain Review",
-      "summary": "The Public Domain Review is an independent, nonprofit journal exploring the strange, beautiful and often forgotten things humanity has created, from medieval manuscripts and Victorian photography to early films, unusual scientific theories, recordings of people long gone and an enormous collection of art that belongs to everyone.",
-      "published_at": "2026-10-16T10:00:00.000Z",
-      "content_type": "article",
-      "language": "en",
-      "site_origin": "https://joshuamorris.info",
-      "site_title": "Joshua Morris",
-      "domain": "joshuamorris.info",
-      "tags": [],
-      "neighborhoods": [],
-      "image": "/assets/activity/posters/5de1ed66ce36e9b8753bda96e30de89a73207960bf8d8d236c90933f5a8a4587.webp",
       "image_origin": ""
     },
     {
@@ -57,9 +91,9 @@
     }
   ],
   "neighborhood": {
-    "slug": "personal-data",
-    "label": "personal data",
-    "member_count": 1
+    "slug": "design",
+    "label": "design",
+    "member_count": 5
   },
   "connection": {
     "from": "https://joshuamorris.info",
