@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-23T01:39:54.781Z",
+  "generated_at": "2026-10-23T18:23:18.244Z",
   "participant_count": 7,
-  "community_count": 225,
-  "publication_count": 770,
+  "community_count": 231,
+  "publication_count": 771,
   "connection_count": 2,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
@@ -11,10 +11,10 @@
   },
   "fresh": [
     {
-      "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-      "title": "The Internet's Trust Problem Was a Private Key With the Value 4",
-      "summary": "Eight eMudhra intermediate CA certificates used private keys as small as 4, forcing a broad cleanup of TLS trust across browsers and software.",
-      "published_at": "2026-10-20T19:39:00.000Z",
+      "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
+      "title": "Worth Wandering: Pippin Barr",
+      "summary": "An independent game designer who has spent more than a decade making wonderfully strange experiments out of familiar video games, performance art, office work, Greek mythology, empty software projects and the simple question of what happens when you change the rules.",
+      "published_at": "2026-10-23T14:30:00.000Z",
       "content_type": "article",
       "language": "en",
       "site_origin": "https://joshuamorris.info",
@@ -22,41 +22,65 @@
       "domain": "joshuamorris.info",
       "tags": [
         {
-          "slug": "cryptography",
-          "label": "cryptography"
+          "slug": "creative-coding",
+          "label": "creative coding"
         },
         {
-          "slug": "infrastructure",
-          "label": "infrastructure"
+          "slug": "digital-art",
+          "label": "digital art"
         },
         {
-          "slug": "networking",
-          "label": "networking"
+          "slug": "experimental-game",
+          "label": "experimental games"
         },
         {
-          "slug": "security",
-          "label": "security"
+          "slug": "game-design",
+          "label": "game design"
+        },
+        {
+          "slug": "interactive-art",
+          "label": "interactive art"
+        },
+        {
+          "slug": "javascript",
+          "label": "javascript"
+        },
+        {
+          "slug": "play",
+          "label": "play"
         }
       ],
       "neighborhoods": [
         {
-          "slug": "cryptography",
-          "label": "cryptography"
+          "slug": "creative-coding",
+          "label": "creative coding"
         },
         {
-          "slug": "infrastructure",
-          "label": "infrastructure"
+          "slug": "digital-art",
+          "label": "digital art"
         },
         {
-          "slug": "networking",
-          "label": "networking"
+          "slug": "experimental-game",
+          "label": "experimental games"
         },
         {
-          "slug": "security",
-          "label": "security"
+          "slug": "game-design",
+          "label": "game design"
+        },
+        {
+          "slug": "interactive-art",
+          "label": "interactive art"
+        },
+        {
+          "slug": "javascript",
+          "label": "javascript"
+        },
+        {
+          "slug": "play",
+          "label": "play"
         }
       ],
-      "image": "/assets/activity/posters/3dc1ea72c8a6cecceb15ae55a2fd8257f761895db5c41529a608cc6686f0aafb.webp",
+      "image": "/assets/activity/posters/7d8c4492ae15e8df2e1f400a9408facb2404d511697762d2ffad7f762ed4c372.webp",
       "image_origin": ""
     },
     {
@@ -76,9 +100,9 @@
     }
   ],
   "neighborhood": {
-    "slug": "developer-tool",
-    "label": "developer tools",
-    "member_count": 1
+    "slug": "social-media",
+    "label": "social media",
+    "member_count": 4
   },
   "connection": {
     "from": "https://joshuamorris.info",

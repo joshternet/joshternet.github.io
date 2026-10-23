@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-23T13:38:19.775Z",
-  "community_count": 225,
+  "generated_at": "2026-10-23T18:22:01.056Z",
+  "community_count": 231,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
@@ -1943,6 +1943,35 @@
       "active": true
     },
     {
+      "slug": "creative-coding",
+      "label": "creative coding",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category", "topic-hub:link"],
+      "first_seen_at": "2026-10-23T18:22:01.056Z",
+      "last_changed_at": "2026-10-23T18:22:01.056Z",
+      "active": true
+    },
+    {
       "slug": "creative-design",
       "label": "creative & design",
       "member_count": 1,
@@ -2016,16 +2045,11 @@
               "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
               "title": "",
               "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
             }
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-22T07:37:20.462Z",
       "last_changed_at": "2026-10-22T07:37:20.462Z",
       "active": true
@@ -2487,6 +2511,30 @@
       "sources": ["catalog-match", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-08T19:38:44.771Z",
       "last_changed_at": "2026-10-08T19:38:44.771Z",
+      "active": true
+    },
+    {
+      "slug": "digital-art",
+      "label": "digital art",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category"],
+      "first_seen_at": "2026-10-23T18:22:01.056Z",
+      "last_changed_at": "2026-10-23T18:22:01.056Z",
       "active": true
     },
     {
@@ -2970,11 +3018,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/04/a-kidney-disease-linked-to-extreme-heat-is-showing-up-in-texas/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/15/the-fuel-crisis-is-exposing-how-little-spare-capacity-we-have-left/",
               "title": "",
               "source": "microformat:p-category"
@@ -3215,6 +3258,30 @@
       "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-03T11:08:42.736Z",
+      "active": true
+    },
+    {
+      "slug": "experimental-game",
+      "label": "experimental games",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category"],
+      "first_seen_at": "2026-10-23T18:22:01.056Z",
+      "last_changed_at": "2026-10-23T18:22:01.056Z",
       "active": true
     },
     {
@@ -3773,6 +3840,30 @@
       "active": true
     },
     {
+      "slug": "game-design",
+      "label": "game design",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category"],
+      "first_seen_at": "2026-10-23T18:22:01.056Z",
+      "last_changed_at": "2026-10-23T18:22:01.056Z",
+      "active": true
+    },
+    {
       "slug": "gnome",
       "label": "gnome",
       "member_count": 1,
@@ -4280,11 +4371,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/04/a-kidney-disease-linked-to-extreme-heat-is-showing-up-in-texas/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -4313,7 +4399,6 @@
       "sources": [
         "article:tag",
         "catalog-match",
-        "microformat:p-category",
         "portfolio:sector",
         "topic-hub:link",
         "visible-text"
@@ -4677,6 +4762,30 @@
       "active": true
     },
     {
+      "slug": "interactive-art",
+      "label": "interactive art",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category"],
+      "first_seen_at": "2026-10-23T18:22:01.056Z",
+      "last_changed_at": "2026-10-23T18:22:01.056Z",
+      "active": true
+    },
+    {
       "slug": "interactive-essay",
       "label": "interactive essays",
       "member_count": 1,
@@ -4811,7 +4920,7 @@
     {
       "slug": "javascript",
       "label": "javascript",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
         {
           "origin": "https://joshtronic.com",
@@ -4825,24 +4934,30 @@
               "source": "topic-hub:link"
             }
           ]
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-06T20:20:38.881Z",
+      "last_changed_at": "2026-10-23T18:22:01.056Z",
       "active": true,
       "related_discoveries": [
         {
           "origin": "https://joshghent.com",
           "domain": "joshghent.com",
           "title": "Developer Musings",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
@@ -6734,6 +6849,30 @@
       "active": true
     },
     {
+      "slug": "play",
+      "label": "play",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category"],
+      "first_seen_at": "2026-10-23T18:22:01.056Z",
+      "last_changed_at": "2026-10-23T18:22:01.056Z",
+      "active": true
+    },
+    {
       "slug": "policy",
       "label": "policy",
       "member_count": 3,
@@ -7834,11 +7973,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/04/a-kidney-disease-linked-to-extreme-heat-is-showing-up-in-texas/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/19/the-brain-may-have-two-developmental-origins-that-is-interesting-enough/",
               "title": "",

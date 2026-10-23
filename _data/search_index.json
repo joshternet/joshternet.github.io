@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-22T18:34:36.459Z",
-  "document_count": 953,
+  "generated_at": "2026-10-23T18:23:18.244Z",
+  "document_count": 960,
   "documents": [
     {
       "type": "site",
@@ -383,6 +383,15 @@
     },
     {
       "type": "topic",
+      "title": "creative coding",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/creative-coding/",
+      "topics": ["creative-coding", "creative coding"]
+    },
+    {
+      "type": "topic",
       "title": "cryptography",
       "summary": "1 participating sites",
       "domain": "",
@@ -443,6 +452,15 @@
       "origin": "",
       "url": "/topics/devops/",
       "topics": ["devops", "devops"]
+    },
+    {
+      "type": "topic",
+      "title": "digital art",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/digital-art/",
+      "topics": ["digital-art", "digital art"]
     },
     {
       "type": "topic",
@@ -545,6 +563,15 @@
     },
     {
       "type": "topic",
+      "title": "experimental games",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/experimental-game/",
+      "topics": ["experimental-game", "experimental games"]
+    },
+    {
+      "type": "topic",
       "title": "facebook",
       "summary": "2 participating sites",
       "domain": "",
@@ -641,6 +668,15 @@
       "origin": "",
       "url": "/topics/friendship/",
       "topics": ["friendship", "friendship"]
+    },
+    {
+      "type": "topic",
+      "title": "game design",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/game-design/",
+      "topics": ["game-design", "game design"]
     },
     {
       "type": "topic",
@@ -758,6 +794,15 @@
       "origin": "",
       "url": "/topics/institution/",
       "topics": ["institution", "institutions"]
+    },
+    {
+      "type": "topic",
+      "title": "interactive art",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/interactive-art/",
+      "topics": ["interactive-art", "interactive art"]
     },
     {
       "type": "topic",
@@ -1136,6 +1181,15 @@
       "origin": "",
       "url": "/topics/php/",
       "topics": ["php", "php"]
+    },
+    {
+      "type": "topic",
+      "title": "play",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/play/",
+      "topics": ["play", "play"]
     },
     {
       "type": "topic",
@@ -8794,10 +8848,10 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/09/04/a-kidney-disease-linked-to-extreme-heat-is-showing-up-in-texas/",
-      "topics": ["energy", "health", "scientific evidence"],
+      "topics": [],
       "site_title": "Joshua Morris",
       "published_at": "2026-09-04T08:31:00.000Z",
-      "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
+      "image": "",
       "image_origin": ""
     },
     {
@@ -9790,6 +9844,27 @@
       "site_title": "Joshua Morris",
       "published_at": "2026-10-20T19:39:00.000Z",
       "image": "/assets/activity/posters/3dc1ea72c8a6cecceb15ae55a2fd8257f761895db5c41529a608cc6686f0aafb.webp",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
+      "title": "Worth Wandering: Pippin Barr",
+      "summary": "An independent game designer who has spent more than a decade making wonderfully strange experiments out of familiar video games, performance art, office work, Greek mythology, empty software projects and the simple question of what happens when you change the rules.",
+      "domain": "joshuamorris.info",
+      "origin": "https://joshuamorris.info",
+      "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
+      "topics": [
+        "creative coding",
+        "digital art",
+        "experimental games",
+        "game design",
+        "interactive art",
+        "javascript",
+        "play"
+      ],
+      "site_title": "Joshua Morris",
+      "published_at": "2026-10-23T14:30:00.000Z",
+      "image": "/assets/activity/posters/7d8c4492ae15e8df2e1f400a9408facb2404d511697762d2ffad7f762ed4c372.webp",
       "image_origin": ""
     },
     {
