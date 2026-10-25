@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-23T18:23:18.244Z",
+  "generated_at": "2026-10-25T22:35:11.181Z",
   "document_count": 960,
   "documents": [
     {
@@ -1554,7 +1554,7 @@
     {
       "type": "topic",
       "title": "technology",
-      "summary": "4 participating sites",
+      "summary": "5 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/technology/",
@@ -1689,7 +1689,7 @@
     {
       "type": "topic",
       "title": "writing",
-      "summary": "3 participating sites",
+      "summary": "4 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/writing/",
@@ -6113,19 +6113,6 @@
     },
     {
       "type": "content",
-      "title": "Observations From Building a PR Review Loop",
-      "summary": "Building my own agent has been fun. Sure, I could have opted for an off-the-shelf solution, but I wanted control. The ironic part is that I'm using that control to offload more control to the agent. Recent experiments have included letting the agent work on itself. Super meta, but didn't quite go as planned considering the guardrails I have in place around the size of PRs. Agent work tends to be h",
-      "domain": "joshtronic.com",
-      "origin": "https://joshtronic.com",
-      "url": "https://joshtronic.com/2026/08/02/observations-building-pr-review-loop/",
-      "topics": [],
-      "site_title": "Joshtronic",
-      "published_at": "2026-08-02T00:00:00.000Z",
-      "image": "",
-      "image_origin": ""
-    },
-    {
-      "type": "content",
       "title": "Reverse Engineering a PostHog SuperDay",
       "summary": "I'm not here to bullshit anybody, I have never been through a PostHog SuperDay. Like many humans, I've read about it on their website, as they are a company that over-communicates just about everything. This tale started when I got curious about their onboarding wizard . Their pivot from analytics to self-driving systems mirrors what I've been working on for the last couple of years, which has acc",
       "domain": "joshtronic.com",
@@ -6264,6 +6251,19 @@
       "topics": [],
       "site_title": "Joshtronic",
       "published_at": "2026-10-18T00:00:00.000Z",
+      "image": "",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
+      "title": "Learning a New Tech Stack with an LLM",
+      "summary": "While I mentioned a few weeks back that I'm now recovering from AI Psychosis , that doesn't mean I've given up on the technology completely. I'm writing more emails, and engaging with human beings as much as I can, and that part's been great. I still use agents as a glorified typewriter to generate code, and still very much get my hands in the dirt and sling code myself. I've also gotten quite obs",
+      "domain": "joshtronic.com",
+      "origin": "https://joshtronic.com",
+      "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
+      "topics": [],
+      "site_title": "Joshtronic",
+      "published_at": "2026-10-26T00:00:00.000Z",
       "image": "",
       "image_origin": ""
     },

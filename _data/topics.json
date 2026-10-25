@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-25T19:37:13.062Z",
+  "generated_at": "2026-10-25T22:33:57.345Z",
   "community_count": 231,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
@@ -5394,7 +5394,7 @@
     {
       "slug": "llm",
       "label": "llm",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://joshmuller.ca",
@@ -5416,6 +5416,24 @@
               "url": "https://joshmuller.ca/tags/",
               "title": "",
               "source": "topic-hub:link"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshtronic.com",
+          "domain": "joshtronic.com",
+          "title": "Joshtronic",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
+              "title": "",
+              "source": "catalog-match"
             }
           ]
         },
@@ -5443,19 +5461,15 @@
           ]
         }
       ],
-      "sources": ["article:tag", "microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "article:tag",
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-12T18:51:53.092Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshtronic.com",
-          "domain": "joshtronic.com",
-          "title": "Joshtronic",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
+      "last_changed_at": "2026-10-25T22:33:57.345Z",
+      "active": true
     },
     {
       "slug": "lock-in",
@@ -9850,7 +9864,16 @@
       ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-12T18:51:53.092Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshtronic.com",
+          "domain": "joshtronic.com",
+          "title": "Joshtronic",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "writing-publishing",
