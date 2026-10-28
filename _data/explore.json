@@ -1,15 +1,30 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-28T16:03:34.492Z",
-  "participant_count": 6,
-  "community_count": 118,
-  "publication_count": 506,
+  "generated_at": "2026-10-28T21:06:59.569Z",
+  "participant_count": 7,
+  "community_count": 231,
+  "publication_count": 774,
   "connection_count": 2,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
     "connection": "first edge after stable from, to, relation sort"
   },
   "fresh": [
+    {
+      "url": "https://joshghent.com/enterprise-sales-teams/",
+      "title": "Enterprise sales teams, please, I beg you, stop",
+      "summary": "I asked for a price on a few extra seats of software we already pay for. Two days and a pile of irrelevant questions later, I got one.",
+      "published_at": "2026-10-28T00:00:00.000Z",
+      "content_type": "article",
+      "language": "en",
+      "site_origin": "https://joshghent.com",
+      "site_title": "Developer Musings",
+      "domain": "joshghent.com",
+      "tags": [],
+      "neighborhoods": [],
+      "image": "/assets/activity/posters/0e6aec9f710a1c76fce0a42d3650d67fb3d80d3b65430593de89efcc1c33005c.webp",
+      "image_origin": ""
+    },
     {
       "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
       "title": "Learning a New Tech Stack with an LLM",
@@ -24,19 +39,92 @@
       "neighborhoods": [],
       "image": "",
       "image_origin": ""
+    },
+    {
+      "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
+      "title": "Worth Wandering: Pippin Barr",
+      "summary": "An independent game designer who has spent more than a decade making wonderfully strange experiments out of familiar video games, performance art, office work, Greek mythology, empty software projects and the simple question of what happens when you change the rules.",
+      "published_at": "2026-10-23T14:30:00.000Z",
+      "content_type": "article",
+      "language": "en",
+      "site_origin": "https://joshuamorris.info",
+      "site_title": "Joshua Morris",
+      "domain": "joshuamorris.info",
+      "tags": [
+        {
+          "slug": "creative-coding",
+          "label": "creative coding"
+        },
+        {
+          "slug": "digital-art",
+          "label": "digital art"
+        },
+        {
+          "slug": "experimental-game",
+          "label": "experimental games"
+        },
+        {
+          "slug": "game-design",
+          "label": "game design"
+        },
+        {
+          "slug": "interactive-art",
+          "label": "interactive art"
+        },
+        {
+          "slug": "javascript",
+          "label": "javascript"
+        },
+        {
+          "slug": "play",
+          "label": "play"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "creative-coding",
+          "label": "creative coding"
+        },
+        {
+          "slug": "digital-art",
+          "label": "digital art"
+        },
+        {
+          "slug": "experimental-game",
+          "label": "experimental games"
+        },
+        {
+          "slug": "game-design",
+          "label": "game design"
+        },
+        {
+          "slug": "interactive-art",
+          "label": "interactive art"
+        },
+        {
+          "slug": "javascript",
+          "label": "javascript"
+        },
+        {
+          "slug": "play",
+          "label": "play"
+        }
+      ],
+      "image": "/assets/activity/posters/7d8c4492ae15e8df2e1f400a9408facb2404d511697762d2ffad7f762ed4c372.webp",
+      "image_origin": ""
     }
   ],
   "neighborhood": {
-    "slug": "tutorial",
-    "label": "tutorial",
-    "member_count": 1
+    "slug": "space",
+    "label": "space",
+    "member_count": 2
   },
   "connection": {
     "from": "https://joshuamorris.info",
     "to": "https://joshternet.org",
     "relation": "content-link",
     "label": "linked to",
-    "from_title": "https://joshuamorris.info",
+    "from_title": "Joshua Morris",
     "to_title": "Joshternet",
     "href": "https://joshternet.org/",
     "page": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
