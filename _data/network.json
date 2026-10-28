@@ -137,7 +137,7 @@
       "version": 1
     },
     "first_participated_at": "2026-09-06T22:52:08.890744Z",
-    "latest_declaration_check_at": "2026-10-27T10:17:33.526109Z",
+    "latest_declaration_check_at": "2026-10-28T12:04:43.464054Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Joshternet",
     "description": "Joshternet connects people who identify as Josh and the independent websites they call home—an open, decentralized network built on shared web conventions.",
@@ -167,7 +167,7 @@
       "josh": true
     },
     "first_participated_at": "2026-09-25T08:52:07.833928Z",
-    "latest_declaration_check_at": "2026-10-27T10:17:44.220997Z",
+    "latest_declaration_check_at": "2026-10-28T12:08:32.98985Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Joshtronic",
     "description": "Code is a medium that found me at an impressionable young age. I've been fortunate to make a career out of it, even if I say things like, \"I'm not sure what I want to do when I grow up.\"",
@@ -185,67 +185,6 @@
         "url": "https://joshtronic.com/atom.xml",
         "type": "application/atom+xml",
         "title": "Joshtronic - Atom Feed"
-      }
-    ]
-  },
-  {
-    "origin": "https://joshuamorris.info",
-    "domain": "joshuamorris.info",
-    "identity": "affirmed",
-    "declaration": {
-      "version": 1,
-      "josh": true
-    },
-    "initial_declaration": {
-      "version": 1,
-      "josh": true
-    },
-    "first_participated_at": "2026-09-06T22:51:38.044013Z",
-    "latest_declaration_check_at": "2026-10-27T10:21:40.971725Z",
-    "latest_declaration_check_outcome": "valid",
-    "title": "Joshua Morris",
-    "description": "I build software, write about what I’m learning, and explore ideas that sit at the intersection of technology, freedom, and curiosity.",
-    "screenshot": "/assets/network/sites/96e5b600de4a31e77df2925d7e56dc12bc14ffd484452ca9b51ed4aa37813705.webp",
-    "embeddable": false,
-    "frame_reason": "blocked-by-site",
-    "captured_at": "2026-10-28T01:22:21.191Z",
-    "feeds": [
-      {
-        "url": "https://joshuamorris.info/atom.xml",
-        "type": "application/atom+xml",
-        "title": "Joshua Morris Atom feed"
-      },
-      {
-        "url": "https://joshuamorris.info/feed.xml",
-        "type": "application/rss+xml",
-        "title": "Joshua Morris feed"
-      },
-      {
-        "url": "https://joshuamorris.info/feed.json",
-        "type": "application/feed+json",
-        "title": "Joshua Morris JSON Feed"
-      }
-    ],
-    "elsewhere": [
-      {
-        "url": "https://github.com/JoshuaMorris",
-        "network": "github",
-        "label": "GitHub"
-      },
-      {
-        "url": "https://www.linkedin.com/in/~joshuamorris",
-        "network": "linkedin",
-        "label": "LinkedIn"
-      },
-      {
-        "url": "https://x.com/TheWoollyBully",
-        "network": "x",
-        "label": "X"
-      },
-      {
-        "url": "https://bsky.app/profile/joshuamorris.info",
-        "network": "bluesky",
-        "label": "Bluesky"
       }
     ]
   },

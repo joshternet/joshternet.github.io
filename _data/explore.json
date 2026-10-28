@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-28T01:24:02.948Z",
-  "participant_count": 7,
-  "community_count": 231,
-  "publication_count": 772,
+  "generated_at": "2026-10-28T16:03:34.492Z",
+  "participant_count": 6,
+  "community_count": 118,
+  "publication_count": 506,
   "connection_count": 2,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
@@ -24,92 +24,19 @@
       "neighborhoods": [],
       "image": "",
       "image_origin": ""
-    },
-    {
-      "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-      "title": "Worth Wandering: Pippin Barr",
-      "summary": "An independent game designer who has spent more than a decade making wonderfully strange experiments out of familiar video games, performance art, office work, Greek mythology, empty software projects and the simple question of what happens when you change the rules.",
-      "published_at": "2026-10-23T14:30:00.000Z",
-      "content_type": "article",
-      "language": "en",
-      "site_origin": "https://joshuamorris.info",
-      "site_title": "Joshua Morris",
-      "domain": "joshuamorris.info",
-      "tags": [
-        {
-          "slug": "creative-coding",
-          "label": "creative coding"
-        },
-        {
-          "slug": "digital-art",
-          "label": "digital art"
-        },
-        {
-          "slug": "experimental-game",
-          "label": "experimental games"
-        },
-        {
-          "slug": "game-design",
-          "label": "game design"
-        },
-        {
-          "slug": "interactive-art",
-          "label": "interactive art"
-        },
-        {
-          "slug": "javascript",
-          "label": "javascript"
-        },
-        {
-          "slug": "play",
-          "label": "play"
-        }
-      ],
-      "neighborhoods": [
-        {
-          "slug": "creative-coding",
-          "label": "creative coding"
-        },
-        {
-          "slug": "digital-art",
-          "label": "digital art"
-        },
-        {
-          "slug": "experimental-game",
-          "label": "experimental games"
-        },
-        {
-          "slug": "game-design",
-          "label": "game design"
-        },
-        {
-          "slug": "interactive-art",
-          "label": "interactive art"
-        },
-        {
-          "slug": "javascript",
-          "label": "javascript"
-        },
-        {
-          "slug": "play",
-          "label": "play"
-        }
-      ],
-      "image": "/assets/activity/posters/7d8c4492ae15e8df2e1f400a9408facb2404d511697762d2ffad7f762ed4c372.webp",
-      "image_origin": ""
     }
   ],
   "neighborhood": {
-    "slug": "space",
-    "label": "space",
-    "member_count": 2
+    "slug": "tutorial",
+    "label": "tutorial",
+    "member_count": 1
   },
   "connection": {
     "from": "https://joshuamorris.info",
     "to": "https://joshternet.org",
     "relation": "content-link",
     "label": "linked to",
-    "from_title": "Joshua Morris",
+    "from_title": "https://joshuamorris.info",
     "to_title": "Joshternet",
     "href": "https://joshternet.org/",
     "page": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
