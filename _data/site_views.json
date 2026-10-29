@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-29T14:21:06.986Z",
+  "generated_at": "2026-10-29T22:44:09.840Z",
   "sites": [
     {
       "origin": "https://joshghent.com",
@@ -156,7 +156,16 @@
         "image_origin": "https://v1.screenshot.11ty.dev"
       },
       "outgoing": [],
-      "incoming": [],
+      "incoming": [
+        {
+          "from": "https://joshuamorris.info",
+          "relation": "content-link",
+          "label": "linked to",
+          "href": "https://joshghent.com/?utm_source=joshuamorris.info&utm_medium=referral",
+          "page": "https://joshuamorris.info/friends/",
+          "evidence_count": 1
+        }
+      ],
       "coverage": {
         "pages_discovered": 80,
         "pages_fetched": 80,
@@ -164,7 +173,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-29T14:19:19.419Z"
+      "crawled_at": "2026-10-29T22:42:53.487Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -479,7 +488,16 @@
         "image_origin": ""
       },
       "outgoing": [],
-      "incoming": [],
+      "incoming": [
+        {
+          "from": "https://joshuamorris.info",
+          "relation": "content-link",
+          "label": "linked to",
+          "href": "https://joshmuller.ca/?utm_source=joshuamorris.info&utm_medium=referral",
+          "page": "https://joshuamorris.info/friends/",
+          "evidence_count": 1
+        }
+      ],
       "coverage": {
         "pages_discovered": 80,
         "pages_fetched": 80,
@@ -487,7 +505,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-29T14:19:19.419Z"
+      "crawled_at": "2026-10-29T22:42:53.487Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -523,7 +541,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-29T14:19:19.419Z"
+      "crawled_at": "2026-10-29T22:42:53.487Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -751,7 +769,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-29T14:19:19.419Z"
+      "crawled_at": "2026-10-29T22:42:53.487Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -1360,6 +1378,10 @@
           "label": "web development"
         },
         {
+          "slug": "webgl",
+          "label": "webgl"
+        },
+        {
           "slug": "workplace",
           "label": "workplace"
         },
@@ -1393,6 +1415,22 @@
       },
       "outgoing": [
         {
+          "to": "https://joshghent.com",
+          "relation": "content-link",
+          "label": "linked to",
+          "href": "https://joshghent.com/?utm_source=joshuamorris.info&utm_medium=referral",
+          "page": "https://joshuamorris.info/friends/",
+          "evidence_count": 1
+        },
+        {
+          "to": "https://joshmuller.ca",
+          "relation": "content-link",
+          "label": "linked to",
+          "href": "https://joshmuller.ca/?utm_source=joshuamorris.info&utm_medium=referral",
+          "page": "https://joshuamorris.info/friends/",
+          "evidence_count": 1
+        },
+        {
           "to": "https://joshternet.org",
           "relation": "content-link",
           "label": "linked to",
@@ -1417,7 +1455,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-29T14:19:19.419Z"
+      "crawled_at": "2026-10-29T22:42:53.487Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -1643,7 +1681,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-29T14:19:19.419Z"
+      "crawled_at": "2026-10-29T22:42:53.487Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -1839,7 +1877,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-29T14:19:19.419Z",
+      "crawled_at": "2026-10-29T22:42:53.487Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,

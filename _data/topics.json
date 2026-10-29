@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-29T20:17:54.188Z",
-  "community_count": 231,
+  "generated_at": "2026-10-29T22:42:53.487Z",
+  "community_count": 232,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
@@ -90,16 +90,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/09/ai-helped-turn-a-wechat-bug-into-a-zero-click-worm-in-about-a-week/",
               "title": "",
               "source": "microformat:p-category"
@@ -126,6 +116,16 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/09/20/voyagers-doctor-is-the-ai-future-i-hope-we-have-to-think-about/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/23/apple-finally-made-the-xcode-project-file-understandable/",
               "title": "",
               "source": "microformat:p-category"
             }
@@ -191,11 +191,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/09/ai-helped-turn-a-wechat-bug-into-a-zero-click-worm-in-about-a-week/",
               "title": "",
@@ -282,11 +277,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/09/ai-helped-turn-a-wechat-bug-into-a-zero-click-worm-in-about-a-week/",
               "title": "",
@@ -523,12 +513,17 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/09/harriet-mena-hill-paints-a-demolished-estate-onto-its-own-concrete/",
+              "url": "https://joshuamorris.info/notes/2026/09/09/tristan-eaton-makes-walls-feel-too-small-for-the-art/",
               "title": "",
               "source": "microformat:p-category"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/09/09/tristan-eaton-makes-walls-feel-too-small-for-the-art/",
+              "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
               "title": "",
               "source": "microformat:p-category"
             },
@@ -569,11 +564,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/09/harriet-mena-hill-paints-a-demolished-estate-onto-its-own-concrete/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/09/matthew-grabelsky-turns-the-subway-into-modern-mythology/",
               "title": "",
@@ -1081,6 +1071,16 @@
           "membership": "declared",
           "pages": [
             {
+              "url": "https://joshuamorris.info/notes/2026/10/25/firefox-is-quietly-making-the-web-more-capable/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -1088,7 +1088,7 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "topic-hub:link"],
+      "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
       "last_changed_at": "2026-10-28T21:05:12.557Z",
       "active": true
@@ -1295,12 +1295,17 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/07/jan-conroy-saw-what-others-missed/",
+              "url": "https://joshuamorris.info/notes/2026/09/13/ai-is-making-code-cheap-it-is-making-judgment-more-valuable/",
               "title": "",
               "source": "microformat:p-category"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/09/13/ai-is-making-code-cheap-it-is-making-judgment-more-valuable/",
+              "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
               "title": "",
               "source": "microformat:p-category"
             },
@@ -1589,16 +1594,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/08/my-small-answer-to-the-friendship-recession-is-to-tell-my-friends-they-matter/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/09/harriet-mena-hill-paints-a-demolished-estate-onto-its-own-concrete/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/09/tristan-eaton-makes-walls-feel-too-small-for-the-art/",
               "title": "",
               "source": "microformat:p-category"
@@ -1698,16 +1693,11 @@
               "url": "https://joshuamorris.info/notes/2026/09/28/sometimes-i-dont-want-an-llm-to-answer-me/",
               "title": "",
               "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
             }
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
       "last_changed_at": "2026-10-28T21:05:12.557Z",
       "active": true
@@ -1723,11 +1713,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/09/my-box-of-cables-is-thirty-years-of-backwards-compatibility/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/26/the-work-required-to-make-something-look-simple/",
               "title": "",
@@ -1766,16 +1751,11 @@
               "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
               "title": "",
               "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
             }
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
       "last_changed_at": "2026-10-28T21:05:12.557Z",
       "active": true
@@ -1861,16 +1841,11 @@
               "url": "https://joshuamorris.info/notes/2026/09/26/having-regulations-is-not-the-same-thing-as-having-accountability/",
               "title": "",
               "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/topics/",
-              "title": "",
-              "source": "topic-hub:link"
             }
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
       "last_changed_at": "2026-10-28T21:05:12.557Z",
       "active": true
@@ -1925,6 +1900,11 @@
               "source": "microformat:p-category"
             },
             {
+              "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -1950,6 +1930,11 @@
           "pages": [
             {
               "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
               "title": "",
               "source": "microformat:p-category"
             },
@@ -2079,6 +2064,11 @@
           "membership": "declared",
           "pages": [
             {
+              "url": "https://joshuamorris.info/notes/2026/10/25/firefox-is-quietly-making-the-web-more-capable/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -2086,7 +2076,7 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "topic-hub:page"],
+      "sources": ["microformat:p-category", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-28T21:05:12.557Z",
       "active": true
@@ -2328,11 +2318,6 @@
           "pages": [
             {
               "url": "https://joshuamorris.info/notes/2026/09/09/matthew-grabelsky-turns-the-subway-into-modern-mythology/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/09/my-box-of-cables-is-thirty-years-of-backwards-compatibility/",
               "title": "",
               "source": "microformat:p-category"
             },
@@ -2814,11 +2799,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/25/worth-wandering-bartosz-ciechanowski/",
               "title": "",
@@ -3817,11 +3797,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/08/my-small-answer-to-the-friendship-recession-is-to-tell-my-friends-they-matter/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -3829,7 +3804,7 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
       "last_changed_at": "2026-10-28T21:05:12.557Z",
       "active": true
@@ -4533,11 +4508,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/08/my-small-answer-to-the-friendship-recession-is-to-tell-my-friends-they-matter/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/10/keep-the-internet-funky/",
               "title": "",
               "source": "microformat:p-category"
@@ -4571,6 +4541,11 @@
               "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/09/worth-wandering-camerons-world/",
+              "title": "",
+              "source": "microformat:p-category"
             }
           ]
         }
@@ -4591,11 +4566,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/08/my-small-answer-to-the-friendship-recession-is-to-tell-my-friends-they-matter/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/10/keep-the-internet-funky/",
               "title": "",
@@ -4628,6 +4598,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/02/worth-wandering-low-tech-magazine/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/09/worth-wandering-camerons-world/",
               "title": "",
               "source": "microformat:p-category"
             }
@@ -4663,11 +4638,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/09/my-box-of-cables-is-thirty-years-of-backwards-compatibility/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/15/the-fuel-crisis-is-exposing-how-little-spare-capacity-we-have-left/",
               "title": "",
@@ -4780,11 +4750,21 @@
               "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
       "last_changed_at": "2026-10-28T21:05:12.557Z",
       "active": true
@@ -4883,11 +4863,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/09/my-box-of-cables-is-thirty-years-of-backwards-compatibility/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
               "title": "",
               "source": "microformat:p-category"
@@ -4949,6 +4924,16 @@
               "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/25/firefox-is-quietly-making-the-web-more-capable/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         }
@@ -5801,7 +5786,7 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/07/jan-conroy-saw-what-others-missed/",
+              "url": "https://joshuamorris.info/notes/2026/10/22/what-i-learned-from-susanne-rockwell/",
               "title": "",
               "source": "microformat:p-category"
             },
@@ -6534,11 +6519,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/09/my-box-of-cables-is-thirty-years-of-backwards-compatibility/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -6546,7 +6526,7 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
       "last_changed_at": "2026-10-28T21:05:12.557Z",
       "active": true
@@ -6562,11 +6542,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/09/harriet-mena-hill-paints-a-demolished-estate-onto-its-own-concrete/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/09/matthew-grabelsky-turns-the-subway-into-modern-mythology/",
               "title": "",
@@ -7723,14 +7698,19 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/07/jan-conroy-saw-what-others-missed/",
+              "url": "https://joshuamorris.info/notes/2026/10/22/what-i-learned-from-susanne-rockwell/",
               "title": "",
               "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/topics/",
+              "title": "",
+              "source": "topic-hub:link"
             }
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
       "last_changed_at": "2026-10-28T21:05:12.557Z",
       "active": true
@@ -8106,11 +8086,6 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/09/ai-helped-turn-a-wechat-bug-into-a-zero-click-worm-in-about-a-week/",
               "title": "",
@@ -9557,6 +9532,16 @@
               "source": "microformat:p-category"
             },
             {
+              "url": "https://joshuamorris.info/notes/2026/10/25/firefox-is-quietly-making-the-web-more-capable/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
               "url": "https://joshuamorris.info/topics/",
               "title": "",
               "source": "topic-hub:link"
@@ -9619,6 +9604,30 @@
       "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-22T18:33:03.284Z",
       "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true
+    },
+    {
+      "slug": "webgl",
+      "label": "webgl",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category"],
+      "first_seen_at": "2026-10-29T22:42:53.487Z",
+      "last_changed_at": "2026-10-29T22:42:53.487Z",
       "active": true
     },
     {
@@ -9812,17 +9821,17 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/18/worth-wandering-robin-sloan/",
               "title": "",
               "source": "microformat:p-category"
             },
             {
               "url": "https://joshuamorris.info/notes/2026/09/29/the-internet-saw-a-few-seconds-and-invented-the-rest/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/22/what-i-learned-from-susanne-rockwell/",
               "title": "",
               "source": "microformat:p-category"
             },
