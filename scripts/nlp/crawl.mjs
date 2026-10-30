@@ -54,6 +54,21 @@ const STATIC_PATH =
   /\.(?:css|js|mjs|map|png|jpe?g|gif|webp|svg|ico|xml|json|txt|zip|woff2?)$/i;
 
 /**
+ * Per-photo HTML pages (joshbeard-style galleries) starve the crawl budget.
+ * Keep album indexes; skip individual image attachment pages.
+ * @param {string} url
+ * @returns {boolean}
+ */
+export function isPhotoAttachmentUrl(url) {
+  try {
+    const path = new URL(url).pathname;
+    return /\/photos\/(?:all\/)?(?:\d{4}\/)?[^/]*img_[^/]+\.html?$/i.test(path);
+  } catch {
+    return false;
+  }
+}
+
+/**
  * @typedef {{
  *   url: string,
  *   title: string,
@@ -509,6 +524,11 @@ export async function crawlOrigin(origin, options = {}) {
     const next = queue.shift();
 
     if (!next || seen.has(next.url) || next.depth > MAX_CRAWL_DEPTH) {
+      continue;
+    }
+
+    if (isPhotoAttachmentUrl(next.url)) {
+      seen.add(next.url);
       continue;
     }
 

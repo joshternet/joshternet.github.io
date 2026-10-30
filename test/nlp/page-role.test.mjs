@@ -104,6 +104,9 @@ test("classifyPageRole: about paths", () => {
   assert.equal(classifyPageRole("https://a.example/about"), "about");
   assert.equal(classifyPageRole("https://a.example/bio"), "about");
   assert.equal(classifyPageRole("https://a.example/profile"), "about");
+  assert.equal(classifyPageRole("https://joshbeard.com/health/"), "about");
+  assert.equal(classifyPageRole("https://joshbeard.com/homelab/"), "about");
+  assert.equal(classifyPageRole("https://joshbeard.com/me/"), "about");
 });
 
 test("classifyPageRole: project paths (portfolio child)", () => {
@@ -174,7 +177,9 @@ test("classifyPageRole: schemaTypes BlogPosting → article", () => {
 
 test("classifyPageRole: schemaTypes AboutPage → about", () => {
   assert.equal(
-    classifyPageRole("https://a.example/me", { schemaTypes: ["AboutPage"] }),
+    classifyPageRole("https://a.example/mystery-about", {
+      schemaTypes: ["AboutPage"],
+    }),
     "about",
   );
 });
@@ -190,6 +195,10 @@ test("classifyPageRole: blog/posts path without schema → article", () => {
   );
   assert.equal(classifyPageRole("https://a.example/notes/2026-01"), "article");
   assert.equal(classifyPageRole("https://a.example/essays/on-tech"), "article");
+  assert.equal(
+    classifyPageRole("https://joshbeard.com/tips/mutt-1password/"),
+    "article",
+  );
 });
 
 test("classifyPageRole: unrecognised path → unknown", () => {

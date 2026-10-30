@@ -61,6 +61,16 @@ export function classifyPageRole(url, hints = {}) {
     return "about";
   }
 
+  // Indieweb / personal essay pages often lack /blog/ URL shape but still
+  // carry publisher keywords and prose worth heuristic extraction.
+  if (
+    /^\/(me|now|uses|health|homelab|workouts|social|elsewhere|colophon|neighborhood|interests|site)(?:\/|$|\.html?$)/.test(
+      lower,
+    )
+  ) {
+    return "about";
+  }
+
   if (/^\/(portfolio|work|projects?)\/[^/]+$/.test(lower)) {
     return "project";
   }
@@ -93,7 +103,7 @@ export function classifyPageRole(url, hints = {}) {
     return "about";
   }
 
-  if (/\/(posts?|blog|notes?|essays?)\//.test(lower)) {
+  if (/\/(posts?|blog|notes?|essays?|tips?)\//.test(lower)) {
     return "article";
   }
 

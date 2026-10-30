@@ -17,6 +17,7 @@ import {
   externalOutboundLinks,
   identitySlashSeedUrls,
   isContentIndexUrl,
+  isPhotoAttachmentUrl,
   isTopicHubIndexUrl,
   topicHubChildUrls,
   topicHubPrefix,
@@ -257,6 +258,27 @@ test("identitySlashSeedUrls: covers indieweb slash pages", () => {
 test("identitySlashSeedUrls: empty/invalid origin returns empty array", () => {
   assert.deepEqual(identitySlashSeedUrls(""), []);
   assert.deepEqual(identitySlashSeedUrls("not-a-url"), []);
+});
+
+test("isPhotoAttachmentUrl: skips per-image gallery pages only", () => {
+  assert.equal(
+    isPhotoAttachmentUrl(
+      "https://joshbeard.com/photos/2026/IMG_1811_jpeg.html",
+    ),
+    true,
+  );
+  assert.equal(
+    isPhotoAttachmentUrl(
+      "https://joshbeard.com/photos/all/2026/IMG_1811_jpeg.html",
+    ),
+    true,
+  );
+  assert.equal(isPhotoAttachmentUrl("https://joshbeard.com/photos/"), false);
+  assert.equal(
+    isPhotoAttachmentUrl("https://joshbeard.com/photos/2026/"),
+    false,
+  );
+  assert.equal(isPhotoAttachmentUrl("not-a-url"), false);
 });
 
 test("externalOutboundLinks: absolutizes and keeps only cross-origin http(s)", () => {
@@ -514,6 +536,53 @@ test("crawlOrigin: uses sitemap.xml when available", async () => {
       result.pages.some(
         (p) => p.url.includes("sitemap") || p.url.includes("post-from-sitemap"),
       ),
+    );
+  } finally {
+    restore();
+  }
+});
+
+test("crawlOrigin: skips per-photo attachment URLs from the sitemap", async () => {
+  const origin = "https://joshbeard.example";
+  const cache = dnsCache(["joshbeard.example"]);
+  const photo = `${origin}/photos/2026/IMG_1811_jpeg.html`;
+  const sitemap = `<?xml version="1.0"?>
+    <urlset>
+      <url><loc>${origin}/health/</loc></url>
+      <url><loc>${photo}</loc></url>
+    </urlset>`;
+  install();
+  try {
+    /** @type {string[]} */
+    const fetched = [];
+    globalThis.fetch = async (url) => {
+      const urlStr = String(url);
+      fetched.push(urlStr);
+      if (urlStr.includes("sitemap.xml")) {
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "application/xml" }),
+          arrayBuffer: async () => Buffer.from(sitemap),
+        };
+      }
+      return {
+        ok: true,
+        status: 200,
+        headers: new Headers({ "content-type": "text/html" }),
+        arrayBuffer: async () =>
+          Buffer.from(`<html><body><a href="${photo}">photo</a></body></html>`),
+      };
+    };
+    const result = await crawlOrigin(origin, { cache });
+    assert.ok(result.pages.some((page) => page.url.includes("/health/")));
+    assert.equal(
+      result.pages.some((page) => page.url.includes("IMG_1811")),
+      false,
+    );
+    assert.equal(
+      fetched.some((url) => url.includes("IMG_1811")),
+      false,
     );
   } finally {
     restore();

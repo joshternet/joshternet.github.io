@@ -13,6 +13,7 @@
 
 ### Changed
 
+- NLP reads unquoted `meta` name/property/content attributes, counts discovery-only publisher keywords as declared (still not community-eligible), classifies personal essay/identity paths and `/tips/` for heuristics, and skips per-photo gallery HTML so sites like joshbeard.com yield real pages/declared/signals instead of an image-page crawl.
 - Network/NLP coverage gaps closed: unreachable slash-page dedupe and greeting/title dead branches removed; tests cover connection href failures, GitHub elsewhere edge cases, personal-domain title fallbacks, crawl seed guards, and hub URL parse failures.
 - Connections site cards keep the screenshot, identity, connection lists, and empty-state note on one horizontal grid so empty notes and edge lists align with the title column instead of sitting under the thumbnail.
 - Connections graph footer keeps filter chips and the line key on one shared row height; the key divider only appears beside filters.

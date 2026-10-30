@@ -558,6 +558,32 @@ test("subjectsFromHtml: keywords meta adds each keyword as a subject (lines 96-9
   assert.ok(subjects.find((s) => s.slug === "design"));
 });
 
+test("subjectsFromHtml: unquoted meta keywords from minified HTML", () => {
+  const html = `<!doctype html><html lang=en><meta name=keywords content="health,self-improvement,cycling"><meta name=description content="Health notes">`;
+  const subjects = subjectsFromHtml(html, "https://joshbeard.com/health/");
+  assert.ok(subjects.find((s) => s.slug === "health"));
+  assert.ok(subjects.find((s) => s.slug === "self-improvement"));
+  assert.ok(subjects.find((s) => s.slug === "cycling"));
+});
+
+test("splitDeclaredAndSignals: discovery-only declared keywords stay in declared_topics", () => {
+  const subjects = subjectsFromHtml(
+    `<meta name=keywords content="homelab,proxmox">`,
+    "https://joshbeard.com/homelab/",
+  );
+  const { declared_topics, subject_signals } =
+    splitDeclaredAndSignals(subjects);
+  assert.ok(declared_topics.length >= 2);
+  assert.equal(
+    declared_topics.every((topic) => topic.community_eligible === false),
+    true,
+  );
+  assert.equal(
+    subject_signals.some((signal) => signal.slug === "homelab"),
+    false,
+  );
+});
+
 // ─── subjectsFromHtml: topic-hub link with invalid href fires L111-112 ────────
 
 test("subjectsFromHtml: topic-hub link with invalid href is skipped (lines 111-112)", () => {

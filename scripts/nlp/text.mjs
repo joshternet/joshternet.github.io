@@ -249,39 +249,64 @@ export function parseHtmlRegions(html) {
 }
 
 /**
+ * All content values for meta tags whose name or property matches `key`.
+ * Accepts quoted or unquoted attributes (minified participant HTML).
+ * @param {string} html
+ * @param {string} key
+ * @returns {string[]}
+ */
+export function metaContents(html, key) {
+  const source = typeof html === "string" ? html : "";
+  const wanted = String(key || "")
+    .trim()
+    .toLocaleLowerCase("en-US");
+
+  if (!wanted) {
+    return [];
+  }
+
+  /** @type {string[]} */
+  const values = [];
+  const tagPattern = /<meta\b([^>]*)>/gi;
+  let match;
+
+  while ((match = tagPattern.exec(source))) {
+    const attrs = match[1] || "";
+    const property = htmlAttributeValue(attrs, "property")
+      .trim()
+      .toLocaleLowerCase("en-US");
+    const name = htmlAttributeValue(attrs, "name")
+      .trim()
+      .toLocaleLowerCase("en-US");
+
+    if (property !== wanted && name !== wanted) {
+      continue;
+    }
+
+    const raw = htmlAttributeValue(attrs, "content");
+
+    if (!raw) {
+      continue;
+    }
+
+    const value = decodeHtmlEntities(unwrapXmlCdata(raw)).trim();
+
+    if (value) {
+      values.push(value);
+    }
+  }
+
+  return values;
+}
+
+/**
  * Content of a meta tag matched by property or name, attribute order aside.
  * @param {string} html
  * @param {string} key
  * @returns {string}
  */
 export function metaContent(html, key) {
-  const source = typeof html === "string" ? html : "";
-  const name = String(key || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
-  if (!name) {
-    return "";
-  }
-
-  const patterns = [
-    new RegExp(
-      `<meta\\b[^>]*\\b(?:property|name)=["']${name}["'][^>]*\\bcontent=["']([^"']*)["']`,
-      "i",
-    ),
-    new RegExp(
-      `<meta\\b[^>]*\\bcontent=["']([^"']*)["'][^>]*\\b(?:property|name)=["']${name}["']`,
-      "i",
-    ),
-  ];
-
-  for (const pattern of patterns) {
-    const value = pattern.exec(source)?.[1];
-
-    if (value) {
-      return decodeHtmlEntities(unwrapXmlCdata(value)).trim();
-    }
-  }
-
-  return "";
+  return metaContents(html, key)[0] || "";
 }
 
 /**

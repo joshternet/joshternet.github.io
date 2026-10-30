@@ -11,6 +11,7 @@ import {
   htmlAttributeValue,
   isEnglishLanguage,
   metaContent,
+  metaContents,
   normalizeExtractedText,
   parseHtmlRegions,
   posterImageFromHtml,
@@ -372,6 +373,19 @@ test("htmlAttributeValue returns empty for missing attrs or name", () => {
   assert.equal(htmlAttributeValue('href="/x" class="a"', "href"), "/x");
   assert.equal(htmlAttributeValue("href='/y' class='z'", "href"), "/y");
   assert.equal(htmlAttributeValue("href=/z class=plain", "href"), "/z");
+});
+
+test("metaContent reads unquoted name/property attributes", () => {
+  const html = `<meta name=keywords content="health,cycling"><meta property=og:title content="Health">`;
+  assert.equal(metaContent(html, "keywords"), "health,cycling");
+  assert.equal(metaContent(html, "og:title"), "Health");
+  assert.deepEqual(metaContents(html, "keywords"), ["health,cycling"]);
+});
+
+test("metaContents skips unmatched keys and empty content", () => {
+  const html = `<meta><meta name=keywords content=""><meta name=description content="Only description">`;
+  assert.deepEqual(metaContents(html, "keywords"), []);
+  assert.deepEqual(metaContents(html, "description"), ["Only description"]);
 });
 
 test("parseHtmlRegions: single-quoted href is extracted", () => {
