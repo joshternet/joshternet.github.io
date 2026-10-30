@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T20:56:56.604Z",
+  "generated_at": "2026-10-30T21:26:24.317Z",
   "sites": [
     {
       "origin": "https://joshbeard.com",
@@ -19,7 +19,16 @@
       "community_topics": [],
       "recent_content": null,
       "outgoing": [],
-      "incoming": [],
+      "incoming": [
+        {
+          "from": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshbeard.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 2
+        }
+      ],
       "coverage": {
         "pages_discovered": 64,
         "pages_fetched": 64,
@@ -27,7 +36,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T20:55:12.915Z"
+      "crawled_at": "2026-10-30T21:25:20.995Z"
     },
     {
       "origin": "https://joshghent.com",
@@ -89,6 +98,10 @@
         {
           "slug": "design",
           "label": "design"
+        },
+        {
+          "slug": "developer-musing",
+          "label": "developer musings"
         },
         {
           "slug": "devops",
@@ -193,6 +206,14 @@
       "outgoing": [],
       "incoming": [
         {
+          "from": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshghent.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 2
+        },
+        {
           "from": "https://joshuamorris.info",
           "relation": "content-link",
           "label": "linked to",
@@ -208,7 +229,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T20:55:12.915Z"
+      "crawled_at": "2026-10-30T21:25:20.995Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -537,6 +558,14 @@
       "outgoing": [],
       "incoming": [
         {
+          "from": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshmuller.ca/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 4
+        },
+        {
           "from": "https://joshuamorris.info",
           "relation": "content-link",
           "label": "linked to",
@@ -552,7 +581,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T20:55:12.915Z"
+      "crawled_at": "2026-10-30T21:25:20.995Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -568,9 +597,95 @@
           "label": "GitHub"
         }
       ],
-      "community_topics": [],
+      "community_topics": [
+        {
+          "slug": "developer-musing",
+          "label": "developer musings"
+        },
+        {
+          "slug": "docs",
+          "label": "docs"
+        },
+        {
+          "slug": "field-recording",
+          "label": "field recording"
+        },
+        {
+          "slug": "radio-aporee",
+          "label": "radio aporee"
+        },
+        {
+          "slug": "software-engineer",
+          "label": "software engineer"
+        }
+      ],
       "recent_content": null,
-      "outgoing": [],
+      "outgoing": [
+        {
+          "to": "https://joshbeard.com",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshbeard.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 2
+        },
+        {
+          "to": "https://joshghent.com",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshghent.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 2
+        },
+        {
+          "to": "https://joshmuller.ca",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshmuller.ca/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 4
+        },
+        {
+          "to": "https://joshtronic.com",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshtronic.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 2
+        },
+        {
+          "to": "https://joshua.seigler.net",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshua.seigler.net/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 2
+        },
+        {
+          "to": "https://joshuamorris.info",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshuamorris.info/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 4
+        },
+        {
+          "to": "https://www.joshcanhelp.com",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://www.joshcanhelp.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 2
+        },
+        {
+          "to": "https://www.joshuabaker.com",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://www.joshuabaker.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 2
+        }
+      ],
       "incoming": [
         {
           "from": "https://joshua.seigler.net",
@@ -590,13 +705,13 @@
         }
       ],
       "coverage": {
-        "pages_discovered": 29,
-        "pages_fetched": 29,
+        "pages_discovered": 30,
+        "pages_fetched": 30,
         "fetch_limit": 80,
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T20:55:12.915Z"
+      "crawled_at": "2026-10-30T21:25:20.995Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -813,6 +928,14 @@
       "outgoing": [],
       "incoming": [
         {
+          "from": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshtronic.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 2
+        },
+        {
           "from": "https://joshuamorris.info",
           "relation": "content-link",
           "label": "linked to",
@@ -828,7 +951,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T20:55:12.915Z"
+      "crawled_at": "2026-10-30T21:25:20.995Z"
     },
     {
       "origin": "https://joshua.seigler.net",
@@ -912,6 +1035,10 @@
           "label": "software"
         },
         {
+          "slug": "software-engineer",
+          "label": "software engineer"
+        },
+        {
           "slug": "trade",
           "label": "trade"
         },
@@ -949,7 +1076,16 @@
           "evidence_count": 1
         }
       ],
-      "incoming": [],
+      "incoming": [
+        {
+          "from": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshua.seigler.net/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 2
+        }
+      ],
       "coverage": {
         "pages_discovered": 65,
         "pages_fetched": 65,
@@ -957,7 +1093,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T20:55:12.915Z"
+      "crawled_at": "2026-10-30T21:25:20.995Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -1434,6 +1570,10 @@
           "label": "python"
         },
         {
+          "slug": "radio-aporee",
+          "label": "radio aporee"
+        },
+        {
           "slug": "regulation",
           "label": "regulation"
         },
@@ -1639,7 +1779,16 @@
           "evidence_count": 1
         }
       ],
-      "incoming": [],
+      "incoming": [
+        {
+          "from": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshuamorris.info/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 4
+        }
+      ],
       "coverage": {
         "pages_discovered": 80,
         "pages_fetched": 80,
@@ -1647,7 +1796,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T20:55:12.915Z"
+      "crawled_at": "2026-10-30T21:25:20.995Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -1865,7 +2014,16 @@
         "image_origin": "https://www.joshcanhelp.com"
       },
       "outgoing": [],
-      "incoming": [],
+      "incoming": [
+        {
+          "from": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://www.joshcanhelp.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 2
+        }
+      ],
       "coverage": {
         "pages_discovered": 80,
         "pages_fetched": 80,
@@ -1873,7 +2031,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T20:55:12.915Z"
+      "crawled_at": "2026-10-30T21:25:20.995Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -2061,7 +2219,16 @@
         "image_origin": ""
       },
       "outgoing": [],
-      "incoming": [],
+      "incoming": [
+        {
+          "from": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://www.joshuabaker.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 2
+        }
+      ],
       "coverage": {
         "pages_discovered": 27,
         "pages_fetched": 27,
@@ -2069,7 +2236,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T20:55:12.915Z",
+      "crawled_at": "2026-10-30T21:25:20.995Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,

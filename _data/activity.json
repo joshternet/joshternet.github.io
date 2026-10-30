@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T20:56:56.604Z",
+  "generated_at": "2026-10-30T21:26:24.317Z",
   "window_days": 7,
   "primary_count": 5,
   "item_count": 846,
@@ -66,8 +66,26 @@
       "site_origin": "https://joshua.seigler.net",
       "site_title": "Hello!",
       "domain": "joshua.seigler.net",
-      "tags": [],
-      "neighborhoods": [],
+      "tags": [
+        {
+          "slug": "docs",
+          "label": "docs"
+        },
+        {
+          "slug": "field-recording",
+          "label": "field recording"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "docs",
+          "label": "docs"
+        },
+        {
+          "slug": "field-recording",
+          "label": "field recording"
+        }
+      ],
       "image": "/assets/activity/posters/b97f97fbe49e00bdac92412cb1dc50549767dd9d4d56366a2ba8aa5f7634d5c1.webp",
       "image_origin": ""
     },

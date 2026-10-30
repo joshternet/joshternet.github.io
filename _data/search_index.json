@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T20:56:56.604Z",
-  "document_count": 1045,
+  "generated_at": "2026-10-30T21:26:24.317Z",
+  "document_count": 1046,
   "documents": [
     {
       "type": "site",
@@ -519,7 +519,7 @@
     {
       "type": "topic",
       "title": "docs",
-      "summary": "2 participating sites",
+      "summary": "3 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/docs/",
@@ -654,7 +654,7 @@
     {
       "type": "topic",
       "title": "field recording",
-      "summary": "1 participating sites",
+      "summary": "2 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/field-recording/",
@@ -1388,6 +1388,15 @@
       "origin": "",
       "url": "/topics/quote/",
       "topics": ["quote", "quotes"]
+    },
+    {
+      "type": "topic",
+      "title": "radio aporee",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/radio-aporee/",
+      "topics": ["radio-aporee", "radio aporee"]
     },
     {
       "type": "topic",
@@ -6390,7 +6399,7 @@
       "domain": "joshua.seigler.net",
       "origin": "https://joshua.seigler.net",
       "url": "https://joshternet.org/",
-      "topics": [],
+      "topics": ["docs", "field recording"],
       "site_title": "Hello!",
       "published_at": "2026-10-30T05:51:20.000Z",
       "image": "/assets/activity/posters/b97f97fbe49e00bdac92412cb1dc50549767dd9d4d56366a2ba8aa5f7634d5c1.webp",

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T20:55:12.915Z",
-  "community_count": 243,
+  "generated_at": "2026-10-30T21:25:20.995Z",
+  "community_count": 246,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
@@ -609,15 +609,6 @@
       "first_seen_at": "2026-10-28T21:05:12.557Z",
       "last_changed_at": "2026-10-28T21:05:12.557Z",
       "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ],
       "relationships": {
         "broader": [],
         "related": ["photography"]
@@ -2554,6 +2545,63 @@
       "active": true
     },
     {
+      "slug": "developer-musing",
+      "label": "developer musings",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/work/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshternet.org/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshternet.org/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": ["visible-text"],
+      "first_seen_at": "2026-10-30T21:25:20.995Z",
+      "last_changed_at": "2026-10-30T21:25:20.995Z",
+      "active": true
+    },
+    {
       "slug": "developer-tool",
       "label": "developer tools",
       "member_count": 1,
@@ -2807,7 +2855,7 @@
     {
       "slug": "docs",
       "label": "docs",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
         {
           "origin": "https://joshmuller.ca",
@@ -2821,11 +2869,29 @@
               "source": "article:section"
             }
           ]
+        },
+        {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshternet.org/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshternet.org/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
         }
       ],
-      "sources": ["article:section"],
+      "sources": ["article:section", "microformat:p-category"],
       "first_seen_at": "2026-10-30T20:55:12.915Z",
-      "last_changed_at": "2026-10-30T20:55:12.915Z",
+      "last_changed_at": "2026-10-30T21:25:20.995Z",
       "active": true,
       "related_discoveries": [
         {
@@ -3283,6 +3349,13 @@
       "active": true,
       "related_discoveries": [
         {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
           "origin": "https://www.joshcanhelp.com",
           "domain": "www.joshcanhelp.com",
           "title": "Josh Can Help",
@@ -3655,8 +3728,26 @@
     {
       "slug": "field-recording",
       "label": "field recording",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshternet.org/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
+              "url": "https://joshternet.org/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -3673,7 +3764,7 @@
       ],
       "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-30T14:08:13.355Z",
-      "last_changed_at": "2026-10-30T14:08:13.355Z",
+      "last_changed_at": "2026-10-30T21:25:20.995Z",
       "active": true
     },
     {
@@ -7976,6 +8067,53 @@
       "active": true
     },
     {
+      "slug": "radio-aporee",
+      "label": "radio aporee",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshternet.org/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshternet.org/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": ["visible-text"],
+      "first_seen_at": "2026-10-30T21:25:20.995Z",
+      "last_changed_at": "2026-10-30T21:25:20.995Z",
+      "active": true
+    },
+    {
       "slug": "recetas",
       "label": "recetas",
       "member_count": 1,
@@ -9049,6 +9187,62 @@
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-03T09:36:17.761Z",
       "active": true
+    },
+    {
+      "slug": "software-engineer",
+      "label": "software engineer",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshternet.org/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshternet.org/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshua.seigler.net/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshua.seigler.net/about/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": ["visible-text"],
+      "first_seen_at": "2026-10-30T21:25:20.995Z",
+      "last_changed_at": "2026-10-30T21:25:20.995Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshtronic.com",
+          "domain": "joshtronic.com",
+          "title": "Joshtronic",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "software-engineering",
@@ -10435,6 +10629,13 @@
       "last_changed_at": "2026-10-28T21:05:12.557Z",
       "active": true,
       "related_discoveries": [
+        {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",

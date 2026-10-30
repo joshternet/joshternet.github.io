@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T20:56:56.604Z",
+  "generated_at": "2026-10-30T21:26:24.317Z",
   "overlap_count": 21,
   "pairs": [
     {
@@ -174,6 +174,10 @@
         {
           "slug": "design",
           "label": "design"
+        },
+        {
+          "slug": "docs",
+          "label": "docs"
         },
         {
           "slug": "learning",
@@ -468,6 +472,10 @@
         {
           "slug": "design",
           "label": "design"
+        },
+        {
+          "slug": "docs",
+          "label": "docs"
         },
         {
           "slug": "education",
@@ -884,6 +892,10 @@
         {
           "slug": "education",
           "label": "education"
+        },
+        {
+          "slug": "field-recording",
+          "label": "field recording"
         },
         {
           "slug": "learning",
@@ -1771,6 +1783,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Hello!",
+              "articles": [
+                {
+                  "url": "https://joshternet.org/",
+                  "title": "Link: Joshternet: An Open Network for Joshes and Independent Websites"
+                }
+              ]
+            },
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
@@ -4240,6 +4263,17 @@
                 {
                   "url": "https://joshghent.com/groundwork/",
                   "title": "/groundwork: a skill that makes any repo runnable from a fresh clone"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Hello!",
+              "articles": [
+                {
+                  "url": "https://joshternet.org/",
+                  "title": "Link: Joshternet: An Open Network for Joshes and Independent Websites"
                 }
               ]
             }
@@ -8025,6 +8059,40 @@
           ]
         },
         {
+          "slug": "docs",
+          "label": "docs",
+          "articles": [
+            {
+              "url": "https://joshternet.org/",
+              "title": "Link: Joshternet: An Open Network for Joshes and Independent Websites"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Developer Musings",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/groundwork/",
+                  "title": "/groundwork: a skill that makes any repo runnable from a fresh clone"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh's site",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "education",
           "label": "education",
           "articles": [
@@ -8080,6 +8148,29 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/25/worth-wandering-bartosz-ciechanowski/",
                   "title": "Worth Wandering: Bartosz Ciechanowski"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "field-recording",
+          "label": "field recording",
+          "articles": [
+            {
+              "url": "https://joshternet.org/",
+              "title": "Link: Joshternet: An Open Network for Joshes and Independent Websites"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
+                  "title": "Worth Wandering: Radio Aporee"
                 }
               ]
             }
@@ -9757,6 +9848,29 @@
                 {
                   "url": "https://joshtronic.com/2026/10/18/halloween-movies-watch-list-2026/",
                   "title": "Halloween Movies Watch List 2026"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "field-recording",
+          "label": "field recording",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
+              "title": "Worth Wandering: Radio Aporee"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Hello!",
+              "articles": [
+                {
+                  "url": "https://joshternet.org/",
+                  "title": "Link: Joshternet: An Open Network for Joshes and Independent Websites"
                 }
               ]
             }

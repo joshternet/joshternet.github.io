@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T20:56:56.604Z",
+  "generated_at": "2026-10-30T21:26:24.317Z",
   "participant_count": 9,
-  "community_count": 243,
+  "community_count": 246,
   "publication_count": 846,
-  "connection_count": 5,
+  "connection_count": 13,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
     "connection": "first edge after stable from, to, relation sort"
@@ -70,8 +70,26 @@
       "site_origin": "https://joshua.seigler.net",
       "site_title": "Hello!",
       "domain": "joshua.seigler.net",
-      "tags": [],
-      "neighborhoods": [],
+      "tags": [
+        {
+          "slug": "docs",
+          "label": "docs"
+        },
+        {
+          "slug": "field-recording",
+          "label": "field recording"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "docs",
+          "label": "docs"
+        },
+        {
+          "slug": "field-recording",
+          "label": "field recording"
+        }
+      ],
       "image": "/assets/activity/posters/b97f97fbe49e00bdac92412cb1dc50549767dd9d4d56366a2ba8aa5f7634d5c1.webp",
       "image_origin": ""
     },
@@ -107,20 +125,20 @@
     }
   ],
   "neighborhood": {
-    "slug": "hospitality",
-    "label": "hospitality",
-    "member_count": 1
+    "slug": "google",
+    "label": "google",
+    "member_count": 4
   },
   "connection": {
-    "from": "https://joshua.seigler.net",
-    "to": "https://joshternet.org",
-    "relation": "content-link",
-    "label": "linked to",
-    "from_title": "Hello!",
-    "to_title": "Joshternet",
-    "href": "https://joshternet.org/",
-    "page": "https://joshua.seigler.net/links/",
-    "text": "Joshternet: An Open Network for Joshes and Independent Websites",
-    "evidence_count": 1
+    "from": "https://joshternet.org",
+    "to": "https://joshbeard.com",
+    "relation": "homepage-link",
+    "label": "links to from the homepage",
+    "from_title": "Joshternet",
+    "to_title": "Josh Beard",
+    "href": "https://joshbeard.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+    "page": "https://joshternet.org/",
+    "text": "Josh Joshternet participant. Josh Beard ↗ Josh Beard works on infrastructure, developer workflows, and software delivery systems",
+    "evidence_count": 2
   }
 }
