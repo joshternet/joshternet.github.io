@@ -5,12 +5,12 @@
   Progressive enhancement: explanation + /connections/ link without JS.
 {% endcomment %}
 {% assign home_network_sites = site.data.network %}
-{% if jekyll.environment == "development" %}
+{% if jekyll.environment == 'development' %}
   {% assign home_network_sites = home_network_sites | concat: site.data.network_dev %}
 {% endif %}
-{% assign home_hub_origin = "https://joshternet.org" %}
-{% assign home_member_sites = "" | split: "" %}
-{% assign home_hub_sites = "" | split: "" %}
+{% assign home_hub_origin = 'https://joshternet.org' %}
+{% assign home_member_sites = '' | split: '' %}
+{% assign home_hub_sites = '' | split: '' %}
 {% for network_site in home_network_sites %}
   {% if network_site.origin == home_hub_origin %}
     {% assign home_hub_sites = home_hub_sites | push: network_site %}

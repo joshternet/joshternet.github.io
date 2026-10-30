@@ -260,7 +260,11 @@ test("externalOutboundLinks: absolutizes and keeps only cross-origin http(s)", (
     "https://joshbeard.com/site/",
     [
       { href: "/", text: "Home" },
-      { href: "https://joshternet.org/", text: "Joshternet", rel: ["noopener"] },
+      {
+        href: "https://joshternet.org/",
+        text: "Joshternet",
+        rel: ["noopener"],
+      },
       {
         href: "https://joshuamorris.info/",
         text: "Joshua Morris",

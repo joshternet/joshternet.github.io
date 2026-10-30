@@ -347,8 +347,7 @@ export function externalOutboundLinks(origin, pageUrl, links) {
         typeof link === "object" && typeof link?.text === "string"
           ? link.text
           : "",
-      rel:
-        typeof link === "object" && Array.isArray(link?.rel) ? link.rel : [],
+      rel: typeof link === "object" && Array.isArray(link?.rel) ? link.rel : [],
       classNames:
         typeof link === "object" && Array.isArray(link?.classNames)
           ? link.classNames
