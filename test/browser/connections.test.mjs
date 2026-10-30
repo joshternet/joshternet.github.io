@@ -149,11 +149,23 @@ function buildFixture(options = {}) {
     </style>
   </head>
   <body>
-    <div data-connections-shell>
+    <div
+      data-connections-shell
+      data-connections-mode="full"
+      data-connections-bootstrap="connections-bootstrap"
+    >
       <section data-connections-graph hidden>
-        <div data-connections-graph-stage></div>
+        <div data-connections-viewport>
+          <div data-connections-graph-stage></div>
+          <div data-connections-map-tools>
+            <button type="button" data-connections-zoom-in aria-label="Zoom in">+</button>
+            <button type="button" data-connections-zoom-out aria-label="Zoom out">−</button>
+            <button type="button" data-connections-map-reset aria-label="Center Joshternet">Center</button>
+          </div>
+        </div>
         <fieldset data-relation-filters class="connections-graph__filters">
           <legend>Show observed relations</legend>
+          <div data-relation-filter-list></div>
         </fieldset>
         <div class="connections-graph__key" data-connections-key>
           <p class="connections-graph__key-title">Key</p>

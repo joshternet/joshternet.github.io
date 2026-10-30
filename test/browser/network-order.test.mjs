@@ -10,10 +10,17 @@ const networkScriptPath = fileURLToPath(
 );
 
 const networkScript = await readFile(networkScriptPath, "utf8");
+const networkStyles = `
+.network-card { display: flex; }
+.network-card[hidden] { display: none; }
+`;
 
 const fixture = `
 <!doctype html>
 <html lang="en">
+  <head>
+    <style>${networkStyles}</style>
+  </head>
   <body>
     <div data-network-toolbar hidden>
       <button type="button" data-network-filter="all" aria-pressed="true">All</button>
@@ -22,10 +29,10 @@ const fixture = `
     <strong data-network-count>4</strong>
     <span data-network-count-label>sites</span>
     <div data-network-grid>
-      <article data-network-card data-identity="affirmed" data-title="aaron" data-domain="aaron.example">Aaron</article>
-      <article data-network-card data-identity="affirmed" data-title="blake" data-domain="blake.example">Blake</article>
-      <article data-network-card data-identity="declined" data-title="casey" data-domain="casey.example">Casey</article>
-      <article data-network-card data-identity="undeclared" data-title="drew" data-domain="drew.example">Drew</article>
+      <article class="network-card" data-network-card data-identity="affirmed" data-title="aaron" data-domain="aaron.example">Aaron</article>
+      <article class="network-card" data-network-card data-identity="affirmed" data-title="blake" data-domain="blake.example">Blake</article>
+      <article class="network-card" data-network-card data-identity="declined" data-title="casey" data-domain="casey.example">Casey</article>
+      <article class="network-card" data-network-card data-identity="undeclared" data-title="drew" data-domain="drew.example">Drew</article>
       <a class="network-surprise-card" href="/wander/">Wander somewhere</a>
     </div>
   </body>
@@ -92,6 +99,27 @@ test("network cards shuffle once per visit and do not offer A-Z sort", async () 
 
   assert.deepEqual(await visibleTitles(page), ["Casey"]);
   assert.equal(await page.locator("[data-network-count]").textContent(), "1");
+
+  const displays = await page
+    .locator("[data-network-card]")
+    .evaluateAll((cards) =>
+      cards.map((card) => ({
+        identity: card.dataset.identity,
+        hidden: card.hidden,
+        display: getComputedStyle(card).display,
+      })),
+    );
+
+  for (const card of displays) {
+    if (card.identity === "declined") {
+      assert.equal(card.hidden, false);
+      assert.equal(card.display, "flex");
+      continue;
+    }
+
+    assert.equal(card.hidden, true);
+    assert.equal(card.display, "none");
+  }
 
   await context.close();
 });

@@ -1,0 +1,97 @@
+{% comment %}
+  Goal: Homepage “Meet the websites” preview from site.data.network.
+  Selection: all participants are equal. Liquid orders by domain for a stable
+  no-JS fallback; home-meet.js shuffles and shows three at random per visit.
+  Empty or incomplete rows must not break layout.
+  Inputs: site.data.network. Outputs: preview grid or empty invitation.
+{% endcomment %}
+{% assign home_network_count = site.data.network | size %}
+{% assign home_meet_sites = site.data.network | sort: 'domain' %}
+
+<p class="home-meet__count">
+  {% if home_network_count == 1 %}
+    <strong>{{ home_network_count }}</strong> independent website currently participates.
+  {% else %}
+    <strong>{{ home_network_count }}</strong> independent websites currently participate.
+  {% endif %}
+  <a href="{{ '/network/' | relative_url }}">Browse the full network</a>.
+</p>
+
+{% if home_meet_sites.size > 0 %}
+  <div
+    class="home-meet__grid network-grid"
+    data-home-meet-grid
+  >
+    {% for network_site in home_meet_sites %}
+      {% case network_site.identity %}
+        {% when 'affirmed' %}
+          {% assign identity_label = 'Josh' %}
+        {% when 'declined' %}
+          {% assign identity_label = 'Non-Josh' %}
+        {% else %}
+          {% assign identity_label = 'Undeclared' %}
+      {% endcase %}
+
+      <article
+        class="network-card network-card--{{ network_site.identity }} h-card"
+        data-home-meet-card
+        data-identity="{{ network_site.identity | escape }}"
+        data-domain="{{ network_site.domain | downcase | escape }}"
+      >
+        {% include outbound-href.html url=network_site.origin %}
+        <a
+          class="network-card__link u-url"
+          href="{{ outbound_href | escape }}"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="network-card__preview">
+            {% if network_site.screenshot and network_site.screenshot != '' %}
+              <img
+                class="network-card__image u-photo"
+                src="{{ network_site.screenshot | relative_url }}"
+                alt="Screenshot of {{ network_site.title | default: network_site.domain | escape }}"
+                loading="lazy"
+                decoding="async"
+              >
+            {% else %}
+              <div class="network-card__fallback" aria-hidden="true">
+                <span>{{ network_site.domain | slice: 0 | upcase | escape }}</span>
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="network-card__body">
+            <span class="visually-hidden"> {{ identity_label }} Joshternet participant. </span>
+
+            <h3 class="network-card__title p-name">
+              {{ network_site.title | default: network_site.domain | escape }}
+              <span aria-hidden="true">↗</span>
+            </h3>
+
+            {% if network_site.description and network_site.description != '' %}
+              <p class="network-card__description p-note">
+                {{ network_site.description | escape }}
+              </p>
+            {% endif %}
+          </div>
+        </a>
+        <div class="network-card__footer">
+          <p class="network-card__domain p-org">
+            {{ network_site.domain | escape }}
+          </p>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="network-empty home-meet__empty">
+    <p>
+      No participating websites are listed yet. Visit the
+      <a href="{{ '/network/' | relative_url }}">Network</a>
+      once JoshBot has verified origins, or
+      <a href="{{ '/implement/' | relative_url }}">publish a declaration</a>
+      on your own site.
+    </p>
+  </div>
+{% endif %}

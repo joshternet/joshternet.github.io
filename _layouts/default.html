@@ -165,7 +165,11 @@
       src="{{ '/assets/js/activity-card.js' | relative_url }}?v={{ asset_version }}"
     ></script>
 
-    {% if page.script %}
+    {% if page.scripts %}
+      {% for page_script in page.scripts %}
+        <script defer src="{{ page_script | relative_url }}?v={{ asset_version }}"></script>
+      {% endfor %}
+    {% elsif page.script %}
       <script defer src="{{ page.script | relative_url }}?v={{ asset_version }}"></script>
     {% endif %}
 

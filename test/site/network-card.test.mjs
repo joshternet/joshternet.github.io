@@ -25,6 +25,7 @@ test("network cards link the primary feed outside the origin card link", async (
   ].join("\n");
   const networkDev = await read("_data/network_dev.json");
 
+  assert.match(styles, /\.network-card\[hidden\]\s*\{[^}]*display:\s*none/s);
   assert.match(page, /network-card--{{ network_site.identity }} h-card/);
   assert.match(page, /network_site\.feeds/);
   assert.match(page, /network-card__feed/);
