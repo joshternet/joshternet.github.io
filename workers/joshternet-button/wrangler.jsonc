@@ -4,6 +4,9 @@
   "main": "src/index.js",
   "compatibility_date": "2026-09-15",
   "workers_dev": true,
+  "observability": {
+    "enabled": false,
+  },
   "vars": {
     "SITE_ORIGIN": "https://joshternet.org",
     "REGISTRY_URL": "https://raw.githubusercontent.com/joshternet/index-data/main/registry.json",

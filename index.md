@@ -7,37 +7,49 @@ description: >-
 keywords: >-
   Joshternet, Josh network, independent websites, indie web, open web,
   /.well-known/josh, personal websites
+scripts:
+  - /assets/js/home-meet.js
+  - /assets/js/connections.js
 ---
 
-# Joshternet
+# The Joshternet
 
-The Joshternet is an open, decentralized network for people who identify as Josh and the independent websites they call home.
+<p class="home-tagline">An internet full of Joshes. And friends of Joshes.</p>
 
-<p class="prose-emphasis"><strong>Joshness is declared, never derived.</strong></p>
+Independent websites, linked by a tiny public declaration. No accounts. No feed algorithm. Your site stays yours.
 
-The work begins with a focused goal: help Joshes find one another, visit each other's sites, and see what they are making without moving everyone onto another platform.
+<p class="home-cta">
+  <a class="home-cta__primary" href="{{ '/wander/' | relative_url }}">Wander the Joshternet</a>
+  <a class="home-cta__secondary" href="{{ '/network/' | relative_url }}">Explore the network</a>
+</p>
 
-The Joshternet is not a social network, identity provider, ranking system, or central publishing service. It connects independent places on the web. It does not own them.
+<p class="prose-emphasis"><strong>Joshness is declared, never derived.</strong> Non-Joshes are welcome.</p>
 
-## Why this exists
+## Meet the websites
 
-The web is full of Joshes.
+Real sites, on their own domains.
 
-Some of them write, make art, build software, document projects, or maintain personal websites for reasons known only to themselves.
+{% include home-meet-sites.html %}
 
-Those sites should be able to connect without an algorithm deciding which Josh is important and without asking anyone to surrender control of their domain, content, or infrastructure.
+## What's happening
 
-The Joshternet uses shared conventions and ordinary web technologies to make those connections possible.
+Fresh posts from around the network.
 
-## Participation today
+{% include home-recent-activity.html %}
 
-A website's origin declares participation by publishing valid JSON at:
+## See how the Joshternet connects
+
+Independent sites beginning to link—and sometimes covering the same ground.
+
+{% include home-connections.html %}
+
+## How it works
+
+Put a small JSON file on your site:
 
 ```text
 /.well-known/josh
 ```
-
-A participating Josh might publish:
 
 ```json
 {
@@ -46,75 +58,91 @@ A participating Josh might publish:
 }
 ```
 
-Publishing a valid resource declares participation. The optional `josh` member declares Josh identity:
+That is participation. Optional `josh: true` or `josh: false` says how you identify; leave `josh` out if you prefer not to say. Details live in [RFC-JOSH-0002][rfc-0002].
 
-- `josh: true` means **Affirmed Josh Identity**.
-- `josh: false` means **Declined Josh Identity**.
-- Omitting `josh` means **Undeclared Josh Identity**.
+[JoshBot][joshbot] can find and list participating sites. The registry helps with discovery—it is not the Joshternet, and it does not decide who is a Josh.
 
-These states are not interchangeable.
+## Join the Joshternet
 
-Undeclared does not mean Declined. Participation does not mean Affirmed. A valid declaration without a `josh` member still declares participation.
+No signup form. No account. Publish a file on a site you control.
 
-A person's name, domain, biography, or page content does not establish Joshness. The person does.
+### Pick a declaration
 
-[RFC-JOSH-0002][rfc-0002] is the authoritative definition of this protocol.
+<div class="home-join">
+  <div class="home-join__option">
+    <h3 class="home-join__label">I'm a Josh</h3>
+    <p class="home-join__path">
+      <code>/.well-known/josh</code>
+    </p>
+    <pre class="home-join__code"><code>{
+  "version": 1,
+  "josh": true
+}</code></pre>
+    <p>Affirmed Josh Identity, and you're in.</p>
+  </div>
+  <div class="home-join__option">
+    <h3 class="home-join__label">I'm participating, not as a Josh</h3>
+    <p class="home-join__path">
+      <code>/.well-known/josh</code>
+    </p>
+    <pre class="home-join__code"><code>{
+  "version": 1,
+  "josh": false
+}</code></pre>
+    <p>Declined Josh Identity—still a full participant.</p>
+  </div>
+  <div class="home-join__option">
+    <h3 class="home-join__label">I'm in; leaving identity open</h3>
+    <p class="home-join__path">
+      <code>/.well-known/josh</code>
+    </p>
+    <pre class="home-join__code"><code>{
+  "version": 1
+}</code></pre>
+    <p>Undeclared Josh Identity. Participation without the label.</p>
+  </div>
+</div>
 
-## Current state
+### Next steps
 
-The Joshternet is currently **PRE-JOSH**. Its three current RFCs are Drafts, and none have been Accepted.
+1. Publish `/.well-known/josh` on your origin.
+2. Check it with the [declaration checker][validate].
+3. Optionally [nominate][nominate] the site so JoshBot knows to look.
+4. JoshBot may verify it and add it to the registry.
 
-Working implementations now exist alongside the Draft specifications:
+Publishing means you're participating. It does not automatically notify JoshBot or guarantee a registry listing. Nomination asks for a crawl; it does not itself grant participation.
 
-- [joshuamorris.info][implementation-josh] participates according to RFC-JOSH-0002 with Affirmed Josh Identity;
-- joshternet.org participates according to RFC-JOSH-0002 with Undeclared Josh Identity, demonstrated by its [live `/.well-known/josh` declaration][implementation-project];
-- [JoshBot][joshbot] [v1.0.0][joshbot-release] is the first supported release of the Joshternet discovery, verification, and public registry crawler.
+[Implementation guide][implementation] · [platform recipes][platforms] · [declaration checker][validate]
 
-These implementations let the project test the separation between participation, identity, discovery, and registry infrastructure in practice. Neither participating origin is an authority or privileged node, and JoshBot does not define participation or Josh identity.
+## Status
 
-PRE-JOSH remains the project's bootstrap state while the foundational specifications and governance continue to develop. The [Governance page][governance] explains the current process.
+The project is **PRE-JOSH**. The RFCs are Drafts.
 
-## Principles
+Live pieces today:
 
-The Joshternet starts with a few rules:
+- [joshuamorris.info][implementation-josh] — Affirmed Josh Identity
+- joshternet.org — [Undeclared][implementation-project]
+- [JoshBot][joshbot] [v1.0.0][joshbot-release] — discovery and registry crawler
+
+None of those is an authority. [Governance][governance] covers how Drafts move.
+
+A few standing rules:
 
 - Joshness is declared, never derived.
 - Participation is voluntary.
 - Josh identity and participation are separate.
 - Non-Joshes may participate without being represented as Joshes.
-- Participating websites remain independently controlled.
+- Sites stay independently controlled.
 - No Josh outranks another Josh.
-- Josh identity does not imply trust.
-- Participation does not imply trust.
+- Identity and participation do not imply trust.
 - Discovery should not require one canonical authority.
-- Open and boring web standards are preferred.
+- Prefer open, boring web standards.
 
-A registry may help people find participating sites. It is not the Joshternet, and it does not get to decide who is a Josh.
+## Keep going
 
-## Learn more
+[About][about] · [Specifications][specifications] · [JoshBot][joshbot] · [spec repo][spec]
 
-The [About page][about] explains where the Joshternet came from, why it starts with Joshes and independent websites, and the larger experiment behind it.
-
-The [Specifications page][specifications] maps the current RFCs and their reading order. The [Governance page][governance] documents how the Draft specifications are maintained today.
-
-If you want to participate, the [implementation guide][implementation] explains how to publish a `/.well-known/josh` declaration. The [JoshBot page][joshbot] documents the current discovery, verification, and registry crawler.
-
-## Help define it
-
-If you are a Josh with an independent website:
-
-- read the Draft RFCs;
-- publish a `/.well-known/josh` declaration;
-- test the protocol;
-- find the ambiguous parts;
-- find the broken assumptions;
-- bring what you learn back to the specification discussions.
-
-There is no central signup form or account to create. That would rather miss the point.
-
-Non-Joshes may also participate, contribute, operate compatible infrastructure, and help test the specifications without being represented as Joshes.
-
-The [Joshternet specification repository][spec] is the canonical project source. Specifications are developed publicly through issues, discussion, and pull requests.
+Talk in [`#joshternet`][irc], skim the [community principles][community], or open an issue. Bring the weird edge cases—that is how the Drafts get better.
 
 [spec]: https://github.com/joshternet/spec
 [rfc-0002]: https://github.com/joshternet/spec/blob/main/rfcs/0002-well-known-josh.md
@@ -122,7 +150,12 @@ The [Joshternet specification repository][spec] is the canonical project source.
 [specifications]: /specs/
 [governance]: /governance/
 [implementation]: /implement/
+[platforms]: /implement/platforms/
+[validate]: /implement/validate/
+[nominate]: /nominate/
 [joshbot]: /joshbot/
+[community]: /community/
+[irc]: https://web.libera.chat/#joshternet
 [implementation-josh]: https://joshuamorris.info/.well-known/josh
 [implementation-project]: /.well-known/josh
 [joshbot-release]: https://github.com/joshternet/joshbot/releases/tag/v1.0.0

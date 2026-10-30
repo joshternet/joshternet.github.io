@@ -1,0 +1,25 @@
+{% comment %}
+  Goal: Homepage “What’s happening” preview from activity.primary.
+  Inputs: site.data.activity.primary. Outputs: up to three activity cards or an
+  empty invitation to browse the network (no filler, no stale-as-new).
+{% endcomment %}
+{% assign home_activity = site.data.activity.primary | default: empty %}
+
+{% if home_activity.size > 0 %}
+  <ol class="activity-list h-feed home-activity__list">
+    {% for item in home_activity limit: 3 %}
+      {% include activity-card.html item=item heading_tag="h3" %}
+    {% endfor %}
+  </ol>
+  <p class="home-activity__more">
+    <a href="{{ '/activity/' | relative_url }}">See all recent activity</a>
+  </p>
+{% else %}
+  <div class="network-empty home-activity__empty">
+    <p>
+      Nothing recent is indexed right now. Browse the
+      <a href="{{ '/network/' | relative_url }}">Network</a>
+      to visit participating sites directly.
+    </p>
+  </div>
+{% endif %}

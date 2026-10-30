@@ -865,6 +865,159 @@ video {
   }
 }
 
+/* Homepage discovery sections */
+
+.home-tagline {
+  margin-block: 0 var(--space-4);
+  font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.65rem);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-ink);
+}
+
+.home-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+  margin-block: var(--space-5) var(--space-4);
+}
+
+.home-cta__primary,
+.home-cta__secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-medium);
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background-color 140ms ease,
+    color 140ms ease,
+    border-color 140ms ease,
+    box-shadow 140ms ease;
+}
+
+.home-cta__primary {
+  border: 1px solid var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-canvas);
+}
+
+.home-cta__primary:hover,
+.home-cta__primary:focus-visible {
+  box-shadow: 0 0.4rem 1.2rem var(--color-shadow);
+}
+
+.home-cta__secondary {
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+
+.home-cta__secondary:hover,
+.home-cta__secondary:focus-visible {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.home-cta__primary:focus-visible,
+.home-cta__secondary:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.home-meet__count {
+  margin-block-end: var(--space-4);
+}
+
+.home-meet__grid {
+  margin-block-start: var(--space-4);
+}
+
+/* No-JS: show three domain-ordered cards. JS reveals a random three. */
+.home-meet__grid:not([data-home-meet-ready]) > .network-card:nth-child(n + 4) {
+  display: none;
+}
+
+.home-meet__grid .network-card__description {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.home-activity__list {
+  margin-block-start: var(--space-4);
+}
+
+.home-activity__more {
+  margin-block-start: var(--space-4);
+}
+
+.home-join {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-5);
+  margin-block: var(--space-5);
+}
+
+.home-join__option {
+  min-width: 0;
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-medium);
+  background: var(--color-surface);
+}
+
+.home-join__label {
+  margin-block: 0 var(--space-3);
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+.home-join__path {
+  margin-block: 0 var(--space-3);
+}
+
+.home-join__code {
+  margin-block: 0 var(--space-4);
+  padding: var(--space-4);
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-medium);
+  background: var(--color-canvas);
+}
+
+.home-join__code code {
+  font-size: 0.92rem;
+  white-space: pre;
+}
+
+@media (min-width: 44rem) {
+  .home-join {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 75rem) {
+  .page--home .prose > .home-meet__grid,
+  .page--home .prose > .home-activity__list,
+  .page--home .prose > .home-join,
+  .page--home .prose > .network-empty {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-cta__primary,
+  .home-cta__secondary {
+    transition: none;
+  }
+}
+
 /* Standards index */
 
 .page--specs .prose > h3 {
@@ -1108,6 +1261,11 @@ video {
     transform 140ms ease,
     box-shadow 140ms ease,
     border-color 140ms ease;
+}
+
+/* display:flex above overrides the UA [hidden] rule; keep filters effective. */
+.network-card[hidden] {
+  display: none;
 }
 
 .network-card::before,
@@ -2121,6 +2279,48 @@ video {
   block-size: min(28rem, 70vh);
   border-radius: var(--radius-small);
   touch-action: none;
+}
+
+/* Homepage Connections preview: shorter map, page scroll still works. */
+.home-connections {
+  margin-block: var(--space-5) var(--space-6);
+}
+
+.home-connections__lede {
+  margin-block-end: var(--space-4);
+}
+
+.home-connections__viewport.connections-graph__viewport,
+.home-connections .connections-graph__viewport {
+  min-block-size: 14rem;
+  block-size: clamp(16rem, 42vw, 23.5rem);
+  touch-action: pan-y;
+}
+
+.home-connections .connections-graph__stage {
+  min-block-size: 14rem;
+}
+
+.home-connections__footer {
+  margin-block-start: var(--space-3);
+}
+
+.home-connections__cta {
+  margin-block-start: var(--space-4);
+}
+
+.home-connections__noscript {
+  margin-block-start: var(--space-3);
+}
+
+.connections-bubble__more {
+  margin-block-start: var(--space-3);
+}
+
+@media (max-width: 42rem) {
+  .home-connections .connections-graph__viewport {
+    block-size: 16rem;
+  }
 }
 
 .connections-graph__stage {

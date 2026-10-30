@@ -4,10 +4,16 @@
 
 ### Added
 
+- Homepage Connections preview: compact graph under discovery that reuses `connections.js` in preview mode (no wheel zoom or page-scroll trap), with a lightweight bootstrap of participants, observed links, and shared-topic pairs.
+- Homepage discovery sections: Wander and Network CTAs, a Meet the websites preview that shuffles participants at random each visit (no join-date or creator priority; domain order without JavaScript), a What's happening preview from `activity.primary`, and a static Join path with the three identity declaration examples.
 - Quartz 5 platform recipe at `/implement/platforms/quartz/`: copy `josh.json` to `public/.well-known/josh` after `npx quartz build`, because Quartz emits `quartz/static` under `/static/` and skips dot directories.
 
 ### Changed
 
+- Network identity filters hide cards again. `.network-card { display: flex }` had overridden the browser `[hidden]` rule, so Non-Josh and other filters left every card visible.
+- `connections.js` boots every `[data-connections-shell]` with full or preview mode, scoped bootstrap ids, and unique SVG arrow markers.
+- Layout pages may list multiple deferred scripts via `scripts:`.
+- The homepage leads with discovery and participation, then relocates protocol explanation, PRE-JOSH status, principles, specifications, and community below those sections. Copy stays short and invitational rather than tutorial-heavy. Protocol semantics, CSP, and Wander embedding rules are unchanged.
 - The WordPress platform recipe installs from the WordPress.org plugin directory. GitHub remains the source repository; releases ship through WordPress.org.
 - The site test expects Wander’s main area to use overflow visible so the blocked-link bubble is not clipped.
 - Removed the scheduled Production smoke workflow. It requested the live site every six hours and failed when declaration checks were older than six hours, which is the registry's normal overnight pause. It did not build or publish the site.

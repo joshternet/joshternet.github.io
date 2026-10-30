@@ -79,7 +79,12 @@ Connections from around the Joshternet.
 </p>
 
 {% if connected_site_count > 0 %}
-<div class="connections-shell" data-connections-shell>
+<div
+  class="connections-shell"
+  data-connections-shell
+  data-connections-mode="full"
+  data-connections-bootstrap="connections-bootstrap"
+>
   <section
     class="connections-graph"
     data-connections-graph

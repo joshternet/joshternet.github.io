@@ -102,6 +102,10 @@ test("connections page is HTML-first and cross-linked", async () => {
   assert.match(visibleRel, /noreferrer/);
   assert.match(page, /site\.data\.connections/);
   assert.match(page, /id="connections-bootstrap"/);
+  assert.match(page, /data-connections-mode="full"/);
+  assert.match(page, /data-connections-bootstrap="connections-bootstrap"/);
+  assert.match(script, /function initShell/);
+  assert.match(script, /querySelectorAll\("\[data-connections-shell\]"\)/);
   assert.match(page, /connections-howto/);
   assert.match(page, /\/implement\/connections\//);
   assert.doesNotMatch(page, /['"]\/data\/['"]\s*\|\s*relative_url/);
