@@ -262,6 +262,26 @@ export function publishedWithinDays(publishedAt, now, days = 7) {
 }
 
 /**
+ * True when a content URL is on the Joshternet hub.
+ * Member “link” posts that only point at the hub are not useful to feature
+ * on joshternet.org itself.
+ * @param {unknown} value
+ * @returns {boolean}
+ */
+export function isJoshternetHubContentUrl(value) {
+  if (typeof value !== "string" || !value) {
+    return false;
+  }
+
+  try {
+    const hostname = new URL(value).hostname.toLocaleLowerCase("en-US");
+    return hostname === "joshternet.org" || hostname === "www.joshternet.org";
+  } catch {
+    return false;
+  }
+}
+
+/**
  * One latest item per origin, then newest first.
  * @param {Array<Record<string, unknown>>} items
  * @returns {Array<Record<string, unknown>>}
@@ -917,7 +937,10 @@ export function buildViewDocuments(input) {
     .map((item) => compactContentItem(item, sites, publicSlugs))
     .filter(Boolean);
   const recentItems = contentItems.filter(
-    (item) => item && publishedWithinDays(item.published_at, clock),
+    (item) =>
+      item &&
+      publishedWithinDays(item.published_at, clock) &&
+      !isJoshternetHubContentUrl(item.url),
   );
   const primary = oneLatestPerOrigin(recentItems)
     .map((item) => compactContentItem(item, sites, publicSlugs))

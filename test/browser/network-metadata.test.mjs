@@ -80,6 +80,38 @@ test("extracts ordinary page metadata", async () => {
   );
 });
 
+test("extracts Person JSON-LD name and author meta", async () => {
+  await withPage(
+    `
+      <!doctype html>
+      <html>
+        <head>
+          <base href="https://joshghent.com/">
+          <title>Josh Ghent — Developer Musings</title>
+          <meta name="author" content="Josh Ghent">
+          <meta property="og:site_name" content="Developer Musings">
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Josh Ghent",
+              "url": "https://joshghent.com"
+            }
+          </script>
+        </head>
+        <body><main><p>${"x".repeat(90)}</p></main></body>
+      </html>
+    `,
+    async (page) => {
+      const metadata = await page.evaluate(extractPageMetadata);
+
+      assert.equal(metadata.jsonLdPersonName, "Josh Ghent");
+      assert.equal(metadata.authorName, "Josh Ghent");
+      assert.equal(metadata.ogSiteName, "Developer Musings");
+    },
+  );
+});
+
 test("extracts WebSite JSON-LD metadata", async () => {
   await withPage(
     `
@@ -437,26 +469,66 @@ test("extracts outbound participant page links", async () => {
           href: "https://b.example/posts",
           text: "B",
           rel: [],
+          classNames: [],
         },
         {
           href: "https://b.example/posts#frag",
           text: "B again",
           rel: [],
+          classNames: [],
         },
         {
           href: "https://a.example/about",
           text: "Same origin",
           rel: [],
+          classNames: [],
         },
         {
           href: "https://c.example/path",
           text: "Protocol relative",
           rel: [],
+          classNames: [],
         },
         {
           href: "https://d.example/",
           text: "Nofollow",
           rel: ["nofollow"],
+          classNames: [],
+        },
+      ]);
+    },
+  );
+});
+
+test("skips Meet grid and activity-card links and captures classNames", async () => {
+  await withPage(
+    `
+      <!doctype html>
+      <html>
+        <head>
+          <base href="https://joshternet.org/">
+          <title>Home</title>
+        </head>
+        <body>
+          <div data-home-meet-grid>
+            <a class="network-card__link u-url" href="https://b.example/">Meet B</a>
+          </div>
+          <li class="activity-card">
+            <a class="activity-card__link u-url" href="https://c.example/post/">Activity C</a>
+          </li>
+          <a class="editorial" href="https://d.example/note/">Editorial D</a>
+        </body>
+      </html>
+    `,
+    async (page) => {
+      const metadata = await page.evaluate(extractPageMetadata);
+
+      assert.deepEqual(metadata.links, [
+        {
+          href: "https://d.example/note/",
+          text: "Editorial D",
+          rel: [],
+          classNames: ["editorial"],
         },
       ]);
     },
@@ -643,6 +715,68 @@ test("extracts same-origin about page href", async () => {
       );
 
       assert.equal(metadata.aboutPageHref, "https://about.example/about/");
+    },
+  );
+});
+
+test("extracts /me as an about page path", async () => {
+  await withPage(
+    `
+      <!doctype html>
+      <html>
+        <head>
+          <base href="https://me.example/">
+          <title>Home</title>
+        </head>
+        <body>
+          <a href="/me/">About</a>
+        </body>
+      </html>
+    `,
+    async (page) => {
+      const metadata = await page.evaluate(extractPageMetadata);
+      assert.equal(metadata.aboutPageHref, "https://me.example/me/");
+      assert.deepEqual(metadata.aboutPageHrefs, ["https://me.example/me/"]);
+    },
+  );
+});
+
+test("extracts joshbeard-style /more and /site identity pages", async () => {
+  await withPage(
+    `
+      <!doctype html>
+      <html>
+        <head>
+          <base href="https://joshbeard.example/">
+          <title>Home</title>
+        </head>
+        <body>
+          <a href="/more/">More</a>
+          <a href="/now/">Now</a>
+          <a href="/uses/">Uses</a>
+          <a href="/site/">About This Site</a>
+          <a href="/blog/">Blog</a>
+        </body>
+      </html>
+    `,
+    async (page) => {
+      const metadata = await page.evaluate(extractPageMetadata);
+      assert.equal(metadata.aboutPageHref, "https://joshbeard.example/more/");
+      assert.ok(
+        metadata.aboutPageHrefs.includes("https://joshbeard.example/more/"),
+      );
+      assert.ok(
+        metadata.aboutPageHrefs.includes("https://joshbeard.example/site/"),
+      );
+      assert.ok(
+        metadata.aboutPageHrefs.includes("https://joshbeard.example/now/"),
+      );
+      assert.ok(
+        metadata.aboutPageHrefs.includes("https://joshbeard.example/uses/"),
+      );
+      assert.ok(
+        !metadata.aboutPageHrefs.includes("https://joshbeard.example/blog/"),
+      );
     },
   );
 });

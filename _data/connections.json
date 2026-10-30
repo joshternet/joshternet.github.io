@@ -1,257 +1,80 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T21:25:20.995Z",
-  "edge_count": 13,
+  "generated_at": "2026-10-30T22:30:01.781Z",
+  "edge_count": 8,
   "edges": [
     {
-      "from": "https://joshternet.org",
-      "to": "https://joshbeard.com",
-      "relation": "homepage-link",
+      "from": "https://joshbeard.com",
+      "to": "https://joshternet.org",
+      "relation": "content-link",
       "directed": true,
       "source": "content",
-      "href": "https://joshbeard.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-      "text": "Josh Joshternet participant. Josh Beard ↗ Josh Beard works on infrastructure, developer workflows, and software delivery systems",
-      "rel": ["noopener"],
-      "page": "https://joshternet.org/",
-      "evidence_count": 2,
+      "href": "https://joshternet.org/",
+      "text": "Joshternet",
+      "rel": [
+        "noopener",
+        "noreferrer"
+      ],
+      "page": "https://joshbeard.com/site/",
+      "evidence_count": 1,
       "evidence": [
         {
           "class": "observed",
-          "page": "https://joshternet.org/",
-          "href": "https://joshbeard.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Josh Joshternet participant. Josh Beard ↗ Josh Beard works on infrastructure, developer workflows, and software delivery systems",
-          "rel": ["noopener"]
-        },
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "href": "https://joshbeard.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Josh Joshternet participant. Josh Beard ↗ Josh Beard works on infrastructure, developer workflows, and software delivery systems",
-          "rel": ["noopener"]
+          "page": "https://joshbeard.com/site/",
+          "href": "https://joshternet.org/",
+          "text": "Joshternet",
+          "rel": [
+            "noopener",
+            "noreferrer"
+          ]
         }
       ]
     },
     {
-      "from": "https://joshternet.org",
-      "to": "https://joshghent.com",
-      "relation": "homepage-link",
-      "directed": true,
-      "source": "content",
-      "href": "https://joshghent.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-      "text": "Josh Joshternet participant. Developer Musings ↗ Writing on software engineering, engineering leadership, and building products, by Josh Ghent.",
-      "rel": ["noopener"],
-      "page": "https://joshternet.org/",
-      "evidence_count": 2,
-      "evidence": [
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/",
-          "href": "https://joshghent.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Josh Joshternet participant. Developer Musings ↗ Writing on software engineering, engineering leadership, and building products, by Josh Ghent.",
-          "rel": ["noopener"]
-        },
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "href": "https://joshghent.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Josh Joshternet participant. Developer Musings ↗ Writing on software engineering, engineering leadership, and building products, by Josh Ghent.",
-          "rel": ["noopener"]
-        }
-      ]
-    },
-    {
-      "from": "https://joshternet.org",
-      "to": "https://joshmuller.ca",
-      "relation": "homepage-link",
-      "directed": true,
-      "source": "content",
-      "href": "https://joshmuller.ca/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-      "text": "Josh Joshternet participant. Josh's site ↗ Personal Website of Josh Müller — Technologist | Leader | Regenerative Systems Designer",
-      "rel": ["noopener"],
-      "page": "https://joshternet.org/",
-      "evidence_count": 4,
-      "evidence": [
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/",
-          "href": "https://joshmuller.ca/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Josh Joshternet participant. Josh's site ↗ Personal Website of Josh Müller — Technologist | Leader | Regenerative Systems Designer",
-          "rel": ["noopener"]
-        },
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/",
-          "href": "https://joshmuller.ca/docs/healthy-eating-plan-builder/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "",
-          "rel": ["noopener"]
-        },
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "href": "https://joshmuller.ca/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Josh Joshternet participant. Josh's site ↗ Personal Website of Josh Müller — Technologist | Leader | Regenerative Systems Designer",
-          "rel": ["noopener"]
-        },
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "href": "https://joshmuller.ca/docs/healthy-eating-plan-builder/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "",
-          "rel": ["noopener"]
-        }
-      ]
-    },
-    {
-      "from": "https://joshternet.org",
-      "to": "https://joshtronic.com",
-      "relation": "homepage-link",
-      "directed": true,
-      "source": "content",
-      "href": "https://joshtronic.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-      "text": "Josh Joshternet participant. Joshtronic ↗ Code is a medium that found me at an impressionable young age. I've been fortunate to make a career out of it, even if I say things like, \"I'm not sure what I",
-      "rel": ["noopener"],
-      "page": "https://joshternet.org/",
-      "evidence_count": 2,
-      "evidence": [
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/",
-          "href": "https://joshtronic.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Josh Joshternet participant. Joshtronic ↗ Code is a medium that found me at an impressionable young age. I've been fortunate to make a career out of it, even if I say things like, \"I'm not sure what I",
-          "rel": ["noopener"]
-        },
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "href": "https://joshtronic.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Josh Joshternet participant. Joshtronic ↗ Code is a medium that found me at an impressionable young age. I've been fortunate to make a career out of it, even if I say things like, \"I'm not sure what I",
-          "rel": ["noopener"]
-        }
-      ]
-    },
-    {
-      "from": "https://joshternet.org",
-      "to": "https://joshua.seigler.net",
-      "relation": "homepage-link",
-      "directed": true,
-      "source": "content",
-      "href": "https://joshua.seigler.net/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-      "text": "Josh Joshternet participant. Hello! ↗ Software engineer personal homepage",
-      "rel": ["noopener"],
-      "page": "https://joshternet.org/",
-      "evidence_count": 2,
-      "evidence": [
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/",
-          "href": "https://joshua.seigler.net/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Josh Joshternet participant. Hello! ↗ Software engineer personal homepage",
-          "rel": ["noopener"]
-        },
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "href": "https://joshua.seigler.net/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Josh Joshternet participant. Hello! ↗ Software engineer personal homepage",
-          "rel": ["noopener"]
-        }
-      ]
-    },
-    {
-      "from": "https://joshternet.org",
+      "from": "https://joshbeard.com",
       "to": "https://joshuamorris.info",
-      "relation": "homepage-link",
+      "relation": "content-link",
       "directed": true,
       "source": "content",
-      "href": "https://joshuamorris.info/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-      "text": "Josh Joshternet participant. Joshua Morris ↗ I build software, write about what I’m learning, and explore ideas that sit at the intersection of technology, freedom, and curiosity.",
-      "rel": ["noopener"],
-      "page": "https://joshternet.org/",
-      "evidence_count": 4,
+      "href": "https://joshuamorris.info/",
+      "text": "Joshua Morris",
+      "rel": [
+        "noopener",
+        "noreferrer"
+      ],
+      "page": "https://joshbeard.com/site/",
+      "evidence_count": 1,
       "evidence": [
         {
           "class": "observed",
-          "page": "https://joshternet.org/",
-          "href": "https://joshuamorris.info/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Josh Joshternet participant. Joshua Morris ↗ I build software, write about what I’m learning, and explore ideas that sit at the intersection of technology, freedom, and curiosity.",
-          "rel": ["noopener"]
-        },
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/",
-          "href": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "",
-          "rel": ["noopener"]
-        },
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "href": "https://joshuamorris.info/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Josh Joshternet participant. Joshua Morris ↗ I build software, write about what I’m learning, and explore ideas that sit at the intersection of technology, freedom, and curiosity.",
-          "rel": ["noopener"]
-        },
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "href": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "",
-          "rel": ["noopener"]
+          "page": "https://joshbeard.com/site/",
+          "href": "https://joshuamorris.info/",
+          "text": "Joshua Morris",
+          "rel": [
+            "noopener",
+            "noreferrer"
+          ]
         }
       ]
     },
     {
-      "from": "https://joshternet.org",
-      "to": "https://www.joshcanhelp.com",
-      "relation": "homepage-link",
+      "from": "https://joshtronic.com",
+      "to": "https://joshuamorris.info",
+      "relation": "content-link",
       "directed": true,
       "source": "content",
-      "href": "https://www.joshcanhelp.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-      "text": "Josh Joshternet participant. Josh Can Help ↗ I’ve been working on the web since 2007 as an architect, engineer, writer, designer, strategist, user interface consultant, team lead, project manager, and",
-      "rel": ["noopener"],
-      "page": "https://joshternet.org/",
-      "evidence_count": 2,
+      "href": "https://joshuamorris.info/",
+      "text": "Joshua Morris",
+      "rel": [],
+      "page": "https://joshtronic.com/links/",
+      "evidence_count": 1,
       "evidence": [
         {
           "class": "observed",
-          "page": "https://joshternet.org/",
-          "href": "https://www.joshcanhelp.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Josh Joshternet participant. Josh Can Help ↗ I’ve been working on the web since 2007 as an architect, engineer, writer, designer, strategist, user interface consultant, team lead, project manager, and",
-          "rel": ["noopener"]
-        },
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "href": "https://www.joshcanhelp.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Josh Joshternet participant. Josh Can Help ↗ I’ve been working on the web since 2007 as an architect, engineer, writer, designer, strategist, user interface consultant, team lead, project manager, and",
-          "rel": ["noopener"]
-        }
-      ]
-    },
-    {
-      "from": "https://joshternet.org",
-      "to": "https://www.joshuabaker.com",
-      "relation": "homepage-link",
-      "directed": true,
-      "source": "content",
-      "href": "https://www.joshuabaker.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-      "text": "Josh Joshternet participant. Joshua Baker ↗ Software engineer and designer with 20+ years of building, designing, and leading products that move revenue, valuations, fundraising, even the law. Now bui",
-      "rel": ["noopener"],
-      "page": "https://joshternet.org/",
-      "evidence_count": 2,
-      "evidence": [
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/",
-          "href": "https://www.joshuabaker.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Josh Joshternet participant. Joshua Baker ↗ Software engineer and designer with 20+ years of building, designing, and leading products that move revenue, valuations, fundraising, even the law. Now bui",
-          "rel": ["noopener"]
-        },
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "href": "https://www.joshuabaker.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Josh Joshternet participant. Joshua Baker ↗ Software engineer and designer with 20+ years of building, designing, and leading products that move revenue, valuations, fundraising, even the law. Now bui",
-          "rel": ["noopener"]
+          "page": "https://joshtronic.com/links/",
+          "href": "https://joshuamorris.info/",
+          "text": "Joshua Morris",
+          "rel": []
         }
       ]
     },
@@ -284,7 +107,10 @@
       "source": "content",
       "href": "https://joshghent.com/?utm_source=joshuamorris.info&utm_medium=referral",
       "text": "Josh Ghent",
-      "rel": ["noopener", "noreferrer"],
+      "rel": [
+        "noopener",
+        "noreferrer"
+      ],
       "page": "https://joshuamorris.info/friends/",
       "evidence_count": 1,
       "evidence": [
@@ -293,7 +119,10 @@
           "page": "https://joshuamorris.info/friends/",
           "href": "https://joshghent.com/?utm_source=joshuamorris.info&utm_medium=referral",
           "text": "Josh Ghent",
-          "rel": ["noopener", "noreferrer"]
+          "rel": [
+            "noopener",
+            "noreferrer"
+          ]
         }
       ]
     },
@@ -305,7 +134,10 @@
       "source": "content",
       "href": "https://joshmuller.ca/?utm_source=joshuamorris.info&utm_medium=referral",
       "text": "Josh Müller",
-      "rel": ["noopener", "noreferrer"],
+      "rel": [
+        "noopener",
+        "noreferrer"
+      ],
       "page": "https://joshuamorris.info/friends/",
       "evidence_count": 1,
       "evidence": [
@@ -314,7 +146,10 @@
           "page": "https://joshuamorris.info/friends/",
           "href": "https://joshmuller.ca/?utm_source=joshuamorris.info&utm_medium=referral",
           "text": "Josh Müller",
-          "rel": ["noopener", "noreferrer"]
+          "rel": [
+            "noopener",
+            "noreferrer"
+          ]
         }
       ]
     },
@@ -324,46 +159,24 @@
       "relation": "content-link",
       "directed": true,
       "source": "content",
-      "href": "https://joshternet.org/",
-      "text": "Joshternet.org",
-      "rel": ["noopener", "noreferrer", "octo:cites"],
-      "page": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
-      "evidence_count": 5,
+      "href": "https://joshternet.org/?utm_source=joshuamorris.info&utm_medium=referral",
+      "text": "The Joshternet",
+      "rel": [
+        "noopener",
+        "noreferrer"
+      ],
+      "page": "https://joshuamorris.info/now/",
+      "evidence_count": 1,
       "evidence": [
-        {
-          "class": "observed",
-          "page": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
-          "href": "https://joshternet.org/",
-          "text": "Joshternet.org",
-          "rel": ["noopener", "noreferrer", "octo:cites"]
-        },
-        {
-          "class": "observed",
-          "page": "https://joshuamorris.info/notes/2026/08/26/joshternet-org-is-live/",
-          "href": "https://joshternet.org/?utm_source=joshuamorris.info&utm_medium=referral",
-          "text": "Joshternet.org",
-          "rel": ["noopener", "noreferrer"]
-        },
         {
           "class": "observed",
           "page": "https://joshuamorris.info/now/",
           "href": "https://joshternet.org/?utm_source=joshuamorris.info&utm_medium=referral",
           "text": "The Joshternet",
-          "rel": ["noopener", "noreferrer"]
-        },
-        {
-          "class": "observed",
-          "page": "https://joshuamorris.info/seeking/",
-          "href": "https://joshternet.org/implement/",
-          "text": "I'm seeking participants in the Joshternet to test out the JoshBot crawler and prove it works.",
-          "rel": ["noopener", "noreferrer"]
-        },
-        {
-          "class": "observed",
-          "page": "https://joshuamorris.info/privacy/",
-          "href": "https://joshternet.org/implement/buttons/?utm_source=joshuamorris.info&utm_medium=referral",
-          "text": "official Joshternet button",
-          "rel": ["noopener", "noreferrer"]
+          "rel": [
+            "noopener",
+            "noreferrer"
+          ]
         }
       ]
     },
@@ -375,7 +188,10 @@
       "source": "content",
       "href": "https://joshtronic.com/?utm_source=joshuamorris.info&utm_medium=referral",
       "text": "Josh Sherman",
-      "rel": ["noopener", "noreferrer"],
+      "rel": [
+        "noopener",
+        "noreferrer"
+      ],
       "page": "https://joshuamorris.info/friends/",
       "evidence_count": 1,
       "evidence": [
@@ -384,7 +200,10 @@
           "page": "https://joshuamorris.info/friends/",
           "href": "https://joshtronic.com/?utm_source=joshuamorris.info&utm_medium=referral",
           "text": "Josh Sherman",
-          "rel": ["noopener", "noreferrer"]
+          "rel": [
+            "noopener",
+            "noreferrer"
+          ]
         }
       ]
     }

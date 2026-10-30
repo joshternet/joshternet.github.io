@@ -37,7 +37,11 @@ import {
   joinContentWithPageSignals,
   mergeContentItems,
 } from "./content.mjs";
-import { crawlOrigin, originFailureSignal } from "./crawl.mjs";
+import {
+  crawlOrigin,
+  externalOutboundLinks,
+  originFailureSignal,
+} from "./crawl.mjs";
 import {
   isSensitiveHeuristicSlug,
   legacySubjectsFromSignals,
@@ -294,17 +298,13 @@ async function main() {
           });
         }
 
-        for (const link of regions.links.length
-          ? regions.links
-          : page.links || []) {
-          outbound.push({
-            href: link.href,
-            text: link.text,
-            rel: link.rel || [],
-            classNames: link.classNames || [],
-            page: page.url,
-          });
-        }
+        outbound.push(
+          ...externalOutboundLinks(
+            origin,
+            page.url,
+            regions.links.length ? regions.links : page.links || [],
+          ),
+        );
       }
 
       const portfolio = collectPortfolio(portfolioPages, {
@@ -514,6 +514,12 @@ async function main() {
         }
 
         if (String(edge.href).includes("/.well-known/josh")) {
+          return false;
+        }
+
+        // Hub edges are rebuilt from the current crawl with classNames so
+        // Meet / Network card links are not carried forward as evidence.
+        if (edge.from === HUB_ORIGIN) {
           return false;
         }
 

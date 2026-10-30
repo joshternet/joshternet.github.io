@@ -27,7 +27,10 @@ test("connections page is HTML-first and cross-linked", async () => {
 
   assert.match(page, /permalink: \/connections\//);
   assert.match(page, /script: \/assets\/js\/connections\.js/);
-  assert.match(page, /outbound > 0 or inbound > 0 or overlap_count > 0/);
+  assert.match(page, /No observed connections yet/);
+  assert.match(page, /participant_count/);
+  assert.match(page, /participating sites/);
+  assert.doesNotMatch(page, /Isolated sites stay on/);
   assert.match(page, /topic_overlaps/);
   assert.match(page, /site\.data\.connection_topics/);
   assert.match(page, /connections-graph__footer/);
@@ -46,6 +49,16 @@ test("connections page is HTML-first and cross-linked", async () => {
   );
   assert.doesNotMatch(page, /connections-topic__posts/);
   assert.match(styles, /\.connections-key__list \{[^}]*display:\s*flex/);
+  assert.match(styles, /\.connections-site \{[^}]*display:\s*grid/);
+  assert.match(styles, /\.connections-site__header \{[^}]*display:\s*contents/);
+  assert.match(
+    styles,
+    /\.connections-site__columns,\s*\n\s*\.connections-empty-note \{[^}]*grid-column:\s*2/,
+  );
+  assert.match(
+    styles,
+    /\.connections-graph__filters \+ \.connections-graph__key/,
+  );
   assert.match(page, /data-connections-viewport/);
   assert.match(page, /data-connections-map-reset/);
   assert.match(

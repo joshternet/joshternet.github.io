@@ -240,7 +240,7 @@ test("HTML relationship lists and reciprocal edges are visible without selection
     /Back to A/,
   );
   assert.equal(await page.locator("[data-connection-origin]").count(), 3);
-  assert.equal(await page.locator(".connections-graph__node").count(), 2);
+  assert.equal(await page.locator(".connections-graph__node").count(), 3);
   assert.equal(
     await page
       .locator("[data-relation-filters] input[type='checkbox']")
@@ -285,11 +285,14 @@ test("one-way links and disconnected sites still render", async () => {
     ],
   });
 
+  assert.equal(await page.locator(".connections-graph__node").count(), 3);
+
   await page
     .locator('[data-connection-select][data-origin="https://c.example"]')
     .click();
   const detail = await page.locator("[data-connections-detail]").innerText();
   assert.match(detail, /Site C/);
+  assert.match(detail, /No observed connections yet/);
   assert.doesNotMatch(detail, /Connects to/);
   assert.doesNotMatch(detail, /Connected from/);
 
@@ -318,14 +321,12 @@ test("empty connections and single participant still boot the graph", async () =
     connections: [],
   });
 
-  assert.equal(await page.locator(".connections-graph__node").count(), 0);
-  await page
-    .locator('[data-connection-select][data-origin="https://solo.example"]')
-    .click();
-  assert.match(
-    await page.locator("[data-connections-detail]").innerText(),
-    /Solo/,
-  );
+  assert.equal(await page.locator(".connections-graph__node").count(), 1);
+  await page.locator(".connections-graph__node").click();
+  const detail = await page.locator("[data-connections-detail]").innerText();
+  assert.match(detail, /Solo/);
+  assert.match(detail, /No observed connections yet/);
+  assert.match(detail, /solo\.example/);
 
   await context.close();
 });
@@ -464,7 +465,9 @@ test("hostile bootstrap values are rejected", async () => {
   assert.doesNotMatch(detailHTML, /javascript:/i);
   assert.doesNotMatch(detailHTML, /<img[^>]+onerror=/i);
   assert.match(detailHTML, /&lt;img src=x onerror=alert\(1\)&gt;/);
-  assert.equal(await page.locator(".connections-graph__node").count(), 0);
+  // Valid isolate still draws; hostile origin/path and bad edges are dropped.
+  assert.equal(await page.locator(".connections-graph__node").count(), 1);
+  assert.match(detailHTML, /No observed connections yet/);
 
   await context.close();
 });

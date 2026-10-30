@@ -80,6 +80,52 @@ export function decodeHrefForParse(href) {
 }
 
 /**
+ * Reads a quoted or unquoted HTML attribute value (minified sites often omit quotes).
+ * @param {string} attrs
+ * @param {string} name
+ * @returns {string}
+ */
+export function htmlAttributeValue(attrs, name) {
+  if (
+    typeof attrs !== "string" ||
+    !attrs ||
+    typeof name !== "string" ||
+    !name
+  ) {
+    return "";
+  }
+
+  const pattern = new RegExp(
+    `\\b${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`,
+    "i",
+  );
+  const match = attrs.match(pattern);
+
+  if (!match) {
+    return "";
+  }
+
+  return match[1] ?? match[2] ?? match[3] ?? "";
+}
+
+/**
+ * Splits a space-separated HTML attribute value into lowercase tokens.
+ * @param {string} value
+ * @returns {string[]}
+ */
+function attributeTokens(value) {
+  if (typeof value !== "string" || !value) {
+    return [];
+  }
+
+  return value
+    .toLowerCase()
+    .split(/\s+/)
+    .map((token) => token.trim())
+    .filter(Boolean);
+}
+
+/**
  * @typedef {{
  *   title: string,
  *   headings: string,
@@ -165,34 +211,21 @@ export function parseHtmlRegions(html) {
   ).slice(0, 100_000);
 
   const links = [];
+  // Quoted or unquoted href (joshbeard.com and other minified static sites).
   const linkPattern =
-    /<a\b([^>]*)href\s*=\s*["']([^"']+)["']([^>]*)>([\s\S]*?)<\/a>/gi;
+    /<a\b([^>]*)href\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))([^>]*)>([\s\S]*?)<\/a>/gi;
 
   while ((match = linkPattern.exec(source))) {
     const before = match[1];
-    const after = match[3] || "";
+    const after = match[5] || "";
     const attrs = `${before} ${after}`;
-    const href = decodeHrefForParse(match[2]);
+    const href = decodeHrefForParse(match[2] ?? match[3] ?? match[4] ?? "");
     const text = capRemoteString(
-      match[4].replace(/<[^>]+>/g, " "),
+      match[6].replace(/<[^>]+>/g, " "),
       MAX_ANCHOR_CHARS,
     );
-    const relMatch = attrs.match(/\brel\s*=\s*["']([^"']+)["']/i);
-    const rel = relMatch?.[1]
-      ? relMatch[1]
-          .toLowerCase()
-          .split(/\s+/)
-          .map((token) => token.trim())
-          .filter(Boolean)
-      : [];
-    const classMatch = attrs.match(/\bclass\s*=\s*["']([^"']+)["']/i);
-    const classNames = classMatch?.[1]
-      ? classMatch[1]
-          .toLowerCase()
-          .split(/\s+/)
-          .map((token) => token.trim())
-          .filter(Boolean)
-      : [];
+    const rel = attributeTokens(htmlAttributeValue(attrs, "rel"));
+    const classNames = attributeTokens(htmlAttributeValue(attrs, "class"));
 
     if (href) {
       links.push({ href, text, rel, classNames });

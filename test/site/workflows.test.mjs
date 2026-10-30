@@ -34,6 +34,7 @@ test("network-sync keeps hourly and registry triggers plus sync steps", async ()
   assert.match(sync, /npm run nlp:validate/);
   assert.match(sync, /npm run nlp:quality/);
   assert.match(sync, /npm run format:data/);
+  assert.match(sync, /GITHUB_TOKEN:\s*\$\{\{\s*github\.token\s*\}\}/);
 });
 
 test("network-sync publish set lists CI-owned generated paths", async () => {

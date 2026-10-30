@@ -7,12 +7,15 @@ import test from "node:test";
 
 import {
   CONTENT_INDEX_PATHS,
+  IDENTITY_SLASH_PATHS,
   MAX_CONTENT_INDEX_CHILDREN,
   MAX_TOPIC_HUB_CHILDREN,
   TOPIC_HUB_INDEX_PATHS,
   contentIndexChildUrls,
   contentIndexSeedUrls,
   crawlOrigin,
+  externalOutboundLinks,
+  identitySlashSeedUrls,
   isContentIndexUrl,
   isTopicHubIndexUrl,
   topicHubChildUrls,
@@ -234,7 +237,45 @@ test("contentIndexSeedUrls: returns all content index paths for an origin", () =
   const urls = contentIndexSeedUrls("https://a.example");
   assert.ok(urls.includes("https://a.example/notes/"));
   assert.ok(urls.includes("https://a.example/blog/"));
+  assert.ok(urls.includes("https://a.example/me/"));
+  assert.ok(urls.includes("https://a.example/site/"));
+  assert.ok(urls.includes("https://a.example/social/"));
+  assert.ok(urls.includes("https://a.example/elsewhere/"));
+  assert.ok(urls.includes("https://a.example/health/"));
   assert.ok(urls.length === CONTENT_INDEX_PATHS.length);
+});
+
+test("identitySlashSeedUrls: covers indieweb slash pages", () => {
+  const urls = identitySlashSeedUrls("https://joshbeard.example");
+  assert.ok(urls.includes("https://joshbeard.example/more/"));
+  assert.ok(urls.includes("https://joshbeard.example/site/"));
+  assert.ok(urls.includes("https://joshbeard.example/now/"));
+  assert.ok(urls.includes("https://joshbeard.example/uses/"));
+  assert.equal(urls.length, IDENTITY_SLASH_PATHS.length);
+});
+
+test("externalOutboundLinks: absolutizes and keeps only cross-origin http(s)", () => {
+  const outbound = externalOutboundLinks(
+    "https://joshbeard.com",
+    "https://joshbeard.com/site/",
+    [
+      { href: "/", text: "Home" },
+      { href: "https://joshternet.org/", text: "Joshternet", rel: ["noopener"] },
+      {
+        href: "https://joshuamorris.info/",
+        text: "Joshua Morris",
+        classNames: ["ext"],
+      },
+      { href: "/.well-known/josh", text: "josh" },
+      { href: "gemini://jbeard.co", text: "gemini" },
+    ],
+  );
+
+  assert.equal(outbound.length, 2);
+  assert.equal(outbound[0].href, "https://joshternet.org/");
+  assert.equal(outbound[0].page, "https://joshbeard.com/site/");
+  assert.equal(outbound[1].href, "https://joshuamorris.info/");
+  assert.deepEqual(outbound[1].classNames, ["ext"]);
 });
 
 test("contentIndexSeedUrls: empty/invalid origin returns empty array (lines 265-266)", () => {

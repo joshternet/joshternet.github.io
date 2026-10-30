@@ -12,6 +12,7 @@ import {
   compactWhyHere,
   connectionTopicOverlaps,
   contentTopicLabels,
+  isJoshternetHubContentUrl,
   MAX_CONNECTION_TOPIC_PAIRS,
   MAX_COOCCURRENCE_PAIRS,
   oneLatestPerOrigin,
@@ -140,6 +141,61 @@ test("What's New keeps one latest item per origin inside seven days", () => {
   assert.equal(views.activity.primary.length, 1);
   assert.equal(views.activity.primary[0].url, "https://a.example/fresh");
   assert.equal(views.activity.window_days, 7);
+});
+
+test("isJoshternetHubContentUrl recognizes hub hosts only", () => {
+  assert.equal(isJoshternetHubContentUrl("https://joshternet.org/"), true);
+  assert.equal(
+    isJoshternetHubContentUrl("https://www.joshternet.org/about/"),
+    true,
+  );
+  assert.equal(
+    isJoshternetHubContentUrl("https://joshua.seigler.net/links/"),
+    false,
+  );
+  assert.equal(isJoshternetHubContentUrl(""), false);
+  assert.equal(isJoshternetHubContentUrl(null), false);
+});
+
+test("What's New skips member posts that only point at the Joshternet hub", () => {
+  const now = new Date("2026-10-30T12:00:00.000Z");
+  const views = buildViewDocuments({
+    network: [
+      {
+        origin: "https://joshua.seigler.net",
+        domain: "joshua.seigler.net",
+        title: "Joshua Seigler",
+      },
+    ],
+    content: {
+      items: [
+        {
+          url: "https://joshternet.org/",
+          site_origin: "https://joshua.seigler.net",
+          title:
+            "Link: Joshternet: An Open Network for Joshes and Independent Websites",
+          published_at: "2026-10-30T10:00:00.000Z",
+        },
+        {
+          url: "https://joshua.seigler.net/posts/angular-impressions/",
+          site_origin: "https://joshua.seigler.net",
+          title: "Angular impressions",
+          published_at: "2026-10-28T10:00:00.000Z",
+        },
+      ],
+    },
+    topics: { community_count: 0 },
+    connections: {},
+    siteSignals: { origins: [] },
+    generatedAt: "2026-10-30T12:00:00.000Z",
+    now,
+  });
+
+  assert.equal(views.activity.primary.length, 1);
+  assert.equal(
+    views.activity.primary[0].url,
+    "https://joshua.seigler.net/posts/angular-impressions/",
+  );
 });
 
 test("What's New cards keep advertised https images", () => {

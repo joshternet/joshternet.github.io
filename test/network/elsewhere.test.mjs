@@ -9,7 +9,11 @@ import {
   classifyElsewhereHost,
   elsewhereHostCatalog,
   elsewhereLabel,
+  githubApiHeaders,
+  githubProfileDisplayName,
   isElsewhereProfileUrl,
+  personNameFromElsewhere,
+  resolveParticipantTitle,
   sanitizeElsewhere,
   withElsewhere,
 } from "../../scripts/network/elsewhere.mjs";
@@ -437,4 +441,141 @@ test("isElsewhereProfileUrl: discord.gg non-invite URL fires hostname === 'disco
   const url = new URL("https://discord.gg/server-name");
   // first = "server-name" (not "users" nor "invite") → L371: url.hostname === "discord.gg" fires
   assert.equal(isElsewhereProfileUrl(url, "discord"), true);
+});
+
+test("githubProfileDisplayName reads person-shaped API name", async () => {
+  // External boundary: GitHub Users API.
+  const fetchMock = async (url) => {
+    assert.equal(String(url), "https://api.github.com/users/joshcanhelp");
+    return {
+      ok: true,
+      async json() {
+        return { name: "Josh Cunningham", login: "joshcanhelp" };
+      },
+    };
+  };
+
+  assert.equal(
+    await githubProfileDisplayName("https://github.com/joshcanhelp", {
+      fetch: fetchMock,
+    }),
+    "Josh Cunningham",
+  );
+});
+
+test("githubProfileDisplayName ignores non-person API names and failures", async () => {
+  assert.equal(
+    await githubProfileDisplayName("https://github.com/joshcanhelp", {
+      fetch: async () => ({
+        ok: true,
+        async json() {
+          return { name: "joshcanhelp" };
+        },
+      }),
+    }),
+    "",
+  );
+  assert.equal(
+    await githubProfileDisplayName("https://github.com/joshcanhelp/repo", {
+      fetch: async () => {
+        throw new Error("should not fetch repos");
+      },
+    }),
+    "",
+  );
+  assert.equal(
+    await githubProfileDisplayName("https://github.com/joshcanhelp", {
+      fetch: async () => ({
+        ok: false,
+        async json() {
+          return {};
+        },
+      }),
+    }),
+    "",
+  );
+});
+
+test("personNameFromElsewhere uses the first GitHub profile name", async () => {
+  // External boundary: GitHub Users API.
+  const fetchMock = async () => ({
+    ok: true,
+    async json() {
+      return { name: "Josh Cunningham" };
+    },
+  });
+
+  assert.equal(
+    await personNameFromElsewhere(
+      [
+        {
+          url: "https://x.com/joshcanhelp",
+          network: "x",
+          label: "X",
+        },
+        {
+          url: "https://github.com/joshcanhelp",
+          network: "github",
+          label: "GitHub",
+        },
+      ],
+      { fetch: fetchMock },
+    ),
+    "Josh Cunningham",
+  );
+});
+
+test("githubApiHeaders includes bearer token from options or env", () => {
+  const previous = process.env.GITHUB_TOKEN;
+  delete process.env.GITHUB_TOKEN;
+  delete process.env.NETWORK_GITHUB_TOKEN;
+
+  try {
+    assert.deepEqual(githubApiHeaders(), {
+      Accept: "application/vnd.github+json",
+      "User-Agent": "Joshternet-Network-Sync",
+    });
+    assert.equal(
+      githubApiHeaders({ token: " test-token " }).Authorization,
+      "Bearer test-token",
+    );
+    process.env.GITHUB_TOKEN = "env-token";
+    assert.equal(githubApiHeaders().Authorization, "Bearer env-token");
+  } finally {
+    if (previous === undefined) {
+      delete process.env.GITHUB_TOKEN;
+    } else {
+      process.env.GITHUB_TOKEN = previous;
+    }
+    delete process.env.NETWORK_GITHUB_TOKEN;
+  }
+});
+
+test("resolveParticipantTitle prefers GitHub name over slogan site name", async () => {
+  // External boundary: GitHub Users API.
+  const fetchMock = async () => ({
+    ok: true,
+    async json() {
+      return { name: "Josh Cunningham" };
+    },
+  });
+
+  assert.equal(
+    await resolveParticipantTitle(
+      {
+        ogSiteName: "Josh Can Help",
+        documentTitle: "Josh Can Help - Software",
+        elsewhere: [
+          {
+            url: "https://github.com/joshcanhelp",
+            network: "github",
+            label: "GitHub",
+          },
+        ],
+      },
+      "www.joshcanhelp.com",
+      { fetch: fetchMock },
+    ),
+    "Josh Cunningham",
+  );
 });

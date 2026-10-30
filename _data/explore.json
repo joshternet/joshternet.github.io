@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T21:26:24.317Z",
+  "generated_at": "2026-10-30T22:34:54.704Z",
   "participant_count": 9,
-  "community_count": 246,
+  "community_count": 237,
   "publication_count": 846,
-  "connection_count": 13,
+  "connection_count": 8,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
     "connection": "first edge after stable from, to, relation sort"
@@ -13,12 +13,12 @@
     {
       "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
       "title": "Healthy Weight Plan Builder",
-      "summary": "Download the Word document (.docx) A universal AI nutrition coach prompt by Span AI Solutions · Version 1.2 · October 2026 Created by Josh Müller ( @theJoshMuller ) and Kamila Buitrago ( @theKamilaBuitrago ) · spanaisolutions.com How to use it Copy everything between START OF PROMPT and END OF PROMPT . Paste it into any AI chat: Claude, ChatGPT, Gemini, DeepSeek, or another one. Press send. The AI",
+      "summary": "Download the Word document (.docx) A universal AI nutrition coach prompt by Span AI Solutions · Version 1.2 · October 2026 Created by Josh Müller ( @theJoshMuller ) and Kamila Buitrago ( @theKamilaBuitrago ) · spanaisolutions.com How to use it Click copy to copy the text in the box. Paste it into any AI chat: Claude, ChatGPT, Gemini, DeepSeek, or another one. Press send. The AI will ask you some e",
       "published_at": "2026-10-30T18:19:07.000Z",
       "content_type": "article",
       "language": "en",
       "site_origin": "https://joshmuller.ca",
-      "site_title": "Josh's site",
+      "site_title": "Josh Müller",
       "domain": "joshmuller.ca",
       "tags": [
         {
@@ -32,7 +32,7 @@
           "label": "docs"
         }
       ],
-      "image": "/assets/activity/posters/01fdb0ac1f9d8e4338752d48b3a01ac3bf8ce674ed26741f572f635a0c9c7aa9.webp",
+      "image": "/assets/activity/posters/8ece6662947fc1e10b7c545f03ecfb73e47ea42615a22acb19fcc9d72bcd5791.webp",
       "image_origin": ""
     },
     {
@@ -61,39 +61,6 @@
       "image_origin": ""
     },
     {
-      "url": "https://joshternet.org/",
-      "title": "Link: Joshternet: An Open Network for Joshes and Independent Websites",
-      "summary": "Joshternet connects people who identify as Josh and the independent websites they call home—an open, decentralized network built on shared web conventions.",
-      "published_at": "2026-10-30T05:51:20.000Z",
-      "content_type": "article",
-      "language": "en",
-      "site_origin": "https://joshua.seigler.net",
-      "site_title": "Hello!",
-      "domain": "joshua.seigler.net",
-      "tags": [
-        {
-          "slug": "docs",
-          "label": "docs"
-        },
-        {
-          "slug": "field-recording",
-          "label": "field recording"
-        }
-      ],
-      "neighborhoods": [
-        {
-          "slug": "docs",
-          "label": "docs"
-        },
-        {
-          "slug": "field-recording",
-          "label": "field recording"
-        }
-      ],
-      "image": "/assets/activity/posters/b97f97fbe49e00bdac92412cb1dc50549767dd9d4d56366a2ba8aa5f7634d5c1.webp",
-      "image_origin": ""
-    },
-    {
       "url": "https://joshghent.com/enterprise-sales-teams/",
       "title": "Enterprise sales teams, please, I beg you, stop",
       "summary": "I asked for a price on a few extra seats of software we already pay for. Two days and a pile of irrelevant questions later, I got one.",
@@ -101,7 +68,7 @@
       "content_type": "article",
       "language": "en",
       "site_origin": "https://joshghent.com",
-      "site_title": "Developer Musings",
+      "site_title": "Josh Ghent",
       "domain": "joshghent.com",
       "tags": [],
       "neighborhoods": [],
@@ -116,7 +83,7 @@
       "content_type": "article",
       "language": "en",
       "site_origin": "https://joshtronic.com",
-      "site_title": "Joshtronic",
+      "site_title": "Josh Sherman",
       "domain": "joshtronic.com",
       "tags": [],
       "neighborhoods": [],
@@ -125,20 +92,20 @@
     }
   ],
   "neighborhood": {
-    "slug": "google",
-    "label": "google",
-    "member_count": 4
+    "slug": "nonprofit",
+    "label": "nonprofit",
+    "member_count": 2
   },
   "connection": {
-    "from": "https://joshternet.org",
-    "to": "https://joshbeard.com",
-    "relation": "homepage-link",
-    "label": "links to from the homepage",
-    "from_title": "Joshternet",
-    "to_title": "Josh Beard",
-    "href": "https://joshbeard.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-    "page": "https://joshternet.org/",
-    "text": "Josh Joshternet participant. Josh Beard ↗ Josh Beard works on infrastructure, developer workflows, and software delivery systems",
-    "evidence_count": 2
+    "from": "https://joshbeard.com",
+    "to": "https://joshternet.org",
+    "relation": "content-link",
+    "label": "linked to",
+    "from_title": "Josh Beard",
+    "to_title": "Joshternet",
+    "href": "https://joshternet.org/",
+    "page": "https://joshbeard.com/site/",
+    "text": "Joshternet",
+    "evidence_count": 1
   }
 }

@@ -65,6 +65,25 @@ test("parseHtmlRegions: link with class attribute is extracted", () => {
   assert.ok(link.classNames.includes("u-in-reply-to"));
 });
 
+test("parseHtmlRegions: unquoted href/rel/class from minified HTML", () => {
+  const html = `<!doctype html><html lang=en><body><div class=home_links><a href=/me/ title=About class=home_link>About</a><a href=https://github.com/joshbeard rel="noopener noreferrer" class=ext>GitHub</a><a href=https://joshternet.org/ class=network-card__link>Joshternet</a></div></body></html>`;
+  const result = parseHtmlRegions(html);
+  assert.equal(result.links.length, 3);
+  assert.equal(result.links[0].href, "/me/");
+  assert.deepEqual(result.links[0].classNames, ["home_link"]);
+  assert.equal(result.links[1].href, "https://github.com/joshbeard");
+  assert.ok(result.links[1].rel.includes("noopener"));
+  assert.deepEqual(result.links[2].classNames, ["network-card__link"]);
+});
+
+test("parseHtmlRegions: joshbeard-style /site/ page yields member links", () => {
+  const html = `<!doctype html><html><body><p>This site participates in <a href=https://joshternet.org/>Joshternet</a> and links to <a href=https://joshuamorris.info/>Joshua Morris</a> plus <a href=/.well-known/josh>/.well-known/josh</a>.</p></body></html>`;
+  const result = parseHtmlRegions(html);
+  assert.ok(result.links.some((l) => l.href === "https://joshternet.org/"));
+  assert.ok(result.links.some((l) => l.href === "https://joshuamorris.info/"));
+  assert.ok(result.links.some((l) => l.href === "/.well-known/josh"));
+});
+
 test("parseHtmlRegions: link without class has empty classNames", () => {
   const html = `<html><body>
     <a href="https://b.example/">No class</a>
