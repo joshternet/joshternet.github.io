@@ -167,7 +167,7 @@
       "josh": true
     },
     "first_participated_at": "2026-09-25T08:52:07.833928Z",
-    "latest_declaration_check_at": "2026-10-29T12:39:21.821754Z",
+    "latest_declaration_check_at": "2026-10-30T13:31:24.108736Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Joshtronic",
     "description": "Code is a medium that found me at an impressionable young age. I've been fortunate to make a career out of it, even if I say things like, \"I'm not sure what I want to do when I grow up.\"",
@@ -185,6 +185,42 @@
         "url": "https://joshtronic.com/atom.xml",
         "type": "application/atom+xml",
         "title": "Joshtronic - Atom Feed"
+      }
+    ]
+  },
+  {
+    "origin": "https://joshua.seigler.net",
+    "domain": "joshua.seigler.net",
+    "identity": "affirmed",
+    "declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "initial_declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "first_participated_at": "2026-10-30T08:30:24.258572Z",
+    "latest_declaration_check_at": "2026-10-30T08:30:24.258572Z",
+    "latest_declaration_check_outcome": "valid",
+    "title": "Hello!",
+    "description": "Software engineer personal homepage",
+    "screenshot": "/assets/network/sites/b5cce6756d861f9fc0991a53d73e3b8b2ac163c0c9b8437d0b62775183d16a0e.webp",
+    "embeddable": true,
+    "frame_reason": "allowed",
+    "captured_at": "2026-10-30T14:08:10.759Z",
+    "feeds": [
+      {
+        "url": "https://joshua.seigler.net/assets/feed-Cyyd5PFg.xml",
+        "type": "application/atom+xml",
+        "title": "Hello!"
+      }
+    ],
+    "elsewhere": [
+      {
+        "url": "https://github.com/seigler",
+        "network": "github",
+        "label": "GitHub"
       }
     ]
   },

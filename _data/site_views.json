@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-29T22:44:09.840Z",
+  "generated_at": "2026-10-30T14:10:14.607Z",
   "sites": [
     {
       "origin": "https://joshghent.com",
@@ -52,6 +52,10 @@
           "label": "business"
         },
         {
+          "slug": "communication",
+          "label": "communication"
+        },
+        {
           "slug": "database",
           "label": "databases"
         },
@@ -86,6 +90,10 @@
         {
           "slug": "infrastructure",
           "label": "infrastructure"
+        },
+        {
+          "slug": "learning",
+          "label": "learning"
         },
         {
           "slug": "life",
@@ -173,7 +181,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-29T22:42:53.487Z"
+      "crawled_at": "2026-10-30T14:08:13.355Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -276,6 +284,10 @@
           "label": "case study"
         },
         {
+          "slug": "communication",
+          "label": "communication"
+        },
+        {
           "slug": "design",
           "label": "design"
         },
@@ -342,6 +354,10 @@
         {
           "slug": "law",
           "label": "law"
+        },
+        {
+          "slug": "learning",
+          "label": "learning"
         },
         {
           "slug": "life",
@@ -505,7 +521,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-29T22:42:53.487Z"
+      "crawled_at": "2026-10-30T14:08:13.355Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -526,6 +542,14 @@
       "outgoing": [],
       "incoming": [
         {
+          "from": "https://joshua.seigler.net",
+          "relation": "content-link",
+          "label": "linked to",
+          "href": "https://joshternet.org/",
+          "page": "https://joshua.seigler.net/links/",
+          "evidence_count": 1
+        },
+        {
           "from": "https://joshuamorris.info",
           "relation": "content-link",
           "label": "linked to",
@@ -541,7 +565,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-29T22:42:53.487Z"
+      "crawled_at": "2026-10-30T14:08:13.355Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -642,6 +666,10 @@
         {
           "slug": "javascript",
           "label": "javascript"
+        },
+        {
+          "slug": "learning",
+          "label": "learning"
         },
         {
           "slug": "life",
@@ -769,7 +797,136 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-29T22:42:53.487Z"
+      "crawled_at": "2026-10-30T14:08:13.355Z"
+    },
+    {
+      "origin": "https://joshua.seigler.net",
+      "domain": "joshua.seigler.net",
+      "title": "Hello!",
+      "description": "Software engineer personal homepage",
+      "identity": "affirmed",
+      "feeds": [
+        {
+          "url": "https://joshua.seigler.net/assets/feed-Cyyd5PFg.xml",
+          "type": "application/atom+xml",
+          "title": "Hello!"
+        }
+      ],
+      "elsewhere": [
+        {
+          "url": "https://github.com/seigler",
+          "network": "github",
+          "label": "GitHub"
+        }
+      ],
+      "community_topics": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "boardgame",
+          "label": "boardgames"
+        },
+        {
+          "slug": "communication",
+          "label": "communication"
+        },
+        {
+          "slug": "css",
+          "label": "css"
+        },
+        {
+          "slug": "design",
+          "label": "design"
+        },
+        {
+          "slug": "faith",
+          "label": "faith"
+        },
+        {
+          "slug": "ffmpeg",
+          "label": "ffmpeg"
+        },
+        {
+          "slug": "howto",
+          "label": "howto"
+        },
+        {
+          "slug": "learning",
+          "label": "learning"
+        },
+        {
+          "slug": "markdown",
+          "label": "markdown"
+        },
+        {
+          "slug": "pebble",
+          "label": "pebble"
+        },
+        {
+          "slug": "philosophy",
+          "label": "philosophy"
+        },
+        {
+          "slug": "recipe",
+          "label": "recipes"
+        },
+        {
+          "slug": "selfhosting",
+          "label": "selfhosting"
+        },
+        {
+          "slug": "software",
+          "label": "software"
+        },
+        {
+          "slug": "trade",
+          "label": "trade"
+        },
+        {
+          "slug": "youtube",
+          "label": "youtube"
+        },
+        {
+          "slug": "zeitgeist",
+          "label": "zeitgeist"
+        }
+      ],
+      "recent_content": {
+        "url": "http://charleshughsmith.blogspot.com/2025/08/ai-is-mirror-in-which-we-see-our-own.html",
+        "title": "Link: AI is a Mirror in Which We See Our Own Reflection - oftwominds",
+        "summary": "",
+        "published_at": "2025-08-19T04:34:46.000Z",
+        "content_type": "article",
+        "language": "",
+        "site_origin": "https://joshua.seigler.net",
+        "site_title": "Hello!",
+        "domain": "joshua.seigler.net",
+        "tags": [],
+        "neighborhoods": [],
+        "image": "",
+        "image_origin": ""
+      },
+      "outgoing": [
+        {
+          "to": "https://joshternet.org",
+          "relation": "content-link",
+          "label": "linked to",
+          "href": "https://joshternet.org/",
+          "page": "https://joshua.seigler.net/links/",
+          "evidence_count": 1
+        }
+      ],
+      "incoming": [],
+      "coverage": {
+        "pages_discovered": 65,
+        "pages_fetched": 65,
+        "fetch_limit": 80,
+        "limit_reached": false,
+        "selection_strategy": "bounded-site-crawl-v1"
+      },
+      "crawled_at": "2026-10-30T14:08:13.355Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -1008,6 +1165,10 @@
         {
           "slug": "family",
           "label": "family"
+        },
+        {
+          "slug": "field-recording",
+          "label": "field recording"
         },
         {
           "slug": "finance",
@@ -1455,7 +1616,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-29T22:42:53.487Z"
+      "crawled_at": "2026-10-30T14:08:13.355Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -1681,7 +1842,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-29T22:42:53.487Z"
+      "crawled_at": "2026-10-30T14:08:13.355Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -1877,7 +2038,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-29T22:42:53.487Z",
+      "crawled_at": "2026-10-30T14:08:13.355Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,

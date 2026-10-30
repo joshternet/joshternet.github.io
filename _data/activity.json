@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-29T22:44:09.840Z",
+  "generated_at": "2026-10-30T14:10:14.607Z",
   "window_days": 7,
-  "primary_count": 3,
-  "item_count": 780,
+  "primary_count": 4,
+  "item_count": 845,
   "content_types": ["article"],
   "primary": [
     {
-      "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
-      "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built",
-      "summary": "Knowing how to build software is not the same as knowing what should be built. On craft, judgment, architecture, and why AI makes that distinction sharper.",
-      "published_at": "2026-10-28T17:00:00.000Z",
+      "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
+      "title": "Worth Wandering: Radio Aporee",
+      "summary": "A worldwide collection of field recordings that lets you explore the sounds of cities, forests, rivers, train stations and ordinary places, with experimental radio projects that turn listening into an entirely different way of experiencing the world.",
+      "published_at": "2026-10-30T14:00:00.000Z",
       "content_type": "article",
       "language": "en",
       "site_origin": "https://joshuamorris.info",
@@ -18,33 +18,32 @@
       "domain": "joshuamorris.info",
       "tags": [
         {
-          "slug": "architecture",
-          "label": "architecture"
-        },
-        {
-          "slug": "career",
-          "label": "career"
-        },
-        {
-          "slug": "craftsmanship",
-          "label": "craftsmanship"
+          "slug": "field-recording",
+          "label": "field recording"
         }
       ],
       "neighborhoods": [
         {
-          "slug": "architecture",
-          "label": "architecture"
-        },
-        {
-          "slug": "career",
-          "label": "career"
-        },
-        {
-          "slug": "craftsmanship",
-          "label": "craftsmanship"
+          "slug": "field-recording",
+          "label": "field recording"
         }
       ],
-      "image": "/assets/activity/posters/a2f1d32d99f25dc748cc8cff7caf617a66f06febca5546378f74365bc43c1324.webp",
+      "image": "/assets/activity/posters/bd55e5a6e8a8b4b8e593596e876eb2d31f4a32beecea28adcfa36c210b00811f.webp",
+      "image_origin": ""
+    },
+    {
+      "url": "https://joshternet.org/",
+      "title": "Link: Joshternet: An Open Network for Joshes and Independent Websites",
+      "summary": "Joshternet connects people who identify as Josh and the independent websites they call home—an open, decentralized network built on shared web conventions.",
+      "published_at": "2026-10-30T05:51:20.000Z",
+      "content_type": "article",
+      "language": "en",
+      "site_origin": "https://joshua.seigler.net",
+      "site_title": "Hello!",
+      "domain": "joshua.seigler.net",
+      "tags": [],
+      "neighborhoods": [],
+      "image": "/assets/activity/posters/b97f97fbe49e00bdac92412cb1dc50549767dd9d4d56366a2ba8aa5f7634d5c1.webp",
       "image_origin": ""
     },
     {

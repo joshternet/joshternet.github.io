@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T07:06:37.009Z",
-  "community_count": 232,
+  "generated_at": "2026-10-30T14:08:13.355Z",
+  "community_count": 242,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
       "slug": "ai",
       "label": "ai",
-      "member_count": 6,
+      "member_count": 7,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -78,6 +78,19 @@
             },
             {
               "url": "https://joshtronic.com/tag/ai/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshua.seigler.net/tags/ai/",
               "title": "",
               "source": "topic-hub:page"
             }
@@ -177,7 +190,7 @@
         "topic-hub:page"
       ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-28T21:05:12.557Z",
+      "last_changed_at": "2026-10-30T14:08:13.355Z",
       "active": true
     },
     {
@@ -565,11 +578,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/09/matthew-grabelsky-turns-the-subway-into-modern-mythology/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/09/tristan-eaton-makes-walls-feel-too-small-for-the-art/",
               "title": "",
               "source": "microformat:p-category"
@@ -908,6 +916,30 @@
           "note": "Below the community quality threshold; not membership."
         }
       ]
+    },
+    {
+      "slug": "boardgame",
+      "label": "boardgames",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshua.seigler.net/tags/boardgames/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-30T14:08:13.355Z",
+      "last_changed_at": "2026-10-30T14:08:13.355Z",
+      "active": true
     },
     {
       "slug": "book",
@@ -1539,6 +1571,61 @@
       "active": true
     },
     {
+      "slug": "communication",
+      "label": "communication",
+      "member_count": 3,
+      "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/communication/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshghent.com/next-gen-communication/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/writings/2023/err-on-the-side-of-overcommunication/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshua.seigler.net/tags/communication/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["catalog-match", "topic-hub:page"],
+      "first_seen_at": "2026-10-30T14:08:13.355Z",
+      "last_changed_at": "2026-10-30T14:08:13.355Z",
+      "active": true
+    },
+    {
       "slug": "communication-pr",
       "label": "communications & pr",
       "member_count": 1,
@@ -1673,6 +1760,13 @@
           "origin": "https://joshternet.org",
           "domain": "joshternet.org",
           "title": "Joshternet",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
@@ -2037,7 +2131,7 @@
     {
       "slug": "css",
       "label": "css",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://joshtronic.com",
@@ -2054,6 +2148,24 @@
               "url": "https://joshtronic.com/tag/css/",
               "title": "",
               "source": "topic-hub:page"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://css-tricks.com/is-it-time-to-un-sass/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshua.seigler.net/posts/angular-impressions/",
+              "title": "",
+              "source": "visible-text"
             }
           ]
         },
@@ -2076,9 +2188,15 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:link",
+        "topic-hub:page",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-28T21:05:12.557Z",
+      "last_changed_at": "2026-10-30T14:08:13.355Z",
       "active": true
     },
     {
@@ -2247,7 +2365,7 @@
     {
       "slug": "design",
       "label": "design",
-      "member_count": 5,
+      "member_count": 6,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -2311,16 +2429,34 @@
           ]
         },
         {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshua.seigler.net/posts/angular-impressions/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshua.seigler.net/posts/i-made-some-pebble-watchfaces/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshua.seigler.net/posts/site-design-updated/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/09/matthew-grabelsky-turns-the-subway-into-modern-mythology/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
             {
               "url": "https://joshuamorris.info/notes/2026/09/09/tristan-eaton-makes-walls-feel-too-small-for-the-art/",
               "title": "",
@@ -2414,7 +2550,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
-      "last_changed_at": "2026-10-28T21:05:12.557Z",
+      "last_changed_at": "2026-10-30T14:08:13.355Z",
       "active": true
     },
     {
@@ -3321,6 +3457,46 @@
       ]
     },
     {
+      "slug": "faith",
+      "label": "faith",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshua.seigler.net/tags/faith/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-30T14:08:13.355Z",
+      "last_changed_at": "2026-10-30T14:08:13.355Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
+    },
+    {
       "slug": "family",
       "label": "family",
       "member_count": 1,
@@ -3417,6 +3593,54 @@
       "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
+      "active": true
+    },
+    {
+      "slug": "ffmpeg",
+      "label": "ffmpeg",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshua.seigler.net/tags/ffmpeg/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-30T14:08:13.355Z",
+      "last_changed_at": "2026-10-30T14:08:13.355Z",
+      "active": true
+    },
+    {
+      "slug": "field-recording",
+      "label": "field recording",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category"],
+      "first_seen_at": "2026-10-30T14:08:13.355Z",
+      "last_changed_at": "2026-10-30T14:08:13.355Z",
       "active": true
     },
     {
@@ -4497,6 +4721,30 @@
       "active": true
     },
     {
+      "slug": "howto",
+      "label": "howto",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshua.seigler.net/tags/howto/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-30T14:08:13.355Z",
+      "last_changed_at": "2026-10-30T14:08:13.355Z",
+      "active": true
+    },
+    {
       "slug": "independent-web",
       "label": "independent web",
       "member_count": 1,
@@ -5083,6 +5331,113 @@
       "active": true
     },
     {
+      "slug": "learning",
+      "label": "learning",
+      "member_count": 4,
+      "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/typing-fast/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/hello/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/peace-camp-dream-again/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/c.s.lewis-on-ideal-conditions/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/consider-the-edge-cases/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/desert-greening-reading/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/choosing-the-path-of-learning/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/low-noise-high-signal/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2024/full-english-spanish-interlinear-live/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshtronic.com",
+          "domain": "joshtronic.com",
+          "title": "Joshtronic",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshua.seigler.net/tags/learning/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["catalog-match", "topic-hub:page"],
+      "first_seen_at": "2026-10-30T14:08:13.355Z",
+      "last_changed_at": "2026-10-30T14:08:13.355Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
+    },
+    {
       "slug": "lego",
       "label": "lego",
       "member_count": 1,
@@ -5202,11 +5557,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/09/matthew-grabelsky-turns-the-subway-into-modern-mythology/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/10/09/please-ask-for-help-when-you-need-it/",
               "title": "",
               "source": "microformat:p-category"
@@ -5222,7 +5572,16 @@
       "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
       "last_changed_at": "2026-10-28T21:05:12.557Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "lifestyle",
@@ -5458,7 +5817,16 @@
       ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-10-28T21:05:12.557Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "lock-in",
@@ -5520,7 +5888,7 @@
     {
       "slug": "markdown",
       "label": "markdown",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -5530,6 +5898,19 @@
           "pages": [
             {
               "url": "https://joshghent.com/marp/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://blog.lusito.info/markdown-code-blocks-with-a-title-filename.html",
               "title": "",
               "source": "catalog-match"
             }
@@ -5551,7 +5932,7 @@
       ],
       "sources": ["catalog-match", "microformat:p-category"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
-      "last_changed_at": "2026-10-28T21:05:12.557Z",
+      "last_changed_at": "2026-10-30T14:08:13.355Z",
       "active": true
     },
     {
@@ -6543,11 +6924,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/09/matthew-grabelsky-turns-the-subway-into-modern-mythology/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/09/tristan-eaton-makes-walls-feel-too-small-for-the-art/",
               "title": "",
               "source": "microformat:p-category"
@@ -6624,6 +7000,30 @@
       "sources": ["topic-hub:page"],
       "first_seen_at": "2026-10-22T18:33:03.284Z",
       "last_changed_at": "2026-10-22T18:33:03.284Z",
+      "active": true
+    },
+    {
+      "slug": "pebble",
+      "label": "pebble",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshua.seigler.net/tags/pebble/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-30T14:08:13.355Z",
+      "last_changed_at": "2026-10-30T14:08:13.355Z",
       "active": true
     },
     {
@@ -6759,8 +7159,21 @@
     {
       "slug": "philosophy",
       "label": "philosophy",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshua.seigler.net/tags/philosophy/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -6775,9 +7188,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": ["microformat:p-category", "topic-hub:page"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
-      "last_changed_at": "2026-10-28T21:05:12.557Z",
+      "last_changed_at": "2026-10-30T14:08:13.355Z",
       "active": true
     },
     {
@@ -6863,7 +7276,16 @@
       "sources": ["microformat:p-category"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
       "last_changed_at": "2026-10-28T21:05:12.557Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "policy",
@@ -7552,7 +7974,7 @@
     {
       "slug": "recipe",
       "label": "recipes",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
         {
           "origin": "https://joshmuller.ca",
@@ -7601,11 +8023,59 @@
               "source": "article:section"
             }
           ]
+        },
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshua.seigler.net/posts/i-made-myself-a-recipe-label-generator/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshua.seigler.net/recipes/amish-egg-noodles/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshua.seigler.net/recipes/bread-pudding/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshua.seigler.net/recipes/breakfast-strata/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshua.seigler.net/recipes/chicken-chili-verde/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshua.seigler.net/recipes/corn-casserole/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshua.seigler.net/recipes/creamy-chicken-orzo/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshua.seigler.net/recipes/curry-bolognese/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
         }
       ],
-      "sources": ["article:section"],
+      "sources": ["article:section", "catalog-match"],
       "first_seen_at": "2026-10-12T18:51:53.092Z",
-      "last_changed_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-30T14:08:13.355Z",
       "active": true
     },
     {
@@ -7909,7 +8379,16 @@
       "sources": ["microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
       "last_changed_at": "2026-10-28T21:05:12.557Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "science-fiction",
@@ -8127,6 +8606,30 @@
       "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
       "last_changed_at": "2026-10-28T21:05:12.557Z",
+      "active": true
+    },
+    {
+      "slug": "selfhosting",
+      "label": "selfhosting",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshua.seigler.net/tags/selfhosting/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-30T14:08:13.355Z",
+      "last_changed_at": "2026-10-30T14:08:13.355Z",
       "active": true
     },
     {
@@ -8352,7 +8855,7 @@
     {
       "slug": "software",
       "label": "software",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -8416,6 +8919,19 @@
           ]
         },
         {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshua.seigler.net/tags/software/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        },
+        {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
           "title": "Joshua Morris",
@@ -8444,9 +8960,14 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-10-28T21:05:12.557Z",
+      "last_changed_at": "2026-10-30T14:08:13.355Z",
       "active": true,
       "related_discoveries": [
         {
@@ -8706,6 +9227,13 @@
           "title": "Joshtronic",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
         }
       ]
     },
@@ -8956,6 +9484,13 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
           "origin": "https://www.joshcanhelp.com",
           "domain": "www.joshcanhelp.com",
           "title": "Josh Can Help",
@@ -9060,8 +9595,21 @@
     {
       "slug": "trade",
       "label": "trade",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshua.seigler.net/posts/tools-of-the-trade/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -9076,9 +9624,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": ["catalog-match", "microformat:p-category"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
-      "last_changed_at": "2026-10-28T21:05:12.557Z",
+      "last_changed_at": "2026-10-30T14:08:13.355Z",
       "active": true,
       "related_discoveries": [
         {
@@ -9914,7 +10462,7 @@
     {
       "slug": "youtube",
       "label": "youtube",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -9953,6 +10501,19 @@
           ]
         },
         {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.youtube.com/watch?v=VHRhPItNdIU",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
           "title": "Joshua Morris",
@@ -9968,7 +10529,31 @@
       ],
       "sources": ["catalog-match", "microformat:p-category"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
-      "last_changed_at": "2026-10-28T21:05:12.557Z",
+      "last_changed_at": "2026-10-30T14:08:13.355Z",
+      "active": true
+    },
+    {
+      "slug": "zeitgeist",
+      "label": "zeitgeist",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Hello!",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshua.seigler.net/tags/zeitgeist/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:page"],
+      "first_seen_at": "2026-10-30T14:08:13.355Z",
+      "last_changed_at": "2026-10-30T14:08:13.355Z",
       "active": true
     }
   ]

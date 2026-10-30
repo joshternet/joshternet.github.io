@@ -1,8 +1,29 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T07:06:37.009Z",
-  "edge_count": 4,
+  "generated_at": "2026-10-30T14:08:13.355Z",
+  "edge_count": 5,
   "edges": [
+    {
+      "from": "https://joshua.seigler.net",
+      "to": "https://joshternet.org",
+      "relation": "content-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://joshternet.org/",
+      "text": "Joshternet: An Open Network for Joshes and Independent Websites",
+      "rel": [],
+      "page": "https://joshua.seigler.net/links/",
+      "evidence_count": 1,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://joshua.seigler.net/links/",
+          "href": "https://joshternet.org/",
+          "text": "Joshternet: An Open Network for Joshes and Independent Websites",
+          "rel": []
+        }
+      ]
+    },
     {
       "from": "https://joshuamorris.info",
       "to": "https://joshghent.com",
