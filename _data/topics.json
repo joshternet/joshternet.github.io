@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T19:22:25.396Z",
-  "community_count": 242,
+  "generated_at": "2026-10-30T20:55:12.915Z",
+  "community_count": 243,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
@@ -2799,6 +2799,39 @@
           "origin": "https://joshternet.org",
           "domain": "joshternet.org",
           "title": "Joshternet",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
+    },
+    {
+      "slug": "docs",
+      "label": "docs",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh's site",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+              "title": "",
+              "source": "article:section"
+            }
+          ]
+        }
+      ],
+      "sources": ["article:section"],
+      "first_seen_at": "2026-10-30T20:55:12.915Z",
+      "last_changed_at": "2026-10-30T20:55:12.915Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Developer Musings",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
@@ -10346,17 +10379,17 @@
               "source": "article:section"
             },
             {
-              "url": "https://joshmuller.ca/writings/2023/fight-for-rest/",
-              "title": "",
-              "source": "article:section"
-            },
-            {
               "url": "https://joshmuller.ca/writings/2023/never-do-the-same-task-thrice/",
               "title": "",
               "source": "article:section"
             },
             {
               "url": "https://joshmuller.ca/writings/2023/note-to-future-self-exercise/",
+              "title": "",
+              "source": "article:section"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/on-triggers/",
               "title": "",
               "source": "article:section"
             }

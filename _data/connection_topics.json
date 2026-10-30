@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T14:10:14.607Z",
+  "generated_at": "2026-10-30T20:56:56.604Z",
   "overlap_count": 21,
   "pairs": [
     {
@@ -30,6 +30,10 @@
         {
           "slug": "discovery",
           "label": "discovery"
+        },
+        {
+          "slug": "docs",
+          "label": "docs"
         },
         {
           "slug": "email",
@@ -1112,6 +1116,10 @@
               "title": "Josh's site",
               "articles": [
                 {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                },
+                {
                   "url": "https://joshmuller.ca/writings/2026/use-ai-to-be-a-better-human/",
                   "title": "Use AI to Be a Better Human"
                 },
@@ -1138,10 +1146,6 @@
                 {
                   "url": "https://joshmuller.ca/writings/2024/translation-workflow/",
                   "title": "How we Lowered our Article Localization Costs a Full Order-of-Magnitude With LLMs"
-                },
-                {
-                  "url": "https://joshmuller.ca/writings/2023/use-llm-for-subtitles/",
-                  "title": "Using Whisper and LLMs to Create Perfect Subtitles"
                 }
               ]
             },
@@ -1752,6 +1756,29 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/13/an-online-book-club-across-our-own-websites/",
                   "title": "An Online Book Club Across Our Own Websites"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "docs",
+          "label": "docs",
+          "articles": [
+            {
+              "url": "https://joshghent.com/groundwork/",
+              "title": "/groundwork: a skill that makes any repo runnable from a fresh clone"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh's site",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
                 }
               ]
             }
@@ -3362,6 +3389,10 @@
           "label": "ai",
           "articles": [
             {
+              "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+              "title": "Healthy Weight Plan Builder"
+            },
+            {
               "url": "https://joshmuller.ca/writings/2026/use-ai-to-be-a-better-human/",
               "title": "Use AI to Be a Better Human"
             },
@@ -3388,10 +3419,6 @@
             {
               "url": "https://joshmuller.ca/writings/2024/translation-workflow/",
               "title": "How we Lowered our Article Localization Costs a Full Order-of-Magnitude With LLMs"
-            },
-            {
-              "url": "https://joshmuller.ca/writings/2023/use-llm-for-subtitles/",
-              "title": "Using Whisper and LLMs to Create Perfect Subtitles"
             }
           ],
           "sites": [
@@ -4190,6 +4217,29 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/13/an-online-book-club-across-our-own-websites/",
                   "title": "An Online Book Club Across Our Own Websites"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "docs",
+          "label": "docs",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+              "title": "Healthy Weight Plan Builder"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Developer Musings",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/groundwork/",
+                  "title": "/groundwork: a skill that makes any repo runnable from a fresh clone"
                 }
               ]
             }
@@ -5288,6 +5338,10 @@
           "slug": "nutrition",
           "label": "Nutrition",
           "articles": [
+            {
+              "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+              "title": "Healthy Weight Plan Builder"
+            },
             {
               "url": "https://joshmuller.ca/kamis-eating-plan/",
               "title": "Kami's Eating Plan"
@@ -6420,6 +6474,10 @@
               "title": "Josh's site",
               "articles": [
                 {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                },
+                {
                   "url": "https://joshmuller.ca/writings/2026/use-ai-to-be-a-better-human/",
                   "title": "Use AI to Be a Better Human"
                 },
@@ -6446,10 +6504,6 @@
                 {
                   "url": "https://joshmuller.ca/writings/2024/translation-workflow/",
                   "title": "How we Lowered our Article Localization Costs a Full Order-of-Magnitude With LLMs"
-                },
-                {
-                  "url": "https://joshmuller.ca/writings/2023/use-llm-for-subtitles/",
-                  "title": "Using Whisper and LLMs to Create Perfect Subtitles"
                 }
               ]
             },
@@ -7669,6 +7723,10 @@
               "title": "Josh's site",
               "articles": [
                 {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                },
+                {
                   "url": "https://joshmuller.ca/writings/2026/use-ai-to-be-a-better-human/",
                   "title": "Use AI to Be a Better Human"
                 },
@@ -7695,10 +7753,6 @@
                 {
                   "url": "https://joshmuller.ca/writings/2024/translation-workflow/",
                   "title": "How we Lowered our Article Localization Costs a Full Order-of-Magnitude With LLMs"
-                },
-                {
-                  "url": "https://joshmuller.ca/writings/2023/use-llm-for-subtitles/",
-                  "title": "Using Whisper and LLMs to Create Perfect Subtitles"
                 }
               ]
             },
@@ -8165,6 +8219,10 @@
               "title": "Josh's site",
               "articles": [
                 {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                },
+                {
                   "url": "https://joshmuller.ca/kamis-eating-plan/",
                   "title": "Kami's Eating Plan"
                 },
@@ -8453,6 +8511,10 @@
               "title": "Josh's site",
               "articles": [
                 {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                },
+                {
                   "url": "https://joshmuller.ca/writings/2026/use-ai-to-be-a-better-human/",
                   "title": "Use AI to Be a Better Human"
                 },
@@ -8479,10 +8541,6 @@
                 {
                   "url": "https://joshmuller.ca/writings/2024/translation-workflow/",
                   "title": "How we Lowered our Article Localization Costs a Full Order-of-Magnitude With LLMs"
-                },
-                {
-                  "url": "https://joshmuller.ca/writings/2023/use-llm-for-subtitles/",
-                  "title": "Using Whisper and LLMs to Create Perfect Subtitles"
                 }
               ]
             },
@@ -12020,6 +12078,10 @@
               "title": "Josh's site",
               "articles": [
                 {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                },
+                {
                   "url": "https://joshmuller.ca/writings/2026/use-ai-to-be-a-better-human/",
                   "title": "Use AI to Be a Better Human"
                 },
@@ -12046,10 +12108,6 @@
                 {
                   "url": "https://joshmuller.ca/writings/2024/translation-workflow/",
                   "title": "How we Lowered our Article Localization Costs a Full Order-of-Magnitude With LLMs"
-                },
-                {
-                  "url": "https://joshmuller.ca/writings/2023/use-llm-for-subtitles/",
-                  "title": "Using Whisper and LLMs to Create Perfect Subtitles"
                 }
               ]
             },
@@ -12507,6 +12565,10 @@
               "title": "Josh's site",
               "articles": [
                 {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                },
+                {
                   "url": "https://joshmuller.ca/writings/2026/use-ai-to-be-a-better-human/",
                   "title": "Use AI to Be a Better Human"
                 },
@@ -12533,10 +12595,6 @@
                 {
                   "url": "https://joshmuller.ca/writings/2024/translation-workflow/",
                   "title": "How we Lowered our Article Localization Costs a Full Order-of-Magnitude With LLMs"
-                },
-                {
-                  "url": "https://joshmuller.ca/writings/2023/use-llm-for-subtitles/",
-                  "title": "Using Whisper and LLMs to Create Perfect Subtitles"
                 }
               ]
             },

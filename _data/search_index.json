@@ -1,8 +1,17 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T14:10:14.607Z",
-  "document_count": 1042,
+  "generated_at": "2026-10-30T20:56:56.604Z",
+  "document_count": 1045,
   "documents": [
+    {
+      "type": "site",
+      "title": "Josh Beard",
+      "summary": "Josh Beard works on infrastructure, developer workflows, and software delivery systems",
+      "domain": "joshbeard.com",
+      "origin": "https://joshbeard.com",
+      "url": "https://joshbeard.com",
+      "topics": []
+    },
     {
       "type": "site",
       "title": "Developer Musings",
@@ -506,6 +515,15 @@
       "origin": "",
       "url": "/topics/discovery/",
       "topics": ["discovery", "discovery"]
+    },
+    {
+      "type": "topic",
+      "title": "docs",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/docs/",
+      "topics": ["docs", "docs"]
     },
     {
       "type": "topic",
@@ -3962,6 +3980,19 @@
     },
     {
       "type": "content",
+      "title": "Healthy Weight Plan Builder",
+      "summary": "Download the Word document (.docx) A universal AI nutrition coach prompt by Span AI Solutions · Version 1.2 · October 2026 Created by Josh Müller ( @theJoshMuller ) and Kamila Buitrago ( @theKamilaBuitrago ) · spanaisolutions.com How to use it Copy everything between START OF PROMPT and END OF PROMPT . Paste it into any AI chat: Claude, ChatGPT, Gemini, DeepSeek, or another one. Press send. The AI",
+      "domain": "joshmuller.ca",
+      "origin": "https://joshmuller.ca",
+      "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+      "topics": ["docs"],
+      "site_title": "Josh's site",
+      "published_at": "2026-10-30T18:19:07.000Z",
+      "image": "/assets/activity/posters/01fdb0ac1f9d8e4338752d48b3a01ac3bf8ce674ed26741f572f635a0c9c7aa9.webp",
+      "image_origin": ""
+    },
+    {
+      "type": "content",
       "title": "Plan de Comida de Josh",
       "summary": "Plan diario de Josh · Guía de preparación Días de comida: martes, miércoles, viernes, sábado y domingo. Meta por día de comida en casa: ~2.700 kcal · ~247 g de proteína · ~254 g de carbohidratos · ~82 g de grasa, en tres comidas . Estas cantidades son para Josh. Los pesos crudos/secos y las porciones cocidas aproximadas aparecen juntos abajo. Los pesos del pollo excluyen huesos y piel. Total diari",
       "domain": "joshmuller.ca",
@@ -5540,7 +5571,7 @@
       "domain": "joshmuller.ca",
       "origin": "https://joshmuller.ca",
       "url": "https://joshmuller.ca/writings/2023/fight-for-rest/",
-      "topics": ["writings"],
+      "topics": [],
       "site_title": "Josh's site",
       "published_at": "2023-08-16T13:14:08.000Z",
       "image": "/assets/activity/posters/800c91cfa223fde6bc0dfe7a8461bf920c07c24f19508701c0e89c2b193f32bf.webp",
@@ -5709,7 +5740,7 @@
       "domain": "joshmuller.ca",
       "origin": "https://joshmuller.ca",
       "url": "https://joshmuller.ca/writings/2023/on-triggers/",
-      "topics": [],
+      "topics": ["writings"],
       "site_title": "Josh's site",
       "published_at": "2023-10-06T01:05:06.000Z",
       "image": "/assets/activity/posters/73b29724a6106810607e67ee96512b9f1f166619b9eb1278ff43c7d2f6eb9287.webp",
