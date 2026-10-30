@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T22:34:54.704Z",
+  "generated_at": "2026-10-30T23:15:22.634Z",
   "sites": [
     {
       "origin": "https://joshbeard.com",
@@ -44,7 +44,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T22:30:01.781Z"
+      "crawled_at": "2026-10-30T23:13:39.295Z"
     },
     {
       "origin": "https://joshghent.com",
@@ -64,6 +64,11 @@
           "url": "https://github.com/joshghent",
           "network": "github",
           "label": "GitHub"
+        },
+        {
+          "url": "https://www.threads.net/intent/post?text=There%20is%20always%20more%20https%3A%2F%2Fjoshghent.com%2Fmore%2F",
+          "network": "threads",
+          "label": "Threads"
         }
       ],
       "community_topics": [
@@ -96,6 +101,10 @@
           "label": "business"
         },
         {
+          "slug": "cloudflare",
+          "label": "cloudflare"
+        },
+        {
           "slug": "communication",
           "label": "communication"
         },
@@ -106,10 +115,6 @@
         {
           "slug": "design",
           "label": "design"
-        },
-        {
-          "slug": "developer-musing",
-          "label": "developer musings"
         },
         {
           "slug": "devops",
@@ -126,6 +131,10 @@
         {
           "slug": "finance",
           "label": "finance"
+        },
+        {
+          "slug": "github",
+          "label": "github"
         },
         {
           "slug": "google",
@@ -221,7 +230,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T22:30:01.781Z"
+      "crawled_at": "2026-10-30T23:13:39.295Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -376,6 +385,10 @@
           "label": "Friends"
         },
         {
+          "slug": "go",
+          "label": "Go"
+        },
+        {
           "slug": "google",
           "label": "google"
         },
@@ -390,6 +403,10 @@
         {
           "slug": "health",
           "label": "health"
+        },
+        {
+          "slug": "hosting",
+          "label": "hosting"
         },
         {
           "slug": "language-learning",
@@ -565,7 +582,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T22:30:01.781Z"
+      "crawled_at": "2026-10-30T23:13:39.295Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -583,24 +600,12 @@
       ],
       "community_topics": [
         {
-          "slug": "developer-musing",
-          "label": "developer musings"
-        },
-        {
           "slug": "docs",
           "label": "docs"
         },
         {
           "slug": "field-recording",
           "label": "field recording"
-        },
-        {
-          "slug": "radio-aporee",
-          "label": "radio aporee"
-        },
-        {
-          "slug": "software-engineer",
-          "label": "software engineer"
         }
       ],
       "recent_content": null,
@@ -632,13 +637,13 @@
         }
       ],
       "coverage": {
-        "pages_discovered": 30,
-        "pages_fetched": 30,
+        "pages_discovered": 29,
+        "pages_fetched": 29,
         "fetch_limit": 80,
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T22:30:01.781Z"
+      "crawled_at": "2026-10-30T23:13:39.295Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -658,7 +663,13 @@
           "title": "Joshtronic - Atom Feed"
         }
       ],
-      "elsewhere": [],
+      "elsewhere": [
+        {
+          "url": "https://rubjo.github.io/victor-mono/",
+          "network": "github",
+          "label": "GitHub"
+        }
+      ],
       "community_topics": [
         {
           "slug": "ai",
@@ -731,6 +742,10 @@
         {
           "slug": "health-fitness",
           "label": "health fitness"
+        },
+        {
+          "slug": "hosting",
+          "label": "hosting"
         },
         {
           "slug": "hosting-domain",
@@ -879,7 +894,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T22:30:01.781Z"
+      "crawled_at": "2026-10-30T23:13:39.295Z"
     },
     {
       "origin": "https://joshua.seigler.net",
@@ -899,6 +914,21 @@
           "url": "https://github.com/seigler",
           "network": "github",
           "label": "GitHub"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=VHRhPItNdIU",
+          "network": "youtube",
+          "label": "YouTube"
+        },
+        {
+          "url": "https://julsimon.medium.com/why-mcps-disregard-for-40-years-of-rpc-best-practices-will-burn-enterprises-8ef85ce5bc9b",
+          "network": "medium",
+          "label": "Medium"
+        },
+        {
+          "url": "https://verissimo.substack.com/p/verissimo-monthly-may-2025",
+          "network": "substack",
+          "label": "Substack"
         }
       ],
       "community_topics": [
@@ -931,6 +961,14 @@
           "label": "ffmpeg"
         },
         {
+          "slug": "github",
+          "label": "github"
+        },
+        {
+          "slug": "go",
+          "label": "Go"
+        },
+        {
           "slug": "howto",
           "label": "howto"
         },
@@ -951,20 +989,12 @@
           "label": "philosophy"
         },
         {
-          "slug": "recipe",
-          "label": "recipes"
-        },
-        {
           "slug": "selfhosting",
           "label": "selfhosting"
         },
         {
           "slug": "software",
           "label": "software"
-        },
-        {
-          "slug": "software-engineer",
-          "label": "software engineer"
         },
         {
           "slug": "trade",
@@ -1012,7 +1042,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T22:30:01.781Z"
+      "crawled_at": "2026-10-30T23:13:39.295Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -1057,6 +1087,16 @@
           "url": "https://bsky.app/profile/joshuamorris.info",
           "network": "bluesky",
           "label": "Bluesky"
+        },
+        {
+          "url": "https://www.twitch.tv/lilpeeeweee?utm_source=joshuamorris.info&utm_medium=referral",
+          "network": "twitch",
+          "label": "Twitch"
+        },
+        {
+          "url": "https://medium.com/@hartsman?utm_source=joshuamorris.info&utm_medium=referral",
+          "network": "medium",
+          "label": "Medium"
         }
       ],
       "community_topics": [
@@ -1139,6 +1179,10 @@
         {
           "slug": "civil-liberty",
           "label": "civil liberties"
+        },
+        {
+          "slug": "cloudflare",
+          "label": "cloudflare"
         },
         {
           "slug": "community",
@@ -1275,6 +1319,14 @@
         {
           "slug": "game-design",
           "label": "game design"
+        },
+        {
+          "slug": "github",
+          "label": "github"
+        },
+        {
+          "slug": "go",
+          "label": "Go"
         },
         {
           "slug": "google",
@@ -1487,10 +1539,6 @@
         {
           "slug": "python",
           "label": "python"
-        },
-        {
-          "slug": "radio-aporee",
-          "label": "radio aporee"
         },
         {
           "slug": "regulation",
@@ -1719,7 +1767,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T22:30:01.781Z"
+      "crawled_at": "2026-10-30T23:13:39.295Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -1849,6 +1897,10 @@
           "label": "privacy"
         },
         {
+          "slug": "software",
+          "label": "software"
+        },
+        {
           "slug": "software-engineering",
           "label": "software engineering"
         },
@@ -1893,7 +1945,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T22:30:01.781Z"
+      "crawled_at": "2026-10-30T23:13:39.295Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -1927,6 +1979,11 @@
           "url": "https://x.com/joshuabaker",
           "network": "x",
           "label": "X"
+        },
+        {
+          "url": "https://open.spotify.com/user/joshuabaker",
+          "network": "spotify",
+          "label": "Spotify"
         }
       ],
       "community_topics": [
@@ -1949,6 +2006,10 @@
         {
           "slug": "business",
           "label": "business"
+        },
+        {
+          "slug": "case-study",
+          "label": "case study"
         },
         {
           "slug": "charity-nonprofit",
@@ -2085,7 +2146,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T22:30:01.781Z",
+      "crawled_at": "2026-10-30T23:13:39.295Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,

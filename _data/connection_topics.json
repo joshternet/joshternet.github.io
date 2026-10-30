@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T22:34:54.704Z",
+  "generated_at": "2026-10-30T23:15:22.634Z",
   "overlap_count": 21,
   "pairs": [
     {
@@ -38,6 +38,10 @@
         {
           "slug": "engineering",
           "label": "engineering"
+        },
+        {
+          "slug": "github",
+          "label": "github"
         },
         {
           "slug": "google",
@@ -98,6 +102,10 @@
           "label": "engineering"
         },
         {
+          "slug": "github",
+          "label": "github"
+        },
+        {
           "slug": "infrastructure",
           "label": "infrastructure"
         },
@@ -148,6 +156,10 @@
           "label": "docs"
         },
         {
+          "slug": "github",
+          "label": "github"
+        },
+        {
           "slug": "learning",
           "label": "learning"
         },
@@ -186,6 +198,10 @@
           "label": "business"
         },
         {
+          "slug": "cloudflare",
+          "label": "cloudflare"
+        },
+        {
           "slug": "database",
           "label": "databases"
         },
@@ -208,6 +224,10 @@
         {
           "slug": "finance",
           "label": "finance"
+        },
+        {
+          "slug": "github",
+          "label": "github"
         },
         {
           "slug": "google",
@@ -360,6 +380,18 @@
           "label": "family"
         },
         {
+          "slug": "github",
+          "label": "github"
+        },
+        {
+          "slug": "go",
+          "label": "Go"
+        },
+        {
+          "slug": "hosting",
+          "label": "hosting"
+        },
+        {
           "slug": "learning",
           "label": "learning"
         },
@@ -416,6 +448,14 @@
         {
           "slug": "education",
           "label": "education"
+        },
+        {
+          "slug": "github",
+          "label": "github"
+        },
+        {
+          "slug": "go",
+          "label": "Go"
         },
         {
           "slug": "learning",
@@ -514,6 +554,14 @@
         {
           "slug": "friend",
           "label": "Friends"
+        },
+        {
+          "slug": "github",
+          "label": "github"
+        },
+        {
+          "slug": "go",
+          "label": "Go"
         },
         {
           "slug": "google",
@@ -694,6 +742,14 @@
           "label": "ai"
         },
         {
+          "slug": "github",
+          "label": "github"
+        },
+        {
+          "slug": "go",
+          "label": "Go"
+        },
+        {
           "slug": "learning",
           "label": "learning"
         }
@@ -726,6 +782,14 @@
         {
           "slug": "family",
           "label": "family"
+        },
+        {
+          "slug": "github",
+          "label": "github"
+        },
+        {
+          "slug": "go",
+          "label": "Go"
         },
         {
           "slug": "infrastructure",
@@ -820,6 +884,14 @@
         {
           "slug": "field-recording",
           "label": "field recording"
+        },
+        {
+          "slug": "github",
+          "label": "github"
+        },
+        {
+          "slug": "go",
+          "label": "Go"
         },
         {
           "slug": "learning",
@@ -1406,6 +1478,41 @@
           ]
         },
         {
+          "slug": "cloudflare",
+          "label": "cloudflare",
+          "articles": [
+            {
+              "url": "https://joshghent.com/created-my-own-status-page/",
+              "title": "I created my own status page"
+            },
+            {
+              "url": "https://joshghent.com/github-actions-pr-env/",
+              "title": "Pull Request Environments in GitHub Actions (with SST, AWS and Cloudflare pages)"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/15/cloudflare-is-treating-mcp-like-network-traffic-that-needs-a-firewall/",
+                  "title": "Cloudflare Is Treating MCP Like Network Traffic That Needs a Firewall"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/14/cloudflare-is-making-internal-workers-private-by-default/",
+                  "title": "Cloudflare Is Making Internal Workers Private by Default"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/05/cloudflare-built-an-operating-system-for-ai-work/",
+                  "title": "Cloudflare Built an Operating System for AI Work"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "communication",
           "label": "communication",
           "articles": [
@@ -1888,6 +1995,98 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/02/an-ai-hedge-fund-learned-the-oldest-lesson-in-finance/",
                   "title": "An AI Hedge Fund Learned the Oldest Lesson in Finance"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "github",
+          "label": "github",
+          "articles": [
+            {
+              "url": "https://joshghent.com/github-actions-lessons/",
+              "title": "Lessons learned from using GitHub Actions"
+            },
+            {
+              "url": "https://joshghent.com/github-actions-pr-env/",
+              "title": "Pull Request Environments in GitHub Actions (with SST, AWS and Cloudflare pages)"
+            },
+            {
+              "url": "https://joshghent.com/github-repo-setup/",
+              "title": "Setup a Repo in Github"
+            },
+            {
+              "url": "https://joshghent.com/github-actions-perf/",
+              "title": "Super Fast React/Node App Testing with GitHub Actions"
+            },
+            {
+              "url": "https://joshghent.com/lighthouse-ci-react/",
+              "title": "Setting up LightHouse CI for React in GitHub Actions"
+            },
+            {
+              "url": "https://joshghent.com/private-github-packages-travis/",
+              "title": "How to use Private GitHub Packages on TravisCI"
+            },
+            {
+              "url": "https://joshghent.com/how-to-create-gist-bot/",
+              "title": "How to Create a Pinned Gist Bot in 10 minutes with GitHub Actions"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2025/more-interlinears/",
+                  "title": "Two New Interlinear Audio Bible Resources"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/11/pros-cons-self-hosted-git/",
+                  "title": "Pros and Cons of Self-hosting a Public Git Forge"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/27/github-is-still-struggling-with-obvious-malware-repositories/",
+                  "title": "GitHub Is Still Struggling With Obvious Malware Repositories"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/20/when-the-publishing-pipeline-goes-down/",
+                  "title": "When the Publishing Pipeline Goes Down"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://github.com/cosmiciron/vmprint",
+                  "title": "Link: GitHub - cosmiciron/vmprint"
+                },
+                {
+                  "url": "https://github.com/jkoppel/jj-workshop",
+                  "title": "Link: GitHub - jkoppel/jj-workshop"
+                },
+                {
+                  "url": "https://joshua.seigler.net/posts/my-very-own-github-pages/",
+                  "title": "Post: My Very Own GitHub Pages"
                 }
               ]
             }
@@ -4234,6 +4433,171 @@
           ]
         },
         {
+          "slug": "github",
+          "label": "github",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/writings/2025/more-interlinears/",
+              "title": "Two New Interlinear Audio Bible Resources"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/github-actions-lessons/",
+                  "title": "Lessons learned from using GitHub Actions"
+                },
+                {
+                  "url": "https://joshghent.com/github-actions-pr-env/",
+                  "title": "Pull Request Environments in GitHub Actions (with SST, AWS and Cloudflare pages)"
+                },
+                {
+                  "url": "https://joshghent.com/github-repo-setup/",
+                  "title": "Setup a Repo in Github"
+                },
+                {
+                  "url": "https://joshghent.com/github-actions-perf/",
+                  "title": "Super Fast React/Node App Testing with GitHub Actions"
+                },
+                {
+                  "url": "https://joshghent.com/lighthouse-ci-react/",
+                  "title": "Setting up LightHouse CI for React in GitHub Actions"
+                },
+                {
+                  "url": "https://joshghent.com/private-github-packages-travis/",
+                  "title": "How to use Private GitHub Packages on TravisCI"
+                },
+                {
+                  "url": "https://joshghent.com/how-to-create-gist-bot/",
+                  "title": "How to Create a Pinned Gist Bot in 10 minutes with GitHub Actions"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/11/pros-cons-self-hosted-git/",
+                  "title": "Pros and Cons of Self-hosting a Public Git Forge"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/27/github-is-still-struggling-with-obvious-malware-repositories/",
+                  "title": "GitHub Is Still Struggling With Obvious Malware Repositories"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/20/when-the-publishing-pipeline-goes-down/",
+                  "title": "When the Publishing Pipeline Goes Down"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://github.com/cosmiciron/vmprint",
+                  "title": "Link: GitHub - cosmiciron/vmprint"
+                },
+                {
+                  "url": "https://github.com/jkoppel/jj-workshop",
+                  "title": "Link: GitHub - jkoppel/jj-workshop"
+                },
+                {
+                  "url": "https://joshua.seigler.net/posts/my-very-own-github-pages/",
+                  "title": "Post: My Very Own GitHub Pages"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "go",
+          "label": "Go",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/writings/2024/what-is-a-why-page/",
+              "title": "What Is a \"why\" Page?"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2024/full-english-spanish-interlinear-live/",
+              "title": "My new Language Learning Tool is now LIVE! 🤓🥳"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2024/choose-dignity/",
+              "title": "Choose Dignity"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/note-to-future-self-exercise/",
+              "title": "Note to Future Self: On Exercise"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/low-noise-high-signal/",
+              "title": "Low Noise; High Signal"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/make-friends-with-the-blank-page/",
+              "title": "Make Friends With the Blank Page"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/create-something-today/",
+              "title": "Create Something Today"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/08/16/taught-robot-detect-joshes/",
+                  "title": "I taught a robot to detect Joshes"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/21/go-1_27-shipped-and-some-of-the-best-parts-barely-made-the-release-notes/",
+                  "title": "Go 1.27 Shipped, and Some of the Best Parts Barely Made the Release Notes"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/go-1_27-is-going-to-be-a-big-release/",
+                  "title": "Go 1.27 Is Going to Be a Big Release"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://www.experimental-history.com/p/bag-of-words-have-mercy-on-us",
+                  "title": "Link: Bag of words, have mercy on us OR: Claude will you go to prom with me? Adam Mastroianni"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "google",
           "label": "google",
           "articles": [
@@ -4390,6 +4754,33 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/20/good-insurance-wasnt-enough/",
                   "title": "Good Insurance Wasn’t Enough"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "hosting",
+          "label": "hosting",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
+              "title": "Self-Hosting Is Cool: How I Get More Productivity for Less Money"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/11/pros-cons-self-hosted-git/",
+                  "title": "Pros and Cons of Self-hosting a Public Git Forge"
+                },
+                {
+                  "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
+                  "title": "Security Caveat: Locked out of my server while traveling"
                 }
               ]
             }
@@ -6345,6 +6736,198 @@
           ]
         },
         {
+          "slug": "github",
+          "label": "github",
+          "articles": [
+            {
+              "url": "https://joshtronic.com/2026/10/11/pros-cons-self-hosted-git/",
+              "title": "Pros and Cons of Self-hosting a Public Git Forge"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/github-actions-lessons/",
+                  "title": "Lessons learned from using GitHub Actions"
+                },
+                {
+                  "url": "https://joshghent.com/github-actions-pr-env/",
+                  "title": "Pull Request Environments in GitHub Actions (with SST, AWS and Cloudflare pages)"
+                },
+                {
+                  "url": "https://joshghent.com/github-repo-setup/",
+                  "title": "Setup a Repo in Github"
+                },
+                {
+                  "url": "https://joshghent.com/github-actions-perf/",
+                  "title": "Super Fast React/Node App Testing with GitHub Actions"
+                },
+                {
+                  "url": "https://joshghent.com/lighthouse-ci-react/",
+                  "title": "Setting up LightHouse CI for React in GitHub Actions"
+                },
+                {
+                  "url": "https://joshghent.com/private-github-packages-travis/",
+                  "title": "How to use Private GitHub Packages on TravisCI"
+                },
+                {
+                  "url": "https://joshghent.com/how-to-create-gist-bot/",
+                  "title": "How to Create a Pinned Gist Bot in 10 minutes with GitHub Actions"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2025/more-interlinears/",
+                  "title": "Two New Interlinear Audio Bible Resources"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/27/github-is-still-struggling-with-obvious-malware-repositories/",
+                  "title": "GitHub Is Still Struggling With Obvious Malware Repositories"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/20/when-the-publishing-pipeline-goes-down/",
+                  "title": "When the Publishing Pipeline Goes Down"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://github.com/cosmiciron/vmprint",
+                  "title": "Link: GitHub - cosmiciron/vmprint"
+                },
+                {
+                  "url": "https://github.com/jkoppel/jj-workshop",
+                  "title": "Link: GitHub - jkoppel/jj-workshop"
+                },
+                {
+                  "url": "https://joshua.seigler.net/posts/my-very-own-github-pages/",
+                  "title": "Post: My Very Own GitHub Pages"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "go",
+          "label": "Go",
+          "articles": [
+            {
+              "url": "https://joshtronic.com/2026/08/16/taught-robot-detect-joshes/",
+              "title": "I taught a robot to detect Joshes"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2024/what-is-a-why-page/",
+                  "title": "What Is a \"why\" Page?"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/full-english-spanish-interlinear-live/",
+                  "title": "My new Language Learning Tool is now LIVE! 🤓🥳"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/choose-dignity/",
+                  "title": "Choose Dignity"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/note-to-future-self-exercise/",
+                  "title": "Note to Future Self: On Exercise"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/low-noise-high-signal/",
+                  "title": "Low Noise; High Signal"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/make-friends-with-the-blank-page/",
+                  "title": "Make Friends With the Blank Page"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/create-something-today/",
+                  "title": "Create Something Today"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/21/go-1_27-shipped-and-some-of-the-best-parts-barely-made-the-release-notes/",
+                  "title": "Go 1.27 Shipped, and Some of the Best Parts Barely Made the Release Notes"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/go-1_27-is-going-to-be-a-big-release/",
+                  "title": "Go 1.27 Is Going to Be a Big Release"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://www.experimental-history.com/p/bag-of-words-have-mercy-on-us",
+                  "title": "Link: Bag of words, have mercy on us OR: Claude will you go to prom with me? Adam Mastroianni"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "hosting",
+          "label": "hosting",
+          "articles": [
+            {
+              "url": "https://joshtronic.com/2026/10/11/pros-cons-self-hosted-git/",
+              "title": "Pros and Cons of Self-hosting a Public Git Forge"
+            },
+            {
+              "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
+              "title": "Security Caveat: Locked out of my server while traveling"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
+                  "title": "Self-Hosting Is Cool: How I Get More Productivity for Less Money"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "infrastructure",
           "label": "infrastructure",
           "articles": [
@@ -7604,6 +8187,171 @@
           ]
         },
         {
+          "slug": "github",
+          "label": "github",
+          "articles": [
+            {
+              "url": "https://github.com/cosmiciron/vmprint",
+              "title": "Link: GitHub - cosmiciron/vmprint"
+            },
+            {
+              "url": "https://github.com/jkoppel/jj-workshop",
+              "title": "Link: GitHub - jkoppel/jj-workshop"
+            },
+            {
+              "url": "https://joshua.seigler.net/posts/my-very-own-github-pages/",
+              "title": "Post: My Very Own GitHub Pages"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/github-actions-lessons/",
+                  "title": "Lessons learned from using GitHub Actions"
+                },
+                {
+                  "url": "https://joshghent.com/github-actions-pr-env/",
+                  "title": "Pull Request Environments in GitHub Actions (with SST, AWS and Cloudflare pages)"
+                },
+                {
+                  "url": "https://joshghent.com/github-repo-setup/",
+                  "title": "Setup a Repo in Github"
+                },
+                {
+                  "url": "https://joshghent.com/github-actions-perf/",
+                  "title": "Super Fast React/Node App Testing with GitHub Actions"
+                },
+                {
+                  "url": "https://joshghent.com/lighthouse-ci-react/",
+                  "title": "Setting up LightHouse CI for React in GitHub Actions"
+                },
+                {
+                  "url": "https://joshghent.com/private-github-packages-travis/",
+                  "title": "How to use Private GitHub Packages on TravisCI"
+                },
+                {
+                  "url": "https://joshghent.com/how-to-create-gist-bot/",
+                  "title": "How to Create a Pinned Gist Bot in 10 minutes with GitHub Actions"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2025/more-interlinears/",
+                  "title": "Two New Interlinear Audio Bible Resources"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/11/pros-cons-self-hosted-git/",
+                  "title": "Pros and Cons of Self-hosting a Public Git Forge"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/27/github-is-still-struggling-with-obvious-malware-repositories/",
+                  "title": "GitHub Is Still Struggling With Obvious Malware Repositories"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/20/when-the-publishing-pipeline-goes-down/",
+                  "title": "When the Publishing Pipeline Goes Down"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "go",
+          "label": "Go",
+          "articles": [
+            {
+              "url": "https://www.experimental-history.com/p/bag-of-words-have-mercy-on-us",
+              "title": "Link: Bag of words, have mercy on us OR: Claude will you go to prom with me? Adam Mastroianni"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2024/what-is-a-why-page/",
+                  "title": "What Is a \"why\" Page?"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/full-english-spanish-interlinear-live/",
+                  "title": "My new Language Learning Tool is now LIVE! 🤓🥳"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/choose-dignity/",
+                  "title": "Choose Dignity"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/note-to-future-self-exercise/",
+                  "title": "Note to Future Self: On Exercise"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/low-noise-high-signal/",
+                  "title": "Low Noise; High Signal"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/make-friends-with-the-blank-page/",
+                  "title": "Make Friends With the Blank Page"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/create-something-today/",
+                  "title": "Create Something Today"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/08/16/taught-robot-detect-joshes/",
+                  "title": "I taught a robot to detect Joshes"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/21/go-1_27-shipped-and-some-of-the-best-parts-barely-made-the-release-notes/",
+                  "title": "Go 1.27 Shipped, and Some of the Best Parts Barely Made the Release Notes"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/go-1_27-is-going-to-be-a-big-release/",
+                  "title": "Go 1.27 Is Going to Be a Big Release"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "learning",
           "label": "learning",
           "articles": [
@@ -8616,6 +9364,41 @@
           ]
         },
         {
+          "slug": "cloudflare",
+          "label": "cloudflare",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/15/cloudflare-is-treating-mcp-like-network-traffic-that-needs-a-firewall/",
+              "title": "Cloudflare Is Treating MCP Like Network Traffic That Needs a Firewall"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/14/cloudflare-is-making-internal-workers-private-by-default/",
+              "title": "Cloudflare Is Making Internal Workers Private by Default"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/05/cloudflare-built-an-operating-system-for-ai-work/",
+              "title": "Cloudflare Built an Operating System for AI Work"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/created-my-own-status-page/",
+                  "title": "I created my own status page"
+                },
+                {
+                  "url": "https://joshghent.com/github-actions-pr-env/",
+                  "title": "Pull Request Environments in GitHub Actions (with SST, AWS and Cloudflare pages)"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "community",
           "label": "community",
           "articles": [
@@ -9396,6 +10179,171 @@
                 {
                   "url": "https://joshmuller.ca/writings/2022/make-friends-with-the-blank-page/",
                   "title": "Make Friends With the Blank Page"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "github",
+          "label": "github",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/27/github-is-still-struggling-with-obvious-malware-repositories/",
+              "title": "GitHub Is Still Struggling With Obvious Malware Repositories"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/20/when-the-publishing-pipeline-goes-down/",
+              "title": "When the Publishing Pipeline Goes Down"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/github-actions-lessons/",
+                  "title": "Lessons learned from using GitHub Actions"
+                },
+                {
+                  "url": "https://joshghent.com/github-actions-pr-env/",
+                  "title": "Pull Request Environments in GitHub Actions (with SST, AWS and Cloudflare pages)"
+                },
+                {
+                  "url": "https://joshghent.com/github-repo-setup/",
+                  "title": "Setup a Repo in Github"
+                },
+                {
+                  "url": "https://joshghent.com/github-actions-perf/",
+                  "title": "Super Fast React/Node App Testing with GitHub Actions"
+                },
+                {
+                  "url": "https://joshghent.com/lighthouse-ci-react/",
+                  "title": "Setting up LightHouse CI for React in GitHub Actions"
+                },
+                {
+                  "url": "https://joshghent.com/private-github-packages-travis/",
+                  "title": "How to use Private GitHub Packages on TravisCI"
+                },
+                {
+                  "url": "https://joshghent.com/how-to-create-gist-bot/",
+                  "title": "How to Create a Pinned Gist Bot in 10 minutes with GitHub Actions"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2025/more-interlinears/",
+                  "title": "Two New Interlinear Audio Bible Resources"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/11/pros-cons-self-hosted-git/",
+                  "title": "Pros and Cons of Self-hosting a Public Git Forge"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://github.com/cosmiciron/vmprint",
+                  "title": "Link: GitHub - cosmiciron/vmprint"
+                },
+                {
+                  "url": "https://github.com/jkoppel/jj-workshop",
+                  "title": "Link: GitHub - jkoppel/jj-workshop"
+                },
+                {
+                  "url": "https://joshua.seigler.net/posts/my-very-own-github-pages/",
+                  "title": "Post: My Very Own GitHub Pages"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "go",
+          "label": "Go",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/21/go-1_27-shipped-and-some-of-the-best-parts-barely-made-the-release-notes/",
+              "title": "Go 1.27 Shipped, and Some of the Best Parts Barely Made the Release Notes"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/02/go-1_27-is-going-to-be-a-big-release/",
+              "title": "Go 1.27 Is Going to Be a Big Release"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2024/what-is-a-why-page/",
+                  "title": "What Is a \"why\" Page?"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/full-english-spanish-interlinear-live/",
+                  "title": "My new Language Learning Tool is now LIVE! 🤓🥳"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/choose-dignity/",
+                  "title": "Choose Dignity"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/note-to-future-self-exercise/",
+                  "title": "Note to Future Self: On Exercise"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/low-noise-high-signal/",
+                  "title": "Low Noise; High Signal"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/make-friends-with-the-blank-page/",
+                  "title": "Make Friends With the Blank Page"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/create-something-today/",
+                  "title": "Create Something Today"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/08/16/taught-robot-detect-joshes/",
+                  "title": "I taught a robot to detect Joshes"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://www.experimental-history.com/p/bag-of-words-have-mercy-on-us",
+                  "title": "Link: Bag of words, have mercy on us OR: Claude will you go to prom with me? Adam Mastroianni"
                 }
               ]
             }
