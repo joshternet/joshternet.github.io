@@ -102,6 +102,9 @@ jobs:
         if: steps.preflight.outputs.needs_sync == 'true'
         env:
           NETWORK_REFRESH_ALL: ${{ inputs.refresh_all || 'false' }}
+          # Authenticated GitHub Users API for person-shaped titles from
+          # elsewhere profiles (avoids unauthenticated 60/hr limits).
+          GITHUB_TOKEN: ${{ github.token }}
         run: npm run network:sync
 
       - name: Crawl sites and rebuild topics/connections

@@ -297,6 +297,234 @@ function comparableText(value) {
     .replace(/[^\p{L}\p{N}]+/gu, "");
 }
 
+/** Labels that are not personal given-name / family-name host parts. */
+const NON_PERSONAL_DOMAIN_LABELS = new Set([
+  "www",
+  "www2",
+  "blog",
+  "mail",
+  "shop",
+  "store",
+  "app",
+  "api",
+  "dev",
+  "staging",
+  "cdn",
+  "static",
+  "docs",
+  "wiki",
+  "news",
+  "forum",
+  "forums",
+  "status",
+  "support",
+]);
+
+/**
+ * True when a page title is only a greeting (common homepage H1/OG mistake).
+ * @param {string} title
+ * @returns {boolean}
+ */
+function isGreetingTitle(title) {
+  return /^(hello|hi|hey|welcome|hola)(?:\s*[!?.…*]*)?$/iu.test(
+    normalizeText(title),
+  );
+}
+
+/**
+ * firstname.lastname.tld → "Firstname Lastname" for personal sites.
+ * @param {string} domain
+ * @returns {string}
+ */
+export function humanNameFromDomain(domain) {
+  const hostname = normalizeText(domain)
+    .toLocaleLowerCase("en-US")
+    .replace(/\.$/, "");
+  const labels = hostname.split(".").filter(Boolean);
+
+  if (labels.length !== 3) {
+    return "";
+  }
+
+  const [first, last, tld] = labels;
+
+  if (
+    NON_PERSONAL_DOMAIN_LABELS.has(first) ||
+    NON_PERSONAL_DOMAIN_LABELS.has(last)
+  ) {
+    return "";
+  }
+
+  if (!/^[a-z]{2,24}$/u.test(first) || !/^[a-z]{2,24}$/u.test(last)) {
+    return "";
+  }
+
+  if (!/^[a-z]{2,24}$/u.test(tld)) {
+    return "";
+  }
+
+  const titleCase = (label) =>
+    `${label.charAt(0).toLocaleUpperCase("en-US")}${label.slice(1)}`;
+
+  return `${titleCase(first)} ${titleCase(last)}`;
+}
+
+/**
+ * Domain's primary label (www.example.com → example).
+ * @param {string} domain
+ * @returns {string}
+ */
+function primaryDomainLabel(domain) {
+  const hostname = normalizeText(domain)
+    .toLocaleLowerCase("en-US")
+    .replace(/\.$/, "");
+  const labels = hostname.split(".").filter(Boolean);
+
+  if (labels.length < 2) {
+    return "";
+  }
+
+  return labels[0] === "www" ? labels[1] : labels[0];
+}
+
+/** Words that mark a slogan/brand phrase rather than a personal name. */
+const PERSON_NAME_STOPWORDS = new Set([
+  "a",
+  "an",
+  "and",
+  "at",
+  "blog",
+  "by",
+  "can",
+  "for",
+  "from",
+  "help",
+  "home",
+  "in",
+  "my",
+  "of",
+  "official",
+  "on",
+  "or",
+  "our",
+  "page",
+  "site",
+  "the",
+  "to",
+  "website",
+  "with",
+  "your",
+]);
+
+/**
+ * True when a string looks like a 2–3 word personal name.
+ * @param {string} candidate
+ * @returns {boolean}
+ */
+export function looksLikePersonName(candidate) {
+  const normalized = normalizeText(candidate);
+
+  if (!normalized) {
+    return false;
+  }
+
+  const words = normalized.split(/\s+/u).filter(Boolean);
+
+  if (words.length < 2 || words.length > 3) {
+    return false;
+  }
+
+  return words.every((word) => {
+    if (word.length < 2 || !/^[\p{L}][\p{L}'’.-]*$/u.test(word)) {
+      return false;
+    }
+
+    return !PERSON_NAME_STOPWORDS.has(word.toLocaleLowerCase("en-US"));
+  });
+}
+
+/**
+ * When a candidate is the person's name compacted into the domain label
+ * (Josh Ghent ↔ joshghent), return the display name.
+ * @param {string} candidate
+ * @param {string} domain
+ * @returns {string}
+ */
+export function personNameMatchingDomain(candidate, domain) {
+  const normalized = normalizeText(candidate);
+  const domainLabel = primaryDomainLabel(domain);
+
+  if (!normalized || !domainLabel) {
+    return "";
+  }
+
+  if (comparableText(normalized) !== comparableText(domainLabel)) {
+    return "";
+  }
+
+  // Prefer multi-word person names over a single token that only restates the host.
+  // Reject slogan brands that compress to the host (e.g. "Josh Can Help").
+  if (!looksLikePersonName(normalized)) {
+    return "";
+  }
+
+  return normalized;
+}
+
+/**
+ * Finds a 2–3 word person name in free text that matches the domain label.
+ * @param {string} text
+ * @param {string} domain
+ * @returns {string}
+ */
+export function personNameFromText(text, domain) {
+  const normalized = normalizeText(text);
+
+  if (!normalized || !primaryDomainLabel(domain)) {
+    return "";
+  }
+
+  const words = normalized.split(/\s+/u).filter(Boolean);
+
+  for (let index = 0; index < words.length - 1; index += 1) {
+    for (
+      let length = 2;
+      length <= 3 && index + length <= words.length;
+      length += 1
+    ) {
+      const span = words
+        .slice(index, index + length)
+        .join(" ")
+        .replace(/[.,;:!?]+$/u, "");
+      const match = personNameMatchingDomain(span, domain);
+
+      if (match) {
+        return match;
+      }
+    }
+  }
+
+  return "";
+}
+
+/**
+ * Title fragments split on common brand separators.
+ * @param {string} title
+ * @returns {string[]}
+ */
+function titleParts(title) {
+  const normalizedTitle = normalizeText(title);
+
+  if (!normalizedTitle) {
+    return [];
+  }
+
+  return normalizedTitle
+    .split(/\s+(?:[-|·–—])\s+/u)
+    .map((part) => normalizeText(part))
+    .filter(Boolean);
+}
+
 function titleBrandFromDomain(title, domain) {
   const normalizedTitle = normalizeText(title);
   const normalizedDomain = normalizeText(domain).toLocaleLowerCase("en-US");
@@ -312,25 +540,32 @@ function titleBrandFromDomain(title, domain) {
     return "";
   }
 
-  const domainLabel = labels[0] === "www" ? labels[1] : labels[0];
+  const domainLabel = primaryDomainLabel(hostname);
   const comparableDomain = comparableText(domainLabel);
+  const comparableHost = comparableText(hostname);
+  const humanName = humanNameFromDomain(hostname);
 
   if (!comparableDomain) {
     return "";
   }
 
-  const titleParts = normalizedTitle
-    .split(/\s+(?:[-|·–—])\s+/u)
-    .map((part) => normalizeText(part))
-    .filter(Boolean);
+  // normalizedTitle is non-empty, so titleParts always yields at least one part.
+  for (const part of titleParts(normalizedTitle)) {
+    const person = personNameMatchingDomain(part, hostname);
 
-  if (titleParts.length < 2) {
-    return "";
-  }
+    if (person) {
+      return person;
+    }
 
-  for (const part of titleParts) {
-    if (comparableText(part) === comparableDomain) {
+    const comparablePart = comparableText(part);
+
+    if (comparablePart === comparableDomain) {
       return part;
+    }
+
+    // "Hello! - joshua.seigler.net" → prefer "Joshua Seigler"
+    if (comparableHost && comparablePart === comparableHost && humanName) {
+      return humanName;
     }
   }
 
@@ -341,11 +576,53 @@ export function chooseTitle({
   ogSiteName = "",
   applicationName = "",
   jsonLdSiteName = "",
+  jsonLdPersonName = "",
+  authorName = "",
   ogTitle = "",
   twitterTitle = "",
   documentTitle = "",
+  description = "",
+  ogDescription = "",
+  twitterDescription = "",
   domain = "",
 } = {}) {
+  // Person-shaped names that match the host beat blog-brand site names
+  // (e.g. og:site_name "Developer Musings" vs "Josh Ghent").
+  const personCandidates = [
+    jsonLdPersonName,
+    authorName,
+    ogTitle,
+    twitterTitle,
+    ...titleParts(documentTitle),
+    documentTitle,
+  ];
+
+  for (const candidate of personCandidates) {
+    const person = personNameMatchingDomain(candidate, domain);
+
+    if (person) {
+      return person;
+    }
+  }
+
+  for (const text of [description, ogDescription, twitterDescription]) {
+    const fromText = personNameFromText(text, domain);
+
+    if (fromText) {
+      return fromText;
+    }
+  }
+
+  // Prefer a real person author over a host-label brand (e.g. Joshtronic)
+  // when the author does not compress to the domain label.
+  for (const candidate of [jsonLdPersonName, authorName]) {
+    const normalized = normalizeText(candidate);
+
+    if (normalized && looksLikePersonName(normalized)) {
+      return normalized;
+    }
+  }
+
   const siteNameCandidates = [ogSiteName, applicationName, jsonLdSiteName];
 
   for (const candidate of siteNameCandidates) {
@@ -364,9 +641,17 @@ export function chooseTitle({
     }
   }
 
-  const pageTitleCandidates = [ogTitle, twitterTitle, documentTitle, domain];
+  const humanName = humanNameFromDomain(domain);
+  const pageTitleCandidates = [ogTitle, twitterTitle, documentTitle];
+  const nonGreetingPageTitle = pageTitleCandidates
+    .map((candidate) => normalizeText(candidate))
+    .find((candidate) => candidate && !isGreetingTitle(candidate));
 
-  for (const candidate of pageTitleCandidates) {
+  if (humanName && !nonGreetingPageTitle) {
+    return humanName;
+  }
+
+  for (const candidate of [...pageTitleCandidates, domain]) {
     const normalized = normalizeText(candidate);
 
     if (normalized) {

@@ -8,7 +8,12 @@
  */
 import dns from "node:dns/promises";
 
-import { assertPublicURL, normalizeText } from "./lib.mjs";
+import {
+  assertPublicURL,
+  chooseTitle,
+  looksLikePersonName,
+  normalizeText,
+} from "./lib.mjs";
 
 export const MAX_ELSEWHERE_PER_PARTICIPANT = 12;
 
@@ -506,6 +511,142 @@ export async function sanitizeElsewhere(
   }
 
   return elsewhere;
+}
+
+/**
+ * Headers for GitHub Users API calls.
+ * Uses NETWORK_GITHUB_TOKEN or GITHUB_TOKEN when present so Actions stays
+ * under authenticated rate limits as the network grows.
+ * @param {{ token?: string }} [options]
+ * @returns {Record<string, string>}
+ */
+export function githubApiHeaders(options = {}) {
+  const headers = {
+    Accept: "application/vnd.github+json",
+    "User-Agent": "Joshternet-Network-Sync",
+  };
+  const token =
+    (typeof options.token === "string" && options.token) ||
+    process.env.NETWORK_GITHUB_TOKEN ||
+    process.env.GITHUB_TOKEN ||
+    "";
+
+  if (typeof token === "string" && token.trim()) {
+    headers.Authorization = `Bearer ${token.trim()}`;
+  }
+
+  return headers;
+}
+
+/**
+ * Reads the public display name from a GitHub profile URL via the API.
+ * @param {string} profileUrl
+ * @param {{ fetch?: typeof fetch, token?: string }} [options]
+ * @returns {Promise<string>}
+ */
+export async function githubProfileDisplayName(profileUrl, options = {}) {
+  const fetchImpl = options.fetch ?? globalThis.fetch;
+
+  if (typeof fetchImpl !== "function" || typeof profileUrl !== "string") {
+    return "";
+  }
+
+  let url;
+
+  try {
+    url = new URL(profileUrl);
+  } catch {
+    return "";
+  }
+
+  if (
+    classifyElsewhereHost(url.hostname) !== "github" ||
+    !isElsewhereProfileUrl(url, "github")
+  ) {
+    return "";
+  }
+
+  // isElsewhereProfileUrl(github) already requires a non-empty single path segment.
+  const login = pathSegments(url)[0];
+
+  try {
+    const response = await fetchImpl(
+      `https://api.github.com/users/${encodeURIComponent(login)}`,
+      {
+        headers: githubApiHeaders(options),
+      },
+    );
+
+    if (!response.ok) {
+      return "";
+    }
+
+    const body = await response.json();
+    const name = normalizeText(typeof body?.name === "string" ? body.name : "");
+
+    return looksLikePersonName(name) ? name : "";
+  } catch {
+    return "";
+  }
+}
+
+/**
+ * First person-shaped display name found on a linked elsewhere profile.
+ * Currently uses GitHub profile `name` when present.
+ * @param {unknown} elsewhere
+ * @param {{ fetch?: typeof fetch, token?: string }} [options]
+ * @returns {Promise<string>}
+ */
+export async function personNameFromElsewhere(elsewhere, options = {}) {
+  if (!Array.isArray(elsewhere)) {
+    return "";
+  }
+
+  for (const entry of elsewhere) {
+    if (!entry || typeof entry !== "object" || entry.network !== "github") {
+      continue;
+    }
+
+    const name = await githubProfileDisplayName(
+      typeof entry.url === "string" ? entry.url : "",
+      options,
+    );
+
+    if (name) {
+      return name;
+    }
+  }
+
+  return "";
+}
+
+/**
+ * Resolves the published Network card title from page metadata and elsewhere.
+ * Prefer person-shaped author / Person JSON-LD / host-matching names, then
+ * GitHub profile names, then site brands.
+ * @param {Record<string, unknown>} metadata
+ * @param {string} domain
+ * @param {{ fetch?: typeof fetch, token?: string }} [options]
+ * @returns {Promise<string>}
+ */
+export async function resolveParticipantTitle(
+  metadata = {},
+  domain = "",
+  options = {},
+) {
+  const elsewherePersonName = await personNameFromElsewhere(
+    metadata.elsewhere,
+    options,
+  );
+  const authorName = looksLikePersonName(metadata.authorName)
+    ? normalizeText(metadata.authorName)
+    : elsewherePersonName || metadata.authorName || "";
+
+  return chooseTitle({
+    ...metadata,
+    authorName,
+    domain,
+  });
 }
 
 /**

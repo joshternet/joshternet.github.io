@@ -7,13 +7,17 @@ import test from "node:test";
 
 import {
   CONTENT_INDEX_PATHS,
+  IDENTITY_SLASH_PATHS,
   MAX_CONTENT_INDEX_CHILDREN,
   MAX_TOPIC_HUB_CHILDREN,
   TOPIC_HUB_INDEX_PATHS,
   contentIndexChildUrls,
   contentIndexSeedUrls,
   crawlOrigin,
+  externalOutboundLinks,
+  identitySlashSeedUrls,
   isContentIndexUrl,
+  isPhotoAttachmentUrl,
   isTopicHubIndexUrl,
   topicHubChildUrls,
   topicHubPrefix,
@@ -234,7 +238,116 @@ test("contentIndexSeedUrls: returns all content index paths for an origin", () =
   const urls = contentIndexSeedUrls("https://a.example");
   assert.ok(urls.includes("https://a.example/notes/"));
   assert.ok(urls.includes("https://a.example/blog/"));
+  assert.ok(urls.includes("https://a.example/me/"));
+  assert.ok(urls.includes("https://a.example/site/"));
+  assert.ok(urls.includes("https://a.example/social/"));
+  assert.ok(urls.includes("https://a.example/elsewhere/"));
+  assert.ok(urls.includes("https://a.example/health/"));
   assert.ok(urls.length === CONTENT_INDEX_PATHS.length);
+});
+
+test("identitySlashSeedUrls: covers indieweb slash pages", () => {
+  const urls = identitySlashSeedUrls("https://joshbeard.example");
+  assert.ok(urls.includes("https://joshbeard.example/more/"));
+  assert.ok(urls.includes("https://joshbeard.example/site/"));
+  assert.ok(urls.includes("https://joshbeard.example/now/"));
+  assert.ok(urls.includes("https://joshbeard.example/uses/"));
+  assert.equal(urls.length, IDENTITY_SLASH_PATHS.length);
+});
+
+test("identitySlashSeedUrls: empty/invalid origin returns empty array", () => {
+  assert.deepEqual(identitySlashSeedUrls(""), []);
+  assert.deepEqual(identitySlashSeedUrls("not-a-url"), []);
+});
+
+test("isPhotoAttachmentUrl: skips per-image gallery pages only", () => {
+  assert.equal(
+    isPhotoAttachmentUrl(
+      "https://joshbeard.com/photos/2026/IMG_1811_jpeg.html",
+    ),
+    true,
+  );
+  assert.equal(
+    isPhotoAttachmentUrl(
+      "https://joshbeard.com/photos/all/2026/IMG_1811_jpeg.html",
+    ),
+    true,
+  );
+  assert.equal(isPhotoAttachmentUrl("https://joshbeard.com/photos/"), false);
+  assert.equal(
+    isPhotoAttachmentUrl("https://joshbeard.com/photos/2026/"),
+    false,
+  );
+  assert.equal(isPhotoAttachmentUrl("not-a-url"), false);
+});
+
+test("externalOutboundLinks: absolutizes and keeps only cross-origin http(s)", () => {
+  const outbound = externalOutboundLinks(
+    "https://joshbeard.com",
+    "https://joshbeard.com/site/",
+    [
+      { href: "/", text: "Home" },
+      {
+        href: "https://joshternet.org/",
+        text: "Joshternet",
+        rel: ["noopener"],
+      },
+      {
+        href: "https://joshuamorris.info/",
+        text: "Joshua Morris",
+        classNames: ["ext"],
+      },
+      { href: "/.well-known/josh", text: "josh" },
+      { href: "gemini://jbeard.co", text: "gemini" },
+    ],
+  );
+
+  assert.equal(outbound.length, 2);
+  assert.equal(outbound[0].href, "https://joshternet.org/");
+  assert.equal(outbound[0].page, "https://joshbeard.com/site/");
+  assert.equal(outbound[1].href, "https://joshuamorris.info/");
+  assert.deepEqual(outbound[1].classNames, ["ext"]);
+});
+
+test("externalOutboundLinks: rejects bad origin/pageUrl and empty hrefs", () => {
+  assert.deepEqual(externalOutboundLinks("", "https://a.example/", []), []);
+  assert.deepEqual(externalOutboundLinks("https://a.example", null, []), []);
+  assert.deepEqual(
+    externalOutboundLinks("https://a.example", "not-a-url", [
+      { href: "https://b.example/" },
+    ]),
+    [],
+  );
+  assert.deepEqual(
+    externalOutboundLinks("https://a.example", "https://a.example/"),
+    [],
+  );
+  assert.deepEqual(
+    externalOutboundLinks("https://a.example", "https://a.example/", null),
+    [],
+  );
+  assert.deepEqual(
+    externalOutboundLinks("https://a.example", "https://a.example/", [
+      { href: "" },
+      { text: "no href" },
+      null,
+    ]),
+    [],
+  );
+});
+
+test("externalOutboundLinks: string links omit text/rel/classNames", () => {
+  const outbound = externalOutboundLinks(
+    "https://a.example",
+    "https://a.example/site/",
+    ["https://b.example/", { href: "https://c.example/", text: "C" }],
+  );
+  assert.equal(outbound.length, 2);
+  assert.equal(outbound[0].href, "https://b.example/");
+  assert.equal(outbound[0].text, "");
+  assert.deepEqual(outbound[0].rel, []);
+  assert.deepEqual(outbound[0].classNames, []);
+  assert.equal(outbound[1].text, "C");
 });
 
 test("contentIndexSeedUrls: empty/invalid origin returns empty array (lines 265-266)", () => {
@@ -423,6 +536,53 @@ test("crawlOrigin: uses sitemap.xml when available", async () => {
       result.pages.some(
         (p) => p.url.includes("sitemap") || p.url.includes("post-from-sitemap"),
       ),
+    );
+  } finally {
+    restore();
+  }
+});
+
+test("crawlOrigin: skips per-photo attachment URLs from the sitemap", async () => {
+  const origin = "https://joshbeard.example";
+  const cache = dnsCache(["joshbeard.example"]);
+  const photo = `${origin}/photos/2026/IMG_1811_jpeg.html`;
+  const sitemap = `<?xml version="1.0"?>
+    <urlset>
+      <url><loc>${origin}/health/</loc></url>
+      <url><loc>${photo}</loc></url>
+    </urlset>`;
+  install();
+  try {
+    /** @type {string[]} */
+    const fetched = [];
+    globalThis.fetch = async (url) => {
+      const urlStr = String(url);
+      fetched.push(urlStr);
+      if (urlStr.includes("sitemap.xml")) {
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "application/xml" }),
+          arrayBuffer: async () => Buffer.from(sitemap),
+        };
+      }
+      return {
+        ok: true,
+        status: 200,
+        headers: new Headers({ "content-type": "text/html" }),
+        arrayBuffer: async () =>
+          Buffer.from(`<html><body><a href="${photo}">photo</a></body></html>`),
+      };
+    };
+    const result = await crawlOrigin(origin, { cache });
+    assert.ok(result.pages.some((page) => page.url.includes("/health/")));
+    assert.equal(
+      result.pages.some((page) => page.url.includes("IMG_1811")),
+      false,
+    );
+    assert.equal(
+      fetched.some((url) => url.includes("IMG_1811")),
+      false,
     );
   } finally {
     restore();

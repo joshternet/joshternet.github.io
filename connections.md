@@ -61,7 +61,14 @@ Connections from around the Joshternet.
   {% endif %}
 {% endfor %}
 
+{% assign participant_count = ordered_sites.size | default: 0 %}
+
 <p class="network-count" aria-live="polite">
+  <strong data-connections-participant-count>{{ participant_count }}</strong>
+  <span>
+    {% if participant_count == 1 %}participating site{% else %}participating sites{% endif %}
+  </span>
+  ·
   <strong data-connections-count>{{ connected_site_count }}</strong>
   <span>
     {% if connected_site_count == 1 %}site with observed links{% else %}sites with observed links{% endif %}
@@ -78,7 +85,7 @@ Connections from around the Joshternet.
   </span>
 </p>
 
-{% if connected_site_count > 0 %}
+{% if participant_count > 0 %}
 <div
   class="connections-shell"
   data-connections-shell
@@ -173,7 +180,6 @@ Connections from around the Joshternet.
       {% endif %}
     {% endfor %}
 
-    {% if outbound > 0 or inbound > 0 or overlap_count > 0 %}
     <section
       class="connections-site h-card"
       id="connection-{{ site_domain | slugify }}"
@@ -221,6 +227,13 @@ Connections from around the Joshternet.
           {% endif %}
         </div>
       </header>
+
+      {% if outbound == 0 and inbound == 0 and overlap_count == 0 %}
+        <p class="connections-empty-note">
+          No observed connections yet. Visit
+          <a href="{{ outbound_href | escape }}" target="_blank" rel="noopener">{{ site_domain | escape }}</a>.
+        </p>
+      {% endif %}
 
       <div class="connections-site__columns connections-site__columns--with-topics">
         {% if outbound > 0 %}
@@ -434,7 +447,6 @@ Connections from around the Joshternet.
         {% endif %}
       </div>
     </section>
-    {% endif %}
 {% endfor %}
 </div>
 
@@ -462,8 +474,9 @@ Connections from around the Joshternet.
 {% else %}
 <div class="network-empty">
   <p>
-    Isolated sites stay on
-    <a href="{{ '/network/' | relative_url }}">Network</a>.
+    No participating sites yet. Browse the
+    <a href="{{ '/network/' | relative_url }}">Network</a>
+    directory when members join.
   </p>
 </div>
 {% endif %}

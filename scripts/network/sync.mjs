@@ -29,6 +29,7 @@ import {
 
 import {
   elsewhereHostCatalog,
+  resolveParticipantTitle,
   sanitizeElsewhere,
   withElsewhere,
 } from "./elsewhere.mjs";
@@ -37,7 +38,6 @@ import {
   assertPublicURL,
   chooseDescription,
   framePolicy,
-  chooseTitle,
   partitionPublicParticipants,
   projectRegistry,
   registryParticipationFields,
@@ -60,6 +60,7 @@ import {
   removeOrphanScreenshots,
   withFeeds,
 } from "./state.mjs";
+import { IDENTITY_SLASH_PATHS } from "./slash-pages.mjs";
 
 const DEFAULT_REGISTRY_URL =
   "https://raw.githubusercontent.com/joshternet/index-data/main/registry.json";
@@ -73,6 +74,8 @@ const DEFAULT_SCREENSHOT_ROOT = "assets/network/sites";
 const NAVIGATION_TIMEOUT_MS = 20_000;
 const SETTLE_TIME_MS = 1_500;
 const SITE_TIMEOUT_MS = 30_000;
+/** Cap identity slash page visits per participant during network enrichment. */
+const MAX_IDENTITY_PAGES = 8;
 
 const registrySource = process.env.NETWORK_REGISTRY_URL || DEFAULT_REGISTRY_URL;
 
@@ -331,8 +334,69 @@ function stampLinkPages(links, pageUrl) {
 }
 
 /**
+ * Ordered same-origin identity slash pages to visit for elsewhere + link edges.
+ * Prefer homepage-discovered hrefs, then conventional indieweb slash seeds.
+ * @param {Record<string, unknown>} metadata
+ * @param {string} participantOrigin
+ * @returns {string[]}
+ */
+function identityPagesToVisit(metadata, participantOrigin) {
+  const seen = new Set();
+  /** @type {string[]} */
+  const ordered = [];
+
+  /**
+   * @param {string} href
+   */
+  function push(href) {
+    if (typeof href !== "string" || !href) {
+      return;
+    }
+
+    let absolute = "";
+
+    try {
+      absolute = new URL(href, participantOrigin).href;
+    } catch {
+      return;
+    }
+
+    try {
+      if (new URL(absolute).origin !== new URL(participantOrigin).origin) {
+        return;
+      }
+    } catch {
+      return;
+    }
+
+    if (seen.has(absolute)) {
+      return;
+    }
+
+    seen.add(absolute);
+    ordered.push(absolute);
+  }
+
+  if (Array.isArray(metadata.aboutPageHrefs)) {
+    for (const href of metadata.aboutPageHrefs) {
+      push(typeof href === "string" ? href : "");
+    }
+  }
+
+  if (typeof metadata.aboutPageHref === "string") {
+    push(metadata.aboutPageHref);
+  }
+
+  for (const path of IDENTITY_SLASH_PATHS) {
+    push(path);
+  }
+
+  return ordered.slice(0, MAX_IDENTITY_PAGES);
+}
+
+/**
  * Collects elsewhere links and outbound page links from homepage metadata and
- * an optional same-origin about page already fetched during enrichment.
+ * same-origin identity slash pages (about, now, uses, more, site, …).
  * @param {import("playwright").Page} page
  * @param {Record<string, unknown>} metadata
  * @param {Map<string, unknown>} dnsCache
@@ -351,44 +415,43 @@ async function collectElsewhereAndLinks(
   const raw = Array.isArray(metadata.elsewhere) ? [...metadata.elsewhere] : [];
   const homepagePageUrl = page.url();
   const links = stampLinkPages(metadata.links, homepagePageUrl);
-  const aboutPageHref =
-    typeof metadata.aboutPageHref === "string" ? metadata.aboutPageHref : "";
 
-  if (aboutPageHref) {
+  for (const identityHref of identityPagesToVisit(
+    metadata,
+    participantOrigin,
+  )) {
     try {
-      const aboutURL = await assertPublicURL(aboutPageHref, {
+      const identityURL = await assertPublicURL(identityHref, {
         cache: dnsCache,
       });
-      const participantURL = new URL(participantOrigin);
+      const response = await page.goto(identityURL.href, {
+        waitUntil: "domcontentloaded",
+        timeout: NAVIGATION_TIMEOUT_MS,
+      });
 
-      if (aboutURL.origin === participantURL.origin) {
-        const response = await page.goto(aboutURL.href, {
-          waitUntil: "domcontentloaded",
-          timeout: NAVIGATION_TIMEOUT_MS,
-        });
+      if (!response || !response.ok()) {
+        continue;
+      }
 
-        if (response) {
-          await assertPublicURL(page.url(), {
-            cache: dnsCache,
-          });
+      await assertPublicURL(page.url(), {
+        cache: dnsCache,
+      });
 
-          const aboutMetadata = await page.evaluate(
-            extractPageMetadata,
-            elsewhereHostCatalog(),
-          );
+      const identityMetadata = await page.evaluate(
+        extractPageMetadata,
+        elsewhereHostCatalog(),
+      );
 
-          if (Array.isArray(aboutMetadata.elsewhere)) {
-            raw.push(...aboutMetadata.elsewhere);
-          }
+      if (Array.isArray(identityMetadata.elsewhere)) {
+        raw.push(...identityMetadata.elsewhere);
+      }
 
-          if (Array.isArray(aboutMetadata.links)) {
-            links.push(...stampLinkPages(aboutMetadata.links, page.url()));
-          }
-        }
+      if (Array.isArray(identityMetadata.links)) {
+        links.push(...stampLinkPages(identityMetadata.links, page.url()));
       }
     } catch (error) {
       process.stderr.write(
-        `about-page elsewhere failed ${participantOrigin}: ${error.message}\n`,
+        `identity-page elsewhere failed ${participantOrigin} (${identityHref}): ${error.message}\n`,
       );
     }
   }
@@ -441,6 +504,7 @@ function withEnrichment(entry, feeds, blogrollUrl, elsewhere) {
  *     page: string,
  *   }>,
  *   links: Array<{href: string, text: string, rel: string[], page: string}>,
+ *   metadata: Record<string, unknown>,
  * }>}
  */
 async function enrichFromOpenedPage(opened, participant, participantOrigins) {
@@ -479,6 +543,10 @@ async function enrichFromOpenedPage(opened, participant, participantOrigins) {
     edges,
     connections,
     links,
+    metadata: {
+      ...metadata,
+      elsewhere,
+    },
   };
 }
 
@@ -514,13 +582,6 @@ async function captureParticipant(browser, participant, participantOrigins) {
       })
       .toFile(outputPath);
 
-    const title = chooseTitle({
-      ...metadata,
-      domain: participant.domain,
-    });
-
-    const description = chooseDescription(metadata);
-
     const framing = framePolicy({
       origin: participant.origin,
       headers,
@@ -531,6 +592,11 @@ async function captureParticipant(browser, participant, participantOrigins) {
       participant,
       participantOrigins,
     );
+    const title = await resolveParticipantTitle(
+      enrichment.metadata,
+      participant.domain,
+    );
+    const description = chooseDescription(enrichment.metadata);
 
     const entry = withEnrichment(
       {
@@ -569,6 +635,7 @@ async function captureParticipant(browser, participant, participantOrigins) {
  *   edges: Array<{from: string, to: string, blogroll: string}>,
  *   connections: Array<Record<string, unknown>>,
  *   links: Array<{href: string, text: string, rel: string[], page: string}>,
+ *   metadata: Record<string, unknown>,
  * }>}
  */
 async function discoverHomepageEnrichment(
@@ -713,10 +780,22 @@ try {
           SITE_TIMEOUT_MS,
           `${participant.origin} enrichment`,
         );
+        // Re-resolve titles on every sync so algorithm changes and new
+        // author/GitHub signals apply without waiting for screenshot expiry.
+        const title = await resolveParticipantTitle(
+          enrichment.metadata,
+          participant.domain,
+        );
+        const description =
+          chooseDescription(enrichment.metadata) || kept.description || "";
 
         nextEntries.push(
           withEnrichment(
-            kept,
+            {
+              ...kept,
+              title: title || kept.title,
+              description,
+            },
             enrichment.feeds,
             enrichment.blogrollUrl,
             enrichment.elsewhere,
@@ -729,7 +808,7 @@ try {
           links: enrichment.links,
         });
         process.stdout.write(
-          `keep ${participant.origin} (feeds, blogrolls, elsewhere, and connections refreshed)\n`,
+          `keep ${participant.origin} (title, feeds, blogrolls, elsewhere, and connections refreshed)\n`,
         );
       } catch (error) {
         nextEntries.push(

@@ -83,6 +83,48 @@ export function extractPageMetadata(hostCatalog) {
     };
   }
 
+  /**
+   * Person.name from JSON-LD when the publisher declares a person entity.
+   * @returns {string}
+   */
+  function extractJsonLdPersonName() {
+    const scripts = document.querySelectorAll(
+      'script[type="application/ld+json"]',
+    );
+
+    for (const script of scripts) {
+      const source = script.textContent || "";
+
+      if (!source.trim()) {
+        continue;
+      }
+
+      let parsed;
+
+      try {
+        parsed = JSON.parse(source);
+      } catch {
+        continue;
+      }
+
+      const objects = jsonLdObjects(parsed);
+
+      for (const object of objects) {
+        if (!hasType(object, "Person")) {
+          continue;
+        }
+
+        const name = normalizeText(object.name);
+
+        if (name) {
+          return name;
+        }
+      }
+    }
+
+    return "";
+  }
+
   function usableParagraph(element) {
     if (!(element instanceof HTMLElement)) {
       return false;
@@ -256,6 +298,14 @@ export function extractPageMetadata(hostCatalog) {
         continue;
       }
 
+      // Hub Meet / activity widgets are republish UI, not connection evidence.
+      if (
+        element.closest("[data-home-meet-grid]") ||
+        element.closest(".activity-card")
+      ) {
+        continue;
+      }
+
       const hrefAttribute = normalizeText(element.getAttribute("href") || "");
 
       if (!hrefAttribute || hrefAttribute.startsWith("#")) {
@@ -302,10 +352,27 @@ export function extractPageMetadata(hostCatalog) {
 
       rel.sort((left, right) => left.localeCompare(right));
 
+      const classNames = [];
+      const seenClass = new Set();
+
+      for (const token of element.classList || []) {
+        const normalized = normalizeText(token).toLowerCase();
+
+        if (!normalized || seenClass.has(normalized)) {
+          continue;
+        }
+
+        seenClass.add(normalized);
+        classNames.push(normalized);
+      }
+
+      classNames.sort((left, right) => left.localeCompare(right));
+
       links.push({
         href,
         text: normalizeText(element.textContent || "").slice(0, 200),
         rel,
+        classNames,
       });
     }
 
@@ -313,22 +380,90 @@ export function extractPageMetadata(hostCatalog) {
   }
 
   /**
-   * Finds a same-origin about page linked from the current document.
-   * @returns {string}
+   * Same-origin indieweb slash / about / link-directory pages linked here.
+   * Prefer classic about paths, then /more/ and /site/ (joshbeard-style TOC),
+   * then other identity slash pages by label.
+   * @returns {string[]}
    */
-  function extractAboutPageHref() {
+  function extractIdentityPageHrefs() {
     let pageOrigin = "";
 
     try {
       pageOrigin = new URL(document.baseURI).origin;
     } catch {
-      return "";
+      return [];
     }
 
-    /** @type {string[]} */
-    const byPath = [];
-    /** @type {string[]} */
-    const byLabel = [];
+    const identityPaths = new Set([
+      "/about",
+      "/about-me",
+      "/aboutme",
+      "/bio",
+      "/me",
+      "/more",
+      "/site",
+      "/social",
+      "/links",
+      "/people",
+      "/friends",
+      "/blogroll",
+      "/now",
+      "/uses",
+      "/elsewhere",
+      "/following",
+      "/bookmarks",
+      "/colophon",
+      "/webring",
+      "/webrings",
+      "/indieweb",
+      "/hello",
+      "/guestbook",
+      "/neighborhood",
+      "/meta",
+      "/interests",
+      "/health",
+      "/homelab",
+    ]);
+    const identityLabels = new Set([
+      "about",
+      "about me",
+      "about.",
+      "more",
+      "now",
+      "uses",
+      "social",
+      "links",
+      "people",
+      "friends",
+      "site",
+      "about this site",
+      "blogroll",
+      "elsewhere",
+      "following",
+      "me",
+      "colophon",
+      "webring",
+      "indieweb",
+    ]);
+    const pathRank = [
+      "/about",
+      "/me",
+      "/bio",
+      "/about-me",
+      "/aboutme",
+      "/more",
+      "/site",
+      "/now",
+      "/uses",
+      "/social",
+      "/links",
+      "/people",
+      "/friends",
+      "/blogroll",
+    ];
+
+    /** @type {Map<string, string>} */
+    const byNormalized = new Map();
 
     for (const element of document.querySelectorAll("a[href]")) {
       if (!(element instanceof HTMLAnchorElement)) {
@@ -359,41 +494,43 @@ export function extractPageMetadata(hostCatalog) {
 
       const path = url.pathname.replace(/\/+$/, "") || "/";
       const label = normalizeText(element.textContent || "").toLowerCase();
+      const pathMatch = identityPaths.has(path);
+      const labelMatch = identityLabels.has(label) && path !== "/";
 
-      if (
-        path === "/about" ||
-        path === "/about-me" ||
-        path === "/aboutme" ||
-        path === "/bio"
-      ) {
-        byPath.push(url.href);
+      if (!pathMatch && !labelMatch) {
         continue;
       }
 
-      if (
-        (label === "about" || label === "about me" || label === "about.") &&
-        path !== "/"
-      ) {
-        byLabel.push(url.href);
+      if (!byNormalized.has(path)) {
+        byNormalized.set(path, url.href);
       }
     }
 
-    const ranked = [...byPath, ...byLabel];
+    const ranked = [];
 
-    if (ranked.length === 0) {
-      return "";
+    for (const preferred of pathRank) {
+      const href = byNormalized.get(preferred);
+
+      if (href) {
+        ranked.push(href);
+        byNormalized.delete(preferred);
+      }
     }
 
-    const aboutExact = ranked.find((href) => {
-      try {
-        const path = new URL(href).pathname.replace(/\/+$/, "") || "/";
-        return path === "/about";
-      } catch {
-        return false;
-      }
-    });
+    for (const href of byNormalized.values()) {
+      ranked.push(href);
+    }
 
-    return aboutExact || ranked[0];
+    return ranked;
+  }
+
+  /**
+   * Primary same-origin about page linked from the current document.
+   * @returns {string}
+   */
+  function extractAboutPageHref() {
+    const ranked = extractIdentityPageHrefs();
+    return ranked[0] || "";
   }
 
   /**
@@ -553,6 +690,8 @@ export function extractPageMetadata(hostCatalog) {
     ogSiteName: meta('meta[property="og:site_name"]'),
     applicationName: meta('meta[name="application-name"]'),
     jsonLdSiteName: jsonLdWebsite.name,
+    jsonLdPersonName: extractJsonLdPersonName(),
+    authorName: meta('meta[name="author"]'),
     ogTitle: meta('meta[property="og:title"]'),
     twitterTitle: meta('meta[name="twitter:title"]'),
     documentTitle: document.title || "",
@@ -566,5 +705,6 @@ export function extractPageMetadata(hostCatalog) {
     links: extractOutboundLinks(),
     elsewhere: extractElsewhere(catalog),
     aboutPageHref: extractAboutPageHref(),
+    aboutPageHrefs: extractIdentityPageHrefs(),
   };
 }

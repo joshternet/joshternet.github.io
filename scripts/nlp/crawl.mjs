@@ -1,10 +1,12 @@
 /**
  * Goal & Constraints:
  * Bounded same-origin BFS crawl for NLP topic extraction. Seeds from homepage,
- * advertised topic hubs (/topics/, /tags/, …) and common writing indexes
+ * indieweb identity slash pages (/about/, /now/, /uses/, /more/, /site/, …),
+ * advertised topic hubs (/topics/, /tags/, …) and writing indexes
  * (/notes/, /blog/, /posts/, …) even when those URLs are absent from
- * sitemap.xml, sitemap locs, and optional feed entry URLs. Skips
- * /.well-known/josh. Failures for one origin never abort the run.
+ * sitemap.xml, sitemap locs, and optional feed entry URLs. Identity slash
+ * pages enqueue before sitemap flood so member-to-member link pages are not
+ * starved. Skips /.well-known/josh. Failures for one origin never abort the run.
  */
 
 import { originFromHttpUrl } from "../network/blogroll.mjs";
@@ -14,6 +16,10 @@ import {
   isHubDirectoryPage,
   isParticipationDeclarationPath,
 } from "../network/connections.mjs";
+import {
+  IDENTITY_SLASH_PATHS,
+  contentIndexPaths,
+} from "../network/slash-pages.mjs";
 import { isNonSubjectSlug } from "./evidence.mjs";
 import {
   MAX_CRAWL_DEPTH,
@@ -22,6 +28,8 @@ import {
   parseHtmlDocument,
 } from "./lib.mjs";
 import { classifyPageRole } from "./page-role.mjs";
+
+export { IDENTITY_SLASH_PATHS };
 
 /** Publisher topic directories that often omit themselves from sitemap.xml. */
 export const TOPIC_HUB_INDEX_PATHS = [
@@ -36,32 +44,29 @@ export const TOPIC_HUB_INDEX_PATHS = [
 /** Same-origin topic pages followed from a hub listing. */
 export const MAX_TOPIC_HUB_CHILDREN = 32;
 
-/** Publisher writing indexes that often omit themselves from sitemap.xml. */
-export const CONTENT_INDEX_PATHS = [
-  "/notes/",
-  "/blog/",
-  "/posts/",
-  "/post/",
-  "/writing/",
-  "/articles/",
-  "/article/",
-  "/now/",
-  "/friends/",
-  "/about/",
-  "/work/",
-  "/projects/",
-  "/archive/",
-  "/essays/",
-  "/journal/",
-  "/log/",
-  "/weeknotes/",
-];
+/** Writing indexes plus indieweb identity slash pages (sitemap-independent). */
+export const CONTENT_INDEX_PATHS = contentIndexPaths();
 
 /** Same-origin article pages followed from a writing index. */
 export const MAX_CONTENT_INDEX_CHILDREN = 32;
 
 const STATIC_PATH =
   /\.(?:css|js|mjs|map|png|jpe?g|gif|webp|svg|ico|xml|json|txt|zip|woff2?)$/i;
+
+/**
+ * Per-photo HTML pages (joshbeard-style galleries) starve the crawl budget.
+ * Keep album indexes; skip individual image attachment pages.
+ * @param {string} url
+ * @returns {boolean}
+ */
+export function isPhotoAttachmentUrl(url) {
+  try {
+    const path = new URL(url).pathname;
+    return /\/photos\/(?:all\/)?(?:\d{4}\/)?[^/]*img_[^/]+\.html?$/i.test(path);
+  } catch {
+    return false;
+  }
+}
 
 /**
  * @typedef {{
@@ -274,6 +279,100 @@ export function contentIndexSeedUrls(origin) {
 }
 
 /**
+ * Indieweb identity / link-directory slash pages for an origin.
+ * @param {string} origin
+ * @returns {string[]}
+ */
+export function identitySlashSeedUrls(origin) {
+  const urls = [];
+
+  for (const path of IDENTITY_SLASH_PATHS) {
+    const href = resolveSameOrigin(origin, path);
+
+    if (!href) {
+      continue;
+    }
+
+    urls.push(href);
+  }
+
+  return urls;
+}
+
+/**
+ * Cross-origin http(s) links from one page, with absolute hrefs.
+ * Drops same-origin nav, participation declarations, and non-http URLs.
+ * @param {string} origin
+ * @param {string} pageUrl
+ * @param {Array<{href?: string, text?: string, rel?: string[], classNames?: string[]} | string>} links
+ * @returns {Array<{href: string, text: string, rel: string[], classNames: string[], page: string}>}
+ */
+export function externalOutboundLinks(origin, pageUrl, links) {
+  /** @type {Array<{href: string, text: string, rel: string[], classNames: string[], page: string}>} */
+  const outbound = [];
+
+  if (typeof origin !== "string" || !origin || typeof pageUrl !== "string") {
+    return outbound;
+  }
+
+  let pageCanonical = "";
+
+  try {
+    pageCanonical = new URL(pageUrl).href;
+  } catch {
+    return outbound;
+  }
+
+  for (const link of links || []) {
+    const raw = typeof link === "string" ? link : link?.href;
+
+    if (typeof raw !== "string" || !raw) {
+      continue;
+    }
+
+    let absolute = "";
+
+    try {
+      absolute = new URL(raw, pageCanonical).href;
+    } catch {
+      continue;
+    }
+
+    if (isParticipationDeclarationPath(absolute)) {
+      continue;
+    }
+
+    let linkOrigin = "";
+
+    try {
+      linkOrigin = originFromHttpUrl(absolute);
+    } catch {
+      continue;
+    }
+
+    if (!linkOrigin || linkOrigin === origin) {
+      continue;
+    }
+
+    outbound.push({
+      href: absolute,
+      text:
+        typeof link === "object" && typeof link?.text === "string"
+          ? link.text
+          : "",
+      rel: typeof link === "object" && Array.isArray(link?.rel) ? link.rel : [],
+      classNames:
+        typeof link === "object" && Array.isArray(link?.classNames)
+          ? link.classNames
+          : [],
+      page: pageCanonical,
+    });
+  }
+
+  return outbound;
+}
+
+/**
  * Same-origin pages linked from a writing index.
  * @param {string} origin
  * @param {string} indexUrl
@@ -364,35 +463,48 @@ export function urlsFromSitemap(xml, origin, limit = 30) {
 export async function crawlOrigin(origin, options = {}) {
   const cache = options.cache || new Map();
   /** @type {Array<{url: string, depth: number}>} */
-  const queue = [{ url: `${origin}/`, depth: 0 }];
+  const queue = [];
+  const seedSeen = new Set();
   const seen = new Set();
   /** @type {CrawledPage[]} */
   const pages = [];
   /** @type {Array<{href: string, text: string, page: string}>} */
   const outbound = [];
 
-  if (typeof options.aboutUrl === "string" && options.aboutUrl) {
-    const about = resolveSameOrigin(origin, options.aboutUrl);
-
-    if (about) {
-      queue.push({ url: about, depth: 0 });
+  /**
+   * Enqueues a depth-0 seed once so identity pages stay ahead of sitemap flood.
+   * @param {string} url
+   */
+  function enqueueSeed(url) {
+    if (!url || seedSeen.has(url)) {
+      return;
     }
+
+    seedSeen.add(url);
+    queue.push({ url, depth: 0 });
+  }
+
+  enqueueSeed(`${origin}/`);
+
+  if (typeof options.aboutUrl === "string" && options.aboutUrl) {
+    enqueueSeed(resolveSameOrigin(origin, options.aboutUrl));
+  }
+
+  // Identity slash pages before topic hubs / writing indexes / sitemap.
+  for (const url of identitySlashSeedUrls(origin)) {
+    enqueueSeed(url);
   }
 
   for (const url of topicHubSeedUrls(origin)) {
-    queue.push({ url, depth: 0 });
+    enqueueSeed(url);
   }
 
   for (const url of contentIndexSeedUrls(origin)) {
-    queue.push({ url, depth: 0 });
+    enqueueSeed(url);
   }
 
   for (const feedUrl of options.feedEntryUrls || []) {
-    const resolved = resolveSameOrigin(origin, feedUrl);
-
-    if (resolved) {
-      queue.push({ url: resolved, depth: 0 });
-    }
+    enqueueSeed(resolveSameOrigin(origin, feedUrl));
   }
 
   try {
@@ -402,7 +514,7 @@ export async function crawlOrigin(origin, options = {}) {
     });
 
     for (const url of urlsFromSitemap(sitemap.body, origin)) {
-      queue.push({ url, depth: 0 });
+      enqueueSeed(url);
     }
   } catch {
     // Sitemap is optional.
@@ -412,6 +524,11 @@ export async function crawlOrigin(origin, options = {}) {
     const next = queue.shift();
 
     if (!next || seen.has(next.url) || next.depth > MAX_CRAWL_DEPTH) {
+      continue;
+    }
+
+    if (isPhotoAttachmentUrl(next.url)) {
+      seen.add(next.url);
       continue;
     }
 
@@ -483,16 +600,12 @@ export async function crawlOrigin(origin, options = {}) {
             queue.push({ url: same, depth: next.depth + 1 });
           }
         }
-      } else {
-        outbound.push({
-          href: absolute,
-          text: link.text,
-          rel: link.rel,
-          classNames: link.classNames,
-          page: fetched.url,
-        });
       }
     }
+
+    outbound.push(
+      ...externalOutboundLinks(origin, fetched.url, document.links),
+    );
 
     for (const child of topicHubChildUrls(
       origin,

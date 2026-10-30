@@ -9,11 +9,14 @@ import {
   chooseTitle,
   decodeHtmlEntities,
   framePolicy,
+  humanNameFromDomain,
   identityFromDeclaration,
   isForbiddenAddress,
   isParticipatingNode,
+  looksLikePersonName,
   MAX_FEEDS_PER_PARTICIPANT,
   partitionPublicParticipants,
+  personNameFromText,
   projectRegistry,
   registryParticipationFields,
   registryTimestamp,
@@ -254,6 +257,149 @@ test("metadata title recognizes a spaced site name from the domain", () => {
       domain: "joshuamorris.info",
     }),
     "Joshua Morris",
+  );
+});
+
+test("metadata title prefers personal domain name over greeting og:title", () => {
+  assert.equal(
+    chooseTitle({
+      ogTitle: "Hello!",
+      twitterTitle: "Hello!",
+      documentTitle: "Hello! - joshua.seigler.net",
+      domain: "joshua.seigler.net",
+    }),
+    "Joshua Seigler",
+  );
+});
+
+test("metadata title uses humanized personal domain when all page titles are greetings", () => {
+  assert.equal(
+    chooseTitle({
+      ogTitle: "Hello!",
+      twitterTitle: "Hi!",
+      documentTitle: "Welcome",
+      domain: "joshua.seigler.net",
+    }),
+    "Joshua Seigler",
+  );
+});
+
+test("metadata title extracts person name from og:title brand separator parts", () => {
+  assert.equal(
+    chooseTitle({
+      ogTitle: "Josh Ghent - Developer Musings",
+      domain: "joshghent.com",
+    }),
+    "Josh Ghent",
+  );
+});
+
+test("humanNameFromDomain rejects non-alpha labels and tlds", () => {
+  assert.equal(humanNameFromDomain("j.morris.com"), "");
+  assert.equal(humanNameFromDomain("josh.m.com"), "");
+  assert.equal(humanNameFromDomain("josh.morris.c0m"), "");
+  assert.equal(humanNameFromDomain("josh1.morris.com"), "");
+  assert.equal(humanNameFromDomain("joshua.seigler.net"), "Joshua Seigler");
+});
+
+test("looksLikePersonName rejects numeric or stopword tokens", () => {
+  assert.equal(looksLikePersonName("Josh 123"), false);
+  assert.equal(looksLikePersonName("A Morris"), false);
+  assert.equal(looksLikePersonName("Josh Morris"), true);
+});
+
+test("personNameFromText returns empty when no span matches the domain", () => {
+  assert.equal(
+    personNameFromText("Hello there friend world", "joshghent.com"),
+    "",
+  );
+});
+
+test("metadata title prefers person name over blog-brand site name", () => {
+  assert.equal(
+    chooseTitle({
+      ogSiteName: "Developer Musings",
+      ogTitle: "Josh Ghent",
+      twitterTitle: "Josh Ghent",
+      documentTitle: "Josh Ghent — Developer Musings",
+      jsonLdPersonName: "Josh Ghent",
+      authorName: "Josh Ghent",
+      domain: "joshghent.com",
+    }),
+    "Josh Ghent",
+  );
+});
+
+test("metadata title prefers person author over domain-label brand", () => {
+  assert.equal(
+    chooseTitle({
+      authorName: "Josh Sherman",
+      documentTitle: "Shipping Fixes Everything - Joshtronic",
+      domain: "joshtronic.com",
+    }),
+    "Josh Sherman",
+  );
+});
+
+test("metadata title rejects slogan brands that compress to the domain", () => {
+  assert.equal(
+    chooseTitle({
+      ogSiteName: "Josh Can Help",
+      ogTitle: "Josh Can Help - Software",
+      documentTitle: "Josh Can Help - Software - Josh Can Help",
+      domain: "www.joshcanhelp.com",
+    }),
+    "Josh Can Help",
+  );
+});
+
+test("metadata title prefers GitHub-sourced person author over slogan site name", () => {
+  assert.equal(
+    chooseTitle({
+      ogSiteName: "Josh Can Help",
+      ogTitle: "Josh Can Help - Software",
+      documentTitle: "Josh Can Help - Software - Josh Can Help",
+      authorName: "Josh Cunningham",
+      domain: "www.joshcanhelp.com",
+    }),
+    "Josh Cunningham",
+  );
+});
+
+test("metadata title prefers author or description name over Josh's site placeholder", () => {
+  assert.equal(
+    chooseTitle({
+      ogSiteName: "Josh's site",
+      ogTitle: "Josh's site",
+      twitterTitle: "Josh's site",
+      documentTitle: "Josh's site",
+      authorName: "Josh Müller",
+      domain: "joshmuller.ca",
+    }),
+    "Josh Müller",
+  );
+
+  assert.equal(
+    chooseTitle({
+      ogSiteName: "Josh's site",
+      ogTitle: "Josh's site",
+      documentTitle: "Josh's site",
+      description:
+        "Personal Website of Josh Müller — Technologist | Leader | Regenerative Systems Designer",
+      domain: "joshmuller.ca",
+    }),
+    "Josh Müller",
+  );
+});
+
+test("metadata title keeps greeting when domain is not a personal name host", () => {
+  assert.equal(
+    chooseTitle({
+      ogTitle: "Hello!",
+      documentTitle: "Hello!",
+      domain: "example.com",
+    }),
+    "Hello!",
   );
 });
 

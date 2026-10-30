@@ -20,6 +20,7 @@ const connectionsScript = await readFile(connectionsScriptPath, "utf8");
  *   participants?: Array<Record<string, unknown>>,
  *   connections?: Array<Record<string, unknown>>,
  *   topic_overlaps?: Array<Record<string, unknown>>,
+ *   topic_groups?: Array<Record<string, unknown>>,
  * }} [options]
  */
 function buildPreviewFixture(options = {}) {
@@ -28,15 +29,15 @@ function buildPreviewFixture(options = {}) {
       origin: "https://a.example",
       domain: "a.example",
       title: "Site A",
-      description: "",
-      screenshot: "",
+      description: "About A",
+      screenshot: "/assets/network/sites/a.webp",
     },
     {
       origin: "https://b.example",
       domain: "b.example",
       title: "Site B",
-      description: "",
-      screenshot: "",
+      description: "About B",
+      screenshot: "/assets/network/sites/b.webp",
     },
   ];
   const connections = options.connections || [
@@ -55,6 +56,19 @@ function buildPreviewFixture(options = {}) {
       a: "https://a.example",
       b: "https://b.example",
       topics: [{ slug: "privacy", label: "privacy" }],
+    },
+  ];
+  const topic_groups = options.topic_groups || [
+    {
+      origin: "https://a.example",
+      topics: [
+        {
+          slug: "privacy",
+          label: "privacy",
+          articles: [{ url: "https://a.example/privacy/", title: "Privacy" }],
+          sites: [],
+        },
+      ],
     },
   ];
 
@@ -97,7 +111,7 @@ function buildPreviewFixture(options = {}) {
       <a href="/connections/">Explore all connections</a>
     </div>
     <script type="application/json" id="home-connections-bootstrap">
-      ${JSON.stringify({ participants, connections, topic_overlaps }).replaceAll("<", "\\u003c")}
+      ${JSON.stringify({ participants, connections, topic_overlaps, topic_groups }).replaceAll("<", "\\u003c")}
     </script>
   </body>
 </html>`;
@@ -151,6 +165,7 @@ test("homepage connections preview renders nodes without map tools", async () =>
     await page.locator('marker[id="home-connections-bootstrap-arrow"]').count(),
     1,
   );
+  // Fixture graph has one edge of each kind; the site include also ships a line key.
   assert.equal(
     await page.locator('[data-connection-kind="shared-topic"]').count(),
     1,
@@ -173,10 +188,11 @@ test("homepage connections preview selects a node and links to Connections", asy
     await page.locator("[data-connections-detail]").isVisible(),
     true,
   );
-  assert.match(
-    (await page.locator("[data-connections-detail]").innerText()) || "",
-    /Explore on Connections/,
-  );
+  const detail =
+    (await page.locator("[data-connections-detail]").innerText()) || "";
+  assert.match(detail, /Explore on Connections/);
+  assert.match(detail, /Shared topics/);
+  assert.match(detail, /privacy/);
   assert.equal(
     await page
       .locator(
@@ -250,6 +266,40 @@ test("empty homepage connections payload leaves the graph hidden", async () => {
 
   assert.equal(await page.locator("[data-connections-graph]").isHidden(), true);
   assert.equal(await page.locator(".connections-graph__node").count(), 0);
+
+  await context.close();
+});
+
+test("homepage preview shows isolate participants with zero edges", async () => {
+  const { context, page } = await previewPage({
+    participants: [
+      {
+        origin: "https://a.example",
+        domain: "a.example",
+        title: "Site A",
+        description: "",
+        screenshot: "",
+      },
+      {
+        origin: "https://lonely.example",
+        domain: "lonely.example",
+        title: "Lonely",
+        description: "",
+        screenshot: "",
+      },
+    ],
+    connections: [],
+    topic_overlaps: [],
+  });
+
+  assert.equal(await page.locator(".connections-graph__node").count(), 2);
+  await page
+    .locator('.connections-graph__node[data-origin="https://lonely.example"]')
+    .click();
+  const detail = await page.locator("[data-connections-detail]").innerText();
+  assert.match(detail, /Lonely/);
+  assert.match(detail, /No observed connections yet/);
+  assert.match(detail, /Explore on Connections/);
 
   await context.close();
 });

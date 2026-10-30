@@ -108,6 +108,44 @@ export function isHubDirectoryPage(href, hubOrigin = HUB_ORIGIN) {
   }
 }
 
+/** Hub republish widget classes that must not create connection edges. */
+const HUB_DIRECTORY_LINK_CLASSES = new Set([
+  "network-card__link",
+  "activity-card__link",
+  "activity-card__media",
+]);
+
+/**
+ * True when a hub-origin link is a directory/republish widget (Meet cards,
+ * Network cards, homepage activity cards), not independently authored
+ * connection evidence.
+ * @param {{ classNames?: string[], text?: string } | null | undefined} link
+ * @param {string} sourceOrigin
+ * @param {string} [hubOrigin]
+ * @returns {boolean}
+ */
+export function isHubDirectoryLink(link, sourceOrigin, hubOrigin = HUB_ORIGIN) {
+  if (typeof sourceOrigin !== "string" || sourceOrigin !== hubOrigin) {
+    return false;
+  }
+
+  const classNames = normalizeRelTokens(
+    link && typeof link === "object" ? link.classNames : [],
+  );
+
+  if (classNames.some((token) => HUB_DIRECTORY_LINK_CLASSES.has(token))) {
+    return true;
+  }
+
+  // Older crawls tagged activity titles as bare u-url only.
+  const text =
+    link && typeof link === "object" && typeof link.text === "string"
+      ? link.text
+      : "";
+
+  return classNames.includes("u-url") && /opens on the publisher/i.test(text);
+}
+
 /**
  * True when HTML marks the page as derived Joshternet analysis output.
  * @param {string} html
@@ -408,16 +446,31 @@ export function connectionObservations({
       continue;
     }
 
-    if (!href || isParticipationDeclarationPath(href)) {
+    if (!href) {
+      continue;
+    }
+
+    if (isHubDirectoryLink({ classNames, text }, sourceOrigin)) {
+      continue;
+    }
+
+    let absoluteHref = "";
+
+    try {
+      absoluteHref = new URL(href, observationPage).href;
+    } catch {
+      continue;
+    }
+
+    if (isParticipationDeclarationPath(absoluteHref)) {
       continue;
     }
 
     let to = "";
 
     try {
-      const url = new URL(href);
-      to = originFromHttpUrl(url.href);
-      href = url.href;
+      to = originFromHttpUrl(absoluteHref);
+      href = absoluteHref;
     } catch {
       continue;
     }

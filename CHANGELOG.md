@@ -4,12 +4,29 @@
 
 ### Added
 
+- Connections shows every verified Network participant as a graph and list node, including sites with no observed links yet, with a “No observed connections yet” empty state and a link to the site.
+- Crawl HTML parsing accepts unquoted `href` / `rel` / `class` attributes so minified participant pages (for example joshbeard.com) contribute real outbound links.
+- Content-index crawl seeds include indieweb identity slash pages (`/me/`, `/social/`, `/links/`, `/more/`, `/uses/`, `/site/`, `/people/`, `/blogroll/`, `/elsewhere/`, `/now/`, `/health/`, and related paths); those seeds enqueue before sitemap locs so link directories are not starved. About/identity discovery collects multiple homepage-linked slash pages (`/more/`, `/site/`, `/now/`, `/uses/`, …); network sync visits up to eight of them for elsewhere and connection evidence. NLP outbound links are absolutized and same-origin nav is dropped so pages like joshbeard.com `/site/` contribute real Josh-to-Josh edges.
 - Homepage Connections preview: compact graph under discovery that reuses `connections.js` in preview mode (no wheel zoom or page-scroll trap), with a lightweight bootstrap of participants, observed links, and shared-topic pairs.
 - Homepage discovery sections: Wander and Network CTAs, a Meet the websites preview that shuffles participants at random each visit (no join-date or creator priority; domain order without JavaScript), a What's happening preview from `activity.primary`, and a static Join path with the three identity declaration examples.
 - Quartz 5 platform recipe at `/implement/platforms/quartz/`: copy `josh.json` to `public/.well-known/josh` after `npx quartz build`, because Quartz emits `quartz/static` under `/static/` and skips dot directories.
 
 ### Changed
 
+- NLP reads unquoted `meta` name/property/content attributes, counts discovery-only publisher keywords as declared (still not community-eligible), classifies personal essay/identity paths and `/tips/` for heuristics, and skips per-photo gallery HTML so sites like joshbeard.com yield real pages/declared/signals instead of an image-page crawl.
+- Network/NLP coverage gaps closed: unreachable slash-page dedupe and greeting/title dead branches removed; tests cover connection href failures, GitHub elsewhere edge cases, personal-domain title fallbacks, crawl seed guards, and hub URL parse failures.
+- Connections site cards keep the screenshot, identity, connection lists, and empty-state note on one horizontal grid so empty notes and edge lists align with the title column instead of sitting under the thumbnail.
+- Connections graph footer keeps filter chips and the line key on one shared row height; the key divider only appears beside filters.
+- `network:sync` re-resolves participant titles on every run (including fresh screenshot keeps), using author/Person metadata and linked GitHub profile names, so new registry members and title-rule changes publish without waiting for the 24-hour capture refresh. Actions passes `GITHUB_TOKEN` for authenticated GitHub Users API rate limits.
+- Homepage Connections preview bootstraps the same participants, observed edges, shared-topic pairs, and per-site topic groups as `/connections/`, including descriptions and screenshots, so node selection shows the same datapoints.
+- Homepage Meet the websites omits the joshternet.org hub card and counts only member sites.
+- What's New / activity primary skips member posts whose URL is the Joshternet hub (for example a “Link: Joshternet…” bookmark), so the hub does not feature itself; the member’s next recent post can surface instead.
+- Network titles derived from `firstname.lastname.tld` hosts prefer the personal name (for example joshua.seigler.net → “Joshua Seigler”) instead of greeting-only homepage titles such as “Hello!”.
+- Network titles prefer a person name that matches the host (Person JSON-LD, author, description, or page title) over a blog-brand or placeholder site name (for example joshghent.com → “Josh Ghent”, joshmuller.ca → “Josh Müller”).
+- Network titles prefer a person-shaped author or Person JSON-LD name over a host-label brand when those do not compress to the domain (for example joshtronic.com → “Josh Sherman” instead of “Joshtronic”).
+- Network titles reject slogan brands that only compress to the host (for example “Josh Can Help”) and prefer a person-shaped GitHub profile name from elsewhere links when the site omits an author (joshcanhelp.com → “Josh Cunningham”).
+- Hub homepage Meet cards (`network-card__link`) and What's happening activity cards (`activity-card__link` / `activity-card__media`) are not connection evidence; relative outbound hrefs resolve against the observation page before edges are recorded.
+- Homepage Connections preview boots whenever the Network has participants, not only when edges or shared-topic pairs already exist.
 - Network identity filters hide cards again. `.network-card { display: flex }` had overridden the browser `[hidden]` rule, so Non-Josh and other filters left every card visible.
 - `connections.js` boots every `[data-connections-shell]` with full or preview mode, scoped bootstrap ids, and unique SVG arrow markers.
 - Layout pages may list multiple deferred scripts via `scripts:`.

@@ -58,7 +58,10 @@ test("homepage meet and activity includes use generated datasets", async () => {
   assert.match(index, /\/assets\/js\/connections\.js/);
   assert.doesNotMatch(index, /^script:/m);
   assert.match(meet, /site\.data\.network/);
-  assert.match(meet, /sort: ['"]domain['"]/);
+  assert.match(meet, /sort: ["']domain["']/);
+  assert.match(meet, /https:\/\/joshternet\.org/);
+  assert.match(meet, /home_hub_origin/);
+  assert.match(meet, /network_site\.origin != home_hub_origin/);
   assert.doesNotMatch(meet, /first_participated_at/);
   assert.doesNotMatch(meet, /limit: 3/);
   assert.match(meet, /data-home-meet-grid/);
@@ -119,19 +122,25 @@ test("homepage styles scope discovery components and honor reduced motion", asyn
   );
 });
 
-test("homepage connections preview uses lightweight bootstrap and preview mode", async () => {
+test("homepage connections preview uses the same bootstrap datapoints as Connections", async () => {
   const index = await read("index.md");
   const include = await read("_includes/home-connections.html");
+  const connections = await read("connections.md");
   const layout = await read("_layouts/default.html");
   const script = await read("assets/js/connections.js");
 
   assert.match(index, /See how the Joshternet connects/);
   assert.match(include, /data-connections-mode="preview"/);
   assert.match(include, /home-connections-bootstrap/);
+  assert.match(include, /home_ordered_sites\.size > 0/);
   assert.match(include, /site\.data\.connections\.edges/);
   assert.match(include, /site\.data\.connection_topics\.pairs/);
-  assert.doesNotMatch(include, /"topic_groups"/);
-  assert.doesNotMatch(include, /connection_topics\.sites/);
+  assert.match(include, /site\.data\.connection_topics\.sites/);
+  assert.match(include, /"topic_groups"/);
+  assert.match(include, /network_site\.description/);
+  assert.match(include, /network_site\.screenshot/);
+  assert.match(include, /network_dev/);
+  assert.match(connections, /"topic_groups": \{\{ overlap_sites/);
   assert.match(include, /\/connections\//);
   assert.match(include, /<noscript>/);
   assert.match(include, /home-connections__empty/);
@@ -139,4 +148,5 @@ test("homepage connections preview uses lightweight bootstrap and preview mode",
   assert.match(script, /function initShell/);
   assert.match(script, /isPreview/);
   assert.match(script, /arrowMarkerId/);
+  assert.match(script, /topicGroups/);
 });

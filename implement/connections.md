@@ -33,7 +33,11 @@ PUBLIC PROJECTIONS
 
 Derived Joshternet pages (`/network/`, `/connections/`, `/topics/**`, `/activity/`, `/wander/`,
 generated OPML) must not become new semantic evidence. Hub path exclusions apply
-only on `joshternet.org`. Participant sites may use paths like `/topics/` freely.
+only on `joshternet.org`. Hub homepage republish widgets are also excluded: Meet
+the websites cards (`network-card__link`), Network cards, and What's happening
+activity cards (`activity-card__link` / `activity-card__media`). Directory UI must
+not manufacture a hub-and-spoke graph. Participant sites may use paths like
+`/topics/` freely.
 Pages may also mark themselves with:
 
 ```html
@@ -135,7 +139,8 @@ JoshternetNLP/1.0 (+https://joshternet.org; topic-hub build crawl)
 | Visible prose     | Not script, style, or nav chrome                                                                                                                                     |
 | Declared labels   | Microformats `p-category`, `article:tag`, feed categories                                                                                                            |
 | Topic directories | `/topics/`, `/tags/`, `/categories/` even when missing from `sitemap.xml`                                                                                            |
-| Writing indexes   | `/notes/`, `/blog/`, `/posts/`, `/now/`, `/friends/`, `/about/`, `/archive/`, and similar, also independent of the sitemap                                            |
+| Writing indexes   | `/notes/`, `/blog/`, `/posts/`, `/archive/`, and similar, also independent of the sitemap                                                                              |
+| Identity slash pages | Indieweb about / link directories: `/about/`, `/me/`, `/now/`, `/uses/`, `/more/`, `/site/`, `/social/`, `/links/`, `/people/`, `/friends/`, `/blogroll/`, and related paths. Seeded before sitemap locs so member-to-member links (for example joshbeard.com `/more/` → `/site/`) are fetched. Network sync also visits homepage-linked identity pages plus these conventional seeds (capped). |
 | Catalog source    | Declared subjects from every participant, combined. No single site supplies the vocabulary.                                                                          |
 | Catalog match     | Other members’ titles and summaries, after every origin is fetched. Sites without Microformats or JSON-LD can still contribute matching articles.                   |
 | Feed cap          | 80 URLs per origin                                                                                                                                                   |

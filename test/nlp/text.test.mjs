@@ -8,8 +8,10 @@ import test from "node:test";
 
 import {
   decodeHrefForParse,
+  htmlAttributeValue,
   isEnglishLanguage,
   metaContent,
+  metaContents,
   normalizeExtractedText,
   parseHtmlRegions,
   posterImageFromHtml,
@@ -63,6 +65,25 @@ test("parseHtmlRegions: link with class attribute is extracted", () => {
   const link = result.links.find((l) => l.href.includes("a.example"));
   assert.ok(link);
   assert.ok(link.classNames.includes("u-in-reply-to"));
+});
+
+test("parseHtmlRegions: unquoted href/rel/class from minified HTML", () => {
+  const html = `<!doctype html><html lang=en><body><div class=home_links><a href=/me/ title=About class=home_link>About</a><a href=https://github.com/joshbeard rel="noopener noreferrer" class=ext>GitHub</a><a href=https://joshternet.org/ class=network-card__link>Joshternet</a></div></body></html>`;
+  const result = parseHtmlRegions(html);
+  assert.equal(result.links.length, 3);
+  assert.equal(result.links[0].href, "/me/");
+  assert.deepEqual(result.links[0].classNames, ["home_link"]);
+  assert.equal(result.links[1].href, "https://github.com/joshbeard");
+  assert.ok(result.links[1].rel.includes("noopener"));
+  assert.deepEqual(result.links[2].classNames, ["network-card__link"]);
+});
+
+test("parseHtmlRegions: joshbeard-style /site/ page yields member links", () => {
+  const html = `<!doctype html><html><body><p>This site participates in <a href=https://joshternet.org/>Joshternet</a> and links to <a href=https://joshuamorris.info/>Joshua Morris</a> plus <a href=/.well-known/josh>/.well-known/josh</a>.</p></body></html>`;
+  const result = parseHtmlRegions(html);
+  assert.ok(result.links.some((l) => l.href === "https://joshternet.org/"));
+  assert.ok(result.links.some((l) => l.href === "https://joshuamorris.info/"));
+  assert.ok(result.links.some((l) => l.href === "/.well-known/josh"));
 });
 
 test("parseHtmlRegions: link without class has empty classNames", () => {
@@ -341,4 +362,35 @@ test("shareDescriptionFromHtml prefers the Open Graph description", () => {
     "Only meta",
   );
   assert.equal(shareDescriptionFromHtml(""), "");
+});
+
+test("htmlAttributeValue returns empty for missing attrs or name", () => {
+  assert.equal(htmlAttributeValue(null, "href"), "");
+  assert.equal(htmlAttributeValue("", "href"), "");
+  assert.equal(htmlAttributeValue('href="/x"', ""), "");
+  assert.equal(htmlAttributeValue('href="/x"', null), "");
+  assert.equal(htmlAttributeValue('class="a"', "href"), "");
+  assert.equal(htmlAttributeValue('href="/x" class="a"', "href"), "/x");
+  assert.equal(htmlAttributeValue("href='/y' class='z'", "href"), "/y");
+  assert.equal(htmlAttributeValue("href=/z class=plain", "href"), "/z");
+});
+
+test("metaContent reads unquoted name/property attributes", () => {
+  const html = `<meta name=keywords content="health,cycling"><meta property=og:title content="Health">`;
+  assert.equal(metaContent(html, "keywords"), "health,cycling");
+  assert.equal(metaContent(html, "og:title"), "Health");
+  assert.deepEqual(metaContents(html, "keywords"), ["health,cycling"]);
+});
+
+test("metaContents skips unmatched keys and empty content", () => {
+  const html = `<meta><meta name=keywords content=""><meta name=description content="Only description">`;
+  assert.deepEqual(metaContents(html, "keywords"), []);
+  assert.deepEqual(metaContents(html, "description"), ["Only description"]);
+});
+
+test("parseHtmlRegions: single-quoted href is extracted", () => {
+  const result = parseHtmlRegions(`<a href='/me/' class='home_link'>About</a>`);
+  assert.equal(result.links.length, 1);
+  assert.equal(result.links[0].href, "/me/");
+  assert.deepEqual(result.links[0].classNames, ["home_link"]);
 });

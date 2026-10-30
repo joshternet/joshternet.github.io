@@ -13,6 +13,7 @@ import {
   friendConnectionObservations,
   hasDerivedAnalysisMarker,
   indexConnectionsByParticipant,
+  isHubDirectoryLink,
   isHubDirectoryPage,
   isParticipationDeclarationPath,
   originsFromLinkUrls,
@@ -21,6 +22,7 @@ import {
   sortConnectionEdges,
   topicConnectionObservations,
 } from "../../scripts/network/connections.mjs";
+import { parseHtmlRegions } from "../../scripts/nlp/text.mjs";
 
 test("isParticipationDeclarationPath detects well-known josh only", () => {
   assert.equal(
@@ -106,6 +108,143 @@ test("hub directory pages never create outgoing connections", () => {
     }),
     [],
   );
+});
+
+test("isHubDirectoryLink detects hub Meet and activity widget classes", () => {
+  assert.equal(
+    isHubDirectoryLink(
+      { classNames: ["network-card__link", "u-url"] },
+      "https://joshternet.org",
+    ),
+    true,
+  );
+  assert.equal(
+    isHubDirectoryLink(
+      { classNames: ["activity-card__link"] },
+      "https://joshternet.org",
+    ),
+    true,
+  );
+  assert.equal(
+    isHubDirectoryLink(
+      {
+        classNames: ["u-url"],
+        text: "Title ↗ (opens on the publisher’s site)",
+      },
+      "https://joshternet.org",
+    ),
+    true,
+  );
+  assert.equal(
+    isHubDirectoryLink(
+      { classNames: ["network-card__link"] },
+      "https://b.example",
+    ),
+    false,
+  );
+  assert.equal(
+    isHubDirectoryLink({ classNames: ["u-url"] }, "https://joshternet.org"),
+    false,
+  );
+  assert.equal(
+    isHubDirectoryLink("https://b.example/", "https://joshternet.org"),
+    false,
+  );
+  assert.equal(isHubDirectoryLink(null, "https://joshternet.org"), false);
+});
+
+test("hub Meet network-card links are not connection evidence", () => {
+  assert.deepEqual(
+    connectionObservations({
+      sourceOrigin: "https://joshternet.org",
+      pageUrl: "https://joshternet.org/",
+      links: [
+        {
+          href: "https://b.example/",
+          text: "Josh B",
+          classNames: ["network-card__link", "u-url"],
+          rel: ["noopener"],
+        },
+      ],
+      participantOrigins: ["https://joshternet.org", "https://b.example"],
+    }),
+    [],
+  );
+});
+
+test("hub homepage editorial links to participants are kept", () => {
+  const edges = connectionObservations({
+    sourceOrigin: "https://joshternet.org",
+    pageUrl: "https://joshternet.org/",
+    links: [
+      {
+        href: "https://b.example/essay/",
+        text: "A real mention of B",
+        classNames: [],
+        rel: [],
+      },
+    ],
+    participantOrigins: ["https://joshternet.org", "https://b.example"],
+  });
+
+  assert.equal(edges.length, 1);
+  assert.equal(edges[0].relation, "homepage-link");
+  assert.equal(edges[0].to, "https://b.example");
+});
+
+test("relative hrefs resolve against the observation page", () => {
+  const edges = connectionObservations({
+    sourceOrigin: "https://a.example",
+    pageUrl: "https://a.example/site/",
+    links: [{ href: "/friends/b", text: "B", page: "https://a.example/site/" }],
+    participantOrigins: ["https://a.example", "https://b.example"],
+  });
+
+  // Relative path stays same-origin after resolve → dropped as non-participant bridge.
+  assert.deepEqual(edges, []);
+
+  const absoluteRelative = connectionObservations({
+    sourceOrigin: "https://a.example",
+    pageUrl: "https://a.example/site/",
+    links: [
+      {
+        href: "//b.example/hello",
+        text: "B",
+        page: "https://a.example/site/",
+      },
+    ],
+    participantOrigins: ["https://a.example", "https://b.example"],
+  });
+
+  assert.equal(absoluteRelative.length, 1);
+  assert.equal(absoluteRelative[0].to, "https://b.example");
+  assert.match(absoluteRelative[0].href, /^https:\/\/b\.example\/hello/);
+});
+
+test("minified /site/ HTML yields member content-links and drops declaration", () => {
+  const html = `<!doctype html><html><body><p>Part of <a href=https://joshternet.org/>Joshternet</a> with <a href=https://joshuamorris.info/>Joshua Morris</a> and <a href=/.well-known/josh>declaration</a>.</p></body></html>`;
+  const regions = parseHtmlRegions(html);
+  const edges = sortConnectionEdges(
+    connectionObservations({
+      sourceOrigin: "https://joshbeard.com",
+      pageUrl: "https://joshbeard.com/site/",
+      links: regions.links.map((link) => ({
+        ...link,
+        page: "https://joshbeard.com/site/",
+      })),
+      participantOrigins: [
+        "https://joshbeard.com",
+        "https://joshternet.org",
+        "https://joshuamorris.info",
+      ],
+    }),
+  );
+
+  assert.equal(edges.length, 2);
+  assert.equal(edges[0].from, "https://joshbeard.com");
+  assert.equal(edges[0].to, "https://joshternet.org");
+  assert.equal(edges[0].relation, "content-link");
+  assert.equal(edges[1].to, "https://joshuamorris.info");
 });
 
 test("friendConnectionObservations is disabled", () => {
@@ -441,6 +580,40 @@ test("connectionObservations: link with invalid href (unparseable) is skipped", 
     sourceOrigin: "https://a.example",
     pageUrl: "https://a.example/",
     links: [{ href: "not-a-url" }, { href: "https://b.example/" }],
+    participantOrigins: ["https://a.example", "https://b.example"],
+  });
+  assert.equal(obs.length, 1);
+});
+
+test("connectionObservations: empty href is skipped", () => {
+  const obs = connectionObservations({
+    sourceOrigin: "https://a.example",
+    pageUrl: "https://a.example/",
+    links: [{ href: "" }, { text: "no href" }, { href: "https://b.example/" }],
+    participantOrigins: ["https://a.example", "https://b.example"],
+  });
+  assert.equal(obs.length, 1);
+});
+
+test("connectionObservations: URL-constructor failure skips the link", () => {
+  const obs = connectionObservations({
+    sourceOrigin: "https://a.example",
+    pageUrl: "https://a.example/",
+    links: [{ href: "http://" }, { href: "https://b.example/" }],
+    participantOrigins: ["https://a.example", "https://b.example"],
+  });
+  assert.equal(obs.length, 1);
+});
+
+test("connectionObservations: non-http absolute href is skipped", () => {
+  const obs = connectionObservations({
+    sourceOrigin: "https://a.example",
+    pageUrl: "https://a.example/",
+    links: [
+      { href: "ftp://b.example/" },
+      { href: "https://user:pass@b.example/" },
+      { href: "https://b.example/" },
+    ],
     participantOrigins: ["https://a.example", "https://b.example"],
   });
   assert.equal(obs.length, 1);

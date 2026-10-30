@@ -80,6 +80,52 @@ export function decodeHrefForParse(href) {
 }
 
 /**
+ * Reads a quoted or unquoted HTML attribute value (minified sites often omit quotes).
+ * @param {string} attrs
+ * @param {string} name
+ * @returns {string}
+ */
+export function htmlAttributeValue(attrs, name) {
+  if (
+    typeof attrs !== "string" ||
+    !attrs ||
+    typeof name !== "string" ||
+    !name
+  ) {
+    return "";
+  }
+
+  const pattern = new RegExp(
+    `\\b${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`,
+    "i",
+  );
+  const match = attrs.match(pattern);
+
+  if (!match) {
+    return "";
+  }
+
+  return match[1] ?? match[2] ?? match[3];
+}
+
+/**
+ * Splits a space-separated HTML attribute value into lowercase tokens.
+ * @param {string} value
+ * @returns {string[]}
+ */
+function attributeTokens(value) {
+  if (typeof value !== "string" || !value) {
+    return [];
+  }
+
+  return value
+    .toLowerCase()
+    .split(/\s+/)
+    .map((token) => token.trim())
+    .filter(Boolean);
+}
+
+/**
  * @typedef {{
  *   title: string,
  *   headings: string,
@@ -165,34 +211,21 @@ export function parseHtmlRegions(html) {
   ).slice(0, 100_000);
 
   const links = [];
+  // Quoted or unquoted href (joshbeard.com and other minified static sites).
   const linkPattern =
-    /<a\b([^>]*)href\s*=\s*["']([^"']+)["']([^>]*)>([\s\S]*?)<\/a>/gi;
+    /<a\b([^>]*)href\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))([^>]*)>([\s\S]*?)<\/a>/gi;
 
   while ((match = linkPattern.exec(source))) {
     const before = match[1];
-    const after = match[3] || "";
+    const after = match[5] || "";
     const attrs = `${before} ${after}`;
-    const href = decodeHrefForParse(match[2]);
+    const href = decodeHrefForParse(match[2] ?? match[3] ?? match[4]);
     const text = capRemoteString(
-      match[4].replace(/<[^>]+>/g, " "),
+      match[6].replace(/<[^>]+>/g, " "),
       MAX_ANCHOR_CHARS,
     );
-    const relMatch = attrs.match(/\brel\s*=\s*["']([^"']+)["']/i);
-    const rel = relMatch?.[1]
-      ? relMatch[1]
-          .toLowerCase()
-          .split(/\s+/)
-          .map((token) => token.trim())
-          .filter(Boolean)
-      : [];
-    const classMatch = attrs.match(/\bclass\s*=\s*["']([^"']+)["']/i);
-    const classNames = classMatch?.[1]
-      ? classMatch[1]
-          .toLowerCase()
-          .split(/\s+/)
-          .map((token) => token.trim())
-          .filter(Boolean)
-      : [];
+    const rel = attributeTokens(htmlAttributeValue(attrs, "rel"));
+    const classNames = attributeTokens(htmlAttributeValue(attrs, "class"));
 
     if (href) {
       links.push({ href, text, rel, classNames });
@@ -216,39 +249,64 @@ export function parseHtmlRegions(html) {
 }
 
 /**
+ * All content values for meta tags whose name or property matches `key`.
+ * Accepts quoted or unquoted attributes (minified participant HTML).
+ * @param {string} html
+ * @param {string} key
+ * @returns {string[]}
+ */
+export function metaContents(html, key) {
+  const source = typeof html === "string" ? html : "";
+  const wanted = String(key || "")
+    .trim()
+    .toLocaleLowerCase("en-US");
+
+  if (!wanted) {
+    return [];
+  }
+
+  /** @type {string[]} */
+  const values = [];
+  const tagPattern = /<meta\b([^>]*)>/gi;
+  let match;
+
+  while ((match = tagPattern.exec(source))) {
+    const attrs = match[1] || "";
+    const property = htmlAttributeValue(attrs, "property")
+      .trim()
+      .toLocaleLowerCase("en-US");
+    const name = htmlAttributeValue(attrs, "name")
+      .trim()
+      .toLocaleLowerCase("en-US");
+
+    if (property !== wanted && name !== wanted) {
+      continue;
+    }
+
+    const raw = htmlAttributeValue(attrs, "content");
+
+    if (!raw) {
+      continue;
+    }
+
+    const value = decodeHtmlEntities(unwrapXmlCdata(raw)).trim();
+
+    if (value) {
+      values.push(value);
+    }
+  }
+
+  return values;
+}
+
+/**
  * Content of a meta tag matched by property or name, attribute order aside.
  * @param {string} html
  * @param {string} key
  * @returns {string}
  */
 export function metaContent(html, key) {
-  const source = typeof html === "string" ? html : "";
-  const name = String(key || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
-  if (!name) {
-    return "";
-  }
-
-  const patterns = [
-    new RegExp(
-      `<meta\\b[^>]*\\b(?:property|name)=["']${name}["'][^>]*\\bcontent=["']([^"']*)["']`,
-      "i",
-    ),
-    new RegExp(
-      `<meta\\b[^>]*\\bcontent=["']([^"']*)["'][^>]*\\b(?:property|name)=["']${name}["']`,
-      "i",
-    ),
-  ];
-
-  for (const pattern of patterns) {
-    const value = pattern.exec(source)?.[1];
-
-    if (value) {
-      return decodeHtmlEntities(unwrapXmlCdata(value)).trim();
-    }
-  }
-
-  return "";
+  return metaContents(html, key)[0] || "";
 }
 
 /**

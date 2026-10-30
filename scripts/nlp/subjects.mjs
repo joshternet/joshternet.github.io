@@ -17,6 +17,8 @@ import {
 } from "./evidence.mjs";
 import {
   decodeHtmlEntities,
+  metaContent,
+  metaContents,
   normalizeExtractedText,
   parseHtmlRegions,
 } from "./text.mjs";
@@ -63,27 +65,18 @@ export function subjectsFromHtml(html, pageUrl, options = {}) {
     add(match[1], "microformat:p-category", true);
   }
 
-  const articleTag =
-    /<meta\b[^>]*property=["']article:tag["'][^>]*content=["']([^"']+)["'][^>]*>/gi;
-
-  while ((match = articleTag.exec(html))) {
-    add(match[1], "article:tag", true);
+  for (const tag of metaContents(html, "article:tag")) {
+    add(tag, "article:tag", true);
   }
 
-  const articleSection =
-    /<meta\b[^>]*property=["']article:section["'][^>]*content=["']([^"']+)["'][^>]*>/gi;
-
-  while ((match = articleSection.exec(html))) {
-    add(match[1], "article:section", true);
+  for (const section of metaContents(html, "article:section")) {
+    add(section, "article:section", true);
   }
 
-  const keywords =
-    /<meta\b[^>]*name=["']keywords["'][^>]*content=["']([^"']+)["'][^>]*>/i.exec(
-      html,
-    );
+  const keywords = metaContent(html, "keywords");
 
-  if (keywords?.[1]) {
-    for (const part of keywords[1].split(",")) {
+  if (keywords) {
+    for (const part of keywords.split(",")) {
       add(part, "meta:keywords", false);
     }
   }
@@ -284,17 +277,22 @@ export function splitDeclaredAndSignals(subjects) {
 
   for (const subject of subjects || []) {
     const evidence = Array.isArray(subject.evidence) ? subject.evidence : [];
-    const eligible = evidence.filter(
-      (item) => item?.class === "declared" && item.community_eligible === true,
+    const declaredItems = evidence.filter((item) => item?.class === "declared");
+    const eligible = declaredItems.filter(
+      (item) => item.community_eligible === true,
     );
 
-    if (eligible.length > 0) {
-      const declaredEvidence = dedupeEvidence(eligible);
+    // Publisher-declared labels (including discovery-only meta keywords) count
+    // as declared; only community_eligible ones enroll in public topics.
+    if (declaredItems.length > 0) {
+      const declaredEvidence = dedupeEvidence(
+        eligible.length > 0 ? eligible : declaredItems,
+      );
       declared_topics.push({
         slug: subject.slug,
         label: subject.label,
         evidence_class: "declared",
-        community_eligible: true,
+        community_eligible: eligible.length > 0,
         evidence_count: declaredEvidence.length,
         evidence: declaredEvidence,
         sources: [

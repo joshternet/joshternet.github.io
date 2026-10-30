@@ -646,21 +646,8 @@
     }
 
     const { participants, connections, topicOverlaps, topicGroups } = parsed;
-    const connectedOrigins = new Set();
-
-    for (const edge of connections) {
-      connectedOrigins.add(edge.from);
-      connectedOrigins.add(edge.to);
-    }
-
-    for (const overlap of topicOverlaps) {
-      connectedOrigins.add(overlap.a);
-      connectedOrigins.add(overlap.b);
-    }
-
-    const graphParticipants = participants.filter((participant) =>
-      connectedOrigins.has(participant.origin),
-    );
+    // Every verified Network participant is a graph node, including isolates.
+    const graphParticipants = participants;
     const byOrigin = new Map(
       participants.map((participant) => [participant.origin, participant]),
     );
@@ -1129,6 +1116,11 @@
             `<li><a href="/topics/${escapeAttribute(topic.slug)}/">${escapeHTML(topic.label)}</a></li>`,
         )
         .join("");
+      const hasObserved =
+        outgoing.length > 0 || incoming.length > 0 || topics.length > 0;
+      const emptyNote = hasObserved
+        ? ""
+        : `<p class="connections-empty-note">No observed connections yet. Visit <a href="${escapeAttribute(outboundHref(site.origin))}" target="_blank" rel="noopener">${escapeHTML(site.domain || site.title)}</a>.</p>`;
 
       const previewFooter = isPreview
         ? `<p class="connections-bubble__more"><a href="/connections/?site=${escapeAttribute(site.domain)}">Explore on Connections</a></p>`
@@ -1149,6 +1141,7 @@
         topicRows,
         "connections-bubble__list--flow",
       )}
+      ${emptyNote}
       ${previewFooter}
     `);
     }

@@ -9,7 +9,11 @@ import {
   classifyElsewhereHost,
   elsewhereHostCatalog,
   elsewhereLabel,
+  githubApiHeaders,
+  githubProfileDisplayName,
   isElsewhereProfileUrl,
+  personNameFromElsewhere,
+  resolveParticipantTitle,
   sanitizeElsewhere,
   withElsewhere,
 } from "../../scripts/network/elsewhere.mjs";
@@ -437,4 +441,270 @@ test("isElsewhereProfileUrl: discord.gg non-invite URL fires hostname === 'disco
   const url = new URL("https://discord.gg/server-name");
   // first = "server-name" (not "users" nor "invite") → L371: url.hostname === "discord.gg" fires
   assert.equal(isElsewhereProfileUrl(url, "discord"), true);
+});
+
+test("githubProfileDisplayName reads person-shaped API name", async () => {
+  // External boundary: GitHub Users API.
+  const fetchMock = async (url) => {
+    assert.equal(String(url), "https://api.github.com/users/joshcanhelp");
+    return {
+      ok: true,
+      async json() {
+        return { name: "Josh Cunningham", login: "joshcanhelp" };
+      },
+    };
+  };
+
+  assert.equal(
+    await githubProfileDisplayName("https://github.com/joshcanhelp", {
+      fetch: fetchMock,
+    }),
+    "Josh Cunningham",
+  );
+});
+
+test("githubProfileDisplayName ignores non-person API names and failures", async () => {
+  assert.equal(
+    await githubProfileDisplayName("https://github.com/joshcanhelp", {
+      fetch: async () => ({
+        ok: true,
+        async json() {
+          return { name: null };
+        },
+      }),
+    }),
+    "",
+  );
+  assert.equal(
+    await githubProfileDisplayName("https://github.com/joshcanhelp", {
+      fetch: async () => ({
+        ok: true,
+        async json() {
+          return { name: "joshcanhelp" };
+        },
+      }),
+    }),
+    "",
+  );
+  assert.equal(
+    await githubProfileDisplayName("https://github.com/joshcanhelp/repo", {
+      fetch: async () => {
+        throw new Error("should not fetch repos");
+      },
+    }),
+    "",
+  );
+  assert.equal(
+    await githubProfileDisplayName("https://github.com/joshcanhelp", {
+      fetch: async () => ({
+        ok: false,
+        async json() {
+          return {};
+        },
+      }),
+    }),
+    "",
+  );
+});
+
+test("githubProfileDisplayName returns empty for bad inputs and fetch errors", async () => {
+  // nullish `fetch` falls through to globalThis.fetch via ?? — use a non-function.
+  assert.equal(
+    await githubProfileDisplayName("https://github.com/joshcanhelp", {
+      fetch: 123,
+    }),
+    "",
+  );
+  assert.equal(
+    await githubProfileDisplayName(42, { fetch: async () => ({}) }),
+    "",
+  );
+  assert.equal(
+    await githubProfileDisplayName("not a url", {
+      fetch: async () => {
+        throw new Error("should not fetch");
+      },
+    }),
+    "",
+  );
+  assert.equal(
+    await githubProfileDisplayName("https://github.com/joshcanhelp", {
+      fetch: async () => {
+        throw new Error("network down");
+      },
+    }),
+    "",
+  );
+
+  // Cover options.fetch ?? globalThis.fetch without hitting the network.
+  const previousFetch = globalThis.fetch;
+  globalThis.fetch = async () => ({
+    ok: false,
+    async json() {
+      return {};
+    },
+  });
+  try {
+    assert.equal(
+      await githubProfileDisplayName("https://github.com/joshcanhelp"),
+      "",
+    );
+  } finally {
+    globalThis.fetch = previousFetch;
+  }
+});
+
+test("personNameFromElsewhere uses the first GitHub profile name", async () => {
+  // External boundary: GitHub Users API.
+  const fetchMock = async () => ({
+    ok: true,
+    async json() {
+      return { name: "Josh Cunningham" };
+    },
+  });
+
+  assert.equal(
+    await personNameFromElsewhere(
+      [
+        {
+          url: "https://x.com/joshcanhelp",
+          network: "x",
+          label: "X",
+        },
+        {
+          url: "https://github.com/joshcanhelp",
+          network: "github",
+          label: "GitHub",
+        },
+      ],
+      { fetch: fetchMock },
+    ),
+    "Josh Cunningham",
+  );
+});
+
+test("personNameFromElsewhere returns empty without usable GitHub profiles", async () => {
+  assert.equal(await personNameFromElsewhere(null), "");
+  assert.equal(await personNameFromElsewhere("github"), "");
+  assert.equal(await personNameFromElsewhere([]), "");
+  assert.equal(
+    await personNameFromElsewhere(
+      [
+        null,
+        { network: "x", url: "https://x.com/josh" },
+        { network: "github", url: "https://github.com/joshcanhelp/repo" },
+        { network: "github", url: 42 },
+      ],
+      {
+        fetch: async () => {
+          throw new Error("should not fetch non-profile");
+        },
+      },
+    ),
+    "",
+  );
+});
+
+test("resolveParticipantTitle falls back through author and elsewhere", async () => {
+  assert.equal(
+    await resolveParticipantTitle(
+      { authorName: "Josh Cunningham", elsewhere: [] },
+      "example.com",
+    ),
+    "Josh Cunningham",
+  );
+  assert.equal(
+    await resolveParticipantTitle({ elsewhere: [] }, "example.com"),
+    "example.com",
+  );
+  assert.equal(
+    await resolveParticipantTitle(
+      {
+        authorName: "Staff",
+        ogSiteName: "Example Garden",
+        elsewhere: [],
+      },
+      "example.com",
+    ),
+    "Example Garden",
+  );
+  assert.equal(
+    await resolveParticipantTitle(
+      {
+        authorName: "Josh Can Help",
+        elsewhere: [
+          {
+            url: "https://github.com/joshcanhelp",
+            network: "github",
+            label: "GitHub",
+          },
+        ],
+      },
+      "www.joshcanhelp.com",
+      {
+        fetch: async () => ({
+          ok: true,
+          async json() {
+            return { name: "Josh Cunningham" };
+          },
+        }),
+      },
+    ),
+    "Josh Cunningham",
+  );
+});
+
+test("githubApiHeaders includes bearer token from options or env", () => {
+  const previous = process.env.GITHUB_TOKEN;
+  delete process.env.GITHUB_TOKEN;
+  delete process.env.NETWORK_GITHUB_TOKEN;
+
+  try {
+    assert.deepEqual(githubApiHeaders(), {
+      Accept: "application/vnd.github+json",
+      "User-Agent": "Joshternet-Network-Sync",
+    });
+    assert.equal(
+      githubApiHeaders({ token: " test-token " }).Authorization,
+      "Bearer test-token",
+    );
+    process.env.GITHUB_TOKEN = "env-token";
+    assert.equal(githubApiHeaders().Authorization, "Bearer env-token");
+  } finally {
+    if (previous === undefined) {
+      delete process.env.GITHUB_TOKEN;
+    } else {
+      process.env.GITHUB_TOKEN = previous;
+    }
+    delete process.env.NETWORK_GITHUB_TOKEN;
+  }
+});
+
+test("resolveParticipantTitle prefers GitHub name over slogan site name", async () => {
+  // External boundary: GitHub Users API.
+  const fetchMock = async () => ({
+    ok: true,
+    async json() {
+      return { name: "Josh Cunningham" };
+    },
+  });
+
+  assert.equal(
+    await resolveParticipantTitle(
+      {
+        ogSiteName: "Josh Can Help",
+        documentTitle: "Josh Can Help - Software",
+        elsewhere: [
+          {
+            url: "https://github.com/joshcanhelp",
+            network: "github",
+            label: "GitHub",
+          },
+        ],
+      },
+      "www.joshcanhelp.com",
+      { fetch: fetchMock },
+    ),
+    "Josh Cunningham",
+  );
 });

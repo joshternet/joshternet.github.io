@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T21:26:24.317Z",
+  "generated_at": "2026-10-30T22:34:54.704Z",
   "overlap_count": 21,
   "pairs": [
     {
@@ -14,10 +14,6 @@
         {
           "slug": "book",
           "label": "books"
-        },
-        {
-          "slug": "career",
-          "label": "career"
         },
         {
           "slug": "communication",
@@ -48,10 +44,6 @@
           "label": "google"
         },
         {
-          "slug": "habit",
-          "label": "habits"
-        },
-        {
           "slug": "health",
           "label": "health"
         },
@@ -64,20 +56,8 @@
           "label": "life"
         },
         {
-          "slug": "linkedin",
-          "label": "linkedin"
-        },
-        {
-          "slug": "money",
-          "label": "money"
-        },
-        {
           "slug": "open-source",
           "label": "open source"
-        },
-        {
-          "slug": "policy",
-          "label": "policy"
         },
         {
           "slug": "privacy",
@@ -90,10 +70,6 @@
         {
           "slug": "technology",
           "label": "technology"
-        },
-        {
-          "slug": "testing",
-          "label": "testing"
         },
         {
           "slug": "writing",
@@ -114,10 +90,6 @@
           "label": "ai"
         },
         {
-          "slug": "career",
-          "label": "career"
-        },
-        {
           "slug": "email",
           "label": "email"
         },
@@ -136,10 +108,6 @@
         {
           "slug": "life",
           "label": "life"
-        },
-        {
-          "slug": "money",
-          "label": "money"
         },
         {
           "slug": "open-source",
@@ -218,10 +186,6 @@
           "label": "business"
         },
         {
-          "slug": "career",
-          "label": "career"
-        },
-        {
           "slug": "database",
           "label": "databases"
         },
@@ -250,10 +214,6 @@
           "label": "google"
         },
         {
-          "slug": "habit",
-          "label": "habits"
-        },
-        {
           "slug": "health",
           "label": "health"
         },
@@ -270,16 +230,8 @@
           "label": "life"
         },
         {
-          "slug": "linkedin",
-          "label": "linkedin"
-        },
-        {
           "slug": "markdown",
           "label": "markdown"
-        },
-        {
-          "slug": "money",
-          "label": "money"
         },
         {
           "slug": "networking",
@@ -288,10 +240,6 @@
         {
           "slug": "open-source",
           "label": "open source"
-        },
-        {
-          "slug": "policy",
-          "label": "policy"
         },
         {
           "slug": "privacy",
@@ -312,10 +260,6 @@
         {
           "slug": "technology",
           "label": "technology"
-        },
-        {
-          "slug": "testing",
-          "label": "testing"
         },
         {
           "slug": "writing",
@@ -376,14 +320,6 @@
         {
           "slug": "health",
           "label": "health"
-        },
-        {
-          "slug": "money",
-          "label": "money"
-        },
-        {
-          "slug": "policy",
-          "label": "policy"
         },
         {
           "slug": "technology",
@@ -608,10 +544,6 @@
           "label": "life"
         },
         {
-          "slug": "linkedin",
-          "label": "linkedin"
-        },
-        {
           "slug": "linux",
           "label": "linux"
         },
@@ -672,10 +604,6 @@
           "label": "technology"
         },
         {
-          "slug": "testing",
-          "label": "testing"
-        },
-        {
           "slug": "writing",
           "label": "writing"
         },
@@ -734,10 +662,6 @@
         {
           "slug": "health",
           "label": "health"
-        },
-        {
-          "slug": "marketing",
-          "label": "marketing"
         },
         {
           "slug": "money",
@@ -1089,32 +1013,9 @@
           ],
           "sites": [
             {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://anthonymoser.github.io/writing/ai/haterdom/2025/08/26/i-am-an-ai-hater.html",
-                  "title": "Link: I Am An AI Hater | moser’s frame shop"
-                },
-                {
-                  "url": "http://charleshughsmith.blogspot.com/2025/08/ai-is-mirror-in-which-we-see-our-own.html",
-                  "title": "Link: AI is a Mirror in Which We See Our Own Reflection - oftwominds"
-                },
-                {
-                  "url": "https://www.wheresyoured.at/the-haters-gui/",
-                  "title": "Link: The Hater's Guide To The AI Bubble"
-                },
-                {
-                  "url": "https://backlit.neocities.org/voice-of-god-the-truth-about-ai-assistants.html",
-                  "title": "Link: Voice of God - The Truth About AI Assistants"
-                }
-              ]
-            },
-            {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Can Help",
+              "title": "Josh Cunningham",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/ai/",
@@ -1125,7 +1026,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
@@ -1164,7 +1065,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
@@ -1231,6 +1132,29 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
                   "title": "The Interesting Part of an AI Force Is What Comes After the Name"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://anthonymoser.github.io/writing/ai/haterdom/2025/08/26/i-am-an-ai-hater.html",
+                  "title": "Link: I Am An AI Hater | moser’s frame shop"
+                },
+                {
+                  "url": "http://charleshughsmith.blogspot.com/2025/08/ai-is-mirror-in-which-we-see-our-own.html",
+                  "title": "Link: AI is a Mirror in Which We See Our Own Reflection - oftwominds"
+                },
+                {
+                  "url": "https://www.wheresyoured.at/the-haters-gui/",
+                  "title": "Link: The Hater's Guide To The AI Bubble"
+                },
+                {
+                  "url": "https://backlit.neocities.org/voice-of-god-the-truth-about-ai-assistants.html",
+                  "title": "Link: Voice of God - The Truth About AI Assistants"
                 }
               ]
             }
@@ -1347,7 +1271,7 @@
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Can Help",
+              "title": "Josh Cunningham",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/goodbye-auth0/",
@@ -1386,7 +1310,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2024/3-books/",
@@ -1482,59 +1406,6 @@
           ]
         },
         {
-          "slug": "career",
-          "label": "career",
-          "articles": [
-            {
-              "url": "https://joshghent.com/part-time/",
-              "title": "How Part Time has helped me in life"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshmuller.ca",
-              "domain": "joshmuller.ca",
-              "title": "Josh's site",
-              "articles": [
-                {
-                  "url": "https://joshmuller.ca/why/",
-                  "title": "My /why"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Joshtronic",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/09/27/rediscovering-long-form-email/",
-                  "title": "Rediscovering Long-Form Email"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
-                  "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
-                  "title": "I Declared the Coding Interview Dead in 2021"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/13/ai-is-making-code-cheap-it-is-making-judgment-more-valuable/",
-                  "title": "AI Is Making Code Cheap. It Is Making Judgment More Valuable."
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "communication",
           "label": "communication",
           "articles": [
@@ -1549,24 +1420,24 @@
           ],
           "sites": [
             {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://joshua.seigler.net/posts/needs-based-communication/",
-                  "title": "Post: Needs-based communication"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2023/err-on-the-side-of-overcommunication/",
                   "title": "Erring on the Side of Over-Communication"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/needs-based-communication/",
+                  "title": "Post: Needs-based communication"
                 }
               ]
             }
@@ -1626,20 +1497,9 @@
           ],
           "sites": [
             {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://joshua.seigler.net/posts/site-design-updated/",
-                  "title": "Post: Site design updated"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/no-water-toilets/",
@@ -1732,6 +1592,17 @@
                   "title": "The Future Still Runs Windows 98"
                 }
               ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/site-design-updated/",
+                  "title": "Post: Site design updated"
+                }
+              ]
             }
           ]
         },
@@ -1748,7 +1619,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2022/1805-discovery-could-have-prevented-the-cold-war/",
@@ -1784,24 +1655,24 @@
           ],
           "sites": [
             {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://joshternet.org/",
-                  "title": "Link: Joshternet: An Open Network for Joshes and Independent Websites"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
                   "title": "Healthy Weight Plan Builder"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshternet.org/",
+                  "title": "Link: Joshternet: An Open Network for Joshes and Independent Websites"
                 }
               ]
             }
@@ -1820,7 +1691,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/privacy-policy/",
@@ -1859,7 +1730,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/09/27/rediscovering-long-form-email/",
@@ -1887,21 +1758,13 @@
             {
               "url": "https://joshghent.com/communication/",
               "title": "You can't fix engineering culture with communication"
-            },
-            {
-              "url": "https://joshghent.com/cobra-effect/",
-              "title": "The Cobra Effect and Software"
-            },
-            {
-              "url": "https://joshghent.com/things-learned-sooner/",
-              "title": "Five Things I Wish I learnt sooner"
             }
           ],
           "sites": [
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Can Help",
+              "title": "Josh Cunningham",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/ai/",
@@ -1912,7 +1775,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/how-i-prompt-engineer/",
@@ -1923,7 +1786,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/08/09/reverse-engineering-posthog-superday/",
@@ -2043,7 +1906,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/privacy-policy/",
@@ -2097,40 +1960,6 @@
           ]
         },
         {
-          "slug": "habit",
-          "label": "habits",
-          "articles": [
-            {
-              "url": "https://joshghent.com/running/",
-              "title": "Raising £1000 for MSF"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshmuller.ca",
-              "domain": "joshmuller.ca",
-              "title": "Josh's site",
-              "articles": [
-                {
-                  "url": "https://joshmuller.ca/writings/2024/act-4-legacy/",
-                  "title": "Action for Legacy"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/10/the-real-cost-of-switching-operating-systems-is-everything-you-forgot-you-learned/",
-                  "title": "The Real Cost of Switching Operating Systems Is Everything You Forgot You Learned"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "health",
           "label": "health",
           "articles": [
@@ -2143,7 +1972,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/kamis-workout-plan/",
@@ -2216,7 +2045,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/09/27/rediscovering-long-form-email/",
@@ -2276,20 +2105,9 @@
           ],
           "sites": [
             {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
-                  "title": "Post: The Trivium: A Tool for Learning Anything"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2024/full-english-spanish-interlinear-live/",
@@ -2328,7 +2146,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
@@ -2344,6 +2162,17 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/22/listening-to-the-hive/",
                   "title": "Listening to the Hive"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
+                  "title": "Post: The Trivium: A Tool for Learning Anything"
                 }
               ]
             }
@@ -2366,7 +2195,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/3-decisions-away/",
@@ -2405,7 +2234,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/09/06/i-ran-my-agents-from-my-phone-for-two-weeks/",
@@ -2451,40 +2280,6 @@
           ]
         },
         {
-          "slug": "linkedin",
-          "label": "linkedin",
-          "articles": [
-            {
-              "url": "https://joshghent.com/linkedin-for-developers/",
-              "title": "LinkedIn For Developers"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshmuller.ca",
-              "domain": "joshmuller.ca",
-              "title": "Josh's site",
-              "articles": [
-                {
-                  "url": "https://joshmuller.ca/subscribe/",
-                  "title": "Subscribe!"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/22/the-interview-assignment-was-the-attack/",
-                  "title": "The Interview Assignment Was the Attack"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "markdown",
           "label": "markdown",
           "articles": [
@@ -2495,17 +2290,6 @@
           ],
           "sites": [
             {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://blog.lusito.info/markdown-code-blocks-with-a-title-filename.html",
-                  "title": "Link: Markdown Code Blocks With a Title / Filename - Lusitos Tech Blog"
-                }
-              ]
-            },
-            {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
@@ -2515,68 +2299,15 @@
                   "title": "A Markdown File Should Just Open"
                 }
               ]
-            }
-          ]
-        },
-        {
-          "slug": "money",
-          "label": "money",
-          "articles": [
-            {
-              "url": "https://joshghent.com/how-to-buy-car/",
-              "title": "How to buy a car"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshmuller.ca",
-              "domain": "joshmuller.ca",
-              "title": "Josh's site",
-              "articles": [
-                {
-                  "url": "https://joshmuller.ca/writings/2025/innate-regenerative-resources/",
-                  "title": "Innate Regenerative Resources"
-                },
-                {
-                  "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
-                  "title": "Self-Hosting Is Cool: How I Get More Productivity for Less Money"
-                }
-              ]
             },
             {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
               "articles": [
                 {
-                  "url": "https://joshtronic.com/2026/10/04/confessions-domain-hoarder/",
-                  "title": "Confessions of a Middle-Aged Domain Hoarder"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshuabaker.com",
-              "domain": "www.joshuabaker.com",
-              "title": "Joshua Baker",
-              "articles": [
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=money-advice-service-money-map-money-map-span-flex-row-reverse-button-span-align",
-                  "title": "Money Map"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/12/prop-38-borrows-for-immune-research-and-takes-a-cut-if-a-drug-pays-off/",
-                  "title": "Prop. 38 borrows for immune research, and takes a cut if a drug pays off"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/09/prop-4-clears-a-path-for-public-campaign-money-it-does-not-spend-any/",
-                  "title": "Prop. 4 clears a path for public campaign money. It does not spend any."
+                  "url": "https://blog.lusito.info/markdown-code-blocks-with-a-title-filename.html",
+                  "title": "Link: Markdown Code Blocks With a Title / Filename - Lusitos Tech Blog"
                 }
               ]
             }
@@ -2630,7 +2361,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/more-interlinears/",
@@ -2661,7 +2392,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
@@ -2699,87 +2430,6 @@
           ]
         },
         {
-          "slug": "policy",
-          "label": "policy",
-          "articles": [
-            {
-              "url": "https://joshghent.com/sqs-inside-vpc-lambda/",
-              "title": "TIL - How to send an SQS message from a Lambda inside a VPC"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshmuller.ca",
-              "domain": "joshmuller.ca",
-              "title": "Josh's site",
-              "articles": [
-                {
-                  "url": "https://joshmuller.ca/privacy-policy/",
-                  "title": "Privacy Policy"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshuabaker.com",
-              "domain": "www.joshuabaker.com",
-              "title": "Joshua Baker",
-              "articles": [
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=baron-livermore-thirty-six-strategy-thirty-six-strategy-span-flex-row-reverse-bu",
-                  "title": "Thirty Six Strategy"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=index-ventures-not-optional-read-more-not-optional-read-more-span-flex-row-rever",
-                  "title": "Not Optional · Read more"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=legacy-corporation-queen-elizabeth-olympic-park-queen-elizabeth-olympic-park-spa",
-                  "title": "Queen Elizabeth Olympic Park"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=legatum-institute-united-states-prosperity-index-united-states-prosperity-index-",
-                  "title": "United States Prosperity Index"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=legatum-institute-united-states-prosperity-index-united-states-prosperity-index--2",
-                  "title": "United States Prosperity Index"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=legatum-institute-united-states-prosperity-index-united-states-prosperity-index--2-2",
-                  "title": "United States Prosperity Index"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=milken-institute-american-dream-prosperity-index-american-dream-prosperity-index",
-                  "title": "American Dream Prosperity Index"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=money-advice-service-money-map-money-map-span-flex-row-reverse-button-span-align",
-                  "title": "Money Map"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/21/the-real-homeos-risk-is-not-homebridge-it-is-what-apple-does-with-hap/",
-                  "title": "The Real homeOS Risk Is Not Homebridge. It Is What Apple Does With HAP."
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/23/ai-policy-could-price-startups-out-of-ai/",
-                  "title": "AI Policy Could Price Startups Out of AI"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/23/codeberg-is-deciding-which-technologies-belong/",
-                  "title": "Codeberg Is Deciding Which Technologies Belong"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "privacy",
           "label": "privacy",
           "articles": [
@@ -2796,7 +2446,7 @@
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Can Help",
+              "title": "Josh Cunningham",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/data-privacy/",
@@ -2807,7 +2457,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/privacy-policy/",
@@ -2912,7 +2562,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
@@ -2986,23 +2636,23 @@
               "title": "Whimsical Software"
             },
             {
-              "url": "https://joshghent.com/simple-sites/",
-              "title": "Simple sites"
-            },
-            {
               "url": "https://joshghent.com/cobra-effect/",
               "title": "The Cobra Effect and Software"
             },
             {
               "url": "https://joshghent.com/rules-of-thumb/",
               "title": "Ten Software Architecture Rules of Thumb"
+            },
+            {
+              "url": "https://joshghent.com/ship-faster/",
+              "title": "How to Ship Software Faster"
             }
           ],
           "sites": [
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Can Help",
+              "title": "Josh Cunningham",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/ai/",
@@ -3013,7 +2663,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
@@ -3079,7 +2729,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/it-only-counts-if-you-ship-it/",
@@ -3118,7 +2768,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
@@ -3207,48 +2857,6 @@
           ]
         },
         {
-          "slug": "testing",
-          "label": "testing",
-          "articles": [
-            {
-              "url": "https://joshghent.com/github-actions-perf/",
-              "title": "Super Fast React/Node App Testing with GitHub Actions"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshmuller.ca",
-              "domain": "joshmuller.ca",
-              "title": "Josh's site",
-              "articles": [
-                {
-                  "url": "https://joshmuller.ca/writings/2023/never-do-the-same-task-thrice/",
-                  "title": "Never Do the Same Task Thrice"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
-                  "title": "Terminal-Bench-Science Is Testing Agents on Actual Scientific Work"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/23/safari-is-testing-bigint-math-early/",
-                  "title": "Safari Is Testing BigInt Math Early"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/20/the-model-wouldnt-give-up/",
-                  "title": "The Model Wouldn’t Give Up"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "writing",
           "label": "writing",
           "articles": [
@@ -3261,7 +2869,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/es/writings/2026/use-ai-to-be-a-better-human/",
@@ -3284,23 +2892,23 @@
                   "title": "How to Subscribe to Substack Newsletters with RSS"
                 },
                 {
+                  "url": "https://joshmuller.ca/writings/2023/public-wifi/",
+                  "title": "A Simple Trick to Make Logging Onto Public Wifi Easier"
+                },
+                {
                   "url": "https://joshmuller.ca/writings/2023/eulogy-for-dad/",
                   "title": "Eulogy for Dad"
                 },
                 {
                   "url": "https://joshmuller.ca/writings/2023/dont-ration-love/",
                   "title": "Don't Ration Love"
-                },
-                {
-                  "url": "https://joshmuller.ca/writings/2023/never-do-the-same-task-thrice/",
-                  "title": "Never Do the Same Task Thrice"
                 }
               ]
             },
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
@@ -3360,20 +2968,9 @@
           ],
           "sites": [
             {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=VHRhPItNdIU",
-                  "title": "Link: Vulfmon & Andy Arthur Smith - Merengue alla Turca (Mozart Rondo) - YouTube"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/artificial-insights/",
@@ -3397,6 +2994,17 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/16/a-20-youtube-promotion-turned-into-a-118000-lesson-in-guardrails/",
                   "title": "A $20 YouTube Promotion Turned Into a $118,000 Lesson in Guardrails"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://www.youtube.com/watch?v=VHRhPItNdIU",
+                  "title": "Link: Vulfmon & Andy Arthur Smith - Merengue alla Turca (Mozart Rondo) - YouTube"
                 }
               ]
             }
@@ -3446,9 +3054,20 @@
           ],
           "sites": [
             {
+              "origin": "https://www.joshcanhelp.com",
+              "domain": "www.joshcanhelp.com",
+              "title": "Josh Cunningham",
+              "articles": [
+                {
+                  "url": "https://www.joshcanhelp.com/ai/",
+                  "title": "Thoughts on AI"
+                }
+              ]
+            },
+            {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/php2shell-overreaction/",
@@ -3473,43 +3092,9 @@
               ]
             },
             {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://anthonymoser.github.io/writing/ai/haterdom/2025/08/26/i-am-an-ai-hater.html",
-                  "title": "Link: I Am An AI Hater | moser’s frame shop"
-                },
-                {
-                  "url": "http://charleshughsmith.blogspot.com/2025/08/ai-is-mirror-in-which-we-see-our-own.html",
-                  "title": "Link: AI is a Mirror in Which We See Our Own Reflection - oftwominds"
-                },
-                {
-                  "url": "https://www.wheresyoured.at/the-haters-gui/",
-                  "title": "Link: The Hater's Guide To The AI Bubble"
-                },
-                {
-                  "url": "https://backlit.neocities.org/voice-of-god-the-truth-about-ai-assistants.html",
-                  "title": "Link: Voice of God - The Truth About AI Assistants"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshcanhelp.com",
-              "domain": "www.joshcanhelp.com",
-              "title": "Josh Can Help",
-              "articles": [
-                {
-                  "url": "https://www.joshcanhelp.com/ai/",
-                  "title": "Thoughts on AI"
-                }
-              ]
-            },
-            {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
@@ -3578,6 +3163,29 @@
                   "title": "The Interesting Part of an AI Force Is What Comes After the Name"
                 }
               ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://anthonymoser.github.io/writing/ai/haterdom/2025/08/26/i-am-an-ai-hater.html",
+                  "title": "Link: I Am An AI Hater | moser’s frame shop"
+                },
+                {
+                  "url": "http://charleshughsmith.blogspot.com/2025/08/ai-is-mirror-in-which-we-see-our-own.html",
+                  "title": "Link: AI is a Mirror in Which We See Our Own Reflection - oftwominds"
+                },
+                {
+                  "url": "https://www.wheresyoured.at/the-haters-gui/",
+                  "title": "Link: The Hater's Guide To The AI Bubble"
+                },
+                {
+                  "url": "https://backlit.neocities.org/voice-of-god-the-truth-about-ai-assistants.html",
+                  "title": "Link: Voice of God - The Truth About AI Assistants"
+                }
+              ]
             }
           ]
         },
@@ -3594,7 +3202,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/08/09/reverse-engineering-posthog-superday/",
@@ -3676,7 +3284,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/08/23/last-saturday/",
@@ -3726,7 +3334,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/antibook-book-club/",
@@ -3868,20 +3476,9 @@
           ],
           "sites": [
             {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/part-time/",
-                  "title": "How Part Time has helped me in life"
-                }
-              ]
-            },
-            {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/09/27/rediscovering-long-form-email/",
@@ -3950,7 +3547,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/communication/",
@@ -3965,7 +3562,7 @@
             {
               "origin": "https://joshua.seigler.net",
               "domain": "joshua.seigler.net",
-              "title": "Hello!",
+              "title": "Joshua Seigler",
               "articles": [
                 {
                   "url": "https://joshua.seigler.net/posts/needs-based-communication/",
@@ -4104,7 +3701,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/resiliency-by-design/",
@@ -4113,17 +3710,6 @@
                 {
                   "url": "https://joshghent.com/database-design/",
                   "title": "Beginners Database Design Primer"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://joshua.seigler.net/posts/site-design-updated/",
-                  "title": "Post: Site design updated"
                 }
               ]
             },
@@ -4204,6 +3790,17 @@
                   "title": "The Future Still Runs Windows 98"
                 }
               ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/site-design-updated/",
+                  "title": "Post: Site design updated"
+                }
+              ]
             }
           ]
         },
@@ -4220,7 +3817,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/technical-discovery-checklist/",
@@ -4258,7 +3855,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/groundwork/",
@@ -4269,7 +3866,7 @@
             {
               "origin": "https://joshua.seigler.net",
               "domain": "joshua.seigler.net",
-              "title": "Hello!",
+              "title": "Joshua Seigler",
               "articles": [
                 {
                   "url": "https://joshternet.org/",
@@ -4289,17 +3886,6 @@
             }
           ],
           "sites": [
-            {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
-                  "title": "Post: The Trivium: A Tool for Learning Anything"
-                }
-              ]
-            },
             {
               "origin": "https://www.joshuabaker.com",
               "domain": "www.joshuabaker.com",
@@ -4335,6 +3921,17 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/25/worth-wandering-bartosz-ciechanowski/",
                   "title": "Worth Wandering: Bartosz Ciechanowski"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
+                  "title": "Post: The Trivium: A Tool for Learning Anything"
                 }
               ]
             }
@@ -4381,7 +3978,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/online-shopping/",
@@ -4392,7 +3989,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/09/27/rediscovering-long-form-email/",
@@ -4424,28 +4021,9 @@
           ],
           "sites": [
             {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/communication/",
-                  "title": "You can't fix engineering culture with communication"
-                },
-                {
-                  "url": "https://joshghent.com/cobra-effect/",
-                  "title": "The Cobra Effect and Software"
-                },
-                {
-                  "url": "https://joshghent.com/things-learned-sooner/",
-                  "title": "Five Things I Wish I learnt sooner"
-                }
-              ]
-            },
-            {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Can Help",
+              "title": "Josh Cunningham",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/ai/",
@@ -4454,9 +4032,20 @@
               ]
             },
             {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/communication/",
+                  "title": "You can't fix engineering culture with communication"
+                }
+              ]
+            },
+            {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/08/09/reverse-engineering-posthog-superday/",
@@ -4568,7 +4157,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/18/halloween-movies-watch-list-2026/",
@@ -4661,7 +4250,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/google-psi-problems/",
@@ -4721,17 +4310,6 @@
           ],
           "sites": [
             {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/running/",
-                  "title": "Raising £1000 for MSF"
-                }
-              ]
-            },
-            {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
@@ -4773,7 +4351,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/health-checks/",
@@ -4940,7 +4518,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/typing-fast/",
@@ -4949,20 +4527,9 @@
               ]
             },
             {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
-                  "title": "Post: The Trivium: A Tool for Learning Anything"
-                }
-              ]
-            },
-            {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
@@ -4978,6 +4545,17 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/22/listening-to-the-hive/",
                   "title": "Listening to the Hive"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
+                  "title": "Post: The Trivium: A Tool for Learning Anything"
                 }
               ]
             }
@@ -5024,7 +4602,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/part-time/",
@@ -5039,7 +4617,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/09/06/i-ran-my-agents-from-my-phone-for-two-weeks/",
@@ -5079,40 +4657,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/15/the-people-who-make-ordinary-life-better/",
                   "title": "The People Who Make Ordinary Life Better"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "linkedin",
-          "label": "linkedin",
-          "articles": [
-            {
-              "url": "https://joshmuller.ca/subscribe/",
-              "title": "Subscribe!"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/linkedin-for-developers/",
-                  "title": "LinkedIn For Developers"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/22/the-interview-assignment-was-the-attack/",
-                  "title": "The Interview Assignment Was the Attack"
                 }
               ]
             }
@@ -5194,7 +4738,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
@@ -5251,29 +4795,6 @@
           ]
         },
         {
-          "slug": "marketing",
-          "label": "marketing",
-          "articles": [
-            {
-              "url": "https://joshmuller.ca/writings/2023/subscribe-to-mailchimp-newsletters-with-rss/",
-              "title": "How to Subscribe to Mailchimp Newsletters With RSS"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.joshuabaker.com",
-              "domain": "www.joshuabaker.com",
-              "title": "Joshua Baker",
-              "articles": [
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=harknesskennett-harknesskennett-marketing-harknesskennett-marketing-span-flex-ro",
-                  "title": "HarknessKennett Marketing"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "mental-health",
           "label": "mental health",
           "articles": [
@@ -5319,20 +4840,9 @@
           ],
           "sites": [
             {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/how-to-buy-car/",
-                  "title": "How to buy a car"
-                }
-              ]
-            },
-            {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/04/confessions-domain-hoarder/",
@@ -5397,7 +4907,7 @@
             {
               "origin": "https://joshua.seigler.net",
               "domain": "joshua.seigler.net",
-              "title": "Hello!",
+              "title": "Joshua Seigler",
               "articles": [
                 {
                   "url": "https://joshua.seigler.net/posts/i-made-myself-a-recipe-label-generator/",
@@ -5479,7 +4989,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/created-my-own-status-page/",
@@ -5494,7 +5004,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
@@ -5541,17 +5051,6 @@
             }
           ],
           "sites": [
-            {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/sqs-inside-vpc-lambda/",
-                  "title": "TIL - How to send an SQS message from a Lambda inside a VPC"
-                }
-              ]
-            },
             {
               "origin": "https://www.joshuabaker.com",
               "domain": "www.joshuabaker.com",
@@ -5623,9 +5122,20 @@
           ],
           "sites": [
             {
+              "origin": "https://www.joshcanhelp.com",
+              "domain": "www.joshcanhelp.com",
+              "title": "Josh Cunningham",
+              "articles": [
+                {
+                  "url": "https://www.joshcanhelp.com/data-privacy/",
+                  "title": "Fighting for My Data Privacy"
+                }
+              ]
+            },
+            {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/ring-e2ee/",
@@ -5634,17 +5144,6 @@
                 {
                   "url": "https://joshghent.com/redesign/",
                   "title": "Redesigning my Site - Accessibility, Privacy and 100 PSI Scores"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshcanhelp.com",
-              "domain": "www.joshcanhelp.com",
-              "title": "Josh Can Help",
-              "articles": [
-                {
-                  "url": "https://www.joshcanhelp.com/data-privacy/",
-                  "title": "Fighting for My Data Privacy"
                 }
               ]
             },
@@ -5730,7 +5229,7 @@
             {
               "origin": "https://joshua.seigler.net",
               "domain": "joshua.seigler.net",
-              "title": "Hello!",
+              "title": "Joshua Seigler",
               "articles": [
                 {
                   "url": "https://joshua.seigler.net/recipes/pear-upside-down-cake/",
@@ -5922,9 +5421,20 @@
           ],
           "sites": [
             {
+              "origin": "https://www.joshcanhelp.com",
+              "domain": "www.joshcanhelp.com",
+              "title": "Josh Cunningham",
+              "articles": [
+                {
+                  "url": "https://www.joshcanhelp.com/ai/",
+                  "title": "Thoughts on AI"
+                }
+              ]
+            },
+            {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/enterprise-sales-teams/",
@@ -5947,27 +5457,16 @@
                   "title": "Whimsical Software"
                 },
                 {
-                  "url": "https://joshghent.com/simple-sites/",
-                  "title": "Simple sites"
-                },
-                {
                   "url": "https://joshghent.com/cobra-effect/",
                   "title": "The Cobra Effect and Software"
                 },
                 {
                   "url": "https://joshghent.com/rules-of-thumb/",
                   "title": "Ten Software Architecture Rules of Thumb"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshcanhelp.com",
-              "domain": "www.joshcanhelp.com",
-              "title": "Josh Can Help",
-              "articles": [
+                },
                 {
-                  "url": "https://www.joshcanhelp.com/ai/",
-                  "title": "Thoughts on AI"
+                  "url": "https://joshghent.com/ship-faster/",
+                  "title": "How to Ship Software Faster"
                 }
               ]
             },
@@ -6104,7 +5603,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/solutions-architecture/",
@@ -6115,7 +5614,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
@@ -6204,48 +5703,6 @@
           ]
         },
         {
-          "slug": "testing",
-          "label": "testing",
-          "articles": [
-            {
-              "url": "https://joshmuller.ca/writings/2023/never-do-the-same-task-thrice/",
-              "title": "Never Do the Same Task Thrice"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/github-actions-perf/",
-                  "title": "Super Fast React/Node App Testing with GitHub Actions"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
-                  "title": "Terminal-Bench-Science Is Testing Agents on Actual Scientific Work"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/23/safari-is-testing-bigint-math-early/",
-                  "title": "Safari Is Testing BigInt Math Early"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/07/20/the-model-wouldnt-give-up/",
-                  "title": "The Model Wouldn’t Give Up"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "wordpress",
           "label": "wordpress",
           "articles": [
@@ -6258,7 +5715,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
@@ -6293,23 +5750,23 @@
               "title": "How to Subscribe to Substack Newsletters with RSS"
             },
             {
+              "url": "https://joshmuller.ca/writings/2023/public-wifi/",
+              "title": "A Simple Trick to Make Logging Onto Public Wifi Easier"
+            },
+            {
               "url": "https://joshmuller.ca/writings/2023/eulogy-for-dad/",
               "title": "Eulogy for Dad"
             },
             {
               "url": "https://joshmuller.ca/writings/2023/dont-ration-love/",
               "title": "Don't Ration Love"
-            },
-            {
-              "url": "https://joshmuller.ca/writings/2023/never-do-the-same-task-thrice/",
-              "title": "Never Do the Same Task Thrice"
             }
           ],
           "sites": [
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/error-messages/",
@@ -6320,7 +5777,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
@@ -6390,22 +5847,11 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/youtube-playlist-downloader/",
                   "title": "Downloading your Favorite YouTube Playlist Automatically"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=VHRhPItNdIU",
-                  "title": "Link: Vulfmon & Andy Arthur Smith - Merengue alla Turca (Mozart Rondo) - YouTube"
                 }
               ]
             },
@@ -6417,6 +5863,17 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/16/a-20-youtube-promotion-turned-into-a-118000-lesson-in-guardrails/",
                   "title": "A $20 YouTube Promotion Turned Into a $118,000 Lesson in Guardrails"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://www.youtube.com/watch?v=VHRhPItNdIU",
+                  "title": "Link: Vulfmon & Andy Arthur Smith - Merengue alla Turca (Mozart Rondo) - YouTube"
                 }
               ]
             }
@@ -6442,9 +5899,20 @@
           ],
           "sites": [
             {
+              "origin": "https://www.joshcanhelp.com",
+              "domain": "www.joshcanhelp.com",
+              "title": "Josh Cunningham",
+              "articles": [
+                {
+                  "url": "https://www.joshcanhelp.com/ai/",
+                  "title": "Thoughts on AI"
+                }
+              ]
+            },
+            {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/php2shell-overreaction/",
@@ -6469,43 +5937,9 @@
               ]
             },
             {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://anthonymoser.github.io/writing/ai/haterdom/2025/08/26/i-am-an-ai-hater.html",
-                  "title": "Link: I Am An AI Hater | moser’s frame shop"
-                },
-                {
-                  "url": "http://charleshughsmith.blogspot.com/2025/08/ai-is-mirror-in-which-we-see-our-own.html",
-                  "title": "Link: AI is a Mirror in Which We See Our Own Reflection - oftwominds"
-                },
-                {
-                  "url": "https://www.wheresyoured.at/the-haters-gui/",
-                  "title": "Link: The Hater's Guide To The AI Bubble"
-                },
-                {
-                  "url": "https://backlit.neocities.org/voice-of-god-the-truth-about-ai-assistants.html",
-                  "title": "Link: Voice of God - The Truth About AI Assistants"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshcanhelp.com",
-              "domain": "www.joshcanhelp.com",
-              "title": "Josh Can Help",
-              "articles": [
-                {
-                  "url": "https://www.joshcanhelp.com/ai/",
-                  "title": "Thoughts on AI"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
@@ -6598,6 +6032,29 @@
                   "title": "The Interesting Part of an AI Force Is What Comes After the Name"
                 }
               ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://anthonymoser.github.io/writing/ai/haterdom/2025/08/26/i-am-an-ai-hater.html",
+                  "title": "Link: I Am An AI Hater | moser’s frame shop"
+                },
+                {
+                  "url": "http://charleshughsmith.blogspot.com/2025/08/ai-is-mirror-in-which-we-see-our-own.html",
+                  "title": "Link: AI is a Mirror in Which We See Our Own Reflection - oftwominds"
+                },
+                {
+                  "url": "https://www.wheresyoured.at/the-haters-gui/",
+                  "title": "Link: The Hater's Guide To The AI Bubble"
+                },
+                {
+                  "url": "https://backlit.neocities.org/voice-of-god-the-truth-about-ai-assistants.html",
+                  "title": "Link: Voice of God - The Truth About AI Assistants"
+                }
+              ]
             }
           ]
         },
@@ -6614,7 +6071,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/privacy-policy/",
@@ -6637,7 +6094,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2023/who-to-write-to/",
@@ -6669,20 +6126,9 @@
           ],
           "sites": [
             {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/part-time/",
-                  "title": "How Part Time has helped me in life"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/why/",
@@ -6724,7 +6170,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/online-shopping/",
@@ -6735,7 +6181,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/privacy-policy/",
@@ -6795,28 +6241,9 @@
           ],
           "sites": [
             {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/communication/",
-                  "title": "You can't fix engineering culture with communication"
-                },
-                {
-                  "url": "https://joshghent.com/cobra-effect/",
-                  "title": "The Cobra Effect and Software"
-                },
-                {
-                  "url": "https://joshghent.com/things-learned-sooner/",
-                  "title": "Five Things I Wish I learnt sooner"
-                }
-              ]
-            },
-            {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Can Help",
+              "title": "Josh Cunningham",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/ai/",
@@ -6825,9 +6252,20 @@
               ]
             },
             {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/communication/",
+                  "title": "You can't fix engineering culture with communication"
+                }
+              ]
+            },
+            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/how-i-prompt-engineer/",
@@ -6881,7 +6319,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/dads-service/",
@@ -6919,7 +6357,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/personal-infra/",
@@ -6981,7 +6419,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/typing-fast/",
@@ -6990,20 +6428,9 @@
               ]
             },
             {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
-                  "title": "Post: The Trivium: A Tool for Learning Anything"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2024/full-english-spanish-interlinear-live/",
@@ -7049,6 +6476,17 @@
                   "title": "Listening to the Hive"
                 }
               ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
+                  "title": "Post: The Trivium: A Tool for Learning Anything"
+                }
+              ]
             }
           ]
         },
@@ -7069,7 +6507,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/part-time/",
@@ -7084,7 +6522,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/3-decisions-away/",
@@ -7170,7 +6608,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/how-i-prompt-engineer/",
@@ -7218,20 +6656,9 @@
           ],
           "sites": [
             {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/how-to-buy-car/",
-                  "title": "How to buy a car"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/innate-regenerative-resources/",
@@ -7284,7 +6711,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/created-my-own-status-page/",
@@ -7299,7 +6726,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/more-interlinears/",
@@ -7369,7 +6796,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/repowarden-update/",
@@ -7435,7 +6862,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/solutions-architecture/",
@@ -7446,7 +6873,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/it-only-counts-if-you-ship-it/",
@@ -7575,7 +7002,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2022/fix-wordpress-nginx-502-bad-gateway-error-after-debian-upgrade/",
@@ -7598,7 +7025,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/error-messages/",
@@ -7609,7 +7036,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/es/writings/2026/use-ai-to-be-a-better-human/",
@@ -7632,16 +7059,16 @@
                   "title": "How to Subscribe to Substack Newsletters with RSS"
                 },
                 {
+                  "url": "https://joshmuller.ca/writings/2023/public-wifi/",
+                  "title": "A Simple Trick to Make Logging Onto Public Wifi Easier"
+                },
+                {
                   "url": "https://joshmuller.ca/writings/2023/eulogy-for-dad/",
                   "title": "Eulogy for Dad"
                 },
                 {
                   "url": "https://joshmuller.ca/writings/2023/dont-ration-love/",
                   "title": "Don't Ration Love"
-                },
-                {
-                  "url": "https://joshmuller.ca/writings/2023/never-do-the-same-task-thrice/",
-                  "title": "Never Do the Same Task Thrice"
                 }
               ]
             },
@@ -7714,9 +7141,20 @@
           ],
           "sites": [
             {
+              "origin": "https://www.joshcanhelp.com",
+              "domain": "www.joshcanhelp.com",
+              "title": "Josh Cunningham",
+              "articles": [
+                {
+                  "url": "https://www.joshcanhelp.com/ai/",
+                  "title": "Thoughts on AI"
+                }
+              ]
+            },
+            {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/php2shell-overreaction/",
@@ -7741,20 +7179,9 @@
               ]
             },
             {
-              "origin": "https://www.joshcanhelp.com",
-              "domain": "www.joshcanhelp.com",
-              "title": "Josh Can Help",
-              "articles": [
-                {
-                  "url": "https://www.joshcanhelp.com/ai/",
-                  "title": "Thoughts on AI"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
@@ -7793,7 +7220,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
@@ -7878,7 +7305,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/communication/",
@@ -7893,7 +7320,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2023/err-on-the-side-of-overcommunication/",
@@ -7947,7 +7374,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/resiliency-by-design/",
@@ -7962,7 +7389,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/no-water-toilets/",
@@ -8071,7 +7498,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/groundwork/",
@@ -8082,7 +7509,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
@@ -8105,7 +7532,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2023/draw-a-line/",
@@ -8189,7 +7616,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/typing-fast/",
@@ -8200,7 +7627,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2024/full-english-spanish-interlinear-live/",
@@ -8239,7 +7666,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
@@ -8273,7 +7700,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/marp/",
@@ -8307,7 +7734,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
@@ -8374,7 +7801,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/es/recetas/ajiaco-santafereno/",
@@ -8452,7 +7879,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/youtube-playlist-downloader/",
@@ -8463,7 +7890,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/artificial-insights/",
@@ -8536,9 +7963,20 @@
           ],
           "sites": [
             {
+              "origin": "https://www.joshcanhelp.com",
+              "domain": "www.joshcanhelp.com",
+              "title": "Josh Cunningham",
+              "articles": [
+                {
+                  "url": "https://www.joshcanhelp.com/ai/",
+                  "title": "Thoughts on AI"
+                }
+              ]
+            },
+            {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/php2shell-overreaction/",
@@ -8563,43 +8001,9 @@
               ]
             },
             {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://anthonymoser.github.io/writing/ai/haterdom/2025/08/26/i-am-an-ai-hater.html",
-                  "title": "Link: I Am An AI Hater | moser’s frame shop"
-                },
-                {
-                  "url": "http://charleshughsmith.blogspot.com/2025/08/ai-is-mirror-in-which-we-see-our-own.html",
-                  "title": "Link: AI is a Mirror in Which We See Our Own Reflection - oftwominds"
-                },
-                {
-                  "url": "https://www.wheresyoured.at/the-haters-gui/",
-                  "title": "Link: The Hater's Guide To The AI Bubble"
-                },
-                {
-                  "url": "https://backlit.neocities.org/voice-of-god-the-truth-about-ai-assistants.html",
-                  "title": "Link: Voice of God - The Truth About AI Assistants"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshcanhelp.com",
-              "domain": "www.joshcanhelp.com",
-              "title": "Josh Can Help",
-              "articles": [
-                {
-                  "url": "https://www.joshcanhelp.com/ai/",
-                  "title": "Thoughts on AI"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
@@ -8638,7 +8042,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
@@ -8666,6 +8070,29 @@
                 {
                   "url": "https://www.joshuabaker.com/work/?work=undisclosed-consumer-ai-platform-consumer-ai-platform-span-flex-row-reverse-butt-2",
                   "title": "Consumer AI Platform"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://anthonymoser.github.io/writing/ai/haterdom/2025/08/26/i-am-an-ai-hater.html",
+                  "title": "Link: I Am An AI Hater | moser’s frame shop"
+                },
+                {
+                  "url": "http://charleshughsmith.blogspot.com/2025/08/ai-is-mirror-in-which-we-see-our-own.html",
+                  "title": "Link: AI is a Mirror in Which We See Our Own Reflection - oftwominds"
+                },
+                {
+                  "url": "https://www.wheresyoured.at/the-haters-gui/",
+                  "title": "Link: The Hater's Guide To The AI Bubble"
+                },
+                {
+                  "url": "https://backlit.neocities.org/voice-of-god-the-truth-about-ai-assistants.html",
+                  "title": "Link: Voice of God - The Truth About AI Assistants"
                 }
               ]
             }
@@ -8763,7 +8190,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2023/if-you-can-see-it-its-legal/",
@@ -8810,7 +8237,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/eda-rules-of-thumb/",
@@ -8869,7 +8296,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/good-code-review/",
@@ -8892,7 +8319,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2023/who-to-write-to/",
@@ -8903,7 +8330,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/08/23/last-saturday/",
@@ -8938,7 +8365,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/antibook-book-club/",
@@ -8965,7 +8392,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2024/3-books/",
@@ -9032,7 +8459,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2022/why-to-stop-using-chrome-safari-edge/",
@@ -9067,7 +8494,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/solutions-architecture/",
@@ -9109,7 +8536,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2022/photo-northern-lights/",
@@ -9138,20 +8565,9 @@
           ],
           "sites": [
             {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/part-time/",
-                  "title": "How Part Time has helped me in life"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/why/",
@@ -9162,7 +8578,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/09/27/rediscovering-long-form-email/",
@@ -9189,7 +8605,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2023/optimistic-intuition/",
@@ -9224,7 +8640,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2022/1805-discovery-could-have-prevented-the-cold-war/",
@@ -9270,7 +8686,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2023/who-to-write-to/",
@@ -9328,7 +8744,7 @@
             {
               "origin": "https://joshua.seigler.net",
               "domain": "joshua.seigler.net",
-              "title": "Hello!",
+              "title": "Joshua Seigler",
               "articles": [
                 {
                   "url": "https://css-tricks.com/is-it-time-to-un-sass/",
@@ -9359,7 +8775,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/groundwork/",
@@ -9418,7 +8834,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/resiliency-by-design/",
@@ -9431,20 +8847,9 @@
               ]
             },
             {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://joshua.seigler.net/posts/site-design-updated/",
-                  "title": "Post: Site design updated"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/no-water-toilets/",
@@ -9498,6 +8903,17 @@
                   "title": "James Joyce"
                 }
               ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/site-design-updated/",
+                  "title": "Post: Site design updated"
+                }
+              ]
             }
           ]
         },
@@ -9518,7 +8934,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/technical-discovery-checklist/",
@@ -9529,7 +8945,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2022/1805-discovery-could-have-prevented-the-cold-war/",
@@ -9558,20 +8974,9 @@
           ],
           "sites": [
             {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
-                  "title": "Post: The Trivium: A Tool for Learning Anything"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2023/draw-a-line/",
@@ -9597,6 +9002,17 @@
                   "title": "UCL Alumni"
                 }
               ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
+                  "title": "Post: The Trivium: A Tool for Learning Anything"
+                }
+              ]
             }
           ]
         },
@@ -9613,7 +9029,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/online-shopping/",
@@ -9624,7 +9040,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/privacy-policy/",
@@ -9663,7 +9079,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/09/27/rediscovering-long-form-email/",
@@ -9704,28 +9120,9 @@
           ],
           "sites": [
             {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/communication/",
-                  "title": "You can't fix engineering culture with communication"
-                },
-                {
-                  "url": "https://joshghent.com/cobra-effect/",
-                  "title": "The Cobra Effect and Software"
-                },
-                {
-                  "url": "https://joshghent.com/things-learned-sooner/",
-                  "title": "Five Things I Wish I learnt sooner"
-                }
-              ]
-            },
-            {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Can Help",
+              "title": "Josh Cunningham",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/ai/",
@@ -9734,9 +9131,20 @@
               ]
             },
             {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/communication/",
+                  "title": "You can't fix engineering culture with communication"
+                }
+              ]
+            },
+            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/how-i-prompt-engineer/",
@@ -9747,7 +9155,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/08/09/reverse-engineering-posthog-superday/",
@@ -9770,7 +9178,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2022/make-friends-with-one-of-them/",
@@ -9805,7 +9213,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2023/fight-for-rest/",
@@ -9832,7 +9240,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/dads-service/",
@@ -9843,7 +9251,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/18/halloween-movies-watch-list-2026/",
@@ -9866,7 +9274,7 @@
             {
               "origin": "https://joshua.seigler.net",
               "domain": "joshua.seigler.net",
-              "title": "Hello!",
+              "title": "Joshua Seigler",
               "articles": [
                 {
                   "url": "https://joshternet.org/",
@@ -9893,7 +9301,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/tracking-personal-finance/",
@@ -9955,7 +9363,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/no-water-toilets/",
@@ -10034,7 +9442,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/google-psi-problems/",
@@ -10045,7 +9453,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/privacy-policy/",
@@ -10125,20 +9533,9 @@
           ],
           "sites": [
             {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/running/",
-                  "title": "Raising £1000 for MSF"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2024/act-4-legacy/",
@@ -10169,7 +9566,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/health-checks/",
@@ -10180,7 +9577,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/kamis-workout-plan/",
@@ -10262,7 +9659,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/personal-infra/",
@@ -10273,7 +9670,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/09/27/rediscovering-long-form-email/",
@@ -10300,7 +9697,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2022/protocols-over-platforms/",
@@ -10351,7 +9748,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/recipes/meals/ajiaco-santafereno/",
@@ -10378,7 +9775,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/typing-fast/",
@@ -10387,20 +9784,9 @@
               ]
             },
             {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
-                  "title": "Post: The Trivium: A Tool for Learning Anything"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2024/full-english-spanish-interlinear-live/",
@@ -10439,11 +9825,22 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
                   "title": "Learning a New Tech Stack with an LLM"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
+                  "title": "Post: The Trivium: A Tool for Learning Anything"
                 }
               ]
             }
@@ -10482,7 +9879,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/part-time/",
@@ -10497,7 +9894,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/3-decisions-away/",
@@ -10536,7 +9933,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/09/06/i-ran-my-agents-from-my-phone-for-two-weeks/",
@@ -10545,40 +9942,6 @@
                 {
                   "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
                   "title": "Security Caveat: Locked out of my server while traveling"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "linkedin",
-          "label": "linkedin",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/07/22/the-interview-assignment-was-the-attack/",
-              "title": "The Interview Assignment Was the Attack"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/linkedin-for-developers/",
-                  "title": "LinkedIn For Developers"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshmuller.ca",
-              "domain": "joshmuller.ca",
-              "title": "Josh's site",
-              "articles": [
-                {
-                  "url": "https://joshmuller.ca/subscribe/",
-                  "title": "Subscribe!"
                 }
               ]
             }
@@ -10617,7 +9980,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
@@ -10660,7 +10023,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/how-i-prompt-engineer/",
@@ -10679,7 +10042,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
@@ -10706,7 +10069,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2024/full-english-spanish-interlinear-live/",
@@ -10729,7 +10092,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/marp/",
@@ -10740,7 +10103,7 @@
             {
               "origin": "https://joshua.seigler.net",
               "domain": "joshua.seigler.net",
-              "title": "Hello!",
+              "title": "Joshua Seigler",
               "articles": [
                 {
                   "url": "https://blog.lusito.info/markdown-code-blocks-with-a-title-filename.html",
@@ -10767,7 +10130,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2023/sharpen-your-ax/",
@@ -10796,20 +10159,9 @@
           ],
           "sites": [
             {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/how-to-buy-car/",
-                  "title": "How to buy a car"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/innate-regenerative-resources/",
@@ -10824,7 +10176,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/04/confessions-domain-hoarder/",
@@ -10866,7 +10218,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/meetup-networking/",
@@ -10944,7 +10296,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/recipes/meals/butter-chicken/",
@@ -10995,7 +10347,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/created-my-own-status-page/",
@@ -11010,7 +10362,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/more-interlinears/",
@@ -11041,7 +10393,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
@@ -11070,20 +10422,9 @@
           ],
           "sites": [
             {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/sqs-inside-vpc-lambda/",
-                  "title": "TIL - How to send an SQS message from a Lambda inside a VPC"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/privacy-policy/",
@@ -11171,9 +10512,20 @@
           ],
           "sites": [
             {
+              "origin": "https://www.joshcanhelp.com",
+              "domain": "www.joshcanhelp.com",
+              "title": "Josh Cunningham",
+              "articles": [
+                {
+                  "url": "https://www.joshcanhelp.com/data-privacy/",
+                  "title": "Fighting for My Data Privacy"
+                }
+              ]
+            },
+            {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/ring-e2ee/",
@@ -11186,20 +10538,9 @@
               ]
             },
             {
-              "origin": "https://www.joshcanhelp.com",
-              "domain": "www.joshcanhelp.com",
-              "title": "Josh Can Help",
-              "articles": [
-                {
-                  "url": "https://www.joshcanhelp.com/data-privacy/",
-                  "title": "Fighting for My Data Privacy"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/privacy-policy/",
@@ -11230,7 +10571,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/attending-meetups/",
@@ -11391,7 +10732,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2024/follow-substack-with-rss/",
@@ -11453,7 +10794,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/repowarden-update/",
@@ -11468,7 +10809,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/",
@@ -11491,7 +10832,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2022/3-quotes-on-simplicity/",
@@ -11518,7 +10859,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2024/follow-substack-with-rss/",
@@ -11598,9 +10939,20 @@
           ],
           "sites": [
             {
+              "origin": "https://www.joshcanhelp.com",
+              "domain": "www.joshcanhelp.com",
+              "title": "Josh Cunningham",
+              "articles": [
+                {
+                  "url": "https://www.joshcanhelp.com/ai/",
+                  "title": "Thoughts on AI"
+                }
+              ]
+            },
+            {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/enterprise-sales-teams/",
@@ -11623,34 +10975,23 @@
                   "title": "Whimsical Software"
                 },
                 {
-                  "url": "https://joshghent.com/simple-sites/",
-                  "title": "Simple sites"
-                },
-                {
                   "url": "https://joshghent.com/cobra-effect/",
                   "title": "The Cobra Effect and Software"
                 },
                 {
                   "url": "https://joshghent.com/rules-of-thumb/",
                   "title": "Ten Software Architecture Rules of Thumb"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshcanhelp.com",
-              "domain": "www.joshcanhelp.com",
-              "title": "Josh Can Help",
-              "articles": [
+                },
                 {
-                  "url": "https://www.joshcanhelp.com/ai/",
-                  "title": "Thoughts on AI"
+                  "url": "https://joshghent.com/ship-faster/",
+                  "title": "How to Ship Software Faster"
                 }
               ]
             },
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
@@ -11701,7 +11042,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2023/fill-up-your-hope-meter/",
@@ -11756,7 +11097,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/solutions-architecture/",
@@ -11767,7 +11108,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/it-only-counts-if-you-ship-it/",
@@ -11806,7 +11147,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
@@ -11856,48 +11197,6 @@
           ]
         },
         {
-          "slug": "testing",
-          "label": "testing",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/28/terminal-bench-science-is-testing-agents-on-actual-scientific-work/",
-              "title": "Terminal-Bench-Science Is Testing Agents on Actual Scientific Work"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/07/23/safari-is-testing-bigint-math-early/",
-              "title": "Safari Is Testing BigInt Math Early"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/07/20/the-model-wouldnt-give-up/",
-              "title": "The Model Wouldn’t Give Up"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/github-actions-perf/",
-                  "title": "Super Fast React/Node App Testing with GitHub Actions"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshmuller.ca",
-              "domain": "joshmuller.ca",
-              "title": "Josh's site",
-              "articles": [
-                {
-                  "url": "https://joshmuller.ca/writings/2023/never-do-the-same-task-thrice/",
-                  "title": "Never Do the Same Task Thrice"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "trade",
           "label": "trade",
           "articles": [
@@ -11914,7 +11213,7 @@
             {
               "origin": "https://joshua.seigler.net",
               "domain": "joshua.seigler.net",
-              "title": "Hello!",
+              "title": "Joshua Seigler",
               "articles": [
                 {
                   "url": "https://joshua.seigler.net/posts/tools-of-the-trade/",
@@ -12008,7 +11307,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/error-messages/",
@@ -12019,7 +11318,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/es/writings/2026/use-ai-to-be-a-better-human/",
@@ -12042,23 +11341,23 @@
                   "title": "How to Subscribe to Substack Newsletters with RSS"
                 },
                 {
+                  "url": "https://joshmuller.ca/writings/2023/public-wifi/",
+                  "title": "A Simple Trick to Make Logging Onto Public Wifi Easier"
+                },
+                {
                   "url": "https://joshmuller.ca/writings/2023/eulogy-for-dad/",
                   "title": "Eulogy for Dad"
                 },
                 {
                   "url": "https://joshmuller.ca/writings/2023/dont-ration-love/",
                   "title": "Don't Ration Love"
-                },
-                {
-                  "url": "https://joshmuller.ca/writings/2023/never-do-the-same-task-thrice/",
-                  "title": "Never Do the Same Task Thrice"
                 }
               ]
             },
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
@@ -12081,7 +11380,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/youtube-playlist-downloader/",
@@ -12090,20 +11389,9 @@
               ]
             },
             {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=VHRhPItNdIU",
-                  "title": "Link: Vulfmon & Andy Arthur Smith - Merengue alla Turca (Mozart Rondo) - YouTube"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/artificial-insights/",
@@ -12116,6 +11404,17 @@
                 {
                   "url": "https://joshmuller.ca/writings/2022/improve-youtube/",
                   "title": "Towards A Peaceful YouTube Experience: The \"Improve YouTube!\" Browser Plugin, and How I Use It"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://www.youtube.com/watch?v=VHRhPItNdIU",
+                  "title": "Link: Vulfmon & Andy Arthur Smith - Merengue alla Turca (Mozart Rondo) - YouTube"
                 }
               ]
             }
@@ -12139,7 +11438,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/php2shell-overreaction/",
@@ -12164,32 +11463,9 @@
               ]
             },
             {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://anthonymoser.github.io/writing/ai/haterdom/2025/08/26/i-am-an-ai-hater.html",
-                  "title": "Link: I Am An AI Hater | moser’s frame shop"
-                },
-                {
-                  "url": "http://charleshughsmith.blogspot.com/2025/08/ai-is-mirror-in-which-we-see-our-own.html",
-                  "title": "Link: AI is a Mirror in Which We See Our Own Reflection - oftwominds"
-                },
-                {
-                  "url": "https://www.wheresyoured.at/the-haters-gui/",
-                  "title": "Link: The Hater's Guide To The AI Bubble"
-                },
-                {
-                  "url": "https://backlit.neocities.org/voice-of-god-the-truth-about-ai-assistants.html",
-                  "title": "Link: Voice of God - The Truth About AI Assistants"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
@@ -12228,7 +11504,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
@@ -12297,6 +11573,29 @@
                   "title": "The Interesting Part of an AI Force Is What Comes After the Name"
                 }
               ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://anthonymoser.github.io/writing/ai/haterdom/2025/08/26/i-am-an-ai-hater.html",
+                  "title": "Link: I Am An AI Hater | moser’s frame shop"
+                },
+                {
+                  "url": "http://charleshughsmith.blogspot.com/2025/08/ai-is-mirror-in-which-we-see-our-own.html",
+                  "title": "Link: AI is a Mirror in Which We See Our Own Reflection - oftwominds"
+                },
+                {
+                  "url": "https://www.wheresyoured.at/the-haters-gui/",
+                  "title": "Link: The Hater's Guide To The AI Bubble"
+                },
+                {
+                  "url": "https://backlit.neocities.org/voice-of-god-the-truth-about-ai-assistants.html",
+                  "title": "Link: Voice of God - The Truth About AI Assistants"
+                }
+              ]
             }
           ]
         },
@@ -12313,7 +11612,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/auth0-cache/",
@@ -12336,26 +11635,18 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/communication/",
                   "title": "You can't fix engineering culture with communication"
-                },
-                {
-                  "url": "https://joshghent.com/cobra-effect/",
-                  "title": "The Cobra Effect and Software"
-                },
-                {
-                  "url": "https://joshghent.com/things-learned-sooner/",
-                  "title": "Five Things I Wish I learnt sooner"
                 }
               ]
             },
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/how-i-prompt-engineer/",
@@ -12366,7 +11657,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/08/09/reverse-engineering-posthog-superday/",
@@ -12420,7 +11711,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/ring-e2ee/",
@@ -12435,7 +11726,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/privacy-policy/",
@@ -12497,7 +11788,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/enterprise-sales-teams/",
@@ -12520,23 +11811,23 @@
                   "title": "Whimsical Software"
                 },
                 {
-                  "url": "https://joshghent.com/simple-sites/",
-                  "title": "Simple sites"
-                },
-                {
                   "url": "https://joshghent.com/cobra-effect/",
                   "title": "The Cobra Effect and Software"
                 },
                 {
                   "url": "https://joshghent.com/rules-of-thumb/",
                   "title": "Ten Software Architecture Rules of Thumb"
+                },
+                {
+                  "url": "https://joshghent.com/ship-faster/",
+                  "title": "How to Ship Software Faster"
                 }
               ]
             },
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
@@ -12613,9 +11904,20 @@
           ],
           "sites": [
             {
+              "origin": "https://www.joshcanhelp.com",
+              "domain": "www.joshcanhelp.com",
+              "title": "Josh Cunningham",
+              "articles": [
+                {
+                  "url": "https://www.joshcanhelp.com/ai/",
+                  "title": "Thoughts on AI"
+                }
+              ]
+            },
+            {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/php2shell-overreaction/",
@@ -12640,43 +11942,9 @@
               ]
             },
             {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://anthonymoser.github.io/writing/ai/haterdom/2025/08/26/i-am-an-ai-hater.html",
-                  "title": "Link: I Am An AI Hater | moser’s frame shop"
-                },
-                {
-                  "url": "http://charleshughsmith.blogspot.com/2025/08/ai-is-mirror-in-which-we-see-our-own.html",
-                  "title": "Link: AI is a Mirror in Which We See Our Own Reflection - oftwominds"
-                },
-                {
-                  "url": "https://www.wheresyoured.at/the-haters-gui/",
-                  "title": "Link: The Hater's Guide To The AI Bubble"
-                },
-                {
-                  "url": "https://backlit.neocities.org/voice-of-god-the-truth-about-ai-assistants.html",
-                  "title": "Link: Voice of God - The Truth About AI Assistants"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshcanhelp.com",
-              "domain": "www.joshcanhelp.com",
-              "title": "Josh Can Help",
-              "articles": [
-                {
-                  "url": "https://www.joshcanhelp.com/ai/",
-                  "title": "Thoughts on AI"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
@@ -12715,7 +11983,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
@@ -12763,6 +12031,29 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
                   "title": "The Interesting Part of an AI Force Is What Comes After the Name"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://anthonymoser.github.io/writing/ai/haterdom/2025/08/26/i-am-an-ai-hater.html",
+                  "title": "Link: I Am An AI Hater | moser’s frame shop"
+                },
+                {
+                  "url": "http://charleshughsmith.blogspot.com/2025/08/ai-is-mirror-in-which-we-see-our-own.html",
+                  "title": "Link: AI is a Mirror in Which We See Our Own Reflection - oftwominds"
+                },
+                {
+                  "url": "https://www.wheresyoured.at/the-haters-gui/",
+                  "title": "Link: The Hater's Guide To The AI Bubble"
+                },
+                {
+                  "url": "https://backlit.neocities.org/voice-of-god-the-truth-about-ai-assistants.html",
+                  "title": "Link: Voice of God - The Truth About AI Assistants"
                 }
               ]
             }
@@ -12832,7 +12123,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/solutions-architecture/",
@@ -12882,7 +12173,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2022/1805-discovery-could-have-prevented-the-cold-war/",
@@ -12944,7 +12235,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2023/who-to-write-to/",
@@ -13014,7 +12305,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/resiliency-by-design/",
@@ -13027,20 +12318,9 @@
               ]
             },
             {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://joshua.seigler.net/posts/site-design-updated/",
-                  "title": "Post: Site design updated"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/no-water-toilets/",
@@ -13094,6 +12374,17 @@
                   "title": "The Future Still Runs Windows 98"
                 }
               ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/site-design-updated/",
+                  "title": "Post: Site design updated"
+                }
+              ]
             }
           ]
         },
@@ -13116,20 +12407,9 @@
           ],
           "sites": [
             {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Hello!",
-              "articles": [
-                {
-                  "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
-                  "title": "Post: The Trivium: A Tool for Learning Anything"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2023/draw-a-line/",
@@ -13153,6 +12433,17 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/25/worth-wandering-bartosz-ciechanowski/",
                   "title": "Worth Wandering: Bartosz Ciechanowski"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
+                  "title": "Post: The Trivium: A Tool for Learning Anything"
                 }
               ]
             }
@@ -13199,7 +12490,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/tracking-personal-finance/",
@@ -13296,7 +12587,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/health-checks/",
@@ -13307,7 +12598,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/kamis-workout-plan/",
@@ -13353,29 +12644,6 @@
           ]
         },
         {
-          "slug": "marketing",
-          "label": "marketing",
-          "articles": [
-            {
-              "url": "https://www.joshuabaker.com/work/?work=harknesskennett-harknesskennett-marketing-harknesskennett-marketing-span-flex-ro",
-              "title": "HarknessKennett Marketing"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshmuller.ca",
-              "domain": "joshmuller.ca",
-              "title": "Josh's site",
-              "articles": [
-                {
-                  "url": "https://joshmuller.ca/writings/2023/subscribe-to-mailchimp-newsletters-with-rss/",
-                  "title": "How to Subscribe to Mailchimp Newsletters With RSS"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "money",
           "label": "money",
           "articles": [
@@ -13386,20 +12654,9 @@
           ],
           "sites": [
             {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/how-to-buy-car/",
-                  "title": "How to buy a car"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/innate-regenerative-resources/",
@@ -13414,7 +12671,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/04/confessions-domain-hoarder/",
@@ -13529,20 +12786,9 @@
           ],
           "sites": [
             {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Developer Musings",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/sqs-inside-vpc-lambda/",
-                  "title": "TIL - How to send an SQS message from a Lambda inside a VPC"
-                }
-              ]
-            },
-            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/privacy-policy/",
@@ -13690,7 +12936,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2024/follow-substack-with-rss/",
@@ -13748,7 +12994,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2024/follow-substack-with-rss/",
@@ -13834,7 +13080,7 @@
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
-              "title": "Developer Musings",
+              "title": "Josh Ghent",
               "articles": [
                 {
                   "url": "https://joshghent.com/solutions-architecture/",
@@ -13845,7 +13091,7 @@
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
-              "title": "Josh's site",
+              "title": "Josh Müller",
               "articles": [
                 {
                   "url": "https://joshmuller.ca/writings/2025/it-only-counts-if-you-ship-it/",
@@ -13884,7 +13130,7 @@
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
-              "title": "Joshtronic",
+              "title": "Josh Sherman",
               "articles": [
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
