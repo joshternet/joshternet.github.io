@@ -146,6 +146,11 @@ test("isHubDirectoryLink detects hub Meet and activity widget classes", () => {
     isHubDirectoryLink({ classNames: ["u-url"] }, "https://joshternet.org"),
     false,
   );
+  assert.equal(
+    isHubDirectoryLink("https://b.example/", "https://joshternet.org"),
+    false,
+  );
+  assert.equal(isHubDirectoryLink(null, "https://joshternet.org"), false);
 });
 
 test("hub Meet network-card links are not connection evidence", () => {
@@ -575,6 +580,40 @@ test("connectionObservations: link with invalid href (unparseable) is skipped", 
     sourceOrigin: "https://a.example",
     pageUrl: "https://a.example/",
     links: [{ href: "not-a-url" }, { href: "https://b.example/" }],
+    participantOrigins: ["https://a.example", "https://b.example"],
+  });
+  assert.equal(obs.length, 1);
+});
+
+test("connectionObservations: empty href is skipped", () => {
+  const obs = connectionObservations({
+    sourceOrigin: "https://a.example",
+    pageUrl: "https://a.example/",
+    links: [{ href: "" }, { text: "no href" }, { href: "https://b.example/" }],
+    participantOrigins: ["https://a.example", "https://b.example"],
+  });
+  assert.equal(obs.length, 1);
+});
+
+test("connectionObservations: URL-constructor failure skips the link", () => {
+  const obs = connectionObservations({
+    sourceOrigin: "https://a.example",
+    pageUrl: "https://a.example/",
+    links: [{ href: "http://" }, { href: "https://b.example/" }],
+    participantOrigins: ["https://a.example", "https://b.example"],
+  });
+  assert.equal(obs.length, 1);
+});
+
+test("connectionObservations: non-http absolute href is skipped", () => {
+  const obs = connectionObservations({
+    sourceOrigin: "https://a.example",
+    pageUrl: "https://a.example/",
+    links: [
+      { href: "ftp://b.example/" },
+      { href: "https://user:pass@b.example/" },
+      { href: "https://b.example/" },
+    ],
     participantOrigins: ["https://a.example", "https://b.example"],
   });
   assert.equal(obs.length, 1);

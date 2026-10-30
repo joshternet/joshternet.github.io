@@ -13,6 +13,7 @@
 
 ### Changed
 
+- Network/NLP coverage gaps closed: unreachable slash-page dedupe and greeting/title dead branches removed; tests cover connection href failures, GitHub elsewhere edge cases, personal-domain title fallbacks, crawl seed guards, and hub URL parse failures.
 - Connections site cards keep the screenshot, identity, connection lists, and empty-state note on one horizontal grid so empty notes and edge lists align with the title column instead of sitting under the thumbnail.
 - Connections graph footer keeps filter chips and the line key on one shared row height; the key divider only appears beside filters.
 - `network:sync` re-resolves participant titles on every run (including fresh screenshot keeps), using author/Person metadata and linked GitHub profile names, so new registry members and title-rule changes publish without waiting for the 24-hour capture refresh. Actions passes `GITHUB_TOKEN` for authenticated GitHub Users API rate limits.

@@ -254,6 +254,11 @@ test("identitySlashSeedUrls: covers indieweb slash pages", () => {
   assert.equal(urls.length, IDENTITY_SLASH_PATHS.length);
 });
 
+test("identitySlashSeedUrls: empty/invalid origin returns empty array", () => {
+  assert.deepEqual(identitySlashSeedUrls(""), []);
+  assert.deepEqual(identitySlashSeedUrls("not-a-url"), []);
+});
+
 test("externalOutboundLinks: absolutizes and keeps only cross-origin http(s)", () => {
   const outbound = externalOutboundLinks(
     "https://joshbeard.com",
@@ -280,6 +285,47 @@ test("externalOutboundLinks: absolutizes and keeps only cross-origin http(s)", (
   assert.equal(outbound[0].page, "https://joshbeard.com/site/");
   assert.equal(outbound[1].href, "https://joshuamorris.info/");
   assert.deepEqual(outbound[1].classNames, ["ext"]);
+});
+
+test("externalOutboundLinks: rejects bad origin/pageUrl and empty hrefs", () => {
+  assert.deepEqual(externalOutboundLinks("", "https://a.example/", []), []);
+  assert.deepEqual(externalOutboundLinks("https://a.example", null, []), []);
+  assert.deepEqual(
+    externalOutboundLinks("https://a.example", "not-a-url", [
+      { href: "https://b.example/" },
+    ]),
+    [],
+  );
+  assert.deepEqual(
+    externalOutboundLinks("https://a.example", "https://a.example/"),
+    [],
+  );
+  assert.deepEqual(
+    externalOutboundLinks("https://a.example", "https://a.example/", null),
+    [],
+  );
+  assert.deepEqual(
+    externalOutboundLinks("https://a.example", "https://a.example/", [
+      { href: "" },
+      { text: "no href" },
+      null,
+    ]),
+    [],
+  );
+});
+
+test("externalOutboundLinks: string links omit text/rel/classNames", () => {
+  const outbound = externalOutboundLinks(
+    "https://a.example",
+    "https://a.example/site/",
+    ["https://b.example/", { href: "https://c.example/", text: "C" }],
+  );
+  assert.equal(outbound.length, 2);
+  assert.equal(outbound[0].href, "https://b.example/");
+  assert.equal(outbound[0].text, "");
+  assert.deepEqual(outbound[0].rel, []);
+  assert.deepEqual(outbound[0].classNames, []);
+  assert.equal(outbound[1].text, "C");
 });
 
 test("contentIndexSeedUrls: empty/invalid origin returns empty array (lines 265-266)", () => {

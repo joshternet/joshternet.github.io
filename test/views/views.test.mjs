@@ -155,6 +155,7 @@ test("isJoshternetHubContentUrl recognizes hub hosts only", () => {
   );
   assert.equal(isJoshternetHubContentUrl(""), false);
   assert.equal(isJoshternetHubContentUrl(null), false);
+  assert.equal(isJoshternetHubContentUrl("not a url"), false);
 });
 
 test("What's New skips member posts that only point at the Joshternet hub", () => {

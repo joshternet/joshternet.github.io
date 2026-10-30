@@ -566,11 +566,8 @@ export async function githubProfileDisplayName(profileUrl, options = {}) {
     return "";
   }
 
+  // isElsewhereProfileUrl(github) already requires a non-empty single path segment.
   const login = pathSegments(url)[0];
-
-  if (!login) {
-    return "";
-  }
 
   try {
     const response = await fetchImpl(

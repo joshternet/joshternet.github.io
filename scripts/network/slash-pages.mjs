@@ -57,17 +57,5 @@ export const WRITING_INDEX_PATHS = [
  * @returns {string[]}
  */
 export function contentIndexPaths() {
-  const seen = new Set();
-  const paths = [];
-
-  for (const path of [...WRITING_INDEX_PATHS, ...IDENTITY_SLASH_PATHS]) {
-    if (seen.has(path)) {
-      continue;
-    }
-
-    seen.add(path);
-    paths.push(path);
-  }
-
-  return paths;
+  return [...new Set([...WRITING_INDEX_PATHS, ...IDENTITY_SLASH_PATHS])];
 }

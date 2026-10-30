@@ -469,6 +469,17 @@ test("githubProfileDisplayName ignores non-person API names and failures", async
       fetch: async () => ({
         ok: true,
         async json() {
+          return { name: null };
+        },
+      }),
+    }),
+    "",
+  );
+  assert.equal(
+    await githubProfileDisplayName("https://github.com/joshcanhelp", {
+      fetch: async () => ({
+        ok: true,
+        async json() {
           return { name: "joshcanhelp" };
         },
       }),
@@ -491,6 +502,35 @@ test("githubProfileDisplayName ignores non-person API names and failures", async
           return {};
         },
       }),
+    }),
+    "",
+  );
+});
+
+test("githubProfileDisplayName returns empty for bad inputs and fetch errors", async () => {
+  assert.equal(
+    await githubProfileDisplayName("https://github.com/joshcanhelp", {
+      fetch: null,
+    }),
+    "",
+  );
+  assert.equal(
+    await githubProfileDisplayName(42, { fetch: async () => ({}) }),
+    "",
+  );
+  assert.equal(
+    await githubProfileDisplayName("not a url", {
+      fetch: async () => {
+        throw new Error("should not fetch");
+      },
+    }),
+    "",
+  );
+  assert.equal(
+    await githubProfileDisplayName("https://github.com/joshcanhelp", {
+      fetch: async () => {
+        throw new Error("network down");
+      },
     }),
     "",
   );
@@ -520,6 +560,77 @@ test("personNameFromElsewhere uses the first GitHub profile name", async () => {
         },
       ],
       { fetch: fetchMock },
+    ),
+    "Josh Cunningham",
+  );
+});
+
+test("personNameFromElsewhere returns empty without usable GitHub profiles", async () => {
+  assert.equal(await personNameFromElsewhere(null), "");
+  assert.equal(await personNameFromElsewhere("github"), "");
+  assert.equal(await personNameFromElsewhere([]), "");
+  assert.equal(
+    await personNameFromElsewhere(
+      [
+        null,
+        { network: "x", url: "https://x.com/josh" },
+        { network: "github", url: "https://github.com/joshcanhelp/repo" },
+        { network: "github", url: 42 },
+      ],
+      {
+        fetch: async () => {
+          throw new Error("should not fetch non-profile");
+        },
+      },
+    ),
+    "",
+  );
+});
+
+test("resolveParticipantTitle falls back through author and elsewhere", async () => {
+  assert.equal(
+    await resolveParticipantTitle(
+      { authorName: "Josh Cunningham", elsewhere: [] },
+      "example.com",
+    ),
+    "Josh Cunningham",
+  );
+  assert.equal(
+    await resolveParticipantTitle({ elsewhere: [] }, "example.com"),
+    "example.com",
+  );
+  assert.equal(
+    await resolveParticipantTitle(
+      {
+        authorName: "Staff",
+        ogSiteName: "Example Garden",
+        elsewhere: [],
+      },
+      "example.com",
+    ),
+    "Example Garden",
+  );
+  assert.equal(
+    await resolveParticipantTitle(
+      {
+        authorName: "Josh Can Help",
+        elsewhere: [
+          {
+            url: "https://github.com/joshcanhelp",
+            network: "github",
+            label: "GitHub",
+          },
+        ],
+      },
+      "www.joshcanhelp.com",
+      {
+        fetch: async () => ({
+          ok: true,
+          async json() {
+            return { name: "Josh Cunningham" };
+          },
+        }),
+      },
     ),
     "Josh Cunningham",
   );

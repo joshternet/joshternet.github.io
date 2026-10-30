@@ -9,11 +9,14 @@ import {
   chooseTitle,
   decodeHtmlEntities,
   framePolicy,
+  humanNameFromDomain,
   identityFromDeclaration,
   isForbiddenAddress,
   isParticipatingNode,
+  looksLikePersonName,
   MAX_FEEDS_PER_PARTICIPANT,
   partitionPublicParticipants,
+  personNameFromText,
   projectRegistry,
   registryParticipationFields,
   registryTimestamp,
@@ -266,6 +269,49 @@ test("metadata title prefers personal domain name over greeting og:title", () =>
       domain: "joshua.seigler.net",
     }),
     "Joshua Seigler",
+  );
+});
+
+test("metadata title uses humanized personal domain when all page titles are greetings", () => {
+  assert.equal(
+    chooseTitle({
+      ogTitle: "Hello!",
+      twitterTitle: "Hi!",
+      documentTitle: "Welcome",
+      domain: "joshua.seigler.net",
+    }),
+    "Joshua Seigler",
+  );
+});
+
+test("metadata title extracts person name from og:title brand separator parts", () => {
+  assert.equal(
+    chooseTitle({
+      ogTitle: "Josh Ghent - Developer Musings",
+      domain: "joshghent.com",
+    }),
+    "Josh Ghent",
+  );
+});
+
+test("humanNameFromDomain rejects non-alpha labels and tlds", () => {
+  assert.equal(humanNameFromDomain("j.morris.com"), "");
+  assert.equal(humanNameFromDomain("josh.m.com"), "");
+  assert.equal(humanNameFromDomain("josh.morris.c0m"), "");
+  assert.equal(humanNameFromDomain("josh1.morris.com"), "");
+  assert.equal(humanNameFromDomain("joshua.seigler.net"), "Joshua Seigler");
+});
+
+test("looksLikePersonName rejects numeric or stopword tokens", () => {
+  assert.equal(looksLikePersonName("Josh 123"), false);
+  assert.equal(looksLikePersonName("A Morris"), false);
+  assert.equal(looksLikePersonName("Josh Morris"), true);
+});
+
+test("personNameFromText returns empty when no span matches the domain", () => {
+  assert.equal(
+    personNameFromText("Hello there friend world", "joshghent.com"),
+    "",
   );
 });
 

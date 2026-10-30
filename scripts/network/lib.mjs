@@ -326,13 +326,9 @@ const NON_PERSONAL_DOMAIN_LABELS = new Set([
  * @returns {boolean}
  */
 function isGreetingTitle(title) {
-  const normalized = normalizeText(title);
-
-  if (!normalized) {
-    return false;
-  }
-
-  return /^(hello|hi|hey|welcome|hola)(?:\s*[!?.…*]*)?$/iu.test(normalized);
+  return /^(hello|hi|hey|welcome|hola)(?:\s*[!?.…*]*)?$/iu.test(
+    normalizeText(title),
+  );
 }
 
 /**
@@ -553,13 +549,8 @@ function titleBrandFromDomain(title, domain) {
     return "";
   }
 
-  const parts = titleParts(normalizedTitle);
-
-  if (parts.length === 0) {
-    return "";
-  }
-
-  for (const part of parts) {
+  // normalizedTitle is non-empty, so titleParts always yields at least one part.
+  for (const part of titleParts(normalizedTitle)) {
     const person = personNameMatchingDomain(part, hostname);
 
     if (person) {

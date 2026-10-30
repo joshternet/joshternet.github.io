@@ -270,16 +270,14 @@ export function contentIndexSeedUrls(origin) {
  */
 export function identitySlashSeedUrls(origin) {
   const urls = [];
-  const seen = new Set();
 
   for (const path of IDENTITY_SLASH_PATHS) {
     const href = resolveSameOrigin(origin, path);
 
-    if (!href || seen.has(href)) {
+    if (!href) {
       continue;
     }
 
-    seen.add(href);
     urls.push(href);
   }
 

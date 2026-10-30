@@ -8,6 +8,7 @@ import test from "node:test";
 
 import {
   decodeHrefForParse,
+  htmlAttributeValue,
   isEnglishLanguage,
   metaContent,
   normalizeExtractedText,
@@ -360,4 +361,22 @@ test("shareDescriptionFromHtml prefers the Open Graph description", () => {
     "Only meta",
   );
   assert.equal(shareDescriptionFromHtml(""), "");
+});
+
+test("htmlAttributeValue returns empty for missing attrs or name", () => {
+  assert.equal(htmlAttributeValue(null, "href"), "");
+  assert.equal(htmlAttributeValue("", "href"), "");
+  assert.equal(htmlAttributeValue('href="/x"', ""), "");
+  assert.equal(htmlAttributeValue('href="/x"', null), "");
+  assert.equal(htmlAttributeValue('class="a"', "href"), "");
+  assert.equal(htmlAttributeValue('href="/x" class="a"', "href"), "/x");
+  assert.equal(htmlAttributeValue("href='/y' class='z'", "href"), "/y");
+  assert.equal(htmlAttributeValue("href=/z class=plain", "href"), "/z");
+});
+
+test("parseHtmlRegions: single-quoted href is extracted", () => {
+  const result = parseHtmlRegions(`<a href='/me/' class='home_link'>About</a>`);
+  assert.equal(result.links.length, 1);
+  assert.equal(result.links[0].href, "/me/");
+  assert.deepEqual(result.links[0].classNames, ["home_link"]);
 });

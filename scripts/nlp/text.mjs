@@ -105,7 +105,7 @@ export function htmlAttributeValue(attrs, name) {
     return "";
   }
 
-  return match[1] ?? match[2] ?? match[3] ?? "";
+  return match[1] ?? match[2] ?? match[3];
 }
 
 /**
@@ -219,7 +219,7 @@ export function parseHtmlRegions(html) {
     const before = match[1];
     const after = match[5] || "";
     const attrs = `${before} ${after}`;
-    const href = decodeHrefForParse(match[2] ?? match[3] ?? match[4] ?? "");
+    const href = decodeHrefForParse(match[2] ?? match[3] ?? match[4]);
     const text = capRemoteString(
       match[6].replace(/<[^>]+>/g, " "),
       MAX_ANCHOR_CHARS,
