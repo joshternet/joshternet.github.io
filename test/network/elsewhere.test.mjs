@@ -508,9 +508,10 @@ test("githubProfileDisplayName ignores non-person API names and failures", async
 });
 
 test("githubProfileDisplayName returns empty for bad inputs and fetch errors", async () => {
+  // nullish `fetch` falls through to globalThis.fetch via ?? — use a non-function.
   assert.equal(
     await githubProfileDisplayName("https://github.com/joshcanhelp", {
-      fetch: null,
+      fetch: 123,
     }),
     "",
   );
@@ -534,6 +535,23 @@ test("githubProfileDisplayName returns empty for bad inputs and fetch errors", a
     }),
     "",
   );
+
+  // Cover options.fetch ?? globalThis.fetch without hitting the network.
+  const previousFetch = globalThis.fetch;
+  globalThis.fetch = async () => ({
+    ok: false,
+    async json() {
+      return {};
+    },
+  });
+  try {
+    assert.equal(
+      await githubProfileDisplayName("https://github.com/joshcanhelp"),
+      "",
+    );
+  } finally {
+    globalThis.fetch = previousFetch;
+  }
 });
 
 test("personNameFromElsewhere uses the first GitHub profile name", async () => {
