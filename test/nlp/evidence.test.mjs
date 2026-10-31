@@ -423,6 +423,8 @@ test("isNonSubjectSlug: filler unigrams from live Topics hub are non-subjects", 
     "technical",
     "app",
     "say",
+    "thought",
+    "thoughts",
   ]) {
     assert.equal(isNonSubjectSlug(slug), true, slug);
   }
@@ -495,6 +497,29 @@ test("buildTopicEvidence: empty rawValue → null (line 337-339)", () => {
       rawValue: "",
       source: "rss:category",
       page: "https://a.example/1",
+    }),
+    null,
+  );
+});
+
+test("buildTopicEvidence: thoughts filler (and folded thought) → null", () => {
+  assert.equal(
+    buildTopicEvidence({
+      rawValue: "thoughts",
+      source: "visible-text",
+      page: "https://joshmuller.ca/posts/thoughts-on-guns/",
+      evidenceClass: "heuristic",
+      communityEligible: true,
+    }),
+    null,
+  );
+  assert.equal(
+    buildTopicEvidence({
+      rawValue: "thought",
+      source: "visible-text",
+      page: "https://joshmuller.ca/posts/thoughts-on-guns/",
+      evidenceClass: "heuristic",
+      communityEligible: true,
     }),
     null,
   );

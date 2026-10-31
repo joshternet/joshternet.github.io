@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T23:15:22.634Z",
+  "generated_at": "2026-10-31T18:54:37.406Z",
   "overlap_count": 21,
   "pairs": [
     {
@@ -12,8 +12,20 @@
           "label": "ai"
         },
         {
+          "slug": "anything",
+          "label": "anything"
+        },
+        {
           "slug": "book",
           "label": "books"
+        },
+        {
+          "slug": "career",
+          "label": "career"
+        },
+        {
+          "slug": "claude",
+          "label": "claude"
         },
         {
           "slug": "communication",
@@ -40,8 +52,16 @@
           "label": "engineering"
         },
         {
+          "slug": "file",
+          "label": "files"
+        },
+        {
           "slug": "github",
           "label": "github"
+        },
+        {
+          "slug": "go",
+          "label": "Go"
         },
         {
           "slug": "google",
@@ -60,12 +80,32 @@
           "label": "life"
         },
         {
+          "slug": "money",
+          "label": "money"
+        },
+        {
           "slug": "open-source",
           "label": "open source"
         },
         {
+          "slug": "plan",
+          "label": "plans"
+        },
+        {
+          "slug": "policy",
+          "label": "policy"
+        },
+        {
           "slug": "privacy",
           "label": "privacy"
+        },
+        {
+          "slug": "problem",
+          "label": "problem"
+        },
+        {
+          "slug": "question",
+          "label": "questions"
         },
         {
           "slug": "software",
@@ -74,6 +114,10 @@
         {
           "slug": "technology",
           "label": "technology"
+        },
+        {
+          "slug": "tool",
+          "label": "tools"
         },
         {
           "slug": "writing",
@@ -94,6 +138,14 @@
           "label": "ai"
         },
         {
+          "slug": "career",
+          "label": "career"
+        },
+        {
+          "slug": "claude",
+          "label": "claude"
+        },
+        {
           "slug": "email",
           "label": "email"
         },
@@ -106,6 +158,10 @@
           "label": "github"
         },
         {
+          "slug": "go",
+          "label": "Go"
+        },
+        {
           "slug": "infrastructure",
           "label": "infrastructure"
         },
@@ -116,6 +172,10 @@
         {
           "slug": "life",
           "label": "life"
+        },
+        {
+          "slug": "money",
+          "label": "money"
         },
         {
           "slug": "open-source",
@@ -144,6 +204,14 @@
           "label": "ai"
         },
         {
+          "slug": "anything",
+          "label": "anything"
+        },
+        {
+          "slug": "claude",
+          "label": "claude"
+        },
+        {
           "slug": "communication",
           "label": "communication"
         },
@@ -156,8 +224,16 @@
           "label": "docs"
         },
         {
+          "slug": "file",
+          "label": "files"
+        },
+        {
           "slug": "github",
           "label": "github"
+        },
+        {
+          "slug": "go",
+          "label": "Go"
         },
         {
           "slug": "learning",
@@ -166,6 +242,10 @@
         {
           "slug": "markdown",
           "label": "markdown"
+        },
+        {
+          "slug": "tool",
+          "label": "tools"
         },
         {
           "slug": "youtube",
@@ -182,6 +262,10 @@
           "label": "ai"
         },
         {
+          "slug": "anything",
+          "label": "anything"
+        },
+        {
           "slug": "architecture",
           "label": "architecture"
         },
@@ -196,6 +280,14 @@
         {
           "slug": "business",
           "label": "business"
+        },
+        {
+          "slug": "career",
+          "label": "career"
+        },
+        {
+          "slug": "claude",
+          "label": "claude"
         },
         {
           "slug": "cloudflare",
@@ -222,12 +314,20 @@
           "label": "engineering"
         },
         {
+          "slug": "file",
+          "label": "files"
+        },
+        {
           "slug": "finance",
           "label": "finance"
         },
         {
           "slug": "github",
           "label": "github"
+        },
+        {
+          "slug": "go",
+          "label": "Go"
         },
         {
           "slug": "google",
@@ -250,8 +350,16 @@
           "label": "life"
         },
         {
+          "slug": "limit",
+          "label": "limits"
+        },
+        {
           "slug": "markdown",
           "label": "markdown"
+        },
+        {
+          "slug": "money",
+          "label": "money"
         },
         {
           "slug": "networking",
@@ -262,12 +370,28 @@
           "label": "open source"
         },
         {
+          "slug": "plan",
+          "label": "plans"
+        },
+        {
+          "slug": "policy",
+          "label": "policy"
+        },
+        {
           "slug": "privacy",
           "label": "privacy"
         },
         {
+          "slug": "problem",
+          "label": "problem"
+        },
+        {
           "slug": "programming",
           "label": "programming"
+        },
+        {
+          "slug": "question",
+          "label": "questions"
         },
         {
           "slug": "security",
@@ -280,6 +404,10 @@
         {
           "slug": "technology",
           "label": "technology"
+        },
+        {
+          "slug": "tool",
+          "label": "tools"
         },
         {
           "slug": "writing",
@@ -342,8 +470,20 @@
           "label": "health"
         },
         {
+          "slug": "money",
+          "label": "money"
+        },
+        {
+          "slug": "policy",
+          "label": "policy"
+        },
+        {
           "slug": "technology",
           "label": "technology"
+        },
+        {
+          "slug": "tool",
+          "label": "tools"
         }
       ]
     },
@@ -356,16 +496,16 @@
           "label": "ai"
         },
         {
-          "slug": "analytics",
-          "label": "analytics"
-        },
-        {
           "slug": "blogging",
           "label": "blogging"
         },
         {
           "slug": "career",
           "label": "career"
+        },
+        {
+          "slug": "claude",
+          "label": "claude"
         },
         {
           "slug": "email",
@@ -434,6 +574,18 @@
           "label": "ai"
         },
         {
+          "slug": "anything",
+          "label": "anything"
+        },
+        {
+          "slug": "audio",
+          "label": "audio"
+        },
+        {
+          "slug": "claude",
+          "label": "claude"
+        },
+        {
           "slug": "communication",
           "label": "communication"
         },
@@ -448,6 +600,10 @@
         {
           "slug": "education",
           "label": "education"
+        },
+        {
+          "slug": "file",
+          "label": "files"
         },
         {
           "slug": "github",
@@ -470,6 +626,10 @@
           "label": "recipes"
         },
         {
+          "slug": "tool",
+          "label": "tools"
+        },
+        {
           "slug": "youtube",
           "label": "youtube"
         }
@@ -484,8 +644,16 @@
           "label": "ai"
         },
         {
+          "slug": "anything",
+          "label": "anything"
+        },
+        {
           "slug": "apple",
           "label": "apple"
+        },
+        {
+          "slug": "audio",
+          "label": "audio"
         },
         {
           "slug": "blogging",
@@ -510,6 +678,10 @@
         {
           "slug": "cars",
           "label": "cars"
+        },
+        {
+          "slug": "claude",
+          "label": "claude"
         },
         {
           "slug": "community",
@@ -540,16 +712,16 @@
           "label": "engineering"
         },
         {
-          "slug": "facebook",
-          "label": "facebook"
-        },
-        {
           "slug": "faith",
           "label": "faith"
         },
         {
           "slug": "family",
           "label": "family"
+        },
+        {
+          "slug": "file",
+          "label": "files"
         },
         {
           "slug": "friend",
@@ -566,10 +738,6 @@
         {
           "slug": "google",
           "label": "google"
-        },
-        {
-          "slug": "habit",
-          "label": "habits"
         },
         {
           "slug": "health",
@@ -612,6 +780,10 @@
           "label": "money"
         },
         {
+          "slug": "note",
+          "label": "note"
+        },
+        {
           "slug": "oil",
           "label": "oil"
         },
@@ -620,12 +792,24 @@
           "label": "open source"
         },
         {
+          "slug": "plan",
+          "label": "plans"
+        },
+        {
           "slug": "policy",
           "label": "policy"
         },
         {
           "slug": "privacy",
           "label": "privacy"
+        },
+        {
+          "slug": "problem",
+          "label": "problem"
+        },
+        {
+          "slug": "question",
+          "label": "questions"
         },
         {
           "slug": "search",
@@ -650,6 +834,10 @@
         {
           "slug": "technology",
           "label": "technology"
+        },
+        {
+          "slug": "tool",
+          "label": "tools"
         },
         {
           "slug": "writing",
@@ -730,6 +918,10 @@
         {
           "slug": "technology",
           "label": "technology"
+        },
+        {
+          "slug": "tool",
+          "label": "tools"
         }
       ]
     },
@@ -740,6 +932,10 @@
         {
           "slug": "ai",
           "label": "ai"
+        },
+        {
+          "slug": "claude",
+          "label": "claude"
         },
         {
           "slug": "github",
@@ -770,6 +966,10 @@
         {
           "slug": "career",
           "label": "career"
+        },
+        {
+          "slug": "claude",
+          "label": "claude"
         },
         {
           "slug": "email",
@@ -870,6 +1070,18 @@
           "label": "ai"
         },
         {
+          "slug": "anything",
+          "label": "anything"
+        },
+        {
+          "slug": "audio",
+          "label": "audio"
+        },
+        {
+          "slug": "claude",
+          "label": "claude"
+        },
+        {
           "slug": "css",
           "label": "css"
         },
@@ -886,6 +1098,10 @@
           "label": "field recording"
         },
         {
+          "slug": "file",
+          "label": "files"
+        },
+        {
           "slug": "github",
           "label": "github"
         },
@@ -900,6 +1116,10 @@
         {
           "slug": "markdown",
           "label": "markdown"
+        },
+        {
+          "slug": "tool",
+          "label": "tools"
         },
         {
           "slug": "trade",
@@ -936,6 +1156,10 @@
         {
           "slug": "education",
           "label": "education"
+        },
+        {
+          "slug": "tool",
+          "label": "tools"
         }
       ]
     },
@@ -1038,6 +1262,10 @@
           "label": "technology"
         },
         {
+          "slug": "tool",
+          "label": "tools"
+        },
+        {
           "slug": "united-states",
           "label": "united states"
         }
@@ -1087,7 +1315,7 @@
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Cunningham",
+              "title": "Josh Can Help",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/ai/",
@@ -1233,6 +1461,79 @@
           ]
         },
         {
+          "slug": "anything",
+          "label": "anything",
+          "articles": [
+            {
+              "url": "https://joshghent.com/supply-chain-irony/",
+              "title": "Supply Chain Irony"
+            },
+            {
+              "url": "https://joshghent.com/complexity/",
+              "title": "Why are software companies so obsessed with doing anything but work?"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2025/finish-by-writing/",
+                  "title": "A Project Isn't Finished Until You've Written About It"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/plastic-audit/",
+                  "title": "Let's Do a Plastic Audit"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/churchill-on-optimism/",
+                  "title": "Churchill on Optimism"
+                },
+                {
+                  "url": "https://joshmuller.ca/subscribe/",
+                  "title": "Subscribe!"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+                  "title": "A Markdown File Should Just Open"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/09/worth-wandering-camerons-world/",
+                  "title": "Worth Wandering: Cameron's World"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/23/a-practical-use-for-private-local-ai/",
+                  "title": "A Practical Use for Private, Local AI"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/22/a-bittorrent-swarm-for-large-language-models/",
+                  "title": "A BitTorrent Swarm for Large Language Models"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
+                  "title": "Post: The Trivium: A Tool for Learning Anything"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "architecture",
           "label": "architecture",
           "articles": [
@@ -1343,7 +1644,7 @@
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Cunningham",
+              "title": "Josh Can Help",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/goodbye-auth0/",
@@ -1376,6 +1677,10 @@
             {
               "url": "https://joshghent.com/project-hail-mary/",
               "title": "Book notes - Project Hail Mary"
+            },
+            {
+              "url": "https://joshghent.com/bookshelf/",
+              "title": "Bookshelf"
             }
           ],
           "sites": [
@@ -1472,6 +1777,147 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/17/walking-a-fine-line/",
                   "title": "Walking a Fine Line"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "career",
+          "label": "career",
+          "articles": [
+            {
+              "url": "https://joshghent.com/part-time/",
+              "title": "How Part Time has helped me in life"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/why/",
+                  "title": "My /why"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/09/27/rediscovering-long-form-email/",
+                  "title": "Rediscovering Long-Form Email"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
+                  "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
+                  "title": "I Declared the Coding Interview Dead in 2021"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/13/ai-is-making-code-cheap-it-is-making-judgment-more-valuable/",
+                  "title": "AI Is Making Code Cheap. It Is Making Judgment More Valuable."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "claude",
+          "label": "claude",
+          "articles": [
+            {
+              "url": "https://joshghent.com/claude-migrated-me-off-authy/",
+              "title": "Claude migrated me off Authy"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2025/how-i-prompt-engineer/",
+                  "title": "How I Approach Prompt Engineering"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/08/16/taught-robot-detect-joshes/",
+                  "title": "I taught a robot to detect Joshes"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
+                  "title": "Anthropic Is Trying to Give Claude a Moral Character"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
+                  "title": "How Much AI Slop Does It Take to Unslop the AI Slop?"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
+                  "title": "Claude Opus 5.5 Is Interesting Because It Keeps Working"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
+                  "title": "An AI Watermark Can't Tell You Whether Anyone Was Thinking"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/13/grok-4_6-makes-my-switch-away-from-claude-look-less-unusual/",
+                  "title": "Grok 4.6 Makes My Switch Away from Claude Look Less Unusual"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/more-than-one-ai-company-has-lost-control-of-a-cybersecurity-test/",
+                  "title": "More Than One AI Company Has Lost Control of a Cybersecurity Test"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/28/claude-discovered-weaknesses-in-cryptographic-algorithms/",
+                  "title": "Claude Discovered Weaknesses in Cryptographic Algorithms"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/28/artificial-intelligence-inherits-our-cultural-blind-spots/",
+                  "title": "Artificial Intelligence Inherits Our Cultural Blind Spots"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://www.experimental-history.com/p/bag-of-words-have-mercy-on-us",
+                  "title": "Link: Bag of words, have mercy on us OR: Claude will you go to prom with me? Adam Mastroianni"
                 }
               ]
             }
@@ -1865,13 +2311,21 @@
             {
               "url": "https://joshghent.com/communication/",
               "title": "You can't fix engineering culture with communication"
+            },
+            {
+              "url": "https://joshghent.com/cobra-effect/",
+              "title": "The Cobra Effect and Software"
+            },
+            {
+              "url": "https://joshghent.com/things-learned-sooner/",
+              "title": "Five Things I Wish I learnt sooner"
             }
           ],
           "sites": [
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Cunningham",
+              "title": "Josh Can Help",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/ai/",
@@ -1929,6 +2383,83 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/22/walk-through-video-game-history/",
                   "title": "Walk Through Video Game History"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "file",
+          "label": "files",
+          "articles": [
+            {
+              "url": "https://joshghent.com/groundwork/",
+              "title": "/groundwork: a skill that makes any repo runnable from a fresh clone"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2025/no-water-toilets/",
+                  "title": "How We Deployed Hundreds of No-Water Toilets to an Earthquake Zone (With Design Files)"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/interlinear-audiobible/",
+                  "title": "Creating an Interlinear Audio Bible with Open Source NLP Models"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+                  "title": "A Markdown File Should Just Open"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/23/apple-finally-made-the-xcode-project-file-understandable/",
+                  "title": "Apple Finally Made the Xcode Project File Understandable"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/04/worth-wandering-html-energy/",
+                  "title": "Worth Wandering: HTML Energy"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/22/decayfmt-is-not-a-self-destructing-file-format-but-i-like-the-idea/",
+                  "title": "decayfmt Is Not a Self-Destructing File Format, but I Like the Idea"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/28/the-sockets-interface-quietly-connected-the-computing-world/",
+                  "title": "The Sockets Interface Quietly Connected the Computing World"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/28/letsseal-makes-file-integrity-verification-simple/",
+                  "title": "LetsSeal Makes File Integrity Verification Simple"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/27/github-is-still-struggling-with-obvious-malware-repositories/",
+                  "title": "GitHub Is Still Struggling With Obvious Malware Repositories"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/23/codepen-grew-up/",
+                  "title": "CodePen Grew Up"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/ffmpeg-audio-cleanup/",
+                  "title": "Post: FFmpeg audio cleanup"
                 }
               ]
             }
@@ -2087,6 +2618,90 @@
                 {
                   "url": "https://joshua.seigler.net/posts/my-very-own-github-pages/",
                   "title": "Post: My Very Own GitHub Pages"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "go",
+          "label": "Go",
+          "articles": [
+            {
+              "url": "https://joshghent.com/estimation-culture/",
+              "title": "The Culture of Estimations"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2024/what-is-a-why-page/",
+                  "title": "What Is a \"why\" Page?"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/full-english-spanish-interlinear-live/",
+                  "title": "My new Language Learning Tool is now LIVE! 🤓🥳"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/choose-dignity/",
+                  "title": "Choose Dignity"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/note-to-future-self-exercise/",
+                  "title": "Note to Future Self: On Exercise"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/low-noise-high-signal/",
+                  "title": "Low Noise; High Signal"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/make-friends-with-the-blank-page/",
+                  "title": "Make Friends With the Blank Page"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/create-something-today/",
+                  "title": "Create Something Today"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/08/16/taught-robot-detect-joshes/",
+                  "title": "I taught a robot to detect Joshes"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/21/go-1_27-shipped-and-some-of-the-best-parts-barely-made-the-release-notes/",
+                  "title": "Go 1.27 Shipped, and Some of the Best Parts Barely Made the Release Notes"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/go-1_27-is-going-to-be-a-big-release/",
+                  "title": "Go 1.27 Is Going to Be a Big Release"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://www.experimental-history.com/p/bag-of-words-have-mercy-on-us",
+                  "title": "Link: Bag of words, have mercy on us OR: Claude will you go to prom with me? Adam Mastroianni"
                 }
               ]
             }
@@ -2479,6 +3094,57 @@
           ]
         },
         {
+          "slug": "limit",
+          "label": "limits",
+          "articles": [
+            {
+              "url": "https://joshghent.com/rate-limits/",
+              "title": "Question your Rate limits"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/14/prop-2-lets-the-rainy-day-fund-grow-taller-it-does-not-fill-the-jar/",
+                  "title": "Prop. 2 lets the rainy-day fund grow taller. It does not fill the jar."
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
+                  "title": "Prop. 42 is about a tax on owning savings, not the tax on income they earn"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
+                  "title": "Prop. 41 would send in the auditor, and it would fence the spending limit"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/16/a-20-youtube-promotion-turned-into-a-118000-lesson-in-guardrails/",
+                  "title": "A $20 YouTube Promotion Turned Into a $118,000 Lesson in Guardrails"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/18/californias-efficient-tire-rule-could-narrow-what-we-are-allowed-to-buy/",
+                  "title": "California's Efficient-Tire Rule Could Narrow What We Are Allowed to Buy"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/04/the-website-is-often-the-more-private-version/",
+                  "title": "The Website Is Often the More Private Version"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/go-1_27-is-going-to-be-a-big-release/",
+                  "title": "Go 1.27 Is Going to Be a Big Release"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/22/apparently-everyone-is-burning-through-tokens/",
+                  "title": "Apparently, Everyone Is Burning Through Tokens"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "markdown",
           "label": "markdown",
           "articles": [
@@ -2507,6 +3173,70 @@
                 {
                   "url": "https://blog.lusito.info/markdown-code-blocks-with-a-title-filename.html",
                   "title": "Link: Markdown Code Blocks With a Title / Filename - Lusitos Tech Blog"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "money",
+          "label": "money",
+          "articles": [
+            {
+              "url": "https://joshghent.com/how-to-buy-car/",
+              "title": "How to buy a car"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2025/innate-regenerative-resources/",
+                  "title": "Innate Regenerative Resources"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
+                  "title": "Self-Hosting Is Cool: How I Get More Productivity for Less Money"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/04/confessions-domain-hoarder/",
+                  "title": "Confessions of a Middle-Aged Domain Hoarder"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=money-advice-service-money-map-money-map-span-flex-row-reverse-button-span-align",
+                  "title": "Money Map"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/12/prop-38-borrows-for-immune-research-and-takes-a-cut-if-a-drug-pays-off/",
+                  "title": "Prop. 38 borrows for immune research, and takes a cut if a drug pays off"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/09/prop-4-clears-a-path-for-public-campaign-money-it-does-not-spend-any/",
+                  "title": "Prop. 4 clears a path for public campaign money. It does not spend any."
                 }
               ]
             }
@@ -2629,6 +3359,153 @@
           ]
         },
         {
+          "slug": "plan",
+          "label": "plans",
+          "articles": [
+            {
+              "url": "https://joshghent.com/planpacer/",
+              "title": "Just launched, PlanPacer - The easiest way to add payment plans to your app using Stripe"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                },
+                {
+                  "url": "https://joshmuller.ca/kamis-eating-plan/",
+                  "title": "Kami's Eating Plan"
+                },
+                {
+                  "url": "https://joshmuller.ca/kamis-workout-plan/",
+                  "title": "Kami's Workout Plan"
+                },
+                {
+                  "url": "https://joshmuller.ca/daily/",
+                  "title": "📆My Daily Goals"
+                },
+                {
+                  "url": "https://joshmuller.ca/es/plan-de-comida/",
+                  "title": "Plan de Comida de Josh"
+                },
+                {
+                  "url": "https://joshmuller.ca/meal-prepping/",
+                  "title": "Meal Prep Guide"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/3-books/",
+                  "title": "3 Unreleased Books that I Plan(/Hope) to Read in 2024"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/you-should-learn-totp/",
+                  "title": "You Should Learn TOTP (Especially if You're an Expat)"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/21/the-smart-tv-is-still-a-computer/",
+                  "title": "The Smart TV Is Still a Computer"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/18/public-information-shouldnt-have-a-premium-tier/",
+                  "title": "Public Information Shouldn’t Have a Premium Tier"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "policy",
+          "label": "policy",
+          "articles": [
+            {
+              "url": "https://joshghent.com/sqs-inside-vpc-lambda/",
+              "title": "TIL - How to send an SQS message from a Lambda inside a VPC"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/privacy-policy/",
+                  "title": "Privacy Policy"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=baron-livermore-thirty-six-strategy-thirty-six-strategy-span-flex-row-reverse-bu",
+                  "title": "Thirty Six Strategy"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=index-ventures-not-optional-read-more-not-optional-read-more-span-flex-row-rever",
+                  "title": "Not Optional · Read more"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=legacy-corporation-queen-elizabeth-olympic-park-queen-elizabeth-olympic-park-spa",
+                  "title": "Queen Elizabeth Olympic Park"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=legatum-institute-united-states-prosperity-index-united-states-prosperity-index-",
+                  "title": "United States Prosperity Index"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=legatum-institute-united-states-prosperity-index-united-states-prosperity-index--2",
+                  "title": "United States Prosperity Index"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=legatum-institute-united-states-prosperity-index-united-states-prosperity-index--2-2",
+                  "title": "United States Prosperity Index"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=milken-institute-american-dream-prosperity-index-american-dream-prosperity-index",
+                  "title": "American Dream Prosperity Index"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=money-advice-service-money-map-money-map-span-flex-row-reverse-button-span-align",
+                  "title": "Money Map"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/21/the-real-homeos-risk-is-not-homebridge-it-is-what-apple-does-with-hap/",
+                  "title": "The Real homeOS Risk Is Not Homebridge. It Is What Apple Does With HAP."
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/23/ai-policy-could-price-startups-out-of-ai/",
+                  "title": "AI Policy Could Price Startups Out of AI"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/23/codeberg-is-deciding-which-technologies-belong/",
+                  "title": "Codeberg Is Deciding Which Technologies Belong"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "privacy",
           "label": "privacy",
           "articles": [
@@ -2645,7 +3522,7 @@
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Cunningham",
+              "title": "Josh Can Help",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/data-privacy/",
@@ -2706,6 +3583,76 @@
           ]
         },
         {
+          "slug": "problem",
+          "label": "problem",
+          "articles": [
+            {
+              "url": "https://joshghent.com/vendor-lockin/",
+              "title": "Vendor Lock-in is an Imaginary Problem"
+            },
+            {
+              "url": "https://joshghent.com/communication/",
+              "title": "You can't fix engineering culture with communication"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2024/choose-dignity/",
+                  "title": "Choose Dignity"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/address-the-meta-problem/",
+                  "title": "Address the Meta-Problem"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/the-problem-is-the-solution/",
+                  "title": "The Problem is the Solution"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/consider-the-edge-cases/",
+                  "title": "Consider the Edge Cases"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/hard-problems/",
+                  "title": "Hard Problems"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
+                  "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
+                  "title": "Claude Opus 5.5 Is Interesting Because It Keeps Working"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/23/mcp-is-finally-becoming-boring-http-now-it-needs-real-agent-delegation/",
+                  "title": "MCP Is Finally Becoming Boring HTTP. Now It Needs Real Agent Delegation"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/24/privacy-should-be-the-default-not-a-form-you-have-to-fill-out/",
+                  "title": "Privacy Should Be the Default, Not a Form You Have to Fill Out"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/18/the-problem-wasnt-the-ai/",
+                  "title": "The Problem Wasn't the AI"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "programming",
           "label": "programming",
           "articles": [
@@ -2739,6 +3686,100 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/09/code-was-never-the-hard-part-rewrites-the-history-of-programming/",
                   "title": "“Code Was Never the Hard Part” Rewrites the History of Programming"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "question",
+          "label": "questions",
+          "articles": [
+            {
+              "url": "https://joshghent.com/enterprise-sales-teams/",
+              "title": "Enterprise sales teams, please, I beg you, stop"
+            },
+            {
+              "url": "https://joshghent.com/rate-limits/",
+              "title": "Question your Rate limits"
+            },
+            {
+              "url": "https://joshghent.com/interview-questions/",
+              "title": "Questions for Developers to ask at interviews"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2024/my-40-questions/",
+                  "title": "My 40 Questions To Ask Every Year"
+                },
+                {
+                  "url": "https://joshmuller.ca/tweets/2024-12-01-20-59-30/",
+                  "title": "I love pondering the question \"What should exist but doesn't yet?\" There is LONG list of answers to that question, and it's easier than ever to bring them into existence."
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/who-to-write-to/",
+                  "title": "3 Neglected \"People\" You Should Blog For"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/note-to-future-self-exercise/",
+                  "title": "Note to Future Self: On Exercise"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/important-question/",
+                  "title": "Important Questions"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/3-ideas-from-math-to-help-understand-the-world/",
+                  "title": "3 Ideas from Math to Help Better Understand the World"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/offline-first-computing/",
+                  "title": "Offline-First Computing"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
+                  "title": "Worth Wandering: Pippin Barr"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
+                  "title": "Maybe Someone Needs to Build Google Again"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/20/voyagers-doctor-is-the-ai-future-i-hope-we-have-to-think-about/",
+                  "title": "Voyager's Doctor Is the AI Future I Hope We Have to Think About"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/10/apples-new-watch-is-listening-but-it-is-not-recording-everything/",
+                  "title": "Apple's New Watch Is Listening, but It Is Not Recording Everything"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/28/what-does-unlawful-mean-if-the-damage-happens-first/",
+                  "title": "What Does \"Unlawful\" Mean If the Damage Happens First?"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/04/the-camera-versus-lidar-debate-is-really-about-the-last-few-nines/",
+                  "title": "The Camera-Versus-Lidar Debate Is Really About the Last Few Nines"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/04/is-this-work-or-is-this-the-gym/",
+                  "title": "Is This Work, or Is This the Gym?"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/ai-financial-advice-is-better-when-you-provide-the-whole-picture/",
+                  "title": "AI Financial Advice Is Better When You Provide the Whole Picture"
                 }
               ]
             }
@@ -2835,23 +3876,23 @@
               "title": "Whimsical Software"
             },
             {
+              "url": "https://joshghent.com/simple-sites/",
+              "title": "Simple sites"
+            },
+            {
               "url": "https://joshghent.com/cobra-effect/",
               "title": "The Cobra Effect and Software"
             },
             {
               "url": "https://joshghent.com/rules-of-thumb/",
               "title": "Ten Software Architecture Rules of Thumb"
-            },
-            {
-              "url": "https://joshghent.com/ship-faster/",
-              "title": "How to Ship Software Faster"
             }
           ],
           "sites": [
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Cunningham",
+              "title": "Josh Can Help",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/ai/",
@@ -3056,6 +4097,138 @@
           ]
         },
         {
+          "slug": "tool",
+          "label": "tools",
+          "articles": [
+            {
+              "url": "https://joshghent.com/loginllama-001/",
+              "title": "Devblog - LoginLlama 001"
+            },
+            {
+              "url": "https://joshghent.com/simple-sites/",
+              "title": "Simple sites"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2025/artificial-insights/",
+                  "title": "How AI Turned Six Months of Work into 16 Minutes - Artifical Insights"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2025/how-i-prompt-engineer/",
+                  "title": "How I Approach Prompt Engineering"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2025/more-interlinears/",
+                  "title": "Two New Interlinear Audio Bible Resources"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/full-english-spanish-interlinear-live/",
+                  "title": "My new Language Learning Tool is now LIVE! 🤓🥳"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
+                  "title": "Self-Hosting Is Cool: How I Get More Productivity for Less Money"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/3-ideas-from-math-to-help-understand-the-world/",
+                  "title": "3 Ideas from Math to Help Better Understand the World"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/curiosity-or-dismissal/",
+                  "title": "Curiosity or Dismissal"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/redemption-culture/",
+                  "title": "Culture of Redemption"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-merchant-integration-tools-span-flex-row-rever",
+                  "title": "Merchant Integration Tools"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=nb-studio-internal-tools-internal-tools-span-flex-row-reverse-button-span-align-",
+                  "title": "Internal Tools"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
+                  "title": "Organic"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
+                  "title": "Claude Opus 5.5 Is Interesting Because It Keeps Working"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/20/voyagers-doctor-is-the-ai-future-i-hope-we-have-to-think-about/",
+                  "title": "Voyager's Doctor Is the AI Future I Hope We Have to Think About"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/22/the-grapheneos-duress-password-case-is-becoming-a-test-of-whether-privacy-can-be-treated-as-obstruction/",
+                  "title": "The GrapheneOS Duress Password Case Is Becoming a Test of Whether Privacy Can Be Treated as Obstruction"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/15/cloudflare-is-treating-mcp-like-network-traffic-that-needs-a-firewall/",
+                  "title": "Cloudflare Is Treating MCP Like Network Traffic That Needs a Firewall"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/14/cloudflare-is-making-internal-workers-private-by-default/",
+                  "title": "Cloudflare Is Making Internal Workers Private by Default"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/10/the-real-cost-of-switching-operating-systems-is-everything-you-forgot-you-learned/",
+                  "title": "The Real Cost of Switching Operating Systems Is Everything You Forgot You Learned"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/04/is-this-work-or-is-this-the-gym/",
+                  "title": "Is This Work, or Is This the Gym?"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/i-made-myself-a-recipe-label-generator/",
+                  "title": "Post: I made myself a Recipe Label Generator"
+                },
+                {
+                  "url": "https://leanrada.com/htmz/",
+                  "title": "Link: htmz - a low power tool for html"
+                },
+                {
+                  "url": "https://joshua.seigler.net/posts/tools-of-the-trade/",
+                  "title": "Post: Tools of the trade"
+                },
+                {
+                  "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
+                  "title": "Post: The Trivium: A Tool for Learning Anything"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "writing",
           "label": "writing",
           "articles": [
@@ -3091,16 +4264,16 @@
                   "title": "How to Subscribe to Substack Newsletters with RSS"
                 },
                 {
-                  "url": "https://joshmuller.ca/writings/2023/public-wifi/",
-                  "title": "A Simple Trick to Make Logging Onto Public Wifi Easier"
-                },
-                {
                   "url": "https://joshmuller.ca/writings/2023/eulogy-for-dad/",
                   "title": "Eulogy for Dad"
                 },
                 {
                   "url": "https://joshmuller.ca/writings/2023/dont-ration-love/",
                   "title": "Don't Ration Love"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/never-do-the-same-task-thrice/",
+                  "title": "Never Do the Same Task Thrice"
                 }
               ]
             },
@@ -3255,7 +4428,7 @@
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Cunningham",
+              "title": "Josh Can Help",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/ai/",
@@ -3389,23 +4562,73 @@
           ]
         },
         {
-          "slug": "analytics",
-          "label": "analytics",
+          "slug": "anything",
+          "label": "anything",
           "articles": [
             {
-              "url": "https://joshmuller.ca/privacy-policy/",
-              "title": "Privacy Policy"
+              "url": "https://joshmuller.ca/writings/2025/finish-by-writing/",
+              "title": "A Project Isn't Finished Until You've Written About It"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/plastic-audit/",
+              "title": "Let's Do a Plastic Audit"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/churchill-on-optimism/",
+              "title": "Churchill on Optimism"
+            },
+            {
+              "url": "https://joshmuller.ca/subscribe/",
+              "title": "Subscribe!"
             }
           ],
           "sites": [
             {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
               "articles": [
                 {
-                  "url": "https://joshtronic.com/2026/08/09/reverse-engineering-posthog-superday/",
-                  "title": "Reverse Engineering a PostHog SuperDay"
+                  "url": "https://joshghent.com/supply-chain-irony/",
+                  "title": "Supply Chain Irony"
+                },
+                {
+                  "url": "https://joshghent.com/complexity/",
+                  "title": "Why are software companies so obsessed with doing anything but work?"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+                  "title": "A Markdown File Should Just Open"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/09/worth-wandering-camerons-world/",
+                  "title": "Worth Wandering: Cameron's World"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/23/a-practical-use-for-private-local-ai/",
+                  "title": "A Practical Use for Private, Local AI"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/22/a-bittorrent-swarm-for-large-language-models/",
+                  "title": "A BitTorrent Swarm for Large Language Models"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
+                  "title": "Post: The Trivium: A Tool for Learning Anything"
                 }
               ]
             }
@@ -3465,6 +4688,76 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/21/homeos-looks-like-apple-is-finally-treating-the-home-as-a-platform/",
                   "title": "homeOS Looks Like Apple Is Finally Treating the Home as a Platform"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "audio",
+          "label": "audio",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/writings/2025/more-interlinears/",
+              "title": "Two New Interlinear Audio Bible Resources"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2024/full-english-spanish-interlinear-live/",
+              "title": "My new Language Learning Tool is now LIVE! 🤓🥳"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2024/interlinear-audiobible/",
+              "title": "Creating an Interlinear Audio Bible with Open Source NLP Models"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/search-audio/",
+              "title": "How I Quickly Found a Quote Buried in Dozens of Hours of Audio"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/fight-for-rest/",
+              "title": "Fight for Rest"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/koine-greek-resources/",
+              "title": "Some Koine Greek Resources I use (Basically) Daily"
+            },
+            {
+              "url": "https://joshmuller.ca/posts/matthew-5/",
+              "title": "Matthew 5 : A Translation for Today"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/social-media-dtr/",
+              "title": "3 Reasons It’s Time to Update our Relationship Status with Social Media"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/10/apples-new-watch-is-listening-but-it-is-not-recording-everything/",
+                  "title": "Apple's New Watch Is Listening, but It Is Not Recording Everything"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/21/aliexpress-was-silently-fingerprinting-a-browser-through-its-audio-system/",
+                  "title": "AliExpress Was Silently Fingerprinting a Browser Through Its Audio System"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/22/listening-to-the-hive/",
+                  "title": "Listening to the Hive"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/ffmpeg-audio-cleanup/",
+                  "title": "Post: FFmpeg audio cleanup"
                 }
               ]
             }
@@ -3554,6 +4847,10 @@
                 {
                   "url": "https://joshghent.com/project-hail-mary/",
                   "title": "Book notes - Project Hail Mary"
+                },
+                {
+                  "url": "https://joshghent.com/bookshelf/",
+                  "title": "Bookshelf"
                 }
               ]
             },
@@ -3675,6 +4972,17 @@
           ],
           "sites": [
             {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/part-time/",
+                  "title": "How Part Time has helped me in life"
+                }
+              ]
+            },
+            {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
               "title": "Josh Sherman",
@@ -3728,6 +5036,94 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/18/learn-to-drive-the-car/",
                   "title": "Learn to Drive the Car"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "claude",
+          "label": "claude",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+              "title": "Healthy Weight Plan Builder"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2025/how-i-prompt-engineer/",
+              "title": "How I Approach Prompt Engineering"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/claude-migrated-me-off-authy/",
+                  "title": "Claude migrated me off Authy"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/08/16/taught-robot-detect-joshes/",
+                  "title": "I taught a robot to detect Joshes"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
+                  "title": "Anthropic Is Trying to Give Claude a Moral Character"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
+                  "title": "How Much AI Slop Does It Take to Unslop the AI Slop?"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
+                  "title": "Claude Opus 5.5 Is Interesting Because It Keeps Working"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
+                  "title": "An AI Watermark Can't Tell You Whether Anyone Was Thinking"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/13/grok-4_6-makes-my-switch-away-from-claude-look-less-unusual/",
+                  "title": "Grok 4.6 Makes My Switch Away from Claude Look Less Unusual"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/more-than-one-ai-company-has-lost-control-of-a-cybersecurity-test/",
+                  "title": "More Than One AI Company Has Lost Control of a Cybersecurity Test"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/28/claude-discovered-weaknesses-in-cryptographic-algorithms/",
+                  "title": "Claude Discovered Weaknesses in Cryptographic Algorithms"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/28/artificial-intelligence-inherits-our-cultural-blind-spots/",
+                  "title": "Artificial Intelligence Inherits Our Cultural Blind Spots"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://www.experimental-history.com/p/bag-of-words-have-mercy-on-us",
+                  "title": "Link: Bag of words, have mercy on us OR: Claude will you go to prom with me? Adam Mastroianni"
                 }
               ]
             }
@@ -4222,7 +5618,7 @@
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Cunningham",
+              "title": "Josh Can Help",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/ai/",
@@ -4238,6 +5634,14 @@
                 {
                   "url": "https://joshghent.com/communication/",
                   "title": "You can't fix engineering culture with communication"
+                },
+                {
+                  "url": "https://joshghent.com/cobra-effect/",
+                  "title": "The Cobra Effect and Software"
+                },
+                {
+                  "url": "https://joshghent.com/things-learned-sooner/",
+                  "title": "Five Things I Wish I learnt sooner"
                 }
               ]
             },
@@ -4280,41 +5684,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/22/walk-through-video-game-history/",
                   "title": "Walk Through Video Game History"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "facebook",
-          "label": "facebook",
-          "articles": [
-            {
-              "url": "https://joshmuller.ca/writings/2022/make-friends-with-one-of-them/",
-              "title": "Make Friends With \"One of Them\""
-            },
-            {
-              "url": "https://joshmuller.ca/writings/2022/palihapitya-on-attention-extraction/",
-              "title": "Former Facebook Exec.'s Thoughts on Attention Extraction"
-            },
-            {
-              "url": "https://joshmuller.ca/writings/2022/how-to-message-someone-on-whatsapp-without-saving-them-as-a-contact/",
-              "title": "How to Message Someone on WhatsApp Without Saving Them as a Contact"
-            },
-            {
-              "url": "https://joshmuller.ca/writings/digital-minimalism-2019/",
-              "title": "Digital Minimalism: Book recommendation"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/09/26/having-regulations-is-not-the-same-thing-as-having-accountability/",
-                  "title": "Having Regulations Is Not the Same Thing as Having Accountability"
                 }
               ]
             }
@@ -4376,6 +5745,83 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/21/homeos-looks-like-apple-is-finally-treating-the-home-as-a-platform/",
                   "title": "homeOS Looks Like Apple Is Finally Treating the Home as a Platform"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "file",
+          "label": "files",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/writings/2025/no-water-toilets/",
+              "title": "How We Deployed Hundreds of No-Water Toilets to an Earthquake Zone (With Design Files)"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2024/interlinear-audiobible/",
+              "title": "Creating an Interlinear Audio Bible with Open Source NLP Models"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/groundwork/",
+                  "title": "/groundwork: a skill that makes any repo runnable from a fresh clone"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+                  "title": "A Markdown File Should Just Open"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/23/apple-finally-made-the-xcode-project-file-understandable/",
+                  "title": "Apple Finally Made the Xcode Project File Understandable"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/04/worth-wandering-html-energy/",
+                  "title": "Worth Wandering: HTML Energy"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/22/decayfmt-is-not-a-self-destructing-file-format-but-i-like-the-idea/",
+                  "title": "decayfmt Is Not a Self-Destructing File Format, but I Like the Idea"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/28/the-sockets-interface-quietly-connected-the-computing-world/",
+                  "title": "The Sockets Interface Quietly Connected the Computing World"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/28/letsseal-makes-file-integrity-verification-simple/",
+                  "title": "LetsSeal Makes File Integrity Verification Simple"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/27/github-is-still-struggling-with-obvious-malware-repositories/",
+                  "title": "GitHub Is Still Struggling With Obvious Malware Repositories"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/23/codepen-grew-up/",
+                  "title": "CodePen Grew Up"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/ffmpeg-audio-cleanup/",
+                  "title": "Post: FFmpeg audio cleanup"
                 }
               ]
             }
@@ -4559,6 +6005,17 @@
           ],
           "sites": [
             {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/estimation-culture/",
+                  "title": "The Culture of Estimations"
+                }
+              ]
+            },
+            {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
               "title": "Josh Sherman",
@@ -4658,29 +6115,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/28/more-than-1100-ai-researchers-want-a-brake-pedal-not-a-pause/",
                   "title": "More than 1,100 AI Researchers Want a Brake Pedal, Not a Pause"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "habit",
-          "label": "habits",
-          "articles": [
-            {
-              "url": "https://joshmuller.ca/writings/2024/act-4-legacy/",
-              "title": "Action for Legacy"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/08/10/the-real-cost-of-switching-operating-systems-is-everything-you-forgot-you-learned/",
-                  "title": "The Real Cost of Switching Operating Systems Is Everything You Forgot You Learned"
                 }
               ]
             }
@@ -5231,6 +6665,17 @@
           ],
           "sites": [
             {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/how-to-buy-car/",
+                  "title": "How to buy a car"
+                }
+              ]
+            },
+            {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
               "title": "Josh Sherman",
@@ -5264,6 +6709,49 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/09/prop-4-clears-a-path-for-public-campaign-money-it-does-not-spend-any/",
                   "title": "Prop. 4 clears a path for public campaign money. It does not spend any."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "note",
+          "label": "note",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/recipes/meals/protein-pancakes/",
+              "title": "Protein Pancakes"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/note-to-future-self-exercise/",
+              "title": "Note to Future Self: On Exercise"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/how-to-turn-a-youtube-channel-into-a-torrent/",
+              "title": "How to (Legally) Turn a YouTube Playlist Into a Torrent with Linux"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/curiosity-or-dismissal/",
+              "title": "Curiosity or Dismissal"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/package-managers-and-why-theyre-awesome/",
+              "title": "Package Managers and Why They're Awesome"
+            },
+            {
+              "url": "https://joshmuller.ca/dads-service/",
+              "title": "Memorial Service for Jerry Müller"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/30/prop-40-without-the-commercials-what-californias-billionaire-tax-actually-says/",
+                  "title": "Prop. 40 Without the Commercials: What California's Billionaire Tax Actually Says"
                 }
               ]
             }
@@ -5433,6 +6921,72 @@
           ]
         },
         {
+          "slug": "plan",
+          "label": "plans",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+              "title": "Healthy Weight Plan Builder"
+            },
+            {
+              "url": "https://joshmuller.ca/kamis-eating-plan/",
+              "title": "Kami's Eating Plan"
+            },
+            {
+              "url": "https://joshmuller.ca/kamis-workout-plan/",
+              "title": "Kami's Workout Plan"
+            },
+            {
+              "url": "https://joshmuller.ca/daily/",
+              "title": "📆My Daily Goals"
+            },
+            {
+              "url": "https://joshmuller.ca/es/plan-de-comida/",
+              "title": "Plan de Comida de Josh"
+            },
+            {
+              "url": "https://joshmuller.ca/meal-prepping/",
+              "title": "Meal Prep Guide"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2024/3-books/",
+              "title": "3 Unreleased Books that I Plan(/Hope) to Read in 2024"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/you-should-learn-totp/",
+              "title": "You Should Learn TOTP (Especially if You're an Expat)"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/planpacer/",
+                  "title": "Just launched, PlanPacer - The easiest way to add payment plans to your app using Stripe"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/21/the-smart-tv-is-still-a-computer/",
+                  "title": "The Smart TV Is Still a Computer"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/18/public-information-shouldnt-have-a-premium-tier/",
+                  "title": "Public Information Shouldn’t Have a Premium Tier"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "policy",
           "label": "policy",
           "articles": [
@@ -5442,6 +6996,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/sqs-inside-vpc-lambda/",
+                  "title": "TIL - How to send an SQS message from a Lambda inside a VPC"
+                }
+              ]
+            },
             {
               "origin": "https://www.joshuabaker.com",
               "domain": "www.joshuabaker.com",
@@ -5515,7 +7080,7 @@
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Cunningham",
+              "title": "Josh Can Help",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/data-privacy/",
@@ -5574,6 +7139,170 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/08/22/the-grapheneos-duress-password-case-is-becoming-a-test-of-whether-privacy-can-be-treated-as-obstruction/",
                   "title": "The GrapheneOS Duress Password Case Is Becoming a Test of Whether Privacy Can Be Treated as Obstruction"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "problem",
+          "label": "problem",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/writings/2024/choose-dignity/",
+              "title": "Choose Dignity"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/address-the-meta-problem/",
+              "title": "Address the Meta-Problem"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/the-problem-is-the-solution/",
+              "title": "The Problem is the Solution"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/consider-the-edge-cases/",
+              "title": "Consider the Edge Cases"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/hard-problems/",
+              "title": "Hard Problems"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/vendor-lockin/",
+                  "title": "Vendor Lock-in is an Imaginary Problem"
+                },
+                {
+                  "url": "https://joshghent.com/communication/",
+                  "title": "You can't fix engineering culture with communication"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
+                  "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
+                  "title": "Claude Opus 5.5 Is Interesting Because It Keeps Working"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/23/mcp-is-finally-becoming-boring-http-now-it-needs-real-agent-delegation/",
+                  "title": "MCP Is Finally Becoming Boring HTTP. Now It Needs Real Agent Delegation"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/24/privacy-should-be-the-default-not-a-form-you-have-to-fill-out/",
+                  "title": "Privacy Should Be the Default, Not a Form You Have to Fill Out"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/18/the-problem-wasnt-the-ai/",
+                  "title": "The Problem Wasn't the AI"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "question",
+          "label": "questions",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/writings/2024/my-40-questions/",
+              "title": "My 40 Questions To Ask Every Year"
+            },
+            {
+              "url": "https://joshmuller.ca/tweets/2024-12-01-20-59-30/",
+              "title": "I love pondering the question \"What should exist but doesn't yet?\" There is LONG list of answers to that question, and it's easier than ever to bring them into existence."
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/who-to-write-to/",
+              "title": "3 Neglected \"People\" You Should Blog For"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/note-to-future-self-exercise/",
+              "title": "Note to Future Self: On Exercise"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/important-question/",
+              "title": "Important Questions"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/3-ideas-from-math-to-help-understand-the-world/",
+              "title": "3 Ideas from Math to Help Better Understand the World"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/offline-first-computing/",
+              "title": "Offline-First Computing"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/enterprise-sales-teams/",
+                  "title": "Enterprise sales teams, please, I beg you, stop"
+                },
+                {
+                  "url": "https://joshghent.com/rate-limits/",
+                  "title": "Question your Rate limits"
+                },
+                {
+                  "url": "https://joshghent.com/interview-questions/",
+                  "title": "Questions for Developers to ask at interviews"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
+                  "title": "Worth Wandering: Pippin Barr"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
+                  "title": "Maybe Someone Needs to Build Google Again"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/20/voyagers-doctor-is-the-ai-future-i-hope-we-have-to-think-about/",
+                  "title": "Voyager's Doctor Is the AI Future I Hope We Have to Think About"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/10/apples-new-watch-is-listening-but-it-is-not-recording-everything/",
+                  "title": "Apple's New Watch Is Listening, but It Is Not Recording Everything"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/28/what-does-unlawful-mean-if-the-damage-happens-first/",
+                  "title": "What Does \"Unlawful\" Mean If the Damage Happens First?"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/04/the-camera-versus-lidar-debate-is-really-about-the-last-few-nines/",
+                  "title": "The Camera-Versus-Lidar Debate Is Really About the Last Few Nines"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/04/is-this-work-or-is-this-the-gym/",
+                  "title": "Is This Work, or Is This the Gym?"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/ai-financial-advice-is-better-when-you-provide-the-whole-picture/",
+                  "title": "AI Financial Advice Is Better When You Provide the Whole Picture"
                 }
               ]
             }
@@ -5814,7 +7543,7 @@
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Cunningham",
+              "title": "Josh Can Help",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/ai/",
@@ -5848,16 +7577,16 @@
                   "title": "Whimsical Software"
                 },
                 {
+                  "url": "https://joshghent.com/simple-sites/",
+                  "title": "Simple sites"
+                },
+                {
                   "url": "https://joshghent.com/cobra-effect/",
                   "title": "The Cobra Effect and Software"
                 },
                 {
                   "url": "https://joshghent.com/rules-of-thumb/",
                   "title": "Ten Software Architecture Rules of Thumb"
-                },
-                {
-                  "url": "https://joshghent.com/ship-faster/",
-                  "title": "How to Ship Software Faster"
                 }
               ]
             },
@@ -6094,6 +7823,138 @@
           ]
         },
         {
+          "slug": "tool",
+          "label": "tools",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/writings/2025/artificial-insights/",
+              "title": "How AI Turned Six Months of Work into 16 Minutes - Artifical Insights"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2025/how-i-prompt-engineer/",
+              "title": "How I Approach Prompt Engineering"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2025/more-interlinears/",
+              "title": "Two New Interlinear Audio Bible Resources"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2024/full-english-spanish-interlinear-live/",
+              "title": "My new Language Learning Tool is now LIVE! 🤓🥳"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
+              "title": "Self-Hosting Is Cool: How I Get More Productivity for Less Money"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/3-ideas-from-math-to-help-understand-the-world/",
+              "title": "3 Ideas from Math to Help Better Understand the World"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/curiosity-or-dismissal/",
+              "title": "Curiosity or Dismissal"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2022/redemption-culture/",
+              "title": "Culture of Redemption"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/loginllama-001/",
+                  "title": "Devblog - LoginLlama 001"
+                },
+                {
+                  "url": "https://joshghent.com/simple-sites/",
+                  "title": "Simple sites"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-merchant-integration-tools-span-flex-row-rever",
+                  "title": "Merchant Integration Tools"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=nb-studio-internal-tools-internal-tools-span-flex-row-reverse-button-span-align-",
+                  "title": "Internal Tools"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
+                  "title": "Organic"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
+                  "title": "Claude Opus 5.5 Is Interesting Because It Keeps Working"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/20/voyagers-doctor-is-the-ai-future-i-hope-we-have-to-think-about/",
+                  "title": "Voyager's Doctor Is the AI Future I Hope We Have to Think About"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/22/the-grapheneos-duress-password-case-is-becoming-a-test-of-whether-privacy-can-be-treated-as-obstruction/",
+                  "title": "The GrapheneOS Duress Password Case Is Becoming a Test of Whether Privacy Can Be Treated as Obstruction"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/15/cloudflare-is-treating-mcp-like-network-traffic-that-needs-a-firewall/",
+                  "title": "Cloudflare Is Treating MCP Like Network Traffic That Needs a Firewall"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/14/cloudflare-is-making-internal-workers-private-by-default/",
+                  "title": "Cloudflare Is Making Internal Workers Private by Default"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/10/the-real-cost-of-switching-operating-systems-is-everything-you-forgot-you-learned/",
+                  "title": "The Real Cost of Switching Operating Systems Is Everything You Forgot You Learned"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/04/is-this-work-or-is-this-the-gym/",
+                  "title": "Is This Work, or Is This the Gym?"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/i-made-myself-a-recipe-label-generator/",
+                  "title": "Post: I made myself a Recipe Label Generator"
+                },
+                {
+                  "url": "https://leanrada.com/htmz/",
+                  "title": "Link: htmz - a low power tool for html"
+                },
+                {
+                  "url": "https://joshua.seigler.net/posts/tools-of-the-trade/",
+                  "title": "Post: Tools of the trade"
+                },
+                {
+                  "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
+                  "title": "Post: The Trivium: A Tool for Learning Anything"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "wordpress",
           "label": "wordpress",
           "articles": [
@@ -6141,16 +8002,16 @@
               "title": "How to Subscribe to Substack Newsletters with RSS"
             },
             {
-              "url": "https://joshmuller.ca/writings/2023/public-wifi/",
-              "title": "A Simple Trick to Make Logging Onto Public Wifi Easier"
-            },
-            {
               "url": "https://joshmuller.ca/writings/2023/eulogy-for-dad/",
               "title": "Eulogy for Dad"
             },
             {
               "url": "https://joshmuller.ca/writings/2023/dont-ration-love/",
               "title": "Don't Ration Love"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/never-do-the-same-task-thrice/",
+              "title": "Never Do the Same Task Thrice"
             }
           ],
           "sites": [
@@ -6292,7 +8153,7 @@
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Cunningham",
+              "title": "Josh Can Help",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/ai/",
@@ -6450,29 +8311,6 @@
           ]
         },
         {
-          "slug": "analytics",
-          "label": "analytics",
-          "articles": [
-            {
-              "url": "https://joshtronic.com/2026/08/09/reverse-engineering-posthog-superday/",
-              "title": "Reverse Engineering a PostHog SuperDay"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshmuller.ca",
-              "domain": "joshmuller.ca",
-              "title": "Josh Müller",
-              "articles": [
-                {
-                  "url": "https://joshmuller.ca/privacy-policy/",
-                  "title": "Privacy Policy"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "blogging",
           "label": "blogging",
           "articles": [
@@ -6517,6 +8355,17 @@
           ],
           "sites": [
             {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/part-time/",
+                  "title": "How Part Time has helped me in life"
+                }
+              ]
+            },
+            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
               "title": "Josh Müller",
@@ -6543,6 +8392,94 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/13/ai-is-making-code-cheap-it-is-making-judgment-more-valuable/",
                   "title": "AI Is Making Code Cheap. It Is Making Judgment More Valuable."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "claude",
+          "label": "claude",
+          "articles": [
+            {
+              "url": "https://joshtronic.com/2026/08/16/taught-robot-detect-joshes/",
+              "title": "I taught a robot to detect Joshes"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/claude-migrated-me-off-authy/",
+                  "title": "Claude migrated me off Authy"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2025/how-i-prompt-engineer/",
+                  "title": "How I Approach Prompt Engineering"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
+                  "title": "Anthropic Is Trying to Give Claude a Moral Character"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
+                  "title": "How Much AI Slop Does It Take to Unslop the AI Slop?"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
+                  "title": "Claude Opus 5.5 Is Interesting Because It Keeps Working"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
+                  "title": "An AI Watermark Can't Tell You Whether Anyone Was Thinking"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/13/grok-4_6-makes-my-switch-away-from-claude-look-less-unusual/",
+                  "title": "Grok 4.6 Makes My Switch Away from Claude Look Less Unusual"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/more-than-one-ai-company-has-lost-control-of-a-cybersecurity-test/",
+                  "title": "More Than One AI Company Has Lost Control of a Cybersecurity Test"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/28/claude-discovered-weaknesses-in-cryptographic-algorithms/",
+                  "title": "Claude Discovered Weaknesses in Cryptographic Algorithms"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/28/artificial-intelligence-inherits-our-cultural-blind-spots/",
+                  "title": "Artificial Intelligence Inherits Our Cultural Blind Spots"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://www.experimental-history.com/p/bag-of-words-have-mercy-on-us",
+                  "title": "Link: Bag of words, have mercy on us OR: Claude will you go to prom with me? Adam Mastroianni"
                 }
               ]
             }
@@ -6634,7 +8571,7 @@
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Cunningham",
+              "title": "Josh Can Help",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/ai/",
@@ -6650,6 +8587,14 @@
                 {
                   "url": "https://joshghent.com/communication/",
                   "title": "You can't fix engineering culture with communication"
+                },
+                {
+                  "url": "https://joshghent.com/cobra-effect/",
+                  "title": "The Cobra Effect and Software"
+                },
+                {
+                  "url": "https://joshghent.com/things-learned-sooner/",
+                  "title": "Five Things I Wish I learnt sooner"
                 }
               ]
             },
@@ -6837,6 +8782,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/estimation-culture/",
+                  "title": "The Culture of Estimations"
+                }
+              ]
+            },
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
@@ -7238,6 +9194,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/how-to-buy-car/",
+                  "title": "How to buy a car"
+                }
+              ]
+            },
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
@@ -7642,16 +9609,16 @@
                   "title": "How to Subscribe to Substack Newsletters with RSS"
                 },
                 {
-                  "url": "https://joshmuller.ca/writings/2023/public-wifi/",
-                  "title": "A Simple Trick to Make Logging Onto Public Wifi Easier"
-                },
-                {
                   "url": "https://joshmuller.ca/writings/2023/eulogy-for-dad/",
                   "title": "Eulogy for Dad"
                 },
                 {
                   "url": "https://joshmuller.ca/writings/2023/dont-ration-love/",
                   "title": "Don't Ration Love"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/never-do-the-same-task-thrice/",
+                  "title": "Never Do the Same Task Thrice"
                 }
               ]
             },
@@ -7726,7 +9693,7 @@
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Cunningham",
+              "title": "Josh Can Help",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/ai/",
@@ -7870,6 +9837,237 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
                   "title": "The Interesting Part of an AI Force Is What Comes After the Name"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "anything",
+          "label": "anything",
+          "articles": [
+            {
+              "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
+              "title": "Post: The Trivium: A Tool for Learning Anything"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/supply-chain-irony/",
+                  "title": "Supply Chain Irony"
+                },
+                {
+                  "url": "https://joshghent.com/complexity/",
+                  "title": "Why are software companies so obsessed with doing anything but work?"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2025/finish-by-writing/",
+                  "title": "A Project Isn't Finished Until You've Written About It"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/plastic-audit/",
+                  "title": "Let's Do a Plastic Audit"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/churchill-on-optimism/",
+                  "title": "Churchill on Optimism"
+                },
+                {
+                  "url": "https://joshmuller.ca/subscribe/",
+                  "title": "Subscribe!"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+                  "title": "A Markdown File Should Just Open"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/09/worth-wandering-camerons-world/",
+                  "title": "Worth Wandering: Cameron's World"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/23/a-practical-use-for-private-local-ai/",
+                  "title": "A Practical Use for Private, Local AI"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/22/a-bittorrent-swarm-for-large-language-models/",
+                  "title": "A BitTorrent Swarm for Large Language Models"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "audio",
+          "label": "audio",
+          "articles": [
+            {
+              "url": "https://joshua.seigler.net/posts/ffmpeg-audio-cleanup/",
+              "title": "Post: FFmpeg audio cleanup"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2025/more-interlinears/",
+                  "title": "Two New Interlinear Audio Bible Resources"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/full-english-spanish-interlinear-live/",
+                  "title": "My new Language Learning Tool is now LIVE! 🤓🥳"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/interlinear-audiobible/",
+                  "title": "Creating an Interlinear Audio Bible with Open Source NLP Models"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/search-audio/",
+                  "title": "How I Quickly Found a Quote Buried in Dozens of Hours of Audio"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/fight-for-rest/",
+                  "title": "Fight for Rest"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/koine-greek-resources/",
+                  "title": "Some Koine Greek Resources I use (Basically) Daily"
+                },
+                {
+                  "url": "https://joshmuller.ca/posts/matthew-5/",
+                  "title": "Matthew 5 : A Translation for Today"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/social-media-dtr/",
+                  "title": "3 Reasons It’s Time to Update our Relationship Status with Social Media"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/10/apples-new-watch-is-listening-but-it-is-not-recording-everything/",
+                  "title": "Apple's New Watch Is Listening, but It Is Not Recording Everything"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/21/aliexpress-was-silently-fingerprinting-a-browser-through-its-audio-system/",
+                  "title": "AliExpress Was Silently Fingerprinting a Browser Through Its Audio System"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/22/listening-to-the-hive/",
+                  "title": "Listening to the Hive"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "claude",
+          "label": "claude",
+          "articles": [
+            {
+              "url": "https://www.experimental-history.com/p/bag-of-words-have-mercy-on-us",
+              "title": "Link: Bag of words, have mercy on us OR: Claude will you go to prom with me? Adam Mastroianni"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/claude-migrated-me-off-authy/",
+                  "title": "Claude migrated me off Authy"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2025/how-i-prompt-engineer/",
+                  "title": "How I Approach Prompt Engineering"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/08/16/taught-robot-detect-joshes/",
+                  "title": "I taught a robot to detect Joshes"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
+                  "title": "Anthropic Is Trying to Give Claude a Moral Character"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
+                  "title": "How Much AI Slop Does It Take to Unslop the AI Slop?"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
+                  "title": "Claude Opus 5.5 Is Interesting Because It Keeps Working"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
+                  "title": "An AI Watermark Can't Tell You Whether Anyone Was Thinking"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/13/grok-4_6-makes-my-switch-away-from-claude-look-less-unusual/",
+                  "title": "Grok 4.6 Makes My Switch Away from Claude Look Less Unusual"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/more-than-one-ai-company-has-lost-control-of-a-cybersecurity-test/",
+                  "title": "More Than One AI Company Has Lost Control of a Cybersecurity Test"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/28/claude-discovered-weaknesses-in-cryptographic-algorithms/",
+                  "title": "Claude Discovered Weaknesses in Cryptographic Algorithms"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/28/artificial-intelligence-inherits-our-cultural-blind-spots/",
+                  "title": "Artificial Intelligence Inherits Our Cultural Blind Spots"
                 }
               ]
             }
@@ -8187,6 +10385,83 @@
           ]
         },
         {
+          "slug": "file",
+          "label": "files",
+          "articles": [
+            {
+              "url": "https://joshua.seigler.net/posts/ffmpeg-audio-cleanup/",
+              "title": "Post: FFmpeg audio cleanup"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/groundwork/",
+                  "title": "/groundwork: a skill that makes any repo runnable from a fresh clone"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2025/no-water-toilets/",
+                  "title": "How We Deployed Hundreds of No-Water Toilets to an Earthquake Zone (With Design Files)"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/interlinear-audiobible/",
+                  "title": "Creating an Interlinear Audio Bible with Open Source NLP Models"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+                  "title": "A Markdown File Should Just Open"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/23/apple-finally-made-the-xcode-project-file-understandable/",
+                  "title": "Apple Finally Made the Xcode Project File Understandable"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/04/worth-wandering-html-energy/",
+                  "title": "Worth Wandering: HTML Energy"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/22/decayfmt-is-not-a-self-destructing-file-format-but-i-like-the-idea/",
+                  "title": "decayfmt Is Not a Self-Destructing File Format, but I Like the Idea"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/28/the-sockets-interface-quietly-connected-the-computing-world/",
+                  "title": "The Sockets Interface Quietly Connected the Computing World"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/28/letsseal-makes-file-integrity-verification-simple/",
+                  "title": "LetsSeal Makes File Integrity Verification Simple"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/27/github-is-still-struggling-with-obvious-malware-repositories/",
+                  "title": "GitHub Is Still Struggling With Obvious Malware Repositories"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/23/codepen-grew-up/",
+                  "title": "CodePen Grew Up"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "github",
           "label": "github",
           "articles": [
@@ -8288,6 +10563,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/estimation-culture/",
+                  "title": "The Culture of Estimations"
+                }
+              ]
+            },
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
@@ -8588,6 +10874,138 @@
           ]
         },
         {
+          "slug": "tool",
+          "label": "tools",
+          "articles": [
+            {
+              "url": "https://joshua.seigler.net/posts/i-made-myself-a-recipe-label-generator/",
+              "title": "Post: I made myself a Recipe Label Generator"
+            },
+            {
+              "url": "https://leanrada.com/htmz/",
+              "title": "Link: htmz - a low power tool for html"
+            },
+            {
+              "url": "https://joshua.seigler.net/posts/tools-of-the-trade/",
+              "title": "Post: Tools of the trade"
+            },
+            {
+              "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
+              "title": "Post: The Trivium: A Tool for Learning Anything"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/loginllama-001/",
+                  "title": "Devblog - LoginLlama 001"
+                },
+                {
+                  "url": "https://joshghent.com/simple-sites/",
+                  "title": "Simple sites"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2025/artificial-insights/",
+                  "title": "How AI Turned Six Months of Work into 16 Minutes - Artifical Insights"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2025/how-i-prompt-engineer/",
+                  "title": "How I Approach Prompt Engineering"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2025/more-interlinears/",
+                  "title": "Two New Interlinear Audio Bible Resources"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/full-english-spanish-interlinear-live/",
+                  "title": "My new Language Learning Tool is now LIVE! 🤓🥳"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
+                  "title": "Self-Hosting Is Cool: How I Get More Productivity for Less Money"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/3-ideas-from-math-to-help-understand-the-world/",
+                  "title": "3 Ideas from Math to Help Better Understand the World"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/curiosity-or-dismissal/",
+                  "title": "Curiosity or Dismissal"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/redemption-culture/",
+                  "title": "Culture of Redemption"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-merchant-integration-tools-span-flex-row-rever",
+                  "title": "Merchant Integration Tools"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=nb-studio-internal-tools-internal-tools-span-flex-row-reverse-button-span-align-",
+                  "title": "Internal Tools"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
+                  "title": "Organic"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
+                  "title": "Claude Opus 5.5 Is Interesting Because It Keeps Working"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/20/voyagers-doctor-is-the-ai-future-i-hope-we-have-to-think-about/",
+                  "title": "Voyager's Doctor Is the AI Future I Hope We Have to Think About"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/22/the-grapheneos-duress-password-case-is-becoming-a-test-of-whether-privacy-can-be-treated-as-obstruction/",
+                  "title": "The GrapheneOS Duress Password Case Is Becoming a Test of Whether Privacy Can Be Treated as Obstruction"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/15/cloudflare-is-treating-mcp-like-network-traffic-that-needs-a-firewall/",
+                  "title": "Cloudflare Is Treating MCP Like Network Traffic That Needs a Firewall"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/14/cloudflare-is-making-internal-workers-private-by-default/",
+                  "title": "Cloudflare Is Making Internal Workers Private by Default"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/10/the-real-cost-of-switching-operating-systems-is-everything-you-forgot-you-learned/",
+                  "title": "The Real Cost of Switching Operating Systems Is Everything You Forgot You Learned"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/04/is-this-work-or-is-this-the-gym/",
+                  "title": "Is This Work, or Is This the Gym?"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "trade",
           "label": "trade",
           "articles": [
@@ -8713,7 +11131,7 @@
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Cunningham",
+              "title": "Josh Can Help",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/ai/",
@@ -8898,6 +11316,79 @@
           ]
         },
         {
+          "slug": "anything",
+          "label": "anything",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+              "title": "A Markdown File Should Just Open"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/09/worth-wandering-camerons-world/",
+              "title": "Worth Wandering: Cameron's World"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/23/a-practical-use-for-private-local-ai/",
+              "title": "A Practical Use for Private, Local AI"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/22/a-bittorrent-swarm-for-large-language-models/",
+              "title": "A BitTorrent Swarm for Large Language Models"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/supply-chain-irony/",
+                  "title": "Supply Chain Irony"
+                },
+                {
+                  "url": "https://joshghent.com/complexity/",
+                  "title": "Why are software companies so obsessed with doing anything but work?"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2025/finish-by-writing/",
+                  "title": "A Project Isn't Finished Until You've Written About It"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/plastic-audit/",
+                  "title": "Let's Do a Plastic Audit"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/churchill-on-optimism/",
+                  "title": "Churchill on Optimism"
+                },
+                {
+                  "url": "https://joshmuller.ca/subscribe/",
+                  "title": "Subscribe!"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
+                  "title": "Post: The Trivium: A Tool for Learning Anything"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "apple",
           "label": "apple",
           "articles": [
@@ -9055,6 +11546,76 @@
           ]
         },
         {
+          "slug": "audio",
+          "label": "audio",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/10/apples-new-watch-is-listening-but-it-is-not-recording-everything/",
+              "title": "Apple's New Watch Is Listening, but It Is Not Recording Everything"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/21/aliexpress-was-silently-fingerprinting-a-browser-through-its-audio-system/",
+              "title": "AliExpress Was Silently Fingerprinting a Browser Through Its Audio System"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/22/listening-to-the-hive/",
+              "title": "Listening to the Hive"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2025/more-interlinears/",
+                  "title": "Two New Interlinear Audio Bible Resources"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/full-english-spanish-interlinear-live/",
+                  "title": "My new Language Learning Tool is now LIVE! 🤓🥳"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/interlinear-audiobible/",
+                  "title": "Creating an Interlinear Audio Bible with Open Source NLP Models"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/search-audio/",
+                  "title": "How I Quickly Found a Quote Buried in Dozens of Hours of Audio"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/fight-for-rest/",
+                  "title": "Fight for Rest"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/koine-greek-resources/",
+                  "title": "Some Koine Greek Resources I use (Basically) Daily"
+                },
+                {
+                  "url": "https://joshmuller.ca/posts/matthew-5/",
+                  "title": "Matthew 5 : A Translation for Today"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/social-media-dtr/",
+                  "title": "3 Reasons It’s Time to Update our Relationship Status with Social Media"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/ffmpeg-audio-cleanup/",
+                  "title": "Post: FFmpeg audio cleanup"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "blogging",
           "label": "blogging",
           "articles": [
@@ -9134,6 +11695,10 @@
                 {
                   "url": "https://joshghent.com/project-hail-mary/",
                   "title": "Book notes - Project Hail Mary"
+                },
+                {
+                  "url": "https://joshghent.com/bookshelf/",
+                  "title": "Bookshelf"
                 }
               ]
             },
@@ -9313,6 +11878,17 @@
           ],
           "sites": [
             {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/part-time/",
+                  "title": "How Part Time has helped me in life"
+                }
+              ]
+            },
+            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
               "title": "Josh Müller",
@@ -9358,6 +11934,94 @@
                 {
                   "url": "https://joshmuller.ca/writings/2023/optimistic-intuition/",
                   "title": "Optimistic Intuition"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "claude",
+          "label": "claude",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/05/anthropic-is-trying-to-give-claude-a-moral-character/",
+              "title": "Anthropic Is Trying to Give Claude a Moral Character"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
+              "title": "How Much AI Slop Does It Take to Unslop the AI Slop?"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
+              "title": "Claude Opus 5.5 Is Interesting Because It Keeps Working"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
+              "title": "An AI Watermark Can't Tell You Whether Anyone Was Thinking"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/13/grok-4_6-makes-my-switch-away-from-claude-look-less-unusual/",
+              "title": "Grok 4.6 Makes My Switch Away from Claude Look Less Unusual"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/02/more-than-one-ai-company-has-lost-control-of-a-cybersecurity-test/",
+              "title": "More Than One AI Company Has Lost Control of a Cybersecurity Test"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/28/claude-discovered-weaknesses-in-cryptographic-algorithms/",
+              "title": "Claude Discovered Weaknesses in Cryptographic Algorithms"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/28/artificial-intelligence-inherits-our-cultural-blind-spots/",
+              "title": "Artificial Intelligence Inherits Our Cultural Blind Spots"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/claude-migrated-me-off-authy/",
+                  "title": "Claude migrated me off Authy"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2025/how-i-prompt-engineer/",
+                  "title": "How I Approach Prompt Engineering"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/08/16/taught-robot-detect-joshes/",
+                  "title": "I taught a robot to detect Joshes"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://www.experimental-history.com/p/bag-of-words-have-mercy-on-us",
+                  "title": "Link: Bag of words, have mercy on us OR: Claude will you go to prom with me? Adam Mastroianni"
                 }
               ]
             }
@@ -9905,7 +12569,7 @@
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Cunningham",
+              "title": "Josh Can Help",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/ai/",
@@ -9921,6 +12585,14 @@
                 {
                   "url": "https://joshghent.com/communication/",
                   "title": "You can't fix engineering culture with communication"
+                },
+                {
+                  "url": "https://joshghent.com/cobra-effect/",
+                  "title": "The Cobra Effect and Software"
+                },
+                {
+                  "url": "https://joshghent.com/things-learned-sooner/",
+                  "title": "Five Things I Wish I learnt sooner"
                 }
               ]
             },
@@ -9943,41 +12615,6 @@
                 {
                   "url": "https://joshtronic.com/2026/08/09/reverse-engineering-posthog-superday/",
                   "title": "Reverse Engineering a PostHog SuperDay"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "facebook",
-          "label": "facebook",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/26/having-regulations-is-not-the-same-thing-as-having-accountability/",
-              "title": "Having Regulations Is Not the Same Thing as Having Accountability"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshmuller.ca",
-              "domain": "joshmuller.ca",
-              "title": "Josh Müller",
-              "articles": [
-                {
-                  "url": "https://joshmuller.ca/writings/2022/make-friends-with-one-of-them/",
-                  "title": "Make Friends With \"One of Them\""
-                },
-                {
-                  "url": "https://joshmuller.ca/writings/2022/palihapitya-on-attention-extraction/",
-                  "title": "Former Facebook Exec.'s Thoughts on Attention Extraction"
-                },
-                {
-                  "url": "https://joshmuller.ca/writings/2022/how-to-message-someone-on-whatsapp-without-saving-them-as-a-contact/",
-                  "title": "How to Message Someone on WhatsApp Without Saving Them as a Contact"
-                },
-                {
-                  "url": "https://joshmuller.ca/writings/digital-minimalism-2019/",
-                  "title": "Digital Minimalism: Book recommendation"
                 }
               ]
             }
@@ -10062,6 +12699,83 @@
                 {
                   "url": "https://joshternet.org/",
                   "title": "Link: Joshternet: An Open Network for Joshes and Independent Websites"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "file",
+          "label": "files",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+              "title": "A Markdown File Should Just Open"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/23/apple-finally-made-the-xcode-project-file-understandable/",
+              "title": "Apple Finally Made the Xcode Project File Understandable"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/04/worth-wandering-html-energy/",
+              "title": "Worth Wandering: HTML Energy"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/22/decayfmt-is-not-a-self-destructing-file-format-but-i-like-the-idea/",
+              "title": "decayfmt Is Not a Self-Destructing File Format, but I Like the Idea"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/28/the-sockets-interface-quietly-connected-the-computing-world/",
+              "title": "The Sockets Interface Quietly Connected the Computing World"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/28/letsseal-makes-file-integrity-verification-simple/",
+              "title": "LetsSeal Makes File Integrity Verification Simple"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/27/github-is-still-struggling-with-obvious-malware-repositories/",
+              "title": "GitHub Is Still Struggling With Obvious Malware Repositories"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/23/codepen-grew-up/",
+              "title": "CodePen Grew Up"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/groundwork/",
+                  "title": "/groundwork: a skill that makes any repo runnable from a fresh clone"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2025/no-water-toilets/",
+                  "title": "How We Deployed Hundreds of No-Water Toilets to an Earthquake Zone (With Design Files)"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/interlinear-audiobible/",
+                  "title": "Creating an Interlinear Audio Bible with Open Source NLP Models"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/ffmpeg-audio-cleanup/",
+                  "title": "Post: FFmpeg audio cleanup"
                 }
               ]
             }
@@ -10291,6 +13005,17 @@
           ],
           "sites": [
             {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/estimation-culture/",
+                  "title": "The Culture of Estimations"
+                }
+              ]
+            },
+            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
               "title": "Josh Müller",
@@ -10465,29 +13190,6 @@
                 {
                   "url": "https://www.joshuabaker.com/work/?work=money-advice-service-money-map-money-map-span-flex-row-reverse-button-span-align",
                   "title": "Money Map"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "habit",
-          "label": "habits",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/10/the-real-cost-of-switching-operating-systems-is-everything-you-forgot-you-learned/",
-              "title": "The Real Cost of Switching Operating Systems Is Everything You Forgot You Learned"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshmuller.ca",
-              "domain": "joshmuller.ca",
-              "title": "Josh Müller",
-              "articles": [
-                {
-                  "url": "https://joshmuller.ca/writings/2024/act-4-legacy/",
-                  "title": "Action for Legacy"
                 }
               ]
             }
@@ -10896,6 +13598,57 @@
           ]
         },
         {
+          "slug": "limit",
+          "label": "limits",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/14/prop-2-lets-the-rainy-day-fund-grow-taller-it-does-not-fill-the-jar/",
+              "title": "Prop. 2 lets the rainy-day fund grow taller. It does not fill the jar."
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/03/prop-42-is-about-a-tax-on-owning-savings-not-the-tax-on-income-they-earn/",
+              "title": "Prop. 42 is about a tax on owning savings, not the tax on income they earn"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/02/prop-41-would-send-in-the-auditor-and-it-would-fence-the-spending-limit/",
+              "title": "Prop. 41 would send in the auditor, and it would fence the spending limit"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/16/a-20-youtube-promotion-turned-into-a-118000-lesson-in-guardrails/",
+              "title": "A $20 YouTube Promotion Turned Into a $118,000 Lesson in Guardrails"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/18/californias-efficient-tire-rule-could-narrow-what-we-are-allowed-to-buy/",
+              "title": "California's Efficient-Tire Rule Could Narrow What We Are Allowed to Buy"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/04/the-website-is-often-the-more-private-version/",
+              "title": "The Website Is Often the More Private Version"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/02/go-1_27-is-going-to-be-a-big-release/",
+              "title": "Go 1.27 Is Going to Be a Big Release"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/22/apparently-everyone-is-burning-through-tokens/",
+              "title": "Apparently, Everyone Is Burning Through Tokens"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/rate-limits/",
+                  "title": "Question your Rate limits"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "linux",
           "label": "linux",
           "articles": [
@@ -11107,6 +13860,17 @@
           ],
           "sites": [
             {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/how-to-buy-car/",
+                  "title": "How to buy a car"
+                }
+              ]
+            },
+            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
               "title": "Josh Müller",
@@ -11222,6 +13986,49 @@
                 {
                   "url": "https://www.joshuabaker.com/work/?work=sylvia-bongo-ondimba-fondation-sylvia-bongo-ondimba-fondation-sylvia-bongo-ondim",
                   "title": "Fondation Sylvia Bongo Ondimba"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "note",
+          "label": "note",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/30/prop-40-without-the-commercials-what-californias-billionaire-tax-actually-says/",
+              "title": "Prop. 40 Without the Commercials: What California's Billionaire Tax Actually Says"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/recipes/meals/protein-pancakes/",
+                  "title": "Protein Pancakes"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/note-to-future-self-exercise/",
+                  "title": "Note to Future Self: On Exercise"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/how-to-turn-a-youtube-channel-into-a-torrent/",
+                  "title": "How to (Legally) Turn a YouTube Playlist Into a Torrent with Linux"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/curiosity-or-dismissal/",
+                  "title": "Curiosity or Dismissal"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/package-managers-and-why-theyre-awesome/",
+                  "title": "Package Managers and Why They're Awesome"
+                },
+                {
+                  "url": "https://joshmuller.ca/dads-service/",
+                  "title": "Memorial Service for Jerry Müller"
                 }
               ]
             }
@@ -11352,6 +14159,72 @@
           ]
         },
         {
+          "slug": "plan",
+          "label": "plans",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/21/the-smart-tv-is-still-a-computer/",
+              "title": "The Smart TV Is Still a Computer"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/18/public-information-shouldnt-have-a-premium-tier/",
+              "title": "Public Information Shouldn’t Have a Premium Tier"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/planpacer/",
+                  "title": "Just launched, PlanPacer - The easiest way to add payment plans to your app using Stripe"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                },
+                {
+                  "url": "https://joshmuller.ca/kamis-eating-plan/",
+                  "title": "Kami's Eating Plan"
+                },
+                {
+                  "url": "https://joshmuller.ca/kamis-workout-plan/",
+                  "title": "Kami's Workout Plan"
+                },
+                {
+                  "url": "https://joshmuller.ca/daily/",
+                  "title": "📆My Daily Goals"
+                },
+                {
+                  "url": "https://joshmuller.ca/es/plan-de-comida/",
+                  "title": "Plan de Comida de Josh"
+                },
+                {
+                  "url": "https://joshmuller.ca/meal-prepping/",
+                  "title": "Meal Prep Guide"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/3-books/",
+                  "title": "3 Unreleased Books that I Plan(/Hope) to Read in 2024"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/you-should-learn-totp/",
+                  "title": "You Should Learn TOTP (Especially if You're an Expat)"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "policy",
           "label": "policy",
           "articles": [
@@ -11369,6 +14242,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/sqs-inside-vpc-lambda/",
+                  "title": "TIL - How to send an SQS message from a Lambda inside a VPC"
+                }
+              ]
+            },
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
@@ -11462,7 +14346,7 @@
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Cunningham",
+              "title": "Josh Can Help",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/data-privacy/",
@@ -11493,6 +14377,76 @@
                 {
                   "url": "https://joshmuller.ca/privacy-policy/",
                   "title": "Privacy Policy"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "problem",
+          "label": "problem",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
+              "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
+              "title": "Claude Opus 5.5 Is Interesting Because It Keeps Working"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/23/mcp-is-finally-becoming-boring-http-now-it-needs-real-agent-delegation/",
+              "title": "MCP Is Finally Becoming Boring HTTP. Now It Needs Real Agent Delegation"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/24/privacy-should-be-the-default-not-a-form-you-have-to-fill-out/",
+              "title": "Privacy Should Be the Default, Not a Form You Have to Fill Out"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/18/the-problem-wasnt-the-ai/",
+              "title": "The Problem Wasn't the AI"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/vendor-lockin/",
+                  "title": "Vendor Lock-in is an Imaginary Problem"
+                },
+                {
+                  "url": "https://joshghent.com/communication/",
+                  "title": "You can't fix engineering culture with communication"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2024/choose-dignity/",
+                  "title": "Choose Dignity"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/address-the-meta-problem/",
+                  "title": "Address the Meta-Problem"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/the-problem-is-the-solution/",
+                  "title": "The Problem is the Solution"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/consider-the-edge-cases/",
+                  "title": "Consider the Edge Cases"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/hard-problems/",
+                  "title": "Hard Problems"
                 }
               ]
             }
@@ -11587,6 +14541,100 @@
                 {
                   "url": "https://www.joshuabaker.com/work/?work=dandara-operations-platform-operations-platform-span-flex-row-reverse-button-spa",
                   "title": "Operations Platform"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "question",
+          "label": "questions",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
+              "title": "Worth Wandering: Pippin Barr"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
+              "title": "Maybe Someone Needs to Build Google Again"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/20/voyagers-doctor-is-the-ai-future-i-hope-we-have-to-think-about/",
+              "title": "Voyager's Doctor Is the AI Future I Hope We Have to Think About"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/10/apples-new-watch-is-listening-but-it-is-not-recording-everything/",
+              "title": "Apple's New Watch Is Listening, but It Is Not Recording Everything"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/28/what-does-unlawful-mean-if-the-damage-happens-first/",
+              "title": "What Does \"Unlawful\" Mean If the Damage Happens First?"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/04/the-camera-versus-lidar-debate-is-really-about-the-last-few-nines/",
+              "title": "The Camera-Versus-Lidar Debate Is Really About the Last Few Nines"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/04/is-this-work-or-is-this-the-gym/",
+              "title": "Is This Work, or Is This the Gym?"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/02/ai-financial-advice-is-better-when-you-provide-the-whole-picture/",
+              "title": "AI Financial Advice Is Better When You Provide the Whole Picture"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/enterprise-sales-teams/",
+                  "title": "Enterprise sales teams, please, I beg you, stop"
+                },
+                {
+                  "url": "https://joshghent.com/rate-limits/",
+                  "title": "Question your Rate limits"
+                },
+                {
+                  "url": "https://joshghent.com/interview-questions/",
+                  "title": "Questions for Developers to ask at interviews"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2024/my-40-questions/",
+                  "title": "My 40 Questions To Ask Every Year"
+                },
+                {
+                  "url": "https://joshmuller.ca/tweets/2024-12-01-20-59-30/",
+                  "title": "I love pondering the question \"What should exist but doesn't yet?\" There is LONG list of answers to that question, and it's easier than ever to bring them into existence."
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/who-to-write-to/",
+                  "title": "3 Neglected \"People\" You Should Blog For"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/note-to-future-self-exercise/",
+                  "title": "Note to Future Self: On Exercise"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/important-question/",
+                  "title": "Important Questions"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/3-ideas-from-math-to-help-understand-the-world/",
+                  "title": "3 Ideas from Math to Help Better Understand the World"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/offline-first-computing/",
+                  "title": "Offline-First Computing"
                 }
               ]
             }
@@ -11889,7 +14937,7 @@
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Cunningham",
+              "title": "Josh Can Help",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/ai/",
@@ -11923,16 +14971,16 @@
                   "title": "Whimsical Software"
                 },
                 {
+                  "url": "https://joshghent.com/simple-sites/",
+                  "title": "Simple sites"
+                },
+                {
                   "url": "https://joshghent.com/cobra-effect/",
                   "title": "The Cobra Effect and Software"
                 },
                 {
                   "url": "https://joshghent.com/rules-of-thumb/",
                   "title": "Ten Software Architecture Rules of Thumb"
-                },
-                {
-                  "url": "https://joshghent.com/ship-faster/",
-                  "title": "How to Ship Software Faster"
                 }
               ]
             },
@@ -12145,6 +15193,138 @@
           ]
         },
         {
+          "slug": "tool",
+          "label": "tools",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
+              "title": "Organic"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
+              "title": "Claude Opus 5.5 Is Interesting Because It Keeps Working"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/09/20/voyagers-doctor-is-the-ai-future-i-hope-we-have-to-think-about/",
+              "title": "Voyager's Doctor Is the AI Future I Hope We Have to Think About"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/22/the-grapheneos-duress-password-case-is-becoming-a-test-of-whether-privacy-can-be-treated-as-obstruction/",
+              "title": "The GrapheneOS Duress Password Case Is Becoming a Test of Whether Privacy Can Be Treated as Obstruction"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/15/cloudflare-is-treating-mcp-like-network-traffic-that-needs-a-firewall/",
+              "title": "Cloudflare Is Treating MCP Like Network Traffic That Needs a Firewall"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/14/cloudflare-is-making-internal-workers-private-by-default/",
+              "title": "Cloudflare Is Making Internal Workers Private by Default"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/10/the-real-cost-of-switching-operating-systems-is-everything-you-forgot-you-learned/",
+              "title": "The Real Cost of Switching Operating Systems Is Everything You Forgot You Learned"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/08/04/is-this-work-or-is-this-the-gym/",
+              "title": "Is This Work, or Is This the Gym?"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/loginllama-001/",
+                  "title": "Devblog - LoginLlama 001"
+                },
+                {
+                  "url": "https://joshghent.com/simple-sites/",
+                  "title": "Simple sites"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2025/artificial-insights/",
+                  "title": "How AI Turned Six Months of Work into 16 Minutes - Artifical Insights"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2025/how-i-prompt-engineer/",
+                  "title": "How I Approach Prompt Engineering"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2025/more-interlinears/",
+                  "title": "Two New Interlinear Audio Bible Resources"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/full-english-spanish-interlinear-live/",
+                  "title": "My new Language Learning Tool is now LIVE! 🤓🥳"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
+                  "title": "Self-Hosting Is Cool: How I Get More Productivity for Less Money"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/3-ideas-from-math-to-help-understand-the-world/",
+                  "title": "3 Ideas from Math to Help Better Understand the World"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/curiosity-or-dismissal/",
+                  "title": "Curiosity or Dismissal"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/redemption-culture/",
+                  "title": "Culture of Redemption"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-merchant-integration-tools-span-flex-row-rever",
+                  "title": "Merchant Integration Tools"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=nb-studio-internal-tools-internal-tools-span-flex-row-reverse-button-span-align-",
+                  "title": "Internal Tools"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/i-made-myself-a-recipe-label-generator/",
+                  "title": "Post: I made myself a Recipe Label Generator"
+                },
+                {
+                  "url": "https://leanrada.com/htmz/",
+                  "title": "Link: htmz - a low power tool for html"
+                },
+                {
+                  "url": "https://joshua.seigler.net/posts/tools-of-the-trade/",
+                  "title": "Post: Tools of the trade"
+                },
+                {
+                  "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
+                  "title": "Post: The Trivium: A Tool for Learning Anything"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "trade",
           "label": "trade",
           "articles": [
@@ -12289,16 +15469,16 @@
                   "title": "How to Subscribe to Substack Newsletters with RSS"
                 },
                 {
-                  "url": "https://joshmuller.ca/writings/2023/public-wifi/",
-                  "title": "A Simple Trick to Make Logging Onto Public Wifi Easier"
-                },
-                {
                   "url": "https://joshmuller.ca/writings/2023/eulogy-for-dad/",
                   "title": "Eulogy for Dad"
                 },
                 {
                   "url": "https://joshmuller.ca/writings/2023/dont-ration-love/",
                   "title": "Don't Ration Love"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/never-do-the-same-task-thrice/",
+                  "title": "Never Do the Same Task Thrice"
                 }
               ]
             },
@@ -12588,6 +15768,14 @@
                 {
                   "url": "https://joshghent.com/communication/",
                   "title": "You can't fix engineering culture with communication"
+                },
+                {
+                  "url": "https://joshghent.com/cobra-effect/",
+                  "title": "The Cobra Effect and Software"
+                },
+                {
+                  "url": "https://joshghent.com/things-learned-sooner/",
+                  "title": "Five Things I Wish I learnt sooner"
                 }
               ]
             },
@@ -12759,16 +15947,16 @@
                   "title": "Whimsical Software"
                 },
                 {
+                  "url": "https://joshghent.com/simple-sites/",
+                  "title": "Simple sites"
+                },
+                {
                   "url": "https://joshghent.com/cobra-effect/",
                   "title": "The Cobra Effect and Software"
                 },
                 {
                   "url": "https://joshghent.com/rules-of-thumb/",
                   "title": "Ten Software Architecture Rules of Thumb"
-                },
-                {
-                  "url": "https://joshghent.com/ship-faster/",
-                  "title": "How to Ship Software Faster"
                 }
               ]
             },
@@ -12854,7 +16042,7 @@
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
-              "title": "Josh Cunningham",
+              "title": "Josh Can Help",
               "articles": [
                 {
                   "url": "https://www.joshcanhelp.com/ai/",
@@ -13602,6 +16790,17 @@
           ],
           "sites": [
             {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/how-to-buy-car/",
+                  "title": "How to buy a car"
+                }
+              ]
+            },
+            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
               "title": "Josh Müller",
@@ -13733,6 +16932,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/sqs-inside-vpc-lambda/",
+                  "title": "TIL - How to send an SQS message from a Lambda inside a VPC"
+                }
+              ]
+            },
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
@@ -14122,6 +17332,138 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/23/codeberg-is-deciding-which-technologies-belong/",
                   "title": "Codeberg Is Deciding Which Technologies Belong"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "tool",
+          "label": "tools",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-merchant-integration-tools-span-flex-row-rever",
+              "title": "Merchant Integration Tools"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=nb-studio-internal-tools-internal-tools-span-flex-row-reverse-button-span-align-",
+              "title": "Internal Tools"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/loginllama-001/",
+                  "title": "Devblog - LoginLlama 001"
+                },
+                {
+                  "url": "https://joshghent.com/simple-sites/",
+                  "title": "Simple sites"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2025/artificial-insights/",
+                  "title": "How AI Turned Six Months of Work into 16 Minutes - Artifical Insights"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2025/how-i-prompt-engineer/",
+                  "title": "How I Approach Prompt Engineering"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2025/more-interlinears/",
+                  "title": "Two New Interlinear Audio Bible Resources"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/full-english-spanish-interlinear-live/",
+                  "title": "My new Language Learning Tool is now LIVE! 🤓🥳"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
+                  "title": "Self-Hosting Is Cool: How I Get More Productivity for Less Money"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/3-ideas-from-math-to-help-understand-the-world/",
+                  "title": "3 Ideas from Math to Help Better Understand the World"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/curiosity-or-dismissal/",
+                  "title": "Curiosity or Dismissal"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/redemption-culture/",
+                  "title": "Culture of Redemption"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
+                  "title": "Organic"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/22/claude-opus-5_5-is-interesting-because-it-keeps-working/",
+                  "title": "Claude Opus 5.5 Is Interesting Because It Keeps Working"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/20/voyagers-doctor-is-the-ai-future-i-hope-we-have-to-think-about/",
+                  "title": "Voyager's Doctor Is the AI Future I Hope We Have to Think About"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/22/the-grapheneos-duress-password-case-is-becoming-a-test-of-whether-privacy-can-be-treated-as-obstruction/",
+                  "title": "The GrapheneOS Duress Password Case Is Becoming a Test of Whether Privacy Can Be Treated as Obstruction"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/15/cloudflare-is-treating-mcp-like-network-traffic-that-needs-a-firewall/",
+                  "title": "Cloudflare Is Treating MCP Like Network Traffic That Needs a Firewall"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/14/cloudflare-is-making-internal-workers-private-by-default/",
+                  "title": "Cloudflare Is Making Internal Workers Private by Default"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/10/the-real-cost-of-switching-operating-systems-is-everything-you-forgot-you-learned/",
+                  "title": "The Real Cost of Switching Operating Systems Is Everything You Forgot You Learned"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/04/is-this-work-or-is-this-the-gym/",
+                  "title": "Is This Work, or Is This the Gym?"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/i-made-myself-a-recipe-label-generator/",
+                  "title": "Post: I made myself a Recipe Label Generator"
+                },
+                {
+                  "url": "https://leanrada.com/htmz/",
+                  "title": "Link: htmz - a low power tool for html"
+                },
+                {
+                  "url": "https://joshua.seigler.net/posts/tools-of-the-trade/",
+                  "title": "Post: Tools of the trade"
+                },
+                {
+                  "url": "https://joshua.seigler.net/posts/the-trivium-a-tool-for-learning-anything/",
+                  "title": "Post: The Trivium: A Tool for Learning Anything"
                 }
               ]
             }

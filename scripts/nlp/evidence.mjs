@@ -288,6 +288,7 @@ export const NON_SUBJECT_UNIGRAMS = new Set([
   "theme",
   "thing",
   "things",
+  "thought",
   "thoughts",
   "time",
   "times",

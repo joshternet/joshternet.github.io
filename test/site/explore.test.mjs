@@ -43,23 +43,21 @@ test("activity and search pages avoid popularity language", async () => {
     /\.activity-card > article\s*\{[^}]*align-items:\s*stretch/,
   );
   assert.match(css, /\.activity-card__media\s*\{[^}]*align-self:\s*stretch/);
-  assert.doesNotMatch(
+  assert.match(
     css,
     /\.activity-card__media\s*\{[^}]*background:\s*var\(--color-surface-soft\)/,
   );
-  assert.match(css, /\.activity-card__media img\s*\{[^}]*flex:\s*1\s+1\s+0/);
+  assert.match(css, /\.activity-card__media\s*\{[^}]*flex:\s*0\s+0\s+46%/);
+  assert.match(css, /\.activity-card__media\s*\{[^}]*width:\s*46%/);
   const layout = await read("_layouts/default.html");
-  const fitter = await read("assets/js/activity-card.js");
-  assert.match(layout, /assets\/js\/activity-card\.js/);
-  assert.match(fitter, /activity-card__media/);
-  assert.match(fitter, /--activity-media-width/);
+  assert.doesNotMatch(layout, /assets\/js\/activity-card\.js/);
   assert.doesNotMatch(
     css,
     /\.activity-card:not\(:has\(\.activity-card__media\)\)\s*\{[^}]*margin-inline-start/,
   );
   assert.match(
     css,
-    /\.activity-card__media img\s*\{[^}]*object-fit:\s*contain[^}]*object-position:\s*left center/s,
+    /\.activity-card__media img\s*\{[^}]*object-fit:\s*contain[^}]*object-position:\s*center/s,
   );
   assert.match(
     css,
@@ -71,9 +69,12 @@ test("activity and search pages avoid popularity language", async () => {
   );
   assert.match(
     css,
+    /@media \(max-width: 42rem\)[\s\S]*?\.activity-card__media\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*10/,
+  );
+  assert.match(
+    css,
     /@media \(min-width: 42\.01rem\) and \(max-width: 74\.99rem\)[\s\S]*?\.prose:has\(\.activity-list:not\(\.topics-index\)\)\s*\{[^}]*max-width:\s*none/,
   );
-  assert.match(fitter, /max-width: 42rem/);
   const titleAt = card.indexOf("activity-card__title");
   const authorAt = card.indexOf("activity-card__author");
   const summaryAt = card.indexOf("activity-card__summary");

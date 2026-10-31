@@ -163,6 +163,8 @@
 
 ### Fixed
 
+- Latest-posts / activity cards share a wide 46% poster column (full card height, `object-fit: contain`) so thumbnails line up at the original width without heavy cropping; the old JS media-width fitter is removed.
+- Filler `thought`/`thoughts` cannot become public heuristic topics after plural fold; heuristic membership now requires page-bearing evidence so empty-evidence signals cannot fail `nlp:sync` with `heuristic-without-evidence` (for example joshmuller.ca “Thoughts on …” titles).
 - Search topic results only link to Topics-hub neighborhoods (communities with matching article members), so Search no longer points at empty `/topics/{slug}/` URLs that 404 (#61). Topic-hub link text with trailing counts (e.g. `privacy 45`) no longer invents `/topics/privacy-45/` slugs; views no longer invent page-less topic URLs from content tags alone.
 - `/search/` stays `robots: noindex` and is excluded from `sitemap.xml` via `sitemap: false` (#62).
 - Filler unigrams such as `two`, `less`, `find`, `real`, `built`, and `making` are non-subjects, so they do not become public topic neighborhoods or search topic hits (#64).

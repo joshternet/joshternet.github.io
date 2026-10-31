@@ -107,6 +107,8 @@ export function signalIsCommunityEligible(signal) {
 
 /**
  * True when a heuristic subject_signal qualifies for community membership.
+ * Requires at least one evidence row with a page URL so enrollment cannot
+ * produce heuristic members with empty `pages` (heuristic-without-evidence).
  * @param {Record<string, unknown>} signal
  * @returns {boolean}
  */
@@ -115,11 +117,18 @@ export function heuristicSignalIsCommunityEligible(signal) {
     return false;
   }
 
+  const evidence = Array.isArray(signal.evidence) ? signal.evidence : [];
+  const hasPageEvidence = evidence.some(
+    (item) => item && typeof item.page === "string" && item.page,
+  );
+
+  if (!hasPageEvidence) {
+    return false;
+  }
+
   if (signal.community_eligible === true) {
     return true;
   }
-
-  const evidence = Array.isArray(signal.evidence) ? signal.evidence : [];
 
   return evidence.some(
     (item) =>
