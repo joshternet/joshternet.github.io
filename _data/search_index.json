@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-31T21:58:21.973Z",
+  "generated_at": "2026-10-31T23:55:03.722Z",
   "document_count": 1052,
   "documents": [
     {
@@ -744,7 +744,7 @@
     {
       "type": "topic",
       "title": "Friends",
-      "summary": "2 participating sites",
+      "summary": "3 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/friend/",
@@ -4065,7 +4065,7 @@
       "domain": "joshmuller.ca",
       "origin": "https://joshmuller.ca",
       "url": "https://joshmuller.ca/es/recetas/ajiaco-santafereno/",
-      "topics": [],
+      "topics": ["recipes"],
       "site_title": "Josh Müller",
       "published_at": "2026-09-10T02:27:19.000Z",
       "image": "/assets/activity/posters/a00dee5c8b812b942c93e3ac5c73ea15877ee1b230d9065910dcba8be6fcd50d.webp",
@@ -4429,7 +4429,7 @@
       "domain": "joshmuller.ca",
       "origin": "https://joshmuller.ca",
       "url": "https://joshmuller.ca/recipes/meals/butter-chicken/",
-      "topics": ["recipes"],
+      "topics": [],
       "site_title": "Josh Müller",
       "published_at": "2001-01-01T00:00:00.000Z",
       "image": "/assets/activity/posters/4d68cb4a64873f2f059081ff189cfb7515e3fda7d55541897c164dfefc06cc3d.webp",
@@ -6453,7 +6453,7 @@
     {
       "type": "content",
       "title": "Link: Joshternet: An Open Network for Joshes and Independent Websites",
-      "summary": "Joshternet connects people who identify as Josh and the independent websites they call home—an open, decentralized network built on shared web conventions.",
+      "summary": "Joshternet connects independent websites—Joshes and friends of Joshes—through a tiny public /.well-known/josh declaration. Anyone can join; your site stays yours.",
       "domain": "joshua.seigler.net",
       "origin": "https://joshua.seigler.net",
       "url": "https://joshternet.org/",

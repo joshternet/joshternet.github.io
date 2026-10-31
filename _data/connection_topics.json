@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-31T21:58:21.973Z",
+  "generated_at": "2026-10-31T23:55:03.722Z",
   "overlap_count": 21,
   "pairs": [
     {
@@ -598,6 +598,10 @@
           "label": "files"
         },
         {
+          "slug": "friend",
+          "label": "Friends"
+        },
+        {
           "slug": "github",
           "label": "github"
         },
@@ -1092,6 +1096,10 @@
         {
           "slug": "file",
           "label": "files"
+        },
+        {
+          "slug": "friend",
+          "label": "Friends"
         },
         {
           "slug": "github",
@@ -5845,6 +5853,17 @@
                   "title": "My Small Answer to the Friendship Recession Is to Tell My Friends They Matter"
                 }
               ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshternet.org/",
+                  "title": "Link: Joshternet: An Open Network for Joshes and Independent Websites"
+                }
+              ]
             }
           ]
         },
@@ -7291,6 +7310,10 @@
               "title": "Gluten-Free Chocolate Cake"
             },
             {
+              "url": "https://joshmuller.ca/es/recetas/ajiaco-santafereno/",
+              "title": "Ajiaco santafereño de mamá"
+            },
+            {
               "url": "https://joshmuller.ca/recipes/meals/ajiaco-santafereno/",
               "title": "Mom's Ajiaco Santafereño"
             },
@@ -7313,10 +7336,6 @@
             {
               "url": "https://joshmuller.ca/recipes/desserts/graham-crackers/",
               "title": "Homemade Graham Crackers"
-            },
-            {
-              "url": "https://joshmuller.ca/recipes/desserts/katie-s-tahini-cookies/",
-              "title": "4 Ingredient Tahin Cookies"
             }
           ],
           "sites": [
@@ -10402,6 +10421,68 @@
           ]
         },
         {
+          "slug": "friend",
+          "label": "Friends",
+          "articles": [
+            {
+              "url": "https://joshternet.org/",
+              "title": "Link: Joshternet: An Open Network for Joshes and Independent Websites"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2025/no-water-toilets/",
+                  "title": "How We Deployed Hundreds of No-Water Toilets to an Earthquake Zone (With Design Files)"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/use-llm-for-subtitles/",
+                  "title": "Using Whisper and LLMs to Create Perfect Subtitles"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/he-gets-us-enemies/",
+                  "title": "[Share] He Gets Us: Enemies"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/fighting-cholera-with-sawdust/",
+                  "title": "Fighting Cholera With Sawdust"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/song-im-loving/",
+                  "title": "A Song I'm Loving Today"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/a-few-webcomics-i-love/",
+                  "title": "A Few Webcomics I Love"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/make-friends-with-one-of-them/",
+                  "title": "Make Friends With \"One of Them\""
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/make-friends-with-the-blank-page/",
+                  "title": "Make Friends With the Blank Page"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/08/my-small-answer-to-the-friendship-recession-is-to-tell-my-friends-they-matter/",
+                  "title": "My Small Answer to the Friendship Recession Is to Tell My Friends They Matter"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "github",
           "label": "github",
           "articles": [
@@ -10786,6 +10867,10 @@
                   "title": "Gluten-Free Chocolate Cake"
                 },
                 {
+                  "url": "https://joshmuller.ca/es/recetas/ajiaco-santafereno/",
+                  "title": "Ajiaco santafereño de mamá"
+                },
+                {
                   "url": "https://joshmuller.ca/recipes/meals/ajiaco-santafereno/",
                   "title": "Mom's Ajiaco Santafereño"
                 },
@@ -10808,10 +10893,6 @@
                 {
                   "url": "https://joshmuller.ca/recipes/desserts/graham-crackers/",
                   "title": "Homemade Graham Crackers"
-                },
-                {
-                  "url": "https://joshmuller.ca/recipes/desserts/katie-s-tahini-cookies/",
-                  "title": "4 Ingredient Tahin Cookies"
                 }
               ]
             }
@@ -12837,6 +12918,17 @@
                 {
                   "url": "https://joshmuller.ca/writings/2022/make-friends-with-the-blank-page/",
                   "title": "Make Friends With the Blank Page"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshternet.org/",
+                  "title": "Link: Joshternet: An Open Network for Joshes and Independent Websites"
                 }
               ]
             }
