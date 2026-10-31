@@ -423,6 +423,8 @@ test("isNonSubjectSlug: filler unigrams from live Topics hub are non-subjects", 
     "technical",
     "app",
     "say",
+    "thought",
+    "thoughts",
   ]) {
     assert.equal(isNonSubjectSlug(slug), true, slug);
   }
@@ -495,6 +497,29 @@ test("buildTopicEvidence: empty rawValue → null (line 337-339)", () => {
       rawValue: "",
       source: "rss:category",
       page: "https://a.example/1",
+    }),
+    null,
+  );
+});
+
+test("buildTopicEvidence: thoughts filler (and folded thought) → null", () => {
+  assert.equal(
+    buildTopicEvidence({
+      rawValue: "thoughts",
+      source: "visible-text",
+      page: "https://joshmuller.ca/posts/thoughts-on-guns/",
+      evidenceClass: "heuristic",
+      communityEligible: true,
+    }),
+    null,
+  );
+  assert.equal(
+    buildTopicEvidence({
+      rawValue: "thought",
+      source: "visible-text",
+      page: "https://joshmuller.ca/posts/thoughts-on-guns/",
+      evidenceClass: "heuristic",
+      communityEligible: true,
     }),
     null,
   );
@@ -654,6 +679,19 @@ test("isParserArtifactSlug: null slug fires || '' fallback (L82)", () => {
   assert.equal(isParserArtifactSlug(undefined), false);
   assert.equal(isParserArtifactSlug("feeds-default"), true);
   assert.equal(isParserArtifactSlug("keywords-speech"), true);
+});
+
+test("isParserArtifactSlug: year-prefixed crawl junk is rejected", () => {
+  assert.equal(isParserArtifactSlug("2018-gifs"), true);
+  assert.equal(isParserArtifactSlug("2026-middot"), true);
+  assert.equal(isParserArtifactSlug("2024"), true);
+  assert.equal(isParserArtifactSlug("privacy"), false);
+  assert.equal(isParserArtifactSlug("open-source"), false);
+});
+
+test("isNonSubjectSlug: year-prefixed junk is a non-subject", () => {
+  assert.equal(isNonSubjectSlug("2018-gifs"), true);
+  assert.equal(isNonSubjectSlug("2026-middot"), true);
 });
 
 test("canonicalTopicLabel: strips CMS feed/keyword paths and drops leftovers", () => {

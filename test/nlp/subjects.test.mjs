@@ -566,6 +566,41 @@ test("subjectsFromHtml: unquoted meta keywords from minified HTML", () => {
   assert.ok(subjects.find((s) => s.slug === "cycling"));
 });
 
+test("subjectsFromHtml: Person knowsAbout is community-eligible declared", () => {
+  const html = `<!doctype html><html><head>
+    <script type="application/ld+json">
+      {
+        "@type":"Person",
+        "name":"Josh Ghent",
+        "knowsAbout":["Software architecture","Engineering leadership","AWS","Typescript"]
+      }
+    </script>
+  </head><body></body></html>`;
+  const subjects = subjectsFromHtml(html, "https://joshghent.com/");
+  const aws = subjects.find((s) => s.slug === "aws");
+  const typescript = subjects.find((s) => s.slug === "typescript");
+  const architecture = subjects.find((s) => s.slug === "software-architecture");
+  assert.ok(aws);
+  assert.equal(aws.community_eligible, true);
+  assert.ok(aws.sources.includes("json-ld"));
+  assert.ok(typescript);
+  assert.equal(typescript.community_eligible, true);
+  assert.ok(architecture);
+  const { declared_topics } = splitDeclaredAndSignals(subjects);
+  assert.ok(declared_topics.some((topic) => topic.slug === "aws"));
+  assert.ok(
+    declared_topics.some((topic) => topic.slug === "software-architecture"),
+  );
+});
+
+test("subjectsFromHtml: existing p-category still declared for peer sites", () => {
+  const html = `<html><body><span class="p-category">privacy</span></body></html>`;
+  const subjects = subjectsFromHtml(html, "https://peer.example/post/");
+  const privacy = subjects.find((s) => s.slug === "privacy");
+  assert.ok(privacy);
+  assert.equal(privacy.community_eligible, true);
+});
+
 test("splitDeclaredAndSignals: discovery-only declared keywords stay in declared_topics", () => {
   const subjects = subjectsFromHtml(
     `<meta name=keywords content="homelab,proxmox">`,

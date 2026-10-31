@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-31T17:35:43.776Z",
+  "generated_at": "2026-10-31T18:54:37.406Z",
   "sites": [
     {
       "origin": "https://joshbeard.com",
@@ -44,7 +44,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-31T17:34:23.048Z"
+      "crawled_at": "2026-10-31T18:52:02.945Z"
     },
     {
       "origin": "https://joshghent.com",
@@ -73,8 +73,16 @@
       ],
       "community_topics": [
         {
+          "slug": "action",
+          "label": "action"
+        },
+        {
           "slug": "ai",
           "label": "ai"
+        },
+        {
+          "slug": "anything",
+          "label": "anything"
         },
         {
           "slug": "architecture",
@@ -101,6 +109,10 @@
           "label": "business"
         },
         {
+          "slug": "claude",
+          "label": "claude"
+        },
+        {
           "slug": "cloudflare",
           "label": "cloudflare"
         },
@@ -125,8 +137,20 @@
           "label": "discovery"
         },
         {
+          "slug": "distributed-system",
+          "label": "Distributed systems"
+        },
+        {
+          "slug": "email",
+          "label": "email"
+        },
+        {
           "slug": "engineering",
           "label": "engineering"
+        },
+        {
+          "slug": "engineering-leadership",
+          "label": "Engineering leadership"
         },
         {
           "slug": "finance",
@@ -157,12 +181,20 @@
           "label": "life"
         },
         {
+          "slug": "limit",
+          "label": "limits"
+        },
+        {
           "slug": "markdown",
           "label": "markdown"
         },
         {
           "slug": "networking",
           "label": "networking"
+        },
+        {
+          "slug": "note",
+          "label": "note"
         },
         {
           "slug": "open-source",
@@ -173,12 +205,24 @@
           "label": "php"
         },
         {
+          "slug": "plan",
+          "label": "plans"
+        },
+        {
           "slug": "privacy",
           "label": "privacy"
         },
         {
+          "slug": "problem",
+          "label": "problem"
+        },
+        {
           "slug": "programming",
           "label": "programming"
+        },
+        {
+          "slug": "question",
+          "label": "questions"
         },
         {
           "slug": "security",
@@ -187,6 +231,14 @@
         {
           "slug": "software",
           "label": "software"
+        },
+        {
+          "slug": "software-architecture",
+          "label": "Software architecture"
+        },
+        {
+          "slug": "typescript",
+          "label": "typescript"
         },
         {
           "slug": "writing",
@@ -200,17 +252,17 @@
       "recent_content": {
         "url": "https://joshghent.com/11ty-or-bust/",
         "title": "11ty or Bust",
-        "summary": "",
+        "summary": "The story of how I migrated my site from Gatsby to 11ty",
         "published_at": "2024-01-03T00:00:00.000Z",
         "content_type": "article",
-        "language": "",
+        "language": "en",
         "site_origin": "https://joshghent.com",
         "site_title": "Josh Ghent",
         "domain": "joshghent.com",
         "tags": [],
         "neighborhoods": [],
-        "image": "",
-        "image_origin": ""
+        "image": "https://v1.screenshot.11ty.dev/https%3A%2F%2Fjoshghent.com%2Fsocial%2F11ty-or-bust%2F/opengraph/_1793269302151",
+        "image_origin": "https://v1.screenshot.11ty.dev"
       },
       "outgoing": [],
       "incoming": [
@@ -238,7 +290,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-31T17:34:23.048Z"
+      "crawled_at": "2026-10-31T18:52:02.945Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -317,6 +369,10 @@
       ],
       "community_topics": [
         {
+          "slug": "action",
+          "label": "action"
+        },
+        {
           "slug": "ai",
           "label": "ai"
         },
@@ -325,20 +381,16 @@
           "label": "apple"
         },
         {
+          "slug": "audio",
+          "label": "audio"
+        },
+        {
           "slug": "book",
           "label": "books"
         },
         {
-          "slug": "book-review",
-          "label": "book reviews"
-        },
-        {
           "slug": "browser",
           "label": "browsers"
-        },
-        {
-          "slug": "case-study",
-          "label": "case study"
         },
         {
           "slug": "communication",
@@ -347,10 +399,6 @@
         {
           "slug": "design",
           "label": "design"
-        },
-        {
-          "slug": "digital-minimalism",
-          "label": "digital minimalism"
         },
         {
           "slug": "discovery",
@@ -369,8 +417,8 @@
           "label": "engineering"
         },
         {
-          "slug": "facebook",
-          "label": "facebook"
+          "slug": "file",
+          "label": "files"
         },
         {
           "slug": "fitness",
@@ -403,10 +451,6 @@
         {
           "slug": "gpt-4",
           "label": "GPT-4"
-        },
-        {
-          "slug": "habit",
-          "label": "habits"
         },
         {
           "slug": "health",
@@ -457,8 +501,8 @@
           "label": "NLP"
         },
         {
-          "slug": "nutrici-c3-b3n",
-          "label": "nutrici%c3%b3n"
+          "slug": "note",
+          "label": "note"
         },
         {
           "slug": "nutrici-n",
@@ -477,8 +521,8 @@
           "label": "open source"
         },
         {
-          "slug": "photos",
-          "label": "photos"
+          "slug": "plan",
+          "label": "plans"
         },
         {
           "slug": "policy",
@@ -489,16 +533,12 @@
           "label": "privacy"
         },
         {
-          "slug": "privacy-policy",
-          "label": "privacy policy"
-        },
-        {
           "slug": "productivity",
           "label": "productivity"
         },
         {
-          "slug": "quote",
-          "label": "quotes"
+          "slug": "question",
+          "label": "questions"
         },
         {
           "slug": "recetas",
@@ -533,8 +573,8 @@
           "label": "technology"
         },
         {
-          "slug": "tutorial",
-          "label": "tutorial"
+          "slug": "tool",
+          "label": "tools"
         },
         {
           "slug": "tweet",
@@ -547,10 +587,6 @@
         {
           "slug": "writing",
           "label": "writing"
-        },
-        {
-          "slug": "x-is-cool",
-          "label": "x is cool"
         },
         {
           "slug": "youtube",
@@ -598,7 +634,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-31T17:34:23.048Z"
+      "crawled_at": "2026-10-31T18:52:02.945Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -684,7 +720,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-31T17:34:23.048Z"
+      "crawled_at": "2026-10-31T18:52:02.945Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -935,7 +971,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-31T17:34:23.048Z"
+      "crawled_at": "2026-10-31T18:52:02.945Z"
     },
     {
       "origin": "https://joshua.seigler.net",
@@ -976,6 +1012,14 @@
         {
           "slug": "ai",
           "label": "ai"
+        },
+        {
+          "slug": "anything",
+          "label": "anything"
+        },
+        {
+          "slug": "audio",
+          "label": "audio"
         },
         {
           "slug": "boardgame",
@@ -1038,6 +1082,10 @@
           "label": "software"
         },
         {
+          "slug": "tool",
+          "label": "tools"
+        },
+        {
           "slug": "trade",
           "label": "trade"
         },
@@ -1083,7 +1131,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-31T17:34:23.048Z"
+      "crawled_at": "2026-10-31T18:52:02.945Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -1222,6 +1270,10 @@
           "label": "civil liberties"
         },
         {
+          "slug": "claude",
+          "label": "claude"
+        },
+        {
           "slug": "cloudflare",
           "label": "cloudflare"
         },
@@ -1342,6 +1394,10 @@
           "label": "field recording"
         },
         {
+          "slug": "file",
+          "label": "files"
+        },
+        {
           "slug": "finance",
           "label": "finance"
         },
@@ -1444,6 +1500,10 @@
         {
           "slug": "life",
           "label": "life"
+        },
+        {
+          "slug": "limit",
+          "label": "limits"
         },
         {
           "slug": "linux",
@@ -1562,6 +1622,10 @@
           "label": "private ai"
         },
         {
+          "slug": "problem",
+          "label": "problem"
+        },
+        {
           "slug": "programming",
           "label": "programming"
         },
@@ -1660,6 +1724,10 @@
         {
           "slug": "star-trek",
           "label": "star trek"
+        },
+        {
+          "slug": "startup",
+          "label": "Startups"
         },
         {
           "slug": "support",
@@ -1816,12 +1884,12 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-31T17:34:23.048Z"
+      "crawled_at": "2026-10-31T18:52:02.945Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
       "domain": "www.joshcanhelp.com",
-      "title": "Josh Cunningham",
+      "title": "Josh Can Help",
       "description": "I’ve been working on the web since 2007 as an architect, engineer, writer, designer, strategist, user interface consultant, team lead, project manager, and product builder. I’ve been working IRL since 2010 as a husband and since 2013 as a dad. I like riding bikes, reading books, writing code and words, and eating good food.",
       "identity": "affirmed",
       "feeds": [
@@ -1854,10 +1922,6 @@
           "label": "ai"
         },
         {
-          "slug": "analytics",
-          "label": "analytics"
-        },
-        {
           "slug": "async-communication",
           "label": "async communication"
         },
@@ -1866,20 +1930,8 @@
           "label": "auth0"
         },
         {
-          "slug": "community",
-          "label": "community"
-        },
-        {
           "slug": "covid-19",
           "label": "covid 19"
-        },
-        {
-          "slug": "customer-service",
-          "label": "customer service"
-        },
-        {
-          "slug": "design",
-          "label": "design"
         },
         {
           "slug": "digital-identity",
@@ -1894,24 +1946,12 @@
           "label": "eleventy"
         },
         {
-          "slug": "email",
-          "label": "email"
-        },
-        {
-          "slug": "facebook",
-          "label": "facebook"
-        },
-        {
           "slug": "focus",
           "label": "focus"
         },
         {
           "slug": "food-drink",
           "label": "food drink"
-        },
-        {
-          "slug": "freelancing",
-          "label": "freelancing"
         },
         {
           "slug": "health-fitness",
@@ -1928,10 +1968,6 @@
         {
           "slug": "open-source",
           "label": "open source"
-        },
-        {
-          "slug": "paris",
-          "label": "paris"
         },
         {
           "slug": "personal-data",
@@ -1951,7 +1987,7 @@
         },
         {
           "slug": "software-engineering",
-          "label": "software engineering"
+          "label": "Software engineering"
         },
         {
           "slug": "team-dynamic",
@@ -1966,6 +2002,10 @@
           "label": "typescript"
         },
         {
+          "slug": "wordpress",
+          "label": "wordpress"
+        },
+        {
           "slug": "writing-publishing",
           "label": "writing publishing"
         }
@@ -1978,7 +2018,7 @@
         "content_type": "article",
         "language": "en-us",
         "site_origin": "https://www.joshcanhelp.com",
-        "site_title": "Josh Cunningham",
+        "site_title": "Josh Can Help",
         "domain": "www.joshcanhelp.com",
         "tags": [],
         "neighborhoods": [],
@@ -1994,7 +2034,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-31T17:34:23.048Z"
+      "crawled_at": "2026-10-31T18:52:02.945Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -2057,10 +2097,6 @@
           "label": "business"
         },
         {
-          "slug": "case-study",
-          "label": "case study"
-        },
-        {
           "slug": "charity-nonprofit",
           "label": "charity & nonprofit"
         },
@@ -2083,6 +2119,10 @@
         {
           "slug": "design",
           "label": "design"
+        },
+        {
+          "slug": "design-system",
+          "label": "Design systems"
         },
         {
           "slug": "education",
@@ -2129,6 +2169,10 @@
           "label": "policy"
         },
         {
+          "slug": "product-design",
+          "label": "Product design"
+        },
+        {
           "slug": "property",
           "label": "property"
         },
@@ -2151,6 +2195,14 @@
         {
           "slug": "social-media",
           "label": "social media"
+        },
+        {
+          "slug": "software-engineering",
+          "label": "Software engineering"
+        },
+        {
+          "slug": "startup",
+          "label": "Startups"
         },
         {
           "slug": "technology",
@@ -2195,7 +2247,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-31T17:34:23.048Z",
+      "crawled_at": "2026-10-31T18:52:02.945Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,

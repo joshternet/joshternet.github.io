@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T23:15:22.634Z",
-  "document_count": 1045,
+  "generated_at": "2026-10-31T18:54:37.406Z",
+  "document_count": 1051,
   "documents": [
     {
       "type": "site",
@@ -68,7 +68,7 @@
     },
     {
       "type": "site",
-      "title": "Josh Cunningham",
+      "title": "Josh Can Help",
       "summary": "I’ve been working on the web since 2007 as an architect, engineer, writer, designer, strategist, user interface consultant, team lead, project manager, and product builder. I’ve been working IRL since 2010 as a husband and since 2013 as a dad. I like riding bikes, reading books, writing code and words, and eating good food.",
       "domain": "www.joshcanhelp.com",
       "origin": "https://www.joshcanhelp.com",
@@ -83,6 +83,15 @@
       "origin": "https://www.joshuabaker.com",
       "url": "https://www.joshuabaker.com",
       "topics": []
+    },
+    {
+      "type": "topic",
+      "title": "action",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/action/",
+      "topics": ["action", "action"]
     },
     {
       "type": "topic",
@@ -122,21 +131,21 @@
     },
     {
       "type": "topic",
-      "title": "analytics",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/analytics/",
-      "topics": ["analytics", "analytics"]
-    },
-    {
-      "type": "topic",
       "title": "antitrust",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/antitrust/",
       "topics": ["antitrust", "antitrust"]
+    },
+    {
+      "type": "topic",
+      "title": "anything",
+      "summary": "4 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/anything/",
+      "topics": ["anything", "anything"]
     },
     {
       "type": "topic",
@@ -173,6 +182,15 @@
       "origin": "",
       "url": "/topics/arts-culture/",
       "topics": ["arts-culture", "arts & culture"]
+    },
+    {
+      "type": "topic",
+      "title": "audio",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/audio/",
+      "topics": ["audio", "audio"]
     },
     {
       "type": "topic",
@@ -276,7 +294,7 @@
     {
       "type": "topic",
       "title": "career",
-      "summary": "3 participating sites",
+      "summary": "4 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/career/",
@@ -317,6 +335,15 @@
       "origin": "",
       "url": "/topics/civil-liberty/",
       "topics": ["civil-liberty", "civil liberties"]
+    },
+    {
+      "type": "topic",
+      "title": "claude",
+      "summary": "5 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/claude/",
+      "topics": ["claude", "claude"]
     },
     {
       "type": "topic",
@@ -473,6 +500,15 @@
     },
     {
       "type": "topic",
+      "title": "Design systems",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/design-system/",
+      "topics": ["design-system", "Design systems"]
+    },
+    {
+      "type": "topic",
       "title": "developer tools",
       "summary": "1 participating sites",
       "domain": "",
@@ -497,15 +533,6 @@
       "origin": "",
       "url": "/topics/digital-art/",
       "topics": ["digital-art", "digital art"]
-    },
-    {
-      "type": "topic",
-      "title": "digital minimalism",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/digital-minimalism/",
-      "topics": ["digital-minimalism", "digital minimalism"]
     },
     {
       "type": "topic",
@@ -617,15 +644,6 @@
     },
     {
       "type": "topic",
-      "title": "facebook",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/facebook/",
-      "topics": ["facebook", "facebook"]
-    },
-    {
-      "type": "topic",
       "title": "faith",
       "summary": "2 participating sites",
       "domain": "",
@@ -668,6 +686,15 @@
       "origin": "",
       "url": "/topics/field-recording/",
       "topics": ["field-recording", "field recording"]
+    },
+    {
+      "type": "topic",
+      "title": "files",
+      "summary": "4 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/file/",
+      "topics": ["file", "files"]
     },
     {
       "type": "topic",
@@ -753,7 +780,7 @@
     {
       "type": "topic",
       "title": "Go",
-      "summary": "4 participating sites",
+      "summary": "5 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/go/",
@@ -803,15 +830,6 @@
       "origin": "",
       "url": "/topics/gpt-4/",
       "topics": ["gpt-4", "GPT-4"]
-    },
-    {
-      "type": "topic",
-      "title": "habits",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/habit/",
-      "topics": ["habit", "habits"]
     },
     {
       "type": "topic",
@@ -986,6 +1004,15 @@
     },
     {
       "type": "topic",
+      "title": "limits",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/limit/",
+      "topics": ["limit", "limits"]
+    },
+    {
+      "type": "topic",
       "title": "linux",
       "summary": "2 participating sites",
       "domain": "",
@@ -1068,7 +1095,7 @@
     {
       "type": "topic",
       "title": "money",
-      "summary": "4 participating sites",
+      "summary": "5 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/money/",
@@ -1109,6 +1136,15 @@
       "origin": "",
       "url": "/topics/nonprofit/",
       "topics": ["nonprofit", "nonprofit"]
+    },
+    {
+      "type": "topic",
+      "title": "note",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/note/",
+      "topics": ["note", "note"]
     },
     {
       "type": "topic",
@@ -1256,21 +1292,21 @@
     },
     {
       "type": "topic",
-      "title": "photos",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/photos/",
-      "topics": ["photos", "photos"]
-    },
-    {
-      "type": "topic",
       "title": "php",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/php/",
       "topics": ["php", "php"]
+    },
+    {
+      "type": "topic",
+      "title": "plans",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/plan/",
+      "topics": ["plan", "plans"]
     },
     {
       "type": "topic",
@@ -1284,7 +1320,7 @@
     {
       "type": "topic",
       "title": "policy",
-      "summary": "3 participating sites",
+      "summary": "4 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/policy/",
@@ -1310,21 +1346,21 @@
     },
     {
       "type": "topic",
-      "title": "privacy policy",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/privacy-policy/",
-      "topics": ["privacy-policy", "privacy policy"]
-    },
-    {
-      "type": "topic",
       "title": "private ai",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/private-ai/",
       "topics": ["private-ai", "private ai"]
+    },
+    {
+      "type": "topic",
+      "title": "problem",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/problem/",
+      "topics": ["problem", "problem"]
     },
     {
       "type": "topic",
@@ -1391,12 +1427,12 @@
     },
     {
       "type": "topic",
-      "title": "quotes",
-      "summary": "1 participating sites",
+      "title": "questions",
+      "summary": "3 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/quote/",
-      "topics": ["quote", "quotes"]
+      "url": "/topics/question/",
+      "topics": ["question", "questions"]
     },
     {
       "type": "topic",
@@ -1571,12 +1607,21 @@
     },
     {
       "type": "topic",
-      "title": "software engineering",
+      "title": "Software architecture",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/software-architecture/",
+      "topics": ["software-architecture", "Software architecture"]
+    },
+    {
+      "type": "topic",
+      "title": "Software engineering",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/software-engineering/",
-      "topics": ["software-engineering", "software engineering"]
+      "topics": ["software-engineering", "Software engineering"]
     },
     {
       "type": "topic",
@@ -1616,6 +1661,15 @@
     },
     {
       "type": "topic",
+      "title": "Startups",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/startup/",
+      "topics": ["startup", "Startups"]
+    },
+    {
+      "type": "topic",
       "title": "support",
       "summary": "1 participating sites",
       "domain": "",
@@ -1652,21 +1706,21 @@
     },
     {
       "type": "topic",
+      "title": "tools",
+      "summary": "5 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/tool/",
+      "topics": ["tool", "tools"]
+    },
+    {
+      "type": "topic",
       "title": "trade",
       "summary": "2 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/trade/",
       "topics": ["trade", "trade"]
-    },
-    {
-      "type": "topic",
-      "title": "tutorial",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/tutorial/",
-      "topics": ["tutorial", "tutorial"]
     },
     {
       "type": "topic",
@@ -1940,40 +1994,40 @@
     {
       "type": "content",
       "title": "11ty or Bust",
-      "summary": "",
+      "summary": "The story of how I migrated my site from Gatsby to 11ty",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/11ty-or-bust/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2024-01-03T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/124c2b0c700d8e47eccdf64f4f102917e27e4062020fad9f11662acb1a49607f.webp",
       "image_origin": ""
     },
     {
       "type": "content",
       "title": "Albums I listened to in 2022",
-      "summary": "",
+      "summary": "Every album I listened to in 2022 with a rating out of ten, kept so I can rediscover them later.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/2022-music/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-01-19T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/24afa49d1e7acf859bec7a679d65cf8daed217d9263cb647aaad7baf191e592a.webp",
       "image_origin": ""
     },
     {
       "type": "content",
       "title": "Tips for Battling Alert Fatigue",
-      "summary": "",
+      "summary": "Sift the signal from the noise with these tips on how to prevent alert fatigue in your SaaS platform.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/alert-fatigue/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2024-03-09T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/1f188cc04e4f4516f12679ddb44b596240f9be29bd47c25ca4136222e0c696e5.webp",
       "image_origin": ""
     },
     {
@@ -2018,14 +2072,14 @@
     {
       "type": "content",
       "title": "Rules of Thumb for creating API's",
-      "summary": "",
+      "summary": "Practical rules of thumb for designing REST APIs, sitting somewhere between rigid rules and abstract principles.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/api-rules-of-thumb/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-03-14T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/9d475371a6dd3864099e8dd7227af509278c5e7a6f92aa0222407f282f56437c.webp",
       "image_origin": ""
     },
     {
@@ -2083,14 +2137,14 @@
     {
       "type": "content",
       "title": "SQS, SNS, Eventbridge, DynamoDB - Chosing the right queue system in AWS",
-      "summary": "",
+      "summary": "SQS, SNS, EventBridge, Amazon MQ or DynamoDB streams? How to pick the right AWS messaging service for the job.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/aws-queues/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-05-02T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/13a9d289e89e587096c1454290c57ada5244b165613fee9a808606244949837a.webp",
       "image_origin": ""
     },
     {
@@ -2122,14 +2176,14 @@
     {
       "type": "content",
       "title": "How to fix 'Public key authentication failed' for Azure DevOps",
-      "summary": "",
+      "summary": "Fixing 'Public key authentication failed' when cloning an Azure DevOps repository over SSH on a Mac.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/azure-ssh-fix/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2022-10-06T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/774f46cf70461cade07dbe0906cf33de03c4e13c18967c2ce3638cfeaf6e8cf2.webp",
       "image_origin": ""
     },
     {
@@ -2161,14 +2215,14 @@
     {
       "type": "content",
       "title": "What it takes to become a lead developer",
-      "summary": "",
+      "summary": "Demystifying the principles behind the title.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/become-lead-developer/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2022-11-16T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/9c3c89f4f88176f52765bee4f9fb6ef83e20586503b3d53fd907289ea0c8ddb1.webp",
       "image_origin": ""
     },
     {
@@ -2187,14 +2241,14 @@
     {
       "type": "content",
       "title": "Bookshelf",
-      "summary": "",
+      "summary": "All the books I own",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/bookshelf/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2022-05-22T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/6ceab0834fedc056a136e2d4a281095c29ba5ad98e45d5fe3d932cb85b3ddc5d.webp",
       "image_origin": ""
     },
     {
@@ -2226,40 +2280,40 @@
     {
       "type": "content",
       "title": "My journey with carpal tunnel",
-      "summary": "",
+      "summary": "What worked and what didn't.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/carpal-tunnel/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2022-06-21T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/aab79799e42e1f43f6bd3da195b17bca20786f3638bc977192b72cacb2bea83b.webp",
       "image_origin": ""
     },
     {
       "type": "content",
       "title": "Making the case for CI/CD",
-      "summary": "",
+      "summary": "If you are struggling to implement CI/CD in your team, here is how to do it.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/case-for-ci-cd/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2022-08-31T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/67b3acba5585e18c78d6498bd0d40cb92dc8e78bc8ca612940bb139eb1a3fcf6.webp",
       "image_origin": ""
     },
     {
       "type": "content",
       "title": "Common objections to CI/CD and why they are wrong",
-      "summary": "",
+      "summary": "There is no excuse at this stage.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/ci-cd-objections/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2022-11-02T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/d5478f63d461f6d068afc1bbc95d7e1d4d4771cb90fc4a83c98937b6c5b6189b.webp",
       "image_origin": ""
     },
     {
@@ -2278,14 +2332,14 @@
     {
       "type": "content",
       "title": "The Cobra Effect and Software",
-      "summary": "",
+      "summary": "Measuring engineering inputs like test counts and code coverage incentivises exactly the behaviour you did not want.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/cobra-effect/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-02-28T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/fcf9700250feabd6ebe7a0f4c76a1c327d5acd65fd8c10627e56adc28f2d214f.webp",
       "image_origin": ""
     },
     {
@@ -2304,40 +2358,40 @@
     {
       "type": "content",
       "title": "You can't fix engineering culture with communication",
-      "summary": "",
+      "summary": "'Communication' is the default diagnosis for every engineering culture problem, and it is almost always the wrong one.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/communication/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-03-08T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/515ff99b8e59c92a4d1279e52a980670e2e363a5099a4bfafcab5c46b83f21ed.webp",
       "image_origin": ""
     },
     {
       "type": "content",
       "title": "Why are software companies so obsessed with doing anything but work?",
-      "summary": "",
+      "summary": "Shipping LoginLlama with no dev environment and no process was the fastest I have ever built. Most companies do the opposite.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/complexity/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-06-21T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/22b8f706bcb41c6d86b69af8b9b45bf3b476142b0cf95f1f38d42e998e894116.webp",
       "image_origin": ""
     },
     {
       "type": "content",
       "title": "Business Version 2",
-      "summary": "",
+      "summary": "Pivoting the business away from pure freelancing towards a broader set of products and services for teams.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/consulting-launch-2023/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-08-30T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/8d2f92c9e127beb8538aeaf73d97a5fc6f27d40a6dfaea46e393fac57c8849ae.webp",
       "image_origin": ""
     },
     {
@@ -2369,14 +2423,14 @@
     {
       "type": "content",
       "title": "Creating legacy code is ok",
-      "summary": "",
+      "summary": "As devs, we want to create things that outlive us. Here's why you shouldn't worry.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/creating-legacy/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2022-06-08T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/6ec5e58b3dda911d0d8496a262a3992990e5a059b282ced76df6aaefd9a7abb4.webp",
       "image_origin": ""
     },
     {
@@ -2408,14 +2462,14 @@
     {
       "type": "content",
       "title": "Deeply Remove a Key from an Object",
-      "summary": "",
+      "summary": "How to remove a specific key from an object, even in nested structures",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/deep-remove-key-from-object/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2022-06-14T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/d23c1a0774dd135980b28d4d68fbd359ff7cb9a000521ba9d323367a621c1f3a.webp",
       "image_origin": ""
     },
     {
@@ -2499,40 +2553,40 @@
     {
       "type": "content",
       "title": "The Culture of Estimations",
-      "summary": "",
+      "summary": "Estimations are something we do daily. But they are estimations, not deadlines as many believe. Where did we go wrong?",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/estimation-culture/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2022-07-04T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/bf32a216cc9525cf3d981fe1f7544f3869e284926768a7b153f5a9c4d34e0bac.webp",
       "image_origin": ""
     },
     {
       "type": "content",
       "title": "Favourite Subreddits",
-      "summary": "",
+      "summary": "A collection of my favourite subreddits.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/favourite-subreddits/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-01-20T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/417a64b54d0dc68bb6a0b5f0d5ab90d8890ced45e3a6f5ab757182655af72c97.webp",
       "image_origin": ""
     },
     {
       "type": "content",
       "title": "Five books",
-      "summary": "",
+      "summary": "Paring my library down to five.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/five-books/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2022-12-14T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/531d6cc23bd3c3fcadac3886b046ec572eac6842759a65ca6d48743026f3dc2e.webp",
       "image_origin": ""
     },
     {
@@ -2577,27 +2631,27 @@
     {
       "type": "content",
       "title": "Pull Request Environments in GitHub Actions (with SST, AWS and Cloudflare pages)",
-      "summary": "",
+      "summary": "How to create a pull request environment in GitHub Actions using SST, AWS and Cloudflare pages",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/github-actions-pr-env/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-07-24T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/7c38c35503da1d825ae8d0813b62a8ca3cc137ff2e704e93f82ed1741b4febe2.webp",
       "image_origin": ""
     },
     {
       "type": "content",
       "title": "Setup a Repo in Github",
-      "summary": "",
+      "summary": "My default GitHub repository setup: conventional commit checks, branch protection, CI and a modular monolith structure.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/github-repo-setup/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-05-03T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/0ed63295b10200cc403c6dac56285cb9071e97d046eea7219efd3c88d0cf0bcf.webp",
       "image_origin": ""
     },
     {
@@ -2720,14 +2774,14 @@
     {
       "type": "content",
       "title": "How to buy a car",
-      "summary": "",
+      "summary": "A checklist for buying a used car, from MOT history and common faults to what to check before you hand over the money.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/how-to-buy-car/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-08-30T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/d93027b7a422677a6c0561b0e24a5bf696257440d0f8bdb40d0059538925b8a3.webp",
       "image_origin": ""
     },
     {
@@ -2772,14 +2826,14 @@
     {
       "type": "content",
       "title": "Questions for Developers to ask at interviews",
-      "summary": "",
+      "summary": "Interviews are for both parties. These are questions to ask to make sure the role is a great fit.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/interview-questions/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2022-05-24T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/58c1b857855b7f3af4b3730583ba1bde6771c2809fc753891da6be11c9ef2966.webp",
       "image_origin": ""
     },
     {
@@ -2811,14 +2865,14 @@
     {
       "type": "content",
       "title": "Lambda Warming is an Antipattern",
-      "summary": "",
+      "summary": "Lambda warming is a common strategy to mitigate cold start times. But is it the right solution?",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/lambda-warming-antipattern/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-12-18T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/fc185a898fe386370a3064a44f016fea729716a1dca925c9053bd7110f6d090d.webp",
       "image_origin": ""
     },
     {
@@ -2850,14 +2904,14 @@
     {
       "type": "content",
       "title": "Lifehacks",
-      "summary": "",
+      "summary": "A running list of the heuristics and rules I have picked up over the years and actually use.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/lifehacks/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-06-09T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/ebb0d2038823d973fd3ebca93e64af03bbba8e01172dc633fd8ccb07a28b1085.webp",
       "image_origin": ""
     },
     {
@@ -2889,14 +2943,14 @@
     {
       "type": "content",
       "title": "Devblog - LoginLlama 001",
-      "summary": "",
+      "summary": "Devblog 001: starting an API-as-a-service that detects suspicious logins, and where the existing tools fall short.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/loginllama-001/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-03-23T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/0727578cc17bc8448b0ef3553698ea95778c255133e290b39652cae2a63beb18.webp",
       "image_origin": ""
     },
     {
@@ -2954,14 +3008,14 @@
     {
       "type": "content",
       "title": "There is always more",
-      "summary": "Slow down, there is always more to do.",
+      "summary": "",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/more/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2022-04-26T00:00:00.000Z",
-      "image": "/assets/activity/posters/00bc380820d48af4fa5d1addc67e5f6194e9b49c26e58784c14a95c9e5b62e47.webp",
+      "image": "",
       "image_origin": ""
     },
     {
@@ -2980,40 +3034,40 @@
     {
       "type": "content",
       "title": "No Calendar",
-      "summary": "",
+      "summary": "It doesn't have to be all meetings and time blocks.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/no-calendar/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2022-11-10T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/a765f61578b913551fc6f233639d5c374e5bd28905a7182f12e3438927e6545e.webp",
       "image_origin": ""
     },
     {
       "type": "content",
       "title": "Get rid of your retrospective meetings",
-      "summary": "",
+      "summary": "Eliminate and simplify. Specifically, your retrospective meetings.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/no-more-retro/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2022-10-27T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/0f7d64d86071261380efba24192cbaed56a50a36a75b06616202a99880d1872c.webp",
       "image_origin": ""
     },
     {
       "type": "content",
       "title": "Common phrases that probably aren't true",
-      "summary": "",
+      "summary": "If you hear these things, run.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/not-true/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2024-03-10T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/0cee55cd5a91ff943b60d3bbdf77cba65a38da9208e9879115dab9a49530533e.webp",
       "image_origin": ""
     },
     {
@@ -3032,14 +3086,14 @@
     {
       "type": "content",
       "title": "Onebag",
-      "summary": "",
+      "summary": "Gear I use to live and travel lightly",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/onebag/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-01-18T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/ce9da4c7b26ad327ee1e4f766762266f58befe803d9bb5270efabd6b18f0f968.webp",
       "image_origin": ""
     },
     {
@@ -3071,14 +3125,14 @@
     {
       "type": "content",
       "title": "How Part Time has helped me in life",
-      "summary": "",
+      "summary": "Why working three days a week has been the best career move I have made, and why part time is the next remote work.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/part-time/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-07-11T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/a880fea452088f0b8f16548dd2fec8a1a5fee5581314ea42dce9ff3b6430c53b.webp",
       "image_origin": ""
     },
     {
@@ -3214,14 +3268,14 @@
     {
       "type": "content",
       "title": "Book notes - Project Hail Mary",
-      "summary": "",
+      "summary": "A review of my favourite book of 2022.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/project-hail-mary/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2022-12-07T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/2a8924137b37efe43bb794115f494cb2893d0b3673ca338b84de43d474ee763e.webp",
       "image_origin": ""
     },
     {
@@ -3240,14 +3294,14 @@
     {
       "type": "content",
       "title": "Question your Rate limits",
-      "summary": "",
+      "summary": "Rate limits are not a silver bullet for spam. Here is why, and how to address spam concerns.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/rate-limits/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2022-08-02T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/6eea76ec5d36f7bb8feee04d5ad30069fbb3ef333f46e07b6d020b4822bce71c.webp",
       "image_origin": ""
     },
     {
@@ -3383,27 +3437,27 @@
     {
       "type": "content",
       "title": "Ten Software Architecture Rules of Thumb",
-      "summary": "",
+      "summary": "General rules to use when doing software architecture.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/rules-of-thumb/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-01-04T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/58bed2e628f96ab9932763ddd58fcc60f19f5edf4b417c1b6ddae2efb2b303f7.webp",
       "image_origin": ""
     },
     {
       "type": "content",
       "title": "Raising £1000 for MSF",
-      "summary": "",
+      "summary": "Running my first half marathon to raise £1,000 for Medecins Sans Frontieres, and how running became a habit.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/running/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-04-28T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/35cd7279ba5814b4130b01dc6607a3649f31a8d2448c9c4461119c6b7e36cde7.webp",
       "image_origin": ""
     },
     {
@@ -3435,14 +3489,14 @@
     {
       "type": "content",
       "title": "Book notes - The Seven Deaths of Evelyn Hardcastle",
-      "summary": "",
+      "summary": "Notes about the seven deaths of evelyn hardcastle.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/seven-deaths-evelyn-hardcastle/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-01-03T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/18a956245977a31703f6a398bd6231f361f60e3b6ababec9f62bc2e7504c9242.webp",
       "image_origin": ""
     },
     {
@@ -3500,27 +3554,27 @@
     {
       "type": "content",
       "title": "Simple sites",
-      "summary": "",
+      "summary": "A collection of small, minimalist tools, and why this class of software is worth protecting.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/simple-sites/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-03-09T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/13fd4ef2da3f1248a0f668223ac16bc3b679f12b0f9b17f32e875396df6de2ee.webp",
       "image_origin": ""
     },
     {
       "type": "content",
       "title": "Site Upgrades - Gatsby V4 and Webmentions",
-      "summary": "",
+      "summary": "Upgrading the site from Gatsby V2 to V4 and adding webmentions, after it stopped running locally altogether.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/site-upgrades/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2022-07-28T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/aece3592fc446f2ce9a87922e763c13464d8fd3ffe52c66d2468281b93d6ba91.webp",
       "image_origin": ""
     },
     {
@@ -3565,14 +3619,14 @@
     {
       "type": "content",
       "title": "TIL - How to send an SQS message from a Lambda inside a VPC",
-      "summary": "",
+      "summary": "How to send an SQS message from a Lambda inside a VPC, including the VPC endpoint and policy AWS makes you configure.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/sqs-inside-vpc-lambda/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-08-15T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/5344cc90e645f14701c3f2d97a9c9edc1e2bea0e5bf22536925ce80b64e7577a.webp",
       "image_origin": ""
     },
     {
@@ -3604,14 +3658,14 @@
     {
       "type": "content",
       "title": "What people mean when they say - we do TDD",
-      "summary": "",
+      "summary": "TDD has lost all meaning. Here is why...",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/tdd/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2024-01-16T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/5fc119f65dd069a8804b7e7838ccc6d0803e03b39154136c32baac1bc3430782.webp",
       "image_origin": ""
     },
     {
@@ -3682,14 +3736,14 @@
     {
       "type": "content",
       "title": "Five Things I Wish I learnt sooner",
-      "summary": "",
+      "summary": "Five lessons from a decade of engineering and freelancing, starting with attaching metrics to your work.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/things-learned-sooner/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-02-13T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/bac31ed12e0e56e3f23183fdfd3c10e9c63b31d901c71c9a57844949b92e9ff9.webp",
       "image_origin": ""
     },
     {
@@ -3799,14 +3853,14 @@
     {
       "type": "content",
       "title": "Creating my own personal Instagram",
-      "summary": "",
+      "summary": "Reclaiming my data and building my corner of the internet.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/webstagram/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2022-10-06T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/1301f1348acbe10728658436a234932ca1eefaf74fd4ff90b0d9b109a7710639.webp",
       "image_origin": ""
     },
     {
@@ -3825,14 +3879,14 @@
     {
       "type": "content",
       "title": "Whimsical Software",
-      "summary": "",
+      "summary": "Software optimised purely for revenue has stopped being fun. A case for whimsy and building things that delight.",
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com/whimsical-software/",
       "topics": [],
       "site_title": "Josh Ghent",
       "published_at": "2023-03-24T00:00:00.000Z",
-      "image": "",
+      "image": "/assets/activity/posters/e825bbd0877afc0680dad64346eb8b6089f805654307db680b332de993f65de5.webp",
       "image_origin": ""
     },
     {
@@ -5571,7 +5625,7 @@
       "domain": "joshmuller.ca",
       "origin": "https://joshmuller.ca",
       "url": "https://joshmuller.ca/writings/2023/fight-for-rest/",
-      "topics": [],
+      "topics": ["writings"],
       "site_title": "Josh Müller",
       "published_at": "2023-08-16T13:14:08.000Z",
       "image": "/assets/activity/posters/800c91cfa223fde6bc0dfe7a8461bf920c07c24f19508701c0e89c2b193f32bf.webp",
@@ -5766,7 +5820,7 @@
       "domain": "joshmuller.ca",
       "origin": "https://joshmuller.ca",
       "url": "https://joshmuller.ca/writings/2023/public-wifi/",
-      "topics": ["writings"],
+      "topics": [],
       "site_title": "Josh Müller",
       "published_at": "2023-12-30T17:36:31.000Z",
       "image": "/assets/activity/posters/dd9a737ec17ee50cb29a06563908768b9a2265251433844e8c582e4c73100475.webp",
@@ -10894,7 +10948,7 @@
       "origin": "https://www.joshcanhelp.com",
       "url": "https://www.joshcanhelp.com/agentic-identity/",
       "topics": [],
-      "site_title": "Josh Cunningham",
+      "site_title": "Josh Can Help",
       "published_at": "2025-10-14T00:00:00.000Z",
       "image": "/assets/activity/posters/49f4c342fe2daee21aa6a6396bd4de1aec2a45464a48416f5f701cb11ff727cb.webp",
       "image_origin": ""
@@ -10907,7 +10961,7 @@
       "origin": "https://www.joshcanhelp.com",
       "url": "https://www.joshcanhelp.com/ai/",
       "topics": [],
-      "site_title": "Josh Cunningham",
+      "site_title": "Josh Can Help",
       "published_at": "2025-05-14T00:00:00.000Z",
       "image": "/assets/activity/posters/57ef0571e913e4e165d19498dd51e767384ac350184e92e80b76379adb989082.webp",
       "image_origin": ""
@@ -10920,7 +10974,7 @@
       "origin": "https://www.joshcanhelp.com",
       "url": "https://www.joshcanhelp.com/data-privacy/",
       "topics": [],
-      "site_title": "Josh Cunningham",
+      "site_title": "Josh Can Help",
       "published_at": "2026-02-07T00:00:00.000Z",
       "image": "/assets/activity/posters/b3205be7de57de6c52dd8443ed8ed2c6d42a4e88ae02c650db902468cb83ec6a.webp",
       "image_origin": ""
@@ -10933,7 +10987,7 @@
       "origin": "https://www.joshcanhelp.com",
       "url": "https://www.joshcanhelp.com/goodbye-auth0/",
       "topics": [],
-      "site_title": "Josh Cunningham",
+      "site_title": "Josh Can Help",
       "published_at": "2024-02-10T00:00:00.000Z",
       "image": "/assets/activity/posters/bc437b91c6742bf1d17298ae2ace0210c5e3c8176afca1a294efaf86d8fc8ab3.webp",
       "image_origin": ""
@@ -10946,7 +11000,7 @@
       "origin": "https://www.joshcanhelp.com",
       "url": "https://www.joshcanhelp.com/oclif/",
       "topics": [],
-      "site_title": "Josh Cunningham",
+      "site_title": "Josh Can Help",
       "published_at": "2024-04-09T00:00:00.000Z",
       "image": "/assets/activity/posters/e273984dc7306e6520f6888b7576c769f780fe1a918811af4a2f3a3b7ab61709.webp",
       "image_origin": ""
@@ -10959,7 +11013,7 @@
       "origin": "https://www.joshcanhelp.com",
       "url": "https://www.joshcanhelp.com/personal-data-pipeline-update/",
       "topics": [],
-      "site_title": "Josh Cunningham",
+      "site_title": "Josh Can Help",
       "published_at": "2025-04-24T00:00:00.000Z",
       "image": "/assets/activity/posters/b4f340b1eea415db3fd58333df83afd9349df144ef393f6afff9059264bdacb1.webp",
       "image_origin": ""
@@ -10972,7 +11026,7 @@
       "origin": "https://www.joshcanhelp.com",
       "url": "https://www.joshcanhelp.com/personal-data-pipeline/",
       "topics": [],
-      "site_title": "Josh Cunningham",
+      "site_title": "Josh Can Help",
       "published_at": "2024-08-01T00:00:00.000Z",
       "image": "/assets/activity/posters/979d603543ca66881b3fd2d2e6f03679662e25eb89f488f043bd057e11e8b45c.webp",
       "image_origin": ""
@@ -10985,7 +11039,7 @@
       "origin": "https://www.joshcanhelp.com",
       "url": "https://www.joshcanhelp.com/values/",
       "topics": [],
-      "site_title": "Josh Cunningham",
+      "site_title": "Josh Can Help",
       "published_at": "2024-08-08T00:00:00.000Z",
       "image": "/assets/activity/posters/9ec132bbd768c488b0cf6505b14eb95514c724dfc6828e2d8c5647961b27b321.webp",
       "image_origin": ""
@@ -10998,7 +11052,7 @@
       "origin": "https://www.joshcanhelp.com",
       "url": "https://www.joshcanhelp.com/vittorio/",
       "topics": [],
-      "site_title": "Josh Cunningham",
+      "site_title": "Josh Can Help",
       "published_at": "2024-01-22T00:00:00.000Z",
       "image": "/assets/activity/posters/dcbe6d415c6a7e2564a6023e21c4565c081a79e135798d7c37aba6aac7b7e5ba.webp",
       "image_origin": ""

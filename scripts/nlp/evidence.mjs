@@ -36,6 +36,7 @@ export const COMMUNITY_ELIGIBLE_SOURCES = new Set([
   "topic-hub:link",
   "topic-hub:page",
   "portfolio:sector",
+  "json-ld:knowsAbout",
 ]);
 
 /** Descriptive metadata that is not a topic label (discovery, not membership). */
@@ -87,7 +88,9 @@ export function isParserArtifactSlug(slug) {
     PARSER_ARTIFACT_SLUG.test(value) ||
     TAXONOMY_PATH_SLUG.test(value) ||
     value.startsWith("class-") ||
-    /^\d{4}$/.test(value)
+    /^\d{4}$/.test(value) ||
+    // Year-prefixed crawl junk (e.g. "2018-gifs", "2026-middot").
+    /^\d{4}-/.test(value)
   );
 }
 
@@ -285,6 +288,7 @@ export const NON_SUBJECT_UNIGRAMS = new Set([
   "theme",
   "thing",
   "things",
+  "thought",
   "thoughts",
   "time",
   "times",

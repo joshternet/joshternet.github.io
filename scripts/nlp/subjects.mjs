@@ -17,6 +17,7 @@ import {
 } from "./evidence.mjs";
 import {
   decodeHtmlEntities,
+  knowsAboutFromHtml,
   metaContent,
   metaContents,
   normalizeExtractedText,
@@ -79,6 +80,10 @@ export function subjectsFromHtml(html, pageUrl, options = {}) {
     for (const part of keywords.split(",")) {
       add(part, "meta:keywords", false);
     }
+  }
+
+  for (const label of knowsAboutFromHtml(html)) {
+    add(label, "json-ld:knowsAbout", true);
   }
 
   try {
@@ -171,6 +176,10 @@ function legacySourceName(source) {
 
   if (source.startsWith("topic-hub")) {
     return "topic-hub";
+  }
+
+  if (source === "json-ld:knowsAbout") {
+    return "json-ld";
   }
 
   return source;

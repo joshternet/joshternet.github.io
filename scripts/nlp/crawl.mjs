@@ -4,9 +4,11 @@
  * indieweb identity slash pages (/about/, /now/, /uses/, /more/, /site/, …),
  * advertised topic hubs (/topics/, /tags/, …) and writing indexes
  * (/notes/, /blog/, /posts/, …) even when those URLs are absent from
- * sitemap.xml, sitemap locs, and optional feed entry URLs. Identity slash
- * pages enqueue before sitemap flood so member-to-member link pages are not
- * starved. Skips /.well-known/josh. Failures for one origin never abort the run.
+ * sitemap.xml, sitemap locs, and optional feed entry URLs. Feed entry URLs
+ * enqueue after home (and optional aboutUrl) and before identity slash pages
+ * so recent posts are not starved by soft-404 slash seeds. Soft-404 duplicates
+ * of the homepage do not count toward the page budget. Skips /.well-known/josh.
+ * Failures for one origin never abort the run.
  */
 
 import { originFromHttpUrl } from "../network/blogroll.mjs";
@@ -28,6 +30,12 @@ import {
   parseHtmlDocument,
 } from "./lib.mjs";
 import { classifyPageRole } from "./page-role.mjs";
+import {
+  canonicalHrefFromHtml,
+  htmlBodyFingerprint,
+  normalizeExtractedText,
+  schemaTypesFromHtml,
+} from "./text.mjs";
 
 export { IDENTITY_SLASH_PATHS };
 
@@ -300,6 +308,104 @@ export function identitySlashSeedUrls(origin) {
 }
 
 /**
+ * True when a path is an indieweb identity / slash seed (soft-404 prone).
+ * @param {string} pathname
+ * @returns {boolean}
+ */
+export function isIdentitySlashPath(pathname) {
+  const normalized = `/${String(pathname || "")
+    .replace(/^\/+/, "")
+    .replace(/\/+$/, "")
+    .toLowerCase()}`;
+
+  if (normalized === "/") {
+    return false;
+  }
+
+  return IDENTITY_SLASH_PATHS.some((path) => {
+    const candidate = path.replace(/\/+$/, "").toLowerCase();
+    return Boolean(candidate) && normalized === candidate;
+  });
+}
+
+/**
+ * True when a fetched URL is a soft-404 that repeats the homepage.
+ * Title match alone is not enough: canonical must point at home, or the path
+ * must be an identity slash page whose body fingerprint matches home.
+ * @param {{
+ *   pageUrl: string,
+ *   homeUrl: string,
+ *   title?: string,
+ *   homeTitle?: string,
+ *   canonical?: string,
+ *   homeCanonical?: string,
+ *   bodyFingerprint?: string,
+ *   homeBodyFingerprint?: string,
+ * }} input
+ * @returns {boolean}
+ */
+export function isSoft404Duplicate(input) {
+  const pageUrl = String(input.pageUrl || "");
+  const homeUrl = String(input.homeUrl || "");
+
+  if (!pageUrl || !homeUrl) {
+    return false;
+  }
+
+  let pagePath = "";
+  let homePath = "/";
+
+  try {
+    pagePath = new URL(pageUrl).pathname.replace(/\/+$/, "") || "/";
+    homePath = new URL(homeUrl).pathname.replace(/\/+$/, "") || "/";
+  } catch {
+    return false;
+  }
+
+  if (pagePath === homePath) {
+    return false;
+  }
+
+  const title = normalizeExtractedText(input.title || "");
+  const homeTitle = normalizeExtractedText(input.homeTitle || "");
+
+  if (!title || !homeTitle || title !== homeTitle) {
+    return false;
+  }
+
+  const canonical = String(input.canonical || "");
+  const homeCanonical = String(input.homeCanonical || homeUrl);
+  const bodyFingerprint = String(input.bodyFingerprint || "");
+  const homeBodyFingerprint = String(input.homeBodyFingerprint || "");
+
+  if (canonical && homeCanonical) {
+    try {
+      const canonicalPath =
+        new URL(canonical).pathname.replace(/\/+$/, "") || "/";
+      const homeCanonicalPath =
+        new URL(homeCanonical).pathname.replace(/\/+$/, "") || "/";
+
+      if (canonicalPath === homeCanonicalPath) {
+        return true;
+      }
+
+      // Distinct self-canonical with a matching title is still a real page.
+      return false;
+    } catch {
+      // Fall through to identity+fingerprint.
+    }
+  }
+
+  const fingerprintMatch = Boolean(
+    bodyFingerprint &&
+    homeBodyFingerprint &&
+    bodyFingerprint === homeBodyFingerprint,
+  );
+
+  return fingerprintMatch && isIdentitySlashPath(pagePath);
+}
+
+/**
  * Cross-origin http(s) links from one page, with absolute hrefs.
  * Drops same-origin nav, participation declarations, and non-http URLs.
  * @param {string} origin
@@ -484,13 +590,18 @@ export async function crawlOrigin(origin, options = {}) {
     queue.push({ url, depth: 0 });
   }
 
-  enqueueSeed(`${origin}/`);
+  const homeUrl = `${origin}/`;
+  enqueueSeed(homeUrl);
 
   if (typeof options.aboutUrl === "string" && options.aboutUrl) {
     enqueueSeed(resolveSameOrigin(origin, options.aboutUrl));
   }
 
-  // Identity slash pages before topic hubs / writing indexes / sitemap.
+  // Recent feed posts before identity slash soft-404s / hubs / sitemap.
+  for (const feedUrl of options.feedEntryUrls || []) {
+    enqueueSeed(resolveSameOrigin(origin, feedUrl));
+  }
+
   for (const url of identitySlashSeedUrls(origin)) {
     enqueueSeed(url);
   }
@@ -501,10 +612,6 @@ export async function crawlOrigin(origin, options = {}) {
 
   for (const url of contentIndexSeedUrls(origin)) {
     enqueueSeed(url);
-  }
-
-  for (const feedUrl of options.feedEntryUrls || []) {
-    enqueueSeed(resolveSameOrigin(origin, feedUrl));
   }
 
   try {
@@ -519,6 +626,9 @@ export async function crawlOrigin(origin, options = {}) {
   } catch {
     // Sitemap is optional.
   }
+
+  /** @type {{ title: string, canonical: string, fingerprint: string } | null} */
+  let homeSignature = null;
 
   while (queue.length > 0 && pages.length < MAX_PAGES_PER_ORIGIN) {
     const next = queue.shift();
@@ -555,9 +665,39 @@ export async function crawlOrigin(origin, options = {}) {
     }
 
     const document = parseHtmlDocument(fetched.body);
+    const canonical = canonicalHrefFromHtml(fetched.body, fetched.url);
+    const fingerprint = htmlBodyFingerprint(fetched.body);
+    // fetchPublicText always returns an absolute http(s) URL.
+    const pagePath = new URL(fetched.url).pathname.replace(/\/+$/, "") || "/";
+
+    if (pagePath === "/") {
+      homeSignature = {
+        title: document.title,
+        canonical: canonical || homeUrl,
+        fingerprint,
+      };
+    } else if (
+      homeSignature &&
+      isSoft404Duplicate({
+        pageUrl: fetched.url,
+        homeUrl,
+        title: document.title,
+        homeTitle: homeSignature.title,
+        canonical,
+        homeCanonical: homeSignature.canonical,
+        bodyFingerprint: fingerprint,
+        homeBodyFingerprint: homeSignature.fingerprint,
+      })
+    ) {
+      // Soft-404: do not spend the page budget or amplify homepage NLP.
+      continue;
+    }
+
+    const schemaTypes = schemaTypesFromHtml(fetched.body);
     const role = classifyPageRole(fetched.url, {
       title: document.title,
       derived: document.derived,
+      schemaTypes,
     });
     pages.push({
       url: fetched.url,

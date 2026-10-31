@@ -19,6 +19,7 @@
 
 ### Changed
 
+- NLP crawl improvements for sites without feed tags (for example joshghent.com): BlogPosting/Article JSON-LD and `og:type=article` drive `page_role` so root permalinks get heuristics; Person `knowsAbout` becomes community-eligible declared topics; soft-404 pages that repeat the homepage (canonical to `/` or identity-slash body match) no longer consume the page budget; feed entry URLs enqueue before identity slash seeds; year-prefixed heuristic junk (`2018-gifs`) is dropped.
 - SEO and IndieWeb markup: site `author` in `_config.yml`; homepage Project JSON-LD gains `logo` and GitHub `sameAs`; gap pages get `seo.type`; derived JSON-LD adds BreadcrumbList (topics/implement) and capped ItemList (`/network/`, `/activity/`, `/topics/`, `/welcome/`); topic pages nest `h-feed` on article lists only; activity/search author cards gain clean `u-url`; welcome cards and topics index use `h-card`.
 - Homepage welcome cards are build-time only for participants within the last 14 days (daily deploy), stacked meta rows, no hidden candidates or runtime eligibility filter.
 - Homepage Meet excludes Welcome-featured domains in Liquid (`home-welcome-eligible`); Meet JS only shuffles and shows three cards.
@@ -162,6 +163,8 @@
 
 ### Fixed
 
+- Latest-posts / activity cards share a wide 46% poster column (full card height, `object-fit: contain`) so thumbnails line up at the original width without heavy cropping; the old JS media-width fitter is removed.
+- Filler `thought`/`thoughts` cannot become public heuristic topics after plural fold; heuristic membership now requires page-bearing evidence so empty-evidence signals cannot fail `nlp:sync` with `heuristic-without-evidence` (for example joshmuller.ca “Thoughts on …” titles).
 - Search topic results only link to Topics-hub neighborhoods (communities with matching article members), so Search no longer points at empty `/topics/{slug}/` URLs that 404 (#61). Topic-hub link text with trailing counts (e.g. `privacy 45`) no longer invents `/topics/privacy-45/` slugs; views no longer invent page-less topic URLs from content tags alone.
 - `/search/` stays `robots: noindex` and is excluded from `sitemap.xml` via `sitemap: false` (#62).
 - Filler unigrams such as `two`, `less`, `find`, `real`, `built`, and `making` are non-subjects, so they do not become public topic neighborhoods or search topic hits (#64).

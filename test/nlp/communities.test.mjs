@@ -241,13 +241,38 @@ test("heuristicSignalIsCommunityEligible: not heuristic evidence_class → false
   );
 });
 
-test("heuristicSignalIsCommunityEligible: community_eligible true → true", () => {
+test("heuristicSignalIsCommunityEligible: community_eligible true with page evidence → true", () => {
+  assert.equal(
+    heuristicSignalIsCommunityEligible({
+      evidence_class: "heuristic",
+      community_eligible: true,
+      evidence: [
+        {
+          class: "heuristic",
+          community_eligible: true,
+          page: "https://a.example/p",
+        },
+      ],
+    }),
+    true,
+  );
+});
+
+test("heuristicSignalIsCommunityEligible: community_eligible true without page evidence → false", () => {
+  assert.equal(
+    heuristicSignalIsCommunityEligible({
+      evidence_class: "heuristic",
+      community_eligible: true,
+      evidence: [],
+    }),
+    false,
+  );
   assert.equal(
     heuristicSignalIsCommunityEligible({
       evidence_class: "heuristic",
       community_eligible: true,
     }),
-    true,
+    false,
   );
 });
 
@@ -538,7 +563,7 @@ test("buildTopicCommunities: below-threshold heuristic goes to candidates", () =
 });
 
 test("buildTopicCommunities: heuristic addedSource is false branch fires", () => {
-  // signal.evidence is empty → addedSource stays false → topic.sources.add('visible-text')
+  // Page-bearing evidence without source → addedSource stays false → visible-text
   const { communities } = buildTopicCommunities([
     {
       origin: "https://a.example",
@@ -550,7 +575,13 @@ test("buildTopicCommunities: heuristic addedSource is false branch fires", () =>
           label: "Design",
           evidence_class: "heuristic",
           community_eligible: true,
-          evidence: [], // empty evidence → no source added in loop
+          evidence: [
+            {
+              class: "heuristic",
+              community_eligible: true,
+              page: "https://a.example/design",
+            },
+          ],
         },
       ],
     },
@@ -564,7 +595,13 @@ test("buildTopicCommunities: heuristic addedSource is false branch fires", () =>
           label: "Design",
           evidence_class: "heuristic",
           community_eligible: true,
-          evidence: [],
+          evidence: [
+            {
+              class: "heuristic",
+              community_eligible: true,
+              page: "https://b.example/design",
+            },
+          ],
         },
       ],
     },
@@ -1328,14 +1365,9 @@ test("buildTopicCommunities: heuristic signal without slug fires || '' (L261)", 
   assert.deepEqual(communities, []);
 });
 
-// buildTopicCommunities: heuristic signal without evidence fires || [] (L285) and || [] (L297)
-// and fires topic.sources.add("visible-text") (L304)
-// Also covers item.source missing fires || "visible-text" (L291) via no evidence
-test("buildTopicCommunities: heuristic signal without evidence fires || [] branches (L285, L297)", () => {
-  // signal has no evidence → L285 || [] fires (pages = [])
-  // heuristicSignalIsCommunityEligible returns true (community_eligible: true)
-  // → L297 signal.evidence || [] fires (no items → addedSource = false → L304 fires)
-  const { communities } = buildTopicCommunities([
+// Empty-evidence heuristics must not enroll (avoids heuristic-without-evidence).
+test("buildTopicCommunities: heuristic signal without page evidence does not form a public community", () => {
+  const { communities, candidates } = buildTopicCommunities([
     {
       origin: "https://a.example",
       domain: "a.example",
@@ -1346,7 +1378,6 @@ test("buildTopicCommunities: heuristic signal without evidence fires || [] branc
           label: "Photography",
           evidence_class: "heuristic",
           community_eligible: true,
-          // no evidence → L285, L297 fire
         },
       ],
     },
@@ -1364,12 +1395,14 @@ test("buildTopicCommunities: heuristic signal without evidence fires || [] branc
       ],
     },
   ]);
-  const photo = communities.find((c) => c.slug === "photography");
-  assert.ok(photo, "photography community should form");
-  // sources should be ["visible-text"] since no source in evidence
-  assert.ok(
-    photo.sources.includes("visible-text") || photo.sources.length === 1,
+  assert.equal(
+    communities.find((c) => c.slug === "photography"),
+    undefined,
   );
+  const photoCandidate = candidates.find((c) => c.slug === "photography");
+  assert.ok(photoCandidate, "related discovery candidate should remain");
+  assert.equal(photoCandidate.publisher_backed_sites, 0);
+  assert.equal(photoCandidate.heuristically_related_sites, 2);
 });
 
 // buildTopicCommunities: heuristic evidence item without source fires || "visible-text" (L291)

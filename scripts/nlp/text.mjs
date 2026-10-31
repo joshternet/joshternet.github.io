@@ -375,3 +375,222 @@ export function isEnglishLanguage(lang) {
   const base = lang.toLowerCase().split(/[-_]/)[0];
   return base === "en";
 }
+
+/**
+ * Flattens JSON-LD node trees (@graph / arrays) into plain objects.
+ * @param {unknown} value
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function jsonLdObjects(value) {
+  if (Array.isArray(value)) {
+    return value.flatMap((entry) => jsonLdObjects(entry));
+  }
+
+  if (!value || typeof value !== "object") {
+    return [];
+  }
+
+  const record = /** @type {Record<string, unknown>} */ (value);
+  /** @type {Array<Record<string, unknown>>} */
+  const objects = [record];
+
+  if (Array.isArray(record["@graph"])) {
+    objects.push(...record["@graph"].flatMap((entry) => jsonLdObjects(entry)));
+  }
+
+  return objects;
+}
+
+/**
+ * Collects @type tokens from one JSON-LD node (string, URL, or array).
+ * @param {unknown} typeValue
+ * @returns {string[]}
+ */
+function schemaTypeTokens(typeValue) {
+  if (typeof typeValue === "string" && typeValue) {
+    const bare = typeValue.includes("/")
+      ? typeValue.slice(typeValue.lastIndexOf("/") + 1)
+      : typeValue;
+    return bare ? [bare] : [];
+  }
+
+  if (Array.isArray(typeValue)) {
+    return typeValue.flatMap((entry) => schemaTypeTokens(entry));
+  }
+
+  return [];
+}
+
+/**
+ * Schema.org / Open Graph type hints for page-role classification.
+ * Includes BlogPosting/Article from JSON-LD and Article when og:type=article.
+ * @param {string} html
+ * @returns {string[]}
+ */
+export function schemaTypesFromHtml(html) {
+  const source = typeof html === "string" ? html : "";
+  /** @type {Set<string>} */
+  const types = new Set();
+  const scriptPattern =
+    /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
+  let match;
+
+  while ((match = scriptPattern.exec(source))) {
+    const raw = String(match[1]).trim();
+
+    if (!raw) {
+      continue;
+    }
+
+    try {
+      const parsed = JSON.parse(raw);
+
+      for (const object of jsonLdObjects(parsed)) {
+        for (const token of schemaTypeTokens(object["@type"])) {
+          types.add(token);
+        }
+      }
+    } catch {
+      // Invalid JSON-LD is ignored.
+    }
+  }
+
+  const ogType = metaContent(source, "og:type").trim().toLowerCase();
+
+  if (ogType === "article") {
+    types.add("Article");
+  }
+
+  return [...types];
+}
+
+/**
+ * Absolute canonical URL from a page, when declared.
+ * @param {string} html
+ * @param {string} [pageUrl]
+ * @returns {string}
+ */
+export function canonicalHrefFromHtml(html, pageUrl = "") {
+  const source = typeof html === "string" ? html : "";
+  const linkPattern =
+    /<link\b([^>]*)rel\s*=\s*(?:"[^"]*\bcanonical\b[^"]*"|'[^']*\bcanonical\b[^']*'|[^\s>]*\bcanonical\b[^\s>]*)([^>]*)>/gi;
+  let match;
+
+  while ((match = linkPattern.exec(source))) {
+    // Regex captures are always strings (possibly empty) when the pattern matches.
+    const attrs = `${match[1]} ${match[2]}`;
+    const href = decodeHrefForParse(htmlAttributeValue(attrs, "href"));
+
+    if (!href) {
+      continue;
+    }
+
+    try {
+      return new URL(href, pageUrl || undefined).href;
+    } catch {
+      continue;
+    }
+  }
+
+  return "";
+}
+
+/**
+ * Stable fingerprint of visible topic text for soft-404 duplicate detection.
+ * @param {string} html
+ * @returns {string}
+ */
+export function htmlBodyFingerprint(html) {
+  const regions = parseHtmlRegions(html);
+  const text = normalizeExtractedText(regions.textForTopics).slice(0, 8_000);
+
+  if (!text) {
+    return "";
+  }
+
+  // FNV-1a 32-bit — deterministic, no crypto dependency on the static path.
+  let hash = 0x811c9dc5;
+
+  for (let index = 0; index < text.length; index += 1) {
+    hash ^= text.charCodeAt(index);
+    hash = Math.imul(hash, 0x01000193);
+  }
+
+  return (hash >>> 0).toString(16).padStart(8, "0");
+}
+
+/**
+ * Publisher expertise labels from Person/Organization knowsAbout.
+ * @param {string} html
+ * @returns {string[]}
+ */
+export function knowsAboutFromHtml(html) {
+  const source = typeof html === "string" ? html : "";
+  /** @type {string[]} */
+  const labels = [];
+  const scriptPattern =
+    /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
+  let match;
+
+  while ((match = scriptPattern.exec(source))) {
+    const raw = String(match[1]).trim();
+
+    if (!raw) {
+      continue;
+    }
+
+    try {
+      const parsed = JSON.parse(raw);
+
+      for (const object of jsonLdObjects(parsed)) {
+        const typeTokens = schemaTypeTokens(object["@type"]).map((token) =>
+          token.toLowerCase(),
+        );
+
+        if (
+          !typeTokens.some(
+            (token) => token === "person" || token === "organization",
+          )
+        ) {
+          continue;
+        }
+
+        const knows = object.knowsAbout;
+
+        if (typeof knows === "string" && knows.trim()) {
+          labels.push(knows.trim());
+          continue;
+        }
+
+        if (!Array.isArray(knows)) {
+          continue;
+        }
+
+        for (const entry of knows) {
+          if (typeof entry === "string" && entry.trim()) {
+            labels.push(entry.trim());
+            continue;
+          }
+
+          if (entry && typeof entry === "object") {
+            const record = /** @type {Record<string, unknown>} */ (entry);
+            const name =
+              typeof record.name === "string"
+                ? record.name
+                : typeof record["@id"] === "string"
+                  ? record["@id"]
+                  : "";
+
+            if (name.trim()) {
+              labels.push(name.trim());
+            }
+          }
+        }
+      }
+    } catch {
+      // Invalid JSON-LD is ignored.
+    }
+  }
+
+  return labels;
+}
