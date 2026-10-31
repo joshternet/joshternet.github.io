@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-31T05:42:20.903Z",
+  "generated_at": "2026-10-31T17:35:43.776Z",
   "participant_count": 9,
   "community_count": 238,
   "publication_count": 846,
-  "connection_count": 8,
+  "connection_count": 11,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
     "connection": "first edge after stable from, to, relation sort"

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T23:15:22.634Z",
+  "generated_at": "2026-10-31T17:35:43.776Z",
   "sites": [
     {
       "origin": "https://joshbeard.com",
@@ -44,7 +44,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T23:13:39.295Z"
+      "crawled_at": "2026-10-31T17:34:23.048Z"
     },
     {
       "origin": "https://joshghent.com",
@@ -215,6 +215,14 @@
       "outgoing": [],
       "incoming": [
         {
+          "from": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshghent.com/",
+          "page": "https://joshternet.org/",
+          "evidence_count": 1
+        },
+        {
           "from": "https://joshuamorris.info",
           "relation": "content-link",
           "label": "linked to",
@@ -230,7 +238,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T23:13:39.295Z"
+      "crawled_at": "2026-10-31T17:34:23.048Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -567,6 +575,14 @@
       "outgoing": [],
       "incoming": [
         {
+          "from": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshmuller.ca/",
+          "page": "https://joshternet.org/",
+          "evidence_count": 1
+        },
+        {
           "from": "https://joshuamorris.info",
           "relation": "content-link",
           "label": "linked to",
@@ -582,7 +598,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T23:13:39.295Z"
+      "crawled_at": "2026-10-31T17:34:23.048Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -609,7 +625,32 @@
         }
       ],
       "recent_content": null,
-      "outgoing": [],
+      "outgoing": [
+        {
+          "to": "https://joshghent.com",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshghent.com/",
+          "page": "https://joshternet.org/",
+          "evidence_count": 1
+        },
+        {
+          "to": "https://joshmuller.ca",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshmuller.ca/",
+          "page": "https://joshternet.org/",
+          "evidence_count": 1
+        },
+        {
+          "to": "https://joshuamorris.info",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshuamorris.info/",
+          "page": "https://joshternet.org/",
+          "evidence_count": 1
+        }
+      ],
       "incoming": [
         {
           "from": "https://joshbeard.com",
@@ -643,7 +684,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T23:13:39.295Z"
+      "crawled_at": "2026-10-31T17:34:23.048Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -894,7 +935,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T23:13:39.295Z"
+      "crawled_at": "2026-10-31T17:34:23.048Z"
     },
     {
       "origin": "https://joshua.seigler.net",
@@ -1042,7 +1083,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T23:13:39.295Z"
+      "crawled_at": "2026-10-31T17:34:23.048Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -1752,6 +1793,14 @@
           "evidence_count": 1
         },
         {
+          "from": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshuamorris.info/",
+          "page": "https://joshternet.org/",
+          "evidence_count": 1
+        },
+        {
           "from": "https://joshtronic.com",
           "relation": "content-link",
           "label": "linked to",
@@ -1767,7 +1816,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T23:13:39.295Z"
+      "crawled_at": "2026-10-31T17:34:23.048Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -1945,7 +1994,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T23:13:39.295Z"
+      "crawled_at": "2026-10-31T17:34:23.048Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -2146,7 +2195,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-10-30T23:13:39.295Z",
+      "crawled_at": "2026-10-31T17:34:23.048Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,
