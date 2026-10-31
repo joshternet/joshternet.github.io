@@ -120,6 +120,8 @@ test("primary navigation keeps top-level labels and Implement children", async (
   assert.match(children, /site\.data\.implement_nav/);
   assert.doesNotMatch(data, /title: Guide/);
   assert.doesNotMatch(data, /path: \/implement\/\n/);
+  assert.match(data, /title: Join the Joshternet/);
+  assert.match(data, /path: \/join\//);
   assert.match(data, /path: \/implement\/validate\//);
   assert.match(data, /title: Platforms/);
   assert.match(data, /path: \/implement\/platforms\//);
@@ -228,6 +230,11 @@ test("primary navigation keeps top-level labels and Implement children", async (
  */
 const PLATFORM_RECIPES = [
   { slug: "astro", file: "implement/platforms/astro.md", navTitle: "Astro" },
+  {
+    slug: "cloudflare-worker",
+    file: "implement/platforms/cloudflare-worker.md",
+    navTitle: "Cloudflare Worker",
+  },
   {
     slug: "eleventy",
     file: "implement/platforms/eleventy.md",

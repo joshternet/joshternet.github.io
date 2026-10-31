@@ -1,6 +1,9 @@
 # Platform-specific /.well-known/josh recipes under /implement/platforms/.
 # Add a page here after the recipe has been tested. Do not put these in
 # implement_nav.yml — that row stays a single Platforms link.
+- title: Cloudflare Worker
+  path: /implement/platforms/cloudflare-worker/
+  summary: serves /.well-known/josh from a Worker route without changing your app build
 - title: Astro
   path: /implement/platforms/astro/
   summary: copies public/.well-known/josh into dist/

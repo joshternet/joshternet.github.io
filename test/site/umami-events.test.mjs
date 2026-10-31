@@ -158,6 +158,15 @@ test("skips rel=me, mailto, and hash-only links", () => {
   assert.equal(joshternetLinkEventFromHref("#main-content", null), null);
 });
 
+test("umami-events skips dedicated join CTA link tracking via data attribute", async () => {
+  const source = await readFile(
+    fileURLToPath(new URL("../../assets/js/umami-events.js", import.meta.url)),
+    "utf8",
+  );
+
+  assert.match(source, /data-joshternet-skip-link-track/);
+});
+
 test("inbound-arrival classifies member, other, and skips direct or same-origin", () => {
   const { joshternetInboundArrivalFromReferrer } = loadHelper({
     memberHosts: ["joshuamorris.info", "www.joshcanhelp.com"],

@@ -4,7 +4,15 @@
 
 ### Added
 
+- Guided `/join/` walkthrough for publishing `/.well-known/josh`, choosing a platform (including Cloudflare Worker), validating, optionally nominating, and celebrating after Network listing—linked from the homepage Join CTA.
+- Homepage invitation “Are you a Josh? Get yourself connected.” with Join as the secondary hero action (Wander remains primary); Network stays in nav.
+- Cloudflare Worker platform recipe embeds copy-paste Worker and Wrangler source on `/implement/platforms/cloudflare-worker/` for serving only `/.well-known/josh`.
+- Join-funnel Umami events (`join-start`, `join-platform`, `join-declaration-copy`, `join-check-open`, `join-nominate-open`, `join-share-open`) with link-track skip on dedicated CTAs.
 - Umami custom events for outbound and internal link clicks, inbound referrer classification (member vs other), and privacy-safe UI signals on Search, Network, Wander, Connections, and nominations—no search query text or form PII.
+
+### Fixed
+
+- Connections `connections-select` fires only on deliberate graph/list selections, not `?site=` deep-link initialization.
 - Homepage “Welcome to the Joshternet!” section highlights up to three recent non-hub participants from the registry (`first_participated_at` within 14 days of build time; daily deploy), with Network deep links and an explicit non-Josh invitation to `/implement/`.
 - Homepage Connections preview exposes Zoom in, Zoom out, and Center map controls with drag-pan; wheel still does not trap page scroll.
 - Network directory sort control (`?sort=`): Discover (default random), Recently joined, Oldest first, and Alphabetical, independently of identity filters.
