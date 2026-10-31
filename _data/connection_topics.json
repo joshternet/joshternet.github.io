@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-31T21:35:59.137Z",
+  "generated_at": "2026-10-31T21:58:21.973Z",
   "overlap_count": 21,
   "pairs": [
     {
@@ -218,10 +218,6 @@
         {
           "slug": "design",
           "label": "design"
-        },
-        {
-          "slug": "docs",
-          "label": "docs"
         },
         {
           "slug": "file",
@@ -592,10 +588,6 @@
         {
           "slug": "design",
           "label": "design"
-        },
-        {
-          "slug": "docs",
-          "label": "docs"
         },
         {
           "slug": "education",
@@ -2215,17 +2207,6 @@
                 {
                   "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
                   "title": "Healthy Weight Plan Builder"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Joshua Seigler",
-              "articles": [
-                {
-                  "url": "https://joshternet.org/",
-                  "title": "Link: Joshternet: An Open Network for Joshes and Independent Websites"
                 }
               ]
             }
@@ -5457,17 +5438,6 @@
                   "title": "/groundwork: a skill that makes any repo runnable from a fresh clone"
                 }
               ]
-            },
-            {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Joshua Seigler",
-              "articles": [
-                {
-                  "url": "https://joshternet.org/",
-                  "title": "Link: Joshternet: An Open Network for Joshes and Independent Websites"
-                }
-              ]
             }
           ]
         },
@@ -7321,10 +7291,6 @@
               "title": "Gluten-Free Chocolate Cake"
             },
             {
-              "url": "https://joshmuller.ca/es/recetas/ajiaco-santafereno/",
-              "title": "Ajiaco santafereño de mamá"
-            },
-            {
               "url": "https://joshmuller.ca/recipes/meals/ajiaco-santafereno/",
               "title": "Mom's Ajiaco Santafereño"
             },
@@ -7347,6 +7313,10 @@
             {
               "url": "https://joshmuller.ca/recipes/desserts/graham-crackers/",
               "title": "Homemade Graham Crackers"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/desserts/katie-s-tahini-cookies/",
+              "title": "4 Ingredient Tahin Cookies"
             }
           ],
           "sites": [
@@ -7355,6 +7325,10 @@
               "domain": "joshua.seigler.net",
               "title": "Joshua Seigler",
               "articles": [
+                {
+                  "url": "https://joshternet.org/",
+                  "title": "Link: Joshternet: An Open Network for Joshes and Independent Websites"
+                },
                 {
                   "url": "https://joshua.seigler.net/recipes/pear-upside-down-cake/",
                   "title": "Recipe: Pear Upside Down Cake"
@@ -7382,10 +7356,6 @@
                 {
                   "url": "https://joshua.seigler.net/recipes/chicken-chili-verde/",
                   "title": "Recipe: Chicken Chili Verde"
-                },
-                {
-                  "url": "https://joshua.seigler.net/recipes/amish-egg-noodles/",
-                  "title": "Recipe: Amish Egg Noodles"
                 }
               ]
             }
@@ -10271,40 +10241,6 @@
           ]
         },
         {
-          "slug": "docs",
-          "label": "docs",
-          "articles": [
-            {
-              "url": "https://joshternet.org/",
-              "title": "Link: Joshternet: An Open Network for Joshes and Independent Websites"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Josh Ghent",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/groundwork/",
-                  "title": "/groundwork: a skill that makes any repo runnable from a fresh clone"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshmuller.ca",
-              "domain": "joshmuller.ca",
-              "title": "Josh Müller",
-              "articles": [
-                {
-                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
-                  "title": "Healthy Weight Plan Builder"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "education",
           "label": "education",
           "articles": [
@@ -10807,6 +10743,10 @@
           "label": "recipes",
           "articles": [
             {
+              "url": "https://joshternet.org/",
+              "title": "Link: Joshternet: An Open Network for Joshes and Independent Websites"
+            },
+            {
               "url": "https://joshua.seigler.net/recipes/pear-upside-down-cake/",
               "title": "Recipe: Pear Upside Down Cake"
             },
@@ -10833,10 +10773,6 @@
             {
               "url": "https://joshua.seigler.net/recipes/chicken-chili-verde/",
               "title": "Recipe: Chicken Chili Verde"
-            },
-            {
-              "url": "https://joshua.seigler.net/recipes/amish-egg-noodles/",
-              "title": "Recipe: Amish Egg Noodles"
             }
           ],
           "sites": [
@@ -10848,10 +10784,6 @@
                 {
                   "url": "https://joshmuller.ca/recipes/desserts/gluten-free-chocolate-cake/",
                   "title": "Gluten-Free Chocolate Cake"
-                },
-                {
-                  "url": "https://joshmuller.ca/es/recetas/ajiaco-santafereno/",
-                  "title": "Ajiaco santafereño de mamá"
                 },
                 {
                   "url": "https://joshmuller.ca/recipes/meals/ajiaco-santafereno/",
@@ -10876,6 +10808,10 @@
                 {
                   "url": "https://joshmuller.ca/recipes/desserts/graham-crackers/",
                   "title": "Homemade Graham Crackers"
+                },
+                {
+                  "url": "https://joshmuller.ca/recipes/desserts/katie-s-tahini-cookies/",
+                  "title": "4 Ingredient Tahin Cookies"
                 }
               ]
             }
