@@ -1287,6 +1287,31 @@
     }
 
     /**
+     * Records a deliberate Connections node selection (not deep-link init).
+     * @param {string | null} origin
+     * @returns {void}
+     */
+    function trackConnectionsSelect(origin) {
+      if (!origin) {
+        return;
+      }
+
+      const track = globalThis.joshternetTrack;
+
+      if (typeof track !== "function") {
+        return;
+      }
+
+      try {
+        track("connections-select", {
+          host: new URL(origin).hostname,
+        });
+      } catch {
+        // Ignore unparseable origins for analytics only.
+      }
+    }
+
+    /**
      * @param {string | null} origin
      */
     function selectOrigin(origin) {
@@ -1305,20 +1330,6 @@
         const isSelected =
           button.getAttribute("data-origin") === selectedOrigin;
         button.setAttribute("aria-pressed", isSelected ? "true" : "false");
-      }
-
-      if (selectedOrigin) {
-        const track = globalThis.joshternetTrack;
-
-        if (typeof track === "function") {
-          try {
-            track("connections-select", {
-              host: new URL(selectedOrigin).hostname,
-            });
-          } catch {
-            // Ignore unparseable origins for analytics only.
-          }
-        }
       }
 
       renderDetail();
@@ -1384,7 +1395,9 @@
       const node = target.closest("[data-origin]");
 
       if (node) {
-        selectOrigin(node.getAttribute("data-origin"));
+        const origin = node.getAttribute("data-origin");
+        selectOrigin(origin);
+        trackConnectionsSelect(origin);
       }
     }
 
@@ -1816,6 +1829,7 @@
           }
 
           selectOrigin(origin);
+          trackConnectionsSelect(origin);
         });
 
         node.addEventListener("keydown", (event) => {
@@ -1825,6 +1839,7 @@
 
           event.preventDefault();
           selectOrigin(origin);
+          trackConnectionsSelect(origin);
         });
       }
     }
@@ -2095,7 +2110,9 @@
     )) {
       button.setAttribute("aria-pressed", "false");
       button.addEventListener("click", () => {
-        selectOrigin(button.getAttribute("data-origin"));
+        const origin = button.getAttribute("data-origin");
+        selectOrigin(origin);
+        trackConnectionsSelect(origin);
       });
     }
 

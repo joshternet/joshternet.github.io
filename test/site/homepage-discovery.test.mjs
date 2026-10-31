@@ -32,6 +32,7 @@ test("homepage links Wander, Network, activity, and join paths", async () => {
 
   assert.match(index, /\/wander\//);
   assert.match(index, /\/network\//);
+  assert.match(index, /\/join\//);
   assert.match(activity, /\/activity\//);
   assert.match(index, /\/implement\//);
   assert.match(index, /\/implement\/validate\//);
@@ -40,6 +41,9 @@ test("homepage links Wander, Network, activity, and join paths", async () => {
   assert.match(index, /\/specs\//);
   assert.match(index, /home-cta__primary/);
   assert.match(index, /home-cta__secondary/);
+  assert.match(index, /Join the Joshternet/);
+  assert.doesNotMatch(index, /Explore the network/);
+  assert.match(index, /Are you a Josh\? Get yourself connected/);
 });
 
 test("homepage meet and activity includes use generated datasets", async () => {
@@ -60,8 +64,9 @@ test("homepage meet and activity includes use generated datasets", async () => {
   assert.doesNotMatch(index, /\/assets\/js\/home-new-arrivals\.js/);
   assert.match(index, /\/assets\/js\/home-meet\.js/);
   assert.match(index, /\/assets\/js\/connections\.js/);
-  assert.match(index, /Come josh around/);
   assert.match(index, /Not named Josh/);
+  assert.doesNotMatch(index, /Come josh around/);
+  assert.doesNotMatch(index, /prose-emphasis/);
   assert.doesNotMatch(index, /^script:/m);
   assert.match(eligible, /site\.data\.network/);
   assert.match(eligible, /first_participated_at/);
@@ -112,19 +117,18 @@ test("homepage meet and activity includes use generated datasets", async () => {
   assert.match(card, /heading_tag == ['"]h3['']/);
 });
 
-test("homepage join section preserves three identity states without accounts", async () => {
+test("homepage join teaser points at guided join without duplicating declarations", async () => {
   const index = await read("index.md");
+  const join = await read("join.md");
 
-  assert.match(index, /"josh": true/);
-  assert.match(index, /"josh": false/);
-  assert.match(index, /home-join__option/g);
-  assert.match(index, /\{\s*"version": 1\s*\}/);
-  assert.match(index, /Affirmed Josh Identity/);
-  assert.match(index, /Declined Josh Identity/);
-  assert.match(index, /Undeclared Josh Identity/);
+  assert.match(index, /## Join the Joshternet/);
   assert.match(index, /No signup form|no account/i);
-  assert.match(index, /does not automatically notify JoshBot/i);
-  assert.match(index, /does not itself grant participation/i);
+  assert.match(index, /Start joining/);
+  assert.match(index, /\/join\//);
+  assert.doesNotMatch(index, /home-join__option/);
+  assert.match(join, /"josh": true/);
+  assert.match(join, /"josh": false/);
+  assert.match(join, /\{\s*"version": 1\s*\}/);
   assert.match(index, /is not the Joshternet/i);
 });
 
@@ -132,10 +136,11 @@ test("homepage styles scope discovery components and honor reduced motion", asyn
   const css = await read("assets/css/main.css");
 
   assert.match(css, /\.home-tagline\s*\{/);
+  assert.match(css, /\.home-invite\s*\{/);
   assert.match(css, /\.home-cta\s*\{/);
   assert.match(css, /\.home-cta__primary\s*\{/);
   assert.match(css, /\.home-cta__secondary\s*\{/);
-  assert.match(css, /\.home-join\s*\{/);
+  assert.match(css, /\.join-steps\s*\{/);
   assert.match(css, /\.home-meet__grid\s*\{/);
   assert.match(css, /\.home-activity__list\s*\{/);
   assert.match(css, /\.home-connections\s*\{/);

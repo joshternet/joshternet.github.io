@@ -110,6 +110,8 @@ test("privacy and terms keep permalinks and operated-service facts", async () =>
   assert.match(privacy, /do not send Search query text/);
   assert.match(privacy, /outbound link clicks/);
   assert.match(privacy, /inbound arrival/);
+  assert.match(privacy, /deliberate Connections/);
+  assert.match(privacy, /Join guide steps/);
 
   assert.match(privacy, /\]\(\/licensing\/third-party-licenses\/\)/);
   assert.match(terms, /\[Privacy\]\(\/privacy\/\)/);

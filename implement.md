@@ -2,10 +2,11 @@
 layout: default
 title: Implement /.well-known/josh
 description: >-
-  A practical, non-normative guide to publishing and validating the version 1
-  /.well-known/josh declaration used to participate in the Joshternet network.
+  Publish and validate a version 1 /.well-known/josh declaration to participate
+  in the Joshternet—Joshes and non-Joshes welcome. Practical, non-normative guide.
 keywords: >-
-  /.well-known/josh, Joshternet declaration, implement Joshternet, indie web protocol
+  /.well-known/josh, Joshternet declaration, implement Joshternet, indie web protocol,
+  join Joshternet
 permalink: /implement/
 seo:
   type: TechArticle

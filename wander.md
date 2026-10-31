@@ -2,10 +2,12 @@
 layout: default
 title: Wander through independent Joshternet websites
 description: >-
-  Wander through independent websites participating in the Joshternet—open a
-  random participant, follow on-page trails, and visit sites without leaving the network map.
+  Wander through independent Joshternet websites—open a random participant,
+  follow on-page trails, and visit real sites on their own domains. Everyone is
+  welcome to join the network.
 keywords: >-
-  wander Joshternet, explore websites, independent websites, Josh network
+  wander Joshternet, explore websites, independent websites, Josh network,
+  indie web
 seo:
   type: CollectionPage
   name: Wander

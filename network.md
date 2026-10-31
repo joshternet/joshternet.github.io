@@ -2,10 +2,12 @@
 layout: default
 title: Participating Independent Websites
 description: >-
-  Browse independent websites participating in the Joshternet—discovered and
-  verified by JoshBot, with screenshots, feeds, and elsewhere profiles when published.
+  Browse independent websites in the Joshternet Network—Joshes and non-Joshes
+  discovered and verified by JoshBot, with screenshots, feeds, and elsewhere
+  profiles when published. Join by publishing /.well-known/josh.
 keywords: >-
-  Joshternet network, participating websites, JoshBot registry, independent websites
+  Joshternet network, participating websites, JoshBot registry, independent websites,
+  join Joshternet
 seo:
   type: CollectionPage
   name: The Network

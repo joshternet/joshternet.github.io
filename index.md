@@ -2,11 +2,12 @@
 layout: default
 title: "Joshternet: An Open Network for Joshes and Independent Websites"
 description: >-
-  Joshternet connects people who identify as Josh and the independent websites
-  they call home—an open, decentralized network built on shared web conventions.
+  Joshternet connects independent websites—Joshes and friends of Joshes—through
+  a tiny public /.well-known/josh declaration. Anyone can join; your site stays
+  yours.
 keywords: >-
   Joshternet, Josh network, independent websites, indie web, open web,
-  /.well-known/josh, personal websites
+  /.well-known/josh, personal websites, join Joshternet
 scripts:
   - /assets/js/home-meet.js
   - /assets/js/connections.js
@@ -18,20 +19,17 @@ scripts:
 
 Independent websites, linked by a tiny public declaration. No accounts. No feed algorithm. Your site stays yours.
 
+<p class="home-invite">
+  <strong class="home-invite__lead">Are you a Josh? Get yourself connected.</strong>
+  Not named Josh? Join anyway—everyone participates the same way.
+</p>
+
 <p class="home-cta">
   <a class="home-cta__primary" href="{{ '/wander/' | relative_url }}">Wander the Joshternet</a>
-  <a class="home-cta__secondary" href="{{ '/network/' | relative_url }}">Explore the network</a>
+  <a class="home-cta__secondary" href="{{ '/join/' | relative_url }}">Join the Joshternet</a>
 </p>
-
-<p class="prose-emphasis"><strong>Joshness is declared, never derived.</strong> Non-Joshes are welcome.</p>
 
 {% include home-new-arrivals.html %}
-
-<p class="home-new-arrivals__invite">
-  Not named Josh? You're welcome here, too.
-  <a href="{{ '/implement/' | relative_url }}">Come josh around.</a>
-  Bring your own little corner of the web—your website stays yours.
-</p>
 
 ## Meet the websites
 
@@ -72,55 +70,15 @@ That is participation. Optional `josh: true` or `josh: false` says how you ident
 
 ## Join the Joshternet
 
-No signup form. No account. Publish a file on a site you control.
+No signup form. No account. Publish a tiny file on a site you control—Joshes and non-Joshes alike.
 
-### Pick a declaration
+The guided walkthrough covers choosing a declaration, your platform, validation, optional discovery, and what to do once JoshBot lists you.
 
-<div class="home-join">
-  <div class="home-join__option">
-    <h3 class="home-join__label">I'm a Josh</h3>
-    <p class="home-join__path">
-      <code>/.well-known/josh</code>
-    </p>
-    <pre class="home-join__code"><code>{
-  "version": 1,
-  "josh": true
-}</code></pre>
-    <p>Affirmed Josh Identity, and you're in.</p>
-  </div>
-  <div class="home-join__option">
-    <h3 class="home-join__label">I'm participating, not as a Josh</h3>
-    <p class="home-join__path">
-      <code>/.well-known/josh</code>
-    </p>
-    <pre class="home-join__code"><code>{
-  "version": 1,
-  "josh": false
-}</code></pre>
-    <p>Declined Josh Identity—still a full participant.</p>
-  </div>
-  <div class="home-join__option">
-    <h3 class="home-join__label">I'm in; leaving identity open</h3>
-    <p class="home-join__path">
-      <code>/.well-known/josh</code>
-    </p>
-    <pre class="home-join__code"><code>{
-  "version": 1
-}</code></pre>
-    <p>Undeclared Josh Identity. Participation without the label.</p>
-  </div>
-</div>
+<p class="home-cta home-cta--join-teaser">
+  <a class="home-cta__secondary" href="{{ '/join/' | relative_url }}">Start joining</a>
+</p>
 
-### Next steps
-
-1. Publish `/.well-known/josh` on your origin.
-2. Check it with the [declaration checker][validate].
-3. Optionally [nominate][nominate] the site so JoshBot knows to look.
-4. JoshBot may verify it and add it to the registry.
-
-Publishing means you're participating. It does not automatically notify JoshBot or guarantee a registry listing. Nomination asks for a crawl; it does not itself grant participation.
-
-[Implementation guide][implementation] · [platform recipes][platforms] · [declaration checker][validate]
+[The Network][network] · [Implementation guide][implementation] · [platform recipes][platforms] · [declaration checker][validate] · [nominate][nominate]
 
 ## Status
 
@@ -161,6 +119,7 @@ Talk in [`#joshternet`][irc], skim the [community principles][community], or ope
 [platforms]: /implement/platforms/
 [validate]: /implement/validate/
 [nominate]: /nominate/
+[network]: /network/
 [joshbot]: /joshbot/
 [community]: /community/
 [irc]: https://web.libera.chat/#joshternet

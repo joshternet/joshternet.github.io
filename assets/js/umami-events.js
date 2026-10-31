@@ -311,6 +311,10 @@
       return;
     }
 
+    if (anchor.hasAttribute("data-joshternet-skip-link-track")) {
+      return;
+    }
+
     const classified = joshternetLinkEventFromHref(
       anchor.getAttribute("href") || "",
       anchor.getAttribute("rel"),
