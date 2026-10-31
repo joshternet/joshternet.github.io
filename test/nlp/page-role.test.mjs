@@ -175,6 +175,24 @@ test("classifyPageRole: schemaTypes BlogPosting → article", () => {
   );
 });
 
+test("classifyPageRole: root permalink with BlogPosting → article (joshghent shape)", () => {
+  assert.equal(
+    classifyPageRole("https://joshghent.com/ring-e2ee/", {
+      schemaTypes: ["BlogPosting"],
+      title: "Ring is deliberately nefarious when you E2E encrypt your video",
+    }),
+    "article",
+  );
+  assert.equal(
+    allowsHeuristicTopics(
+      classifyPageRole("https://joshghent.com/ring-e2ee/", {
+        schemaTypes: ["Article"],
+      }),
+    ),
+    true,
+  );
+});
+
 test("classifyPageRole: schemaTypes AboutPage → about", () => {
   assert.equal(
     classifyPageRole("https://a.example/mystery-about", {

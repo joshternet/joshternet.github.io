@@ -17,7 +17,9 @@ import {
   externalOutboundLinks,
   identitySlashSeedUrls,
   isContentIndexUrl,
+  isIdentitySlashPath,
   isPhotoAttachmentUrl,
+  isSoft404Duplicate,
   isTopicHubIndexUrl,
   topicHubChildUrls,
   topicHubPrefix,
@@ -690,6 +692,234 @@ test("crawlOrigin: feedEntryUrls are seeded into queue", async () => {
       feedEntryUrls: ["https://a.example/post-from-feed/"],
     });
     assert.ok(crawled.has("https://a.example/post-from-feed/"));
+  } finally {
+    restore();
+  }
+});
+
+test("isSoft404Duplicate: canonical pointing at home with matching title", () => {
+  assert.equal(
+    isSoft404Duplicate({
+      pageUrl: "https://joshghent.com/about/",
+      homeUrl: "https://joshghent.com/",
+      title: "Josh Ghent — Developer Musings",
+      homeTitle: "Josh Ghent — Developer Musings",
+      canonical: "https://joshghent.com/",
+      homeCanonical: "https://joshghent.com/",
+    }),
+    true,
+  );
+});
+
+test("isSoft404Duplicate: empty urls, home path, and identity fingerprint", () => {
+  assert.equal(
+    isSoft404Duplicate({
+      pageUrl: "",
+      homeUrl: "https://a.example/",
+    }),
+    false,
+  );
+  assert.equal(
+    isSoft404Duplicate({
+      pageUrl: "https://a.example/",
+      homeUrl: "https://a.example/",
+      title: "Home",
+      homeTitle: "Home",
+    }),
+    false,
+  );
+  assert.equal(
+    isSoft404Duplicate({
+      pageUrl: "not-a-url",
+      homeUrl: "also-bad",
+      title: "Home",
+      homeTitle: "Home",
+    }),
+    false,
+  );
+  assert.equal(
+    isSoft404Duplicate({
+      pageUrl: "https://a.example/about/",
+      homeUrl: "https://a.example/",
+      title: "Home",
+      homeTitle: "Home",
+      canonical: "::::",
+      homeCanonical: "::::",
+      bodyFingerprint: "same",
+      homeBodyFingerprint: "same",
+    }),
+    true,
+  );
+  assert.equal(
+    isSoft404Duplicate({
+      pageUrl: "https://a.example/about/",
+      homeUrl: "https://a.example/",
+      title: "Home",
+      homeTitle: "Home",
+      bodyFingerprint: "same",
+      homeBodyFingerprint: "same",
+    }),
+    true,
+  );
+  assert.equal(
+    isSoft404Duplicate({
+      pageUrl: "https://a.example/posts/hello/",
+      homeUrl: "https://a.example/",
+      title: "Home",
+      homeTitle: "Home",
+      bodyFingerprint: "same",
+      homeBodyFingerprint: "same",
+    }),
+    false,
+  );
+});
+
+test("isSoft404Duplicate: branded article title is not a soft-404", () => {
+  assert.equal(
+    isSoft404Duplicate({
+      pageUrl: "https://joshghent.com/ring-e2ee/",
+      homeUrl: "https://joshghent.com/",
+      title: "Ring is deliberately nefarious — Developer Musings",
+      homeTitle: "Josh Ghent — Developer Musings",
+      canonical: "https://joshghent.com/ring-e2ee/",
+      homeCanonical: "https://joshghent.com/",
+      bodyFingerprint: "aaaa",
+      homeBodyFingerprint: "aaaa",
+    }),
+    false,
+  );
+});
+
+test("isSoft404Duplicate: real about with self-canonical is kept", () => {
+  assert.equal(
+    isSoft404Duplicate({
+      pageUrl: "https://peer.example/about/",
+      homeUrl: "https://peer.example/",
+      title: "About Peer",
+      homeTitle: "Peer Home",
+      canonical: "https://peer.example/about/",
+      homeCanonical: "https://peer.example/",
+      bodyFingerprint: "about-body",
+      homeBodyFingerprint: "home-body",
+    }),
+    false,
+  );
+  assert.equal(isIdentitySlashPath("/about"), true);
+  assert.equal(isIdentitySlashPath("/ring-e2ee"), false);
+  assert.equal(isIdentitySlashPath("/"), false);
+  assert.equal(isIdentitySlashPath(""), false);
+  assert.equal(
+    isSoft404Duplicate({
+      pageUrl: "https://peer.example/about/",
+      homeUrl: "https://peer.example/",
+      title: "Same Title",
+      homeTitle: "Same Title",
+      canonical: "https://peer.example/about/",
+      homeCanonical: "https://peer.example/",
+      bodyFingerprint: "about-body",
+      homeBodyFingerprint: "home-body",
+    }),
+    false,
+  );
+});
+
+test("crawlOrigin: soft-404 identity pages do not consume page budget", async () => {
+  const origin = "https://joshghent.example";
+  const cache = dnsCache(["joshghent.example"]);
+  const homeHtml = `<!doctype html><html><head>
+    <title>Josh Ghent — Developer Musings</title>
+    <link rel="canonical" href="https://joshghent.example/">
+  </head><body><main><p>Home prose about software.</p></main></body></html>`;
+  const softHtml = `<!doctype html><html><head>
+    <title>Josh Ghent — Developer Musings</title>
+    <link rel="canonical" href="https://joshghent.example/">
+  </head><body><main><p>Home prose about software.</p></main></body></html>`;
+  const articleHtml = `<!doctype html><html><head>
+    <title>Ring E2EE</title>
+    <link rel="canonical" href="https://joshghent.example/ring-e2ee/">
+    <script type="application/ld+json">{"@type":"BlogPosting","headline":"Ring E2EE"}</script>
+  </head><body><main><p>Article about privacy and encryption.</p></main></body></html>`;
+  install();
+  try {
+    globalThis.fetch = async (url) => {
+      const urlStr = String(url);
+      if (urlStr.includes("sitemap.xml")) {
+        return {
+          ok: false,
+          status: 404,
+          headers: new Headers({ "content-type": "text/html" }),
+          arrayBuffer: async () => Buffer.from(""),
+        };
+      }
+      let body = homeHtml;
+      if (urlStr.includes("/about/") || urlStr.includes("/uses/")) {
+        body = softHtml;
+      } else if (urlStr.includes("/ring-e2ee/")) {
+        body = articleHtml;
+      }
+      return {
+        ok: true,
+        status: 200,
+        headers: new Headers({ "content-type": "text/html" }),
+        arrayBuffer: async () => Buffer.from(body),
+      };
+    };
+    const result = await crawlOrigin(origin, {
+      cache,
+      feedEntryUrls: [`${origin}/ring-e2ee/`],
+    });
+    assert.ok(result.pages.some((page) => page.url === `${origin}/`));
+    assert.ok(result.pages.some((page) => page.url === `${origin}/ring-e2ee/`));
+    assert.equal(
+      result.pages.some((page) => page.url.includes("/about/")),
+      false,
+    );
+    const article = result.pages.find(
+      (page) => page.url === `${origin}/ring-e2ee/`,
+    );
+    assert.equal(article?.page_role, "article");
+  } finally {
+    restore();
+  }
+});
+
+test("crawlOrigin: feed entries are fetched before identity slash pages", async () => {
+  const origin = "https://order.example";
+  const cache = dnsCache(["order.example"]);
+  /** @type {string[]} */
+  const order = [];
+  install();
+  try {
+    globalThis.fetch = async (url) => {
+      const urlStr = String(url);
+      if (urlStr.includes("sitemap.xml")) {
+        return {
+          ok: false,
+          status: 404,
+          headers: new Headers({ "content-type": "text/html" }),
+          arrayBuffer: async () => Buffer.from(""),
+        };
+      }
+      order.push(urlStr);
+      return {
+        ok: true,
+        status: 200,
+        headers: new Headers({ "content-type": "text/html" }),
+        arrayBuffer: async () => Buffer.from(SIMPLE_HTML(`Page ${urlStr}`)),
+      };
+    };
+    await crawlOrigin(origin, {
+      cache,
+      feedEntryUrls: [`${origin}/recent-post/`],
+    });
+    const homeIndex = order.indexOf(`${origin}/`);
+    const feedIndex = order.indexOf(`${origin}/recent-post/`);
+    const aboutIndex = order.indexOf(`${origin}/about/`);
+    assert.ok(homeIndex >= 0);
+    assert.ok(feedIndex > homeIndex);
+    if (aboutIndex >= 0) {
+      assert.ok(feedIndex < aboutIndex);
+    }
   } finally {
     restore();
   }

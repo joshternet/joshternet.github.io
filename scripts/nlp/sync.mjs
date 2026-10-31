@@ -78,6 +78,7 @@ import {
   isEnglishLanguage,
   parseHtmlRegions,
   posterImageFromHtml,
+  schemaTypesFromHtml,
   shareDescriptionFromHtml,
 } from "./text.mjs";
 
@@ -250,9 +251,16 @@ async function main() {
           continue;
         }
 
+        const pageSchemaTypes = schemaTypesFromHtml(page.html || "");
+
+        for (const schemaType of pageSchemaTypes) {
+          schemaTypes.add(schemaType);
+        }
+
         const role = classifyPageRole(page.url, {
           title: regions.title || page.title,
           derived: regions.derived,
+          schemaTypes: pageSchemaTypes,
         });
         const noindex = Boolean(regions.noindex);
 

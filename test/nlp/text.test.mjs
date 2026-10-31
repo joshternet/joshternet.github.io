@@ -7,14 +7,19 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
+  canonicalHrefFromHtml,
   decodeHrefForParse,
   htmlAttributeValue,
+  htmlBodyFingerprint,
   isEnglishLanguage,
+  jsonLdObjects,
+  knowsAboutFromHtml,
   metaContent,
   metaContents,
   normalizeExtractedText,
   parseHtmlRegions,
   posterImageFromHtml,
+  schemaTypesFromHtml,
   shareDescriptionFromHtml,
   unwrapXmlCdata,
 } from "../../scripts/nlp/text.mjs";
@@ -393,4 +398,135 @@ test("parseHtmlRegions: single-quoted href is extracted", () => {
   assert.equal(result.links.length, 1);
   assert.equal(result.links[0].href, "/me/");
   assert.deepEqual(result.links[0].classNames, ["home_link"]);
+});
+
+test("schemaTypesFromHtml: BlogPosting JSON-LD and og:type=article", () => {
+  const html = `<!doctype html><html><head>
+    <title>Ring E2EE</title>
+    <meta property="og:type" content="article">
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BlogPosting","headline":"Ring E2EE"}
+    </script>
+  </head><body><main><p>Privacy article body.</p></main></body></html>`;
+  const types = schemaTypesFromHtml(html);
+  assert.ok(types.includes("BlogPosting"));
+  assert.ok(types.includes("Article"));
+});
+
+test("schemaTypesFromHtml: schema.org URL @type is normalized", () => {
+  const html = `<script type="application/ld+json">
+    {"@type":"https://schema.org/NewsArticle","headline":"News"}
+  </script>`;
+  assert.ok(schemaTypesFromHtml(html).includes("NewsArticle"));
+});
+
+test("schemaTypesFromHtml: invalid JSON-LD is ignored", () => {
+  const html = `<script type="application/ld+json">{not-json</script>
+    <meta property="og:type" content="website">`;
+  assert.deepEqual(schemaTypesFromHtml(html), []);
+});
+
+test("canonicalHrefFromHtml: resolves relative canonical against page URL", () => {
+  const html = `<link rel="canonical" href="/">`;
+  assert.equal(
+    canonicalHrefFromHtml(html, "https://joshghent.com/about/"),
+    "https://joshghent.com/",
+  );
+});
+
+test("htmlBodyFingerprint: same prose yields same fingerprint", () => {
+  const a = `<html><head><title>Home</title></head><body><main><p>Hello world</p></main></body></html>`;
+  const b = `<html><head><title>Home</title></head><body><main><p>Hello world</p></main></body></html>`;
+  const c = `<html><head><title>Home</title></head><body><main><p>Different</p></main></body></html>`;
+  assert.equal(htmlBodyFingerprint(a), htmlBodyFingerprint(b));
+  assert.notEqual(htmlBodyFingerprint(a), htmlBodyFingerprint(c));
+});
+
+test("knowsAboutFromHtml: Person expertise labels", () => {
+  const html = `<script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"Person",
+      "name":"Josh Ghent",
+      "knowsAbout":["Software architecture","AWS","Typescript"]
+    }
+  </script>`;
+  assert.deepEqual(knowsAboutFromHtml(html), [
+    "Software architecture",
+    "AWS",
+    "Typescript",
+  ]);
+});
+
+test("jsonLdObjects: arrays, @graph, and non-objects", () => {
+  assert.deepEqual(jsonLdObjects(null), []);
+  assert.deepEqual(jsonLdObjects("x"), []);
+  const graph = jsonLdObjects({
+    "@graph": [{ "@type": "Person" }, { "@type": "Organization" }],
+  });
+  assert.equal(graph.length, 3);
+  assert.deepEqual(jsonLdObjects([{ "@type": "Article" }, null]), [
+    { "@type": "Article" },
+  ]);
+});
+
+test("schemaTypesFromHtml: @type arrays, empty script, and @graph", () => {
+  const html = `<script type="application/ld+json"></script>
+    <script type="application/ld+json">
+      {"@graph":[{"@type":["BlogPosting","Article"]}]}
+    </script>`;
+  const types = schemaTypesFromHtml(html);
+  assert.ok(types.includes("BlogPosting"));
+  assert.ok(types.includes("Article"));
+});
+
+test("canonicalHrefFromHtml: skips empty href and keeps a later valid one", () => {
+  assert.equal(
+    canonicalHrefFromHtml(
+      `<link rel="canonical" href=""><link rel="canonical" href="/ok/">`,
+      "https://a.example/x/",
+    ),
+    "https://a.example/ok/",
+  );
+  assert.equal(canonicalHrefFromHtml(`<link rel="canonical">`), "");
+  assert.equal(
+    canonicalHrefFromHtml(
+      `<link rel="canonical" href="http://exa mple.com/bad">`,
+      "https://a.example/",
+    ),
+    "",
+  );
+});
+
+test("htmlBodyFingerprint: empty prose returns empty fingerprint", () => {
+  assert.equal(
+    htmlBodyFingerprint(
+      `<html><head><title></title></head><body></body></html>`,
+    ),
+    "",
+  );
+});
+
+test("knowsAboutFromHtml: string, Organization, and object entries", () => {
+  const html = `<script type="application/ld+json">
+    {
+      "@type":"Organization",
+      "knowsAbout":"Privacy"
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@type":"Person",
+      "knowsAbout":[{"name":"AWS"},{"@id":"https://example.com/typescript"},{"nope":true}, ""]
+    }
+  </script>
+  <script type="application/ld+json">
+    {"@type":"BlogPosting","knowsAbout":["ignored"]}
+  </script>
+  <script type="application/ld+json">{broken</script>`;
+  const labels = knowsAboutFromHtml(html);
+  assert.ok(labels.includes("Privacy"));
+  assert.ok(labels.includes("AWS"));
+  assert.ok(labels.includes("https://example.com/typescript"));
+  assert.equal(labels.includes("ignored"), false);
 });

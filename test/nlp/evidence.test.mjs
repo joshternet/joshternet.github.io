@@ -656,6 +656,19 @@ test("isParserArtifactSlug: null slug fires || '' fallback (L82)", () => {
   assert.equal(isParserArtifactSlug("keywords-speech"), true);
 });
 
+test("isParserArtifactSlug: year-prefixed crawl junk is rejected", () => {
+  assert.equal(isParserArtifactSlug("2018-gifs"), true);
+  assert.equal(isParserArtifactSlug("2026-middot"), true);
+  assert.equal(isParserArtifactSlug("2024"), true);
+  assert.equal(isParserArtifactSlug("privacy"), false);
+  assert.equal(isParserArtifactSlug("open-source"), false);
+});
+
+test("isNonSubjectSlug: year-prefixed junk is a non-subject", () => {
+  assert.equal(isNonSubjectSlug("2018-gifs"), true);
+  assert.equal(isNonSubjectSlug("2026-middot"), true);
+});
+
 test("canonicalTopicLabel: strips CMS feed/keyword paths and drops leftovers", () => {
   assert.equal(canonicalTopicLabel(""), "");
   assert.equal(canonicalTopicLabel(null), "");

@@ -187,6 +187,7 @@ test("declared topic-label sources qualify immediately", () => {
   assert.equal(isCommunityEligibleSource("octothorpe"), false);
   assert.equal(isCommunityEligibleSource("topic-hub:link"), true);
   assert.equal(isCommunityEligibleSource("topic-hub:page"), true);
+  assert.equal(isCommunityEligibleSource("json-ld:knowsAbout"), true);
   assert.equal(isCommunityEligibleSource("meta:description"), false);
   assert.equal(isCommunityEligibleSource("visible-text"), false);
 });

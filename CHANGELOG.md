@@ -19,6 +19,7 @@
 
 ### Changed
 
+- NLP crawl improvements for sites without feed tags (for example joshghent.com): BlogPosting/Article JSON-LD and `og:type=article` drive `page_role` so root permalinks get heuristics; Person `knowsAbout` becomes community-eligible declared topics; soft-404 pages that repeat the homepage (canonical to `/` or identity-slash body match) no longer consume the page budget; feed entry URLs enqueue before identity slash seeds; year-prefixed heuristic junk (`2018-gifs`) is dropped.
 - SEO and IndieWeb markup: site `author` in `_config.yml`; homepage Project JSON-LD gains `logo` and GitHub `sameAs`; gap pages get `seo.type`; derived JSON-LD adds BreadcrumbList (topics/implement) and capped ItemList (`/network/`, `/activity/`, `/topics/`, `/welcome/`); topic pages nest `h-feed` on article lists only; activity/search author cards gain clean `u-url`; welcome cards and topics index use `h-card`.
 - Homepage welcome cards are build-time only for participants within the last 14 days (daily deploy), stacked meta rows, no hidden candidates or runtime eligibility filter.
 - Homepage Meet excludes Welcome-featured domains in Liquid (`home-welcome-eligible`); Meet JS only shuffles and shows three cards.
