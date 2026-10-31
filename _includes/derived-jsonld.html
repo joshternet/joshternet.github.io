@@ -1,7 +1,8 @@
 {% comment %}
   Goal: Page-specific JSON-LD for derived exploration pages. Complements
   jekyll-seo-tag. Search stays noindex and skips this graph. Homepage already
-  publishes the Project node.
+  publishes the Project node. Caps ItemList at 25. Breadcrumbs for topic stubs
+  and implement pages.
 {% endcomment %}
 {% if page.robots == 'noindex' %}
 {% elsif page.url == '/' %}
@@ -9,6 +10,43 @@
 {% elsif page.seo.type %}
   {% assign jsonld_type = page.seo.type | default: 'WebPage' %}
   {% assign jsonld_name = page.seo.name | default: page.title %}
+  {% assign jsonld_itemlist_cap = 25 %}
+  {% assign jsonld_itemlist_urls = '' | split: '' %}
+  {% assign jsonld_has_itemlist = false %}
+  {% assign jsonld_is_topic_stub = false %}
+  {% if page.url contains '/topics/' and page.slug %}
+    {% assign jsonld_is_topic_stub = true %}
+  {% endif %}
+
+  {% unless jsonld_is_topic_stub %}
+    {% if page.url == '/network/' %}
+      {% for network_site in site.data.network limit: jsonld_itemlist_cap %}
+        {% assign jsonld_itemlist_urls = jsonld_itemlist_urls | push: network_site.origin %}
+      {% endfor %}
+      {% assign jsonld_has_itemlist = true %}
+    {% elsif page.url == '/activity/' %}
+      {% assign jsonld_activity_items = site.data.activity.primary | default: empty %}
+      {% for item in jsonld_activity_items limit: jsonld_itemlist_cap %}
+        {% assign jsonld_itemlist_urls = jsonld_itemlist_urls | push: item.url %}
+      {% endfor %}
+      {% assign jsonld_has_itemlist = true %}
+    {% elsif page.url == '/topics/' %}
+      {% assign jsonld_neighborhoods = site.data.topic_views.neighborhoods | default: empty %}
+      {% for topic in jsonld_neighborhoods limit: jsonld_itemlist_cap %}
+        {% capture jsonld_topic_url %}{{ '/topics/' | append: topic.slug | append: '/' | absolute_url }}{% endcapture %}
+        {% assign jsonld_itemlist_urls = jsonld_itemlist_urls | push: jsonld_topic_url %}
+      {% endfor %}
+      {% assign jsonld_has_itemlist = true %}
+    {% elsif page.url == '/welcome/' %}
+      {% assign jsonld_welcome_cards = site.data.welcome_cards.cards | default: empty %}
+      {% for card in jsonld_welcome_cards limit: jsonld_itemlist_cap %}
+        {% capture jsonld_welcome_url %}{{ card.network_path | absolute_url }}{% endcapture %}
+        {% assign jsonld_itemlist_urls = jsonld_itemlist_urls | push: jsonld_welcome_url %}
+      {% endfor %}
+      {% assign jsonld_has_itemlist = true %}
+    {% endif %}
+  {% endunless %}
+
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -27,7 +65,7 @@
       "about": {
         "@id": {{ '/#project' | absolute_url | jsonify }}
       }
-      {%- if page.url contains '/topics/' and page.slug -%}
+      {%- if jsonld_is_topic_stub -%}
       ,
       "mainEntity": {
         "@type": "DefinedTerm",
@@ -35,7 +73,99 @@
         "url": {{ page.url | absolute_url | jsonify }},
         "inDefinedTermSet": {{ '/topics/' | absolute_url | jsonify }}
       }
+      {%- elsif jsonld_has_itemlist and jsonld_itemlist_urls.size > 0 -%}
+      ,
+      "mainEntity": {
+        "@type": "ItemList",
+        "numberOfItems": {{ jsonld_itemlist_urls.size }},
+        "itemListElement": [
+          {%- for item_url in jsonld_itemlist_urls -%}
+          {
+            "@type": "ListItem",
+            "position": {{ forloop.index }},
+            "url": {{ item_url | jsonify }}
+          }{%- unless forloop.last -%},{%- endunless -%}
+          {%- endfor -%}
+        ]
+      }
       {%- endif -%}
     }
   </script>
+
+  {% if jsonld_is_topic_stub %}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": {{ '/' | absolute_url | jsonify }}
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Topics",
+            "item": {{ '/topics/' | absolute_url | jsonify }}
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": {{ jsonld_name | jsonify }},
+            "item": {{ page.url | absolute_url | jsonify }}
+          }
+        ]
+      }
+    </script>
+  {% elsif page.url == '/implement/' %}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": {{ '/' | absolute_url | jsonify }}
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Implement",
+            "item": {{ '/implement/' | absolute_url | jsonify }}
+          }
+        ]
+      }
+    </script>
+  {% elsif page.url contains '/implement/' %}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": {{ '/' | absolute_url | jsonify }}
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Implement",
+            "item": {{ '/implement/' | absolute_url | jsonify }}
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": {{ jsonld_name | jsonify }},
+            "item": {{ page.url | absolute_url | jsonify }}
+          }
+        ]
+      }
+    </script>
+  {% endif %}
 {% endif %}

@@ -1,0 +1,18 @@
+# Goal & Constraints: Optional, hand-approved participant introductions.
+# Not part of the authoritative JoshBot registry. Each entry must cite a
+# canonical https origin that currently participates. Prefer linking to the
+# participant's own page; excerpts need explicit permission.
+# Withdrawal: remove the entry (or leave it; Liquid only shows current members).
+#
+# Fields:
+#   origin: Canonical participating origin (must match network.json).
+#   summary: Short introduction in the participant's words.
+#   finds: Optional — what visitors will find on the website.
+#   why: Optional — why they joined the Joshternet.
+#   link: https URL on the participant's own site.
+#   attributed: Display name for attribution.
+#
+# Submit or correct via the project contact / a GitHub pull request.
+# Do not auto-generate biographies from crawled content.
+
+introductions: []

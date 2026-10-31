@@ -51,7 +51,13 @@
       </div>
       {% if include.item.site_title and include.item.site_title != '' %}
         <p class="activity-card__author p-author h-card">
-          <span class="p-name">{{ include.item.site_title | escape }}</span>
+          {% if include.item.site_origin and include.item.site_origin != '' %}
+            <a class="p-name u-url" href="{{ include.item.site_origin | escape }}">
+              {{- include.item.site_title | escape -}}
+            </a>
+          {% else %}
+            <span class="p-name">{{ include.item.site_title | escape }}</span>
+          {% endif %}
         </p>
       {% endif %}
       {% if include.item.summary and include.item.summary != '' %}

@@ -39,7 +39,7 @@ Topics from around the Joshternet.
 <ol class="activity-list topics-index h-feed" data-topics-index>
   {% for topic in neighborhoods %}
     <li
-      class="activity-card h-entry"
+      class="activity-card h-card"
       data-topic-item
       data-label="{{ topic.label | downcase | escape }}"
     >

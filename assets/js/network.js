@@ -1,3 +1,9 @@
+/**
+ * Goal & Constraints: Network directory filters by identity and optionally
+ * sorts by discover (random, default), recent, oldest, or alphabetical.
+ * Preserve ?site= deep links and keep identity + sort in the URL. Missing or
+ * invalid first_participated_at values sort last for date-based modes.
+ */
 (() => {
   const toolbar = document.querySelector("[data-network-toolbar]");
   const grid = document.querySelector("[data-network-grid]");
@@ -5,6 +11,7 @@
   const filters = Array.from(
     document.querySelectorAll("[data-network-filter]"),
   );
+  const sorts = Array.from(document.querySelectorAll("[data-network-sort]"));
   const count = document.querySelector("[data-network-count]");
   const countLabel = document.querySelector("[data-network-count-label]");
 
@@ -16,7 +23,6 @@
 
   /**
    * Returns a new array in Fisher-Yates order.
-   * Shuffled once per visit so filters do not put one site back above another.
    * @param {Element[]} values
    * @returns {Element[]}
    */
@@ -31,22 +37,110 @@
     return copy;
   }
 
-  const ordered = shuffle(cards);
-  const surprise = grid.querySelector(".network-surprise-card");
+  /**
+   * @param {string | undefined} value
+   * @returns {number | null}
+   */
+  function parseParticipatedAt(value) {
+    if (!value || typeof value !== "string") {
+      return null;
+    }
 
-  for (const card of ordered) {
-    grid.insertBefore(card, surprise);
+    const trimmed = value.trim();
+
+    if (!trimmed) {
+      return null;
+    }
+
+    const parsed = Date.parse(trimmed);
+
+    if (Number.isNaN(parsed)) {
+      return null;
+    }
+
+    return parsed;
   }
+
+  /**
+   * @param {Element} card
+   * @returns {string}
+   */
+  function cardLabel(card) {
+    return (
+      card.dataset.title ||
+      card.dataset.domain ||
+      card.dataset.origin ||
+      ""
+    ).toLowerCase();
+  }
+
+  /**
+   * @param {Element} card
+   * @returns {string}
+   */
+  function cardOrigin(card) {
+    return (card.dataset.origin || card.dataset.domain || "").toLowerCase();
+  }
+
+  /**
+   * @param {Element} left
+   * @param {Element} right
+   * @param {"recent" | "oldest" | "alpha"} mode
+   * @returns {number}
+   */
+  function compareCards(left, right, mode) {
+    if (mode === "alpha") {
+      const labelCompare = cardLabel(left).localeCompare(cardLabel(right));
+
+      if (labelCompare !== 0) {
+        return labelCompare;
+      }
+
+      return cardOrigin(left).localeCompare(cardOrigin(right));
+    }
+
+    const leftAt = parseParticipatedAt(left.dataset.firstParticipatedAt);
+    const rightAt = parseParticipatedAt(right.dataset.firstParticipatedAt);
+    const leftMissing = leftAt === null;
+    const rightMissing = rightAt === null;
+
+    if (leftMissing && rightMissing) {
+      return cardOrigin(left).localeCompare(cardOrigin(right));
+    }
+
+    if (leftMissing) {
+      return 1;
+    }
+
+    if (rightMissing) {
+      return -1;
+    }
+
+    if (leftAt !== rightAt) {
+      return mode === "recent" ? rightAt - leftAt : leftAt - rightAt;
+    }
+
+    return cardOrigin(left).localeCompare(cardOrigin(right));
+  }
+
+  const discoveryOrder = shuffle(cards);
+  const surprise = grid.querySelector(".network-surprise-card");
 
   const params = new URLSearchParams(window.location.search);
   const requestedIdentity = params.get("identity");
+  const requestedSort = params.get("sort");
   const validIdentities = new Set([
     "all",
     "affirmed",
     "declined",
     "undeclared",
   ]);
+  const validSorts = new Set(["discover", "recent", "oldest", "alpha"]);
 
+  /**
+   * @param {string | null} value
+   * @returns {string}
+   */
   function normalizeRequestedSite(value) {
     if (!value) {
       return "";
@@ -80,23 +174,30 @@
   let identity = validIdentities.has(requestedIdentity)
     ? requestedIdentity
     : "all";
-
-  if (
-    targetedCard &&
-    identity !== "all" &&
-    targetedCard.dataset.identity !== identity
-  ) {
-    identity = targetedCard.dataset.identity;
-  }
-
+  let sort = validSorts.has(requestedSort) ? requestedSort : "discover";
   let targetRevealed = false;
 
+  /**
+   * @returns {Element[]}
+   */
+  function orderedCards() {
+    if (sort === "discover") {
+      return discoveryOrder.slice();
+    }
+
+    return cards.slice().sort((left, right) => compareCards(left, right, sort));
+  }
+
   function apply() {
+    const ordered = orderedCards();
     let visible = 0;
 
     for (const card of ordered) {
-      const show = identity === "all" || card.dataset.identity === identity;
+      const matchesFilter =
+        identity === "all" || card.dataset.identity === identity;
+      const show = matchesFilter || card === targetedCard;
       card.hidden = !show;
+      grid.insertBefore(card, surprise);
 
       if (show) {
         visible += 1;
@@ -107,6 +208,12 @@
       const active = filter.dataset.networkFilter === identity;
       filter.classList.toggle("is-active", active);
       filter.setAttribute("aria-pressed", String(active));
+    }
+
+    for (const control of sorts) {
+      const active = control.dataset.networkSort === sort;
+      control.classList.toggle("is-active", active);
+      control.setAttribute("aria-pressed", String(active));
     }
 
     if (count) {
@@ -123,6 +230,16 @@
       nextParams.delete("identity");
     } else {
       nextParams.set("identity", identity);
+    }
+
+    if (sort === "discover") {
+      nextParams.delete("sort");
+    } else {
+      nextParams.set("sort", sort);
+    }
+
+    if (requestedSite) {
+      nextParams.set("site", requestedSite);
     }
 
     const query = nextParams.toString();
@@ -161,7 +278,14 @@
 
   for (const filter of filters) {
     filter.addEventListener("click", () => {
-      identity = filter.dataset.networkFilter;
+      identity = filter.dataset.networkFilter || "all";
+      apply();
+    });
+  }
+
+  for (const control of sorts) {
+    control.addEventListener("click", () => {
+      sort = control.dataset.networkSort || "discover";
       apply();
     });
   }

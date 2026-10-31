@@ -25,14 +25,18 @@ const fixture = `
     <div data-network-toolbar hidden>
       <button type="button" data-network-filter="all" aria-pressed="true">All</button>
       <button type="button" data-network-filter="declined" aria-pressed="false">Non-Josh</button>
+      <button type="button" data-network-sort="discover" aria-pressed="true" class="is-active">Discover</button>
+      <button type="button" data-network-sort="recent" aria-pressed="false">Recently joined</button>
+      <button type="button" data-network-sort="oldest" aria-pressed="false">Oldest first</button>
+      <button type="button" data-network-sort="alpha" aria-pressed="false">Alphabetical</button>
     </div>
     <strong data-network-count>4</strong>
     <span data-network-count-label>sites</span>
     <div data-network-grid>
-      <article class="network-card" data-network-card data-identity="affirmed" data-title="aaron" data-domain="aaron.example">Aaron</article>
-      <article class="network-card" data-network-card data-identity="affirmed" data-title="blake" data-domain="blake.example">Blake</article>
-      <article class="network-card" data-network-card data-identity="declined" data-title="casey" data-domain="casey.example">Casey</article>
-      <article class="network-card" data-network-card data-identity="undeclared" data-title="drew" data-domain="drew.example">Drew</article>
+      <article class="network-card" data-network-card data-identity="affirmed" data-title="aaron" data-domain="aaron.example" data-origin="https://aaron.example" data-first-participated-at="2026-01-01T00:00:00.000Z">Aaron</article>
+      <article class="network-card" data-network-card data-identity="affirmed" data-title="blake" data-domain="blake.example" data-origin="https://blake.example" data-first-participated-at="2026-03-01T00:00:00.000Z">Blake</article>
+      <article class="network-card" data-network-card data-identity="declined" data-title="casey" data-domain="casey.example" data-origin="https://casey.example" data-first-participated-at="2026-02-01T00:00:00.000Z">Casey</article>
+      <article class="network-card" data-network-card data-identity="undeclared" data-title="drew" data-domain="drew.example" data-origin="https://drew.example" data-first-participated-at="not-a-date">Drew</article>
       <a class="network-surprise-card" href="/wander/">Wander somewhere</a>
     </div>
   </body>
@@ -51,10 +55,10 @@ after(async () => {
 
 /**
  * Opens the network fixture with a fixed random source.
- * Math.random is stubbed because card order is intentionally nondeterministic.
  * @param {number} randomValue
+ * @param {string} [search]
  */
-async function networkPage(randomValue) {
+async function networkPage(randomValue, search = "") {
   const context = await browser.newContext();
   const page = await context.newPage();
 
@@ -70,20 +74,23 @@ async function networkPage(randomValue) {
     });
   });
 
-  await page.goto("http://joshternet.test/network/");
+  await page.goto(`http://joshternet.test/network/${search}`);
   await page.addScriptTag({ content: networkScript });
 
   return { context, page };
 }
 
+/**
+ * @param {import('playwright').Page} page
+ */
 async function visibleTitles(page) {
   return page.locator("[data-network-card]:not([hidden])").allTextContents();
 }
 
-test("network cards shuffle once per visit and do not offer A-Z sort", async () => {
+test("network cards shuffle once per visit by default (Discover)", async () => {
   const { context, page } = await networkPage(0);
 
-  assert.equal(await page.locator("[data-network-sort]").count(), 0);
+  assert.equal(await page.locator("[data-network-sort]").count(), 4);
   assert.deepEqual(await visibleTitles(page), [
     "Blake",
     "Casey",
@@ -124,7 +131,7 @@ test("network cards shuffle once per visit and do not offer A-Z sort", async () 
   await context.close();
 });
 
-test("a different random source produces a different card order", async () => {
+test("a different random source produces a different Discover order", async () => {
   const { context, page } = await networkPage(0.999999);
 
   assert.deepEqual(await visibleTitles(page), [
@@ -133,6 +140,65 @@ test("a different random source produces a different card order", async () => {
     "Casey",
     "Drew",
   ]);
+
+  await context.close();
+});
+
+test("Recently joined sorts by first_participated_at with invalid dates last", async () => {
+  const { context, page } = await networkPage(0);
+
+  await page.locator('[data-network-sort="recent"]').click();
+  assert.deepEqual(await visibleTitles(page), [
+    "Blake",
+    "Casey",
+    "Aaron",
+    "Drew",
+  ]);
+  assert.match(page.url(), /sort=recent/);
+
+  await page.locator('[data-network-filter="declined"]').click();
+  assert.deepEqual(await visibleTitles(page), ["Casey"]);
+  assert.match(page.url(), /identity=declined/);
+  assert.match(page.url(), /sort=recent/);
+
+  await context.close();
+});
+
+test("Alphabetical sort and Oldest first work with identity filters", async () => {
+  const { context, page } = await networkPage(0);
+
+  await page.locator('[data-network-sort="alpha"]').click();
+  assert.deepEqual(await visibleTitles(page), [
+    "Aaron",
+    "Blake",
+    "Casey",
+    "Drew",
+  ]);
+
+  await page.locator('[data-network-sort="oldest"]').click();
+  assert.deepEqual(await visibleTitles(page), [
+    "Aaron",
+    "Casey",
+    "Blake",
+    "Drew",
+  ]);
+
+  await context.close();
+});
+
+test("site deep link stays visible when identity filter would hide it", async () => {
+  const { context, page } = await networkPage(
+    0,
+    "?identity=declined&site=blake.example",
+  );
+
+  assert.equal(
+    await page
+      .locator('[data-domain="blake.example"]')
+      .evaluate((card) => card.hidden),
+    false,
+  );
+  assert.deepEqual(await visibleTitles(page), ["Blake", "Casey"]);
 
   await context.close();
 });

@@ -11,6 +11,9 @@ baseurl: ""
 lang: en
 locale: en_US
 theme: null
+author:
+  name: Joshternet
+  url: https://joshternet.org
 
 plugins:
   - jekyll-seo-tag

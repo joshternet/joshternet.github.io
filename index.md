@@ -25,6 +25,14 @@ Independent websites, linked by a tiny public declaration. No accounts. No feed 
 
 <p class="prose-emphasis"><strong>Joshness is declared, never derived.</strong> Non-Joshes are welcome.</p>
 
+{% include home-new-arrivals.html %}
+
+<p class="home-new-arrivals__invite">
+  Not named Josh? You're welcome here, too.
+  <a href="{{ '/implement/' | relative_url }}">Come josh around.</a>
+  Bring your own little corner of the web—your website stays yours.
+</p>
+
 ## Meet the websites
 
 Real sites, on their own domains.

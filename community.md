@@ -7,6 +7,9 @@ description: >-
 keywords: >-
   Joshternet community, stewardship, principles, independent websites, open network
 permalink: /community/
+seo:
+  type: WebPage
+  name: Community
 ---
 
 # Community Principles and Stewardship Commitment
@@ -20,6 +23,16 @@ That only works if the community surrounding the technology follows the same spi
 This is the Joshternet commitment. It states the community we are building, the behavior expected within Joshternet community spaces, and the commitments accepted by anyone entrusted with stewardship of the Joshternet project, its specifications, repositories, services, and shared infrastructure.
 
 It is a living community document rather than a normative protocol specification. It does not replace the Joshternet RFCs. It does not define who is a Josh. It does not give the Joshternet authority over independently operated websites or the people behind them.
+
+## Optional participant introductions
+
+Participating websites may voluntarily share a short introduction—what they publish, why they joined, and a link on their own site. Introductions are never required to join, appear in the Network, receive a welcome card, or show up on Connections.
+
+Approved introductions live in `_data/introductions.yml` and only display while the origin remains in the current registry. Prefer linking to a page you publish yourself. If Joshternet quotes an excerpt, that needs your explicit permission and attribution.
+
+To submit or correct an introduction, open a GitHub pull request against that data file or contact the project through the usual channels. When you withdraw from the Joshternet, ask for the introduction to be removed as well (or remove the declaration so the registry drops the origin).
+
+Do not submit AI-written biographies scraped from other people's sites.
 
 ## #joshternet
 

@@ -8,6 +8,9 @@ keywords: >-
   Joshternet button, web button embed, registry membership, /.well-known/josh
 permalink: /implement/buttons/
 nav_title: Buttons
+seo:
+  type: TechArticle
+  name: Joshternet buttons
 ---
 
 # Joshternet buttons

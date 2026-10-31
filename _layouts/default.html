@@ -118,6 +118,10 @@
           "name": {{ site.title | jsonify }},
           "description": {{ site.description | jsonify }},
           "url": {{ '/' | absolute_url | jsonify }},
+          "logo": {{ '/assets/images/joshternet-social.png' | absolute_url | jsonify }},
+          "sameAs": [
+            "https://github.com/joshternet"
+          ],
           "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": {{ '/' | absolute_url | jsonify }}

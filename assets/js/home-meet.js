@@ -1,6 +1,6 @@
 /**
- * Goal: Homepage Meet preview shows a random sample of participants each visit.
- * No site is ranked above another; join time and creator status are ignored.
+ * Goal: Homepage Meet preview shuffles Jekyll-emitted participant cards and
+ * shows three per visit. Eligibility (hub omit, Welcome omit) is build-time.
  */
 (() => {
   const PREVIEW_COUNT = 3;
@@ -33,6 +33,10 @@
   }
 
   const ordered = shuffle(cards);
+
+  for (const card of cards) {
+    card.hidden = true;
+  }
 
   for (const [index, card] of ordered.entries()) {
     card.hidden = index >= PREVIEW_COUNT;

@@ -7,6 +7,9 @@ description: >-
 keywords: >-
   Joshternet security, vulnerability reporting, responsible disclosure
 permalink: /security/
+seo:
+  type: WebPage
+  name: Security
 ---
 
 # Security

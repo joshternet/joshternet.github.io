@@ -1,0 +1,33 @@
+{% comment %}
+  Goal & Constraints: Shared build-time welcome eligibility. Assigns
+  home_arrival_sites (max three, newest first, origin tie-break) and
+  home_arrival_domains (space-separated, downcased) for non-hub origins whose
+  first_participated_at falls within 14 days of site.time. No markup.
+{% endcomment %}
+{% assign home_hub_origin = 'https://joshternet.org' %}
+{% assign home_hub_www = 'https://www.joshternet.org' %}
+{% assign home_arrival_now_s = site.time | date: '%s' | plus: 0 %}
+{% assign home_arrival_window_s = 14 | times: 24 | times: 60 | times: 60 %}
+{% assign home_arrival_cutoff_s = home_arrival_now_s | minus: home_arrival_window_s %}
+{% assign home_arrival_sites = '' | split: '' %}
+{% for network_site in site.data.network %}
+  {% if network_site.origin != home_hub_origin and network_site.origin != home_hub_www %}
+    {% if network_site.first_participated_at and network_site.first_participated_at != '' %}
+      {% assign home_arrival_at_s = network_site.first_participated_at | date: '%s' | plus: 0 %}
+      {% if home_arrival_at_s >= home_arrival_cutoff_s and home_arrival_at_s <= home_arrival_now_s %}
+        {% assign home_arrival_sites = home_arrival_sites | push: network_site %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+{% assign home_arrival_sites = home_arrival_sites | sort: 'origin' %}
+{% assign home_arrival_sites = home_arrival_sites | sort: 'first_participated_at' | reverse %}
+{% assign home_arrival_sites = home_arrival_sites | slice: 0, 3 %}
+{% assign home_arrival_domains = '' %}
+{% for network_site in home_arrival_sites %}
+  {% if home_arrival_domains != '' %}
+    {% assign home_arrival_domains = home_arrival_domains | append: ' ' %}
+  {% endif %}
+  {% assign home_arrival_domain = network_site.domain | downcase %}
+  {% assign home_arrival_domains = home_arrival_domains | append: home_arrival_domain %}
+{% endfor %}
