@@ -29,6 +29,11 @@ Independent websites participating in the Joshternet, discovered and verified by
 {% if jekyll.environment == "development" %}
   {% assign network_sites = network_sites | concat: site.data.network_dev %}
 {% endif %}
+{% comment %}
+  No-JS fallback: alphabetical by domain. JavaScript replaces order with Discover
+  (random), Recently joined, Oldest first, or Alphabetical while preserving filters.
+{% endcomment %}
+{% assign network_sites = network_sites | sort: 'domain' %}
 
 <div class="network-toolbar" data-network-toolbar hidden>
   <div class="network-filters" aria-label="Filter the network">
@@ -65,6 +70,40 @@ Independent websites participating in the Joshternet, discovered and verified by
       Undeclared
     </button>
   </div>
+  <div class="network-sorts" aria-label="Sort the network">
+    <button
+      class="network-sort is-active"
+      type="button"
+      data-network-sort="discover"
+      aria-pressed="true"
+    >
+      Discover
+    </button>
+    <button
+      class="network-sort"
+      type="button"
+      data-network-sort="recent"
+      aria-pressed="false"
+    >
+      Recently joined
+    </button>
+    <button
+      class="network-sort"
+      type="button"
+      data-network-sort="oldest"
+      aria-pressed="false"
+    >
+      Oldest first
+    </button>
+    <button
+      class="network-sort"
+      type="button"
+      data-network-sort="alpha"
+      aria-pressed="false"
+    >
+      Alphabetical
+    </button>
+  </div>
 </div>
 
 <p class="network-count" aria-live="polite">
@@ -92,6 +131,8 @@ Independent websites participating in the Joshternet, discovered and verified by
       data-identity="{{ network_site.identity }}"
       data-title="{{ network_site.title | default: network_site.domain | downcase | escape }}"
       data-domain="{{ network_site.domain | downcase | escape }}"
+      data-origin="{{ network_site.origin | escape }}"
+      data-first-participated-at="{{ network_site.first_participated_at | escape }}"
     >
       {% include outbound-href.html url=network_site.origin %}
       <a
@@ -208,6 +249,11 @@ Independent websites participating in the Joshternet, discovered and verified by
         >
           {{ network_site.domain | escape }}
         </a>
+        <p class="network-card__welcome">
+          <a href="{{ '/welcome/' | relative_url }}#{{ network_site.domain | downcase | slugify }}">
+            Get welcome card
+          </a>
+        </p>
       </div>
     </article>
   {% endfor %}
@@ -223,3 +269,5 @@ Independent websites participating in the Joshternet, discovered and verified by
   <p>JoshBot hasn't found any participating sites to show here yet.</p>
 </div>
 {% endif %}
+
+{% include participant-introductions.html %}

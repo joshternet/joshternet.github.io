@@ -151,7 +151,7 @@ async function previewPage(options = {}) {
   return { context, page };
 }
 
-test("homepage connections preview renders nodes without map tools", async () => {
+test("homepage connections preview renders nodes with map tools", async () => {
   const { context, page } = await previewPage();
 
   assert.equal(
@@ -159,7 +159,10 @@ test("homepage connections preview renders nodes without map tools", async () =>
     false,
   );
   assert.equal(await page.locator(".connections-graph__node").count(), 2);
-  assert.equal(await page.locator("[data-connections-map-tools]").count(), 0);
+  assert.equal(await page.locator("[data-connections-map-tools]").count(), 1);
+  assert.equal(await page.locator("[data-connections-zoom-in]").count(), 1);
+  assert.equal(await page.locator("[data-connections-zoom-out]").count(), 1);
+  assert.equal(await page.locator("[data-connections-map-reset]").count(), 1);
   assert.equal(await page.locator("[data-relation-filters]").count(), 0);
   assert.equal(
     await page.locator('marker[id="home-connections-bootstrap-arrow"]').count(),
@@ -174,6 +177,26 @@ test("homepage connections preview renders nodes without map tools", async () =>
     await page.locator('[data-connection-kind="content-link"]').count(),
     1,
   );
+
+  await context.close();
+});
+
+test("homepage connections preview zoom buttons change the camera", async () => {
+  const { context, page } = await previewPage();
+
+  const before = await page
+    .locator(".connections-graph__svg")
+    .getAttribute("viewBox");
+  await page.locator("[data-connections-zoom-in]").click();
+  const zoomed = await page
+    .locator(".connections-graph__svg")
+    .getAttribute("viewBox");
+  assert.notEqual(zoomed, before);
+  await page.locator("[data-connections-map-reset]").click();
+  const centered = await page
+    .locator(".connections-graph__svg")
+    .getAttribute("viewBox");
+  assert.equal(centered, before);
 
   await context.close();
 });
@@ -266,6 +289,58 @@ test("empty homepage connections payload leaves the graph hidden", async () => {
 
   assert.equal(await page.locator("[data-connections-graph]").isHidden(), true);
   assert.equal(await page.locator(".connections-graph__node").count(), 0);
+
+  await context.close();
+});
+
+test("homepage preview marks recently joined participants", async () => {
+  const { context, page } = await previewPage({
+    participants: [
+      {
+        origin: "https://a.example",
+        domain: "a.example",
+        title: "Site A",
+        description: "About A",
+        screenshot: "/assets/network/sites/a.webp",
+        first_participated_at: "2026-10-29T00:00:00.000Z",
+        recently_joined: true,
+      },
+      {
+        origin: "https://b.example",
+        domain: "b.example",
+        title: "Site B",
+        description: "About B",
+        screenshot: "/assets/network/sites/b.webp",
+        first_participated_at: "2026-09-01T00:00:00.000Z",
+        recently_joined: false,
+      },
+    ],
+  });
+
+  assert.equal(
+    await page
+      .locator('.connections-graph__node[data-origin="https://a.example"]')
+      .getAttribute("data-recently-joined"),
+    "true",
+  );
+  assert.equal(
+    await page
+      .locator('.connections-graph__node[data-origin="https://b.example"]')
+      .getAttribute("data-recently-joined"),
+    "false",
+  );
+  assert.equal(
+    await page.locator(".connections-graph__recent-ring").count(),
+    1,
+  );
+
+  await page
+    .locator('.connections-graph__node[data-origin="https://a.example"]')
+    .click();
+  assert.match(
+    (await page.locator("[data-connections-detail]").innerText()) || "",
+    /Recently joined the Joshternet/,
+  );
 
   await context.close();
 });

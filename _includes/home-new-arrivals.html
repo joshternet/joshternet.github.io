@@ -1,0 +1,89 @@
+{% comment %}
+  Goal & Constraints: Homepage welcome for recent participants. Cards come only
+  from build-time eligibility (home-welcome-eligible). Max three. Identity does
+  not affect inclusion. Ineligible sites are omitted.
+{% endcomment %}
+{% include home-welcome-eligible.html %}
+
+{% if home_arrival_sites.size > 0 %}
+  <div class="home-new-arrivals" data-home-new-arrivals>
+    <h2 class="home-new-arrivals__heading" id="welcome-to-the-joshternet">Welcome to the Joshternet!</h2>
+    <p class="home-new-arrivals__lede">Newly participating independent websites. Visit them on their own domains.</p>
+
+    <div class="home-new-arrivals__grid network-grid" data-home-new-arrivals-grid>
+      {% for network_site in home_arrival_sites %}
+        {% case network_site.identity %}
+          {% when 'affirmed' %}
+            {% assign identity_label = 'Josh' %}
+          {% when 'declined' %}
+            {% assign identity_label = 'Non-Josh' %}
+          {% else %}
+            {% assign identity_label = 'Undeclared' %}
+        {% endcase %}
+
+        <article
+          class="network-card network-card--{{ network_site.identity }} h-card"
+          data-home-new-arrivals-card
+          data-identity="{{ network_site.identity | escape }}"
+          data-domain="{{ network_site.domain | downcase | escape }}"
+          data-origin="{{ network_site.origin | escape }}"
+        >
+          {% include outbound-href.html url=network_site.origin %}
+          <a
+            class="network-card__link u-url"
+            href="{{ outbound_href | escape }}"
+            target="_blank"
+            rel="noopener"
+          >
+            <div class="network-card__preview">
+              {% if network_site.screenshot and network_site.screenshot != '' %}
+                <img
+                  class="network-card__image u-photo"
+                  src="{{ network_site.screenshot | relative_url }}"
+                  alt="Screenshot of {{ network_site.title | default: network_site.domain | escape }}"
+                  loading="lazy"
+                  decoding="async"
+                >
+              {% else %}
+                <div class="network-card__fallback" aria-hidden="true">
+                  <span>{{ network_site.domain | slice: 0 | upcase | escape }}</span>
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="network-card__body">
+              <span class="visually-hidden"> {{ identity_label }} Joshternet participant. </span>
+
+              <h3 class="network-card__title p-name">
+                {{ network_site.title | default: network_site.domain | escape }}
+                <span aria-hidden="true">↗</span>
+              </h3>
+
+              {% if network_site.description and network_site.description != '' %}
+                <p class="network-card__description p-note">
+                  {{ network_site.description | escape }}
+                </p>
+              {% endif %}
+            </div>
+          </a>
+          <div class="network-card__footer home-new-arrivals__meta">
+            <p class="network-card__domain p-org">
+              {{ network_site.domain | escape }}
+            </p>
+            <p class="home-new-arrivals__since">
+              First participated
+              <time datetime="{{ network_site.first_participated_at | escape }}">
+                {{ network_site.first_participated_at | date: '%B %-d, %Y' }}
+              </time>
+            </p>
+            <p class="home-new-arrivals__network-link">
+              <a href="{{ '/network/' | relative_url }}?site={{ network_site.domain | downcase | url_encode }}">
+                Find in the Network
+              </a>
+            </p>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}

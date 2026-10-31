@@ -450,16 +450,28 @@ Connections from around the Joshternet.
 {% endfor %}
 </div>
 
+{% assign recently_joined_now_s = site.time | date: '%s' | plus: 0 %}
+{% assign recently_joined_window_s = 7 | times: 24 | times: 60 | times: 60 %}
+{% assign recently_joined_cutoff_s = recently_joined_now_s | minus: recently_joined_window_s %}
 {% capture connections_bootstrap %}
 {
 "participants": [
 {% for network_site in ordered_sites %}
+{% assign site_recently_joined = false %}
+{% if network_site.first_participated_at and network_site.first_participated_at != '' %}
+{% assign site_joined_at_s = network_site.first_participated_at | date: '%s' | plus: 0 %}
+{% if site_joined_at_s >= recently_joined_cutoff_s and site_joined_at_s <= recently_joined_now_s %}
+{% assign site_recently_joined = true %}
+{% endif %}
+{% endif %}
 {
 "origin": {{ network_site.origin | jsonify }},
 "domain": {{ network_site.domain | jsonify }},
 "title": {{ network_site.title | default: network_site.domain | jsonify }},
 "description": {{ network_site.description | default: "" | jsonify }},
-"screenshot": {{ network_site.screenshot | default: "" | jsonify }}
+"screenshot": {{ network_site.screenshot | default: "" | jsonify }},
+"first_participated_at": {{ network_site.first_participated_at | default: "" | jsonify }},
+"recently_joined": {% if site_recently_joined %}true{% else %}false{% endif %}
 }{% unless forloop.last %},{% endunless %}
 {% endfor %}
 ],

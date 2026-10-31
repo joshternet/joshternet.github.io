@@ -12,12 +12,12 @@ joshternet_analysis: derived
 {% endfor %}
 
 {% if topic %}
-  <article class="h-feed">
+  <article class="topic-neighborhood">
     <p>
       <a href="{{ '/topics/' | relative_url }}">← All topics</a>
     </p>
 
-    <h1 class="p-name">{{ topic.label | escape }}</h1>
+    <h1>{{ topic.label | escape }}</h1>
 
     {% assign members = topic.members | default: empty %}
     {% if members.size > 0 %}
@@ -34,7 +34,7 @@ joshternet_analysis: derived
               </a>
             </h2>
             <p class="activity-card__domain p-org">{{ site_entry.domain | escape }}</p>
-            <ol class="activity-list">
+            <ol class="activity-list h-feed">
               {% for item in articles %}
                 {% include activity-card.html item=item %}
               {% endfor %}

@@ -57,7 +57,9 @@ test("network-sync publish set lists CI-owned generated paths", async () => {
     "topics/",
     "assets/network/joshternet.opml",
     "assets/network/sites/",
+    "assets/network/welcome/",
     "assets/activity/posters/",
+    "_data/welcome_cards.json",
   ]) {
     assert.match(
       sync,

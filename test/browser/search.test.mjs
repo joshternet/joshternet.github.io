@@ -97,6 +97,10 @@ test("search requires a query and announces status", async () => {
     await page.locator(".p-author.h-card .p-name").innerText(),
     "Example Site",
   );
+  assert.equal(
+    await page.locator(".p-author.h-card a.u-url").getAttribute("href"),
+    "https://a.example",
+  );
   assert.equal(await page.locator(".p-category").innerText(), "experiments");
   assert.equal(
     await page.locator(".activity-card__summary").innerText(),

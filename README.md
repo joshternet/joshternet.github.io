@@ -6,6 +6,10 @@ The GitHub Pages website for Joshternet. The canonical specifications are mainta
 
 Project-owned **code** is [BSD-3-Clause](LICENSE). **Prose and docs** are [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). **Brand assets** are not open-licensed. Participant screenshots and third-party material are not relicensed here. Full split: [Licensing](https://joshternet.org/licensing/). Third-party dependency attribution: [Third-party licenses](https://joshternet.org/licensing/third-party-licenses/).
 
+## SEO and IndieWeb markup
+
+Pages use `jekyll-seo-tag` for canonical/Open Graph/Twitter cards plus page `seo.type` front matter. Derived exploration graphs live in [`_includes/derived-jsonld.html`](_includes/derived-jsonld.html) (CollectionPage/TechArticle/WebPage, Project `about`, capped ItemList, BreadcrumbList). Body markup uses microformats2 (`h-feed` / `h-entry` / `h-card`) on activity, network, connections, topics, and welcome lists. `/search/` stays `robots: noindex` and off the sitemap.
+
 ## Requirements
 
 - Ruby 3.3

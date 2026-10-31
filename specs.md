@@ -7,6 +7,9 @@ description: >-
 keywords: >-
   Joshternet RFC, specifications, /.well-known/josh, Draft RFCs, open standards
 permalink: /specs/
+seo:
+  type: TechArticle
+  name: Specifications
 ---
 
 # Specifications

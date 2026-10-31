@@ -7,6 +7,9 @@ description: >-
 keywords: >-
   Joshternet governance, RFC process, specifications, open standards, Draft RFCs
 permalink: /governance/
+seo:
+  type: WebPage
+  name: Governance
 ---
 
 # Governance

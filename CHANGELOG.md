@@ -4,6 +4,12 @@
 
 ### Added
 
+- Homepage “Welcome to the Joshternet!” section highlights up to three recent non-hub participants from the registry (`first_participated_at` within 14 days of build time; daily deploy), with Network deep links and an explicit non-Josh invitation to `/implement/`.
+- Homepage Connections preview exposes Zoom in, Zoom out, and Center map controls with drag-pan; wheel still does not trap page scroll.
+- Network directory sort control (`?sort=`): Discover (default random), Recently joined, Oldest first, and Alphabetical, independently of identity filters.
+- Shareable welcome postcards (SVG + PNG) generated from the registry under `assets/network/welcome/`, with a `/welcome/` download page and Network “Get welcome card” links—separate from the official button.
+- Connections graph marks participants whose build-time `recently_joined` flag is true (seven-day window from `site.time`) with a subtle ring (static under `prefers-reduced-motion`) and a “Recently joined” note in the detail bubble.
+- Optional hand-maintained participant introductions (`_data/introductions.yml`), shown only for current registry members, with submission notes on `/community/`.
 - Connections shows every verified Network participant as a graph and list node, including sites with no observed links yet, with a “No observed connections yet” empty state and a link to the site.
 - Crawl HTML parsing accepts unquoted `href` / `rel` / `class` attributes so minified participant pages (for example joshbeard.com) contribute real outbound links.
 - Content-index crawl seeds include indieweb identity slash pages (`/me/`, `/social/`, `/links/`, `/more/`, `/uses/`, `/site/`, `/people/`, `/blogroll/`, `/elsewhere/`, `/now/`, `/health/`, and related paths); those seeds enqueue before sitemap locs so link directories are not starved. About/identity discovery collects multiple homepage-linked slash pages (`/more/`, `/site/`, `/now/`, `/uses/`, …); network sync visits up to eight of them for elsewhere and connection evidence. NLP outbound links are absolutized and same-origin nav is dropped so pages like joshbeard.com `/site/` contribute real Josh-to-Josh edges.
@@ -13,6 +19,11 @@
 
 ### Changed
 
+- SEO and IndieWeb markup: site `author` in `_config.yml`; homepage Project JSON-LD gains `logo` and GitHub `sameAs`; gap pages get `seo.type`; derived JSON-LD adds BreadcrumbList (topics/implement) and capped ItemList (`/network/`, `/activity/`, `/topics/`, `/welcome/`); topic pages nest `h-feed` on article lists only; activity/search author cards gain clean `u-url`; welcome cards and topics index use `h-card`.
+- Homepage welcome cards are build-time only for participants within the last 14 days (daily deploy), stacked meta rows, no hidden candidates or runtime eligibility filter.
+- Homepage Meet excludes Welcome-featured domains in Liquid (`home-welcome-eligible`); Meet JS only shuffles and shows three cards.
+- Connections arrival chrome reads build-time `recently_joined` from bootstrap JSON instead of computing a live date window in JS.
+- Connections Line key title and legend items share one horizontal alignment by neutralizing global `li + li` block margins inside `.connections-key__list`.
 - NLP reads unquoted `meta` name/property/content attributes, counts discovery-only publisher keywords as declared (still not community-eligible), classifies personal essay/identity paths and `/tips/` for heuristics, and skips per-photo gallery HTML so sites like joshbeard.com yield real pages/declared/signals instead of an image-page crawl.
 - Network/NLP coverage gaps closed: unreachable slash-page dedupe and greeting/title dead branches removed; tests cover connection href failures, GitHub elsewhere edge cases, personal-domain title fallbacks, crawl seed guards, and hub URL parse failures.
 - Connections site cards keep the screenshot, identity, connection lists, and empty-state note on one horizontal grid so empty notes and edge lists align with the title column instead of sitting under the thumbnail.

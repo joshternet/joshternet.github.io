@@ -7,6 +7,9 @@ description: >-
 keywords: >-
   /.well-known/josh, Joshternet declaration, implement Joshternet, indie web protocol
 permalink: /implement/
+seo:
+  type: TechArticle
+  name: Implement
 ---
 
 # Implement the Joshternet

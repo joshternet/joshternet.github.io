@@ -4,7 +4,8 @@
  * map-like directed graph. HTML lists already work without JS. Treat bootstrap
  * JSON as untrusted. No popularity ranking, no third-party graph libraries, no
  * CSP looseness. Equal visual weight for every participant node. Full page:
- * hub-centered pan/zoom. Preview: select-only, no scroll trapping.
+ * hub-centered pan/zoom with wheel zoom. Preview: button zoom/center and
+ * drag-pan without wheel scroll trapping.
  */
 (() => {
   /**
@@ -212,7 +213,31 @@
 
     /**
      * @param {unknown} value
-     * @returns {{origin: string, domain: string, title: string, description: string, screenshot: string} | null}
+     * @returns {string}
+     */
+    function participatedAtValue(value) {
+      if (typeof value !== "string") {
+        return "";
+      }
+
+      const trimmed = value.trim();
+
+      if (!trimmed) {
+        return "";
+      }
+
+      const parsed = Date.parse(trimmed);
+
+      if (Number.isNaN(parsed)) {
+        return "";
+      }
+
+      return trimmed;
+    }
+
+    /**
+     * @param {unknown} value
+     * @returns {{origin: string, domain: string, title: string, description: string, screenshot: string, first_participated_at: string, recently_joined: boolean} | null}
      */
     function validateParticipant(value) {
       if (!value || typeof value !== "object" || Array.isArray(value)) {
@@ -235,6 +260,8 @@
         title: textValue(value.title, 256) || origin.host,
         description: textValue(value.description, 2_000),
         screenshot: screenshotPath(value.screenshot),
+        first_participated_at: participatedAtValue(value.first_participated_at),
+        recently_joined: value.recently_joined === true,
       };
     }
 
@@ -1125,9 +1152,34 @@
       const previewFooter = isPreview
         ? `<p class="connections-bubble__more"><a href="/connections/?site=${escapeAttribute(site.domain)}">Explore on Connections</a></p>`
         : "";
+      const recentlyJoined = site.recently_joined === true;
+      const joinedNote = recentlyJoined
+        ? `<p class="connections-bubble__joined">Recently joined the Joshternet.${
+            site.first_participated_at
+              ? ` First participated <time datetime="${escapeAttribute(site.first_participated_at)}">${escapeHTML(
+                  new Intl.DateTimeFormat("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                    timeZone: "UTC",
+                  }).format(new Date(site.first_participated_at)),
+                )}</time>.`
+              : ""
+          }</p>`
+        : site.first_participated_at
+          ? `<p class="connections-bubble__joined">First participated <time datetime="${escapeAttribute(site.first_participated_at)}">${escapeHTML(
+              new Intl.DateTimeFormat("en-US", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+                timeZone: "UTC",
+              }).format(new Date(site.first_participated_at)),
+            )}</time>.</p>`
+          : "";
 
       showBubble(`
       ${bubbleHeading(site.title)}
+      ${joinedNote}
       ${bubbleSection(
         "Connects to",
         outgoing.map((edge) => bubbleEdgeItem(edge, "to")).join(""),
@@ -1671,11 +1723,30 @@
       const nodeMarks = nodes
         .map((node) => {
           const selected = node.origin === selectedOrigin;
+          const participant = byOrigin.get(node.origin);
+          const recentlyJoined = participant
+            ? participant.recently_joined === true
+            : false;
           const label =
             graphParticipants.length <= 12 || selected ? node.domain : "";
+          const classes = [
+            "connections-graph__node",
+            selected ? "is-selected" : "",
+            recentlyJoined ? "is-recently-joined" : "",
+          ]
+            .filter(Boolean)
+            .join(" ");
+          const recentLabel = recentlyJoined
+            ? " Recently joined the Joshternet."
+            : "";
 
-          return `<g class="connections-graph__node${selected ? " is-selected" : ""}" data-origin="${escapeAttribute(node.origin)}" tabindex="0" role="button" aria-pressed="${selected ? "true" : "false"}" aria-label="${escapeAttribute(node.title)}">
-          <circle cx="${node.x}" cy="${node.y}" r="14"></circle>
+          return `<g class="${classes}" data-origin="${escapeAttribute(node.origin)}" data-recently-joined="${recentlyJoined ? "true" : "false"}" tabindex="0" role="button" aria-pressed="${selected ? "true" : "false"}" aria-label="${escapeAttribute(`${node.title}.${recentLabel}`)}">
+          ${
+            recentlyJoined
+              ? `<circle class="connections-graph__recent-ring" cx="${node.x}" cy="${node.y}" r="20"></circle>`
+              : ""
+          }
+          <circle class="connections-graph__node-core" cx="${node.x}" cy="${node.y}" r="14"></circle>
           ${
             label
               ? `<text x="${node.x}" y="${node.y + 28}" text-anchor="middle">${escapeHTML(label)}</text>`
@@ -1762,13 +1833,13 @@
       viewport.setAttribute(
         "aria-label",
         isPreview
-          ? "Joshternet connections preview. Select a site to inspect."
+          ? "Joshternet connections preview. Drag to pan. Use zoom and center controls. Select a site to inspect."
           : "Joshternet connections map. Drag to pan. Scroll to zoom.",
       );
 
       let tools = graphRoot.querySelector("[data-connections-map-tools]");
 
-      if (!tools && !isPreview) {
+      if (!tools) {
         tools = document.createElement("div");
         tools.className = "connections-graph__map-tools";
         tools.setAttribute("data-connections-map-tools", "");
@@ -1829,11 +1900,6 @@
 
     graphStage.addEventListener("pointermove", (event) => {
       if (!pan || event.pointerId !== pan.pointerId) {
-        return;
-      }
-
-      // Homepage preview: select-only; never capture the pointer for pan/zoom.
-      if (isPreview) {
         return;
       }
 
@@ -1931,49 +1997,47 @@
       });
     }
 
-    if (!isPreview) {
-      viewport.addEventListener("keydown", (event) => {
-        if (event.target !== viewport) {
+    viewport.addEventListener("keydown", (event) => {
+      if (event.target !== viewport) {
+        return;
+      }
+
+      const step = 48 / camera.scale;
+
+      switch (event.key) {
+        case "ArrowLeft":
+          camera.x -= step;
+          break;
+        case "ArrowRight":
+          camera.x += step;
+          break;
+        case "ArrowUp":
+          camera.y -= step;
+          break;
+        case "ArrowDown":
+          camera.y += step;
+          break;
+        case "+":
+        case "=":
+          zoomTo(camera.scale * 1.2);
+          event.preventDefault();
           return;
-        }
+        case "-":
+        case "_":
+          zoomTo(camera.scale / 1.2);
+          event.preventDefault();
+          return;
+        case "Home":
+          centerHub();
+          event.preventDefault();
+          return;
+        default:
+          return;
+      }
 
-        const step = 48 / camera.scale;
-
-        switch (event.key) {
-          case "ArrowLeft":
-            camera.x -= step;
-            break;
-          case "ArrowRight":
-            camera.x += step;
-            break;
-          case "ArrowUp":
-            camera.y -= step;
-            break;
-          case "ArrowDown":
-            camera.y += step;
-            break;
-          case "+":
-          case "=":
-            zoomTo(camera.scale * 1.2);
-            event.preventDefault();
-            return;
-          case "-":
-          case "_":
-            zoomTo(camera.scale / 1.2);
-            event.preventDefault();
-            return;
-          case "Home":
-            centerHub();
-            event.preventDefault();
-            return;
-          default:
-            return;
-        }
-
-        event.preventDefault();
-        applyCamera();
-      });
-    }
+      event.preventDefault();
+      applyCamera();
+    });
 
     const filterRoot = shell.querySelector("[data-relation-filters]");
 

@@ -1,6 +1,7 @@
 /**
- * Goal: Homepage Meet preview shuffles participants and shows only three.
- * Math.random is stubbed because order is intentionally nondeterministic.
+ * Goal: Homepage Meet preview shuffles Jekyll-emitted cards and shows three.
+ * Eligibility (hub / Welcome omit) is build-time; Math.random is stubbed
+ * because order is intentionally nondeterministic.
  */
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
