@@ -149,6 +149,10 @@ if (form) {
         urlField.value = "";
         ownerField.checked = false;
 
+        if (typeof globalThis.joshternetTrack === "function") {
+          globalThis.joshternetTrack("nominate-submit", { ok: true });
+        }
+
         showStatus(
           "Thanks. That site is now in JoshBot's seed nomination queue.",
           "success",
@@ -157,11 +161,19 @@ if (form) {
         urlField.value = "";
         ownerField.checked = false;
 
+        if (typeof globalThis.joshternetTrack === "function") {
+          globalThis.joshternetTrack("nominate-submit", { ok: true });
+        }
+
         showStatus(
           "That site has already been nominated for JoshBot.",
           "success",
         );
       } else {
+        if (typeof globalThis.joshternetTrack === "function") {
+          globalThis.joshternetTrack("nominate-submit", { ok: false });
+        }
+
         showStatus(
           result?.message ||
             "The nomination could not be submitted. Please try again.",
@@ -169,6 +181,10 @@ if (form) {
         );
       }
     } catch {
+      if (typeof globalThis.joshternetTrack === "function") {
+        globalThis.joshternetTrack("nominate-submit", { ok: false });
+      }
+
       showStatus(
         "The nomination service could not be reached. Please try again.",
         "error",

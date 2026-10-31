@@ -160,9 +160,16 @@
       data-domains="joshternet.org,www.joshternet.org"
     ></script>
 
+    <script type="application/json" id="joshternet-member-hosts">
+      [{% for site_entry in site.data.network %}{{ site_entry.domain | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}]
+    </script>
     <script
       defer
       src="{{ '/assets/js/outbound-referrer.js' | relative_url }}?v={{ asset_version }}"
+    ></script>
+    <script
+      defer
+      src="{{ '/assets/js/umami-events.js' | relative_url }}?v={{ asset_version }}"
     ></script>
 
     {% if page.scripts %}

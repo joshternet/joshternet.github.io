@@ -741,6 +741,12 @@
       return;
     }
 
+    const track = globalThis.joshternetTrack;
+
+    if (typeof track === "function") {
+      track("wander-open", { host: url.hostname });
+    }
+
     window.open(outboundHref(url.href), "_blank", "noopener");
   }
 

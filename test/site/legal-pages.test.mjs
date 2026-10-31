@@ -106,6 +106,10 @@ test("privacy and terms keep permalinks and operated-service facts", async () =>
   assert.match(privacy, /does not use cookies/);
   assert.match(privacy, /account IDs/);
   assert.match(privacy, /utm_source=joshternet\.org/);
+  assert.match(privacy, /named interaction events/);
+  assert.match(privacy, /do not send Search query text/);
+  assert.match(privacy, /outbound link clicks/);
+  assert.match(privacy, /inbound arrival/);
 
   assert.match(privacy, /\]\(\/licensing\/third-party-licenses\/\)/);
   assert.match(terms, /\[Privacy\]\(\/privacy\/\)/);

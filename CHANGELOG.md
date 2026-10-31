@@ -4,6 +4,7 @@
 
 ### Added
 
+- Umami custom events for outbound and internal link clicks, inbound referrer classification (member vs other), and privacy-safe UI signals on Search, Network, Wander, Connections, and nominations—no search query text or form PII.
 - Homepage “Welcome to the Joshternet!” section highlights up to three recent non-hub participants from the registry (`first_participated_at` within 14 days of build time; daily deploy), with Network deep links and an explicit non-Josh invitation to `/implement/`.
 - Homepage Connections preview exposes Zoom in, Zoom out, and Center map controls with drag-pan; wheel still does not trap page scroll.
 - Network directory sort control (`?sort=`): Discover (default random), Recently joined, Oldest first, and Alphabetical, independently of identity filters.
