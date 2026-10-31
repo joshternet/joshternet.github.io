@@ -276,9 +276,23 @@
     }
   }
 
+  /**
+   * @param {string} name
+   * @param {Record<string, string>} data
+   * @returns {void}
+   */
+  function trackNetwork(name, data) {
+    const track = globalThis.joshternetTrack;
+
+    if (typeof track === "function") {
+      track(name, data);
+    }
+  }
+
   for (const filter of filters) {
     filter.addEventListener("click", () => {
       identity = filter.dataset.networkFilter || "all";
+      trackNetwork("network-filter", { identity });
       apply();
     });
   }
@@ -286,6 +300,7 @@
   for (const control of sorts) {
     control.addEventListener("click", () => {
       sort = control.dataset.networkSort || "discover";
+      trackNetwork("network-sort", { sort });
       apply();
     });
   }

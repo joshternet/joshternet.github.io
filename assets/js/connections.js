@@ -1307,6 +1307,20 @@
         button.setAttribute("aria-pressed", isSelected ? "true" : "false");
       }
 
+      if (selectedOrigin) {
+        const track = globalThis.joshternetTrack;
+
+        if (typeof track === "function") {
+          try {
+            track("connections-select", {
+              host: new URL(selectedOrigin).hostname,
+            });
+          } catch {
+            // Ignore unparseable origins for analytics only.
+          }
+        }
+      }
+
       renderDetail();
       drawGraph();
       placeBubble();

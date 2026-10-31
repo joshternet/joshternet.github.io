@@ -196,6 +196,35 @@
 
   let documents = [];
   let type = "all";
+  /** @type {ReturnType<typeof setTimeout> | null} */
+  let searchTrackTimer = null;
+
+  /**
+   * Emits a privacy-safe search event (no query text) after typing settles.
+   * @param {boolean} hasQuery
+   * @param {number} resultCount
+   * @returns {void}
+   */
+  function scheduleSearchTrack(hasQuery, resultCount) {
+    if (searchTrackTimer !== null) {
+      globalThis.clearTimeout(searchTrackTimer);
+    }
+
+    searchTrackTimer = globalThis.setTimeout(() => {
+      searchTrackTimer = null;
+      const track = globalThis.joshternetTrack;
+
+      if (typeof track !== "function") {
+        return;
+      }
+
+      track("search-query", {
+        has_query: hasQuery,
+        result_count: resultCount,
+        type,
+      });
+    }, 400);
+  }
 
   /**
    * @returns {void}
@@ -206,6 +235,12 @@
     if (!query) {
       results.innerHTML = "";
       status.textContent = "Type a word from a title, domain, or topic.";
+
+      if (searchTrackTimer !== null) {
+        globalThis.clearTimeout(searchTrackTimer);
+        searchTrackTimer = null;
+      }
+
       return;
     }
 
@@ -251,6 +286,8 @@
     results.innerHTML = capped
       .map((entry) => renderCard(entry.document))
       .join("");
+
+    scheduleSearchTrack(true, capped.length);
   }
 
   for (const radio of document.querySelectorAll("[data-search-type]")) {
