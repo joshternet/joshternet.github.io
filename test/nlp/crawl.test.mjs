@@ -1378,3 +1378,83 @@ test("crawlOrigin: empty options object fires options.cache || new Map() (L364)"
     restore();
   }
 });
+
+test("isSoft404Duplicate: omitted urls and root path || /", () => {
+  assert.equal(isSoft404Duplicate({}), false);
+  assert.equal(
+    isSoft404Duplicate({
+      pageUrl: "https://a.example/about/",
+      homeUrl: "https://a.example",
+      title: "Home",
+      homeTitle: "Home",
+      bodyFingerprint: "same",
+      homeBodyFingerprint: "same",
+    }),
+    true,
+  );
+  assert.equal(
+    isSoft404Duplicate({
+      pageUrl: "https://a.example/about/",
+      homeUrl: "https://a.example/",
+      title: "Home",
+      homeTitle: "Home",
+      canonical: "",
+      homeCanonical: "",
+      bodyFingerprint: "same",
+      homeBodyFingerprint: "same",
+    }),
+    true,
+  );
+});
+
+test("crawlOrigin: soft-404 continue does not enqueue children from duplicate", async () => {
+  const origin = "https://soft.example";
+  const cache = dnsCache(["soft.example"]);
+  const homeHtml = `<!doctype html><html><head>
+    <title>Same</title>
+    <link rel="canonical" href="https://soft.example/">
+  </head><body><main><p>Home body uniquely long enough.</p></main></body></html>`;
+  const softHtml = `<!doctype html><html><head>
+    <title>Same</title>
+    <link rel="canonical" href="https://soft.example/">
+  </head><body><main><p>Home body uniquely long enough.</p>
+  <a href="/child-only-on-soft/">child</a></main></body></html>`;
+  /** @type {string[]} */
+  const fetched = [];
+  install();
+  try {
+    globalThis.fetch = async (url) => {
+      const urlStr = String(url);
+      if (urlStr.includes("sitemap.xml")) {
+        return {
+          ok: false,
+          status: 404,
+          headers: new Headers({ "content-type": "text/html" }),
+          arrayBuffer: async () => Buffer.from(""),
+        };
+      }
+      fetched.push(urlStr);
+      const body = urlStr.includes("/about/") ? softHtml : homeHtml;
+      return {
+        ok: true,
+        status: 200,
+        headers: new Headers({ "content-type": "text/html" }),
+        arrayBuffer: async () => Buffer.from(body),
+      };
+    };
+    const result = await crawlOrigin(origin, {
+      cache,
+      aboutUrl: `${origin}/about/`,
+    });
+    assert.equal(
+      result.pages.some((page) => page.url.includes("/about/")),
+      false,
+    );
+    assert.equal(
+      fetched.some((url) => url.includes("/child-only-on-soft/")),
+      false,
+    );
+  } finally {
+    restore();
+  }
+});

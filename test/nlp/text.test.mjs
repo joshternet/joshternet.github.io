@@ -530,3 +530,68 @@ test("knowsAboutFromHtml: string, Organization, and object entries", () => {
   assert.ok(labels.includes("https://example.com/typescript"));
   assert.equal(labels.includes("ignored"), false);
 });
+
+test("schemaTypesFromHtml: non-string html and empty @type bare", () => {
+  assert.deepEqual(schemaTypesFromHtml(null), []);
+  assert.deepEqual(schemaTypesFromHtml(undefined), []);
+  const html = `<script type="application/ld+json">
+    {"@type":"https://schema.org/"}
+  </script>`;
+  assert.deepEqual(schemaTypesFromHtml(html), []);
+});
+
+test("canonicalHrefFromHtml: non-string html and empty pageUrl base", () => {
+  assert.equal(canonicalHrefFromHtml(null), "");
+  assert.equal(
+    canonicalHrefFromHtml(
+      `<link rel="canonical" href="https://a.example/post/">`,
+    ),
+    "https://a.example/post/",
+  );
+  assert.equal(
+    canonicalHrefFromHtml(
+      `<link rel='canonical' href='https://b.example/'>`,
+      "",
+    ),
+    "https://b.example/",
+  );
+});
+
+test("knowsAboutFromHtml: non-string, empty script, whitespace string, non-array", () => {
+  assert.deepEqual(knowsAboutFromHtml(null), []);
+  assert.deepEqual(
+    knowsAboutFromHtml(`<script type="application/ld+json">   </script>`),
+    [],
+  );
+  assert.deepEqual(
+    knowsAboutFromHtml(`<script type="application/ld+json">
+      {"@type":"Person","knowsAbout":"   "}
+    </script>`),
+    [],
+  );
+  assert.deepEqual(
+    knowsAboutFromHtml(`<script type="application/ld+json">
+      {"@type":"Person","knowsAbout":42}
+    </script>`),
+    [],
+  );
+});
+
+test("canonicalHrefFromHtml: href before rel hits empty after-attrs group", () => {
+  assert.equal(
+    canonicalHrefFromHtml(
+      `<link href="https://a.example/ok/" rel="canonical">`,
+      "https://a.example/x/",
+    ),
+    "https://a.example/ok/",
+  );
+});
+
+test("schemaTypeTokens via schemaTypesFromHtml: trailing slash type yields no token", () => {
+  assert.deepEqual(
+    schemaTypesFromHtml(
+      `<script type="application/ld+json">{"@type":"https://example.com/"}</script>`,
+    ),
+    [],
+  );
+});

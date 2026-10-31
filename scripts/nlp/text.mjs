@@ -436,7 +436,7 @@ export function schemaTypesFromHtml(html) {
   let match;
 
   while ((match = scriptPattern.exec(source))) {
-    const raw = String(match[1] || "").trim();
+    const raw = String(match[1]).trim();
 
     if (!raw) {
       continue;
@@ -477,7 +477,8 @@ export function canonicalHrefFromHtml(html, pageUrl = "") {
   let match;
 
   while ((match = linkPattern.exec(source))) {
-    const attrs = `${match[1] || ""} ${match[2] || ""}`;
+    // Regex captures are always strings (possibly empty) when the pattern matches.
+    const attrs = `${match[1]} ${match[2]}`;
     const href = decodeHrefForParse(htmlAttributeValue(attrs, "href"));
 
     if (!href) {
@@ -532,7 +533,7 @@ export function knowsAboutFromHtml(html) {
   let match;
 
   while ((match = scriptPattern.exec(source))) {
-    const raw = String(match[1] || "").trim();
+    const raw = String(match[1]).trim();
 
     if (!raw) {
       continue;

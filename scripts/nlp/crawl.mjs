@@ -323,8 +323,8 @@ export function isIdentitySlashPath(pathname) {
   }
 
   return IDENTITY_SLASH_PATHS.some((path) => {
-    const candidate = path.replace(/\/+$/, "").toLowerCase() || "/";
-    return normalized === candidate;
+    const candidate = path.replace(/\/+$/, "").toLowerCase();
+    return Boolean(candidate) && normalized === candidate;
   });
 }
 
