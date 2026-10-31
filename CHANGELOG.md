@@ -10,9 +10,6 @@
 - Join-funnel Umami events (`join-start`, `join-platform`, `join-declaration-copy`, `join-check-open`, `join-nominate-open`, `join-share-open`) with link-track skip on dedicated CTAs.
 - Umami custom events for outbound and internal link clicks, inbound referrer classification (member vs other), and privacy-safe UI signals on Search, Network, Wander, Connections, and nominations—no search query text or form PII.
 
-### Fixed
-
-- Connections `connections-select` fires only on deliberate graph/list selections, not `?site=` deep-link initialization.
 - Homepage “Welcome to the Joshternet!” section highlights up to three recent non-hub participants from the registry (`first_participated_at` within 14 days of build time; daily deploy), with Network deep links and an explicit non-Josh invitation to `/implement/`.
 - Homepage Connections preview exposes Zoom in, Zoom out, and Center map controls with drag-pan; wheel still does not trap page scroll.
 - Network directory sort control (`?sort=`): Discover (default random), Recently joined, Oldest first, and Alphabetical, independently of identity filters.
@@ -25,6 +22,10 @@
 - Homepage Connections preview: compact graph under discovery that reuses `connections.js` in preview mode (no wheel zoom or page-scroll trap), with a lightweight bootstrap of participants, observed links, and shared-topic pairs.
 - Homepage discovery sections: Wander and Network CTAs, a Meet the websites preview that shuffles participants at random each visit (no join-date or creator priority; domain order without JavaScript), a What's happening preview from `activity.primary`, and a static Join path with the three identity declaration examples.
 - Quartz 5 platform recipe at `/implement/platforms/quartz/`: copy `josh.json` to `public/.well-known/josh` after `npx quartz build`, because Quartz emits `quartz/static` under `/static/` and skips dot directories.
+
+### Fixed
+
+- Connections `connections-select` fires only on deliberate graph/list selections, not `?site=` deep-link initialization.
 
 ### Changed
 

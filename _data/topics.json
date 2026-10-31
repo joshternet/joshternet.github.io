@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-31T21:34:16.108Z",
+  "generated_at": "2026-10-31T21:56:50.804Z",
   "community_count": 240,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
@@ -3141,7 +3141,7 @@
     {
       "slug": "docs",
       "label": "docs",
-      "member_count": 2,
+      "member_count": 1,
       "sites": [
         {
           "origin": "https://joshmuller.ca",
@@ -3155,25 +3155,13 @@
               "source": "article:section"
             }
           ]
-        },
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/",
-              "title": "",
-              "source": "microformat:p-category"
-            }
-          ]
         }
       ],
-      "sources": ["article:section", "microformat:p-category"],
+      "sources": ["article:section"],
       "first_seen_at": "2026-10-30T20:55:12.915Z",
-      "last_changed_at": "2026-10-30T21:25:20.995Z",
-      "active": true
+      "last_changed_at": "2026-10-31T21:56:50.804Z",
+      "active": true,
+      "stale_since": "2026-10-31T21:56:50.804Z"
     },
     {
       "slug": "documentation",
@@ -8842,6 +8830,13 @@
       "active": true,
       "related_discoveries": [
         {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
           "title": "Joshua Morris",
@@ -8882,7 +8877,7 @@
     {
       "slug": "recipe",
       "label": "recipes",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
         {
           "origin": "https://joshmuller.ca",
@@ -8890,11 +8885,6 @@
           "title": "Josh Müller",
           "membership": "declared",
           "pages": [
-            {
-              "url": "https://joshmuller.ca/es/recetas/ajiaco-santafereno/",
-              "title": "",
-              "source": "article:section"
-            },
             {
               "url": "https://joshmuller.ca/es/recetas/pollo-a-la-mantequilla/",
               "title": "",
@@ -8929,23 +8919,32 @@
               "url": "https://joshmuller.ca/recipes/meals/ajiaco-santafereno/",
               "title": "",
               "source": "article:section"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/meals/butter-chicken/",
+              "title": "",
+              "source": "article:section"
             }
           ]
-        }
-      ],
-      "sources": ["article:section"],
-      "first_seen_at": "2026-10-12T18:51:53.092Z",
-      "last_changed_at": "2026-10-30T23:13:39.295Z",
-      "active": true,
-      "related_discoveries": [
+        },
         {
           "origin": "https://joshternet.org",
           "domain": "joshternet.org",
           "title": "Joshternet",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshternet.org/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
         }
-      ]
+      ],
+      "sources": ["article:section", "microformat:p-category"],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-10-31T21:56:50.804Z",
+      "active": true
     },
     {
       "slug": "recruitment",
