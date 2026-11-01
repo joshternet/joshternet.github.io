@@ -42,6 +42,10 @@ test("connections page is HTML-first and cross-linked", async () => {
   assert.match(page, /connections-site__column--topics/);
   assert.match(page, /overlap_count == 1/);
   assert.match(page, /overlap_count > 0/);
+  assert.match(page, /outbound > 0 or inbound > 0 %}/);
+  assert.doesNotMatch(page, /outbound > 0 or inbound > 0 or overlap_count > 0/);
+  assert.match(page, /sites with observed links/);
+  assert.match(page, /shared topics/);
   assert.doesNotMatch(page, /No shared topics with other participants yet/);
   assert.doesNotMatch(
     page,
@@ -130,6 +134,8 @@ test("connections page is HTML-first and cross-linked", async () => {
   assert.match(wander, /\/connections\//);
   assert.doesNotMatch(wander, /wander-modes/);
   assert.doesNotMatch(wander, /data-wander-mode/);
+  assert.match(wander, /data-wander-follow/);
+  assert.match(wander, /Follow a connection/);
   assert.match(styles, /\.page--wander\.site-shell \{[^}]*overflow:\s*visible/);
   assert.match(styles, /\.page--wander \.site-main \{[^}]*overflow:\s*visible/);
   assert.match(
@@ -141,6 +147,7 @@ test("connections page is HTML-first and cross-linked", async () => {
     /\.wander-bar \{[^}]*border-block-start:\s*1px solid var\(--color-border\)/,
   );
   assert.doesNotMatch(styles, /\.wander-modes \{/);
+  assert.match(styles, /\.wander-bar__follow/);
   assert.match(nav, /site-nav-network-children\.html/);
   assert.match(script, /validatePayload/);
   assert.match(script, /canonicalOrigin/);

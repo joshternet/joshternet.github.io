@@ -35,6 +35,10 @@ test("topics hub and layout are wired", async () => {
   assert.match(layout, /site\.data\.topic_views/);
   assert.match(layout, /\/topics\//);
   assert.match(layout, /topic-site/);
+  assert.match(layout, /topic-site__why/);
+  assert.match(layout, /Why this topic matches/);
+  assert.match(layout, /site_entry\.why/);
+  assert.match(layout, /evidence_class/);
   assert.match(layout, /activity-card.html/);
   assert.match(layout, /articles.size > 0/);
   assert.doesNotMatch(layout, /Related discoveries/);

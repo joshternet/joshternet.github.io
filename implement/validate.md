@@ -93,3 +93,22 @@ declaration_check: true
   ></p>
   <button type="submit">Read /.well-known/josh</button>
 </form>
+
+<script type="application/json" data-declaration-registry-origins>
+[
+{%- assign registry_origin_first = true -%}
+{%- for network_site in site.data.network -%}
+  {%- if network_site.origin and network_site.origin != '' -%}
+    {%- unless registry_origin_first -%},{%- endunless -%}
+    {{ network_site.origin | jsonify }}
+    {%- assign registry_origin_first = false -%}
+  {%- endif -%}
+{%- endfor -%}
+]
+</script>
+
+## After a valid check
+
+A valid declaration means the file (or live `/.well-known/josh`) matches version 1 rules. Public registry discovery is separate: JoshBot may list the origin in the [Network]({{ '/network/' | relative_url }}) later, and an optional [nomination]({{ '/nominate/' | relative_url }}) only asks JoshBot to crawl—it does not establish participation by itself. The [join guide]({{ '/join/' | relative_url }}) walks through publishing, validation, discovery, and celebration.
+
+When JavaScript is available, a successful check also shows whether the checked origin appears in the Network snapshot built into this page (as of the last hub publish). That listing state never overrides declaration validity.

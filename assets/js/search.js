@@ -110,7 +110,7 @@
         siteOrigin.startsWith("https://") ||
         siteOrigin.startsWith("http://")
       ) {
-        authorMarkup = `<p class="activity-card__author p-author h-card"><a class="p-name u-url" href="${escapeHTML(siteOrigin)}">${escapeHTML(author)}</a></p>`;
+        authorMarkup = `<p class="activity-card__author p-author h-card"><a class="activity-card__author-link p-name u-url" href="${escapeHTML(siteOrigin)}">${escapeHTML(author)}</a></p>`;
       } else {
         authorMarkup = `<p class="activity-card__author p-author h-card"><span class="p-name">${escapeHTML(author)}</span></p>`;
       }

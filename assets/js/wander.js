@@ -7,6 +7,8 @@
 
   const stage = consoleElement.querySelector("[data-wander-stage]");
   const goButton = consoleElement.querySelector("[data-wander-go]");
+  const followButton = consoleElement.querySelector("[data-wander-follow]");
+  const backButton = consoleElement.querySelector("[data-wander-back]");
   const addressInput = consoleElement.querySelector("[data-wander-address]");
   const openButton = consoleElement.querySelector("[data-wander-open]");
   const statusElement = document.querySelector("[data-wander-status]");
@@ -15,7 +17,7 @@
     return;
   }
 
-  const storageKey = "joshternet-wander-v2";
+  const storageKey = "joshternet-wander-v3";
 
   const identities = new Set(["affirmed", "declined", "undeclared"]);
 
@@ -42,6 +44,10 @@
 
   let sites = [];
   let bag = [];
+  /** @type {string[]} */
+  let previousStack = [];
+  /** @type {Map<string, string[]>} */
+  let outgoingByOrigin = new Map();
   let currentOrigin = null;
   let linkNoticeOpen = false;
   let lastPointer = null;
@@ -544,6 +550,7 @@
         JSON.stringify({
           bag,
           currentOrigin,
+          previousStack,
         }),
       );
     } catch {
@@ -567,6 +574,10 @@
           })
         : [];
 
+      previousStack = Array.isArray(stored.previousStack)
+        ? stored.previousStack.filter((origin) => validOrigins.has(origin))
+        : [];
+
       currentOrigin =
         typeof stored.currentOrigin === "string" &&
         validOrigins.has(stored.currentOrigin)
@@ -576,6 +587,81 @@
       return true;
     } catch {
       return false;
+    }
+  }
+
+  /**
+   * Indexes directed observed edges for Follow-a-connection.
+   * @param {unknown} payload
+   * @param {Set<string>} validOrigins
+   * @returns {Map<string, string[]>}
+   */
+  function indexOutgoingConnections(payload, validOrigins) {
+    /** @type {Map<string, string[]>} */
+    const indexed = new Map();
+    const edges =
+      payload && typeof payload === "object" && !Array.isArray(payload)
+        ? payload.connections
+        : null;
+
+    if (!Array.isArray(edges)) {
+      return indexed;
+    }
+
+    for (const edge of edges) {
+      if (!edge || typeof edge !== "object") {
+        continue;
+      }
+
+      const from = canonicalOrigin(edge.from)?.origin;
+      const to = canonicalOrigin(edge.to)?.origin;
+
+      if (!from || !to || from === to) {
+        continue;
+      }
+
+      if (!validOrigins.has(from) || !validOrigins.has(to)) {
+        continue;
+      }
+
+      const list = indexed.get(from) || [];
+
+      if (!list.includes(to)) {
+        list.push(to);
+        indexed.set(from, list);
+      }
+    }
+
+    return indexed;
+  }
+
+  /**
+   * @param {string | null} origin
+   * @returns {string[]}
+   */
+  function outgoingTargets(origin) {
+    if (!origin) {
+      return [];
+    }
+
+    return (outgoingByOrigin.get(origin) || []).filter((target) =>
+      Boolean(findSite(target)),
+    );
+  }
+
+  function updateFollowControls() {
+    const targets = outgoingTargets(currentOrigin);
+    const canFollow = targets.length > 0;
+    const canBack = previousStack.length > 0;
+
+    if (followButton) {
+      followButton.hidden = !canFollow;
+      followButton.disabled = !canFollow;
+    }
+
+    if (backButton) {
+      backButton.hidden = !canBack;
+      backButton.disabled = !canBack;
     }
   }
 
@@ -757,6 +843,7 @@
       currentOrigin = null;
       addressInput.value = "";
       openButton.disabled = true;
+      updateFollowControls();
 
       stage.innerHTML = `
                 <div class="wander-empty">
@@ -773,6 +860,7 @@
     currentOrigin = site.origin;
     addressInput.value = site.origin;
     updateOpenState();
+    updateFollowControls();
 
     if (
       site.embeddable &&
@@ -841,22 +929,94 @@
       }
     }
 
+    if (currentOrigin) {
+      previousStack.push(currentOrigin);
+
+      if (previousStack.length > 20) {
+        previousStack = previousStack.slice(-20);
+      }
+    }
+
     render(findSite(origin));
   }
 
-  fetch("/network/data.json", {
-    credentials: "same-origin",
-    headers: { Accept: "application/json" },
-  })
-    .then((response) => {
+  function followConnection() {
+    const targets = shuffle(outgoingTargets(currentOrigin));
+
+    if (targets.length === 0) {
+      announce("No observed outgoing connections from this site.");
+      updateFollowControls();
+      return;
+    }
+
+    const nextOrigin = targets[0];
+    const nextSite = findSite(nextOrigin);
+
+    if (!nextSite) {
+      updateFollowControls();
+      return;
+    }
+
+    if (currentOrigin) {
+      previousStack.push(currentOrigin);
+
+      if (previousStack.length > 20) {
+        previousStack = previousStack.slice(-20);
+      }
+    }
+
+    const track = globalThis.joshternetTrack;
+
+    if (typeof track === "function") {
+      try {
+        track("wander-follow", { host: new URL(nextOrigin).hostname });
+      } catch {
+        // Analytics must not break Wander.
+      }
+    }
+
+    render(nextSite);
+  }
+
+  function goBack() {
+    while (previousStack.length > 0) {
+      const origin = previousStack.pop();
+      const site = findSite(origin);
+
+      if (site) {
+        render(site);
+        return;
+      }
+    }
+
+    updateFollowControls();
+    announce("No earlier Wander site left in this session.");
+  }
+
+  Promise.all([
+    fetch("/network/data.json", {
+      credentials: "same-origin",
+      headers: { Accept: "application/json" },
+    }).then((response) => {
       if (!response.ok) {
         throw new Error(`Network data request failed: ${response.status}`);
       }
 
       return response.json();
+    }),
+    fetch("/connections/data.json", {
+      credentials: "same-origin",
+      headers: { Accept: "application/json" },
     })
-    .then((data) => {
-      sites = validateSites(data);
+      .then((response) => (response.ok ? response.json() : null))
+      .catch(() => null),
+  ])
+    .then(([networkData, connectionsData]) => {
+      sites = validateSites(networkData);
+      outgoingByOrigin = indexOutgoingConnections(
+        connectionsData,
+        new Set(sites.map((site) => site.origin)),
+      );
       restore();
 
       if (currentOrigin) {
@@ -874,6 +1034,7 @@
       currentOrigin = null;
       addressInput.value = "";
       openButton.disabled = true;
+      updateFollowControls();
 
       stage.innerHTML = `
                 <div class="wander-empty">
@@ -900,6 +1061,8 @@
   });
 
   goButton.addEventListener("click", go);
+  followButton?.addEventListener("click", followConnection);
+  backButton?.addEventListener("click", goBack);
 
   openButton.addEventListener("click", openAddress);
 

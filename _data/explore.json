@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T01:12:19.269Z",
+  "generated_at": "2026-11-01T04:18:58.846Z",
   "participant_count": 9,
-  "community_count": 240,
+  "community_count": 226,
   "publication_count": 847,
-  "connection_count": 11,
+  "connection_count": 8,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
     "connection": "first edge after stable from, to, relation sort"
@@ -92,8 +92,8 @@
     }
   ],
   "neighborhood": {
-    "slug": "javascript-typescript",
-    "label": "javascript typescript",
+    "slug": "software-preservation",
+    "label": "software preservation",
     "member_count": 1
   },
   "connection": {

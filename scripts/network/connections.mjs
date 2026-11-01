@@ -113,6 +113,7 @@ const HUB_DIRECTORY_LINK_CLASSES = new Set([
   "network-card__link",
   "activity-card__link",
   "activity-card__media",
+  "activity-card__author-link",
 ]);
 
 /**
@@ -134,6 +135,12 @@ export function isHubDirectoryLink(link, sourceOrigin, hubOrigin = HUB_ORIGIN) {
   );
 
   if (classNames.some((token) => HUB_DIRECTORY_LINK_CLASSES.has(token))) {
+    return true;
+  }
+
+  // Activity-card author controls use microformats without widget classes on
+  // older crawls: p-name + u-url pointing at the participant origin.
+  if (classNames.includes("p-name") && classNames.includes("u-url")) {
     return true;
   }
 

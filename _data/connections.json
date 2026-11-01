@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T01:10:24.236Z",
-  "edge_count": 11,
+  "generated_at": "2026-11-01T04:17:58.025Z",
+  "edge_count": 8,
   "edges": [
     {
       "from": "https://joshbeard.com",
@@ -42,69 +42,6 @@
           "href": "https://joshuamorris.info/",
           "text": "Joshua Morris",
           "rel": ["noopener", "noreferrer"]
-        }
-      ]
-    },
-    {
-      "from": "https://joshternet.org",
-      "to": "https://joshghent.com",
-      "relation": "homepage-link",
-      "directed": true,
-      "source": "content",
-      "href": "https://joshghent.com/",
-      "text": "Josh Ghent",
-      "rel": [],
-      "page": "https://joshternet.org/",
-      "evidence_count": 1,
-      "evidence": [
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/",
-          "href": "https://joshghent.com/",
-          "text": "Josh Ghent",
-          "rel": []
-        }
-      ]
-    },
-    {
-      "from": "https://joshternet.org",
-      "to": "https://joshmuller.ca",
-      "relation": "homepage-link",
-      "directed": true,
-      "source": "content",
-      "href": "https://joshmuller.ca/",
-      "text": "Josh Müller",
-      "rel": [],
-      "page": "https://joshternet.org/",
-      "evidence_count": 1,
-      "evidence": [
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/",
-          "href": "https://joshmuller.ca/",
-          "text": "Josh Müller",
-          "rel": []
-        }
-      ]
-    },
-    {
-      "from": "https://joshternet.org",
-      "to": "https://joshuamorris.info",
-      "relation": "homepage-link",
-      "directed": true,
-      "source": "content",
-      "href": "https://joshuamorris.info/",
-      "text": "Joshua Morris",
-      "rel": [],
-      "page": "https://joshternet.org/",
-      "evidence_count": 1,
-      "evidence": [
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/",
-          "href": "https://joshuamorris.info/",
-          "text": "Joshua Morris",
-          "rel": []
         }
       ]
     },
