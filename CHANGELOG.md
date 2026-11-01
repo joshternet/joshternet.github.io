@@ -12,6 +12,8 @@
 
 ### Changed
 
+- **Homepage Creative work:** Under What’s happening, one horizontal row—one newest game, project, photograph, or music work per member × kind (`showcase.home`), with no publish-date window so undated games/photos still appear. Narrow viewports scroll the row instead of wrapping.
+- **Homepage network count:** Meet-the-websites participant count uses the full `site.data.network` size (same as `/network/`), while preview cards still omit the hub and Welcome-featured sites.
 - **Connections cards:** Site titles are real outbound links to the member origin (not a link-styled map-select button). Map highlight stays on the screenshot control (`data-connection-select`).
 - **Happening unpublished until member events exist:** `/events/` stays `published: false` and off Network nav while `_data/happening.json` has no upcoming items. Extraction/projection pipeline remains; publish the page and restore the Happening nav entry once a crawl finds verified upcoming events on a member site. Homepage strip already omits when empty.
 - **Happening pipeline:** `nlp:sync` now runs `collectEvents` into content drafts so Schema.org/mf2 events reach `_data/content.json` and `views:build` → `_data/happening.json`. Public calendar skips `attribution_role: mention` and cancelled statuses; same-origin publisher events default to `hosted`. Event date/venue render inside `activity-card` (no nested `<li>`). Showcase/home Showcase list items carry `lang`/`dir` for RTL works.

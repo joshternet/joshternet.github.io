@@ -76,4 +76,11 @@ test("home showcase strip reuses showcase-card with outbound-href", async () => 
   const home = await read("_includes/home-showcase.html");
   assert.match(home, /include showcase-card\.html item=item/);
   assert.doesNotMatch(home, /include activity-card\.html/);
+  assert.match(home, /Creative work/);
+});
+
+test("home showcase list stays a single non-wrapping row", async () => {
+  const css = await read("assets/css/main.css");
+  assert.match(css, /\.showcase-list--home\s*\{[^}]*flex-wrap:\s*nowrap/s);
+  assert.match(css, /\.showcase-list--home\s*\{[^}]*overflow-x:\s*auto/s);
 });

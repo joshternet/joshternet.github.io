@@ -384,25 +384,239 @@ test("What's New merges windowed Showcase works beside same-origin writing", () 
 });
 
 test("buildShowcaseHomeItems respects an explicit numeric limit", () => {
-  const items = buildShowcaseHomeItems(
-    [
+  const pool = [
+    {
+      content_type: "game",
+      url: "https://joshtronic.com/games/age-of-combat/",
+      site_origin: "https://joshtronic.com",
+      title: "Age of Combat",
+      published_at: "2026-10-28T00:00:00.000Z",
+      summary: "A browser combat game from the games index.",
+      image: "https://joshtronic.com/images/age.png",
+    },
+    {
+      content_type: "article",
+      url: "https://joshuamorris.info/experiments/newer/",
+      site_origin: "https://joshuamorris.info",
+      title: "Newer Experiment",
+      published_at: "2026-10-30T00:00:00.000Z",
+      summary: "A newer experiment on the creative path.",
+      image: "https://joshuamorris.info/images/newer.webp",
+    },
+  ];
+  assert.equal(buildShowcaseHomeItems(pool, 1).length, 1);
+  assert.equal(buildShowcaseHomeItems(pool, 1.8).length, 1);
+  assert.equal(buildShowcaseHomeItems(pool, -2).length, 0);
+  assert.equal(buildShowcaseHomeItems(pool, Number.NaN).length, 2);
+  assert.equal(buildShowcaseHomeItems(pool, Infinity).length, 2);
+  assert.deepEqual(buildShowcaseHomeItems(null), []);
+});
+
+test("buildShowcaseHomeItems skips eligible works without site_origin", () => {
+  assert.deepEqual(
+    buildShowcaseHomeItems([
       {
         content_type: "game",
         url: "https://joshtronic.com/games/age-of-combat/",
-        site_origin: "https://joshtronic.com",
         title: "Age of Combat",
+        summary: "A browser combat game missing its site origin.",
+        image: "https://joshtronic.com/images/age.png",
       },
       {
         content_type: "game",
         url: "https://joshtronic.com/games/idol-idle/",
-        site_origin: "https://joshtronic.com",
+        site_origin: "",
         title: "Idol Idle",
+        summary: "A browser idle game with an empty site origin.",
+        image: "https://joshtronic.com/images/idol.png",
+      },
+      {
+        content_type: "game",
+        url: "https://joshtronic.com/games/know-the-table/",
+        site_origin: 12,
+        title: "Know the Table",
+        summary: "A browser game with a non-string site origin.",
+        image: "https://joshtronic.com/images/table.png",
+      },
+    ]),
+    [],
+  );
+});
+
+test("buildShowcaseHomeItems keeps one newest work per member and kind", () => {
+  const items = buildShowcaseHomeItems([
+    {
+      content_type: "article",
+      url: "https://joshuamorris.info/experiments/older/",
+      site_origin: "https://joshuamorris.info",
+      title: "Older Experiment",
+      summary: "An older experiment on the creative path.",
+      published_at: "2026-09-01T00:00:00.000Z",
+      image: "https://joshuamorris.info/images/older.webp",
+    },
+    {
+      content_type: "article",
+      url: "https://joshuamorris.info/experiments/newer/",
+      site_origin: "https://joshuamorris.info",
+      title: "Newer Experiment",
+      summary: "A newer experiment on the creative path.",
+      published_at: "2026-10-30T00:00:00.000Z",
+      image: "https://joshuamorris.info/images/newer.webp",
+    },
+    {
+      content_type: "game",
+      url: "https://joshtronic.com/games/age-of-combat/",
+      site_origin: "https://joshtronic.com",
+      title: "Age of Combat",
+      summary: "An older undated combat game on the games index.",
+      observed_at: "2026-10-01T00:00:00.000Z",
+      image: "https://joshtronic.com/images/age.png",
+    },
+    {
+      content_type: "game",
+      url: "https://joshtronic.com/games/idol-idle/",
+      site_origin: "https://joshtronic.com",
+      title: "Idol Idle",
+      summary: "A newer undated idle game that should win games.",
+      observed_at: "2026-10-29T00:00:00.000Z",
+      image: "https://joshtronic.com/images/idol.png",
+    },
+    {
+      content_type: "photograph",
+      url: "https://joshbeard.com/photos/2014/",
+      site_origin: "https://joshbeard.com",
+      title: "2014",
+      summary: "Older year album that loses to the newer album URL.",
+      observed_at: "2026-11-01T00:00:00.000Z",
+      image: "https://joshbeard.com/photos/2014/cover.jpg",
+    },
+    {
+      content_type: "photograph",
+      url: "https://joshbeard.com/photos/2026/",
+      site_origin: "https://joshbeard.com",
+      title: "2026",
+      summary: "Newer year album that should win photography.",
+      observed_at: "2026-11-01T00:00:00.000Z",
+      image: "https://joshbeard.com/photos/2026/cover.jpg",
+    },
+    {
+      content_type: "music_album",
+      url: "https://music.example/albums/dawn/",
+      site_origin: "https://music.example",
+      title: "Dawn Album",
+      summary: "A music album that should appear as its own kind card.",
+      published_at: "2025-01-01T00:00:00.000Z",
+      image: "https://music.example/albums/dawn.jpg",
+    },
+    {
+      content_type: "video",
+      url: "https://video.example/films/clip/",
+      site_origin: "https://video.example",
+      title: "Fresh Clip",
+      summary: "Video kind is not part of the home creative strip.",
+      published_at: "2026-10-30T00:00:00.000Z",
+      image: "https://video.example/films/clip.jpg",
+    },
+  ]);
+
+  assert.equal(items.length, 4);
+  assert.deepEqual(
+    items.map((item) => ({ kind: item.kind, url: item.url })),
+    [
+      {
+        kind: "photography",
+        url: "https://joshbeard.com/photos/2026/",
+      },
+      {
+        kind: "project",
+        url: "https://joshuamorris.info/experiments/newer/",
+      },
+      {
+        kind: "games",
+        url: "https://joshtronic.com/games/idol-idle/",
+      },
+      {
+        kind: "music",
+        url: "https://music.example/albums/dawn/",
       },
     ],
-    1,
   );
-  assert.equal(items.length, 1);
-  assert.deepEqual(buildShowcaseHomeItems(null), []);
+});
+
+test("buildShowcaseHomeItems keeps multiple kinds from the same member", () => {
+  const items = buildShowcaseHomeItems([
+    {
+      content_type: "article",
+      url: "https://maker.example/experiments/toy/",
+      site_origin: "https://maker.example",
+      title: "Toy Project",
+      summary: "A project on a creative experiments path.",
+      published_at: "2026-10-30T00:00:00.000Z",
+      image: "https://maker.example/images/toy.webp",
+    },
+    {
+      content_type: "game",
+      url: "https://maker.example/games/arcade/",
+      site_origin: "https://maker.example",
+      title: "Arcade Game",
+      summary: "A game from the same member as the project.",
+      observed_at: "2026-10-29T00:00:00.000Z",
+      image: "https://maker.example/images/arcade.png",
+    },
+  ]);
+
+  assert.equal(items.length, 2);
+  assert.deepEqual(items.map((item) => item.kind).sort(), ["games", "project"]);
+});
+
+test("buildShowcaseHomeItems keeps one project per member and only the latest of three", () => {
+  const items = buildShowcaseHomeItems([
+    {
+      content_type: "article",
+      url: "https://a.example/experiments/one/",
+      site_origin: "https://a.example",
+      title: "A One",
+      summary: "First project from member A on experiments.",
+      published_at: "2026-10-01T00:00:00.000Z",
+      image: "https://a.example/images/one.webp",
+    },
+    {
+      content_type: "article",
+      url: "https://a.example/experiments/two/",
+      site_origin: "https://a.example",
+      title: "A Two",
+      summary: "Second project from member A on experiments.",
+      published_at: "2026-10-10T00:00:00.000Z",
+      image: "https://a.example/images/two.webp",
+    },
+    {
+      content_type: "article",
+      url: "https://a.example/experiments/three/",
+      site_origin: "https://a.example",
+      title: "A Three",
+      summary: "Latest project from member A on experiments.",
+      published_at: "2026-10-20T00:00:00.000Z",
+      image: "https://a.example/images/three.webp",
+    },
+    {
+      content_type: "article",
+      url: "https://b.example/projects/widget/",
+      site_origin: "https://b.example",
+      title: "B Widget",
+      summary: "A project from member B that must also show.",
+      published_at: "2026-10-05T00:00:00.000Z",
+      image: "https://b.example/images/widget.webp",
+    },
+  ]);
+
+  assert.equal(items.length, 2);
+  assert.deepEqual(
+    items.map((item) => item.url),
+    [
+      "https://a.example/experiments/three/",
+      "https://b.example/projects/widget/",
+    ],
+  );
 });
 
 test("buildShowcaseItems highlights individual experiments and groups by kind", () => {

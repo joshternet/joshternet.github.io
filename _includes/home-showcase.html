@@ -1,7 +1,7 @@
 {% comment %}
-  Goal: Compact fair-per-origin creative showcase strip on the homepage.
-  Separate from What's New (time-windowed). Credits participants, not the hub.
-  Uses the same showcase-card partial (outbound-href + Umami) as /showcase/.
+  Goal: One-row homepage creative strip under What's happening.
+  One latest game, project, photo, or music work per member × kind
+  (showcase.home)—no publish window. Same showcase-card as /showcase/.
 {% endcomment %}
 {% assign home_showcase = site.data.showcase.home | default: empty %}
 {% if home_showcase.size > 0 %}

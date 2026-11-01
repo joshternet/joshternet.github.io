@@ -4627,12 +4627,36 @@ video {
 }
 
 .showcase-list--home {
-  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--space-4);
+  align-items: stretch;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  grid-template-columns: none;
+  scrollbar-gutter: stable;
+}
+
+.showcase-list--home > .showcase-list__item {
+  flex: 0 0 12rem;
+  width: 12rem;
+  max-width: 12rem;
 }
 
 @media (max-width: 42rem) {
   .showcase-list {
     grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  }
+
+  .showcase-list--home {
+    display: flex;
+    grid-template-columns: none;
+  }
+
+  .showcase-list--home > .showcase-list__item {
+    flex-basis: 11rem;
+    width: 11rem;
+    max-width: 11rem;
   }
 }
 

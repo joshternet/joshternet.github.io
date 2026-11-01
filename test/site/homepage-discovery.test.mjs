@@ -103,6 +103,7 @@ test("homepage meet and activity includes use generated datasets", async () => {
   assert.match(meet, /https:\/\/joshternet\.org/);
   assert.match(meet, /home_hub_origin/);
   assert.match(meet, /network_site\.origin != home_hub_origin/);
+  assert.match(meet, /home_network_count = site\.data\.network \| size/);
   assert.doesNotMatch(meet, /limit: 3/);
   assert.match(meet, /data-home-meet-grid/);
   assert.match(meet, /outbound-href\.html/);
