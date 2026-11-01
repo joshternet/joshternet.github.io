@@ -637,6 +637,36 @@ test("Network republish page is hub directory evidence surface", () => {
   assert.deepEqual(edges, []);
 });
 
+test("hub homepage activity author links are not NLP connection evidence", () => {
+  const edges = connectionObservations({
+    sourceOrigin: "https://joshternet.org",
+    pageUrl: "https://joshternet.org/",
+    links: [
+      {
+        href: "https://joshghent.com/",
+        text: "Josh Ghent",
+        classNames: ["p-name", "u-url"],
+        rel: [],
+      },
+      {
+        href: "https://b.example/post/",
+        text: "Independent mention",
+        classNames: [],
+        rel: [],
+      },
+    ],
+    participantOrigins: [
+      "https://joshternet.org",
+      "https://joshghent.com",
+      "https://b.example",
+    ],
+  });
+
+  assert.equal(edges.length, 1);
+  assert.equal(edges[0].to, "https://b.example");
+  assert.equal(edges[0].relation, "homepage-link");
+});
+
 test("normalizeExtractedText strips entity leftovers", () => {
   assert.equal(normalizeExtractedText("&quot;Design&quot;"), '"Design"');
 });

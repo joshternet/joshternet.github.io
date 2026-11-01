@@ -52,7 +52,10 @@
       {% if include.item.site_title and include.item.site_title != '' %}
         <p class="activity-card__author p-author h-card">
           {% if include.item.site_origin and include.item.site_origin != '' %}
-            <a class="p-name u-url" href="{{ include.item.site_origin | escape }}">
+            <a
+              class="activity-card__author-link p-name u-url"
+              href="{{ include.item.site_origin | escape }}"
+            >
               {{- include.item.site_title | escape -}}
             </a>
           {% else %}

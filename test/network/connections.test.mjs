@@ -127,6 +127,20 @@ test("isHubDirectoryLink detects hub Meet and activity widget classes", () => {
   );
   assert.equal(
     isHubDirectoryLink(
+      { classNames: ["activity-card__author-link", "p-name", "u-url"] },
+      "https://joshternet.org",
+    ),
+    true,
+  );
+  assert.equal(
+    isHubDirectoryLink(
+      { classNames: ["p-name", "u-url"], text: "Josh Ghent" },
+      "https://joshternet.org",
+    ),
+    true,
+  );
+  assert.equal(
+    isHubDirectoryLink(
       {
         classNames: ["u-url"],
         text: "Title ↗ (opens on the publisher’s site)",
@@ -167,6 +181,42 @@ test("hub Meet network-card links are not connection evidence", () => {
         },
       ],
       participantOrigins: ["https://joshternet.org", "https://b.example"],
+    }),
+    [],
+  );
+});
+
+test("hub activity-card author links are not connection evidence", () => {
+  assert.deepEqual(
+    connectionObservations({
+      sourceOrigin: "https://joshternet.org",
+      pageUrl: "https://joshternet.org/",
+      links: [
+        {
+          href: "https://joshghent.com/",
+          text: "Josh Ghent",
+          classNames: ["activity-card__author-link", "p-name", "u-url"],
+          rel: [],
+        },
+        {
+          href: "https://joshmuller.ca/",
+          text: "Josh Müller",
+          classNames: ["p-name", "u-url"],
+          rel: [],
+        },
+        {
+          href: "https://b.example/",
+          text: "Meet card",
+          classNames: ["network-card__link", "u-url"],
+          rel: ["noopener"],
+        },
+      ],
+      participantOrigins: [
+        "https://joshternet.org",
+        "https://joshghent.com",
+        "https://joshmuller.ca",
+        "https://b.example",
+      ],
     }),
     [],
   );
