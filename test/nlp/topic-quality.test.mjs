@@ -10,7 +10,10 @@ import {
   aliasCompatibilityMarkdown,
   buildTopicCommunities,
 } from "../../scripts/nlp/communities.mjs";
-import { buildTopicEvidence } from "../../scripts/nlp/evidence.mjs";
+import {
+  buildTopicEvidence,
+  isNonSubjectSlug,
+} from "../../scripts/nlp/evidence.mjs";
 import {
   extractTopicsFromPages,
   phrasesFromText,
@@ -76,6 +79,45 @@ test("plural tokens fold only when the singular is the same word", () => {
     foldPluralSlug("ai-agents"),
     foldPluralSlug("real-estate-agents"),
   );
+});
+
+test("generic filler unigrams are non-subjects", () => {
+  for (const slug of [
+    "action",
+    "actions",
+    "anything",
+    "file",
+    "files",
+    "friend",
+    "life",
+    "limit",
+    "limits",
+    "note",
+    "plan",
+    "plans",
+    "play",
+    "problem",
+    "problems",
+    "question",
+    "questions",
+    "support",
+    "tool",
+    "tools",
+  ]) {
+    assert.equal(isNonSubjectSlug(slug), true, slug);
+    assert.equal(
+      buildTopicEvidence({
+        rawValue: slug,
+        source: "visible-text",
+        evidenceClass: "heuristic",
+      }),
+      null,
+      slug,
+    );
+  }
+
+  assert.equal(isNonSubjectSlug("postgresql"), false);
+  assert.equal(isNonSubjectSlug("amateur-radio"), false);
 });
 
 test("ambiguous short words need technical context", () => {
