@@ -45,7 +45,7 @@ joshternet_analysis: derived
                         <span class="topic-site__why-class">{{ why.evidence_class | escape }}</span>
                       {% endif %}
                       {% if why.raw_value and why.raw_value != '' %}
-                        <span class="topic-site__why-value">“{{ why.raw_value | escape }}”</span>
+                        <span class="topic-site__why-value" dir="auto">“{{ why.raw_value | escape }}”</span>
                       {% endif %}
                       {% if why.source and why.source != '' %}
                         <span class="topic-site__why-source">via {{ why.source | escape }}</span>

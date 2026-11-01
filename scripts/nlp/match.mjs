@@ -16,20 +16,27 @@ import { foldPluralSlug } from "./normalize.mjs";
  * @returns {boolean}
  */
 export function textMentionsSlug(text, slug, label = "") {
-  const haystack = String(text || "").toLowerCase();
+  const haystack = String(text || "")
+    .normalize("NFC")
+    .toLowerCase();
 
   if (!haystack || isNonSubjectSlug(slug)) {
     return false;
   }
 
   const phrases = new Set();
-  const slugText = String(slug).toLowerCase().replace(/-/g, " ").trim();
+  const slugText = String(slug)
+    .normalize("NFC")
+    .toLowerCase()
+    .replace(/-/g, " ")
+    .trim();
 
-  if (slugText) {
+  if (slugText && !slugText.startsWith("u ")) {
     phrases.add(slugText);
   }
 
   const labelText = String(label || "")
+    .normalize("NFC")
     .toLowerCase()
     .trim();
 
@@ -42,8 +49,20 @@ export function textMentionsSlug(text, slug, label = "") {
       continue;
     }
 
+    // Scripts without spaces (CJK, Thai, etc.) match as substrings.
+    if (/[^\u0000-\u007F]/.test(phrase)) {
+      if (haystack.includes(phrase)) {
+        return true;
+      }
+
+      continue;
+    }
+
     const escaped = phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    const pattern = new RegExp(`(?:^|[^a-z0-9])${escaped}(?:$|[^a-z0-9])`, "i");
+    const pattern = new RegExp(
+      `(?:^|[^\\p{L}\\p{N}])${escaped}(?:$|[^\\p{L}\\p{N}])`,
+      "iu",
+    );
 
     if (pattern.test(haystack)) {
       return true;

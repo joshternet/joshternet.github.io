@@ -33,7 +33,16 @@
           <h2 class="activity-card__title p-name">
         {% endif %}
         {% include outbound-href.html url=include.item.url %}
-        <a class="activity-card__link u-url" href="{{ outbound_href | escape }}" target="_blank" rel="noopener">
+        <a
+          class="activity-card__link u-url"
+          href="{{ outbound_href | escape }}"
+          target="_blank"
+          rel="noopener"
+          {% if include.item.language and include.item.language != '' %}
+            lang="{{ include.item.language | escape }}"
+          {% endif %}
+          dir="auto"
+        >
           {{ include.item.title | escape }}
           <span aria-hidden="true">↗</span>
           <span class="visually-hidden">(opens on the publisher’s site)</span>
@@ -64,7 +73,15 @@
         </p>
       {% endif %}
       {% if include.item.summary and include.item.summary != '' %}
-        <p class="activity-card__summary p-summary">{{ include.item.summary | escape }}</p>
+        <p
+          class="activity-card__summary p-summary"
+          {% if include.item.language and include.item.language != '' %}
+            lang="{{ include.item.language | escape }}"
+          {% endif %}
+          dir="auto"
+        >
+          {{ include.item.summary | escape }}
+        </p>
       {% endif %}
       <div class="activity-card__footer">
         <p class="activity-card__topics">

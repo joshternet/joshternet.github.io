@@ -88,11 +88,12 @@
           return null;
         }
 
-        if (url.origin !== value) {
+        if (value.endsWith("/") || value.includes("?") || value.includes("#")) {
           return null;
         }
 
-        return url;
+        // Accept Unicode or ACE host spellings; normalize to ACE via url.origin.
+        return new URL(`${url.origin}/`);
       } catch {
         return null;
       }
@@ -250,7 +251,19 @@
         return null;
       }
 
-      if (typeof value.domain !== "string" || value.domain !== origin.host) {
+      if (typeof value.domain !== "string" || !value.domain) {
+        return null;
+      }
+
+      let domainHost = "";
+
+      try {
+        domainHost = new URL(`https://${value.domain}/`).host;
+      } catch {
+        return null;
+      }
+
+      if (domainHost !== origin.host) {
         return null;
       }
 

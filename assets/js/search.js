@@ -74,11 +74,15 @@
     const publishedAt = String(document.published_at || "");
     const image = String(document.image || "");
     const topics = Array.isArray(document.topics) ? document.topics : [];
+    const language = String(document.language || "").trim();
+    const langAttrs = language
+      ? ` lang="${escapeHTML(language)}" dir="auto"`
+      : ` dir="auto"`;
     const dateLabel = formatPublishedDate(publishedAt);
-    let titleLink = `<a class="u-url" href="${escapeHTML(outboundHrefValue)}">${title}</a>`;
+    let titleLink = `<a class="u-url" href="${escapeHTML(outboundHrefValue)}"${langAttrs}>${title}</a>`;
 
     if (external) {
-      titleLink = `<a class="u-url" href="${escapeHTML(outboundHrefValue)}" target="_blank" rel="noopener">${title} <span aria-hidden="true">↗</span><span class="visually-hidden">(opens on the publisher’s site)</span></a>`;
+      titleLink = `<a class="u-url" href="${escapeHTML(outboundHrefValue)}" target="_blank" rel="noopener"${langAttrs}>${title} <span aria-hidden="true">↗</span><span class="visually-hidden">(opens on the publisher’s site)</span></a>`;
     }
 
     let media = "";
@@ -119,7 +123,7 @@
     let summaryMarkup = "";
 
     if (summary) {
-      summaryMarkup = `<p class="activity-card__summary p-summary">${escapeHTML(summary)}</p>`;
+      summaryMarkup = `<p class="activity-card__summary p-summary"${langAttrs}>${escapeHTML(summary)}</p>`;
     }
 
     const topicSpans = topics
@@ -139,16 +143,19 @@
   }
 
   /**
+   * Unicode letter/number tokens (mirrors scripts/nlp/unicode-text.mjs).
    * @param {string} query
    * @returns {string[]}
    */
   function tokens(query) {
-    return query
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, " ")
-      .trim()
-      .split(/\s+/)
-      .filter((token) => token.length > 0);
+    if (typeof query !== "string" || !query) {
+      return [];
+    }
+
+    const normalized = query.normalize("NFC").toLowerCase();
+    const matches = normalized.match(/[\p{L}\p{M}\p{N}]+/gu);
+
+    return matches || [];
   }
 
   /**
@@ -163,11 +170,18 @@
       return 0;
     }
 
-    const title = String(document.title || "").toLowerCase();
-    const summary = String(document.summary || "").toLowerCase();
-    const domain = String(document.domain || "").toLowerCase();
+    const title = String(document.title || "")
+      .normalize("NFC")
+      .toLowerCase();
+    const summary = String(document.summary || "")
+      .normalize("NFC")
+      .toLowerCase();
+    const domain = String(document.domain || "")
+      .normalize("NFC")
+      .toLowerCase();
     const topics = (Array.isArray(document.topics) ? document.topics : [])
       .join(" ")
+      .normalize("NFC")
       .toLowerCase();
     let total = 0;
 

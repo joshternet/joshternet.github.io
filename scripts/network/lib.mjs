@@ -103,10 +103,11 @@ export function canonicalOrigin(value) {
     );
   }
 
-  if (url.origin !== value) {
+  if (value.endsWith("/") || value.includes("?") || value.includes("#")) {
     throw new Error(`origin is not canonical: ${value}`);
   }
 
+  // Accept Unicode (U-label) or ACE spellings; always return ASCII/ACE origin.
   return url.origin;
 }
 

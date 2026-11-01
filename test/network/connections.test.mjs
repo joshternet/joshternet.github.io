@@ -495,6 +495,9 @@ test("slugifyTopic: normalizes and slugifies a phrase", () => {
   );
   assert.equal(slugifyTopic("  Web  Dev  "), "web-dev");
   assert.equal(slugifyTopic("C++"), "c");
+  assert.match(slugifyTopic("日本語"), /^u-[a-f0-9]{12}$/);
+  assert.equal(slugifyTopic("日本語"), slugifyTopic("日本語"));
+  assert.equal(slugifyTopic("café"), "caf");
 });
 
 // ─── originsFromLinkUrls with object links ────────────────────────────────────

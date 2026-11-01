@@ -14,7 +14,39 @@ import {
   decodeHtmlEntities,
   decodeHrefForParse,
   normalizeExtractedText,
+  normalizeLanguageTag,
 } from "./text.mjs";
+
+/**
+ * Prefers entry-level language, then channel/feed language.
+ * @param {string} xml
+ * @param {string} chunk
+ * @param {boolean} isAtom
+ * @returns {string}
+ */
+function languageFromRssOrAtom(xml, chunk, isAtom) {
+  const entryLang =
+    chunk.match(/\bxml:lang=["']([^"']+)["']/i)?.[1] ||
+    chunk.match(/\blang=["']([^"']+)["']/i)?.[1] ||
+    "";
+  const fromEntry = normalizeLanguageTag(entryLang);
+
+  if (fromEntry) {
+    return fromEntry;
+  }
+
+  if (isAtom) {
+    return normalizeLanguageTag(
+      xml.match(/<feed\b[^>]*\bxml:lang=["']([^"']+)["']/i)?.[1] ||
+        xml.match(/<feed\b[^>]*\blang=["']([^"']+)["']/i)?.[1] ||
+        "",
+    );
+  }
+
+  return normalizeLanguageTag(
+    xml.match(/<language[^>]*>([\s\S]*?)<\/language>/i)?.[1] || "",
+  );
+}
 
 /**
  * Canonical content identity key.
@@ -486,12 +518,24 @@ export function contentItemsFromRssOrAtom(xml, meta) {
 
     const categories = [];
     const catPattern = isAtom
-      ? /<category\b[^>]*(?:term=["']([^"']+)["']|>([^<]+)<)/gi
+      ? /<category\b([^>]*?)(?:\s*\/>|>([\s\S]*?)<\/category>)/gi
       : /<category[^>]*>([\s\S]*?)<\/category>/gi;
     let catMatch;
 
     while ((catMatch = catPattern.exec(chunk))) {
-      const raw = normalizeExtractedText(catMatch[1] || catMatch[2]);
+      let raw = "";
+
+      if (isAtom) {
+        const attrs = catMatch[1] || "";
+        const term =
+          attrs.match(/\bterm=["']([^"']+)["']/i)?.[1] ||
+          attrs.match(/\blabel=["']([^"']+)["']/i)?.[1] ||
+          "";
+        raw = normalizeExtractedText(term || catMatch[2] || "");
+      } else {
+        raw = normalizeExtractedText(catMatch[1] || "");
+      }
+
       if (raw) {
         categories.push(raw);
       }
@@ -548,7 +592,7 @@ export function contentItemsFromRssOrAtom(xml, meta) {
       published_at: isoDateString(published) || null,
       updated_at: null,
       content_type: "article",
-      language: null,
+      language: languageFromRssOrAtom(xml, chunk, isAtom) || null,
       summary,
       declared_topics,
       source: { kind: isAtom ? "atom" : "rss", feed: meta.feedUrl },
@@ -650,7 +694,14 @@ export function contentItemsFromJsonFeed(jsonText, meta) {
           typeof item.date_modified === "string" ? item.date_modified : "",
         ) || null,
       content_type: "article",
-      language: typeof data.language === "string" ? data.language : null,
+      language:
+        normalizeLanguageTag(
+          typeof item.language === "string"
+            ? item.language
+            : typeof data.language === "string"
+              ? data.language
+              : "",
+        ) || null,
       summary: plainTextSummary(String(item.summary || "")),
       declared_topics,
       source: { kind: "json-feed", feed: meta.feedUrl },
@@ -827,8 +878,12 @@ export function joinContentWithPageSignals(items, originSignals) {
       ),
     );
 
+    if (next.language) {
+      next.language = normalizeLanguageTag(next.language) || null;
+    }
+
     if ((!next.language || next.language === null) && page?.lang) {
-      next.language = page.lang;
+      next.language = normalizeLanguageTag(page.lang) || null;
     }
 
     if (page?.page_role) {

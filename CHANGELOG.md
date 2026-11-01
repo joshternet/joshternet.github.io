@@ -25,6 +25,7 @@
 
 ### Fixed
 
+- Multilingual discovery: missing language is no longer treated as English for heuristics; BCP 47 tags are preserved from HTML/`xml:lang`/feeds into content and search views; non-Latin search queries and declared topics are retained (ASCII slugs when possible, otherwise stable `u-` hashes); IDN origins canonicalize to ACE; activity cards isolate publisher text with `lang`/`dir`; What's New Atom entries carry `xml:lang` when known; Join/Implement copy welcomes any written language without changing declaration keys.
 - What's New Atom builder tests cover author-name and malformed-item fallbacks so library coverage stays at 100%.
 - Connections excludes hub activity-card author links (`activity-card__author-link` / `p-name u-url`) from observed relationships while keeping independently authored homepage links; the summary “sites with observed links” count no longer includes shared-topic-only sites.
 - Connections `connections-select` fires only on deliberate graph/list selections, not `?site=` deep-link initialization.

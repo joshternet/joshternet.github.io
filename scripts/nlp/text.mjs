@@ -161,10 +161,12 @@ export function parseHtmlRegions(html) {
     /<meta\b[^>]*content=["']derived["'][^>]*name=["']joshternet-analysis["']/i.test(
       source,
     );
-  const langMatch = source.match(/<html\b[^>]*\blang=["']([^"']+)["']/i);
-  const lang = langMatch?.[1]
-    ? String(langMatch[1]).toLowerCase().slice(0, 16)
-    : "";
+  const htmlOpen = source.match(/<html\b([^>]*)>/i);
+  const htmlAttrs = htmlOpen?.[1] || "";
+  const lang = normalizeLanguageTag(
+    htmlAttributeValue(htmlAttrs, "lang") ||
+      htmlAttributeValue(htmlAttrs, "xml:lang"),
+  );
 
   const titleMatch = source.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
   const title = capRemoteString(
@@ -363,16 +365,45 @@ export function shareDescriptionFromHtml(html) {
 }
 
 /**
- * True when language looks English enough for English stopword NLP.
- * @param {string} lang
+ * Normalizes a BCP 47 language tag. Unknown or malformed → "".
+ * Never invents English from missing metadata, geography, or domain.
+ * @param {unknown} raw
+ * @returns {string}
+ */
+export function normalizeLanguageTag(raw) {
+  if (raw == null) {
+    return "";
+  }
+
+  const text = String(raw).trim().normalize("NFC");
+
+  if (!text || text.length > 35) {
+    return "";
+  }
+
+  const lower = text.toLowerCase().replace(/_/g, "-");
+
+  if (!/^[a-z]{2,8}(-[a-z0-9]{1,8})*$/i.test(lower)) {
+    return "";
+  }
+
+  return lower;
+}
+
+/**
+ * True when language is explicitly English enough for English stopword NLP.
+ * Missing or invalid tags are not treated as English.
+ * @param {unknown} lang
  * @returns {boolean}
  */
 export function isEnglishLanguage(lang) {
-  if (!lang) {
-    return true;
+  const tag = normalizeLanguageTag(lang);
+
+  if (!tag) {
+    return false;
   }
 
-  const base = lang.toLowerCase().split(/[-_]/)[0];
+  const base = tag.split("-")[0];
   return base === "en";
 }
 
