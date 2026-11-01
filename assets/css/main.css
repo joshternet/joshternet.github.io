@@ -4195,6 +4195,12 @@ video {
   cursor: pointer;
 }
 
+.activity-subscribe {
+  margin: 0 0 var(--space-5);
+  color: var(--color-muted);
+  font-size: var(--type-small);
+}
+
 .activity-list {
   list-style: none;
   margin: var(--space-5) 0 0;

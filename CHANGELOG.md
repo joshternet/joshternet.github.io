@@ -9,6 +9,7 @@
 - Cloudflare Worker platform recipe embeds copy-paste Worker and Wrangler source on `/implement/platforms/cloudflare-worker/` for serving only `/.well-known/josh`.
 - Join-funnel Umami events (`join-start`, `join-platform`, `join-declaration-copy`, `join-check-open`, `join-nominate-open`, `join-share-open`) with link-track skip on dedicated CTAs.
 - Umami custom events for outbound and internal link clicks, inbound referrer classification (member vs other), and privacy-safe UI signals on Search, Network, Wander, Connections, and nominations—no search query text or form PII.
+- Atom feed for What’s New at `/assets/activity/atom.xml`, with Subscribe + autodiscovery on `/activity/` alongside the existing OPML blogroll.
 
 - Homepage “Welcome to the Joshternet!” section highlights up to three recent non-hub participants from the registry (`first_participated_at` within 14 days of build time; daily deploy), with Network deep links and an explicit non-Josh invitation to `/implement/`.
 - Homepage Connections preview exposes Zoom in, Zoom out, and Center map controls with drag-pan; wheel still does not trap page scroll.
@@ -25,6 +26,7 @@
 
 ### Fixed
 
+- What's New Atom builder tests cover author-name and malformed-item fallbacks so library coverage stays at 100%.
 - Connections excludes hub activity-card author links (`activity-card__author-link` / `p-name u-url`) from observed relationships while keeping independently authored homepage links; the summary “sites with observed links” count no longer includes shared-topic-only sites.
 - Connections `connections-select` fires only on deliberate graph/list selections, not `?site=` deep-link initialization.
 - Join guide `join-start` Umami event fires once per session on the first intentional onboarding action (copy, platform, checker, or nominate)—not on `/join/` page load.

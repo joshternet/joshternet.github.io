@@ -19,6 +19,13 @@ joshternet_analysis: derived
 
 Recent articles from around the Joshternet.
 
+<p class="activity-subscribe">
+  <a href="{{ '/assets/activity/atom.xml' | relative_url }}">Subscribe</a>
+  to this What’s New collection as Atom, or use the
+  <a href="{{ '/assets/network/joshternet.opml' | relative_url }}">OPML blogroll</a>
+  to follow individual publishers in a feed reader.
+</p>
+
 {% if primary.size > 0 %}
 <ol class="activity-list h-feed">
   {% for item in primary %}
