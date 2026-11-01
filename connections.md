@@ -56,7 +56,7 @@ Connections from around the Joshternet.
       {% assign overlap_count = overlap_site.topics.size %}
     {% endif %}
   {% endfor %}
-  {% if outbound > 0 or inbound > 0 or overlap_count > 0 %}
+  {% if outbound > 0 or inbound > 0 %}
     {% assign connected_site_count = connected_site_count | plus: 1 %}
   {% endif %}
 {% endfor %}

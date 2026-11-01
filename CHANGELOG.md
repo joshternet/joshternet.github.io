@@ -25,12 +25,15 @@
 
 ### Fixed
 
+- Connections excludes hub activity-card author links (`activity-card__author-link` / `p-name u-url`) from observed relationships while keeping independently authored homepage links; the summary “sites with observed links” count no longer includes shared-topic-only sites.
 - Connections `connections-select` fires only on deliberate graph/list selections, not `?site=` deep-link initialization.
 - Join guide `join-start` Umami event fires once per session on the first intentional onboarding action (copy, platform, checker, or nominate)—not on `/join/` page load.
 
 ### Changed
 
 - Wander can optionally Follow a connection along observed outgoing edges (with session Previous), while random Go stays available.
+- Topic quality rejects weak generic unigrams (`anything`, `action`, `tool`, and similar) as subjects and surfaces why-here evidence on topic pages.
+- `/implement/validate/` shows next steps after a valid check, including independent declaration vs public-registry listing facts from the build-time Network snapshot, plus Network and nominate links—without a second checker.
 - NLP crawl improvements for sites without feed tags (for example joshghent.com): BlogPosting/Article JSON-LD and `og:type=article` drive `page_role` so root permalinks get heuristics; Person `knowsAbout` becomes community-eligible declared topics; soft-404 pages that repeat the homepage (canonical to `/` or identity-slash body match) no longer consume the page budget; feed entry URLs enqueue before identity slash seeds; year-prefixed heuristic junk (`2018-gifs`) is dropped.
 - SEO and IndieWeb markup: site `author` in `_config.yml`; homepage Project JSON-LD gains `logo` and GitHub `sameAs`; gap pages get `seo.type`; derived JSON-LD adds BreadcrumbList (topics/implement) and capped ItemList (`/network/`, `/activity/`, `/topics/`, `/welcome/`); topic pages nest `h-feed` on article lists only; activity/search author cards gain clean `u-url`; welcome cards and topics index use `h-card`.
 - Homepage welcome cards are build-time only for participants within the last 14 days (daily deploy), stacked meta rows, no hidden candidates or runtime eligibility filter.
