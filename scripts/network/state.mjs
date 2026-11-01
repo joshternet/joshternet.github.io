@@ -7,6 +7,12 @@ import { registryParticipationFields } from "./lib.mjs";
 
 export const CAPTURE_MAX_AGE_MS = 24 * 60 * 60 * 1000;
 
+/**
+ * True when captured_at is present and younger than CAPTURE_MAX_AGE_MS.
+ * @param {{ captured_at?: string } | null | undefined} entry
+ * @param {number} [currentTime]
+ * @returns {boolean}
+ */
 export function captureIsFresh(entry, currentTime = Date.now()) {
   if (!entry?.captured_at) {
     return false;
@@ -19,6 +25,58 @@ export function captureIsFresh(entry, currentTime = Date.now()) {
   }
 
   return currentTime - capturedAt < CAPTURE_MAX_AGE_MS;
+}
+
+/**
+ * True when the network entry's screenshot path resolves to a non-empty file.
+ * @param {{ screenshot?: string } | null | undefined} entry
+ * @returns {Promise<boolean>}
+ */
+export async function screenshotFileIsPresent(entry) {
+  if (!entry?.screenshot || typeof entry.screenshot !== "string") {
+    return false;
+  }
+
+  const relative = entry.screenshot.replace(/^\/+/, "");
+
+  try {
+    const stat = await fs.stat(path.resolve(relative));
+
+    return stat.isFile() && stat.size > 0;
+  } catch (error) {
+    if (error?.code === "ENOENT") {
+      return false;
+    }
+
+    throw error;
+  }
+}
+
+/**
+ * True when a participant needs a fresh homepage screenshot capture.
+ * Missing or empty WebP files force recapture even when captured_at is fresh
+ * so scheduled syncs self-heal without NETWORK_REFRESH_ALL.
+ * @param {{ captured_at?: string, screenshot?: string } | null | undefined} entry
+ * @param {{ currentTime?: number }} [options]
+ * @returns {Promise<boolean>}
+ */
+export async function needsScreenshotCapture(entry, options = {}) {
+  if (!entry) {
+    return true;
+  }
+
+  const currentTime =
+    typeof options.currentTime === "number" ? options.currentTime : Date.now();
+
+  if (!captureIsFresh(entry, currentTime)) {
+    return true;
+  }
+
+  if (!(await screenshotFileIsPresent(entry))) {
+    return true;
+  }
+
+  return false;
 }
 
 function participationChanged(entry, participant) {

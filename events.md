@@ -1,13 +1,13 @@
 ---
-# Unpublished until a crawl finds verified upcoming events on a member site.
-# Flip published: true and restore Network nav "Happening" when item_count > 0.
-published: false
+# Always built. Network nav "Happening" appears when happening.item_count > 0.
+published: true
 layout: default
 title: Happening on the Joshternet — events from independent websites
 description: >-
   Upcoming events hosted, organized, or performed by independent websites
   participating in the Joshternet. Cards link out to the original publisher
-  event page — no in-hub embeds.
+  event page — no in-hub embeds. Education series archives also appear on
+  Showcase when past sessions are indexed.
 keywords: >-
   Joshternet events, happening, independent websites, upcoming events
 seo:

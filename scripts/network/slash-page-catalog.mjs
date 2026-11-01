@@ -568,9 +568,44 @@ export const SLASH_PAGE_CATALOG = [
     uses: ["content"],
     extraction: "creative",
   }),
+  entry("/comics/", {
+    aliases: ["/comic/", "/webcomics/"],
+    purpose: "Comics or webcomics index",
+    category: "creative-index",
+    uses: ["content"],
+    extraction: "creative",
+  }),
+  entry("/toys/", {
+    aliases: ["/toy/", "/play/"],
+    purpose: "HTML/CSS/JS toys or playthings index",
+    category: "creative-index",
+    uses: ["content"],
+    extraction: "creative",
+  }),
+  entry("/reels/", {
+    aliases: ["/reel/", "/shorts/"],
+    purpose: "Short-form video reels index",
+    category: "creative-index",
+    uses: ["content"],
+    extraction: "creative",
+  }),
+  entry("/cssbattles/", {
+    aliases: ["/cssbattle/", "/css-battles/"],
+    purpose: "CSS Battle or creative-coding video series index",
+    category: "creative-index",
+    uses: ["content"],
+    extraction: "creative",
+  }),
   entry("/music/", {
     aliases: ["/discography/", "/albums/", "/tracks/"],
     purpose: "Music releases index",
+    category: "creative-index",
+    uses: ["content"],
+    extraction: "creative",
+  }),
+  entry("/podcasts/", {
+    aliases: ["/podcast/", "/listen/"],
+    purpose: "Publisher podcast or listen index",
     category: "creative-index",
     uses: ["content"],
     extraction: "creative",
@@ -636,6 +671,20 @@ export const SLASH_PAGE_CATALOG = [
     uses: ["content"],
     extraction: "events",
   }),
+  entry("/study-hall/", {
+    aliases: ["/frontend-study-hall/", "/front-end-study-hall/", "/fresh/"],
+    purpose: "Study hall or recurring learning meetup series",
+    category: "events",
+    uses: ["content"],
+    extraction: "events",
+  }),
+  entry("/education/", {
+    aliases: ["/learn/", "/classes/", "/class/", "/courses/", "/course/"],
+    purpose: "Education, classes, or courses index",
+    category: "events",
+    uses: ["content"],
+    extraction: "events",
+  }),
 ];
 
 /**
@@ -683,6 +732,41 @@ export function normalizeSlashPath(value) {
   }
 
   return `/${bare}/`;
+}
+
+/**
+ * Catalog `uses` tags for a slash pathname (canonical or alias).
+ * Unknown paths return an empty list.
+ * @param {string} pathname
+ * @returns {Array<'connections'|'content'|'site-info'>}
+ */
+export function slashPageUses(pathname) {
+  const normalized = normalizeSlashPath(pathname);
+
+  if (!normalized) {
+    return [];
+  }
+
+  for (const item of SLASH_PAGE_CATALOG) {
+    if (!pathsForEntry(item).includes(normalized)) {
+      continue;
+    }
+
+    return [...item.uses];
+  }
+
+  return [];
+}
+
+/**
+ * True when host-discovered (non-`rel=me`) elsewhere may be harvested from
+ * this slash page. Connections-only directories are for member links, not
+ * the publisher’s own social profiles.
+ * @param {string} pathname
+ * @returns {boolean}
+ */
+export function slashPageAllowsHostElsewhere(pathname) {
+  return slashPageUses(pathname).includes("site-info");
 }
 
 /**

@@ -191,6 +191,8 @@ export function extractPageMetadata(hostCatalog) {
       "application/rss+xml",
       "application/atom+xml",
       "application/feed+json",
+      // Hugo PaperMod often advertises /index.json as application/json.
+      "application/json",
     ]);
     const feeds = [];
 

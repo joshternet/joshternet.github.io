@@ -566,6 +566,42 @@ test("sheet music posters are generated for PDF scores without images", async ()
   await fs.rm(posterRoot, { recursive: true, force: true });
 });
 
+test("materializeActivityPosters keeps pre-localized Playwright posters", async () => {
+  const posterRoot = path.join(root, `local-keep-${Date.now()}`);
+  const workUrl = "https://themorning.app/";
+  const local = posterAssetPath(workUrl);
+  const relative = local.replace(/^\//, "");
+  const absolute = path.join(posterRoot, relative);
+  await fs.mkdir(path.dirname(absolute), { recursive: true });
+  await fs.writeFile(absolute, await solidPng(64, 36, { r: 12, g: 34, b: 56 }));
+
+  const views = {
+    showcase: {
+      items: [
+        null,
+        {
+          url: workUrl,
+          title: "The Morning App",
+          content_type: "project",
+          image: local,
+        },
+        { url: "https://joshgr.com/wizardly-words/", image: 7 },
+      ],
+      home: [],
+    },
+  };
+
+  await materializeActivityPosters(views, posterRoot, {
+    fetchImpl: async () => {
+      throw new Error("no remote posters");
+    },
+  });
+
+  assert.equal(views.showcase.items[1].image, local);
+  await fs.access(absolute);
+  await fs.rm(posterRoot, { recursive: true, force: true });
+});
+
 // ─── Additional coverage tests for posters.mjs ───────────────────────────────
 
 test("sheetMusicPreviewSvg: title longer than 42 chars is truncated (L267-268)", () => {

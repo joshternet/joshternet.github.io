@@ -202,3 +202,26 @@ test("site deep link stays visible when identity filter would hide it", async ()
 
   await context.close();
 });
+
+test("site deep link focuses the card article, not a partial body link", async () => {
+  const { context, page } = await networkPage(0, "?site=aaron.example");
+  const card = page.locator('[data-domain="aaron.example"]');
+
+  await page.waitForFunction(() => {
+    const target = document.querySelector(
+      '[data-domain="aaron.example"].is-targeted',
+    );
+
+    return Boolean(target && document.activeElement === target);
+  });
+
+  assert.equal(await card.getAttribute("tabindex"), "-1");
+  assert.equal(
+    await page.evaluate(
+      () => document.activeElement?.getAttribute("data-domain") || "",
+    ),
+    "aaron.example",
+  );
+
+  await context.close();
+});

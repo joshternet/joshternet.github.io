@@ -11,6 +11,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { topicCollectionMarkdown } from "../nlp/communities.mjs";
+import { formatGeneratedOutputs } from "../format-written.mjs";
 import {
   readJSONIfExists,
   writeJSONAtomic,
@@ -23,6 +24,10 @@ import {
   buildViewDocuments,
 } from "./lib.mjs";
 import { materializeActivityPosters } from "./posters.mjs";
+import {
+  captureMissingWorkScreenshots,
+  collectProjectionItemsNeedingPosters,
+} from "./work-screenshots.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "../..");
 
@@ -50,6 +55,10 @@ export async function buildViewProjections(root = ROOT) {
     path.join(dataDir, "site_signals.json"),
     {},
   );
+  const channelPublish = await readJSONIfExists(
+    path.join(dataDir, "channel_publish.json"),
+    {},
+  );
   const generatedAt = new Date().toISOString();
   const views = buildViewDocuments({
     network: Array.isArray(network) ? network : [],
@@ -58,6 +67,12 @@ export async function buildViewProjections(root = ROOT) {
     connections,
     siteSignals,
     generatedAt,
+    channelPublishByUrl:
+      channelPublish &&
+      typeof channelPublish === "object" &&
+      !Array.isArray(channelPublish)
+        ? channelPublish
+        : {},
   });
 
   if (!views.activity.primary.length) {
@@ -110,6 +125,12 @@ export async function buildViewProjections(root = ROOT) {
   if (!views.connection_topics.sites.length) {
     delete views.connection_topics.sites;
   }
+
+  // Channel cards (and any other projected Showcase/Activity rows) are built
+  // after content harvest screenshots. Attach/capture missing posters here so
+  // YouTube/Vimeo/Twitch channels get a viewport image when OG is absent.
+  const projectionPosterTargets = collectProjectionItemsNeedingPosters(views);
+  await captureMissingWorkScreenshots(projectionPosterTargets, { root });
 
   await materializeActivityPosters(views, root);
 
@@ -211,6 +232,7 @@ async function writeStableJSON(filePath, document) {
 
 async function main() {
   const views = await buildViewProjections();
+  await formatGeneratedOutputs();
   process.stdout.write(
     `Wrote view projections: ${views.activity.primary_count} activity rows, ${views.explore.community_count} neighborhoods, ${views.search_index.document_count} search documents, ${views.showcase.item_count} showcase items, ${views.happening.item_count} upcoming events.\n`,
   );

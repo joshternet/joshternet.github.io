@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+  <channel>
+    <title>Example Josh Podcast</title>
+    <item>
+      <title>Episode 1: Hello Network</title>
+      <link>https://example.com/podcasts/hello/</link>
+      <pubDate>Mon, 01 Sep 2026 12:00:00 +0000</pubDate>
+      <itunes:duration>12:34</itunes:duration>
+      <itunes:episode>1</itunes:episode>
+      <enclosure url="https://example.com/audio/ep1.mp3" type="audio/mpeg" length="12345"/>
+      <description>First episode.</description>
+    </item>
+  </channel>
+</rss>

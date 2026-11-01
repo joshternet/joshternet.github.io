@@ -10,6 +10,7 @@ import { fileURLToPath } from "node:url";
 import {
   collectCreativeWorks,
   creativeContentType,
+  creativeItemsFromExternalWatchLinks,
   creativeItemsFromFigures,
   creativeItemsFromIndexLinks,
   isCreativeIndexPath,
@@ -226,4 +227,46 @@ test("creativeItemsFromIndexLinks prefers post-link image and paragraph summary"
   assert.ok(orchard);
   assert.equal(orchard.image, "https://games.example/images/orchard.png");
   assert.match(String(orchard.summary), /fruit/i);
+});
+
+test("comics index harvests same-origin children", () => {
+  const html = fs.readFileSync(
+    path.join(
+      path.dirname(fileURLToPath(import.meta.url)),
+      "../fixtures/html/indie-comics-index.html",
+    ),
+    "utf8",
+  );
+  const items = creativeItemsFromIndexLinks(
+    html,
+    "https://comics.example/comics/",
+    "https://comics.example",
+    "2026-11-01T00:00:00.000Z",
+  );
+  assert.ok(items.some((item) => item.url.endsWith("/comics/use-it/")));
+  assert.ok(items.some((item) => item.url.endsWith("/comics/spite-swimming/")));
+  assert.equal(isCreativeIndexPath("/comics/"), true);
+  assert.equal(isCreativeIndexPath("/cssbattles/"), true);
+  assert.equal(isCreativeIndexPath("/study-hall/"), true);
+});
+
+test("video indexes harvest external YouTube watch links", () => {
+  const html = fs.readFileSync(
+    path.join(
+      path.dirname(fileURLToPath(import.meta.url)),
+      "../fixtures/html/indie-videos-cssbattles.html",
+    ),
+    "utf8",
+  );
+  const items = creativeItemsFromExternalWatchLinks(
+    html,
+    "https://videos.example/cssbattles/",
+    "https://videos.example",
+    "2026-11-01T00:00:00.000Z",
+  );
+  assert.ok(items.length >= 2);
+  assert.equal(items[0].content_type, "video");
+  assert.equal(items[0].source.kind, "videos-watch-link");
+  assert.equal(items[0].actions[0].label, "Watch");
+  assert.match(String(items[0].url), /youtube\.com\/watch/);
 });

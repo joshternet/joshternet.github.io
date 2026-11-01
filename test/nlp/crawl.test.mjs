@@ -11,6 +11,7 @@ import {
   MAX_CONTENT_INDEX_CHILDREN,
   MAX_TOPIC_HUB_CHILDREN,
   TOPIC_HUB_INDEX_PATHS,
+  childSitemapUrls,
   contentIndexChildUrls,
   contentIndexSeedUrls,
   crawlOrigin,
@@ -19,8 +20,12 @@ import {
   isContentIndexUrl,
   isIdentitySlashPath,
   isPhotoAttachmentUrl,
+  isSitemapIndex,
   isSoft404Duplicate,
   isTopicHubIndexUrl,
+  locsFromSitemapXml,
+  originFailureSignal,
+  seedUrlsFromSitemaps,
   topicHubChildUrls,
   topicHubPrefix,
   topicHubSeedUrls,
@@ -462,6 +467,310 @@ test("urlsFromSitemap: deduplicates URLs", () => {
   </urlset>`;
   const urls = urlsFromSitemap(xml, "https://a.example");
   assert.equal(urls.length, 1);
+});
+
+test("isSitemapIndex and locsFromSitemapXml recognize index files", () => {
+  const index = `<?xml version="1.0"?>
+    <sitemapindex>
+      <sitemap><loc>https://a.example/sitemap-posts.xml</loc></sitemap>
+    </sitemapindex>`;
+  assert.equal(isSitemapIndex(index), true);
+  assert.equal(isSitemapIndex("<urlset></urlset>"), false);
+  assert.equal(isSitemapIndex(/** @type {any} */ (null)), false);
+  assert.equal(isSitemapIndex(undefined), false);
+  assert.deepEqual(locsFromSitemapXml(index), [
+    "https://a.example/sitemap-posts.xml",
+  ]);
+  assert.deepEqual(locsFromSitemapXml(/** @type {any} */ (null)), []);
+  assert.deepEqual(locsFromSitemapXml(undefined), []);
+  assert.deepEqual(childSitemapUrls(index, "https://a.example"), [
+    "https://a.example/sitemap-posts.xml",
+  ]);
+});
+
+test("seedUrlsFromSitemaps: uses robots Sitemap and survives 5xx", async () => {
+  const origin = "https://a.example";
+  const cache = dnsCache(["a.example"]);
+  const seeded = [];
+  install();
+  try {
+    globalThis.fetch = async (url) => {
+      const href = String(url);
+      if (href.endsWith("/broken-sitemap.xml")) {
+        return {
+          ok: false,
+          status: 500,
+          headers: new Headers({ "content-type": "application/xml" }),
+          arrayBuffer: async () => Buffer.from("error"),
+        };
+      }
+      if (href.endsWith("/good-sitemap.xml")) {
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "application/xml" }),
+          arrayBuffer: async () =>
+            Buffer.from(
+              `<urlset><url><loc>${origin}/from-robots/</loc></url></urlset>`,
+            ),
+        };
+      }
+      return {
+        ok: false,
+        status: 404,
+        headers: new Headers(),
+        arrayBuffer: async () => Buffer.from(""),
+      };
+    };
+    await seedUrlsFromSitemaps(
+      origin,
+      cache,
+      (url, reason) => {
+        seeded.push({ url, reason });
+      },
+      `User-agent: *\nSitemap: ${origin}/broken-sitemap.xml\nSitemap: ${origin}/good-sitemap.xml\n`,
+    );
+    assert.ok(
+      seeded.some(
+        (entry) =>
+          entry.url === `${origin}/from-robots/` && entry.reason === "sitemap",
+      ),
+    );
+  } finally {
+    restore();
+  }
+});
+
+test("seedUrlsFromSitemaps: follows sitemapindex children", async () => {
+  const origin = "https://a.example";
+  const cache = dnsCache(["a.example"]);
+  const seeded = [];
+  install();
+  try {
+    globalThis.fetch = async (url) => {
+      const href = String(url);
+      if (href.endsWith("/sitemap.xml")) {
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "application/xml" }),
+          arrayBuffer: async () =>
+            Buffer.from(
+              `<sitemapindex><sitemap><loc>${origin}/sitemap.xml</loc></sitemap><sitemap><loc>${origin}/child-sitemap.xml</loc></sitemap></sitemapindex>`,
+            ),
+        };
+      }
+      if (href.endsWith("/child-sitemap.xml")) {
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "application/xml" }),
+          arrayBuffer: async () =>
+            Buffer.from(
+              `<urlset><url><loc>${origin}/indexed-post/</loc></url></urlset>`,
+            ),
+        };
+      }
+      return {
+        ok: false,
+        status: 404,
+        headers: new Headers(),
+        arrayBuffer: async () => Buffer.from(""),
+      };
+    };
+    await seedUrlsFromSitemaps(
+      origin,
+      cache,
+      (url, reason) => {
+        seeded.push({ url, reason });
+      },
+      "",
+    );
+    assert.ok(seeded.some((entry) => entry.url === `${origin}/indexed-post/`));
+  } finally {
+    restore();
+  }
+});
+
+test("seedUrlsFromSitemaps: skips invalid Sitemap URLs and duplicates", async () => {
+  const origin = "https://a.example";
+  const cache = dnsCache(["a.example"]);
+  const seeded = [];
+  install();
+  try {
+    globalThis.fetch = async (url) => {
+      if (String(url).endsWith("/ok-sitemap.xml")) {
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "application/xml" }),
+          arrayBuffer: async () =>
+            Buffer.from(
+              `<urlset><url><loc>${origin}/ok-page/</loc></url></urlset>`,
+            ),
+        };
+      }
+      return {
+        ok: false,
+        status: 404,
+        headers: new Headers(),
+        arrayBuffer: async () => Buffer.from(""),
+      };
+    };
+    await seedUrlsFromSitemaps(
+      origin,
+      cache,
+      (url, reason) => {
+        seeded.push({ url, reason });
+      },
+      `Sitemap: http://[\nSitemap: ${origin}/ok-sitemap.xml\nSitemap: ${origin}/ok-sitemap.xml\n`,
+    );
+    assert.ok(seeded.some((entry) => entry.url === `${origin}/ok-page/`));
+  } finally {
+    restore();
+  }
+});
+
+test("crawlOrigin: aboutUrls and /slashes index expand seeds", async () => {
+  const origin = "https://a.example";
+  const cache = dnsCache(["a.example"]);
+  install();
+  try {
+    globalThis.fetch = async (url) => {
+      const href = String(url);
+      if (href.includes("sitemap.xml") || href.endsWith("/robots.txt")) {
+        return {
+          ok: false,
+          status: 404,
+          headers: new Headers(),
+          arrayBuffer: async () => Buffer.from(""),
+        };
+      }
+      if (href.includes("/slashes")) {
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "text/html" }),
+          arrayBuffer: async () =>
+            Buffer.from(
+              `<!DOCTYPE html><html lang="en"><head><title>Slashes</title><link rel="canonical" href="${origin}/slashes/"></head><body><main><p>Slash index</p><a href="/custom-slash/">Custom</a></main></body></html>`,
+            ),
+        };
+      }
+      return {
+        ok: true,
+        status: 200,
+        headers: new Headers({ "content-type": "text/html" }),
+        arrayBuffer: async () =>
+          Buffer.from(
+            `<!DOCTYPE html><html lang="en"><head><title>${href}</title><link rel="canonical" href="${href}"></head><body><main><p>Page body for ${href}</p></main></body></html>`,
+          ),
+      };
+    };
+    const result = await crawlOrigin(origin, {
+      cache,
+      aboutUrls: [`${origin}/about/`, ""],
+      feedEntryUrls: [],
+    });
+    assert.ok(result.pages.some((page) => page.url.includes("/about/")));
+    assert.ok(result.pages.some((page) => page.url.includes("/slashes")));
+    assert.ok(
+      result.selection_reasons[`${origin}/custom-slash/`] === "slashes-index" ||
+        result.pages.some((page) => page.url.includes("/custom-slash")),
+    );
+  } finally {
+    restore();
+  }
+});
+
+test("originFailureSignal: records a soft origin failure", () => {
+  const signal = originFailureSignal(
+    "https://a.example",
+    "2026-01-01T00:00:00.000Z",
+    new Error("boom"),
+  );
+  assert.equal(signal.origin, "https://a.example");
+  assert.equal(signal.error, "boom");
+  assert.equal(
+    originFailureSignal("https://a.example", "2026-01-01T00:00:00.000Z", "x")
+      .error,
+    "x",
+  );
+});
+
+test("crawlOrigin: invalid seed URLs are ignored by pathAllowed", async () => {
+  const origin = "https://a.example";
+  const cache = dnsCache(["a.example"]);
+  install();
+  try {
+    globalThis.fetch = async (url) => {
+      const href = String(url);
+      if (href.includes("sitemap") || href.endsWith("/robots.txt")) {
+        return {
+          ok: false,
+          status: 404,
+          headers: new Headers(),
+          arrayBuffer: async () => Buffer.from(""),
+        };
+      }
+      return {
+        ok: true,
+        status: 200,
+        headers: new Headers({ "content-type": "text/html" }),
+        arrayBuffer: async () => Buffer.from(SIMPLE_HTML("Home")),
+      };
+    };
+    const result = await crawlOrigin(origin, {
+      cache,
+      aboutUrl: "http://",
+      feedEntryUrls: ["http://"],
+    });
+    assert.ok(result.pages.some((page) => page.url === `${origin}/`));
+  } finally {
+    restore();
+  }
+});
+
+test("crawlOrigin: honors robots Disallow", async () => {
+  const origin = "https://a.example";
+  const cache = dnsCache(["a.example"]);
+  install();
+  try {
+    globalThis.fetch = async (url) => {
+      const href = String(url);
+      if (href.endsWith("/robots.txt")) {
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "text/plain" }),
+          arrayBuffer: async () =>
+            Buffer.from("User-agent: *\nDisallow: /secret/\n"),
+        };
+      }
+      if (href.includes("sitemap.xml")) {
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "application/xml" }),
+          arrayBuffer: async () =>
+            Buffer.from(
+              `<urlset><url><loc>${origin}/secret/hidden/</loc></url><url><loc>${origin}/public/</loc></url></urlset>`,
+            ),
+        };
+      }
+      return {
+        ok: true,
+        status: 200,
+        headers: new Headers({ "content-type": "text/html" }),
+        arrayBuffer: async () => Buffer.from(SIMPLE_HTML(href)),
+      };
+    };
+    const result = await crawlOrigin(origin, { cache });
+    assert.ok(!result.pages.some((page) => page.url.includes("/secret/")));
+    assert.ok(result.pages.some((page) => page.url.includes("/public/")));
+  } finally {
+    restore();
+  }
 });
 
 // ─── crawlOrigin (integration via mock fetch) ─────────────────────────────────

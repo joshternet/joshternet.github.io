@@ -2,11 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://joshternet.org/assets/activity/atom.xml</id>
   <title>Joshternet What's New</title>
-  <updated>2026-11-01T11:13:45.214Z</updated>
+  <updated>2026-11-01T23:09:27.641Z</updated>
   <link rel="self" type="application/atom+xml" href="https://joshternet.org/assets/activity/atom.xml"/>
   <link rel="alternate" type="text/html" href="https://joshternet.org/activity/"/>
   <subtitle>Recent articles from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
   <generator uri="https://joshternet.org/">Joshternet views:build</generator>
+  <entry xml:lang="en">
+    <id>https://joshtronic.com/2026/11/01/open-to-work/</id>
+    <title xml:lang="en">I&apos;m Open to Work</title>
+    <updated>2026-11-01T00:00:00.000Z</updated>
+    <published>2026-11-01T00:00:00.000Z</published>
+    <link rel="alternate" href="https://joshtronic.com/2026/11/01/open-to-work/"/>
+    <author>
+      <name>Josh Sherman</name>
+      <uri>https://joshtronic.com</uri>
+    </author>
+    <summary xml:lang="en">Mailshake has terminated my employment after 8+ years. In that time, I... Started as engineer #3 Moved into management thanks to an awesome CTO Ran a 10-person team across backend, frontend, QA, and support Scaled down to 2 engineers while maintaining productivity Reduced annual AWS spend by ~70% over 3 years Was always on-call and handled support escalations Ran technical due diligence on 4 acqui</summary>
+  </entry>
   <entry xml:lang="en">
     <id>https://joshmuller.ca/recipes/desserts/gluten-free-chocolate-cake/</id>
     <title xml:lang="en">Gluten-Free Chocolate Cake</title>
@@ -32,6 +44,18 @@
     <summary xml:lang="en">A worldwide collection of field recordings that lets you explore the sounds of cities, forests, rivers, train stations and ordinary places, with experimental radio projects that turn listening into an entirely different way of experiencing the world.</summary>
   </entry>
   <entry xml:lang="en">
+    <id>https://joshgr.com/writing/how-wizardly-words-invents-words/</id>
+    <title xml:lang="en">How Wizardly Words Invents Words</title>
+    <updated>2026-10-30T00:00:00.000Z</updated>
+    <published>2026-10-30T00:00:00.000Z</published>
+    <link rel="alternate" href="https://joshgr.com/writing/how-wizardly-words-invents-words/"/>
+    <author>
+      <name>Josh Grant</name>
+      <uri>https://joshgr.com</uri>
+    </author>
+    <summary xml:lang="en">It takes what we know and infers new words between the lines</summary>
+  </entry>
+  <entry xml:lang="en">
     <id>https://joshghent.com/enterprise-sales-teams/</id>
     <title xml:lang="en">Enterprise sales teams, please, I beg you, stop</title>
     <updated>2026-10-28T00:00:00.000Z</updated>
@@ -54,17 +78,5 @@
       <uri>https://joshuamorris.info</uri>
     </author>
     <summary xml:lang="en">Operate a Radio Shack Armatron and move objects around its tabletop.</summary>
-  </entry>
-  <entry xml:lang="en">
-    <id>https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/</id>
-    <title xml:lang="en">Learning a New Tech Stack with an LLM</title>
-    <updated>2026-10-26T00:00:00.000Z</updated>
-    <published>2026-10-26T00:00:00.000Z</published>
-    <link rel="alternate" href="https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/"/>
-    <author>
-      <name>Josh Sherman</name>
-      <uri>https://joshtronic.com</uri>
-    </author>
-    <summary xml:lang="en">While I mentioned a few weeks back that I&apos;m now recovering from AI Psychosis , that doesn&apos;t mean I&apos;ve given up on the technology completely. I&apos;m writing more emails, and engaging with human beings as much as I can, and that part&apos;s been great. I still use agents as a glorified typewriter to generate code, and still very much get my hands in the dirt and sling code myself. I&apos;ve also gotten quite obs</summary>
   </entry>
 </feed>

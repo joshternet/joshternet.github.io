@@ -197,7 +197,12 @@
   mask-position: -6rem -4rem;
 }
 
-.network-card__elsewhere-glyph--web {
+.network-card__elsewhere-glyph--buttondown {
   -webkit-mask-position: -7rem -4rem;
   mask-position: -7rem -4rem;
+}
+
+.network-card__elsewhere-glyph--web {
+  -webkit-mask-position: 0 -5rem;
+  mask-position: 0 -5rem;
 }

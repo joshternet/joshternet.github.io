@@ -7,6 +7,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
+import { formatTextForPath } from "../format-written.mjs";
 import { assertPublicURL, normalizeText } from "../network/lib.mjs";
 import { slugifyTopic } from "../network/connections.mjs";
 import { parseHtmlRegions } from "./text.mjs";
@@ -59,28 +60,33 @@ export async function readJSONIfExists(filePath, fallback) {
 }
 
 /**
- * @param {string} filePath
- * @param {unknown} value
+ * Atomically writes JSON after Prettier-formatting when the path is supported.
+ * @param {string} filePath - Destination path (used for Prettier parser/ignore).
+ * @param {unknown} value - Value passed to JSON.stringify.
  * @returns {Promise<void>}
  */
 export async function writeJSONAtomic(filePath, value) {
   const directory = path.dirname(filePath);
   await fs.mkdir(directory, { recursive: true });
   const temporary = `${filePath}.${process.pid}.tmp`;
-  await fs.writeFile(temporary, `${JSON.stringify(value, null, 2)}\n`, "utf8");
+  const raw = `${JSON.stringify(value, null, 2)}\n`;
+  const formatted = await formatTextForPath(filePath, raw);
+  await fs.writeFile(temporary, formatted, "utf8");
   await fs.rename(temporary, filePath);
 }
 
 /**
- * @param {string} filePath
- * @param {string} text
+ * Atomically writes text after Prettier-formatting when the path is supported.
+ * @param {string} filePath - Destination path (used for Prettier parser/ignore).
+ * @param {string} text - Raw file body before formatting.
  * @returns {Promise<void>}
  */
 export async function writeTextAtomic(filePath, text) {
   const directory = path.dirname(filePath);
   await fs.mkdir(directory, { recursive: true });
   const temporary = `${filePath}.${process.pid}.tmp`;
-  await fs.writeFile(temporary, text, "utf8");
+  const formatted = await formatTextForPath(filePath, text);
+  await fs.writeFile(temporary, formatted, "utf8");
   await fs.rename(temporary, filePath);
 }
 

@@ -18,7 +18,7 @@ script: /assets/js/network.js
 
 # The Network
 
-Independent websites participating in the Joshternet, discovered and verified by JoshBot.
+Independent websites participating in the Joshternet, discovered and verified by JoshBot. Joshes and Non-Joshes participate as equals—Non-Joshes have been joshing the Joshes from the day they join.
 
 {% if jekyll.environment == "development" %}
 <div class="network-dev-preview">
@@ -160,9 +160,8 @@ Independent websites participating in the Joshternet, discovered and verified by
         </div>
 
         <div class="network-card__body">
-          <span class="visually-hidden">
-            {{ identity_label }} Joshternet participant.
-          </span>
+          {% include network-card-a11y.html %}
+          <span class="visually-hidden">{{ identity_a11y }}</span>
 
           <h2 class="network-card__title p-name">
             {{ network_site.title | default: network_site.domain | escape }}
@@ -251,6 +250,7 @@ Independent websites participating in the Joshternet, discovered and verified by
         >
           {{ network_site.domain | escape }}
         </a>
+        {% include network-card-joined.html %}
       </div>
     </article>
   {% endfor %}

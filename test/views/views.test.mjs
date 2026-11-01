@@ -97,11 +97,11 @@ test("public communities skip filler slugs like another", () => {
   assert.equal(communities[0].slug, "landscaping");
 });
 
-test("What's New keeps one latest item per origin inside seven days", () => {
+test("What's New keeps one latest item per origin inside fourteen days", () => {
   const now = new Date("2026-10-03T12:00:00.000Z");
 
-  assert.equal(publishedWithinDays("2026-10-02T08:00:00.000Z", now), true);
-  assert.equal(publishedWithinDays("2026-09-20T00:00:00.000Z", now), false);
+  assert.equal(publishedWithinDays("2026-10-02T08:00:00.000Z", now, 14), true);
+  assert.equal(publishedWithinDays("2026-09-10T00:00:00.000Z", now, 14), false);
 
   const views = buildViewDocuments({
     network: [
@@ -137,9 +137,36 @@ test("What's New keeps one latest item per origin inside seven days", () => {
     now,
   });
 
+  // Fresh window item for A only — quiet origins are not backfilled.
   assert.equal(views.activity.primary.length, 1);
   assert.equal(views.activity.primary[0].url, "https://a.example/fresh");
-  assert.equal(views.activity.window_days, 7);
+  assert.equal(views.activity.window_days, 14);
+});
+
+test("compactContentItem decodes HTML entities in title and summary", () => {
+  const views = buildViewDocuments({
+    network: [{ origin: "https://a.example", domain: "a.example", title: "A" }],
+    content: {
+      items: [
+        {
+          url: "https://a.example/post",
+          site_origin: "https://a.example",
+          title: "how &ldquo;local church&rdquo; works",
+          summary: "Said &ldquo;hello&rdquo; &amp; more",
+          published_at: "2026-10-01T00:00:00.000Z",
+        },
+      ],
+    },
+    topics: { community_count: 0 },
+    connections: {},
+    siteSignals: { origins: [] },
+    generatedAt: "2026-10-03T12:00:00.000Z",
+    now: new Date("2026-10-03T12:00:00.000Z"),
+  });
+
+  const item = views.activity.primary[0];
+  assert.equal(item.title, "how \u201Clocal church\u201D works");
+  assert.equal(item.summary, "Said \u201Chello\u201D & more");
 });
 
 test("What's New Atom feed links to original publishers with stable ids", () => {

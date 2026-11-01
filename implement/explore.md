@@ -27,7 +27,7 @@ nlp:sync
 ## Rules
 
 - Public neighborhoods come from published topics, declared article tags, and the combined declared subjects of every participant. One site with matching articles is enough; sites with none are omitted. Members are alphabetical, and recent articles rotate across publishers.
-- What's New shows one latest writing item per origin from the last seven days, then merges in every dated Showcase work from that same window (multi-item per origin) so creative latest is not hidden behind a same-origin article—then newest first.
+- What's New shows one latest writing item per origin from the last fourteen days, then merges in every dated Showcase work from that same window (multi-item per origin) so creative latest is not hidden behind a same-origin article—then newest first. Quiet origins are not backfilled with older posts.
 - Explore's featured neighborhood is a UTC-date rotation over alphabetical slugs.
 - Related topics are co-tags on the same indexed content item, plus curated broader and related links when that subject is public.
 - Search ranks title, topics, summary, and domain text only.

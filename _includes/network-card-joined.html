@@ -1,0 +1,12 @@
+{% comment %}
+  Goal & Constraints: Peer tenure line for every identity when
+  first_participated_at is present. Same weight as domain meta—not a badge.
+{% endcomment %}
+{% if network_site.first_participated_at and network_site.first_participated_at != '' %}
+  <p class="network-card__joined">
+    Joined
+    <time datetime="{{ network_site.first_participated_at | escape }}">
+      {{ network_site.first_participated_at | date: '%-d %b %Y' }}
+    </time>
+  </p>
+{% endif %}

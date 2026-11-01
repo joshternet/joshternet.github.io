@@ -35,6 +35,7 @@ Joshternet Network cards show brand marks only to identify profile links that pa
 ### First-party
 
 - `web`: original Joshternet glyph for hosts outside the brand catalog
+- `buttondown`: original Joshternet newsletter glyph identifying buttondown.com profile links (not a Buttondown trademark mark)
 
 ### Brand catalog used on cards
 
@@ -57,6 +58,7 @@ Joshternet Network cards show brand marks only to identify profile links that pa
 - **Telegram** (`telegram`): trademark of Telegram brand owners. Source: [https://telegram.org/tour/screenshots](https://telegram.org/tour/screenshots). Brand mark used only to identify a participant-published profile link.
 - **Medium** (`medium`): trademark of Medium brand owners. [guidelines](https://medium.design/logos-and-brand-guidelines-f1a01a733592). Source: [https://medium.design/logos-and-brand-guidelines-f1a01a733592](https://medium.design/logos-and-brand-guidelines-f1a01a733592). Brand mark used only to identify a participant-published profile link.
 - **Substack** (`substack`): trademark of Substack brand owners. Source: [https://on.substack.com](https://on.substack.com). Brand mark used only to identify a participant-published profile link.
+- **Buttondown** (`buttondown`): profile links on buttondown.com use a first-party newsletter glyph (see First-party above), not a trademark reproduction.
 - **Patreon** (`patreon`): trademark of Patreon brand owners. [guidelines](https://www.patreon.com/brand). Source: [https://www.patreon.com/brand](https://www.patreon.com/brand). Brand mark used only to identify a participant-published profile link.
 - **Vimeo** (`vimeo`): trademark of Vimeo brand owners. [guidelines](https://press.vimeo.com/brand-guidelines). Source: [https://press.vimeo.com/brand-guidelines](https://press.vimeo.com/brand-guidelines). Brand mark used only to identify a participant-published profile link.
 - **SoundCloud** (`soundcloud`): trademark of SoundCloud brand owners. Source: [https://press.soundcloud.com](https://press.soundcloud.com). Brand mark used only to identify a participant-published profile link.

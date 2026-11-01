@@ -600,6 +600,23 @@ export async function materializeActivityPosters(views, root, options = {}) {
 
   applyPosterAssets(views, localBySource);
   await materializeSheetMusicPosters(views, directory, keepNames);
+
+  // Keep Playwright / prior local posters already pointed at by shown cards.
+  visitShownPosters(views, (item) => {
+    if (!item || typeof item !== "object") {
+      return;
+    }
+
+    const image = /** @type {{ image?: unknown }} */ (item).image;
+
+    if (
+      typeof image === "string" &&
+      image.startsWith(`/${POSTER_DIRECTORY}/`)
+    ) {
+      keepNames.add(path.basename(image));
+    }
+  });
+
   await removeUnshownPosters(directory, keepNames);
 
   const remaining = remainingRemoteShowcasePosters(views);

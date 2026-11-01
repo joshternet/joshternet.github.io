@@ -81,7 +81,8 @@
           </div>
 
           <div class="network-card__body">
-            <span class="visually-hidden"> {{ identity_label }} Joshternet participant. </span>
+            {% include network-card-a11y.html %}
+            <span class="visually-hidden">{{ identity_a11y }}</span>
 
             <h3 class="network-card__title p-name">
               {{ network_site.title | default: network_site.domain | escape }}
@@ -99,6 +100,7 @@
           <p class="network-card__domain p-org">
             {{ network_site.domain | escape }}
           </p>
+          {% include network-card-joined.html %}
         </div>
       </article>
     {% endfor %}

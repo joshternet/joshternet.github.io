@@ -616,6 +616,12 @@ video {
   font-size: 1rem;
   font-weight: 800;
   letter-spacing: -0.015em;
+  text-decoration: none;
+}
+
+.site-footer__brand:hover {
+  color: var(--color-link-hover);
+  text-decoration: none;
 }
 
 .site-footer__brand::before {
@@ -1440,7 +1446,7 @@ video {
   color: var(--network-card-accent);
 }
 
-/* Non-Josh: warm, polished, clearly different from Josh. */
+/* Non-Josh: warm accent, same ornament budget as Josh (peer, not louder). */
 
 .network-card--declined {
   --network-card-accent: #a66f00;
@@ -1452,30 +1458,40 @@ video {
 }
 
 .network-card--declined::before {
-  inset-block-start: 1rem;
-  inset-inline-end: 1rem;
-  inline-size: 3.7rem;
-  block-size: 1rem;
+  inset-block-start: 0.95rem;
+  inset-inline-end: 0.95rem;
+  inline-size: 2.4rem;
+  block-size: 0.72rem;
   background:
     radial-gradient(
-      circle at 0.5rem 50%,
-      var(--color-surface) 0 0.1rem,
-      var(--network-card-accent) 0.11rem 0.21rem,
-      transparent 0.22rem
+      circle at 0.36rem 50%,
+      var(--network-card-accent) 0.12rem 0.24rem,
+      transparent 0.25rem
     ),
     radial-gradient(
-      circle at calc(100% - 0.5rem) 50%,
-      var(--color-surface) 0 0.1rem,
-      var(--network-card-accent) 0.11rem 0.21rem,
-      transparent 0.22rem
+      circle at 50% 50%,
+      var(--network-card-accent) 0.12rem 0.24rem,
+      transparent 0.25rem
     ),
-    linear-gradient(var(--network-card-accent), var(--network-card-accent))
-      center / calc(100% - 1rem) 0.1rem no-repeat;
-  opacity: 0.78;
+    radial-gradient(
+      circle at calc(100% - 0.36rem) 50%,
+      var(--network-card-accent) 0.12rem 0.24rem,
+      transparent 0.25rem
+    );
+  opacity: 0.9;
 }
 
 .network-card--declined::after {
-  display: none;
+  inset-block-end: 0.95rem;
+  inset-inline-start: 0.95rem;
+  inline-size: 1.55rem;
+  block-size: 0.55rem;
+  background: linear-gradient(
+      var(--network-card-accent),
+      var(--network-card-accent)
+    )
+    0 50% / 100% 0.1rem no-repeat;
+  opacity: 0.55;
 }
 
 .network-card--declined .network-card__preview {
@@ -1492,6 +1508,16 @@ video {
 .network-card--declined .network-card__title span,
 .network-card--declined .network-card__domain {
   color: var(--network-card-accent);
+}
+
+.network-card__joined {
+  margin-block: 0.15rem 0;
+  margin-inline-start: 0;
+  align-self: flex-start;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.3;
 }
 
 /* Undeclared: plain Network card. */
@@ -1623,9 +1649,10 @@ video {
 
 .network-card__footer {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
   gap: var(--space-3);
   padding: 0 var(--space-5) var(--space-5);
   margin-block-start: auto;
@@ -1633,30 +1660,20 @@ video {
 
 /* Welcome cards: stack domain / date / Network link as rows (beats footer row). */
 .network-card__footer.home-new-arrivals__meta {
-  display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-  justify-content: flex-start;
   gap: var(--space-2);
-}
-
-.network-card__footer.home-new-arrivals__meta .network-card__domain {
-  margin-inline-start: 0;
-  align-self: flex-start;
-  text-align: start;
 }
 
 .network-card__domain {
   margin-block-start: 0;
-  margin-inline-start: auto;
-  align-self: flex-end;
+  margin-inline-start: 0;
+  align-self: flex-start;
   color: inherit;
   font-family: var(--font-mono);
   font-size: 0.78rem;
   line-height: 1.3;
   overflow-wrap: anywhere;
-  text-align: end;
+  text-align: start;
   text-decoration: none;
 }
 
@@ -1768,8 +1785,8 @@ video {
   mask-image: url("/assets/icons/elsewhere-sprite.svg");
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
-  -webkit-mask-size: 800% 500%;
-  mask-size: 800% 500%;
+  -webkit-mask-size: 800% 600%;
+  mask-size: 800% 600%;
 }
 
 .network-surprise-card {
@@ -1965,8 +1982,6 @@ video {
 }
 
 .wander-bar__go,
-.wander-bar__follow,
-.wander-bar__back,
 .wander-bar__open {
   display: inline-flex;
   min-block-size: 2.5rem;
@@ -1985,23 +2000,14 @@ video {
 }
 
 .wander-bar__go:hover,
-.wander-bar__follow:hover:not(:disabled),
-.wander-bar__back:hover:not(:disabled),
 .wander-bar__open:hover:not(:disabled) {
   border-color: var(--color-accent);
   background: var(--color-accent-soft);
 }
 
-.wander-bar__follow:disabled,
-.wander-bar__back:disabled,
 .wander-bar__open:disabled {
   cursor: not-allowed;
   opacity: 0.42;
-}
-
-.wander-bar__follow[hidden],
-.wander-bar__back[hidden] {
-  display: none;
 }
 
 .wander-bar__address {
@@ -3781,6 +3787,19 @@ video {
     0 0 0 0.45rem
       color-mix(in srgb, var(--network-card-accent) 16%, transparent),
     var(--shadow-card);
+}
+
+/* Deep-link focus lands on the card; suppress the partial-link ring that
+   otherwise cuts a gold line across the card above the footer. */
+.network-card.is-targeted:focus,
+.network-card.is-targeted:focus-visible {
+  outline: 3px solid var(--network-card-accent);
+  outline-offset: 0.3rem;
+}
+
+.network-card.is-targeted .network-card__link:focus,
+.network-card.is-targeted .network-card__link:focus-visible {
+  outline: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

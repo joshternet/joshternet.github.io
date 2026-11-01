@@ -880,3 +880,40 @@ test("eventsFromMf2: h-event without u-url uses pageUrl directly (L400 B106)", (
   assert.equal(items.length, 1);
   assert.equal(items[0].url, "https://a.example/events/");
 });
+
+test("education study-hall events: upcoming Happening, past Showcase education", () => {
+  const upcomingHtml = fixture("education-study-hall-upcoming.html");
+  const pastHtml = fixture("education-study-hall-past.html");
+  const { items: upcoming } = collectEvents(
+    [
+      {
+        url: "https://member.example/study-hall/062/",
+        html: upcomingHtml,
+        lang: "en",
+      },
+    ],
+    {
+      siteOrigin: "https://member.example",
+      observedAt: "2026-11-01T00:00:00.000Z",
+    },
+  );
+  const { items: past } = collectEvents(
+    [
+      {
+        url: "https://member.example/study-hall/058/",
+        html: pastHtml,
+        lang: "en",
+      },
+    ],
+    {
+      siteOrigin: "https://member.example",
+      observedAt: "2026-11-01T00:00:00.000Z",
+    },
+  );
+  assert.equal(upcoming.length, 1);
+  assert.equal(past.length, 1);
+  const now = new Date("2026-11-01T00:00:00.000Z");
+  const happening = buildHappeningItems([...upcoming, ...past], now);
+  assert.equal(happening.length, 1);
+  assert.match(String(happening[0].title), /#062/);
+});

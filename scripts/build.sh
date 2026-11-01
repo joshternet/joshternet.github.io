@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 # Goal & Constraints:
 # One production build refreshes datasets from the current registry, then
-# builds static HTML. Order is fixed: network:sync, nlp:sync, nlp:validate,
-# jekyll build. A second run with the same registry and pages leaves
-# timestamp-only dataset files unchanged. Does not kill other processes.
+# builds static HTML. Order is fixed: network:sync, nlp:sync, format:data,
+# format:check, nlp:validate, jekyll build. A second run with the same registry
+# and pages leaves timestamp-only dataset files unchanged. Does not kill other
+# processes.
+# Body runs inside main() so mid-run edits to this file cannot shift the next
+# command (bash would otherwise re-read the script from disk).
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -22,7 +25,8 @@ Usage:
 Steps, in order:
   npm run network:sync    registry membership, feeds, elsewhere
   npm run nlp:sync        topics, connections, content, view datasets
-  npm run format:data     Prettier on generated _data/*.json
+  npm run format:data     Prettier on generated sync outputs (_data, OPML, Atom, glyphs)
+  npm run format:check    Fail closed if any tracked file is still unformatted
   npm run nlp:validate    graph invariants and JSON Schema
   JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter
 
@@ -31,44 +35,50 @@ rebuild that picks up registry changes.
 EOF
 }
 
-dry_run=0
+main() {
+  local dry_run=0
 
-while [[ $# -gt 0 ]]; do
-  case "$1" in
-    --help | -h)
-      usage
-      exit 0
-      ;;
-    --dry-run)
-      dry_run=1
-      shift
-      ;;
-    *)
-      printf 'Error: unknown option %s\n' "$1" >&2
-      printf '  ./scripts/build.sh --help\n' >&2
-      exit 2
-      ;;
-  esac
-done
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --help | -h)
+        usage
+        exit 0
+        ;;
+      --dry-run)
+        dry_run=1
+        shift
+        ;;
+      *)
+        printf 'Error: unknown option %s\n' "$1" >&2
+        printf '  ./scripts/build.sh --help\n' >&2
+        exit 2
+        ;;
+    esac
+  done
 
-if [[ ! -f "$ROOT/_config.yml" ]]; then
-  printf 'Error: run this from the Joshternet site repo (missing _config.yml).\n' >&2
-  printf '  ./scripts/build.sh\n' >&2
-  exit 1
-fi
+  if [[ ! -f "$ROOT/_config.yml" ]]; then
+    printf 'Error: run this from the Joshternet site repo (missing _config.yml).\n' >&2
+    printf '  ./scripts/build.sh\n' >&2
+    exit 1
+  fi
 
-printf '1. npm run network:sync\n'
-printf '2. npm run nlp:sync\n'
-printf '3. npm run format:data\n'
-printf '4. npm run nlp:validate\n'
-printf '5. JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter\n'
+  printf '1. npm run network:sync\n'
+  printf '2. npm run nlp:sync\n'
+  printf '3. npm run format:data\n'
+  printf '4. npm run format:check\n'
+  printf '5. npm run nlp:validate\n'
+  printf '6. JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter\n'
 
-if [[ "$dry_run" -eq 1 ]]; then
-  exit 0
-fi
+  if [[ "$dry_run" -eq 1 ]]; then
+    exit 0
+  fi
 
-npm run network:sync
-npm run nlp:sync
-npm run format:data
-npm run nlp:validate
-JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter
+  npm run network:sync
+  npm run nlp:sync
+  npm run format:data
+  npm run format:check
+  npm run nlp:validate
+  JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter
+}
+
+main "$@"

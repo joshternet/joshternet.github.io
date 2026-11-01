@@ -2,7 +2,7 @@
 layout: default
 title: What's New from independent Joshternet websites
 description: >-
-  Recent writing from the last seven days and the latest Showcase creative works
+  Recent writing from the last two weeks and the latest Showcase creative works
   from independent websites on the Joshternet.
 keywords: >-
   What's New, Joshternet, recent articles, showcase, independent websites, Josh network
@@ -35,7 +35,7 @@ Recent writing from around the Joshternet.
 {% else %}
 <div class="network-empty">
   <p>
-    Nothing in the last seven days is indexed yet. Browse the
+    Nothing in the last two weeks is indexed yet. Browse the
     <a href="{{ '/network/' | relative_url }}">Network</a>
     to visit participating sites directly.
   </p>

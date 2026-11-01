@@ -12,8 +12,10 @@ import {
 import {
   captureIsFresh,
   fallbackEntry,
+  needsScreenshotCapture,
   registryNeedsSync,
   removeOrphanScreenshots,
+  screenshotFileIsPresent,
   withFeeds,
 } from "../../scripts/network/state.mjs";
 
@@ -450,4 +452,140 @@ test("removeOrphanScreenshots: non-ENOENT readdir error is rethrown (lines 146-1
   } finally {
     await fs.rm(file, { force: true });
   }
+});
+
+// ─── screenshot presence / self-heal refresh ─────────────────────────────────
+
+test("screenshotFileIsPresent: false when path missing or empty", async () => {
+  assert.equal(await screenshotFileIsPresent(null), false);
+  assert.equal(await screenshotFileIsPresent({}), false);
+  assert.equal(
+    await screenshotFileIsPresent({
+      screenshot: "/assets/network/sites/does-not-exist.webp",
+    }),
+    false,
+  );
+
+  const root = await fs.mkdtemp(
+    path.join(os.tmpdir(), "joshternet-screenshot-present-"),
+  );
+
+  try {
+    const emptyName = "empty.webp";
+    const emptyPath = path.join(root, emptyName);
+    await fs.writeFile(emptyPath, "");
+    const cwdRelative = path.relative(process.cwd(), emptyPath);
+
+    assert.equal(
+      await screenshotFileIsPresent({
+        screenshot: `/${cwdRelative}`,
+      }),
+      false,
+    );
+  } finally {
+    await fs.rm(root, { recursive: true, force: true });
+  }
+});
+
+test("needsScreenshotCapture: fresh captured_at with missing WebP still needs capture", async () => {
+  const now = Date.parse("2026-09-15T20:00:00Z");
+  const entry = {
+    captured_at: "2026-09-15T19:00:00Z",
+    screenshot: "/assets/network/sites/missing-on-disk.webp",
+  };
+
+  assert.equal(await needsScreenshotCapture(entry, { currentTime: now }), true);
+});
+
+test("needsScreenshotCapture: fresh captured_at with present WebP does not need capture", async () => {
+  const root = await fs.mkdtemp(
+    path.join(os.tmpdir(), "joshternet-screenshot-fresh-"),
+  );
+
+  try {
+    const name = "present.webp";
+    const filePath = path.join(root, name);
+    await fs.writeFile(filePath, "webp-bytes");
+    const cwdRelative = path.relative(process.cwd(), filePath);
+    const now = Date.now();
+    const entry = {
+      captured_at: new Date(now - 60_000).toISOString(),
+      screenshot: `/${cwdRelative}`,
+    };
+
+    assert.equal(await screenshotFileIsPresent(entry), true);
+    assert.equal(
+      await needsScreenshotCapture(entry, { currentTime: now }),
+      false,
+    );
+  } finally {
+    await fs.rm(root, { recursive: true, force: true });
+  }
+});
+
+test("needsScreenshotCapture: null entry and stale capture need capture", async () => {
+  const now = Date.parse("2026-09-16T20:00:00Z");
+
+  assert.equal(await needsScreenshotCapture(null, { currentTime: now }), true);
+  assert.equal(
+    await needsScreenshotCapture(
+      {
+        captured_at: "2026-09-14T19:00:00Z",
+        screenshot: "/assets/network/sites/x.webp",
+      },
+      { currentTime: now },
+    ),
+    true,
+  );
+});
+
+test("screenshotFileIsPresent: directory path is not a present screenshot", async () => {
+  const root = await fs.mkdtemp(
+    path.join(os.tmpdir(), "joshternet-screenshot-dir-"),
+  );
+
+  try {
+    const cwdRelative = path.relative(process.cwd(), root);
+
+    assert.equal(
+      await screenshotFileIsPresent({
+        screenshot: `/${cwdRelative}`,
+      }),
+      false,
+    );
+  } finally {
+    await fs.rm(root, { recursive: true, force: true });
+  }
+});
+
+test("screenshotFileIsPresent: non-ENOENT stat errors are rethrown", async () => {
+  const root = await fs.mkdtemp(
+    path.join(os.tmpdir(), "joshternet-screenshot-err-"),
+  );
+
+  try {
+    const blocker = path.join(root, "not-a-dir");
+    await fs.writeFile(blocker, "file");
+    const nested = path.join(blocker, "shot.webp");
+    const cwdRelative = path.relative(process.cwd(), nested);
+
+    await assert.rejects(
+      screenshotFileIsPresent({
+        screenshot: `/${cwdRelative}`,
+      }),
+      (error) => error?.code !== "ENOENT",
+    );
+  } finally {
+    await fs.rm(root, { recursive: true, force: true });
+  }
+});
+
+test("needsScreenshotCapture: defaults currentTime when options omit it", async () => {
+  assert.equal(
+    await needsScreenshotCapture({
+      captured_at: new Date().toISOString(),
+      screenshot: "/assets/network/sites/missing-default-now.webp",
+    }),
+    true,
+  );
 });

@@ -38,6 +38,8 @@ import {
   assertPublicURL,
   chooseDescription,
   framePolicy,
+  isDomainCompressingSlogan,
+  looksLikePersonName,
   partitionPublicParticipants,
   projectRegistry,
   registryParticipationFields,
@@ -47,6 +49,7 @@ import {
 } from "./lib.mjs";
 
 import { extractPageMetadata } from "./metadata.mjs";
+import { slashPageAllowsHostElsewhere } from "./slash-page-catalog.mjs";
 import {
   localPreviewEnabled,
   mergePreviewParticipants,
@@ -55,8 +58,8 @@ import {
 } from "./preview.mjs";
 
 import {
-  captureIsFresh,
   fallbackEntry,
+  needsScreenshotCapture,
   removeOrphanScreenshots,
   withFeeds,
 } from "./state.mjs";
@@ -66,6 +69,9 @@ import {
   runWithEnrichmentBudget,
   visitIdentityPages,
 } from "./enrichment-budget.mjs";
+import { formatGeneratedOutputs } from "../format-written.mjs";
+import { writeJSONAtomic, writeTextAtomic } from "../nlp/lib.mjs";
+import { probeCommonFeedPaths } from "./feed-probes.mjs";
 
 const DEFAULT_REGISTRY_URL =
   "https://raw.githubusercontent.com/joshternet/index-data/main/registry.json";
@@ -456,8 +462,25 @@ async function collectElsewhereAndLinks(
         elsewhereHostCatalog(),
       );
 
+      let identityPath = "";
+
+      try {
+        identityPath = new URL(page.url()).pathname;
+      } catch {
+        identityPath = "";
+      }
+
+      const allowHostElsewhere = slashPageAllowsHostElsewhere(identityPath);
+
       if (Array.isArray(identityMetadata.elsewhere)) {
-        raw.push(...identityMetadata.elsewhere);
+        for (const entry of identityMetadata.elsewhere) {
+          if (
+            allowHostElsewhere ||
+            (entry && typeof entry === "object" && entry.me === true)
+          ) {
+            raw.push(entry);
+          }
+        }
       }
 
       if (Array.isArray(identityMetadata.links)) {
@@ -477,6 +500,7 @@ async function collectElsewhereAndLinks(
   return {
     elsewhere: await sanitizeElsewhere(raw, {
       cache: dnsCache,
+      participantOrigin,
     }),
     links,
   };
@@ -533,9 +557,14 @@ async function enrichFromOpenedPage(
   signal,
 ) {
   const { metadata, dnsCache, page } = opened;
-  const feeds = await sanitizeFeeds(metadata.feeds, {
+  const advertisedFeeds = await sanitizeFeeds(metadata.feeds, {
     cache: dnsCache,
   });
+  const feeds = await probeCommonFeedPaths(
+    participant.origin,
+    advertisedFeeds,
+    { cache: dnsCache },
+  );
   const blogrollUrls = await sanitizeBlogrollUrls(metadata.blogrolls, {
     cache: dnsCache,
   });
@@ -618,6 +647,14 @@ async function captureParticipant(
       })
       .toFile(outputPath);
 
+    const written = await fs.stat(outputPath);
+
+    if (!written.isFile() || written.size <= 0) {
+      throw new Error(
+        `screenshot write produced empty file for ${participant.origin}`,
+      );
+    }
+
     const framing = framePolicy({
       origin: participant.origin,
       headers,
@@ -696,33 +733,18 @@ async function discoverHomepageEnrichment(
   }
 }
 
-function shouldRefresh(previous) {
-  return refreshAll || !captureIsFresh(previous);
-}
+/**
+ * Whether this participant needs a new homepage screenshot this sync.
+ * Scheduled runs leave NETWORK_REFRESH_ALL false; missing WebPs still refresh.
+ * @param {{ captured_at?: string, screenshot?: string } | null | undefined} previous
+ * @returns {Promise<boolean>}
+ */
+async function shouldRefresh(previous) {
+  if (refreshAll || !previous) {
+    return true;
+  }
 
-async function writeJSONAtomic(filePath, value) {
-  const directory = path.dirname(filePath);
-  const temporary = `${filePath}.tmp-${process.pid}`;
-
-  await fs.mkdir(directory, {
-    recursive: true,
-  });
-
-  await fs.writeFile(temporary, `${JSON.stringify(value, null, 2)}\n`, "utf8");
-
-  await fs.rename(temporary, filePath);
-}
-
-async function writeTextAtomic(filePath, value) {
-  const directory = path.dirname(filePath);
-  const temporary = `${filePath}.tmp-${process.pid}`;
-
-  await fs.mkdir(directory, {
-    recursive: true,
-  });
-
-  await fs.writeFile(temporary, value, "utf8");
-  await fs.rename(temporary, filePath);
+  return needsScreenshotCapture(previous);
 }
 
 const registry = await loadRegistry(registrySource);
@@ -792,7 +814,7 @@ try {
   for (const participant of participants) {
     const oldEntry = previous.get(participant.origin);
 
-    if (!shouldRefresh(oldEntry)) {
+    if (!(await shouldRefresh(oldEntry))) {
       const kept = {
         ...oldEntry,
         ...registryParticipationFields(participant),
@@ -815,10 +837,21 @@ try {
         );
         // Re-resolve titles on every sync so algorithm changes and new
         // author/GitHub signals apply without waiting for screenshot expiry.
-        const title = await resolveParticipantTitle(
+        const resolvedTitle = await resolveParticipantTitle(
           enrichment.metadata,
           participant.domain,
         );
+        let title = resolvedTitle || kept.title || "";
+
+        // Prefer a previously published person name over a transient slogan
+        // when GitHub/author signals briefly miss.
+        if (
+          isDomainCompressingSlogan(title, participant.domain) &&
+          looksLikePersonName(kept.title)
+        ) {
+          title = kept.title;
+        }
+
         const description =
           chooseDescription(enrichment.metadata) || kept.description || "";
 
@@ -826,7 +859,7 @@ try {
           withEnrichment(
             {
               ...kept,
-              title: title || kept.title,
+              title,
               description,
             },
             enrichment.feeds,
@@ -942,6 +975,7 @@ await removeOrphanScreenshots(nextEntries, DEFAULT_SCREENSHOT_ROOT);
 await writeJSONAtomic(DEFAULT_DATA_PATH, nextEntries);
 await writeJSONAtomic(DEFAULT_BLOGROLLS_PATH, blogrollsDocument);
 await writeTextAtomic(DEFAULT_OPML_PATH, opml);
+await formatGeneratedOutputs();
 
 process.stdout.write(
   `Wrote ${nextEntries.length} network entr` +

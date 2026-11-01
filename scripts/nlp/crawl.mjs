@@ -20,14 +20,23 @@ import {
   contentIndexPaths,
 } from "../network/slash-pages.mjs";
 import { isNonSubjectSlug } from "./evidence.mjs";
-import { MAX_CRAWL_DEPTH, fetchPublicText, parseHtmlDocument } from "./lib.mjs";
+import {
+  MAX_CRAWL_DEPTH,
+  USER_AGENT,
+  fetchPublicText,
+  parseHtmlDocument,
+} from "./lib.mjs";
 import { classifyPageRole } from "./page-role.mjs";
+import { robotsAllowsPath, sitemapUrlsFromRobots } from "./robots.mjs";
 import {
   canonicalHrefFromHtml,
   htmlBodyFingerprint,
   normalizeExtractedText,
   schemaTypesFromHtml,
 } from "./text.mjs";
+
+/** Cap nested sitemap files so a hostile index cannot unbounded-fetch. */
+export const MAX_SITEMAP_FILES = 20;
 
 export { IDENTITY_SLASH_PATHS };
 
@@ -544,7 +553,42 @@ export function contentIndexChildUrls(
 }
 
 /**
- * Parses loc entries from a sitemap XML body.
+ * True when XML looks like a sitemap index (child sitemap locs).
+ * @param {string} xml
+ * @returns {boolean}
+ */
+export function isSitemapIndex(xml) {
+  return /<sitemapindex[\s>]/i.test(String(xml ?? ""));
+}
+
+/**
+ * Raw &lt;loc&gt; values from sitemap XML (urlset or sitemapindex).
+ * @param {string} xml
+ * @param {number} [limit]
+ * @returns {string[]}
+ */
+export function locsFromSitemapXml(xml, limit = Number.POSITIVE_INFINITY) {
+  const locs = [];
+  const seen = new Set();
+  const pattern = /<loc>\s*([^<]+)\s*<\/loc>/gi;
+  let match;
+
+  while ((match = pattern.exec(String(xml ?? ""))) && locs.length < limit) {
+    const value = match[1].trim();
+
+    if (!value || seen.has(value)) {
+      continue;
+    }
+
+    seen.add(value);
+    locs.push(value);
+  }
+
+  return locs;
+}
+
+/**
+ * Parses page loc entries from a urlset sitemap body (same-origin only).
  * @param {string} xml
  * @param {string} origin
  * @param {number} limit
@@ -553,11 +597,9 @@ export function contentIndexChildUrls(
 export function urlsFromSitemap(xml, origin, limit = Number.POSITIVE_INFINITY) {
   const urls = [];
   const seen = new Set();
-  const pattern = /<loc>\s*([^<]+)\s*<\/loc>/gi;
-  let match;
 
-  while ((match = pattern.exec(xml)) && urls.length < limit) {
-    const href = resolveSameOrigin(origin, match[1].trim());
+  for (const loc of locsFromSitemapXml(xml, limit)) {
+    const href = resolveSameOrigin(origin, loc);
 
     if (!href || seen.has(href)) {
       continue;
@@ -565,9 +607,105 @@ export function urlsFromSitemap(xml, origin, limit = Number.POSITIVE_INFINITY) {
 
     seen.add(href);
     urls.push(href);
+
+    if (urls.length >= limit) {
+      break;
+    }
   }
 
   return urls;
+}
+
+/**
+ * Child sitemap file URLs from a sitemapindex (same-origin preferred;
+ * absolute http(s) locs on this origin only).
+ * @param {string} xml
+ * @param {string} origin
+ * @param {number} [limit]
+ * @returns {string[]}
+ */
+export function childSitemapUrls(xml, origin, limit = MAX_SITEMAP_FILES) {
+  return urlsFromSitemap(xml, origin, limit);
+}
+
+/**
+ * Loads robots.txt for an origin (empty string when missing/unreadable).
+ * @param {string} origin
+ * @param {Map<string, unknown>} cache
+ * @returns {Promise<string>}
+ */
+export async function fetchRobotsTxt(origin, cache) {
+  try {
+    const fetched = await fetchPublicText(`${origin}/robots.txt`, {
+      cache,
+      accept: "text/plain,*/*;q=0.8",
+    });
+    return fetched.body;
+  } catch {
+    return "";
+  }
+}
+
+/**
+ * Seeds the crawl queue from robots Sitemap: directives and/or /sitemap.xml.
+ * Sitemap index files recurse (capped). Fetch failures are ignored.
+ * @param {string} origin
+ * @param {Map<string, unknown>} cache
+ * @param {(url: string, reason?: string) => void} enqueueSeed
+ * @param {string} robotsBody
+ * @returns {Promise<void>}
+ */
+export async function seedUrlsFromSitemaps(
+  origin,
+  cache,
+  enqueueSeed,
+  robotsBody,
+) {
+  const listed = sitemapUrlsFromRobots(robotsBody).map((href) => {
+    try {
+      return new URL(href, origin).href;
+    } catch {
+      return "";
+    }
+  });
+  /** @type {string[]} */
+  const toFetch =
+    listed.filter(Boolean).length > 0
+      ? listed.filter(Boolean)
+      : [`${origin}/sitemap.xml`];
+  const seenFiles = new Set();
+  let processed = 0;
+
+  while (toFetch.length > 0 && processed < MAX_SITEMAP_FILES) {
+    const sitemapUrl = /** @type {string} */ (toFetch.shift());
+    seenFiles.add(sitemapUrl);
+    processed += 1;
+
+    let body = "";
+
+    try {
+      const fetched = await fetchPublicText(sitemapUrl, {
+        cache,
+        accept: "application/xml,text/xml,*/*;q=0.8",
+      });
+      body = fetched.body;
+    } catch {
+      continue;
+    }
+
+    if (isSitemapIndex(body)) {
+      for (const child of childSitemapUrls(body, origin)) {
+        if (!seenFiles.has(child)) {
+          toFetch.push(child);
+        }
+      }
+      continue;
+    }
+
+    for (const url of urlsFromSitemap(body, origin)) {
+      enqueueSeed(url, "sitemap");
+    }
+  }
 }
 
 /**
@@ -593,6 +731,17 @@ export async function crawlOrigin(origin, options = {}) {
   const outbound = [];
   /** @type {Record<string, string>} */
   const selectionReasons = {};
+  const robotsBody = await fetchRobotsTxt(origin, cache);
+
+  /**
+   * True when robots.txt allows this URL's pathname for JoshternetNLP.
+   * @param {string} url
+   * @returns {boolean}
+   */
+  function pathAllowed(url) {
+    const pathname = new URL(url).pathname;
+    return robotsAllowsPath(robotsBody, pathname, USER_AGENT);
+  }
 
   /**
    * Enqueues a depth-0 seed once with a selection reason.
@@ -600,7 +749,7 @@ export async function crawlOrigin(origin, options = {}) {
    * @param {string} reason
    */
   function enqueueSeed(url, reason = "seed") {
-    if (!url || seedSeen.has(url)) {
+    if (!url || seedSeen.has(url) || !pathAllowed(url)) {
       return;
     }
 
@@ -639,18 +788,7 @@ export async function crawlOrigin(origin, options = {}) {
     enqueueSeed(url, "content-index");
   }
 
-  try {
-    const sitemap = await fetchPublicText(`${origin}/sitemap.xml`, {
-      cache,
-      accept: "application/xml,text/xml,*/*;q=0.8",
-    });
-
-    for (const url of urlsFromSitemap(sitemap.body, origin)) {
-      enqueueSeed(url, "sitemap");
-    }
-  } catch {
-    // Sitemap is optional.
-  }
+  await seedUrlsFromSitemaps(origin, cache, enqueueSeed, robotsBody);
 
   /** @type {{ title: string, canonical: string, fingerprint: string } | null} */
   let homeSignature = null;
@@ -761,7 +899,7 @@ export async function crawlOrigin(origin, options = {}) {
         if (next.depth < MAX_CRAWL_DEPTH) {
           const same = resolveSameOrigin(origin, absolute);
 
-          if (same && !seen.has(same)) {
+          if (same && !seen.has(same) && pathAllowed(same)) {
             queue.push({ url: same, depth: next.depth + 1 });
           }
         }
@@ -777,7 +915,7 @@ export async function crawlOrigin(origin, options = {}) {
       fetched.url,
       document.links,
     )) {
-      if (!seen.has(child)) {
+      if (!seen.has(child) && pathAllowed(child)) {
         queue.push({ url: child, depth: 0 });
       }
     }
@@ -794,7 +932,7 @@ export async function crawlOrigin(origin, options = {}) {
     for (let index = indexChildren.length - 1; index >= 0; index -= 1) {
       const child = indexChildren[index];
 
-      if (!seen.has(child)) {
+      if (!seen.has(child) && pathAllowed(child)) {
         selectionReasons[child] = selectionReasons[child] || "content-index";
         queue.unshift({ url: child, depth: 0 });
       }
@@ -805,7 +943,7 @@ export async function crawlOrigin(origin, options = {}) {
       for (const link of document.links) {
         const same = resolveSameOrigin(origin, link.href);
 
-        if (same && !seen.has(same)) {
+        if (same && !seen.has(same) && pathAllowed(same)) {
           selectionReasons[same] = "slashes-index";
           queue.push({ url: same, depth: 0 });
         }

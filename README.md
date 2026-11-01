@@ -32,11 +32,12 @@ npm ci
 | `npm run test:coverage` | Same suites and report; **fails unless** lines/branches/functions are **100%** on the included library surface |
 | `npm run test:browser` | Playwright tests with offline HTML fixtures (no live Jekyll server) |
 | `npm run test:site` | Source + production `_site` checks (run after `npm run build`) |
-| `npm run format:check` | Prettier |
+| `npm run format:check` | Prettier (fail closed) |
+| `npm run validate` | `format:check` then `test:coverage` |
 
 Coverage includes `scripts/{network,nlp,views}/**/*.mjs` and excludes CLI/orchestration entrypoints (`network/sync`, `network/preflight`, `network/generate-elsewhere-glyphs`, `nlp/sync`, `nlp/validate-generated`, `nlp/probe-directory`, `nlp/scale-probe`, `views/build`). Do not assert nightly topic slugs or live participant counts as oracles—use synthetic fixtures. Site CSP tests skip when `_site` is missing or was built with localhost/dev hosts; use `npm run build` for a production `_site`.
 
-`site-quality` and `network-sync` GitHub Actions run `npm run test:coverage` (not plain `npm test`). Network sync stays on hourly cron `17 * * * *` and `repository_dispatch` `joshternet-registry-updated`.
+`site-quality` and `network-sync` GitHub Actions run `format:check` and `npm run test:coverage` (not plain `npm test`). Network sync stays on hourly cron `17 * * * *` and `repository_dispatch` `joshternet-registry-updated`.
 
 Rebuild datasets from the current registry, then build the site:
 
@@ -44,7 +45,7 @@ Rebuild datasets from the current registry, then build the site:
 npm run build
 ```
 
-That always runs `network:sync`, then `nlp:sync`, then `format:data` (Prettier on `_data/*.json`), then `nlp:validate`, then `JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter`. Running it again with the same registry and pages does not rewrite a dataset whose only change is a timestamp. `./scripts/build.sh --dry-run` prints those steps without fetching anything. Hourly `network-sync` runs the same `format:data` step before it commits generated datasets.
+That always runs `network:sync`, then `nlp:sync`, then `format:data` (strict Prettier on generated sync outputs: `_data/*.json`, network OPML, activity Atom, elsewhere glyphs CSS), then `format:check`, then `nlp:validate`, then `JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter`. Sync scripts soft-format those paths before they exit; publish and `build.sh` fail closed on `format:check`. Running build again with the same registry and pages does not rewrite a dataset whose only change is a timestamp. `./scripts/build.sh --dry-run` prints those steps without fetching anything. Hourly `network-sync` runs `format:data` and `format:check` before it commits generated datasets.
 
 `nlp:sync` crawls each Network origin (homepage, advertised topic directories and common writing indexes even when they are missing from `sitemap.xml`, sitemap locs, and feed entries), then matches a topic catalog from joshuamorris.info (or the richest remaining member) onto the rest of the network. It also runs `views:build` to write compact UI projections (`activity`, `explore`, `topic_views`, `connection_topics`, `site_views`, `search_index`) without changing canonical graph semantics. Below-threshold heuristic candidates stay under `.tmp/` and are not committed; qualifying heuristic subjects may appear as public community members with `membership: "heuristic"`. `nlp:validate` checks graph invariants plus JSON Schema contracts in `schemas/`. List artifacts are sparse documents: empty arrays are omitted rather than committed as `[]`.
 

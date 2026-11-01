@@ -32,12 +32,18 @@ import {
   topicCollectionMarkdown,
 } from "./communities.mjs";
 import {
+  contentItemsFromArchiveEntryList,
+  contentItemsFromHEntryList,
+  contentItemsFromHugoIndexJson,
   contentItemsFromJsonFeed,
   contentItemsFromRssOrAtom,
   enrichContentItemPosters,
   joinContentWithPageSignals,
   mergeContentItems,
 } from "./content.mjs";
+import { channelItemsFromNetwork } from "../views/lib.mjs";
+import { captureMissingWorkScreenshots } from "../views/work-screenshots.mjs";
+import { buildChannelPublishByUrl } from "./channel-publish.mjs";
 import {
   crawlOrigin,
   externalOutboundLinks,
@@ -57,6 +63,7 @@ import {
   writeJSONAtomic,
   writeTextAtomic,
 } from "./lib.mjs";
+import { formatGeneratedOutputs } from "../format-written.mjs";
 import { collectCreativeWorks } from "./creative.mjs";
 import { collectEvents } from "./events.mjs";
 import { collectPortfolio } from "./portfolio.mjs";
@@ -99,6 +106,7 @@ const CONNECTIONS_PATH = path.join(ROOT, "_data/connections.json");
 const SIGNALS_PATH = path.join(ROOT, "_data/site_signals.json");
 const TOPICS_PATH = path.join(ROOT, "_data/topics.json");
 const CONTENT_PATH = path.join(ROOT, "_data/content.json");
+const CHANNEL_PUBLISH_PATH = path.join(ROOT, "_data/channel_publish.json");
 const BLOGROLLS_PATH = path.join(ROOT, "_data/blogrolls.json");
 const MANIFEST_PATH = path.join(ROOT, "_data/data_manifest.json");
 const ALIASES_PATH = path.join(ROOT, "_data/topic_aliases.json");
@@ -395,6 +403,9 @@ async function main() {
         try {
           const fetched = await fetchPublicText(feed.url, {
             cache: dnsCache,
+            // Large member RSS (Hugo full-content feeds) need more than the
+            // default HTML crawl cap so scheduled syncs stay complete.
+            maxBytes: 6_000_000,
             accept:
               "application/feed+json, application/json, application/rss+xml, application/atom+xml, application/xml, text/xml, */*;q=0.1",
           });
@@ -407,6 +418,14 @@ async function main() {
               siteOrigin: origin,
               observedAt: now,
             });
+
+            if (drafts.length === 0) {
+              drafts = contentItemsFromHugoIndexJson(fetched.body, {
+                feedUrl: fetched.url,
+                siteOrigin: origin,
+                observedAt: now,
+              });
+            }
           } else {
             drafts = contentItemsFromRssOrAtom(fetched.body, {
               feedUrl: fetched.url,
@@ -421,6 +440,47 @@ async function main() {
           process.stderr.write(
             `content feed failed ${origin} (${feed.url}): ${error instanceof Error ? error.message : error}\n`,
           );
+        }
+      }
+
+      // PaperMod / microblog HTML fallbacks fill gaps when feeds are sparse.
+      for (const page of crawled.pages) {
+        if (!page?.html || !page.url) {
+          continue;
+        }
+
+        let pagePath = "/";
+
+        try {
+          pagePath = new URL(page.url).pathname.replace(/\/+$/, "") || "/";
+        } catch {
+          continue;
+        }
+
+        const lower = pagePath.toLowerCase();
+        const meta = {
+          pageUrl: page.url,
+          siteOrigin: origin,
+          observedAt: now,
+        };
+
+        if (
+          lower === "/blog" ||
+          lower.endsWith("/blog") ||
+          page.html.includes("archive-entry-title")
+        ) {
+          contentDrafts.push(
+            ...contentItemsFromArchiveEntryList(page.html, meta),
+          );
+        }
+
+        if (
+          lower === "/" ||
+          lower === "/notes" ||
+          lower.endsWith("/notes") ||
+          /\bh-entry\b/i.test(page.html)
+        ) {
+          contentDrafts.push(...contentItemsFromHEntryList(page.html, meta));
         }
       }
 
@@ -532,6 +592,39 @@ async function main() {
   // Feed-sourced experiments/games often lack enclosures; pull og:image from
   // the publisher page so Showcase uses the site's existing posters in CI.
   await enrichContentItemPosters(contentItems, { cache: dnsCache });
+  // Named-root / off-origin shelf projects (Wizardly Words, Morning App, …)
+  // often have no og:image or block plain fetch — capture a viewport poster.
+  // Include YouTube/Vimeo/Twitch channel cards from Network elsewhere so
+  // Showcase channels get posters in the same pass (files reused at views:build).
+  const channelDrafts = channelItemsFromNetwork(
+    Array.isArray(network) ? network : [],
+    now,
+  );
+  // Latest YouTube upload times gate Showcase / What's New at views:build.
+  // Poster capture still covers dormant channels so reuse stays warm.
+  const channelPublishByUrl = await buildChannelPublishByUrl(channelDrafts, {
+    cache: dnsCache,
+  });
+  await writeJSONAtomic(CHANNEL_PUBLISH_PATH, channelPublishByUrl);
+  const screenshotTargets = [...contentItems];
+  const seenScreenshotUrls = new Set(
+    contentItems
+      .map((item) => (typeof item.url === "string" ? item.url : ""))
+      .filter(Boolean),
+  );
+
+  for (const channel of channelDrafts) {
+    if (
+      typeof channel.url === "string" &&
+      channel.url &&
+      !seenScreenshotUrls.has(channel.url)
+    ) {
+      seenScreenshotUrls.add(channel.url);
+      screenshotTargets.push(channel);
+    }
+  }
+
+  await captureMissingWorkScreenshots(screenshotTargets, { root: ROOT });
   const previousConnections = itemsFromCollection(
     await readJSONIfExists(CONNECTIONS_PATH, {}),
     "edges",
@@ -769,6 +862,7 @@ async function main() {
   }
 
   await buildViewProjections();
+  await formatGeneratedOutputs();
 
   process.stdout.write(
     `Wrote signals for ${originSignals.length} origins, ${communities.length} communities, ${contentItems.length} content items, ${deduped.length} connections.\n`,

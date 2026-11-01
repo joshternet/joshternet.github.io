@@ -66,6 +66,8 @@ Popularity, follower counts, traffic, technical ability, tenure, contribution hi
 
 Contributing more may create additional responsibility. It does not create additional Joshness.
 
+Friends of Joshes—Non-Joshes who join in the joshing—stand as equals. Declining Josh identity does not lower anyone's place in the Network.
+
 ### Independent places matter
 
 The interesting part of the Joshternet is not the Joshternet website.

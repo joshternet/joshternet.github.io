@@ -16,6 +16,7 @@ import {
   resolveParticipantTitle,
   sanitizeElsewhere,
   withElsewhere,
+  youtubeElsewhereRank,
 } from "../../scripts/network/elsewhere.mjs";
 
 /**
@@ -37,7 +38,20 @@ test("classifyElsewhereHost maps international catalog hosts", () => {
   assert.equal(classifyElsewhereHost("xiaohongshu.com"), "xiaohongshu");
   assert.equal(classifyElsewhereHost("mastodon.social"), "mastodon");
   assert.equal(classifyElsewhereHost("josh.substack.com"), "substack");
+  assert.equal(classifyElsewhereHost("threads.net"), "threads");
+  assert.equal(classifyElsewhereHost("www.threads.com"), "threads");
+  assert.equal(classifyElsewhereHost("threads.com"), "threads");
+  assert.equal(classifyElsewhereHost("discordapp.com"), "discord");
+  assert.equal(classifyElsewhereHost("www.discordapp.com"), "discord");
+  assert.equal(classifyElsewhereHost("buttondown.com"), "buttondown");
+  assert.equal(classifyElsewhereHost("www.buttondown.com"), "buttondown");
   assert.equal(classifyElsewhereHost("personal.example"), "web");
+  assert.equal(classifyElsewhereHost("social.joshuapsteele.com"), "web");
+});
+
+test("elsewhereLabel maps buttondown and threads catalog names", () => {
+  assert.equal(elsewhereLabel("buttondown", "buttondown.com"), "Buttondown");
+  assert.equal(elsewhereLabel("threads", "www.threads.com"), "Threads");
 });
 
 test("elsewhereLabel uses catalog names or hostname for web", () => {
@@ -117,6 +131,128 @@ test("sanitizeElsewhere keeps host-discovered social profiles without rel=me", a
       label: "X",
     },
   ]);
+});
+
+test("sanitizeElsewhere drops non-me self-referral friend social links", async () => {
+  const result = await sanitizeElsewhere(
+    [
+      {
+        href: "https://github.com/JoshuaMorris",
+        me: true,
+      },
+      {
+        href: "https://www.twitch.tv/lilpeeeweee?utm_source=joshuamorris.info&utm_medium=referral",
+        me: false,
+      },
+      {
+        href: "https://medium.com/@hartsman?utm_source=joshuamorris.info&utm_medium=referral",
+        me: false,
+      },
+      {
+        href: "https://www.twitch.tv/ownchannel",
+        me: false,
+      },
+    ],
+    {
+      lookup: fakeLookup(),
+      participantOrigin: "https://joshuamorris.info",
+    },
+  );
+
+  assert.deepEqual(
+    result.map((entry) => entry.network),
+    ["github", "twitch"],
+  );
+  assert.equal(result[1].url, "https://www.twitch.tv/ownchannel");
+});
+
+test("sanitizeElsewhere keeps rel=me even when referral UTMs are present", async () => {
+  const result = await sanitizeElsewhere(
+    [
+      {
+        href: "https://www.twitch.tv/me?utm_source=joshuamorris.info&utm_medium=referral",
+        me: true,
+      },
+    ],
+    {
+      lookup: fakeLookup(),
+      participantOrigin: "https://joshuamorris.info",
+    },
+  );
+
+  assert.equal(result.length, 1);
+  assert.equal(result[0].network, "twitch");
+});
+
+test("sanitizeElsewhere referral filter covers primary label and invalid origins", async () => {
+  const byPrimary = await sanitizeElsewhere(
+    [
+      {
+        href: "https://medium.com/@friend?utm_source=joshuamorris&utm_medium=referral",
+        me: false,
+      },
+    ],
+    {
+      lookup: fakeLookup(),
+      participantOrigin: "https://joshuamorris.info",
+    },
+  );
+  assert.deepEqual(byPrimary, []);
+
+  const emptySource = await sanitizeElsewhere(
+    [
+      {
+        href: "https://medium.com/@friend?utm_medium=referral",
+        me: false,
+      },
+    ],
+    {
+      lookup: fakeLookup(),
+      participantOrigin: "https://joshuamorris.info",
+    },
+  );
+  assert.equal(emptySource.length, 1);
+
+  const badOrigin = await sanitizeElsewhere(
+    [
+      {
+        href: "https://medium.com/@friend?utm_source=joshuamorris.info&utm_medium=referral",
+        me: false,
+      },
+    ],
+    {
+      lookup: fakeLookup(),
+      participantOrigin: "not a url",
+    },
+  );
+  assert.equal(badOrigin.length, 1);
+
+  const emptyHost = await sanitizeElsewhere(
+    [
+      {
+        href: "https://medium.com/@friend?utm_source=joshuamorris.info&utm_medium=referral",
+        me: false,
+      },
+    ],
+    {
+      lookup: fakeLookup(),
+      participantOrigin: "https://www.",
+    },
+  );
+  assert.equal(emptyHost.length, 1);
+
+  const noOrigin = await sanitizeElsewhere(
+    [
+      {
+        href: "https://medium.com/@friend?utm_source=joshuamorris.info&utm_medium=referral",
+        me: false,
+      },
+    ],
+    {
+      lookup: fakeLookup(),
+    },
+  );
+  assert.equal(noOrigin.length, 1);
 });
 
 test("sanitizeElsewhere drops email, unsafe URLs, and duplicates", async () => {
@@ -269,6 +405,10 @@ test("isElsewhereProfileUrl: threads (lines 347-349)", () => {
     true,
   );
   assert.equal(
+    isElsewhereProfileUrl(make("https://www.threads.com/@joshjosh"), "threads"),
+    true,
+  );
+  assert.equal(
     isElsewhereProfileUrl(make("https://www.threads.net/joshjosh"), "threads"),
     true,
   );
@@ -346,6 +486,13 @@ test("isElsewhereProfileUrl: discord (lines 370-372)", () => {
     true,
   );
   assert.equal(
+    isElsewhereProfileUrl(
+      make("https://discordapp.com/users/thejoshmuller"),
+      "discord",
+    ),
+    true,
+  );
+  assert.equal(
     isElsewhereProfileUrl(make("https://discord.gg/invite/abc"), "discord"),
     true,
   );
@@ -368,6 +515,13 @@ test("isElsewhereProfileUrl: medium/substack/bandcamp and similar return true (l
   );
   assert.equal(
     isElsewhereProfileUrl(make("https://joshjosh.substack.com/"), "substack"),
+    true,
+  );
+  assert.equal(
+    isElsewhereProfileUrl(
+      make("https://buttondown.com/joshuapsteele/"),
+      "buttondown",
+    ),
     true,
   );
   assert.equal(
@@ -416,6 +570,55 @@ test("sanitizeElsewhere: second link for same network is deduplicated (lines 487
   // Only the first github profile is kept
   assert.equal(result.length, 1);
   assert.equal(result[0].url, "https://github.com/user1");
+});
+
+test("isElsewhereProfileUrl accepts cssbattle and codepen profile paths", () => {
+  assert.equal(
+    isElsewhereProfileUrl(
+      new URL("https://cssbattle.dev/player/a"),
+      "cssbattle",
+    ),
+    true,
+  );
+  assert.equal(
+    isElsewhereProfileUrl(new URL("https://cssbattle.dev/play"), "cssbattle"),
+    false,
+  );
+  assert.equal(
+    isElsewhereProfileUrl(new URL("https://codepen.io/someone"), "codepen"),
+    true,
+  );
+  assert.equal(
+    isElsewhereProfileUrl(new URL("https://codepen.io/pen/abc"), "codepen"),
+    false,
+  );
+  assert.equal(youtubeElsewhereRank(new URL("https://youtube.com/feed")), 0);
+  assert.equal(youtubeElsewhereRank(new URL("https://www.youtube.com/")), 0);
+});
+
+test("classifyElsewhereHost maps cssbattle and codepen", () => {
+  assert.equal(classifyElsewhereHost("cssbattle.dev"), "cssbattle");
+  assert.equal(classifyElsewhereHost("www.cssbattle.dev"), "cssbattle");
+  assert.equal(classifyElsewhereHost("codepen.io"), "codepen");
+  assert.equal(elsewhereLabel("cssbattle"), "CSS Battle");
+  assert.equal(elsewhereLabel("codepen"), "CodePen");
+});
+
+test("sanitizeElsewhere prefers YouTube channel over watch", async () => {
+  assert.equal(youtubeElsewhereRank(new URL("https://youtube.com/@maker")), 2);
+  assert.equal(
+    youtubeElsewhereRank(new URL("https://youtube.com/watch?v=1")),
+    1,
+  );
+  const result = await sanitizeElsewhere(
+    [
+      { href: "https://www.youtube.com/watch?v=abc", me: false },
+      { href: "https://www.youtube.com/@maker", me: false },
+    ],
+    { lookup: fakeLookup() },
+  );
+  assert.equal(result.length, 1);
+  assert.match(result[0].url, /@maker/);
 });
 
 // ─── Phase-3 branch gap closers ───────────────────────────────────────────────

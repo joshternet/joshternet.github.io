@@ -7,6 +7,9 @@ node_modules/
 assets/images/
 assets/network/sites/
 
+# Keep harvest fixtures layout-stable; Prettier-wrapped </a> breaks anchor regex tests.
+test/fixtures/html/
+
 *.md
 connections-data.json
 network-data.json

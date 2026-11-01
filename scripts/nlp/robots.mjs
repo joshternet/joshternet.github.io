@@ -1,7 +1,8 @@
 /**
  * Goal: Parse robots.txt and decide whether a path is allowed for a crawler.
  * Empty or missing files allow. Named User-agent groups beat *. Longest
- * Allow/Disallow prefix wins; equal length prefers Allow.
+ * Allow/Disallow prefix wins; equal length prefers Allow. Sitemap: lines are
+ * independent of User-agent groups (robots exclusion protocol).
  */
 
 /**
@@ -140,4 +141,47 @@ export function robotsAllowsPath(body, pathname, userAgent) {
   }
 
   return allowed;
+}
+
+/**
+ * Collects absolute or origin-relative Sitemap: URLs from a robots.txt body.
+ * Sitemap directives are not User-agent scoped.
+ * @param {string} body
+ * @returns {string[]}
+ */
+export function sitemapUrlsFromRobots(body) {
+  /** @type {string[]} */
+  const urls = [];
+  const seen = new Set();
+
+  for (const raw of String(body || "").split(/\r?\n/)) {
+    const line = raw.replace(/#.*$/, "").trim();
+
+    if (!line) {
+      continue;
+    }
+
+    const colon = line.indexOf(":");
+
+    if (colon < 0) {
+      continue;
+    }
+
+    const field = line.slice(0, colon).trim().toLowerCase();
+
+    if (field !== "sitemap") {
+      continue;
+    }
+
+    const value = line.slice(colon + 1).trim();
+
+    if (!value || seen.has(value)) {
+      continue;
+    }
+
+    seen.add(value);
+    urls.push(value);
+  }
+
+  return urls;
 }

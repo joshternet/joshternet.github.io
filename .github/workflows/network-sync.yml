@@ -112,6 +112,14 @@ jobs:
         if: steps.preflight.outputs.needs_sync == 'true'
         run: npm run nlp:sync
 
+      - name: Format generated datasets before validate
+        if: steps.preflight.outputs.needs_sync == 'true'
+        run: npm run format:data
+
+      - name: Fail closed if Prettier still reports dirty files
+        if: steps.preflight.outputs.needs_sync == 'true'
+        run: npm run format:check
+
       - name: Validate graph invariants
         if: steps.preflight.outputs.needs_sync == 'true'
         run: npm run nlp:validate
@@ -464,6 +472,9 @@ jobs:
 
       - name: Format generated datasets
         run: npm run format:data
+
+      - name: Fail closed if Prettier still reports dirty files
+        run: npm run format:check
 
       - name: Commit generated changes
         id: commit_network

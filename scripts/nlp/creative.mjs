@@ -16,9 +16,9 @@ import {
   schemaTypesFromHtml,
 } from "./text.mjs";
 
-/** Quoted or unquoted href (minified member HTML e.g. joshbeard.com). */
+/** Quoted or unquoted href (minified or Prettier-wrapped member HTML). */
 const ANCHOR_HREF_PATTERN =
-  /<a\b([^>]*)href\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))([^>]*)>([\s\S]*?)<\/a>/gi;
+  /<a\b([^>]*)href\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))([^>]*)>([\s\S]*?)<\/a\s*>/gi;
 
 /** @type {number} */
 export const MAX_CREATIVE_WORKS_PER_PAGE = 200;
@@ -34,6 +34,8 @@ const CREATIVE_SCHEMA_TYPES = [
   "MusicComposition",
   "AudioObject",
   "VideoObject",
+  "PodcastEpisode",
+  "PodcastSeries",
   "CollectionPage",
   "ItemList",
   "Game",
@@ -105,6 +107,14 @@ export function creativeContentType(types, pathHint = "") {
     return "sheet_music";
   }
 
+  if (/podcastepisode/.test(joined) || /\/podcasts?\//.test(path)) {
+    return "podcast_episode";
+  }
+
+  if (/podcastseries/.test(joined)) {
+    return "collection";
+  }
+
   if (
     /musicrecording|audioobject/.test(joined) ||
     /\.(mp3|m4a|aac|ogg|flac|wav|opus)(\?|$)/i.test(path) ||
@@ -113,7 +123,10 @@ export function creativeContentType(types, pathHint = "") {
     return "music_recording";
   }
 
-  if (/videoobject/.test(joined) || /video|film|animation/.test(path)) {
+  if (
+    /videoobject/.test(joined) ||
+    /video|film|animation|reels?|shorts|cssbattles?/.test(path)
+  ) {
     return "video";
   }
 
@@ -208,6 +221,7 @@ export function actionLabelForItem(contentType, availability) {
       return "Play";
     case "music_recording":
     case "music_album":
+    case "podcast_episode":
       return "Listen";
     case "sheet_music":
       return "View score";
@@ -472,6 +486,307 @@ export function creativeItemsFromFigures(
  * @param {string} observedAt
  * @returns {Array<Record<string, unknown>>}
  */
+/**
+ * Beard-style year album cards: `.album-in-list` → `/photos/{year}/`.
+ * @param {string} html
+ * @param {string} pageUrl
+ * @param {string} siteOrigin
+ * @param {string} observedAt
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function creativeItemsFromAlbumList(
+  html,
+  pageUrl,
+  siteOrigin,
+  observedAt,
+) {
+  const items = [];
+  const seen = new Set();
+
+  if (typeof html !== "string" || !html || !/album-in-list/i.test(html)) {
+    return items;
+  }
+
+  // Match album links directly (cards nest <div>s; avoid fragile outer wrappers).
+  const linkPattern =
+    /<a\b([^>]*class(?:=["'][^"']*album-in-list-link[^"']*["']|=album-in-list-link\b)[^>]*)>([\s\S]*?)<\/a>/gi;
+  let match;
+
+  while (
+    (match = linkPattern.exec(html)) &&
+    items.length < MAX_CREATIVE_WORKS_PER_PAGE
+  ) {
+    const attrs = match[1] || "";
+    const inner = match[2] || "";
+    const hrefMatch = attrs.match(
+      /\bhref\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i,
+    );
+    const url = absoluteUrl(
+      decodeHrefForParse(
+        hrefMatch?.[1] ?? hrefMatch?.[2] ?? hrefMatch?.[3] ?? "",
+      ),
+      pageUrl,
+    );
+
+    if (!url || !url.startsWith(siteOrigin) || seen.has(url)) {
+      continue;
+    }
+
+    const title =
+      normalizeExtractedText(
+        (
+          inner.match(
+            /class(?:=["'][^"']*album-in-list-title[^"']*["']|=album-in-list-title\b)[^>]*>[\s\S]*?<span[^>]*>([\s\S]*?)<\/span>/i,
+          )?.[1] ||
+          inner.match(/<span[^>]*>([\s\S]*?)<\/span>/i)?.[1] ||
+          ""
+        ).replace(/<[^>]+>/g, " "),
+      ) ||
+      normalizeExtractedText(
+        inner.match(/<img\b[^>]*alt=["']([^"']+)["']/i)?.[1] ||
+          inner.match(/<img\b[^>]*alt=([^\s>]+)/i)?.[1] ||
+          "",
+      );
+    const img = inner.match(
+      /<img\b[^>]*src\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i,
+    );
+    const rawImg = img?.[1] ?? img?.[2] ?? img?.[3] ?? "";
+    const imageAbs = rawImg ? absoluteUrl(rawImg, pageUrl) : "";
+    const image =
+      typeof imageAbs === "string" && imageAbs.startsWith("https://")
+        ? imageAbs
+        : "";
+
+    if (!title) {
+      continue;
+    }
+
+    seen.add(url);
+    items.push({
+      identity: `url:${url}`,
+      url,
+      site_origin: siteOrigin,
+      title,
+      summary: "",
+      content_type: "collection",
+      page_role: "portfolio",
+      language: null,
+      declared_topics: [],
+      source: { kind: "photo-album-list", page: pageUrl },
+      source_feeds: [{ type: "photo-album-list", url: pageUrl }],
+      observed_at: observedAt,
+      ...(image ? { image } : {}),
+    });
+  }
+
+  return items;
+}
+
+/**
+ * External listen links on /sounds/ or /music/ indexes (YouTube, Bandcamp, …).
+ * Work identity stays on the member page; listen action points off-origin.
+ * @param {string} html
+ * @param {string} pageUrl
+ * @param {string} siteOrigin
+ * @param {string} observedAt
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function creativeItemsFromExternalListenLinks(
+  html,
+  pageUrl,
+  siteOrigin,
+  observedAt,
+) {
+  const items = [];
+  const seen = new Set();
+  let path = "/";
+
+  try {
+    path = new URL(pageUrl).pathname.toLowerCase();
+  } catch {
+    return items;
+  }
+
+  if (!/\/(sounds?|music|tracks|discography)(?:\/|$)/i.test(path)) {
+    return items;
+  }
+
+  const linkPattern = new RegExp(ANCHOR_HREF_PATTERN.source, "gi");
+  let match;
+
+  while (
+    (match = linkPattern.exec(html)) &&
+    items.length < MAX_CREATIVE_WORKS_PER_PAGE
+  ) {
+    const href = decodeHrefForParse(match[2] ?? match[3] ?? match[4]);
+    const title = normalizeExtractedText(match[6].replace(/<[^>]+>/g, " "));
+
+    if (!href || !title || title.length < 2) {
+      continue;
+    }
+
+    let absolute;
+
+    try {
+      absolute = new URL(href, pageUrl);
+    } catch {
+      continue;
+    }
+
+    if (absolute.origin === new URL(siteOrigin).origin) {
+      continue;
+    }
+
+    if (!/^https?:$/i.test(absolute.protocol)) {
+      continue;
+    }
+
+    const listenUrl = absolute.href;
+    const host = absolute.hostname.toLowerCase();
+
+    if (
+      !/(youtube\.com|youtu\.be|bandcamp\.com|soundcloud\.com|spotify\.com|vimeo\.com)/.test(
+        host,
+      ) &&
+      !/\.(mp3|m4a|aac|ogg|flac|wav|opus)(\?|$)/i.test(listenUrl)
+    ) {
+      continue;
+    }
+
+    const identity = `listen:${siteOrigin}:${listenUrl}`;
+
+    if (seen.has(identity)) {
+      continue;
+    }
+
+    seen.add(identity);
+    items.push({
+      identity,
+      url: pageUrl,
+      site_origin: siteOrigin,
+      title,
+      summary: "",
+      content_type: "music_recording",
+      page_role: "project",
+      language: null,
+      declared_topics: [],
+      source: { kind: "sounds-listen-link", page: pageUrl },
+      source_feeds: [{ type: "sounds-listen-link", url: pageUrl }],
+      observed_at: observedAt,
+      actions: [
+        {
+          label: "Listen",
+          url: listenUrl,
+          type: "listen",
+        },
+      ],
+    });
+  }
+
+  return items;
+}
+
+/**
+ * External watch links on video indexes (YouTube, Vimeo, Twitch).
+ * Work identity stays on the member page; watch action points off-origin.
+ * @param {string} html
+ * @param {string} pageUrl
+ * @param {string} siteOrigin
+ * @param {string} observedAt
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function creativeItemsFromExternalWatchLinks(
+  html,
+  pageUrl,
+  siteOrigin,
+  observedAt,
+) {
+  const items = [];
+  const seen = new Set();
+  let path = "/";
+
+  try {
+    path = new URL(pageUrl).pathname.toLowerCase();
+  } catch {
+    return items;
+  }
+
+  if (
+    !/\/(videos?|reels?|shorts|film|animation|cssbattles?)(?:\/|$)/i.test(path)
+  ) {
+    return items;
+  }
+
+  const linkPattern = new RegExp(ANCHOR_HREF_PATTERN.source, "gi");
+  let match;
+
+  while (
+    (match = linkPattern.exec(html)) &&
+    items.length < MAX_CREATIVE_WORKS_PER_PAGE
+  ) {
+    const href = decodeHrefForParse(match[2] ?? match[3] ?? match[4]);
+    const title = normalizeExtractedText(match[6].replace(/<[^>]+>/g, " "));
+
+    if (!href || !title || title.length < 2) {
+      continue;
+    }
+
+    let absolute;
+
+    try {
+      absolute = new URL(href, pageUrl);
+    } catch {
+      continue;
+    }
+
+    if (absolute.origin === new URL(siteOrigin).origin) {
+      continue;
+    }
+
+    if (!/^https?:$/i.test(absolute.protocol)) {
+      continue;
+    }
+
+    const watchUrl = absolute.href;
+    const host = absolute.hostname.toLowerCase();
+
+    if (!/(youtube\.com|youtu\.be|vimeo\.com|twitch\.tv)/.test(host)) {
+      continue;
+    }
+
+    const identity = `watch:${siteOrigin}:${watchUrl}`;
+
+    if (seen.has(identity)) {
+      continue;
+    }
+
+    seen.add(identity);
+    items.push({
+      identity,
+      url: watchUrl,
+      site_origin: siteOrigin,
+      title,
+      summary: "",
+      content_type: "video",
+      page_role: "project",
+      language: null,
+      declared_topics: [],
+      source: { kind: "videos-watch-link", page: pageUrl },
+      source_feeds: [{ type: "videos-watch-link", url: pageUrl }],
+      observed_at: observedAt,
+      actions: [
+        {
+          label: "Watch",
+          url: watchUrl,
+          type: "watch",
+        },
+      ],
+    });
+  }
+
+  return items;
+}
+
 export function creativeItemsFromIndexLinks(
   html,
   pageUrl,
@@ -482,7 +797,7 @@ export function creativeItemsFromIndexLinks(
   const seen = new Set();
   const path = new URL(pageUrl).pathname.toLowerCase();
   const indexRoots =
-    /^\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?)(?:\/|$)/i;
+    /^\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|podcasts?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)(?:\/|$)/i;
 
   if (!indexRoots.test(path.replace(/\/+$/, "") + "/")) {
     return items;
@@ -661,6 +976,21 @@ export function collectCreativeWorks(pages, meta) {
       items.push(item);
     }
 
+    for (const item of creativeItemsFromAlbumList(
+      page.html,
+      page.url,
+      siteOrigin,
+      observedAt,
+    )) {
+      if (seen.has(String(item.identity)) || isShowcaseChromePath(item.url)) {
+        continue;
+      }
+
+      applyPageLanguage(item, pageLang);
+      seen.add(String(item.identity));
+      items.push(item);
+    }
+
     for (const item of creativeItemsFromIndexLinks(
       page.html,
       page.url,
@@ -676,13 +1006,74 @@ export function collectCreativeWorks(pages, meta) {
       items.push(item);
     }
 
+    for (const item of creativeItemsFromExternalListenLinks(
+      page.html,
+      page.url,
+      siteOrigin,
+      observedAt,
+    )) {
+      if (seen.has(String(item.identity))) {
+        continue;
+      }
+
+      applyPageLanguage(item, pageLang);
+      seen.add(String(item.identity));
+      items.push(item);
+    }
+
+    for (const item of creativeItemsFromExternalWatchLinks(
+      page.html,
+      page.url,
+      siteOrigin,
+      observedAt,
+    )) {
+      if (seen.has(String(item.identity))) {
+        continue;
+      }
+
+      applyPageLanguage(item, pageLang);
+      seen.add(String(item.identity));
+      items.push(item);
+    }
+
     for (const item of creativeItemsFromHomepageLinks(
       page.html,
       page.url,
       siteOrigin,
       observedAt,
     )) {
-      if (seen.has(String(item.identity)) || isShowcaseChromePath(item.url)) {
+      if (seen.has(String(item.identity))) {
+        continue;
+      }
+
+      if (
+        String(item.url || "").startsWith(siteOrigin) &&
+        isShowcaseChromePath(item.url)
+      ) {
+        continue;
+      }
+
+      applyPageLanguage(item, pageLang);
+      seen.add(String(item.identity));
+      items.push(item);
+    }
+
+    for (const item of creativeItemsFromProjectsIndex(
+      page.html,
+      page.url,
+      siteOrigin,
+      observedAt,
+    )) {
+      // Off-origin shelf products use member site_origin; skip chrome only for
+      // same-origin URLs (external App Store / product domains are fine).
+      if (seen.has(String(item.identity))) {
+        continue;
+      }
+
+      if (
+        String(item.url || "").startsWith(siteOrigin) &&
+        isShowcaseChromePath(item.url)
+      ) {
         continue;
       }
 
@@ -771,7 +1162,7 @@ export function isCreativeIndexPath(pathname) {
     .toLowerCase()}`;
 
   const candidate = `${lower}/`;
-  return /^\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?)(?:\/|$)/.test(
+  return /^\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|podcasts?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)(?:\/|$)/.test(
     candidate,
   );
 }
@@ -870,6 +1261,100 @@ function isHomepageProductShelfHeading(heading) {
 }
 
 /**
+ * Title + blurb from a Projects-shelf anchor (e.g. Josh Grant dual `<span>`).
+ * @param {string} innerHtml
+ * @returns {{ title: string, summary: string }}
+ */
+export function shelfLinkTitleAndSummary(innerHtml) {
+  const html = typeof innerHtml === "string" ? innerHtml : "";
+  const spans = [...html.matchAll(/<span\b[^>]*>([\s\S]*?)<\/span\s*>/gi)].map(
+    (match) => normalizeExtractedText(match[1].replace(/<[^>]+>/g, " ")),
+  );
+  const named = spans.filter(Boolean);
+
+  if (named.length >= 2) {
+    return {
+      title: named[0],
+      summary: named.slice(1).join(" "),
+    };
+  }
+
+  if (named.length === 1) {
+    return { title: named[0], summary: "" };
+  }
+
+  const flat = normalizeExtractedText(html.replace(/<[^>]+>/g, " "));
+
+  return { title: flat, summary: "" };
+}
+
+/**
+ * True when an off-origin href is a first-party product (app site, App Store,
+ * GitHub repo) rather than Elsewhere chrome.
+ * @param {string} href
+ * @param {string} siteOrigin
+ * @returns {boolean}
+ */
+export function isExternalProductProjectUrl(href, siteOrigin) {
+  let absolute;
+  let memberOrigin = "";
+
+  try {
+    absolute = new URL(href);
+    memberOrigin = new URL(siteOrigin).origin;
+  } catch {
+    return false;
+  }
+
+  if (absolute.protocol !== "https:" && absolute.protocol !== "http:") {
+    return false;
+  }
+
+  if (absolute.origin === memberOrigin) {
+    return false;
+  }
+
+  if (absolute.username || absolute.password) {
+    return false;
+  }
+
+  const host = absolute.hostname.toLowerCase();
+  const parts = absolute.pathname
+    .replace(/^\/+|\/+$/g, "")
+    .split("/")
+    .filter(Boolean);
+
+  // Profile / social Elsewhere links — never projects.
+  if (
+    /(^|\.)(twitter|x|instagram|linkedin|facebook|threads|mastodon|bsky|bluesky)\./.test(
+      host,
+    ) ||
+    host === "bsky.app" ||
+    host.endsWith(".bsky.social") ||
+    host === "substack.com" ||
+    host.endsWith(".substack.com")
+  ) {
+    return false;
+  }
+
+  if (host === "github.com" || host === "www.github.com") {
+    // Require owner/repo (MusicX), not a bare profile.
+    return parts.length >= 2;
+  }
+
+  if (host === "apps.apple.com" || host.endsWith(".apple.com")) {
+    return parts.length >= 1;
+  }
+
+  if (host === "play.google.com") {
+    return /\/store\/apps\//i.test(absolute.pathname);
+  }
+
+  // Dedicated product domains (themorning.app) — any path is fine.
+  return true;
+}
+
+/**
  * True when an anchor title looks like a blog/index card, not a named product.
  * @param {string} title
  * @returns {boolean}
@@ -960,9 +1445,13 @@ export function creativeItemsFromHomepageLinks(
   ) {
     const href = decodeHrefForParse(match[2] ?? match[3] ?? match[4]);
     const url = absoluteUrl(href, pageUrl);
-    const title = normalizeExtractedText(match[6].replace(/<[^>]+>/g, " "));
+    const inProductShelf = productShelfRanges.has(match.index);
+    const { title: shelfTitle, summary: shelfSummary } =
+      shelfLinkTitleAndSummary(match[6] || "");
+    let title = shelfTitle;
+    let summary = shelfSummary;
 
-    if (!url || !url.startsWith(siteOrigin) || !title || title.length < 2) {
+    if (!url || !title || title.length < 2) {
       continue;
     }
 
@@ -970,42 +1459,56 @@ export function creativeItemsFromHomepageLinks(
       continue;
     }
 
-    let childPathname;
+    const sameOrigin = url.startsWith(siteOrigin);
+    let childPathname = "";
+    let segment = "";
+
     try {
       childPathname = new URL(url).pathname;
     } catch {
       continue;
     }
 
-    // Require exactly one path segment, e.g. /somaspace (not /blog/post).
-    const segments = childPathname
-      .replace(/^\/+|\/+$/g, "")
-      .split("/")
-      .filter(Boolean);
+    if (sameOrigin) {
+      // Require exactly one path segment, e.g. /somaspace (not /blog/post).
+      const segments = childPathname
+        .replace(/^\/+|\/+$/g, "")
+        .split("/")
+        .filter(Boolean);
 
-    if (segments.length !== 1) {
-      continue;
-    }
+      if (segments.length !== 1) {
+        continue;
+      }
 
-    const segment = segments[0].toLowerCase();
+      segment = segments[0].toLowerCase();
 
-    if (
-      NON_PROJECT_SEGMENTS.has(segment) ||
-      isShowcaseChromePath(`/${segment}/`)
+      if (
+        NON_PROJECT_SEGMENTS.has(segment) ||
+        isShowcaseChromePath(`/${segment}/`)
+      ) {
+        continue;
+      }
+    } else if (
+      !inProductShelf ||
+      !isExternalProductProjectUrl(url, siteOrigin)
     ) {
       continue;
     }
 
-    const inProductShelf = productShelfRanges.has(match.index);
     const afterStart = match.index + (match[0] || "").length;
     const forward = html.slice(afterStart, afterStart + 600);
     const imgAfter = forward.match(
       /<img\b[^>]*src\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i,
     );
     const paragraphMatch = forward.match(/<p\b[^>]*>([\s\S]*?)<\/p>/i);
-    const summary = paragraphMatch
+    const paragraphSummary = paragraphMatch
       ? normalizeExtractedText(paragraphMatch[1].replace(/<[^>]+>/g, " "))
       : "";
+
+    if (!summary && paragraphSummary) {
+      summary = paragraphSummary;
+    }
+
     const rawImg =
       (imgAfter && (imgAfter[1] ?? imgAfter[2] ?? imgAfter[3])) || "";
     const imageAbs = rawImg ? absoluteUrl(rawImg, pageUrl) : "";
@@ -1016,7 +1519,7 @@ export function creativeItemsFromHomepageLinks(
 
     // Outside a product shelf, keep short named works only—never blog cards
     // ("Oct 5 · 4 min read …", "Personal Data Pipeline Update"). Inside
-    // Products/OSS shelves, allow blurbs.
+    // Products/OSS shelves, allow blurbs and off-origin first-party apps.
     if (!inProductShelf) {
       if (title.length < 3 || title.length > 48) {
         continue;
@@ -1055,6 +1558,119 @@ export function creativeItemsFromHomepageLinks(
       source_feeds: [{ type: sourceKind, url: pageUrl }],
       observed_at: observedAt,
       ...(image ? { image } : {}),
+    });
+  }
+
+  return items;
+}
+
+/**
+ * Projects index pages (`/projects/`) listing same-origin and off-origin works
+ * (Josh Grant: Morning App, Wizardly Words, MusicX, Seedling).
+ * @param {string} html
+ * @param {string} pageUrl
+ * @param {string} siteOrigin
+ * @param {string} observedAt
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function creativeItemsFromProjectsIndex(
+  html,
+  pageUrl,
+  siteOrigin,
+  observedAt,
+) {
+  const items = [];
+
+  if (typeof html !== "string" || !html) {
+    return items;
+  }
+
+  let path = "/";
+
+  try {
+    path = new URL(pageUrl).pathname.toLowerCase().replace(/\/+$/, "") || "/";
+  } catch {
+    return items;
+  }
+
+  if (!/^\/projects?$/.test(path)) {
+    return items;
+  }
+
+  const seen = new Set();
+  const linkPattern = new RegExp(ANCHOR_HREF_PATTERN.source, "gi");
+  let match;
+
+  while (
+    (match = linkPattern.exec(html)) &&
+    items.length < MAX_CREATIVE_WORKS_PER_PAGE
+  ) {
+    const href = decodeHrefForParse(match[2] ?? match[3] ?? match[4]);
+    const url = absoluteUrl(href, pageUrl);
+    const { title, summary: shelfSummary } = shelfLinkTitleAndSummary(
+      match[6] || "",
+    );
+
+    if (
+      !url ||
+      !title ||
+      title.length < 2 ||
+      seen.has(url) ||
+      url === pageUrl
+    ) {
+      continue;
+    }
+
+    const sameOrigin = url.startsWith(siteOrigin);
+
+    if (sameOrigin) {
+      let childPathname = "";
+
+      try {
+        childPathname = new URL(url).pathname;
+      } catch {
+        continue;
+      }
+
+      const segments = childPathname
+        .replace(/^\/+|\/+$/g, "")
+        .split("/")
+        .filter(Boolean);
+
+      if (segments.length !== 1) {
+        continue;
+      }
+
+      const segment = segments[0].toLowerCase();
+
+      if (
+        NON_PROJECT_SEGMENTS.has(segment) ||
+        isShowcaseChromePath(`/${segment}/`)
+      ) {
+        continue;
+      }
+    } else if (!isExternalProductProjectUrl(url, siteOrigin)) {
+      continue;
+    }
+
+    if (isHomepageBlogCardTitle(title)) {
+      continue;
+    }
+
+    seen.add(url);
+    items.push({
+      identity: `url:${url}`,
+      url,
+      site_origin: siteOrigin,
+      title,
+      summary: shelfSummary && shelfSummary !== title ? shelfSummary : "",
+      content_type: "project",
+      page_role: "project",
+      language: null,
+      declared_topics: [],
+      source: { kind: "creative-projects-shelf", page: pageUrl },
+      source_feeds: [{ type: "creative-projects-shelf", url: pageUrl }],
+      observed_at: observedAt,
     });
   }
 

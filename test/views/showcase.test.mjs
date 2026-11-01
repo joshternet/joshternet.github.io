@@ -14,9 +14,12 @@ import {
   buildShowcaseHomeItems,
   buildShowcaseItems,
   buildViewDocuments,
+  channelItemsFromNetwork,
   compareShowcaseRecency,
   compactContentItem,
   creativePathKind,
+  isEducationGatheringItem,
+  isPastEducationShowcaseEvent,
   dirForLanguage,
   fairTopicArticles,
   isBareCreativeIndexUrl,
@@ -25,7 +28,9 @@ import {
   isCreativeSeriesHubUrl,
   isIndividualPhotoOrArtWorkUrl,
   isExactSlugProductTitle,
+  isExternalShelfProject,
   isMadeContentItem,
+  isMemberSiteHomeItem,
   isNamedRootCreativeProduct,
   isNamedRootProjectUrl,
   isPhotoAggregatorUrl,
@@ -34,6 +39,7 @@ import {
   isPortfolioSourcedItem,
   isShowcaseContentItem,
   isSiteHomeUrl,
+  expandSlugTitleFromSummary,
   projectTitleMatchingSlug,
   relationLabel,
   showcaseCardTitle,
@@ -513,19 +519,23 @@ test("buildShowcaseHomeItems keeps one newest work per member and kind", () => {
       url: "https://video.example/films/clip/",
       site_origin: "https://video.example",
       title: "Fresh Clip",
-      summary: "Video kind is not part of the home creative strip.",
+      summary: "Video kind belongs on the home creative strip.",
       published_at: "2026-10-30T00:00:00.000Z",
       image: "https://video.example/films/clip.jpg",
     },
   ]);
 
-  assert.equal(items.length, 4);
+  assert.equal(items.length, 5);
   assert.deepEqual(
     items.map((item) => ({ kind: item.kind, url: item.url })),
     [
       {
         kind: "photography",
         url: "https://joshbeard.com/photos/2026/",
+      },
+      {
+        kind: "video",
+        url: "https://video.example/films/clip/",
       },
       {
         kind: "project",
@@ -925,6 +935,36 @@ test("buildHappeningItems returns empty array for invalid now", () => {
       new Date("not-a-date"),
     ),
     [],
+  );
+});
+
+test("buildHappeningItems skips mention and cancelled events", () => {
+  const now = new Date("2026-11-01T12:00:00.000Z");
+  assert.deepEqual(
+    buildHappeningItems(
+      [
+        {
+          content_type: "event",
+          url: "https://a.example/e1/",
+          start: "2026-12-01T00:00:00.000Z",
+          attribution_role: "mention",
+        },
+        {
+          content_type: "event",
+          url: "https://a.example/e2/",
+          start: "2026-12-01T00:00:00.000Z",
+          status: "cancelled",
+        },
+        {
+          content_type: "event",
+          url: "https://a.example/e3/",
+          start: "2026-12-01T00:00:00.000Z",
+          attribution_role: "hosted",
+        },
+      ],
+      now,
+    ).map((item) => item.url),
+    ["https://a.example/e3/"],
   );
 });
 
@@ -1404,7 +1444,23 @@ test("creativePathKind: maps known root paths to correct kinds (L762-803)", () =
     "photography",
   );
   assert.equal(creativePathKind("https://a.example/art/piece/"), "art");
+  assert.equal(creativePathKind("https://a.example/comics/strip-1/"), "comics");
+  assert.equal(creativePathKind("https://a.example/toys/widget/"), "project");
+  assert.equal(creativePathKind("https://a.example/reels/clip/"), "video");
+  assert.equal(
+    creativePathKind("https://a.example/cssbattles/nov-1/"),
+    "video",
+  );
+  assert.equal(
+    creativePathKind("https://a.example/study-hall/062/"),
+    "education",
+  );
   assert.equal(creativePathKind("https://a.example/music/track/"), "music");
+  assert.equal(
+    creativePathKind("https://a.example/podcasts/ep-1/"),
+    "podcasts",
+  );
+  assert.equal(creativePathKind("https://a.example/podcast/ep-1/"), "podcasts");
   assert.equal(creativePathKind("https://a.example/videos/clip/"), "video");
   assert.equal(creativePathKind("https://a.example/games/pong/"), "games");
   assert.equal(creativePathKind("https://a.example/apps/myapp/"), "apps");
@@ -2082,12 +2138,109 @@ test("compactContentItem preserves page_role for Showcase writing gate", () => {
   assert.equal(compact.source_kind, "creative-homepage");
 });
 
+test("compactContentItem keeps local activity poster paths", () => {
+  const compact = compactContentItem(
+    {
+      url: "https://themorning.app/",
+      site_origin: "https://joshgr.com",
+      title: "The Morning App",
+      content_type: "project",
+      image: "/assets/activity/posters/abc123.webp",
+    },
+    new Map([
+      ["https://joshgr.com", { title: "Josh Grant", domain: "joshgr.com" }],
+    ]),
+    new Set(),
+  );
+
+  assert.equal(compact?.image, "/assets/activity/posters/abc123.webp");
+  assert.equal(compact?.image_origin, "");
+});
+
 test("isMadeContentItem requires creative-directory URLs for projects", () => {
   assert.equal(isSiteHomeUrl("https://joshmuller.ca/"), true);
+  assert.equal(
+    isMemberSiteHomeItem({
+      url: "https://joshmuller.ca/",
+      site_origin: "https://joshmuller.ca",
+    }),
+    true,
+  );
+  assert.equal(
+    isMemberSiteHomeItem({
+      url: "https://themorning.app/",
+      site_origin: "https://joshgr.com",
+    }),
+    false,
+  );
+  assert.equal(
+    isExternalShelfProject({
+      url: "https://themorning.app/",
+      site_origin: "https://joshgr.com",
+      source_kind: "creative-homepage-shelf",
+    }),
+    true,
+  );
+  assert.equal(
+    isExternalShelfProject({
+      url: "https://joshgr.com/wizardly-words/",
+      site_origin: "https://joshgr.com",
+      source_kind: "creative-homepage-shelf",
+    }),
+    false,
+  );
+  assert.equal(
+    isExternalShelfProject({
+      url: "https://themorning.app/",
+      site_origin: "https://joshgr.com",
+      source_kind: "creative-homepage",
+    }),
+    false,
+  );
+  assert.equal(isExternalShelfProject(null), false);
+  assert.equal(isExternalShelfProject("x"), false);
+  assert.equal(
+    isExternalShelfProject({
+      url: 42,
+      site_origin: "https://joshgr.com",
+      source_kind: "creative-homepage-shelf",
+    }),
+    false,
+  );
+  assert.equal(
+    isExternalShelfProject({
+      url: "https://themorning.app/",
+      site_origin: "https://exa mple.com",
+      source_kind: "creative-homepage-shelf",
+    }),
+    false,
+  );
+  assert.equal(isMemberSiteHomeItem(null), false);
+  assert.equal(
+    isMemberSiteHomeItem({
+      url: "https://joshgr.com/",
+    }),
+    true,
+  );
+  assert.equal(
+    isMemberSiteHomeItem({
+      url: "https://joshgr.com/",
+      site_origin: "",
+    }),
+    true,
+  );
+  assert.equal(
+    isMemberSiteHomeItem({
+      url: "https://joshgr.com/",
+      site_origin: "https://exa mple.com",
+    }),
+    true,
+  );
   assert.equal(
     isMadeContentItem({
       content_type: "project",
       url: "https://joshmuller.ca/",
+      site_origin: "https://joshmuller.ca",
       title: "Josh Müller",
       summary: "Homepage is not a Showcase project",
       image: "https://joshmuller.ca/profile.jpg",
@@ -2317,6 +2470,72 @@ test("isMadeContentItem requires creative-directory URLs for projects", () => {
   );
 });
 
+test("expandSlugTitleFromSummary lifts bare slug titles from summary modifiers", () => {
+  assert.equal(
+    expandSlugTitleFromSummary(
+      "Skills",
+      "Nine Claude Code skills for product engineering work, from planning and code review to dependency patching, deploys, and growth. Free and open source.",
+    ),
+    "Claude Code Skills",
+  );
+  assert.equal(
+    expandSlugTitleFromSummary("Skills", "A page about tools and craft."),
+    "",
+  );
+  assert.equal(
+    expandSlugTitleFromSummary(
+      "Claude Code Skills",
+      "Nine Claude Code skills for product engineering work.",
+    ),
+    "",
+  );
+  assert.equal(
+    expandSlugTitleFromSummary(
+      "Skills",
+      "Alpha Bravo Charlie Delta Echo Skills arrive later",
+    ),
+    "Charlie Delta Echo Skills",
+  );
+  assert.equal(
+    expandSlugTitleFromSummary("Skills", "Claude Code · Skills nearby"),
+    "Claude Code Skills",
+  );
+  assert.equal(
+    expandSlugTitleFromSummary("Skills", "about Claude Code skills here"),
+    "Claude Code Skills",
+  );
+  assert.equal(expandSlugTitleFromSummary("Skills", "The Skills page"), "");
+  assert.equal(
+    expandSlugTitleFromSummary(
+      "Skills",
+      "Claude Code Skills and Product Skills both ship",
+    ),
+    "Product Skills",
+  );
+  assert.equal(expandSlugTitleFromSummary("", "Claude Code skills"), "");
+  assert.equal(expandSlugTitleFromSummary("Skills", ""), "");
+});
+
+test("showcaseCardTitle expands bare slug product names from summary", () => {
+  assert.equal(
+    showcaseCardTitle({
+      url: "https://joshghent.com/skills",
+      title: "Skills",
+      summary:
+        "Nine Claude Code skills for product engineering work, from planning and code review to dependency patching, deploys, and growth. Free and open source.",
+    }),
+    "Claude Code Skills",
+  );
+  assert.equal(
+    showcaseCardTitle({
+      url: "https://joshghent.com/skills",
+      title: "Skills",
+      summary: "Open tools for engineering teams.",
+    }),
+    "Skills",
+  );
+});
+
 test("showcaseCardTitle strips HTML and experiment day numbers", () => {
   assert.equal(
     showcaseCardTitle({
@@ -2506,4 +2725,296 @@ test("What's New receives Showcase toys; writing does not enter Showcase", () =>
   assert.ok(
     activityUrls.includes("https://joshuamorris.info/notes/2026/10/01/hello/"),
   );
+});
+
+test("comics and education path kinds + past education Showcase", () => {
+  assert.equal(showcaseKindLabel("comics", 2), "Comics");
+  assert.equal(showcaseKindLabel("education", 1), "Education");
+  assert.equal(
+    showcaseKindForItem({
+      content_type: "project",
+      url: "https://a.example/comics/strip/",
+    }),
+    "comics",
+  );
+  assert.equal(isEducationGatheringItem(null), false);
+  assert.equal(
+    isEducationGatheringItem({ url: "https://a.example/about/" }),
+    false,
+  );
+  assert.equal(
+    isEducationGatheringItem({ title: "Front End Study Hall #1" }),
+    true,
+  );
+  assert.equal(
+    isEducationGatheringItem({
+      url: "https://a.example/learn/js/",
+      title: "JS",
+    }),
+    true,
+  );
+  assert.equal(
+    isEducationGatheringItem({
+      content_type: "project",
+      url: "https://a.example/education/lab/",
+    }),
+    true,
+  );
+  const pastEvent = {
+    content_type: "event",
+    title: "Front End Study Hall #058",
+    url: "https://a.example/blog/2020/09/17/fresh-058/",
+    start: "2020-09-17T17:00:00-07:00",
+    end: "2020-09-17T18:30:00-07:00",
+  };
+  assert.equal(isEducationGatheringItem(pastEvent), true);
+  assert.equal(
+    isPastEducationShowcaseEvent(pastEvent, new Date("2026-11-01T00:00:00Z")),
+    true,
+  );
+  assert.equal(
+    isPastEducationShowcaseEvent({ content_type: "article" }),
+    false,
+  );
+  assert.equal(
+    isPastEducationShowcaseEvent({
+      content_type: "event",
+      title: "Meetup",
+      url: "https://a.example/meetup/",
+      start: "2020-01-01T00:00:00Z",
+    }),
+    false,
+  );
+  assert.equal(
+    isPastEducationShowcaseEvent({
+      content_type: "event",
+      title: "Front End Study Hall",
+      url: "https://a.example/fresh/",
+      start: "not-a-date",
+    }),
+    false,
+  );
+  assert.equal(
+    isPastEducationShowcaseEvent({
+      content_type: "event",
+      title: "Front End Study Hall",
+      url: "https://a.example/fresh/",
+    }),
+    false,
+  );
+  assert.equal(
+    isPastEducationShowcaseEvent(
+      {
+        content_type: "event",
+        title: "Front End Study Hall",
+        url: "https://a.example/fresh/",
+        start: "2020-01-01T00:00:00Z",
+        end: "2099-01-01T00:00:00Z",
+      },
+      new Date("2026-11-01T00:00:00Z"),
+    ),
+    false,
+  );
+  assert.equal(
+    isPastEducationShowcaseEvent(
+      {
+        content_type: "event",
+        title: "Front End Study Hall",
+        url: "https://a.example/fresh/",
+        start: "2020-01-01T00:00:00Z",
+      },
+      "2026-11-01T00:00:00.000Z",
+    ),
+    true,
+  );
+  assert.equal(showcaseKindForItem(pastEvent), "education");
+  assert.equal(
+    isMadeContentItem({
+      ...pastEvent,
+      site_origin: "https://a.example",
+      title: "Front End Study Hall #058",
+    }),
+    true,
+  );
+});
+
+test("buildViewDocuments search tolerates channel items without tags", () => {
+  const views = buildViewDocuments({
+    network: [
+      {
+        origin: "https://a.example",
+        domain: "a.example",
+        title: "A",
+        elsewhere: [
+          {
+            network: "youtube",
+            label: "YouTube",
+            url: "https://www.youtube.com/@asite",
+          },
+        ],
+      },
+    ],
+    content: { items: [] },
+    topics: { communities: [] },
+    connections: {},
+    siteSignals: { origins: [] },
+    generatedAt: "2026-11-01T00:00:00.000Z",
+    channelPublishByUrl: {
+      "https://www.youtube.com/@asite": "2026-10-28T12:00:00.000Z",
+    },
+  });
+
+  assert.ok(
+    views.search_index.documents.some(
+      (doc) => doc.url === "https://www.youtube.com/@asite",
+    ),
+  );
+});
+
+test("elsewhere channels need a recent upload for Showcase and Activity", () => {
+  const network = [
+    {
+      origin: "https://a.example",
+      domain: "a.example",
+      title: "A Site",
+      elsewhere: [
+        {
+          network: "youtube",
+          label: "YouTube",
+          url: "https://www.youtube.com/@fresh",
+        },
+        {
+          network: "youtube",
+          label: "YouTube",
+          url: "https://www.youtube.com/@stale",
+        },
+        {
+          network: "vimeo",
+          label: "Vimeo",
+          url: "https://vimeo.com/undated",
+        },
+      ],
+    },
+  ];
+  const base = {
+    network,
+    content: { items: [] },
+    topics: { communities: [] },
+    connections: {},
+    siteSignals: { origins: [] },
+    generatedAt: "2026-11-01T00:00:00.000Z",
+  };
+
+  const undated = buildViewDocuments(base);
+  assert.equal(
+    undated.showcase.items.some((item) =>
+      String(item.url).includes("youtube.com"),
+    ),
+    false,
+  );
+  assert.equal(
+    (undated.activity.primary || []).some((item) =>
+      String(item.url).includes("youtube.com"),
+    ),
+    false,
+  );
+
+  const dated = buildViewDocuments({
+    ...base,
+    channelPublishByUrl: {
+      "https://www.youtube.com/@fresh": "2026-10-25T00:00:00.000Z",
+      "https://www.youtube.com/@stale": "2026-09-01T00:00:00.000Z",
+    },
+  });
+  const showcaseUrls = dated.showcase.items.map((item) => item.url);
+  const activityUrls = (dated.activity.primary || []).map((item) => item.url);
+  assert.deepEqual(showcaseUrls, ["https://www.youtube.com/@fresh"]);
+  assert.ok(activityUrls.includes("https://www.youtube.com/@fresh"));
+  assert.equal(activityUrls.includes("https://www.youtube.com/@stale"), false);
+  assert.equal(showcaseUrls.includes("https://vimeo.com/undated"), false);
+  assert.ok(
+    dated.showcase.home.some(
+      (item) => item.url === "https://www.youtube.com/@fresh",
+    ),
+  );
+});
+
+test("channelItemsFromNetwork attaches published_at from publish map", () => {
+  const items = channelItemsFromNetwork(
+    [
+      {
+        origin: "https://a.example",
+        title: "A",
+        elsewhere: [
+          {
+            network: "youtube",
+            url: "https://www.youtube.com/@asite",
+          },
+        ],
+      },
+    ],
+    "2026-11-01T00:00:00.000Z",
+    { "https://www.youtube.com/@asite": "2026-10-20T00:00:00.000Z" },
+  );
+  assert.equal(items[0].published_at, "2026-10-20T00:00:00.000Z");
+  assert.equal(
+    channelItemsFromNetwork(
+      [
+        {
+          origin: "https://a.example",
+          elsewhere: [
+            { network: "youtube", url: "https://www.youtube.com/@asite" },
+          ],
+        },
+      ],
+      "2026-11-01T00:00:00.000Z",
+      /** @type {unknown} */ (["not-a-map"]),
+    )[0].published_at,
+    undefined,
+  );
+});
+
+test("channelItemsFromNetwork builds Showcase video cards", () => {
+  assert.deepEqual(channelItemsFromNetwork(null), []);
+  assert.deepEqual(channelItemsFromNetwork([null, { elsewhere: [] }]), []);
+  assert.deepEqual(
+    channelItemsFromNetwork([{ title: "No origin", elsewhere: [] }]),
+    [],
+  );
+  const items = channelItemsFromNetwork(
+    [
+      {
+        origin: "https://a.example",
+        title: "A Site",
+        domain: "a.example",
+        elsewhere: [
+          {
+            network: "youtube",
+            label: "YouTube",
+            url: "https://www.youtube.com/@asite",
+          },
+          {
+            network: "youtube",
+            label: "YouTube",
+            url: "https://www.youtube.com/watch?v=skip",
+          },
+        ],
+      },
+      {
+        url: "https://b.example",
+        elsewhere: [
+          {
+            network: "vimeo",
+            url: "https://vimeo.com/bchannel",
+          },
+        ],
+      },
+    ],
+    "2026-11-01T00:00:00.000Z",
+  );
+  assert.equal(items.length, 2);
+  assert.equal(items[0].content_type, "video");
+  assert.equal(items[0].source.kind, "elsewhere-channel");
+  assert.equal(showcaseItemHasSubstance(items[0]), true);
+  assert.equal(isMadeContentItem(items[0]), true);
 });

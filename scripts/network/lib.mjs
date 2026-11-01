@@ -48,6 +48,11 @@ export function normalizeText(value) {
   return value.replace(/\s+/g, " ").trim();
 }
 
+/**
+ * Known named character references → plain Unicode (or space for nbsp).
+ * Not an HTML sanitizer: unknown `&name;` is left unchanged; callers must
+ * still escape on render.
+ */
 const NAMED_ENTITIES = {
   amp: "&",
   lt: "<",
@@ -55,10 +60,97 @@ const NAMED_ENTITIES = {
   quot: '"',
   apos: "'",
   nbsp: " ",
+  ldquo: "\u201C",
+  rdquo: "\u201D",
+  lsquo: "\u2018",
+  rsquo: "\u2019",
+  sbquo: "\u201A",
+  bdquo: "\u201E",
+  ndash: "\u2013",
+  mdash: "\u2014",
+  hellip: "\u2026",
+  middot: "\u00B7",
+  bull: "\u2022",
+  copy: "\u00A9",
+  reg: "\u00AE",
+  trade: "\u2122",
+  euro: "\u20AC",
+  pound: "\u00A3",
+  yen: "\u00A5",
+  cent: "\u00A2",
+  sect: "\u00A7",
+  para: "\u00B6",
+  deg: "\u00B0",
+  plusmn: "\u00B1",
+  times: "\u00D7",
+  divide: "\u00F7",
+  laquo: "\u00AB",
+  raquo: "\u00BB",
+  iexcl: "\u00A1",
+  iquest: "\u00BF",
+  agrave: "\u00E0",
+  aacute: "\u00E1",
+  acirc: "\u00E2",
+  atilde: "\u00E3",
+  auml: "\u00E4",
+  aring: "\u00E5",
+  aelig: "\u00E6",
+  ccedil: "\u00E7",
+  egrave: "\u00E8",
+  eacute: "\u00E9",
+  ecirc: "\u00EA",
+  euml: "\u00EB",
+  igrave: "\u00EC",
+  iacute: "\u00ED",
+  icirc: "\u00EE",
+  iuml: "\u00EF",
+  ntilde: "\u00F1",
+  ograve: "\u00F2",
+  oacute: "\u00F3",
+  ocirc: "\u00F4",
+  otilde: "\u00F5",
+  ouml: "\u00F6",
+  oslash: "\u00F8",
+  ugrave: "\u00F9",
+  uacute: "\u00FA",
+  ucirc: "\u00FB",
+  uuml: "\u00FC",
+  yacute: "\u00FD",
+  yuml: "\u00FF",
+  Agrave: "\u00C0",
+  Aacute: "\u00C1",
+  Acirc: "\u00C2",
+  Atilde: "\u00C3",
+  Auml: "\u00C4",
+  Aring: "\u00C5",
+  AElig: "\u00C6",
+  Ccedil: "\u00C7",
+  Egrave: "\u00C8",
+  Eacute: "\u00C9",
+  Ecirc: "\u00CA",
+  Euml: "\u00CB",
+  Igrave: "\u00CC",
+  Iacute: "\u00CD",
+  Icirc: "\u00CE",
+  Iuml: "\u00CF",
+  Ntilde: "\u00D1",
+  Ograve: "\u00D2",
+  Oacute: "\u00D3",
+  Ocirc: "\u00D4",
+  Otilde: "\u00D5",
+  Ouml: "\u00D6",
+  Oslash: "\u00D8",
+  Ugrave: "\u00D9",
+  Uacute: "\u00DA",
+  Ucirc: "\u00DB",
+  Uuml: "\u00DC",
+  Yacute: "\u00DD",
 };
 
 /**
- * Decodes HTML character references (for URLs and text before semantics).
+ * Decodes HTML character references to plain Unicode for storage/display text.
+ * Known named refs and numeric refs become code points; unknown `&name;` is
+ * left unchanged. Not an HTML sanitizer — escape on render.
  * @param {string} input
  * @returns {string}
  */
@@ -77,7 +169,13 @@ export function decodeHtmlEntities(input) {
       return String.fromCodePoint(code);
     })
     .replace(/&([a-zA-Z]+);/g, (match, name) => {
+      if (Object.hasOwn(NAMED_ENTITIES, name)) {
+        return NAMED_ENTITIES[name];
+      }
+
+      // XML/HTML often uses lowercase for amp/lt/gt even when mixed case appears.
       const key = name.toLowerCase();
+
       return Object.hasOwn(NAMED_ENTITIES, key) ? NAMED_ENTITIES[key] : match;
     });
 }
@@ -445,6 +543,32 @@ export function looksLikePersonName(candidate) {
 }
 
 /**
+ * True when text compresses to the host label but is not a person-shaped name
+ * (e.g. slogan brand "Josh Can Help" ↔ joshcanhelp).
+ * @param {string} candidate
+ * @param {string} domain
+ * @returns {boolean}
+ */
+export function isDomainCompressingSlogan(candidate, domain) {
+  const normalized = normalizeText(candidate);
+  const domainLabel = primaryDomainLabel(domain);
+
+  if (!normalized || !domainLabel) {
+    return false;
+  }
+
+  // Single-token host brands ("Joshtronic") are fine; multi-word slogans that
+  // only restate the host ("Josh Can Help") are not card titles.
+  const wordCount = normalized.split(/\s+/u).filter(Boolean).length;
+
+  return (
+    wordCount >= 2 &&
+    comparableText(normalized) === comparableText(domainLabel) &&
+    !looksLikePersonName(normalized)
+  );
+}
+
+/**
  * When a candidate is the person's name compacted into the domain label
  * (Josh Ghent ↔ joshghent), return the display name.
  * @param {string} candidate
@@ -561,7 +685,12 @@ function titleBrandFromDomain(title, domain) {
     const comparablePart = comparableText(part);
 
     if (comparablePart === comparableDomain) {
-      return part;
+      // Single-token host brands (Joshtronic) ok; multi-word slogans are not.
+      if (!isDomainCompressingSlogan(part, hostname)) {
+        return part;
+      }
+
+      continue;
     }
 
     // "Hello! - joshua.seigler.net" → prefer "Joshua Seigler"
@@ -629,7 +758,7 @@ export function chooseTitle({
   for (const candidate of siteNameCandidates) {
     const normalized = normalizeText(candidate);
 
-    if (normalized) {
+    if (normalized && !isDomainCompressingSlogan(normalized, domain)) {
       return normalized;
     }
   }
@@ -646,7 +775,12 @@ export function chooseTitle({
   const pageTitleCandidates = [ogTitle, twitterTitle, documentTitle];
   const nonGreetingPageTitle = pageTitleCandidates
     .map((candidate) => normalizeText(candidate))
-    .find((candidate) => candidate && !isGreetingTitle(candidate));
+    .find(
+      (candidate) =>
+        candidate &&
+        !isGreetingTitle(candidate) &&
+        !isDomainCompressingSlogan(candidate, domain),
+    );
 
   if (humanName && !nonGreetingPageTitle) {
     return humanName;
@@ -655,12 +789,29 @@ export function chooseTitle({
   for (const candidate of [...pageTitleCandidates, domain]) {
     const normalized = normalizeText(candidate);
 
-    if (normalized) {
-      return normalized;
+    if (!normalized) {
+      continue;
     }
+
+    if (isDomainCompressingSlogan(normalized, domain)) {
+      continue;
+    }
+
+    // "Josh Can Help - Software" still carries the slogan; prefer the host.
+    if (
+      titleParts(normalized).some((part) =>
+        isDomainCompressingSlogan(part, domain),
+      )
+    ) {
+      continue;
+    }
+
+    return normalized;
   }
 
-  return "";
+  const domainFallback = normalizeText(domain);
+
+  return domainFallback || "";
 }
 
 export function chooseDescription({
@@ -886,6 +1037,8 @@ const FEED_MIME_TYPES = new Set([
   "application/rss+xml",
   "application/atom+xml",
   "application/feed+json",
+  // Hugo PaperMod search/index JSON (sniffed at nlp:sync time).
+  "application/json",
 ]);
 
 /**
