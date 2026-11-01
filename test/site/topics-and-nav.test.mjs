@@ -106,6 +106,8 @@ test("nav keeps Wander top-level and nests About/Network children", async () => 
     networkNav,
     /title: What's New[\s\S]*title: Showcase[\s\S]*title: Topics[\s\S]*title: Connections/,
   );
+  assert.doesNotMatch(networkNav, /title: Happening/);
+  assert.doesNotMatch(networkNav, /path: \/events\//);
   assert.doesNotMatch(networkNav, /title: Nominate/);
   assert.match(await read("_data/joshbot_nav.yml"), /path: \/nominate\//);
   assert.doesNotMatch(networkNav, /path: \/explore\//);

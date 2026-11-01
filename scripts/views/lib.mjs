@@ -2251,6 +2251,21 @@ export function buildHappeningItems(compactItems, now = new Date()) {
       return false;
     }
 
+    // Mere mentions (blog cites of someone else's event) stay out of Happening.
+    const role =
+      typeof item.attribution_role === "string" ? item.attribution_role : "";
+
+    if (role === "mention") {
+      return false;
+    }
+
+    // Cancelled events are never shown as upcoming.
+    const status = typeof item.status === "string" ? item.status : "";
+
+    if (/cancelled|canceled/i.test(status)) {
+      return false;
+    }
+
     const startStr = typeof item.start === "string" ? item.start : "";
 
     if (!startStr) {

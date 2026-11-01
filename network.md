@@ -251,11 +251,6 @@ Independent websites participating in the Joshternet, discovered and verified by
         >
           {{ network_site.domain | escape }}
         </a>
-        <p class="network-card__welcome">
-          <a href="{{ '/welcome/' | relative_url }}#{{ network_site.domain | downcase | slugify }}">
-            Get welcome card
-          </a>
-        </p>
       </div>
     </article>
   {% endfor %}

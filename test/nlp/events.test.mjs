@@ -273,6 +273,71 @@ test("buildHappeningItems with empty input returns empty array", () => {
   assert.deepEqual(buildHappeningItems(null, new Date()), []);
 });
 
+test("buildHappeningItems skips mention-only and cancelled events", () => {
+  const now = new Date("2027-01-01T00:00:00.000Z");
+  const items = [
+    {
+      content_type: EVENT_CONTENT_TYPE,
+      url: "https://a.example/events/cite/",
+      title: "Mentioned Gig",
+      site_origin: "https://a.example",
+      start: "2027-06-01T00:00:00Z",
+      attribution_role: "mention",
+      published_at: "",
+      tags: [],
+      neighborhoods: [],
+      image: "",
+      image_origin: "",
+      language: "",
+      dir: "",
+      summary: "",
+      site_title: "A",
+      domain: "a.example",
+    },
+    {
+      content_type: EVENT_CONTENT_TYPE,
+      url: "https://a.example/events/cancelled/",
+      title: "Cancelled Show",
+      site_origin: "https://a.example",
+      start: "2027-07-01T00:00:00Z",
+      attribution_role: "hosted",
+      status: "EventCancelled",
+      published_at: "",
+      tags: [],
+      neighborhoods: [],
+      image: "",
+      image_origin: "",
+      language: "",
+      dir: "",
+      summary: "",
+      site_title: "A",
+      domain: "a.example",
+    },
+    {
+      content_type: EVENT_CONTENT_TYPE,
+      url: "https://a.example/events/real/",
+      title: "Real Show",
+      site_origin: "https://a.example",
+      start: "2027-08-01T00:00:00Z",
+      attribution_role: "hosted",
+      published_at: "",
+      tags: [],
+      neighborhoods: [],
+      image: "",
+      image_origin: "",
+      language: "",
+      dir: "",
+      summary: "",
+      site_title: "A",
+      domain: "a.example",
+    },
+  ];
+
+  const happening = buildHappeningItems(items, now);
+  assert.equal(happening.length, 1);
+  assert.equal(happening[0].title, "Real Show");
+});
+
 // ─── events.mjs internal coverage ────────────────────────────────────────────
 
 test("collectEvents: sf() handles object-with-name fields", () => {

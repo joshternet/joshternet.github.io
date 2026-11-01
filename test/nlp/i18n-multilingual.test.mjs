@@ -24,7 +24,7 @@ import {
   searchTokens,
   scoreSearchDocument,
 } from "../../scripts/views/lib.mjs";
-import { truncateLabel } from "../../scripts/views/welcome-cards.mjs";
+import { truncateLabel } from "../../scripts/nlp/unicode-text.mjs";
 
 test("parseHtmlRegions: quoted and unquoted lang normalize to BCP 47", () => {
   assert.equal(

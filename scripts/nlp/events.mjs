@@ -225,7 +225,8 @@ function itemFromEventNode(node, pageUrl, siteOrigin, observedAt) {
   }
 
   // Attribution role: infer from organizer/performer/contributor.
-  let attributionRole = "mention";
+  // Same-origin publisher pages default to "hosted" (not mere mention).
+  let attributionRole = "hosted";
 
   const organizer = node.organizer;
   const performer = node.performer;
@@ -439,7 +440,8 @@ export function eventsFromMf2(html, pageUrl, siteOrigin, observedAt) {
       start,
       ...(end ? { end } : {}),
       ...(location ? { location } : {}),
-      attribution_role: "mention",
+      // Publisher's own h-event page → hosted (mention is for third-party cites only).
+      attribution_role: "hosted",
       source: { kind: "event-mf2", page: pageUrl },
       source_feeds: [{ type: "event-mf2", url: pageUrl }],
       observed_at: observedAt,

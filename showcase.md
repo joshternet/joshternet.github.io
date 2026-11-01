@@ -69,7 +69,15 @@ Creative work made by participants of the Joshternet.
   </h2>
   <ol class="showcase-list h-feed">
     {% endif %}
-    <li class="showcase-list__item">
+    <li
+      class="showcase-list__item"
+      {% if item.language and item.language != '' %}
+        lang="{{ item.language | escape }}"
+      {% endif %}
+      {% if item.dir and item.dir != '' %}
+        dir="{{ item.dir | escape }}"
+      {% endif %}
+    >
       {% include showcase-card.html item=item %}
     </li>
   {% endfor %}

@@ -331,9 +331,7 @@ jobs:
             topics/
             assets/network/joshternet.opml
             assets/network/sites/
-            assets/network/welcome/
             assets/activity/posters/
-            _data/welcome_cards.json
 
   publish:
     name: Publish generated network
@@ -455,21 +453,6 @@ jobs:
               assets/activity/posters/
           fi
 
-          rm -rf assets/network/welcome
-          mkdir -p assets/network/welcome
-
-          if [ -d .network-sync-output/assets/network/welcome ]; then
-            cp -R \
-              .network-sync-output/assets/network/welcome/. \
-              assets/network/welcome/
-          fi
-
-          if [ -f .network-sync-output/_data/welcome_cards.json ]; then
-            cp \
-              .network-sync-output/_data/welcome_cards.json \
-              _data/welcome_cards.json
-          fi
-
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
@@ -505,11 +488,9 @@ jobs:
             _data/search_index.json \
             _data/showcase.json \
             _data/happening.json \
-            _data/welcome_cards.json \
             topics \
             assets/network/joshternet.opml \
             assets/network/sites \
-            assets/network/welcome \
             assets/activity/posters
 
           if git diff --cached --quiet; then

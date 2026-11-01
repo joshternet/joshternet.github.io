@@ -58,6 +58,7 @@ import {
   writeTextAtomic,
 } from "./lib.mjs";
 import { collectCreativeWorks } from "./creative.mjs";
+import { collectEvents } from "./events.mjs";
 import { collectPortfolio } from "./portfolio.mjs";
 import { shouldRenderHtml } from "./render.mjs";
 import {
@@ -359,6 +360,13 @@ async function main() {
       });
       htmlSubjects.push(...creative.subjects);
       contentDrafts.push(...creative.items);
+
+      // Events are a separate content_type; Happening filters to upcoming later.
+      const events = collectEvents(creativePages, {
+        siteOrigin: origin,
+        observedAt: now,
+      });
+      contentDrafts.push(...events.items);
 
       const nlpSubjects = extractTopicsFromPages(nlpPages, {
         observedAt: now,

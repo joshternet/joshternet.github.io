@@ -2,8 +2,14 @@
 
 ## Unreleased
 
+### Removed
+
+- **Welcome postcards:** Removed `/welcome/` download page, Network “Get welcome card” links, Join celebrate CTA, SVG/PNG generation (`scripts/views/welcome-cards.mjs`, `_data/welcome_cards.json`, `assets/network/welcome/`), and related network-sync publish paths. Homepage new-arrivals eligibility is unchanged. `truncateLabel` moved to `scripts/nlp/unicode-text.mjs`.
+
 ### Changed
 
+- **Happening unpublished until member events exist:** `/events/` stays `published: false` and off Network nav while `_data/happening.json` has no upcoming items. Extraction/projection pipeline remains; publish the page and restore the Happening nav entry once a crawl finds verified upcoming events on a member site. Homepage strip already omits when empty.
+- **Happening pipeline:** `nlp:sync` now runs `collectEvents` into content drafts so Schema.org/mf2 events reach `_data/content.json` and `views:build` → `_data/happening.json`. Public calendar skips `attribution_role: mention` and cancelled statuses; same-origin publisher events default to `hosted`. Event date/venue render inside `activity-card` (no nested `<li>`). Showcase/home Showcase list items carry `lang`/`dir` for RTL works.
 - **Showcase order:** Kind sections list **projects → games → photography → music**, then remaining kinds (art, sheet music, video, apps, …). Section and filter titles use plural labels when a kind has more than one item (`Projects`, `Games`, `Videos`); a single item stays singular (`Project`). Within each kind, items are newest-first (`published_at` / `observed_at`, then URL descending so year albums like `/photos/2026/` precede `/photos/2014/`). Kind order is the seed for future `/showcase/` subpages.
 - **Showcase cards:** The whole tile is one covering hit link to the showcased work URL (`item.url`); maker name is attribution text only (domain omitted) so clicks do not go to the site homepage. Card titles no longer show the global `h2` accent circle (or `h3` accent bar on the home strip).
 - **What's New:** Merges dated Showcase creative works into `activity.primary`—every Showcase work published inside the seven-day window (multi-item per origin) so a same-origin article cannot hide a newly published experiment/toy. Undated photography is not treated as “new” via crawl `observed_at`. Compact items and Atom entries carry `observed_at` when present; ordering prefers `published_at`.
@@ -39,7 +45,7 @@
 
 - `_data/network_preview.json` kept empty again so local `network:sync` / `nlp:sync` crawl only JoshBot registry participants (removed the temporary `joshuakim.studio` preview entry).
 
-- **Phase 8 handoff stub:** `docs/research/showcase-happening-handoff.md` verification checklist.
+- **Phase 8 handoff:** `docs/research/showcase-happening-handoff.md` — participant matrix, Kim fixture notes, local command log, attribution checklist; publication status = local only (no commit).
 
 - **Creative extraction (Showcase/Happening):** offline HTML fixtures and tests for Joshua Kim Studio (8 works: Order Pipeline Toolkit, SomaSpace, Hot Chocolate, Prism Catch, ChewChat, KindBite, VAP, Graphic Design) and eight cross-participant member fixtures (photos, products/OSS, games, watchfaces/software, portfolio table, experiments, guides, technical projects). New `creativeItemsFromHomepageLinks` export collects same-origin single-segment project links from a site homepage. New `creativeItemsFromOpenGraph` export provides OG-tag fallback on creative index pages. `CREATIVE_SCHEMA_TYPES` extended with `MobileApplication`, `VideoGame`, `Book`, `HowTo`, and `MusicComposition`. `isCreativeIndexPath` / `creativeItemsFromIndexLinks` index-root regex extended with `experiments`, `sounds`, `apps`, `software`, `books`, `guides`, `resources`, `shows`, `concerts`, and `events`. `creativeContentType` updated to map `VideoGame` and `MobileApplication` to `"game"` and `MusicComposition` to `"music_recording"`. Optional `categories[]` and `availability` fields added to Schema.org-derived items when evidence is present.
 

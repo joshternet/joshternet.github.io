@@ -37,13 +37,6 @@
         {% assign jsonld_itemlist_urls = jsonld_itemlist_urls | push: jsonld_topic_url %}
       {% endfor %}
       {% assign jsonld_has_itemlist = true %}
-    {% elsif page.url == '/welcome/' %}
-      {% assign jsonld_welcome_cards = site.data.welcome_cards.cards | default: empty %}
-      {% for card in jsonld_welcome_cards limit: jsonld_itemlist_cap %}
-        {% capture jsonld_welcome_url %}{{ card.network_path | absolute_url }}{% endcapture %}
-        {% assign jsonld_itemlist_urls = jsonld_itemlist_urls | push: jsonld_welcome_url %}
-      {% endfor %}
-      {% assign jsonld_has_itemlist = true %}
     {% endif %}
   {% endunless %}
 

@@ -23,7 +23,6 @@ import {
   buildViewDocuments,
 } from "./lib.mjs";
 import { materializeActivityPosters } from "./posters.mjs";
-import { materializeWelcomeCards } from "./welcome-cards.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "../..");
 
@@ -113,12 +112,6 @@ export async function buildViewProjections(root = ROOT) {
   }
 
   await materializeActivityPosters(views, root);
-
-  const welcomeCards = await materializeWelcomeCards(
-    Array.isArray(network) ? network : [],
-    root,
-  );
-  await writeStableJSON(path.join(dataDir, "welcome_cards.json"), welcomeCards);
 
   await writeStableJSON(path.join(dataDir, "activity.json"), views.activity);
 

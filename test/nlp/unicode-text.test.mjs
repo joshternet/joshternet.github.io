@@ -7,6 +7,7 @@ import test from "node:test";
 import {
   isRtlLanguage,
   normalizeUnicodeText,
+  truncateLabel,
   unicodeLetterTokens,
 } from "../../scripts/nlp/unicode-text.mjs";
 
@@ -32,4 +33,11 @@ test("isRtlLanguage: Arabic and Hebrew bases", () => {
   assert.equal(isRtlLanguage("en"), false);
   assert.equal(isRtlLanguage(""), false);
   assert.equal(isRtlLanguage(null), false);
+});
+
+test("truncateLabel: empty, short, and grapheme-aware ellipsis", () => {
+  assert.equal(truncateLabel(null, 10), "");
+  assert.equal(truncateLabel("  short  ", 10), "short");
+  assert.equal(truncateLabel("abcdefghijklmnop", 8), "abcdefg…");
+  assert.equal(truncateLabel("日本語テスト", 3), "日本…");
 });
