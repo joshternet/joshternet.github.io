@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T04:16:00.414Z",
-  "document_count": 1052,
+  "generated_at": "2026-11-01T04:18:58.846Z",
+  "document_count": 1038,
   "documents": [
     {
       "type": "site",
@@ -86,15 +86,6 @@
     },
     {
       "type": "topic",
-      "title": "action",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/action/",
-      "topics": ["action", "action"]
-    },
-    {
-      "type": "topic",
       "title": "ai",
       "summary": "7 participating sites",
       "domain": "",
@@ -137,15 +128,6 @@
       "origin": "",
       "url": "/topics/antitrust/",
       "topics": ["antitrust", "antitrust"]
-    },
-    {
-      "type": "topic",
-      "title": "anything",
-      "summary": "4 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/anything/",
-      "topics": ["anything", "anything"]
     },
     {
       "type": "topic",
@@ -509,15 +491,6 @@
     },
     {
       "type": "topic",
-      "title": "developer tools",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/developer-tool/",
-      "topics": ["developer-tool", "developer tools"]
-    },
-    {
-      "type": "topic",
       "title": "devops",
       "summary": "1 participating sites",
       "domain": "",
@@ -689,15 +662,6 @@
     },
     {
       "type": "topic",
-      "title": "files",
-      "summary": "4 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/file/",
-      "topics": ["file", "files"]
-    },
-    {
-      "type": "topic",
       "title": "finance",
       "summary": "3 participating sites",
       "domain": "",
@@ -740,15 +704,6 @@
       "origin": "",
       "url": "/topics/forced-alignment/",
       "topics": ["forced-alignment", "Forced Alignment"]
-    },
-    {
-      "type": "topic",
-      "title": "Friends",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/friend/",
-      "topics": ["friend", "Friends"]
     },
     {
       "type": "topic",
@@ -986,30 +941,12 @@
     },
     {
       "type": "topic",
-      "title": "life",
-      "summary": "4 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/life/",
-      "topics": ["life", "life"]
-    },
-    {
-      "type": "topic",
       "title": "Lifestyle",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/lifestyle/",
       "topics": ["lifestyle", "Lifestyle"]
-    },
-    {
-      "type": "topic",
-      "title": "limits",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/limit/",
-      "topics": ["limit", "limits"]
     },
     {
       "type": "topic",
@@ -1136,15 +1073,6 @@
       "origin": "",
       "url": "/topics/nonprofit/",
       "topics": ["nonprofit", "nonprofit"]
-    },
-    {
-      "type": "topic",
-      "title": "note",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/note/",
-      "topics": ["note", "note"]
     },
     {
       "type": "topic",
@@ -1301,24 +1229,6 @@
     },
     {
       "type": "topic",
-      "title": "plans",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/plan/",
-      "topics": ["plan", "plans"]
-    },
-    {
-      "type": "topic",
-      "title": "play",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/play/",
-      "topics": ["play", "play"]
-    },
-    {
-      "type": "topic",
       "title": "policy",
       "summary": "4 participating sites",
       "domain": "",
@@ -1352,15 +1262,6 @@
       "origin": "",
       "url": "/topics/private-ai/",
       "topics": ["private-ai", "private ai"]
-    },
-    {
-      "type": "topic",
-      "title": "problem",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/problem/",
-      "topics": ["problem", "problem"]
     },
     {
       "type": "topic",
@@ -1424,15 +1325,6 @@
       "origin": "",
       "url": "/topics/python/",
       "topics": ["python", "python"]
-    },
-    {
-      "type": "topic",
-      "title": "questions",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/question/",
-      "topics": ["question", "questions"]
     },
     {
       "type": "topic",
@@ -1670,15 +1562,6 @@
     },
     {
       "type": "topic",
-      "title": "support",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/support/",
-      "topics": ["support", "support"]
-    },
-    {
-      "type": "topic",
       "title": "surveillance",
       "summary": "1 participating sites",
       "domain": "",
@@ -1703,15 +1586,6 @@
       "origin": "",
       "url": "/topics/technology/",
       "topics": ["technology", "technology"]
-    },
-    {
-      "type": "topic",
-      "title": "tools",
-      "summary": "5 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/tool/",
-      "topics": ["tool", "tools"]
     },
     {
       "type": "topic",
@@ -5937,7 +5811,7 @@
       "domain": "joshmuller.ca",
       "origin": "https://joshmuller.ca",
       "url": "https://joshmuller.ca/writings/2023/use-llm-for-subtitles/",
-      "topics": ["AI", "Friends", "Linux", "NLP"],
+      "topics": ["AI", "Linux", "NLP"],
       "site_title": "Josh Müller",
       "published_at": "2023-10-23T02:51:33.000Z",
       "image": "/assets/activity/posters/f9598e8abf88893be571d0a579dbfa379ca364897a38da83bb71b8f5ca3be79a.webp",
@@ -10133,14 +10007,7 @@
       "domain": "joshuamorris.info",
       "origin": "https://joshuamorris.info",
       "url": "https://joshuamorris.info/notes/2026/09/27/safe-not-safe-is-the-kind-of-developer-resource-i-want-more-of/",
-      "topics": [
-        "databases",
-        "developer tools",
-        "postgres",
-        "postgresql",
-        "privacy",
-        "sql"
-      ],
+      "topics": ["databases", "postgres", "postgresql", "privacy", "sql"],
       "site_title": "Joshua Morris",
       "published_at": "2026-09-27T15:30:00.000Z",
       "image": "/assets/activity/posters/1c29386de318603da8b95de89244745d1c7d4985e2e404f9097663f0ee5c283d.webp",
@@ -10178,7 +10045,6 @@
       "url": "https://joshuamorris.info/notes/2026/09/28/sometimes-i-dont-want-an-llm-to-answer-me/",
       "topics": [
         "computer vision",
-        "developer tools",
         "llm",
         "private ai",
         "programming",
@@ -10469,9 +10335,7 @@
       "topics": [
         "community",
         "family",
-        "life",
         "mental health",
-        "support",
         "veterans",
         "world mental health day"
       ],
@@ -10692,8 +10556,7 @@
         "experimental games",
         "game design",
         "interactive art",
-        "javascript",
-        "play"
+        "javascript"
       ],
       "site_title": "Joshua Morris",
       "published_at": "2026-10-23T14:30:00.000Z",
