@@ -58,7 +58,7 @@ test("activity and search pages avoid popularity language", async () => {
   );
   assert.match(css, /\.activity-card__media\s*\{[^}]*flex:\s*0\s+0\s+46%/);
   assert.match(css, /\.activity-card__media\s*\{[^}]*width:\s*46%/);
-  const layout = await read("_layouts/default.html");
+  assert.match(css, /\.activity-subscribe/);
   assert.doesNotMatch(layout, /assets\/js\/activity-card\.js/);
   assert.doesNotMatch(
     css,
