@@ -147,6 +147,8 @@ test("What's New keeps one latest item per origin inside seven days", () => {
 
 test("What's New Atom feed links to original publishers with stable ids", () => {
   assert.equal(escapeAtomText(`a&b<"'>`), "a&amp;b&lt;&quot;&apos;&gt;");
+  assert.equal(escapeAtomText(null), "");
+  assert.equal(escapeAtomText(undefined), "");
 
   const xml = buildActivityAtomXml({
     generated_at: "2026-10-31T12:00:00.000Z",
@@ -163,6 +165,10 @@ test("What's New Atom feed links to original publishers with stable ids", () => 
       {
         url: "ftp://bad.example/skip",
         title: "Skip me",
+      },
+      {
+        url: 42,
+        title: "Non-string url",
       },
       null,
     ],
@@ -185,6 +191,49 @@ test("What's New Atom feed links to original publishers with stable ids", () => 
 
   assert.match(empty, /<feed xmlns="http:\/\/www\.w3\.org\/2005\/Atom">/);
   assert.doesNotMatch(empty, /<entry>/);
+
+  const missingPrimary = buildActivityAtomXml(null);
+
+  assert.match(missingPrimary, /<updated>1970-01-01T00:00:00\.000Z<\/updated>/);
+  assert.doesNotMatch(missingPrimary, /<entry>/);
+
+  const nonArrayPrimary = buildActivityAtomXml({ primary: "nope" });
+
+  assert.doesNotMatch(nonArrayPrimary, /<entry>/);
+
+  const fallbacks = buildActivityAtomXml(
+    {
+      primary: [
+        {
+          url: "https://b.example/bare/",
+          domain: "b.example",
+        },
+        {
+          url: "https://c.example/untitled/",
+          title: "   ",
+          summary: "   ",
+          site_title: "   ",
+          site_origin: "http://insecure.example",
+        },
+        {
+          url: "   ",
+          title: "Missing url",
+        },
+      ],
+    },
+    { hubOrigin: "https://example.test", feedPath: "/feed.xml" },
+  );
+
+  assert.match(fallbacks, /<name>b\.example<\/name>/);
+  assert.match(fallbacks, /<name>Independent website<\/name>/);
+  assert.match(fallbacks, /<title>https:\/\/c\.example\/untitled\/<\/title>/);
+  assert.doesNotMatch(fallbacks, /<summary>/);
+  assert.doesNotMatch(fallbacks, /<uri>/);
+  assert.match(
+    fallbacks,
+    /<link rel="self" type="application\/atom\+xml" href="https:\/\/example\.test\/feed\.xml"\/>/,
+  );
+  assert.equal((fallbacks.match(/<entry>/g) || []).length, 2);
 });
 
 test("isJoshternetHubContentUrl recognizes hub hosts only", () => {

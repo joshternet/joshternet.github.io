@@ -26,6 +26,7 @@
 
 ### Fixed
 
+- What's New Atom builder tests cover author-name and malformed-item fallbacks so library coverage stays at 100%.
 - Connections `connections-select` fires only on deliberate graph/list selections, not `?site=` deep-link initialization.
 - Join guide `join-start` Umami event fires once per session on the first intentional onboarding action (copy, platform, checker, or nominate)—not on `/join/` page load.
 
