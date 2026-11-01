@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T08:37:50.099Z",
-  "community_count": 226,
+  "generated_at": "2026-11-01T10:03:50.284Z",
+  "community_count": 227,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
@@ -1437,6 +1437,68 @@
       ]
     },
     {
+      "slug": "case-study",
+      "label": "case studies",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshuakim.studio",
+          "domain": "joshuakim.studio",
+          "title": "Joshua Kim",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshuakim.studio/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuakim.studio/work",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshuabaker.com",
+          "domain": "www.joshuabaker.com",
+          "title": "Joshua Baker",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuabaker.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/banked-pay-by-bank/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/not-optional/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/the-dots/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": ["visible-text"],
+      "first_seen_at": "2026-11-01T10:03:50.284Z",
+      "last_changed_at": "2026-11-01T10:03:50.284Z",
+      "active": true
+    },
+    {
       "slug": "charity-nonprofit",
       "label": "charity & nonprofit",
       "member_count": 1,
@@ -2171,8 +2233,26 @@
     {
       "slug": "creative-coding",
       "label": "creative coding",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshuakim.studio",
+          "domain": "joshuakim.studio",
+          "title": "Joshua Kim",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshuakim.studio/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuakim.studio/work",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -2197,9 +2277,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": ["microformat:p-category", "topic-hub:link", "visible-text"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
-      "last_changed_at": "2026-10-28T21:05:12.557Z",
+      "last_changed_at": "2026-11-01T10:03:50.284Z",
       "active": true
     },
     {
@@ -2348,7 +2428,16 @@
       ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-10-30T14:08:13.355Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshuakim.studio",
+          "domain": "joshuakim.studio",
+          "title": "Joshua Kim",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "cyber-deck",
@@ -2669,7 +2758,16 @@
       ],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
       "last_changed_at": "2026-10-31T18:27:28.821Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshuakim.studio",
+          "domain": "joshuakim.studio",
+          "title": "Joshua Kim",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "design-system",
@@ -3457,6 +3555,13 @@
       "active": true,
       "related_discoveries": [
         {
+          "origin": "https://joshuakim.studio",
+          "domain": "joshuakim.studio",
+          "title": "Joshua Kim",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
           "origin": "https://www.joshcanhelp.com",
           "domain": "www.joshcanhelp.com",
           "title": "Josh Cunningham",
@@ -4017,6 +4122,13 @@
           "origin": "https://joshua.seigler.net",
           "domain": "joshua.seigler.net",
           "title": "Joshua Seigler",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://joshuakim.studio",
+          "domain": "joshuakim.studio",
+          "title": "Joshua Kim",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
@@ -8153,7 +8265,16 @@
       "sources": ["catalog-match", "topic-hub:link"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
       "last_changed_at": "2026-10-28T21:05:12.557Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshuakim.studio",
+          "domain": "joshuakim.studio",
+          "title": "Joshua Kim",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "resilience",
