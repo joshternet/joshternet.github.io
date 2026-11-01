@@ -19,7 +19,7 @@
     "screenshot": "/assets/network/sites/32329a5a589fff27123fbf19a511be9f20729cfa9252f0f4b76d107bd396a059.webp",
     "embeddable": true,
     "frame_reason": "allowed",
-    "captured_at": "2026-10-31T21:33:56.646Z",
+    "captured_at": "2026-11-01T23:36:16.991Z",
     "elsewhere": [
       {
         "url": "https://github.com/joshbeard",
@@ -327,6 +327,28 @@
     ]
   },
   {
+    "origin": "https://joshuadrake.org",
+    "domain": "joshuadrake.org",
+    "identity": "affirmed",
+    "declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "initial_declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "first_participated_at": "2026-11-01T20:14:11.484485Z",
+    "latest_declaration_check_at": "2026-11-01T20:14:11.484485Z",
+    "latest_declaration_check_outcome": "valid",
+    "title": "Joshua Drake",
+    "description": "Joshua Drake's Website",
+    "screenshot": "/assets/network/sites/bc7c017ece5fa409b28d0a4baef2b9ab2a8e767ad05d8daaeec1cb3b377f624b.webp",
+    "embeddable": true,
+    "frame_reason": "allowed",
+    "captured_at": "2026-11-01T23:37:04.427Z"
+  },
+  {
     "origin": "https://joshuakim.studio",
     "domain": "joshuakim.studio",
     "identity": "affirmed",
@@ -427,6 +449,91 @@
     ]
   },
   {
+    "origin": "https://joshuapsteele.com",
+    "domain": "joshuapsteele.com",
+    "identity": "affirmed",
+    "declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "initial_declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "first_participated_at": "2026-11-01T19:50:42.787205Z",
+    "latest_declaration_check_at": "2026-11-01T19:50:42.787205Z",
+    "latest_declaration_check_outcome": "valid",
+    "title": "Joshua P. Steele",
+    "description": "Joshua P. Steele's home on the web",
+    "screenshot": "/assets/network/sites/26131d762eec35bfd4b0000a836a7f737812ed2f80f2cbe27dbb1ca920989942.webp",
+    "embeddable": true,
+    "frame_reason": "allowed",
+    "captured_at": "2026-11-01T23:37:22.594Z",
+    "feeds": [
+      {
+        "url": "https://joshuapsteele.com/feed.xml",
+        "type": "application/rss+xml"
+      }
+    ],
+    "elsewhere": [
+      {
+        "url": "https://mastodon.social/@joshuapsteele",
+        "network": "mastodon",
+        "label": "Mastodon"
+      },
+      {
+        "url": "https://www.threads.com/@joshuapsteele",
+        "network": "web",
+        "label": "www.threads.com"
+      },
+      {
+        "url": "https://bsky.app/profile/joshuapsteele.com",
+        "network": "bluesky",
+        "label": "Bluesky"
+      },
+      {
+        "url": "https://github.com/joshuapsteele/",
+        "network": "github",
+        "label": "GitHub"
+      },
+      {
+        "url": "https://www.linkedin.com/in/joshuapsteele/",
+        "network": "linkedin",
+        "label": "LinkedIn"
+      },
+      {
+        "url": "https://social.joshuapsteele.com/",
+        "network": "web",
+        "label": "social.joshuapsteele.com"
+      },
+      {
+        "url": "https://buttondown.com/joshuapsteele/",
+        "network": "web",
+        "label": "buttondown.com"
+      },
+      {
+        "url": "https://joshuapsteele.com/blog/feed.xml",
+        "network": "web",
+        "label": "joshuapsteele.com"
+      },
+      {
+        "url": "https://reddit.com/submit?url=https%3a%2f%2fjoshuapsteele.com%2fabout%2f&title=About",
+        "network": "reddit",
+        "label": "Reddit"
+      },
+      {
+        "url": "https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fjoshuapsteele.com%2fabout%2f",
+        "network": "facebook",
+        "label": "Facebook"
+      },
+      {
+        "url": "https://telegram.me/share/url?text=About&url=https%3a%2f%2fjoshuapsteele.com%2fabout%2f",
+        "network": "telegram",
+        "label": "Telegram"
+      }
+    ]
+  },
+  {
     "origin": "https://www.joshcanhelp.com",
     "domain": "www.joshcanhelp.com",
     "identity": "affirmed",
@@ -495,7 +602,7 @@
       "josh": true
     },
     "first_participated_at": "2026-09-26T02:04:46.048455Z",
-    "latest_declaration_check_at": "2026-11-01T06:37:25.897684Z",
+    "latest_declaration_check_at": "2026-11-01T19:50:52.891375Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Joshua Baker",
     "description": "London-based software engineer, designer, and founder who has spent 20+ years working with founders and chief executives on products that move revenue, valuations, fundraising, even the law.",

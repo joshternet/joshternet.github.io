@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T19:47:39.825Z",
+  "generated_at": "2026-11-01T23:44:00.798Z",
   "sites": [
     {
       "origin": "https://joshbeard.com",
@@ -18,8 +18,16 @@
       ],
       "community_topics": [
         {
+          "slug": "isolation",
+          "label": "isolation"
+        },
+        {
           "slug": "photos",
           "label": "photos"
+        },
+        {
+          "slug": "wilderness",
+          "label": "wilderness"
         }
       ],
       "recent_content": {
@@ -27,7 +35,7 @@
         "title": "Photos",
         "summary": "Photo albums from Colorado, travel, cycling, and everyday life.",
         "published_at": "",
-        "observed_at": "2026-11-01T19:41:55.313Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -488,7 +496,7 @@
           "https://joshbeard.com/me": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T19:41:55.313Z"
+      "crawled_at": "2026-11-01T23:37:56.256Z"
     },
     {
       "origin": "https://joshghent.com",
@@ -533,6 +541,10 @@
           "label": "art"
         },
         {
+          "slug": "ask",
+          "label": "ask"
+        },
+        {
           "slug": "auth0",
           "label": "auth0"
         },
@@ -551,6 +563,10 @@
         {
           "slug": "business",
           "label": "business"
+        },
+        {
+          "slug": "claude",
+          "label": "claude"
         },
         {
           "slug": "cloudflare",
@@ -673,6 +689,10 @@
           "label": "php"
         },
         {
+          "slug": "principle",
+          "label": "principles"
+        },
+        {
           "slug": "privacy",
           "label": "privacy"
         },
@@ -725,6 +745,10 @@
           "label": "testing"
         },
         {
+          "slug": "tips",
+          "label": "tips"
+        },
+        {
           "slug": "typescript",
           "label": "typescript"
         },
@@ -742,7 +766,7 @@
         "title": "11ty or Bust",
         "summary": "The story of how I migrated my site from Gatsby to 11ty",
         "published_at": "2024-01-03T00:00:00.000Z",
-        "observed_at": "2026-11-01T19:41:55.313Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -751,8 +775,8 @@
         "domain": "joshghent.com",
         "tags": [],
         "neighborhoods": [],
-        "image": "https://v1.screenshot.11ty.dev/https%3A%2F%2Fjoshghent.com%2Fsocial%2F11ty-or-bust%2F/opengraph/_1793269302151",
-        "image_origin": "https://v1.screenshot.11ty.dev",
+        "image": "/assets/activity/posters/124c2b0c700d8e47eccdf64f4f102917e27e4062020fad9f11662acb1a49607f.webp",
+        "image_origin": "",
         "source_kind": "atom",
         "page_role": "article"
       },
@@ -1094,7 +1118,7 @@
           "https://joshghent.com/blog": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T19:41:55.313Z"
+      "crawled_at": "2026-11-01T23:37:56.256Z"
     },
     {
       "origin": "https://joshgr.com",
@@ -1132,7 +1156,7 @@
         "title": "Projects — Josh Grant",
         "summary": "Exploring systems",
         "published_at": "",
-        "observed_at": "2026-11-01T19:41:55.313Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -1318,7 +1342,7 @@
           "https://joshgr.com/wizardly-words/": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T19:41:55.313Z"
+      "crawled_at": "2026-11-01T23:37:56.256Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -1413,6 +1437,10 @@
           "label": "audio"
         },
         {
+          "slug": "bible",
+          "label": "Bible"
+        },
+        {
           "slug": "book",
           "label": "books"
         },
@@ -1425,16 +1453,44 @@
           "label": "browsers"
         },
         {
+          "slug": "care",
+          "label": "cares"
+        },
+        {
           "slug": "case-study",
           "label": "case study"
+        },
+        {
+          "slug": "chatgpt",
+          "label": "chatgpt"
+        },
+        {
+          "slug": "church",
+          "label": "Church"
+        },
+        {
+          "slug": "claude",
+          "label": "claude"
         },
         {
           "slug": "communication",
           "label": "communication"
         },
         {
+          "slug": "computer",
+          "label": "computer"
+        },
+        {
           "slug": "create",
           "label": "create"
+        },
+        {
+          "slug": "creation",
+          "label": "creation"
+        },
+        {
+          "slug": "daily",
+          "label": "daily"
         },
         {
           "slug": "design",
@@ -1489,6 +1545,10 @@
           "label": "forced alignment"
         },
         {
+          "slug": "freedom",
+          "label": "freedom"
+        },
+        {
           "slug": "go",
           "label": "Go"
         },
@@ -1517,12 +1577,28 @@
           "label": "history"
         },
         {
+          "slug": "hope",
+          "label": "hope"
+        },
+        {
           "slug": "hosting",
           "label": "hosting"
         },
         {
+          "slug": "human",
+          "label": "human"
+        },
+        {
           "slug": "internet",
           "label": "internet"
+        },
+        {
+          "slug": "jesus",
+          "label": "jesus"
+        },
+        {
+          "slug": "john",
+          "label": "john"
         },
         {
           "slug": "language",
@@ -1537,12 +1613,20 @@
           "label": "law"
         },
         {
+          "slug": "leadership",
+          "label": "leadership"
+        },
+        {
           "slug": "learn",
           "label": "learn"
         },
         {
           "slug": "learning",
           "label": "learning"
+        },
+        {
+          "slug": "let",
+          "label": "let"
         },
         {
           "slug": "lifestyle",
@@ -1553,8 +1637,16 @@
           "label": "linux"
         },
         {
+          "slug": "live",
+          "label": "live"
+        },
+        {
           "slug": "llm",
           "label": "llm"
+        },
+        {
+          "slug": "love",
+          "label": "love"
         },
         {
           "slug": "mental-health",
@@ -1629,8 +1721,16 @@
           "label": "productivity"
         },
         {
+          "slug": "purpose",
+          "label": "purpose"
+        },
+        {
           "slug": "quote",
-          "label": "quotes"
+          "label": "quote"
+        },
+        {
+          "slug": "race",
+          "label": "race"
         },
         {
           "slug": "recetas",
@@ -1639,6 +1739,14 @@
         {
           "slug": "recipe",
           "label": "recipe"
+        },
+        {
+          "slug": "recommendation",
+          "label": "recommendations"
+        },
+        {
+          "slug": "relationship",
+          "label": "relationships"
         },
         {
           "slug": "rhythm",
@@ -1651,6 +1759,10 @@
         {
           "slug": "simplicity",
           "label": "simplicity"
+        },
+        {
+          "slug": "social",
+          "label": "social"
         },
         {
           "slug": "social-media",
@@ -1669,6 +1781,10 @@
           "label": "someone"
         },
         {
+          "slug": "song",
+          "label": "song"
+        },
+        {
           "slug": "source",
           "label": "source"
         },
@@ -1679,6 +1795,10 @@
         {
           "slug": "technology",
           "label": "technology"
+        },
+        {
+          "slug": "tips",
+          "label": "tips"
         },
         {
           "slug": "tutorial",
@@ -1718,7 +1838,7 @@
         "title": "📸: <a href=\"/\">Josh Müller</a>",
         "summary": "📸: Josh Müller",
         "published_at": "",
-        "observed_at": "2026-11-01T19:41:55.313Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -1744,8 +1864,8 @@
         }
       ],
       "coverage": {
-        "pages_discovered": 283,
-        "pages_fetched": 283,
+        "pages_discovered": 284,
+        "pages_fetched": 284,
         "fetch_limit": null,
         "limit_reached": false,
         "selection_strategy": "uncapped-site-crawl-v1",
@@ -2118,7 +2238,7 @@
           "https://joshmuller.ca/contact@joshmuller.ca.asc": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T19:41:55.313Z"
+      "crawled_at": "2026-11-01T23:37:56.256Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -2140,6 +2260,10 @@
           "label": "data"
         },
         {
+          "slug": "draft",
+          "label": "drafts"
+        },
+        {
           "slug": "field-recording",
           "label": "field recording"
         },
@@ -2157,7 +2281,7 @@
         "title": "What's New",
         "summary": "",
         "published_at": "",
-        "observed_at": "2026-11-01T19:41:55.313Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -2637,7 +2761,7 @@
           "https://joshternet.org/cdn-cgi/l/email-protection": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T19:41:55.313Z"
+      "crawled_at": "2026-11-01T23:37:56.256Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -2690,6 +2814,10 @@
           "label": "career"
         },
         {
+          "slug": "college",
+          "label": "college"
+        },
+        {
           "slug": "command-line-interface",
           "label": "command line interface"
         },
@@ -2712,10 +2840,6 @@
         {
           "slug": "email",
           "label": "email"
-        },
-        {
-          "slug": "engineering",
-          "label": "engineering"
         },
         {
           "slug": "entrepreneurship",
@@ -2847,11 +2971,11 @@
         }
       ],
       "recent_content": {
-        "url": "https://joshtronic.com/2026/08/09/reverse-engineering-posthog-superday/",
-        "title": "Reverse Engineering a PostHog SuperDay",
-        "summary": "I'm not here to bullshit anybody, I have never been through a PostHog SuperDay. Like many humans, I've read about it on their website, as they are a company that over-communicates just about everything. This tale started when I got curious about their onboarding wizard . Their pivot from analytics to self-driving systems mirrors what I've been working on for the last couple of years, which has acc",
-        "published_at": "2026-08-09T00:00:00.000Z",
-        "observed_at": "2026-11-01T19:41:55.313Z",
+        "url": "https://joshtronic.com/2026/08/16/taught-robot-detect-joshes/",
+        "title": "I taught a robot to detect Joshes",
+        "summary": "This journey starts like most of the things I've been doing this year, as an experiment to run a website 100% unattended with an agent. Ideally this post won't go down as an epitaph in a future where robots hunted down unsuspecting humans named Josh. I'm aware of \"claws\" and I know I could probably just boot up Claude Code with a /goal or /loop prompt like: build and maintain an awesome website, a",
+        "published_at": "2026-08-16T00:00:00.000Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -2886,13 +3010,14 @@
         }
       ],
       "coverage": {
-        "pages_discovered": 1185,
-        "pages_fetched": 1185,
+        "pages_discovered": 1186,
+        "pages_fetched": 1186,
         "fetch_limit": null,
         "limit_reached": false,
         "selection_strategy": "uncapped-site-crawl-v1",
         "selection_reasons": {
           "https://joshtronic.com/": "home",
+          "https://joshtronic.com/2026/11/01/open-to-work/": "feed",
           "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/": "feed",
           "https://joshtronic.com/2026/10/18/halloween-movies-watch-list-2026/": "feed",
           "https://joshtronic.com/2026/10/11/pros-cons-self-hosted-git/": "feed",
@@ -2904,7 +3029,6 @@
           "https://joshtronic.com/2026/08/30/security-caveat-locked-out-server-travel/": "feed",
           "https://joshtronic.com/2026/08/23/last-saturday/": "feed",
           "https://joshtronic.com/2026/08/16/taught-robot-detect-joshes/": "feed",
-          "https://joshtronic.com/2026/08/09/reverse-engineering-posthog-superday/": "feed",
           "https://joshtronic.com/about/": "blind-probe",
           "https://joshtronic.com/about-me/": "blind-probe",
           "https://joshtronic.com/aboutme/": "blind-probe",
@@ -4103,8 +4227,9 @@
           "https://joshtronic.com/2026/07/19/invite-systems-are-an-open-relay/": "sitemap",
           "https://joshtronic.com/2026/07/26/new-feature-games/": "sitemap",
           "https://joshtronic.com/2026/08/02/observations-building-pr-review-loop/": "sitemap",
+          "https://joshtronic.com/2026/08/09/reverse-engineering-posthog-superday/": "sitemap",
           "https://joshtronic.com/404.html": "sitemap",
-          "https://joshtronic.com/category/software-development/": "sitemap",
+          "https://joshtronic.com/category/personal/": "sitemap",
           "https://joshtronic.com/css/cursor/": "sitemap",
           "https://joshtronic.com/games/age-of-combat/": "sitemap",
           "https://joshtronic.com/games/flip-flop-frenzy/": "sitemap",
@@ -4134,7 +4259,7 @@
           "https://joshtronic.com/key.asc": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T19:41:55.313Z"
+      "crawled_at": "2026-11-01T23:37:56.256Z"
     },
     {
       "origin": "https://joshua.seigler.net",
@@ -4201,6 +4326,10 @@
           "label": "ffmpeg"
         },
         {
+          "slug": "generator",
+          "label": "generator"
+        },
+        {
           "slug": "github",
           "label": "github"
         },
@@ -4258,7 +4387,7 @@
         "title": "/books",
         "summary": "I’m Joshua Seigler, a software engineer since 2010 and a living being since the 1980s. I’ve watched technology advance from dial-up and Geocities pages, to federated social media and decentralized autonomous organizations, to people literally talking to computers (a lot!).",
         "published_at": "",
-        "observed_at": "2026-11-01T19:41:55.313Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -4507,7 +4636,273 @@
           "https://joshua.seigler.net/music/%C3%8Engerul%20a%20Strigat%20-%20Varlaam%20-%20glasul%203.pdf": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T19:41:55.313Z"
+      "crawled_at": "2026-11-01T23:37:56.256Z"
+    },
+    {
+      "origin": "https://joshuadrake.org",
+      "domain": "joshuadrake.org",
+      "title": "Joshua Drake",
+      "description": "Joshua Drake's Website",
+      "identity": "affirmed",
+      "feeds": [],
+      "elsewhere": [],
+      "community_topics": [
+        {
+          "slug": "banking",
+          "label": "banking"
+        },
+        {
+          "slug": "computer",
+          "label": "computer"
+        },
+        {
+          "slug": "computer-vision",
+          "label": "computer vision"
+        },
+        {
+          "slug": "generator",
+          "label": "generator"
+        }
+      ],
+      "recent_content": {
+        "url": "https://joshuadrake.org/projects.html",
+        "title": "Projects:",
+        "summary": "",
+        "published_at": "",
+        "observed_at": "2026-11-01T23:37:56.256Z",
+        "content_type": "project",
+        "language": "en",
+        "dir": "",
+        "site_origin": "https://joshuadrake.org",
+        "site_title": "Joshua Drake",
+        "domain": "joshuadrake.org",
+        "tags": [],
+        "neighborhoods": [],
+        "image": "",
+        "image_origin": "",
+        "source_kind": "creative-homepage",
+        "page_role": "project"
+      },
+      "outgoing": [],
+      "incoming": [],
+      "coverage": {
+        "pages_discovered": 76,
+        "pages_fetched": 76,
+        "fetch_limit": null,
+        "limit_reached": false,
+        "selection_strategy": "uncapped-site-crawl-v1",
+        "selection_reasons": {
+          "https://joshuadrake.org/": "home",
+          "https://joshuadrake.org/about/": "blind-probe",
+          "https://joshuadrake.org/about-me/": "blind-probe",
+          "https://joshuadrake.org/aboutme/": "blind-probe",
+          "https://joshuadrake.org/bio/": "blind-probe",
+          "https://joshuadrake.org/me/": "blind-probe",
+          "https://joshuadrake.org/profile/": "blind-probe",
+          "https://joshuadrake.org/ai/": "blind-probe",
+          "https://joshuadrake.org/blogroll/": "blind-probe",
+          "https://joshuadrake.org/calendar/": "blind-probe",
+          "https://joshuadrake.org/canon/": "blind-probe",
+          "https://joshuadrake.org/carry/": "blind-probe",
+          "https://joshuadrake.org/caw/": "blind-probe",
+          "https://joshuadrake.org/celebrities/": "blind-probe",
+          "https://joshuadrake.org/changelog/": "blind-probe",
+          "https://joshuadrake.org/log/": "blind-probe",
+          "https://joshuadrake.org/chipotle/": "blind-probe",
+          "https://joshuadrake.org/colophon/": "blind-probe",
+          "https://joshuadrake.org/community/": "blind-probe",
+          "https://joshuadrake.org/concerts/": "blind-probe",
+          "https://joshuadrake.org/contact/": "blind-probe",
+          "https://joshuadrake.org/daylists/": "blind-probe",
+          "https://joshuadrake.org/death/": "blind-probe",
+          "https://joshuadrake.org/defaults/": "blind-probe",
+          "https://joshuadrake.org/disability/": "blind-probe",
+          "https://joshuadrake.org/elsewhere/": "blind-probe",
+          "https://joshuadrake.org/appearances/": "blind-probe",
+          "https://joshuadrake.org/follow/": "blind-probe",
+          "https://joshuadrake.org/subscribe/": "blind-probe",
+          "https://joshuadrake.org/feeds/": "blind-probe",
+          "https://joshuadrake.org/for/": "blind-probe",
+          "https://joshuadrake.org/dedication/": "blind-probe",
+          "https://joshuadrake.org/glossary/": "blind-probe",
+          "https://joshuadrake.org/lexicon/": "blind-probe",
+          "https://joshuadrake.org/phrased/": "blind-probe",
+          "https://joshuadrake.org/green/": "blind-probe",
+          "https://joshuadrake.org/hats/": "blind-probe",
+          "https://joshuadrake.org/hello/": "blind-probe",
+          "https://joshuadrake.org/hills/": "blind-probe",
+          "https://joshuadrake.org/hill/": "blind-probe",
+          "https://joshuadrake.org/ideas/": "blind-probe",
+          "https://joshuadrake.org/interests/": "blind-probe",
+          "https://joshuadrake.org/junk/": "blind-probe",
+          "https://joshuadrake.org/sale/": "blind-probe",
+          "https://joshuadrake.org/buy/": "blind-probe",
+          "https://joshuadrake.org/languages/": "blind-probe",
+          "https://joshuadrake.org/links/": "blind-probe",
+          "https://joshuadrake.org/bookmarks/": "blind-probe",
+          "https://joshuadrake.org/next/": "blind-probe",
+          "https://joshuadrake.org/nope/": "blind-probe",
+          "https://joshuadrake.org/now/": "blind-probe",
+          "https://joshuadrake.org/pfp/": "blind-probe",
+          "https://joshuadrake.org/photo/": "blind-probe",
+          "https://joshuadrake.org/pic/": "blind-probe",
+          "https://joshuadrake.org/podroll/": "blind-probe",
+          "https://joshuadrake.org/posse/": "blind-probe",
+          "https://joshuadrake.org/postroll/": "blind-probe",
+          "https://joshuadrake.org/predictions/": "blind-probe",
+          "https://joshuadrake.org/pricing/": "blind-probe",
+          "https://joshuadrake.org/questions/": "blind-probe",
+          "https://joshuadrake.org/saudade/": "blind-probe",
+          "https://joshuadrake.org/save/": "blind-probe",
+          "https://joshuadrake.org/referrals/": "blind-probe",
+          "https://joshuadrake.org/self-hosting/": "blind-probe",
+          "https://joshuadrake.org/self-hosted/": "blind-probe",
+          "https://joshuadrake.org/hosted/": "blind-probe",
+          "https://joshuadrake.org/homelab/": "blind-probe",
+          "https://joshuadrake.org/shoebox/": "blind-probe",
+          "https://joshuadrake.org/since/": "blind-probe",
+          "https://joshuadrake.org/sitemap/": "blind-probe",
+          "https://joshuadrake.org/slashes/": "blind-probe",
+          "https://joshuadrake.org/someday/": "blind-probe",
+          "https://joshuadrake.org/style/": "blind-probe",
+          "https://joshuadrake.org/til/": "blind-probe",
+          "https://joshuadrake.org/ways/": "blind-probe",
+          "https://joshuadrake.org/tip/": "blind-probe",
+          "https://joshuadrake.org/pay/": "blind-probe",
+          "https://joshuadrake.org/coffee/": "blind-probe",
+          "https://joshuadrake.org/top4/": "blind-probe",
+          "https://joshuadrake.org/topfour/": "blind-probe",
+          "https://joshuadrake.org/uses/": "blind-probe",
+          "https://joshuadrake.org/verify/": "blind-probe",
+          "https://joshuadrake.org/where/": "blind-probe",
+          "https://joshuadrake.org/why/": "blind-probe",
+          "https://joshuadrake.org/wish/": "blind-probe",
+          "https://joshuadrake.org/yep/": "blind-probe",
+          "https://joshuadrake.org/more/": "blind-probe",
+          "https://joshuadrake.org/site/": "blind-probe",
+          "https://joshuadrake.org/social/": "blind-probe",
+          "https://joshuadrake.org/people/": "blind-probe",
+          "https://joshuadrake.org/friends/": "blind-probe",
+          "https://joshuadrake.org/following/": "blind-probe",
+          "https://joshuadrake.org/webring/": "blind-probe",
+          "https://joshuadrake.org/webrings/": "blind-probe",
+          "https://joshuadrake.org/indieweb/": "blind-probe",
+          "https://joshuadrake.org/neighborhood/": "blind-probe",
+          "https://joshuadrake.org/guestbook/": "blind-probe",
+          "https://joshuadrake.org/meta/": "blind-probe",
+          "https://joshuadrake.org/health/": "blind-probe",
+          "https://joshuadrake.org/notes/": "blind-probe",
+          "https://joshuadrake.org/blog/": "blind-probe",
+          "https://joshuadrake.org/weblog/": "blind-probe",
+          "https://joshuadrake.org/writings/": "blind-probe",
+          "https://joshuadrake.org/posts/": "blind-probe",
+          "https://joshuadrake.org/post/": "blind-probe",
+          "https://joshuadrake.org/writing/": "blind-probe",
+          "https://joshuadrake.org/articles/": "blind-probe",
+          "https://joshuadrake.org/article/": "blind-probe",
+          "https://joshuadrake.org/essays/": "blind-probe",
+          "https://joshuadrake.org/journal/": "blind-probe",
+          "https://joshuadrake.org/weeknotes/": "blind-probe",
+          "https://joshuadrake.org/archive/": "blind-probe",
+          "https://joshuadrake.org/work/": "blind-probe",
+          "https://joshuadrake.org/projects/": "blind-probe",
+          "https://joshuadrake.org/portfolio/": "blind-probe",
+          "https://joshuadrake.org/gallery/": "blind-probe",
+          "https://joshuadrake.org/galleries/": "blind-probe",
+          "https://joshuadrake.org/albums/": "blind-probe",
+          "https://joshuadrake.org/photography/": "blind-probe",
+          "https://joshuadrake.org/photos/": "blind-probe",
+          "https://joshuadrake.org/art/": "blind-probe",
+          "https://joshuadrake.org/illustration/": "blind-probe",
+          "https://joshuadrake.org/artwork/": "blind-probe",
+          "https://joshuadrake.org/music/": "blind-probe",
+          "https://joshuadrake.org/discography/": "blind-probe",
+          "https://joshuadrake.org/tracks/": "blind-probe",
+          "https://joshuadrake.org/videos/": "blind-probe",
+          "https://joshuadrake.org/film/": "blind-probe",
+          "https://joshuadrake.org/animation/": "blind-probe",
+          "https://joshuadrake.org/games/": "blind-probe",
+          "https://joshuadrake.org/game/": "blind-probe",
+          "https://joshuadrake.org/interactive/": "blind-probe",
+          "https://joshuadrake.org/exhibitions/": "blind-probe",
+          "https://joshuadrake.org/design/": "blind-probe",
+          "https://joshuadrake.org/apps/": "blind-probe",
+          "https://joshuadrake.org/software/": "blind-probe",
+          "https://joshuadrake.org/tools/": "blind-probe",
+          "https://joshuadrake.org/books/": "blind-probe",
+          "https://joshuadrake.org/guides/": "blind-probe",
+          "https://joshuadrake.org/resources/": "blind-probe",
+          "https://joshuadrake.org/experiments/": "blind-probe",
+          "https://joshuadrake.org/sounds/": "blind-probe",
+          "https://joshuadrake.org/hustles/": "blind-probe",
+          "https://joshuadrake.org/events/": "blind-probe",
+          "https://joshuadrake.org/shows/": "blind-probe",
+          "https://joshuadrake.org/gigs/": "blind-probe",
+          "https://joshuadrake.org/tour/": "blind-probe",
+          "https://joshuadrake.org/live/": "blind-probe",
+          "https://joshuadrake.org/performances/": "blind-probe",
+          "https://joshuadrake.org/readings/": "blind-probe",
+          "https://joshuadrake.org/workshops/": "blind-probe",
+          "https://joshuadrake.org/topics/": "topic-hub",
+          "https://joshuadrake.org/topic/": "topic-hub",
+          "https://joshuadrake.org/tags/": "topic-hub",
+          "https://joshuadrake.org/tag/": "topic-hub",
+          "https://joshuadrake.org/categories/": "topic-hub",
+          "https://joshuadrake.org/category/": "topic-hub",
+          "https://joshuadrake.org/blank/": "content-index",
+          "https://joshuadrake.org/studio-index/": "content-index",
+          "https://joshuadrake.org/projects.html": "content-index",
+          "https://joshuadrake.org/blog": "content-index",
+          "https://joshuadrake.org/index.html": "content-index",
+          "https://joshuadrake.org/articles/author/theodore-kaczynski": "content-index",
+          "https://joshuadrake.org/articles/author/st.-athanasius": "content-index",
+          "https://joshuadrake.org/articles/author/soren-kierkegaard": "content-index",
+          "https://joshuadrake.org/articles/author/leo-tolstoy": "content-index",
+          "https://joshuadrake.org/articles/author/joshua-drake": "content-index",
+          "https://joshuadrake.org/articles/author/gottfried-wilhelm-leibniz": "content-index",
+          "https://joshuadrake.org/articles/author/fyodor-dostoevsky": "content-index",
+          "https://joshuadrake.org/articles/author/eugene-rose": "content-index",
+          "https://joshuadrake.org/articles/author/clive-staples-lewis": "content-index",
+          "https://joshuadrake.org/articles/tags/technology": "content-index",
+          "https://joshuadrake.org/articles/tags/skills": "content-index",
+          "https://joshuadrake.org/articles/tags/religion": "content-index",
+          "https://joshuadrake.org/articles/tags/philosophy": "content-index",
+          "https://joshuadrake.org/articles/tags/personal": "content-index",
+          "https://joshuadrake.org/articles/incarnationoftheword/": "content-index",
+          "https://joshuadrake.org/articles/discourse-on-metaphysics-and-other-essays/": "content-index",
+          "https://joshuadrake.org/articles/alwaysinthewrong/": "content-index",
+          "https://joshuadrake.org/articles/thepresentage/": "content-index",
+          "https://joshuadrake.org/articles/ridiculousman/": "content-index",
+          "https://joshuadrake.org/articles/grandinquisitor/": "content-index",
+          "https://joshuadrake.org/articles/lastmessage/": "content-index",
+          "https://joshuadrake.org/articles/the-weight-of-glory/": "content-index",
+          "https://joshuadrake.org/articles/slavesofthewelfarestate/": "content-index",
+          "https://joshuadrake.org/articles/nihilism/": "content-index",
+          "https://joshuadrake.org/articles/industrialsocietyanditsfuture/": "content-index",
+          "https://joshuadrake.org/articles/archfornormies/": "content-index",
+          "https://joshuadrake.org/articles/soldering/": "content-index",
+          "https://joshuadrake.org/articles": "content-index",
+          "https://joshuadrake.org/server": "content-index",
+          "https://joshuadrake.org/turboelectric": "content-index",
+          "https://joshuadrake.org/JDMCMC": "content-index",
+          "https://joshuadrake.org/eDrill": "content-index",
+          "https://joshuadrake.org/eUtil": "content-index",
+          "https://joshuadrake.org/eTrencher": "content-index",
+          "https://joshuadrake.org/loc8": "content-index",
+          "https://joshuadrake.org/8bip": "content-index",
+          "https://joshuadrake.org/turboelectriccessna": "content-index",
+          "https://joshuadrake.org/projects/resloadbank/": "content-index",
+          "https://joshuadrake.org/projects/cessnaretrofit/": "content-index",
+          "https://joshuadrake.org/projects/ingersollrandcompressor/": "content-index",
+          "https://joshuadrake.org/projects/n12rebuild/": "content-index"
+        }
+      },
+      "crawled_at": "2026-11-01T23:37:56.256Z",
+      "portfolio": {
+        "url": "https://joshuadrake.org/projects/",
+        "work_count": 26,
+        "sectors": []
+      }
     },
     {
       "origin": "https://joshuakim.studio",
@@ -4538,7 +4933,7 @@
         "title": "Work, Joshua Kim",
         "summary": "",
         "published_at": "",
-        "observed_at": "2026-11-01T19:41:55.313Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -4732,7 +5127,7 @@
           "https://joshuakim.studio/about": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T19:41:55.313Z"
+      "crawled_at": "2026-11-01T23:37:56.256Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -4790,6 +5185,10 @@
         }
       ],
       "community_topics": [
+        {
+          "slug": "abuse",
+          "label": "abuse"
+        },
         {
           "slug": "ai",
           "label": "ai"
@@ -4871,6 +5270,10 @@
           "label": "cars"
         },
         {
+          "slug": "chatgpt",
+          "label": "chatgpt"
+        },
+        {
           "slug": "chromebook",
           "label": "chromebooks"
         },
@@ -4879,8 +5282,16 @@
           "label": "civil liberties"
         },
         {
+          "slug": "claude",
+          "label": "claude"
+        },
+        {
           "slug": "cloudflare",
           "label": "Cloudflare"
+        },
+        {
+          "slug": "coding",
+          "label": "coding"
         },
         {
           "slug": "community",
@@ -4889,6 +5300,10 @@
         {
           "slug": "company",
           "label": "company"
+        },
+        {
+          "slug": "computer",
+          "label": "computer"
         },
         {
           "slug": "computer-vision",
@@ -4963,6 +5378,10 @@
           "label": "discovery"
         },
         {
+          "slug": "draft",
+          "label": "drafts"
+        },
+        {
           "slug": "earth-observation",
           "label": "earth observation"
         },
@@ -4981,6 +5400,10 @@
         {
           "slug": "engineering",
           "label": "engineering"
+        },
+        {
+          "slug": "essay",
+          "label": "essay"
         },
         {
           "slug": "ethics",
@@ -5035,6 +5458,10 @@
           "label": "github"
         },
         {
+          "slug": "give",
+          "label": "give"
+        },
+        {
           "slug": "go",
           "label": "Go"
         },
@@ -5061,6 +5488,10 @@
         {
           "slug": "history",
           "label": "history"
+        },
+        {
+          "slug": "hope",
+          "label": "hope"
         },
         {
           "slug": "independent",
@@ -5111,8 +5542,16 @@
           "label": "interoperability"
         },
         {
+          "slug": "isolation",
+          "label": "isolation"
+        },
+        {
           "slug": "javascript",
           "label": "javascript"
+        },
+        {
+          "slug": "kids",
+          "label": "kids"
         },
         {
           "slug": "law",
@@ -5121,6 +5560,10 @@
         {
           "slug": "lego",
           "label": "lego"
+        },
+        {
+          "slug": "link",
+          "label": "link"
         },
         {
           "slug": "linux",
@@ -5143,8 +5586,20 @@
           "label": "markdown"
         },
         {
+          "slug": "matter",
+          "label": "matters"
+        },
+        {
+          "slug": "mcp",
+          "label": "mcp"
+        },
+        {
           "slug": "mean",
           "label": "means"
+        },
+        {
+          "slug": "medical",
+          "label": "medical"
         },
         {
           "slug": "medical-research",
@@ -5223,6 +5678,10 @@
           "label": "participants"
         },
         {
+          "slug": "person",
+          "label": "person"
+        },
+        {
           "slug": "personal-growth",
           "label": "personal growth"
         },
@@ -5237,6 +5696,10 @@
         {
           "slug": "philosophy",
           "label": "philosophy"
+        },
+        {
+          "slug": "point",
+          "label": "points"
         },
         {
           "slug": "policy",
@@ -5279,12 +5742,20 @@
           "label": "python"
         },
         {
+          "slug": "race",
+          "label": "race"
+        },
+        {
           "slug": "reconnection",
           "label": "reconnection"
         },
         {
           "slug": "regulation",
           "label": "regulation"
+        },
+        {
+          "slug": "relationship",
+          "label": "relationships"
         },
         {
           "slug": "rememberance",
@@ -5313,6 +5784,10 @@
         {
           "slug": "rule",
           "label": "rules"
+        },
+        {
+          "slug": "safety",
+          "label": "safety"
         },
         {
           "slug": "satellite",
@@ -5387,6 +5862,10 @@
           "label": "Startups"
         },
         {
+          "slug": "story",
+          "label": "story"
+        },
+        {
           "slug": "surveillance",
           "label": "surveillance"
         },
@@ -5459,6 +5938,10 @@
           "label": "world mental health day"
         },
         {
+          "slug": "would",
+          "label": "would"
+        },
+        {
           "slug": "writing",
           "label": "writing"
         },
@@ -5472,7 +5955,7 @@
         "title": "Experiments",
         "summary": "Web experiments and playground shells from Joshua Morris—toys, tools, and interface ideas built to see whether they can work in a browser.",
         "published_at": "",
-        "observed_at": "2026-11-01T19:41:55.313Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -5989,7 +6472,1741 @@
           "https://joshuamorris.info/feeds/friends.opml": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T19:41:55.313Z"
+      "crawled_at": "2026-11-01T23:37:56.256Z"
+    },
+    {
+      "origin": "https://joshuapsteele.com",
+      "domain": "joshuapsteele.com",
+      "title": "Joshua P. Steele",
+      "description": "Joshua P. Steele's home on the web",
+      "identity": "affirmed",
+      "feeds": [
+        {
+          "url": "https://joshuapsteele.com/feed.xml",
+          "type": "application/rss+xml"
+        }
+      ],
+      "elsewhere": [
+        {
+          "url": "https://mastodon.social/@joshuapsteele",
+          "network": "mastodon",
+          "label": "Mastodon"
+        },
+        {
+          "url": "https://www.threads.com/@joshuapsteele",
+          "network": "web",
+          "label": "www.threads.com"
+        },
+        {
+          "url": "https://bsky.app/profile/joshuapsteele.com",
+          "network": "bluesky",
+          "label": "Bluesky"
+        },
+        {
+          "url": "https://github.com/joshuapsteele/",
+          "network": "github",
+          "label": "GitHub"
+        },
+        {
+          "url": "https://www.linkedin.com/in/joshuapsteele/",
+          "network": "linkedin",
+          "label": "LinkedIn"
+        },
+        {
+          "url": "https://social.joshuapsteele.com/",
+          "network": "web",
+          "label": "social.joshuapsteele.com"
+        },
+        {
+          "url": "https://buttondown.com/joshuapsteele/",
+          "network": "web",
+          "label": "buttondown.com"
+        },
+        {
+          "url": "https://joshuapsteele.com/blog/feed.xml",
+          "network": "web",
+          "label": "joshuapsteele.com"
+        },
+        {
+          "url": "https://reddit.com/submit?url=https%3a%2f%2fjoshuapsteele.com%2fabout%2f&title=About",
+          "network": "reddit",
+          "label": "Reddit"
+        },
+        {
+          "url": "https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fjoshuapsteele.com%2fabout%2f",
+          "network": "facebook",
+          "label": "Facebook"
+        },
+        {
+          "url": "https://telegram.me/share/url?text=About&url=https%3a%2f%2fjoshuapsteele.com%2fabout%2f",
+          "network": "telegram",
+          "label": "Telegram"
+        }
+      ],
+      "community_topics": [
+        {
+          "slug": "abuse",
+          "label": "abuse"
+        },
+        {
+          "slug": "acna",
+          "label": "acna"
+        },
+        {
+          "slug": "advent",
+          "label": "advent"
+        },
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "anglican",
+          "label": "anglican"
+        },
+        {
+          "slug": "anglican-compass",
+          "label": "anglican compass"
+        },
+        {
+          "slug": "anxiety",
+          "label": "anxiety"
+        },
+        {
+          "slug": "appliance",
+          "label": "appliances"
+        },
+        {
+          "slug": "art",
+          "label": "art"
+        },
+        {
+          "slug": "ask",
+          "label": "ask"
+        },
+        {
+          "slug": "atonement",
+          "label": "atonement"
+        },
+        {
+          "slug": "authoritarianism",
+          "label": "authoritarianism"
+        },
+        {
+          "slug": "authorization",
+          "label": "authorization"
+        },
+        {
+          "slug": "barth",
+          "label": "Barth"
+        },
+        {
+          "slug": "become",
+          "label": "becomes"
+        },
+        {
+          "slug": "bible",
+          "label": "Bible"
+        },
+        {
+          "slug": "bible-study",
+          "label": "bible study"
+        },
+        {
+          "slug": "biography",
+          "label": "biography"
+        },
+        {
+          "slug": "bonhoeffer",
+          "label": "bonhoeffer"
+        },
+        {
+          "slug": "book",
+          "label": "books"
+        },
+        {
+          "slug": "book-of-common-prayer",
+          "label": "book of common prayer"
+        },
+        {
+          "slug": "care",
+          "label": "cares"
+        },
+        {
+          "slug": "career",
+          "label": "career"
+        },
+        {
+          "slug": "cedarville",
+          "label": "cedarville"
+        },
+        {
+          "slug": "chatgpt",
+          "label": "chatgpt"
+        },
+        {
+          "slug": "christian-nationalism",
+          "label": "christian nationalism"
+        },
+        {
+          "slug": "christmas",
+          "label": "christmas"
+        },
+        {
+          "slug": "church",
+          "label": "Church"
+        },
+        {
+          "slug": "church-unity",
+          "label": "church unity"
+        },
+        {
+          "slug": "civic-engagement",
+          "label": "Civic-Engagement"
+        },
+        {
+          "slug": "civic-virtue",
+          "label": "Civic-Virtue"
+        },
+        {
+          "slug": "civil-right",
+          "label": "civil rights"
+        },
+        {
+          "slug": "claude",
+          "label": "claude"
+        },
+        {
+          "slug": "coding",
+          "label": "coding"
+        },
+        {
+          "slug": "coding-bootcamp",
+          "label": "coding bootcamp"
+        },
+        {
+          "slug": "collect",
+          "label": "collect"
+        },
+        {
+          "slug": "college",
+          "label": "college"
+        },
+        {
+          "slug": "communication",
+          "label": "communication"
+        },
+        {
+          "slug": "computer",
+          "label": "computer"
+        },
+        {
+          "slug": "conference",
+          "label": "conferences"
+        },
+        {
+          "slug": "conflict",
+          "label": "conflict"
+        },
+        {
+          "slug": "constitutional-law",
+          "label": "constitutional law"
+        },
+        {
+          "slug": "constitutionalism",
+          "label": "Constitutionalism"
+        },
+        {
+          "slug": "copywriting",
+          "label": "copywriting"
+        },
+        {
+          "slug": "creation",
+          "label": "creation"
+        },
+        {
+          "slug": "daily",
+          "label": "daily"
+        },
+        {
+          "slug": "death",
+          "label": "death"
+        },
+        {
+          "slug": "democracy",
+          "label": "Democracy"
+        },
+        {
+          "slug": "discipleship",
+          "label": "discipleship"
+        },
+        {
+          "slug": "dispensationalism",
+          "label": "dispensationalism"
+        },
+        {
+          "slug": "dissertation",
+          "label": "dissertation"
+        },
+        {
+          "slug": "diy",
+          "label": "diy"
+        },
+        {
+          "slug": "draft",
+          "label": "drafts"
+        },
+        {
+          "slug": "due-process",
+          "label": "due process"
+        },
+        {
+          "slug": "easter",
+          "label": "easter"
+        },
+        {
+          "slug": "ecclesiology",
+          "label": "Ecclesiology"
+        },
+        {
+          "slug": "economics",
+          "label": "economics"
+        },
+        {
+          "slug": "edc",
+          "label": "edc"
+        },
+        {
+          "slug": "engineering",
+          "label": "engineering"
+        },
+        {
+          "slug": "eschatology",
+          "label": "eschatology"
+        },
+        {
+          "slug": "essay",
+          "label": "essay"
+        },
+        {
+          "slug": "ethics",
+          "label": "ethics"
+        },
+        {
+          "slug": "evangelicalism",
+          "label": "evangelicalism"
+        },
+        {
+          "slug": "facebook",
+          "label": "facebook"
+        },
+        {
+          "slug": "faith",
+          "label": "faith"
+        },
+        {
+          "slug": "family",
+          "label": "family"
+        },
+        {
+          "slug": "fascism",
+          "label": "fascism"
+        },
+        {
+          "slug": "fitness",
+          "label": "fitness"
+        },
+        {
+          "slug": "focus",
+          "label": "focus"
+        },
+        {
+          "slug": "freedom",
+          "label": "freedom"
+        },
+        {
+          "slug": "friendship",
+          "label": "friendship"
+        },
+        {
+          "slug": "give",
+          "label": "give"
+        },
+        {
+          "slug": "government",
+          "label": "government"
+        },
+        {
+          "slug": "grief",
+          "label": "grief"
+        },
+        {
+          "slug": "gtd",
+          "label": "gtd"
+        },
+        {
+          "slug": "habeas-corpus",
+          "label": "habeas corpus"
+        },
+        {
+          "slug": "health",
+          "label": "health"
+        },
+        {
+          "slug": "hell",
+          "label": "hell"
+        },
+        {
+          "slug": "high-school",
+          "label": "high school"
+        },
+        {
+          "slug": "history",
+          "label": "history"
+        },
+        {
+          "slug": "holy-week",
+          "label": "holy week"
+        },
+        {
+          "slug": "home-gym",
+          "label": "home gym"
+        },
+        {
+          "slug": "home-improvement",
+          "label": "home improvement"
+        },
+        {
+          "slug": "hope",
+          "label": "hope"
+        },
+        {
+          "slug": "hosting",
+          "label": "hosting"
+        },
+        {
+          "slug": "how-to-think",
+          "label": "how to think"
+        },
+        {
+          "slug": "hugo",
+          "label": "hugo"
+        },
+        {
+          "slug": "human",
+          "label": "human"
+        },
+        {
+          "slug": "humanism",
+          "label": "humanism"
+        },
+        {
+          "slug": "hymn",
+          "label": "hymn"
+        },
+        {
+          "slug": "ice",
+          "label": "ice"
+        },
+        {
+          "slug": "immigration",
+          "label": "immigration"
+        },
+        {
+          "slug": "indieweb",
+          "label": "indieweb"
+        },
+        {
+          "slug": "internet",
+          "label": "internet"
+        },
+        {
+          "slug": "interpretation",
+          "label": "interpretation"
+        },
+        {
+          "slug": "introversion",
+          "label": "introversion"
+        },
+        {
+          "slug": "isaiah",
+          "label": "isaiah"
+        },
+        {
+          "slug": "isolation",
+          "label": "isolation"
+        },
+        {
+          "slug": "jenson",
+          "label": "jenson"
+        },
+        {
+          "slug": "jesus",
+          "label": "jesus"
+        },
+        {
+          "slug": "john",
+          "label": "john"
+        },
+        {
+          "slug": "jordan-peterson",
+          "label": "jordan peterson"
+        },
+        {
+          "slug": "juneteenth",
+          "label": "juneteenth"
+        },
+        {
+          "slug": "justice",
+          "label": "justice"
+        },
+        {
+          "slug": "kids",
+          "label": "kids"
+        },
+        {
+          "slug": "laptop",
+          "label": "laptop"
+        },
+        {
+          "slug": "leadership",
+          "label": "leadership"
+        },
+        {
+          "slug": "learn",
+          "label": "learn"
+        },
+        {
+          "slug": "learning",
+          "label": "learning"
+        },
+        {
+          "slug": "lent",
+          "label": "Lent"
+        },
+        {
+          "slug": "let",
+          "label": "let"
+        },
+        {
+          "slug": "link",
+          "label": "link"
+        },
+        {
+          "slug": "linux",
+          "label": "linux"
+        },
+        {
+          "slug": "live",
+          "label": "live"
+        },
+        {
+          "slug": "local-church",
+          "label": "local churches"
+        },
+        {
+          "slug": "logos",
+          "label": "logos"
+        },
+        {
+          "slug": "loneliness",
+          "label": "loneliness"
+        },
+        {
+          "slug": "love",
+          "label": "love"
+        },
+        {
+          "slug": "matter",
+          "label": "matters"
+        },
+        {
+          "slug": "matthew-25",
+          "label": "matthew 25"
+        },
+        {
+          "slug": "mcp",
+          "label": "mcp"
+        },
+        {
+          "slug": "mean",
+          "label": "means"
+        },
+        {
+          "slug": "medical",
+          "label": "medical"
+        },
+        {
+          "slug": "mental-health",
+          "label": "mental health"
+        },
+        {
+          "slug": "ministry",
+          "label": "ministry"
+        },
+        {
+          "slug": "misanthropy",
+          "label": "misanthropy"
+        },
+        {
+          "slug": "model",
+          "label": "model"
+        },
+        {
+          "slug": "music",
+          "label": "music"
+        },
+        {
+          "slug": "nationalism",
+          "label": "nationalism"
+        },
+        {
+          "slug": "openfga",
+          "label": "openfga"
+        },
+        {
+          "slug": "opinion",
+          "label": "opinion"
+        },
+        {
+          "slug": "ordination",
+          "label": "ordination"
+        },
+        {
+          "slug": "pacifism",
+          "label": "pacifism"
+        },
+        {
+          "slug": "parenting",
+          "label": "parenting"
+        },
+        {
+          "slug": "person",
+          "label": "person"
+        },
+        {
+          "slug": "personal-development",
+          "label": "personal development"
+        },
+        {
+          "slug": "personality",
+          "label": "personality"
+        },
+        {
+          "slug": "podcast",
+          "label": "podcasts"
+        },
+        {
+          "slug": "poem",
+          "label": "poem"
+        },
+        {
+          "slug": "poetry",
+          "label": "poetry"
+        },
+        {
+          "slug": "point",
+          "label": "points"
+        },
+        {
+          "slug": "political-theology",
+          "label": "political theology"
+        },
+        {
+          "slug": "politics",
+          "label": "politics"
+        },
+        {
+          "slug": "posse",
+          "label": "posse"
+        },
+        {
+          "slug": "poverty",
+          "label": "poverty"
+        },
+        {
+          "slug": "prayer",
+          "label": "prayer"
+        },
+        {
+          "slug": "principle",
+          "label": "principles"
+        },
+        {
+          "slug": "productivity",
+          "label": "productivity"
+        },
+        {
+          "slug": "programming",
+          "label": "programming"
+        },
+        {
+          "slug": "prophetic-witness",
+          "label": "prophetic witness"
+        },
+        {
+          "slug": "protest",
+          "label": "protest"
+        },
+        {
+          "slug": "proverb",
+          "label": "proverbs"
+        },
+        {
+          "slug": "public-health",
+          "label": "public health"
+        },
+        {
+          "slug": "purpose",
+          "label": "purpose"
+        },
+        {
+          "slug": "quote",
+          "label": "quote"
+        },
+        {
+          "slug": "race",
+          "label": "race"
+        },
+        {
+          "slug": "racism",
+          "label": "racism"
+        },
+        {
+          "slug": "rebac",
+          "label": "rebac"
+        },
+        {
+          "slug": "recommendation",
+          "label": "recommendations"
+        },
+        {
+          "slug": "reconciliation",
+          "label": "reconciliation"
+        },
+        {
+          "slug": "refugee",
+          "label": "refugees"
+        },
+        {
+          "slug": "relationship",
+          "label": "relationships"
+        },
+        {
+          "slug": "religion",
+          "label": "religion"
+        },
+        {
+          "slug": "research",
+          "label": "research"
+        },
+        {
+          "slug": "resurrection",
+          "label": "resurrection"
+        },
+        {
+          "slug": "revelation",
+          "label": "revelation"
+        },
+        {
+          "slug": "review",
+          "label": "reviews"
+        },
+        {
+          "slug": "right-to-repair",
+          "label": "right to repair"
+        },
+        {
+          "slug": "roman",
+          "label": "romans"
+        },
+        {
+          "slug": "roman-13",
+          "label": "romans 13"
+        },
+        {
+          "slug": "safety",
+          "label": "safety"
+        },
+        {
+          "slug": "satire",
+          "label": "satire"
+        },
+        {
+          "slug": "school",
+          "label": "schools"
+        },
+        {
+          "slug": "sea-shanty",
+          "label": "sea shanty"
+        },
+        {
+          "slug": "search",
+          "label": "search"
+        },
+        {
+          "slug": "security",
+          "label": "security"
+        },
+        {
+          "slug": "seminary",
+          "label": "seminary"
+        },
+        {
+          "slug": "sermon",
+          "label": "sermons"
+        },
+        {
+          "slug": "sermon-on-the-mount",
+          "label": "sermon on the mount"
+        },
+        {
+          "slug": "soccer",
+          "label": "soccer"
+        },
+        {
+          "slug": "social",
+          "label": "social"
+        },
+        {
+          "slug": "social-justice",
+          "label": "social justice"
+        },
+        {
+          "slug": "social-media",
+          "label": "social media"
+        },
+        {
+          "slug": "soft-skill",
+          "label": "soft skills"
+        },
+        {
+          "slug": "software",
+          "label": "software"
+        },
+        {
+          "slug": "software-engineering",
+          "label": "Software engineering"
+        },
+        {
+          "slug": "song",
+          "label": "song"
+        },
+        {
+          "slug": "sport",
+          "label": "sports"
+        },
+        {
+          "slug": "story",
+          "label": "story"
+        },
+        {
+          "slug": "technology",
+          "label": "technology"
+        },
+        {
+          "slug": "testing",
+          "label": "testing"
+        },
+        {
+          "slug": "theology",
+          "label": "theology"
+        },
+        {
+          "slug": "tips",
+          "label": "tips"
+        },
+        {
+          "slug": "travel",
+          "label": "travel"
+        },
+        {
+          "slug": "trinity",
+          "label": "trinity"
+        },
+        {
+          "slug": "tyranny",
+          "label": "tyranny"
+        },
+        {
+          "slug": "umberto-eco",
+          "label": "umberto eco"
+        },
+        {
+          "slug": "unity",
+          "label": "unity"
+        },
+        {
+          "slug": "universalism",
+          "label": "universalism"
+        },
+        {
+          "slug": "weightlifting",
+          "label": "weightlifting"
+        },
+        {
+          "slug": "wilderness",
+          "label": "wilderness"
+        },
+        {
+          "slug": "women-ordination",
+          "label": "womens ordination"
+        },
+        {
+          "slug": "worldcup",
+          "label": "worldcup"
+        },
+        {
+          "slug": "worship-style",
+          "label": "worship styles"
+        },
+        {
+          "slug": "would",
+          "label": "would"
+        },
+        {
+          "slug": "writing",
+          "label": "writing"
+        },
+        {
+          "slug": "youtube",
+          "label": "youtube"
+        },
+        {
+          "slug": "zanzibar",
+          "label": "zanzibar"
+        }
+      ],
+      "recent_content": {
+        "url": "https://joshuapsteele.com/'+e(a)+'",
+        "title": "Permalink",
+        "summary": "Unable to load recent saved links. Visit LinkLog",
+        "published_at": "",
+        "observed_at": "2026-11-01T23:37:56.256Z",
+        "content_type": "project",
+        "language": "en",
+        "dir": "",
+        "site_origin": "https://joshuapsteele.com",
+        "site_title": "Joshua P. Steele",
+        "domain": "joshuapsteele.com",
+        "tags": [],
+        "neighborhoods": [],
+        "image": "",
+        "image_origin": "",
+        "source_kind": "creative-homepage",
+        "page_role": "project"
+      },
+      "outgoing": [],
+      "incoming": [],
+      "coverage": {
+        "pages_discovered": 707,
+        "pages_fetched": 707,
+        "fetch_limit": null,
+        "limit_reached": false,
+        "selection_strategy": "uncapped-site-crawl-v1",
+        "selection_reasons": {
+          "https://joshuapsteele.com/": "home",
+          "https://joshuapsteele.com/notes/2026-08-30-0952/": "feed",
+          "https://joshuapsteele.com/i-finally-found-wide-soccer-cleats/": "feed",
+          "https://joshuapsteele.com/notes/2026-08-10-1830/": "feed",
+          "https://joshuapsteele.com/notes/2026-08-10-1828/": "feed",
+          "https://joshuapsteele.com/notes/2026-07-30-1534/": "feed",
+          "https://joshuapsteele.com/notes/2026-07-30-1444/": "feed",
+          "https://joshuapsteele.com/notes/2026-07-27-1203/": "feed",
+          "https://joshuapsteele.com/notes/2026-07-26-1853/": "feed",
+          "https://joshuapsteele.com/notes/2026-07-26-0753/": "feed",
+          "https://joshuapsteele.com/notes/2026-07-21-0913/": "feed",
+          "https://joshuapsteele.com/how-to-not-pass-out-or-faint-when-getting-your-blood-drawn/": "feed",
+          "https://joshuapsteele.com/notes/2026-07-15-2042/": "feed",
+          "https://joshuapsteele.com/notes/2026-07-13-1422/": "feed",
+          "https://joshuapsteele.com/basement-dehumidifier-woes/": "feed",
+          "https://joshuapsteele.com/notes/2026-07-06-1442/": "feed",
+          "https://joshuapsteele.com/a-new-battle-hymn/": "feed",
+          "https://joshuapsteele.com/notes/2026-07-06-1021/": "feed",
+          "https://joshuapsteele.com/notes/2026-07-05-1209/": "feed",
+          "https://joshuapsteele.com/notes/2026-07-04-2020/": "feed",
+          "https://joshuapsteele.com/notes/2026-07-04-0943/": "feed",
+          "https://joshuapsteele.com/notes/2026-07-04-0915/": "feed",
+          "https://joshuapsteele.com/notes/2026-07-03-1357/": "feed",
+          "https://joshuapsteele.com/notes/2026-07-01-2134/": "feed",
+          "https://joshuapsteele.com/notes/2026-07-01-1529/": "feed",
+          "https://joshuapsteele.com/notes/2026-07-01-0901/": "feed",
+          "https://joshuapsteele.com/notes/2026-06-29-0808/": "feed",
+          "https://joshuapsteele.com/notes/2026-06-23-1158/": "feed",
+          "https://joshuapsteele.com/notes/2026-06-19-2134/": "feed",
+          "https://joshuapsteele.com/notes/2026-06-17-0744/": "feed",
+          "https://joshuapsteele.com/notes/2026-06-16-0733/": "feed",
+          "https://joshuapsteele.com/notes/2026-06-11-0703/": "feed",
+          "https://joshuapsteele.com/notes/2026-06-05-0906/": "feed",
+          "https://joshuapsteele.com/notes/2026-05-30-0818/": "feed",
+          "https://joshuapsteele.com/fathers-day-gift-ideas-2026/": "feed",
+          "https://joshuapsteele.com/notes/2026-05-29-0657/": "feed",
+          "https://joshuapsteele.com/notes/2026-05-28-0731/": "feed",
+          "https://joshuapsteele.com/notes/2026-05-27-0920/": "feed",
+          "https://joshuapsteele.com/textexpander-archaeology-phd-snippets/": "feed",
+          "https://joshuapsteele.com/logos-bible-software-needs-an-mcp-server/": "feed",
+          "https://joshuapsteele.com/notes/2026-05-19-1842/": "feed",
+          "https://joshuapsteele.com/rededicate-250-a-poem/": "feed",
+          "https://joshuapsteele.com/notes/2026-05-13-1049/": "feed",
+          "https://joshuapsteele.com/notes/2026-05-07-0947/": "feed",
+          "https://joshuapsteele.com/notes/2026-05-03-1306/": "feed",
+          "https://joshuapsteele.com/notes/2026-04-25-1017/": "feed",
+          "https://joshuapsteele.com/notes/2026-04-24-1329/": "feed",
+          "https://joshuapsteele.com/notes/2026-04-23-0835/": "feed",
+          "https://joshuapsteele.com/notes/2026-04-22-1238/": "feed",
+          "https://joshuapsteele.com/am-i-still-a-priest/": "feed",
+          "https://joshuapsteele.com/notes/2026-04-21-1534/": "feed",
+          "https://joshuapsteele.com/notes/2026-04-20-2000/": "feed",
+          "https://joshuapsteele.com/notes/2026-04-20-1550/": "feed",
+          "https://joshuapsteele.com/notes/2026-04-17-1516/": "feed",
+          "https://joshuapsteele.com/notes/2026-04-17-1204/": "feed",
+          "https://joshuapsteele.com/notes/2026-04-17-1033/": "feed",
+          "https://joshuapsteele.com/notes/2026-04-17-1026/": "feed",
+          "https://joshuapsteele.com/i-wish-we-had-more-time-for-robin/": "feed",
+          "https://joshuapsteele.com/reading-revelation-wrong/": "feed",
+          "https://joshuapsteele.com/whats-gone-wrong-with-american-evangelicalism/": "feed",
+          "https://joshuapsteele.com/myths-and-facts-about-immigrants/": "feed",
+          "https://joshuapsteele.com/ice-minneapolis-response/": "feed",
+          "https://joshuapsteele.com/cowardice-of-both-sides/": "feed",
+          "https://joshuapsteele.com/romans-13-is-not-a-blank-check-for-cruelty/": "feed",
+          "https://joshuapsteele.com/american-freedom-vs-biblical-freedom/": "feed",
+          "https://joshuapsteele.com/an-ecclesiastical-pickle/": "feed",
+          "https://joshuapsteele.com/does-the-new-testament-teach-eternal-hell/": "feed",
+          "https://joshuapsteele.com/my-soccer-kit/": "feed",
+          "https://joshuapsteele.com/what-shall-we-do-with-a-would-be-tyrant/": "feed",
+          "https://joshuapsteele.com/roll-the-old-republic-along/": "feed",
+          "https://joshuapsteele.com/the-fate-of-diphtheria/": "feed",
+          "https://joshuapsteele.com/when-romans-13-meets-matthew-25-immigration-ethics/": "feed",
+          "https://joshuapsteele.com/theology-against-nationalism/": "feed",
+          "https://joshuapsteele.com/tidbits-2025-09-26/": "feed",
+          "https://joshuapsteele.com/birthday-wishlist-2025/": "feed",
+          "https://joshuapsteele.com/what-is-fascism/": "feed",
+          "https://joshuapsteele.com/tidbits-2025-09-19/": "feed",
+          "https://joshuapsteele.com/he-looked-for-justice-but-behold-bloodshed/": "feed",
+          "https://joshuapsteele.com/how-to-have-a-theological-argument/": "feed",
+          "https://joshuapsteele.com/against-christian-misanthropy/": "feed",
+          "https://joshuapsteele.com/tech-hype-and-the-growing-chasm/": "feed",
+          "https://joshuapsteele.com/how-to-find-your-lifes-purpose/": "feed",
+          "https://joshuapsteele.com/how-do-you-make-friends/": "feed",
+          "https://joshuapsteele.com/citizens-manifesto/": "feed",
+          "https://joshuapsteele.com/no-kings/": "feed",
+          "https://joshuapsteele.com/14-characteristics-of-fascism/": "feed",
+          "https://joshuapsteele.com/198-ways-to-fight-tyranny/": "feed",
+          "https://joshuapsteele.com/20-ways-to-fight-tyranny/": "feed",
+          "https://joshuapsteele.com/14-youtube-channels/": "feed",
+          "https://joshuapsteele.com/the-bible-is-clear/": "feed",
+          "https://joshuapsteele.com/real-world-openfga-authorization-lessons/": "feed",
+          "https://joshuapsteele.com/government-kidnap-without-trial/": "feed",
+          "https://joshuapsteele.com/personal-vs-work-laptop/": "feed",
+          "https://joshuapsteele.com/saw-updates/": "feed",
+          "https://joshuapsteele.com/vintage-craftsman-table-saw/": "feed",
+          "https://joshuapsteele.com/bonhoeffer-on-stupidity/": "feed",
+          "https://joshuapsteele.com/authorization-continued/": "feed",
+          "https://joshuapsteele.com/this-shouldnt-be-controversial/": "feed",
+          "https://joshuapsteele.com/lets-talk-authorization/": "feed",
+          "https://joshuapsteele.com/stay-woke-ephesians-5/": "feed",
+          "https://joshuapsteele.com/diagnostic-tools-for-homeowners/": "feed",
+          "https://joshuapsteele.com/questions-at-the-start-of-my-notebook/": "feed",
+          "https://joshuapsteele.com/best-budget-smart-tv/": "feed",
+          "https://joshuapsteele.com/dinner-prayer-highlights-from-our-4-year-old/": "feed",
+          "https://joshuapsteele.com/o-come-o-come-emmanuel-extra-verses/": "feed",
+          "https://joshuapsteele.com/troubleshooting-hugo-to-microblog-crossposting/": "feed",
+          "https://joshuapsteele.com/five-questions-for-coming-to-grips-with-your-life/": "feed",
+          "https://joshuapsteele.com/ten-tools-for-embracing-finitude/": "feed",
+          "https://joshuapsteele.com/ask-me-anything-this-november/": "feed",
+          "https://joshuapsteele.com/gods-economy/": "feed",
+          "https://joshuapsteele.com/requiem-for-a-cousin-on-his-birthday/": "feed",
+          "https://joshuapsteele.com/10-things-i-love-about-my-kids/": "feed",
+          "https://joshuapsteele.com/i-love-my-kids-but-i-sometimes-regret-having-them/": "feed",
+          "https://joshuapsteele.com/help-im-addicted-to-mini-toolkits-the-edc-tool-struggle-is-real/": "feed",
+          "https://joshuapsteele.com/you-cant-follow-jesus-and-hate-immigrants/": "feed",
+          "https://joshuapsteele.com/christianity-and-politics-my-2024-reading-list/": "feed",
+          "https://joshuapsteele.com/6-things-im-excited-about-2024-08-04/": "feed",
+          "https://joshuapsteele.com/home-improvement-roadmap-and-roadblocks/": "feed",
+          "https://joshuapsteele.com/know-thyself-unveiling-your-unique-strengths-and-personality-traits/": "feed",
+          "https://joshuapsteele.com/finding-a-hat-for-my-big-bald-head/": "feed",
+          "https://joshuapsteele.com/prayers-for-the-sick/": "feed",
+          "https://joshuapsteele.com/death-in-his-grave/": "feed",
+          "https://joshuapsteele.com/home-gym-upgrades/": "feed",
+          "https://joshuapsteele.com/the-problem-of-ecclesiastical-evil/": "feed",
+          "https://joshuapsteele.com/back-in-the-saddle/": "feed",
+          "https://joshuapsteele.com/truth-to-power/": "feed",
+          "https://joshuapsteele.com/25-possibly-unpopular-opinions-about-church/": "feed",
+          "https://joshuapsteele.com/im-resigning-from-ordained-ministry-in-the-anglican-church-in-north-america/": "feed",
+          "https://joshuapsteele.com/life-lessons/": "feed",
+          "https://joshuapsteele.com/anyone-can-use-ai-tools-heres-how/": "feed",
+          "https://joshuapsteele.com/avoiding-online-scams-a-simple-guide-for-non-tech-savvy-internet-users/": "feed",
+          "https://joshuapsteele.com/essential-reads-for-new-software-developers-the-effective-engineer-and-the-missing-readme/": "feed",
+          "https://joshuapsteele.com/scriptures-to-read-on-days-of-prayer-and-fasting-for-the-church/": "feed",
+          "https://joshuapsteele.com/master-the-art-of-interpersonal-relationships-with-how-to-win-friends-and-influence-people/": "feed",
+          "https://joshuapsteele.com/discover-learn-x-in-y-minutes-an-invaluable-resource-for-programmers/": "feed",
+          "https://joshuapsteele.com/mastering-linux-top-commands-every-new-computer-programmer-should-learn/": "feed",
+          "https://joshuapsteele.com/ask-me-anything-software-engineering-questions-from-a-coding-bootcamp-student/": "feed",
+          "https://joshuapsteele.com/my-coding-bootcamp-journey-how-a-pastor-became-a-programmer/": "feed",
+          "https://joshuapsteele.com/logos-10-bible-software-the-ultimate-theological-learning-tool/": "feed",
+          "https://joshuapsteele.com/software-testing-possibilities-problems-and-principles/": "feed",
+          "https://joshuapsteele.com/chatgpt-write-a-viral-blogpost-about-why-to-become-a-software-engineer/": "feed",
+          "https://joshuapsteele.com/most-useful-websites-my-favorite-online-resources/": "feed",
+          "https://joshuapsteele.com/questions-worth-asking/": "feed",
+          "https://joshuapsteele.com/mentor-me/": "feed",
+          "https://joshuapsteele.com/acnatoo/": "feed",
+          "https://joshuapsteele.com/what-color-is-my-parachute-the-flower-petal-exercise/": "feed",
+          "https://joshuapsteele.com/why-havent-you-torn-the-sky-open-yet-sermon-first-sunday-of-advent-2020/": "feed",
+          "https://joshuapsteele.com/its-official-im-hitting-pause-on-my-ph-d-for-a-year/": "feed",
+          "https://joshuapsteele.com/im-looking-for-a-new-role-to-supplement-my-part-time-work-for-anglican-compass/": "feed",
+          "https://joshuapsteele.com/josh-on-the-use-of-the-sign-of-the-cross-plus-sign-in-clergy-signatures/": "feed",
+          "https://joshuapsteele.com/its-time-to-get-some-help/": "feed",
+          "https://joshuapsteele.com/a-prayer-for-trustfulness-in-times-of-worry-and-anxiety/": "feed",
+          "https://joshuapsteele.com/first-day-of-24th-grade-2/": "feed",
+          "https://joshuapsteele.com/its-time-for-another-social-media-fast/": "feed",
+          "https://joshuapsteele.com/the-phd-plan-or-the-lack-thereof/": "feed",
+          "https://joshuapsteele.com/a-shameless-request-help-me-buy-more-books/": "feed",
+          "https://joshuapsteele.com/im-a-female-priest-and-i-support-my-opponents-in-the-womens-ordination-debate/": "feed",
+          "https://joshuapsteele.com/for-the-good-of-the-order-a-plea-for-charity-on-the-ordination-of-women/": "feed",
+          "https://joshuapsteele.com/they-say-i-say-writing-templates/": "feed",
+          "https://joshuapsteele.com/help-im-looking-for-the-best-christian-resources-on-the-bible-social-justice-racism-critical-race-theory-and-marxism/": "feed",
+          "https://joshuapsteele.com/a-collect-for-juneteenth/": "feed",
+          "https://joshuapsteele.com/who-really-cares-about-the-trinity-in-2020/": "feed",
+          "https://joshuapsteele.com/who-really-cares-about-the-trinity/": "feed",
+          "https://joshuapsteele.com/top-3-books-movies-and-podcasts-about-race-for-white-christians-like-me/": "feed",
+          "https://joshuapsteele.com/but-what-about-the-riots-and-lawlessness/": "feed",
+          "https://joshuapsteele.com/why-is-the-word-systemic-a-flashpoint-for-certain-christians/": "feed",
+          "https://joshuapsteele.com/anti-racism-letter-to-fellow-acna-clergy/": "feed",
+          "https://joshuapsteele.com/dont-stir-the-pot/": "feed",
+          "https://joshuapsteele.com/the-altar-and-the-arena-what-slaves-and-martyrs-have-to-teach-us-about-womens-ordination/": "feed",
+          "https://joshuapsteele.com/balderdash-12-suggestions-for-overcoming-writers-block-from-andrew-t-le-peaus-write-better/": "feed",
+          "https://joshuapsteele.com/we-switched-anglican-compass-over-from-hostgator-shared-to-bluehost-vps-hosting/": "feed",
+          "https://joshuapsteele.com/they-laughed-when-i-became-an-anglican-but-when-i-started-to-pray-27-anglican-headline-ideas/": "feed",
+          "https://joshuapsteele.com/want-a-taste-of-what-my-dissertation-is-about-read-these-two-passages-dissertation-dispatch-2020-04-03/": "feed",
+          "https://joshuapsteele.com/what-did-barth-and-bonhoeffer-think-of-the-bible-dissertation-dispatch-2020-03-30/": "feed",
+          "https://joshuapsteele.com/barth-bonhoeffer-and-the-bible-back-to-the-beginning-dissertation-dispatch-2020-03-26/": "feed",
+          "https://joshuapsteele.com/12-prayers-for-tough-days/": "feed",
+          "https://joshuapsteele.com/barth-bonhoeffer-and-the-sermon-on-the-mount-dissertation-dispatch-2020-02-04/": "feed",
+          "https://joshuapsteele.com/help-im-looking-for-examples-of-theological-triage-doctrinal-taxonomy-or-dogmatic-rank/": "feed",
+          "https://joshuapsteele.com/are-the-beatitudes-renunciations-verzichte/": "feed",
+          "https://joshuapsteele.com/are-the-beatitudes-good-works-matt-51316/": "feed",
+          "https://joshuapsteele.com/with-baby-2-on-the-way-im-looking-for-work/": "feed",
+          "https://joshuapsteele.com/interpretive-approaches-to-the-beatitudes/": "feed",
+          "https://joshuapsteele.com/interpretive-approaches-to-the-sermon-on-the-mount/": "feed",
+          "https://joshuapsteele.com/damers-code-of-intellectual-conduct/": "feed",
+          "https://joshuapsteele.com/taking-scripture-and-womens-ordination-seriously-a-response-to-blake-johnson-and-lee-nelson/": "feed",
+          "https://joshuapsteele.com/alan-jacobss-the-thinking-persons-checklist/": "feed",
+          "https://joshuapsteele.com/help-me-come-up-with-rules-for-conversation/": "feed",
+          "https://joshuapsteele.com/quit-claiming-that-we-mutualists-egalitarians-dont-take-the-bible-or-tradition-seriously/": "feed",
+          "https://joshuapsteele.com/no-one-knows-what-positivism-of-revelation-means/": "feed",
+          "https://joshuapsteele.com/im-quite-excited-for-these-oxford-handbooks/": "feed",
+          "https://joshuapsteele.com/my-favorite-definition-of-theology/": "feed",
+          "https://joshuapsteele.com/barth-timeline-a-chronology-of-karl-barths-life/": "feed",
+          "https://joshuapsteele.com/bonhoeffer-timeline-a-brief-chronology-of-dietrich-bonhoeffers-life/": "feed",
+          "https://joshuapsteele.com/dissertation-dispatch-2019-11-11/": "feed",
+          "https://joshuapsteele.com/true-christianity-cannot-be-a-private-christianity-barth/": "feed",
+          "https://joshuapsteele.com/heres-a-video-of-my-ordination-to-the-priesthood/": "feed",
+          "https://joshuapsteele.com/a-deacons-last-day/": "feed",
+          "https://joshuapsteele.com/heres-what-im-committing-myself-to-as-a-priest/": "feed",
+          "https://joshuapsteele.com/a-prayer-for-relatives-and-friends/": "feed",
+          "https://joshuapsteele.com/following-christ-as-a-hermeneutical-problem/": "feed",
+          "https://joshuapsteele.com/two-of-bonhoeffers-most-convicting-paragraphs/": "feed",
+          "https://joshuapsteele.com/why-you-never-see-your-friends-anymore-the-atlantic/": "feed",
+          "https://joshuapsteele.com/what-are-the-most-important-theological-terms-that-every-christian-should-know/": "feed",
+          "https://joshuapsteele.com/the-via-media-or-the-middle-ground-fallacy/": "feed",
+          "https://joshuapsteele.com/here-are-all-of-william-witts-essays-on-womens-ordination-in-a-single-pdf-with-bookmarks/": "feed",
+          "https://joshuapsteele.com/if-women-can-be-saved-then-women-can-be-priests/": "feed",
+          "https://joshuapsteele.com/family-ties-what-it-takes-to-have-a-healthy-church/": "feed",
+          "https://joshuapsteele.com/an-outline-of-karl-barths-church-dogmatics/": "feed",
+          "https://joshuapsteele.com/helpful-writing-templates/": "feed",
+          "https://joshuapsteele.com/dissertation-dispatch-2019-08-09/": "feed",
+          "https://joshuapsteele.com/the-guilt-of-karl-barth-strengths-and-weaknesses-of-barths-romerbrief-reading-of-romans-9301021/": "feed",
+          "https://joshuapsteele.com/i-think-karl-barth-missed-the-pastoral-point-of-romans/": "feed",
+          "https://joshuapsteele.com/barth-bonhoeffer-and-the-bible/": "feed",
+          "https://joshuapsteele.com/dissertation-dispatch-2019-07-05/": "feed",
+          "https://joshuapsteele.com/desperate-times-desperate-measures-writing-my-dissertation-vs-funding-abortion/": "feed",
+          "https://joshuapsteele.com/dietrich-bonhoeffers-sermons-and-meditations/": "feed",
+          "https://joshuapsteele.com/unity-when-we-cant-get-along/": "feed",
+          "https://joshuapsteele.com/the-tree-of-religion-karl-barth-and-dietrich-bonhoeffer-on-the-tree-of-knowledge-in-genesis-24-324/": "feed",
+          "https://joshuapsteele.com/about/": "blind-probe",
+          "https://joshuapsteele.com/about-me/": "blind-probe",
+          "https://joshuapsteele.com/aboutme/": "blind-probe",
+          "https://joshuapsteele.com/bio/": "blind-probe",
+          "https://joshuapsteele.com/me/": "blind-probe",
+          "https://joshuapsteele.com/profile/": "blind-probe",
+          "https://joshuapsteele.com/ai/": "blind-probe",
+          "https://joshuapsteele.com/blogroll/": "blind-probe",
+          "https://joshuapsteele.com/calendar/": "blind-probe",
+          "https://joshuapsteele.com/canon/": "blind-probe",
+          "https://joshuapsteele.com/carry/": "blind-probe",
+          "https://joshuapsteele.com/caw/": "blind-probe",
+          "https://joshuapsteele.com/celebrities/": "blind-probe",
+          "https://joshuapsteele.com/changelog/": "blind-probe",
+          "https://joshuapsteele.com/log/": "blind-probe",
+          "https://joshuapsteele.com/chipotle/": "blind-probe",
+          "https://joshuapsteele.com/colophon/": "blind-probe",
+          "https://joshuapsteele.com/community/": "blind-probe",
+          "https://joshuapsteele.com/concerts/": "blind-probe",
+          "https://joshuapsteele.com/contact/": "blind-probe",
+          "https://joshuapsteele.com/daylists/": "blind-probe",
+          "https://joshuapsteele.com/death/": "blind-probe",
+          "https://joshuapsteele.com/defaults/": "blind-probe",
+          "https://joshuapsteele.com/disability/": "blind-probe",
+          "https://joshuapsteele.com/elsewhere/": "blind-probe",
+          "https://joshuapsteele.com/appearances/": "blind-probe",
+          "https://joshuapsteele.com/follow/": "blind-probe",
+          "https://joshuapsteele.com/subscribe/": "blind-probe",
+          "https://joshuapsteele.com/feeds/": "blind-probe",
+          "https://joshuapsteele.com/for/": "blind-probe",
+          "https://joshuapsteele.com/dedication/": "blind-probe",
+          "https://joshuapsteele.com/glossary/": "blind-probe",
+          "https://joshuapsteele.com/lexicon/": "blind-probe",
+          "https://joshuapsteele.com/phrased/": "blind-probe",
+          "https://joshuapsteele.com/green/": "blind-probe",
+          "https://joshuapsteele.com/hats/": "blind-probe",
+          "https://joshuapsteele.com/hello/": "blind-probe",
+          "https://joshuapsteele.com/hills/": "blind-probe",
+          "https://joshuapsteele.com/hill/": "blind-probe",
+          "https://joshuapsteele.com/ideas/": "blind-probe",
+          "https://joshuapsteele.com/interests/": "blind-probe",
+          "https://joshuapsteele.com/junk/": "blind-probe",
+          "https://joshuapsteele.com/sale/": "blind-probe",
+          "https://joshuapsteele.com/buy/": "blind-probe",
+          "https://joshuapsteele.com/languages/": "blind-probe",
+          "https://joshuapsteele.com/links/": "blind-probe",
+          "https://joshuapsteele.com/bookmarks/": "blind-probe",
+          "https://joshuapsteele.com/next/": "blind-probe",
+          "https://joshuapsteele.com/nope/": "blind-probe",
+          "https://joshuapsteele.com/now/": "blind-probe",
+          "https://joshuapsteele.com/pfp/": "blind-probe",
+          "https://joshuapsteele.com/photo/": "blind-probe",
+          "https://joshuapsteele.com/pic/": "blind-probe",
+          "https://joshuapsteele.com/podroll/": "blind-probe",
+          "https://joshuapsteele.com/posse/": "blind-probe",
+          "https://joshuapsteele.com/postroll/": "blind-probe",
+          "https://joshuapsteele.com/predictions/": "blind-probe",
+          "https://joshuapsteele.com/pricing/": "blind-probe",
+          "https://joshuapsteele.com/questions/": "blind-probe",
+          "https://joshuapsteele.com/saudade/": "blind-probe",
+          "https://joshuapsteele.com/save/": "blind-probe",
+          "https://joshuapsteele.com/referrals/": "blind-probe",
+          "https://joshuapsteele.com/self-hosting/": "blind-probe",
+          "https://joshuapsteele.com/self-hosted/": "blind-probe",
+          "https://joshuapsteele.com/hosted/": "blind-probe",
+          "https://joshuapsteele.com/homelab/": "blind-probe",
+          "https://joshuapsteele.com/shoebox/": "blind-probe",
+          "https://joshuapsteele.com/since/": "blind-probe",
+          "https://joshuapsteele.com/sitemap/": "blind-probe",
+          "https://joshuapsteele.com/slashes/": "slashes-index",
+          "https://joshuapsteele.com/someday/": "blind-probe",
+          "https://joshuapsteele.com/style/": "blind-probe",
+          "https://joshuapsteele.com/til/": "blind-probe",
+          "https://joshuapsteele.com/ways/": "blind-probe",
+          "https://joshuapsteele.com/tip/": "blind-probe",
+          "https://joshuapsteele.com/pay/": "blind-probe",
+          "https://joshuapsteele.com/coffee/": "blind-probe",
+          "https://joshuapsteele.com/top4/": "blind-probe",
+          "https://joshuapsteele.com/topfour/": "blind-probe",
+          "https://joshuapsteele.com/uses/": "blind-probe",
+          "https://joshuapsteele.com/verify/": "blind-probe",
+          "https://joshuapsteele.com/where/": "blind-probe",
+          "https://joshuapsteele.com/why/": "blind-probe",
+          "https://joshuapsteele.com/wish/": "blind-probe",
+          "https://joshuapsteele.com/yep/": "blind-probe",
+          "https://joshuapsteele.com/more/": "blind-probe",
+          "https://joshuapsteele.com/site/": "blind-probe",
+          "https://joshuapsteele.com/social/": "blind-probe",
+          "https://joshuapsteele.com/people/": "blind-probe",
+          "https://joshuapsteele.com/friends/": "blind-probe",
+          "https://joshuapsteele.com/following/": "blind-probe",
+          "https://joshuapsteele.com/webring/": "blind-probe",
+          "https://joshuapsteele.com/webrings/": "blind-probe",
+          "https://joshuapsteele.com/indieweb/": "blind-probe",
+          "https://joshuapsteele.com/neighborhood/": "blind-probe",
+          "https://joshuapsteele.com/guestbook/": "blind-probe",
+          "https://joshuapsteele.com/meta/": "blind-probe",
+          "https://joshuapsteele.com/health/": "blind-probe",
+          "https://joshuapsteele.com/notes/": "blind-probe",
+          "https://joshuapsteele.com/blog/": "blind-probe",
+          "https://joshuapsteele.com/weblog/": "blind-probe",
+          "https://joshuapsteele.com/writings/": "blind-probe",
+          "https://joshuapsteele.com/posts/": "blind-probe",
+          "https://joshuapsteele.com/post/": "blind-probe",
+          "https://joshuapsteele.com/writing/": "blind-probe",
+          "https://joshuapsteele.com/articles/": "blind-probe",
+          "https://joshuapsteele.com/article/": "blind-probe",
+          "https://joshuapsteele.com/essays/": "blind-probe",
+          "https://joshuapsteele.com/journal/": "blind-probe",
+          "https://joshuapsteele.com/weeknotes/": "blind-probe",
+          "https://joshuapsteele.com/archive/": "blind-probe",
+          "https://joshuapsteele.com/work/": "blind-probe",
+          "https://joshuapsteele.com/projects/": "blind-probe",
+          "https://joshuapsteele.com/portfolio/": "blind-probe",
+          "https://joshuapsteele.com/gallery/": "blind-probe",
+          "https://joshuapsteele.com/galleries/": "blind-probe",
+          "https://joshuapsteele.com/albums/": "blind-probe",
+          "https://joshuapsteele.com/photography/": "blind-probe",
+          "https://joshuapsteele.com/photos/": "blind-probe",
+          "https://joshuapsteele.com/art/": "blind-probe",
+          "https://joshuapsteele.com/illustration/": "blind-probe",
+          "https://joshuapsteele.com/artwork/": "blind-probe",
+          "https://joshuapsteele.com/music/": "blind-probe",
+          "https://joshuapsteele.com/discography/": "blind-probe",
+          "https://joshuapsteele.com/tracks/": "blind-probe",
+          "https://joshuapsteele.com/videos/": "blind-probe",
+          "https://joshuapsteele.com/film/": "blind-probe",
+          "https://joshuapsteele.com/animation/": "blind-probe",
+          "https://joshuapsteele.com/games/": "blind-probe",
+          "https://joshuapsteele.com/game/": "blind-probe",
+          "https://joshuapsteele.com/interactive/": "blind-probe",
+          "https://joshuapsteele.com/exhibitions/": "blind-probe",
+          "https://joshuapsteele.com/design/": "blind-probe",
+          "https://joshuapsteele.com/apps/": "blind-probe",
+          "https://joshuapsteele.com/software/": "blind-probe",
+          "https://joshuapsteele.com/tools/": "blind-probe",
+          "https://joshuapsteele.com/books/": "blind-probe",
+          "https://joshuapsteele.com/guides/": "blind-probe",
+          "https://joshuapsteele.com/resources/": "blind-probe",
+          "https://joshuapsteele.com/experiments/": "blind-probe",
+          "https://joshuapsteele.com/sounds/": "blind-probe",
+          "https://joshuapsteele.com/hustles/": "blind-probe",
+          "https://joshuapsteele.com/events/": "blind-probe",
+          "https://joshuapsteele.com/shows/": "blind-probe",
+          "https://joshuapsteele.com/gigs/": "blind-probe",
+          "https://joshuapsteele.com/tour/": "blind-probe",
+          "https://joshuapsteele.com/live/": "blind-probe",
+          "https://joshuapsteele.com/performances/": "blind-probe",
+          "https://joshuapsteele.com/readings/": "blind-probe",
+          "https://joshuapsteele.com/workshops/": "blind-probe",
+          "https://joshuapsteele.com/topics/": "topic-hub",
+          "https://joshuapsteele.com/topic/": "topic-hub",
+          "https://joshuapsteele.com/tags/": "topic-hub",
+          "https://joshuapsteele.com/tag/": "topic-hub",
+          "https://joshuapsteele.com/categories/": "topic-hub",
+          "https://joshuapsteele.com/category/": "topic-hub",
+          "https://joshuapsteele.com/blank/": "content-index",
+          "https://joshuapsteele.com/studio-index/": "content-index",
+          "https://joshuapsteele.com/tags/fitness/": "sitemap",
+          "https://joshuapsteele.com/categories/personal/": "sitemap",
+          "https://joshuapsteele.com/tags/recommendations/": "sitemap",
+          "https://joshuapsteele.com/tags/reviews/": "sitemap",
+          "https://joshuapsteele.com/tags/soccer/": "sitemap",
+          "https://joshuapsteele.com/tags/sports/": "sitemap",
+          "https://joshuapsteele.com/tags/anxiety/": "sitemap",
+          "https://joshuapsteele.com/tags/health/": "sitemap",
+          "https://joshuapsteele.com/tags/medical/": "sitemap",
+          "https://joshuapsteele.com/tags/tips/": "sitemap",
+          "https://joshuapsteele.com/tags/appliances/": "sitemap",
+          "https://joshuapsteele.com/tags/home-improvement/": "sitemap",
+          "https://joshuapsteele.com/tags/right-to-repair/": "sitemap",
+          "https://joshuapsteele.com/tags/worldcup/": "sitemap",
+          "https://joshuapsteele.com/tags/hymn/": "sitemap",
+          "https://joshuapsteele.com/tags/immigration/": "sitemap",
+          "https://joshuapsteele.com/tags/justice/": "sitemap",
+          "https://joshuapsteele.com/categories/poem/": "sitemap",
+          "https://joshuapsteele.com/tags/poetry/": "sitemap",
+          "https://joshuapsteele.com/categories/politics/": "sitemap",
+          "https://joshuapsteele.com/tags/poverty/": "sitemap",
+          "https://joshuapsteele.com/categories/theology/": "sitemap",
+          "https://joshuapsteele.com/tags/indieweb/": "sitemap",
+          "https://joshuapsteele.com/tags/posse/": "sitemap",
+          "https://joshuapsteele.com/categories/diy/": "sitemap",
+          "https://joshuapsteele.com/tags/barth/": "sitemap",
+          "https://joshuapsteele.com/tags/bonhoeffer/": "sitemap",
+          "https://joshuapsteele.com/categories/dissertation/": "sitemap",
+          "https://joshuapsteele.com/categories/productivity/": "sitemap",
+          "https://joshuapsteele.com/tags/ai/": "sitemap",
+          "https://joshuapsteele.com/tags/bible-study/": "sitemap",
+          "https://joshuapsteele.com/tags/claude/": "sitemap",
+          "https://joshuapsteele.com/tags/logos/": "sitemap",
+          "https://joshuapsteele.com/tags/mcp/": "sitemap",
+          "https://joshuapsteele.com/tags/software/": "sitemap",
+          "https://joshuapsteele.com/tags/ethics/": "sitemap",
+          "https://joshuapsteele.com/tags/acna/": "sitemap",
+          "https://joshuapsteele.com/tags/anglican/": "sitemap",
+          "https://joshuapsteele.com/categories/ministry/": "sitemap",
+          "https://joshuapsteele.com/tags/ordination/": "sitemap",
+          "https://joshuapsteele.com/tags/death/": "sitemap",
+          "https://joshuapsteele.com/tags/family/": "sitemap",
+          "https://joshuapsteele.com/tags/grief/": "sitemap",
+          "https://joshuapsteele.com/tags/dispensationalism/": "sitemap",
+          "https://joshuapsteele.com/tags/eschatology/": "sitemap",
+          "https://joshuapsteele.com/tags/evangelicalism/": "sitemap",
+          "https://joshuapsteele.com/tags/revelation/": "sitemap",
+          "https://joshuapsteele.com/tags/politics/": "sitemap",
+          "https://joshuapsteele.com/tags/economics/": "sitemap",
+          "https://joshuapsteele.com/categories/ethics/": "sitemap",
+          "https://joshuapsteele.com/tags/ice/": "sitemap",
+          "https://joshuapsteele.com/tags/romans-13/": "sitemap",
+          "https://joshuapsteele.com/tags/theology/": "sitemap",
+          "https://joshuapsteele.com/tags/prophetic-witness/": "sitemap",
+          "https://joshuapsteele.com/tags/authoritarianism/": "sitemap",
+          "https://joshuapsteele.com/tags/bible/": "sitemap",
+          "https://joshuapsteele.com/tags/fascism/": "sitemap",
+          "https://joshuapsteele.com/tags/matthew-25/": "sitemap",
+          "https://joshuapsteele.com/tags/freedom/": "sitemap",
+          "https://joshuapsteele.com/tags/ministry/": "sitemap",
+          "https://joshuapsteele.com/tags/hell/": "sitemap",
+          "https://joshuapsteele.com/tags/universalism/": "sitemap",
+          "https://joshuapsteele.com/tags/democracy/": "sitemap",
+          "https://joshuapsteele.com/tags/protest/": "sitemap",
+          "https://joshuapsteele.com/tags/sea-shanty/": "sitemap",
+          "https://joshuapsteele.com/tags/song/": "sitemap",
+          "https://joshuapsteele.com/tags/music/": "sitemap",
+          "https://joshuapsteele.com/tags/public-health/": "sitemap",
+          "https://joshuapsteele.com/tags/satire/": "sitemap",
+          "https://joshuapsteele.com/tags/political-theology/": "sitemap",
+          "https://joshuapsteele.com/tags/nationalism/": "sitemap",
+          "https://joshuapsteele.com/tags/diy/": "sitemap",
+          "https://joshuapsteele.com/tags/tools/": "sitemap",
+          "https://joshuapsteele.com/tags/civic-engagement/": "sitemap",
+          "https://joshuapsteele.com/tags/prayer/": "sitemap",
+          "https://joshuapsteele.com/tags/church/": "sitemap",
+          "https://joshuapsteele.com/tags/conflict/": "sitemap",
+          "https://joshuapsteele.com/tags/discipleship/": "sitemap",
+          "https://joshuapsteele.com/tags/interpretation/": "sitemap",
+          "https://joshuapsteele.com/tags/christian-nationalism/": "sitemap",
+          "https://joshuapsteele.com/tags/essay/": "sitemap",
+          "https://joshuapsteele.com/tags/humanism/": "sitemap",
+          "https://joshuapsteele.com/tags/misanthropy/": "sitemap",
+          "https://joshuapsteele.com/tags/link/": "sitemap",
+          "https://joshuapsteele.com/tags/quote/": "sitemap",
+          "https://joshuapsteele.com/tags/life/": "sitemap",
+          "https://joshuapsteele.com/tags/purpose/": "sitemap",
+          "https://joshuapsteele.com/tags/friendship/": "sitemap",
+          "https://joshuapsteele.com/tags/introversion/": "sitemap",
+          "https://joshuapsteele.com/tags/isolation/": "sitemap",
+          "https://joshuapsteele.com/tags/loneliness/": "sitemap",
+          "https://joshuapsteele.com/tags/civic-virtue/": "sitemap",
+          "https://joshuapsteele.com/tags/constitutionalism/": "sitemap",
+          "https://joshuapsteele.com/tags/list/": "sitemap",
+          "https://joshuapsteele.com/tags/umberto-eco/": "sitemap",
+          "https://joshuapsteele.com/tags/tyranny/": "sitemap",
+          "https://joshuapsteele.com/tags/youtube/": "sitemap",
+          "https://joshuapsteele.com/tags/social-justice/": "sitemap",
+          "https://joshuapsteele.com/tags/authorization/": "sitemap",
+          "https://joshuapsteele.com/tags/openfga/": "sitemap",
+          "https://joshuapsteele.com/tags/rebac/": "sitemap",
+          "https://joshuapsteele.com/tags/security/": "sitemap",
+          "https://joshuapsteele.com/tags/zanzibar/": "sitemap",
+          "https://joshuapsteele.com/tags/civil-rights/": "sitemap",
+          "https://joshuapsteele.com/tags/constitutional-law/": "sitemap",
+          "https://joshuapsteele.com/tags/due-process/": "sitemap",
+          "https://joshuapsteele.com/tags/habeas-corpus/": "sitemap",
+          "https://joshuapsteele.com/tags/computer/": "sitemap",
+          "https://joshuapsteele.com/tags/laptop/": "sitemap",
+          "https://joshuapsteele.com/tags/questions/": "sitemap",
+          "https://joshuapsteele.com/tags/technology/": "sitemap",
+          "https://joshuapsteele.com/tags/hugo/": "sitemap",
+          "https://joshuapsteele.com/tags/80-20/": "sitemap",
+          "https://joshuapsteele.com/tags/reading/": "sitemap",
+          "https://joshuapsteele.com/tags/writing/": "sitemap",
+          "https://joshuapsteele.com/tags/kids/": "sitemap",
+          "https://joshuapsteele.com/tags/parenting/": "sitemap",
+          "https://joshuapsteele.com/tags/edc/": "sitemap",
+          "https://joshuapsteele.com/tags/refugees/": "sitemap",
+          "https://joshuapsteele.com/tags/drafts/": "sitemap",
+          "https://joshuapsteele.com/tags/personality/": "sitemap",
+          "https://joshuapsteele.com/tags/book-of-common-prayer/": "sitemap",
+          "https://joshuapsteele.com/tags/easter/": "sitemap",
+          "https://joshuapsteele.com/tags/holy-week/": "sitemap",
+          "https://joshuapsteele.com/tags/resurrection/": "sitemap",
+          "https://joshuapsteele.com/tags/home-gym/": "sitemap",
+          "https://joshuapsteele.com/tags/weightlifting/": "sitemap",
+          "https://joshuapsteele.com/tags/local-churches/": "sitemap",
+          "https://joshuapsteele.com/tags/worship-styles/": "sitemap",
+          "https://joshuapsteele.com/tags/internet/": "sitemap",
+          "https://joshuapsteele.com/tags/books/": "sitemap",
+          "https://joshuapsteele.com/tags/communication/": "sitemap",
+          "https://joshuapsteele.com/tags/leadership/": "sitemap",
+          "https://joshuapsteele.com/tags/relationships/": "sitemap",
+          "https://joshuapsteele.com/tags/soft-skills/": "sitemap",
+          "https://joshuapsteele.com/tags/learning/": "sitemap",
+          "https://joshuapsteele.com/tags/programming/": "sitemap",
+          "https://joshuapsteele.com/tags/software-engineering/": "sitemap",
+          "https://joshuapsteele.com/tags/linux/": "sitemap",
+          "https://joshuapsteele.com/tags/coding/": "sitemap",
+          "https://joshuapsteele.com/tags/coding-bootcamp/": "sitemap",
+          "https://joshuapsteele.com/tags/testing/": "sitemap",
+          "https://joshuapsteele.com/tags/chatgpt/": "sitemap",
+          "https://joshuapsteele.com/tags/abuse/": "sitemap",
+          "https://joshuapsteele.com/tags/safety/": "sitemap",
+          "https://joshuapsteele.com/tags/career/": "sitemap",
+          "https://joshuapsteele.com/tags/advent/": "sitemap",
+          "https://joshuapsteele.com/tags/isaiah/": "sitemap",
+          "https://joshuapsteele.com/tags/sermons/": "sitemap",
+          "https://joshuapsteele.com/tags/mental-health/": "sitemap",
+          "https://joshuapsteele.com/tags/research/": "sitemap",
+          "https://joshuapsteele.com/tags/anglican-compass/": "sitemap",
+          "https://joshuapsteele.com/tags/opinion/": "sitemap",
+          "https://joshuapsteele.com/tags/social-media/": "sitemap",
+          "https://joshuapsteele.com/tags/womens-ordination/": "sitemap",
+          "https://joshuapsteele.com/tags/racism/": "sitemap",
+          "https://joshuapsteele.com/tags/collect/": "sitemap",
+          "https://joshuapsteele.com/tags/juneteenth/": "sitemap",
+          "https://joshuapsteele.com/tags/trinity/": "sitemap",
+          "https://joshuapsteele.com/tags/race/": "sitemap",
+          "https://joshuapsteele.com/tags/copywriting/": "sitemap",
+          "https://joshuapsteele.com/tags/religion/": "sitemap",
+          "https://joshuapsteele.com/tags/sermon-on-the-mount/": "sitemap",
+          "https://joshuapsteele.com/tags/how-to-think/": "sitemap",
+          "https://joshuapsteele.com/tags/jenson/": "sitemap",
+          "https://joshuapsteele.com/tags/biography/": "sitemap",
+          "https://joshuapsteele.com/tags/history/": "sitemap",
+          "https://joshuapsteele.com/tags/romans/": "sitemap",
+          "https://joshuapsteele.com/tags/john/": "sitemap",
+          "https://joshuapsteele.com/tags/unity/": "sitemap",
+          "https://joshuapsteele.com/when-will-thy-kingdom-come-the-timing-and-agency-of-the-kingdom-of-god-in-the-lords-prayer/": "sitemap",
+          "https://joshuapsteele.com/into-the-far-country/": "sitemap",
+          "https://joshuapsteele.com/only-the-suffering-god-can-help/": "sitemap",
+          "https://joshuapsteele.com/what-are-your-must-own-biblical-and-theological-studies-reference-works/": "sitemap",
+          "https://joshuapsteele.com/help-me-achieve-my-home-gym-dream/": "sitemap",
+          "https://joshuapsteele.com/learn-more-about-rublevs-trinity-icon-video/": "sitemap",
+          "https://joshuapsteele.com/lets-learn-how-to-be-bored-again/": "sitemap",
+          "https://joshuapsteele.com/theology-is-exegesis-john-webster-on-what-we-can-learn-from-barth-and-bonhoeffer/": "sitemap",
+          "https://joshuapsteele.com/use-rapoports-rules-for-better-conversations-and-disagreements/": "sitemap",
+          "https://joshuapsteele.com/theres-more-than-one-kind-of-priesthood-in-the-new-testament/": "sitemap",
+          "https://joshuapsteele.com/womens-ordination-debates-in-anglicanism-the-2017-acna-report-and-the-2003-amia-report/": "sitemap",
+          "https://joshuapsteele.com/want-to-learn-more-about-womens-ordination-debates-within-anglicanism-start-with-these-resources/": "sitemap",
+          "https://joshuapsteele.com/barth-the-bible-and-what-we-ought-to-do/": "sitemap",
+          "https://joshuapsteele.com/karl-barths-gesamtausgabe-complete-collected-edition-a-list-of-works/": "sitemap",
+          "https://joshuapsteele.com/a-list-of-karl-barths-sermons/": "sitemap",
+          "https://joshuapsteele.com/whats-the-relationship-between-biblical-and-systematic-dogmatic-theology/": "sitemap",
+          "https://joshuapsteele.com/spirit-flesh-restoration-and-sublimation/": "sitemap",
+          "https://joshuapsteele.com/stickking-to-the-slow-carb-diet/": "sitemap",
+          "https://joshuapsteele.com/barth-and-bonhoeffer-on-religions-false-gods/": "sitemap",
+          "https://joshuapsteele.com/karl-barths-reversal-on-the-knowledge-of-good-and-evil/": "sitemap",
+          "https://joshuapsteele.com/i-wish-these-2-barth-and-bonhoeffer-books-would-come-out-sooner/": "sitemap",
+          "https://joshuapsteele.com/a-prayer-of-confession/": "sitemap",
+          "https://joshuapsteele.com/what-blogs-are-you-reading/": "sitemap",
+          "https://joshuapsteele.com/help-me-stickk-to-my-writing-habit/": "sitemap",
+          "https://joshuapsteele.com/bonhoeffers-definition-of-religion-in-prison-15-facets-aspects/": "sitemap",
+          "https://joshuapsteele.com/introduction-to-christian-theology-a-draft-syllabus/": "sitemap",
+          "https://joshuapsteele.com/my-karl-barth-software-drama-continues-inaccurate-page-numbers-in-logos/": "sitemap",
+          "https://joshuapsteele.com/preparing-the-way-of-the-lord-in-the-wilderness-luke-31-6/": "sitemap",
+          "https://joshuapsteele.com/john-the-baptist-fulfills-the-words-of-isaiah/": "sitemap",
+          "https://joshuapsteele.com/update-you-can-now-search-for-bible-citations-in-the-digital-karl-barth-library-again/": "sitemap",
+          "https://joshuapsteele.com/this-is-a-fantastic-wooden-pencil-mitsubishi-9850/": "sitemap",
+          "https://joshuapsteele.com/whats-gone-wrong-with-the-digital-karl-barth-library/": "sitemap",
+          "https://joshuapsteele.com/justification-and-sanctification/": "sitemap",
+          "https://joshuapsteele.com/tags/seminary/": "sitemap",
+          "https://joshuapsteele.com/take-up-your-tongue-and-follow-jesus/": "sitemap",
+          "https://joshuapsteele.com/systematic-theologies-a-list-help-me-update/": "sitemap",
+          "https://joshuapsteele.com/heres-the-template-i-use-to-take-notes-on-books-i-read/": "sitemap",
+          "https://joshuapsteele.com/what-im-reading-this-fall/": "sitemap",
+          "https://joshuapsteele.com/8-questions-to-ask-while-reading-theology/": "sitemap",
+          "https://joshuapsteele.com/eva-joy-steele-a-birth-story/": "sitemap",
+          "https://joshuapsteele.com/what-theologians-should-do/": "sitemap",
+          "https://joshuapsteele.com/what-attracts-people-to-anglicanism-heres-my-take/": "sitemap",
+          "https://joshuapsteele.com/tags/jordan-peterson/": "sitemap",
+          "https://joshuapsteele.com/two-more-pieces-about-jordan-peterson/": "sitemap",
+          "https://joshuapsteele.com/the-four-tendencies-4-ways-you-can-play-to-your-personality-strengths/": "sitemap",
+          "https://joshuapsteele.com/hate-running-try-rucking-instead/": "sitemap",
+          "https://joshuapsteele.com/heres-the-elevator-pitch-for-my-dissertation-proposal-scriptural-but-not-religious/": "sitemap",
+          "https://joshuapsteele.com/the-grain-of-the-gospel-why-christians-should-care-about-food-ethics/": "sitemap",
+          "https://joshuapsteele.com/what-to-make-of-jordan-peterson-some-takes-then-my-own/": "sitemap",
+          "https://joshuapsteele.com/do-more-better-tim-challies-excellent-little-book-on-personal-productivity-could-change-your-life/": "sitemap",
+          "https://joshuapsteele.com/please-dont-leave-me-alone-on-male-friendships-or-the-lack-thereof/": "sitemap",
+          "https://joshuapsteele.com/i-need-to-develop-a-writing-habit-do-you/": "sitemap",
+          "https://joshuapsteele.com/getting-back-on-the-getting-things-done-productivity-bandwagon/": "sitemap",
+          "https://joshuapsteele.com/tags/gtd/": "sitemap",
+          "https://joshuapsteele.com/the-truth-is-not-a-cave/": "sitemap",
+          "https://joshuapsteele.com/dangerous-beauty-phoenix-grand-canyon-trip-2018/": "sitemap",
+          "https://joshuapsteele.com/tags/travel/": "sitemap",
+          "https://joshuapsteele.com/one-simple-trick-helps-read-faster-ph-d-student/": "sitemap",
+          "https://joshuapsteele.com/christian-daily-office-5-things-can-learn-morning-evening-prayer/": "sitemap",
+          "https://joshuapsteele.com/top-3-reasons-im-anglican-christian/": "sitemap",
+          "https://joshuapsteele.com/cut-positivity-crap-frustrates/": "sitemap",
+          "https://joshuapsteele.com/go-sleep-kids-bible-psalm-127-says-productivity/": "sitemap",
+          "https://joshuapsteele.com/3-confessions-expectant-father/": "sitemap",
+          "https://joshuapsteele.com/mental-models-helpful-model-theology/": "sitemap",
+          "https://joshuapsteele.com/prayer-of-st-thomas-aquinas-before-study/": "sitemap",
+          "https://joshuapsteele.com/questions-to-ask-when-you-study-bible/": "sitemap",
+          "https://joshuapsteele.com/5-books-every-christian-read/": "sitemap",
+          "https://joshuapsteele.com/80-20-approach-christian-life-2-reasons-christians-care-pareto-principle/": "sitemap",
+          "https://joshuapsteele.com/tags/hope/": "sitemap",
+          "https://joshuapsteele.com/the-expectationally-challenged-christian/": "sitemap",
+          "https://joshuapsteele.com/hermeneutical-implications-scriptures-theological-location/": "sitemap",
+          "https://joshuapsteele.com/principles-10-imperatives-good-life/": "sitemap",
+          "https://joshuapsteele.com/testimony-brief/": "sitemap",
+          "https://joshuapsteele.com/tags/podcasts/": "sitemap",
+          "https://joshuapsteele.com/my-favorite-podcasts/": "sitemap",
+          "https://joshuapsteele.com/it-is-finished-so-get-to-work-an-ascension-sermon/": "sitemap",
+          "https://joshuapsteele.com/maundy-thursday-sermon-the-lasting-supper-luke-2214-30/": "sitemap",
+          "https://joshuapsteele.com/is-the-well-equipped-christian-worth-it/": "sitemap",
+          "https://joshuapsteele.com/getting-ahead-in-gods-upside-down-kingdom/": "sitemap",
+          "https://joshuapsteele.com/to-be-or-not-to-be-religious-a-clarification-of-karl-barths-and-dietrich-bonhoeffers-divergence-and-convergence-regarding-religion/": "sitemap",
+          "https://joshuapsteele.com/a-christmas-homily/": "sitemap",
+          "https://joshuapsteele.com/tags/christmas/": "sitemap",
+          "https://joshuapsteele.com/works-on-barth-and-bonhoeffer/": "sitemap",
+          "https://joshuapsteele.com/christians-and-wealth/": "sitemap",
+          "https://joshuapsteele.com/following-jesus-beyond-the-bandwagon/": "sitemap",
+          "https://joshuapsteele.com/barth-bonhoeffer-the-theological-critique-of-religion-my-reading-list-this-fall/": "sitemap",
+          "https://joshuapsteele.com/a-ridiculously-helpful-markdown-tutorial/": "sitemap",
+          "https://joshuapsteele.com/the-feast-of-st-james-the-apostle-a-homily-for-ministers/": "sitemap",
+          "https://joshuapsteele.com/tags/ecclesiology/": "sitemap",
+          "https://joshuapsteele.com/frustrated-with-church-youre-the-problem/": "sitemap",
+          "https://joshuapsteele.com/frustrated-with-church-join-the-club/": "sitemap",
+          "https://joshuapsteele.com/tags/cedarville/": "sitemap",
+          "https://joshuapsteele.com/tags/college/": "sitemap",
+          "https://joshuapsteele.com/thank-god-i-went-to-cedarville/": "sitemap",
+          "https://joshuapsteele.com/how-do-you-want-to-be-remembered/": "sitemap",
+          "https://joshuapsteele.com/lets-take-seth-godin-to-church/": "sitemap",
+          "https://joshuapsteele.com/what-are-you-afraid-of/": "sitemap",
+          "https://joshuapsteele.com/what-im-reading/": "sitemap",
+          "https://joshuapsteele.com/kettlebell-swings-back-balm-for-the-sedentary-seminarian/": "sitemap",
+          "https://joshuapsteele.com/the-grooms-big-day/": "sitemap",
+          "https://joshuapsteele.com/son-of-man-can-your-bones-live/": "sitemap",
+          "https://joshuapsteele.com/reading-recommendations-barths-bonhoeffers-false-gods/": "sitemap",
+          "https://joshuapsteele.com/three-recent-sermons/": "sitemap",
+          "https://joshuapsteele.com/sermon-the-challenge-of-christmas-light/": "sitemap",
+          "https://joshuapsteele.com/improvising-church-state/": "sitemap",
+          "https://joshuapsteele.com/tags/atonement/": "sitemap",
+          "https://joshuapsteele.com/theology-outline/": "sitemap",
+          "https://joshuapsteele.com/faithful-faith-in-a-faithful-god-romans-1-1-17/": "sitemap",
+          "https://joshuapsteele.com/the-prodigal-son-part-2-introduction-to-romans/": "sitemap",
+          "https://joshuapsteele.com/morning-prayer-homily-mark-8-11-21/": "sitemap",
+          "https://joshuapsteele.com/morning-prayer-homily-mark-1-29-45/": "sitemap",
+          "https://joshuapsteele.com/morning-prayer-homily-james-2-1-13/": "sitemap",
+          "https://joshuapsteele.com/jesus-is-not-just-one-of-us/": "sitemap",
+          "https://joshuapsteele.com/pentecost-songs-and-scripture/": "sitemap",
+          "https://joshuapsteele.com/what-does-it-mean-to-be-human/": "sitemap",
+          "https://joshuapsteele.com/tags/church-unity/": "sitemap",
+          "https://joshuapsteele.com/tags/conferences/": "sitemap",
+          "https://joshuapsteele.com/disunity-in-the-church-absurd/": "sitemap",
+          "https://joshuapsteele.com/the-hope-of-the-holy-innocents/": "sitemap",
+          "https://joshuapsteele.com/the-brokenhearted-god/": "sitemap",
+          "https://joshuapsteele.com/give-thanks/": "sitemap",
+          "https://joshuapsteele.com/barth-on-the-wilderness-temptations-1-stones-into-bread/": "sitemap",
+          "https://joshuapsteele.com/tags/lent/": "sitemap",
+          "https://joshuapsteele.com/presenting-on-barth-at-2015-southeastern-ets/": "sitemap",
+          "https://joshuapsteele.com/barth-on-the-wilderness-temptations-2-christendoms-cost-worship-satan/": "sitemap",
+          "https://joshuapsteele.com/barth-on-the-wilderness-temptations-3-the-leap-of-false-faith/": "sitemap",
+          "https://joshuapsteele.com/who-am-i-to-be-a-theologian/": "sitemap",
+          "https://joshuapsteele.com/my-uncle-timothy-steele/": "sitemap",
+          "https://joshuapsteele.com/white-noise-bhopal-and-the-hyperreal-fear-of-death/": "sitemap",
+          "https://joshuapsteele.com/my-sermon-our-help/": "sitemap",
+          "https://joshuapsteele.com/my-2014-regional-ets-paper-reconciliation-and-the-lack-thereof/": "sitemap",
+          "https://joshuapsteele.com/ok-maybe-a-bit-more-on-cedarville/": "sitemap",
+          "https://joshuapsteele.com/concerning-romans/": "sitemap",
+          "https://joshuapsteele.com/cedarville-2/": "sitemap",
+          "https://joshuapsteele.com/peru-2014/": "sitemap",
+          "https://joshuapsteele.com/my-regional-ets-presentation-reconciliation-and-the-lack-thereof/": "sitemap",
+          "https://joshuapsteele.com/the-perfect-translation/": "sitemap",
+          "https://joshuapsteele.com/tags/reconciliation/": "sitemap",
+          "https://joshuapsteele.com/the-epistle-to-philemon/": "sitemap",
+          "https://joshuapsteele.com/black-friday-book-recommendation-the-economy-of-desire/": "sitemap",
+          "https://joshuapsteele.com/tags/pacifism/": "sitemap",
+          "https://joshuapsteele.com/silence-and-violence/": "sitemap",
+          "https://joshuapsteele.com/holy-trinity/": "sitemap",
+          "https://joshuapsteele.com/psalm-2-quare-fremuerunt-gentes/": "sitemap",
+          "https://joshuapsteele.com/volf-on-divine-violence/": "sitemap",
+          "https://joshuapsteele.com/down-with-the-pacifists/": "sitemap",
+          "https://joshuapsteele.com/on-scripture/": "sitemap",
+          "https://joshuapsteele.com/king-jesus-kingdom-gospel/": "sitemap",
+          "https://joshuapsteele.com/20130719alabama-update/": "sitemap",
+          "https://joshuapsteele.com/requiescas-in-pace-mi-avia/": "sitemap",
+          "https://joshuapsteele.com/inductive-bible-study-7-steps-amy-chase-ashley/": "sitemap",
+          "https://joshuapsteele.com/unrighteous-anger-yoda-jonah-nahum-and-us/": "sitemap",
+          "https://joshuapsteele.com/my-unforgettable-cedarville-experience-pt-2-2/": "sitemap",
+          "https://joshuapsteele.com/a-farewell-to-cedarville/": "sitemap",
+          "https://joshuapsteele.com/honors-grace-and-generosity/": "sitemap",
+          "https://joshuapsteele.com/on-buildingburning-bridges/": "sitemap",
+          "https://joshuapsteele.com/let-there-be-light-my-resignation/": "sitemap",
+          "https://joshuapsteele.com/open-apology/": "sitemap",
+          "https://joshuapsteele.com/oh-cedarville/": "sitemap",
+          "https://joshuapsteele.com/deuteronomy-6/": "sitemap",
+          "https://joshuapsteele.com/tags/government/": "sitemap",
+          "https://joshuapsteele.com/romans-13/": "sitemap",
+          "https://joshuapsteele.com/open-letter-to-cedarville-admins-and-trustees/": "sitemap",
+          "https://joshuapsteele.com/reconciliation-and-the-lack-thereof-atonement-ecclesiology-and-the-unity-of-god/": "sitemap",
+          "https://joshuapsteele.com/an-explanation/": "sitemap",
+          "https://joshuapsteele.com/cedarville-let-there-be-light-pt-2/": "sitemap",
+          "https://joshuapsteele.com/cedarville-let-there-be-light-pt-1/": "sitemap",
+          "https://joshuapsteele.com/tags/creation/": "sitemap",
+          "https://joshuapsteele.com/sacrificing-scripture-on-the-altars-of-our-own-agendas/": "sitemap",
+          "https://joshuapsteele.com/creation-and-doxology-pt-3/": "sitemap",
+          "https://joshuapsteele.com/creation-and-doxology-pt-2/": "sitemap",
+          "https://joshuapsteele.com/creation-and-doxology-pt-1/": "sitemap",
+          "https://joshuapsteele.com/my-unforgettable-cedarville-experience/": "sitemap",
+          "https://joshuapsteele.com/wedding-vows/": "sitemap",
+          "https://joshuapsteele.com/romans-distilled-paraphrased/": "sitemap",
+          "https://joshuapsteele.com/unity/": "sitemap",
+          "https://joshuapsteele.com/the-good-news-of-christmas/": "sitemap",
+          "https://joshuapsteele.com/church_and_state/": "sitemap",
+          "https://joshuapsteele.com/tags/proverbs/": "sitemap",
+          "https://joshuapsteele.com/bible-poverty-proverbs/": "sitemap",
+          "https://joshuapsteele.com/tags/high-school/": "sitemap",
+          "https://joshuapsteele.com/a-valediction/": "sitemap",
+          "https://joshuapsteele.com/mothers-day-poem/": "sitemap",
+          "https://joshuapsteele.com/amazon-purchases/": "sitemap",
+          "https://joshuapsteele.com/caveats/": "sitemap",
+          "https://joshuapsteele.com/cv/": "sitemap",
+          "https://joshuapsteele.com/files/": "sitemap",
+          "https://joshuapsteele.com/resist/": "sitemap",
+          "https://joshuapsteele.com/lists/": "sitemap",
+          "https://joshuapsteele.com/my-story/": "sitemap",
+          "https://joshuapsteele.com/pages/": "sitemap",
+          "https://joshuapsteele.com/philosophy-of-ministry/": "sitemap",
+          "https://joshuapsteele.com/popular/": "sitemap",
+          "https://joshuapsteele.com/search/": "sitemap",
+          "https://joshuapsteele.com/sermons/": "sitemap",
+          "https://joshuapsteele.com/catechism/": "sitemap",
+          "https://joshuapsteele.com/wishlist/": "sitemap",
+          "https://joshuapsteele.com/philosophy-of-ministry": "content-index",
+          "https://joshuapsteele.com/sermons": "slashes-index",
+          "https://joshuapsteele.com/essays": "slashes-index",
+          "https://joshuapsteele.com/now": "slashes-index",
+          "https://joshuapsteele.com/my-story": "content-index",
+          "https://joshuapsteele.com/cv": "slashes-index",
+          "https://joshuapsteele.com/slashes": "content-index",
+          "https://joshuapsteele.com/search": "content-index",
+          "https://joshuapsteele.com/notes/page/2/": "content-index",
+          "https://joshuapsteele.com/tech-stack/": "content-index",
+          "https://joshuapsteele.com/yep": "slashes-index",
+          "https://joshuapsteele.com/wish-list": "slashes-index",
+          "https://joshuapsteele.com/verify": "slashes-index",
+          "https://joshuapsteele.com/uses": "slashes-index",
+          "https://joshuapsteele.com/til": "slashes-index",
+          "https://joshuapsteele.com/someday": "slashes-index",
+          "https://joshuapsteele.com/save": "slashes-index",
+          "https://joshuapsteele.com/resist": "slashes-index",
+          "https://joshuapsteele.com/questions": "slashes-index",
+          "https://joshuapsteele.com/posse": "slashes-index",
+          "https://joshuapsteele.com/nope": "slashes-index",
+          "https://joshuapsteele.com/lists": "slashes-index",
+          "https://joshuapsteele.com/interests": "slashes-index",
+          "https://joshuapsteele.com/ideas": "slashes-index",
+          "https://joshuapsteele.com/follow": "slashes-index",
+          "https://joshuapsteele.com/defaults": "slashes-index",
+          "https://joshuapsteele.com/death": "slashes-index",
+          "https://joshuapsteele.com/contact": "slashes-index",
+          "https://joshuapsteele.com/colophon": "slashes-index",
+          "https://joshuapsteele.com/chipotle": "slashes-index",
+          "https://joshuapsteele.com/changelog": "slashes-index",
+          "https://joshuapsteele.com/caveats": "slashes-index",
+          "https://joshuapsteele.com/carry": "slashes-index",
+          "https://joshuapsteele.com/canon": "slashes-index",
+          "https://joshuapsteele.com/bookmarks": "slashes-index",
+          "https://joshuapsteele.com/blogroll": "slashes-index",
+          "https://joshuapsteele.com/ai": "slashes-index",
+          "https://joshuapsteele.com/about": "slashes-index",
+          "https://joshuapsteele.com/wp-content/uploads/2016/12/Hebrews_10_19-25.pdf": "content-index",
+          "https://joshuapsteele.com/wp-content/uploads/2016/12/The_Argument_Story_of_Romans.pdf": "content-index",
+          "https://joshuapsteele.com/wp-content/uploads/2016/12/Romans_13_1-7_-_A_Contextually-Appropria.pdf": "content-index",
+          "https://joshuapsteele.com/wp-content/uploads/2016/12/Exposition_Paper_Micah_6_1-16.pdf": "content-index",
+          "https://joshuapsteele.com/wp-content/uploads/2016/12/YAHWEHS_RIB_AGAINST_ISRAEL_GERICHTSREDE.pdf": "content-index",
+          "https://joshuapsteele.com/wp-content/uploads/2016/12/Exposition_Paper_Deuteronomy_6_1-15.pdf": "content-index",
+          "https://joshuapsteele.com/wp-content/uploads/2016/12/Creation_and_Doxology_A_Portrait_of_Bibl.pdf": "content-index",
+          "https://joshuapsteele.com/wp-content/uploads/2016/12/Reconciliation_and_the_Lack_Thereof_Aton.pdf": "content-index",
+          "https://joshuapsteele.com/wp-content/uploads/2016/12/On_Scripture.pdf": "content-index",
+          "https://joshuapsteele.com/wp-content/uploads/2016/12/DISUNITY_AS_ECCLESIOLOGICAL_IMPOSSIBILIT-1.pdf": "content-index",
+          "https://joshuapsteele.com/wp-content/uploads/2016/12/What_Does_It_Mean_To_Be_Human_Divided_De.pdf": "content-index",
+          "https://joshuapsteele.com/wp-content/uploads/2016/12/A_Crucicentric_Credo.pdf": "content-index",
+          "https://joshuapsteele.com/wp-content/uploads/2016/12/To-Be-or-Not-To-Be-Religious.pdf": "content-index",
+          "https://joshuapsteele.com/wp-content/uploads/2017/12/STEELE-Theological-Hermeneutics-Essay-PDF.pdf": "content-index",
+          "https://joshuapsteele.com/'+t(a)+'": "content-index",
+          "https://joshuapsteele.com/'+t(s)+'": "content-index",
+          "https://joshuapsteele.com/resources": "content-index",
+          "https://joshuapsteele.com/wishlist": "content-index"
+        }
+      },
+      "crawled_at": "2026-11-01T23:37:56.256Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -6117,6 +8334,10 @@
           "label": "javascript typescript"
         },
         {
+          "slug": "leadership",
+          "label": "leadership"
+        },
+        {
           "slug": "linkedin",
           "label": "linkedin"
         },
@@ -6218,7 +8439,7 @@
         "title": "Do we need 'agentic identity'?",
         "summary": "Agents are here, there, and everywhere, growing in numbers at a pace between fast and breakneck, generating or completing work at some other velocity, and poised to change the world entirely or, like, not much at all. Something must be done.",
         "published_at": "2025-10-14T00:00:00.000Z",
-        "observed_at": "2026-11-01T19:41:55.313Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "article",
         "language": "en-us",
         "dir": "",
@@ -6708,7 +8929,7 @@
           "https://www.joshcanhelp.com/eleventy-custom-content-type-collections": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T19:41:55.313Z"
+      "crawled_at": "2026-11-01T23:37:56.256Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -6887,6 +9108,10 @@
           "label": "research"
         },
         {
+          "slug": "review",
+          "label": "reviews"
+        },
+        {
           "slug": "search",
           "label": "search"
         },
@@ -6897,6 +9122,10 @@
         {
           "slug": "software-engineering",
           "label": "Software engineering"
+        },
+        {
+          "slug": "sport",
+          "label": "sports"
         },
         {
           "slug": "startup",
@@ -6920,7 +9149,7 @@
         "title": "Work — Joshua Baker",
         "summary": "Selected case studies by Joshua Baker, plus the full archive — 140+ projects across two decades of design and engineering.",
         "published_at": "",
-        "observed_at": "2026-11-01T19:41:55.313Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -7161,7 +9390,7 @@
           "https://www.joshuabaker.com/work/banked-pay-by-bank/": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T19:41:55.313Z",
+      "crawled_at": "2026-11-01T23:37:56.256Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,
