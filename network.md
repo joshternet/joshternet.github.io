@@ -271,5 +271,3 @@ Independent websites participating in the Joshternet, discovered and verified by
   <p>JoshBot hasn't found any participating sites to show here yet.</p>
 </div>
 {% endif %}
-
-{% include participant-introductions.html %}
