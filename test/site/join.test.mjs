@@ -44,12 +44,17 @@ test("join page covers identity platforms validate nominate and celebrate", asyn
   assert.match(join, /does not establish participation/i);
   assert.match(join, /not membership success/i);
   assert.match(join, /data-joshternet-skip-link-track/);
+  assert.match(script, /function ensureJoinStart/);
+  assert.match(script, /joshternet-join-started/);
   assert.match(script, /join-start/);
   assert.match(script, /join-platform/);
   assert.match(script, /join-declaration-copy/);
   assert.match(script, /join-check-open/);
   assert.match(script, /join-nominate-open/);
   assert.match(script, /join-share-open/);
+  assert.equal((script.match(/track\("join-start"\)/g) || []).length, 1);
+  assert.match(script, /function ensureJoinStart[\s\S]*track\("join-start"\)/);
+  assert.match(script, /ensureJoinStart\(\);/);
   assert.match(css, /\.join-steps\s*\{/);
   assert.match(css, /\.join-declarations\s*\{/);
   assert.match(nav, /path: \/join\//);

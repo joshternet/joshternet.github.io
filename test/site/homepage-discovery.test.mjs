@@ -42,6 +42,14 @@ test("homepage links Wander, Network, activity, and join paths", async () => {
   assert.match(index, /home-cta__primary/);
   assert.match(index, /home-cta__secondary/);
   assert.match(index, /Join the Joshternet/);
+  assert.match(
+    index,
+    /class="home-cta__primary" href="\{\{ '\/join\/' \| relative_url \}\}"/,
+  );
+  assert.match(
+    index,
+    /class="home-cta__secondary" href="\{\{ '\/wander\/' \| relative_url \}\}"/,
+  );
   assert.doesNotMatch(index, /Explore the network/);
   assert.match(index, /Are you a Josh\? Get yourself connected/);
 });

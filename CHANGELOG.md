@@ -5,7 +5,7 @@
 ### Added
 
 - Guided `/join/` walkthrough for publishing `/.well-known/josh`, choosing a platform (including Cloudflare Worker), validating, optionally nominating, and celebrating after Network listing—linked from the homepage Join CTA.
-- Homepage invitation “Are you a Josh? Get yourself connected.” with Join as the secondary hero action (Wander remains primary); Network stays in nav.
+- Homepage invitation “Are you a Josh? Get yourself connected.” with Join as the primary hero action and Wander secondary; Network stays in nav.
 - Cloudflare Worker platform recipe embeds copy-paste Worker and Wrangler source on `/implement/platforms/cloudflare-worker/` for serving only `/.well-known/josh`.
 - Join-funnel Umami events (`join-start`, `join-platform`, `join-declaration-copy`, `join-check-open`, `join-nominate-open`, `join-share-open`) with link-track skip on dedicated CTAs.
 - Umami custom events for outbound and internal link clicks, inbound referrer classification (member vs other), and privacy-safe UI signals on Search, Network, Wander, Connections, and nominations—no search query text or form PII.
@@ -26,6 +26,7 @@
 ### Fixed
 
 - Connections `connections-select` fires only on deliberate graph/list selections, not `?site=` deep-link initialization.
+- Join guide `join-start` Umami event fires once per session on the first intentional onboarding action (copy, platform, checker, or nominate)—not on `/join/` page load.
 
 ### Changed
 

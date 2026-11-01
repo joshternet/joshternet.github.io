@@ -1,15 +1,19 @@
 /**
  * Goal & Constraints:
  * Join page helpers: copy declarations to the clipboard and emit privacy-safe
- * Umami events (platform/identity enums only). Does not invent membership
- * success or send URLs, names, or free-text fields.
+ * Umami events (platform/identity enums only). join-start fires once per
+ * session on the first intentional onboarding action—not on page load.
+ * Does not invent membership success or send URLs, names, or free-text fields.
  */
 (() => {
+  const JOIN_START_KEY = "joshternet-join-started";
   const root = document.querySelector(".join-steps");
 
   if (!root) {
     return;
   }
+
+  let joinStartMemory = false;
 
   /**
    * @param {string} name
@@ -19,12 +23,45 @@
   function track(name, data) {
     const send = globalThis.joshternetTrack;
 
-    if (typeof send === "function") {
+    if (typeof send !== "function") {
+      return;
+    }
+
+    try {
       send(name, data);
+    } catch {
+      // Analytics must not break joining UX.
     }
   }
 
-  track("join-start");
+  /**
+   * Records join-start once per browser session on first qualifying action.
+   * @returns {void}
+   */
+  function ensureJoinStart() {
+    try {
+      if (globalThis.sessionStorage?.getItem(JOIN_START_KEY) === "1") {
+        return;
+      }
+    } catch {
+      if (joinStartMemory) {
+        return;
+      }
+    }
+
+    if (joinStartMemory) {
+      return;
+    }
+
+    track("join-start");
+    joinStartMemory = true;
+
+    try {
+      globalThis.sessionStorage?.setItem(JOIN_START_KEY, "1");
+    } catch {
+      // In-memory flag already set.
+    }
+  }
 
   const copyStatus = document.querySelector("[data-join-copy-status]");
 
@@ -64,6 +101,8 @@
 
   for (const button of root.querySelectorAll("[data-join-copy]")) {
     button.addEventListener("click", async () => {
+      ensureJoinStart();
+
       const targetId = button.getAttribute("data-join-copy") || "";
       const identity = button.getAttribute("data-join-identity") || "";
       const block = document.getElementById(targetId);
@@ -86,6 +125,7 @@
 
   for (const link of root.querySelectorAll("[data-join-platform]")) {
     link.addEventListener("click", () => {
+      ensureJoinStart();
       const platform = link.getAttribute("data-join-platform") || "";
 
       if (platform) {
@@ -98,6 +138,7 @@
 
   if (checkOpen) {
     checkOpen.addEventListener("click", () => {
+      ensureJoinStart();
       track("join-check-open");
     });
   }
@@ -106,6 +147,7 @@
 
   if (nominateOpen) {
     nominateOpen.addEventListener("click", () => {
+      ensureJoinStart();
       track("join-nominate-open");
     });
   }
