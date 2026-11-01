@@ -25,6 +25,7 @@
 
 ### Fixed
 
+- Connections excludes hub activity-card author links (`activity-card__author-link` / `p-name u-url`) from observed relationships while keeping independently authored homepage links; the summary “sites with observed links” count no longer includes shared-topic-only sites.
 - Connections `connections-select` fires only on deliberate graph/list selections, not `?site=` deep-link initialization.
 - Join guide `join-start` Umami event fires once per session on the first intentional onboarding action (copy, platform, checker, or nominate)—not on `/join/` page load.
 
