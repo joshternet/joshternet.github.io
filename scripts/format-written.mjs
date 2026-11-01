@@ -1,8 +1,9 @@
 /**
  * Goal & Constraints:
- * Format sync-generated text the way CI `format:check` expects, without ever
- * aborting a successful harvest on a Prettier edge case. Skip ignored paths
- * and unsupported parsers. Prefer leaving bytes unchanged over failing the job.
+ * Format sync-generated text the way CI `format:check` expects. Mid-harvest
+ * writers soft-skip Prettier errors so one bad file cannot abort a crawl.
+ * CLI `format:data` and publish gates use strict mode so unformatted output
+ * never ships.
  */
 
 import fs from "node:fs/promises";
@@ -82,11 +83,13 @@ export async function resolveGeneratedPaths(root, patterns) {
 
 /**
  * Formats text with the repo Prettier config when the path is supported.
- * On Prettier errors, returns the original text so sync writes still succeed.
+ * Soft mode (default): on Prettier errors, returns the original text.
+ * Strict mode: rethrows so CLI/publish gates fail closed.
  * @param {string} filePath
  * @param {string} text
  * @param {{
  *   root?: string,
+ *   strict?: boolean,
  *   prettierApi?: {
  *     getFileInfo: typeof prettier.getFileInfo,
  *     resolveConfig: typeof prettier.resolveConfig,
@@ -98,6 +101,7 @@ export async function resolveGeneratedPaths(root, patterns) {
 export async function formatTextForPath(filePath, text, options = {}) {
   const root =
     typeof options.root === "string" && options.root ? options.root : REPO_ROOT;
+  const strict = options.strict === true;
   const prettierApi = options.prettierApi || prettier;
   const absolute = path.resolve(filePath);
   const ignorePath = path.join(root, ".prettierignore");
@@ -109,6 +113,10 @@ export async function formatTextForPath(filePath, text, options = {}) {
       resolveConfig: true,
     });
   } catch (error) {
+    if (strict) {
+      throw error;
+    }
+
     process.stderr.write(
       `prettier getFileInfo skipped ${absolute}: ${error}\n`,
     );
@@ -125,6 +133,10 @@ export async function formatTextForPath(filePath, text, options = {}) {
       (await prettierApi.resolveConfig(absolute)) ||
       (await prettierApi.resolveConfig(path.join(root, "package.json")));
   } catch (error) {
+    if (strict) {
+      throw error;
+    }
+
     process.stderr.write(
       `prettier resolveConfig skipped ${absolute}: ${error}\n`,
     );
@@ -138,6 +150,10 @@ export async function formatTextForPath(filePath, text, options = {}) {
       parser: fileInfo.inferredParser,
     });
   } catch (error) {
+    if (strict) {
+      throw error;
+    }
+
     process.stderr.write(`prettier format skipped ${absolute}: ${error}\n`);
     return text;
   }
@@ -145,25 +161,66 @@ export async function formatTextForPath(filePath, text, options = {}) {
 
 /**
  * Formats generated sync outputs in place via the Prettier API.
- * Missing paths are skipped. Per-file Prettier failures leave that file as-is.
- * @param {{ root?: string, globs?: string[] }} [options]
+ * Missing paths are skipped. Soft mode leaves failed files unchanged; strict
+ * mode aggregates failures and throws after attempting all paths.
+ * @param {{
+ *   root?: string,
+ *   globs?: string[],
+ *   strict?: boolean,
+ *   prettierApi?: {
+ *     getFileInfo: typeof prettier.getFileInfo,
+ *     resolveConfig: typeof prettier.resolveConfig,
+ *     format: typeof prettier.format,
+ *   },
+ * }} [options]
  * @returns {Promise<void>}
  */
 export async function formatGeneratedOutputs(options = {}) {
   const root =
     typeof options.root === "string" && options.root ? options.root : REPO_ROOT;
+  const strict = options.strict === true;
   const globs =
     Array.isArray(options.globs) && options.globs.length > 0
       ? options.globs
       : GENERATED_PRETTIER_GLOBS;
 
   const paths = await resolveGeneratedPaths(root, globs);
+  /** @type {string[]} */
+  const failures = [];
 
   for (const filePath of paths) {
     const text = await fs.readFile(filePath, "utf8");
-    const formatted = await formatTextForPath(filePath, text, { root });
-    if (formatted !== text) {
-      await fs.writeFile(filePath, formatted, "utf8");
+
+    if (!strict) {
+      const formatted = await formatTextForPath(filePath, text, {
+        root,
+        prettierApi: options.prettierApi,
+      });
+      if (formatted !== text) {
+        await fs.writeFile(filePath, formatted, "utf8");
+      }
+      continue;
     }
+
+    try {
+      const formatted = await formatTextForPath(filePath, text, {
+        root,
+        strict: true,
+        prettierApi: options.prettierApi,
+      });
+      if (formatted !== text) {
+        await fs.writeFile(filePath, formatted, "utf8");
+      }
+    } catch (error) {
+      failures.push(
+        `${filePath}: ${error instanceof Error ? error.message : String(error)}`,
+      );
+    }
+  }
+
+  if (failures.length > 0) {
+    throw new Error(
+      `Prettier failed on ${failures.length} generated file(s):\n${failures.join("\n")}`,
+    );
   }
 }

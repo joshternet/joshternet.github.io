@@ -2,11 +2,12 @@
 layout: default
 title: Showcase creative work from independent Joshternet websites
 description: >-
-  Photographs, art, music, sheet music, video, games, software, and projects from
-  independent websites on the Joshternet. Cards link out to the publisher—no
-  embeds or republishing. Joshternet does not claim authorship of participants' work.
+  Photographs, art, comics, music, sheet music, video channels, education series,
+  podcasts, games, software, and projects from independent websites on the
+  Joshternet. Cards link out to the publisher—no embeds or republishing.
+  Joshternet does not claim authorship of participants' work.
 keywords: >-
-  Joshternet showcase, creative work, photography, music, sheet music, games, independent websites
+  Joshternet showcase, creative work, comics, education, video, photography, music, games, independent websites
 seo:
   type: CollectionPage
   name: Showcase
@@ -21,7 +22,8 @@ script: /assets/js/showcase.js
 
 # Showcase
 
-Creative work made by participants of the Joshternet.
+Creative work made by participants of the Joshternet—including comics, education
+series, podcasts, and video channels—always as outbound links to the publisher.
 
 <div class="showcase" data-showcase>
 {% if showcase_kinds.size > 0 %}

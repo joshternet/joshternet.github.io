@@ -349,7 +349,15 @@ test("metadata title rejects slogan brands that compress to the domain", () => {
       documentTitle: "Josh Can Help - Software - Josh Can Help",
       domain: "www.joshcanhelp.com",
     }),
-    "Josh Can Help",
+    "www.joshcanhelp.com",
+  );
+  assert.equal(
+    chooseTitle({
+      ogTitle: "Josh Can Help",
+      documentTitle: "Josh Can Help",
+      domain: "www.joshcanhelp.com",
+    }),
+    "www.joshcanhelp.com",
   );
 });
 
@@ -1046,8 +1054,23 @@ test("decodeHtmlEntities: handles hex character references (lines 72-73)", () =>
 test("decodeHtmlEntities: handles named HTML entities (lines 80-81)", () => {
   assert.equal(decodeHtmlEntities("&amp;"), "&");
   assert.equal(decodeHtmlEntities("&lt;&gt;"), "<>");
-  // "foobar" is all letters (matches regex) but not in NAMED_ENTITIES → returns original match (L81 ': match' branch)
+  assert.equal(decodeHtmlEntities("&AMP;&LT;"), "&<");
+  // "foobar" is all letters (matches regex) but not in NAMED_ENTITIES → returns original match
   assert.equal(decodeHtmlEntities("&foobar;"), "&foobar;");
+});
+
+test("decodeHtmlEntities: decodes typographic and Latin-1 named entities", () => {
+  assert.equal(
+    decodeHtmlEntities("how &ldquo;local church&rdquo; membership"),
+    "how \u201Clocal church\u201D membership",
+  );
+  assert.equal(decodeHtmlEntities("a&nbsp;b &middot; c"), "a b \u00B7 c");
+  assert.equal(
+    decodeHtmlEntities("&mdash;&ndash;&hellip;"),
+    "\u2014\u2013\u2026",
+  );
+  assert.equal(decodeHtmlEntities("&Agrave; &aacute;"), "\u00C0 \u00E1");
+  assert.equal(decodeHtmlEntities("&lt;script&gt;"), "<script>");
 });
 
 // ─── identityFromDeclaration invalid guard (lines 120-121) ───────────────────

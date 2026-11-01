@@ -28,7 +28,7 @@ import {
  * @type {RegExp}
  */
 const CREATIVE_WORK_PATH =
-  /\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|comics?|webcomics|toys?|play|reels?|shorts|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?)\/.+/i;
+  /\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)\/.+/i;
 
 /**
  * Prefers entry-level language, then channel/feed language.

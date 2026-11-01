@@ -151,6 +151,19 @@ test("formatTextForPath: invalid JSON keeps original text instead of throwing", 
   assert.equal(formatted, raw);
 });
 
+test("formatTextForPath: strict mode rethrows format failures", async () => {
+  const raw = "{not-json";
+  const filePath = path.join(REPO_ROOT, "_data", "format-written-probe.json");
+  await assert.rejects(
+    () =>
+      formatTextForPath(filePath, raw, {
+        root: REPO_ROOT,
+        strict: true,
+      }),
+    /JSON|Syntax|Unexpected/i,
+  );
+});
+
 test("formatTextForPath: getFileInfo failure keeps original text", async () => {
   const raw = '{"keep":true}';
   const formatted = await formatTextForPath(
@@ -174,6 +187,32 @@ test("formatTextForPath: getFileInfo failure keeps original text", async () => {
   assert.equal(formatted, raw);
 });
 
+test("formatTextForPath: strict getFileInfo failure throws", async () => {
+  await assert.rejects(
+    () =>
+      formatTextForPath(
+        path.join(REPO_ROOT, "_data", "format-written-probe.json"),
+        '{"keep":true}',
+        {
+          root: REPO_ROOT,
+          strict: true,
+          prettierApi: {
+            async getFileInfo() {
+              throw new Error("getFileInfo boom");
+            },
+            async resolveConfig() {
+              return null;
+            },
+            async format() {
+              return "{}";
+            },
+          },
+        },
+      ),
+    /getFileInfo boom/,
+  );
+});
+
 test("formatTextForPath: resolveConfig failure keeps original text", async () => {
   const raw = '{"keep":true}';
   const formatted = await formatTextForPath(
@@ -195,6 +234,32 @@ test("formatTextForPath: resolveConfig failure keeps original text", async () =>
     },
   );
   assert.equal(formatted, raw);
+});
+
+test("formatTextForPath: strict resolveConfig failure throws", async () => {
+  await assert.rejects(
+    () =>
+      formatTextForPath(
+        path.join(REPO_ROOT, "_data", "format-written-probe.json"),
+        '{"keep":true}',
+        {
+          root: REPO_ROOT,
+          strict: true,
+          prettierApi: {
+            async getFileInfo() {
+              return { ignored: false, inferredParser: "json" };
+            },
+            async resolveConfig() {
+              throw new Error("resolveConfig boom");
+            },
+            async format() {
+              return "{}";
+            },
+          },
+        },
+      ),
+    /resolveConfig boom/,
+  );
 });
 
 test("resolveGeneratedPaths: directory path for concrete pattern is skipped", async () => {
@@ -252,6 +317,77 @@ test("formatGeneratedOutputs: already-formatted file is left unchanged", async (
     await formatGeneratedOutputs({ root: dir, globs: ["*.json"] });
     const after = await fs.readFile(filePath, "utf8");
     assert.equal(after, before);
+  } finally {
+    await fs.rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("formatGeneratedOutputs: strict mode writes when formatting changes bytes", async () => {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), "format-strict-write-"));
+  const filePath = path.join(dir, "messy.json");
+
+  try {
+    await fs.writeFile(filePath, '{"z":1,"a":2}', "utf8");
+    await formatGeneratedOutputs({
+      root: dir,
+      globs: ["*.json"],
+      strict: true,
+    });
+    const content = await fs.readFile(filePath, "utf8");
+    assert.deepEqual(JSON.parse(content), { z: 1, a: 2 });
+    assert.notEqual(content, '{"z":1,"a":2}');
+  } finally {
+    await fs.rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("formatGeneratedOutputs: strict mode fails closed on Prettier errors", async () => {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), "format-strict-"));
+  const filePath = path.join(dir, "bad.json");
+
+  try {
+    await fs.writeFile(filePath, "{not-json", "utf8");
+    await assert.rejects(
+      () =>
+        formatGeneratedOutputs({
+          root: dir,
+          globs: ["*.json"],
+          strict: true,
+        }),
+      /Prettier failed/,
+    );
+    assert.equal(await fs.readFile(filePath, "utf8"), "{not-json");
+  } finally {
+    await fs.rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("formatGeneratedOutputs: strict mode stringifies non-Error throw values", async () => {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), "format-strict-str-"));
+  const filePath = path.join(dir, "ok.json");
+
+  try {
+    await fs.writeFile(filePath, '{"a":1}\n', "utf8");
+    await assert.rejects(
+      () =>
+        formatGeneratedOutputs({
+          root: dir,
+          globs: ["*.json"],
+          strict: true,
+          prettierApi: {
+            async getFileInfo() {
+              return { ignored: false, inferredParser: "json" };
+            },
+            async resolveConfig() {
+              return {};
+            },
+            async format() {
+              throw "plain-string-boom";
+            },
+          },
+        }),
+      /plain-string-boom/,
+    );
   } finally {
     await fs.rm(dir, { recursive: true, force: true });
   }

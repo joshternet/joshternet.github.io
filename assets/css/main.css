@@ -1486,9 +1486,11 @@ video {
   inset-inline-start: 0.95rem;
   inline-size: 1.55rem;
   block-size: 0.55rem;
-  background:
-    linear-gradient(var(--network-card-accent), var(--network-card-accent))
-      0 50% / 100% 0.1rem no-repeat;
+  background: linear-gradient(
+      var(--network-card-accent),
+      var(--network-card-accent)
+    )
+    0 50% / 100% 0.1rem no-repeat;
   opacity: 0.55;
 }
 
@@ -1510,17 +1512,12 @@ video {
 
 .network-card__joined {
   margin-block: 0.15rem 0;
-  margin-inline-start: auto;
-  align-self: flex-end;
+  margin-inline-start: 0;
+  align-self: flex-start;
   color: var(--color-muted);
   font-family: var(--font-mono);
   font-size: 0.72rem;
   line-height: 1.3;
-}
-
-.network-card__footer.home-new-arrivals__meta .network-card__joined {
-  margin-inline-start: 0;
-  align-self: flex-start;
 }
 
 /* Undeclared: plain Network card. */
@@ -1652,9 +1649,10 @@ video {
 
 .network-card__footer {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
   gap: var(--space-3);
   padding: 0 var(--space-5) var(--space-5);
   margin-block-start: auto;
@@ -1662,30 +1660,20 @@ video {
 
 /* Welcome cards: stack domain / date / Network link as rows (beats footer row). */
 .network-card__footer.home-new-arrivals__meta {
-  display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-  justify-content: flex-start;
   gap: var(--space-2);
-}
-
-.network-card__footer.home-new-arrivals__meta .network-card__domain {
-  margin-inline-start: 0;
-  align-self: flex-start;
-  text-align: start;
 }
 
 .network-card__domain {
   margin-block-start: 0;
-  margin-inline-start: auto;
-  align-self: flex-end;
+  margin-inline-start: 0;
+  align-self: flex-start;
   color: inherit;
   font-family: var(--font-mono);
   font-size: 0.78rem;
   line-height: 1.3;
   overflow-wrap: anywhere;
-  text-align: end;
+  text-align: start;
   text-decoration: none;
 }
 

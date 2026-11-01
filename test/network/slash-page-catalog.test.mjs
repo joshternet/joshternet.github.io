@@ -14,6 +14,8 @@ import {
   normalizeSlashPath,
   pathsForEntry,
   probeSlashPaths,
+  slashPageAllowsHostElsewhere,
+  slashPageUses,
   writingIndexSlashPaths,
 } from "../../scripts/network/slash-page-catalog.mjs";
 import {
@@ -36,6 +38,21 @@ test("normalizeSlashPath: trailing slash forms and empties", () => {
   assert.equal(normalizeSlashPath("gallery/"), "/gallery/");
   assert.equal(normalizeSlashPath("/"), "");
   assert.equal(normalizeSlashPath(""), "");
+});
+
+test("slashPageUses gates host elsewhere on site-info paths only", () => {
+  assert.deepEqual(slashPageUses("/friends/"), ["connections"]);
+  assert.deepEqual(slashPageUses("/people/"), ["connections"]);
+  assert.equal(slashPageAllowsHostElsewhere("/friends/"), false);
+  assert.equal(slashPageAllowsHostElsewhere("/following/"), false);
+  assert.ok(slashPageUses("/social/").includes("site-info"));
+  assert.equal(slashPageAllowsHostElsewhere("/social/"), true);
+  assert.equal(slashPageAllowsHostElsewhere("/about/"), true);
+  assert.deepEqual(slashPageUses("/unknown-path/"), []);
+  assert.equal(slashPageAllowsHostElsewhere("/unknown-path/"), false);
+  assert.deepEqual(slashPageUses("/"), []);
+  assert.deepEqual(slashPageUses(""), []);
+  assert.equal(slashPageAllowsHostElsewhere(""), false);
 });
 
 test("catalog covers core slashpages.net and creative indexes", () => {
@@ -125,6 +142,9 @@ test("derived slash-pages lists stay aligned with catalog helpers", () => {
   assert.ok(contentIndexPaths().includes("/comics/"));
   assert.ok(contentIndexPaths().includes("/toys/"));
   assert.ok(contentIndexPaths().includes("/reels/"));
+  assert.ok(probeSlashPaths().includes("/cssbattles/"));
+  assert.ok(probeSlashPaths().includes("/study-hall/"));
+  assert.ok(probeSlashPaths().includes("/education/"));
 });
 
 test("creative and writing helpers skip unrelated categories", () => {

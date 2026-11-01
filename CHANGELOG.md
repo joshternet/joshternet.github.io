@@ -8,6 +8,7 @@
 
 ### Added
 
+- **Showcase + Happening first-crawl readiness:** Comics, education/study-hall, CSS Battles, and video Watch-link harvest; Showcase kinds **comics** and **education**; YouTube/Vimeo/Twitch channel cards from Elsewhere; CSS Battle + CodePen host maps (YouTube prefers channel over `/watch`); `/events/` always published with Network Happening nav when upcoming items exist. Past education gatherings (e.g. FrESH) land in Showcase Education; upcoming stay on Happening.
 - **Josh Grant project shelf:** Homepage `/` and `/projects/` harvest off-origin first-party apps (The Morning App, MusicX, Seedling) alongside Wizardly Words; Showcase treats them as member projects. Missing OG posters get a Playwright viewport capture into `assets/activity/posters/` during `nlp:sync`.
 - **Missing card/social posters:** After OG enrich, articles, notes, and Showcase creative works (projects, games, music, …) still without an image get a Playwright viewport screenshot into `assets/activity/posters/` (cap 48/sync; creative types before writing).
 - **Member events audit:** `docs/research/member-events-audit.md` (+ raw probe log) — live check of all nine independent origins for Schema.org Event / mf2 h-event / ICS; **0** upcoming Happening-eligible events; `/events/` stays unpublished.
@@ -18,12 +19,16 @@
 
 ### Changed
 
+- **Scraped titles/summaries:** Typographic and common Latin-1 HTML named entities (`&ldquo;`, `&rdquo;`, `&mdash;`, …) decode to Unicode at ingest and again in views projection so Activity/Showcase cards show curly quotes instead of literal entity text.
+- **What's New:** Primary window is **14 days**; quiet-writer backfill of older latest posts is removed so Activity rewards recent publishing only.
+- **Network card titles:** Domain-compressing slogan brands (e.g. “Josh Can Help”) are skipped so person-shaped author/GitHub names win; keep-path sync retains a prior person title over a transient slogan.
+- **Network elsewhere:** Connections-only slash pages (`/friends/`, `/people/`, …) no longer contribute host-discovered social profiles; non-`rel=me` links with `utm_medium=referral` and `utm_source` matching the participant are dropped so friends’ Twitch/Medium links are not shown as the member’s elsewhere.
+- **Network card domain:** Domain link is left-aligned with the card title/description (footer stacks as a column; no `margin-inline-start: auto`).
 - **Feed titles / typing:** Empty RSS `<title/>` (microblog notes) falls back to description/summary; `[Photo]` titles become `photograph`; listening-curation titles stay `article`. NLP feed fetches allow up to 6MB. `application/json` alternates are accepted for Hugo index JSON.
-- **What's New:** Quiet origins (no item in the 7-day window) get a single latest article/note/podcast backfill so writers still appear.
-- **Homepage Creative work:** Under What’s happening, one horizontal row—one newest game, project, photograph, music, or podcast work per member × kind (`showcase.home`), with no publish-date window so undated games/photos still appear. Narrow viewports scroll the row instead of wrapping.
+- **Homepage Creative work:** Under What’s happening, one horizontal row—one newest game, project, photograph, music, podcast, video, comics, or education work per member × kind (`showcase.home`), with no publish-date window so undated games/photos still appear. Narrow viewports scroll the row instead of wrapping.
 - **Homepage network count:** Meet-the-websites participant count uses the full `site.data.network` size (same as `/network/`), while preview cards still omit the hub and Welcome-featured sites.
 - **Connections cards:** Site titles are real outbound links to the member origin (not a link-styled map-select button). Map highlight stays on the screenshot control (`data-connection-select`).
-- **Happening unpublished until member events exist:** `/events/` stays `published: false` and off Network nav while `_data/happening.json` has no upcoming items. Extraction/projection pipeline remains; publish the page and restore the Happening nav entry once a crawl finds verified upcoming events on a member site. Homepage strip already omits when empty.
+- **Happening publish gate:** `/events/` is always built (`published: true`); Network nav shows Happening when `happening.item_count` / items are non-empty. Homepage strip still omits when empty.
 - **Happening pipeline:** `nlp:sync` now runs `collectEvents` into content drafts so Schema.org/mf2 events reach `_data/content.json` and `views:build` → `_data/happening.json`. Public calendar skips `attribution_role: mention` and cancelled statuses; same-origin publisher events default to `hosted`. Event date/venue render inside `activity-card` (no nested `<li>`). Showcase/home Showcase list items carry `lang`/`dir` for RTL works.
 - **Showcase order:** Kind sections list **projects → games → photography → music**, then remaining kinds (art, sheet music, video, apps, …). Section and filter titles use plural labels when a kind has more than one item (`Projects`, `Games`, `Videos`); a single item stays singular (`Project`). Within each kind, items are newest-first (`published_at` / `observed_at`, then URL descending so year albums like `/photos/2026/` precede `/photos/2014/`). Kind order is the seed for future `/showcase/` subpages.
 - **Showcase cards:** The whole tile is one covering hit link to the showcased work URL (`item.url`); maker name is attribution text only (domain omitted) so clicks do not go to the site homepage. Card titles no longer show the global `h2` accent circle (or `h3` accent bar on the home strip).
@@ -37,7 +42,8 @@
 
 ### Fixed
 
-- **Sync Prettier gate:** `writeJSONAtomic` / `writeTextAtomic` format through Prettier at write time; `network:sync`, `nlp:sync`, and `views:build` run `formatGeneratedOutputs` before exit; `format:data` uses the same helper so generated `_data` / OPML / Atom / elsewhere CSS stay `format:check`-clean. Formatting uses the Prettier API (per-file skip on errors) so a single bad file cannot abort hourly `network-sync`. Scrape formats before validate; publish still formats before commit. `build.sh` runs its steps inside `main()` so mid-run script edits cannot shift the next command.
+- **Fail-closed Prettier:** `format:data` is strict; `format:check` runs on network-sync scrape/publish, site-quality, and `build.sh` before ship. Mid-harvest writers still soft-skip per file. Added `npm run validate` (`format:check` + `test:coverage`).
+- **Sync Prettier gate:** `writeJSONAtomic` / `writeTextAtomic` format through Prettier at write time; `network:sync`, `nlp:sync`, and `views:build` run soft `formatGeneratedOutputs` before exit. `build.sh` runs its steps inside `main()` so mid-run script edits cannot shift the next command.
 - **Article/work poster screenshots:** Capture waits for `load`, then soft-waits `networkidle` and incomplete document images (plus a short settle) instead of stopping at `domcontentloaded`, so posters like Joshtronic articles include finished assets.
 - **Network `?site=` deep link:** “Find in the Network” focuses the whole card instead of `.network-card__link`, so the gold focus ring no longer cuts across the middle above the elsewhere footer.
 - **Article poster screenshots:** `nlp:sync` / GHA `captureMissingWorkScreenshots` reserves writing slots (16 of 48) so image-less articles/notes progress when the creative backlog is large; bare creative-index URLs are skipped.

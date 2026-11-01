@@ -44,6 +44,8 @@ export const ELSEWHERE_LABELS = {
   substack: "Substack",
   patreon: "Patreon",
   vimeo: "Vimeo",
+  cssbattle: "CSS Battle",
+  codepen: "CodePen",
   soundcloud: "SoundCloud",
   spotify: "Spotify",
   bandcamp: "Bandcamp",
@@ -128,6 +130,10 @@ const HOST_NETWORKS = {
   "www.patreon.com": "patreon",
   "vimeo.com": "vimeo",
   "www.vimeo.com": "vimeo",
+  "cssbattle.dev": "cssbattle",
+  "www.cssbattle.dev": "cssbattle",
+  "codepen.io": "codepen",
+  "www.codepen.io": "codepen",
   "soundcloud.com": "soundcloud",
   "www.soundcloud.com": "soundcloud",
   "open.spotify.com": "spotify",
@@ -369,6 +375,10 @@ export function isElsewhereProfileUrl(url, network) {
         first === "user" ||
         first === "watch"
       );
+    case "cssbattle":
+      return segments.length >= 1 && first !== "" && first !== "play";
+    case "codepen":
+      return segments.length >= 1 && first !== "" && first !== "pen";
     case "facebook":
       return (
         segments.length >= 1 &&
@@ -409,6 +419,83 @@ export function isElsewhereProfileUrl(url, network) {
 }
 
 /**
+ * Prefer YouTube channel/profile URLs over a lone /watch link for the
+ * single Elsewhere YouTube slot.
+ * @param {URL} url
+ * @returns {number}
+ */
+export function youtubeElsewhereRank(url) {
+  const first = (pathSegments(url)[0] || "").toLowerCase();
+
+  if (
+    first.startsWith("@") ||
+    first === "channel" ||
+    first === "c" ||
+    first === "user"
+  ) {
+    return 2;
+  }
+
+  if (first === "watch") {
+    return 1;
+  }
+
+  return 0;
+}
+
+/**
+ * True when a non-me social URL is tagged as an outbound referral from this
+ * participant (friends’ profiles linked with utm_source=this-site).
+ * @param {URL} url
+ * @param {string} participantOrigin
+ * @returns {boolean}
+ */
+function isSelfReferralElsewhere(url, participantOrigin) {
+  if (!participantOrigin || typeof participantOrigin !== "string") {
+    return false;
+  }
+
+  const medium = String(url.searchParams.get("utm_medium") || "")
+    .trim()
+    .toLocaleLowerCase("en-US");
+
+  if (medium !== "referral") {
+    return false;
+  }
+
+  const source = String(url.searchParams.get("utm_source") || "")
+    .trim()
+    .toLocaleLowerCase("en-US")
+    .replace(/^www\./u, "");
+
+  if (!source) {
+    return false;
+  }
+
+  let host = "";
+
+  try {
+    host = new URL(participantOrigin).hostname
+      .toLocaleLowerCase("en-US")
+      .replace(/^www\./u, "");
+  } catch {
+    return false;
+  }
+
+  if (!host) {
+    return false;
+  }
+
+  if (source === host) {
+    return true;
+  }
+
+  const primary = host.split(".").filter(Boolean)[0];
+
+  return Boolean(primary) && source === primary;
+}
+
+/**
  * Validates and classifies elsewhere links for publication.
  * Accepts `rel="me"` ads and catalog social profile links without rel.
  * Bad items are skipped; they do not reject the participant.
@@ -416,12 +503,13 @@ export function isElsewhereProfileUrl(url, network) {
  * @param {{
  *   lookup?: typeof dns.lookup,
  *   cache?: Map<string, unknown>,
+ *   participantOrigin?: string,
  * }} [options]
  * @returns {Promise<Array<{url: string, network: string, label: string}>>}
  */
 export async function sanitizeElsewhere(
   rawElsewhere,
-  { lookup = dns.lookup, cache = new Map() } = {},
+  { lookup = dns.lookup, cache = new Map(), participantOrigin = "" } = {},
 ) {
   if (!Array.isArray(rawElsewhere)) {
     return [];
@@ -429,7 +517,8 @@ export async function sanitizeElsewhere(
 
   const elsewhere = [];
   const seenUrls = new Set();
-  const seenNetworks = new Set();
+  /** @type {Map<string, number>} */
+  const networkIndex = new Map();
 
   for (const candidate of rawElsewhere) {
     if (elsewhere.length >= MAX_ELSEWHERE_PER_PARTICIPANT) {
@@ -493,26 +582,44 @@ export async function sanitizeElsewhere(
         if (!isElsewhereProfileUrl(url, network)) {
           continue;
         }
+
+        if (isSelfReferralElsewhere(url, participantOrigin)) {
+          continue;
+        }
       }
 
-      // One icon per network on the card.
-      if (network !== "web" && seenNetworks.has(network)) {
+      const label = elsewhereLabel(network, url.hostname);
+      const entry = {
+        url: normalized,
+        network,
+        label,
+      };
+
+      // One icon per network; YouTube prefers channel over /watch.
+      if (network !== "web" && networkIndex.has(network)) {
+        const existingAt = /** @type {number} */ (networkIndex.get(network));
+        const existing = elsewhere[existingAt];
+
+        if (
+          network === "youtube" &&
+          youtubeElsewhereRank(url) >
+            youtubeElsewhereRank(new URL(existing.url))
+        ) {
+          seenUrls.delete(existing.url);
+          seenUrls.add(normalized);
+          elsewhere[existingAt] = entry;
+        }
+
         continue;
       }
 
       seenUrls.add(normalized);
 
       if (network !== "web") {
-        seenNetworks.add(network);
+        networkIndex.set(network, elsewhere.length);
       }
 
-      const label = elsewhereLabel(network, url.hostname);
-
-      elsewhere.push({
-        url: normalized,
-        network,
-        label,
-      });
+      elsewhere.push(entry);
     } catch {
       continue;
     }

@@ -2,8 +2,9 @@
 # Goal & Constraints:
 # One production build refreshes datasets from the current registry, then
 # builds static HTML. Order is fixed: network:sync, nlp:sync, format:data,
-# nlp:validate, jekyll build. A second run with the same registry and pages
-# leaves timestamp-only dataset files unchanged. Does not kill other processes.
+# format:check, nlp:validate, jekyll build. A second run with the same registry
+# and pages leaves timestamp-only dataset files unchanged. Does not kill other
+# processes.
 # Body runs inside main() so mid-run edits to this file cannot shift the next
 # command (bash would otherwise re-read the script from disk).
 set -euo pipefail
@@ -25,6 +26,7 @@ Steps, in order:
   npm run network:sync    registry membership, feeds, elsewhere
   npm run nlp:sync        topics, connections, content, view datasets
   npm run format:data     Prettier on generated sync outputs (_data, OPML, Atom, glyphs)
+  npm run format:check    Fail closed if any tracked file is still unformatted
   npm run nlp:validate    graph invariants and JSON Schema
   JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter
 
@@ -63,8 +65,9 @@ main() {
   printf '1. npm run network:sync\n'
   printf '2. npm run nlp:sync\n'
   printf '3. npm run format:data\n'
-  printf '4. npm run nlp:validate\n'
-  printf '5. JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter\n'
+  printf '4. npm run format:check\n'
+  printf '5. npm run nlp:validate\n'
+  printf '6. JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter\n'
 
   if [[ "$dry_run" -eq 1 ]]; then
     exit 0
@@ -73,6 +76,7 @@ main() {
   npm run network:sync
   npm run nlp:sync
   npm run format:data
+  npm run format:check
   npm run nlp:validate
   JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter
 }

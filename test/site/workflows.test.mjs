@@ -40,6 +40,12 @@ test("network-sync keeps hourly and registry triggers plus sync steps", async ()
     true,
     "scrape and publish must both run format:data",
   );
+  assert.match(sync, /npm run format:check/);
+  assert.equal(
+    [...sync.matchAll(/npm run format:check/g)].length >= 2,
+    true,
+    "scrape and publish must both run format:check",
+  );
   assert.match(sync, /GITHUB_TOKEN:\s*\$\{\{\s*github\.token\s*\}\}/);
 });
 
@@ -79,11 +85,23 @@ test("site-quality runs coverage, browser, build, and site tests", async () => {
   const quality = await read(".github/workflows/site-quality.yml");
 
   assert.match(quality, /pull_request:/);
+  assert.match(quality, /npm run format:check/);
   assert.match(quality, /npm run test:coverage/);
   assert.match(quality, /npm run test:browser/);
   assert.match(quality, /npm run build/);
   assert.match(quality, /npm run test:site/);
   assert.doesNotMatch(quality, /^\s*run:\s*npm test\s*$/m);
+});
+
+test("package validate script fails closed on format then coverage", async () => {
+  const pkg = JSON.parse(await read("package.json"));
+  assert.equal(
+    pkg.scripts.validate,
+    "npm run format:check && npm run test:coverage",
+  );
+
+  const build = await read("scripts/build.sh");
+  assert.match(build, /npm run format:check/);
 });
 
 test("seed-nominations Worker workflow matches the other public Workers", async () => {

@@ -1,1 +1,17 @@
 {% include site-nav-child-items.html items=site.data.network_nav %}
+{% assign happening_count = site.data.happening.item_count | default: 0 %}
+{% if happening_count == blank or happening_count == 0 %}
+  {% assign happening_items = site.data.happening.items | default: empty %}
+  {% assign happening_count = happening_items.size | default: 0 %}
+{% endif %}
+{% if happening_count > 0 %}
+  <li class="site-nav-secondary__item">
+    <a
+      href="{{ '/events/' | relative_url }}"
+      {% if page.url == '/events/' %}
+        aria-current="page"
+      {% endif %}
+      >Happening</a
+    >
+  </li>
+{% endif %}

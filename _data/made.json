@@ -1,13 +1,14 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T22:24:24.676Z",
-  "item_count": 33,
-  "kinds": ["project", "games", "photography", "sheet music"],
+  "generated_at": "2026-11-01T23:09:27.641Z",
+  "item_count": 34,
+  "kinds": ["project", "games", "photography", "sheet music", "video"],
   "kind_labels": {
     "project": "Projects",
     "games": "Games",
     "photography": "Photography",
-    "sheet music": "Sheet music"
+    "sheet music": "Sheet music",
+    "video": "Video"
   },
   "items": [
     {
@@ -702,9 +703,62 @@
       "page_role": "project",
       "kind": "sheet music",
       "kind_label": "Sheet music"
+    },
+    {
+      "identity": "channel:https://joshmuller.ca:youtube",
+      "url": "https://youtube.com/@joshmuller",
+      "site_origin": "https://joshmuller.ca",
+      "title": "Josh Müller on YouTube",
+      "summary": "YouTube channel",
+      "content_type": "video",
+      "page_role": "project",
+      "site_title": "Josh Müller",
+      "domain": "joshmuller.ca",
+      "tags": [],
+      "neighborhoods": [],
+      "source": {
+        "kind": "elsewhere-channel",
+        "network": "youtube"
+      },
+      "observed_at": "2026-11-01T23:09:27.641Z",
+      "actions": [
+        {
+          "label": "Watch",
+          "url": "https://youtube.com/@joshmuller",
+          "type": "watch"
+        }
+      ],
+      "kind": "video",
+      "kind_label": "Video"
     }
   ],
   "home": [
+    {
+      "identity": "channel:https://joshmuller.ca:youtube",
+      "url": "https://youtube.com/@joshmuller",
+      "site_origin": "https://joshmuller.ca",
+      "title": "Josh Müller on YouTube",
+      "summary": "YouTube channel",
+      "content_type": "video",
+      "page_role": "project",
+      "site_title": "Josh Müller",
+      "domain": "joshmuller.ca",
+      "tags": [],
+      "neighborhoods": [],
+      "source": {
+        "kind": "elsewhere-channel",
+        "network": "youtube"
+      },
+      "observed_at": "2026-11-01T23:09:27.641Z",
+      "actions": [
+        {
+          "label": "Watch",
+          "url": "https://youtube.com/@joshmuller",
+          "type": "watch"
+        }
+      ],
+      "kind": "video"
+    },
     {
       "url": "https://joshtronic.com/games/slopocalypse-survivors/",
       "title": "SLOPocalypse Survivors™",

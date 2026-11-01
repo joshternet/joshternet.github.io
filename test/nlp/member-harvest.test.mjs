@@ -382,7 +382,7 @@ test("page_role note for /notes/YYYY-MM-DD-HHMM", () => {
   assert.equal(classifyPageRole("https://joshbeard.com/photos/"), "portfolio");
 });
 
-test("What's New backfills quiet origins outside the 7-day window", () => {
+test("What's New omits quiet origins outside the 14-day window", () => {
   const generatedAt = "2026-11-01T12:00:00.000Z";
   const docs = buildViewDocuments({
     generatedAt,
@@ -406,7 +406,7 @@ test("What's New backfills quiet origins outside the 7-day window", () => {
           title: "Quiet note from August",
           content_type: "article",
           published_at: "2026-08-30T13:52:32.000Z",
-          summary: "Older than seven days",
+          summary: "Older than fourteen days",
           source: { kind: "rss", feed: "https://joshuapsteele.com/feed.xml" },
           observed_at: generatedAt,
         },
@@ -417,14 +417,15 @@ test("What's New backfills quiet origins outside the 7-day window", () => {
     siteSignals: { schema_version: 1, generated_at: generatedAt, origins: [] },
   });
 
+  assert.equal(docs.activity.window_days, 14);
   assert.ok(
-    docs.activity.primary.some(
+    !docs.activity.primary.some(
       (item) => item.title === "Quiet note from August",
     ),
   );
 });
 
-test("What's New backfill includes podcast_episode and skips non-string origins", () => {
+test("What's New includes in-window writing and skips non-string origins", () => {
   const generatedAt = "2026-11-01T12:00:00.000Z";
   const docs = buildViewDocuments({
     generatedAt,
@@ -445,9 +446,9 @@ test("What's New backfill includes podcast_episode and skips non-string origins"
           identity: "url:https://pod.example/ep/1/",
           url: "https://pod.example/ep/1/",
           site_origin: "https://pod.example",
-          title: "Old episode",
+          title: "Recent episode",
           content_type: "podcast_episode",
-          published_at: "2026-01-01T00:00:00.000Z",
+          published_at: "2026-10-25T00:00:00.000Z",
           summary: "Episode",
           source: { kind: "rss", feed: "https://pod.example/feed.xml" },
           observed_at: generatedAt,
@@ -458,7 +459,7 @@ test("What's New backfill includes podcast_episode and skips non-string origins"
           site_origin: 123,
           title: "Bad origin",
           content_type: "article",
-          published_at: "2026-01-01T00:00:00.000Z",
+          published_at: "2026-10-25T00:00:00.000Z",
           observed_at: generatedAt,
         },
       ],
@@ -468,7 +469,10 @@ test("What's New backfill includes podcast_episode and skips non-string origins"
     siteSignals: { schema_version: 1, generated_at: generatedAt, origins: [] },
   });
 
-  assert.ok(docs.activity.primary.some((item) => item.title === "Old episode"));
+  assert.ok(
+    docs.activity.primary.some((item) => item.title === "Recent episode"),
+  );
+  assert.ok(!docs.activity.primary.some((item) => item.title === "Bad origin"));
 });
 
 test("audioEnclosureUrlFromFeedChunk: empty input, skips, atom link, invalid base", () => {

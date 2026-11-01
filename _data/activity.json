@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T22:24:24.676Z",
-  "window_days": 7,
-  "primary_count": 9,
-  "item_count": 1403,
+  "generated_at": "2026-11-01T23:09:27.641Z",
+  "window_days": 14,
+  "primary_count": 6,
+  "item_count": 1404,
   "content_types": ["article", "project"],
   "primary": [
     {
@@ -140,63 +140,6 @@
       "source_kind": "creative-schema",
       "page_role": "unknown",
       "kind": "project"
-    },
-    {
-      "url": "https://joshua.seigler.net/posts/how-to-make-really-good-presentation-slides/",
-      "title": "Post: How to make really good presentation slides",
-      "summary": "Powerpoint makes bad slides by default; we can make them better",
-      "published_at": "2026-09-26T00:00:00.000Z",
-      "observed_at": "2026-11-01T22:02:05.808Z",
-      "content_type": "article",
-      "language": "en-us",
-      "dir": "",
-      "site_origin": "https://joshua.seigler.net",
-      "site_title": "Joshua Seigler",
-      "domain": "joshua.seigler.net",
-      "tags": [],
-      "neighborhoods": [],
-      "image": "/assets/activity/posters/4e58e4a1b5588e3b888c17934a2f4acb19723446a4aeb964506311b642eea50a.webp",
-      "image_origin": "",
-      "source_kind": "atom",
-      "page_role": "article"
-    },
-    {
-      "url": "https://joshuapsteele.com/notes/2026-08-30-0952/",
-      "title": "Anyone know of a good historical overview of how &ldquo;local church/congregation membership&rdquo; has been thought of in different church traditions over time?",
-      "summary": "",
-      "published_at": "2026-08-30T13:52:32.000Z",
-      "observed_at": "2026-11-01T22:02:05.808Z",
-      "content_type": "article",
-      "language": "en-us",
-      "dir": "",
-      "site_origin": "https://joshuapsteele.com",
-      "site_title": "Joshua P. Steele",
-      "domain": "joshuapsteele.com",
-      "tags": [],
-      "neighborhoods": [],
-      "image": "/assets/activity/posters/0a4878aa555de3df99ab4702d5d918f1861fcb97501ed7180fd2083e7f873de0.webp",
-      "image_origin": "",
-      "source_kind": "rss",
-      "page_role": "article"
-    },
-    {
-      "url": "https://www.joshcanhelp.com/data-privacy/",
-      "title": "Fighting for My Data Privacy",
-      "summary": "It feels more important now than ever to take back some control and add a layer of privacy and protection where I can. This is how I'm doing that.",
-      "published_at": "2026-02-07T00:00:00.000Z",
-      "observed_at": "2026-11-01T22:02:05.808Z",
-      "content_type": "article",
-      "language": "en-us",
-      "dir": "",
-      "site_origin": "https://www.joshcanhelp.com",
-      "site_title": "Josh Can Help",
-      "domain": "www.joshcanhelp.com",
-      "tags": [],
-      "neighborhoods": [],
-      "image": "/assets/activity/posters/b3205be7de57de6c52dd8443ed8ed2c6d42a4e88ae02c650db902468cb83ec6a.webp",
-      "image_origin": "",
-      "source_kind": "atom",
-      "page_role": "legal"
     }
   ]
 }

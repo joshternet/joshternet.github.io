@@ -22,7 +22,8 @@
     "dev": "bash scripts/dev.sh",
     "format": "prettier . --write --ignore-unknown",
     "format:check": "prettier . --check --ignore-unknown",
-    "format:data": "node scripts/format-generated.mjs"
+    "format:data": "node scripts/format-generated.mjs",
+    "validate": "npm run format:check && npm run test:coverage"
   },
   "devDependencies": {
     "@shopify/prettier-plugin-liquid": "1.11.0",

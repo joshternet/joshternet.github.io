@@ -14,9 +14,12 @@ import {
   buildShowcaseHomeItems,
   buildShowcaseItems,
   buildViewDocuments,
+  channelItemsFromNetwork,
   compareShowcaseRecency,
   compactContentItem,
   creativePathKind,
+  isEducationGatheringItem,
+  isPastEducationShowcaseEvent,
   dirForLanguage,
   fairTopicArticles,
   isBareCreativeIndexUrl,
@@ -515,19 +518,23 @@ test("buildShowcaseHomeItems keeps one newest work per member and kind", () => {
       url: "https://video.example/films/clip/",
       site_origin: "https://video.example",
       title: "Fresh Clip",
-      summary: "Video kind is not part of the home creative strip.",
+      summary: "Video kind belongs on the home creative strip.",
       published_at: "2026-10-30T00:00:00.000Z",
       image: "https://video.example/films/clip.jpg",
     },
   ]);
 
-  assert.equal(items.length, 4);
+  assert.equal(items.length, 5);
   assert.deepEqual(
     items.map((item) => ({ kind: item.kind, url: item.url })),
     [
       {
         kind: "photography",
         url: "https://joshbeard.com/photos/2026/",
+      },
+      {
+        kind: "video",
+        url: "https://video.example/films/clip/",
       },
       {
         kind: "project",
@@ -927,6 +934,36 @@ test("buildHappeningItems returns empty array for invalid now", () => {
       new Date("not-a-date"),
     ),
     [],
+  );
+});
+
+test("buildHappeningItems skips mention and cancelled events", () => {
+  const now = new Date("2026-11-01T12:00:00.000Z");
+  assert.deepEqual(
+    buildHappeningItems(
+      [
+        {
+          content_type: "event",
+          url: "https://a.example/e1/",
+          start: "2026-12-01T00:00:00.000Z",
+          attribution_role: "mention",
+        },
+        {
+          content_type: "event",
+          url: "https://a.example/e2/",
+          start: "2026-12-01T00:00:00.000Z",
+          status: "cancelled",
+        },
+        {
+          content_type: "event",
+          url: "https://a.example/e3/",
+          start: "2026-12-01T00:00:00.000Z",
+          attribution_role: "hosted",
+        },
+      ],
+      now,
+    ).map((item) => item.url),
+    ["https://a.example/e3/"],
   );
 });
 
@@ -1406,9 +1443,17 @@ test("creativePathKind: maps known root paths to correct kinds (L762-803)", () =
     "photography",
   );
   assert.equal(creativePathKind("https://a.example/art/piece/"), "art");
-  assert.equal(creativePathKind("https://a.example/comics/strip-1/"), "art");
+  assert.equal(creativePathKind("https://a.example/comics/strip-1/"), "comics");
   assert.equal(creativePathKind("https://a.example/toys/widget/"), "project");
   assert.equal(creativePathKind("https://a.example/reels/clip/"), "video");
+  assert.equal(
+    creativePathKind("https://a.example/cssbattles/nov-1/"),
+    "video",
+  );
+  assert.equal(
+    creativePathKind("https://a.example/study-hall/062/"),
+    "education",
+  );
   assert.equal(creativePathKind("https://a.example/music/track/"), "music");
   assert.equal(
     creativePathKind("https://a.example/podcasts/ep-1/"),
@@ -2613,4 +2658,190 @@ test("What's New receives Showcase toys; writing does not enter Showcase", () =>
   assert.ok(
     activityUrls.includes("https://joshuamorris.info/notes/2026/10/01/hello/"),
   );
+});
+
+test("comics and education path kinds + past education Showcase", () => {
+  assert.equal(showcaseKindLabel("comics", 2), "Comics");
+  assert.equal(showcaseKindLabel("education", 1), "Education");
+  assert.equal(
+    showcaseKindForItem({
+      content_type: "project",
+      url: "https://a.example/comics/strip/",
+    }),
+    "comics",
+  );
+  assert.equal(isEducationGatheringItem(null), false);
+  assert.equal(
+    isEducationGatheringItem({ url: "https://a.example/about/" }),
+    false,
+  );
+  assert.equal(
+    isEducationGatheringItem({ title: "Front End Study Hall #1" }),
+    true,
+  );
+  assert.equal(
+    isEducationGatheringItem({
+      url: "https://a.example/learn/js/",
+      title: "JS",
+    }),
+    true,
+  );
+  assert.equal(
+    isEducationGatheringItem({
+      content_type: "project",
+      url: "https://a.example/education/lab/",
+    }),
+    true,
+  );
+  const pastEvent = {
+    content_type: "event",
+    title: "Front End Study Hall #058",
+    url: "https://a.example/blog/2020/09/17/fresh-058/",
+    start: "2020-09-17T17:00:00-07:00",
+    end: "2020-09-17T18:30:00-07:00",
+  };
+  assert.equal(isEducationGatheringItem(pastEvent), true);
+  assert.equal(
+    isPastEducationShowcaseEvent(pastEvent, new Date("2026-11-01T00:00:00Z")),
+    true,
+  );
+  assert.equal(
+    isPastEducationShowcaseEvent({ content_type: "article" }),
+    false,
+  );
+  assert.equal(
+    isPastEducationShowcaseEvent({
+      content_type: "event",
+      title: "Meetup",
+      url: "https://a.example/meetup/",
+      start: "2020-01-01T00:00:00Z",
+    }),
+    false,
+  );
+  assert.equal(
+    isPastEducationShowcaseEvent({
+      content_type: "event",
+      title: "Front End Study Hall",
+      url: "https://a.example/fresh/",
+      start: "not-a-date",
+    }),
+    false,
+  );
+  assert.equal(
+    isPastEducationShowcaseEvent({
+      content_type: "event",
+      title: "Front End Study Hall",
+      url: "https://a.example/fresh/",
+    }),
+    false,
+  );
+  assert.equal(
+    isPastEducationShowcaseEvent(
+      {
+        content_type: "event",
+        title: "Front End Study Hall",
+        url: "https://a.example/fresh/",
+        start: "2020-01-01T00:00:00Z",
+        end: "2099-01-01T00:00:00Z",
+      },
+      new Date("2026-11-01T00:00:00Z"),
+    ),
+    false,
+  );
+  assert.equal(
+    isPastEducationShowcaseEvent(
+      {
+        content_type: "event",
+        title: "Front End Study Hall",
+        url: "https://a.example/fresh/",
+        start: "2020-01-01T00:00:00Z",
+      },
+      "2026-11-01T00:00:00.000Z",
+    ),
+    true,
+  );
+  assert.equal(showcaseKindForItem(pastEvent), "education");
+  assert.equal(
+    isMadeContentItem({
+      ...pastEvent,
+      site_origin: "https://a.example",
+      title: "Front End Study Hall #058",
+    }),
+    true,
+  );
+});
+
+test("buildViewDocuments search tolerates channel items without tags", () => {
+  const views = buildViewDocuments({
+    network: [
+      {
+        origin: "https://a.example",
+        domain: "a.example",
+        title: "A",
+        elsewhere: [
+          {
+            network: "youtube",
+            label: "YouTube",
+            url: "https://www.youtube.com/@asite",
+          },
+        ],
+      },
+    ],
+    content: { items: [] },
+    topics: { communities: [] },
+    connections: {},
+    siteSignals: { origins: [] },
+    generatedAt: "2026-11-01T00:00:00.000Z",
+  });
+
+  assert.ok(
+    views.search_index.documents.some(
+      (doc) => doc.url === "https://www.youtube.com/@asite",
+    ),
+  );
+});
+
+test("channelItemsFromNetwork builds Showcase video cards", () => {
+  assert.deepEqual(channelItemsFromNetwork(null), []);
+  assert.deepEqual(channelItemsFromNetwork([null, { elsewhere: [] }]), []);
+  assert.deepEqual(
+    channelItemsFromNetwork([{ title: "No origin", elsewhere: [] }]),
+    [],
+  );
+  const items = channelItemsFromNetwork(
+    [
+      {
+        origin: "https://a.example",
+        title: "A Site",
+        domain: "a.example",
+        elsewhere: [
+          {
+            network: "youtube",
+            label: "YouTube",
+            url: "https://www.youtube.com/@asite",
+          },
+          {
+            network: "youtube",
+            label: "YouTube",
+            url: "https://www.youtube.com/watch?v=skip",
+          },
+        ],
+      },
+      {
+        url: "https://b.example",
+        elsewhere: [
+          {
+            network: "vimeo",
+            url: "https://vimeo.com/bchannel",
+          },
+        ],
+      },
+    ],
+    "2026-11-01T00:00:00.000Z",
+  );
+  assert.equal(items.length, 2);
+  assert.equal(items[0].content_type, "video");
+  assert.equal(items[0].source.kind, "elsewhere-channel");
+  assert.equal(showcaseItemHasSubstance(items[0]), true);
+  assert.equal(isMadeContentItem(items[0]), true);
 });

@@ -60,6 +60,27 @@ test("network cards link the primary feed outside the origin card link", async (
     /network-card__feed/,
   );
 
+  assert.match(
+    styles,
+    /\.network-card__footer\s*\{[^}]*flex-direction:\s*column/s,
+  );
+  assert.match(
+    styles,
+    /\.network-card__domain\s*\{[^}]*margin-inline-start:\s*0/s,
+  );
+  assert.match(styles, /\.network-card__domain\s*\{[^}]*text-align:\s*start/s);
+  assert.doesNotMatch(
+    styles,
+    /\.network-card__domain\s*\{[^}]*margin-inline-start:\s*auto/s,
+  );
+  assert.match(
+    styles,
+    /\.network-card__joined\s*\{[^}]*margin-inline-start:\s*0/s,
+  );
+  assert.doesNotMatch(
+    styles,
+    /\.network-card__joined\s*\{[^}]*margin-inline-start:\s*auto/s,
+  );
   assert.match(styles, /\.network-card__feed(?:,|\s*\{)/);
   assert.match(styles, /\.network-card__actions\s*\{[^}]*display:\s*grid/s);
   assert.match(

@@ -123,7 +123,10 @@ export function creativeContentType(types, pathHint = "") {
     return "music_recording";
   }
 
-  if (/videoobject/.test(joined) || /video|film|animation/.test(path)) {
+  if (
+    /videoobject/.test(joined) ||
+    /video|film|animation|reels?|shorts|cssbattles?/.test(path)
+  ) {
     return "video";
   }
 
@@ -683,6 +686,107 @@ export function creativeItemsFromExternalListenLinks(
   return items;
 }
 
+/**
+ * External watch links on video indexes (YouTube, Vimeo, Twitch).
+ * Work identity stays on the member page; watch action points off-origin.
+ * @param {string} html
+ * @param {string} pageUrl
+ * @param {string} siteOrigin
+ * @param {string} observedAt
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function creativeItemsFromExternalWatchLinks(
+  html,
+  pageUrl,
+  siteOrigin,
+  observedAt,
+) {
+  const items = [];
+  const seen = new Set();
+  let path = "/";
+
+  try {
+    path = new URL(pageUrl).pathname.toLowerCase();
+  } catch {
+    return items;
+  }
+
+  if (
+    !/\/(videos?|reels?|shorts|film|animation|cssbattles?)(?:\/|$)/i.test(path)
+  ) {
+    return items;
+  }
+
+  const linkPattern = new RegExp(ANCHOR_HREF_PATTERN.source, "gi");
+  let match;
+
+  while (
+    (match = linkPattern.exec(html)) &&
+    items.length < MAX_CREATIVE_WORKS_PER_PAGE
+  ) {
+    const href = decodeHrefForParse(match[2] ?? match[3] ?? match[4]);
+    const title = normalizeExtractedText(match[6].replace(/<[^>]+>/g, " "));
+
+    if (!href || !title || title.length < 2) {
+      continue;
+    }
+
+    let absolute;
+
+    try {
+      absolute = new URL(href, pageUrl);
+    } catch {
+      continue;
+    }
+
+    if (absolute.origin === new URL(siteOrigin).origin) {
+      continue;
+    }
+
+    if (!/^https?:$/i.test(absolute.protocol)) {
+      continue;
+    }
+
+    const watchUrl = absolute.href;
+    const host = absolute.hostname.toLowerCase();
+
+    if (!/(youtube\.com|youtu\.be|vimeo\.com|twitch\.tv)/.test(host)) {
+      continue;
+    }
+
+    const identity = `watch:${siteOrigin}:${watchUrl}`;
+
+    if (seen.has(identity)) {
+      continue;
+    }
+
+    seen.add(identity);
+    items.push({
+      identity,
+      url: watchUrl,
+      site_origin: siteOrigin,
+      title,
+      summary: "",
+      content_type: "video",
+      page_role: "project",
+      language: null,
+      declared_topics: [],
+      source: { kind: "videos-watch-link", page: pageUrl },
+      source_feeds: [{ type: "videos-watch-link", url: pageUrl }],
+      observed_at: observedAt,
+      actions: [
+        {
+          label: "Watch",
+          url: watchUrl,
+          type: "watch",
+        },
+      ],
+    });
+  }
+
+  return items;
+}
+
 export function creativeItemsFromIndexLinks(
   html,
   pageUrl,
@@ -693,7 +797,7 @@ export function creativeItemsFromIndexLinks(
   const seen = new Set();
   const path = new URL(pageUrl).pathname.toLowerCase();
   const indexRoots =
-    /^\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|podcasts?)(?:\/|$)/i;
+    /^\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|podcasts?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)(?:\/|$)/i;
 
   if (!indexRoots.test(path.replace(/\/+$/, "") + "/")) {
     return items;
@@ -917,6 +1021,21 @@ export function collectCreativeWorks(pages, meta) {
       items.push(item);
     }
 
+    for (const item of creativeItemsFromExternalWatchLinks(
+      page.html,
+      page.url,
+      siteOrigin,
+      observedAt,
+    )) {
+      if (seen.has(String(item.identity))) {
+        continue;
+      }
+
+      applyPageLanguage(item, pageLang);
+      seen.add(String(item.identity));
+      items.push(item);
+    }
+
     for (const item of creativeItemsFromHomepageLinks(
       page.html,
       page.url,
@@ -1043,7 +1162,7 @@ export function isCreativeIndexPath(pathname) {
     .toLowerCase()}`;
 
   const candidate = `${lower}/`;
-  return /^\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|comics?|webcomics|toys?|play|reels?|shorts|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|podcasts?)(?:\/|$)/.test(
+  return /^\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|podcasts?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)(?:\/|$)/.test(
     candidate,
   );
 }

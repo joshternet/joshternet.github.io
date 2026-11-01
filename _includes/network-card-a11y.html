@@ -4,10 +4,10 @@
   chrome. Expects network_site; sets identity_a11y.
 {% endcomment %}
 {% case network_site.identity %}
-  {% when "affirmed" %}
-    {% assign identity_a11y = "Josh Joshternet participant." %}
-  {% when "declined" %}
-    {% assign identity_a11y = "Non-Josh Joshternet participant, joshing the Joshes." %}
+  {% when 'affirmed' %}
+    {% assign identity_a11y = 'Josh Joshternet participant.' %}
+  {% when 'declined' %}
+    {% assign identity_a11y = 'Non-Josh Joshternet participant, joshing the Joshes.' %}
   {% else %}
-    {% assign identity_a11y = "Undeclared Joshternet participant." %}
+    {% assign identity_a11y = 'Undeclared Joshternet participant.' %}
 {% endcase %}

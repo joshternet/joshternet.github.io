@@ -38,6 +38,8 @@ import {
   assertPublicURL,
   chooseDescription,
   framePolicy,
+  isDomainCompressingSlogan,
+  looksLikePersonName,
   partitionPublicParticipants,
   projectRegistry,
   registryParticipationFields,
@@ -47,6 +49,7 @@ import {
 } from "./lib.mjs";
 
 import { extractPageMetadata } from "./metadata.mjs";
+import { slashPageAllowsHostElsewhere } from "./slash-page-catalog.mjs";
 import {
   localPreviewEnabled,
   mergePreviewParticipants,
@@ -459,8 +462,25 @@ async function collectElsewhereAndLinks(
         elsewhereHostCatalog(),
       );
 
+      let identityPath = "";
+
+      try {
+        identityPath = new URL(page.url()).pathname;
+      } catch {
+        identityPath = "";
+      }
+
+      const allowHostElsewhere = slashPageAllowsHostElsewhere(identityPath);
+
       if (Array.isArray(identityMetadata.elsewhere)) {
-        raw.push(...identityMetadata.elsewhere);
+        for (const entry of identityMetadata.elsewhere) {
+          if (
+            allowHostElsewhere ||
+            (entry && typeof entry === "object" && entry.me === true)
+          ) {
+            raw.push(entry);
+          }
+        }
       }
 
       if (Array.isArray(identityMetadata.links)) {
@@ -480,6 +500,7 @@ async function collectElsewhereAndLinks(
   return {
     elsewhere: await sanitizeElsewhere(raw, {
       cache: dnsCache,
+      participantOrigin,
     }),
     links,
   };
@@ -816,10 +837,21 @@ try {
         );
         // Re-resolve titles on every sync so algorithm changes and new
         // author/GitHub signals apply without waiting for screenshot expiry.
-        const title = await resolveParticipantTitle(
+        const resolvedTitle = await resolveParticipantTitle(
           enrichment.metadata,
           participant.domain,
         );
+        let title = resolvedTitle || kept.title || "";
+
+        // Prefer a previously published person name over a transient slogan
+        // when GitHub/author signals briefly miss.
+        if (
+          isDomainCompressingSlogan(title, participant.domain) &&
+          looksLikePersonName(kept.title)
+        ) {
+          title = kept.title;
+        }
+
         const description =
           chooseDescription(enrichment.metadata) || kept.description || "";
 
@@ -827,7 +859,7 @@ try {
           withEnrichment(
             {
               ...kept,
-              title: title || kept.title,
+              title,
               description,
             },
             enrichment.feeds,
