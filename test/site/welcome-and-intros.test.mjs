@@ -1,9 +1,9 @@
 /**
- * Goal: Welcome cards page, Network card link, and introductions wiring stay
- * registry-backed without inventing membership accounts.
+ * Goal: Welcome cards page and Network card link stay registry-backed without
+ * inventing membership accounts. Participant-introductions scaffolding is gone.
  */
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
@@ -34,18 +34,20 @@ test("welcome page and Network link keep cards separate from the button", async 
   assert.match(workflow, /welcome_cards\.json/);
 });
 
-test("introductions stay optional and registry-gated", async () => {
-  const intros = await read("_data/introductions.yml");
-  const include = await read("_includes/participant-introductions.html");
+test("participant-introductions scaffolding is removed", async () => {
   const community = await read("community.md");
   const network = await read("network.md");
 
-  assert.match(intros, /introductions:\s*\[\]/);
-  assert.match(include, /site\.data\.network/);
-  assert.match(include, /intro\.origin/);
-  assert.match(community, /Optional participant introductions/);
-  assert.match(community, /never required/i);
-  assert.match(network, /participant-introductions\.html/);
+  assert.doesNotMatch(community, /Optional participant introductions/);
+  assert.doesNotMatch(community, /introductions\.yml/);
+  assert.doesNotMatch(network, /participant-introductions/);
+
+  await assert.rejects(() =>
+    access(path.join(root, "_data/introductions.yml")),
+  );
+  await assert.rejects(() =>
+    access(path.join(root, "_includes/participant-introductions.html")),
+  );
 });
 
 test("connections bootstrap carries build-time recently_joined for arrival chrome", async () => {

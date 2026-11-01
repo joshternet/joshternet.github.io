@@ -16,7 +16,6 @@
 - Network directory sort control (`?sort=`): Discover (default random), Recently joined, Oldest first, and Alphabetical, independently of identity filters.
 - Shareable welcome postcards (SVG + PNG) generated from the registry under `assets/network/welcome/`, with a `/welcome/` download page and Network “Get welcome card” links—separate from the official button.
 - Connections graph marks participants whose build-time `recently_joined` flag is true (seven-day window from `site.time`) with a subtle ring (static under `prefers-reduced-motion`) and a “Recently joined” note in the detail bubble.
-- Optional hand-maintained participant introductions (`_data/introductions.yml`), shown only for current registry members, with submission notes on `/community/`.
 - Connections shows every verified Network participant as a graph and list node, including sites with no observed links yet, with a “No observed connections yet” empty state and a link to the site.
 - Crawl HTML parsing accepts unquoted `href` / `rel` / `class` attributes so minified participant pages (for example joshbeard.com) contribute real outbound links.
 - Content-index crawl seeds include indieweb identity slash pages (`/me/`, `/social/`, `/links/`, `/more/`, `/uses/`, `/site/`, `/people/`, `/blogroll/`, `/elsewhere/`, `/now/`, `/health/`, and related paths); those seeds enqueue before sitemap locs so link directories are not starved. About/identity discovery collects multiple homepage-linked slash pages (`/more/`, `/site/`, `/now/`, `/uses/`, …); network sync visits up to eight of them for elsewhere and connection evidence. NLP outbound links are absolutized and same-origin nav is dropped so pages like joshbeard.com `/site/` contribute real Josh-to-Josh edges.
@@ -30,6 +29,10 @@
 - Connections excludes hub activity-card author links (`activity-card__author-link` / `p-name u-url`) from observed relationships while keeping independently authored homepage links; the summary “sites with observed links” count no longer includes shared-topic-only sites.
 - Connections `connections-select` fires only on deliberate graph/list selections, not `?site=` deep-link initialization.
 - Join guide `join-start` Umami event fires once per session on the first intentional onboarding action (copy, platform, checker, or nominate)—not on `/join/` page load.
+
+### Removed
+
+- Unused participant-introductions scaffolding (`_data/introductions.yml`, include, Network/community copy). Welcome cards and other registry features are unchanged.
 
 ### Changed
 
