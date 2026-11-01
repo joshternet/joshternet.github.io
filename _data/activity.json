@@ -1,17 +1,17 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T09:54:15.485Z",
+  "generated_at": "2026-11-01T10:47:40.331Z",
   "window_days": 7,
   "primary_count": 5,
-  "item_count": 847,
-  "content_types": ["article"],
+  "item_count": 963,
+  "content_types": ["article", "project"],
   "primary": [
     {
       "url": "https://joshmuller.ca/recipes/desserts/gluten-free-chocolate-cake/",
       "title": "Gluten-Free Chocolate Cake",
       "summary": "Nutrition assumptions and sources",
       "published_at": "2026-10-31T19:55:58.000Z",
-      "observed_at": "2026-11-01T08:37:50.099Z",
+      "observed_at": "2026-11-01T10:41:05.494Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -21,13 +21,13 @@
       "tags": [
         {
           "slug": "recipe",
-          "label": "recipes"
+          "label": "recipe"
         }
       ],
       "neighborhoods": [
         {
           "slug": "recipe",
-          "label": "recipes"
+          "label": "recipe"
         }
       ],
       "image": "/assets/activity/posters/740a76bfeb5078c7042231dc3d28ff27380df09b88eb804be63c0abfd29f678b.webp",
@@ -40,7 +40,7 @@
       "title": "Worth Wandering: Radio Aporee",
       "summary": "A worldwide collection of field recordings that lets you explore the sounds of cities, forests, rivers, train stations and ordinary places, with experimental radio projects that turn listening into an entirely different way of experiencing the world.",
       "published_at": "2026-10-30T14:00:00.000Z",
-      "observed_at": "2026-11-01T08:37:50.099Z",
+      "observed_at": "2026-11-01T10:41:05.494Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -69,7 +69,7 @@
       "title": "Enterprise sales teams, please, I beg you, stop",
       "summary": "I asked for a price on a few extra seats of software we already pay for. Two days and a pile of irrelevant questions later, I got one.",
       "published_at": "2026-10-28T00:00:00.000Z",
-      "observed_at": "2026-11-01T08:37:50.099Z",
+      "observed_at": "2026-11-01T10:41:05.494Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -88,8 +88,8 @@
       "title": "Skeuomorphism",
       "summary": "Operate a Radio Shack Armatron and move objects around its tabletop.",
       "published_at": "2026-10-27T00:00:00.000Z",
-      "observed_at": "2026-11-01T08:37:50.099Z",
-      "content_type": "article",
+      "observed_at": "2026-11-01T10:41:05.494Z",
+      "content_type": "project",
       "language": "en",
       "dir": "",
       "site_origin": "https://joshuamorris.info",
@@ -99,7 +99,7 @@
       "neighborhoods": [],
       "image": "/assets/activity/posters/422b88b509b6913ae27504902894d512cfae7a2895864cba864019d529560cf5.webp",
       "image_origin": "",
-      "source_kind": "atom",
+      "source_kind": "creative-schema",
       "page_role": "unknown",
       "kind": "project"
     },
@@ -108,7 +108,7 @@
       "title": "Learning a New Tech Stack with an LLM",
       "summary": "While I mentioned a few weeks back that I'm now recovering from AI Psychosis , that doesn't mean I've given up on the technology completely. I'm writing more emails, and engaging with human beings as much as I can, and that part's been great. I still use agents as a glorified typewriter to generate code, and still very much get my hands in the dirt and sling code myself. I've also gotten quite obs",
       "published_at": "2026-10-26T00:00:00.000Z",
-      "observed_at": "2026-11-01T08:37:50.099Z",
+      "observed_at": "2026-11-01T10:41:05.494Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
