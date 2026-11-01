@@ -1789,21 +1789,60 @@ export function buildMadeItems(compactItems, limit) {
   });
 }
 
+/** Showcase kinds allowed on the homepage creative strip. */
+const HOME_SHOWCASE_KINDS = new Set([
+  "project",
+  "games",
+  "photography",
+  "music",
+]);
+
 /**
- * Homepage Creative work strip—same eligible set as Showcase, fair per origin.
- * No default max; an optional `limit` is only for callers that ask for one.
+ * Homepage creative strip: one newest game, project, photograph, or music
+ * work per member × kind. No publish-date window—undated works compete via
+ * {@link compareShowcaseRecency} (`published_at`, then `observed_at`, then
+ * URL). An optional `limit` truncates after the per-member-per-kind pick.
  * @param {Array<Record<string, unknown>>} compactItems
- * @param {number} [limit]
+ * @param {{ limit?: number }} [options]
  * @returns {Array<Record<string, unknown>>}
  */
-export function buildShowcaseHomeItems(compactItems, limit) {
-  const eligible = eligibleShowcaseItems(compactItems);
-  const maxItems =
-    typeof limit === "number" && Number.isFinite(limit)
-      ? Math.max(0, Math.floor(limit))
-      : eligible.length;
+export function buildShowcaseHomeItems(compactItems, options = {}) {
+  const limit =
+    typeof options.limit === "number" && Number.isFinite(options.limit)
+      ? Math.max(0, Math.floor(options.limit))
+      : undefined;
 
-  return fairTopicArticles(eligible, maxItems).sort(compareShowcaseRecency);
+  const eligible = eligibleShowcaseItems(compactItems)
+    .filter((item) => HOME_SHOWCASE_KINDS.has(String(item.kind || "")))
+    .sort(compareShowcaseRecency);
+
+  /** @type {Map<string, Record<string, unknown>>} */
+  const byOriginKind = new Map();
+
+  for (const item of eligible) {
+    const origin = typeof item.site_origin === "string" ? item.site_origin : "";
+    const kind = String(item.kind || "");
+
+    if (!origin || !kind) {
+      continue;
+    }
+
+    const key = `${origin}\0${kind}`;
+
+    if (byOriginKind.has(key)) {
+      continue;
+    }
+
+    byOriginKind.set(key, item);
+  }
+
+  let selected = [...byOriginKind.values()].sort(compareShowcaseRecency);
+
+  if (typeof limit === "number") {
+    selected = selected.slice(0, limit);
+  }
+
+  return selected;
 }
 
 /**

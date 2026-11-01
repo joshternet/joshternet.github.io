@@ -1,18 +1,16 @@
 {% comment %}
   Goal & Constraints: Homepage “Meet the websites” preview from site.data.network.
-  Liquid omits the hub and sites already featured in Welcome (build-time). Domain
-  sort is the no-JS fallback; home-meet.js only shuffles and shows three. Count
-  still includes Welcome-featured participants.
+  Participant count matches /network/ (full registry size, including the hub).
+  Preview cards omit the hub and Welcome-featured sites. Domain sort is the
+  no-JS fallback; home-meet.js only shuffles and shows three.
   Inputs: site.data.network. Outputs: preview grid or empty invitation.
 {% endcomment %}
 {% include home-welcome-eligible.html %}
 {% assign home_hub_origin = 'https://joshternet.org' %}
 {% assign home_hub_www = 'https://www.joshternet.org' %}
-{% assign home_meet_all = '' | split: '' %}
 {% assign home_meet_sites = '' | split: '' %}
 {% for network_site in site.data.network %}
   {% if network_site.origin != home_hub_origin and network_site.origin != home_hub_www %}
-    {% assign home_meet_all = home_meet_all | push: network_site %}
     {% assign meet_domain = network_site.domain | downcase %}
     {% assign meet_is_welcome = false %}
     {% for arrival_site in home_arrival_sites %}
@@ -27,7 +25,7 @@
   {% endif %}
 {% endfor %}
 {% assign home_meet_sites = home_meet_sites | sort: 'domain' %}
-{% assign home_network_count = home_meet_all | size %}
+{% assign home_network_count = site.data.network | size %}
 
 <p class="home-meet__count">
   {% if home_network_count == 1 %}
