@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T08:39:14.664Z",
+  "generated_at": "2026-11-01T10:05:16.596Z",
   "sites": [
     {
       "origin": "https://joshbeard.com",
@@ -44,7 +44,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-11-01T08:37:50.099Z"
+      "crawled_at": "2026-11-01T10:03:50.284Z"
     },
     {
       "origin": "https://joshghent.com",
@@ -250,7 +250,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-11-01T08:37:50.099Z"
+      "crawled_at": "2026-11-01T10:03:50.284Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -554,7 +554,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-11-01T08:37:50.099Z"
+      "crawled_at": "2026-11-01T10:03:50.284Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -615,7 +615,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-11-01T08:37:50.099Z"
+      "crawled_at": "2026-11-01T10:03:50.284Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -862,7 +862,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-11-01T08:37:50.099Z"
+      "crawled_at": "2026-11-01T10:03:50.284Z"
     },
     {
       "origin": "https://joshua.seigler.net",
@@ -1014,7 +1014,43 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-11-01T08:37:50.099Z"
+      "crawled_at": "2026-11-01T10:03:50.284Z"
+    },
+    {
+      "origin": "https://joshuakim.studio",
+      "domain": "joshuakim.studio",
+      "title": "Joshua Kim",
+      "description": "Joshua Kim, UI / UX Designer. Experience and interaction design: user research, app experiences, AR, a body-tracking installation, internal tools, and graphic design.",
+      "identity": "affirmed",
+      "feeds": [],
+      "elsewhere": [
+        {
+          "url": "https://www.linkedin.com/in/joshuakim-uiux",
+          "network": "linkedin",
+          "label": "LinkedIn"
+        }
+      ],
+      "community_topics": [
+        {
+          "slug": "case-study",
+          "label": "case studies"
+        },
+        {
+          "slug": "creative-coding",
+          "label": "creative coding"
+        }
+      ],
+      "recent_content": null,
+      "outgoing": [],
+      "incoming": [],
+      "coverage": {
+        "pages_discovered": 13,
+        "pages_fetched": 13,
+        "fetch_limit": 80,
+        "limit_reached": false,
+        "selection_strategy": "bounded-site-crawl-v1"
+      },
+      "crawled_at": "2026-11-01T10:03:50.284Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -1727,7 +1763,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-11-01T08:37:50.099Z"
+      "crawled_at": "2026-11-01T10:03:50.284Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -1877,7 +1913,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-11-01T08:37:50.099Z"
+      "crawled_at": "2026-11-01T10:03:50.284Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -1938,6 +1974,10 @@
         {
           "slug": "business",
           "label": "business"
+        },
+        {
+          "slug": "case-study",
+          "label": "case studies"
         },
         {
           "slug": "charity-nonprofit",
@@ -2090,7 +2130,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-11-01T08:37:50.099Z",
+      "crawled_at": "2026-11-01T10:03:50.284Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,
