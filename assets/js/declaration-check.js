@@ -1,10 +1,19 @@
 import {
+  buildNextSteps,
+  parseRegistryOrigins,
+  registryListingState,
+} from "./declaration-continuity.js";
+import {
   classifyLiveResponse,
   declarationURL,
   validateDeclaration,
 } from "./declaration-validate.js";
 
 const PAUSE_MS = 450;
+
+const registryOrigins = parseRegistryOrigins(
+  document.querySelector("[data-declaration-registry-origins]")?.textContent,
+);
 
 const pasteForm = document.querySelector("[data-declaration-paste]");
 const pasteInput = document.querySelector("[data-declaration-text]");
@@ -112,6 +121,7 @@ function checkPaste() {
     title: declaration.ok ? "This file is valid." : "This file is not valid.",
     summary: declaration.reasons[0],
     details: declaration.rule ? [ruleLine(declaration.rule)] : [],
+    nextSteps: declaration.ok ? buildNextSteps({ hasOrigin: false }) : null,
   });
 }
 
@@ -289,6 +299,17 @@ async function checkOrigin(url) {
       kind,
       error: fieldError,
     });
+    const nextSteps =
+      kind === "valid"
+        ? buildNextSteps({
+            hasOrigin: true,
+            registryState: registryListingState(
+              requestedOrigin,
+              registryOrigins,
+            ),
+          })
+        : null;
+
     showMessage(originResult, {
       kind,
       title,
@@ -303,6 +324,7 @@ async function checkOrigin(url) {
           ? `Response body:\n${payload.body}`
           : "",
       ].filter(Boolean),
+      nextSteps,
     });
   } catch {
     if (requestId !== originRequest) {
@@ -365,7 +387,13 @@ function resetField(field, input, errorEl) {
 
 /**
  * @param {HTMLElement} target
- * @param {{ kind: string, title: string, summary: string, details: string[] }} outcome
+ * @param {{
+ *   kind: string,
+ *   title: string,
+ *   summary: string,
+ *   details: string[],
+ *   nextSteps?: ReturnType<typeof buildNextSteps> | null,
+ * }} outcome
  */
 function showMessage(target, outcome) {
   target.hidden = false;
@@ -403,6 +431,66 @@ function showMessage(target, outcome) {
 
     target.append(line);
   }
+
+  if (outcome.nextSteps) {
+    target.append(renderNextSteps(outcome.nextSteps));
+  }
+}
+
+/**
+ * @param {ReturnType<typeof buildNextSteps>} steps
+ * @returns {HTMLElement}
+ */
+function renderNextSteps(steps) {
+  const section = document.createElement("section");
+
+  section.className = "declaration-next-steps";
+  section.setAttribute("data-declaration-next-steps", "");
+
+  const heading = document.createElement("h3");
+
+  heading.className = "declaration-next-steps__heading";
+  heading.textContent = steps.heading;
+  section.append(heading);
+
+  const declarationFact = document.createElement("p");
+
+  declarationFact.className = "declaration-next-steps__fact";
+  declarationFact.setAttribute("data-declaration-fact", "");
+  declarationFact.textContent = steps.declarationFact;
+  section.append(declarationFact);
+
+  if (steps.registryFact) {
+    const registryFact = document.createElement("p");
+
+    registryFact.className = "declaration-next-steps__fact";
+    registryFact.setAttribute("data-registry-fact", "");
+    registryFact.textContent = steps.registryFact;
+    section.append(registryFact);
+  }
+
+  const body = document.createElement("p");
+
+  body.textContent = steps.body;
+  section.append(body);
+
+  const list = document.createElement("ul");
+
+  list.className = "declaration-next-steps__links";
+
+  for (const link of steps.links) {
+    const item = document.createElement("li");
+    const anchor = document.createElement("a");
+
+    anchor.href = link.href;
+    anchor.textContent = link.label;
+    item.append(anchor);
+    list.append(item);
+  }
+
+  section.append(list);
+
+  return section;
 }
 
 /**
