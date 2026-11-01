@@ -25,8 +25,8 @@ Independent websites, linked by a tiny public declaration. No accounts. No feed 
 </p>
 
 <p class="home-cta">
-  <a class="home-cta__primary" href="{{ '/wander/' | relative_url }}">Wander the Joshternet</a>
-  <a class="home-cta__secondary" href="{{ '/join/' | relative_url }}">Join the Joshternet</a>
+  <a class="home-cta__primary" href="{{ '/join/' | relative_url }}">Join the Joshternet</a>
+  <a class="home-cta__secondary" href="{{ '/wander/' | relative_url }}">Wander the Joshternet</a>
 </p>
 
 {% include home-new-arrivals.html %}
