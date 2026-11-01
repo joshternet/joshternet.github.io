@@ -34,7 +34,7 @@ Missing before this change, now present in code:
 - A quality report that fails the hourly job before artifact upload.
 - Fair topic-page order and a Wander blocked-link notice.
 
-Open limit: a bare `agent` and `agents` share one slug. `ai-agent` and `real-estate-agent` stay separate. The pipeline does not split two meanings of the same word when the publisher did not. Missing `lang` is still treated as English, which matches the previous `isEnglishLanguage("")` behavior, because many pages omit the attribute. Explicit non-English pages do not get English heuristic phrases. Declared tags on those pages are kept.
+Open limit: a bare `agent` and `agents` share one slug. `ai-agent` and `real-estate-agent` stay separate. The pipeline does not split two meanings of the same word when the publisher did not. Missing or invalid `lang` is **not** treated as English: English stopword heuristics run only when the base language is explicitly `en`. Explicit non-English pages and pages without a reliable language tag do not get English heuristic phrases. Declared tags and feed categories on those pages are kept (including non-Latin labels via stable `u-` slugs when ASCII slugs are unavailable).
 
 ## C. Architecture
 

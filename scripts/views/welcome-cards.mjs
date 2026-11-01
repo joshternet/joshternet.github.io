@@ -34,6 +34,7 @@ export function escapeXml(value) {
 }
 
 /**
+ * Truncates by grapheme cluster (or code point) so emoji/CJK are not split.
  * @param {unknown} value
  * @param {number} max
  * @returns {string}
@@ -45,11 +46,23 @@ export function truncateLabel(value, max) {
     return "";
   }
 
-  if (text.length <= max) {
+  /** @type {string[]} */
+  let units;
+
+  if (typeof Intl !== "undefined" && typeof Intl.Segmenter === "function") {
+    const segmenter = new Intl.Segmenter(undefined, {
+      granularity: "grapheme",
+    });
+    units = [...segmenter.segment(text)].map((part) => part.segment);
+  } else {
+    units = [...text];
+  }
+
+  if (units.length <= max) {
     return text;
   }
 
-  return `${text.slice(0, Math.max(0, max - 1)).trimEnd()}…`;
+  return `${units.slice(0, Math.max(0, max - 1)).join("")}…`;
 }
 
 /**
@@ -175,6 +188,11 @@ export function buildWelcomeCardSvg(participant) {
     ? `First participated ${participated}`
     : "Participating in the Joshternet";
 
+  const siteFont =
+    "Georgia, 'Times New Roman', 'PingFang SC', 'Hiragino Sans', 'Noto Sans CJK JP', 'Noto Naskh Arabic', 'Apple SD Gothic Neo', serif";
+  const uiFont =
+    "ui-sans-serif, system-ui, 'PingFang SC', 'Hiragino Sans', 'Noto Sans CJK JP', 'Noto Naskh Arabic', sans-serif";
+
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="${WELCOME_CARD_WIDTH}" height="${WELCOME_CARD_HEIGHT}" viewBox="0 0 ${WELCOME_CARD_WIDTH} ${WELCOME_CARD_HEIGHT}" role="img" aria-label="Welcome to the Joshternet postcard for ${escapeXml(domain)}">
   <defs>
@@ -187,15 +205,15 @@ export function buildWelcomeCardSvg(participant) {
   <rect width="100%" height="100%" fill="url(#sky)"/>
   <rect x="36" y="36" width="${WELCOME_CARD_WIDTH - 72}" height="${WELCOME_CARD_HEIGHT - 72}" fill="#ffffff" stroke="#8ca2b8" stroke-width="2"/>
   <circle cx="96" cy="110" r="18" fill="#0b5f9f"/>
-  <text x="130" y="118" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#071b31">Joshternet</text>
-  <text x="72" y="200" font-family="Georgia, 'Times New Roman', serif" font-size="48" font-weight="700" fill="#071b31">Welcome to the Joshternet</text>
-  <text x="72" y="270" font-family="Georgia, 'Times New Roman', serif" font-size="36" fill="#0a4d80">${escapeXml(title)}</text>
-  <text x="72" y="318" font-family="ui-sans-serif, system-ui, sans-serif" font-size="24" fill="#3b4f65">${escapeXml(domain)}</text>
-  <text x="72" y="380" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22" fill="#071b31">An independent website participating in the Joshternet.</text>
-  <text x="72" y="420" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22" fill="#3b4f65">${escapeXml(sinceLine)}</text>
-  <text x="72" y="470" font-family="ui-sans-serif, system-ui, sans-serif" font-size="20" fill="#0b5f9f">${escapeXml(identityLine)}</text>
-  <text x="72" y="520" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-style="italic" fill="#071b31">Joshness is declared, never derived.</text>
-  <text x="72" y="568" font-family="ui-sans-serif, system-ui, sans-serif" font-size="20" fill="#48627b">joshternet.org</text>
+  <text x="130" y="118" font-family="${siteFont}" font-size="28" fill="#071b31">Joshternet</text>
+  <text x="72" y="200" font-family="${siteFont}" font-size="48" font-weight="700" fill="#071b31">Welcome to the Joshternet</text>
+  <text x="72" y="270" font-family="${siteFont}" font-size="36" fill="#0a4d80" direction="ltr" unicode-bidi="plaintext">${escapeXml(title)}</text>
+  <text x="72" y="318" font-family="${uiFont}" font-size="24" fill="#3b4f65" direction="ltr" unicode-bidi="plaintext">${escapeXml(domain)}</text>
+  <text x="72" y="380" font-family="${uiFont}" font-size="22" fill="#071b31">An independent website participating in the Joshternet.</text>
+  <text x="72" y="420" font-family="${uiFont}" font-size="22" fill="#3b4f65">${escapeXml(sinceLine)}</text>
+  <text x="72" y="470" font-family="${uiFont}" font-size="20" fill="#0b5f9f">${escapeXml(identityLine)}</text>
+  <text x="72" y="520" font-family="${siteFont}" font-size="22" font-style="italic" fill="#071b31">Joshness is declared, never derived.</text>
+  <text x="72" y="568" font-family="${uiFont}" font-size="20" fill="#48627b">joshternet.org</text>
 </svg>
 `;
 }

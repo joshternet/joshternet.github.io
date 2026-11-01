@@ -10,6 +10,11 @@
 import { itemsFromCollection } from "../network/collections.mjs";
 import { isNonSubjectSlug } from "../nlp/evidence.mjs";
 import { itemMentionsTopic, textMentionsSlug } from "../nlp/match.mjs";
+import { normalizeLanguageTag } from "../nlp/text.mjs";
+import {
+  normalizeUnicodeText,
+  unicodeLetterTokens,
+} from "../nlp/unicode-text.mjs";
 
 export { itemMentionsTopic, textMentionsSlug };
 
@@ -223,7 +228,7 @@ export function compactContentItem(item, sites, publicSlugs) {
       typeof item.published_at === "string" ? item.published_at : "",
     content_type:
       typeof item.content_type === "string" ? item.content_type : "",
-    language: typeof item.language === "string" ? item.language : "",
+    language: normalizeLanguageTag(item.language),
     site_origin: origin,
     site_title:
       (typeof site?.title === "string" && site.title) ||
@@ -767,12 +772,7 @@ export function searchTokens(query) {
     return [];
   }
 
-  return query
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim()
-    .split(/\s+/)
-    .filter((token) => token.length > 0);
+  return unicodeLetterTokens(query);
 }
 
 /**
@@ -795,10 +795,18 @@ export function scoreSearchDocument(query, document) {
     return 0;
   }
 
-  const title = String(document.title || "").toLowerCase();
-  const summary = String(document.summary || "").toLowerCase();
-  const domain = String(document.domain || "").toLowerCase();
-  const topics = (document.topics || []).join(" ").toLowerCase();
+  const title = normalizeUnicodeText(
+    String(document.title || ""),
+  ).toLowerCase();
+  const summary = normalizeUnicodeText(
+    String(document.summary || ""),
+  ).toLowerCase();
+  const domain = normalizeUnicodeText(
+    String(document.domain || ""),
+  ).toLowerCase();
+  const topics = normalizeUnicodeText(
+    (document.topics || []).join(" "),
+  ).toLowerCase();
   let score = 0;
 
   for (const token of tokens) {
@@ -1231,6 +1239,7 @@ export function buildViewDocuments(input) {
       published_at: item.published_at,
       image: item.image,
       image_origin: item.image_origin,
+      language: normalizeLanguageTag(item.language) || "",
     });
   }
 
@@ -1342,18 +1351,20 @@ export function buildActivityAtomXml(activity, options = {}) {
       item.site_origin.startsWith("https://")
         ? item.site_origin
         : "";
+    const language = normalizeLanguageTag(item.language);
+    const langAttr = language ? ` xml:lang="${escapeAtomText(language)}"` : "";
 
     const authorUri = siteOrigin
       ? `\n      <uri>${escapeAtomText(siteOrigin)}</uri>`
       : "";
 
     const summaryXml = summary
-      ? `\n    <summary>${escapeAtomText(summary)}</summary>`
+      ? `\n    <summary${langAttr}>${escapeAtomText(summary)}</summary>`
       : "";
 
-    entries.push(`  <entry>
+    entries.push(`  <entry${langAttr}>
     <id>${escapeAtomText(url)}</id>
-    <title>${escapeAtomText(title)}</title>
+    <title${langAttr}>${escapeAtomText(title)}</title>
     <updated>${escapeAtomText(published)}</updated>
     <published>${escapeAtomText(published)}</published>
     <link rel="alternate" href="${escapeAtomText(url)}"/>

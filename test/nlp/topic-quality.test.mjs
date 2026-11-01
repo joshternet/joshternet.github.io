@@ -478,7 +478,7 @@ test("rejection reasons and sensitive topics do not assert identity", () => {
 
 test("non-English pages keep declarations and skip English heuristic assumptions", () => {
   assert.equal(isEnglishLanguage("fr"), false);
-  assert.equal(isEnglishLanguage(""), true);
+  assert.equal(isEnglishLanguage(""), false);
   const subjects = subjectsFromHtml(
     `<html lang="fr"><body><meta property="article:tag" content="Jardinage"></body></html>`,
     "https://a.example/fr",

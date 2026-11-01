@@ -18,6 +18,8 @@ seo:
 Publish `/.well-known/josh`. [RFC-JOSH-0002][rfc-0002] is authoritative.
 [RFC-JOSH-0001][rfc-0001] covers the optional `josh` member.
 
+Participation does not depend on the written language of your website. Publish in German, Japanese, Arabic, or any other language; keep your original titles and categories. The declaration object still uses only the English protocol keys `version` and `josh` (no localized key names).
+
 ## What implementation requires today
 
 An origin participates in the Joshternet by publishing a valid version 1 JSON declaration at exactly:

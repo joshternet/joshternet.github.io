@@ -19,6 +19,8 @@ script: /assets/js/join.js
 
 **Are you a Josh? Get yourself connected.** People who aren't named Josh are equally welcome—Joshness is declared, never derived, and non-Joshes participate fully.
 
+Websites in any written language are welcome. Titles, posts, and categories may stay in the language you publish; the Joshternet does not require English content and does not translate your site. The declaration JSON keys remain exactly `version` and `josh` regardless of the language of your pages.
+
 No accounts. No signup form. Your website stays yours. This page guides the existing process; [Implement]({{ '/implement/' | relative_url }}) remains the technical guide.
 
 <ol class="join-steps">

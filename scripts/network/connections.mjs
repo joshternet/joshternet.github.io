@@ -5,6 +5,8 @@
  * no dual topic edges, no popularity. /.well-known/josh never creates a link.
  */
 
+import { createHash } from "node:crypto";
+
 import { originFromHttpUrl } from "./blogroll.mjs";
 import { decodeHtmlEntities, normalizeText } from "./lib.mjs";
 
@@ -365,15 +367,34 @@ function normalizeRelTokens(value) {
 }
 
 /**
+ * Deterministic topic slug. Keeps established ASCII slugs when length ≥ 2.
+ * Non-Latin labels use a filesystem-safe `u-` + SHA-256 prefix (not raw Unicode paths).
  * @param {string} value
  * @returns {string}
  */
 export function slugifyTopic(value) {
-  return normalizeText(value)
+  const normalized = normalizeText(value).normalize("NFC");
+
+  if (!normalized) {
+    return "";
+  }
+
+  const ascii = normalized
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "")
     .slice(0, 80);
+
+  if (ascii.length >= 2) {
+    return ascii;
+  }
+
+  // Hash only when non-ASCII letters/digits remain after Latin slug stripping.
+  if (/[^\u0000-\u007F]/.test(normalized)) {
+    return `u-${createHash("sha256").update(normalized).digest("hex").slice(0, 12)}`;
+  }
+
+  return ascii;
 }
 
 /**

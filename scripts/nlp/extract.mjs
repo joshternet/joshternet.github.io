@@ -20,22 +20,22 @@ import {
   heuristicRejectionReason,
 } from "./normalize.mjs";
 import { normalizeExtractedText } from "./text.mjs";
+import { unicodeLetterTokens } from "./unicode-text.mjs";
 
 /**
  * @typedef {{url: string, title: string, text: string}} PageInput
  */
 
 /**
- * Tokenizes text into lowercase words after entity decode.
+ * Tokenizes text into lowercase Unicode letter/number words after entity decode.
+ * English stopwords still filter Latin filler; non-Latin tokens are retained.
  * @param {string} text
  * @returns {string[]}
  */
 export function tokenize(text) {
-  return normalizeExtractedText(text)
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, " ")
-    .split(/\s+/)
-    .filter((token) => token.length > 2 && !STOPWORDS.has(token));
+  return unicodeLetterTokens(normalizeExtractedText(text)).filter(
+    (token) => token.length > 2 && !STOPWORDS.has(token),
+  );
 }
 
 /**

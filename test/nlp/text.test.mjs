@@ -17,6 +17,7 @@ import {
   metaContent,
   metaContents,
   normalizeExtractedText,
+  normalizeLanguageTag,
   parseHtmlRegions,
   posterImageFromHtml,
   schemaTypesFromHtml,
@@ -26,10 +27,18 @@ import {
 
 // ─── isEnglishLanguage ────────────────────────────────────────────────────────
 
-test("isEnglishLanguage: empty string → true (assumed English)", () => {
-  assert.equal(isEnglishLanguage(""), true);
-  assert.equal(isEnglishLanguage(null), true);
-  assert.equal(isEnglishLanguage(undefined), true);
+test("isEnglishLanguage: empty or missing → false (unknown is not English)", () => {
+  assert.equal(isEnglishLanguage(""), false);
+  assert.equal(isEnglishLanguage(null), false);
+  assert.equal(isEnglishLanguage(undefined), false);
+});
+
+test("normalizeLanguageTag: BCP 47 tags and rejects garbage", () => {
+  assert.equal(normalizeLanguageTag("en-US"), "en-us");
+  assert.equal(normalizeLanguageTag("zh-Hans"), "zh-hans");
+  assert.equal(normalizeLanguageTag("FR_CA"), "fr-ca");
+  assert.equal(normalizeLanguageTag("not a tag"), "");
+  assert.equal(normalizeLanguageTag("*"), "");
 });
 
 test("isEnglishLanguage: 'en' → true", () => {
