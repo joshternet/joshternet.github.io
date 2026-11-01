@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T05:22:04.694Z",
+  "generated_at": "2026-11-01T07:32:32.770Z",
   "community_count": 226,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
@@ -4245,14 +4245,19 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshua.seigler.net/posts/my-very-own-github-pages/",
+              "url": "https://github.com/cosmiciron/vmprint",
               "title": "",
-              "source": "visible-text"
+              "source": "catalog-match"
             },
             {
-              "url": "https://joshua.seigler.net/uses/",
+              "url": "https://github.com/jkoppel/jj-workshop",
               "title": "",
-              "source": "visible-text"
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshua.seigler.net/posts/my-very-own-github-pages/",
+              "title": "",
+              "source": "catalog-match"
             }
           ]
         },
@@ -4771,13 +4776,6 @@
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
           "title": "Josh Sherman",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshua.seigler.net",
-          "domain": "joshua.seigler.net",
-          "title": "Joshua Seigler",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
