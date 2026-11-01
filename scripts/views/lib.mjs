@@ -1379,10 +1379,129 @@ function extendTitleCaseProductName(title, start, end) {
   return title.slice(start, cursor).replace(/\s+/g, " ").trim();
 }
 
+/** Leading articles / small counts stripped before summary title modifiers. */
+const SLUG_TITLE_SUMMARY_LEADING_DROP = new Set([
+  "a",
+  "an",
+  "the",
+  "one",
+  "two",
+  "three",
+  "four",
+  "five",
+  "six",
+  "seven",
+  "eight",
+  "nine",
+  "ten",
+  "eleven",
+  "twelve",
+]);
+
+/**
+ * When a bare slug product title (e.g. "Skills") appears in the summary with
+ * short Title Case modifiers ("Nine Claude Code skills…"), return the fuller
+ * product name ("Claude Code Skills").
+ * @param {unknown} title
+ * @param {unknown} summary
+ * @returns {string} Expanded title, or "" when no safe expansion exists.
+ */
+export function expandSlugTitleFromSummary(title, summary) {
+  const head = String(title || "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (!head || /\s/.test(head)) {
+    return "";
+  }
+
+  const text = decodeHtmlEntities(
+    String(summary || "")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " "),
+  ).trim();
+
+  if (!text) {
+    return "";
+  }
+
+  const words = text.split(/\s+/).filter(Boolean);
+  const headLower = head.toLowerCase();
+  /** @type {string[] | null} */
+  let best = null;
+
+  for (let index = 0; index < words.length; index += 1) {
+    const token = words[index].replace(/[^A-Za-z0-9+]/g, "");
+
+    if (!token || token.toLowerCase() !== headLower) {
+      continue;
+    }
+
+    /** @type {string[]} */
+    const modifiers = [];
+    let cursor = index - 1;
+
+    while (cursor >= 0 && modifiers.length < 4) {
+      const clean = words[cursor].replace(/[^A-Za-z0-9+]/g, "");
+
+      if (!clean) {
+        cursor -= 1;
+        continue;
+      }
+
+      const isTitleCase = /^[A-Z][A-Za-z0-9+]*$/.test(clean);
+      const isDrop =
+        SLUG_TITLE_SUMMARY_LEADING_DROP.has(clean.toLowerCase()) ||
+        /^\d+$/.test(clean);
+
+      if (!isTitleCase && !isDrop) {
+        break;
+      }
+
+      modifiers.unshift(clean);
+      cursor -= 1;
+
+      if (
+        modifiers.filter(
+          (word) =>
+            !SLUG_TITLE_SUMMARY_LEADING_DROP.has(word.toLowerCase()) &&
+            !/^\d+$/.test(word),
+        ).length >= 3
+      ) {
+        break;
+      }
+    }
+
+    while (
+      modifiers.length > 0 &&
+      (SLUG_TITLE_SUMMARY_LEADING_DROP.has(modifiers[0].toLowerCase()) ||
+        /^\d+$/.test(modifiers[0]))
+    ) {
+      modifiers.shift();
+    }
+
+    if (modifiers.length < 1) {
+      continue;
+    }
+
+    const titledHead =
+      head.charAt(0).toUpperCase() + head.slice(1).toLowerCase();
+    const candidate = [...modifiers, titledHead];
+
+    if (!best || candidate.length < best.length) {
+      best = candidate;
+    }
+  }
+
+  return best ? best.join(" ") : "";
+}
+
 /**
  * Showcase card title: strip HTML, experiment day numbers ("4 Plastic" →
  * "Plastic"), and portfolio card chrome so Kim-style titles become the
- * product name only ("SomaSpace").
+ * product name only ("SomaSpace"). Bare slug titles may expand from summary
+ * modifiers ("Skills" + "Nine Claude Code skills…" → "Claude Code Skills").
  * @param {Record<string, unknown>} item
  * @returns {string}
  */
@@ -1401,6 +1520,14 @@ export function showcaseCardTitle(item) {
     const fromSlug = projectTitleMatchingSlug(title, slug);
 
     if (fromSlug) {
+      if (fromSlug.toLowerCase() === title.toLowerCase()) {
+        const expanded = expandSlugTitleFromSummary(fromSlug, item?.summary);
+
+        if (expanded) {
+          return expanded;
+        }
+      }
+
       return fromSlug;
     }
   }
@@ -1912,15 +2039,29 @@ function eligibleShowcaseItems(compactItems) {
 
 /**
  * Showcase video cards from member YouTube / Vimeo / Twitch channel profiles.
+ * Optional publishByUrl maps channel URL → latest upload ISO time (from
+ * channel-publish enrich). Undated channels are still returned here; callers
+ * that build Showcase / Activity must gate with publishedWithinDays.
  * @param {unknown} network
  * @param {string} [observedAt]
+ * @param {Record<string, string> | null | undefined} [publishByUrl]
  * @returns {Array<Record<string, unknown>>}
  */
-export function channelItemsFromNetwork(network, observedAt = "") {
+export function channelItemsFromNetwork(
+  network,
+  observedAt = "",
+  publishByUrl = null,
+) {
   /** @type {Array<Record<string, unknown>>} */
   const items = [];
   const channelNetworks = new Set(["youtube", "vimeo", "twitch"]);
   const list = Array.isArray(network) ? network : [];
+  const dates =
+    publishByUrl &&
+    typeof publishByUrl === "object" &&
+    !Array.isArray(publishByUrl)
+      ? publishByUrl
+      : {};
 
   for (const site of list) {
     if (!site || typeof site !== "object") {
@@ -1977,6 +2118,8 @@ export function channelItemsFromNetwork(network, observedAt = "") {
       }
 
       const label = (typeof link.label === "string" && link.label) || networkId;
+      const published =
+        typeof dates[href] === "string" && dates[href] ? dates[href] : "";
 
       items.push({
         identity: `channel:${origin}:${networkId}`,
@@ -1990,6 +2133,7 @@ export function channelItemsFromNetwork(network, observedAt = "") {
         domain: typeof site.domain === "string" ? site.domain : "",
         source: { kind: "elsewhere-channel", network: networkId },
         observed_at: observedAt || new Date().toISOString(),
+        ...(published ? { published_at: published } : {}),
         actions: [
           {
             label: "Watch",
@@ -2803,9 +2947,16 @@ export function buildViewDocuments(input) {
   const compactFromContent = contentItems
     .map((item) => compactContentItem(item, sites, publicSlugs))
     .filter(Boolean);
+  // Elsewhere channels only join Showcase / Activity / search when their
+  // latest upload published_at falls in the Activity window (undated omitted).
   const channelCompact = channelItemsFromNetwork(
     input.network || [],
     input.generatedAt,
+    /** @type {Record<string, string> | null | undefined} */ (
+      input.channelPublishByUrl
+    ),
+  ).filter((item) =>
+    publishedWithinDays(item.published_at, clock, ACTIVITY_WINDOW_DAYS),
   );
   const compactItems = [...compactFromContent, ...channelCompact];
   const recentItems = contentItems.filter(

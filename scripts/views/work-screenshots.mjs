@@ -1,12 +1,14 @@
 /**
  * Goal & Constraints:
- * After OG enrich, any card-worthy content item still missing a poster
- * (article, note, project, game, music album, …) gets a Playwright viewport
- * screenshot written as local WebP under assets/activity/posters keyed by the
- * work URL. Never invent works—only screenshot harvested https URLs. Skip hub,
- * member-homepage, and bare creative-index URLs. Reserve writing slots each
- * sync so articles progress when creative backlog is large. Injectable
- * Playwright for offline tests; cap captures per sync.
+ * After OG enrich (and during views:build for channel cards), any card-worthy
+ * item still missing a poster (article, note, project, game, music, video
+ * channel, …) gets a Playwright viewport screenshot as local WebP under
+ * assets/activity/posters keyed by the work URL. Reuse an on-disk poster when
+ * present before launching a browser. Never invent works—only screenshot
+ * harvested https URLs. Skip hub, member-homepage, and bare creative-index
+ * URLs. Reserve writing slots each sync so articles progress when creative
+ * backlog is large. Injectable Playwright for offline tests; cap captures
+ * per sync.
  */
 
 import fs from "node:fs/promises";
@@ -130,6 +132,109 @@ export function contentItemNeedsWorkScreenshot(item) {
   }
 
   return isScreenshotEligibleContentType(screenshotContentType(item));
+}
+
+/**
+ * Absolute filesystem path for a poster asset URL under root.
+ * @param {string} root
+ * @param {string} assetPath
+ * @returns {string}
+ */
+function absolutePosterPath(root, assetPath) {
+  return path.join(root, assetPath.replace(/^\//, ""));
+}
+
+/**
+ * When a prior sync already wrote a poster WebP for this URL, attach it so
+ * channel cards and re-projected Showcase rows do not stay image-less.
+ * @param {Array<Record<string, unknown>>} items
+ * @param {string} root
+ * @returns {Promise<number>} Count of items that gained an image from disk.
+ */
+export async function attachExistingWorkPosters(items, root) {
+  if (!Array.isArray(items) || items.length === 0) {
+    return 0;
+  }
+
+  let attached = 0;
+
+  for (const item of items) {
+    if (!contentItemNeedsWorkScreenshot(item)) {
+      continue;
+    }
+
+    const workUrl = String(item.url);
+    // contentItemNeedsWorkScreenshot already requires a plain https URL.
+    const assetPath = posterAssetPath(workUrl);
+
+    try {
+      const absolute = absolutePosterPath(root, assetPath);
+      const written = await fs.stat(absolute);
+
+      if (written.isFile() && written.size > 0) {
+        item.image = assetPath;
+        attached += 1;
+      }
+    } catch {
+      // Missing file — leave for Playwright capture.
+    }
+  }
+
+  return attached;
+}
+
+/**
+ * Unique Showcase / Activity card rows that may still need a poster.
+ * @param {Record<string, unknown>} views
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function collectProjectionItemsNeedingPosters(views) {
+  if (!views || typeof views !== "object") {
+    return [];
+  }
+
+  /** @type {Map<string, Record<string, unknown>>} */
+  const byUrl = new Map();
+  const lists = [
+    views.showcase &&
+    typeof views.showcase === "object" &&
+    Array.isArray(/** @type {{ items?: unknown }} */ (views.showcase).items)
+      ? /** @type {{ items: Array<Record<string, unknown>> }} */ (
+          views.showcase
+        ).items
+      : [],
+    views.showcase &&
+    typeof views.showcase === "object" &&
+    Array.isArray(/** @type {{ home?: unknown }} */ (views.showcase).home)
+      ? /** @type {{ home: Array<Record<string, unknown>> }} */ (views.showcase)
+          .home
+      : [],
+    views.activity &&
+    typeof views.activity === "object" &&
+    Array.isArray(/** @type {{ primary?: unknown }} */ (views.activity).primary)
+      ? /** @type {{ primary: Array<Record<string, unknown>> }} */ (
+          views.activity
+        ).primary
+      : [],
+  ];
+
+  for (const list of lists) {
+    for (const item of list) {
+      if (!item || typeof item !== "object") {
+        continue;
+      }
+
+      if (typeof item.url !== "string" || !item.url) {
+        continue;
+      }
+
+      if (!byUrl.has(item.url)) {
+        byUrl.set(item.url, item);
+      }
+    }
+  }
+
+  return [...byUrl.values()];
 }
 
 /**
@@ -337,6 +442,9 @@ export async function captureMissingWorkScreenshots(items, options = {}) {
     return Array.isArray(items) ? items : [];
   }
 
+  const root = typeof options.root === "string" ? options.root : process.cwd();
+  await attachExistingWorkPosters(items, root);
+
   const pending = items.filter((item) => contentItemNeedsWorkScreenshot(item));
   const maxCaptures =
     typeof options.maxCaptures === "number" && options.maxCaptures > 0
@@ -347,7 +455,6 @@ export async function captureMissingWorkScreenshots(items, options = {}) {
     return items;
   }
 
-  const root = typeof options.root === "string" ? options.root : process.cwd();
   const timeoutMs =
     typeof options.timeoutMs === "number" && options.timeoutMs > 0
       ? options.timeoutMs
@@ -376,7 +483,7 @@ export async function captureMissingWorkScreenshots(items, options = {}) {
       // posterAssetPath always returns a local asset path here.
       const workUrl = String(item.url);
       const assetPath = posterAssetPath(workUrl);
-      const absolute = path.join(root, assetPath.replace(/^\//, ""));
+      const absolute = absolutePosterPath(root, assetPath);
 
       try {
         await fs.mkdir(path.dirname(absolute), { recursive: true });

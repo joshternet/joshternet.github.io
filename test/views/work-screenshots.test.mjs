@@ -18,8 +18,10 @@ import {
   MAX_WORK_SCREENSHOTS_PER_SYNC,
   MAX_WRITING_SCREENSHOTS_PER_SYNC,
   WORK_SCREENSHOT_SETTLE_MS,
+  attachExistingWorkPosters,
   awaitPageReadyForScreenshot,
   captureMissingWorkScreenshots,
+  collectProjectionItemsNeedingPosters,
   compareScreenshotPriority,
   contentItemNeedsWorkScreenshot,
   isScreenshotEligibleContentType,
@@ -228,6 +230,99 @@ test("contentItemNeedsWorkScreenshot gates card-worthy drafts", () => {
     }),
     false,
   );
+  assert.equal(
+    contentItemNeedsWorkScreenshot({
+      url: "https://www.youtube.com/@asite",
+      content_type: "video",
+      site_origin: "https://a.example",
+      source: { kind: "elsewhere-channel" },
+    }),
+    true,
+  );
+});
+
+test("attachExistingWorkPosters reuses on-disk channel posters", async () => {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), "poster-attach-"));
+  const channel = {
+    url: "https://www.youtube.com/@asite",
+    content_type: "video",
+    site_origin: "https://a.example",
+  };
+  const assetPath = posterAssetPath(channel.url);
+  const absolute = path.join(dir, assetPath.replace(/^\//, ""));
+
+  try {
+    await fs.mkdir(path.dirname(absolute), { recursive: true });
+    await fs.writeFile(absolute, await tinyPng());
+    const attached = await attachExistingWorkPosters([channel], dir);
+    assert.equal(attached, 1);
+    assert.equal(channel.image, assetPath);
+    assert.equal(await attachExistingWorkPosters([], dir), 0);
+    assert.equal(await attachExistingWorkPosters(null, dir), 0);
+  } finally {
+    await fs.rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("collectProjectionItemsNeedingPosters dedupes Showcase and Activity rows", () => {
+  const shared = {
+    url: "https://www.youtube.com/@asite",
+    content_type: "video",
+    title: "A on YouTube",
+  };
+  const items = collectProjectionItemsNeedingPosters({
+    showcase: {
+      items: [
+        shared,
+        null,
+        { url: "", content_type: "game" },
+        { url: "https://a.example/games/x/", content_type: "game" },
+      ],
+      home: [shared],
+    },
+    activity: {
+      primary: [
+        shared,
+        { url: "https://a.example/post/", content_type: "article" },
+      ],
+    },
+  });
+
+  assert.equal(items.length, 3);
+  assert.equal(items.filter((item) => item.url === shared.url).length, 1);
+  assert.deepEqual(collectProjectionItemsNeedingPosters(null), []);
+  assert.deepEqual(collectProjectionItemsNeedingPosters({}), []);
+  assert.deepEqual(
+    collectProjectionItemsNeedingPosters({
+      showcase: { items: "nope", home: null },
+      activity: { primary: undefined },
+    }),
+    [],
+  );
+});
+
+test("attachExistingWorkPosters skips items that already have images", async () => {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), "poster-skip-"));
+
+  try {
+    const attached = await attachExistingWorkPosters(
+      [
+        {
+          url: "https://www.youtube.com/@filled",
+          content_type: "video",
+          image: "https://cdn.example/og.png",
+        },
+        {
+          url: "https://www.youtube.com/@missing",
+          content_type: "video",
+        },
+      ],
+      dir,
+    );
+    assert.equal(attached, 0);
+  } finally {
+    await fs.rm(dir, { recursive: true, force: true });
+  }
 });
 
 test("selectScreenshotTargets reserves writing slots under creative backlog", () => {

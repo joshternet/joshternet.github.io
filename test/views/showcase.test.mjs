@@ -39,6 +39,7 @@ import {
   isPortfolioSourcedItem,
   isShowcaseContentItem,
   isSiteHomeUrl,
+  expandSlugTitleFromSummary,
   projectTitleMatchingSlug,
   relationLabel,
   showcaseCardTitle,
@@ -2469,6 +2470,72 @@ test("isMadeContentItem requires creative-directory URLs for projects", () => {
   );
 });
 
+test("expandSlugTitleFromSummary lifts bare slug titles from summary modifiers", () => {
+  assert.equal(
+    expandSlugTitleFromSummary(
+      "Skills",
+      "Nine Claude Code skills for product engineering work, from planning and code review to dependency patching, deploys, and growth. Free and open source.",
+    ),
+    "Claude Code Skills",
+  );
+  assert.equal(
+    expandSlugTitleFromSummary("Skills", "A page about tools and craft."),
+    "",
+  );
+  assert.equal(
+    expandSlugTitleFromSummary(
+      "Claude Code Skills",
+      "Nine Claude Code skills for product engineering work.",
+    ),
+    "",
+  );
+  assert.equal(
+    expandSlugTitleFromSummary(
+      "Skills",
+      "Alpha Bravo Charlie Delta Echo Skills arrive later",
+    ),
+    "Charlie Delta Echo Skills",
+  );
+  assert.equal(
+    expandSlugTitleFromSummary("Skills", "Claude Code · Skills nearby"),
+    "Claude Code Skills",
+  );
+  assert.equal(
+    expandSlugTitleFromSummary("Skills", "about Claude Code skills here"),
+    "Claude Code Skills",
+  );
+  assert.equal(expandSlugTitleFromSummary("Skills", "The Skills page"), "");
+  assert.equal(
+    expandSlugTitleFromSummary(
+      "Skills",
+      "Claude Code Skills and Product Skills both ship",
+    ),
+    "Product Skills",
+  );
+  assert.equal(expandSlugTitleFromSummary("", "Claude Code skills"), "");
+  assert.equal(expandSlugTitleFromSummary("Skills", ""), "");
+});
+
+test("showcaseCardTitle expands bare slug product names from summary", () => {
+  assert.equal(
+    showcaseCardTitle({
+      url: "https://joshghent.com/skills",
+      title: "Skills",
+      summary:
+        "Nine Claude Code skills for product engineering work, from planning and code review to dependency patching, deploys, and growth. Free and open source.",
+    }),
+    "Claude Code Skills",
+  );
+  assert.equal(
+    showcaseCardTitle({
+      url: "https://joshghent.com/skills",
+      title: "Skills",
+      summary: "Open tools for engineering teams.",
+    }),
+    "Skills",
+  );
+});
+
 test("showcaseCardTitle strips HTML and experiment day numbers", () => {
   assert.equal(
     showcaseCardTitle({
@@ -2792,12 +2859,118 @@ test("buildViewDocuments search tolerates channel items without tags", () => {
     connections: {},
     siteSignals: { origins: [] },
     generatedAt: "2026-11-01T00:00:00.000Z",
+    channelPublishByUrl: {
+      "https://www.youtube.com/@asite": "2026-10-28T12:00:00.000Z",
+    },
   });
 
   assert.ok(
     views.search_index.documents.some(
       (doc) => doc.url === "https://www.youtube.com/@asite",
     ),
+  );
+});
+
+test("elsewhere channels need a recent upload for Showcase and Activity", () => {
+  const network = [
+    {
+      origin: "https://a.example",
+      domain: "a.example",
+      title: "A Site",
+      elsewhere: [
+        {
+          network: "youtube",
+          label: "YouTube",
+          url: "https://www.youtube.com/@fresh",
+        },
+        {
+          network: "youtube",
+          label: "YouTube",
+          url: "https://www.youtube.com/@stale",
+        },
+        {
+          network: "vimeo",
+          label: "Vimeo",
+          url: "https://vimeo.com/undated",
+        },
+      ],
+    },
+  ];
+  const base = {
+    network,
+    content: { items: [] },
+    topics: { communities: [] },
+    connections: {},
+    siteSignals: { origins: [] },
+    generatedAt: "2026-11-01T00:00:00.000Z",
+  };
+
+  const undated = buildViewDocuments(base);
+  assert.equal(
+    undated.showcase.items.some((item) =>
+      String(item.url).includes("youtube.com"),
+    ),
+    false,
+  );
+  assert.equal(
+    (undated.activity.primary || []).some((item) =>
+      String(item.url).includes("youtube.com"),
+    ),
+    false,
+  );
+
+  const dated = buildViewDocuments({
+    ...base,
+    channelPublishByUrl: {
+      "https://www.youtube.com/@fresh": "2026-10-25T00:00:00.000Z",
+      "https://www.youtube.com/@stale": "2026-09-01T00:00:00.000Z",
+    },
+  });
+  const showcaseUrls = dated.showcase.items.map((item) => item.url);
+  const activityUrls = (dated.activity.primary || []).map((item) => item.url);
+  assert.deepEqual(showcaseUrls, ["https://www.youtube.com/@fresh"]);
+  assert.ok(activityUrls.includes("https://www.youtube.com/@fresh"));
+  assert.equal(activityUrls.includes("https://www.youtube.com/@stale"), false);
+  assert.equal(showcaseUrls.includes("https://vimeo.com/undated"), false);
+  assert.ok(
+    dated.showcase.home.some(
+      (item) => item.url === "https://www.youtube.com/@fresh",
+    ),
+  );
+});
+
+test("channelItemsFromNetwork attaches published_at from publish map", () => {
+  const items = channelItemsFromNetwork(
+    [
+      {
+        origin: "https://a.example",
+        title: "A",
+        elsewhere: [
+          {
+            network: "youtube",
+            url: "https://www.youtube.com/@asite",
+          },
+        ],
+      },
+    ],
+    "2026-11-01T00:00:00.000Z",
+    { "https://www.youtube.com/@asite": "2026-10-20T00:00:00.000Z" },
+  );
+  assert.equal(items[0].published_at, "2026-10-20T00:00:00.000Z");
+  assert.equal(
+    channelItemsFromNetwork(
+      [
+        {
+          origin: "https://a.example",
+          elsewhere: [
+            { network: "youtube", url: "https://www.youtube.com/@asite" },
+          ],
+        },
+      ],
+      "2026-11-01T00:00:00.000Z",
+      /** @type {unknown} */ (["not-a-map"]),
+    )[0].published_at,
+    undefined,
   );
 });
 

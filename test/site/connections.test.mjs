@@ -138,8 +138,10 @@ test("connections page is HTML-first and cross-linked", async () => {
   assert.match(wander, /\/connections\//);
   assert.doesNotMatch(wander, /wander-modes/);
   assert.doesNotMatch(wander, /data-wander-mode/);
-  assert.match(wander, /data-wander-follow/);
-  assert.match(wander, /Follow a connection/);
+  assert.match(wander, /data-wander-go/);
+  assert.match(wander, /data-wander-open/);
+  assert.doesNotMatch(wander, /data-wander-follow/);
+  assert.doesNotMatch(wander, /data-wander-back/);
   assert.match(styles, /\.page--wander\.site-shell \{[^}]*overflow:\s*visible/);
   assert.match(styles, /\.page--wander \.site-main \{[^}]*overflow:\s*visible/);
   assert.match(
@@ -151,7 +153,9 @@ test("connections page is HTML-first and cross-linked", async () => {
     /\.wander-bar \{[^}]*border-block-start:\s*1px solid var\(--color-border\)/,
   );
   assert.doesNotMatch(styles, /\.wander-modes \{/);
-  assert.match(styles, /\.wander-bar__follow/);
+  assert.match(styles, /\.wander-bar__go/);
+  assert.doesNotMatch(styles, /\.wander-bar__follow/);
+  assert.doesNotMatch(styles, /\.wander-bar__back/);
   assert.match(nav, /site-nav-network-children\.html/);
   assert.match(script, /validatePayload/);
   assert.match(script, /canonicalOrigin/);

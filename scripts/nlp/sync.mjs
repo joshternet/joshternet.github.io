@@ -41,7 +41,9 @@ import {
   joinContentWithPageSignals,
   mergeContentItems,
 } from "./content.mjs";
+import { channelItemsFromNetwork } from "../views/lib.mjs";
 import { captureMissingWorkScreenshots } from "../views/work-screenshots.mjs";
+import { buildChannelPublishByUrl } from "./channel-publish.mjs";
 import {
   crawlOrigin,
   externalOutboundLinks,
@@ -104,6 +106,7 @@ const CONNECTIONS_PATH = path.join(ROOT, "_data/connections.json");
 const SIGNALS_PATH = path.join(ROOT, "_data/site_signals.json");
 const TOPICS_PATH = path.join(ROOT, "_data/topics.json");
 const CONTENT_PATH = path.join(ROOT, "_data/content.json");
+const CHANNEL_PUBLISH_PATH = path.join(ROOT, "_data/channel_publish.json");
 const BLOGROLLS_PATH = path.join(ROOT, "_data/blogrolls.json");
 const MANIFEST_PATH = path.join(ROOT, "_data/data_manifest.json");
 const ALIASES_PATH = path.join(ROOT, "_data/topic_aliases.json");
@@ -591,7 +594,37 @@ async function main() {
   await enrichContentItemPosters(contentItems, { cache: dnsCache });
   // Named-root / off-origin shelf projects (Wizardly Words, Morning App, …)
   // often have no og:image or block plain fetch — capture a viewport poster.
-  await captureMissingWorkScreenshots(contentItems, { root: ROOT });
+  // Include YouTube/Vimeo/Twitch channel cards from Network elsewhere so
+  // Showcase channels get posters in the same pass (files reused at views:build).
+  const channelDrafts = channelItemsFromNetwork(
+    Array.isArray(network) ? network : [],
+    now,
+  );
+  // Latest YouTube upload times gate Showcase / What's New at views:build.
+  // Poster capture still covers dormant channels so reuse stays warm.
+  const channelPublishByUrl = await buildChannelPublishByUrl(channelDrafts, {
+    cache: dnsCache,
+  });
+  await writeJSONAtomic(CHANNEL_PUBLISH_PATH, channelPublishByUrl);
+  const screenshotTargets = [...contentItems];
+  const seenScreenshotUrls = new Set(
+    contentItems
+      .map((item) => (typeof item.url === "string" ? item.url : ""))
+      .filter(Boolean),
+  );
+
+  for (const channel of channelDrafts) {
+    if (
+      typeof channel.url === "string" &&
+      channel.url &&
+      !seenScreenshotUrls.has(channel.url)
+    ) {
+      seenScreenshotUrls.add(channel.url);
+      screenshotTargets.push(channel);
+    }
+  }
+
+  await captureMissingWorkScreenshots(screenshotTargets, { root: ROOT });
   const previousConnections = itemsFromCollection(
     await readJSONIfExists(CONNECTIONS_PATH, {}),
     "edges",

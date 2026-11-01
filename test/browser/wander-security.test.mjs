@@ -62,24 +62,6 @@ const fixture = `
         Go
       </button>
 
-      <button
-        type="button"
-        data-wander-follow
-        hidden
-        disabled
-      >
-        Follow a connection
-      </button>
-
-      <button
-        type="button"
-        data-wander-back
-        hidden
-        disabled
-      >
-        Previous
-      </button>
-
       <input
         type="url"
         data-wander-address
@@ -147,16 +129,6 @@ async function wanderPage(data, { sessionState, prepare } = {}) {
       return;
     }
 
-    if (url.pathname === "/connections/data.json") {
-      await route.fulfill({
-        status: 200,
-        contentType: "application/json",
-        body: JSON.stringify({ participants: [], connections: [] }),
-      });
-
-      return;
-    }
-
     await route.abort();
   });
 
@@ -176,7 +148,7 @@ async function wanderPage(data, { sessionState, prepare } = {}) {
     };
 
     if (state) {
-      sessionStorage.setItem("joshternet-wander-v3", JSON.stringify(state));
+      sessionStorage.setItem("joshternet-wander-v4", JSON.stringify(state));
     }
   }, sessionState);
 
