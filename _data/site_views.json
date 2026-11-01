@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T04:18:58.846Z",
+  "generated_at": "2026-11-01T05:23:06.856Z",
   "sites": [
     {
       "origin": "https://joshbeard.com",
@@ -44,7 +44,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-11-01T04:17:58.025Z"
+      "crawled_at": "2026-11-01T05:22:04.694Z"
     },
     {
       "origin": "https://joshghent.com",
@@ -250,7 +250,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-11-01T04:17:58.025Z"
+      "crawled_at": "2026-11-01T05:22:04.694Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -527,7 +527,7 @@
         "summary": "Obituary / Write a Tribute Spotify playlist of Dad's favorite songs Dad's anniversary playlist note (separate from the Spotify playlist) Mom's reflections, one year later Photos of Jerry over the years: Additional photos that family and friends shared by email after Dad passed away. Click any image to open it full size.",
         "published_at": "2022-01-07T20:00:00.000Z",
         "content_type": "article",
-        "language": "",
+        "language": "en",
         "site_origin": "https://joshmuller.ca",
         "site_title": "Josh Müller",
         "domain": "joshmuller.ca",
@@ -554,7 +554,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-11-01T04:17:58.025Z"
+      "crawled_at": "2026-11-01T05:22:04.694Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -615,7 +615,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-11-01T04:17:58.025Z"
+      "crawled_at": "2026-11-01T05:22:04.694Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -862,7 +862,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-11-01T04:17:58.025Z"
+      "crawled_at": "2026-11-01T05:22:04.694Z"
     },
     {
       "origin": "https://joshua.seigler.net",
@@ -987,7 +987,7 @@
         "summary": "",
         "published_at": "2025-08-19T04:34:46.000Z",
         "content_type": "article",
-        "language": "",
+        "language": "en-us",
         "site_origin": "https://joshua.seigler.net",
         "site_title": "Joshua Seigler",
         "domain": "joshua.seigler.net",
@@ -1008,13 +1008,13 @@
       ],
       "incoming": [],
       "coverage": {
-        "pages_discovered": 65,
-        "pages_fetched": 65,
+        "pages_discovered": 64,
+        "pages_fetched": 64,
         "fetch_limit": 80,
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-11-01T04:17:58.025Z"
+      "crawled_at": "2026-11-01T05:22:04.694Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -1061,14 +1061,14 @@
           "label": "Bluesky"
         },
         {
-          "url": "https://www.twitch.tv/lilpeeeweee?utm_source=joshuamorris.info&utm_medium=referral",
-          "network": "twitch",
-          "label": "Twitch"
-        },
-        {
           "url": "https://medium.com/@hartsman?utm_source=joshuamorris.info&utm_medium=referral",
           "network": "medium",
           "label": "Medium"
+        },
+        {
+          "url": "https://www.twitch.tv/lilpeeeweee?utm_source=joshuamorris.info&utm_medium=referral",
+          "network": "twitch",
+          "label": "Twitch"
         }
       ],
       "community_topics": [
@@ -1727,7 +1727,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-11-01T04:17:58.025Z"
+      "crawled_at": "2026-11-01T05:22:04.694Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -1877,7 +1877,7 @@
         "limit_reached": true,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-11-01T04:17:58.025Z"
+      "crawled_at": "2026-11-01T05:22:04.694Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -2090,7 +2090,7 @@
         "limit_reached": false,
         "selection_strategy": "bounded-site-crawl-v1"
       },
-      "crawled_at": "2026-11-01T04:17:58.025Z",
+      "crawled_at": "2026-11-01T05:22:04.694Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,
