@@ -6,8 +6,13 @@
 
 - **Welcome postcards:** Removed `/welcome/` download page, Network “Get welcome card” links, Join celebrate CTA, SVG/PNG generation (`scripts/views/welcome-cards.mjs`, `_data/welcome_cards.json`, `assets/network/welcome/`), and related network-sync publish paths. Homepage new-arrivals eligibility is unchanged. `truncateLabel` moved to `scripts/nlp/unicode-text.mjs`.
 
+### Added
+
+- **Member events audit:** `docs/research/member-events-audit.md` (+ raw probe log) — live check of all nine independent origins for Schema.org Event / mf2 h-event / ICS; **0** upcoming Happening-eligible events; `/events/` stays unpublished.
+
 ### Changed
 
+- **Connections cards:** Site titles are real outbound links to the member origin (not a link-styled map-select button). Map highlight stays on the screenshot control (`data-connection-select`).
 - **Happening unpublished until member events exist:** `/events/` stays `published: false` and off Network nav while `_data/happening.json` has no upcoming items. Extraction/projection pipeline remains; publish the page and restore the Happening nav entry once a crawl finds verified upcoming events on a member site. Homepage strip already omits when empty.
 - **Happening pipeline:** `nlp:sync` now runs `collectEvents` into content drafts so Schema.org/mf2 events reach `_data/content.json` and `views:build` → `_data/happening.json`. Public calendar skips `attribution_role: mention` and cancelled statuses; same-origin publisher events default to `hosted`. Event date/venue render inside `activity-card` (no nested `<li>`). Showcase/home Showcase list items carry `lang`/`dir` for RTL works.
 - **Showcase order:** Kind sections list **projects → games → photography → music**, then remaining kinds (art, sheet music, video, apps, …). Section and filter titles use plural labels when a kind has more than one item (`Projects`, `Games`, `Videos`); a single item stays singular (`Project`). Within each kind, items are newest-first (`published_at` / `observed_at`, then URL descending so year albums like `/photos/2026/` precede `/photos/2014/`). Kind order is the seed for future `/showcase/` subpages.

@@ -190,30 +190,49 @@ Connections from around the Joshternet.
       <span class="connections-site__keys" data-connection-keys></span>
       <header class="connections-site__header">
         {% if network_site.screenshot and network_site.screenshot != "" %}
-          <img
-            class="connections-site__shot u-photo"
-            src="{{ network_site.screenshot | relative_url }}"
-            alt="Screenshot of {{ site_title | escape }}"
-            loading="lazy"
-            decoding="async"
-            width="576"
-            height="360"
+          <button
+            type="button"
+            class="connections-site__select connections-site__select--shot"
+            data-connection-select
+            data-origin="{{ site_origin | escape }}"
+            aria-label="Highlight {{ site_title | escape }} on the map"
           >
+            <img
+              class="connections-site__shot u-photo"
+              src="{{ network_site.screenshot | relative_url }}"
+              alt="Screenshot of {{ site_title | escape }}"
+              loading="lazy"
+              decoding="async"
+              width="576"
+              height="360"
+            >
+          </button>
+        {% else %}
+          <button
+            type="button"
+            class="connections-site__select"
+            data-connection-select
+            data-origin="{{ site_origin | escape }}"
+            aria-label="Highlight {{ site_title | escape }} on the map"
+          >
+            Highlight on map
+          </button>
         {% endif %}
         <div class="connections-site__identity">
-          <h2 class="connections-site__title p-name">
-            <button
-              type="button"
-              class="connections-site__select"
-              data-connection-select
-              data-origin="{{ site_origin | escape }}"
+          {% include outbound-href.html url=site_origin %}
+          <h2 class="connections-site__title">
+            <a
+              class="connections-site__title-link p-name u-url"
+              href="{{ outbound_href | escape }}"
+              target="_blank"
+              rel="noopener"
             >
               {{ site_title | escape }}
-            </button>
+              <span class="visually-hidden">(opens on the publisher’s site)</span>
+            </a>
           </h2>
-          {% include outbound-href.html url=site_origin %}
           <a
-            class="connections-site__domain u-url"
+            class="connections-site__domain"
             href="{{ outbound_href | escape }}"
             target="_blank"
             rel="noopener"

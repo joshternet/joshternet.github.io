@@ -3076,14 +3076,48 @@ video {
   cursor: pointer;
 }
 
+.connections-site__select--shot {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  display: block;
+  inline-size: 100%;
+  max-inline-size: 100%;
+}
+
+.connections-site__select--shot .connections-site__shot {
+  grid-column: unset;
+  grid-row: unset;
+  display: block;
+  inline-size: 100%;
+}
+
 .connections-site__select:hover,
 .connections-site__select[aria-pressed="true"] {
+  color: var(--color-link);
+}
+
+.connections-site__select--shot[aria-pressed="true"] .connections-site__shot,
+.connections-site__select--shot:hover .connections-site__shot {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.connections-site__select:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.connections-site__title-link {
   color: var(--color-link);
   text-decoration: underline;
   text-decoration-color: var(--color-link-underline);
 }
 
-.connections-site__select:focus-visible {
+.connections-site__title-link:hover {
+  color: var(--color-link-hover, var(--color-link));
+}
+
+.connections-site__title-link:focus-visible {
   outline: 2px solid var(--color-focus);
   outline-offset: 3px;
 }
