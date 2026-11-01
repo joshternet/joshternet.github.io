@@ -43,10 +43,7 @@ test("connections page is HTML-first and cross-linked", async () => {
   assert.match(page, /overlap_count == 1/);
   assert.match(page, /overlap_count > 0/);
   assert.match(page, /outbound > 0 or inbound > 0 %}/);
-  assert.doesNotMatch(
-    page,
-    /outbound > 0 or inbound > 0 or overlap_count > 0/,
-  );
+  assert.doesNotMatch(page, /outbound > 0 or inbound > 0 or overlap_count > 0/);
   assert.match(page, /sites with observed links/);
   assert.match(page, /shared topics/);
   assert.doesNotMatch(page, /No shared topics with other participants yet/);
