@@ -42,7 +42,9 @@ test("participant-introductions scaffolding is removed", async () => {
   assert.doesNotMatch(community, /introductions\.yml/);
   assert.doesNotMatch(network, /participant-introductions/);
 
-  await assert.rejects(() => access(path.join(root, "_data/introductions.yml")));
+  await assert.rejects(() =>
+    access(path.join(root, "_data/introductions.yml")),
+  );
   await assert.rejects(() =>
     access(path.join(root, "_includes/participant-introductions.html")),
   );
