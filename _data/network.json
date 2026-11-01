@@ -19,7 +19,7 @@
     "screenshot": "/assets/network/sites/32329a5a589fff27123fbf19a511be9f20729cfa9252f0f4b76d107bd396a059.webp",
     "embeddable": true,
     "frame_reason": "allowed",
-    "captured_at": "2026-11-01T21:42:41.940Z",
+    "captured_at": "2026-11-01T23:36:16.991Z",
     "elsewhere": [
       {
         "url": "https://github.com/joshbeard",
@@ -84,7 +84,7 @@
     "first_participated_at": "2026-11-01T18:38:04.414983Z",
     "latest_declaration_check_at": "2026-11-01T18:38:04.414983Z",
     "latest_declaration_check_outcome": "valid",
-    "title": "Josh Grant",
+    "title": "Joshua Grant",
     "description": "Exploring systems",
     "screenshot": "/assets/network/sites/b94ebc2655942cdb8804748814f43ae1c7ce9ea4875248a9afc4d4681ef42fc6.webp",
     "embeddable": true,
@@ -141,11 +141,6 @@
         "url": "https://joshmuller.ca/index.xml",
         "type": "application/rss+xml",
         "title": "rss"
-      },
-      {
-        "url": "https://joshmuller.ca/index.json",
-        "type": "application/json",
-        "title": "json"
       }
     ],
     "elsewhere": [
@@ -196,8 +191,8 @@
       },
       {
         "url": "https://discordapp.com/users/thejoshmuller",
-        "network": "discord",
-        "label": "Discord"
+        "network": "web",
+        "label": "discordapp.com"
       },
       {
         "url": "https://t.me/theJoshMuller",
@@ -315,11 +310,6 @@
         "label": "GitHub"
       },
       {
-        "url": "https://buttondown.com/davesmyth",
-        "network": "buttondown",
-        "label": "Buttondown"
-      },
-      {
         "url": "https://www.youtube.com/watch?v=VHRhPItNdIU",
         "network": "youtube",
         "label": "YouTube"
@@ -356,7 +346,7 @@
     "screenshot": "/assets/network/sites/bc7c017ece5fa409b28d0a4baef2b9ab2a8e767ad05d8daaeec1cb3b377f624b.webp",
     "embeddable": true,
     "frame_reason": "allowed",
-    "captured_at": "2026-11-01T20:35:20.728Z"
+    "captured_at": "2026-11-01T23:37:04.427Z"
   },
   {
     "origin": "https://joshuakim.studio",
@@ -445,6 +435,16 @@
         "url": "https://bsky.app/profile/joshuamorris.info",
         "network": "bluesky",
         "label": "Bluesky"
+      },
+      {
+        "url": "https://www.twitch.tv/lilpeeeweee?utm_source=joshuamorris.info&utm_medium=referral",
+        "network": "twitch",
+        "label": "Twitch"
+      },
+      {
+        "url": "https://medium.com/@hartsman?utm_source=joshuamorris.info&utm_medium=referral",
+        "network": "medium",
+        "label": "Medium"
       }
     ]
   },
@@ -468,15 +468,11 @@
     "screenshot": "/assets/network/sites/26131d762eec35bfd4b0000a836a7f737812ed2f80f2cbe27dbb1ca920989942.webp",
     "embeddable": true,
     "frame_reason": "allowed",
-    "captured_at": "2026-11-01T20:36:20.551Z",
+    "captured_at": "2026-11-01T23:37:22.594Z",
     "feeds": [
       {
         "url": "https://joshuapsteele.com/feed.xml",
         "type": "application/rss+xml"
-      },
-      {
-        "url": "https://joshuapsteele.com/index.json",
-        "type": "application/json"
       }
     ],
     "elsewhere": [
@@ -487,8 +483,8 @@
       },
       {
         "url": "https://www.threads.com/@joshuapsteele",
-        "network": "threads",
-        "label": "Threads"
+        "network": "web",
+        "label": "www.threads.com"
       },
       {
         "url": "https://bsky.app/profile/joshuapsteele.com",
@@ -512,8 +508,8 @@
       },
       {
         "url": "https://buttondown.com/joshuapsteele/",
-        "network": "buttondown",
-        "label": "Buttondown"
+        "network": "web",
+        "label": "buttondown.com"
       },
       {
         "url": "https://joshuapsteele.com/blog/feed.xml",
@@ -534,11 +530,6 @@
         "url": "https://telegram.me/share/url?text=About&url=https%3a%2f%2fjoshuapsteele.com%2fabout%2f",
         "network": "telegram",
         "label": "Telegram"
-      },
-      {
-        "url": "https://adamkinzinger.substack.com/",
-        "network": "substack",
-        "label": "Substack"
       }
     ]
   },

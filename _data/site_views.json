@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T23:09:27.641Z",
+  "generated_at": "2026-11-01T23:44:00.798Z",
   "sites": [
     {
       "origin": "https://joshbeard.com",
@@ -35,7 +35,7 @@
         "title": "Photos",
         "summary": "Photo albums from Colorado, travel, cycling, and everyday life.",
         "published_at": "",
-        "observed_at": "2026-11-01T22:02:05.808Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -201,9 +201,6 @@
           "https://joshbeard.com/music/": "blind-probe",
           "https://joshbeard.com/discography/": "blind-probe",
           "https://joshbeard.com/tracks/": "blind-probe",
-          "https://joshbeard.com/podcasts/": "blind-probe",
-          "https://joshbeard.com/podcast/": "blind-probe",
-          "https://joshbeard.com/listen/": "blind-probe",
           "https://joshbeard.com/videos/": "blind-probe",
           "https://joshbeard.com/film/": "blind-probe",
           "https://joshbeard.com/animation/": "blind-probe",
@@ -499,7 +496,7 @@
           "https://joshbeard.com/me": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T22:02:05.808Z"
+      "crawled_at": "2026-11-01T23:37:56.256Z"
     },
     {
       "origin": "https://joshghent.com",
@@ -769,7 +766,7 @@
         "title": "11ty or Bust",
         "summary": "The story of how I migrated my site from Gatsby to 11ty",
         "published_at": "2024-01-03T00:00:00.000Z",
-        "observed_at": "2026-11-01T22:02:05.808Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -1078,9 +1075,6 @@
           "https://joshghent.com/music/": "blind-probe",
           "https://joshghent.com/discography/": "blind-probe",
           "https://joshghent.com/tracks/": "blind-probe",
-          "https://joshghent.com/podcasts/": "blind-probe",
-          "https://joshghent.com/podcast/": "blind-probe",
-          "https://joshghent.com/listen/": "blind-probe",
           "https://joshghent.com/videos/": "blind-probe",
           "https://joshghent.com/film/": "blind-probe",
           "https://joshghent.com/animation/": "blind-probe",
@@ -1124,12 +1118,12 @@
           "https://joshghent.com/blog": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T22:02:05.808Z"
+      "crawled_at": "2026-11-01T23:37:56.256Z"
     },
     {
       "origin": "https://joshgr.com",
       "domain": "joshgr.com",
-      "title": "Josh Grant",
+      "title": "Joshua Grant",
       "description": "Exploring systems",
       "identity": "affirmed",
       "feeds": [
@@ -1162,12 +1156,12 @@
         "title": "Projects — Josh Grant",
         "summary": "Exploring systems",
         "published_at": "",
-        "observed_at": "2026-11-01T22:02:05.808Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
         "site_origin": "https://joshgr.com",
-        "site_title": "Josh Grant",
+        "site_title": "Joshua Grant",
         "domain": "joshgr.com",
         "tags": [],
         "neighborhoods": [],
@@ -1312,9 +1306,6 @@
           "https://joshgr.com/music/": "blind-probe",
           "https://joshgr.com/discography/": "blind-probe",
           "https://joshgr.com/tracks/": "blind-probe",
-          "https://joshgr.com/podcasts/": "blind-probe",
-          "https://joshgr.com/podcast/": "blind-probe",
-          "https://joshgr.com/listen/": "blind-probe",
           "https://joshgr.com/videos/": "blind-probe",
           "https://joshgr.com/film/": "blind-probe",
           "https://joshgr.com/animation/": "blind-probe",
@@ -1351,7 +1342,7 @@
           "https://joshgr.com/wizardly-words/": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T22:02:05.808Z"
+      "crawled_at": "2026-11-01T23:37:56.256Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -1364,11 +1355,6 @@
           "url": "https://joshmuller.ca/index.xml",
           "type": "application/rss+xml",
           "title": "rss"
-        },
-        {
-          "url": "https://joshmuller.ca/index.json",
-          "type": "application/json",
-          "title": "json"
         }
       ],
       "elsewhere": [
@@ -1419,8 +1405,8 @@
         },
         {
           "url": "https://discordapp.com/users/thejoshmuller",
-          "network": "discord",
-          "label": "Discord"
+          "network": "web",
+          "label": "discordapp.com"
         },
         {
           "url": "https://t.me/theJoshMuller",
@@ -1537,10 +1523,6 @@
         {
           "slug": "facebook",
           "label": "facebook"
-        },
-        {
-          "slug": "fall",
-          "label": "fall"
         },
         {
           "slug": "feel",
@@ -1856,7 +1838,7 @@
         "title": "📸: <a href=\"/\">Josh Müller</a>",
         "summary": "📸: Josh Müller",
         "published_at": "",
-        "observed_at": "2026-11-01T22:02:05.808Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -2198,9 +2180,6 @@
           "https://joshmuller.ca/music/": "blind-probe",
           "https://joshmuller.ca/discography/": "blind-probe",
           "https://joshmuller.ca/tracks/": "blind-probe",
-          "https://joshmuller.ca/podcasts/": "blind-probe",
-          "https://joshmuller.ca/podcast/": "blind-probe",
-          "https://joshmuller.ca/listen/": "blind-probe",
           "https://joshmuller.ca/videos/": "blind-probe",
           "https://joshmuller.ca/film/": "blind-probe",
           "https://joshmuller.ca/animation/": "blind-probe",
@@ -2259,7 +2238,7 @@
           "https://joshmuller.ca/contact@joshmuller.ca.asc": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T22:02:05.808Z"
+      "crawled_at": "2026-11-01T23:37:56.256Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -2300,9 +2279,9 @@
       "recent_content": {
         "url": "https://joshternet.org/activity/",
         "title": "What's New",
-        "summary": "Recent writing from the last seven days and the latest Showcase creative works from independent websites on the Joshternet.",
+        "summary": "",
         "published_at": "",
-        "observed_at": "2026-11-01T22:02:05.808Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -2311,7 +2290,7 @@
         "domain": "joshternet.org",
         "tags": [],
         "neighborhoods": [],
-        "image": "/assets/activity/posters/b97f97fbe49e00bdac92412cb1dc50549767dd9d4d56366a2ba8aa5f7634d5c1.webp",
+        "image": "",
         "image_origin": "",
         "source_kind": "creative-homepage",
         "page_role": "project"
@@ -2476,9 +2455,6 @@
           "https://joshternet.org/music/": "blind-probe",
           "https://joshternet.org/discography/": "blind-probe",
           "https://joshternet.org/tracks/": "blind-probe",
-          "https://joshternet.org/podcasts/": "blind-probe",
-          "https://joshternet.org/podcast/": "blind-probe",
-          "https://joshternet.org/listen/": "blind-probe",
           "https://joshternet.org/videos/": "blind-probe",
           "https://joshternet.org/film/": "blind-probe",
           "https://joshternet.org/animation/": "blind-probe",
@@ -2785,7 +2761,7 @@
           "https://joshternet.org/cdn-cgi/l/email-protection": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T22:02:05.808Z"
+      "crawled_at": "2026-11-01T23:37:56.256Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -2999,7 +2975,7 @@
         "title": "I taught a robot to detect Joshes",
         "summary": "This journey starts like most of the things I've been doing this year, as an experiment to run a website 100% unattended with an agent. Ideally this post won't go down as an epitaph in a future where robots hunted down unsuspecting humans named Josh. I'm aware of \"claws\" and I know I could probably just boot up Claude Code with a /goal or /loop prompt like: build and maintain an awesome website, a",
         "published_at": "2026-08-16T00:00:00.000Z",
-        "observed_at": "2026-11-01T22:02:05.808Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -3008,7 +2984,7 @@
         "domain": "joshtronic.com",
         "tags": [],
         "neighborhoods": [],
-        "image": "/assets/activity/posters/6f5bcfbff8d60e84e9a73454527d09f693ba3489c0da51056777ab6daf3fc95b.webp",
+        "image": "",
         "image_origin": "",
         "source_kind": "rss",
         "page_role": "unknown"
@@ -3178,9 +3154,6 @@
           "https://joshtronic.com/music/": "blind-probe",
           "https://joshtronic.com/discography/": "blind-probe",
           "https://joshtronic.com/tracks/": "blind-probe",
-          "https://joshtronic.com/podcasts/": "blind-probe",
-          "https://joshtronic.com/podcast/": "blind-probe",
-          "https://joshtronic.com/listen/": "blind-probe",
           "https://joshtronic.com/videos/": "blind-probe",
           "https://joshtronic.com/film/": "blind-probe",
           "https://joshtronic.com/animation/": "blind-probe",
@@ -4286,7 +4259,7 @@
           "https://joshtronic.com/key.asc": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T22:02:05.808Z"
+      "crawled_at": "2026-11-01T23:37:56.256Z"
     },
     {
       "origin": "https://joshua.seigler.net",
@@ -4306,11 +4279,6 @@
           "url": "https://github.com/seigler",
           "network": "github",
           "label": "GitHub"
-        },
-        {
-          "url": "https://buttondown.com/davesmyth",
-          "network": "buttondown",
-          "label": "Buttondown"
         },
         {
           "url": "https://www.youtube.com/watch?v=VHRhPItNdIU",
@@ -4419,7 +4387,7 @@
         "title": "/books",
         "summary": "I’m Joshua Seigler, a software engineer since 2010 and a living being since the 1980s. I’ve watched technology advance from dial-up and Geocities pages, to federated social media and decentralized autonomous organizations, to people literally talking to computers (a lot!).",
         "published_at": "",
-        "observed_at": "2026-11-01T22:02:05.808Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -4611,9 +4579,6 @@
           "https://joshua.seigler.net/music/": "blind-probe",
           "https://joshua.seigler.net/discography/": "blind-probe",
           "https://joshua.seigler.net/tracks/": "blind-probe",
-          "https://joshua.seigler.net/podcasts/": "blind-probe",
-          "https://joshua.seigler.net/podcast/": "blind-probe",
-          "https://joshua.seigler.net/listen/": "blind-probe",
           "https://joshua.seigler.net/videos/": "blind-probe",
           "https://joshua.seigler.net/film/": "blind-probe",
           "https://joshua.seigler.net/animation/": "blind-probe",
@@ -4671,7 +4636,7 @@
           "https://joshua.seigler.net/music/%C3%8Engerul%20a%20Strigat%20-%20Varlaam%20-%20glasul%203.pdf": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T22:02:05.808Z"
+      "crawled_at": "2026-11-01T23:37:56.256Z"
     },
     {
       "origin": "https://joshuadrake.org",
@@ -4704,7 +4669,7 @@
         "title": "Projects:",
         "summary": "",
         "published_at": "",
-        "observed_at": "2026-11-01T22:02:05.808Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -4853,9 +4818,6 @@
           "https://joshuadrake.org/music/": "blind-probe",
           "https://joshuadrake.org/discography/": "blind-probe",
           "https://joshuadrake.org/tracks/": "blind-probe",
-          "https://joshuadrake.org/podcasts/": "blind-probe",
-          "https://joshuadrake.org/podcast/": "blind-probe",
-          "https://joshuadrake.org/listen/": "blind-probe",
           "https://joshuadrake.org/videos/": "blind-probe",
           "https://joshuadrake.org/film/": "blind-probe",
           "https://joshuadrake.org/animation/": "blind-probe",
@@ -4935,7 +4897,7 @@
           "https://joshuadrake.org/projects/n12rebuild/": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T22:02:05.808Z",
+      "crawled_at": "2026-11-01T23:37:56.256Z",
       "portfolio": {
         "url": "https://joshuadrake.org/projects/",
         "work_count": 26,
@@ -4969,9 +4931,9 @@
       "recent_content": {
         "url": "https://joshuakim.studio/work.html",
         "title": "Work, Joshua Kim",
-        "summary": "Eight projects by Joshua Kim: internal tools, interactive and AR work, app case studies, and graphic design.",
+        "summary": "",
         "published_at": "",
-        "observed_at": "2026-11-01T22:02:05.808Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -4980,7 +4942,7 @@
         "domain": "joshuakim.studio",
         "tags": [],
         "neighborhoods": [],
-        "image": "/assets/activity/posters/daef87aaaeb403ac4de3fb2f96176aa2c817b23c31ddd069e2e49af912dc3463.webp",
+        "image": "",
         "image_origin": "",
         "source_kind": "creative-og",
         "page_role": "collection"
@@ -5120,9 +5082,6 @@
           "https://joshuakim.studio/music/": "blind-probe",
           "https://joshuakim.studio/discography/": "blind-probe",
           "https://joshuakim.studio/tracks/": "blind-probe",
-          "https://joshuakim.studio/podcasts/": "blind-probe",
-          "https://joshuakim.studio/podcast/": "blind-probe",
-          "https://joshuakim.studio/listen/": "blind-probe",
           "https://joshuakim.studio/videos/": "blind-probe",
           "https://joshuakim.studio/film/": "blind-probe",
           "https://joshuakim.studio/animation/": "blind-probe",
@@ -5168,7 +5127,7 @@
           "https://joshuakim.studio/about": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T22:02:05.808Z"
+      "crawled_at": "2026-11-01T23:37:56.256Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -5213,6 +5172,16 @@
           "url": "https://bsky.app/profile/joshuamorris.info",
           "network": "bluesky",
           "label": "Bluesky"
+        },
+        {
+          "url": "https://www.twitch.tv/lilpeeeweee?utm_source=joshuamorris.info&utm_medium=referral",
+          "network": "twitch",
+          "label": "Twitch"
+        },
+        {
+          "url": "https://medium.com/@hartsman?utm_source=joshuamorris.info&utm_medium=referral",
+          "network": "medium",
+          "label": "Medium"
         }
       ],
       "community_topics": [
@@ -5986,7 +5955,7 @@
         "title": "Experiments",
         "summary": "Web experiments and playground shells from Joshua Morris—toys, tools, and interface ideas built to see whether they can work in a browser.",
         "published_at": "",
-        "observed_at": "2026-11-01T22:02:05.808Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -6456,9 +6425,6 @@
           "https://joshuamorris.info/music/": "blind-probe",
           "https://joshuamorris.info/discography/": "blind-probe",
           "https://joshuamorris.info/tracks/": "blind-probe",
-          "https://joshuamorris.info/podcasts/": "blind-probe",
-          "https://joshuamorris.info/podcast/": "blind-probe",
-          "https://joshuamorris.info/listen/": "blind-probe",
           "https://joshuamorris.info/videos/": "blind-probe",
           "https://joshuamorris.info/film/": "blind-probe",
           "https://joshuamorris.info/animation/": "blind-probe",
@@ -6506,7 +6472,7 @@
           "https://joshuamorris.info/feeds/friends.opml": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T22:02:05.808Z"
+      "crawled_at": "2026-11-01T23:37:56.256Z"
     },
     {
       "origin": "https://joshuapsteele.com",
@@ -6518,10 +6484,6 @@
         {
           "url": "https://joshuapsteele.com/feed.xml",
           "type": "application/rss+xml"
-        },
-        {
-          "url": "https://joshuapsteele.com/index.json",
-          "type": "application/json"
         }
       ],
       "elsewhere": [
@@ -6532,8 +6494,8 @@
         },
         {
           "url": "https://www.threads.com/@joshuapsteele",
-          "network": "threads",
-          "label": "Threads"
+          "network": "web",
+          "label": "www.threads.com"
         },
         {
           "url": "https://bsky.app/profile/joshuapsteele.com",
@@ -6557,8 +6519,8 @@
         },
         {
           "url": "https://buttondown.com/joshuapsteele/",
-          "network": "buttondown",
-          "label": "Buttondown"
+          "network": "web",
+          "label": "buttondown.com"
         },
         {
           "url": "https://joshuapsteele.com/blog/feed.xml",
@@ -6579,11 +6541,6 @@
           "url": "https://telegram.me/share/url?text=About&url=https%3a%2f%2fjoshuapsteele.com%2fabout%2f",
           "network": "telegram",
           "label": "Telegram"
-        },
-        {
-          "url": "https://adamkinzinger.substack.com/",
-          "network": "substack",
-          "label": "Substack"
         }
       ],
       "community_topics": [
@@ -6740,10 +6697,6 @@
           "label": "communication"
         },
         {
-          "slug": "community",
-          "label": "community"
-        },
-        {
           "slug": "computer",
           "label": "computer"
         },
@@ -6782,10 +6735,6 @@
         {
           "slug": "democracy",
           "label": "Democracy"
-        },
-        {
-          "slug": "design",
-          "label": "design"
         },
         {
           "slug": "discipleship",
@@ -6856,10 +6805,6 @@
           "label": "faith"
         },
         {
-          "slug": "fall",
-          "label": "fall"
-        },
-        {
           "slug": "family",
           "label": "family"
         },
@@ -6876,10 +6821,6 @@
           "label": "focus"
         },
         {
-          "slug": "food",
-          "label": "food"
-        },
-        {
           "slug": "freedom",
           "label": "freedom"
         },
@@ -6890,10 +6831,6 @@
         {
           "slug": "give",
           "label": "give"
-        },
-        {
-          "slug": "go",
-          "label": "Go"
         },
         {
           "slug": "government",
@@ -6910,10 +6847,6 @@
         {
           "slug": "habeas-corpus",
           "label": "habeas corpus"
-        },
-        {
-          "slug": "habit",
-          "label": "habits"
         },
         {
           "slug": "health",
@@ -6946,10 +6879,6 @@
         {
           "slug": "hope",
           "label": "hope"
-        },
-        {
-          "slug": "hospitality",
-          "label": "hospitality"
         },
         {
           "slug": "hosting",
@@ -7040,10 +6969,6 @@
           "label": "laptop"
         },
         {
-          "slug": "law",
-          "label": "law"
-        },
-        {
           "slug": "leadership",
           "label": "leadership"
         },
@@ -7092,10 +7017,6 @@
           "label": "love"
         },
         {
-          "slug": "markdown",
-          "label": "markdown"
-        },
-        {
           "slug": "matter",
           "label": "matters"
         },
@@ -7140,10 +7061,6 @@
           "label": "nationalism"
         },
         {
-          "slug": "obsidian",
-          "label": "obsidian"
-        },
-        {
           "slug": "openfga",
           "label": "openfga"
         },
@@ -7174,10 +7091,6 @@
         {
           "slug": "personality",
           "label": "personality"
-        },
-        {
-          "slug": "philosophy",
-          "label": "philosophy"
         },
         {
           "slug": "podcast",
@@ -7412,10 +7325,6 @@
           "label": "trinity"
         },
         {
-          "slug": "tutorial",
-          "label": "tutorial"
-        },
-        {
           "slug": "tyranny",
           "label": "tyranny"
         },
@@ -7473,7 +7382,7 @@
         "title": "Permalink",
         "summary": "Unable to load recent saved links. Visit LinkLog",
         "published_at": "",
-        "observed_at": "2026-11-01T22:02:05.808Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -7482,7 +7391,7 @@
         "domain": "joshuapsteele.com",
         "tags": [],
         "neighborhoods": [],
-        "image": "/assets/activity/posters/71691b20baaa73cd63c81a984136e2f9c9886df5b71ca33f5b695b7f0aea6289.webp",
+        "image": "",
         "image_origin": "",
         "source_kind": "creative-homepage",
         "page_role": "project"
@@ -7839,9 +7748,6 @@
           "https://joshuapsteele.com/music/": "blind-probe",
           "https://joshuapsteele.com/discography/": "blind-probe",
           "https://joshuapsteele.com/tracks/": "blind-probe",
-          "https://joshuapsteele.com/podcasts/": "blind-probe",
-          "https://joshuapsteele.com/podcast/": "blind-probe",
-          "https://joshuapsteele.com/listen/": "blind-probe",
           "https://joshuapsteele.com/videos/": "blind-probe",
           "https://joshuapsteele.com/film/": "blind-probe",
           "https://joshuapsteele.com/animation/": "blind-probe",
@@ -8300,7 +8206,7 @@
           "https://joshuapsteele.com/wishlist": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T22:02:05.808Z"
+      "crawled_at": "2026-11-01T23:37:56.256Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -8533,7 +8439,7 @@
         "title": "Do we need 'agentic identity'?",
         "summary": "Agents are here, there, and everywhere, growing in numbers at a pace between fast and breakneck, generating or completing work at some other velocity, and poised to change the world entirely or, like, not much at all. Something must be done.",
         "published_at": "2025-10-14T00:00:00.000Z",
-        "observed_at": "2026-11-01T22:02:05.808Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "article",
         "language": "en-us",
         "dir": "",
@@ -8690,9 +8596,6 @@
           "https://www.joshcanhelp.com/music/": "blind-probe",
           "https://www.joshcanhelp.com/discography/": "blind-probe",
           "https://www.joshcanhelp.com/tracks/": "blind-probe",
-          "https://www.joshcanhelp.com/podcasts/": "blind-probe",
-          "https://www.joshcanhelp.com/podcast/": "blind-probe",
-          "https://www.joshcanhelp.com/listen/": "blind-probe",
           "https://www.joshcanhelp.com/videos/": "blind-probe",
           "https://www.joshcanhelp.com/film/": "blind-probe",
           "https://www.joshcanhelp.com/animation/": "blind-probe",
@@ -9026,7 +8929,7 @@
           "https://www.joshcanhelp.com/eleventy-custom-content-type-collections": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T22:02:05.808Z"
+      "crawled_at": "2026-11-01T23:37:56.256Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -9246,7 +9149,7 @@
         "title": "Work — Joshua Baker",
         "summary": "Selected case studies by Joshua Baker, plus the full archive — 140+ projects across two decades of design and engineering.",
         "published_at": "",
-        "observed_at": "2026-11-01T22:02:05.808Z",
+        "observed_at": "2026-11-01T23:37:56.256Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -9445,9 +9348,6 @@
           "https://www.joshuabaker.com/music/": "blind-probe",
           "https://www.joshuabaker.com/discography/": "blind-probe",
           "https://www.joshuabaker.com/tracks/": "blind-probe",
-          "https://www.joshuabaker.com/podcasts/": "blind-probe",
-          "https://www.joshuabaker.com/podcast/": "blind-probe",
-          "https://www.joshuabaker.com/listen/": "blind-probe",
           "https://www.joshuabaker.com/videos/": "blind-probe",
           "https://www.joshuabaker.com/film/": "blind-probe",
           "https://www.joshuabaker.com/animation/": "blind-probe",
@@ -9490,7 +9390,7 @@
           "https://www.joshuabaker.com/work/banked-pay-by-bank/": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T22:02:05.808Z",
+      "crawled_at": "2026-11-01T23:37:56.256Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,
