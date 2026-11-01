@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T10:47:40.331Z",
-  "overlap_count": 28,
+  "generated_at": "2026-11-01T11:47:53.790Z",
+  "overlap_count": 27,
   "pairs": [
     {
       "a": "https://joshbeard.com",
@@ -716,10 +716,6 @@
           "label": "discovery"
         },
         {
-          "slug": "recipe",
-          "label": "recipes"
-        },
-        {
           "slug": "wordpress",
           "label": "wordpress"
         }
@@ -877,7 +873,7 @@
         },
         {
           "slug": "recipe",
-          "label": "recipes"
+          "label": "recipe"
         },
         {
           "slug": "rule",
@@ -1330,16 +1326,6 @@
         {
           "slug": "wordpress",
           "label": "wordpress"
-        }
-      ]
-    },
-    {
-      "a": "https://joshternet.org",
-      "b": "https://joshua.seigler.net",
-      "topics": [
-        {
-          "slug": "recipe",
-          "label": "recipes"
         }
       ]
     },
@@ -10516,7 +10502,7 @@
         },
         {
           "slug": "recipe",
-          "label": "recipes",
+          "label": "recipe",
           "articles": [
             {
               "url": "https://joshmuller.ca/recipes/desserts/gluten-free-chocolate-cake/",
@@ -10535,10 +10521,6 @@
               "title": "Mom's Pumpkin Pie"
             },
             {
-              "url": "https://joshmuller.ca/writings/2024/now-with-recipes/",
-              "title": "Now With Recipes"
-            },
-            {
               "url": "https://joshmuller.ca/recipes/meals/protein-pancakes/",
               "title": "Protein Pancakes"
             },
@@ -10549,20 +10531,13 @@
             {
               "url": "https://joshmuller.ca/recipes/desserts/graham-crackers/",
               "title": "Homemade Graham Crackers"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/desserts/katie-s-tahini-cookies/",
+              "title": "4 Ingredient Tahin Cookies"
             }
           ],
           "sites": [
-            {
-              "origin": "https://joshternet.org",
-              "domain": "joshternet.org",
-              "title": "Joshternet",
-              "articles": [
-                {
-                  "url": "https://joshternet.org/implement/platforms/",
-                  "title": "Platforms"
-                }
-              ]
-            },
             {
               "origin": "https://joshua.seigler.net",
               "domain": "joshua.seigler.net",
@@ -12296,96 +12271,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/23/ai-is-consuming-the-web-it-depends-on/",
                   "title": "AI Is Consuming the Web It Depends On"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "recipe",
-          "label": "recipes",
-          "articles": [
-            {
-              "url": "https://joshternet.org/implement/platforms/",
-              "title": "Platforms"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshmuller.ca",
-              "domain": "joshmuller.ca",
-              "title": "Josh Müller",
-              "articles": [
-                {
-                  "url": "https://joshmuller.ca/recipes/desserts/gluten-free-chocolate-cake/",
-                  "title": "Gluten-Free Chocolate Cake"
-                },
-                {
-                  "url": "https://joshmuller.ca/es/recetas/ajiaco-santafereno/",
-                  "title": "Ajiaco santafereño de mamá"
-                },
-                {
-                  "url": "https://joshmuller.ca/recipes/meals/ajiaco-santafereno/",
-                  "title": "Mom's Ajiaco Santafereño"
-                },
-                {
-                  "url": "https://joshmuller.ca/recipes/desserts/pumpkin-pie/",
-                  "title": "Mom's Pumpkin Pie"
-                },
-                {
-                  "url": "https://joshmuller.ca/writings/2024/now-with-recipes/",
-                  "title": "Now With Recipes"
-                },
-                {
-                  "url": "https://joshmuller.ca/recipes/meals/protein-pancakes/",
-                  "title": "Protein Pancakes"
-                },
-                {
-                  "url": "https://joshmuller.ca/recipes/desserts/flapper-pie/",
-                  "title": "Flapper Pie"
-                },
-                {
-                  "url": "https://joshmuller.ca/recipes/desserts/graham-crackers/",
-                  "title": "Homemade Graham Crackers"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Joshua Seigler",
-              "articles": [
-                {
-                  "url": "https://joshua.seigler.net/recipes/pear-upside-down-cake/",
-                  "title": "Recipe: Pear Upside Down Cake"
-                },
-                {
-                  "url": "https://joshua.seigler.net/recipes/bread-pudding/",
-                  "title": "Recipe: Bread Pudding with Butter Rum Sauce"
-                },
-                {
-                  "url": "https://joshua.seigler.net/posts/i-made-myself-a-recipe-label-generator/",
-                  "title": "Post: I made myself a Recipe Label Generator"
-                },
-                {
-                  "url": "https://joshua.seigler.net/recipes/breakfast-strata/",
-                  "title": "Recipe: Breakfast Strata"
-                },
-                {
-                  "url": "https://joshua.seigler.net/recipes/red-cabbage-confit/",
-                  "title": "Recipe: Red Cabbage Confit"
-                },
-                {
-                  "url": "https://joshua.seigler.net/recipes/curry-bolognese/",
-                  "title": "Recipe: Curry Bolognese"
-                },
-                {
-                  "url": "https://joshua.seigler.net/recipes/chicken-chili-verde/",
-                  "title": "Recipe: Chicken Chili Verde"
-                },
-                {
-                  "url": "https://joshua.seigler.net/recipes/amish-egg-noodles/",
-                  "title": "Recipe: Amish Egg Noodles"
                 }
               ]
             }
@@ -15479,7 +15364,7 @@
         },
         {
           "slug": "recipe",
-          "label": "recipes",
+          "label": "recipe",
           "articles": [
             {
               "url": "https://joshua.seigler.net/recipes/pear-upside-down-cake/",
@@ -15537,10 +15422,6 @@
                   "title": "Mom's Pumpkin Pie"
                 },
                 {
-                  "url": "https://joshmuller.ca/writings/2024/now-with-recipes/",
-                  "title": "Now With Recipes"
-                },
-                {
                   "url": "https://joshmuller.ca/recipes/meals/protein-pancakes/",
                   "title": "Protein Pancakes"
                 },
@@ -15551,17 +15432,10 @@
                 {
                   "url": "https://joshmuller.ca/recipes/desserts/graham-crackers/",
                   "title": "Homemade Graham Crackers"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshternet.org",
-              "domain": "joshternet.org",
-              "title": "Joshternet",
-              "articles": [
+                },
                 {
-                  "url": "https://joshternet.org/implement/platforms/",
-                  "title": "Platforms"
+                  "url": "https://joshmuller.ca/recipes/desserts/katie-s-tahini-cookies/",
+                  "title": "4 Ingredient Tahin Cookies"
                 }
               ]
             }

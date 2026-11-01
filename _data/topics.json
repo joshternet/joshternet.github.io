@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T10:42:20.299Z",
+  "generated_at": "2026-11-01T11:37:12.650Z",
   "community_count": 285,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
@@ -3218,8 +3218,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-01T10:42:20.299Z"
+      ]
     },
     {
       "slug": "customer-service",
@@ -6068,8 +6067,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-01T10:42:20.299Z"
+      ]
     },
     {
       "slug": "goal",
@@ -8632,8 +8630,7 @@
       "sources": ["catalog-match", "microformat:p-category"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
       "last_changed_at": "2026-11-01T10:42:20.299Z",
-      "active": true,
-      "stale_since": "2026-11-01T10:42:20.299Z"
+      "active": true
     },
     {
       "slug": "marketing",
@@ -9261,16 +9258,7 @@
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-01T10:42:20.299Z",
       "last_changed_at": "2026-11-01T10:42:20.299Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
+      "active": true
     },
     {
       "slug": "money",
@@ -10780,7 +10768,16 @@
       ],
       "first_seen_at": "2026-11-01T10:42:20.299Z",
       "last_changed_at": "2026-11-01T10:42:20.299Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "php",
@@ -11696,7 +11693,7 @@
     },
     {
       "slug": "recipe",
-      "label": "recipes",
+      "label": "recipe",
       "member_count": 2,
       "sites": [
         {
@@ -15909,8 +15906,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-01T10:42:20.299Z"
+      ]
     },
     {
       "slug": "zeitgeist",
