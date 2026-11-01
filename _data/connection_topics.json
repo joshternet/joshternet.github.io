@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T11:47:53.790Z",
+  "generated_at": "2026-11-01T19:32:11.522Z",
   "overlap_count": 27,
   "pairs": [
     {
@@ -195,7 +195,7 @@
         },
         {
           "slug": "world",
-          "label": "world"
+          "label": "worlds"
         },
         {
           "slug": "writing",
@@ -583,7 +583,7 @@
         },
         {
           "slug": "world",
-          "label": "world"
+          "label": "worlds"
         },
         {
           "slug": "writing",
@@ -633,7 +633,7 @@
         },
         {
           "slug": "world",
-          "label": "world"
+          "label": "worlds"
         }
       ]
     },
@@ -1071,7 +1071,7 @@
         },
         {
           "slug": "machine-learning",
-          "label": "machine learning"
+          "label": "Machine learning"
         },
         {
           "slug": "mean",
@@ -1175,7 +1175,7 @@
         },
         {
           "slug": "world",
-          "label": "world"
+          "label": "worlds"
         },
         {
           "slug": "writing",
@@ -1225,7 +1225,7 @@
         },
         {
           "slug": "world",
-          "label": "world"
+          "label": "worlds"
         }
       ]
     },
@@ -1280,6 +1280,10 @@
         {
           "slug": "linkedin",
           "label": "linkedin"
+        },
+        {
+          "slug": "machine-learning",
+          "label": "Machine learning"
         },
         {
           "slug": "marketing",
@@ -1677,7 +1681,7 @@
         },
         {
           "slug": "world",
-          "label": "world"
+          "label": "worlds"
         }
       ]
     },
@@ -1760,6 +1764,10 @@
         {
           "slug": "linkedin",
           "label": "linkedin"
+        },
+        {
+          "slug": "machine-learning",
+          "label": "Machine learning"
         },
         {
           "slug": "money",
@@ -6250,7 +6258,7 @@
         },
         {
           "slug": "world",
-          "label": "world",
+          "label": "worlds",
           "articles": [
             {
               "url": "https://joshghent.com/cool-links/",
@@ -9574,7 +9582,7 @@
         },
         {
           "slug": "machine-learning",
-          "label": "machine learning",
+          "label": "Machine learning",
           "articles": [
             {
               "url": "https://joshmuller.ca/writings/2024/full-english-spanish-interlinear-live/",
@@ -9582,6 +9590,25 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/",
+                  "title": "Work — Joshua Baker"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/banked-pay-by-bank/",
+                  "title": "Pay by Bank I built payment components and merchant integration tools from one codebase for web, iOS, and Android. View case study"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/banked/",
+                  "title": "Comic Relief Donation Website"
+                }
+              ]
+            },
             {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
@@ -11779,7 +11806,7 @@
         },
         {
           "slug": "world",
-          "label": "world",
+          "label": "worlds",
           "articles": [
             {
               "url": "https://joshmuller.ca/writings/2024/choose-dignity/",
@@ -19718,7 +19745,7 @@
         },
         {
           "slug": "machine-learning",
-          "label": "machine learning",
+          "label": "Machine learning",
           "articles": [
             {
               "url": "https://joshuamorris.info/notes/2026/07/28/more-than-1100-ai-researchers-want-a-brake-pedal-not-a-pause/",
@@ -19742,6 +19769,25 @@
                 {
                   "url": "https://joshmuller.ca/writings/2024/full-english-spanish-interlinear-live/",
                   "title": "My new Language Learning Tool is now LIVE! 🤓🥳"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/",
+                  "title": "Work — Joshua Baker"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/banked-pay-by-bank/",
+                  "title": "Pay by Bank I built payment components and merchant integration tools from one codebase for web, iOS, and Android. View case study"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/banked/",
+                  "title": "Comic Relief Donation Website"
                 }
               ]
             }
@@ -22204,7 +22250,7 @@
         },
         {
           "slug": "world",
-          "label": "world",
+          "label": "worlds",
           "articles": [
             {
               "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
@@ -23306,7 +23352,7 @@
         },
         {
           "slug": "world",
-          "label": "world",
+          "label": "worlds",
           "articles": [
             {
               "url": "https://www.joshcanhelp.com/agentic-identity/",
@@ -24827,6 +24873,56 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/07/22/the-interview-assignment-was-the-attack/",
                   "title": "The Interview Assignment Was the Attack"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "machine-learning",
+          "label": "Machine learning",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/",
+              "title": "Work — Joshua Baker"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/banked-pay-by-bank/",
+              "title": "Pay by Bank I built payment components and merchant integration tools from one codebase for web, iOS, and Android. View case study"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/banked/",
+              "title": "Comic Relief Donation Website"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2024/full-english-spanish-interlinear-live/",
+                  "title": "My new Language Learning Tool is now LIVE! 🤓🥳"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/28/more-than-1100-ai-researchers-want-a-brake-pedal-not-a-pause/",
+                  "title": "More than 1,100 AI Researchers Want a Brake Pedal, Not a Pause"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/22/listening-to-the-hive/",
+                  "title": "Listening to the Hive"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/17/896-experts-16-at-a-time/",
+                  "title": "896 Experts, 16 at a Time"
                 }
               ]
             }

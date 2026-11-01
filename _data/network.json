@@ -70,6 +70,52 @@
     ]
   },
   {
+    "origin": "https://joshgr.com",
+    "domain": "joshgr.com",
+    "identity": "affirmed",
+    "declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "initial_declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "first_participated_at": "2026-11-01T18:38:04.414983Z",
+    "latest_declaration_check_at": "2026-11-01T18:38:04.414983Z",
+    "latest_declaration_check_outcome": "valid",
+    "title": "Joshua Grant",
+    "description": "Exploring systems",
+    "screenshot": "/assets/network/sites/b94ebc2655942cdb8804748814f43ae1c7ce9ea4875248a9afc4d4681ef42fc6.webp",
+    "embeddable": true,
+    "frame_reason": "allowed",
+    "captured_at": "2026-11-01T19:22:58.775Z",
+    "feeds": [
+      {
+        "url": "https://joshgr.com/rss.xml",
+        "type": "application/rss+xml",
+        "title": "Josh Grant"
+      }
+    ],
+    "elsewhere": [
+      {
+        "url": "https://github.com/joshgrant",
+        "network": "github",
+        "label": "GitHub"
+      },
+      {
+        "url": "https://substack.com/@tenhittender",
+        "network": "substack",
+        "label": "Substack"
+      },
+      {
+        "url": "https://bsky.app/profile/tenhittender.bsky.social",
+        "network": "bluesky",
+        "label": "Bluesky"
+      }
+    ]
+  },
+  {
     "origin": "https://joshmuller.ca",
     "domain": "joshmuller.ca",
     "identity": "affirmed",
@@ -171,7 +217,7 @@
       "version": 1
     },
     "first_participated_at": "2026-09-06T22:52:08.890744Z",
-    "latest_declaration_check_at": "2026-10-31T19:11:36.567783Z",
+    "latest_declaration_check_at": "2026-11-01T19:13:16.923627Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Joshternet",
     "description": "Joshternet connects independent websites—Joshes and friends of Joshes—through a tiny public /.well-known/josh declaration. Anyone can join; your site stays yours.",
@@ -201,7 +247,7 @@
       "josh": true
     },
     "first_participated_at": "2026-09-25T08:52:07.833928Z",
-    "latest_declaration_check_at": "2026-10-31T18:03:04.617997Z",
+    "latest_declaration_check_at": "2026-11-01T18:05:01.701772Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Josh Sherman",
     "description": "Code is a medium that found me at an impressionable young age. I've been fortunate to make a career out of it, even if I say things like, \"I'm not sure what I want to do when I grow up.\"",
@@ -249,7 +295,7 @@
     "screenshot": "/assets/network/sites/b5cce6756d861f9fc0991a53d73e3b8b2ac163c0c9b8437d0b62775183d16a0e.webp",
     "embeddable": true,
     "frame_reason": "allowed",
-    "captured_at": "2026-10-31T17:34:13.224Z",
+    "captured_at": "2026-11-01T19:23:36.240Z",
     "feeds": [
       {
         "url": "https://joshua.seigler.net/assets/feed-Cyyd5PFg.xml",
@@ -452,7 +498,7 @@
     "latest_declaration_check_at": "2026-11-01T06:37:25.897684Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Joshua Baker",
-    "description": "Software engineer and designer with 20+ years of building, designing, and leading products that move revenue, valuations, fundraising, even the law. Now building at the AI frontier.",
+    "description": "London-based software engineer, designer, and founder who has spent 20+ years working with founders and chief executives on products that move revenue, valuations, fundraising, even the law.",
     "screenshot": "/assets/network/sites/53e58c5d262ba5eaab5bc4fb3fb25f42ab8ad5f60411edac5ad57a3394ef7675.webp",
     "embeddable": true,
     "frame_reason": "allowed",

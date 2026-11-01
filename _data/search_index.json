@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T11:47:53.790Z",
-  "document_count": 1210,
+  "generated_at": "2026-11-01T19:32:11.522Z",
+  "document_count": 1214,
   "documents": [
     {
       "type": "site",
@@ -19,6 +19,15 @@
       "domain": "joshghent.com",
       "origin": "https://joshghent.com",
       "url": "https://joshghent.com",
+      "topics": []
+    },
+    {
+      "type": "site",
+      "title": "Joshua Grant",
+      "summary": "Exploring systems",
+      "domain": "joshgr.com",
+      "origin": "https://joshgr.com",
+      "url": "https://joshgr.com",
       "topics": []
     },
     {
@@ -87,7 +96,7 @@
     {
       "type": "site",
       "title": "Joshua Baker",
-      "summary": "Software engineer and designer with 20+ years of building, designing, and leading products that move revenue, valuations, fundraising, even the law. Now building at the AI frontier.",
+      "summary": "London-based software engineer, designer, and founder who has spent 20+ years working with founders and chief executives on products that move revenue, valuations, fundraising, even the law.",
       "domain": "www.joshuabaker.com",
       "origin": "https://www.joshuabaker.com",
       "url": "https://www.joshuabaker.com",
@@ -1229,12 +1238,12 @@
     },
     {
       "type": "topic",
-      "title": "machine learning",
-      "summary": "2 participating sites",
+      "title": "Machine learning",
+      "summary": "3 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/machine-learning/",
-      "topics": ["machine-learning", "machine learning"]
+      "topics": ["machine-learning", "Machine learning"]
     },
     {
       "type": "topic",
@@ -2183,21 +2192,21 @@
     },
     {
       "type": "topic",
-      "title": "world",
-      "summary": "4 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/world/",
-      "topics": ["world", "world"]
-    },
-    {
-      "type": "topic",
       "title": "world mental health day",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/world-mental-health-day/",
       "topics": ["world-mental-health-day", "world mental health day"]
+    },
+    {
+      "type": "topic",
+      "title": "worlds",
+      "summary": "4 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/world/",
+      "topics": ["world", "worlds"]
     },
     {
       "type": "topic",
@@ -6062,6 +6071,51 @@
       "site_title": "Josh Ghent",
       "published_at": "2020-06-19T12:31:03.000Z",
       "image": "/assets/activity/posters/0cd47d94a57106d1aec9fcb27d2b5c14472ee2bfc9a31ed856e82c9ced52c419.webp",
+      "image_origin": "",
+      "language": "en",
+      "content_type": "article"
+    },
+    {
+      "type": "content",
+      "title": "Projects — Josh Grant",
+      "summary": "Exploring systems",
+      "domain": "joshgr.com",
+      "origin": "https://joshgr.com",
+      "url": "https://joshgr.com/projects/",
+      "topics": [],
+      "site_title": "Joshua Grant",
+      "published_at": "",
+      "image": "",
+      "image_origin": "",
+      "language": "en",
+      "content_type": "project"
+    },
+    {
+      "type": "content",
+      "title": "Wizardly Words",
+      "summary": "Elsewhere",
+      "domain": "joshgr.com",
+      "origin": "https://joshgr.com",
+      "url": "https://joshgr.com/wizardly-words/",
+      "topics": [],
+      "site_title": "Joshua Grant",
+      "published_at": "",
+      "image": "",
+      "image_origin": "",
+      "language": "en",
+      "content_type": "project"
+    },
+    {
+      "type": "content",
+      "title": "How Wizardly Words Invents Words",
+      "summary": "It takes what we know and infers new words between the lines",
+      "domain": "joshgr.com",
+      "origin": "https://joshgr.com",
+      "url": "https://joshgr.com/writing/how-wizardly-words-invents-words/",
+      "topics": [],
+      "site_title": "Joshua Grant",
+      "published_at": "2026-10-30T00:00:00.000Z",
+      "image": "",
       "image_origin": "",
       "language": "en",
       "content_type": "article"
@@ -14333,6 +14387,7 @@
       "topics": [
         "ai",
         "Design systems",
+        "Machine learning",
         "Product design",
         "Software engineering",
         "Startups"
@@ -16469,6 +16524,7 @@
       "topics": [
         "ai",
         "Design systems",
+        "Machine learning",
         "Product design",
         "Software engineering",
         "Startups"
@@ -16508,6 +16564,7 @@
         "charity & nonprofit",
         "ai",
         "Design systems",
+        "Machine learning",
         "Product design",
         "Software engineering",
         "Startups"

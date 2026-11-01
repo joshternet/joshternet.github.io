@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T11:47:53.790Z",
+  "generated_at": "2026-11-01T19:32:11.522Z",
   "sites": [
     {
       "origin": "https://joshbeard.com",
@@ -27,7 +27,7 @@
         "title": "Photos",
         "summary": "Photo albums from Colorado, travel, cycling, and everyday life.",
         "published_at": "",
-        "observed_at": "2026-11-01T11:37:12.650Z",
+        "observed_at": "2026-11-01T19:24:32.156Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -488,7 +488,7 @@
           "https://joshbeard.com/me": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T11:37:12.650Z"
+      "crawled_at": "2026-11-01T19:24:32.156Z"
     },
     {
       "origin": "https://joshghent.com",
@@ -742,7 +742,7 @@
         "title": "11ty or Bust",
         "summary": "The story of how I migrated my site from Gatsby to 11ty",
         "published_at": "2024-01-03T00:00:00.000Z",
-        "observed_at": "2026-11-01T11:37:12.650Z",
+        "observed_at": "2026-11-01T19:24:32.156Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -1094,7 +1094,231 @@
           "https://joshghent.com/blog": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T11:37:12.650Z"
+      "crawled_at": "2026-11-01T19:24:32.156Z"
+    },
+    {
+      "origin": "https://joshgr.com",
+      "domain": "joshgr.com",
+      "title": "Joshua Grant",
+      "description": "Exploring systems",
+      "identity": "affirmed",
+      "feeds": [
+        {
+          "url": "https://joshgr.com/rss.xml",
+          "type": "application/rss+xml",
+          "title": "Josh Grant"
+        }
+      ],
+      "elsewhere": [
+        {
+          "url": "https://github.com/joshgrant",
+          "network": "github",
+          "label": "GitHub"
+        },
+        {
+          "url": "https://substack.com/@tenhittender",
+          "network": "substack",
+          "label": "Substack"
+        },
+        {
+          "url": "https://bsky.app/profile/tenhittender.bsky.social",
+          "network": "bluesky",
+          "label": "Bluesky"
+        }
+      ],
+      "community_topics": [],
+      "recent_content": {
+        "url": "https://joshgr.com/projects/",
+        "title": "Projects — Josh Grant",
+        "summary": "Exploring systems",
+        "published_at": "",
+        "observed_at": "2026-11-01T19:24:32.156Z",
+        "content_type": "project",
+        "language": "en",
+        "dir": "",
+        "site_origin": "https://joshgr.com",
+        "site_title": "Joshua Grant",
+        "domain": "joshgr.com",
+        "tags": [],
+        "neighborhoods": [],
+        "image": "",
+        "image_origin": "",
+        "source_kind": "creative-og",
+        "page_role": "portfolio"
+      },
+      "outgoing": [],
+      "incoming": [],
+      "coverage": {
+        "pages_discovered": 6,
+        "pages_fetched": 6,
+        "fetch_limit": null,
+        "limit_reached": false,
+        "selection_strategy": "uncapped-site-crawl-v1",
+        "selection_reasons": {
+          "https://joshgr.com/": "home",
+          "https://joshgr.com/writing/how-wizardly-words-invents-words/": "feed",
+          "https://joshgr.com/about/": "blind-probe",
+          "https://joshgr.com/about-me/": "blind-probe",
+          "https://joshgr.com/aboutme/": "blind-probe",
+          "https://joshgr.com/bio/": "blind-probe",
+          "https://joshgr.com/me/": "blind-probe",
+          "https://joshgr.com/profile/": "blind-probe",
+          "https://joshgr.com/ai/": "blind-probe",
+          "https://joshgr.com/blogroll/": "blind-probe",
+          "https://joshgr.com/calendar/": "blind-probe",
+          "https://joshgr.com/canon/": "blind-probe",
+          "https://joshgr.com/carry/": "blind-probe",
+          "https://joshgr.com/caw/": "blind-probe",
+          "https://joshgr.com/celebrities/": "blind-probe",
+          "https://joshgr.com/changelog/": "blind-probe",
+          "https://joshgr.com/log/": "blind-probe",
+          "https://joshgr.com/chipotle/": "blind-probe",
+          "https://joshgr.com/colophon/": "blind-probe",
+          "https://joshgr.com/community/": "blind-probe",
+          "https://joshgr.com/concerts/": "blind-probe",
+          "https://joshgr.com/contact/": "blind-probe",
+          "https://joshgr.com/daylists/": "blind-probe",
+          "https://joshgr.com/death/": "blind-probe",
+          "https://joshgr.com/defaults/": "blind-probe",
+          "https://joshgr.com/disability/": "blind-probe",
+          "https://joshgr.com/elsewhere/": "blind-probe",
+          "https://joshgr.com/appearances/": "blind-probe",
+          "https://joshgr.com/follow/": "blind-probe",
+          "https://joshgr.com/subscribe/": "blind-probe",
+          "https://joshgr.com/feeds/": "blind-probe",
+          "https://joshgr.com/for/": "blind-probe",
+          "https://joshgr.com/dedication/": "blind-probe",
+          "https://joshgr.com/glossary/": "blind-probe",
+          "https://joshgr.com/lexicon/": "blind-probe",
+          "https://joshgr.com/phrased/": "blind-probe",
+          "https://joshgr.com/green/": "blind-probe",
+          "https://joshgr.com/hats/": "blind-probe",
+          "https://joshgr.com/hello/": "blind-probe",
+          "https://joshgr.com/hills/": "blind-probe",
+          "https://joshgr.com/hill/": "blind-probe",
+          "https://joshgr.com/ideas/": "blind-probe",
+          "https://joshgr.com/interests/": "blind-probe",
+          "https://joshgr.com/junk/": "blind-probe",
+          "https://joshgr.com/sale/": "blind-probe",
+          "https://joshgr.com/buy/": "blind-probe",
+          "https://joshgr.com/languages/": "blind-probe",
+          "https://joshgr.com/links/": "blind-probe",
+          "https://joshgr.com/bookmarks/": "blind-probe",
+          "https://joshgr.com/next/": "blind-probe",
+          "https://joshgr.com/nope/": "blind-probe",
+          "https://joshgr.com/now/": "blind-probe",
+          "https://joshgr.com/pfp/": "blind-probe",
+          "https://joshgr.com/photo/": "blind-probe",
+          "https://joshgr.com/pic/": "blind-probe",
+          "https://joshgr.com/podroll/": "blind-probe",
+          "https://joshgr.com/posse/": "blind-probe",
+          "https://joshgr.com/postroll/": "blind-probe",
+          "https://joshgr.com/predictions/": "blind-probe",
+          "https://joshgr.com/pricing/": "blind-probe",
+          "https://joshgr.com/questions/": "blind-probe",
+          "https://joshgr.com/saudade/": "blind-probe",
+          "https://joshgr.com/save/": "blind-probe",
+          "https://joshgr.com/referrals/": "blind-probe",
+          "https://joshgr.com/self-hosting/": "blind-probe",
+          "https://joshgr.com/self-hosted/": "blind-probe",
+          "https://joshgr.com/hosted/": "blind-probe",
+          "https://joshgr.com/homelab/": "blind-probe",
+          "https://joshgr.com/shoebox/": "blind-probe",
+          "https://joshgr.com/since/": "blind-probe",
+          "https://joshgr.com/sitemap/": "blind-probe",
+          "https://joshgr.com/slashes/": "blind-probe",
+          "https://joshgr.com/someday/": "blind-probe",
+          "https://joshgr.com/style/": "blind-probe",
+          "https://joshgr.com/til/": "blind-probe",
+          "https://joshgr.com/ways/": "blind-probe",
+          "https://joshgr.com/tip/": "blind-probe",
+          "https://joshgr.com/pay/": "blind-probe",
+          "https://joshgr.com/coffee/": "blind-probe",
+          "https://joshgr.com/top4/": "blind-probe",
+          "https://joshgr.com/topfour/": "blind-probe",
+          "https://joshgr.com/uses/": "blind-probe",
+          "https://joshgr.com/verify/": "blind-probe",
+          "https://joshgr.com/where/": "blind-probe",
+          "https://joshgr.com/why/": "blind-probe",
+          "https://joshgr.com/wish/": "blind-probe",
+          "https://joshgr.com/yep/": "blind-probe",
+          "https://joshgr.com/more/": "blind-probe",
+          "https://joshgr.com/site/": "blind-probe",
+          "https://joshgr.com/social/": "blind-probe",
+          "https://joshgr.com/people/": "blind-probe",
+          "https://joshgr.com/friends/": "blind-probe",
+          "https://joshgr.com/following/": "blind-probe",
+          "https://joshgr.com/webring/": "blind-probe",
+          "https://joshgr.com/webrings/": "blind-probe",
+          "https://joshgr.com/indieweb/": "blind-probe",
+          "https://joshgr.com/neighborhood/": "blind-probe",
+          "https://joshgr.com/guestbook/": "blind-probe",
+          "https://joshgr.com/meta/": "blind-probe",
+          "https://joshgr.com/health/": "blind-probe",
+          "https://joshgr.com/notes/": "blind-probe",
+          "https://joshgr.com/blog/": "blind-probe",
+          "https://joshgr.com/weblog/": "blind-probe",
+          "https://joshgr.com/writings/": "blind-probe",
+          "https://joshgr.com/posts/": "blind-probe",
+          "https://joshgr.com/post/": "blind-probe",
+          "https://joshgr.com/writing/": "blind-probe",
+          "https://joshgr.com/articles/": "blind-probe",
+          "https://joshgr.com/article/": "blind-probe",
+          "https://joshgr.com/essays/": "blind-probe",
+          "https://joshgr.com/journal/": "blind-probe",
+          "https://joshgr.com/weeknotes/": "blind-probe",
+          "https://joshgr.com/archive/": "blind-probe",
+          "https://joshgr.com/work/": "blind-probe",
+          "https://joshgr.com/projects/": "blind-probe",
+          "https://joshgr.com/portfolio/": "blind-probe",
+          "https://joshgr.com/gallery/": "blind-probe",
+          "https://joshgr.com/galleries/": "blind-probe",
+          "https://joshgr.com/albums/": "blind-probe",
+          "https://joshgr.com/photography/": "blind-probe",
+          "https://joshgr.com/photos/": "blind-probe",
+          "https://joshgr.com/art/": "blind-probe",
+          "https://joshgr.com/illustration/": "blind-probe",
+          "https://joshgr.com/artwork/": "blind-probe",
+          "https://joshgr.com/music/": "blind-probe",
+          "https://joshgr.com/discography/": "blind-probe",
+          "https://joshgr.com/tracks/": "blind-probe",
+          "https://joshgr.com/videos/": "blind-probe",
+          "https://joshgr.com/film/": "blind-probe",
+          "https://joshgr.com/animation/": "blind-probe",
+          "https://joshgr.com/games/": "blind-probe",
+          "https://joshgr.com/game/": "blind-probe",
+          "https://joshgr.com/interactive/": "blind-probe",
+          "https://joshgr.com/exhibitions/": "blind-probe",
+          "https://joshgr.com/design/": "blind-probe",
+          "https://joshgr.com/apps/": "blind-probe",
+          "https://joshgr.com/software/": "blind-probe",
+          "https://joshgr.com/tools/": "blind-probe",
+          "https://joshgr.com/books/": "blind-probe",
+          "https://joshgr.com/guides/": "blind-probe",
+          "https://joshgr.com/resources/": "blind-probe",
+          "https://joshgr.com/experiments/": "blind-probe",
+          "https://joshgr.com/sounds/": "blind-probe",
+          "https://joshgr.com/hustles/": "blind-probe",
+          "https://joshgr.com/events/": "blind-probe",
+          "https://joshgr.com/shows/": "blind-probe",
+          "https://joshgr.com/gigs/": "blind-probe",
+          "https://joshgr.com/tour/": "blind-probe",
+          "https://joshgr.com/live/": "blind-probe",
+          "https://joshgr.com/performances/": "blind-probe",
+          "https://joshgr.com/readings/": "blind-probe",
+          "https://joshgr.com/workshops/": "blind-probe",
+          "https://joshgr.com/topics/": "topic-hub",
+          "https://joshgr.com/topic/": "topic-hub",
+          "https://joshgr.com/tags/": "topic-hub",
+          "https://joshgr.com/tag/": "topic-hub",
+          "https://joshgr.com/categories/": "topic-hub",
+          "https://joshgr.com/category/": "topic-hub",
+          "https://joshgr.com/blank/": "content-index",
+          "https://joshgr.com/studio-index/": "content-index",
+          "https://joshgr.com/wizardly-words/": "content-index"
+        }
+      },
+      "crawled_at": "2026-11-01T19:24:32.156Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -1474,7 +1698,7 @@
         },
         {
           "slug": "world",
-          "label": "world"
+          "label": "worlds"
         },
         {
           "slug": "writing",
@@ -1494,7 +1718,7 @@
         "title": "📸: <a href=\"/\">Josh Müller</a>",
         "summary": "📸: Josh Müller",
         "published_at": "",
-        "observed_at": "2026-11-01T11:37:12.650Z",
+        "observed_at": "2026-11-01T19:24:32.156Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -1894,7 +2118,7 @@
           "https://joshmuller.ca/contact@joshmuller.ca.asc": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T11:37:12.650Z"
+      "crawled_at": "2026-11-01T19:24:32.156Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -1933,7 +2157,7 @@
         "title": "What's New",
         "summary": "",
         "published_at": "",
-        "observed_at": "2026-11-01T11:37:12.650Z",
+        "observed_at": "2026-11-01T19:24:32.156Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -2413,7 +2637,7 @@
           "https://joshternet.org/cdn-cgi/l/email-protection": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T11:37:12.650Z"
+      "crawled_at": "2026-11-01T19:24:32.156Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -2627,7 +2851,7 @@
         "title": "Reverse Engineering a PostHog SuperDay",
         "summary": "I'm not here to bullshit anybody, I have never been through a PostHog SuperDay. Like many humans, I've read about it on their website, as they are a company that over-communicates just about everything. This tale started when I got curious about their onboarding wizard . Their pivot from analytics to self-driving systems mirrors what I've been working on for the last couple of years, which has acc",
         "published_at": "2026-08-09T00:00:00.000Z",
-        "observed_at": "2026-11-01T11:37:12.650Z",
+        "observed_at": "2026-11-01T19:24:32.156Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -3910,7 +4134,7 @@
           "https://joshtronic.com/key.asc": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T11:37:12.650Z"
+      "crawled_at": "2026-11-01T19:24:32.156Z"
     },
     {
       "origin": "https://joshua.seigler.net",
@@ -4034,7 +4258,7 @@
         "title": "/books",
         "summary": "I’m Joshua Seigler, a software engineer since 2010 and a living being since the 1980s. I’ve watched technology advance from dial-up and Geocities pages, to federated social media and decentralized autonomous organizations, to people literally talking to computers (a lot!).",
         "published_at": "",
-        "observed_at": "2026-11-01T11:37:12.650Z",
+        "observed_at": "2026-11-01T19:24:32.156Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -4283,7 +4507,7 @@
           "https://joshua.seigler.net/music/%C3%8Engerul%20a%20Strigat%20-%20Varlaam%20-%20glasul%203.pdf": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T11:37:12.650Z"
+      "crawled_at": "2026-11-01T19:24:32.156Z"
     },
     {
       "origin": "https://joshuakim.studio",
@@ -4314,7 +4538,7 @@
         "title": "Work, Joshua Kim",
         "summary": "",
         "published_at": "",
-        "observed_at": "2026-11-01T11:37:12.650Z",
+        "observed_at": "2026-11-01T19:24:32.156Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -4508,7 +4732,7 @@
           "https://joshuakim.studio/about": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T11:37:12.650Z"
+      "crawled_at": "2026-11-01T19:24:32.156Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -4912,7 +5136,7 @@
         },
         {
           "slug": "machine-learning",
-          "label": "machine learning"
+          "label": "Machine learning"
         },
         {
           "slug": "markdown",
@@ -5228,7 +5452,7 @@
         },
         {
           "slug": "world",
-          "label": "world"
+          "label": "worlds"
         },
         {
           "slug": "world-mental-health-day",
@@ -5248,7 +5472,7 @@
         "title": "Experiments",
         "summary": "Web experiments and playground shells from Joshua Morris—toys, tools, and interface ideas built to see whether they can work in a browser.",
         "published_at": "",
-        "observed_at": "2026-11-01T11:37:12.650Z",
+        "observed_at": "2026-11-01T19:24:32.156Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -5765,7 +5989,7 @@
           "https://joshuamorris.info/feeds/friends.opml": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T11:37:12.650Z"
+      "crawled_at": "2026-11-01T19:24:32.156Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -5994,7 +6218,7 @@
         "title": "Do we need 'agentic identity'?",
         "summary": "Agents are here, there, and everywhere, growing in numbers at a pace between fast and breakneck, generating or completing work at some other velocity, and poised to change the world entirely or, like, not much at all. Something must be done.",
         "published_at": "2025-10-14T00:00:00.000Z",
-        "observed_at": "2026-11-01T11:37:12.650Z",
+        "observed_at": "2026-11-01T19:24:32.156Z",
         "content_type": "article",
         "language": "en-us",
         "dir": "",
@@ -6484,13 +6708,13 @@
           "https://www.joshcanhelp.com/eleventy-custom-content-type-collections": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T11:37:12.650Z"
+      "crawled_at": "2026-11-01T19:24:32.156Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
       "domain": "www.joshuabaker.com",
       "title": "Joshua Baker",
-      "description": "Software engineer and designer with 20+ years of building, designing, and leading products that move revenue, valuations, fundraising, even the law. Now building at the AI frontier.",
+      "description": "London-based software engineer, designer, and founder who has spent 20+ years working with founders and chief executives on products that move revenue, valuations, fundraising, even the law.",
       "identity": "affirmed",
       "feeds": [],
       "elsewhere": [
@@ -6615,6 +6839,10 @@
           "label": "linkedin"
         },
         {
+          "slug": "machine-learning",
+          "label": "Machine learning"
+        },
+        {
           "slug": "marketing",
           "label": "marketing"
         },
@@ -6692,7 +6920,7 @@
         "title": "Work — Joshua Baker",
         "summary": "Selected case studies by Joshua Baker, plus the full archive — 140+ projects across two decades of design and engineering.",
         "published_at": "",
-        "observed_at": "2026-11-01T11:37:12.650Z",
+        "observed_at": "2026-11-01T19:24:32.156Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -6707,6 +6935,10 @@
           {
             "slug": "design-system",
             "label": "Design systems"
+          },
+          {
+            "slug": "machine-learning",
+            "label": "Machine learning"
           },
           {
             "slug": "product-design",
@@ -6729,6 +6961,10 @@
           {
             "slug": "design-system",
             "label": "Design systems"
+          },
+          {
+            "slug": "machine-learning",
+            "label": "Machine learning"
           },
           {
             "slug": "product-design",
@@ -6925,7 +7161,7 @@
           "https://www.joshuabaker.com/work/banked-pay-by-bank/": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T11:37:12.650Z",
+      "crawled_at": "2026-11-01T19:24:32.156Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,

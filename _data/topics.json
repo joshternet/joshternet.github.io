@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T15:09:47.921Z",
+  "generated_at": "2026-11-01T19:24:32.156Z",
   "community_count": 285,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
@@ -7839,6 +7839,13 @@
       "active": true,
       "related_discoveries": [
         {
+          "origin": "https://joshgr.com",
+          "domain": "joshgr.com",
+          "title": "Joshua Grant",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
           "title": "Josh Sherman",
@@ -8549,8 +8556,8 @@
     },
     {
       "slug": "machine-learning",
-      "label": "machine learning",
-      "member_count": 1,
+      "label": "Machine learning",
+      "member_count": 2,
       "sites": [
         {
           "origin": "https://joshuamorris.info",
@@ -8579,11 +8586,63 @@
               "source": "topic-hub:link"
             }
           ]
+        },
+        {
+          "origin": "https://www.joshuabaker.com",
+          "domain": "www.joshuabaker.com",
+          "title": "Joshua Baker",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://www.joshuabaker.com/",
+              "title": "",
+              "source": "json-ld:knowsAbout"
+            },
+            {
+              "url": "https://www.joshuabaker.com/about/",
+              "title": "",
+              "source": "json-ld:knowsAbout"
+            },
+            {
+              "url": "https://www.joshuabaker.com/contact/",
+              "title": "",
+              "source": "json-ld:knowsAbout"
+            },
+            {
+              "url": "https://www.joshuabaker.com/now/",
+              "title": "",
+              "source": "json-ld:knowsAbout"
+            },
+            {
+              "url": "https://www.joshuabaker.com/uses/",
+              "title": "",
+              "source": "json-ld:knowsAbout"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/",
+              "title": "",
+              "source": "json-ld:knowsAbout"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/banked-pay-by-bank/",
+              "title": "",
+              "source": "json-ld:knowsAbout"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/banked/",
+              "title": "",
+              "source": "json-ld:knowsAbout"
+            }
+          ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link"],
+      "sources": [
+        "json-ld:knowsAbout",
+        "microformat:p-category",
+        "topic-hub:link"
+      ],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
-      "last_changed_at": "2026-10-28T21:05:12.557Z",
+      "last_changed_at": "2026-11-01T19:24:32.156Z",
       "active": true,
       "related_discoveries": [
         {
@@ -15487,7 +15546,7 @@
     },
     {
       "slug": "world",
-      "label": "world",
+      "label": "worlds",
       "member_count": 2,
       "sites": [
         {
@@ -15562,6 +15621,13 @@
       "last_changed_at": "2026-11-01T10:42:20.299Z",
       "active": true,
       "related_discoveries": [
+        {
+          "origin": "https://joshgr.com",
+          "domain": "joshgr.com",
+          "title": "Joshua Grant",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -15755,6 +15821,13 @@
       "last_changed_at": "2026-10-28T21:05:12.557Z",
       "active": true,
       "related_discoveries": [
+        {
+          "origin": "https://joshgr.com",
+          "domain": "joshgr.com",
+          "title": "Joshua Grant",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
