@@ -384,31 +384,63 @@ test("What's New merges windowed Showcase works beside same-origin writing", () 
 });
 
 test("buildShowcaseHomeItems respects an explicit numeric limit", () => {
-  const items = buildShowcaseHomeItems(
-    [
+  const pool = [
+    {
+      content_type: "game",
+      url: "https://joshtronic.com/games/age-of-combat/",
+      site_origin: "https://joshtronic.com",
+      title: "Age of Combat",
+      published_at: "2026-10-28T00:00:00.000Z",
+      summary: "A browser combat game from the games index.",
+      image: "https://joshtronic.com/images/age.png",
+    },
+    {
+      content_type: "article",
+      url: "https://joshuamorris.info/experiments/newer/",
+      site_origin: "https://joshuamorris.info",
+      title: "Newer Experiment",
+      published_at: "2026-10-30T00:00:00.000Z",
+      summary: "A newer experiment on the creative path.",
+      image: "https://joshuamorris.info/images/newer.webp",
+    },
+  ];
+  assert.equal(buildShowcaseHomeItems(pool, 1).length, 1);
+  assert.equal(buildShowcaseHomeItems(pool, 1.8).length, 1);
+  assert.equal(buildShowcaseHomeItems(pool, -2).length, 0);
+  assert.equal(buildShowcaseHomeItems(pool, Number.NaN).length, 2);
+  assert.equal(buildShowcaseHomeItems(pool, Infinity).length, 2);
+  assert.deepEqual(buildShowcaseHomeItems(null), []);
+});
+
+test("buildShowcaseHomeItems skips eligible works without site_origin", () => {
+  assert.deepEqual(
+    buildShowcaseHomeItems([
       {
         content_type: "game",
         url: "https://joshtronic.com/games/age-of-combat/",
-        site_origin: "https://joshtronic.com",
         title: "Age of Combat",
-        published_at: "2026-10-28T00:00:00.000Z",
-        summary: "A browser combat game from the games index.",
+        summary: "A browser combat game missing its site origin.",
         image: "https://joshtronic.com/images/age.png",
       },
       {
-        content_type: "article",
-        url: "https://joshuamorris.info/experiments/newer/",
-        site_origin: "https://joshuamorris.info",
-        title: "Newer Experiment",
-        published_at: "2026-10-30T00:00:00.000Z",
-        summary: "A newer experiment on the creative path.",
-        image: "https://joshuamorris.info/images/newer.webp",
+        content_type: "game",
+        url: "https://joshtronic.com/games/idol-idle/",
+        site_origin: "",
+        title: "Idol Idle",
+        summary: "A browser idle game with an empty site origin.",
+        image: "https://joshtronic.com/images/idol.png",
       },
-    ],
-    { limit: 1 },
+      {
+        content_type: "game",
+        url: "https://joshtronic.com/games/know-the-table/",
+        site_origin: 12,
+        title: "Know the Table",
+        summary: "A browser game with a non-string site origin.",
+        image: "https://joshtronic.com/images/table.png",
+      },
+    ]),
+    [],
   );
-  assert.equal(items.length, 1);
-  assert.deepEqual(buildShowcaseHomeItems(null), []);
 });
 
 test("buildShowcaseHomeItems keeps one newest work per member and kind", () => {

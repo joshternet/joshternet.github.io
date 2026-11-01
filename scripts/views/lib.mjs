@@ -1803,17 +1803,12 @@ const HOME_SHOWCASE_KINDS = new Set([
  * {@link compareShowcaseRecency} (`published_at`, then `observed_at`, then
  * URL). An optional `limit` truncates after the per-member-per-kind pick.
  * @param {Array<Record<string, unknown>>} compactItems
- * @param {{ limit?: number }} [options]
+ * @param {number} [limit]
  * @returns {Array<Record<string, unknown>>}
  */
-export function buildShowcaseHomeItems(compactItems, options = {}) {
-  const limit =
-    typeof options.limit === "number" && Number.isFinite(options.limit)
-      ? Math.max(0, Math.floor(options.limit))
-      : undefined;
-
+export function buildShowcaseHomeItems(compactItems, limit) {
   const eligible = eligibleShowcaseItems(compactItems)
-    .filter((item) => HOME_SHOWCASE_KINDS.has(String(item.kind || "")))
+    .filter((item) => HOME_SHOWCASE_KINDS.has(String(item.kind)))
     .sort(compareShowcaseRecency);
 
   /** @type {Map<string, Record<string, unknown>>} */
@@ -1821,28 +1816,22 @@ export function buildShowcaseHomeItems(compactItems, options = {}) {
 
   for (const item of eligible) {
     const origin = typeof item.site_origin === "string" ? item.site_origin : "";
-    const kind = String(item.kind || "");
+    const key = `${origin}\0${String(item.kind)}`;
 
-    if (!origin || !kind) {
-      continue;
+    if (!byOriginKind.has(key)) {
+      byOriginKind.set(key, item);
     }
-
-    const key = `${origin}\0${kind}`;
-
-    if (byOriginKind.has(key)) {
-      continue;
-    }
-
-    byOriginKind.set(key, item);
   }
 
-  let selected = [...byOriginKind.values()].sort(compareShowcaseRecency);
+  const selected = [...byOriginKind.values()]
+    .filter((item) => typeof item.site_origin === "string" && item.site_origin)
+    .sort(compareShowcaseRecency);
+  const maxItems =
+    typeof limit === "number" && Number.isFinite(limit)
+      ? Math.max(0, Math.floor(limit))
+      : selected.length;
 
-  if (typeof limit === "number") {
-    selected = selected.slice(0, limit);
-  }
-
-  return selected;
+  return selected.slice(0, maxItems);
 }
 
 /**
