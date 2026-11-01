@@ -4,7 +4,7 @@ import process from "node:process";
 
 import { partitionPublicParticipants, projectRegistry } from "./lib.mjs";
 
-import { registryNeedsSync } from "./state.mjs";
+import { registryNeedsSync, screenshotFileIsPresent } from "./state.mjs";
 
 const DEFAULT_REGISTRY_URL =
   "https://raw.githubusercontent.com/joshternet/index-data/main/registry.json";
@@ -46,26 +46,6 @@ async function loadRegistry(source) {
   return JSON.parse(await fs.readFile(path.resolve(source), "utf8"));
 }
 
-async function screenshotExists(entry) {
-  if (!entry?.screenshot) {
-    return false;
-  }
-
-  const relative = entry.screenshot.replace(/^\/+/, "");
-
-  try {
-    const stat = await fs.stat(path.resolve(relative));
-
-    return stat.isFile() && stat.size > 0;
-  } catch (error) {
-    if (error?.code === "ENOENT") {
-      return false;
-    }
-
-    throw error;
-  }
-}
-
 function reportRejectedParticipants(rejected) {
   for (const { participant, error } of rejected) {
     const origin =
@@ -95,7 +75,7 @@ let needsSync = registryNeedsSync(participants, existing);
 
 if (!needsSync) {
   for (const entry of existing) {
-    if (!(await screenshotExists(entry))) {
+    if (!(await screenshotFileIsPresent(entry))) {
       needsSync = true;
 
       process.stderr.write(

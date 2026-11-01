@@ -101,9 +101,9 @@ A few standing rules:
 - Joshness is declared, never derived.
 - Participation is voluntary.
 - Josh identity and participation are separate.
-- Non-Joshes may participate without being represented as Joshes.
+- Non-Joshes may participate without being represented as Joshes; they josh the Joshes from the day they join.
 - Sites stay independently controlled.
-- No Josh outranks another Josh.
+- No Josh outranks another Josh—and no Non-Josh is ranked below a Josh.
 - Identity and participation do not imply trust.
 - Discovery should not require one canonical authority.
 - Prefer open, boring web standards.

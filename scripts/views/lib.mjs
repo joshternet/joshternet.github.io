@@ -35,6 +35,7 @@ export const SHOWCASE_CONTENT_TYPES = [
   "visual_artwork",
   "music_recording",
   "music_album",
+  "podcast_episode",
   "sheet_music",
   "video",
   "game",
@@ -53,6 +54,7 @@ export const SHOWCASE_KIND_ORDER = Object.freeze([
   "games",
   "photography",
   "music",
+  "podcasts",
   "art",
   "sheet music",
   "video",
@@ -74,6 +76,7 @@ export const SHOWCASE_KIND_LABELS = Object.freeze({
   games: Object.freeze(["Game", "Games"]),
   photography: Object.freeze(["Photography", "Photography"]),
   music: Object.freeze(["Music", "Music"]),
+  podcasts: Object.freeze(["Podcast", "Podcasts"]),
   art: Object.freeze(["Art", "Art"]),
   "sheet music": Object.freeze(["Sheet music", "Sheet music"]),
   video: Object.freeze(["Video", "Videos"]),
@@ -292,13 +295,15 @@ export function compactContentItem(item, sites, publicSlugs) {
   const origin = typeof item.site_origin === "string" ? item.site_origin : "";
   const site = origin ? sites.get(origin) : undefined;
   const labels = contentTopicLabels(item, publicSlugs);
+  const rawImage = typeof item.image === "string" ? item.image : "";
   const image =
-    typeof item.image === "string" && item.image.startsWith("https://")
-      ? item.image
+    rawImage.startsWith("https://") ||
+    rawImage.startsWith("/assets/activity/posters/")
+      ? rawImage
       : "";
   let imageOrigin = "";
 
-  if (image) {
+  if (image.startsWith("https://")) {
     try {
       imageOrigin = new URL(image).origin;
     } catch {
@@ -777,6 +782,8 @@ export function showcaseKind(contentType, categories = []) {
     case "music_recording":
     case "music_album":
       return "music";
+    case "podcast_episode":
+      return "podcasts";
     case "sheet_music":
       return "sheet music";
     case "video":
@@ -836,7 +843,7 @@ export const madeKind = showcaseKind;
 
 /** Path segment that marks a creative index root. */
 const CREATIVE_INDEX_ROOT =
-  /^(gallery|galleries|albums|photography|photos|art|illustration|artwork|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?)$/i;
+  /^(gallery|galleries|albums|photography|photos|art|illustration|artwork|comics?|webcomics|toys?|play|reels?|shorts|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|podcasts?)$/i;
 
 /**
  * Showcase kind inferred from a creative child path (e.g. /experiments/corkboard/).
@@ -864,8 +871,24 @@ export function creativePathKind(url) {
       return "art";
     }
 
+    if (/^(comics?|webcomics)$/.test(root)) {
+      return "art";
+    }
+
+    if (/^(toys?|play)$/.test(root)) {
+      return "project";
+    }
+
+    if (/^(reels?|shorts)$/.test(root)) {
+      return "video";
+    }
+
     if (/^(music|discography|tracks|sounds?)$/.test(root)) {
       return "music";
+    }
+
+    if (/^podcasts?$/.test(root)) {
+      return "podcasts";
     }
 
     if (/^(videos|film|animation)$/.test(root)) {
@@ -924,6 +947,11 @@ export function showcaseKindForItem(item) {
   // get a Showcase kind from writing-shaped types.
   if (String(item.content_type) === "article") {
     return fromPath || "other";
+  }
+
+  // Year photo albums are collections typed under /photos/ — prefer path kind.
+  if (String(item.content_type) === "collection" && fromPath) {
+    return fromPath;
   }
 
   const fromType = showcaseKind(
@@ -1120,6 +1148,61 @@ export function isNamedRootCreativeProduct(item) {
   }
 
   return isExactSlugProductTitle(item.title, item.url);
+}
+
+/**
+ * True when a project was harvested from a member Projects/Products shelf and
+ * the work URL lives off-origin (Morning App, MusicX, Seedling, …).
+ * @param {Record<string, unknown>} item
+ * @returns {boolean}
+ */
+export function isExternalShelfProject(item) {
+  if (!item || typeof item !== "object") {
+    return false;
+  }
+
+  const kind = creativeSourceKind(item);
+
+  if (
+    kind !== "creative-homepage-shelf" &&
+    kind !== "creative-projects-shelf"
+  ) {
+    return false;
+  }
+
+  if (typeof item.url !== "string" || typeof item.site_origin !== "string") {
+    return false;
+  }
+
+  try {
+    return new URL(item.url).origin !== new URL(item.site_origin).origin;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * True when url is the member's own site homepage (not an external product
+ * root such as https://themorning.app/).
+ * @param {Record<string, unknown>} item
+ * @returns {boolean}
+ */
+export function isMemberSiteHomeItem(item) {
+  if (!item || typeof item !== "object" || !isSiteHomeUrl(item.url)) {
+    return false;
+  }
+
+  if (typeof item.site_origin !== "string" || !item.site_origin) {
+    return true;
+  }
+
+  try {
+    return (
+      new URL(String(item.url)).origin === new URL(item.site_origin).origin
+    );
+  } catch {
+    return true;
+  }
 }
 
 /**
@@ -1444,12 +1527,19 @@ export function isClientCaseStudyUrl(url) {
 }
 
 /**
- * True when the item has a remote https poster suitable for Showcase.
+ * True when the item has a remote https or local activity poster.
  * @param {Record<string, unknown>} item
  * @returns {boolean}
  */
 function hasHttpsPoster(item) {
-  return typeof item.image === "string" && item.image.startsWith("https://");
+  if (typeof item.image !== "string" || !item.image) {
+    return false;
+  }
+
+  return (
+    item.image.startsWith("https://") ||
+    item.image.startsWith("/assets/activity/posters/")
+  );
 }
 
 /**
@@ -1545,8 +1635,9 @@ export function isMadeContentItem(item, options = {}) {
     return false;
   }
 
-  // A member homepage is not a Showcase project.
-  if (isSiteHomeUrl(item.url)) {
+  // A member homepage is not a Showcase project. External product roots
+  // (themorning.app) attributed to a member stay eligible.
+  if (isMemberSiteHomeItem(item)) {
     return false;
   }
 
@@ -1619,13 +1710,15 @@ export function isMadeContentItem(item, options = {}) {
   }
 
   // Project/collection cards must live under a creative directory
-  // (/projects/…, /experiments/…, /games/…, …) or be a named-root studio product
-  // (e.g. Kim `/somaspace`). Bare `/work` indexes, member homepages, and plain
-  // articles (including 3D-viewer write-ups) are never projects.
+  // (/projects/…, /experiments/…, /games/…, …), be a named-root studio product
+  // (e.g. Kim `/somaspace`), or an off-origin Projects-shelf app (Morning App,
+  // MusicX, Seedling). Bare `/work` indexes and member homepages are never
+  // projects.
   if (
     (type === "project" || type === "collection") &&
     !isCreativePathWorkUrl(item.url) &&
-    !isNamedRootCreativeProduct(item)
+    !isNamedRootCreativeProduct(item) &&
+    !isExternalShelfProject(item)
   ) {
     return false;
   }
@@ -1795,6 +1888,7 @@ const HOME_SHOWCASE_KINDS = new Set([
   "games",
   "photography",
   "music",
+  "podcasts",
 ]);
 
 /**
@@ -2507,12 +2601,42 @@ export function buildViewDocuments(input) {
   const feedPrimary = oneLatestPerOrigin(recentItems)
     .map((item) => compactContentItem(item, sites, publicSlugs))
     .filter(Boolean);
+  // Quiet writers: if an origin has content but nothing in the 7-day window,
+  // still feature their single latest article/note on What's New.
+  // compactContentItem always emits a string site_origin (possibly empty).
+  const originsInPrimary = new Set(
+    feedPrimary.map((item) => item.site_origin).filter(Boolean),
+  );
+  const writingBackfill = oneLatestPerOrigin(
+    contentItems.filter((item) => {
+      if (!item || isJoshternetHubContentUrl(item.url)) {
+        return false;
+      }
+
+      const origin =
+        typeof item.site_origin === "string" ? item.site_origin : "";
+
+      if (!origin || originsInPrimary.has(origin)) {
+        return false;
+      }
+
+      // Feed drafts historically omit content_type; treat blank as article.
+      const type = String(item.content_type || "article");
+
+      return (
+        type === "article" || type === "note" || type === "podcast_episode"
+      );
+    }),
+  )
+    .map((item) => compactContentItem(item, sites, publicSlugs))
+    .filter(Boolean);
   // Showcase creative works join What's New so "latest" is not articles-only.
   // Dated Showcase rows in the window are included in full (not one-per-origin),
   // so a same-origin note cannot hide a newly published experiment/toy.
   const showcasePrimary = showcaseItemsForActivity(compactItems, clock);
   const primary = uniqueActivityItemsByUrl([
     ...feedPrimary,
+    ...writingBackfill,
     ...showcasePrimary,
   ]);
 

@@ -42,7 +42,7 @@ Josh identity remains voluntary:
 
 A name, domain, biography, or third-party assertion does not determine Joshness. A person may affirm Josh identity, decline it, or leave it undeclared.
 
-Non-Joshes may participate without being represented as Joshes. Participation and identity remain separate.
+Non-Joshes may participate without being represented as Joshes. Participation and identity remain separate. From the day they join, friends of Joshes are joshing the Joshes as equal participants—not guests and not a lesser tier.
 
 ## Why independent websites?
 

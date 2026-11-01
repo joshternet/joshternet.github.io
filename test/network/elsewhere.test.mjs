@@ -37,7 +37,20 @@ test("classifyElsewhereHost maps international catalog hosts", () => {
   assert.equal(classifyElsewhereHost("xiaohongshu.com"), "xiaohongshu");
   assert.equal(classifyElsewhereHost("mastodon.social"), "mastodon");
   assert.equal(classifyElsewhereHost("josh.substack.com"), "substack");
+  assert.equal(classifyElsewhereHost("threads.net"), "threads");
+  assert.equal(classifyElsewhereHost("www.threads.com"), "threads");
+  assert.equal(classifyElsewhereHost("threads.com"), "threads");
+  assert.equal(classifyElsewhereHost("discordapp.com"), "discord");
+  assert.equal(classifyElsewhereHost("www.discordapp.com"), "discord");
+  assert.equal(classifyElsewhereHost("buttondown.com"), "buttondown");
+  assert.equal(classifyElsewhereHost("www.buttondown.com"), "buttondown");
   assert.equal(classifyElsewhereHost("personal.example"), "web");
+  assert.equal(classifyElsewhereHost("social.joshuapsteele.com"), "web");
+});
+
+test("elsewhereLabel maps buttondown and threads catalog names", () => {
+  assert.equal(elsewhereLabel("buttondown", "buttondown.com"), "Buttondown");
+  assert.equal(elsewhereLabel("threads", "www.threads.com"), "Threads");
 });
 
 test("elsewhereLabel uses catalog names or hostname for web", () => {
@@ -269,6 +282,10 @@ test("isElsewhereProfileUrl: threads (lines 347-349)", () => {
     true,
   );
   assert.equal(
+    isElsewhereProfileUrl(make("https://www.threads.com/@joshjosh"), "threads"),
+    true,
+  );
+  assert.equal(
     isElsewhereProfileUrl(make("https://www.threads.net/joshjosh"), "threads"),
     true,
   );
@@ -346,6 +363,13 @@ test("isElsewhereProfileUrl: discord (lines 370-372)", () => {
     true,
   );
   assert.equal(
+    isElsewhereProfileUrl(
+      make("https://discordapp.com/users/thejoshmuller"),
+      "discord",
+    ),
+    true,
+  );
+  assert.equal(
     isElsewhereProfileUrl(make("https://discord.gg/invite/abc"), "discord"),
     true,
   );
@@ -368,6 +392,13 @@ test("isElsewhereProfileUrl: medium/substack/bandcamp and similar return true (l
   );
   assert.equal(
     isElsewhereProfileUrl(make("https://joshjosh.substack.com/"), "substack"),
+    true,
+  );
+  assert.equal(
+    isElsewhereProfileUrl(
+      make("https://buttondown.com/joshuapsteele/"),
+      "buttondown",
+    ),
     true,
   );
   assert.equal(

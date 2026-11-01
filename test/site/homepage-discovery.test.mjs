@@ -82,7 +82,8 @@ test("homepage meet and activity includes use generated datasets", async () => {
   assert.match(eligible, /slice: 0, 3/);
   assert.match(arrivals, /include home-welcome-eligible\.html/);
   assert.match(arrivals, /data-home-new-arrivals/);
-  assert.match(arrivals, /First participated/);
+  assert.match(arrivals, /include network-card-joined\.html/);
+  assert.match(arrivals, /network-card-a11y\.html/);
   assert.match(arrivals, /Find in the Network/);
   assert.match(arrivals, /home-new-arrivals__meta/);
   assert.match(arrivals, /outbound-href\.html/);

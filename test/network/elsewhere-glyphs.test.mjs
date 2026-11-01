@@ -36,7 +36,11 @@ test("elsewhere glyph CSS matches the sprite order generator", async () => {
   assert.doesNotMatch(mainCss, /\.network-card__elsewhere-glyph--github\s*\{/);
   assert.match(committed, /\.network-card__elsewhere-glyph--github\s*\{/);
   assert.match(committed, /\.network-card__elsewhere-glyph--weibo\s*\{/);
+  assert.match(committed, /\.network-card__elsewhere-glyph--buttondown\s*\{/);
   assert.match(committed, /\.network-card__elsewhere-glyph--web\s*\{/);
+  assert.match(mainCss, /mask-size:\s*800%\s+600%/);
+  assert.ok(order.networks.includes("buttondown"));
+  assert.equal(order.networks.at(-1), "web");
 });
 
 // ─── buildElsewhereGlyphCss error paths ───────────────────────────────────────

@@ -55,8 +55,8 @@ import {
 } from "./preview.mjs";
 
 import {
-  captureIsFresh,
   fallbackEntry,
+  needsScreenshotCapture,
   removeOrphanScreenshots,
   withFeeds,
 } from "./state.mjs";
@@ -66,6 +66,9 @@ import {
   runWithEnrichmentBudget,
   visitIdentityPages,
 } from "./enrichment-budget.mjs";
+import { formatGeneratedOutputs } from "../format-written.mjs";
+import { writeJSONAtomic, writeTextAtomic } from "../nlp/lib.mjs";
+import { probeCommonFeedPaths } from "./feed-probes.mjs";
 
 const DEFAULT_REGISTRY_URL =
   "https://raw.githubusercontent.com/joshternet/index-data/main/registry.json";
@@ -533,9 +536,14 @@ async function enrichFromOpenedPage(
   signal,
 ) {
   const { metadata, dnsCache, page } = opened;
-  const feeds = await sanitizeFeeds(metadata.feeds, {
+  const advertisedFeeds = await sanitizeFeeds(metadata.feeds, {
     cache: dnsCache,
   });
+  const feeds = await probeCommonFeedPaths(
+    participant.origin,
+    advertisedFeeds,
+    { cache: dnsCache },
+  );
   const blogrollUrls = await sanitizeBlogrollUrls(metadata.blogrolls, {
     cache: dnsCache,
   });
@@ -618,6 +626,14 @@ async function captureParticipant(
       })
       .toFile(outputPath);
 
+    const written = await fs.stat(outputPath);
+
+    if (!written.isFile() || written.size <= 0) {
+      throw new Error(
+        `screenshot write produced empty file for ${participant.origin}`,
+      );
+    }
+
     const framing = framePolicy({
       origin: participant.origin,
       headers,
@@ -696,33 +712,18 @@ async function discoverHomepageEnrichment(
   }
 }
 
-function shouldRefresh(previous) {
-  return refreshAll || !captureIsFresh(previous);
-}
+/**
+ * Whether this participant needs a new homepage screenshot this sync.
+ * Scheduled runs leave NETWORK_REFRESH_ALL false; missing WebPs still refresh.
+ * @param {{ captured_at?: string, screenshot?: string } | null | undefined} previous
+ * @returns {Promise<boolean>}
+ */
+async function shouldRefresh(previous) {
+  if (refreshAll || !previous) {
+    return true;
+  }
 
-async function writeJSONAtomic(filePath, value) {
-  const directory = path.dirname(filePath);
-  const temporary = `${filePath}.tmp-${process.pid}`;
-
-  await fs.mkdir(directory, {
-    recursive: true,
-  });
-
-  await fs.writeFile(temporary, `${JSON.stringify(value, null, 2)}\n`, "utf8");
-
-  await fs.rename(temporary, filePath);
-}
-
-async function writeTextAtomic(filePath, value) {
-  const directory = path.dirname(filePath);
-  const temporary = `${filePath}.tmp-${process.pid}`;
-
-  await fs.mkdir(directory, {
-    recursive: true,
-  });
-
-  await fs.writeFile(temporary, value, "utf8");
-  await fs.rename(temporary, filePath);
+  return needsScreenshotCapture(previous);
 }
 
 const registry = await loadRegistry(registrySource);
@@ -792,7 +793,7 @@ try {
   for (const participant of participants) {
     const oldEntry = previous.get(participant.origin);
 
-    if (!shouldRefresh(oldEntry)) {
+    if (!(await shouldRefresh(oldEntry))) {
       const kept = {
         ...oldEntry,
         ...registryParticipationFields(participant),
@@ -942,6 +943,7 @@ await removeOrphanScreenshots(nextEntries, DEFAULT_SCREENSHOT_ROOT);
 await writeJSONAtomic(DEFAULT_DATA_PATH, nextEntries);
 await writeJSONAtomic(DEFAULT_BLOGROLLS_PATH, blogrollsDocument);
 await writeTextAtomic(DEFAULT_OPML_PATH, opml);
+await formatGeneratedOutputs();
 
 process.stdout.write(
   `Wrote ${nextEntries.length} network entr` +

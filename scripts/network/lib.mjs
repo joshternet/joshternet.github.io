@@ -886,6 +886,8 @@ const FEED_MIME_TYPES = new Set([
   "application/rss+xml",
   "application/atom+xml",
   "application/feed+json",
+  // Hugo PaperMod search/index JSON (sniffed at nlp:sync time).
+  "application/json",
 ]);
 
 /**

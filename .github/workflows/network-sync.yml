@@ -112,6 +112,10 @@ jobs:
         if: steps.preflight.outputs.needs_sync == 'true'
         run: npm run nlp:sync
 
+      - name: Format generated datasets before validate
+        if: steps.preflight.outputs.needs_sync == 'true'
+        run: npm run format:data
+
       - name: Validate graph invariants
         if: steps.preflight.outputs.needs_sync == 'true'
         run: npm run nlp:validate

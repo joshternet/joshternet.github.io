@@ -10,6 +10,7 @@ import {
   parseRobotsTxt,
   robotsAllowsPath,
   selectRobotsGroup,
+  sitemapUrlsFromRobots,
 } from "../../scripts/nlp/robots.mjs";
 
 test("crawlerProductToken: empty input is *", () => {
@@ -108,4 +109,20 @@ Disallow: /zz
 `;
   assert.equal(robotsAllowsPath(body, "foo", USER_AGENT), true);
   assert.equal(robotsAllowsPath(body, "/zz", USER_AGENT), false);
+});
+
+test("sitemapUrlsFromRobots: collects Sitemap directives outside User-agent groups", () => {
+  const body = `# Robots
+User-agent: *
+Disallow: /search/
+Sitemap: https://a.example/sitemap.xml
+Sitemap: https://a.example/sitemap.xml
+Sitemap: /alt-sitemap.xml
+`;
+  assert.deepEqual(sitemapUrlsFromRobots(body), [
+    "https://a.example/sitemap.xml",
+    "/alt-sitemap.xml",
+  ]);
+  assert.deepEqual(sitemapUrlsFromRobots(""), []);
+  assert.deepEqual(sitemapUrlsFromRobots("# only comment"), []);
 });

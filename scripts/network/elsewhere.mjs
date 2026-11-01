@@ -35,6 +35,7 @@ export const ELSEWHERE_LABELS = {
   gitlab: "GitLab",
   bluesky: "Bluesky",
   threads: "Threads",
+  buttondown: "Buttondown",
   tumblr: "Tumblr",
   pinterest: "Pinterest",
   snapchat: "Snapchat",
@@ -94,6 +95,8 @@ const HOST_NETWORKS = {
   "old.reddit.com": "reddit",
   "discord.com": "discord",
   "discord.gg": "discord",
+  "discordapp.com": "discord",
+  "www.discordapp.com": "discord",
   "twitch.tv": "twitch",
   "www.twitch.tv": "twitch",
   "github.com": "github",
@@ -103,6 +106,10 @@ const HOST_NETWORKS = {
   "bsky.app": "bluesky",
   "threads.net": "threads",
   "www.threads.net": "threads",
+  "threads.com": "threads",
+  "www.threads.com": "threads",
+  "buttondown.com": "buttondown",
+  "www.buttondown.com": "buttondown",
   "tumblr.com": "tumblr",
   "www.tumblr.com": "tumblr",
   "pinterest.com": "pinterest",
@@ -379,6 +386,7 @@ export function isElsewhereProfileUrl(url, network) {
       return segments.length >= 1;
     case "medium":
     case "substack":
+    case "buttondown":
     case "tumblr":
     case "bandcamp":
     case "soundcloud":

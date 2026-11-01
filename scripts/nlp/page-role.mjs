@@ -111,8 +111,17 @@ export function classifyPageRole(url, hints = {}) {
     return "about";
   }
 
+  // Microblog / note permalinks (e.g. /notes/2026-08-30-0952/).
+  if (/\/notes\/\d{4}-\d{2}-\d{2}(?:-\d{3,4})?(?:\/|$|\.html?$)/.test(lower)) {
+    return "note";
+  }
+
   if (/\/(posts?|blog|notes?|essays?|tips?)\//.test(lower)) {
     return "article";
+  }
+
+  if (/^\/(photos?|photography|gallery|galleries|albums)(?:\/|$)/.test(lower)) {
+    return "portfolio";
   }
 
   return "unknown";

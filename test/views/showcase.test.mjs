@@ -25,7 +25,9 @@ import {
   isCreativeSeriesHubUrl,
   isIndividualPhotoOrArtWorkUrl,
   isExactSlugProductTitle,
+  isExternalShelfProject,
   isMadeContentItem,
+  isMemberSiteHomeItem,
   isNamedRootCreativeProduct,
   isNamedRootProjectUrl,
   isPhotoAggregatorUrl,
@@ -1404,7 +1406,15 @@ test("creativePathKind: maps known root paths to correct kinds (L762-803)", () =
     "photography",
   );
   assert.equal(creativePathKind("https://a.example/art/piece/"), "art");
+  assert.equal(creativePathKind("https://a.example/comics/strip-1/"), "art");
+  assert.equal(creativePathKind("https://a.example/toys/widget/"), "project");
+  assert.equal(creativePathKind("https://a.example/reels/clip/"), "video");
   assert.equal(creativePathKind("https://a.example/music/track/"), "music");
+  assert.equal(
+    creativePathKind("https://a.example/podcasts/ep-1/"),
+    "podcasts",
+  );
+  assert.equal(creativePathKind("https://a.example/podcast/ep-1/"), "podcasts");
   assert.equal(creativePathKind("https://a.example/videos/clip/"), "video");
   assert.equal(creativePathKind("https://a.example/games/pong/"), "games");
   assert.equal(creativePathKind("https://a.example/apps/myapp/"), "apps");
@@ -2082,12 +2092,109 @@ test("compactContentItem preserves page_role for Showcase writing gate", () => {
   assert.equal(compact.source_kind, "creative-homepage");
 });
 
+test("compactContentItem keeps local activity poster paths", () => {
+  const compact = compactContentItem(
+    {
+      url: "https://themorning.app/",
+      site_origin: "https://joshgr.com",
+      title: "The Morning App",
+      content_type: "project",
+      image: "/assets/activity/posters/abc123.webp",
+    },
+    new Map([
+      ["https://joshgr.com", { title: "Josh Grant", domain: "joshgr.com" }],
+    ]),
+    new Set(),
+  );
+
+  assert.equal(compact?.image, "/assets/activity/posters/abc123.webp");
+  assert.equal(compact?.image_origin, "");
+});
+
 test("isMadeContentItem requires creative-directory URLs for projects", () => {
   assert.equal(isSiteHomeUrl("https://joshmuller.ca/"), true);
+  assert.equal(
+    isMemberSiteHomeItem({
+      url: "https://joshmuller.ca/",
+      site_origin: "https://joshmuller.ca",
+    }),
+    true,
+  );
+  assert.equal(
+    isMemberSiteHomeItem({
+      url: "https://themorning.app/",
+      site_origin: "https://joshgr.com",
+    }),
+    false,
+  );
+  assert.equal(
+    isExternalShelfProject({
+      url: "https://themorning.app/",
+      site_origin: "https://joshgr.com",
+      source_kind: "creative-homepage-shelf",
+    }),
+    true,
+  );
+  assert.equal(
+    isExternalShelfProject({
+      url: "https://joshgr.com/wizardly-words/",
+      site_origin: "https://joshgr.com",
+      source_kind: "creative-homepage-shelf",
+    }),
+    false,
+  );
+  assert.equal(
+    isExternalShelfProject({
+      url: "https://themorning.app/",
+      site_origin: "https://joshgr.com",
+      source_kind: "creative-homepage",
+    }),
+    false,
+  );
+  assert.equal(isExternalShelfProject(null), false);
+  assert.equal(isExternalShelfProject("x"), false);
+  assert.equal(
+    isExternalShelfProject({
+      url: 42,
+      site_origin: "https://joshgr.com",
+      source_kind: "creative-homepage-shelf",
+    }),
+    false,
+  );
+  assert.equal(
+    isExternalShelfProject({
+      url: "https://themorning.app/",
+      site_origin: "https://exa mple.com",
+      source_kind: "creative-homepage-shelf",
+    }),
+    false,
+  );
+  assert.equal(isMemberSiteHomeItem(null), false);
+  assert.equal(
+    isMemberSiteHomeItem({
+      url: "https://joshgr.com/",
+    }),
+    true,
+  );
+  assert.equal(
+    isMemberSiteHomeItem({
+      url: "https://joshgr.com/",
+      site_origin: "",
+    }),
+    true,
+  );
+  assert.equal(
+    isMemberSiteHomeItem({
+      url: "https://joshgr.com/",
+      site_origin: "https://exa mple.com",
+    }),
+    true,
+  );
   assert.equal(
     isMadeContentItem({
       content_type: "project",
       url: "https://joshmuller.ca/",
+      site_origin: "https://joshmuller.ca",
       title: "Josh Müller",
       summary: "Homepage is not a Showcase project",
       image: "https://joshmuller.ca/profile.jpg",

@@ -756,6 +756,31 @@
         )}</p>`
       : "";
 
+    let identityA11y = "Undeclared Joshternet participant.";
+    if (identity === "affirmed") {
+      identityA11y = "Josh Joshternet participant.";
+    } else if (identity === "declined") {
+      identityA11y = "Non-Josh Joshternet participant, joshing the Joshes.";
+    }
+
+    let joined = "";
+    if (
+      typeof site.first_participated_at === "string" &&
+      site.first_participated_at
+    ) {
+      const joinedDate = new Date(site.first_participated_at);
+      if (!Number.isNaN(joinedDate.getTime())) {
+        const joinedLabel = joinedDate.toLocaleDateString("en-GB", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+        });
+        joined = `<p class="network-card__joined">Joined <time datetime="${escapeAttribute(
+          site.first_participated_at,
+        )}">${escapeHTML(joinedLabel)}</time></p>`;
+      }
+    }
+
     return `
             <div
                 class="wander-fallback"
@@ -776,6 +801,9 @@
                             </div>
 
                             <div class="network-card__body">
+                                <span class="visually-hidden">${escapeHTML(
+                                  identityA11y,
+                                )}</span>
                                 <h2 class="network-card__title">
                                     ${escapeHTML(site.title || site.domain)}
                                     <span aria-hidden="true">↗</span>
@@ -786,6 +814,7 @@
                                 <span class="network-card__domain">
                                     ${escapeHTML(site.domain)}
                                 </span>
+                                ${joined}
                             </div>
                         </a>
                     </article>

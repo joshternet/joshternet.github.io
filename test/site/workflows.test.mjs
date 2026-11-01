@@ -31,9 +31,15 @@ test("network-sync keeps hourly and registry triggers plus sync steps", async ()
   assert.match(sync, /npm run test:browser/);
   assert.match(sync, /npm run network:sync/);
   assert.match(sync, /npm run nlp:sync/);
+  assert.match(sync, /Format generated datasets before validate/);
   assert.match(sync, /npm run nlp:validate/);
   assert.match(sync, /npm run nlp:quality/);
   assert.match(sync, /npm run format:data/);
+  assert.equal(
+    [...sync.matchAll(/npm run format:data/g)].length >= 2,
+    true,
+    "scrape and publish must both run format:data",
+  );
   assert.match(sync, /GITHUB_TOKEN:\s*\$\{\{\s*github\.token\s*\}\}/);
 });
 

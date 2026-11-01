@@ -11,6 +11,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { topicCollectionMarkdown } from "../nlp/communities.mjs";
+import { formatGeneratedOutputs } from "../format-written.mjs";
 import {
   readJSONIfExists,
   writeJSONAtomic,
@@ -211,6 +212,7 @@ async function writeStableJSON(filePath, document) {
 
 async function main() {
   const views = await buildViewProjections();
+  await formatGeneratedOutputs();
   process.stdout.write(
     `Wrote view projections: ${views.activity.primary_count} activity rows, ${views.explore.community_count} neighborhoods, ${views.search_index.document_count} search documents, ${views.showcase.item_count} showcase items, ${views.happening.item_count} upcoming events.\n`,
   );

@@ -8,6 +8,7 @@
 
 import { originFromHttpUrl } from "../network/blogroll.mjs";
 import { slugifyTopic } from "../network/connections.mjs";
+import { SHOWCASE_CONTENT_TYPES } from "../views/lib.mjs";
 import { buildTopicEvidence, isCommunityEligibleSource } from "./evidence.mjs";
 import { fetchPublicText } from "./lib.mjs";
 import {
@@ -27,7 +28,7 @@ import {
  * @type {RegExp}
  */
 const CREATIVE_WORK_PATH =
-  /\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?)\/.+/i;
+  /\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|comics?|webcomics|toys?|play|reels?|shorts|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?)\/.+/i;
 
 /**
  * Prefers entry-level language, then channel/feed language.
@@ -504,6 +505,158 @@ export function feedImageFromJsonItem(item, feedUrl) {
 }
 
 /**
+ * True when a title looks like music listening/curation, not first-party audio.
+ * @param {unknown} title
+ * @returns {boolean}
+ */
+export function isListeningCurationTitle(title) {
+  return /albums?\s+i\s+(?:listened|loved)|song\s+i'?m\s+loving|listening\s+to\b|playlist\b/i.test(
+    String(title || ""),
+  );
+}
+
+/**
+ * First-party content_type override from conventional title prefixes.
+ * @param {unknown} title
+ * @param {string} currentType
+ * @returns {string}
+ */
+export function firstPartyContentTypeFromTitle(title, currentType) {
+  const text = String(title || "").trim();
+
+  if (/^\[photo\]/i.test(text) || /^📷\s*/u.test(text)) {
+    return "photograph";
+  }
+
+  return currentType;
+}
+
+/**
+ * Absolute URL for an audio enclosure in an RSS/Atom entry chunk.
+ * @param {string} chunk
+ * @param {string} feedUrl
+ * @returns {string}
+ */
+export function audioEnclosureUrlFromFeedChunk(chunk, feedUrl) {
+  if (typeof chunk !== "string" || !chunk) {
+    return "";
+  }
+
+  for (const match of chunk.matchAll(/<enclosure\b([^>]*)\/?>/gi)) {
+    const attrs = match[1] || "";
+    const type = attrs.match(/\btype=["']([^"']+)["']/i)?.[1] || "";
+    const raw = attrs.match(/\burl=["']([^"']+)["']/i)?.[1] || "";
+
+    if (
+      !raw ||
+      (!/^audio\//i.test(type) &&
+        !/\.(mp3|m4a|aac|ogg|flac|wav|opus)(\?|$)/i.test(raw))
+    ) {
+      continue;
+    }
+
+    try {
+      return new URL(raw, feedUrl).href;
+    } catch {
+      return raw;
+    }
+  }
+
+  for (const match of chunk.matchAll(/<link\b([^>]*)\/?>/gi)) {
+    const attrs = match[1] || "";
+    const rel = attrs.match(/\brel=["']([^"']+)["']/i)?.[1] || "";
+    const type = attrs.match(/\btype=["']([^"']+)["']/i)?.[1] || "";
+    const href = attrs.match(/\bhref=["']([^"']+)["']/i)?.[1] || "";
+
+    if (
+      !href ||
+      !/enclosure/i.test(rel) ||
+      (!/^audio\//i.test(type) &&
+        !/\.(mp3|m4a|aac|ogg|flac|wav|opus)(\?|$)/i.test(href))
+    ) {
+      continue;
+    }
+
+    try {
+      return new URL(href, feedUrl).href;
+    } catch {
+      return href;
+    }
+  }
+
+  return "";
+}
+
+/**
+ * True when an RSS/Atom entry looks like a podcast episode.
+ * @param {string} chunk
+ * @param {string} feedUrl
+ * @returns {boolean}
+ */
+export function isPodcastFeedItem(chunk, feedUrl) {
+  if (typeof chunk !== "string" || !chunk) {
+    return false;
+  }
+
+  if (audioEnclosureUrlFromFeedChunk(chunk, feedUrl)) {
+    return true;
+  }
+
+  return (
+    /<itunes:episode\b/i.test(chunk) ||
+    /<itunes:duration\b/i.test(chunk) ||
+    /<itunes:explicit\b/i.test(chunk) ||
+    /<itunes:episodeType\b/i.test(chunk)
+  );
+}
+
+/**
+ * Readable title for an RSS/Atom entry; empty/self-closing titles fall back to
+ * summary/description then URL slug (PaperMod microblog notes).
+ * @param {string} chunk
+ * @param {string} absoluteUrl
+ * @param {string} [summaryText]
+ * @returns {string}
+ */
+export function rssOrAtomEntryTitle(chunk, absoluteUrl, summaryText = "") {
+  const paired = chunk.match(/<title(?:\s[^>]*)?>([\s\S]*?)<\/title>/i);
+  const raw = paired
+    ? paired[1].replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
+    : "";
+  const fromTitle = capRemoteString(
+    normalizeExtractedText(decodeHtmlEntities(raw)),
+    MAX_TITLE_CHARS,
+  );
+
+  if (fromTitle) {
+    return fromTitle;
+  }
+
+  const fromSummary = capRemoteString(
+    String(summaryText || "").trim(),
+    MAX_TITLE_CHARS,
+  );
+
+  if (fromSummary) {
+    return fromSummary;
+  }
+
+  const encoded =
+    chunk.match(
+      /<content:encoded\b[^>]*>([\s\S]*?)<\/content:encoded>/i,
+    )?.[1] ||
+    chunk.match(/<content\b[^>]*>([\s\S]*?)<\/content>/i)?.[1] ||
+    "";
+  const fromBody = capRemoteString(plainTextSummary(encoded), MAX_TITLE_CHARS);
+
+  if (fromBody) {
+    return fromBody;
+  }
+
+  return slugifyTopic(absoluteUrl) || "Untitled";
+}
+
+/**
  * Parses RSS/Atom entry blocks into normalized content drafts.
  * @param {string} xml
  * @param {{ feedUrl: string, feedKind: 'rss'|'atom', siteOrigin: string, observedAt: string }} meta
@@ -523,13 +676,6 @@ export function contentItemsFromRssOrAtom(xml, meta) {
 
   for (const block of xml.matchAll(blockPattern)) {
     const chunk = block[0];
-    const title = capRemoteString(
-      (chunk.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] || "").replace(
-        /<!\[CDATA\[([\s\S]*?)\]\]>/g,
-        "$1",
-      ),
-      MAX_TITLE_CHARS,
-    );
     let link = "";
 
     if (isAtom) {
@@ -629,14 +775,36 @@ export function contentItemsFromRssOrAtom(xml, meta) {
       }
     }
 
+    const title = rssOrAtomEntryTitle(chunk, absoluteUrl, summary);
+    const audioUrl = audioEnclosureUrlFromFeedChunk(chunk, meta.feedUrl);
+    let contentType = isPodcastFeedItem(chunk, meta.feedUrl)
+      ? "podcast_episode"
+      : "article";
+    contentType = firstPartyContentTypeFromTitle(title, contentType);
+
+    if (isListeningCurationTitle(title) && contentType !== "photograph") {
+      contentType = "article";
+    }
+
+    /** @type {Array<{ label: string, url: string, type: string }>} */
+    const actions = [];
+
+    if (audioUrl) {
+      actions.push({
+        label: "Listen",
+        url: audioUrl,
+        type: "listen",
+      });
+    }
+
     items.push({
       identity: key,
       url: absoluteUrl || null,
       site_origin: meta.siteOrigin,
-      title: title || slugifyTopic(absoluteUrl) || "Untitled",
+      title,
       published_at: isoDateString(published) || null,
       updated_at: null,
-      content_type: "article",
+      content_type: contentType,
       language: languageFromRssOrAtom(xml, chunk, isAtom) || null,
       summary,
       declared_topics,
@@ -644,6 +812,7 @@ export function contentItemsFromRssOrAtom(xml, meta) {
       source_feeds: [{ type: isAtom ? "atom" : "rss", url: meta.feedUrl }],
       observed_at: meta.observedAt,
       image: feedImageFromXml(chunk, meta.feedUrl) || undefined,
+      ...(actions.length ? { actions } : {}),
     });
   }
 
@@ -757,6 +926,275 @@ export function contentItemsFromJsonFeed(jsonText, meta) {
   }
 
   return out;
+}
+
+/**
+ * Parses Hugo PaperMod-style /index.json arrays:
+ * `[{permalink,title,summary,content}, …]` (not JSON Feed).
+ * @param {string} jsonText
+ * @param {{ feedUrl: string, siteOrigin: string, observedAt: string }} meta
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function contentItemsFromHugoIndexJson(jsonText, meta) {
+  let data;
+
+  try {
+    data = JSON.parse(jsonText);
+  } catch {
+    return [];
+  }
+
+  if (!Array.isArray(data)) {
+    return [];
+  }
+
+  const out = [];
+
+  for (const item of data) {
+    if (!item || typeof item !== "object") {
+      continue;
+    }
+
+    const permalink =
+      typeof item.permalink === "string"
+        ? item.permalink
+        : typeof item.url === "string"
+          ? item.url
+          : "";
+    let absoluteUrl = "";
+
+    try {
+      absoluteUrl = permalink ? new URL(permalink, meta.feedUrl).href : "";
+    } catch {
+      absoluteUrl = "";
+    }
+
+    const key = contentIdentityKey({
+      url: absoluteUrl,
+      id: typeof item.id === "string" ? item.id : "",
+      feed: meta.feedUrl,
+      siteOrigin: meta.siteOrigin,
+    });
+
+    if (!key) {
+      continue;
+    }
+
+    const summary = plainTextSummary(
+      String(item.summary || item.content || ""),
+    );
+    const title = rssOrAtomEntryTitle(
+      `<title>${String(item.title || "")}</title>`,
+      absoluteUrl,
+      summary,
+    );
+    let contentType = firstPartyContentTypeFromTitle(title, "article");
+
+    if (isListeningCurationTitle(title) && contentType !== "photograph") {
+      contentType = "article";
+    }
+
+    out.push({
+      identity: key,
+      url: absoluteUrl || null,
+      site_origin: meta.siteOrigin,
+      title,
+      published_at:
+        isoDateString(
+          typeof item.date === "string"
+            ? item.date
+            : typeof item.date_published === "string"
+              ? item.date_published
+              : "",
+        ) || null,
+      updated_at: null,
+      content_type: contentType,
+      language: null,
+      summary,
+      declared_topics: [],
+      source: { kind: "hugo-index-json", feed: meta.feedUrl },
+      source_feeds: [{ type: "hugo-index-json", url: meta.feedUrl }],
+      observed_at: meta.observedAt,
+    });
+  }
+
+  return out;
+}
+
+/**
+ * PaperMod /blog/ archive list: `a.archive-entry-title` + `time.dt-published`.
+ * @param {string} html
+ * @param {{ pageUrl: string, siteOrigin: string, observedAt: string }} meta
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function contentItemsFromArchiveEntryList(html, meta) {
+  if (typeof html !== "string" || !html) {
+    return [];
+  }
+
+  const items = [];
+  const seen = new Set();
+  const entryPattern =
+    /<[^>]*class=["'][^"']*archive-entry[^"']*["'][^>]*>[\s\S]*?(?=<[^>]*class=["'][^"']*archive-entry[^"']*["']|$)/gi;
+  const blocks = html.match(entryPattern) || [];
+  const sources =
+    blocks.length > 0
+      ? blocks
+      : html.includes("archive-entry-title")
+        ? [html]
+        : [];
+
+  for (const block of sources) {
+    const hrefMatch =
+      block.match(
+        /<(?:h[1-6]|div|span)\b[^>]*class=["'][^"']*archive-entry-title[^"']*["'][^>]*>\s*<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/i,
+      ) ||
+      block.match(
+        /<a\b[^>]*class=["'][^"']*archive-entry-title[^"']*["'][^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/i,
+      ) ||
+      block.match(
+        /<a\b[^>]*href=["']([^"']+)["'][^>]*class=["'][^"']*archive-entry-title[^"']*["'][^>]*>([\s\S]*?)<\/a>/i,
+      );
+
+    if (!hrefMatch) {
+      continue;
+    }
+
+    let absoluteUrl = "";
+
+    try {
+      absoluteUrl = new URL(decodeHrefForParse(hrefMatch[1]), meta.pageUrl)
+        .href;
+    } catch {
+      continue;
+    }
+
+    if (!absoluteUrl.startsWith(meta.siteOrigin) || seen.has(absoluteUrl)) {
+      continue;
+    }
+
+    const title = capRemoteString(
+      normalizeExtractedText(hrefMatch[2].replace(/<[^>]+>/g, " ")),
+      MAX_TITLE_CHARS,
+    );
+    const published =
+      block.match(
+        /<time\b[^>]*class=["'][^"']*dt-published[^"']*["'][^>]*datetime=["']([^"']+)["']/i,
+      )?.[1] ||
+      block.match(/<time\b[^>]*datetime=["']([^"']+)["']/i)?.[1] ||
+      null;
+
+    if (!title) {
+      continue;
+    }
+
+    seen.add(absoluteUrl);
+    items.push({
+      identity: `url:${absoluteUrl}`,
+      url: absoluteUrl,
+      site_origin: meta.siteOrigin,
+      title,
+      published_at: isoDateString(published) || null,
+      updated_at: null,
+      content_type: firstPartyContentTypeFromTitle(title, "article"),
+      language: null,
+      summary: "",
+      declared_topics: [],
+      source: { kind: "archive-entry", page: meta.pageUrl },
+      source_feeds: [{ type: "archive-entry", url: meta.pageUrl }],
+      observed_at: meta.observedAt,
+    });
+  }
+
+  return items;
+}
+
+/**
+ * Microblog / notes h-entry lists (PaperMod homepage + /notes/).
+ * @param {string} html
+ * @param {{ pageUrl: string, siteOrigin: string, observedAt: string }} meta
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function contentItemsFromHEntryList(html, meta) {
+  if (typeof html !== "string" || !html) {
+    return [];
+  }
+
+  const items = [];
+  const seen = new Set();
+  const entryPattern =
+    /<(?:article|div|li)\b[^>]*class=["'][^"']*\bh-entry\b[^"']*["'][^>]*>[\s\S]*?<\/(?:article|div|li)>/gi;
+
+  for (const match of html.matchAll(entryPattern)) {
+    const block = match[0];
+    const urlMatch =
+      block.match(
+        /<a\b[^>]*class(?:=["'][^"']*\bu-url\b[^"']*["']|=u-url\b)[^>]*href\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i,
+      ) ||
+      block.match(
+        /<a\b[^>]*href\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))[^>]*class(?:=["'][^"']*\bu-url\b[^"']*["']|=u-url\b)/i,
+      );
+    const href = urlMatch?.[1] ?? urlMatch?.[2] ?? urlMatch?.[3] ?? "";
+    let absoluteUrl = "";
+
+    try {
+      absoluteUrl = href
+        ? new URL(decodeHrefForParse(href), meta.pageUrl).href
+        : "";
+    } catch {
+      continue;
+    }
+
+    if (!absoluteUrl.startsWith(meta.siteOrigin) || seen.has(absoluteUrl)) {
+      continue;
+    }
+
+    const name = normalizeExtractedText(
+      (
+        block.match(
+          /<(?:h[1-6]|data|span|p)\b[^>]*class=["'][^"']*\bp-name\b[^"']*["'][^>]*>([\s\S]*?)<\/(?:h[1-6]|data|span|p)>/i,
+        )?.[1] ||
+        block.match(
+          /<data\b[^>]*class=["'][^"']*\bp-name\b[^"']*["'][^>]*value=["']([^"']+)["']/i,
+        )?.[1] ||
+        ""
+      ).replace(/<[^>]+>/g, " "),
+    );
+    const contentHtml =
+      block.match(
+        /<(?:div|p)\b[^>]*class=["'][^"']*\be-content\b[^"']*["'][^>]*>([\s\S]*?)<\/(?:div|p)>/i,
+      )?.[1] || "";
+    const summary = plainTextSummary(contentHtml);
+    const title = capRemoteString(name || summary, MAX_TITLE_CHARS);
+    const publishedMatch = block.match(
+      /<time\b[^>]*datetime\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i,
+    );
+    const published =
+      publishedMatch?.[1] ?? publishedMatch?.[2] ?? publishedMatch?.[3] ?? null;
+
+    if (!title) {
+      continue;
+    }
+
+    seen.add(absoluteUrl);
+    items.push({
+      identity: `url:${absoluteUrl}`,
+      url: absoluteUrl,
+      site_origin: meta.siteOrigin,
+      title,
+      published_at: isoDateString(published) || null,
+      updated_at: null,
+      content_type: "article",
+      language: null,
+      summary: summary && summary !== title ? summary : "",
+      declared_topics: [],
+      source: { kind: "h-entry", page: meta.pageUrl },
+      source_feeds: [{ type: "h-entry", url: meta.pageUrl }],
+      observed_at: meta.observedAt,
+    });
+  }
+
+  return items;
 }
 
 /**
@@ -998,9 +1436,10 @@ export function joinContentWithPageSignals(items, originSignals) {
 /**
  * True when a content item should try the publisher page for a missing poster.
  * Items that already have a non-empty https image (e.g. games index extract)
- * are skipped so enrich never overwrites a good index poster.
- * Creative paths under /games/… and /experiments/… are included via the
- * creative-work path matcher.
+ * are skipped so enrich never overwrites a good index poster. Creative paths,
+ * Projects-shelf drafts, named-root products, Showcase types, and
+ * articles/notes (blank type → article) are enrichable so OG runs before
+ * Playwright screenshot fallback.
  * @param {Record<string, unknown>} item
  * @returns {boolean}
  */
@@ -1026,7 +1465,37 @@ export function contentItemNeedsPosterEnrichment(item) {
 
     // Creative-path works (/games/…, /experiments/…, …) are enrichable whether
     // the feed typed them as game/project/article or left content_type thin.
-    return CREATIVE_WORK_PATH.test(parsed.pathname);
+    if (CREATIVE_WORK_PATH.test(parsed.pathname)) {
+      return true;
+    }
+
+    const source =
+      item.source && typeof item.source === "object"
+        ? /** @type {{ kind?: unknown }} */ (item.source).kind
+        : undefined;
+    const sourceKind =
+      typeof item.source_kind === "string"
+        ? item.source_kind
+        : typeof source === "string"
+          ? source
+          : "";
+
+    // Homepage / Projects-shelf products (Wizardly Words, Morning App, …).
+    if (
+      sourceKind === "creative-homepage" ||
+      sourceKind === "creative-homepage-shelf" ||
+      sourceKind === "creative-projects-shelf"
+    ) {
+      return true;
+    }
+
+    const type = String(item.content_type || "").trim() || "article";
+
+    return (
+      SHOWCASE_CONTENT_TYPES.includes(type) ||
+      type === "article" ||
+      type === "note"
+    );
   } catch {
     return false;
   }

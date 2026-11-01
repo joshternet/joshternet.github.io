@@ -2065,9 +2065,83 @@ test("contentItemNeedsPosterEnrichment targets creative paths without images", (
       url: "https://joshuamorris.info/notes/hello/",
       content_type: "article",
     }),
-    false,
+    true,
+  );
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://joshuamorris.info/notes/hello/",
+      content_type: "note",
+    }),
+    true,
   );
   assert.equal(contentItemNeedsPosterEnrichment(null), false);
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://joshgr.com/wizardly-words/",
+      content_type: "project",
+      source: { kind: "creative-homepage" },
+    }),
+    true,
+  );
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://themorning.app/",
+      content_type: "project",
+      source_kind: "creative-homepage-shelf",
+    }),
+    true,
+  );
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://joshgr.com/wizardly-words/",
+      content_type: "project",
+    }),
+    true,
+  );
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://github.com/joshgrant/MusicX",
+      content_type: "project",
+      source: { kind: "creative-projects-shelf" },
+    }),
+    true,
+  );
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://joshgr.com/wizardly-words/",
+      content_type: "article",
+    }),
+    true,
+  );
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://joshgr.com/wizardly-words/",
+    }),
+    true,
+  );
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://joshgr.com/nested/path/",
+      content_type: "project",
+    }),
+    true,
+  );
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://joshgr.com/wizardly-words/",
+      content_type: "project",
+      source_kind: "",
+      source: { kind: 12 },
+    }),
+    true,
+  );
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://a.example/blog/hello/",
+      content_type: "oddity",
+    }),
+    false,
+  );
 });
 
 test("enrichContentItemPosters fills publisher og:image for experiments", async () => {
@@ -2351,14 +2425,22 @@ test("contentItemNeedsPosterEnrichment rejects username-only and password-only u
   );
 });
 
-test("contentItemNeedsPosterEnrichment rejects enrich types on non-creative paths", () => {
+test("contentItemNeedsPosterEnrichment rejects unknown types on non-creative paths", () => {
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://a.example/blog/hello-world/",
+      content_type: "oddity",
+      image: "",
+    }),
+    false,
+  );
   assert.equal(
     contentItemNeedsPosterEnrichment({
       url: "https://a.example/blog/hello-world/",
       content_type: "project",
       image: "",
     }),
-    false,
+    true,
   );
 });
 

@@ -1,11 +1,13 @@
 /**
  * Goal: Write assets/css/elsewhere-glyphs.css from elsewhere-sprite-order.json.
+ * Formats with Prettier before finish so format:check stays green.
  */
 import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
 
+import { formatTextForPath } from "../format-written.mjs";
 import { buildElsewhereGlyphCss } from "./elsewhere-glyph-css.mjs";
 
 const root = path.resolve(
@@ -20,11 +22,12 @@ const outputPath = path.join(root, "assets/css/elsewhere-glyphs.css");
 
 const order = JSON.parse(await fs.readFile(orderPath, "utf8"));
 const css = buildElsewhereGlyphCss(order);
+const formatted = await formatTextForPath(outputPath, css, { root });
 
 await fs.mkdir(path.dirname(outputPath), {
   recursive: true,
 });
-await fs.writeFile(outputPath, css, "utf8");
+await fs.writeFile(outputPath, formatted, "utf8");
 
 process.stdout.write(
   `Wrote ${path.relative(root, outputPath)} (${order.networks.length} glyphs)\n`,

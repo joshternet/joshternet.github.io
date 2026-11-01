@@ -122,6 +122,9 @@ test("derived slash-pages lists stay aligned with catalog helpers", () => {
   assert.deepEqual(CREATIVE_INDEX_PATHS, creativeIndexSlashPaths());
   assert.ok(contentIndexPaths().includes("/gallery/"));
   assert.ok(contentIndexPaths().includes("/blog/"));
+  assert.ok(contentIndexPaths().includes("/comics/"));
+  assert.ok(contentIndexPaths().includes("/toys/"));
+  assert.ok(contentIndexPaths().includes("/reels/"));
 });
 
 test("creative and writing helpers skip unrelated categories", () => {

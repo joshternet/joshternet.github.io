@@ -60,7 +60,7 @@ No accounts. No signup form. Your website stays yours. This page guides the exis
         >
           Copy declaration
         </button>
-        <p class="join-declarations__note"><code>josh: false</code>—still a full participant.</p>
+        <p class="join-declarations__note"><code>josh: false</code>—still a full participant, joshing the Joshes from the day you join.</p>
       </div>
       <div class="join-declarations__option">
         <h3 class="join-declarations__label">Undeclared Josh Identity</h3>

@@ -261,13 +261,16 @@
           block: "center",
         });
 
-        const link = targetedCard.querySelector(".network-card__link");
-
-        if (link) {
-          link.focus({
-            preventScroll: true,
-          });
+        // Focus the whole card—not `.network-card__link`. That link only wraps
+        // preview+body; focusing it draws a gold mid-card outline above the
+        // footer actions (elsewhere/feed).
+        if (!targetedCard.hasAttribute("tabindex")) {
+          targetedCard.setAttribute("tabindex", "-1");
         }
+
+        targetedCard.focus({
+          preventScroll: true,
+        });
 
         window.setTimeout(() => {
           targetedCard.classList.remove("is-targeted");

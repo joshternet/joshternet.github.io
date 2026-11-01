@@ -52,7 +52,8 @@
             </div>
 
             <div class="network-card__body">
-              <span class="visually-hidden"> {{ identity_label }} Joshternet participant. </span>
+              {% include network-card-a11y.html %}
+              <span class="visually-hidden">{{ identity_a11y }}</span>
 
               <h3 class="network-card__title p-name">
                 {{ network_site.title | default: network_site.domain | escape }}
@@ -70,12 +71,7 @@
             <p class="network-card__domain p-org">
               {{ network_site.domain | escape }}
             </p>
-            <p class="home-new-arrivals__since">
-              First participated
-              <time datetime="{{ network_site.first_participated_at | escape }}">
-                {{ network_site.first_participated_at | date: '%B %-d, %Y' }}
-              </time>
-            </p>
+            {% include network-card-joined.html %}
             <p class="home-new-arrivals__network-link">
               <a href="{{ '/network/' | relative_url }}?site={{ network_site.domain | downcase | url_encode }}">
                 Find in the Network

@@ -137,8 +137,10 @@ test("What's New keeps one latest item per origin inside seven days", () => {
     now,
   });
 
-  assert.equal(views.activity.primary.length, 1);
+  // Fresh window item for A, plus quiet-origin backfill for B's latest article.
+  assert.equal(views.activity.primary.length, 2);
   assert.equal(views.activity.primary[0].url, "https://a.example/fresh");
+  assert.equal(views.activity.primary[1].url, "https://b.example/ancient");
   assert.equal(views.activity.window_days, 7);
 });
 
