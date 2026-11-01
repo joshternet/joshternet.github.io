@@ -11,7 +11,7 @@ import { originFromHttpUrl } from "./blogroll.mjs";
 import { decodeHtmlEntities, normalizeText } from "./lib.mjs";
 
 /**
- * @typedef {'homepage-link' | 'content-link' | 'blogroll' | 'reply-to' | 'repost-of' | 'syndication'} ConnectionRelation
+ * @typedef {'homepage-link' | 'content-link' | 'blogroll' | 'reply-to' | 'repost-of' | 'syndication' | 'credit'} ConnectionRelation
  */
 
 /**
@@ -222,6 +222,72 @@ export function explicitIndiewebRelation(rel = [], classNames = []) {
 
   if (tokens.has("u-syndication") || tokens.has("syndication")) {
     return "syndication";
+  }
+
+  if (
+    tokens.has("credit") ||
+    tokens.has("u-credit") ||
+    tokens.has("collaborator") ||
+    tokens.has("u-collaborator")
+  ) {
+    return "credit";
+  }
+
+  return null;
+}
+
+/**
+ * True when the page is a links / credits / roll directory, an event page,
+ * or a portfolio/credits page that may carry explicit creative credit language
+ * in anchor text. Connections from these pages require positive evidence
+ * (microformat rel, u-credit class, or credit keyword in anchor text);
+ * generic outbound links (CDN, stylesheets) never qualify regardless of page.
+ * @param {string} pageUrl
+ * @returns {boolean}
+ */
+export function isCreativeCreditSourcePage(pageUrl) {
+  try {
+    const path = new URL(pageUrl).pathname.replace(/\/+$/, "").toLowerCase();
+    return /\/(links|blogroll|bookmarks|postroll|podroll|elsewhere|appearances|credits|collaborators|events?|portfolio)(?:\/|$)/.test(
+      `${path}/`,
+    );
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Credit relation when the publisher marks credit/collaborator explicitly.
+ * Generic outbound CDN links never qualify.
+ * @param {{
+ *   pageUrl: string,
+ *   rel?: string[],
+ *   classNames?: string[],
+ *   text?: string,
+ * }} input
+ * @returns {'credit' | null}
+ */
+export function creativeCreditRelation(input = {}) {
+  const rel = Array.isArray(input.rel) ? input.rel : [];
+  const classNames = Array.isArray(input.classNames) ? input.classNames : [];
+  const pageUrl = typeof input.pageUrl === "string" ? input.pageUrl : "";
+  const text = typeof input.text === "string" ? input.text : "";
+  const indie = explicitIndiewebRelation(rel, classNames);
+
+  if (indie === "credit") {
+    return "credit";
+  }
+
+  if (!isCreativeCreditSourcePage(pageUrl)) {
+    return null;
+  }
+
+  if (
+    /\b(credit|credits|collaborat(?:or|ion|ed)|co-?author)\b/.test(
+      text.toLowerCase(),
+    )
+  ) {
+    return "credit";
   }
 
   return null;
@@ -515,6 +581,12 @@ export function connectionObservations({
 
     seen.add(key);
     const relation =
+      creativeCreditRelation({
+        pageUrl: observationPage,
+        rel,
+        classNames,
+        text,
+      }) ||
       explicitIndiewebRelation(rel, classNames) ||
       relationForPage(observationPage, sourceOrigin);
     observations.push({
@@ -818,7 +890,8 @@ export function carryForwardConnectionEdges(previousEdges, fromOrigin) {
       relationRaw === "blogroll" ||
       relationRaw === "reply-to" ||
       relationRaw === "repost-of" ||
-      relationRaw === "syndication"
+      relationRaw === "syndication" ||
+      relationRaw === "credit"
         ? relationRaw
         : relationRaw === "link"
           ? relationForPage(normalizedPage, edge.from)

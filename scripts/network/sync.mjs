@@ -61,6 +61,11 @@ import {
   withFeeds,
 } from "./state.mjs";
 import { IDENTITY_SLASH_PATHS } from "./slash-pages.mjs";
+import {
+  enrichmentBudgetExhausted,
+  runWithEnrichmentBudget,
+  visitIdentityPages,
+} from "./enrichment-budget.mjs";
 
 const DEFAULT_REGISTRY_URL =
   "https://raw.githubusercontent.com/joshternet/index-data/main/registry.json";
@@ -74,8 +79,8 @@ const DEFAULT_SCREENSHOT_ROOT = "assets/network/sites";
 const NAVIGATION_TIMEOUT_MS = 20_000;
 const SETTLE_TIME_MS = 1_500;
 const SITE_TIMEOUT_MS = 30_000;
-/** Cap identity slash page visits per participant during network enrichment. */
-const MAX_IDENTITY_PAGES = 8;
+/** Uncapped identity slash page visits per participant during network enrichment. */
+const MAX_IDENTITY_PAGES = Number.POSITIVE_INFINITY;
 
 const registrySource = process.env.NETWORK_REGISTRY_URL || DEFAULT_REGISTRY_URL;
 
@@ -401,6 +406,7 @@ function identityPagesToVisit(metadata, participantOrigin) {
  * @param {Record<string, unknown>} metadata
  * @param {Map<string, unknown>} dnsCache
  * @param {string} participantOrigin
+ * @param {AbortSignal | undefined} signal - Enrichment budget; stops probes when aborted.
  * @returns {Promise<{
  *   elsewhere: Array<{url: string, network: string, label: string}>,
  *   links: Array<{href: string, text: string, rel: string[], page: string}>,
@@ -411,26 +417,34 @@ async function collectElsewhereAndLinks(
   metadata,
   dnsCache,
   participantOrigin,
+  signal,
 ) {
   const raw = Array.isArray(metadata.elsewhere) ? [...metadata.elsewhere] : [];
   const homepagePageUrl = page.url();
   const links = stampLinkPages(metadata.links, homepagePageUrl);
 
-  for (const identityHref of identityPagesToVisit(
-    metadata,
-    participantOrigin,
-  )) {
-    try {
+  await visitIdentityPages(
+    identityPagesToVisit(metadata, participantOrigin),
+    async (identityHref, visitSignal) => {
+      if (enrichmentBudgetExhausted(visitSignal)) {
+        return;
+      }
+
       const identityURL = await assertPublicURL(identityHref, {
         cache: dnsCache,
       });
       const response = await page.goto(identityURL.href, {
         waitUntil: "domcontentloaded",
         timeout: NAVIGATION_TIMEOUT_MS,
+        signal: visitSignal,
       });
 
       if (!response || !response.ok()) {
-        continue;
+        return;
+      }
+
+      if (enrichmentBudgetExhausted(visitSignal)) {
+        return;
       }
 
       await assertPublicURL(page.url(), {
@@ -449,12 +463,16 @@ async function collectElsewhereAndLinks(
       if (Array.isArray(identityMetadata.links)) {
         links.push(...stampLinkPages(identityMetadata.links, page.url()));
       }
-    } catch (error) {
-      process.stderr.write(
-        `identity-page elsewhere failed ${participantOrigin} (${identityHref}): ${error.message}\n`,
-      );
-    }
-  }
+    },
+    {
+      signal,
+      onVisitError(identityHref, error) {
+        process.stderr.write(
+          `identity-page elsewhere failed ${participantOrigin} (${identityHref}): ${error.message}\n`,
+        );
+      },
+    },
+  );
 
   return {
     elsewhere: await sanitizeElsewhere(raw, {
@@ -487,6 +505,7 @@ function withEnrichment(entry, feeds, blogrollUrl, elsewhere) {
  * }} opened
  * @param {{ origin: string }} participant
  * @param {Set<string>} participantOrigins
+ * @param {AbortSignal | undefined} signal - Enrichment budget signal.
  * @returns {Promise<{
  *   feeds: Array<{url: string, type: string, title?: string}>,
  *   blogrollUrl: string,
@@ -507,7 +526,12 @@ function withEnrichment(entry, feeds, blogrollUrl, elsewhere) {
  *   metadata: Record<string, unknown>,
  * }>}
  */
-async function enrichFromOpenedPage(opened, participant, participantOrigins) {
+async function enrichFromOpenedPage(
+  opened,
+  participant,
+  participantOrigins,
+  signal,
+) {
   const { metadata, dnsCache, page } = opened;
   const feeds = await sanitizeFeeds(metadata.feeds, {
     cache: dnsCache,
@@ -522,6 +546,7 @@ async function enrichFromOpenedPage(opened, participant, participantOrigins) {
     metadata,
     dnsCache,
     participant.origin,
+    signal,
   );
   const edges = await edgesFromBlogrollAds(
     participant.origin,
@@ -550,7 +575,18 @@ async function enrichFromOpenedPage(opened, participant, participantOrigins) {
   };
 }
 
-async function captureParticipant(browser, participant, participantOrigins) {
+/**
+ * @param {import("playwright").Browser} browser
+ * @param {{ origin: string, domain: string }} participant
+ * @param {Set<string>} participantOrigins
+ * @param {AbortSignal | undefined} signal
+ */
+async function captureParticipant(
+  browser,
+  participant,
+  participantOrigins,
+  signal,
+) {
   const opened = await openParticipantHomepage(browser, participant, {
     settle: true,
   });
@@ -591,6 +627,7 @@ async function captureParticipant(browser, participant, participantOrigins) {
       opened,
       participant,
       participantOrigins,
+      signal,
     );
     const title = await resolveParticipantTitle(
       enrichment.metadata,
@@ -628,6 +665,7 @@ async function captureParticipant(browser, participant, participantOrigins) {
  * @param {import("playwright").Browser} browser
  * @param {{ origin: string }} participant
  * @param {Set<string>} participantOrigins
+ * @param {AbortSignal | undefined} signal
  * @returns {Promise<{
  *   feeds: Array<{url: string, type: string, title?: string}>,
  *   blogrollUrl: string,
@@ -642,30 +680,19 @@ async function discoverHomepageEnrichment(
   browser,
   participant,
   participantOrigins,
+  signal,
 ) {
   const opened = await openParticipantHomepage(browser, participant);
 
   try {
-    return await enrichFromOpenedPage(opened, participant, participantOrigins);
+    return await enrichFromOpenedPage(
+      opened,
+      participant,
+      participantOrigins,
+      signal,
+    );
   } finally {
     await opened.context.close();
-  }
-}
-
-async function withTimeout(promise, timeoutMS, label) {
-  let timer;
-
-  try {
-    return await Promise.race([
-      promise,
-      new Promise((_, reject) => {
-        timer = setTimeout(() => {
-          reject(new Error(`${label} exceeded ${timeoutMS}ms`));
-        }, timeoutMS);
-      }),
-    ]);
-  } finally {
-    clearTimeout(timer);
   }
 }
 
@@ -775,8 +802,14 @@ try {
       };
 
       try {
-        const enrichment = await withTimeout(
-          discoverHomepageEnrichment(browser, participant, participantOrigins),
+        const enrichment = await runWithEnrichmentBudget(
+          (signal) =>
+            discoverHomepageEnrichment(
+              browser,
+              participant,
+              participantOrigins,
+              signal,
+            ),
           SITE_TIMEOUT_MS,
           `${participant.origin} enrichment`,
         );
@@ -842,8 +875,9 @@ try {
     process.stdout.write(`capture ${participant.origin}\n`);
 
     try {
-      const captured = await withTimeout(
-        captureParticipant(browser, participant, participantOrigins),
+      const captured = await runWithEnrichmentBudget(
+        (signal) =>
+          captureParticipant(browser, participant, participantOrigins, signal),
         SITE_TIMEOUT_MS,
         participant.origin,
       );

@@ -1,0 +1,83 @@
+{% comment %}
+  Goal: Whole-card Showcase tile. One covering hit <a> opens the showcased work
+  URL (not the site homepage). Maker name is attribution text only so it does
+  not divert the click (domain is omitted). Work link uses outbound-href for
+  UTMs; Umami delegated outbound-link-click applies.
+{% endcomment %}
+{% assign card_title = include.item.title | default: '' | strip %}
+{% assign card_summary = include.item.summary | default: '' | strip %}
+{% assign card_summary_norm = card_summary | downcase %}
+{% assign card_title_norm = card_title | downcase %}
+{% if card_summary_norm == card_title_norm %}
+  {% assign card_summary = '' %}
+{% endif %}
+{% include outbound-href.html url=include.item.url %}
+<article class="showcase-card h-entry">
+  <a
+    class="showcase-card__hit u-url"
+    href="{{ outbound_href | escape }}"
+    target="_blank"
+    rel="noopener"
+    {% if include.item.language and include.item.language != '' %}
+      lang="{{ include.item.language | escape }}"
+    {% endif %}
+  >
+    <span class="visually-hidden">{{- card_title | escape }} (opens on the publisher’s site) </span>
+  </a>
+  {% if include.item.image and include.item.image != '' %}
+    <div class="showcase-card__media">
+      <img
+        class="u-photo"
+        src="{{ include.item.image | escape }}"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        referrerpolicy="no-referrer"
+      >
+    </div>
+  {% endif %}
+  <div class="showcase-card__body">
+    {% if include.heading_tag == 'h3' %}
+      <h3
+        class="showcase-card__title p-name"
+        aria-hidden="true"
+        {% if include.item.language and include.item.language != '' %}
+          lang="{{ include.item.language | escape }}"
+        {% endif %}
+        dir="auto"
+      >
+    {% else %}
+      <h2
+        class="showcase-card__title p-name"
+        aria-hidden="true"
+        {% if include.item.language and include.item.language != '' %}
+          lang="{{ include.item.language | escape }}"
+        {% endif %}
+        dir="auto"
+      >
+    {% endif %}
+    {{ card_title | escape }}
+    <span aria-hidden="true">↗</span>
+    {% if include.heading_tag == 'h3' %}
+      </h3>
+    {% else %}
+      </h2>
+    {% endif %}
+    {% if include.item.site_title and include.item.site_title != '' %}
+      <p class="showcase-card__maker p-author h-card">
+        <span class="p-name">{{ include.item.site_title | escape }}</span>
+      </p>
+    {% endif %}
+    {% if card_summary != '' %}
+      <p
+        class="showcase-card__summary p-summary"
+        {% if include.item.language and include.item.language != '' %}
+          lang="{{ include.item.language | escape }}"
+        {% endif %}
+        dir="auto"
+      >
+        {{ card_summary | escape }}
+      </p>
+    {% endif %}
+  </div>
+</article>

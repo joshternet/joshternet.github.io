@@ -463,8 +463,7 @@ test("subjectsFromFeeds: only first 3 feeds are processed", async () => {
   }
 });
 
-test("subjectsFromFeeds: entryUrls are capped at 80", async () => {
-  // Build a feed with 100 items
+test("subjectsFromFeeds: entryUrls are uncapped beyond the old 80 quota", async () => {
   const items = Array.from(
     { length: 100 },
     (_, i) =>
@@ -482,7 +481,7 @@ test("subjectsFromFeeds: entryUrls are capped at 80", async () => {
       arrayBuffer: async () => Buffer.from(body),
     });
     const result = await subjectsFromFeeds([{ url: feedUrl }], cache);
-    assert.ok(result.entryUrls.length <= 80);
+    assert.equal(result.entryUrls.length, 100);
   } finally {
     restore();
   }

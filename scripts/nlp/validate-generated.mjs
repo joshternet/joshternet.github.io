@@ -12,6 +12,11 @@ import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 
 import { itemsFromCollection } from "../network/collections.mjs";
+import {
+  isBareCreativeIndexUrl,
+  isPortfolioIndexedProjectTitle,
+  isSiteHomeUrl,
+} from "../views/lib.mjs";
 import { loadAliasMap, resolveAlias } from "./communities.mjs";
 import { evidenceIdentityKey } from "./evidence.mjs";
 import { foldPluralSlug } from "./normalize.mjs";
@@ -389,6 +394,50 @@ if (
 
 if (fs.existsSync(path.join(ROOT, "_data/topic_candidates.json"))) {
   fail("topic_candidates.json must not be committed under _data/");
+}
+
+const showcasePath = path.join(ROOT, "_data/showcase.json");
+
+if (fs.existsSync(showcasePath)) {
+  const showcase = JSON.parse(fs.readFileSync(showcasePath, "utf8"));
+  const showcaseItems = Array.isArray(showcase?.items) ? showcase.items : [];
+
+  for (const item of showcaseItems) {
+    const url = typeof item?.url === "string" ? item.url : "";
+    const title = typeof item?.title === "string" ? item.title : "";
+
+    // views:build (nlp:sync in GitHub Actions) must drop bare /work indexes and
+    // recover Kim-style portfolio card titles to the product name only.
+    if (url && (isBareCreativeIndexUrl(url) || isSiteHomeUrl(url))) {
+      fail(
+        `showcase must not include site homepages or bare creative indexes: ${url}`,
+      );
+    }
+
+    if (title && isPortfolioIndexedProjectTitle(title)) {
+      fail(
+        `showcase title still has portfolio index chrome (expected product name only): ${url}`,
+      );
+    }
+
+    const image = typeof item?.image === "string" ? item.image : "";
+
+    if (!image) {
+      continue;
+    }
+
+    if (image.startsWith("/assets/activity/posters/")) {
+      continue;
+    }
+
+    if (image.startsWith("https://") || image.startsWith("http://")) {
+      fail(
+        `showcase item image must be localized under /assets/activity/posters/: ${item.url}`,
+      );
+    }
+
+    fail(`showcase item image must be a local poster path: ${item.url}`);
+  }
 }
 
 process.stdout.write("Generated data schemas + invariants OK.\n");

@@ -8,6 +8,7 @@
  */
 
 import { itemsFromCollection } from "../network/collections.mjs";
+import { isShowcaseChromePath } from "../network/slash-pages.mjs";
 import { isNonSubjectSlug } from "../nlp/evidence.mjs";
 import { itemMentionsTopic, textMentionsSlug } from "../nlp/match.mjs";
 import { normalizeLanguageTag } from "../nlp/text.mjs";
@@ -25,33 +26,78 @@ export const RELATION_LABELS = {
   "reply-to": "replied to",
   "repost-of": "reposted",
   syndication: "syndicated to",
+  credit: "credits",
 };
 
-/** Pair overlays on /connections/; evidence stays in connections.json. */
-export const MAX_CONNECTION_TOPIC_PAIRS = 400;
-
-/** Topic co-occurrence chips on topic views. */
-export const MAX_COOCCURRENCE_PAIRS = 200;
-
-/** Search documents (sites + topics + content). */
-export const MAX_SEARCH_INDEX_DOCUMENTS = 2500;
+/** Creative work content_type values eligible for /showcase/. */
+export const SHOWCASE_CONTENT_TYPES = [
+  "photograph",
+  "visual_artwork",
+  "music_recording",
+  "music_album",
+  "sheet_music",
+  "video",
+  "game",
+  "collection",
+  "project",
+];
 
 /**
- * Truncates a presentation list. Does not drop canonical graph evidence.
- * @template T
- * @param {T[]} list
- * @param {number} max
- * @returns {T[]}
+ * Stable Showcase section order (projects → games → photos → music, then the
+ * rest). Only kinds with items are emitted; later these become /showcase/
+ * subpages.
+ * @type {readonly string[]}
  */
-export function capPresentationList(list, max) {
-  const rows = Array.isArray(list) ? list : [];
-  const limit = Number(max);
+export const SHOWCASE_KIND_ORDER = Object.freeze([
+  "project",
+  "games",
+  "photography",
+  "music",
+  "art",
+  "sheet music",
+  "video",
+  "apps",
+  "software",
+  "design",
+  "books",
+  "guides",
+  "other",
+]);
 
-  if (!Number.isFinite(limit) || limit < 0 || rows.length <= limit) {
-    return rows;
-  }
+/**
+ * Singular / plural display labels for Showcase section and filter titles.
+ * Mass nouns keep one form. Count === 1 uses singular; otherwise plural.
+ * @type {Readonly<Record<string, readonly [string, string]>>}
+ */
+export const SHOWCASE_KIND_LABELS = Object.freeze({
+  project: Object.freeze(["Project", "Projects"]),
+  games: Object.freeze(["Game", "Games"]),
+  photography: Object.freeze(["Photography", "Photography"]),
+  music: Object.freeze(["Music", "Music"]),
+  art: Object.freeze(["Art", "Art"]),
+  "sheet music": Object.freeze(["Sheet music", "Sheet music"]),
+  video: Object.freeze(["Video", "Videos"]),
+  apps: Object.freeze(["App", "Apps"]),
+  software: Object.freeze(["Software", "Software"]),
+  design: Object.freeze(["Design", "Design"]),
+  books: Object.freeze(["Book", "Books"]),
+  guides: Object.freeze(["Guide", "Guides"]),
+  other: Object.freeze(["Other", "Other"]),
+});
 
-  return rows.slice(0, limit);
+/**
+ * Human Showcase kind title. Plural when {@link count} is not exactly 1.
+ * @param {unknown} kind
+ * @param {number} count
+ * @returns {string}
+ */
+export function showcaseKindLabel(kind, count) {
+  const key = String(kind || "other");
+  const forms = SHOWCASE_KIND_LABELS[key];
+  const singular = forms?.[0] || key.charAt(0).toUpperCase() + key.slice(1);
+  const plural = forms?.[1] || singular;
+
+  return Number(count) === 1 ? singular : plural;
 }
 
 export const SOURCE_LABELS = {
@@ -192,7 +238,47 @@ export function contentTopicLabels(item, publicSlugs) {
 }
 
 /**
+ * BCP 47 language subtags that use a right-to-left script by default.
+ * Only the primary language subtag is checked (e.g. "ar" from "ar-SA").
+ * @type {ReadonlySet<string>}
+ */
+const RTL_PRIMARY_SUBTAGS = new Set([
+  "ar",
+  "arc",
+  "dv",
+  "fa",
+  "ha",
+  "he",
+  "khw",
+  "ks",
+  "ku",
+  "ps",
+  "sd",
+  "ur",
+  "uz",
+  "yi",
+]);
+
+/**
+ * Returns "rtl" for right-to-left language tags, otherwise empty string.
+ * Used to set an explicit `dir` attribute when auto-detection is unreliable.
+ * @param {string} language - BCP 47 language tag (may be empty).
+ * @returns {"rtl" | ""}
+ */
+export function dirForLanguage(language) {
+  if (!language) {
+    return "";
+  }
+
+  const primary = language.split("-")[0].toLowerCase();
+  return RTL_PRIMARY_SUBTAGS.has(primary) ? "rtl" : "";
+}
+
+/**
  * Compact content card for lists.
+ * Passes through creative-specific fields (`categories`, `availability`,
+ * `action_label`, `action_url`) and event fields (`start`, `end`, `venue`,
+ * `location`, `status`, `attribution_role`) when present on the source item.
  * @param {Record<string, unknown>} item
  * @param {Map<string, Record<string, unknown>>} sites
  * @param {Set<string>} publicSlugs
@@ -220,15 +306,27 @@ export function compactContentItem(item, sites, publicSlugs) {
     }
   }
 
-  return {
+  const language = normalizeLanguageTag(item.language);
+  const title =
+    typeof item.title === "string" && item.title ? item.title : item.url;
+  const rawSummary = typeof item.summary === "string" ? item.summary : "";
+  // Title-echo summaries (common on year albums) add noise on Showcase cards.
+  const summaryEqualsTitle =
+    rawSummary.trim().toLowerCase() === String(title).trim().toLowerCase();
+  const summary = summaryEqualsTitle ? "" : rawSummary;
+
+  /** @type {Record<string, unknown>} */
+  const compact = {
     url: item.url,
-    title: typeof item.title === "string" && item.title ? item.title : item.url,
-    summary: typeof item.summary === "string" ? item.summary : "",
+    title,
+    summary,
     published_at:
       typeof item.published_at === "string" ? item.published_at : "",
+    observed_at: typeof item.observed_at === "string" ? item.observed_at : "",
     content_type:
       typeof item.content_type === "string" ? item.content_type : "",
-    language: normalizeLanguageTag(item.language),
+    language,
+    dir: dirForLanguage(language),
     site_origin: origin,
     site_title:
       (typeof site?.title === "string" && site.title) ||
@@ -240,6 +338,96 @@ export function compactContentItem(item, sites, publicSlugs) {
     image,
     image_origin: imageOrigin,
   };
+
+  // Creative-specific optional fields.
+  if (Array.isArray(item.categories) && item.categories.length > 0) {
+    compact.categories = item.categories;
+  }
+
+  if (typeof item.availability === "string" && item.availability) {
+    compact.availability = item.availability;
+  }
+
+  if (typeof item.action_label === "string" && item.action_label) {
+    compact.action_label = item.action_label;
+  }
+
+  if (typeof item.action_url === "string" && item.action_url) {
+    compact.action_url = item.action_url;
+  }
+
+  // Event-specific optional fields.
+  if (typeof item.start === "string" && item.start) {
+    compact.start = item.start;
+  }
+
+  if (typeof item.end === "string" && item.end) {
+    compact.end = item.end;
+  }
+
+  if (typeof item.venue === "string" && item.venue) {
+    compact.venue = item.venue;
+  }
+
+  if (typeof item.location === "string" && item.location) {
+    compact.location = item.location;
+  }
+
+  if (typeof item.status === "string" && item.status) {
+    compact.status = item.status;
+  }
+
+  if (typeof item.attribution_role === "string" && item.attribution_role) {
+    compact.attribution_role = item.attribution_role;
+  }
+
+  // Preserve crawl source so Showcase can exclude client portfolio tables.
+  const sourceKind =
+    item.source && typeof item.source === "object"
+      ? /** @type {{ kind?: unknown }} */ (item.source).kind
+      : "";
+  const feedIsPortfolio =
+    Array.isArray(item.source_feeds) &&
+    item.source_feeds.some(
+      (feed) =>
+        feed &&
+        typeof feed === "object" &&
+        /** @type {{ type?: unknown }} */ (feed).type === "portfolio",
+    );
+
+  if (feedIsPortfolio || sourceKind === "portfolio") {
+    compact.source_kind = "portfolio";
+  } else if (typeof sourceKind === "string" && sourceKind) {
+    compact.source_kind = sourceKind;
+  }
+
+  // Preserve page_role so writing-shaped "project" shells stay out of Showcase.
+  if (typeof item.page_role === "string" && item.page_role) {
+    compact.page_role = item.page_role;
+  }
+
+  return compact;
+}
+
+/**
+ * Best timestamp for What's New ordering: publisher date, else crawl observe time.
+ * @param {Record<string, unknown> | null | undefined} item
+ * @returns {string}
+ */
+export function activityTimestamp(item) {
+  if (!item || typeof item !== "object") {
+    return "";
+  }
+
+  if (typeof item.published_at === "string" && item.published_at) {
+    return item.published_at;
+  }
+
+  if (typeof item.observed_at === "string" && item.observed_at) {
+    return item.observed_at;
+  }
+
+  return "";
 }
 
 /**
@@ -267,6 +455,17 @@ export function publishedWithinDays(publishedAt, now, days = 7) {
 }
 
 /**
+ * True when an item’s activity timestamp falls in the closed window ending at now.
+ * @param {Record<string, unknown> | null | undefined} item
+ * @param {Date | string} now
+ * @param {number} [days]
+ * @returns {boolean}
+ */
+export function activityWithinDays(item, now, days = 7) {
+  return publishedWithinDays(activityTimestamp(item), now, days);
+}
+
+/**
  * True when a content URL is on the Joshternet hub.
  * Member “link” posts that only point at the hub are not useful to feature
  * on joshternet.org itself.
@@ -287,7 +486,46 @@ export function isJoshternetHubContentUrl(value) {
 }
 
 /**
+ * Deduplicate by URL, then newest {@link activityTimestamp} first.
+ * @param {Array<Record<string, unknown>>} items
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function uniqueActivityItemsByUrl(items) {
+  /** @type {Map<string, Record<string, unknown>>} */
+  const byUrl = new Map();
+
+  for (const item of items || []) {
+    if (!item || typeof item !== "object") {
+      continue;
+    }
+
+    const url = typeof item.url === "string" ? item.url : "";
+
+    if (!url || byUrl.has(url)) {
+      continue;
+    }
+
+    byUrl.set(url, item);
+  }
+
+  return [...byUrl.values()].sort((left, right) => {
+    const date = activityTimestamp(right).localeCompare(
+      activityTimestamp(left),
+    );
+
+    if (date !== 0) {
+      return date;
+    }
+
+    // url is always a non-empty string here (guarded when inserting into byUrl).
+    return String(left.url).localeCompare(String(right.url));
+  });
+}
+
+/**
  * One latest item per origin, then newest first.
+ * Uses {@link activityTimestamp} so undated creative works can still compete
+ * via crawl `observed_at`.
  * @param {Array<Record<string, unknown>>} items
  * @returns {Array<Record<string, unknown>>}
  */
@@ -300,8 +538,7 @@ export function oneLatestPerOrigin(items) {
       continue;
     }
 
-    const published =
-      typeof item.published_at === "string" ? item.published_at : "";
+    const published = activityTimestamp(item);
     const previous = byOrigin.get(item.site_origin);
 
     if (!previous) {
@@ -309,8 +546,7 @@ export function oneLatestPerOrigin(items) {
       continue;
     }
 
-    const previousPublished =
-      typeof previous.published_at === "string" ? previous.published_at : "";
+    const previousPublished = activityTimestamp(previous);
 
     if (
       published > previousPublished ||
@@ -322,8 +558,8 @@ export function oneLatestPerOrigin(items) {
   }
 
   return [...byOrigin.values()].sort((left, right) => {
-    const date = String(right.published_at || "").localeCompare(
-      String(left.published_at || ""),
+    const date = activityTimestamp(right).localeCompare(
+      activityTimestamp(left),
     );
 
     if (date !== 0) {
@@ -440,7 +676,7 @@ export function topicCooccurrence(contentItems, publicSlugs) {
       return `${a.left}:${a.right}`.localeCompare(`${b.left}:${b.right}`);
     });
 
-  return capPresentationList(ranked, MAX_COOCCURRENCE_PAIRS);
+  return ranked;
 }
 
 /**
@@ -516,6 +752,1088 @@ export function fairTopicArticles(items, limit) {
   }
 
   return recent;
+}
+
+/**
+ * Kind label for a creative content_type on the Showcase / Made page.
+ * Uses finer categories (photography, art, music, video, games, apps,
+ * software, books, guides, design, project, other) by considering
+ * `categories` in addition to `content_type`.
+ * @param {unknown} contentType
+ * @param {unknown[]} [categories]
+ * @returns {string}
+ */
+export function showcaseKind(contentType, categories = []) {
+  const type = String(contentType || "").toLowerCase();
+  const cats = (Array.isArray(categories) ? categories : [])
+    .map((cat) => String(cat || "").toLowerCase())
+    .join(" ");
+
+  switch (type) {
+    case "photograph":
+      return "photography";
+    case "visual_artwork":
+      return "art";
+    case "music_recording":
+    case "music_album":
+      return "music";
+    case "sheet_music":
+      return "sheet music";
+    case "video":
+      return "video";
+    case "game":
+      if (/\bapp\b|\bios\b|\bandroid\b|\bmobile\b/.test(cats)) {
+        return "apps";
+      }
+
+      if (/\bsoftware\b/.test(cats)) {
+        return "software";
+      }
+
+      return "games";
+    case "collection":
+    case "project":
+      if (/\bbook\b/.test(cats)) {
+        return "books";
+      }
+
+      if (/\bguide\b/.test(cats)) {
+        return "guides";
+      }
+
+      if (/\bdesign\b/.test(cats)) {
+        return "design";
+      }
+
+      if (/\bapp\b|\bios\b|\bandroid\b|\bmobile\b/.test(cats)) {
+        return "apps";
+      }
+
+      if (/\bsoftware\b/.test(cats)) {
+        return "software";
+      }
+
+      return "project";
+    case "article":
+      // Writing is not a Showcase project; creative-path articles use
+      // showcaseKindForItem → creativePathKind instead.
+      return "other";
+    default: {
+      const _exhaustive = type;
+      void _exhaustive;
+      return "other";
+    }
+  }
+}
+
+/**
+ * Alias for {@link showcaseKind}; use on the Made page.
+ * @param {unknown} contentType
+ * @param {unknown[]} [categories]
+ * @returns {string}
+ */
+export const madeKind = showcaseKind;
+
+/** Path segment that marks a creative index root. */
+const CREATIVE_INDEX_ROOT =
+  /^(gallery|galleries|albums|photography|photos|art|illustration|artwork|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?)$/i;
+
+/**
+ * Showcase kind inferred from a creative child path (e.g. /experiments/corkboard/).
+ * @param {unknown} url
+ * @returns {string} Kind slug, or "" when not a creative child URL.
+ */
+export function creativePathKind(url) {
+  try {
+    const parts = new URL(String(url || "")).pathname
+      .replace(/\/+$/, "")
+      .split("/")
+      .filter(Boolean);
+
+    if (parts.length < 2 || !CREATIVE_INDEX_ROOT.test(parts[0])) {
+      return "";
+    }
+
+    const root = parts[0].toLowerCase();
+
+    if (/^(gallery|galleries|albums|photography|photos)$/.test(root)) {
+      return "photography";
+    }
+
+    if (/^(art|illustration|artwork)$/.test(root)) {
+      return "art";
+    }
+
+    if (/^(music|discography|tracks|sounds?)$/.test(root)) {
+      return "music";
+    }
+
+    if (/^(videos|film|animation)$/.test(root)) {
+      return "video";
+    }
+
+    if (/^(games|game|interactive)$/.test(root)) {
+      return "games";
+    }
+
+    if (/^apps?$/.test(root)) {
+      return "apps";
+    }
+
+    if (/^software$/.test(root)) {
+      return "software";
+    }
+
+    if (/^design$/.test(root)) {
+      return "design";
+    }
+
+    if (/^books?$/.test(root)) {
+      return "books";
+    }
+
+    if (/^guides?$/.test(root)) {
+      return "guides";
+    }
+
+    return "project";
+  } catch {
+    return "";
+  }
+}
+
+/**
+ * True when the URL is an individual work under a creative index
+ * (e.g. /experiments/corkboard/), not the index root itself.
+ * @param {unknown} url
+ * @returns {boolean}
+ */
+export function isCreativePathWorkUrl(url) {
+  return Boolean(creativePathKind(url));
+}
+
+/**
+ * Kind for a Showcase card from content_type, categories, and creative path.
+ * @param {Record<string, unknown>} item
+ * @returns {string}
+ */
+export function showcaseKindForItem(item) {
+  const fromPath = creativePathKind(item.url);
+
+  // Articles are not projects: only creative-path works (e.g. /experiments/…)
+  // get a Showcase kind from writing-shaped types.
+  if (String(item.content_type) === "article") {
+    return fromPath || "other";
+  }
+
+  const fromType = showcaseKind(
+    item.content_type,
+    Array.isArray(item.categories) ? item.categories : [],
+  );
+
+  if (fromType !== "other") {
+    return fromType;
+  }
+
+  return fromPath || fromType;
+}
+
+/**
+ * True when a URL is a creative index root (e.g. `/work/`, `/photos/`) rather
+ * than an individual work. Query-string case studies (`?work=…`) stay
+ * non-index for this helper; Showcase still excludes portfolio-sourced clients.
+ * @param {unknown} url
+ * @returns {boolean}
+ */
+export function isBareCreativeIndexUrl(url) {
+  try {
+    const parsed = new URL(String(url || ""));
+
+    if ([...parsed.searchParams.keys()].length > 0) {
+      return false;
+    }
+
+    const path = parsed.pathname.replace(/\/+$/, "") || "/";
+    const parts = path.split("/").filter(Boolean);
+
+    if (parts.length !== 1) {
+      return false;
+    }
+
+    const leaf = parts[0].replace(/\.(html?|php|aspx?)$/i, "");
+    return CREATIVE_INDEX_ROOT.test(leaf);
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * True when the URL is the site homepage (not a work under /projects/ etc.).
+ * @param {unknown} url
+ * @returns {boolean}
+ */
+export function isSiteHomeUrl(url) {
+  try {
+    const path = new URL(String(url || "")).pathname.replace(/\/+$/, "") || "/";
+    return path === "/";
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * True when a homepage portfolio card title is indexed like
+ * "02 M.A. Thesis · Installation SomaSpace …" (Joshua Kim studio style).
+ * @param {unknown} title
+ * @returns {boolean}
+ */
+export function isPortfolioIndexedProjectTitle(title) {
+  return /^\d{1,2}\s+\S/.test(String(title || "").trim());
+}
+
+/**
+ * True when the URL is a single-segment product path (e.g. `/somaspace`),
+ * not a creative-index root like `/work` and not site chrome.
+ * @param {unknown} url
+ * @returns {boolean}
+ */
+export function isNamedRootProjectUrl(url) {
+  const parts = pathnameParts(url);
+
+  if (!parts || parts.length !== 1) {
+    return false;
+  }
+
+  const slug = parts[0].replace(/\.(html?|php|aspx?)$/i, "").toLowerCase();
+
+  if (!slug || CREATIVE_INDEX_ROOT.test(slug)) {
+    return false;
+  }
+
+  return !isShowcaseChromePath(`/${slug}/`);
+}
+
+/**
+ * Source kind on a compact or raw content item.
+ * @param {Record<string, unknown>} item
+ * @returns {string}
+ */
+function creativeSourceKind(item) {
+  if (typeof item?.source_kind === "string" && item.source_kind) {
+    return item.source_kind;
+  }
+
+  const source = item?.source;
+
+  if (source && typeof source === "object" && typeof source.kind === "string") {
+    return source.kind;
+  }
+
+  return "";
+}
+
+/**
+ * True when a title reads like a blog/update post rather than a product name
+ * ("Personal Data Pipeline Update", "Imagining a …").
+ * @param {unknown} title
+ * @returns {boolean}
+ */
+export function isBlogShapedProjectTitle(title) {
+  const text = String(title || "").trim();
+
+  if (!text) {
+    return false;
+  }
+
+  return (
+    /\bmin read\b/i.test(text) ||
+    /\bupdates?\b/i.test(text) ||
+    /\bimagining\b/i.test(text) ||
+    /\?/.test(text) ||
+    /&middot;|·/.test(text) ||
+    /\b(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s+\d{1,2},?\s+\d{4}\b/i.test(
+      text,
+    )
+  );
+}
+
+/**
+ * True when the title is exactly the product name recovered from the URL slug
+ * (homepage link text like "SomaSpace", not a blog sentence).
+ * @param {unknown} title
+ * @param {unknown} url
+ * @returns {boolean}
+ */
+export function isExactSlugProductTitle(title, url) {
+  const parts = pathnameParts(url);
+
+  if (!parts || parts.length !== 1) {
+    return false;
+  }
+
+  const cleaned = String(title || "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (cleaned.length < 2 || cleaned.length > 48) {
+    return false;
+  }
+
+  // Blog posts often mirror their slug ("personal-data-pipeline-update");
+  // product apps use short names with at most one hyphen.
+  const words = cleaned.split(/\s+/).filter(Boolean);
+  const slug = parts[0].replace(/\.(html?|php|aspx?)$/i, "");
+  const hyphenCount = (slug.match(/-/g) || []).length;
+
+  if (
+    words.length > 3 ||
+    hyphenCount > 1 ||
+    isBlogShapedProjectTitle(cleaned)
+  ) {
+    return false;
+  }
+
+  const matched = projectTitleMatchingSlug(cleaned, slug);
+
+  return Boolean(matched) && matched.toLowerCase() === cleaned.toLowerCase();
+}
+
+/**
+ * True when a single-segment URL is a Showcase-eligible studio product
+ * (Kim-style numbered portfolio cards, schema SoftwareApplication rows, or
+ * short homepage link titles that match the slug).
+ * @param {Record<string, unknown>} item
+ * @returns {boolean}
+ */
+export function isNamedRootCreativeProduct(item) {
+  if (!item || typeof item !== "object" || !isNamedRootProjectUrl(item.url)) {
+    return false;
+  }
+
+  if (isPortfolioIndexedProjectTitle(item.title)) {
+    return true;
+  }
+
+  if (creativeSourceKind(item) === "creative-schema") {
+    return true;
+  }
+
+  return isExactSlugProductTitle(item.title, item.url);
+}
+
+/**
+ * Recover a short project name from a portfolio title using the URL slug
+ * ("… SomaSpace Webcams…" + `/somaspace` → "SomaSpace").
+ * @param {string} title
+ * @param {string} slug
+ * @returns {string}
+ */
+export function projectTitleMatchingSlug(title, slug) {
+  const target = String(slug || "")
+    .replace(/-/g, "")
+    .toLowerCase();
+
+  if (!target || !title) {
+    return "";
+  }
+
+  let targetIndex = 0;
+  let start = -1;
+  let end = -1;
+
+  for (let index = 0; index < title.length; index += 1) {
+    const char = title[index];
+
+    if (!/[a-z0-9]/i.test(char)) {
+      continue;
+    }
+
+    if (char.toLowerCase() === target[targetIndex]) {
+      if (start < 0) {
+        start = index;
+      }
+
+      targetIndex += 1;
+      end = index + 1;
+
+      if (targetIndex === target.length) {
+        return extendTitleCaseProductName(title, start, end);
+      }
+
+      continue;
+    }
+
+    if (start >= 0) {
+      targetIndex = 0;
+      start = -1;
+      end = -1;
+      index -= 1;
+    }
+  }
+
+  return "";
+}
+
+/**
+ * Keep trailing Title Case name words after a slug match
+ * ("Order Pipeline" + " Toolkit Order contents…" → "Order Pipeline Toolkit").
+ * Stops before a Title Case word that begins a sentence (next token lowercase).
+ * @param {string} title
+ * @param {number} start
+ * @param {number} end
+ * @returns {string}
+ */
+function extendTitleCaseProductName(title, start, end) {
+  let cursor = end;
+
+  while (cursor < title.length) {
+    const rest = title.slice(cursor);
+    const wordMatch = rest.match(/^\s+([A-Z][A-Za-z0-9+]*)/);
+
+    if (!wordMatch) {
+      break;
+    }
+
+    const afterWord = rest.slice(wordMatch[0].length);
+
+    // "Toolkit Order contents" — include Toolkit; stop before Order (sentence).
+    if (/^\s+[a-z]/.test(afterWord)) {
+      break;
+    }
+
+    cursor += wordMatch[0].length;
+  }
+
+  return title.slice(start, cursor).replace(/\s+/g, " ").trim();
+}
+
+/**
+ * Showcase card title: strip HTML, experiment day numbers ("4 Plastic" →
+ * "Plastic"), and portfolio card chrome so Kim-style titles become the
+ * product name only ("SomaSpace").
+ * @param {Record<string, unknown>} item
+ * @returns {string}
+ */
+export function showcaseCardTitle(item) {
+  let title = String(item?.title || "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&middot;/gi, "·")
+    .replace(/&amp;/gi, "&")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const url = String(item?.url || "");
+  const parts = pathnameParts(url);
+
+  if (parts?.length === 1) {
+    const slug = parts[0].replace(/\.(html?|php|aspx?)$/i, "");
+    const fromSlug = projectTitleMatchingSlug(title, slug);
+
+    if (fromSlug) {
+      return fromSlug;
+    }
+  }
+
+  if (/\/experiments\//i.test(url)) {
+    title = title.replace(/^\d+\s+/, "");
+    const summary = String(item?.summary || "")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    // Harvest sometimes concatenates "Corkboard" + summary into title.
+    if (summary && title.length > summary.length && title.endsWith(summary)) {
+      title = title.slice(0, -summary.length).trim();
+    }
+  }
+
+  return title;
+}
+
+/**
+ * True when a URL is a photo “view all” / catch-all album under a photos root.
+ * @param {unknown} url
+ * @returns {boolean}
+ */
+const PHOTO_AGGREGATOR_ROOTS = new Set([
+  "gallery",
+  "galleries",
+  "albums",
+  "photography",
+  "photos",
+]);
+
+const PHOTO_AGGREGATOR_LEAVES = new Set([
+  "all",
+  "view-all",
+  "viewall",
+  "everything",
+  "index",
+]);
+
+export function isPhotoAggregatorUrl(url) {
+  try {
+    const parts = new URL(String(url || "")).pathname
+      .replace(/\/+$/, "")
+      .split("/")
+      .filter(Boolean);
+
+    if (parts.length < 2) {
+      return false;
+    }
+
+    return (
+      PHOTO_AGGREGATOR_ROOTS.has(parts[0].toLowerCase()) &&
+      PHOTO_AGGREGATOR_LEAVES.has(parts[1].toLowerCase())
+    );
+  } catch {
+    return false;
+  }
+}
+
+/** Roots that hold photo/art albums (collections), not single-image pages. */
+const PHOTO_ART_COLLECTION_ROOTS = new Set([
+  ...PHOTO_AGGREGATOR_ROOTS,
+  "art",
+  "illustration",
+  "artwork",
+]);
+
+/**
+ * True when the URL is a photo/art album or year collection (e.g. `/photos/2014/`),
+ * not an individual image page under that tree.
+ * @param {unknown} url
+ * @returns {boolean}
+ */
+export function isPhotoOrArtCollectionUrl(url) {
+  const parts = pathnameParts(url);
+
+  if (!parts || parts.length !== 2) {
+    return false;
+  }
+
+  const root = parts[0].toLowerCase();
+  const leaf = parts[1].toLowerCase();
+
+  return (
+    PHOTO_ART_COLLECTION_ROOTS.has(root) && !PHOTO_AGGREGATOR_LEAVES.has(leaf)
+  );
+}
+
+/**
+ * True when the URL is an individual photo/art work under a gallery root
+ * (e.g. `/photos/2017/finch-lake-1_jpg.html`), not the album card itself.
+ * @param {unknown} url
+ * @returns {boolean}
+ */
+export function isIndividualPhotoOrArtWorkUrl(url) {
+  const parts = pathnameParts(url);
+
+  if (!parts || parts.length < 3) {
+    return false;
+  }
+
+  return PHOTO_ART_COLLECTION_ROOTS.has(parts[0].toLowerCase());
+}
+
+/**
+ * Pathname parts for a content URL, or null when unparseable.
+ * @param {unknown} url
+ * @returns {string[] | null}
+ */
+function pathnameParts(url) {
+  try {
+    return new URL(String(url || "")).pathname
+      .replace(/\/+$/, "")
+      .split("/")
+      .filter(Boolean);
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * True when this URL is a creative series folder that only lists child works
+ * (e.g. `/experiments/weird-web-october-2026/` with day toys underneath).
+ * Individual leaves like `/experiments/corkboard/` stay eligible.
+ * @param {unknown} url
+ * @param {Iterable<string>} siblingUrls
+ * @returns {boolean}
+ */
+export function isCreativeSeriesHubUrl(url, siblingUrls) {
+  const parts = pathnameParts(url);
+
+  if (!parts || parts.length !== 2 || !CREATIVE_INDEX_ROOT.test(parts[0])) {
+    return false;
+  }
+
+  // Year/album photo and art collections keep a Showcase card even when
+  // individual frames under them are also in the content index.
+  if (PHOTO_ART_COLLECTION_ROOTS.has(parts[0].toLowerCase())) {
+    return false;
+  }
+
+  const prefix = `/${parts[0].toLowerCase()}/${parts[1].toLowerCase()}/`;
+  const siblings = Array.isArray(siblingUrls) ? siblingUrls : [];
+
+  for (const sibling of siblings) {
+    const other = pathnameParts(sibling);
+
+    if (!other || other.length <= 2) {
+      continue;
+    }
+
+    const otherPath = `/${other.map((part) => part.toLowerCase()).join("/")}/`;
+
+    if (otherPath.startsWith(prefix)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+/**
+ * True when the item came from a client portfolio table crawl.
+ * @param {Record<string, unknown>} item
+ * @returns {boolean}
+ */
+export function isPortfolioSourcedItem(item) {
+  if (item.source_kind === "portfolio") {
+    return true;
+  }
+
+  if (
+    item.source &&
+    typeof item.source === "object" &&
+    /** @type {{ kind?: unknown }} */ (item.source).kind === "portfolio"
+  ) {
+    return true;
+  }
+
+  if (Array.isArray(item.source_feeds)) {
+    return item.source_feeds.some(
+      (feed) =>
+        feed &&
+        typeof feed === "object" &&
+        /** @type {{ type?: unknown }} */ (feed).type === "portfolio",
+    );
+  }
+
+  return false;
+}
+
+/**
+ * Client case-study URLs under /work/… or /portfolio/… (not public toys).
+ * @param {unknown} url
+ * @returns {boolean}
+ */
+export function isClientCaseStudyUrl(url) {
+  try {
+    const parts = new URL(String(url || "")).pathname
+      .replace(/\/+$/, "")
+      .split("/")
+      .filter(Boolean);
+
+    return parts.length >= 2 && /^(work|portfolio)$/i.test(parts[0]);
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * True when the item has a remote https poster suitable for Showcase.
+ * @param {Record<string, unknown>} item
+ * @returns {boolean}
+ */
+function hasHttpsPoster(item) {
+  return typeof item.image === "string" && item.image.startsWith("https://");
+}
+
+/**
+ * Showcase must have something to see or read—no empty year chips.
+ * Photography/art/video require an https poster; other kinds need a real
+ * title or summary beyond a bare year.
+ * @param {Record<string, unknown>} item
+ * @returns {boolean}
+ */
+export function showcaseItemHasSubstance(item) {
+  const kind = showcaseKindForItem(item);
+  const title = String(item.title || "").trim();
+  const summary = String(item.summary || "").trim();
+  const yearOnly = /^\d{4}$/.test(title);
+
+  if (kind === "photography" || kind === "art" || kind === "video") {
+    return hasHttpsPoster(item);
+  }
+
+  // Sheet music gets a generated score preview during views:build when needed.
+  if (kind === "sheet music") {
+    return (
+      hasHttpsPoster(item) ||
+      (typeof item.image === "string" && item.image.startsWith("/assets/")) ||
+      title.length >= 8
+    );
+  }
+
+  if (hasHttpsPoster(item)) {
+    return true;
+  }
+
+  if (yearOnly && summary.length < 12) {
+    return false;
+  }
+
+  return summary.length >= 24 || (title.length >= 8 && !yearOnly);
+}
+
+/**
+ * Interleave imaged and non-imaged cards so Corkboard is not starved when
+ * other experiments on the same origin already have OG posters.
+ * @param {Array<Record<string, unknown>>} items
+ * @returns {Array<Record<string, unknown>>}
+ */
+function interleaveImagedItems(items) {
+  const withImage = [];
+  const withoutImage = [];
+
+  for (const item of items) {
+    if (hasHttpsPoster(item)) {
+      withImage.push(item);
+    } else {
+      withoutImage.push(item);
+    }
+  }
+
+  /** @type {Array<Record<string, unknown>>} */
+  const out = [];
+  const max = Math.max(withImage.length, withoutImage.length);
+
+  for (let index = 0; index < max; index += 1) {
+    if (index < withImage.length) {
+      out.push(withImage[index]);
+    }
+
+    if (index < withoutImage.length) {
+      out.push(withoutImage[index]);
+    }
+  }
+
+  return out;
+}
+
+/**
+ * True when a compact content item belongs in the creative Showcase.
+ * Individual experiments under /experiments/… are eligible; the folder is not.
+ * Client portfolio case studies are never Showcase cards.
+ * @param {Record<string, unknown> | null | undefined} item
+ * @param {{ siblingUrls?: Iterable<string> }} [options]
+ * @returns {boolean}
+ */
+export function isMadeContentItem(item, options = {}) {
+  if (!item || typeof item !== "object") {
+    return false;
+  }
+
+  if (typeof item.url !== "string" || !item.url) {
+    return false;
+  }
+
+  if (isJoshternetHubContentUrl(item.url)) {
+    return false;
+  }
+
+  // A member homepage is not a Showcase project.
+  if (isSiteHomeUrl(item.url)) {
+    return false;
+  }
+
+  // Identity/nav, topics, notes, reading, webrings, feeds—never Showcase.
+  if (isShowcaseChromePath(item.url)) {
+    return false;
+  }
+
+  if (isBareCreativeIndexUrl(item.url)) {
+    return false;
+  }
+
+  if (isPhotoAggregatorUrl(item.url)) {
+    return false;
+  }
+
+  // Photography/art Showcase cards are albums/collections only—not single images.
+  if (isIndividualPhotoOrArtWorkUrl(item.url)) {
+    return false;
+  }
+
+  const siblingUrls = Array.isArray(options.siblingUrls)
+    ? options.siblingUrls
+    : [];
+
+  if (isCreativeSeriesHubUrl(item.url, siblingUrls)) {
+    return false;
+  }
+
+  if (isPortfolioSourcedItem(item)) {
+    return false;
+  }
+
+  if (isClientCaseStudyUrl(item.url)) {
+    return false;
+  }
+
+  const type = String(item.content_type);
+  const pathKind = creativePathKind(item.url);
+  const photoOrArtType =
+    type === "photograph" ||
+    type === "visual_artwork" ||
+    pathKind === "photography" ||
+    pathKind === "art";
+
+  // Lone photograph/artwork URLs outside an album path are not Showcase cards.
+  if (
+    photoOrArtType &&
+    !isPhotoOrArtCollectionUrl(item.url) &&
+    type !== "collection"
+  ) {
+    return false;
+  }
+
+  // Writing (page_role article or content_type article) is never a Project card
+  // unless it lives on a creative path (e.g. /experiments/…).
+  const writingShaped =
+    type === "article" || String(item.page_role || "") === "article";
+
+  if (writingShaped && !isCreativePathWorkUrl(item.url)) {
+    return false;
+  }
+
+  const eligibleType =
+    SHOWCASE_CONTENT_TYPES.includes(type) ||
+    (type === "article" && isCreativePathWorkUrl(item.url));
+
+  if (!eligibleType) {
+    return false;
+  }
+
+  // Project/collection cards must live under a creative directory
+  // (/projects/…, /experiments/…, /games/…, …) or be a named-root studio product
+  // (e.g. Kim `/somaspace`). Bare `/work` indexes, member homepages, and plain
+  // articles (including 3D-viewer write-ups) are never projects.
+  if (
+    (type === "project" || type === "collection") &&
+    !isCreativePathWorkUrl(item.url) &&
+    !isNamedRootCreativeProduct(item)
+  ) {
+    return false;
+  }
+
+  // Photography without a poster (and other empty shells) must not fill Showcase.
+  return showcaseItemHasSubstance(item);
+}
+
+/**
+ * Alias kept for backward compatibility. Prefer {@link isMadeContentItem}.
+ * @param {Record<string, unknown> | null | undefined} item
+ * @returns {boolean}
+ */
+export const isShowcaseContentItem = isMadeContentItem;
+
+/**
+ * Newest Showcase work first: activity timestamp, then URL descending so year
+ * albums without dates still prefer `/photos/2026/` over `/photos/2014/`.
+ * @param {Record<string, unknown>} left
+ * @param {Record<string, unknown>} right
+ * @returns {number}
+ */
+export function compareShowcaseRecency(left, right) {
+  const date = activityTimestamp(right).localeCompare(activityTimestamp(left));
+
+  if (date !== 0) {
+    return date;
+  }
+
+  return String(right.url || "").localeCompare(String(left.url || ""));
+}
+
+/**
+ * Label eligible Showcase rows and interleave posters per origin.
+ * Each origin’s works are newest-first before interleave.
+ * @param {Array<Record<string, unknown>>} compactItems
+ * @returns {Array<Record<string, unknown>>}
+ */
+function eligibleShowcaseItems(compactItems) {
+  const list = Array.isArray(compactItems) ? compactItems : [];
+  const siblingUrls = list
+    .map((item) => (typeof item?.url === "string" ? item.url : ""))
+    .filter(Boolean);
+  /** @type {Map<string, Array<Record<string, unknown>>>} */
+  const byOrigin = new Map();
+
+  for (const raw of list) {
+    if (!isMadeContentItem(raw, { siblingUrls })) {
+      continue;
+    }
+
+    const title = showcaseCardTitle(raw);
+    const rawSummary = String(raw.summary || "").trim();
+    const summary =
+      rawSummary.toLowerCase() === title.toLowerCase() ? "" : rawSummary;
+
+    const item = {
+      ...raw,
+      title,
+      summary,
+      kind: showcaseKindForItem(raw),
+    };
+    const key = typeof item.site_origin === "string" ? item.site_origin : "";
+    const originList = byOrigin.get(key) || [];
+    originList.push(item);
+    byOrigin.set(key, originList);
+  }
+
+  /** @type {Array<Record<string, unknown>>} */
+  const eligible = [];
+
+  for (const key of [...byOrigin.keys()].sort()) {
+    const originItems = [...(byOrigin.get(key) || [])].sort(
+      compareShowcaseRecency,
+    );
+    eligible.push(...interleaveImagedItems(originItems));
+  }
+
+  return eligible;
+}
+
+/**
+ * Showcase strip grouped by kind. Includes every eligible work (no global max).
+ * Within each kind, items are newest-first (published_at / observed_at, then
+ * URL). Fair-per-origin selection still applies when a limit is set. An
+ * optional `limit` truncates only for tests or callers that ask for a short
+ * list.
+ * @param {Array<Record<string, unknown>>} compactItems
+ * @param {number} [limit]
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function buildMadeItems(compactItems, limit) {
+  const eligible = eligibleShowcaseItems(compactItems);
+  const maxItems =
+    typeof limit === "number" && Number.isFinite(limit)
+      ? Math.max(0, Math.floor(limit))
+      : eligible.length;
+  /** @type {Map<string, Array<Record<string, unknown>>>} */
+  const byKind = new Map(
+    SHOWCASE_KIND_ORDER.map((kind) => [
+      kind,
+      /** @type {Array<Record<string, unknown>>} */ ([]),
+    ]),
+  );
+
+  for (const item of eligible) {
+    const kind = SHOWCASE_KIND_ORDER.includes(String(item.kind))
+      ? String(item.kind)
+      : "other";
+    byKind.get(kind)?.push(item);
+  }
+
+  // byKind is pre-populated for every entry in SHOWCASE_KIND_ORDER, so
+  // .get(kind) is always defined here; no || [] fallback needed.
+  const kindsPresent = SHOWCASE_KIND_ORDER.filter(
+    (kind) =>
+      /** @type {Array<Record<string, unknown>>} */ (byKind.get(kind)).length >
+      0,
+  );
+  const perKind = Math.max(
+    1,
+    Math.floor(maxItems / Math.max(1, kindsPresent.length)),
+  );
+  /** @type {Array<Record<string, unknown>>} */
+  const result = [];
+
+  for (const kind of kindsPresent) {
+    const remaining = maxItems - result.length;
+
+    if (remaining <= 0) {
+      break;
+    }
+
+    result.push(
+      ...fairTopicArticles(
+        byKind.get(kind) || [],
+        Math.min(perKind, remaining),
+      ),
+    );
+  }
+
+  if (result.length < maxItems) {
+    const seen = new Set(result.map((item) => String(item.url)));
+    const rest = eligible.filter((item) => !seen.has(String(item.url)));
+    result.push(...fairTopicArticles(rest, maxItems - result.length));
+  }
+
+  const rank = new Map(SHOWCASE_KIND_ORDER.map((kind, index) => [kind, index]));
+
+  return [...result].sort((left, right) => {
+    // rank is built from SHOWCASE_KIND_ORDER; all items in result have their kind
+    // normalized to a SHOWCASE_KIND_ORDER entry, so .get() is always defined.
+    const leftRank = /** @type {number} */ (rank.get(String(left.kind)));
+    const rightRank = /** @type {number} */ (rank.get(String(right.kind)));
+
+    if (leftRank !== rightRank) {
+      return leftRank - rightRank;
+    }
+
+    return compareShowcaseRecency(left, right);
+  });
+}
+
+/**
+ * Homepage Creative work strip—same eligible set as Showcase, fair per origin.
+ * No default max; an optional `limit` is only for callers that ask for one.
+ * @param {Array<Record<string, unknown>>} compactItems
+ * @param {number} [limit]
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function buildShowcaseHomeItems(compactItems, limit) {
+  const eligible = eligibleShowcaseItems(compactItems);
+  const maxItems =
+    typeof limit === "number" && Number.isFinite(limit)
+      ? Math.max(0, Math.floor(limit))
+      : eligible.length;
+
+  return fairTopicArticles(eligible, maxItems).sort(compareShowcaseRecency);
+}
+
+/**
+ * Alias kept for backward compatibility. Prefer {@link buildMadeItems}.
+ * @param {Array<Record<string, unknown>>} compactItems
+ * @param {number} [limit]
+ * @returns {Array<Record<string, unknown>>}
+ */
+export const buildShowcaseItems = buildMadeItems;
+
+/**
+ * Showcase rows for What's New: every dated Showcase work inside the activity
+ * window (multi-item per origin), so creative latest is not hidden behind a
+ * same-origin article and multiple new toys from one site can appear together.
+ * Undated works are omitted—crawl `observed_at` is not a publish date.
+ * @param {Array<Record<string, unknown>>} compactItems
+ * @param {Date | string} now
+ * @param {number} [windowDays]
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function showcaseItemsForActivity(compactItems, now, windowDays = 7) {
+  const showcase = buildMadeItems(compactItems);
+  const inWindow = showcase.filter(
+    (item) =>
+      typeof item.published_at === "string" &&
+      item.published_at &&
+      publishedWithinDays(item.published_at, now, windowDays),
+  );
+
+  return uniqueActivityItemsByUrl(inWindow);
 }
 
 /**
@@ -705,8 +2023,6 @@ export function connectionTopicOverlaps(neighborhoods) {
     .sort((left, right) =>
       `${left.a}:${left.b}`.localeCompare(`${right.a}:${right.b}`),
     );
-  const cappedPairs = capPresentationList(pairs, MAX_CONNECTION_TOPIC_PAIRS);
-
   const sites = [...byOrigin.entries()]
     .sort(([left], [right]) => left.localeCompare(right))
     .map(([origin, topics]) => ({
@@ -724,8 +2040,8 @@ export function connectionTopicOverlaps(neighborhoods) {
     }));
 
   return {
-    overlap_count: cappedPairs.length,
-    pairs: cappedPairs,
+    overlap_count: pairs.length,
+    pairs,
     sites,
   };
 }
@@ -908,6 +2224,199 @@ export function randomLinkTrail(edges, random, maxHops = 3) {
 }
 
 /**
+ * Filters compact content items down to upcoming or ongoing events,
+ * sorted chronologically by start time.
+ * Hub items are excluded. Requires a dependable `start` date field.
+ * @param {Array<Record<string, unknown>>} compactItems
+ * @param {Date} [now]
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function buildHappeningItems(compactItems, now = new Date()) {
+  const nowMs = now instanceof Date ? now.getTime() : Date.parse(String(now));
+
+  if (!Number.isFinite(nowMs)) {
+    return [];
+  }
+
+  const upcoming = (compactItems || []).filter((item) => {
+    if (!item || typeof item !== "object") {
+      return false;
+    }
+
+    if (String(item.content_type) !== "event") {
+      return false;
+    }
+
+    if (isJoshternetHubContentUrl(item.url)) {
+      return false;
+    }
+
+    const startStr = typeof item.start === "string" ? item.start : "";
+
+    if (!startStr) {
+      return false;
+    }
+
+    const startMs = Date.parse(startStr);
+
+    if (!Number.isFinite(startMs)) {
+      return false;
+    }
+
+    // Upcoming: start is in the future.
+    if (startMs > nowMs) {
+      return true;
+    }
+
+    // Ongoing: started but not yet ended.
+    const endStr = typeof item.end === "string" ? item.end : "";
+    const endMs = endStr ? Date.parse(endStr) : NaN;
+
+    return Number.isFinite(endMs) && endMs > nowMs;
+  });
+
+  upcoming.sort((left, right) => {
+    // Items that reach the sort always have a valid start (filter guarantees it).
+    const leftMs = Date.parse(String(left.start));
+    const rightMs = Date.parse(String(right.start));
+    const diff = leftMs - rightMs;
+
+    if (diff !== 0) {
+      return diff;
+    }
+
+    return String(left.url ?? "").localeCompare(String(right.url ?? ""));
+  });
+
+  return upcoming;
+}
+
+/**
+ * Returns a stable UID for an iCalendar VEVENT derived from the item URL.
+ * @param {string} url
+ * @returns {string}
+ */
+function icsUid(url) {
+  // Use a deterministic slug from the URL so UIDs survive rebuilds.
+  return `${encodeURIComponent(url)}@joshternet.org`;
+}
+
+/**
+ * Formats a date string as an iCalendar DATE-TIME value (UTC).
+ * Returns an empty string when the value is not parseable.
+ * @param {string} value
+ * @returns {string}
+ */
+function icsDateTime(value) {
+  if (!value) {
+    return "";
+  }
+
+  const ms = Date.parse(value);
+
+  if (!Number.isFinite(ms)) {
+    return "";
+  }
+
+  return new Date(ms)
+    .toISOString()
+    .replace(/[-:]/g, "")
+    .replace(/\.\d{3}Z$/, "Z");
+}
+
+/**
+ * Generates an iCalendar (RFC 5545) document for upcoming/ongoing events.
+ * Entry UIDs are stable (derived from the item URL) so calendar clients can
+ * sync without duplicates. Does not embed full descriptions or private data.
+ * @param {Array<Record<string, unknown>>} happeningItems
+ * @param {{ prodId?: string }} [options]
+ * @returns {string}
+ */
+export function buildEventIcs(happeningItems, options = {}) {
+  const prodId = options.prodId
+    ? String(options.prodId)
+    : "-//Joshternet//Happening//EN";
+  const items = Array.isArray(happeningItems) ? happeningItems : [];
+  const lines = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    `PRODID:${prodId}`,
+    "CALSCALE:GREGORIAN",
+    "METHOD:PUBLISH",
+    "X-WR-CALNAME:Happening on the Joshternet",
+  ];
+
+  for (const item of items) {
+    const dtstart = icsDateTime(item.start ? String(item.start) : "");
+
+    if (!dtstart) {
+      continue;
+    }
+
+    const dtend = icsDateTime(item.end ? String(item.end) : "");
+    let uidBase;
+
+    if (item.url) {
+      uidBase = item.url;
+    } else if (item.title) {
+      uidBase = item.title;
+    } else {
+      uidBase = dtstart;
+    }
+
+    const uid = icsUid(String(uidBase));
+    const rawTitle = item.title ? String(item.title) : "";
+    const summary = (rawTitle || "Event").replace(/\r\n|\r|\n/g, " ");
+    const url = item.url ? String(item.url) : "";
+
+    let location = "";
+
+    if (item.venue) {
+      location = String(item.venue);
+    } else if (item.location) {
+      location = String(item.location);
+    }
+
+    let organizer = "";
+
+    if (item.site_title) {
+      organizer = String(item.site_title);
+    } else if (item.site_origin) {
+      organizer = String(item.site_origin);
+    }
+
+    lines.push("BEGIN:VEVENT");
+    lines.push(`UID:${uid}`);
+    lines.push(`DTSTART:${dtstart}`);
+
+    if (dtend) {
+      lines.push(`DTEND:${dtend}`);
+    }
+
+    lines.push(`SUMMARY:${summary}`);
+
+    if (url) {
+      lines.push(`URL:${url}`);
+    }
+
+    if (location) {
+      lines.push(`LOCATION:${location}`);
+    }
+
+    if (organizer) {
+      const siteOrigin = item.site_origin ? String(item.site_origin) : "";
+      lines.push(`ORGANIZER;CN=${organizer}:${siteOrigin}`);
+    }
+
+    lines.push("END:VEVENT");
+  }
+
+  lines.push("END:VCALENDAR");
+
+  return lines.join("\r\n") + "\r\n";
+}
+
+/**
  * Builds all presentation documents from canonical graph files.
  * @param {{
  *   network: Array<Record<string, unknown>>,
@@ -924,6 +2433,8 @@ export function randomLinkTrail(edges, random, maxHops = 3) {
  *   topic_views: Record<string, unknown>,
  *   site_views: Record<string, unknown>,
  *   search_index: Record<string, unknown>,
+ *   showcase: Record<string, unknown>,
+ *   happening: Record<string, unknown>,
  * }}
  */
 export function buildViewDocuments(input) {
@@ -950,9 +2461,17 @@ export function buildViewDocuments(input) {
       publishedWithinDays(item.published_at, clock) &&
       !isJoshternetHubContentUrl(item.url),
   );
-  const primary = oneLatestPerOrigin(recentItems)
+  const feedPrimary = oneLatestPerOrigin(recentItems)
     .map((item) => compactContentItem(item, sites, publicSlugs))
     .filter(Boolean);
+  // Showcase creative works join What's New so "latest" is not articles-only.
+  // Dated Showcase rows in the window are included in full (not one-per-origin),
+  // so a same-origin note cannot hide a newly published experiment/toy.
+  const showcasePrimary = showcaseItemsForActivity(compactItems, clock);
+  const primary = uniqueActivityItemsByUrl([
+    ...feedPrimary,
+    ...showcasePrimary,
+  ]);
 
   const types = [
     ...new Set(
@@ -1084,7 +2603,7 @@ export function buildViewDocuments(input) {
       occurrence_count,
       last_changed_at: community.last_changed_at || "",
       related_discoveries: community.related_discoveries || [],
-      recent: fairTopicArticles(matching, 12),
+      recent: fairTopicArticles(matching, matching.length),
       recent_count: matching.length,
       members,
       related,
@@ -1240,12 +2759,39 @@ export function buildViewDocuments(input) {
       image: item.image,
       image_origin: item.image_origin,
       language: normalizeLanguageTag(item.language) || "",
+      content_type: item.content_type || "",
     });
   }
 
-  const searchIndexDocuments = capPresentationList(
-    searchDocuments,
-    MAX_SEARCH_INDEX_DOCUMENTS,
+  const searchIndexDocuments = searchDocuments;
+  const showcaseItemsRaw = buildShowcaseItems(compactItems);
+  const showcaseHome = buildShowcaseHomeItems(compactItems);
+  /** @type {Map<string, number>} */
+  const kindCounts = new Map();
+
+  for (const item of showcaseItemsRaw) {
+    const kind = String(item.kind || "other");
+    kindCounts.set(kind, (kindCounts.get(kind) || 0) + 1);
+  }
+
+  const showcaseKinds = SHOWCASE_KIND_ORDER.filter((kind) =>
+    kindCounts.has(kind),
+  );
+  /** @type {Record<string, string>} */
+  const kindLabels = {};
+
+  for (const kind of showcaseKinds) {
+    kindLabels[kind] = showcaseKindLabel(kind, kindCounts.get(kind));
+  }
+
+  const showcaseItems = showcaseItemsRaw.map((item) => ({
+    ...item,
+    kind_label: kindLabels[String(item.kind)],
+  }));
+
+  const happeningItems = buildHappeningItems(
+    compactItems,
+    input.now || new Date(input.generatedAt),
   );
 
   return {
@@ -1275,6 +2821,21 @@ export function buildViewDocuments(input) {
       generated_at: input.generatedAt,
       document_count: searchIndexDocuments.length,
       documents: searchIndexDocuments,
+    },
+    showcase: {
+      schema_version: 1,
+      generated_at: input.generatedAt,
+      item_count: showcaseItems.length,
+      kinds: showcaseKinds,
+      kind_labels: kindLabels,
+      items: showcaseItems,
+      home: showcaseHome,
+    },
+    happening: {
+      schema_version: 1,
+      generated_at: input.generatedAt,
+      item_count: happeningItems.length,
+      items: happeningItems,
     },
   };
 }
@@ -1336,10 +2897,7 @@ export function buildActivityAtomXml(activity, options = {}) {
       typeof item.summary === "string" && item.summary.trim()
         ? item.summary.trim()
         : "";
-    const published =
-      typeof item.published_at === "string" && item.published_at
-        ? item.published_at
-        : generatedAt;
+    const published = activityTimestamp(item) || generatedAt;
     const siteTitle =
       typeof item.site_title === "string" && item.site_title.trim()
         ? item.site_title.trim()

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T08:39:14.664Z",
+  "generated_at": "2026-11-01T09:54:15.485Z",
   "sites": [
     {
       "origin": "https://joshbeard.com",
@@ -66,7 +66,7 @@
           "label": "GitHub"
         },
         {
-          "url": "https://www.threads.net/intent/post?text=There%20is%20always%20more%20https%3A%2F%2Fjoshghent.com%2Fmore%2F",
+          "url": "https://www.threads.net/intent/post?text=Blog%20Roll%20https%3A%2F%2Fjoshghent.com%2Fblogroll%2F",
           "network": "threads",
           "label": "Threads"
         }
@@ -222,15 +222,19 @@
         "title": "11ty or Bust",
         "summary": "The story of how I migrated my site from Gatsby to 11ty",
         "published_at": "2024-01-03T00:00:00.000Z",
+        "observed_at": "2026-11-01T08:37:50.099Z",
         "content_type": "article",
         "language": "en",
+        "dir": "",
         "site_origin": "https://joshghent.com",
         "site_title": "Josh Ghent",
         "domain": "joshghent.com",
         "tags": [],
         "neighborhoods": [],
         "image": "https://v1.screenshot.11ty.dev/https%3A%2F%2Fjoshghent.com%2Fsocial%2F11ty-or-bust%2F/opengraph/_1793269302151",
-        "image_origin": "https://v1.screenshot.11ty.dev"
+        "image_origin": "https://v1.screenshot.11ty.dev",
+        "source_kind": "atom",
+        "page_role": "article"
       },
       "outgoing": [],
       "incoming": [
@@ -526,15 +530,18 @@
         "title": "Memorial Service for Jerry Müller",
         "summary": "Obituary / Write a Tribute Spotify playlist of Dad's favorite songs Dad's anniversary playlist note (separate from the Spotify playlist) Mom's reflections, one year later Photos of Jerry over the years: Additional photos that family and friends shared by email after Dad passed away. Click any image to open it full size.",
         "published_at": "2022-01-07T20:00:00.000Z",
+        "observed_at": "2026-11-01T08:37:50.099Z",
         "content_type": "article",
         "language": "en",
+        "dir": "",
         "site_origin": "https://joshmuller.ca",
         "site_title": "Josh Müller",
         "domain": "joshmuller.ca",
         "tags": [],
         "neighborhoods": [],
         "image": "/assets/activity/posters/8ece6662947fc1e10b7c545f03ecfb73e47ea42615a22acb19fcc9d72bcd5791.webp",
-        "image_origin": ""
+        "image_origin": "",
+        "source_kind": "rss"
       },
       "outgoing": [],
       "incoming": [
@@ -825,15 +832,19 @@
         "title": "Reverse Engineering a PostHog SuperDay",
         "summary": "I'm not here to bullshit anybody, I have never been through a PostHog SuperDay. Like many humans, I've read about it on their website, as they are a company that over-communicates just about everything. This tale started when I got curious about their onboarding wizard . Their pivot from analytics to self-driving systems mirrors what I've been working on for the last couple of years, which has acc",
         "published_at": "2026-08-09T00:00:00.000Z",
+        "observed_at": "2026-11-01T08:37:50.099Z",
         "content_type": "article",
         "language": "en",
+        "dir": "",
         "site_origin": "https://joshtronic.com",
         "site_title": "Josh Sherman",
         "domain": "joshtronic.com",
         "tags": [],
         "neighborhoods": [],
         "image": "",
-        "image_origin": ""
+        "image_origin": "",
+        "source_kind": "rss",
+        "page_role": "unknown"
       },
       "outgoing": [
         {
@@ -986,15 +997,18 @@
         "title": "Link: AI is a Mirror in Which We See Our Own Reflection - oftwominds",
         "summary": "",
         "published_at": "2025-08-19T04:34:46.000Z",
+        "observed_at": "2026-11-01T08:37:50.099Z",
         "content_type": "article",
         "language": "en-us",
+        "dir": "",
         "site_origin": "https://joshua.seigler.net",
         "site_title": "Joshua Seigler",
         "domain": "joshua.seigler.net",
         "tags": [],
         "neighborhoods": [],
         "image": "",
-        "image_origin": ""
+        "image_origin": "",
+        "source_kind": "atom"
       },
       "outgoing": [
         {
@@ -1658,15 +1672,18 @@
         "title": "Corkboard",
         "summary": "A corkboard for notes, pins, and connecting threads in the browser—an open-web experiment for exploring ideas together and leaving a mark.",
         "published_at": "2026-07-15T00:00:00.000Z",
+        "observed_at": "2026-11-01T08:37:50.099Z",
         "content_type": "article",
         "language": "",
+        "dir": "",
         "site_origin": "https://joshuamorris.info",
         "site_title": "Joshua Morris",
         "domain": "joshuamorris.info",
         "tags": [],
         "neighborhoods": [],
         "image": "",
-        "image_origin": ""
+        "image_origin": "",
+        "source_kind": "atom"
       },
       "outgoing": [
         {
@@ -1757,6 +1774,16 @@
           "url": "https://x.com/joshcanhelp",
           "network": "x",
           "label": "X"
+        },
+        {
+          "url": "https://substack.com/@itssophieschoice/note/c-115766170",
+          "network": "substack",
+          "label": "Substack"
+        },
+        {
+          "url": "https://steve-yegge.medium.com/the-death-of-the-stubborn-developer-b5e8f78d326b",
+          "network": "medium",
+          "label": "Medium"
         }
       ],
       "community_topics": [
@@ -1858,15 +1885,19 @@
         "title": "Do we need 'agentic identity'?",
         "summary": "Agents are here, there, and everywhere, growing in numbers at a pace between fast and breakneck, generating or completing work at some other velocity, and poised to change the world entirely or, like, not much at all. Something must be done.",
         "published_at": "2025-10-14T00:00:00.000Z",
+        "observed_at": "2026-11-01T08:37:50.099Z",
         "content_type": "article",
         "language": "en-us",
+        "dir": "",
         "site_origin": "https://www.joshcanhelp.com",
         "site_title": "Josh Cunningham",
         "domain": "www.joshcanhelp.com",
         "tags": [],
         "neighborhoods": [],
         "image": "https://www.joshcanhelp.com/_images/2025/sammy_sandwich_robot_THUMB.jpeg",
-        "image_origin": "https://www.joshcanhelp.com"
+        "image_origin": "https://www.joshcanhelp.com",
+        "source_kind": "atom",
+        "page_role": "unknown"
       },
       "outgoing": [],
       "incoming": [],
@@ -2061,8 +2092,10 @@
         "title": "Aiglon",
         "summary": "span]:flex-row-reverse [&_button>span]:align-top [&_button>span>span:last-child]:ml-0 [&_button>span>span:last-child]:mr-1\">2013 · Aiglon Aiglon · Aiglon · Education · Switzerland",
         "published_at": "",
+        "observed_at": "2026-11-01T08:37:50.099Z",
         "content_type": "project",
         "language": "en",
+        "dir": "",
         "site_origin": "https://www.joshuabaker.com",
         "site_title": "Joshua Baker",
         "domain": "www.joshuabaker.com",
@@ -2079,7 +2112,9 @@
           }
         ],
         "image": "",
-        "image_origin": ""
+        "image_origin": "",
+        "source_kind": "portfolio",
+        "page_role": "project"
       },
       "outgoing": [],
       "incoming": [],

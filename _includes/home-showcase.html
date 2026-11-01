@@ -1,0 +1,21 @@
+{% comment %}
+  Goal: Compact fair-per-origin creative showcase strip on the homepage.
+  Separate from What's New (time-windowed). Credits participants, not the hub.
+  Uses the same showcase-card partial (outbound-href + Umami) as /showcase/.
+{% endcomment %}
+{% assign home_showcase = site.data.showcase.home | default: empty %}
+{% if home_showcase.size > 0 %}
+  <section class="home-showcase" aria-labelledby="home-showcase-heading">
+    <h2 id="home-showcase-heading">Creative work</h2>
+    <ol class="showcase-list showcase-list--home h-feed">
+      {% for item in home_showcase %}
+        <li class="showcase-list__item">
+          {% include showcase-card.html item=item heading_tag="h3" %}
+        </li>
+      {% endfor %}
+    </ol>
+    <p class="home-showcase__more">
+      <a href="{{ '/showcase/' | relative_url }}">Browse the showcase</a>
+    </p>
+  </section>
+{% endif %}

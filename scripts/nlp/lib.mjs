@@ -11,7 +11,8 @@ import { assertPublicURL, normalizeText } from "../network/lib.mjs";
 import { slugifyTopic } from "../network/connections.mjs";
 import { parseHtmlRegions } from "./text.mjs";
 
-export const MAX_PAGES_PER_ORIGIN = 80;
+/** @deprecated Uncapped crawl — retained as Infinity for compatibility. */
+export const MAX_PAGES_PER_ORIGIN = Number.POSITIVE_INFINITY;
 export const MAX_BYTES_PER_RESPONSE = 1_500_000;
 export const MAX_CRAWL_DEPTH = 4;
 export const MAX_TOPICS_PER_ORIGIN = 24;

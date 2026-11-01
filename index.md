@@ -43,6 +43,10 @@ Fresh posts from around the network.
 
 {% include home-recent-activity.html %}
 
+{% include home-happening.html %}
+
+{% include home-showcase.html %}
+
 ## See how the Joshternet connects
 
 Independent sites beginning to link—and sometimes covering the same ground.

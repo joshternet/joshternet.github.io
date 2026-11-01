@@ -50,7 +50,7 @@ That always runs `network:sync`, then `nlp:sync`, then `format:data` (Prettier o
 
 Hourly `network-sync` on `main` owns and commits the crawl/view publish set (`_data/network.json`, `blogrolls`, `connections`, `topics`, `site_signals`, `content`, `data_manifest`, `activity`, `explore`, `topic_views`, `connection_topics`, `site_views`, `search_index`, plus generated `topics/*.md` stubs, `assets/network/*`, and `assets/activity/posters/`). Feature branches may regenerate those files locally for preview, but must not commit them—only code, docs, tests, CHANGELOG, and hand-edited `_data` config (`*_nav.yml`, `topic_aliases.json`, `topic_denylist.json`, `network_dev.json`, `network_preview.json`). Committing sync artifacts in a PR fights every hourly update.
 
-`_data/network_preview.json` lists origins to scrape locally before JoshBot has added them. A local `network:sync` fetches each origin's `/.well-known/josh` and, when that declaration is valid, treats the origin as a current participant. CI skips the file (`CI` or `GITHUB_ACTIONS`), so the hourly job still publishes only the JoshBot registry. Remove an origin from the preview file once the registry includes it.
+`_data/network_preview.json` can list origins to scrape locally before JoshBot has added them, but it should stay empty for normal work so local `network:sync` / `nlp:sync` match the registry. CI skips the file (`CI` or `GITHUB_ACTIONS`). Only add a preview origin for an explicit pre-registry experiment, and remove it once the registry includes it (or when the experiment ends).
 
 Preview the site with LiveReload and the local Workers (button, declaration check, nominations):
 

@@ -27,6 +27,7 @@ on:
       - "schemas/**"
       - "test/network/**"
       - "test/nlp/**"
+      - "test/views/**"
       - "test/browser/**"
       - "package.json"
       - "package-lock.json"
@@ -325,6 +326,8 @@ jobs:
             _data/connection_topics.json
             _data/site_views.json
             _data/search_index.json
+            _data/showcase.json
+            _data/happening.json
             topics/
             assets/network/joshternet.opml
             assets/network/sites/
@@ -407,7 +410,9 @@ jobs:
             topic_views.json \
             connection_topics.json \
             site_views.json \
-            search_index.json
+            search_index.json \
+            showcase.json \
+            happening.json
           do
             test -f ".network-sync-output/_data/${dataset}"
             cp \
@@ -498,6 +503,8 @@ jobs:
             _data/connection_topics.json \
             _data/site_views.json \
             _data/search_index.json \
+            _data/showcase.json \
+            _data/happening.json \
             _data/welcome_cards.json \
             topics \
             assets/network/joshternet.opml \

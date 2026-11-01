@@ -9,7 +9,11 @@
 
 import { slugifyTopic } from "../network/connections.mjs";
 import { buildTopicEvidence, isNonSubjectSlug } from "./evidence.mjs";
-import { decodeHtmlEntities, normalizeExtractedText } from "./text.mjs";
+import {
+  decodeHtmlEntities,
+  normalizeExtractedText,
+  normalizeLanguageTag,
+} from "./text.mjs";
 
 /** Upper bound so one index cannot flood content.json. */
 export const MAX_PORTFOLIO_WORKS = 400;
@@ -50,20 +54,94 @@ const SECTOR_SUBJECTS = [
 ];
 
 /**
+ * True when extracted cell text looks like leaked Tailwind/CSS class junk
+ * rather than human-readable portfolio copy.
+ * @param {string} text
+ * @returns {boolean}
+ */
+function looksLikeCssClassJunk(text) {
+  return /\[&_|flex-row-reverse|\]:align-top|span\]:|\[&_button|ml-0|mr-1|text-mono-|&#38;_/.test(
+    text,
+  );
+}
+
+/**
+ * Removes HTML tags without treating `>` inside quoted attributes as a tag end.
+ * Tailwind arbitrary variants (e.g. `[&_button>span]:align-top`) break naive
+ * `/<[^>]+>/` stripping and leak class fragments into visible text.
+ * @param {string} html
+ * @returns {string}
+ */
+function stripHtmlPreservingAttrGt(html) {
+  return String(html || "")
+    .replace(
+      /\s(?:class|style|data-[a-z0-9_-]+)\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi,
+      "",
+    )
+    .replace(/<\/?[a-zA-Z][^>]*>/g, " ")
+    .replace(/\u00AD|&shy;/gi, "");
+}
+
+/**
+ * Strips residual CSS leakage that survives tag removal.
+ * @param {string} text
+ * @returns {string}
+ */
+function scrubCssLeakage(text) {
+  return String(text || "")
+    .replace(/^[\s\S]*?">/, "")
+    .replace(/\[[^\]]*\]:[^\s]+/g, " ")
+    .replace(/span\]:[^\s]+/g, " ")
+    .replace(/&#38;_?[^\s]*/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * Strips HTML tags and returns clean normalised text.
+ * Prefers readable text spans (`text-mono-0`, `text-white`, `font-medium`);
+ * never returns Tailwind class leakage as a cell value.
  * @param {string} html
  * @returns {string}
  */
 function visibleCell(html) {
-  const primary = String(html || "").match(
-    /class=["'][^"']*\btext-white\b[^"']*["'][^>]*>([\s\S]*?)<\/span>/i,
-  );
-  const source = primary ? primary[1] : String(html || "");
+  const source = String(html || "");
 
-  return normalizeExtractedText(
-    decodeHtmlEntities(
-      source.replace(/<[^>]+>/g, " ").replace(/\u00AD|&shy;/gi, ""),
+  for (const pattern of [
+    /class=["'][^"']*\b(?:text-mono-0|text-white|font-medium)\b[^"']*["'][^>]*>([\s\S]*?)<\/span>/gi,
+  ]) {
+    let match;
+
+    while ((match = pattern.exec(source))) {
+      const candidate = scrubCssLeakage(
+        normalizeExtractedText(
+          decodeHtmlEntities(stripHtmlPreservingAttrGt(match[1])),
+        ),
+      );
+
+      if (candidate && !looksLikeCssClassJunk(candidate)) {
+        return candidate;
+      }
+    }
+  }
+
+  const stripped = scrubCssLeakage(
+    normalizeExtractedText(
+      decodeHtmlEntities(stripHtmlPreservingAttrGt(source)),
     ),
   );
+
+  if (stripped && !looksLikeCssClassJunk(stripped)) {
+    return stripped;
+  }
+
+  const yearOnly = stripped.match(/\b(?:19|20)\d{2}\b/);
+
+  if (yearOnly) {
+    return yearOnly[0];
+  }
+
+  return "";
 }
 
 /**
@@ -372,13 +450,95 @@ export function subjectsFromPortfolio(works, pageUrl, observedAt = "") {
 }
 
 /**
+ * Builds a short, human-readable portfolio summary without echoing the title
+ * or leaking CSS class fragments.
+ * Prefers year · client (when distinct) · sector · location.
+ * @param {{
+ *   year?: string,
+ *   client?: string,
+ *   project?: string,
+ *   sector?: string,
+ *   location?: string,
+ * }} work
+ * @param {string} title - Display title already chosen for the work.
+ * @returns {string}
+ */
+export function summaryForPortfolioWork(work, title) {
+  const titleKey = String(title || "")
+    .trim()
+    .toLowerCase();
+  const client = scrubCssLeakage(String(work?.client || "").trim());
+  const project = scrubCssLeakage(String(work?.project || "").trim());
+  const year = scrubCssLeakage(String(work?.year || "").trim());
+  const sector = scrubCssLeakage(String(work?.sector || "").trim());
+  const location = scrubCssLeakage(String(work?.location || "").trim());
+
+  /** @type {string[]} */
+  const parts = [];
+  /** @type {Set<string>} */
+  const seen = new Set();
+
+  /**
+   * @param {string} part
+   * @param {{ allowTitleEcho?: boolean }} [opts]
+   */
+  const push = (part, opts = {}) => {
+    const value = scrubCssLeakage(part);
+
+    if (!value || looksLikeCssClassJunk(value)) {
+      return;
+    }
+
+    const key = value.toLowerCase();
+
+    if (seen.has(key)) {
+      return;
+    }
+
+    if (!opts.allowTitleEcho && titleKey && key === titleKey) {
+      return;
+    }
+
+    seen.add(key);
+    parts.push(value);
+  };
+
+  push(year, { allowTitleEcho: true });
+
+  // Client context when it is not the same string as the card title.
+  if (client && client.toLowerCase() !== titleKey) {
+    push(client);
+  }
+
+  // Project only when it adds something beyond title and client.
+  if (
+    project &&
+    project.toLowerCase() !== titleKey &&
+    project.toLowerCase() !== client.toLowerCase()
+  ) {
+    push(project);
+  }
+
+  push(sector);
+  push(location);
+
+  return parts.join(" · ");
+}
+
+/**
  * One content item per portfolio work.
  * @param {Array<Record<string, string>>} works
- * @param {{ siteOrigin: string, pageUrl: string, observedAt?: string }} meta
+ * @param {{
+ *   siteOrigin: string,
+ *   pageUrl: string,
+ *   observedAt?: string,
+ *   language?: string | null,
+ * }} meta
  * @returns {Array<Record<string, unknown>>}
  */
 export function contentItemsFromPortfolio(works, meta) {
   const items = [];
+  const language = normalizeLanguageTag(meta?.language || "") || null;
 
   for (const work of works || []) {
     if (!work?.url || !meta?.siteOrigin) {
@@ -386,16 +546,7 @@ export function contentItemsFromPortfolio(works, meta) {
     }
 
     const title = work.project || work.client || "Work";
-    const summary = [
-      work.year,
-      work.client,
-      work.project,
-      work.sector,
-      work.location,
-    ]
-      .map((part) => String(part || "").trim())
-      .filter((part, index, list) => part && list.indexOf(part) === index)
-      .join(" · ");
+    const summary = summaryForPortfolioWork(work, title);
     const declared_topics = topicsForWork(work).map((topic) => ({
       slug: topic.slug,
       label: topic.label,
@@ -412,7 +563,7 @@ export function contentItemsFromPortfolio(works, meta) {
       summary,
       content_type: "project",
       page_role: "project",
-      language: "en",
+      language,
       declared_topics,
       source: { kind: "portfolio", page: meta.pageUrl },
       source_feeds: [{ type: "portfolio", url: meta.pageUrl }],
@@ -425,7 +576,8 @@ export function contentItemsFromPortfolio(works, meta) {
 
 /**
  * Portfolio facts, declared subjects, and project items from crawled indexes.
- * @param {Array<{url?: string, html?: string}>} pages
+ * Accumulates works across every portfolio-shaped page (not first-only).
+ * @param {Array<{url?: string, html?: string, lang?: string}>} pages
  * @param {{ siteOrigin: string, observedAt?: string }} meta
  * @returns {{
  *   profile: {url: string, work_count: number, sectors: string[]} | null,
@@ -439,6 +591,17 @@ export function collectPortfolio(pages, meta) {
   if (!meta?.siteOrigin) {
     return empty;
   }
+
+  /** @type {Array<Record<string, unknown>>} */
+  const items = [];
+  /** @type {Array<Record<string, unknown>>} */
+  const subjects = [];
+  /** @type {Set<string>} */
+  const seenWorks = new Set();
+  /** @type {Set<string>} */
+  const sectorSet = new Set();
+  let profileUrl = "";
+  let workCount = 0;
 
   for (const page of pages || []) {
     if (
@@ -455,26 +618,52 @@ export function collectPortfolio(pages, meta) {
       continue;
     }
 
-    const sectors = [
-      ...new Set(
-        works.map((work) => String(work.sector || "").trim()).filter(Boolean),
-      ),
-    ].sort((left, right) => left.localeCompare(right));
+    if (!profileUrl) {
+      profileUrl = page.url;
+    }
 
-    return {
-      profile: {
-        url: page.url,
-        work_count: works.length,
-        sectors,
-      },
-      subjects: subjectsFromPortfolio(works, page.url, meta.observedAt || ""),
-      items: contentItemsFromPortfolio(works, {
-        siteOrigin: meta.siteOrigin,
-        pageUrl: page.url,
-        observedAt: meta.observedAt || "",
-      }),
-    };
+    workCount += works.length;
+
+    for (const work of works) {
+      const sector = String(work.sector || "").trim();
+
+      if (sector) {
+        sectorSet.add(sector);
+      }
+    }
+
+    subjects.push(
+      ...subjectsFromPortfolio(works, page.url, meta.observedAt || ""),
+    );
+
+    for (const item of contentItemsFromPortfolio(works, {
+      siteOrigin: meta.siteOrigin,
+      pageUrl: page.url,
+      observedAt: meta.observedAt || "",
+      language: normalizeLanguageTag(page.lang),
+    })) {
+      const identity = String(item.identity);
+
+      if (seenWorks.has(identity)) {
+        continue;
+      }
+
+      seenWorks.add(identity);
+      items.push(item);
+    }
   }
 
-  return empty;
+  if (!profileUrl) {
+    return empty;
+  }
+
+  return {
+    profile: {
+      url: profileUrl,
+      work_count: workCount,
+      sectors: [...sectorSet].sort((left, right) => left.localeCompare(right)),
+    },
+    subjects,
+    items,
+  };
 }

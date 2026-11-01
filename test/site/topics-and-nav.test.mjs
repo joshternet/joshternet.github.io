@@ -104,7 +104,7 @@ test("nav keeps Wander top-level and nests About/Network children", async () => 
   assert.match(links, /data-nav-branch="joshbot"/);
   assert.match(
     networkNav,
-    /title: What's New[\s\S]*title: Topics[\s\S]*title: Connections/,
+    /title: What's New[\s\S]*title: Showcase[\s\S]*title: Topics[\s\S]*title: Connections/,
   );
   assert.doesNotMatch(networkNav, /title: Nominate/);
   assert.match(await read("_data/joshbot_nav.yml"), /path: \/nominate\//);
@@ -149,4 +149,9 @@ test("nav keeps Wander top-level and nests About/Network children", async () => 
   assert.match(layout, /site-nav-secondary--joshbot/);
   assert.match(workflow, /npm run nlp:sync/);
   assert.match(workflow, /_data\/topics\.json/);
+
+  const sections = await read("_includes/site-nav-sections.html");
+  assert.match(sections, /page\.url == '\/showcase\/'/);
+  assert.match(sections, /page\.url == '\/activity\/'/);
+  assert.match(sections, /page\.url == '\/events\/'/);
 });

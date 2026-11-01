@@ -1458,3 +1458,85 @@ test("crawlOrigin: soft-404 continue does not enqueue children from duplicate", 
     restore();
   }
 });
+
+test("crawlOrigin: content-index children are unshifted ahead of BFS siblings", async () => {
+  const origin = "https://games.example";
+  const cache = dnsCache(["games.example"]);
+  const visitOrder = [];
+  install();
+  try {
+    globalThis.fetch = async (url) => {
+      const urlStr = String(url);
+      visitOrder.push(urlStr);
+
+      if (urlStr.includes("sitemap.xml")) {
+        return {
+          ok: false,
+          status: 404,
+          headers: new Headers({ "content-type": "text/html" }),
+          arrayBuffer: async () => Buffer.from(""),
+        };
+      }
+
+      if (urlStr === `${origin}/` || urlStr === origin) {
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "text/html" }),
+          arrayBuffer: async () =>
+            Buffer.from(`<!doctype html><html><body>
+              <a href="/games/">Games</a>
+              <a href="/archive/old/">Old archive</a>
+            </body></html>`),
+        };
+      }
+
+      if (urlStr.includes("/games/") && !urlStr.includes("/games/river")) {
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "text/html" }),
+          arrayBuffer: async () =>
+            Buffer.from(`<!doctype html><html><body>
+              <a href="/games/river/">River Crossing</a>
+              <a href="/games/orchard/">Orchard</a>
+            </body></html>`),
+        };
+      }
+
+      return {
+        ok: true,
+        status: 200,
+        headers: new Headers({ "content-type": "text/html" }),
+        arrayBuffer: async () =>
+          Buffer.from(`<!doctype html><html><body><p>ok</p></body></html>`),
+      };
+    };
+
+    const result = await crawlOrigin(origin, { cache });
+    assert.equal(
+      result.selection_reasons["https://games.example/games/river/"],
+      "content-index",
+    );
+    assert.equal(
+      result.selection_reasons["https://games.example/games/orchard/"],
+      "content-index",
+    );
+
+    const riverAt = result.pages.findIndex((page) =>
+      page.url.includes("/games/river"),
+    );
+    const archiveAt = result.pages.findIndex((page) =>
+      page.url.includes("/archive/old"),
+    );
+    assert.ok(riverAt >= 0, "river game page must be crawled");
+    if (archiveAt >= 0) {
+      assert.ok(
+        riverAt < archiveAt,
+        "content-index child should be visited before later BFS sibling",
+      );
+    }
+  } finally {
+    restore();
+  }
+});

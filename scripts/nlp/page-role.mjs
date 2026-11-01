@@ -71,11 +71,19 @@ export function classifyPageRole(url, hints = {}) {
     return "about";
   }
 
-  if (/^\/(portfolio|work|projects?)\/[^/]+$/.test(lower)) {
+  if (
+    /^\/(portfolio|work|projects?|gallery|galleries|albums|photography|photos|art|illustration|artwork|music|discography|tracks|videos|film|animation|games?|interactive|exhibitions|design)\/[^/]+/.test(
+      lower,
+    )
+  ) {
     return "project";
   }
 
-  if (/^\/(portfolio|work|projects?)$/.test(lower)) {
+  if (
+    /^\/(portfolio|work|projects?|gallery|galleries|albums|photography|photos|art|illustration|artwork|music|discography|tracks|videos|film|animation|games?|interactive|exhibitions|design)$/.test(
+      lower,
+    )
+  ) {
     return "portfolio";
   }
 
