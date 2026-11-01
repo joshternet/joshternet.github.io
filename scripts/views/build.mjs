@@ -17,7 +17,7 @@ import {
   writeTextAtomic,
 } from "../nlp/lib.mjs";
 import { semanticallyEqual } from "../nlp/publish.mjs";
-import { buildViewDocuments } from "./lib.mjs";
+import { buildActivityAtomXml, buildViewDocuments } from "./lib.mjs";
 import { materializeActivityPosters } from "./posters.mjs";
 import { materializeWelcomeCards } from "./welcome-cards.mjs";
 
@@ -94,6 +94,16 @@ export async function buildViewProjections(root = ROOT) {
   await writeStableJSON(path.join(dataDir, "welcome_cards.json"), welcomeCards);
 
   await writeStableJSON(path.join(dataDir, "activity.json"), views.activity);
+
+  const atomPath = path.join(root, "assets/activity/atom.xml");
+  const atomXml = buildActivityAtomXml(views.activity);
+  const previousAtom = await fs.readFile(atomPath, "utf8").catch(() => "");
+
+  if (previousAtom !== atomXml) {
+    await fs.mkdir(path.dirname(atomPath), { recursive: true });
+    await writeTextAtomic(atomPath, atomXml);
+  }
+
   await writeStableJSON(path.join(dataDir, "explore.json"), views.explore);
   await writeStableJSON(
     path.join(dataDir, "topic_views.json"),

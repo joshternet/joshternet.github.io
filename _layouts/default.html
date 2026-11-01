@@ -138,6 +138,14 @@
       type="text/xml"
       href="{{ '/assets/network/joshternet.opml' | relative_url }}"
     >
+    {% if page.url == '/activity/' %}
+      <link
+        rel="alternate"
+        type="application/atom+xml"
+        title="Joshternet What's New"
+        href="{{ '/assets/activity/atom.xml' | relative_url }}"
+      >
+    {% endif %}
     {% if jekyll.environment == 'development' %}
       {% assign asset_version = site.time | date: '%s' %}
     {% else %}

@@ -27,6 +27,15 @@ test("activity and search pages avoid popularity language", async () => {
   assert.doesNotMatch(activity, /prolific publisher/);
   assert.doesNotMatch(activity, /One piece per site/);
   assert.match(activity, /include activity-card.html/);
+  assert.match(activity, /activity-subscribe/);
+  assert.match(activity, /\/assets\/activity\/atom\.xml/);
+  assert.match(activity, /\/assets\/network\/joshternet\.opml/);
+  const layout = await read("_layouts/default.html");
+  assert.match(layout, /application\/atom\+xml/);
+  assert.match(layout, /\/assets\/activity\/atom\.xml/);
+  const atom = await read("assets/activity/atom.xml");
+  assert.match(atom, /<feed xmlns="http:\/\/www\.w3\.org\/2005\/Atom">/);
+  assert.match(atom, /<link rel="alternate" href="https:\/\//);
   assert.match(card, /activity-card__heading/);
   assert.match(card, /activity-card__author/);
   assert.match(card, /p-author h-card/);

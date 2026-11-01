@@ -1269,3 +1269,110 @@ export function buildViewDocuments(input) {
     },
   };
 }
+
+/**
+ * Escapes text for Atom XML element content and attributes.
+ * @param {unknown} value
+ * @returns {string}
+ */
+export function escapeAtomText(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&apos;");
+}
+
+/**
+ * Builds an Atom 1.0 document from What's New primary items.
+ * Entry ids are stable article URLs. Does not republish full article bodies.
+ * @param {{
+ *   primary?: Array<Record<string, unknown>>,
+ *   generated_at?: string,
+ * }} activity
+ * @param {{ hubOrigin?: string, feedPath?: string }} [options]
+ * @returns {string}
+ */
+export function buildActivityAtomXml(activity, options = {}) {
+  const hubOrigin = options.hubOrigin || "https://joshternet.org";
+  const feedPath = options.feedPath || "/assets/activity/atom.xml";
+  const feedUrl = `${hubOrigin}${feedPath}`;
+  const selfHtml = `${hubOrigin}/activity/`;
+  const generatedAt =
+    typeof activity?.generated_at === "string" && activity.generated_at
+      ? activity.generated_at
+      : new Date(0).toISOString();
+  const primary = Array.isArray(activity?.primary) ? activity.primary : [];
+
+  /** @type {string[]} */
+  const entries = [];
+
+  for (const item of primary) {
+    if (!item || typeof item !== "object") {
+      continue;
+    }
+
+    const url = typeof item.url === "string" ? item.url.trim() : "";
+
+    if (!/^https:\/\//i.test(url)) {
+      continue;
+    }
+
+    const title =
+      typeof item.title === "string" && item.title.trim()
+        ? item.title.trim()
+        : url;
+    const summary =
+      typeof item.summary === "string" && item.summary.trim()
+        ? item.summary.trim()
+        : "";
+    const published =
+      typeof item.published_at === "string" && item.published_at
+        ? item.published_at
+        : generatedAt;
+    const siteTitle =
+      typeof item.site_title === "string" && item.site_title.trim()
+        ? item.site_title.trim()
+        : typeof item.domain === "string"
+          ? item.domain
+          : "Independent website";
+    const siteOrigin =
+      typeof item.site_origin === "string" &&
+      item.site_origin.startsWith("https://")
+        ? item.site_origin
+        : "";
+
+    const authorUri = siteOrigin
+      ? `\n      <uri>${escapeAtomText(siteOrigin)}</uri>`
+      : "";
+
+    const summaryXml = summary
+      ? `\n    <summary>${escapeAtomText(summary)}</summary>`
+      : "";
+
+    entries.push(`  <entry>
+    <id>${escapeAtomText(url)}</id>
+    <title>${escapeAtomText(title)}</title>
+    <updated>${escapeAtomText(published)}</updated>
+    <published>${escapeAtomText(published)}</published>
+    <link rel="alternate" href="${escapeAtomText(url)}"/>
+    <author>
+      <name>${escapeAtomText(siteTitle)}</name>${authorUri}
+    </author>${summaryXml}
+  </entry>`);
+  }
+
+  return `<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>${escapeAtomText(feedUrl)}</id>
+  <title>Joshternet What's New</title>
+  <updated>${escapeAtomText(generatedAt)}</updated>
+  <link rel="self" type="application/atom+xml" href="${escapeAtomText(feedUrl)}"/>
+  <link rel="alternate" type="text/html" href="${escapeAtomText(selfHtml)}"/>
+  <subtitle>Recent articles from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
+  <generator uri="${escapeAtomText(hubOrigin)}/">Joshternet views:build</generator>
+${entries.join("\n")}
+</feed>
+`;
+}
