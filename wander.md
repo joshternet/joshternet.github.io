@@ -3,8 +3,8 @@ layout: default
 title: Wander through independent Joshternet websites
 description: >-
   Wander through independent Joshternet websites—open a random participant,
-  follow on-page trails, and visit real sites on their own domains. Everyone is
-  welcome to join the network.
+  optionally follow an observed connection to another site, and visit real sites
+  on their own domains. Everyone is welcome to join the network.
 keywords: >-
   wander Joshternet, explore websites, independent websites, Josh network,
   indie web
@@ -37,6 +37,28 @@ footer: false
       aria-label="Go to another random site"
     >
       Go ↻
+    </button>
+
+    <button
+      class="wander-bar__follow"
+      type="button"
+      data-wander-follow
+      hidden
+      disabled
+      aria-label="Follow an observed connection from this site"
+    >
+      Follow a connection
+    </button>
+
+    <button
+      class="wander-bar__back"
+      type="button"
+      data-wander-back
+      hidden
+      disabled
+      aria-label="Return to the previous Wander site in this session"
+    >
+      Previous
     </button>
 
     <label class="wander-bar__address">

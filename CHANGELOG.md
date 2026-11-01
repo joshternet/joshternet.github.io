@@ -31,6 +31,7 @@
 
 ### Changed
 
+- Wander can optionally Follow a connection along observed outgoing edges (with session Previous), while random Go stays available.
 - Topic quality rejects weak generic unigrams (`anything`, `action`, `tool`, and similar) as subjects and surfaces why-here evidence on topic pages.
 - `/implement/validate/` shows next steps after a valid check, including independent declaration vs public-registry listing facts from the build-time Network snapshot, plus Network and nominate links—without a second checker.
 - NLP crawl improvements for sites without feed tags (for example joshghent.com): BlogPosting/Article JSON-LD and `og:type=article` drive `page_role` so root permalinks get heuristics; Person `knowsAbout` becomes community-eligible declared topics; soft-404 pages that repeat the homepage (canonical to `/` or identity-slash body match) no longer consume the page budget; feed entry URLs enqueue before identity slash seeds; year-prefixed heuristic junk (`2018-gifs`) is dropped.
