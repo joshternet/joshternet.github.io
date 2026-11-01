@@ -189,16 +189,6 @@ No accounts. No signup form. Your website stays yours. This page guides the exis
       </li>
       <li>
         <a
-          href="{{ '/welcome/' | relative_url }}"
-          data-join-share="welcome"
-          data-joshternet-skip-link-track
-        >
-          Download your welcome card
-        </a>
-        — optional postcard art generated for registry members.
-      </li>
-      <li>
-        <a
           href="{{ '/implement/buttons/' | relative_url }}"
           data-join-share="button"
           data-joshternet-skip-link-track

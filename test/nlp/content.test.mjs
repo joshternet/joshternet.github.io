@@ -15,8 +15,11 @@ import {
   ACTIVITY_IMAGE_MIN_HEIGHT,
   ACTIVITY_IMAGE_MIN_WIDTH,
   contentIdentityKey,
+  contentItemNeedsPosterEnrichment,
   contentItemsFromJsonFeed,
   contentItemsFromRssOrAtom,
+  contentUrlMatchesSiteOrigin,
+  enrichContentItemPosters,
   feedImageFromJsonItem,
   feedImageFromXml,
   httpContentUrl,
@@ -866,6 +869,36 @@ test("joinContentWithPageSignals: uses the page poster and share description whe
   );
   assert.equal(joined[0].image, "https://cdn.example/social.jpg");
   assert.equal(joined[0].summary, "What the publisher wrote for sharing.");
+});
+
+test("joinContentWithPageSignals: expands year-only album titles from share text", () => {
+  const joined = joinContentWithPageSignals(
+    [
+      {
+        identity: "url:https://photos.example/photos/2014/",
+        url: "https://photos.example/photos/2014/",
+        title: "2014",
+        summary: "",
+        content_type: "photograph",
+        declared_topics: [],
+      },
+    ],
+    [
+      {
+        pages: [
+          {
+            url: "https://photos.example/photos/2014/",
+            poster_image: "https://photos.example/photos/2014/cover.jpg",
+            share_description: "My Photos from 2014",
+          },
+        ],
+        declared_topics: [],
+      },
+    ],
+  );
+  assert.equal(joined[0].image, "https://photos.example/photos/2014/cover.jpg");
+  assert.equal(joined[0].summary, "My Photos from 2014");
+  assert.equal(joined[0].title, "My Photos from 2014");
 });
 
 test("joinContentWithPageSignals: keeps a feed poster and summary", () => {
@@ -1909,6 +1942,50 @@ test("normalizeContentItemForPublish drops invalid items and stringifies summary
   assert.equal("updated_at" in titled, false);
 });
 
+test("contentUrlMatchesSiteOrigin requires matching origins", () => {
+  assert.equal(
+    contentUrlMatchesSiteOrigin(
+      "https://joshua.seigler.net/posts/x/",
+      "https://joshua.seigler.net",
+    ),
+    true,
+  );
+  assert.equal(
+    contentUrlMatchesSiteOrigin(
+      "https://joshternet.org/",
+      "https://joshua.seigler.net",
+    ),
+    false,
+  );
+  assert.equal(contentUrlMatchesSiteOrigin("https://a.example/", ""), false);
+  assert.equal(
+    contentUrlMatchesSiteOrigin("https://a.example/", "not a url"),
+    false,
+  );
+});
+
+test("normalizeContentItemForPublish drops member link-posts to the hub", () => {
+  assert.equal(
+    normalizeContentItemForPublish({
+      identity: "url:https://joshternet.org/",
+      url: "https://joshternet.org/",
+      site_origin: "https://joshua.seigler.net",
+      title: "Link: Joshternet",
+      summary: "",
+    }),
+    null,
+  );
+
+  const sameOrigin = normalizeContentItemForPublish({
+    identity: "url:https://joshua.seigler.net/posts/hi/",
+    url: "https://joshua.seigler.net/posts/hi/",
+    site_origin: "https://joshua.seigler.net",
+    title: "Hi",
+    summary: "",
+  });
+  assert.equal(sameOrigin.url, "https://joshua.seigler.net/posts/hi/");
+});
+
 test("mergeContentItems drops guid-only drafts without http urls", () => {
   const merged = mergeContentItems([
     { identity: "id:https://a.example:1", url: null, title: "Ghost" },
@@ -1965,4 +2042,440 @@ test("merged empty summaries satisfy content.schema.json", async () => {
     true,
     JSON.stringify(validate.errors),
   );
+});
+
+test("contentItemNeedsPosterEnrichment targets creative paths without images", () => {
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://joshuamorris.info/experiments/corkboard/",
+      content_type: "article",
+    }),
+    true,
+  );
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://joshuamorris.info/experiments/corkboard/",
+      content_type: "article",
+      image: "https://joshuamorris.info/images/experiments/corkboard-og.webp",
+    }),
+    false,
+  );
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://joshuamorris.info/notes/hello/",
+      content_type: "article",
+    }),
+    false,
+  );
+  assert.equal(contentItemNeedsPosterEnrichment(null), false);
+});
+
+test("enrichContentItemPosters fills publisher og:image for experiments", async () => {
+  const poster =
+    "https://joshuamorris.info/images/experiments/corkboard-og.webp";
+  const items = [
+    {
+      url: "https://joshuamorris.info/experiments/corkboard/",
+      content_type: "article",
+      title: "Corkboard",
+      summary: "",
+      image: "",
+    },
+  ];
+
+  await enrichContentItemPosters(items, {
+    fetchText: async (url) => {
+      assert.equal(url, items[0].url);
+      return {
+        url,
+        contentType: "text/html",
+        body: `<html><head>
+          <meta property="og:image" content="${poster}">
+          <meta property="og:description" content="A corkboard for notes.">
+        </head></html>`,
+      };
+    },
+  });
+
+  assert.equal(items[0].image, poster);
+  assert.match(String(items[0].summary), /corkboard/i);
+});
+
+test("enrichContentItemPosters skips items that already have posters", async () => {
+  let fetched = false;
+  const items = [
+    {
+      url: "https://joshuamorris.info/experiments/model-viewer/",
+      content_type: "article",
+      image:
+        "https://joshuamorris.info/images/experiments/model-viewer-og.webp",
+    },
+  ];
+
+  await enrichContentItemPosters(items, {
+    fetchText: async () => {
+      fetched = true;
+      return { url: "", contentType: "text/html", body: "" };
+    },
+  });
+
+  assert.equal(fetched, false);
+});
+
+test("mergeContentItems fills empty summary and upgrades article to project", () => {
+  const merged = mergeContentItems([
+    {
+      identity: "url:https://games.example/games/river/",
+      url: "https://games.example/games/river/",
+      title: "River Crossing",
+      summary: "",
+      content_type: "article",
+      image: "",
+      source_feeds: [{ type: "rss", url: "https://games.example/feed.xml" }],
+      declared_topics: [],
+    },
+    {
+      identity: "url:https://games.example/games/river/",
+      url: "https://games.example/games/river/",
+      title: "River Crossing",
+      summary: "A quiet puzzle about getting everyone across.",
+      content_type: "game",
+      image: "https://games.example/images/river.png",
+      source_feeds: [
+        { type: "creative-index", url: "https://games.example/games/" },
+      ],
+      declared_topics: [],
+    },
+  ]);
+  assert.equal(merged.length, 1);
+  assert.equal(merged[0].content_type, "game");
+  assert.equal(merged[0].image, "https://games.example/images/river.png");
+  assert.match(String(merged[0].summary), /quiet puzzle/i);
+});
+
+test("mergeContentItems does not overwrite an existing https image", () => {
+  const merged = mergeContentItems([
+    {
+      identity: "url:https://games.example/games/orchard/",
+      url: "https://games.example/games/orchard/",
+      title: "Orchard",
+      summary: "Grow fruit",
+      content_type: "game",
+      image: "https://games.example/images/orchard.png",
+      source_feeds: [
+        { type: "creative-index", url: "https://games.example/games/" },
+      ],
+      declared_topics: [],
+    },
+    {
+      identity: "url:https://games.example/games/orchard/",
+      url: "https://games.example/games/orchard/",
+      title: "Orchard",
+      summary: "Grow fruit",
+      content_type: "game",
+      image: "https://cdn.example/other.png",
+      source_feeds: [{ type: "rss", url: "https://games.example/feed.xml" }],
+      declared_topics: [],
+    },
+  ]);
+  assert.equal(merged[0].image, "https://games.example/images/orchard.png");
+});
+
+test("contentItemNeedsPosterEnrichment is true for games path without image", () => {
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://joshtronic.com/games/age-of-combat/",
+      content_type: "game",
+      image: "",
+    }),
+    true,
+  );
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://joshtronic.com/games/age-of-combat/",
+      content_type: "game",
+      image: "https://joshtronic.com/images/age.png",
+    }),
+    false,
+  );
+});
+
+test("contentItemNeedsPosterEnrichment rejects bad urls and credentials", () => {
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "http://a.example/games/x/",
+      content_type: "game",
+    }),
+    false,
+  );
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://user:pass@a.example/games/x/",
+      content_type: "game",
+    }),
+    false,
+  );
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://[bad]/games/x/",
+      content_type: "game",
+    }),
+    false,
+  );
+});
+
+test("enrichContentItemPosters returns empty input unchanged and swallows fetch errors", async () => {
+  assert.deepEqual(await enrichContentItemPosters([]), []);
+  assert.deepEqual(await enrichContentItemPosters(null), []);
+
+  const items = [
+    {
+      url: "https://joshtronic.com/games/age-of-combat/",
+      content_type: "game",
+      image: "",
+      summary: "",
+    },
+  ];
+
+  await enrichContentItemPosters(items, {
+    fetchText: async () => {
+      throw new Error("network down");
+    },
+  });
+
+  assert.equal(items[0].image, "");
+});
+
+test("mergeContentItems keeps existing summary and non-article content_type", () => {
+  const merged = mergeContentItems([
+    {
+      identity: "url:https://games.example/games/river/",
+      url: "https://games.example/games/river/",
+      title: "River Crossing",
+      summary: "Keep me",
+      content_type: "game",
+      image: "https://games.example/images/river.png",
+      source_feeds: [{ type: "rss", url: "https://games.example/feed.xml" }],
+      declared_topics: [],
+    },
+    {
+      identity: "url:https://games.example/games/river/",
+      url: "https://games.example/games/river/",
+      title: "River Crossing",
+      summary: "Ignore me",
+      content_type: "article",
+      image: "https://cdn.example/other.png",
+      source_feeds: [
+        { type: "creative-index", url: "https://games.example/games/" },
+      ],
+      declared_topics: [],
+    },
+  ]);
+  assert.equal(merged[0].summary, "Keep me");
+  assert.equal(merged[0].content_type, "game");
+  assert.equal(merged[0].image, "https://games.example/images/river.png");
+});
+
+test("enrichContentItemPosters does not replace a non-https image string", async () => {
+  const items = [
+    {
+      url: "https://joshtronic.com/games/age-of-combat/",
+      content_type: "game",
+      image: "/local/placeholder.png",
+      summary: "Already summarized enough for a card.",
+    },
+  ];
+
+  await enrichContentItemPosters(items, {
+    fetchText: async (url) => ({
+      url,
+      contentType: "text/html",
+      body: `<html><head>
+        <meta property="og:image" content="https://cdn.example/og.png">
+        <meta property="og:description" content="Should not replace summary">
+      </head></html>`,
+    }),
+  });
+
+  assert.equal(items[0].image, "/local/placeholder.png");
+  assert.equal(items[0].summary, "Already summarized enough for a card.");
+});
+
+test("enrichContentItemPosters uses default fetchText/cache options and non-string body", async () => {
+  const items = [
+    {
+      url: "https://joshtronic.com/games/flip-flop-frenzy/",
+      content_type: "game",
+      image: "",
+      summary: "",
+    },
+  ];
+
+  await enrichContentItemPosters(items, {
+    fetchText: async (url) => ({
+      // non-string body / url exercise ternary false branches
+      url: null,
+      contentType: "text/html",
+      body: null,
+    }),
+  });
+
+  assert.equal(items[0].image, "");
+});
+
+test("contentItemNeedsPosterEnrichment accepts creative path with unknown type", () => {
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://joshtronic.com/games/age-of-combat/",
+      content_type: "oddity",
+      image: "",
+    }),
+    true,
+  );
+});
+
+test("contentItemNeedsPosterEnrichment rejects username-only and password-only urls", () => {
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://user@joshtronic.com/games/age-of-combat/",
+      content_type: "game",
+    }),
+    false,
+  );
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://:secret@joshtronic.com/games/age-of-combat/",
+      content_type: "game",
+    }),
+    false,
+  );
+});
+
+test("contentItemNeedsPosterEnrichment rejects enrich types on non-creative paths", () => {
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://a.example/blog/hello-world/",
+      content_type: "project",
+      image: "",
+    }),
+    false,
+  );
+});
+
+test("enrichContentItemPosters accepts an explicit cache map", async () => {
+  const cache = new Map();
+  const items = [
+    {
+      url: "https://joshtronic.com/games/idol-idle/",
+      content_type: "game",
+      image: "",
+      summary: "Already has a summary long enough.",
+    },
+  ];
+
+  await enrichContentItemPosters(items, {
+    cache,
+    fetchText: async (url) => ({
+      url,
+      contentType: "text/html",
+      body: "<html><head></head><body>no og</body></html>",
+    }),
+  });
+
+  assert.equal(items[0].image, "");
+});
+
+test("mergeContentItems fills whitespace-only summary and ignores non-string draft fields", () => {
+  const merged = mergeContentItems([
+    {
+      identity: "url:https://games.example/games/know-the-table/",
+      url: "https://games.example/games/know-the-table/",
+      title: "Know the Table",
+      summary: "   ",
+      content_type: "article",
+      image: "",
+      source_feeds: [{ type: "rss", url: "https://games.example/feed.xml" }],
+      declared_topics: [],
+    },
+    {
+      identity: "url:https://games.example/games/know-the-table/",
+      url: "https://games.example/games/know-the-table/",
+      title: "Know the Table",
+      // summary omitted → non-string branch
+      content_type: 42,
+      image: "https://games.example/images/table.png",
+      source_feeds: [
+        { type: "creative-index", url: "https://games.example/games/" },
+      ],
+      declared_topics: [],
+    },
+  ]);
+  assert.equal(merged[0].content_type, "article");
+  assert.equal(merged[0].image, "https://games.example/images/table.png");
+});
+
+test("mergeContentItems upgrades article when draft summary is present", () => {
+  const merged = mergeContentItems([
+    {
+      identity: "url:https://games.example/games/river-of-doom/",
+      url: "https://games.example/games/river-of-doom/",
+      title: "River of DOOM!!!",
+      summary: undefined,
+      content_type: "article",
+      source_feeds: [{ type: "rss", url: "https://games.example/feed.xml" }],
+      declared_topics: [],
+    },
+    {
+      identity: "url:https://games.example/games/river-of-doom/",
+      url: "https://games.example/games/river-of-doom/",
+      title: "River of DOOM!!!",
+      summary: "A chaotic river arcade.",
+      content_type: "game",
+      source_feeds: [
+        { type: "creative-index", url: "https://games.example/games/" },
+      ],
+      declared_topics: [],
+    },
+  ]);
+  assert.equal(merged[0].content_type, "game");
+  assert.match(String(merged[0].summary), /chaotic river/i);
+});
+
+test("enrichContentItemPosters uses default fetchText when every item already has a poster", async () => {
+  const items = [
+    {
+      url: "https://joshtronic.com/games/age-of-combat/",
+      content_type: "game",
+      image: "https://joshtronic.com/images/age.png",
+    },
+  ];
+
+  // No fetchText option → covers options.fetchText || fetchPublicText right branch
+  // without performing a network fetch.
+  const result = await enrichContentItemPosters(items);
+  assert.equal(result[0].image, "https://joshtronic.com/images/age.png");
+});
+
+test("enrichContentItemPosters treats non-string image as empty", async () => {
+  const items = [
+    {
+      url: "https://joshtronic.com/games/age-of-combat/",
+      content_type: "game",
+      image: null,
+      summary: "",
+    },
+  ];
+
+  await enrichContentItemPosters(items, {
+    fetchText: async (url) => ({
+      url,
+      contentType: "text/html",
+      body: `<html><head>
+        <meta property="og:image" content="https://joshtronic.com/images/age.png">
+        <meta property="og:description" content="A combat age game.">
+      </head></html>`,
+    }),
+  });
+
+  assert.equal(items[0].image, "https://joshtronic.com/images/age.png");
 });

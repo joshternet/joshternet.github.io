@@ -1,9 +1,19 @@
 {% comment %}
   Goal: One What's New-style card. Expects include.item with title, url,
   published_at, site_title, summary, tags, domain, optional image.
+  Optional Happening fields: start, end, venue, location (event dates stay in
+  the publisher's declared timezone string — no visitor TZ conversion).
   Optional include.heading_tag: "h2" (default) or "h3" for nested sections.
 {% endcomment %}
-<li class="activity-card h-entry">
+<li
+  class="activity-card h-entry"
+  {% if include.item.language and include.item.language != '' %}
+    lang="{{ include.item.language | escape }}"
+  {% endif %}
+  {% if include.item.dir and include.item.dir != '' %}
+    dir="{{ include.item.dir | escape }}"
+  {% endif %}
+>
   <article>
     {% if include.item.image and include.item.image != '' %}
       {% include outbound-href.html url=include.item.url %}
@@ -71,6 +81,29 @@
             <span class="p-name">{{ include.item.site_title | escape }}</span>
           {% endif %}
         </p>
+      {% endif %}
+      {% if include.item.start and include.item.start != '' %}
+        <p class="happening-date">
+          <time datetime="{{ include.item.start | escape }}">
+            {{- include.item.start | date: '%b %-d, %Y' -}}
+          </time>
+          {% if include.item.end and include.item.end != '' %}
+            &ndash;
+            <time datetime="{{ include.item.end | escape }}">
+              {{- include.item.end | date: '%b %-d, %Y' -}}
+            </time>
+          {% endif %}
+        </p>
+      {% endif %}
+      {% if include.item.venue and include.item.venue != '' %}
+        <p class="happening-venue">
+          {{ include.item.venue | escape }}
+          {% if include.item.location and include.item.location != '' %}
+            &mdash; {{ include.item.location | escape }}
+          {% endif %}
+        </p>
+      {% elsif include.item.location and include.item.location != '' %}
+        <p class="happening-venue">{{ include.item.location | escape }}</p>
       {% endif %}
       {% if include.item.summary and include.item.summary != '' %}
         <p

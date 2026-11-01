@@ -1,12 +1,15 @@
 /**
  * Goal & Constraints:
  * Normalize feed entries into content.json with canonical URL identity and
- * cross-feed dedupe. Never mirror full article bodies.
+ * cross-feed dedupe. Never mirror full article bodies. After join, creative
+ * works still missing images fetch the publisher page once for og:image so
+ * Showcase can use the site's existing posters (nlp:sync / GitHub Actions).
  */
 
 import { originFromHttpUrl } from "../network/blogroll.mjs";
 import { slugifyTopic } from "../network/connections.mjs";
 import { buildTopicEvidence, isCommunityEligibleSource } from "./evidence.mjs";
+import { fetchPublicText } from "./lib.mjs";
 import {
   MAX_SUMMARY_CHARS,
   MAX_TITLE_CHARS,
@@ -15,7 +18,16 @@ import {
   decodeHrefForParse,
   normalizeExtractedText,
   normalizeLanguageTag,
+  posterImageFromHtml,
+  shareDescriptionFromHtml,
 } from "./text.mjs";
+
+/**
+ * Creative index child paths whose publisher pages usually declare og:image.
+ * @type {RegExp}
+ */
+const CREATIVE_WORK_PATH =
+  /\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?)\/.+/i;
 
 /**
  * Prefers entry-level language, then channel/feed language.
@@ -142,8 +154,30 @@ export function httpContentUrl(value) {
 }
 
 /**
+ * True when a content URL is same-origin as the participating publisher.
+ * Link-blog feed entries that point at another origin (including the hub)
+ * must not be published as that publisher's content URL.
+ * @param {string} url
+ * @param {unknown} siteOrigin
+ * @returns {boolean}
+ */
+export function contentUrlMatchesSiteOrigin(url, siteOrigin) {
+  if (typeof siteOrigin !== "string" || !siteOrigin.trim()) {
+    return false;
+  }
+
+  try {
+    return new URL(url).origin === new URL(siteOrigin).origin;
+  } catch {
+    return false;
+  }
+}
+
+/**
  * Shapes a content item for content.schema.json. Drops items without identity
- * or an http(s) url. Empty summaries become "".
+ * or an http(s) url, and drops cross-origin URLs (feed "Link:" posts whose
+ * entry link is another site, e.g. a member linking the hub). Empty summaries
+ * become "".
  * @param {unknown} item
  * @returns {Record<string, unknown> | null}
  */
@@ -161,6 +195,17 @@ export function normalizeContentItemForPublish(item) {
   const url = httpContentUrl(record.url);
 
   if (!url) {
+    return null;
+  }
+
+  // Link-blog entries often use the linked page as <link>/<id>. When that
+  // page is another participant (including the hub), publishing it under the
+  // member's site_origin trips cross-origin-content. Drop those.
+  if (
+    typeof record.site_origin === "string" &&
+    record.site_origin.trim() &&
+    !contentUrlMatchesSiteOrigin(url, record.site_origin)
+  ) {
     return null;
   }
 
@@ -773,8 +818,31 @@ export function mergeContentItems(drafts) {
       existing.published_at = draft.published_at;
     }
 
+    // Prefer the first non-empty poster; never overwrite an index/feed image
+    // with a later empty or duplicate enrich draft.
     if (!existing.image && draft.image) {
       existing.image = draft.image;
+    }
+
+    const existingSummary =
+      typeof existing.summary === "string" ? existing.summary.trim() : "";
+    const draftSummary =
+      typeof draft.summary === "string" ? draft.summary.trim() : "";
+
+    if (!existingSummary && draftSummary) {
+      existing.summary = draft.summary;
+    }
+
+    // Creative index/homepage drafts upgrade thin RSS "article" shells.
+    const draftType =
+      typeof draft.content_type === "string" ? draft.content_type : "";
+
+    if (
+      existing.content_type === "article" &&
+      draftType &&
+      draftType !== "article"
+    ) {
+      existing.content_type = draftType;
     }
   }
 
@@ -898,6 +966,18 @@ export function joinContentWithPageSignals(items, originSignals) {
       next.summary = page.share_description;
     }
 
+    // Year-only album titles ("2014") become the publisher's share text when
+    // we have it, so Showcase cards are not blank year chips.
+    const titleText = typeof next.title === "string" ? next.title.trim() : "";
+
+    if (
+      /^\d{4}$/.test(titleText) &&
+      typeof page?.share_description === "string" &&
+      page.share_description.trim()
+    ) {
+      next.title = plainTextSummary(page.share_description) || titleText;
+    }
+
     for (const topic of pageTopics) {
       const id = `${topic.slug}\0${topic.source || ""}`;
 
@@ -913,6 +993,105 @@ export function joinContentWithPageSignals(items, originSignals) {
 
     return next;
   });
+}
+
+/**
+ * True when a content item should try the publisher page for a missing poster.
+ * Items that already have a non-empty https image (e.g. games index extract)
+ * are skipped so enrich never overwrites a good index poster.
+ * Creative paths under /games/… and /experiments/… are included via the
+ * creative-work path matcher.
+ * @param {Record<string, unknown>} item
+ * @returns {boolean}
+ */
+export function contentItemNeedsPosterEnrichment(item) {
+  if (!item || typeof item !== "object") {
+    return false;
+  }
+
+  if (typeof item.image === "string" && item.image.startsWith("https://")) {
+    return false;
+  }
+
+  if (typeof item.url !== "string" || !item.url.startsWith("https://")) {
+    return false;
+  }
+
+  try {
+    const parsed = new URL(item.url);
+
+    if (parsed.username || parsed.password) {
+      return false;
+    }
+
+    // Creative-path works (/games/…, /experiments/…, …) are enrichable whether
+    // the feed typed them as game/project/article or left content_type thin.
+    return CREATIVE_WORK_PATH.test(parsed.pathname);
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Fills missing posters (and empty summaries) from each work page's Open Graph
+ * tags. Used by nlp:sync so GitHub Actions Showcase cards get the publisher's
+ * existing experiment/game posters even when the feed omitted enclosures and
+ * the crawl window missed the detail page.
+ *
+ * Invariant: never overwrites a non-empty https `image` already set by index
+ * extract or feeds (`contentItemNeedsPosterEnrichment` gates that). Enrich only
+ * fills when the work page has og:image / share description and the item still
+ * lacks them—typical for `/games/…` and `/experiments/…` detail pages.
+ * @param {Array<Record<string, unknown>>} items
+ * @param {{
+ *   cache?: Map<string, unknown>,
+ *   fetchText?: typeof fetchPublicText,
+ * }} [options]
+ * @returns {Promise<Array<Record<string, unknown>>>}
+ */
+export async function enrichContentItemPosters(items, options = {}) {
+  if (!Array.isArray(items) || items.length === 0) {
+    return Array.isArray(items) ? items : [];
+  }
+
+  const fetchText = options.fetchText || fetchPublicText;
+  const cache = options.cache || new Map();
+
+  for (const item of items) {
+    if (!contentItemNeedsPosterEnrichment(item)) {
+      continue;
+    }
+
+    try {
+      const fetched = await fetchText(String(item.url), {
+        cache,
+        accept: "text/html,application/xhtml+xml;q=0.9,*/*;q=0.8",
+      });
+      const html = typeof fetched?.body === "string" ? fetched.body : "";
+      const pageUrl =
+        typeof fetched?.url === "string" ? fetched.url : String(item.url);
+      const poster = posterImageFromHtml(html, pageUrl);
+      const existingImage =
+        typeof item.image === "string" ? item.image.trim() : "";
+
+      // Only assign when still empty — belt-and-suspenders with the gate above.
+      if (!existingImage && poster) {
+        item.image = poster;
+      }
+
+      if (!plainTextSummary(String(item.summary || ""))) {
+        const share = shareDescriptionFromHtml(html);
+
+        if (share) {
+          item.summary = share;
+        }
+      }
+    } catch {
+      // Keep the feed/creative draft; Showcase simply stays without a poster.
+    }
+  }
+
+  return items;
 }
 
 /**

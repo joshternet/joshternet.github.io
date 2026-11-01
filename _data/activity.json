@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-31T21:35:59.137Z",
+  "generated_at": "2026-11-01T09:54:15.485Z",
   "window_days": 7,
-  "primary_count": 4,
+  "primary_count": 5,
   "item_count": 847,
   "content_types": ["article"],
   "primary": [
@@ -11,8 +11,10 @@
       "title": "Gluten-Free Chocolate Cake",
       "summary": "Nutrition assumptions and sources",
       "published_at": "2026-10-31T19:55:58.000Z",
+      "observed_at": "2026-11-01T08:37:50.099Z",
       "content_type": "article",
       "language": "en",
+      "dir": "",
       "site_origin": "https://joshmuller.ca",
       "site_title": "Josh Müller",
       "domain": "joshmuller.ca",
@@ -29,15 +31,19 @@
         }
       ],
       "image": "/assets/activity/posters/740a76bfeb5078c7042231dc3d28ff27380df09b88eb804be63c0abfd29f678b.webp",
-      "image_origin": ""
+      "image_origin": "",
+      "source_kind": "rss",
+      "page_role": "article"
     },
     {
       "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
       "title": "Worth Wandering: Radio Aporee",
       "summary": "A worldwide collection of field recordings that lets you explore the sounds of cities, forests, rivers, train stations and ordinary places, with experimental radio projects that turn listening into an entirely different way of experiencing the world.",
       "published_at": "2026-10-30T14:00:00.000Z",
+      "observed_at": "2026-11-01T08:37:50.099Z",
       "content_type": "article",
       "language": "en",
+      "dir": "",
       "site_origin": "https://joshuamorris.info",
       "site_title": "Joshua Morris",
       "domain": "joshuamorris.info",
@@ -54,37 +60,67 @@
         }
       ],
       "image": "/assets/activity/posters/bd55e5a6e8a8b4b8e593596e876eb2d31f4a32beecea28adcfa36c210b00811f.webp",
-      "image_origin": ""
+      "image_origin": "",
+      "source_kind": "atom",
+      "page_role": "article"
     },
     {
       "url": "https://joshghent.com/enterprise-sales-teams/",
       "title": "Enterprise sales teams, please, I beg you, stop",
       "summary": "I asked for a price on a few extra seats of software we already pay for. Two days and a pile of irrelevant questions later, I got one.",
       "published_at": "2026-10-28T00:00:00.000Z",
+      "observed_at": "2026-11-01T08:37:50.099Z",
       "content_type": "article",
       "language": "en",
+      "dir": "",
       "site_origin": "https://joshghent.com",
       "site_title": "Josh Ghent",
       "domain": "joshghent.com",
       "tags": [],
       "neighborhoods": [],
       "image": "/assets/activity/posters/4c514b3d1d438731fbfe946e8285c544a8bdc605e07a60a93d9c2857118dd71d.webp",
-      "image_origin": ""
+      "image_origin": "",
+      "source_kind": "atom",
+      "page_role": "article"
+    },
+    {
+      "url": "https://joshuamorris.info/experiments/weird-web-october-2026/skeuomorphism/",
+      "title": "Skeuomorphism",
+      "summary": "Operate a Radio Shack Armatron and move objects around its tabletop.",
+      "published_at": "2026-10-27T00:00:00.000Z",
+      "observed_at": "2026-11-01T08:37:50.099Z",
+      "content_type": "article",
+      "language": "en",
+      "dir": "",
+      "site_origin": "https://joshuamorris.info",
+      "site_title": "Joshua Morris",
+      "domain": "joshuamorris.info",
+      "tags": [],
+      "neighborhoods": [],
+      "image": "/assets/activity/posters/422b88b509b6913ae27504902894d512cfae7a2895864cba864019d529560cf5.webp",
+      "image_origin": "",
+      "source_kind": "atom",
+      "page_role": "unknown",
+      "kind": "project"
     },
     {
       "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
       "title": "Learning a New Tech Stack with an LLM",
       "summary": "While I mentioned a few weeks back that I'm now recovering from AI Psychosis , that doesn't mean I've given up on the technology completely. I'm writing more emails, and engaging with human beings as much as I can, and that part's been great. I still use agents as a glorified typewriter to generate code, and still very much get my hands in the dirt and sling code myself. I've also gotten quite obs",
       "published_at": "2026-10-26T00:00:00.000Z",
+      "observed_at": "2026-11-01T08:37:50.099Z",
       "content_type": "article",
       "language": "en",
+      "dir": "",
       "site_origin": "https://joshtronic.com",
       "site_title": "Josh Sherman",
       "domain": "joshtronic.com",
       "tags": [],
       "neighborhoods": [],
       "image": "",
-      "image_origin": ""
+      "image_origin": "",
+      "source_kind": "rss",
+      "page_role": "unknown"
     }
   ]
 }

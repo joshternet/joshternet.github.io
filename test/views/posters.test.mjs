@@ -13,14 +13,23 @@ import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 
 import {
+  POSTER_DIRECTORY,
+  POSTER_FETCH_ATTEMPTS,
+  POSTER_FETCH_USER_AGENT,
   POSTER_MAX_HEIGHT,
   POSTER_MAX_WIDTH,
   applyPosterAssets,
+  fetchPosterBytes,
   materializeActivityPosters,
+  materializeSheetMusicPosters,
   posterAssetPath,
   posterSourcesFromViews,
+  remainingRemoteShowcasePosters,
   removeUnshownPosters,
+  renderSheetMusicPoster,
   resizePoster,
+  sheetMusicPosterAssetPath,
+  sheetMusicPreviewSvg,
   visitShownPosters,
 } from "../../scripts/views/posters.mjs";
 
@@ -133,6 +142,20 @@ test("posterSourcesFromViews collects shown https posters once", () => {
   ]);
 });
 
+test("visitShownPosters includes showcase items and home", () => {
+  const views = {
+    showcase: {
+      items: [{ image: "https://cdn.example/showcase-item.jpg" }],
+      home: [{ image: "https://cdn.example/showcase-home.jpg" }],
+    },
+  };
+
+  assert.deepEqual(posterSourcesFromViews(views).sort(), [
+    "https://cdn.example/showcase-home.jpg",
+    "https://cdn.example/showcase-item.jpg",
+  ]);
+});
+
 test("visitShownPosters ignores missing collections", () => {
   /** @type {unknown[]} */
   const seen = [];
@@ -182,6 +205,148 @@ test("applyPosterAssets rewrites only posters that were written", () => {
     views.activity.primary[3].image,
     "https://cdn.example/remote.jpg",
   );
+});
+
+test("fetchPosterBytes retries and sends the Joshternet poster User-Agent", async () => {
+  /** @type {string[]} */
+  const agents = [];
+  let calls = 0;
+  const png = await solidPng(40, 20, { r: 1, g: 2, b: 3 });
+
+  const bytes = await fetchPosterBytes(
+    "https://cdn.example/retry.jpg",
+    async (_url, init) => {
+      calls += 1;
+      agents.push(
+        String(
+          init && typeof init === "object" && "headers" in init
+            ? /** @type {{ headers?: Record<string, string> }} */ (init)
+                .headers?.["User-Agent"]
+            : "",
+        ),
+      );
+
+      if (calls === 1) {
+        throw new Error("transient");
+      }
+
+      return {
+        ok: true,
+        arrayBuffer: async () =>
+          png.buffer.slice(png.byteOffset, png.byteOffset + png.byteLength),
+      };
+    },
+  );
+
+  assert.equal(calls, 2);
+  assert.equal(agents[0], POSTER_FETCH_USER_AGENT);
+  assert.ok(bytes.length > 0);
+  assert.equal(POSTER_FETCH_ATTEMPTS, 2);
+});
+
+test("remainingRemoteShowcasePosters covers empty, local, and invalid rows", () => {
+  assert.deepEqual(remainingRemoteShowcasePosters(null), []);
+  assert.deepEqual(remainingRemoteShowcasePosters({}), []);
+  assert.deepEqual(
+    remainingRemoteShowcasePosters({
+      showcase: { items: "nope", home: null },
+    }),
+    [],
+  );
+  assert.deepEqual(
+    remainingRemoteShowcasePosters({
+      showcase: {
+        items: [
+          null,
+          "skip",
+          { image: 42 },
+          { url: "https://a.example/x", image: "" },
+          {
+            url: "https://a.example/local",
+            image: `/${POSTER_DIRECTORY}/abc.webp`,
+          },
+          { image: "https://cdn.example/remote.jpg" },
+        ],
+        home: [
+          {
+            url: "https://a.example/home",
+            image: "http://insecure.example/a.jpg",
+          },
+        ],
+      },
+    }),
+    [
+      { url: "", image: "https://cdn.example/remote.jpg" },
+      {
+        url: "https://a.example/home",
+        image: "http://insecure.example/a.jpg",
+      },
+    ],
+  );
+});
+
+test("fetchPosterBytes and materialize cover non-Error throw paths", async () => {
+  await assert.rejects(
+    () =>
+      fetchPosterBytes("https://cdn.example/string-throw.jpg", async () => {
+        throw "string-fail";
+      }),
+    (error) => {
+      assert.equal(error, "string-fail");
+      return true;
+    },
+  );
+
+  const posterRoot = path.join(root, `non-error-${Date.now()}`);
+  const views = {
+    activity: {
+      primary: [{ image: "https://cdn.example/a.jpg" }],
+    },
+    showcase: {
+      items: [{ image: "https://cdn.example/b.jpg" }],
+      home: [],
+    },
+  };
+
+  await assert.rejects(
+    () =>
+      materializeActivityPosters(views, posterRoot, {
+        fetchImpl: async () => {
+          throw null;
+        },
+      }),
+    /Showcase poster materialize left 1 remote/,
+  );
+  await fs.rm(posterRoot, { recursive: true, force: true });
+});
+
+test("materializeActivityPosters fails closed when Showcase stays remote", async () => {
+  const posterRoot = path.join(root, `showcase-remote-${Date.now()}`);
+  const views = {
+    showcase: {
+      items: [
+        {
+          url: "https://joshbeard.com/photos/2014/",
+          title: "2014",
+          image: "https://joshbeard.com/photos/2014/cover.jpg",
+        },
+      ],
+      home: [],
+    },
+  };
+
+  await assert.rejects(
+    () =>
+      materializeActivityPosters(views, posterRoot, {
+        fetchImpl: async () => {
+          throw new Error("offline");
+        },
+      }),
+    /Showcase poster materialize left 1 remote/,
+  );
+
+  assert.equal(remainingRemoteShowcasePosters(views).length, 1);
+  await fs.rm(posterRoot, { recursive: true, force: true });
 });
 
 test("materializeActivityPosters writes, reuses, and drops unshown posters", async () => {
@@ -354,4 +519,219 @@ test("materializeActivityPosters rethrows unexpected read errors", async () => {
   );
 
   await fs.rm(posterRoot, { recursive: true, force: true });
+});
+
+test("sheet music posters are generated for PDF scores without images", async () => {
+  const workUrl =
+    "https://joshua.seigler.net/music/It%20Is%20Truly%20Meet%20-%20Macedonian.pdf";
+  const expected = sheetMusicPosterAssetPath(workUrl);
+
+  assert.match(expected, /^\/assets\/activity\/posters\/[a-f0-9]{64}\.webp$/);
+  assert.match(
+    sheetMusicPreviewSvg('Meet & "Macedonian"'),
+    /Meet &amp; &quot;Macedonian&quot;/,
+  );
+
+  const webp = await renderSheetMusicPoster("It Is Truly Meet");
+  const meta = await sharp(webp).metadata();
+
+  assert.equal(meta.format, "webp");
+  assert.equal(meta.width, 640);
+  assert.equal(meta.height, 480);
+
+  const posterRoot = path.join(root, `sheet-${Date.now()}`);
+  const views = {
+    showcase: {
+      items: [
+        {
+          url: workUrl,
+          title: "It Is Truly Meet - Macedonian",
+          content_type: "sheet_music",
+          kind: "sheet music",
+          image: "",
+        },
+      ],
+      home: [],
+    },
+  };
+
+  await materializeActivityPosters(views, posterRoot, {
+    fetchImpl: async () => {
+      throw new Error("no remote posters");
+    },
+  });
+
+  assert.equal(views.showcase.items[0].image, expected);
+  await fs.access(path.join(posterRoot, expected.slice(1)));
+  await fs.rm(posterRoot, { recursive: true, force: true });
+});
+
+// ─── Additional coverage tests for posters.mjs ───────────────────────────────
+
+test("sheetMusicPreviewSvg: title longer than 42 chars is truncated (L267-268)", () => {
+  // truncatePreviewTitle truncates at 42 chars when title exceeds that limit.
+  const longTitle = "This Is A Very Long Sheet Music Title Exceeding Limit";
+  const svg = sheetMusicPreviewSvg(longTitle);
+  // Title in SVG is truncated; must contain the ellipsis character.
+  assert.match(svg, /…/);
+  // Original full title is not present (truncated).
+  assert.ok(!svg.includes(longTitle));
+});
+
+test("sheetMusicPreviewSvg: empty title uses 'Sheet music' fallback label (L263 + L298)", () => {
+  // title is "" → truncatePreviewTitle("", 42) returns "" (falsy) → || "Sheet music" fires at L298.
+  // Also exercises the || "" false branch at L263.
+  const svg = sheetMusicPreviewSvg("");
+  assert.match(svg, /Sheet music/);
+  assert.doesNotMatch(svg, /undefined/);
+});
+
+test("sheetMusicPosterAssetPath: invalid workUrl returns empty string (L278-279)", () => {
+  // typeof workUrl !== "string" OR !workUrl → return ""
+  assert.equal(sheetMusicPosterAssetPath(null), "");
+  assert.equal(sheetMusicPosterAssetPath(""), "");
+  assert.equal(sheetMusicPosterAssetPath(undefined), "");
+});
+
+test("materializeSheetMusicPosters: sheet_music with https image skips generation (L368-369)", async () => {
+  // needsSheetMusicPoster: image starts with "https://" → return false → card NOT added to work list.
+  const views = {
+    showcase: {
+      items: [
+        {
+          url: "https://a.example/music/score.pdf",
+          title: "My Score",
+          content_type: "sheet_music",
+          kind: "sheet music",
+          image: "https://publisher.example/og-image.jpg",
+        },
+      ],
+    },
+  };
+  const keepNames = new Set();
+  await materializeSheetMusicPosters(views, "/tmp/test-posters", keepNames);
+  // Image was NOT replaced (https image skips generation)
+  assert.equal(
+    views.showcase.items[0].image,
+    "https://publisher.example/og-image.jpg",
+  );
+  assert.equal(keepNames.size, 0);
+});
+
+test("materializeSheetMusicPosters: sheet_music with existing local poster adds to keepNames (L408-411)", async () => {
+  // needsSheetMusicPoster: image starts with /assets/activity/posters/ → return false.
+  // Then the "else" block adds the basename to keepNames.
+  const existingPosterPath = `/${POSTER_DIRECTORY}/abc123.webp`;
+  const views = {
+    showcase: {
+      items: [
+        {
+          url: "https://a.example/music/score.pdf",
+          title: "Existing Score",
+          content_type: "sheet_music",
+          kind: "sheet music",
+          image: existingPosterPath,
+        },
+      ],
+    },
+  };
+  const keepNames = new Set();
+  await materializeSheetMusicPosters(views, "/tmp/test-posters", keepNames);
+  // Card already has a poster → keepNames preserves it.
+  assert.ok(
+    keepNames.has("abc123.webp"),
+    "existing poster basename must be in keepNames",
+  );
+});
+
+test("materializeSheetMusicPosters: null item in visitShownPosters callback is skipped (L395-396)", async () => {
+  // visitShownPosters calls the callback; when item is not an object, early return fires.
+  // We simulate this by passing views that produce a null entry through visitShownPosters.
+  // visitShownPosters iterates over array items; null at a position triggers the guard.
+  const views = {
+    showcase: {
+      items: [null, undefined, "string"],
+    },
+  };
+  const keepNames = new Set();
+  // Should complete without throwing even with non-object items.
+  await materializeSheetMusicPosters(views, "/tmp/test-posters", keepNames);
+  assert.equal(keepNames.size, 0);
+});
+
+test("materializeSheetMusicPosters: sheet music with non-string image treated as empty (L368 false branch)", async () => {
+  // needsSheetMusicPoster: card.image is not a string → false branch → image = "" → still needs poster.
+  const tmpDir = await fs.mkdtemp(path.join(root, "non-str-img-"));
+  const keepNames = new Set();
+  const views = {
+    showcase: {
+      items: [
+        {
+          content_type: "sheet_music",
+          image: 42, // non-string → false branch at L368
+          url: "https://example.com/non-string-image.pdf",
+          title: "Non-String Image Test",
+        },
+      ],
+    },
+  };
+  await materializeSheetMusicPosters(views, tmpDir, keepNames);
+  assert.ok(keepNames.size > 0, "poster should have been generated");
+  await fs.rm(tmpDir, { recursive: true, force: true });
+});
+
+test("materializeSheetMusicPosters: card without title falls back to Sheet music (L422 false branch)", async () => {
+  // card.title is undefined → String(undefined || "Sheet music") = "Sheet music" at L422.
+  const tmpDir = await fs.mkdtemp(path.join(root, "no-title-"));
+  const keepNames = new Set();
+  const views = {
+    showcase: {
+      items: [
+        {
+          content_type: "sheet_music",
+          image: "",
+          url: "https://example.com/no-title.pdf",
+          // no title field
+        },
+      ],
+    },
+  };
+  await materializeSheetMusicPosters(views, tmpDir, keepNames);
+  assert.ok(
+    keepNames.size > 0,
+    "poster should have been generated for untitled sheet music",
+  );
+  await fs.rm(tmpDir, { recursive: true, force: true });
+});
+
+test("materializeSheetMusicPosters: existing poster with same content is not rewritten (L426 false branch)", async () => {
+  // Pre-write the poster; second run finds existing.equals(webp) → skip writeFile at L426.
+  const tmpDir = await fs.mkdtemp(path.join(root, "same-content-"));
+  const keepNames = new Set();
+  const workUrl = "https://example.com/same-content-score.pdf";
+  const title = "Same Content Piece";
+  const assetPath = sheetMusicPosterAssetPath(workUrl);
+  const fileName = path.basename(assetPath);
+
+  // Pre-write the identical poster the function would generate.
+  const expectedWebp = await renderSheetMusicPoster(title);
+  await fs.mkdir(tmpDir, { recursive: true });
+  await fs.writeFile(path.join(tmpDir, fileName), expectedWebp);
+
+  const views = {
+    showcase: {
+      items: [
+        {
+          content_type: "sheet_music",
+          image: "",
+          url: workUrl,
+          title,
+        },
+      ],
+    },
+  };
+  await materializeSheetMusicPosters(views, tmpDir, keepNames);
+  // File should be kept and added to keepNames without being overwritten.
+  assert.ok(keepNames.has(fileName), "fileName must be in keepNames");
+  await fs.rm(tmpDir, { recursive: true, force: true });
 });

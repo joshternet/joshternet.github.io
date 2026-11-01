@@ -2,7 +2,10 @@
  * Goal: Observed relationship contracts; ban /.well-known/josh, friend, topic pairs.
  */
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
 
 import {
   aggregateConnectionEdges,
@@ -10,9 +13,11 @@ import {
   carryForwardConnectionEdges,
   connectionEdges,
   connectionObservations,
+  creativeCreditRelation,
   friendConnectionObservations,
   hasDerivedAnalysisMarker,
   indexConnectionsByParticipant,
+  isCreativeCreditSourcePage,
   isHubDirectoryLink,
   isHubDirectoryPage,
   isParticipationDeclarationPath,
@@ -23,6 +28,11 @@ import {
   topicConnectionObservations,
 } from "../../scripts/network/connections.mjs";
 import { parseHtmlRegions } from "../../scripts/nlp/text.mjs";
+
+const fixturesDir = path.join(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "../fixtures/creative",
+);
 
 test("isParticipationDeclarationPath detects well-known josh only", () => {
   assert.equal(
@@ -1547,4 +1557,153 @@ test("indexConnectionsByParticipant: null observations fires ': []' (L809)", () 
   );
   assert.equal(indexed[0].linksTo.length, 0);
   assert.equal(indexed[0].linkedFrom.length, 0);
+});
+
+test("creative credit relation from class and credits page text", () => {
+  assert.equal(isCreativeCreditSourcePage("https://a.example/credits/"), true);
+  assert.equal(isCreativeCreditSourcePage("https://a.example/podroll/"), true);
+  assert.equal(isCreativeCreditSourcePage("not-a-url"), false);
+  assert.equal(
+    creativeCreditRelation({
+      pageUrl: "https://a.example/about/",
+      classNames: ["u-credit"],
+      text: "Partner",
+    }),
+    "credit",
+  );
+  assert.equal(
+    creativeCreditRelation({
+      pageUrl: "https://a.example/about/",
+      rel: ["collaborator"],
+      text: "Partner",
+    }),
+    "credit",
+  );
+  assert.equal(
+    creativeCreditRelation({
+      pageUrl: "https://a.example/about/",
+      classNames: ["u-collaborator"],
+      text: "Partner",
+    }),
+    "credit",
+  );
+  assert.equal(
+    creativeCreditRelation({
+      pageUrl: "https://a.example/about/",
+      rel: ["credit"],
+    }),
+    "credit",
+  );
+  assert.equal(
+    creativeCreditRelation({
+      pageUrl: "https://a.example/credits/",
+      text: "collaborator on mural",
+    }),
+    "credit",
+  );
+  assert.equal(
+    creativeCreditRelation({
+      pageUrl: "https://a.example/credits/",
+      text: "stylesheet",
+    }),
+    null,
+  );
+  assert.equal(
+    creativeCreditRelation({
+      pageUrl: "https://a.example/blog/",
+      text: "credit nowhere",
+    }),
+    null,
+  );
+  assert.equal(creativeCreditRelation({ pageUrl: 12, rel: null }), null);
+  assert.equal(creativeCreditRelation(), null);
+});
+
+test("connectionObservations emits credit for explicit collaborator link", () => {
+  const edges = connectionObservations({
+    sourceOrigin: "https://a.example",
+    pageUrl: "https://a.example/credits/",
+    participantOrigins: ["https://a.example", "https://partner.example"],
+    links: [
+      {
+        href: "https://partner.example/",
+        text: "Partner Josh",
+        classNames: ["u-credit"],
+      },
+      {
+        href: "https://cdn.example/font.woff2",
+        text: "Font CDN",
+      },
+    ],
+  });
+  assert.ok(edges.some((edge) => edge.relation === "credit"));
+  assert.ok(!edges.some((edge) => String(edge.to).includes("cdn.example")));
+});
+
+test("carryForwardConnectionEdges keeps credit relation", () => {
+  const edges = carryForwardConnectionEdges(
+    [
+      {
+        from: "https://a.example",
+        to: "https://b.example",
+        relation: "credit",
+        href: "https://b.example/",
+        page: "https://a.example/credits/",
+      },
+    ],
+    "https://a.example",
+  );
+  assert.equal(edges[0].relation, "credit");
+});
+
+test("credits-page fixture: u-credit link creates observation, CDN link does not", () => {
+  // Real fixture: test/fixtures/creative/credits-page.html
+  const html = fs.readFileSync(
+    path.join(fixturesDir, "credits-page.html"),
+    "utf8",
+  );
+  const { links } = parseHtmlRegions(html);
+
+  // Verify parseHtmlRegions extracted the u-credit anchor with its class.
+  const creditLink = links.find(
+    (l) =>
+      l.href === "https://partner.example/" &&
+      l.classNames.includes("u-credit"),
+  );
+  assert.ok(creditLink, "credits-page fixture must have a u-credit anchor");
+
+  const observations = connectionObservations({
+    sourceOrigin: "https://creator.example",
+    pageUrl: "https://creator.example/credits/",
+    participantOrigins: ["https://creator.example", "https://partner.example"],
+    links,
+  });
+
+  // The u-credit anchor to partner.example must yield exactly one credit observation.
+  const creditObs = observations.filter((o) => o.relation === "credit");
+  assert.equal(
+    creditObs.length,
+    1,
+    "u-credit anchor must create a credit observation",
+  );
+  assert.equal(creditObs[0].to, "https://partner.example");
+
+  // The CDN font link must NOT appear in observations (cdn.example is not a participant).
+  assert.ok(
+    !observations.some((o) => String(o.to).includes("cdn.example")),
+    "generic CDN link must not produce a connection observation",
+  );
+});
+
+test("isCreativeCreditSourcePage covers event and portfolio pages", () => {
+  assert.equal(
+    isCreativeCreditSourcePage("https://a.example/event/cool-show/"),
+    true,
+  );
+  assert.equal(isCreativeCreditSourcePage("https://a.example/events/"), true);
+  assert.equal(
+    isCreativeCreditSourcePage("https://a.example/portfolio/"),
+    true,
+  );
+  assert.equal(isCreativeCreditSourcePage("https://a.example/blog/"), false);
 });

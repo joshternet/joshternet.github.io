@@ -1,0 +1,20 @@
+{% comment %}
+  Goal: Compact upcoming-events strip on the homepage, placed before Showcase.
+  Omits the section entirely when no upcoming events are available.
+  Event times use the declared timezone; no auto-translation.
+  activity-card is the list item (lang/dir + start/venue rendered inside).
+{% endcomment %}
+{% assign home_happening = site.data.happening.items | default: empty %}
+{% if home_happening.size > 0 %}
+  <section class="home-happening" aria-labelledby="home-happening-heading">
+    <h2 id="home-happening-heading">Happening on the Joshternet</h2>
+    <ol class="activity-list activity-list--compact h-feed">
+      {% for item in home_happening limit: 4 %}
+        {% include activity-card.html item=item heading_tag="h3" %}
+      {% endfor %}
+    </ol>
+    <p class="home-happening__more">
+      <a href="{{ '/events/' | relative_url }}">See all upcoming events</a>
+    </p>
+  </section>
+{% endif %}

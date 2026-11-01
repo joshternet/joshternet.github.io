@@ -93,6 +93,10 @@ test("connections page is HTML-first and cross-linked", async () => {
   assert.match(page, /type: CollectionPage/);
   assert.match(page, /connections-site h-card/);
   assert.match(page, /connections-site__identity/);
+  assert.match(page, /outbound-href\.html url=site_origin/);
+  assert.match(page, /connections-site__title-link p-name u-url/);
+  assert.match(page, /data-connection-select/);
+  assert.match(page, /Highlight \{\{ site_title \| escape \}\} on the map/);
   assert.match(page, /data-connection-keys/);
   assert.match(page, /width="576"/);
   assert.match(page, /connections-visible-rel/);

@@ -240,5 +240,5 @@ export async function subjectsFromFeeds(
     }
   }
 
-  return { subjects, entryUrls: entryUrls.slice(0, 80) };
+  return { subjects, entryUrls };
 }

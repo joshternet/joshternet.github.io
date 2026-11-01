@@ -1,6 +1,6 @@
 /**
- * Goal: Welcome cards page and Network card link stay registry-backed without
- * inventing membership accounts. Participant-introductions scaffolding is gone.
+ * Goal: Participant-introductions scaffolding stays gone. Welcome postcard
+ * page/pipeline removed separately (no /welcome/ assertions here).
  */
 import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
@@ -18,20 +18,26 @@ async function read(relativePath) {
   return readFile(path.join(root, relativePath), "utf8");
 }
 
-test("welcome page and Network link keep cards separate from the button", async () => {
-  const welcome = await read("welcome.md");
+test("welcome postcard page and pipeline are removed", async () => {
   const network = await read("network.md");
-  const workflow = await read(".github/workflows/network-sync.yml");
+  const join = await read("join.md");
   const build = await read("scripts/views/build.mjs");
+  const workflow = await read(".github/workflows/network-sync.yml");
 
-  assert.match(welcome, /permalink: \/welcome\//);
-  assert.match(welcome, /official Joshternet button/);
-  assert.match(welcome, /site\.data\.welcome_cards/);
-  assert.match(network, /Get welcome card/);
-  assert.match(network, /\/welcome\//);
-  assert.match(build, /materializeWelcomeCards/);
-  assert.match(workflow, /assets\/network\/welcome/);
-  assert.match(workflow, /welcome_cards\.json/);
+  await assert.rejects(() => access(path.join(root, "welcome.md")));
+  await assert.rejects(() =>
+    access(path.join(root, "scripts/views/welcome-cards.mjs")),
+  );
+  await assert.rejects(() =>
+    access(path.join(root, "_data/welcome_cards.json")),
+  );
+  assert.doesNotMatch(network, /Get welcome card/);
+  assert.doesNotMatch(network, /\/welcome\//);
+  assert.doesNotMatch(join, /\/welcome\//);
+  assert.doesNotMatch(join, /Download your welcome card/);
+  assert.doesNotMatch(build, /materializeWelcomeCards/);
+  assert.doesNotMatch(workflow, /assets\/network\/welcome/);
+  assert.doesNotMatch(workflow, /welcome_cards\.json/);
 });
 
 test("participant-introductions scaffolding is removed", async () => {

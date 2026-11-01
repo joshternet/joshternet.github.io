@@ -54,12 +54,12 @@ test("network-sync publish set lists CI-owned generated paths", async () => {
     "_data/connection_topics.json",
     "_data/site_views.json",
     "_data/search_index.json",
+    "_data/showcase.json",
+    "_data/happening.json",
     "topics/",
     "assets/network/joshternet.opml",
     "assets/network/sites/",
-    "assets/network/welcome/",
     "assets/activity/posters/",
-    "_data/welcome_cards.json",
   ]) {
     assert.match(
       sync,

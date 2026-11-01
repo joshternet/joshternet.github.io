@@ -37,7 +37,7 @@ test("join page covers identity platforms validate nominate and celebrate", asyn
   assert.match(join, /generic-static/);
   assert.match(join, /\/implement\/validate\//);
   assert.match(join, /\/nominate\//);
-  assert.match(join, /\/welcome\//);
+  assert.doesNotMatch(join, /\/welcome\//);
   assert.match(join, /\/implement\/buttons\//);
   assert.match(join, /#joshternet/);
   assert.match(join, /not that JoshBot has listed/i);

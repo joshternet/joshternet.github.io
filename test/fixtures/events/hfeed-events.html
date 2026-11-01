@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Upcoming Events – JoshGallery</title>
+  </head>
+  <body>
+    <h1>Events</h1>
+
+    <!-- h-event via mf2 microformat -->
+    <article class="h-event">
+      <h2 class="p-name">
+        <a class="u-url" href="https://joshgallery.example/events/opening-2027/">Spring Opening</a>
+      </h2>
+      <time class="dt-start" datetime="2027-04-10T19:00:00Z">April 10, 2027</time>
+      <time class="dt-end" datetime="2027-04-10T21:00:00Z">9 PM</time>
+      <p class="p-location">The Josh Gallery, New York</p>
+    </article>
+
+    <!-- past h-event — must not appear as upcoming -->
+    <article class="h-event">
+      <h2 class="p-name">
+        <a class="u-url" href="https://joshgallery.example/events/past-show-2025/">Winter Show 2025</a>
+      </h2>
+      <time class="dt-start" datetime="2025-12-01T18:00:00Z">December 1, 2025</time>
+      <time class="dt-end" datetime="2025-12-01T20:00:00Z">8 PM</time>
+      <p class="p-location">The Josh Gallery, New York</p>
+    </article>
+  </body>
+</html>

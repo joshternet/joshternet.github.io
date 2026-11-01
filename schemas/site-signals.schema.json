@@ -21,7 +21,10 @@
             "properties": {
               "pages_discovered": { "type": "integer" },
               "pages_fetched": { "type": "integer" },
-              "fetch_limit": { "type": "integer" },
+              "fetch_limit": {
+                "type": ["integer", "null"],
+                "description": "Max pages fetched when capped; null means uncapped."
+              },
               "limit_reached": { "type": "boolean" },
               "selection_strategy": { "type": "string" }
             },

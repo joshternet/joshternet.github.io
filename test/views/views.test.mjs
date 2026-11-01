@@ -7,7 +7,6 @@ import test from "node:test";
 import {
   buildActivityAtomXml,
   buildViewDocuments,
-  capPresentationList,
   capSameOriginResults,
   compactContentItem,
   compactWhyHere,
@@ -15,8 +14,6 @@ import {
   contentTopicLabels,
   escapeAtomText,
   isJoshternetHubContentUrl,
-  MAX_CONNECTION_TOPIC_PAIRS,
-  MAX_COOCCURRENCE_PAIRS,
   oneLatestPerOrigin,
   pickFeaturedCommunity,
   pickFeaturedConnection,
@@ -234,6 +231,27 @@ test("What's New Atom feed links to original publishers with stable ids", () => 
     /<link rel="self" type="application\/atom\+xml" href="https:\/\/example\.test\/feed\.xml"\/>/,
   );
   assert.equal((fallbacks.match(/<entry>/g) || []).length, 2);
+});
+
+test("buildActivityAtomXml emits xml:lang when language is set on an entry", () => {
+  // Exercises the `language ? xml:lang="..." : ""` branch (language present)
+  const xml = buildActivityAtomXml({
+    generated_at: "2026-10-31T12:00:00.000Z",
+    primary: [
+      {
+        url: "https://a.example/post/fr/",
+        title: "Bonjour",
+        summary: "",
+        published_at: "2026-10-30T08:00:00.000Z",
+        site_origin: "https://a.example",
+        site_title: "Site A",
+        domain: "a.example",
+        language: "fr",
+      },
+    ],
+  });
+
+  assert.match(xml, /xml:lang="fr"/);
 });
 
 test("isJoshternetHubContentUrl recognizes hub hosts only", () => {
@@ -2482,16 +2500,7 @@ test("buildViewDocuments: community without label fires label||slug fallback; me
   assert.equal(photoRelated.label, "photo");
 });
 
-test("capPresentationList: missing list, under max, over max, invalid max", () => {
-  assert.deepEqual(capPresentationList(null, 3), []);
-  assert.deepEqual(capPresentationList([1, 2], 3), [1, 2]);
-  assert.deepEqual(capPresentationList([1, 2, 3, 4], 2), [1, 2]);
-  assert.deepEqual(capPresentationList([1, 2], Number.NaN), [1, 2]);
-  assert.deepEqual(capPresentationList([1, 2], -1), [1, 2]);
-  assert.deepEqual(capPresentationList([1, 2], 0), []);
-});
-
-test("connectionTopicOverlaps: caps pair overlay size", () => {
+test("connectionTopicOverlaps: keeps every member pair (no presentation cap)", () => {
   const members = [];
 
   for (let index = 0; index < 30; index += 1) {
@@ -2506,11 +2515,12 @@ test("connectionTopicOverlaps: caps pair overlay size", () => {
   const overlay = connectionTopicOverlaps([
     { slug: "shared", label: "Shared", members },
   ]);
-  assert.equal(overlay.pairs.length, MAX_CONNECTION_TOPIC_PAIRS);
-  assert.equal(overlay.overlap_count, MAX_CONNECTION_TOPIC_PAIRS);
+  // C(30, 2) = 435
+  assert.equal(overlay.pairs.length, 435);
+  assert.equal(overlay.overlap_count, 435);
 });
 
-test("topicCooccurrence: caps presentation pairs", () => {
+test("topicCooccurrence: keeps every co-occurring pair (no presentation cap)", () => {
   const slugs = [];
 
   for (let index = 0; index < 21; index += 1) {
@@ -2529,7 +2539,8 @@ test("topicCooccurrence: caps presentation pairs", () => {
     ],
     publicSlugs,
   );
-  assert.equal(pairs.length, MAX_COOCCURRENCE_PAIRS);
+  // C(21, 2) = 210
+  assert.equal(pairs.length, 210);
 });
 
 test("topic members with no domain sort by title", () => {

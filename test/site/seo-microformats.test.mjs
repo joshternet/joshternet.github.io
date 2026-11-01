@@ -50,7 +50,6 @@ test("derived pages declare schema.org types and extra JSON-LD", async () => {
   assert.match(await read("topics/index.md"), /type: CollectionPage/);
   assert.match(await read("activity.md"), /type: CollectionPage/);
   assert.match(await read("network.md"), /type: CollectionPage/);
-  assert.match(await read("welcome.md"), /type: CollectionPage/);
   assert.match(await read("community.md"), /type: WebPage/);
   assert.match(await read("implement.md"), /type: TechArticle/);
   assert.match(await read("implement/buttons.md"), /type: TechArticle/);
@@ -70,7 +69,6 @@ test("lists and cards expose h-feed, h-entry, and h-card", async () => {
   const topics = await read("topics/index.md");
   const connections = await read("connections.md");
   const network = await read("network.md");
-  const welcome = await read("welcome.md");
   const searchJs = await read("assets/js/search.js");
 
   assert.match(card, /h-entry/);
@@ -89,10 +87,6 @@ test("lists and cards expose h-feed, h-entry, and h-card", async () => {
   assert.match(connections, /p-note/);
   assert.match(network, /h-card/);
   assert.match(network, /p-name/);
-  assert.match(welcome, /welcome-card-list__item h-card/);
-  assert.match(welcome, /p-name/);
-  assert.match(welcome, /u-photo/);
-  assert.match(welcome, /class="u-url"/);
   assert.match(searchJs, /p-author h-card/);
   assert.match(searchJs, /p-name u-url/);
   assert.match(searchJs, /p-category/);

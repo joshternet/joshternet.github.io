@@ -17,9 +17,12 @@ import {
   writeTextAtomic,
 } from "../nlp/lib.mjs";
 import { semanticallyEqual } from "../nlp/publish.mjs";
-import { buildActivityAtomXml, buildViewDocuments } from "./lib.mjs";
+import {
+  buildActivityAtomXml,
+  buildEventIcs,
+  buildViewDocuments,
+} from "./lib.mjs";
 import { materializeActivityPosters } from "./posters.mjs";
-import { materializeWelcomeCards } from "./welcome-cards.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "../..");
 
@@ -77,6 +80,29 @@ export async function buildViewProjections(root = ROOT) {
     delete views.search_index.documents;
   }
 
+  if (!views.showcase.items.length) {
+    delete views.showcase.items;
+  }
+
+  if (!views.showcase.home.length) {
+    delete views.showcase.home;
+  }
+
+  if (!views.showcase.kinds.length) {
+    delete views.showcase.kinds;
+  }
+
+  if (
+    !views.showcase.kind_labels ||
+    Object.keys(views.showcase.kind_labels).length === 0
+  ) {
+    delete views.showcase.kind_labels;
+  }
+
+  if (!views.happening.items.length) {
+    delete views.happening.items;
+  }
+
   if (!views.connection_topics.pairs.length) {
     delete views.connection_topics.pairs;
   }
@@ -86,12 +112,6 @@ export async function buildViewProjections(root = ROOT) {
   }
 
   await materializeActivityPosters(views, root);
-
-  const welcomeCards = await materializeWelcomeCards(
-    Array.isArray(network) ? network : [],
-    root,
-  );
-  await writeStableJSON(path.join(dataDir, "welcome_cards.json"), welcomeCards);
 
   await writeStableJSON(path.join(dataDir, "activity.json"), views.activity);
 
@@ -121,6 +141,22 @@ export async function buildViewProjections(root = ROOT) {
     path.join(dataDir, "search_index.json"),
     views.search_index,
   );
+  // made.json is a stable alias for showcase.json (same data, same path).
+  await writeStableJSON(path.join(dataDir, "made.json"), views.showcase);
+  await writeStableJSON(path.join(dataDir, "showcase.json"), views.showcase);
+  await writeStableJSON(path.join(dataDir, "happening.json"), views.happening);
+
+  // Generate iCalendar file when upcoming events exist.
+  const happeningItems = Array.isArray(views.happening.items)
+    ? views.happening.items
+    : [];
+
+  if (happeningItems.length > 0) {
+    const icsPath = path.join(root, "assets/events/joshternet.ics");
+    const icsContent = buildEventIcs(happeningItems);
+    await fs.mkdir(path.dirname(icsPath), { recursive: true });
+    await writeTextAtomic(icsPath, icsContent);
+  }
 
   const topicsDir = path.join(root, "topics");
   await fs.mkdir(topicsDir, { recursive: true });
@@ -176,7 +212,7 @@ async function writeStableJSON(filePath, document) {
 async function main() {
   const views = await buildViewProjections();
   process.stdout.write(
-    `Wrote view projections: ${views.activity.primary_count} activity rows, ${views.explore.community_count} neighborhoods, ${views.search_index.document_count} search documents.\n`,
+    `Wrote view projections: ${views.activity.primary_count} activity rows, ${views.explore.community_count} neighborhoods, ${views.search_index.document_count} search documents, ${views.showcase.item_count} showcase items, ${views.happening.item_count} upcoming events.\n`,
   );
 }
 

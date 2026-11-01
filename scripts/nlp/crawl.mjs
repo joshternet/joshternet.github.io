@@ -1,14 +1,10 @@
 /**
  * Goal & Constraints:
- * Bounded same-origin BFS crawl for NLP topic extraction. Seeds from homepage,
- * indieweb identity slash pages (/about/, /now/, /uses/, /more/, /site/, …),
- * advertised topic hubs (/topics/, /tags/, …) and writing indexes
- * (/notes/, /blog/, /posts/, …) even when those URLs are absent from
- * sitemap.xml, sitemap locs, and optional feed entry URLs. Feed entry URLs
- * enqueue after home (and optional aboutUrl) and before identity slash pages
- * so recent posts are not starved by soft-404 slash seeds. Soft-404 duplicates
- * of the homepage do not count toward the page budget. Skips /.well-known/josh.
- * Failures for one origin never abort the run.
+ * Uncapped same-origin BFS crawl for NLP topic extraction. Seeds from homepage,
+ * blind catalog slash probes (even when absent from menus), topic hubs, writing
+ * and creative indexes, sitemap locs, and feed entry URLs. Soft-404 duplicates
+ * of the homepage are not retained. Skips /.well-known/josh. No per-origin page
+ * count stop. Failures for one origin never abort the run.
  */
 
 import { originFromHttpUrl } from "../network/blogroll.mjs";
@@ -20,15 +16,11 @@ import {
 } from "../network/connections.mjs";
 import {
   IDENTITY_SLASH_PATHS,
+  PROBE_SLASH_PATHS,
   contentIndexPaths,
 } from "../network/slash-pages.mjs";
 import { isNonSubjectSlug } from "./evidence.mjs";
-import {
-  MAX_CRAWL_DEPTH,
-  MAX_PAGES_PER_ORIGIN,
-  fetchPublicText,
-  parseHtmlDocument,
-} from "./lib.mjs";
+import { MAX_CRAWL_DEPTH, fetchPublicText, parseHtmlDocument } from "./lib.mjs";
 import { classifyPageRole } from "./page-role.mjs";
 import {
   canonicalHrefFromHtml,
@@ -49,14 +41,14 @@ export const TOPIC_HUB_INDEX_PATHS = [
   "/category/",
 ];
 
-/** Same-origin topic pages followed from a hub listing. */
-export const MAX_TOPIC_HUB_CHILDREN = 32;
+/** Same-origin topic pages followed from a hub listing (uncapped). */
+export const MAX_TOPIC_HUB_CHILDREN = Number.POSITIVE_INFINITY;
 
 /** Writing indexes plus indieweb identity slash pages (sitemap-independent). */
 export const CONTENT_INDEX_PATHS = contentIndexPaths();
 
-/** Same-origin article pages followed from a writing index. */
-export const MAX_CONTENT_INDEX_CHILDREN = 32;
+/** Same-origin article pages followed from a writing index (uncapped). */
+export const MAX_CONTENT_INDEX_CHILDREN = Number.POSITIVE_INFINITY;
 
 const STATIC_PATH =
   /\.(?:css|js|mjs|map|png|jpe?g|gif|webp|svg|ico|xml|json|txt|zip|woff2?)$/i;
@@ -292,9 +284,27 @@ export function contentIndexSeedUrls(origin) {
  * @returns {string[]}
  */
 export function identitySlashSeedUrls(origin) {
+  return slashSeedUrls(origin, IDENTITY_SLASH_PATHS);
+}
+
+/**
+ * Blind-probe catalog paths (including aliases) for an origin.
+ * @param {string} origin
+ * @returns {string[]}
+ */
+export function probeSlashSeedUrls(origin) {
+  return slashSeedUrls(origin, PROBE_SLASH_PATHS);
+}
+
+/**
+ * @param {string} origin
+ * @param {string[]} paths
+ * @returns {string[]}
+ */
+function slashSeedUrls(origin, paths) {
   const urls = [];
 
-  for (const path of IDENTITY_SLASH_PATHS) {
+  for (const path of paths) {
     const href = resolveSameOrigin(origin, path);
 
     if (!href) {
@@ -322,7 +332,11 @@ export function isIdentitySlashPath(pathname) {
     return false;
   }
 
-  return IDENTITY_SLASH_PATHS.some((path) => {
+  // Soft-404 detection covers every blind-probe catalog path (identity +
+  // creative indexes), not only the narrower identity-like list.
+  const candidates = [...IDENTITY_SLASH_PATHS, ...PROBE_SLASH_PATHS];
+
+  return candidates.some((path) => {
     const candidate = path.replace(/\/+$/, "").toLowerCase();
     return Boolean(candidate) && normalized === candidate;
   });
@@ -536,7 +550,7 @@ export function contentIndexChildUrls(
  * @param {number} limit
  * @returns {string[]}
  */
-export function urlsFromSitemap(xml, origin, limit = 30) {
+export function urlsFromSitemap(xml, origin, limit = Number.POSITIVE_INFINITY) {
   const urls = [];
   const seen = new Set();
   const pattern = /<loc>\s*([^<]+)\s*<\/loc>/gi;
@@ -562,9 +576,10 @@ export function urlsFromSitemap(xml, origin, limit = 30) {
  * @param {{
  *   feedEntryUrls?: string[],
  *   aboutUrl?: string,
+ *   aboutUrls?: string[],
  *   cache?: Map<string, unknown>,
  * }} [options]
- * @returns {Promise<{origin: string, pages: CrawledPage[], outbound_links: Array<{href: string, text: string, page: string}>, html_subjects: Array<Record<string, unknown>>}>}
+ * @returns {Promise<{origin: string, pages: CrawledPage[], outbound_links: Array<{href: string, text: string, page: string}>, html_subjects: Array<Record<string, unknown>>, selection_reasons: Record<string, string>}>}
  */
 export async function crawlOrigin(origin, options = {}) {
   const cache = options.cache || new Map();
@@ -576,42 +591,52 @@ export async function crawlOrigin(origin, options = {}) {
   const pages = [];
   /** @type {Array<{href: string, text: string, page: string}>} */
   const outbound = [];
+  /** @type {Record<string, string>} */
+  const selectionReasons = {};
 
   /**
-   * Enqueues a depth-0 seed once so identity pages stay ahead of sitemap flood.
+   * Enqueues a depth-0 seed once with a selection reason.
    * @param {string} url
+   * @param {string} reason
    */
-  function enqueueSeed(url) {
+  function enqueueSeed(url, reason = "seed") {
     if (!url || seedSeen.has(url)) {
       return;
     }
 
     seedSeen.add(url);
+    selectionReasons[url] = reason;
     queue.push({ url, depth: 0 });
   }
 
   const homeUrl = `${origin}/`;
-  enqueueSeed(homeUrl);
+  enqueueSeed(homeUrl, "home");
 
   if (typeof options.aboutUrl === "string" && options.aboutUrl) {
-    enqueueSeed(resolveSameOrigin(origin, options.aboutUrl));
+    enqueueSeed(resolveSameOrigin(origin, options.aboutUrl), "about");
   }
 
-  // Recent feed posts before identity slash soft-404s / hubs / sitemap.
+  for (const aboutHref of options.aboutUrls || []) {
+    if (typeof aboutHref === "string" && aboutHref) {
+      enqueueSeed(resolveSameOrigin(origin, aboutHref), "about");
+    }
+  }
+
+  // Recent feed posts before slash soft-404s / hubs / sitemap.
   for (const feedUrl of options.feedEntryUrls || []) {
-    enqueueSeed(resolveSameOrigin(origin, feedUrl));
+    enqueueSeed(resolveSameOrigin(origin, feedUrl), "feed");
   }
 
-  for (const url of identitySlashSeedUrls(origin)) {
-    enqueueSeed(url);
+  for (const url of probeSlashSeedUrls(origin)) {
+    enqueueSeed(url, "blind-probe");
   }
 
   for (const url of topicHubSeedUrls(origin)) {
-    enqueueSeed(url);
+    enqueueSeed(url, "topic-hub");
   }
 
   for (const url of contentIndexSeedUrls(origin)) {
-    enqueueSeed(url);
+    enqueueSeed(url, "content-index");
   }
 
   try {
@@ -621,7 +646,7 @@ export async function crawlOrigin(origin, options = {}) {
     });
 
     for (const url of urlsFromSitemap(sitemap.body, origin)) {
-      enqueueSeed(url);
+      enqueueSeed(url, "sitemap");
     }
   } catch {
     // Sitemap is optional.
@@ -630,7 +655,7 @@ export async function crawlOrigin(origin, options = {}) {
   /** @type {{ title: string, canonical: string, fingerprint: string } | null} */
   let homeSignature = null;
 
-  while (queue.length > 0 && pages.length < MAX_PAGES_PER_ORIGIN) {
+  while (queue.length > 0) {
     const next = queue.shift();
 
     if (!next || seen.has(next.url) || next.depth > MAX_CRAWL_DEPTH) {
@@ -689,7 +714,7 @@ export async function crawlOrigin(origin, options = {}) {
         homeBodyFingerprint: homeSignature.fingerprint,
       })
     ) {
-      // Soft-404: do not spend the page budget or amplify homepage NLP.
+      // Soft-404: skip retention so blind probe misses do not amplify NLP.
       continue;
     }
 
@@ -757,13 +782,33 @@ export async function crawlOrigin(origin, options = {}) {
       }
     }
 
-    for (const child of contentIndexChildUrls(
+    // Creative/writing index children (experiments, games, photos, …) go to
+    // the front of the queue so OG posters are retained even when a large
+    // archive or sitemap would otherwise starve them.
+    const indexChildren = contentIndexChildUrls(
       origin,
       fetched.url,
       document.links,
-    )) {
+    );
+
+    for (let index = indexChildren.length - 1; index >= 0; index -= 1) {
+      const child = indexChildren[index];
+
       if (!seen.has(child)) {
-        queue.push({ url: child, depth: 0 });
+        selectionReasons[child] = selectionReasons[child] || "content-index";
+        queue.unshift({ url: child, depth: 0 });
+      }
+    }
+
+    // A published /slashes index expands additional same-origin slash links.
+    if (pagePath.replace(/\/+$/, "").endsWith("/slashes")) {
+      for (const link of document.links) {
+        const same = resolveSameOrigin(origin, link.href);
+
+        if (same && !seen.has(same)) {
+          selectionReasons[same] = "slashes-index";
+          queue.push({ url: same, depth: 0 });
+        }
       }
     }
   }
@@ -773,6 +818,7 @@ export async function crawlOrigin(origin, options = {}) {
     pages,
     outbound_links: outbound,
     html_subjects: [],
+    selection_reasons: selectionReasons,
   };
 }
 
@@ -790,9 +836,9 @@ export function originFailureSignal(origin, now, error) {
     coverage: {
       pages_discovered: 0,
       pages_fetched: 0,
-      fetch_limit: MAX_PAGES_PER_ORIGIN,
+      fetch_limit: null,
       limit_reached: false,
-      selection_strategy: "bounded-site-crawl-v1",
+      selection_strategy: "uncapped-site-crawl-v1",
     },
     pages: [],
     declared_topics: [],

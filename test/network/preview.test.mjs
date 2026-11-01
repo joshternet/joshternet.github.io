@@ -179,7 +179,10 @@ test("preview file reads, misses, and rejects bad JSON", async () => {
   const committed = await readPreviewFile(
     path.join(root, "_data/network_preview.json"),
   );
+  // Preview stays empty so local crawls match the JoshBot registry; CI ignores
+  // the file either way. Validate structure, not a transient participant list.
   assert.deepEqual(committed.participants, []);
+  assert.equal(committed.schema_version, 1);
 });
 
 test("simulated participants keep a valid declaration and skip the rest", async () => {

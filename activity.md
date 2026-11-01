@@ -2,10 +2,10 @@
 layout: default
 title: What's New from independent Joshternet websites
 description: >-
-  Recent articles, notes, and projects freshly published by independent websites
-  participating in the Joshternet—one latest piece from each site.
+  Recent writing from the last seven days and the latest Showcase creative works
+  from independent websites on the Joshternet.
 keywords: >-
-  What's New, Joshternet, recent articles, independent websites, Josh network
+  What's New, Joshternet, recent articles, showcase, independent websites, Josh network
 seo:
   type: CollectionPage
   name: What's New
@@ -17,7 +17,7 @@ joshternet_analysis: derived
 
 # What's New
 
-Recent articles from around the Joshternet.
+Recent writing from around the Joshternet.
 
 <p class="activity-subscribe">
   <a href="{{ '/assets/activity/atom.xml' | relative_url }}">Subscribe</a>

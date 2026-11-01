@@ -34,6 +34,7 @@ import {
 import {
   contentItemsFromJsonFeed,
   contentItemsFromRssOrAtom,
+  enrichContentItemPosters,
   joinContentWithPageSignals,
   mergeContentItems,
 } from "./content.mjs";
@@ -51,13 +52,15 @@ import { foldPluralSlug } from "./normalize.mjs";
 import { topicQualityReport } from "./quality.mjs";
 import { subjectsFromFeeds } from "./feeds.mjs";
 import {
-  MAX_PAGES_PER_ORIGIN,
   fetchPublicText,
   readJSONIfExists,
   writeJSONAtomic,
   writeTextAtomic,
 } from "./lib.mjs";
+import { collectCreativeWorks } from "./creative.mjs";
+import { collectEvents } from "./events.mjs";
 import { collectPortfolio } from "./portfolio.mjs";
+import { shouldRenderHtml } from "./render.mjs";
 import {
   allowsCommunityTopics,
   allowsHeuristicTopics,
@@ -134,9 +137,9 @@ async function main() {
       coverage: {
         pages_discovered: 0,
         pages_fetched: 0,
-        fetch_limit: 40,
+        fetch_limit: null,
         limit_reached: false,
-        selection_strategy: "bounded-site-crawl-v1",
+        selection_strategy: "uncapped-site-crawl-v1",
       },
     });
     await writeJSONAtomic(
@@ -209,9 +212,20 @@ async function main() {
       const feedData = await subjectsFromFeeds(feeds, dnsCache, {
         observedAt: now,
       });
+      const aboutUrls = [
+        ...(Array.isArray(participant.aboutPageHrefs)
+          ? participant.aboutPageHrefs.filter(
+              (href) => typeof href === "string",
+            )
+          : []),
+        ...(typeof participant.aboutPageHref === "string"
+          ? [participant.aboutPageHref]
+          : []),
+      ];
       const crawled = await crawlOrigin(origin, {
         cache: dnsCache,
         feedEntryUrls: feedData.entryUrls,
+        aboutUrls,
       });
 
       /** @type {Array<Record<string, unknown>>} */
@@ -292,7 +306,11 @@ async function main() {
           typeof page.html === "string" &&
           page.html
         ) {
-          portfolioPages.push({ url: page.url, html: page.html });
+          portfolioPages.push({
+            url: page.url,
+            html: page.html,
+            lang: regions.lang || page.lang || "",
+          });
         }
 
         if (
@@ -321,6 +339,34 @@ async function main() {
       });
       htmlSubjects.push(...portfolio.subjects);
       contentDrafts.push(...portfolio.items);
+
+      // Creative extraction reads all retained HTML (gallery/music/games/schema).
+      // Optional Playwright render stays disabled unless shouldRenderHtml() is true.
+      const creativePages = crawled.pages.map((page) => ({
+        url: page.url,
+        html: page.html,
+        lang: page.lang || "",
+      }));
+
+      if (shouldRenderHtml()) {
+        process.stdout.write(
+          `nlp render skipped for ${origin}: enable only for verified participants\n`,
+        );
+      }
+
+      const creative = collectCreativeWorks(creativePages, {
+        siteOrigin: origin,
+        observedAt: now,
+      });
+      htmlSubjects.push(...creative.subjects);
+      contentDrafts.push(...creative.items);
+
+      // Events are a separate content_type; Happening filters to upcoming later.
+      const events = collectEvents(creativePages, {
+        siteOrigin: origin,
+        observedAt: now,
+      });
+      contentDrafts.push(...events.items);
 
       const nlpSubjects = extractTopicsFromPages(nlpPages, {
         observedAt: now,
@@ -381,9 +427,10 @@ async function main() {
       const coverage = {
         pages_discovered: discovered,
         pages_fetched: crawled.pages.length,
-        fetch_limit: MAX_PAGES_PER_ORIGIN,
-        limit_reached: crawled.pages.length >= MAX_PAGES_PER_ORIGIN,
-        selection_strategy: "bounded-site-crawl-v1",
+        fetch_limit: null,
+        limit_reached: false,
+        selection_strategy: "uncapped-site-crawl-v1",
+        selection_reasons: crawled.selection_reasons || {},
       };
 
       originSignals.push({
@@ -482,6 +529,9 @@ async function main() {
   }
 
   const contentItems = joinContentWithPageSignals(draftItems, originSignals);
+  // Feed-sourced experiments/games often lack enclosures; pull og:image from
+  // the publisher page so Showcase uses the site's existing posters in CI.
+  await enrichContentItemPosters(contentItems, { cache: dnsCache });
   const previousConnections = itemsFromCollection(
     await readJSONIfExists(CONNECTIONS_PATH, {}),
     "edges",
