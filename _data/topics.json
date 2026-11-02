@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-02T09:25:57.589Z",
+  "generated_at": "2026-11-02T15:29:16.095Z",
   "community_count": 405,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
@@ -3341,6 +3341,13 @@
       "active": true,
       "related_discoveries": [
         {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
           "title": "Josh Sherman",
@@ -3832,8 +3839,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-02T09:25:57.589Z"
+      ]
     },
     {
       "slug": "company",
@@ -4616,13 +4622,6 @@
       "active": true,
       "related_discoveries": [
         {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
           "origin": "https://joshua.seigler.net",
           "domain": "joshua.seigler.net",
           "title": "Joshua Seigler",
@@ -5362,8 +5361,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-02T09:25:57.589Z"
+      ]
     },
     {
       "slug": "design-system",
@@ -5917,8 +5915,26 @@
     {
       "slug": "draft",
       "label": "Drafts",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshternet.org/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshternet.org/specs/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -5971,9 +5987,9 @@
           ]
         }
       ],
-      "sources": ["article:tag", "catalog-match"],
+      "sources": ["article:tag", "catalog-match", "visible-text"],
       "first_seen_at": "2026-11-01T23:37:56.256Z",
-      "last_changed_at": "2026-11-02T09:25:57.589Z",
+      "last_changed_at": "2026-11-02T15:29:16.095Z",
       "active": true,
       "related_discoveries": [
         {
@@ -5982,16 +5998,8 @@
           "title": "Josh Müller",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-02T09:25:57.589Z"
+      ]
     },
     {
       "slug": "due-process",
@@ -6449,8 +6457,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-02T09:25:57.589Z"
+      ]
     },
     {
       "slug": "energy",
@@ -8888,8 +8895,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-02T09:25:57.589Z"
+      ]
     },
     {
       "slug": "health",
@@ -9041,8 +9047,7 @@
       "sources": ["topic-hub:link"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-11-02T09:25:57.589Z",
-      "active": true,
-      "stale_since": "2026-11-02T09:25:57.589Z"
+      "active": true
     },
     {
       "slug": "hell",
@@ -10910,13 +10915,6 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
           "title": "Josh Sherman",
@@ -12305,8 +12303,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-02T09:25:57.589Z"
+      ]
     },
     {
       "slug": "media-publishing",
@@ -12894,8 +12891,7 @@
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-01T10:42:20.299Z",
       "last_changed_at": "2026-11-02T09:25:57.589Z",
-      "active": true,
-      "stale_since": "2026-11-02T09:25:57.589Z"
+      "active": true
     },
     {
       "slug": "money",
@@ -13002,8 +12998,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-02T09:25:57.589Z"
+      ]
     },
     {
       "slug": "music",
@@ -13890,8 +13885,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-02T09:25:57.589Z"
+      ]
     },
     {
       "slug": "openfga",
@@ -18918,8 +18912,7 @@
       ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
       "last_changed_at": "2026-11-02T09:25:57.589Z",
-      "active": true,
-      "stale_since": "2026-11-02T09:25:57.589Z"
+      "active": true
     },
     {
       "slug": "soft-skill",
@@ -19149,6 +19142,13 @@
       "last_changed_at": "2026-11-02T08:07:50.158Z",
       "active": true,
       "related_discoveries": [
+        {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -20449,6 +20449,13 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
           "origin": "https://www.joshcanhelp.com",
           "domain": "www.joshcanhelp.com",
           "title": "Josh Cunningham",
@@ -20531,8 +20538,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-02T09:25:57.589Z"
+      ]
     },
     {
       "slug": "theology",
@@ -21712,8 +21718,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-02T09:25:57.589Z"
+      ]
     },
     {
       "slug": "world",

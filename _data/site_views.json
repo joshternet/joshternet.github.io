@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-02T09:32:24.862Z",
+  "generated_at": "2026-11-02T15:39:51.496Z",
   "sites": [
     {
       "origin": "https://forwardbias.dev",
@@ -100,7 +100,7 @@
         "title": "About",
         "summary": "I’m a recovering Middle School teacher, always trying to hold onto the messiness and joy of the students I used to teach. I’ve led the curriculum team at a non-profit, trained thousands of teachers to pick up CS, written two books on the topic, and am currently making my way through the impact of Generative AI on all of these things. I believe that technology can be be beautiful, tactile, and expr",
         "published_at": "2026-03-09T17:00:00.000Z",
-        "observed_at": "2026-11-02T09:25:57.589Z",
+        "observed_at": "2026-11-02T15:29:16.095Z",
         "content_type": "article",
         "language": "en-us",
         "dir": "",
@@ -330,7 +330,7 @@
           "https://forwardbias.dev/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-02T09:25:57.589Z"
+      "crawled_at": "2026-11-02T15:29:16.095Z"
     },
     {
       "origin": "https://joshbeard.com",
@@ -365,7 +365,7 @@
         "title": "Photos",
         "summary": "Photo albums from Colorado, travel, cycling, and everyday life.",
         "published_at": "",
-        "observed_at": "2026-11-02T09:25:57.589Z",
+        "observed_at": "2026-11-02T15:29:16.095Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -854,7 +854,7 @@
           "https://joshbeard.com/me": "content-index"
         }
       },
-      "crawled_at": "2026-11-02T09:25:57.589Z"
+      "crawled_at": "2026-11-02T15:29:16.095Z"
     },
     {
       "origin": "https://joshghent.com",
@@ -1107,7 +1107,7 @@
         "title": "11ty or Bust",
         "summary": "The story of how I migrated my site from Gatsby to 11ty",
         "published_at": "2024-01-03T00:00:00.000Z",
-        "observed_at": "2026-11-02T09:25:57.589Z",
+        "observed_at": "2026-11-02T15:29:16.095Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -1486,7 +1486,7 @@
           "https://joshghent.com/blog": "content-index"
         }
       },
-      "crawled_at": "2026-11-02T09:25:57.589Z"
+      "crawled_at": "2026-11-02T15:29:16.095Z"
     },
     {
       "origin": "https://joshgr.com",
@@ -1524,7 +1524,7 @@
         "title": "Projects — Josh Grant",
         "summary": "Exploring systems",
         "published_at": "",
-        "observed_at": "2026-11-02T09:25:57.589Z",
+        "observed_at": "2026-11-02T15:29:16.095Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -1738,7 +1738,7 @@
           "https://joshgr.com/wizardly-words/": "content-index"
         }
       },
-      "crawled_at": "2026-11-02T09:25:57.589Z"
+      "crawled_at": "2026-11-02T15:29:16.095Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -2227,7 +2227,7 @@
         "title": "📸: <a href=\"/\">Josh Müller</a>",
         "summary": "📸: Josh Müller",
         "published_at": "",
-        "observed_at": "2026-11-02T09:25:57.589Z",
+        "observed_at": "2026-11-02T15:29:16.095Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -2761,7 +2761,7 @@
           "https://joshmuller.ca/recipes/page/2/": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-02T09:25:57.589Z"
+      "crawled_at": "2026-11-02T15:29:16.095Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -2783,6 +2783,10 @@
           "label": "data"
         },
         {
+          "slug": "draft",
+          "label": "Drafts"
+        },
+        {
           "slug": "field-recording",
           "label": "field recording"
         },
@@ -2800,7 +2804,7 @@
         "title": "What's New",
         "summary": "Recent writing from the last two weeks and the latest Showcase creative works from independent websites on the Joshternet.",
         "published_at": "",
-        "observed_at": "2026-11-02T09:25:57.589Z",
+        "observed_at": "2026-11-02T15:29:16.095Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -3029,12 +3033,10 @@
           "https://joshternet.org/topics/anxiety/": "sitemap",
           "https://joshternet.org/topics/apple/": "sitemap",
           "https://joshternet.org/topics/appliance/": "sitemap",
-          "https://joshternet.org/topics/arch-linux/": "sitemap",
           "https://joshternet.org/topics/architecture/": "sitemap",
           "https://joshternet.org/topics/art/": "sitemap",
           "https://joshternet.org/topics/arts-culture/": "sitemap",
           "https://joshternet.org/implement/platforms/astro/": "sitemap",
-          "https://joshternet.org/topics/async-communication/": "sitemap",
           "https://joshternet.org/topics/audio/": "sitemap",
           "https://joshternet.org/topics/authoritarianism/": "sitemap",
           "https://joshternet.org/topics/authorization/": "sitemap",
@@ -3049,10 +3051,8 @@
           "https://joshternet.org/topics/biology/": "sitemap",
           "https://joshternet.org/topics/blogging/": "sitemap",
           "https://joshternet.org/topics/blue/": "sitemap",
-          "https://joshternet.org/topics/boardgame/": "sitemap",
           "https://joshternet.org/topics/bonhoeffer/": "sitemap",
           "https://joshternet.org/topics/book-of-common-prayer/": "sitemap",
-          "https://joshternet.org/topics/book-review/": "sitemap",
           "https://joshternet.org/topics/book/": "sitemap",
           "https://joshternet.org/topics/browser/": "sitemap",
           "https://joshternet.org/topics/business/": "sitemap",
@@ -3078,7 +3078,6 @@
           "https://joshternet.org/topics/coding-bootcamp/": "sitemap",
           "https://joshternet.org/topics/coding/": "sitemap",
           "https://joshternet.org/topics/collect/": "sitemap",
-          "https://joshternet.org/topics/command-line-interface/": "sitemap",
           "https://joshternet.org/topics/communication-pr/": "sitemap",
           "https://joshternet.org/topics/communication/": "sitemap",
           "https://joshternet.org/topics/community/": "sitemap",
@@ -3095,19 +3094,16 @@
           "https://joshternet.org/topics/consumer-protection/": "sitemap",
           "https://joshternet.org/topics/consumer/": "sitemap",
           "https://joshternet.org/topics/copywriting/": "sitemap",
-          "https://joshternet.org/topics/covid-19/": "sitemap",
           "https://joshternet.org/topics/craftsmanship/": "sitemap",
           "https://joshternet.org/topics/create/": "sitemap",
           "https://joshternet.org/topics/creative-coding/": "sitemap",
           "https://joshternet.org/topics/creative-design/": "sitemap",
-          "https://joshternet.org/topics/creative-process/": "sitemap",
           "https://joshternet.org/topics/cryptography/": "sitemap",
           "https://joshternet.org/topics/css/": "sitemap",
           "https://joshternet.org/topics/data-broker/": "sitemap",
           "https://joshternet.org/topics/data/": "sitemap",
           "https://joshternet.org/topics/database/": "sitemap",
           "https://joshternet.org/topics/death/": "sitemap",
-          "https://joshternet.org/topics/debian-ubuntu/": "sitemap",
           "https://joshternet.org/topics/democracy/": "sitemap",
           "https://joshternet.org/topics/design-system/": "sitemap",
           "https://joshternet.org/topics/design/": "sitemap",
@@ -3133,9 +3129,7 @@
           "https://joshternet.org/implement/platforms/eleventy/": "sitemap",
           "https://joshternet.org/topics/email/": "sitemap",
           "https://joshternet.org/topics/energy/": "sitemap",
-          "https://joshternet.org/topics/engineering-leadership/": "sitemap",
           "https://joshternet.org/topics/engineering/": "sitemap",
-          "https://joshternet.org/topics/entrepreneurship/": "sitemap",
           "https://joshternet.org/topics/eschatology/": "sitemap",
           "https://joshternet.org/topics/essay/": "sitemap",
           "https://joshternet.org/topics/ethics/": "sitemap",
@@ -3150,7 +3144,6 @@
           "https://joshternet.org/topics/family/": "sitemap",
           "https://joshternet.org/topics/fascism/": "sitemap",
           "https://joshternet.org/topics/fashion-retail/": "sitemap",
-          "https://joshternet.org/topics/fawm/": "sitemap",
           "https://joshternet.org/topics/feel/": "sitemap",
           "https://joshternet.org/topics/ffmpeg/": "sitemap",
           "https://joshternet.org/topics/field-recording/": "sitemap",
@@ -3165,7 +3158,6 @@
           "https://joshternet.org/topics/generator/": "sitemap",
           "https://joshternet.org/implement/platforms/ghost/": "sitemap",
           "https://joshternet.org/topics/github/": "sitemap",
-          "https://joshternet.org/topics/gnome/": "sitemap",
           "https://joshternet.org/topics/go/": "sitemap",
           "https://joshternet.org/topics/goal/": "sitemap",
           "https://joshternet.org/topics/google/": "sitemap",
@@ -3179,7 +3171,6 @@
           "https://joshternet.org/topics/habeas-corpus/": "sitemap",
           "https://joshternet.org/topics/habit/": "sitemap",
           "https://joshternet.org/topics/hardware/": "sitemap",
-          "https://joshternet.org/topics/health-fitness/": "sitemap",
           "https://joshternet.org/topics/health/": "sitemap",
           "https://joshternet.org/topics/hell/": "sitemap",
           "https://joshternet.org/topics/history/": "sitemap",
@@ -3187,10 +3178,8 @@
           "https://joshternet.org/topics/home-gym/": "sitemap",
           "https://joshternet.org/topics/home-improvement/": "sitemap",
           "https://joshternet.org/topics/hospitality/": "sitemap",
-          "https://joshternet.org/topics/hosting-domain/": "sitemap",
           "https://joshternet.org/topics/hosting/": "sitemap",
           "https://joshternet.org/topics/how-to-think/": "sitemap",
-          "https://joshternet.org/topics/howto/": "sitemap",
           "https://joshternet.org/topics/hugo/": "sitemap",
           "https://joshternet.org/implement/platforms/hugo/": "sitemap",
           "https://joshternet.org/topics/human/": "sitemap",
@@ -3245,18 +3234,15 @@
           "https://joshternet.org/topics/love/": "sitemap",
           "https://joshternet.org/topics/machine-learning/": "sitemap",
           "https://joshternet.org/topics/markdown/": "sitemap",
-          "https://joshternet.org/topics/marketing-advertising/": "sitemap",
           "https://joshternet.org/topics/matthew-25/": "sitemap",
           "https://joshternet.org/topics/mcp/": "sitemap",
           "https://joshternet.org/topics/mean/": "sitemap",
           "https://joshternet.org/topics/media-publishing/": "sitemap",
           "https://joshternet.org/topics/medical-research/": "sitemap",
           "https://joshternet.org/topics/medical/": "sitemap",
-          "https://joshternet.org/topics/meetup-venue/": "sitemap",
           "https://joshternet.org/topics/mental-health/": "sitemap",
           "https://joshternet.org/topics/mentorship/": "sitemap",
           "https://joshternet.org/topics/message/": "sitemap",
-          "https://joshternet.org/topics/micro-software/": "sitemap",
           "https://joshternet.org/topics/ministry/": "sitemap",
           "https://joshternet.org/topics/minute/": "sitemap",
           "https://joshternet.org/topics/misanthropy/": "sitemap",
@@ -3273,8 +3259,6 @@
           "https://joshternet.org/topics/node-js/": "sitemap",
           "https://joshternet.org/nominate/": "sitemap",
           "https://joshternet.org/topics/nonprofit/": "sitemap",
-          "https://joshternet.org/topics/nosql/": "sitemap",
-          "https://joshternet.org/topics/nutrici-c3-b3n/": "sitemap",
           "https://joshternet.org/topics/nutrici-n/": "sitemap",
           "https://joshternet.org/topics/nutrition/": "sitemap",
           "https://joshternet.org/implement/platforms/nuxt/": "sitemap",
@@ -3310,7 +3294,6 @@
           "https://joshternet.org/topics/political-theology/": "sitemap",
           "https://joshternet.org/topics/politics/": "sitemap",
           "https://joshternet.org/topics/posse/": "sitemap",
-          "https://joshternet.org/topics/postgres/": "sitemap",
           "https://joshternet.org/topics/postgresql/": "sitemap",
           "https://joshternet.org/topics/poverty/": "sitemap",
           "https://joshternet.org/topics/prayer/": "sitemap",
@@ -3323,7 +3306,6 @@
           "https://joshternet.org/topics/productivity/": "sitemap",
           "https://joshternet.org/topics/programming/": "sitemap",
           "https://joshternet.org/licensing/": "sitemap",
-          "https://joshternet.org/topics/projector/": "sitemap",
           "https://joshternet.org/topics/property-real-estate/": "sitemap",
           "https://joshternet.org/topics/property/": "sitemap",
           "https://joshternet.org/topics/prophetic-witness/": "sitemap",
@@ -3341,7 +3323,6 @@
           "https://joshternet.org/topics/recetas/": "sitemap",
           "https://joshternet.org/topics/recipe/": "sitemap",
           "https://joshternet.org/topics/recommendation/": "sitemap",
-          "https://joshternet.org/topics/reconnection/": "sitemap",
           "https://joshternet.org/topics/recruitment/": "sitemap",
           "https://joshternet.org/topics/red/": "sitemap",
           "https://joshternet.org/topics/refugee/": "sitemap",
@@ -3373,11 +3354,8 @@
           "https://joshternet.org/topics/search/": "sitemap",
           "https://joshternet.org/topics/security/": "sitemap",
           "https://joshternet.org/security/": "sitemap",
-          "https://joshternet.org/topics/selfhosting/": "sitemap",
           "https://joshternet.org/topics/sermon-on-the-mount/": "sitemap",
           "https://joshternet.org/topics/sermon/": "sitemap",
-          "https://joshternet.org/topics/server-serverless/": "sitemap",
-          "https://joshternet.org/topics/shell-script/": "sitemap",
           "https://joshternet.org/showcase/": "sitemap",
           "https://joshternet.org/topics/simple/": "sitemap",
           "https://joshternet.org/topics/simplicity/": "sitemap",
@@ -3388,7 +3366,6 @@
           "https://joshternet.org/topics/social/": "sitemap",
           "https://joshternet.org/topics/soft-skill/": "sitemap",
           "https://joshternet.org/topics/software-architecture/": "sitemap",
-          "https://joshternet.org/topics/software-development/": "sitemap",
           "https://joshternet.org/topics/software-engineering/": "sitemap",
           "https://joshternet.org/topics/software-preservation/": "sitemap",
           "https://joshternet.org/topics/software/": "sitemap",
@@ -3413,7 +3390,6 @@
           "https://joshternet.org/topics/theology/": "sitemap",
           "https://joshternet.org/licensing/third-party-licenses/": "sitemap",
           "https://joshternet.org/topics/tips/": "sitemap",
-          "https://joshternet.org/topics/toy/": "sitemap",
           "https://joshternet.org/topics/trade/": "sitemap",
           "https://joshternet.org/topics/trinity/": "sitemap",
           "https://joshternet.org/topics/tutorial/": "sitemap",
@@ -3428,17 +3404,13 @@
           "https://joshternet.org/topics/update/": "sitemap",
           "https://joshternet.org/topics/user-experience/": "sitemap",
           "https://joshternet.org/implement/validate/": "sitemap",
-          "https://joshternet.org/topics/version-control/": "sitemap",
           "https://joshternet.org/topics/veteran/": "sitemap",
           "https://joshternet.org/topics/video-game/": "sitemap",
-          "https://joshternet.org/topics/vim-neovim/": "sitemap",
           "https://joshternet.org/topics/visualization/": "sitemap",
           "https://joshternet.org/topics/vleo/": "sitemap",
-          "https://joshternet.org/topics/vps-showdown/": "sitemap",
           "https://joshternet.org/wander/": "sitemap",
           "https://joshternet.org/topics/wearable-ai/": "sitemap",
           "https://joshternet.org/topics/web-development/": "sitemap",
-          "https://joshternet.org/topics/web-server/": "sitemap",
           "https://joshternet.org/topics/webgl/": "sitemap",
           "https://joshternet.org/topics/weightlifting/": "sitemap",
           "https://joshternet.org/topics/women-ordination/": "sitemap",
@@ -3448,12 +3420,10 @@
           "https://joshternet.org/topics/world/": "sitemap",
           "https://joshternet.org/topics/worldcup/": "sitemap",
           "https://joshternet.org/topics/worship-style/": "sitemap",
-          "https://joshternet.org/topics/writing-publishing/": "sitemap",
           "https://joshternet.org/topics/writing/": "sitemap",
           "https://joshternet.org/topics/x-is-cool/": "sitemap",
           "https://joshternet.org/topics/youtube/": "sitemap",
           "https://joshternet.org/topics/zanzibar/": "sitemap",
-          "https://joshternet.org/topics/zeitgeist/": "sitemap",
           "https://joshternet.org/style/": "blind-probe",
           "https://joshternet.org/top4/": "blind-probe",
           "https://joshternet.org/topfour/": "blind-probe",
@@ -3477,7 +3447,7 @@
           "https://joshternet.org/cdn-cgi/l/email-protection": "content-index"
         }
       },
-      "crawled_at": "2026-11-02T09:25:57.589Z"
+      "crawled_at": "2026-11-02T15:29:16.095Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -3683,7 +3653,7 @@
         "title": "I taught a robot to detect Joshes",
         "summary": "This journey starts like most of the things I've been doing this year, as an experiment to run a website 100% unattended with an agent. Ideally this post won't go down as an epitaph in a future where robots hunted down unsuspecting humans named Josh. I'm aware of \"claws\" and I know I could probably just boot up Claude Code with a /goal or /loop prompt like: build and maintain an awesome website, a",
         "published_at": "2026-08-16T00:00:00.000Z",
-        "observed_at": "2026-11-02T09:25:57.589Z",
+        "observed_at": "2026-11-02T15:29:16.095Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -5058,7 +5028,7 @@
           "https://joshtronic.com/incrementing-decrementing-a-number-by-a-number/": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-02T09:25:57.589Z"
+      "crawled_at": "2026-11-02T15:29:16.095Z"
     },
     {
       "origin": "https://joshua.seigler.net",
@@ -5175,7 +5145,7 @@
         "title": "/books",
         "summary": "I’m Joshua Seigler, a software engineer since 2010 and a living being since the 1980s. I’ve watched technology advance from dial-up and Geocities pages, to federated social media and decentralized autonomous organizations, to people literally talking to computers (a lot!).",
         "published_at": "",
-        "observed_at": "2026-11-02T09:25:57.589Z",
+        "observed_at": "2026-11-02T15:29:16.095Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -5452,7 +5422,7 @@
           "https://joshua.seigler.net/music/%C3%8Engerul%20a%20Strigat%20-%20Varlaam%20-%20glasul%203.pdf": "content-index"
         }
       },
-      "crawled_at": "2026-11-02T09:25:57.589Z"
+      "crawled_at": "2026-11-02T15:29:16.095Z"
     },
     {
       "origin": "https://joshuadrake.org",
@@ -5485,7 +5455,7 @@
         "title": "Projects:",
         "summary": "",
         "published_at": "",
-        "observed_at": "2026-11-02T09:25:57.589Z",
+        "observed_at": "2026-11-02T15:29:16.095Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -5740,7 +5710,7 @@
           "https://joshuadrake.org/projects/n12rebuild/": "content-index"
         }
       },
-      "crawled_at": "2026-11-02T09:25:57.589Z",
+      "crawled_at": "2026-11-02T15:29:16.095Z",
       "portfolio": {
         "url": "https://joshuadrake.org/projects/",
         "work_count": 39,
@@ -5776,7 +5746,7 @@
         "title": "Work, Joshua Kim",
         "summary": "Eight projects by Joshua Kim: internal tools, interactive and AR work, app case studies, and graphic design.",
         "published_at": "",
-        "observed_at": "2026-11-02T09:25:57.589Z",
+        "observed_at": "2026-11-02T15:29:16.095Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -5998,7 +5968,7 @@
           "https://joshuakim.studio/about": "content-index"
         }
       },
-      "crawled_at": "2026-11-02T09:25:57.589Z"
+      "crawled_at": "2026-11-02T15:29:16.095Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -6784,7 +6754,7 @@
         "title": "Experiments",
         "summary": "Web experiments and playground shells from Joshua Morris—toys, tools, and interface ideas built to see whether they can work in a browser.",
         "published_at": "",
-        "observed_at": "2026-11-02T09:25:57.589Z",
+        "observed_at": "2026-11-02T15:29:16.095Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -7607,13 +7577,13 @@
           "https://joshuamorris.info/notes/2026/07/21/": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-02T09:25:57.589Z"
+      "crawled_at": "2026-11-02T15:29:16.095Z"
     },
     {
       "origin": "https://joshuapsteele.com",
       "domain": "joshuapsteele.com",
       "title": "Joshua P. Steele",
-      "description": "I’m Josh Steele, a software engineer, writer, husband, father, and former Anglican priest trying to follow Jesus with honesty, curiosity, and care.",
+      "description": "Happiness is a 2x2 grid of WANT and HAVE. Be grateful for what you don't want and don't have! #advice #wisdom",
       "identity": "affirmed",
       "feeds": [
         {
@@ -8449,7 +8419,7 @@
         "title": "Permalink",
         "summary": "Unable to load recent saved links. Visit LinkLog",
         "published_at": "",
-        "observed_at": "2026-11-02T09:25:57.589Z",
+        "observed_at": "2026-11-02T15:29:16.095Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -9338,7 +9308,7 @@
           "https://joshuapsteele.com/bookmarks/'+t(a)+'": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-02T09:25:57.589Z"
+      "crawled_at": "2026-11-02T15:29:16.095Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -9447,7 +9417,7 @@
         "title": "Do we need 'agentic identity'?",
         "summary": "Agents are here, there, and everywhere, growing in numbers at a pace between fast and breakneck, generating or completing work at some other velocity, and poised to change the world entirely or, like, not much at all. Something must be done.",
         "published_at": "2025-10-14T00:00:00.000Z",
-        "observed_at": "2026-11-02T09:25:57.589Z",
+        "observed_at": "2026-11-02T15:29:16.095Z",
         "content_type": "article",
         "language": "en-us",
         "dir": "",
@@ -10049,7 +10019,7 @@
           "https://www.joshcanhelp.com/_images/2010/02/logitech_mic.jpg": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-02T09:25:57.589Z"
+      "crawled_at": "2026-11-02T15:29:16.095Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -10261,7 +10231,7 @@
         "title": "Work — Joshua Baker",
         "summary": "Selected case studies by Joshua Baker, plus the full archive — 140+ projects across two decades of design and engineering.",
         "published_at": "",
-        "observed_at": "2026-11-02T09:25:57.589Z",
+        "observed_at": "2026-11-02T15:29:16.095Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -10530,7 +10500,7 @@
           "https://www.joshuabaker.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-02T09:25:57.589Z",
+      "crawled_at": "2026-11-02T15:29:16.095Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,
