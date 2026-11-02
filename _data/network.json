@@ -63,7 +63,7 @@
         "label": "GitHub"
       },
       {
-        "url": "https://www.threads.net/intent/post?text=Blog%20Roll%20https%3A%2F%2Fjoshghent.com%2Fblogroll%2F",
+        "url": "https://www.threads.net/intent/post?text=There%20is%20always%20more%20https%3A%2F%2Fjoshghent.com%2Fmore%2F",
         "network": "threads",
         "label": "Threads"
       }
@@ -141,6 +141,11 @@
         "url": "https://joshmuller.ca/index.xml",
         "type": "application/rss+xml",
         "title": "rss"
+      },
+      {
+        "url": "https://joshmuller.ca/index.json",
+        "type": "application/json",
+        "title": "json"
       }
     ],
     "elsewhere": [
@@ -191,8 +196,8 @@
       },
       {
         "url": "https://discordapp.com/users/thejoshmuller",
-        "network": "web",
-        "label": "discordapp.com"
+        "network": "discord",
+        "label": "Discord"
       },
       {
         "url": "https://t.me/theJoshMuller",
@@ -308,21 +313,6 @@
         "url": "https://github.com/seigler",
         "network": "github",
         "label": "GitHub"
-      },
-      {
-        "url": "https://www.youtube.com/watch?v=VHRhPItNdIU",
-        "network": "youtube",
-        "label": "YouTube"
-      },
-      {
-        "url": "https://julsimon.medium.com/why-mcps-disregard-for-40-years-of-rpc-best-practices-will-burn-enterprises-8ef85ce5bc9b",
-        "network": "medium",
-        "label": "Medium"
-      },
-      {
-        "url": "https://verissimo.substack.com/p/verissimo-monthly-may-2025",
-        "network": "substack",
-        "label": "Substack"
       }
     ]
   },
@@ -397,7 +387,7 @@
     "screenshot": "/assets/network/sites/96e5b600de4a31e77df2925d7e56dc12bc14ffd484452ca9b51ed4aa37813705.webp",
     "embeddable": false,
     "frame_reason": "blocked-by-site",
-    "captured_at": "2026-10-31T23:53:21.618Z",
+    "captured_at": "2026-11-01T23:58:03.722Z",
     "feeds": [
       {
         "url": "https://joshuamorris.info/atom.xml",
@@ -435,16 +425,6 @@
         "url": "https://bsky.app/profile/joshuamorris.info",
         "network": "bluesky",
         "label": "Bluesky"
-      },
-      {
-        "url": "https://www.twitch.tv/lilpeeeweee?utm_source=joshuamorris.info&utm_medium=referral",
-        "network": "twitch",
-        "label": "Twitch"
-      },
-      {
-        "url": "https://medium.com/@hartsman?utm_source=joshuamorris.info&utm_medium=referral",
-        "network": "medium",
-        "label": "Medium"
       }
     ]
   },
@@ -473,6 +453,10 @@
       {
         "url": "https://joshuapsteele.com/feed.xml",
         "type": "application/rss+xml"
+      },
+      {
+        "url": "https://joshuapsteele.com/index.json",
+        "type": "application/json"
       }
     ],
     "elsewhere": [
@@ -483,8 +467,8 @@
       },
       {
         "url": "https://www.threads.com/@joshuapsteele",
-        "network": "web",
-        "label": "www.threads.com"
+        "network": "threads",
+        "label": "Threads"
       },
       {
         "url": "https://bsky.app/profile/joshuapsteele.com",
@@ -508,8 +492,8 @@
       },
       {
         "url": "https://buttondown.com/joshuapsteele/",
-        "network": "web",
-        "label": "buttondown.com"
+        "network": "buttondown",
+        "label": "Buttondown"
       },
       {
         "url": "https://joshuapsteele.com/blog/feed.xml",
