@@ -5,6 +5,7 @@ description: "Explore Green articles, notes, and projects published by independe
 keywords: "Green, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "green"
 permalink: /topics/green/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Green"

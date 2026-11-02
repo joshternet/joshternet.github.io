@@ -5,6 +5,7 @@ description: "Explore RED articles, notes, and projects published by independent
 keywords: "RED, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "red"
 permalink: /topics/red/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "RED"

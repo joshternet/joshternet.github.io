@@ -5,6 +5,7 @@ description: "Explore World articles, notes, and projects published by independe
 keywords: "World, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "world"
 permalink: /topics/world/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "World"
