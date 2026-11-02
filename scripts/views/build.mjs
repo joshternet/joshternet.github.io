@@ -23,9 +23,14 @@ import {
   buildEventIcs,
   buildViewDocuments,
 } from "./lib.mjs";
-import { materializeActivityPosters } from "./posters.mjs";
+import {
+  assertShowcasePostersLocalized,
+  materializeActivityPosters,
+} from "./posters.mjs";
+import { writeShowcaseAliasFiles } from "./showcase-alias.mjs";
 import {
   captureMissingWorkScreenshots,
+  captureShowcasePosterFallbacks,
   collectProjectionItemsNeedingPosters,
 } from "./work-screenshots.mjs";
 
@@ -132,7 +137,13 @@ export async function buildViewProjections(root = ROOT) {
   const projectionPosterTargets = collectProjectionItemsNeedingPosters(views);
   await captureMissingWorkScreenshots(projectionPosterTargets, { root });
 
-  await materializeActivityPosters(views, root);
+  // Soft materialize: leave remote Showcase images when fetch/resize fails so
+  // we can snapshot the work page before the localization gate.
+  await materializeActivityPosters(views, root, {
+    requireLocalizedShowcase: false,
+  });
+  await captureShowcasePosterFallbacks(views, { root });
+  assertShowcasePostersLocalized(views);
 
   await writeStableJSON(path.join(dataDir, "activity.json"), views.activity);
 
@@ -162,9 +173,8 @@ export async function buildViewProjections(root = ROOT) {
     path.join(dataDir, "search_index.json"),
     views.search_index,
   );
-  // made.json is a stable alias for showcase.json (same data, same path).
-  await writeStableJSON(path.join(dataDir, "made.json"), views.showcase);
-  await writeStableJSON(path.join(dataDir, "showcase.json"), views.showcase);
+  // made.json ≡ showcase.json from one document so the alias cannot drift.
+  await writeShowcaseAliasFiles(dataDir, views.showcase);
   await writeStableJSON(path.join(dataDir, "happening.json"), views.happening);
 
   // Generate iCalendar file when upcoming events exist.

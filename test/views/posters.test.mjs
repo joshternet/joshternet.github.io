@@ -6,11 +6,14 @@
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import { readFileSync } from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 import sharp from "sharp";
+
+import { dnsCache } from "../helpers/mock-fetch.mjs";
 
 import {
   POSTER_DIRECTORY,
@@ -20,9 +23,11 @@ import {
   POSTER_MAX_WIDTH,
   applyPosterAssets,
   fetchPosterBytes,
+  assertShowcasePostersLocalized,
   materializeActivityPosters,
   materializeSheetMusicPosters,
   posterAssetPath,
+  posterCacheSourcesFromViews,
   posterSourcesFromViews,
   remainingRemoteShowcasePosters,
   removeUnshownPosters,
@@ -30,6 +35,7 @@ import {
   resizePoster,
   sheetMusicPosterAssetPath,
   sheetMusicPreviewSvg,
+  visitPriorityPosters,
   visitShownPosters,
 } from "../../scripts/views/posters.mjs";
 
@@ -37,6 +43,39 @@ const root = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
   "../../.tmp/poster-tests",
 );
+
+/** Offline tests do not load live robots.txt. */
+const ALLOW_ALL_ROBOTS = {
+  allows: async () => true,
+  bodyForOrigin: async () => "",
+};
+
+/**
+ * Swallow expected soft-fail noise (failed fetches) in offline poster tests.
+ * @param {string} _message
+ */
+function muteLogError(_message) {}
+
+/**
+ * Swallow progress logs in offline poster tests.
+ * @param {string} _message
+ */
+function muteLog(_message) {}
+
+/**
+ * Collect soft-fail messages so expected materialize skips assert green.
+ * @returns {{ lines: string[], logError: (message: string) => void }}
+ */
+function captureLogError() {
+  /** @type {string[]} */
+  const lines = [];
+  return {
+    lines,
+    logError(message) {
+      lines.push(String(message));
+    },
+  };
+}
 
 /**
  * @param {number} width
@@ -102,7 +141,7 @@ test("resizePoster fits inside the card size and does not enlarge", async () => 
   assert.equal(smallMeta.height, 20);
 });
 
-test("posterSourcesFromViews collects shown https posters once", () => {
+test("posterSourcesFromViews collects only Activity + Showcase https posters", () => {
   const shared = { image: "https://cdn.example/shared.jpg" };
   const views = {
     activity: {
@@ -135,14 +174,17 @@ test("posterSourcesFromViews collects shown https posters once", () => {
     },
   };
 
-  assert.deepEqual(posterSourcesFromViews(views).sort(), [
+  assert.deepEqual(posterSourcesFromViews(views), [
+    "https://cdn.example/shared.jpg",
+  ]);
+  assert.deepEqual(posterCacheSourcesFromViews(views).sort(), [
     "https://cdn.example/search.jpg",
     "https://cdn.example/shared.jpg",
     "https://cdn.example/topic.jpg",
   ]);
 });
 
-test("visitShownPosters includes showcase items and home", () => {
+test("visitPriorityPosters and visitShownPosters include showcase items and home", () => {
   const views = {
     showcase: {
       items: [{ image: "https://cdn.example/showcase-item.jpg" }],
@@ -154,6 +196,13 @@ test("visitShownPosters includes showcase items and home", () => {
     "https://cdn.example/showcase-home.jpg",
     "https://cdn.example/showcase-item.jpg",
   ]);
+
+  /** @type {unknown[]} */
+  const priority = [];
+  visitPriorityPosters(views, (item) => {
+    priority.push(item);
+  });
+  assert.equal(priority.length, 2);
 });
 
 test("visitShownPosters ignores missing collections", () => {
@@ -161,6 +210,9 @@ test("visitShownPosters ignores missing collections", () => {
   const seen = [];
 
   visitShownPosters(undefined, (item) => {
+    seen.push(item);
+  });
+  visitPriorityPosters(undefined, (item) => {
     seen.push(item);
   });
   visitShownPosters(
@@ -176,6 +228,7 @@ test("visitShownPosters ignores missing collections", () => {
 
   assert.deepEqual(seen, []);
   assert.deepEqual(posterSourcesFromViews(null), []);
+  assert.deepEqual(posterCacheSourcesFromViews(null), []);
 });
 
 test("applyPosterAssets rewrites only posters that were written", () => {
@@ -207,11 +260,48 @@ test("applyPosterAssets rewrites only posters that were written", () => {
   );
 });
 
-test("fetchPosterBytes retries and sends the Joshternet poster User-Agent", async () => {
+test("fetchPosterBytes skips URLs robots.txt disallows", async () => {
+  let calls = 0;
+
+  await assert.rejects(
+    () =>
+      fetchPosterBytes(
+        "https://cdn.example/blocked.jpg",
+        async () => {
+          calls += 1;
+          throw new Error("should not fetch");
+        },
+        {
+          robotsGate: {
+            allows: async () => false,
+            bodyForOrigin: async () => "",
+          },
+        },
+      ),
+    /disallowed by robots\.txt/,
+  );
+  assert.equal(calls, 0);
+});
+
+test("fetchPosterBytes retries and sends the JoshBot User-Agent", async () => {
   /** @type {string[]} */
   const agents = [];
   let calls = 0;
   const png = await solidPng(40, 20, { r: 1, g: 2, b: 3 });
+
+  await assert.rejects(
+    () =>
+      fetchPosterBytes(
+        "https://cdn.example/missing.jpg",
+        async () => ({
+          ok: false,
+          status: 404,
+          arrayBuffer: async () => new ArrayBuffer(0),
+        }),
+        { robotsGate: ALLOW_ALL_ROBOTS },
+      ),
+    /Poster request failed \(404\)/,
+  );
 
   const bytes = await fetchPosterBytes(
     "https://cdn.example/retry.jpg",
@@ -235,6 +325,12 @@ test("fetchPosterBytes retries and sends the Joshternet poster User-Agent", asyn
         arrayBuffer: async () =>
           png.buffer.slice(png.byteOffset, png.byteOffset + png.byteLength),
       };
+    },
+    {
+      robotsGate: {
+        allows: async () => true,
+        bodyForOrigin: async () => "",
+      },
     },
   );
 
@@ -288,9 +384,13 @@ test("remainingRemoteShowcasePosters covers empty, local, and invalid rows", () 
 test("fetchPosterBytes and materialize cover non-Error throw paths", async () => {
   await assert.rejects(
     () =>
-      fetchPosterBytes("https://cdn.example/string-throw.jpg", async () => {
-        throw "string-fail";
-      }),
+      fetchPosterBytes(
+        "https://cdn.example/string-throw.jpg",
+        async () => {
+          throw "string-fail";
+        },
+        { robotsGate: ALLOW_ALL_ROBOTS },
+      ),
     (error) => {
       assert.equal(error, "string-fail");
       return true;
@@ -311,6 +411,9 @@ test("fetchPosterBytes and materialize cover non-Error throw paths", async () =>
   await assert.rejects(
     () =>
       materializeActivityPosters(views, posterRoot, {
+        robotsGate: ALLOW_ALL_ROBOTS,
+        logError: muteLogError,
+        log: muteLog,
         fetchImpl: async () => {
           throw null;
         },
@@ -338,6 +441,9 @@ test("materializeActivityPosters fails closed when Showcase stays remote", async
   await assert.rejects(
     () =>
       materializeActivityPosters(views, posterRoot, {
+        robotsGate: ALLOW_ALL_ROBOTS,
+        logError: muteLogError,
+        log: muteLog,
         fetchImpl: async () => {
           throw new Error("offline");
         },
@@ -349,7 +455,39 @@ test("materializeActivityPosters fails closed when Showcase stays remote", async
   await fs.rm(posterRoot, { recursive: true, force: true });
 });
 
-test("materializeActivityPosters writes, reuses, and drops unshown posters", async () => {
+test("materializeActivityPosters can soft-skip Showcase gate for snapshot fallback", async () => {
+  const posterRoot = path.join(root, `showcase-soft-${Date.now()}`);
+  const views = {
+    showcase: {
+      items: [
+        {
+          url: "https://joshuadrake.org/projects/turboelectriccessna",
+          image: "https://joshuadrake.org/images/cessnatest.gif",
+        },
+      ],
+      home: [],
+    },
+  };
+
+  await materializeActivityPosters(views, posterRoot, {
+    robotsGate: ALLOW_ALL_ROBOTS,
+    logError: muteLogError,
+    log: muteLog,
+    requireLocalizedShowcase: false,
+    fetchImpl: async () => {
+      throw new Error("Input buffer has corrupt header");
+    },
+  });
+
+  assert.equal(remainingRemoteShowcasePosters(views).length, 1);
+  assert.throws(
+    () => assertShowcasePostersLocalized(views, { logError: muteLogError }),
+    /capture a page snapshot/,
+  );
+  await fs.rm(posterRoot, { recursive: true, force: true });
+});
+
+test("materializeActivityPosters writes, reuses cache, and drops unshown posters", async () => {
   const directory = path.join(root, `write-${Date.now()}`);
   const source = "https://cdn.example/social.jpg";
   const png = await solidPng(1000, 500, { r: 30, g: 90, b: 140 });
@@ -363,12 +501,22 @@ test("materializeActivityPosters writes, reuses, and drops unshown posters", asy
   await fs.writeFile(path.join(directory, "assets-marker.txt"), "keep");
 
   const posterRoot = path.join(directory, "repo");
+  let fetches = 0;
+  const countingFetch = async () => {
+    fetches += 1;
+    return fetchBuffer(png)();
+  };
 
   await materializeActivityPosters(
     views,
     posterRoot,
     // fetch is the HTTP boundary we do not own.
-    { fetchImpl: fetchBuffer(png) },
+    {
+      robotsGate: ALLOW_ALL_ROBOTS,
+      logError: muteLogError,
+      log: muteLog,
+      fetchImpl: countingFetch,
+    },
   );
 
   const asset = views.activity.primary[0].image;
@@ -376,6 +524,7 @@ test("materializeActivityPosters writes, reuses, and drops unshown posters", asy
   const first = readFileSync(filePath);
   const meta = await sharp(first).metadata();
 
+  assert.equal(fetches, 1);
   assert.equal(views.activity.primary[0].image_origin, "");
   assert.equal(meta.format, "webp");
   assert.ok((meta.width || 0) <= POSTER_MAX_WIDTH);
@@ -385,23 +534,34 @@ test("materializeActivityPosters writes, reuses, and drops unshown posters", asy
 
   await fs.writeFile(orphan, first);
   await fs.writeFile(note, "keep");
+  fetches = 0;
   await materializeActivityPosters(
     {
       activity: {
         primary: [{ image: source, image_origin: "https://cdn.example" }],
       },
+      search_index: {
+        documents: [{ image: source, image_origin: "https://cdn.example" }],
+      },
     },
     posterRoot,
-    { fetchImpl: fetchBuffer(png) },
+    {
+      robotsGate: ALLOW_ALL_ROBOTS,
+      logError: muteLogError,
+      log: muteLog,
+      fetchImpl: countingFetch,
+    },
   );
 
   const second = readFileSync(filePath);
 
+  assert.equal(fetches, 0);
   assert.equal(Buffer.compare(first, second), 0);
   await assert.rejects(fs.stat(orphan));
   assert.equal(readFileSync(note, "utf8"), "keep");
 
   const changed = await solidPng(900, 400, { r: 200, g: 10, b: 10 });
+  fetches = 0;
 
   await materializeActivityPosters(
     {
@@ -410,14 +570,28 @@ test("materializeActivityPosters writes, reuses, and drops unshown posters", asy
       },
     },
     posterRoot,
-    { fetchImpl: fetchBuffer(changed) },
+    {
+      robotsGate: ALLOW_ALL_ROBOTS,
+      logError: muteLogError,
+      log: muteLog,
+      fetchImpl: async () => {
+        fetches += 1;
+        return fetchBuffer(changed)();
+      },
+    },
   );
 
   const third = readFileSync(filePath);
 
-  assert.notEqual(Buffer.compare(first, third), 0);
+  // Cached WebP wins — publisher bytes are not re-downloaded.
+  assert.equal(fetches, 0);
+  assert.equal(Buffer.compare(first, third), 0);
 
-  await materializeActivityPosters({ activity: { primary: [] } }, posterRoot);
+  await materializeActivityPosters({ activity: { primary: [] } }, posterRoot, {
+    robotsGate: ALLOW_ALL_ROBOTS,
+    logError: muteLogError,
+    log: muteLog,
+  });
 
   await assert.rejects(fs.stat(filePath));
   await fs.rm(directory, { recursive: true, force: true });
@@ -432,8 +606,12 @@ test("materializeActivityPosters keeps a previous file when the download fails",
       primary: [{ image: source, image_origin: "https://cdn.example" }],
     },
   };
+  const softFails = captureLogError();
 
   await materializeActivityPosters(views, posterRoot, {
+    robotsGate: ALLOW_ALL_ROBOTS,
+    logError: muteLogError,
+    log: muteLog,
     fetchImpl: fetchBuffer(png),
   });
 
@@ -442,15 +620,21 @@ test("materializeActivityPosters keeps a previous file when the download fails",
   views.activity.primary[0].image = source;
   views.activity.primary[0].image_origin = "https://cdn.example";
 
+  // Cached file short-circuits the network — offline fetch is never called.
   await materializeActivityPosters(views, posterRoot, {
+    robotsGate: ALLOW_ALL_ROBOTS,
+    logError: softFails.logError,
+    log: muteLog,
     fetchImpl: async () => {
       throw new Error("offline");
     },
   });
 
   assert.equal(views.activity.primary[0].image, saved);
+  assert.equal(softFails.lines.length, 0);
 
   const otherRoot = path.join(root, `bad-${Date.now()}`);
+  const badImageFails = captureLogError();
 
   const badImage = await materializeActivityPosters(
     {
@@ -464,15 +648,34 @@ test("materializeActivityPosters keeps a previous file when the download fails",
       },
     },
     otherRoot,
-    { fetchImpl: fetchBuffer(Buffer.from("not-an-image"), 200) },
+    {
+      robotsGate: ALLOW_ALL_ROBOTS,
+      logError: badImageFails.logError,
+      log: muteLog,
+      fetchImpl: fetchBuffer(Buffer.from("not-an-image"), 200),
+    },
   );
 
   assert.equal(
     badImage.activity.primary[0].image,
     "https://cdn.example/missing.jpg",
   );
+  assert.ok(
+    badImageFails.lines.some((line) =>
+      line.includes("poster materialize failed"),
+    ),
+    "expected invalid-image soft-fail was reported",
+  );
   await fs.rm(otherRoot, { recursive: true, force: true });
 
+  const afterFails = captureLogError();
+  const assetPath = posterAssetPath(source);
+  const outputPath = path.join(posterRoot, assetPath.slice(1));
+  await fs.rm(outputPath, { force: true });
+  views.activity.primary[0].image = source;
+  views.activity.primary[0].image_origin = "https://cdn.example";
+
+  // Fetch boundary throws after a prior file appears — keep the on-disk poster.
   const afterFailure = await materializeActivityPosters(
     {
       activity: {
@@ -480,10 +683,23 @@ test("materializeActivityPosters keeps a previous file when the download fails",
       },
     },
     posterRoot,
-    { fetchImpl: fetchBuffer(png, 404) },
+    {
+      robotsGate: ALLOW_ALL_ROBOTS,
+      logError: afterFails.logError,
+      log: muteLog,
+      fetchImpl: async () => {
+        await fs.mkdir(path.dirname(outputPath), { recursive: true });
+        await fs.writeFile(outputPath, await resizePoster(png));
+        throw new Error("offline after staging");
+      },
+    },
   );
 
   assert.equal(afterFailure.activity.primary[0].image, saved);
+  assert.ok(
+    afterFails.lines.some((line) => line.includes("poster materialize failed")),
+    "expected offline soft-fail was reported",
+  );
 
   await fs.rm(posterRoot, { recursive: true, force: true });
 });
@@ -514,7 +730,12 @@ test("materializeActivityPosters rethrows unexpected read errors", async () => {
         activity: { primary: [{ image: source }] },
       },
       posterRoot,
-      { fetchImpl: fetchBuffer(png) },
+      {
+        robotsGate: ALLOW_ALL_ROBOTS,
+        logError: muteLogError,
+        log: muteLog,
+        fetchImpl: fetchBuffer(png),
+      },
     ),
   );
 
@@ -556,6 +777,9 @@ test("sheet music posters are generated for PDF scores without images", async ()
   };
 
   await materializeActivityPosters(views, posterRoot, {
+    robotsGate: ALLOW_ALL_ROBOTS,
+    logError: muteLogError,
+    log: muteLog,
     fetchImpl: async () => {
       throw new Error("no remote posters");
     },
@@ -592,6 +816,9 @@ test("materializeActivityPosters keeps pre-localized Playwright posters", async 
   };
 
   await materializeActivityPosters(views, posterRoot, {
+    robotsGate: ALLOW_ALL_ROBOTS,
+    logError: muteLogError,
+    log: muteLog,
     fetchImpl: async () => {
       throw new Error("no remote posters");
     },
@@ -770,4 +997,183 @@ test("materializeSheetMusicPosters: existing poster with same content is not rew
   // File should be kept and added to keepNames without being overwritten.
   assert.ok(keepNames.has(fileName), "fileName must be in keepNames");
   await fs.rm(tmpDir, { recursive: true, force: true });
+});
+
+test("fetchPosterBytes and materialize create a default robots gate", async () => {
+  const png = await solidPng(32, 16, { r: 9, g: 8, b: 7 });
+  const fetchPublicText = async () => ({
+    url: "https://cdn.example/robots.txt",
+    contentType: "text/plain",
+    body: "User-agent: *\nAllow: /\n",
+  });
+  const fetchImpl = async () => ({
+    ok: true,
+    status: 200,
+    headers: new Headers({ "content-type": "image/png" }),
+    arrayBuffer: async () => png,
+  });
+
+  const bytes = await fetchPosterBytes(
+    "https://cdn.example/default-gate.jpg",
+    fetchImpl,
+    { fetchPublicText, cache: dnsCache(["cdn.example"]) },
+  );
+  assert.ok(bytes.byteLength > 0);
+
+  const posterRoot = await fs.mkdtemp(
+    path.join(os.tmpdir(), "poster-default-gate-"),
+  );
+  const views = {
+    activity: {
+      primary: [
+        {
+          url: "https://a.example/p/",
+          image: "https://cdn.example/default-gate.jpg",
+        },
+      ],
+    },
+    showcase: { items: [] },
+  };
+  await materializeActivityPosters(views, posterRoot, {
+    fetchImpl,
+    fetchPublicText,
+    cache: dnsCache(["cdn.example"]),
+    logError: muteLogError,
+    log: muteLog,
+  });
+  assert.match(
+    String(views.activity.primary[0].image),
+    /\/assets\/activity\/posters\//,
+  );
+  await fs.rm(posterRoot, { recursive: true, force: true });
+});
+
+test("assertShowcasePostersLocalized defaults logError to stderr", () => {
+  const views = {
+    showcase: {
+      items: [
+        {
+          url: "https://a.example/work/",
+          image: "https://cdn.example/gone.jpg",
+        },
+      ],
+      home: [],
+    },
+  };
+  /** @type {string[]} */
+  const errLines = [];
+  const originalErr = process.stderr.write.bind(process.stderr);
+  process.stderr.write = /** @type {typeof process.stderr.write} */ (
+    (chunk, encoding, callback) => {
+      errLines.push(String(chunk));
+      if (typeof encoding === "function") {
+        encoding();
+        return true;
+      }
+      if (typeof callback === "function") {
+        callback();
+      }
+      return true;
+    }
+  );
+
+  try {
+    assert.throws(
+      () => assertShowcasePostersLocalized(views),
+      /Showcase poster materialize left 1 remote/,
+    );
+  } finally {
+    process.stderr.write = originalErr;
+  }
+
+  assert.ok(
+    errLines.some((line) => line.includes("showcase poster not localized")),
+  );
+});
+
+test("assertShowcasePostersLocalized no-ops when Showcase is local", () => {
+  assert.doesNotThrow(() =>
+    assertShowcasePostersLocalized({
+      showcase: {
+        items: [
+          {
+            url: "https://a.example/work/",
+            image: "/assets/activity/posters/abc.webp",
+          },
+        ],
+        home: [],
+      },
+    }),
+  );
+});
+
+test("materializeActivityPosters defaults logError to stderr and log to stdout", async () => {
+  const posterRoot = path.join(root, `stderr-log-${Date.now()}`);
+  const views = {
+    showcase: {
+      items: [
+        {
+          url: "https://a.example/work/",
+          image: "https://cdn.example/gone.jpg",
+        },
+      ],
+      home: [],
+    },
+  };
+  /** @type {string[]} */
+  const errLines = [];
+  /** @type {string[]} */
+  const outLines = [];
+  const originalErr = process.stderr.write.bind(process.stderr);
+  const originalOut = process.stdout.write.bind(process.stdout);
+  /**
+   * @param {string[]} sink
+   * @returns {typeof process.stderr.write}
+   */
+  const captureWrite = (sink) =>
+    /** @type {typeof process.stderr.write} */ (
+      (chunk, encoding, callback) => {
+        sink.push(String(chunk));
+        if (typeof encoding === "function") {
+          encoding();
+          return true;
+        }
+        if (typeof callback === "function") {
+          callback();
+        }
+        return true;
+      }
+    );
+  process.stderr.write = captureWrite(errLines);
+  process.stdout.write = captureWrite(outLines);
+
+  try {
+    await assert.rejects(
+      () =>
+        materializeActivityPosters(views, posterRoot, {
+          robotsGate: ALLOW_ALL_ROBOTS,
+          fetchImpl: async () => {
+            throw new Error("offline");
+          },
+        }),
+      /Showcase poster materialize left 1 remote/,
+    );
+  } finally {
+    process.stderr.write = originalErr;
+    process.stdout.write = originalOut;
+  }
+
+  assert.ok(
+    errLines.some((line) => line.includes("poster materialize failed")),
+    "expected materialize failure on stderr",
+  );
+  assert.ok(
+    errLines.some((line) => line.includes("showcase poster not localized")),
+    "expected localization warning on stderr",
+  );
+  assert.ok(
+    outLines.some((line) => line.includes("posters:")),
+    "expected progress on stdout",
+  );
+  await fs.rm(posterRoot, { recursive: true, force: true });
 });

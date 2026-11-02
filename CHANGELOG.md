@@ -9,6 +9,7 @@
 
 ### Added
 
+- **Optional `/.well-known/slashpages` OPML:** Robots-gated, SSRF-safe reader seeds same-origin crawl URLs; cross-origin outlines stay evidence-only. Includes are depth/count capped with loop detection.
 - **Showcase and Happening crawl:** Comics, study-hall/education, CSS Battles, Watch links, and YouTube/Vimeo/Twitch channel cards from Elsewhere. Past education gatherings can appear in Showcase; upcoming ones stay on Happening. `/events/` stays in Network nav when there is something upcoming.
 - **Member project shelves:** First-party apps linked from member project shelves (including off-origin apps) can appear as Showcase projects. Missing posters can be filled with a viewport capture.
 - **Card posters when sites omit images:** Articles, notes, and creative works without a usable image get a local poster under `assets/activity/posters/` during sync.
@@ -19,6 +20,22 @@
 
 ### Changed
 
+- **Network card blurbs prefer substance:** Thin boilerplate meta (short lines, “personal homepage”, “home on the web”, “X’s website”) is skipped. Cards pick the strongest homepage or about/profile-page publisher blurb (not friends/hello/uses), join short intro paragraphs when needed, and soft-cap length for readability.
+- **Network titles prefer people over host brands:** Author / GitHub / Person JSON-LD names win before site titles. Host-compressed brands like “Forward Bias” no longer count as a personal name for `forwardbias.dev` (card shows Josh Caldwell via GitHub).
+- **Identity-page navigations settle before scrape:** Elsewhere probes wait for load + soft networkidle, recover from “interrupted by another navigation” redirect races, and no longer abort Playwright mid-goto when the enrichment budget fires. Soft site enrichment budget is 90s.
+- **`npm run build` skips the step banner:** Real builds no longer print the numbered command list before sync; `--dry-run` and `--help` still show the order.
+- **Showcase posters fall back to page snapshots:** When a publisher image cannot be downloaded or decoded (corrupt GIF, blocked fetch, …), views:build captures a Playwright viewport WebP of the work page before the Showcase localization gate. Poster materialize still stays latest + cached for What’s New and Showcase; Search/topic cards reuse on-disk WebP when present.
+- **No per-member editorial notes in the public tree:** Removed member-named research audits and raw probe logs from `docs/research/`. Test titles and code comments describe gates and shapes anonymously (no “X is not Showcase” callouts).
+- **Expected soft skips stay green in tests:** Prettier soft skips, poster materialize soft fails, and work-screenshot progress report through injectable loggers so suite runs assert the expected outcome without white/red terminal noise that looks like a real failure.
+- **Poster enrich robots are injectable offline:** `enrichContentItemPosters` accepts `fetchRobotsText` / `robotsGate` so default-gate allow/deny branches stay at 100% coverage without live `robots.txt`.
+- **All advertised feeds:** NLP subject + content harvest processes every feed for an origin (robots + per-feed failure isolation). The old first-three-feeds cap is gone.
+- **Showcase ≡ made:** `made.json` and `showcase.json` are written from one Showcase document so the alias cannot drift mid-run.
+- **Portfolio Showcase eligibility:** Creative-path portfolio works (e.g. `/projects/…`) can appear; client case studies including `/work/?work=` stay out.
+- **Bounded fair crawl:** Finite per-origin page and index-child budgets with skip/coverage reporting; creative indexes seed before blind probes.
+- **Activity summaries:** Prefer `summary` / `itunes:summary` / `media:description` over body chrome; publisher `pubDate`/`published` preferred over `updated`.
+- **Crawl robots everywhere:** Every member-origin fetch (feeds, enrich, posters, screenshots, network discovery, probes) goes through a shared `robots.txt` gate. Disallowed URLs are skipped.
+- **One crawl User-Agent:** Hub crawls use the documented JoshBot identity `Joshternet-Joshbot (+https://joshternet.org/joshbot)` for HTTP and robots matching.
+- **Aggregator SEO:** Activity, Showcase, Topics (hub + topic layout), and the homepage ask search engines for short snippets (`max-snippet:160, max-image-preview:large`); note summaries prefer `p-summary` / feed / OG blurbs over raw entry bodies. Atom stays summary-only with outbound alternates.
 - **Showcase titles:** Bare slug titles can pick up short Title Case wording from the summary instead of staying a single path word.
 - **Recent channel cards only:** YouTube channel cards show in Showcase and What’s New only when the channel uploaded something in the last 14 days. Quiet channels stay off those surfaces.
 - **Poster capture for channels:** Channel cards reuse or capture viewport posters when platforms omit a usable social image.
