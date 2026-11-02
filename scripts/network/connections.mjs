@@ -8,6 +8,10 @@
 import { createHash } from "node:crypto";
 
 import { originFromHttpUrl } from "./blogroll.mjs";
+import {
+  itemsFromCollection,
+  sparseCollectionDocument,
+} from "./collections.mjs";
 import { decodeHtmlEntities, normalizeText } from "./lib.mjs";
 
 /**
@@ -822,6 +826,40 @@ export function aggregateConnectionEdges(edges) {
   }
 
   return sortConnectionEdges(aggregated);
+}
+
+/**
+ * Builds the sparse homepage/enrichment connections document that network:sync
+ * writes for nlp:sync to merge. Aggregates observation-level edges first.
+ * @param {{ generatedAt: string, edges: Array<Record<string, unknown>> }} input
+ * @returns {Record<string, unknown>}
+ */
+export function buildHomepageConnectionsDocument(input) {
+  const generatedAt =
+    input && typeof input.generatedAt === "string" && input.generatedAt
+      ? input.generatedAt
+      : new Date().toISOString();
+  const aggregated = aggregateConnectionEdges(
+    Array.isArray(input?.edges) ? input.edges : [],
+  );
+
+  return sparseCollectionDocument({
+    generatedAt,
+    key: "edges",
+    items: aggregated,
+    extra: {
+      edge_count: aggregated.length,
+    },
+  });
+}
+
+/**
+ * Reads homepage/enrichment connection edges for merge into NLP publish.
+ * @param {unknown} doc - `_data/homepage_connections.json` document.
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function homepageConnectionObservationsFromDocument(doc) {
+  return itemsFromCollection(doc, "edges");
 }
 
 /**

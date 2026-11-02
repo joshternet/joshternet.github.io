@@ -22,6 +22,7 @@ import {
   NETWORK_DESCRIPTION_MIN_CHARS,
   networkDescriptionQuality,
   partitionPublicParticipants,
+  personNameFromSelfIntro,
   personNameFromText,
   personNameMatchingDomain,
   projectRegistry,
@@ -321,6 +322,40 @@ test("personNameFromText returns empty when no span matches the domain", () => {
   assert.equal(
     personNameFromText("Hello there friend world", "joshghent.com"),
     "",
+  );
+});
+
+test("personNameFromSelfIntro reads Non-Josh names that compress to the host", () => {
+  assert.equal(
+    personNameFromSelfIntro(
+      "I’m Chris Minnick. I’ve written more than twenty books.",
+      "www.chrisminnick.com",
+    ),
+    "Chris Minnick",
+  );
+  assert.equal(
+    personNameFromText(
+      "I’m Chris Minnick. I’ve written more than twenty books.",
+      "www.chrisminnick.com",
+    ),
+    "Chris Minnick",
+  );
+  assert.equal(
+    chooseTitle({
+      documentTitle: "www.chrisminnick.com",
+      ogTitle: "www.chrisminnick.com",
+      description:
+        "I’m Chris Minnick. I’ve written more than twenty books, including a shelf of For Dummies titles.",
+      domain: "www.chrisminnick.com",
+    }),
+    "Chris Minnick",
+  );
+  // Brand hosts still do not win via title compression alone.
+  assert.equal(personNameMatchingDomain("Forward Bias", "forwardbias.dev"), "");
+  // An explicit self-intro that compresses to the host is accepted (rare for brands).
+  assert.equal(
+    personNameFromSelfIntro("I’m Forward Bias.", "forwardbias.dev"),
+    "Forward Bias",
   );
 });
 

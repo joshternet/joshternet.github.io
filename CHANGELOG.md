@@ -20,6 +20,11 @@
 
 ### Changed
 
+- **Join copy:** Tighter peer tone throughout `/join/`; step 2 is “Platform recipes—open the one that matches your stack, or skip to publish.”
+- **Self-intro Network titles for personal domains:** Descriptions like “I’m Chris Minnick…” set the card title when the name compresses to the host (e.g. `www.chrisminnick.com`), including Non-Josh peers. Josh-only given-name gating still blocks host-compressed brand titles such as “Forward Bias.”
+- **Undated portfolio projects sort as archival:** Showcase recency ignores crawl `observed_at` for undated project/portfolio items so archives (e.g. joshuadrake.org works without a publisher date) cannot lead as “just crawled.” Real `published_at` from Status Completed / page meta still ranks normally after sync enrichment.
+- **Connections publish before work screenshots:** `nlp:sync` writes `connections.json` / `site_signals.json` (and related NLP artifacts) before Playwright work-poster capture, so a hung screenshot pass cannot leave a finished crawl with stale edges.
+- **Homepage enrichment feeds connections:** `network:sync` persists Playwright homepage/identity observations to `_data/homepage_connections.json`; `nlp:sync` merges them when publishing `connections.json` instead of discarding them.
 - **Elsewhere profiles, not share buttons:** Reddit icons require `/user/` or `/u/` profiles—`/submit` buttons are dropped (even with `rel=me`). Facebook `sharer` and Telegram `share` links are filtered the same way.
 - **Hosted newsletter feeds count as writing:** When a Network card lists a Substack (or other off-site) RSS URL, posts from that feed origin publish into `content.json` and can appear in What’s New. Hub OPML already uses each member’s primary feed, including Substack. Link-blog posts to other participants stay dropped.
 - **Elsewhere icons:** Libre.fm gets a music-note glyph; xoxo.zone maps to Mastodon. Buttondown newsletter hosts are no longer Network Elsewhere icons (they stay out of the social strip so we can treat newsletters as feeds/subscribe surfaces later).

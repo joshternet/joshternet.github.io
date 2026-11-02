@@ -17,6 +17,7 @@ import {
   channelItemsFromNetwork,
   compareShowcaseRecency,
   compactContentItem,
+  isShowcasePortfolioProject,
   creativePathKind,
   isEducationGatheringItem,
   isPastEducationShowcaseEvent,
@@ -1838,6 +1839,8 @@ test("compareShowcaseRecency: dated beats undated crawl-time observed_at", () =>
     compareShowcaseRecency(
       {
         url: "https://joshuadrake.org/projects/turboelectriccessna",
+        kind: "project",
+        source_kind: "portfolio",
         observed_at: "2026-11-02T15:29:16.095Z",
       },
       {
@@ -1855,6 +1858,8 @@ test("compareShowcaseRecency: dated beats undated crawl-time observed_at", () =>
       },
       {
         url: "https://joshuadrake.org/projects/turboelectriccessna",
+        kind: "project",
+        source_kind: "portfolio",
         observed_at: "2026-11-02T15:29:16.095Z",
       },
     ) < 0,
@@ -1870,6 +1875,57 @@ test("compareShowcaseRecency: dated beats undated crawl-time observed_at", () =>
         observed_at: "2026-11-01T00:00:00.000Z",
       },
     ) > 0,
+  );
+});
+
+test("compareShowcaseRecency: undated portfolio projects ignore crawl observed_at", () => {
+  assert.equal(isShowcasePortfolioProject(null), false);
+  assert.equal(
+    isShowcasePortfolioProject({ kind: "project", url: "https://a.example/p" }),
+    true,
+  );
+  assert.equal(
+    isShowcasePortfolioProject({
+      source_kind: "portfolio",
+      url: "https://a.example/p",
+    }),
+    true,
+  );
+
+  const undatedProject = {
+    url: "https://joshuadrake.org/projects/server",
+    kind: "project",
+    content_type: "project",
+    page_role: "project",
+    source_kind: "portfolio",
+    observed_at: "2026-11-02T23:00:00.000Z",
+  };
+  const datedOlder = {
+    url: "https://example.org/dated-essay",
+    published_at: "2023-01-01T00:00:00.000Z",
+    observed_at: "2026-01-01T00:00:00.000Z",
+  };
+  const undatedGame = {
+    url: "https://example.org/games/fresh-undated",
+    content_type: "game",
+    observed_at: "2026-10-01T00:00:00.000Z",
+  };
+
+  assert.ok(
+    compareShowcaseRecency(undatedProject, datedOlder) > 0,
+    "undated project must not outrank a dated 2023 work via crawl time",
+  );
+  assert.ok(
+    compareShowcaseRecency(datedOlder, undatedProject) < 0,
+    "dated 2023 work ranks before undated project",
+  );
+  assert.ok(
+    compareShowcaseRecency(undatedProject, undatedGame) > 0,
+    "undated project ignores observed_at and sorts after undated non-project",
+  );
+  assert.ok(
+    compareShowcaseRecency(undatedGame, undatedProject) < 0,
+    "undated non-project with observed_at ranks before undated project",
   );
 });
 

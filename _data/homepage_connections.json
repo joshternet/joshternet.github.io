@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-02T23:11:09.921Z",
+  "edge_count": 4,
+  "edges": [
+    {
+      "from": "https://artlung.com",
+      "to": "https://joshmuller.ca",
+      "relation": "content-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://joshmuller.ca/",
+      "text": "joshmuller.ca",
+      "rel": [],
+      "page": "https://artlung.com/firehose/",
+      "evidence_count": 1,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://artlung.com/firehose/",
+          "href": "https://joshmuller.ca/",
+          "text": "joshmuller.ca",
+          "rel": [],
+          "source": "content"
+        }
+      ]
+    },
+    {
+      "from": "https://artlung.com",
+      "to": "https://joshternet.org",
+      "relation": "content-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://joshternet.org/",
+      "text": "The Joshternet",
+      "rel": [],
+      "page": "https://artlung.com/links/",
+      "evidence_count": 2,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://artlung.com/links/",
+          "href": "https://joshternet.org/",
+          "text": "The Joshternet",
+          "rel": [],
+          "source": "content"
+        },
+        {
+          "class": "observed",
+          "page": "https://artlung.com/now/",
+          "href": "https://joshternet.org/",
+          "text": "The Joshternet",
+          "rel": [],
+          "source": "content"
+        }
+      ]
+    },
+    {
+      "from": "https://artlung.com",
+      "to": "https://joshternet.org",
+      "relation": "homepage-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://joshternet.org/",
+      "text": "The Joshternet",
+      "rel": [],
+      "page": "https://artlung.com/",
+      "evidence_count": 1,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://artlung.com/",
+          "href": "https://joshternet.org/",
+          "text": "The Joshternet",
+          "rel": [],
+          "source": "content"
+        }
+      ]
+    },
+    {
+      "from": "https://joshuamorris.info",
+      "to": "https://www.chrisminnick.com",
+      "relation": "content-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://www.chrisminnick.com/",
+      "text": "Chris Minnick",
+      "rel": [],
+      "page": "https://joshuamorris.info/friends/",
+      "evidence_count": 1,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://joshuamorris.info/friends/",
+          "href": "https://www.chrisminnick.com/",
+          "text": "Chris Minnick",
+          "rel": [],
+          "source": "content"
+        }
+      ]
+    }
+  ]
+}

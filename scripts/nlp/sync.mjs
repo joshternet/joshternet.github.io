@@ -4,6 +4,9 @@
  * Catalog lexicon is the union of every participant's declared subjects.
  * No publisher is the vocabulary authority. One-way pipeline: derived hub
  * pages never become semantic evidence.
+ * Publishes connections/signals/content before work screenshots so a hung
+ * Playwright capture cannot strand a finished crawl with stale edges.
+ * Merges `_data/homepage_connections.json` from network:sync.
  * Does not commit. Semantic hash skips timestamp-only churn when unchanged.
  */
 
@@ -16,6 +19,7 @@ import {
   aggregateConnectionEdges,
   blogrollConnectionObservations,
   hasDerivedAnalysisMarker,
+  homepageConnectionObservationsFromDocument,
   isHubDirectoryPage,
 } from "../network/connections.mjs";
 import {
@@ -110,6 +114,10 @@ const TOPICS_PATH = path.join(ROOT, "_data/topics.json");
 const CONTENT_PATH = path.join(ROOT, "_data/content.json");
 const CHANNEL_PUBLISH_PATH = path.join(ROOT, "_data/channel_publish.json");
 const BLOGROLLS_PATH = path.join(ROOT, "_data/blogrolls.json");
+const HOMEPAGE_CONNECTIONS_PATH = path.join(
+  ROOT,
+  "_data/homepage_connections.json",
+);
 const MANIFEST_PATH = path.join(ROOT, "_data/data_manifest.json");
 const ALIASES_PATH = path.join(ROOT, "_data/topic_aliases.json");
 const DENYLIST_PATH = path.join(ROOT, "_data/topic_denylist.json");
@@ -622,28 +630,6 @@ async function main() {
     robotsGate,
   });
   await writeJSONAtomic(CHANNEL_PUBLISH_PATH, channelPublishByUrl);
-  const screenshotTargets = [...contentItems];
-  const seenScreenshotUrls = new Set(
-    contentItems
-      .map((item) => (typeof item.url === "string" ? item.url : ""))
-      .filter(Boolean),
-  );
-
-  for (const channel of channelDrafts) {
-    if (
-      typeof channel.url === "string" &&
-      channel.url &&
-      !seenScreenshotUrls.has(channel.url)
-    ) {
-      seenScreenshotUrls.add(channel.url);
-      screenshotTargets.push(channel);
-    }
-  }
-
-  await captureMissingWorkScreenshots(screenshotTargets, {
-    root: ROOT,
-    robotsGate,
-  });
   const previousConnections = itemsFromCollection(
     await readJSONIfExists(CONNECTIONS_PATH, {}),
     "edges",
@@ -698,6 +684,10 @@ async function main() {
       })
     : [];
 
+  const homepageConnections = homepageConnectionObservationsFromDocument(
+    await readJSONIfExists(HOMEPAGE_CONNECTIONS_PATH, {}),
+  );
+
   const connections = aggregateConnectionEdges([
     ...preservedEdges.map((edge) => ({
       from: edge.from,
@@ -715,6 +705,7 @@ async function main() {
       page: edge.page,
       evidence: edge.evidence,
     })),
+    ...homepageConnections,
     ...buildAllConnections({
       participantOrigins,
       originLinks,
@@ -784,10 +775,34 @@ async function main() {
     candidates,
   });
 
+  // Build screenshot targets once; capture runs after connections publish (or
+  // on the unchanged early-return path) so hung Playwright cannot strand edges.
+  const screenshotTargets = [...contentItems];
+  const seenScreenshotUrls = new Set(
+    contentItems
+      .map((item) => (typeof item.url === "string" ? item.url : ""))
+      .filter(Boolean),
+  );
+
+  for (const channel of channelDrafts) {
+    if (
+      typeof channel.url === "string" &&
+      channel.url &&
+      !seenScreenshotUrls.has(channel.url)
+    ) {
+      seenScreenshotUrls.add(channel.url);
+      screenshotTargets.push(channel);
+    }
+  }
+
   if (!changed && previousManifest) {
     process.stdout.write(
       "Semantic hash unchanged; leaving committed public artifacts untouched.\n",
     );
+    await captureMissingWorkScreenshots(screenshotTargets, {
+      root: ROOT,
+      robotsGate,
+    });
     await buildViewProjections();
     return;
   }
@@ -879,6 +894,11 @@ async function main() {
       aliasCompatibilityMarkdown(page.from, page.to),
     );
   }
+
+  await captureMissingWorkScreenshots(screenshotTargets, {
+    root: ROOT,
+    robotsGate,
+  });
 
   await buildViewProjections();
   await formatGeneratedOutputs();

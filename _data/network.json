@@ -1,5 +1,96 @@
 [
   {
+    "origin": "https://artlung.com",
+    "domain": "artlung.com",
+    "identity": "declined",
+    "declaration": {
+      "version": 1,
+      "josh": false
+    },
+    "initial_declaration": {
+      "version": 1,
+      "josh": false
+    },
+    "first_participated_at": "2026-11-02T15:42:11.854207Z",
+    "latest_declaration_check_at": "2026-11-02T15:42:11.854207Z",
+    "latest_declaration_check_outcome": "valid",
+    "title": "Joe Crawford",
+    "description": "I’ve written code for a living for a while. ArtLung.com itself runs on WordPress and it looks and works the way it does because I programmed the theme and underlying code.",
+    "screenshot": "/assets/network/sites/50827dbb596ff06510d6db2f53476ebc5c82c97108ffdc25e42230daea31a1d5.webp",
+    "embeddable": true,
+    "frame_reason": "allowed",
+    "captured_at": "2026-11-02T18:40:46.031Z",
+    "feeds": [
+      {
+        "url": "https://artlung.com/feed/",
+        "type": "application/atom+xml",
+        "title": "ArtLung Feed"
+      }
+    ],
+    "elsewhere": [
+      {
+        "url": "https://github.com/artlung",
+        "network": "github",
+        "label": "GitHub"
+      },
+      {
+        "url": "https://libre.fm/user/artlung",
+        "network": "librefm",
+        "label": "Libre.fm"
+      },
+      {
+        "url": "https://xoxo.zone/@artlung",
+        "network": "mastodon",
+        "label": "Mastodon"
+      },
+      {
+        "url": "https://artlung.com/",
+        "network": "web",
+        "label": "artlung.com"
+      },
+      {
+        "url": "https://bsky.app/profile/artlung.com",
+        "network": "bluesky",
+        "label": "Bluesky"
+      },
+      {
+        "url": "https://instagram.com/artlung",
+        "network": "instagram",
+        "label": "Instagram"
+      },
+      {
+        "url": "https://www.youtube.com/channel/UCcYgwQEo9G_pbwJbwd_8p7A",
+        "network": "youtube",
+        "label": "YouTube"
+      },
+      {
+        "url": "https://www.tiktok.com/@artlung",
+        "network": "tiktok",
+        "label": "TikTok"
+      },
+      {
+        "url": "https://www.linkedin.com/in/artlung/",
+        "network": "linkedin",
+        "label": "LinkedIn"
+      },
+      {
+        "url": "https://sdpubliclibrary.tumblr.com/",
+        "network": "tumblr",
+        "label": "Tumblr"
+      },
+      {
+        "url": "https://codepen.io/nsmsn/pen/VwJdoxQ",
+        "network": "codepen",
+        "label": "CodePen"
+      },
+      {
+        "url": "https://t.me/+Cb3hZfTjRd00MDk5",
+        "network": "telegram",
+        "label": "Telegram"
+      }
+    ]
+  },
+  {
     "origin": "https://forwardbias.dev",
     "domain": "forwardbias.dev",
     "identity": "affirmed",
@@ -80,6 +171,47 @@
     ]
   },
   {
+    "origin": "https://joshcox.co.uk",
+    "domain": "joshcox.co.uk",
+    "identity": "affirmed",
+    "declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "initial_declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "first_participated_at": "2026-11-02T15:03:18.018094Z",
+    "latest_declaration_check_at": "2026-11-02T15:03:18.018094Z",
+    "latest_declaration_check_outcome": "valid",
+    "title": "Josh Cox",
+    "description": "I've been building things on the web since 2016, mostly through Prystine, the web agency I run. Over the years that's grown from \"making websites\" into looking after them properly — performance, maintenance, and the unglamorous work that keeps a site alive.",
+    "screenshot": "/assets/network/sites/84f13187dea6b70821e3eeb6c3281d2104329052a22be508c13004864eed2a96.webp",
+    "embeddable": false,
+    "frame_reason": "blocked-by-site",
+    "captured_at": "2026-11-02T18:45:23.350Z",
+    "feeds": [
+      {
+        "url": "https://joshcox.co.uk/rss.xml",
+        "type": "application/rss+xml",
+        "title": "Josh Cox"
+      }
+    ],
+    "elsewhere": [
+      {
+        "url": "https://github.com/joshcoxjcs",
+        "network": "github",
+        "label": "GitHub"
+      },
+      {
+        "url": "https://www.linkedin.com/in/josh-luke-frederick-cox/",
+        "network": "linkedin",
+        "label": "LinkedIn"
+      }
+    ]
+  },
+  {
     "origin": "https://joshghent.com",
     "domain": "joshghent.com",
     "identity": "affirmed",
@@ -128,14 +260,14 @@
       "josh": true
     },
     "first_participated_at": "2026-11-01T18:38:04.414983Z",
-    "latest_declaration_check_at": "2026-11-01T18:38:04.414983Z",
+    "latest_declaration_check_at": "2026-11-02T18:39:57.369445Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Joshua Grant",
     "description": "Hi, I’m Josh. There are new worlds of thought to discover; I build software to explore them.",
     "screenshot": "/assets/network/sites/b94ebc2655942cdb8804748814f43ae1c7ce9ea4875248a9afc4d4681ef42fc6.webp",
     "embeddable": true,
     "frame_reason": "allowed",
-    "captured_at": "2026-11-01T19:22:58.775Z",
+    "captured_at": "2026-11-02T19:42:39.907Z",
     "feeds": [
       {
         "url": "https://joshgr.com/rss.xml",
@@ -268,7 +400,7 @@
       "version": 1
     },
     "first_participated_at": "2026-09-06T22:52:08.890744Z",
-    "latest_declaration_check_at": "2026-11-01T19:13:16.923627Z",
+    "latest_declaration_check_at": "2026-11-02T19:21:09.401976Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Joshternet",
     "description": "Joshternet connects independent websites—Joshes and friends of Joshes—through a tiny public /.well-known/josh declaration. Anyone can join; your site stays yours.",
@@ -298,7 +430,7 @@
       "josh": true
     },
     "first_participated_at": "2026-09-25T08:52:07.833928Z",
-    "latest_declaration_check_at": "2026-11-01T18:05:01.701772Z",
+    "latest_declaration_check_at": "2026-11-02T18:07:07.385493Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Josh Sherman",
     "description": "I am many things to many people (and animals). I'm a one-term husband, riding out the reign as long as she'll let me. I'm also the proud father of an adult-aged daughter. Two pugs and quite a few Sea-Monkeys consider me capable at feeding them.",
@@ -346,7 +478,7 @@
     "screenshot": "/assets/network/sites/b5cce6756d861f9fc0991a53d73e3b8b2ac163c0c9b8437d0b62775183d16a0e.webp",
     "embeddable": true,
     "frame_reason": "allowed",
-    "captured_at": "2026-11-01T19:23:36.240Z",
+    "captured_at": "2026-11-02T19:48:49.120Z",
     "feeds": [
       {
         "url": "https://joshua.seigler.net/assets/feed-Cyyd5PFg.xml",
@@ -375,7 +507,7 @@
       "josh": true
     },
     "first_participated_at": "2026-11-01T20:14:11.484485Z",
-    "latest_declaration_check_at": "2026-11-01T20:14:11.484485Z",
+    "latest_declaration_check_at": "2026-11-02T20:54:23.126185Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Joshua Drake",
     "description": "I'm Joshua Drake. In the fall of 2024 I graduated from Oklahoma State University with a Master's in Electrical Engineering and am presently employed in Aerospace research. Ecclesiastes 9",
@@ -487,10 +619,10 @@
       "josh": true
     },
     "first_participated_at": "2026-11-01T19:50:42.787205Z",
-    "latest_declaration_check_at": "2026-11-01T19:50:42.787205Z",
+    "latest_declaration_check_at": "2026-11-02T19:53:04.819296Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Joshua P. Steele",
-    "description": "Happiness is a 2x2 grid of WANT and HAVE. Be grateful for what you don't want and don't have! #advice #wisdom",
+    "description": "Josh Steele is a software engineer, writer, husband, father, and former Anglican priest near Toledo, Ohio. He writes about theology, ethics, technology, books, tools, DIY projects, and the practical work of living.",
     "screenshot": "/assets/network/sites/26131d762eec35bfd4b0000a836a7f737812ed2f80f2cbe27dbb1ca920989942.webp",
     "embeddable": true,
     "frame_reason": "allowed",
@@ -537,29 +669,50 @@
         "label": "social.joshuapsteele.com"
       },
       {
-        "url": "https://buttondown.com/joshuapsteele/",
-        "network": "buttondown",
-        "label": "Buttondown"
-      },
-      {
         "url": "https://joshuapsteele.com/blog/feed.xml",
         "network": "web",
         "label": "joshuapsteele.com"
+      }
+    ]
+  },
+  {
+    "origin": "https://www.chrisminnick.com",
+    "domain": "www.chrisminnick.com",
+    "identity": "declined",
+    "declaration": {
+      "version": 1,
+      "josh": false
+    },
+    "initial_declaration": {
+      "version": 1,
+      "josh": false
+    },
+    "first_participated_at": "2026-11-02T19:18:57.470121Z",
+    "latest_declaration_check_at": "2026-11-02T19:18:57.470121Z",
+    "latest_declaration_check_outcome": "valid",
+    "title": "Chris Minnick",
+    "description": "I’m Chris Minnick. I’ve written more than twenty books, including a shelf of For Dummies titles, three novels, and courseware used to train developers at some of the largest companies in the world.",
+    "screenshot": "/assets/network/sites/fa5d426157468366827f81f1d611385dbe9a8e863242c10882cbb7ed7552f1f2.webp",
+    "embeddable": true,
+    "frame_reason": "allowed",
+    "captured_at": "2026-11-02T19:56:27.293Z",
+    "feeds": [
+      {
+        "url": "https://chrisminnick.substack.com/feed",
+        "type": "application/rss+xml",
+        "title": "Chris Minnick (Substack)"
+      }
+    ],
+    "elsewhere": [
+      {
+        "url": "https://chrisminnick.substack.com/feed",
+        "network": "substack",
+        "label": "Substack"
       },
       {
-        "url": "https://reddit.com/submit?url=https%3a%2f%2fjoshuapsteele.com%2fabout%2f&title=About",
-        "network": "reddit",
-        "label": "Reddit"
-      },
-      {
-        "url": "https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fjoshuapsteele.com%2fabout%2f",
-        "network": "facebook",
-        "label": "Facebook"
-      },
-      {
-        "url": "https://telegram.me/share/url?text=About&url=https%3a%2f%2fjoshuapsteele.com%2fabout%2f",
-        "network": "telegram",
-        "label": "Telegram"
+        "url": "https://www.linkedin.com/in/chrisminnick",
+        "network": "linkedin",
+        "label": "LinkedIn"
       }
     ]
   },
@@ -620,6 +773,62 @@
     ]
   },
   {
+    "origin": "https://www.joshfinnie.com",
+    "domain": "www.joshfinnie.com",
+    "identity": "affirmed",
+    "declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "initial_declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "first_participated_at": "2026-11-02T18:58:45.062991Z",
+    "latest_declaration_check_at": "2026-11-02T18:58:45.062991Z",
+    "latest_declaration_check_outcome": "valid",
+    "title": "Josh Finnie",
+    "description": "By day, I work on the API and Delivery team at People Data Labs, helping power data products at scale. I have over a decade of full-stack experience with a strong focus on backend engineering.",
+    "screenshot": "/assets/network/sites/cd3694b824b1570de4cbdab9726e74e051393c1a55343fbd9505c6aa2ecfe0c8.webp",
+    "embeddable": false,
+    "frame_reason": "blocked-by-site",
+    "captured_at": "2026-11-02T19:59:31.130Z",
+    "feeds": [
+      {
+        "url": "https://www.joshfinnie.com/rss.xml",
+        "type": "application/rss+xml",
+        "title": "Probed feed"
+      }
+    ],
+    "elsewhere": [
+      {
+        "url": "https://github.com/joshfinnie",
+        "network": "github",
+        "label": "GitHub"
+      },
+      {
+        "url": "https://bsky.app/profile/joshfinnie.bsky.social",
+        "network": "bluesky",
+        "label": "Bluesky"
+      },
+      {
+        "url": "https://linkedin.com/in/joshfinnie/",
+        "network": "linkedin",
+        "label": "LinkedIn"
+      },
+      {
+        "url": "https://twitch.tv/joshfinnie",
+        "network": "twitch",
+        "label": "Twitch"
+      },
+      {
+        "url": "https://keybase.io/joshfinnie/key.asc",
+        "network": "keybase",
+        "label": "Keybase"
+      }
+    ]
+  },
+  {
     "origin": "https://www.joshuabaker.com",
     "domain": "www.joshuabaker.com",
     "identity": "affirmed",
@@ -632,7 +841,7 @@
       "josh": true
     },
     "first_participated_at": "2026-09-26T02:04:46.048455Z",
-    "latest_declaration_check_at": "2026-11-01T19:50:52.891375Z",
+    "latest_declaration_check_at": "2026-11-02T19:52:46.042662Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Joshua Baker",
     "description": "London-based software engineer, designer, and founder who has spent 20+ years working with founders and chief executives on products that move revenue, valuations, fundraising, even the law.",
@@ -670,6 +879,61 @@
         "url": "https://open.spotify.com/user/joshuabaker",
         "network": "spotify",
         "label": "Spotify"
+      }
+    ]
+  },
+  {
+    "origin": "https://www.joshvickerson.com",
+    "domain": "www.joshvickerson.com",
+    "identity": "affirmed",
+    "declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "initial_declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "first_participated_at": "2026-11-02T18:58:42.72659Z",
+    "latest_declaration_check_at": "2026-11-02T18:58:42.72659Z",
+    "latest_declaration_check_outcome": "valid",
+    "title": "Josh Vickerson",
+    "description": "In my nearly 10 years as a developer, I've worked with a wide range of technologies, and clients of varying size. From big names like Walmart and American Express, to small local businesses, to early stage tech start-ups that grew to 9-figure valuations, I've…",
+    "screenshot": "/assets/network/sites/47e94d4f25efc88e168bc21552c69b106760d34c563d942c026b675a52d217af.webp",
+    "embeddable": false,
+    "frame_reason": "blocked-by-site",
+    "captured_at": "2026-11-02T20:02:34.210Z",
+    "feeds": [
+      {
+        "url": "https://www.joshvickerson.com/feed.xml",
+        "type": "application/rss+xml"
+      }
+    ],
+    "elsewhere": [
+      {
+        "url": "https://vickerson.me/@josh",
+        "network": "web",
+        "label": "vickerson.me"
+      },
+      {
+        "url": "https://github.com/joshvickerson/",
+        "network": "github",
+        "label": "GitHub"
+      },
+      {
+        "url": "https://www.linkedin.com/in/joshvickerson/",
+        "network": "linkedin",
+        "label": "LinkedIn"
+      },
+      {
+        "url": "https://www.instagram.com/joshvickerson/",
+        "network": "instagram",
+        "label": "Instagram"
+      },
+      {
+        "url": "https://www.twitch.tv/joshvickerson",
+        "network": "twitch",
+        "label": "Twitch"
       }
     ]
   }

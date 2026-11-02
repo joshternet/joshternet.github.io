@@ -1988,9 +1988,51 @@ export function isMadeContentItem(item, options = {}) {
 export const isShowcaseContentItem = isMadeContentItem;
 
 /**
+ * True when a Showcase/content row is a portfolio project. Undated projects
+ * must not use crawl `observed_at` as freshness (archives look brand-new).
+ * @param {Record<string, unknown> | null | undefined} item
+ * @returns {boolean}
+ */
+export function isShowcasePortfolioProject(item) {
+  if (!item || typeof item !== "object") {
+    return false;
+  }
+
+  return (
+    item.kind === "project" ||
+    item.content_type === "project" ||
+    item.page_role === "project" ||
+    item.source_kind === "portfolio"
+  );
+}
+
+/**
+ * Crawl observation time used for Showcase ranking. Empty for undated
+ * portfolio/project rows so they sort as archival instead of "just crawled."
+ * @param {Record<string, unknown> | null | undefined} item
+ * @param {string} publishedAt
+ * @returns {string}
+ */
+function showcaseObservedAtForRecency(item, publishedAt) {
+  if (publishedAt) {
+    return typeof item?.observed_at === "string" && item.observed_at
+      ? item.observed_at
+      : "";
+  }
+
+  if (isShowcasePortfolioProject(item)) {
+    return "";
+  }
+
+  return typeof item?.observed_at === "string" && item.observed_at
+    ? item.observed_at
+    : "";
+}
+
+/**
  * Newest Showcase work first. Real `published_at` always ranks above undated
- * crawl-time items; among undated peers, URL descending (year albums) then
- * `observed_at`.
+ * crawl-time items. Undated portfolio/project rows ignore `observed_at`
+ * (assume archival). Among other undated peers, newer `observed_at` then URL.
  * @param {Record<string, unknown>} left
  * @param {Record<string, unknown>} right
  * @returns {number}
@@ -2019,14 +2061,8 @@ export function compareShowcaseRecency(left, right) {
     }
   }
 
-  const leftObserved =
-    typeof left?.observed_at === "string" && left.observed_at
-      ? left.observed_at
-      : "";
-  const rightObserved =
-    typeof right?.observed_at === "string" && right.observed_at
-      ? right.observed_at
-      : "";
+  const leftObserved = showcaseObservedAtForRecency(left, leftPublished);
+  const rightObserved = showcaseObservedAtForRecency(right, rightPublished);
 
   if (leftObserved || rightObserved) {
     const observed = rightObserved.localeCompare(leftObserved);
