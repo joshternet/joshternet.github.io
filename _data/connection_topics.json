@@ -1,8 +1,364 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-02T00:07:11.393Z",
-  "overlap_count": 56,
+  "generated_at": "2026-11-02T08:16:12.005Z",
+  "overlap_count": 67,
   "pairs": [
+    {
+      "a": "https://forwardbias.dev",
+      "b": "https://joshghent.com",
+      "topics": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "book",
+          "label": "books"
+        },
+        {
+          "slug": "career",
+          "label": "career"
+        },
+        {
+          "slug": "email",
+          "label": "email"
+        },
+        {
+          "slug": "message",
+          "label": "message"
+        },
+        {
+          "slug": "minute",
+          "label": "minutes"
+        },
+        {
+          "slug": "software",
+          "label": "software"
+        },
+        {
+          "slug": "technology",
+          "label": "technology"
+        },
+        {
+          "slug": "writing",
+          "label": "writing"
+        }
+      ]
+    },
+    {
+      "a": "https://forwardbias.dev",
+      "b": "https://joshmuller.ca",
+      "topics": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "book",
+          "label": "books"
+        },
+        {
+          "slug": "career",
+          "label": "career"
+        },
+        {
+          "slug": "email",
+          "label": "email"
+        },
+        {
+          "slug": "feel",
+          "label": "feels"
+        },
+        {
+          "slug": "human",
+          "label": "human"
+        },
+        {
+          "slug": "love",
+          "label": "love"
+        },
+        {
+          "slug": "message",
+          "label": "message"
+        },
+        {
+          "slug": "minute",
+          "label": "minutes"
+        },
+        {
+          "slug": "software",
+          "label": "software"
+        },
+        {
+          "slug": "song",
+          "label": "song"
+        },
+        {
+          "slug": "technology",
+          "label": "technology"
+        },
+        {
+          "slug": "writing",
+          "label": "writing"
+        }
+      ]
+    },
+    {
+      "a": "https://forwardbias.dev",
+      "b": "https://joshternet.org",
+      "topics": [
+        {
+          "slug": "software",
+          "label": "software"
+        },
+        {
+          "slug": "writing",
+          "label": "writing"
+        }
+      ]
+    },
+    {
+      "a": "https://forwardbias.dev",
+      "b": "https://joshtronic.com",
+      "topics": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "career",
+          "label": "career"
+        },
+        {
+          "slug": "college",
+          "label": "college"
+        },
+        {
+          "slug": "email",
+          "label": "email"
+        },
+        {
+          "slug": "feel",
+          "label": "feels"
+        },
+        {
+          "slug": "human",
+          "label": "human"
+        },
+        {
+          "slug": "love",
+          "label": "love"
+        },
+        {
+          "slug": "minute",
+          "label": "minutes"
+        },
+        {
+          "slug": "technology",
+          "label": "technology"
+        },
+        {
+          "slug": "writing",
+          "label": "writing"
+        }
+      ]
+    },
+    {
+      "a": "https://forwardbias.dev",
+      "b": "https://joshua.seigler.net",
+      "topics": [
+        {
+          "slug": "book",
+          "label": "books"
+        },
+        {
+          "slug": "human",
+          "label": "human"
+        },
+        {
+          "slug": "software",
+          "label": "software"
+        },
+        {
+          "slug": "technology",
+          "label": "technology"
+        }
+      ]
+    },
+    {
+      "a": "https://forwardbias.dev",
+      "b": "https://joshuadrake.org",
+      "topics": [
+        {
+          "slug": "software",
+          "label": "software"
+        },
+        {
+          "slug": "writing",
+          "label": "writing"
+        }
+      ]
+    },
+    {
+      "a": "https://forwardbias.dev",
+      "b": "https://joshuamorris.info",
+      "topics": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "book",
+          "label": "books"
+        },
+        {
+          "slug": "career",
+          "label": "career"
+        },
+        {
+          "slug": "coding",
+          "label": "coding"
+        },
+        {
+          "slug": "email",
+          "label": "email"
+        },
+        {
+          "slug": "feel",
+          "label": "feels"
+        },
+        {
+          "slug": "high-school",
+          "label": "high school"
+        },
+        {
+          "slug": "human",
+          "label": "human"
+        },
+        {
+          "slug": "message",
+          "label": "message"
+        },
+        {
+          "slug": "school",
+          "label": "schools"
+        },
+        {
+          "slug": "software",
+          "label": "software"
+        },
+        {
+          "slug": "technology",
+          "label": "technology"
+        },
+        {
+          "slug": "writing",
+          "label": "writing"
+        }
+      ]
+    },
+    {
+      "a": "https://forwardbias.dev",
+      "b": "https://joshuapsteele.com",
+      "topics": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "book",
+          "label": "books"
+        },
+        {
+          "slug": "career",
+          "label": "career"
+        },
+        {
+          "slug": "coding",
+          "label": "coding"
+        },
+        {
+          "slug": "college",
+          "label": "college"
+        },
+        {
+          "slug": "feel",
+          "label": "feels"
+        },
+        {
+          "slug": "high-school",
+          "label": "high school"
+        },
+        {
+          "slug": "human",
+          "label": "human"
+        },
+        {
+          "slug": "love",
+          "label": "love"
+        },
+        {
+          "slug": "message",
+          "label": "message"
+        },
+        {
+          "slug": "minute",
+          "label": "minutes"
+        },
+        {
+          "slug": "school",
+          "label": "schools"
+        },
+        {
+          "slug": "software",
+          "label": "software"
+        },
+        {
+          "slug": "song",
+          "label": "song"
+        },
+        {
+          "slug": "technology",
+          "label": "technology"
+        },
+        {
+          "slug": "writing",
+          "label": "writing"
+        }
+      ]
+    },
+    {
+      "a": "https://forwardbias.dev",
+      "b": "https://www.joshcanhelp.com",
+      "topics": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "feel",
+          "label": "feels"
+        },
+        {
+          "slug": "software",
+          "label": "software"
+        }
+      ]
+    },
+    {
+      "a": "https://forwardbias.dev",
+      "b": "https://www.joshuabaker.com",
+      "topics": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "technology",
+          "label": "technology"
+        }
+      ]
+    },
     {
       "a": "https://joshbeard.com",
       "b": "https://joshghent.com",
@@ -72,6 +428,16 @@
         {
           "slug": "wilderness",
           "label": "wilderness"
+        }
+      ]
+    },
+    {
+      "a": "https://joshbeard.com",
+      "b": "https://www.joshuabaker.com",
+      "topics": [
+        {
+          "slug": "blue",
+          "label": "blue"
         }
       ]
     },
@@ -256,6 +622,10 @@
           "label": "privacy"
         },
         {
+          "slug": "red",
+          "label": "red"
+        },
+        {
           "slug": "review",
           "label": "reviews"
         },
@@ -309,7 +679,7 @@
         },
         {
           "slug": "world",
-          "label": "worlds"
+          "label": "world"
         },
         {
           "slug": "would",
@@ -492,6 +862,10 @@
         {
           "slug": "learning",
           "label": "learning"
+        },
+        {
+          "slug": "red",
+          "label": "red"
         },
         {
           "slug": "rule",
@@ -829,7 +1203,7 @@
         },
         {
           "slug": "world",
-          "label": "worlds"
+          "label": "world"
         },
         {
           "slug": "would",
@@ -1002,6 +1376,10 @@
           "label": "programming"
         },
         {
+          "slug": "red",
+          "label": "red"
+        },
+        {
           "slug": "review",
           "label": "reviews"
         },
@@ -1051,7 +1429,7 @@
         },
         {
           "slug": "world",
-          "label": "worlds"
+          "label": "world"
         },
         {
           "slug": "would",
@@ -1105,7 +1483,7 @@
         },
         {
           "slug": "world",
-          "label": "worlds"
+          "label": "world"
         }
       ]
     },
@@ -1162,6 +1540,10 @@
           "label": "policy"
         },
         {
+          "slug": "red",
+          "label": "red"
+        },
+        {
           "slug": "review",
           "label": "reviews"
         },
@@ -1206,6 +1588,10 @@
         {
           "slug": "podcast",
           "label": "podcasts"
+        },
+        {
+          "slug": "recipe",
+          "label": "recipes"
         },
         {
           "slug": "software",
@@ -1409,7 +1795,11 @@
         },
         {
           "slug": "recipe",
-          "label": "recipe"
+          "label": "recipes"
+        },
+        {
+          "slug": "red",
+          "label": "red"
         },
         {
           "slug": "rule",
@@ -1879,7 +2269,7 @@
         },
         {
           "slug": "world",
-          "label": "worlds"
+          "label": "world"
         },
         {
           "slug": "would",
@@ -2216,6 +2606,10 @@
           "label": "reconciliation"
         },
         {
+          "slug": "red",
+          "label": "red"
+        },
+        {
           "slug": "relationship",
           "label": "relationships"
         },
@@ -2293,7 +2687,7 @@
         },
         {
           "slug": "world",
-          "label": "worlds"
+          "label": "world"
         },
         {
           "slug": "would",
@@ -2351,7 +2745,7 @@
         },
         {
           "slug": "world",
-          "label": "worlds"
+          "label": "world"
         }
       ]
     },
@@ -2424,6 +2818,10 @@
           "label": "policy"
         },
         {
+          "slug": "red",
+          "label": "red"
+        },
+        {
           "slug": "review",
           "label": "reviews"
         },
@@ -2486,6 +2884,10 @@
         {
           "slug": "music",
           "label": "music"
+        },
+        {
+          "slug": "recipe",
+          "label": "recipes"
         },
         {
           "slug": "software",
@@ -3114,6 +3516,10 @@
           "label": "music"
         },
         {
+          "slug": "red",
+          "label": "red"
+        },
+        {
           "slug": "rule",
           "label": "rules"
         },
@@ -3172,6 +3578,10 @@
         {
           "slug": "education",
           "label": "education"
+        },
+        {
+          "slug": "red",
+          "label": "red"
         },
         {
           "slug": "rule",
@@ -3753,7 +4163,7 @@
         },
         {
           "slug": "world",
-          "label": "worlds"
+          "label": "world"
         },
         {
           "slug": "would",
@@ -3803,7 +4213,7 @@
         },
         {
           "slug": "world",
-          "label": "worlds"
+          "label": "world"
         }
       ]
     },
@@ -3999,7 +4409,7 @@
         },
         {
           "slug": "world",
-          "label": "worlds"
+          "label": "world"
         }
       ]
     },
@@ -4042,6 +4452,10 @@
         {
           "slug": "hospitality",
           "label": "hospitality"
+        },
+        {
+          "slug": "red",
+          "label": "red"
         },
         {
           "slug": "research",
@@ -4106,8 +4520,1954 @@
   ],
   "sites": [
     {
+      "origin": "https://forwardbias.dev",
+      "topics": [
+        {
+          "slug": "ai",
+          "label": "ai",
+          "articles": [
+            {
+              "url": "https://forwardbias.dev/about/",
+              "title": "About"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshcanhelp.com",
+              "domain": "www.joshcanhelp.com",
+              "title": "Josh Cunningham",
+              "articles": [
+                {
+                  "url": "https://www.joshcanhelp.com/ai/",
+                  "title": "Thoughts on AI"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/php2shell-overreaction/",
+                  "title": "Last week was terrible. It didn't have to be"
+                },
+                {
+                  "url": "https://joshghent.com/how-i-build-products-with-ai/",
+                  "title": "How I build products with AI"
+                },
+                {
+                  "url": "https://joshghent.com/repowarden/",
+                  "title": "Launch: Repowarden - AI-powered repository maintenance"
+                },
+                {
+                  "url": "https://joshghent.com/thoughts-on-llms/",
+                  "title": "Thoughts on LLMs and AI"
+                },
+                {
+                  "url": "https://joshghent.com/will-ai-take-my-job/",
+                  "title": "Should I learn to code if AI will replace me?"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2026/use-ai-to-be-a-better-human/",
+                  "title": "Use AI to Be a Better Human"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2025/artificial-insights/",
+                  "title": "How AI Turned Six Months of Work into 16 Minutes - Artifical Insights"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2025/how-i-prompt-engineer/",
+                  "title": "How I Approach Prompt Engineering"
+                },
+                {
+                  "url": "https://joshmuller.ca/work/",
+                  "title": "Work Together"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
+                  "title": "Self-Hosting Is Cool: How I Get More Productivity for Less Money"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/interlinear-audiobible/",
+                  "title": "Creating an Interlinear Audio Bible with Open Source NLP Models"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/translation-workflow/",
+                  "title": "How we Lowered our Article Localization Costs a Full Order-of-Magnitude With LLMs"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
+                  "title": "Learning a New Tech Stack with an LLM"
+                },
+                {
+                  "url": "https://joshtronic.com/2026/09/20/i-stopped-drinking-the-ai-kool-aid/",
+                  "title": "I stopped drinking the AI Kool-Aid"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/",
+                  "title": "Work — Joshua Baker"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=undisclosed-consumer-ai-platform-2025",
+                  "title": "Consumer AI Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=undisclosed-consumer-ai-platform-2026",
+                  "title": "Consumer AI Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/banked-pay-by-bank/",
+                  "title": "Pay by Bank I built payment components and merchant integration tools from one codebase for web, iOS, and Android. View case study"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/banked/",
+                  "title": "Comic Relief Donation Website"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/not-optional/appendix/rishi-sunak-elon-musk-ai-safety-summit/",
+                  "title": "on-stage discussion between UK Prime Minister Rishi Sunak and Elon Musk"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/pure-sports-medicine/",
+                  "title": "Reception & Booking AI Agent"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
+                  "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
+                  "title": "I Declared the Coding Interview Dead in 2021"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/10/ai-is-making-it-easier-to-manufacture-credibility/",
+                  "title": "AI Is Making It Easier to Manufacture Credibility"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/01/maybe-someone-needs-to-build-google-again/",
+                  "title": "Maybe Someone Needs to Build Google Again"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
+                  "title": "How Much AI Slop Does It Take to Unslop the AI Slop?"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
+                  "title": "The Interesting Part of an AI Force Is What Comes After the Name"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/20/voyagers-doctor-is-the-ai-future-i-hope-we-have-to-think-about/",
+                  "title": "Voyager's Doctor Is the AI Future I Hope We Have to Think About"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/13/ai-is-making-code-cheap-it-is-making-judgment-more-valuable/",
+                  "title": "AI Is Making Code Cheap. It Is Making Judgment More Valuable."
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/notes/2026-07-21-0913/",
+                  "title": "Finally getting around to reading “The Age of Reading is Over” in The Atlantic (the hard copy, one of my last since my subscription has lapsed, arrived). It’s some of the saddest stuff I’ve ever read, and I’m not even to the AI section yet!"
+                },
+                {
+                  "url": "https://joshuapsteele.com/notes/2026-06-23-1158/",
+                  "title": "Software engineers/devs: Has AI made your job more enjoyable? Or less?"
+                },
+                {
+                  "url": "https://joshuapsteele.com/logos-bible-software-needs-an-mcp-server/",
+                  "title": "Logos Bible Software Needs an MCP Server"
+                },
+                {
+                  "url": "https://joshuapsteele.com/anyone-can-use-ai-tools-heres-how/",
+                  "title": "Anyone Can Use AI Tools: Here's How"
+                },
+                {
+                  "url": "https://joshuapsteele.com/ai/",
+                  "title": "AI"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "book",
+          "label": "books",
+          "articles": [
+            {
+              "url": "https://forwardbias.dev/about/",
+              "title": "About"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/antibook-book-club/",
+                  "title": "Anti-Book Book club"
+                },
+                {
+                  "url": "https://joshghent.com/the-mezzanine/",
+                  "title": "Book Notes - The Mezzanine"
+                },
+                {
+                  "url": "https://joshghent.com/seven-deaths-evelyn-hardcastle/",
+                  "title": "Book notes - The Seven Deaths of Evelyn Hardcastle"
+                },
+                {
+                  "url": "https://joshghent.com/five-books/",
+                  "title": "Five books"
+                },
+                {
+                  "url": "https://joshghent.com/project-hail-mary/",
+                  "title": "Book notes - Project Hail Mary"
+                },
+                {
+                  "url": "https://joshghent.com/bookshelf/",
+                  "title": "Bookshelf"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2024/3-books/",
+                  "title": "3 Unreleased Books that I Plan(/Hope) to Read in 2024"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/public-wifi/",
+                  "title": "A Simple Trick to Make Logging Onto Public Wifi Easier"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/4-days-to-save-6-million-lives/",
+                  "title": "I Was Wrong: 4 Days to Save 6 Million Lives"
+                },
+                {
+                  "url": "https://joshmuller.ca/posts/thoughts-on-guns/",
+                  "title": "Thoughts on Guns"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/digital-minimalism-2019/",
+                  "title": "Digital Minimalism: Book recommendation"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/13/an-online-book-club-across-our-own-websites/",
+                  "title": "An Online Book Club Across Our Own Websites"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/21/amazon-is-destroying-books-to-train-ai-we-should-have-built-the-library-instead/",
+                  "title": "Amazon Is Destroying Books to Train AI. We Should Have Built the Library Instead."
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/26/apple-finally-gave-us-our-first-real-look-at-neuromancer/",
+                  "title": "Apple Finally Gave Us Our First Real Look at Neuromancer"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/20/judge-a-book-by-its-first-page/",
+                  "title": "Judge a Book by Its First Page"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/20/science-fiction-and-technology-in-bpls-250/",
+                  "title": "Science Fiction and Technology in BPL’s 250"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/10-things-i-love-about-my-kids/",
+                  "title": "10 Things I Love About My Kids"
+                },
+                {
+                  "url": "https://joshuapsteele.com/prayers-for-the-sick/",
+                  "title": "Prayers for the Sick"
+                },
+                {
+                  "url": "https://joshuapsteele.com/essential-reads-for-new-software-developers-the-effective-engineer-and-the-missing-readme/",
+                  "title": "Essential Reads for New Software Developers: The Effective Engineer and The Missing README"
+                },
+                {
+                  "url": "https://joshuapsteele.com/mentor-me/",
+                  "title": "Mentor Me! 11 Questions I'd Like You to Answer"
+                },
+                {
+                  "url": "https://joshuapsteele.com/a-shameless-request-help-me-buy-more-books/",
+                  "title": "A Shameless Request: Help Me Buy More Books?"
+                },
+                {
+                  "url": "https://joshuapsteele.com/top-3-books-movies-and-podcasts-about-race-for-white-christians-like-me/",
+                  "title": "Top 3 Books, Movies, and Podcasts about Race for White Christians like Me"
+                },
+                {
+                  "url": "https://joshuapsteele.com/12-prayers-for-tough-days/",
+                  "title": "12 Prayers for Tough Days"
+                },
+                {
+                  "url": "https://joshuapsteele.com/a-prayer-for-relatives-and-friends/",
+                  "title": "A Prayer for Relatives and Friends"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/books/",
+                  "title": "/books"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "career",
+          "label": "career",
+          "articles": [
+            {
+              "url": "https://forwardbias.dev/ideas/disentangling-career-from-creativity/",
+              "title": "Disentangling Career from Creativity"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/part-time/",
+                  "title": "How Part Time has helped me in life"
+                },
+                {
+                  "url": "https://joshghent.com/mid-to-senior-dev/",
+                  "title": "Advancing from a Mid-Level to Senior Developer"
+                },
+                {
+                  "url": "https://joshghent.com/why-as-a-dev/",
+                  "title": "Starting with Why as a Software Developer"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/why/",
+                  "title": "My /why"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/09/27/rediscovering-long-form-email/",
+                  "title": "Rediscovering Long-Form Email"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
+                  "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
+                  "title": "I Declared the Coding Interview Dead in 2021"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/13/ai-is-making-code-cheap-it-is-making-judgment-more-valuable/",
+                  "title": "AI Is Making Code Cheap. It Is Making Judgment More Valuable."
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/07/jan-conroy-saw-what-others-missed/",
+                  "title": "Jan Conroy Saw What Others Missed"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/24/the-best-staff-engineering-work-often-starts-before-anyone-assigns-it/",
+                  "title": "The Best Staff Engineering Work Often Starts Before Anyone Assigns It"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/my-coding-bootcamp-journey-how-a-pastor-became-a-programmer/",
+                  "title": "My Coding Bootcamp Journey: How a Pastor Became a Programmer"
+                },
+                {
+                  "url": "https://joshuapsteele.com/what-color-is-my-parachute-the-flower-petal-exercise/",
+                  "title": "What Color is My Parachute? The Flower Petal Exercise"
+                },
+                {
+                  "url": "https://joshuapsteele.com/im-looking-for-a-new-role-to-supplement-my-part-time-work-for-anglican-compass/",
+                  "title": "I'm looking for a new role to supplement my part-time work for Anglican Compass"
+                },
+                {
+                  "url": "https://joshuapsteele.com/with-baby-2-on-the-way-im-looking-for-work/",
+                  "title": "With baby #2 on the way, I'm looking for work!"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "coding",
+          "label": "coding",
+          "articles": [
+            {
+              "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+              "title": "The Era of Personal Micro-Software"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
+                  "title": "I Declared the Coding Interview Dead in 2021"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/23/apple-finally-made-the-xcode-project-file-understandable/",
+                  "title": "Apple Finally Made the Xcode Project File Understandable"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/19/fx-asks-how-small-a-coding-agent-actually-needs-to-be/",
+                  "title": "fx Asks How Small a Coding Agent Actually Needs to Be"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/13/grok-4_6-makes-my-switch-away-from-claude-look-less-unusual/",
+                  "title": "Grok 4.6 Makes My Switch Away from Claude Look Less Unusual"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/25/context-engineering-has-to-evolve-with-the-model/",
+                  "title": "Context Engineering Has to Evolve with the Model"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/22/the-interview-assignment-was-the-attack/",
+                  "title": "The Interview Assignment Was the Attack"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/ask-me-anything-software-engineering-questions-from-a-coding-bootcamp-student/",
+                  "title": "Ask Me Anything: Software Engineering Questions from a Coding Bootcamp Student"
+                },
+                {
+                  "url": "https://joshuapsteele.com/my-coding-bootcamp-journey-how-a-pastor-became-a-programmer/",
+                  "title": "My Coding Bootcamp Journey: How a Pastor Became a Programmer"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "college",
+          "label": "college",
+          "articles": [
+            {
+              "url": "https://forwardbias.dev/ideas/disentangling-career-from-creativity/",
+              "title": "Disentangling Career from Creativity"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/09/13/new-pic-who-dis/",
+                  "title": "New pic, who dis?"
+                },
+                {
+                  "url": "https://joshtronic.com/2026/09/06/i-ran-my-agents-from-my-phone-for-two-weeks/",
+                  "title": "I ran my agents from my phone for two weeks"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/introduction-to-christian-theology-a-draft-syllabus/",
+                  "title": "Introduction to Christian Theology: A Draft Syllabus"
+                },
+                {
+                  "url": "https://joshuapsteele.com/cedarville-2/",
+                  "title": "Cedarville!"
+                },
+                {
+                  "url": "https://joshuapsteele.com/my-unforgettable-cedarville-experience-pt-2-2/",
+                  "title": "My Unforgettable Cedarville Experience (pt 2)"
+                },
+                {
+                  "url": "https://joshuapsteele.com/a-farewell-to-cedarville/",
+                  "title": "A Farewell to Cedarville"
+                },
+                {
+                  "url": "https://joshuapsteele.com/honors-grace-and-generosity/",
+                  "title": "Honors, Grace, and Generosity"
+                },
+                {
+                  "url": "https://joshuapsteele.com/let-there-be-light-my-resignation/",
+                  "title": "Let There Be Light: My Resignation"
+                },
+                {
+                  "url": "https://joshuapsteele.com/an-explanation/",
+                  "title": "An Explanation"
+                },
+                {
+                  "url": "https://joshuapsteele.com/cedarville-let-there-be-light-pt-2/",
+                  "title": "Cedarville, Let there be Light. (pt. 2)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "email",
+          "label": "email",
+          "articles": [
+            {
+              "url": "https://forwardbias.dev/contact/",
+              "title": "Contact"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/online-shopping/",
+                  "title": "One item purchased, Ten emails"
+                },
+                {
+                  "url": "https://joshghent.com/next-gen-communication/",
+                  "title": "Architecting the Next Generation of Communication"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/privacy-policy/",
+                  "title": "Privacy Policy"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/subscribe-to-mailchimp-newsletters-with-rss/",
+                  "title": "How to Subscribe to Mailchimp Newsletters With RSS"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/write-a-letter/",
+                  "title": "📄 Write Someone a Letter (Today)"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/you-need-a-password-manager/",
+                  "title": "You Need a Password Manager"
+                },
+                {
+                  "url": "https://joshmuller.ca/dads-service/",
+                  "title": "Memorial Service for Jerry Müller"
+                },
+                {
+                  "url": "https://joshmuller.ca/hello/",
+                  "title": "Hello! 👋🏻"
+                },
+                {
+                  "url": "https://joshmuller.ca/say-hi/",
+                  "title": "Say Hi!"
+                },
+                {
+                  "url": "https://joshmuller.ca/subscribe/",
+                  "title": "Subscribe!"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/09/27/rediscovering-long-form-email/",
+                  "title": "Rediscovering Long-Form Email"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/21/it-should-not-take-public-pressure/",
+                  "title": "It Should Not Take Public Pressure"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "feel",
+          "label": "feels",
+          "articles": [
+            {
+              "url": "https://forwardbias.dev/contact/",
+              "title": "Contact"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshcanhelp.com",
+              "domain": "www.joshcanhelp.com",
+              "title": "Josh Cunningham",
+              "articles": [
+                {
+                  "url": "https://www.joshcanhelp.com/data-privacy/",
+                  "title": "Fighting for My Data Privacy"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2025/3-decisions-away/",
+                  "title": "You're 3 Decisions Away"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2025/innate-regenerative-resources/",
+                  "title": "Innate Regenerative Resources"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/my-40-questions/",
+                  "title": "My 40 Questions To Ask Every Year"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/when-you-feel-like-youre-behind-remember/",
+                  "title": "When You Feel Like You're Behind, Just Remember..."
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/i-want-to-read-your-blog/",
+                  "title": "I Want to Read Your Blog"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/2-months/",
+                  "title": "2 Months"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/choosing-generosity/",
+                  "title": "Choosing Generosity"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/fill-up-your-hope-meter/",
+                  "title": "Fill Up Your Hope-Meter"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/18/halloween-movies-watch-list-2026/",
+                  "title": "Halloween Movies Watch List 2026"
+                },
+                {
+                  "url": "https://joshtronic.com/games/age-of-combat/",
+                  "title": "Age of Combat"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/13/flock-employees-dont-like-being-watched-either/",
+                  "title": "Flock Employees Don't Like Being Watched Either"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/10/the-iphone-duo-is-more-interesting-in-the-details-than-the-fold/",
+                  "title": "The iPhone Duo Is More Interesting in the Details Than the Fold"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/09/tristan-eaton-makes-walls-feel-too-small-for-the-art/",
+                  "title": "Tristan Eaton Makes Walls Feel Too Small for the Art"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/09/matthew-grabelsky-turns-the-subway-into-modern-mythology/",
+                  "title": "Matthew Grabelsky Turns the Subway Into Modern Mythology"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/30/spacelabs-128-kb-of-ram-was-more-than-a-million-tiny-ferrite-rings/",
+                  "title": "Spacelab's 128 KB of RAM Was More Than a Million Tiny Ferrite Rings"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/21/amazon-is-destroying-books-to-train-ai-we-should-have-built-the-library-instead/",
+                  "title": "Amazon Is Destroying Books to Train AI. We Should Have Built the Library Instead."
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/13/codex-finally-feels-like-it-belongs-on-linux/",
+                  "title": "Codex Finally Feels Like It Belongs on Linux"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/07/we-moved-the-goalposts-when-the-machines-started-talking-back/",
+                  "title": "We Moved the Goalposts When the Machines Started Talking Back"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/notes/2026-05-27-0920/",
+                  "title": "You know you’re not in your 20s anymore when finishing a sporting event without a new injury feels like a win, no matter what the score was! (We lost by one goal in overtime, but my ankles held-up OK without getting re-sprained)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "high-school",
+          "label": "high school",
+          "articles": [
+            {
+              "url": "https://forwardbias.dev/ideas/disentangling-career-from-creativity/",
+              "title": "Disentangling Career from Creativity"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/01/a-summer-camp-helped-every-student-earn-a-ham-radio-license/",
+                  "title": "A Summer Camp Helped Every Student Earn a Ham Radio License"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/christianity-and-politics-my-2024-reading-list/",
+                  "title": "Christianity and Politics: My 2024 Reading List"
+                },
+                {
+                  "url": "https://joshuapsteele.com/a-valediction/",
+                  "title": "My High School Graduation Valedictorian Speech was a Poem"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "human",
+          "label": "human",
+          "articles": [
+            {
+              "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+              "title": "The Era of Personal Micro-Software"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2026/use-ai-to-be-a-better-human/",
+                  "title": "Use AI to Be a Better Human"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/on-thinking-in-centuries/",
+                  "title": "On Thinking in Centuries"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
+                  "title": "Learning a New Tech Stack with an LLM"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/22/linus-torvalds-used-ai-to-debug-the-linux-kernel-but-he-had-to-keep-it-from-giving-up/",
+                  "title": "Linus Torvalds Used AI to Debug the Linux Kernel, but He Had to Keep It From Giving Up"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/10/ransomware-gangs-learned-to-target-the-org-chart/",
+                  "title": "Ransomware Gangs Learned to Target the Org Chart"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/03/phantom-twist-hides-a-drone-with-motion-blur/",
+                  "title": "Phantom Twist Hides a Drone with Motion Blur"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/02/flint-gives-ai-agents-a-better-way-to-create-charts/",
+                  "title": "Flint Gives AI Agents a Better Way to Create Charts"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/26/superhuman-mutants-may-still-be-on-the-evolutionary-roadmap/",
+                  "title": "Superhuman Mutants May Still Be on the Evolutionary Roadmap"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/23/ai-is-consuming-the-web-it-depends-on/",
+                  "title": "AI Is Consuming the Web It Depends On"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/23/this-is-not-just-something-children-do/",
+                  "title": "This Is Not Just Something Children Do"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/22/the-lock-symbol-does-not-comfort-me-anymore/",
+                  "title": "The Lock Symbol Does Not Comfort Me Anymore"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/against-christian-misanthropy/",
+                  "title": "Against Christian Misanthropy: Why Following Jesus Means Embracing Human Flourishing"
+                },
+                {
+                  "url": "https://joshuapsteele.com/christians-and-wealth/",
+                  "title": "Christians and Wealth: An Argument for Downward Mobility"
+                },
+                {
+                  "url": "https://joshuapsteele.com/faithful-faith-in-a-faithful-god-romans-1-1-17/",
+                  "title": "Faithful Faith in a Faithful God: Romans 1.1-17"
+                },
+                {
+                  "url": "https://joshuapsteele.com/what-does-it-mean-to-be-human/",
+                  "title": "What does it mean to be human?"
+                },
+                {
+                  "url": "https://joshuapsteele.com/silence-and-violence/",
+                  "title": "Silence and Violence"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/posts/needs-based-communication/",
+                  "title": "Post: Needs-based communication"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "love",
+          "label": "love",
+          "articles": [
+            {
+              "url": "https://forwardbias.dev/ideas/february-album-writing-month/",
+              "title": "On Writing an Album in a Month (kinda)"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2025/finish-by-writing/",
+                  "title": "A Project Isn't Finished Until You've Written About It"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/my-40-questions/",
+                  "title": "My 40 Questions To Ask Every Year"
+                },
+                {
+                  "url": "https://joshmuller.ca/tweets/2024-12-01-20-59-30/",
+                  "title": "I love pondering the question \"What should exist but doesn't yet?\" There is LONG list of answers to that question, and it's easier than ever to bring them into existence."
+                },
+                {
+                  "url": "https://joshmuller.ca/recipes/meals/protein-pancakes/",
+                  "title": "Protein Pancakes"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/translation-workflow/",
+                  "title": "How we Lowered our Article Localization Costs a Full Order-of-Magnitude With LLMs"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/follow-substack-with-rss/",
+                  "title": "How to Subscribe to Substack Newsletters with RSS"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/dont-ration-love/",
+                  "title": "Don't Ration Love"
+                },
+                {
+                  "url": "https://joshmuller.ca/wishlist/",
+                  "title": "My Wishlist"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/games/idol-idle/",
+                  "title": "Idol Idle"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/american-freedom-vs-biblical-freedom/",
+                  "title": "American Freedom Isn't Biblical Freedom"
+                },
+                {
+                  "url": "https://joshuapsteele.com/real-world-openfga-authorization-lessons/",
+                  "title": "Real-World Authorization Lessons with OpenFGA? I’d Love to Hear Them"
+                },
+                {
+                  "url": "https://joshuapsteele.com/ask-me-anything-this-november/",
+                  "title": "Ask Me Anything This November: WeblogPoMo AMA"
+                },
+                {
+                  "url": "https://joshuapsteele.com/10-things-i-love-about-my-kids/",
+                  "title": "10 Things I Love About My Kids"
+                },
+                {
+                  "url": "https://joshuapsteele.com/i-love-my-kids-but-i-sometimes-regret-having-them/",
+                  "title": "I Love My Kids, But I Sometimes Regret Having Them"
+                },
+                {
+                  "url": "https://joshuapsteele.com/help-im-addicted-to-mini-toolkits-the-edc-tool-struggle-is-real/",
+                  "title": "Help, I'm Addicted to Mini Toolkits: The EDC Tool Struggle Is Real"
+                },
+                {
+                  "url": "https://joshuapsteele.com/hate-running-try-rucking-instead/",
+                  "title": "Hate Running? Try Rucking Instead"
+                },
+                {
+                  "url": "https://joshuapsteele.com/getting-ahead-in-gods-upside-down-kingdom/",
+                  "title": "Getting Ahead in God's Upside-Down Kingdom: An Appeal for a Consistently Pro-Life Ethic"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "message",
+          "label": "message",
+          "articles": [
+            {
+              "url": "https://forwardbias.dev/contact/",
+              "title": "Contact"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/sqs-inside-vpc-lambda/",
+                  "title": "TIL - How to send an SQS message from a Lambda inside a VPC"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2022/the-kingdom-of-heaven-is-like-vibranium/",
+                  "title": "The Kingdom of Heaven Is Like Vibranium"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/write-a-letter/",
+                  "title": "📄 Write Someone a Letter (Today)"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/how-to-message-someone-on-whatsapp-without-saving-them-as-a-contact/",
+                  "title": "How to Message Someone on WhatsApp Without Saving Them as a Contact"
+                },
+                {
+                  "url": "https://joshmuller.ca/dads-service/dads-anniversary-playlist/",
+                  "title": "Dad's Anniversary Playlist"
+                },
+                {
+                  "url": "https://joshmuller.ca/posts/how-to-dump-social-media/",
+                  "title": "A Comprehensive Guide to Successfully Breaking Up with Social Media"
+                },
+                {
+                  "url": "https://joshmuller.ca/say-hi/",
+                  "title": "Say Hi!"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/09/ai-agents-found-an-abandoned-wiki-and-turned-it-into-a-message-board/",
+                  "title": "AI Agents Found an Abandoned Wiki and Turned It Into a Message Board"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/following-jesus-beyond-the-bandwagon/",
+                  "title": "Following Jesus Beyond the Bandwagon"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "minute",
+          "label": "minutes",
+          "articles": [
+            {
+              "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+              "title": "The Era of Personal Micro-Software"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/github-actions-perf/",
+                  "title": "Super Fast React/Node App Testing with GitHub Actions"
+                },
+                {
+                  "url": "https://joshghent.com/how-to-create-gist-bot/",
+                  "title": "How to Create a Pinned Gist Bot in 10 minutes with GitHub Actions"
+                },
+                {
+                  "url": "https://joshghent.com/google-psi-problems/",
+                  "title": "Solve 90% of Google Pagespeed Insights Issues in 30 Minutes"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2025/artificial-insights/",
+                  "title": "How AI Turned Six Months of Work into 16 Minutes - Artifical Insights"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/curiosity-or-dismissal/",
+                  "title": "Curiosity or Dismissal"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/palihapitya-on-attention-extraction/",
+                  "title": "Former Facebook Exec.'s Thoughts on Attention Extraction"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/plastic-audit/",
+                  "title": "Let's Do a Plastic Audit"
+                },
+                {
+                  "url": "https://joshmuller.ca/recipes/sauces/bone-broth/",
+                  "title": "Bone Broth"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/games/slopocalypse-survivors/",
+                  "title": "SLOPocalypse Survivors™"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/notes/2026-07-04-0915/",
+                  "title": "I think Sidny Lopes Cabral’s goal for Cape Verde vs Argentina, to tie it back up in the 103rd minute, was one of the top five most memorable goals I’ve ever seen. Right up there with van Persie’s “Flying Dutchman.” What say you?"
+                },
+                {
+                  "url": "https://joshuapsteele.com/discover-learn-x-in-y-minutes-an-invaluable-resource-for-programmers/",
+                  "title": "Discover Learn X in Y Minutes: An Invaluable Resource for Programmers"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "school",
+          "label": "schools",
+          "articles": [
+            {
+              "url": "https://forwardbias.dev/ideas/disentangling-career-from-creativity/",
+              "title": "Disentangling Career from Creativity"
+            },
+            {
+              "url": "https://forwardbias.dev/about/",
+              "title": "About"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/08/what-one-promise-can-become-after-thirteen-years/",
+                  "title": "What One Promise Can Become After Thirteen Years"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
+                  "title": "The Chromebook Support Story Is More Complicated Than the Headline"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/01/a-summer-camp-helped-every-student-earn-a-ham-radio-license/",
+                  "title": "A Summer Camp Helped Every Student Earn a Ham Radio License"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/28/back-to-school-shopping-now-costs-families-nearly-864/",
+                  "title": "Back-to-School Shopping Now Costs Families Nearly $864"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/christianity-and-politics-my-2024-reading-list/",
+                  "title": "Christianity and Politics: My 2024 Reading List"
+                },
+                {
+                  "url": "https://joshuapsteele.com/first-day-of-24th-grade-2/",
+                  "title": "First Day of 24th Grade!"
+                },
+                {
+                  "url": "https://joshuapsteele.com/they-laughed-when-i-became-an-anglican-but-when-i-started-to-pray-27-anglican-headline-ideas/",
+                  "title": "\"They laughed when I became an Anglican, but when I started to pray!\" 27 Anglican Headline Ideas"
+                },
+                {
+                  "url": "https://joshuapsteele.com/prayer-of-st-thomas-aquinas-before-study/",
+                  "title": "How to Pray Before You Read and Write: A Prayer of St. Thomas Aquinas Before Study"
+                },
+                {
+                  "url": "https://joshuapsteele.com/questions-to-ask-when-you-study-bible/",
+                  "title": "3 Questions to Ask When You Study the Bible"
+                },
+                {
+                  "url": "https://joshuapsteele.com/following-jesus-beyond-the-bandwagon/",
+                  "title": "Following Jesus Beyond the Bandwagon"
+                },
+                {
+                  "url": "https://joshuapsteele.com/my-2014-regional-ets-paper-reconciliation-and-the-lack-thereof/",
+                  "title": "My 2014 Regional ETS Paper: Reconciliation and the Lack Thereof"
+                },
+                {
+                  "url": "https://joshuapsteele.com/my-regional-ets-presentation-reconciliation-and-the-lack-thereof/",
+                  "title": "My Regional ETS Presentation: Reconciliation and the Lack Thereof"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "software",
+          "label": "software",
+          "articles": [
+            {
+              "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+              "title": "The Era of Personal Micro-Software"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshcanhelp.com",
+              "domain": "www.joshcanhelp.com",
+              "title": "Josh Cunningham",
+              "articles": [
+                {
+                  "url": "https://www.joshcanhelp.com/ai/",
+                  "title": "Thoughts on AI"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/enterprise-sales-teams/",
+                  "title": "Enterprise sales teams, please, I beg you, stop"
+                },
+                {
+                  "url": "https://joshghent.com/is-software-ever-done/",
+                  "title": "Is software ever done?"
+                },
+                {
+                  "url": "https://joshghent.com/will-ai-take-my-job/",
+                  "title": "Should I learn to code if AI will replace me?"
+                },
+                {
+                  "url": "https://joshghent.com/complexity/",
+                  "title": "Why are software companies so obsessed with doing anything but work?"
+                },
+                {
+                  "url": "https://joshghent.com/whimsical-software/",
+                  "title": "Whimsical Software"
+                },
+                {
+                  "url": "https://joshghent.com/simple-sites/",
+                  "title": "Simple sites"
+                },
+                {
+                  "url": "https://joshghent.com/cobra-effect/",
+                  "title": "The Cobra Effect and Software"
+                },
+                {
+                  "url": "https://joshghent.com/rules-of-thumb/",
+                  "title": "Ten Software Architecture Rules of Thumb"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
+                  "title": "Self-Hosting Is Cool: How I Get More Productivity for Less Money"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/offline-first-computing/",
+                  "title": "Offline-First Computing"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/5-second-modern-libreoffice/",
+                  "title": "5-Second Trick for a More Modern LibreOffice"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshternet.org",
+              "domain": "joshternet.org",
+              "title": "Joshternet",
+              "articles": [
+                {
+                  "url": "https://joshternet.org/showcase/",
+                  "title": "Showcase"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+                  "title": "Cessna HV Retrofit"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
+                  "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
+                  "title": "Worth Wandering: Pippin Barr"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
+                  "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/10/the-internet-is-held-together-by-people-we-forgot-to-support/",
+                  "title": "The Internet Is Held Together by People We Forgot to Support"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/29/plugging-in-a-display-should-not-install-adware-on-my-computer/",
+                  "title": "Plugging In a Display Should Not Install Adware on My Computer"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/25/columbia-house-looks-a-lot-like-saas-in-hindsight/",
+                  "title": "Columbia House Looks a Lot Like SaaS in Hindsight"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/22/decayfmt-is-not-a-self-destructing-file-format-but-i-like-the-idea/",
+                  "title": "decayfmt Is Not a Self-Destructing File Format, but I Like the Idea"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/16/ian-cortina-put-a-real-telnet-bbs-on-a-casio-vx-4/",
+                  "title": "Ian Cortina Put a Real Telnet BBS on a Casio VX-4"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/notes/2026-06-23-1158/",
+                  "title": "Software engineers/devs: Has AI made your job more enjoyable? Or less?"
+                },
+                {
+                  "url": "https://joshuapsteele.com/logos-bible-software-needs-an-mcp-server/",
+                  "title": "Logos Bible Software Needs an MCP Server"
+                },
+                {
+                  "url": "https://joshuapsteele.com/lets-talk-authorization/",
+                  "title": "Devs! Let's Talk Authorization"
+                },
+                {
+                  "url": "https://joshuapsteele.com/im-resigning-from-ordained-ministry-in-the-anglican-church-in-north-america/",
+                  "title": "I'm Resigning from Ordained Ministry in the Anglican Church in North America"
+                },
+                {
+                  "url": "https://joshuapsteele.com/essential-reads-for-new-software-developers-the-effective-engineer-and-the-missing-readme/",
+                  "title": "Essential Reads for New Software Developers: The Effective Engineer and The Missing README"
+                },
+                {
+                  "url": "https://joshuapsteele.com/discover-learn-x-in-y-minutes-an-invaluable-resource-for-programmers/",
+                  "title": "Discover Learn X in Y Minutes: An Invaluable Resource for Programmers"
+                },
+                {
+                  "url": "https://joshuapsteele.com/ask-me-anything-software-engineering-questions-from-a-coding-bootcamp-student/",
+                  "title": "Ask Me Anything: Software Engineering Questions from a Coding Bootcamp Student"
+                },
+                {
+                  "url": "https://joshuapsteele.com/my-coding-bootcamp-journey-how-a-pastor-became-a-programmer/",
+                  "title": "My Coding Bootcamp Journey: How a Pastor Became a Programmer"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/books/",
+                  "title": "/books"
+                },
+                {
+                  "url": "https://joshua.seigler.net/music/",
+                  "title": "/music"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "song",
+          "label": "song",
+          "articles": [
+            {
+              "url": "https://forwardbias.dev/ideas/february-album-writing-month/",
+              "title": "On Writing an Album in a Month (kinda)"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2023/song-im-loving/",
+                  "title": "A Song I'm Loving Today"
+                },
+                {
+                  "url": "https://joshmuller.ca/dads-service/dads-anniversary-playlist/",
+                  "title": "Dad's Anniversary Playlist"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/what-shall-we-do-with-a-would-be-tyrant/",
+                  "title": "What Shall We Do With a Would-Be Tyrant? A Sea Shanty for Democracy"
+                },
+                {
+                  "url": "https://joshuapsteele.com/roll-the-old-republic-along/",
+                  "title": "Roll the Old Republic Along: A Sea Shanty for Democracy"
+                },
+                {
+                  "url": "https://joshuapsteele.com/the-fate-of-diphtheria/",
+                  "title": "The Fate of Diphtheria"
+                },
+                {
+                  "url": "https://joshuapsteele.com/death-in-his-grave/",
+                  "title": "Death in His Grave"
+                },
+                {
+                  "url": "https://joshuapsteele.com/the-truth-is-not-a-cave/",
+                  "title": "This Song is a Beautiful Picture of the Theological Journey"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "technology",
+          "label": "technology",
+          "articles": [
+            {
+              "url": "https://forwardbias.dev/about/",
+              "title": "About"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/solutions-architecture/",
+                  "title": "An engineers guide to the Solutions Architecture role"
+                },
+                {
+                  "url": "https://joshghent.com/signal-vs-noise/",
+                  "title": "Signal vs Noise - Staying Up to Date"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2025/it-only-counts-if-you-ship-it/",
+                  "title": "It Only Counts if You Ship It"
+                },
+                {
+                  "url": "https://joshmuller.ca/work/",
+                  "title": "Work Together"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/follow-substack-with-rss/",
+                  "title": "How to Subscribe to Substack Newsletters with RSS"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2023/never-do-the-same-task-thrice/",
+                  "title": "Never Do the Same Task Thrice"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/package-managers-and-why-theyre-awesome/",
+                  "title": "Package Managers and Why They're Awesome"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/protocols-over-platforms/",
+                  "title": "Protocols Over Platforms"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/have-you-tried-turning-it-off-and-on-again/",
+                  "title": "Have You Tried Turning It Off and On Again?"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/language-is-underrated/",
+                  "title": "Language Is Underrated"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
+                  "title": "Learning a New Tech Stack with an LLM"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=constant-contact-constant-contact-brand-2020",
+                  "title": "Constant Contact Brand"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=dandara-living-social-media-platforms-2023",
+                  "title": "Social Media Platforms"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=endurance-group-endurance-group-2020",
+                  "title": "Endurance Group"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=endurance-group-investor-relations-2020",
+                  "title": "Investor Relations"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=endurance-group-recruitment-platform-2020",
+                  "title": "Recruitment Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=groupon-voucher-codes-2010",
+                  "title": "Voucher Codes"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=hewlett-packard-unleashing-hp-2010",
+                  "title": "Unleashing HP"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=insley-nash-digital-fabric-printing-platform-2013",
+                  "title": "&Digital Fabric-printing Platform"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+                  "title": "A Markdown File Should Just Open"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/01/the-chromebook-support-story-is-more-complicated-than-the-headline/",
+                  "title": "The Chromebook Support Story Is More Complicated Than the Headline"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/20/the-interesting-part-of-an-ai-force-is-what-comes-after-the-name/",
+                  "title": "The Interesting Part of an AI Force Is What Comes After the Name"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/20/voyagers-doctor-is-the-ai-future-i-hope-we-have-to-think-about/",
+                  "title": "Voyager's Doctor Is the AI Future I Hope We Have to Think About"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/18/worth-wandering-robin-sloan/",
+                  "title": "Worth Wandering: Robin Sloan"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/16/a-20-youtube-promotion-turned-into-a-118000-lesson-in-guardrails/",
+                  "title": "A $20 YouTube Promotion Turned Into a $118,000 Lesson in Guardrails"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/27/the-ai-bubble-can-burst-without-ai-going-away/",
+                  "title": "The AI Bubble Can Burst Without AI Going Away"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/07/23/codeberg-is-deciding-which-technologies-belong/",
+                  "title": "Codeberg Is Deciding Which Technologies Belong"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/best-budget-smart-tv/",
+                  "title": "What is the Best Budget Smart TV?"
+                },
+                {
+                  "url": "https://joshuapsteele.com/avoiding-online-scams-a-simple-guide-for-non-tech-savvy-internet-users/",
+                  "title": "Avoiding Online Scams: A Simple Guide for Non-Tech-Savvy Internet Users"
+                },
+                {
+                  "url": "https://joshuapsteele.com/ask-me-anything-software-engineering-questions-from-a-coding-bootcamp-student/",
+                  "title": "Ask Me Anything: Software Engineering Questions from a Coding Bootcamp Student"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/books/",
+                  "title": "/books"
+                },
+                {
+                  "url": "https://joshua.seigler.net/music/",
+                  "title": "/music"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "writing",
+          "label": "writing",
+          "articles": [
+            {
+              "url": "https://forwardbias.dev/ideas/february-album-writing-month/",
+              "title": "On Writing an Album in a Month (kinda)"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/resumes/",
+                  "title": "Resumé Red Flags"
+                },
+                {
+                  "url": "https://joshghent.com/error-messages/",
+                  "title": "Writing Useful Error Messages"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/es/writings/2026/use-ai-to-be-a-better-human/",
+                  "title": "Usa la IA para ser un mejor ser humano"
+                },
+                {
+                  "url": "https://joshmuller.ca/tr/writings/2026/use-ai-to-be-a-better-human/",
+                  "title": "Daha İyi Bir İnsan Olmak İçin Yapay Zekâyı Kullanın"
+                },
+                {
+                  "url": "https://joshmuller.ca/es/writings/2025/climate-change/",
+                  "title": "A Jesús le importa el cambio climático"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2025/finish-by-writing/",
+                  "title": "A Project Isn't Finished Until You've Written About It"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/follow-substack-with-rss/",
+                  "title": "How to Subscribe to Substack Newsletters with RSS"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/1805-discovery-could-have-prevented-the-cold-war/",
+                  "title": "A Lost 1805 Discovery Could Have Stopped the Cold War"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2022/3-quotes-on-simplicity/",
+                  "title": "3 Quotes on Simplicity"
+                },
+                {
+                  "url": "https://joshmuller.ca/posts/matthew-5/",
+                  "title": "Matthew 5 : A Translation for Today"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
+                  "title": "Learning a New Tech Stack with an LLM"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshternet.org",
+              "domain": "joshternet.org",
+              "title": "Joshternet",
+              "articles": [
+                {
+                  "url": "https://joshternet.org/activity/",
+                  "title": "What's New"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+                  "title": "Cessna HV Retrofit"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/22/what-i-learned-from-susanne-rockwell/",
+                  "title": "What I Learned From Susanne Rockwell"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/29/the-internet-saw-a-few-seconds-and-invented-the-rest/",
+                  "title": "The Internet Saw a Few Seconds and Invented the Rest"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/28/sometimes-i-dont-want-an-llm-to-answer-me/",
+                  "title": "Sometimes I Don't Want an LLM to Answer Me"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/18/worth-wandering-robin-sloan/",
+                  "title": "Worth Wandering: Robin Sloan"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/13/an-online-book-club-across-our-own-websites/",
+                  "title": "An Online Book Club Across Our Own Websites"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/09/06/an-ai-watermark-cant-tell-you-whether-anyone-was-thinking/",
+                  "title": "An AI Watermark Can't Tell You Whether Anyone Was Thinking"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/12/star-wars-and-marvel-are-finally-crossing-over/",
+                  "title": "Star Wars and Marvel Are Finally Crossing Over"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/08/09/translation-taught-him-how-information-should-flow/",
+                  "title": "Translation Taught Him How Information Should Flow"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/notes/2026-07-30-1534/",
+                  "title": "Has anyone integrated audio/dictation into their notes, writing, personal knowledge management workflows in a way they’re happy with? I haven’t done anything like this yet, but I’m interested!"
+                },
+                {
+                  "url": "https://joshuapsteele.com/ask-me-anything-this-november/",
+                  "title": "Ask Me Anything This November: WeblogPoMo AMA"
+                },
+                {
+                  "url": "https://joshuapsteele.com/a-shameless-request-help-me-buy-more-books/",
+                  "title": "A Shameless Request: Help Me Buy More Books?"
+                },
+                {
+                  "url": "https://joshuapsteele.com/they-say-i-say-writing-templates/",
+                  "title": "They Say, I Say Writing Templates"
+                },
+                {
+                  "url": "https://joshuapsteele.com/balderdash-12-suggestions-for-overcoming-writers-block-from-andrew-t-le-peaus-write-better/",
+                  "title": "Balderdash! 12 Suggestions for Overcoming Writer’s Block (From Andrew T. Le Peau’s “Write Better”)"
+                },
+                {
+                  "url": "https://joshuapsteele.com/helpful-writing-templates/",
+                  "title": "Helpful Writing Templates"
+                },
+                {
+                  "url": "https://joshuapsteele.com/dissertation-dispatch-2019-08-09/",
+                  "title": "Dissertation Dispatch: 2019-08-09"
+                },
+                {
+                  "url": "https://joshuapsteele.com/desperate-times-desperate-measures-writing-my-dissertation-vs-funding-abortion/",
+                  "title": "Desperate Times, Desperate Measures: Writing My Dissertation vs. Funding Abortion"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "origin": "https://joshbeard.com",
       "topics": [
+        {
+          "slug": "blue",
+          "label": "blue",
+          "articles": [
+            {
+              "url": "https://joshbeard.com/photos/2017/20170819-blue-lake-1_jpg.html",
+              "title": "Mount Toll and Blue Lake, Indian Peaks Wilderness, Colorado. August 19, 2017. - Josh Beard"
+            },
+            {
+              "url": "https://joshbeard.com/photos/2017/20170819-blue-lake-2_jpg.html",
+              "title": "Mount Toll and Blue Lake, Indian Peaks Wilderness, Colorado. August 19, 2017. - Josh Beard"
+            },
+            {
+              "url": "https://joshbeard.com/photos/2017/20170819-blue-lake-3_jpg.html",
+              "title": "Looking across Blue Lake towards Pawnee Peak. Indian Peaks Wilderness, Colorado. August 19, 2017. - Josh Beard"
+            },
+            {
+              "url": "https://joshbeard.com/photos/2017/20170819-blue-lake-5_jpg.html",
+              "title": "Mount Toll and Blue Lake, Indian Peaks Wilderness, Colorado. August 19, 2017. - Josh Beard"
+            },
+            {
+              "url": "https://joshbeard.com/photos/2019/2019-roadtrip-01_jpeg.html",
+              "title": "The Dillon Pinnacles, Blue Mesa Reservoir, Colorado. September, 2019. - Josh Beard"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=blue-rubicon-surname-surname-2012",
+                  "title": "Surname & Surname"
+                }
+              ]
+            }
+          ]
+        },
         {
           "slug": "fall",
           "label": "fall",
@@ -4492,6 +6852,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/about/",
+                  "title": "About"
+                }
+              ]
+            },
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
@@ -5081,6 +7452,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/about/",
+                  "title": "About"
+                }
+              ]
+            },
+            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
               "title": "Josh Müller",
@@ -5274,6 +7656,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/disentangling-career-from-creativity/",
+                  "title": "Disentangling Career from Creativity"
+                }
+              ]
+            },
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
@@ -6343,6 +8736,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/contact/",
+                  "title": "Contact"
+                }
+              ]
+            },
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
@@ -8452,6 +10856,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/contact/",
+                  "title": "Contact"
+                }
+              ]
+            },
+            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
               "title": "Josh Müller",
@@ -8524,6 +10939,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+                  "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
@@ -9410,6 +11836,82 @@
           ]
         },
         {
+          "slug": "red",
+          "label": "red",
+          "articles": [
+            {
+              "url": "https://joshghent.com/resumes/",
+              "title": "Resumé Red Flags"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/recipes/meals/falafel/",
+                  "title": "Falafel"
+                },
+                {
+                  "url": "https://joshmuller.ca/recipes/meals/super-veggie/",
+                  "title": "Blueprint — Super Veggie"
+                },
+                {
+                  "url": "https://joshmuller.ca/recipes/sauces/bone-broth/",
+                  "title": "Bone Broth"
+                },
+                {
+                  "url": "https://joshmuller.ca/recipes/sauces/salsa-dads-recipe/",
+                  "title": "Dad's Salsa Recipe"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=red-stone-red-stone-2011",
+                  "title": "Red Stone"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/banked/appendix/banked-comic-relief-red-nose-day/",
+                  "title": "Powering Red Nose Day donations · Banked became a technology partner to Comic Relief for Red Nose Day. The donation pages were one of the later projects in my work with Banked. Banked Read more"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/banked/appendix/banked-lisa-scott-ceo-europe/",
+                  "title": "Lisa Scott named CEO of Europe · Banked made Lisa Scott CEO of its European operations. As CMO, she drove the marketing platform described on this page. Banked Read more"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/notes/2026-07-01-2134/",
+                  "title": "What a terrible VAR red card. Boo. 👎👎👎"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/recipes/red-cabbage-confit/",
+                  "title": "Recipe: Red Cabbage Confit"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "review",
           "label": "reviews",
           "articles": [
@@ -10042,6 +12544,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+                  "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
+            {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
               "title": "Josh Cunningham",
@@ -10427,6 +12940,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/about/",
+                  "title": "About"
+                }
+              ]
+            },
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
@@ -10945,7 +13469,7 @@
         },
         {
           "slug": "world",
-          "label": "worlds",
+          "label": "world",
           "articles": [
             {
               "url": "https://joshghent.com/cool-links/",
@@ -11222,6 +13746,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/february-album-writing-month/",
+                  "title": "On Writing an Album in a Month (kinda)"
+                }
+              ]
+            },
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
@@ -11539,6 +14074,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/about/",
+                  "title": "About"
+                }
+              ]
+            },
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
@@ -12225,6 +14771,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/about/",
+                  "title": "About"
+                }
+              ]
+            },
+            {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
               "title": "Josh Ghent",
@@ -12426,6 +14983,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/disentangling-career-from-creativity/",
+                  "title": "Disentangling Career from Creativity"
+                }
+              ]
+            },
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
@@ -14125,6 +16693,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/contact/",
+                  "title": "Contact"
+                }
+              ]
+            },
+            {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
               "title": "Josh Ghent",
@@ -14588,6 +17167,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/contact/",
+                  "title": "Contact"
+                }
+              ]
+            },
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
@@ -15798,6 +18388,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+                  "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
@@ -17152,6 +19753,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/february-album-writing-month/",
+                  "title": "On Writing an Album in a Month (kinda)"
+                }
+              ]
+            },
+            {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
               "title": "Josh Sherman",
@@ -17640,6 +20252,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/contact/",
+                  "title": "Contact"
+                }
+              ]
+            },
+            {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
               "title": "Josh Ghent",
@@ -17700,6 +20323,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+                  "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
@@ -19007,7 +21641,7 @@
         },
         {
           "slug": "recipe",
-          "label": "recipe",
+          "label": "recipes",
           "articles": [
             {
               "url": "https://joshmuller.ca/recipes/desserts/gluten-free-chocolate-cake/",
@@ -19026,6 +21660,10 @@
               "title": "Mom's Pumpkin Pie"
             },
             {
+              "url": "https://joshmuller.ca/writings/2024/now-with-recipes/",
+              "title": "Now With Recipes"
+            },
+            {
               "url": "https://joshmuller.ca/recipes/meals/protein-pancakes/",
               "title": "Protein Pancakes"
             },
@@ -19036,13 +21674,20 @@
             {
               "url": "https://joshmuller.ca/recipes/desserts/graham-crackers/",
               "title": "Homemade Graham Crackers"
-            },
-            {
-              "url": "https://joshmuller.ca/recipes/desserts/katie-s-tahini-cookies/",
-              "title": "4 Ingredient Tahin Cookies"
             }
           ],
           "sites": [
+            {
+              "origin": "https://joshternet.org",
+              "domain": "joshternet.org",
+              "title": "Joshternet",
+              "articles": [
+                {
+                  "url": "https://joshternet.org/implement/platforms/",
+                  "title": "Platforms"
+                }
+              ]
+            },
             {
               "origin": "https://joshua.seigler.net",
               "domain": "joshua.seigler.net",
@@ -19184,6 +21829,82 @@
                 {
                   "url": "https://joshuapsteele.com/reconciliation-and-the-lack-thereof-atonement-ecclesiology-and-the-unity-of-god/",
                   "title": "Reconciliation and the Lack Thereof: Atonement, Ecclesiology, and the Unity of God"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "red",
+          "label": "red",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/recipes/meals/falafel/",
+              "title": "Falafel"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/meals/super-veggie/",
+              "title": "Blueprint — Super Veggie"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/sauces/bone-broth/",
+              "title": "Bone Broth"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/sauces/salsa-dads-recipe/",
+              "title": "Dad's Salsa Recipe"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/resumes/",
+                  "title": "Resumé Red Flags"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=red-stone-red-stone-2011",
+                  "title": "Red Stone"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/banked/appendix/banked-comic-relief-red-nose-day/",
+                  "title": "Powering Red Nose Day donations · Banked became a technology partner to Comic Relief for Red Nose Day. The donation pages were one of the later projects in my work with Banked. Banked Read more"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/banked/appendix/banked-lisa-scott-ceo-europe/",
+                  "title": "Lisa Scott named CEO of Europe · Banked made Lisa Scott CEO of its European operations. As CMO, she drove the marketing platform described on this page. Banked Read more"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/notes/2026-07-01-2134/",
+                  "title": "What a terrible VAR red card. Boo. 👎👎👎"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/recipes/red-cabbage-confit/",
+                  "title": "Recipe: Red Cabbage Confit"
                 }
               ]
             }
@@ -20128,6 +22849,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+                  "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
+            {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
               "title": "Josh Cunningham",
@@ -20409,6 +23141,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/february-album-writing-month/",
+                  "title": "On Writing an Album in a Month (kinda)"
+                }
+              ]
+            },
             {
               "origin": "https://joshuapsteele.com",
               "domain": "joshuapsteele.com",
@@ -20721,6 +23464,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/about/",
+                  "title": "About"
+                }
+              ]
+            },
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
@@ -21233,7 +23987,7 @@
         },
         {
           "slug": "world",
-          "label": "worlds",
+          "label": "world",
           "articles": [
             {
               "url": "https://joshmuller.ca/writings/2024/choose-dignity/",
@@ -21534,6 +24288,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/february-album-writing-month/",
+                  "title": "On Writing an Album in a Month (kinda)"
+                }
+              ]
+            },
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
@@ -22645,6 +25410,96 @@
           ]
         },
         {
+          "slug": "recipe",
+          "label": "recipes",
+          "articles": [
+            {
+              "url": "https://joshternet.org/implement/platforms/",
+              "title": "Platforms"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/recipes/desserts/gluten-free-chocolate-cake/",
+                  "title": "Gluten-Free Chocolate Cake"
+                },
+                {
+                  "url": "https://joshmuller.ca/es/recetas/ajiaco-santafereno/",
+                  "title": "Ajiaco santafereño de mamá"
+                },
+                {
+                  "url": "https://joshmuller.ca/recipes/meals/ajiaco-santafereno/",
+                  "title": "Mom's Ajiaco Santafereño"
+                },
+                {
+                  "url": "https://joshmuller.ca/recipes/desserts/pumpkin-pie/",
+                  "title": "Mom's Pumpkin Pie"
+                },
+                {
+                  "url": "https://joshmuller.ca/writings/2024/now-with-recipes/",
+                  "title": "Now With Recipes"
+                },
+                {
+                  "url": "https://joshmuller.ca/recipes/meals/protein-pancakes/",
+                  "title": "Protein Pancakes"
+                },
+                {
+                  "url": "https://joshmuller.ca/recipes/desserts/flapper-pie/",
+                  "title": "Flapper Pie"
+                },
+                {
+                  "url": "https://joshmuller.ca/recipes/desserts/graham-crackers/",
+                  "title": "Homemade Graham Crackers"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/recipes/pear-upside-down-cake/",
+                  "title": "Recipe: Pear Upside Down Cake"
+                },
+                {
+                  "url": "https://joshua.seigler.net/recipes/bread-pudding/",
+                  "title": "Recipe: Bread Pudding with Butter Rum Sauce"
+                },
+                {
+                  "url": "https://joshua.seigler.net/posts/i-made-myself-a-recipe-label-generator/",
+                  "title": "Post: I made myself a Recipe Label Generator"
+                },
+                {
+                  "url": "https://joshua.seigler.net/recipes/breakfast-strata/",
+                  "title": "Recipe: Breakfast Strata"
+                },
+                {
+                  "url": "https://joshua.seigler.net/recipes/red-cabbage-confit/",
+                  "title": "Recipe: Red Cabbage Confit"
+                },
+                {
+                  "url": "https://joshua.seigler.net/recipes/curry-bolognese/",
+                  "title": "Recipe: Curry Bolognese"
+                },
+                {
+                  "url": "https://joshua.seigler.net/recipes/chicken-chili-verde/",
+                  "title": "Recipe: Chicken Chili Verde"
+                },
+                {
+                  "url": "https://joshua.seigler.net/recipes/amish-egg-noodles/",
+                  "title": "Recipe: Amish Egg Noodles"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "security",
           "label": "security",
           "articles": [
@@ -22746,6 +25601,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+                  "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
@@ -22966,6 +25832,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/february-album-writing-month/",
+                  "title": "On Writing an Album in a Month (kinda)"
+                }
+              ]
+            },
+            {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
               "title": "Josh Ghent",
@@ -23140,6 +26017,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/about/",
+                  "title": "About"
+                }
+              ]
+            },
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
@@ -23423,6 +26311,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/disentangling-career-from-creativity/",
+                  "title": "Disentangling Career from Creativity"
+                }
+              ]
+            },
+            {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
               "title": "Josh Ghent",
@@ -23615,6 +26514,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/disentangling-career-from-creativity/",
+                  "title": "Disentangling Career from Creativity"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuapsteele.com",
               "domain": "joshuapsteele.com",
               "title": "Joshua P. Steele",
@@ -23746,6 +26656,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/contact/",
+                  "title": "Contact"
+                }
+              ]
+            },
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
@@ -23915,6 +26836,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/contact/",
+                  "title": "Contact"
+                }
+              ]
+            },
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
@@ -24437,6 +27369,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+                  "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
@@ -25155,6 +28098,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/february-album-writing-month/",
+                  "title": "On Writing an Album in a Month (kinda)"
+                }
+              ]
+            },
+            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
               "title": "Josh Müller",
@@ -25368,6 +28322,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+                  "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
@@ -26266,6 +29231,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/about/",
+                  "title": "About"
+                }
+              ]
+            },
+            {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
               "title": "Josh Ghent",
@@ -26477,6 +29453,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/february-album-writing-month/",
+                  "title": "On Writing an Album in a Month (kinda)"
+                }
+              ]
+            },
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
@@ -26729,6 +29716,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/about/",
+                  "title": "About"
+                }
+              ]
+            },
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
@@ -27370,6 +30368,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+                  "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
+            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
               "title": "Josh Müller",
@@ -27714,7 +30723,7 @@
         },
         {
           "slug": "recipe",
-          "label": "recipe",
+          "label": "recipes",
           "articles": [
             {
               "url": "https://joshua.seigler.net/recipes/pear-upside-down-cake/",
@@ -27772,6 +30781,10 @@
                   "title": "Mom's Pumpkin Pie"
                 },
                 {
+                  "url": "https://joshmuller.ca/writings/2024/now-with-recipes/",
+                  "title": "Now With Recipes"
+                },
+                {
                   "url": "https://joshmuller.ca/recipes/meals/protein-pancakes/",
                   "title": "Protein Pancakes"
                 },
@@ -27782,10 +30795,93 @@
                 {
                   "url": "https://joshmuller.ca/recipes/desserts/graham-crackers/",
                   "title": "Homemade Graham Crackers"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshternet.org",
+              "domain": "joshternet.org",
+              "title": "Joshternet",
+              "articles": [
+                {
+                  "url": "https://joshternet.org/implement/platforms/",
+                  "title": "Platforms"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "red",
+          "label": "red",
+          "articles": [
+            {
+              "url": "https://joshua.seigler.net/recipes/red-cabbage-confit/",
+              "title": "Recipe: Red Cabbage Confit"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/resumes/",
+                  "title": "Resumé Red Flags"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/recipes/meals/falafel/",
+                  "title": "Falafel"
                 },
                 {
-                  "url": "https://joshmuller.ca/recipes/desserts/katie-s-tahini-cookies/",
-                  "title": "4 Ingredient Tahin Cookies"
+                  "url": "https://joshmuller.ca/recipes/meals/super-veggie/",
+                  "title": "Blueprint — Super Veggie"
+                },
+                {
+                  "url": "https://joshmuller.ca/recipes/sauces/bone-broth/",
+                  "title": "Bone Broth"
+                },
+                {
+                  "url": "https://joshmuller.ca/recipes/sauces/salsa-dads-recipe/",
+                  "title": "Dad's Salsa Recipe"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=red-stone-red-stone-2011",
+                  "title": "Red Stone"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/banked/appendix/banked-comic-relief-red-nose-day/",
+                  "title": "Powering Red Nose Day donations · Banked became a technology partner to Comic Relief for Red Nose Day. The donation pages were one of the later projects in my work with Banked. Banked Read more"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/banked/appendix/banked-lisa-scott-ceo-europe/",
+                  "title": "Lisa Scott named CEO of Europe · Banked made Lisa Scott CEO of its European operations. As CMO, she drove the marketing platform described on this page. Banked Read more"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/notes/2026-07-01-2134/",
+                  "title": "What a terrible VAR red card. Boo. 👎👎👎"
                 }
               ]
             }
@@ -28264,6 +31360,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+                  "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
+            {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
               "title": "Josh Cunningham",
@@ -28448,6 +31555,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/about/",
+                  "title": "About"
+                }
+              ]
+            },
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
@@ -29496,6 +32614,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+                  "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
+            {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
               "title": "Josh Cunningham",
@@ -29760,6 +32889,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/february-album-writing-month/",
+                  "title": "On Writing an Album in a Month (kinda)"
+                }
+              ]
+            },
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
@@ -30156,6 +33296,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/about/",
+                  "title": "About"
+                }
+              ]
+            },
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
@@ -31019,6 +34170,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/about/",
+                  "title": "About"
+                }
+              ]
+            },
+            {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
               "title": "Josh Ghent",
@@ -31306,6 +34468,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/disentangling-career-from-creativity/",
+                  "title": "Disentangling Career from Creativity"
+                }
+              ]
+            },
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
@@ -31727,6 +34900,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+                  "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
             {
               "origin": "https://joshuapsteele.com",
               "domain": "joshuapsteele.com",
@@ -33102,6 +36286,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/contact/",
+                  "title": "Contact"
+                }
+              ]
+            },
+            {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
               "title": "Josh Ghent",
@@ -33750,6 +36945,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/contact/",
+                  "title": "Contact"
+                }
+              ]
+            },
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
@@ -34766,6 +37972,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/disentangling-career-from-creativity/",
+                  "title": "Disentangling Career from Creativity"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuapsteele.com",
               "domain": "joshuapsteele.com",
               "title": "Joshua P. Steele",
@@ -35015,6 +38232,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+                  "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
@@ -36919,6 +40147,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/contact/",
+                  "title": "Contact"
+                }
+              ]
+            },
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
@@ -38960,6 +42199,21 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/disentangling-career-from-creativity/",
+                  "title": "Disentangling Career from Creativity"
+                },
+                {
+                  "url": "https://forwardbias.dev/about/",
+                  "title": "About"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuapsteele.com",
               "domain": "joshuapsteele.com",
               "title": "Joshua P. Steele",
@@ -39563,6 +42817,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+                  "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
+            {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
               "title": "Josh Cunningham",
@@ -40110,6 +43375,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/about/",
+                  "title": "About"
+                }
+              ]
+            },
+            {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
               "title": "Josh Ghent",
@@ -40654,7 +43930,7 @@
         },
         {
           "slug": "world",
-          "label": "worlds",
+          "label": "world",
           "articles": [
             {
               "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
@@ -40955,6 +44231,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/february-album-writing-month/",
+                  "title": "On Writing an Album in a Month (kinda)"
+                }
+              ]
+            },
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
@@ -41267,6 +44554,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/about/",
+                  "title": "About"
+                }
+              ]
+            },
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
@@ -42030,6 +45328,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/about/",
+                  "title": "About"
+                }
+              ]
+            },
+            {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
               "title": "Josh Ghent",
@@ -42149,6 +45458,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/disentangling-career-from-creativity/",
+                  "title": "Disentangling Career from Creativity"
+                }
+              ]
+            },
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
@@ -42568,6 +45888,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+                  "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
@@ -42672,6 +46003,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/disentangling-career-from-creativity/",
+                  "title": "Disentangling Career from Creativity"
+                }
+              ]
+            },
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
@@ -44321,6 +47663,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/contact/",
+                  "title": "Contact"
+                }
+              ]
+            },
+            {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
               "title": "Josh Cunningham",
@@ -45220,6 +48573,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/disentangling-career-from-creativity/",
+                  "title": "Disentangling Career from Creativity"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
@@ -45557,6 +48921,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+                  "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
             {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
@@ -47020,6 +50395,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/february-album-writing-month/",
+                  "title": "On Writing an Album in a Month (kinda)"
+                }
+              ]
+            },
+            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
               "title": "Josh Müller",
@@ -47480,6 +50866,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/contact/",
+                  "title": "Contact"
+                }
+              ]
+            },
+            {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
               "title": "Josh Ghent",
@@ -47548,6 +50945,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+                  "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
@@ -48635,6 +52043,82 @@
           ]
         },
         {
+          "slug": "red",
+          "label": "red",
+          "articles": [
+            {
+              "url": "https://joshuapsteele.com/notes/2026-07-01-2134/",
+              "title": "What a terrible VAR red card. Boo. 👎👎👎"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/resumes/",
+                  "title": "Resumé Red Flags"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/recipes/meals/falafel/",
+                  "title": "Falafel"
+                },
+                {
+                  "url": "https://joshmuller.ca/recipes/meals/super-veggie/",
+                  "title": "Blueprint — Super Veggie"
+                },
+                {
+                  "url": "https://joshmuller.ca/recipes/sauces/bone-broth/",
+                  "title": "Bone Broth"
+                },
+                {
+                  "url": "https://joshmuller.ca/recipes/sauces/salsa-dads-recipe/",
+                  "title": "Dad's Salsa Recipe"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=red-stone-red-stone-2011",
+                  "title": "Red Stone"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/banked/appendix/banked-comic-relief-red-nose-day/",
+                  "title": "Powering Red Nose Day donations · Banked became a technology partner to Comic Relief for Red Nose Day. The donation pages were one of the later projects in my work with Banked. Banked Read more"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/banked/appendix/banked-lisa-scott-ceo-europe/",
+                  "title": "Lisa Scott named CEO of Europe · Banked made Lisa Scott CEO of its European operations. As CMO, she drove the marketing platform described on this page. Banked Read more"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/recipes/red-cabbage-confit/",
+                  "title": "Recipe: Red Cabbage Confit"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "relationship",
           "label": "relationships",
           "articles": [
@@ -49258,6 +52742,21 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/disentangling-career-from-creativity/",
+                  "title": "Disentangling Career from Creativity"
+                },
+                {
+                  "url": "https://forwardbias.dev/about/",
+                  "title": "About"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
@@ -49873,6 +53372,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+                  "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
+            {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
               "title": "Josh Cunningham",
@@ -50170,6 +53680,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/february-album-writing-month/",
+                  "title": "On Writing an Album in a Month (kinda)"
+                }
+              ]
+            },
+            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
               "title": "Josh Müller",
@@ -50336,6 +53857,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/about/",
+                  "title": "About"
+                }
+              ]
+            },
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
@@ -50901,7 +54433,7 @@
         },
         {
           "slug": "world",
-          "label": "worlds",
+          "label": "world",
           "articles": [
             {
               "url": "https://joshuapsteele.com/notes/2026-06-11-0703/",
@@ -51203,6 +54735,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/february-album-writing-month/",
+                  "title": "On Writing an Album in a Month (kinda)"
+                }
+              ]
+            },
+            {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
               "title": "Josh Ghent",
@@ -51467,6 +55010,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/about/",
+                  "title": "About"
+                }
+              ]
+            },
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
@@ -51919,6 +55473,17 @@
           ],
           "sites": [
             {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/contact/",
+                  "title": "Contact"
+                }
+              ]
+            },
+            {
               "origin": "https://joshmuller.ca",
               "domain": "joshmuller.ca",
               "title": "Josh Müller",
@@ -52169,6 +55734,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+                  "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",
@@ -52527,7 +56103,7 @@
         },
         {
           "slug": "world",
-          "label": "worlds",
+          "label": "world",
           "articles": [
             {
               "url": "https://www.joshcanhelp.com/agentic-identity/",
@@ -52704,6 +56280,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/about/",
+                  "title": "About"
+                }
+              ]
+            },
             {
               "origin": "https://www.joshcanhelp.com",
               "domain": "www.joshcanhelp.com",
@@ -53050,6 +56637,45 @@
                 {
                   "url": "https://joshuadrake.org/projects/resloadbank/",
                   "title": "Turbo Generator Load-Bank"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "blue",
+          "label": "blue",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/?work=blue-rubicon-surname-surname-2012",
+              "title": "Surname & Surname"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshbeard.com",
+              "domain": "joshbeard.com",
+              "title": "Josh Beard",
+              "articles": [
+                {
+                  "url": "https://joshbeard.com/photos/2017/20170819-blue-lake-1_jpg.html",
+                  "title": "Mount Toll and Blue Lake, Indian Peaks Wilderness, Colorado. August 19, 2017. - Josh Beard"
+                },
+                {
+                  "url": "https://joshbeard.com/photos/2017/20170819-blue-lake-2_jpg.html",
+                  "title": "Mount Toll and Blue Lake, Indian Peaks Wilderness, Colorado. August 19, 2017. - Josh Beard"
+                },
+                {
+                  "url": "https://joshbeard.com/photos/2017/20170819-blue-lake-3_jpg.html",
+                  "title": "Looking across Blue Lake towards Pawnee Peak. Indian Peaks Wilderness, Colorado. August 19, 2017. - Josh Beard"
+                },
+                {
+                  "url": "https://joshbeard.com/photos/2017/20170819-blue-lake-5_jpg.html",
+                  "title": "Mount Toll and Blue Lake, Indian Peaks Wilderness, Colorado. August 19, 2017. - Josh Beard"
+                },
+                {
+                  "url": "https://joshbeard.com/photos/2019/2019-roadtrip-01_jpeg.html",
+                  "title": "The Dillon Pinnacles, Blue Mesa Reservoir, Colorado. September, 2019. - Josh Beard"
                 }
               ]
             }
@@ -54786,6 +58412,82 @@
           ]
         },
         {
+          "slug": "red",
+          "label": "red",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/?work=red-stone-red-stone-2011",
+              "title": "Red Stone"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/banked/appendix/banked-comic-relief-red-nose-day/",
+              "title": "Powering Red Nose Day donations · Banked became a technology partner to Comic Relief for Red Nose Day. The donation pages were one of the later projects in my work with Banked. Banked Read more"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/banked/appendix/banked-lisa-scott-ceo-europe/",
+              "title": "Lisa Scott named CEO of Europe · Banked made Lisa Scott CEO of its European operations. As CMO, she drove the marketing platform described on this page. Banked Read more"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/resumes/",
+                  "title": "Resumé Red Flags"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/recipes/meals/falafel/",
+                  "title": "Falafel"
+                },
+                {
+                  "url": "https://joshmuller.ca/recipes/meals/super-veggie/",
+                  "title": "Blueprint — Super Veggie"
+                },
+                {
+                  "url": "https://joshmuller.ca/recipes/sauces/bone-broth/",
+                  "title": "Bone Broth"
+                },
+                {
+                  "url": "https://joshmuller.ca/recipes/sauces/salsa-dads-recipe/",
+                  "title": "Dad's Salsa Recipe"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/notes/2026-07-01-2134/",
+                  "title": "What a terrible VAR red card. Boo. 👎👎👎"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/recipes/red-cabbage-confit/",
+                  "title": "Recipe: Red Cabbage Confit"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "research",
           "label": "research",
           "articles": [
@@ -55627,6 +59329,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Forward Bias",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/about/",
+                  "title": "About"
+                }
+              ]
+            },
             {
               "origin": "https://joshghent.com",
               "domain": "joshghent.com",

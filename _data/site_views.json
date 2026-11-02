@@ -1,7 +1,334 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-02T00:07:11.393Z",
+  "generated_at": "2026-11-02T08:16:12.005Z",
   "sites": [
+    {
+      "origin": "https://forwardbias.dev",
+      "domain": "forwardbias.dev",
+      "title": "Forward Bias",
+      "description": "Ramblings and experiments from a recovering middle school teacher. Equity, joy, and agency in education through tech, music, arts. Who knows what comes next.",
+      "identity": "affirmed",
+      "feeds": [
+        {
+          "url": "https://forwardbias.dev/index.xml",
+          "type": "application/rss+xml",
+          "title": "Probed feed"
+        }
+      ],
+      "elsewhere": [
+        {
+          "url": "https://github.com/mrjoshida",
+          "network": "github",
+          "label": "GitHub"
+        },
+        {
+          "url": "https://bsky.app/profile/fwdbias.xyz",
+          "network": "bluesky",
+          "label": "Bluesky"
+        },
+        {
+          "url": "https://creativecodingbook.com/",
+          "network": "web",
+          "label": "creativecodingbook.com"
+        },
+        {
+          "url": "https://tideflats.com/",
+          "network": "web",
+          "label": "tideflats.com"
+        }
+      ],
+      "community_topics": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "blue",
+          "label": "blue"
+        },
+        {
+          "slug": "career",
+          "label": "career"
+        },
+        {
+          "slug": "creative-coding",
+          "label": "creative coding"
+        },
+        {
+          "slug": "creative-process",
+          "label": "creative process"
+        },
+        {
+          "slug": "education",
+          "label": "education"
+        },
+        {
+          "slug": "fawm",
+          "label": "fawm"
+        },
+        {
+          "slug": "green",
+          "label": "green"
+        },
+        {
+          "slug": "micro-software",
+          "label": "micro software"
+        },
+        {
+          "slug": "music",
+          "label": "music"
+        },
+        {
+          "slug": "red",
+          "label": "red"
+        },
+        {
+          "slug": "school",
+          "label": "schools"
+        },
+        {
+          "slug": "software",
+          "label": "software"
+        },
+        {
+          "slug": "writing",
+          "label": "writing"
+        }
+      ],
+      "recent_content": {
+        "url": "https://forwardbias.dev/about/",
+        "title": "About",
+        "summary": "I’m a recovering Middle School teacher, always trying to hold onto the messiness and joy of the students I used to teach. I’ve led the curriculum team at a non-profit, trained thousands of teachers to pick up CS, written two books on the topic, and am currently making my way through the impact of Generative AI on all of these things. I believe that technology can be be beautiful, tactile, and expr",
+        "published_at": "2026-03-09T17:00:00.000Z",
+        "observed_at": "2026-11-02T08:07:50.158Z",
+        "content_type": "article",
+        "language": "en-us",
+        "dir": "",
+        "site_origin": "https://forwardbias.dev",
+        "site_title": "Forward Bias",
+        "domain": "forwardbias.dev",
+        "tags": [],
+        "neighborhoods": [],
+        "image": "/assets/activity/posters/f9983c438f085932dd736bcd95460157becb8c691c5520a1a2f7dbd386e87c8e.webp",
+        "image_origin": "",
+        "source_kind": "rss",
+        "page_role": "about"
+      },
+      "outgoing": [],
+      "incoming": [],
+      "coverage": {
+        "pages_discovered": 30,
+        "pages_fetched": 30,
+        "fetch_limit": null,
+        "limit_reached": false,
+        "selection_strategy": "uncapped-site-crawl-v1",
+        "selection_reasons": {
+          "https://forwardbias.dev/": "home",
+          "https://forwardbias.dev/about/": "blind-probe",
+          "https://forwardbias.dev/about-me/": "blind-probe",
+          "https://forwardbias.dev/aboutme/": "blind-probe",
+          "https://forwardbias.dev/bio/": "blind-probe",
+          "https://forwardbias.dev/me/": "blind-probe",
+          "https://forwardbias.dev/profile/": "blind-probe",
+          "https://forwardbias.dev/ai/": "blind-probe",
+          "https://forwardbias.dev/blogroll/": "blind-probe",
+          "https://forwardbias.dev/calendar/": "blind-probe",
+          "https://forwardbias.dev/canon/": "blind-probe",
+          "https://forwardbias.dev/carry/": "blind-probe",
+          "https://forwardbias.dev/caw/": "blind-probe",
+          "https://forwardbias.dev/celebrities/": "blind-probe",
+          "https://forwardbias.dev/changelog/": "blind-probe",
+          "https://forwardbias.dev/log/": "blind-probe",
+          "https://forwardbias.dev/chipotle/": "blind-probe",
+          "https://forwardbias.dev/colophon/": "blind-probe",
+          "https://forwardbias.dev/community/": "blind-probe",
+          "https://forwardbias.dev/concerts/": "blind-probe",
+          "https://forwardbias.dev/contact/": "blind-probe",
+          "https://forwardbias.dev/daylists/": "blind-probe",
+          "https://forwardbias.dev/death/": "blind-probe",
+          "https://forwardbias.dev/defaults/": "blind-probe",
+          "https://forwardbias.dev/disability/": "blind-probe",
+          "https://forwardbias.dev/elsewhere/": "blind-probe",
+          "https://forwardbias.dev/appearances/": "blind-probe",
+          "https://forwardbias.dev/follow/": "blind-probe",
+          "https://forwardbias.dev/subscribe/": "blind-probe",
+          "https://forwardbias.dev/feeds/": "blind-probe",
+          "https://forwardbias.dev/for/": "blind-probe",
+          "https://forwardbias.dev/dedication/": "blind-probe",
+          "https://forwardbias.dev/glossary/": "blind-probe",
+          "https://forwardbias.dev/lexicon/": "blind-probe",
+          "https://forwardbias.dev/phrased/": "blind-probe",
+          "https://forwardbias.dev/green/": "blind-probe",
+          "https://forwardbias.dev/hats/": "blind-probe",
+          "https://forwardbias.dev/hello/": "blind-probe",
+          "https://forwardbias.dev/hills/": "blind-probe",
+          "https://forwardbias.dev/hill/": "blind-probe",
+          "https://forwardbias.dev/ideas/": "blind-probe",
+          "https://forwardbias.dev/interests/": "blind-probe",
+          "https://forwardbias.dev/junk/": "blind-probe",
+          "https://forwardbias.dev/sale/": "blind-probe",
+          "https://forwardbias.dev/buy/": "blind-probe",
+          "https://forwardbias.dev/languages/": "blind-probe",
+          "https://forwardbias.dev/links/": "blind-probe",
+          "https://forwardbias.dev/bookmarks/": "blind-probe",
+          "https://forwardbias.dev/next/": "blind-probe",
+          "https://forwardbias.dev/nope/": "blind-probe",
+          "https://forwardbias.dev/now/": "blind-probe",
+          "https://forwardbias.dev/pfp/": "blind-probe",
+          "https://forwardbias.dev/photo/": "blind-probe",
+          "https://forwardbias.dev/pic/": "blind-probe",
+          "https://forwardbias.dev/podroll/": "blind-probe",
+          "https://forwardbias.dev/posse/": "blind-probe",
+          "https://forwardbias.dev/postroll/": "blind-probe",
+          "https://forwardbias.dev/predictions/": "blind-probe",
+          "https://forwardbias.dev/pricing/": "blind-probe",
+          "https://forwardbias.dev/questions/": "blind-probe",
+          "https://forwardbias.dev/saudade/": "blind-probe",
+          "https://forwardbias.dev/save/": "blind-probe",
+          "https://forwardbias.dev/referrals/": "blind-probe",
+          "https://forwardbias.dev/self-hosting/": "blind-probe",
+          "https://forwardbias.dev/self-hosted/": "blind-probe",
+          "https://forwardbias.dev/hosted/": "blind-probe",
+          "https://forwardbias.dev/homelab/": "blind-probe",
+          "https://forwardbias.dev/shoebox/": "blind-probe",
+          "https://forwardbias.dev/since/": "blind-probe",
+          "https://forwardbias.dev/sitemap/": "blind-probe",
+          "https://forwardbias.dev/slashes/": "blind-probe",
+          "https://forwardbias.dev/someday/": "blind-probe",
+          "https://forwardbias.dev/style/": "blind-probe",
+          "https://forwardbias.dev/til/": "blind-probe",
+          "https://forwardbias.dev/ways/": "blind-probe",
+          "https://forwardbias.dev/tip/": "blind-probe",
+          "https://forwardbias.dev/pay/": "blind-probe",
+          "https://forwardbias.dev/coffee/": "blind-probe",
+          "https://forwardbias.dev/top4/": "blind-probe",
+          "https://forwardbias.dev/topfour/": "blind-probe",
+          "https://forwardbias.dev/uses/": "blind-probe",
+          "https://forwardbias.dev/verify/": "blind-probe",
+          "https://forwardbias.dev/where/": "blind-probe",
+          "https://forwardbias.dev/why/": "blind-probe",
+          "https://forwardbias.dev/wish/": "blind-probe",
+          "https://forwardbias.dev/yep/": "blind-probe",
+          "https://forwardbias.dev/more/": "blind-probe",
+          "https://forwardbias.dev/site/": "blind-probe",
+          "https://forwardbias.dev/social/": "blind-probe",
+          "https://forwardbias.dev/people/": "blind-probe",
+          "https://forwardbias.dev/friends/": "blind-probe",
+          "https://forwardbias.dev/following/": "blind-probe",
+          "https://forwardbias.dev/webring/": "blind-probe",
+          "https://forwardbias.dev/webrings/": "blind-probe",
+          "https://forwardbias.dev/indieweb/": "blind-probe",
+          "https://forwardbias.dev/neighborhood/": "blind-probe",
+          "https://forwardbias.dev/guestbook/": "blind-probe",
+          "https://forwardbias.dev/meta/": "blind-probe",
+          "https://forwardbias.dev/health/": "blind-probe",
+          "https://forwardbias.dev/notes/": "blind-probe",
+          "https://forwardbias.dev/blog/": "blind-probe",
+          "https://forwardbias.dev/weblog/": "blind-probe",
+          "https://forwardbias.dev/writings/": "blind-probe",
+          "https://forwardbias.dev/posts/": "blind-probe",
+          "https://forwardbias.dev/post/": "blind-probe",
+          "https://forwardbias.dev/writing/": "blind-probe",
+          "https://forwardbias.dev/articles/": "blind-probe",
+          "https://forwardbias.dev/article/": "blind-probe",
+          "https://forwardbias.dev/essays/": "blind-probe",
+          "https://forwardbias.dev/journal/": "blind-probe",
+          "https://forwardbias.dev/weeknotes/": "blind-probe",
+          "https://forwardbias.dev/archive/": "blind-probe",
+          "https://forwardbias.dev/work/": "blind-probe",
+          "https://forwardbias.dev/projects/": "blind-probe",
+          "https://forwardbias.dev/portfolio/": "blind-probe",
+          "https://forwardbias.dev/gallery/": "blind-probe",
+          "https://forwardbias.dev/galleries/": "blind-probe",
+          "https://forwardbias.dev/albums/": "blind-probe",
+          "https://forwardbias.dev/photography/": "blind-probe",
+          "https://forwardbias.dev/photos/": "blind-probe",
+          "https://forwardbias.dev/art/": "blind-probe",
+          "https://forwardbias.dev/illustration/": "blind-probe",
+          "https://forwardbias.dev/artwork/": "blind-probe",
+          "https://forwardbias.dev/comics/": "blind-probe",
+          "https://forwardbias.dev/comic/": "blind-probe",
+          "https://forwardbias.dev/webcomics/": "blind-probe",
+          "https://forwardbias.dev/toys/": "blind-probe",
+          "https://forwardbias.dev/toy/": "blind-probe",
+          "https://forwardbias.dev/play/": "blind-probe",
+          "https://forwardbias.dev/reels/": "blind-probe",
+          "https://forwardbias.dev/reel/": "blind-probe",
+          "https://forwardbias.dev/shorts/": "blind-probe",
+          "https://forwardbias.dev/cssbattles/": "blind-probe",
+          "https://forwardbias.dev/cssbattle/": "blind-probe",
+          "https://forwardbias.dev/css-battles/": "blind-probe",
+          "https://forwardbias.dev/music/": "blind-probe",
+          "https://forwardbias.dev/discography/": "blind-probe",
+          "https://forwardbias.dev/tracks/": "blind-probe",
+          "https://forwardbias.dev/podcasts/": "blind-probe",
+          "https://forwardbias.dev/podcast/": "blind-probe",
+          "https://forwardbias.dev/listen/": "blind-probe",
+          "https://forwardbias.dev/videos/": "blind-probe",
+          "https://forwardbias.dev/film/": "blind-probe",
+          "https://forwardbias.dev/animation/": "blind-probe",
+          "https://forwardbias.dev/games/": "blind-probe",
+          "https://forwardbias.dev/game/": "blind-probe",
+          "https://forwardbias.dev/interactive/": "blind-probe",
+          "https://forwardbias.dev/exhibitions/": "blind-probe",
+          "https://forwardbias.dev/design/": "blind-probe",
+          "https://forwardbias.dev/apps/": "blind-probe",
+          "https://forwardbias.dev/software/": "blind-probe",
+          "https://forwardbias.dev/tools/": "blind-probe",
+          "https://forwardbias.dev/books/": "blind-probe",
+          "https://forwardbias.dev/guides/": "blind-probe",
+          "https://forwardbias.dev/resources/": "blind-probe",
+          "https://forwardbias.dev/experiments/": "blind-probe",
+          "https://forwardbias.dev/sounds/": "blind-probe",
+          "https://forwardbias.dev/hustles/": "blind-probe",
+          "https://forwardbias.dev/events/": "blind-probe",
+          "https://forwardbias.dev/shows/": "blind-probe",
+          "https://forwardbias.dev/gigs/": "blind-probe",
+          "https://forwardbias.dev/tour/": "blind-probe",
+          "https://forwardbias.dev/live/": "blind-probe",
+          "https://forwardbias.dev/performances/": "blind-probe",
+          "https://forwardbias.dev/readings/": "blind-probe",
+          "https://forwardbias.dev/workshops/": "blind-probe",
+          "https://forwardbias.dev/study-hall/": "blind-probe",
+          "https://forwardbias.dev/frontend-study-hall/": "blind-probe",
+          "https://forwardbias.dev/front-end-study-hall/": "blind-probe",
+          "https://forwardbias.dev/fresh/": "blind-probe",
+          "https://forwardbias.dev/education/": "blind-probe",
+          "https://forwardbias.dev/learn/": "blind-probe",
+          "https://forwardbias.dev/classes/": "blind-probe",
+          "https://forwardbias.dev/class/": "blind-probe",
+          "https://forwardbias.dev/courses/": "blind-probe",
+          "https://forwardbias.dev/course/": "blind-probe",
+          "https://forwardbias.dev/topics/": "topic-hub",
+          "https://forwardbias.dev/topic/": "topic-hub",
+          "https://forwardbias.dev/tags/": "topic-hub",
+          "https://forwardbias.dev/tag/": "topic-hub",
+          "https://forwardbias.dev/categories/": "topic-hub",
+          "https://forwardbias.dev/category/": "topic-hub",
+          "https://forwardbias.dev/blank/": "content-index",
+          "https://forwardbias.dev/studio-index/": "content-index",
+          "https://forwardbias.dev/tags/career/": "sitemap",
+          "https://forwardbias.dev/tags/creative-process/": "sitemap",
+          "https://forwardbias.dev/ideas/disentangling-career-from-creativity/": "sitemap",
+          "https://forwardbias.dev/categories/ideas/": "sitemap",
+          "https://forwardbias.dev/tags/fawm/": "sitemap",
+          "https://forwardbias.dev/tags/music/": "sitemap",
+          "https://forwardbias.dev/ideas/february-album-writing-month/": "sitemap",
+          "https://forwardbias.dev/tags/ai/": "sitemap",
+          "https://forwardbias.dev/tags/creative-coding/": "sitemap",
+          "https://forwardbias.dev/tags/education/": "sitemap",
+          "https://forwardbias.dev/tags/micro-software/": "sitemap",
+          "https://forwardbias.dev/ideas/personal-micro-software/": "sitemap",
+          "https://forwardbias.dev/tags/blue/": "sitemap",
+          "https://forwardbias.dev/tags/green/": "sitemap",
+          "https://forwardbias.dev/posts/post-3/": "sitemap",
+          "https://forwardbias.dev/tags/red/": "sitemap",
+          "https://forwardbias.dev/posts/post-2/": "sitemap",
+          "https://forwardbias.dev/posts/post-1/": "sitemap"
+        }
+      },
+      "crawled_at": "2026-11-02T08:07:50.158Z"
+    },
     {
       "origin": "https://joshbeard.com",
       "domain": "joshbeard.com",
@@ -17,6 +344,10 @@
         }
       ],
       "community_topics": [
+        {
+          "slug": "blue",
+          "label": "blue"
+        },
         {
           "slug": "isolation",
           "label": "isolation"
@@ -35,7 +366,7 @@
         "title": "Photos",
         "summary": "Photo albums from Colorado, travel, cycling, and everyday life.",
         "published_at": "",
-        "observed_at": "2026-11-01T23:58:55.473Z",
+        "observed_at": "2026-11-02T08:07:50.158Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -521,7 +852,7 @@
           "https://joshbeard.com/me": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T23:58:55.473Z"
+      "crawled_at": "2026-11-02T08:07:50.158Z"
     },
     {
       "origin": "https://joshghent.com",
@@ -726,6 +1057,10 @@
           "label": "programming"
         },
         {
+          "slug": "red",
+          "label": "red"
+        },
+        {
           "slug": "review",
           "label": "reviews"
         },
@@ -791,7 +1126,7 @@
         "title": "11ty or Bust",
         "summary": "The story of how I migrated my site from Gatsby to 11ty",
         "published_at": "2024-01-03T00:00:00.000Z",
-        "observed_at": "2026-11-01T23:58:55.473Z",
+        "observed_at": "2026-11-02T08:07:50.158Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -1167,7 +1502,7 @@
           "https://joshghent.com/blog": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T23:58:55.473Z"
+      "crawled_at": "2026-11-02T08:07:50.158Z"
     },
     {
       "origin": "https://joshgr.com",
@@ -1205,7 +1540,7 @@
         "title": "Projects — Josh Grant",
         "summary": "Exploring systems",
         "published_at": "",
-        "observed_at": "2026-11-01T23:58:55.473Z",
+        "observed_at": "2026-11-02T08:07:50.158Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -1416,7 +1751,7 @@
           "https://joshgr.com/wizardly-words/": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T23:58:55.473Z"
+      "crawled_at": "2026-11-02T08:07:50.158Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -1648,6 +1983,10 @@
           "label": "gpt 4"
         },
         {
+          "slug": "green",
+          "label": "green"
+        },
+        {
           "slug": "habit",
           "label": "habits"
         },
@@ -1821,11 +2160,15 @@
         },
         {
           "slug": "recipe",
-          "label": "recipe"
+          "label": "recipes"
         },
         {
           "slug": "recommendation",
           "label": "recommendations"
+        },
+        {
+          "slug": "red",
+          "label": "red"
         },
         {
           "slug": "relationship",
@@ -1901,7 +2244,7 @@
         },
         {
           "slug": "world",
-          "label": "worlds"
+          "label": "world"
         },
         {
           "slug": "writing",
@@ -1921,7 +2264,7 @@
         "title": "📸: <a href=\"/\">Josh Müller</a>",
         "summary": "📸: Josh Müller",
         "published_at": "",
-        "observed_at": "2026-11-01T23:58:55.473Z",
+        "observed_at": "2026-11-02T08:07:50.158Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -1947,8 +2290,8 @@
         }
       ],
       "coverage": {
-        "pages_discovered": 292,
-        "pages_fetched": 292,
+        "pages_discovered": 293,
+        "pages_fetched": 293,
         "fetch_limit": null,
         "limit_reached": false,
         "selection_strategy": "uncapped-site-crawl-v1",
@@ -2321,56 +2664,9 @@
           "https://joshmuller.ca/category/": "topic-hub",
           "https://joshmuller.ca/blank/": "content-index",
           "https://joshmuller.ca/studio-index/": "content-index",
-          "https://joshmuller.ca/categories/recipe/": "sitemap",
-          "https://joshmuller.ca/recipes/": "sitemap",
-          "https://joshmuller.ca/docs/": "sitemap",
-          "https://joshmuller.ca/es/": "sitemap",
-          "https://joshmuller.ca/categories/blog/": "sitemap",
-          "https://joshmuller.ca/tr/": "sitemap",
-          "https://joshmuller.ca/tags/nutrition/": "sitemap",
-          "https://joshmuller.ca/tags/fitness/": "sitemap",
-          "https://joshmuller.ca/tags/health/": "sitemap",
-          "https://joshmuller.ca/tags/nutrici%C3%B3n/": "sitemap",
-          "https://joshmuller.ca/tags/rhythms/": "sitemap",
-          "https://joshmuller.ca/categories/tweets/": "sitemap",
-          "https://joshmuller.ca/tweets/": "sitemap",
-          "https://joshmuller.ca/categories/quotes/": "sitemap",
-          "https://joshmuller.ca/tags/privacy-policy/": "sitemap",
-          "https://joshmuller.ca/tags/work/": "sitemap",
-          "https://joshmuller.ca/tags/now/": "sitemap",
-          "https://joshmuller.ca/tags/ai/": "sitemap",
-          "https://joshmuller.ca/tags/linux/": "sitemap",
-          "https://joshmuller.ca/tags/llm/": "sitemap",
-          "https://joshmuller.ca/tags/open-source/": "sitemap",
-          "https://joshmuller.ca/tags/productivity/": "sitemap",
-          "https://joshmuller.ca/tags/forced-alignment/": "sitemap",
-          "https://joshmuller.ca/tags/language-learning/": "sitemap",
-          "https://joshmuller.ca/tags/nlp/": "sitemap",
-          "https://joshmuller.ca/categories/case-study/": "sitemap",
-          "https://joshmuller.ca/tags/gpt-4/": "sitemap",
-          "https://joshmuller.ca/categories/tutorial/": "sitemap",
-          "https://joshmuller.ca/tags/rss/": "sitemap",
-          "https://joshmuller.ca/tags/technology/": "sitemap",
-          "https://joshmuller.ca/categories/tutorials/": "sitemap",
-          "https://joshmuller.ca/tags/lifestyle/": "sitemap",
-          "https://joshmuller.ca/tags/friends/": "sitemap",
-          "https://joshmuller.ca/categories/projects/": "sitemap",
-          "https://joshmuller.ca/tags/favorite/": "sitemap",
-          "https://joshmuller.ca/tags/first/": "sitemap",
-          "https://joshmuller.ca/tags/list/": "sitemap",
-          "https://joshmuller.ca/tags/x-is-cool/": "sitemap",
-          "https://joshmuller.ca/categories/articles/": "sitemap",
-          "https://joshmuller.ca/tags/software/": "sitemap",
-          "https://joshmuller.ca/tags/habits/": "sitemap",
-          "https://joshmuller.ca/categories/-photos/": "sitemap",
-          "https://joshmuller.ca/tags/social-media/": "sitemap",
-          "https://joshmuller.ca/categories/book-reviews/": "sitemap",
-          "https://joshmuller.ca/tags/digital-minimalism/": "sitemap",
-          "https://joshmuller.ca/archives/": "sitemap",
-          "https://joshmuller.ca/search/": "sitemap",
-          "https://joshmuller.ca/series/": "sitemap",
           "https://joshmuller.ca/es/docs/creador-de-planes-de-peso-saludable/": "sitemap",
           "https://joshmuller.ca/es/docs/": "sitemap",
+          "https://joshmuller.ca/es/": "sitemap",
           "https://joshmuller.ca/es/categories/": "sitemap",
           "https://joshmuller.ca/es/categories/recipe/": "sitemap",
           "https://joshmuller.ca/es/recipes/": "sitemap",
@@ -2382,26 +2678,34 @@
           "https://joshmuller.ca/es/series/": "sitemap",
           "https://joshmuller.ca/tr/categories/blog/": "sitemap",
           "https://joshmuller.ca/tr/categories/": "sitemap",
+          "https://joshmuller.ca/tr/": "sitemap",
           "https://joshmuller.ca/tr/writings/": "sitemap",
           "https://joshmuller.ca/tr/selam-soyle/": "sitemap",
           "https://joshmuller.ca/tr/series/": "sitemap",
           "https://joshmuller.ca/tr/tags/": "sitemap",
+          "https://joshmuller.ca/tags/work/": "content-index",
           "https://joshmuller.ca/search": "content-index",
           "https://joshmuller.ca/say-hi": "content-index",
           "https://joshmuller.ca/subscribe": "content-index",
           "https://joshmuller.ca/writings": "content-index",
           "https://joshmuller.ca/writings/page/2/": "content-index",
+          "https://joshmuller.ca/search/": "content-index",
+          "https://joshmuller.ca/categories/tutorials/": "content-index",
+          "https://joshmuller.ca/categories/blog/": "content-index",
+          "https://joshmuller.ca/categories/articles/": "content-index",
           "https://joshmuller.ca/categories/blog": "content-index",
           "https://joshmuller.ca/categories/quotes": "content-index",
           "https://joshmuller.ca/categories/tutorials": "content-index",
           "https://joshmuller.ca/email-blog-subscribe": "content-index",
           "https://joshmuller.ca/feed": "content-index",
+          "https://joshmuller.ca/tags/now/": "content-index",
           "https://joshmuller.ca/dailies": "content-index",
+          "https://joshmuller.ca/tags/first/": "content-index",
           "https://joshmuller.ca/cal": "content-index",
           "https://joshmuller.ca/contact@joshmuller.ca.asc": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T23:58:55.473Z"
+      "crawled_at": "2026-11-02T08:07:50.158Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -2436,7 +2740,7 @@
         },
         {
           "slug": "recipe",
-          "label": "recipe"
+          "label": "recipes"
         }
       ],
       "recent_content": {
@@ -2444,7 +2748,7 @@
         "title": "What's New",
         "summary": "Recent writing from the last two weeks and the latest Showcase creative works from independent websites on the Joshternet.",
         "published_at": "",
-        "observed_at": "2026-11-01T23:58:55.473Z",
+        "observed_at": "2026-11-02T08:07:50.158Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -3119,7 +3423,7 @@
           "https://joshternet.org/cdn-cgi/l/email-protection": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T23:58:55.473Z"
+      "crawled_at": "2026-11-02T08:07:50.158Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -3333,7 +3637,7 @@
         "title": "I taught a robot to detect Joshes",
         "summary": "This journey starts like most of the things I've been doing this year, as an experiment to run a website 100% unattended with an agent. Ideally this post won't go down as an epitaph in a future where robots hunted down unsuspecting humans named Josh. I'm aware of \"claws\" and I know I could probably just boot up Claude Code with a /goal or /loop prompt like: build and maintain an awesome website, a",
         "published_at": "2026-08-16T00:00:00.000Z",
-        "observed_at": "2026-11-01T23:58:55.473Z",
+        "observed_at": "2026-11-02T08:07:50.158Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -4642,7 +4946,7 @@
           "https://joshtronic.com/key.asc": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T23:58:55.473Z"
+      "crawled_at": "2026-11-02T08:07:50.158Z"
     },
     {
       "origin": "https://joshua.seigler.net",
@@ -4718,6 +5022,10 @@
           "label": "philosophy"
         },
         {
+          "slug": "red",
+          "label": "red"
+        },
+        {
           "slug": "selfhosting",
           "label": "selfhosting"
         },
@@ -4755,7 +5063,7 @@
         "title": "/books",
         "summary": "I’m Joshua Seigler, a software engineer since 2010 and a living being since the 1980s. I’ve watched technology advance from dial-up and Geocities pages, to federated social media and decentralized autonomous organizations, to people literally talking to computers (a lot!).",
         "published_at": "",
-        "observed_at": "2026-11-01T23:58:55.473Z",
+        "observed_at": "2026-11-02T08:07:50.158Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -5029,7 +5337,7 @@
           "https://joshua.seigler.net/music/%C3%8Engerul%20a%20Strigat%20-%20Varlaam%20-%20glasul%203.pdf": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T23:58:55.473Z"
+      "crawled_at": "2026-11-02T08:07:50.158Z"
     },
     {
       "origin": "https://joshuadrake.org",
@@ -5062,7 +5370,7 @@
         "title": "Projects:",
         "summary": "",
         "published_at": "",
-        "observed_at": "2026-11-01T23:58:55.473Z",
+        "observed_at": "2026-11-02T08:07:50.158Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -5270,7 +5578,6 @@
           "https://joshuadrake.org/blank/": "content-index",
           "https://joshuadrake.org/studio-index/": "content-index",
           "https://joshuadrake.org/projects.html": "content-index",
-          "https://joshuadrake.org/blog": "content-index",
           "https://joshuadrake.org/index.html": "content-index",
           "https://joshuadrake.org/articles/author/theodore-kaczynski": "content-index",
           "https://joshuadrake.org/articles/author/st.-athanasius": "content-index",
@@ -5309,13 +5616,13 @@
           "https://joshuadrake.org/loc8": "content-index",
           "https://joshuadrake.org/8bip": "content-index",
           "https://joshuadrake.org/turboelectriccessna": "content-index",
-          "https://joshuadrake.org/projects/resloadbank/": "content-index",
           "https://joshuadrake.org/projects/cessnaretrofit/": "content-index",
           "https://joshuadrake.org/projects/ingersollrandcompressor/": "content-index",
+          "https://joshuadrake.org/projects/resloadbank/": "content-index",
           "https://joshuadrake.org/projects/n12rebuild/": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T23:58:55.473Z",
+      "crawled_at": "2026-11-02T08:07:50.158Z",
       "portfolio": {
         "url": "https://joshuadrake.org/projects/",
         "work_count": 26,
@@ -5351,7 +5658,7 @@
         "title": "Work, Joshua Kim",
         "summary": "Eight projects by Joshua Kim: internal tools, interactive and AR work, app case studies, and graphic design.",
         "published_at": "",
-        "observed_at": "2026-11-01T23:58:55.473Z",
+        "observed_at": "2026-11-02T08:07:50.158Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -5570,7 +5877,7 @@
           "https://joshuakim.studio/about": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T23:58:55.473Z"
+      "crawled_at": "2026-11-02T08:07:50.158Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -6364,7 +6671,7 @@
         },
         {
           "slug": "world",
-          "label": "worlds"
+          "label": "world"
         },
         {
           "slug": "world-mental-health-day",
@@ -6388,7 +6695,7 @@
         "title": "Experiments",
         "summary": "Web experiments and playground shells from Joshua Morris—toys, tools, and interface ideas built to see whether they can work in a browser.",
         "published_at": "",
-        "observed_at": "2026-11-01T23:58:55.473Z",
+        "observed_at": "2026-11-02T08:07:50.158Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -6930,7 +7237,7 @@
           "https://joshuamorris.info/feeds/friends.opml": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T23:58:55.473Z"
+      "crawled_at": "2026-11-02T08:07:50.158Z"
     },
     {
       "origin": "https://joshuapsteele.com",
@@ -7691,6 +7998,10 @@
           "label": "reconciliation"
         },
         {
+          "slug": "red",
+          "label": "red"
+        },
+        {
           "slug": "refugee",
           "label": "refugees"
         },
@@ -7892,7 +8203,7 @@
         "title": "Permalink",
         "summary": "Unable to load recent saved links. Visit LinkLog",
         "published_at": "",
-        "observed_at": "2026-11-01T23:58:55.473Z",
+        "observed_at": "2026-11-02T08:07:50.158Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -8741,7 +9052,7 @@
           "https://joshuapsteele.com/wishlist": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T23:58:55.473Z"
+      "crawled_at": "2026-11-02T08:07:50.158Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -8974,7 +9285,7 @@
         "title": "Do we need 'agentic identity'?",
         "summary": "Agents are here, there, and everywhere, growing in numbers at a pace between fast and breakneck, generating or completing work at some other velocity, and poised to change the world entirely or, like, not much at all. Something must be done.",
         "published_at": "2025-10-14T00:00:00.000Z",
-        "observed_at": "2026-11-01T23:58:55.473Z",
+        "observed_at": "2026-11-02T08:07:50.158Z",
         "content_type": "article",
         "language": "en-us",
         "dir": "",
@@ -9489,7 +9800,7 @@
           "https://www.joshcanhelp.com/eleventy-custom-content-type-collections": "content-index"
         }
       },
-      "crawled_at": "2026-11-01T23:58:55.473Z"
+      "crawled_at": "2026-11-02T08:07:50.158Z"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -9664,6 +9975,10 @@
           "label": "recruitment"
         },
         {
+          "slug": "red",
+          "label": "red"
+        },
+        {
           "slug": "research",
           "label": "research"
         },
@@ -9709,7 +10024,7 @@
         "title": "Work — Joshua Baker",
         "summary": "Selected case studies by Joshua Baker, plus the full archive — 140+ projects across two decades of design and engineering.",
         "published_at": "",
-        "observed_at": "2026-11-01T23:58:55.473Z",
+        "observed_at": "2026-11-02T08:07:50.158Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -9975,7 +10290,7 @@
           "https://www.joshuabaker.com/work/the-dots/": "sitemap"
         }
       },
-      "crawled_at": "2026-11-01T23:58:55.473Z",
+      "crawled_at": "2026-11-02T08:07:50.158Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,

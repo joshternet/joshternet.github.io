@@ -1,5 +1,56 @@
 [
   {
+    "origin": "https://forwardbias.dev",
+    "domain": "forwardbias.dev",
+    "identity": "affirmed",
+    "declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "initial_declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "first_participated_at": "2026-11-02T03:57:16.192677Z",
+    "latest_declaration_check_at": "2026-11-02T03:57:16.192677Z",
+    "latest_declaration_check_outcome": "valid",
+    "title": "Forward Bias",
+    "description": "Ramblings and experiments from a recovering middle school teacher. Equity, joy, and agency in education through tech, music, arts. Who knows what comes next.",
+    "screenshot": "/assets/network/sites/3d4308b94d6648755d20755b394c2c6dca25feaf8d75f3823b0509fa27b378ab.webp",
+    "embeddable": true,
+    "frame_reason": "allowed",
+    "captured_at": "2026-11-02T08:05:38.498Z",
+    "feeds": [
+      {
+        "url": "https://forwardbias.dev/index.xml",
+        "type": "application/rss+xml",
+        "title": "Probed feed"
+      }
+    ],
+    "elsewhere": [
+      {
+        "url": "https://github.com/mrjoshida",
+        "network": "github",
+        "label": "GitHub"
+      },
+      {
+        "url": "https://bsky.app/profile/fwdbias.xyz",
+        "network": "bluesky",
+        "label": "Bluesky"
+      },
+      {
+        "url": "https://creativecodingbook.com/",
+        "network": "web",
+        "label": "creativecodingbook.com"
+      },
+      {
+        "url": "https://tideflats.com/",
+        "network": "web",
+        "label": "tideflats.com"
+      }
+    ]
+  },
+  {
     "origin": "https://joshbeard.com",
     "domain": "joshbeard.com",
     "identity": "affirmed",
@@ -12,7 +63,7 @@
       "josh": true
     },
     "first_participated_at": "2026-10-30T20:06:00.676433Z",
-    "latest_declaration_check_at": "2026-11-01T05:39:02.284429Z",
+    "latest_declaration_check_at": "2026-11-02T05:41:43.958958Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Josh Beard",
     "description": "Josh Beard works on infrastructure, developer workflows, and software delivery systems",
@@ -41,7 +92,7 @@
       "josh": true
     },
     "first_participated_at": "2026-10-04T14:16:33.245656Z",
-    "latest_declaration_check_at": "2026-11-01T07:44:25.330253Z",
+    "latest_declaration_check_at": "2026-11-02T07:44:55.705754Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Josh Ghent",
     "description": "Writing on software engineering, engineering leadership, and building products, by Josh Ghent.",
@@ -380,7 +431,7 @@
       "josh": true
     },
     "first_participated_at": "2026-09-06T22:51:38.044013Z",
-    "latest_declaration_check_at": "2026-11-01T07:10:28.382328Z",
+    "latest_declaration_check_at": "2026-11-02T07:13:38.337383Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Joshua Morris",
     "description": "I build software, write about what I’m learning, and explore ideas that sit at the intersection of technology, freedom, and curiosity.",
@@ -530,7 +581,7 @@
       "josh": true
     },
     "first_participated_at": "2026-09-30T23:10:31.341572Z",
-    "latest_declaration_check_at": "2026-11-01T06:37:22.02991Z",
+    "latest_declaration_check_at": "2026-11-02T06:37:55.360732Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Josh Cunningham",
     "description": "I’ve been working on the web since 2007 as an architect, engineer, writer, designer, strategist, user interface consultant, team lead, project manager, and product builder. I’ve been working IRL since 2010 as a husband and since 2013 as a dad. I like riding bikes, reading books, writing code and words, and eating good food.",

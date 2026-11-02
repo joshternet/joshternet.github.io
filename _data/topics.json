@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T23:58:55.473Z",
-  "community_count": 451,
+  "generated_at": "2026-11-02T08:07:50.158Z",
+  "community_count": 457,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
@@ -238,8 +238,26 @@
     {
       "slug": "ai",
       "label": "ai",
-      "member_count": 8,
+      "member_count": 9,
       "sites": [
+        {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://forwardbias.dev/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            },
+            {
+              "url": "https://forwardbias.dev/tags/ai/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        },
         {
           "origin": "https://joshghent.com",
           "domain": "joshghent.com",
@@ -474,7 +492,7 @@
         "topic-hub:page"
       ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-11-01T23:37:56.256Z",
+      "last_changed_at": "2026-11-02T08:07:50.158Z",
       "active": true
     },
     {
@@ -2223,6 +2241,77 @@
       ]
     },
     {
+      "slug": "blue",
+      "label": "blue",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://forwardbias.dev/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            },
+            {
+              "url": "https://forwardbias.dev/tags/blue/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshbeard.com",
+          "domain": "joshbeard.com",
+          "title": "Josh Beard",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshbeard.com/photos/2017/20170819-blue-lake-3_jpg.html",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshbeard.com/photos/2017/20170819-blue-lake-5_jpg.html",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshbeard.com/photos/2019/2019-roadtrip-01_jpeg.html",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshbeard.com/workouts",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshbeard.com/workouts/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:link", "topic-hub:page", "visible-text"],
+      "first_seen_at": "2026-11-02T08:07:50.158Z",
+      "last_changed_at": "2026-11-02T08:07:50.158Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://www.joshuabaker.com",
+          "domain": "www.joshuabaker.com",
+          "title": "Joshua Baker",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
+    },
+    {
       "slug": "boardgame",
       "label": "boardgames",
       "member_count": 1,
@@ -2497,6 +2586,13 @@
       "last_changed_at": "2026-11-01T23:37:56.256Z",
       "active": true,
       "related_discoveries": [
+        {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
         {
           "origin": "https://www.joshcanhelp.com",
           "domain": "www.joshcanhelp.com",
@@ -2996,8 +3092,26 @@
     {
       "slug": "career",
       "label": "career",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
+        {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://forwardbias.dev/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            },
+            {
+              "url": "https://forwardbias.dev/tags/career/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -3095,7 +3209,7 @@
         "topic-hub:page"
       ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-11-01T23:37:56.256Z",
+      "last_changed_at": "2026-11-02T08:07:50.158Z",
       "active": true,
       "related_discoveries": [
         {
@@ -3950,6 +4064,13 @@
       "active": true,
       "related_discoveries": [
         {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
           "title": "Josh Sherman",
@@ -4082,6 +4203,13 @@
       "last_changed_at": "2026-11-01T23:37:56.256Z",
       "active": true,
       "related_discoveries": [
+        {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -4259,6 +4387,13 @@
       "last_changed_at": "2026-11-01T23:37:56.256Z",
       "active": true,
       "related_discoveries": [
+        {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
         {
           "origin": "https://joshua.seigler.net",
           "domain": "joshua.seigler.net",
@@ -4731,7 +4866,7 @@
               "source": "catalog-match"
             },
             {
-              "url": "https://joshmuller.ca/writings/2023/never-do-the-same-task-thrice/",
+              "url": "https://joshmuller.ca/writings/2024/now-with-recipes/",
               "title": "",
               "source": "visible-text"
             },
@@ -5548,8 +5683,26 @@
     {
       "slug": "creative-coding",
       "label": "creative coding",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://forwardbias.dev/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            },
+            {
+              "url": "https://forwardbias.dev/tags/creative-coding/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        },
         {
           "origin": "https://joshuakim.studio",
           "domain": "joshuakim.studio",
@@ -5592,9 +5745,14 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "topic-hub:link", "visible-text"],
+      "sources": [
+        "microformat:p-category",
+        "topic-hub:link",
+        "topic-hub:page",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
-      "last_changed_at": "2026-11-01T10:03:50.284Z",
+      "last_changed_at": "2026-11-02T08:07:50.158Z",
       "active": true
     },
     {
@@ -5654,6 +5812,35 @@
       "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
+      "active": true
+    },
+    {
+      "slug": "creative-process",
+      "label": "creative process",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://forwardbias.dev/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            },
+            {
+              "url": "https://forwardbias.dev/tags/creative-process/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:link", "topic-hub:page"],
+      "first_seen_at": "2026-11-02T08:07:50.158Z",
+      "last_changed_at": "2026-11-02T08:07:50.158Z",
       "active": true
     },
     {
@@ -7512,8 +7699,26 @@
     {
       "slug": "education",
       "label": "education",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
+        {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://forwardbias.dev/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            },
+            {
+              "url": "https://forwardbias.dev/tags/education/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -7606,7 +7811,7 @@
         "topic-hub:page"
       ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-10-28T21:05:12.557Z",
+      "last_changed_at": "2026-11-02T08:07:50.158Z",
       "active": true,
       "related_discoveries": [
         {
@@ -7776,6 +7981,13 @@
       "last_changed_at": "2026-11-01T10:42:20.299Z",
       "active": true,
       "related_discoveries": [
+        {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -8831,6 +9043,35 @@
       "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
+      "active": true
+    },
+    {
+      "slug": "fawm",
+      "label": "fawm",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://forwardbias.dev/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            },
+            {
+              "url": "https://forwardbias.dev/tags/fawm/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:link", "topic-hub:page"],
+      "first_seen_at": "2026-11-02T08:07:50.158Z",
+      "last_changed_at": "2026-11-02T08:07:50.158Z",
       "active": true
     },
     {
@@ -10566,6 +10807,82 @@
       "active": true
     },
     {
+      "slug": "green",
+      "label": "green",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://forwardbias.dev/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            },
+            {
+              "url": "https://forwardbias.dev/tags/green/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh Müller",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/recipes/meals/ajiaco-santafereno/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/meals/ginger-beef/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/sauces/bone-broth/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/sauces/salsa-dads-recipe/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/4-days-to-save-6-million-lives/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/writings/2023/us-and-them/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        }
+      ],
+      "sources": ["catalog-match", "topic-hub:link", "topic-hub:page"],
+      "first_seen_at": "2026-11-02T08:07:50.158Z",
+      "last_changed_at": "2026-11-02T08:07:50.158Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshbeard.com",
+          "domain": "joshbeard.com",
+          "title": "Josh Beard",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
+    },
+    {
       "slug": "grief",
       "label": "grief",
       "member_count": 1,
@@ -11110,6 +11427,13 @@
       "last_changed_at": "2026-11-01T23:37:56.256Z",
       "active": true,
       "related_discoveries": [
+        {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -13934,12 +14258,12 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
+              "url": "https://joshmuller.ca/writings/2024/now-with-recipes/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshmuller.ca/writings/2024/translation-workflow/",
+              "url": "https://joshmuller.ca/writings/2024/self-hosting-is-cool/",
               "title": "",
               "source": "visible-text"
             },
@@ -14310,6 +14634,13 @@
       "last_changed_at": "2026-11-01T23:37:56.256Z",
       "active": true,
       "related_discoveries": [
+        {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
         {
           "origin": "https://joshghent.com",
           "domain": "joshghent.com",
@@ -15918,6 +16249,35 @@
       ]
     },
     {
+      "slug": "micro-software",
+      "label": "micro software",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://forwardbias.dev/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            },
+            {
+              "url": "https://forwardbias.dev/tags/micro-software/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        }
+      ],
+      "sources": ["topic-hub:link", "topic-hub:page"],
+      "first_seen_at": "2026-11-02T08:07:50.158Z",
+      "last_changed_at": "2026-11-02T08:07:50.158Z",
+      "active": true
+    },
+    {
       "slug": "ministry",
       "label": "ministry",
       "member_count": 1,
@@ -16329,8 +16689,26 @@
     {
       "slug": "music",
       "label": "music",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://forwardbias.dev/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            },
+            {
+              "url": "https://forwardbias.dev/tags/music/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        },
         {
           "origin": "https://joshuapsteele.com",
           "domain": "joshuapsteele.com",
@@ -16367,7 +16745,7 @@
       ],
       "sources": ["article:tag", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-11-01T23:37:56.256Z",
-      "last_changed_at": "2026-11-01T23:37:56.256Z",
+      "last_changed_at": "2026-11-02T08:07:50.158Z",
       "active": true,
       "related_discoveries": [
         {
@@ -20110,7 +20488,7 @@
     },
     {
       "slug": "recipe",
-      "label": "recipe",
+      "label": "recipes",
       "member_count": 2,
       "sites": [
         {
@@ -20390,6 +20768,125 @@
       "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T11:57:33.407Z",
       "last_changed_at": "2026-10-03T11:57:33.407Z",
+      "active": true
+    },
+    {
+      "slug": "red",
+      "label": "red",
+      "member_count": 6,
+      "sites": [
+        {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://forwardbias.dev/tags/",
+              "title": "",
+              "source": "topic-hub:link"
+            },
+            {
+              "url": "https://forwardbias.dev/tags/red/",
+              "title": "",
+              "source": "topic-hub:page"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Josh Ghent",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/resumes/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh Müller",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/recipes/meals/falafel/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/meals/super-veggie/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/sauces/bone-broth/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/sauces/salsa-dads-recipe/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Joshua Seigler",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshua.seigler.net/recipes/red-cabbage-confit/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshuapsteele.com",
+          "domain": "joshuapsteele.com",
+          "title": "Joshua P. Steele",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshuapsteele.com/notes/2026-07-01-2134/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshuabaker.com",
+          "domain": "www.joshuabaker.com",
+          "title": "Joshua Baker",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuabaker.com/work/?work=red-stone-red-stone-2011",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/banked/appendix/banked-comic-relief-red-nose-day/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/banked/appendix/banked-lisa-scott-ceo-europe/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        }
+      ],
+      "sources": ["catalog-match", "topic-hub:link", "topic-hub:page"],
+      "first_seen_at": "2026-11-02T08:07:50.158Z",
+      "last_changed_at": "2026-11-02T08:07:50.158Z",
       "active": true
     },
     {
@@ -21591,8 +22088,26 @@
     {
       "slug": "school",
       "label": "schools",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://forwardbias.dev/about/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://forwardbias.dev/ideas/disentangling-career-from-creativity/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -21640,9 +22155,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "visible-text"],
+      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
-      "last_changed_at": "2026-11-01T23:37:56.256Z",
+      "last_changed_at": "2026-11-02T08:07:50.158Z",
       "active": true
     },
     {
@@ -22912,8 +23427,21 @@
     {
       "slug": "software",
       "label": "software",
-      "member_count": 6,
+      "member_count": 7,
       "sites": [
+        {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshghent.com",
           "domain": "joshghent.com",
@@ -23100,13 +23628,14 @@
       ],
       "sources": [
         "article:tag",
+        "catalog-match",
         "microformat:p-category",
         "topic-hub:link",
         "topic-hub:page",
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-11-01T23:37:56.256Z",
+      "last_changed_at": "2026-11-02T08:07:50.158Z",
       "active": true,
       "related_discoveries": [
         {
@@ -23608,6 +24137,13 @@
       "last_changed_at": "2026-11-01T23:37:56.256Z",
       "active": true,
       "related_discoveries": [
+        {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
         {
           "origin": "https://joshbeard.com",
           "domain": "joshbeard.com",
@@ -24484,6 +25020,13 @@
       "active": true,
       "related_discoveries": [
         {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
           "origin": "https://joshghent.com",
           "domain": "joshghent.com",
           "title": "Josh Ghent",
@@ -25008,11 +25551,16 @@
               "url": "https://joshmuller.ca/categories/",
               "title": "",
               "source": "topic-hub:link"
+            },
+            {
+              "url": "https://joshmuller.ca/categories/tweets/",
+              "title": "",
+              "source": "topic-hub:page"
             }
           ]
         }
       ],
-      "sources": ["article:section", "topic-hub:link"],
+      "sources": ["article:section", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-10-12T18:51:53.092Z",
       "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
@@ -26171,7 +26719,7 @@
     },
     {
       "slug": "world",
-      "label": "worlds",
+      "label": "world",
       "member_count": 2,
       "sites": [
         {
@@ -26246,6 +26794,13 @@
       "last_changed_at": "2026-11-01T10:42:20.299Z",
       "active": true,
       "related_discoveries": [
+        {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
         {
           "origin": "https://joshgr.com",
           "domain": "joshgr.com",
@@ -26483,8 +27038,21 @@
     {
       "slug": "writing",
       "label": "writing",
-      "member_count": 4,
+      "member_count": 5,
       "sites": [
+        {
+          "origin": "https://forwardbias.dev",
+          "domain": "forwardbias.dev",
+          "title": "Forward Bias",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://forwardbias.dev/ideas/february-album-writing-month/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshghent.com",
           "domain": "joshghent.com",
@@ -26672,7 +27240,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-11-01T23:37:56.256Z",
+      "last_changed_at": "2026-11-02T08:07:50.158Z",
       "active": true,
       "related_discoveries": [
         {
@@ -26856,13 +27424,6 @@
       "last_changed_at": "2026-11-01T23:37:56.256Z",
       "active": true,
       "related_discoveries": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
