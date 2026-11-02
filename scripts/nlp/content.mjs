@@ -32,6 +32,18 @@ const CREATIVE_WORK_PATH =
   /\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)\/.+/i;
 
 /**
+ * First regex capture group, or empty string when absent.
+ * Avoids optional-chaining index branches that Node coverage reports flakily.
+ * @param {string} text
+ * @param {RegExp} pattern
+ * @returns {string}
+ */
+function firstCapture(text, pattern) {
+  const match = text.match(pattern);
+  return match && match[1] ? match[1] : "";
+}
+
+/**
  * Prefers entry-level language, then channel/feed language.
  * @param {string} xml
  * @param {string} chunk
@@ -40,8 +52,8 @@ const CREATIVE_WORK_PATH =
  */
 function languageFromRssOrAtom(xml, chunk, isAtom) {
   const entryLang =
-    chunk.match(/\bxml:lang=["']([^"']+)["']/i)?.[1] ||
-    chunk.match(/\blang=["']([^"']+)["']/i)?.[1] ||
+    firstCapture(chunk, /\bxml:lang=["']([^"']+)["']/i) ||
+    firstCapture(chunk, /\blang=["']([^"']+)["']/i) ||
     "";
   const fromEntry = normalizeLanguageTag(entryLang);
 
@@ -51,14 +63,14 @@ function languageFromRssOrAtom(xml, chunk, isAtom) {
 
   if (isAtom) {
     return normalizeLanguageTag(
-      xml.match(/<feed\b[^>]*\bxml:lang=["']([^"']+)["']/i)?.[1] ||
-        xml.match(/<feed\b[^>]*\blang=["']([^"']+)["']/i)?.[1] ||
+      firstCapture(xml, /<feed\b[^>]*\bxml:lang=["']([^"']+)["']/i) ||
+        firstCapture(xml, /<feed\b[^>]*\blang=["']([^"']+)["']/i) ||
         "",
     );
   }
 
   return normalizeLanguageTag(
-    xml.match(/<language[^>]*>([\s\S]*?)<\/language>/i)?.[1] || "",
+    firstCapture(xml, /<language[^>]*>([\s\S]*?)<\/language>/i) || "",
   );
 }
 
@@ -307,8 +319,8 @@ export function imageDimensionsFromAttrs(attrs) {
   }
 
   return {
-    width: positiveIntAttr(attrs.match(/\bwidth=["']?(\d+)/i)?.[1]),
-    height: positiveIntAttr(attrs.match(/\bheight=["']?(\d+)/i)?.[1]),
+    width: positiveIntAttr(firstCapture(attrs, /\bwidth=["']?(\d+)/i)),
+    height: positiveIntAttr(firstCapture(attrs, /\bheight=["']?(\d+)/i)),
   };
 }
 
@@ -371,9 +383,9 @@ export function feedImageFromXml(chunk, feedUrl) {
 
   for (const match of chunk.matchAll(/<enclosure\b([^>]*)\/?>/gi)) {
     const attrs = match[1] || "";
-    const type = attrs.match(/\btype=["']([^"']+)["']/i)?.[1] || "";
+    const type = firstCapture(attrs, /\btype=["']([^"']+)["']/i) || "";
     const abs = absoluteHttpsImageUrl(
-      attrs.match(/\burl=["']([^"']+)["']/i)?.[1],
+      firstCapture(attrs, /\burl=["']([^"']+)["']/i),
       feedUrl,
     );
     const { width, height } = imageDimensionsFromAttrs(attrs);
@@ -387,10 +399,10 @@ export function feedImageFromXml(chunk, feedUrl) {
     /<(?:media:thumbnail|media:content)\b([^>]*)\/?>/gi,
   )) {
     const attrs = match[1] || "";
-    const medium = attrs.match(/\bmedium=["']([^"']+)["']/i)?.[1] || "";
-    const type = attrs.match(/\btype=["']([^"']+)["']/i)?.[1] || "";
+    const medium = firstCapture(attrs, /\bmedium=["']([^"']+)["']/i) || "";
+    const type = firstCapture(attrs, /\btype=["']([^"']+)["']/i) || "";
     const abs = absoluteHttpsImageUrl(
-      attrs.match(/\burl=["']([^"']+)["']/i)?.[1],
+      firstCapture(attrs, /\burl=["']([^"']+)["']/i),
       feedUrl,
     );
     const { width, height } = imageDimensionsFromAttrs(attrs);
@@ -405,11 +417,11 @@ export function feedImageFromXml(chunk, feedUrl) {
   }
 
   const itunesAttrs =
-    chunk.match(/<itunes:image\b([^>]*)\/?>/i)?.[1] ||
-    chunk.match(/<itunes:image\b([^>]*)>/i)?.[1] ||
+    firstCapture(chunk, /<itunes:image\b([^>]*)\/?>/i) ||
+    firstCapture(chunk, /<itunes:image\b([^>]*)>/i) ||
     "";
   const itunes = absoluteHttpsImageUrl(
-    chunk.match(/<itunes:image\b[^>]*href=["']([^"']+)["']/i)?.[1],
+    firstCapture(chunk, /<itunes:image\b[^>]*href=["']([^"']+)["']/i),
     feedUrl,
   );
   const itunesSize = imageDimensionsFromAttrs(itunesAttrs);
@@ -425,15 +437,15 @@ export function feedImageFromXml(chunk, feedUrl) {
 
   for (const match of chunk.matchAll(/<link\b([^>]*)\/?>/gi)) {
     const attrs = match[1] || "";
-    const rel = attrs.match(/\brel=["']([^"']+)["']/i)?.[1] || "";
+    const rel = firstCapture(attrs, /\brel=["']([^"']+)["']/i) || "";
 
     if (!/^(?:enclosure|image)$/i.test(rel)) {
       continue;
     }
 
-    const type = attrs.match(/\btype=["']([^"']+)["']/i)?.[1] || "";
+    const type = firstCapture(attrs, /\btype=["']([^"']+)["']/i) || "";
     const abs = absoluteHttpsImageUrl(
-      attrs.match(/\bhref=["']([^"']+)["']/i)?.[1],
+      firstCapture(attrs, /\bhref=["']([^"']+)["']/i),
       feedUrl,
     );
     const { width, height } = imageDimensionsFromAttrs(attrs);
@@ -545,8 +557,8 @@ export function audioEnclosureUrlFromFeedChunk(chunk, feedUrl) {
 
   for (const match of chunk.matchAll(/<enclosure\b([^>]*)\/?>/gi)) {
     const attrs = match[1] || "";
-    const type = attrs.match(/\btype=["']([^"']+)["']/i)?.[1] || "";
-    const raw = attrs.match(/\burl=["']([^"']+)["']/i)?.[1] || "";
+    const type = firstCapture(attrs, /\btype=["']([^"']+)["']/i) || "";
+    const raw = firstCapture(attrs, /\burl=["']([^"']+)["']/i) || "";
 
     if (
       !raw ||
@@ -565,9 +577,9 @@ export function audioEnclosureUrlFromFeedChunk(chunk, feedUrl) {
 
   for (const match of chunk.matchAll(/<link\b([^>]*)\/?>/gi)) {
     const attrs = match[1] || "";
-    const rel = attrs.match(/\brel=["']([^"']+)["']/i)?.[1] || "";
-    const type = attrs.match(/\btype=["']([^"']+)["']/i)?.[1] || "";
-    const href = attrs.match(/\bhref=["']([^"']+)["']/i)?.[1] || "";
+    const rel = firstCapture(attrs, /\brel=["']([^"']+)["']/i) || "";
+    const type = firstCapture(attrs, /\btype=["']([^"']+)["']/i) || "";
+    const href = firstCapture(attrs, /\bhref=["']([^"']+)["']/i) || "";
 
     if (
       !href ||
@@ -643,10 +655,11 @@ export function rssOrAtomEntryTitle(chunk, absoluteUrl, summaryText = "") {
   }
 
   const encoded =
-    chunk.match(
+    firstCapture(
+      chunk,
       /<content:encoded\b[^>]*>([\s\S]*?)<\/content:encoded>/i,
-    )?.[1] ||
-    chunk.match(/<content\b[^>]*>([\s\S]*?)<\/content>/i)?.[1] ||
+    ) ||
+    firstCapture(chunk, /<content\b[^>]*>([\s\S]*?)<\/content>/i) ||
     "";
   const fromBody = capRemoteString(plainTextSummary(encoded), MAX_TITLE_CHARS);
 
@@ -681,39 +694,42 @@ export function contentItemsFromRssOrAtom(xml, meta) {
 
     if (isAtom) {
       link =
-        chunk.match(
+        firstCapture(
+          chunk,
           /<link\b[^>]*rel=["']alternate["'][^>]*href=["']([^"']+)["']/i,
-        )?.[1] ||
-        chunk.match(/<link\b[^>]*href=["']([^"']+)["']/i)?.[1] ||
+        ) ||
+        firstCapture(chunk, /<link\b[^>]*href=["']([^"']+)["']/i) ||
         "";
     } else {
-      link = chunk.match(/<link[^>]*>([\s\S]*?)<\/link>/i)?.[1] || "";
+      link = firstCapture(chunk, /<link[^>]*>([\s\S]*?)<\/link>/i) || "";
     }
 
     link = decodeHrefForParse(
       link.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1"),
     );
     const id =
-      chunk.match(/<id[^>]*>([\s\S]*?)<\/id>/i)?.[1] ||
-      chunk.match(/<guid[^>]*>([\s\S]*?)<\/guid>/i)?.[1] ||
+      firstCapture(chunk, /<id[^>]*>([\s\S]*?)<\/id>/i) ||
+      firstCapture(chunk, /<guid[^>]*>([\s\S]*?)<\/guid>/i) ||
       "";
     // Publisher dates only for Activity: prefer published/pubDate; Atom
     // updated is last resort when no publish stamp exists.
     const published =
-      chunk.match(/<published[^>]*>([\s\S]*?)<\/published>/i)?.[1] ||
-      chunk.match(/<pubDate[^>]*>([\s\S]*?)<\/pubDate>/i)?.[1] ||
-      chunk.match(/<updated[^>]*>([\s\S]*?)<\/updated>/i)?.[1] ||
+      firstCapture(chunk, /<published[^>]*>([\s\S]*?)<\/published>/i) ||
+      firstCapture(chunk, /<pubDate[^>]*>([\s\S]*?)<\/pubDate>/i) ||
+      firstCapture(chunk, /<updated[^>]*>([\s\S]*?)<\/updated>/i) ||
       null;
     // Prefer dedicated summary fields over full-content HTML bodies.
     const summary = plainTextSummary(
-      chunk.match(/<summary[^>]*>([\s\S]*?)<\/summary>/i)?.[1] ||
-        chunk.match(
+      firstCapture(chunk, /<summary[^>]*>([\s\S]*?)<\/summary>/i) ||
+        firstCapture(
+          chunk,
           /<itunes:summary[^>]*>([\s\S]*?)<\/itunes:summary>/i,
-        )?.[1] ||
-        chunk.match(
+        ) ||
+        firstCapture(
+          chunk,
           /<media:description[^>]*>([\s\S]*?)<\/media:description>/i,
-        )?.[1] ||
-        chunk.match(/<description[^>]*>([\s\S]*?)<\/description>/i)?.[1] ||
+        ) ||
+        firstCapture(chunk, /<description[^>]*>([\s\S]*?)<\/description>/i) ||
         "",
     );
 
@@ -729,8 +745,8 @@ export function contentItemsFromRssOrAtom(xml, meta) {
       if (isAtom) {
         const attrs = catMatch[1] || "";
         const term =
-          attrs.match(/\bterm=["']([^"']+)["']/i)?.[1] ||
-          attrs.match(/\blabel=["']([^"']+)["']/i)?.[1] ||
+          firstCapture(attrs, /\bterm=["']([^"']+)["']/i) ||
+          firstCapture(attrs, /\blabel=["']([^"']+)["']/i) ||
           "";
         raw = normalizeExtractedText(term || catMatch[2] || "");
       } else {
@@ -1095,10 +1111,11 @@ export function contentItemsFromArchiveEntryList(html, meta) {
       MAX_TITLE_CHARS,
     );
     const published =
-      block.match(
+      firstCapture(
+        block,
         /<time\b[^>]*class=["'][^"']*dt-published[^"']*["'][^>]*datetime=["']([^"']+)["']/i,
-      )?.[1] ||
-      block.match(/<time\b[^>]*datetime=["']([^"']+)["']/i)?.[1] ||
+      ) ||
+      firstCapture(block, /<time\b[^>]*datetime=["']([^"']+)["']/i) ||
       null;
 
     if (!title) {
@@ -1151,7 +1168,9 @@ export function contentItemsFromHEntryList(html, meta) {
       block.match(
         /<a\b[^>]*href\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))[^>]*class(?:=["'][^"']*\bu-url\b[^"']*["']|=u-url\b)/i,
       );
-    const href = urlMatch?.[1] ?? urlMatch?.[2] ?? urlMatch?.[3] ?? "";
+    const href = urlMatch
+      ? urlMatch[1] || urlMatch[2] || urlMatch[3] || ""
+      : "";
     let absoluteUrl = "";
 
     try {
@@ -1168,33 +1187,38 @@ export function contentItemsFromHEntryList(html, meta) {
 
     const name = normalizeExtractedText(
       (
-        block.match(
+        firstCapture(
+          block,
           /<(?:h[1-6]|data|span|p)\b[^>]*class=["'][^"']*\bp-name\b[^"']*["'][^>]*>([\s\S]*?)<\/(?:h[1-6]|data|span|p)>/i,
-        )?.[1] ||
-        block.match(
+        ) ||
+        firstCapture(
+          block,
           /<data\b[^>]*class=["'][^"']*\bp-name\b[^"']*["'][^>]*value=["']([^"']+)["']/i,
-        )?.[1] ||
+        ) ||
         ""
       ).replace(/<[^>]+>/g, " "),
     );
     // Prefer p-summary / dedicated blurb over raw e-content so short notes are
     // not near-fully copied into hub cards (snippet aggregator hygiene).
     const pSummaryHtml =
-      block.match(
+      firstCapture(
+        block,
         /<(?:p|div|span)\b[^>]*class=["'][^"']*\bp-summary\b[^"']*["'][^>]*>([\s\S]*?)<\/(?:p|div|span)>/i,
-      )?.[1] || "";
+      ) || "";
     const contentHtml =
-      block.match(
+      firstCapture(
+        block,
         /<(?:div|p)\b[^>]*class=["'][^"']*\be-content\b[^"']*["'][^>]*>([\s\S]*?)<\/(?:div|p)>/i,
-      )?.[1] || "";
+      ) || "";
     const fromPSummary = plainTextSummary(pSummaryHtml);
     const summary = fromPSummary || plainTextSummary(contentHtml);
     const title = capRemoteString(name || summary, MAX_TITLE_CHARS);
     const publishedMatch = block.match(
       /<time\b[^>]*datetime\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i,
     );
-    const published =
-      publishedMatch?.[1] ?? publishedMatch?.[2] ?? publishedMatch?.[3] ?? null;
+    const published = publishedMatch
+      ? publishedMatch[1] || publishedMatch[2] || publishedMatch[3] || null
+      : null;
 
     if (!title) {
       continue;

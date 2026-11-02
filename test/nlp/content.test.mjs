@@ -16,6 +16,7 @@ import {
   ACTIVITY_IMAGE_MIN_WIDTH,
   contentIdentityKey,
   contentItemNeedsPosterEnrichment,
+  contentItemsFromHEntryList,
   contentItemsFromJsonFeed,
   contentItemsFromRssOrAtom,
   contentUrlMatchesSiteOrigin,
@@ -2830,4 +2831,131 @@ test("contentItemsFromJsonFeed: content_text and content_html fallbacks", () => 
     },
   );
   assert.equal(neither[0].summary, "");
+});
+
+test("contentItemsFromJsonFeed: prefers item.language over feed language", () => {
+  const items = contentItemsFromJsonFeed(
+    JSON.stringify({
+      language: "en",
+      items: [
+        {
+          id: "lang-item",
+          url: "https://a.example/fr-post/",
+          title: "Bonjour",
+          language: "fr-CA",
+          date_published: "2024-01-01T00:00:00Z",
+        },
+      ],
+    }),
+    JSON_META,
+  );
+
+  assert.equal(items[0].language, "fr-ca");
+});
+
+test("joinContentWithPageSignals: invalid language tags become null", () => {
+  const joined = joinContentWithPageSignals(
+    [
+      {
+        identity: "url:https://a.example/bad-lang/",
+        url: "https://a.example/bad-lang/",
+        language: "!!!",
+        title: "2014",
+        summary: "",
+        declared_topics: [],
+      },
+    ],
+    [
+      {
+        pages: [
+          {
+            url: "https://a.example/bad-lang/",
+            lang: "not a tag!!!",
+            share_description: "<p></p>",
+          },
+        ],
+        declared_topics: [],
+      },
+    ],
+  );
+
+  assert.equal(joined[0].language, null);
+  assert.equal(joined[0].title, "2014");
+});
+
+test("contentItemsFromHEntryList: empty u-url href skips the entry", () => {
+  const notes = contentItemsFromHEntryList(
+    `<article class="h-entry"><a class="u-url" href=""></a><p class="e-content">blank</p></article>
+     <article class="h-entry"><a class="u-url" href="/notes/ok/"><span class="p-name">Ok</span></a>
+     <time class="dt-published" datetime=""></time><p class="e-content">body</p></article>`,
+    {
+      pageUrl: "https://a.example/notes/",
+      siteOrigin: "https://a.example",
+      observedAt: "2026-11-01T00:00:00.000Z",
+    },
+  );
+
+  assert.equal(notes.length, 1);
+  assert.equal(notes[0].url, "https://a.example/notes/ok/");
+  assert.equal(notes[0].published_at, null);
+});
+
+test("contentItemsFromRssOrAtom: reads feed and entry language tags", () => {
+  const atom = contentItemsFromRssOrAtom(
+    `<?xml version="1.0"?>
+     <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="de">
+       <entry>
+         <title>Eins</title>
+         <link href="https://a.example/eins/" rel="alternate"/>
+         <id>https://a.example/eins/</id>
+         <updated>2024-01-01T00:00:00Z</updated>
+       </entry>
+     </feed>`,
+    {
+      feedUrl: "https://a.example/atom.xml",
+      siteOrigin: "https://a.example",
+      feedKind: "atom",
+      observedAt: "2026-11-01T00:00:00.000Z",
+    },
+  );
+  assert.equal(atom[0].language, "de");
+
+  const atomEntryLang = contentItemsFromRssOrAtom(
+    `<?xml version="1.0"?>
+     <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+       <entry xml:lang="es">
+         <title>Hola</title>
+         <link href="https://a.example/hola/" rel="alternate"/>
+         <id>https://a.example/hola/</id>
+         <updated>2024-01-01T00:00:00Z</updated>
+       </entry>
+     </feed>`,
+    {
+      feedUrl: "https://a.example/atom.xml",
+      siteOrigin: "https://a.example",
+      feedKind: "atom",
+      observedAt: "2026-11-01T00:00:00.000Z",
+    },
+  );
+  assert.equal(atomEntryLang[0].language, "es");
+
+  const rss = contentItemsFromRssOrAtom(
+    `<?xml version="1.0"?>
+     <rss version="2.0"><channel>
+       <language>pt-BR</language>
+       <item>
+         <title>Oi</title>
+         <link>https://a.example/oi/</link>
+         <guid>https://a.example/oi/</guid>
+         <pubDate>Mon, 01 Jan 2024 00:00:00 GMT</pubDate>
+       </item>
+     </channel></rss>`,
+    {
+      feedUrl: "https://a.example/rss.xml",
+      siteOrigin: "https://a.example",
+      feedKind: "rss",
+      observedAt: "2026-11-01T00:00:00.000Z",
+    },
+  );
+  assert.equal(rss[0].language, "pt-br");
 });
