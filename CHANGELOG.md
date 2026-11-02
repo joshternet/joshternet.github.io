@@ -20,7 +20,11 @@
 
 ### Changed
 
+- **Elsewhere profiles, not share buttons:** Reddit icons require `/user/` or `/u/` profiles—`/submit` buttons are dropped (even with `rel=me`). Facebook `sharer` and Telegram `share` links are filtered the same way.
+- **Hosted newsletter feeds count as writing:** When a Network card lists a Substack (or other off-site) RSS URL, posts from that feed origin publish into `content.json` and can appear in What’s New. Hub OPML already uses each member’s primary feed, including Substack. Link-blog posts to other participants stay dropped.
+- **Elsewhere icons:** Libre.fm gets a music-note glyph; xoxo.zone maps to Mastodon. Buttondown newsletter hosts are no longer Network Elsewhere icons (they stay out of the social strip so we can treat newsletters as feeds/subscribe surfaces later).
 - **Long CI jobs uncapped:** Removed fixed `timeout-minutes` from Site quality and Network sync scrape jobs so rebuilds can grow with membership (GitHub-hosted default ceiling remains 360m).
+- **Project years become publish dates:** Portfolio table years and project-page `Status: Completed YYYY` (plus article meta / `<time>` / JSON-LD `datePublished`) fill `published_at`. Showcase ranks real publish dates above crawl-only `observed_at`, so undated archives like TurboElectric Cessna no longer sort as brand-new.
 - **Stable `content.mjs` coverage:** Regex captures go through `firstCapture` instead of optional-chaining index access so Node’s experimental branch coverage stays at 100% across runs.
 - **Network card blurbs prefer substance:** Thin boilerplate meta (short lines, “personal homepage”, “home on the web”, “X’s website”) is skipped. Cards pick the strongest homepage or about/profile-page publisher blurb (not friends/hello/uses), join short intro paragraphs when needed, and soft-cap length for readability.
 - **Network titles prefer people over host brands:** Author / GitHub / Person JSON-LD names win before site titles. Host-compressed brands like “Forward Bias” no longer count as a personal name for `forwardbias.dev` (card shows Josh Caldwell via GitHub).

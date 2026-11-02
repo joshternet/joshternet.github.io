@@ -20,7 +20,9 @@ import {
   contentItemsFromJsonFeed,
   contentItemsFromRssOrAtom,
   contentUrlMatchesSiteOrigin,
+  contentUrlMatchesSourceFeed,
   enrichContentItemPosters,
+  enrichPublishedAtFromPages,
   feedImageFromJsonItem,
   feedImageFromXml,
   httpContentUrl,
@@ -31,6 +33,8 @@ import {
   mergeContentItems,
   normalizeContentItemForPublish,
   plainTextSummary,
+  publishedAtFromPageHtml,
+  publishedAtFromYear,
   siteOriginFromContentUrl,
 } from "../../scripts/nlp/content.mjs";
 
@@ -1902,6 +1906,103 @@ test("isoDateString and httpContentUrl reject junk", () => {
   );
 });
 
+test("publishedAtFromYear maps 4-digit years and rejects junk", () => {
+  assert.equal(publishedAtFromYear("2023"), "2023-01-01T00:00:00.000Z");
+  assert.equal(publishedAtFromYear("1999"), "1999-01-01T00:00:00.000Z");
+  assert.equal(publishedAtFromYear(" 2022 "), "2022-01-01T00:00:00.000Z");
+  assert.equal(publishedAtFromYear("22"), "");
+  assert.equal(publishedAtFromYear("1899"), "");
+  assert.equal(publishedAtFromYear("2100"), "");
+  assert.equal(publishedAtFromYear(""), "");
+  assert.equal(publishedAtFromYear(null), "");
+  assert.equal(publishedAtFromYear(2023), "");
+});
+
+test("publishedAtFromPageHtml prefers Status Completed over prose years", () => {
+  assert.equal(
+    publishedAtFromPageHtml(
+      `<p>In the Spring of 2022 I went back to school.</p>
+       <p>Status: Completed 2023</p>
+       <p>Organization: FAA/OSU</p>`,
+    ),
+    "2023-01-01T00:00:00.000Z",
+  );
+  assert.equal(
+    publishedAtFromPageHtml(`<p>Status: Complete 2021</p>`),
+    "2021-01-01T00:00:00.000Z",
+  );
+  assert.equal(
+    publishedAtFromPageHtml(
+      `<meta property="article:published_time" content="2024-06-15T12:00:00Z">`,
+    ),
+    "2024-06-15T12:00:00.000Z",
+  );
+  assert.equal(
+    publishedAtFromPageHtml(
+      `<meta content="2024-07-01" property="article:published_time">`,
+    ),
+    "2024-07-01T00:00:00.000Z",
+  );
+  assert.equal(
+    publishedAtFromPageHtml(
+      `<time datetime="2020-03-04T08:00:00.000Z">March</time>`,
+    ),
+    "2020-03-04T08:00:00.000Z",
+  );
+  assert.equal(
+    publishedAtFromPageHtml(
+      `<script type="application/ld+json">{"@type":"CreativeWork","datePublished":"2019-11-02"}</script>`,
+    ),
+    "2019-11-02T00:00:00.000Z",
+  );
+  assert.equal(
+    publishedAtFromPageHtml(
+      `<p>In the Spring of 2022 I went back to school.</p>`,
+    ),
+    "",
+  );
+  assert.equal(publishedAtFromPageHtml(""), "");
+  assert.equal(publishedAtFromPageHtml(null), "");
+});
+
+test("enrichPublishedAtFromPages fills missing published_at from crawled HTML", () => {
+  const items = [
+    {
+      url: "https://joshuadrake.org/projects/turboelectriccessna",
+      title: "TurboElectric Cessna",
+      observed_at: "2026-11-02T15:29:16.095Z",
+    },
+    {
+      url: "https://example.org/already-dated",
+      published_at: "2025-01-01T00:00:00.000Z",
+      title: "Keep me",
+    },
+    {
+      url: "https://example.org/no-page",
+      title: "Stay undated",
+    },
+    null,
+    { title: "no url" },
+  ];
+  enrichPublishedAtFromPages(items, [
+    {
+      url: "https://joshuadrake.org/projects/turboelectriccessna/",
+      html: `<p>Spring of 2022</p><p>Status: Completed 2023</p>`,
+    },
+    {
+      url: "https://example.org/already-dated",
+      html: `<p>Status: Completed 2010</p>`,
+    },
+    { url: "https://example.org/empty", html: "" },
+    null,
+  ]);
+  assert.equal(items[0].published_at, "2023-01-01T00:00:00.000Z");
+  assert.equal(items[1].published_at, "2025-01-01T00:00:00.000Z");
+  assert.equal(items[2].published_at, undefined);
+  assert.equal(enrichPublishedAtFromPages(null, []), null);
+  assert.deepEqual(enrichPublishedAtFromPages([], null), []);
+});
+
 test("normalizeContentItemForPublish drops invalid items and stringifies summary", () => {
   assert.equal(normalizeContentItemForPublish(null), null);
   assert.equal(normalizeContentItemForPublish(5), null);
@@ -1999,6 +2100,68 @@ test("normalizeContentItemForPublish drops member link-posts to the hub", () => 
     summary: "",
   });
   assert.equal(sameOrigin.url, "https://joshua.seigler.net/posts/hi/");
+});
+
+test("contentUrlMatchesSourceFeed allows Substack posts from card feeds", () => {
+  assert.equal(
+    contentUrlMatchesSourceFeed("https://chrisminnick.substack.com/p/hello", [
+      { type: "rss", url: "https://chrisminnick.substack.com/feed" },
+    ]),
+    true,
+  );
+  assert.equal(
+    contentUrlMatchesSourceFeed("https://other.substack.com/p/hello", [
+      { type: "rss", url: "https://chrisminnick.substack.com/feed" },
+    ]),
+    false,
+  );
+  assert.equal(contentUrlMatchesSourceFeed("https://a.example/p", null), false);
+  assert.equal(contentUrlMatchesSourceFeed("https://a.example/p", []), false);
+  assert.equal(
+    contentUrlMatchesSourceFeed("not a url", [
+      { type: "rss", url: "https://chrisminnick.substack.com/feed" },
+    ]),
+    false,
+  );
+  assert.equal(
+    contentUrlMatchesSourceFeed("https://a.example/p", [
+      null,
+      { type: "rss", url: "not a url" },
+      { type: "rss" },
+    ]),
+    false,
+  );
+});
+
+test("normalizeContentItemForPublish keeps Substack posts when source feed matches", () => {
+  const published = normalizeContentItemForPublish({
+    identity: "url:https://chrisminnick.substack.com/p/hello",
+    url: "https://chrisminnick.substack.com/p/hello",
+    site_origin: "https://www.chrisminnick.com",
+    title: "Hello from Substack",
+    summary: "A newsletter post.",
+    published_at: "2026-10-20T12:00:00.000Z",
+    source_feeds: [
+      { type: "rss", url: "https://chrisminnick.substack.com/feed" },
+    ],
+  });
+  assert.equal(published?.url, "https://chrisminnick.substack.com/p/hello");
+  assert.equal(published?.site_origin, "https://www.chrisminnick.com");
+  assert.equal(published?.published_at, "2026-10-20T12:00:00.000Z");
+
+  assert.equal(
+    normalizeContentItemForPublish({
+      identity: "url:https://other.substack.com/p/not-theirs",
+      url: "https://other.substack.com/p/not-theirs",
+      site_origin: "https://www.chrisminnick.com",
+      title: "Someone else",
+      summary: "",
+      source_feeds: [
+        { type: "rss", url: "https://chrisminnick.substack.com/feed" },
+      ],
+    }),
+    null,
+  );
 });
 
 test("mergeContentItems drops guid-only drafts without http urls", () => {

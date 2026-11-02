@@ -140,6 +140,174 @@ export function isoDateString(value) {
 }
 
 /**
+ * Maps a 4-digit calendar year to January 1 UTC ISO.
+ * @param {unknown} year
+ * @returns {string}
+ */
+export function publishedAtFromYear(year) {
+  if (typeof year !== "string") {
+    return "";
+  }
+
+  const trimmed = year.trim();
+
+  if (!/^(?:19|20)\d{2}$/.test(trimmed)) {
+    return "";
+  }
+
+  return isoDateString(`${trimmed}-01-01T00:00:00.000Z`);
+}
+
+/**
+ * Stable lookup key so trailing-slash variants of the same path match.
+ * @param {unknown} value
+ * @returns {string}
+ */
+function contentUrlLookupKey(value) {
+  const url = httpContentUrl(value);
+
+  if (!url) {
+    return "";
+  }
+
+  // httpContentUrl already accepted this href; strip a non-root trailing slash.
+  const parsed = new URL(url);
+  parsed.hash = "";
+
+  if (parsed.pathname.length > 1 && parsed.pathname.endsWith("/")) {
+    parsed.pathname = parsed.pathname.slice(0, -1);
+  }
+
+  return parsed.href;
+}
+
+/**
+ * Publisher date from project/article HTML. Prefers Status Completed YEAR,
+ * then article:published_time, time[datetime], JSON-LD datePublished.
+ * Does not invent dates from free-prose year mentions.
+ * @param {unknown} html
+ * @returns {string}
+ */
+export function publishedAtFromPageHtml(html) {
+  if (typeof html !== "string" || !html) {
+    return "";
+  }
+
+  const statusYear = firstCapture(
+    html,
+    /\bStatus:\s*Complete[d]?\s+((?:19|20)\d{2})\b/i,
+  );
+  const fromStatus = publishedAtFromYear(statusYear);
+
+  if (fromStatus) {
+    return fromStatus;
+  }
+
+  const metaPublished =
+    firstCapture(
+      html,
+      /<meta\b[^>]*property=["']article:published_time["'][^>]*content=["']([^"']+)["']/i,
+    ) ||
+    firstCapture(
+      html,
+      /<meta\b[^>]*content=["']([^"']+)["'][^>]*property=["']article:published_time["']/i,
+    );
+  const fromMeta = isoDateString(metaPublished);
+
+  if (fromMeta) {
+    return fromMeta;
+  }
+
+  const timeDatetime = firstCapture(
+    html,
+    /<time\b[^>]*datetime=["']([^"']+)["']/i,
+  );
+  const fromTime = isoDateString(timeDatetime);
+
+  if (fromTime) {
+    return fromTime;
+  }
+
+  const jsonLdPublished = firstCapture(
+    html,
+    /"datePublished"\s*:\s*"([^"]+)"/i,
+  );
+
+  return isoDateString(jsonLdPublished);
+}
+
+/**
+ * Fills missing `published_at` on content drafts from matching crawled page HTML.
+ * Mutates items in place and returns the same array reference.
+ * @param {unknown} items
+ * @param {unknown} pages
+ * @returns {unknown}
+ */
+export function enrichPublishedAtFromPages(items, pages) {
+  if (!Array.isArray(items)) {
+    return items;
+  }
+
+  if (!Array.isArray(pages) || pages.length === 0) {
+    return items;
+  }
+
+  /** @type {Map<string, string>} */
+  const htmlByUrl = new Map();
+
+  for (const page of pages) {
+    if (!page || typeof page !== "object") {
+      continue;
+    }
+
+    const key = contentUrlLookupKey(
+      /** @type {{ url?: unknown }} */ (page).url,
+    );
+    const html = /** @type {{ html?: unknown }} */ (page).html;
+
+    if (!key || typeof html !== "string" || !html) {
+      continue;
+    }
+
+    if (!htmlByUrl.has(key)) {
+      htmlByUrl.set(key, html);
+    }
+  }
+
+  for (const item of items) {
+    if (!item || typeof item !== "object") {
+      continue;
+    }
+
+    const record = /** @type {Record<string, unknown>} */ (item);
+
+    if (typeof record.published_at === "string" && record.published_at.trim()) {
+      continue;
+    }
+
+    const key = contentUrlLookupKey(record.url);
+
+    if (!key) {
+      continue;
+    }
+
+    const html = htmlByUrl.get(key);
+
+    if (!html) {
+      continue;
+    }
+
+    const published = publishedAtFromPageHtml(html);
+
+    if (published) {
+      record.published_at = published;
+    }
+  }
+
+  return items;
+}
+
+/**
  * Returns an http(s) URL without credentials or hash, otherwise empty.
  * @param {unknown} value
  * @returns {string}
@@ -188,10 +356,54 @@ export function contentUrlMatchesSiteOrigin(url, siteOrigin) {
 }
 
 /**
+ * True when the content URL shares an origin with a recorded source feed
+ * (e.g. Substack posts from a participant-card Substack RSS URL).
+ * @param {string} url
+ * @param {unknown} sourceFeeds
+ * @returns {boolean}
+ */
+export function contentUrlMatchesSourceFeed(url, sourceFeeds) {
+  if (!Array.isArray(sourceFeeds) || sourceFeeds.length === 0) {
+    return false;
+  }
+
+  let contentOrigin = "";
+
+  try {
+    contentOrigin = new URL(url).origin;
+  } catch {
+    return false;
+  }
+
+  for (const feed of sourceFeeds) {
+    if (!feed || typeof feed !== "object") {
+      continue;
+    }
+
+    const feedUrl = /** @type {{ url?: unknown }} */ (feed).url;
+
+    if (typeof feedUrl !== "string" || !feedUrl.trim()) {
+      continue;
+    }
+
+    try {
+      if (new URL(feedUrl).origin === contentOrigin) {
+        return true;
+      }
+    } catch {
+      continue;
+    }
+  }
+
+  return false;
+}
+
+/**
  * Shapes a content item for content.schema.json. Drops items without identity
  * or an http(s) url, and drops cross-origin URLs (feed "Link:" posts whose
- * entry link is another site, e.g. a member linking the hub). Empty summaries
- * become "".
+ * entry link is another site, e.g. a member linking the hub)—unless the entry
+ * URL matches a participant feed origin (Substack / hosted newsletter RSS).
+ * Empty summaries become "".
  * @param {unknown} item
  * @returns {Record<string, unknown> | null}
  */
@@ -214,11 +426,14 @@ export function normalizeContentItemForPublish(item) {
 
   // Link-blog entries often use the linked page as <link>/<id>. When that
   // page is another participant (including the hub), publishing it under the
-  // member's site_origin trips cross-origin-content. Drop those.
+  // member's site_origin trips cross-origin-content. Drop those—unless the
+  // URL is on the same origin as a source feed listed on the participant card
+  // (Substack, Buttondown-hosted RSS, …).
   if (
     typeof record.site_origin === "string" &&
     record.site_origin.trim() &&
-    !contentUrlMatchesSiteOrigin(url, record.site_origin)
+    !contentUrlMatchesSiteOrigin(url, record.site_origin) &&
+    !contentUrlMatchesSourceFeed(url, record.source_feeds)
   ) {
     return null;
   }

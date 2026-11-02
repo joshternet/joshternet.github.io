@@ -526,13 +526,11 @@ test("buildShowcaseHomeItems keeps one newest work per member and kind", () => {
   ]);
 
   assert.equal(items.length, 5);
+  // Dated works outrank undated crawl-time items; among undated peers,
+  // fresher observed_at / newer URL still wins (2026 album over 2014).
   assert.deepEqual(
     items.map((item) => ({ kind: item.kind, url: item.url })),
     [
-      {
-        kind: "photography",
-        url: "https://joshbeard.com/photos/2026/",
-      },
       {
         kind: "video",
         url: "https://video.example/films/clip/",
@@ -542,12 +540,16 @@ test("buildShowcaseHomeItems keeps one newest work per member and kind", () => {
         url: "https://joshuamorris.info/experiments/newer/",
       },
       {
-        kind: "games",
-        url: "https://joshtronic.com/games/idol-idle/",
-      },
-      {
         kind: "music",
         url: "https://music.example/albums/dawn/",
+      },
+      {
+        kind: "photography",
+        url: "https://joshbeard.com/photos/2026/",
+      },
+      {
+        kind: "games",
+        url: "https://joshtronic.com/games/idol-idle/",
       },
     ],
   );
@@ -1828,6 +1830,46 @@ test("compareShowcaseRecency prefers newer published_at then newer URL", () => {
       { published_at: "2026-01-01T00:00:00.000Z" },
     ),
     0,
+  );
+});
+
+test("compareShowcaseRecency: dated beats undated crawl-time observed_at", () => {
+  assert.ok(
+    compareShowcaseRecency(
+      {
+        url: "https://joshuadrake.org/projects/turboelectriccessna",
+        observed_at: "2026-11-02T15:29:16.095Z",
+      },
+      {
+        url: "https://example.org/recent-project",
+        published_at: "2026-10-01T00:00:00.000Z",
+        observed_at: "2026-11-02T15:29:16.095Z",
+      },
+    ) > 0,
+  );
+  assert.ok(
+    compareShowcaseRecency(
+      {
+        url: "https://example.org/recent-project",
+        published_at: "2026-10-01T00:00:00.000Z",
+      },
+      {
+        url: "https://joshuadrake.org/projects/turboelectriccessna",
+        observed_at: "2026-11-02T15:29:16.095Z",
+      },
+    ) < 0,
+  );
+  assert.ok(
+    compareShowcaseRecency(
+      {
+        url: "https://a.example/older-undated",
+        observed_at: "2026-10-01T00:00:00.000Z",
+      },
+      {
+        url: "https://a.example/newer-undated",
+        observed_at: "2026-11-01T00:00:00.000Z",
+      },
+    ) > 0,
   );
 });
 

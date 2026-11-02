@@ -1988,20 +1988,55 @@ export function isMadeContentItem(item, options = {}) {
 export const isShowcaseContentItem = isMadeContentItem;
 
 /**
- * Newest Showcase work first: activity timestamp, then URL descending so year
- * albums without dates still prefer `/photos/2026/` over `/photos/2014/`.
+ * Newest Showcase work first. Real `published_at` always ranks above undated
+ * crawl-time items; among undated peers, URL descending (year albums) then
+ * `observed_at`.
  * @param {Record<string, unknown>} left
  * @param {Record<string, unknown>} right
  * @returns {number}
  */
 export function compareShowcaseRecency(left, right) {
-  const date = activityTimestamp(right).localeCompare(activityTimestamp(left));
+  const leftPublished =
+    typeof left?.published_at === "string" && left.published_at
+      ? left.published_at
+      : "";
+  const rightPublished =
+    typeof right?.published_at === "string" && right.published_at
+      ? right.published_at
+      : "";
 
-  if (date !== 0) {
-    return date;
+  if (leftPublished || rightPublished) {
+    if (leftPublished && rightPublished) {
+      const published = rightPublished.localeCompare(leftPublished);
+
+      if (published !== 0) {
+        return published;
+      }
+    } else if (leftPublished) {
+      return -1;
+    } else {
+      return 1;
+    }
   }
 
-  return String(right.url || "").localeCompare(String(left.url || ""));
+  const leftObserved =
+    typeof left?.observed_at === "string" && left.observed_at
+      ? left.observed_at
+      : "";
+  const rightObserved =
+    typeof right?.observed_at === "string" && right.observed_at
+      ? right.observed_at
+      : "";
+
+  if (leftObserved || rightObserved) {
+    const observed = rightObserved.localeCompare(leftObserved);
+
+    if (observed !== 0) {
+      return observed;
+    }
+  }
+
+  return String(right?.url || "").localeCompare(String(left?.url || ""));
 }
 
 /**

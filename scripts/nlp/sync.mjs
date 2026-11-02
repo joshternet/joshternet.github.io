@@ -38,6 +38,7 @@ import {
   contentItemsFromJsonFeed,
   contentItemsFromRssOrAtom,
   enrichContentItemPosters,
+  enrichPublishedAtFromPages,
   joinContentWithPageSignals,
   mergeContentItems,
 } from "./content.mjs";
@@ -208,6 +209,8 @@ async function main() {
   const communityOrigins = [];
   /** @type {Array<Record<string, unknown>>} */
   const contentDrafts = [];
+  /** @type {Array<{ url?: string, html?: string }>} */
+  const pagesForPublishedAt = [];
 
   for (const participant of network) {
     if (!participant || typeof participant.origin !== "string") {
@@ -358,6 +361,7 @@ async function main() {
         html: page.html,
         lang: page.lang || "",
       }));
+      pagesForPublishedAt.push(...creativePages);
 
       if (shouldRenderHtml()) {
         process.stdout.write(
@@ -549,6 +553,7 @@ async function main() {
     }
   }
 
+  enrichPublishedAtFromPages(contentDrafts, pagesForPublishedAt);
   const draftItems = mergeContentItems(contentDrafts);
   const aliasesDoc = await readJSONIfExists(ALIASES_PATH, { aliases: [] });
   const catalog = networkCatalog(communityOrigins, draftItems);
