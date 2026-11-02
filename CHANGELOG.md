@@ -20,6 +20,7 @@
 
 ### Changed
 
+- **Site quality CI budget:** `site-quality` job timeout raised from 45m to 90m so full registry rebuild + site build can finish on PRs.
 - **Stable `content.mjs` coverage:** Regex captures go through `firstCapture` instead of optional-chaining index access so Node’s experimental branch coverage stays at 100% across runs.
 - **Network card blurbs prefer substance:** Thin boilerplate meta (short lines, “personal homepage”, “home on the web”, “X’s website”) is skipped. Cards pick the strongest homepage or about/profile-page publisher blurb (not friends/hello/uses), join short intro paragraphs when needed, and soft-cap length for readability.
 - **Network titles prefer people over host brands:** Author / GitHub / Person JSON-LD names win before site titles. Host-compressed brands like “Forward Bias” no longer count as a personal name for `forwardbias.dev` (card shows Josh Caldwell via GitHub).

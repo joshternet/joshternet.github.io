@@ -13,7 +13,8 @@ jobs:
   quality:
     name: Build and test site
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    # Full registry rebuild + site build regularly exceeds 45m on PRs.
+    timeout-minutes: 90
 
     steps:
       - name: Check out repository
