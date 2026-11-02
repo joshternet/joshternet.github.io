@@ -5,6 +5,7 @@ description: "Explore Canada articles, notes, and projects published by independ
 keywords: "Canada, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "canada"
 permalink: /topics/canada/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Canada"

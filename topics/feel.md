@@ -5,6 +5,7 @@ description: "Explore Feels articles, notes, and projects published by independe
 keywords: "Feels, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "feel"
 permalink: /topics/feel/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Feels"

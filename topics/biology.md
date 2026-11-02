@@ -5,6 +5,7 @@ description: "Explore Biology articles, notes, and projects published by indepen
 keywords: "Biology, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "biology"
 permalink: /topics/biology/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Biology"

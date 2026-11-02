@@ -5,6 +5,7 @@ description: "Explore Resurrection articles, notes, and projects published by in
 keywords: "Resurrection, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "resurrection"
 permalink: /topics/resurrection/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Resurrection"

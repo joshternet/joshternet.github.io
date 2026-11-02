@@ -5,6 +5,7 @@ description: "Explore Civil Liberties articles, notes, and projects published by
 keywords: "Civil Liberties, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "civil-liberty"
 permalink: /topics/civil-liberty/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Civil Liberties"

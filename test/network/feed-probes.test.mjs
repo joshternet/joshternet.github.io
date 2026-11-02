@@ -80,6 +80,25 @@ test("probeCommonFeedPaths: skips probing when feeds already exist", async () =>
   assert.equal(fetches, 0);
 });
 
+test("probeCommonFeedPaths: skips feed paths robots.txt disallows", async () => {
+  const cache = dnsCache(["a.example"]);
+  let fetches = 0;
+  const result = await probeCommonFeedPaths("https://a.example", [], {
+    cache,
+    paths: ["/rss.xml"],
+    robotsGate: {
+      allows: async () => false,
+      bodyForOrigin: async () => "",
+    },
+    fetchImpl: async () => {
+      fetches += 1;
+      throw new Error("should not fetch");
+    },
+  });
+  assert.deepEqual(result, []);
+  assert.equal(fetches, 0);
+});
+
 test("probeCommonFeedPaths: discovers /rss.xml when homepage has no feeds", async () => {
   const cache = dnsCache(["a.example"]);
   let fetches = 0;

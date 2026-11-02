@@ -5,6 +5,7 @@ description: "Explore Property articles, notes, and projects published by indepe
 keywords: "Property, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "property"
 permalink: /topics/property/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Property"

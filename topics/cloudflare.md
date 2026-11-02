@@ -5,6 +5,7 @@ description: "Explore Cloudflare articles, notes, and projects published by inde
 keywords: "Cloudflare, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "cloudflare"
 permalink: /topics/cloudflare/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Cloudflare"

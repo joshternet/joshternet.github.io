@@ -5,6 +5,7 @@ description: "Explore Authorization articles, notes, and projects published by i
 keywords: "Authorization, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "authorization"
 permalink: /topics/authorization/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Authorization"

@@ -5,6 +5,7 @@ description: "Explore LET articles, notes, and projects published by independent
 keywords: "LET, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "let"
 permalink: /topics/let/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "LET"

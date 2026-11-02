@@ -5,6 +5,7 @@ description: "Explore Personal Data articles, notes, and projects published by i
 keywords: "Personal Data, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "personal-data"
 permalink: /topics/personal-data/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Personal Data"

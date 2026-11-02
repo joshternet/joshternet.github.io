@@ -92,7 +92,7 @@ test("parseHtmlRegions: unquoted href/rel/class from minified HTML", () => {
   assert.deepEqual(result.links[2].classNames, ["network-card__link"]);
 });
 
-test("parseHtmlRegions: joshbeard-style /site/ page yields member links", () => {
+test("parseHtmlRegions: /site/ identity page yields member links", () => {
   const html = `<!doctype html><html><body><p>This site participates in <a href=https://joshternet.org/>Joshternet</a> and links to <a href=https://joshuamorris.info/>Joshua Morris</a> plus <a href=/.well-known/josh>/.well-known/josh</a>.</p></body></html>`;
   const result = parseHtmlRegions(html);
   assert.ok(result.links.some((l) => l.href === "https://joshternet.org/"));

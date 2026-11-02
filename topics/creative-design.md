@@ -5,6 +5,7 @@ description: "Explore Creative & Design articles, notes, and projects published 
 keywords: "Creative & Design, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "creative-design"
 permalink: /topics/creative-design/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Creative & Design"

@@ -5,6 +5,7 @@ description: "Explore Private AI articles, notes, and projects published by inde
 keywords: "Private AI, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "private-ai"
 permalink: /topics/private-ai/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Private AI"

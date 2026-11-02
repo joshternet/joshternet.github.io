@@ -4,6 +4,8 @@
  */
 import dns from "node:dns/promises";
 
+import { USER_AGENT } from "../nlp/lib.mjs";
+import { createOriginRobotsGate } from "../nlp/origin-robots.mjs";
 import { assertPublicURL, normalizeText } from "./lib.mjs";
 
 export const MAX_BLOGROLLS_PER_PARTICIPANT = 3;
@@ -279,22 +281,39 @@ export function carryForwardBlogrollEdges(previousEdges, fromOrigin) {
  *   lookup?: typeof dns.lookup,
  *   cache?: Map<string, unknown>,
  *   fetchImpl?: typeof fetch,
+ *   robotsGate?: import("../nlp/origin-robots.mjs").OriginRobotsGate,
  * }} [options]
  * @returns {Promise<string>}
  */
 export async function fetchBlogrollOpml(
   url,
-  { lookup = dns.lookup, cache = new Map(), fetchImpl = fetch } = {},
+  {
+    lookup = dns.lookup,
+    cache = new Map(),
+    fetchImpl = fetch,
+    robotsGate,
+  } = {},
 ) {
   await assertPublicURL(url, {
     lookup,
     cache,
   });
 
+  const gate =
+    robotsGate ||
+    createOriginRobotsGate({
+      cache,
+      userAgent: USER_AGENT,
+    });
+
+  if (!(await gate.allows(url))) {
+    throw new Error("blogroll OPML disallowed by robots.txt");
+  }
+
   const response = await fetchImpl(url, {
     headers: {
       Accept: "text/xml, application/xml, text/x-opml, */*;q=0.1",
-      "User-Agent": "Joshternet-Network-Sync",
+      "User-Agent": USER_AGENT,
     },
     redirect: "error",
     signal: AbortSignal.timeout(15_000),

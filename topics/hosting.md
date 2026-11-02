@@ -5,6 +5,7 @@ description: "Explore Hosting articles, notes, and projects published by indepen
 keywords: "Hosting, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "hosting"
 permalink: /topics/hosting/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Hosting"

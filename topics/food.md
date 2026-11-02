@@ -5,6 +5,7 @@ description: "Explore Food articles, notes, and projects published by independen
 keywords: "Food, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "food"
 permalink: /topics/food/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Food"

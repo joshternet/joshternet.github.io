@@ -1748,14 +1748,14 @@ test("isPhotoAggregatorUrl excludes View All Photos hubs", () => {
   );
 });
 
-test("Muller toilet sample article is not a Showcase project", () => {
+test("isMadeContentItem: article off a creative path stays out of Showcase", () => {
   const item = {
     content_type: "article",
-    url: "https://joshmuller.ca/very_simple_toilet_sample/",
-    site_origin: "https://joshmuller.ca",
-    title: "Very Simple Model of Injection Molded Composting Toilet Frame",
-    summary: "3D Viewer Desktop Controls",
-    image: "https://joshmuller.ca/profile.jpg",
+    url: "https://a.example/writings/sample-model/",
+    site_origin: "https://a.example",
+    title: "Sample model write-up",
+    summary: "Viewer controls",
+    image: "https://a.example/profile.jpg",
     source_kind: "rss",
   };
   assert.equal(isMadeContentItem(item), false);
@@ -1776,7 +1776,7 @@ test("buildMadeItems omits title-echo summaries", () => {
   assert.equal(items[0].summary, "");
 });
 
-test("buildMadeItems keeps all Beard year albums when uncapped", () => {
+test("buildMadeItems keeps all year photo albums when uncapped", () => {
   const years = [
     2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025,
     2026,
@@ -3017,4 +3017,105 @@ test("channelItemsFromNetwork builds Showcase video cards", () => {
   assert.equal(items[0].source.kind, "elsewhere-channel");
   assert.equal(showcaseItemHasSubstance(items[0]), true);
   assert.equal(isMadeContentItem(items[0]), true);
+});
+
+test("isClientCaseStudyUrl: query-style /work/?work= case studies", () => {
+  assert.equal(
+    isClientCaseStudyUrl(
+      "https://www.joshuabaker.com/work/?work=animade-animade-2022",
+    ),
+    true,
+  );
+  assert.equal(
+    isClientCaseStudyUrl("https://www.joshuabaker.com/work/"),
+    false,
+  );
+  assert.equal(
+    isClientCaseStudyUrl("https://agency.example/portfolio/?project=acme"),
+    true,
+  );
+});
+
+test("isMadeContentItem: portfolio-sourced creative path projects are eligible", () => {
+  assert.equal(
+    isMadeContentItem({
+      url: "https://joshuadrake.org/projects/8bip",
+      title: "8-bit Integer Processor",
+      content_type: "project",
+      summary: "An FPGA educational processor project with documentation.",
+      site_origin: "https://joshuadrake.org",
+      source: { kind: "portfolio" },
+      source_kind: "portfolio",
+    }),
+    true,
+  );
+});
+
+test("isMadeContentItem: portfolio-sourced non-creative paths stay excluded", () => {
+  assert.equal(
+    isMadeContentItem({
+      url: "https://www.joshuabaker.com/work/?work=animade-animade-2022",
+      title: "Animade",
+      content_type: "project",
+      summary: "Brand and motion design case study for a studio client.",
+      site_origin: "https://www.joshuabaker.com",
+      source: { kind: "portfolio" },
+      source_kind: "portfolio",
+    }),
+    false,
+  );
+});
+
+test("showcaseItemsForActivity: observed_at alone does not admit undated works", () => {
+  const now = "2026-11-01T00:00:00.000Z";
+  const items = showcaseItemsForActivity(
+    [
+      {
+        url: "https://a.example/experiments/fresh/",
+        title: "Fresh Toy",
+        content_type: "project",
+        summary: "A newly observed experiment without a publisher date.",
+        site_origin: "https://a.example",
+        observed_at: "2026-10-30T00:00:00.000Z",
+      },
+      {
+        url: "https://a.example/experiments/dated/",
+        title: "Dated Toy",
+        content_type: "project",
+        summary: "A publisher-dated experiment inside the activity window.",
+        site_origin: "https://a.example",
+        published_at: "2026-10-28T00:00:00.000Z",
+        observed_at: "2026-11-01T00:00:00.000Z",
+      },
+    ],
+    now,
+  );
+  assert.equal(items.length, 1);
+  assert.equal(items[0].url, "https://a.example/experiments/dated/");
+});
+
+test("isMadeContentItem: portfolio source_feeds off creative path excluded", () => {
+  assert.equal(
+    isMadeContentItem({
+      url: "https://studio.example/clients/acme/",
+      title: "Acme Brand System",
+      content_type: "project",
+      summary: "A client delivery that is not on a creative path.",
+      site_origin: "https://studio.example",
+      source_feeds: [
+        { type: "portfolio", url: "https://studio.example/work/" },
+      ],
+    }),
+    false,
+  );
+});
+
+test("isPortfolioSourcedItem: source_feeds portfolio type alone", () => {
+  assert.equal(
+    isPortfolioSourcedItem({
+      url: "https://studio.example/clients/acme/",
+      source_feeds: [{ type: "portfolio" }],
+    }),
+    true,
+  );
 });

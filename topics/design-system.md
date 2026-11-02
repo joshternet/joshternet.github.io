@@ -5,6 +5,7 @@ description: "Explore Design systems articles, notes, and projects published by 
 keywords: "Design systems, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "design-system"
 permalink: /topics/design-system/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Design systems"

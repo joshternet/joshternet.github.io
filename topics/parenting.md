@@ -5,6 +5,7 @@ description: "Explore Parenting articles, notes, and projects published by indep
 keywords: "Parenting, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "parenting"
 permalink: /topics/parenting/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Parenting"

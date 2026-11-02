@@ -407,7 +407,7 @@ if (fs.existsSync(showcasePath)) {
     const title = typeof item?.title === "string" ? item.title : "";
 
     // views:build (nlp:sync in GitHub Actions) must drop bare /work indexes and
-    // recover Kim-style portfolio card titles to the product name only.
+    // recover numbered portfolio card titles to the product name only.
     if (url && (isBareCreativeIndexUrl(url) || isSiteHomeUrl(url))) {
       fail(
         `showcase must not include site homepages or bare creative indexes: ${url}`,

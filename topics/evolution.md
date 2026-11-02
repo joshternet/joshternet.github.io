@@ -5,6 +5,7 @@ description: "Explore Evolution articles, notes, and projects published by indep
 keywords: "Evolution, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "evolution"
 permalink: /topics/evolution/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Evolution"

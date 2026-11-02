@@ -5,6 +5,7 @@ description: "Explore Logos articles, notes, and projects published by independe
 keywords: "Logos, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "logos"
 permalink: /topics/logos/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Logos"

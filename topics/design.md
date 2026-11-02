@@ -5,6 +5,7 @@ description: "Explore Design articles, notes, and projects published by independ
 keywords: "Design, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "design"
 permalink: /topics/design/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Design"

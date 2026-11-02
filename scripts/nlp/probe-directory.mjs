@@ -30,7 +30,7 @@ import {
   shuffle,
 } from "./directory.mjs";
 import { USER_AGENT, fetchPublicText, writeJSONAtomic } from "./lib.mjs";
-import { robotsAllowsPath } from "./robots.mjs";
+import { createOriginRobotsGate } from "./origin-robots.mjs";
 
 const DEFAULT_LIMIT = 100;
 const DEFAULT_SEED = 1;
@@ -78,6 +78,10 @@ async function main() {
   const allowed = [];
   let skippedRobots = 0;
   let skippedSsrf = 0;
+  const robotsGate = createOriginRobotsGate({
+    cache: dnsCache,
+    userAgent: USER_AGENT,
+  });
 
   for (const origin of listed) {
     try {
@@ -87,19 +91,7 @@ async function main() {
       continue;
     }
 
-    let robotsBody = "";
-
-    try {
-      const robots = await fetchPublicText(`${origin}/robots.txt`, {
-        cache: dnsCache,
-        accept: "text/plain,*/*;q=0.1",
-      });
-      robotsBody = robots.body;
-    } catch {
-      robotsBody = "";
-    }
-
-    if (!robotsAllowsPath(robotsBody, "/", USER_AGENT)) {
+    if (!(await robotsGate.allows(`${origin}/`))) {
       skippedRobots += 1;
       continue;
     }
@@ -125,6 +117,10 @@ async function main() {
       }
 
       for (const feed of feeds) {
+        if (!(await robotsGate.allows(feed.url))) {
+          continue;
+        }
+
         try {
           const fetched = await fetchPublicText(feed.url, {
             cache: dnsCache,

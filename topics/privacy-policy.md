@@ -5,6 +5,7 @@ description: "Explore Privacy Policy articles, notes, and projects published by 
 keywords: "Privacy Policy, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "privacy-policy"
 permalink: /topics/privacy-policy/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Privacy Policy"

@@ -5,6 +5,7 @@ description: "Explore Tutorial articles, notes, and projects published by indepe
 keywords: "Tutorial, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "tutorial"
 permalink: /topics/tutorial/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Tutorial"

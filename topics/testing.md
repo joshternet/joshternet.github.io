@@ -5,6 +5,7 @@ description: "Explore Testing articles, notes, and projects published by indepen
 keywords: "Testing, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "testing"
 permalink: /topics/testing/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Testing"

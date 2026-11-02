@@ -5,6 +5,7 @@ description: "Explore Twitter articles, notes, and projects published by indepen
 keywords: "Twitter, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "twitter"
 permalink: /topics/twitter/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Twitter"

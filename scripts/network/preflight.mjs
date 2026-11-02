@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 
+import { USER_AGENT } from "../nlp/lib.mjs";
 import { partitionPublicParticipants, projectRegistry } from "./lib.mjs";
 
 import { registryNeedsSync, screenshotFileIsPresent } from "./state.mjs";
@@ -30,7 +31,7 @@ async function loadRegistry(source) {
     const response = await fetch(source, {
       headers: {
         Accept: "application/json",
-        "User-Agent": "Joshternet-Network-Preflight",
+        "User-Agent": USER_AGENT,
       },
       redirect: "error",
       signal: AbortSignal.timeout(15_000),

@@ -5,6 +5,7 @@ description: "Explore Executive Power articles, notes, and projects published by
 keywords: "Executive Power, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "executive-power"
 permalink: /topics/executive-power/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Executive Power"

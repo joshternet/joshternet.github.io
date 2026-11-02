@@ -9,6 +9,7 @@
 
 import { contentItemsFromRssOrAtom, isoDateString } from "./content.mjs";
 import { fetchPublicText } from "./lib.mjs";
+import { createOriginRobotsGate } from "./origin-robots.mjs";
 
 /**
  * YouTube channel id from a /channel/UC… URL.
@@ -107,10 +108,12 @@ export function latestPublishedAtFromYoutubeAtom(xml) {
 
 /**
  * Resolve latest upload publish time for one YouTube channel URL.
+ * Honors YouTube robots.txt via the shared origin gate.
  * @param {string} channelUrl
  * @param {{
  *   fetchPublicText?: typeof fetchPublicText,
  *   cache?: Map<string, unknown>,
+ *   robotsGate?: import("./origin-robots.mjs").OriginRobotsGate,
  * }} [options]
  * @returns {Promise<string>}
  */
@@ -119,12 +122,21 @@ export async function resolveYoutubeChannelPublishedAt(
   options = {},
 ) {
   const fetchText = options.fetchPublicText || fetchPublicText;
+  const cache = options.cache || new Map();
+  // Reuse the injected fetch so offline tests and robots share one boundary.
+  const robotsGate =
+    options.robotsGate ||
+    createOriginRobotsGate({ cache, fetchPublicText: fetchText });
   let channelId = youtubeChannelIdFromHref(channelUrl);
 
   if (!channelId) {
+    if (!(await robotsGate.allows(channelUrl))) {
+      return "";
+    }
+
     try {
       const page = await fetchText(channelUrl, {
-        cache: options.cache,
+        cache,
         accept: "text/html,application/xhtml+xml,*/*;q=0.8",
       });
       channelId = youtubeChannelIdFromHtml(page.body);
@@ -139,9 +151,13 @@ export async function resolveYoutubeChannelPublishedAt(
     return "";
   }
 
+  if (!(await robotsGate.allows(feedUrl))) {
+    return "";
+  }
+
   try {
     const feed = await fetchText(feedUrl, {
-      cache: options.cache,
+      cache,
       accept: "application/atom+xml,application/xml,text/xml,*/*;q=0.8",
     });
 
@@ -157,6 +173,7 @@ export async function resolveYoutubeChannelPublishedAt(
  * @param {{
  *   fetchPublicText?: typeof fetchPublicText,
  *   cache?: Map<string, unknown>,
+ *   robotsGate?: import("./origin-robots.mjs").OriginRobotsGate,
  * }} [options]
  * @returns {Promise<Record<string, string>>}
  */

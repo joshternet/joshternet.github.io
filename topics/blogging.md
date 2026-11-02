@@ -5,6 +5,7 @@ description: "Explore Blogging articles, notes, and projects published by indepe
 keywords: "Blogging, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "blogging"
 permalink: /topics/blogging/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Blogging"

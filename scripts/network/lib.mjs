@@ -516,6 +516,22 @@ const PERSON_NAME_STOPWORDS = new Set([
 ]);
 
 /**
+ * Given names that may appear in a host-compressed personal domain title
+ * (Josh Ghent ↔ joshghent). Blocks brand phrases that only look name-shaped
+ * (Forward Bias ↔ forwardbias).
+ * @type {ReadonlySet<string>}
+ */
+const DOMAIN_PERSON_GIVEN_NAMES = new Set([
+  "josh",
+  "joshua",
+  "joseph",
+  "josiah",
+  "josue",
+  "jose",
+  "josé",
+]);
+
+/**
  * True when a string looks like a 2–3 word personal name.
  * @param {string} candidate
  * @returns {boolean}
@@ -543,8 +559,8 @@ export function looksLikePersonName(candidate) {
 }
 
 /**
- * True when text compresses to the host label but is not a person-shaped name
- * (e.g. slogan brand "Josh Can Help" ↔ joshcanhelp).
+ * True when text compresses to the host label as a multi-word brand
+ * (e.g. "Josh Can Help" ↔ joshcanhelp, "Forward Bias" ↔ forwardbias).
  * @param {string} candidate
  * @param {string} domain
  * @returns {boolean}
@@ -557,14 +573,12 @@ export function isDomainCompressingSlogan(candidate, domain) {
     return false;
   }
 
-  // Single-token host brands ("Joshtronic") are fine; multi-word slogans that
-  // only restate the host ("Josh Can Help") are not card titles.
+  // Single-token host brands ("Joshtronic") are fine; multi-word phrases that
+  // only restate the host are not card titles.
   const wordCount = normalized.split(/\s+/u).filter(Boolean).length;
 
   return (
-    wordCount >= 2 &&
-    comparableText(normalized) === comparableText(domainLabel) &&
-    !looksLikePersonName(normalized)
+    wordCount >= 2 && comparableText(normalized) === comparableText(domainLabel)
   );
 }
 
@@ -590,6 +604,15 @@ export function personNameMatchingDomain(candidate, domain) {
   // Prefer multi-word person names over a single token that only restates the host.
   // Reject slogan brands that compress to the host (e.g. "Josh Can Help").
   if (!looksLikePersonName(normalized)) {
+    return "";
+  }
+
+  // looksLikePersonName already requires two or more words.
+  const given = normalized.split(/\s+/u)[0].toLocaleLowerCase("en-US");
+
+  // Host-compressed brands can look name-shaped ("Forward Bias"). Require a
+  // Josh-shaped given name so personal domains win and brand hosts do not.
+  if (!DOMAIN_PERSON_GIVEN_NAMES.has(given)) {
     return "";
   }
 
@@ -716,11 +739,19 @@ export function chooseTitle({
   twitterDescription = "",
   domain = "",
 } = {}) {
+  // Explicit person signals first (author / Person JSON-LD / GitHub-injected
+  // names) so brand titles that compress to the host cannot win.
+  for (const candidate of [jsonLdPersonName, authorName]) {
+    const normalized = normalizeText(candidate);
+
+    if (normalized && looksLikePersonName(normalized)) {
+      return normalized;
+    }
+  }
+
   // Person-shaped names that match the host beat blog-brand site names
-  // (e.g. og:site_name "Developer Musings" vs "Josh Ghent").
+  // (e.g. og:title "Josh Ghent - Developer Musings").
   const personCandidates = [
-    jsonLdPersonName,
-    authorName,
     ogTitle,
     twitterTitle,
     ...titleParts(documentTitle),
@@ -740,16 +771,6 @@ export function chooseTitle({
 
     if (fromText) {
       return fromText;
-    }
-  }
-
-  // Prefer a real person author over a host-label brand (e.g. Joshtronic)
-  // when the author does not compress to the domain label.
-  for (const candidate of [jsonLdPersonName, authorName]) {
-    const normalized = normalizeText(candidate);
-
-    if (normalized && looksLikePersonName(normalized)) {
-      return normalized;
     }
   }
 
@@ -814,12 +835,134 @@ export function chooseTitle({
   return domainFallback || "";
 }
 
+/** @type {number} Blurbs shorter than this are treated as too thin for Network cards. */
+export const NETWORK_DESCRIPTION_MIN_CHARS = 48;
+
+/** @type {number} Soft max length for Network card blurbs (sentence-trimmed). */
+export const NETWORK_DESCRIPTION_MAX_CHARS = 260;
+
+/**
+ * True when a blurb is too thin or boilerplate for a Network card.
+ * @param {unknown} value
+ * @returns {boolean}
+ */
+export function isWeakNetworkDescription(value) {
+  const normalized = normalizeText(value);
+
+  if (!normalized) {
+    return true;
+  }
+
+  const lower = normalized.toLocaleLowerCase("en-US");
+
+  // Exact “Personal Website” / “Website of Name” shells only — role-rich
+  // lines like “Personal Website of X — Technologist | …” stay eligible.
+  if (
+    /^(personal\s+)?(website|homepage|site|web\s*site)(\s+of\s+[\p{L}][\p{L} .'-]*)?$/iu.test(
+      lower,
+    )
+  ) {
+    return true;
+  }
+
+  if (/\bpersonal homepage\b/iu.test(lower)) {
+    return true;
+  }
+
+  if (/\bhome on the web\b/iu.test(lower)) {
+    return true;
+  }
+
+  if (/'s\s+(web\s*)?site$/iu.test(lower)) {
+    return true;
+  }
+
+  if (normalized.length < NETWORK_DESCRIPTION_MIN_CHARS) {
+    return true;
+  }
+
+  return false;
+}
+
+/**
+ * Trims a blurb to the Network card soft max at a sentence boundary when possible.
+ * @param {string} value
+ * @param {number} [maxChars]
+ * @returns {string}
+ */
+export function trimNetworkDescription(
+  value,
+  maxChars = NETWORK_DESCRIPTION_MAX_CHARS,
+) {
+  const normalized = normalizeText(value);
+  const limit =
+    typeof maxChars === "number" && maxChars > 0
+      ? maxChars
+      : NETWORK_DESCRIPTION_MAX_CHARS;
+
+  if (!normalized || normalized.length <= limit) {
+    return normalized;
+  }
+
+  const window = normalized.slice(0, limit + 1);
+  const sentenceEnd = Math.max(
+    window.lastIndexOf(". "),
+    window.lastIndexOf("! "),
+    window.lastIndexOf("? "),
+  );
+
+  if (sentenceEnd >= Math.floor(limit * 0.45)) {
+    return normalizeText(normalized.slice(0, sentenceEnd + 1));
+  }
+
+  const space = window.lastIndexOf(" ");
+
+  if (space >= Math.floor(limit * 0.5)) {
+    return `${normalizeText(normalized.slice(0, space))}…`;
+  }
+
+  return `${normalized.slice(0, limit).trimEnd()}…`;
+}
+
+/**
+ * Quality rank for Network card blurbs. Higher is better; weak blurbs score 0.
+ * @param {string} value
+ * @returns {number}
+ */
+export function networkDescriptionQuality(value) {
+  const normalized = normalizeText(value);
+
+  if (!normalized) {
+    return -1;
+  }
+
+  if (isWeakNetworkDescription(normalized)) {
+    return 0;
+  }
+
+  return Math.min(normalized.length, NETWORK_DESCRIPTION_MAX_CHARS);
+}
+
+/**
+ * Picks the strongest Network card blurb from publisher metadata.
+ * Prefers substantive meta/main/about text; skips thin boilerplate; soft-caps length.
+ * @param {{
+ *   description?: string,
+ *   ogDescription?: string,
+ *   twitterDescription?: string,
+ *   jsonLdDescription?: string,
+ *   mainDescription?: string,
+ *   aboutDescription?: string,
+ * }} [fields]
+ * @returns {string}
+ */
 export function chooseDescription({
   description = "",
   ogDescription = "",
   twitterDescription = "",
   jsonLdDescription = "",
   mainDescription = "",
+  aboutDescription = "",
 } = {}) {
   const candidates = [
     description,
@@ -827,17 +970,44 @@ export function chooseDescription({
     twitterDescription,
     jsonLdDescription,
     mainDescription,
+    aboutDescription,
   ];
+
+  /** @type {string} */
+  let best = "";
+  let bestScore = -1;
+  /** Later copy must beat the current pick by this much to replace authored meta. */
+  const meaningfulGain = 40;
 
   for (const candidate of candidates) {
     const normalized = normalizeText(candidate);
 
-    if (normalized) {
-      return normalized;
+    if (!normalized) {
+      continue;
+    }
+
+    const score = networkDescriptionQuality(normalized);
+
+    if (bestScore <= 0) {
+      if (score > bestScore) {
+        best = normalized;
+        bestScore = score;
+      }
+      continue;
+    }
+
+    // Prefer earlier strong candidates; only upgrade when later text is richer.
+    if (score >= bestScore + meaningfulGain) {
+      best = normalized;
+      bestScore = score;
     }
   }
 
-  return "";
+  if (!best || bestScore <= 0) {
+    return "";
+  }
+
+  return trimNetworkDescription(best);
 }
 
 export function framePolicy({
@@ -952,9 +1122,46 @@ export function isForbiddenAddress(address) {
   return true;
 }
 
+/** @type {number} Hard budget for SSRF DNS lookups (stuck resolvers must not hang sync). */
+export const DNS_LOOKUP_TIMEOUT_MS = 8_000;
+
+/**
+ * Resolves a hostname with a hard timeout.
+ * @param {string} hostname
+ * @param {typeof dns.lookup} lookup
+ * @param {number} timeoutMs
+ * @returns {Promise<Array<{ address: string, family?: number }>>}
+ * @throws {Error} When the lookup fails or exceeds the timeout.
+ */
+async function lookupAddressesWithTimeout(hostname, lookup, timeoutMs) {
+  let timer;
+
+  try {
+    return await Promise.race([
+      lookup(hostname, {
+        all: true,
+        verbatim: true,
+      }),
+      new Promise((_, reject) => {
+        timer = setTimeout(() => {
+          reject(new Error(`DNS lookup timed out for ${hostname}`));
+        }, timeoutMs);
+      }),
+    ]);
+  } finally {
+    if (timer) {
+      clearTimeout(timer);
+    }
+  }
+}
+
 export async function assertPublicURL(
   value,
-  { lookup = dns.lookup, cache = new Map() } = {},
+  {
+    lookup = dns.lookup,
+    cache = new Map(),
+    lookupTimeoutMs = DNS_LOOKUP_TIMEOUT_MS,
+  } = {},
 ) {
   const url = new URL(value);
 
@@ -975,11 +1182,11 @@ export async function assertPublicURL(
   let addresses = cache.get(hostname);
 
   if (!addresses) {
-    addresses = await lookup(hostname, {
-      all: true,
-      verbatim: true,
-    });
-
+    const timeoutMs =
+      typeof lookupTimeoutMs === "number" && lookupTimeoutMs > 0
+        ? lookupTimeoutMs
+        : DNS_LOOKUP_TIMEOUT_MS;
+    addresses = await lookupAddressesWithTimeout(hostname, lookup, timeoutMs);
     cache.set(hostname, addresses);
   }
 

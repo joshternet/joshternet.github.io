@@ -865,7 +865,7 @@ test("githubApiHeaders includes bearer token from options or env", () => {
   try {
     assert.deepEqual(githubApiHeaders(), {
       Accept: "application/vnd.github+json",
-      "User-Agent": "Joshternet-Network-Sync",
+      "User-Agent": "Joshternet-Joshbot (+https://joshternet.org/joshbot)",
     });
     assert.equal(
       githubApiHeaders({ token: " test-token " }).Authorization,

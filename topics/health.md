@@ -5,6 +5,7 @@ description: "Explore Health articles, notes, and projects published by independ
 keywords: "Health, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "health"
 permalink: /topics/health/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Health"

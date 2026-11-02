@@ -5,6 +5,7 @@ description: "Explore Worldcup articles, notes, and projects published by indepe
 keywords: "Worldcup, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "worldcup"
 permalink: /topics/worldcup/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Worldcup"

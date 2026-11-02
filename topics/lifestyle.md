@@ -5,6 +5,7 @@ description: "Explore Lifestyle articles, notes, and projects published by indep
 keywords: "Lifestyle, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "lifestyle"
 permalink: /topics/lifestyle/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Lifestyle"

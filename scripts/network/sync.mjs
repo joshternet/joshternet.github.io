@@ -40,6 +40,7 @@ import {
   framePolicy,
   isDomainCompressingSlogan,
   looksLikePersonName,
+  networkDescriptionQuality,
   partitionPublicParticipants,
   projectRegistry,
   registryParticipationFields,
@@ -49,7 +50,10 @@ import {
 } from "./lib.mjs";
 
 import { extractPageMetadata } from "./metadata.mjs";
-import { slashPageAllowsHostElsewhere } from "./slash-page-catalog.mjs";
+import {
+  isAboutDescriptionPath,
+  slashPageAllowsHostElsewhere,
+} from "./slash-page-catalog.mjs";
 import {
   localPreviewEnabled,
   mergePreviewParticipants,
@@ -71,7 +75,14 @@ import {
 } from "./enrichment-budget.mjs";
 import { formatGeneratedOutputs } from "../format-written.mjs";
 import { writeJSONAtomic, writeTextAtomic } from "../nlp/lib.mjs";
+import { USER_AGENT } from "../nlp/lib.mjs";
+import { createOriginRobotsGate } from "../nlp/origin-robots.mjs";
 import { probeCommonFeedPaths } from "./feed-probes.mjs";
+import {
+  navigateAndSettle,
+  PAGE_NAV_SETTLE_MS,
+  settlePage,
+} from "./page-navigation.mjs";
 
 const DEFAULT_REGISTRY_URL =
   "https://raw.githubusercontent.com/joshternet/index-data/main/registry.json";
@@ -83,8 +94,9 @@ const DEFAULT_OPML_PATH = "assets/network/joshternet.opml";
 const DEFAULT_SCREENSHOT_ROOT = "assets/network/sites";
 
 const NAVIGATION_TIMEOUT_MS = 20_000;
-const SETTLE_TIME_MS = 1_500;
-const SITE_TIMEOUT_MS = 30_000;
+const SETTLE_TIME_MS = PAGE_NAV_SETTLE_MS;
+/** Soft enrichment budget — long enough for settled identity slash probes. */
+const SITE_TIMEOUT_MS = 90_000;
 /** Uncapped identity slash page visits per participant during network enrichment. */
 const MAX_IDENTITY_PAGES = Number.POSITIVE_INFINITY;
 
@@ -115,7 +127,7 @@ async function loadRegistry(source) {
     const response = await fetch(source, {
       headers: {
         Accept: "application/json",
-        "User-Agent": "Joshternet-Network-Sync",
+        "User-Agent": USER_AGENT,
       },
       redirect: "error",
       signal: AbortSignal.timeout(15_000),
@@ -177,18 +189,29 @@ function reportRejectedParticipants(rejected) {
  *   dnsCache: Map<string, unknown>,
  *   context: import("playwright").BrowserContext,
  *   page: import("playwright").Page,
+ *   robotsGate: import("../nlp/origin-robots.mjs").OriginRobotsGate,
  * }>}
  */
 async function openParticipantHomepage(
   browser,
   participant,
-  { settle = false } = {},
+  { settle = false, robotsGate } = {},
 ) {
   const dnsCache = new Map();
+  const gate =
+    robotsGate ||
+    createOriginRobotsGate({
+      cache: dnsCache,
+      userAgent: USER_AGENT,
+    });
 
   await assertPublicURL(participant.origin, {
     cache: dnsCache,
   });
+
+  if (!(await gate.allows(participant.origin))) {
+    throw new Error(`robots.txt disallows ${participant.origin}`);
+  }
 
   const context = await browser.newContext({
     viewport: {
@@ -199,7 +222,7 @@ async function openParticipantHomepage(
     javaScriptEnabled: true,
     serviceWorkers: "block",
     ignoreHTTPSErrors: false,
-    userAgent: "Joshternet-Network-Capture (+https://joshternet.org/network/)",
+    userAgent: USER_AGENT,
   });
 
   const page = await context.newPage();
@@ -227,7 +250,7 @@ async function openParticipantHomepage(
 
   try {
     const response = await page.goto(participant.origin, {
-      waitUntil: "domcontentloaded",
+      waitUntil: "load",
       timeout: NAVIGATION_TIMEOUT_MS,
     });
 
@@ -242,7 +265,10 @@ async function openParticipantHomepage(
     const headers = await response.allHeaders();
 
     if (settle) {
-      await page.waitForTimeout(SETTLE_TIME_MS);
+      await settlePage(page, {
+        timeoutMs: NAVIGATION_TIMEOUT_MS,
+        settleMs: SETTLE_TIME_MS,
+      });
     }
 
     const metadata = await page.evaluate(
@@ -256,6 +282,7 @@ async function openParticipantHomepage(
       dnsCache,
       context,
       page,
+      robotsGate: gate,
     };
   } catch (error) {
     await context.close();
@@ -275,13 +302,21 @@ async function edgesFromBlogrollAds(
   blogrollUrls,
   participantOrigins,
   dnsCache,
+  robotsGate,
 ) {
   const edges = [];
+  const gate =
+    robotsGate ||
+    createOriginRobotsGate({
+      cache: dnsCache,
+      userAgent: USER_AGENT,
+    });
 
   for (const blogrollUrl of blogrollUrls) {
     try {
       const opmlText = await fetchBlogrollOpml(blogrollUrl, {
         cache: dnsCache,
+        robotsGate: gate,
       });
       const outlineOrigins = originsFromBlogrollUrls(
         parseOpmlOutlineUrls(opmlText),
@@ -416,6 +451,7 @@ function identityPagesToVisit(metadata, participantOrigin) {
  * @returns {Promise<{
  *   elsewhere: Array<{url: string, network: string, label: string}>,
  *   links: Array<{href: string, text: string, rel: string[], page: string}>,
+ *   aboutDescription: string,
  * }>}
  */
 async function collectElsewhereAndLinks(
@@ -424,10 +460,20 @@ async function collectElsewhereAndLinks(
   dnsCache,
   participantOrigin,
   signal,
+  robotsGate,
 ) {
   const raw = Array.isArray(metadata.elsewhere) ? [...metadata.elsewhere] : [];
   const homepagePageUrl = page.url();
   const links = stampLinkPages(metadata.links, homepagePageUrl);
+  const gate =
+    robotsGate ||
+    createOriginRobotsGate({
+      cache: dnsCache,
+      userAgent: USER_AGENT,
+    });
+  /** @type {string} */
+  let aboutDescription = "";
+  let aboutScore = -1;
 
   await visitIdentityPages(
     identityPagesToVisit(metadata, participantOrigin),
@@ -439,17 +485,23 @@ async function collectElsewhereAndLinks(
       const identityURL = await assertPublicURL(identityHref, {
         cache: dnsCache,
       });
-      const response = await page.goto(identityURL.href, {
-        waitUntil: "domcontentloaded",
-        timeout: NAVIGATION_TIMEOUT_MS,
-        signal: visitSignal,
-      });
 
-      if (!response || !response.ok()) {
+      if (!(await gate.allows(identityURL.href))) {
         return;
       }
 
+      // Abort between pages, not mid-goto — mid-flight abort races the next URL.
+      const response = await navigateAndSettle(page, identityURL.href, {
+        timeoutMs: NAVIGATION_TIMEOUT_MS,
+        settleMs: SETTLE_TIME_MS,
+        signal: visitSignal,
+      });
+
       if (enrichmentBudgetExhausted(visitSignal)) {
+        return;
+      }
+
+      if (response && typeof response.ok === "function" && !response.ok()) {
         return;
       }
 
@@ -486,6 +538,38 @@ async function collectElsewhereAndLinks(
       if (Array.isArray(identityMetadata.links)) {
         links.push(...stampLinkPages(identityMetadata.links, page.url()));
       }
+
+      // Only about/profile pages contribute blurbs — not friends/hello/uses.
+      if (isAboutDescriptionPath(identityPath)) {
+        const pageBlurb = chooseDescription({
+          description:
+            typeof identityMetadata.description === "string"
+              ? identityMetadata.description
+              : "",
+          ogDescription:
+            typeof identityMetadata.ogDescription === "string"
+              ? identityMetadata.ogDescription
+              : "",
+          twitterDescription:
+            typeof identityMetadata.twitterDescription === "string"
+              ? identityMetadata.twitterDescription
+              : "",
+          jsonLdDescription:
+            typeof identityMetadata.jsonLdDescription === "string"
+              ? identityMetadata.jsonLdDescription
+              : "",
+          mainDescription:
+            typeof identityMetadata.mainDescription === "string"
+              ? identityMetadata.mainDescription
+              : "",
+        });
+        const pageScore = networkDescriptionQuality(pageBlurb);
+
+        if (pageScore > aboutScore) {
+          aboutDescription = pageBlurb;
+          aboutScore = pageScore;
+        }
+      }
     },
     {
       signal,
@@ -503,6 +587,7 @@ async function collectElsewhereAndLinks(
       participantOrigin,
     }),
     links,
+    aboutDescription,
   };
 }
 
@@ -556,32 +641,34 @@ async function enrichFromOpenedPage(
   participantOrigins,
   signal,
 ) {
-  const { metadata, dnsCache, page } = opened;
+  const { metadata, dnsCache, page, robotsGate } = opened;
   const advertisedFeeds = await sanitizeFeeds(metadata.feeds, {
     cache: dnsCache,
   });
   const feeds = await probeCommonFeedPaths(
     participant.origin,
     advertisedFeeds,
-    { cache: dnsCache },
+    { cache: dnsCache, robotsGate },
   );
   const blogrollUrls = await sanitizeBlogrollUrls(metadata.blogrolls, {
     cache: dnsCache,
   });
   const blogrollUrl = blogrollUrls[0] || "";
   const homepagePageUrl = page.url();
-  const { elsewhere, links } = await collectElsewhereAndLinks(
+  const { elsewhere, links, aboutDescription } = await collectElsewhereAndLinks(
     page,
     metadata,
     dnsCache,
     participant.origin,
     signal,
+    robotsGate,
   );
   const edges = await edgesFromBlogrollAds(
     participant.origin,
     blogrollUrls,
     participantOrigins,
     dnsCache,
+    robotsGate,
   );
   const connections = connectionObservations({
     sourceOrigin: participant.origin,
@@ -600,6 +687,7 @@ async function enrichFromOpenedPage(
     metadata: {
       ...metadata,
       elsewhere,
+      aboutDescription,
     },
   };
 }

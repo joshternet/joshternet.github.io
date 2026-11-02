@@ -5,6 +5,7 @@ description: "Explore Earth Observation articles, notes, and projects published 
 keywords: "Earth Observation, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "earth-observation"
 permalink: /topics/earth-observation/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Earth Observation"

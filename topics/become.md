@@ -5,6 +5,7 @@ description: "Explore Becomes articles, notes, and projects published by indepen
 keywords: "Becomes, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "become"
 permalink: /topics/become/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Becomes"

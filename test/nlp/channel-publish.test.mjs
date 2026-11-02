@@ -108,6 +108,11 @@ test("buildChannelPublishByUrl resolves YouTube handles via mocked fetch", async
       null,
     ],
     {
+      // Keep this test offline: never consult live YouTube robots.txt.
+      robotsGate: {
+        allows: async () => true,
+        bodyForOrigin: async () => "",
+      },
       fetchPublicText: async (href) => {
         requested.push(href);
 
@@ -245,4 +250,37 @@ test("resolveYoutubeChannelPublishedAt uses default fetch when unset", async () 
   } finally {
     globalThis.fetch = previousFetch;
   }
+});
+
+test("resolveYoutubeChannelPublishedAt: robots disallow channel page", async () => {
+  assert.equal(
+    await resolveYoutubeChannelPublishedAt("https://www.youtube.com/@blocked", {
+      robotsGate: {
+        allows: async () => false,
+        bodyForOrigin: async () => "",
+      },
+      fetchPublicText: async () => {
+        throw new Error("should not fetch");
+      },
+    }),
+    "",
+  );
+});
+
+test("resolveYoutubeChannelPublishedAt: robots disallow channel feed", async () => {
+  assert.equal(
+    await resolveYoutubeChannelPublishedAt(
+      "https://www.youtube.com/channel/UCfeedblock",
+      {
+        robotsGate: {
+          allows: async (href) => !String(href).includes("feeds/videos.xml"),
+          bodyForOrigin: async () => "",
+        },
+        fetchPublicText: async () => {
+          throw new Error("should not fetch feed");
+        },
+      },
+    ),
+    "",
+  );
 });

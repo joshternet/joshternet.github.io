@@ -213,7 +213,7 @@ export function parseHtmlRegions(html) {
   ).slice(0, 100_000);
 
   const links = [];
-  // Quoted or unquoted href (joshbeard.com and other minified static sites).
+  // Quoted or unquoted href (minified static sites).
   const linkPattern =
     /<a\b([^>]*)href\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))([^>]*)>([\s\S]*?)<\/a>/gi;
 

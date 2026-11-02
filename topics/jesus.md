@@ -5,6 +5,7 @@ description: "Explore Jesus articles, notes, and projects published by independe
 keywords: "Jesus, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "jesus"
 permalink: /topics/jesus/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Jesus"

@@ -5,6 +5,7 @@ description: "Explore AI Agents articles, notes, and projects published by indep
 keywords: "AI Agents, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "ai-agent"
 permalink: /topics/ai-agent/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "AI Agents"

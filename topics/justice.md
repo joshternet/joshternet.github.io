@@ -5,6 +5,7 @@ description: "Explore Justice articles, notes, and projects published by indepen
 keywords: "Justice, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "justice"
 permalink: /topics/justice/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Justice"

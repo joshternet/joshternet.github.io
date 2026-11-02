@@ -5,6 +5,7 @@ description: "Explore Benchmarks articles, notes, and projects published by inde
 keywords: "Benchmarks, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "benchmark"
 permalink: /topics/benchmark/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Benchmarks"

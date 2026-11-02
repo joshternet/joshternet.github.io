@@ -66,7 +66,7 @@ import {
 } from "./page-role.mjs";
 import { collectPortfolio } from "./portfolio.mjs";
 import { buildDataManifest, semanticHash } from "./publish.mjs";
-import { robotsAllowsPath } from "./robots.mjs";
+import { createOriginRobotsGate } from "./origin-robots.mjs";
 import {
   mergeSubjects,
   splitDeclaredAndSignals,
@@ -230,6 +230,10 @@ async function listAllowedOrigins(dnsCache) {
   const allowed = [];
   let skippedRobots = 0;
   let skippedSsrf = 0;
+  const robotsGate = createOriginRobotsGate({
+    cache: dnsCache,
+    userAgent: USER_AGENT,
+  });
 
   for (const origin of listed) {
     try {
@@ -239,19 +243,7 @@ async function listAllowedOrigins(dnsCache) {
       continue;
     }
 
-    let robotsBody = "";
-
-    try {
-      const robots = await fetchPublicText(`${origin}/robots.txt`, {
-        cache: dnsCache,
-        accept: "text/plain,*/*;q=0.1",
-      });
-      robotsBody = robots.body;
-    } catch {
-      robotsBody = "";
-    }
-
-    if (!robotsAllowsPath(robotsBody, "/", USER_AGENT)) {
+    if (!(await robotsGate.allows(`${origin}/`))) {
       skippedRobots += 1;
       continue;
     }
@@ -259,16 +251,23 @@ async function listAllowedOrigins(dnsCache) {
     allowed.push(origin);
   }
 
-  return { listed, allowed, skippedRobots, skippedSsrf };
+  return { listed, allowed, skippedRobots, skippedSsrf, robotsGate };
 }
 
 /**
  * @param {string[]} allowed
  * @param {Map<string, unknown>} dnsCache
+ * @param {import("./origin-robots.mjs").OriginRobotsGate} [robotsGate]
  * @returns {Promise<Array<Record<string, unknown>>>}
  */
-async function harvestOrigins(allowed, dnsCache) {
+async function harvestOrigins(allowed, dnsCache, robotsGate) {
   const records = [];
+  const gate =
+    robotsGate ||
+    createOriginRobotsGate({
+      cache: dnsCache,
+      userAgent: USER_AGENT,
+    });
 
   for (const origin of allowed) {
     const folder = originFolder(origin);
@@ -281,6 +280,10 @@ async function harvestOrigins(allowed, dnsCache) {
       const savedFeeds = [];
 
       for (const [index, feed] of feeds.entries()) {
+        if (!(await gate.allows(feed.url))) {
+          continue;
+        }
+
         try {
           const fetched = await fetchPublicText(feed.url, {
             cache: dnsCache,
@@ -691,7 +694,11 @@ async function main() {
     process.stdout.write(
       `listed=${listed.listed.length} allowed=${listed.allowed.length} skipped_robots=${listed.skippedRobots} skipped_ssrf=${listed.skippedSsrf}\n`,
     );
-    const records = await harvestOrigins(listed.allowed, dnsCache);
+    const records = await harvestOrigins(
+      listed.allowed,
+      dnsCache,
+      listed.robotsGate,
+    );
     manifest = {
       listed: listed.listed.length,
       allowed: listed.allowed.length,

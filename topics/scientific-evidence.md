@@ -5,6 +5,7 @@ description: "Explore Scientific Evidence articles, notes, and projects publishe
 keywords: "Scientific Evidence, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "scientific-evidence"
 permalink: /topics/scientific-evidence/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Scientific Evidence"

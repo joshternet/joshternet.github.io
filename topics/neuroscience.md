@@ -5,6 +5,7 @@ description: "Explore Neuroscience articles, notes, and projects published by in
 keywords: "Neuroscience, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "neuroscience"
 permalink: /topics/neuroscience/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Neuroscience"

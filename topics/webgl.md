@@ -5,6 +5,7 @@ description: "Explore Webgl articles, notes, and projects published by independe
 keywords: "Webgl, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "webgl"
 permalink: /topics/webgl/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Webgl"

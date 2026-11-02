@@ -5,6 +5,7 @@ description: "Explore Personality articles, notes, and projects published by ind
 keywords: "Personality, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "personality"
 permalink: /topics/personality/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Personality"

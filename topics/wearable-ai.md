@@ -5,6 +5,7 @@ description: "Explore Wearable AI articles, notes, and projects published by ind
 keywords: "Wearable AI, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "wearable-ai"
 permalink: /topics/wearable-ai/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Wearable AI"

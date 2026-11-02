@@ -5,6 +5,7 @@ description: "Explore Generator articles, notes, and projects published by indep
 keywords: "Generator, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "generator"
 permalink: /topics/generator/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Generator"

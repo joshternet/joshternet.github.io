@@ -5,6 +5,7 @@ description: "Explore Vleo articles, notes, and projects published by independen
 keywords: "Vleo, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "vleo"
 permalink: /topics/vleo/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Vleo"

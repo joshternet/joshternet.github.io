@@ -487,7 +487,7 @@ export function creativeItemsFromFigures(
  * @returns {Array<Record<string, unknown>>}
  */
 /**
- * Beard-style year album cards: `.album-in-list` → `/photos/{year}/`.
+ * Year album cards: `.album-in-list` → `/photos/{year}/`.
  * @param {string} html
  * @param {string} pageUrl
  * @param {string} siteOrigin
@@ -842,7 +842,7 @@ export function creativeItemsFromIndexLinks(
     const imgInAnchor = anchorHtml.match(
       /<img\b[^>]*src\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i,
     );
-    // Prefer media/copy that follows this card’s link (joshtronic-style:
+    // Prefer media/copy that follows this card’s link (shelf cards often:
     // <h3><a>…</a></h3><img class="project">…<p>blurb</p>) instead of the
     // previous card’s trailing image in a short ±120 window.
     const afterStart = match.index + anchorHtml.length;
@@ -1261,7 +1261,7 @@ function isHomepageProductShelfHeading(heading) {
 }
 
 /**
- * Title + blurb from a Projects-shelf anchor (e.g. Josh Grant dual `<span>`).
+ * Title + blurb from a Projects-shelf anchor (e.g. dual `<span>` shelves).
  * @param {string} innerHtml
  * @returns {{ title: string, summary: string }}
  */
@@ -1338,7 +1338,7 @@ export function isExternalProductProjectUrl(href, siteOrigin) {
   }
 
   if (host === "github.com" || host === "www.github.com") {
-    // Require owner/repo (MusicX), not a bare profile.
+    // Require owner/repo, not a bare profile.
     return parts.length >= 2;
   }
 
@@ -1566,7 +1566,7 @@ export function creativeItemsFromHomepageLinks(
 
 /**
  * Projects index pages (`/projects/`) listing same-origin and off-origin works
- * (Josh Grant: Morning App, Wizardly Words, MusicX, Seedling).
+ * (first-party apps linked from a Projects shelf, including off-origin).
  * @param {string} html
  * @param {string} pageUrl
  * @param {string} siteOrigin

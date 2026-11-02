@@ -5,6 +5,7 @@ description: "Explore Computer Vision articles, notes, and projects published by
 keywords: "Computer Vision, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "computer-vision"
 permalink: /topics/computer-vision/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Computer Vision"

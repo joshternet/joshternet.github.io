@@ -5,6 +5,7 @@ description: "Explore Conflict articles, notes, and projects published by indepe
 keywords: "Conflict, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "conflict"
 permalink: /topics/conflict/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Conflict"

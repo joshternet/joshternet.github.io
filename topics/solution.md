@@ -5,6 +5,7 @@ description: "Explore Solution articles, notes, and projects published by indepe
 keywords: "Solution, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "solution"
 permalink: /topics/solution/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Solution"

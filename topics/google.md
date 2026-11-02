@@ -5,6 +5,7 @@ description: "Explore Google articles, notes, and projects published by independ
 keywords: "Google, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "google"
 permalink: /topics/google/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Google"

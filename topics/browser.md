@@ -5,6 +5,7 @@ description: "Explore Browsers articles, notes, and projects published by indepe
 keywords: "Browsers, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "browser"
 permalink: /topics/browser/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Browsers"

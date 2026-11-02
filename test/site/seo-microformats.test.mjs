@@ -58,8 +58,35 @@ test("derived pages declare schema.org types and extra JSON-LD", async () => {
   assert.match(await read("specs.md"), /type: TechArticle/);
   assert.match(await read("search.md"), /robots: noindex/);
   assert.match(await read("search.md"), /sitemap: false/);
-  assert.match(await read("_layouts/default.html"), /page\.robots/);
+  assert.match(
+    await read("_layouts/default.html"),
+    /robots_directive = page\.robots \| default: layout\.robots/,
+  );
+  assert.match(
+    await read("_layouts/topic.html"),
+    /robots: max-snippet:160, max-image-preview:large/,
+  );
   assert.match(await read("implement/connections.md"), /type: TechArticle/);
+  assert.match(
+    await read("implement/connections.md"),
+    /Crawling and SEO manners/,
+  );
+  assert.match(
+    await read("activity.md"),
+    /robots: max-snippet:160, max-image-preview:large/,
+  );
+  assert.match(
+    await read("showcase.md"),
+    /robots: max-snippet:160, max-image-preview:large/,
+  );
+  assert.match(
+    await read("topics/index.md"),
+    /robots: max-snippet:160, max-image-preview:large/,
+  );
+  assert.match(
+    await read("index.md"),
+    /robots: max-snippet:160, max-image-preview:large/,
+  );
 });
 
 test("lists and cards expose h-feed, h-entry, and h-card", async () => {
@@ -100,6 +127,7 @@ test("topic stubs include descriptions and CollectionPage SEO", () => {
   const keywords = markdown.match(/keywords: "([^"]+)"/)?.[1] || "";
 
   assert.match(markdown, /type: CollectionPage/);
+  assert.match(markdown, /robots: max-snippet:160, max-image-preview:large/);
   assert.match(markdown, /permalink: \/topics\/ai\//);
   assert.match(markdown, /name: "AI"/);
   assert.match(title, /\bAI\b/);

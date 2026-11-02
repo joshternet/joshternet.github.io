@@ -532,7 +532,13 @@ export const SLASH_PAGE_CATALOG = [
     extraction: "index",
   }),
   entry("/work/", {
-    aliases: ["/projects/", "/portfolio/"],
+    aliases: [
+      "/projects/",
+      "/portfolio/",
+      "/work.html",
+      "/projects.html",
+      "/portfolio.html",
+    ],
     purpose: "Work or portfolio index",
     category: "creative-index",
     uses: ["content"],
@@ -767,6 +773,30 @@ export function slashPageUses(pathname) {
  */
 export function slashPageAllowsHostElsewhere(pathname) {
   return slashPageUses(pathname).includes("site-info");
+}
+
+/**
+ * About / profile paths whose prose may feed Network card `aboutDescription`.
+ * Friends, hello, uses, and other identity pages stay out so directory or
+ * contact copy cannot displace a homepage blurb.
+ * @type {ReadonlySet<string>}
+ */
+const ABOUT_DESCRIPTION_PATHS = new Set([
+  "/about/",
+  "/about-me/",
+  "/aboutme/",
+  "/bio/",
+  "/me/",
+  "/profile/",
+]);
+
+/**
+ * True when this slash path is an about/profile page eligible for card blurbs.
+ * @param {string} pathname
+ * @returns {boolean}
+ */
+export function isAboutDescriptionPath(pathname) {
+  return ABOUT_DESCRIPTION_PATHS.has(normalizeSlashPath(pathname));
 }
 
 /**

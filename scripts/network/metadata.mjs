@@ -158,6 +158,11 @@ export function extractPageMetadata(hostCatalog) {
     return true;
   }
 
+  /**
+   * Visible main prose for Network cards. Prefer one long paragraph; if none
+   * qualify, join consecutive short intro lines (e.g. “Hi, I’m Josh.” + next).
+   * @returns {string}
+   */
   function extractMainDescription() {
     const containers = [
       ...document.querySelectorAll("main"),
@@ -166,6 +171,8 @@ export function extractPageMetadata(hostCatalog) {
     ];
 
     const seen = new Set();
+    /** Minimum joined length when falling back to short intro paragraphs. */
+    const joinedMinChars = 48;
 
     for (const container of containers) {
       if (!(container instanceof HTMLElement) || seen.has(container)) {
@@ -180,6 +187,54 @@ export function extractPageMetadata(hostCatalog) {
         }
 
         return normalizeText(paragraph.textContent || "");
+      }
+
+      const parts = [];
+
+      for (const paragraph of container.querySelectorAll("p")) {
+        if (!(paragraph instanceof HTMLElement)) {
+          continue;
+        }
+
+        if (
+          paragraph.closest(
+            [
+              "nav",
+              "header",
+              "footer",
+              "aside",
+              "dialog",
+              "script",
+              "style",
+              "noscript",
+              "template",
+              '[aria-hidden="true"]',
+            ].join(","),
+          )
+        ) {
+          continue;
+        }
+
+        const text = normalizeText(paragraph.textContent || "");
+
+        if (text.length < 12) {
+          continue;
+        }
+
+        parts.push(text);
+        const joined = parts.join(" ");
+
+        if (joined.length >= 80 || parts.length >= 3) {
+          return joined.length >= joinedMinChars ? joined : "";
+        }
+      }
+
+      if (parts.length > 0) {
+        const joined = parts.join(" ");
+
+        if (joined.length >= joinedMinChars) {
+          return joined;
+        }
       }
     }
 
@@ -383,7 +438,7 @@ export function extractPageMetadata(hostCatalog) {
 
   /**
    * Same-origin indieweb slash / about / link-directory pages linked here.
-   * Prefer classic about paths, then /more/ and /site/ (joshbeard-style TOC),
+   * Prefer classic about paths, then /more/ and /site/ identity TOCs,
    * then other identity slash pages by label.
    * @returns {string[]}
    */

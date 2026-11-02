@@ -11,6 +11,7 @@ import { slugifyTopic } from "../network/connections.mjs";
 import { SHOWCASE_CONTENT_TYPES } from "../views/lib.mjs";
 import { buildTopicEvidence, isCommunityEligibleSource } from "./evidence.mjs";
 import { fetchPublicText } from "./lib.mjs";
+import { createOriginRobotsGate } from "./origin-robots.mjs";
 import {
   MAX_SUMMARY_CHARS,
   MAX_TITLE_CHARS,
@@ -696,13 +697,22 @@ export function contentItemsFromRssOrAtom(xml, meta) {
       chunk.match(/<id[^>]*>([\s\S]*?)<\/id>/i)?.[1] ||
       chunk.match(/<guid[^>]*>([\s\S]*?)<\/guid>/i)?.[1] ||
       "";
+    // Publisher dates only for Activity: prefer published/pubDate; Atom
+    // updated is last resort when no publish stamp exists.
     const published =
       chunk.match(/<published[^>]*>([\s\S]*?)<\/published>/i)?.[1] ||
-      chunk.match(/<updated[^>]*>([\s\S]*?)<\/updated>/i)?.[1] ||
       chunk.match(/<pubDate[^>]*>([\s\S]*?)<\/pubDate>/i)?.[1] ||
+      chunk.match(/<updated[^>]*>([\s\S]*?)<\/updated>/i)?.[1] ||
       null;
+    // Prefer dedicated summary fields over full-content HTML bodies.
     const summary = plainTextSummary(
       chunk.match(/<summary[^>]*>([\s\S]*?)<\/summary>/i)?.[1] ||
+        chunk.match(
+          /<itunes:summary[^>]*>([\s\S]*?)<\/itunes:summary>/i,
+        )?.[1] ||
+        chunk.match(
+          /<media:description[^>]*>([\s\S]*?)<\/media:description>/i,
+        )?.[1] ||
         chunk.match(/<description[^>]*>([\s\S]*?)<\/description>/i)?.[1] ||
         "",
     );
@@ -916,7 +926,14 @@ export function contentItemsFromJsonFeed(jsonText, meta) {
               ? data.language
               : "",
         ) || null,
-      summary: plainTextSummary(String(item.summary || "")),
+      summary: plainTextSummary(
+        String(
+          item.summary ||
+            item.content_text ||
+            (typeof item.content_html === "string" ? item.content_html : "") ||
+            "",
+        ),
+      ),
       declared_topics,
       source: { kind: "json-feed", feed: meta.feedUrl },
       source_feeds: [{ type: "json-feed", url: meta.feedUrl }],
@@ -1160,11 +1177,18 @@ export function contentItemsFromHEntryList(html, meta) {
         ""
       ).replace(/<[^>]+>/g, " "),
     );
+    // Prefer p-summary / dedicated blurb over raw e-content so short notes are
+    // not near-fully copied into hub cards (snippet aggregator hygiene).
+    const pSummaryHtml =
+      block.match(
+        /<(?:p|div|span)\b[^>]*class=["'][^"']*\bp-summary\b[^"']*["'][^>]*>([\s\S]*?)<\/(?:p|div|span)>/i,
+      )?.[1] || "";
     const contentHtml =
       block.match(
         /<(?:div|p)\b[^>]*class=["'][^"']*\be-content\b[^"']*["'][^>]*>([\s\S]*?)<\/(?:div|p)>/i,
       )?.[1] || "";
-    const summary = plainTextSummary(contentHtml);
+    const fromPSummary = plainTextSummary(pSummaryHtml);
+    const summary = fromPSummary || plainTextSummary(contentHtml);
     const title = capRemoteString(name || summary, MAX_TITLE_CHARS);
     const publishedMatch = block.match(
       /<time\b[^>]*datetime\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i,
@@ -1480,7 +1504,7 @@ export function contentItemNeedsPosterEnrichment(item) {
           ? source
           : "";
 
-    // Homepage / Projects-shelf products (Wizardly Words, Morning App, …).
+    // Homepage / Projects-shelf products (named roots and off-origin apps).
     if (
       sourceKind === "creative-homepage" ||
       sourceKind === "creative-homepage-shelf" ||
@@ -1515,6 +1539,8 @@ export function contentItemNeedsPosterEnrichment(item) {
  * @param {{
  *   cache?: Map<string, unknown>,
  *   fetchText?: typeof fetchPublicText,
+ *   fetchRobotsText?: typeof fetchPublicText,
+ *   robotsGate?: import("./origin-robots.mjs").OriginRobotsGate,
  * }} [options]
  * @returns {Promise<Array<Record<string, unknown>>>}
  */
@@ -1525,14 +1551,35 @@ export async function enrichContentItemPosters(items, options = {}) {
 
   const fetchText = options.fetchText || fetchPublicText;
   const cache = options.cache || new Map();
+  // Prefer an injected gate (nlp:sync). Default gate never reuses enrich
+  // fetchText (OG stubs must not answer robots.txt). Offline tests inject
+  // fetchRobotsText or robotsGate so allow/deny stays deterministic.
+  /** @type {import("./origin-robots.mjs").OriginRobotsGate} */
+  let robotsGate;
+  if (options.robotsGate) {
+    robotsGate = options.robotsGate;
+  } else if (typeof options.fetchRobotsText === "function") {
+    robotsGate = createOriginRobotsGate({
+      cache,
+      fetchPublicText: options.fetchRobotsText,
+    });
+  } else {
+    robotsGate = createOriginRobotsGate({ cache });
+  }
 
   for (const item of items) {
     if (!contentItemNeedsPosterEnrichment(item)) {
       continue;
     }
 
+    const workUrl = String(item.url);
+
+    if (!(await robotsGate.allows(workUrl))) {
+      continue;
+    }
+
     try {
-      const fetched = await fetchText(String(item.url), {
+      const fetched = await fetchText(workUrl, {
         cache,
         accept: "text/html,application/xhtml+xml;q=0.9,*/*;q=0.8",
       });

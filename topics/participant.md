@@ -5,6 +5,7 @@ description: "Explore Participants articles, notes, and projects published by in
 keywords: "Participants, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "participant"
 permalink: /topics/participant/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Participants"

@@ -5,6 +5,7 @@ description: "Explore Medical Research articles, notes, and projects published b
 keywords: "Medical Research, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "medical-research"
 permalink: /topics/medical-research/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Medical Research"

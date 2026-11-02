@@ -5,6 +5,7 @@ description: "Explore Chromebooks articles, notes, and projects published by ind
 keywords: "Chromebooks, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "chromebook"
 permalink: /topics/chromebook/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Chromebooks"

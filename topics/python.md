@@ -5,6 +5,7 @@ description: "Explore Python articles, notes, and projects published by independ
 keywords: "Python, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "python"
 permalink: /topics/python/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Python"

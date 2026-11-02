@@ -5,6 +5,7 @@ description: "Explore Advent articles, notes, and projects published by independ
 keywords: "Advent, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "advent"
 permalink: /topics/advent/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Advent"

@@ -5,6 +5,7 @@ description: "Explore Operating Systems articles, notes, and projects published 
 keywords: "Operating Systems, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "operating-system"
 permalink: /topics/operating-system/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Operating Systems"

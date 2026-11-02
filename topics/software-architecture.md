@@ -5,6 +5,7 @@ description: "Explore Software architecture articles, notes, and projects publis
 keywords: "Software architecture, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "software-architecture"
 permalink: /topics/software-architecture/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Software architecture"

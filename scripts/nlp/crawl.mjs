@@ -1,10 +1,11 @@
 /**
  * Goal & Constraints:
- * Uncapped same-origin BFS crawl for NLP topic extraction. Seeds from homepage,
- * blind catalog slash probes (even when absent from menus), topic hubs, writing
- * and creative indexes, sitemap locs, and feed entry URLs. Soft-404 duplicates
- * of the homepage are not retained. Skips /.well-known/josh. No per-origin page
- * count stop. Failures for one origin never abort the run.
+ * Bounded same-origin BFS crawl for NLP topic extraction. Seeds from homepage,
+ * optional /.well-known/slashpages OPML, feeds, blind catalog slash probes,
+ * topic hubs, writing and creative indexes, and sitemap locs. Soft-404
+ * duplicates of the homepage are not retained. Skips /.well-known/josh.
+ * Finite per-origin page / child budgets with skip reasons. Failures for one
+ * origin never abort the run.
  */
 
 import { originFromHttpUrl } from "../network/blogroll.mjs";
@@ -19,13 +20,21 @@ import {
   PROBE_SLASH_PATHS,
   contentIndexPaths,
 } from "../network/slash-pages.mjs";
+import {
+  collectSlashpagesCrawlSeeds,
+  fetchSlashpagesManifest,
+} from "../network/slashpages-manifest.mjs";
 import { isNonSubjectSlug } from "./evidence.mjs";
 import {
+  MAX_CONTENT_INDEX_CHILDREN,
   MAX_CRAWL_DEPTH,
+  MAX_PAGES_PER_ORIGIN,
+  MAX_TOPIC_HUB_CHILDREN,
   USER_AGENT,
   fetchPublicText,
   parseHtmlDocument,
 } from "./lib.mjs";
+import { createOriginRobotsGate } from "./origin-robots.mjs";
 import { classifyPageRole } from "./page-role.mjs";
 import { robotsAllowsPath, sitemapUrlsFromRobots } from "./robots.mjs";
 import {
@@ -50,20 +59,16 @@ export const TOPIC_HUB_INDEX_PATHS = [
   "/category/",
 ];
 
-/** Same-origin topic pages followed from a hub listing (uncapped). */
-export const MAX_TOPIC_HUB_CHILDREN = Number.POSITIVE_INFINITY;
+export { MAX_TOPIC_HUB_CHILDREN, MAX_CONTENT_INDEX_CHILDREN };
 
 /** Writing indexes plus indieweb identity slash pages (sitemap-independent). */
 export const CONTENT_INDEX_PATHS = contentIndexPaths();
-
-/** Same-origin article pages followed from a writing index (uncapped). */
-export const MAX_CONTENT_INDEX_CHILDREN = Number.POSITIVE_INFINITY;
 
 const STATIC_PATH =
   /\.(?:css|js|mjs|map|png|jpe?g|gif|webp|svg|ico|xml|json|txt|zip|woff2?)$/i;
 
 /**
- * Per-photo HTML pages (joshbeard-style galleries) starve the crawl budget.
+ * Per-photo HTML pages in year galleries starve the crawl budget.
  * Keep album indexes; skip individual image attachment pages.
  * @param {string} url
  * @returns {boolean}
@@ -649,10 +654,12 @@ export async function fetchRobotsTxt(origin, cache) {
 /**
  * Seeds the crawl queue from robots Sitemap: directives and/or /sitemap.xml.
  * Sitemap index files recurse (capped). Fetch failures are ignored.
+ * Sitemap file GETs are skipped when robots.txt disallows their path.
  * @param {string} origin
  * @param {Map<string, unknown>} cache
  * @param {(url: string, reason?: string) => void} enqueueSeed
  * @param {string} robotsBody
+ * @param {{ allows?: (href: string) => Promise<boolean> }} [gate]
  * @returns {Promise<void>}
  */
 export async function seedUrlsFromSitemaps(
@@ -660,6 +667,7 @@ export async function seedUrlsFromSitemaps(
   cache,
   enqueueSeed,
   robotsBody,
+  gate,
 ) {
   const listed = sitemapUrlsFromRobots(robotsBody).map((href) => {
     try {
@@ -680,6 +688,22 @@ export async function seedUrlsFromSitemaps(
     const sitemapUrl = /** @type {string} */ (toFetch.shift());
     seenFiles.add(sitemapUrl);
     processed += 1;
+
+    if (gate?.allows) {
+      if (!(await gate.allows(sitemapUrl))) {
+        continue;
+      }
+    } else {
+      try {
+        const pathname = new URL(sitemapUrl).pathname;
+
+        if (!robotsAllowsPath(robotsBody, pathname, USER_AGENT)) {
+          continue;
+        }
+      } catch {
+        continue;
+      }
+    }
 
     let body = "";
 
@@ -721,7 +745,23 @@ export async function seedUrlsFromSitemaps(
  */
 export async function crawlOrigin(origin, options = {}) {
   const cache = options.cache || new Map();
-  /** @type {Array<{url: string, depth: number}>} */
+  const maxPages =
+    typeof options.maxPagesPerOrigin === "number" &&
+    Number.isFinite(options.maxPagesPerOrigin) &&
+    options.maxPagesPerOrigin > 0
+      ? Math.floor(options.maxPagesPerOrigin)
+      : MAX_PAGES_PER_ORIGIN;
+  const maxTopicChildren =
+    typeof options.maxTopicHubChildren === "number" &&
+    options.maxTopicHubChildren > 0
+      ? Math.floor(options.maxTopicHubChildren)
+      : MAX_TOPIC_HUB_CHILDREN;
+  const maxIndexChildren =
+    typeof options.maxContentIndexChildren === "number" &&
+    options.maxContentIndexChildren > 0
+      ? Math.floor(options.maxContentIndexChildren)
+      : MAX_CONTENT_INDEX_CHILDREN;
+  /** @type {Array<{url: string, depth: number, seedClass?: string}>} */
   const queue = [];
   const seedSeen = new Set();
   const seen = new Set();
@@ -731,16 +771,36 @@ export async function crawlOrigin(origin, options = {}) {
   const outbound = [];
   /** @type {Record<string, string>} */
   const selectionReasons = {};
-  const robotsBody = await fetchRobotsTxt(origin, cache);
+  /** @type {Record<string, string>} */
+  const skipReasons = {};
+  /** @type {Record<string, number>} */
+  const seedClassCounts = {
+    home: 0,
+    feed: 0,
+    "slashpages-manifest": 0,
+    about: 0,
+    "content-index": 0,
+    "topic-hub": 0,
+    sitemap: 0,
+    "blind-probe": 0,
+    seed: 0,
+  };
+  const robotsGate =
+    options.robotsGate ||
+    createOriginRobotsGate({
+      cache,
+      userAgent: USER_AGENT,
+    });
+  const robotsBody = await robotsGate.bodyForOrigin(origin);
 
   /**
-   * True when robots.txt allows this URL's pathname for JoshternetNLP.
+   * True when robots.txt allows this URL's pathname for Joshternet-Joshbot.
    * @param {string} url
    * @returns {boolean}
    */
   function pathAllowed(url) {
-    const pathname = new URL(url).pathname;
-    return robotsAllowsPath(robotsBody, pathname, USER_AGENT);
+    // enqueueSeed / resolveSameOrigin only pass absolute http(s) URLs.
+    return robotsAllowsPath(robotsBody, new URL(url).pathname, USER_AGENT);
   }
 
   /**
@@ -755,7 +815,7 @@ export async function crawlOrigin(origin, options = {}) {
 
     seedSeen.add(url);
     selectionReasons[url] = reason;
-    queue.push({ url, depth: 0 });
+    queue.push({ url, depth: 0, seedClass: reason });
   }
 
   const homeUrl = `${origin}/`;
@@ -776,24 +836,53 @@ export async function crawlOrigin(origin, options = {}) {
     enqueueSeed(resolveSameOrigin(origin, feedUrl), "feed");
   }
 
-  for (const url of probeSlashSeedUrls(origin)) {
-    enqueueSeed(url, "blind-probe");
-  }
+  // Optional /.well-known/slashpages OPML seeds (same-origin only).
+  if (options.skipSlashpagesManifest !== true) {
+    const manifest = await fetchSlashpagesManifest(origin, {
+      cache,
+      robotsGate,
+    }).catch(() => null);
 
-  for (const url of topicHubSeedUrls(origin)) {
-    enqueueSeed(url, "topic-hub");
+    for (const seedUrl of collectSlashpagesCrawlSeeds(manifest)) {
+      enqueueSeed(resolveSameOrigin(origin, seedUrl), "slashpages-manifest");
+    }
   }
 
   for (const url of contentIndexSeedUrls(origin)) {
     enqueueSeed(url, "content-index");
   }
 
-  await seedUrlsFromSitemaps(origin, cache, enqueueSeed, robotsBody);
+  for (const url of topicHubSeedUrls(origin)) {
+    enqueueSeed(url, "topic-hub");
+  }
+
+  await seedUrlsFromSitemaps(
+    origin,
+    cache,
+    enqueueSeed,
+    robotsBody,
+    robotsGate,
+  );
+
+  for (const url of probeSlashSeedUrls(origin)) {
+    enqueueSeed(url, "blind-probe");
+  }
 
   /** @type {{ title: string, canonical: string, fingerprint: string } | null} */
   let homeSignature = null;
 
   while (queue.length > 0) {
+    if (pages.length >= maxPages) {
+      for (const remaining of queue) {
+        if (remaining?.url && !skipReasons[remaining.url]) {
+          skipReasons[remaining.url] = "max-pages";
+          selectionReasons[remaining.url] =
+            selectionReasons[remaining.url] || "budget-exhausted";
+        }
+      }
+      break;
+    }
+
     const next = queue.shift();
 
     if (!next || seen.has(next.url) || next.depth > MAX_CRAWL_DEPTH) {
@@ -802,16 +891,23 @@ export async function crawlOrigin(origin, options = {}) {
 
     if (isPhotoAttachmentUrl(next.url)) {
       seen.add(next.url);
+      skipReasons[next.url] = "photo-attachment";
       continue;
     }
 
     seen.add(next.url);
+
+    const seedClass = next.seedClass || selectionReasons[next.url] || "seed";
+    if (Object.prototype.hasOwnProperty.call(seedClassCounts, seedClass)) {
+      seedClassCounts[seedClass] += 1;
+    }
 
     let fetched;
 
     try {
       fetched = await fetchPublicText(next.url, { cache });
     } catch {
+      skipReasons[next.url] = "fetch-failed";
       continue;
     }
 
@@ -914,9 +1010,11 @@ export async function crawlOrigin(origin, options = {}) {
       origin,
       fetched.url,
       document.links,
+      maxTopicChildren,
     )) {
       if (!seen.has(child) && pathAllowed(child)) {
-        queue.push({ url: child, depth: 0 });
+        selectionReasons[child] = selectionReasons[child] || "topic-hub";
+        queue.push({ url: child, depth: 0, seedClass: "topic-hub" });
       }
     }
 
@@ -927,6 +1025,7 @@ export async function crawlOrigin(origin, options = {}) {
       origin,
       fetched.url,
       document.links,
+      maxIndexChildren,
     );
 
     for (let index = indexChildren.length - 1; index >= 0; index -= 1) {
@@ -934,7 +1033,7 @@ export async function crawlOrigin(origin, options = {}) {
 
       if (!seen.has(child) && pathAllowed(child)) {
         selectionReasons[child] = selectionReasons[child] || "content-index";
-        queue.unshift({ url: child, depth: 0 });
+        queue.unshift({ url: child, depth: 0, seedClass: "content-index" });
       }
     }
 
@@ -945,7 +1044,7 @@ export async function crawlOrigin(origin, options = {}) {
 
         if (same && !seen.has(same) && pathAllowed(same)) {
           selectionReasons[same] = "slashes-index";
-          queue.push({ url: same, depth: 0 });
+          queue.push({ url: same, depth: 0, seedClass: "content-index" });
         }
       }
     }
@@ -957,6 +1056,14 @@ export async function crawlOrigin(origin, options = {}) {
     outbound_links: outbound,
     html_subjects: [],
     selection_reasons: selectionReasons,
+    skip_reasons: skipReasons,
+    coverage: {
+      pages_fetched: pages.length,
+      fetch_limit: maxPages,
+      limit_reached: pages.length >= maxPages,
+      seed_class_counts: seedClassCounts,
+      selection_strategy: "bounded-fair-crawl-v1",
+    },
   };
 }
 

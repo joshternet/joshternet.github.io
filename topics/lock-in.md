@@ -5,6 +5,7 @@ description: "Explore Lock IN articles, notes, and projects published by indepen
 keywords: "Lock IN, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "lock-in"
 permalink: /topics/lock-in/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Lock IN"

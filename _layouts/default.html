@@ -70,8 +70,9 @@
     {% if page.joshternet_analysis == 'derived' or layout.joshternet_analysis == 'derived' %}
       <meta name="joshternet-analysis" content="derived">
     {% endif %}
-    {% if page.robots %}
-      <meta name="robots" content="{{ page.robots | escape }}">
+    {% assign robots_directive = page.robots | default: layout.robots %}
+    {% if robots_directive %}
+      <meta name="robots" content="{{ robots_directive | escape }}">
     {% endif %}
     <title>
       {% if page.url == '/' -%}

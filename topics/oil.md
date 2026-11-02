@@ -5,6 +5,7 @@ description: "Explore OIL articles, notes, and projects published by independent
 keywords: "OIL, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "oil"
 permalink: /topics/oil/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "OIL"

@@ -5,6 +5,7 @@ description: "Explore Data articles, notes, and projects published by independen
 keywords: "Data, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "data"
 permalink: /topics/data/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Data"

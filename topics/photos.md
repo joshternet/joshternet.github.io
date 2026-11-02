@@ -5,6 +5,7 @@ description: "Explore Photos articles, notes, and projects published by independ
 keywords: "Photos, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "photos"
 permalink: /topics/photos/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Photos"

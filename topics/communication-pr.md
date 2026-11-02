@@ -5,6 +5,7 @@ description: "Explore Communications & PR articles, notes, and projects publishe
 keywords: "Communications & PR, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "communication-pr"
 permalink: /topics/communication-pr/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Communications & PR"

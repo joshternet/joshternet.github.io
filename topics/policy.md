@@ -5,6 +5,7 @@ description: "Explore Policy articles, notes, and projects published by independ
 keywords: "Policy, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "policy"
 permalink: /topics/policy/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Policy"

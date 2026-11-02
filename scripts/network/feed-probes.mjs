@@ -7,6 +7,8 @@
 
 import dns from "node:dns/promises";
 
+import { USER_AGENT } from "../nlp/lib.mjs";
+import { createOriginRobotsGate } from "../nlp/origin-robots.mjs";
 import { assertPublicURL, normalizeText } from "./lib.mjs";
 
 /** Probe when fewer than this many sanitized feeds exist. */
@@ -91,8 +93,7 @@ async function fetchFeedCandidate(href, options = {}) {
       headers: {
         Accept:
           "application/rss+xml, application/atom+xml, application/feed+json, application/xml, text/xml, */*;q=0.8",
-        "User-Agent":
-          "JoshternetNetwork/1.0 (+https://joshternet.org; feed discovery)",
+        "User-Agent": USER_AGENT,
       },
     });
 
@@ -122,6 +123,7 @@ async function fetchFeedCandidate(href, options = {}) {
  *   fetchImpl?: typeof fetch,
  *   paths?: string[],
  *   timeoutMs?: number,
+ *   robotsGate?: import("../nlp/origin-robots.mjs").OriginRobotsGate,
  * }} [options]
  * @returns {Promise<Array<{url: string, type: string, title?: string}>>}
  */
@@ -142,6 +144,12 @@ export async function probeCommonFeedPaths(
       : COMMON_FEED_PATHS;
   const lookup = options.lookup || dns.lookup;
   const cache = options.cache || new Map();
+  const robotsGate =
+    options.robotsGate ||
+    createOriginRobotsGate({
+      cache,
+      userAgent: USER_AGENT,
+    });
   for (const path of paths) {
     if (current.length >= FEED_PROBE_WHEN_BELOW) {
       break;
@@ -153,6 +161,10 @@ export async function probeCommonFeedPaths(
       href = new URL(path, origin).href;
       await assertPublicURL(href, { lookup, cache });
     } catch {
+      continue;
+    }
+
+    if (!(await robotsGate.allows(href))) {
       continue;
     }
 

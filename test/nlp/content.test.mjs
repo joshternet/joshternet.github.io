@@ -33,6 +33,20 @@ import {
   siteOriginFromContentUrl,
 } from "../../scripts/nlp/content.mjs";
 
+/** Offline robots gate that allows every URL. */
+const ALLOW_ALL_ROBOTS = {
+  allows: async () => true,
+  bodyForOrigin: async () => "",
+};
+
+/**
+ * robots.txt fetch stub that allows every path (empty body ⇒ allow).
+ * @returns {Promise<{ url: string, contentType: string, body: string }>}
+ */
+async function allowAllRobotsText(url) {
+  return { url: String(url), contentType: "text/plain", body: "" };
+}
+
 // ─── contentIdentityKey ───────────────────────────────────────────────────────
 
 test("contentIdentityKey: URL input → url: key with hash stripped", () => {
@@ -2144,6 +2158,33 @@ test("contentItemNeedsPosterEnrichment targets creative paths without images", (
   );
 });
 
+test("enrichContentItemPosters skips URLs robots.txt disallows", async () => {
+  let fetched = false;
+  const items = [
+    {
+      url: "https://a.example/experiments/secret/",
+      content_type: "article",
+      title: "Secret",
+      summary: "",
+      image: "",
+    },
+  ];
+
+  await enrichContentItemPosters(items, {
+    robotsGate: {
+      allows: async () => false,
+      bodyForOrigin: async () => "",
+    },
+    fetchText: async () => {
+      fetched = true;
+      return { url: "", contentType: "text/html", body: "" };
+    },
+  });
+
+  assert.equal(fetched, false);
+  assert.equal(items[0].image, "");
+});
+
 test("enrichContentItemPosters fills publisher og:image for experiments", async () => {
   const poster =
     "https://joshuamorris.info/images/experiments/corkboard-og.webp";
@@ -2158,6 +2199,7 @@ test("enrichContentItemPosters fills publisher og:image for experiments", async 
   ];
 
   await enrichContentItemPosters(items, {
+    robotsGate: ALLOW_ALL_ROBOTS,
     fetchText: async (url) => {
       assert.equal(url, items[0].url);
       return {
@@ -2187,6 +2229,7 @@ test("enrichContentItemPosters skips items that already have posters", async () 
   ];
 
   await enrichContentItemPosters(items, {
+    robotsGate: ALLOW_ALL_ROBOTS,
     fetchText: async () => {
       fetched = true;
       return { url: "", contentType: "text/html", body: "" };
@@ -2312,12 +2355,48 @@ test("enrichContentItemPosters returns empty input unchanged and swallows fetch 
   ];
 
   await enrichContentItemPosters(items, {
+    robotsGate: ALLOW_ALL_ROBOTS,
     fetchText: async () => {
       throw new Error("network down");
     },
   });
 
   assert.equal(items[0].image, "");
+});
+
+test("enrichContentItemPosters builds a default robots gate via fetchRobotsText", async () => {
+  const poster = "https://cdn.example/default-gate.png";
+  const items = [
+    {
+      url: "https://games.example/games/default-gate/",
+      content_type: "game",
+      title: "Default Gate",
+      summary: "",
+      image: "",
+    },
+  ];
+  /** @type {string[]} */
+  const robotsUrls = [];
+
+  await enrichContentItemPosters(items, {
+    fetchRobotsText: async (url) => {
+      robotsUrls.push(String(url));
+      return allowAllRobotsText(url);
+    },
+    fetchText: async (url) => ({
+      url,
+      contentType: "text/html",
+      body: `<html><head>
+        <meta property="og:image" content="${poster}">
+      </head></html>`,
+    }),
+  });
+
+  assert.ok(
+    robotsUrls.some((url) => url.includes("/robots.txt")),
+    "expected default gate to fetch robots.txt",
+  );
+  assert.equal(items[0].image, poster);
 });
 
 test("mergeContentItems keeps existing summary and non-article content_type", () => {
@@ -2361,6 +2440,7 @@ test("enrichContentItemPosters does not replace a non-https image string", async
   ];
 
   await enrichContentItemPosters(items, {
+    robotsGate: ALLOW_ALL_ROBOTS,
     fetchText: async (url) => ({
       url,
       contentType: "text/html",
@@ -2386,6 +2466,7 @@ test("enrichContentItemPosters uses default fetchText/cache options and non-stri
   ];
 
   await enrichContentItemPosters(items, {
+    robotsGate: ALLOW_ALL_ROBOTS,
     fetchText: async (url) => ({
       // non-string body / url exercise ternary false branches
       url: null,
@@ -2457,6 +2538,7 @@ test("enrichContentItemPosters accepts an explicit cache map", async () => {
 
   await enrichContentItemPosters(items, {
     cache,
+    robotsGate: ALLOW_ALL_ROBOTS,
     fetchText: async (url) => ({
       url,
       contentType: "text/html",
@@ -2532,10 +2614,42 @@ test("enrichContentItemPosters uses default fetchText when every item already ha
     },
   ];
 
-  // No fetchText option → covers options.fetchText || fetchPublicText right branch
-  // without performing a network fetch.
+  // No fetchText / robotsGate / fetchRobotsText → default lib fetch + default
+  // robots gate (else branch) without performing a network fetch.
   const result = await enrichContentItemPosters(items);
   assert.equal(result[0].image, "https://joshtronic.com/images/age.png");
+});
+
+test("enrichContentItemPosters default robots gate allows when robots.txt is absent", async () => {
+  const poster = "https://cdn.example/absent-robots.png";
+  const items = [
+    {
+      url: "https://games.example/games/absent-robots/",
+      content_type: "game",
+      title: "Absent Robots",
+      summary: "",
+      image: "",
+    },
+  ];
+
+  // Neither robotsGate nor fetchRobotsText: createOriginRobotsGate({ cache })
+  // with lib fetch. Stub global fetch via fetchText only for the page HTML;
+  // robots load uses lib fetchPublicText which throws offline → empty body → allow.
+  await enrichContentItemPosters(items, {
+    cache: new Map(),
+    fetchText: async (url) => {
+      assert.match(String(url), /\/games\/absent-robots\//);
+      return {
+        url,
+        contentType: "text/html",
+        body: `<html><head>
+          <meta property="og:image" content="${poster}">
+        </head></html>`,
+      };
+    },
+  });
+
+  assert.equal(items[0].image, poster);
 });
 
 test("enrichContentItemPosters treats non-string image as empty", async () => {
@@ -2549,6 +2663,7 @@ test("enrichContentItemPosters treats non-string image as empty", async () => {
   ];
 
   await enrichContentItemPosters(items, {
+    robotsGate: ALLOW_ALL_ROBOTS,
     fetchText: async (url) => ({
       url,
       contentType: "text/html",
@@ -2560,4 +2675,159 @@ test("enrichContentItemPosters treats non-string image as empty", async () => {
   });
 
   assert.equal(items[0].image, "https://joshtronic.com/images/age.png");
+});
+
+test("contentItemsFromRssOrAtom: prefers pubDate over updated", () => {
+  const xml = `<?xml version="1.0"?>
+  <rss><channel>
+    <item>
+      <title>Prefer publish stamp</title>
+      <link>https://a.example/post/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <updated>Wed, 01 Jan 2025 00:00:00 +0000</updated>
+      <description>Body chrome</description>
+    </item>
+  </channel></rss>`;
+  const items = contentItemsFromRssOrAtom(xml, RSS_META);
+  assert.equal(items.length, 1);
+  assert.equal(items[0].published_at, "2024-01-01T00:00:00.000Z");
+});
+
+test("contentItemsFromRssOrAtom: prefers itunes:summary over description", () => {
+  const xml = `<?xml version="1.0"?>
+  <rss><channel>
+    <item>
+      <title>Episode</title>
+      <link>https://a.example/ep/1/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <itunes:summary>Clean episode blurb for listeners.</itunes:summary>
+      <description><![CDATA[<nav>Skip this chrome</nav><p>Long body</p>]]></description>
+    </item>
+  </channel></rss>`;
+  const items = contentItemsFromRssOrAtom(xml, RSS_META);
+  assert.equal(items.length, 1);
+  assert.match(items[0].summary, /Clean episode blurb/);
+  assert.doesNotMatch(items[0].summary, /Skip this chrome/);
+});
+
+test("contentItemsFromJsonFeed: prefers summary over content_html", () => {
+  const json = JSON.stringify({
+    version: "https://jsonfeed.org/version/1",
+    items: [
+      {
+        id: "1",
+        url: "https://a.example/p/1",
+        title: "Hello",
+        date_published: "2024-01-01T00:00:00Z",
+        summary: "Short publisher summary.",
+        content_html: "<nav>Chrome</nav><p>Long body copy here.</p>",
+        tags: ["design"],
+      },
+    ],
+  });
+  const items = contentItemsFromJsonFeed(json, {
+    feedUrl: "https://a.example/feed.json",
+    siteOrigin: "https://a.example",
+    observedAt: "2026-11-01T00:00:00.000Z",
+  });
+  assert.equal(items.length, 1);
+  assert.equal(items[0].summary, "Short publisher summary.");
+  assert.equal(items[0].declared_topics[0]?.slug, "design");
+});
+
+test("contentItemsFromRssOrAtom: prefers media:description when no summary", () => {
+  const xml = `<?xml version="1.0"?>
+  <rss><channel>
+    <item>
+      <title>Clip</title>
+      <link>https://a.example/clip/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <media:description>Media blurb for the clip.</media:description>
+      <description>Fallback description chrome</description>
+    </item>
+  </channel></rss>`;
+  const items = contentItemsFromRssOrAtom(xml, RSS_META);
+  assert.equal(items.length, 1);
+  assert.match(items[0].summary, /Media blurb/);
+});
+
+test("contentItemsFromRssOrAtom: Atom updated used when published and pubDate absent", () => {
+  const xml = `<?xml version="1.0"?>
+  <feed xmlns="http://www.w3.org/2005/Atom">
+    <entry>
+      <title>Only updated</title>
+      <link href="https://a.example/u/"/>
+      <updated>2024-02-02T00:00:00Z</updated>
+      <summary>Atom summary text here.</summary>
+    </entry>
+  </feed>`;
+  const items = contentItemsFromRssOrAtom(xml, ATOM_META);
+  assert.equal(items.length, 1);
+  assert.equal(items[0].published_at, "2024-02-02T00:00:00.000Z");
+  assert.match(items[0].summary, /Atom summary/);
+});
+
+test("contentItemsFromJsonFeed: content_text and content_html fallbacks", () => {
+  const textOnly = contentItemsFromJsonFeed(
+    JSON.stringify({
+      version: "https://jsonfeed.org/version/1",
+      items: [
+        {
+          id: "t",
+          url: "https://a.example/t",
+          title: "T",
+          date_published: "2024-01-01T00:00:00Z",
+          content_text: "Plain text body for the item.",
+        },
+      ],
+    }),
+    {
+      feedUrl: "https://a.example/feed.json",
+      siteOrigin: "https://a.example",
+      observedAt: "2026-11-01T00:00:00.000Z",
+    },
+  );
+  assert.match(textOnly[0].summary, /Plain text body/);
+
+  const htmlOnly = contentItemsFromJsonFeed(
+    JSON.stringify({
+      version: "https://jsonfeed.org/version/1",
+      items: [
+        {
+          id: "h",
+          url: "https://a.example/h",
+          title: "H",
+          date_published: "2024-01-01T00:00:00Z",
+          content_html: "<p>HTML body for the item.</p>",
+        },
+      ],
+    }),
+    {
+      feedUrl: "https://a.example/feed.json",
+      siteOrigin: "https://a.example",
+      observedAt: "2026-11-01T00:00:00.000Z",
+    },
+  );
+  assert.match(htmlOnly[0].summary, /HTML body/);
+
+  const neither = contentItemsFromJsonFeed(
+    JSON.stringify({
+      version: "https://jsonfeed.org/version/1",
+      items: [
+        {
+          id: "n",
+          url: "https://a.example/n",
+          title: "N",
+          date_published: "2024-01-01T00:00:00Z",
+          content_html: 12,
+        },
+      ],
+    }),
+    {
+      feedUrl: "https://a.example/feed.json",
+      siteOrigin: "https://a.example",
+      observedAt: "2026-11-01T00:00:00.000Z",
+    },
+  );
+  assert.equal(neither[0].summary, "");
 });

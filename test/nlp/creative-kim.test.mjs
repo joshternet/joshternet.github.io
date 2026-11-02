@@ -1,17 +1,15 @@
 /**
  * Goal & Constraints:
- * Verify creative-work extraction for the Joshua Kim Studio fixture set.
+ * Verify creative-work extraction for the studio HTML fixture set.
  * - collectCreativeWorks must find all 8 distinct works.
- * - Hot Chocolate must NOT be classified as an upcoming event; it is a project.
- * - Homepage link extraction (creativeItemsFromHomepageLinks) must surface the
- *   6 root project paths linked from the home page.
- * - Schema types added in Phase 1 (MobileApplication, VideoGame, ItemList) must
- *   resolve to recognised content_type values.
+ * - Past hackathon case studies must classify as projects, not upcoming events.
+ * - Homepage link extraction must surface root project paths from the home page.
+ * - Schema types (MobileApplication, VideoGame, ItemList) must resolve to
+ *   recognised content_type values.
  * - categories[] and availability are optional enrichments; when present they
  *   must be arrays/strings respectively.
  *
  * Target files: scripts/nlp/creative.mjs
- * Do not modify plan file or commit.
  */
 
 import assert from "node:assert/strict";
@@ -49,7 +47,7 @@ const PAGES = [
 
 // ─── 8-work coverage ─────────────────────────────────────────────────────────
 
-test("collectCreativeWorks: finds all 8 distinct Joshua Kim works", () => {
+test("collectCreativeWorks: finds all 8 distinct studio fixture works", () => {
   const { items } = collectCreativeWorks(PAGES, {
     siteOrigin: ORIGIN,
     observedAt: OBSERVED_AT,
@@ -86,9 +84,9 @@ test("collectCreativeWorks: finds all 8 distinct Joshua Kim works", () => {
   assert.ok(items.length >= 8, `Expected ≥8 items, got ${items.length}`);
 });
 
-// ─── Hot Chocolate: not an event ──────────────────────────────────────────────
+// ─── Past hackathon case study: not an upcoming event ─────────────────────────
 
-test("collectCreativeWorks: Hot Chocolate is a project, not an upcoming event", () => {
+test("collectCreativeWorks: past hackathon case study is a project, not an upcoming event", () => {
   const { items } = collectCreativeWorks(PAGES, {
     siteOrigin: ORIGIN,
     observedAt: OBSERVED_AT,
@@ -189,7 +187,7 @@ test("creativeItemsFromHomepageLinks: all items have homepage creative source ki
 
 // ─── Schema type resolution ───────────────────────────────────────────────────
 
-test("collectCreativeWorks: MobileApplication (SomaSpace) resolves to game content_type", () => {
+test("collectCreativeWorks: MobileApplication schema resolves to game content_type", () => {
   const { items } = collectCreativeWorks(
     [{ url: `${ORIGIN}/projects`, html: fixture("projects.html"), lang: "en" }],
     { siteOrigin: ORIGIN, observedAt: OBSERVED_AT },
@@ -203,7 +201,7 @@ test("collectCreativeWorks: MobileApplication (SomaSpace) resolves to game conte
   assert.equal(somaSpace.content_type, "game");
 });
 
-test("collectCreativeWorks: VideoGame (Prism Catch) resolves to game content_type", () => {
+test("collectCreativeWorks: VideoGame schema resolves to game content_type", () => {
   const { items } = collectCreativeWorks(
     [{ url: `${ORIGIN}/projects`, html: fixture("projects.html"), lang: "en" }],
     { siteOrigin: ORIGIN, observedAt: OBSERVED_AT },
@@ -216,7 +214,7 @@ test("collectCreativeWorks: VideoGame (Prism Catch) resolves to game content_typ
   assert.equal(prismCatch.content_type, "game");
 });
 
-test("collectCreativeWorks: ItemList (Graphic Design) resolves to collection content_type", () => {
+test("collectCreativeWorks: ItemList schema resolves to collection content_type", () => {
   const { items } = collectCreativeWorks(
     [{ url: `${ORIGIN}/projects`, html: fixture("projects.html"), lang: "en" }],
     { siteOrigin: ORIGIN, observedAt: OBSERVED_AT },
@@ -276,7 +274,7 @@ test("collectCreativeWorks: items without applicationCategory omit categories", 
 
 // ─── All 8 works are same-origin ──────────────────────────────────────────────
 
-test("collectCreativeWorks: all Kim works have joshuakim.studio origin", () => {
+test("collectCreativeWorks: all studio fixture works share the fixture origin", () => {
   const { items } = collectCreativeWorks(PAGES, {
     siteOrigin: ORIGIN,
     observedAt: OBSERVED_AT,

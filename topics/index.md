@@ -9,6 +9,7 @@ keywords: >-
 seo:
   type: CollectionPage
   name: Topics
+robots: max-snippet:160, max-image-preview:large
 permalink: /topics/
 joshternet_analysis: derived
 script: /assets/js/topics.js

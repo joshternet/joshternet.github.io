@@ -5,6 +5,7 @@ description: "Explore Programming articles, notes, and projects published by ind
 keywords: "Programming, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "programming"
 permalink: /topics/programming/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Programming"

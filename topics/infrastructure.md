@@ -5,6 +5,7 @@ description: "Explore Infrastructure articles, notes, and projects published by 
 keywords: "Infrastructure, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "infrastructure"
 permalink: /topics/infrastructure/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Infrastructure"

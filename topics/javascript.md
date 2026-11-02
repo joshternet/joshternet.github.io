@@ -5,6 +5,7 @@ description: "Explore Javascript articles, notes, and projects published by inde
 keywords: "Javascript, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "javascript"
 permalink: /topics/javascript/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Javascript"

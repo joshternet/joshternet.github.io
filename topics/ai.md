@@ -5,6 +5,7 @@ description: "Explore AI articles, notes, and projects published by independent 
 keywords: "AI, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "ai"
 permalink: /topics/ai/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "AI"

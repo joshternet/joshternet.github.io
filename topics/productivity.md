@@ -5,6 +5,7 @@ description: "Explore Productivity articles, notes, and projects published by in
 keywords: "Productivity, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "productivity"
 permalink: /topics/productivity/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Productivity"

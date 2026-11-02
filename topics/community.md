@@ -5,6 +5,7 @@ description: "Explore Community articles, notes, and projects published by indep
 keywords: "Community, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "community"
 permalink: /topics/community/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Community"

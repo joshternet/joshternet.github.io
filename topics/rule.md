@@ -5,6 +5,7 @@ description: "Explore Rules articles, notes, and projects published by independe
 keywords: "Rules, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "rule"
 permalink: /topics/rule/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Rules"

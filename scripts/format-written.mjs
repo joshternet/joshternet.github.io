@@ -90,6 +90,7 @@ export async function resolveGeneratedPaths(root, patterns) {
  * @param {{
  *   root?: string,
  *   strict?: boolean,
+ *   logError?: (message: string) => void,
  *   prettierApi?: {
  *     getFileInfo: typeof prettier.getFileInfo,
  *     resolveConfig: typeof prettier.resolveConfig,
@@ -103,6 +104,17 @@ export async function formatTextForPath(filePath, text, options = {}) {
     typeof options.root === "string" && options.root ? options.root : REPO_ROOT;
   const strict = options.strict === true;
   const prettierApi = options.prettierApi || prettier;
+  /**
+   * Soft-skip reporter. Defaults to stderr for sync; tests inject a capture
+   * so expected skips assert green without looking like suite failures.
+   * @param {string} message
+   */
+  const logError =
+    typeof options.logError === "function"
+      ? options.logError
+      : (message) => {
+          process.stderr.write(message);
+        };
   const absolute = path.resolve(filePath);
   const ignorePath = path.join(root, ".prettierignore");
 
@@ -117,9 +129,7 @@ export async function formatTextForPath(filePath, text, options = {}) {
       throw error;
     }
 
-    process.stderr.write(
-      `prettier getFileInfo skipped ${absolute}: ${error}\n`,
-    );
+    logError(`prettier getFileInfo skipped ${absolute}: ${error}\n`);
     return text;
   }
 
@@ -137,9 +147,7 @@ export async function formatTextForPath(filePath, text, options = {}) {
       throw error;
     }
 
-    process.stderr.write(
-      `prettier resolveConfig skipped ${absolute}: ${error}\n`,
-    );
+    logError(`prettier resolveConfig skipped ${absolute}: ${error}\n`);
     return text;
   }
 
@@ -154,7 +162,7 @@ export async function formatTextForPath(filePath, text, options = {}) {
       throw error;
     }
 
-    process.stderr.write(`prettier format skipped ${absolute}: ${error}\n`);
+    logError(`prettier format skipped ${absolute}: ${error}\n`);
     return text;
   }
 }
@@ -167,6 +175,7 @@ export async function formatTextForPath(filePath, text, options = {}) {
  *   root?: string,
  *   globs?: string[],
  *   strict?: boolean,
+ *   logError?: (message: string) => void,
  *   prettierApi?: {
  *     getFileInfo: typeof prettier.getFileInfo,
  *     resolveConfig: typeof prettier.resolveConfig,
@@ -194,6 +203,7 @@ export async function formatGeneratedOutputs(options = {}) {
     if (!strict) {
       const formatted = await formatTextForPath(filePath, text, {
         root,
+        logError: options.logError,
         prettierApi: options.prettierApi,
       });
       if (formatted !== text) {
@@ -206,6 +216,7 @@ export async function formatGeneratedOutputs(options = {}) {
       const formatted = await formatTextForPath(filePath, text, {
         root,
         strict: true,
+        logError: options.logError,
         prettierApi: options.prettierApi,
       });
       if (formatted !== text) {

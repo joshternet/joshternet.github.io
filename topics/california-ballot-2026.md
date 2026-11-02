@@ -5,6 +5,7 @@ description: "Explore California Ballot 2026 articles, notes, and projects publi
 keywords: "California Ballot 2026, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "california-ballot-2026"
 permalink: /topics/california-ballot-2026/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "California Ballot 2026"

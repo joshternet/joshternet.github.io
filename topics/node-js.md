@@ -5,6 +5,7 @@ description: "Explore Node.js articles, notes, and projects published by indepen
 keywords: "Node.js, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "node-js"
 permalink: /topics/node-js/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Node.js"

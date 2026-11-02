@@ -5,6 +5,7 @@ description: "Explore Money articles, notes, and projects published by independe
 keywords: "Money, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "money"
 permalink: /topics/money/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Money"

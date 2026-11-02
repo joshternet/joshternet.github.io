@@ -5,6 +5,7 @@ description: "Explore Barth articles, notes, and projects published by independe
 keywords: "Barth, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "barth"
 permalink: /topics/barth/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Barth"

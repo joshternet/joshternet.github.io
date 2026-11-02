@@ -5,6 +5,7 @@ description: "Explore Digital Rights articles, notes, and projects published by 
 keywords: "Digital Rights, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "digital-right"
 permalink: /topics/digital-right/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Digital Rights"

@@ -5,6 +5,7 @@ description: "Explore Abuse articles, notes, and projects published by independe
 keywords: "Abuse, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "abuse"
 permalink: /topics/abuse/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Abuse"

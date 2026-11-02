@@ -9,6 +9,7 @@ keywords: >-
 seo:
   type: CollectionPage
   name: What's New
+robots: max-snippet:160, max-image-preview:large
 permalink: /activity/
 joshternet_analysis: derived
 ---

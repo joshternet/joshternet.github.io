@@ -5,6 +5,7 @@ description: "Explore Cares articles, notes, and projects published by independe
 keywords: "Cares, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "care"
 permalink: /topics/care/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Cares"

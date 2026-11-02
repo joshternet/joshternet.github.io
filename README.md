@@ -8,7 +8,7 @@ Project-owned **code** is [BSD-3-Clause](LICENSE). **Prose and docs** are [CC BY
 
 ## SEO and IndieWeb markup
 
-Pages use `jekyll-seo-tag` for canonical/Open Graph/Twitter cards plus page `seo.type` front matter. Derived exploration graphs live in [`_includes/derived-jsonld.html`](_includes/derived-jsonld.html) (CollectionPage/TechArticle/WebPage, Project `about`, capped ItemList, BreadcrumbList). Body markup uses microformats2 (`h-feed` / `h-entry` / `h-card`) on activity, network, connections, topics, and welcome lists. `/search/` stays `robots: noindex` and off the sitemap.
+Pages use `jekyll-seo-tag` for canonical/Open Graph/Twitter cards plus page `seo.type` front matter. Derived exploration graphs live in [`_includes/derived-jsonld.html`](_includes/derived-jsonld.html) (CollectionPage/TechArticle/WebPage, Project `about`, capped ItemList, BreadcrumbList). Body markup uses microformats2 (`h-feed` / `h-entry` / `h-card`) on activity, network, connections, topics, and welcome lists. Aggregator listings use `robots: max-snippet:160, max-image-preview:large`. `/search/` stays `robots: noindex` and off the sitemap. Build-time member crawls honor each site’s `robots.txt` (see [Implement → Connections](implement/connections.md#crawling-and-seo-manners)).
 
 ## Requirements
 

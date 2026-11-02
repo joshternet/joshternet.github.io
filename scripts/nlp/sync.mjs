@@ -63,6 +63,7 @@ import {
   writeJSONAtomic,
   writeTextAtomic,
 } from "./lib.mjs";
+import { createOriginRobotsGate } from "./origin-robots.mjs";
 import { formatGeneratedOutputs } from "../format-written.mjs";
 import { collectCreativeWorks } from "./creative.mjs";
 import { collectEvents } from "./events.mjs";
@@ -190,6 +191,7 @@ async function main() {
   }
 
   const dnsCache = new Map();
+  const robotsGate = createOriginRobotsGate({ cache: dnsCache });
   const participantOrigins = new Set(
     network
       .map((entry) =>
@@ -219,6 +221,7 @@ async function main() {
       const feeds = Array.isArray(participant.feeds) ? participant.feeds : [];
       const feedData = await subjectsFromFeeds(feeds, dnsCache, {
         observedAt: now,
+        robotsGate,
       });
       const aboutUrls = [
         ...(Array.isArray(participant.aboutPageHrefs)
@@ -395,8 +398,12 @@ async function main() {
           ),
       );
 
-      for (const feed of feeds.slice(0, 3)) {
+      for (const feed of feeds) {
         if (!feed || typeof feed.url !== "string") {
+          continue;
+        }
+
+        if (!(await robotsGate.allows(feed.url))) {
           continue;
         }
 
@@ -591,8 +598,11 @@ async function main() {
   const contentItems = joinContentWithPageSignals(draftItems, originSignals);
   // Feed-sourced experiments/games often lack enclosures; pull og:image from
   // the publisher page so Showcase uses the site's existing posters in CI.
-  await enrichContentItemPosters(contentItems, { cache: dnsCache });
-  // Named-root / off-origin shelf projects (Wizardly Words, Morning App, …)
+  await enrichContentItemPosters(contentItems, {
+    cache: dnsCache,
+    robotsGate,
+  });
+  // Named-root / off-origin shelf projects
   // often have no og:image or block plain fetch — capture a viewport poster.
   // Include YouTube/Vimeo/Twitch channel cards from Network elsewhere so
   // Showcase channels get posters in the same pass (files reused at views:build).
@@ -604,6 +614,7 @@ async function main() {
   // Poster capture still covers dormant channels so reuse stays warm.
   const channelPublishByUrl = await buildChannelPublishByUrl(channelDrafts, {
     cache: dnsCache,
+    robotsGate,
   });
   await writeJSONAtomic(CHANNEL_PUBLISH_PATH, channelPublishByUrl);
   const screenshotTargets = [...contentItems];
@@ -624,7 +635,10 @@ async function main() {
     }
   }
 
-  await captureMissingWorkScreenshots(screenshotTargets, { root: ROOT });
+  await captureMissingWorkScreenshots(screenshotTargets, {
+    root: ROOT,
+    robotsGate,
+  });
   const previousConnections = itemsFromCollection(
     await readJSONIfExists(CONNECTIONS_PATH, {}),
     "edges",

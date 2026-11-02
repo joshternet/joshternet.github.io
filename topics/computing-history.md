@@ -5,6 +5,7 @@ description: "Explore Computing History articles, notes, and projects published 
 keywords: "Computing History, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "computing-history"
 permalink: /topics/computing-history/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Computing History"

@@ -5,6 +5,7 @@ description: "Explore Devops articles, notes, and projects published by independ
 keywords: "Devops, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "devops"
 permalink: /topics/devops/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Devops"

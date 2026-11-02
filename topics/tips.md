@@ -5,6 +5,7 @@ description: "Explore Tips articles, notes, and projects published by independen
 keywords: "Tips, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "tips"
 permalink: /topics/tips/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Tips"
