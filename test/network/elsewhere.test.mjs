@@ -617,6 +617,9 @@ test("isElsewhereProfileUrl: medium/substack/bandcamp and similar return true (l
 });
 
 test("isNewsletterHost recognizes Buttondown and skips it in sanitizeElsewhere", async () => {
+  assert.equal(isNewsletterHost(""), false);
+  assert.equal(isNewsletterHost(null), false);
+  assert.equal(isNewsletterHost("   "), false);
   assert.equal(isNewsletterHost("buttondown.com"), true);
   assert.equal(isNewsletterHost("www.buttondown.com"), true);
   assert.equal(isNewsletterHost("example.buttondown.com"), true);
