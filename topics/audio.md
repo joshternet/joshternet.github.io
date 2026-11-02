@@ -5,6 +5,7 @@ description: "Explore Audio articles, notes, and projects published by independe
 keywords: "Audio, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "audio"
 permalink: /topics/audio/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Audio"

@@ -5,6 +5,7 @@ description: "Explore Security articles, notes, and projects published by indepe
 keywords: "Security, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "security"
 permalink: /topics/security/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Security"

@@ -5,6 +5,7 @@ description: "Explore Model articles, notes, and projects published by independe
 keywords: "Model, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "model"
 permalink: /topics/model/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Model"

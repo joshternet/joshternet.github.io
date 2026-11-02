@@ -12,14 +12,22 @@ import { assertPublicURL, normalizeText } from "../network/lib.mjs";
 import { slugifyTopic } from "../network/connections.mjs";
 import { parseHtmlRegions } from "./text.mjs";
 
-/** @deprecated Uncapped crawl — retained as Infinity for compatibility. */
-export const MAX_PAGES_PER_ORIGIN = Number.POSITIVE_INFINITY;
+/**
+ * Finite per-origin page budget for fair crawls. Override via crawl options
+ * `maxPagesPerOrigin`. Large photo archives must not starve creative indexes.
+ */
+export const MAX_PAGES_PER_ORIGIN = 250;
 export const MAX_BYTES_PER_RESPONSE = 1_500_000;
 export const MAX_CRAWL_DEPTH = 4;
 export const MAX_TOPICS_PER_ORIGIN = 24;
+/** Same-origin topic pages followed from a hub listing. */
+export const MAX_TOPIC_HUB_CHILDREN = 40;
+/** Same-origin article/creative pages followed from a content index. */
+export const MAX_CONTENT_INDEX_CHILDREN = 80;
 export const FETCH_TIMEOUT_MS = 12_000;
+/** Canonical crawl UA — same identity as JoshBot (`/joshbot/`). */
 export const USER_AGENT =
-  "JoshternetNLP/1.0 (+https://joshternet.org; topic-hub build crawl)";
+  "Joshternet-Joshbot (+https://joshternet.org/joshbot)";
 
 export { slugifyTopic, normalizeText };
 

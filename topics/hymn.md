@@ -5,6 +5,7 @@ description: "Explore Hymn articles, notes, and projects published by independen
 keywords: "Hymn, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "hymn"
 permalink: /topics/hymn/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Hymn"

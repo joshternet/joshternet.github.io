@@ -5,6 +5,7 @@ description: "Explore Institutions articles, notes, and projects published by in
 keywords: "Institutions, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "institution"
 permalink: /topics/institution/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Institutions"

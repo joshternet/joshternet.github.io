@@ -5,6 +5,7 @@ description: "Explore Consumer Protection articles, notes, and projects publishe
 keywords: "Consumer Protection, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "consumer-protection"
 permalink: /topics/consumer-protection/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Consumer Protection"

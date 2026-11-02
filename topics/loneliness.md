@@ -5,6 +5,7 @@ description: "Explore Loneliness articles, notes, and projects published by inde
 keywords: "Loneliness, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "loneliness"
 permalink: /topics/loneliness/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Loneliness"

@@ -3,12 +3,14 @@
  * After OG enrich (and during views:build for channel cards), any card-worthy
  * item still missing a poster (article, note, project, game, music, video
  * channel, …) gets a Playwright viewport screenshot as local WebP under
- * assets/activity/posters keyed by the work URL. Reuse an on-disk poster when
- * present before launching a browser. Never invent works—only screenshot
- * harvested https URLs. Skip hub, member-homepage, and bare creative-index
- * URLs. Reserve writing slots each sync so articles progress when creative
- * backlog is large. Injectable Playwright for offline tests; cap captures
- * per sync.
+ * assets/activity/posters keyed by the work URL. When Showcase still has a
+ * remote/invalid publisher image after download+resize, snapshot the work
+ * page and rewrite that card to a local WebP keyed by the image URL. Reuse
+ * an on-disk poster when present before launching a browser. Never invent
+ * works—only screenshot harvested https URLs. Skip hub, member-homepage, and
+ * bare creative-index URLs. Reserve writing slots each sync so articles
+ * progress when creative backlog is large. Injectable Playwright for offline
+ * tests; cap captures per sync.
  */
 
 import fs from "node:fs/promises";
@@ -16,6 +18,8 @@ import path from "node:path";
 
 import sharp from "sharp";
 
+import { USER_AGENT } from "../nlp/lib.mjs";
+import { createOriginRobotsGate } from "../nlp/origin-robots.mjs";
 import { loadPlaywright } from "../nlp/render.mjs";
 import {
   SHOWCASE_CONTENT_TYPES,
@@ -23,7 +27,12 @@ import {
   isJoshternetHubContentUrl,
   isMemberSiteHomeItem,
 } from "./lib.mjs";
-import { POSTER_DIRECTORY, posterAssetPath } from "./posters.mjs";
+import {
+  POSTER_DIRECTORY,
+  applyPosterAssets,
+  posterAssetPath,
+  remainingRemoteShowcasePosters,
+} from "./posters.mjs";
 
 /** @type {number} Max work screenshots per sync. */
 export const MAX_WORK_SCREENSHOTS_PER_SYNC = 48;
@@ -434,6 +443,8 @@ export async function awaitPageReadyForScreenshot(page, timeoutMs) {
  *   }>,
  *   maxCaptures?: number,
  *   timeoutMs?: number,
+ *   robotsGate?: import("../nlp/origin-robots.mjs").OriginRobotsGate,
+ *   log?: (message: string) => void,
  * }} [options]
  * @returns {Promise<Array<Record<string, unknown>>>}
  */
@@ -445,7 +456,27 @@ export async function captureMissingWorkScreenshots(items, options = {}) {
   const root = typeof options.root === "string" ? options.root : process.cwd();
   await attachExistingWorkPosters(items, root);
 
-  const pending = items.filter((item) => contentItemNeedsWorkScreenshot(item));
+  const robotsGate =
+    options.robotsGate ||
+    createOriginRobotsGate({
+      userAgent: USER_AGENT,
+      cache: options.cache,
+      fetchPublicText: options.fetchPublicText,
+    });
+  const pending = [];
+
+  for (const item of items.filter((row) =>
+    contentItemNeedsWorkScreenshot(row),
+  )) {
+    // contentItemNeedsWorkScreenshot already requires a plain https URL.
+    const workUrl = String(item.url);
+
+    if (!(await robotsGate.allows(workUrl))) {
+      continue;
+    }
+
+    pending.push(item);
+  }
   const maxCaptures =
     typeof options.maxCaptures === "number" && options.maxCaptures > 0
       ? options.maxCaptures
@@ -492,8 +523,7 @@ export async function captureMissingWorkScreenshots(items, options = {}) {
             width: WORK_SCREENSHOT_WIDTH,
             height: WORK_SCREENSHOT_HEIGHT,
           },
-          userAgent:
-            "JoshternetBot/1.0 (+https://joshternet.org; work screenshot)",
+          userAgent: USER_AGENT,
         });
 
         try {
@@ -546,10 +576,202 @@ export async function captureMissingWorkScreenshots(items, options = {}) {
     contentItemNeedsWorkScreenshot(item),
   ).length;
   const captured = writingCaptured + creativeCaptured;
+  const summary = `work screenshots: ${captured} captured (${writingCaptured} writing, ${creativeCaptured} creative); ${remaining} pending remaining`;
+  /**
+   * Progress reporter. Defaults to console.log for sync; tests inject a
+   * capture so expected summaries assert green without raw terminal noise.
+   * @param {string} message
+   */
+  const log =
+    typeof options.log === "function"
+      ? options.log
+      : (message) => {
+          console.log(message);
+        };
 
-  console.log(
-    `work screenshots: ${captured} captured (${writingCaptured} writing, ${creativeCaptured} creative); ${remaining} pending remaining`,
-  );
+  log(summary);
 
   return items;
+}
+
+/**
+ * When Showcase still points at a remote/invalid publisher image after
+ * download+resize, capture a viewport WebP of the work page and rewrite the
+ * card image to that local poster (keyed by the original image URL).
+ * @param {Record<string, unknown>} views
+ * @param {{
+ *   root?: string,
+ *   importPlaywright?: () => Promise<{
+ *     chromium: {
+ *       launch: (opts?: Record<string, unknown>) => Promise<{
+ *         newContext: (opts?: Record<string, unknown>) => Promise<{
+ *           newPage: () => Promise<{
+ *             goto: (url: string, opts?: Record<string, unknown>) => Promise<unknown>,
+ *             waitForLoadState?: (state: string, opts?: { timeout?: number }) => Promise<unknown>,
+ *             waitForTimeout?: (ms: number) => Promise<unknown>,
+ *             evaluate?: (fn: () => Promise<unknown> | unknown) => Promise<unknown>,
+ *             screenshot: (opts?: Record<string, unknown>) => Promise<Buffer>,
+ *           }>,
+ *           close: () => Promise<void>,
+ *         }>,
+ *         close: () => Promise<void>,
+ *       }>,
+ *     },
+ *   }>,
+ *   timeoutMs?: number,
+ *   robotsGate?: import("../nlp/origin-robots.mjs").OriginRobotsGate,
+ *   log?: (message: string) => void,
+ *   logError?: (message: string) => void,
+ * }} [options]
+ * @returns {Promise<number>} Count of Showcase image URLs localized via snapshot.
+ */
+export async function captureShowcasePosterFallbacks(views, options = {}) {
+  const remaining = remainingRemoteShowcasePosters(views);
+
+  if (remaining.length === 0) {
+    return 0;
+  }
+
+  const root = typeof options.root === "string" ? options.root : process.cwd();
+  /**
+   * @param {string} message
+   */
+  const log =
+    typeof options.log === "function"
+      ? options.log
+      : (message) => {
+          process.stdout.write(message);
+        };
+  /**
+   * @param {string} message
+   */
+  const logError =
+    typeof options.logError === "function"
+      ? options.logError
+      : (message) => {
+          process.stderr.write(message);
+        };
+  const robotsGate =
+    options.robotsGate ||
+    createOriginRobotsGate({
+      userAgent: USER_AGENT,
+      cache: options.cache,
+      fetchPublicText: options.fetchPublicText,
+    });
+  const timeoutMs =
+    typeof options.timeoutMs === "number" && options.timeoutMs > 0
+      ? options.timeoutMs
+      : WORK_SCREENSHOT_TIMEOUT_MS;
+
+  /** @type {Map<string, { image: string, url: string }>} */
+  const byImage = new Map();
+
+  for (const row of remaining) {
+    if (!row.image.startsWith("https://") || !posterAssetPath(row.image)) {
+      continue;
+    }
+
+    if (!row.url.startsWith("https://")) {
+      continue;
+    }
+
+    if (!byImage.has(row.image)) {
+      byImage.set(row.image, row);
+    }
+  }
+
+  if (byImage.size === 0) {
+    return 0;
+  }
+
+  let browser;
+
+  try {
+    const playwright = await loadPlaywright(options.importPlaywright);
+    browser = await playwright.chromium.launch({ headless: true });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    logError(`showcase poster snapshot launch failed: ${message}\n`);
+    return 0;
+  }
+
+  /** @type {Map<string, string>} */
+  const localBySource = new Map();
+  let captured = 0;
+
+  try {
+    for (const [imageUrl, row] of byImage) {
+      if (!(await robotsGate.allows(row.url))) {
+        logError(
+          `showcase poster snapshot skipped (robots): ${row.url} (${imageUrl})\n`,
+        );
+        continue;
+      }
+
+      const assetPath = posterAssetPath(imageUrl);
+      const absolute = absolutePosterPath(root, assetPath);
+
+      try {
+        await fs.mkdir(path.dirname(absolute), { recursive: true });
+        const context = await browser.newContext({
+          viewport: {
+            width: WORK_SCREENSHOT_WIDTH,
+            height: WORK_SCREENSHOT_HEIGHT,
+          },
+          userAgent: USER_AGENT,
+        });
+
+        try {
+          const page = await context.newPage();
+          await page.goto(row.url, {
+            waitUntil: "load",
+            timeout: timeoutMs,
+          });
+          await awaitPageReadyForScreenshot(page, timeoutMs);
+          const png = await page.screenshot({
+            type: "png",
+            fullPage: false,
+            animations: "disabled",
+          });
+          const webp = await sharp(png)
+            .resize(WORK_SCREENSHOT_WIDTH, WORK_SCREENSHOT_HEIGHT, {
+              fit: "cover",
+              position: "top",
+            })
+            .webp({ quality: 82, effort: 5 })
+            .toBuffer();
+          await fs.writeFile(absolute, webp);
+          const written = await fs.stat(absolute);
+
+          if (written.isFile() && written.size > 0) {
+            localBySource.set(imageUrl, assetPath);
+            captured += 1;
+          }
+        } finally {
+          await context.close();
+        }
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        logError(
+          `showcase poster snapshot failed ${row.url} (${imageUrl}): ${message}\n`,
+        );
+      }
+    }
+  } finally {
+    try {
+      await browser.close();
+    } catch {
+      // Ignore close failures after a partial capture run.
+    }
+  }
+
+  if (localBySource.size > 0) {
+    applyPosterAssets(views, localBySource);
+  }
+
+  log(
+    `showcase poster snapshots: ${captured} captured; ${remainingRemoteShowcasePosters(views).length} still remote\n`,
+  );
+
+  return captured;
 }

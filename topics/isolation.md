@@ -5,6 +5,7 @@ description: "Explore Isolation articles, notes, and projects published by indep
 keywords: "Isolation, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "isolation"
 permalink: /topics/isolation/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Isolation"

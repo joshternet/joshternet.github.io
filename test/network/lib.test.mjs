@@ -8,21 +8,29 @@ import {
   chooseDescription,
   chooseTitle,
   decodeHtmlEntities,
+  DNS_LOOKUP_TIMEOUT_MS,
   framePolicy,
   humanNameFromDomain,
   identityFromDeclaration,
+  isDomainCompressingSlogan,
   isForbiddenAddress,
   isParticipatingNode,
+  isWeakNetworkDescription,
   looksLikePersonName,
   MAX_FEEDS_PER_PARTICIPANT,
+  NETWORK_DESCRIPTION_MAX_CHARS,
+  NETWORK_DESCRIPTION_MIN_CHARS,
+  networkDescriptionQuality,
   partitionPublicParticipants,
   personNameFromText,
+  personNameMatchingDomain,
   projectRegistry,
   registryParticipationFields,
   registryTimestamp,
   sanitizeFeeds,
   screenshotPath,
   stableSiteID,
+  trimNetworkDescription,
 } from "../../scripts/network/lib.mjs";
 
 test("maps all three Josh identity states", () => {
@@ -303,6 +311,7 @@ test("humanNameFromDomain rejects non-alpha labels and tlds", () => {
 });
 
 test("looksLikePersonName rejects numeric or stopword tokens", () => {
+  assert.equal(looksLikePersonName(""), false);
   assert.equal(looksLikePersonName("Josh 123"), false);
   assert.equal(looksLikePersonName("A Morris"), false);
   assert.equal(looksLikePersonName("Josh Morris"), true);
@@ -374,6 +383,33 @@ test("metadata title prefers GitHub-sourced person author over slogan site name"
   );
 });
 
+test("metadata title prefers person author over host-compressed brand site name", () => {
+  assert.equal(personNameMatchingDomain("Forward Bias", "forwardbias.dev"), "");
+  assert.equal(
+    isDomainCompressingSlogan("Forward Bias", "forwardbias.dev"),
+    true,
+  );
+  assert.equal(
+    chooseTitle({
+      ogSiteName: "Forward Bias",
+      ogTitle: "Forward Bias",
+      documentTitle: "Forward Bias",
+      domain: "forwardbias.dev",
+    }),
+    "forwardbias.dev",
+  );
+  assert.equal(
+    chooseTitle({
+      ogSiteName: "Forward Bias",
+      ogTitle: "Forward Bias",
+      documentTitle: "Forward Bias",
+      authorName: "Josh Caldwell",
+      domain: "forwardbias.dev",
+    }),
+    "Josh Caldwell",
+  );
+});
+
 test("metadata title prefers author or description name over Josh's site placeholder", () => {
   assert.equal(
     chooseTitle({
@@ -437,19 +473,24 @@ test("metadata title supports Twitter title before raw document title", () => {
 test("description falls back through social and structured metadata", () => {
   assert.equal(
     chooseDescription({
-      twitterDescription: "A description from Twitter metadata.",
-      jsonLdDescription: "A description from structured data.",
-      mainDescription: "A description from visible content.",
+      twitterDescription:
+        "A longer description from Twitter metadata about engineering and writing.",
+      jsonLdDescription:
+        "A longer description from structured data about engineering and writing.",
+      mainDescription:
+        "A longer description from visible content about engineering and writing.",
     }),
-    "A description from Twitter metadata.",
+    "A longer description from Twitter metadata about engineering and writing.",
   );
 
   assert.equal(
     chooseDescription({
-      jsonLdDescription: "A description from structured data.",
-      mainDescription: "A description from visible content.",
+      jsonLdDescription:
+        "A longer description from structured data about engineering and writing.",
+      mainDescription:
+        "A longer description from visible content about engineering and writing.",
     }),
-    "A description from structured data.",
+    "A longer description from structured data about engineering and writing.",
   );
 
   assert.equal(
@@ -464,20 +505,168 @@ test("description falls back through social and structured metadata", () => {
 test("description prefers explicit metadata over visible page content", () => {
   assert.equal(
     chooseDescription({
-      description: "The site's authored meta description.",
-      ogDescription: "The Open Graph description.",
-      mainDescription: "Some introductory homepage text.",
+      description:
+        "The site's authored meta description covering work, writing, and projects.",
+      ogDescription:
+        "The Open Graph description covering work, writing, and projects on the web.",
+      mainDescription:
+        "Some introductory homepage text covering work, writing, and projects.",
     }),
-    "The site's authored meta description.",
+    "The site's authored meta description covering work, writing, and projects.",
   );
 });
 
 test("description normalizes whitespace", () => {
   assert.equal(
     chooseDescription({
-      description: "One\n  useful\t description.",
+      description:
+        "One\n  useful\t description about software, writing, and independent websites.",
     }),
-    "One useful description.",
+    "One useful description about software, writing, and independent websites.",
+  );
+});
+
+test("description rejects thin boilerplate and prefers richer main or about copy", () => {
+  assert.equal(NETWORK_DESCRIPTION_MIN_CHARS, 48);
+  assert.equal(NETWORK_DESCRIPTION_MAX_CHARS, 260);
+  assert.equal(isWeakNetworkDescription("Exploring systems"), true);
+  assert.equal(isWeakNetworkDescription("Joshua Drake's Website"), true);
+  assert.equal(
+    isWeakNetworkDescription("Software engineer personal homepage"),
+    true,
+  );
+  assert.equal(
+    isWeakNetworkDescription("Joshua P. Steele's home on the web"),
+    true,
+  );
+  assert.equal(isWeakNetworkDescription(""), true);
+  assert.equal(
+    isWeakNetworkDescription(
+      "Writing on software engineering, engineering leadership, and building products.",
+    ),
+    false,
+  );
+
+  assert.equal(
+    chooseDescription({
+      description: "Exploring systems",
+      mainDescription:
+        "Notes on systems thinking, tools, and the independent web from ongoing experiments.",
+    }),
+    "Notes on systems thinking, tools, and the independent web from ongoing experiments.",
+  );
+
+  assert.equal(
+    chooseDescription({
+      description: "Joshua Drake's Website",
+      aboutDescription:
+        "Essays and projects from Joshua Drake on theology, technology, and life online.",
+    }),
+    "Essays and projects from Joshua Drake on theology, technology, and life online.",
+  );
+
+  assert.equal(
+    chooseDescription({
+      description: "Software engineer personal homepage",
+      ogDescription: "Joshua's home on the web",
+    }),
+    "",
+  );
+
+  assert.ok(
+    networkDescriptionQuality(
+      "Writing on software engineering, engineering leadership, and building products.",
+    ) > networkDescriptionQuality("Exploring systems"),
+  );
+});
+
+test("description soft-caps long blurbs at a sentence boundary", () => {
+  const long = `${"Word ".repeat(80)}Final sentence stays out.`;
+  const trimmed = trimNetworkDescription(long, 120);
+
+  assert.ok(trimmed.length <= 120);
+  assert.equal(trimmed.includes("Final sentence stays out"), false);
+
+  const sentence =
+    "First sentence is substantive enough for a Network card blurb. Second sentence should be dropped when we truncate.";
+  assert.equal(
+    trimNetworkDescription(sentence, 70),
+    "First sentence is substantive enough for a Network card blurb.",
+  );
+
+  assert.equal(
+    chooseDescription({
+      description: `${"Engineering leadership and product work. ".repeat(12)}Extra.`,
+    }).length <= NETWORK_DESCRIPTION_MAX_CHARS,
+    true,
+  );
+
+  assert.equal(trimNetworkDescription(""), "");
+  assert.equal(
+    trimNetworkDescription("Short blurb.", 0).startsWith("Short"),
+    true,
+  );
+  assert.equal(trimNetworkDescription("abcdefghijKLMNOP", 8), "abcdefgh…");
+  assert.match(
+    trimNetworkDescription("alpha beta gamma delta epsilon zeta", 18),
+    /…$/,
+  );
+});
+
+test("description quality helpers cover remaining weak patterns", () => {
+  assert.equal(isWeakNetworkDescription("Personal Website"), true);
+  assert.equal(isWeakNetworkDescription("website"), true);
+  assert.equal(
+    isWeakNetworkDescription(
+      "Software engineer personal homepage with notes on tools and writing online.",
+    ),
+    true,
+  );
+  assert.equal(
+    isWeakNetworkDescription(
+      "Welcome to the independent web — this is truly Joshua Drake's website",
+    ),
+    true,
+  );
+  assert.equal(
+    isWeakNetworkDescription(
+      "Joshua P. Steele keeps a long home on the web for essays and notes.",
+    ),
+    true,
+  );
+  assert.equal(networkDescriptionQuality(""), -1);
+  assert.equal(networkDescriptionQuality("Exploring systems"), 0);
+
+  // Near-equal length keeps the earlier authored meta field.
+  assert.equal(
+    chooseDescription({
+      description:
+        "A solid authored meta description about software and writing online today.",
+      mainDescription:
+        "Visible homepage copy about software and writing that is only a bit longer.",
+    }),
+    "A solid authored meta description about software and writing online today.",
+  );
+
+  // Multiple weak candidates still yield an empty Network blurb.
+  assert.equal(
+    chooseDescription({
+      description: "Exploring systems",
+      ogDescription: "Short notes",
+      mainDescription: "Hi there",
+    }),
+    "",
+  );
+
+  // Meaningfully richer about copy upgrades past authored meta.
+  assert.equal(
+    chooseDescription({
+      description:
+        "A solid authored meta description about software and writing online today.",
+      aboutDescription:
+        "A much longer about-page introduction covering software craft, independent websites, teaching, and the tools that make creative work possible every week.",
+    }),
+    "A much longer about-page introduction covering software craft, independent websites, teaching, and the tools that make creative work possible every week.",
   );
 });
 
@@ -659,6 +848,28 @@ test("assertPublicURL rejects localhost without resolving it", async () => {
   );
 
   assert.equal(lookupCalled, false);
+});
+
+test("assertPublicURL times out a stuck DNS lookup", async () => {
+  assert.equal(DNS_LOOKUP_TIMEOUT_MS, 8_000);
+
+  await assert.rejects(
+    assertPublicURL("https://example.test/", {
+      lookupTimeoutMs: 20,
+      lookup: async () =>
+        new Promise(() => {
+          // Never resolves — timeout must win.
+        }),
+    }),
+    /DNS lookup timed out for example\.test/,
+  );
+
+  // Non-positive timeout falls back to DNS_LOOKUP_TIMEOUT_MS (lookup still succeeds).
+  const url = await assertPublicURL("https://example-fallback.test/", {
+    lookupTimeoutMs: 0,
+    lookup: async () => [{ address: "93.184.216.34", family: 4 }],
+  });
+  assert.equal(url.hostname, "example-fallback.test");
 });
 
 test("assertPublicURL rejects credential-bearing URLs", async () => {

@@ -5,6 +5,7 @@ description: "Explore AI Safety articles, notes, and projects published by indep
 keywords: "AI Safety, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "ai-safety"
 permalink: /topics/ai-safety/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "AI Safety"

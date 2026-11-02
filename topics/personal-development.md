@@ -5,6 +5,7 @@ description: "Explore Personal Development articles, notes, and projects publish
 keywords: "Personal Development, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "personal-development"
 permalink: /topics/personal-development/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Personal Development"

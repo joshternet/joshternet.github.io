@@ -5,6 +5,7 @@ description: "Explore Business articles, notes, and projects published by indepe
 keywords: "Business, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "business"
 permalink: /topics/business/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Business"

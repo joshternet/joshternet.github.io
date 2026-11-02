@@ -5,6 +5,7 @@ description: "Explore Politics articles, notes, and projects published by indepe
 keywords: "Politics, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "politics"
 permalink: /topics/politics/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Politics"

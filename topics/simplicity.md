@@ -5,6 +5,7 @@ description: "Explore Simplicity articles, notes, and projects published by inde
 keywords: "Simplicity, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "simplicity"
 permalink: /topics/simplicity/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Simplicity"

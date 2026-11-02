@@ -5,6 +5,7 @@ description: "Explore Civic-Virtue articles, notes, and projects published by in
 keywords: "Civic-Virtue, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "civic-virtue"
 permalink: /topics/civic-virtue/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Civic-Virtue"

@@ -5,6 +5,7 @@ description: "Explore Interactive Essays articles, notes, and projects published
 keywords: "Interactive Essays, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "interactive-essay"
 permalink: /topics/interactive-essay/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Interactive Essays"

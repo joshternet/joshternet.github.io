@@ -5,6 +5,7 @@ description: "Explore Internet OF Things articles, notes, and projects published
 keywords: "Internet OF Things, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "internet-of-things"
 permalink: /topics/internet-of-things/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Internet OF Things"

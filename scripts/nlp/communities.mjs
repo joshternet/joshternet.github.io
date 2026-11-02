@@ -530,6 +530,7 @@ description: ${JSON.stringify(description)}
 keywords: ${JSON.stringify(keywords)}
 slug: ${JSON.stringify(topic.slug)}
 permalink: /topics/${topic.slug}/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: ${JSON.stringify(name)}
@@ -552,6 +553,7 @@ export function aliasCompatibilityMarkdown(fromSlug, toSlug) {
 layout: default
 title: ${JSON.stringify(from)}
 permalink: /topics/${from}/
+robots: max-snippet:160, max-image-preview:large
 joshternet_analysis: derived
 ---
 

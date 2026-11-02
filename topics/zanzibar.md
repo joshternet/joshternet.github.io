@@ -5,6 +5,7 @@ description: "Explore Zanzibar articles, notes, and projects published by indepe
 keywords: "Zanzibar, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "zanzibar"
 permalink: /topics/zanzibar/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Zanzibar"

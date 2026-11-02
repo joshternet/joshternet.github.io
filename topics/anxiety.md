@@ -5,6 +5,7 @@ description: "Explore Anxiety articles, notes, and projects published by indepen
 keywords: "Anxiety, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "anxiety"
 permalink: /topics/anxiety/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Anxiety"

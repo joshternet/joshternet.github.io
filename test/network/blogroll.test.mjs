@@ -115,6 +115,10 @@ test("fetchBlogrollOpml rejects oversized bodies", async () => {
   await assert.rejects(
     fetchBlogrollOpml("https://example.test/blogroll.opml", {
       lookup: publicLookup(),
+      robotsGate: {
+        allows: async () => true,
+        bodyForOrigin: async () => "",
+      },
       fetchImpl: async () => {
         return {
           ok: true,
@@ -125,6 +129,26 @@ test("fetchBlogrollOpml rejects oversized bodies", async () => {
     }),
     /size limit/,
   );
+});
+
+test("fetchBlogrollOpml skips robots-disallowed URLs", async () => {
+  let fetches = 0;
+
+  await assert.rejects(
+    fetchBlogrollOpml("https://example.test/blogroll.opml", {
+      lookup: publicLookup(),
+      robotsGate: {
+        allows: async () => false,
+        bodyForOrigin: async () => "",
+      },
+      fetchImpl: async () => {
+        fetches += 1;
+        throw new Error("should not fetch");
+      },
+    }),
+    /disallowed by robots\.txt/,
+  );
+  assert.equal(fetches, 0);
 });
 
 test("buildJoshternetOpml includes feeds and nested blogroll links", () => {

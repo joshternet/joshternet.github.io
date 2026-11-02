@@ -10,6 +10,7 @@ import {
   SLASH_PAGE_CATALOG_VERSION,
   creativeIndexSlashPaths,
   identityLikeSlashPaths,
+  isAboutDescriptionPath,
   isNonHighlightSlashPath,
   normalizeSlashPath,
   pathsForEntry,
@@ -38,6 +39,20 @@ test("normalizeSlashPath: trailing slash forms and empties", () => {
   assert.equal(normalizeSlashPath("gallery/"), "/gallery/");
   assert.equal(normalizeSlashPath("/"), "");
   assert.equal(normalizeSlashPath(""), "");
+});
+
+test("isAboutDescriptionPath: about/profile only, not friends or hello", () => {
+  assert.equal(isAboutDescriptionPath("/about/"), true);
+  assert.equal(isAboutDescriptionPath("/about-me"), true);
+  assert.equal(isAboutDescriptionPath("/bio/"), true);
+  assert.equal(isAboutDescriptionPath("/me/"), true);
+  assert.equal(isAboutDescriptionPath("/profile/"), true);
+  assert.equal(isAboutDescriptionPath("/friends/"), false);
+  assert.equal(isAboutDescriptionPath("/people/"), false);
+  assert.equal(isAboutDescriptionPath("/hello/"), false);
+  assert.equal(isAboutDescriptionPath("/uses/"), false);
+  assert.equal(isAboutDescriptionPath("/"), false);
+  assert.equal(isAboutDescriptionPath(""), false);
 });
 
 test("slashPageUses gates host elsewhere on site-info paths only", () => {

@@ -5,6 +5,7 @@ description: "Explore Software engineering articles, notes, and projects publish
 keywords: "Software engineering, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "software-engineering"
 permalink: /topics/software-engineering/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Software engineering"

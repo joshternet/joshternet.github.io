@@ -56,7 +56,7 @@ const RSS_META = {
   observedAt: "2026-11-01T12:00:00.000Z",
 };
 
-test("empty RSS title falls back to description (Steele notes)", () => {
+test("empty RSS title falls back to description for notes", () => {
   const items = contentItemsFromRssOrAtom(
     readFixture("feeds/steele-feed-snippet.xml"),
     RSS_META,
@@ -155,7 +155,48 @@ test("PaperMod archive-entry list and h-entry notes", () => {
   assert.match(String(notes[0].url), /\/notes\/2026-08-30-0952/);
 });
 
-test("Steele homepage popular posts are not creative projects", () => {
+test("h-entry prefers p-summary over e-content for card snippets", () => {
+  const notes = contentItemsFromHEntryList(
+    `<article class="h-entry">
+      <a class="u-url" href="https://a.example/notes/1/">note</a>
+      <h2 class="p-name">Short title</h2>
+      <p class="p-summary">Publisher blurb only.</p>
+      <div class="e-content"><p>Full note body that should not be the summary when a p-summary exists.</p></div>
+    </article>`,
+    {
+      pageUrl: "https://a.example/",
+      siteOrigin: "https://a.example",
+      observedAt: "2026-11-01T12:00:00.000Z",
+    },
+  );
+
+  assert.equal(notes.length, 1);
+  assert.equal(notes[0].summary, "Publisher blurb only.");
+  assert.doesNotMatch(String(notes[0].summary), /Full note body/);
+});
+
+test("h-entry falls back to e-content when p-summary is absent", () => {
+  const notes = contentItemsFromHEntryList(
+    `<article class="h-entry">
+      <a class="u-url" href="https://a.example/notes/2/">note</a>
+      <h2 class="p-name">Body title</h2>
+      <div class="e-content"><p>Only the entry body is available for the card.</p></div>
+    </article>`,
+    {
+      pageUrl: "https://a.example/",
+      siteOrigin: "https://a.example",
+      observedAt: "2026-11-01T12:00:00.000Z",
+    },
+  );
+
+  assert.equal(notes.length, 1);
+  assert.equal(
+    notes[0].summary,
+    "Only the entry body is available for the card.",
+  );
+});
+
+test("homepage popular-post shelves are not creative projects", () => {
   const items = creativeItemsFromHomepageLinks(
     readFixture("html/steele/home.html"),
     "https://joshuapsteele.com/",
@@ -169,7 +210,7 @@ test("Steele homepage popular posts are not creative projects", () => {
   );
 });
 
-test("Beard album-in-list year cards → photography collections", () => {
+test("album-in-list year cards become photography collections", () => {
   const albums = creativeItemsFromAlbumList(
     readFixture("html/beard-photos-index.html"),
     "https://joshbeard.com/photos/",
@@ -198,7 +239,7 @@ test("Beard album-in-list year cards → photography collections", () => {
   assert.ok(collected.items.some((item) => item.title === "2026"));
 });
 
-test("joshtronic /sounds/ YouTube links become music_recording listen actions", () => {
+test("/sounds/ YouTube links become music_recording listen actions", () => {
   const items = creativeItemsFromExternalListenLinks(
     readFixture("html/joshtronic-sounds.html"),
     "https://joshtronic.com/sounds/",
@@ -233,7 +274,7 @@ test("homepage shelf tolerates Prettier-wrapped </a> and </span> closers", () =>
   assert.match(String(items[0].summary || ""), /Wake up well/);
 });
 
-test("joshgr Projects shelf harvests Morning App, Wizardly Words, MusicX, Seedling", () => {
+test("Projects shelf harvests first-party apps including off-origin links", () => {
   const observedAt = "2026-11-01T12:00:00.000Z";
   const siteOrigin = "https://joshgr.com";
   const home = creativeItemsFromHomepageLinks(

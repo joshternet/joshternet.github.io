@@ -5,6 +5,7 @@ description: "Explore Property & Real Estate articles, notes, and projects publi
 keywords: "Property & Real Estate, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "property-real-estate"
 permalink: /topics/property-real-estate/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Property & Real Estate"

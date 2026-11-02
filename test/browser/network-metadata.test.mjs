@@ -309,6 +309,38 @@ test("prefers main content over cookie and navigation text", async () => {
   );
 });
 
+test("joins short intro paragraphs when none alone are long enough", async () => {
+  await withPage(
+    `
+      <!doctype html>
+      <html>
+        <head>
+          <title>Josh Grant</title>
+          <meta name="description" content="Exploring systems">
+        </head>
+        <body>
+          <main>
+            <section aria-label="About" class="intro">
+              <p>Hi, I’m Josh.</p>
+              <p>
+                There are new worlds of thought to discover; I build software
+                to explore them.
+              </p>
+            </section>
+          </main>
+        </body>
+      </html>
+    `,
+    async (page) => {
+      const metadata = await page.evaluate(extractPageMetadata);
+
+      assert.match(metadata.mainDescription, /^Hi, I’m Josh\./);
+      assert.match(metadata.mainDescription, /build software to explore them/);
+      assert.ok(metadata.mainDescription.length >= 48);
+    },
+  );
+});
+
 test("does not invent a visible description when no useful prose exists", async () => {
   await withPage(
     `
@@ -741,7 +773,7 @@ test("extracts /me as an about page path", async () => {
   );
 });
 
-test("extracts joshbeard-style /more and /site identity pages", async () => {
+test("extracts /more and /site identity pages", async () => {
   await withPage(
     `
       <!doctype html>

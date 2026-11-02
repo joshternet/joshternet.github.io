@@ -5,6 +5,7 @@ description: "Explore Romans articles, notes, and projects published by independ
 keywords: "Romans, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "roman"
 permalink: /topics/roman/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Romans"

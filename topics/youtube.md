@@ -5,6 +5,7 @@ description: "Explore Youtube articles, notes, and projects published by indepen
 keywords: "Youtube, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "youtube"
 permalink: /topics/youtube/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Youtube"

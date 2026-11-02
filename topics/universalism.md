@@ -5,6 +5,7 @@ description: "Explore Universalism articles, notes, and projects published by in
 keywords: "Universalism, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "universalism"
 permalink: /topics/universalism/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Universalism"

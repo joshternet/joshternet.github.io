@@ -5,6 +5,7 @@ description: "Explore Never articles, notes, and projects published by independe
 keywords: "Never, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "never"
 permalink: /topics/never/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Never"

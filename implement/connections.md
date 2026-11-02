@@ -127,10 +127,10 @@ Article bodies are not mirrored.
 
 ## Crawl signals
 
-Build-time crawl. User-Agent:
+Build-time crawl. User-Agent (same crawler identity as [JoshBot](/joshbot/)):
 
 ```text
-JoshternetNLP/1.0 (+https://joshternet.org; topic-hub build crawl)
+Joshternet-Joshbot (+https://joshternet.org/joshbot)
 ```
 
 | Source            | What is read                                                                                                                                                         |
@@ -149,6 +149,19 @@ JoshternetNLP/1.0 (+https://joshternet.org; topic-hub build crawl)
 | Creative content  | Schema.org CreativeWork types, figures, and gallery indexes may publish `content_type` values such as `photograph`, `visual_artwork`, `music_recording`, `music_album`, `sheet_music`, `video`, `game`, `collection`, `project`, and `article`. PDF scores under music/score paths and `MusicComposition` map to `sheet_music` (distinct from audio). Showcase cards link out only—no republish or autoplay. |
 | Credit links      | Explicit credit/collaborator markup (or credit language on `/links`, `/credits`, rolls, and similar) may create a `credit` connection. Generic third-party CDN hosts are not participant edges. |
 | Heuristic TF–IDF  | Persist as signals; public community enrollment only when the quality bar passes                                                                                     |
+
+## Crawling and SEO manners
+
+Member fetches (HTML crawl, feeds, OG enrich, posters, screenshots, network
+discovery, feed probes, blogroll OPML) honor each origin’s `robots.txt`. Missing
+or unreadable robots files allow. Disallowed URLs are skipped—Joshternet never
+invents pages or summaries for blocked paths.
+
+Hub listings (Activity, Showcase, Topics, homepage discovery) store title, a
+capped plain-text summary, and an optional poster only. Cards, `u-url`, and Atom
+alternates point at the publisher. The member site remains canonical; hub pages
+use `max-snippet` so search engines treat Joshternet as an outbound aggregator,
+not a full-text mirror. `/search/` stays `noindex`.
 
 ## When it runs
 

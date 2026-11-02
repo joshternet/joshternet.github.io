@@ -5,6 +5,7 @@ description: "Explore Email articles, notes, and projects published by independe
 keywords: "Email, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "email"
 permalink: /topics/email/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Email"

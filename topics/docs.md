@@ -5,6 +5,7 @@ description: "Explore Docs articles, notes, and projects published by independen
 keywords: "Docs, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "docs"
 permalink: /topics/docs/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Docs"

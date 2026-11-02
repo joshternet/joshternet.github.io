@@ -5,6 +5,7 @@ description: "Explore History articles, notes, and projects published by indepen
 keywords: "History, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "history"
 permalink: /topics/history/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "History"

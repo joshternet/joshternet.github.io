@@ -5,6 +5,7 @@ description: "Explore Online Book Club articles, notes, and projects published b
 keywords: "Online Book Club, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "online-book-club"
 permalink: /topics/online-book-club/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Online Book Club"

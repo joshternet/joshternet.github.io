@@ -5,6 +5,7 @@ description: "Explore Ordination articles, notes, and projects published by inde
 keywords: "Ordination, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "ordination"
 permalink: /topics/ordination/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Ordination"

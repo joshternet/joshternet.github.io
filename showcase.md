@@ -11,6 +11,7 @@ keywords: >-
 seo:
   type: CollectionPage
   name: Showcase
+robots: max-snippet:160, max-image-preview:large
 permalink: /showcase/
 joshternet_analysis: derived
 script: /assets/js/showcase.js

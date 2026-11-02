@@ -5,6 +5,7 @@ description: "Explore Internet Culture articles, notes, and projects published b
 keywords: "Internet Culture, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "internet-culture"
 permalink: /topics/internet-culture/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Internet Culture"

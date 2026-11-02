@@ -5,6 +5,7 @@ description: "Explore Freedom articles, notes, and projects published by indepen
 keywords: "Freedom, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "freedom"
 permalink: /topics/freedom/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Freedom"

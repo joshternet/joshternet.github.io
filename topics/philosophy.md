@@ -5,6 +5,7 @@ description: "Explore Philosophy articles, notes, and projects published by inde
 keywords: "Philosophy, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "philosophy"
 permalink: /topics/philosophy/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Philosophy"

@@ -5,6 +5,7 @@ description: "Explore Social articles, notes, and projects published by independ
 keywords: "Social, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "social"
 permalink: /topics/social/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Social"

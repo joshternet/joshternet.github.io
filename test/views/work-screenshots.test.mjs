@@ -21,6 +21,7 @@ import {
   attachExistingWorkPosters,
   awaitPageReadyForScreenshot,
   captureMissingWorkScreenshots,
+  captureShowcasePosterFallbacks,
   collectProjectionItemsNeedingPosters,
   compareScreenshotPriority,
   contentItemNeedsWorkScreenshot,
@@ -55,6 +56,28 @@ function mockCapturePage(hooks = {}) {
       }),
   };
 }
+
+/**
+ * Collect progress lines so expected capture summaries assert green without
+ * dumping white console output that looks like suite noise.
+ * @returns {{ lines: string[], log: (message: string) => void }}
+ */
+function captureLog() {
+  /** @type {string[]} */
+  const lines = [];
+  return {
+    lines,
+    log(message) {
+      lines.push(String(message));
+    },
+  };
+}
+
+/**
+ * Swallow expected progress output in offline screenshot tests.
+ * @param {string} _message
+ */
+function muteLog(_message) {}
 
 /**
  * Tiny valid PNG via sharp for mock screenshot bytes.
@@ -539,10 +562,12 @@ test("captureMissingWorkScreenshots writes local poster via mocked Playwright", 
   const visited = [];
   /** @type {unknown} */
   let gotoWaitUntil;
+  const { lines, log } = captureLog();
 
   await captureMissingWorkScreenshots(items, {
     root,
     maxCaptures: 5,
+    log,
     importPlaywright: async () => ({
       chromium: {
         launch: async () => ({
@@ -570,6 +595,12 @@ test("captureMissingWorkScreenshots writes local poster via mocked Playwright", 
   const written = await fs.readFile(path.join(root, asset.replace(/^\//, "")));
   assert.ok(written.length > 0);
   assert.equal(items[1].image, "https://already.example/og.png");
+  assert.ok(
+    lines.some((line) =>
+      line.includes("work screenshots: 1 captured (0 writing, 1 creative)"),
+    ),
+    "expected capture summary was reported",
+  );
 
   await fs.rm(root, { recursive: true, force: true });
 });
@@ -607,6 +638,7 @@ test("captureMissingWorkScreenshots prioritizes creative over older articles", a
   await captureMissingWorkScreenshots(items, {
     root,
     maxCaptures: 2,
+    log: muteLog,
     importPlaywright: async () => ({
       chromium: {
         launch: async () => ({
@@ -631,6 +663,32 @@ test("captureMissingWorkScreenshots prioritizes creative over older articles", a
     "https://a.example/new-post/",
   ]);
   await fs.rm(root, { recursive: true, force: true });
+});
+
+test("captureMissingWorkScreenshots skips URLs robots.txt disallows", async () => {
+  let launched = false;
+  const items = [
+    {
+      url: "https://themorning.app/",
+      content_type: "project",
+      site_origin: "https://joshgr.com",
+      image: "",
+    },
+  ];
+
+  await captureMissingWorkScreenshots(items, {
+    robotsGate: {
+      allows: async () => false,
+      bodyForOrigin: async () => "",
+    },
+    importPlaywright: async () => {
+      launched = true;
+      throw new Error("should not launch");
+    },
+  });
+
+  assert.equal(launched, false);
+  assert.equal(items[0].image, "");
 });
 
 test("captureMissingWorkScreenshots no-ops without pending items or on launch failure", async () => {
@@ -678,9 +736,11 @@ test("captureMissingWorkScreenshots swallows per-URL goto failures", async () =>
       image: "",
     },
   ];
+  const { lines, log } = captureLog();
 
   await captureMissingWorkScreenshots(items, {
     root,
+    log,
     importPlaywright: async () => ({
       chromium: {
         launch: async () => ({
@@ -703,6 +763,12 @@ test("captureMissingWorkScreenshots swallows per-URL goto failures", async () =>
   });
 
   assert.equal(items[0].image, "");
+  assert.ok(
+    lines.some((line) =>
+      line.includes("work screenshots: 0 captured (0 writing, 0 creative)"),
+    ),
+    "expected soft per-URL failure left zero captures",
+  );
   await fs.rm(root, { recursive: true, force: true });
 });
 
@@ -731,6 +797,7 @@ test("captureMissingWorkScreenshots respects maxCaptures and skips mid-run fille
     root,
     maxCaptures: 2,
     timeoutMs: 5_000,
+    log: muteLog,
     importPlaywright: async () => ({
       chromium: {
         launch: async () => ({
@@ -757,4 +824,476 @@ test("captureMissingWorkScreenshots respects maxCaptures and skips mid-run fille
   );
   assert.equal(items[1].image, "https://cdn.example/seedling.png");
   await fs.rm(root, { recursive: true, force: true });
+});
+
+test("captureMissingWorkScreenshots defaults log to console.log", async () => {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), "work-shots-log-"));
+  /** @type {unknown[]} */
+  const logged = [];
+  const originalLog = console.log;
+  console.log = (...args) => {
+    logged.push(args.join(" "));
+  };
+
+  try {
+    await captureMissingWorkScreenshots(
+      [
+        {
+          url: "https://themorning.app/",
+          content_type: "project",
+          site_origin: "https://joshgr.com",
+          image: "",
+        },
+      ],
+      {
+        root,
+        robotsGate: {
+          allows: async () => true,
+          bodyForOrigin: async () => "",
+        },
+        importPlaywright: async () => ({
+          chromium: {
+            launch: async () => ({
+              newContext: async () => ({
+                newPage: async () =>
+                  mockCapturePage({
+                    goto: async () => {
+                      throw new Error("offline");
+                    },
+                    screenshot: async () => Buffer.from(""),
+                  }),
+                close: async () => {},
+              }),
+              close: async () => {},
+            }),
+          },
+        }),
+      },
+    );
+  } finally {
+    console.log = originalLog;
+    await fs.rm(root, { recursive: true, force: true });
+  }
+
+  assert.ok(
+    logged.some((line) =>
+      String(line).includes("work screenshots: 0 captured"),
+    ),
+    "expected default progress log on console.log",
+  );
+});
+
+test("captureMissingWorkScreenshots builds a default robots gate", async () => {
+  let launched = false;
+  const items = [
+    {
+      url: "https://themorning.app/",
+      content_type: "project",
+      site_origin: "https://joshgr.com",
+      image: "",
+    },
+  ];
+
+  await captureMissingWorkScreenshots(items, {
+    fetchPublicText: async () => ({
+      url: "https://themorning.app/robots.txt",
+      contentType: "text/plain",
+      body: "User-agent: *\nDisallow: /\n",
+    }),
+    cache: new Map([["themorning.app", [{ address: "1.1.1.1" }]]]),
+    importPlaywright: async () => {
+      launched = true;
+      throw new Error("should not launch when robots disallow");
+    },
+  });
+
+  assert.equal(launched, false);
+  assert.equal(items[0].image, "");
+});
+
+test("captureShowcasePosterFallbacks snapshots work pages when images stay remote", async () => {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), "showcase-fallback-"));
+  const png = await tinyPng();
+  const imageUrl = "https://joshuadrake.org/images/cessnatest.gif";
+  const workUrl = "https://joshuadrake.org/projects/turboelectriccessna";
+  const views = {
+    showcase: {
+      items: [
+        {
+          url: workUrl,
+          title: "Turboelectric Cessna",
+          image: imageUrl,
+        },
+      ],
+      home: [
+        {
+          url: workUrl,
+          title: "Turboelectric Cessna",
+          image: imageUrl,
+        },
+      ],
+    },
+  };
+  /** @type {string[]} */
+  const visited = [];
+  const { lines, log } = captureLog();
+  /** @type {string[]} */
+  const errLines = [];
+
+  const captured = await captureShowcasePosterFallbacks(views, {
+    root,
+    log,
+    logError: (message) => {
+      errLines.push(message);
+    },
+    robotsGate: { allows: async () => true },
+    importPlaywright: async () => ({
+      chromium: {
+        launch: async () => ({
+          newContext: async () => ({
+            newPage: async () =>
+              mockCapturePage({
+                goto: async (url) => {
+                  visited.push(url);
+                },
+                screenshot: async () => png,
+              }),
+            close: async () => {},
+          }),
+          close: async () => {},
+        }),
+      },
+    }),
+  });
+
+  assert.equal(captured, 1);
+  assert.deepEqual(visited, [workUrl]);
+  const asset = posterAssetPath(imageUrl);
+  assert.equal(views.showcase.items[0].image, asset);
+  assert.equal(views.showcase.home[0].image, asset);
+  const written = await fs.readFile(path.join(root, asset.replace(/^\//, "")));
+  assert.ok(written.length > 0);
+  assert.ok(
+    lines.some((line) =>
+      line.includes("showcase poster snapshots: 1 captured; 0 still remote"),
+    ),
+  );
+  assert.equal(errLines.length, 0);
+
+  await fs.rm(root, { recursive: true, force: true });
+});
+
+test("captureShowcasePosterFallbacks no-ops when Showcase is already local", async () => {
+  const views = {
+    showcase: {
+      items: [
+        {
+          url: "https://a.example/work/",
+          image: "/assets/activity/posters/abc.webp",
+        },
+      ],
+      home: [],
+    },
+  };
+
+  let launched = false;
+  const captured = await captureShowcasePosterFallbacks(views, {
+    importPlaywright: async () => {
+      launched = true;
+      throw new Error("should not launch");
+    },
+  });
+
+  assert.equal(captured, 0);
+  assert.equal(launched, false);
+});
+
+test("captureShowcasePosterFallbacks skips robots-disallowed work URLs", async () => {
+  const views = {
+    showcase: {
+      items: [
+        {
+          url: "https://blocked.example/project/",
+          image: "https://blocked.example/broken.gif",
+        },
+      ],
+      home: [],
+    },
+  };
+  /** @type {string[]} */
+  const errLines = [];
+  let launched = false;
+
+  const captured = await captureShowcasePosterFallbacks(views, {
+    log: () => {},
+    logError: (message) => {
+      errLines.push(message);
+    },
+    robotsGate: { allows: async () => false },
+    importPlaywright: async () => {
+      launched = true;
+      return {
+        chromium: {
+          launch: async () => ({
+            newContext: async () => ({
+              newPage: async () => mockCapturePage(),
+              close: async () => {},
+            }),
+            close: async () => {},
+          }),
+        },
+      };
+    },
+  });
+
+  assert.equal(captured, 0);
+  assert.equal(launched, true);
+  assert.equal(
+    views.showcase.items[0].image,
+    "https://blocked.example/broken.gif",
+  );
+  assert.ok(
+    errLines.some((line) => line.includes("showcase poster snapshot skipped")),
+  );
+});
+
+test("captureShowcasePosterFallbacks skips non-https images and work URLs", async () => {
+  let launched = false;
+  const captured = await captureShowcasePosterFallbacks(
+    {
+      showcase: {
+        items: [
+          {
+            url: "https://a.example/work/",
+            image: "http://insecure.example/x.gif",
+          },
+          {
+            url: "ftp://a.example/work/",
+            image: "https://cdn.example/ok.gif",
+          },
+          {
+            url: "https://a.example/creds/",
+            image: "https://user:pass@cdn.example/secret.gif",
+          },
+        ],
+        home: [],
+      },
+    },
+    {
+      log: () => {},
+      logError: () => {},
+      importPlaywright: async () => {
+        launched = true;
+        throw new Error("should not launch when nothing is capturable");
+      },
+    },
+  );
+
+  assert.equal(captured, 0);
+  assert.equal(launched, false);
+});
+
+test("captureShowcasePosterFallbacks defaults loggers, robots gate, and launch errors", async () => {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), "showcase-defaults-"));
+  const png = await tinyPng();
+  const imageUrl = "https://cdn.example/broken.gif";
+  const workUrl = "https://work.example/project/";
+  const views = {
+    showcase: {
+      items: [{ url: workUrl, image: imageUrl }],
+      home: [],
+    },
+  };
+  /** @type {string[]} */
+  const errLines = [];
+  /** @type {string[]} */
+  const outLines = [];
+  const originalErr = process.stderr.write.bind(process.stderr);
+  const originalOut = process.stdout.write.bind(process.stdout);
+  /**
+   * @param {string[]} sink
+   * @returns {typeof process.stderr.write}
+   */
+  const captureWrite = (sink) =>
+    /** @type {typeof process.stderr.write} */ (
+      (chunk, encoding, callback) => {
+        sink.push(String(chunk));
+        if (typeof encoding === "function") {
+          encoding();
+          return true;
+        }
+        if (typeof callback === "function") {
+          callback();
+        }
+        return true;
+      }
+    );
+  process.stderr.write = captureWrite(errLines);
+  process.stdout.write = captureWrite(outLines);
+
+  try {
+    const launchFailed = await captureShowcasePosterFallbacks(views, {
+      root,
+      timeoutMs: 0,
+      fetchPublicText: async () => ({
+        url: "https://work.example/robots.txt",
+        contentType: "text/plain",
+        body: "User-agent: *\nAllow: /\n",
+      }),
+      cache: new Map([["work.example", [{ address: "1.1.1.1" }]]]),
+      importPlaywright: async () => {
+        throw new Error("launch boom");
+      },
+    });
+    assert.equal(launchFailed, 0);
+    assert.ok(
+      errLines.some((line) =>
+        line.includes("showcase poster snapshot launch failed: launch boom"),
+      ),
+    );
+
+    errLines.length = 0;
+    const launchFailedNonError = await captureShowcasePosterFallbacks(views, {
+      root,
+      fetchPublicText: async () => ({
+        url: "https://work.example/robots.txt",
+        contentType: "text/plain",
+        body: "User-agent: *\nAllow: /\n",
+      }),
+      cache: new Map([["work.example", [{ address: "1.1.1.1" }]]]),
+      importPlaywright: async () => {
+        throw "launch string";
+      },
+    });
+    assert.equal(launchFailedNonError, 0);
+    assert.ok(
+      errLines.some((line) =>
+        line.includes("showcase poster snapshot launch failed: launch string"),
+      ),
+    );
+
+    errLines.length = 0;
+    outLines.length = 0;
+
+    const captured = await captureShowcasePosterFallbacks(views, {
+      root,
+      timeoutMs: 12_000,
+      fetchPublicText: async () => ({
+        url: "https://work.example/robots.txt",
+        contentType: "text/plain",
+        body: "User-agent: *\nAllow: /\n",
+      }),
+      cache: new Map([["work.example", [{ address: "1.1.1.1" }]]]),
+      importPlaywright: async () => ({
+        chromium: {
+          launch: async () => ({
+            newContext: async () => ({
+              newPage: async () =>
+                mockCapturePage({
+                  goto: async () => {},
+                  screenshot: async () => png,
+                }),
+              close: async () => {},
+            }),
+            close: async () => {
+              throw new Error("close failed");
+            },
+          }),
+        },
+      }),
+    });
+
+    assert.equal(captured, 1);
+    assert.equal(views.showcase.items[0].image, posterAssetPath(imageUrl));
+    assert.ok(
+      outLines.some((line) => line.includes("showcase poster snapshots: 1")),
+    );
+  } finally {
+    process.stderr.write = originalErr;
+    process.stdout.write = originalOut;
+  }
+
+  await fs.rm(root, { recursive: true, force: true });
+});
+
+test("captureShowcasePosterFallbacks logs per-URL snapshot failures", async () => {
+  const views = {
+    showcase: {
+      items: [
+        {
+          url: "https://work.example/project/",
+          image: "https://cdn.example/broken.gif",
+        },
+      ],
+      home: [],
+    },
+  };
+  /** @type {string[]} */
+  const errLines = [];
+
+  const captured = await captureShowcasePosterFallbacks(views, {
+    log: () => {},
+    logError: (message) => {
+      errLines.push(message);
+    },
+    robotsGate: { allows: async () => true },
+    importPlaywright: async () => ({
+      chromium: {
+        launch: async () => ({
+          newContext: async () => ({
+            newPage: async () =>
+              mockCapturePage({
+                goto: async () => {
+                  throw new Error("navigation interrupted");
+                },
+              }),
+            close: async () => {},
+          }),
+          close: async () => {},
+        }),
+      },
+    }),
+  });
+
+  assert.equal(captured, 0);
+  assert.ok(
+    errLines.some((line) =>
+      line.includes(
+        "showcase poster snapshot failed https://work.example/project/",
+      ),
+    ),
+  );
+  assert.ok(errLines.some((line) => line.includes("navigation interrupted")));
+
+  errLines.length = 0;
+  await captureShowcasePosterFallbacks(views, {
+    log: () => {},
+    logError: (message) => {
+      errLines.push(message);
+    },
+    robotsGate: { allows: async () => true },
+    importPlaywright: async () => ({
+      chromium: {
+        launch: async () => ({
+          newContext: async () => ({
+            newPage: async () =>
+              mockCapturePage({
+                goto: async () => {
+                  throw null;
+                },
+              }),
+            close: async () => {},
+          }),
+          close: async () => {},
+        }),
+      },
+    }),
+  });
+  assert.ok(
+    errLines.some((line) =>
+      line.includes(
+        "showcase poster snapshot failed https://work.example/project/ (https://cdn.example/broken.gif): null",
+      ),
+    ),
+  );
 });

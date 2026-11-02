@@ -5,6 +5,7 @@ description: "Explore Media & Publishing articles, notes, and projects published
 keywords: "Media & Publishing, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "media-publishing"
 permalink: /topics/media-publishing/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Media & Publishing"

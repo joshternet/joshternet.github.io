@@ -1,23 +1,27 @@
 /**
  * Goal & Constraints:
- * Shown article and Showcase cards use a local poster sized for the card, not
+ * What's New and Showcase cards use a local poster sized for the card, not
  * the publisher's full image. Sharp fits each https poster inside 960×540
  * (about 2× a What's New card) without cropping or upscaling, and writes
  * WebP under assets/activity/posters. This runs inside nlp:sync →
- * views:build (GitHub Actions), so the hourly crawl gathers bytes the site
- * can serve without hotlinking. Sheet music without a publisher image gets a
- * generated staff-preview poster (PDF scores are not rasterized). Missing
- * creative https URLs are filled earlier in nlp:sync via
- * enrichContentItemPosters (publisher og:image). Showcase must finish fully
- * localized or materialize throws so CI does not publish remote img srcs.
- * Files stay while the article is in What's New, Search, a topic page, or
- * Showcase, then are removed.
+ * views:build (GitHub Actions). Network fetches cover only Activity + Showcase
+ * (latest/featured surfaces); Search/topic cards reuse on-disk posters when
+ * present and otherwise keep publisher https. Existing local WebP is never
+ * re-downloaded. Sheet music without a publisher image gets a generated
+ * staff-preview poster. Showcase must finish fully localized or the build
+ * throws so CI does not publish remote img srcs. After download/resize fails,
+ * views:build captures a viewport snapshot of the work page before that gate.
+ * Files stay while referenced by a shown card (or still mapped from cache),
+ * then are removed.
  */
 import crypto from "node:crypto";
 import fs from "node:fs/promises";
 import path from "node:path";
 
 import sharp from "sharp";
+
+import { USER_AGENT } from "../nlp/lib.mjs";
+import { createOriginRobotsGate } from "../nlp/origin-robots.mjs";
 
 /** @type {number} Max poster width in pixels. */
 export const POSTER_MAX_WIDTH = 960;
@@ -35,8 +39,7 @@ export const SHEET_MUSIC_POSTER_HEIGHT = 480;
 export const POSTER_DIRECTORY = "assets/activity/posters";
 
 /** @type {string} User-Agent for publisher poster downloads during nlp:sync. */
-export const POSTER_FETCH_USER_AGENT =
-  "JoshternetViews/1.0 (+https://joshternet.org; poster materialize)";
+export const POSTER_FETCH_USER_AGENT = USER_AGENT;
 
 /** @type {number} Per-attempt fetch budget for large photography posters. */
 export const POSTER_FETCH_TIMEOUT_MS = 45_000;
@@ -89,12 +92,12 @@ export async function resizePoster(input) {
 }
 
 /**
- * Visits article cards that can show a poster.
+ * Visits What's New + Showcase cards (the only surfaces that fetch posters).
  * @param {Record<string, unknown> | null | undefined} views
  * @param {(item: unknown) => void} visit
  * @returns {void}
  */
-export function visitShownPosters(views, visit) {
+export function visitPriorityPosters(views, visit) {
   const activity = views?.activity;
   const primary =
     activity && typeof activity === "object"
@@ -106,6 +109,39 @@ export function visitShownPosters(views, visit) {
       visit(item);
     }
   }
+
+  const showcase = views?.showcase;
+
+  if (showcase && typeof showcase === "object") {
+    const showcaseItems = /** @type {{ items?: unknown, home?: unknown }} */ (
+      showcase
+    ).items;
+    const showcaseHome = /** @type {{ items?: unknown, home?: unknown }} */ (
+      showcase
+    ).home;
+
+    if (Array.isArray(showcaseItems)) {
+      for (const item of showcaseItems) {
+        visit(item);
+      }
+    }
+
+    if (Array.isArray(showcaseHome)) {
+      for (const item of showcaseHome) {
+        visit(item);
+      }
+    }
+  }
+}
+
+/**
+ * Visits every card surface that may show a poster (for cache reuse + keep).
+ * @param {Record<string, unknown> | null | undefined} views
+ * @param {(item: unknown) => void} visit
+ * @returns {void}
+ */
+export function visitShownPosters(views, visit) {
+  visitPriorityPosters(views, visit);
 
   const search = views?.search_index;
   const documents =
@@ -159,41 +195,22 @@ export function visitShownPosters(views, visit) {
       }
     }
   }
-
-  const showcase = views?.showcase;
-
-  if (showcase && typeof showcase === "object") {
-    const showcaseItems = /** @type {{ items?: unknown, home?: unknown }} */ (
-      showcase
-    ).items;
-    const showcaseHome = /** @type {{ items?: unknown, home?: unknown }} */ (
-      showcase
-    ).home;
-
-    if (Array.isArray(showcaseItems)) {
-      for (const item of showcaseItems) {
-        visit(item);
-      }
-    }
-
-    if (Array.isArray(showcaseHome)) {
-      for (const item of showcaseHome) {
-        visit(item);
-      }
-    }
-  }
 }
 
 /**
- * Distinct https poster URLs currently shown.
+ * Collects https poster URLs from the given visitor.
  * @param {Record<string, unknown> | null | undefined} views
+ * @param {(
+ *   views: Record<string, unknown> | null | undefined,
+ *   visit: (item: unknown) => void,
+ * ) => void} visitor
  * @returns {string[]}
  */
-export function posterSourcesFromViews(views) {
+function collectHttpsPosterSources(views, visitor) {
   /** @type {Set<string>} */
   const sources = new Set();
 
-  visitShownPosters(views, (item) => {
+  visitor(views, (item) => {
     if (!item || typeof item !== "object") {
       return;
     }
@@ -206,6 +223,24 @@ export function posterSourcesFromViews(views) {
   });
 
   return [...sources];
+}
+
+/**
+ * Distinct https poster URLs on What's New + Showcase (fetch targets).
+ * @param {Record<string, unknown> | null | undefined} views
+ * @returns {string[]}
+ */
+export function posterSourcesFromViews(views) {
+  return collectHttpsPosterSources(views, visitPriorityPosters);
+}
+
+/**
+ * Distinct https poster URLs on any shown surface (cache reuse candidates).
+ * @param {Record<string, unknown> | null | undefined} views
+ * @returns {string[]}
+ */
+export function posterCacheSourcesFromViews(views) {
+  return collectHttpsPosterSources(views, visitShownPosters);
 }
 
 /**
@@ -476,11 +511,25 @@ export async function removeUnshownPosters(directory, keepNames) {
 
 /**
  * Downloads one poster URL with retries, User-Agent, and a generous timeout.
+ * Skips when robots.txt disallows the image URL.
  * @param {string} source
  * @param {typeof fetch} fetchImpl
+ * @param {{ robotsGate?: import("../nlp/origin-robots.mjs").OriginRobotsGate }} [options]
  * @returns {Promise<Buffer>}
  */
-export async function fetchPosterBytes(source, fetchImpl) {
+export async function fetchPosterBytes(source, fetchImpl, options = {}) {
+  const robotsGate =
+    options.robotsGate ||
+    createOriginRobotsGate({
+      userAgent: POSTER_FETCH_USER_AGENT,
+      cache: options.cache,
+      fetchPublicText: options.fetchPublicText,
+    });
+
+  if (!(await robotsGate.allows(source))) {
+    throw new Error("Poster URL disallowed by robots.txt");
+  }
+
   /** @type {unknown} */
   let lastError = new Error("poster fetch failed");
 
@@ -548,46 +597,139 @@ export function remainingRemoteShowcasePosters(views) {
 }
 
 /**
- * Downloads, resizes, and rewrites posters for the articles on the site.
- * Part of nlp:sync (GitHub Actions): publisher https images become local
- * `/assets/activity/posters/*.webp` so the static host never hotlinks.
+ * Throws when Showcase cards still point at remote/invalid images.
+ * @param {Record<string, unknown>} views
+ * @param {{ logError?: (message: string) => void }} [options]
+ * @returns {void}
+ * @throws {Error} When any Showcase card image is still remote.
+ */
+export function assertShowcasePostersLocalized(views, options = {}) {
+  /**
+   * @param {string} message
+   */
+  const logError =
+    typeof options.logError === "function"
+      ? options.logError
+      : (message) => {
+          process.stderr.write(message);
+        };
+
+  const remaining = remainingRemoteShowcasePosters(views);
+
+  if (remaining.length === 0) {
+    return;
+  }
+
+  for (const row of remaining) {
+    logError(
+      `showcase poster not localized: ${row.url || "(missing url)"} (${row.image})\n`,
+    );
+  }
+
+  throw new Error(
+    `Showcase poster materialize left ${remaining.length} remote/invalid image(s); nlp:sync cannot publish until the crawl can fetch them or capture a page snapshot.`,
+  );
+}
+
+/**
+ * Downloads, resizes, and rewrites posters for What's New + Showcase.
+ * Reuses on-disk WebP for any shown surface; fetches only missing
+ * Activity/Showcase sources. Part of nlp:sync (GitHub Actions).
  * @param {Record<string, unknown>} views
  * @param {string} root
- * @param {{ fetchImpl?: typeof fetch }} [options]
+ * @param {{
+ *   fetchImpl?: typeof fetch,
+ *   robotsGate?: import("../nlp/origin-robots.mjs").OriginRobotsGate,
+ *   cache?: Map<string, unknown>,
+ *   fetchPublicText?: unknown,
+ *   logError?: (message: string) => void,
+ *   log?: (message: string) => void,
+ *   requireLocalizedShowcase?: boolean,
+ * }} [options]
  * @returns {Promise<Record<string, unknown>>}
- * @throws {Error} When Showcase still has remote/invalid images after attempts.
+ * @throws {Error} When Showcase still has remote/invalid images after attempts
+ *   and `requireLocalizedShowcase` is not false.
  */
 export async function materializeActivityPosters(views, root, options = {}) {
   const fetchImpl = options.fetchImpl || fetch;
-  const sources = posterSourcesFromViews(views);
+  const robotsGate =
+    options.robotsGate ||
+    createOriginRobotsGate({
+      userAgent: POSTER_FETCH_USER_AGENT,
+      cache: options.cache,
+      fetchPublicText: options.fetchPublicText,
+    });
+  /**
+   * Reports a soft poster failure. Defaults to stderr; tests inject a no-op.
+   * @param {string} message
+   */
+  const logError =
+    typeof options.logError === "function"
+      ? options.logError
+      : (message) => {
+          process.stderr.write(message);
+        };
+  /**
+   * Progress for sync operators. Defaults to stdout; tests inject a no-op.
+   * @param {string} message
+   */
+  const log =
+    typeof options.log === "function"
+      ? options.log
+      : (message) => {
+          process.stdout.write(message);
+        };
+  const fetchSources = posterSourcesFromViews(views);
+  const cacheSources = posterCacheSourcesFromViews(views);
   const directory = path.join(root, POSTER_DIRECTORY);
   /** @type {Map<string, string>} */
   const localBySource = new Map();
   /** @type {Set<string>} */
   const keepNames = new Set();
+  /** @type {Set<string>} */
+  const fetchNeeded = new Set(fetchSources);
 
   await fs.mkdir(directory, { recursive: true });
 
-  for (const source of sources) {
+  let reused = 0;
+
+  for (const source of cacheSources) {
+    const assetPath = posterAssetPath(source);
+    const fileName = path.basename(assetPath);
+    const outputPath = path.join(directory, fileName);
+    const existing = await readFileIfExists(outputPath);
+
+    if (!existing) {
+      continue;
+    }
+
+    localBySource.set(source, assetPath);
+    keepNames.add(fileName);
+    fetchNeeded.delete(source);
+    reused += 1;
+  }
+
+  const toFetch = [...fetchNeeded];
+
+  log(
+    `posters: ${fetchSources.length} latest, ${reused} cached, ${toFetch.length} to fetch\n`,
+  );
+
+  for (const source of toFetch) {
     const assetPath = posterAssetPath(source);
     const fileName = path.basename(assetPath);
     const outputPath = path.join(directory, fileName);
 
     try {
       const webp = await resizePoster(
-        await fetchPosterBytes(source, fetchImpl),
+        await fetchPosterBytes(source, fetchImpl, { robotsGate }),
       );
-      const existing = await readFileIfExists(outputPath);
-
-      if (!existing || !existing.equals(webp)) {
-        await fs.writeFile(outputPath, webp);
-      }
-
+      await fs.writeFile(outputPath, webp);
       localBySource.set(source, assetPath);
       keepNames.add(fileName);
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
-      process.stderr.write(`poster materialize failed ${source}: ${message}\n`);
+      logError(`poster materialize failed ${source}: ${message}\n`);
 
       const existing = await readFileIfExists(outputPath);
 
@@ -596,6 +738,10 @@ export async function materializeActivityPosters(views, root, options = {}) {
         keepNames.add(fileName);
       }
     }
+  }
+
+  if (toFetch.length > 0) {
+    log(`posters: fetched ${toFetch.length}\n`);
   }
 
   applyPosterAssets(views, localBySource);
@@ -619,19 +765,13 @@ export async function materializeActivityPosters(views, root, options = {}) {
 
   await removeUnshownPosters(directory, keepNames);
 
-  const remaining = remainingRemoteShowcasePosters(views);
-
-  if (remaining.length > 0) {
-    for (const row of remaining) {
-      process.stderr.write(
-        `showcase poster not localized: ${row.url || "(missing url)"} (${row.image})\n`,
-      );
-    }
-
-    throw new Error(
-      `Showcase poster materialize left ${remaining.length} remote/invalid image(s); nlp:sync cannot publish until the crawl can fetch them.`,
-    );
+  if (options.requireLocalizedShowcase !== false) {
+    assertShowcasePostersLocalized(views, { logError });
   }
+
+  log(
+    `posters: localized ${localBySource.size} source(s); kept ${keepNames.size} file(s)\n`,
+  );
 
   return views;
 }

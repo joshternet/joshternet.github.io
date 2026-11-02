@@ -5,6 +5,7 @@ description: "Explore Principles articles, notes, and projects published by inde
 keywords: "Principles, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "principle"
 permalink: /topics/principle/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Principles"

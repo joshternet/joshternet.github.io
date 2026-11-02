@@ -5,6 +5,7 @@ description: "Explore Machine learning articles, notes, and projects published b
 keywords: "Machine learning, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "machine-learning"
 permalink: /topics/machine-learning/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Machine learning"

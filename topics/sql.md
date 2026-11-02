@@ -5,6 +5,7 @@ description: "Explore SQL articles, notes, and projects published by independent
 keywords: "SQL, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "sql"
 permalink: /topics/sql/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "SQL"

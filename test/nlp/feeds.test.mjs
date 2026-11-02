@@ -438,17 +438,27 @@ test("subjectsFromFeeds: failed fetch is skipped without crashing", async () => 
   }
 });
 
-test("subjectsFromFeeds: only first 3 feeds are processed", async () => {
+test("subjectsFromFeeds: every provided feed is processed", async () => {
   const feeds = Array.from({ length: 5 }, (_, i) => ({
     url: `https://f${i}.example/rss.xml`,
   }));
   const hostnames = feeds.map((f) => new URL(f.url).hostname);
   const cache = dnsCache(hostnames);
-  let fetchCount = 0;
+  /** @type {string[]} */
+  const feedFetches = [];
   install();
   try {
-    globalThis.fetch = async () => {
-      fetchCount++;
+    globalThis.fetch = async (input) => {
+      const url = String(input);
+      if (url.includes("robots.txt")) {
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "text/plain" }),
+          arrayBuffer: async () => Buffer.from("User-agent: *\nAllow: /\n"),
+        };
+      }
+      feedFetches.push(url);
       return {
         ok: true,
         status: 200,
@@ -457,7 +467,7 @@ test("subjectsFromFeeds: only first 3 feeds are processed", async () => {
       };
     };
     await subjectsFromFeeds(feeds, cache);
-    assert.equal(fetchCount, 3);
+    assert.deepEqual(feedFetches.sort(), feeds.map((feed) => feed.url).sort());
   } finally {
     restore();
   }
@@ -537,6 +547,39 @@ test("subjectsFromFeeds: JSON body with no items array fires ': []' (L203)", asy
     const result = await subjectsFromFeeds([{ url: feedUrl }], cache);
     assert.deepEqual(result.subjects, []);
     assert.deepEqual(result.entryUrls, []);
+  } finally {
+    restore();
+  }
+});
+
+test("subjectsFromFeeds: robots disallow skips feed without fetch", async () => {
+  const feedUrl = "https://blockedfeed.example/rss.xml";
+  const cache = dnsCache(["blockedfeed.example"]);
+  let feedFetches = 0;
+  install();
+  try {
+    globalThis.fetch = async (input) => {
+      const url = String(input);
+      if (url.includes("robots.txt")) {
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "text/plain" }),
+          arrayBuffer: async () =>
+            Buffer.from("User-agent: *\nDisallow: /rss.xml\n"),
+        };
+      }
+      feedFetches += 1;
+      return {
+        ok: true,
+        status: 200,
+        headers: new Headers({ "content-type": "application/rss+xml" }),
+        arrayBuffer: async () => Buffer.from("<rss><channel></channel></rss>"),
+      };
+    };
+    const result = await subjectsFromFeeds([{ url: feedUrl }], cache);
+    assert.equal(feedFetches, 0);
+    assert.equal(result.subjects.length, 0);
   } finally {
     restore();
   }

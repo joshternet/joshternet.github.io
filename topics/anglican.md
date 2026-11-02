@@ -5,6 +5,7 @@ description: "Explore Anglican articles, notes, and projects published by indepe
 keywords: "Anglican, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "anglican"
 permalink: /topics/anglican/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Anglican"

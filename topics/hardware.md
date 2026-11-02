@@ -5,6 +5,7 @@ description: "Explore Hardware articles, notes, and projects published by indepe
 keywords: "Hardware, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "hardware"
 permalink: /topics/hardware/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Hardware"

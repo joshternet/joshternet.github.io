@@ -20,7 +20,7 @@ test("crawlerProductToken: empty input is *", () => {
 });
 
 test("crawlerProductToken: strips version and comment", () => {
-  assert.equal(crawlerProductToken(USER_AGENT), "joshternetnlp");
+  assert.equal(crawlerProductToken(USER_AGENT), "joshternet-joshbot");
 });
 
 test("parseRobotsTxt: empty and comment-only yield no groups", () => {
@@ -49,21 +49,21 @@ Disallow: /nogo
 test("parseRobotsTxt: User-agent after rules starts a new group", () => {
   const groups = parseRobotsTxt(`User-agent: *
 Disallow: /secret
-User-agent: JoshternetNLP
+User-agent: Joshternet-Joshbot
 Allow: /
 `);
   assert.equal(groups.length, 2);
-  assert.equal(groups[1].agents[0], "joshternetnlp");
+  assert.equal(groups[1].agents[0], "joshternet-joshbot");
 });
 
 test("selectRobotsGroup: named group beats *", () => {
   const groups = parseRobotsTxt(`User-agent: *
 Disallow: /
-User-agent: JoshternetNLP
+User-agent: Joshternet-Joshbot
 Allow: /
 `);
   const named = selectRobotsGroup(groups, USER_AGENT);
-  assert.equal(named.agents[0], "joshternetnlp");
+  assert.equal(named.agents[0], "joshternet-joshbot");
   const star = selectRobotsGroup(groups, "OtherBot/1.0");
   assert.ok(star.agents.includes("*"));
 });

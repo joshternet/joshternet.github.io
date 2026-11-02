@@ -5,6 +5,7 @@ description: "Explore Ethics articles, notes, and projects published by independ
 keywords: "Ethics, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "ethics"
 permalink: /topics/ethics/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Ethics"

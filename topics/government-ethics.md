@@ -5,6 +5,7 @@ description: "Explore Government Ethics articles, notes, and projects published 
 keywords: "Government Ethics, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "government-ethics"
 permalink: /topics/government-ethics/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Government Ethics"

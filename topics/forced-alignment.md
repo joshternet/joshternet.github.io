@@ -5,6 +5,7 @@ description: "Explore Forced Alignment articles, notes, and projects published b
 keywords: "Forced Alignment, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "forced-alignment"
 permalink: /topics/forced-alignment/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Forced Alignment"

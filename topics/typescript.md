@@ -5,6 +5,7 @@ description: "Explore Typescript articles, notes, and projects published by inde
 keywords: "Typescript, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "typescript"
 permalink: /topics/typescript/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Typescript"

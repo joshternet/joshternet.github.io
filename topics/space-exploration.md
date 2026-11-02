@@ -5,6 +5,7 @@ description: "Explore Space Exploration articles, notes, and projects published 
 keywords: "Space Exploration, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "space-exploration"
 permalink: /topics/space-exploration/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Space Exploration"

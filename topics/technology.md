@@ -5,6 +5,7 @@ description: "Explore Technology articles, notes, and projects published by inde
 keywords: "Technology, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "technology"
 permalink: /topics/technology/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Technology"

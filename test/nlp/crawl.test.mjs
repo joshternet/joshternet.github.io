@@ -15,6 +15,7 @@ import {
   contentIndexChildUrls,
   contentIndexSeedUrls,
   crawlOrigin,
+  fetchRobotsTxt,
   externalOutboundLinks,
   identitySlashSeedUrls,
   isContentIndexUrl,
@@ -488,6 +489,37 @@ test("isSitemapIndex and locsFromSitemapXml recognize index files", () => {
   ]);
 });
 
+test("seedUrlsFromSitemaps: skips sitemap files robots.txt disallows", async () => {
+  const origin = "https://a.example";
+  const cache = dnsCache(["a.example"]);
+  const seeded = [];
+  /** @type {string[]} */
+  const fetched = [];
+  install();
+  try {
+    globalThis.fetch = async (url) => {
+      fetched.push(String(url));
+      throw new Error(`unexpected fetch ${url}`);
+    };
+    await seedUrlsFromSitemaps(
+      origin,
+      cache,
+      (url, reason) => {
+        seeded.push({ url, reason });
+      },
+      `User-agent: *\nDisallow: /hidden-sitemap.xml\nSitemap: ${origin}/hidden-sitemap.xml\n`,
+      {
+        allows: async (href) => !String(href).includes("hidden-sitemap"),
+        bodyForOrigin: async () => "",
+      },
+    );
+    assert.deepEqual(fetched, []);
+    assert.deepEqual(seeded, []);
+  } finally {
+    restore();
+  }
+});
+
 test("seedUrlsFromSitemaps: uses robots Sitemap and survives 5xx", async () => {
   const origin = "https://a.example";
   const cache = dnsCache(["a.example"]);
@@ -723,7 +755,7 @@ test("crawlOrigin: invalid seed URLs are ignored by pathAllowed", async () => {
     const result = await crawlOrigin(origin, {
       cache,
       aboutUrl: "http://",
-      feedEntryUrls: ["http://"],
+      feedEntryUrls: ["http://", ""],
     });
     assert.ok(result.pages.some((page) => page.url === `${origin}/`));
   } finally {
@@ -1845,6 +1877,279 @@ test("crawlOrigin: content-index children are unshifted ahead of BFS siblings", 
         "content-index child should be visited before later BFS sibling",
       );
     }
+  } finally {
+    restore();
+  }
+});
+
+test("crawlOrigin: respects maxPagesPerOrigin budget with skip reasons", async () => {
+  const origin = "https://budget.example";
+  const homeLinks = Array.from(
+    { length: 40 },
+    (_item, index) => `<a href="/p/${index}/">Post ${index}</a>`,
+  ).join("\n");
+  const home = `<!DOCTYPE html><html><head><title>Home</title></head><body>${homeLinks}</body></html>`;
+  const cache = dnsCache(["budget.example"]);
+  install();
+  try {
+    globalThis.fetch = async (input) => {
+      const url = String(input);
+      if (url.includes("robots.txt")) {
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "text/plain" }),
+          arrayBuffer: async () => Buffer.from("User-agent: *\nAllow: /\n"),
+        };
+      }
+      if (url.includes("sitemap") || url.includes("slashpages")) {
+        return {
+          ok: false,
+          status: 404,
+          headers: new Headers({ "content-type": "text/plain" }),
+          arrayBuffer: async () => Buffer.from(""),
+        };
+      }
+      if (url.includes("/p/")) {
+        return {
+          ok: true,
+          status: 200,
+          url,
+          headers: new Headers({ "content-type": "text/html" }),
+          arrayBuffer: async () =>
+            Buffer.from(
+              `<!DOCTYPE html><html><head><title>Post</title><link rel="canonical" href="${url}"></head><body>Post</body></html>`,
+            ),
+        };
+      }
+      if (!url.endsWith("budget.example/") && !url.endsWith("budget.example")) {
+        return {
+          ok: false,
+          status: 404,
+          headers: new Headers({ "content-type": "text/plain" }),
+          arrayBuffer: async () => Buffer.from("missing"),
+        };
+      }
+      return {
+        ok: true,
+        status: 200,
+        url: `${origin}/`,
+        headers: new Headers({ "content-type": "text/html" }),
+        arrayBuffer: async () => Buffer.from(home),
+      };
+    };
+    const result = await crawlOrigin(origin, {
+      cache,
+      maxPagesPerOrigin: 5,
+      skipSlashpagesManifest: true,
+    });
+    assert.ok(result.pages.length <= 5);
+    assert.equal(result.coverage.limit_reached, true);
+    assert.equal(result.coverage.fetch_limit, 5);
+    assert.ok(Object.keys(result.skip_reasons).length > 0);
+  } finally {
+    restore();
+  }
+});
+
+test("crawlOrigin: slashpages manifest seeds same-origin outlines", async () => {
+  const origin = "https://slashseed.example";
+  const cache = dnsCache(["slashseed.example"]);
+  install();
+  try {
+    globalThis.fetch = async (input) => {
+      const url = String(input);
+      if (url.includes("robots.txt")) {
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "text/plain" }),
+          arrayBuffer: async () => Buffer.from("User-agent: *\nAllow: /\n"),
+        };
+      }
+      if (url.endsWith("/.well-known/slashpages")) {
+        const body = `<?xml version="1.0"?><opml version="2.0"><body>
+          <outline text="Projects" url="${origin}/projects/" />
+        </body></opml>`;
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "text/x-opml" }),
+          arrayBuffer: async () => Buffer.from(body),
+        };
+      }
+      if (url.includes("sitemap")) {
+        return {
+          ok: false,
+          status: 404,
+          headers: new Headers({ "content-type": "text/plain" }),
+          arrayBuffer: async () => Buffer.from(""),
+        };
+      }
+      return {
+        ok: true,
+        status: 200,
+        url,
+        headers: new Headers({ "content-type": "text/html" }),
+        arrayBuffer: async () =>
+          Buffer.from(
+            `<!DOCTYPE html><html><head><title>${url}</title><link rel="canonical" href="${url}"></head><body>ok</body></html>`,
+          ),
+      };
+    };
+    const result = await crawlOrigin(origin, { cache });
+    assert.equal(
+      result.selection_reasons[`${origin}/projects/`],
+      "slashpages-manifest",
+    );
+    assert.ok(result.pages.some((page) => page.url === `${origin}/projects/`));
+  } finally {
+    restore();
+  }
+});
+
+test("crawlOrigin: custom child budgets and slashpages catch path", async () => {
+  const origin = "https://opts.example";
+  const cache = dnsCache(["opts.example"]);
+  install();
+  try {
+    globalThis.fetch = async (input) => {
+      const url = String(input);
+      if (url.includes("robots.txt")) {
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "text/plain" }),
+          arrayBuffer: async () => Buffer.from("User-agent: *\nAllow: /\n"),
+        };
+      }
+      if (url.includes("sitemap") || url.includes("slashpages")) {
+        return {
+          ok: false,
+          status: 404,
+          headers: new Headers({ "content-type": "text/plain" }),
+          arrayBuffer: async () => Buffer.from(""),
+        };
+      }
+      return {
+        ok: true,
+        status: 200,
+        url,
+        headers: new Headers({ "content-type": "text/html" }),
+        arrayBuffer: async () =>
+          Buffer.from(
+            `<!DOCTYPE html><html><head><title>${url}</title><link rel="canonical" href="${url}"></head><body><a href="/topics/ai/">AI</a></body></html>`,
+          ),
+      };
+    };
+    const result = await crawlOrigin(origin, {
+      cache,
+      maxTopicHubChildren: 1,
+      maxContentIndexChildren: 1,
+      robotsGate: {
+        bodyForOrigin: async () => "User-agent: *\nAllow: /\n",
+        allows: async (href) => {
+          if (String(href).includes("slashpages")) {
+            throw new Error("manifest boom");
+          }
+          return true;
+        },
+      },
+    });
+    assert.ok(result.pages.length >= 1);
+    assert.equal(result.coverage.fetch_limit, 250);
+  } finally {
+    restore();
+  }
+});
+
+test("crawlOrigin: fetchRobotsTxt failure returns empty body", async () => {
+  const cache = dnsCache(["robotsfail.example"]);
+  install();
+  try {
+    globalThis.fetch = async () => {
+      throw new Error("robots down");
+    };
+    const body = await fetchRobotsTxt("https://robotsfail.example", cache);
+    assert.equal(body, "");
+  } finally {
+    restore();
+  }
+});
+
+test("fetchRobotsTxt returns body when robots.txt is readable", async () => {
+  const cache = dnsCache(["robotsok.example"]);
+  install();
+  try {
+    globalThis.fetch = async () => ({
+      ok: true,
+      status: 200,
+      headers: new Headers({ "content-type": "text/plain" }),
+      arrayBuffer: async () => Buffer.from("User-agent: *\nAllow: /\n"),
+    });
+    const body = await fetchRobotsTxt("https://robotsok.example", cache);
+    assert.match(body, /Allow:/);
+  } finally {
+    restore();
+  }
+});
+
+test("seedUrlsFromSitemaps without gate uses robotsBody path checks", async () => {
+  const origin = "https://nogate.example";
+  const cache = dnsCache(["nogate.example"]);
+  /** @type {string[]} */
+  const seeded = [];
+  install();
+  try {
+    globalThis.fetch = async (input) => {
+      const url = String(input);
+      if (url.includes("sitemap.xml")) {
+        if (url.includes("blocked")) {
+          return {
+            ok: true,
+            status: 200,
+            headers: new Headers({ "content-type": "application/xml" }),
+            arrayBuffer: async () =>
+              Buffer.from(
+                `<?xml version="1.0"?><urlset><url><loc>${origin}/secret/</loc></url></urlset>`,
+              ),
+          };
+        }
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "application/xml" }),
+          arrayBuffer: async () =>
+            Buffer.from(
+              `<?xml version="1.0"?><urlset><url><loc>${origin}/ok/</loc></url></urlset>`,
+            ),
+        };
+      }
+      throw new Error(`unexpected ${url}`);
+    };
+    await seedUrlsFromSitemaps(
+      origin,
+      cache,
+      (url) => seeded.push(url),
+      "User-agent: *\nDisallow: /blocked\nAllow: /\n",
+    );
+    assert.ok(seeded.includes(`${origin}/ok/`));
+
+    await seedUrlsFromSitemaps(
+      origin,
+      cache,
+      (url) => seeded.push(url),
+      "User-agent: *\nDisallow: /\n",
+      undefined,
+    );
+
+    // Invalid sitemap URL in robots body hits the pathname catch.
+    await seedUrlsFromSitemaps(
+      origin,
+      cache,
+      (url) => seeded.push(url),
+      "User-agent: *\nAllow: /\nSitemap: not-a-url\n",
+    );
   } finally {
     restore();
   }

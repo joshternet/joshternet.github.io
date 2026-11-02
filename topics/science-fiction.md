@@ -5,6 +5,7 @@ description: "Explore Science Fiction articles, notes, and projects published by
 keywords: "Science Fiction, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "science-fiction"
 permalink: /topics/science-fiction/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Science Fiction"

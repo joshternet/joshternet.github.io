@@ -5,6 +5,7 @@ description: "Explore Purpose articles, notes, and projects published by indepen
 keywords: "Purpose, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "purpose"
 permalink: /topics/purpose/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Purpose"

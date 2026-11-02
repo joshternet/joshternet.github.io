@@ -5,6 +5,7 @@ description: "Explore Death articles, notes, and projects published by independe
 keywords: "Death, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "death"
 permalink: /topics/death/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Death"

@@ -5,6 +5,7 @@ description: "Explore Introversion articles, notes, and projects published by in
 keywords: "Introversion, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "introversion"
 permalink: /topics/introversion/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Introversion"

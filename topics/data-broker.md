@@ -5,6 +5,7 @@ description: "Explore Data Brokers articles, notes, and projects published by in
 keywords: "Data Brokers, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "data-broker"
 permalink: /topics/data-broker/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Data Brokers"

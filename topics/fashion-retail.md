@@ -5,6 +5,7 @@ description: "Explore Fashion & Retail articles, notes, and projects published b
 keywords: "Fashion & Retail, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "fashion-retail"
 permalink: /topics/fashion-retail/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Fashion & Retail"

@@ -5,6 +5,7 @@ description: "Explore Authoritarianism articles, notes, and projects published b
 keywords: "Authoritarianism, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "authoritarianism"
 permalink: /topics/authoritarianism/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Authoritarianism"

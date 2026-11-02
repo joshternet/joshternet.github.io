@@ -5,6 +5,7 @@ description: "Explore Unity articles, notes, and projects published by independe
 keywords: "Unity, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "unity"
 permalink: /topics/unity/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Unity"

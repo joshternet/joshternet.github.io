@@ -21,6 +21,22 @@ const REPO_ROOT = path.resolve(
   "../..",
 );
 
+/**
+ * Collect soft-skip messages so expected Prettier skips assert green without
+ * writing white/red stderr that looks like a real suite failure.
+ * @returns {{ lines: string[], logError: (message: string) => void }}
+ */
+function captureLogError() {
+  /** @type {string[]} */
+  const lines = [];
+  return {
+    lines,
+    logError(message) {
+      lines.push(String(message));
+    },
+  };
+}
+
 test("GENERATED_PRETTIER_GLOBS covers sync-written Prettier targets", () => {
   assert.ok(GENERATED_PRETTIER_GLOBS.includes("_data/*.json"));
   assert.ok(GENERATED_PRETTIER_GLOBS.includes("assets/network/*.opml"));
@@ -145,10 +161,16 @@ test("formatTextForPath: default options use repo root", async () => {
 test("formatTextForPath: invalid JSON keeps original text instead of throwing", async () => {
   const raw = "{not-json";
   const filePath = path.join(REPO_ROOT, "_data", "format-written-probe.json");
+  const { lines, logError } = captureLogError();
   const formatted = await formatTextForPath(filePath, raw, {
     root: REPO_ROOT,
+    logError,
   });
   assert.equal(formatted, raw);
+  assert.ok(
+    lines.some((line) => line.includes("prettier format skipped")),
+    "expected soft format skip was reported",
+  );
 });
 
 test("formatTextForPath: strict mode rethrows format failures", async () => {
@@ -166,11 +188,13 @@ test("formatTextForPath: strict mode rethrows format failures", async () => {
 
 test("formatTextForPath: getFileInfo failure keeps original text", async () => {
   const raw = '{"keep":true}';
+  const { lines, logError } = captureLogError();
   const formatted = await formatTextForPath(
     path.join(REPO_ROOT, "_data", "format-written-probe.json"),
     raw,
     {
       root: REPO_ROOT,
+      logError,
       prettierApi: {
         async getFileInfo() {
           throw new Error("getFileInfo boom");
@@ -185,6 +209,10 @@ test("formatTextForPath: getFileInfo failure keeps original text", async () => {
     },
   );
   assert.equal(formatted, raw);
+  assert.ok(
+    lines.some((line) => line.includes("prettier getFileInfo skipped")),
+    "expected soft getFileInfo skip was reported",
+  );
 });
 
 test("formatTextForPath: strict getFileInfo failure throws", async () => {
@@ -215,11 +243,13 @@ test("formatTextForPath: strict getFileInfo failure throws", async () => {
 
 test("formatTextForPath: resolveConfig failure keeps original text", async () => {
   const raw = '{"keep":true}';
+  const { lines, logError } = captureLogError();
   const formatted = await formatTextForPath(
     path.join(REPO_ROOT, "_data", "format-written-probe.json"),
     raw,
     {
       root: REPO_ROOT,
+      logError,
       prettierApi: {
         async getFileInfo() {
           return { ignored: false, inferredParser: "json" };
@@ -234,6 +264,46 @@ test("formatTextForPath: resolveConfig failure keeps original text", async () =>
     },
   );
   assert.equal(formatted, raw);
+  assert.ok(
+    lines.some((line) => line.includes("prettier resolveConfig skipped")),
+    "expected soft resolveConfig skip was reported",
+  );
+});
+
+test("formatTextForPath: soft skips default to stderr", async () => {
+  /** @type {string[]} */
+  const lines = [];
+  const originalWrite = process.stderr.write.bind(process.stderr);
+  process.stderr.write = /** @type {typeof process.stderr.write} */ (
+    (chunk, encoding, callback) => {
+      lines.push(String(chunk));
+      if (typeof encoding === "function") {
+        encoding();
+        return true;
+      }
+      if (typeof callback === "function") {
+        callback();
+      }
+      return true;
+    }
+  );
+
+  try {
+    const raw = "{not-json";
+    const formatted = await formatTextForPath(
+      path.join(REPO_ROOT, "_data", "format-written-probe.json"),
+      raw,
+      { root: REPO_ROOT },
+    );
+    assert.equal(formatted, raw);
+  } finally {
+    process.stderr.write = originalWrite;
+  }
+
+  assert.ok(
+    lines.some((line) => line.includes("prettier format skipped")),
+    "expected soft format skip on stderr",
+  );
 });
 
 test("formatTextForPath: strict resolveConfig failure throws", async () => {

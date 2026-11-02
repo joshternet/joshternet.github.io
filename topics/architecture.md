@@ -5,6 +5,7 @@ description: "Explore Architecture articles, notes, and projects published by in
 keywords: "Architecture, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "architecture"
 permalink: /topics/architecture/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Architecture"

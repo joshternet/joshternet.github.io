@@ -5,6 +5,7 @@ description: "Explore Person articles, notes, and projects published by independ
 keywords: "Person, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "person"
 permalink: /topics/person/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Person"

@@ -5,6 +5,7 @@ description: "Explore Public Systems articles, notes, and projects published by 
 keywords: "Public Systems, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "public-system"
 permalink: /topics/public-system/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Public Systems"

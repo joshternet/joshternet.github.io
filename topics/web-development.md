@@ -5,6 +5,7 @@ description: "Explore WEB Development articles, notes, and projects published by
 keywords: "WEB Development, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "web-development"
 permalink: /topics/web-development/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "WEB Development"

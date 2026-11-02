@@ -5,6 +5,7 @@ description: "Explore Field Recording articles, notes, and projects published by
 keywords: "Field Recording, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "field-recording"
 permalink: /topics/field-recording/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Field Recording"

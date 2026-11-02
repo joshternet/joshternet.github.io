@@ -5,6 +5,7 @@ description: "Explore Discipleship articles, notes, and projects published by in
 keywords: "Discipleship, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "discipleship"
 permalink: /topics/discipleship/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Discipleship"

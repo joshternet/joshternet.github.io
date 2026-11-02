@@ -5,6 +5,7 @@ description: "Explore Claude articles, notes, and projects published by independ
 keywords: "Claude, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "claude"
 permalink: /topics/claude/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Claude"

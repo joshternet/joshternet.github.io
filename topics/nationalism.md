@@ -5,6 +5,7 @@ description: "Explore Nationalism articles, notes, and projects published by ind
 keywords: "Nationalism, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "nationalism"
 permalink: /topics/nationalism/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Nationalism"

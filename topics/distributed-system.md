@@ -5,6 +5,7 @@ description: "Explore Distributed systems articles, notes, and projects publishe
 keywords: "Distributed systems, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "distributed-system"
 permalink: /topics/distributed-system/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Distributed systems"

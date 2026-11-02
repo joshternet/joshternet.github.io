@@ -5,6 +5,7 @@ description: "Explore Misanthropy articles, notes, and projects published by ind
 keywords: "Misanthropy, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "misanthropy"
 permalink: /topics/misanthropy/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Misanthropy"

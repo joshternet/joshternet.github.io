@@ -5,6 +5,7 @@ description: "Explore Faith articles, notes, and projects published by independe
 keywords: "Faith, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "faith"
 permalink: /topics/faith/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Faith"

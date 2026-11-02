@@ -5,6 +5,7 @@ description: "Explore Race articles, notes, and projects published by independen
 keywords: "Race, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "race"
 permalink: /topics/race/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Race"

@@ -446,7 +446,10 @@ test("connections crawl page documents sync signals under Implement", async () =
   assert.doesNotMatch(page, /nlp:scale-probe/);
   assert.doesNotMatch(page, /joshing\.you/);
   assert.doesNotMatch(page, /Local directory probe/);
-  assert.match(page, /JoshternetNLP\/1\.0/);
+  assert.match(
+    page,
+    /Joshternet-Joshbot \(\+https:\/\/joshternet\.org\/joshbot\)/,
+  );
   assert.match(page, /p-category/);
   assert.doesNotMatch(page, /octo:octothorpes/);
   assert.doesNotMatch(page, /Verified Webmention/);

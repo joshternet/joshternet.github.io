@@ -5,6 +5,7 @@ description: "Explore Message articles, notes, and projects published by indepen
 keywords: "Message, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "message"
 permalink: /topics/message/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Message"

@@ -208,6 +208,8 @@ test("What's New Atom feed links to original publishers with stable ids", () => 
   assert.match(xml, /<summary>Hello &amp; welcome<\/summary>/);
   assert.match(xml, /<name>Site A<\/name>/);
   assert.match(xml, /<uri>https:\/\/a\.example<\/uri>/);
+  // Aggregator Atom is summary-only — never mirror full entry bodies.
+  assert.doesNotMatch(xml, /<content[\s>]/);
   assert.doesNotMatch(xml, /ftp:\/\/bad\.example/);
   assert.equal((xml.match(/<entry>/g) || []).length, 1);
 

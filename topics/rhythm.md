@@ -5,6 +5,7 @@ description: "Explore Rhythms articles, notes, and projects published by indepen
 keywords: "Rhythms, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "rhythm"
 permalink: /topics/rhythm/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Rhythms"

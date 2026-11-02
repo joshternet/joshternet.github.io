@@ -1099,7 +1099,7 @@ export function isSiteHomeUrl(url) {
 
 /**
  * True when a homepage portfolio card title is indexed like
- * "02 M.A. Thesis · Installation SomaSpace …" (Joshua Kim studio style).
+ * "02 M.A. Thesis · Installation ProductName …" (numbered portfolio chrome).
  * @param {unknown} title
  * @returns {boolean}
  */
@@ -1175,7 +1175,7 @@ export function isBlogShapedProjectTitle(title) {
 
 /**
  * True when the title is exactly the product name recovered from the URL slug
- * (homepage link text like "SomaSpace", not a blog sentence).
+ * (homepage link text like a product name, not a blog sentence).
  * @param {unknown} title
  * @param {unknown} url
  * @returns {boolean}
@@ -1217,8 +1217,8 @@ export function isExactSlugProductTitle(title, url) {
 
 /**
  * True when a single-segment URL is a Showcase-eligible studio product
- * (Kim-style numbered portfolio cards, schema SoftwareApplication rows, or
- * short homepage link titles that match the slug).
+ * (numbered portfolio cards, schema SoftwareApplication rows, or short
+ * homepage link titles that match the slug).
  * @param {Record<string, unknown>} item
  * @returns {boolean}
  */
@@ -1240,7 +1240,7 @@ export function isNamedRootCreativeProduct(item) {
 
 /**
  * True when a project was harvested from a member Projects/Products shelf and
- * the work URL lives off-origin (Morning App, MusicX, Seedling, …).
+ * the work URL lives off-origin (shelf app links).
  * @param {Record<string, unknown>} item
  * @returns {boolean}
  */
@@ -1295,7 +1295,7 @@ export function isMemberSiteHomeItem(item) {
 
 /**
  * Recover a short project name from a portfolio title using the URL slug
- * ("… SomaSpace Webcams…" + `/somaspace` → "SomaSpace").
+ * ("… Product Webcams…" + `/product` → "Product").
  * @param {string} title
  * @param {string} slug
  * @returns {string}
@@ -1499,9 +1499,9 @@ export function expandSlugTitleFromSummary(title, summary) {
 
 /**
  * Showcase card title: strip HTML, experiment day numbers ("4 Plastic" →
- * "Plastic"), and portfolio card chrome so Kim-style titles become the
- * product name only ("SomaSpace"). Bare slug titles may expand from summary
- * modifiers ("Skills" + "Nine Claude Code skills…" → "Claude Code Skills").
+ * "Plastic"), and portfolio card chrome so numbered titles become the product
+ * name only. Bare slug titles may expand from summary modifiers
+ * ("Skills" + "Nine Claude Code skills…" → "Claude Code Skills").
  * @param {Record<string, unknown>} item
  * @returns {string}
  */
@@ -1723,17 +1723,32 @@ export function isPortfolioSourcedItem(item) {
 
 /**
  * Client case-study URLs under /work/… or /portfolio/… (not public toys).
+ * Also treats `/work/?work=…` query-style case studies (Baker-style).
  * @param {unknown} url
  * @returns {boolean}
  */
 export function isClientCaseStudyUrl(url) {
   try {
-    const parts = new URL(String(url || "")).pathname
+    const parsed = new URL(String(url || ""));
+    const parts = parsed.pathname
       .replace(/\/+$/, "")
       .split("/")
       .filter(Boolean);
 
-    return parts.length >= 2 && /^(work|portfolio)$/i.test(parts[0]);
+    if (parts.length >= 2 && /^(work|portfolio)$/i.test(parts[0])) {
+      return true;
+    }
+
+    // Single-segment /work with a work= (or project=) query is a case study card.
+    if (
+      parts.length === 1 &&
+      /^(work|portfolio)$/i.test(parts[0]) &&
+      (parsed.searchParams.has("work") || parsed.searchParams.has("project"))
+    ) {
+      return true;
+    }
+
+    return false;
   } catch {
     return false;
   }
@@ -1904,11 +1919,13 @@ export function isMadeContentItem(item, options = {}) {
     return false;
   }
 
-  if (isPortfolioSourcedItem(item)) {
+  // Client case studies stay out. Portfolio table rows on creative paths
+  // (e.g. /projects/8bip) remain eligible; bare portfolio indexes do not.
+  if (isClientCaseStudyUrl(item.url)) {
     return false;
   }
 
-  if (isClientCaseStudyUrl(item.url)) {
+  if (isPortfolioSourcedItem(item) && !isCreativePathWorkUrl(item.url)) {
     return false;
   }
 
@@ -1947,10 +1964,9 @@ export function isMadeContentItem(item, options = {}) {
   }
 
   // Project/collection cards must live under a creative directory
-  // (/projects/…, /experiments/…, /games/…, …), be a named-root studio product
-  // (e.g. Kim `/somaspace`), or an off-origin Projects-shelf app (Morning App,
-  // MusicX, Seedling). Bare `/work` indexes and member homepages are never
-  // projects.
+  // (/projects/…, /experiments/…, /games/…, …), be a named-root studio product,
+  // or an off-origin Projects-shelf app. Bare `/work` indexes and member
+  // homepages are never projects.
   if (
     (type === "project" || type === "collection") &&
     !isCreativePathWorkUrl(item.url) &&

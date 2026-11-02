@@ -5,6 +5,7 @@ description: "Explore Constitutionalism articles, notes, and projects published 
 keywords: "Constitutionalism, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "constitutionalism"
 permalink: /topics/constitutionalism/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Constitutionalism"

@@ -5,6 +5,7 @@ description: "Explore Reward Hacking articles, notes, and projects published by 
 keywords: "Reward Hacking, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "reward-hacking"
 permalink: /topics/reward-hacking/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Reward Hacking"

@@ -5,6 +5,7 @@ description: "Explore Nutrición articles, notes, and projects published by inde
 keywords: "Nutrición, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "nutrici-n"
 permalink: /topics/nutrici-n/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Nutrición"

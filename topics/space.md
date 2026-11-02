@@ -5,6 +5,7 @@ description: "Explore Space articles, notes, and projects published by independe
 keywords: "Space, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "space"
 permalink: /topics/space/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Space"

@@ -5,6 +5,7 @@ description: "Explore World Mental Health DAY articles, notes, and projects publ
 keywords: "World Mental Health DAY, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "world-mental-health-day"
 permalink: /topics/world-mental-health-day/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "World Mental Health DAY"

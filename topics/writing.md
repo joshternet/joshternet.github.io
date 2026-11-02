@@ -5,6 +5,7 @@ description: "Explore Writing articles, notes, and projects published by indepen
 keywords: "Writing, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "writing"
 permalink: /topics/writing/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Writing"

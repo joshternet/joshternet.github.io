@@ -175,7 +175,7 @@ test("classifyPageRole: schemaTypes BlogPosting → article", () => {
   );
 });
 
-test("classifyPageRole: root permalink with BlogPosting → article (joshghent shape)", () => {
+test("classifyPageRole: root permalink with BlogPosting → article", () => {
   assert.equal(
     classifyPageRole("https://joshghent.com/ring-e2ee/", {
       schemaTypes: ["BlogPosting"],

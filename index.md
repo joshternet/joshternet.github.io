@@ -8,6 +8,7 @@ description: >-
 keywords: >-
   Joshternet, Josh network, independent websites, indie web, open web,
   /.well-known/josh, personal websites, join Joshternet
+robots: max-snippet:160, max-image-preview:large
 scripts:
   - /assets/js/home-meet.js
   - /assets/js/connections.js

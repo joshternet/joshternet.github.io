@@ -5,6 +5,7 @@ description: "Explore Language Learning articles, notes, and projects published 
 keywords: "Language Learning, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "language-learning"
 permalink: /topics/language-learning/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Language Learning"

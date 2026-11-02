@@ -5,6 +5,7 @@ description: "Explore Immigration articles, notes, and projects published by ind
 keywords: "Immigration, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "immigration"
 permalink: /topics/immigration/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Immigration"

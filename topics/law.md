@@ -5,6 +5,7 @@ description: "Explore LAW articles, notes, and projects published by independent
 keywords: "LAW, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "law"
 permalink: /topics/law/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "LAW"

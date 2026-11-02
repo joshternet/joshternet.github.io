@@ -5,6 +5,7 @@ description: "Explore Dispensationalism articles, notes, and projects published 
 keywords: "Dispensationalism, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "dispensationalism"
 permalink: /topics/dispensationalism/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Dispensationalism"

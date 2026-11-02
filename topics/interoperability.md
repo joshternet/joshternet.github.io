@@ -5,6 +5,7 @@ description: "Explore Interoperability articles, notes, and projects published b
 keywords: "Interoperability, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "interoperability"
 permalink: /topics/interoperability/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Interoperability"

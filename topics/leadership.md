@@ -5,6 +5,7 @@ description: "Explore Leadership articles, notes, and projects published by inde
 keywords: "Leadership, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "leadership"
 permalink: /topics/leadership/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Leadership"

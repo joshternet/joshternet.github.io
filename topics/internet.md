@@ -5,6 +5,7 @@ description: "Explore Internet articles, notes, and projects published by indepe
 keywords: "Internet, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "internet"
 permalink: /topics/internet/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Internet"

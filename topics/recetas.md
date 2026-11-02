@@ -5,6 +5,7 @@ description: "Explore Recetas articles, notes, and projects published by indepen
 keywords: "Recetas, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "recetas"
 permalink: /topics/recetas/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Recetas"

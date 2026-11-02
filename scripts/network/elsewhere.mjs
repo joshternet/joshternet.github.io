@@ -8,6 +8,7 @@
  */
 import dns from "node:dns/promises";
 
+import { USER_AGENT } from "../nlp/lib.mjs";
 import {
   assertPublicURL,
   chooseTitle,
@@ -638,7 +639,7 @@ export async function sanitizeElsewhere(
 export function githubApiHeaders(options = {}) {
   const headers = {
     Accept: "application/vnd.github+json",
-    "User-Agent": "Joshternet-Network-Sync",
+    "User-Agent": USER_AGENT,
   };
   const token =
     (typeof options.token === "string" && options.token) ||

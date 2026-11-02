@@ -5,6 +5,7 @@ description: "Explore Government & Policy articles, notes, and projects publishe
 keywords: "Government & Policy, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "government-policy"
 permalink: /topics/government-policy/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Government & Policy"

@@ -11,6 +11,7 @@ import {
   isParserArtifactSlug,
 } from "./evidence.mjs";
 import { slugifyTopic, fetchPublicText, normalizeText } from "./lib.mjs";
+import { createOriginRobotsGate } from "./origin-robots.mjs";
 import { foldPluralSlug } from "./normalize.mjs";
 import { decodeHtmlEntities } from "./text.mjs";
 
@@ -171,7 +172,7 @@ export function subjectsFromJsonFeed(jsonText, options = {}) {
 /**
  * @param {Array<{url: string, type?: string}>} feeds
  * @param {Map<string, unknown>} [cache]
- * @param {{ observedAt?: string }} [options]
+ * @param {{ observedAt?: string, robotsGate?: import("./origin-robots.mjs").OriginRobotsGate }} [options]
  * @returns {Promise<{subjects: Array<{slug: string, label: string, sources: string[], pages: Array<{url: string, title: string}>}>, entryUrls: string[]}>}
  */
 export async function subjectsFromFeeds(
@@ -186,8 +187,14 @@ export async function subjectsFromFeeds(
     return { subjects, entryUrls };
   }
 
-  for (const feed of feeds.slice(0, 3)) {
+  const robotsGate = options.robotsGate || createOriginRobotsGate({ cache });
+
+  for (const feed of feeds) {
     if (!feed || typeof feed.url !== "string") {
+      continue;
+    }
+
+    if (!(await robotsGate.allows(feed.url))) {
       continue;
     }
 

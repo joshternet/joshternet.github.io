@@ -62,14 +62,14 @@ main() {
     exit 1
   fi
 
-  printf '1. npm run network:sync\n'
-  printf '2. npm run nlp:sync\n'
-  printf '3. npm run format:data\n'
-  printf '4. npm run format:check\n'
-  printf '5. npm run nlp:validate\n'
-  printf '6. JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter\n'
-
   if [[ "$dry_run" -eq 1 ]]; then
+    printf 'Dry run — would run:\n'
+    printf '  npm run network:sync\n'
+    printf '  npm run nlp:sync\n'
+    printf '  npm run format:data\n'
+    printf '  npm run format:check\n'
+    printf '  npm run nlp:validate\n'
+    printf '  JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter\n'
     exit 0
   fi
 

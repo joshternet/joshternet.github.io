@@ -5,6 +5,7 @@ description: "Explore Opinion articles, notes, and projects published by indepen
 keywords: "Opinion, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "opinion"
 permalink: /topics/opinion/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Opinion"

@@ -5,6 +5,7 @@ description: "Explore Philanthropy articles, notes, and projects published by in
 keywords: "Philanthropy, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "philanthropy"
 permalink: /topics/philanthropy/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Philanthropy"

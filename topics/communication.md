@@ -5,6 +5,7 @@ description: "Explore Communication articles, notes, and projects published by i
 keywords: "Communication, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "communication"
 permalink: /topics/communication/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Communication"

@@ -5,6 +5,7 @@ description: "Explore Independent WEB articles, notes, and projects published by
 keywords: "Independent WEB, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "independent-web"
 permalink: /topics/independent-web/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Independent WEB"

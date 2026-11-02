@@ -5,6 +5,7 @@ description: "Explore Digital ART articles, notes, and projects published by ind
 keywords: "Digital ART, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "digital-art"
 permalink: /topics/digital-art/
+robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
   name: "Digital ART"
