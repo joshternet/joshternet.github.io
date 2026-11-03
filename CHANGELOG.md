@@ -9,6 +9,7 @@
 
 ### Added
 
+- **YouTube show feeds for Showcase Podcasts:** Channel and playlist `videos.xml` helpers harvest recent episodes from member/Substack HTML into `podcast_episode` rows (Atom first, watch-page `uploadDate` fallback). Live feed debugging is for local sync runs.
 - **Optional `/.well-known/slashpages` OPML:** Robots-gated, SSRF-safe reader seeds same-origin crawl URLs; cross-origin outlines stay evidence-only. Includes are depth/count capped with loop detection.
 - **Showcase and Happening crawl:** Comics, study-hall/education, CSS Battles, Watch links, and YouTube/Vimeo/Twitch channel cards from Elsewhere. Past education gatherings can appear in Showcase; upcoming ones stay on Happening. `/events/` stays in Network nav when there is something upcoming.
 - **Member project shelves:** First-party apps linked from member project shelves (including off-origin apps) can appear as Showcase projects. Missing posters can be filled with a viewport capture.
@@ -20,6 +21,9 @@
 
 ### Fixed
 
+- **`/ideas/` is not Showcase creative work:** Treat `/ideas/` as a writing hub / site chrome (not a studio slashpage), so homepage “Ideas” cards like forwardbias.dev no longer appear as projects.
+- **Book publish dates for Showcase:** Parse member “Coming Month YYYY” badges and “By … · Publisher · YYYY” bylines; when still undated, follow the book’s Amazon Buy/Pre-order link for publication date. Books without a validated date (or outside the last 365 days) stay out of Showcase.
+- **Showcase kinds and age gates:** Prefer creative path kinds over generic `project` (e.g. `/books/…` → Books, `/painting/` → Art). Books need a publish date within the last year. Undated portfolio/project rows stay out. `/availability/` and `/hire-me/` are chrome. Direct media/`wp-content/uploads` figures are not works; `music-for-losers`-style paths are not Music. Podcast episodes only feature inside the 14-day window. Astro span titles strip at compact/card time.
 - **Connection chart circle labels:** Site domain labels stay on every graph node on the homepage and `/connections/` even when the network has more than twelve participants (the old cap hid all unselected labels).
 - **Work screenshot hang on incomplete images:** Poster capture soft-times out `<img>` settle (and the whole URL budget) so Twitch/creative pages that never fire load/error cannot stall `nlp:sync` for hours. Logs each work URL before capture.
 - **Coverage gate for self-intro titles, homepage connections, and Showcase recency:** Unit tests hit blank/`slugifyTopic`, homepage document fallbacks, Non-Josh self-intro reject paths, and dated/undated portfolio `observed_at` branches so `npm run test:coverage` stays at 100%.

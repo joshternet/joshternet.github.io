@@ -7,6 +7,7 @@
  */
 
 import { isShowcaseChromePath } from "../network/slash-pages.mjs";
+import { publishedAtFromPageHtml } from "./content.mjs";
 import { buildTopicEvidence } from "./evidence.mjs";
 import {
   decodeHrefForParse,
@@ -64,6 +65,33 @@ function typeList(types) {
 }
 
 /**
+ * True when a figure href is a static media file / CMS upload, not a work page.
+ * @param {unknown} url
+ * @returns {boolean}
+ */
+function isStaticMediaWorkUrl(url) {
+  if (typeof url !== "string" || !url) {
+    return false;
+  }
+
+  try {
+    const path = new URL(url).pathname || "";
+
+    if (
+      /\.(jpe?g|png|gif|webp|avif|svg|mp3|m4a|aac|ogg|flac|wav|opus|mp4|webm|mov)(\?|$)/i.test(
+        path,
+      )
+    ) {
+      return true;
+    }
+
+    return /\/wp-content\/uploads\//i.test(path);
+  } catch {
+    return false;
+  }
+}
+
+/**
  * Maps Schema.org / hints to a Joshternet content_type.
  * @param {string[]} types
  * @param {string} [pathHint]
@@ -118,7 +146,7 @@ export function creativeContentType(types, pathHint = "") {
   if (
     /musicrecording|audioobject/.test(joined) ||
     /\.(mp3|m4a|aac|ogg|flac|wav|opus)(\?|$)/i.test(path) ||
-    /music|tracks?\b|sounds?\b/.test(path)
+    /(^|\/)(music|sounds?|tracks?)(\/|$)/.test(path)
   ) {
     return "music_recording";
   }
@@ -432,41 +460,30 @@ export function creativeItemsFromFigures(
         ? imageAbs
         : "";
 
-    // Image file URLs alone are not treated as artwork pages.
-    if (/\.(jpe?g|png|gif|webp|avif|svg)(\?|$)/i.test(url)) {
-      const workUrl = anchorHref ? absoluteUrl(anchorHref, pageUrl) : "";
-
-      if (!workUrl || !workUrl.startsWith(siteOrigin)) {
-        continue;
-      }
-
-      items.push({
-        identity: `url:${workUrl}`,
-        url: workUrl,
-        site_origin: siteOrigin,
-        title: caption,
-        summary: caption,
-        content_type: creativeContentType([], new URL(pageUrl).pathname),
-        page_role: "project",
-        language: null,
-        declared_topics: [],
-        source: { kind: "creative-figure", page: pageUrl },
-        source_feeds: [{ type: "creative-figure", url: pageUrl }],
-        observed_at: observedAt,
-        ...(image ? { image } : {}),
-      });
+    // Static media files (and image-only figure hrefs) are never Showcase works.
+    if (isStaticMediaWorkUrl(url)) {
       continue;
     }
+
+    const titleMatch = chunk.match(
+      /<span\b[^>]*class=["'][^"']*\btitle\b[^"']*["'][^>]*>([\s\S]*?)<\/span>/i,
+    );
+    const title = normalizeExtractedText(
+      firstDefinedString(titleMatch ? titleMatch[1] : undefined, caption),
+    );
+    const published =
+      publishedAtFromPageHtml(chunk) || publishedAtFromPageHtml(caption);
 
     items.push({
       identity: `url:${url}`,
       url,
       site_origin: siteOrigin,
-      title: caption,
+      title: title || caption,
       summary: caption,
       content_type: creativeContentType([], new URL(pageUrl).pathname),
       page_role: "project",
       language: null,
+      ...(published ? { published_at: published } : {}),
       declared_topics: [],
       source: { kind: "creative-figure", page: pageUrl },
       source_feeds: [{ type: "creative-figure", url: pageUrl }],
@@ -797,7 +814,7 @@ export function creativeItemsFromIndexLinks(
   const seen = new Set();
   const path = new URL(pageUrl).pathname.toLowerCase();
   const indexRoots =
-    /^\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|podcasts?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)(?:\/|$)/i;
+    /^\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|paintings?|fiction|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|podcasts?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)(?:\/|$)/i;
 
   if (!indexRoots.test(path.replace(/\/+$/, "") + "/")) {
     return items;
@@ -1162,7 +1179,7 @@ export function isCreativeIndexPath(pathname) {
     .toLowerCase()}`;
 
   const candidate = `${lower}/`;
-  return /^\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|podcasts?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)(?:\/|$)/.test(
+  return /^\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|paintings?|fiction|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|podcasts?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)(?:\/|$)/.test(
     candidate,
   );
 }
@@ -1239,6 +1256,9 @@ const NON_PROJECT_SEGMENTS = new Set([
   "cv",
   "resume",
   "hire",
+  "hire-me",
+  "availability",
+  "ideas",
   "colophon",
   "credits",
   "recipes",

@@ -159,7 +159,11 @@ test("figures: alt caption and image-href figure branch", () => {
     "t",
   );
   assert.ok(items.some((item) => item.title === "From alt"));
-  assert.ok(items.some((item) => item.title === "Direct image href"));
+  // Direct media-file hrefs are never Showcase works (Leon-shaped figures).
+  assert.equal(
+    items.some((item) => item.title === "Direct image href"),
+    false,
+  );
 });
 test("index links skip short titles, duplicates, and same prefix root", () => {
   const html = `

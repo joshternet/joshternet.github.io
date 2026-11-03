@@ -21,6 +21,9 @@ import {
 /** What's New / Activity primary window (publisher publish dates). */
 export const ACTIVITY_WINDOW_DAYS = 14;
 
+/** Showcase Books eligibility window (publisher publish dates only). */
+export const BOOKS_WINDOW_DAYS = 365;
+
 export { itemMentionsTopic, textMentionsSlug };
 
 export const RELATION_LABELS = {
@@ -286,6 +289,46 @@ export function dirForLanguage(language) {
 }
 
 /**
+ * Strip HTML tags from harvested titles/summaries (e.g. Astro span wrappers).
+ * @param {unknown} value
+ * @returns {string}
+ */
+export function stripHtmlToText(value) {
+  return decodeHtmlEntities(String(value || "").replace(/<[^>]+>/g, " "))
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * True when a URL points at a static media file or CMS upload asset, not a work page.
+ * @param {unknown} url
+ * @returns {boolean}
+ */
+export function isStaticMediaFileUrl(url) {
+  try {
+    const parsed = new URL(String(url || ""));
+    const path = parsed.pathname;
+
+    if (
+      /\.(jpe?g|png|gif|webp|avif|svg|mp3|m4a|aac|ogg|flac|wav|opus|mp4|webm|mov)(\?|$)/i.test(
+        path,
+      )
+    ) {
+      return true;
+    }
+
+    // Extension-less CMS uploads (figures linked without a file suffix).
+    if (/\/wp-content\/uploads\//i.test(path)) {
+      return true;
+    }
+
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+/**
  * Compact content card for lists.
  * Passes through creative-specific fields (`categories`, `availability`,
  * `action_label`, `action_url`) and event fields (`start`, `end`, `venue`,
@@ -322,9 +365,9 @@ export function compactContentItem(item, sites, publicSlugs) {
   const language = normalizeLanguageTag(item.language);
   const rawTitle =
     typeof item.title === "string" && item.title ? item.title : item.url;
-  const title = decodeHtmlEntities(String(rawTitle));
+  const title = stripHtmlToText(rawTitle) || String(rawTitle);
   const rawSummary = typeof item.summary === "string" ? item.summary : "";
-  const decodedSummary = decodeHtmlEntities(rawSummary);
+  const decodedSummary = stripHtmlToText(rawSummary);
   // Title-echo summaries (common on year albums) add noise on Showcase cards.
   const summaryEqualsTitle =
     decodedSummary.trim().toLowerCase() === String(title).trim().toLowerCase();
@@ -853,10 +896,11 @@ export const madeKind = showcaseKind;
 
 /** Path segment that marks a creative index root. */
 const CREATIVE_INDEX_ROOT =
-  /^(gallery|galleries|albums|photography|photos|art|illustration|artwork|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|podcasts?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)$/i;
+  /^(gallery|galleries|albums|photography|photos|art|illustration|artwork|paintings?|fiction|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|podcasts?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)$/i;
 
 /**
  * Showcase kind inferred from a creative child path (e.g. /experiments/corkboard/).
+ * Bare `/painting(s)/` is treated as an art album hub.
  * @param {unknown} url
  * @returns {string} Kind slug, or "" when not a creative child URL.
  */
@@ -866,6 +910,11 @@ export function creativePathKind(url) {
       .replace(/\/+$/, "")
       .split("/")
       .filter(Boolean);
+
+    // Painting gallery hubs are themselves Showcase Art albums.
+    if (parts.length === 1 && /^paintings?$/i.test(parts[0])) {
+      return "art";
+    }
 
     if (parts.length < 2 || !CREATIVE_INDEX_ROOT.test(parts[0])) {
       return "";
@@ -877,8 +926,12 @@ export function creativePathKind(url) {
       return "photography";
     }
 
-    if (/^(art|illustration|artwork)$/.test(root)) {
+    if (/^(art|illustration|artwork|paintings?)$/.test(root)) {
       return "art";
+    }
+
+    if (/^fiction$/.test(root)) {
+      return "books";
     }
 
     if (/^(comics?|webcomics)$/.test(root)) {
@@ -1038,14 +1091,16 @@ export function showcaseKindForItem(item) {
     return fromPath;
   }
 
-  if (fromPath === "comics" || fromPath === "education") {
-    return fromPath;
-  }
-
   const fromType = showcaseKind(
     item.content_type,
     Array.isArray(item.categories) ? item.categories : [],
   );
+
+  // Prefer path over a generic project/other type so /books/… → books,
+  // /painting/… → art, comics/education paths, etc.
+  if ((fromType === "project" || fromType === "other") && fromPath) {
+    return fromPath;
+  }
 
   if (fromType !== "other") {
     return fromType;
@@ -1077,6 +1132,12 @@ export function isBareCreativeIndexUrl(url) {
     }
 
     const leaf = parts[0].replace(/\.(html?|php|aspx?)$/i, "");
+
+    // Bare /painting(s)/ is an Art album card, not an empty index shell.
+    if (/^paintings?$/i.test(leaf)) {
+      return false;
+    }
+
     return CREATIVE_INDEX_ROOT.test(leaf);
   } catch {
     return false;
@@ -1506,11 +1567,7 @@ export function expandSlugTitleFromSummary(title, summary) {
  * @returns {string}
  */
 export function showcaseCardTitle(item) {
-  let title = decodeHtmlEntities(
-    String(item?.title || "").replace(/<[^>]+>/g, " "),
-  )
-    .replace(/\s+/g, " ")
-    .trim();
+  let title = stripHtmlToText(item?.title);
 
   const url = String(item?.url || "");
   const parts = pathnameParts(url);
@@ -1595,22 +1652,33 @@ const PHOTO_ART_COLLECTION_ROOTS = new Set([
   "art",
   "illustration",
   "artwork",
+  "painting",
+  "paintings",
 ]);
 
 /**
  * True when the URL is a photo/art album or year collection (e.g. `/photos/2014/`),
- * not an individual image page under that tree.
+ * not an individual image page under that tree. Bare `/painting(s)/` hubs count.
  * @param {unknown} url
  * @returns {boolean}
  */
 export function isPhotoOrArtCollectionUrl(url) {
   const parts = pathnameParts(url);
 
-  if (!parts || parts.length !== 2) {
+  if (!parts || parts.length === 0) {
     return false;
   }
 
   const root = parts[0].toLowerCase();
+
+  if (parts.length === 1) {
+    return root === "painting" || root === "paintings";
+  }
+
+  if (parts.length !== 2) {
+    return false;
+  }
+
   const leaf = parts[1].toLowerCase();
 
   return (
@@ -1867,7 +1935,7 @@ function interleaveImagedItems(items) {
  * Individual experiments under /experiments/… are eligible; the folder is not.
  * Client portfolio case studies are never Showcase cards.
  * @param {Record<string, unknown> | null | undefined} item
- * @param {{ siblingUrls?: Iterable<string> }} [options]
+ * @param {{ siblingUrls?: Iterable<string>, now?: Date | string }} [options]
  * @returns {boolean}
  */
 export function isMadeContentItem(item, options = {}) {
@@ -1883,6 +1951,11 @@ export function isMadeContentItem(item, options = {}) {
     return false;
   }
 
+  // Direct media / CMS uploads are never Showcase works.
+  if (isStaticMediaFileUrl(item.url)) {
+    return false;
+  }
+
   // A member homepage is not a Showcase project. External product roots
   // (themorning.app) attributed to a member stay eligible.
   if (isMemberSiteHomeItem(item)) {
@@ -1891,6 +1964,12 @@ export function isMadeContentItem(item, options = {}) {
 
   const type = String(item.content_type);
   const educationPast = isPastEducationShowcaseEvent(item);
+  const clock =
+    options.now instanceof Date
+      ? options.now
+      : typeof options.now === "string" && options.now
+        ? new Date(options.now)
+        : new Date();
 
   // Identity/nav, topics, notes, reading, webrings, feeds—never Showcase,
   // except past education gatherings that live under writing trees.
@@ -1976,8 +2055,77 @@ export function isMadeContentItem(item, options = {}) {
     return false;
   }
 
+  const publishedAt =
+    typeof item.published_at === "string" && item.published_at.trim()
+      ? item.published_at.trim()
+      : "";
+
+  // Undated portfolio/project rows are archival — not Showcase “new work.”
+  // Art/photo album hubs may be typed project under /painting/ and stay.
+  if (!publishedAt && isUndatedProjectBlockedFromShowcase(item, pathKind)) {
+    return false;
+  }
+
+  // Books: only releases with a real publish date inside the last year.
+  if (pathKind === "books" || showcaseKindForItem(item) === "books") {
+    if (
+      !publishedAt ||
+      !publishedWithinDays(publishedAt, clock, BOOKS_WINDOW_DAYS)
+    ) {
+      return false;
+    }
+  }
+
+  // Podcast episodes: only the Activity window (new videos), not the back catalog.
+  if (type === "podcast_episode") {
+    if (
+      !publishedAt ||
+      !publishedWithinDays(publishedAt, clock, ACTIVITY_WINDOW_DAYS)
+    ) {
+      return false;
+    }
+  }
+
   // Photography without a poster (and other empty shells) must not fill Showcase.
   return showcaseItemHasSubstance(item);
+}
+
+/**
+ * True when an undated portfolio/project archive row must stay out of Showcase.
+ * Live shelf apps, named-root products, and dated creative toys stay eligible.
+ * @param {Record<string, unknown>} item
+ * @param {string} pathKind
+ * @returns {boolean}
+ */
+function isUndatedProjectBlockedFromShowcase(item, pathKind) {
+  if (isPhotoOrArtCollectionUrl(item.url)) {
+    return false;
+  }
+
+  if (
+    pathKind === "art" ||
+    pathKind === "photography" ||
+    pathKind === "comics"
+  ) {
+    return false;
+  }
+
+  // First-party shelf apps and named studio products may omit publish dates.
+  if (isExternalShelfProject(item) || isNamedRootCreativeProduct(item)) {
+    return false;
+  }
+
+  if (isPortfolioSourcedItem(item)) {
+    return true;
+  }
+
+  // /projects|/portfolio|/work children without a publisher date (Drake-shaped).
+  try {
+    const path = new URL(String(item.url)).pathname.toLowerCase();
+    return /\/(projects?|portfolio|work)\/[^/]+/i.test(path);
+  } catch {
+    return false;
+  }
 }
 
 /**

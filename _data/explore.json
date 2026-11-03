@@ -1,21 +1,74 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-02T23:26:49.438Z",
+  "generated_at": "2026-11-03T06:08:44.841Z",
   "participant_count": 19,
-  "community_count": 405,
-  "publication_count": 1411,
-  "connection_count": 12,
+  "community_count": 619,
+  "publication_count": 504,
+  "connection_count": 25,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
     "connection": "first edge after stable from, to, relation sort"
   },
   "fresh": [
     {
+      "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
+      "title": "The October Micro SaaS Challenge: A Retro",
+      "summary": "Four micro SaaS products in four weeks, built with Claude Code: what shipped, which rules broke, what it cost, and what I'd change next time.",
+      "published_at": "2026-11-02T00:00:00.000Z",
+      "observed_at": "2026-11-03T04:10:52.440Z",
+      "content_type": "article",
+      "language": "en-us",
+      "dir": "",
+      "site_origin": "https://www.joshfinnie.com",
+      "site_title": "Josh Finnie",
+      "domain": "www.joshfinnie.com",
+      "tags": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "indie-hacking",
+          "label": "indie hacking"
+        },
+        {
+          "slug": "micro-saas",
+          "label": "micro saas"
+        },
+        {
+          "slug": "side-project",
+          "label": "side projects"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "indie-hacking",
+          "label": "indie hacking"
+        },
+        {
+          "slug": "micro-saas",
+          "label": "micro saas"
+        },
+        {
+          "slug": "side-project",
+          "label": "side projects"
+        }
+      ],
+      "image": "/assets/activity/posters/06408c099e97547580ade828c7727b3a6fff5e2ad9379a28a4d1ac2f21e7ee6b.webp",
+      "image_origin": "",
+      "source_kind": "rss",
+      "page_role": "article"
+    },
+    {
       "url": "https://joshtronic.com/2026/11/01/open-to-work/",
       "title": "I'm Open to Work",
       "summary": "Mailshake has terminated my employment after 8+ years. In that time, I... Started as engineer #3 Moved into management thanks to an awesome CTO Ran a 10-person team across backend, frontend, QA, and support Scaled down to 2 engineers while maintaining productivity Reduced annual AWS spend by ~70% over 3 years Was always on-call and handled support escalations Ran technical due diligence on 4 acqui",
       "published_at": "2026-11-01T00:00:00.000Z",
-      "observed_at": "2026-11-02T15:29:16.095Z",
+      "observed_at": "2026-11-03T04:10:52.440Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -34,7 +87,7 @@
       "title": "Gluten-Free Chocolate Cake",
       "summary": "Nutrition assumptions and sources",
       "published_at": "2026-10-31T19:55:58.000Z",
-      "observed_at": "2026-11-02T15:29:16.095Z",
+      "observed_at": "2026-11-03T04:10:52.440Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -63,7 +116,7 @@
       "title": "Worth Wandering: Radio Aporee",
       "summary": "A worldwide collection of field recordings that lets you explore the sounds of cities, forests, rivers, train stations and ordinary places, with experimental radio projects that turn listening into an entirely different way of experiencing the world.",
       "published_at": "2026-10-30T14:00:00.000Z",
-      "observed_at": "2026-11-02T15:29:16.095Z",
+      "observed_at": "2026-11-03T04:10:52.440Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -92,7 +145,7 @@
       "title": "How Wizardly Words Invents Words",
       "summary": "It takes what we know and infers new words between the lines",
       "published_at": "2026-10-30T00:00:00.000Z",
-      "observed_at": "2026-11-02T15:29:16.095Z",
+      "observed_at": "2026-11-03T04:10:52.440Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -107,49 +160,47 @@
       "page_role": "unknown"
     },
     {
-      "url": "https://joshghent.com/enterprise-sales-teams/",
-      "title": "Enterprise sales teams, please, I beg you, stop",
-      "summary": "I asked for a price on a few extra seats of software we already pay for. Two days and a pile of irrelevant questions later, I got one.",
-      "published_at": "2026-10-28T00:00:00.000Z",
-      "observed_at": "2026-11-02T15:29:16.095Z",
+      "url": "https://artlung.com/blog/2026/10/29/patrick-stewart-rip/",
+      "title": "Patrick Stewart was a giant across television and movie franchises I enjoyed.",
+      "summary": "",
+      "published_at": "2026-10-29T20:53:15.000Z",
+      "observed_at": "2026-11-03T04:10:52.440Z",
       "content_type": "article",
-      "language": "en",
+      "language": "en-us",
       "dir": "",
-      "site_origin": "https://joshghent.com",
-      "site_title": "Josh Ghent",
-      "domain": "joshghent.com",
-      "tags": [],
-      "neighborhoods": [],
-      "image": "/assets/activity/posters/4c514b3d1d438731fbfe946e8285c544a8bdc605e07a60a93d9c2857118dd71d.webp",
+      "site_origin": "https://artlung.com",
+      "site_title": "Joe Crawford",
+      "domain": "artlung.com",
+      "tags": [
+        {
+          "slug": "general",
+          "label": "general"
+        },
+        {
+          "slug": "star-trek",
+          "label": "star-trek"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "general",
+          "label": "general"
+        },
+        {
+          "slug": "star-trek",
+          "label": "star-trek"
+        }
+      ],
+      "image": "/assets/activity/posters/eba701c1e4d4b40e1654618c723dd8f97dc640fa37ffbfae07223871684d7669.webp",
       "image_origin": "",
-      "source_kind": "atom",
+      "source_kind": "h-entry",
       "page_role": "article"
-    },
-    {
-      "url": "https://joshuamorris.info/experiments/weird-web-october-2026/skeuomorphism/",
-      "title": "Skeuomorphism",
-      "summary": "Operate a Radio Shack Armatron and move objects around its tabletop.",
-      "published_at": "2026-10-27T00:00:00.000Z",
-      "observed_at": "2026-11-02T15:29:16.095Z",
-      "content_type": "project",
-      "language": "en",
-      "dir": "",
-      "site_origin": "https://joshuamorris.info",
-      "site_title": "Joshua Morris",
-      "domain": "joshuamorris.info",
-      "tags": [],
-      "neighborhoods": [],
-      "image": "/assets/activity/posters/422b88b509b6913ae27504902894d512cfae7a2895864cba864019d529560cf5.webp",
-      "image_origin": "",
-      "source_kind": "creative-schema",
-      "page_role": "unknown",
-      "kind": "project"
     }
   ],
   "neighborhood": {
-    "slug": "earth-observation",
-    "label": "earth observation",
-    "member_count": 1
+    "slug": "machine-learning",
+    "label": "Machine learning",
+    "member_count": 3
   },
   "connection": {
     "from": "https://artlung.com",
@@ -161,6 +212,6 @@
     "href": "https://joshmuller.ca/",
     "page": "https://artlung.com/firehose/",
     "text": "joshmuller.ca",
-    "evidence_count": 1
+    "evidence_count": 2
   }
 }

@@ -43,6 +43,7 @@ import {
   contentItemsFromJsonFeed,
   contentItemsFromRssOrAtom,
   enrichContentItemPosters,
+  enrichPublishedAtForBookItems,
   enrichPublishedAtFromPages,
   joinContentWithPageSignals,
   mergeContentItems,
@@ -87,6 +88,10 @@ import { collectCreativeWorks } from "./creative.mjs";
 import { collectEvents } from "./events.mjs";
 import { collectPortfolio } from "./portfolio.mjs";
 import { shouldRenderHtml } from "./render.mjs";
+import {
+  harvestYoutubeShowEpisodes,
+  youtubeShowUrlsFromHtml,
+} from "./youtube-feeds.mjs";
 import {
   allowsCommunityTopics,
   allowsHeuristicTopics,
@@ -323,6 +328,8 @@ async function main() {
       const descriptions = [];
       const locales = new Set();
       const schemaTypes = new Set();
+      /** @type {Set<string>} */
+      const youtubeShowUrls = new Set();
 
       for (const page of crawled.pages) {
         const regions = {
@@ -444,6 +451,16 @@ async function main() {
       htmlSubjects.push(...creative.subjects);
       contentDrafts.push(...creative.items);
 
+      for (const page of creativePages) {
+        if (typeof page.html !== "string" || !page.html) {
+          continue;
+        }
+
+        for (const showUrl of youtubeShowUrlsFromHtml(page.html)) {
+          youtubeShowUrls.add(showUrl);
+        }
+      }
+
       // Events are a separate content_type; Happening filters to upcoming later.
       const events = collectEvents(creativePages, {
         siteOrigin: origin,
@@ -516,9 +533,39 @@ async function main() {
           }
 
           contentDrafts.push(...drafts);
+
+          // Substack (and other) feed bodies often embed podcast playlist links.
+          for (const showUrl of youtubeShowUrlsFromHtml(fetched.body)) {
+            youtubeShowUrls.add(showUrl);
+          }
         } catch (error) {
           process.stderr.write(
             `content feed failed ${origin} (${feed.url}): ${error instanceof Error ? error.message : error}\n`,
+          );
+        }
+      }
+
+      if (youtubeShowUrls.size > 0) {
+        try {
+          const podcastEpisodes = await harvestYoutubeShowEpisodes(
+            youtubeShowUrls,
+            {
+              siteOrigin: origin,
+              observedAt: now,
+              cache: dnsCache,
+              robotsGate,
+            },
+          );
+          contentDrafts.push(...podcastEpisodes);
+
+          if (podcastEpisodes.length > 0) {
+            process.stdout.write(
+              `nlp youtube shows ${origin}: ${podcastEpisodes.length} episode(s) from ${youtubeShowUrls.size} show URL(s)\n`,
+            );
+          }
+        } catch (error) {
+          process.stderr.write(
+            `youtube show harvest failed ${origin}: ${error instanceof Error ? error.message : error}\n`,
           );
         }
       }
@@ -676,6 +723,11 @@ async function main() {
   // Feed-sourced experiments/games often lack enclosures; pull og:image from
   // the publisher page so Showcase uses the site's existing posters in CI.
   await enrichContentItemPosters(gatheredItems, {
+    cache: dnsCache,
+    robotsGate,
+  });
+  // Books/fiction: Coming badges, By · Publisher · YYYY, then Amazon product date.
+  await enrichPublishedAtForBookItems(gatheredItems, {
     cache: dnsCache,
     robotsGate,
   });

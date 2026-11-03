@@ -236,6 +236,184 @@ test("buildChannelPublishByUrl skips pages without a channel id or feed", async 
   assert.deepEqual(await buildChannelPublishByUrl(null, {}), {});
 });
 
+test("resolveYoutubeChannelPublishedAt uses datePublished when uploadDate missing", async () => {
+  assert.equal(
+    await resolveYoutubeChannelPublishedAt(
+      "https://www.youtube.com/channel/UCdatePub",
+      {
+        robotsGate: {
+          allows: async () => true,
+          bodyForOrigin: async () => "",
+        },
+        fetchPublicText: async (href) => {
+          if (href.includes("channel_id=UCdatePub")) {
+            return {
+              url: href,
+              contentType: "application/atom+xml",
+              body: "<feed xmlns='http://www.w3.org/2005/Atom'></feed>",
+            };
+          }
+
+          if (href.includes("/channel/UCdatePub")) {
+            return {
+              url: href,
+              contentType: "text/html",
+              body: '"datePublished":"2026-10-10T00:00:00Z"',
+            };
+          }
+
+          throw new Error(`unexpected ${href}`);
+        },
+      },
+    ),
+    "2026-10-10T00:00:00.000Z",
+  );
+});
+
+test("resolveYoutubeChannelPublishedAt empty atom then empty page HTML", async () => {
+  assert.equal(
+    await resolveYoutubeChannelPublishedAt(
+      "https://www.youtube.com/channel/UCemptyHtml",
+      {
+        robotsGate: {
+          allows: async () => true,
+          bodyForOrigin: async () => "",
+        },
+        fetchPublicText: async (href) => {
+          if (href.includes("channel_id=UCemptyHtml")) {
+            return {
+              url: href,
+              contentType: "application/atom+xml",
+              body: "<feed xmlns='http://www.w3.org/2005/Atom'></feed>",
+            };
+          }
+
+          if (href.includes("/channel/UCemptyHtml")) {
+            return { url: href, contentType: "text/html", body: "" };
+          }
+
+          throw new Error(`unexpected ${href}`);
+        },
+      },
+    ),
+    "",
+  );
+});
+
+test("resolveYoutubeChannelPublishedAt HTML uploadDate and deny paths", async () => {
+  assert.equal(
+    await resolveYoutubeChannelPublishedAt(
+      "https://www.youtube.com/channel/UCpageDate",
+      {
+        robotsGate: {
+          allows: async () => true,
+          bodyForOrigin: async () => "",
+        },
+        fetchPublicText: async (href) => {
+          if (href.includes("channel_id=UCpageDate")) {
+            return {
+              url: href,
+              contentType: "application/atom+xml",
+              body: "<feed xmlns='http://www.w3.org/2005/Atom'></feed>",
+            };
+          }
+
+          if (href.includes("/channel/UCpageDate")) {
+            return {
+              url: href,
+              contentType: "text/html",
+              body: '"uploadDate":"2026-10-15T00:00:00Z"',
+            };
+          }
+
+          throw new Error(`unexpected ${href}`);
+        },
+      },
+    ),
+    "2026-10-15T00:00:00.000Z",
+  );
+
+  assert.equal(
+    await resolveYoutubeChannelPublishedAt(
+      "https://www.youtube.com/channel/UCwatchDeny",
+      {
+        robotsGate: {
+          allows: async (href) => !String(href).includes("watch?v="),
+          bodyForOrigin: async () => "",
+        },
+        fetchPublicText: async (href) => {
+          if (href.includes("channel_id=")) {
+            throw new Error("atom 404");
+          }
+
+          if (href.includes("/channel/UCwatchDeny")) {
+            return {
+              url: href,
+              contentType: "text/html",
+              body: '"videoId":"vidDeny"',
+            };
+          }
+
+          throw new Error(`unexpected ${href}`);
+        },
+      },
+    ),
+    "",
+  );
+
+  assert.equal(
+    await resolveYoutubeChannelPublishedAt(
+      "https://www.youtube.com/channel/UCwatchBoom",
+      {
+        robotsGate: {
+          allows: async () => true,
+          bodyForOrigin: async () => "",
+        },
+        fetchPublicText: async (href) => {
+          if (href.includes("channel_id=")) {
+            throw new Error("atom 404");
+          }
+
+          if (href.includes("/channel/UCwatchBoom")) {
+            return {
+              url: href,
+              contentType: "text/html",
+              body: '"videoId":"vidBoom"',
+            };
+          }
+
+          if (href.includes("watch?v=vidBoom")) {
+            throw new Error("watch down");
+          }
+
+          throw new Error(`unexpected ${href}`);
+        },
+      },
+    ),
+    "",
+  );
+
+  assert.equal(
+    await resolveYoutubeChannelPublishedAt(
+      "https://www.youtube.com/channel/UCnoBody",
+      {
+        robotsGate: {
+          allows: async (href) => !String(href).includes("/channel/UCnoBody"),
+          bodyForOrigin: async () => "",
+        },
+        fetchPublicText: async (href) => {
+          if (href.includes("channel_id=")) {
+            throw new Error("atom 404");
+          }
+
+          throw new Error(`unexpected ${href}`);
+        },
+      },
+    ),
+    "",
+  );
+});
+
 test("resolveYoutubeChannelPublishedAt uses default fetch when unset", async () => {
   const previousFetch = globalThis.fetch;
   globalThis.fetch = async () => {

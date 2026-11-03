@@ -29,7 +29,7 @@ import {
  * @type {RegExp}
  */
 const CREATIVE_WORK_PATH =
-  /\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)\/.+/i;
+  /\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|paintings?|fiction|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)\/.+/i;
 
 /**
  * First regex capture group, or empty string when absent.
@@ -139,6 +139,22 @@ export function isoDateString(value) {
   return new Date(time).toISOString();
 }
 
+/** English month names → 1-based month index for book “Coming …” badges. */
+const MONTH_NAME_TO_NUMBER = {
+  january: 1,
+  february: 2,
+  march: 3,
+  april: 4,
+  may: 5,
+  june: 6,
+  july: 7,
+  august: 8,
+  september: 9,
+  october: 10,
+  november: 11,
+  december: 12,
+};
+
 /**
  * Maps a 4-digit calendar year to January 1 UTC ISO.
  * @param {unknown} year
@@ -156,6 +172,196 @@ export function publishedAtFromYear(year) {
   }
 
   return isoDateString(`${trimmed}-01-01T00:00:00.000Z`);
+}
+
+/**
+ * Maps a calendar month name + year to the first day of that month (UTC).
+ * @param {unknown} monthName
+ * @param {unknown} year
+ * @returns {string}
+ */
+export function publishedAtFromMonthYear(monthName, year) {
+  if (typeof monthName !== "string" || typeof year !== "string") {
+    return "";
+  }
+
+  const month = MONTH_NAME_TO_NUMBER[monthName.trim().toLowerCase()];
+  const yearIso = publishedAtFromYear(year);
+
+  if (!month || !yearIso) {
+    return "";
+  }
+
+  const monthToken = String(month).padStart(2, "0");
+  return isoDateString(`${year.trim()}-${monthToken}-01T00:00:00.000Z`);
+}
+
+/**
+ * “Coming April 2027” / “Coming 2027” release badges on member book pages.
+ * @param {unknown} text
+ * @returns {string}
+ */
+export function publishedAtFromComingBadge(text) {
+  if (typeof text !== "string" || !text) {
+    return "";
+  }
+
+  const withMonth = text.match(
+    /\bComing\s+(January|February|March|April|May|June|July|August|September|October|November|December)\s+((?:19|20)\d{2})\b/i,
+  );
+
+  if (withMonth) {
+    return publishedAtFromMonthYear(withMonth[1], withMonth[2]);
+  }
+
+  const yearOnly = firstCapture(text, /\bComing\s+((?:19|20)\d{2})\b/i);
+
+  return publishedAtFromYear(yearOnly);
+}
+
+/**
+ * “By Author · Publisher · 2026” (or en-dash) credit lines on book detail pages.
+ * @param {unknown} text
+ * @returns {string}
+ */
+export function publishedAtFromBookByline(text) {
+  if (typeof text !== "string" || !text) {
+    return "";
+  }
+
+  const year = firstCapture(
+    text,
+    /\bBy\s+[^<\n]{1,120}?[·•]\s*[^<\n·•]{1,80}?[·•]\s*((?:19|20)\d{2})\b/i,
+  );
+
+  return publishedAtFromYear(year);
+}
+
+/**
+ * First Amazon product / short-link URL in HTML (Buy / Pre-order buttons).
+ * @param {unknown} html
+ * @returns {string}
+ */
+export function amazonProductUrlFromHtml(html) {
+  if (typeof html !== "string" || !html) {
+    return "";
+  }
+
+  for (const match of html.matchAll(/\bhref\s*=\s*(["'])(.*?)\1/gi)) {
+    const href = match[2] || "";
+
+    if (!href) {
+      continue;
+    }
+
+    try {
+      const parsed = new URL(href, "https://www.amazon.com");
+      const host = parsed.hostname;
+
+      if (/(^|\.)amzn\.to$/i.test(host)) {
+        return parsed.href;
+      }
+
+      if (!/(^|\.)amazon\.[a-z.]+$/i.test(host)) {
+        continue;
+      }
+
+      // Author storefronts are not a single title’s publication date.
+      if (
+        /\/e\//i.test(parsed.pathname) ||
+        /\/stores\//i.test(parsed.pathname)
+      ) {
+        continue;
+      }
+
+      if (/\/(?:dp|gp\/product)\//i.test(parsed.pathname)) {
+        return parsed.href;
+      }
+    } catch {
+      // skip bad href
+    }
+  }
+
+  return "";
+}
+
+/**
+ * Parses Amazon-style “July 1, 2025” / “1 July 2025” into UTC midnight ISO.
+ * Avoids Date.parse local-timezone drift for date-only publisher strings.
+ * @param {unknown} value
+ * @returns {string}
+ */
+export function publishedAtFromAmazonDateText(value) {
+  if (typeof value !== "string" || !value.trim()) {
+    return "";
+  }
+
+  const text = value.trim();
+  const us = text.match(
+    /^(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),?\s+((?:19|20)\d{2})$/i,
+  );
+
+  if (us) {
+    const month = MONTH_NAME_TO_NUMBER[us[1].toLowerCase()];
+    const day = Number(us[2]);
+    const year = us[3];
+
+    if (!month || !Number.isFinite(day) || day < 1 || day > 31) {
+      return "";
+    }
+
+    return isoDateString(
+      `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}T00:00:00.000Z`,
+    );
+  }
+
+  const eu = text.match(
+    /^(\d{1,2})\s+(January|February|March|April|May|June|July|August|September|October|November|December)\s+((?:19|20)\d{2})$/i,
+  );
+
+  if (eu) {
+    const day = Number(eu[1]);
+    const month = MONTH_NAME_TO_NUMBER[eu[2].toLowerCase()];
+    const year = eu[3];
+
+    if (!month || !Number.isFinite(day) || day < 1 || day > 31) {
+      return "";
+    }
+
+    return isoDateString(
+      `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}T00:00:00.000Z`,
+    );
+  }
+
+  return isoDateString(text);
+}
+
+/**
+ * Publication date from an Amazon product HTML body.
+ * @param {unknown} html
+ * @returns {string}
+ */
+export function publishedAtFromAmazonHtml(html) {
+  if (typeof html !== "string" || !html) {
+    return "";
+  }
+
+  const fromCarousel = firstCapture(
+    html,
+    /book_details-publication_date[\s\S]{0,500}?rpi-attribute-value[^>]*>\s*<span>\s*([^<]+)/i,
+  );
+  const fromCarouselIso = publishedAtFromAmazonDateText(fromCarousel);
+
+  if (fromCarouselIso) {
+    return fromCarouselIso;
+  }
+
+  const labeled = firstCapture(
+    html,
+    /Publication date[\s\S]{0,200}?<span[^>]*>\s*([A-Za-z]+\s+\d{1,2},?\s+\d{4}|\d{1,2}\s+[A-Za-z]+\s+\d{4})\s*</i,
+  );
+
+  return publishedAtFromAmazonDateText(labeled);
 }
 
 /**
@@ -211,6 +417,14 @@ export function publishedAtFromPageHtml(html) {
     firstCapture(
       html,
       /<meta\b[^>]*content=["']([^"']+)["'][^>]*property=["']article:published_time["']/i,
+    ) ||
+    firstCapture(
+      html,
+      /<meta\b[^>]*property=["']book:release_date["'][^>]*content=["']([^"']+)["']/i,
+    ) ||
+    firstCapture(
+      html,
+      /<meta\b[^>]*name=["']date["'][^>]*content=["']([^"']+)["']/i,
     );
   const fromMeta = isoDateString(metaPublished);
 
@@ -228,12 +442,47 @@ export function publishedAtFromPageHtml(html) {
     return fromTime;
   }
 
-  const jsonLdPublished = firstCapture(
-    html,
-    /"datePublished"\s*:\s*"([^"]+)"/i,
-  );
+  const jsonLdPublished =
+    firstCapture(html, /"datePublished"\s*:\s*"([^"]+)"/i) ||
+    firstCapture(html, /"dateCreated"\s*:\s*"([^"]+)"/i);
 
-  return isoDateString(jsonLdPublished);
+  const fromJsonLd = isoDateString(jsonLdPublished);
+
+  if (fromJsonLd) {
+    return fromJsonLd;
+  }
+
+  // Member book badges / bylines (Chris Minnick–shaped pages).
+  const fromComing = publishedAtFromComingBadge(html);
+
+  if (fromComing) {
+    return fromComing;
+  }
+
+  const fromByline = publishedAtFromBookByline(html);
+
+  if (fromByline) {
+    return fromByline;
+  }
+
+  // Labeled book/project years on the page (not “Coming …” blurbs).
+  if (
+    !/\bComing\b/i.test(
+      firstCapture(html, /(.{0,40}\bPublished\b.{0,40})/i) || "",
+    )
+  ) {
+    const publishedYear = firstCapture(
+      html,
+      /\bPublished(?:\s+in)?\s*:?\s*((?:19|20)\d{2})\b/i,
+    );
+    const fromPublishedYear = publishedAtFromYear(publishedYear);
+
+    if (fromPublishedYear) {
+      return fromPublishedYear;
+    }
+  }
+
+  return "";
 }
 
 /**
@@ -301,6 +550,148 @@ export function enrichPublishedAtFromPages(items, pages) {
 
     if (published) {
       record.published_at = published;
+    }
+  }
+
+  return items;
+}
+
+/** Max book detail/Amazon fetches per sync for missing publication dates. */
+export const MAX_BOOK_PUBLISHED_AT_FETCHES = 40;
+
+/**
+ * True when a content URL is a books/fiction work page that may declare a date.
+ * @param {unknown} url
+ * @returns {boolean}
+ */
+export function isBookWorkUrl(url) {
+  if (typeof url !== "string" || !url.startsWith("https://")) {
+    return false;
+  }
+
+  try {
+    const path = new URL(url).pathname.toLowerCase();
+    return /\/(books?|fiction)\/[^/]+/i.test(path);
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * True when a Showcase book candidate still needs a publisher date lookup.
+ * @param {Record<string, unknown>} item
+ * @returns {boolean}
+ */
+export function contentItemNeedsBookPublishedAtEnrichment(item) {
+  if (!item || typeof item !== "object") {
+    return false;
+  }
+
+  if (typeof item.published_at === "string" && item.published_at.trim()) {
+    return false;
+  }
+
+  return isBookWorkUrl(item.url);
+}
+
+/**
+ * Fills missing `published_at` for book/fiction works by fetching the member
+ * page (Coming / By · Publisher · YYYY) and, when still undated, the Amazon
+ * Buy/Pre-order target. Fail closed: no inventing dates when lookups miss.
+ * @param {Array<Record<string, unknown>>} items
+ * @param {{
+ *   cache?: Map<string, unknown>,
+ *   fetchText?: typeof fetchPublicText,
+ *   fetchRobotsText?: typeof fetchPublicText,
+ *   robotsGate?: import("./origin-robots.mjs").OriginRobotsGate,
+ *   limit?: number,
+ * }} [options]
+ * @returns {Promise<Array<Record<string, unknown>>>}
+ */
+export async function enrichPublishedAtForBookItems(items, options = {}) {
+  if (!Array.isArray(items) || items.length === 0) {
+    return Array.isArray(items) ? items : [];
+  }
+
+  const fetchText = options.fetchText || fetchPublicText;
+  const cache = options.cache || new Map();
+  const limit =
+    typeof options.limit === "number" && options.limit > 0
+      ? options.limit
+      : MAX_BOOK_PUBLISHED_AT_FETCHES;
+
+  /** @type {import("./origin-robots.mjs").OriginRobotsGate} */
+  let robotsGate;
+  if (options.robotsGate) {
+    robotsGate = options.robotsGate;
+  } else if (typeof options.fetchRobotsText === "function") {
+    robotsGate = createOriginRobotsGate({
+      cache,
+      fetchPublicText: options.fetchRobotsText,
+    });
+  } else {
+    robotsGate = createOriginRobotsGate({ cache });
+  }
+
+  let fetches = 0;
+
+  for (const item of items) {
+    if (fetches >= limit) {
+      break;
+    }
+
+    if (!contentItemNeedsBookPublishedAtEnrichment(item)) {
+      continue;
+    }
+
+    const workUrl = String(item.url);
+
+    if (!(await robotsGate.allows(workUrl))) {
+      continue;
+    }
+
+    let pageHtml = "";
+
+    try {
+      const fetched = await fetchText(workUrl, {
+        cache,
+        accept: "text/html,application/xhtml+xml;q=0.9,*/*;q=0.8",
+      });
+      fetches += 1;
+      pageHtml = typeof fetched?.body === "string" ? fetched.body : "";
+      const fromPage = publishedAtFromPageHtml(pageHtml);
+
+      if (fromPage) {
+        item.published_at = fromPage;
+        continue;
+      }
+    } catch {
+      continue;
+    }
+
+    const amazonUrl = amazonProductUrlFromHtml(pageHtml);
+
+    if (!amazonUrl || !(await robotsGate.allows(amazonUrl))) {
+      continue;
+    }
+
+    if (fetches >= limit) {
+      break;
+    }
+
+    try {
+      const amazon = await fetchText(amazonUrl, {
+        cache,
+        accept: "text/html,application/xhtml+xml;q=0.9,*/*;q=0.8",
+      });
+      fetches += 1;
+      const fromAmazon = publishedAtFromAmazonHtml(amazon?.body || "");
+
+      if (fromAmazon) {
+        item.published_at = fromAmazon;
+      }
+    } catch {
+      // Leave undated; Showcase books gate excludes them.
     }
   }
 

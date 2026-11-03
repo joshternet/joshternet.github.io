@@ -223,10 +223,11 @@ export const SLASH_PAGE_CATALOG = [
     uses: ["site-info"],
   }),
   entry("/ideas/", {
-    purpose: "Ideas and concepts",
-    category: "creative",
+    purpose:
+      "Ideas and concepts (writing hub, not a creative studio slashpage)",
+    category: "writing",
     uses: ["content"],
-    extraction: "creative",
+    extraction: "index",
   }),
   entry("/interests/", {
     purpose: "Passions and interests",

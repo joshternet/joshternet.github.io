@@ -111,6 +111,10 @@ const SHOWCASE_CHROME_EXTRA_SEGMENTS = new Set([
   "cv",
   "resume",
   "hire",
+  "hire-me",
+  "availability",
+  // Thought/post hubs (e.g. forwardbias.dev/ideas/) — not Showcase studio work.
+  "ideas",
   "colophon",
   "credits",
   "indieweb",

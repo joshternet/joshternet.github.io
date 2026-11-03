@@ -50,8 +50,13 @@ import {
   showcaseKind,
   showcaseKindForItem,
   showcaseKindLabel,
+  stripHtmlToText,
+  isStaticMediaFileUrl,
+  BOOKS_WINDOW_DAYS,
+  ACTIVITY_WINDOW_DAYS,
   uniqueActivityItemsByUrl,
 } from "../../scripts/views/lib.mjs";
+import { isShowcaseChromePath } from "../../scripts/network/slash-pages.mjs";
 
 test("showcaseKind maps content types to Showcase labels", () => {
   assert.equal(showcaseKind("photograph"), "photography");
@@ -888,6 +893,20 @@ test("buildEventIcs emits VEVENT lines for upcoming items", () => {
 // ─── Coverage: compactContentItem optional fields (lines 306-344) ─────────────
 
 test("compactContentItem carries optional creative and event fields", () => {
+  const emptyMarkupTitle = compactContentItem(
+    {
+      identity: "url:https://a.example/empty-title/",
+      url: "https://a.example/empty-title/",
+      title: "<span class='title'></span>",
+      summary: "",
+      site_origin: "https://a.example",
+      content_type: "project",
+    },
+    new Map(),
+    [],
+  );
+  assert.equal(emptyMarkupTitle.title, "<span class='title'></span>");
+
   const result = compactContentItem(
     {
       identity: "url:https://a.example/p/",
@@ -1173,6 +1192,7 @@ test("buildMadeItems applies madeKind with non-array categories (falls back to [
         title: "Corkboard",
         summary: "A corkboard for notes and connecting threads.",
         image: "https://a.example/corkboard.webp",
+        published_at: "2026-06-01T00:00:00.000Z",
         categories: "not-an-array",
       },
     ],
@@ -1193,6 +1213,7 @@ test("buildMadeItems applies madeKind with array categories (truthy branch)", ()
         title: "Design system",
         summary: "A public design system for product teams.",
         image: "https://a.example/design.webp",
+        published_at: "2026-06-01T00:00:00.000Z",
         categories: ["design", "portfolio"],
       },
     ],
@@ -1475,6 +1496,9 @@ test("creativePathKind: maps known root paths to correct kinds (L762-803)", () =
   );
   assert.equal(creativePathKind("https://a.example/design/logo/"), "design");
   assert.equal(creativePathKind("https://a.example/books/novel/"), "books");
+  assert.equal(creativePathKind("https://a.example/fiction/story/"), "books");
+  assert.equal(creativePathKind("https://a.example/painting/oil-1/"), "art");
+  assert.equal(creativePathKind("https://a.example/paintings/hub/"), "art");
   assert.equal(creativePathKind("https://a.example/guides/howto/"), "guides");
   // No creative root → "project" fallback (root is in CREATIVE_INDEX_ROOT but no specific match)
   assert.equal(
@@ -1486,8 +1510,10 @@ test("creativePathKind: maps known root paths to correct kinds (L762-803)", () =
 });
 
 test("creativePathKind returns empty string for single-segment path (L756)", () => {
-  // parts.length < 2 → early return ""
+  // parts.length < 2 → early return "" (except painting hubs)
   assert.equal(creativePathKind("https://a.example/gallery/"), "");
+  assert.equal(creativePathKind("https://a.example/painting/"), "art");
+  assert.equal(creativePathKind("https://a.example/paintings/"), "art");
 });
 
 test("isMadeContentItem: article with creative child URL uses creativePathKind (L832-837)", () => {
@@ -2166,6 +2192,7 @@ test("isMadeContentItem without options uses empty sibling list", () => {
       url: "https://a.example/experiments/corkboard/",
       title: "Corkboard",
       summary: "A corkboard for notes and pins in the browser.",
+      published_at: "2026-06-01T00:00:00.000Z",
     }),
     true,
   );
@@ -2519,6 +2546,7 @@ test("isMadeContentItem requires creative-directory URLs for projects", () => {
       title: "Corkboard",
       summary: "Pin notes on a corkboard",
       image: "https://joshuamorris.info/images/corkboard.webp",
+      published_at: "2026-06-01T00:00:00.000Z",
       source_kind: "creative-index",
     }),
     true,
@@ -2532,6 +2560,7 @@ test("isMadeContentItem requires creative-directory URLs for projects", () => {
       summary:
         "SomaSpace is a body-tracking installation that turns body movement into soft visuals and sound.",
       image: "https://joshuakim.studio/images/og-cover.jpg",
+      published_at: "2024-06-01T00:00:00.000Z",
       source_kind: "creative-homepage",
     }),
     true,
@@ -2637,6 +2666,7 @@ test("isMadeContentItem requires creative-directory URLs for projects", () => {
       title: "KindBite",
       summary: "Surplus food app",
       image: "https://joshuakim.studio/images/kindbite-poster.jpg",
+      published_at: "2024-06-01T00:00:00.000Z",
       source_kind: "",
       source: { kind: "creative-schema" },
     }),
@@ -3233,6 +3263,7 @@ test("isMadeContentItem: portfolio-sourced creative path projects are eligible",
       content_type: "project",
       summary: "An FPGA educational processor project with documentation.",
       site_origin: "https://joshuadrake.org",
+      published_at: "2023-06-01T00:00:00.000Z",
       source: { kind: "portfolio" },
       source_kind: "portfolio",
     }),
@@ -3306,5 +3337,282 @@ test("isPortfolioSourcedItem: source_feeds portfolio type alone", () => {
       source_feeds: [{ type: "portfolio" }],
     }),
     true,
+  );
+});
+
+test("showcaseKindForItem prefers path books/art over generic project", () => {
+  assert.equal(
+    showcaseKindForItem({
+      content_type: "project",
+      url: "https://a.example/books/claude-code/",
+    }),
+    "books",
+  );
+  assert.equal(
+    showcaseKindForItem({
+      content_type: "project",
+      url: "https://a.example/painting/",
+    }),
+    "art",
+  );
+});
+
+test("Showcase books require published_at within one year", () => {
+  const now = new Date("2026-11-03T00:00:00.000Z");
+  assert.equal(BOOKS_WINDOW_DAYS, 365);
+  assert.equal(
+    isMadeContentItem(
+      {
+        content_type: "project",
+        url: "https://a.example/books/fresh/",
+        title: "Fresh Book",
+        summary: "A book released this year with a real publish date.",
+        published_at: "2026-05-01T00:00:00.000Z",
+        image: "https://a.example/fresh.jpg",
+      },
+      { now },
+    ),
+    true,
+  );
+  assert.equal(
+    isMadeContentItem(
+      {
+        content_type: "project",
+        url: "https://a.example/books/old/",
+        title: "Old Book",
+        summary: "A book released two years ago should not be featured.",
+        published_at: "2024-05-01T00:00:00.000Z",
+        image: "https://a.example/old.jpg",
+      },
+      { now },
+    ),
+    false,
+  );
+  assert.equal(
+    isMadeContentItem(
+      {
+        content_type: "project",
+        url: "https://a.example/books/undated/",
+        title: "Undated Book",
+        summary: "Undated books are not Showcase releases.",
+        image: "https://a.example/undated.jpg",
+      },
+      { now },
+    ),
+    false,
+  );
+});
+
+test("undated portfolio projects are not Showcase-eligible", () => {
+  assert.equal(
+    isMadeContentItem({
+      content_type: "project",
+      url: "https://a.example/projects/archive-toy/",
+      title: "Archive Toy",
+      summary: "An undated portfolio project must stay out of Showcase.",
+      source_kind: "portfolio",
+      observed_at: "2026-11-03T00:00:00.000Z",
+    }),
+    false,
+  );
+  assert.equal(
+    isMadeContentItem({
+      content_type: "project",
+      url: "https://a.example/projects/dated-toy/",
+      title: "Dated Toy",
+      summary: "A dated portfolio project remains Showcase-eligible.",
+      published_at: "2023-06-01T00:00:00.000Z",
+      source_kind: "portfolio",
+    }),
+    true,
+  );
+  // Undated experiments stay eligible; undated /projects/ archives do not.
+  assert.equal(
+    isMadeContentItem({
+      content_type: "project",
+      url: "https://a.example/experiments/corkboard/",
+      title: "Corkboard",
+      summary: "An undated experiment under a creative path stays eligible.",
+      image: "https://a.example/corkboard.webp",
+    }),
+    true,
+  );
+});
+
+test("painting hub is an Art album; availability is chrome", () => {
+  assert.equal(isPhotoOrArtCollectionUrl("https://a.example/painting/"), true);
+  assert.equal(isBareCreativeIndexUrl("https://a.example/painting/"), false);
+  assert.equal(isBareCreativeIndexUrl("https://a.example/books/"), true);
+  assert.equal(isShowcaseChromePath("https://a.example/availability/"), true);
+  assert.equal(isShowcaseChromePath("https://a.example/hire-me/"), true);
+  assert.equal(isShowcaseChromePath("https://forwardbias.dev/ideas/"), true);
+  assert.equal(
+    isMadeContentItem({
+      content_type: "project",
+      url: "https://forwardbias.dev/ideas/",
+      title: "Ideas",
+      summary: "Ongoing experiments, thoughts, and side projects.",
+      image: "https://forwardbias.dev/ideas/cover.jpg",
+      source: { kind: "creative-homepage" },
+    }),
+    false,
+  );
+  assert.equal(
+    isMadeContentItem({
+      content_type: "project",
+      url: "https://a.example/painting/",
+      title: "Paintings",
+      summary: "A gallery of paintings on the studio site.",
+      image: "https://a.example/painting/cover.jpg",
+    }),
+    true,
+  );
+  assert.equal(
+    isMadeContentItem({
+      content_type: "project",
+      url: "https://a.example/availability/",
+      title: "Availability",
+      summary: "Hire me for consulting work this quarter.",
+    }),
+    false,
+  );
+});
+
+test("static media URLs and Astro titles are stripped for Showcase", () => {
+  assert.equal(
+    isStaticMediaFileUrl(
+      "https://a.example/wp-content/uploads/2023/03/leonc-1024x912.png",
+    ),
+    true,
+  );
+  assert.equal(
+    isStaticMediaFileUrl(
+      "https://a.example/wp-content/uploads/2023/03/extensionless-figure",
+    ),
+    true,
+  );
+  assert.equal(
+    isStaticMediaFileUrl("https://a.example/_astro/cover.Abc123.png"),
+    true,
+  );
+  assert.equal(isStaticMediaFileUrl("https://a.example/books/novel/"), false);
+  assert.equal(isStaticMediaFileUrl("not a url"), false);
+  assert.equal(isStaticMediaFileUrl(""), false);
+  assert.equal(
+    isMadeContentItem({
+      content_type: "game",
+      url: "not a url",
+      title: "Broken game URL",
+      summary: "Invalid href exercises the undated-project URL catch.",
+      image: "https://a.example/game.png",
+    }),
+    true,
+  );
+  assert.equal(
+    isMadeContentItem({
+      content_type: "music_recording",
+      url: "https://a.example/wp-content/uploads/2023/03/leonc.png",
+      title: "Illustration",
+      summary: "Article figure mis-typed as music",
+      image: "https://a.example/wp-content/uploads/2023/03/leonc.png",
+    }),
+    false,
+  );
+  assert.equal(
+    stripHtmlToText(
+      '<span class="title" data-astro-cid-ageowr5r>Claude Code For Dummies</span>',
+    ),
+    "Claude Code For Dummies",
+  );
+  assert.equal(
+    showcaseCardTitle({
+      title: '<span class="title" data-astro-cid-x>A Developer’s Guide</span>',
+      url: "https://a.example/books/guide/",
+    }),
+    "A Developer’s Guide",
+  );
+  // Art/comics path undated works are not treated as blocked portfolio projects.
+  assert.equal(
+    isMadeContentItem({
+      content_type: "project",
+      url: "https://a.example/art/2024/",
+      title: "2024",
+      summary: "Year art album without a publisher date.",
+      image: "https://a.example/art/2024/cover.jpg",
+    }),
+    true,
+  );
+  assert.equal(
+    isMadeContentItem({
+      content_type: "project",
+      url: "https://a.example/comics/strip-1/",
+      title: "Strip 1",
+      summary: "An undated comic under a comics path stays eligible.",
+      image: "https://a.example/comics/strip-1.jpg",
+    }),
+    true,
+  );
+});
+
+test("podcast episodes only Showcase inside the activity window", () => {
+  const now = new Date("2026-11-03T00:00:00.000Z");
+  assert.equal(ACTIVITY_WINDOW_DAYS, 14);
+  assert.equal(
+    isMadeContentItem(
+      {
+        content_type: "podcast_episode",
+        url: "https://www.youtube.com/watch?v=fresh",
+        title: "Fresh Episode",
+        summary: "A new podcast video from this week.",
+        published_at: "2026-11-01T00:00:00.000Z",
+        image: "https://i.ytimg.com/vi/fresh/hqdefault.jpg",
+        site_origin: "https://a.example",
+      },
+      { now: "2026-11-03T00:00:00.000Z" },
+    ),
+    true,
+  );
+  assert.equal(
+    isMadeContentItem(
+      {
+        content_type: "podcast_episode",
+        url: "https://www.youtube.com/watch?v=fresh-date",
+        title: "Fresh Episode Date",
+        summary: "A new podcast video from this week.",
+        published_at: "2026-11-01T00:00:00.000Z",
+        image: "https://i.ytimg.com/vi/fresh/hqdefault.jpg",
+        site_origin: "https://a.example",
+      },
+      { now },
+    ),
+    true,
+  );
+  assert.equal(
+    isMadeContentItem(
+      {
+        content_type: "podcast_episode",
+        url: "https://www.youtube.com/watch?v=old",
+        title: "Old Episode",
+        summary: "An older podcast video outside the two-week window.",
+        published_at: "2026-09-09T00:00:00.000Z",
+        image: "https://i.ytimg.com/vi/old/hqdefault.jpg",
+        site_origin: "https://a.example",
+      },
+      { now },
+    ),
+    false,
+  );
+  assert.equal(
+    isMadeContentItem(
+      {
+        content_type: "podcast_episode",
+        url: "https://www.youtube.com/watch?v=undated",
+        title: "Undated Episode",
+        summary: "Undated podcast videos are not featured.",
+        site_origin: "https://a.example",
+      },
+      { now },
+    ),
+    false,
   );
 });
