@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-03T15:57:38.659Z",
-  "overlap_count": 86,
+  "generated_at": "2026-11-03T16:55:08.658Z",
+  "overlap_count": 100,
   "pairs": [
     {
       "a": "https://artlung.com",
@@ -64,6 +64,10 @@
       "b": "https://joshozuna.com",
       "topics": [
         {
+          "slug": "collection",
+          "label": "collections"
+        },
+        {
           "slug": "dog",
           "label": "dog"
         },
@@ -119,10 +123,6 @@
       "a": "https://artlung.com",
       "b": "https://joshtronic.com",
       "topics": [
-        {
-          "slug": "email",
-          "label": "emails"
-        },
         {
           "slug": "learn",
           "label": "learn"
@@ -198,6 +198,10 @@
           "label": "art"
         },
         {
+          "slug": "collection",
+          "label": "collections"
+        },
+        {
           "slug": "css",
           "label": "css"
         },
@@ -216,6 +220,54 @@
         {
           "slug": "worth",
           "label": "worth"
+        }
+      ]
+    },
+    {
+      "a": "https://artlung.com",
+      "b": "https://joshuapsteele.com",
+      "topics": [
+        {
+          "slug": "collection",
+          "label": "collections"
+        }
+      ]
+    },
+    {
+      "a": "https://artlung.com",
+      "b": "https://joshuastuebner.com",
+      "topics": [
+        {
+          "slug": "collection",
+          "label": "collections"
+        },
+        {
+          "slug": "css",
+          "label": "css"
+        },
+        {
+          "slug": "data",
+          "label": "data"
+        },
+        {
+          "slug": "digital",
+          "label": "digital"
+        },
+        {
+          "slug": "learn",
+          "label": "learn"
+        },
+        {
+          "slug": "learning",
+          "label": "learning"
+        },
+        {
+          "slug": "love",
+          "label": "love"
+        },
+        {
+          "slug": "photos",
+          "label": "photos"
         }
       ]
     },
@@ -302,16 +354,6 @@
       ]
     },
     {
-      "a": "https://forwardbias.dev",
-      "b": "https://www.joshfinnie.com",
-      "topics": [
-        {
-          "slug": "side-project",
-          "label": "side projects"
-        }
-      ]
-    },
-    {
       "a": "https://joshbeard.com",
       "b": "https://joshgr.com",
       "topics": [
@@ -325,10 +367,6 @@
       "a": "https://joshbeard.com",
       "b": "https://joshmuller.ca",
       "topics": [
-        {
-          "slug": "labor",
-          "label": "labor"
-        },
         {
           "slug": "october",
           "label": "october"
@@ -354,10 +392,6 @@
         {
           "slug": "photos",
           "label": "photos"
-        },
-        {
-          "slug": "view",
-          "label": "view"
         }
       ]
     },
@@ -372,6 +406,20 @@
         {
           "slug": "october",
           "label": "october"
+        }
+      ]
+    },
+    {
+      "a": "https://joshbeard.com",
+      "b": "https://joshuastuebner.com",
+      "topics": [
+        {
+          "slug": "beautiful",
+          "label": "beautiful"
+        },
+        {
+          "slug": "photos",
+          "label": "photos"
         }
       ]
     },
@@ -396,10 +444,6 @@
         {
           "slug": "blue",
           "label": "blue"
-        },
-        {
-          "slug": "view",
-          "label": "view"
         }
       ]
     },
@@ -524,6 +568,10 @@
         {
           "slug": "software",
           "label": "Software"
+        },
+        {
+          "slug": "working",
+          "label": "working"
         }
       ]
     },
@@ -666,6 +714,20 @@
         {
           "slug": "software",
           "label": "Software"
+        },
+        {
+          "slug": "world",
+          "label": "world"
+        }
+      ]
+    },
+    {
+      "a": "https://joshgr.com",
+      "b": "https://joshuastuebner.com",
+      "topics": [
+        {
+          "slug": "photos",
+          "label": "photos"
         },
         {
           "slug": "world",
@@ -878,6 +940,10 @@
       "b": "https://joshuamorris.info",
       "topics": [
         {
+          "slug": "collection",
+          "label": "collections"
+        },
+        {
           "slug": "game",
           "label": "game"
         },
@@ -900,6 +966,50 @@
         {
           "slug": "table",
           "label": "tables"
+        }
+      ]
+    },
+    {
+      "a": "https://joshozuna.com",
+      "b": "https://joshuapsteele.com",
+      "topics": [
+        {
+          "slug": "collection",
+          "label": "collections"
+        }
+      ]
+    },
+    {
+      "a": "https://joshozuna.com",
+      "b": "https://joshuastuebner.com",
+      "topics": [
+        {
+          "slug": "beautiful",
+          "label": "beautiful"
+        },
+        {
+          "slug": "collection",
+          "label": "collections"
+        },
+        {
+          "slug": "food",
+          "label": "food"
+        },
+        {
+          "slug": "game",
+          "label": "game"
+        },
+        {
+          "slug": "mobile",
+          "label": "mobile"
+        },
+        {
+          "slug": "photos",
+          "label": "photos"
+        },
+        {
+          "slug": "simple",
+          "label": "simple"
         }
       ]
     },
@@ -948,10 +1058,6 @@
         {
           "slug": "table",
           "label": "tables"
-        },
-        {
-          "slug": "view",
-          "label": "view"
         }
       ]
     },
@@ -1125,6 +1231,28 @@
     },
     {
       "a": "https://joshtronic.com",
+      "b": "https://joshuastuebner.com",
+      "topics": [
+        {
+          "slug": "game",
+          "label": "game"
+        },
+        {
+          "slug": "learn",
+          "label": "learn"
+        },
+        {
+          "slug": "learning",
+          "label": "learning"
+        },
+        {
+          "slug": "love",
+          "label": "love"
+        }
+      ]
+    },
+    {
+      "a": "https://joshtronic.com",
       "b": "https://www.chrisminnick.com",
       "topics": [
         {
@@ -1287,6 +1415,24 @@
     },
     {
       "a": "https://joshuadrake.org",
+      "b": "https://joshuastuebner.com",
+      "topics": [
+        {
+          "slug": "bit",
+          "label": "bit"
+        },
+        {
+          "slug": "data",
+          "label": "data"
+        },
+        {
+          "slug": "design",
+          "label": "design"
+        }
+      ]
+    },
+    {
+      "a": "https://joshuadrake.org",
       "b": "https://www.chrisminnick.com",
       "topics": [
         {
@@ -1318,10 +1464,16 @@
         {
           "slug": "design",
           "label": "design"
-        },
+        }
+      ]
+    },
+    {
+      "a": "https://joshuakim.studio",
+      "b": "https://joshuastuebner.com",
+      "topics": [
         {
-          "slug": "power",
-          "label": "power"
+          "slug": "design",
+          "label": "design"
         }
       ]
     },
@@ -1332,6 +1484,54 @@
         {
           "slug": "design",
           "label": "design"
+        }
+      ]
+    },
+    {
+      "a": "https://joshuamorris.info",
+      "b": "https://joshuapsteele.com",
+      "topics": [
+        {
+          "slug": "collection",
+          "label": "collections"
+        }
+      ]
+    },
+    {
+      "a": "https://joshuamorris.info",
+      "b": "https://joshuastuebner.com",
+      "topics": [
+        {
+          "slug": "become",
+          "label": "becomes"
+        },
+        {
+          "slug": "browser",
+          "label": "browsers"
+        },
+        {
+          "slug": "collection",
+          "label": "collections"
+        },
+        {
+          "slug": "css",
+          "label": "css"
+        },
+        {
+          "slug": "game",
+          "label": "game"
+        },
+        {
+          "slug": "javascript",
+          "label": "javascript"
+        },
+        {
+          "slug": "simple",
+          "label": "simple"
+        },
+        {
+          "slug": "world",
+          "label": "world"
         }
       ]
     },
@@ -1406,6 +1606,62 @@
         {
           "slug": "table",
           "label": "tables"
+        }
+      ]
+    },
+    {
+      "a": "https://joshuapsteele.com",
+      "b": "https://joshuastuebner.com",
+      "topics": [
+        {
+          "slug": "collection",
+          "label": "collections"
+        }
+      ]
+    },
+    {
+      "a": "https://joshuastuebner.com",
+      "b": "https://www.chrisminnick.com",
+      "topics": [
+        {
+          "slug": "javascript",
+          "label": "javascript"
+        }
+      ]
+    },
+    {
+      "a": "https://joshuastuebner.com",
+      "b": "https://www.joshfinnie.com",
+      "topics": [
+        {
+          "slug": "world",
+          "label": "world"
+        }
+      ]
+    },
+    {
+      "a": "https://joshuastuebner.com",
+      "b": "https://www.joshuabaker.com",
+      "topics": [
+        {
+          "slug": "design",
+          "label": "design"
+        },
+        {
+          "slug": "digital",
+          "label": "digital"
+        },
+        {
+          "slug": "game",
+          "label": "game"
+        },
+        {
+          "slug": "mobile",
+          "label": "mobile"
+        },
+        {
+          "slug": "search",
+          "label": "search"
         }
       ]
     },
@@ -1560,6 +1816,114 @@
           ]
         },
         {
+          "slug": "collection",
+          "label": "collections",
+          "articles": [
+            {
+              "url": "https://artlung.com/flickr/",
+              "title": "/flickr/ 📁"
+            },
+            {
+              "url": "https://artlung.com/mixtapes/",
+              "title": "/mixtapes/ 📁"
+            },
+            {
+              "url": "https://artlung.com/mixtapes/1984-cool-stuff-303/",
+              "title": "Cool Stuff 303"
+            },
+            {
+              "url": "https://artlung.com/mixtapes/1984-pirate-music-102/",
+              "title": "Pirate Music 102*"
+            },
+            {
+              "url": "https://artlung.com/mixtapes/1984-untitled-safety-dance/",
+              "title": "Untitled: Joe's First Compilation"
+            },
+            {
+              "url": "https://artlung.com/mixtapes/1986-thurtean/",
+              "title": "THURT-EAN MUZIC(music) no. 13"
+            },
+            {
+              "url": "https://artlung.com/mixtapes/1989-roanoke/",
+              "title": "Roanoke [-1, 0, 1]"
+            },
+            {
+              "url": "https://artlung.com/mixtapes/1990-roanoke/",
+              "title": "Roanoke [-½, ∅, +2]"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/year/2026",
+                  "title": "2026 Photography"
+                },
+                {
+                  "url": "https://joshozuna.com/year/2025",
+                  "title": "2025 Photography"
+                },
+                {
+                  "url": "https://joshozuna.com/collections",
+                  "title": "collections"
+                },
+                {
+                  "url": "https://joshozuna.com/year/2022",
+                  "title": "2022 Photography"
+                },
+                {
+                  "url": "https://joshozuna.com/year/2023",
+                  "title": "2023 Photography"
+                },
+                {
+                  "url": "https://joshozuna.com/year/2024",
+                  "title": "2024 Photography"
+                },
+                {
+                  "url": "https://joshozuna.com/html-sitemap",
+                  "title": "joshozuna.com links"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
+                  "title": "Worth Wandering: Radio Aporee"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/lists/",
+                  "title": "Lists 🗒️"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/digital-garden/",
+                  "title": "Digital Garden"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "computer",
           "label": "Computer",
           "articles": [
@@ -1644,6 +2008,29 @@
                   "title": "Firefox Is Quietly Making the Web More Capable"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/14_css-only-countup/",
+                  "title": "14: CSS only countup"
+                },
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/15_circle-sun/",
+                  "title": "15: Circle Sun"
+                },
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/17_shifting-rectangles/",
+                  "title": "17: Shifting Rectangles"
+                },
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/20_css-shrinking-search/",
+                  "title": "20: CSS Shrinking Search"
+                }
+              ]
             }
           ]
         },
@@ -1671,6 +2058,17 @@
                   "title": "Cessna HV Retrofit"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/seasonal/",
+                  "title": "Seasonal Calendar"
+                }
+              ]
             }
           ]
         },
@@ -1696,6 +2094,21 @@
                 {
                   "url": "https://www.joshuabaker.com/work/not-optional/appendix/tech-eu-5-billion-for-startup-employees/",
                   "title": "€5 billion more into the hands of European startup employees · Tech.eu reported that the campaign had helped put over €5bn more into the hands of startup employees. I defined its digital strategy and led the team that built its platform. Tech.eu Read more"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/digital-garden/",
+                  "title": "Digital Garden"
+                },
+                {
+                  "url": "https://joshuastuebner.com/projects/details/heuschrecke-messe/",
+                  "title": "Heuschrecke Messe"
                 }
               ]
             }
@@ -1762,33 +2175,6 @@
                 {
                   "url": "https://joshternet.org/specs/",
                   "title": "Specifications"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "email",
-          "label": "emails",
-          "articles": [
-            {
-              "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
-              "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters."
-            },
-            {
-              "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
-              "title": "I got an email and text message nearly simultaneously today."
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
                 }
               ]
             }
@@ -1914,6 +2300,17 @@
                   "title": "Know the Table"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/08_shaderstart/",
+                  "title": "08: Shaderstart"
+                }
+              ]
             }
           ]
         },
@@ -1939,6 +2336,17 @@
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
                   "title": "Learning a New Tech Stack with an LLM"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/04_silvester/",
+                  "title": "04: Silvester"
                 }
               ]
             }
@@ -1985,6 +2393,17 @@
                 {
                   "url": "https://joshtronic.com/games/idol-idle/",
                   "title": "Idol Idle"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/digital-garden/",
+                  "title": "Digital Garden"
                 }
               ]
             }
@@ -2210,6 +2629,17 @@
                 {
                   "url": "https://joshgr.com/photos/",
                   "title": "Photos"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/heuschrecke-messe/",
+                  "title": "Heuschrecke Messe"
                 }
               ]
             }
@@ -2680,46 +3110,6 @@
       ]
     },
     {
-      "origin": "https://forwardbias.dev",
-      "topics": [
-        {
-          "slug": "side-project",
-          "label": "side projects",
-          "articles": [
-            {
-              "url": "https://forwardbias.dev/ideas/",
-              "title": "Ideas"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.joshfinnie.com",
-              "domain": "www.joshfinnie.com",
-              "title": "Josh Finnie",
-              "articles": [
-                {
-                  "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
-                  "title": "The October Micro SaaS Challenge: A Retro"
-                },
-                {
-                  "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
-                  "title": "Micro SaaS Week Four: SignedOnSite"
-                },
-                {
-                  "url": "https://www.joshfinnie.com/blog/micro-saas-week-three-noshowfixer/",
-                  "title": "Micro SaaS Week Three: NoShowFixer"
-                },
-                {
-                  "url": "https://www.joshfinnie.com/projects/",
-                  "title": "Projects | Josh Finnie"
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
       "origin": "https://joshbeard.com",
       "topics": [
         {
@@ -2767,6 +3157,17 @@
                 {
                   "url": "https://joshozuna.com/photo/expansive-mountain-prairie-sky-35mm",
                   "title": "Colorado, the Beautiful"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/16_stars/",
+                  "title": "16: Stars"
                 }
               ]
             }
@@ -2829,29 +3230,6 @@
                 {
                   "url": "https://www.joshuabaker.com/work/?work=blue-rubicon-surname-surname-2012",
                   "title": "Surname & Surname"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "labor",
-          "label": "labor",
-          "articles": [
-            {
-              "url": "https://joshbeard.com/photos/2019/2019-labor-day-lift-off-1_jpg.html",
-              "title": "Colorado Springs 2019 Labor Day Lift Off. September, 2019. - Josh Beard"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshmuller.ca",
-              "domain": "joshmuller.ca",
-              "title": "Josh Müller",
-              "articles": [
-                {
-                  "url": "https://joshmuller.ca/work/",
-                  "title": "Work Together"
                 }
               ]
             }
@@ -3034,62 +3412,15 @@
                   "title": "Photos"
                 }
               ]
-            }
-          ]
-        },
-        {
-          "slug": "view",
-          "label": "view",
-          "articles": [
-            {
-              "url": "https://joshbeard.com/photos/all/",
-              "title": "View All Photos"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshozuna.com",
-              "domain": "joshozuna.com",
-              "title": "Josh Ozuna",
-              "articles": [
-                {
-                  "url": "https://joshozuna.com/photo/perot-museum-interior-view-35mm",
-                  "title": "Inside the Perot Museum"
-                },
-                {
-                  "url": "https://joshozuna.com/photo/museum-lobby-people-sunlight-35mm",
-                  "title": "Perot Museum Lobby"
-                },
-                {
-                  "url": "https://joshozuna.com/photo/army-airplane-museum-display-35mm",
-                  "title": "Hanging at the WWII Museum"
-                },
-                {
-                  "url": "https://joshozuna.com/photo/cafe-table-chairs-plant-shop-window-35mm",
-                  "title": "Sidewalk Charm"
-                },
-                {
-                  "url": "https://joshozuna.com/photo/texas-rangers-baseball-stadium-game-35mm",
-                  "title": "Night Game at Globe Life"
-                },
-                {
-                  "url": "https://joshozuna.com/photo/rainbow-light-chair-35mm",
-                  "title": "Table for None"
-                },
-                {
-                  "url": "https://joshozuna.com/photo/skate-bowl-graffiti-35mm",
-                  "title": "The Bowl"
-                }
-              ]
             },
             {
-              "origin": "https://www.joshuabaker.com",
-              "domain": "www.joshuabaker.com",
-              "title": "Joshua Baker",
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
               "articles": [
                 {
-                  "url": "https://www.joshuabaker.com/work/banked-pay-by-bank/",
-                  "title": "Pay by Bank I built payment components and merchant integration tools from one codebase for web, iOS, and Android. View case study"
+                  "url": "https://joshuastuebner.com/projects/details/heuschrecke-messe/",
+                  "title": "Heuschrecke Messe"
                 }
               ]
             }
@@ -3638,6 +3969,29 @@
               ]
             }
           ]
+        },
+        {
+          "slug": "working",
+          "label": "working",
+          "articles": [
+            {
+              "url": "https://joshghent.com/php2shell-overreaction/",
+              "title": "Last week was terrible. It didn't have to be"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
+                  "title": "4 Plastic"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -3835,6 +4189,17 @@
                   "title": "35mm Film Photography Gallery"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/heuschrecke-messe/",
+                  "title": "Heuschrecke Messe"
+                }
+              ]
             }
           ]
         },
@@ -3954,6 +4319,17 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
                   "title": "What Happens When a Webpage Becomes Part of a 3D World?"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/21_colorful-entry/",
+                  "title": "21: Colorful Entry"
                 }
               ]
             }
@@ -4229,29 +4605,6 @@
                 {
                   "url": "https://www.joshuabaker.com/work/banked/appendix/fintech-futures-nab-acquires-banked/",
                   "title": "Acquired by NAB · National Australia Bank, an investor since 2022, took full ownership of Banked. It is the company behind the work on this page. FinTech Futures Read more"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "labor",
-          "label": "labor",
-          "articles": [
-            {
-              "url": "https://joshmuller.ca/work/",
-              "title": "Work Together"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshbeard.com",
-              "domain": "joshbeard.com",
-              "title": "Josh Beard",
-              "articles": [
-                {
-                  "url": "https://joshbeard.com/photos/2019/2019-labor-day-lift-off-1_jpg.html",
-                  "title": "Colorado Springs 2019 Labor Day Lift Off. September, 2019. - Josh Beard"
                 }
               ]
             }
@@ -4582,6 +4935,17 @@
                   "title": "Herman Gulch, Colorado. September 9, 2018. Photos from a hike at Herman Gulch, Colorado in September, 2018. This was a trail with plenty of beautiful scenery of mountain peaks, dense forest, open meadows, long views, creeks, and a lake. Though there was pl"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/16_stars/",
+                  "title": "16: Stars"
+                }
+              ]
             }
           ]
         },
@@ -4671,6 +5035,114 @@
           ]
         },
         {
+          "slug": "collection",
+          "label": "collections",
+          "articles": [
+            {
+              "url": "https://joshozuna.com/year/2026",
+              "title": "2026 Photography"
+            },
+            {
+              "url": "https://joshozuna.com/year/2025",
+              "title": "2025 Photography"
+            },
+            {
+              "url": "https://joshozuna.com/collections",
+              "title": "collections"
+            },
+            {
+              "url": "https://joshozuna.com/year/2022",
+              "title": "2022 Photography"
+            },
+            {
+              "url": "https://joshozuna.com/year/2023",
+              "title": "2023 Photography"
+            },
+            {
+              "url": "https://joshozuna.com/year/2024",
+              "title": "2024 Photography"
+            },
+            {
+              "url": "https://joshozuna.com/html-sitemap",
+              "title": "joshozuna.com links"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/flickr/",
+                  "title": "/flickr/ 📁"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/",
+                  "title": "/mixtapes/ 📁"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1984-cool-stuff-303/",
+                  "title": "Cool Stuff 303"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1984-pirate-music-102/",
+                  "title": "Pirate Music 102*"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1984-untitled-safety-dance/",
+                  "title": "Untitled: Joe's First Compilation"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1986-thurtean/",
+                  "title": "THURT-EAN MUZIC(music) no. 13"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1989-roanoke/",
+                  "title": "Roanoke [-1, 0, 1]"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1990-roanoke/",
+                  "title": "Roanoke [-½, ∅, +2]"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
+                  "title": "Worth Wandering: Radio Aporee"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/lists/",
+                  "title": "Lists 🗒️"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/digital-garden/",
+                  "title": "Digital Garden"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "dog",
           "label": "dog",
           "articles": [
@@ -4704,6 +5176,29 @@
                 {
                   "url": "https://artlung.com/blog/2026/10/24/programming-and-dog-walking/",
                   "title": "(not in that order)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "food",
+          "label": "food",
+          "articles": [
+            {
+              "url": "https://joshozuna.com/photo/urban-corner-store-sunset-35mm",
+              "title": "Quick-Way"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/vegan-hamburg/",
+                  "title": "Vegan Hamburg"
                 }
               ]
             }
@@ -4797,6 +5292,17 @@
                   "title": "2 Spark"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/achtung-die-kurve/",
+                  "title": "Achtung die Kurve"
+                }
+              ]
             }
           ]
         },
@@ -4841,6 +5347,17 @@
                 {
                   "url": "https://www.joshuabaker.com/work/banked-pay-by-bank/",
                   "title": "Pay by Bank I built payment components and merchant integration tools from one codebase for web, iOS, and Android. View case study"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/28_pdf-test/",
+                  "title": "28: PDF Test"
                 }
               ]
             }
@@ -5076,6 +5593,17 @@
                   "title": "Photos"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/heuschrecke-messe/",
+                  "title": "Heuschrecke Messe"
+                }
+              ]
             }
           ]
         },
@@ -5226,6 +5754,17 @@
                   "title": "Worth Wandering: Pippin Barr"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/testaccount-manager/",
+                  "title": "Testaccount manager"
+                }
+              ]
             }
           ]
         },
@@ -5316,64 +5855,6 @@
                 {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
                   "title": "7 Organic"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "view",
-          "label": "view",
-          "articles": [
-            {
-              "url": "https://joshozuna.com/photo/perot-museum-interior-view-35mm",
-              "title": "Inside the Perot Museum"
-            },
-            {
-              "url": "https://joshozuna.com/photo/museum-lobby-people-sunlight-35mm",
-              "title": "Perot Museum Lobby"
-            },
-            {
-              "url": "https://joshozuna.com/photo/army-airplane-museum-display-35mm",
-              "title": "Hanging at the WWII Museum"
-            },
-            {
-              "url": "https://joshozuna.com/photo/cafe-table-chairs-plant-shop-window-35mm",
-              "title": "Sidewalk Charm"
-            },
-            {
-              "url": "https://joshozuna.com/photo/texas-rangers-baseball-stadium-game-35mm",
-              "title": "Night Game at Globe Life"
-            },
-            {
-              "url": "https://joshozuna.com/photo/rainbow-light-chair-35mm",
-              "title": "Table for None"
-            },
-            {
-              "url": "https://joshozuna.com/photo/skate-bowl-graffiti-35mm",
-              "title": "The Bowl"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshbeard.com",
-              "domain": "joshbeard.com",
-              "title": "Josh Beard",
-              "articles": [
-                {
-                  "url": "https://joshbeard.com/photos/all/",
-                  "title": "View All Photos"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshuabaker.com",
-              "domain": "www.joshuabaker.com",
-              "title": "Joshua Baker",
-              "articles": [
-                {
-                  "url": "https://www.joshuabaker.com/work/banked-pay-by-bank/",
-                  "title": "Pay by Bank I built payment components and merchant integration tools from one codebase for web, iOS, and Android. View case study"
                 }
               ]
             }
@@ -6098,33 +6579,6 @@
           ]
         },
         {
-          "slug": "email",
-          "label": "emails",
-          "articles": [
-            {
-              "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-              "title": "Learning a New Tech Stack with an LLM"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
-                  "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters."
-                },
-                {
-                  "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
-                  "title": "I got an email and text message nearly simultaneously today."
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "game",
           "label": "game",
           "articles": [
@@ -6178,6 +6632,17 @@
                   "title": "2 Spark"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/achtung-die-kurve/",
+                  "title": "Achtung die Kurve"
+                }
+              ]
             }
           ]
         },
@@ -6199,6 +6664,17 @@
                 {
                   "url": "https://artlung.com/comics/",
                   "title": "artlung.com/comics/"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/08_shaderstart/",
+                  "title": "08: Shaderstart"
                 }
               ]
             }
@@ -6228,6 +6704,17 @@
                   "title": "Machine Learning Healing"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/04_silvester/",
+                  "title": "04: Silvester"
+                }
+              ]
             }
           ]
         },
@@ -6249,6 +6736,17 @@
                 {
                   "url": "https://artlung.com/reels/",
                   "title": "artlung.com/reels/"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/digital-garden/",
+                  "title": "Digital Garden"
                 }
               ]
             }
@@ -7134,6 +7632,33 @@
           ]
         },
         {
+          "slug": "bit",
+          "label": "bit",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/8bip",
+              "title": "8-bit Integer Processor"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/chymeia/",
+                  "title": "Chymeia"
+                },
+                {
+                  "url": "https://joshuastuebner.com/tools/",
+                  "title": "Tools"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "computer",
           "label": "Computer",
           "articles": [
@@ -7218,6 +7743,17 @@
                   "title": "/privacy-policy/"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/seasonal/",
+                  "title": "Seasonal Calendar"
+                }
+              ]
             }
           ]
         },
@@ -7280,6 +7816,17 @@
                   "title": "Work, Joshua Kim"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/ui-design-tool/",
+                  "title": "UI Design Tool"
+                }
+              ]
             }
           ]
         },
@@ -7301,29 +7848,6 @@
                 {
                   "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
                   "title": "I got an email and text message nearly simultaneously today."
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "power",
-          "label": "power",
-          "articles": [
-            {
-              "url": "https://joshuadrake.org/projects/ingersollrandcompressor/",
-              "title": "Ingersoll Rand Compressor"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.joshuabaker.com",
-              "domain": "www.joshuabaker.com",
-              "title": "Joshua Baker",
-              "articles": [
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=getty-images-power-of-sponsorship-2011",
-                  "title": "Power of Sponsorship"
                 }
               ]
             }
@@ -7627,6 +8151,17 @@
                   "title": "Turbo Generator Load-Bank"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/ui-design-tool/",
+                  "title": "UI Design Tool"
+                }
+              ]
             }
           ]
         }
@@ -7838,6 +8373,76 @@
           ]
         },
         {
+          "slug": "become",
+          "label": "becomes",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
+              "title": "What Happens When a Webpage Becomes Part of a 3D World?"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/05_dialogs/",
+                  "title": "05: Dialogs"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "browser",
+          "label": "browsers",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
+              "title": "What Happens When a Webpage Becomes Part of a 3D World?"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/25/firefox-is-quietly-making-the-web-more-capable/",
+              "title": "Firefox Is Quietly Making the Web More Capable"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
+              "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
+            },
+            {
+              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/",
+              "title": "Weird Web October 2026 Interactive Halloween browser toys and games, one October theme at a time."
+            },
+            {
+              "url": "https://joshuamorris.info/experiments/corkboard/",
+              "title": "Corkboard A corkboard for notes, pins, and connecting threads in the browser—an open-web experiment for exploring ideas together and leaving a mark."
+            },
+            {
+              "url": "https://joshuamorris.info/experiments/",
+              "title": "Experiments"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/achtung-die-kurve/",
+                  "title": "Achtung die Kurve"
+                },
+                {
+                  "url": "https://joshuastuebner.com/projects/details/testaccount-manager/",
+                  "title": "Testaccount manager"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "challenge",
           "label": "challenges",
           "articles": [
@@ -7896,6 +8501,114 @@
           ]
         },
         {
+          "slug": "collection",
+          "label": "collections",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
+              "title": "Worth Wandering: Radio Aporee"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/flickr/",
+                  "title": "/flickr/ 📁"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/",
+                  "title": "/mixtapes/ 📁"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1984-cool-stuff-303/",
+                  "title": "Cool Stuff 303"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1984-pirate-music-102/",
+                  "title": "Pirate Music 102*"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1984-untitled-safety-dance/",
+                  "title": "Untitled: Joe's First Compilation"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1986-thurtean/",
+                  "title": "THURT-EAN MUZIC(music) no. 13"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1989-roanoke/",
+                  "title": "Roanoke [-1, 0, 1]"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1990-roanoke/",
+                  "title": "Roanoke [-½, ∅, +2]"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/year/2026",
+                  "title": "2026 Photography"
+                },
+                {
+                  "url": "https://joshozuna.com/year/2025",
+                  "title": "2025 Photography"
+                },
+                {
+                  "url": "https://joshozuna.com/collections",
+                  "title": "collections"
+                },
+                {
+                  "url": "https://joshozuna.com/year/2022",
+                  "title": "2022 Photography"
+                },
+                {
+                  "url": "https://joshozuna.com/year/2023",
+                  "title": "2023 Photography"
+                },
+                {
+                  "url": "https://joshozuna.com/year/2024",
+                  "title": "2024 Photography"
+                },
+                {
+                  "url": "https://joshozuna.com/html-sitemap",
+                  "title": "joshozuna.com links"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/lists/",
+                  "title": "Lists 🗒️"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/digital-garden/",
+                  "title": "Digital Garden"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "css",
           "label": "css",
           "articles": [
@@ -7921,6 +8634,29 @@
                 {
                   "url": "https://artlung.com/cssbattles/",
                   "title": "artlung.com/cssbattles/"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/14_css-only-countup/",
+                  "title": "14: CSS only countup"
+                },
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/15_circle-sun/",
+                  "title": "15: Circle Sun"
+                },
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/17_shifting-rectangles/",
+                  "title": "17: Shifting Rectangles"
+                },
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/20_css-shrinking-search/",
+                  "title": "20: CSS Shrinking Search"
                 }
               ]
             }
@@ -7978,6 +8714,17 @@
                 {
                   "url": "https://www.joshuabaker.com/work/?work=telegramme-telegramme-board-game-2010",
                   "title": "Telegramme Board Game"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/achtung-die-kurve/",
+                  "title": "Achtung die Kurve"
                 }
               ]
             }
@@ -8082,6 +8829,29 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/14_css-only-countup/",
+                  "title": "14: CSS only countup"
+                },
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/15_circle-sun/",
+                  "title": "15: Circle Sun"
+                },
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/17_shifting-rectangles/",
+                  "title": "17: Shifting Rectangles"
+                },
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/20_css-shrinking-search/",
+                  "title": "20: CSS Shrinking Search"
+                }
+              ]
+            },
             {
               "origin": "https://www.chrisminnick.com",
               "domain": "www.chrisminnick.com",
@@ -8306,6 +9076,17 @@
                   "title": "Simple Moments"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/testaccount-manager/",
+                  "title": "Testaccount manager"
+                }
+              ]
             }
           ]
         },
@@ -8495,6 +9276,29 @@
           ]
         },
         {
+          "slug": "working",
+          "label": "working",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
+              "title": "4 Plastic"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/php2shell-overreaction/",
+                  "title": "Last week was terrible. It didn't have to be"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "world",
           "label": "world",
           "articles": [
@@ -8531,6 +9335,17 @@
                 {
                   "url": "https://joshgr.com/wizardly-words/",
                   "title": "Wizardly Words"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/21_colorful-entry/",
+                  "title": "21: Colorful Entry"
                 }
               ]
             }
@@ -8625,6 +9440,114 @@
       "origin": "https://joshuapsteele.com",
       "topics": [
         {
+          "slug": "collection",
+          "label": "collections",
+          "articles": [
+            {
+              "url": "https://joshuapsteele.com/lists/",
+              "title": "Lists 🗒️"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/flickr/",
+                  "title": "/flickr/ 📁"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/",
+                  "title": "/mixtapes/ 📁"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1984-cool-stuff-303/",
+                  "title": "Cool Stuff 303"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1984-pirate-music-102/",
+                  "title": "Pirate Music 102*"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1984-untitled-safety-dance/",
+                  "title": "Untitled: Joe's First Compilation"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1986-thurtean/",
+                  "title": "THURT-EAN MUZIC(music) no. 13"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1989-roanoke/",
+                  "title": "Roanoke [-1, 0, 1]"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1990-roanoke/",
+                  "title": "Roanoke [-½, ∅, +2]"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/year/2026",
+                  "title": "2026 Photography"
+                },
+                {
+                  "url": "https://joshozuna.com/year/2025",
+                  "title": "2025 Photography"
+                },
+                {
+                  "url": "https://joshozuna.com/collections",
+                  "title": "collections"
+                },
+                {
+                  "url": "https://joshozuna.com/year/2022",
+                  "title": "2022 Photography"
+                },
+                {
+                  "url": "https://joshozuna.com/year/2023",
+                  "title": "2023 Photography"
+                },
+                {
+                  "url": "https://joshozuna.com/year/2024",
+                  "title": "2024 Photography"
+                },
+                {
+                  "url": "https://joshozuna.com/html-sitemap",
+                  "title": "joshozuna.com links"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
+                  "title": "Worth Wandering: Radio Aporee"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/digital-garden/",
+                  "title": "Digital Garden"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "resource",
           "label": "resources",
           "articles": [
@@ -8646,6 +9569,948 @@
                 {
                   "url": "https://joshuadrake.org/resources.html",
                   "title": "Resources"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "origin": "https://joshuastuebner.com",
+      "topics": [
+        {
+          "slug": "beautiful",
+          "label": "beautiful",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/experiments/ex/16_stars/",
+              "title": "16: Stars"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshbeard.com",
+              "domain": "joshbeard.com",
+              "title": "Josh Beard",
+              "articles": [
+                {
+                  "url": "https://joshbeard.com/photos/2018/2018-herman-gulch-01_jpg.html",
+                  "title": "Herman Gulch, Colorado. September 9, 2018. Photos from a hike at Herman Gulch, Colorado in September, 2018. This was a trail with plenty of beautiful scenery of mountain peaks, dense forest, open meadows, long views, creeks, and a lake. Though there was pl"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/photo/expansive-mountain-prairie-sky-35mm",
+                  "title": "Colorado, the Beautiful"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "become",
+          "label": "becomes",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/experiments/ex/05_dialogs/",
+              "title": "05: Dialogs"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
+                  "title": "What Happens When a Webpage Becomes Part of a 3D World?"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "bit",
+          "label": "bit",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/projects/details/chymeia/",
+              "title": "Chymeia"
+            },
+            {
+              "url": "https://joshuastuebner.com/tools/",
+              "title": "Tools"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/8bip",
+                  "title": "8-bit Integer Processor"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "browser",
+          "label": "browsers",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/projects/details/achtung-die-kurve/",
+              "title": "Achtung die Kurve"
+            },
+            {
+              "url": "https://joshuastuebner.com/projects/details/testaccount-manager/",
+              "title": "Testaccount manager"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
+                  "title": "What Happens When a Webpage Becomes Part of a 3D World?"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/25/firefox-is-quietly-making-the-web-more-capable/",
+                  "title": "Firefox Is Quietly Making the Web More Capable"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
+                  "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
+                },
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/",
+                  "title": "Weird Web October 2026 Interactive Halloween browser toys and games, one October theme at a time."
+                },
+                {
+                  "url": "https://joshuamorris.info/experiments/corkboard/",
+                  "title": "Corkboard A corkboard for notes, pins, and connecting threads in the browser—an open-web experiment for exploring ideas together and leaving a mark."
+                },
+                {
+                  "url": "https://joshuamorris.info/experiments/",
+                  "title": "Experiments"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "collection",
+          "label": "collections",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/digital-garden/",
+              "title": "Digital Garden"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/flickr/",
+                  "title": "/flickr/ 📁"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/",
+                  "title": "/mixtapes/ 📁"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1984-cool-stuff-303/",
+                  "title": "Cool Stuff 303"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1984-pirate-music-102/",
+                  "title": "Pirate Music 102*"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1984-untitled-safety-dance/",
+                  "title": "Untitled: Joe's First Compilation"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1986-thurtean/",
+                  "title": "THURT-EAN MUZIC(music) no. 13"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1989-roanoke/",
+                  "title": "Roanoke [-1, 0, 1]"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1990-roanoke/",
+                  "title": "Roanoke [-½, ∅, +2]"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/year/2026",
+                  "title": "2026 Photography"
+                },
+                {
+                  "url": "https://joshozuna.com/year/2025",
+                  "title": "2025 Photography"
+                },
+                {
+                  "url": "https://joshozuna.com/collections",
+                  "title": "collections"
+                },
+                {
+                  "url": "https://joshozuna.com/year/2022",
+                  "title": "2022 Photography"
+                },
+                {
+                  "url": "https://joshozuna.com/year/2023",
+                  "title": "2023 Photography"
+                },
+                {
+                  "url": "https://joshozuna.com/year/2024",
+                  "title": "2024 Photography"
+                },
+                {
+                  "url": "https://joshozuna.com/html-sitemap",
+                  "title": "joshozuna.com links"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
+                  "title": "Worth Wandering: Radio Aporee"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/lists/",
+                  "title": "Lists 🗒️"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "css",
+          "label": "css",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/experiments/ex/14_css-only-countup/",
+              "title": "14: CSS only countup"
+            },
+            {
+              "url": "https://joshuastuebner.com/experiments/ex/15_circle-sun/",
+              "title": "15: Circle Sun"
+            },
+            {
+              "url": "https://joshuastuebner.com/experiments/ex/17_shifting-rectangles/",
+              "title": "17: Shifting Rectangles"
+            },
+            {
+              "url": "https://joshuastuebner.com/experiments/ex/20_css-shrinking-search/",
+              "title": "20: CSS Shrinking Search"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/comics/",
+                  "title": "artlung.com/comics/"
+                },
+                {
+                  "url": "https://artlung.com/css/",
+                  "title": "/css/"
+                },
+                {
+                  "url": "https://artlung.com/cssbattles/",
+                  "title": "artlung.com/cssbattles/"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/25/firefox-is-quietly-making-the-web-more-capable/",
+                  "title": "Firefox Is Quietly Making the Web More Capable"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "data",
+          "label": "data",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/seasonal/",
+              "title": "Seasonal Calendar"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/blog/2026/10/28/novelty-wave/",
+                  "title": "The panorama today Dawn Patrol data visualization from today The base of the pier and the seawall is normally sand. Today I was able to ride waves in that area, some of them were waves going out to sea, some were cross waves headed perpendicular to the bea"
+                },
+                {
+                  "url": "https://artlung.com/privacy-policy/",
+                  "title": "/privacy-policy/"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+                  "title": "Cessna HV Retrofit"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "design",
+          "label": "design",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/projects/details/ui-design-tool/",
+              "title": "UI Design Tool"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=animade-animade-2022",
+                  "title": "Animade"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=people-made-people-made-2021",
+                  "title": "People Made"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=styles-partners-styles-partners-2020",
+                  "title": "Styles+Partners"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=derek-man-derek-man-2015",
+                  "title": "Derek Man"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=james-joyce-james-joyce-2015",
+                  "title": "James Joyce"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=george-adams-george-adams-2014",
+                  "title": "George Adams"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=koto-koto-2014",
+                  "title": "Koto"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=venturethree-vault-project-archive-pitch-builder-2014",
+                  "title": "Vault Project Archive & Pitch Builder"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/resloadbank/",
+                  "title": "Turbo Generator Load-Bank"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuakim.studio",
+              "domain": "joshuakim.studio",
+              "title": "Joshua Kim",
+              "articles": [
+                {
+                  "url": "https://joshuakim.studio/work.html",
+                  "title": "Work, Joshua Kim"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "digital",
+          "label": "digital",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/digital-garden/",
+              "title": "Digital Garden"
+            },
+            {
+              "url": "https://joshuastuebner.com/projects/details/heuschrecke-messe/",
+              "title": "Heuschrecke Messe"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
+                  "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters."
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=insley-nash-digital-fabric-printing-platform-2013",
+                  "title": "&Digital Fabric-printing Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/not-optional/appendix/tech-eu-5-billion-for-startup-employees/",
+                  "title": "€5 billion more into the hands of European startup employees · Tech.eu reported that the campaign had helped put over €5bn more into the hands of startup employees. I defined its digital strategy and led the team that built its platform. Tech.eu Read more"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "food",
+          "label": "food",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/projects/details/vegan-hamburg/",
+              "title": "Vegan Hamburg"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/photo/urban-corner-store-sunset-35mm",
+                  "title": "Quick-Way"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "game",
+          "label": "game",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/projects/details/achtung-die-kurve/",
+              "title": "Achtung die Kurve"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/photo/texas-rangers-stadium-night-game-35mm",
+                  "title": "It's Baseball Time in Texas"
+                },
+                {
+                  "url": "https://joshozuna.com/photo/texas-rangers-baseball-stadium-game-35mm",
+                  "title": "Night Game at Globe Life"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/games/river-of-doom/",
+                  "title": "River of DOOM!!!"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=telegramme-telegramme-board-game-2010",
+                  "title": "Telegramme Board Game"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
+                  "title": "Worth Wandering: Pippin Barr"
+                },
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/fake/",
+                  "title": "3 Fake"
+                },
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spark/",
+                  "title": "2 Spark"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "javascript",
+          "label": "javascript",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/experiments/ex/14_css-only-countup/",
+              "title": "14: CSS only countup"
+            },
+            {
+              "url": "https://joshuastuebner.com/experiments/ex/15_circle-sun/",
+              "title": "15: Circle Sun"
+            },
+            {
+              "url": "https://joshuastuebner.com/experiments/ex/17_shifting-rectangles/",
+              "title": "17: Shifting Rectangles"
+            },
+            {
+              "url": "https://joshuastuebner.com/experiments/ex/20_css-shrinking-search/",
+              "title": "20: CSS Shrinking Search"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/25/firefox-is-quietly-making-the-web-more-capable/",
+                  "title": "Firefox Is Quietly Making the Web More Capable"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
+                  "title": "Worth Wandering: Pippin Barr"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "www.chrisminnick.com",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/javascript-all-in-one-for-dummies/",
+                  "title": "JavaScript All-in-One For Dummies"
+                },
+                {
+                  "url": "https://www.chrisminnick.com/books/javascript-for-kids/",
+                  "title": "JavaScript For Kids"
+                },
+                {
+                  "url": "https://www.chrisminnick.com/books/coding-with-javascript-for-dummies/",
+                  "title": "Coding With JavaScript For Dummies"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "learn",
+          "label": "learn",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/experiments/ex/08_shaderstart/",
+              "title": "08: Shaderstart"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/comics/",
+                  "title": "artlung.com/comics/"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/games/know-the-table/",
+                  "title": "Know the Table"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "learning",
+          "label": "learning",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/experiments/ex/04_silvester/",
+              "title": "04: Silvester"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/comics/",
+                  "title": "artlung.com/comics/"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/machine-learning-healing/",
+                  "title": "Machine Learning Healing"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
+                  "title": "Learning a New Tech Stack with an LLM"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "love",
+          "label": "love",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/digital-garden/",
+              "title": "Digital Garden"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/reels/",
+                  "title": "artlung.com/reels/"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/games/idol-idle/",
+                  "title": "Idol Idle"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "mobile",
+          "label": "mobile",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/experiments/ex/28_pdf-test/",
+              "title": "28: PDF Test"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/photo/charley-mobile-bath-35mm",
+                  "title": "Charley's Spa Day"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/banked-pay-by-bank/",
+                  "title": "Pay by Bank I built payment components and merchant integration tools from one codebase for web, iOS, and Android. View case study"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "photos",
+          "label": "photos",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/projects/details/heuschrecke-messe/",
+              "title": "Heuschrecke Messe"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/flickr/",
+                  "title": "/flickr/ 📁"
+                },
+                {
+                  "url": "https://artlung.com/pfp/",
+                  "title": "/pfp/"
+                },
+                {
+                  "url": "https://artlung.com/photos/",
+                  "title": "/photos/ 📁"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshbeard.com",
+              "domain": "joshbeard.com",
+              "title": "Josh Beard",
+              "articles": [
+                {
+                  "url": "https://joshbeard.com/photos/",
+                  "title": "Photos"
+                },
+                {
+                  "url": "https://joshbeard.com/photos/2014/",
+                  "title": "My Photos from 2014"
+                },
+                {
+                  "url": "https://joshbeard.com/photos/2015/",
+                  "title": "My Photos from 2015"
+                },
+                {
+                  "url": "https://joshbeard.com/photos/2016/",
+                  "title": "My Photos from 2016, including hikes around Colorado"
+                },
+                {
+                  "url": "https://joshbeard.com/photos/2017/",
+                  "title": "My Photos from 2017, including hikes around Colorado"
+                },
+                {
+                  "url": "https://joshbeard.com/photos/2018/",
+                  "title": "My Photos from 2018, including hikes around Colorado"
+                },
+                {
+                  "url": "https://joshbeard.com/photos/2018/2018-herman-gulch-01_jpg.html",
+                  "title": "Herman Gulch, Colorado. September 9, 2018. Photos from a hike at Herman Gulch, Colorado in September, 2018. This was a trail with plenty of beautiful scenery of mountain peaks, dense forest, open meadows, long views, creeks, and a lake. Though there was pl"
+                },
+                {
+                  "url": "https://joshbeard.com/photos/2019/",
+                  "title": "An assortment of photos from 2019, including a road trip through Colorado and to the Grand Canyon."
+                }
+              ]
+            },
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/",
+                  "title": "35mm Film Photography Gallery"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/photos/",
+                  "title": "Photos"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "search",
+          "label": "search",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/experiments/ex/20_css-shrinking-search/",
+              "title": "20: CSS Shrinking Search"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=skype-search-acquisition-2011",
+                  "title": "Search Acquisition"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "simple",
+          "label": "simple",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/projects/details/testaccount-manager/",
+              "title": "Testaccount manager"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/photo/josh-and-jackie-on-orange-bench-35mm",
+                  "title": "Simple Moments"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
+                  "title": "Worth Wandering: Pippin Barr"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "world",
+          "label": "world",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/experiments/ex/21_colorful-entry/",
+              "title": "21: Colorful Entry"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/projects/beerledge/",
+                  "title": "BeerLedge BeerLedge is a website that allows you to check in beers that you've drank in a post-privacy world."
+                },
+                {
+                  "url": "https://www.joshfinnie.com/projects/tikicompass/",
+                  "title": "TikiCompass.com TikiCompass is your ultimate guide to discovering authentic tiki bars around the world, featuring tropical cocktails, Polynesian culture, and a vibrant community of tiki enthusiasts."
+                }
+              ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/wizardly-words/",
+                  "title": "Wizardly Words"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
+                  "title": "Worth Wandering: Radio Aporee"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
+                  "title": "What Happens When a Webpage Becomes Part of a 3D World?"
                 }
               ]
             }
@@ -9005,6 +10870,29 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
                   "title": "Worth Wandering: Pippin Barr"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/14_css-only-countup/",
+                  "title": "14: CSS only countup"
+                },
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/15_circle-sun/",
+                  "title": "15: Circle Sun"
+                },
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/17_shifting-rectangles/",
+                  "title": "17: Shifting Rectangles"
+                },
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/20_css-shrinking-search/",
+                  "title": "20: CSS Shrinking Search"
                 }
               ]
             }
@@ -9710,41 +11598,6 @@
           ]
         },
         {
-          "slug": "side-project",
-          "label": "side projects",
-          "articles": [
-            {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
-              "title": "The October Micro SaaS Challenge: A Retro"
-            },
-            {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
-              "title": "Micro SaaS Week Four: SignedOnSite"
-            },
-            {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-week-three-noshowfixer/",
-              "title": "Micro SaaS Week Three: NoShowFixer"
-            },
-            {
-              "url": "https://www.joshfinnie.com/projects/",
-              "title": "Projects | Josh Finnie"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://forwardbias.dev",
-              "domain": "forwardbias.dev",
-              "title": "Josh Caldwell",
-              "articles": [
-                {
-                  "url": "https://forwardbias.dev/ideas/",
-                  "title": "Ideas"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "social",
           "label": "social",
           "articles": [
@@ -10004,6 +11857,17 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
                   "title": "What Happens When a Webpage Becomes Part of a 3D World?"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/21_colorful-entry/",
+                  "title": "21: Colorful Entry"
                 }
               ]
             }
@@ -10361,6 +12225,17 @@
                   "title": "Work, Joshua Kim"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/ui-design-tool/",
+                  "title": "UI Design Tool"
+                }
+              ]
             }
           ]
         },
@@ -10386,6 +12261,21 @@
                 {
                   "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
                   "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters."
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/digital-garden/",
+                  "title": "Digital Garden"
+                },
+                {
+                  "url": "https://joshuastuebner.com/projects/details/heuschrecke-messe/",
+                  "title": "Heuschrecke Messe"
                 }
               ]
             }
@@ -10553,6 +12443,17 @@
                   "title": "2 Spark"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/achtung-die-kurve/",
+                  "title": "Achtung die Kurve"
+                }
+              ]
             }
           ]
         },
@@ -10605,6 +12506,17 @@
                 {
                   "url": "https://joshozuna.com/photo/charley-mobile-bath-35mm",
                   "title": "Charley's Spa Day"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/28_pdf-test/",
+                  "title": "28: PDF Test"
                 }
               ]
             }
@@ -10714,29 +12626,6 @@
                 {
                   "url": "https://artlung.com/privacy-policy/",
                   "title": "/privacy-policy/"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "power",
-          "label": "power",
-          "articles": [
-            {
-              "url": "https://www.joshuabaker.com/work/?work=getty-images-power-of-sponsorship-2011",
-              "title": "Power of Sponsorship"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshuadrake.org",
-              "domain": "joshuadrake.org",
-              "title": "Joshua Drake",
-              "articles": [
-                {
-                  "url": "https://joshuadrake.org/projects/ingersollrandcompressor/",
-                  "title": "Ingersoll Rand Compressor"
                 }
               ]
             }
@@ -10868,6 +12757,29 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
                   "title": "Worth Wandering: Pippin Barr"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "search",
+          "label": "search",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/?work=skype-search-acquisition-2011",
+              "title": "Search Acquisition"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/20_css-shrinking-search/",
+                  "title": "20: CSS Shrinking Search"
                 }
               ]
             }
@@ -11156,64 +13068,6 @@
                 {
                   "url": "https://joshua.seigler.net/music/",
                   "title": "/music"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "view",
-          "label": "view",
-          "articles": [
-            {
-              "url": "https://www.joshuabaker.com/work/banked-pay-by-bank/",
-              "title": "Pay by Bank I built payment components and merchant integration tools from one codebase for web, iOS, and Android. View case study"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshbeard.com",
-              "domain": "joshbeard.com",
-              "title": "Josh Beard",
-              "articles": [
-                {
-                  "url": "https://joshbeard.com/photos/all/",
-                  "title": "View All Photos"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshozuna.com",
-              "domain": "joshozuna.com",
-              "title": "Josh Ozuna",
-              "articles": [
-                {
-                  "url": "https://joshozuna.com/photo/perot-museum-interior-view-35mm",
-                  "title": "Inside the Perot Museum"
-                },
-                {
-                  "url": "https://joshozuna.com/photo/museum-lobby-people-sunlight-35mm",
-                  "title": "Perot Museum Lobby"
-                },
-                {
-                  "url": "https://joshozuna.com/photo/army-airplane-museum-display-35mm",
-                  "title": "Hanging at the WWII Museum"
-                },
-                {
-                  "url": "https://joshozuna.com/photo/cafe-table-chairs-plant-shop-window-35mm",
-                  "title": "Sidewalk Charm"
-                },
-                {
-                  "url": "https://joshozuna.com/photo/texas-rangers-baseball-stadium-game-35mm",
-                  "title": "Night Game at Globe Life"
-                },
-                {
-                  "url": "https://joshozuna.com/photo/rainbow-light-chair-35mm",
-                  "title": "Table for None"
-                },
-                {
-                  "url": "https://joshozuna.com/photo/skate-bowl-graffiti-35mm",
-                  "title": "The Bowl"
                 }
               ]
             }

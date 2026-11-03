@@ -12,7 +12,7 @@
       "josh": false
     },
     "first_participated_at": "2026-11-02T15:42:11.854207Z",
-    "latest_declaration_check_at": "2026-11-02T15:42:11.854207Z",
+    "latest_declaration_check_at": "2026-11-03T15:43:49.432027Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Joe Crawford",
     "description": "I’ve written code for a living for a while. ArtLung.com itself runs on WordPress and it looks and works the way it does because I programmed the theme and underlying code.",
@@ -183,7 +183,7 @@
       "josh": true
     },
     "first_participated_at": "2026-11-02T15:03:18.018094Z",
-    "latest_declaration_check_at": "2026-11-02T15:03:18.018094Z",
+    "latest_declaration_check_at": "2026-11-03T15:11:50.960773Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Josh Cox",
     "description": "I've been building things on the web since 2016, mostly through Prystine, the web agency I run. Over the years that's grown from \"making websites\" into looking after them properly — performance, maintenance, and the unglamorous work that keeps a site alive.",
@@ -743,6 +743,45 @@
         "url": "https://joshuapsteele.com/blog/feed.xml",
         "network": "web",
         "label": "joshuapsteele.com"
+      }
+    ]
+  },
+  {
+    "origin": "https://joshuastuebner.com",
+    "domain": "joshuastuebner.com",
+    "identity": "affirmed",
+    "declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "initial_declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "first_participated_at": "2026-11-03T14:46:46.65336Z",
+    "latest_declaration_check_at": "2026-11-03T14:46:46.65336Z",
+    "latest_declaration_check_outcome": "valid",
+    "title": "Joshua Stübner",
+    "description": "Software engineer at Ariadne and half of Norcode Agency. I also (co-)run Vegan Hamburg and Was Los im Amt?.",
+    "screenshot": "/assets/network/sites/40d4dbf71702173d839bcb74e31c66f0be9278321de99e0fe9c0de23a76d3c36.webp",
+    "embeddable": false,
+    "frame_reason": "blocked-by-site",
+    "captured_at": "2026-11-03T16:26:26.779Z",
+    "elsewhere": [
+      {
+        "url": "https://joshuastuebner.com/",
+        "network": "web",
+        "label": "joshuastuebner.com"
+      },
+      {
+        "url": "https://codeberg.org/JSHSJ",
+        "network": "web",
+        "label": "codeberg.org"
+      },
+      {
+        "url": "https://github.com/JSHSJ",
+        "network": "github",
+        "label": "GitHub"
       }
     ]
   },

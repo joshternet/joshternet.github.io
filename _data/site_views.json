@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-03T15:57:38.659Z",
+  "generated_at": "2026-11-03T16:55:08.658Z",
   "sites": [
     {
       "origin": "https://artlung.com",
@@ -128,7 +128,7 @@
         },
         {
           "slug": "email",
-          "label": "emails"
+          "label": "email"
         },
         {
           "slug": "general",
@@ -300,7 +300,7 @@
         "title": "/amiga/",
         "summary": "A few of my memories of using the a Commodore Amiga 1000 for computer graphics, music, etc.",
         "published_at": "",
-        "observed_at": "2026-11-03T15:38:07.216Z",
+        "observed_at": "2026-11-03T16:34:11.848Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -13603,7 +13603,7 @@
           "https://artlung.com/blog/2024/06/05/bandwidth-throttling/": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-03T15:38:07.216Z"
+      "crawled_at": "2026-11-03T16:34:11.848Z"
     },
     {
       "origin": "https://forwardbias.dev",
@@ -13930,7 +13930,7 @@
           "https://forwardbias.dev/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-03T15:38:07.216Z"
+      "crawled_at": "2026-11-03T16:34:11.848Z"
     },
     {
       "origin": "https://joshbeard.com",
@@ -13960,10 +13960,6 @@
           "label": "Isolation"
         },
         {
-          "slug": "labor",
-          "label": "labor"
-        },
-        {
           "slug": "october",
           "label": "october"
         },
@@ -13981,7 +13977,7 @@
         "title": "Photos",
         "summary": "Photo albums from Colorado, travel, cycling, and everyday life.",
         "published_at": "",
-        "observed_at": "2026-11-03T15:38:07.216Z",
+        "observed_at": "2026-11-03T16:34:11.848Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -14479,7 +14475,7 @@
           "https://joshbeard.com/me": "content-index"
         }
       },
-      "crawled_at": "2026-11-03T15:38:07.216Z"
+      "crawled_at": "2026-11-03T16:34:11.848Z"
     },
     {
       "origin": "https://joshcox.co.uk",
@@ -14577,7 +14573,7 @@
         "title": "Projects — Josh Cox",
         "summary": "Products and tools Josh Cox has built, including Prystine, SendTidings, Quotify, Lifting Times, LeerHaus, and the Mac app My House, My Things.",
         "published_at": "",
-        "observed_at": "2026-11-03T15:38:07.216Z",
+        "observed_at": "2026-11-03T16:34:11.848Z",
         "content_type": "collection",
         "language": "en-gb",
         "dir": "",
@@ -14822,7 +14818,7 @@
           "https://joshcox.co.uk/the-crypt/": "content-index"
         }
       },
-      "crawled_at": "2026-11-03T15:38:07.216Z"
+      "crawled_at": "2026-11-03T16:34:11.848Z"
     },
     {
       "origin": "https://joshghent.com",
@@ -14874,6 +14870,10 @@
           "label": "business"
         },
         {
+          "slug": "check",
+          "label": "check"
+        },
+        {
           "slug": "communication",
           "label": "Communication"
         },
@@ -14888,6 +14888,10 @@
         {
           "slug": "created",
           "label": "created"
+        },
+        {
+          "slug": "creating",
+          "label": "creating"
         },
         {
           "slug": "database",
@@ -14907,7 +14911,7 @@
         },
         {
           "slug": "email",
-          "label": "emails"
+          "label": "email"
         },
         {
           "slug": "engineering",
@@ -15058,6 +15062,10 @@
           "label": "source"
         },
         {
+          "slug": "type",
+          "label": "type"
+        },
+        {
           "slug": "typescript",
           "label": "typescript"
         },
@@ -15079,7 +15087,7 @@
         "title": "Enterprise sales teams, please, I beg you, stop",
         "summary": "I asked for a price on a few extra seats of software we already pay for. Two days and a pile of irrelevant questions later, I got one.",
         "published_at": "2026-10-28T00:00:00.000Z",
-        "observed_at": "2026-11-03T15:38:07.216Z",
+        "observed_at": "2026-11-03T16:34:11.848Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -15466,7 +15474,7 @@
           "https://joshghent.com/blog": "content-index"
         }
       },
-      "crawled_at": "2026-11-03T15:38:07.216Z"
+      "crawled_at": "2026-11-03T16:34:11.848Z"
     },
     {
       "origin": "https://joshgr.com",
@@ -15517,7 +15525,7 @@
         "title": "Music",
         "summary": "Elsewhere",
         "published_at": "",
-        "observed_at": "2026-11-03T15:38:07.216Z",
+        "observed_at": "2026-11-03T16:34:11.848Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -15749,7 +15757,7 @@
           "https://joshgr.com/wizardly-words/": "content-index"
         }
       },
-      "crawled_at": "2026-11-03T15:38:07.216Z"
+      "crawled_at": "2026-11-03T16:34:11.848Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -15869,10 +15877,6 @@
           "label": "case study"
         },
         {
-          "slug": "climate",
-          "label": "climate"
-        },
-        {
           "slug": "create",
           "label": "create"
         },
@@ -15983,6 +15987,10 @@
         {
           "slug": "love",
           "label": "love"
+        },
+        {
+          "slug": "manager",
+          "label": "manager"
         },
         {
           "slug": "message",
@@ -16146,7 +16154,7 @@
         "title": "📸: Josh Müller",
         "summary": "",
         "published_at": "",
-        "observed_at": "2026-11-03T15:38:07.216Z",
+        "observed_at": "2026-11-03T16:34:11.848Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -16688,7 +16696,7 @@
           "https://joshmuller.ca/recipes/page/2/": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-03T15:38:07.216Z"
+      "crawled_at": "2026-11-03T16:34:11.848Z"
     },
     {
       "origin": "https://joshozuna.com",
@@ -16816,7 +16824,7 @@
         "title": "35mm Film Photography Gallery",
         "summary": "Photos by Josh Ozuna, shot on 35mm film.",
         "published_at": "2025-08-17T05:00:00.000Z",
-        "observed_at": "2026-11-03T15:38:07.216Z",
+        "observed_at": "2026-11-03T16:34:11.848Z",
         "content_type": "collection",
         "language": "en",
         "dir": "",
@@ -16864,7 +16872,7 @@
           "label": "links to from the homepage",
           "href": "https://joshozuna.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
           "page": "https://joshternet.org/",
-          "evidence_count": 1
+          "evidence_count": 3
         }
       ],
       "coverage": {
@@ -17122,7 +17130,7 @@
           "https://joshozuna.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-03T15:38:07.216Z"
+      "crawled_at": "2026-11-03T16:34:11.848Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -17139,6 +17147,10 @@
         }
       ],
       "community_topics": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
         {
           "slug": "california",
           "label": "california"
@@ -17164,6 +17176,14 @@
           "label": "independent"
         },
         {
+          "slug": "indie-hacking",
+          "label": "indie-hacking"
+        },
+        {
+          "slug": "micro-saas",
+          "label": "micro-saas"
+        },
+        {
           "slug": "permanence",
           "label": "permanence"
         },
@@ -17172,8 +17192,8 @@
           "label": "politics"
         },
         {
-          "slug": "view",
-          "label": "view"
+          "slug": "side-project",
+          "label": "side-projects"
         }
       ],
       "recent_content": {
@@ -17181,7 +17201,7 @@
         "title": "What's New",
         "summary": "Recent writing from the last two weeks and the latest Showcase creative works from independent websites on the Joshternet.",
         "published_at": "",
-        "observed_at": "2026-11-03T15:38:07.216Z",
+        "observed_at": "2026-11-03T16:34:11.848Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -17226,7 +17246,7 @@
           "label": "links to from the homepage",
           "href": "https://joshozuna.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
           "page": "https://joshternet.org/",
-          "evidence_count": 1
+          "evidence_count": 3
         },
         {
           "to": "https://joshtronic.com",
@@ -17524,97 +17544,200 @@
           "https://joshternet.org/tag/": "topic-hub",
           "https://joshternet.org/categories/": "topic-hub",
           "https://joshternet.org/category/": "topic-hub",
+          "https://joshternet.org/topics/35mm-film/": "sitemap",
           "https://joshternet.org/activity/": "sitemap",
+          "https://joshternet.org/topics/add/": "sitemap",
+          "https://joshternet.org/topics/ai-agent/": "sitemap",
+          "https://joshternet.org/topics/ai-safety/": "sitemap",
           "https://joshternet.org/topics/ai/": "sitemap",
+          "https://joshternet.org/topics/album/": "sitemap",
+          "https://joshternet.org/topics/analog-photography/": "sitemap",
+          "https://joshternet.org/topics/api/": "sitemap",
+          "https://joshternet.org/topics/apple/": "sitemap",
+          "https://joshternet.org/topics/architecture/": "sitemap",
+          "https://joshternet.org/topics/art/": "sitemap",
+          "https://joshternet.org/topics/artificial-intelligence/": "sitemap",
           "https://joshternet.org/topics/arts-culture/": "sitemap",
+          "https://joshternet.org/topics/astro/": "sitemap",
           "https://joshternet.org/implement/platforms/astro/": "sitemap",
           "https://joshternet.org/topics/august/": "sitemap",
           "https://joshternet.org/topics/away/": "sitemap",
+          "https://joshternet.org/topics/aws/": "sitemap",
+          "https://joshternet.org/topics/backend/": "sitemap",
           "https://joshternet.org/topics/banking/": "sitemap",
+          "https://joshternet.org/topics/beautiful/": "sitemap",
+          "https://joshternet.org/topics/become/": "sitemap",
           "https://joshternet.org/topics/bit/": "sitemap",
           "https://joshternet.org/topics/blue/": "sitemap",
+          "https://joshternet.org/topics/bluesky/": "sitemap",
           "https://joshternet.org/topics/bodysurfing/": "sitemap",
           "https://joshternet.org/topics/book/": "sitemap",
+          "https://joshternet.org/topics/browser/": "sitemap",
           "https://joshternet.org/topics/business/": "sitemap",
           "https://joshternet.org/implement/buttons/": "sitemap",
           "https://joshternet.org/topics/california/": "sitemap",
+          "https://joshternet.org/topics/canada/": "sitemap",
+          "https://joshternet.org/topics/care/": "sitemap",
+          "https://joshternet.org/topics/career/": "sitemap",
           "https://joshternet.org/topics/case-study/": "sitemap",
+          "https://joshternet.org/topics/challenge/": "sitemap",
           "https://joshternet.org/topics/charity-nonprofit/": "sitemap",
+          "https://joshternet.org/topics/chatgpt/": "sitemap",
+          "https://joshternet.org/topics/church/": "sitemap",
+          "https://joshternet.org/topics/city/": "sitemap",
+          "https://joshternet.org/topics/claude-code/": "sitemap",
+          "https://joshternet.org/topics/claude/": "sitemap",
           "https://joshternet.org/implement/platforms/cloudflare-worker/": "sitemap",
+          "https://joshternet.org/topics/code-review/": "sitemap",
+          "https://joshternet.org/topics/coding/": "sitemap",
+          "https://joshternet.org/topics/coffee/": "sitemap",
+          "https://joshternet.org/topics/collect/": "sitemap",
+          "https://joshternet.org/topics/command/": "sitemap",
           "https://joshternet.org/topics/communication-pr/": "sitemap",
           "https://joshternet.org/topics/communication/": "sitemap",
+          "https://joshternet.org/topics/community/": "sitemap",
+          "https://joshternet.org/topics/company/": "sitemap",
+          "https://joshternet.org/topics/computer-vision/": "sitemap",
           "https://joshternet.org/topics/computer/": "sitemap",
           "https://joshternet.org/implement/connections/": "sitemap",
           "https://joshternet.org/connections/": "sitemap",
           "https://joshternet.org/topics/consumer/": "sitemap",
+          "https://joshternet.org/topics/craftsmanship/": "sitemap",
+          "https://joshternet.org/topics/create/": "sitemap",
+          "https://joshternet.org/topics/created/": "sitemap",
+          "https://joshternet.org/topics/creative-coding/": "sitemap",
           "https://joshternet.org/topics/creative-design/": "sitemap",
+          "https://joshternet.org/topics/cryptography/": "sitemap",
           "https://joshternet.org/topics/css/": "sitemap",
           "https://joshternet.org/topics/data/": "sitemap",
           "https://joshternet.org/topics/dawnpatrol-app/": "sitemap",
+          "https://joshternet.org/topics/democracy/": "sitemap",
           "https://joshternet.org/topics/design-system/": "sitemap",
           "https://joshternet.org/topics/design/": "sitemap",
+          "https://joshternet.org/topics/digital-art/": "sitemap",
           "https://joshternet.org/topics/digital/": "sitemap",
+          "https://joshternet.org/topics/discovery/": "sitemap",
           "https://joshternet.org/topics/docs/": "sitemap",
           "https://joshternet.org/topics/dog/": "sitemap",
+          "https://joshternet.org/topics/dogs/": "sitemap",
+          "https://joshternet.org/topics/domain/": "sitemap",
+          "https://joshternet.org/topics/doom/": "sitemap",
+          "https://joshternet.org/topics/draft/": "sitemap",
+          "https://joshternet.org/topics/easter/": "sitemap",
           "https://joshternet.org/topics/education/": "sitemap",
           "https://joshternet.org/topics/eleventy/": "sitemap",
           "https://joshternet.org/implement/platforms/eleventy/": "sitemap",
+          "https://joshternet.org/topics/email/": "sitemap",
+          "https://joshternet.org/topics/engineering/": "sitemap",
           "https://joshternet.org/events/": "sitemap",
+          "https://joshternet.org/topics/experimental-game/": "sitemap",
+          "https://joshternet.org/topics/experimental/": "sitemap",
           "https://joshternet.org/implement/explore/": "sitemap",
+          "https://joshternet.org/topics/fact/": "sitemap",
+          "https://joshternet.org/topics/family/": "sitemap",
           "https://joshternet.org/topics/fashion-retail/": "sitemap",
+          "https://joshternet.org/topics/feel/": "sitemap",
+          "https://joshternet.org/topics/field-recording/": "sitemap",
+          "https://joshternet.org/topics/film-photography/": "sitemap",
           "https://joshternet.org/topics/finance/": "sitemap",
+          "https://joshternet.org/topics/food/": "sitemap",
           "https://joshternet.org/topics/free/": "sitemap",
           "https://joshternet.org/topics/full/": "sitemap",
           "https://joshternet.org/topics/future/": "sitemap",
+          "https://joshternet.org/topics/game-design/": "sitemap",
+          "https://joshternet.org/topics/game/": "sitemap",
           "https://joshternet.org/topics/general/": "sitemap",
+          "https://joshternet.org/topics/generator/": "sitemap",
           "https://joshternet.org/implement/platforms/ghost/": "sitemap",
+          "https://joshternet.org/topics/go/": "sitemap",
           "https://joshternet.org/governance/": "sitemap",
           "https://joshternet.org/topics/government-policy/": "sitemap",
           "https://joshternet.org/topics/government/": "sitemap",
+          "https://joshternet.org/topics/green/": "sitemap",
           "https://joshternet.org/topics/gwenthegoblin/": "sitemap",
           "https://joshternet.org/topics/health/": "sitemap",
           "https://joshternet.org/topics/history/": "sitemap",
           "https://joshternet.org/topics/hospitality/": "sitemap",
+          "https://joshternet.org/topics/hugo/": "sitemap",
           "https://joshternet.org/implement/platforms/hugo/": "sitemap",
+          "https://joshternet.org/topics/human/": "sitemap",
+          "https://joshternet.org/topics/image/": "sitemap",
           "https://joshternet.org/implement/": "sitemap",
+          "https://joshternet.org/topics/independent/": "sitemap",
+          "https://joshternet.org/topics/indie-hacking/": "sitemap",
           "https://joshternet.org/topics/indienew/": "sitemap",
           "https://joshternet.org/topics/indieweb/": "sitemap",
           "https://joshternet.org/infrastructure/": "sitemap",
+          "https://joshternet.org/topics/interactive-art/": "sitemap",
+          "https://joshternet.org/topics/internet/": "sitemap",
           "https://joshternet.org/topics/ios/": "sitemap",
+          "https://joshternet.org/topics/isolation/": "sitemap",
           "https://joshternet.org/topics/javascript/": "sitemap",
+          "https://joshternet.org/topics/jekyll/": "sitemap",
           "https://joshternet.org/implement/platforms/jekyll/": "sitemap",
+          "https://joshternet.org/topics/job/": "sitemap",
+          "https://joshternet.org/topics/jobs/": "sitemap",
           "https://joshternet.org/join/": "sitemap",
           "https://joshternet.org/joshbot/": "sitemap",
+          "https://joshternet.org/topics/keep/": "sitemap",
+          "https://joshternet.org/topics/kids/": "sitemap",
+          "https://joshternet.org/topics/labor/": "sitemap",
+          "https://joshternet.org/topics/language/": "sitemap",
           "https://joshternet.org/topics/learn/": "sitemap",
           "https://joshternet.org/topics/learning/": "sitemap",
+          "https://joshternet.org/topics/lesson/": "sitemap",
+          "https://joshternet.org/topics/let/": "sitemap",
+          "https://joshternet.org/topics/link/": "sitemap",
           "https://joshternet.org/topics/live/": "sitemap",
           "https://joshternet.org/topics/llm/": "sitemap",
           "https://joshternet.org/topics/love/": "sitemap",
           "https://joshternet.org/topics/machine-learning/": "sitemap",
+          "https://joshternet.org/topics/mastodon/": "sitemap",
+          "https://joshternet.org/topics/matter/": "sitemap",
+          "https://joshternet.org/topics/mean/": "sitemap",
           "https://joshternet.org/topics/media-publishing/": "sitemap",
           "https://joshternet.org/topics/mental-health/": "sitemap",
+          "https://joshternet.org/topics/mentorship/": "sitemap",
+          "https://joshternet.org/topics/message/": "sitemap",
           "https://joshternet.org/topics/micro-saas/": "sitemap",
           "https://joshternet.org/topics/misc/": "sitemap",
           "https://joshternet.org/topics/miscellaneous/": "sitemap",
+          "https://joshternet.org/topics/mobile/": "sitemap",
+          "https://joshternet.org/topics/model/": "sitemap",
+          "https://joshternet.org/topics/money/": "sitemap",
           "https://joshternet.org/topics/music/": "sitemap",
           "https://joshternet.org/network/": "sitemap",
+          "https://joshternet.org/topics/networking/": "sitemap",
+          "https://joshternet.org/topics/news/": "sitemap",
+          "https://joshternet.org/topics/nextj/": "sitemap",
           "https://joshternet.org/implement/platforms/nextjs/": "sitemap",
           "https://joshternet.org/nominate/": "sitemap",
           "https://joshternet.org/topics/nonprofit/": "sitemap",
           "https://joshternet.org/topics/nutrition/": "sitemap",
           "https://joshternet.org/implement/platforms/nuxt/": "sitemap",
+          "https://joshternet.org/topics/observation/": "sitemap",
           "https://joshternet.org/topics/october/": "sitemap",
           "https://joshternet.org/topics/open-source/": "sitemap",
           "https://joshternet.org/topics/outdoor/": "sitemap",
+          "https://joshternet.org/topics/ownership/": "sitemap",
+          "https://joshternet.org/topics/painting/": "sitemap",
+          "https://joshternet.org/topics/paper/": "sitemap",
+          "https://joshternet.org/topics/participant/": "sitemap",
           "https://joshternet.org/topics/permanence/": "sitemap",
+          "https://joshternet.org/topics/person/": "sitemap",
+          "https://joshternet.org/topics/photo/": "sitemap",
           "https://joshternet.org/topics/photos/": "sitemap",
           "https://joshternet.org/topics/php/": "sitemap",
           "https://joshternet.org/implement/platforms/": "sitemap",
           "https://joshternet.org/topics/policy/": "sitemap",
           "https://joshternet.org/topics/politics/": "sitemap",
+          "https://joshternet.org/topics/power/": "sitemap",
           "https://joshternet.org/topics/privacy-policy/": "sitemap",
+          "https://joshternet.org/topics/privacy/": "sitemap",
           "https://joshternet.org/privacy/": "sitemap",
+          "https://joshternet.org/topics/private/": "sitemap",
           "https://joshternet.org/topics/product-design/": "sitemap",
+          "https://joshternet.org/topics/product/": "sitemap",
           "https://joshternet.org/topics/productivity/": "sitemap",
           "https://joshternet.org/topics/programming/": "sitemap",
           "https://joshternet.org/licensing/": "sitemap",
@@ -17622,12 +17745,29 @@
           "https://joshternet.org/topics/property/": "sitemap",
           "https://joshternet.org/implement/platforms/quartz/": "sitemap",
           "https://joshternet.org/topics/quote/": "sitemap",
+          "https://joshternet.org/topics/react-js/": "sitemap",
+          "https://joshternet.org/topics/react/": "sitemap",
           "https://joshternet.org/topics/recipe/": "sitemap",
+          "https://joshternet.org/topics/recommendation/": "sitemap",
           "https://joshternet.org/topics/recruitment/": "sitemap",
           "https://joshternet.org/topics/red/": "sitemap",
+          "https://joshternet.org/topics/rememberance/": "sitemap",
+          "https://joshternet.org/topics/research/": "sitemap",
+          "https://joshternet.org/topics/resource/": "sitemap",
+          "https://joshternet.org/topics/review/": "sitemap",
+          "https://joshternet.org/topics/right/": "sitemap",
           "https://joshternet.org/topics/robot/": "sitemap",
+          "https://joshternet.org/topics/room/": "sitemap",
+          "https://joshternet.org/topics/rule/": "sitemap",
+          "https://joshternet.org/topics/s3/": "sitemap",
+          "https://joshternet.org/topics/saas/": "sitemap",
+          "https://joshternet.org/topics/safety/": "sitemap",
+          "https://joshternet.org/topics/school/": "sitemap",
+          "https://joshternet.org/topics/search/": "sitemap",
+          "https://joshternet.org/topics/security/": "sitemap",
           "https://joshternet.org/security/": "sitemap",
           "https://joshternet.org/topics/september/": "sitemap",
+          "https://joshternet.org/topics/server/": "sitemap",
           "https://joshternet.org/showcase/": "sitemap",
           "https://joshternet.org/topics/side-project/": "sitemap",
           "https://joshternet.org/topics/simple/": "sitemap",
@@ -17635,25 +17775,48 @@
           "https://joshternet.org/topics/social/": "sitemap",
           "https://joshternet.org/topics/software-engineering/": "sitemap",
           "https://joshternet.org/topics/software/": "sitemap",
+          "https://joshternet.org/topics/song/": "sitemap",
+          "https://joshternet.org/topics/source/": "sitemap",
           "https://joshternet.org/specs/": "sitemap",
+          "https://joshternet.org/topics/sport/": "sitemap",
           "https://joshternet.org/topics/star-trek/": "sitemap",
           "https://joshternet.org/topics/startup/": "sitemap",
+          "https://joshternet.org/topics/story/": "sitemap",
+          "https://joshternet.org/topics/street/": "sitemap",
+          "https://joshternet.org/topics/stripe/": "sitemap",
           "https://joshternet.org/implement/platforms/sveltekit/": "sitemap",
           "https://joshternet.org/topics/swim2026/": "sitemap",
+          "https://joshternet.org/topics/table/": "sitemap",
           "https://joshternet.org/topics/technology/": "sitemap",
+          "https://joshternet.org/topics/terminal/": "sitemap",
           "https://joshternet.org/terms/": "sitemap",
+          "https://joshternet.org/topics/testing/": "sitemap",
           "https://joshternet.org/licensing/third-party-licenses/": "sitemap",
+          "https://joshternet.org/topics/thread/": "sitemap",
+          "https://joshternet.org/topics/toy/": "sitemap",
           "https://joshternet.org/topics/tweet/": "sitemap",
           "https://joshternet.org/topics/twitter/": "sitemap",
+          "https://joshternet.org/topics/tyranny/": "sitemap",
+          "https://joshternet.org/topics/united-states/": "sitemap",
           "https://joshternet.org/implement/validate/": "sitemap",
+          "https://joshternet.org/topics/version/": "sitemap",
+          "https://joshternet.org/topics/video-game/": "sitemap",
           "https://joshternet.org/topics/video/": "sitemap",
+          "https://joshternet.org/topics/view/": "sitemap",
+          "https://joshternet.org/topics/visualization/": "sitemap",
           "https://joshternet.org/wander/": "sitemap",
           "https://joshternet.org/topics/water/": "sitemap",
           "https://joshternet.org/topics/webdev/": "sitemap",
+          "https://joshternet.org/topics/webgl/": "sitemap",
+          "https://joshternet.org/topics/week/": "sitemap",
+          "https://joshternet.org/topics/windows/": "sitemap",
           "https://joshternet.org/topics/wordpress/": "sitemap",
           "https://joshternet.org/implement/platforms/wordpress/": "sitemap",
           "https://joshternet.org/topics/world/": "sitemap",
+          "https://joshternet.org/topics/worth/": "sitemap",
+          "https://joshternet.org/topics/would/": "sitemap",
           "https://joshternet.org/topics/writing/": "sitemap",
+          "https://joshternet.org/topics/youtube/": "sitemap",
           "https://joshternet.org/style/": "blind-probe",
           "https://joshternet.org/top4/": "blind-probe",
           "https://joshternet.org/topfour/": "blind-probe",
@@ -17677,7 +17840,7 @@
           "https://joshternet.org/cdn-cgi/l/email-protection": "content-index"
         }
       },
-      "crawled_at": "2026-11-03T15:38:07.216Z"
+      "crawled_at": "2026-11-03T16:34:11.848Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -17887,7 +18050,7 @@
         "title": "Learning a New Tech Stack with an LLM",
         "summary": "While I mentioned a few weeks back that I'm now recovering from AI Psychosis , that doesn't mean I've given up on the technology completely. I'm writing more emails, and engaging with human beings as much as I can, and that part's been great. I still use agents as a glorified typewriter to generate code, and still very much get my hands in the dirt and sling code myself. I've also gotten quite obs",
         "published_at": "2026-10-26T00:00:00.000Z",
-        "observed_at": "2026-11-03T15:38:07.216Z",
+        "observed_at": "2026-11-03T16:34:11.848Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -19278,7 +19441,7 @@
           "https://joshtronic.com/incrementing-decrementing-a-number-by-a-number/": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-03T15:38:07.216Z"
+      "crawled_at": "2026-11-03T16:34:11.848Z"
     },
     {
       "origin": "https://joshua.seigler.net",
@@ -19383,7 +19546,7 @@
         "title": "/books",
         "summary": "I’m Joshua Seigler, a software engineer since 2010 and a living being since the 1980s. I’ve watched technology advance from dial-up and Geocities pages, to federated social media and decentralized autonomous organizations, to people literally talking to computers (a lot!).",
         "published_at": "",
-        "observed_at": "2026-11-03T15:38:07.216Z",
+        "observed_at": "2026-11-03T16:34:11.848Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -19660,7 +19823,7 @@
           "https://joshua.seigler.net/music/%C3%8Engerul%20a%20Strigat%20-%20Varlaam%20-%20glasul%203.pdf": "content-index"
         }
       },
-      "crawled_at": "2026-11-03T15:38:07.216Z"
+      "crawled_at": "2026-11-03T16:34:11.848Z"
     },
     {
       "origin": "https://joshuadrake.org",
@@ -19697,7 +19860,7 @@
         "title": "Projects:",
         "summary": "",
         "published_at": "",
-        "observed_at": "2026-11-03T15:38:07.216Z",
+        "observed_at": "2026-11-03T16:34:11.848Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -19970,7 +20133,7 @@
           "https://joshuadrake.org/projects/n12rebuild/": "content-index"
         }
       },
-      "crawled_at": "2026-11-03T15:38:07.216Z",
+      "crawled_at": "2026-11-03T16:34:11.848Z",
       "portfolio": {
         "url": "https://joshuadrake.org/projects/",
         "work_count": 39,
@@ -20006,7 +20169,7 @@
         "title": "Work, Joshua Kim",
         "summary": "Eight projects by Joshua Kim: internal tools, interactive and AR work, app case studies, and graphic design.",
         "published_at": "",
-        "observed_at": "2026-11-03T15:38:07.216Z",
+        "observed_at": "2026-11-03T16:34:11.848Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -20228,7 +20391,7 @@
           "https://joshuakim.studio/about": "content-index"
         }
       },
-      "crawled_at": "2026-11-03T15:38:07.216Z"
+      "crawled_at": "2026-11-03T16:34:11.848Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -20381,6 +20544,10 @@
           "label": "coding"
         },
         {
+          "slug": "collection",
+          "label": "collections"
+        },
+        {
           "slug": "community",
           "label": "community"
         },
@@ -20507,6 +20674,10 @@
         {
           "slug": "financial-market",
           "label": "financial markets"
+        },
+        {
+          "slug": "found",
+          "label": "found"
         },
         {
           "slug": "friendship",
@@ -20965,6 +21136,10 @@
           "label": "webgl"
         },
         {
+          "slug": "working",
+          "label": "working"
+        },
+        {
           "slug": "world",
           "label": "world"
         },
@@ -20994,7 +21169,7 @@
         "title": "Experiments",
         "summary": "Web experiments and playground shells from Joshua Morris—toys, tools, and interface ideas built to see whether they can work in a browser.",
         "published_at": "",
-        "observed_at": "2026-11-03T15:38:07.216Z",
+        "observed_at": "2026-11-03T16:34:11.848Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -21841,7 +22016,7 @@
           "https://joshuamorris.info/notes/2026/07/21/": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-03T15:38:07.216Z"
+      "crawled_at": "2026-11-03T16:34:11.848Z"
     },
     {
       "origin": "https://joshuapsteele.com",
@@ -22187,7 +22362,7 @@
         },
         {
           "slug": "immigration",
-          "label": "immigration"
+          "label": "Immigration"
         },
         {
           "slug": "indieweb",
@@ -22360,10 +22535,6 @@
         {
           "slug": "poverty",
           "label": "Poverty"
-        },
-        {
-          "slug": "power",
-          "label": "power"
         },
         {
           "slug": "prayer",
@@ -22591,7 +22762,7 @@
         "title": "Permalink",
         "summary": "Unable to load recent saved links. Visit LinkLog",
         "published_at": "",
-        "observed_at": "2026-11-03T15:38:07.216Z",
+        "observed_at": "2026-11-03T16:34:11.848Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -23480,7 +23651,411 @@
           "https://joshuapsteele.com/bookmarks/'+t(a)+'": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-03T15:38:07.216Z"
+      "crawled_at": "2026-11-03T16:34:11.848Z"
+    },
+    {
+      "origin": "https://joshuastuebner.com",
+      "domain": "joshuastuebner.com",
+      "title": "Joshua Stübner",
+      "description": "Software engineer at Ariadne and half of Norcode Agency. I also (co-)run Vegan Hamburg and Was Los im Amt?.",
+      "identity": "affirmed",
+      "feeds": [],
+      "elsewhere": [
+        {
+          "url": "https://joshuastuebner.com/",
+          "network": "web",
+          "label": "joshuastuebner.com"
+        },
+        {
+          "url": "https://codeberg.org/JSHSJ",
+          "network": "web",
+          "label": "codeberg.org"
+        },
+        {
+          "url": "https://github.com/JSHSJ",
+          "network": "github",
+          "label": "GitHub"
+        }
+      ],
+      "community_topics": [
+        {
+          "slug": "browser",
+          "label": "browsers"
+        },
+        {
+          "slug": "css",
+          "label": "css"
+        },
+        {
+          "slug": "design",
+          "label": "design"
+        },
+        {
+          "slug": "design-system",
+          "label": "Design systems"
+        },
+        {
+          "slug": "manager",
+          "label": "manager"
+        },
+        {
+          "slug": "search",
+          "label": "search"
+        }
+      ],
+      "recent_content": {
+        "url": "https://joshuastuebner.com/datenschutz/",
+        "title": "Datapolicy",
+        "summary": "Pick your theme",
+        "published_at": "",
+        "observed_at": "2026-11-03T16:34:11.848Z",
+        "content_type": "project",
+        "language": "en",
+        "dir": "",
+        "site_origin": "https://joshuastuebner.com",
+        "site_title": "Joshua Stübner",
+        "domain": "joshuastuebner.com",
+        "tags": [],
+        "neighborhoods": [],
+        "image": "",
+        "image_origin": "",
+        "source_kind": "creative-homepage",
+        "page_role": "unknown"
+      },
+      "outgoing": [],
+      "incoming": [],
+      "coverage": {
+        "pages_discovered": 145,
+        "pages_fetched": 145,
+        "fetch_limit": null,
+        "limit_reached": false,
+        "selection_strategy": "uncapped-site-crawl-v1",
+        "selection_reasons": {
+          "https://joshuastuebner.com/": "home",
+          "https://joshuastuebner.com/changelog/": "content-index",
+          "https://joshuastuebner.com/log/": "content-index",
+          "https://joshuastuebner.com/ideas/": "content-index",
+          "https://joshuastuebner.com/sitemap/": "content-index",
+          "https://joshuastuebner.com/til/": "content-index",
+          "https://joshuastuebner.com/ways/": "content-index",
+          "https://joshuastuebner.com/notes/": "content-index",
+          "https://joshuastuebner.com/blog/": "content-index",
+          "https://joshuastuebner.com/weblog/": "content-index",
+          "https://joshuastuebner.com/writings/": "content-index",
+          "https://joshuastuebner.com/posts/": "content-index",
+          "https://joshuastuebner.com/post/": "content-index",
+          "https://joshuastuebner.com/writing/": "content-index",
+          "https://joshuastuebner.com/articles/": "content-index",
+          "https://joshuastuebner.com/article/": "content-index",
+          "https://joshuastuebner.com/essays/": "content-index",
+          "https://joshuastuebner.com/journal/": "content-index",
+          "https://joshuastuebner.com/weeknotes/": "content-index",
+          "https://joshuastuebner.com/archive/": "content-index",
+          "https://joshuastuebner.com/about/": "content-index",
+          "https://joshuastuebner.com/about-me/": "content-index",
+          "https://joshuastuebner.com/aboutme/": "content-index",
+          "https://joshuastuebner.com/bio/": "content-index",
+          "https://joshuastuebner.com/me/": "content-index",
+          "https://joshuastuebner.com/profile/": "content-index",
+          "https://joshuastuebner.com/ai/": "content-index",
+          "https://joshuastuebner.com/blank/": "content-index",
+          "https://joshuastuebner.com/blogroll/": "content-index",
+          "https://joshuastuebner.com/calendar/": "content-index",
+          "https://joshuastuebner.com/canon/": "content-index",
+          "https://joshuastuebner.com/carry/": "content-index",
+          "https://joshuastuebner.com/caw/": "content-index",
+          "https://joshuastuebner.com/celebrities/": "content-index",
+          "https://joshuastuebner.com/chipotle/": "content-index",
+          "https://joshuastuebner.com/colophon/": "content-index",
+          "https://joshuastuebner.com/community/": "content-index",
+          "https://joshuastuebner.com/contact/": "content-index",
+          "https://joshuastuebner.com/death/": "content-index",
+          "https://joshuastuebner.com/defaults/": "content-index",
+          "https://joshuastuebner.com/disability/": "content-index",
+          "https://joshuastuebner.com/elsewhere/": "content-index",
+          "https://joshuastuebner.com/appearances/": "content-index",
+          "https://joshuastuebner.com/follow/": "content-index",
+          "https://joshuastuebner.com/subscribe/": "content-index",
+          "https://joshuastuebner.com/feeds/": "content-index",
+          "https://joshuastuebner.com/for/": "content-index",
+          "https://joshuastuebner.com/dedication/": "content-index",
+          "https://joshuastuebner.com/glossary/": "content-index",
+          "https://joshuastuebner.com/lexicon/": "content-index",
+          "https://joshuastuebner.com/phrased/": "content-index",
+          "https://joshuastuebner.com/green/": "content-index",
+          "https://joshuastuebner.com/hats/": "content-index",
+          "https://joshuastuebner.com/hello/": "content-index",
+          "https://joshuastuebner.com/hills/": "content-index",
+          "https://joshuastuebner.com/hill/": "content-index",
+          "https://joshuastuebner.com/interests/": "content-index",
+          "https://joshuastuebner.com/junk/": "content-index",
+          "https://joshuastuebner.com/sale/": "content-index",
+          "https://joshuastuebner.com/buy/": "content-index",
+          "https://joshuastuebner.com/languages/": "content-index",
+          "https://joshuastuebner.com/links/": "content-index",
+          "https://joshuastuebner.com/bookmarks/": "content-index",
+          "https://joshuastuebner.com/next/": "content-index",
+          "https://joshuastuebner.com/nope/": "content-index",
+          "https://joshuastuebner.com/now/": "content-index",
+          "https://joshuastuebner.com/podroll/": "content-index",
+          "https://joshuastuebner.com/posse/": "content-index",
+          "https://joshuastuebner.com/postroll/": "content-index",
+          "https://joshuastuebner.com/predictions/": "content-index",
+          "https://joshuastuebner.com/pricing/": "content-index",
+          "https://joshuastuebner.com/questions/": "content-index",
+          "https://joshuastuebner.com/saudade/": "content-index",
+          "https://joshuastuebner.com/save/": "content-index",
+          "https://joshuastuebner.com/referrals/": "content-index",
+          "https://joshuastuebner.com/self-hosting/": "content-index",
+          "https://joshuastuebner.com/self-hosted/": "content-index",
+          "https://joshuastuebner.com/hosted/": "content-index",
+          "https://joshuastuebner.com/homelab/": "content-index",
+          "https://joshuastuebner.com/shoebox/": "content-index",
+          "https://joshuastuebner.com/since/": "content-index",
+          "https://joshuastuebner.com/slashes/": "content-index",
+          "https://joshuastuebner.com/someday/": "content-index",
+          "https://joshuastuebner.com/tip/": "content-index",
+          "https://joshuastuebner.com/pay/": "content-index",
+          "https://joshuastuebner.com/coffee/": "content-index",
+          "https://joshuastuebner.com/uses/": "content-index",
+          "https://joshuastuebner.com/verify/": "content-index",
+          "https://joshuastuebner.com/where/": "content-index",
+          "https://joshuastuebner.com/why/": "content-index",
+          "https://joshuastuebner.com/wish/": "content-index",
+          "https://joshuastuebner.com/yep/": "content-index",
+          "https://joshuastuebner.com/more/": "content-index",
+          "https://joshuastuebner.com/site/": "content-index",
+          "https://joshuastuebner.com/social/": "content-index",
+          "https://joshuastuebner.com/people/": "content-index",
+          "https://joshuastuebner.com/friends/": "content-index",
+          "https://joshuastuebner.com/following/": "content-index",
+          "https://joshuastuebner.com/webring/": "content-index",
+          "https://joshuastuebner.com/webrings/": "content-index",
+          "https://joshuastuebner.com/indieweb/": "content-index",
+          "https://joshuastuebner.com/neighborhood/": "content-index",
+          "https://joshuastuebner.com/guestbook/": "content-index",
+          "https://joshuastuebner.com/meta/": "content-index",
+          "https://joshuastuebner.com/health/": "content-index",
+          "https://joshuastuebner.com/concerts/": "content-index",
+          "https://joshuastuebner.com/daylists/": "content-index",
+          "https://joshuastuebner.com/pfp/": "content-index",
+          "https://joshuastuebner.com/photo/": "content-index",
+          "https://joshuastuebner.com/pic/": "content-index",
+          "https://joshuastuebner.com/work/": "content-index",
+          "https://joshuastuebner.com/projects/": "content-index",
+          "https://joshuastuebner.com/portfolio/": "content-index",
+          "https://joshuastuebner.com/work.html/": "content-index",
+          "https://joshuastuebner.com/projects.html/": "content-index",
+          "https://joshuastuebner.com/portfolio.html/": "content-index",
+          "https://joshuastuebner.com/studio-index/": "content-index",
+          "https://joshuastuebner.com/gallery/": "content-index",
+          "https://joshuastuebner.com/galleries/": "content-index",
+          "https://joshuastuebner.com/albums/": "content-index",
+          "https://joshuastuebner.com/photography/": "content-index",
+          "https://joshuastuebner.com/photos/": "content-index",
+          "https://joshuastuebner.com/art/": "content-index",
+          "https://joshuastuebner.com/illustration/": "content-index",
+          "https://joshuastuebner.com/artwork/": "content-index",
+          "https://joshuastuebner.com/comics/": "content-index",
+          "https://joshuastuebner.com/comic/": "content-index",
+          "https://joshuastuebner.com/webcomics/": "content-index",
+          "https://joshuastuebner.com/toys/": "content-index",
+          "https://joshuastuebner.com/toy/": "content-index",
+          "https://joshuastuebner.com/play/": "content-index",
+          "https://joshuastuebner.com/reels/": "content-index",
+          "https://joshuastuebner.com/reel/": "content-index",
+          "https://joshuastuebner.com/shorts/": "content-index",
+          "https://joshuastuebner.com/cssbattles/": "content-index",
+          "https://joshuastuebner.com/cssbattle/": "content-index",
+          "https://joshuastuebner.com/css-battles/": "content-index",
+          "https://joshuastuebner.com/music/": "content-index",
+          "https://joshuastuebner.com/discography/": "content-index",
+          "https://joshuastuebner.com/tracks/": "content-index",
+          "https://joshuastuebner.com/podcasts/": "content-index",
+          "https://joshuastuebner.com/podcast/": "content-index",
+          "https://joshuastuebner.com/listen/": "content-index",
+          "https://joshuastuebner.com/videos/": "content-index",
+          "https://joshuastuebner.com/film/": "content-index",
+          "https://joshuastuebner.com/animation/": "content-index",
+          "https://joshuastuebner.com/games/": "content-index",
+          "https://joshuastuebner.com/game/": "content-index",
+          "https://joshuastuebner.com/interactive/": "content-index",
+          "https://joshuastuebner.com/exhibitions/": "content-index",
+          "https://joshuastuebner.com/design/": "content-index",
+          "https://joshuastuebner.com/apps/": "content-index",
+          "https://joshuastuebner.com/software/": "content-index",
+          "https://joshuastuebner.com/tools/": "content-index",
+          "https://joshuastuebner.com/books/": "content-index",
+          "https://joshuastuebner.com/guides/": "content-index",
+          "https://joshuastuebner.com/resources/": "content-index",
+          "https://joshuastuebner.com/experiments/": "content-index",
+          "https://joshuastuebner.com/sounds/": "content-index",
+          "https://joshuastuebner.com/hustles/": "content-index",
+          "https://joshuastuebner.com/topics/": "topic-hub",
+          "https://joshuastuebner.com/topic/": "topic-hub",
+          "https://joshuastuebner.com/tags/": "topic-hub",
+          "https://joshuastuebner.com/tag/": "topic-hub",
+          "https://joshuastuebner.com/categories/": "topic-hub",
+          "https://joshuastuebner.com/category/": "topic-hub",
+          "https://joshuastuebner.com/cv/": "sitemap",
+          "https://joshuastuebner.com/datenschutz/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/accessible-card-links/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/assortment-of-useful-tiny-git-commands/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/book-recommendations/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/browserlist-targets-baseline-widely-available/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/building-good-components/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/caching-static-websites/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/css-tricks/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/design-manifesto/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/ebb-and-flow/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/fish-shell/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/fluid-dynamic-typography/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/font-subsetting/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/food-recommendations/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/generate-favicons/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/incomplete-list-of-good-albums/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/interesting-libs/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/js-ts-performance-snippets/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/macos-setup-tricks/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/managing-multiple-github-accounts/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/mocking-in-jest/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/on-embrace-the-platform/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/on-evaluating-tech-debt/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/on-rewriting-code/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/performant-image-loading/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/pizza-dough-recipe/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/planting-plants/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/plants-and-water/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/quick-image-manipulations/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/quotes/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/react-patterns/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/regexp-learnings/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/rest-of-the-bunch-commands/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/search/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/tag/accessibility/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/tag/config/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/tag/design/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/tag/food/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/tag/garden/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/tag/music/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/tag/notes/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/tag/offline/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/tag/performance/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/tag/thoughts/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/tag/ux/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/tag/web-development/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/taking-notes/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/tech-recommendations/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/the-broad-focus/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/the-limbo-after-a-breakup/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/the-observer/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/the-way-of-the-water/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/things-i-want-in-a-job/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/typescript-deepreadonly/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/unconditional-love/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/useful-js-snippets/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/usethrowasyncerror/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/ux-goal-statement/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/ux-problem-statement/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/vulnerability/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/web-manifesto/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/website-performance-improvements/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/website-performance-testing-with-sitespeedio/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/woodpecker-ci-on-uberspace/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/writing-good-content/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/writing-style/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/writing-userstories/": "sitemap",
+          "https://joshuastuebner.com/digital-garden/written-thoughts/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/01_ripples/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/02_marquee/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/03_moo/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/04_silvester/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/05_dialogs/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/06_notifications/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/07_viewtransitions/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/08_shaderstart/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/09_sliding-transition/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/10_floating-card/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/11_press-to-delete/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/12_loading/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/13_animated-text/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/14_css-only-countup/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/15_circle-sun/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/16_stars/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/17_shifting-rectangles/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/18_fruity-reverb/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/19_jump-up/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/20_css-shrinking-search/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/21_colorful-entry/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/22_dusk-gradient/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/23_scroll-and-spin/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/24_big-number/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/25_sparkline/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/26_antifa/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/27_animated-border/": "sitemap",
+          "https://joshuastuebner.com/experiments/ex/28_pdf-test/": "sitemap",
+          "https://joshuastuebner.com/gruenen-pv/": "sitemap",
+          "https://joshuastuebner.com/impressum/": "sitemap",
+          "https://joshuastuebner.com/print/camus-rebellion/": "sitemap",
+          "https://joshuastuebner.com/projects/details/181-degree/": "sitemap",
+          "https://joshuastuebner.com/projects/details/achtung-die-kurve/": "sitemap",
+          "https://joshuastuebner.com/projects/details/chymeia/": "sitemap",
+          "https://joshuastuebner.com/projects/details/fuchsbau/": "sitemap",
+          "https://joshuastuebner.com/projects/details/heuschrecke-messe/": "sitemap",
+          "https://joshuastuebner.com/projects/details/magic-league/": "sitemap",
+          "https://joshuastuebner.com/projects/details/modus-themes-port-for-jetbrains/": "sitemap",
+          "https://joshuastuebner.com/projects/details/my-website-v1/": "sitemap",
+          "https://joshuastuebner.com/projects/details/my-website-v2/": "sitemap",
+          "https://joshuastuebner.com/projects/details/saisonale-produkte/": "sitemap",
+          "https://joshuastuebner.com/projects/details/testaccount-manager/": "sitemap",
+          "https://joshuastuebner.com/projects/details/the-moving-cinema/": "sitemap",
+          "https://joshuastuebner.com/projects/details/ui-design-tool/": "sitemap",
+          "https://joshuastuebner.com/projects/details/vegan-hamburg/": "sitemap",
+          "https://joshuastuebner.com/projects/details/wildtierrettung-rhein-berg/": "sitemap",
+          "https://joshuastuebner.com/seasonal/": "sitemap",
+          "https://joshuastuebner.com/seasonal/by-month/april/": "sitemap",
+          "https://joshuastuebner.com/seasonal/by-month/august/": "sitemap",
+          "https://joshuastuebner.com/seasonal/by-month/december/": "sitemap",
+          "https://joshuastuebner.com/seasonal/by-month/february/": "sitemap",
+          "https://joshuastuebner.com/seasonal/by-month/january/": "sitemap",
+          "https://joshuastuebner.com/seasonal/by-month/july/": "sitemap",
+          "https://joshuastuebner.com/seasonal/by-month/june/": "sitemap",
+          "https://joshuastuebner.com/seasonal/by-month/march/": "sitemap",
+          "https://joshuastuebner.com/seasonal/by-month/may/": "sitemap",
+          "https://joshuastuebner.com/seasonal/by-month/november/": "sitemap",
+          "https://joshuastuebner.com/seasonal/by-month/october/": "sitemap",
+          "https://joshuastuebner.com/seasonal/by-month/september/": "sitemap",
+          "https://joshuastuebner.com/tools/calendar/": "sitemap",
+          "https://joshuastuebner.com/tools/linkPrivacy/": "sitemap",
+          "https://joshuastuebner.com/tools/typeScale/": "sitemap",
+          "https://joshuastuebner.com/tools/yearCalendar/": "sitemap",
+          "https://joshuastuebner.com/style/": "blind-probe",
+          "https://joshuastuebner.com/top4/": "blind-probe",
+          "https://joshuastuebner.com/topfour/": "blind-probe",
+          "https://joshuastuebner.com/events/": "blind-probe",
+          "https://joshuastuebner.com/shows/": "blind-probe",
+          "https://joshuastuebner.com/gigs/": "blind-probe",
+          "https://joshuastuebner.com/tour/": "blind-probe",
+          "https://joshuastuebner.com/live/": "blind-probe",
+          "https://joshuastuebner.com/performances/": "blind-probe",
+          "https://joshuastuebner.com/readings/": "blind-probe",
+          "https://joshuastuebner.com/workshops/": "blind-probe",
+          "https://joshuastuebner.com/study-hall/": "blind-probe",
+          "https://joshuastuebner.com/frontend-study-hall/": "blind-probe",
+          "https://joshuastuebner.com/front-end-study-hall/": "blind-probe",
+          "https://joshuastuebner.com/fresh/": "blind-probe",
+          "https://joshuastuebner.com/education/": "blind-probe",
+          "https://joshuastuebner.com/learn/": "blind-probe",
+          "https://joshuastuebner.com/classes/": "blind-probe",
+          "https://joshuastuebner.com/class/": "blind-probe",
+          "https://joshuastuebner.com/courses/": "blind-probe",
+          "https://joshuastuebner.com/course/": "blind-probe",
+          "https://joshuastuebner.com/cv": "content-index",
+          "https://joshuastuebner.com/joshuastuebner.asc": "content-index"
+        }
+      },
+      "crawled_at": "2026-11-03T16:34:11.848Z"
     },
     {
       "origin": "https://www.chrisminnick.com",
@@ -23555,6 +24130,10 @@
         {
           "slug": "future",
           "label": "future"
+        },
+        {
+          "slug": "getting",
+          "label": "getting"
         },
         {
           "slug": "give",
@@ -23658,7 +24237,7 @@
         "title": "Books",
         "summary": "More than twenty books on programming, the web, and AI — plus three novels.",
         "published_at": "2027-04-01T00:00:00.000Z",
-        "observed_at": "2026-11-03T15:38:07.216Z",
+        "observed_at": "2026-11-03T16:34:11.848Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -24051,7 +24630,7 @@
           "https://www.chrisminnick.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-03T15:38:07.216Z"
+      "crawled_at": "2026-11-03T16:34:11.848Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -24728,7 +25307,7 @@
           "https://www.joshcanhelp.com/_images/2010/02/logitech_mic.jpg": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-03T15:38:07.216Z"
+      "crawled_at": "2026-11-03T16:34:11.848Z"
     },
     {
       "origin": "https://www.joshfinnie.com",
@@ -24884,10 +25463,6 @@
           "label": "bower"
         },
         {
-          "slug": "broadband",
-          "label": "broadband"
-        },
-        {
           "slug": "browser",
           "label": "browsers"
         },
@@ -24904,12 +25479,12 @@
           "label": "challenges"
         },
         {
-          "slug": "chrome",
-          "label": "chrome"
+          "slug": "check",
+          "label": "check"
         },
         {
-          "slug": "civic",
-          "label": "civics"
+          "slug": "chrome",
+          "label": "chrome"
         },
         {
           "slug": "claude",
@@ -24922,10 +25497,6 @@
         {
           "slug": "cli",
           "label": "cli"
-        },
-        {
-          "slug": "climate",
-          "label": "climate"
         },
         {
           "slug": "cloudfront",
@@ -24946,6 +25517,10 @@
         {
           "slug": "coffee",
           "label": "coffee"
+        },
+        {
+          "slug": "collection",
+          "label": "collections"
         },
         {
           "slug": "command",
@@ -24976,6 +25551,10 @@
           "label": "created"
         },
         {
+          "slug": "creating",
+          "label": "creating"
+        },
+        {
           "slug": "css",
           "label": "css"
         },
@@ -24986,10 +25565,6 @@
         {
           "slug": "data-20structure",
           "label": "data%20structure"
-        },
-        {
-          "slug": "data-center",
-          "label": "data-centers"
         },
         {
           "slug": "data-structure",
@@ -25060,12 +25635,8 @@
           "label": "economics"
         },
         {
-          "slug": "education",
-          "label": "education"
-        },
-        {
           "slug": "email",
-          "label": "emails"
+          "label": "email"
         },
         {
           "slug": "error",
@@ -25124,6 +25695,10 @@
           "label": "fonts"
         },
         {
+          "slug": "found",
+          "label": "found"
+        },
+        {
           "slug": "full",
           "label": "full"
         },
@@ -25140,12 +25715,12 @@
           "label": "Future of Work"
         },
         {
-          "slug": "gaming",
-          "label": "gaming"
-        },
-        {
           "slug": "gatsby",
           "label": "gatsby"
+        },
+        {
+          "slug": "getting",
+          "label": "getting"
         },
         {
           "slug": "git",
@@ -25192,20 +25767,12 @@
           "label": "image"
         },
         {
-          "slug": "immigration",
-          "label": "immigration"
-        },
-        {
           "slug": "indie-hacking",
-          "label": "indie hacking"
+          "label": "indie-hacking"
         },
         {
           "slug": "indieweb",
           "label": "indieweb"
-        },
-        {
-          "slug": "infrastructure",
-          "label": "infrastructure"
         },
         {
           "slug": "iterm2",
@@ -25238,10 +25805,6 @@
         {
           "slug": "json-ld",
           "label": "json ld"
-        },
-        {
-          "slug": "labor",
-          "label": "labor"
         },
         {
           "slug": "latex",
@@ -25309,7 +25872,7 @@
         },
         {
           "slug": "micro-saas",
-          "label": "micro saas"
+          "label": "micro-saas"
         },
         {
           "slug": "mobile",
@@ -25380,20 +25943,12 @@
           "label": "pnpm"
         },
         {
-          "slug": "policy",
-          "label": "policy"
-        },
-        {
           "slug": "politics",
           "label": "politics"
         },
         {
           "slug": "postgresql",
           "label": "postgresql"
-        },
-        {
-          "slug": "power",
-          "label": "power"
         },
         {
           "slug": "privacy",
@@ -25521,11 +26076,15 @@
         },
         {
           "slug": "side-project",
-          "label": "side projects"
+          "label": "side-projects"
         },
         {
           "slug": "social-media",
           "label": "social media"
+        },
+        {
+          "slug": "software",
+          "label": "Software"
         },
         {
           "slug": "ssl",
@@ -25580,12 +26139,12 @@
           "label": "twitter"
         },
         {
-          "slug": "typescript",
-          "label": "typescript"
+          "slug": "type",
+          "label": "type"
         },
         {
-          "slug": "union",
-          "label": "unions"
+          "slug": "typescript",
+          "label": "typescript"
         },
         {
           "slug": "update",
@@ -25606,10 +26165,6 @@
         {
           "slug": "video",
           "label": "video"
-        },
-        {
-          "slug": "view",
-          "label": "view"
         },
         {
           "slug": "vite",
@@ -25648,6 +26203,10 @@
           "label": "wordpress"
         },
         {
+          "slug": "working",
+          "label": "working"
+        },
+        {
           "slug": "wsl",
           "label": "wsl"
         },
@@ -25669,7 +26228,7 @@
         "title": "The October Micro SaaS Challenge: A Retro",
         "summary": "Four micro SaaS products in four weeks, built with Claude Code: what shipped, which rules broke, what it cost, and what I'd change next time.",
         "published_at": "2026-11-02T00:00:00.000Z",
-        "observed_at": "2026-11-03T15:38:07.216Z",
+        "observed_at": "2026-11-03T16:34:11.848Z",
         "content_type": "article",
         "language": "en-us",
         "dir": "",
@@ -25683,15 +26242,15 @@
           },
           {
             "slug": "indie-hacking",
-            "label": "indie hacking"
+            "label": "indie-hacking"
           },
           {
             "slug": "micro-saas",
-            "label": "micro saas"
+            "label": "micro-saas"
           },
           {
             "slug": "side-project",
-            "label": "side projects"
+            "label": "side-projects"
           }
         ],
         "neighborhoods": [
@@ -25701,15 +26260,15 @@
           },
           {
             "slug": "indie-hacking",
-            "label": "indie hacking"
+            "label": "indie-hacking"
           },
           {
             "slug": "micro-saas",
-            "label": "micro saas"
+            "label": "micro-saas"
           },
           {
             "slug": "side-project",
-            "label": "side projects"
+            "label": "side-projects"
           }
         ],
         "image": "/assets/activity/posters/06408c099e97547580ade828c7727b3a6fff5e2ad9379a28a4d1ac2f21e7ee6b.webp",
@@ -26022,260 +26581,6 @@
           "https://www.joshfinnie.com/tag/": "topic-hub",
           "https://www.joshfinnie.com/categories/": "topic-hub",
           "https://www.joshfinnie.com/category/": "topic-hub",
-          "https://www.joshfinnie.com/blog/2/": "sitemap",
-          "https://www.joshfinnie.com/blog/3/": "sitemap",
-          "https://www.joshfinnie.com/blog/4/": "sitemap",
-          "https://www.joshfinnie.com/blog/5/": "sitemap",
-          "https://www.joshfinnie.com/blog/6/": "sitemap",
-          "https://www.joshfinnie.com/blog/7/": "sitemap",
-          "https://www.joshfinnie.com/blog/8/": "sitemap",
-          "https://www.joshfinnie.com/blog/9/": "sitemap",
-          "https://www.joshfinnie.com/blog/10/": "sitemap",
-          "https://www.joshfinnie.com/blog/11/": "sitemap",
-          "https://www.joshfinnie.com/blog/12/": "sitemap",
-          "https://www.joshfinnie.com/blog/13/": "sitemap",
-          "https://www.joshfinnie.com/consult/": "sitemap",
-          "https://www.joshfinnie.com/leftist/": "sitemap",
-          "https://www.joshfinnie.com/leftist/abolish-ice/": "sitemap",
-          "https://www.joshfinnie.com/leftist/amazons-ai-layoff/": "sitemap",
-          "https://www.joshfinnie.com/leftist/data-centers-are-not-a-common-good/": "sitemap",
-          "https://www.joshfinnie.com/leftist/free-tuition-locked-gates/": "sitemap",
-          "https://www.joshfinnie.com/leftist/starlink-rural-broadband-grift/": "sitemap",
-          "https://www.joshfinnie.com/leftist/the-fatal-flaw-in-silicon-valleys-ai-gold-rush/": "sitemap",
-          "https://www.joshfinnie.com/leftist/united-wizards-of-the-coast/": "sitemap",
-          "https://www.joshfinnie.com/leftist/you-cant-afford-a-house/": "sitemap",
-          "https://www.joshfinnie.com/notes/gate-ssl-on-host-not-node-env/": "sitemap",
-          "https://www.joshfinnie.com/notes/git-restore-a-deleted-file/": "sitemap",
-          "https://www.joshfinnie.com/notes/hand-written-types-vs-inferred-types/": "sitemap",
-          "https://www.joshfinnie.com/notes/my-global-claude-md/": "sitemap",
-          "https://www.joshfinnie.com/notes/pinning-a-dependency-major-version/": "sitemap",
-          "https://www.joshfinnie.com/notes/pnpm-overrides-for-transitive-deps/": "sitemap",
-          "https://www.joshfinnie.com/notes/scheduling-astro-blog-posts/": "sitemap",
-          "https://www.joshfinnie.com/notes/tags/ai/": "sitemap",
-          "https://www.joshfinnie.com/notes/tags/astro/": "sitemap",
-          "https://www.joshfinnie.com/notes/tags/claude-code/": "sitemap",
-          "https://www.joshfinnie.com/notes/tags/cli/": "sitemap",
-          "https://www.joshfinnie.com/notes/tags/debugging/": "sitemap",
-          "https://www.joshfinnie.com/notes/tags/git/": "sitemap",
-          "https://www.joshfinnie.com/notes/tags/linux/": "sitemap",
-          "https://www.joshfinnie.com/notes/tags/pnpm/": "sitemap",
-          "https://www.joshfinnie.com/notes/tags/postgres/": "sitemap",
-          "https://www.joshfinnie.com/notes/tags/tooling/": "sitemap",
-          "https://www.joshfinnie.com/notes/tags/typescript/": "sitemap",
-          "https://www.joshfinnie.com/notes/tags/vite/": "sitemap",
-          "https://www.joshfinnie.com/notes/vite-server-app-js-error/": "sitemap",
-          "https://www.joshfinnie.com/notes/whats-on-that-port/": "sitemap",
-          "https://www.joshfinnie.com/projects/beerledge/": "sitemap",
-          "https://www.joshfinnie.com/projects/bookledge/": "sitemap",
-          "https://www.joshfinnie.com/projects/cubecorbra/": "sitemap",
-          "https://www.joshfinnie.com/projects/diffai/": "sitemap",
-          "https://www.joshfinnie.com/projects/hoitmc/": "sitemap",
-          "https://www.joshfinnie.com/projects/pbsorg/": "sitemap",
-          "https://www.joshfinnie.com/projects/picskyapp/": "sitemap",
-          "https://www.joshfinnie.com/projects/pushfile/": "sitemap",
-          "https://www.joshfinnie.com/projects/tikicompass/": "sitemap",
-          "https://www.joshfinnie.com/series/": "sitemap",
-          "https://www.joshfinnie.com/series/django-bootcamp/": "sitemap",
-          "https://www.joshfinnie.com/series/full-stack-rust/": "sitemap",
-          "https://www.joshfinnie.com/series/pokemon-api/": "sitemap",
-          "https://www.joshfinnie.com/series/pokemon-api/app-state/": "sitemap",
-          "https://www.joshfinnie.com/series/pokemon-api/config/": "sitemap",
-          "https://www.joshfinnie.com/series/pokemon-api/database-pool/": "sitemap",
-          "https://www.joshfinnie.com/series/pokemon-api/docker-production/": "sitemap",
-          "https://www.joshfinnie.com/series/pokemon-api/error-handling/": "sitemap",
-          "https://www.joshfinnie.com/series/pokemon-api/handlers/": "sitemap",
-          "https://www.joshfinnie.com/series/pokemon-api/health-checks/": "sitemap",
-          "https://www.joshfinnie.com/series/pokemon-api/middleware/": "sitemap",
-          "https://www.joshfinnie.com/series/pokemon-api/observability/": "sitemap",
-          "https://www.joshfinnie.com/series/pokemon-api/openapi/": "sitemap",
-          "https://www.joshfinnie.com/series/pokemon-api/project-setup/": "sitemap",
-          "https://www.joshfinnie.com/series/pokemon-api/repository/": "sitemap",
-          "https://www.joshfinnie.com/series/pokemon-api/server/": "sitemap",
-          "https://www.joshfinnie.com/series/pokemon-api/service-logic/": "sitemap",
-          "https://www.joshfinnie.com/series/react-tutorial/": "sitemap",
-          "https://www.joshfinnie.com/tags/2025/": "sitemap",
-          "https://www.joshfinnie.com/tags/advent-of-code/": "sitemap",
-          "https://www.joshfinnie.com/tags/ai/": "sitemap",
-          "https://www.joshfinnie.com/tags/AI/": "sitemap",
-          "https://www.joshfinnie.com/tags/albums/": "sitemap",
-          "https://www.joshfinnie.com/tags/analysis/": "sitemap",
-          "https://www.joshfinnie.com/tags/angular.js/": "sitemap",
-          "https://www.joshfinnie.com/tags/announcement/": "sitemap",
-          "https://www.joshfinnie.com/tags/architecture/": "sitemap",
-          "https://www.joshfinnie.com/tags/artificial%20intelligence/": "sitemap",
-          "https://www.joshfinnie.com/tags/asdf/": "sitemap",
-          "https://www.joshfinnie.com/tags/AST/": "sitemap",
-          "https://www.joshfinnie.com/tags/astro.js/": "sitemap",
-          "https://www.joshfinnie.com/tags/astro/": "sitemap",
-          "https://www.joshfinnie.com/tags/atproto/": "sitemap",
-          "https://www.joshfinnie.com/tags/Automation%20Skepticism/": "sitemap",
-          "https://www.joshfinnie.com/tags/aws/": "sitemap",
-          "https://www.joshfinnie.com/tags/AWS/": "sitemap",
-          "https://www.joshfinnie.com/tags/axum/": "sitemap",
-          "https://www.joshfinnie.com/tags/backend/": "sitemap",
-          "https://www.joshfinnie.com/tags/best-practices/": "sitemap",
-          "https://www.joshfinnie.com/tags/betterment/": "sitemap",
-          "https://www.joshfinnie.com/tags/blog/": "sitemap",
-          "https://www.joshfinnie.com/tags/blogging/": "sitemap",
-          "https://www.joshfinnie.com/tags/bluesky/": "sitemap",
-          "https://www.joshfinnie.com/tags/book-review/": "sitemap",
-          "https://www.joshfinnie.com/tags/books/": "sitemap",
-          "https://www.joshfinnie.com/tags/bootstrap/": "sitemap",
-          "https://www.joshfinnie.com/tags/bower/": "sitemap",
-          "https://www.joshfinnie.com/tags/browsers/": "sitemap",
-          "https://www.joshfinnie.com/tags/career/": "sitemap",
-          "https://www.joshfinnie.com/tags/challenges/": "sitemap",
-          "https://www.joshfinnie.com/tags/Chrome/": "sitemap",
-          "https://www.joshfinnie.com/tags/claude/": "sitemap",
-          "https://www.joshfinnie.com/tags/cli/": "sitemap",
-          "https://www.joshfinnie.com/tags/cloudfront/": "sitemap",
-          "https://www.joshfinnie.com/tags/CMS/": "sitemap",
-          "https://www.joshfinnie.com/tags/code-review/": "sitemap",
-          "https://www.joshfinnie.com/tags/coding/": "sitemap",
-          "https://www.joshfinnie.com/tags/coffee/": "sitemap",
-          "https://www.joshfinnie.com/tags/command-line/": "sitemap",
-          "https://www.joshfinnie.com/tags/command%20line/": "sitemap",
-          "https://www.joshfinnie.com/tags/content%20creation/": "sitemap",
-          "https://www.joshfinnie.com/tags/CSS/": "sitemap",
-          "https://www.joshfinnie.com/tags/Data%20Structure/": "sitemap",
-          "https://www.joshfinnie.com/tags/debugging/": "sitemap",
-          "https://www.joshfinnie.com/tags/deep-dive/": "sitemap",
-          "https://www.joshfinnie.com/tags/defaults/": "sitemap",
-          "https://www.joshfinnie.com/tags/deployment/": "sitemap",
-          "https://www.joshfinnie.com/tags/design/": "sitemap",
-          "https://www.joshfinnie.com/tags/diy/": "sitemap",
-          "https://www.joshfinnie.com/tags/django/": "sitemap",
-          "https://www.joshfinnie.com/tags/docker/": "sitemap",
-          "https://www.joshfinnie.com/tags/Document%20Processing/": "sitemap",
-          "https://www.joshfinnie.com/tags/documentation/": "sitemap",
-          "https://www.joshfinnie.com/tags/domains/": "sitemap",
-          "https://www.joshfinnie.com/tags/doom/": "sitemap",
-          "https://www.joshfinnie.com/tags/dotfiles/": "sitemap",
-          "https://www.joshfinnie.com/tags/e-reader/": "sitemap",
-          "https://www.joshfinnie.com/tags/economics/": "sitemap",
-          "https://www.joshfinnie.com/tags/email/": "sitemap",
-          "https://www.joshfinnie.com/tags/emails/": "sitemap",
-          "https://www.joshfinnie.com/tags/ethics/": "sitemap",
-          "https://www.joshfinnie.com/tags/experimental/": "sitemap",
-          "https://www.joshfinnie.com/tags/express.js/": "sitemap",
-          "https://www.joshfinnie.com/tags/extensions/": "sitemap",
-          "https://www.joshfinnie.com/tags/FastAPI/": "sitemap",
-          "https://www.joshfinnie.com/tags/firmware/": "sitemap",
-          "https://www.joshfinnie.com/tags/fish%20shell/": "sitemap",
-          "https://www.joshfinnie.com/tags/flask/": "sitemap",
-          "https://www.joshfinnie.com/tags/flat%20flog/": "sitemap",
-          "https://www.joshfinnie.com/tags/follow-up/": "sitemap",
-          "https://www.joshfinnie.com/tags/fonts/": "sitemap",
-          "https://www.joshfinnie.com/tags/full-stack/": "sitemap",
-          "https://www.joshfinnie.com/tags/Future%20of%20Work/": "sitemap",
-          "https://www.joshfinnie.com/tags/gatsby/": "sitemap",
-          "https://www.joshfinnie.com/tags/go/": "sitemap",
-          "https://www.joshfinnie.com/tags/hack/": "sitemap",
-          "https://www.joshfinnie.com/tags/hacking/": "sitemap",
-          "https://www.joshfinnie.com/tags/hacktoberfest/": "sitemap",
-          "https://www.joshfinnie.com/tags/hardware/": "sitemap",
-          "https://www.joshfinnie.com/tags/heroku/": "sitemap",
-          "https://www.joshfinnie.com/tags/hosting/": "sitemap",
-          "https://www.joshfinnie.com/tags/how-to/": "sitemap",
-          "https://www.joshfinnie.com/tags/htmx/": "sitemap",
-          "https://www.joshfinnie.com/tags/IE/": "sitemap",
-          "https://www.joshfinnie.com/tags/indie-hacking/": "sitemap",
-          "https://www.joshfinnie.com/tags/indieweb/": "sitemap",
-          "https://www.joshfinnie.com/tags/iTerm2/": "sitemap",
-          "https://www.joshfinnie.com/tags/jade/": "sitemap",
-          "https://www.joshfinnie.com/tags/javascript/": "sitemap",
-          "https://www.joshfinnie.com/tags/JavaScript/": "sitemap",
-          "https://www.joshfinnie.com/tags/jekyll/": "sitemap",
-          "https://www.joshfinnie.com/tags/job-search/": "sitemap",
-          "https://www.joshfinnie.com/tags/jobs/": "sitemap",
-          "https://www.joshfinnie.com/tags/json-ld/": "sitemap",
-          "https://www.joshfinnie.com/tags/latex/": "sitemap",
-          "https://www.joshfinnie.com/tags/learning/": "sitemap",
-          "https://www.joshfinnie.com/tags/leftist/": "sitemap",
-          "https://www.joshfinnie.com/tags/lesson/": "sitemap",
-          "https://www.joshfinnie.com/tags/lets%20encrypt/": "sitemap",
-          "https://www.joshfinnie.com/tags/libraries/": "sitemap",
-          "https://www.joshfinnie.com/tags/lifestyle/": "sitemap",
-          "https://www.joshfinnie.com/tags/linux/": "sitemap",
-          "https://www.joshfinnie.com/tags/markdown/": "sitemap",
-          "https://www.joshfinnie.com/tags/marxism/": "sitemap",
-          "https://www.joshfinnie.com/tags/mastodon/": "sitemap",
-          "https://www.joshfinnie.com/tags/mdx/": "sitemap",
-          "https://www.joshfinnie.com/tags/mezzanine/": "sitemap",
-          "https://www.joshfinnie.com/tags/micro-saas/": "sitemap",
-          "https://www.joshfinnie.com/tags/mobile/": "sitemap",
-          "https://www.joshfinnie.com/tags/music/": "sitemap",
-          "https://www.joshfinnie.com/tags/news/": "sitemap",
-          "https://www.joshfinnie.com/tags/nextjs/": "sitemap",
-          "https://www.joshfinnie.com/tags/node.js/": "sitemap",
-          "https://www.joshfinnie.com/tags/nodeschool/": "sitemap",
-          "https://www.joshfinnie.com/tags/non-tech/": "sitemap",
-          "https://www.joshfinnie.com/tags/open-source/": "sitemap",
-          "https://www.joshfinnie.com/tags/opinion/": "sitemap",
-          "https://www.joshfinnie.com/tags/OS%20X/": "sitemap",
-          "https://www.joshfinnie.com/tags/paper/": "sitemap",
-          "https://www.joshfinnie.com/tags/politics/": "sitemap",
-          "https://www.joshfinnie.com/tags/postgresql/": "sitemap",
-          "https://www.joshfinnie.com/tags/productivity/": "sitemap",
-          "https://www.joshfinnie.com/tags/programming/": "sitemap",
-          "https://www.joshfinnie.com/tags/projects/": "sitemap",
-          "https://www.joshfinnie.com/tags/properties/": "sitemap",
-          "https://www.joshfinnie.com/tags/public%20transportation/": "sitemap",
-          "https://www.joshfinnie.com/tags/pygments/": "sitemap",
-          "https://www.joshfinnie.com/tags/python/": "sitemap",
-          "https://www.joshfinnie.com/tags/Python/": "sitemap",
-          "https://www.joshfinnie.com/tags/qr-code/": "sitemap",
-          "https://www.joshfinnie.com/tags/rant/": "sitemap",
-          "https://www.joshfinnie.com/tags/ratatui/": "sitemap",
-          "https://www.joshfinnie.com/tags/react.js/": "sitemap",
-          "https://www.joshfinnie.com/tags/react/": "sitemap",
-          "https://www.joshfinnie.com/tags/React/": "sitemap",
-          "https://www.joshfinnie.com/tags/reading/": "sitemap",
-          "https://www.joshfinnie.com/tags/recruiters/": "sitemap",
-          "https://www.joshfinnie.com/tags/refactor/": "sitemap",
-          "https://www.joshfinnie.com/tags/resolutions/": "sitemap",
-          "https://www.joshfinnie.com/tags/rest/": "sitemap",
-          "https://www.joshfinnie.com/tags/Resume%20Parsing/": "sitemap",
-          "https://www.joshfinnie.com/tags/review/": "sitemap",
-          "https://www.joshfinnie.com/tags/rust/": "sitemap",
-          "https://www.joshfinnie.com/tags/s3/": "sitemap",
-          "https://www.joshfinnie.com/tags/saas/": "sitemap",
-          "https://www.joshfinnie.com/tags/security/": "sitemap",
-          "https://www.joshfinnie.com/tags/self-help/": "sitemap",
-          "https://www.joshfinnie.com/tags/SEO/": "sitemap",
-          "https://www.joshfinnie.com/tags/setup/": "sitemap",
-          "https://www.joshfinnie.com/tags/side-projects/": "sitemap",
-          "https://www.joshfinnie.com/tags/social-media/": "sitemap",
-          "https://www.joshfinnie.com/tags/ssl/": "sitemap",
-          "https://www.joshfinnie.com/tags/starship/": "sitemap",
-          "https://www.joshfinnie.com/tags/static%20blogging/": "sitemap",
-          "https://www.joshfinnie.com/tags/stripe/": "sitemap",
-          "https://www.joshfinnie.com/tags/support/": "sitemap",
-          "https://www.joshfinnie.com/tags/terminal/": "sitemap",
-          "https://www.joshfinnie.com/tags/threads/": "sitemap",
-          "https://www.joshfinnie.com/tags/tip/": "sitemap",
-          "https://www.joshfinnie.com/tags/tmux/": "sitemap",
-          "https://www.joshfinnie.com/tags/tooling/": "sitemap",
-          "https://www.joshfinnie.com/tags/tools/": "sitemap",
-          "https://www.joshfinnie.com/tags/tui/": "sitemap",
-          "https://www.joshfinnie.com/tags/tutorial/": "sitemap",
-          "https://www.joshfinnie.com/tags/twitter/": "sitemap",
-          "https://www.joshfinnie.com/tags/update/": "sitemap",
-          "https://www.joshfinnie.com/tags/ux/": "sitemap",
-          "https://www.joshfinnie.com/tags/vcard/": "sitemap",
-          "https://www.joshfinnie.com/tags/vite/": "sitemap",
-          "https://www.joshfinnie.com/tags/wasm/": "sitemap",
-          "https://www.joshfinnie.com/tags/web-development/": "sitemap",
-          "https://www.joshfinnie.com/tags/web%20design/": "sitemap",
-          "https://www.joshfinnie.com/tags/web3/": "sitemap",
-          "https://www.joshfinnie.com/tags/windows/": "sitemap",
-          "https://www.joshfinnie.com/tags/wordpress/": "sitemap",
-          "https://www.joshfinnie.com/tags/wsl/": "sitemap",
-          "https://www.joshfinnie.com/tags/wtf/": "sitemap",
-          "https://www.joshfinnie.com/tags/yew/": "sitemap",
-          "https://www.joshfinnie.com/tags/zellij/": "sitemap",
-          "https://www.joshfinnie.com/talks/": "sitemap",
-          "https://www.joshfinnie.com/weird-lit/": "sitemap",
           "https://www.joshfinnie.com/style/": "blind-probe",
           "https://www.joshfinnie.com/top4/": "blind-probe",
           "https://www.joshfinnie.com/topfour/": "blind-probe",
@@ -26297,58 +26602,268 @@
           "https://www.joshfinnie.com/class/": "blind-probe",
           "https://www.joshfinnie.com/courses/": "blind-probe",
           "https://www.joshfinnie.com/course/": "blind-probe",
+          "https://www.joshfinnie.com/notes/tags/linux/": "content-index",
+          "https://www.joshfinnie.com/notes/tags/cli/": "content-index",
+          "https://www.joshfinnie.com/notes/whats-on-that-port/": "content-index",
+          "https://www.joshfinnie.com/notes/tags/claude-code/": "content-index",
+          "https://www.joshfinnie.com/notes/tags/ai/": "content-index",
+          "https://www.joshfinnie.com/notes/my-global-claude-md/": "content-index",
+          "https://www.joshfinnie.com/notes/tags/git/": "content-index",
+          "https://www.joshfinnie.com/notes/git-restore-a-deleted-file/": "content-index",
+          "https://www.joshfinnie.com/notes/tags/vite/": "content-index",
+          "https://www.joshfinnie.com/notes/vite-server-app-js-error/": "content-index",
+          "https://www.joshfinnie.com/notes/scheduling-astro-blog-posts/": "content-index",
+          "https://www.joshfinnie.com/notes/pnpm-overrides-for-transitive-deps/": "content-index",
+          "https://www.joshfinnie.com/notes/tags/tooling/": "content-index",
+          "https://www.joshfinnie.com/notes/tags/pnpm/": "content-index",
+          "https://www.joshfinnie.com/notes/pinning-a-dependency-major-version/": "content-index",
+          "https://www.joshfinnie.com/notes/tags/astro/": "content-index",
+          "https://www.joshfinnie.com/notes/tags/typescript/": "content-index",
+          "https://www.joshfinnie.com/notes/hand-written-types-vs-inferred-types/": "content-index",
+          "https://www.joshfinnie.com/notes/tags/debugging/": "content-index",
+          "https://www.joshfinnie.com/notes/tags/postgres/": "content-index",
+          "https://www.joshfinnie.com/notes/gate-ssl-on-host-not-node-env/": "content-index",
           "https://www.joshfinnie.com/assets/docs/resume.pdf": "content-index",
+          "https://www.joshfinnie.com/tags/zellij/": "content-index",
+          "https://www.joshfinnie.com/tags/tmux/": "content-index",
+          "https://www.joshfinnie.com/tags/terminal/": "content-index",
+          "https://www.joshfinnie.com/tags/astro/": "content-index",
+          "https://www.joshfinnie.com/tags/json-ld/": "content-index",
+          "https://www.joshfinnie.com/tags/SEO/": "content-index",
+          "https://www.joshfinnie.com/tags/docker/": "content-index",
+          "https://www.joshfinnie.com/tags/axum/": "content-index",
+          "https://www.joshfinnie.com/tags/rust/": "content-index",
+          "https://www.joshfinnie.com/tags/career/": "content-index",
+          "https://www.joshfinnie.com/tags/programming/": "content-index",
+          "https://www.joshfinnie.com/tags/ai/": "content-index",
+          "https://www.joshfinnie.com/tags/challenges/": "content-index",
+          "https://www.joshfinnie.com/tags/indie-hacking/": "content-index",
+          "https://www.joshfinnie.com/tags/side-projects/": "content-index",
+          "https://www.joshfinnie.com/tags/micro-saas/": "content-index",
+          "https://www.joshfinnie.com/series/": "content-index",
+          "https://www.joshfinnie.com/projects/beerledge/": "content-index",
+          "https://www.joshfinnie.com/projects/hoitmc/": "content-index",
+          "https://www.joshfinnie.com/projects/pushfile/": "content-index",
+          "https://www.joshfinnie.com/projects/pbsorg/": "content-index",
+          "https://www.joshfinnie.com/projects/cubecorbra/": "content-index",
+          "https://www.joshfinnie.com/projects/tikicompass/": "content-index",
+          "https://www.joshfinnie.com/projects/picskyapp/": "content-index",
+          "https://www.joshfinnie.com/projects/diffai/": "content-index",
+          "https://www.joshfinnie.com/projects/bookledge/": "content-index",
+          "https://www.joshfinnie.com/tags/tutorial/": "topic-hub",
+          "https://www.joshfinnie.com/tags/python/": "topic-hub",
+          "https://www.joshfinnie.com/tags/javascript/": "topic-hub",
+          "https://www.joshfinnie.com/tags/update/": "topic-hub",
+          "https://www.joshfinnie.com/tags/news/": "topic-hub",
+          "https://www.joshfinnie.com/tags/node.js/": "topic-hub",
+          "https://www.joshfinnie.com/tags/review/": "topic-hub",
+          "https://www.joshfinnie.com/tags/open-source/": "topic-hub",
+          "https://www.joshfinnie.com/tags/web-development/": "topic-hub",
+          "https://www.joshfinnie.com/tags/react.js/": "topic-hub",
+          "https://www.joshfinnie.com/tags/full-stack/": "topic-hub",
+          "https://www.joshfinnie.com/tags/express.js/": "topic-hub",
+          "https://www.joshfinnie.com/tags/tooling/": "topic-hub",
+          "https://www.joshfinnie.com/tags/django/": "topic-hub",
+          "https://www.joshfinnie.com/tags/resolutions/": "topic-hub",
+          "https://www.joshfinnie.com/tags/betterment/": "topic-hub",
+          "https://www.joshfinnie.com/tags/best-practices/": "topic-hub",
+          "https://www.joshfinnie.com/tags/AI/": "topic-hub",
+          "https://www.joshfinnie.com/tags/astro.js/": "topic-hub",
+          "https://www.joshfinnie.com/tags/coding/": "topic-hub",
+          "https://www.joshfinnie.com/tags/refactor/": "topic-hub",
+          "https://www.joshfinnie.com/tags/ux/": "topic-hub",
+          "https://www.joshfinnie.com/tags/politics/": "topic-hub",
+          "https://www.joshfinnie.com/tags/music/": "topic-hub",
+          "https://www.joshfinnie.com/tags/blogging/": "topic-hub",
+          "https://www.joshfinnie.com/tags/recruiters/": "topic-hub",
+          "https://www.joshfinnie.com/tags/announcement/": "topic-hub",
+          "https://www.joshfinnie.com/tags/markdown/": "topic-hub",
+          "https://www.joshfinnie.com/tags/OS%20X/": "topic-hub",
+          "https://www.joshfinnie.com/tags/stripe/": "topic-hub",
           "https://www.joshfinnie.com/blog/moving-from-oh-my-zsh-to-starship-and-fish-shell": "content-index",
-          "https://www.joshfinnie.com/%60https://hardcover.app/books/$%7Bbook?.slug}`": "budget-exhausted",
           "https://www.joshfinnie.com/rss.xml": "budget-exhausted",
-          "https://www.joshfinnie.com/blog/the-october-micro-saas-challenge": "budget-exhausted",
-          "https://www.joshfinnie.com/projects/diffai": "budget-exhausted",
-          "https://www.joshfinnie.com/blog/full-stack-rust-part-5/%7B": "budget-exhausted",
-          "https://www.joshfinnie.com/blog/django-authentication-and-deployment/%22%7B%": "budget-exhausted",
-          "https://www.joshfinnie.com/blog/django-views-and-templates/%22%7B%": "budget-exhausted",
-          "https://www.joshfinnie.com/blog/django-views-and-templates/%22%7B%7B": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/marxism/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/AST/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/Document%20Processing/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/Resume%20Parsing/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/Data%20Structure/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/debugging/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/tip/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/command%20line/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/Python/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/JavaScript/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/FastAPI/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/React/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/artificial%20intelligence/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/ethics/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/paper/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/content%20creation/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/social-media/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/hacking/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/htmx/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/deep-dive/": "budget-exhausted",
           "https://www.joshfinnie.com/blosg/moving-from-oh-my-zsh-to-starship-and-fish-shell/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/vcard/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/qr-code/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/threads/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/mastodon/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/command-line/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/follow-up/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/experimental/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/mdx/": "budget-exhausted",
           "https://www.joshfinnie.com/blog/astro-experimental-image-and-mdx-update/%7B%60/blog/$%7Bpost.slug%7D/%60%7D": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/jobs/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/blog/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/vite/": "budget-exhausted",
           "https://www.joshfinnie.com/blog/follow-up-a-command-line-application-in-rust": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/advent-of-code/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/learning/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/twitter/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/Chrome/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/extensions/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/setup/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/flask/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/rest/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/fish%20shell/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/starship/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/web3/": "budget-exhausted",
           "https://www.joshfinnie.com/blog/latex-through-docker": "budget-exhausted",
           "https://www.joshfinnie.com/blog/basic-python-dockerfile": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/books/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/book-review/": "budget-exhausted",
           "https://www.joshfinnie.com/blog/book-review-the-12-week-year": "budget-exhausted",
           "https://www.joshfinnie.com/blog/one-year": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/mobile/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/analysis/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/web%20design/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/lesson/": "budget-exhausted",
           "https://www.joshfinnie.com/blog/setting_up_wsl_with_asdf/": "budget-exhausted",
           "https://www.joshfinnie.com/blog/quick_ux_no-no/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/asdf/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/windows/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/wsl/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/linux/": "budget-exhausted",
           "https://www.joshfinnie.com/blog/basic-python-dockerfile/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/react/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/wasm/": "budget-exhausted",
           "https://www.joshfinnie.com/blog/my-2020-react-startup-process": "budget-exhausted",
           "https://www.joshfinnie.com/blog/joshfinniecom_part_5/": "budget-exhausted",
           "https://www.joshfinnie.com/tags": "budget-exhausted",
           "https://www.joshfinnie.com/blog/my-switch-from-gatsby-to-astro/%7B%60/tags/$%7Btag[0]%7D%60%7D%7F": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/self-help/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/non-tech/": "budget-exhausted",
           "https://www.joshfinnie.com/blog/upgrading-gatsby-to-mdx/%7Bresume%7D": "budget-exhausted",
           "https://www.joshfinnie.com/blog/upgrading-gatsby-to-mdx/%7BfinalUrl%7D": "budget-exhausted",
           "https://www.joshfinnie.com/blog/upgrading-gatsby-to-mdx/%22https://unsplash.com%22": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/gatsby/": "budget-exhausted",
           "https://www.joshfinnie.com/blog/upgrading-gatsby-to-use-mdx/%7Bresume%7D": "budget-exhausted",
           "https://www.joshfinnie.com/blog/upgrading-gatsby-to-use-mdx/%7BfinalUrl%7D": "budget-exhausted",
           "https://www.joshfinnie.com/blog/upgrading-gatsby-to-use-mdx/%22https://unsplash.com%22": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/hacktoberfest/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/latex/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/productivity/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/projects/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/code-review/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/ssl/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/s3/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/cloudfront/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/lets%20encrypt/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/coffee/": "budget-exhausted",
+          "https://www.joshfinnie.com/series/react-tutorial/": "budget-exhausted",
           "https://www.joshfinnie.com/blog/reactjs-tutorial-part-3/%22": "budget-exhausted",
+          "https://www.joshfinnie.com/talks/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/wtf/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/emails/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/nodeschool/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/bower/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/how-to/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/jade/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/hack/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/security/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/pygments/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/iTerm2/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/properties/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/defaults/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/postgresql/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/fonts/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/libraries/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/CSS/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/design/": "budget-exhausted",
           "https://www.joshfinnie.com/blog/font-awesome-is-awesome/%22https://twitter.com/joshfinnie%22": "budget-exhausted",
           "https://www.joshfinnie.com/blog/font-awesome-is-awesome/%22https://github.com/joshfinnie%22": "budget-exhausted",
           "https://www.joshfinnie.com/blog/font-awesome-is-awesome/%22https://linkedin.com/in/joshfinnie%22": "budget-exhausted",
           "https://www.joshfinnie.com/blog/font-awesome-is-awesome/%22https://instagram.com/joshfinnie%22": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/static%20blogging/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/flat%20flog/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/AWS/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/angular.js/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/mezzanine/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/CMS/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/heroku/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/bootstrap/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/lifestyle/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/jekyll/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/IE/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/browsers/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/support/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/public%20transportation/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/rant/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/domains/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/hosting/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/wordpress/": "budget-exhausted",
           "https://www.joshfinnie.com/notes/rss.xml": "budget-exhausted",
-          "https://www.joshfinnie.com/leftist/rss.xml": "budget-exhausted",
-          "https://www.joshfinnie.com/tags/data-centers/": "budget-exhausted",
-          "https://www.joshfinnie.com/tags/infrastructure/": "budget-exhausted",
-          "https://www.joshfinnie.com/tags/broadband/": "budget-exhausted",
-          "https://www.joshfinnie.com/tags/immigration/": "budget-exhausted",
-          "https://www.joshfinnie.com/tags/civics/": "budget-exhausted",
-          "https://www.joshfinnie.com/tags/education/": "budget-exhausted",
-          "https://www.joshfinnie.com/tags/class/": "budget-exhausted",
-          "https://www.joshfinnie.com/tags/labor/": "budget-exhausted",
-          "https://www.joshfinnie.com/tags/unions/": "budget-exhausted",
-          "https://www.joshfinnie.com/tags/gaming/": "budget-exhausted",
-          "https://www.joshfinnie.com/tags/climate/": "budget-exhausted",
-          "https://www.joshfinnie.com/tags/policy/": "budget-exhausted"
+          "https://www.joshfinnie.com/tags/deployment/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/opinion/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/2025/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/nextjs/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/dotfiles/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/atproto/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/bluesky/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/indieweb/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/hardware/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/e-reader/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/firmware/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/reading/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/diy/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/tools/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/cli/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/claude/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/go/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/saas/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/architecture/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/backend/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/yew/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/ratatui/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/tui/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/doom/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/economics/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/leftist/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/job-search/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/documentation/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/aws/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/email/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/albums/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/Future%20of%20Work/": "budget-exhausted",
+          "https://www.joshfinnie.com/tags/Automation%20Skepticism/": "budget-exhausted",
+          "https://www.joshfinnie.com/series/pokemon-api/": "budget-exhausted",
+          "https://www.joshfinnie.com/series/full-stack-rust/": "budget-exhausted",
+          "https://www.joshfinnie.com/series/django-bootcamp/": "budget-exhausted",
+          "https://www.joshfinnie.com/series/pokemon-api/config/": "budget-exhausted",
+          "https://www.joshfinnie.com/series/pokemon-api/server/": "budget-exhausted",
+          "https://www.joshfinnie.com/series/pokemon-api/health-checks/": "budget-exhausted",
+          "https://www.joshfinnie.com/series/pokemon-api/middleware/": "budget-exhausted",
+          "https://www.joshfinnie.com/series/pokemon-api/database-pool/": "budget-exhausted",
+          "https://www.joshfinnie.com/series/pokemon-api/app-state/": "budget-exhausted",
+          "https://www.joshfinnie.com/series/pokemon-api/repository/": "budget-exhausted",
+          "https://www.joshfinnie.com/series/pokemon-api/service-logic/": "budget-exhausted",
+          "https://www.joshfinnie.com/series/pokemon-api/handlers/": "budget-exhausted",
+          "https://www.joshfinnie.com/series/pokemon-api/openapi/": "budget-exhausted",
+          "https://www.joshfinnie.com/series/pokemon-api/error-handling/": "budget-exhausted",
+          "https://www.joshfinnie.com/series/pokemon-api/docker-production/": "budget-exhausted",
+          "https://www.joshfinnie.com/series/pokemon-api/observability/": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-03T15:38:07.216Z",
+      "crawled_at": "2026-11-03T16:34:11.848Z",
       "portfolio": {
         "url": "https://www.joshfinnie.com/projects/",
         "work_count": 9,
@@ -26581,7 +27096,7 @@
         "title": "Work — Joshua Baker",
         "summary": "Selected case studies by Joshua Baker, plus the full archive — 140+ projects across two decades of design and engineering.",
         "published_at": "",
-        "observed_at": "2026-11-03T15:38:07.216Z",
+        "observed_at": "2026-11-03T16:34:11.848Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -26850,7 +27365,7 @@
           "https://www.joshuabaker.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-03T15:38:07.216Z",
+      "crawled_at": "2026-11-03T16:34:11.848Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,
@@ -27350,7 +27865,7 @@
           "https://www.joshvickerson.com/posts/page/1/": "content-index"
         }
       },
-      "crawled_at": "2026-11-03T15:38:07.216Z"
+      "crawled_at": "2026-11-03T16:34:11.848Z"
     }
   ]
 }
