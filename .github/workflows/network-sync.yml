@@ -100,6 +100,15 @@ jobs:
         if: steps.preflight.outputs.needs_sync == 'true'
         run: npm run test:browser
 
+      - name: Restore HTTP fetch cache
+        if: steps.preflight.outputs.needs_sync == 'true'
+        uses: actions/cache@v4
+        with:
+          path: .tmp/http-cache
+          key: nlp-http-cache-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            nlp-http-cache-${{ runner.os }}-
+
       - name: Update generated network data
         if: steps.preflight.outputs.needs_sync == 'true'
         env:

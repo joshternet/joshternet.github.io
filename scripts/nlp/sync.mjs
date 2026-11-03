@@ -7,6 +7,7 @@
  * Publishes connections/signals/content before work screenshots so a hung
  * Playwright capture cannot strand a finished crawl with stale edges.
  * Merges `_data/homepage_connections.json` from network:sync.
+ * Prunes writing older than 30 days before gather; display stays 14 days.
  * Does not commit. Semantic hash skips timestamp-only churn when unchanged.
  */
 
@@ -46,6 +47,18 @@ import {
   joinContentWithPageSignals,
   mergeContentItems,
 } from "./content.mjs";
+import {
+  CONTENT_CACHE_DAYS,
+  isContentCacheEligible,
+  mergeGatheredContent,
+  pruneContentItems,
+} from "./content-retention.mjs";
+import {
+  openFetchCache,
+  pruneFetchCache,
+  saveFetchCache,
+} from "./fetch-cache.mjs";
+import { decideOriginShortCircuit } from "./origin-short-circuit.mjs";
 import { channelItemsFromNetwork } from "../views/lib.mjs";
 import { captureMissingWorkScreenshots } from "../views/work-screenshots.mjs";
 import { buildChannelPublishByUrl } from "./channel-publish.mjs";
@@ -142,7 +155,16 @@ async function main() {
     "communities",
   );
   const previousManifest = await readJSONIfExists(MANIFEST_PATH, null);
+  const previousContentItems = itemsFromCollection(
+    await readJSONIfExists(CONTENT_PATH, {}),
+    "items",
+  );
   const now = new Date().toISOString();
+  const { kept: prunedContentBase, prunedCount: contentPrunedBeforeGather } =
+    pruneContentItems(previousContentItems, now);
+  process.stdout.write(
+    `nlp content prune: dropped ${contentPrunedBeforeGather} aged writing; retained ${prunedContentBase.length} (cache ${CONTENT_CACHE_DAYS}d + durable creative)\n`,
+  );
 
   if (!Array.isArray(network) || network.length === 0) {
     process.stderr.write(
@@ -200,6 +222,11 @@ async function main() {
   }
 
   const dnsCache = new Map();
+  const httpCache = await openFetchCache();
+  const fetchCacheEvicted = pruneFetchCache(httpCache, now);
+  process.stdout.write(
+    `nlp fetch-cache: ${httpCache.entries.size} entries after prune (evicted ${fetchCacheEvicted})\n`,
+  );
   const robotsGate = createOriginRobotsGate({ cache: dnsCache });
   const participantOrigins = new Set(
     network
@@ -219,6 +246,11 @@ async function main() {
   const contentDrafts = [];
   /** @type {Array<{ url?: string, html?: string }>} */
   const pagesForPublishedAt = [];
+  /** @type {Set<string>} */
+  const failedOrigins = new Set();
+  /** @type {Set<string>} */
+  const shortCircuitedOrigins = new Set();
+  let shortCircuitCount = 0;
 
   for (const participant of network) {
     if (!participant || typeof participant.origin !== "string") {
@@ -233,6 +265,7 @@ async function main() {
       const feedData = await subjectsFromFeeds(feeds, dnsCache, {
         observedAt: now,
         robotsGate,
+        httpCache,
       });
       const aboutUrls = [
         ...(Array.isArray(participant.aboutPageHrefs)
@@ -244,11 +277,38 @@ async function main() {
           ? [participant.aboutPageHref]
           : []),
       ];
-      const crawled = await crawlOrigin(origin, {
+      const shortDecision = await decideOriginShortCircuit({
+        origin,
+        feedsFetched: feedData.fetchedCount,
+        feedsUnchanged: feedData.allUnchanged,
         cache: dnsCache,
-        feedEntryUrls: feedData.entryUrls,
-        aboutUrls,
+        httpCache,
+        robotsGate,
       });
+      /** @type {Awaited<ReturnType<typeof crawlOrigin>>} */
+      let crawled;
+
+      if (shortDecision.shortCircuit) {
+        shortCircuitedOrigins.add(origin);
+        shortCircuitCount += 1;
+        process.stdout.write(
+          `nlp short-circuit ${origin}: feeds+sitemap unchanged; skipping deep crawl\n`,
+        );
+        crawled = {
+          origin,
+          pages: [],
+          outbound_links: [],
+          html_subjects: [],
+          selection_reasons: { [origin]: "short-circuit-unchanged" },
+        };
+      } else {
+        crawled = await crawlOrigin(origin, {
+          cache: dnsCache,
+          httpCache,
+          feedEntryUrls: feedData.entryUrls,
+          aboutUrls,
+        });
+      }
 
       /** @type {Array<Record<string, unknown>>} */
       const pageRecords = [];
@@ -422,6 +482,7 @@ async function main() {
         try {
           const fetched = await fetchPublicText(feed.url, {
             cache: dnsCache,
+            httpCache,
             // Large member RSS (Hugo full-content feeds) need more than the
             // default HTML crawl cap so scheduled syncs stay complete.
             maxBytes: 6_000_000,
@@ -549,6 +610,7 @@ async function main() {
       process.stderr.write(
         `nlp failed ${origin}: ${error instanceof Error ? error.message : error}\n`,
       );
+      failedOrigins.add(origin);
       originSignals.push(originFailureSignal(origin, now, error));
       originLinks.push({ origin, links: [] });
       communityOrigins.push({
@@ -562,7 +624,9 @@ async function main() {
   }
 
   enrichPublishedAtFromPages(contentDrafts, pagesForPublishedAt);
-  const draftItems = mergeContentItems(contentDrafts);
+  const draftItems = mergeContentItems(contentDrafts).filter((item) =>
+    isContentCacheEligible(item, now),
+  );
   const aliasesDoc = await readJSONIfExists(ALIASES_PATH, { aliases: [] });
   const catalog = networkCatalog(communityOrigins, draftItems);
   const matchedOrigins = applyCatalogMatches(
@@ -608,13 +672,23 @@ async function main() {
     signal.community_slugs = [...new Set([...declared, ...heuristic])].sort();
   }
 
-  const contentItems = joinContentWithPageSignals(draftItems, originSignals);
+  const gatheredItems = joinContentWithPageSignals(draftItems, originSignals);
   // Feed-sourced experiments/games often lack enclosures; pull og:image from
   // the publisher page so Showcase uses the site's existing posters in CI.
-  await enrichContentItemPosters(contentItems, {
+  await enrichContentItemPosters(gatheredItems, {
     cache: dnsCache,
     robotsGate,
   });
+  const contentMerge = mergeGatheredContent(prunedContentBase, gatheredItems, {
+    now,
+    failedOrigins,
+    reuseOrigins: shortCircuitedOrigins,
+  });
+  const contentItems = contentMerge.items;
+  process.stdout.write(
+    `nlp content merge: +${contentMerge.addedCount} ~${contentMerge.updatedCount} carry-forward ${contentMerge.carriedForwardCount}; short-circuit ${shortCircuitCount}; ${contentItems.length} items after ${CONTENT_CACHE_DAYS}d cache prune\n`,
+  );
+  await saveFetchCache(httpCache);
   // Named-root / off-origin shelf projects
   // often have no og:image or block plain fetch — capture a viewport poster.
   // Include YouTube/Vimeo/Twitch channel cards from Network elsewhere so

@@ -639,10 +639,11 @@ export function childSitemapUrls(xml, origin, limit = MAX_SITEMAP_FILES) {
  * @param {Map<string, unknown>} cache
  * @returns {Promise<string>}
  */
-export async function fetchRobotsTxt(origin, cache) {
+export async function fetchRobotsTxt(origin, cache, httpCache) {
   try {
     const fetched = await fetchPublicText(`${origin}/robots.txt`, {
       cache,
+      httpCache,
       accept: "text/plain,*/*;q=0.8",
     });
     return fetched.body;
@@ -659,7 +660,7 @@ export async function fetchRobotsTxt(origin, cache) {
  * @param {Map<string, unknown>} cache
  * @param {(url: string, reason?: string) => void} enqueueSeed
  * @param {string} robotsBody
- * @param {{ allows?: (href: string) => Promise<boolean> }} [gate]
+ * @param {{ allows?: (href: string) => Promise<boolean>, httpCache?: import("./fetch-cache.mjs").FetchCache }} [gate]
  * @returns {Promise<void>}
  */
 export async function seedUrlsFromSitemaps(
@@ -669,6 +670,7 @@ export async function seedUrlsFromSitemaps(
   robotsBody,
   gate,
 ) {
+  const httpCache = gate?.httpCache;
   const listed = sitemapUrlsFromRobots(robotsBody).map((href) => {
     try {
       return new URL(href, origin).href;
@@ -710,6 +712,7 @@ export async function seedUrlsFromSitemaps(
     try {
       const fetched = await fetchPublicText(sitemapUrl, {
         cache,
+        httpCache,
         accept: "application/xml,text/xml,*/*;q=0.8",
       });
       body = fetched.body;
@@ -740,11 +743,13 @@ export async function seedUrlsFromSitemaps(
  *   aboutUrl?: string,
  *   aboutUrls?: string[],
  *   cache?: Map<string, unknown>,
+ *   httpCache?: import("./fetch-cache.mjs").FetchCache,
  * }} [options]
  * @returns {Promise<{origin: string, pages: CrawledPage[], outbound_links: Array<{href: string, text: string, page: string}>, html_subjects: Array<Record<string, unknown>>, selection_reasons: Record<string, string>}>}
  */
 export async function crawlOrigin(origin, options = {}) {
   const cache = options.cache || new Map();
+  const httpCache = options.httpCache;
   const maxPages =
     typeof options.maxPagesPerOrigin === "number" &&
     Number.isFinite(options.maxPagesPerOrigin) &&
@@ -856,13 +861,10 @@ export async function crawlOrigin(origin, options = {}) {
     enqueueSeed(url, "topic-hub");
   }
 
-  await seedUrlsFromSitemaps(
-    origin,
-    cache,
-    enqueueSeed,
-    robotsBody,
-    robotsGate,
-  );
+  await seedUrlsFromSitemaps(origin, cache, enqueueSeed, robotsBody, {
+    allows: (href) => robotsGate.allows(href),
+    httpCache,
+  });
 
   for (const url of probeSlashSeedUrls(origin)) {
     enqueueSeed(url, "blind-probe");
@@ -905,7 +907,7 @@ export async function crawlOrigin(origin, options = {}) {
     let fetched;
 
     try {
-      fetched = await fetchPublicText(next.url, { cache });
+      fetched = await fetchPublicText(next.url, { cache, httpCache });
     } catch {
       skipReasons[next.url] = "fetch-failed";
       continue;

@@ -20,10 +20,14 @@
 
 ### Fixed
 
+- **Connection chart circle labels:** Site domain labels stay on every graph node on the homepage and `/connections/` even when the network has more than twelve participants (the old cap hid all unselected labels).
+- **Work screenshot hang on incomplete images:** Poster capture soft-times out `<img>` settle (and the whole URL budget) so Twitch/creative pages that never fire load/error cannot stall `nlp:sync` for hours. Logs each work URL before capture.
 - **Coverage gate for self-intro titles, homepage connections, and Showcase recency:** Unit tests hit blank/`slugifyTopic`, homepage document fallbacks, Non-Josh self-intro reject paths, and dated/undated portfolio `observed_at` branches so `npm run test:coverage` stays at 100%.
 
 ### Changed
 
+- **Content retention (regular posters):** Each `nlp:sync` prunes writing older than **30 days** from `_data/content.json` **before** crawl/gather, then merges new items. What’s New / Activity and other visitor writing surfaces stay at **14 days**. Showcase creative works remain while observed (carry-forward on soft-fail or feed/sitemap short-circuit). Origins stay the archive of record.
+- **Incremental fetch cache:** Conditional requests (`If-None-Match` / `If-Modified-Since`) store bodies under `.tmp/http-cache/` (gitignored; restored via Actions cache). Unchanged feeds + sitemap can short-circuit deep HTML crawl. `NETWORK_REFRESH_ALL` bypasses the cache.
 - **Join copy:** Tighter peer tone throughout `/join/`; step 2 is “Platform recipes—open the one that matches your stack, or skip to publish.”
 - **Self-intro Network titles for personal domains:** Descriptions like “I’m Chris Minnick…” set the card title when the name compresses to the host (e.g. `www.chrisminnick.com`), including Non-Josh peers. Josh-only given-name gating still blocks host-compressed brand titles such as “Forward Bias.”
 - **Undated portfolio projects sort as archival:** Showcase recency ignores crawl `observed_at` for undated project/portfolio items so archives (e.g. joshuadrake.org works without a publisher date) cannot lead as “just crawled.” Real `published_at` from Status Completed / page meta still ranks normally after sync enrichment.

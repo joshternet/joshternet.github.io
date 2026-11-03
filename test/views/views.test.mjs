@@ -975,6 +975,8 @@ test("topicCooccurrence: sort fires when counts differ and when they are equal (
   // Item 1: design+ux (count=2 for design/ux pair) and Item 2: ux+typescript (count=1)
   const pairs = topicCooccurrence(
     [
+      null,
+      "skip",
       {
         declared_topics: [
           { slug: "design", community_eligible: true },
@@ -2486,13 +2488,15 @@ test("buildViewDocuments: community without label fires label||slug fallback; me
       },
     ],
   };
+  // Keep publish date inside the 14-day visitor window relative to `now`.
+  const clock = new Date(0);
   const content = {
     items: [
       {
         url: "https://a.example/post",
         title: "Post A",
         site_origin: "https://a.example",
-        published_at: new Date().toISOString(),
+        published_at: clock.toISOString(),
         declared_topics: [
           { slug: "design", label: "Design", community_eligible: true },
           { slug: "photo", label: "Photo", community_eligible: true }, // co-mentions both → cooccurrence
@@ -2510,8 +2514,8 @@ test("buildViewDocuments: community without label fires label||slug fallback; me
     content,
     connections,
     siteSignals,
-    generatedAt: new Date().toISOString(),
-    now: new Date(0), // epoch → day 0 → picks index 0 = "design" (alphabetically first)
+    generatedAt: clock.toISOString(),
+    now: clock, // epoch → day 0 → picks index 0 = "design" (alphabetically first)
   });
 
   // BRDA:1107 LEFT: design has member_count:3 (truthy) → neighborhood uses member_count directly

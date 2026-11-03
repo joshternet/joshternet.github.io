@@ -1988,6 +1988,66 @@ export function isMadeContentItem(item, options = {}) {
 export const isShowcaseContentItem = isMadeContentItem;
 
 /**
+ * Prefer publisher date, else crawl observation (for display gates).
+ * @param {Record<string, unknown>} item
+ * @returns {string}
+ */
+function contentDisplayTimestamp(item) {
+  if (typeof item.published_at === "string" && item.published_at) {
+    return item.published_at;
+  }
+
+  if (typeof item.observed_at === "string" && item.observed_at) {
+    return item.observed_at;
+  }
+
+  return "";
+}
+
+/**
+ * True when a content row may appear on visitor writing surfaces (14-day window)
+ * or is durable Showcase creative (catalog stays visible). The 15–30 day band
+ * may remain in `_data/content.json` for crawl merge but is not shown here.
+ * @param {Record<string, unknown> | null | undefined} item
+ * @param {Date | string} now
+ * @returns {boolean}
+ */
+export function isVisitorFacingContentItem(item, now) {
+  if (!item || typeof item !== "object") {
+    return false;
+  }
+
+  const type = String(
+    typeof item.content_type === "string" ? item.content_type : "",
+  ).trim();
+
+  if (SHOWCASE_CONTENT_TYPES.includes(type) || isMadeContentItem(item)) {
+    return true;
+  }
+
+  let sourceKind = "";
+
+  if (typeof item.source_kind === "string") {
+    sourceKind = item.source_kind;
+  } else if (item.source && typeof item.source === "object") {
+    const kind = /** @type {{ kind?: unknown }} */ (item.source).kind;
+    if (typeof kind === "string") {
+      sourceKind = kind;
+    }
+  }
+
+  if (sourceKind === "portfolio" || sourceKind.startsWith("creative-")) {
+    return true;
+  }
+
+  return publishedWithinDays(
+    contentDisplayTimestamp(item),
+    now,
+    ACTIVITY_WINDOW_DAYS,
+  );
+}
+
+/**
  * True when a Showcase/content row is a portfolio project. Undated projects
  * must not use crawl `observed_at` as freshness (archives look brand-new).
  * @param {Record<string, unknown> | null | undefined} item
@@ -3033,7 +3093,8 @@ export function buildViewDocuments(input) {
   const clock = input.now || new Date(input.generatedAt);
   const compactFromContent = contentItems
     .map((item) => compactContentItem(item, sites, publicSlugs))
-    .filter(Boolean);
+    .filter(Boolean)
+    .filter((item) => isVisitorFacingContentItem(item, clock));
   // Elsewhere channels only join Showcase / Activity / search when their
   // latest upload published_at falls in the Activity window (undated omitted).
   const channelCompact = channelItemsFromNetwork(
@@ -3084,7 +3145,10 @@ export function buildViewDocuments(input) {
     primary,
   };
 
-  const cooccurrence = topicCooccurrence(contentItems, publicSlugs);
+  const cooccurrence = topicCooccurrence(
+    contentItems.filter((item) => isVisitorFacingContentItem(item, clock)),
+    publicSlugs,
+  );
   const featuredCommunity = pickFeaturedCommunity(communities, input.now);
   const featuredEdge = pickFeaturedConnection(edges);
 

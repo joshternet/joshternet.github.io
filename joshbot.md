@@ -117,6 +117,8 @@ JoshBot retains origin-level semantic and operational data so it can retry work,
 
 Completed crawl telemetry and disposable verification history are cleaned on a limited schedule (default about 30 days). Cleanup keeps the newest observation and newest authoritative declaration observation for each origin when those rows are still needed. Durable participation metadata, discovery provenance, current queue state, and compact reprobe state are not age-deleted the same way. The full table-by-table policy lives in the [JoshBot data retention documentation][retention].
 
+On the hub itself, Joshternet keeps about **30 days** of member writing in `_data/content.json` for crawl merge, and **displays** the latest **14 days** on What’s New / Activity (regular posters). Showcase creative works stay while still observed. Older posts remain on each member’s own site—Joshternet is not a web archive of full site history.
+
 The public registry contains deterministic information derived from successfully verified declarations. Private discovery, queue, and telemetry state are not published there.
 
 ## What JoshBot does not archive

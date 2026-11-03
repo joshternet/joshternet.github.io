@@ -18,6 +18,7 @@ import {
   compareShowcaseRecency,
   compactContentItem,
   isShowcasePortfolioProject,
+  isVisitorFacingContentItem,
   creativePathKind,
   isEducationGatheringItem,
   isPastEducationShowcaseEvent,
@@ -1876,6 +1877,55 @@ test("compareShowcaseRecency: dated beats undated crawl-time observed_at", () =>
         observed_at: "2026-11-01T00:00:00.000Z",
       },
     ) > 0,
+  );
+});
+
+test("isVisitorFacingContentItem: 14-day writing, observed_at, and creative sources", () => {
+  const now = "2026-11-02T12:00:00.000Z";
+  assert.equal(isVisitorFacingContentItem(null, now), false);
+  assert.equal(
+    isVisitorFacingContentItem(
+      {
+        url: "https://a.example/old",
+        content_type: "article",
+        published_at: "2026-09-01T00:00:00.000Z",
+      },
+      now,
+    ),
+    false,
+  );
+  assert.equal(
+    isVisitorFacingContentItem(
+      {
+        url: "https://a.example/recent",
+        content_type: "article",
+        observed_at: "2026-10-25T00:00:00.000Z",
+      },
+      now,
+    ),
+    true,
+  );
+  assert.equal(
+    isVisitorFacingContentItem(
+      {
+        url: "https://a.example/shelf",
+        content_type: "article",
+        source_kind: "creative-projects-shelf",
+      },
+      now,
+    ),
+    true,
+  );
+  assert.equal(
+    isVisitorFacingContentItem(
+      {
+        url: "https://a.example/home",
+        content_type: "article",
+        source: { kind: "creative-homepage" },
+      },
+      now,
+    ),
+    true,
   );
 });
 
