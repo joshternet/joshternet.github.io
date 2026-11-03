@@ -18,6 +18,10 @@
 - **Non-Josh peers:** Joined tenure and equal card treatment for every identity; copy makes clear Non-Joshes participate as equals.
 - **Crawl manners:** Respects `robots.txt` and sitemap hints; probes common feed paths when pages do not advertise them.
 
+### Fixed
+
+- **Coverage gate for self-intro titles, homepage connections, and Showcase recency:** Unit tests hit blank/`slugifyTopic`, homepage document fallbacks, Non-Josh self-intro reject paths, and dated/undated portfolio `observed_at` branches so `npm run test:coverage` stays at 100%.
+
 ### Changed
 
 - **Join copy:** Tighter peer tone throughout `/join/`; step 2 is “Platform recipes—open the one that matches your stack, or skip to publish.”

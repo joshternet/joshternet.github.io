@@ -57,6 +57,7 @@ test("showcaseKind maps content types to Showcase labels", () => {
   assert.equal(showcaseKind("visual_artwork"), "art");
   assert.equal(showcaseKind("music_album"), "music");
   assert.equal(showcaseKind("music_recording"), "music");
+  assert.equal(showcaseKind("podcast_episode"), "podcasts");
   assert.equal(showcaseKind("sheet_music"), "sheet music");
   assert.equal(showcaseKind("video"), "video");
   assert.equal(showcaseKind("game"), "games");
@@ -1880,8 +1881,23 @@ test("compareShowcaseRecency: dated beats undated crawl-time observed_at", () =>
 
 test("compareShowcaseRecency: undated portfolio projects ignore crawl observed_at", () => {
   assert.equal(isShowcasePortfolioProject(null), false);
+  assert.equal(isShowcasePortfolioProject("project"), false);
   assert.equal(
     isShowcasePortfolioProject({ kind: "project", url: "https://a.example/p" }),
+    true,
+  );
+  assert.equal(
+    isShowcasePortfolioProject({
+      content_type: "project",
+      url: "https://a.example/p",
+    }),
+    true,
+  );
+  assert.equal(
+    isShowcasePortfolioProject({
+      page_role: "project",
+      url: "https://a.example/p",
+    }),
     true,
   );
   assert.equal(
@@ -1910,6 +1926,23 @@ test("compareShowcaseRecency: undated portfolio projects ignore crawl observed_a
     content_type: "game",
     observed_at: "2026-10-01T00:00:00.000Z",
   };
+  const datedProjectNewerObs = {
+    url: "https://example.org/projects/newer-obs",
+    kind: "project",
+    published_at: "2023-01-01T00:00:00.000Z",
+    observed_at: "2026-06-01T00:00:00.000Z",
+  };
+  const datedProjectOlderObs = {
+    url: "https://example.org/projects/older-obs",
+    kind: "project",
+    published_at: "2023-01-01T00:00:00.000Z",
+    observed_at: "2026-01-01T00:00:00.000Z",
+  };
+  const datedProjectNoObs = {
+    url: "https://example.org/projects/no-obs",
+    content_type: "project",
+    published_at: "2023-01-01T00:00:00.000Z",
+  };
 
   assert.ok(
     compareShowcaseRecency(undatedProject, datedOlder) > 0,
@@ -1926,6 +1959,14 @@ test("compareShowcaseRecency: undated portfolio projects ignore crawl observed_a
   assert.ok(
     compareShowcaseRecency(undatedGame, undatedProject) < 0,
     "undated non-project with observed_at ranks before undated project",
+  );
+  assert.ok(
+    compareShowcaseRecency(datedProjectOlderObs, datedProjectNewerObs) > 0,
+    "dated projects still use observed_at when published_at ties",
+  );
+  assert.ok(
+    compareShowcaseRecency(datedProjectNoObs, datedProjectNewerObs) > 0,
+    "dated project without observed_at sorts after one with observed_at",
   );
 });
 

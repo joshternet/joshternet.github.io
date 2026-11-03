@@ -1710,7 +1710,21 @@ test("isCreativeCreditSourcePage covers event and portfolio pages", () => {
   assert.equal(isCreativeCreditSourcePage("https://a.example/blog/"), false);
 });
 
+test("slugifyTopic returns empty for blank input", () => {
+  assert.equal(slugifyTopic(""), "");
+  assert.equal(slugifyTopic("   "), "");
+});
+
 test("buildHomepageConnectionsDocument aggregates raw observations", () => {
+  const fallbackDoc = buildHomepageConnectionsDocument({});
+  assert.equal(fallbackDoc.schema_version, 1);
+  assert.equal(fallbackDoc.edge_count, 0);
+  assert.equal(typeof fallbackDoc.generated_at, "string");
+  assert.equal(
+    homepageConnectionObservationsFromDocument({ edges: "nope" }).length,
+    0,
+  );
+
   const doc = buildHomepageConnectionsDocument({
     generatedAt: "2026-11-02T00:00:00.000Z",
     edges: [

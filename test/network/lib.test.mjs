@@ -326,6 +326,20 @@ test("personNameFromText returns empty when no span matches the domain", () => {
 });
 
 test("personNameFromSelfIntro reads Non-Josh names that compress to the host", () => {
+  assert.equal(personNameFromSelfIntro("", "www.chrisminnick.com"), "");
+  assert.equal(personNameFromSelfIntro("I’m Chris Minnick.", ""), "");
+  assert.equal(
+    personNameFromSelfIntro("Hello there.", "www.chrisminnick.com"),
+    "",
+  );
+  assert.equal(
+    personNameFromSelfIntro("I’m The Blog.", "www.chrisminnick.com"),
+    "",
+  );
+  assert.equal(
+    personNameFromSelfIntro("I’m Chris Minnick.", "example.com"),
+    "",
+  );
   assert.equal(
     personNameFromSelfIntro(
       "I’m Chris Minnick. I’ve written more than twenty books.",
