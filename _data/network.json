@@ -103,14 +103,14 @@
       "josh": true
     },
     "first_participated_at": "2026-11-02T03:57:16.192677Z",
-    "latest_declaration_check_at": "2026-11-02T03:57:16.192677Z",
+    "latest_declaration_check_at": "2026-11-03T03:59:38.009904Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Josh Caldwell",
     "description": "I’m Josh, an author, educator, and multidisciplinary creator living in Seattle and longing for Berlin. I’m deeply interested in the intersection of traditional media and technology, and how we can both can be used to create art that is organic, messy, and…",
     "screenshot": "/assets/network/sites/3d4308b94d6648755d20755b394c2c6dca25feaf8d75f3823b0509fa27b378ab.webp",
     "embeddable": true,
     "frame_reason": "allowed",
-    "captured_at": "2026-11-02T08:05:38.498Z",
+    "captured_at": "2026-11-03T08:41:45.113Z",
     "feeds": [
       {
         "url": "https://forwardbias.dev/index.xml",
@@ -154,14 +154,14 @@
       "josh": true
     },
     "first_participated_at": "2026-10-30T20:06:00.676433Z",
-    "latest_declaration_check_at": "2026-11-02T05:41:43.958958Z",
+    "latest_declaration_check_at": "2026-11-03T05:42:19.429768Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Josh Beard",
     "description": "Josh Beard works on infrastructure, developer workflows, and software delivery systems",
     "screenshot": "/assets/network/sites/32329a5a589fff27123fbf19a511be9f20729cfa9252f0f4b76d107bd396a059.webp",
     "embeddable": true,
     "frame_reason": "allowed",
-    "captured_at": "2026-11-01T23:36:16.991Z",
+    "captured_at": "2026-11-03T08:43:16.209Z",
     "elsewhere": [
       {
         "url": "https://github.com/joshbeard",
@@ -224,7 +224,7 @@
       "josh": true
     },
     "first_participated_at": "2026-10-04T14:16:33.245656Z",
-    "latest_declaration_check_at": "2026-11-02T07:44:55.705754Z",
+    "latest_declaration_check_at": "2026-11-02T22:12:36.512293Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Josh Ghent",
     "description": "Head of software engineering. I lead teams building high-traffic systems. Away from that I write small open source tools and self-host most of what I use. This is where I write about the work.",
@@ -390,6 +390,77 @@
     ]
   },
   {
+    "origin": "https://joshozuna.com",
+    "domain": "joshozuna.com",
+    "identity": "affirmed",
+    "declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "initial_declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "first_participated_at": "2026-11-03T04:08:21.448524Z",
+    "latest_declaration_check_at": "2026-11-03T04:08:21.448524Z",
+    "latest_declaration_check_outcome": "valid",
+    "title": "Josh Ozuna",
+    "description": "a collection of 35mm photos, saved for posterity. Oak Cliff, Dallas, Texas Downtown, Dallas, Texas",
+    "screenshot": "/assets/network/sites/257aa5726a98f1751a7afde1e6a6a97bd1e7e0162f2e7ff6a209bd3321bcdce5.webp",
+    "embeddable": false,
+    "frame_reason": "blocked-by-site",
+    "captured_at": "2026-11-03T08:50:55.159Z",
+    "feeds": [
+      {
+        "url": "https://joshozuna.com/feed.xml",
+        "type": "application/rss+xml",
+        "title": "New photographs – Josh Ozuna"
+      },
+      {
+        "url": "https://joshozuna.com/feed.json",
+        "type": "application/feed+json",
+        "title": "New photographs – Josh Ozuna"
+      },
+      {
+        "url": "https://joshozuna.com/atom.xml",
+        "type": "application/atom+xml",
+        "title": "New photographs – Josh Ozuna"
+      }
+    ],
+    "elsewhere": [
+      {
+        "url": "https://mastodon.social/@joshozuna",
+        "network": "mastodon",
+        "label": "Mastodon"
+      },
+      {
+        "url": "https://pixelfed.social/jozuna",
+        "network": "web",
+        "label": "pixelfed.social"
+      },
+      {
+        "url": "https://bsky.app/profile/joshozuna.com",
+        "network": "bluesky",
+        "label": "Bluesky"
+      },
+      {
+        "url": "https://www.instagram.com/jozuna",
+        "network": "instagram",
+        "label": "Instagram"
+      },
+      {
+        "url": "https://www.linkedin.com/in/joshuaozuna",
+        "network": "linkedin",
+        "label": "LinkedIn"
+      },
+      {
+        "url": "https://joshozuna.com/",
+        "network": "web",
+        "label": "joshozuna.com"
+      }
+    ]
+  },
+  {
     "origin": "https://joshternet.org",
     "domain": "joshternet.org",
     "identity": "undeclared",
@@ -514,7 +585,7 @@
     "screenshot": "/assets/network/sites/bc7c017ece5fa409b28d0a4baef2b9ab2a8e767ad05d8daaeec1cb3b377f624b.webp",
     "embeddable": true,
     "frame_reason": "allowed",
-    "captured_at": "2026-11-01T23:37:04.427Z"
+    "captured_at": "2026-11-03T08:56:59.090Z"
   },
   {
     "origin": "https://joshuakim.studio",
@@ -558,14 +629,14 @@
       "josh": true
     },
     "first_participated_at": "2026-09-06T22:51:38.044013Z",
-    "latest_declaration_check_at": "2026-11-02T07:13:38.337383Z",
+    "latest_declaration_check_at": "2026-11-03T07:14:59.634927Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Joshua Morris",
     "description": "I build software, write about what I’m learning, and explore ideas that sit at the intersection of technology, freedom, and curiosity.",
     "screenshot": "/assets/network/sites/96e5b600de4a31e77df2925d7e56dc12bc14ffd484452ca9b51ed4aa37813705.webp",
     "embeddable": false,
     "frame_reason": "blocked-by-site",
-    "captured_at": "2026-11-01T23:58:03.722Z",
+    "captured_at": "2026-11-03T09:00:03.574Z",
     "feeds": [
       {
         "url": "https://joshuamorris.info/atom.xml",
@@ -626,7 +697,7 @@
     "screenshot": "/assets/network/sites/26131d762eec35bfd4b0000a836a7f737812ed2f80f2cbe27dbb1ca920989942.webp",
     "embeddable": true,
     "frame_reason": "allowed",
-    "captured_at": "2026-11-01T23:37:22.594Z",
+    "captured_at": "2026-11-03T09:01:35.465Z",
     "feeds": [
       {
         "url": "https://joshuapsteele.com/feed.xml",
@@ -690,7 +761,7 @@
     "first_participated_at": "2026-11-02T19:18:57.470121Z",
     "latest_declaration_check_at": "2026-11-02T19:18:57.470121Z",
     "latest_declaration_check_outcome": "valid",
-    "title": "Chris Minnick",
+    "title": "www.chrisminnick.com",
     "description": "I’m Chris Minnick. I’ve written more than twenty books, including a shelf of For Dummies titles, three novels, and courseware used to train developers at some of the largest companies in the world.",
     "screenshot": "/assets/network/sites/fa5d426157468366827f81f1d611385dbe9a8e863242c10882cbb7ed7552f1f2.webp",
     "embeddable": true,
@@ -729,7 +800,7 @@
       "josh": true
     },
     "first_participated_at": "2026-09-30T23:10:31.341572Z",
-    "latest_declaration_check_at": "2026-11-02T06:37:55.360732Z",
+    "latest_declaration_check_at": "2026-11-03T06:39:08.488172Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Josh Cunningham",
     "description": "I’ve been working on the web since 2007 as an architect, engineer, writer, designer, strategist, user interface consultant, team lead, project manager, and product builder. I’ve been working IRL since 2010 as a husband and since 2013 as a dad.",

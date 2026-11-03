@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-03T06:08:44.841Z",
-  "participant_count": 19,
-  "community_count": 619,
-  "publication_count": 504,
+  "generated_at": "2026-11-03T09:21:40.131Z",
+  "participant_count": 20,
+  "community_count": 630,
+  "publication_count": 563,
   "connection_count": 25,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
@@ -11,11 +11,72 @@
   },
   "fresh": [
     {
+      "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
+      "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters.",
+      "summary": "",
+      "published_at": "2026-11-02T22:49:28.000Z",
+      "observed_at": "2026-11-03T09:09:21.209Z",
+      "content_type": "article",
+      "language": "en-us",
+      "dir": "",
+      "site_origin": "https://artlung.com",
+      "site_title": "Joe Crawford",
+      "domain": "artlung.com",
+      "tags": [
+        {
+          "slug": "california",
+          "label": "california"
+        },
+        {
+          "slug": "general",
+          "label": "general"
+        },
+        {
+          "slug": "history",
+          "label": "history"
+        },
+        {
+          "slug": "permanence",
+          "label": "permanence"
+        },
+        {
+          "slug": "politics",
+          "label": "politics"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "california",
+          "label": "california"
+        },
+        {
+          "slug": "general",
+          "label": "general"
+        },
+        {
+          "slug": "history",
+          "label": "history"
+        },
+        {
+          "slug": "permanence",
+          "label": "permanence"
+        },
+        {
+          "slug": "politics",
+          "label": "politics"
+        }
+      ],
+      "image": "/assets/activity/posters/764b7296d487335b4248db890aa60a36004ce159233eaba1732b970faf360681.webp",
+      "image_origin": "",
+      "source_kind": "h-entry",
+      "page_role": "article"
+    },
+    {
       "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
       "title": "The October Micro SaaS Challenge: A Retro",
       "summary": "Four micro SaaS products in four weeks, built with Claude Code: what shipped, which rules broke, what it cost, and what I'd change next time.",
       "published_at": "2026-11-02T00:00:00.000Z",
-      "observed_at": "2026-11-03T04:10:52.440Z",
+      "observed_at": "2026-11-03T09:09:21.209Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -68,7 +129,7 @@
       "title": "I'm Open to Work",
       "summary": "Mailshake has terminated my employment after 8+ years. In that time, I... Started as engineer #3 Moved into management thanks to an awesome CTO Ran a 10-person team across backend, frontend, QA, and support Scaled down to 2 engineers while maintaining productivity Reduced annual AWS spend by ~70% over 3 years Was always on-call and handled support escalations Ran technical due diligence on 4 acqui",
       "published_at": "2026-11-01T00:00:00.000Z",
-      "observed_at": "2026-11-03T04:10:52.440Z",
+      "observed_at": "2026-11-03T09:09:21.209Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -87,7 +148,7 @@
       "title": "Gluten-Free Chocolate Cake",
       "summary": "Nutrition assumptions and sources",
       "published_at": "2026-10-31T19:55:58.000Z",
-      "observed_at": "2026-11-03T04:10:52.440Z",
+      "observed_at": "2026-11-03T09:09:21.209Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -116,7 +177,7 @@
       "title": "Worth Wandering: Radio Aporee",
       "summary": "A worldwide collection of field recordings that lets you explore the sounds of cities, forests, rivers, train stations and ordinary places, with experimental radio projects that turn listening into an entirely different way of experiencing the world.",
       "published_at": "2026-10-30T14:00:00.000Z",
-      "observed_at": "2026-11-03T04:10:52.440Z",
+      "observed_at": "2026-11-03T09:09:21.209Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -145,7 +206,7 @@
       "title": "How Wizardly Words Invents Words",
       "summary": "It takes what we know and infers new words between the lines",
       "published_at": "2026-10-30T00:00:00.000Z",
-      "observed_at": "2026-11-03T04:10:52.440Z",
+      "observed_at": "2026-11-03T09:09:21.209Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -158,49 +219,12 @@
       "image_origin": "",
       "source_kind": "rss",
       "page_role": "unknown"
-    },
-    {
-      "url": "https://artlung.com/blog/2026/10/29/patrick-stewart-rip/",
-      "title": "Patrick Stewart was a giant across television and movie franchises I enjoyed.",
-      "summary": "",
-      "published_at": "2026-10-29T20:53:15.000Z",
-      "observed_at": "2026-11-03T04:10:52.440Z",
-      "content_type": "article",
-      "language": "en-us",
-      "dir": "",
-      "site_origin": "https://artlung.com",
-      "site_title": "Joe Crawford",
-      "domain": "artlung.com",
-      "tags": [
-        {
-          "slug": "general",
-          "label": "general"
-        },
-        {
-          "slug": "star-trek",
-          "label": "star-trek"
-        }
-      ],
-      "neighborhoods": [
-        {
-          "slug": "general",
-          "label": "general"
-        },
-        {
-          "slug": "star-trek",
-          "label": "star-trek"
-        }
-      ],
-      "image": "/assets/activity/posters/eba701c1e4d4b40e1654618c723dd8f97dc640fa37ffbfae07223871684d7669.webp",
-      "image_origin": "",
-      "source_kind": "h-entry",
-      "page_role": "article"
     }
   ],
   "neighborhood": {
-    "slug": "machine-learning",
-    "label": "Machine learning",
-    "member_count": 3
+    "slug": "water",
+    "label": "water",
+    "member_count": 2
   },
   "connection": {
     "from": "https://artlung.com",
