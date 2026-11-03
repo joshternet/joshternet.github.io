@@ -10,12 +10,14 @@ import { fileURLToPath } from "node:url";
 import {
   aggregateConnectionEdges,
   blogrollConnectionObservations,
+  buildHomepageConnectionsDocument,
   carryForwardConnectionEdges,
   connectionEdges,
   connectionObservations,
   creativeCreditRelation,
   friendConnectionObservations,
   hasDerivedAnalysisMarker,
+  homepageConnectionObservationsFromDocument,
   indexConnectionsByParticipant,
   isCreativeCreditSourcePage,
   isHubDirectoryLink,
@@ -1706,4 +1708,117 @@ test("isCreativeCreditSourcePage covers event and portfolio pages", () => {
     true,
   );
   assert.equal(isCreativeCreditSourcePage("https://a.example/blog/"), false);
+});
+
+test("slugifyTopic returns empty for blank input", () => {
+  assert.equal(slugifyTopic(""), "");
+  assert.equal(slugifyTopic("   "), "");
+});
+
+test("buildHomepageConnectionsDocument aggregates raw observations", () => {
+  const fallbackDoc = buildHomepageConnectionsDocument({});
+  assert.equal(fallbackDoc.schema_version, 1);
+  assert.equal(fallbackDoc.edge_count, 0);
+  assert.equal(typeof fallbackDoc.generated_at, "string");
+  assert.equal(
+    homepageConnectionObservationsFromDocument({ edges: "nope" }).length,
+    0,
+  );
+
+  const doc = buildHomepageConnectionsDocument({
+    generatedAt: "2026-11-02T00:00:00.000Z",
+    edges: [
+      {
+        from: "https://artlung.com",
+        to: "https://joshternet.org",
+        relation: "homepage-link",
+        directed: true,
+        source: "content",
+        href: "https://joshternet.org/",
+        text: "The Joshternet",
+        rel: [],
+        page: "https://artlung.com/",
+      },
+      {
+        from: "https://artlung.com",
+        to: "https://joshternet.org",
+        relation: "homepage-link",
+        directed: true,
+        source: "content",
+        href: "https://joshternet.org/",
+        text: "The Joshternet",
+        rel: [],
+        page: "https://artlung.com/",
+      },
+      {
+        from: "https://artlung.com",
+        to: "https://joshternet.org",
+        relation: "content-link",
+        directed: true,
+        source: "content",
+        href: "https://joshternet.org/",
+        text: "The Joshternet",
+        rel: [],
+        page: "https://artlung.com/links/",
+      },
+    ],
+  });
+
+  assert.equal(doc.schema_version, 1);
+  assert.equal(doc.generated_at, "2026-11-02T00:00:00.000Z");
+  assert.equal(doc.edge_count, 2);
+  assert.equal(doc.edges.length, 2);
+  assert.equal(homepageConnectionObservationsFromDocument(doc).length, 2);
+  assert.equal(homepageConnectionObservationsFromDocument({}).length, 0);
+});
+
+test("homepage edges merge into aggregateConnectionEdges with crawl edges", () => {
+  const homepage = homepageConnectionObservationsFromDocument(
+    buildHomepageConnectionsDocument({
+      generatedAt: "2026-11-02T00:00:00.000Z",
+      edges: [
+        {
+          from: "https://artlung.com",
+          to: "https://joshternet.org",
+          relation: "homepage-link",
+          directed: true,
+          source: "content",
+          href: "https://joshternet.org/",
+          text: "The Joshternet",
+          rel: [],
+          page: "https://artlung.com/",
+        },
+      ],
+    }),
+  );
+  const merged = aggregateConnectionEdges([
+    ...homepage,
+    {
+      from: "https://joshuamorris.info",
+      to: "https://www.chrisminnick.com",
+      relation: "content-link",
+      directed: true,
+      source: "content",
+      href: "https://www.chrisminnick.com/",
+      text: "Chris Minnick",
+      rel: [],
+      page: "https://joshuamorris.info/friends/",
+    },
+  ]);
+
+  assert.equal(merged.length, 2);
+  assert.ok(
+    merged.some(
+      (edge) =>
+        edge.from === "https://artlung.com" &&
+        edge.to === "https://joshternet.org",
+    ),
+  );
+  assert.ok(
+    merged.some(
+      (edge) =>
+        edge.from === "https://joshuamorris.info" &&
+        edge.to === "https://www.chrisminnick.com",
+    ),
+  );
 });

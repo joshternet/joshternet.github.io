@@ -36,7 +36,6 @@ export const ELSEWHERE_LABELS = {
   gitlab: "GitLab",
   bluesky: "Bluesky",
   threads: "Threads",
-  buttondown: "Buttondown",
   tumblr: "Tumblr",
   pinterest: "Pinterest",
   snapchat: "Snapchat",
@@ -65,8 +64,19 @@ export const ELSEWHERE_LABELS = {
   vk: "VK",
   odnoklassniki: "Odnoklassniki",
   mastodon: "Mastodon",
+  librefm: "Libre.fm",
   web: "Web",
 };
+
+/**
+ * Newsletter-host platforms. These may appear as feeds or subscribe URLs, but
+ * they are not Elsewhere social icons on Network cards.
+ * @type {ReadonlySet<string>}
+ */
+export const NEWSLETTER_HOSTS = new Set([
+  "buttondown.com",
+  "www.buttondown.com",
+]);
 
 /**
  * Exact hostname → network id.
@@ -111,8 +121,6 @@ const HOST_NETWORKS = {
   "www.threads.net": "threads",
   "threads.com": "threads",
   "www.threads.com": "threads",
-  "buttondown.com": "buttondown",
-  "www.buttondown.com": "buttondown",
   "tumblr.com": "tumblr",
   "www.tumblr.com": "tumblr",
   "pinterest.com": "pinterest",
@@ -187,7 +195,43 @@ const HOST_NETWORKS = {
   "octodon.social": "mastodon",
   "pawoo.net": "mastodon",
   "m.cmx.im": "mastodon",
+  "xoxo.zone": "mastodon",
+  "www.xoxo.zone": "mastodon",
+  "libre.fm": "librefm",
+  "www.libre.fm": "librefm",
 };
+
+/**
+ * True when the host is a newsletter platform (subscribe/host), not a social profile.
+ * @param {string} hostname
+ * @returns {boolean}
+ */
+export function isNewsletterHost(hostname) {
+  const host = String(hostname || "")
+    .trim()
+    .toLowerCase()
+    .replace(/\.$/, "");
+
+  if (!host) {
+    return false;
+  }
+
+  if (NEWSLETTER_HOSTS.has(host)) {
+    return true;
+  }
+
+  for (const known of NEWSLETTER_HOSTS) {
+    if (known.startsWith("www.")) {
+      continue;
+    }
+
+    if (host.endsWith(`.${known}`)) {
+      return true;
+    }
+  }
+
+  return false;
+}
 
 /**
  * Suffix patterns for multi-tenant hosts (checked after exact map).
@@ -349,7 +393,6 @@ export function isElsewhereProfileUrl(url, network) {
     case "tiktok":
     case "pinterest":
     case "snapchat":
-    case "reddit":
     case "twitch":
     case "patreon":
     case "keybase":
@@ -361,6 +404,13 @@ export function isElsewhereProfileUrl(url, network) {
       return (
         segments.length >= 1 &&
         !["share", "intent", "login", "signup"].includes(first)
+      );
+    case "reddit":
+      // Profiles only (/user/name, /u/name)—not /submit share buttons or /r/subs.
+      return (
+        (first === "user" || first === "u") &&
+        segments.length >= 2 &&
+        Boolean(segments[1])
       );
     case "threads":
       return (
@@ -383,7 +433,7 @@ export function isElsewhereProfileUrl(url, network) {
     case "facebook":
       return (
         segments.length >= 1 &&
-        !["share", "dialog", "login", "watch"].includes(first)
+        !["share", "sharer", "dialog", "login", "watch"].includes(first)
       );
     case "mastodon":
       return (
@@ -394,10 +444,12 @@ export function isElsewhereProfileUrl(url, network) {
         first === "users" || first === "invite" || url.hostname === "discord.gg"
       );
     case "telegram":
-      return segments.length >= 1;
+      return (
+        segments.length >= 1 &&
+        !["share", "shareurl", "login", "signup"].includes(first)
+      );
     case "medium":
     case "substack":
-    case "buttondown":
     case "tumblr":
     case "bandcamp":
     case "soundcloud":
@@ -412,6 +464,8 @@ export function isElsewhereProfileUrl(url, network) {
     case "stackoverflow":
     case "matrix":
       return true;
+    case "librefm":
+      return first === "user" && segments.length >= 2;
     case "web":
       return false;
     default:
@@ -573,7 +627,21 @@ export async function sanitizeElsewhere(
         continue;
       }
 
+      if (isNewsletterHost(url.hostname)) {
+        continue;
+      }
+
       const network = classifyElsewhereHost(url.hostname);
+
+      // Share/submit chrome must never become a card icon—even with rel=me.
+      if (
+        (network === "reddit" ||
+          network === "facebook" ||
+          network === "telegram") &&
+        !isElsewhereProfileUrl(url, network)
+      ) {
+        continue;
+      }
 
       if (!fromMe) {
         if (network === "web") {

@@ -241,11 +241,44 @@ test("HTML relationship lists and reciprocal edges are visible without selection
   );
   assert.equal(await page.locator("[data-connection-origin]").count(), 3);
   assert.equal(await page.locator(".connections-graph__node").count(), 3);
+  assert.equal(await page.locator(".connections-graph__node text").count(), 3);
   assert.equal(
     await page
       .locator("[data-relation-filters] input[type='checkbox']")
       .count(),
     1,
+  );
+
+  await context.close();
+});
+
+test("chart circles keep domain labels when the network grows past twelve sites", async () => {
+  const participants = Array.from({ length: 13 }, (_, index) => {
+    const host = `site${index}.example`;
+
+    return {
+      origin: `https://${host}`,
+      domain: host,
+      title: `Site ${index}`,
+      description: "",
+      screenshot: "",
+    };
+  });
+
+  const { context, page } = await connectionsPage({
+    participants,
+    connections: [],
+  });
+
+  assert.equal(await page.locator(".connections-graph__node").count(), 13);
+  assert.equal(await page.locator(".connections-graph__node text").count(), 13);
+  assert.equal(
+    await page
+      .locator(
+        '.connections-graph__node[data-origin="https://site12.example"] text',
+      )
+      .textContent(),
+    "site12.example",
   );
 
   await context.close();

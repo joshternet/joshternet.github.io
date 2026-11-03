@@ -22,6 +22,7 @@ import { itemsFromCollection } from "./collections.mjs";
 
 import {
   HUB_ORIGIN,
+  buildHomepageConnectionsDocument,
   carryForwardConnectionEdges,
   connectionObservations,
   sortConnectionEdges,
@@ -90,6 +91,7 @@ const DEFAULT_REGISTRY_URL =
 const DEFAULT_DATA_PATH = "_data/network.json";
 const DEFAULT_BLOGROLLS_PATH = "_data/blogrolls.json";
 const DEFAULT_CONNECTIONS_PATH = "_data/connections.json";
+const DEFAULT_HOMEPAGE_CONNECTIONS_PATH = "_data/homepage_connections.json";
 const DEFAULT_OPML_PATH = "assets/network/joshternet.opml";
 const DEFAULT_SCREENSHOT_ROOT = "assets/network/sites";
 
@@ -1057,19 +1059,34 @@ const connectionEdgeList = sortConnectionEdges(
     return relation !== "friend" && relation !== "topic";
   }),
 );
+const homepageConnectionsDocument = buildHomepageConnectionsDocument({
+  generatedAt: new Date().toISOString(),
+  edges: connectionEdgeList,
+});
 const opml = buildJoshternetOpml(nextEntries);
 
 await removeOrphanScreenshots(nextEntries, DEFAULT_SCREENSHOT_ROOT);
 await writeJSONAtomic(DEFAULT_DATA_PATH, nextEntries);
 await writeJSONAtomic(DEFAULT_BLOGROLLS_PATH, blogrollsDocument);
+await writeJSONAtomic(
+  DEFAULT_HOMEPAGE_CONNECTIONS_PATH,
+  homepageConnectionsDocument,
+);
 await writeTextAtomic(DEFAULT_OPML_PATH, opml);
 await formatGeneratedOutputs();
+
+const homepageEdgeCount =
+  typeof homepageConnectionsDocument.edge_count === "number"
+    ? homepageConnectionsDocument.edge_count
+    : 0;
 
 process.stdout.write(
   `Wrote ${nextEntries.length} network entr` +
     `${nextEntries.length === 1 ? "y" : "ies"}, ` +
     `${blogrollEdgeList.length} publisher blogroll edge` +
     `${blogrollEdgeList.length === 1 ? "" : "s"}, ` +
-    `${connectionEdgeList.length} homepage connection observation` +
-    `${connectionEdgeList.length === 1 ? "" : "s"} (connections.json is published by nlp:sync), and joshternet.opml.\n`,
+    `${homepageEdgeCount} homepage connection edge` +
+    `${homepageEdgeCount === 1 ? "" : "s"} for nlp:sync merge` +
+    ` (${connectionEdgeList.length} raw observation` +
+    `${connectionEdgeList.length === 1 ? "" : "s"}; connections.json is published by nlp:sync), and joshternet.opml.\n`,
 );

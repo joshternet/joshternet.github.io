@@ -1,10 +1,10 @@
 /**
  * Goal & Constraints:
  * Resolve the latest upload `published_at` for Network elsewhere YouTube
- * channel URLs via the public Atom feed. Used so Showcase / What's New only
- * promote channels with uploads inside ACTIVITY_WINDOW_DAYS. Never invent
- * dates; Vimeo/Twitch stay undated until a public feed path exists. Injectable
- * fetch for offline tests.
+ * channel URLs via the public Atom feed (with watch-page uploadDate fallback).
+ * Used so Showcase / What's New only promote channels with uploads inside
+ * ACTIVITY_WINDOW_DAYS. Never invent dates; Vimeo/Twitch stay undated until a
+ * public feed path exists. Injectable fetch for offline tests.
  */
 
 import { contentItemsFromRssOrAtom, isoDateString } from "./content.mjs";
@@ -117,6 +117,24 @@ export function latestPublishedAtFromYoutubeAtom(xml) {
  * }} [options]
  * @returns {Promise<string>}
  */
+/**
+ * uploadDate from YouTube HTML (watch or channel page).
+ * @param {unknown} html
+ * @returns {string}
+ */
+function uploadDateFromYoutubeHtml(html) {
+  if (typeof html !== "string" || !html) {
+    return "";
+  }
+
+  const raw =
+    html.match(/"uploadDate"\s*:\s*"([^"]+)"/i)?.[1] ||
+    html.match(/"datePublished"\s*:\s*"([^"]+)"/i)?.[1] ||
+    "";
+
+  return isoDateString(raw);
+}
+
 export async function resolveYoutubeChannelPublishedAt(
   channelUrl,
   options = {},
@@ -128,6 +146,8 @@ export async function resolveYoutubeChannelPublishedAt(
     options.robotsGate ||
     createOriginRobotsGate({ cache, fetchPublicText: fetchText });
   let channelId = youtubeChannelIdFromHref(channelUrl);
+  /** @type {string} */
+  let pageBody = "";
 
   if (!channelId) {
     if (!(await robotsGate.allows(channelUrl))) {
@@ -139,7 +159,8 @@ export async function resolveYoutubeChannelPublishedAt(
         cache,
         accept: "text/html,application/xhtml+xml,*/*;q=0.8",
       });
-      channelId = youtubeChannelIdFromHtml(page.body);
+      pageBody = page.body;
+      channelId = youtubeChannelIdFromHtml(pageBody);
     } catch {
       return "";
     }
@@ -147,21 +168,63 @@ export async function resolveYoutubeChannelPublishedAt(
 
   const feedUrl = youtubeChannelFeedUrl(channelId);
 
-  if (!feedUrl) {
+  if (feedUrl && (await robotsGate.allows(feedUrl))) {
+    try {
+      const feed = await fetchText(feedUrl, {
+        cache,
+        accept: "application/atom+xml,application/xml,text/xml,*/*;q=0.8",
+      });
+      const fromAtom = latestPublishedAtFromYoutubeAtom(feed.body);
+
+      if (fromAtom) {
+        return fromAtom;
+      }
+    } catch {
+      // Fall through to HTML uploadDate.
+    }
+  }
+
+  if (!pageBody) {
+    if (!(await robotsGate.allows(channelUrl))) {
+      return "";
+    }
+
+    try {
+      const page = await fetchText(channelUrl, {
+        cache,
+        accept: "text/html,application/xhtml+xml,*/*;q=0.8",
+      });
+      pageBody = page.body;
+    } catch {
+      return "";
+    }
+  }
+
+  const fromPage = uploadDateFromYoutubeHtml(pageBody);
+
+  if (fromPage) {
+    return fromPage;
+  }
+
+  const videoId = pageBody.match(/"videoId"\s*:\s*"([A-Za-z0-9_-]{6,})"/)?.[1];
+
+  if (!videoId) {
     return "";
   }
 
-  if (!(await robotsGate.allows(feedUrl))) {
+  const watchUrl = `https://www.youtube.com/watch?v=${videoId}`;
+
+  if (!(await robotsGate.allows(watchUrl))) {
     return "";
   }
 
   try {
-    const feed = await fetchText(feedUrl, {
+    const watch = await fetchText(watchUrl, {
       cache,
-      accept: "application/atom+xml,application/xml,text/xml,*/*;q=0.8",
+      accept: "text/html,application/xhtml+xml,*/*;q=0.8",
     });
 
-    return latestPublishedAtFromYoutubeAtom(feed.body);
+    return uploadDateFromYoutubeHtml(watch.body);
   } catch {
     return "";
   }

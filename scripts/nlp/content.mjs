@@ -29,7 +29,19 @@ import {
  * @type {RegExp}
  */
 const CREATIVE_WORK_PATH =
-  /\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)\/.+/i;
+  /\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|paintings?|fiction|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)\/.+/i;
+
+/**
+ * First regex capture group, or empty string when absent.
+ * Avoids optional-chaining index branches that Node coverage reports flakily.
+ * @param {string} text
+ * @param {RegExp} pattern
+ * @returns {string}
+ */
+function firstCapture(text, pattern) {
+  const match = text.match(pattern);
+  return match && match[1] ? match[1] : "";
+}
 
 /**
  * Prefers entry-level language, then channel/feed language.
@@ -40,8 +52,8 @@ const CREATIVE_WORK_PATH =
  */
 function languageFromRssOrAtom(xml, chunk, isAtom) {
   const entryLang =
-    chunk.match(/\bxml:lang=["']([^"']+)["']/i)?.[1] ||
-    chunk.match(/\blang=["']([^"']+)["']/i)?.[1] ||
+    firstCapture(chunk, /\bxml:lang=["']([^"']+)["']/i) ||
+    firstCapture(chunk, /\blang=["']([^"']+)["']/i) ||
     "";
   const fromEntry = normalizeLanguageTag(entryLang);
 
@@ -51,14 +63,14 @@ function languageFromRssOrAtom(xml, chunk, isAtom) {
 
   if (isAtom) {
     return normalizeLanguageTag(
-      xml.match(/<feed\b[^>]*\bxml:lang=["']([^"']+)["']/i)?.[1] ||
-        xml.match(/<feed\b[^>]*\blang=["']([^"']+)["']/i)?.[1] ||
+      firstCapture(xml, /<feed\b[^>]*\bxml:lang=["']([^"']+)["']/i) ||
+        firstCapture(xml, /<feed\b[^>]*\blang=["']([^"']+)["']/i) ||
         "",
     );
   }
 
   return normalizeLanguageTag(
-    xml.match(/<language[^>]*>([\s\S]*?)<\/language>/i)?.[1] || "",
+    firstCapture(xml, /<language[^>]*>([\s\S]*?)<\/language>/i) || "",
   );
 }
 
@@ -127,6 +139,565 @@ export function isoDateString(value) {
   return new Date(time).toISOString();
 }
 
+/** English month names → 1-based month index for book “Coming …” badges. */
+const MONTH_NAME_TO_NUMBER = {
+  january: 1,
+  february: 2,
+  march: 3,
+  april: 4,
+  may: 5,
+  june: 6,
+  july: 7,
+  august: 8,
+  september: 9,
+  october: 10,
+  november: 11,
+  december: 12,
+};
+
+/**
+ * Maps a 4-digit calendar year to January 1 UTC ISO.
+ * @param {unknown} year
+ * @returns {string}
+ */
+export function publishedAtFromYear(year) {
+  if (typeof year !== "string") {
+    return "";
+  }
+
+  const trimmed = year.trim();
+
+  if (!/^(?:19|20)\d{2}$/.test(trimmed)) {
+    return "";
+  }
+
+  return isoDateString(`${trimmed}-01-01T00:00:00.000Z`);
+}
+
+/**
+ * Maps a calendar month name + year to the first day of that month (UTC).
+ * @param {unknown} monthName
+ * @param {unknown} year
+ * @returns {string}
+ */
+export function publishedAtFromMonthYear(monthName, year) {
+  if (typeof monthName !== "string" || typeof year !== "string") {
+    return "";
+  }
+
+  const month = MONTH_NAME_TO_NUMBER[monthName.trim().toLowerCase()];
+  const yearIso = publishedAtFromYear(year);
+
+  if (!month || !yearIso) {
+    return "";
+  }
+
+  const monthToken = String(month).padStart(2, "0");
+  return isoDateString(`${year.trim()}-${monthToken}-01T00:00:00.000Z`);
+}
+
+/**
+ * “Coming April 2027” / “Coming 2027” release badges on member book pages.
+ * @param {unknown} text
+ * @returns {string}
+ */
+export function publishedAtFromComingBadge(text) {
+  if (typeof text !== "string" || !text) {
+    return "";
+  }
+
+  const withMonth = text.match(
+    /\bComing\s+(January|February|March|April|May|June|July|August|September|October|November|December)\s+((?:19|20)\d{2})\b/i,
+  );
+
+  if (withMonth) {
+    return publishedAtFromMonthYear(withMonth[1], withMonth[2]);
+  }
+
+  const yearOnly = firstCapture(text, /\bComing\s+((?:19|20)\d{2})\b/i);
+
+  return publishedAtFromYear(yearOnly);
+}
+
+/**
+ * “By Author · Publisher · 2026” (or en-dash) credit lines on book detail pages.
+ * @param {unknown} text
+ * @returns {string}
+ */
+export function publishedAtFromBookByline(text) {
+  if (typeof text !== "string" || !text) {
+    return "";
+  }
+
+  const year = firstCapture(
+    text,
+    /\bBy\s+[^<\n]{1,120}?[·•]\s*[^<\n·•]{1,80}?[·•]\s*((?:19|20)\d{2})\b/i,
+  );
+
+  return publishedAtFromYear(year);
+}
+
+/**
+ * First Amazon product / short-link URL in HTML (Buy / Pre-order buttons).
+ * @param {unknown} html
+ * @returns {string}
+ */
+export function amazonProductUrlFromHtml(html) {
+  if (typeof html !== "string" || !html) {
+    return "";
+  }
+
+  for (const match of html.matchAll(/\bhref\s*=\s*(["'])(.*?)\1/gi)) {
+    const href = match[2] || "";
+
+    if (!href) {
+      continue;
+    }
+
+    try {
+      const parsed = new URL(href, "https://www.amazon.com");
+      const host = parsed.hostname;
+
+      if (/(^|\.)amzn\.to$/i.test(host)) {
+        return parsed.href;
+      }
+
+      if (!/(^|\.)amazon\.[a-z.]+$/i.test(host)) {
+        continue;
+      }
+
+      // Author storefronts are not a single title’s publication date.
+      if (
+        /\/e\//i.test(parsed.pathname) ||
+        /\/stores\//i.test(parsed.pathname)
+      ) {
+        continue;
+      }
+
+      if (/\/(?:dp|gp\/product)\//i.test(parsed.pathname)) {
+        return parsed.href;
+      }
+    } catch {
+      // skip bad href
+    }
+  }
+
+  return "";
+}
+
+/**
+ * Parses Amazon-style “July 1, 2025” / “1 July 2025” into UTC midnight ISO.
+ * Avoids Date.parse local-timezone drift for date-only publisher strings.
+ * @param {unknown} value
+ * @returns {string}
+ */
+export function publishedAtFromAmazonDateText(value) {
+  if (typeof value !== "string" || !value.trim()) {
+    return "";
+  }
+
+  const text = value.trim();
+  const us = text.match(
+    /^(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),?\s+((?:19|20)\d{2})$/i,
+  );
+
+  if (us) {
+    const month = MONTH_NAME_TO_NUMBER[us[1].toLowerCase()];
+    const day = Number(us[2]);
+    const year = us[3];
+
+    if (!month || !Number.isFinite(day) || day < 1 || day > 31) {
+      return "";
+    }
+
+    return isoDateString(
+      `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}T00:00:00.000Z`,
+    );
+  }
+
+  const eu = text.match(
+    /^(\d{1,2})\s+(January|February|March|April|May|June|July|August|September|October|November|December)\s+((?:19|20)\d{2})$/i,
+  );
+
+  if (eu) {
+    const day = Number(eu[1]);
+    const month = MONTH_NAME_TO_NUMBER[eu[2].toLowerCase()];
+    const year = eu[3];
+
+    if (!month || !Number.isFinite(day) || day < 1 || day > 31) {
+      return "";
+    }
+
+    return isoDateString(
+      `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}T00:00:00.000Z`,
+    );
+  }
+
+  return isoDateString(text);
+}
+
+/**
+ * Publication date from an Amazon product HTML body.
+ * @param {unknown} html
+ * @returns {string}
+ */
+export function publishedAtFromAmazonHtml(html) {
+  if (typeof html !== "string" || !html) {
+    return "";
+  }
+
+  const fromCarousel = firstCapture(
+    html,
+    /book_details-publication_date[\s\S]{0,500}?rpi-attribute-value[^>]*>\s*<span>\s*([^<]+)/i,
+  );
+  const fromCarouselIso = publishedAtFromAmazonDateText(fromCarousel);
+
+  if (fromCarouselIso) {
+    return fromCarouselIso;
+  }
+
+  const labeled = firstCapture(
+    html,
+    /Publication date[\s\S]{0,200}?<span[^>]*>\s*([A-Za-z]+\s+\d{1,2},?\s+\d{4}|\d{1,2}\s+[A-Za-z]+\s+\d{4})\s*</i,
+  );
+
+  return publishedAtFromAmazonDateText(labeled);
+}
+
+/**
+ * Stable lookup key so trailing-slash variants of the same path match.
+ * @param {unknown} value
+ * @returns {string}
+ */
+function contentUrlLookupKey(value) {
+  const url = httpContentUrl(value);
+
+  if (!url) {
+    return "";
+  }
+
+  // httpContentUrl already accepted this href; strip a non-root trailing slash.
+  const parsed = new URL(url);
+  parsed.hash = "";
+
+  if (parsed.pathname.length > 1 && parsed.pathname.endsWith("/")) {
+    parsed.pathname = parsed.pathname.slice(0, -1);
+  }
+
+  return parsed.href;
+}
+
+/**
+ * Publisher date from project/article HTML. Prefers Status Completed YEAR,
+ * then article:published_time, time[datetime], JSON-LD datePublished.
+ * Does not invent dates from free-prose year mentions.
+ * @param {unknown} html
+ * @returns {string}
+ */
+export function publishedAtFromPageHtml(html) {
+  if (typeof html !== "string" || !html) {
+    return "";
+  }
+
+  const statusYear = firstCapture(
+    html,
+    /\bStatus:\s*Complete[d]?\s+((?:19|20)\d{2})\b/i,
+  );
+  const fromStatus = publishedAtFromYear(statusYear);
+
+  if (fromStatus) {
+    return fromStatus;
+  }
+
+  const metaPublished =
+    firstCapture(
+      html,
+      /<meta\b[^>]*property=["']article:published_time["'][^>]*content=["']([^"']+)["']/i,
+    ) ||
+    firstCapture(
+      html,
+      /<meta\b[^>]*content=["']([^"']+)["'][^>]*property=["']article:published_time["']/i,
+    ) ||
+    firstCapture(
+      html,
+      /<meta\b[^>]*property=["']book:release_date["'][^>]*content=["']([^"']+)["']/i,
+    ) ||
+    firstCapture(
+      html,
+      /<meta\b[^>]*name=["']date["'][^>]*content=["']([^"']+)["']/i,
+    );
+  const fromMeta = isoDateString(metaPublished);
+
+  if (fromMeta) {
+    return fromMeta;
+  }
+
+  const timeDatetime = firstCapture(
+    html,
+    /<time\b[^>]*datetime=["']([^"']+)["']/i,
+  );
+  const fromTime = isoDateString(timeDatetime);
+
+  if (fromTime) {
+    return fromTime;
+  }
+
+  const jsonLdPublished =
+    firstCapture(html, /"datePublished"\s*:\s*"([^"]+)"/i) ||
+    firstCapture(html, /"dateCreated"\s*:\s*"([^"]+)"/i);
+
+  const fromJsonLd = isoDateString(jsonLdPublished);
+
+  if (fromJsonLd) {
+    return fromJsonLd;
+  }
+
+  // Member book badges / bylines (Chris Minnick–shaped pages).
+  const fromComing = publishedAtFromComingBadge(html);
+
+  if (fromComing) {
+    return fromComing;
+  }
+
+  const fromByline = publishedAtFromBookByline(html);
+
+  if (fromByline) {
+    return fromByline;
+  }
+
+  // Labeled book/project years on the page (not “Coming …” blurbs).
+  if (
+    !/\bComing\b/i.test(
+      firstCapture(html, /(.{0,40}\bPublished\b.{0,40})/i) || "",
+    )
+  ) {
+    const publishedYear = firstCapture(
+      html,
+      /\bPublished(?:\s+in)?\s*:?\s*((?:19|20)\d{2})\b/i,
+    );
+    const fromPublishedYear = publishedAtFromYear(publishedYear);
+
+    if (fromPublishedYear) {
+      return fromPublishedYear;
+    }
+  }
+
+  return "";
+}
+
+/**
+ * Fills missing `published_at` on content drafts from matching crawled page HTML.
+ * Mutates items in place and returns the same array reference.
+ * @param {unknown} items
+ * @param {unknown} pages
+ * @returns {unknown}
+ */
+export function enrichPublishedAtFromPages(items, pages) {
+  if (!Array.isArray(items)) {
+    return items;
+  }
+
+  if (!Array.isArray(pages) || pages.length === 0) {
+    return items;
+  }
+
+  /** @type {Map<string, string>} */
+  const htmlByUrl = new Map();
+
+  for (const page of pages) {
+    if (!page || typeof page !== "object") {
+      continue;
+    }
+
+    const key = contentUrlLookupKey(
+      /** @type {{ url?: unknown }} */ (page).url,
+    );
+    const html = /** @type {{ html?: unknown }} */ (page).html;
+
+    if (!key || typeof html !== "string" || !html) {
+      continue;
+    }
+
+    if (!htmlByUrl.has(key)) {
+      htmlByUrl.set(key, html);
+    }
+  }
+
+  for (const item of items) {
+    if (!item || typeof item !== "object") {
+      continue;
+    }
+
+    const record = /** @type {Record<string, unknown>} */ (item);
+
+    if (typeof record.published_at === "string" && record.published_at.trim()) {
+      continue;
+    }
+
+    const key = contentUrlLookupKey(record.url);
+
+    if (!key) {
+      continue;
+    }
+
+    const html = htmlByUrl.get(key);
+
+    if (!html) {
+      continue;
+    }
+
+    const published = publishedAtFromPageHtml(html);
+
+    if (published) {
+      record.published_at = published;
+    }
+  }
+
+  return items;
+}
+
+/** Max book detail/Amazon fetches per sync for missing publication dates. */
+export const MAX_BOOK_PUBLISHED_AT_FETCHES = 40;
+
+/**
+ * True when a content URL is a books/fiction work page that may declare a date.
+ * @param {unknown} url
+ * @returns {boolean}
+ */
+export function isBookWorkUrl(url) {
+  if (typeof url !== "string" || !url.startsWith("https://")) {
+    return false;
+  }
+
+  try {
+    const path = new URL(url).pathname.toLowerCase();
+    return /\/(books?|fiction)\/[^/]+/i.test(path);
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * True when a Showcase book candidate still needs a publisher date lookup.
+ * @param {Record<string, unknown>} item
+ * @returns {boolean}
+ */
+export function contentItemNeedsBookPublishedAtEnrichment(item) {
+  if (!item || typeof item !== "object") {
+    return false;
+  }
+
+  if (typeof item.published_at === "string" && item.published_at.trim()) {
+    return false;
+  }
+
+  return isBookWorkUrl(item.url);
+}
+
+/**
+ * Fills missing `published_at` for book/fiction works by fetching the member
+ * page (Coming / By · Publisher · YYYY) and, when still undated, the Amazon
+ * Buy/Pre-order target. Fail closed: no inventing dates when lookups miss.
+ * @param {Array<Record<string, unknown>>} items
+ * @param {{
+ *   cache?: Map<string, unknown>,
+ *   fetchText?: typeof fetchPublicText,
+ *   fetchRobotsText?: typeof fetchPublicText,
+ *   robotsGate?: import("./origin-robots.mjs").OriginRobotsGate,
+ *   limit?: number,
+ * }} [options]
+ * @returns {Promise<Array<Record<string, unknown>>>}
+ */
+export async function enrichPublishedAtForBookItems(items, options = {}) {
+  if (!Array.isArray(items) || items.length === 0) {
+    return Array.isArray(items) ? items : [];
+  }
+
+  const fetchText = options.fetchText || fetchPublicText;
+  const cache = options.cache || new Map();
+  const limit =
+    typeof options.limit === "number" && options.limit > 0
+      ? options.limit
+      : MAX_BOOK_PUBLISHED_AT_FETCHES;
+
+  /** @type {import("./origin-robots.mjs").OriginRobotsGate} */
+  let robotsGate;
+  if (options.robotsGate) {
+    robotsGate = options.robotsGate;
+  } else if (typeof options.fetchRobotsText === "function") {
+    robotsGate = createOriginRobotsGate({
+      cache,
+      fetchPublicText: options.fetchRobotsText,
+    });
+  } else {
+    robotsGate = createOriginRobotsGate({ cache });
+  }
+
+  let fetches = 0;
+
+  for (const item of items) {
+    if (fetches >= limit) {
+      break;
+    }
+
+    if (!contentItemNeedsBookPublishedAtEnrichment(item)) {
+      continue;
+    }
+
+    const workUrl = String(item.url);
+
+    if (!(await robotsGate.allows(workUrl))) {
+      continue;
+    }
+
+    let pageHtml = "";
+
+    try {
+      const fetched = await fetchText(workUrl, {
+        cache,
+        accept: "text/html,application/xhtml+xml;q=0.9,*/*;q=0.8",
+      });
+      fetches += 1;
+      pageHtml = typeof fetched?.body === "string" ? fetched.body : "";
+      const fromPage = publishedAtFromPageHtml(pageHtml);
+
+      if (fromPage) {
+        item.published_at = fromPage;
+        continue;
+      }
+    } catch {
+      continue;
+    }
+
+    const amazonUrl = amazonProductUrlFromHtml(pageHtml);
+
+    if (!amazonUrl || !(await robotsGate.allows(amazonUrl))) {
+      continue;
+    }
+
+    if (fetches >= limit) {
+      break;
+    }
+
+    try {
+      const amazon = await fetchText(amazonUrl, {
+        cache,
+        accept: "text/html,application/xhtml+xml;q=0.9,*/*;q=0.8",
+      });
+      fetches += 1;
+      const fromAmazon = publishedAtFromAmazonHtml(amazon?.body || "");
+
+      if (fromAmazon) {
+        item.published_at = fromAmazon;
+      }
+    } catch {
+      // Leave undated; Showcase books gate excludes them.
+    }
+  }
+
+  return items;
+}
+
 /**
  * Returns an http(s) URL without credentials or hash, otherwise empty.
  * @param {unknown} value
@@ -176,10 +747,54 @@ export function contentUrlMatchesSiteOrigin(url, siteOrigin) {
 }
 
 /**
+ * True when the content URL shares an origin with a recorded source feed
+ * (e.g. Substack posts from a participant-card Substack RSS URL).
+ * @param {string} url
+ * @param {unknown} sourceFeeds
+ * @returns {boolean}
+ */
+export function contentUrlMatchesSourceFeed(url, sourceFeeds) {
+  if (!Array.isArray(sourceFeeds) || sourceFeeds.length === 0) {
+    return false;
+  }
+
+  let contentOrigin = "";
+
+  try {
+    contentOrigin = new URL(url).origin;
+  } catch {
+    return false;
+  }
+
+  for (const feed of sourceFeeds) {
+    if (!feed || typeof feed !== "object") {
+      continue;
+    }
+
+    const feedUrl = /** @type {{ url?: unknown }} */ (feed).url;
+
+    if (typeof feedUrl !== "string" || !feedUrl.trim()) {
+      continue;
+    }
+
+    try {
+      if (new URL(feedUrl).origin === contentOrigin) {
+        return true;
+      }
+    } catch {
+      continue;
+    }
+  }
+
+  return false;
+}
+
+/**
  * Shapes a content item for content.schema.json. Drops items without identity
  * or an http(s) url, and drops cross-origin URLs (feed "Link:" posts whose
- * entry link is another site, e.g. a member linking the hub). Empty summaries
- * become "".
+ * entry link is another site, e.g. a member linking the hub)—unless the entry
+ * URL matches a participant feed origin (Substack / hosted newsletter RSS).
+ * Empty summaries become "".
  * @param {unknown} item
  * @returns {Record<string, unknown> | null}
  */
@@ -202,11 +817,14 @@ export function normalizeContentItemForPublish(item) {
 
   // Link-blog entries often use the linked page as <link>/<id>. When that
   // page is another participant (including the hub), publishing it under the
-  // member's site_origin trips cross-origin-content. Drop those.
+  // member's site_origin trips cross-origin-content. Drop those—unless the
+  // URL is on the same origin as a source feed listed on the participant card
+  // (Substack, Buttondown-hosted RSS, …).
   if (
     typeof record.site_origin === "string" &&
     record.site_origin.trim() &&
-    !contentUrlMatchesSiteOrigin(url, record.site_origin)
+    !contentUrlMatchesSiteOrigin(url, record.site_origin) &&
+    !contentUrlMatchesSourceFeed(url, record.source_feeds)
   ) {
     return null;
   }
@@ -307,8 +925,8 @@ export function imageDimensionsFromAttrs(attrs) {
   }
 
   return {
-    width: positiveIntAttr(attrs.match(/\bwidth=["']?(\d+)/i)?.[1]),
-    height: positiveIntAttr(attrs.match(/\bheight=["']?(\d+)/i)?.[1]),
+    width: positiveIntAttr(firstCapture(attrs, /\bwidth=["']?(\d+)/i)),
+    height: positiveIntAttr(firstCapture(attrs, /\bheight=["']?(\d+)/i)),
   };
 }
 
@@ -371,9 +989,9 @@ export function feedImageFromXml(chunk, feedUrl) {
 
   for (const match of chunk.matchAll(/<enclosure\b([^>]*)\/?>/gi)) {
     const attrs = match[1] || "";
-    const type = attrs.match(/\btype=["']([^"']+)["']/i)?.[1] || "";
+    const type = firstCapture(attrs, /\btype=["']([^"']+)["']/i) || "";
     const abs = absoluteHttpsImageUrl(
-      attrs.match(/\burl=["']([^"']+)["']/i)?.[1],
+      firstCapture(attrs, /\burl=["']([^"']+)["']/i),
       feedUrl,
     );
     const { width, height } = imageDimensionsFromAttrs(attrs);
@@ -387,10 +1005,10 @@ export function feedImageFromXml(chunk, feedUrl) {
     /<(?:media:thumbnail|media:content)\b([^>]*)\/?>/gi,
   )) {
     const attrs = match[1] || "";
-    const medium = attrs.match(/\bmedium=["']([^"']+)["']/i)?.[1] || "";
-    const type = attrs.match(/\btype=["']([^"']+)["']/i)?.[1] || "";
+    const medium = firstCapture(attrs, /\bmedium=["']([^"']+)["']/i) || "";
+    const type = firstCapture(attrs, /\btype=["']([^"']+)["']/i) || "";
     const abs = absoluteHttpsImageUrl(
-      attrs.match(/\burl=["']([^"']+)["']/i)?.[1],
+      firstCapture(attrs, /\burl=["']([^"']+)["']/i),
       feedUrl,
     );
     const { width, height } = imageDimensionsFromAttrs(attrs);
@@ -405,11 +1023,11 @@ export function feedImageFromXml(chunk, feedUrl) {
   }
 
   const itunesAttrs =
-    chunk.match(/<itunes:image\b([^>]*)\/?>/i)?.[1] ||
-    chunk.match(/<itunes:image\b([^>]*)>/i)?.[1] ||
+    firstCapture(chunk, /<itunes:image\b([^>]*)\/?>/i) ||
+    firstCapture(chunk, /<itunes:image\b([^>]*)>/i) ||
     "";
   const itunes = absoluteHttpsImageUrl(
-    chunk.match(/<itunes:image\b[^>]*href=["']([^"']+)["']/i)?.[1],
+    firstCapture(chunk, /<itunes:image\b[^>]*href=["']([^"']+)["']/i),
     feedUrl,
   );
   const itunesSize = imageDimensionsFromAttrs(itunesAttrs);
@@ -425,15 +1043,15 @@ export function feedImageFromXml(chunk, feedUrl) {
 
   for (const match of chunk.matchAll(/<link\b([^>]*)\/?>/gi)) {
     const attrs = match[1] || "";
-    const rel = attrs.match(/\brel=["']([^"']+)["']/i)?.[1] || "";
+    const rel = firstCapture(attrs, /\brel=["']([^"']+)["']/i) || "";
 
     if (!/^(?:enclosure|image)$/i.test(rel)) {
       continue;
     }
 
-    const type = attrs.match(/\btype=["']([^"']+)["']/i)?.[1] || "";
+    const type = firstCapture(attrs, /\btype=["']([^"']+)["']/i) || "";
     const abs = absoluteHttpsImageUrl(
-      attrs.match(/\bhref=["']([^"']+)["']/i)?.[1],
+      firstCapture(attrs, /\bhref=["']([^"']+)["']/i),
       feedUrl,
     );
     const { width, height } = imageDimensionsFromAttrs(attrs);
@@ -545,8 +1163,8 @@ export function audioEnclosureUrlFromFeedChunk(chunk, feedUrl) {
 
   for (const match of chunk.matchAll(/<enclosure\b([^>]*)\/?>/gi)) {
     const attrs = match[1] || "";
-    const type = attrs.match(/\btype=["']([^"']+)["']/i)?.[1] || "";
-    const raw = attrs.match(/\burl=["']([^"']+)["']/i)?.[1] || "";
+    const type = firstCapture(attrs, /\btype=["']([^"']+)["']/i) || "";
+    const raw = firstCapture(attrs, /\burl=["']([^"']+)["']/i) || "";
 
     if (
       !raw ||
@@ -565,9 +1183,9 @@ export function audioEnclosureUrlFromFeedChunk(chunk, feedUrl) {
 
   for (const match of chunk.matchAll(/<link\b([^>]*)\/?>/gi)) {
     const attrs = match[1] || "";
-    const rel = attrs.match(/\brel=["']([^"']+)["']/i)?.[1] || "";
-    const type = attrs.match(/\btype=["']([^"']+)["']/i)?.[1] || "";
-    const href = attrs.match(/\bhref=["']([^"']+)["']/i)?.[1] || "";
+    const rel = firstCapture(attrs, /\brel=["']([^"']+)["']/i) || "";
+    const type = firstCapture(attrs, /\btype=["']([^"']+)["']/i) || "";
+    const href = firstCapture(attrs, /\bhref=["']([^"']+)["']/i) || "";
 
     if (
       !href ||
@@ -643,10 +1261,11 @@ export function rssOrAtomEntryTitle(chunk, absoluteUrl, summaryText = "") {
   }
 
   const encoded =
-    chunk.match(
+    firstCapture(
+      chunk,
       /<content:encoded\b[^>]*>([\s\S]*?)<\/content:encoded>/i,
-    )?.[1] ||
-    chunk.match(/<content\b[^>]*>([\s\S]*?)<\/content>/i)?.[1] ||
+    ) ||
+    firstCapture(chunk, /<content\b[^>]*>([\s\S]*?)<\/content>/i) ||
     "";
   const fromBody = capRemoteString(plainTextSummary(encoded), MAX_TITLE_CHARS);
 
@@ -681,39 +1300,42 @@ export function contentItemsFromRssOrAtom(xml, meta) {
 
     if (isAtom) {
       link =
-        chunk.match(
+        firstCapture(
+          chunk,
           /<link\b[^>]*rel=["']alternate["'][^>]*href=["']([^"']+)["']/i,
-        )?.[1] ||
-        chunk.match(/<link\b[^>]*href=["']([^"']+)["']/i)?.[1] ||
+        ) ||
+        firstCapture(chunk, /<link\b[^>]*href=["']([^"']+)["']/i) ||
         "";
     } else {
-      link = chunk.match(/<link[^>]*>([\s\S]*?)<\/link>/i)?.[1] || "";
+      link = firstCapture(chunk, /<link[^>]*>([\s\S]*?)<\/link>/i) || "";
     }
 
     link = decodeHrefForParse(
       link.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1"),
     );
     const id =
-      chunk.match(/<id[^>]*>([\s\S]*?)<\/id>/i)?.[1] ||
-      chunk.match(/<guid[^>]*>([\s\S]*?)<\/guid>/i)?.[1] ||
+      firstCapture(chunk, /<id[^>]*>([\s\S]*?)<\/id>/i) ||
+      firstCapture(chunk, /<guid[^>]*>([\s\S]*?)<\/guid>/i) ||
       "";
     // Publisher dates only for Activity: prefer published/pubDate; Atom
     // updated is last resort when no publish stamp exists.
     const published =
-      chunk.match(/<published[^>]*>([\s\S]*?)<\/published>/i)?.[1] ||
-      chunk.match(/<pubDate[^>]*>([\s\S]*?)<\/pubDate>/i)?.[1] ||
-      chunk.match(/<updated[^>]*>([\s\S]*?)<\/updated>/i)?.[1] ||
+      firstCapture(chunk, /<published[^>]*>([\s\S]*?)<\/published>/i) ||
+      firstCapture(chunk, /<pubDate[^>]*>([\s\S]*?)<\/pubDate>/i) ||
+      firstCapture(chunk, /<updated[^>]*>([\s\S]*?)<\/updated>/i) ||
       null;
     // Prefer dedicated summary fields over full-content HTML bodies.
     const summary = plainTextSummary(
-      chunk.match(/<summary[^>]*>([\s\S]*?)<\/summary>/i)?.[1] ||
-        chunk.match(
+      firstCapture(chunk, /<summary[^>]*>([\s\S]*?)<\/summary>/i) ||
+        firstCapture(
+          chunk,
           /<itunes:summary[^>]*>([\s\S]*?)<\/itunes:summary>/i,
-        )?.[1] ||
-        chunk.match(
+        ) ||
+        firstCapture(
+          chunk,
           /<media:description[^>]*>([\s\S]*?)<\/media:description>/i,
-        )?.[1] ||
-        chunk.match(/<description[^>]*>([\s\S]*?)<\/description>/i)?.[1] ||
+        ) ||
+        firstCapture(chunk, /<description[^>]*>([\s\S]*?)<\/description>/i) ||
         "",
     );
 
@@ -729,8 +1351,8 @@ export function contentItemsFromRssOrAtom(xml, meta) {
       if (isAtom) {
         const attrs = catMatch[1] || "";
         const term =
-          attrs.match(/\bterm=["']([^"']+)["']/i)?.[1] ||
-          attrs.match(/\blabel=["']([^"']+)["']/i)?.[1] ||
+          firstCapture(attrs, /\bterm=["']([^"']+)["']/i) ||
+          firstCapture(attrs, /\blabel=["']([^"']+)["']/i) ||
           "";
         raw = normalizeExtractedText(term || catMatch[2] || "");
       } else {
@@ -1095,10 +1717,11 @@ export function contentItemsFromArchiveEntryList(html, meta) {
       MAX_TITLE_CHARS,
     );
     const published =
-      block.match(
+      firstCapture(
+        block,
         /<time\b[^>]*class=["'][^"']*dt-published[^"']*["'][^>]*datetime=["']([^"']+)["']/i,
-      )?.[1] ||
-      block.match(/<time\b[^>]*datetime=["']([^"']+)["']/i)?.[1] ||
+      ) ||
+      firstCapture(block, /<time\b[^>]*datetime=["']([^"']+)["']/i) ||
       null;
 
     if (!title) {
@@ -1151,7 +1774,9 @@ export function contentItemsFromHEntryList(html, meta) {
       block.match(
         /<a\b[^>]*href\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))[^>]*class(?:=["'][^"']*\bu-url\b[^"']*["']|=u-url\b)/i,
       );
-    const href = urlMatch?.[1] ?? urlMatch?.[2] ?? urlMatch?.[3] ?? "";
+    const href = urlMatch
+      ? urlMatch[1] || urlMatch[2] || urlMatch[3] || ""
+      : "";
     let absoluteUrl = "";
 
     try {
@@ -1168,33 +1793,38 @@ export function contentItemsFromHEntryList(html, meta) {
 
     const name = normalizeExtractedText(
       (
-        block.match(
+        firstCapture(
+          block,
           /<(?:h[1-6]|data|span|p)\b[^>]*class=["'][^"']*\bp-name\b[^"']*["'][^>]*>([\s\S]*?)<\/(?:h[1-6]|data|span|p)>/i,
-        )?.[1] ||
-        block.match(
+        ) ||
+        firstCapture(
+          block,
           /<data\b[^>]*class=["'][^"']*\bp-name\b[^"']*["'][^>]*value=["']([^"']+)["']/i,
-        )?.[1] ||
+        ) ||
         ""
       ).replace(/<[^>]+>/g, " "),
     );
     // Prefer p-summary / dedicated blurb over raw e-content so short notes are
     // not near-fully copied into hub cards (snippet aggregator hygiene).
     const pSummaryHtml =
-      block.match(
+      firstCapture(
+        block,
         /<(?:p|div|span)\b[^>]*class=["'][^"']*\bp-summary\b[^"']*["'][^>]*>([\s\S]*?)<\/(?:p|div|span)>/i,
-      )?.[1] || "";
+      ) || "";
     const contentHtml =
-      block.match(
+      firstCapture(
+        block,
         /<(?:div|p)\b[^>]*class=["'][^"']*\be-content\b[^"']*["'][^>]*>([\s\S]*?)<\/(?:div|p)>/i,
-      )?.[1] || "";
+      ) || "";
     const fromPSummary = plainTextSummary(pSummaryHtml);
     const summary = fromPSummary || plainTextSummary(contentHtml);
     const title = capRemoteString(name || summary, MAX_TITLE_CHARS);
     const publishedMatch = block.match(
       /<time\b[^>]*datetime\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i,
     );
-    const published =
-      publishedMatch?.[1] ?? publishedMatch?.[2] ?? publishedMatch?.[3] ?? null;
+    const published = publishedMatch
+      ? publishedMatch[1] || publishedMatch[2] || publishedMatch[3] || null
+      : null;
 
     if (!title) {
       continue;

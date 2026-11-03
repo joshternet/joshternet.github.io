@@ -115,6 +115,7 @@ test("portfolio cells survive Tailwind classes that contain > inside attributes"
   });
   // Title is Aiglon; summary must not echo it or leak Tailwind classes.
   assert.equal(items[0].summary, "2013 · Education · Switzerland");
+  assert.equal(items[0].published_at, "2013-01-01T00:00:00.000Z");
   assert.equal(/flex-row|span\]:/.test(items[0].summary), false);
   assert.equal(/flex-row|span\]:/.test(items[0].url), false);
 });
@@ -152,6 +153,28 @@ test("portfolio summary keeps distinct client and drops title echo", () => {
   });
   assert.equal(items[0].title, "Air Max Campaign");
   assert.equal(items[0].summary, "2019 · Nike · Footwear · USA");
+  assert.equal(items[0].published_at, "2019-01-01T00:00:00.000Z");
+});
+
+test("contentItemsFromPortfolio omits published_at when year is missing", () => {
+  const items = contentItemsFromPortfolio(
+    [
+      {
+        url: "https://portfolio.example/work/undated/",
+        year: "",
+        client: "",
+        project: "Undated Work",
+        sector: "Design",
+        location: "",
+      },
+    ],
+    {
+      siteOrigin: "https://portfolio.example",
+      pageUrl: "https://portfolio.example/work/",
+    },
+  );
+  assert.equal(items[0].title, "Undated Work");
+  assert.equal(items[0].published_at, undefined);
 });
 
 test("a portfolio table becomes works and sector topics", () => {

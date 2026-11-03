@@ -9,6 +9,7 @@
 
 ### Added
 
+- **YouTube show feeds for Showcase Podcasts:** Channel and playlist `videos.xml` helpers harvest recent episodes from member/Substack HTML into `podcast_episode` rows (Atom first, watch-page `uploadDate` fallback). Live feed debugging is for local sync runs.
 - **Optional `/.well-known/slashpages` OPML:** Robots-gated, SSRF-safe reader seeds same-origin crawl URLs; cross-origin outlines stay evidence-only. Includes are depth/count capped with loop detection.
 - **Showcase and Happening crawl:** Comics, study-hall/education, CSS Battles, Watch links, and YouTube/Vimeo/Twitch channel cards from Elsewhere. Past education gatherings can appear in Showcase; upcoming ones stay on Happening. `/events/` stays in Network nav when there is something upcoming.
 - **Member project shelves:** First-party apps linked from member project shelves (including off-origin apps) can appear as Showcase projects. Missing posters can be filled with a viewport capture.
@@ -18,8 +19,30 @@
 - **Non-Josh peers:** Joined tenure and equal card treatment for every identity; copy makes clear Non-Joshes participate as equals.
 - **Crawl manners:** Respects `robots.txt` and sitemap hints; probes common feed paths when pages do not advertise them.
 
+### Fixed
+
+- **`/ideas/` is not Showcase creative work:** Treat `/ideas/` as a writing hub / site chrome (not a studio slashpage), so homepage “Ideas” cards like forwardbias.dev no longer appear as projects.
+- **Book publish dates for Showcase:** Parse member “Coming Month YYYY” badges and “By … · Publisher · YYYY” bylines; when still undated, follow the book’s Amazon Buy/Pre-order link for publication date. Books without a validated date (or outside the last 365 days) stay out of Showcase.
+- **Showcase kinds and age gates:** Prefer creative path kinds over generic `project` (e.g. `/books/…` → Books, `/painting/` → Art). Books need a publish date within the last year. Undated portfolio/project rows stay out. `/availability/` and `/hire-me/` are chrome. Direct media/`wp-content/uploads` figures are not works; `music-for-losers`-style paths are not Music. Podcast episodes only feature inside the 14-day window. Astro span titles strip at compact/card time.
+- **Connection chart circle labels:** Site domain labels stay on every graph node on the homepage and `/connections/` even when the network has more than twelve participants (the old cap hid all unselected labels).
+- **Work screenshot hang on incomplete images:** Poster capture soft-times out `<img>` settle (and the whole URL budget) so Twitch/creative pages that never fire load/error cannot stall `nlp:sync` for hours. Logs each work URL before capture.
+- **Coverage gate for self-intro titles, homepage connections, and Showcase recency:** Unit tests hit blank/`slugifyTopic`, homepage document fallbacks, Non-Josh self-intro reject paths, and dated/undated portfolio `observed_at` branches so `npm run test:coverage` stays at 100%.
+
 ### Changed
 
+- **Content retention (regular posters):** Each `nlp:sync` prunes writing older than **30 days** from `_data/content.json` **before** crawl/gather, then merges new items. What’s New / Activity and other visitor writing surfaces stay at **14 days**. Showcase creative works remain while observed (carry-forward on soft-fail or feed/sitemap short-circuit). Origins stay the archive of record.
+- **Incremental fetch cache:** Conditional requests (`If-None-Match` / `If-Modified-Since`) store bodies under `.tmp/http-cache/` (gitignored; restored via Actions cache). Unchanged feeds + sitemap can short-circuit deep HTML crawl. `NETWORK_REFRESH_ALL` bypasses the cache.
+- **Join copy:** Tighter peer tone throughout `/join/`; step 2 is “Platform recipes—open the one that matches your stack, or skip to publish.”
+- **Self-intro Network titles for personal domains:** Descriptions like “I’m Chris Minnick…” set the card title when the name compresses to the host (e.g. `www.chrisminnick.com`), including Non-Josh peers. Josh-only given-name gating still blocks host-compressed brand titles such as “Forward Bias.”
+- **Undated portfolio projects sort as archival:** Showcase recency ignores crawl `observed_at` for undated project/portfolio items so archives (e.g. joshuadrake.org works without a publisher date) cannot lead as “just crawled.” Real `published_at` from Status Completed / page meta still ranks normally after sync enrichment.
+- **Connections publish before work screenshots:** `nlp:sync` writes `connections.json` / `site_signals.json` (and related NLP artifacts) before Playwright work-poster capture, so a hung screenshot pass cannot leave a finished crawl with stale edges.
+- **Homepage enrichment feeds connections:** `network:sync` persists Playwright homepage/identity observations to `_data/homepage_connections.json`; `nlp:sync` merges them when publishing `connections.json` instead of discarding them.
+- **Elsewhere profiles, not share buttons:** Reddit icons require `/user/` or `/u/` profiles—`/submit` buttons are dropped (even with `rel=me`). Facebook `sharer` and Telegram `share` links are filtered the same way.
+- **Hosted newsletter feeds count as writing:** When a Network card lists a Substack (or other off-site) RSS URL, posts from that feed origin publish into `content.json` and can appear in What’s New. Hub OPML already uses each member’s primary feed, including Substack. Link-blog posts to other participants stay dropped.
+- **Elsewhere icons:** Libre.fm gets a music-note glyph; xoxo.zone maps to Mastodon. Buttondown newsletter hosts are no longer Network Elsewhere icons (they stay out of the social strip so we can treat newsletters as feeds/subscribe surfaces later).
+- **Long CI jobs uncapped:** Removed fixed `timeout-minutes` from Site quality and Network sync scrape jobs so rebuilds can grow with membership (GitHub-hosted default ceiling remains 360m).
+- **Project years become publish dates:** Portfolio table years and project-page `Status: Completed YYYY` (plus article meta / `<time>` / JSON-LD `datePublished`) fill `published_at`. Showcase ranks real publish dates above crawl-only `observed_at`, so undated archives like TurboElectric Cessna no longer sort as brand-new.
+- **Stable `content.mjs` coverage:** Regex captures go through `firstCapture` instead of optional-chaining index access so Node’s experimental branch coverage stays at 100% across runs.
 - **Network card blurbs prefer substance:** Thin boilerplate meta (short lines, “personal homepage”, “home on the web”, “X’s website”) is skipped. Cards pick the strongest homepage or about/profile-page publisher blurb (not friends/hello/uses), join short intro paragraphs when needed, and soft-cap length for readability.
 - **Network titles prefer people over host brands:** Author / GitHub / Person JSON-LD names win before site titles. Host-compressed brands like “Forward Bias” no longer count as a personal name for `forwardbias.dev` (card shows Josh Caldwell via GitHub).
 - **Identity-page navigations settle before scrape:** Elsewhere probes wait for load + soft networkidle, recover from “interrupted by another navigation” redirect races, and no longer abort Playwright mid-goto when the enrichment budget fires. Soft site enrichment budget is 90s.

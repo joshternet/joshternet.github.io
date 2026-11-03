@@ -159,6 +159,7 @@ test("homepage connections preview renders nodes with map tools", async () => {
     false,
   );
   assert.equal(await page.locator(".connections-graph__node").count(), 2);
+  assert.equal(await page.locator(".connections-graph__node text").count(), 2);
   assert.equal(await page.locator("[data-connections-map-tools]").count(), 1);
   assert.equal(await page.locator("[data-connections-zoom-in]").count(), 1);
   assert.equal(await page.locator("[data-connections-zoom-out]").count(), 1);

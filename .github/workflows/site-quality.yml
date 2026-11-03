@@ -13,7 +13,8 @@ jobs:
   quality:
     name: Build and test site
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    # No job timeout: registry rebuild grows with membership. GitHub’s
+    # default (360m) is the ceiling for hosted runners.
 
     steps:
       - name: Check out repository

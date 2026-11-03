@@ -12,6 +12,7 @@ import {
   githubApiHeaders,
   githubProfileDisplayName,
   isElsewhereProfileUrl,
+  isNewsletterHost,
   personNameFromElsewhere,
   resolveParticipantTitle,
   sanitizeElsewhere,
@@ -43,14 +44,18 @@ test("classifyElsewhereHost maps international catalog hosts", () => {
   assert.equal(classifyElsewhereHost("threads.com"), "threads");
   assert.equal(classifyElsewhereHost("discordapp.com"), "discord");
   assert.equal(classifyElsewhereHost("www.discordapp.com"), "discord");
-  assert.equal(classifyElsewhereHost("buttondown.com"), "buttondown");
-  assert.equal(classifyElsewhereHost("www.buttondown.com"), "buttondown");
+  assert.equal(classifyElsewhereHost("buttondown.com"), "web");
+  assert.equal(classifyElsewhereHost("www.buttondown.com"), "web");
+  assert.equal(classifyElsewhereHost("libre.fm"), "librefm");
+  assert.equal(classifyElsewhereHost("www.libre.fm"), "librefm");
+  assert.equal(classifyElsewhereHost("xoxo.zone"), "mastodon");
+  assert.equal(classifyElsewhereHost("www.xoxo.zone"), "mastodon");
   assert.equal(classifyElsewhereHost("personal.example"), "web");
   assert.equal(classifyElsewhereHost("social.joshuapsteele.com"), "web");
 });
 
-test("elsewhereLabel maps buttondown and threads catalog names", () => {
-  assert.equal(elsewhereLabel("buttondown", "buttondown.com"), "Buttondown");
+test("elsewhereLabel maps librefm and threads catalog names", () => {
+  assert.equal(elsewhereLabel("librefm", "libre.fm"), "Libre.fm");
   assert.equal(elsewhereLabel("threads", "www.threads.com"), "Threads");
 });
 
@@ -477,6 +482,69 @@ test("isElsewhereProfileUrl: facebook (lines 361-364)", () => {
     isElsewhereProfileUrl(make("https://www.facebook.com/login"), "facebook"),
     false,
   );
+  assert.equal(
+    isElsewhereProfileUrl(
+      make(
+        "https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Fexample.com%2F",
+      ),
+      "facebook",
+    ),
+    false,
+  );
+});
+
+test("isElsewhereProfileUrl: reddit profiles only, not submit buttons", () => {
+  const make = (href) => new URL(href);
+  assert.equal(
+    isElsewhereProfileUrl(
+      make("https://www.reddit.com/user/joshjosh"),
+      "reddit",
+    ),
+    true,
+  );
+  assert.equal(
+    isElsewhereProfileUrl(make("https://reddit.com/u/joshjosh"), "reddit"),
+    true,
+  );
+  assert.equal(
+    isElsewhereProfileUrl(
+      make(
+        "https://reddit.com/submit?url=https%3A%2F%2Fjoshuapsteele.com%2Fabout%2F&title=About",
+      ),
+      "reddit",
+    ),
+    false,
+  );
+  assert.equal(
+    isElsewhereProfileUrl(make("https://www.reddit.com/r/webdev"), "reddit"),
+    false,
+  );
+});
+
+test("sanitizeElsewhere drops reddit submit and other share buttons even with rel=me", async () => {
+  const result = await sanitizeElsewhere(
+    [
+      {
+        href: "https://reddit.com/submit?url=https%3A%2F%2Fexample.com%2F&title=About",
+        me: true,
+      },
+      {
+        href: "https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Fexample.com%2F",
+        me: true,
+      },
+      {
+        href: "https://telegram.me/share/url?url=https%3A%2F%2Fexample.com%2F",
+        me: true,
+      },
+      { href: "https://www.reddit.com/user/joshjosh", me: true },
+    ],
+    { lookup: fakeLookup("example.com") },
+  );
+
+  assert.deepEqual(
+    result.map((item) => item.url),
+    ["https://www.reddit.com/user/joshjosh"],
+  );
 });
 
 test("isElsewhereProfileUrl: discord (lines 370-372)", () => {
@@ -503,8 +571,18 @@ test("isElsewhereProfileUrl: discord (lines 370-372)", () => {
 });
 
 test("isElsewhereProfileUrl: telegram (line 374)", () => {
-  const url = new URL("https://t.me/joshjosh");
-  assert.equal(isElsewhereProfileUrl(url, "telegram"), true);
+  const make = (href) => new URL(href);
+  assert.equal(
+    isElsewhereProfileUrl(make("https://t.me/joshjosh"), "telegram"),
+    true,
+  );
+  assert.equal(
+    isElsewhereProfileUrl(
+      make("https://telegram.me/share/url?url=https%3A%2F%2Fexample.com%2F"),
+      "telegram",
+    ),
+    false,
+  );
 });
 
 test("isElsewhereProfileUrl: medium/substack/bandcamp and similar return true (line 390)", () => {
@@ -518,11 +596,12 @@ test("isElsewhereProfileUrl: medium/substack/bandcamp and similar return true (l
     true,
   );
   assert.equal(
-    isElsewhereProfileUrl(
-      make("https://buttondown.com/joshuapsteele/"),
-      "buttondown",
-    ),
+    isElsewhereProfileUrl(make("https://libre.fm/user/artlung"), "librefm"),
     true,
+  );
+  assert.equal(
+    isElsewhereProfileUrl(make("https://libre.fm/"), "librefm"),
+    false,
   );
   assert.equal(
     isElsewhereProfileUrl(make("https://joshjosh.bandcamp.com/"), "bandcamp"),
@@ -534,6 +613,40 @@ test("isElsewhereProfileUrl: medium/substack/bandcamp and similar return true (l
       "stackoverflow",
     ),
     true,
+  );
+});
+
+test("isNewsletterHost recognizes Buttondown and skips it in sanitizeElsewhere", async () => {
+  assert.equal(isNewsletterHost(""), false);
+  assert.equal(isNewsletterHost(null), false);
+  assert.equal(isNewsletterHost("   "), false);
+  assert.equal(isNewsletterHost("buttondown.com"), true);
+  assert.equal(isNewsletterHost("www.buttondown.com"), true);
+  assert.equal(isNewsletterHost("example.buttondown.com"), true);
+  assert.equal(isNewsletterHost("libre.fm"), false);
+
+  const result = await sanitizeElsewhere(
+    [
+      { href: "https://buttondown.com/joshuapsteele/", me: true },
+      { href: "https://buttondown.com/", me: true },
+      { href: "https://libre.fm/user/artlung", me: true },
+      { href: "https://xoxo.zone/@artlung", me: true },
+    ],
+    { lookup: fakeLookup("example.com") },
+  );
+
+  assert.deepEqual(
+    result.map((item) => ({ network: item.network, url: item.url })),
+    [
+      {
+        network: "librefm",
+        url: "https://libre.fm/user/artlung",
+      },
+      {
+        network: "mastodon",
+        url: "https://xoxo.zone/@artlung",
+      },
+    ],
   );
 });
 

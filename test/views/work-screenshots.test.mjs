@@ -17,6 +17,7 @@ import {
   MAX_CREATIVE_SCREENSHOTS_PER_SYNC,
   MAX_WORK_SCREENSHOTS_PER_SYNC,
   MAX_WRITING_SCREENSHOTS_PER_SYNC,
+  WORK_SCREENSHOT_IMAGE_WAIT_MS,
   WORK_SCREENSHOT_SETTLE_MS,
   attachExistingWorkPosters,
   awaitPageReadyForScreenshot,
@@ -464,7 +465,7 @@ test("awaitPageReadyForScreenshot waits load then soft networkidle and settle", 
       waitForTimeout: async (ms) => {
         settleMs = ms;
       },
-      evaluate: async (fn) => fn(),
+      evaluate: async (fn, arg) => fn(arg),
     },
     5_000,
   );
@@ -499,6 +500,16 @@ test("awaitPageReadyForScreenshot waits load then soft networkidle and settle", 
       }
     },
   };
+  const neverSettles = {
+    complete: false,
+    /**
+     * @param {string} _type
+     * @param {() => void} _handler
+     */
+    addEventListener(_type, _handler) {
+      // Intentionally never fires — hung lazy/broken images must not block sync.
+    },
+  };
 
   globalThis.document = {
     images: [incompleteLoad, incompleteError, { complete: true }],
@@ -512,14 +523,14 @@ test("awaitPageReadyForScreenshot waits load then soft networkidle and settle", 
         }
       },
       waitForTimeout: async () => {},
-      evaluate: async (fn) => fn(),
+      evaluate: async (fn, arg) => fn(arg),
     });
 
     globalThis.document = { images: [] };
     await awaitPageReadyForScreenshot({
       waitForLoadState: async () => {},
       waitForTimeout: async () => {},
-      evaluate: async (fn) => fn(),
+      evaluate: async (fn, arg) => fn(arg),
     });
 
     await awaitPageReadyForScreenshot({
@@ -529,6 +540,22 @@ test("awaitPageReadyForScreenshot waits load then soft networkidle and settle", 
         throw new Error("page closed");
       },
     });
+
+    globalThis.document = { images: [neverSettles] };
+    assert.ok(WORK_SCREENSHOT_IMAGE_WAIT_MS > 0);
+    const hungStarted = Date.now();
+    await awaitPageReadyForScreenshot(
+      {
+        waitForLoadState: async () => {},
+        waitForTimeout: async () => {},
+        evaluate: async (fn, arg) => fn(arg),
+      },
+      200,
+    );
+    assert.ok(
+      Date.now() - hungStarted < 1_500,
+      "incomplete images without load/error must soft-timeout",
+    );
   } finally {
     if (previousDocument === undefined) {
       delete globalThis.document;

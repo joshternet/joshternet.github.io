@@ -1767,8 +1767,7 @@
           const recentlyJoined = participant
             ? participant.recently_joined === true
             : false;
-          const label =
-            graphParticipants.length <= 12 || selected ? node.domain : "";
+          const label = node.domain;
           const classes = [
             "connections-graph__node",
             selected ? "is-selected" : "",

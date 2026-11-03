@@ -620,6 +620,45 @@ export function personNameMatchingDomain(candidate, domain) {
 }
 
 /**
+ * Person name from an explicit self-intro ("I'm Chris Minnick…") when the
+ * name compresses to the host label. Unlike personNameMatchingDomain, this
+ * path is not Josh-given-name gated—self-intros are strong for Non-Josh peers.
+ * @param {string} text
+ * @param {string} domain
+ * @returns {string}
+ */
+export function personNameFromSelfIntro(text, domain) {
+  const normalized = normalizeText(text);
+  const domainLabel = primaryDomainLabel(domain);
+
+  if (!normalized || !domainLabel) {
+    return "";
+  }
+
+  // Stop before sentence punctuation so "I'm Chris Minnick. I've…" does not
+  // swallow the following clause into the name span.
+  const match = normalized.match(
+    /^(?:I['\u2019]m|I am|My name is)\s+([\p{L}][\p{L}'\u2019-]*(?:\s+[\p{L}][\p{L}'\u2019-]*){1,2})(?=\s*[.,:;!?]|\s|$)/iu,
+  );
+
+  if (!match) {
+    return "";
+  }
+
+  const candidate = normalizeText(match[1]);
+
+  if (!looksLikePersonName(candidate)) {
+    return "";
+  }
+
+  if (comparableText(candidate) !== comparableText(domainLabel)) {
+    return "";
+  }
+
+  return candidate;
+}
+
+/**
  * Finds a 2–3 word person name in free text that matches the domain label.
  * @param {string} text
  * @param {string} domain
@@ -630,6 +669,12 @@ export function personNameFromText(text, domain) {
 
   if (!normalized || !primaryDomainLabel(domain)) {
     return "";
+  }
+
+  const fromIntro = personNameFromSelfIntro(normalized, domain);
+
+  if (fromIntro) {
+    return fromIntro;
   }
 
   const words = normalized.split(/\s+/u).filter(Boolean);

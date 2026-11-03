@@ -16,20 +16,34 @@ import {
   ACTIVITY_IMAGE_MIN_WIDTH,
   contentIdentityKey,
   contentItemNeedsPosterEnrichment,
+  contentItemsFromHEntryList,
   contentItemsFromJsonFeed,
   contentItemsFromRssOrAtom,
   contentUrlMatchesSiteOrigin,
+  contentUrlMatchesSourceFeed,
+  amazonProductUrlFromHtml,
+  contentItemNeedsBookPublishedAtEnrichment,
   enrichContentItemPosters,
+  enrichPublishedAtForBookItems,
+  enrichPublishedAtFromPages,
   feedImageFromJsonItem,
   feedImageFromXml,
   httpContentUrl,
   imageDimensionsFromAttrs,
   isoDateString,
+  isBookWorkUrl,
   isUsableCardImageSize,
   joinContentWithPageSignals,
   mergeContentItems,
   normalizeContentItemForPublish,
   plainTextSummary,
+  publishedAtFromAmazonDateText,
+  publishedAtFromAmazonHtml,
+  publishedAtFromBookByline,
+  publishedAtFromComingBadge,
+  publishedAtFromMonthYear,
+  publishedAtFromPageHtml,
+  publishedAtFromYear,
   siteOriginFromContentUrl,
 } from "../../scripts/nlp/content.mjs";
 
@@ -1901,6 +1915,451 @@ test("isoDateString and httpContentUrl reject junk", () => {
   );
 });
 
+test("publishedAtFromYear maps 4-digit years and rejects junk", () => {
+  assert.equal(publishedAtFromYear("2023"), "2023-01-01T00:00:00.000Z");
+  assert.equal(publishedAtFromYear("1999"), "1999-01-01T00:00:00.000Z");
+  assert.equal(publishedAtFromYear(" 2022 "), "2022-01-01T00:00:00.000Z");
+  assert.equal(publishedAtFromYear("22"), "");
+  assert.equal(publishedAtFromYear("1899"), "");
+  assert.equal(publishedAtFromYear("2100"), "");
+  assert.equal(publishedAtFromYear(""), "");
+  assert.equal(publishedAtFromYear(null), "");
+  assert.equal(publishedAtFromYear(2023), "");
+});
+
+test("publishedAtFromPageHtml prefers Status Completed over prose years", () => {
+  assert.equal(
+    publishedAtFromPageHtml(
+      `<p>In the Spring of 2022 I went back to school.</p>
+       <p>Status: Completed 2023</p>
+       <p>Organization: FAA/OSU</p>`,
+    ),
+    "2023-01-01T00:00:00.000Z",
+  );
+  assert.equal(
+    publishedAtFromPageHtml(`<p>Status: Complete 2021</p>`),
+    "2021-01-01T00:00:00.000Z",
+  );
+  assert.equal(
+    publishedAtFromPageHtml(
+      `<meta property="article:published_time" content="2024-06-15T12:00:00Z">`,
+    ),
+    "2024-06-15T12:00:00.000Z",
+  );
+  assert.equal(
+    publishedAtFromPageHtml(
+      `<meta content="2024-07-01" property="article:published_time">`,
+    ),
+    "2024-07-01T00:00:00.000Z",
+  );
+  assert.equal(
+    publishedAtFromPageHtml(
+      `<time datetime="2020-03-04T08:00:00.000Z">March</time>`,
+    ),
+    "2020-03-04T08:00:00.000Z",
+  );
+  assert.equal(
+    publishedAtFromPageHtml(
+      `<script type="application/ld+json">{"@type":"CreativeWork","datePublished":"2019-11-02"}</script>`,
+    ),
+    "2019-11-02T00:00:00.000Z",
+  );
+  assert.equal(
+    publishedAtFromPageHtml(
+      `<p>In the Spring of 2022 I went back to school.</p>`,
+    ),
+    "",
+  );
+  assert.equal(
+    publishedAtFromPageHtml(`<p>Published: 2018</p>`),
+    "2018-01-01T00:00:00.000Z",
+  );
+  assert.equal(
+    publishedAtFromPageHtml(
+      `<meta property="book:release_date" content="2025-04-01">`,
+    ),
+    "2025-04-01T00:00:00.000Z",
+  );
+  assert.equal(
+    publishedAtFromPageHtml(
+      `<script type="application/ld+json">{"dateCreated":"2017-02-03"}</script>`,
+    ),
+    "2017-02-03T00:00:00.000Z",
+  );
+  assert.equal(publishedAtFromPageHtml(""), "");
+  assert.equal(publishedAtFromPageHtml(null), "");
+  assert.equal(
+    publishedAtFromPageHtml(`<p class="soon">Coming April 2027</p>`),
+    "2027-04-01T00:00:00.000Z",
+  );
+  assert.equal(
+    publishedAtFromPageHtml(
+      `<p class="meta">By Chris Minnick · Wiley · 2025</p>`,
+    ),
+    "2025-01-01T00:00:00.000Z",
+  );
+  assert.equal(
+    publishedAtFromPageHtml(`<span class="badge">Coming 2026</span>`),
+    "2026-01-01T00:00:00.000Z",
+  );
+});
+
+test("book coming badges, bylines, and Amazon publication dates parse", () => {
+  assert.equal(
+    publishedAtFromMonthYear("April", "2027"),
+    "2027-04-01T00:00:00.000Z",
+  );
+  assert.equal(publishedAtFromMonthYear("nope", "2027"), "");
+  assert.equal(publishedAtFromMonthYear(1, "2027"), "");
+  assert.equal(publishedAtFromComingBadge(""), "");
+  assert.equal(publishedAtFromComingBadge(null), "");
+  assert.equal(
+    publishedAtFromComingBadge("Coming April 2027"),
+    "2027-04-01T00:00:00.000Z",
+  );
+  assert.equal(
+    publishedAtFromComingBadge("Coming 2028"),
+    "2028-01-01T00:00:00.000Z",
+  );
+  assert.equal(publishedAtFromBookByline(""), "");
+  assert.equal(
+    publishedAtFromBookByline("By Chris Minnick · Wiley · 2025"),
+    "2025-01-01T00:00:00.000Z",
+  );
+  assert.equal(publishedAtFromBookByline("By Chris Minnick · Wiley"), "");
+  assert.equal(
+    amazonProductUrlFromHtml(
+      `<a href="https://amzn.to/47jy5Da">Buy</a>
+       <a href="https://www.amazon.com/Chris-Minnick/e/B002BMCII2">Author</a>`,
+    ),
+    "https://amzn.to/47jy5Da",
+  );
+  assert.equal(
+    amazonProductUrlFromHtml(
+      `<a href='https://www.amazon.com/gp/product/1394341725'>Buy</a>`,
+    ),
+    "https://www.amazon.com/gp/product/1394341725",
+  );
+  assert.equal(
+    amazonProductUrlFromHtml(
+      `<a href="">empty</a>
+       <a href=''>empty2</a>
+       <a href="https://example.com/not-amazon">other</a>
+       <a href="https://www.amazon.com/stores/author">store</a>
+       <a href="https://www.amazon.com/Chris/e/B002">author</a>
+       <a href="https://www.amazon.com/s?k=books">search</a>
+       <a href="http://[">bad</a>`,
+    ),
+    "",
+  );
+  assert.equal(amazonProductUrlFromHtml(""), "");
+  assert.equal(amazonProductUrlFromHtml("<a href='/local'>x</a>"), "");
+  // Force an empty capture group via a zero-width quoted href.
+  assert.equal(amazonProductUrlFromHtml('<a href="">x</a>'), "");
+  assert.equal(
+    publishedAtFromAmazonDateText("July 1, 2025"),
+    "2025-07-01T00:00:00.000Z",
+  );
+  assert.equal(
+    publishedAtFromAmazonDateText("1 July 2025"),
+    "2025-07-01T00:00:00.000Z",
+  );
+  assert.equal(publishedAtFromAmazonDateText("July 32, 2025"), "");
+  assert.equal(publishedAtFromAmazonDateText("32 July 2025"), "");
+  assert.equal(publishedAtFromAmazonDateText(""), "");
+  assert.equal(publishedAtFromAmazonDateText("not a date"), "");
+  assert.equal(
+    publishedAtFromAmazonHtml(`
+      <div data-rpi-attribute-name="book_details-publication_date">
+        <span>Publication date</span>
+        <div class="rpi-attribute-value"><span>July 1, 2025</span></div>
+      </div>`),
+    "2025-07-01T00:00:00.000Z",
+  );
+  assert.equal(
+    publishedAtFromAmazonHtml(
+      `<span>Publication date</span><span>August 15, 2024</span>`,
+    ),
+    "2024-08-15T00:00:00.000Z",
+  );
+  assert.equal(publishedAtFromAmazonHtml(""), "");
+  assert.equal(publishedAtFromAmazonHtml("<html></html>"), "");
+  assert.equal(isBookWorkUrl("https://a.example/books/title/"), true);
+  assert.equal(isBookWorkUrl("https://a.example/fiction/novel/"), true);
+  assert.equal(isBookWorkUrl("https://a.example/books/"), false);
+  assert.equal(isBookWorkUrl("https://["), false);
+  assert.equal(isBookWorkUrl("not a url"), false);
+  assert.equal(
+    contentItemNeedsBookPublishedAtEnrichment({
+      url: "https://a.example/books/title/",
+    }),
+    true,
+  );
+  assert.equal(
+    contentItemNeedsBookPublishedAtEnrichment({
+      url: "https://a.example/books/title/",
+      published_at: "2025-01-01T00:00:00.000Z",
+    }),
+    false,
+  );
+  assert.equal(contentItemNeedsBookPublishedAtEnrichment(null), false);
+});
+
+test("enrichPublishedAtForBookItems uses page then Amazon fallback", async () => {
+  const items = [
+    {
+      url: "https://a.example/books/claude/",
+      title: "Claude",
+    },
+    {
+      url: "https://a.example/books/ai/",
+      title: "AI",
+    },
+    {
+      url: "https://a.example/projects/skip/",
+      title: "Skip",
+    },
+  ];
+
+  await enrichPublishedAtForBookItems(items, {
+    robotsGate: ALLOW_ALL_ROBOTS,
+    fetchText: async (href) => {
+      if (href.endsWith("/books/claude/")) {
+        return {
+          url: href,
+          contentType: "text/html",
+          body: `<p class="soon">Coming April 2027</p>
+            <a href="https://amzn.to/claude">Pre-order</a>`,
+        };
+      }
+
+      if (href.endsWith("/books/ai/")) {
+        return {
+          url: href,
+          contentType: "text/html",
+          body: `<p class="meta">By Chris Minnick</p>
+            <a href="https://amzn.to/ai-book">Buy on Amazon</a>`,
+        };
+      }
+
+      if (href.includes("amzn.to/ai-book")) {
+        return {
+          url: "https://www.amazon.com/dp/AI",
+          contentType: "text/html",
+          body: `<div data-rpi-attribute-name="book_details-publication_date">
+            <div class="rpi-attribute-value"><span>July 1, 2025</span></div>
+          </div>`,
+        };
+      }
+
+      throw new Error(`unexpected ${href}`);
+    },
+  });
+
+  assert.equal(items[0].published_at, "2027-04-01T00:00:00.000Z");
+  assert.equal(items[1].published_at, "2025-07-01T00:00:00.000Z");
+  assert.equal(items[2].published_at, undefined);
+  assert.deepEqual(await enrichPublishedAtForBookItems([]), []);
+  assert.deepEqual(await enrichPublishedAtForBookItems(null), []);
+});
+
+test("enrichPublishedAtForBookItems respects robots deny and fetch errors", async () => {
+  const denied = [{ url: "https://a.example/books/blocked/", title: "X" }];
+  await enrichPublishedAtForBookItems(denied, {
+    robotsGate: {
+      allows: async () => false,
+      bodyForOrigin: async () => "",
+    },
+    fetchText: async () => {
+      throw new Error("should not fetch");
+    },
+  });
+  assert.equal(denied[0].published_at, undefined);
+
+  const boom = [{ url: "https://a.example/books/boom/", title: "Y" }];
+  await enrichPublishedAtForBookItems(boom, {
+    robotsGate: ALLOW_ALL_ROBOTS,
+    fetchText: async () => {
+      throw new Error("offline");
+    },
+  });
+  assert.equal(boom[0].published_at, undefined);
+
+  const amazonDenied = [{ url: "https://a.example/books/amz/", title: "Z" }];
+  await enrichPublishedAtForBookItems(amazonDenied, {
+    robotsGate: {
+      allows: async (href) => !String(href).includes("amzn.to"),
+      bodyForOrigin: async () => "",
+    },
+    fetchText: async (href) => ({
+      url: href,
+      contentType: "text/html",
+      body: `<a href="https://amzn.to/x">Buy</a>`,
+    }),
+  });
+  assert.equal(amazonDenied[0].published_at, undefined);
+
+  const amazonBoom = [{ url: "https://a.example/books/amz-boom/", title: "A" }];
+  await enrichPublishedAtForBookItems(amazonBoom, {
+    robotsGate: ALLOW_ALL_ROBOTS,
+    fetchText: async (href) => {
+      if (href.includes("/books/amz-boom/")) {
+        return {
+          url: href,
+          contentType: "text/html",
+          body: `<a href="https://amzn.to/boom">Buy</a>`,
+        };
+      }
+
+      throw new Error("amazon offline");
+    },
+  });
+  assert.equal(amazonBoom[0].published_at, undefined);
+
+  const undatedAmazon = [
+    { url: "https://a.example/books/undated-amz/", title: "U" },
+  ];
+  await enrichPublishedAtForBookItems(undatedAmazon, {
+    robotsGate: ALLOW_ALL_ROBOTS,
+    fetchText: async (href) => ({
+      url: href,
+      contentType: "text/html",
+      body: href.includes("amzn.to")
+        ? "<html>no date</html>"
+        : `<a href="https://amzn.to/nodate">Buy</a>`,
+    }),
+  });
+  assert.equal(undatedAmazon[0].published_at, undefined);
+
+  const nonStringBody = [
+    { url: "https://a.example/books/non-string/", title: "N" },
+  ];
+  await enrichPublishedAtForBookItems(nonStringBody, {
+    robotsGate: ALLOW_ALL_ROBOTS,
+    fetchText: async () => ({
+      url: "https://a.example/books/non-string/",
+      contentType: "text/html",
+      body: 12,
+    }),
+  });
+  assert.equal(nonStringBody[0].published_at, undefined);
+
+  const limited = [
+    { url: "https://a.example/books/one/", title: "One" },
+    { url: "https://a.example/books/two/", title: "Two" },
+  ];
+  await enrichPublishedAtForBookItems(limited, {
+    robotsGate: ALLOW_ALL_ROBOTS,
+    limit: 1,
+    fetchText: async (href) => ({
+      url: href,
+      contentType: "text/html",
+      body: `<p class="soon">Coming May 2026</p>`,
+    }),
+  });
+  assert.equal(limited[0].published_at, "2026-05-01T00:00:00.000Z");
+  assert.equal(limited[1].published_at, undefined);
+
+  const limitBeforeAmazon = [
+    { url: "https://a.example/books/need-amz/", title: "Need" },
+  ];
+  await enrichPublishedAtForBookItems(limitBeforeAmazon, {
+    robotsGate: ALLOW_ALL_ROBOTS,
+    limit: 1,
+    fetchText: async (href) => {
+      if (href.includes("amzn.to")) {
+        throw new Error("should not amazon");
+      }
+
+      return {
+        url: href,
+        contentType: "text/html",
+        body: `<a href="https://amzn.to/later">Buy</a>`,
+      };
+    },
+  });
+  assert.equal(limitBeforeAmazon[0].published_at, undefined);
+
+  await enrichPublishedAtForBookItems(
+    [
+      {
+        url: "https://a.example/books/dated/",
+        published_at: "2024-01-01T00:00:00.000Z",
+      },
+    ],
+    {
+      fetchRobotsText: allowAllRobotsText,
+      fetchText: async () => {
+        throw new Error("should not fetch dated books");
+      },
+    },
+  );
+
+  await enrichPublishedAtForBookItems(
+    [{ url: "https://a.example/projects/x/", title: "Not a book" }],
+    {
+      cache: new Map(),
+    },
+  );
+
+  const amazonEmptyBody = [
+    { url: "https://a.example/books/empty-amz-body/", title: "E" },
+  ];
+  await enrichPublishedAtForBookItems(amazonEmptyBody, {
+    robotsGate: ALLOW_ALL_ROBOTS,
+    fetchText: async (href) => {
+      if (href.includes("amzn.to")) {
+        return { url: href, contentType: "text/html", body: null };
+      }
+
+      return {
+        url: href,
+        contentType: "text/html",
+        body: `<a href="https://amzn.to/empty-body">Buy</a>`,
+      };
+    },
+  });
+  assert.equal(amazonEmptyBody[0].published_at, undefined);
+});
+
+test("enrichPublishedAtFromPages fills missing published_at from crawled HTML", () => {
+  const items = [
+    {
+      url: "https://joshuadrake.org/projects/turboelectriccessna",
+      title: "TurboElectric Cessna",
+      observed_at: "2026-11-02T15:29:16.095Z",
+    },
+    {
+      url: "https://example.org/already-dated",
+      published_at: "2025-01-01T00:00:00.000Z",
+      title: "Keep me",
+    },
+    {
+      url: "https://example.org/no-page",
+      title: "Stay undated",
+    },
+    null,
+    { title: "no url" },
+  ];
+  enrichPublishedAtFromPages(items, [
+    {
+      url: "https://joshuadrake.org/projects/turboelectriccessna/",
+      html: `<p>Spring of 2022</p><p>Status: Completed 2023</p>`,
+    },
+    {
+      url: "https://example.org/already-dated",
+      html: `<p>Status: Completed 2010</p>`,
+    },
+    { url: "https://example.org/empty", html: "" },
+    null,
+  ]);
+  assert.equal(items[0].published_at, "2023-01-01T00:00:00.000Z");
+  assert.equal(items[1].published_at, "2025-01-01T00:00:00.000Z");
+  assert.equal(items[2].published_at, undefined);
+  assert.equal(enrichPublishedAtFromPages(null, []), null);
+  assert.deepEqual(enrichPublishedAtFromPages([], null), []);
+});
+
 test("normalizeContentItemForPublish drops invalid items and stringifies summary", () => {
   assert.equal(normalizeContentItemForPublish(null), null);
   assert.equal(normalizeContentItemForPublish(5), null);
@@ -1998,6 +2457,68 @@ test("normalizeContentItemForPublish drops member link-posts to the hub", () => 
     summary: "",
   });
   assert.equal(sameOrigin.url, "https://joshua.seigler.net/posts/hi/");
+});
+
+test("contentUrlMatchesSourceFeed allows Substack posts from card feeds", () => {
+  assert.equal(
+    contentUrlMatchesSourceFeed("https://chrisminnick.substack.com/p/hello", [
+      { type: "rss", url: "https://chrisminnick.substack.com/feed" },
+    ]),
+    true,
+  );
+  assert.equal(
+    contentUrlMatchesSourceFeed("https://other.substack.com/p/hello", [
+      { type: "rss", url: "https://chrisminnick.substack.com/feed" },
+    ]),
+    false,
+  );
+  assert.equal(contentUrlMatchesSourceFeed("https://a.example/p", null), false);
+  assert.equal(contentUrlMatchesSourceFeed("https://a.example/p", []), false);
+  assert.equal(
+    contentUrlMatchesSourceFeed("not a url", [
+      { type: "rss", url: "https://chrisminnick.substack.com/feed" },
+    ]),
+    false,
+  );
+  assert.equal(
+    contentUrlMatchesSourceFeed("https://a.example/p", [
+      null,
+      { type: "rss", url: "not a url" },
+      { type: "rss" },
+    ]),
+    false,
+  );
+});
+
+test("normalizeContentItemForPublish keeps Substack posts when source feed matches", () => {
+  const published = normalizeContentItemForPublish({
+    identity: "url:https://chrisminnick.substack.com/p/hello",
+    url: "https://chrisminnick.substack.com/p/hello",
+    site_origin: "https://www.chrisminnick.com",
+    title: "Hello from Substack",
+    summary: "A newsletter post.",
+    published_at: "2026-10-20T12:00:00.000Z",
+    source_feeds: [
+      { type: "rss", url: "https://chrisminnick.substack.com/feed" },
+    ],
+  });
+  assert.equal(published?.url, "https://chrisminnick.substack.com/p/hello");
+  assert.equal(published?.site_origin, "https://www.chrisminnick.com");
+  assert.equal(published?.published_at, "2026-10-20T12:00:00.000Z");
+
+  assert.equal(
+    normalizeContentItemForPublish({
+      identity: "url:https://other.substack.com/p/not-theirs",
+      url: "https://other.substack.com/p/not-theirs",
+      site_origin: "https://www.chrisminnick.com",
+      title: "Someone else",
+      summary: "",
+      source_feeds: [
+        { type: "rss", url: "https://chrisminnick.substack.com/feed" },
+      ],
+    }),
+    null,
+  );
 });
 
 test("mergeContentItems drops guid-only drafts without http urls", () => {
@@ -2830,4 +3351,131 @@ test("contentItemsFromJsonFeed: content_text and content_html fallbacks", () => 
     },
   );
   assert.equal(neither[0].summary, "");
+});
+
+test("contentItemsFromJsonFeed: prefers item.language over feed language", () => {
+  const items = contentItemsFromJsonFeed(
+    JSON.stringify({
+      language: "en",
+      items: [
+        {
+          id: "lang-item",
+          url: "https://a.example/fr-post/",
+          title: "Bonjour",
+          language: "fr-CA",
+          date_published: "2024-01-01T00:00:00Z",
+        },
+      ],
+    }),
+    JSON_META,
+  );
+
+  assert.equal(items[0].language, "fr-ca");
+});
+
+test("joinContentWithPageSignals: invalid language tags become null", () => {
+  const joined = joinContentWithPageSignals(
+    [
+      {
+        identity: "url:https://a.example/bad-lang/",
+        url: "https://a.example/bad-lang/",
+        language: "!!!",
+        title: "2014",
+        summary: "",
+        declared_topics: [],
+      },
+    ],
+    [
+      {
+        pages: [
+          {
+            url: "https://a.example/bad-lang/",
+            lang: "not a tag!!!",
+            share_description: "<p></p>",
+          },
+        ],
+        declared_topics: [],
+      },
+    ],
+  );
+
+  assert.equal(joined[0].language, null);
+  assert.equal(joined[0].title, "2014");
+});
+
+test("contentItemsFromHEntryList: empty u-url href skips the entry", () => {
+  const notes = contentItemsFromHEntryList(
+    `<article class="h-entry"><a class="u-url" href=""></a><p class="e-content">blank</p></article>
+     <article class="h-entry"><a class="u-url" href="/notes/ok/"><span class="p-name">Ok</span></a>
+     <time class="dt-published" datetime=""></time><p class="e-content">body</p></article>`,
+    {
+      pageUrl: "https://a.example/notes/",
+      siteOrigin: "https://a.example",
+      observedAt: "2026-11-01T00:00:00.000Z",
+    },
+  );
+
+  assert.equal(notes.length, 1);
+  assert.equal(notes[0].url, "https://a.example/notes/ok/");
+  assert.equal(notes[0].published_at, null);
+});
+
+test("contentItemsFromRssOrAtom: reads feed and entry language tags", () => {
+  const atom = contentItemsFromRssOrAtom(
+    `<?xml version="1.0"?>
+     <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="de">
+       <entry>
+         <title>Eins</title>
+         <link href="https://a.example/eins/" rel="alternate"/>
+         <id>https://a.example/eins/</id>
+         <updated>2024-01-01T00:00:00Z</updated>
+       </entry>
+     </feed>`,
+    {
+      feedUrl: "https://a.example/atom.xml",
+      siteOrigin: "https://a.example",
+      feedKind: "atom",
+      observedAt: "2026-11-01T00:00:00.000Z",
+    },
+  );
+  assert.equal(atom[0].language, "de");
+
+  const atomEntryLang = contentItemsFromRssOrAtom(
+    `<?xml version="1.0"?>
+     <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+       <entry xml:lang="es">
+         <title>Hola</title>
+         <link href="https://a.example/hola/" rel="alternate"/>
+         <id>https://a.example/hola/</id>
+         <updated>2024-01-01T00:00:00Z</updated>
+       </entry>
+     </feed>`,
+    {
+      feedUrl: "https://a.example/atom.xml",
+      siteOrigin: "https://a.example",
+      feedKind: "atom",
+      observedAt: "2026-11-01T00:00:00.000Z",
+    },
+  );
+  assert.equal(atomEntryLang[0].language, "es");
+
+  const rss = contentItemsFromRssOrAtom(
+    `<?xml version="1.0"?>
+     <rss version="2.0"><channel>
+       <language>pt-BR</language>
+       <item>
+         <title>Oi</title>
+         <link>https://a.example/oi/</link>
+         <guid>https://a.example/oi/</guid>
+         <pubDate>Mon, 01 Jan 2024 00:00:00 GMT</pubDate>
+       </item>
+     </channel></rss>`,
+    {
+      feedUrl: "https://a.example/rss.xml",
+      siteOrigin: "https://a.example",
+      feedKind: "rss",
+      observedAt: "2026-11-01T00:00:00.000Z",
+    },
+  );
+  assert.equal(rss[0].language, "pt-br");
 });

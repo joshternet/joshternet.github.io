@@ -10,6 +10,11 @@ import path from "node:path";
 import { formatTextForPath } from "../format-written.mjs";
 import { assertPublicURL, normalizeText } from "../network/lib.mjs";
 import { slugifyTopic } from "../network/connections.mjs";
+import {
+  conditionalHeadersFromEntry,
+  readFetchCacheBody,
+  writeFetchCacheEntry,
+} from "./fetch-cache.mjs";
 import { parseHtmlRegions } from "./text.mjs";
 
 /**
@@ -101,14 +106,21 @@ export async function writeTextAtomic(filePath, text) {
 /**
  * Fetches a public URL with timeout and byte cap. Oversized bodies are
  * truncated so a huge feed or homepage does not abort the crawl.
+ * When `httpCache` is set, sends conditional headers and reuses bodies on 304.
  * @param {string} href
  * @param {{
  *   cache?: Map<string, unknown>,
  *   accept?: string,
  *   maxBytes?: number,
  *   overflow?: "truncate" | "throw",
+ *   httpCache?: import("./fetch-cache.mjs").FetchCache,
  * }} [options]
- * @returns {Promise<{url: string, contentType: string, body: string}>}
+ * @returns {Promise<{
+ *   url: string,
+ *   contentType: string,
+ *   body: string,
+ *   unchanged?: boolean,
+ * }>}
  */
 export async function fetchPublicText(href, options = {}) {
   const url = await assertPublicURL(href, { cache: options.cache });
@@ -119,6 +131,10 @@ export async function fetchPublicText(href, options = {}) {
       ? options.maxBytes
       : MAX_BYTES_PER_RESPONSE;
   const overflow = options.overflow === "throw" ? "throw" : "truncate";
+  const httpCache = options.httpCache;
+  const prior =
+    httpCache && !httpCache.bypass ? httpCache.entries.get(url.href) : null;
+  const conditional = conditionalHeadersFromEntry(prior);
 
   try {
     const response = await fetch(url.href, {
@@ -127,8 +143,26 @@ export async function fetchPublicText(href, options = {}) {
       headers: {
         Accept: options.accept || "text/html,application/xhtml+xml,*/*;q=0.8",
         "User-Agent": USER_AGENT,
+        ...conditional,
       },
     });
+
+    if (response.status === 304) {
+      if (httpCache) {
+        const cached = await readFetchCacheBody(httpCache, url.href);
+
+        if (cached) {
+          return {
+            url: url.href,
+            contentType: cached.entry.contentType || "",
+            body: cached.body,
+            unchanged: true,
+          };
+        }
+      }
+
+      throw new Error(`HTTP 304 without cache for ${url.href}`);
+    }
 
     if (response.status >= 300 && response.status < 400) {
       const location = response.headers.get("location");
@@ -157,10 +191,23 @@ export async function fetchPublicText(href, options = {}) {
       buffer = buffer.subarray(0, maxBytes);
     }
 
+    const body = buffer.toString("utf8");
+
+    if (httpCache && !httpCache.bypass) {
+      await writeFetchCacheEntry(httpCache, {
+        url: url.href,
+        body,
+        contentType,
+        etag: response.headers.get("etag"),
+        lastModified: response.headers.get("last-modified"),
+      });
+    }
+
     return {
       url: url.href,
       contentType,
-      body: buffer.toString("utf8"),
+      body,
+      unchanged: false,
     };
   } finally {
     clearTimeout(timer);

@@ -50,6 +50,16 @@ export const WORK_SCREENSHOT_TIMEOUT_MS = 20_000;
 /** @type {number} Soft networkidle budget after load (analytics often never idle). */
 export const WORK_SCREENSHOT_NETWORKIDLE_MS = 8_000;
 
+/**
+ * Soft budget for incomplete `<img>` decode before capture.
+ * Lazy/broken images on Twitch and creative sites can stay `complete === false`
+ * without ever firing load/error — that wait must not block sync forever.
+ */
+export const WORK_SCREENSHOT_IMAGE_WAIT_MS = 5_000;
+
+/** @type {number} Hard ceiling for one work URL (goto + settle + screenshot). */
+export const WORK_SCREENSHOT_CAPTURE_BUDGET_MS = 45_000;
+
 /** @type {number} Brief settle after assets before the viewport capture. */
 export const WORK_SCREENSHOT_SETTLE_MS = 750;
 
@@ -354,14 +364,41 @@ export function selectScreenshotTargets(pending, maxCaptures, options = {}) {
 }
 
 /**
+ * Resolves when `promise` settles or `timeoutMs` elapses (whichever first).
+ * Used so page-side waits cannot strand the Node sync loop.
+ * @template T
+ * @param {Promise<T>} promise
+ * @param {number} timeoutMs
+ * @returns {Promise<T | undefined>}
+ */
+async function softRace(promise, timeoutMs) {
+  let timer;
+
+  try {
+    return await Promise.race([
+      promise,
+      new Promise((resolve) => {
+        timer = setTimeout(resolve, timeoutMs);
+      }),
+    ]);
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+/**
  * Wait until the page is ready enough for a card poster screenshot.
  * Uses load (not domcontentloaded) so stylesheet/image load events fire,
  * then soft-waits networkidle and incomplete document images. Never throws
  * for settle timeouts—capture whatever rendered within the budget.
+ * Host-side races bound every wait so a stuck renderer cannot hang sync.
  * @param {{
  *   waitForLoadState?: (state: string, opts?: { timeout?: number }) => Promise<unknown>,
  *   waitForTimeout?: (ms: number) => Promise<unknown>,
- *   evaluate?: (fn: () => Promise<unknown> | unknown) => Promise<unknown>,
+ *   evaluate?: (
+ *     fn: ((waitMs: number) => Promise<unknown> | unknown) | (() => Promise<unknown> | unknown),
+ *     arg?: number,
+ *   ) => Promise<unknown>,
  * }} page
  * @param {number} [timeoutMs]
  * @returns {Promise<void>}
@@ -371,6 +408,7 @@ export async function awaitPageReadyForScreenshot(page, timeoutMs) {
     typeof timeoutMs === "number" && timeoutMs > 0
       ? timeoutMs
       : WORK_SCREENSHOT_TIMEOUT_MS;
+  const imageWaitMs = Math.min(budget, WORK_SCREENSHOT_IMAGE_WAIT_MS);
 
   if (typeof page.waitForLoadState === "function") {
     try {
@@ -390,25 +428,35 @@ export async function awaitPageReadyForScreenshot(page, timeoutMs) {
 
   if (typeof page.evaluate === "function") {
     try {
-      await page.evaluate(async () => {
-        const pending = Array.from(document.images).filter(
-          (image) => !image.complete,
-        );
+      // Race on the host: if the page event loop is wedged, in-page setTimeout
+      // never fires and an unbounded evaluate would stall nlp:sync for hours.
+      await softRace(
+        page.evaluate(async (waitMs) => {
+          const pending = Array.from(document.images).filter(
+            (image) => !image.complete,
+          );
 
-        if (pending.length === 0) {
-          return;
-        }
+          if (pending.length === 0) {
+            return;
+          }
 
-        await Promise.all(
-          pending.map(
-            (image) =>
-              new Promise((resolve) => {
-                image.addEventListener("load", resolve, { once: true });
-                image.addEventListener("error", resolve, { once: true });
-              }),
-          ),
-        );
-      });
+          await Promise.race([
+            Promise.all(
+              pending.map(
+                (image) =>
+                  new Promise((resolve) => {
+                    image.addEventListener("load", resolve, { once: true });
+                    image.addEventListener("error", resolve, { once: true });
+                  }),
+              ),
+            ),
+            new Promise((resolve) => {
+              setTimeout(resolve, waitMs);
+            }),
+          ]);
+        }, imageWaitMs),
+        imageWaitMs + 500,
+      );
     } catch {
       // Ignore evaluate failures on closed or restricted pages.
     }
@@ -503,18 +551,33 @@ export async function captureMissingWorkScreenshots(items, options = {}) {
 
   let writingCaptured = 0;
   let creativeCaptured = 0;
+  /**
+   * Progress reporter. Defaults to console.log for sync; tests inject a
+   * capture so expected summaries assert green without raw terminal noise.
+   * @param {string} message
+   */
+  const log =
+    typeof options.log === "function"
+      ? options.log
+      : (message) => {
+          console.log(message);
+        };
 
   try {
+    let index = 0;
+
     for (const item of targets) {
       if (!contentItemNeedsWorkScreenshot(item)) {
         continue;
       }
 
+      index += 1;
       // contentItemNeedsWorkScreenshot already requires a plain https URL, so
       // posterAssetPath always returns a local asset path here.
       const workUrl = String(item.url);
       const assetPath = posterAssetPath(workUrl);
       const absolute = absolutePosterPath(root, assetPath);
+      log(`work screenshot ${index}/${targets.length} ${workUrl}`);
 
       try {
         await fs.mkdir(path.dirname(absolute), { recursive: true });
@@ -527,36 +590,47 @@ export async function captureMissingWorkScreenshots(items, options = {}) {
         });
 
         try {
-          const page = await context.newPage();
-          await page.goto(workUrl, {
-            waitUntil: "load",
-            timeout: timeoutMs,
-          });
-          await awaitPageReadyForScreenshot(page, timeoutMs);
-          const png = await page.screenshot({
-            type: "png",
-            fullPage: false,
-            animations: "disabled",
-          });
-          const webp = await sharp(png)
-            .resize(WORK_SCREENSHOT_WIDTH, WORK_SCREENSHOT_HEIGHT, {
-              fit: "cover",
-              position: "top",
-            })
-            .webp({ quality: 82, effort: 5 })
-            .toBuffer();
-          await fs.writeFile(absolute, webp);
-          const written = await fs.stat(absolute);
+          const captureBudget = Math.max(
+            timeoutMs +
+              WORK_SCREENSHOT_NETWORKIDLE_MS +
+              WORK_SCREENSHOT_SETTLE_MS,
+            WORK_SCREENSHOT_CAPTURE_BUDGET_MS,
+          );
+          await softRace(
+            (async () => {
+              const page = await context.newPage();
+              await page.goto(workUrl, {
+                waitUntil: "load",
+                timeout: timeoutMs,
+              });
+              await awaitPageReadyForScreenshot(page, timeoutMs);
+              const png = await page.screenshot({
+                type: "png",
+                fullPage: false,
+                animations: "disabled",
+              });
+              const webp = await sharp(png)
+                .resize(WORK_SCREENSHOT_WIDTH, WORK_SCREENSHOT_HEIGHT, {
+                  fit: "cover",
+                  position: "top",
+                })
+                .webp({ quality: 82, effort: 5 })
+                .toBuffer();
+              await fs.writeFile(absolute, webp);
+              const written = await fs.stat(absolute);
 
-          if (written.isFile() && written.size > 0) {
-            item.image = assetPath;
+              if (written.isFile() && written.size > 0) {
+                item.image = assetPath;
 
-            if (isWritingScreenshotItem(item)) {
-              writingCaptured += 1;
-            } else {
-              creativeCaptured += 1;
-            }
-          }
+                if (isWritingScreenshotItem(item)) {
+                  writingCaptured += 1;
+                } else {
+                  creativeCaptured += 1;
+                }
+              }
+            })(),
+            captureBudget,
+          );
         } finally {
           await context.close();
         }
@@ -577,17 +651,6 @@ export async function captureMissingWorkScreenshots(items, options = {}) {
   ).length;
   const captured = writingCaptured + creativeCaptured;
   const summary = `work screenshots: ${captured} captured (${writingCaptured} writing, ${creativeCaptured} creative); ${remaining} pending remaining`;
-  /**
-   * Progress reporter. Defaults to console.log for sync; tests inject a
-   * capture so expected summaries assert green without raw terminal noise.
-   * @param {string} message
-   */
-  const log =
-    typeof options.log === "function"
-      ? options.log
-      : (message) => {
-          console.log(message);
-        };
 
   log(summary);
 
@@ -722,31 +785,43 @@ export async function captureShowcasePosterFallbacks(views, options = {}) {
         });
 
         try {
-          const page = await context.newPage();
-          await page.goto(row.url, {
-            waitUntil: "load",
-            timeout: timeoutMs,
-          });
-          await awaitPageReadyForScreenshot(page, timeoutMs);
-          const png = await page.screenshot({
-            type: "png",
-            fullPage: false,
-            animations: "disabled",
-          });
-          const webp = await sharp(png)
-            .resize(WORK_SCREENSHOT_WIDTH, WORK_SCREENSHOT_HEIGHT, {
-              fit: "cover",
-              position: "top",
-            })
-            .webp({ quality: 82, effort: 5 })
-            .toBuffer();
-          await fs.writeFile(absolute, webp);
-          const written = await fs.stat(absolute);
+          const captureBudget = Math.max(
+            timeoutMs +
+              WORK_SCREENSHOT_NETWORKIDLE_MS +
+              WORK_SCREENSHOT_SETTLE_MS,
+            WORK_SCREENSHOT_CAPTURE_BUDGET_MS,
+          );
+          log(`showcase poster snapshot ${row.url}\n`);
+          await softRace(
+            (async () => {
+              const page = await context.newPage();
+              await page.goto(row.url, {
+                waitUntil: "load",
+                timeout: timeoutMs,
+              });
+              await awaitPageReadyForScreenshot(page, timeoutMs);
+              const png = await page.screenshot({
+                type: "png",
+                fullPage: false,
+                animations: "disabled",
+              });
+              const webp = await sharp(png)
+                .resize(WORK_SCREENSHOT_WIDTH, WORK_SCREENSHOT_HEIGHT, {
+                  fit: "cover",
+                  position: "top",
+                })
+                .webp({ quality: 82, effort: 5 })
+                .toBuffer();
+              await fs.writeFile(absolute, webp);
+              const written = await fs.stat(absolute);
 
-          if (written.isFile() && written.size > 0) {
-            localBySource.set(imageUrl, assetPath);
-            captured += 1;
-          }
+              if (written.isFile() && written.size > 0) {
+                localBySource.set(imageUrl, assetPath);
+                captured += 1;
+              }
+            })(),
+            captureBudget,
+          );
         } finally {
           await context.close();
         }

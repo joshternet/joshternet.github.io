@@ -48,6 +48,11 @@ test("creativeContentType maps schema and path hints", () => {
     "sheet_music",
   );
   assert.equal(creativeContentType([], "/docs/readme.pdf"), "project");
+  assert.equal(
+    creativeContentType([], "/music-for-losers/"),
+    "project",
+    "fiction path containing 'music' is not a music recording",
+  );
 });
 
 test("isCreativeIndexPath recognizes creative roots", () => {
@@ -132,6 +137,22 @@ test("creativeItemsFromFigures skips bare image files without work links", () =>
   const items = creativeItemsFromFigures(
     html,
     "https://a.example/gallery/",
+    "https://a.example",
+    "t",
+  );
+  assert.equal(items.length, 0);
+});
+
+test("creativeItemsFromFigures skips image-file hrefs (article media)", () => {
+  const html = `<figure>
+    <a href="/wp-content/uploads/2023/03/leonc-1024x912.png">
+      <img src="/wp-content/uploads/2023/03/leonc-1024x912.png" alt="">
+    </a>
+    <figcaption>Illustration of Leon Czolgosz</figcaption>
+  </figure>`;
+  const items = creativeItemsFromFigures(
+    html,
+    "https://a.example/music-for-losers/",
     "https://a.example",
     "t",
   );

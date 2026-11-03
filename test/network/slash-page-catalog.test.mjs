@@ -206,6 +206,9 @@ test("isShowcaseChromePath covers identity writing topics webrings feeds", () =>
   assert.equal(isShowcaseChromePath("https://a.example/now/"), true);
   assert.equal(isShowcaseChromePath("https://a.example/uses/"), true);
   assert.equal(isShowcaseChromePath("https://a.example/dedication/"), true);
+  assert.equal(isShowcaseChromePath("https://a.example/availability/"), true);
+  assert.equal(isShowcaseChromePath("https://a.example/hire-me/"), true);
+  assert.equal(isShowcaseChromePath("https://a.example/ideas/"), true);
   assert.equal(isShowcaseChromePath("/topics/video-games/"), true);
   assert.equal(isShowcaseChromePath("/notes/2026/07/page/2/"), true);
   assert.equal(isShowcaseChromePath("/reading/foo/"), true);

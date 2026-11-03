@@ -8,6 +8,7 @@
  */
 
 import { slugifyTopic } from "../network/connections.mjs";
+import { publishedAtFromYear } from "./content.mjs";
 import { buildTopicEvidence, isNonSubjectSlug } from "./evidence.mjs";
 import {
   decodeHtmlEntities,
@@ -547,6 +548,7 @@ export function contentItemsFromPortfolio(works, meta) {
 
     const title = work.project || work.client || "Work";
     const summary = summaryForPortfolioWork(work, title);
+    const published_at = publishedAtFromYear(work.year);
     const declared_topics = topicsForWork(work).map((topic) => ({
       slug: topic.slug,
       label: topic.label,
@@ -568,6 +570,7 @@ export function contentItemsFromPortfolio(works, meta) {
       source: { kind: "portfolio", page: meta.pageUrl },
       source_feeds: [{ type: "portfolio", url: meta.pageUrl }],
       observed_at: meta.observedAt || "",
+      ...(published_at ? { published_at } : {}),
     });
   }
 

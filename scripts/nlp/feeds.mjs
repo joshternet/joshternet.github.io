@@ -172,8 +172,17 @@ export function subjectsFromJsonFeed(jsonText, options = {}) {
 /**
  * @param {Array<{url: string, type?: string}>} feeds
  * @param {Map<string, unknown>} [cache]
- * @param {{ observedAt?: string, robotsGate?: import("./origin-robots.mjs").OriginRobotsGate }} [options]
- * @returns {Promise<{subjects: Array<{slug: string, label: string, sources: string[], pages: Array<{url: string, title: string}>}>, entryUrls: string[]}>}
+ * @param {{
+ *   observedAt?: string,
+ *   robotsGate?: import("./origin-robots.mjs").OriginRobotsGate,
+ *   httpCache?: import("./fetch-cache.mjs").FetchCache,
+ * }} [options]
+ * @returns {Promise<{
+ *   subjects: Array<{slug: string, label: string, sources: string[], pages: Array<{url: string, title: string}>}>,
+ *   entryUrls: string[],
+ *   fetchedCount: number,
+ *   allUnchanged: boolean,
+ * }>}
  */
 export async function subjectsFromFeeds(
   feeds,
@@ -182,9 +191,11 @@ export async function subjectsFromFeeds(
 ) {
   const subjects = [];
   const entryUrls = [];
+  let fetchedCount = 0;
+  let allUnchanged = true;
 
   if (!Array.isArray(feeds)) {
-    return { subjects, entryUrls };
+    return { subjects, entryUrls, fetchedCount: 0, allUnchanged: false };
   }
 
   const robotsGate = options.robotsGate || createOriginRobotsGate({ cache });
@@ -201,9 +212,16 @@ export async function subjectsFromFeeds(
     try {
       const fetched = await fetchPublicText(feed.url, {
         cache,
+        httpCache: options.httpCache,
         accept:
           "application/rss+xml,application/atom+xml,application/feed+json,application/json,application/xml,text/xml,*/*;q=0.8",
       });
+      fetchedCount += 1;
+
+      if (!fetched.unchanged) {
+        allUnchanged = false;
+      }
+
       const type = feed.type || fetched.contentType;
       let parsed = [];
 
@@ -243,9 +261,14 @@ export async function subjectsFromFeeds(
 
       subjects.push(...parsed);
     } catch {
+      allUnchanged = false;
       continue;
     }
   }
 
-  return { subjects, entryUrls };
+  if (fetchedCount === 0) {
+    allUnchanged = false;
+  }
+
+  return { subjects, entryUrls, fetchedCount, allUnchanged };
 }

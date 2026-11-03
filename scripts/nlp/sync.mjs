@@ -4,6 +4,10 @@
  * Catalog lexicon is the union of every participant's declared subjects.
  * No publisher is the vocabulary authority. One-way pipeline: derived hub
  * pages never become semantic evidence.
+ * Publishes connections/signals/content before work screenshots so a hung
+ * Playwright capture cannot strand a finished crawl with stale edges.
+ * Merges `_data/homepage_connections.json` from network:sync.
+ * Prunes writing older than 30 days before gather; display stays 14 days.
  * Does not commit. Semantic hash skips timestamp-only churn when unchanged.
  */
 
@@ -16,6 +20,7 @@ import {
   aggregateConnectionEdges,
   blogrollConnectionObservations,
   hasDerivedAnalysisMarker,
+  homepageConnectionObservationsFromDocument,
   isHubDirectoryPage,
 } from "../network/connections.mjs";
 import {
@@ -38,9 +43,23 @@ import {
   contentItemsFromJsonFeed,
   contentItemsFromRssOrAtom,
   enrichContentItemPosters,
+  enrichPublishedAtForBookItems,
+  enrichPublishedAtFromPages,
   joinContentWithPageSignals,
   mergeContentItems,
 } from "./content.mjs";
+import {
+  CONTENT_CACHE_DAYS,
+  isContentCacheEligible,
+  mergeGatheredContent,
+  pruneContentItems,
+} from "./content-retention.mjs";
+import {
+  openFetchCache,
+  pruneFetchCache,
+  saveFetchCache,
+} from "./fetch-cache.mjs";
+import { decideOriginShortCircuit } from "./origin-short-circuit.mjs";
 import { channelItemsFromNetwork } from "../views/lib.mjs";
 import { captureMissingWorkScreenshots } from "../views/work-screenshots.mjs";
 import { buildChannelPublishByUrl } from "./channel-publish.mjs";
@@ -69,6 +88,10 @@ import { collectCreativeWorks } from "./creative.mjs";
 import { collectEvents } from "./events.mjs";
 import { collectPortfolio } from "./portfolio.mjs";
 import { shouldRenderHtml } from "./render.mjs";
+import {
+  harvestYoutubeShowEpisodes,
+  youtubeShowUrlsFromHtml,
+} from "./youtube-feeds.mjs";
 import {
   allowsCommunityTopics,
   allowsHeuristicTopics,
@@ -109,6 +132,10 @@ const TOPICS_PATH = path.join(ROOT, "_data/topics.json");
 const CONTENT_PATH = path.join(ROOT, "_data/content.json");
 const CHANNEL_PUBLISH_PATH = path.join(ROOT, "_data/channel_publish.json");
 const BLOGROLLS_PATH = path.join(ROOT, "_data/blogrolls.json");
+const HOMEPAGE_CONNECTIONS_PATH = path.join(
+  ROOT,
+  "_data/homepage_connections.json",
+);
 const MANIFEST_PATH = path.join(ROOT, "_data/data_manifest.json");
 const ALIASES_PATH = path.join(ROOT, "_data/topic_aliases.json");
 const DENYLIST_PATH = path.join(ROOT, "_data/topic_denylist.json");
@@ -133,7 +160,16 @@ async function main() {
     "communities",
   );
   const previousManifest = await readJSONIfExists(MANIFEST_PATH, null);
+  const previousContentItems = itemsFromCollection(
+    await readJSONIfExists(CONTENT_PATH, {}),
+    "items",
+  );
   const now = new Date().toISOString();
+  const { kept: prunedContentBase, prunedCount: contentPrunedBeforeGather } =
+    pruneContentItems(previousContentItems, now);
+  process.stdout.write(
+    `nlp content prune: dropped ${contentPrunedBeforeGather} aged writing; retained ${prunedContentBase.length} (cache ${CONTENT_CACHE_DAYS}d + durable creative)\n`,
+  );
 
   if (!Array.isArray(network) || network.length === 0) {
     process.stderr.write(
@@ -191,6 +227,11 @@ async function main() {
   }
 
   const dnsCache = new Map();
+  const httpCache = await openFetchCache();
+  const fetchCacheEvicted = pruneFetchCache(httpCache, now);
+  process.stdout.write(
+    `nlp fetch-cache: ${httpCache.entries.size} entries after prune (evicted ${fetchCacheEvicted})\n`,
+  );
   const robotsGate = createOriginRobotsGate({ cache: dnsCache });
   const participantOrigins = new Set(
     network
@@ -208,6 +249,13 @@ async function main() {
   const communityOrigins = [];
   /** @type {Array<Record<string, unknown>>} */
   const contentDrafts = [];
+  /** @type {Array<{ url?: string, html?: string }>} */
+  const pagesForPublishedAt = [];
+  /** @type {Set<string>} */
+  const failedOrigins = new Set();
+  /** @type {Set<string>} */
+  const shortCircuitedOrigins = new Set();
+  let shortCircuitCount = 0;
 
   for (const participant of network) {
     if (!participant || typeof participant.origin !== "string") {
@@ -222,6 +270,7 @@ async function main() {
       const feedData = await subjectsFromFeeds(feeds, dnsCache, {
         observedAt: now,
         robotsGate,
+        httpCache,
       });
       const aboutUrls = [
         ...(Array.isArray(participant.aboutPageHrefs)
@@ -233,11 +282,38 @@ async function main() {
           ? [participant.aboutPageHref]
           : []),
       ];
-      const crawled = await crawlOrigin(origin, {
+      const shortDecision = await decideOriginShortCircuit({
+        origin,
+        feedsFetched: feedData.fetchedCount,
+        feedsUnchanged: feedData.allUnchanged,
         cache: dnsCache,
-        feedEntryUrls: feedData.entryUrls,
-        aboutUrls,
+        httpCache,
+        robotsGate,
       });
+      /** @type {Awaited<ReturnType<typeof crawlOrigin>>} */
+      let crawled;
+
+      if (shortDecision.shortCircuit) {
+        shortCircuitedOrigins.add(origin);
+        shortCircuitCount += 1;
+        process.stdout.write(
+          `nlp short-circuit ${origin}: feeds+sitemap unchanged; skipping deep crawl\n`,
+        );
+        crawled = {
+          origin,
+          pages: [],
+          outbound_links: [],
+          html_subjects: [],
+          selection_reasons: { [origin]: "short-circuit-unchanged" },
+        };
+      } else {
+        crawled = await crawlOrigin(origin, {
+          cache: dnsCache,
+          httpCache,
+          feedEntryUrls: feedData.entryUrls,
+          aboutUrls,
+        });
+      }
 
       /** @type {Array<Record<string, unknown>>} */
       const pageRecords = [];
@@ -252,6 +328,8 @@ async function main() {
       const descriptions = [];
       const locales = new Set();
       const schemaTypes = new Set();
+      /** @type {Set<string>} */
+      const youtubeShowUrls = new Set();
 
       for (const page of crawled.pages) {
         const regions = {
@@ -358,6 +436,7 @@ async function main() {
         html: page.html,
         lang: page.lang || "",
       }));
+      pagesForPublishedAt.push(...creativePages);
 
       if (shouldRenderHtml()) {
         process.stdout.write(
@@ -371,6 +450,16 @@ async function main() {
       });
       htmlSubjects.push(...creative.subjects);
       contentDrafts.push(...creative.items);
+
+      for (const page of creativePages) {
+        if (typeof page.html !== "string" || !page.html) {
+          continue;
+        }
+
+        for (const showUrl of youtubeShowUrlsFromHtml(page.html)) {
+          youtubeShowUrls.add(showUrl);
+        }
+      }
 
       // Events are a separate content_type; Happening filters to upcoming later.
       const events = collectEvents(creativePages, {
@@ -410,6 +499,7 @@ async function main() {
         try {
           const fetched = await fetchPublicText(feed.url, {
             cache: dnsCache,
+            httpCache,
             // Large member RSS (Hugo full-content feeds) need more than the
             // default HTML crawl cap so scheduled syncs stay complete.
             maxBytes: 6_000_000,
@@ -443,9 +533,39 @@ async function main() {
           }
 
           contentDrafts.push(...drafts);
+
+          // Substack (and other) feed bodies often embed podcast playlist links.
+          for (const showUrl of youtubeShowUrlsFromHtml(fetched.body)) {
+            youtubeShowUrls.add(showUrl);
+          }
         } catch (error) {
           process.stderr.write(
             `content feed failed ${origin} (${feed.url}): ${error instanceof Error ? error.message : error}\n`,
+          );
+        }
+      }
+
+      if (youtubeShowUrls.size > 0) {
+        try {
+          const podcastEpisodes = await harvestYoutubeShowEpisodes(
+            youtubeShowUrls,
+            {
+              siteOrigin: origin,
+              observedAt: now,
+              cache: dnsCache,
+              robotsGate,
+            },
+          );
+          contentDrafts.push(...podcastEpisodes);
+
+          if (podcastEpisodes.length > 0) {
+            process.stdout.write(
+              `nlp youtube shows ${origin}: ${podcastEpisodes.length} episode(s) from ${youtubeShowUrls.size} show URL(s)\n`,
+            );
+          }
+        } catch (error) {
+          process.stderr.write(
+            `youtube show harvest failed ${origin}: ${error instanceof Error ? error.message : error}\n`,
           );
         }
       }
@@ -537,6 +657,7 @@ async function main() {
       process.stderr.write(
         `nlp failed ${origin}: ${error instanceof Error ? error.message : error}\n`,
       );
+      failedOrigins.add(origin);
       originSignals.push(originFailureSignal(origin, now, error));
       originLinks.push({ origin, links: [] });
       communityOrigins.push({
@@ -549,7 +670,10 @@ async function main() {
     }
   }
 
-  const draftItems = mergeContentItems(contentDrafts);
+  enrichPublishedAtFromPages(contentDrafts, pagesForPublishedAt);
+  const draftItems = mergeContentItems(contentDrafts).filter((item) =>
+    isContentCacheEligible(item, now),
+  );
   const aliasesDoc = await readJSONIfExists(ALIASES_PATH, { aliases: [] });
   const catalog = networkCatalog(communityOrigins, draftItems);
   const matchedOrigins = applyCatalogMatches(
@@ -595,13 +719,28 @@ async function main() {
     signal.community_slugs = [...new Set([...declared, ...heuristic])].sort();
   }
 
-  const contentItems = joinContentWithPageSignals(draftItems, originSignals);
+  const gatheredItems = joinContentWithPageSignals(draftItems, originSignals);
   // Feed-sourced experiments/games often lack enclosures; pull og:image from
   // the publisher page so Showcase uses the site's existing posters in CI.
-  await enrichContentItemPosters(contentItems, {
+  await enrichContentItemPosters(gatheredItems, {
     cache: dnsCache,
     robotsGate,
   });
+  // Books/fiction: Coming badges, By · Publisher · YYYY, then Amazon product date.
+  await enrichPublishedAtForBookItems(gatheredItems, {
+    cache: dnsCache,
+    robotsGate,
+  });
+  const contentMerge = mergeGatheredContent(prunedContentBase, gatheredItems, {
+    now,
+    failedOrigins,
+    reuseOrigins: shortCircuitedOrigins,
+  });
+  const contentItems = contentMerge.items;
+  process.stdout.write(
+    `nlp content merge: +${contentMerge.addedCount} ~${contentMerge.updatedCount} carry-forward ${contentMerge.carriedForwardCount}; short-circuit ${shortCircuitCount}; ${contentItems.length} items after ${CONTENT_CACHE_DAYS}d cache prune\n`,
+  );
+  await saveFetchCache(httpCache);
   // Named-root / off-origin shelf projects
   // often have no og:image or block plain fetch — capture a viewport poster.
   // Include YouTube/Vimeo/Twitch channel cards from Network elsewhere so
@@ -617,28 +756,6 @@ async function main() {
     robotsGate,
   });
   await writeJSONAtomic(CHANNEL_PUBLISH_PATH, channelPublishByUrl);
-  const screenshotTargets = [...contentItems];
-  const seenScreenshotUrls = new Set(
-    contentItems
-      .map((item) => (typeof item.url === "string" ? item.url : ""))
-      .filter(Boolean),
-  );
-
-  for (const channel of channelDrafts) {
-    if (
-      typeof channel.url === "string" &&
-      channel.url &&
-      !seenScreenshotUrls.has(channel.url)
-    ) {
-      seenScreenshotUrls.add(channel.url);
-      screenshotTargets.push(channel);
-    }
-  }
-
-  await captureMissingWorkScreenshots(screenshotTargets, {
-    root: ROOT,
-    robotsGate,
-  });
   const previousConnections = itemsFromCollection(
     await readJSONIfExists(CONNECTIONS_PATH, {}),
     "edges",
@@ -693,6 +810,10 @@ async function main() {
       })
     : [];
 
+  const homepageConnections = homepageConnectionObservationsFromDocument(
+    await readJSONIfExists(HOMEPAGE_CONNECTIONS_PATH, {}),
+  );
+
   const connections = aggregateConnectionEdges([
     ...preservedEdges.map((edge) => ({
       from: edge.from,
@@ -710,6 +831,7 @@ async function main() {
       page: edge.page,
       evidence: edge.evidence,
     })),
+    ...homepageConnections,
     ...buildAllConnections({
       participantOrigins,
       originLinks,
@@ -779,10 +901,34 @@ async function main() {
     candidates,
   });
 
+  // Build screenshot targets once; capture runs after connections publish (or
+  // on the unchanged early-return path) so hung Playwright cannot strand edges.
+  const screenshotTargets = [...contentItems];
+  const seenScreenshotUrls = new Set(
+    contentItems
+      .map((item) => (typeof item.url === "string" ? item.url : ""))
+      .filter(Boolean),
+  );
+
+  for (const channel of channelDrafts) {
+    if (
+      typeof channel.url === "string" &&
+      channel.url &&
+      !seenScreenshotUrls.has(channel.url)
+    ) {
+      seenScreenshotUrls.add(channel.url);
+      screenshotTargets.push(channel);
+    }
+  }
+
   if (!changed && previousManifest) {
     process.stdout.write(
       "Semantic hash unchanged; leaving committed public artifacts untouched.\n",
     );
+    await captureMissingWorkScreenshots(screenshotTargets, {
+      root: ROOT,
+      robotsGate,
+    });
     await buildViewProjections();
     return;
   }
@@ -874,6 +1020,11 @@ async function main() {
       aliasCompatibilityMarkdown(page.from, page.to),
     );
   }
+
+  await captureMissingWorkScreenshots(screenshotTargets, {
+    root: ROOT,
+    robotsGate,
+  });
 
   await buildViewProjections();
   await formatGeneratedOutputs();

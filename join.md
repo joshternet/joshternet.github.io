@@ -17,16 +17,16 @@ script: /assets/js/join.js
 
 # Join the Joshternet
 
-**Are you a Josh? Get yourself connected.** People who aren't named Josh are equally welcome—Joshness is declared, never derived, and non-Joshes participate fully.
+**Are you a Josh? Get yourself connected.** Non-Joshes are equally welcome—you declare identity; we never infer it from a name or site.
 
-Websites in any written language are welcome. Titles, posts, and categories may stay in the language you publish; the Joshternet does not require English content and does not translate your site. The declaration JSON keys remain exactly `version` and `josh` regardless of the language of your pages.
+Publish in any written language. Declaration keys stay exactly `version` and `josh`.
 
-No accounts. No signup form. Your website stays yours. This page guides the existing process; [Implement]({{ '/implement/' | relative_url }}) remains the technical guide.
+No accounts. No signup form. Your site stays yours. For deeper detail, see [Implement]({{ '/implement/' | relative_url }}).
 
 <ol class="join-steps">
   <li class="join-step" id="identity">
     <h2 class="join-step__title">1. Choose participation identity</h2>
-    <p>Pick one valid version&nbsp;1 declaration. Identity is never inferred from a name or site.</p>
+    <p>Copy one version&nbsp;1 declaration.</p>
     <div class="join-declarations" data-join-declarations>
       <div class="join-declarations__option">
         <h3 class="join-declarations__label">Affirmed Josh Identity</h3>
@@ -83,10 +83,8 @@ No accounts. No signup form. Your website stays yours. This page guides the exis
   </li>
 
   <li class="join-step" id="platform">
-    <h2 class="join-step__title">2. Choose a website platform</h2>
-    <p>
-      Use a tested recipe when you can. Instructions stay on the platform pages—this list only points there.
-    </p>
+    <h2 class="join-step__title">2. Platform recipes</h2>
+    <p>Open the one that matches your stack, or skip to publish.</p>
     <ul class="join-platforms" data-join-platforms>
       {% for platform in site.data.platforms_nav %}
         <li>
@@ -121,16 +119,16 @@ No accounts. No signup form. Your website stays yours. This page guides the exis
   <li class="join-step" id="publish">
     <h2 class="join-step__title">3. Publish the declaration</h2>
     <p>
-      Serve the JSON at exactly <code>/.well-known/josh</code> on your origin (no trailing slash). Prefer
-      <code>Content-Type: application/json</code> and a public <code>200</code> response without login or client script.
+      Serve it at exactly <code>/.well-known/josh</code> on your origin (no trailing slash), preferably as
+      <code>Content-Type: application/json</code> with a public <code>200</code>—no login wall, no client-only render.
     </p>
     <p>
-      For example, <code>https://example.invalid/</code> publishes at
-      <code>https://example.invalid/.well-known/josh</code>. Each origin needs its own file—including
-      <code>www</code> if that origin is separate.
+      Example: <code>https://example.invalid/</code> →
+      <code>https://example.invalid/.well-known/josh</code>. Each origin needs its own file, including
+      <code>www</code> when that’s a separate origin.
     </p>
     <p>
-      Details, redirects, and caching notes live in the
+      Redirects, caching, and edge cases:
       <a href="{{ '/implement/' | relative_url }}">implementation guide</a>.
     </p>
   </li>
@@ -138,7 +136,7 @@ No accounts. No signup form. Your website stays yours. This page guides the exis
   <li class="join-step" id="validate">
     <h2 class="join-step__title">4. Validate</h2>
     <p>
-      Check the file you published. A successful check means the declaration is valid when read—not that JoshBot has listed the site yet.
+      Confirm the live file parses. A pass means the declaration is valid when read—not that JoshBot has listed the site yet.
     </p>
     <p>
       <a
@@ -155,7 +153,7 @@ No accounts. No signup form. Your website stays yours. This page guides the exis
   <li class="join-step" id="nominate">
     <h2 class="join-step__title">5. Request discovery (optional)</h2>
     <p>
-      Nomination asks JoshBot to crawl. It does not establish participation by itself and does not guarantee a
+      Nomination asks JoshBot to look. It does not establish participation by itself and does not guarantee a
       registry listing.
     </p>
     <p>
@@ -173,8 +171,7 @@ No accounts. No signup form. Your website stays yours. This page guides the exis
   <li class="join-step" id="celebrate">
     <h2 class="join-step__title">6. Celebrate once you're listed</h2>
     <p>
-      When JoshBot lists your site in the public Network, these optional next steps are yours to take—or skip.
-      Completing the steps above alone is not membership success.
+      After you appear in the public Network, these are optional. Completing the steps above alone is not membership success.
     </p>
     <ul class="join-celebrate">
       <li>

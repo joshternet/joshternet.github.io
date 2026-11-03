@@ -17,6 +17,8 @@ import {
   channelItemsFromNetwork,
   compareShowcaseRecency,
   compactContentItem,
+  isShowcasePortfolioProject,
+  isVisitorFacingContentItem,
   creativePathKind,
   isEducationGatheringItem,
   isPastEducationShowcaseEvent,
@@ -48,14 +50,20 @@ import {
   showcaseKind,
   showcaseKindForItem,
   showcaseKindLabel,
+  stripHtmlToText,
+  isStaticMediaFileUrl,
+  BOOKS_WINDOW_DAYS,
+  ACTIVITY_WINDOW_DAYS,
   uniqueActivityItemsByUrl,
 } from "../../scripts/views/lib.mjs";
+import { isShowcaseChromePath } from "../../scripts/network/slash-pages.mjs";
 
 test("showcaseKind maps content types to Showcase labels", () => {
   assert.equal(showcaseKind("photograph"), "photography");
   assert.equal(showcaseKind("visual_artwork"), "art");
   assert.equal(showcaseKind("music_album"), "music");
   assert.equal(showcaseKind("music_recording"), "music");
+  assert.equal(showcaseKind("podcast_episode"), "podcasts");
   assert.equal(showcaseKind("sheet_music"), "sheet music");
   assert.equal(showcaseKind("video"), "video");
   assert.equal(showcaseKind("game"), "games");
@@ -526,13 +534,11 @@ test("buildShowcaseHomeItems keeps one newest work per member and kind", () => {
   ]);
 
   assert.equal(items.length, 5);
+  // Dated works outrank undated crawl-time items; among undated peers,
+  // fresher observed_at / newer URL still wins (2026 album over 2014).
   assert.deepEqual(
     items.map((item) => ({ kind: item.kind, url: item.url })),
     [
-      {
-        kind: "photography",
-        url: "https://joshbeard.com/photos/2026/",
-      },
       {
         kind: "video",
         url: "https://video.example/films/clip/",
@@ -542,12 +548,16 @@ test("buildShowcaseHomeItems keeps one newest work per member and kind", () => {
         url: "https://joshuamorris.info/experiments/newer/",
       },
       {
-        kind: "games",
-        url: "https://joshtronic.com/games/idol-idle/",
-      },
-      {
         kind: "music",
         url: "https://music.example/albums/dawn/",
+      },
+      {
+        kind: "photography",
+        url: "https://joshbeard.com/photos/2026/",
+      },
+      {
+        kind: "games",
+        url: "https://joshtronic.com/games/idol-idle/",
       },
     ],
   );
@@ -883,6 +893,20 @@ test("buildEventIcs emits VEVENT lines for upcoming items", () => {
 // ─── Coverage: compactContentItem optional fields (lines 306-344) ─────────────
 
 test("compactContentItem carries optional creative and event fields", () => {
+  const emptyMarkupTitle = compactContentItem(
+    {
+      identity: "url:https://a.example/empty-title/",
+      url: "https://a.example/empty-title/",
+      title: "<span class='title'></span>",
+      summary: "",
+      site_origin: "https://a.example",
+      content_type: "project",
+    },
+    new Map(),
+    [],
+  );
+  assert.equal(emptyMarkupTitle.title, "<span class='title'></span>");
+
   const result = compactContentItem(
     {
       identity: "url:https://a.example/p/",
@@ -1168,6 +1192,7 @@ test("buildMadeItems applies madeKind with non-array categories (falls back to [
         title: "Corkboard",
         summary: "A corkboard for notes and connecting threads.",
         image: "https://a.example/corkboard.webp",
+        published_at: "2026-06-01T00:00:00.000Z",
         categories: "not-an-array",
       },
     ],
@@ -1188,6 +1213,7 @@ test("buildMadeItems applies madeKind with array categories (truthy branch)", ()
         title: "Design system",
         summary: "A public design system for product teams.",
         image: "https://a.example/design.webp",
+        published_at: "2026-06-01T00:00:00.000Z",
         categories: ["design", "portfolio"],
       },
     ],
@@ -1470,6 +1496,9 @@ test("creativePathKind: maps known root paths to correct kinds (L762-803)", () =
   );
   assert.equal(creativePathKind("https://a.example/design/logo/"), "design");
   assert.equal(creativePathKind("https://a.example/books/novel/"), "books");
+  assert.equal(creativePathKind("https://a.example/fiction/story/"), "books");
+  assert.equal(creativePathKind("https://a.example/painting/oil-1/"), "art");
+  assert.equal(creativePathKind("https://a.example/paintings/hub/"), "art");
   assert.equal(creativePathKind("https://a.example/guides/howto/"), "guides");
   // No creative root → "project" fallback (root is in CREATIVE_INDEX_ROOT but no specific match)
   assert.equal(
@@ -1481,8 +1510,10 @@ test("creativePathKind: maps known root paths to correct kinds (L762-803)", () =
 });
 
 test("creativePathKind returns empty string for single-segment path (L756)", () => {
-  // parts.length < 2 → early return ""
+  // parts.length < 2 → early return "" (except painting hubs)
   assert.equal(creativePathKind("https://a.example/gallery/"), "");
+  assert.equal(creativePathKind("https://a.example/painting/"), "art");
+  assert.equal(creativePathKind("https://a.example/paintings/"), "art");
 });
 
 test("isMadeContentItem: article with creative child URL uses creativePathKind (L832-837)", () => {
@@ -1831,6 +1862,190 @@ test("compareShowcaseRecency prefers newer published_at then newer URL", () => {
   );
 });
 
+test("compareShowcaseRecency: dated beats undated crawl-time observed_at", () => {
+  assert.ok(
+    compareShowcaseRecency(
+      {
+        url: "https://joshuadrake.org/projects/turboelectriccessna",
+        kind: "project",
+        source_kind: "portfolio",
+        observed_at: "2026-11-02T15:29:16.095Z",
+      },
+      {
+        url: "https://example.org/recent-project",
+        published_at: "2026-10-01T00:00:00.000Z",
+        observed_at: "2026-11-02T15:29:16.095Z",
+      },
+    ) > 0,
+  );
+  assert.ok(
+    compareShowcaseRecency(
+      {
+        url: "https://example.org/recent-project",
+        published_at: "2026-10-01T00:00:00.000Z",
+      },
+      {
+        url: "https://joshuadrake.org/projects/turboelectriccessna",
+        kind: "project",
+        source_kind: "portfolio",
+        observed_at: "2026-11-02T15:29:16.095Z",
+      },
+    ) < 0,
+  );
+  assert.ok(
+    compareShowcaseRecency(
+      {
+        url: "https://a.example/older-undated",
+        observed_at: "2026-10-01T00:00:00.000Z",
+      },
+      {
+        url: "https://a.example/newer-undated",
+        observed_at: "2026-11-01T00:00:00.000Z",
+      },
+    ) > 0,
+  );
+});
+
+test("isVisitorFacingContentItem: 14-day writing, observed_at, and creative sources", () => {
+  const now = "2026-11-02T12:00:00.000Z";
+  assert.equal(isVisitorFacingContentItem(null, now), false);
+  assert.equal(
+    isVisitorFacingContentItem(
+      {
+        url: "https://a.example/old",
+        content_type: "article",
+        published_at: "2026-09-01T00:00:00.000Z",
+      },
+      now,
+    ),
+    false,
+  );
+  assert.equal(
+    isVisitorFacingContentItem(
+      {
+        url: "https://a.example/recent",
+        content_type: "article",
+        observed_at: "2026-10-25T00:00:00.000Z",
+      },
+      now,
+    ),
+    true,
+  );
+  assert.equal(
+    isVisitorFacingContentItem(
+      {
+        url: "https://a.example/shelf",
+        content_type: "article",
+        source_kind: "creative-projects-shelf",
+      },
+      now,
+    ),
+    true,
+  );
+  assert.equal(
+    isVisitorFacingContentItem(
+      {
+        url: "https://a.example/home",
+        content_type: "article",
+        source: { kind: "creative-homepage" },
+      },
+      now,
+    ),
+    true,
+  );
+});
+
+test("compareShowcaseRecency: undated portfolio projects ignore crawl observed_at", () => {
+  assert.equal(isShowcasePortfolioProject(null), false);
+  assert.equal(isShowcasePortfolioProject("project"), false);
+  assert.equal(
+    isShowcasePortfolioProject({ kind: "project", url: "https://a.example/p" }),
+    true,
+  );
+  assert.equal(
+    isShowcasePortfolioProject({
+      content_type: "project",
+      url: "https://a.example/p",
+    }),
+    true,
+  );
+  assert.equal(
+    isShowcasePortfolioProject({
+      page_role: "project",
+      url: "https://a.example/p",
+    }),
+    true,
+  );
+  assert.equal(
+    isShowcasePortfolioProject({
+      source_kind: "portfolio",
+      url: "https://a.example/p",
+    }),
+    true,
+  );
+
+  const undatedProject = {
+    url: "https://joshuadrake.org/projects/server",
+    kind: "project",
+    content_type: "project",
+    page_role: "project",
+    source_kind: "portfolio",
+    observed_at: "2026-11-02T23:00:00.000Z",
+  };
+  const datedOlder = {
+    url: "https://example.org/dated-essay",
+    published_at: "2023-01-01T00:00:00.000Z",
+    observed_at: "2026-01-01T00:00:00.000Z",
+  };
+  const undatedGame = {
+    url: "https://example.org/games/fresh-undated",
+    content_type: "game",
+    observed_at: "2026-10-01T00:00:00.000Z",
+  };
+  const datedProjectNewerObs = {
+    url: "https://example.org/projects/newer-obs",
+    kind: "project",
+    published_at: "2023-01-01T00:00:00.000Z",
+    observed_at: "2026-06-01T00:00:00.000Z",
+  };
+  const datedProjectOlderObs = {
+    url: "https://example.org/projects/older-obs",
+    kind: "project",
+    published_at: "2023-01-01T00:00:00.000Z",
+    observed_at: "2026-01-01T00:00:00.000Z",
+  };
+  const datedProjectNoObs = {
+    url: "https://example.org/projects/no-obs",
+    content_type: "project",
+    published_at: "2023-01-01T00:00:00.000Z",
+  };
+
+  assert.ok(
+    compareShowcaseRecency(undatedProject, datedOlder) > 0,
+    "undated project must not outrank a dated 2023 work via crawl time",
+  );
+  assert.ok(
+    compareShowcaseRecency(datedOlder, undatedProject) < 0,
+    "dated 2023 work ranks before undated project",
+  );
+  assert.ok(
+    compareShowcaseRecency(undatedProject, undatedGame) > 0,
+    "undated project ignores observed_at and sorts after undated non-project",
+  );
+  assert.ok(
+    compareShowcaseRecency(undatedGame, undatedProject) < 0,
+    "undated non-project with observed_at ranks before undated project",
+  );
+  assert.ok(
+    compareShowcaseRecency(datedProjectOlderObs, datedProjectNewerObs) > 0,
+    "dated projects still use observed_at when published_at ties",
+  );
+  assert.ok(
+    compareShowcaseRecency(datedProjectNoObs, datedProjectNewerObs) > 0,
+    "dated project without observed_at sorts after one with observed_at",
+  );
+});
+
 test("compactContentItem clears title-echo summaries", () => {
   const sites = new Map([
     ["https://joshbeard.com", { title: "Josh Beard", domain: "joshbeard.com" }],
@@ -1977,6 +2192,7 @@ test("isMadeContentItem without options uses empty sibling list", () => {
       url: "https://a.example/experiments/corkboard/",
       title: "Corkboard",
       summary: "A corkboard for notes and pins in the browser.",
+      published_at: "2026-06-01T00:00:00.000Z",
     }),
     true,
   );
@@ -2330,6 +2546,7 @@ test("isMadeContentItem requires creative-directory URLs for projects", () => {
       title: "Corkboard",
       summary: "Pin notes on a corkboard",
       image: "https://joshuamorris.info/images/corkboard.webp",
+      published_at: "2026-06-01T00:00:00.000Z",
       source_kind: "creative-index",
     }),
     true,
@@ -2343,6 +2560,7 @@ test("isMadeContentItem requires creative-directory URLs for projects", () => {
       summary:
         "SomaSpace is a body-tracking installation that turns body movement into soft visuals and sound.",
       image: "https://joshuakim.studio/images/og-cover.jpg",
+      published_at: "2024-06-01T00:00:00.000Z",
       source_kind: "creative-homepage",
     }),
     true,
@@ -2448,6 +2666,7 @@ test("isMadeContentItem requires creative-directory URLs for projects", () => {
       title: "KindBite",
       summary: "Surplus food app",
       image: "https://joshuakim.studio/images/kindbite-poster.jpg",
+      published_at: "2024-06-01T00:00:00.000Z",
       source_kind: "",
       source: { kind: "creative-schema" },
     }),
@@ -3044,6 +3263,7 @@ test("isMadeContentItem: portfolio-sourced creative path projects are eligible",
       content_type: "project",
       summary: "An FPGA educational processor project with documentation.",
       site_origin: "https://joshuadrake.org",
+      published_at: "2023-06-01T00:00:00.000Z",
       source: { kind: "portfolio" },
       source_kind: "portfolio",
     }),
@@ -3117,5 +3337,282 @@ test("isPortfolioSourcedItem: source_feeds portfolio type alone", () => {
       source_feeds: [{ type: "portfolio" }],
     }),
     true,
+  );
+});
+
+test("showcaseKindForItem prefers path books/art over generic project", () => {
+  assert.equal(
+    showcaseKindForItem({
+      content_type: "project",
+      url: "https://a.example/books/claude-code/",
+    }),
+    "books",
+  );
+  assert.equal(
+    showcaseKindForItem({
+      content_type: "project",
+      url: "https://a.example/painting/",
+    }),
+    "art",
+  );
+});
+
+test("Showcase books require published_at within one year", () => {
+  const now = new Date("2026-11-03T00:00:00.000Z");
+  assert.equal(BOOKS_WINDOW_DAYS, 365);
+  assert.equal(
+    isMadeContentItem(
+      {
+        content_type: "project",
+        url: "https://a.example/books/fresh/",
+        title: "Fresh Book",
+        summary: "A book released this year with a real publish date.",
+        published_at: "2026-05-01T00:00:00.000Z",
+        image: "https://a.example/fresh.jpg",
+      },
+      { now },
+    ),
+    true,
+  );
+  assert.equal(
+    isMadeContentItem(
+      {
+        content_type: "project",
+        url: "https://a.example/books/old/",
+        title: "Old Book",
+        summary: "A book released two years ago should not be featured.",
+        published_at: "2024-05-01T00:00:00.000Z",
+        image: "https://a.example/old.jpg",
+      },
+      { now },
+    ),
+    false,
+  );
+  assert.equal(
+    isMadeContentItem(
+      {
+        content_type: "project",
+        url: "https://a.example/books/undated/",
+        title: "Undated Book",
+        summary: "Undated books are not Showcase releases.",
+        image: "https://a.example/undated.jpg",
+      },
+      { now },
+    ),
+    false,
+  );
+});
+
+test("undated portfolio projects are not Showcase-eligible", () => {
+  assert.equal(
+    isMadeContentItem({
+      content_type: "project",
+      url: "https://a.example/projects/archive-toy/",
+      title: "Archive Toy",
+      summary: "An undated portfolio project must stay out of Showcase.",
+      source_kind: "portfolio",
+      observed_at: "2026-11-03T00:00:00.000Z",
+    }),
+    false,
+  );
+  assert.equal(
+    isMadeContentItem({
+      content_type: "project",
+      url: "https://a.example/projects/dated-toy/",
+      title: "Dated Toy",
+      summary: "A dated portfolio project remains Showcase-eligible.",
+      published_at: "2023-06-01T00:00:00.000Z",
+      source_kind: "portfolio",
+    }),
+    true,
+  );
+  // Undated experiments stay eligible; undated /projects/ archives do not.
+  assert.equal(
+    isMadeContentItem({
+      content_type: "project",
+      url: "https://a.example/experiments/corkboard/",
+      title: "Corkboard",
+      summary: "An undated experiment under a creative path stays eligible.",
+      image: "https://a.example/corkboard.webp",
+    }),
+    true,
+  );
+});
+
+test("painting hub is an Art album; availability is chrome", () => {
+  assert.equal(isPhotoOrArtCollectionUrl("https://a.example/painting/"), true);
+  assert.equal(isBareCreativeIndexUrl("https://a.example/painting/"), false);
+  assert.equal(isBareCreativeIndexUrl("https://a.example/books/"), true);
+  assert.equal(isShowcaseChromePath("https://a.example/availability/"), true);
+  assert.equal(isShowcaseChromePath("https://a.example/hire-me/"), true);
+  assert.equal(isShowcaseChromePath("https://forwardbias.dev/ideas/"), true);
+  assert.equal(
+    isMadeContentItem({
+      content_type: "project",
+      url: "https://forwardbias.dev/ideas/",
+      title: "Ideas",
+      summary: "Ongoing experiments, thoughts, and side projects.",
+      image: "https://forwardbias.dev/ideas/cover.jpg",
+      source: { kind: "creative-homepage" },
+    }),
+    false,
+  );
+  assert.equal(
+    isMadeContentItem({
+      content_type: "project",
+      url: "https://a.example/painting/",
+      title: "Paintings",
+      summary: "A gallery of paintings on the studio site.",
+      image: "https://a.example/painting/cover.jpg",
+    }),
+    true,
+  );
+  assert.equal(
+    isMadeContentItem({
+      content_type: "project",
+      url: "https://a.example/availability/",
+      title: "Availability",
+      summary: "Hire me for consulting work this quarter.",
+    }),
+    false,
+  );
+});
+
+test("static media URLs and Astro titles are stripped for Showcase", () => {
+  assert.equal(
+    isStaticMediaFileUrl(
+      "https://a.example/wp-content/uploads/2023/03/leonc-1024x912.png",
+    ),
+    true,
+  );
+  assert.equal(
+    isStaticMediaFileUrl(
+      "https://a.example/wp-content/uploads/2023/03/extensionless-figure",
+    ),
+    true,
+  );
+  assert.equal(
+    isStaticMediaFileUrl("https://a.example/_astro/cover.Abc123.png"),
+    true,
+  );
+  assert.equal(isStaticMediaFileUrl("https://a.example/books/novel/"), false);
+  assert.equal(isStaticMediaFileUrl("not a url"), false);
+  assert.equal(isStaticMediaFileUrl(""), false);
+  assert.equal(
+    isMadeContentItem({
+      content_type: "game",
+      url: "not a url",
+      title: "Broken game URL",
+      summary: "Invalid href exercises the undated-project URL catch.",
+      image: "https://a.example/game.png",
+    }),
+    true,
+  );
+  assert.equal(
+    isMadeContentItem({
+      content_type: "music_recording",
+      url: "https://a.example/wp-content/uploads/2023/03/leonc.png",
+      title: "Illustration",
+      summary: "Article figure mis-typed as music",
+      image: "https://a.example/wp-content/uploads/2023/03/leonc.png",
+    }),
+    false,
+  );
+  assert.equal(
+    stripHtmlToText(
+      '<span class="title" data-astro-cid-ageowr5r>Claude Code For Dummies</span>',
+    ),
+    "Claude Code For Dummies",
+  );
+  assert.equal(
+    showcaseCardTitle({
+      title: '<span class="title" data-astro-cid-x>A Developer’s Guide</span>',
+      url: "https://a.example/books/guide/",
+    }),
+    "A Developer’s Guide",
+  );
+  // Art/comics path undated works are not treated as blocked portfolio projects.
+  assert.equal(
+    isMadeContentItem({
+      content_type: "project",
+      url: "https://a.example/art/2024/",
+      title: "2024",
+      summary: "Year art album without a publisher date.",
+      image: "https://a.example/art/2024/cover.jpg",
+    }),
+    true,
+  );
+  assert.equal(
+    isMadeContentItem({
+      content_type: "project",
+      url: "https://a.example/comics/strip-1/",
+      title: "Strip 1",
+      summary: "An undated comic under a comics path stays eligible.",
+      image: "https://a.example/comics/strip-1.jpg",
+    }),
+    true,
+  );
+});
+
+test("podcast episodes only Showcase inside the activity window", () => {
+  const now = new Date("2026-11-03T00:00:00.000Z");
+  assert.equal(ACTIVITY_WINDOW_DAYS, 14);
+  assert.equal(
+    isMadeContentItem(
+      {
+        content_type: "podcast_episode",
+        url: "https://www.youtube.com/watch?v=fresh",
+        title: "Fresh Episode",
+        summary: "A new podcast video from this week.",
+        published_at: "2026-11-01T00:00:00.000Z",
+        image: "https://i.ytimg.com/vi/fresh/hqdefault.jpg",
+        site_origin: "https://a.example",
+      },
+      { now: "2026-11-03T00:00:00.000Z" },
+    ),
+    true,
+  );
+  assert.equal(
+    isMadeContentItem(
+      {
+        content_type: "podcast_episode",
+        url: "https://www.youtube.com/watch?v=fresh-date",
+        title: "Fresh Episode Date",
+        summary: "A new podcast video from this week.",
+        published_at: "2026-11-01T00:00:00.000Z",
+        image: "https://i.ytimg.com/vi/fresh/hqdefault.jpg",
+        site_origin: "https://a.example",
+      },
+      { now },
+    ),
+    true,
+  );
+  assert.equal(
+    isMadeContentItem(
+      {
+        content_type: "podcast_episode",
+        url: "https://www.youtube.com/watch?v=old",
+        title: "Old Episode",
+        summary: "An older podcast video outside the two-week window.",
+        published_at: "2026-09-09T00:00:00.000Z",
+        image: "https://i.ytimg.com/vi/old/hqdefault.jpg",
+        site_origin: "https://a.example",
+      },
+      { now },
+    ),
+    false,
+  );
+  assert.equal(
+    isMadeContentItem(
+      {
+        content_type: "podcast_episode",
+        url: "https://www.youtube.com/watch?v=undated",
+        title: "Undated Episode",
+        summary: "Undated podcast videos are not featured.",
+        site_origin: "https://a.example",
+      },
+      { now },
+    ),
+    false,
   );
 });

@@ -72,7 +72,7 @@ export function classifyPageRole(url, hints = {}) {
   }
 
   if (
-    /^\/(portfolio|work|projects?|gallery|galleries|albums|photography|photos|art|illustration|artwork|music|discography|tracks|videos|film|animation|games?|interactive|exhibitions|design)\/[^/]+/.test(
+    /^\/(portfolio|work|projects?|gallery|galleries|albums|photography|photos|art|illustration|artwork|paintings?|fiction|music|discography|tracks|videos|film|animation|games?|interactive|exhibitions|design)\/[^/]+/.test(
       lower,
     )
   ) {
