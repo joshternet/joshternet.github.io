@@ -8,7 +8,10 @@
  */
 
 import { itemsFromCollection } from "../network/collections.mjs";
-import { decodeHtmlEntities } from "../network/lib.mjs";
+import {
+  decodeHtmlEntities,
+  personNameFromSelfIntro,
+} from "../network/lib.mjs";
 import { isShowcaseChromePath } from "../network/slash-pages.mjs";
 import { isNonSubjectSlug } from "../nlp/evidence.mjs";
 import { itemMentionsTopic, textMentionsSlug } from "../nlp/match.mjs";
@@ -61,6 +64,17 @@ export const ACTIVITY_WINDOW_DAYS = ACTIVITY_WINDOW_DAYS_LIVE;
 
 /** Showcase Books eligibility window (publisher publish dates only). */
 export const BOOKS_WINDOW_DAYS = 365;
+
+/**
+ * Max Showcase cards from one origin inside a single kind section.
+ * Keeps large catalogs (year albums, daily uploads) from crowding out peers.
+ */
+export const SHOWCASE_MAX_PER_ORIGIN_PER_KIND = 2;
+
+/**
+ * Max What's New primary rows from one origin (feed + Showcase combined).
+ */
+export const ACTIVITY_MAX_PER_ORIGIN = 2;
 
 export { itemMentionsTopic, textMentionsSlug };
 
@@ -250,6 +264,168 @@ export function sitesByOrigin(network) {
 }
 
 /**
+ * Publisher name for Activity / Showcase attribution.
+ * Prefer Network card title; when that is still a host label, lift a person
+ * name from the self-intro description (e.g. “I’m Chris Minnick…”).
+ * @param {Record<string, unknown> | null | undefined} site
+ * @param {string} origin
+ * @returns {string}
+ */
+export function publisherDisplayTitle(site, origin = "") {
+  const record = site && typeof site === "object" ? site : {};
+  const domain = String(record.domain || "");
+  const title = String(record.title || "").trim();
+  // Person-shaped titles include whitespace ("Chris Minnick"). Host labels and
+  // domain restatements do not — try a self-intro before falling back.
+  if (title && /\s/.test(title)) {
+    return title;
+  }
+
+  let hostLabel = domain;
+
+  if (!hostLabel && typeof origin === "string" && origin) {
+    hostLabel = origin.replace(/^https?:\/\//i, "").split("/")[0] || origin;
+  }
+
+  const description = String(record.description || "");
+  const fromIntro = personNameFromSelfIntro(description, hostLabel);
+
+  if (fromIntro) {
+    return fromIntro;
+  }
+
+  return title || domain || origin || "";
+}
+
+/**
+ * Title key for cross-post dedupe (blog vs podcast / video of the same piece).
+ * @param {unknown} title
+ * @returns {string}
+ */
+export function contentTitleDedupeKey(title) {
+  return String(title || "")
+    .normalize("NFKC")
+    .toLowerCase()
+    .replace(/<[^>]+>/g, " ")
+    .replace(/[^\p{L}\p{N}\s]+/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * Rank cross-posted variants so podcast/video beat a same-title article.
+ * @param {Record<string, unknown>} item
+ * @returns {number}
+ */
+function crosspostPreferenceScore(item) {
+  const type = String(item.content_type || "");
+  let score = 0;
+
+  if (type === "podcast_episode" || type === "video") {
+    score += 40;
+  } else if (type === "article" || type === "note") {
+    score += 10;
+  } else {
+    score += 20;
+  }
+
+  if (typeof item.image === "string" && item.image.startsWith("https://")) {
+    score += 5;
+  }
+
+  return score;
+}
+
+/**
+ * Drop same-origin same-title crossposts (e.g. Substack article + YouTube
+ * episode). Keeps the stronger creative/video variant.
+ * @param {Array<Record<string, unknown>>} items
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function dedupeCrosspostedContentItems(items) {
+  const list = Array.isArray(items) ? items : [];
+  /** @type {Map<string, Record<string, unknown>>} */
+  const winners = new Map();
+
+  for (const item of list) {
+    if (!item || typeof item !== "object") {
+      continue;
+    }
+
+    const origin = String(item.site_origin || "");
+    const key = contentTitleDedupeKey(item.title);
+
+    if (!origin || !key) {
+      continue;
+    }
+
+    const groupKey = `${origin}\0${key}`;
+    const existing = winners.get(groupKey);
+
+    if (
+      !existing ||
+      crosspostPreferenceScore(item) > crosspostPreferenceScore(existing)
+    ) {
+      winners.set(groupKey, item);
+    }
+  }
+
+  return list.filter((item) => {
+    if (!item || typeof item !== "object") {
+      return false;
+    }
+
+    const origin = String(item.site_origin || "");
+    const key = contentTitleDedupeKey(item.title);
+
+    if (!origin || !key) {
+      return true;
+    }
+
+    return winners.get(`${origin}\0${key}`) === item;
+  });
+}
+
+/**
+ * Keep at most `maxPerOrigin` items per `site_origin` (input order preserved).
+ * @param {Array<Record<string, unknown>>} items
+ * @param {number} [maxPerOrigin]
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function fairPerOriginLimit(
+  items,
+  maxPerOrigin = SHOWCASE_MAX_PER_ORIGIN_PER_KIND,
+) {
+  const parsed = Number(maxPerOrigin);
+  const max =
+    Number.isFinite(parsed) && parsed > 0
+      ? Math.floor(parsed)
+      : SHOWCASE_MAX_PER_ORIGIN_PER_KIND;
+  /** @type {Map<string, number>} */
+  const counts = new Map();
+  /** @type {Array<Record<string, unknown>>} */
+  const out = [];
+
+  for (const item of Array.isArray(items) ? items : []) {
+    if (!item || typeof item !== "object") {
+      continue;
+    }
+
+    const origin = String(item.site_origin || "");
+    const used = counts.get(origin) || 0;
+
+    if (used >= max) {
+      continue;
+    }
+
+    counts.set(origin, used + 1);
+    out.push(item);
+  }
+
+  return out;
+}
+
+/**
  * Publisher tags on a content item. Neighborhoods are the subset that are
  * public communities.
  * @param {Record<string, unknown>} item
@@ -424,10 +600,7 @@ export function compactContentItem(item, sites, publicSlugs) {
     language,
     dir: dirForLanguage(language),
     site_origin: origin,
-    site_title:
-      (typeof site?.title === "string" && site.title) ||
-      (typeof site?.domain === "string" && site.domain) ||
-      origin,
+    site_title: publisherDisplayTitle(site, origin),
     domain: typeof site?.domain === "string" ? site.domain : "",
     tags: labels.tags,
     neighborhoods: labels.neighborhoods,
@@ -2516,7 +2689,9 @@ export function compareShowcaseRecency(left, right) {
  * @returns {Array<Record<string, unknown>>}
  */
 function eligibleShowcaseItems(compactItems, now, activityWindowDays) {
-  const list = Array.isArray(compactItems) ? compactItems : [];
+  const list = dedupeCrosspostedContentItems(
+    Array.isArray(compactItems) ? compactItems : [],
+  );
   const siblingUrls = list
     .map((item) => (typeof item?.url === "string" ? item.url : ""))
     .filter(Boolean);
@@ -2614,10 +2789,10 @@ export function channelItemsFromNetwork(
       continue;
     }
 
-    const siteTitle =
-      (typeof site.title === "string" && site.title) ||
-      (typeof site.domain === "string" && site.domain) ||
-      origin;
+    const siteTitle = publisherDisplayTitle(
+      /** @type {Record<string, unknown>} */ (site),
+      origin,
+    );
     const elsewhere = Array.isArray(site.elsewhere) ? site.elsewhere : [];
 
     for (const link of elsewhere) {
@@ -2711,16 +2886,25 @@ export function buildMadeItems(compactItems, limit, now, activityWindowDays) {
     const kind = SHOWCASE_KIND_ORDER.includes(String(item.kind))
       ? String(item.kind)
       : "other";
-    byKind.get(kind)?.push(item);
+    /** @type {Array<Record<string, unknown>>} */ (byKind.get(kind)).push(item);
   }
 
-  // Newest publish first within each kind before fair trim / final section sort.
+  // Newest publish first within each kind, then cap per origin so one catalog
+  // cannot fill a whole Showcase section.
   for (const kind of SHOWCASE_KIND_ORDER) {
-    const list = byKind.get(kind);
+    const list = /** @type {Array<Record<string, unknown>>} */ (
+      byKind.get(kind)
+    );
 
-    if (list && list.length > 1) {
-      list.sort(compareShowcaseRecency);
+    if (list.length === 0) {
+      continue;
     }
+
+    list.sort(compareShowcaseRecency);
+    byKind.set(
+      kind,
+      fairPerOriginLimit(list, SHOWCASE_MAX_PER_ORIGIN_PER_KIND),
+    );
   }
 
   // byKind is pre-populated for every entry in SHOWCASE_KIND_ORDER, so
@@ -2744,11 +2928,12 @@ export function buildMadeItems(compactItems, limit, now, activityWindowDays) {
       break;
     }
 
-    const kindItems =
-      /** @type {Array<Record<string, unknown>>} */ (byKind.get(kind)) || [];
+    const kindItems = /** @type {Array<Record<string, unknown>>} */ (
+      byKind.get(kind)
+    );
 
-    // Uncapped: keep strict publish order. Limited: fair-per-origin, then
-    // re-sort by publish so section lists stay newest-first.
+    // Limited: fair-per-origin across kinds for short lists, then re-sort.
+    // Uncapped: already origin-capped per kind above; keep publish order.
     if (typeof limit === "number" && Number.isFinite(limit)) {
       result.push(
         ...fairTopicArticles(kindItems, Math.min(perKind, remaining)).sort(
@@ -2762,7 +2947,11 @@ export function buildMadeItems(compactItems, limit, now, activityWindowDays) {
 
   if (result.length < maxItems) {
     const seen = new Set(result.map((item) => String(item.url)));
-    const rest = eligible
+    // Only refill from origin-capped kind lists — never reintroduce overflow rows.
+    const rest = SHOWCASE_KIND_ORDER.flatMap(
+      (kind) =>
+        /** @type {Array<Record<string, unknown>>} */ (byKind.get(kind)),
+    )
       .filter((item) => !seen.has(String(item.url)))
       .sort(compareShowcaseRecency);
 
@@ -3522,10 +3711,12 @@ export function buildViewDocuments(input) {
     input.activityWindowDays > 0
       ? Math.floor(input.activityWindowDays)
       : ACTIVITY_WINDOW_DAYS;
-  const compactFromContent = contentItems
-    .map((item) => compactContentItem(item, sites, publicSlugs))
-    .filter(Boolean)
-    .filter((item) => isVisitorFacingContentItem(item, clock, windowDays));
+  const compactFromContent = dedupeCrosspostedContentItems(
+    contentItems
+      .map((item) => compactContentItem(item, sites, publicSlugs))
+      .filter(Boolean)
+      .filter((item) => isVisitorFacingContentItem(item, clock, windowDays)),
+  );
   // Elsewhere channels only join Showcase / Activity / search when their
   // latest upload published_at falls in the Activity window (undated omitted).
   // When the same origin already has in-window YouTube watch rows, skip the
@@ -3566,10 +3757,10 @@ export function buildViewDocuments(input) {
     clock,
     windowDays,
   );
-  const primary = uniqueActivityItemsByUrl([
-    ...feedPrimary,
-    ...showcasePrimary,
-  ]);
+  const primary = fairPerOriginLimit(
+    uniqueActivityItemsByUrl([...feedPrimary, ...showcasePrimary]),
+    ACTIVITY_MAX_PER_ORIGIN,
+  );
 
   const types = [
     ...new Set(
@@ -3885,7 +4076,8 @@ export function buildViewDocuments(input) {
   const kindCounts = new Map();
 
   for (const item of showcaseItemsRaw) {
-    const kind = String(item.kind || "other");
+    // eligibleShowcaseItems always assigns `kind` via showcaseKindForItem.
+    const kind = String(item.kind);
     kindCounts.set(kind, (kindCounts.get(kind) || 0) + 1);
   }
 

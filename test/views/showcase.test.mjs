@@ -56,10 +56,16 @@ import {
   shouldOmitYoutubeChannelCard,
   youtubeWatchOriginsInWindow,
   resolveActivityWindowDays,
+  publisherDisplayTitle,
+  dedupeCrosspostedContentItems,
+  fairPerOriginLimit,
+  contentTitleDedupeKey,
   BOOKS_WINDOW_DAYS,
   ACTIVITY_WINDOW_DAYS,
   ACTIVITY_WINDOW_DAYS_DEV,
   ACTIVITY_WINDOW_DAYS_LIVE,
+  ACTIVITY_MAX_PER_ORIGIN,
+  SHOWCASE_MAX_PER_ORIGIN_PER_KIND,
   uniqueActivityItemsByUrl,
 } from "../../scripts/views/lib.mjs";
 import { isShowcaseChromePath } from "../../scripts/network/slash-pages.mjs";
@@ -1726,6 +1732,31 @@ test("buildMadeItems: item with non-string site_origin uses empty-string key (L1
   assert.ok(items.length > 0);
 });
 
+test("buildMadeItems: non-string url is skipped in siblingUrls mapping", () => {
+  // typeof item?.url === "string" is false → empty sibling entry, filtered out.
+  const items = buildMadeItems([
+    {
+      url: null,
+      content_type: "article",
+      title: "No Url Work",
+      summary: "Missing url should not break eligibility mapping",
+      image: "https://external.example/images/x.jpg",
+      site_origin: "https://external.example",
+      published_at: "2026-10-20T12:00:00.000Z",
+    },
+    {
+      url: "https://external.example/gallery/ok/",
+      content_type: "article",
+      title: "Ok Work",
+      summary: "Has a real url",
+      image: "https://external.example/images/ok.jpg",
+      site_origin: "https://external.example",
+      published_at: "2026-10-20T12:00:00.000Z",
+    },
+  ]);
+  assert.ok(items.every((item) => typeof item.url === "string"));
+});
+
 test("buildEventIcs: non-array first arg uses [] fallback (L1680 false branch)", () => {
   // Array.isArray(null) = false → false branch → items = [].
   const ics = buildEventIcs(null);
@@ -1812,13 +1843,22 @@ test("isCreativeSeriesHubUrl excludes WWO hub when day toys exist", () => {
     false,
     "series hub must not appear",
   );
-  assert.equal(
-    days.every((url) => items.some((item) => item.url === url)),
-    true,
-    "all eight day toys must appear",
+  // Same-origin project toys are origin-capped (2) so one experiment series
+  // cannot fill Showcase Projects alone.
+  const joshProjects = items.filter(
+    (item) =>
+      item.site_origin === "https://joshuamorris.info" &&
+      item.kind === "project",
   );
-  assert.ok(items.some((item) => item.title === "Corkboard"));
-  assert.ok(items.some((item) => item.title === "Model viewer"));
+  assert.equal(joshProjects.length, SHOWCASE_MAX_PER_ORIGIN_PER_KIND);
+  assert.ok(
+    joshProjects.every(
+      (item) =>
+        days.includes(String(item.url)) ||
+        item.url === corkboard.url ||
+        item.url === modelViewer.url,
+    ),
+  );
 });
 
 test("isPhotoAggregatorUrl excludes View All Photos hubs", () => {
@@ -1862,7 +1902,7 @@ test("buildMadeItems omits title-echo summaries", () => {
   assert.equal(items[0].summary, "");
 });
 
-test("buildMadeItems keeps all year photo albums when uncapped", () => {
+test("buildMadeItems caps year photo albums per origin when uncapped", () => {
   const years = [
     2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025,
     2026,
@@ -1876,16 +1916,232 @@ test("buildMadeItems keeps all year photo albums when uncapped", () => {
     image: `https://joshbeard.com/photos/${year}/cover.jpg`,
   }));
   const items = buildMadeItems(photos);
-  assert.equal(items.length, years.length);
-  assert.ok(items.some((item) => /2023/.test(String(item.url))));
-  assert.ok(items.some((item) => /2026/.test(String(item.url))));
+  assert.equal(SHOWCASE_MAX_PER_ORIGIN_PER_KIND, 2);
+  assert.equal(items.length, SHOWCASE_MAX_PER_ORIGIN_PER_KIND);
+  assert.ok(
+    items.every((item) => /\/photos\/202[56]\//.test(String(item.url))),
+  );
   assert.equal(
     items.some((item) => /\/photos\/all\//.test(String(item.url))),
     false,
   );
-  // Undated year albums still sort newest-looking URL first.
+  // Undated year albums still sort newest-looking URL first, then origin-cap.
   assert.match(String(items[0].url), /\/photos\/2026\/$/);
-  assert.match(String(items[items.length - 1].url), /\/photos\/2014\/$/);
+  assert.match(String(items[1].url), /\/photos\/2025\/$/);
+});
+
+test("publisherDisplayTitle lifts Chris Minnick from self-intro when title is host", () => {
+  assert.equal(
+    publisherDisplayTitle(
+      {
+        title: "www.chrisminnick.com",
+        domain: "www.chrisminnick.com",
+        description:
+          "I’m Chris Minnick. I’ve written more than twenty books, including a shelf of For Dummies titles.",
+      },
+      "https://www.chrisminnick.com",
+    ),
+    "Chris Minnick",
+  );
+  assert.equal(
+    publisherDisplayTitle(
+      {
+        title: "Chris Minnick",
+        domain: "www.chrisminnick.com",
+        description: "I’m Chris Minnick.",
+      },
+      "https://www.chrisminnick.com",
+    ),
+    "Chris Minnick",
+  );
+  assert.equal(
+    publisherDisplayTitle(null, "https://a.example"),
+    "https://a.example",
+  );
+  assert.equal(publisherDisplayTitle("nope", ""), "");
+  assert.equal(publisherDisplayTitle({}, ""), "");
+  assert.equal(
+    publisherDisplayTitle(
+      {
+        title: "www.chrisminnick.com",
+        domain: "",
+        description:
+          "I’m Chris Minnick. I’ve written more than twenty books, including a shelf of For Dummies titles.",
+      },
+      "https://www.chrisminnick.com",
+    ),
+    "Chris Minnick",
+  );
+  assert.equal(
+    contentTitleDedupeKey("<b>4 Hours</b> for This Tiny Result?!"),
+    "4 hours for this tiny result",
+  );
+});
+
+test("dedupeCrosspostedContentItems prefers podcast over same-title article", () => {
+  assert.deepEqual(dedupeCrosspostedContentItems(null), []);
+  const kept = dedupeCrosspostedContentItems([
+    null,
+    {
+      content_type: "podcast_episode",
+      url: "https://www.youtube.com/watch?v=tiny",
+      site_origin: "https://www.chrisminnick.com",
+      title: "4 Hours for This Tiny Result?!",
+      image: "https://i.ytimg.com/vi/tiny/hqdefault.jpg",
+      published_at: "2026-11-02T12:00:00.000Z",
+    },
+    {
+      content_type: "article",
+      url: "https://www.chrisminnick.com/blog/4-hours/",
+      site_origin: "https://www.chrisminnick.com",
+      title: "4 Hours for This Tiny Result?!",
+      published_at: "2026-11-02T12:00:00.000Z",
+    },
+    {
+      content_type: "article",
+      url: "https://www.chrisminnick.com/blog/4-hours-again/",
+      site_origin: "https://www.chrisminnick.com",
+      title: "4 Hours for This Tiny Result?!",
+    },
+    {
+      content_type: "article",
+      url: "https://other.example/posts/unique/",
+      site_origin: "https://other.example",
+      title: "Unique Post",
+      published_at: "2026-11-01T12:00:00.000Z",
+    },
+  ]);
+  assert.equal(kept.length, 2);
+  assert.ok(
+    kept.some(
+      (item) =>
+        item.content_type === "podcast_episode" &&
+        item.url === "https://www.youtube.com/watch?v=tiny",
+    ),
+  );
+  assert.equal(
+    kept.some((item) =>
+      String(item.url).includes("www.chrisminnick.com/blog/"),
+    ),
+    false,
+  );
+  assert.ok(
+    kept.some((item) => item.url === "https://other.example/posts/unique/"),
+  );
+  const videoWins = dedupeCrosspostedContentItems([
+    {
+      content_type: "note",
+      url: "https://a.example/notes/same/",
+      site_origin: "https://a.example",
+      title: "Same Clip",
+      image: "/local.jpg",
+    },
+    {
+      content_type: "video",
+      url: "https://www.youtube.com/watch?v=same",
+      site_origin: "https://a.example",
+      title: "Same Clip",
+    },
+  ]);
+  assert.equal(videoWins.length, 1);
+  assert.equal(videoWins[0].content_type, "video");
+  // Missing content_type uses the neutral score arm (not article/podcast).
+  const typelessWins = dedupeCrosspostedContentItems([
+    {
+      url: "https://a.example/typeless/",
+      site_origin: "https://a.example",
+      title: "Typeless Piece",
+    },
+    {
+      content_type: "article",
+      url: "https://a.example/typeless-article/",
+      site_origin: "https://a.example",
+      title: "Typeless Piece",
+    },
+  ]);
+  assert.equal(typelessWins.length, 1);
+  assert.equal(typelessWins[0].url, "https://a.example/typeless/");
+});
+
+test("fairPerOriginLimit keeps at most N items per origin", () => {
+  assert.equal(ACTIVITY_MAX_PER_ORIGIN, 2);
+  const limited = fairPerOriginLimit(
+    [
+      { url: "https://a.example/1", site_origin: "https://a.example" },
+      { url: "https://a.example/2", site_origin: "https://a.example" },
+      { url: "https://a.example/3", site_origin: "https://a.example" },
+      { url: "https://b.example/1", site_origin: "https://b.example" },
+      null,
+    ],
+    2,
+  );
+  assert.deepEqual(
+    limited.map((item) => item.url),
+    ["https://a.example/1", "https://a.example/2", "https://b.example/1"],
+  );
+  assert.equal(fairPerOriginLimit(null, 2).length, 0);
+  assert.equal(
+    fairPerOriginLimit(
+      [{ url: "https://a.example/1", site_origin: "https://a.example" }],
+      0,
+    ).length,
+    1,
+  );
+  assert.equal(
+    publisherDisplayTitle(
+      { title: "", domain: "a.example", description: "" },
+      "https://a.example",
+    ),
+    "a.example",
+  );
+  assert.equal(
+    publisherDisplayTitle({
+      title: "ForwardBias.dev",
+      domain: "forwardbias.dev",
+    }),
+    "ForwardBias.dev",
+  );
+  assert.equal(
+    publisherDisplayTitle({
+      title: "Joshternet",
+      domain: "joshternet.org",
+      description: "A network of independent websites.",
+    }),
+    "Joshternet",
+  );
+  assert.deepEqual(
+    dedupeCrosspostedContentItems([
+      {
+        content_type: "project",
+        url: "https://a.example/toys/a/",
+        site_origin: "https://a.example",
+        title: "Same Toy",
+      },
+      {
+        content_type: "project",
+        url: "https://a.example/toys/b/",
+        site_origin: "https://a.example",
+        title: "Same Toy",
+        image: "https://cdn.example/a.jpg",
+      },
+      {
+        content_type: "article",
+        url: "https://a.example/no-title/",
+        site_origin: "https://a.example",
+        title: "",
+      },
+      {
+        content_type: "article",
+        url: "https://orphan.example/x/",
+        title: "No Origin",
+      },
+    ]).map((item) => item.url),
+    [
+      "https://a.example/toys/b/",
+      "https://a.example/no-title/",
+      "https://orphan.example/x/",
+    ],
+  );
 });
 
 test("compareShowcaseRecency prefers newer published_at then newer URL", () => {

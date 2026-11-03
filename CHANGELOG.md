@@ -22,6 +22,7 @@
 
 ### Fixed
 
+- **Showcase/Activity fairness + attribution:** Cap **2 cards per origin per Showcase kind** (and **2 What’s New rows per origin**) so large catalogs cannot crowd out peers. Drop same-origin same-title crossposts (blog article vs podcast/video). Activity/Showcase author lines use Network person titles (e.g. “Chris Minnick”) instead of the host when a self-intro is available.
 - **Coverage: YouTube channel-vs-watch filter branches:** Extract `youtubeWatchOriginsInWindow` / `shouldOmitYoutubeChannelCard` with exhaustive unit tests so `views/lib.mjs` stays at 100% branch coverage under Node’s experimental reporter.
 - **Comics hub → Showcase Comics:** `/comics/` and `/webcomics/` indexes harvest same-origin strips even when posts live under `/blog/…` (Artlung-shaped). Typed as `comic`, enriched with og:image + publish date from the post page, and listed under Showcase Comics.
 - **`/film/` galleries are Photography, not Video:** Path `/film/…` (e.g. Josh Ozuna Kodak UltraMax/Portra) maps to film-stock photography; motion video stays on `/videos/` / animation / reels / shorts.
