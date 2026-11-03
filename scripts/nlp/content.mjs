@@ -2135,10 +2135,12 @@ export function contentItemNeedsPosterEnrichment(item) {
           : "";
 
     // Homepage / Projects-shelf products (named roots and off-origin apps).
+    // Comics-hub blog posts (`/blog/…` listed from `/comics/`) need og:image too.
     if (
       sourceKind === "creative-homepage" ||
       sourceKind === "creative-homepage-shelf" ||
-      sourceKind === "creative-projects-shelf"
+      sourceKind === "creative-projects-shelf" ||
+      sourceKind === "creative-comics-hub"
     ) {
       return true;
     }
@@ -2230,6 +2232,31 @@ export async function enrichContentItemPosters(items, options = {}) {
 
         if (share) {
           item.summary = share;
+        }
+      }
+
+      // Comics-hub blog posts often omit dates on the index; fill from the post.
+      const existingPublished =
+        typeof item.published_at === "string" ? item.published_at.trim() : "";
+      const enrichSource =
+        item.source && typeof item.source === "object"
+          ? /** @type {{ kind?: unknown }} */ (item.source).kind
+          : undefined;
+      const enrichSourceKind =
+        typeof item.source_kind === "string"
+          ? item.source_kind
+          : typeof enrichSource === "string"
+            ? enrichSource
+            : "";
+      const isComic =
+        String(item.content_type || "") === "comic" ||
+        enrichSourceKind === "creative-comics-hub";
+
+      if (!existingPublished && isComic) {
+        const published = publishedAtFromPageHtml(html);
+
+        if (published) {
+          item.published_at = published;
         }
       }
     } catch {

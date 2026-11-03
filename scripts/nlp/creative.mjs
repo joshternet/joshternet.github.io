@@ -1,9 +1,11 @@
 /**
  * Goal & Constraints:
- * Extract creative works (photos, art, music, video, games, collections) from
- * Schema.org JSON-LD, Open Graph, figures, and gallery indexes. Prefer
+ * Extract creative works (photos, art, music, video, games, comics, collections)
+ * from Schema.org JSON-LD, Open Graph, figures, and gallery indexes. Prefer
  * publisher URLs and captions. Do not fabricate work URLs or treat decorative
  * thumbnails as independent artworks. Preserve original-language text.
+ * Comics hubs (`/comics/`, `/webcomics/`) may list strips under `/blog/…`; those
+ * same-origin post links are comic works (og:image + dates via enrich).
  */
 
 import { isShowcaseChromePath } from "../network/slash-pages.mjs";
@@ -151,9 +153,14 @@ export function creativeContentType(types, pathHint = "") {
     return "music_recording";
   }
 
+  // `/film/` is film-stock photography on member sites, not motion video.
+  if (/(^|\/)film(\/|$)/.test(path) && !/videoobject/.test(joined)) {
+    return "photograph";
+  }
+
   if (
     /videoobject/.test(joined) ||
-    /video|film|animation|reels?|shorts|cssbattles?/.test(path)
+    /(^|\/)(videos?|animation|reels?|shorts|cssbattles?)(\/|$)/.test(path)
   ) {
     return "video";
   }
@@ -258,6 +265,7 @@ export function actionLabelForItem(contentType, availability) {
     case "photograph":
     case "visual_artwork":
     case "collection":
+    case "comic":
       return "View";
     case "project":
       return "View";
@@ -728,9 +736,7 @@ export function creativeItemsFromExternalWatchLinks(
     return items;
   }
 
-  if (
-    !/\/(videos?|reels?|shorts|film|animation|cssbattles?)(?:\/|$)/i.test(path)
-  ) {
+  if (!/\/(videos?|reels?|shorts|animation|cssbattles?)(?:\/|$)/i.test(path)) {
     return items;
   }
 
@@ -804,6 +810,96 @@ export function creativeItemsFromExternalWatchLinks(
   return items;
 }
 
+/**
+ * True when the page is a comics / webcomics index hub.
+ * @param {string} pathname
+ * @returns {boolean}
+ */
+function isComicsHubPath(pathname) {
+  const normalized = `/${String(pathname || "")
+    .replace(/^\/+/, "")
+    .replace(/\/+$/, "")
+    .toLowerCase()}`;
+
+  return /^\/(comics?|webcomics)$/.test(normalized);
+}
+
+/**
+ * Writing-tree roots where comics hubs commonly list strips (Artlung-shaped).
+ * These are Showcase chrome for ordinary posts, but hub-listed links are comics.
+ * @type {ReadonlySet<string>}
+ */
+const COMICS_HUB_WRITING_ROOTS = new Set(["blog", "posts", "writings"]);
+
+/**
+ * Same-origin comic post linked from a comics hub (often under `/blog/…`
+ * rather than `/comics/…`). Rejects media files, bare indexes, and non-writing
+ * chrome trees. Writing-tree children listed from the hub are allowed.
+ * @param {string} url
+ * @param {string} siteOrigin
+ * @returns {boolean}
+ */
+function isComicsHubLinkedWork(url, siteOrigin) {
+  if (typeof url !== "string" || !url.startsWith("https://")) {
+    return false;
+  }
+
+  if (isStaticMediaWorkUrl(url)) {
+    return false;
+  }
+
+  try {
+    const parsed = new URL(url);
+    const origin = new URL(siteOrigin).origin;
+
+    if (parsed.origin !== origin) {
+      return false;
+    }
+
+    const path = parsed.pathname.replace(/\/+$/, "") || "/";
+
+    if (path === "/") {
+      return false;
+    }
+
+    const parts = path.split("/").filter(Boolean);
+
+    // Need a real post path (`/blog/2025/03/use-it/`), not `/blog/` or `/photos/`.
+    if (parts.length < 2) {
+      return false;
+    }
+
+    if (isComicsHubPath(path) || isCreativeIndexPath(path)) {
+      return false;
+    }
+
+    const root = parts[0].toLowerCase();
+
+    // Hub-listed writing-tree posts are the comic works themselves.
+    if (COMICS_HUB_WRITING_ROOTS.has(root)) {
+      return true;
+    }
+
+    // Other chrome trees (topics, tags, webrings, …) stay out.
+    if (isShowcaseChromePath(url)) {
+      return false;
+    }
+
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Same-origin project cards from creative index pages. Comics hubs also accept
+ * off-prefix same-origin comic posts (e.g. Artlung `/comics/` → `/blog/…`).
+ * @param {string} html
+ * @param {string} pageUrl
+ * @param {string} siteOrigin
+ * @param {string} observedAt
+ * @returns {Array<Record<string, unknown>>}
+ */
 export function creativeItemsFromIndexLinks(
   html,
   pageUrl,
@@ -813,6 +909,7 @@ export function creativeItemsFromIndexLinks(
   const items = [];
   const seen = new Set();
   const path = new URL(pageUrl).pathname.toLowerCase();
+  const comicsHub = isComicsHubPath(path);
   const indexRoots =
     /^\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|paintings?|fiction|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|podcasts?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)(?:\/|$)/i;
 
@@ -843,15 +940,34 @@ export function creativeItemsFromIndexLinks(
     // `url` already passed absoluteUrl (valid http(s)), so pathname is safe.
     const childPath = new URL(url).pathname;
     const indexPrefix = path.replace(/\/+$/, "");
+    const underPrefix =
+      indexPrefix === "/" ||
+      childPath.toLowerCase().startsWith(indexPrefix + "/");
+    const comicsOffPrefix =
+      comicsHub && !underPrefix && isComicsHubLinkedWork(url, siteOrigin);
 
-    if (
-      indexPrefix !== "/" &&
-      !childPath.toLowerCase().startsWith(indexPrefix + "/")
-    ) {
+    if (!underPrefix && !comicsOffPrefix) {
       continue;
     }
 
     if (childPath.replace(/\/+$/, "") === indexPrefix) {
+      continue;
+    }
+
+    if (isStaticMediaWorkUrl(url)) {
+      continue;
+    }
+
+    // Writing-tree comics hub links are intentional; other chrome stays out.
+    if (
+      isShowcaseChromePath(url) &&
+      !(
+        comicsOffPrefix &&
+        COMICS_HUB_WRITING_ROOTS.has(
+          childPath.split("/").filter(Boolean)[0]?.toLowerCase() || "",
+        )
+      )
+    ) {
       continue;
     }
 
@@ -895,6 +1011,12 @@ export function creativeItemsFromIndexLinks(
     const summary = paragraphMatch
       ? normalizeExtractedText(paragraphMatch[1].replace(/<[^>]+>/g, " "))
       : "";
+    const contentType = comicsHub
+      ? "comic"
+      : creativeContentType(schemaTypesFromHtml(html), childPath);
+    const sourceKind = comicsOffPrefix
+      ? "creative-comics-hub"
+      : "creative-index";
 
     seen.add(url);
     items.push({
@@ -903,12 +1025,12 @@ export function creativeItemsFromIndexLinks(
       site_origin: siteOrigin,
       title,
       summary: summary && summary !== title ? summary : "",
-      content_type: creativeContentType(schemaTypesFromHtml(html), childPath),
+      content_type: contentType,
       page_role: "project",
       language: null,
       declared_topics: [],
-      source: { kind: "creative-index", page: pageUrl },
-      source_feeds: [{ type: "creative-index", url: pageUrl }],
+      source: { kind: sourceKind, page: pageUrl },
+      source_feeds: [{ type: sourceKind, url: pageUrl }],
       observed_at: observedAt,
       ...(image ? { image } : {}),
     });

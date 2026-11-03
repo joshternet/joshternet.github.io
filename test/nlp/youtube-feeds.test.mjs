@@ -7,6 +7,7 @@ import test from "node:test";
 
 import {
   canonicalizeYoutubeShowUrl,
+  harvestElsewhereYoutubeVideos,
   harvestYoutubeShowEpisodes,
   podcastEpisodesFromFeedItems,
   podcastEpisodesFromPlaylistHtmlFallback,
@@ -15,7 +16,9 @@ import {
   youtubePlaylistFeedUrl,
   youtubePlaylistIdFromHref,
   youtubeShowUrlsFromHtml,
+  youtubeThumbnailUrl,
   youtubeUploadDateFromHtml,
+  youtubeVideoIdFromHref,
   youtubeVideoIdsFromPlaylistHtml,
 } from "../../scripts/nlp/youtube-feeds.mjs";
 import { resolveYoutubeChannelPublishedAt } from "../../scripts/nlp/channel-publish.mjs";
@@ -42,6 +45,28 @@ test("youtubePlaylistIdFromHref and feed URL builders", () => {
     "https://www.youtube.com/feeds/videos.xml?playlist_id=PLPKNYnZ2gXKoABCDEF",
   );
   assert.equal(youtubePlaylistFeedUrl(""), "");
+});
+
+test("youtubeVideoIdFromHref and youtubeThumbnailUrl", () => {
+  assert.equal(
+    youtubeVideoIdFromHref("https://www.youtube.com/watch?v=_kuQflW2Db8"),
+    "_kuQflW2Db8",
+  );
+  assert.equal(
+    youtubeVideoIdFromHref("https://youtu.be/_kuQflW2Db8"),
+    "_kuQflW2Db8",
+  );
+  assert.equal(
+    youtubeVideoIdFromHref("https://www.youtube.com/shorts/abcDEF12345"),
+    "abcDEF12345",
+  );
+  assert.equal(youtubeVideoIdFromHref("https://example.com/watch?v=nope"), "");
+  assert.equal(youtubeVideoIdFromHref(""), "");
+  assert.equal(
+    youtubeThumbnailUrl("_kuQflW2Db8"),
+    "https://i.ytimg.com/vi/_kuQflW2Db8/hqdefault.jpg",
+  );
+  assert.equal(youtubeThumbnailUrl(""), "");
 });
 
 test("youtubeShowUrlsFromHtml finds playlist channel and handle links", () => {
@@ -805,4 +830,266 @@ test("harvestYoutubeShowEpisodes dedupes shared videos across channels", async (
       (item) => item.url === "https://www.youtube.com/watch?v=onlyB",
     ),
   );
+});
+
+test("harvestElsewhereYoutubeVideos emits video rows from network channels", async () => {
+  const videos = await harvestElsewhereYoutubeVideos(
+    [
+      {
+        origin: "https://artlung.com",
+        elsewhere: [
+          {
+            network: "youtube",
+            url: "https://www.youtube.com/channel/UCcYgwQEo9G_pbwJbwd_8p7A",
+          },
+          { network: "youtube", url: "https://www.youtube.com/watch?v=skip" },
+          { network: "github", url: "https://github.com/artlung" },
+        ],
+      },
+      null,
+      { origin: "https://empty.example", elsewhere: [] },
+    ],
+    {
+      observedAt: "2026-11-03T00:00:00.000Z",
+      robotsGate: offlineRobots,
+      fetchPublicText: async (href) => {
+        if (href.includes("channel_id=UCcYgwQEo9G_pbwJbwd_8p7A")) {
+          return {
+            url: href,
+            contentType: "application/atom+xml",
+            body: `<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <entry>
+    <title>CSSBattle for NOVEMBER 3 (2026)</title>
+    <link href="https://www.youtube.com/watch?v=nov3"/>
+    <published>2026-11-03T12:00:00Z</published>
+  </entry>
+  <entry>
+    <title>CSSBattle for NOVEMBER 2 (2026)</title>
+    <link href="https://www.youtube.com/watch?v=nov2"/>
+    <published>2026-11-02T12:00:00Z</published>
+  </entry>
+</feed>`,
+          };
+        }
+
+        throw new Error(`unexpected ${href}`);
+      },
+    },
+  );
+
+  assert.equal(videos.length, 2);
+  assert.equal(videos[0].content_type, "video");
+  assert.equal(videos[0].source.kind, "elsewhere-youtube-video");
+  assert.equal(
+    videos[0].source.channel,
+    "https://www.youtube.com/channel/UCcYgwQEo9G_pbwJbwd_8p7A",
+  );
+  assert.ok(videos.every((item) => item.site_origin === "https://artlung.com"));
+  assert.ok(
+    videos.some((item) => item.url === "https://www.youtube.com/watch?v=nov3"),
+  );
+});
+
+test("harvestElsewhereYoutubeVideos skips thin network rows and Atom fetch errors", async () => {
+  const videos = await harvestElsewhereYoutubeVideos(
+    [
+      {
+        elsewhere: [{ network: "youtube", url: "https://www.youtube.com/@x" }],
+      },
+      { origin: "https://root.example", elsewhere: "nope" },
+      {
+        origin: "https://apex.example",
+        elsewhere: [{ network: "youtube", url: "https://www.youtube.com/" }],
+      },
+      {
+        origin: "https://dup.example",
+        elsewhere: [
+          null,
+          { network: "youtube", url: "" },
+          { network: "youtube", url: "https://[" },
+          {
+            network: "youtube",
+            url: "https://www.youtube.com/channel/UCdup123456789012345678",
+          },
+        ],
+      },
+      {
+        origin: "https://other.example",
+        elsewhere: [
+          {
+            network: "youtube",
+            url: "https://www.youtube.com/channel/UCdup123456789012345678",
+          },
+        ],
+      },
+    ],
+    {
+      observedAt: "2026-11-03T00:00:00.000Z",
+      robotsGate: { allows: async () => true },
+      fetchPublicText: async (href) => {
+        if (href.includes("channel_id=UCdup123456789012345678")) {
+          throw new Error("atom boom");
+        }
+
+        if (href.includes("UCdup123456789012345678")) {
+          return {
+            url: href,
+            contentType: "text/html",
+            body: `"videoId":"dupvid1" "videoId":"dupvid1"`,
+          };
+        }
+
+        if (href.includes("watch?v=dupvid1")) {
+          return {
+            url: href,
+            contentType: "text/html",
+            body: `<title>Dup - YouTube</title>"uploadDate":"2026-11-02T12:00:00Z"`,
+          };
+        }
+
+        return { url: href, contentType: "text/html", body: "" };
+      },
+    },
+  );
+
+  assert.equal(videos.length, 1);
+  assert.equal(videos[0].url, "https://www.youtube.com/watch?v=dupvid1");
+});
+
+test("youtubeVideoIdFromHref returns empty on unparseable hrefs", () => {
+  assert.equal(youtubeVideoIdFromHref("https://["), "");
+  assert.equal(youtubeVideoIdFromHref("https://youtu.be/"), "");
+  assert.equal(youtubeVideoIdFromHref("https://youtu.be/ab"), "");
+  assert.equal(youtubeVideoIdFromHref("https://www.youtube.com/shorts/"), "");
+  assert.equal(youtubeVideoIdFromHref("https://www.youtube.com/shorts/ab"), "");
+});
+
+test("harvestElsewhereYoutubeVideos defaults and skips non-youtube links", async () => {
+  assert.deepEqual(await harvestElsewhereYoutubeVideos([]), []);
+  assert.deepEqual(await harvestElsewhereYoutubeVideos(null), []);
+  const videos = await harvestElsewhereYoutubeVideos(
+    [
+      {
+        origin: "https://thin.example",
+        elsewhere: [
+          { url: "https://www.youtube.com/channel/UCthin" },
+          { network: "youtube", url: 12 },
+        ],
+      },
+    ],
+    {
+      robotsGate: offlineRobots,
+      fetchPublicText: async () => {
+        throw new Error("should not fetch thin rows");
+      },
+    },
+  );
+  assert.deepEqual(videos, []);
+});
+
+test("harvestElsewhereYoutubeVideos falls back to channel HTML when Atom disallowed", async () => {
+  const videos = await harvestElsewhereYoutubeVideos(
+    [
+      {
+        origin: "https://artlung.com",
+        elsewhere: [
+          {
+            network: "youtube",
+            url: "https://www.youtube.com/channel/UCcYgwQEo9G_pbwJbwd_8p7A",
+          },
+        ],
+      },
+    ],
+    {
+      observedAt: "2026-11-03T00:00:00.000Z",
+      robotsGate: {
+        allows: async (href) => !String(href).includes("/feeds/"),
+      },
+      fetchPublicText: async (href) => {
+        if (href.includes("/feeds/")) {
+          throw new Error("feeds disallowed");
+        }
+
+        if (href.endsWith("/UCcYgwQEo9G_pbwJbwd_8p7A")) {
+          return {
+            url: href,
+            contentType: "text/html",
+            body: `"videoId":"nov3html" "videoId":"nov2html"`,
+          };
+        }
+
+        if (href.includes("watch?v=nov3html")) {
+          return {
+            url: href,
+            contentType: "text/html",
+            body: `<title>CSSBattle Nov 3 - YouTube</title>"uploadDate":"2026-11-03T12:00:00Z"`,
+          };
+        }
+
+        if (href.includes("watch?v=nov2html")) {
+          return {
+            url: href,
+            contentType: "text/html",
+            body: `<title>CSSBattle Nov 2 - YouTube</title>"uploadDate":"2026-11-02T12:00:00Z"`,
+          };
+        }
+
+        throw new Error(`unexpected ${href}`);
+      },
+    },
+  );
+
+  assert.equal(videos.length, 2);
+  assert.equal(videos[0].content_type, "video");
+  assert.equal(videos[0].source.kind, "elsewhere-youtube-video");
+  assert.ok(
+    videos.some(
+      (item) => item.url === "https://www.youtube.com/watch?v=nov3html",
+    ),
+  );
+});
+
+test("podcastEpisodesFromFeedItems can emit video content_type", () => {
+  const items = podcastEpisodesFromFeedItems(
+    [
+      {
+        url: "https://www.youtube.com/watch?v=clip12",
+        title: "Clip",
+        published_at: "2026-11-01T00:00:00.000Z",
+      },
+    ],
+    {
+      siteOrigin: "https://member.example",
+      showUrl: "https://www.youtube.com/channel/UCabc",
+      channelUrl: "https://www.youtube.com/channel/UCabc",
+      contentType: "video",
+      sourceKind: "elsewhere-youtube-video",
+      identityPrefix: "youtube-video",
+    },
+  );
+  assert.equal(items.length, 1);
+  assert.equal(items[0].content_type, "video");
+  assert.equal(items[0].identity.startsWith("youtube-video:"), true);
+  assert.equal(items[0].image, "https://i.ytimg.com/vi/clip12/hqdefault.jpg");
+
+  const noThumb = podcastEpisodesFromFeedItems(
+    [
+      {
+        url: "https://www.youtube.com/channel/UCabc",
+        title: "Channel shaped",
+        published_at: "2026-11-01T00:00:00.000Z",
+      },
+    ],
+    {
+      siteOrigin: "https://member.example",
+      showUrl: "https://www.youtube.com/channel/UCabc",
+      channelUrl: "https://www.youtube.com/channel/UCabc",
+      contentType: "video",
+      sourceKind: "elsewhere-youtube-video",
+      identityPrefix: "youtube-video",
+    },
+  );
+  assert.equal(noThumb.length, 1);
+  assert.equal("image" in noThumb[0], false);
 });

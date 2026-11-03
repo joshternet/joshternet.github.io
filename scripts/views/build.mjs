@@ -22,6 +22,7 @@ import {
   buildActivityAtomXml,
   buildEventIcs,
   buildViewDocuments,
+  resolveActivityWindowDays,
 } from "./lib.mjs";
 import {
   assertShowcasePostersLocalized,
@@ -72,6 +73,9 @@ export async function buildViewProjections(root = ROOT) {
     connections,
     siteSignals,
     generatedAt,
+    // Local: JEKYLL_ENV=development (or JOSHTERNET_ACTIVITY_WINDOW_DAYS=30) → 30.
+    // Live/CI: 14. Content.json still retains the full 30-day writing band.
+    activityWindowDays: resolveActivityWindowDays(),
     channelPublishByUrl:
       channelPublish &&
       typeof channelPublish === "object" &&
