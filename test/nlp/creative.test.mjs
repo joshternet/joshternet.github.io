@@ -266,9 +266,60 @@ test("comics index harvests same-origin children", () => {
   );
   assert.ok(items.some((item) => item.url.endsWith("/comics/use-it/")));
   assert.ok(items.some((item) => item.url.endsWith("/comics/spite-swimming/")));
+  assert.ok(items.every((item) => item.content_type === "comic"));
   assert.equal(isCreativeIndexPath("/comics/"), true);
   assert.equal(isCreativeIndexPath("/cssbattles/"), true);
   assert.equal(isCreativeIndexPath("/study-hall/"), true);
+});
+
+test("comics hub harvests same-origin blog comic posts", () => {
+  const html = fs.readFileSync(
+    path.join(
+      path.dirname(fileURLToPath(import.meta.url)),
+      "../fixtures/html/indie-comics-hub-blog.html",
+    ),
+    "utf8",
+  );
+  const items = creativeItemsFromIndexLinks(
+    html,
+    "https://artlung.example/comics/",
+    "https://artlung.example",
+    "2026-11-01T00:00:00.000Z",
+  );
+  const useIt = items.find((item) =>
+    String(item.url).endsWith("/blog/2025/03/use-it/"),
+  );
+  const spite = items.find((item) =>
+    String(item.url).endsWith("/blog/2024/11/spite-swimming/"),
+  );
+  const underPrefix = items.find((item) =>
+    String(item.url).endsWith("/comics/under-prefix-strip/"),
+  );
+
+  assert.ok(useIt);
+  assert.equal(useIt.content_type, "comic");
+  assert.equal(useIt.source?.kind, "creative-comics-hub");
+  assert.match(String(useIt.summary), /asking first/i);
+  assert.ok(spite);
+  assert.equal(spite.content_type, "comic");
+  assert.ok(underPrefix);
+  assert.equal(underPrefix.content_type, "comic");
+  assert.equal(
+    items.some((item) => String(item.url).includes("other.example")),
+    false,
+  );
+  assert.equal(
+    items.some((item) => String(item.url).endsWith("/cover.jpg")),
+    false,
+  );
+  assert.equal(
+    items.some((item) => String(item.url).endsWith("/about/")),
+    false,
+  );
+  assert.equal(
+    items.some((item) => String(item.url).endsWith("/blog/")),
+    false,
+  );
 });
 
 test("video indexes harvest external YouTube watch links", () => {

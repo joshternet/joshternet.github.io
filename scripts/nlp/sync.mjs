@@ -8,6 +8,7 @@
  * Playwright capture cannot strand a finished crawl with stale edges.
  * Merges `_data/homepage_connections.json` from network:sync.
  * Prunes writing older than 30 days before gather; display stays 14 days.
+ * Short-circuits deep crawl only after a prior pages baseline; reuses signals.
  * Does not commit. Semantic hash skips timestamp-only churn when unchanged.
  */
 
@@ -59,7 +60,11 @@ import {
   pruneFetchCache,
   saveFetchCache,
 } from "./fetch-cache.mjs";
-import { decideOriginShortCircuit } from "./origin-short-circuit.mjs";
+import {
+  carryForwardOriginSignal,
+  decideOriginShortCircuit,
+  originHasDeepCrawlBaseline,
+} from "./origin-short-circuit.mjs";
 import { channelItemsFromNetwork } from "../views/lib.mjs";
 import { captureMissingWorkScreenshots } from "../views/work-screenshots.mjs";
 import { buildChannelPublishByUrl } from "./channel-publish.mjs";
@@ -89,6 +94,7 @@ import { collectEvents } from "./events.mjs";
 import { collectPortfolio } from "./portfolio.mjs";
 import { shouldRenderHtml } from "./render.mjs";
 import {
+  harvestElsewhereYoutubeVideos,
   harvestYoutubeShowEpisodes,
   youtubeShowUrlsFromHtml,
 } from "./youtube-feeds.mjs";
@@ -164,6 +170,18 @@ async function main() {
     await readJSONIfExists(CONTENT_PATH, {}),
     "items",
   );
+  const previousSignalsDoc = await readJSONIfExists(SIGNALS_PATH, {
+    origins: [],
+  });
+  /** @type {Map<string, Record<string, unknown>>} */
+  const priorSignalsByOrigin = new Map();
+  for (const entry of Array.isArray(previousSignalsDoc?.origins)
+    ? previousSignalsDoc.origins
+    : []) {
+    if (entry && typeof entry.origin === "string" && entry.origin) {
+      priorSignalsByOrigin.set(entry.origin, entry);
+    }
+  }
   const now = new Date().toISOString();
   const { kept: prunedContentBase, prunedCount: contentPrunedBeforeGather } =
     pruneContentItems(previousContentItems, now);
@@ -282,10 +300,12 @@ async function main() {
           ? [participant.aboutPageHref]
           : []),
       ];
+      const priorSignal = priorSignalsByOrigin.get(origin);
       const shortDecision = await decideOriginShortCircuit({
         origin,
         feedsFetched: feedData.fetchedCount,
         feedsUnchanged: feedData.allUnchanged,
+        hasDeepCrawlBaseline: originHasDeepCrawlBaseline(priorSignal),
         cache: dnsCache,
         httpCache,
         robotsGate,
@@ -611,48 +631,84 @@ async function main() {
         }
       }
 
-      const coverage = {
-        pages_discovered: discovered,
-        pages_fetched: crawled.pages.length,
-        fetch_limit: null,
-        limit_reached: false,
-        selection_strategy: "uncapped-site-crawl-v1",
-        selection_reasons: crawled.selection_reasons || {},
-      };
-
-      originSignals.push({
-        origin,
-        crawled_at: now,
-        coverage,
-        pages: pageRecords,
-        declared_topics,
-        subject_signals,
-        subjects: legacySubjectsFromSignals(subject_signals),
-        descriptions,
-        locales: [...locales].sort(),
-        schema_types: [...schemaTypes].sort(),
-        content_types: [],
-        outbound_links: outbound,
-        community_slugs: [],
-        ...(portfolio.profile ? { portfolio: portfolio.profile } : {}),
-        stats: {
+      if (shortCircuitedOrigins.has(origin)) {
+        const carried = carryForwardOriginSignal(priorSignal, {
+          origin,
+          crawledAt: now,
+        });
+        const carriedDeclared = Array.isArray(carried.declared_topics)
+          ? carried.declared_topics
+          : [];
+        const carriedSignals = Array.isArray(carried.subject_signals)
+          ? carried.subject_signals
+          : [];
+        const carriedOutbound = Array.isArray(carried.outbound_links)
+          ? carried.outbound_links
+          : [];
+        const carriedFetched =
+          Number(
+            /** @type {Record<string, unknown>} */ (carried.coverage || {})
+              .pages_fetched ??
+              /** @type {Record<string, unknown>} */ (carried.stats || {})
+                .pages_fetched ??
+              0,
+          ) || 0;
+        originSignals.push(carried);
+        originLinks.push({ origin, links: carriedOutbound });
+        communityOrigins.push({
+          origin,
+          title: participant.title || participant.domain || origin,
+          domain: participant.domain || new URL(origin).hostname,
+          declared_topics: carriedDeclared,
+          subject_signals: carriedSignals,
+        });
+        process.stdout.write(
+          `nlp ok ${origin}: ${carriedFetched} pages, ${carriedDeclared.length} declared, ${carriedSignals.length} signals (short-circuit reuse)\n`,
+        );
+      } else {
+        const coverage = {
+          pages_discovered: discovered,
           pages_fetched: crawled.pages.length,
-          declared_topic_count: declared_topics.length,
-          subject_signal_count: subject_signals.length,
-          outbound_link_count: outbound.length,
-        },
-      });
-      originLinks.push({ origin, links: outbound });
-      communityOrigins.push({
-        origin,
-        title: participant.title || participant.domain || origin,
-        domain: participant.domain || new URL(origin).hostname,
-        declared_topics,
-        subject_signals,
-      });
-      process.stdout.write(
-        `nlp ok ${origin}: ${crawled.pages.length} pages, ${declared_topics.length} declared, ${subject_signals.length} signals\n`,
-      );
+          fetch_limit: null,
+          limit_reached: false,
+          selection_strategy: "uncapped-site-crawl-v1",
+          selection_reasons: crawled.selection_reasons || {},
+        };
+
+        originSignals.push({
+          origin,
+          crawled_at: now,
+          coverage,
+          pages: pageRecords,
+          declared_topics,
+          subject_signals,
+          subjects: legacySubjectsFromSignals(subject_signals),
+          descriptions,
+          locales: [...locales].sort(),
+          schema_types: [...schemaTypes].sort(),
+          content_types: [],
+          outbound_links: outbound,
+          community_slugs: [],
+          ...(portfolio.profile ? { portfolio: portfolio.profile } : {}),
+          stats: {
+            pages_fetched: crawled.pages.length,
+            declared_topic_count: declared_topics.length,
+            subject_signal_count: subject_signals.length,
+            outbound_link_count: outbound.length,
+          },
+        });
+        originLinks.push({ origin, links: outbound });
+        communityOrigins.push({
+          origin,
+          title: participant.title || participant.domain || origin,
+          domain: participant.domain || new URL(origin).hostname,
+          declared_topics,
+          subject_signals,
+        });
+        process.stdout.write(
+          `nlp ok ${origin}: ${crawled.pages.length} pages, ${declared_topics.length} declared, ${subject_signals.length} signals\n`,
+        );
+      }
     } catch (error) {
       process.stderr.write(
         `nlp failed ${origin}: ${error instanceof Error ? error.message : error}\n`,
@@ -668,6 +724,26 @@ async function main() {
         subject_signals: [],
       });
     }
+  }
+
+  // Elsewhere YouTube channels → individual watch URLs for Showcase Videos.
+  try {
+    const elsewhereVideos = await harvestElsewhereYoutubeVideos(network, {
+      observedAt: now,
+      cache: dnsCache,
+      robotsGate,
+    });
+    contentDrafts.push(...elsewhereVideos);
+
+    if (elsewhereVideos.length > 0) {
+      process.stdout.write(
+        `nlp elsewhere youtube videos: ${elsewhereVideos.length} watch URL(s)\n`,
+      );
+    }
+  } catch (error) {
+    process.stderr.write(
+      `elsewhere youtube harvest failed: ${error instanceof Error ? error.message : error}\n`,
+    );
   }
 
   enrichPublishedAtFromPages(contentDrafts, pagesForPublishedAt);

@@ -1,17 +1,81 @@
 /**
- * Goal: Origin short-circuit when feeds + sitemap are unchanged.
+ * Goal: Origin short-circuit when feeds + sitemap are unchanged,
+ * but only after a prior deep crawl baseline exists.
  */
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { decideOriginShortCircuit } from "../../scripts/nlp/origin-short-circuit.mjs";
+import {
+  carryForwardOriginSignal,
+  decideOriginShortCircuit,
+  originHasDeepCrawlBaseline,
+} from "../../scripts/nlp/origin-short-circuit.mjs";
 import { dnsCache } from "../helpers/mock-fetch.mjs";
+
+test("originHasDeepCrawlBaseline requires prior pages_fetched or pages", () => {
+  assert.equal(originHasDeepCrawlBaseline(undefined), false);
+  assert.equal(originHasDeepCrawlBaseline(null), false);
+  assert.equal(originHasDeepCrawlBaseline({}), false);
+  assert.equal(
+    originHasDeepCrawlBaseline({
+      coverage: { pages_fetched: 0 },
+      pages: [],
+    }),
+    false,
+  );
+  assert.equal(
+    originHasDeepCrawlBaseline({
+      coverage: {
+        pages_fetched: 0,
+        selection_reasons: {
+          "https://a.example": "short-circuit-unchanged",
+        },
+      },
+      pages: [],
+    }),
+    false,
+  );
+  assert.equal(
+    originHasDeepCrawlBaseline({
+      coverage: { pages_fetched: 12 },
+      pages: [],
+    }),
+    true,
+  );
+  assert.equal(
+    originHasDeepCrawlBaseline({
+      stats: { pages_fetched: 3 },
+      pages: [],
+    }),
+    true,
+  );
+  assert.equal(
+    originHasDeepCrawlBaseline({
+      coverage: { pages_fetched: 0 },
+      pages: [{ url: "https://a.example/" }],
+    }),
+    true,
+  );
+});
+
+test("decideOriginShortCircuit refuses without a deep-crawl baseline", async () => {
+  const result = await decideOriginShortCircuit({
+    origin: "https://a.example",
+    feedsFetched: 2,
+    feedsUnchanged: true,
+    hasDeepCrawlBaseline: false,
+    robotsGate: { allows: async () => false },
+  });
+  assert.equal(result.shortCircuit, false);
+  assert.equal(result.probedSitemap, false);
+});
 
 test("decideOriginShortCircuit refuses when no feeds were fetched", async () => {
   const result = await decideOriginShortCircuit({
     origin: "https://a.example",
     feedsFetched: 0,
     feedsUnchanged: true,
+    hasDeepCrawlBaseline: true,
   });
   assert.equal(result.shortCircuit, false);
 });
@@ -21,6 +85,7 @@ test("decideOriginShortCircuit refuses when feeds changed", async () => {
     origin: "https://a.example",
     feedsFetched: 2,
     feedsUnchanged: false,
+    hasDeepCrawlBaseline: true,
   });
   assert.equal(result.shortCircuit, false);
 });
@@ -55,6 +120,7 @@ test("decideOriginShortCircuit short-circuits when feeds unchanged and sitemap 3
       origin: "https://a.example",
       feedsFetched: 1,
       feedsUnchanged: true,
+      hasDeepCrawlBaseline: true,
       cache: dns,
       httpCache,
     });
@@ -88,6 +154,7 @@ test("decideOriginShortCircuit treats missing sitemap as unchanged when feeds ar
       origin: "https://b.example",
       feedsFetched: 1,
       feedsUnchanged: true,
+      hasDeepCrawlBaseline: true,
       cache: dns,
     });
     assert.equal(result.shortCircuit, true);
@@ -103,6 +170,7 @@ test("decideOriginShortCircuit respects robots disallow on sitemap", async () =>
     origin: "https://c.example",
     feedsFetched: 1,
     feedsUnchanged: true,
+    hasDeepCrawlBaseline: true,
     robotsGate: {
       allows: async () => false,
     },
@@ -128,6 +196,7 @@ test("decideOriginShortCircuit coerces non-number feedsFetched and changed sitem
           origin: null,
           feedsFetched: 1,
           feedsUnchanged: true,
+          hasDeepCrawlBaseline: true,
           robotsGate: { allows: async () => false },
         })
       ).shortCircuit,
@@ -139,6 +208,7 @@ test("decideOriginShortCircuit coerces non-number feedsFetched and changed sitem
           origin: undefined,
           feedsFetched: 1,
           feedsUnchanged: true,
+          hasDeepCrawlBaseline: true,
           robotsGate: { allows: async () => false },
         })
       ).shortCircuit,
@@ -155,6 +225,7 @@ test("decideOriginShortCircuit coerces non-number feedsFetched and changed sitem
       origin: "https://d.example/",
       feedsFetched: 1,
       feedsUnchanged: true,
+      hasDeepCrawlBaseline: true,
       cache: dns,
     });
     assert.equal(changed.probedSitemap, true);
@@ -163,4 +234,90 @@ test("decideOriginShortCircuit coerces non-number feedsFetched and changed sitem
   } finally {
     globalThis.fetch = previousFetch;
   }
+});
+
+test("carryForwardOriginSignal keeps prior pages and marks short-circuit", () => {
+  const prior = {
+    origin: "https://a.example",
+    crawled_at: "2020-01-01T00:00:00.000Z",
+    coverage: {
+      pages_discovered: 4,
+      pages_fetched: 4,
+      selection_reasons: { "https://a.example": "seed" },
+    },
+    pages: [{ url: "https://a.example/projects/" }],
+    declared_topics: [{ slug: "projects" }],
+    subject_signals: [{ slug: "projects" }],
+    outbound_links: [{ url: "https://other.example/" }],
+    stats: { pages_fetched: 4 },
+  };
+  const carried = carryForwardOriginSignal(prior, {
+    origin: "https://a.example",
+    crawledAt: "2026-11-03T00:00:00.000Z",
+  });
+  assert.equal(carried.crawled_at, "2026-11-03T00:00:00.000Z");
+  assert.equal(carried.coverage.pages_fetched, 4);
+  assert.equal(carried.pages.length, 1);
+  assert.equal(carried.declared_topics.length, 1);
+  assert.equal(
+    carried.coverage.selection_reasons["https://a.example"],
+    "short-circuit-unchanged",
+  );
+  // Prior object must not be mutated.
+  assert.equal(prior.coverage.selection_reasons["https://a.example"], "seed");
+});
+
+test("carryForwardOriginSignal tolerates missing coverage and blank meta", () => {
+  const carried = carryForwardOriginSignal(
+    {
+      origin: "https://c.example",
+      coverage: "not-an-object",
+      pages: [{ url: "https://c.example/" }],
+    },
+    /** @type {any} */ ({}),
+  );
+  assert.equal(carried.origin, "https://c.example");
+  assert.equal(
+    carried.coverage.selection_reasons["https://c.example"],
+    "short-circuit-unchanged",
+  );
+  assert.ok(typeof carried.crawled_at === "string" && carried.crawled_at);
+
+  const noReasons = carryForwardOriginSignal(
+    {
+      origin: "https://d.example",
+      coverage: { pages_fetched: 2, selection_reasons: null },
+      pages: [],
+    },
+    { origin: "", crawledAt: "" },
+  );
+  assert.equal(noReasons.origin, "https://d.example");
+  assert.equal(
+    noReasons.coverage.selection_reasons["https://d.example"],
+    "short-circuit-unchanged",
+  );
+
+  const blankOrigin = carryForwardOriginSignal(
+    { pages: [], coverage: {} },
+    { origin: "", crawledAt: "2026-11-03T00:00:00.000Z" },
+  );
+  assert.equal(blankOrigin.origin, "");
+  assert.equal(
+    blankOrigin.coverage.selection_reasons[""],
+    "short-circuit-unchanged",
+  );
+});
+
+test("carryForwardOriginSignal builds an empty shell when prior is missing", () => {
+  const carried = carryForwardOriginSignal(null, {
+    origin: "https://b.example",
+    crawledAt: "2026-11-03T00:00:00.000Z",
+  });
+  assert.equal(carried.origin, "https://b.example");
+  assert.deepEqual(carried.pages, []);
+  assert.equal(carried.coverage.pages_fetched, 0);
+  assert.equal(
+    carried.coverage.selection_reasons["https://b.example"],
+    "short-circuit-unchanged",
+  );
 });

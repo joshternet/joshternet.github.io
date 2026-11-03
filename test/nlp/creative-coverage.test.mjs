@@ -19,6 +19,7 @@ test("creativeContentType covers remaining media path hints", () => {
   assert.equal(creativeContentType(["SoftwareApplication"]), "game");
   assert.equal(creativeContentType(["WebApplication"]), "game");
   assert.equal(creativeContentType(["VideoObject"], "/film/a"), "video");
+  assert.equal(creativeContentType([], "/film/kodak-ultramax"), "photograph");
   assert.equal(creativeContentType([], "/videos/clip"), "video");
   assert.equal(creativeContentType([], "/animation/x"), "video");
   assert.equal(creativeContentType([], "/interactive/demo"), "game");

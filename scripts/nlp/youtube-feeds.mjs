@@ -2,6 +2,7 @@
  * Goal & Constraints:
  * Discover YouTube channel/playlist show URLs from member HTML and harvest
  * dated podcast_episode rows via public Atom feeds (channel_id / playlist_id).
+ * Also harvest elsewhere-channel uploads as Showcase `video` rows.
  * Fallback to watch-page uploadDate when Atom is empty/404. Injectable fetch
  * for offline fixtures; never invent dates; robots gate required. Live YouTube
  * debugging happens outside the agent sandbox on human sync runs.
@@ -59,6 +60,62 @@ export function youtubePlaylistFeedUrl(playlistId) {
   }
 
   return `https://www.youtube.com/feeds/videos.xml?playlist_id=${encodeURIComponent(playlistId)}`;
+}
+
+/**
+ * YouTube video id from a watch, shorts, or youtu.be URL.
+ * @param {unknown} href
+ * @returns {string}
+ */
+export function youtubeVideoIdFromHref(href) {
+  if (typeof href !== "string" || !href) {
+    return "";
+  }
+
+  try {
+    const parsed = new URL(href);
+    const host = parsed.hostname.replace(/^www\./i, "").toLowerCase();
+
+    if (host === "youtu.be") {
+      const id = parsed.pathname.split("/").filter(Boolean)[0] || "";
+      return /^[A-Za-z0-9_-]{6,}$/.test(id) ? id : "";
+    }
+
+    if (host === "youtube.com" || host.endsWith(".youtube.com")) {
+      const fromQuery = parsed.searchParams.get("v") || "";
+
+      if (/^[A-Za-z0-9_-]{6,}$/.test(fromQuery)) {
+        return fromQuery;
+      }
+
+      const parts = parsed.pathname.split("/").filter(Boolean);
+      const shortsIndex = parts.findIndex(
+        (part) => part.toLowerCase() === "shorts",
+      );
+
+      if (shortsIndex >= 0) {
+        const id = parts[shortsIndex + 1] || "";
+        return /^[A-Za-z0-9_-]{6,}$/.test(id) ? id : "";
+      }
+    }
+
+    return "";
+  } catch {
+    return "";
+  }
+}
+
+/**
+ * Public card thumbnail for a YouTube video id (`hqdefault.jpg`).
+ * @param {unknown} videoId
+ * @returns {string}
+ */
+export function youtubeThumbnailUrl(videoId) {
+  if (typeof videoId !== "string" || !/^[A-Za-z0-9_-]{6,}$/.test(videoId)) {
+    return "";
+  }
+
+  return `https://i.ytimg.com/vi/${encodeURIComponent(videoId)}/hqdefault.jpg`;
 }
 
 /**
@@ -210,13 +267,17 @@ export async function youtubeFeedUrlForShow(showUrl, options = {}) {
 }
 
 /**
- * Map feed-shaped video entries into podcast_episode drafts.
+ * Map feed-shaped video entries into content drafts (podcast or video).
  * @param {unknown} feedItems
  * @param {{
  *   siteOrigin: string,
  *   observedAt?: string,
  *   showUrl?: string,
  *   limit?: number,
+ *   contentType?: string,
+ *   sourceKind?: string,
+ *   identityPrefix?: string,
+ *   channelUrl?: string,
  * }} meta
  * @returns {Array<Record<string, unknown>>}
  */
@@ -237,6 +298,20 @@ export function podcastEpisodesFromFeedItems(feedItems, meta) {
       ? meta.observedAt
       : "";
   const showUrl = typeof meta.showUrl === "string" ? meta.showUrl : "";
+  const channelUrl =
+    typeof meta.channelUrl === "string" ? meta.channelUrl : showUrl;
+  const contentType =
+    typeof meta.contentType === "string" && meta.contentType
+      ? meta.contentType
+      : "podcast_episode";
+  const sourceKind =
+    typeof meta.sourceKind === "string" && meta.sourceKind
+      ? meta.sourceKind
+      : "youtube-show-feed";
+  const identityPrefix =
+    typeof meta.identityPrefix === "string" && meta.identityPrefix
+      ? meta.identityPrefix
+      : "youtube-episode";
   const list = Array.isArray(feedItems) ? feedItems : [];
 
   /** @type {Array<Record<string, unknown>>} */
@@ -266,26 +341,48 @@ export function podcastEpisodesFromFeedItems(feedItems, meta) {
       continue;
     }
 
+    /** @type {Record<string, unknown>} */
+    const source = {
+      kind: sourceKind,
+      show: showUrl || "",
+    };
+
+    if (sourceKind === "elsewhere-youtube-video" && channelUrl) {
+      source.channel = channelUrl;
+    }
+
+    const feedImage =
+      typeof record.image === "string" && record.image.startsWith("https://")
+        ? record.image
+        : "";
+    const thumbnail =
+      feedImage || youtubeThumbnailUrl(youtubeVideoIdFromHref(url));
+
     episodes.push({
-      identity: `youtube-episode:${siteOrigin}:${url}`,
+      identity: `${identityPrefix}:${siteOrigin}:${url}`,
       url,
       site_origin: siteOrigin,
       title: title || url,
       summary: typeof record.summary === "string" ? record.summary : "",
-      content_type: "podcast_episode",
+      content_type: contentType,
       page_role: "project",
       language: null,
       declared_topics: [],
-      source: {
-        kind: "youtube-show-feed",
-        show: showUrl || "",
-      },
-      source_feeds: showUrl ? [{ type: "youtube-show", url: showUrl }] : [],
+      source,
+      source_feeds: showUrl
+        ? [
+            {
+              type:
+                sourceKind === "elsewhere-youtube-video"
+                  ? "elsewhere-youtube"
+                  : "youtube-show",
+              url: showUrl,
+            },
+          ]
+        : [],
       observed_at: observedAt,
       ...(published ? { published_at: published } : {}),
-      ...(typeof record.image === "string" && record.image
-        ? { image: record.image }
-        : {}),
+      ...(thumbnail ? { image: thumbnail } : {}),
       actions: [
         {
           label: "Watch",
@@ -335,7 +432,8 @@ export function podcastEpisodesFromYoutubeAtom(xml, meta) {
 }
 
 /**
- * Fallback: playlist HTML → watch pages → uploadDate podcast episodes.
+ * Fallback: playlist/channel HTML → watch pages → uploadDate content drafts.
+ * YouTube robots.txt disallows `/feeds/videos.xml`, so HTML is the compliant path.
  * @param {string} playlistUrl
  * @param {{
  *   siteOrigin: string,
@@ -344,6 +442,9 @@ export function podcastEpisodesFromYoutubeAtom(xml, meta) {
  *   cache?: Map<string, unknown>,
  *   robotsGate?: import("./origin-robots.mjs").OriginRobotsGate,
  *   limit?: number,
+ *   contentType?: string,
+ *   sourceKind?: string,
+ *   identityPrefix?: string,
  * }} options
  * @returns {Promise<Array<Record<string, unknown>>>}
  */
@@ -362,6 +463,18 @@ export async function podcastEpisodesFromPlaylistHtmlFallback(
       ? options.limit
       : MAX_YOUTUBE_SHOW_EPISODES;
   const observedAt = options.observedAt || "";
+  const contentType =
+    typeof options.contentType === "string" && options.contentType
+      ? options.contentType
+      : "podcast_episode";
+  const sourceKind =
+    typeof options.sourceKind === "string" && options.sourceKind
+      ? options.sourceKind
+      : "youtube-show-fallback";
+  const identityPrefix =
+    typeof options.identityPrefix === "string" && options.identityPrefix
+      ? options.identityPrefix
+      : "youtube-episode";
 
   if (!(await robotsGate.allows(playlistUrl))) {
     return [];
@@ -400,23 +513,42 @@ export async function podcastEpisodesFromPlaylistHtmlFallback(
       let title = titleMatch?.[1] || videoId;
       title = title.replace(/\s*-\s*YouTube\s*$/i, "").trim();
 
+      /** @type {Record<string, unknown>} */
+      const source = {
+        kind: sourceKind,
+        show: playlistUrl,
+      };
+
+      if (sourceKind === "elsewhere-youtube-video") {
+        source.channel = playlistUrl;
+      }
+
+      // videoIds are already 6+ char YouTube ids, so the poster URL is always set.
+      const thumbnail = youtubeThumbnailUrl(videoId);
+
       episodes.push({
-        identity: `youtube-episode:${siteOrigin}:${watchUrl}`,
+        identity: `${identityPrefix}:${siteOrigin}:${watchUrl}`,
         url: watchUrl,
         site_origin: siteOrigin,
         title,
         summary: "",
-        content_type: "podcast_episode",
+        content_type: contentType,
         page_role: "project",
         language: null,
         declared_topics: [],
-        source: {
-          kind: "youtube-show-fallback",
-          show: playlistUrl,
-        },
-        source_feeds: [{ type: "youtube-show", url: playlistUrl }],
+        source,
+        source_feeds: [
+          {
+            type:
+              sourceKind === "elsewhere-youtube-video"
+                ? "elsewhere-youtube"
+                : "youtube-show",
+            url: playlistUrl,
+          },
+        ],
         observed_at: observedAt,
         ...(published ? { published_at: published } : {}),
+        image: thumbnail,
         actions: [
           {
             label: "Watch",
@@ -517,6 +649,130 @@ export async function harvestYoutubeShowEpisodes(showUrls, options) {
     // One successful playlist is enough; skip channel siblings for the same show.
     if (fromFeed.length > 0 && youtubePlaylistIdFromHref(showUrl)) {
       break;
+    }
+  }
+
+  return [...byUrl.values()];
+}
+
+/**
+ * Harvest individual watch URLs from Network elsewhere YouTube channels.
+ * Emits `content_type: "video"` rows for Showcase Videos (not Podcasts).
+ * @param {unknown} network
+ * @param {{
+ *   observedAt?: string,
+ *   fetchPublicText?: typeof fetchPublicText,
+ *   cache?: Map<string, unknown>,
+ *   robotsGate?: import("./origin-robots.mjs").OriginRobotsGate,
+ *   limit?: number,
+ * }} [options]
+ * @returns {Promise<Array<Record<string, unknown>>>}
+ */
+export async function harvestElsewhereYoutubeVideos(network, options = {}) {
+  const fetchText = options.fetchPublicText || fetchPublicText;
+  const cache = options.cache || new Map();
+  const robotsGate =
+    options.robotsGate ||
+    createOriginRobotsGate({ cache, fetchPublicText: fetchText });
+  const observedAt = options.observedAt || "";
+  const list = Array.isArray(network) ? network : [];
+  /** @type {Map<string, Record<string, unknown>>} */
+  const byUrl = new Map();
+
+  for (const site of list) {
+    if (!site || typeof site !== "object") {
+      continue;
+    }
+
+    const origin = typeof site.origin === "string" ? site.origin : "";
+
+    if (!origin) {
+      continue;
+    }
+
+    const elsewhere = Array.isArray(site.elsewhere) ? site.elsewhere : [];
+
+    for (const link of elsewhere) {
+      if (!link || typeof link !== "object") {
+        continue;
+      }
+
+      if (String(link.network || "") !== "youtube") {
+        continue;
+      }
+
+      const channelUrl = typeof link.url === "string" ? link.url : "";
+
+      if (!channelUrl) {
+        continue;
+      }
+
+      try {
+        const first = new URL(channelUrl).pathname
+          .split("/")
+          .filter(Boolean)[0]
+          ?.toLowerCase();
+
+        if (first === "watch") {
+          continue;
+        }
+      } catch {
+        continue;
+      }
+
+      /** @type {Array<Record<string, unknown>>} */
+      let videos = [];
+      const feedUrl = await youtubeFeedUrlForShow(channelUrl, {
+        fetchPublicText: fetchText,
+        cache,
+        robotsGate,
+      });
+
+      // YouTube robots.txt disallows /feeds/videos.xml — Atom only when allowed.
+      if (feedUrl && (await robotsGate.allows(feedUrl))) {
+        try {
+          const feed = await fetchText(feedUrl, {
+            cache,
+            accept: "application/atom+xml,application/xml,text/xml,*/*;q=0.8",
+          });
+          videos = podcastEpisodesFromYoutubeAtom(feed.body, {
+            siteOrigin: origin,
+            observedAt,
+            showUrl: channelUrl,
+            channelUrl,
+            limit: options.limit,
+            contentType: "video",
+            sourceKind: "elsewhere-youtube-video",
+            identityPrefix: "youtube-video",
+          });
+        } catch {
+          videos = [];
+        }
+      }
+
+      if (videos.length === 0) {
+        videos = await podcastEpisodesFromPlaylistHtmlFallback(channelUrl, {
+          siteOrigin: origin,
+          observedAt,
+          fetchPublicText: fetchText,
+          cache,
+          robotsGate,
+          limit: options.limit,
+          contentType: "video",
+          sourceKind: "elsewhere-youtube-video",
+          identityPrefix: "youtube-video",
+        });
+      }
+
+      for (const video of videos) {
+        const key = String(video.url);
+
+        if (byUrl.has(key)) {
+          continue;
+        }
+
+        byUrl.set(key, video);
+      }
     }
   }
 

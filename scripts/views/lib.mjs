@@ -8,7 +8,10 @@
  */
 
 import { itemsFromCollection } from "../network/collections.mjs";
-import { decodeHtmlEntities } from "../network/lib.mjs";
+import {
+  decodeHtmlEntities,
+  personNameFromSelfIntro,
+} from "../network/lib.mjs";
 import { isShowcaseChromePath } from "../network/slash-pages.mjs";
 import { isNonSubjectSlug } from "../nlp/evidence.mjs";
 import { itemMentionsTopic, textMentionsSlug } from "../nlp/match.mjs";
@@ -18,11 +21,60 @@ import {
   unicodeLetterTokens,
 } from "../nlp/unicode-text.mjs";
 
-/** What's New / Activity primary window (publisher publish dates). */
-export const ACTIVITY_WINDOW_DAYS = 14;
+/** Live What's New / Activity window (publisher publish dates). */
+export const ACTIVITY_WINDOW_DAYS_LIVE = 14;
+
+/**
+ * Local-dev Activity window — full writing retention band in `_data/content.json`.
+ * Live stays at {@link ACTIVITY_WINDOW_DAYS_LIVE}.
+ */
+export const ACTIVITY_WINDOW_DAYS_DEV = 30;
+
+/**
+ * Resolve Activity window days for views:build.
+ * Development (`JEKYLL_ENV=development`) or `JOSHTERNET_ACTIVITY_WINDOW_DAYS=30`
+ * → 30 days; otherwise production 14. Tests and CI keep the live default.
+ * @param {NodeJS.ProcessEnv | Record<string, string | undefined>} [env]
+ * @returns {number}
+ */
+export function resolveActivityWindowDays(env = process.env) {
+  const source = env && typeof env === "object" ? env : {};
+  const override = String(source.JOSHTERNET_ACTIVITY_WINDOW_DAYS || "").trim();
+
+  if (override === "30") {
+    return ACTIVITY_WINDOW_DAYS_DEV;
+  }
+
+  if (override === "14") {
+    return ACTIVITY_WINDOW_DAYS_LIVE;
+  }
+
+  if (String(source.JEKYLL_ENV || "").toLowerCase() === "development") {
+    return ACTIVITY_WINDOW_DAYS_DEV;
+  }
+
+  return ACTIVITY_WINDOW_DAYS_LIVE;
+}
+
+/**
+ * Default Activity window (live / tests). Prefer {@link resolveActivityWindowDays}
+ * at views:build so local previews can use the 30-day retention band.
+ */
+export const ACTIVITY_WINDOW_DAYS = ACTIVITY_WINDOW_DAYS_LIVE;
 
 /** Showcase Books eligibility window (publisher publish dates only). */
 export const BOOKS_WINDOW_DAYS = 365;
+
+/**
+ * Max Showcase cards from one origin inside a single kind section.
+ * Keeps large catalogs (year albums, daily uploads) from crowding out peers.
+ */
+export const SHOWCASE_MAX_PER_ORIGIN_PER_KIND = 2;
+
+/**
+ * Max What's New primary rows from one origin (feed + Showcase combined).
+ */
+export const ACTIVITY_MAX_PER_ORIGIN = 2;
 
 export { itemMentionsTopic, textMentionsSlug };
 
@@ -45,33 +97,33 @@ export const SHOWCASE_CONTENT_TYPES = [
   "podcast_episode",
   "sheet_music",
   "video",
+  "comic",
   "game",
   "collection",
   "project",
 ];
 
 /**
- * Stable Showcase section order (projects → games → photos → music, then the
- * rest). Only kinds with items are emitted; later these become /showcase/
- * subpages.
+ * Default Showcase section order: A–Z by kind key; `other` stays last.
+ * Only kinds with items are emitted; later these become /showcase/ subpages.
  * @type {readonly string[]}
  */
 export const SHOWCASE_KIND_ORDER = Object.freeze([
-  "project",
-  "games",
-  "photography",
-  "music",
-  "podcasts",
-  "art",
-  "comics",
-  "sheet music",
-  "video",
-  "education",
   "apps",
-  "software",
-  "design",
+  "art",
   "books",
+  "comics",
+  "design",
+  "education",
+  "games",
   "guides",
+  "music",
+  "photography",
+  "podcasts",
+  "project",
+  "sheet music",
+  "software",
+  "video",
   "other",
 ]);
 
@@ -209,6 +261,168 @@ export function sitesByOrigin(network) {
   }
 
   return map;
+}
+
+/**
+ * Publisher name for Activity / Showcase attribution.
+ * Prefer Network card title; when that is still a host label, lift a person
+ * name from the self-intro description (e.g. “I’m Chris Minnick…”).
+ * @param {Record<string, unknown> | null | undefined} site
+ * @param {string} origin
+ * @returns {string}
+ */
+export function publisherDisplayTitle(site, origin = "") {
+  const record = site && typeof site === "object" ? site : {};
+  const domain = String(record.domain || "");
+  const title = String(record.title || "").trim();
+  // Person-shaped titles include whitespace ("Chris Minnick"). Host labels and
+  // domain restatements do not — try a self-intro before falling back.
+  if (title && /\s/.test(title)) {
+    return title;
+  }
+
+  let hostLabel = domain;
+
+  if (!hostLabel && typeof origin === "string" && origin) {
+    hostLabel = origin.replace(/^https?:\/\//i, "").split("/")[0] || origin;
+  }
+
+  const description = String(record.description || "");
+  const fromIntro = personNameFromSelfIntro(description, hostLabel);
+
+  if (fromIntro) {
+    return fromIntro;
+  }
+
+  return title || domain || origin || "";
+}
+
+/**
+ * Title key for cross-post dedupe (blog vs podcast / video of the same piece).
+ * @param {unknown} title
+ * @returns {string}
+ */
+export function contentTitleDedupeKey(title) {
+  return String(title || "")
+    .normalize("NFKC")
+    .toLowerCase()
+    .replace(/<[^>]+>/g, " ")
+    .replace(/[^\p{L}\p{N}\s]+/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * Rank cross-posted variants so podcast/video beat a same-title article.
+ * @param {Record<string, unknown>} item
+ * @returns {number}
+ */
+function crosspostPreferenceScore(item) {
+  const type = String(item.content_type || "");
+  let score = 0;
+
+  if (type === "podcast_episode" || type === "video") {
+    score += 40;
+  } else if (type === "article" || type === "note") {
+    score += 10;
+  } else {
+    score += 20;
+  }
+
+  if (typeof item.image === "string" && item.image.startsWith("https://")) {
+    score += 5;
+  }
+
+  return score;
+}
+
+/**
+ * Drop same-origin same-title crossposts (e.g. Substack article + YouTube
+ * episode). Keeps the stronger creative/video variant.
+ * @param {Array<Record<string, unknown>>} items
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function dedupeCrosspostedContentItems(items) {
+  const list = Array.isArray(items) ? items : [];
+  /** @type {Map<string, Record<string, unknown>>} */
+  const winners = new Map();
+
+  for (const item of list) {
+    if (!item || typeof item !== "object") {
+      continue;
+    }
+
+    const origin = String(item.site_origin || "");
+    const key = contentTitleDedupeKey(item.title);
+
+    if (!origin || !key) {
+      continue;
+    }
+
+    const groupKey = `${origin}\0${key}`;
+    const existing = winners.get(groupKey);
+
+    if (
+      !existing ||
+      crosspostPreferenceScore(item) > crosspostPreferenceScore(existing)
+    ) {
+      winners.set(groupKey, item);
+    }
+  }
+
+  return list.filter((item) => {
+    if (!item || typeof item !== "object") {
+      return false;
+    }
+
+    const origin = String(item.site_origin || "");
+    const key = contentTitleDedupeKey(item.title);
+
+    if (!origin || !key) {
+      return true;
+    }
+
+    return winners.get(`${origin}\0${key}`) === item;
+  });
+}
+
+/**
+ * Keep at most `maxPerOrigin` items per `site_origin` (input order preserved).
+ * @param {Array<Record<string, unknown>>} items
+ * @param {number} [maxPerOrigin]
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function fairPerOriginLimit(
+  items,
+  maxPerOrigin = SHOWCASE_MAX_PER_ORIGIN_PER_KIND,
+) {
+  const parsed = Number(maxPerOrigin);
+  const max =
+    Number.isFinite(parsed) && parsed > 0
+      ? Math.floor(parsed)
+      : SHOWCASE_MAX_PER_ORIGIN_PER_KIND;
+  /** @type {Map<string, number>} */
+  const counts = new Map();
+  /** @type {Array<Record<string, unknown>>} */
+  const out = [];
+
+  for (const item of Array.isArray(items) ? items : []) {
+    if (!item || typeof item !== "object") {
+      continue;
+    }
+
+    const origin = String(item.site_origin || "");
+    const used = counts.get(origin) || 0;
+
+    if (used >= max) {
+      continue;
+    }
+
+    counts.set(origin, used + 1);
+    out.push(item);
+  }
+
+  return out;
 }
 
 /**
@@ -386,10 +600,7 @@ export function compactContentItem(item, sites, publicSlugs) {
     language,
     dir: dirForLanguage(language),
     site_origin: origin,
-    site_title:
-      (typeof site?.title === "string" && site.title) ||
-      (typeof site?.domain === "string" && site.domain) ||
-      origin,
+    site_title: publisherDisplayTitle(site, origin),
     domain: typeof site?.domain === "string" ? site.domain : "",
     tags: labels.tags,
     neighborhoods: labels.neighborhoods,
@@ -841,6 +1052,8 @@ export function showcaseKind(contentType, categories = []) {
       return "sheet music";
     case "video":
       return "video";
+    case "comic":
+      return "comics";
     case "game":
       if (/\bapp\b|\bios\b|\bandroid\b|\bmobile\b/.test(cats)) {
         return "apps";
@@ -922,7 +1135,8 @@ export function creativePathKind(url) {
 
     const root = parts[0].toLowerCase();
 
-    if (/^(gallery|galleries|albums|photography|photos)$/.test(root)) {
+    // `/film/` is film-stock photography (e.g. joshozuna.com), not motion video.
+    if (/^(gallery|galleries|albums|photography|photos|film)$/.test(root)) {
       return "photography";
     }
 
@@ -954,7 +1168,7 @@ export function creativePathKind(url) {
       return "podcasts";
     }
 
-    if (/^(videos|film|animation)$/.test(root)) {
+    if (/^(videos|animation)$/.test(root)) {
       return "video";
     }
 
@@ -1089,6 +1303,12 @@ export function showcaseKindForItem(item) {
   // Year photo albums are collections typed under /photos/ — prefer path kind.
   if (String(item.content_type) === "collection" && fromPath) {
     return fromPath;
+  }
+
+  // `/film/…` galleries must stay Photography even when harvest typed them video.
+  // Do not blanket-prefer photography paths: `/albums/` can be music albums.
+  if (fromPath === "photography" && String(item.content_type) === "video") {
+    return "photography";
   }
 
   const fromType = showcaseKind(
@@ -1654,6 +1874,8 @@ const PHOTO_ART_COLLECTION_ROOTS = new Set([
   "artwork",
   "painting",
   "paintings",
+  // Film-stock galleries (e.g. /film/kodak-portra), not motion video.
+  "film",
 ]);
 
 /**
@@ -1851,16 +2073,19 @@ export function showcaseItemHasSubstance(item) {
   const summary = String(item.summary || "").trim();
   const yearOnly = /^\d{4}$/.test(title);
   const sourceKind =
-    item.source && typeof item.source === "object"
-      ? String(/** @type {{ kind?: unknown }} */ (item.source).kind || "")
-      : "";
+    typeof item.source_kind === "string" && item.source_kind
+      ? item.source_kind
+      : item.source && typeof item.source === "object"
+        ? String(/** @type {{ kind?: unknown }} */ (item.source).kind || "")
+        : "";
 
   // Channel cards and external watch links may lack publisher posters.
   if (
     sourceKind === "elsewhere-channel" ||
-    sourceKind === "videos-watch-link"
+    sourceKind === "videos-watch-link" ||
+    sourceKind === "elsewhere-youtube-video"
   ) {
-    return title.length >= 4;
+    return title.length >= 4 || hasHttpsPoster(item);
   }
 
   if (kind === "comics" || kind === "education") {
@@ -1931,11 +2156,26 @@ function interleaveImagedItems(items) {
 }
 
 /**
+ * True when a content item is a comics-hub strip (often under `/blog/…`).
+ * These bypass the writing-tree Showcase chrome gate. Harvest always sets
+ * `content_type: "comic"` for hub-listed posts.
+ * @param {Record<string, unknown>} item
+ * @returns {boolean}
+ */
+function isComicsHubShowcaseItem(item) {
+  return item.content_type === "comic";
+}
+
+/**
  * True when a compact content item belongs in the creative Showcase.
  * Individual experiments under /experiments/… are eligible; the folder is not.
  * Client portfolio case studies are never Showcase cards.
  * @param {Record<string, unknown> | null | undefined} item
- * @param {{ siblingUrls?: Iterable<string>, now?: Date | string }} [options]
+ * @param {{
+ *   siblingUrls?: Iterable<string>,
+ *   now?: Date | string,
+ *   activityWindowDays?: number,
+ * }} [options]
  * @returns {boolean}
  */
 export function isMadeContentItem(item, options = {}) {
@@ -1972,8 +2212,13 @@ export function isMadeContentItem(item, options = {}) {
         : new Date();
 
   // Identity/nav, topics, notes, reading, webrings, feeds—never Showcase,
-  // except past education gatherings that live under writing trees.
-  if (isShowcaseChromePath(item.url) && !educationPast) {
+  // except past education gatherings and comics-hub strips that live under
+  // writing trees (`/blog/…` listed from `/comics/`).
+  if (
+    isShowcaseChromePath(item.url) &&
+    !educationPast &&
+    !isComicsHubShowcaseItem(item)
+  ) {
     return false;
   }
 
@@ -2076,11 +2321,28 @@ export function isMadeContentItem(item, options = {}) {
     }
   }
 
+  const activityWindowDays =
+    typeof options.activityWindowDays === "number" &&
+    Number.isFinite(options.activityWindowDays) &&
+    options.activityWindowDays > 0
+      ? Math.floor(options.activityWindowDays)
+      : ACTIVITY_WINDOW_DAYS;
+
   // Podcast episodes: only the Activity window (new videos), not the back catalog.
   if (type === "podcast_episode") {
     if (
       !publishedAt ||
-      !publishedWithinDays(publishedAt, clock, ACTIVITY_WINDOW_DAYS)
+      !publishedWithinDays(publishedAt, clock, activityWindowDays)
+    ) {
+      return false;
+    }
+  }
+
+  // YouTube watch URLs under Videos: same Activity window as podcast episodes.
+  if (type === "video" && isYoutubeWatchUrl(item.url)) {
+    if (
+      !publishedAt ||
+      !publishedWithinDays(publishedAt, clock, activityWindowDays)
     ) {
       return false;
     }
@@ -2088,6 +2350,134 @@ export function isMadeContentItem(item, options = {}) {
 
   // Photography without a poster (and other empty shells) must not fill Showcase.
   return showcaseItemHasSubstance(item);
+}
+
+/**
+ * True when the URL is a YouTube watch / youtu.be video page.
+ * @param {unknown} url
+ * @returns {boolean}
+ */
+export function isYoutubeWatchUrl(url) {
+  if (typeof url !== "string") {
+    return false;
+  }
+
+  if (!url) {
+    return false;
+  }
+
+  try {
+    const parsed = new URL(url);
+    const host = parsed.hostname.replace(/^www\./i, "").toLowerCase();
+    const path = parsed.pathname;
+
+    if (host === "youtu.be") {
+      return path.length > 1;
+    }
+
+    if (host !== "youtube.com" && !host.endsWith(".youtube.com")) {
+      return false;
+    }
+
+    if (path === "/watch") {
+      return true;
+    }
+
+    if (path.startsWith("/watch/")) {
+      return true;
+    }
+
+    return path.startsWith("/shorts/");
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Site origins that already have YouTube watch rows inside the Activity window.
+ * Used to drop the aggregate Elsewhere channel card when uploads are listed.
+ * @param {unknown} items
+ * @param {Date | string} clock
+ * @param {number} [windowDays]
+ * @returns {Set<string>}
+ */
+export function youtubeWatchOriginsInWindow(
+  items,
+  clock,
+  windowDays = ACTIVITY_WINDOW_DAYS,
+) {
+  /** @type {Set<string>} */
+  const origins = new Set();
+  const list = Array.isArray(items) ? items : [];
+  const days =
+    typeof windowDays === "number" &&
+    Number.isFinite(windowDays) &&
+    windowDays > 0
+      ? Math.floor(windowDays)
+      : ACTIVITY_WINDOW_DAYS;
+
+  for (const item of list) {
+    if (!item || typeof item !== "object") {
+      continue;
+    }
+
+    if (item.content_type !== "video") {
+      continue;
+    }
+
+    if (!isYoutubeWatchUrl(item.url)) {
+      continue;
+    }
+
+    if (!publishedWithinDays(item.published_at, clock, days)) {
+      continue;
+    }
+
+    if (typeof item.site_origin !== "string" || !item.site_origin) {
+      continue;
+    }
+
+    origins.add(item.site_origin);
+  }
+
+  return origins;
+}
+
+/**
+ * True when a YouTube Elsewhere channel card should be omitted because the
+ * same origin already has in-window watch uploads in Showcase Videos.
+ * @param {unknown} item
+ * @param {Set<string>} watchOrigins
+ * @returns {boolean}
+ */
+export function shouldOmitYoutubeChannelCard(item, watchOrigins) {
+  if (!item || typeof item !== "object") {
+    return false;
+  }
+
+  const source = /** @type {{ source?: unknown }} */ (item).source;
+
+  if (!source || typeof source !== "object") {
+    return false;
+  }
+
+  const typed = /** @type {{ kind?: unknown, network?: unknown }} */ (source);
+
+  if (typed.kind !== "elsewhere-channel") {
+    return false;
+  }
+
+  if (typed.network !== "youtube") {
+    return false;
+  }
+
+  const origin = /** @type {{ site_origin?: unknown }} */ (item).site_origin;
+
+  if (typeof origin !== "string" || !origin) {
+    return false;
+  }
+
+  return watchOrigins instanceof Set && watchOrigins.has(origin);
 }
 
 /**
@@ -2153,14 +2543,19 @@ function contentDisplayTimestamp(item) {
 }
 
 /**
- * True when a content row may appear on visitor writing surfaces (14-day window)
- * or is durable Showcase creative (catalog stays visible). The 15–30 day band
- * may remain in `_data/content.json` for crawl merge but is not shown here.
+ * True when a content row may appear on visitor writing surfaces (Activity
+ * window) or is durable Showcase creative (catalog stays visible). Live uses
+ * 14 days; local views:build may pass 30 so the retention band is previewable.
  * @param {Record<string, unknown> | null | undefined} item
  * @param {Date | string} now
+ * @param {number} [windowDays]
  * @returns {boolean}
  */
-export function isVisitorFacingContentItem(item, now) {
+export function isVisitorFacingContentItem(
+  item,
+  now,
+  windowDays = ACTIVITY_WINDOW_DAYS,
+) {
   if (!item || typeof item !== "object") {
     return false;
   }
@@ -2188,11 +2583,14 @@ export function isVisitorFacingContentItem(item, now) {
     return true;
   }
 
-  return publishedWithinDays(
-    contentDisplayTimestamp(item),
-    now,
-    ACTIVITY_WINDOW_DAYS,
-  );
+  const days =
+    typeof windowDays === "number" &&
+    Number.isFinite(windowDays) &&
+    windowDays > 0
+      ? Math.floor(windowDays)
+      : ACTIVITY_WINDOW_DAYS;
+
+  return publishedWithinDays(contentDisplayTimestamp(item), now, days);
 }
 
 /**
@@ -2287,18 +2685,35 @@ export function compareShowcaseRecency(left, right) {
  * Label eligible Showcase rows and interleave posters per origin.
  * Each origin’s works are newest-first before interleave.
  * @param {Array<Record<string, unknown>>} compactItems
+ * @param {Date | string} [now]
  * @returns {Array<Record<string, unknown>>}
  */
-function eligibleShowcaseItems(compactItems) {
-  const list = Array.isArray(compactItems) ? compactItems : [];
+function eligibleShowcaseItems(compactItems, now, activityWindowDays) {
+  const list = dedupeCrosspostedContentItems(
+    Array.isArray(compactItems) ? compactItems : [],
+  );
   const siblingUrls = list
     .map((item) => (typeof item?.url === "string" ? item.url : ""))
     .filter(Boolean);
   /** @type {Map<string, Array<Record<string, unknown>>>} */
   const byOrigin = new Map();
+  /** @type {{ siblingUrls: string[], now?: Date | string, activityWindowDays?: number }} */
+  const madeOptions = { siblingUrls };
+
+  if (now) {
+    madeOptions.now = now;
+  }
+
+  if (
+    typeof activityWindowDays === "number" &&
+    Number.isFinite(activityWindowDays) &&
+    activityWindowDays > 0
+  ) {
+    madeOptions.activityWindowDays = Math.floor(activityWindowDays);
+  }
 
   for (const raw of list) {
-    if (!isMadeContentItem(raw, { siblingUrls })) {
+    if (!isMadeContentItem(raw, madeOptions)) {
       continue;
     }
 
@@ -2374,10 +2789,10 @@ export function channelItemsFromNetwork(
       continue;
     }
 
-    const siteTitle =
-      (typeof site.title === "string" && site.title) ||
-      (typeof site.domain === "string" && site.domain) ||
-      origin;
+    const siteTitle = publisherDisplayTitle(
+      /** @type {Record<string, unknown>} */ (site),
+      origin,
+    );
     const elsewhere = Array.isArray(site.elsewhere) ? site.elsewhere : [];
 
     for (const link of elsewhere) {
@@ -2444,17 +2859,17 @@ export function channelItemsFromNetwork(
 }
 
 /**
- * Showcase strip grouped by kind. Includes every eligible work (no global max).
- * Within each kind, items are newest-first (published_at / observed_at, then
- * URL). Fair-per-origin selection still applies when a limit is set. An
- * optional `limit` truncates only for tests or callers that ask for a short
- * list.
+ * Showcase strip grouped by kind (A–Z sections). Includes every eligible work
+ * (no global max). Within each kind, items are newest `published_at` first
+ * ({@link compareShowcaseRecency}). Fair-per-origin selection still applies
+ * when a limit is set. Optional `now` pins age gates for tests.
  * @param {Array<Record<string, unknown>>} compactItems
  * @param {number} [limit]
+ * @param {Date | string} [now]
  * @returns {Array<Record<string, unknown>>}
  */
-export function buildMadeItems(compactItems, limit) {
-  const eligible = eligibleShowcaseItems(compactItems);
+export function buildMadeItems(compactItems, limit, now, activityWindowDays) {
+  const eligible = eligibleShowcaseItems(compactItems, now, activityWindowDays);
   const maxItems =
     typeof limit === "number" && Number.isFinite(limit)
       ? Math.max(0, Math.floor(limit))
@@ -2471,7 +2886,25 @@ export function buildMadeItems(compactItems, limit) {
     const kind = SHOWCASE_KIND_ORDER.includes(String(item.kind))
       ? String(item.kind)
       : "other";
-    byKind.get(kind)?.push(item);
+    /** @type {Array<Record<string, unknown>>} */ (byKind.get(kind)).push(item);
+  }
+
+  // Newest publish first within each kind, then cap per origin so one catalog
+  // cannot fill a whole Showcase section.
+  for (const kind of SHOWCASE_KIND_ORDER) {
+    const list = /** @type {Array<Record<string, unknown>>} */ (
+      byKind.get(kind)
+    );
+
+    if (list.length === 0) {
+      continue;
+    }
+
+    list.sort(compareShowcaseRecency);
+    byKind.set(
+      kind,
+      fairPerOriginLimit(list, SHOWCASE_MAX_PER_ORIGIN_PER_KIND),
+    );
   }
 
   // byKind is pre-populated for every entry in SHOWCASE_KIND_ORDER, so
@@ -2495,18 +2928,42 @@ export function buildMadeItems(compactItems, limit) {
       break;
     }
 
-    result.push(
-      ...fairTopicArticles(
-        byKind.get(kind) || [],
-        Math.min(perKind, remaining),
-      ),
+    const kindItems = /** @type {Array<Record<string, unknown>>} */ (
+      byKind.get(kind)
     );
+
+    // Limited: fair-per-origin across kinds for short lists, then re-sort.
+    // Uncapped: already origin-capped per kind above; keep publish order.
+    if (typeof limit === "number" && Number.isFinite(limit)) {
+      result.push(
+        ...fairTopicArticles(kindItems, Math.min(perKind, remaining)).sort(
+          compareShowcaseRecency,
+        ),
+      );
+    } else {
+      result.push(...kindItems.slice(0, Math.min(perKind, remaining)));
+    }
   }
 
   if (result.length < maxItems) {
     const seen = new Set(result.map((item) => String(item.url)));
-    const rest = eligible.filter((item) => !seen.has(String(item.url)));
-    result.push(...fairTopicArticles(rest, maxItems - result.length));
+    // Only refill from origin-capped kind lists — never reintroduce overflow rows.
+    const rest = SHOWCASE_KIND_ORDER.flatMap(
+      (kind) =>
+        /** @type {Array<Record<string, unknown>>} */ (byKind.get(kind)),
+    )
+      .filter((item) => !seen.has(String(item.url)))
+      .sort(compareShowcaseRecency);
+
+    if (typeof limit === "number" && Number.isFinite(limit)) {
+      result.push(
+        ...fairTopicArticles(rest, maxItems - result.length).sort(
+          compareShowcaseRecency,
+        ),
+      );
+    } else {
+      result.push(...rest.slice(0, maxItems - result.length));
+    }
   }
 
   const rank = new Map(SHOWCASE_KIND_ORDER.map((kind, index) => [kind, index]));
@@ -2542,12 +2999,19 @@ const HOME_SHOWCASE_KINDS = new Set([
  * work per member × kind. No publish-date window—undated works compete via
  * {@link compareShowcaseRecency} (`published_at`, then `observed_at`, then
  * URL). An optional `limit` truncates after the per-member-per-kind pick.
+ * Optional `now` pins age gates for tests and views:build.
  * @param {Array<Record<string, unknown>>} compactItems
  * @param {number} [limit]
+ * @param {Date | string} [now]
  * @returns {Array<Record<string, unknown>>}
  */
-export function buildShowcaseHomeItems(compactItems, limit) {
-  const eligible = eligibleShowcaseItems(compactItems)
+export function buildShowcaseHomeItems(
+  compactItems,
+  limit,
+  now,
+  activityWindowDays,
+) {
+  const eligible = eligibleShowcaseItems(compactItems, now, activityWindowDays)
     .filter((item) => HOME_SHOWCASE_KINDS.has(String(item.kind)))
     .sort(compareShowcaseRecency);
 
@@ -2597,7 +3061,7 @@ export function showcaseItemsForActivity(
   now,
   windowDays = ACTIVITY_WINDOW_DAYS,
 ) {
-  const showcase = buildMadeItems(compactItems);
+  const showcase = buildMadeItems(compactItems, undefined, now, windowDays);
   const inWindow = showcase.filter(
     (item) =>
       typeof item.published_at === "string" &&
@@ -3213,6 +3677,8 @@ export function buildEventIcs(happeningItems, options = {}) {
  *   siteSignals: unknown,
  *   generatedAt: string,
  *   now?: Date,
+ *   activityWindowDays?: number,
+ *   channelPublishByUrl?: Record<string, string>,
  * }} input
  * @returns {{
  *   activity: Record<string, unknown>,
@@ -3239,26 +3705,45 @@ export function buildViewDocuments(input) {
       edge && typeof edge.from === "string" && typeof edge.to === "string",
   );
   const clock = input.now || new Date(input.generatedAt);
-  const compactFromContent = contentItems
-    .map((item) => compactContentItem(item, sites, publicSlugs))
-    .filter(Boolean)
-    .filter((item) => isVisitorFacingContentItem(item, clock));
+  const windowDays =
+    typeof input.activityWindowDays === "number" &&
+    Number.isFinite(input.activityWindowDays) &&
+    input.activityWindowDays > 0
+      ? Math.floor(input.activityWindowDays)
+      : ACTIVITY_WINDOW_DAYS;
+  const compactFromContent = dedupeCrosspostedContentItems(
+    contentItems
+      .map((item) => compactContentItem(item, sites, publicSlugs))
+      .filter(Boolean)
+      .filter((item) => isVisitorFacingContentItem(item, clock, windowDays)),
+  );
   // Elsewhere channels only join Showcase / Activity / search when their
   // latest upload published_at falls in the Activity window (undated omitted).
+  // When the same origin already has in-window YouTube watch rows, skip the
+  // aggregate channel card so Videos lists each upload instead.
+  const originsWithYoutubeWatchVideos = youtubeWatchOriginsInWindow(
+    compactFromContent,
+    clock,
+    windowDays,
+  );
   const channelCompact = channelItemsFromNetwork(
     input.network || [],
     input.generatedAt,
     /** @type {Record<string, string> | null | undefined} */ (
       input.channelPublishByUrl
     ),
-  ).filter((item) =>
-    publishedWithinDays(item.published_at, clock, ACTIVITY_WINDOW_DAYS),
-  );
+  ).filter((item) => {
+    if (!publishedWithinDays(item.published_at, clock, windowDays)) {
+      return false;
+    }
+
+    return !shouldOmitYoutubeChannelCard(item, originsWithYoutubeWatchVideos);
+  });
   const compactItems = [...compactFromContent, ...channelCompact];
   const recentItems = contentItems.filter(
     (item) =>
       item &&
-      publishedWithinDays(item.published_at, clock, ACTIVITY_WINDOW_DAYS) &&
+      publishedWithinDays(item.published_at, clock, windowDays) &&
       !isJoshternetHubContentUrl(item.url),
   );
   const feedPrimary = oneLatestPerOrigin(recentItems)
@@ -3270,12 +3755,12 @@ export function buildViewDocuments(input) {
   const showcasePrimary = showcaseItemsForActivity(
     compactItems,
     clock,
-    ACTIVITY_WINDOW_DAYS,
+    windowDays,
   );
-  const primary = uniqueActivityItemsByUrl([
-    ...feedPrimary,
-    ...showcasePrimary,
-  ]);
+  const primary = fairPerOriginLimit(
+    uniqueActivityItemsByUrl([...feedPrimary, ...showcasePrimary]),
+    ACTIVITY_MAX_PER_ORIGIN,
+  );
 
   const types = [
     ...new Set(
@@ -3286,7 +3771,7 @@ export function buildViewDocuments(input) {
   const activity = {
     schema_version: 1,
     generated_at: input.generatedAt,
-    window_days: ACTIVITY_WINDOW_DAYS,
+    window_days: windowDays,
     primary_count: primary.length,
     item_count: compactItems.length,
     content_types: types,
@@ -3294,7 +3779,9 @@ export function buildViewDocuments(input) {
   };
 
   const cooccurrence = topicCooccurrence(
-    contentItems.filter((item) => isVisitorFacingContentItem(item, clock)),
+    contentItems.filter((item) =>
+      isVisitorFacingContentItem(item, clock, windowDays),
+    ),
     publicSlugs,
   );
   const featuredCommunity = pickFeaturedCommunity(communities, input.now);
@@ -3573,13 +4060,24 @@ export function buildViewDocuments(input) {
   }
 
   const searchIndexDocuments = searchDocuments;
-  const showcaseItemsRaw = buildShowcaseItems(compactItems);
-  const showcaseHome = buildShowcaseHomeItems(compactItems);
+  const showcaseItemsRaw = buildShowcaseItems(
+    compactItems,
+    undefined,
+    clock,
+    windowDays,
+  );
+  const showcaseHome = buildShowcaseHomeItems(
+    compactItems,
+    undefined,
+    clock,
+    windowDays,
+  );
   /** @type {Map<string, number>} */
   const kindCounts = new Map();
 
   for (const item of showcaseItemsRaw) {
-    const kind = String(item.kind || "other");
+    // eligibleShowcaseItems always assigns `kind` via showcaseKindForItem.
+    const kind = String(item.kind);
     kindCounts.set(kind, (kindCounts.get(kind) || 0) + 1);
   }
 

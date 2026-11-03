@@ -2738,6 +2738,167 @@ test("enrichContentItemPosters fills publisher og:image for experiments", async 
   assert.match(String(items[0].summary), /corkboard/i);
 });
 
+test("enrichContentItemPosters fills comic hub post og:image and published_at", async () => {
+  const poster = "https://artlung.example/comics/use-it.png";
+  const items = [
+    {
+      url: "https://artlung.example/blog/2025/03/use-it/",
+      content_type: "comic",
+      title: "USE IT.",
+      summary: "",
+      image: "",
+      source: { kind: "creative-comics-hub" },
+    },
+    {
+      url: "https://artlung.example/blog/2024/11/spite/",
+      content_type: "comic",
+      title: "Spite",
+      summary: "Already dated",
+      image: "",
+      published_at: "2024-11-01T00:00:00.000Z",
+      source_kind: "creative-comics-hub",
+    },
+  ];
+
+  await enrichContentItemPosters(items, {
+    robotsGate: ALLOW_ALL_ROBOTS,
+    fetchText: async (url) => {
+      if (url === items[0].url) {
+        return {
+          url,
+          contentType: "text/html",
+          body: `<html><head>
+            <meta property="og:image" content="${poster}">
+            <meta property="article:published_time" content="2025-03-21T12:00:00.000Z">
+          </head></html>`,
+        };
+      }
+
+      return {
+        url,
+        contentType: "text/html",
+        body: `<html><head>
+          <meta property="og:image" content="https://artlung.example/spite.png">
+        </head></html>`,
+      };
+    },
+  });
+
+  assert.equal(items[0].image, poster);
+  assert.equal(items[0].published_at, "2025-03-21T12:00:00.000Z");
+  assert.equal(items[1].image, "https://artlung.example/spite.png");
+  assert.equal(items[1].published_at, "2024-11-01T00:00:00.000Z");
+});
+
+test("contentItemNeedsPosterEnrichment accepts creative-comics-hub source", () => {
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://artlung.example/blog/2025/03/use-it/",
+      content_type: "note",
+      image: "",
+      source: { kind: "creative-comics-hub" },
+    }),
+    true,
+  );
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://artlung.example/blog/2025/03/use-it/",
+      content_type: "note",
+      image: "",
+      source_kind: "creative-comics-hub",
+    }),
+    true,
+  );
+});
+
+test("enrichContentItemPosters fills dates from source.kind comics hub", async () => {
+  const items = [
+    {
+      url: "https://artlung.example/blog/2025/02/hub-kind/",
+      content_type: "project",
+      title: "Hub kind",
+      summary: "ok",
+      image: "",
+      source: { kind: "creative-comics-hub" },
+    },
+    {
+      url: "https://artlung.example/blog/2025/02/no-type/",
+      title: "No type",
+      summary: "ok",
+      image: "",
+      source_kind: "creative-comics-hub",
+    },
+  ];
+
+  await enrichContentItemPosters(items, {
+    robotsGate: ALLOW_ALL_ROBOTS,
+    fetchText: async (url) => ({
+      url,
+      contentType: "text/html",
+      body: `<html><head>
+        <meta property="og:image" content="https://artlung.example/h.png">
+        <meta property="article:published_time" content="2025-02-01T00:00:00.000Z">
+      </head></html>`,
+    }),
+  });
+
+  assert.equal(items[0].image, "https://artlung.example/h.png");
+  assert.equal(items[0].published_at, "2025-02-01T00:00:00.000Z");
+  assert.equal(items[1].image, "https://artlung.example/h.png");
+  assert.equal(items[1].published_at, "2025-02-01T00:00:00.000Z");
+});
+
+test("enrichContentItemPosters comic with no page date leaves published_at empty", async () => {
+  const items = [
+    {
+      url: "https://artlung.example/blog/2025/01/undated/",
+      content_type: "project",
+      title: "Undated strip",
+      summary: "ok",
+      image: "",
+      source_kind: "creative-comics-hub",
+    },
+    {
+      url: "https://artlung.example/blog/2025/01/kind-only/",
+      content_type: "comic",
+      title: "Kind only",
+      summary: "ok",
+      image: "",
+      published_at: 2025,
+      source: { kind: 12 },
+    },
+  ];
+
+  await enrichContentItemPosters(items, {
+    robotsGate: ALLOW_ALL_ROBOTS,
+    fetchText: async (url) => {
+      if (String(url).includes("/undated/")) {
+        return {
+          url,
+          contentType: "text/html",
+          body: `<html><head>
+            <meta property="og:image" content="https://artlung.example/u.png">
+          </head></html>`,
+        };
+      }
+
+      return {
+        url,
+        contentType: "text/html",
+        body: `<html><head>
+          <meta property="og:image" content="https://artlung.example/u.png">
+          <meta property="article:published_time" content="2025-01-15T00:00:00.000Z">
+        </head></html>`,
+      };
+    },
+  });
+
+  assert.equal(items[0].image, "https://artlung.example/u.png");
+  assert.equal(items[0].published_at, undefined);
+  assert.equal(items[1].image, "https://artlung.example/u.png");
+  assert.equal(items[1].published_at, "2025-01-15T00:00:00.000Z");
+});
+
 test("enrichContentItemPosters skips items that already have posters", async () => {
   let fetched = false;
   const items = [

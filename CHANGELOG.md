@@ -9,6 +9,7 @@
 
 ### Added
 
+- **Elsewhere YouTube videos in Showcase Videos:** Network YouTube channel links harvest recent watch URLs into individual `video` rows (14-day window). Atom is used when robots allow; YouTube disallows `/feeds/videos.xml`, so channel HTML → watch-page `uploadDate` is the compliant path. The aggregate channel card is omitted when those uploads are listed. Cards use public `i.ytimg.com` thumbnails (localized under `/assets/activity/posters/` at views:build).
 - **YouTube show feeds for Showcase Podcasts:** Channel and playlist `videos.xml` helpers harvest recent episodes from member/Substack HTML into `podcast_episode` rows (Atom first, watch-page `uploadDate` fallback). Live feed debugging is for local sync runs.
 - **Optional `/.well-known/slashpages` OPML:** Robots-gated, SSRF-safe reader seeds same-origin crawl URLs; cross-origin outlines stay evidence-only. Includes are depth/count capped with loop detection.
 - **Showcase and Happening crawl:** Comics, study-hall/education, CSS Battles, Watch links, and YouTube/Vimeo/Twitch channel cards from Elsewhere. Past education gatherings can appear in Showcase; upcoming ones stay on Happening. `/events/` stays in Network nav when there is something upcoming.
@@ -21,6 +22,10 @@
 
 ### Fixed
 
+- **Showcase/Activity fairness + attribution:** Cap **2 cards per origin per Showcase kind** (and **2 What’s New rows per origin**) so large catalogs cannot crowd out peers. Drop same-origin same-title crossposts (blog article vs podcast/video). Activity/Showcase author lines use Network person titles (e.g. “Chris Minnick”) instead of the host when a self-intro is available.
+- **Coverage: YouTube channel-vs-watch filter branches:** Extract `youtubeWatchOriginsInWindow` / `shouldOmitYoutubeChannelCard` with exhaustive unit tests so `views/lib.mjs` stays at 100% branch coverage under Node’s experimental reporter.
+- **Comics hub → Showcase Comics:** `/comics/` and `/webcomics/` indexes harvest same-origin strips even when posts live under `/blog/…` (Artlung-shaped). Typed as `comic`, enriched with og:image + publish date from the post page, and listed under Showcase Comics.
+- **`/film/` galleries are Photography, not Video:** Path `/film/…` (e.g. Josh Ozuna Kodak UltraMax/Portra) maps to film-stock photography; motion video stays on `/videos/` / animation / reels / shorts.
 - **`/ideas/` is not Showcase creative work:** Treat `/ideas/` as a writing hub / site chrome (not a studio slashpage), so homepage “Ideas” cards like forwardbias.dev no longer appear as projects.
 - **Book publish dates for Showcase:** Parse member “Coming Month YYYY” badges and “By … · Publisher · YYYY” bylines; when still undated, follow the book’s Amazon Buy/Pre-order link for publication date. Books without a validated date (or outside the last 365 days) stay out of Showcase.
 - **Showcase kinds and age gates:** Prefer creative path kinds over generic `project` (e.g. `/books/…` → Books, `/painting/` → Art). Books need a publish date within the last year. Undated portfolio/project rows stay out. `/availability/` and `/hire-me/` are chrome. Direct media/`wp-content/uploads` figures are not works; `music-for-losers`-style paths are not Music. Podcast episodes only feature inside the 14-day window. Astro span titles strip at compact/card time.
@@ -30,8 +35,11 @@
 
 ### Changed
 
+- **Local Activity window 30 days:** `views:build` uses `resolveActivityWindowDays()` — `JEKYLL_ENV=development` or `JOSHTERNET_ACTIVITY_WINDOW_DAYS=30` shows the full writing retention band; live/CI stay at **14 days**. `activity.json` records `window_days`.
+- **Showcase section order:** Categories sort A–Z by default (`other` last). Within each category, cards sort newest `published_at` first.
+- **Deep crawl before short-circuit:** `nlp:sync` requires a prior deep-crawl baseline (`pages_fetched` / pages) before skipping HTML when feeds+sitemap are unchanged. Origins with only short-circuit empties are crawled once; later skips reuse prior `site_signals` instead of writing zeros.
 - **Content retention (regular posters):** Each `nlp:sync` prunes writing older than **30 days** from `_data/content.json` **before** crawl/gather, then merges new items. What’s New / Activity and other visitor writing surfaces stay at **14 days**. Showcase creative works remain while observed (carry-forward on soft-fail or feed/sitemap short-circuit). Origins stay the archive of record.
-- **Incremental fetch cache:** Conditional requests (`If-None-Match` / `If-Modified-Since`) store bodies under `.tmp/http-cache/` (gitignored; restored via Actions cache). Unchanged feeds + sitemap can short-circuit deep HTML crawl. `NETWORK_REFRESH_ALL` bypasses the cache.
+- **Incremental fetch cache:** Conditional requests (`If-None-Match` / `If-Modified-Since`) store bodies under `.tmp/http-cache/` (gitignored; restored via Actions cache). Unchanged feeds + sitemap can short-circuit deep HTML crawl **after** a baseline deep crawl. `NETWORK_REFRESH_ALL` bypasses the cache.
 - **Join copy:** Tighter peer tone throughout `/join/`; step 2 is “Platform recipes—open the one that matches your stack, or skip to publish.”
 - **Self-intro Network titles for personal domains:** Descriptions like “I’m Chris Minnick…” set the card title when the name compresses to the host (e.g. `www.chrisminnick.com`), including Non-Josh peers. Josh-only given-name gating still blocks host-compressed brand titles such as “Forward Bias.”
 - **Undated portfolio projects sort as archival:** Showcase recency ignores crawl `observed_at` for undated project/portfolio items so archives (e.g. joshuadrake.org works without a publisher date) cannot lead as “just crawled.” Real `published_at` from Status Completed / page meta still ranks normally after sync enrichment.
