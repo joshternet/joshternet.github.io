@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-03T16:55:08.658Z",
-  "overlap_count": 100,
+  "generated_at": "2026-11-03T21:06:38.882Z",
+  "overlap_count": 97,
   "pairs": [
     {
       "a": "https://artlung.com",
@@ -64,10 +64,6 @@
       "b": "https://joshozuna.com",
       "topics": [
         {
-          "slug": "collection",
-          "label": "collections"
-        },
-        {
           "slug": "dog",
           "label": "dog"
         },
@@ -123,6 +119,10 @@
       "a": "https://artlung.com",
       "b": "https://joshtronic.com",
       "topics": [
+        {
+          "slug": "email",
+          "label": "emails"
+        },
         {
           "slug": "learn",
           "label": "learn"
@@ -198,10 +198,6 @@
           "label": "art"
         },
         {
-          "slug": "collection",
-          "label": "collections"
-        },
-        {
           "slug": "css",
           "label": "css"
         },
@@ -225,22 +221,8 @@
     },
     {
       "a": "https://artlung.com",
-      "b": "https://joshuapsteele.com",
-      "topics": [
-        {
-          "slug": "collection",
-          "label": "collections"
-        }
-      ]
-    },
-    {
-      "a": "https://artlung.com",
       "b": "https://joshuastuebner.com",
       "topics": [
-        {
-          "slug": "collection",
-          "label": "collections"
-        },
         {
           "slug": "css",
           "label": "css"
@@ -354,6 +336,16 @@
       ]
     },
     {
+      "a": "https://forwardbias.dev",
+      "b": "https://www.joshfinnie.com",
+      "topics": [
+        {
+          "slug": "side-project",
+          "label": "side projects"
+        }
+      ]
+    },
+    {
       "a": "https://joshbeard.com",
       "b": "https://joshgr.com",
       "topics": [
@@ -367,6 +359,10 @@
       "a": "https://joshbeard.com",
       "b": "https://joshmuller.ca",
       "topics": [
+        {
+          "slug": "labor",
+          "label": "labor"
+        },
         {
           "slug": "october",
           "label": "october"
@@ -568,10 +564,6 @@
         {
           "slug": "software",
           "label": "Software"
-        },
-        {
-          "slug": "working",
-          "label": "working"
         }
       ]
     },
@@ -940,10 +932,6 @@
       "b": "https://joshuamorris.info",
       "topics": [
         {
-          "slug": "collection",
-          "label": "collections"
-        },
-        {
           "slug": "game",
           "label": "game"
         },
@@ -971,25 +959,11 @@
     },
     {
       "a": "https://joshozuna.com",
-      "b": "https://joshuapsteele.com",
-      "topics": [
-        {
-          "slug": "collection",
-          "label": "collections"
-        }
-      ]
-    },
-    {
-      "a": "https://joshozuna.com",
       "b": "https://joshuastuebner.com",
       "topics": [
         {
           "slug": "beautiful",
           "label": "beautiful"
-        },
-        {
-          "slug": "collection",
-          "label": "collections"
         },
         {
           "slug": "food",
@@ -1464,6 +1438,10 @@
         {
           "slug": "design",
           "label": "design"
+        },
+        {
+          "slug": "power",
+          "label": "power"
         }
       ]
     },
@@ -1489,16 +1467,6 @@
     },
     {
       "a": "https://joshuamorris.info",
-      "b": "https://joshuapsteele.com",
-      "topics": [
-        {
-          "slug": "collection",
-          "label": "collections"
-        }
-      ]
-    },
-    {
-      "a": "https://joshuamorris.info",
       "b": "https://joshuastuebner.com",
       "topics": [
         {
@@ -1508,10 +1476,6 @@
         {
           "slug": "browser",
           "label": "browsers"
-        },
-        {
-          "slug": "collection",
-          "label": "collections"
         },
         {
           "slug": "css",
@@ -1606,16 +1570,6 @@
         {
           "slug": "table",
           "label": "tables"
-        }
-      ]
-    },
-    {
-      "a": "https://joshuapsteele.com",
-      "b": "https://joshuastuebner.com",
-      "topics": [
-        {
-          "slug": "collection",
-          "label": "collections"
         }
       ]
     },
@@ -1810,114 +1764,6 @@
                 {
                   "url": "https://www.chrisminnick.com/fiction/",
                   "title": "Fiction"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "collection",
-          "label": "collections",
-          "articles": [
-            {
-              "url": "https://artlung.com/flickr/",
-              "title": "/flickr/ 📁"
-            },
-            {
-              "url": "https://artlung.com/mixtapes/",
-              "title": "/mixtapes/ 📁"
-            },
-            {
-              "url": "https://artlung.com/mixtapes/1984-cool-stuff-303/",
-              "title": "Cool Stuff 303"
-            },
-            {
-              "url": "https://artlung.com/mixtapes/1984-pirate-music-102/",
-              "title": "Pirate Music 102*"
-            },
-            {
-              "url": "https://artlung.com/mixtapes/1984-untitled-safety-dance/",
-              "title": "Untitled: Joe's First Compilation"
-            },
-            {
-              "url": "https://artlung.com/mixtapes/1986-thurtean/",
-              "title": "THURT-EAN MUZIC(music) no. 13"
-            },
-            {
-              "url": "https://artlung.com/mixtapes/1989-roanoke/",
-              "title": "Roanoke [-1, 0, 1]"
-            },
-            {
-              "url": "https://artlung.com/mixtapes/1990-roanoke/",
-              "title": "Roanoke [-½, ∅, +2]"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshozuna.com",
-              "domain": "joshozuna.com",
-              "title": "Josh Ozuna",
-              "articles": [
-                {
-                  "url": "https://joshozuna.com/year/2026",
-                  "title": "2026 Photography"
-                },
-                {
-                  "url": "https://joshozuna.com/year/2025",
-                  "title": "2025 Photography"
-                },
-                {
-                  "url": "https://joshozuna.com/collections",
-                  "title": "collections"
-                },
-                {
-                  "url": "https://joshozuna.com/year/2022",
-                  "title": "2022 Photography"
-                },
-                {
-                  "url": "https://joshozuna.com/year/2023",
-                  "title": "2023 Photography"
-                },
-                {
-                  "url": "https://joshozuna.com/year/2024",
-                  "title": "2024 Photography"
-                },
-                {
-                  "url": "https://joshozuna.com/html-sitemap",
-                  "title": "joshozuna.com links"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
-                  "title": "Worth Wandering: Radio Aporee"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuapsteele.com",
-              "domain": "joshuapsteele.com",
-              "title": "Joshua P. Steele",
-              "articles": [
-                {
-                  "url": "https://joshuapsteele.com/lists/",
-                  "title": "Lists 🗒️"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuastuebner.com",
-              "domain": "joshuastuebner.com",
-              "title": "Joshua Stübner",
-              "articles": [
-                {
-                  "url": "https://joshuastuebner.com/digital-garden/",
-                  "title": "Digital Garden"
                 }
               ]
             }
@@ -2181,6 +2027,33 @@
           ]
         },
         {
+          "slug": "email",
+          "label": "emails",
+          "articles": [
+            {
+              "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
+              "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters."
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
+              "title": "I got an email and text message nearly simultaneously today."
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
+                  "title": "Learning a New Tech Stack with an LLM"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "full",
           "label": "full",
           "articles": [
@@ -2246,12 +2119,8 @@
               "title": "Joshua Morris",
               "articles": [
                 {
-                  "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-                  "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
-                },
-                {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-                  "title": "6 Analog"
+                  "title": "Analog"
                 }
               ]
             }
@@ -3110,6 +2979,46 @@
       ]
     },
     {
+      "origin": "https://forwardbias.dev",
+      "topics": [
+        {
+          "slug": "side-project",
+          "label": "side projects",
+          "articles": [
+            {
+              "url": "https://forwardbias.dev/ideas/",
+              "title": "Ideas"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
+                  "title": "The October Micro SaaS Challenge: A Retro"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
+                  "title": "Micro SaaS Week Four: SignedOnSite"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/blog/micro-saas-week-three-noshowfixer/",
+                  "title": "Micro SaaS Week Three: NoShowFixer"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/projects/",
+                  "title": "Projects | Josh Finnie"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "origin": "https://joshbeard.com",
       "topics": [
         {
@@ -3133,7 +3042,7 @@
               "articles": [
                 {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-                  "title": "6 Analog"
+                  "title": "Analog"
                 }
               ]
             }
@@ -3230,6 +3139,29 @@
                 {
                   "url": "https://www.joshuabaker.com/work/?work=blue-rubicon-surname-surname-2012",
                   "title": "Surname & Surname"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "labor",
+          "label": "labor",
+          "articles": [
+            {
+              "url": "https://joshbeard.com/photos/2019/2019-labor-day-lift-off-1_jpg.html",
+              "title": "Colorado Springs 2019 Labor Day Lift Off. September, 2019. - Josh Beard"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/work/",
+                  "title": "Work Together"
                 }
               ]
             }
@@ -3833,10 +3765,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
                   "title": "Worth Wandering: Pippin Barr"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-                  "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
                 }
               ]
             },
@@ -3965,29 +3893,6 @@
                 {
                   "url": "https://www.joshuabaker.com/work/?work=showstudio-london-fashion-week-2006",
                   "title": "London Fashion Week"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "working",
-          "label": "working",
-          "articles": [
-            {
-              "url": "https://joshghent.com/php2shell-overreaction/",
-              "title": "Last week was terrible. It didn't have to be"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
-                  "title": "4 Plastic"
                 }
               ]
             }
@@ -4258,10 +4163,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
                   "title": "Worth Wandering: Pippin Barr"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-                  "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
                 }
               ]
             },
@@ -4605,6 +4506,29 @@
                 {
                   "url": "https://www.joshuabaker.com/work/banked/appendix/fintech-futures-nab-acquires-banked/",
                   "title": "Acquired by NAB · National Australia Bank, an investor since 2022, took full ownership of Banked. It is the company behind the work on this page. FinTech Futures Read more"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "labor",
+          "label": "labor",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/work/",
+              "title": "Work Together"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshbeard.com",
+              "domain": "joshbeard.com",
+              "title": "Josh Beard",
+              "articles": [
+                {
+                  "url": "https://joshbeard.com/photos/2019/2019-labor-day-lift-off-1_jpg.html",
+                  "title": "Colorado Springs 2019 Labor Day Lift Off. September, 2019. - Josh Beard"
                 }
               ]
             }
@@ -5029,114 +4953,6 @@
                 {
                   "url": "https://www.joshuabaker.com/work/?work=city-outdoor-media-city-outdoor-media-2014",
                   "title": "City Outdoor Media"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "collection",
-          "label": "collections",
-          "articles": [
-            {
-              "url": "https://joshozuna.com/year/2026",
-              "title": "2026 Photography"
-            },
-            {
-              "url": "https://joshozuna.com/year/2025",
-              "title": "2025 Photography"
-            },
-            {
-              "url": "https://joshozuna.com/collections",
-              "title": "collections"
-            },
-            {
-              "url": "https://joshozuna.com/year/2022",
-              "title": "2022 Photography"
-            },
-            {
-              "url": "https://joshozuna.com/year/2023",
-              "title": "2023 Photography"
-            },
-            {
-              "url": "https://joshozuna.com/year/2024",
-              "title": "2024 Photography"
-            },
-            {
-              "url": "https://joshozuna.com/html-sitemap",
-              "title": "joshozuna.com links"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/flickr/",
-                  "title": "/flickr/ 📁"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/",
-                  "title": "/mixtapes/ 📁"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1984-cool-stuff-303/",
-                  "title": "Cool Stuff 303"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1984-pirate-music-102/",
-                  "title": "Pirate Music 102*"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1984-untitled-safety-dance/",
-                  "title": "Untitled: Joe's First Compilation"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1986-thurtean/",
-                  "title": "THURT-EAN MUZIC(music) no. 13"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1989-roanoke/",
-                  "title": "Roanoke [-1, 0, 1]"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1990-roanoke/",
-                  "title": "Roanoke [-½, ∅, +2]"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
-                  "title": "Worth Wandering: Radio Aporee"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuapsteele.com",
-              "domain": "joshuapsteele.com",
-              "title": "Joshua P. Steele",
-              "articles": [
-                {
-                  "url": "https://joshuapsteele.com/lists/",
-                  "title": "Lists 🗒️"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuastuebner.com",
-              "domain": "joshuastuebner.com",
-              "title": "Joshua Stübner",
-              "articles": [
-                {
-                  "url": "https://joshuastuebner.com/digital-garden/",
-                  "title": "Digital Garden"
                 }
               ]
             }
@@ -5854,7 +5670,7 @@
               "articles": [
                 {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
-                  "title": "7 Organic"
+                  "title": "Organic"
                 }
               ]
             }
@@ -6187,10 +6003,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
                   "title": "Worth Wandering: Pippin Barr"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-                  "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
                 }
               ]
             },
@@ -6579,6 +6391,33 @@
           ]
         },
         {
+          "slug": "email",
+          "label": "emails",
+          "articles": [
+            {
+              "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
+              "title": "Learning a New Tech Stack with an LLM"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
+                  "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters."
+                },
+                {
+                  "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
+                  "title": "I got an email and text message nearly simultaneously today."
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "game",
           "label": "game",
           "articles": [
@@ -6943,7 +6782,7 @@
               "articles": [
                 {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
-                  "title": "7 Organic"
+                  "title": "Organic"
                 }
               ]
             }
@@ -7505,10 +7344,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
                   "title": "Worth Wandering: Pippin Barr"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-                  "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
                 }
               ]
             }
@@ -7854,6 +7689,29 @@
           ]
         },
         {
+          "slug": "power",
+          "label": "power",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/ingersollrandcompressor/",
+              "title": "Ingersoll Rand Compressor"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=getty-images-power-of-sponsorship-2011",
+                  "title": "Power of Sponsorship"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "programming",
           "label": "programming",
           "articles": [
@@ -7973,10 +7831,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
                   "title": "Worth Wandering: Pippin Barr"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-                  "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
                 }
               ]
             },
@@ -8290,7 +8144,7 @@
           "articles": [
             {
               "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-              "title": "6 Analog"
+              "title": "Analog"
             }
           ],
           "sites": [
@@ -8408,10 +8262,6 @@
               "title": "Firefox Is Quietly Making the Web More Capable"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-              "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
-            },
-            {
               "url": "https://joshuamorris.info/experiments/weird-web-october-2026/",
               "title": "Weird Web October 2026 Interactive Halloween browser toys and games, one October theme at a time."
             },
@@ -8495,114 +8345,6 @@
                 {
                   "url": "https://www.chrisminnick.com/books/coding-with-javascript-for-dummies/",
                   "title": "Coding With JavaScript For Dummies"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "collection",
-          "label": "collections",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
-              "title": "Worth Wandering: Radio Aporee"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/flickr/",
-                  "title": "/flickr/ 📁"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/",
-                  "title": "/mixtapes/ 📁"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1984-cool-stuff-303/",
-                  "title": "Cool Stuff 303"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1984-pirate-music-102/",
-                  "title": "Pirate Music 102*"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1984-untitled-safety-dance/",
-                  "title": "Untitled: Joe's First Compilation"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1986-thurtean/",
-                  "title": "THURT-EAN MUZIC(music) no. 13"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1989-roanoke/",
-                  "title": "Roanoke [-1, 0, 1]"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1990-roanoke/",
-                  "title": "Roanoke [-½, ∅, +2]"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshozuna.com",
-              "domain": "joshozuna.com",
-              "title": "Josh Ozuna",
-              "articles": [
-                {
-                  "url": "https://joshozuna.com/year/2026",
-                  "title": "2026 Photography"
-                },
-                {
-                  "url": "https://joshozuna.com/year/2025",
-                  "title": "2025 Photography"
-                },
-                {
-                  "url": "https://joshozuna.com/collections",
-                  "title": "collections"
-                },
-                {
-                  "url": "https://joshozuna.com/year/2022",
-                  "title": "2022 Photography"
-                },
-                {
-                  "url": "https://joshozuna.com/year/2023",
-                  "title": "2023 Photography"
-                },
-                {
-                  "url": "https://joshozuna.com/year/2024",
-                  "title": "2024 Photography"
-                },
-                {
-                  "url": "https://joshozuna.com/html-sitemap",
-                  "title": "joshozuna.com links"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuapsteele.com",
-              "domain": "joshuapsteele.com",
-              "title": "Joshua P. Steele",
-              "articles": [
-                {
-                  "url": "https://joshuapsteele.com/lists/",
-                  "title": "Lists 🗒️"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuastuebner.com",
-              "domain": "joshuastuebner.com",
-              "title": "Joshua Stübner",
-              "articles": [
-                {
-                  "url": "https://joshuastuebner.com/digital-garden/",
-                  "title": "Digital Garden"
                 }
               ]
             }
@@ -8793,12 +8535,8 @@
           "label": "Internet",
           "articles": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-              "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
-            },
-            {
               "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-              "title": "6 Analog"
+              "title": "Analog"
             }
           ],
           "sites": [
@@ -9101,10 +8839,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
               "title": "Worth Wandering: Pippin Barr"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-              "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
             }
           ],
           "sites": [
@@ -9175,7 +8909,7 @@
           "articles": [
             {
               "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
-              "title": "7 Organic"
+              "title": "Organic"
             }
           ],
           "sites": [
@@ -9270,29 +9004,6 @@
                 {
                   "url": "https://joshternet.org/showcase/",
                   "title": "Showcase"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "working",
-          "label": "working",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
-              "title": "4 Plastic"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Josh Ghent",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/php2shell-overreaction/",
-                  "title": "Last week was terrible. It didn't have to be"
                 }
               ]
             }
@@ -9440,114 +9151,6 @@
       "origin": "https://joshuapsteele.com",
       "topics": [
         {
-          "slug": "collection",
-          "label": "collections",
-          "articles": [
-            {
-              "url": "https://joshuapsteele.com/lists/",
-              "title": "Lists 🗒️"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/flickr/",
-                  "title": "/flickr/ 📁"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/",
-                  "title": "/mixtapes/ 📁"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1984-cool-stuff-303/",
-                  "title": "Cool Stuff 303"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1984-pirate-music-102/",
-                  "title": "Pirate Music 102*"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1984-untitled-safety-dance/",
-                  "title": "Untitled: Joe's First Compilation"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1986-thurtean/",
-                  "title": "THURT-EAN MUZIC(music) no. 13"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1989-roanoke/",
-                  "title": "Roanoke [-1, 0, 1]"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1990-roanoke/",
-                  "title": "Roanoke [-½, ∅, +2]"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshozuna.com",
-              "domain": "joshozuna.com",
-              "title": "Josh Ozuna",
-              "articles": [
-                {
-                  "url": "https://joshozuna.com/year/2026",
-                  "title": "2026 Photography"
-                },
-                {
-                  "url": "https://joshozuna.com/year/2025",
-                  "title": "2025 Photography"
-                },
-                {
-                  "url": "https://joshozuna.com/collections",
-                  "title": "collections"
-                },
-                {
-                  "url": "https://joshozuna.com/year/2022",
-                  "title": "2022 Photography"
-                },
-                {
-                  "url": "https://joshozuna.com/year/2023",
-                  "title": "2023 Photography"
-                },
-                {
-                  "url": "https://joshozuna.com/year/2024",
-                  "title": "2024 Photography"
-                },
-                {
-                  "url": "https://joshozuna.com/html-sitemap",
-                  "title": "joshozuna.com links"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
-                  "title": "Worth Wandering: Radio Aporee"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuastuebner.com",
-              "domain": "joshuastuebner.com",
-              "title": "Joshua Stübner",
-              "articles": [
-                {
-                  "url": "https://joshuastuebner.com/digital-garden/",
-                  "title": "Digital Garden"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "resource",
           "label": "resources",
           "articles": [
@@ -9691,10 +9294,6 @@
                   "title": "Firefox Is Quietly Making the Web More Capable"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-                  "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
-                },
-                {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/",
                   "title": "Weird Web October 2026 Interactive Halloween browser toys and games, one October theme at a time."
                 },
@@ -9705,114 +9304,6 @@
                 {
                   "url": "https://joshuamorris.info/experiments/",
                   "title": "Experiments"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "collection",
-          "label": "collections",
-          "articles": [
-            {
-              "url": "https://joshuastuebner.com/digital-garden/",
-              "title": "Digital Garden"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/flickr/",
-                  "title": "/flickr/ 📁"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/",
-                  "title": "/mixtapes/ 📁"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1984-cool-stuff-303/",
-                  "title": "Cool Stuff 303"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1984-pirate-music-102/",
-                  "title": "Pirate Music 102*"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1984-untitled-safety-dance/",
-                  "title": "Untitled: Joe's First Compilation"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1986-thurtean/",
-                  "title": "THURT-EAN MUZIC(music) no. 13"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1989-roanoke/",
-                  "title": "Roanoke [-1, 0, 1]"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/1990-roanoke/",
-                  "title": "Roanoke [-½, ∅, +2]"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshozuna.com",
-              "domain": "joshozuna.com",
-              "title": "Josh Ozuna",
-              "articles": [
-                {
-                  "url": "https://joshozuna.com/year/2026",
-                  "title": "2026 Photography"
-                },
-                {
-                  "url": "https://joshozuna.com/year/2025",
-                  "title": "2025 Photography"
-                },
-                {
-                  "url": "https://joshozuna.com/collections",
-                  "title": "collections"
-                },
-                {
-                  "url": "https://joshozuna.com/year/2022",
-                  "title": "2022 Photography"
-                },
-                {
-                  "url": "https://joshozuna.com/year/2023",
-                  "title": "2023 Photography"
-                },
-                {
-                  "url": "https://joshozuna.com/year/2024",
-                  "title": "2024 Photography"
-                },
-                {
-                  "url": "https://joshozuna.com/html-sitemap",
-                  "title": "joshozuna.com links"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
-                  "title": "Worth Wandering: Radio Aporee"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuapsteele.com",
-              "domain": "joshuapsteele.com",
-              "title": "Joshua P. Steele",
-              "articles": [
-                {
-                  "url": "https://joshuapsteele.com/lists/",
-                  "title": "Lists 🗒️"
                 }
               ]
             }
@@ -11598,6 +11089,41 @@
           ]
         },
         {
+          "slug": "side-project",
+          "label": "side projects",
+          "articles": [
+            {
+              "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
+              "title": "The October Micro SaaS Challenge: A Retro"
+            },
+            {
+              "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
+              "title": "Micro SaaS Week Four: SignedOnSite"
+            },
+            {
+              "url": "https://www.joshfinnie.com/blog/micro-saas-week-three-noshowfixer/",
+              "title": "Micro SaaS Week Three: NoShowFixer"
+            },
+            {
+              "url": "https://www.joshfinnie.com/projects/",
+              "title": "Projects | Josh Finnie"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Josh Caldwell",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/",
+                  "title": "Ideas"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "social",
           "label": "social",
           "articles": [
@@ -12632,6 +12158,29 @@
           ]
         },
         {
+          "slug": "power",
+          "label": "power",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/?work=getty-images-power-of-sponsorship-2011",
+              "title": "Power of Sponsorship"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/ingersollrandcompressor/",
+                  "title": "Ingersoll Rand Compressor"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "react",
           "label": "react",
           "articles": [
@@ -12990,7 +12539,7 @@
               "articles": [
                 {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
-                  "title": "7 Organic"
+                  "title": "Organic"
                 }
               ]
             }

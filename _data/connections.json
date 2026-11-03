@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-03T16:34:11.848Z",
+  "generated_at": "2026-11-03T20:45:58.064Z",
   "edge_count": 26,
   "edges": [
     {
@@ -359,6 +359,34 @@
     },
     {
       "from": "https://joshternet.org",
+      "to": "https://joshuastuebner.com",
+      "relation": "homepage-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://joshuastuebner.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+      "text": "Josh Joshternet participant. Joshua Stübner ↗ Software engineer at Ariadne and half of Norcode Agency. I also (co-)run Vegan Hamburg and Was Los im Amt?.",
+      "rel": ["noopener"],
+      "page": "https://joshternet.org/",
+      "evidence_count": 2,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://joshternet.org/",
+          "href": "https://joshuastuebner.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "text": "Josh Joshternet participant. Joshua Stübner ↗ Software engineer at Ariadne and half of Norcode Agency. I also (co-)run Vegan Hamburg and Was Los im Amt?.",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://joshternet.org/",
+          "href": "https://joshuastuebner.com/tools/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "text": "Tools (opens on the publisher’s site)",
+          "rel": ["noopener"]
+        }
+      ]
+    },
+    {
+      "from": "https://joshternet.org",
       "to": "https://www.chrisminnick.com",
       "relation": "homepage-link",
       "directed": true,
@@ -374,27 +402,6 @@
           "page": "https://joshternet.org/",
           "href": "https://www.chrisminnick.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
           "text": "Non-Josh Joshternet participant, joshing the Joshes. www.chrisminnick.com ↗ I’m Chris Minnick. I’ve written more than twenty books, including a shelf of For Dummies titles, three novels, and coursewar",
-          "rel": ["noopener"]
-        }
-      ]
-    },
-    {
-      "from": "https://joshternet.org",
-      "to": "https://www.joshfinnie.com",
-      "relation": "homepage-link",
-      "directed": true,
-      "source": "content",
-      "href": "https://www.joshfinnie.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-      "text": "Josh Joshternet participant. Josh Finnie ↗ By day, I work on the API and Delivery team at People Data Labs, helping power data products at scale. I have over a decade of full-stack experience with a s",
-      "rel": ["noopener"],
-      "page": "https://joshternet.org/",
-      "evidence_count": 1,
-      "evidence": [
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/",
-          "href": "https://www.joshfinnie.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Josh Joshternet participant. Josh Finnie ↗ By day, I work on the API and Delivery team at People Data Labs, helping power data products at scale. I have over a decade of full-stack experience with a s",
           "rel": ["noopener"]
         }
       ]

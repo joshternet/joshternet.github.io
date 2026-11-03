@@ -1,17 +1,17 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-03T16:55:08.658Z",
+  "generated_at": "2026-11-03T21:06:38.882Z",
   "window_days": 14,
   "primary_count": 8,
-  "item_count": 555,
-  "content_types": ["article", "project"],
+  "item_count": 554,
+  "content_types": ["article"],
   "primary": [
     {
       "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
       "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters.",
       "summary": "",
       "published_at": "2026-11-02T22:49:28.000Z",
-      "observed_at": "2026-11-03T16:34:11.848Z",
+      "observed_at": "2026-11-03T20:45:58.064Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -72,7 +72,7 @@
       "title": "The October Micro SaaS Challenge: A Retro",
       "summary": "Four micro SaaS products in four weeks, built with Claude Code: what shipped, which rules broke, what it cost, and what I'd change next time.",
       "published_at": "2026-11-02T00:00:00.000Z",
-      "observed_at": "2026-11-03T16:34:11.848Z",
+      "observed_at": "2026-11-03T20:45:58.064Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -86,15 +86,15 @@
         },
         {
           "slug": "indie-hacking",
-          "label": "indie-hacking"
+          "label": "indie hacking"
         },
         {
           "slug": "micro-saas",
-          "label": "micro-saas"
+          "label": "micro saas"
         },
         {
           "slug": "side-project",
-          "label": "side-projects"
+          "label": "side projects"
         }
       ],
       "neighborhoods": [
@@ -104,15 +104,15 @@
         },
         {
           "slug": "indie-hacking",
-          "label": "indie-hacking"
+          "label": "indie hacking"
         },
         {
           "slug": "micro-saas",
-          "label": "micro-saas"
+          "label": "micro saas"
         },
         {
           "slug": "side-project",
-          "label": "side-projects"
+          "label": "side projects"
         }
       ],
       "image": "/assets/activity/posters/06408c099e97547580ade828c7727b3a6fff5e2ad9379a28a4d1ac2f21e7ee6b.webp",
@@ -125,7 +125,7 @@
       "title": "I'm Open to Work",
       "summary": "Mailshake has terminated my employment after 8+ years. In that time, I... Started as engineer #3 Moved into management thanks to an awesome CTO Ran a 10-person team across backend, frontend, QA, and support Scaled down to 2 engineers while maintaining productivity Reduced annual AWS spend by ~70% over 3 years Was always on-call and handled support escalations Ran technical due diligence on 4 acqui",
       "published_at": "2026-11-01T00:00:00.000Z",
-      "observed_at": "2026-11-03T16:34:11.848Z",
+      "observed_at": "2026-11-03T20:45:58.064Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -144,7 +144,7 @@
       "title": "Gluten-Free Chocolate Cake",
       "summary": "Nutrition assumptions and sources",
       "published_at": "2026-10-31T19:55:58.000Z",
-      "observed_at": "2026-11-03T16:34:11.848Z",
+      "observed_at": "2026-11-03T20:45:58.064Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -173,7 +173,7 @@
       "title": "Worth Wandering: Radio Aporee",
       "summary": "A worldwide collection of field recordings that lets you explore the sounds of cities, forests, rivers, train stations and ordinary places, with experimental radio projects that turn listening into an entirely different way of experiencing the world.",
       "published_at": "2026-10-30T14:00:00.000Z",
-      "observed_at": "2026-11-03T16:34:11.848Z",
+      "observed_at": "2026-11-03T20:45:58.064Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -202,7 +202,7 @@
       "title": "How Wizardly Words Invents Words",
       "summary": "It takes what we know and infers new words between the lines",
       "published_at": "2026-10-30T00:00:00.000Z",
-      "observed_at": "2026-11-03T16:34:11.848Z",
+      "observed_at": "2026-11-03T20:45:58.064Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -221,7 +221,7 @@
       "title": "Enterprise sales teams, please, I beg you, stop",
       "summary": "I asked for a price on a few extra seats of software we already pay for. Two days and a pile of irrelevant questions later, I got one.",
       "published_at": "2026-10-28T00:00:00.000Z",
-      "observed_at": "2026-11-03T16:34:11.848Z",
+      "observed_at": "2026-11-03T20:45:58.064Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -240,8 +240,8 @@
       "title": "Skeuomorphism",
       "summary": "Operate a Radio Shack Armatron and move objects around its tabletop.",
       "published_at": "2026-10-27T00:00:00.000Z",
-      "observed_at": "2026-11-03T16:34:11.848Z",
-      "content_type": "project",
+      "observed_at": "2026-11-03T20:45:58.064Z",
+      "content_type": "article",
       "language": "en",
       "dir": "",
       "site_origin": "https://joshuamorris.info",
@@ -251,7 +251,7 @@
       "neighborhoods": [],
       "image": "/assets/activity/posters/422b88b509b6913ae27504902894d512cfae7a2895864cba864019d529560cf5.webp",
       "image_origin": "",
-      "source_kind": "creative-schema",
+      "source_kind": "atom",
       "page_role": "unknown",
       "kind": "project"
     }
