@@ -1,17 +1,17 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-03T09:21:40.131Z",
+  "generated_at": "2026-11-03T10:12:39.207Z",
   "window_days": 14,
   "primary_count": 8,
-  "item_count": 563,
-  "content_types": ["article", "project"],
+  "item_count": 498,
+  "content_types": ["article"],
   "primary": [
     {
       "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
       "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters.",
       "summary": "",
       "published_at": "2026-11-02T22:49:28.000Z",
-      "observed_at": "2026-11-03T09:09:21.209Z",
+      "observed_at": "2026-11-03T09:57:38.457Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -72,60 +72,25 @@
       "title": "The October Micro SaaS Challenge: A Retro",
       "summary": "Four micro SaaS products in four weeks, built with Claude Code: what shipped, which rules broke, what it cost, and what I'd change next time.",
       "published_at": "2026-11-02T00:00:00.000Z",
-      "observed_at": "2026-11-03T09:09:21.209Z",
+      "observed_at": "2026-11-03T09:57:38.457Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
       "site_origin": "https://www.joshfinnie.com",
       "site_title": "Josh Finnie",
       "domain": "www.joshfinnie.com",
-      "tags": [
-        {
-          "slug": "ai",
-          "label": "ai"
-        },
-        {
-          "slug": "indie-hacking",
-          "label": "indie hacking"
-        },
-        {
-          "slug": "micro-saas",
-          "label": "micro saas"
-        },
-        {
-          "slug": "side-project",
-          "label": "side projects"
-        }
-      ],
-      "neighborhoods": [
-        {
-          "slug": "ai",
-          "label": "ai"
-        },
-        {
-          "slug": "indie-hacking",
-          "label": "indie hacking"
-        },
-        {
-          "slug": "micro-saas",
-          "label": "micro saas"
-        },
-        {
-          "slug": "side-project",
-          "label": "side projects"
-        }
-      ],
+      "tags": [],
+      "neighborhoods": [],
       "image": "/assets/activity/posters/06408c099e97547580ade828c7727b3a6fff5e2ad9379a28a4d1ac2f21e7ee6b.webp",
       "image_origin": "",
-      "source_kind": "rss",
-      "page_role": "article"
+      "source_kind": "rss"
     },
     {
       "url": "https://joshtronic.com/2026/11/01/open-to-work/",
       "title": "I'm Open to Work",
       "summary": "Mailshake has terminated my employment after 8+ years. In that time, I... Started as engineer #3 Moved into management thanks to an awesome CTO Ran a 10-person team across backend, frontend, QA, and support Scaled down to 2 engineers while maintaining productivity Reduced annual AWS spend by ~70% over 3 years Was always on-call and handled support escalations Ran technical due diligence on 4 acqui",
       "published_at": "2026-11-01T00:00:00.000Z",
-      "observed_at": "2026-11-03T09:09:21.209Z",
+      "observed_at": "2026-11-03T09:57:38.457Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -136,15 +101,14 @@
       "neighborhoods": [],
       "image": "/assets/activity/posters/c8ff14603599a83a60dda2495133657a57b32bdb68d598da31f66e2b2391892d.webp",
       "image_origin": "",
-      "source_kind": "rss",
-      "page_role": "unknown"
+      "source_kind": "rss"
     },
     {
       "url": "https://joshmuller.ca/recipes/desserts/gluten-free-chocolate-cake/",
       "title": "Gluten-Free Chocolate Cake",
       "summary": "Nutrition assumptions and sources",
       "published_at": "2026-10-31T19:55:58.000Z",
-      "observed_at": "2026-11-03T09:09:21.209Z",
+      "observed_at": "2026-11-03T09:57:38.457Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -173,38 +137,27 @@
       "title": "Worth Wandering: Radio Aporee",
       "summary": "A worldwide collection of field recordings that lets you explore the sounds of cities, forests, rivers, train stations and ordinary places, with experimental radio projects that turn listening into an entirely different way of experiencing the world.",
       "published_at": "2026-10-30T14:00:00.000Z",
-      "observed_at": "2026-11-03T09:09:21.209Z",
+      "observed_at": "2026-11-03T09:57:38.457Z",
       "content_type": "article",
-      "language": "en",
+      "language": "",
       "dir": "",
       "site_origin": "https://joshuamorris.info",
       "site_title": "Joshua Morris",
       "domain": "joshuamorris.info",
-      "tags": [
-        {
-          "slug": "field-recording",
-          "label": "field recording"
-        }
-      ],
-      "neighborhoods": [
-        {
-          "slug": "field-recording",
-          "label": "field recording"
-        }
-      ],
+      "tags": [],
+      "neighborhoods": [],
       "image": "/assets/activity/posters/bd55e5a6e8a8b4b8e593596e876eb2d31f4a32beecea28adcfa36c210b00811f.webp",
       "image_origin": "",
-      "source_kind": "atom",
-      "page_role": "article"
+      "source_kind": "atom"
     },
     {
       "url": "https://joshgr.com/writing/how-wizardly-words-invents-words/",
       "title": "How Wizardly Words Invents Words",
       "summary": "It takes what we know and infers new words between the lines",
       "published_at": "2026-10-30T00:00:00.000Z",
-      "observed_at": "2026-11-03T09:09:21.209Z",
+      "observed_at": "2026-11-03T09:57:38.457Z",
       "content_type": "article",
-      "language": "en",
+      "language": "",
       "dir": "",
       "site_origin": "https://joshgr.com",
       "site_title": "Joshua Grant",
@@ -213,17 +166,16 @@
       "neighborhoods": [],
       "image": "/assets/activity/posters/8d402470f9e309e86f40bbb8deab8d9a6f0f7756fe99ad17b2ce90f0f365a596.webp",
       "image_origin": "",
-      "source_kind": "rss",
-      "page_role": "unknown"
+      "source_kind": "rss"
     },
     {
       "url": "https://joshghent.com/enterprise-sales-teams/",
       "title": "Enterprise sales teams, please, I beg you, stop",
       "summary": "I asked for a price on a few extra seats of software we already pay for. Two days and a pile of irrelevant questions later, I got one.",
       "published_at": "2026-10-28T00:00:00.000Z",
-      "observed_at": "2026-11-03T09:09:21.209Z",
+      "observed_at": "2026-11-03T09:57:38.457Z",
       "content_type": "article",
-      "language": "en",
+      "language": "",
       "dir": "",
       "site_origin": "https://joshghent.com",
       "site_title": "Josh Ghent",
@@ -232,17 +184,16 @@
       "neighborhoods": [],
       "image": "/assets/activity/posters/4c514b3d1d438731fbfe946e8285c544a8bdc605e07a60a93d9c2857118dd71d.webp",
       "image_origin": "",
-      "source_kind": "atom",
-      "page_role": "article"
+      "source_kind": "atom"
     },
     {
       "url": "https://joshuamorris.info/experiments/weird-web-october-2026/skeuomorphism/",
       "title": "Skeuomorphism",
       "summary": "Operate a Radio Shack Armatron and move objects around its tabletop.",
       "published_at": "2026-10-27T00:00:00.000Z",
-      "observed_at": "2026-11-03T09:09:21.209Z",
-      "content_type": "project",
-      "language": "en",
+      "observed_at": "2026-11-03T09:57:38.457Z",
+      "content_type": "article",
+      "language": "",
       "dir": "",
       "site_origin": "https://joshuamorris.info",
       "site_title": "Joshua Morris",
@@ -251,8 +202,7 @@
       "neighborhoods": [],
       "image": "/assets/activity/posters/422b88b509b6913ae27504902894d512cfae7a2895864cba864019d529560cf5.webp",
       "image_origin": "",
-      "source_kind": "creative-schema",
-      "page_role": "unknown",
+      "source_kind": "atom",
       "kind": "project"
     }
   ]

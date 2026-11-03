@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-03T09:09:21.209Z",
-  "edge_count": 25,
+  "generated_at": "2026-11-03T09:57:38.457Z",
+  "edge_count": 26,
   "edges": [
     {
       "from": "https://artlung.com",
@@ -176,6 +176,27 @@
       ]
     },
     {
+      "from": "https://joshgr.com",
+      "to": "https://joshternet.org",
+      "relation": "homepage-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://joshternet.org/network/",
+      "text": "Verified Josh, Joshternet site",
+      "rel": ["noopener"],
+      "page": "https://joshgr.com/",
+      "evidence_count": 1,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://joshgr.com/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
+          "rel": ["noopener"]
+        }
+      ]
+    },
+    {
       "from": "https://joshternet.org",
       "to": "https://joshbeard.com",
       "relation": "homepage-link",
@@ -234,6 +255,41 @@
           "page": "https://joshternet.org/",
           "href": "https://joshgr.com/wizardly-words/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
           "text": "Wizardly Words (opens on the publisher’s site)",
+          "rel": ["noopener"]
+        }
+      ]
+    },
+    {
+      "from": "https://joshternet.org",
+      "to": "https://joshozuna.com",
+      "relation": "homepage-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://joshozuna.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+      "text": "Josh Joshternet participant. Josh Ozuna ↗ a collection of 35mm photos, saved for posterity. Oak Cliff, Dallas, Texas Downtown, Dallas, Texas",
+      "rel": ["noopener"],
+      "page": "https://joshternet.org/",
+      "evidence_count": 3,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://joshternet.org/",
+          "href": "https://joshozuna.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "text": "Josh Joshternet participant. Josh Ozuna ↗ a collection of 35mm photos, saved for posterity. Oak Cliff, Dallas, Texas Downtown, Dallas, Texas",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://joshternet.org/",
+          "href": "https://joshozuna.com/collections?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "text": "collections (opens on the publisher’s site)",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://joshternet.org/",
+          "href": "https://joshozuna.com/film/kodak-ultramax?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "text": "Kodak UltraMax — 35mm Film Photography | Josh Ozuna (opens on the publisher’s site)",
           "rel": ["noopener"]
         }
       ]
@@ -308,7 +364,7 @@
       "directed": true,
       "source": "content",
       "href": "https://www.chrisminnick.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-      "text": "Non-Josh Joshternet participant, joshing the Joshes. Chris Minnick ↗ I’m Chris Minnick. I’ve written more than twenty books, including a shelf of For Dummies titles, three novels, and courseware used",
+      "text": "Non-Josh Joshternet participant, joshing the Joshes. www.chrisminnick.com ↗ I’m Chris Minnick. I’ve written more than twenty books, including a shelf of For Dummies titles, three novels, and coursewar",
       "rel": ["noopener"],
       "page": "https://joshternet.org/",
       "evidence_count": 1,
@@ -317,7 +373,7 @@
           "class": "observed",
           "page": "https://joshternet.org/",
           "href": "https://www.chrisminnick.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Non-Josh Joshternet participant, joshing the Joshes. Chris Minnick ↗ I’m Chris Minnick. I’ve written more than twenty books, including a shelf of For Dummies titles, three novels, and courseware used",
+          "text": "Non-Josh Joshternet participant, joshing the Joshes. www.chrisminnick.com ↗ I’m Chris Minnick. I’ve written more than twenty books, including a shelf of For Dummies titles, three novels, and coursewar",
           "rel": ["noopener"]
         }
       ]
@@ -339,27 +395,6 @@
           "page": "https://joshternet.org/",
           "href": "https://www.joshfinnie.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
           "text": "Josh Joshternet participant. Josh Finnie ↗ By day, I work on the API and Delivery team at People Data Labs, helping power data products at scale. I have over a decade of full-stack experience with a s",
-          "rel": ["noopener"]
-        }
-      ]
-    },
-    {
-      "from": "https://joshternet.org",
-      "to": "https://www.joshvickerson.com",
-      "relation": "homepage-link",
-      "directed": true,
-      "source": "content",
-      "href": "https://www.joshvickerson.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-      "text": "Josh Joshternet participant. Josh Vickerson ↗ In my nearly 10 years as a developer, I've worked with a wide range of technologies, and clients of varying size. From big names like Walmart and American",
-      "rel": ["noopener"],
-      "page": "https://joshternet.org/",
-      "evidence_count": 1,
-      "evidence": [
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/",
-          "href": "https://www.joshvickerson.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Josh Joshternet participant. Josh Vickerson ↗ In my nearly 10 years as a developer, I've worked with a wide range of technologies, and clients of varying size. From big names like Walmart and American",
           "rel": ["noopener"]
         }
       ]
@@ -500,11 +535,18 @@
       "text": "Verified Josh, Joshternet site",
       "rel": ["noopener", "noreferrer"],
       "page": "https://joshuamorris.info/about/",
-      "evidence_count": 9,
+      "evidence_count": 10,
       "evidence": [
         {
           "class": "observed",
           "page": "https://joshuamorris.info/about/",
+          "href": "https://joshternet.org/network/?utm_source=joshuamorris.info&utm_medium=referral",
+          "text": "Verified Josh, Joshternet site",
+          "rel": ["noopener", "noreferrer"]
+        },
+        {
+          "class": "observed",
+          "page": "https://joshuamorris.info/dedication/",
           "href": "https://joshternet.org/network/?utm_source=joshuamorris.info&utm_medium=referral",
           "text": "Verified Josh, Joshternet site",
           "rel": ["noopener", "noreferrer"]
