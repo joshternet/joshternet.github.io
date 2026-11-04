@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "SAN articles from Joshternet websites"
-description: "Explore articles, notes, and projects about SAN from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
-keywords: "SAN, Joshternet, independent websites, Topics, shared interests"
+description: "Explore SAN articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
+keywords: "SAN, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "san"
 permalink: /topics/san/
 robots: max-snippet:160, max-image-preview:large

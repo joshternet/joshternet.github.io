@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T08:24:16.947Z",
-  "overlap_count": 105,
+  "generated_at": "2026-11-04T11:04:07.055Z",
+  "overlap_count": 98,
   "pairs": [
     {
       "a": "https://artlung.com",
@@ -99,7 +99,7 @@
         },
         {
           "slug": "robot",
-          "label": "robots"
+          "label": "Robots"
         }
       ]
     },
@@ -232,14 +232,6 @@
           "label": "Internet"
         },
         {
-          "slug": "javascript",
-          "label": "javascript"
-        },
-        {
-          "slug": "october",
-          "label": "october"
-        },
-        {
           "slug": "video",
           "label": "video"
         },
@@ -354,6 +346,10 @@
         {
           "slug": "digital",
           "label": "digital"
+        },
+        {
+          "slug": "full",
+          "label": "full"
         },
         {
           "slug": "policy",
@@ -490,6 +486,16 @@
       ]
     },
     {
+      "a": "https://joshcox.co.uk",
+      "b": "https://www.joshuabaker.com",
+      "topics": [
+        {
+          "slug": "house",
+          "label": "house"
+        }
+      ]
+    },
+    {
       "a": "https://joshghent.com",
       "b": "https://joshgr.com",
       "topics": [
@@ -586,6 +592,10 @@
         {
           "slug": "software",
           "label": "Software"
+        },
+        {
+          "slug": "working",
+          "label": "working"
         }
       ]
     },
@@ -604,6 +614,10 @@
         {
           "slug": "claude-code",
           "label": "claude-code"
+        },
+        {
+          "slug": "story",
+          "label": "stories"
         }
       ]
     },
@@ -1064,6 +1078,10 @@
           "label": "image"
         },
         {
+          "slug": "record",
+          "label": "record"
+        },
+        {
           "slug": "right",
           "label": "rights"
         },
@@ -1136,6 +1154,10 @@
         {
           "slug": "game",
           "label": "game"
+        },
+        {
+          "slug": "man",
+          "label": "man"
         },
         {
           "slug": "mobile",
@@ -1254,6 +1276,10 @@
       "b": "https://www.joshfinnie.com",
       "topics": [
         {
+          "slug": "network",
+          "label": "network"
+        },
+        {
           "slug": "video",
           "label": "video"
         }
@@ -1266,6 +1292,14 @@
         {
           "slug": "education",
           "label": "education"
+        },
+        {
+          "slug": "network",
+          "label": "network"
+        },
+        {
+          "slug": "week",
+          "label": "weeks"
         }
       ]
     },
@@ -1816,6 +1850,10 @@
           "label": "community"
         },
         {
+          "slug": "network",
+          "label": "network"
+        },
+        {
           "slug": "rule",
           "label": "rules"
         },
@@ -2172,8 +2210,20 @@
                   "title": "Heuschrecke Messe"
                 },
                 {
-                  "url": "https://joshuastuebner.com/digital-garden/",
-                  "title": "Digital Garden"
+                  "url": "https://joshozuna.com/photo/man-giving-dog-water-hand-35mm",
+                  "title": "Hydration Break"
+                },
+                {
+                  "url": "https://joshozuna.com/photo/spotted-cattle-dog-puppy-resting-couch-35mm",
+                  "title": "Otis, the Puppy"
+                },
+                {
+                  "url": "https://joshozuna.com/photo/charley-mobile-bath-35mm",
+                  "title": "Charley's Spa Day"
+                },
+                {
+                  "url": "https://joshozuna.com/photo/charley-profile-closeup-35mm",
+                  "title": "Charley, the Loyal"
                 }
               ]
             }
@@ -2306,114 +2356,6 @@
           ]
         },
         {
-          "slug": "javascript",
-          "label": "javascript",
-          "articles": [
-            {
-              "url": "https://artlung.com/archive/portfolio/2024/",
-              "title": "Modern No-JavaScript version."
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
-              "articles": [
-                {
-                  "url": "https://www.chrisminnick.com/books/javascript-all-in-one-for-dummies/",
-                  "title": "JavaScript All-in-One For Dummies"
-                },
-                {
-                  "url": "https://www.chrisminnick.com/books/javascript-for-kids/",
-                  "title": "JavaScript For Kids"
-                },
-                {
-                  "url": "https://www.chrisminnick.com/books/coding-with-javascript-for-dummies/",
-                  "title": "Coding With JavaScript For Dummies"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshkoter.com",
-              "domain": "joshkoter.com",
-              "title": "Josh Köter",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=5uni6eGeTX4",
-                  "title": "Build 2D Games with Vanilla JavaScript - Full Course Out Now"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=EvC3ge_puQk",
-                  "title": "Learn 2D Game Development with JavaScript"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=c-1dBd1_G8A",
-                  "title": "JavaScript Game Tutorial with HTML Canvas"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=7JtLHJbm0kA",
-                  "title": "JavaScript Side Scroller Game Tutorial"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=CY0HE277IBM",
-                  "title": "Sprite Animation in JavaScript"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=VXWvfrmpapI",
-                  "title": "JavaScript Audio CRASH COURSE For Beginners"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=QxYg8-mhhhs",
-                  "title": "JavaScript Game Tutorial - 2D Tower Defense"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=jl29qI62XPg",
-                  "title": "JavaScript 2D Game Tutorial"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/25/firefox-is-quietly-making-the-web-more-capable/",
-                  "title": "Firefox Is Quietly Making the Web More Capable"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuastuebner.com",
-              "domain": "joshuastuebner.com",
-              "title": "Joshua Stübner",
-              "articles": [
-                {
-                  "url": "https://joshuastuebner.com/experiments/ex/14_css-only-countup/",
-                  "title": "14: CSS only countup"
-                },
-                {
-                  "url": "https://joshuastuebner.com/experiments/ex/15_circle-sun/",
-                  "title": "15: Circle Sun"
-                },
-                {
-                  "url": "https://joshuastuebner.com/experiments/ex/17_shifting-rectangles/",
-                  "title": "17: Shifting Rectangles"
-                },
-                {
-                  "url": "https://joshuastuebner.com/experiments/ex/20_css-shrinking-search/",
-                  "title": "20: CSS Shrinking Search"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "language",
           "label": "language",
           "articles": [
@@ -2464,8 +2406,8 @@
           "label": "means",
           "articles": [
             {
-              "url": "https://artlung.com/archive/portfolio/1999/",
-              "title": "HTML was so primitive in 1999 that I described this portfolio piece as “interactive.” All “interactive” means was that it had content that changed as items were selected. We take such things for granted now."
+              "url": "https://artlung.com/comics/",
+              "title": "artlung.com/comics/"
             }
           ],
           "sites": [
@@ -2477,6 +2419,74 @@
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
                   "title": "Learning a New Tech Stack with an LLM"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/04_silvester/",
+                  "title": "04: Silvester"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "love",
+          "label": "love",
+          "articles": [
+            {
+              "url": "https://artlung.com/reels/",
+              "title": "artlung.com/reels/"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/games/idol-idle/",
+                  "title": "Idol Idle"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/digital-garden/",
+                  "title": "Digital Garden"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "miscellaneous",
+          "label": "miscellaneous",
+          "articles": [
+            {
+              "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
+              "title": "I got an email and text message nearly simultaneously today."
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/resloadbank/",
+                  "title": "Turbo Generator Load-Bank"
                 }
               ]
             }
@@ -3137,6 +3147,100 @@
           ]
         },
         {
+          "slug": "week",
+          "label": "weeks",
+          "articles": [
+            {
+              "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
+              "title": "I sent a brief note to a friend via a major chat platform a few days ago. More than a day ago, less than a week ago."
+            },
+            {
+              "url": "https://artlung.com/reels/",
+              "title": "artlung.com/reels/"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
+                  "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
+                  "title": "The October Micro SaaS Challenge: A Retro"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
+                  "title": "Micro SaaS Week Four: SignedOnSite"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/blog/micro-saas-week-three-noshowfixer/",
+                  "title": "Micro SaaS Week Three: NoShowFixer"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/php2shell-overreaction/",
+                  "title": "Last week was terrible. It didn't have to be"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2022/photo-northern-lights/",
+                  "title": "[Photo] Northern Lights"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
+                  "title": "Learning a New Tech Stack with an LLM"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshternet.org",
+              "domain": "joshternet.org",
+              "title": "Joshternet",
+              "articles": [
+                {
+                  "url": "https://joshternet.org/activity/",
+                  "title": "What's New"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=showstudio-london-fashion-week-2006",
+                  "title": "London Fashion Week"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "wordpress",
           "label": "wordpress",
           "articles": [
@@ -3320,6 +3424,40 @@
                 {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
                   "title": "Analog"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "beautiful",
+          "label": "beautiful",
+          "articles": [
+            {
+              "url": "https://joshbeard.com/photos/2018/2018-herman-gulch-01_jpg.html",
+              "title": "Herman Gulch, Colorado. September 9, 2018. Photos from a hike at Herman Gulch, Colorado in September, 2018. This was a trail with plenty of beautiful scenery of mountain peaks, dense forest, open meadows, long views, creeks, and a lake. Though there was pl"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/photo/expansive-mountain-prairie-sky-35mm",
+                  "title": "Colorado, the Beautiful"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/16_stars/",
+                  "title": "16: Stars"
                 }
               ]
             }
@@ -3646,6 +3784,29 @@
       "origin": "https://joshcox.co.uk",
       "topics": [
         {
+          "slug": "house",
+          "label": "house",
+          "articles": [
+            {
+              "url": "https://joshcox.co.uk/projects/",
+              "title": "Projects — Josh Cox"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=landsec-wellington-house-2013",
+                  "title": "Wellington House"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "room",
           "label": "room",
           "articles": [
@@ -3941,6 +4102,29 @@
           ]
         },
         {
+          "slug": "code-review",
+          "label": "code review",
+          "articles": [
+            {
+              "url": "https://joshghent.com/skills",
+              "title": "Skills"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
+                  "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "engineering",
           "label": "engineering",
           "articles": [
@@ -4172,6 +4356,29 @@
           ]
         },
         {
+          "slug": "story",
+          "label": "stories",
+          "articles": [
+            {
+              "url": "https://joshghent.com/php2shell-overreaction/",
+              "title": "Last week was terrible. It didn't have to be"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "www.chrisminnick.com",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/painting/",
+                  "title": "Painting"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "week",
           "label": "week",
           "articles": [
@@ -4189,6 +4396,10 @@
                 {
                   "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
                   "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
+                  "title": "The October Micro SaaS Challenge: A Retro"
                 },
                 {
                   "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
@@ -4219,6 +4430,29 @@
                 {
                   "url": "https://www.joshuabaker.com/work/?work=showstudio-london-fashion-week-2006",
                   "title": "London Fashion Week"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "working",
+          "label": "working",
+          "articles": [
+            {
+              "url": "https://joshghent.com/php2shell-overreaction/",
+              "title": "Last week was terrible. It didn't have to be"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
+                  "title": "4 Plastic"
                 }
               ]
             }
@@ -5558,6 +5792,10 @@
                   "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
                 },
                 {
+                  "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
+                  "title": "The October Micro SaaS Challenge: A Retro"
+                },
+                {
                   "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
                   "title": "Micro SaaS Week Four: SignedOnSite"
                 },
@@ -5902,6 +6140,45 @@
           ]
         },
         {
+          "slug": "man",
+          "label": "man",
+          "articles": [
+            {
+              "url": "https://joshozuna.com/photo/man-giving-dog-water-hand-35mm",
+              "title": "Hydration Break"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=dandara-living-social-media-platforms-2023",
+                  "title": "Social Media Platforms"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/dandara-living/",
+                  "title": "Rightmove & Zoopla Integrations"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=dandara-multi-site-publishing-platform-2021",
+                  "title": "Multi-site Publishing Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=dandara-operations-platform-2021",
+                  "title": "Operations Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=derek-man-derek-man-2015",
+                  "title": "Derek Man"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "mobile",
           "label": "mobile",
           "articles": [
@@ -6162,6 +6439,29 @@
                 {
                   "url": "https://joshuastuebner.com/projects/details/heuschrecke-messe/",
                   "title": "Heuschrecke Messe"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "record",
+          "label": "record",
+          "articles": [
+            {
+              "url": "https://joshozuna.com/photo/houseplants-sunlight-window-shadows-35mm",
+              "title": "Golden Hour"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
+                  "title": "Analog"
                 }
               ]
             }
@@ -6650,6 +6950,68 @@
           ]
         },
         {
+          "slug": "network",
+          "label": "network",
+          "articles": [
+            {
+              "url": "https://joshternet.org/governance/",
+              "title": "Governance"
+            },
+            {
+              "url": "https://joshternet.org/join/",
+              "title": "Join the Joshternet"
+            },
+            {
+              "url": "https://joshternet.org/network/",
+              "title": "Network"
+            },
+            {
+              "url": "https://joshternet.org/specs/",
+              "title": "Specifications"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/projects/picskyapp/",
+                  "title": "PicSkyApp.com PicSkyApp is a photo sharing application built on top of the Bluesky social network, allowing users to share and discover images across the AT Protocol."
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=equipo-nizkor-nizkor-network-2012",
+                  "title": "Nizkor Network"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=getty-images-agency-network-platform-2010",
+                  "title": "Agency Network Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/the-dots/appendix/apple-app-of-the-day-the-dots/",
+                  "title": "App of the Day: Create, connect, collaborate · Apple named The Dots its App of the Day. The app was built on the platform my team shipped. Apple Read more"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/the-dots/appendix/forbes-next-linkedin-creatives/",
+                  "title": "Is this the next LinkedIn? · Forbes profiled The Dots and its founder, Pip Jamieson, as the creative industry’s answer to LinkedIn. It is the network I rebuilt as fractional CTO. Forbes Read more"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/the-dots/appendix/techcrunch-the-dots-raises-4m/",
+                  "title": "A high-trust network for creatives · TechCrunch reported the £4m round led by Hambro Perks. That backing gave me the mandate to rearchitect the platform from scratch. TechCrunch Read more"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "software",
           "label": "Software",
           "articles": [
@@ -6813,6 +7175,100 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
                   "title": "Worth Wandering: Pippin Barr"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "week",
+          "label": "weeks",
+          "articles": [
+            {
+              "url": "https://joshternet.org/activity/",
+              "title": "What's New"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
+                  "title": "I sent a brief note to a friend via a major chat platform a few days ago. More than a day ago, less than a week ago."
+                },
+                {
+                  "url": "https://artlung.com/reels/",
+                  "title": "artlung.com/reels/"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
+                  "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
+                  "title": "The October Micro SaaS Challenge: A Retro"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
+                  "title": "Micro SaaS Week Four: SignedOnSite"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/blog/micro-saas-week-three-noshowfixer/",
+                  "title": "Micro SaaS Week Three: NoShowFixer"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/php2shell-overreaction/",
+                  "title": "Last week was terrible. It didn't have to be"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2022/photo-northern-lights/",
+                  "title": "[Photo] Northern Lights"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
+                  "title": "Learning a New Tech Stack with an LLM"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=showstudio-london-fashion-week-2006",
+                  "title": "London Fashion Week"
                 }
               ]
             }
@@ -7234,8 +7690,8 @@
               "title": "Chris Minnick",
               "articles": [
                 {
-                  "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-                  "title": "AI Helped Their Grades—Then Crushed the Learning"
+                  "url": "https://artlung.com/comics/",
+                  "title": "artlung.com/comics/"
                 }
               ]
             },
@@ -7555,6 +8011,100 @@
                 {
                   "url": "https://joshua.seigler.net/music/",
                   "title": "/music"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "week",
+          "label": "weeks",
+          "articles": [
+            {
+              "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
+              "title": "Learning a New Tech Stack with an LLM"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
+                  "title": "I sent a brief note to a friend via a major chat platform a few days ago. More than a day ago, less than a week ago."
+                },
+                {
+                  "url": "https://artlung.com/reels/",
+                  "title": "artlung.com/reels/"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
+                  "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
+                  "title": "The October Micro SaaS Challenge: A Retro"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
+                  "title": "Micro SaaS Week Four: SignedOnSite"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/blog/micro-saas-week-three-noshowfixer/",
+                  "title": "Micro SaaS Week Three: NoShowFixer"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/php2shell-overreaction/",
+                  "title": "Last week was terrible. It didn't have to be"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2022/photo-northern-lights/",
+                  "title": "[Photo] Northern Lights"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshternet.org",
+              "domain": "joshternet.org",
+              "title": "Joshternet",
+              "articles": [
+                {
+                  "url": "https://joshternet.org/activity/",
+                  "title": "What's New"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=showstudio-london-fashion-week-2006",
+                  "title": "London Fashion Week"
                 }
               ]
             }
@@ -9468,6 +10018,25 @@
                   "title": "20: CSS Shrinking Search"
                 }
               ]
+            },
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "www.chrisminnick.com",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/javascript-all-in-one-for-dummies/",
+                  "title": "JavaScript All-in-One For Dummies"
+                },
+                {
+                  "url": "https://www.chrisminnick.com/books/javascript-for-kids/",
+                  "title": "JavaScript For Kids"
+                },
+                {
+                  "url": "https://www.chrisminnick.com/books/coding-with-javascript-for-dummies/",
+                  "title": "Coding With JavaScript For Dummies"
+                }
+              ]
             }
           ]
         },
@@ -9566,6 +10135,29 @@
                 {
                   "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
                   "title": "Healthy Weight Plan Builder"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "record",
+          "label": "record",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
+              "title": "Analog"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/photo/houseplants-sunlight-window-shadows-35mm",
+                  "title": "Golden Hour"
                 }
               ]
             }
@@ -9907,6 +10499,29 @@
                 {
                   "url": "https://joshternet.org/showcase/",
                   "title": "Showcase"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "working",
+          "label": "working",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
+              "title": "4 Plastic"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/php2shell-overreaction/",
+                  "title": "Last week was terrible. It didn't have to be"
                 }
               ]
             }
@@ -10671,8 +11286,8 @@
               "title": "Chris Minnick",
               "articles": [
                 {
-                  "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-                  "title": "AI Helped Their Grades—Then Crushed the Learning"
+                  "url": "https://artlung.com/comics/",
+                  "title": "artlung.com/comics/"
                 }
               ]
             },
@@ -11761,6 +12376,29 @@
           ]
         },
         {
+          "slug": "story",
+          "label": "stories",
+          "articles": [
+            {
+              "url": "https://www.chrisminnick.com/painting/",
+              "title": "Painting"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/php2shell-overreaction/",
+                  "title": "Last week was terrible. It didn't have to be"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "writing",
           "label": "Writing",
           "articles": [
@@ -12184,6 +12822,29 @@
           ]
         },
         {
+          "slug": "code-review",
+          "label": "code review",
+          "articles": [
+            {
+              "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
+              "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/skills",
+                  "title": "Skills"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "community",
           "label": "community",
           "articles": [
@@ -12211,23 +12872,62 @@
           ]
         },
         {
-          "slug": "job",
-          "label": "job",
+          "slug": "network",
+          "label": "network",
           "articles": [
             {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
-              "title": "Micro SaaS Week Four: SignedOnSite"
+              "url": "https://www.joshfinnie.com/projects/picskyapp/",
+              "title": "PicSkyApp.com PicSkyApp is a photo sharing application built on top of the Bluesky social network, allowing users to share and discover images across the AT Protocol."
             }
           ],
           "sites": [
             {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
+              "origin": "https://joshternet.org",
+              "domain": "joshternet.org",
+              "title": "Joshternet",
               "articles": [
                 {
-                  "url": "https://www.youtube.com/watch?v=Zv4zeOOOSKk",
-                  "title": "Use AI to Crush Job Interviews"
+                  "url": "https://joshternet.org/governance/",
+                  "title": "Governance"
+                },
+                {
+                  "url": "https://joshternet.org/join/",
+                  "title": "Join the Joshternet"
+                },
+                {
+                  "url": "https://joshternet.org/network/",
+                  "title": "Network"
+                },
+                {
+                  "url": "https://joshternet.org/specs/",
+                  "title": "Specifications"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=equipo-nizkor-nizkor-network-2012",
+                  "title": "Nizkor Network"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=getty-images-agency-network-platform-2010",
+                  "title": "Agency Network Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/the-dots/appendix/apple-app-of-the-day-the-dots/",
+                  "title": "App of the Day: Create, connect, collaborate · Apple named The Dots its App of the Day. The app was built on the platform my team shipped. Apple Read more"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/the-dots/appendix/forbes-next-linkedin-creatives/",
+                  "title": "Is this the next LinkedIn? · Forbes profiled The Dots and its founder, Pip Jamieson, as the creative industry’s answer to LinkedIn. It is the network I rebuilt as fractional CTO. Forbes Read more"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/the-dots/appendix/techcrunch-the-dots-raises-4m/",
+                  "title": "A high-trust network for creatives · TechCrunch reported the £4m round led by Hambro Perks. That backing gave me the mandate to rearchitect the platform from scratch. TechCrunch Read more"
                 }
               ]
             }
@@ -12675,6 +13375,10 @@
             {
               "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
               "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
+            },
+            {
+              "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
+              "title": "The October Micro SaaS Challenge: A Retro"
             },
             {
               "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
@@ -13448,78 +14152,62 @@
           ]
         },
         {
-          "slug": "government",
-          "label": "government",
+          "slug": "house",
+          "label": "house",
           "articles": [
             {
-              "url": "https://www.joshuabaker.com/work/?work=milken-institute-american-dream-prosperity-index-2022",
-              "title": "American Dream Prosperity Index"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=legatum-institute-united-states-prosperity-index-2020",
-              "title": "United States Prosperity Index"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/not-optional/",
-              "title": "Not Optional"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=baron-livermore-thirty-six-strategy-2012",
-              "title": "Thirty Six Strategy"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=legacy-corporation-queen-elizabeth-olympic-park-2012",
-              "title": "Queen Elizabeth Olympic Park"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=money-advice-service-money-map-2011",
-              "title": "Money Map"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=olympics-countdown-2011",
-              "title": "Countdown"
+              "url": "https://www.joshuabaker.com/work/?work=landsec-wellington-house-2013",
+              "title": "Wellington House"
             }
           ],
           "sites": [
             {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Joshua Seigler",
+              "origin": "https://joshcox.co.uk",
+              "domain": "joshcox.co.uk",
+              "title": "Josh Cox",
               "articles": [
                 {
-                  "url": "https://www.youtube.com/watch?v=A8pcb4xyCic",
-                  "title": "Law Without Government. Robert P. Murphy."
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=fFoXyFmmGBQ",
-                  "title": "How Government Solved the Health Care Crisis - Animation"
+                  "url": "https://joshcox.co.uk/projects/",
+                  "title": "Projects — Josh Cox"
                 }
               ]
             }
           ]
         },
         {
-          "slug": "health",
-          "label": "health",
+          "slug": "man",
+          "label": "man",
           "articles": [
             {
-              "url": "https://www.joshuabaker.com/work/?work=pure-sports-medicine-services-platform-workflows-2022",
-              "title": "Services Platform & Workflows"
+              "url": "https://www.joshuabaker.com/work/?work=dandara-living-social-media-platforms-2023",
+              "title": "Social Media Platforms"
             },
             {
-              "url": "https://www.joshuabaker.com/work/?work=pure-sports-medicine-pure-sports-medicine-2015",
-              "title": "Pure Sports Medicine"
+              "url": "https://www.joshuabaker.com/work/dandara-living/",
+              "title": "Rightmove & Zoopla Integrations"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=dandara-multi-site-publishing-platform-2021",
+              "title": "Multi-site Publishing Platform"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=dandara-operations-platform-2021",
+              "title": "Operations Platform"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=derek-man-derek-man-2015",
+              "title": "Derek Man"
             }
           ],
           "sites": [
             {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Joshua Seigler",
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
               "articles": [
                 {
-                  "url": "https://www.youtube.com/watch?v=fFoXyFmmGBQ",
-                  "title": "How Government Solved the Health Care Crisis - Animation"
+                  "url": "https://joshozuna.com/photo/man-giving-dog-water-hand-35mm",
+                  "title": "Hydration Break"
                 }
               ]
             }
@@ -13577,6 +14265,68 @@
                 {
                   "url": "https://joshtronic.com/games/know-the-table/",
                   "title": "Know the Table"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "network",
+          "label": "network",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/?work=equipo-nizkor-nizkor-network-2012",
+              "title": "Nizkor Network"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=getty-images-agency-network-platform-2010",
+              "title": "Agency Network Platform"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/the-dots/appendix/apple-app-of-the-day-the-dots/",
+              "title": "App of the Day: Create, connect, collaborate · Apple named The Dots its App of the Day. The app was built on the platform my team shipped. Apple Read more"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/the-dots/appendix/forbes-next-linkedin-creatives/",
+              "title": "Is this the next LinkedIn? · Forbes profiled The Dots and its founder, Pip Jamieson, as the creative industry’s answer to LinkedIn. It is the network I rebuilt as fractional CTO. Forbes Read more"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/the-dots/appendix/techcrunch-the-dots-raises-4m/",
+              "title": "A high-trust network for creatives · TechCrunch reported the £4m round led by Hambro Perks. That backing gave me the mandate to rearchitect the platform from scratch. TechCrunch Read more"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/projects/picskyapp/",
+                  "title": "PicSkyApp.com PicSkyApp is a photo sharing application built on top of the Bluesky social network, allowing users to share and discover images across the AT Protocol."
+                }
+              ]
+            },
+            {
+              "origin": "https://joshternet.org",
+              "domain": "joshternet.org",
+              "title": "Joshternet",
+              "articles": [
+                {
+                  "url": "https://joshternet.org/governance/",
+                  "title": "Governance"
+                },
+                {
+                  "url": "https://joshternet.org/join/",
+                  "title": "Join the Joshternet"
+                },
+                {
+                  "url": "https://joshternet.org/network/",
+                  "title": "Network"
+                },
+                {
+                  "url": "https://joshternet.org/specs/",
+                  "title": "Specifications"
                 }
               ]
             }
@@ -14150,6 +14900,10 @@
                 {
                   "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
                   "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
+                  "title": "The October Micro SaaS Challenge: A Retro"
                 },
                 {
                   "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
