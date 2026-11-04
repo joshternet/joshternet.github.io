@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T11:04:07.055Z",
-  "participant_count": 22,
-  "community_count": 644,
-  "publication_count": 498,
-  "connection_count": 26,
+  "generated_at": "2026-11-04T17:38:13.287Z",
+  "participant_count": 23,
+  "community_count": 625,
+  "publication_count": 615,
+  "connection_count": 29,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
     "connection": "first edge after stable from, to, relation sort"
@@ -15,7 +15,7 @@
       "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone",
       "summary": "I spent a week having Claude Code audit my fork of LightCraft, the AI-built Rust Lightroom clone: fuzzing, crash safety, a locked control port, faster frames, and 50,000 deleted lines.",
       "published_at": "2026-11-04T00:00:00.000Z",
-      "observed_at": "2026-11-04T09:47:24.987Z",
+      "observed_at": "2026-11-04T17:18:01.392Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -58,17 +58,36 @@
           "label": "refactor"
         }
       ],
-      "image": "/assets/activity/posters/723078dd70f7aff49d75a22c510506633e299f410278e1828b52b13c5401d6ad.webp",
+      "image": "/assets/activity/posters/9ec585cb2ba2e8b98ffed866c39156fa4c8d3ede90b98d79a88b42414d9d2688.webp",
       "image_origin": "",
       "source_kind": "rss",
       "page_role": "article"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Rn8bsZhlDhQ",
+      "title": "This Morse Game Starts at a Brutal 40 WPM",
+      "summary": "",
+      "published_at": "2026-11-03T18:03:27.000Z",
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "content_type": "podcast_episode",
+      "language": "",
+      "dir": "",
+      "site_origin": "https://www.chrisminnick.com",
+      "site_title": "Chris Minnick",
+      "domain": "www.chrisminnick.com",
+      "tags": [],
+      "neighborhoods": [],
+      "image": "/assets/activity/posters/21c5d0066ee59cb1153184e9aa7c91e769992c38a924fab6f68ca6afc5953b58.webp",
+      "image_origin": "",
+      "source_kind": "youtube-show-fallback",
+      "page_role": "project"
     },
     {
       "url": "https://artlung.com/blog/2026/11/03/and-shredding/",
       "title": "I went relatively early this morning.",
       "summary": "",
       "published_at": "2026-11-03T16:15:36.000Z",
-      "observed_at": "2026-11-04T09:47:24.987Z",
+      "observed_at": "2026-11-04T17:18:01.392Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -77,17 +96,37 @@
       "domain": "artlung.com",
       "tags": [],
       "neighborhoods": [],
-      "image": "/assets/activity/posters/3673bcb207e0cd9258a8c5dc716652cb43b511efff7ae80cc5cd041b81a34384.webp",
+      "image": "/assets/activity/posters/a5f704c82e275fd530bf5dc7fc5c18b3cace0b58f08f9c04c02286b031ad3e07.webp",
       "image_origin": "",
-      "source_kind": "elsewhere-youtube-video",
-      "page_role": "project"
+      "source_kind": "h-entry",
+      "page_role": "article"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=kF07_Z3ZmXo",
+      "title": "4 Hours for This Tiny Result?!",
+      "summary": "",
+      "published_at": "2026-11-02T18:02:50.000Z",
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "content_type": "podcast_episode",
+      "language": "",
+      "dir": "",
+      "site_origin": "https://www.chrisminnick.com",
+      "site_title": "Chris Minnick",
+      "domain": "www.chrisminnick.com",
+      "tags": [],
+      "neighborhoods": [],
+      "image": "/assets/activity/posters/cfbca59403c32e91f10fe5e0aea9f66ea5a5c5834a23bdc125a00ebb4382d936.webp",
+      "image_origin": "",
+      "source_kind": "youtube-show-fallback",
+      "page_role": "project",
+      "kind": "podcasts"
     },
     {
       "url": "https://joshtronic.com/2026/11/01/open-to-work/",
       "title": "I'm Open to Work",
       "summary": "Mailshake has terminated my employment after 8+ years. In that time, I... Started as engineer #3 Moved into management thanks to an awesome CTO Ran a 10-person team across backend, frontend, QA, and support Scaled down to 2 engineers while maintaining productivity Reduced annual AWS spend by ~70% over 3 years Was always on-call and handled support escalations Ran technical due diligence on 4 acqui",
       "published_at": "2026-11-01T00:00:00.000Z",
-      "observed_at": "2026-11-04T09:47:24.987Z",
+      "observed_at": "2026-11-04T17:18:01.392Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -96,7 +135,7 @@
       "domain": "joshtronic.com",
       "tags": [],
       "neighborhoods": [],
-      "image": "/assets/activity/posters/c8ff14603599a83a60dda2495133657a57b32bdb68d598da31f66e2b2391892d.webp",
+      "image": "/assets/activity/posters/e73ddad03df7aca2470a41e28b4c38c825da43d5657e33f7ab4636f668fedcc6.webp",
       "image_origin": "",
       "source_kind": "rss",
       "page_role": "unknown"
@@ -106,7 +145,7 @@
       "title": "Gluten-Free Chocolate Cake",
       "summary": "Nutrition assumptions and sources",
       "published_at": "2026-10-31T19:55:58.000Z",
-      "observed_at": "2026-11-04T09:47:24.987Z",
+      "observed_at": "2026-11-04T17:18:01.392Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -125,64 +164,16 @@
           "label": "recipe"
         }
       ],
-      "image": "/assets/activity/posters/740a76bfeb5078c7042231dc3d28ff27380df09b88eb804be63c0abfd29f678b.webp",
+      "image": "/assets/activity/posters/887a24a25612ce6458321dc4ea71d89a58cd6554873843e0f56af3e17bd944fa.webp",
       "image_origin": "",
       "source_kind": "rss",
       "page_role": "article"
-    },
-    {
-      "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
-      "title": "Worth Wandering: Radio Aporee",
-      "summary": "A worldwide collection of field recordings that lets you explore the sounds of cities, forests, rivers, train stations and ordinary places, with experimental radio projects that turn listening into an entirely different way of experiencing the world.",
-      "published_at": "2026-10-30T14:00:00.000Z",
-      "observed_at": "2026-11-04T09:47:24.987Z",
-      "content_type": "article",
-      "language": "en",
-      "dir": "",
-      "site_origin": "https://joshuamorris.info",
-      "site_title": "Joshua Morris",
-      "domain": "joshuamorris.info",
-      "tags": [
-        {
-          "slug": "field-recording",
-          "label": "field recording"
-        }
-      ],
-      "neighborhoods": [
-        {
-          "slug": "field-recording",
-          "label": "field recording"
-        }
-      ],
-      "image": "/assets/activity/posters/bd55e5a6e8a8b4b8e593596e876eb2d31f4a32beecea28adcfa36c210b00811f.webp",
-      "image_origin": "",
-      "source_kind": "atom",
-      "page_role": "article"
-    },
-    {
-      "url": "https://joshgr.com/writing/how-wizardly-words-invents-words/",
-      "title": "How Wizardly Words Invents Words",
-      "summary": "It takes what we know and infers new words between the lines",
-      "published_at": "2026-10-30T00:00:00.000Z",
-      "observed_at": "2026-11-04T09:47:24.987Z",
-      "content_type": "article",
-      "language": "en",
-      "dir": "",
-      "site_origin": "https://joshgr.com",
-      "site_title": "Joshua Grant",
-      "domain": "joshgr.com",
-      "tags": [],
-      "neighborhoods": [],
-      "image": "/assets/activity/posters/8d402470f9e309e86f40bbb8deab8d9a6f0f7756fe99ad17b2ce90f0f365a596.webp",
-      "image_origin": "",
-      "source_kind": "rss",
-      "page_role": "unknown"
     }
   ],
   "neighborhood": {
-    "slug": "digital",
-    "label": "digital",
-    "member_count": 2
+    "slug": "data-center",
+    "label": "data-centers",
+    "member_count": 1
   },
   "connection": {
     "from": "https://artlung.com",

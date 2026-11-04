@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T09:47:24.987Z",
-  "edge_count": 26,
+  "generated_at": "2026-11-04T17:18:01.392Z",
+  "edge_count": 29,
   "edges": [
     {
       "from": "https://artlung.com",
@@ -360,6 +360,34 @@
     },
     {
       "from": "https://joshternet.org",
+      "to": "https://artlung.com",
+      "relation": "homepage-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://artlung.com/photos/cajon_speedway/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+      "text": "Cajon Speedway (opens on the publisher’s site)",
+      "rel": ["noopener"],
+      "page": "https://joshternet.org/",
+      "evidence_count": 2,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://joshternet.org/",
+          "href": "https://artlung.com/photos/cajon_speedway/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "text": "Cajon Speedway (opens on the publisher’s site)",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://joshternet.org/",
+          "href": "https://artlung.com/prior/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "text": "Prior Projects (opens on the publisher’s site)",
+          "rel": ["noopener"]
+        }
+      ]
+    },
+    {
+      "from": "https://joshternet.org",
       "to": "https://joshbeard.com",
       "relation": "homepage-link",
       "directed": true,
@@ -428,7 +456,7 @@
       "directed": true,
       "source": "content",
       "href": "https://joshkoter.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-      "text": "Josh Joshternet participant. Josh Köter ↗ A multiplayer Tetris game, featuring real-time gameplay, live chat, and both single-player and versus modes. Built with the T3 stack (TypeScript, Next.js, Pri",
+      "text": "Participating website with affirmed Josh identity. Josh Köter ↗ A multiplayer Tetris game, featuring real-time gameplay, live chat, and both single-player and versus modes. Built with the T3 stack (Ty",
       "rel": ["noopener"],
       "page": "https://joshternet.org/",
       "evidence_count": 1,
@@ -437,7 +465,7 @@
           "class": "observed",
           "page": "https://joshternet.org/",
           "href": "https://joshkoter.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Josh Joshternet participant. Josh Köter ↗ A multiplayer Tetris game, featuring real-time gameplay, live chat, and both single-player and versus modes. Built with the T3 stack (TypeScript, Next.js, Pri",
+          "text": "Participating website with affirmed Josh identity. Josh Köter ↗ A multiplayer Tetris game, featuring real-time gameplay, live chat, and both single-player and versus modes. Built with the T3 stack (Ty",
           "rel": ["noopener"]
         }
       ]
@@ -449,7 +477,7 @@
       "directed": true,
       "source": "content",
       "href": "https://joshozuna.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-      "text": "Josh Joshternet participant. Josh Ozuna ↗ a collection of 35mm photos, saved for posterity. Oak Cliff, Dallas, Texas Downtown, Dallas, Texas",
+      "text": "Participating website with affirmed Josh identity. Josh Ozuna ↗ a collection of 35mm photos, saved for posterity. Oak Cliff, Dallas, Texas Downtown, Dallas, Texas",
       "rel": ["noopener"],
       "page": "https://joshternet.org/",
       "evidence_count": 3,
@@ -458,7 +486,7 @@
           "class": "observed",
           "page": "https://joshternet.org/",
           "href": "https://joshozuna.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Josh Joshternet participant. Josh Ozuna ↗ a collection of 35mm photos, saved for posterity. Oak Cliff, Dallas, Texas Downtown, Dallas, Texas",
+          "text": "Participating website with affirmed Josh identity. Josh Ozuna ↗ a collection of 35mm photos, saved for posterity. Oak Cliff, Dallas, Texas Downtown, Dallas, Texas",
           "rel": ["noopener"]
         },
         {
@@ -522,15 +550,57 @@
     {
       "from": "https://joshternet.org",
       "to": "https://joshuamorris.info",
+      "relation": "content-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://joshuamorris.info/",
+      "text": "Joshua Morris",
+      "rel": [],
+      "page": "https://joshternet.org/about/",
+      "evidence_count": 2,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://joshternet.org/about/",
+          "href": "https://joshuamorris.info/",
+          "text": "Joshua Morris",
+          "rel": []
+        },
+        {
+          "class": "observed",
+          "page": "https://joshternet.org/about/",
+          "href": "https://joshuamorris.info/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=about&utm_content=%2Fabout%2F",
+          "text": "Joshua Morris",
+          "rel": []
+        }
+      ]
+    },
+    {
+      "from": "https://joshternet.org",
+      "to": "https://joshuamorris.info",
       "relation": "homepage-link",
       "directed": true,
       "source": "content",
-      "href": "https://joshuamorris.info/experiments/weird-web-october-2026/skeuomorphism/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-      "text": "Skeuomorphism (opens on the publisher’s site)",
-      "rel": ["noopener"],
+      "href": "https://joshuamorris.info/",
+      "text": "Joshua Morris",
+      "rel": [],
       "page": "https://joshternet.org/",
-      "evidence_count": 1,
+      "evidence_count": 3,
       "evidence": [
+        {
+          "class": "observed",
+          "page": "https://joshternet.org/",
+          "href": "https://joshuamorris.info/",
+          "text": "Joshua Morris",
+          "rel": []
+        },
+        {
+          "class": "observed",
+          "page": "https://joshternet.org/",
+          "href": "https://joshuamorris.info/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "text": "Joshua Morris",
+          "rel": []
+        },
         {
           "class": "observed",
           "page": "https://joshternet.org/",
@@ -547,7 +617,7 @@
       "directed": true,
       "source": "content",
       "href": "https://joshuastuebner.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-      "text": "Josh Joshternet participant. Joshua Stübner ↗ Software engineer at Ariadne and half of Norcode Agency. I also (co-)run Vegan Hamburg and Was Los im Amt?.",
+      "text": "Participating website with affirmed Josh identity. Joshua Stübner ↗ Product engineer at Ariadne and half of Norcode Agency.I also (co-)run Vegan Hamburg and Was Los im Amt?.",
       "rel": ["noopener"],
       "page": "https://joshternet.org/",
       "evidence_count": 2,
@@ -556,7 +626,7 @@
           "class": "observed",
           "page": "https://joshternet.org/",
           "href": "https://joshuastuebner.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Josh Joshternet participant. Joshua Stübner ↗ Software engineer at Ariadne and half of Norcode Agency. I also (co-)run Vegan Hamburg and Was Los im Amt?.",
+          "text": "Participating website with affirmed Josh identity. Joshua Stübner ↗ Product engineer at Ariadne and half of Norcode Agency.I also (co-)run Vegan Hamburg and Was Los im Amt?.",
           "rel": ["noopener"]
         },
         {
