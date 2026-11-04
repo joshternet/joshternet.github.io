@@ -79,7 +79,10 @@ test("buildNextSteps keeps declaration and registry as independent facts", () =>
 
   assert.match(waiting.registryFact, /not currently listed/i);
   assert.match(waiting.body, /optionally nominate/i);
-  assert.match(waiting.body, /isn't in the Network snapshot included with this page/);
+  assert.match(
+    waiting.body,
+    /isn't in the Network snapshot included with this page/,
+  );
 
   const unknown = buildNextSteps({
     hasOrigin: true,
@@ -114,10 +117,7 @@ test("validate page embeds registry origins and no-JS continuity copy", async ()
   assert.match(page, /\/nominate\//);
   assert.match(page, /\/network\//);
   assert.match(page, /joshua\.example/);
-  assert.match(
-    check,
-    /There's a problem with this declaration\./,
-  );
+  assert.match(check, /There's a problem with this declaration\./);
   assert.match(
     check,
     /Your website is publishing a valid Joshternet declaration\./,

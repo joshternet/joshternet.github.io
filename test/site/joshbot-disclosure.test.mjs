@@ -28,13 +28,13 @@ test("JoshBot disclosure keeps crawler identity and retention contracts", async 
   assert.match(page, /^title: JoshBot$/m);
   assert.match(page, /Meet JoshBot/);
   assert.match(page, /little crawler/);
-  assert.match(
-    page,
-    /The name is silly\. The HTTP requests are real\./,
-  );
+  assert.match(page, /The name is silly\. The HTTP requests are real\./);
   assert.match(page, /Joshness is declared, never derived\./);
   assert.match(page, /Your website, your rules/);
-  assert.match(page, /registry[\s\S]*isn't the network itself|isn't the network itself/i);
+  assert.match(
+    page,
+    /registry[\s\S]*isn't the network itself|isn't the network itself/i,
+  );
   assert.match(
     page,
     /Joshternet-Joshbot \(\+https:\/\/joshternet\.org\/joshbot\)/,

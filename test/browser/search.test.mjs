@@ -68,7 +68,9 @@ test("search requires a query and announces status", async () => {
   `);
 
   await page
-    .getByText("Try a website name, a subject, or something you're curious about.")
+    .getByText(
+      "Try a website name, a subject, or something you're curious about.",
+    )
     .waitFor();
   assert.equal(await page.locator("[data-search-results] li").count(), 0);
 
