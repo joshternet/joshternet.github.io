@@ -4,6 +4,7 @@
 
 ### Fixed
 
+- **Post-merge CI assertions:** Preview skip-reason test matches the editorial unpublished declaration summary; What's New Atom subtitle restored in `scripts/views/lib.mjs`; views title-fallback coverage again expects full origin URLs after main's `publisherDisplayTitle` won the merge.
 - **Cloudflare Worker snippet Liquid:** JSDoc in `_includes/snippets/cloudflare-worker.js` no longer uses `{{ ... }}` type literals, which Jekyll Liquid treated as template tags when the platform page included the file (dev build crash). Guarded by a unit test.
 
 ### Changed
