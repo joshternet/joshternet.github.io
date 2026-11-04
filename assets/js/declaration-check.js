@@ -118,7 +118,9 @@ function checkPaste() {
   });
   showMessage(pasteResult, {
     kind,
-    title: declaration.ok ? "This file is valid." : "This file is not valid.",
+    title: declaration.ok
+      ? "This declaration is valid."
+      : "There's a problem with this declaration.",
     summary: declaration.reasons[0],
     details: declaration.rule ? [ruleLine(declaration.rule)] : [],
     nextSteps: declaration.ok ? buildNextSteps({ hasOrigin: false }) : null,
@@ -176,7 +178,7 @@ async function checkOrigin(url) {
       kind: "unread",
       title: "This live origin could not be read.",
       summary:
-        "The live checker is not configured on this page, so the declaration cannot be retrieved.",
+        "We couldn't read the declaration this time because the live checker is not configured on this page. That doesn't mean the JSON is invalid or that the website has stopped participating.",
       details: [`Looked up ${url}.`],
     });
     return;
@@ -213,7 +215,7 @@ async function checkOrigin(url) {
 
     if (!response.ok) {
       let message =
-        "The live checker could not complete this request. That is not an invalid file, and it is not a withdrawal.";
+        "We couldn't read the declaration this time. The live checker could not complete this request. That is not an invalid declaration, and it is not a withdrawal.";
 
       try {
         const failure = await response.json();
@@ -286,11 +288,11 @@ async function checkOrigin(url) {
         : outcome.kind;
     const title =
       kind === "valid"
-        ? "This live origin publishes a valid declaration."
+        ? "Your website is publishing a valid Joshternet declaration."
         : kind === "invalid"
-          ? "This live origin returned an invalid declaration."
+          ? "We found the declaration, but it doesn't pass validation."
           : kind === "unpublished"
-            ? "This live origin is not publishing a declaration."
+            ? "We couldn't find a published Joshternet declaration at this origin."
             : "This live origin could not be read.";
     const fieldError =
       kind === "invalid" ? declaration?.reasons[0] || outcome.summary : "";
@@ -339,7 +341,7 @@ async function checkOrigin(url) {
       kind: "unread",
       title: "This live origin could not be read.",
       summary:
-        "The live checker could not be reached from this browser. That is not an invalid file, and it is not a withdrawal.",
+        "We couldn't read the declaration this time. The live checker could not be reached from this browser. That is not an invalid declaration, and it is not a withdrawal.",
       details: [
         `Looked up ${url}.`,
         "RFC-JOSH-0002 §11 Removal and §9 Retrieval. A DNS failure, TLS failure, timeout, or a response the browser is not allowed to read does not establish withdrawal.",

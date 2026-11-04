@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "WEB Development writing on the Joshternet"
-description: "Explore WEB Development articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "WEB Development, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about WEB Development from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "WEB Development, Joshternet, independent websites, Topics, shared interests"
 slug: "web-development"
 permalink: /topics/web-development/
 robots: max-snippet:160, max-image-preview:large

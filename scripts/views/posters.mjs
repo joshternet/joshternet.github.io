@@ -1,13 +1,12 @@
 /**
  * Goal & Constraints:
  * What's New and Showcase cards use a local poster sized for the card, not
- * the publisher's full image. Sharp fits each https poster inside 960×540
- * (about 2× a What's New card) without cropping or upscaling, and writes
- * WebP under assets/activity/posters. This runs inside nlp:sync →
- * views:build (GitHub Actions). Network fetches cover only Activity + Showcase
- * (latest/featured surfaces); Search/topic cards reuse on-disk posters when
- * present and otherwise keep publisher https. Existing local WebP is never
- * re-downloaded. Sheet music without a publisher image gets a generated
+ * the publisher's full image. Sharp fits each https poster inside 1280×800
+ * (≈2–3× retina card width) without cropping or upscaling, and writes crisp
+ * WebP under assets/activity/posters. Encode version stamps the asset hash so
+ * quality bumps re-fetch. This runs inside nlp:sync → views:build. Network
+ * fetches cover only Activity + Showcase; Search/topic cards reuse on-disk
+ * posters when present. Sheet music without a publisher image gets a generated
  * staff-preview poster. Showcase must finish fully localized or the build
  * throws so CI does not publish remote img srcs. After download/resize fails,
  * views:build captures a viewport snapshot of the work page before that gate.
@@ -23,17 +22,29 @@ import sharp from "sharp";
 import { USER_AGENT } from "../nlp/lib.mjs";
 import { createOriginRobotsGate } from "../nlp/origin-robots.mjs";
 
-/** @type {number} Max poster width in pixels. */
-export const POSTER_MAX_WIDTH = 960;
+/** @type {number} Max poster width in pixels (2–3× retina creative cards). */
+export const POSTER_MAX_WIDTH = 1280;
 
 /** @type {number} Max poster height in pixels. */
-export const POSTER_MAX_HEIGHT = 540;
+export const POSTER_MAX_HEIGHT = 800;
 
 /** @type {number} Sheet-music preview width in pixels. */
-export const SHEET_MUSIC_POSTER_WIDTH = 640;
+export const SHEET_MUSIC_POSTER_WIDTH = 960;
 
 /** @type {number} Sheet-music preview height in pixels. */
-export const SHEET_MUSIC_POSTER_HEIGHT = 480;
+export const SHEET_MUSIC_POSTER_HEIGHT = 720;
+
+/**
+ * Bumped when encode settings change so asset paths rematerialize crisply.
+ * @type {string}
+ */
+export const POSTER_ENCODE_VERSION = "hq-v1";
+
+/** @type {number} WebP quality for readable UI / photo posters. */
+export const POSTER_WEBP_QUALITY = 92;
+
+/** @type {number} WebP CPU effort (0–6). */
+export const POSTER_WEBP_EFFORT = 6;
 
 /** @type {string} Repo-relative directory of generated posters. */
 export const POSTER_DIRECTORY = "assets/activity/posters";
@@ -46,6 +57,26 @@ export const POSTER_FETCH_TIMEOUT_MS = 45_000;
 
 /** @type {number} Attempts per poster URL before leaving it remote. */
 export const POSTER_FETCH_ATTEMPTS = 2;
+
+/**
+ * Shared WebP encode options for Activity / Showcase posters.
+ * @returns {{
+ *   quality: number,
+ *   alphaQuality: number,
+ *   smartSubsample: boolean,
+ *   effort: number,
+ *   preset: string,
+ * }}
+ */
+export function posterWebpOptions() {
+  return {
+    quality: POSTER_WEBP_QUALITY,
+    alphaQuality: 100,
+    smartSubsample: true,
+    effort: POSTER_WEBP_EFFORT,
+    preset: "picture",
+  };
+}
 
 /**
  * Public path for a poster, or "" when the source is not a plain https URL.
@@ -67,13 +98,16 @@ export function posterAssetPath(sourceUrl) {
     return "";
   }
 
-  const name = crypto.createHash("sha256").update(sourceUrl).digest("hex");
+  const name = crypto
+    .createHash("sha256")
+    .update(`${POSTER_ENCODE_VERSION}\0${sourceUrl}`)
+    .digest("hex");
 
   return `/${POSTER_DIRECTORY}/${name}.webp`;
 }
 
 /**
- * Fits a poster inside the card size and encodes WebP.
+ * Fits a poster inside the card size and encodes crisp WebP.
  * @param {Buffer} input
  * @returns {Promise<Buffer>}
  * @throws {Error} When the bytes are not an image Sharp can read.
@@ -83,11 +117,11 @@ export async function resizePoster(input) {
     .resize(POSTER_MAX_WIDTH, POSTER_MAX_HEIGHT, {
       fit: "inside",
       withoutEnlargement: true,
+      kernel: "lanczos3",
+      // Avoid JPEG/WebP shrink-on-load moiré on UI text and fine lines.
+      fastShrinkOnLoad: false,
     })
-    .webp({
-      quality: 82,
-      effort: 5,
-    })
+    .webp(posterWebpOptions())
     .toBuffer();
 }
 
@@ -330,7 +364,7 @@ export function sheetMusicPosterAssetPath(workUrl) {
 
   const name = crypto
     .createHash("sha256")
-    .update(`sheet-music:${workUrl}`)
+    .update(`${POSTER_ENCODE_VERSION}\0sheet-music:${workUrl}`)
     .digest("hex");
 
   return `/${POSTER_DIRECTORY}/${name}.webp`;
@@ -392,10 +426,7 @@ export function sheetMusicPreviewSvg(title) {
  */
 export async function renderSheetMusicPoster(title) {
   return sharp(Buffer.from(sheetMusicPreviewSvg(title)))
-    .webp({
-      quality: 82,
-      effort: 5,
-    })
+    .webp(posterWebpOptions())
     .toBuffer();
 }
 

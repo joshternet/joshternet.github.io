@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Product design writing on the Joshternet"
-description: "Explore Product design articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Product design, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Product design from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Product design, Joshternet, independent websites, Topics, shared interests"
 slug: "product-design"
 permalink: /topics/product-design/
 robots: max-snippet:160, max-image-preview:large

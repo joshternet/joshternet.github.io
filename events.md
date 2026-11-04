@@ -22,7 +22,9 @@ joshternet_analysis: derived
 # Happening on the Joshternet
 
 Upcoming events from independent websites in the network, in chronological
-order. Follow each card to the publisher's own event page for details.
+order by event start—not by when JoshBot noticed them. Follow each card to the
+publisher’s own event page for details. Incomplete metadata stays incomplete;
+Joshternet does not invent dates or locations.
 
 {% if happening_items.size > 0 %}
 <ol class="activity-list h-feed happening-list">

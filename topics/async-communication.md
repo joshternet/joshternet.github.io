@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Async Communication writing on the Joshternet"
-description: "Explore Async Communication articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Async Communication, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Async Communication from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Async Communication, Joshternet, independent websites, Topics, shared interests"
 slug: "async-communication"
 permalink: /topics/async-communication/
 robots: max-snippet:160, max-image-preview:large

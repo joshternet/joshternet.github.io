@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "RED articles from Joshternet websites"
-description: "Explore RED articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "RED, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about RED from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "RED, Joshternet, independent websites, Topics, shared interests"
 slug: "red"
 permalink: /topics/red/
 robots: max-snippet:160, max-image-preview:large

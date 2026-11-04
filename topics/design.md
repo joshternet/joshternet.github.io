@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Design articles from Joshternet websites"
-description: "Explore Design articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Design, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Design from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Design, Joshternet, independent websites, Topics, shared interests"
 slug: "design"
 permalink: /topics/design/
 robots: max-snippet:160, max-image-preview:large

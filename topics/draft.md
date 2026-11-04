@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Drafts articles from Joshternet websites"
-description: "Explore Drafts articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Drafts, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Drafts from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Drafts, Joshternet, independent websites, Topics, shared interests"
 slug: "draft"
 permalink: /topics/draft/
 robots: max-snippet:160, max-image-preview:large

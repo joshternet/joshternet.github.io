@@ -67,14 +67,16 @@ test("search requires a query and announces status", async () => {
     <script>${searchScript}</script>
   `);
 
-  await page.getByText("Type a word from a title, domain, or topic.").waitFor();
+  await page
+    .getByText("Try a website name, a subject, or something you're curious about.")
+    .waitFor();
   assert.equal(await page.locator("[data-search-results] li").count(), 0);
 
   await page.locator("[data-search-input]").fill("corkboard");
   await page.locator("[data-search-results] li").waitFor();
   assert.match(
     await page.locator("[data-search-status]").innerText(),
-    /1 matching/,
+    /Showing 1 result\./,
   );
   assert.equal(await page.locator("[data-search-results] li").count(), 1);
   assert.equal(await page.locator(".activity-card").count(), 1);

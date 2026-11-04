@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Nominate a Website for JoshBot
+title: Nominate a Site
 description: >-
-  Nominate a website you control as a discovery seed for JoshBot so it can be
-  considered for verification and listing in the Joshternet public registry.
+  Ask JoshBot to look at a website you control. Nomination is a discovery
+  starting point—it does not join the Joshternet by itself.
 keywords: >-
   nominate website, JoshBot seed, Joshternet registry, /.well-known/josh
 seo:
@@ -17,11 +17,17 @@ script: /assets/js/nominate.js
 
 # Nominate a site for JoshBot
 
-Have a site you want JoshBot to explore? Give it a place to start.
+If you have a website you control and you'd like JoshBot to take a look, this is
+a good place to start. Nomination asks JoshBot to consider your site as a
+discovery seed—a starting point for exploration. It does not join the Joshternet
+by itself, declare anyone to be a Josh, or guarantee a public Network listing.
 
-A nomination makes your site a **discovery seed**. It does not add the site to the Joshternet, declare anyone to be a Josh, or guarantee that the site will appear in the public Network.
+Participation still means publishing a valid `/.well-known/josh` on a site you
+control—see the [join guide](/join/).
 
-JoshBot still follows its normal rules. It respects `robots.txt`, applies its crawl and network safety limits, and independently checks for a valid `/.well-known/josh` declaration before a site can participate in the Joshternet.
+JoshBot still follows its normal rules: it respects `robots.txt`, applies crawl
+and network safety limits, and independently checks for a valid declaration
+before it can list a site.
 
 <form
   class="seed-nomination-form"
@@ -38,7 +44,7 @@ JoshBot still follows its normal rules. It respects `robots.txt`, applies its cr
   <div class="seed-nomination-field">
     <label for="seed-url">Website</label>
     <p id="seed-url-help" class="seed-nomination-help">
-      Enter the public address of a site you control, such as https://example.com.
+      Enter the public address of a website you control, for example, https://joshua.example.
     </p>
     <input
       id="seed-url"
@@ -48,7 +54,7 @@ JoshBot still follows its normal rules. It respects `robots.txt`, applies its cr
       autocomplete="url"
       inputmode="url"
       spellcheck="false"
-      placeholder="https://example.com"
+      placeholder="https://joshua.example"
       aria-describedby="seed-url-help"
     >
   </div>
@@ -89,17 +95,26 @@ JoshBot still follows its normal rules. It respects `robots.txt`, applies its cr
   ></p>
 
   <noscript>
-    <p>JavaScript is required to submit a seed nomination.</p>
+    <p>This form needs JavaScript to submit a nomination.</p>
   </noscript>
 </form>
 
-## What happens after you nominate a site
+## What happens next
 
-The nomination goes into JoshBot's seed nomination queue. When JoshBot processes it, the site is treated the same way as any other discovery seed: it must be publicly reachable, its crawling policy must allow JoshBot to visit it, and the crawl stays within JoshBot's normal limits.
+Your nomination goes into JoshBot's queue. When JoshBot gets to it, the site is
+treated under the same crawling rules as other discovery seeds: it must be
+publicly reachable, crawling policy must allow JoshBot, and the crawl stays
+within normal limits.
 
-Being crawled and joining the Joshternet are separate things. If the site publishes a valid `/.well-known/josh` declaration, JoshBot can verify that declaration through the normal protocol. If it does not, nomination alone does not create one.
+Being crawled is not the same as participating. If the site publishes a valid
+`/.well-known/josh`, JoshBot can verify it through the normal protocol. If it
+does not, nomination alone does not create one.
 
-You can read more about how the crawler behaves on the [JoshBot page][joshbot], and the [Joshternet specifications][specifications] define how participation and Josh identity are declared.
+You can also publish a declaration without nominating here. JoshBot may still
+discover that site through ordinary crawling when another eligible origin links
+to it.
+
+More on crawler behavior: [JoshBot][joshbot]. Specifications: [Joshternet specs][specifications].
 
 [joshbot]: /joshbot/
 [specifications]: /specs/

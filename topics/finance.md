@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Finance articles from Joshternet websites"
-description: "Explore Finance articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Finance, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Finance from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Finance, Joshternet, independent websites, Topics, shared interests"
 slug: "finance"
 permalink: /topics/finance/
 robots: max-snippet:160, max-image-preview:large

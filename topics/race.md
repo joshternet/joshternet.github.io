@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Race articles from Joshternet websites"
-description: "Explore Race articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Race, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Race from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Race, Joshternet, independent websites, Topics, shared interests"
 slug: "race"
 permalink: /topics/race/
 robots: max-snippet:160, max-image-preview:large

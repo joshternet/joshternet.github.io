@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Writing Publishing writing on the Joshternet"
-description: "Explore Writing Publishing articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Writing Publishing, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Writing Publishing from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Writing Publishing, Joshternet, independent websites, Topics, shared interests"
 slug: "writing-publishing"
 permalink: /topics/writing-publishing/
 robots: max-snippet:160, max-image-preview:large

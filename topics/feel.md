@@ -1,12 +1,12 @@
 ---
 layout: topic
-title: "Feels articles from Joshternet websites"
-description: "Explore Feels articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Feels, Joshternet, independent websites, Josh network, topic neighborhood"
+title: "Feel articles from Joshternet websites"
+description: "Explore articles, notes, and projects about Feel from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Feel, Joshternet, independent websites, Topics, shared interests"
 slug: "feel"
 permalink: /topics/feel/
 robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
-  name: "Feels"
+  name: "Feel"
 ---

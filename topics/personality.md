@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Personality articles from Joshternet websites"
-description: "Explore Personality articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Personality, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Personality from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Personality, Joshternet, independent websites, Topics, shared interests"
 slug: "personality"
 permalink: /topics/personality/
 robots: max-snippet:160, max-image-preview:large

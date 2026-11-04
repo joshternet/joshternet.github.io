@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Umberto-Eco articles from Joshternet websites"
-description: "Explore Umberto-Eco articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Umberto-Eco, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Umberto-Eco from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Umberto-Eco, Joshternet, independent websites, Topics, shared interests"
 slug: "umberto-eco"
 permalink: /topics/umberto-eco/
 robots: max-snippet:160, max-image-preview:large

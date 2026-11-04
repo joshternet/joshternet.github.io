@@ -21,7 +21,7 @@ This endpoint is on the open web. Controls:
 
 ## Endpoints
 
-- `GET /v1/declaration-check?origin=https://example.invalid`
+- `GET /v1/declaration-check?origin=https://joshua.example`
 - `OPTIONS /v1/declaration-check`
 
 ## Local development

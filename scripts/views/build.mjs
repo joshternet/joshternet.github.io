@@ -12,6 +12,7 @@ import { fileURLToPath } from "node:url";
 
 import { topicCollectionMarkdown } from "../nlp/communities.mjs";
 import { formatGeneratedOutputs } from "../format-written.mjs";
+import { displayTitleOverridesFromDocument } from "../network/lib.mjs";
 import {
   readJSONIfExists,
   writeJSONAtomic,
@@ -48,6 +49,12 @@ export async function buildViewProjections(root = ROOT) {
     path.join(dataDir, "network.json"),
     [],
   );
+  const displayTitleOverrides = displayTitleOverridesFromDocument(
+    await readJSONIfExists(
+      path.join(dataDir, "network_display_titles.json"),
+      {},
+    ),
+  );
   const content = await readJSONIfExists(
     path.join(dataDir, "content.json"),
     {},
@@ -82,6 +89,7 @@ export async function buildViewProjections(root = ROOT) {
       !Array.isArray(channelPublish)
         ? channelPublish
         : {},
+    displayTitleOverrides,
   });
 
   if (!views.activity.primary.length) {

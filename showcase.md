@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Showcase creative work from independent Joshternet websites
+title: Showcase
 description: >-
-  Photographs, art, comics, music, sheet music, video channels, education series,
-  podcasts, games, software, and projects from independent websites on the
-  Joshternet. Cards link out to the publisher—no embeds or republishing.
-  Joshternet does not claim authorship of participants' work.
+  Explore games, books, art, photography, software, and other creative work
+  discovered across the Joshternet. Meet the people behind independent websites
+  and see what they've been making.
 keywords: >-
-  Joshternet showcase, creative work, comics, education, video, photography, music, games, independent websites
+  Showcase, Joshternet, creative work, independent websites, games, books, art,
+  photography, projects
 seo:
   type: CollectionPage
   name: Showcase
@@ -23,8 +23,16 @@ script: /assets/js/showcase.js
 
 # Showcase
 
-Creative work made by participants of the Joshternet—including comics, education
-series, podcasts, and video channels—always as outbound links to the publisher.
+One of the best parts of wandering the internet is discovering what people make
+simply because they want to. Games, photographs, books, artwork, software, and
+wonderfully strange little projects are scattered across independent websites.
+Showcase brings some of those creations together so you can find something
+interesting and follow it back to the person who made it.
+
+Everything here leads to the original website, where the work belongs. This is
+not every creative project from every participating site—just a selection worth
+exploring. Have a look around, discover something new, and see where your
+curiosity takes you.
 
 <div class="showcase" data-showcase>
 {% if showcase_kinds.size > 0 %}
@@ -86,13 +94,21 @@ series, podcasts, and video channels—always as outbound links to the publisher
   {% endfor %}
   </ol>
 </section>
+
+<p class="showcase-close">
+  Found something you like? Follow the link, explore the website, and see what
+  else its creator has been working on. There's usually more to discover once you
+  start wandering.
+</p>
 {% else %}
 <div class="network-empty">
   <p>
-    No creative works are indexed yet. Browse the
+    Nothing has made it into Showcase just yet, but there's plenty more to
+    explore. Visit the
     <a href="{{ '/network/' | relative_url }}">Network</a>
-    or <a href="{{ '/activity/' | relative_url }}">What's New</a>
-    meanwhile.
+    to discover participating websites, or stop by
+    <a href="{{ '/activity/' | relative_url }}">What's New</a>
+    to see what people have been sharing lately.
   </p>
 </div>
 {% endif %}

@@ -31,6 +31,7 @@ import {
   POSTER_DIRECTORY,
   applyPosterAssets,
   posterAssetPath,
+  posterWebpOptions,
   remainingRemoteShowcasePosters,
 } from "./posters.mjs";
 
@@ -611,10 +612,12 @@ export async function captureMissingWorkScreenshots(items, options = {}) {
               });
               const webp = await sharp(png)
                 .resize(WORK_SCREENSHOT_WIDTH, WORK_SCREENSHOT_HEIGHT, {
-                  fit: "cover",
-                  position: "top",
+                  fit: "inside",
+                  withoutEnlargement: true,
+                  kernel: "lanczos3",
+                  fastShrinkOnLoad: false,
                 })
-                .webp({ quality: 82, effort: 5 })
+                .webp(posterWebpOptions())
                 .toBuffer();
               await fs.writeFile(absolute, webp);
               const written = await fs.stat(absolute);
@@ -807,10 +810,12 @@ export async function captureShowcasePosterFallbacks(views, options = {}) {
               });
               const webp = await sharp(png)
                 .resize(WORK_SCREENSHOT_WIDTH, WORK_SCREENSHOT_HEIGHT, {
-                  fit: "cover",
-                  position: "top",
+                  fit: "inside",
+                  withoutEnlargement: true,
+                  kernel: "lanczos3",
+                  fastShrinkOnLoad: false,
                 })
-                .webp({ quality: 82, effort: 5 })
+                .webp(posterWebpOptions())
                 .toBuffer();
               await fs.writeFile(absolute, webp);
               const written = await fs.stat(absolute);

@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Covid 19 articles from Joshternet websites"
-description: "Explore Covid 19 articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Covid 19, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Covid 19 from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Covid 19, Joshternet, independent websites, Topics, shared interests"
 slug: "covid-19"
 permalink: /topics/covid-19/
 robots: max-snippet:160, max-image-preview:large

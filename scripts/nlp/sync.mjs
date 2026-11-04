@@ -65,7 +65,11 @@ import {
   decideOriginShortCircuit,
   originHasDeepCrawlBaseline,
 } from "./origin-short-circuit.mjs";
-import { channelItemsFromNetwork } from "../views/lib.mjs";
+import { displayTitleOverridesFromDocument } from "../network/lib.mjs";
+import {
+  channelItemsFromNetwork,
+  publisherDisplayTitle,
+} from "../views/lib.mjs";
 import { captureMissingWorkScreenshots } from "../views/work-screenshots.mjs";
 import { buildChannelPublishByUrl } from "./channel-publish.mjs";
 import {
@@ -132,6 +136,10 @@ import {
 
 const ROOT = process.cwd();
 const NETWORK_PATH = path.join(ROOT, "_data/network.json");
+const NETWORK_DISPLAY_TITLES_PATH = path.join(
+  ROOT,
+  "_data/network_display_titles.json",
+);
 const CONNECTIONS_PATH = path.join(ROOT, "_data/connections.json");
 const SIGNALS_PATH = path.join(ROOT, "_data/site_signals.json");
 const TOPICS_PATH = path.join(ROOT, "_data/topics.json");
@@ -153,8 +161,27 @@ const SITE_URL = "https://joshternet.org";
 /**
  * @returns {Promise<void>}
  */
+/**
+ * Visitor-facing member name for NLP community / content attribution.
+ * @param {Record<string, unknown>} participant
+ * @param {Map<string, string>} overrides
+ * @returns {string}
+ */
+function memberDisplayTitle(participant, overrides) {
+  const origin =
+    typeof participant.origin === "string" ? participant.origin : "";
+  return publisherDisplayTitle(
+    participant,
+    origin,
+    overrides.get(origin) || "",
+  );
+}
+
 async function main() {
   const network = await readJSONIfExists(NETWORK_PATH, []);
+  const displayTitleOverrides = displayTitleOverridesFromDocument(
+    await readJSONIfExists(NETWORK_DISPLAY_TITLES_PATH, {}),
+  );
   const aliases = loadAliasMap(
     await readJSONIfExists(ALIASES_PATH, { aliases: [] }),
   );
@@ -657,7 +684,7 @@ async function main() {
         originLinks.push({ origin, links: carriedOutbound });
         communityOrigins.push({
           origin,
-          title: participant.title || participant.domain || origin,
+          title: memberDisplayTitle(participant, displayTitleOverrides),
           domain: participant.domain || new URL(origin).hostname,
           declared_topics: carriedDeclared,
           subject_signals: carriedSignals,
@@ -700,7 +727,7 @@ async function main() {
         originLinks.push({ origin, links: outbound });
         communityOrigins.push({
           origin,
-          title: participant.title || participant.domain || origin,
+          title: memberDisplayTitle(participant, displayTitleOverrides),
           domain: participant.domain || new URL(origin).hostname,
           declared_topics,
           subject_signals,
@@ -718,7 +745,7 @@ async function main() {
       originLinks.push({ origin, links: [] });
       communityOrigins.push({
         origin,
-        title: participant.title || participant.domain || origin,
+        title: memberDisplayTitle(participant, displayTitleOverrides),
         domain: participant.domain || "",
         declared_topics: [],
         subject_signals: [],
@@ -822,7 +849,10 @@ async function main() {
   // Include YouTube/Vimeo/Twitch channel cards from Network elsewhere so
   // Showcase channels get posters in the same pass (files reused at views:build).
   const channelDrafts = channelItemsFromNetwork(
-    Array.isArray(network) ? network : [],
+    (Array.isArray(network) ? network : []).map((participant) => ({
+      ...participant,
+      title: memberDisplayTitle(participant, displayTitleOverrides),
+    })),
     now,
   );
   // Latest YouTube upload times gate Showcase / What's New at views:build.

@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Command Line Interface on the Joshternet"
-description: "Explore Command Line Interface articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Command Line Interface, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Command Line Interface from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Command Line Interface, Joshternet, independent websites, Topics, shared interests"
 slug: "command-line-interface"
 permalink: /topics/command-line-interface/
 robots: max-snippet:160, max-image-preview:large

@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Online Book Club writing on the Joshternet"
-description: "Explore Online Book Club articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Online Book Club, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Online Book Club from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Online Book Club, Joshternet, independent websites, Topics, shared interests"
 slug: "online-book-club"
 permalink: /topics/online-book-club/
 robots: max-snippet:160, max-image-preview:large

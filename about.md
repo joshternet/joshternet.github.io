@@ -1,116 +1,74 @@
 ---
 layout: default
-title: About the Open Josh Network
+title: About the Joshternet
 description: >-
-  How the Joshternet began, why it starts with Joshes and independent websites,
-  and how open standards keep the network decentralized without a central platform.
+  How Joshua Morris started the Joshternet by looking for other Joshes with
+  personal websites, and how a playful idea grew into an open network
+  celebrating independent websites and the people behind them.
 keywords: >-
-  about Joshternet, open Josh network, independent websites, decentralized web
+  Joshua Morris, Joshternet, Josh network, independent websites, personal web,
+  open web, decentralized web
 seo:
   type: WebPage
-  name: About
+  name: About the Joshternet
 permalink: /about/
 ---
 
 # About the Joshternet
 
-The Joshternet is an open network and standards project for connecting people who identify as Josh and the independent websites they call home.
+The Joshternet started with Joshua Morris trying to find other Joshes who had their own websites. It sounded simple enough, but finding those personal corners of the internet among professional profiles, social networks, and everything else felt like searching for a needle in a haystack. There had to be a better way for people with their own websites to find one another. What began as a small technical problem soon turned into something much more entertaining.
 
-It uses voluntary participation, self-declared Josh identity, open specifications, and ordinary web protocols to connect independently operated places without replacing them with another centralized platform.
+There is something inherently funny about a Josh meeting another Josh. Joshua has compared it to a Morty meeting another Morty: the same name, entirely different people, and somehow an instant connection. The more Joshes he found, the more interesting the experience became. Some were developers, others were artists, writers, musicians, and people simply documenting their lives. Each website offered another little world to explore, and meeting the person behind it made the internet feel a little less anonymous.
 
-## Where it came from
+## From a joke to a network
 
-Joshua Morris conceived and started the Joshternet as several ideas came together.
+The original idea was to connect Joshes across the independent web. Not through another social network, and certainly not by asking anyone to create an account or move their content somewhere else. Joshua wanted to find people where they already were, on websites they had built and maintained themselves.
 
-There are a remarkable number of people named Josh or Joshua creating things and maintaining their own places on the web. They write, make art, build software, document projects, publish ideas, create communities, and do plenty of other things that do not fit neatly into one category.
+That led to the [Joshternet specifications][specifications], [JoshBot][joshbot], and a simple way for a website to declare that it wants to participate. The technology is intentionally modest. A small public JSON declaration at `/.well-known/josh` gives independently operated websites a common way to say they are part of the network.
 
-The question was straightforward: what would it take to build an actual open network for Joshes?
+The name may be ridiculous, but the idea behind it is useful. It is an experiment in what happens when independent websites become a little easier to discover and connect without giving up what makes them independent.
 
-The natural language around Josh, joshing, and Joshes interacting with other Joshes gives the project a character of its own. That wordplay provides some inherent humor without defining the limits of the technical work.
+## You don't have to be a Josh
 
-The Joshternet also grew from an interest in whether recognizable communities can gather through open standards instead of requiring a centralized proprietary platform. Established web mechanisms, including RFC-style specifications and `/.well-known/` resources, provided a practical place to begin.
+The Joshternet began with Joshes, but it did not take long to realize the fun shouldn't stop there. Anyone with an independent website can participate, whether their name is Joshua, Josh, something entirely different, or something they would rather not declare.
 
-## Why Joshes?
+Josh identity is optional and always self-declared. You can affirm it, decline it, or leave it undeclared. No one gets to decide your identity by looking at your name, domain, or website, and no participant has greater standing in the network because of what they are called.
 
-The project begins specifically with Joshes because Joshua Morris is a Josh and because a visible community of Joshes already builds and publishes things across the web.
+**Joshness is declared, never derived.**
 
-That gives the project a real community rather than a hypothetical user base. It creates concrete questions about identity, participation, discovery, interoperability, governance, and trust.
+So, yes, non-Joshes can come along and Josh the Joshes. The more interesting people and independent websites we discover, the better this whole adventure becomes.
 
-Josh identity remains voluntary:
+## Celebrating the independent web
 
-<p class="prose-emphasis"><strong>Joshness is declared, never derived.</strong></p>
+The web is full of wonderful places that don't fit neatly into the big platforms. People maintain personal websites, share experiments, write about their interests, publish art, build strange little games, and create things simply because they enjoy doing it. Some of those sites have been around for decades, while others are just getting started.
 
-A name, domain, biography, or third-party assertion does not determine Joshness. A person may affirm Josh identity, decline it, or leave it undeclared.
+Joshternet is a way to discover more of them. Through the [Network][network], [Wander][wander], and the work shared by participants, visitors can find interesting people and follow the links into their own corners of the internet. There is no algorithm deciding what everyone ought to see, and no requirement that everything be published in one place.
 
-Non-Joshes may participate without being represented as Joshes. Participation and identity remain separate. From the day they join, friends of Joshes are joshing the Joshes as equal participants—not guests and not a lesser tier.
+The websites belong to the people who maintain them. Joshternet just helps make the connections.
 
-## Why independent websites?
+## Keeping it open
 
-The web already gives people places they can control.
+The project uses open specifications and ordinary web technologies because independent websites should be able to participate on their own terms. Nobody should need permission from Joshternet to implement the conventions, build compatible tools, or explore similar ideas for their own community.
 
-Participants should retain ownership and control of their:
+Joshternet.org is a place to discover participants, learn how the network works, and follow its development. It is not the network itself. A registry, crawler, or directory can help people find one another, but those services should never become a requirement for the connections between independent websites to exist.
 
-- domains;
-- websites;
-- content;
-- publishing systems;
-- hosting;
-- infrastructure;
-- identity declarations.
+The [Joshternet RFCs][specifications] are still Drafts, and there is plenty left to learn. The plan is to build something useful with real participants, see what works, and let the experience guide what comes next. There is no need to turn a small, enjoyable experiment into a grand standard before it has earned one.
 
-The Joshternet adds shared conventions between those places. It does not ask participants to relocate them or become tenants of a Joshternet platform.
+## The person behind the idea
 
-The sites remain independent. The connections between them form the network.
+[Joshua Morris][joshua] created the Joshternet and continues to maintain its website, specifications, and related projects, including JoshBot. He is a software engineer who has spent much of his life exploring what computers and the internet make possible. Joshternet brings together several things he enjoys: building software, experimenting with open technologies, discovering interesting websites, and meeting people he might never have encountered otherwise.
 
-## Why open standards?
+The project has grown beyond the original search for other Joshes, but that first bit of curiosity is still at its center. The most rewarding part has been meeting people, following their work, and finding new reasons to wander around the web. It turns out that looking for other Joshes is a pretty entertaining way to discover just how much of the internet is still worth exploring.
 
-Open specifications give independently developed websites and services a common basis for participation and interoperability.
+And there are plenty more Joshes, and non-Joshes, left to meet.
 
-The [current specifications][specifications] define the Joshternet’s foundational architecture, its voluntary identity model, and the version 1 declaration published at `/.well-known/josh`. The [implementation guide][implementation] explains how an independently operated origin can publish that declaration today.
+## Come josh around
 
-The project prefers boring protocols, small representations, existing web standards, understandable implementations, and independently deployable sites. Participation should not depend on proprietary infrastructure or a particular technology stack.
-
-## The network is decentralized
-
-No single website, organization, registry, crawler, directory, server, or implementation should be necessary for the Joshternet itself to exist.
-
-joshternet.org documents the project, and the GitHub organization hosts its development. Neither is the network. Joshua Morris started the project, but maintaining the project does not confer control over the network.
-
-The network is formed by participating nodes and interoperating infrastructure using shared specifications. Registries, crawlers, validators, and other services may be useful, but they should remain replaceable and must not become authorities over Josh identity.
-
-No Josh outranks another Josh.
-
-[RFC-JOSH-0000][rfc-0000] defines these decentralization principles more formally.
-
-## Build the Josh network first
-
-The project follows a concrete discipline:
-
-Build the Josh network first.
-
-Learn from real participants and implementations.
-
-Generalize only what demonstrated interoperability needs justify.
-
-Actual participation exposes ambiguity, operational constraints, and community needs that an abstract design cannot. The Joshternet should solve those concrete problems before attempting to extract broader conventions.
-
-No generic community-network standard exists today.
-
-## The larger experiment
-
-The Joshternet is exploring whether a recognizable community can define enough shared open conventions to recognize participation, connect independent websites, and evolve without creating another centralized community platform.
-
-Participants should be able to retain control of their domains, publishing systems, infrastructure, content, and identity declarations while still taking part in a larger interoperable network.
-
-If this work produces useful conventions, architectural lessons, or open implementations, another community should be able to study them, adapt them, define its own identity and participation rules, and operate independently.
-
-That community should not need permission from the Joshternet or registration with it. It would not become a subdivision of the Joshternet.
-
-The Joshternet remains specifically the Joshternet. Any broader lessons must be earned through working interoperability here first.
-
-The [Joshternet specification repository][spec] is the canonical source for the current specifications.
+You can [wander the Joshternet][wander], [meet participating websites][network], or [join with your own site][join]. You don't need an account, a particular publishing platform, or a specific name. Just bring your little corner of the internet and see who you meet along the way.
 
 [specifications]: /specs/
-[implementation]: /implement/
-[rfc-0000]: https://github.com/joshternet/spec/blob/main/rfcs/0000-the-joshternet.md
-[spec]: https://github.com/joshternet/spec
+[joshbot]: /joshbot/
+[network]: /network/
+[wander]: /wander/
+[join]: /join/
+[joshua]: https://joshuamorris.info/

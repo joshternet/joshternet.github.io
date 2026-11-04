@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Acna articles from Joshternet websites"
-description: "Explore Acna articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Acna, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Acna from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Acna, Joshternet, independent websites, Topics, shared interests"
 slug: "acna"
 permalink: /topics/acna/
 robots: max-snippet:160, max-image-preview:large

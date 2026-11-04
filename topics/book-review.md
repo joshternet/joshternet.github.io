@@ -1,12 +1,12 @@
 ---
 layout: topic
-title: "Book Reviews articles from Joshternet websites"
-description: "Explore Book Reviews articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Book Reviews, Joshternet, independent websites, Josh network, topic neighborhood"
+title: "Book Review articles from Joshternet websites"
+description: "Explore articles, notes, and projects about Book Review from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Book Review, Joshternet, independent websites, Topics, shared interests"
 slug: "book-review"
 permalink: /topics/book-review/
 robots: max-snippet:160, max-image-preview:large
 seo:
   type: CollectionPage
-  name: "Book Reviews"
+  name: "Book Review"
 ---

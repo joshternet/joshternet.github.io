@@ -374,7 +374,10 @@ test("homepage preview shows isolate participants with zero edges", async () => 
     .click();
   const detail = await page.locator("[data-connections-detail]").innerText();
   assert.match(detail, /Lonely/);
-  assert.match(detail, /No observed connections yet/);
+  assert.match(
+    detail,
+    /JoshBot hasn't observed any links to or from this website yet/,
+  );
   assert.match(detail, /Explore on Connections/);
 
   await context.close();

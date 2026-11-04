@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Local-Churches writing on the Joshternet"
-description: "Explore Local-Churches articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Local-Churches, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Local-Churches from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Local-Churches, Joshternet, independent websites, Topics, shared interests"
 slug: "local-church"
 permalink: /topics/local-church/
 robots: max-snippet:160, max-image-preview:large

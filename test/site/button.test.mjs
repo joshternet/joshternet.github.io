@@ -26,12 +26,21 @@ test("button page documents all four states and the one-line embed", async () =>
   const wrangler = await read("workers/joshternet-button/wrangler.jsonc");
 
   assert.match(page, /permalink: \/implement\/buttons\//);
+  assert.match(page, /^title: Joshternet Buttons$/m);
+  assert.match(page, /## What the button shows/);
+  assert.match(page, /isn't required to participate/);
+  assert.match(
+    page,
+    /doesn't mean Joshternet has verified the person's legal identity/,
+  );
+  assert.match(page, /must never be treated as Join/);
   assert.match(page, /window\.location\.origin/);
   assert.match(page, /Verified Josh/);
   assert.match(page, /Verified Non-Josh/);
   assert.match(page, /Undeclared/);
   assert.match(page, /Join the Joshternet/);
   assert.match(page, /joshternet-button\.js/);
+  assert.match(page, /20261004/);
   assert.match(page, /script-src https:\/\/joshternet\.org/);
   assert.match(page, /connect-src https:\/\/joshternet\.org/);
   assert.doesNotMatch(page, /img-src https:\/\/joshternet\.org/);
@@ -43,6 +52,7 @@ test("button page documents all four states and the one-line embed", async () =>
     /src="https:\/\/joshternet\.org\/embed\/joshternet-button\.js"/,
   );
   assert.match(page, /GET https:\/\/joshternet\.org\/api\/button-state/);
+  assert.match(page, /joshua\.example/);
   assert.doesNotMatch(page, /badge/i);
   assert.doesNotMatch(page, /banner/i);
   assert.match(nav, /title: Buttons/);

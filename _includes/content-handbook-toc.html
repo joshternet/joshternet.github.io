@@ -1,0 +1,52 @@
+{% comment %}
+  Goal: In-page hierarchical handbook chapter nav (accordion groups).
+  Expects page.content_id matching content_nav.yml id.
+  Motif rail stays free — this block stacks in content flow only.
+{% endcomment %}
+{% assign toc_groups = 'foundation|discovery|describing|syndication|relationships|publishing|understanding'
+  | split: '|'
+%}
+{% assign toc_group_labels = 'Foundation|Discovery and publishing|Describing content|Feeds, sitemaps, and crawlers|Links, identity, and connections|Creative publishing|Understanding and troubleshooting'
+  | split: '|'
+%}
+<nav class="handbook-toc" aria-label="Handbook chapters">
+  <p class="handbook-toc__hub">
+    <a href="{{ '/implement/content/' | relative_url }}">Content handbook</a>
+  </p>
+  {% for group_key in toc_groups %}
+    {% assign group_label = toc_group_labels[forloop.index0] %}
+    {% assign group_heading_id = 'handbook-toc-group-' | append: group_key %}
+    {% assign group_has_current = false %}
+    {% for chapter in site.data.content_nav %}
+      {% if chapter.group == group_key and chapter.id == page.content_id %}
+        {% assign group_has_current = true %}
+      {% endif %}
+    {% endfor %}
+    <details
+      class="handbook-toc__group"
+      {% if group_has_current %}
+        open
+      {% endif %}
+    >
+      <summary class="handbook-toc__group-summary" id="{{ group_heading_id }}">
+        {{ group_label }}
+      </summary>
+      <ul class="handbook-toc__list" aria-labelledby="{{ group_heading_id }}">
+        {% for chapter in site.data.content_nav %}
+          {% if chapter.group == group_key %}
+            <li class="handbook-toc__item">
+              <a
+                href="{{ chapter.path | relative_url }}"
+                {% if chapter.id == page.content_id %}
+                  aria-current="page"
+                {% endif %}
+              >
+                {{- chapter.title -}}
+              </a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </details>
+  {% endfor %}
+</nav>

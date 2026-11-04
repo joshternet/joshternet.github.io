@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Opinion articles from Joshternet websites"
-description: "Explore Opinion articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Opinion, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Opinion from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Opinion, Joshternet, independent websites, Topics, shared interests"
 slug: "opinion"
 permalink: /topics/opinion/
 robots: max-snippet:160, max-image-preview:large

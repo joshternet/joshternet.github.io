@@ -1,0 +1,17 @@
+{% comment %}
+  Goal: Shared verify steps + JoshBot notification note for platform recipes.
+{% endcomment %}
+## Verify
+
+Check the live site with [Check a declaration]({{ '/implement/validate/' | relative_url }}).
+
+Or check directly:
+
+```sh curl -i https://joshua.example/.well-known/josh ```
+
+Confirm the path is exactly `/.well-known/josh` (no `.json` extension, no trailing slash), the response is public JSON
+with integer `version` `1`, and `josh` is a Boolean when present. Prefer `Content-Type: application/json` when the host
+allows it.
+
+Publishing a valid declaration establishes participation. It does not separately notify JoshBot or require registration
+with joshternet.org.

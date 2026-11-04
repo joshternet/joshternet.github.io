@@ -27,7 +27,16 @@ test("connections page is HTML-first and cross-linked", async () => {
 
   assert.match(page, /permalink: \/connections\//);
   assert.match(page, /script: \/assets\/js\/connections\.js/);
-  assert.match(page, /No observed connections yet/);
+  assert.match(page, /title: Connections$/m);
+  assert.match(page, /internet was built for following links/);
+  assert.match(page, /Each circle represents a participating website/);
+  assert.match(page, /Dashed lines show websites with published work/);
+  assert.match(page, /What the lines mean/);
+  assert.match(
+    page,
+    /JoshBot hasn't observed any links to or from this website yet/,
+  );
+  assert.doesNotMatch(page, /No observed connections yet/);
   assert.match(page, /participant_count/);
   assert.match(page, /participating sites/);
   assert.doesNotMatch(page, /Isolated sites stay on/);
@@ -39,12 +48,14 @@ test("connections page is HTML-first and cross-linked", async () => {
   assert.doesNotMatch(page, /data-connections-key[\s\S]*<input/);
   assert.match(page, /connections-topic-list/);
   assert.match(page, /connections-topic__disclosure/);
+  assert.match(page, /connections-topic__hint/);
   assert.match(page, /connections-site__column--topics/);
   assert.match(page, /overlap_count == 1/);
   assert.match(page, /overlap_count > 0/);
   assert.match(page, /outbound > 0 or inbound > 0 %}/);
   assert.doesNotMatch(page, /outbound > 0 or inbound > 0 or overlap_count > 0/);
   assert.match(page, /sites with observed links/);
+  assert.match(page, /site pairs with shared topics/);
   assert.match(page, /shared topics/);
   assert.doesNotMatch(page, /No shared topics with other participants yet/);
   assert.doesNotMatch(
@@ -96,7 +107,8 @@ test("connections page is HTML-first and cross-linked", async () => {
   assert.match(page, /outbound-href\.html url=site_origin/);
   assert.match(page, /connections-site__title-link p-name u-url/);
   assert.match(page, /data-connection-select/);
-  assert.match(page, /Highlight \{\{ site_title \| escape \}\} on the map/);
+  assert.match(page, /Highlight \{\{ site_title \| escape \}\} on the graph/);
+  assert.match(page, /Highlight on graph/);
   assert.match(page, /data-connection-keys/);
   assert.match(page, /width="576"/);
   assert.match(page, /connections-visible-rel/);
@@ -104,10 +116,16 @@ test("connections page is HTML-first and cross-linked", async () => {
   assert.doesNotMatch(page, /\{\{\s*edge\.page\s*\|\s*escape\s*\}\}/);
   assert.match(page, /linked from/);
   assert.match(page, /source_title/);
-  assert.match(page, /Connected from[\s\S]*outbound-href\.html url=edge\.from/);
+  assert.match(page, /<h3>Links to<\/h3>/);
+  assert.match(page, /Linked from[\s\S]*outbound-href\.html url=edge\.from/);
   assert.doesNotMatch(
     page,
-    /Connected from[\s\S]{0,800}assign kind_label = "linked to"/,
+    /Linked from[\s\S]{0,800}assign kind_label = "linked to"/,
+  );
+  assert.match(page, /connections-close/);
+  assert.match(
+    page,
+    /interactive graph needs JavaScript, but you can still explore/,
   );
   assert.doesNotMatch(page, /rel=\{\{ edge\.rel/);
 

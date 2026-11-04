@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "User Experience writing on the Joshternet"
-description: "Explore User Experience articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "User Experience, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about User Experience from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "User Experience, Joshternet, independent websites, Topics, shared interests"
 slug: "user-experience"
 permalink: /topics/user-experience/
 robots: max-snippet:160, max-image-preview:large

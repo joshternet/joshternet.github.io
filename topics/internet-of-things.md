@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Internet OF Things writing on the Joshternet"
-description: "Explore Internet OF Things articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Internet OF Things, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Internet OF Things from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Internet OF Things, Joshternet, independent websites, Topics, shared interests"
 slug: "internet-of-things"
 permalink: /topics/internet-of-things/
 robots: max-snippet:160, max-image-preview:large

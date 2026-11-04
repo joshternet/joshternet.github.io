@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Linux articles from Joshternet websites"
-description: "Explore Linux articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Linux, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Linux from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Linux, Joshternet, independent websites, Topics, shared interests"
 slug: "linux"
 permalink: /topics/linux/
 robots: max-snippet:160, max-image-preview:large

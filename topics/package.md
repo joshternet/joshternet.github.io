@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Package articles from Joshternet websites"
-description: "Explore Package articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Package, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Package from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Package, Joshternet, independent websites, Topics, shared interests"
 slug: "package"
 permalink: /topics/package/
 robots: max-snippet:160, max-image-preview:large

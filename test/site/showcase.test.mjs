@@ -22,6 +22,24 @@ async function read(relativePath) {
 
 test("showcase page uses showcase-card without nested activity-card list items", async () => {
   const page = await read("showcase.md");
+  assert.match(page, /title: Showcase$/m);
+  assert.match(
+    page,
+    /Explore games, books, art, photography, software, and other creative work/,
+  );
+  assert.match(page, /wandering the internet is discovering what people make/);
+  assert.match(page, /Everything here leads to the original website/);
+  assert.match(
+    page,
+    /not every creative project from every participating site/,
+  );
+  assert.doesNotMatch(
+    page,
+    /hand-selected|handpicked|carefully curated|Our favorite/i,
+  );
+  assert.doesNotMatch(page, /No creative works are indexed yet/);
+  assert.match(page, /Nothing has made it into Showcase just yet/);
+  assert.match(page, /showcase-close/);
   assert.match(page, /include showcase-card\.html item=item/);
   assert.doesNotMatch(page, /include activity-card\.html/);
   assert.doesNotMatch(page, /showcase-action/);
@@ -60,27 +78,52 @@ test("showcase-card hit link uses the work URL only", async () => {
   const media = card.match(
     /<div class="showcase-card__media">([\s\S]*?)<\/div>/,
   );
-  assert.ok(media, "media block should be a div wrapping the poster");
+  assert.ok(media, "media block should always wrap the poster slot");
   assert.match(media[1], /<img\b/);
   assert.doesNotMatch(media[1], /<a\b/);
+  assert.match(card, /showcase-card__maker/);
+  assert.match(card, /showcase-card__summary/);
+  assert.match(card, /showcase-card__domain/);
+  assert.match(card, /network_site\.screenshot/);
 });
 
-test("showcase-card CSS places the hit link over the tile", async () => {
+test("showcase-card CSS places the hit link over the tile and domain bottom-right", async () => {
   const css = await read("assets/css/main.css");
   assert.match(css, /\.showcase-card__hit\s*\{[^}]*inset:\s*0/s);
   assert.match(css, /\.showcase-card__hit\s*\{[^}]*z-index:\s*1/s);
   assert.doesNotMatch(css, /\.showcase-card__maker-link/);
+  assert.match(
+    css,
+    /\.showcase-card__domain\s*\{[^}]*margin-block-start:\s*auto/s,
+  );
+  assert.match(css, /\.showcase-card__domain\s*\{[^}]*text-align:\s*end/s);
 });
 
 test("home showcase strip reuses showcase-card with outbound-href", async () => {
   const home = await read("_includes/home-showcase.html");
   assert.match(home, /include showcase-card\.html item=item/);
   assert.doesNotMatch(home, /include activity-card\.html/);
-  assert.match(home, /Creative work/);
+  assert.match(home, /Things people are making/);
 });
 
 test("home showcase list stays a single non-wrapping row", async () => {
   const css = await read("assets/css/main.css");
   assert.match(css, /\.showcase-list--home\s*\{[^}]*flex-wrap:\s*nowrap/s);
   assert.match(css, /\.showcase-list--home\s*\{[^}]*overflow-x:\s*auto/s);
+});
+
+test("showcase-card media keeps posters fully visible and readable", async () => {
+  const css = await read("assets/css/main.css");
+  assert.match(
+    css,
+    /\.showcase-card__media img\s*\{[^}]*object-fit:\s*contain[^}]*object-position:\s*center/s,
+  );
+  assert.doesNotMatch(
+    css,
+    /\.showcase-card:hover \.showcase-card__media img[^}]*transform:\s*scale/,
+  );
+  assert.match(
+    css,
+    /\.showcase-list--home > \.showcase-list__item\s*\{[^}]*15rem/s,
+  );
 });

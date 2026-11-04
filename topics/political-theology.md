@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Political-Theology writing on the Joshternet"
-description: "Explore Political-Theology articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Political-Theology, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Political-Theology from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Political-Theology, Joshternet, independent websites, Topics, shared interests"
 slug: "political-theology"
 permalink: /topics/political-theology/
 robots: max-snippet:160, max-image-preview:large

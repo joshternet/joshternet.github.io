@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Nutrici%c3%b3n writing on the Joshternet"
-description: "Explore Nutrici%c3%b3n articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Nutrici%c3%b3n, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Nutrici%c3%b3n from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Nutrici%c3%b3n, Joshternet, independent websites, Topics, shared interests"
 slug: "nutrici-c3-b3n"
 permalink: /topics/nutrici-c3-b3n/
 robots: max-snippet:160, max-image-preview:large

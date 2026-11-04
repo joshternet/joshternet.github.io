@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Christian-Nationalism writing on the Joshternet"
-description: "Explore Christian-Nationalism articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Christian-Nationalism, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Christian-Nationalism from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Christian-Nationalism, Joshternet, independent websites, Topics, shared interests"
 slug: "christian-nationalism"
 permalink: /topics/christian-nationalism/
 robots: max-snippet:160, max-image-preview:large

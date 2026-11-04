@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Apple articles from Joshternet websites"
-description: "Explore Apple articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Apple, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Apple from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Apple, Joshternet, independent websites, Topics, shared interests"
 slug: "apple"
 permalink: /topics/apple/
 robots: max-snippet:160, max-image-preview:large

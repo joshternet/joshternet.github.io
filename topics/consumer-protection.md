@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Consumer Protection writing on the Joshternet"
-description: "Explore Consumer Protection articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Consumer Protection, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Consumer Protection from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Consumer Protection, Joshternet, independent websites, Topics, shared interests"
 slug: "consumer-protection"
 permalink: /topics/consumer-protection/
 robots: max-snippet:160, max-image-preview:large

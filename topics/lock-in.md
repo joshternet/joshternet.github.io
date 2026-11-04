@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Lock IN articles from Joshternet websites"
-description: "Explore Lock IN articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Lock IN, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Lock IN from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Lock IN, Joshternet, independent websites, Topics, shared interests"
 slug: "lock-in"
 permalink: /topics/lock-in/
 robots: max-snippet:160, max-image-preview:large

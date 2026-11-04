@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Social articles from Joshternet websites"
-description: "Explore Social articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Social, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Social from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Social, Joshternet, independent websites, Topics, shared interests"
 slug: "social"
 permalink: /topics/social/
 robots: max-snippet:160, max-image-preview:large

@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Vleo articles from Joshternet websites"
-description: "Explore Vleo articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Vleo, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Vleo from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Vleo, Joshternet, independent websites, Topics, shared interests"
 slug: "vleo"
 permalink: /topics/vleo/
 robots: max-snippet:160, max-image-preview:large

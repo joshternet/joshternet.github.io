@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Fascism articles from Joshternet websites"
-description: "Explore Fascism articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Fascism, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Fascism from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Fascism, Joshternet, independent websites, Topics, shared interests"
 slug: "fascism"
 permalink: /topics/fascism/
 robots: max-snippet:160, max-image-preview:large

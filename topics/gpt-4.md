@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "GPT 4 articles from Joshternet websites"
-description: "Explore GPT 4 articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "GPT 4, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about GPT 4 from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "GPT 4, Joshternet, independent websites, Topics, shared interests"
 slug: "gpt-4"
 permalink: /topics/gpt-4/
 robots: max-snippet:160, max-image-preview:large

@@ -136,6 +136,8 @@ test("topic stubs include descriptions and CollectionPage SEO", () => {
   assert.match(keywords, /AI,/);
   assert.match(keywords, /Joshternet/);
   assert.doesNotMatch(description, /from around the Joshternet/i);
+  assert.doesNotMatch(description, /for Joshes/i);
+  assert.match(description, /independent websites participating in Joshternet/);
 });
 
 test("layout emits keywords and avoids duplicate Joshternet in titles", async () => {

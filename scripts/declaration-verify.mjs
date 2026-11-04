@@ -6,8 +6,8 @@
  * Inputs: origin URL. Outputs: human + JSON report. No secrets. No silent coercion.
  *
  * @example
- * node scripts/declaration-verify.mjs https://example.invalid
- * npm run declaration:verify -- https://example.invalid --json
+ * node scripts/declaration-verify.mjs https://joshua.example
+ * npm run declaration:verify -- https://joshua.example --json
  */
 
 import { pathToFileURL } from "node:url";
@@ -204,7 +204,7 @@ export async function verifyOrigin(originText) {
       classification: {
         kind: "unread",
         summary:
-          "The declaration could not be read. That is not an invalid file, and it is not a withdrawal.",
+          "The declaration could not be read. That is not an invalid declaration, and it is not a withdrawal.",
         details: [fetched.error],
       },
       error: fetched.error,

@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Parenting articles from Joshternet websites"
-description: "Explore Parenting articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Parenting, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Parenting from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Parenting, Joshternet, independent websites, Topics, shared interests"
 slug: "parenting"
 permalink: /topics/parenting/
 robots: max-snippet:160, max-image-preview:large

@@ -16,6 +16,15 @@
       >Home</a
     >
   </li>
+  <li class="site-nav__item">
+    <a
+      href="{{ '/join/' | relative_url }}"
+      {% if page.url == '/join/' %}
+        aria-current="page"
+      {% endif %}
+      >Join</a
+    >
+  </li>
   <li
     class="site-nav__item site-nav__item--branch site-nav__item--about{% if about_section %} is-current-section{% endif %}"
     data-nav-branch="about"

@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Civil Liberties writing on the Joshternet"
-description: "Explore Civil Liberties articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Civil Liberties, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Civil Liberties from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Civil Liberties, Joshternet, independent websites, Topics, shared interests"
 slug: "civil-liberty"
 permalink: /topics/civil-liberty/
 robots: max-snippet:160, max-image-preview:large

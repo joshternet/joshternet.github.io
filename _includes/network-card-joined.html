@@ -4,7 +4,7 @@
 {% endcomment %}
 {% if network_site.first_participated_at and network_site.first_participated_at != '' %}
   <p class="network-card__joined">
-    Joined
+    Participating since
     <time datetime="{{ network_site.first_participated_at | escape }}">
       {{ network_site.first_participated_at | date: '%-d %b %Y' }}
     </time>

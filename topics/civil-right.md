@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Civil-Rights articles from Joshternet websites"
-description: "Explore Civil-Rights articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Civil-Rights, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Civil-Rights from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Civil-Rights, Joshternet, independent websites, Topics, shared interests"
 slug: "civil-right"
 permalink: /topics/civil-right/
 robots: max-snippet:160, max-image-preview:large

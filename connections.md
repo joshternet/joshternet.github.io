@@ -1,11 +1,13 @@
 ---
 layout: default
-title: Connections between independent Joshternet websites
+title: Connections
 description: >-
-  See how participating Joshternet websites link to each other—observed homepage
-  and about-page bridges, shared topics, and an optional equal-weight graph.
+  Explore how independent websites around the Joshternet link to one another,
+  share interesting work, and sometimes write about the same ideas. Follow the
+  connections and see where they lead.
 keywords: >-
-  Joshternet connections, website links, independent websites, Josh network graph
+  Connections, Joshternet, independent websites, observed links, blogrolls,
+  shared topics
 seo:
   type: CollectionPage
   name: Connections
@@ -16,7 +18,30 @@ joshternet_analysis: derived
 
 # Connections
 
-Connections from around the Joshternet.
+The internet was built for following links, and some of the best discoveries
+happen when one interesting website leads to another. Connections is a look at
+how independent websites around the Joshternet link to one another, share
+interesting things, and occasionally end up exploring the same ideas.
+
+Follow a line, pick a website, or have a look at the links people have published.
+You might discover two sites that know about each other, or two people working on
+similar things who have never crossed paths.
+
+Each circle represents a participating website. The lines show links JoshBot has
+observed between websites, along with shared topics that might give you another
+reason to explore. Select a website or a line to see what connects them. An arrow
+points from the website containing a link toward the website it references.
+Sometimes the connection goes both ways, but plenty of links are one-way, just as
+they are across the rest of the web.
+
+Dashed lines show websites with published work about similar subjects. That
+doesn't mean the publishers know each other or have linked to one another—it
+simply gives you another path worth exploring. A blogroll is a list of websites
+somebody has chosen to link to; it's one of the old web's better ideas, and a
+lovely way to find people worth reading.
+
+Prefer following links to moving circles around? The website lists below show the
+same observed connections, with links to the original pages.
 
 {% assign network_sites = site.data.network %}
 {% if jekyll.environment == "development" %}
@@ -81,7 +106,7 @@ Connections from around the Joshternet.
   ·
   <strong data-connections-topic-count>{{ overlap_pair_count }}</strong>
   <span>
-    {% if overlap_pair_count == 1 %}shared topic{% else %}shared topics{% endif %}
+    {% if overlap_pair_count == 1 %}site pair with shared topics{% else %}site pairs with shared topics{% endif %}
   </span>
 </p>
 
@@ -124,7 +149,7 @@ Connections from around the Joshternet.
         </div>
       </fieldset>
       <div class="connections-graph__key" data-connections-key>
-        <p class="connections-graph__key-title">Line key</p>
+        <p class="connections-graph__key-title">What the lines mean</p>
         <ul class="connections-key__list">
           <li>
             <svg class="connections-key-line" data-connection-kind="content-link" viewBox="0 0 48 10" aria-hidden="true">
@@ -195,7 +220,7 @@ Connections from around the Joshternet.
             class="connections-site__select connections-site__select--shot"
             data-connection-select
             data-origin="{{ site_origin | escape }}"
-            aria-label="Highlight {{ site_title | escape }} on the map"
+            aria-label="Highlight {{ site_title | escape }} on the graph"
           >
             <img
               class="connections-site__shot u-photo"
@@ -213,9 +238,9 @@ Connections from around the Joshternet.
             class="connections-site__select"
             data-connection-select
             data-origin="{{ site_origin | escape }}"
-            aria-label="Highlight {{ site_title | escape }} on the map"
+            aria-label="Highlight {{ site_title | escape }} on the graph"
           >
-            Highlight on map
+            Highlight on graph
           </button>
         {% endif %}
         <div class="connections-site__identity">
@@ -249,15 +274,17 @@ Connections from around the Joshternet.
 
       {% if outbound == 0 and inbound == 0 and overlap_count == 0 %}
         <p class="connections-empty-note">
-          No observed connections yet. Visit
-          <a href="{{ outbound_href | escape }}" target="_blank" rel="noopener">{{ site_domain | escape }}</a>.
+          JoshBot hasn't observed any links to or from this website yet. That
+          doesn't mean there's nothing interesting there. Visit
+          <a href="{{ outbound_href | escape }}" target="_blank" rel="noopener">{{ site_domain | escape }}</a>
+          and see what you find.
         </p>
       {% endif %}
 
       <div class="connections-site__columns connections-site__columns--with-topics">
         {% if outbound > 0 %}
         <div class="connections-site__column">
-          <h3>Connects to</h3>
+          <h3>Links to</h3>
             <ul class="connections-edge-list">
               {% for edge in connection_edges %}
                 {% if edge.from == site_origin %}
@@ -350,7 +377,7 @@ Connections from around the Joshternet.
 
         {% if inbound > 0 %}
         <div class="connections-site__column">
-          <h3>Connected from</h3>
+          <h3>Linked from</h3>
             <ul class="connections-edge-list">
               {% for edge in connection_edges %}
                 {% if edge.to == site_origin %}
@@ -440,6 +467,11 @@ Connections from around the Joshternet.
                   {% if overlap_count == 1 %}topic{% else %}topics{% endif %}
                 </span>
               </summary>
+              <p class="connections-topic__hint">
+                These are subjects that this website and other participating
+                websites have both published about. Sharing a subject doesn't mean
+                the publishers agreed or interacted.
+              </p>
               <ul class="connections-topic-list">
                 {% for topic in overlap_topics %}
                   {% assign article_count = topic.articles.size | default: 0 %}
@@ -505,12 +537,18 @@ Connections from around the Joshternet.
 {% else %}
 <div class="network-empty">
   <p>
-    No participating sites yet. Browse the
+    Nothing has made it into Connections just yet. Browse the
     <a href="{{ '/network/' | relative_url }}">Network</a>
-    directory when members join.
+    and see what people are sharing on their own sites.
   </p>
 </div>
 {% endif %}
+
+<p class="connections-close">
+  The best part of following links is that you never really know where they'll
+  lead. Find a website that catches your eye, see who it links to, and keep
+  wandering. That's how a lot of the good internet has always worked.
+</p>
 
 <div class="connections-howto">
   <p class="connections-howto__note">
@@ -524,7 +562,8 @@ Connections from around the Joshternet.
 
 <noscript>
   <p class="connections-noscript">
-    JavaScript can add a selectable graph view. The relationship lists above
-    already show every observed link without it.
+    The interactive graph needs JavaScript, but you can still explore the
+    observed links in the lists above. The websites and their connections don't
+    disappear just because the circles do.
   </p>
 </noscript>

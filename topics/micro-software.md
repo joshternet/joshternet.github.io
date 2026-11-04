@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Micro Software writing on the Joshternet"
-description: "Explore Micro Software articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Micro Software, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Micro Software from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Micro Software, Joshternet, independent websites, Topics, shared interests"
 slug: "micro-software"
 permalink: /topics/micro-software/
 robots: max-snippet:160, max-image-preview:large

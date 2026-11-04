@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "PHP articles from Joshternet websites"
-description: "Explore PHP articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "PHP, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about PHP from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "PHP, Joshternet, independent websites, Topics, shared interests"
 slug: "php"
 permalink: /topics/php/
 robots: max-snippet:160, max-image-preview:large

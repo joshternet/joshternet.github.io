@@ -40,7 +40,7 @@ JoshBot crawls according to the identity and robots rules on [JoshBot](/joshbot/
 
 ## Official buttons
 
-The official button asks the hub whether a **website** (not a page) is listed in the public registry. Site owners may use the official embed or the WordPress plugin’s Joshternet button. If that check is down, the button should not claim a verified listing. It is not a license, and you do not need it in order to publish `/.well-known/josh`. Details for site owners are on [Buttons](/implement/buttons/).
+The official button asks the hub whether a **website** (not a page) is listed in the public registry. Site owners may use the official embed or the WordPress plugin’s Joshternet button. If that check is down, the button should not claim a verified listing. It is not a license, and you do not need it to publish `/.well-known/josh`. Details for site owners are on [Buttons](/implement/buttons/).
 
 ## Availability
 

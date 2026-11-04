@@ -38,8 +38,11 @@ test("network cards link the primary feed outside the origin card link", async (
 
   const a11y = await read("_includes/network-card-a11y.html");
   const joined = await read("_includes/network-card-joined.html");
-  assert.match(a11y, /joshing the Joshes/);
-  assert.match(joined, /Joined/);
+  assert.match(a11y, /Participating website with affirmed Josh identity/);
+  assert.match(a11y, /Participating website with declined Josh identity/);
+  assert.match(a11y, /Participating website with undeclared Josh identity/);
+  assert.doesNotMatch(a11y, /joshing the Joshes/);
+  assert.match(joined, /Participating since/);
   assert.match(joined, /first_participated_at/);
   assert.match(styles, /\.network-card__joined\s*\{/);
 

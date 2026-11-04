@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Version Control writing on the Joshternet"
-description: "Explore Version Control articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Version Control, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Version Control from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Version Control, Joshternet, independent websites, Topics, shared interests"
 slug: "version-control"
 permalink: /topics/version-control/
 robots: max-snippet:160, max-image-preview:large

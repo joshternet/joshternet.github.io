@@ -1,0 +1,471 @@
+{
+  "verified_date": "2026-11-03",
+  "user_agent": "Joshternet-Joshbot (+https://joshternet.org/joshbot)",
+  "product_token": "Joshternet-Joshbot",
+  "entries": [
+    {
+      "id": "html",
+      "name": "Semantic HTML",
+      "normative_urls": ["https://html.spec.whatwg.org/"],
+      "maturity": "Living Standard",
+      "status": "partial",
+      "properties_consumed": [
+        "title",
+        "lang",
+        "main/article structure via visible text",
+        "time[datetime]",
+        "canonical link"
+      ],
+      "destinations": ["Topics", "Activity", "Search", "Network blurbs"],
+      "source_files": [
+        "scripts/nlp/text.mjs",
+        "scripts/nlp/content.mjs",
+        "scripts/nlp/crawl.mjs"
+      ],
+      "limitations": "No dedicated semantic-landmark parser; extraction uses HTML text, time elements, and related page heuristics.",
+      "verified_date": "2026-11-03",
+      "chapter_path": "/implement/content/html/"
+    },
+    {
+      "id": "seo",
+      "name": "SEO fundamentals",
+      "normative_urls": [
+        "https://developers.google.com/search/docs/fundamentals/seo-starter-guide",
+        "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls"
+      ],
+      "maturity": "Guidance (not a single RFC)",
+      "status": "partial",
+      "properties_consumed": [
+        "title",
+        "meta description (share text)",
+        "canonical",
+        "robots meta where relevant to hub pages"
+      ],
+      "destinations": ["Network", "Activity posters/summaries", "Search"],
+      "source_files": ["scripts/network/metadata.mjs", "scripts/nlp/text.mjs"],
+      "limitations": "SEO is a discipline. JoshBot does not implement search-engine ranking; it consumes overlapping metadata fields.",
+      "verified_date": "2026-11-03",
+      "chapter_path": "/implement/content/seo/"
+    },
+    {
+      "id": "slashpages",
+      "name": "Slash pages",
+      "normative_urls": ["https://slashpages.net/"],
+      "maturity": "Community convention",
+      "status": "implemented",
+      "properties_consumed": [
+        "catalog paths",
+        "aliases",
+        "probe seeds",
+        "extraction roles"
+      ],
+      "destinations": [
+        "Topics",
+        "Connections",
+        "Showcase seeds",
+        "Events seeds",
+        "Network identity seeds"
+      ],
+      "source_files": [
+        "scripts/network/slash-page-catalog.mjs",
+        "scripts/network/slash-pages.mjs",
+        "scripts/nlp/crawl.mjs"
+      ],
+      "limitations": "/uses is site-info only (not Network about blurbs or Showcase works).",
+      "verified_date": "2026-11-03",
+      "chapter_path": "/implement/content/slashpages/"
+    },
+    {
+      "id": "opml",
+      "name": "OPML and /.well-known/slashpages",
+      "normative_urls": [
+        "https://opml.org/spec2.opml",
+        "https://github.com/pfefferle/well-known-slashpages"
+      ],
+      "maturity": "OPML 2.0 + community proposal",
+      "status": "implemented",
+      "properties_consumed": [
+        "type",
+        "text/title",
+        "url/htmlUrl/xmlUrl",
+        "category/categories",
+        "include outlines"
+      ],
+      "destinations": ["crawl seeds (same-origin only)"],
+      "source_files": [
+        "scripts/network/slashpages-manifest.mjs",
+        "scripts/nlp/crawl.mjs"
+      ],
+      "limitations": "256 KiB; 4 includes; depth 2; 200 outlines; cross-origin outlines are evidence-only, never membership.",
+      "verified_date": "2026-11-03",
+      "chapter_path": "/implement/content/opml/"
+    },
+    {
+      "id": "microformats2",
+      "name": "Microformats2",
+      "normative_urls": [
+        "https://microformats.org/wiki/microformats2-parsing",
+        "https://microformats.org/wiki/h-entry",
+        "https://microformats.org/wiki/h-card",
+        "https://microformats.org/wiki/h-event",
+        "https://microformats.org/wiki/h-feed"
+      ],
+      "maturity": "Living wiki / community",
+      "status": "partial",
+      "properties_consumed": [
+        "p-category",
+        "h-entry (u-url, p-name, p-summary, e-content, time)",
+        "h-event (p-name, u-url, p-location, dt-start, dt-end)",
+        "u-in-reply-to / in-reply-to",
+        "u-repost-of / repost-of",
+        "u-syndication / syndication"
+      ],
+      "destinations": ["Topics", "Activity", "Events", "Connections"],
+      "source_files": [
+        "scripts/nlp/subjects.mjs",
+        "scripts/nlp/content.mjs",
+        "scripts/nlp/events.mjs",
+        "scripts/network/connections.mjs"
+      ],
+      "limitations": "Not a full microformats2 parser. No complete h-card authorship graph as crawl input.",
+      "verified_date": "2026-11-03",
+      "chapter_path": "/implement/content/microformats2/"
+    },
+    {
+      "id": "open-graph",
+      "name": "Open Graph Protocol",
+      "normative_urls": ["https://ogp.me/"],
+      "maturity": "Protocol documentation",
+      "status": "partial",
+      "properties_consumed": [
+        "og:title",
+        "og:type",
+        "og:image",
+        "og:url",
+        "og:description",
+        "og:site_name",
+        "article:published_time"
+      ],
+      "destinations": [
+        "Network",
+        "Activity posters",
+        "Showcase (creative-index fallback)"
+      ],
+      "source_files": [
+        "scripts/nlp/text.mjs",
+        "scripts/nlp/creative.mjs",
+        "scripts/nlp/content.mjs",
+        "scripts/network/metadata.mjs"
+      ],
+      "limitations": "Does not consume og:locale, og:video, og:audio, or og:image:alt as discovery drivers.",
+      "verified_date": "2026-11-03",
+      "chapter_path": "/implement/content/open-graph/"
+    },
+    {
+      "id": "schema-org",
+      "name": "Schema.org and JSON-LD",
+      "normative_urls": [
+        "https://schema.org/",
+        "https://schema.org/CreativeWork",
+        "https://schema.org/Event",
+        "https://www.w3.org/TR/json-ld11/"
+      ],
+      "maturity": "Vocabulary + W3C JSON-LD",
+      "status": "partial",
+      "properties_consumed": [
+        "CreativeWork family types in CREATIVE_SCHEMA_TYPES",
+        "Event family + startDate",
+        "Person/Organization knowsAbout",
+        "WebSite/Person name/description"
+      ],
+      "destinations": ["Showcase", "Events", "Topics", "Network"],
+      "source_files": [
+        "scripts/nlp/creative.mjs",
+        "scripts/nlp/events.mjs",
+        "scripts/nlp/text.mjs",
+        "scripts/network/metadata.mjs"
+      ],
+      "limitations": "Many Schema.org types ignored. Taxonomy lists some JSON-LD sources without live extractors.",
+      "verified_date": "2026-11-03",
+      "chapter_path": "/implement/content/schema-org/"
+    },
+    {
+      "id": "feeds",
+      "name": "RSS, Atom, and JSON Feed",
+      "normative_urls": [
+        "https://www.rssboard.org/rss-specification",
+        "https://www.rfc-editor.org/rfc/rfc4287",
+        "https://www.jsonfeed.org/version/1.1/"
+      ],
+      "maturity": "RSS 2.0 / RFC 4287 / JSON Feed 1.1",
+      "status": "implemented",
+      "properties_consumed": [
+        "rel=alternate feed links",
+        "titles, ids/guids, dates, summaries",
+        "categories/tags",
+        "enclosures/images"
+      ],
+      "destinations": ["Activity", "Search", "Topics"],
+      "source_files": [
+        "scripts/nlp/feeds.mjs",
+        "scripts/nlp/content.mjs",
+        "scripts/network/metadata.mjs",
+        "scripts/network/feed-probes.mjs"
+      ],
+      "limitations": "Feed count caps apply (network vs NLP). Not every extension is read.",
+      "verified_date": "2026-11-03",
+      "chapter_path": "/implement/content/feeds/"
+    },
+    {
+      "id": "sitemaps",
+      "name": "XML sitemaps",
+      "normative_urls": ["https://www.sitemaps.org/protocol.html"],
+      "maturity": "Protocol",
+      "status": "implemented",
+      "properties_consumed": [
+        "Sitemap: robots lines",
+        "urlset loc",
+        "sitemapindex children"
+      ],
+      "destinations": ["crawl expansion"],
+      "source_files": [
+        "scripts/nlp/crawl.mjs",
+        "scripts/nlp/robots.mjs",
+        "scripts/nlp/origin-short-circuit.mjs"
+      ],
+      "limitations": "Same-origin only; max 20 sitemap files; lastmod not a ranking signal.",
+      "verified_date": "2026-11-03",
+      "chapter_path": "/implement/content/sitemaps/"
+    },
+    {
+      "id": "robots",
+      "name": "robots.txt and crawler directives",
+      "normative_urls": ["https://www.rfc-editor.org/rfc/rfc9309"],
+      "maturity": "RFC 9309",
+      "status": "implemented",
+      "properties_consumed": ["User-agent", "Allow", "Disallow", "Sitemap"],
+      "destinations": ["access gate for all discovery"],
+      "source_files": [
+        "scripts/nlp/robots.mjs",
+        "scripts/nlp/origin-robots.mjs",
+        "scripts/nlp/lib.mjs"
+      ],
+      "limitations": "No Crawl-delay. Product token Joshternet-Joshbot. Declaration does not override robots.",
+      "verified_date": "2026-11-03",
+      "chapter_path": "/implement/content/robots/"
+    },
+    {
+      "id": "links",
+      "name": "Web Linking, canonical URLs, and relations",
+      "normative_urls": [
+        "https://www.rfc-editor.org/rfc/rfc8288",
+        "https://html.spec.whatwg.org/"
+      ],
+      "maturity": "RFC 8288 + HTML Living Standard",
+      "status": "partial",
+      "properties_consumed": [
+        "canonical",
+        "alternate (feeds)",
+        "me",
+        "blogroll",
+        "in-reply-to",
+        "repost-of",
+        "syndication"
+      ],
+      "destinations": ["Connections", "Network", "Activity", "crawl hygiene"],
+      "source_files": [
+        "scripts/nlp/text.mjs",
+        "scripts/network/metadata.mjs",
+        "scripts/network/connections.mjs",
+        "scripts/network/blogroll.mjs"
+      ],
+      "limitations": "Not every HTML link relation is interpreted.",
+      "verified_date": "2026-11-03",
+      "chapter_path": "/implement/content/links/"
+    },
+    {
+      "id": "identity",
+      "name": "Identity and authorship",
+      "normative_urls": [
+        "https://microformats.org/wiki/h-card",
+        "https://indieweb.org/rel-me",
+        "https://github.com/joshternet/spec/blob/main/rfcs/0001-josh-identity.md"
+      ],
+      "maturity": "Mixed",
+      "status": "partial",
+      "properties_consumed": [
+        "rel=me",
+        "Person/WebSite JSON-LD",
+        "about/profile page blurbs"
+      ],
+      "destinations": ["Network"],
+      "source_files": [
+        "scripts/network/metadata.mjs",
+        "scripts/network/elsewhere.mjs",
+        "scripts/network/sync.mjs"
+      ],
+      "limitations": "Full h-card graphs are not crawl input. Josh identity remains /.well-known/josh only.",
+      "verified_date": "2026-11-03",
+      "chapter_path": "/implement/content/identity/"
+    },
+    {
+      "id": "connections",
+      "name": "Connections and IndieWeb interaction",
+      "normative_urls": [
+        "https://www.w3.org/TR/webmention/",
+        "https://indieweb.org/specifications"
+      ],
+      "maturity": "Mixed",
+      "status": "partial",
+      "properties_consumed": [
+        "homepage-link",
+        "content-link",
+        "blogroll",
+        "reply-to",
+        "repost-of",
+        "syndication",
+        "credit"
+      ],
+      "destinations": ["Connections"],
+      "source_files": [
+        "scripts/network/connections.mjs",
+        "scripts/network/blogroll.mjs"
+      ],
+      "limitations": "Webmention, WebSub, Micropub, IndieAuth, and ActivityPub are not implemented by the hub crawl.",
+      "verified_date": "2026-11-03",
+      "chapter_path": "/implement/content/connections/"
+    },
+    {
+      "id": "media",
+      "name": "Creative media metadata",
+      "normative_urls": ["https://schema.org/CreativeWork", "https://ogp.me/"],
+      "maturity": "Mixed",
+      "status": "implemented",
+      "properties_consumed": [
+        "CREATIVE_SCHEMA_TYPES JSON-LD",
+        "figures",
+        "creative indexes",
+        "Open Graph fallback on creative-index paths"
+      ],
+      "destinations": ["Showcase", "Topics (indirect)"],
+      "source_files": [
+        "scripts/nlp/creative.mjs",
+        "scripts/nlp/content.mjs",
+        "scripts/views/lib.mjs"
+      ],
+      "limitations": "Chrome paths such as /uses/ and /about/ are excluded from Showcase works.",
+      "verified_date": "2026-11-03",
+      "chapter_path": "/implement/content/media/"
+    },
+    {
+      "id": "events",
+      "name": "Events",
+      "normative_urls": [
+        "https://microformats.org/wiki/h-event",
+        "https://schema.org/Event"
+      ],
+      "maturity": "Mixed",
+      "status": "implemented",
+      "properties_consumed": [
+        "h-event dt-start",
+        "Schema Event startDate",
+        "name",
+        "url",
+        "location",
+        "endDate"
+      ],
+      "destinations": ["Events/Happening", "Showcase (past education)"],
+      "source_files": ["scripts/nlp/events.mjs", "scripts/views/lib.mjs"],
+      "limitations": "Requires a dependable start date. Mentions and cancelled events are filtered.",
+      "verified_date": "2026-11-03",
+      "chapter_path": "/implement/content/events/"
+    },
+    {
+      "id": "uses",
+      "name": "Uses pages",
+      "normative_urls": ["https://slashpages.net/"],
+      "maturity": "Community convention",
+      "status": "partial",
+      "properties_consumed": [
+        "/uses catalog seed",
+        "outbound links from the page"
+      ],
+      "destinations": ["Connections (possible outbound links)"],
+      "source_files": [
+        "scripts/network/slash-page-catalog.mjs",
+        "scripts/nlp/page-role.mjs"
+      ],
+      "limitations": "No Uses Intelligence analytics product. Not Network about text. Not Showcase.",
+      "verified_date": "2026-11-03",
+      "chapter_path": "/implement/content/uses/"
+    },
+    {
+      "id": "explore",
+      "name": "Explore projections",
+      "normative_urls": [],
+      "maturity": "Hub presentation",
+      "status": "implemented",
+      "properties_consumed": [],
+      "destinations": ["Topics", "What's New", "Search"],
+      "source_files": ["scripts/views/lib.mjs", "scripts/nlp/sync.mjs"],
+      "limitations": "Documents view-build rules. Raw inventories stay off visitor pages.",
+      "verified_date": "2026-11-03",
+      "chapter_path": "/implement/content/explore/"
+    },
+    {
+      "id": "validation",
+      "name": "Validation",
+      "normative_urls": [],
+      "maturity": "Handbook checklist",
+      "status": "implemented",
+      "properties_consumed": [],
+      "destinations": [],
+      "source_files": [
+        "scripts/network/slashpages-manifest.mjs",
+        "scripts/nlp/robots.mjs"
+      ],
+      "limitations": "Documents external validators and local checks. No proprietary JoshBot diagnostic UI.",
+      "verified_date": "2026-11-03",
+      "chapter_path": "/implement/content/validation/"
+    },
+    {
+      "id": "reference",
+      "name": "Reference and support matrix",
+      "normative_urls": [],
+      "maturity": "Handbook index",
+      "status": "implemented",
+      "properties_consumed": [],
+      "destinations": [],
+      "source_files": ["_data/content_support_matrix.json"],
+      "limitations": "Matrix is hand-maintained and verified by tests against extractor sources.",
+      "verified_date": "2026-11-03",
+      "chapter_path": "/implement/content/reference/"
+    },
+    {
+      "id": "webmention",
+      "name": "Webmention",
+      "normative_urls": ["https://www.w3.org/TR/webmention/"],
+      "maturity": "W3C Recommendation",
+      "status": "not_implemented",
+      "properties_consumed": [],
+      "destinations": [],
+      "source_files": ["scripts/network/connections.mjs"],
+      "limitations": "Documented for interoperability only. Hub crawl does not send or receive Webmentions.",
+      "verified_date": "2026-11-03",
+      "chapter_path": "/implement/content/connections/"
+    },
+    {
+      "id": "uses-analytics",
+      "name": "Uses Intelligence analytics",
+      "normative_urls": [],
+      "maturity": "Not specified",
+      "status": "under_consideration",
+      "properties_consumed": [],
+      "destinations": [],
+      "source_files": ["scripts/network/slash-page-catalog.mjs"],
+      "limitations": "No analytics product in this repository. Do not invent reporting metadata.",
+      "verified_date": "2026-11-03",
+      "chapter_path": "/implement/content/uses/"
+    }
+  ]
+}

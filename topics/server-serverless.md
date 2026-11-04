@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Servers Serverless writing on the Joshternet"
-description: "Explore Servers Serverless articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Servers Serverless, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Servers Serverless from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Servers Serverless, Joshternet, independent websites, Topics, shared interests"
 slug: "server-serverless"
 permalink: /topics/server-serverless/
 robots: max-snippet:160, max-image-preview:large

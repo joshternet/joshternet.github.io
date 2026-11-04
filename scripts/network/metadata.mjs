@@ -159,6 +159,47 @@ export function extractPageMetadata(hostCatalog) {
   }
 
   /**
+   * Visible name-bearing text (headings, h-card names, surname labels) for
+   * title resolution when document titles are generic shells.
+   * @returns {string}
+   */
+  function extractIdentityNameText() {
+    const bits = [];
+
+    for (const selector of [
+      "h1",
+      ".h-card .p-name",
+      "[itemprop='name']",
+      ".p-name",
+      ".lastName",
+      ".p-family-name",
+      ".family-name",
+    ]) {
+      for (const element of document.querySelectorAll(selector)) {
+        if (!(element instanceof HTMLElement)) {
+          continue;
+        }
+
+        if (
+          element.closest(
+            "nav, footer, aside, script, style, noscript, template",
+          )
+        ) {
+          continue;
+        }
+
+        const text = normalizeText(element.textContent || "");
+
+        if (text) {
+          bits.push(text);
+        }
+      }
+    }
+
+    return normalizeText(bits.join(" "));
+  }
+
+  /**
    * Visible main prose for Network cards. Prefer one long paragraph; if none
    * qualify, join consecutive short intro lines (e.g. “Hi, I’m Josh.” + next).
    * @returns {string}
@@ -757,6 +798,7 @@ export function extractPageMetadata(hostCatalog) {
     twitterDescription: meta('meta[name="twitter:description"]'),
     jsonLdDescription: jsonLdWebsite.description,
     mainDescription: extractMainDescription(),
+    identityNameText: extractIdentityNameText(),
     feeds: extractFeeds(),
     blogrolls: extractBlogrolls(),
     links: extractOutboundLinks(),

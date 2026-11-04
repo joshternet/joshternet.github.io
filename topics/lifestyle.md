@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Lifestyle articles from Joshternet websites"
-description: "Explore Lifestyle articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Lifestyle, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Lifestyle from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Lifestyle, Joshternet, independent websites, Topics, shared interests"
 slug: "lifestyle"
 permalink: /topics/lifestyle/
 robots: max-snippet:160, max-image-preview:large

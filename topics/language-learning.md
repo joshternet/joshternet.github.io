@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Language Learning writing on the Joshternet"
-description: "Explore Language Learning articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Language Learning, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Language Learning from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Language Learning, Joshternet, independent websites, Topics, shared interests"
 slug: "language-learning"
 permalink: /topics/language-learning/
 robots: max-snippet:160, max-image-preview:large

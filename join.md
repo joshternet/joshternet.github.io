@@ -2,9 +2,9 @@
 layout: default
 title: Join the Joshternet
 description: >-
-  Publish a tiny /.well-known/josh declaration on a site you control, validate
-  it, optionally ask JoshBot to look, and celebrate once you appear in the
-  Network—Joshes and non-Joshes welcome equally.
+  Bring your own corner of the internet to the Joshternet. Publish a small
+  declaration, check that it works, and start discovering other independent
+  websites. Joshes and Non-Joshes are equally welcome.
 keywords: >-
   join Joshternet, /.well-known/josh, participate independent websites,
   Josh identity, indie web declaration
@@ -17,19 +17,44 @@ script: /assets/js/join.js
 
 # Join the Joshternet
 
-**Are you a Josh? Get yourself connected.** Non-Joshes are equally welcome—you declare identity; we never infer it from a name or site.
+**Are you a Josh? Get yourself connected.**
 
-Publish in any written language. Declaration keys stay exactly `version` and `josh`.
+Have your own little corner of the internet? Come join the Joshternet. It started with Joshes looking for other Joshes, but everyone is welcome to join the fun. You don't need an account, a particular name, or permission from anyone to participate.
 
-No accounts. No signup form. Your site stays yours. For deeper detail, see [Implement]({{ '/implement/' | relative_url }}).
+All you need is a small public declaration on a website you control. It tells the network your site wants to participate, while everything you've built stays right where it is. We'll walk through how to publish it, check that it works, and help other people discover your site.
+
+Publishing a valid declaration establishes participation. JoshBot discovering and listing your website in the Network happens separately.
 
 <ol class="join-steps">
-  <li class="join-step" id="identity">
-    <h2 class="join-step__title">1. Choose participation identity</h2>
-    <p>Copy one version&nbsp;1 declaration.</p>
+  <li class="join-step" id="declaration">
+    <h2 class="join-step__title">1. Choose your declaration</h2>
+    <p>
+      Everyone joins the same way. The only choice is whether you also want to
+      declare Josh identity. You can say yes, say no, or leave that part out
+      entirely. Identity is never inferred from a name or site.
+    </p>
     <div class="join-declarations" data-join-declarations>
       <div class="join-declarations__option">
-        <h3 class="join-declarations__label">Affirmed Josh Identity</h3>
+        <h3 class="join-declarations__label">Leave Josh identity undeclared</h3>
+        <p class="join-declarations__path"><code>/.well-known/josh</code></p>
+        <pre class="join-declarations__code" id="join-declaration-undeclared"><code>{
+  "version": 1
+}</code></pre>
+        <button
+          type="button"
+          class="join-copy"
+          data-join-copy="join-declaration-undeclared"
+          data-join-identity="undeclared"
+        >
+          Copy declaration
+        </button>
+        <p class="join-declarations__note">
+          This is all you need to participate. You can leave Josh identity
+          undeclared and still be a full member of the network.
+        </p>
+      </div>
+      <div class="join-declarations__option">
+        <h3 class="join-declarations__label">Affirm Josh identity</h3>
         <p class="join-declarations__path"><code>/.well-known/josh</code></p>
         <pre class="join-declarations__code" id="join-declaration-affirmed"><code>{
   "version": 1,
@@ -43,10 +68,13 @@ No accounts. No signup form. Your site stays yours. For deeper detail, see [Impl
         >
           Copy declaration
         </button>
-        <p class="join-declarations__note"><code>josh: true</code></p>
+        <p class="join-declarations__note">
+          Are you a Josh? Here's your chance to say so. Joshness is declared,
+          never derived.
+        </p>
       </div>
       <div class="join-declarations__option">
-        <h3 class="join-declarations__label">Declined Josh Identity</h3>
+        <h3 class="join-declarations__label">Decline Josh identity</h3>
         <p class="join-declarations__path"><code>/.well-known/josh</code></p>
         <pre class="join-declarations__code" id="join-declaration-declined"><code>{
   "version": 1,
@@ -60,31 +88,23 @@ No accounts. No signup form. Your site stays yours. For deeper detail, see [Impl
         >
           Copy declaration
         </button>
-        <p class="join-declarations__note"><code>josh: false</code>—still a full participant, joshing the Joshes from the day you join.</p>
-      </div>
-      <div class="join-declarations__option">
-        <h3 class="join-declarations__label">Undeclared Josh Identity</h3>
-        <p class="join-declarations__path"><code>/.well-known/josh</code></p>
-        <pre class="join-declarations__code" id="join-declaration-undeclared"><code>{
-  "version": 1
-}</code></pre>
-        <button
-          type="button"
-          class="join-copy"
-          data-join-copy="join-declaration-undeclared"
-          data-join-identity="undeclared"
-        >
-          Copy declaration
-        </button>
-        <p class="join-declarations__note">Omit <code>josh</code> to leave identity open.</p>
+        <p class="join-declarations__note">
+          Not a Josh? You can say so and still join the fun. Everyone
+          participates on equal terms.
+        </p>
       </div>
     </div>
     <p class="join-copy-status" data-join-copy-status role="status" aria-live="polite"></p>
   </li>
 
   <li class="join-step" id="platform">
-    <h2 class="join-step__title">2. Platform recipes</h2>
-    <p>Open the one that matches your stack, or skip to publish.</p>
+    <h2 class="join-step__title">2. Find your website's setup</h2>
+    <p>
+      Every website is built a little differently. Find the platform you're
+      already using, and we'll show you how to publish the declaration without
+      changing the rest of your site. You do not need to switch publishing
+      systems merely to participate.
+    </p>
     <ul class="join-platforms" data-join-platforms>
       {% for platform in site.data.platforms_nav %}
         <li>
@@ -109,7 +129,7 @@ No accounts. No signup form. Your site stays yours. For deeper detail, see [Impl
           Generic static website
         </a>
         <span class="join-platforms__summary">
-          — serve the file at <code>/.well-known/josh</code> with
+          — serve the declaration at <code>/.well-known/josh</code> with
           <code>Content-Type: application/json</code>
         </span>
       </li>
@@ -117,26 +137,45 @@ No accounts. No signup form. Your site stays yours. For deeper detail, see [Impl
   </li>
 
   <li class="join-step" id="publish">
-    <h2 class="join-step__title">3. Publish the declaration</h2>
+    <h2 class="join-step__title">3. Put it on your website</h2>
     <p>
-      Serve it at exactly <code>/.well-known/josh</code> on your origin (no trailing slash), preferably as
-      <code>Content-Type: application/json</code> with a public <code>200</code>—no login wall, no client-only render.
+      The declaration needs to be available at exactly
+      <code>/.well-known/josh</code> on your website. That address stays the same
+      no matter which publishing platform you use. Your platform guide explains
+      where to place the file or how to serve it—WordPress and Worker setups may
+      serve the declaration dynamically without a physical file on disk.
     </p>
     <p>
-      Example: <code>https://example.invalid/</code> →
-      <code>https://example.invalid/.well-known/josh</code>. Each origin needs its own file, including
-      <code>www</code> when that’s a separate origin.
+      Prefer a public <code>200</code> response with
+      <code>Content-Type: application/json</code>, no login, and no client-side
+      JavaScript required. There is no <code>.json</code> extension and no
+      trailing slash on the public URL.
     </p>
     <p>
-      Redirects, caching, and edge cases:
-      <a href="{{ '/implement/' | relative_url }}">implementation guide</a>.
+      Your website can be written in any language. The declaration uses the same
+      JSON keys everywhere, but your writing, titles, and content stay in your
+      own words.
+    </p>
+    <p>
+      Example: <code>https://joshua.example/</code> publishes at
+      <code>https://joshua.example/.well-known/josh</code>. Each origin needs its
+      own declaration—including <code>www</code> if that site is separate.
+      Subdomains, redirects, Content-Type quirks, and hosting edge cases live in
+      the <a href="{{ '/implement/' | relative_url }}">implementation guide</a>.
     </p>
   </li>
 
   <li class="join-step" id="validate">
-    <h2 class="join-step__title">4. Validate</h2>
+    <h2 class="join-step__title">4. Check that it works</h2>
     <p>
-      Confirm the live file parses. A pass means the declaration is valid when read—not that JoshBot has listed the site yet.
+      Once your declaration is published, check that the web can actually read
+      it. The declaration checker will tell you whether the JSON is valid and
+      whether your website is serving it at the right address.
+    </p>
+    <p>
+      Passing the check means your declaration is valid. That is enough to
+      participate. It doesn't mean JoshBot has discovered or listed your website
+      yet. That part happens separately.
     </p>
     <p>
       <a
@@ -145,16 +184,23 @@ No accounts. No signup form. Your site stays yours. For deeper detail, see [Impl
         data-join-check-open
         data-joshternet-skip-link-track
       >
-        Open the declaration checker
+        Check your declaration
       </a>
     </p>
   </li>
 
   <li class="join-step" id="nominate">
-    <h2 class="join-step__title">5. Request discovery (optional)</h2>
+    <h2 class="join-step__title">5. Help JoshBot find you (optional)</h2>
     <p>
-      Nomination asks JoshBot to look. It does not establish participation by itself and does not guarantee a
-      registry listing.
+      Publishing your declaration is enough to participate, but JoshBot still
+      needs to discover your website before it can appear in the Network
+      directory. You can nominate your site to give it a place to start looking.
+    </p>
+    <p>
+      JoshBot will check your declaration and follow its normal crawling rules.
+      Nomination does not establish participation by itself and does not
+      guarantee a listing. You don't need to nominate yourself to be part of
+      the Joshternet.
     </p>
     <p>
       <a
@@ -163,15 +209,27 @@ No accounts. No signup form. Your site stays yours. For deeper detail, see [Impl
         data-join-nominate-open
         data-joshternet-skip-link-track
       >
-        Nominate a site for JoshBot
+        Nominate a site
       </a>
     </p>
   </li>
 
-  <li class="join-step" id="celebrate">
-    <h2 class="join-step__title">6. Celebrate once you're listed</h2>
+  <li class="join-step" id="next">
+    <h2 class="join-step__title">6. You're in. What next?</h2>
     <p>
-      After you appear in the public Network, these are optional. Completing the steps above alone is not membership success.
+      If your website is publishing a valid declaration, you're participating in
+      the Joshternet. That's it. There's no account to create, no committee to
+      impress, and nobody handing out Josh credentials.
+    </p>
+    <p>
+      Your website stays yours. Keep your domain, your publishing tools, and
+      everything you've already made. Joshternet simply makes it easier for
+      other people to find your corner of the web.
+    </p>
+    <p>
+      Now comes the entertaining part: discovering other websites, meeting their
+      owners, and seeing what everyone is making. Once JoshBot verifies and lists
+      your site, other visitors can find you in the Network, too.
     </p>
     <ul class="join-celebrate">
       <li>
@@ -180,9 +238,10 @@ No accounts. No signup form. Your site stays yours. For deeper detail, see [Impl
           data-join-share="network"
           data-joshternet-skip-link-track
         >
-          Find your listing in the Network
+          Explore the Network
         </a>
-        — use the site filter or search for your domain.
+        — browse independent sites, or look for your listing after JoshBot
+        verifies you.
       </li>
       <li>
         <a
@@ -190,7 +249,7 @@ No accounts. No signup form. Your site stays yours. For deeper detail, see [Impl
           data-join-share="button"
           data-joshternet-skip-link-track
         >
-          Install the official Joshternet button
+          Display a Joshternet button
         </a>
         — optional; never required.
       </li>
@@ -209,13 +268,16 @@ No accounts. No signup form. Your site stays yours. For deeper detail, see [Impl
         — invite friends of Joshes to join the fun if you want.
       </li>
     </ul>
+    <p>
+      Maybe you'll meet another Josh. Maybe you'll meet a Non-Josh who makes
+      something wonderful. Maybe you'll lose an afternoon wandering through
+      somebody's very strange little website. That's part of what makes this fun.
+    </p>
   </li>
 </ol>
 
 <p class="join-footer-links">
   <a href="{{ '/implement/' | relative_url }}">Implementation guide</a>
-  ·
-  <a href="{{ '/implement/platforms/' | relative_url }}">Platform recipes</a>
   ·
   <a href="{{ '/network/' | relative_url }}">The Network</a>
   ·

@@ -20,6 +20,11 @@ robots: max-snippet:160, max-image-preview:large
 
     <h1>{{ topic.label | escape }}</h1>
 
+    <p class="topic-neighborhood__lead">
+      Here's some of what people around the Joshternet have been publishing about this subject. Different websites,
+      different perspectives, and a few more places to explore.
+    </p>
+
     {% assign members = topic.members | default: empty %}
     {% if members.size > 0 %}
       {% for site_entry in members %}
@@ -35,38 +40,6 @@ robots: max-snippet:160, max-image-preview:large
               </a>
             </h2>
             <p class="activity-card__domain p-org">{{ site_entry.domain | escape }}</p>
-            {% assign why_items = site_entry.why | default: empty %}
-            {% if why_items.size > 0 %}
-              <details class="topic-site__why">
-                <summary>Why this topic matches</summary>
-                <ul class="topic-site__why-list">
-                  {% for why in why_items %}
-                    <li>
-                      {% if why.evidence_class and why.evidence_class != '' %}
-                        <span class="topic-site__why-class">{{ why.evidence_class | escape }}</span>
-                      {% endif %}
-                      {% if why.raw_value and why.raw_value != '' %}
-                        <span class="topic-site__why-value" dir="auto">“{{ why.raw_value | escape }}”</span>
-                      {% endif %}
-                      {% if why.source and why.source != '' %}
-                        <span class="topic-site__why-source">via {{ why.source | escape }}</span>
-                      {% endif %}
-                      {% if why.page and why.page != '' %}
-                        {% include outbound-href.html url=why.page %}
-                        <a
-                          class="topic-site__why-page"
-                          href="{{ outbound_href | escape }}"
-                          target="_blank"
-                          rel="noopener"
-                          >Source page<span aria-hidden="true">↗</span
-                          ><span class="visually-hidden"> (opens on the publisher’s site)</span></a
-                        >
-                      {% endif %}
-                    </li>
-                  {% endfor %}
-                </ul>
-              </details>
-            {% endif %}
             <ol class="activity-list h-feed">
               {% for item in articles %}
                 {% include activity-card.html item=item %}
@@ -93,5 +66,9 @@ robots: max-snippet:160, max-image-preview:large
   </article>
 {% else %}
   <h1>{{ page.title | escape }}</h1>
-  <p><a href="{{ '/topics/' | relative_url }}">Back to topics</a></p>
+  <p>
+    We couldn't find that topic in the current directory. You can head back to
+    <a href="{{ '/topics/' | relative_url }}">Topics</a>
+    and explore what's available.
+  </p>
 {% endif %}

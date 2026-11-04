@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Bible articles from Joshternet websites"
-description: "Explore Bible articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Bible, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Bible from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Bible, Joshternet, independent websites, Topics, shared interests"
 slug: "bible"
 permalink: /topics/bible/
 robots: max-snippet:160, max-image-preview:large

@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "LAW articles from Joshternet websites"
-description: "Explore LAW articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "LAW, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about LAW from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "LAW, Joshternet, independent websites, Topics, shared interests"
 slug: "law"
 permalink: /topics/law/
 robots: max-snippet:160, max-image-preview:large

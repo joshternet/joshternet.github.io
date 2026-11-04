@@ -38,7 +38,7 @@
   ]);
 
   const linkNotice =
-    "Wander blocks links that leave that site, and Open opens the publisher's site in another tab.";
+    "This preview stays on the current website. To follow links elsewhere, open the publisher's site in a new tab.";
 
   let sites = [];
   let bag = [];
@@ -611,7 +611,8 @@
   function fallbackReason(site) {
     if (isHubOrigin(site)) {
       return {
-        message: "Joshternet isn’t embedded inside its own Wander view.",
+        message:
+          "You've found the Joshternet itself. Rather than put the website inside its own window, you can open it directly.",
         kind: "self",
       };
     }
@@ -619,7 +620,7 @@
     if (site.frame_reason === "blocked-by-site") {
       return {
         message:
-          "This site doesn’t allow itself to be displayed inside another site, and we respect that.",
+          "This website prefers to welcome visitors on its own doorstep. We respect that. Use Open to visit it directly and see what's waiting inside.",
         kind: "blocked-by-site",
       };
     }
@@ -627,13 +628,14 @@
     if (site.frame_reason === "http") {
       return {
         message:
-          "This site can’t be displayed securely inside Wander because it is served over HTTP.",
+          "This website uses HTTP, so Wander can't display it securely inside this page. You can still visit the original site directly.",
         kind: "http",
       };
     }
 
     return {
-      message: "This site can’t be displayed inside Wander right now.",
+      message:
+        "We can't show a preview of this website right now, but that doesn't mean there's nothing to explore. Open the original site to have a look around.",
       kind: "unknown",
     };
   }
@@ -670,11 +672,11 @@
         )}</p>`
       : "";
 
-    let identityA11y = "Undeclared Joshternet participant.";
+    let identityA11y = "Participating website with undeclared Josh identity.";
     if (identity === "affirmed") {
-      identityA11y = "Josh Joshternet participant.";
+      identityA11y = "Participating website with affirmed Josh identity.";
     } else if (identity === "declined") {
-      identityA11y = "Non-Josh Joshternet participant, joshing the Joshes.";
+      identityA11y = "Participating website with declined Josh identity.";
     }
 
     let joined = "";
@@ -689,7 +691,7 @@
           month: "short",
           year: "numeric",
         });
-        joined = `<p class="network-card__joined">Joined <time datetime="${escapeAttribute(
+        joined = `<p class="network-card__joined">Participating since <time datetime="${escapeAttribute(
           site.first_participated_at,
         )}">${escapeHTML(joinedLabel)}</time></p>`;
       }
@@ -741,7 +743,7 @@
                         class="wander-fallback__network"
                         href="${escapeAttribute(networkURL(site))}"
                     >
-                        View in Network →
+                        Find in the Network
                     </a>
                 </div>
             </div>
@@ -802,12 +804,13 @@
 
       stage.innerHTML = `
                 <div class="wander-empty">
-                    <p>There are no participating sites in Wander yet.</p>
-                    <a href="/network/">Browse The Network</a>
+                    <p>There's nowhere to wander in the current directory just yet. You can still explore the Network or bring your own website into the adventure.</p>
+                    <a href="/network/">Browse the Network</a>
+                    <a href="/join/">Join the Joshternet</a>
                 </div>
             `;
 
-      announce("There are no participating sites in Wander yet.");
+      announce("There's nowhere to wander in the current directory just yet.");
       persist();
       return;
     }
@@ -849,10 +852,12 @@
         watchFramedSite(frame, site.origin);
       }
 
-      announce(`Now viewing ${site.title || site.domain}.`);
+      announce(`Previewing ${site.title || site.domain}.`);
     } else {
       stage.innerHTML = fallbackMarkup(site);
-      announce(`Now viewing ${site.title || site.domain}.`);
+      announce(
+        `Showing ${site.title || site.domain}. Open the original website to visit it.`,
+      );
     }
 
     persist();
@@ -919,12 +924,12 @@
 
       stage.innerHTML = `
                 <div class="wander-empty">
-                    <p>The network data could not be loaded right now.</p>
-                    <a href="/network/">Browse The Network</a>
+                    <p>Wander couldn't find its list of websites right now. The adventure isn't over, though. You can still browse the Network directly.</p>
+                    <a href="/network/">Browse the Network</a>
                 </div>
             `;
 
-      announce("The network data could not be loaded right now.");
+      announce("Wander couldn't find its list of websites right now.");
     });
 
   stage.addEventListener("click", (event) => {

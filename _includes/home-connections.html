@@ -26,8 +26,8 @@
 {% if home_ordered_sites.size > 0 %}
   <div class="home-connections">
     <p class="home-connections__lede">
-      Solid arrows are observed links from one site to another. Dashed shared-topic lines mean sites write about related
-      subjects—they are not the same as a personal link. Sites with no observed links yet still appear as nodes.
+      Follow the links between independent websites, or discover people exploring similar ideas. Solid lines show
+      observed links. Dashed lines show shared topics, which don't necessarily mean the publishers know each other.
     </p>
 
     <div
@@ -53,7 +53,7 @@
         </div>
         <div class="connections-graph__footer home-connections__footer">
           <div class="connections-graph__key" data-connections-key>
-            <p class="connections-graph__key-title">Line key</p>
+            <p class="connections-graph__key-title">What the lines mean</p>
             <ul class="connections-key__list">
               <li>
                 <svg
@@ -111,9 +111,9 @@
 
     <noscript>
       <p class="home-connections__noscript">
-        The interactive graph needs JavaScript. Open
-        <a href="{{ '/connections/' | relative_url }}">Connections</a>
-        for the full HTML lists.
+        The interactive graph needs JavaScript, but you can still explore the observed links on
+        <a href="{{ '/connections/' | relative_url }}">Connections</a>. The websites and their connections don't
+        disappear just because the circles do.
       </p>
     </noscript>
   </div>

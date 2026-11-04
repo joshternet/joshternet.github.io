@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Software Development writing on the Joshternet"
-description: "Explore Software Development articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Software Development, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Software Development from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Software Development, Joshternet, independent websites, Topics, shared interests"
 slug: "software-development"
 permalink: /topics/software-development/
 robots: max-snippet:160, max-image-preview:large

@@ -31,7 +31,15 @@
     }
 
     if (status) {
-      status.textContent = query ? `${visible} matching topics` : "";
+      if (!query) {
+        status.textContent = "";
+      } else if (visible === 0) {
+        status.textContent = "No matching topics.";
+      } else if (visible === 1) {
+        status.textContent = "1 matching topic.";
+      } else {
+        status.textContent = `${visible} matching topics.`;
+      }
     }
   }
 

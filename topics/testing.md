@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Testing articles from Joshternet websites"
-description: "Explore Testing articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Testing, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Testing from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Testing, Joshternet, independent websites, Topics, shared interests"
 slug: "testing"
 permalink: /topics/testing/
 robots: max-snippet:160, max-image-preview:large

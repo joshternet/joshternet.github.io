@@ -199,6 +199,10 @@ test("What's New Atom feed links to original publishers with stable ids", () => 
   });
 
   assert.match(xml, /<feed xmlns="http:\/\/www\.w3\.org\/2005\/Atom">/);
+  assert.match(
+    xml,
+    /<subtitle>A selection of recent writing and creative work from independent websites participating in the Joshternet\. Entries link to the original publishers\.<\/subtitle>/,
+  );
   assert.match(xml, /<id>https:\/\/a\.example\/post\/<\/id>/);
   assert.match(
     xml,
@@ -1713,7 +1717,7 @@ test("compactContentItem: site with no title and no domain falls back to origin 
     title: "Post",
   };
   const result = compactContentItem(item, sites, new Set());
-  assert.equal(result.site_title, "https://bare.example");
+  assert.equal(result.site_title, "bare.example");
 });
 
 // ─── oneLatestPerOrigin: item with no published_at (L325, L334) ──────────────
@@ -2153,8 +2157,8 @@ test("buildViewDocuments: member with no listed and no signal membership becomes
   assert.equal(memberA.membership, "heuristic");
   // listed?.domain is undefined, site has no domain → "" (L968)
   assert.equal(memberA.domain, "");
-  // listed?.title is undefined, site has no title/domain → origin (L969)
-  assert.equal(memberA.title, "https://a.example");
+  // listed?.title is undefined, site has no title/domain → host label (L969)
+  assert.equal(memberA.title, "a.example");
 });
 
 // ─── buildViewDocuments: member domain/title fallback with no listed (L968-969) ─

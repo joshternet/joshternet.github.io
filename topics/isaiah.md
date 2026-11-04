@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Isaiah articles from Joshternet websites"
-description: "Explore Isaiah articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Isaiah, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Isaiah from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Isaiah, Joshternet, independent websites, Topics, shared interests"
 slug: "isaiah"
 permalink: /topics/isaiah/
 robots: max-snippet:160, max-image-preview:large

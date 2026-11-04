@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Data Brokers articles from Joshternet websites"
-description: "Explore Data Brokers articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Data Brokers, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Data Brokers from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Data Brokers, Joshternet, independent websites, Topics, shared interests"
 slug: "data-broker"
 permalink: /topics/data-broker/
 robots: max-snippet:160, max-image-preview:large

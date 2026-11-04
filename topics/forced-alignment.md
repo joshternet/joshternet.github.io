@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Forced Alignment writing on the Joshternet"
-description: "Explore Forced Alignment articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Forced Alignment, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Forced Alignment from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Forced Alignment, Joshternet, independent websites, Topics, shared interests"
 slug: "forced-alignment"
 permalink: /topics/forced-alignment/
 robots: max-snippet:160, max-image-preview:large

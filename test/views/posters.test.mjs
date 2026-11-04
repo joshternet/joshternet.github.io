@@ -21,6 +21,8 @@ import {
   POSTER_FETCH_USER_AGENT,
   POSTER_MAX_HEIGHT,
   POSTER_MAX_WIDTH,
+  SHEET_MUSIC_POSTER_HEIGHT,
+  SHEET_MUSIC_POSTER_WIDTH,
   applyPosterAssets,
   fetchPosterBytes,
   assertShowcasePostersLocalized,
@@ -123,14 +125,14 @@ test("posterAssetPath hashes https URLs and rejects anything else", () => {
 
 test("resizePoster fits inside the card size and does not enlarge", async () => {
   const large = await resizePoster(
-    await solidPng(1200, 630, { r: 12, g: 80, b: 200 }),
+    await solidPng(2400, 1260, { r: 12, g: 80, b: 200 }),
   );
   const largeMeta = await sharp(large).metadata();
 
   assert.equal(largeMeta.format, "webp");
   assert.ok((largeMeta.width || 0) <= POSTER_MAX_WIDTH);
   assert.ok((largeMeta.height || 0) <= POSTER_MAX_HEIGHT);
-  assert.ok((largeMeta.width || 0) < 1200);
+  assert.ok((largeMeta.width || 0) < 2400);
 
   const small = await resizePoster(
     await solidPng(40, 20, { r: 1, g: 2, b: 3 }),
@@ -757,8 +759,8 @@ test("sheet music posters are generated for PDF scores without images", async ()
   const meta = await sharp(webp).metadata();
 
   assert.equal(meta.format, "webp");
-  assert.equal(meta.width, 640);
-  assert.equal(meta.height, 480);
+  assert.equal(meta.width, SHEET_MUSIC_POSTER_WIDTH);
+  assert.equal(meta.height, SHEET_MUSIC_POSTER_HEIGHT);
 
   const posterRoot = path.join(root, `sheet-${Date.now()}`);
   const views = {

@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Ordination articles from Joshternet websites"
-description: "Explore Ordination articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Ordination, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Ordination from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Ordination, Joshternet, independent websites, Topics, shared interests"
 slug: "ordination"
 permalink: /topics/ordination/
 robots: max-snippet:160, max-image-preview:large

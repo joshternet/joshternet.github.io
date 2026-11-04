@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Becomes articles from Joshternet websites"
-description: "Explore Becomes articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Becomes, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Becomes from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Becomes, Joshternet, independent websites, Topics, shared interests"
 slug: "become"
 permalink: /topics/become/
 robots: max-snippet:160, max-image-preview:large

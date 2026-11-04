@@ -1,0 +1,39 @@
+{% comment %}
+  Goal: Prev/next + hub link for Content Discovery Handbook chapters.
+  Expects page.content_id matching content_nav.yml id.
+  Optional include param aria_label for distinct landmarks when repeated.
+  List-based nav aligned with site secondary-nav patterns; no Go control.
+{% endcomment %}
+{% assign chapter_nav_label = include.aria_label | default: 'Content Discovery Handbook' %}
+{% assign chapters = site.data.content_nav %}
+{% assign current_index = null %}
+{% for chapter in chapters %}
+  {% if chapter.id == page.content_id %}
+    {% assign current_index = forloop.index0 %}
+  {% endif %}
+{% endfor %}
+{% if current_index %}
+  {% if current_index > 0 %}
+    {% assign prev_index = current_index | minus: 1 %}
+    {% assign prev_chapter = chapters[prev_index] %}
+  {% endif %}
+  {% assign next_index = current_index | plus: 1 %}
+  {% assign next_chapter = chapters[next_index] %}
+  <nav class="content-chapter-nav" aria-label="{{ chapter_nav_label }}">
+    <ul class="content-chapter-nav__list">
+      <li class="content-chapter-nav__item">
+        <a href="{{ '/implement/content/' | relative_url }}">Content handbook</a>
+      </li>
+      {% if prev_chapter %}
+        <li class="content-chapter-nav__item">
+          <a href="{{ prev_chapter.path | relative_url }}">Previous: {{ prev_chapter.title }}</a>
+        </li>
+      {% endif %}
+      {% if next_chapter %}
+        <li class="content-chapter-nav__item">
+          <a href="{{ next_chapter.path | relative_url }}">Next: {{ next_chapter.title }}</a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endif %}

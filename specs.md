@@ -1,11 +1,13 @@
 ---
 layout: default
-title: Joshternet RFCs and Draft Specifications
+title: Specifications
 description: >-
-  The three current Draft Joshternet RFCs define the network's architecture,
-  voluntary Josh identity, and the /.well-known/josh participation protocol.
+  Explore the Draft Joshternet specifications covering independent website
+  participation, voluntary Josh identity, and the /.well-known/josh protocol.
+  Read the RFCs and follow their development.
 keywords: >-
-  Joshternet RFC, specifications, /.well-known/josh, Draft RFCs, open standards
+  Joshternet RFC, specifications, /.well-known/josh, Draft RFCs, open standards,
+  PRE-JOSH
 permalink: /specs/
 seo:
   type: TechArticle
@@ -14,80 +16,104 @@ seo:
 
 # Specifications
 
-Joshternet RFCs are versioned documents that describe Joshternet protocols, conventions, processes, and standards.
+Joshternet works because independent websites can agree on a few small things
+without depending on one central service. The specifications describe those
+shared conventions, from how participation works to how someone chooses to
+declare Josh identity.
 
-The canonical RFC text lives in the [Joshternet specification repository][spec]. This page is a map to the specifications, not another copy of them. If a summary here and an RFC ever disagree, the RFC controls.
+The current RFCs are still Drafts, and the project is learning from real
+websites and implementations as it develops. You can read them, use them,
+question them, and help improve them. The official text lives in the
+[Joshternet specification repository][spec].
 
-## Current status
+This page is a map—not another copy of the RFCs. If a summary here and an RFC
+disagree, the RFC controls. None of these documents are IETF standards.
 
-The Joshternet is currently **PRE-JOSH**.
+## Where things stand
 
-All three current RFCs are Drafts. None are Accepted. The foundational specifications are still being developed through public issues, discussion, and pull requests.
+Joshternet is currently in its PRE-JOSH phase. All three foundational RFCs are
+Drafts, which means they're published and available to implement, but their
+details may still change as more people participate and problems are discovered.
+
+None has been Accepted yet. The [Governance](/governance/) page explains how the
+project is maintained and how specification changes are discussed.
 
 ## Current RFCs
 
+| RFC | Status | Classification | Canonical |
+| --- | --- | --- | --- |
+| **RFC-JOSH-0000: The Joshternet** | Draft | Foundational | [Read RFC-JOSH-0000][rfc-0000] |
+| **RFC-JOSH-0001: Josh Identity** | Draft | Foundational | [Read RFC-JOSH-0001][rfc-0001] |
+| **RFC-JOSH-0002: `/.well-known/josh`** | Draft | Protocol | [Read RFC-JOSH-0002][rfc-0002] |
+
 ### RFC-JOSH-0000: The Joshternet
 
-**Status:** Draft<br />
-**Category:** Foundational
+This is where the larger idea is defined. RFC-JOSH-0000 explains the network's
+purpose, its decentralized structure, and the principles that keep independent
+websites in control of their own content and identity.
 
-This RFC defines the Joshternet itself: its purpose, scope, non-goals, foundational principles, terminology, and overall architecture.
+Start here if you want to understand how the pieces fit together and why the
+network should not depend on a single registry, crawler, or website.
 
-Read it when you need to understand what the Joshternet is, what it is not, how Joshternet Nodes and Josh Nodes differ, what counts as a minimum inter-Josh network, or why no registry or service should become the network's central authority. It also establishes the foundational boundaries between identity, participation, discovery, security, and trust.
-
-[Read the canonical RFC-JOSH-0000: The Joshternet][rfc-0000].
+[Read RFC-JOSH-0000][rfc-0000]
 
 ### RFC-JOSH-0001: Josh Identity
 
-**Status:** Draft<br />
-**Category:** Foundational
+Being part of the Joshternet doesn't automatically make somebody a Josh.
+RFC-JOSH-0001 defines how people may affirm Josh identity, decline it, or leave
+it undeclared. The choice belongs to the person being represented, not a crawler
+or an algorithm trying to guess from a name.
 
-This RFC defines voluntary Josh identity.
+Joshness is declared, never derived.
 
-It establishes Affirmed, Declined, and Undeclared identity; separates identity from participation; permits non-Josh participation; and treats a person's own declaration as the authority for their Joshness. It also covers name and language independence, privacy, impersonation, and the boundary between identity and trust.
+This is the specification to read when you're working with Josh identity or
+interpreting the optional `josh` declaration.
 
-Its central rule is simple:
-
-<p class="prose-emphasis"><strong>Joshness is declared, never derived.</strong></p>
-
-Read this RFC when the question is who may be represented as a Josh, how identity may change, or how Josh identity relates to participation.
-
-[Read the canonical RFC-JOSH-0001: Josh Identity][rfc-0001].
+[Read RFC-JOSH-0001][rfc-0001]
 
 ### RFC-JOSH-0002: `/.well-known/josh`
 
-**Status:** Draft<br />
-**Category:** Protocol
+This RFC defines the small JSON resource that a website publishes to declare
+participation in the Joshternet. It covers the exact address, the version 1
+format, retrieval rules, optional identity information, and how an origin stops
+declaring participation.
 
-This RFC defines the current machine-readable declaration used by an origin to participate in the Joshternet.
+Read this one when you're implementing or validating a Joshternet declaration.
+Version 1 does not define discovery, trust, feeds, search, or registry
+membership.
 
-It specifies the `/.well-known/josh` location, the version 1 JSON representation, the optional `josh` boolean, retrieval requirements, redirect behavior, removal behavior, and validation rules.
+[Read RFC-JOSH-0002][rfc-0002]
 
-This RFC is deliberately narrow. It does not define discovery, registries, profiles, navigation, feeds, trust, reputation, or abuse handling.
+## Which RFC should you read?
 
-Read it when you need to publish, retrieve, or validate a Joshternet declaration.
+Which RFC should you read? That depends on what you're trying to do.
 
-[Read the canonical RFC-JOSH-0002: `/.well-known/josh`][rfc-0002].
+| Reader's goal | Start here |
+| --- | --- |
+| Understand the network | [RFC-JOSH-0000][rfc-0000] |
+| Understand Josh identity | [RFC-JOSH-0001][rfc-0001] |
+| Publish or validate a declaration | [RFC-JOSH-0002][rfc-0002] |
+| Join without reading an RFC first | [Join guide](/join/) |
+| Follow technical instructions | [Implement guide](/implement/) |
 
-## Reading order
+A complete technical review often follows 0000 → 0001 → 0002. Implementing
+`/.well-known/josh` still needs the identity rules in RFC-JOSH-0001 before
+interpreting the optional `josh` member. You do not need to read the entire
+specification repository before participating.
 
-The current specifications build on one another:
+## Contribute
 
-1. **RFC-JOSH-0000** establishes the network, principles, architecture, and terminology.
-2. **RFC-JOSH-0001** establishes Josh identity semantics.
-3. **RFC-JOSH-0002** defines the current participation declaration and uses the identity semantics from RFC-JOSH-0001.
+Open specifications get better when people actually use them. If you've found an
+ambiguity, an implementation problem, or a better way to express something, bring
+it to the [specification repository][spec]. Real experience is more useful than
+pretending every question has already been answered.
 
-Readers looking for the overall model should begin with RFC-JOSH-0000. Readers implementing `/.well-known/josh` should still understand the identity rules in RFC-JOSH-0001 before interpreting the `josh` member.
-
-## Canonical text and development
-
-The [Joshternet specification repository][spec] is the canonical source for every current RFC.
-
-Specification changes are developed publicly through issues, discussion, and pull requests. Proposed specifications begin as Drafts. No Joshternet RFC has been Accepted yet.
-
-Summaries on joshternet.org are explanatory. The RFC text remains authoritative.
+Open an [issue][issues] or [pull request][pulls] to discuss a change. Not every
+proposal will be adopted. How Drafts are maintained today: [Governance](/governance/).
 
 [spec]: https://github.com/joshternet/spec
+[issues]: https://github.com/joshternet/spec/issues
+[pulls]: https://github.com/joshternet/spec/pulls
 [rfc-0000]: https://github.com/joshternet/spec/blob/main/rfcs/0000-the-joshternet.md
 [rfc-0001]: https://github.com/joshternet/spec/blob/main/rfcs/0001-josh-identity.md
 [rfc-0002]: https://github.com/joshternet/spec/blob/main/rfcs/0002-well-known-josh.md

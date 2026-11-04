@@ -1160,7 +1160,7 @@
         outgoing.length > 0 || incoming.length > 0 || topics.length > 0;
       const emptyNote = hasObserved
         ? ""
-        : `<p class="connections-empty-note">No observed connections yet. Visit <a href="${escapeAttribute(outboundHref(site.origin))}" target="_blank" rel="noopener">${escapeHTML(site.domain || site.title)}</a>.</p>`;
+        : `<p class="connections-empty-note">JoshBot hasn't observed any links to or from this website yet. That doesn't mean there's nothing interesting there. Visit <a href="${escapeAttribute(outboundHref(site.origin))}" target="_blank" rel="noopener">${escapeHTML(site.domain || site.title)}</a> and see what you find.</p>`;
 
       const previewFooter = isPreview
         ? `<p class="connections-bubble__more"><a href="/connections/?site=${escapeAttribute(site.domain)}">Explore on Connections</a></p>`
@@ -1194,11 +1194,11 @@
       ${bubbleHeading(site.title)}
       ${joinedNote}
       ${bubbleSection(
-        "Connects to",
+        "Links to",
         outgoing.map((edge) => bubbleEdgeItem(edge, "to")).join(""),
       )}
       ${bubbleSection(
-        "Connected from",
+        "Linked from",
         incoming.map((edge) => bubbleEdgeItem(edge, "from")).join(""),
       )}
       ${bubbleSection(

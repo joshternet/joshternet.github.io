@@ -16,7 +16,7 @@ seo:
 
 # Joshternet Infrastructure Principles
 
-These principles describe how Joshternet selects and retains infrastructure providers for Joshternet-operated services such as joshternet.org, Button State, declaration checks, nominations, analytics, and related operated systems.
+**In short:** choose providers that fit privacy, security, operational honesty, and replaceability for Joshternet-operated services (the hub, Button State, declaration checks, nominations, analytics, and related systems). These principles do not control which vendors independent participating websites may use.
 
 ## Independent websites stay independent
 
