@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T02:13:11.052Z",
+  "generated_at": "2026-11-04T11:04:07.055Z",
   "participant_count": 22,
-  "community_count": 634,
-  "publication_count": 556,
+  "community_count": 644,
+  "publication_count": 498,
   "connection_count": 26,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
@@ -11,11 +11,64 @@
   },
   "fresh": [
     {
+      "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
+      "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone",
+      "summary": "I spent a week having Claude Code audit my fork of LightCraft, the AI-built Rust Lightroom clone: fuzzing, crash safety, a locked control port, faster frames, and 50,000 deleted lines.",
+      "published_at": "2026-11-04T00:00:00.000Z",
+      "observed_at": "2026-11-04T09:47:24.987Z",
+      "content_type": "article",
+      "language": "en-us",
+      "dir": "",
+      "site_origin": "https://www.joshfinnie.com",
+      "site_title": "Josh Finnie",
+      "domain": "www.joshfinnie.com",
+      "tags": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "code-review",
+          "label": "code review"
+        },
+        {
+          "slug": "open-source",
+          "label": "open source"
+        },
+        {
+          "slug": "refactor",
+          "label": "refactor"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "code-review",
+          "label": "code review"
+        },
+        {
+          "slug": "open-source",
+          "label": "open source"
+        },
+        {
+          "slug": "refactor",
+          "label": "refactor"
+        }
+      ],
+      "image": "/assets/activity/posters/723078dd70f7aff49d75a22c510506633e299f410278e1828b52b13c5401d6ad.webp",
+      "image_origin": "",
+      "source_kind": "rss",
+      "page_role": "article"
+    },
+    {
       "url": "https://artlung.com/blog/2026/11/03/and-shredding/",
       "title": "I went relatively early this morning.",
       "summary": "",
       "published_at": "2026-11-03T16:15:36.000Z",
-      "observed_at": "2026-11-04T01:56:36.324Z",
+      "observed_at": "2026-11-04T09:47:24.987Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -48,64 +101,11 @@
       "page_role": "article"
     },
     {
-      "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
-      "title": "The October Micro SaaS Challenge: A Retro",
-      "summary": "Four micro SaaS products in four weeks, built with Claude Code: what shipped, which rules broke, what it cost, and what I'd change next time.",
-      "published_at": "2026-11-02T00:00:00.000Z",
-      "observed_at": "2026-11-04T01:56:36.324Z",
-      "content_type": "article",
-      "language": "en-us",
-      "dir": "",
-      "site_origin": "https://www.joshfinnie.com",
-      "site_title": "Josh Finnie",
-      "domain": "www.joshfinnie.com",
-      "tags": [
-        {
-          "slug": "ai",
-          "label": "ai"
-        },
-        {
-          "slug": "indie-hacking",
-          "label": "indie hacking"
-        },
-        {
-          "slug": "micro-saas",
-          "label": "micro saas"
-        },
-        {
-          "slug": "side-project",
-          "label": "side projects"
-        }
-      ],
-      "neighborhoods": [
-        {
-          "slug": "ai",
-          "label": "ai"
-        },
-        {
-          "slug": "indie-hacking",
-          "label": "indie hacking"
-        },
-        {
-          "slug": "micro-saas",
-          "label": "micro saas"
-        },
-        {
-          "slug": "side-project",
-          "label": "side projects"
-        }
-      ],
-      "image": "/assets/activity/posters/06408c099e97547580ade828c7727b3a6fff5e2ad9379a28a4d1ac2f21e7ee6b.webp",
-      "image_origin": "",
-      "source_kind": "rss",
-      "page_role": "article"
-    },
-    {
       "url": "https://joshtronic.com/2026/11/01/open-to-work/",
       "title": "I'm Open to Work",
       "summary": "Mailshake has terminated my employment after 8+ years. In that time, I... Started as engineer #3 Moved into management thanks to an awesome CTO Ran a 10-person team across backend, frontend, QA, and support Scaled down to 2 engineers while maintaining productivity Reduced annual AWS spend by ~70% over 3 years Was always on-call and handled support escalations Ran technical due diligence on 4 acqui",
       "published_at": "2026-11-01T00:00:00.000Z",
-      "observed_at": "2026-11-04T01:56:36.324Z",
+      "observed_at": "2026-11-04T09:47:24.987Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -124,7 +124,7 @@
       "title": "Gluten-Free Chocolate Cake",
       "summary": "Nutrition assumptions and sources",
       "published_at": "2026-10-31T19:55:58.000Z",
-      "observed_at": "2026-11-04T01:56:36.324Z",
+      "observed_at": "2026-11-04T09:47:24.987Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -153,7 +153,7 @@
       "title": "Worth Wandering: Radio Aporee",
       "summary": "A worldwide collection of field recordings that lets you explore the sounds of cities, forests, rivers, train stations and ordinary places, with experimental radio projects that turn listening into an entirely different way of experiencing the world.",
       "published_at": "2026-10-30T14:00:00.000Z",
-      "observed_at": "2026-11-04T01:56:36.324Z",
+      "observed_at": "2026-11-04T09:47:24.987Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -182,7 +182,7 @@
       "title": "How Wizardly Words Invents Words",
       "summary": "It takes what we know and infers new words between the lines",
       "published_at": "2026-10-30T00:00:00.000Z",
-      "observed_at": "2026-11-04T01:56:36.324Z",
+      "observed_at": "2026-11-04T09:47:24.987Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -198,9 +198,9 @@
     }
   ],
   "neighborhood": {
-    "slug": "refactor",
-    "label": "refactor",
-    "member_count": 1
+    "slug": "digital",
+    "label": "digital",
+    "member_count": 2
   },
   "connection": {
     "from": "https://artlung.com",
