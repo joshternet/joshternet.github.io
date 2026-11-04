@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T01:56:36.324Z",
+  "generated_at": "2026-11-04T04:52:56.701Z",
   "community_count": 634,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
@@ -4403,7 +4403,7 @@
     {
       "slug": "california",
       "label": "california",
-      "member_count": 3,
+      "member_count": 2,
       "sites": [
         {
           "origin": "https://artlung.com",
@@ -4415,19 +4415,6 @@
               "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
               "title": "",
               "source": "rss:category"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/",
-              "title": "",
-              "source": "microformat:p-category"
             }
           ]
         },
@@ -4465,10 +4452,11 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "rss:category", "visible-text"],
+      "sources": ["rss:category", "visible-text"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-03T09:57:38.457Z",
-      "active": true
+      "last_changed_at": "2026-11-04T04:52:56.701Z",
+      "active": true,
+      "stale_since": "2026-11-04T04:52:56.701Z"
     },
     {
       "slug": "california-ballot-2026",
@@ -14490,7 +14478,7 @@
     {
       "slug": "history",
       "label": "History",
-      "member_count": 5,
+      "member_count": 4,
       "sites": [
         {
           "origin": "https://artlung.com",
@@ -14535,19 +14523,6 @@
               "url": "https://joshmuller.ca/writings/hopeful-history-smallpox/",
               "title": "",
               "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/",
-              "title": "",
-              "source": "microformat:p-category"
             }
           ]
         },
@@ -14598,14 +14573,9 @@
           ]
         }
       ],
-      "sources": [
-        "article:tag",
-        "microformat:p-category",
-        "rss:category",
-        "visible-text"
-      ],
+      "sources": ["article:tag", "rss:category", "visible-text"],
       "first_seen_at": "2026-11-01T10:42:20.299Z",
-      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-04T04:52:56.701Z",
       "active": true,
       "related_discoveries": [
         {
@@ -14615,7 +14585,8 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ]
+      ],
+      "stale_since": "2026-11-04T04:52:56.701Z"
     },
     {
       "slug": "holy-week",
@@ -23351,7 +23322,7 @@
     {
       "slug": "permanence",
       "label": "permanence",
-      "member_count": 2,
+      "member_count": 1,
       "sites": [
         {
           "origin": "https://artlung.com",
@@ -23365,25 +23336,13 @@
               "source": "rss:category"
             }
           ]
-        },
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/",
-              "title": "",
-              "source": "microformat:p-category"
-            }
-          ]
         }
       ],
-      "sources": ["microformat:p-category", "rss:category"],
+      "sources": ["rss:category"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-03T09:57:38.457Z",
-      "active": true
+      "last_changed_at": "2026-11-04T04:52:56.701Z",
+      "active": true,
+      "stale_since": "2026-11-04T04:52:56.701Z"
     },
     {
       "slug": "person",
@@ -24291,7 +24250,7 @@
     {
       "slug": "politics",
       "label": "politics",
-      "member_count": 4,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://artlung.com",
@@ -24308,19 +24267,6 @@
               "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
               "title": "",
               "source": "rss:category"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/",
-              "title": "",
-              "source": "microformat:p-category"
             }
           ]
         },
@@ -24421,9 +24367,9 @@
           ]
         }
       ],
-      "sources": ["article:tag", "microformat:p-category", "rss:category"],
+      "sources": ["article:tag", "rss:category"],
       "first_seen_at": "2026-11-01T23:37:56.256Z",
-      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-04T04:52:56.701Z",
       "active": true,
       "related_discoveries": [
         {
@@ -24433,7 +24379,8 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ]
+      ],
+      "stale_since": "2026-11-04T04:52:56.701Z"
     },
     {
       "slug": "posse",
@@ -32120,7 +32067,7 @@
     {
       "slug": "swim2026",
       "label": "swim2026",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
         {
           "origin": "https://artlung.com",
@@ -32154,11 +32101,24 @@
               "source": "rss:category"
             }
           ]
+        },
+        {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshternet.org/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
         }
       ],
-      "sources": ["rss:category"],
+      "sources": ["microformat:p-category", "rss:category"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-03T09:57:38.457Z",
+      "last_changed_at": "2026-11-04T04:52:56.701Z",
       "active": true
     },
     {

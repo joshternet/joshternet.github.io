@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T02:13:11.052Z",
+  "generated_at": "2026-11-04T05:06:50.053Z",
   "sites": [
     {
       "origin": "https://artlung.com",
@@ -316,7 +316,7 @@
         "title": "/amiga/",
         "summary": "A few of my memories of using the a Commodore Amiga 1000 for computer graphics, music, etc.",
         "published_at": "",
-        "observed_at": "2026-11-04T01:56:36.324Z",
+        "observed_at": "2026-11-04T04:52:56.701Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -13602,7 +13602,7 @@
           "https://artlung.com/blog/2024/06/05/bandwidth-throttling/": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-04T01:56:36.324Z"
+      "crawled_at": "2026-11-04T04:52:56.701Z"
     },
     {
       "origin": "https://forwardbias.dev",
@@ -13929,7 +13929,7 @@
           "https://forwardbias.dev/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-04T01:56:36.324Z"
+      "crawled_at": "2026-11-04T04:52:56.701Z"
     },
     {
       "origin": "https://joshbeard.com",
@@ -13980,7 +13980,7 @@
         "title": "Photos",
         "summary": "Photo albums from Colorado, travel, cycling, and everyday life.",
         "published_at": "",
-        "observed_at": "2026-11-04T01:56:36.324Z",
+        "observed_at": "2026-11-04T04:52:56.701Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -14480,7 +14480,7 @@
           "https://joshbeard.com/me": "content-index"
         }
       },
-      "crawled_at": "2026-11-04T01:56:36.324Z"
+      "crawled_at": "2026-11-04T04:52:56.701Z"
     },
     {
       "origin": "https://joshcox.co.uk",
@@ -14578,7 +14578,7 @@
         "title": "Projects — Josh Cox",
         "summary": "Products and tools Josh Cox has built, including Prystine, SendTidings, Quotify, Lifting Times, LeerHaus, and the Mac app My House, My Things.",
         "published_at": "",
-        "observed_at": "2026-11-04T01:56:36.324Z",
+        "observed_at": "2026-11-04T04:52:56.701Z",
         "content_type": "collection",
         "language": "en-gb",
         "dir": "",
@@ -14823,7 +14823,7 @@
           "https://joshcox.co.uk/the-crypt/": "content-index"
         }
       },
-      "crawled_at": "2026-11-04T01:56:36.324Z"
+      "crawled_at": "2026-11-04T04:52:56.701Z"
     },
     {
       "origin": "https://joshghent.com",
@@ -15080,7 +15080,7 @@
         "title": "Enterprise sales teams, please, I beg you, stop",
         "summary": "I asked for a price on a few extra seats of software we already pay for. Two days and a pile of irrelevant questions later, I got one.",
         "published_at": "2026-10-28T00:00:00.000Z",
-        "observed_at": "2026-11-04T01:56:36.324Z",
+        "observed_at": "2026-11-04T04:52:56.701Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -15468,7 +15468,7 @@
           "https://joshghent.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-04T01:56:36.324Z"
+      "crawled_at": "2026-11-04T04:52:56.701Z"
     },
     {
       "origin": "https://joshgr.com",
@@ -15752,7 +15752,7 @@
           "https://joshgr.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-04T01:56:36.324Z"
+      "crawled_at": "2026-11-04T04:52:56.701Z"
     },
     {
       "origin": "https://joshkoter.com",
@@ -15784,7 +15784,7 @@
         "title": "Untitled",
         "summary": "",
         "published_at": "",
-        "observed_at": "2026-11-04T01:56:36.324Z",
+        "observed_at": "2026-11-04T04:52:56.701Z",
         "content_type": "video",
         "language": "",
         "dir": "",
@@ -15799,7 +15799,16 @@
         "page_role": "project"
       },
       "outgoing": [],
-      "incoming": [],
+      "incoming": [
+        {
+          "from": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshkoter.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 1
+        }
+      ],
       "coverage": {
         "pages_discovered": 3,
         "pages_fetched": 3,
@@ -15996,7 +16005,7 @@
           "https://joshkoter.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-04T01:56:36.324Z"
+      "crawled_at": "2026-11-04T04:52:56.701Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -16401,7 +16410,7 @@
         "title": "📸: Josh Müller",
         "summary": "",
         "published_at": "",
-        "observed_at": "2026-11-04T01:56:36.324Z",
+        "observed_at": "2026-11-04T04:52:56.701Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -16943,7 +16952,7 @@
           "https://joshmuller.ca/recipes/page/2/": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-04T01:56:36.324Z"
+      "crawled_at": "2026-11-04T04:52:56.701Z"
     },
     {
       "origin": "https://joshozuna.com",
@@ -17071,7 +17080,7 @@
         "title": "35mm Film Photography Gallery",
         "summary": "Photos by Josh Ozuna, shot on 35mm film.",
         "published_at": "2025-08-17T05:00:00.000Z",
-        "observed_at": "2026-11-04T01:56:36.324Z",
+        "observed_at": "2026-11-04T04:52:56.701Z",
         "content_type": "collection",
         "language": "en",
         "dir": "",
@@ -17377,7 +17386,7 @@
           "https://joshozuna.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-04T01:56:36.324Z"
+      "crawled_at": "2026-11-04T04:52:56.701Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -17399,10 +17408,6 @@
           "label": "ai"
         },
         {
-          "slug": "california",
-          "label": "california"
-        },
-        {
           "slug": "data",
           "label": "data"
         },
@@ -17413,10 +17418,6 @@
         {
           "slug": "general",
           "label": "general"
-        },
-        {
-          "slug": "history",
-          "label": "History"
         },
         {
           "slug": "independent",
@@ -17431,16 +17432,12 @@
           "label": "micro saas"
         },
         {
-          "slug": "permanence",
-          "label": "permanence"
-        },
-        {
-          "slug": "politics",
-          "label": "politics"
-        },
-        {
           "slug": "side-project",
           "label": "side projects"
+        },
+        {
+          "slug": "swim2026",
+          "label": "swim2026"
         }
       ],
       "recent_content": {
@@ -17448,7 +17445,7 @@
         "title": "What's New",
         "summary": "Recent writing from the last two weeks and the latest Showcase creative works from independent websites on the Joshternet.",
         "published_at": "",
-        "observed_at": "2026-11-04T01:56:36.324Z",
+        "observed_at": "2026-11-04T04:52:56.701Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -17484,6 +17481,14 @@
           "relation": "homepage-link",
           "label": "links to from the homepage",
           "href": "https://joshgr.com/wizardly-words/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 1
+        },
+        {
+          "to": "https://joshkoter.com",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshkoter.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
           "page": "https://joshternet.org/",
           "evidence_count": 1
         },
@@ -17526,14 +17531,6 @@
           "href": "https://joshuastuebner.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
           "page": "https://joshternet.org/",
           "evidence_count": 2
-        },
-        {
-          "to": "https://www.chrisminnick.com",
-          "relation": "homepage-link",
-          "label": "links to from the homepage",
-          "href": "https://www.chrisminnick.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "page": "https://joshternet.org/",
-          "evidence_count": 1
         }
       ],
       "incoming": [
@@ -17998,6 +17995,7 @@
           "https://joshternet.org/topics/recommendation/": "sitemap",
           "https://joshternet.org/topics/recruitment/": "sitemap",
           "https://joshternet.org/topics/red/": "sitemap",
+          "https://joshternet.org/topics/remember/": "sitemap",
           "https://joshternet.org/topics/rememberance/": "sitemap",
           "https://joshternet.org/topics/research/": "sitemap",
           "https://joshternet.org/topics/resource/": "sitemap",
@@ -18087,7 +18085,7 @@
           "https://joshternet.org/cdn-cgi/l/email-protection": "content-index"
         }
       },
-      "crawled_at": "2026-11-04T01:56:36.324Z"
+      "crawled_at": "2026-11-04T04:52:56.701Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -18297,7 +18295,7 @@
         "title": "Learning a New Tech Stack with an LLM",
         "summary": "While I mentioned a few weeks back that I'm now recovering from AI Psychosis , that doesn't mean I've given up on the technology completely. I'm writing more emails, and engaging with human beings as much as I can, and that part's been great. I still use agents as a glorified typewriter to generate code, and still very much get my hands in the dirt and sling code myself. I've also gotten quite obs",
         "published_at": "2026-10-26T00:00:00.000Z",
-        "observed_at": "2026-11-04T01:56:36.324Z",
+        "observed_at": "2026-11-04T04:52:56.701Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -19689,7 +19687,7 @@
           "https://joshtronic.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-04T01:56:36.324Z"
+      "crawled_at": "2026-11-04T04:52:56.701Z"
     },
     {
       "origin": "https://joshua.seigler.net",
@@ -20072,7 +20070,7 @@
           "https://joshua.seigler.net": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-04T01:56:36.324Z"
+      "crawled_at": "2026-11-04T04:52:56.701Z"
     },
     {
       "origin": "https://joshuadrake.org",
@@ -20109,7 +20107,7 @@
         "title": "Projects:",
         "summary": "",
         "published_at": "",
-        "observed_at": "2026-11-04T01:56:36.324Z",
+        "observed_at": "2026-11-04T04:52:56.701Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -20382,7 +20380,7 @@
           "https://joshuadrake.org/projects/n12rebuild/": "content-index"
         }
       },
-      "crawled_at": "2026-11-04T01:56:36.324Z",
+      "crawled_at": "2026-11-04T04:52:56.701Z",
       "portfolio": {
         "url": "https://joshuadrake.org/projects/",
         "work_count": 39,
@@ -20418,7 +20416,7 @@
         "title": "Work, Joshua Kim",
         "summary": "Eight projects by Joshua Kim: internal tools, interactive and AR work, app case studies, and graphic design.",
         "published_at": "",
-        "observed_at": "2026-11-04T01:56:36.324Z",
+        "observed_at": "2026-11-04T04:52:56.701Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -20640,7 +20638,7 @@
           "https://joshuakim.studio/about": "content-index"
         }
       },
-      "crawled_at": "2026-11-04T01:56:36.324Z"
+      "crawled_at": "2026-11-04T04:52:56.701Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -22250,10 +22248,11 @@
           "https://joshuamorris.info/notes/2026/07/23/": "budget-exhausted",
           "https://joshuamorris.info/topics/software-preservation/": "budget-exhausted",
           "https://joshuamorris.info/notes/2026/07/22/": "budget-exhausted",
-          "https://joshuamorris.info/notes/2026/07/21/": "budget-exhausted"
+          "https://joshuamorris.info/notes/2026/07/21/": "budget-exhausted",
+          "https://joshuamorris.info": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-04T01:56:36.324Z"
+      "crawled_at": "2026-11-04T04:52:56.701Z"
     },
     {
       "origin": "https://joshuapsteele.com",
@@ -23893,7 +23892,7 @@
           "https://joshuapsteele.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-04T01:56:36.324Z"
+      "crawled_at": "2026-11-04T04:52:56.701Z"
     },
     {
       "origin": "https://joshuastuebner.com",
@@ -23950,7 +23949,7 @@
         "title": "Datapolicy",
         "summary": "Pick your theme",
         "published_at": "",
-        "observed_at": "2026-11-04T01:56:36.324Z",
+        "observed_at": "2026-11-04T04:52:56.701Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -24306,7 +24305,7 @@
           "https://joshuastuebner.com/joshuastuebner.asc": "content-index"
         }
       },
-      "crawled_at": "2026-11-04T01:56:36.324Z"
+      "crawled_at": "2026-11-04T04:52:56.701Z"
     },
     {
       "origin": "https://www.chrisminnick.com",
@@ -24484,7 +24483,7 @@
         "title": "Books",
         "summary": "More than twenty books on programming, the web, and AI — plus three novels.",
         "published_at": "2027-04-01T00:00:00.000Z",
-        "observed_at": "2026-11-04T01:56:36.324Z",
+        "observed_at": "2026-11-04T04:52:56.701Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -24500,14 +24499,6 @@
       },
       "outgoing": [],
       "incoming": [
-        {
-          "from": "https://joshternet.org",
-          "relation": "homepage-link",
-          "label": "links to from the homepage",
-          "href": "https://www.chrisminnick.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "page": "https://joshternet.org/",
-          "evidence_count": 1
-        },
         {
           "from": "https://joshuamorris.info",
           "relation": "content-link",
@@ -24877,7 +24868,7 @@
           "https://www.chrisminnick.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-04T01:56:36.324Z"
+      "crawled_at": "2026-11-04T04:52:56.701Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -25554,7 +25545,7 @@
           "https://www.joshcanhelp.com/_images/2010/02/logitech_mic.jpg": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-04T01:56:36.324Z"
+      "crawled_at": "2026-11-04T04:52:56.701Z"
     },
     {
       "origin": "https://www.joshfinnie.com",
@@ -26495,7 +26486,7 @@
         "title": "The October Micro SaaS Challenge: A Retro",
         "summary": "Four micro SaaS products in four weeks, built with Claude Code: what shipped, which rules broke, what it cost, and what I'd change next time.",
         "published_at": "2026-11-02T00:00:00.000Z",
-        "observed_at": "2026-11-04T01:56:36.324Z",
+        "observed_at": "2026-11-04T04:52:56.701Z",
         "content_type": "article",
         "language": "en-us",
         "dir": "",
@@ -27168,7 +27159,7 @@
           "https://www.joshfinnie.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-04T01:56:36.324Z",
+      "crawled_at": "2026-11-04T04:52:56.701Z",
       "portfolio": {
         "url": "https://www.joshfinnie.com/projects/",
         "work_count": 9,
@@ -27401,7 +27392,7 @@
         "title": "Work — Joshua Baker",
         "summary": "Selected case studies by Joshua Baker, plus the full archive — 140+ projects across two decades of design and engineering.",
         "published_at": "",
-        "observed_at": "2026-11-04T01:56:36.324Z",
+        "observed_at": "2026-11-04T04:52:56.701Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -27670,7 +27661,7 @@
           "https://www.joshuabaker.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-04T01:56:36.324Z",
+      "crawled_at": "2026-11-04T04:52:56.701Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,
@@ -28170,7 +28161,7 @@
           "https://www.joshvickerson.com/posts/page/1/": "content-index"
         }
       },
-      "crawled_at": "2026-11-04T01:56:36.324Z"
+      "crawled_at": "2026-11-04T04:52:56.701Z"
     }
   ]
 }

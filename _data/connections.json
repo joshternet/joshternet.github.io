@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T01:56:36.324Z",
+  "generated_at": "2026-11-04T04:52:56.701Z",
   "edge_count": 26,
   "edges": [
     {
@@ -261,6 +261,27 @@
     },
     {
       "from": "https://joshternet.org",
+      "to": "https://joshkoter.com",
+      "relation": "homepage-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://joshkoter.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+      "text": "Josh Joshternet participant. Josh Köter ↗ A multiplayer Tetris game, featuring real-time gameplay, live chat, and both single-player and versus modes. Built with the T3 stack (TypeScript, Next.js, Pri",
+      "rel": ["noopener"],
+      "page": "https://joshternet.org/",
+      "evidence_count": 1,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://joshternet.org/",
+          "href": "https://joshkoter.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "text": "Josh Joshternet participant. Josh Köter ↗ A multiplayer Tetris game, featuring real-time gameplay, live chat, and both single-player and versus modes. Built with the T3 stack (TypeScript, Next.js, Pri",
+          "rel": ["noopener"]
+        }
+      ]
+    },
+    {
+      "from": "https://joshternet.org",
       "to": "https://joshozuna.com",
       "relation": "homepage-link",
       "directed": true,
@@ -381,27 +402,6 @@
           "page": "https://joshternet.org/",
           "href": "https://joshuastuebner.com/tools/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
           "text": "Tools (opens on the publisher’s site)",
-          "rel": ["noopener"]
-        }
-      ]
-    },
-    {
-      "from": "https://joshternet.org",
-      "to": "https://www.chrisminnick.com",
-      "relation": "homepage-link",
-      "directed": true,
-      "source": "content",
-      "href": "https://www.chrisminnick.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-      "text": "Non-Josh Joshternet participant, joshing the Joshes. www.chrisminnick.com ↗ I’m Chris Minnick. I’ve written more than twenty books, including a shelf of For Dummies titles, three novels, and coursewar",
-      "rel": ["noopener"],
-      "page": "https://joshternet.org/",
-      "evidence_count": 1,
-      "evidence": [
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/",
-          "href": "https://www.chrisminnick.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Non-Josh Joshternet participant, joshing the Joshes. www.chrisminnick.com ↗ I’m Chris Minnick. I’ve written more than twenty books, including a shelf of For Dummies titles, three novels, and coursewar",
           "rel": ["noopener"]
         }
       ]
