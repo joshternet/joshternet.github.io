@@ -6,6 +6,9 @@
  * quota. Prefer static HTML + Schema/OG when available.
  */
 
+import { assertPublicURL } from "../network/lib.mjs";
+import { continueIfPublicUrl } from "../network/public-fetch-guard.mjs";
+
 /** Default wall-clock budget for one rendered page. */
 export const RENDER_TIMEOUT_MS = 12_000;
 
@@ -100,6 +103,8 @@ export function isRenderableHttpUrl(url) {
  *     close: () => Promise<void>,
  *   }>,
  *   importPlaywright?: () => Promise<{ chromium: { launch: (opts: Record<string, unknown>) => Promise<unknown> } }>,
+ *   cache?: Map<string, unknown>,
+ *   lookup?: unknown,
  * }} [options]
  * @returns {Promise<string | null>} Rendered HTML, or null when disabled/unsafe/failed.
  */
@@ -109,6 +114,17 @@ export async function renderHtmlForExtraction(url, options = {}) {
   }
 
   if (!isRenderableHttpUrl(url)) {
+    return null;
+  }
+
+  const dnsOptions = {
+    cache: options.cache || new Map(),
+    lookup: options.lookup,
+  };
+
+  try {
+    await assertPublicURL(url, dnsOptions);
+  } catch {
     return null;
   }
 
@@ -140,7 +156,7 @@ export async function renderHtmlForExtraction(url, options = {}) {
           return;
         }
 
-        await route.continue();
+        await continueIfPublicUrl(route, dnsOptions);
       });
     }
 

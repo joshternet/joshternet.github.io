@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T01:56:36.324Z",
-  "edge_count": 26,
+  "generated_at": "2026-11-04T07:49:40.771Z",
+  "edge_count": 27,
   "edges": [
     {
       "from": "https://artlung.com",
@@ -42,7 +42,7 @@
       "text": "The Joshternet",
       "rel": [],
       "page": "https://artlung.com/https//joecrawford.com/",
-      "evidence_count": 5,
+      "evidence_count": 7,
       "evidence": [
         {
           "class": "observed",
@@ -80,6 +80,21 @@
           "href": "https://joshternet.org/",
           "text": "The Joshternet",
           "rel": []
+        },
+        {
+          "class": "observed",
+          "page": "https://artlung.com/https//joecrawford.com/",
+          "href": "https://joshternet.org/",
+          "text": "The Joshternet",
+          "rel": [],
+          "source": "content"
+        },
+        {
+          "class": "observed",
+          "page": "https://artlung.com/photos/cajon_speedway/",
+          "href": "https://joshternet.org/",
+          "text": "The Joshternet",
+          "rel": []
         }
       ]
     },
@@ -109,6 +124,153 @@
           "href": "https://joshternet.org/",
           "text": "The Joshternet",
           "rel": []
+        }
+      ]
+    },
+    {
+      "from": "https://forwardbias.dev",
+      "to": "https://joshternet.org",
+      "relation": "content-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://joshternet.org/network/",
+      "text": "Verified Josh, Joshternet site",
+      "rel": ["noopener"],
+      "page": "https://forwardbias.dev/about-me/",
+      "evidence_count": 19,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://forwardbias.dev/about-me/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://forwardbias.dev/about/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://forwardbias.dev/aboutme/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://forwardbias.dev/ai/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://forwardbias.dev/bio/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://forwardbias.dev/blank/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://forwardbias.dev/blogroll/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://forwardbias.dev/calendar/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://forwardbias.dev/canon/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://forwardbias.dev/carry/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://forwardbias.dev/caw/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://forwardbias.dev/celebrities/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://forwardbias.dev/changelog/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://forwardbias.dev/chipotle/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://forwardbias.dev/log/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://forwardbias.dev/me/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://forwardbias.dev/profile/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://forwardbias.dev/colophon/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://forwardbias.dev/community/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
+          "rel": ["noopener"]
         }
       ]
     },
@@ -261,6 +423,27 @@
     },
     {
       "from": "https://joshternet.org",
+      "to": "https://joshkoter.com",
+      "relation": "homepage-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://joshkoter.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+      "text": "Josh Joshternet participant. Josh Köter ↗ A multiplayer Tetris game, featuring real-time gameplay, live chat, and both single-player and versus modes. Built with the T3 stack (TypeScript, Next.js, Pri",
+      "rel": ["noopener"],
+      "page": "https://joshternet.org/",
+      "evidence_count": 1,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://joshternet.org/",
+          "href": "https://joshkoter.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "text": "Josh Joshternet participant. Josh Köter ↗ A multiplayer Tetris game, featuring real-time gameplay, live chat, and both single-player and versus modes. Built with the T3 stack (TypeScript, Next.js, Pri",
+          "rel": ["noopener"]
+        }
+      ]
+    },
+    {
+      "from": "https://joshternet.org",
       "to": "https://joshozuna.com",
       "relation": "homepage-link",
       "directed": true,
@@ -381,27 +564,6 @@
           "page": "https://joshternet.org/",
           "href": "https://joshuastuebner.com/tools/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
           "text": "Tools (opens on the publisher’s site)",
-          "rel": ["noopener"]
-        }
-      ]
-    },
-    {
-      "from": "https://joshternet.org",
-      "to": "https://www.chrisminnick.com",
-      "relation": "homepage-link",
-      "directed": true,
-      "source": "content",
-      "href": "https://www.chrisminnick.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-      "text": "Non-Josh Joshternet participant, joshing the Joshes. www.chrisminnick.com ↗ I’m Chris Minnick. I’ve written more than twenty books, including a shelf of For Dummies titles, three novels, and coursewar",
-      "rel": ["noopener"],
-      "page": "https://joshternet.org/",
-      "evidence_count": 1,
-      "evidence": [
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/",
-          "href": "https://www.chrisminnick.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Non-Josh Joshternet participant, joshing the Joshes. www.chrisminnick.com ↗ I’m Chris Minnick. I’ve written more than twenty books, including a shelf of For Dummies titles, three novels, and coursewar",
           "rel": ["noopener"]
         }
       ]

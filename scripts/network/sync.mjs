@@ -61,6 +61,7 @@ import {
   readPreviewFile,
   simulatedParticipants,
 } from "./preview.mjs";
+import { installPublicUrlRouteGuard } from "./public-fetch-guard.mjs";
 
 import {
   fallbackEntry,
@@ -230,26 +231,7 @@ async function openParticipantHomepage(
 
   const page = await context.newPage();
 
-  await page.route("**/*", async (route) => {
-    const request = route.request();
-
-    try {
-      const requestURL = new URL(request.url());
-
-      if (requestURL.protocol !== "https:" && requestURL.protocol !== "http:") {
-        await route.abort("blockedbyclient");
-        return;
-      }
-
-      await assertPublicURL(requestURL.href, {
-        cache: dnsCache,
-      });
-
-      await route.continue();
-    } catch {
-      await route.abort("blockedbyclient");
-    }
-  });
+  await installPublicUrlRouteGuard(page, { cache: dnsCache });
 
   try {
     const response = await page.goto(participant.origin, {

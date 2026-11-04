@@ -266,3 +266,117 @@ test("probeCommonFeedPaths: timeout aborts a hung fetch", async () => {
   });
   assert.deepEqual(result, []);
 });
+
+test("probeCommonFeedPaths: skips redirects without Location", async () => {
+  const cache = dnsCache(["a.example"]);
+  const result = await probeCommonFeedPaths("https://a.example", [], {
+    cache,
+    paths: ["/rss.xml"],
+    fetchImpl: async () => ({
+      ok: false,
+      status: 302,
+      headers: new Headers(),
+      arrayBuffer: async () => Buffer.from(""),
+    }),
+  });
+  assert.deepEqual(result, []);
+});
+
+test("probeCommonFeedPaths: skips when redirect hop budget is exhausted", async () => {
+  const cache = dnsCache(["a.example"]);
+  let fetches = 0;
+  const result = await probeCommonFeedPaths("https://a.example", [], {
+    cache,
+    paths: ["/rss.xml"],
+    fetchImpl: async (url, init) => {
+      fetches += 1;
+      return {
+        ok: false,
+        status: 302,
+        headers: new Headers({
+          location: `${String(url)}?h=${fetches}`,
+        }),
+        arrayBuffer: async () => Buffer.from(""),
+      };
+    },
+  });
+  assert.deepEqual(result, []);
+  assert.equal(fetches, 6);
+});
+
+test("probeCommonFeedPaths: honors a custom maxRedirects ceiling", async () => {
+  const cache = dnsCache(["a.example"]);
+  let fetches = 0;
+  const result = await probeCommonFeedPaths("https://a.example", [], {
+    cache,
+    paths: ["/rss.xml"],
+    maxRedirects: 0,
+    fetchImpl: async (url) => {
+      fetches += 1;
+      return {
+        ok: false,
+        status: 302,
+        headers: new Headers({
+          location: `${String(url)}?h=${fetches}`,
+        }),
+        arrayBuffer: async () => Buffer.from(""),
+      };
+    },
+  });
+  assert.deepEqual(result, []);
+  assert.equal(fetches, 1);
+});
+
+test("probeCommonFeedPaths: tolerates responses without headers.get", async () => {
+  const cache = dnsCache(["a.example"]);
+  let calls = 0;
+  const result = await probeCommonFeedPaths("https://a.example", [], {
+    cache,
+    paths: ["/rss.xml", "/atom.xml"],
+    fetchImpl: async () => {
+      calls += 1;
+
+      if (calls === 1) {
+        return {
+          ok: false,
+          status: 302,
+          headers: {},
+          arrayBuffer: async () => Buffer.from(""),
+        };
+      }
+
+      return {
+        ok: true,
+        status: 200,
+        headers: {},
+        arrayBuffer: async () =>
+          Buffer.from("<rss><channel><title>x</title></channel></rss>"),
+      };
+    },
+  });
+  assert.equal(result.length, 1);
+  assert.equal(result[0]?.url, "https://a.example/atom.xml");
+});
+
+test("probeCommonFeedPaths: skips redirects to private addresses", async () => {
+  const cache = dnsCache(["a.example"]);
+  let fetches = 0;
+  const result = await probeCommonFeedPaths("https://a.example", [], {
+    cache,
+    paths: ["/rss.xml"],
+    fetchImpl: async (url) => {
+      fetches += 1;
+      assert.equal(String(url), "https://a.example/rss.xml");
+      return {
+        ok: false,
+        status: 302,
+        headers: new Headers({
+          location: "http://127.0.0.1/rss.xml",
+        }),
+        arrayBuffer: async () => Buffer.from(""),
+      };
+    },
+  });
+  assert.deepEqual(result, []);
+  assert.equal(fetches, 1);
+});

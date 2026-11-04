@@ -133,14 +133,17 @@ Crawls are bounded by controls including:
 - maximum number of pages;
 - maximum response-body size;
 - delay between requests;
-- redirect limits;
+- redirect limits (Node `nlp:sync` / JoshBot fetch paths cap hops and re-check
+  each `Location`);
 - per-page timeouts;
 - public-network address validation.
 
 Page requests are sequential within a source crawl. JoshBot rejects loopback,
 private, link-local, multicast, shared, unspecified, and other non-public
-destination addresses. Redirects are subject to the same network and origin
-checks.
+destination addresses. Redirects are subject to the same network checks. Poster
+downloads, feed probes, and Playwright enrichment/screenshot routes use the same
+`assertPublicURL` gate so a crawled site cannot steer the runner at metadata or
+RFC1918 addresses via open redirects or subresources.
 
 ### Data JoshBot retains
 

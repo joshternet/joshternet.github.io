@@ -11,6 +11,10 @@ import { formatTextForPath } from "../format-written.mjs";
 import { assertPublicURL, normalizeText } from "../network/lib.mjs";
 import { slugifyTopic } from "../network/connections.mjs";
 import {
+  MAX_PUBLIC_FETCH_REDIRECTS,
+  readCappedResponseBytes,
+} from "../network/public-fetch-guard.mjs";
+import {
   conditionalHeadersFromEntry,
   readFetchCacheBody,
   writeFetchCacheEntry,
@@ -23,6 +27,8 @@ import { parseHtmlRegions } from "./text.mjs";
  */
 export const MAX_PAGES_PER_ORIGIN = 250;
 export const MAX_BYTES_PER_RESPONSE = 1_500_000;
+/** Manual redirect hop ceiling (parity with preview/verify and poster fetches). */
+export const MAX_FETCH_REDIRECTS = MAX_PUBLIC_FETCH_REDIRECTS;
 export const MAX_CRAWL_DEPTH = 4;
 export const MAX_TOPICS_PER_ORIGIN = 24;
 /** Same-origin topic pages followed from a hub listing. */
@@ -114,6 +120,7 @@ export async function writeTextAtomic(filePath, text) {
  *   maxBytes?: number,
  *   overflow?: "truncate" | "throw",
  *   httpCache?: import("./fetch-cache.mjs").FetchCache,
+ *   redirectsRemaining?: number,
  * }} [options]
  * @returns {Promise<{
  *   url: string,
@@ -123,6 +130,10 @@ export async function writeTextAtomic(filePath, text) {
  * }>}
  */
 export async function fetchPublicText(href, options = {}) {
+  const redirectsRemaining =
+    typeof options.redirectsRemaining === "number"
+      ? options.redirectsRemaining
+      : MAX_FETCH_REDIRECTS;
   const url = await assertPublicURL(href, { cache: options.cache });
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
@@ -165,6 +176,10 @@ export async function fetchPublicText(href, options = {}) {
     }
 
     if (response.status >= 300 && response.status < 400) {
+      if (redirectsRemaining <= 0) {
+        throw new Error(`Exceeded ${MAX_FETCH_REDIRECTS} redirects`);
+      }
+
       const location = response.headers.get("location");
 
       if (!location) {
@@ -173,7 +188,10 @@ export async function fetchPublicText(href, options = {}) {
 
       const next = new URL(location, url.href).href;
       await assertPublicURL(next, { cache: options.cache });
-      return fetchPublicText(next, options);
+      return fetchPublicText(next, {
+        ...options,
+        redirectsRemaining: redirectsRemaining - 1,
+      });
     }
 
     if (!response.ok) {
@@ -181,14 +199,18 @@ export async function fetchPublicText(href, options = {}) {
     }
 
     const contentType = response.headers.get("content-type") || "";
-    let buffer = Buffer.from(await response.arrayBuffer());
+    let buffer;
 
-    if (buffer.byteLength > maxBytes) {
-      if (overflow === "throw") {
+    try {
+      buffer = await readCappedResponseBytes(response, maxBytes, { overflow });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+
+      if (/exceeds|too large/i.test(message)) {
         throw new Error(`response too large for ${url.href}`);
       }
 
-      buffer = buffer.subarray(0, maxBytes);
+      throw error;
     }
 
     const body = buffer.toString("utf8");

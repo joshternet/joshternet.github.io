@@ -4,6 +4,11 @@
 
 ### Fixed
 
+- **Showcase portfolio-chrome titles:** `isPortfolioIndexedProjectTitle` requires a two-digit index (`02 …`), so ordinary titles that start with one digit (e.g. YouTube “4 Hours for This Tiny Result?!”) are no longer rejected by `nlp:validate` as leftover portfolio chrome.
+- **Project Year labels and Showcase age:** `publishedAtFromPageHtml` recognizes portfolio `Year: 2022` labels (including `&nbsp;` / sibling-span markup like joshuastuebner.com project details). Dated `/projects|/portfolio|/work` archive rows and portfolio-sourced items now use a 365-day Showcase window (`PROJECTS_WINDOW_DAYS`), so old years stay out of the catalog while recent dated projects and undated experiments remain eligible.
+- **Crawler SSRF hardening:** Poster fetches, feed probes, Playwright work/Showcase screenshots, optional HTML render, and `fetchPublicText` now share public-URL checks on every redirect hop (cap 5), streaming body ceilings, and the network-sync Playwright route guard—closing paths where a crawled site could steer `nlp:sync` at private/metadata hosts via `redirect: "follow"` or unfiltered browser subrequests. Coverage closes cancel-failure, custom `maxRedirects`/`maxBytes`, and headerless-response branches in the shared guard, feed probes, and posters.
+
+- **Poster fetch hang during nlp:sync:** `fetchPosterBytes` no longer relies on `AbortSignal.timeout` alone (stalled Vercel/CDN downloads could sit ESTABLISHED for hours with no progress). Uses an AbortController + `Promise.race` hard deadline, a 12MB body ceiling, and per-URL `poster N/M` progress logs.
 - **Post-merge CI assertions:** Preview skip-reason test matches the editorial unpublished declaration summary; What's New Atom subtitle restored in `scripts/views/lib.mjs`; views title-fallback coverage again expects full origin URLs after main's `publisherDisplayTitle` won the merge.
 - **Cloudflare Worker snippet Liquid:** JSDoc in `_includes/snippets/cloudflare-worker.js` no longer uses `{{ ... }}` type literals, which Jekyll Liquid treated as template tags when the platform page included the file (dev build crash). Guarded by a unit test.
 

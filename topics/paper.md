@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Paper articles from Joshternet websites"
-description: "Explore Paper articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Paper, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Paper from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Paper, Joshternet, independent websites, Topics, shared interests"
 slug: "paper"
 permalink: /topics/paper/
 robots: max-snippet:160, max-image-preview:large

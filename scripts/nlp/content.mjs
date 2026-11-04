@@ -389,7 +389,8 @@ function contentUrlLookupKey(value) {
 
 /**
  * Publisher date from project/article HTML. Prefers Status Completed YEAR,
- * then article:published_time, time[datetime], JSON-LD datePublished.
+ * then article:published_time, time[datetime], JSON-LD datePublished,
+ * then labeled Year:/Published years (incl. &nbsp; / sibling-span markup).
  * Does not invent dates from free-prose year mentions.
  * @param {unknown} html
  * @returns {string}
@@ -463,6 +464,17 @@ export function publishedAtFromPageHtml(html) {
 
   if (fromByline) {
     return fromByline;
+  }
+
+  // Portfolio detail labels: "Year: 2022" (Stübner-shaped &nbsp; + spans).
+  const labeledYear = firstCapture(
+    html,
+    /\bYear:\s*(?:(?:&nbsp;|\u00a0|\s|<\/?[a-z][^>]*>)*)((?:19|20)\d{2})\b/i,
+  );
+  const fromLabeledYear = publishedAtFromYear(labeledYear);
+
+  if (fromLabeledYear) {
+    return fromLabeledYear;
   }
 
   // Labeled book/project years on the page (not “Coming …” blurbs).

@@ -1976,6 +1976,16 @@ test("publishedAtFromPageHtml prefers Status Completed over prose years", () => 
   );
   assert.equal(
     publishedAtFromPageHtml(
+      `<span class="break-word def">Year:&nbsp;</span><span class="break-word">2022</span>`,
+    ),
+    "2022-01-01T00:00:00.000Z",
+  );
+  assert.equal(
+    publishedAtFromPageHtml(`<p>Year: 2024</p>`),
+    "2024-01-01T00:00:00.000Z",
+  );
+  assert.equal(
+    publishedAtFromPageHtml(
       `<meta property="book:release_date" content="2025-04-01">`,
     ),
     "2025-04-01T00:00:00.000Z",

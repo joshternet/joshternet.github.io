@@ -1,54 +1,36 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T02:13:11.052Z",
+  "generated_at": "2026-11-04T08:24:16.947Z",
   "window_days": 14,
-  "primary_count": 8,
-  "item_count": 556,
-  "content_types": ["article", "project"],
+  "primary_count": 11,
+  "item_count": 584,
+  "content_types": ["article", "podcast_episode", "video"],
   "primary": [
     {
-      "url": "https://artlung.com/blog/2026/11/03/and-shredding/",
-      "title": "I went relatively early this morning.",
+      "url": "https://www.youtube.com/watch?v=QFPIB-IU_zA",
+      "title": "CSSBattle for NOVEMBER 4 (2026)",
       "summary": "",
-      "published_at": "2026-11-03T16:15:36.000Z",
-      "observed_at": "2026-11-04T01:56:36.324Z",
-      "content_type": "article",
-      "language": "en-us",
+      "published_at": "2026-11-04T01:41:19.000Z",
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "content_type": "video",
+      "language": "",
       "dir": "",
       "site_origin": "https://artlung.com",
       "site_title": "Joe Crawford",
       "domain": "artlung.com",
-      "tags": [
-        {
-          "slug": "general",
-          "label": "general"
-        },
-        {
-          "slug": "swim2026",
-          "label": "swim2026"
-        }
-      ],
-      "neighborhoods": [
-        {
-          "slug": "general",
-          "label": "general"
-        },
-        {
-          "slug": "swim2026",
-          "label": "swim2026"
-        }
-      ],
-      "image": "/assets/activity/posters/5dbd08bb6f5a677ce2e70bd2cffa3672f6197c6c0c516d4e4b1627efb9ff9301.webp",
+      "tags": [],
+      "neighborhoods": [],
+      "image": "/assets/activity/posters/3673bcb207e0cd9258a8c5dc716652cb43b511efff7ae80cc5cd041b81a34384.webp",
       "image_origin": "",
-      "source_kind": "h-entry",
-      "page_role": "article"
+      "source_kind": "elsewhere-youtube-video",
+      "page_role": "project"
     },
     {
-      "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
-      "title": "The October Micro SaaS Challenge: A Retro",
-      "summary": "Four micro SaaS products in four weeks, built with Claude Code: what shipped, which rules broke, what it cost, and what I'd change next time.",
-      "published_at": "2026-11-02T00:00:00.000Z",
-      "observed_at": "2026-11-04T01:56:36.324Z",
+      "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
+      "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone",
+      "summary": "I spent a week having Claude Code audit my fork of LightCraft, the AI-built Rust Lightroom clone: fuzzing, crash safety, a locked control port, faster frames, and 50,000 deleted lines.",
+      "published_at": "2026-11-04T00:00:00.000Z",
+      "observed_at": "2026-11-04T07:49:40.771Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -61,16 +43,16 @@
           "label": "ai"
         },
         {
-          "slug": "indie-hacking",
-          "label": "indie hacking"
+          "slug": "code-review",
+          "label": "code review"
         },
         {
-          "slug": "micro-saas",
-          "label": "micro saas"
+          "slug": "open-source",
+          "label": "open source"
         },
         {
-          "slug": "side-project",
-          "label": "side projects"
+          "slug": "refactor",
+          "label": "refactor"
         }
       ],
       "neighborhoods": [
@@ -79,29 +61,88 @@
           "label": "ai"
         },
         {
-          "slug": "indie-hacking",
-          "label": "indie hacking"
+          "slug": "code-review",
+          "label": "code review"
         },
         {
-          "slug": "micro-saas",
-          "label": "micro saas"
+          "slug": "open-source",
+          "label": "open source"
         },
         {
-          "slug": "side-project",
-          "label": "side projects"
+          "slug": "refactor",
+          "label": "refactor"
         }
       ],
-      "image": "/assets/activity/posters/06408c099e97547580ade828c7727b3a6fff5e2ad9379a28a4d1ac2f21e7ee6b.webp",
+      "image": "/assets/activity/posters/9ec585cb2ba2e8b98ffed866c39156fa4c8d3ede90b98d79a88b42414d9d2688.webp",
       "image_origin": "",
       "source_kind": "rss",
       "page_role": "article"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Rn8bsZhlDhQ",
+      "title": "This Morse Game Starts at a Brutal 40 WPM",
+      "summary": "",
+      "published_at": "2026-11-03T18:03:27.000Z",
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "content_type": "podcast_episode",
+      "language": "",
+      "dir": "",
+      "site_origin": "https://www.chrisminnick.com",
+      "site_title": "Chris Minnick",
+      "domain": "www.chrisminnick.com",
+      "tags": [],
+      "neighborhoods": [],
+      "image": "/assets/activity/posters/21c5d0066ee59cb1153184e9aa7c91e769992c38a924fab6f68ca6afc5953b58.webp",
+      "image_origin": "",
+      "source_kind": "youtube-show-fallback",
+      "page_role": "project"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=_kuQflW2Db8",
+      "title": "CSSBattle for NOVEMBER 3 (2026)",
+      "summary": "",
+      "published_at": "2026-11-03T01:36:50.000Z",
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "content_type": "video",
+      "language": "",
+      "dir": "",
+      "site_origin": "https://artlung.com",
+      "site_title": "Joe Crawford",
+      "domain": "artlung.com",
+      "tags": [],
+      "neighborhoods": [],
+      "image": "/assets/activity/posters/68fd93ab6c1e204177020b9ec5d7a70380ef1c3956d1546a5bae3d21e9c7cf18.webp",
+      "image_origin": "",
+      "source_kind": "elsewhere-youtube-video",
+      "page_role": "project",
+      "kind": "video"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=kF07_Z3ZmXo",
+      "title": "4 Hours for This Tiny Result?!",
+      "summary": "",
+      "published_at": "2026-11-02T18:02:50.000Z",
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "content_type": "podcast_episode",
+      "language": "",
+      "dir": "",
+      "site_origin": "https://www.chrisminnick.com",
+      "site_title": "Chris Minnick",
+      "domain": "www.chrisminnick.com",
+      "tags": [],
+      "neighborhoods": [],
+      "image": "/assets/activity/posters/cfbca59403c32e91f10fe5e0aea9f66ea5a5c5834a23bdc125a00ebb4382d936.webp",
+      "image_origin": "",
+      "source_kind": "youtube-show-fallback",
+      "page_role": "project",
+      "kind": "podcasts"
     },
     {
       "url": "https://joshtronic.com/2026/11/01/open-to-work/",
       "title": "I'm Open to Work",
       "summary": "Mailshake has terminated my employment after 8+ years. In that time, I... Started as engineer #3 Moved into management thanks to an awesome CTO Ran a 10-person team across backend, frontend, QA, and support Scaled down to 2 engineers while maintaining productivity Reduced annual AWS spend by ~70% over 3 years Was always on-call and handled support escalations Ran technical due diligence on 4 acqui",
       "published_at": "2026-11-01T00:00:00.000Z",
-      "observed_at": "2026-11-04T01:56:36.324Z",
+      "observed_at": "2026-11-04T07:49:40.771Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -110,7 +151,7 @@
       "domain": "joshtronic.com",
       "tags": [],
       "neighborhoods": [],
-      "image": "/assets/activity/posters/c8ff14603599a83a60dda2495133657a57b32bdb68d598da31f66e2b2391892d.webp",
+      "image": "/assets/activity/posters/e73ddad03df7aca2470a41e28b4c38c825da43d5657e33f7ab4636f668fedcc6.webp",
       "image_origin": "",
       "source_kind": "rss",
       "page_role": "unknown"
@@ -120,7 +161,7 @@
       "title": "Gluten-Free Chocolate Cake",
       "summary": "Nutrition assumptions and sources",
       "published_at": "2026-10-31T19:55:58.000Z",
-      "observed_at": "2026-11-04T01:56:36.324Z",
+      "observed_at": "2026-11-04T07:49:40.771Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -139,7 +180,7 @@
           "label": "recipe"
         }
       ],
-      "image": "/assets/activity/posters/740a76bfeb5078c7042231dc3d28ff27380df09b88eb804be63c0abfd29f678b.webp",
+      "image": "/assets/activity/posters/887a24a25612ce6458321dc4ea71d89a58cd6554873843e0f56af3e17bd944fa.webp",
       "image_origin": "",
       "source_kind": "rss",
       "page_role": "article"
@@ -149,7 +190,7 @@
       "title": "Worth Wandering: Radio Aporee",
       "summary": "A worldwide collection of field recordings that lets you explore the sounds of cities, forests, rivers, train stations and ordinary places, with experimental radio projects that turn listening into an entirely different way of experiencing the world.",
       "published_at": "2026-10-30T14:00:00.000Z",
-      "observed_at": "2026-11-04T01:56:36.324Z",
+      "observed_at": "2026-11-04T07:49:40.771Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -168,7 +209,7 @@
           "label": "field recording"
         }
       ],
-      "image": "/assets/activity/posters/bd55e5a6e8a8b4b8e593596e876eb2d31f4a32beecea28adcfa36c210b00811f.webp",
+      "image": "/assets/activity/posters/00bec74cb77e409e19f31ea2df977361a7e21b3b853e3a0fe4a21a0e0862b72f.webp",
       "image_origin": "",
       "source_kind": "atom",
       "page_role": "article"
@@ -178,7 +219,7 @@
       "title": "How Wizardly Words Invents Words",
       "summary": "It takes what we know and infers new words between the lines",
       "published_at": "2026-10-30T00:00:00.000Z",
-      "observed_at": "2026-11-04T01:56:36.324Z",
+      "observed_at": "2026-11-04T07:49:40.771Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -187,7 +228,7 @@
       "domain": "joshgr.com",
       "tags": [],
       "neighborhoods": [],
-      "image": "/assets/activity/posters/8d402470f9e309e86f40bbb8deab8d9a6f0f7756fe99ad17b2ce90f0f365a596.webp",
+      "image": "/assets/activity/posters/d57ef5d7ae4773605966eddc13baeae0a58d45d86ef19082c9f833dd1bf7f5db.webp",
       "image_origin": "",
       "source_kind": "rss",
       "page_role": "unknown"
@@ -197,7 +238,7 @@
       "title": "Enterprise sales teams, please, I beg you, stop",
       "summary": "I asked for a price on a few extra seats of software we already pay for. Two days and a pile of irrelevant questions later, I got one.",
       "published_at": "2026-10-28T00:00:00.000Z",
-      "observed_at": "2026-11-04T01:56:36.324Z",
+      "observed_at": "2026-11-04T07:49:40.771Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -206,7 +247,7 @@
       "domain": "joshghent.com",
       "tags": [],
       "neighborhoods": [],
-      "image": "/assets/activity/posters/4c514b3d1d438731fbfe946e8285c544a8bdc605e07a60a93d9c2857118dd71d.webp",
+      "image": "/assets/activity/posters/af504eb4e415de69875c8cdec7ddf3bafd9138ad5348e74cbe680bbbe31d3b13.webp",
       "image_origin": "",
       "source_kind": "atom",
       "page_role": "article"
@@ -216,8 +257,8 @@
       "title": "Skeuomorphism",
       "summary": "Operate a Radio Shack Armatron and move objects around its tabletop.",
       "published_at": "2026-10-27T00:00:00.000Z",
-      "observed_at": "2026-11-04T01:56:36.324Z",
-      "content_type": "project",
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "content_type": "article",
       "language": "en",
       "dir": "",
       "site_origin": "https://joshuamorris.info",
@@ -225,9 +266,9 @@
       "domain": "joshuamorris.info",
       "tags": [],
       "neighborhoods": [],
-      "image": "/assets/activity/posters/422b88b509b6913ae27504902894d512cfae7a2895864cba864019d529560cf5.webp",
+      "image": "/assets/activity/posters/3bc6494e20c2a676db0527f19fc245003560df0c80ca55d657ea74fcf3ed0380.webp",
       "image_origin": "",
-      "source_kind": "creative-schema",
+      "source_kind": "atom",
       "page_role": "unknown",
       "kind": "project"
     }

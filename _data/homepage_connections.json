@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T03:58:55.582Z",
+  "generated_at": "2026-11-04T07:49:34.753Z",
   "edge_count": 20,
   "edges": [
     {
@@ -62,7 +62,7 @@
       "text": "Verified Josh, Joshternet site",
       "rel": ["noopener"],
       "page": "https://forwardbias.dev/about-me/",
-      "evidence_count": 18,
+      "evidence_count": 19,
       "evidence": [
         {
           "class": "observed",
@@ -171,6 +171,13 @@
         },
         {
           "class": "observed",
+          "page": "https://forwardbias.dev/community/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
           "page": "https://forwardbias.dev/log/",
           "href": "https://joshternet.org/network/",
           "text": "Verified Josh, Joshternet site",
@@ -186,27 +193,6 @@
         {
           "class": "observed",
           "page": "https://forwardbias.dev/profile/",
-          "href": "https://joshternet.org/network/",
-          "text": "Verified Josh, Joshternet site",
-          "rel": ["noopener"]
-        }
-      ]
-    },
-    {
-      "from": "https://forwardbias.dev",
-      "to": "https://joshternet.org",
-      "relation": "homepage-link",
-      "directed": true,
-      "source": "content",
-      "href": "https://joshternet.org/network/",
-      "text": "Verified Josh, Joshternet site",
-      "rel": ["noopener"],
-      "page": "https://forwardbias.dev/",
-      "evidence_count": 1,
-      "evidence": [
-        {
-          "class": "observed",
-          "page": "https://forwardbias.dev/",
           "href": "https://joshternet.org/network/",
           "text": "Verified Josh, Joshternet site",
           "rel": ["noopener"]
@@ -419,6 +405,27 @@
           "page": "https://joshternet.org/",
           "href": "https://joshuastuebner.com/tools/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
           "text": "Tools (opens on the publisher’s site)",
+          "rel": ["noopener"]
+        }
+      ]
+    },
+    {
+      "from": "https://joshtronic.com",
+      "to": "https://joshternet.org",
+      "relation": "homepage-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://joshternet.org/network/",
+      "text": "Verified Josh, Joshternet site",
+      "rel": ["noopener"],
+      "page": "https://joshtronic.com/",
+      "evidence_count": 1,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://joshtronic.com/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
           "rel": ["noopener"]
         }
       ]

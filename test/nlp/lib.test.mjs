@@ -242,6 +242,36 @@ test("fetchPublicText: follows redirect with Location header", async () => {
   }
 });
 
+test("fetchPublicText: throws when redirect hop budget is exhausted", async () => {
+  const cache = dnsCache(["a.example"]);
+  let calls = 0;
+  install();
+  try {
+    globalThis.fetch = async (url) => {
+      calls += 1;
+      return {
+        ok: false,
+        status: 302,
+        headers: new Headers({
+          location: `https://a.example/hop-${calls}`,
+        }),
+        arrayBuffer: async () => Buffer.from(""),
+      };
+    };
+    await assert.rejects(
+      () =>
+        fetchPublicText("https://a.example/start", {
+          cache,
+          redirectsRemaining: 2,
+        }),
+      /Exceeded .* redirects/,
+    );
+    assert.equal(calls, 3);
+  } finally {
+    restore();
+  }
+});
+
 test("fetchPublicText: throws when redirect has no Location header", async () => {
   const cache = dnsCache(["a.example"]);
   install();

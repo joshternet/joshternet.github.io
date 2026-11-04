@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Power articles from Joshternet websites"
-description: "Explore Power articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Power, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Power from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Power, Joshternet, independent websites, Topics, shared interests"
 slug: "power"
 permalink: /topics/power/
 robots: max-snippet:160, max-image-preview:large

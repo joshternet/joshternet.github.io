@@ -38,10 +38,11 @@ test("shouldRenderHtml defaults off", () => {
     false,
   );
   assert.equal(shouldRenderHtml({ enabled: true }), true);
-  assert.equal(
-    shouldRenderHtml({ env: { JOSHTERNET_RENDER_HTML: "true" } }),
-    true,
-  );
+  lookup: (async () => [{ address: "1.1.1.1", family: 4 }],
+    assert.equal(
+      shouldRenderHtml({ env: { JOSHTERNET_RENDER_HTML: "true" } }),
+      true,
+    ));
   assert.equal(
     shouldRenderHtml({ env: { JOSHTERNET_RENDER_HTML: "yes" } }),
     true,
@@ -75,17 +76,29 @@ test("renderHtmlForExtraction returns null for unsafe urls even when enabled", a
   assert.equal(html, null);
 });
 
+test("renderHtmlForExtraction returns null when assertPublicURL rejects", async () => {
+  const html = await renderHtmlForExtraction("http://127.0.0.1/", {
+    enabled: true,
+    lookup: async () => [{ address: "127.0.0.1", family: 4 }],
+  });
+  assert.equal(html, null);
+});
+
 test("renderHtmlForExtraction uses injected browser factory", async () => {
   let routed = 0;
   const html = await renderHtmlForExtraction("https://a.example/art/", {
     enabled: true,
     timeoutMs: 100,
     maxSubresources: 2,
+    lookup: async () => [{ address: "1.1.1.1", family: 4 }],
     browserFactory: async () => ({
       async newPage() {
         return {
           async route(_pattern, handler) {
             await handler({
+              request: () => ({
+                url: () => "https://a.example/art/",
+              }),
               abort: async () => {
                 routed += 1;
               },
@@ -94,6 +107,9 @@ test("renderHtmlForExtraction uses injected browser factory", async () => {
               },
             });
             await handler({
+              request: () => ({
+                url: () => "https://a.example/asset.js",
+              }),
               abort: async () => {
                 routed += 1;
               },
@@ -102,6 +118,9 @@ test("renderHtmlForExtraction uses injected browser factory", async () => {
               },
             });
             await handler({
+              request: () => ({
+                url: () => "https://a.example/extra.js",
+              }),
               abort: async () => {
                 routed += 1;
               },
@@ -132,6 +151,7 @@ test("renderHtmlForExtraction uses injected browser factory", async () => {
 test("renderHtmlForExtraction returns null when factory throws", async () => {
   const html = await renderHtmlForExtraction("https://a.example/", {
     enabled: true,
+    lookup: async () => [{ address: "1.1.1.1", family: 4 }],
     browserFactory: async () => {
       throw new Error("boom");
     },
@@ -142,6 +162,7 @@ test("renderHtmlForExtraction returns null when factory throws", async () => {
 test("renderHtmlForExtraction tolerates missing browser.close", async () => {
   const html = await renderHtmlForExtraction("https://a.example/", {
     enabled: true,
+    lookup: async () => [{ address: "1.1.1.1", family: 4 }],
     timeoutMs: "nope",
     maxSubresources: "nope",
     browserFactory: async () => ({
@@ -162,6 +183,7 @@ test("renderHtmlForExtraction tolerates missing browser.close", async () => {
 test("renderHtmlForExtraction closes browser that throws on close", async () => {
   const html = await renderHtmlForExtraction("https://a.example/", {
     enabled: true,
+    lookup: async () => [{ address: "1.1.1.1", family: 4 }],
     browserFactory: async () => ({
       async newPage() {
         return {
@@ -183,6 +205,7 @@ test("renderHtmlForExtraction closes browser that throws on close", async () => 
 test("renderHtmlForExtraction returns null for empty content", async () => {
   const html = await renderHtmlForExtraction("https://a.example/", {
     enabled: true,
+    lookup: async () => [{ address: "1.1.1.1", family: 4 }],
     browserFactory: async () => ({
       async newPage() {
         return {
@@ -204,6 +227,7 @@ test("renderHtmlForExtraction returns null for empty content", async () => {
 test("renderHtmlForExtraction works when page has no route hook", async () => {
   const html = await renderHtmlForExtraction("https://a.example/", {
     enabled: true,
+    lookup: async () => [{ address: "1.1.1.1", family: 4 }],
     browserFactory: async () => ({
       async newPage() {
         return {
@@ -223,6 +247,7 @@ test("renderHtmlForExtraction works when page has no route hook", async () => {
 test("renderHtmlForExtraction returns null when content() is non-string", async () => {
   const html = await renderHtmlForExtraction("https://a.example/", {
     enabled: true,
+    lookup: async () => [{ address: "1.1.1.1", family: 4 }],
     browserFactory: async () => ({
       async newPage() {
         return {
@@ -242,6 +267,7 @@ test("renderHtmlForExtraction returns null when content() is non-string", async 
 test("renderHtmlForExtraction uses importPlaywright when no browserFactory", async () => {
   const html = await renderHtmlForExtraction("https://a.example/art/", {
     enabled: true,
+    lookup: async () => [{ address: "1.1.1.1", family: 4 }],
     timeoutMs: 0,
     maxSubresources: 0,
     importPlaywright: async () => ({
