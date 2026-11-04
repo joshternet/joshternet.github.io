@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-03T22:04:19.679Z",
-  "participant_count": 21,
-  "community_count": 633,
-  "publication_count": 554,
+  "generated_at": "2026-11-04T02:13:11.052Z",
+  "participant_count": 22,
+  "community_count": 634,
+  "publication_count": 556,
   "connection_count": 26,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
@@ -11,11 +11,11 @@
   },
   "fresh": [
     {
-      "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
-      "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters.",
+      "url": "https://artlung.com/blog/2026/11/03/and-shredding/",
+      "title": "I went relatively early this morning.",
       "summary": "",
-      "published_at": "2026-11-02T22:49:28.000Z",
-      "observed_at": "2026-11-03T21:44:42.327Z",
+      "published_at": "2026-11-03T16:15:36.000Z",
+      "observed_at": "2026-11-04T01:56:36.324Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -24,49 +24,25 @@
       "domain": "artlung.com",
       "tags": [
         {
-          "slug": "california",
-          "label": "california"
-        },
-        {
           "slug": "general",
           "label": "general"
         },
         {
-          "slug": "history",
-          "label": "history"
-        },
-        {
-          "slug": "permanence",
-          "label": "permanence"
-        },
-        {
-          "slug": "politics",
-          "label": "politics"
+          "slug": "swim2026",
+          "label": "swim2026"
         }
       ],
       "neighborhoods": [
         {
-          "slug": "california",
-          "label": "california"
-        },
-        {
           "slug": "general",
           "label": "general"
         },
         {
-          "slug": "history",
-          "label": "history"
-        },
-        {
-          "slug": "permanence",
-          "label": "permanence"
-        },
-        {
-          "slug": "politics",
-          "label": "politics"
+          "slug": "swim2026",
+          "label": "swim2026"
         }
       ],
-      "image": "/assets/activity/posters/764b7296d487335b4248db890aa60a36004ce159233eaba1732b970faf360681.webp",
+      "image": "/assets/activity/posters/5dbd08bb6f5a677ce2e70bd2cffa3672f6197c6c0c516d4e4b1627efb9ff9301.webp",
       "image_origin": "",
       "source_kind": "h-entry",
       "page_role": "article"
@@ -76,7 +52,7 @@
       "title": "The October Micro SaaS Challenge: A Retro",
       "summary": "Four micro SaaS products in four weeks, built with Claude Code: what shipped, which rules broke, what it cost, and what I'd change next time.",
       "published_at": "2026-11-02T00:00:00.000Z",
-      "observed_at": "2026-11-03T21:44:42.327Z",
+      "observed_at": "2026-11-04T01:56:36.324Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -129,7 +105,7 @@
       "title": "I'm Open to Work",
       "summary": "Mailshake has terminated my employment after 8+ years. In that time, I... Started as engineer #3 Moved into management thanks to an awesome CTO Ran a 10-person team across backend, frontend, QA, and support Scaled down to 2 engineers while maintaining productivity Reduced annual AWS spend by ~70% over 3 years Was always on-call and handled support escalations Ran technical due diligence on 4 acqui",
       "published_at": "2026-11-01T00:00:00.000Z",
-      "observed_at": "2026-11-03T21:44:42.327Z",
+      "observed_at": "2026-11-04T01:56:36.324Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -148,7 +124,7 @@
       "title": "Gluten-Free Chocolate Cake",
       "summary": "Nutrition assumptions and sources",
       "published_at": "2026-10-31T19:55:58.000Z",
-      "observed_at": "2026-11-03T21:44:42.327Z",
+      "observed_at": "2026-11-04T01:56:36.324Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -177,7 +153,7 @@
       "title": "Worth Wandering: Radio Aporee",
       "summary": "A worldwide collection of field recordings that lets you explore the sounds of cities, forests, rivers, train stations and ordinary places, with experimental radio projects that turn listening into an entirely different way of experiencing the world.",
       "published_at": "2026-10-30T14:00:00.000Z",
-      "observed_at": "2026-11-03T21:44:42.327Z",
+      "observed_at": "2026-11-04T01:56:36.324Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -206,7 +182,7 @@
       "title": "How Wizardly Words Invents Words",
       "summary": "It takes what we know and infers new words between the lines",
       "published_at": "2026-10-30T00:00:00.000Z",
-      "observed_at": "2026-11-03T21:44:42.327Z",
+      "observed_at": "2026-11-04T01:56:36.324Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -222,8 +198,8 @@
     }
   ],
   "neighborhood": {
-    "slug": "satire",
-    "label": "Satire",
+    "slug": "refactor",
+    "label": "refactor",
     "member_count": 1
   },
   "connection": {

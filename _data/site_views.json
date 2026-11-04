@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-03T22:04:19.679Z",
+  "generated_at": "2026-11-04T02:13:11.052Z",
   "sites": [
     {
       "origin": "https://artlung.com",
@@ -99,6 +99,10 @@
           "label": "california"
         },
         {
+          "slug": "classicbot-toy",
+          "label": "classicbot_toy"
+        },
+        {
           "slug": "communication",
           "label": "Communication"
         },
@@ -109,6 +113,10 @@
         {
           "slug": "corgi",
           "label": "corgi"
+        },
+        {
+          "slug": "created",
+          "label": "created"
         },
         {
           "slug": "css",
@@ -129,6 +137,10 @@
         {
           "slug": "email",
           "label": "emails"
+        },
+        {
+          "slug": "feel",
+          "label": "feel"
         },
         {
           "slug": "general",
@@ -231,16 +243,16 @@
           "label": "Quote"
         },
         {
+          "slug": "remember",
+          "label": "remember"
+        },
+        {
           "slug": "robot",
           "label": "Robots"
         },
         {
           "slug": "school",
           "label": "schools"
-        },
-        {
-          "slug": "silo",
-          "label": "silo"
         },
         {
           "slug": "social-media",
@@ -261,6 +273,10 @@
         {
           "slug": "swim2026",
           "label": "swim2026"
+        },
+        {
+          "slug": "toy",
+          "label": "toy"
         },
         {
           "slug": "twitter",
@@ -300,7 +316,7 @@
         "title": "/amiga/",
         "summary": "A few of my memories of using the a Commodore Amiga 1000 for computer graphics, music, etc.",
         "published_at": "",
-        "observed_at": "2026-11-03T21:44:42.327Z",
+        "observed_at": "2026-11-04T01:56:36.324Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -349,6 +365,8 @@
         "selection_strategy": "uncapped-site-crawl-v1",
         "selection_reasons": {
           "https://artlung.com/": "home",
+          "https://artlung.com/blog/2026/11/03/and-shredding/": "feed",
+          "https://artlung.com/blog/2026/11/03/ibot-g3-2018/": "feed",
           "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/": "feed",
           "https://artlung.com/blog/2026/11/02/windy-and-fun/": "feed",
           "https://artlung.com/blog/2026/11/01/robot-number-3991/": "feed",
@@ -367,8 +385,6 @@
           "https://artlung.com/blog/2026/10/21/rain-coming/": "feed",
           "https://artlung.com/blog/2026/10/20/the-sunset-from-home/": "feed",
           "https://artlung.com/blog/2026/10/19/be-indieweb-enough/": "feed",
-          "https://artlung.com/blog/2026/10/18/from-senator-sanders/": "feed",
-          "https://artlung.com/blog/2026/10/18/pb-drive-this-morning/": "feed",
           "https://artlung.com/ai/": "slashpages-manifest",
           "https://artlung.com/about/": "slashpages-manifest",
           "https://artlung.com/blank/": "slashpages-manifest",
@@ -9320,6 +9336,8 @@
           "https://artlung.com/blog/2026/10/15/anniversary-mulaney/": "sitemap",
           "https://artlung.com/blog/2026/10/17/possibly-worry/": "sitemap",
           "https://artlung.com/blog/2026/10/18/email-of-the-morning-2/": "sitemap",
+          "https://artlung.com/blog/2026/10/18/from-senator-sanders/": "sitemap",
+          "https://artlung.com/blog/2026/10/18/pb-drive-this-morning/": "sitemap",
           "https://artlung.com/blogofthe-day/": "sitemap",
           "https://artlung.com/blogosphere-part-1/": "sitemap",
           "https://artlung.com/blogosphere-part-2/": "sitemap",
@@ -11450,10 +11468,6 @@
           "https://artlung.com/lab/": "content-index",
           "https://artlung.com/videos/reels/rideawave2026/": "content-index",
           "https://artlung.com/blog/page/2/": "content-index",
-          "https://artlung.com/blog/tag/programming/": "content-index",
-          "https://artlung.com/blog/tag/php/": "content-index",
-          "https://artlung.com/blog/tag/dog/": "content-index",
-          "https://artlung.com/blog/2026/10/24/": "content-index",
           "https://artlung.com/blog/tag/mental-health/": "content-index",
           "https://artlung.com/blog/tag/communication/": "content-index",
           "https://artlung.com/blog/tag/sandiego": "content-index",
@@ -11461,14 +11475,17 @@
           "https://artlung.com/blog/tag/bodysurfing/": "content-index",
           "https://artlung.com/blog/tag/star-trek/": "content-index",
           "https://artlung.com/blog/2026/10/": "content-index",
-          "https://artlung.com/blog/tag/via-instagram/": "content-index",
           "https://artlung.com/blog/tag/politics/": "content-index",
           "https://artlung.com/blog/tag/permanence/": "content-index",
           "https://artlung.com/blog/tag/history/": "content-index",
           "https://artlung.com/blog/tag/california/": "content-index",
           "https://artlung.com/blog/2026/11/02/": "content-index",
-          "https://artlung.com/blog/2026/11/": "content-index",
           "https://artlung.com/twitter/artlung/": "content-index",
+          "https://artlung.com/blog/tag/via-instagram/": "content-index",
+          "https://artlung.com/blog/tag/classicbot_toy/": "content-index",
+          "https://artlung.com/blog/tag/classicbot_toy": "content-index",
+          "https://artlung.com/blog/2026/11/03/": "content-index",
+          "https://artlung.com/blog/2026/11/": "content-index",
           "https://artlung.com/blog/2022/08/10/drop-it-like-its-bivalve-webcomic-gull-beach/": "content-index",
           "https://artlung.com/blog/2023/06/14/struggle-based-on-a-true-story-webcomic/": "content-index",
           "https://artlung.com/blog/tag/music/": "content-index",
@@ -11476,6 +11493,8 @@
           "https://artlung.com/blog/2023/10/17/music-concerts/": "content-index",
           "https://artlung.com/contact/?url=https://artlung.com/guestbook/": "content-index",
           "https://artlung.com/likes/feed.xml": "budget-exhausted",
+          "https://artlung.com/contact/?url=https://artlung.com/blog/2026/11/03/and-shredding/": "budget-exhausted",
+          "https://artlung.com/contact/?url=https://artlung.com/blog/2026/11/03/ibot-g3-2018/": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2026/11/02/windy-and-fun/": "budget-exhausted",
           "https://artlung.com/blog/2026/11/01/": "budget-exhausted",
@@ -11500,6 +11519,10 @@
           "https://artlung.com/contact/?url=https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/": "budget-exhausted",
           "https://artlung.com/blog/2026/10/25/": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2026/10/25/surfer-plankton-worrisome/": "budget-exhausted",
+          "https://artlung.com/blog/2026/10/24/": "budget-exhausted",
+          "https://artlung.com/blog/tag/dog/": "budget-exhausted",
+          "https://artlung.com/blog/tag/php/": "budget-exhausted",
+          "https://artlung.com/blog/tag/programming/": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2026/10/24/programming-and-dog-walking/": "budget-exhausted",
           "https://artlung.com/blog/tag/sploot": "budget-exhausted",
           "https://artlung.com/blog/tag/corgi": "budget-exhausted",
@@ -11541,13 +11564,6 @@
           "https://artlung.com/blog/2026/10/19/be-indieweb-enough/?replytocom=1247033": "budget-exhausted",
           "https://artlung.com/blog/2026/10/19/be-indieweb-enough/?replytocom=1247083": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2026/10/19/be-indieweb-enough/": "budget-exhausted",
-          "https://artlung.com/blog/2026/10/18/": "budget-exhausted",
-          "https://artlung.com/blog/tag/silo/": "budget-exhausted",
-          "https://artlung.com/blog/2026/10/18/from-senator-sanders/?replytocom=1246502": "budget-exhausted",
-          "https://artlung.com/blog/2026/10/18/from-senator-sanders/?replytocom=1246589": "budget-exhausted",
-          "https://artlung.com/blog/2026/10/18/from-senator-sanders/?replytocom=1247032": "budget-exhausted",
-          "https://artlung.com/contact/?url=https://artlung.com/blog/2026/10/18/from-senator-sanders/": "budget-exhausted",
-          "https://artlung.com/contact/?url=https://artlung.com/blog/2026/10/18/pb-drive-this-morning/": "budget-exhausted",
           "https://artlung.com/blog/2023/": "budget-exhausted",
           "https://artlung.com/blog/2023/10/": "budget-exhausted",
           "https://artlung.com/blog/2023/10/26/": "budget-exhausted",
@@ -11937,6 +11953,7 @@
           "https://artlung.com/blog/tag/jonnysnow16/": "budget-exhausted",
           "https://artlung.com/blog/tag/gwenthegoblin/page/2/": "budget-exhausted",
           "https://artlung.com/tags/indieweb/": "budget-exhausted",
+          "https://artlung.com/blog/tag/silo/": "budget-exhausted",
           "https://artlung.com/blog/tag/livejournal/": "budget-exhausted",
           "https://artlung.com/blog/tag/htmlday/": "budget-exhausted",
           "https://artlung.com/blog/tag/organizing/": "budget-exhausted",
@@ -12086,11 +12103,6 @@
           "https://artlung.com/blog/2024/11/": "budget-exhausted",
           "https://artlung.com/blog/2024/11/14/": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2024/11/14/ive-done-20-of-these-css-battle-videos-now/": "budget-exhausted",
-          "https://artlung.com/blog/2026/10/14/": "budget-exhausted",
-          "https://artlung.com/blog/2026/10/14/bad-robot-welcome/?replytocom=1246129": "budget-exhausted",
-          "https://artlung.com/blog/2026/10/14/bad-robot-welcome/?replytocom=1246538": "budget-exhausted",
-          "https://artlung.com/blog/2026/10/14/bad-robot-welcome/?replytocom=1246858": "budget-exhausted",
-          "https://artlung.com/contact/?url=https://artlung.com/blog/2026/10/14/bad-robot-welcome/": "budget-exhausted",
           "https://artlung.com/archive/https//joecrawford.com/": "budget-exhausted",
           "https://artlung.com/archive/splashes/-20071006": "budget-exhausted",
           "https://artlung.com/archive/transitworks/": "budget-exhausted",
@@ -12178,6 +12190,11 @@
           "https://artlung.com/contact/?url=https://artlung.com/blog/2013/07/01/adieu-google-reader/": "budget-exhausted",
           "https://artlung.com/robots.txt": "budget-exhausted",
           "https://artlung.com/blog/2026/page/2/": "budget-exhausted",
+          "https://artlung.com/tags/classicbot_toy/": "budget-exhausted",
+          "https://artlung.com/tags/via-instagram/": "budget-exhausted",
+          "https://artlung.com/blog/tag/sandiegodesignweek": "budget-exhausted",
+          "https://artlung.com/blog/tag/sandiegodesignweek/": "budget-exhausted",
+          "https://artlung.com/blog/tag/via-instagram/page/2/": "budget-exhausted",
           "https://artlung.com/tags/california/": "budget-exhausted",
           "https://artlung.com/blog/tag/election/": "budget-exhausted",
           "https://artlung.com/blog/2023/07/08/set-new-merch-item-redbubble-bodysurfing-bear-the/": "budget-exhausted",
@@ -12232,10 +12249,6 @@
           "https://artlung.com/blog/tag/donald-trump/": "budget-exhausted",
           "https://artlung.com/blog/tag/merrill-markoe/": "budget-exhausted",
           "https://artlung.com/blog/tag/politics/page/2/": "budget-exhausted",
-          "https://artlung.com/tags/via-instagram/": "budget-exhausted",
-          "https://artlung.com/blog/tag/sandiegodesignweek": "budget-exhausted",
-          "https://artlung.com/blog/tag/sandiegodesignweek/": "budget-exhausted",
-          "https://artlung.com/blog/tag/via-instagram/page/2/": "budget-exhausted",
           "https://artlung.com/blog/2026/10/page/2/": "budget-exhausted",
           "https://artlung.com/blog/2020/04/": "budget-exhausted",
           "https://artlung.com/blog/2020/04/03/": "budget-exhausted",
@@ -12280,27 +12293,6 @@
           "https://artlung.com/blog/tag/ken-theater/": "budget-exhausted",
           "https://artlung.com/blog/tag/spalding-gray/": "budget-exhausted",
           "https://artlung.com/blog/tag/suicide/": "budget-exhausted",
-          "https://artlung.com/foursquare/artlung/": "budget-exhausted",
-          "https://artlung.com/tags/dog/": "budget-exhausted",
-          "https://artlung.com/blog/tag/sparky/": "budget-exhausted",
-          "https://artlung.com/blog/tag/cat/": "budget-exhausted",
-          "https://artlung.com/tags/php/": "budget-exhausted",
-          "https://artlung.com/blog/tag/noke-us/": "budget-exhausted",
-          "https://artlung.com/blog/tag/lab/": "budget-exhausted",
-          "https://artlung.com/blog/2024/03/08/during-sabbatical-ive-learned-lot-one-the-things/": "budget-exhausted",
-          "https://artlung.com/blog/tag/wordpress": "budget-exhausted",
-          "https://artlung.com/blog/2024/02/29/self-hosted-wp-gravatar-verification/": "budget-exhausted",
-          "https://artlung.com/blog/tag/gravatar/": "budget-exhausted",
-          "https://artlung.com/blog/2023/11/04/returning-comic-con-registration-prices-2024/": "budget-exhausted",
-          "https://artlung.com/blog/2023/07/26/the-php-logo-as-if-it-were-java/": "budget-exhausted",
-          "https://artlung.com/blog/tag/graphics/": "budget-exhausted",
-          "https://artlung.com/blog/tag/java/": "budget-exhausted",
-          "https://artlung.com/blog/tag/audioscrobbler/": "budget-exhausted",
-          "https://artlung.com/blog/tag/last-fm/": "budget-exhausted",
-          "https://artlung.com/blog/tag/php/page/2/": "budget-exhausted",
-          "https://artlung.com/tags/programming/": "budget-exhausted",
-          "https://artlung.com/blog/tag/retroweb/": "budget-exhausted",
-          "https://artlung.com/blog/tag/programming/page/2/": "budget-exhausted",
           "https://artlung.com/blog/page/": "budget-exhausted",
           "https://artlung.com/blog/page/3/": "budget-exhausted",
           "https://artlung.com/blog/2025/01/": "budget-exhausted",
@@ -12477,6 +12469,7 @@
           "https://artlung.com/blog/tag/mixtapes/": "budget-exhausted",
           "https://artlung.com/blog/tag/rebecca-black/": "budget-exhausted",
           "https://artlung.com/blog/tag/_woca_/": "budget-exhausted",
+          "https://artlung.com/blog/tag/lab/": "budget-exhausted",
           "https://artlung.com/blog/tag/music/page/2/": "budget-exhausted",
           "https://artlung.com/amiga/amiga.css": "budget-exhausted",
           "https://artlung.com/amiga/amiga.scss": "budget-exhausted",
@@ -12789,6 +12782,8 @@
           "https://artlung.com/dtd/artlung.dtd": "budget-exhausted",
           "https://artlung.com/dtd/artlung.dtd.txt": "budget-exhausted",
           "https://artlung.com/blog": "budget-exhausted",
+          "https://artlung.com/likes/f6fd1809a988c9efe07600506a96bf52": "budget-exhausted",
+          "https://artlung.com/foursquare/artlung/": "budget-exhausted",
           "https://artlung.com/gato": "budget-exhausted",
           "https://artlung.com/blog/2025/10/07/fresh-028/": "budget-exhausted",
           "https://artlung.com/blog/2024/05/31/goodbye-foaf/": "budget-exhausted",
@@ -13219,6 +13214,7 @@
           "https://artlung.com/blog/2023/07/21/baddie-current-slang-for-confident-attractive-woman-very/": "budget-exhausted",
           "https://artlung.com/blog/2023/07/21/last-year-didnt-donate-tried-but-they-identified/": "budget-exhausted",
           "https://artlung.com/blog/2023/07/23/cousin-miles-striking-blow-during-sdcc-with-the/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/26/the-php-logo-as-if-it-were-java/": "budget-exhausted",
           "https://artlung.com/blog/2023/07/26/the-rock-zoom-background-repeated/": "budget-exhausted",
           "https://artlung.com/blog/2023/07/28/head-shaving-time-lapse/": "budget-exhausted",
           "https://artlung.com/blog/2023/07/29/last-week-met-droids-dont-think-have-the/": "budget-exhausted",
@@ -13322,6 +13318,7 @@
           "https://artlung.com/blog/2023/11/03/slow-going-but-time-for-more-commits-on-my-custom-theme/": "budget-exhausted",
           "https://artlung.com/blog/2023/11/04/been-cleaning-and-optimizing-website-its-got-years/": "budget-exhausted",
           "https://artlung.com/blog/2023/11/04/kelly-filled-the-hummingbird-feeder-and-its-a-hit/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/04/returning-comic-con-registration-prices-2024/": "budget-exhausted",
           "https://artlung.com/blog/2023/11/04/the-bodysurfing-blog-has-published-a-great-list/": "budget-exhausted",
           "https://artlung.com/blog/2023/11/05/last-light-coming-soon/": "budget-exhausted",
           "https://artlung.com/blog/2023/11/05/thanks-repo-lookout/": "budget-exhausted",
@@ -13482,6 +13479,7 @@
           "https://artlung.com/blog/2024/02/28/digital-gardens/": "budget-exhausted",
           "https://artlung.com/blog/2024/02/28/mistrust-based-technology-choices/": "budget-exhausted",
           "https://artlung.com/blog/2024/02/29/leap-day/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/29/self-hosted-wp-gravatar-verification/": "budget-exhausted",
           "https://artlung.com/blog/2024/03/01/autocomplete/": "budget-exhausted",
           "https://artlung.com/blog/2024/03/01/be-the-change-you-wish-to-see-in-the-indieweb/": "budget-exhausted",
           "https://artlung.com/blog/2024/03/01/how-to-print-a-web-page-1997-style/": "budget-exhausted",
@@ -13492,6 +13490,7 @@
           "https://artlung.com/blog/2024/03/06/dont-like-your-examples/": "budget-exhausted",
           "https://artlung.com/blog/2024/03/06/xoxo2024/": "budget-exhausted",
           "https://artlung.com/blog/2024/03/07/facebook-instagram-takeovers/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/08/during-sabbatical-ive-learned-lot-one-the-things/": "budget-exhausted",
           "https://artlung.com/blog/2024/03/08/greeting-card/": "budget-exhausted",
           "https://artlung.com/blog/2024/03/08/mentioned-before-the-wetsuit-that-wouldnt-stay-zipped/": "budget-exhausted",
           "https://artlung.com/blog/2024/03/09/look/": "budget-exhausted",
@@ -13603,7 +13602,7 @@
           "https://artlung.com/blog/2024/06/05/bandwidth-throttling/": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-03T21:44:42.327Z"
+      "crawled_at": "2026-11-04T01:56:36.324Z"
     },
     {
       "origin": "https://forwardbias.dev",
@@ -13930,7 +13929,7 @@
           "https://forwardbias.dev/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-03T21:44:42.327Z"
+      "crawled_at": "2026-11-04T01:56:36.324Z"
     },
     {
       "origin": "https://joshbeard.com",
@@ -13981,7 +13980,7 @@
         "title": "Photos",
         "summary": "Photo albums from Colorado, travel, cycling, and everyday life.",
         "published_at": "",
-        "observed_at": "2026-11-03T21:44:42.327Z",
+        "observed_at": "2026-11-04T01:56:36.324Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -14201,6 +14200,8 @@
           "https://joshbeard.com/pgp/": "sitemap",
           "https://joshbeard.com/site/small.html": "sitemap",
           "https://joshbeard.com/workouts/": "sitemap",
+          "https://joshbeard.com/photos/2026/IMG_1890_jpeg.html": "sitemap",
+          "https://joshbeard.com/photos/2026/IMG_1888_jpeg.html": "sitemap",
           "https://joshbeard.com/photos/2026/IMG_1811_jpeg.html": "sitemap",
           "https://joshbeard.com/photos/2026/IMG_1748_jpeg.html": "sitemap",
           "https://joshbeard.com/photos/2026/IMG_1736_jpeg.html": "sitemap",
@@ -14238,6 +14239,50 @@
           "https://joshbeard.com/photos/2026/IMG_0743_jpeg.html": "sitemap",
           "https://joshbeard.com/photos/2026/IMG_0733_jpeg.html": "sitemap",
           "https://joshbeard.com/photos/2026/": "sitemap",
+          "https://joshbeard.com/photos/2023/IMG_3479_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2023/IMG_3254_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2023/": "sitemap",
+          "https://joshbeard.com/photos/2022/IMG_2990_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2022/IMG_2545_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2022/IMG_2538_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2022/": "sitemap",
+          "https://joshbeard.com/photos/2025/IMG_0711_jpeg.html": "sitemap",
+          "https://joshbeard.com/photos/2025/IMG_0621_jpeg.html": "sitemap",
+          "https://joshbeard.com/photos/2025/IMG_0606_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2025/IMG_0559_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2025/IMG_0522_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2025/IMG_0508_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2025/IMG_0469_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2025/IMG_0467_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2025/IMG_4950_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2025/": "sitemap",
+          "https://joshbeard.com/photos/2015/IMG_0332_JPG.html": "sitemap",
+          "https://joshbeard.com/photos/2015/IMG_0324_JPG.html": "sitemap",
+          "https://joshbeard.com/photos/2015/IMG_0317_JPG.html": "sitemap",
+          "https://joshbeard.com/photos/2015/IMG_0314_JPG.html": "sitemap",
+          "https://joshbeard.com/photos/2015/IMG_0257_JPG.html": "sitemap",
+          "https://joshbeard.com/photos/2015/IMG_0221_JPG.html": "sitemap",
+          "https://joshbeard.com/photos/2015/IMG_0209_JPG.html": "sitemap",
+          "https://joshbeard.com/photos/2015/IMG_0211_JPG.html": "sitemap",
+          "https://joshbeard.com/photos/2015/IMG_0141_JPG.html": "sitemap",
+          "https://joshbeard.com/photos/2015/IMG_0879_JPG.html": "sitemap",
+          "https://joshbeard.com/photos/2015/": "sitemap",
+          "https://joshbeard.com/photos/2024/IMG_4709_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2024/IMG_9744_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2024/IMG_4648_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2024/IMG_4589_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2024/IMG_4541_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2024/": "sitemap",
+          "https://joshbeard.com/photos/2020/2020-colorado-pagosa_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2020/IMG_4196_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2020/IMG_4177_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2020/IMG_4173_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2020/IMG_4169_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2020/IMG_4166_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2020/IMG_3687_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2020/2020-garden-of-the-gods-2_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2020/2020-garden-of-the-gods-1_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2020/": "sitemap",
           "https://joshbeard.com/photos/2019/IMG_0860_jpg.html": "sitemap",
           "https://joshbeard.com/photos/2019/glen-eyrie-3_jpg.html": "sitemap",
           "https://joshbeard.com/photos/2019/glen-eyrie-2_jpg.html": "sitemap",
@@ -14269,47 +14314,11 @@
           "https://joshbeard.com/photos/2019/2019-roadtrip-01_jpeg.html": "sitemap",
           "https://joshbeard.com/photos/2019/2019-rolling-stones_jpg.html": "sitemap",
           "https://joshbeard.com/photos/2019/": "sitemap",
-          "https://joshbeard.com/photos/2025/IMG_0711_jpeg.html": "sitemap",
-          "https://joshbeard.com/photos/2025/IMG_0621_jpeg.html": "sitemap",
-          "https://joshbeard.com/photos/2025/IMG_0606_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2025/IMG_0559_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2025/IMG_0522_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2025/IMG_0508_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2025/IMG_0469_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2025/IMG_0467_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2025/IMG_4950_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2025/": "sitemap",
           "https://joshbeard.com/photos/2021/IMG_0678_jpg.html": "sitemap",
           "https://joshbeard.com/photos/2021/IMG_9795_jpg.html": "sitemap",
           "https://joshbeard.com/photos/2021/IMG_9041_jpg.html": "sitemap",
           "https://joshbeard.com/photos/2021/IMG_8949_jpg.html": "sitemap",
           "https://joshbeard.com/photos/2021/": "sitemap",
-          "https://joshbeard.com/photos/2017/20171008-lake-isabelle-4_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20171008-lake-isabelle-3_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20171008-lake-isabelle-2_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20171008-lake-isabelle-1_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20170904-forest-lakes-6_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20170904-forest-lakes-5_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20170904-forest-lakes-4_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20170904-forest-lakes-3_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20170904-forest-lakes-2_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20170904-forest-lakes-1_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20170819-blue-lake-5_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20170819-blue-lake-4_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20170819-blue-lake-3_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20170819-blue-lake-2_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20170819-blue-lake-1_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20170805-butler-gulch-4_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20170805-butler-gulch-3_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20170805-butler-gulch-2_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20170805-butler-gulch-1_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20170624-finch-lake-3_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20170624-finch-lake-2_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20170624-finch-lake-1_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20170513-finch-lake-3_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20170513-finch-lake-2_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/20170513-finch-lake-1_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2017/": "sitemap",
           "https://joshbeard.com/photos/2016/IMG_2193_JPG.html": "sitemap",
           "https://joshbeard.com/photos/2016/fullsizeoutput_3225_jpg.html": "sitemap",
           "https://joshbeard.com/photos/2016/IMG_2116_JPG.html": "sitemap",
@@ -14378,6 +14387,32 @@
           "https://joshbeard.com/photos/2016/IMG_0054_JPG.html": "sitemap",
           "https://joshbeard.com/photos/2016/IMG_1039_JPG.html": "sitemap",
           "https://joshbeard.com/photos/2016/": "sitemap",
+          "https://joshbeard.com/photos/2017/20171008-lake-isabelle-4_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20171008-lake-isabelle-3_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20171008-lake-isabelle-2_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20171008-lake-isabelle-1_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20170904-forest-lakes-6_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20170904-forest-lakes-5_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20170904-forest-lakes-4_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20170904-forest-lakes-3_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20170904-forest-lakes-2_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20170904-forest-lakes-1_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20170819-blue-lake-5_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20170819-blue-lake-4_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20170819-blue-lake-3_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20170819-blue-lake-2_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20170819-blue-lake-1_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20170805-butler-gulch-4_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20170805-butler-gulch-3_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20170805-butler-gulch-2_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20170805-butler-gulch-1_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20170624-finch-lake-3_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20170624-finch-lake-2_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20170624-finch-lake-1_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20170513-finch-lake-3_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20170513-finch-lake-2_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/20170513-finch-lake-1_jpg.html": "sitemap",
+          "https://joshbeard.com/photos/2017/": "sitemap",
           "https://joshbeard.com/photos/2014/IMG_0442_JPG.html": "sitemap",
           "https://joshbeard.com/photos/2014/IMG_0358_JPG.html": "sitemap",
           "https://joshbeard.com/photos/2014/IMG_0335_JPG.html": "sitemap",
@@ -14386,16 +14421,6 @@
           "https://joshbeard.com/photos/2014/IMG_0265_JPG.html": "sitemap",
           "https://joshbeard.com/photos/2014/IMG_0251_JPG.html": "sitemap",
           "https://joshbeard.com/photos/2014/": "sitemap",
-          "https://joshbeard.com/photos/2024/IMG_4709_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2024/IMG_9744_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2024/IMG_4648_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2024/IMG_4589_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2024/IMG_4541_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2024/": "sitemap",
-          "https://joshbeard.com/photos/2022/IMG_2990_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2022/IMG_2545_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2022/IMG_2538_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2022/": "sitemap",
           "https://joshbeard.com/photos/2018/2018-herman-gulch-17_jpg.html": "sitemap",
           "https://joshbeard.com/photos/2018/2018-herman-gulch-16_jpg.html": "sitemap",
           "https://joshbeard.com/photos/2018/2018-herman-gulch-15_jpg.html": "sitemap",
@@ -14424,30 +14449,6 @@
           "https://joshbeard.com/photos/2018/2018-crater-lakes-2_jpg.html": "sitemap",
           "https://joshbeard.com/photos/2018/2018-crater-lakes-1_jpg.html": "sitemap",
           "https://joshbeard.com/photos/2018/": "sitemap",
-          "https://joshbeard.com/photos/2023/IMG_3479_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2023/IMG_3254_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2023/": "sitemap",
-          "https://joshbeard.com/photos/2015/IMG_0332_JPG.html": "sitemap",
-          "https://joshbeard.com/photos/2015/IMG_0324_JPG.html": "sitemap",
-          "https://joshbeard.com/photos/2015/IMG_0317_JPG.html": "sitemap",
-          "https://joshbeard.com/photos/2015/IMG_0314_JPG.html": "sitemap",
-          "https://joshbeard.com/photos/2015/IMG_0257_JPG.html": "sitemap",
-          "https://joshbeard.com/photos/2015/IMG_0221_JPG.html": "sitemap",
-          "https://joshbeard.com/photos/2015/IMG_0209_JPG.html": "sitemap",
-          "https://joshbeard.com/photos/2015/IMG_0211_JPG.html": "sitemap",
-          "https://joshbeard.com/photos/2015/IMG_0141_JPG.html": "sitemap",
-          "https://joshbeard.com/photos/2015/IMG_0879_JPG.html": "sitemap",
-          "https://joshbeard.com/photos/2015/": "sitemap",
-          "https://joshbeard.com/photos/2020/2020-colorado-pagosa_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2020/IMG_4196_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2020/IMG_4177_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2020/IMG_4173_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2020/IMG_4169_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2020/IMG_4166_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2020/IMG_3687_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2020/2020-garden-of-the-gods-2_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2020/2020-garden-of-the-gods-1_jpg.html": "sitemap",
-          "https://joshbeard.com/photos/2020/": "sitemap",
           "https://joshbeard.com/photos/all/": "sitemap",
           "https://joshbeard.com/style/": "blind-probe",
           "https://joshbeard.com/top4/": "blind-probe",
@@ -14479,7 +14480,7 @@
           "https://joshbeard.com/me": "content-index"
         }
       },
-      "crawled_at": "2026-11-03T21:44:42.327Z"
+      "crawled_at": "2026-11-04T01:56:36.324Z"
     },
     {
       "origin": "https://joshcox.co.uk",
@@ -14577,7 +14578,7 @@
         "title": "Projects — Josh Cox",
         "summary": "Products and tools Josh Cox has built, including Prystine, SendTidings, Quotify, Lifting Times, LeerHaus, and the Mac app My House, My Things.",
         "published_at": "",
-        "observed_at": "2026-11-03T21:44:42.327Z",
+        "observed_at": "2026-11-04T01:56:36.324Z",
         "content_type": "collection",
         "language": "en-gb",
         "dir": "",
@@ -14822,7 +14823,7 @@
           "https://joshcox.co.uk/the-crypt/": "content-index"
         }
       },
-      "crawled_at": "2026-11-03T21:44:42.327Z"
+      "crawled_at": "2026-11-04T01:56:36.324Z"
     },
     {
       "origin": "https://joshghent.com",
@@ -15079,7 +15080,7 @@
         "title": "Enterprise sales teams, please, I beg you, stop",
         "summary": "I asked for a price on a few extra seats of software we already pay for. Two days and a pile of irrelevant questions later, I got one.",
         "published_at": "2026-10-28T00:00:00.000Z",
-        "observed_at": "2026-11-03T21:44:42.327Z",
+        "observed_at": "2026-11-04T01:56:36.324Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -15467,7 +15468,7 @@
           "https://joshghent.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-03T21:44:42.327Z"
+      "crawled_at": "2026-11-04T01:56:36.324Z"
     },
     {
       "origin": "https://joshgr.com",
@@ -15751,7 +15752,251 @@
           "https://joshgr.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-03T21:44:42.327Z"
+      "crawled_at": "2026-11-04T01:56:36.324Z"
+    },
+    {
+      "origin": "https://joshkoter.com",
+      "domain": "joshkoter.com",
+      "title": "Josh Köter",
+      "description": "A multiplayer Tetris game, featuring real-time gameplay, live chat, and both single-player and versus modes. Built with the T3 stack (TypeScript, Next.js, Prisma, NextAuth) and WebSockets (Socket.io). Visit Tetrus to play.",
+      "identity": "affirmed",
+      "feeds": [],
+      "elsewhere": [
+        {
+          "url": "https://www.youtube.com/c/Frankslaboratory",
+          "network": "youtube",
+          "label": "YouTube"
+        },
+        {
+          "url": "https://www.linkedin.com/in/josh-koter/",
+          "network": "linkedin",
+          "label": "LinkedIn"
+        },
+        {
+          "url": "https://github.com/Koda-Pig/",
+          "network": "github",
+          "label": "GitHub"
+        }
+      ],
+      "community_topics": [],
+      "recent_content": {
+        "url": "https://www.youtube.com/watch?v=5uni6eGeTX4",
+        "title": "Untitled",
+        "summary": "",
+        "published_at": "",
+        "observed_at": "2026-11-04T01:56:36.324Z",
+        "content_type": "video",
+        "language": "",
+        "dir": "",
+        "site_origin": "https://joshkoter.com",
+        "site_title": "Josh Köter",
+        "domain": "joshkoter.com",
+        "tags": [],
+        "neighborhoods": [],
+        "image": "https://i.ytimg.com/vi/5uni6eGeTX4/hqdefault.jpg",
+        "image_origin": "https://i.ytimg.com",
+        "source_kind": "elsewhere-youtube-video",
+        "page_role": "project"
+      },
+      "outgoing": [],
+      "incoming": [],
+      "coverage": {
+        "pages_discovered": 3,
+        "pages_fetched": 3,
+        "fetch_limit": null,
+        "limit_reached": false,
+        "selection_strategy": "uncapped-site-crawl-v1",
+        "selection_reasons": {
+          "https://joshkoter.com/": "home",
+          "https://joshkoter.com/changelog/": "content-index",
+          "https://joshkoter.com/log/": "content-index",
+          "https://joshkoter.com/ideas/": "content-index",
+          "https://joshkoter.com/sitemap/": "content-index",
+          "https://joshkoter.com/til/": "content-index",
+          "https://joshkoter.com/ways/": "content-index",
+          "https://joshkoter.com/notes/": "content-index",
+          "https://joshkoter.com/blog/": "content-index",
+          "https://joshkoter.com/weblog/": "content-index",
+          "https://joshkoter.com/writings/": "content-index",
+          "https://joshkoter.com/posts/": "content-index",
+          "https://joshkoter.com/post/": "content-index",
+          "https://joshkoter.com/writing/": "content-index",
+          "https://joshkoter.com/articles/": "content-index",
+          "https://joshkoter.com/article/": "content-index",
+          "https://joshkoter.com/essays/": "content-index",
+          "https://joshkoter.com/journal/": "content-index",
+          "https://joshkoter.com/weeknotes/": "content-index",
+          "https://joshkoter.com/archive/": "content-index",
+          "https://joshkoter.com/about/": "content-index",
+          "https://joshkoter.com/about-me/": "content-index",
+          "https://joshkoter.com/aboutme/": "content-index",
+          "https://joshkoter.com/bio/": "content-index",
+          "https://joshkoter.com/me/": "content-index",
+          "https://joshkoter.com/profile/": "content-index",
+          "https://joshkoter.com/ai/": "content-index",
+          "https://joshkoter.com/blank/": "content-index",
+          "https://joshkoter.com/blogroll/": "content-index",
+          "https://joshkoter.com/calendar/": "content-index",
+          "https://joshkoter.com/canon/": "content-index",
+          "https://joshkoter.com/carry/": "content-index",
+          "https://joshkoter.com/caw/": "content-index",
+          "https://joshkoter.com/celebrities/": "content-index",
+          "https://joshkoter.com/chipotle/": "content-index",
+          "https://joshkoter.com/colophon/": "content-index",
+          "https://joshkoter.com/community/": "content-index",
+          "https://joshkoter.com/contact/": "content-index",
+          "https://joshkoter.com/death/": "content-index",
+          "https://joshkoter.com/defaults/": "content-index",
+          "https://joshkoter.com/disability/": "content-index",
+          "https://joshkoter.com/elsewhere/": "content-index",
+          "https://joshkoter.com/appearances/": "content-index",
+          "https://joshkoter.com/follow/": "content-index",
+          "https://joshkoter.com/subscribe/": "content-index",
+          "https://joshkoter.com/feeds/": "content-index",
+          "https://joshkoter.com/for/": "content-index",
+          "https://joshkoter.com/dedication/": "content-index",
+          "https://joshkoter.com/glossary/": "content-index",
+          "https://joshkoter.com/lexicon/": "content-index",
+          "https://joshkoter.com/phrased/": "content-index",
+          "https://joshkoter.com/green/": "content-index",
+          "https://joshkoter.com/hats/": "content-index",
+          "https://joshkoter.com/hello/": "content-index",
+          "https://joshkoter.com/hills/": "content-index",
+          "https://joshkoter.com/hill/": "content-index",
+          "https://joshkoter.com/interests/": "content-index",
+          "https://joshkoter.com/junk/": "content-index",
+          "https://joshkoter.com/sale/": "content-index",
+          "https://joshkoter.com/buy/": "content-index",
+          "https://joshkoter.com/languages/": "content-index",
+          "https://joshkoter.com/links/": "content-index",
+          "https://joshkoter.com/bookmarks/": "content-index",
+          "https://joshkoter.com/next/": "content-index",
+          "https://joshkoter.com/nope/": "content-index",
+          "https://joshkoter.com/now/": "content-index",
+          "https://joshkoter.com/podroll/": "content-index",
+          "https://joshkoter.com/posse/": "content-index",
+          "https://joshkoter.com/postroll/": "content-index",
+          "https://joshkoter.com/predictions/": "content-index",
+          "https://joshkoter.com/pricing/": "content-index",
+          "https://joshkoter.com/questions/": "content-index",
+          "https://joshkoter.com/saudade/": "content-index",
+          "https://joshkoter.com/save/": "content-index",
+          "https://joshkoter.com/referrals/": "content-index",
+          "https://joshkoter.com/self-hosting/": "content-index",
+          "https://joshkoter.com/self-hosted/": "content-index",
+          "https://joshkoter.com/hosted/": "content-index",
+          "https://joshkoter.com/homelab/": "content-index",
+          "https://joshkoter.com/shoebox/": "content-index",
+          "https://joshkoter.com/since/": "content-index",
+          "https://joshkoter.com/slashes/": "content-index",
+          "https://joshkoter.com/someday/": "content-index",
+          "https://joshkoter.com/tip/": "content-index",
+          "https://joshkoter.com/pay/": "content-index",
+          "https://joshkoter.com/coffee/": "content-index",
+          "https://joshkoter.com/uses/": "content-index",
+          "https://joshkoter.com/verify/": "content-index",
+          "https://joshkoter.com/where/": "content-index",
+          "https://joshkoter.com/why/": "content-index",
+          "https://joshkoter.com/wish/": "content-index",
+          "https://joshkoter.com/yep/": "content-index",
+          "https://joshkoter.com/more/": "content-index",
+          "https://joshkoter.com/site/": "content-index",
+          "https://joshkoter.com/social/": "content-index",
+          "https://joshkoter.com/people/": "content-index",
+          "https://joshkoter.com/friends/": "content-index",
+          "https://joshkoter.com/following/": "content-index",
+          "https://joshkoter.com/webring/": "content-index",
+          "https://joshkoter.com/webrings/": "content-index",
+          "https://joshkoter.com/indieweb/": "content-index",
+          "https://joshkoter.com/neighborhood/": "content-index",
+          "https://joshkoter.com/guestbook/": "content-index",
+          "https://joshkoter.com/meta/": "content-index",
+          "https://joshkoter.com/health/": "content-index",
+          "https://joshkoter.com/concerts/": "content-index",
+          "https://joshkoter.com/daylists/": "content-index",
+          "https://joshkoter.com/pfp/": "content-index",
+          "https://joshkoter.com/photo/": "content-index",
+          "https://joshkoter.com/pic/": "content-index",
+          "https://joshkoter.com/work/": "content-index",
+          "https://joshkoter.com/projects/": "content-index",
+          "https://joshkoter.com/portfolio/": "content-index",
+          "https://joshkoter.com/work.html/": "content-index",
+          "https://joshkoter.com/projects.html/": "content-index",
+          "https://joshkoter.com/portfolio.html/": "content-index",
+          "https://joshkoter.com/studio-index/": "content-index",
+          "https://joshkoter.com/gallery/": "content-index",
+          "https://joshkoter.com/galleries/": "content-index",
+          "https://joshkoter.com/albums/": "content-index",
+          "https://joshkoter.com/photography/": "content-index",
+          "https://joshkoter.com/photos/": "content-index",
+          "https://joshkoter.com/art/": "content-index",
+          "https://joshkoter.com/illustration/": "content-index",
+          "https://joshkoter.com/artwork/": "content-index",
+          "https://joshkoter.com/comics/": "content-index",
+          "https://joshkoter.com/comic/": "content-index",
+          "https://joshkoter.com/webcomics/": "content-index",
+          "https://joshkoter.com/toys/": "content-index",
+          "https://joshkoter.com/toy/": "content-index",
+          "https://joshkoter.com/play/": "content-index",
+          "https://joshkoter.com/reels/": "content-index",
+          "https://joshkoter.com/reel/": "content-index",
+          "https://joshkoter.com/shorts/": "content-index",
+          "https://joshkoter.com/cssbattles/": "content-index",
+          "https://joshkoter.com/cssbattle/": "content-index",
+          "https://joshkoter.com/css-battles/": "content-index",
+          "https://joshkoter.com/music/": "content-index",
+          "https://joshkoter.com/discography/": "content-index",
+          "https://joshkoter.com/tracks/": "content-index",
+          "https://joshkoter.com/podcasts/": "content-index",
+          "https://joshkoter.com/podcast/": "content-index",
+          "https://joshkoter.com/listen/": "content-index",
+          "https://joshkoter.com/videos/": "content-index",
+          "https://joshkoter.com/film/": "content-index",
+          "https://joshkoter.com/animation/": "content-index",
+          "https://joshkoter.com/games/": "content-index",
+          "https://joshkoter.com/game/": "content-index",
+          "https://joshkoter.com/interactive/": "content-index",
+          "https://joshkoter.com/exhibitions/": "content-index",
+          "https://joshkoter.com/design/": "content-index",
+          "https://joshkoter.com/apps/": "content-index",
+          "https://joshkoter.com/software/": "content-index",
+          "https://joshkoter.com/tools/": "content-index",
+          "https://joshkoter.com/books/": "content-index",
+          "https://joshkoter.com/guides/": "content-index",
+          "https://joshkoter.com/resources/": "content-index",
+          "https://joshkoter.com/experiments/": "content-index",
+          "https://joshkoter.com/sounds/": "content-index",
+          "https://joshkoter.com/hustles/": "content-index",
+          "https://joshkoter.com/topics/": "topic-hub",
+          "https://joshkoter.com/topic/": "topic-hub",
+          "https://joshkoter.com/tags/": "topic-hub",
+          "https://joshkoter.com/tag/": "topic-hub",
+          "https://joshkoter.com/categories/": "topic-hub",
+          "https://joshkoter.com/category/": "topic-hub",
+          "https://joshkoter.com/style/": "blind-probe",
+          "https://joshkoter.com/top4/": "blind-probe",
+          "https://joshkoter.com/topfour/": "blind-probe",
+          "https://joshkoter.com/events/": "blind-probe",
+          "https://joshkoter.com/shows/": "blind-probe",
+          "https://joshkoter.com/gigs/": "blind-probe",
+          "https://joshkoter.com/tour/": "blind-probe",
+          "https://joshkoter.com/live/": "blind-probe",
+          "https://joshkoter.com/performances/": "blind-probe",
+          "https://joshkoter.com/readings/": "blind-probe",
+          "https://joshkoter.com/workshops/": "blind-probe",
+          "https://joshkoter.com/study-hall/": "blind-probe",
+          "https://joshkoter.com/frontend-study-hall/": "blind-probe",
+          "https://joshkoter.com/front-end-study-hall/": "blind-probe",
+          "https://joshkoter.com/fresh/": "blind-probe",
+          "https://joshkoter.com/education/": "blind-probe",
+          "https://joshkoter.com/learn/": "blind-probe",
+          "https://joshkoter.com/classes/": "blind-probe",
+          "https://joshkoter.com/class/": "blind-probe",
+          "https://joshkoter.com/courses/": "blind-probe",
+          "https://joshkoter.com/course/": "blind-probe"
+        }
+      },
+      "crawled_at": "2026-11-04T01:56:36.324Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -16067,6 +16312,10 @@
           "label": "Relationships"
         },
         {
+          "slug": "remember",
+          "label": "remember"
+        },
+        {
           "slug": "resource",
           "label": "resources"
         },
@@ -16152,7 +16401,7 @@
         "title": "📸: Josh Müller",
         "summary": "",
         "published_at": "",
-        "observed_at": "2026-11-03T21:44:42.327Z",
+        "observed_at": "2026-11-04T01:56:36.324Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -16694,7 +16943,7 @@
           "https://joshmuller.ca/recipes/page/2/": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-03T21:44:42.327Z"
+      "crawled_at": "2026-11-04T01:56:36.324Z"
     },
     {
       "origin": "https://joshozuna.com",
@@ -16822,7 +17071,7 @@
         "title": "35mm Film Photography Gallery",
         "summary": "Photos by Josh Ozuna, shot on 35mm film.",
         "published_at": "2025-08-17T05:00:00.000Z",
-        "observed_at": "2026-11-03T21:44:42.327Z",
+        "observed_at": "2026-11-04T01:56:36.324Z",
         "content_type": "collection",
         "language": "en",
         "dir": "",
@@ -17128,7 +17377,7 @@
           "https://joshozuna.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-03T21:44:42.327Z"
+      "crawled_at": "2026-11-04T01:56:36.324Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -17199,7 +17448,7 @@
         "title": "What's New",
         "summary": "Recent writing from the last two weeks and the latest Showcase creative works from independent websites on the Joshternet.",
         "published_at": "",
-        "observed_at": "2026-11-03T21:44:42.327Z",
+        "observed_at": "2026-11-04T01:56:36.324Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -17838,7 +18087,7 @@
           "https://joshternet.org/cdn-cgi/l/email-protection": "content-index"
         }
       },
-      "crawled_at": "2026-11-03T21:44:42.327Z"
+      "crawled_at": "2026-11-04T01:56:36.324Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -18048,7 +18297,7 @@
         "title": "Learning a New Tech Stack with an LLM",
         "summary": "While I mentioned a few weeks back that I'm now recovering from AI Psychosis , that doesn't mean I've given up on the technology completely. I'm writing more emails, and engaging with human beings as much as I can, and that part's been great. I still use agents as a glorified typewriter to generate code, and still very much get my hands in the dirt and sling code myself. I've also gotten quite obs",
         "published_at": "2026-10-26T00:00:00.000Z",
-        "observed_at": "2026-11-03T21:44:42.327Z",
+        "observed_at": "2026-11-04T01:56:36.324Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -19440,7 +19689,7 @@
           "https://joshtronic.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-03T21:44:42.327Z"
+      "crawled_at": "2026-11-04T01:56:36.324Z"
     },
     {
       "origin": "https://joshua.seigler.net",
@@ -19823,7 +20072,7 @@
           "https://joshua.seigler.net": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-03T21:44:42.327Z"
+      "crawled_at": "2026-11-04T01:56:36.324Z"
     },
     {
       "origin": "https://joshuadrake.org",
@@ -19860,7 +20109,7 @@
         "title": "Projects:",
         "summary": "",
         "published_at": "",
-        "observed_at": "2026-11-03T21:44:42.327Z",
+        "observed_at": "2026-11-04T01:56:36.324Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -20133,7 +20382,7 @@
           "https://joshuadrake.org/projects/n12rebuild/": "content-index"
         }
       },
-      "crawled_at": "2026-11-03T21:44:42.327Z",
+      "crawled_at": "2026-11-04T01:56:36.324Z",
       "portfolio": {
         "url": "https://joshuadrake.org/projects/",
         "work_count": 39,
@@ -20169,7 +20418,7 @@
         "title": "Work, Joshua Kim",
         "summary": "Eight projects by Joshua Kim: internal tools, interactive and AR work, app case studies, and graphic design.",
         "published_at": "",
-        "observed_at": "2026-11-03T21:44:42.327Z",
+        "observed_at": "2026-11-04T01:56:36.324Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -20391,7 +20640,7 @@
           "https://joshuakim.studio/about": "content-index"
         }
       },
-      "crawled_at": "2026-11-03T21:44:42.327Z"
+      "crawled_at": "2026-11-04T01:56:36.324Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -21157,7 +21406,7 @@
         "title": "Experiments",
         "summary": "Web experiments and playground shells from Joshua Morris—toys, tools, and interface ideas built to see whether they can work in a browser.",
         "published_at": "",
-        "observed_at": "2026-11-03T16:34:11.848Z",
+        "observed_at": "2026-11-04T01:56:36.324Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -21527,13 +21776,22 @@
           "https://joshuamorris.info/notes/2026/07/10/rss-is-still-a-place-for-new-ideas/": "feed",
           "https://joshuamorris.info/notes/2026/07/07/css-that-understands-where-an-element-is/": "feed",
           "https://joshuamorris.info/notes/2026/07/05/a-website-that-moves-with-the-day/": "feed",
+          "https://joshuamorris.info/about/": "slashpages-manifest",
+          "https://joshuamorris.info/seeking/": "slashpages-manifest",
+          "https://joshuamorris.info/friends/": "slashpages-manifest",
+          "https://joshuamorris.info/buttons/": "slashpages-manifest",
+          "https://joshuamorris.info/privacy/": "slashpages-manifest",
+          "https://joshuamorris.info/security/": "slashpages-manifest",
+          "https://joshuamorris.info/feeds/": "slashpages-manifest",
+          "https://joshuamorris.info/notes/": "slashpages-manifest",
+          "https://joshuamorris.info/reading/": "slashpages-manifest",
+          "https://joshuamorris.info/experiments/": "slashpages-manifest",
           "https://joshuamorris.info/changelog/": "content-index",
           "https://joshuamorris.info/log/": "content-index",
           "https://joshuamorris.info/ideas/": "content-index",
           "https://joshuamorris.info/sitemap/": "content-index",
           "https://joshuamorris.info/til/": "content-index",
           "https://joshuamorris.info/ways/": "content-index",
-          "https://joshuamorris.info/notes/": "content-index",
           "https://joshuamorris.info/blog/": "content-index",
           "https://joshuamorris.info/weblog/": "content-index",
           "https://joshuamorris.info/writings/": "content-index",
@@ -21546,7 +21804,6 @@
           "https://joshuamorris.info/journal/": "content-index",
           "https://joshuamorris.info/weeknotes/": "content-index",
           "https://joshuamorris.info/archive/": "content-index",
-          "https://joshuamorris.info/about/": "content-index",
           "https://joshuamorris.info/about-me/": "content-index",
           "https://joshuamorris.info/aboutme/": "content-index",
           "https://joshuamorris.info/bio/": "content-index",
@@ -21571,7 +21828,6 @@
           "https://joshuamorris.info/appearances/": "content-index",
           "https://joshuamorris.info/follow/": "content-index",
           "https://joshuamorris.info/subscribe/": "content-index",
-          "https://joshuamorris.info/feeds/": "content-index",
           "https://joshuamorris.info/for/": "content-index",
           "https://joshuamorris.info/dedication/": "content-index",
           "https://joshuamorris.info/glossary/": "content-index",
@@ -21621,7 +21877,6 @@
           "https://joshuamorris.info/site/": "content-index",
           "https://joshuamorris.info/social/": "content-index",
           "https://joshuamorris.info/people/": "content-index",
-          "https://joshuamorris.info/friends/": "content-index",
           "https://joshuamorris.info/following/": "content-index",
           "https://joshuamorris.info/webring/": "content-index",
           "https://joshuamorris.info/webrings/": "content-index",
@@ -21682,7 +21937,6 @@
           "https://joshuamorris.info/books/": "content-index",
           "https://joshuamorris.info/guides/": "content-index",
           "https://joshuamorris.info/resources/": "content-index",
-          "https://joshuamorris.info/experiments/": "content-index",
           "https://joshuamorris.info/sounds/": "content-index",
           "https://joshuamorris.info/hustles/": "content-index",
           "https://joshuamorris.info/topics/": "topic-hub",
@@ -21691,11 +21945,6 @@
           "https://joshuamorris.info/tag/": "topic-hub",
           "https://joshuamorris.info/categories/": "topic-hub",
           "https://joshuamorris.info/category/": "topic-hub",
-          "https://joshuamorris.info/buttons/": "sitemap",
-          "https://joshuamorris.info/privacy/": "sitemap",
-          "https://joshuamorris.info/reading/": "sitemap",
-          "https://joshuamorris.info/security/": "sitemap",
-          "https://joshuamorris.info/seeking/": "sitemap",
           "https://joshuamorris.info/wander/": "sitemap",
           "https://joshuamorris.info/seeking/docs/": "sitemap",
           "https://joshuamorris.info/style/": "blind-probe",
@@ -22001,11 +22250,10 @@
           "https://joshuamorris.info/notes/2026/07/23/": "budget-exhausted",
           "https://joshuamorris.info/topics/software-preservation/": "budget-exhausted",
           "https://joshuamorris.info/notes/2026/07/22/": "budget-exhausted",
-          "https://joshuamorris.info/notes/2026/07/21/": "budget-exhausted",
-          "https://joshuamorris.info": "short-circuit-unchanged"
+          "https://joshuamorris.info/notes/2026/07/21/": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-03T21:44:42.327Z"
+      "crawled_at": "2026-11-04T01:56:36.324Z"
     },
     {
       "origin": "https://joshuapsteele.com",
@@ -23645,7 +23893,7 @@
           "https://joshuapsteele.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-03T21:44:42.327Z"
+      "crawled_at": "2026-11-04T01:56:36.324Z"
     },
     {
       "origin": "https://joshuastuebner.com",
@@ -23702,7 +23950,7 @@
         "title": "Datapolicy",
         "summary": "Pick your theme",
         "published_at": "",
-        "observed_at": "2026-11-03T21:44:42.327Z",
+        "observed_at": "2026-11-04T01:56:36.324Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -24058,7 +24306,7 @@
           "https://joshuastuebner.com/joshuastuebner.asc": "content-index"
         }
       },
-      "crawled_at": "2026-11-03T21:44:42.327Z"
+      "crawled_at": "2026-11-04T01:56:36.324Z"
     },
     {
       "origin": "https://www.chrisminnick.com",
@@ -24236,7 +24484,7 @@
         "title": "Books",
         "summary": "More than twenty books on programming, the web, and AI — plus three novels.",
         "published_at": "2027-04-01T00:00:00.000Z",
-        "observed_at": "2026-11-03T21:44:42.327Z",
+        "observed_at": "2026-11-04T01:56:36.324Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -24629,7 +24877,7 @@
           "https://www.chrisminnick.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-03T21:44:42.327Z"
+      "crawled_at": "2026-11-04T01:56:36.324Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -25306,7 +25554,7 @@
           "https://www.joshcanhelp.com/_images/2010/02/logitech_mic.jpg": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-03T21:44:42.327Z"
+      "crawled_at": "2026-11-04T01:56:36.324Z"
     },
     {
       "origin": "https://www.joshfinnie.com",
@@ -26247,7 +26495,7 @@
         "title": "The October Micro SaaS Challenge: A Retro",
         "summary": "Four micro SaaS products in four weeks, built with Claude Code: what shipped, which rules broke, what it cost, and what I'd change next time.",
         "published_at": "2026-11-02T00:00:00.000Z",
-        "observed_at": "2026-11-03T21:44:42.327Z",
+        "observed_at": "2026-11-04T01:56:36.324Z",
         "content_type": "article",
         "language": "en-us",
         "dir": "",
@@ -26916,10 +27164,11 @@
           "https://www.joshfinnie.com/tags/unions/": "budget-exhausted",
           "https://www.joshfinnie.com/tags/gaming/": "budget-exhausted",
           "https://www.joshfinnie.com/tags/climate/": "budget-exhausted",
-          "https://www.joshfinnie.com/tags/policy/": "budget-exhausted"
+          "https://www.joshfinnie.com/tags/policy/": "budget-exhausted",
+          "https://www.joshfinnie.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-03T21:44:42.327Z",
+      "crawled_at": "2026-11-04T01:56:36.324Z",
       "portfolio": {
         "url": "https://www.joshfinnie.com/projects/",
         "work_count": 9,
@@ -27152,7 +27401,7 @@
         "title": "Work — Joshua Baker",
         "summary": "Selected case studies by Joshua Baker, plus the full archive — 140+ projects across two decades of design and engineering.",
         "published_at": "",
-        "observed_at": "2026-11-03T21:44:42.327Z",
+        "observed_at": "2026-11-04T01:56:36.324Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -27421,7 +27670,7 @@
           "https://www.joshuabaker.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-03T21:44:42.327Z",
+      "crawled_at": "2026-11-04T01:56:36.324Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,
@@ -27921,7 +28170,7 @@
           "https://www.joshvickerson.com/posts/page/1/": "content-index"
         }
       },
-      "crawled_at": "2026-11-03T21:44:42.327Z"
+      "crawled_at": "2026-11-04T01:56:36.324Z"
     }
   ]
 }
