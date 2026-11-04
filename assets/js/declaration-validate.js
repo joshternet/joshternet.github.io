@@ -71,7 +71,7 @@ const RULES = {
   removal: {
     rfc: "RFC-JOSH-0002",
     section: "§11 Removal",
-    text: "404 and 410 mean no declaration is published there. That is not an invalid file.",
+    text: "404 and 410 mean no declaration is published there. That is not an invalid declaration.",
   },
   retrieval: {
     rfc: "RFC-JOSH-0002",
@@ -209,7 +209,7 @@ export function declarationURL(originText) {
   const trimmed = originText.trim();
 
   if (!trimmed) {
-    return { error: "Enter an origin, such as https://example.invalid." };
+    return { error: "Enter an origin, such as https://joshua.example." };
   }
 
   let url;
@@ -261,7 +261,7 @@ export function classifyLiveResponse(response) {
       return {
         kind: "unread",
         summary:
-          "That response redirected to a different origin. It is not a declaration for the origin you typed.",
+          "The request redirected to a different origin. A declaration served there doesn't establish participation for the website you entered.",
         details: [`Final URL: ${response.finalURL}`, typeNote].filter(Boolean),
         declaration: null,
         rule: RULES.redirect,
@@ -273,7 +273,7 @@ export function classifyLiveResponse(response) {
     return {
       kind: "unpublished",
       summary:
-        "This origin is not publishing a declaration. That is not an invalid file.",
+        "We couldn't find a published Joshternet declaration at this origin. Check that your website serves it at the exact /.well-known/josh address, without a .json extension or trailing slash. That is not an invalid declaration.",
       details: [`HTTP ${response.status}`, typeNote].filter(Boolean),
       declaration: null,
       rule: RULES.removal,
@@ -288,7 +288,7 @@ export function classifyLiveResponse(response) {
     return {
       kind: "unread",
       summary:
-        "The declaration could not be read. That is not an invalid file, and it is not a withdrawal.",
+        "The declaration could not be read. That doesn't mean the JSON is invalid or that the website has stopped participating. That is not an invalid declaration, and it is not a withdrawal.",
       details: [
         response.status === null
           ? "No HTTP status."
@@ -304,7 +304,7 @@ export function classifyLiveResponse(response) {
     return {
       kind: "unread",
       summary:
-        "The declaration could not be read. That is not an invalid file, and it is not a withdrawal.",
+        "The declaration could not be read. That doesn't mean the JSON is invalid or that the website has stopped participating. That is not an invalid declaration, and it is not a withdrawal.",
       details: [`HTTP ${response.status}`, typeNote].filter(Boolean),
       declaration: null,
       rule: RULES.retrieval,
@@ -329,7 +329,7 @@ export function classifyLiveResponse(response) {
 function contentTypeNote(contentType) {
   const received = contentType.trim() || "(none)";
 
-  return `Content-Type: ${received}. Publishers should send application/json. A valid document is not invalid only because this header is missing or different.`;
+  return `Content-Type: ${received}. The server should return application/json. This header is worth fixing, but it does not by itself invalidate otherwise valid JSON. Publishers should send application/json. A valid document is not invalid only because this header is missing or different.`;
 }
 
 /**

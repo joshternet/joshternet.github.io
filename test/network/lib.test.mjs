@@ -30,6 +30,11 @@ import {
   registryTimestamp,
   sanitizeFeeds,
   screenshotPath,
+  selectPublishedNetworkTitle,
+  displayTitleOverridesFromDocument,
+  comparableTextsMatch,
+  isHostLikeTitle,
+  isWeakPageTitle,
   stableSiteID,
   trimNetworkDescription,
 } from "../../scripts/network/lib.mjs";
@@ -364,6 +369,19 @@ test("personNameFromSelfIntro reads Non-Josh names that compress to the host", (
     }),
     "Chris Minnick",
   );
+  // Meta description is often third-person; the main lede carries the self-intro.
+  assert.equal(
+    chooseTitle({
+      documentTitle: "Chris Minnick — Author, teacher, developer, enthusiast",
+      ogTitle: "Chris Minnick",
+      description:
+        "Chris Minnick is an author, teacher, programmer, novelist, and painter.",
+      mainDescription:
+        "I’m Chris Minnick. I’ve written more than twenty books, including a shelf of For Dummies titles.",
+      domain: "www.chrisminnick.com",
+    }),
+    "Chris Minnick",
+  );
   // Brand hosts still do not win via title compression alone.
   assert.equal(personNameMatchingDomain("Forward Bias", "forwardbias.dev"), "");
   // An explicit self-intro that compresses to the host is accepted (rare for brands).
@@ -429,6 +447,137 @@ test("metadata title prefers GitHub-sourced person author over slogan site name"
       domain: "www.joshcanhelp.com",
     }),
     "Josh Cunningham",
+  );
+});
+
+test("metadata title prefers umlaut person names over generic page shells", () => {
+  assert.equal(
+    personNameMatchingDomain("Joshua Stübner", "joshuastuebner.com"),
+    "Joshua Stübner",
+  );
+  assert.equal(
+    chooseTitle({
+      documentTitle: "Joshuas very own page",
+      ogTitle: "Joshuas very own page",
+      ogSiteName: "Joshuas very own page",
+      description: "Projects, a digital garden and more. By me.",
+      identityNameText: "Hi. I'm Joshua Stübner",
+      domain: "joshuastuebner.com",
+    }),
+    "Joshua Stübner",
+  );
+});
+
+test("published Network titles honor overrides and do not downgrade person names", () => {
+  const overrides = displayTitleOverridesFromDocument({
+    format_version: 1,
+    titles: {
+      "https://www.chrisminnick.com": "Chris Minnick",
+      "https://joshuastuebner.com": "Joshua Stübner",
+    },
+  });
+
+  assert.equal(overrides.get("https://www.chrisminnick.com"), "Chris Minnick");
+  assert.equal(
+    selectPublishedNetworkTitle({
+      resolved: "www.chrisminnick.com",
+      previous: "Chris Minnick",
+      domain: "www.chrisminnick.com",
+      override: overrides.get("https://www.chrisminnick.com"),
+    }),
+    "Chris Minnick",
+  );
+  assert.equal(
+    selectPublishedNetworkTitle({
+      resolved: "Joshuas very own page",
+      previous: "Joshua Stübner",
+      domain: "joshuastuebner.com",
+      override: overrides.get("https://joshuastuebner.com"),
+    }),
+    "Joshua Stübner",
+  );
+  assert.equal(
+    selectPublishedNetworkTitle({
+      resolved: "www.chrisminnick.com",
+      previous: "Chris Minnick",
+      domain: "www.chrisminnick.com",
+    }),
+    "Chris Minnick",
+  );
+  assert.equal(
+    selectPublishedNetworkTitle({
+      resolved: "Joshuas very own page",
+      previous: "Joshua Stübner",
+      domain: "joshuastuebner.com",
+    }),
+    "Joshua Stübner",
+  );
+  assert.equal(
+    selectPublishedNetworkTitle({
+      resolved: "Josh Ozuna",
+      previous: "joshozuna.com",
+      domain: "joshozuna.com",
+    }),
+    "Josh Ozuna",
+  );
+  assert.equal(
+    selectPublishedNetworkTitle({
+      resolved: "chrisminnick",
+      previous: "Chris Minnick",
+      domain: "www.chrisminnick.com",
+    }),
+    "Chris Minnick",
+  );
+  assert.equal(selectPublishedNetworkTitle({}), "");
+  assert.equal(isHostLikeTitle("", "www.chrisminnick.com"), false);
+  assert.equal(isHostLikeTitle("www.chrisminnick.com", ""), false);
+  assert.equal(isHostLikeTitle("chrisminnick", "www.chrisminnick.com"), true);
+  assert.equal(
+    isHostLikeTitle("www.chrisminnick.com", "www.chrisminnick.com"),
+    true,
+  );
+});
+
+test("display title helpers cover weak empty and override guards", () => {
+  assert.equal(isWeakPageTitle(""), true);
+  assert.equal(isWeakPageTitle("Home"), true);
+  assert.equal(comparableTextsMatch("", "joshuastuebner"), false);
+  assert.equal(comparableTextsMatch("Joshua Stübner", ""), false);
+  assert.equal(personNameMatchingDomain("", "joshuastuebner.com"), "");
+  assert.equal(personNameMatchingDomain("Joshua Stübner", ""), "");
+  assert.equal(
+    chooseTitle({
+      documentTitle: "My page",
+      ogTitle: "Your website",
+      twitterTitle: "Untitled",
+      domain: "publisher.example",
+    }),
+    "publisher.example",
+  );
+  assert.equal(displayTitleOverridesFromDocument(null).size, 0);
+  assert.equal(displayTitleOverridesFromDocument([]).size, 0);
+  assert.equal(displayTitleOverridesFromDocument("nope").size, 0);
+  assert.equal(displayTitleOverridesFromDocument({ titles: [] }).size, 0);
+  assert.equal(displayTitleOverridesFromDocument({ titles: null }).size, 0);
+  assert.equal(
+    displayTitleOverridesFromDocument({
+      titles: {
+        "": "Ignored",
+        "https://a.example": "",
+        "https://b.example": "Keep Me",
+      },
+    }).get("https://b.example"),
+    "Keep Me",
+  );
+  assert.equal(
+    displayTitleOverridesFromDocument({
+      titles: {
+        "": "Ignored",
+        "https://a.example": "",
+        "https://b.example": "Keep Me",
+      },
+    }).size,
+    1,
   );
 });
 

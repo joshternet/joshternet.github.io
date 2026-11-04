@@ -10,6 +10,10 @@ import dns from "node:dns/promises";
 import { USER_AGENT } from "../nlp/lib.mjs";
 import { createOriginRobotsGate } from "../nlp/origin-robots.mjs";
 import { assertPublicURL, normalizeText } from "./lib.mjs";
+import {
+  MAX_PUBLIC_FETCH_REDIRECTS,
+  readCappedResponseBytes,
+} from "./public-fetch-guard.mjs";
 
 /** Probe when fewer than this many sanitized feeds exist. */
 export const FEED_PROBE_WHEN_BELOW = 1;
@@ -68,9 +72,15 @@ export function sniffFeedType(contentType, body) {
 }
 
 /**
- * Fetches one URL with a byte cap (testable via fetchImpl).
+ * Fetches one URL with a byte cap and manual public redirect checks.
  * @param {string} href
- * @param {{ fetchImpl?: typeof fetch, timeoutMs?: number }} [options]
+ * @param {{
+ *   fetchImpl?: typeof fetch,
+ *   timeoutMs?: number,
+ *   cache?: Map<string, unknown>,
+ *   lookup?: unknown,
+ *   maxRedirects?: number,
+ * }} [options]
  * @returns {Promise<{ contentType: string, body: string } | null>}
  */
 async function fetchFeedCandidate(href, options = {}) {
@@ -80,33 +90,75 @@ async function fetchFeedCandidate(href, options = {}) {
     typeof options.timeoutMs === "number" && options.timeoutMs >= 0
       ? options.timeoutMs
       : FEED_PROBE_TIMEOUT_MS;
+  const maxRedirects =
+    typeof options.maxRedirects === "number" && options.maxRedirects >= 0
+      ? options.maxRedirects
+      : MAX_PUBLIC_FETCH_REDIRECTS;
+  const dnsOptions = {
+    cache: options.cache,
+    lookup: options.lookup,
+  };
   const controller = new AbortController();
   const timer = setTimeout(() => {
     controller.abort();
   }, timeoutMs);
 
   try {
-    const response = await fetchImpl(href, {
-      method: "GET",
-      redirect: "follow",
-      signal: controller.signal,
-      headers: {
-        Accept:
-          "application/rss+xml, application/atom+xml, application/feed+json, application/xml, text/xml, */*;q=0.8",
-        "User-Agent": USER_AGENT,
-      },
-    });
+    let current = href;
+    let hops = 0;
 
-    if (!response.ok) {
+    while (true) {
+      const response = await fetchImpl(current, {
+        method: "GET",
+        redirect: "manual",
+        signal: controller.signal,
+        headers: {
+          Accept:
+            "application/rss+xml, application/atom+xml, application/feed+json, application/xml, text/xml, */*;q=0.8",
+          "User-Agent": USER_AGENT,
+        },
+      });
+
+      if (response.status >= 300 && response.status < 400) {
+        const location =
+          typeof response.headers?.get === "function"
+            ? response.headers.get("location")
+            : null;
+
+        if (!location) {
+          clearTimeout(timer);
+          return null;
+        }
+
+        hops += 1;
+
+        if (hops > maxRedirects) {
+          clearTimeout(timer);
+          return null;
+        }
+
+        current = new URL(location, current).href;
+        await assertPublicURL(current, dnsOptions);
+        continue;
+      }
+
+      if (!response.ok) {
+        clearTimeout(timer);
+        return null;
+      }
+
+      const contentType =
+        (typeof response.headers?.get === "function"
+          ? response.headers.get("content-type")
+          : "") || "";
+      const buffer = await readCappedResponseBytes(
+        response,
+        FEED_PROBE_MAX_BYTES,
+        { overflow: "truncate" },
+      );
       clearTimeout(timer);
-      return null;
+      return { contentType, body: buffer.toString("utf8") };
     }
-
-    const contentType = response.headers.get("content-type") || "";
-    const ab = await response.arrayBuffer();
-    const buffer = Buffer.from(ab.slice(0, FEED_PROBE_MAX_BYTES));
-    clearTimeout(timer);
-    return { contentType, body: buffer.toString("utf8") };
   } catch {
     clearTimeout(timer);
     return null;
@@ -123,6 +175,7 @@ async function fetchFeedCandidate(href, options = {}) {
  *   fetchImpl?: typeof fetch,
  *   paths?: string[],
  *   timeoutMs?: number,
+ *   maxRedirects?: number,
  *   robotsGate?: import("../nlp/origin-robots.mjs").OriginRobotsGate,
  * }} [options]
  * @returns {Promise<Array<{url: string, type: string, title?: string}>>}
@@ -171,6 +224,9 @@ export async function probeCommonFeedPaths(
     const fetched = await fetchFeedCandidate(href, {
       fetchImpl: options.fetchImpl,
       timeoutMs: options.timeoutMs,
+      maxRedirects: options.maxRedirects,
+      cache,
+      lookup,
     });
 
     if (!fetched) {

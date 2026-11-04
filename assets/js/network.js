@@ -221,7 +221,10 @@
     }
 
     if (countLabel) {
-      countLabel.textContent = visible === 1 ? "site" : "sites";
+      countLabel.textContent =
+        visible === 1
+          ? "website in this directory"
+          : "websites in this directory";
     }
 
     const nextParams = new URLSearchParams(window.location.search);

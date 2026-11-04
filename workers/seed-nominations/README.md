@@ -34,7 +34,7 @@ JSON body:
 
 ```json
 {
-  "url": "https://example.invalid",
+  "url": "https://joshua.example",
   "owner_attestation": true,
   "turnstile_token": "…"
 }

@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Hospitality articles from Joshternet websites"
-description: "Explore Hospitality articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Hospitality, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Hospitality from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Hospitality, Joshternet, independent websites, Topics, shared interests"
 slug: "hospitality"
 permalink: /topics/hospitality/
 robots: max-snippet:160, max-image-preview:large

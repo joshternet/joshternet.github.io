@@ -2,13 +2,14 @@
 layout: default
 title: Publish /.well-known/josh with Quartz
 description: >-
-  Copy a Joshternet declaration into a Quartz 5 build at the exact
-  /.well-known/josh path after npx quartz build, with host headers for common
-  static hosts.
+  Publish a Joshternet /.well-known/josh declaration from an existing Quartz 5
+  site by copying josh.json into public/ after the build—covering emitters,
+  output cleanup, host headers, and public verification.
 keywords: >-
-  Quartz, /.well-known/josh, Joshternet declaration, static site recipe
+  Quartz, /.well-known/josh, Joshternet declaration, post-build copy, static
+  site recipe, Content-Type
 seo:
-  type: WebPage
+  type: TechArticle
   name: Quartz
 permalink: /implement/platforms/quartz/
 nav_title: Quartz
@@ -16,17 +17,66 @@ nav_title: Quartz
 
 # Publish with Quartz
 
-Quartz 5 can publish the declaration as an ordinary static file, copied into the build output after `npx quartz build`.
+Quartz turns Markdown notes and related content into an interconnected static website. A Joshternet declaration is different from an ordinary note or attachment: it is a small JSON resource that must appear at a specific path on the website’s origin.
 
-## Keep the source as JSON
+Quartz 5 can publish that resource, but its current build process does not place arbitrary project-root files at the origin-level well-known path. Keep the declaration as ordinary JSON in the project and copy it after Quartz finishes building. The approach needs no Quartz plugin, custom emitter, database, or application server.
 
-Put the declaration at the Quartz project root as `josh.json`, outside `content/` and outside `quartz/static`, so editors and validators treat it as JSON:
+This guide is a practical procedure for existing Quartz sites. Other methods are possible—see the [Platforms](/implement/platforms/) directory.
+
+## Publish with your existing Quartz site
+
+Use this method when:
+
+- You already use Quartz 5 and build with `npx quartz build` (or an equivalent project script).
+- You control the deployment process.
+- The public website can serve a file at the **origin root**.
+- Packaging can retain dot-prefixed directories such as `.well-known`.
+
+The process fits ordinary static hosting. Do not change frameworks or add a server merely to join Joshternet. If the host cannot serve the exact path, address that delivery limitation separately—do not require a hosting migration solely for this recipe.
+
+## Before you begin
+
+You should have:
+
+- An existing Quartz 5 project and a functioning build.
+- Access to the project root and control over deployment.
+- The hostname you intend to declare.
+- A way to inspect generated output and the public HTTP response.
+
+Adapt existing build scripts and hosting configuration rather than inventing a parallel pipeline. Do not install tools beyond what the site already needs to build.
+
+## The public URL must be exact
+
+The required public resource is:
 
 ```text
-josh.json
+https://joshua.example/.well-known/josh
 ```
 
-A participant affirming Josh identity:
+The path begins with `/.well-known/`, uses the filename `josh`, has no `.json` extension, has no trailing slash, and sits at the origin root. [RFC-JOSH-0002](https://github.com/joshternet/spec/blob/main/rfcs/0002-well-known-josh.md) defines participation for the origin that serves that resource.
+
+| Stage | Location |
+| --- | --- |
+| Editable source | `josh.json` |
+| Quartz build output | `public/` |
+| Post-build destination | `public/.well-known/josh` |
+| Public URL | `https://joshua.example/.well-known/josh` |
+
+The source filename is an authoring convenience. The public URL is defined by the protocol and does not change with the publishing platform.
+
+## Choose your declaration
+
+The minimum valid version 1 declaration is:
+
+```json
+{
+  "version": 1
+}
+```
+
+That establishes participation with Undeclared Josh Identity.
+
+### Affirmed
 
 ```json
 {
@@ -35,13 +85,72 @@ A participant affirming Josh identity:
 }
 ```
 
-`josh` may instead be `false` for Declined Josh Identity, or omitted for Undeclared Josh Identity. The [implementation guide][implement] defines those three declarations. Do not invent other values. Publishing any valid version 1 declaration establishes participation according to RFC-JOSH-0002.
+### Declined
 
-Do not rely on `quartz/static` or `content/.well-known`. Quartz copies `quartz/static` to `public/static`, so a file kept there is published under `/static/` rather than at `/.well-known/josh`. Quartz also skips directories whose names start with a dot when it collects files, and `npx quartz build` deletes `public/` before it emits. The declaration has to be copied after that build.
+```json
+{
+  "version": 1,
+  "josh": false
+}
+```
 
-## Copy it to the protocol path
+Omission and `false` have different meanings. The `josh` property must be a JSON Boolean when present. The `version` value must be the JSON integer token `1`. Values such as `"1"`, `1.0`, and `1e0` are not valid version 1 declarations. Never infer Josh identity from the domain, site title, or note content.
 
-After a normal build:
+{% include declaration-identity-ref.html %}
+
+## Keep the declaration as a JSON file
+
+Recommend a source file named `josh.json` at the Quartz project root, outside `content/` and outside generated `public/`:
+
+```text
+quartz-site/
+├── content/
+├── quartz/
+├── quartz.config.yaml
+├── package.json
+├── josh.json
+└── public/
+```
+
+`public/` is generated by Quartz and must not be the only persistent copy of the declaration. Keeping the editable JSON outside that directory makes review and rebuilds reliable. Do not treat hand-edits inside `public/` as the durable source.
+
+## Why Quartz handles this differently
+
+Quartz distinguishes Markdown content, content attachments, built-in static resources, generated HTML, and the build output directory. The Assets emitter handles non-Markdown resources discovered in the content input (subject to globs and ignore rules). The Static emitter copies Quartz’s built-in static resources into a dedicated static area of the generated site. Neither should be assumed to publish arbitrary files at the origin root. See the [Quartz 5 Assets](https://github.com/jackyzha0/quartz/blob/v5/quartz/plugins/emitters/assets.ts) and [Static](https://github.com/jackyzha0/quartz/blob/v5/quartz/plugins/emitters/static.ts) emitters and [build source](https://github.com/jackyzha0/quartz/blob/v5/quartz/build.ts).
+
+### Don't confuse Quartz's static directory with the site root
+
+Quartz copies `quartz/static` to `public/static`. Placing the declaration at `quartz/static/.well-known/josh` would land under `/static/`, not at the protocol path.
+
+```text
+Incorrect destination:
+public/static/.well-known/josh
+
+Required destination:
+public/.well-known/josh
+```
+
+The declaration must not be published at `https://joshua.example/static/.well-known/josh`. Do not modify Quartz’s Static emitter merely to move one file.
+
+### Why content/.well-known is unreliable
+
+Quartz discovers content attachments through file globs. Dot-prefixed paths are not automatically included by the normal configuration. A file at `content/.well-known/josh` may be skipped. Do not depend on incidental content-globbing behavior for an origin-level protocol resource. Prefer the explicit post-build copy. Reevaluate only if a future Quartz version changes static-asset handling in source.
+
+## Quartz rebuilds the public directory
+
+A full Quartz 5 build removes the output directory before emitting. A manually copied declaration inside `public/` can disappear on the next full build:
+
+1. Build Quartz.
+2. Copy the declaration into `public/.well-known/josh`.
+3. Run a new full build.
+4. Quartz clears `public/`.
+5. The copied declaration is gone unless copied again.
+
+That is expected cleanup, not evidence that the declaration is invalid. Make copying part of the publication sequence. Do not patch Quartz’s cleanup code.
+
+## Build first, then publish the declaration
+
+Order matters. Do not copy before `npx quartz build`:
 
 ```sh
 npx quartz build
@@ -49,7 +158,7 @@ mkdir -p public/.well-known
 cp josh.json public/.well-known/josh
 ```
 
-the generated site should contain:
+The first command generates the site. The second creates the destination directory. The third copies the JSON source to the exact public path. The generated site should contain:
 
 ```text
 public/
@@ -57,44 +166,74 @@ public/
     josh
 ```
 
-The deployed resource is then:
+The deployed resource is then `https://joshua.example/.well-known/josh`. Repeat the copy after every build that cleans `public/`.
 
-```text
-https://example.invalid/.well-known/josh
+### Use a failure-safe publishing sequence
+
+Treat build and copy as one operation so a failed build does not deploy incomplete output:
+
+```sh
+npx quartz build &&
+mkdir -p public/.well-known &&
+cp josh.json public/.well-known/josh &&
+test -f public/.well-known/josh
 ```
 
-Those paths are literal. Repeat the copy after every build, including a rebuild that cleans `public/`.
+`&&` stops later commands after an earlier failure. Deploy only when build, copy, and verification succeed.
 
-## Check the Quartz build
+## Use your existing Quartz build workflow
 
-Before deploying, confirm that the copy produced the exact extensionless file:
+Quartz 5 hosting documentation commonly uses `npx quartz plugin install` before `npx quartz build`. Plugin installation prepares declared dependencies; building generates the website. Preserve the project’s established dependency approach—do not reinstall plugins on every local check unless your workflow already requires it.
+
+Append the declaration copy to the existing build command or project script so there is one authoritative sequence. Do not create a second parallel deployment pipeline or a custom Quartz emitter.
+
+## Check the generated file
 
 ```sh
 test -f public/.well-known/josh
 cat public/.well-known/josh
 ```
 
-You can also request the file from the local preview after the copy. `npx quartz build --serve` cleans `public/` when it builds, so copy the declaration after that clean finishes. The preview server can return the file and still omit `Content-Type: application/json`.
+Neither command proves the public website serves the resource correctly. Optionally confirm the copy matches the source byte-for-byte:
+
+```sh
+cmp josh.json public/.well-known/josh
+```
+
+That comparison does not establish RFC-JOSH-0002 validity—use the [declaration checker](/implement/validate/). Do not introduce a transformation that silently changes the JSON.
+
+## Check the local website
+
+`npx quartz build --serve` can clear `public/` when it builds. Copy the declaration after that clean finishes, then:
 
 ```sh
 curl -i http://localhost:8080/.well-known/josh
 ```
 
-Always repeat the check against the deployed site because production response headers are controlled by the hosting platform.
+Port `8080` is a common default and may differ. Preview MIME types may omit `application/json`. Do not assume a long-running preview preserves a prior copy across a later full rebuild. Always recheck the deployed origin.
 
-## Serve it as JSON
+## Serve the declaration as JSON
 
-RFC-JOSH-0002 associates the declaration with the `application/json` media type. A server SHOULD return:
+RFC-JOSH-0002 associates the declaration with `application/json`. A server SHOULD return:
 
 ```text
 Content-Type: application/json
 ```
 
-Quartz does not choose that media type for an extensionless file. The host does.
+Quartz does not choose that media type for an extensionless file—the host does. Keep valid JSON, exact URL, HTTP status, and Content-Type as separate checks. An unexpected Content-Type alone does not invalidate otherwise valid declaration JSON under RFC-JOSH-0002.
 
-### Netlify
+## Deploying Quartz on Netlify
 
-If the Quartz site is hosted on Netlify, add this to `netlify.toml` at the project root. Netlify reads that file from the repository. Append the copy to the build command (`npx quartz plugin install && npx quartz build && mkdir -p public/.well-known && cp josh.json public/.well-known/josh`):
+Netlify builds and publishes the generated static site. Copy the declaration after Quartz finishes. Append the copy to the build command, for example:
+
+```sh
+npx quartz plugin install &&
+npx quartz build &&
+mkdir -p public/.well-known &&
+cp josh.json public/.well-known/josh
+```
+
+Publish directory remains `public`. Add a narrowly scoped header rule in `netlify.toml`:
 
 ```toml
 [[headers]]
@@ -104,16 +243,20 @@ If the Quartz site is hosted on Netlify, add this to `netlify.toml` at the proje
     Content-Type = "application/json"
 ```
 
-### Cloudflare Pages
+Do not introduce a Netlify Function merely to serve the declaration. See [Netlify headers](https://docs.netlify.com/manage/routing/headers/) and [Quartz hosting](https://quartz.jzhao.xyz/hosting).
 
-Cloudflare Pages reads `_headers` from the build output, `public/`. A file placed in `quartz/static` would be emitted under `public/static/` and would not apply. Keep this file at the project root as `josh-cloudflare-headers`:
+## Deploying Quartz on Cloudflare Pages
+
+Quartz’s hosting docs use `public` as the build output directory. Include the post-build copy in the Cloudflare build command. Cloudflare Pages reads `_headers` from the deployed output root.
+
+Because Quartz clears `public/` on a full build, do not maintain `_headers` only inside generated output. Keep a project-root source such as `josh-cloudflare-headers`:
 
 ```text
 /.well-known/josh
   Content-Type: application/json
 ```
 
-Copy it in the same step as the declaration:
+Copy it with the declaration:
 
 ```sh
 npx quartz build
@@ -122,27 +265,37 @@ cp josh.json public/.well-known/josh
 cp josh-cloudflare-headers public/_headers
 ```
 
-Use that same trailing copy in the Cloudflare build command.
+Do not place `_headers` under `quartz/static` (it would land under `public/static/`). Do not overwrite an existing `_headers` that holds unrelated rules—merge the narrow declaration rule into the authoritative source. `_headers` applies to static asset responses, not automatically to Pages Functions. Do not add a Worker when static hosting already works. See [Cloudflare Pages headers](https://developers.cloudflare.com/pages/configuration/headers/).
 
-### Nginx
+## Serve the generated file through Nginx
 
-Quartz’s example server uses `try_files $uri $uri.html $uri/ =404`. An exact location sets the media type for the declaration and still serves the copied file from the site root:
+Quartz’s example Nginx configuration often uses `try_files` for extensionless HTML pages. Give the declaration an exact-match location so it is not rewritten to HTML:
 
 ```nginx
 location = /.well-known/josh {
     default_type application/json;
+    try_files $uri =404;
 }
 ```
 
-Put that location in the same `server` block as `root`, ahead of `location /`.
+Place that location in the same `server` block as `root` (pointing at the Quartz `public/` output), ahead of a catch-all `location /`. Validate configuration before reload:
 
-Other hosting platforms should configure the equivalent response header for the same exact path.
+```sh
+sudo nginx -t
+```
 
-## GitHub Pages
+Use the site’s existing reload procedure. Do not replace the full server block or change unrelated TLS or authentication settings.
 
-The [Quartz hosting workflow](https://quartz.jzhao.xyz/hosting) uploads `public` with `actions/upload-pages-artifact` and does not set `include-hidden-files`. That action excludes hidden files and directories by default. Because `.well-known` begins with a dot, the copy may succeed while the deployment artifact silently leaves the declaration out.
+## GitHub Pages and hidden directories
 
-Copy the declaration after the build, then enable hidden files on the upload step:
+The [Quartz hosting workflow](https://quartz.jzhao.xyz/hosting) uploads `public` with `actions/upload-pages-artifact` and does not set `include-hidden-files`. That action excludes hidden files and directories by default. Because `.well-known` begins with a dot, the local copy may succeed while the deployment artifact silently leaves the declaration out.
+
+Two separate requirements:
+
+1. Copy the declaration after Quartz finishes building.
+2. Verify that the existing packaging step includes `.well-known`.
+
+Do not invent a replacement Actions workflow. If the project already uses `actions/upload-pages-artifact`, enable hidden files on the upload step after reviewing output for private hidden files:
 
 ```yaml
 - name: Publish Joshternet declaration
@@ -157,91 +310,123 @@ Copy the declaration after the build, then enable hidden files on the upload ste
     include-hidden-files: true
 ```
 
-Before enabling this option, make sure the generated `public` directory does not contain hidden files that should remain private. A Quartz build output should contain only files intended for publication.
+GitHub Pages does not provide ordinary per-path custom MIME-type configuration. Enabling hidden-file packaging does not change Content-Type. Do not rename the resource to `josh.json`. Prefer an existing configurable proxy when explicit MIME control is essential—do not migrate hosts solely for the header.
 
-GitHub Pages does not currently provide normal per-path custom response-header configuration. If it serves the extensionless declaration with a different media type, inspect the live response and consider putting a configurable hosting or proxy layer in front of the site when you need explicit `Content-Type: application/json`.
+## Keep the existing publishing workflow
 
-## Sites published below the origin root
+Prefer one post-build copy, one output check, existing hosting configuration, and public response validation. Do not add repositories, extra artifact stages, or custom Quartz plugins merely for one JSON file.
 
-A well-known URI belongs at the root of an origin.
+## Quartz baseUrl does not change the declaration location
 
-For a site whose public URL is:
+{% include declaration-origin-root-note.html %}
 
-```text
-https://example.invalid/blog/
-```
+For a site at `https://joshua.example/notes/`, the declaration belongs at `https://joshua.example/.well-known/josh`, not at `https://joshua.example/notes/.well-known/josh`.
 
-the Joshternet declaration is still:
+Quartz’s `baseUrl` influences generated links and metadata. It does not redefine the protocol’s origin-root resource. Do not change `baseUrl` merely to publish the declaration.
 
-```text
-https://example.invalid/.well-known/josh
-```
+A GitHub Pages project site such as `https://username.github.io/quartz-notes/` does not make `https://username.github.io/quartz-notes/.well-known/josh` a declaration for that origin. The origin-root resource is `https://username.github.io/.well-known/josh` unless a custom domain provides a separately controlled origin.
 
-It is not:
+## Distinct origins
 
-```text
-https://example.invalid/blog/.well-known/josh
-```
+These are distinct origins:
 
-This matters for Quartz sites hosted as GitHub Pages project sites or anywhere else where the site is deployed beneath a path prefix.
+- `https://joshua.example/`
+- `https://www.joshua.example/`
+- `https://notes.joshua.example/`
 
-For example:
+Each needs its own declaration for independent participation. Cross-origin redirects do not establish the declaration for the originally requested origin.
 
-```text
-https://username.github.io/project/
-```
+## A successful response can still contain the wrong resource
 
-does not make:
+Hosts may return HTTP 200 with homepage HTML, a custom 404 page, or a rewrite for unknown paths. That is not a valid Joshternet declaration. Inspect body, Content-Type, and redirects.
 
-```text
-https://username.github.io/project/.well-known/josh
-```
-
-a Joshternet declaration for that origin.
-
-Quartz’s `baseUrl` does not move the well-known URI. The hosting arrangement must give the site control of:
-
-```text
-https://username.github.io/.well-known/josh
-```
-
-or the site should use a custom origin where it can publish the declaration at the root.
-
-## Check the deployed URL
-
-After deployment, check the live origin with [Check a declaration](/implement/validate/).
-
-You can also inspect the response directly:
+## Verify the public declaration
 
 ```sh
-curl -i https://example.invalid/.well-known/josh
+curl -i https://joshua.example/.well-known/josh
 ```
 
-Confirm all of the following:
+Inspect origin, status, final URL, redirects, Content-Type, JSON body, integer `version` `1`, optional Boolean `josh`, public access, and exact path.
 
-- `/.well-known/josh` exists at the root of the participating origin
-- HTTP `GET` normally returns `200 OK`
-- the response uses `Content-Type: application/json` when the hosting platform permits it
-- the response body is valid JSON
-- `version` is the integer `1`
-- `josh`, when present, is a JSON Boolean
-- the public path has no `.json` extension
-- the canonical path has no trailing slash
-- any redirect that is followed remains on the same origin
-- the resource is readable without authentication or client-side JavaScript
+{% include declaration-verify-ref.html %}
 
-Publishing the file declares participation. It does not separately notify JoshBot or require registration with joshternet.org.
+Ordinary `JSON.parse()` may normalize `1.0` to `1` while the protocol requires the integer token. A local `public/.well-known/josh` is necessary for static deploy but not sufficient proof of a valid public declaration.
 
-## Stop publishing
+### Regression checks
 
-To stop declaring participation from a Quartz site, remove `josh.json` and stop copying it to `public/.well-known/josh` (and remove any host header rules that exist only for that path), rebuild, and redeploy so the live origin no longer serves a valid declaration.
+After wiring the post-build step, spot-check the homepage, a Markdown note, indexes, search, graph/explorer if enabled, CSS/JS, images, RSS, sitemap, `robots.txt`, and other well-known resources. Correct the publishing step if it interferes with ordinary Quartz output.
 
-A deliberate `404 Not Found` or `410 Gone` at `/.well-known/josh` indicates that no declaration is currently published. Temporary timeouts, TLS problems, DNS failures, and server errors do not mean the participant intentionally left.
+## Updates and caching
+
+1. Edit `josh.json`.
+2. Validate the JSON.
+3. Run `npx quartz build`.
+4. Copy into `public/.well-known/josh`.
+5. Verify the copied file.
+6. Deploy.
+7. Verify the public response.
+8. Account for caching.
+
+Keep the URL stable. Do not fingerprint the protocol path or apply immutable long-term caching without invalidation.
+
+## Avoid accidental withdrawal during rebuilds
+
+Omitting the post-build copy on a deploy can remove a previously valid declaration after Quartz cleans `public/`. Keep copy and verification in the same established publication sequence. That is a reliability measure, not an extra protocol requirement—and not a reason to add a separate monitoring service.
+
+{% capture stop_steps %}
+1. Remove `josh.json` and stop copying it to `public/.well-known/josh`.
+2. Remove host header rules that exist only for that path, if any (including declaration-only `_headers` or Netlify rules).
+3. Run a full Quartz rebuild without the copy step and confirm `public/.well-known/josh` is absent.
+4. Redeploy so packaging no longer includes the file; check CDN or proxy handlers.
+5. Confirm ordinary Quartz pages still work, then request `https://joshua.example/.well-known/josh` and verify the live response.
+{% endcapture %}
+{% include declaration-stop-publishing.html stop_steps=stop_steps %}
+
+## Security considerations
+
+Review the generated `public/` tree before enabling broad hidden-file packaging. Publishing the declaration does not require exposing private hidden files. Deploy only the intended static output.
+
+## Troubleshooting
+
+| Problem | Likely cause |
+| --- | --- |
+| Declaration disappears after a build | Quartz cleaned `public/` |
+| Source exists, output missing | Post-build copy did not run |
+| Output under `/static/` | Source placed in `quartz/static` |
+| Content-directory copy fails | Dot-prefixed path not discovered |
+| Local file exists, public URL 404 | Deployment omitted `.well-known` |
+| HTTP 200 returns HTML | Hosting fallback or rewrite |
+| Wrong Content-Type | Host MIME configuration |
+| Cloudflare header rule missing | `_headers` not in output or Functions serve path |
+| Netlify declaration missing | Build command omitted the copy |
+| GitHub Pages omits declaration | Hidden-file packaging |
+| Preview works, production fails | Different serving environment |
+| Resource under a project path | Origin-root deployment limitation |
+| Different result on `www` | Separate origin or redirect |
+| Old identity remains | Cache or stale deployment |
+| Invalid JSON | Source or protocol-value error |
+| Source deleted, declaration persists | Copy step or alternate handler remains |
+| Other site resources fail | Deployment configuration regression |
+
+Inspect source, build, packaging, and live `curl` before upgrading Quartz or changing hosts without evidence.
 
 ## Tested
 
 - Platform: Quartz 5.0.0 post-build copy (`josh.json` → `public/.well-known/josh`)
 - Verified: 2026-10-10 against Quartz 5.0.0 source (static emitter, glob, build clean, preview server)
+- Evidence: recipe and Quartz 5.0.0 source/documentation review—not a live Quartz+host deployment in this repository, and not a claim that every host MIME type or packaging path was live-tested. Host packaging behavior must still be verified per environment.
 - Protocol: RFC-JOSH-0002 version 1
+
+## References
+
+- [RFC-JOSH-0002: `/.well-known/josh`](https://github.com/joshternet/spec/blob/main/rfcs/0002-well-known-josh.md)
+- [RFC-JOSH-0001: Josh Identity](https://github.com/joshternet/spec/blob/main/rfcs/0001-josh-identity.md)
+- [Implement](/implement/), [Platforms](/implement/platforms/), [Join](/join/), [declaration checker](/implement/validate/)
+- [Quartz](https://quartz.jzhao.xyz/), [hosting](https://quartz.jzhao.xyz/hosting), [configuration](https://quartz.jzhao.xyz/configuration), [source](https://github.com/jackyzha0/quartz)
+- [Assets emitter](https://github.com/jackyzha0/quartz/blob/v5/quartz/plugins/emitters/assets.ts), [Static emitter](https://github.com/jackyzha0/quartz/blob/v5/quartz/plugins/emitters/static.ts), [build.ts](https://github.com/jackyzha0/quartz/blob/v5/quartz/build.ts)
+- [Netlify headers](https://docs.netlify.com/manage/routing/headers/), [Cloudflare Pages headers](https://developers.cloudflare.com/pages/configuration/headers/)
+- [GitHub Pages publishing](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site), [upload-pages-artifact](https://github.com/actions/upload-pages-artifact)
+- [Nginx HTTP core](https://nginx.org/en/docs/http/ngx_http_core_module.html)
+- [RFC 8259](https://www.rfc-editor.org/rfc/rfc8259), [RFC 9110](https://www.rfc-editor.org/rfc/rfc9110)
 
 [implement]: /implement/

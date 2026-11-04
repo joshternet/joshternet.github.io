@@ -1,0 +1,152 @@
+# Content Discovery Handbook chapters under /implement/content/.
+# Listed on the Content hub only — do not put these in implement_nav.yml.
+# Order matches hub index reading order and chapter prev/next.
+# group values drive hub section headings; keep every id and path stable.
+- title: Semantic HTML
+  path: /implement/content/html/
+  id: html
+  group: foundation
+  summary: >-
+    Structure pages with meaningful elements so people, assistive tech, and
+    crawlers can tell articles from chrome. Start here if you want the cheapest
+    win for discoverability on any stack.
+- title: SEO fundamentals
+  path: /implement/content/seo/
+  id: seo
+  group: foundation
+  summary: >-
+    Titles, descriptions, canonical URLs, and indexing basics that help search
+    engines and independent crawlers decide what a page is about. Useful even
+    when you never chase rankings.
+- title: Slash pages
+  path: /implement/content/slashpages/
+  id: slashpages
+  group: discovery
+  summary: >-
+    IndieWeb path conventions (/now, /uses, /photos, and kin) that organize a
+    site into understandable collections. Helpful when visitors and crawlers
+    need a map, not only a homepage.
+- title: OPML and well-known slashpages
+  path: /implement/content/opml/
+  id: opml
+  group: discovery
+  summary: >-
+    OPML 2.0 and /.well-known/slashpages as a machine-readable catalog of those
+    collections. Use when you want directories and hubs to enumerate your
+    slash pages without scraping menus.
+- title: Microformats2
+  path: /implement/content/microformats2/
+  id: microformats2
+  group: describing
+  summary: >-
+    Class-based vocabularies (h-entry, h-card, and more) that mark up entries,
+    authors, and categories in HTML. Ideal when you want structure without a
+    separate metadata document.
+- title: Open Graph
+  path: /implement/content/open-graph/
+  id: open-graph
+  group: describing
+  summary: >-
+    Preview metadata for titles, images, and types that social apps and many
+    readers reuse. Useful when a shared link should look intentional.
+- title: Schema.org and JSON-LD
+  path: /implement/content/schema-org/
+  id: schema-org
+  group: describing
+  summary: >-
+    Typed structured data in JSON-LD for creative works, events, and other
+    specific kinds of publication. Reach for it when HTML alone cannot name
+    the thing precisely.
+- title: Feeds
+  path: /implement/content/feeds/
+  id: feeds
+  group: syndication
+  summary: >-
+    RSS, Atom, JSON Feed, and feed autodiscovery for announcing posts and
+    updates. The practical way for readers and bots to learn what changed
+    without re-crawling everything.
+- title: Sitemaps
+  path: /implement/content/sitemaps/
+  id: sitemaps
+  group: syndication
+  summary: >-
+    XML sitemaps and sitemap indexes that list the URLs you care about
+    discovering. Complements feeds when your site has many stable pages.
+- title: Robots
+  path: /implement/content/robots/
+  id: robots
+  group: syndication
+  summary: >-
+    robots.txt and related directives that express crawler access policies,
+    plus notes on AI-agent preferences where they exist. Read this before you
+    assume every bot should fetch every path.
+- title: Links and relations
+  path: /implement/content/links/
+  id: links
+  group: relationships
+  summary: >-
+    Real hyperlinks and link relations (canonical, alternate, and friends) are
+    how URLs get found in the first place. Covers patterns that keep discovery
+    honest without inventing proprietary signals.
+- title: Identity and authorship
+  path: /implement/content/identity/
+  id: identity
+  group: relationships
+  summary: >-
+    h-card, rel=me, and related patterns that connect pages to a person or
+    project across the independent web. Worth reading when authorship should
+    travel with the work.
+- title: Connections
+  path: /implement/content/connections/
+  id: connections
+  group: relationships
+  summary: >-
+    Blogrolls, replies, Webmention, and related IndieWeb relationship patterns.
+    For publishers who want meaningful links between sites, not only inbound
+    SEO juice.
+- title: Creative media
+  path: /implement/content/media/
+  id: media
+  group: publishing
+  summary: >-
+    Photography, music, video, games, and projects as first-class published
+    work. Covers how to describe creative output so directories can list it
+    alongside writing.
+- title: Events
+  path: /implement/content/events/
+  id: events
+  group: publishing
+  summary: >-
+    h-event and Schema.org Event for gatherings with times and places. Useful
+    when your calendar should be readable by people and machines alike.
+- title: Uses
+  path: /implement/content/uses/
+  id: uses
+  group: publishing
+  summary: >-
+    /uses pages that describe tools and setup without turning into product
+    spam. A small convention with outsized clarity for curious visitors.
+- title: Explore
+  path: /implement/content/explore/
+  id: explore
+  group: understanding
+  summary: >-
+    How to make writing and creative work easier to discover—subjects, feeds,
+    stable URLs, and structured metadata—without treating discovery as a
+    guarantee.
+- title: Validation
+  path: /implement/content/validation/
+  id: validation
+  group: understanding
+  summary: >-
+    Checklists, validators, and debugging steps for feeds, markup, and
+    declarations. Start here when something looks right locally but fails in
+    the wild.
+- title: Reference
+  path: /implement/content/reference/
+  id: reference
+  group: understanding
+  summary: >-
+    Specifications index and verified hub crawl matrix for the Content
+    Discovery Handbook. Keep it bookmarked for authoritative links and honest
+    coverage notes.

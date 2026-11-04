@@ -80,8 +80,8 @@ export function buildNextSteps(input) {
 
   const links = [
     { href: "/network/", label: "Browse the Network" },
-    { href: "/nominate/", label: "Optionally nominate for JoshBot" },
-    { href: "/join/", label: "Open the join guide" },
+    { href: "/nominate/", label: "Help JoshBot find your site" },
+    { href: "/join/", label: "Read the Join guide" },
   ];
 
   if (!hasOrigin) {
@@ -89,7 +89,7 @@ export function buildNextSteps(input) {
       heading: "What this means",
       declarationFact: "Declaration: valid.",
       registryFact: null,
-      body: "This pasted file is a valid version 1 declaration. Publish it at /.well-known/josh on an origin you control, then check that live origin. Public registry discovery is separate from a valid file.",
+      body: "Your JSON is a valid version 1 Joshternet declaration. Now publish it at /.well-known/josh on your website, then check the live address to make sure it's available. Public registry discovery is separate from a valid declaration.",
       links,
     };
   }
@@ -97,18 +97,18 @@ export function buildNextSteps(input) {
   let registryFact =
     "Public registry: unavailable to determine from this page.";
   let body =
-    "The declaration is valid. Participation is declared on that origin. Whether JoshBot has listed the site in the public Network is a separate fact.";
+    "The declaration follows the current version 1 rules. This origin is declaring participation in the Joshternet. JoshBot discovering and listing the website is a separate process. The directory listing state couldn't be determined from this page.";
 
   switch (registryState) {
     case "listed":
       registryFact = "Public registry: currently listed.";
       body =
-        "The declaration is valid and this origin appears in the current public Network snapshot built into this page. You can open the Network directory, or keep reading the join guide.";
+        "The declaration follows the current version 1 rules. This origin appears in the Network snapshot included with this page. You can browse the Network, or keep reading the Join guide.";
       break;
     case "not-listed":
       registryFact = "Public registry: not currently listed.";
       body =
-        "The declaration is valid. Participation is declared, but this origin is not in the current public Network snapshot. JoshBot discovery is separate—you can wait for a crawl or optionally nominate the site.";
+        "The declaration follows the current version 1 rules. This origin isn't in the Network snapshot included with this page. That doesn't change whether its declaration is valid. JoshBot discovery is separate—you can wait for a crawl or optionally nominate the site.";
       break;
     case "unavailable":
       break;

@@ -434,6 +434,8 @@ test("old slugs get a compatibility page instead of a second hub", () => {
   assert.match(page, /permalink: \/topics\/postgres\//);
   assert.match(page, /\/topics\/postgresql\//);
   assert.match(page, /joshternet_analysis: derived/);
+  assert.match(page, /We now list this subject under/);
+  assert.doesNotMatch(page, /This name is filed under/);
 });
 
 test("rejection reasons and sensitive topics do not assert identity", () => {

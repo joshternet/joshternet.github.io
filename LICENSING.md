@@ -1,5 +1,7 @@
 # Licensing
 
+Three buckets: **software** (BSD-3-Clause), **documentation prose** (CC BY 4.0), and **brand marks** (not licensed for reuse as branding). Third-party attributions are listed separately.
+
 ## Project-owned code
 
 **License:** [BSD-3-Clause](https://opensource.org/licenses/BSD-3-Clause). The

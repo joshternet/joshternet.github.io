@@ -497,7 +497,7 @@ export function topicSeoTitle(label) {
  */
 export function topicSeoDescription(label) {
   const pretty = topicSeoLabel(label);
-  return `Explore ${pretty} articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes.`;
+  return `Explore articles, notes, and projects about ${pretty} from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers.`;
 }
 
 /**
@@ -507,7 +507,7 @@ export function topicSeoDescription(label) {
  */
 export function topicSeoKeywords(label) {
   const pretty = topicSeoLabel(label);
-  return `${pretty}, Joshternet, independent websites, Josh network, topic neighborhood`;
+  return `${pretty}, Joshternet, independent websites, Topics, shared interests`;
 }
 
 /**
@@ -557,6 +557,6 @@ robots: max-snippet:160, max-image-preview:large
 joshternet_analysis: derived
 ---
 
-This name is filed under [${to}](/topics/${to}/).
+We now list this subject under [${to}](/topics/${to}/). Follow that link to find the related websites and work.
 `;
 }

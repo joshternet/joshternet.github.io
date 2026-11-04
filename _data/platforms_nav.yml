@@ -1,36 +1,49 @@
 # Platform-specific /.well-known/josh recipes under /implement/platforms/.
 # Add a page here after the recipe has been tested. Do not put these in
 # implement_nav.yml — that row stays a single Platforms link.
-- title: Cloudflare Worker
-  path: /implement/platforms/cloudflare-worker/
-  summary: serves /.well-known/josh from a Worker route without changing your app build
+# group drives the Platforms index sections; keep every path stable.
+# summary is plain-language chooser copy for Join and the Platforms index.
 - title: Astro
   path: /implement/platforms/astro/
-  summary: copies public/.well-known/josh into dist/
+  group: static
+  summary: Publish the declaration from your site's public files
 - title: Eleventy
   path: /implement/platforms/eleventy/
-  summary: copies josh.json to /.well-known/josh with addPassthroughCopy
-- title: Ghost
-  path: /implement/platforms/ghost/
-  summary: serves /.well-known/josh at the reverse-proxy layer
+  group: static
+  summary: Copy the declaration to the required public path during the build
 - title: Hugo
   path: /implement/platforms/hugo/
-  summary: publishes static/.well-known/josh into public/
+  group: static
+  summary: Publish the declaration from Hugo's static files
 - title: Jekyll
   path: /implement/platforms/jekyll/
-  summary: publishes .well-known/josh after including that directory
-- title: Next.js
-  path: /implement/platforms/nextjs/
-  summary: serves public/.well-known/josh (including static export)
-- title: Nuxt
-  path: /implement/platforms/nuxt/
-  summary: copies public/.well-known/josh into Nuxt 4 generate output
+  group: static
+  summary: Include the .well-known directory in the generated website
 - title: Quartz
   path: /implement/platforms/quartz/
-  summary: copies josh.json into public/.well-known/josh after npx quartz build
+  group: static
+  summary: Copy the declaration into the published output after the build
+- title: Next.js
+  path: /implement/platforms/nextjs/
+  group: framework
+  summary: Publish the declaration from public files, including static-export setups
+- title: Nuxt
+  path: /implement/platforms/nuxt/
+  group: framework
+  summary: Include the declaration in your generated site's public output
 - title: SvelteKit
   path: /implement/platforms/sveltekit/
-  summary: copies static/.well-known/josh with adapter-static
+  group: framework
+  summary: Publish the declaration from static files using the documented adapter setup
+- title: Ghost
+  path: /implement/platforms/ghost/
+  group: cms
+  summary: Serve the declaration through your web server or reverse proxy
 - title: WordPress
   path: /implement/platforms/wordpress/
-  summary: Joshternet plugin serves /.well-known/josh
+  group: cms
+  summary: Use the Joshternet plugin to serve the declaration
+- title: Cloudflare Worker
+  path: /implement/platforms/cloudflare-worker/
+  group: edge
+  summary: Serve the declaration through a Worker route without changing your website's build

@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Democracy articles from Joshternet websites"
-description: "Explore Democracy articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Democracy, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Democracy from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Democracy, Joshternet, independent websites, Topics, shared interests"
 slug: "democracy"
 permalink: /topics/democracy/
 robots: max-snippet:160, max-image-preview:large

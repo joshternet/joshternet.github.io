@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "CSS articles from Joshternet websites"
-description: "Explore CSS articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "CSS, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about CSS from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "CSS, Joshternet, independent websites, Topics, shared interests"
 slug: "css"
 permalink: /topics/css/
 robots: max-snippet:160, max-image-preview:large

@@ -62,19 +62,19 @@ test("unknown members stay valid and repeated members do not", () => {
 });
 
 test("a live check uses the typed origin and the protocol path", () => {
-  assert.deepEqual(declarationURL("https://example.invalid/blog?x=1#y"), {
-    url: "https://example.invalid/.well-known/josh",
+  assert.deepEqual(declarationURL("https://joshua.example/blog?x=1#y"), {
+    url: "https://joshua.example/.well-known/josh",
   });
-  assert.deepEqual(declarationURL("https://example.invalid:8443"), {
-    url: "https://example.invalid:8443/.well-known/josh",
+  assert.deepEqual(declarationURL("https://joshua.example:8443"), {
+    url: "https://joshua.example:8443/.well-known/josh",
   });
-  assert.equal("error" in declarationURL("ftp://example.invalid"), true);
+  assert.equal("error" in declarationURL("ftp://joshua.example"), true);
 });
 
-test("a missing declaration and a read failure are not invalid files", () => {
+test("a missing declaration and a read failure are not invalid declarations", () => {
   const missing = classifyLiveResponse({
-    requestedOrigin: "https://example.invalid",
-    finalURL: "https://example.invalid/.well-known/josh",
+    requestedOrigin: "https://joshua.example",
+    finalURL: "https://joshua.example/.well-known/josh",
     status: 404,
     contentType: "text/plain",
     body: "missing",
@@ -84,7 +84,7 @@ test("a missing declaration and a read failure are not invalid files", () => {
   assert.equal(missing.declaration, null);
 
   const unread = classifyLiveResponse({
-    requestedOrigin: "https://example.invalid",
+    requestedOrigin: "https://joshua.example",
     finalURL: null,
     status: 503,
     contentType: "",
@@ -92,15 +92,15 @@ test("a missing declaration and a read failure are not invalid files", () => {
   });
 
   assert.equal(unread.kind, "unread");
-  assert.match(unread.summary, /not an invalid file/);
+  assert.match(unread.summary, /not an invalid declaration/);
   assert.match(unread.details.join(" "), /application\/json/);
 });
 
 test("client and server errors other than 404/410 are unread, not invalid", () => {
   for (const status of [401, 403, 429, 418, 301]) {
     const blocked = classifyLiveResponse({
-      requestedOrigin: "https://example.invalid",
-      finalURL: "https://example.invalid/.well-known/josh",
+      requestedOrigin: "https://joshua.example",
+      finalURL: "https://joshua.example/.well-known/josh",
       status,
       contentType: "text/html",
       body: "<html><title>Blocked</title></html>",
@@ -115,7 +115,7 @@ test("client and server errors other than 404/410 are unread, not invalid", () =
 
 test("a cross-origin redirect is not the typed origin's declaration", () => {
   const redirected = classifyLiveResponse({
-    requestedOrigin: "https://example.invalid",
+    requestedOrigin: "https://joshua.example",
     finalURL: "https://elsewhere.example/.well-known/josh",
     status: 200,
     contentType: "application/json",

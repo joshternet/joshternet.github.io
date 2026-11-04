@@ -11,7 +11,7 @@
  *   is allowed; anything else is unread (SSRF / open-proxy mitigation).
  * - Response bodies capped; fetch timed out.
  *
- * Inputs: GET /v1/declaration-check?origin=https://example.invalid
+ * Inputs: GET /v1/declaration-check?origin=https://joshua.example
  * Outputs: JSON for classifyLiveResponse on the site.
  */
 

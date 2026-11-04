@@ -282,13 +282,24 @@
     {% endif %}
 
     <main
-      class="site-main{% if page.chrome == false %} site-main--chrome-free{% endif %}"
+      class="site-main{% if page.chrome == false %} site-main--chrome-free{% endif %}{% if page.content_id %} site-main--handbook{% endif %}"
       id="main-content"
       tabindex="-1"
     >
-      <div class="{% if page.full_bleed %}full-bleed{% else %}prose{% endif %}">
-        {{ content }}
-      </div>
+      {% if page.content_id %}
+        <div class="handbook-shell">
+          <div class="prose handbook-shell__prose">
+            {{ content }}
+          </div>
+          <aside class="handbook-shell__aside">
+            {% include content-handbook-toc.html %}
+          </aside>
+        </div>
+      {% else %}
+        <div class="{% if page.full_bleed %}full-bleed{% else %}prose{% endif %}">
+          {{ content }}
+        </div>
+      {% endif %}
     </main>
 
     {% if page.chrome != false and page.footer != false %}

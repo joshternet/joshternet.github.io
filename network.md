@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Participating Independent Websites
+title: The Network
 description: >-
-  Browse independent websites in the Joshternet Network—Joshes and non-Joshes
-  discovered and verified by JoshBot, with screenshots, feeds, and elsewhere
-  profiles when published. Join by publishing /.well-known/josh.
+  Explore the independent websites JoshBot has discovered across the Joshternet.
+  Meet Joshes and Non-Joshes, find interesting projects, and see where the web
+  takes you.
 keywords: >-
   Joshternet network, participating websites, JoshBot registry, independent websites,
   join Joshternet
@@ -18,7 +18,11 @@ script: /assets/js/network.js
 
 # The Network
 
-Independent websites participating in the Joshternet, discovered and verified by JoshBot. Joshes and Non-Joshes participate as equals—Non-Joshes have been joshing the Joshes from the day they join.
+Welcome to the Network, where you can explore the independent websites that JoshBot has found and verified so far. Some belong to Joshes, others to Non-Joshes, and some haven't declared Josh identity at all. They are all part of the same adventure, each with their own ideas, projects, and little corners of the internet.
+
+Pick a website that catches your eye and have a look around. You might find a great article, an unusual project, a wonderful piece of art, or something you didn't know you were looking for. That's part of the fun of wandering the web.
+
+This is the part of the Joshternet that JoshBot has found and checked so far. There may be plenty of other participating websites still waiting to be discovered. Participation starts by publishing a valid declaration at `/.well-known/josh`—you do not need to appear here first ([Join]({{ '/join/' | relative_url }})).
 
 {% if jekyll.environment == "development" %}
 <div class="network-dev-preview">
@@ -36,6 +40,10 @@ Independent websites participating in the Joshternet, discovered and verified by
   (random), Recently joined, Oldest first, or Alphabetical while preserving filters.
 {% endcomment %}
 {% assign network_sites = network_sites | sort: 'domain' %}
+
+<p class="network-toolbar-lede">
+  Looking for a fellow Josh? Curious who's joined the fun without being one? Use the filters to explore, or leave them on All and see where you end up. Undeclared means the publisher has not declared Josh identity—it does not mean verification failed. Discover mixes things up so you don't always start in the same place. Recently joined and Oldest first follow when JoshBot first recorded participation in the registry.
+</p>
 
 <div class="network-toolbar" data-network-toolbar hidden>
   <div class="network-filters" aria-label="Filter the network">
@@ -111,7 +119,7 @@ Independent websites participating in the Joshternet, discovered and verified by
 <p class="network-count" aria-live="polite">
   <strong data-network-count>{{ network_sites | size }}</strong>
   <span data-network-count-label>
-    {% if network_sites.size == 1 %}site{% else %}sites{% endif %}
+    {% if network_sites.size == 1 %}website in this directory{% else %}websites in this directory{% endif %}
   </span>
 </p>
 
@@ -263,6 +271,20 @@ Independent websites participating in the Joshternet, discovered and verified by
 </div>
 {% else %}
 <div class="network-empty">
-  <p>JoshBot hasn't found any participating sites to show here yet.</p>
+  <p>
+    Nothing to show in the Network just yet. JoshBot is still looking for
+    participating websites, and there are plenty of corners of the internet left
+    to discover. If you have your own site, you can
+    <a href="{{ '/join/' | relative_url }}">join the adventure</a>
+    by publishing a declaration.
+  </p>
 </div>
 {% endif %}
+
+<p class="network-join-invite">
+  Have a website of your own? There's room for you here, whether you're a Josh
+  or not. The
+  <a href="{{ '/join/' | relative_url }}">Join guide</a>
+  shows you how to get connected without moving anything or creating another
+  account.
+</p>

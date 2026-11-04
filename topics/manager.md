@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Manager articles from Joshternet websites"
-description: "Explore Manager articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Manager, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Manager from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Manager, Joshternet, independent websites, Topics, shared interests"
 slug: "manager"
 permalink: /topics/manager/
 robots: max-snippet:160, max-image-preview:large

@@ -1,13 +1,13 @@
 {% comment %}
-  Goal & Constraints: Accessible identity label for network cards. Declined
-  (Non-Josh) names equal participation and joshing the Joshes without visual VIP
-  chrome. Expects network_site; sets identity_a11y.
+  Goal & Constraints: Accessible identity label for network cards. Equal
+  participation for Affirmed, Declined, and Undeclared without VIP chrome or
+  jokes in every card. Expects network_site; sets identity_a11y.
 {% endcomment %}
 {% case network_site.identity %}
   {% when 'affirmed' %}
-    {% assign identity_a11y = 'Josh Joshternet participant.' %}
+    {% assign identity_a11y = 'Participating website with affirmed Josh identity.' %}
   {% when 'declined' %}
-    {% assign identity_a11y = 'Non-Josh Joshternet participant, joshing the Joshes.' %}
+    {% assign identity_a11y = 'Participating website with declined Josh identity.' %}
   {% else %}
-    {% assign identity_a11y = 'Undeclared Joshternet participant.' %}
+    {% assign identity_a11y = 'Participating website with undeclared Josh identity.' %}
 {% endcase %}

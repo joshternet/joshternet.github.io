@@ -23,13 +23,28 @@ test("activity and search pages avoid popularity language", async () => {
   const search = await read("search.md");
 
   assert.match(activity, /permalink: \/activity\//);
+  assert.match(activity, /title: What's New/);
+  assert.match(activity, /corner of the internet/);
+  assert.match(activity, /selection of recent writing and creative work/);
+  assert.doesNotMatch(activity, /last two weeks/);
   assert.doesNotMatch(activity, /social feed/);
   assert.doesNotMatch(activity, /prolific publisher/);
   assert.doesNotMatch(activity, /One piece per site/);
   assert.match(activity, /include activity-card.html/);
   assert.match(activity, /activity-subscribe/);
+  assert.match(activity, /Subscribe to What's New/);
   assert.match(activity, /\/assets\/activity\/atom\.xml/);
   assert.match(activity, /\/assets\/network\/joshternet\.opml/);
+  assert.match(activity, /activity-showcase-note/);
+  assert.match(activity, /activity-close/);
+  assert.match(activity, /Nothing new has made it into What's New just yet/);
+  const homeActivity = await read("_includes/home-recent-activity.html");
+  assert.match(
+    homeActivity,
+    /Nothing new has made it into What's New just yet/,
+  );
+  assert.doesNotMatch(homeActivity, /last two weeks/);
+  assert.doesNotMatch(homeActivity, /Nothing recent is indexed/);
   const layout = await read("_layouts/default.html");
   assert.match(layout, /application\/atom\+xml/);
   assert.match(layout, /\/assets\/activity\/atom\.xml/);
@@ -97,14 +112,26 @@ test("activity and search pages avoid popularity language", async () => {
   assert.doesNotMatch(activity, /data-activity-filter/);
   assert.doesNotMatch(activity, /activity\.js/);
   assert.match(search, /permalink: \/search\//);
+  assert.match(search, /title: Search$/m);
+  assert.match(search, /Looking for something in particular/);
+  assert.match(
+    search,
+    /Try a website name, a subject, or something you're curious about/,
+  );
+  assert.doesNotMatch(search, /phrase/);
   assert.doesNotMatch(search, /does not boost sites/);
   assert.match(search, /data-search-input/);
-  assert.match(await read("assets/js/search.js"), /activity-card__heading/);
-  assert.match(
-    await read("assets/js/search.js"),
-    /\/assets\/activity\/posters\//,
-  );
+  const searchJs = await read("assets/js/search.js");
+  assert.match(searchJs, /activity-card__heading/);
+  assert.match(searchJs, /\/assets\/activity\/posters\//);
+  assert.match(searchJs, /Showing 1 result\./);
+  assert.match(searchJs, /Getting the search index ready/);
+  assert.match(searchJs, /Nothing turned up for that search/);
+  assert.match(searchJs, /No results in this category/);
+  assert.doesNotMatch(searchJs, /Type a word from a title/);
+  assert.doesNotMatch(searchJs, /matching result/);
   assert.match(search, /<noscript>/);
+  assert.match(search, /look through the index/);
   assert.doesNotMatch(await read("implement/explore.md"), /topics\.json/);
   assert.doesNotMatch(await read("implement/explore.md"), /activity\.json/);
 

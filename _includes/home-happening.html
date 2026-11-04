@@ -7,7 +7,8 @@
 {% assign home_happening = site.data.happening.items | default: empty %}
 {% if home_happening.size > 0 %}
   <section class="home-happening" aria-labelledby="home-happening-heading">
-    <h2 id="home-happening-heading">Happening on the Joshternet</h2>
+    <h2 id="home-happening-heading">Coming up</h2>
+    <p class="home-happening__lede">Events, gatherings, and other things happening around the network.</p>
     <ol class="activity-list activity-list--compact h-feed">
       {% for item in home_happening limit: 4 %}
         {% include activity-card.html item=item heading_tag="h3" %}

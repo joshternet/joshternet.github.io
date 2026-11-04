@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Banking articles from Joshternet websites"
-description: "Explore Banking articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Banking, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Banking from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Banking, Joshternet, independent websites, Topics, shared interests"
 slug: "banking"
 permalink: /topics/banking/
 robots: max-snippet:160, max-image-preview:large

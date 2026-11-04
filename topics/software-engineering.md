@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Software engineering writing on the Joshternet"
-description: "Explore Software engineering articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Software engineering, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Software engineering from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Software engineering, Joshternet, independent websites, Topics, shared interests"
 slug: "software-engineering"
 permalink: /topics/software-engineering/
 robots: max-snippet:160, max-image-preview:large

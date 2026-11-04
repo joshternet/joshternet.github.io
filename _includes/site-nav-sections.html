@@ -1,6 +1,7 @@
 {% comment %}
   Goal: Shared About/Network/Implement/JoshBot section flags for layout and nav.
-  Sets about_section, network_section, implement_section, joshbot_section.
+  Join is a top-level primary item (not under Implement). Sets about_section,
+  network_section, implement_section, joshbot_section.
 {% endcomment %}
 {% assign about_section = false %}
 {% if page.url == '/about/'
@@ -23,7 +24,7 @@
   {% assign network_section = true %}
 {% endif %}
 {% assign implement_section = false %}
-{% if page.url == '/implement/' or page.url contains '/implement/' or page.url == '/join/' %}
+{% if page.url == '/implement/' or page.url contains '/implement/' %}
   {% assign implement_section = true %}
 {% endif %}
 {% assign joshbot_section = false %}

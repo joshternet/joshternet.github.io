@@ -19,8 +19,11 @@ import {
   POSTER_DIRECTORY,
   POSTER_FETCH_ATTEMPTS,
   POSTER_FETCH_USER_AGENT,
+  POSTER_MAX_BYTES,
   POSTER_MAX_HEIGHT,
   POSTER_MAX_WIDTH,
+  SHEET_MUSIC_POSTER_HEIGHT,
+  SHEET_MUSIC_POSTER_WIDTH,
   applyPosterAssets,
   fetchPosterBytes,
   assertShowcasePostersLocalized,
@@ -29,6 +32,7 @@ import {
   posterAssetPath,
   posterCacheSourcesFromViews,
   posterSourcesFromViews,
+  readPosterResponseBytes,
   remainingRemoteShowcasePosters,
   removeUnshownPosters,
   renderSheetMusicPoster,
@@ -49,6 +53,39 @@ const ALLOW_ALL_ROBOTS = {
   allows: async () => true,
   bodyForOrigin: async () => "",
 };
+
+/**
+ * Fake DNS for offline assertPublicURL. Literal IP hostnames keep their own
+ * address (so 127.0.0.1 / link-local stay blocked); names resolve publicly.
+ * @param {string} hostname
+ * @returns {Promise<Array<{ address: string, family: number }>>}
+ */
+async function publicLookup(hostname) {
+  const host = String(hostname || "");
+
+  if (/^\d{1,3}(?:\.\d{1,3}){3}$/.test(host)) {
+    return [{ address: host, family: 4 }];
+  }
+
+  if (host.includes(":")) {
+    return [{ address: host, family: 6 }];
+  }
+
+  return [{ address: "1.1.1.1", family: 4 }];
+}
+
+/**
+ * Default offline options for poster fetches (robots + public DNS).
+ * @param {Record<string, unknown>} [extra]
+ * @returns {Record<string, unknown>}
+ */
+function posterFetchOpts(extra = {}) {
+  return {
+    robotsGate: ALLOW_ALL_ROBOTS,
+    lookup: publicLookup,
+    ...extra,
+  };
+}
 
 /**
  * Swallow expected soft-fail noise (failed fetches) in offline poster tests.
@@ -123,14 +160,14 @@ test("posterAssetPath hashes https URLs and rejects anything else", () => {
 
 test("resizePoster fits inside the card size and does not enlarge", async () => {
   const large = await resizePoster(
-    await solidPng(1200, 630, { r: 12, g: 80, b: 200 }),
+    await solidPng(2400, 1260, { r: 12, g: 80, b: 200 }),
   );
   const largeMeta = await sharp(large).metadata();
 
   assert.equal(largeMeta.format, "webp");
   assert.ok((largeMeta.width || 0) <= POSTER_MAX_WIDTH);
   assert.ok((largeMeta.height || 0) <= POSTER_MAX_HEIGHT);
-  assert.ok((largeMeta.width || 0) < 1200);
+  assert.ok((largeMeta.width || 0) < 2400);
 
   const small = await resizePoster(
     await solidPng(40, 20, { r: 1, g: 2, b: 3 }),
@@ -271,12 +308,12 @@ test("fetchPosterBytes skips URLs robots.txt disallows", async () => {
           calls += 1;
           throw new Error("should not fetch");
         },
-        {
+        posterFetchOpts({
           robotsGate: {
             allows: async () => false,
             bodyForOrigin: async () => "",
           },
-        },
+        }),
       ),
     /disallowed by robots\.txt/,
   );
@@ -298,7 +335,7 @@ test("fetchPosterBytes retries and sends the JoshBot User-Agent", async () => {
           status: 404,
           arrayBuffer: async () => new ArrayBuffer(0),
         }),
-        { robotsGate: ALLOW_ALL_ROBOTS },
+        posterFetchOpts(),
       ),
     /Poster request failed \(404\)/,
   );
@@ -326,12 +363,7 @@ test("fetchPosterBytes retries and sends the JoshBot User-Agent", async () => {
           png.buffer.slice(png.byteOffset, png.byteOffset + png.byteLength),
       };
     },
-    {
-      robotsGate: {
-        allows: async () => true,
-        bodyForOrigin: async () => "",
-      },
-    },
+    posterFetchOpts(),
   );
 
   assert.equal(calls, 2);
@@ -381,6 +413,272 @@ test("remainingRemoteShowcasePosters covers empty, local, and invalid rows", () 
   );
 });
 
+test("readPosterResponseBytes rejects oversized Content-Length", async () => {
+  await assert.rejects(
+    () =>
+      readPosterResponseBytes(
+        {
+          ok: true,
+          status: 200,
+          headers: {
+            get: (name) =>
+              name.toLowerCase() === "content-length"
+                ? String(POSTER_MAX_BYTES + 1)
+                : null,
+          },
+          arrayBuffer: async () => new ArrayBuffer(0),
+        },
+        POSTER_MAX_BYTES,
+      ),
+    /Content-Length/,
+  );
+});
+
+test("readPosterResponseBytes streams with a byte ceiling", async () => {
+  const chunk = Uint8Array.from([1, 2, 3, 4]);
+  let reads = 0;
+  const body = {
+    getReader() {
+      return {
+        async read() {
+          reads += 1;
+          if (reads === 1) {
+            return { done: false, value: chunk };
+          }
+          if (reads === 2) {
+            return { done: false, value: chunk };
+          }
+          return { done: true, value: undefined };
+        },
+        async cancel() {},
+      };
+    },
+  };
+
+  await assert.rejects(
+    () =>
+      readPosterResponseBytes(
+        { ok: true, status: 200, headers: { get: () => null }, body },
+        6,
+      ),
+    /Poster exceeds 6 bytes/,
+  );
+});
+
+test("readPosterResponseBytes streams a successful body and skips empty chunks", async () => {
+  const chunk = Uint8Array.from([9, 8, 7]);
+  let reads = 0;
+  const body = {
+    getReader() {
+      return {
+        async read() {
+          reads += 1;
+          if (reads === 1) {
+            return { done: false, value: chunk };
+          }
+          if (reads === 2) {
+            return { done: false, value: new Uint8Array(0) };
+          }
+          if (reads === 3) {
+            return { done: false, value: /** @type {unknown} */ ("skip") };
+          }
+          return { done: true, value: undefined };
+        },
+        async cancel() {},
+      };
+    },
+  };
+
+  const buffer = await readPosterResponseBytes(
+    { ok: true, status: 200, headers: { get: () => null }, body },
+    100,
+  );
+  assert.deepEqual([...buffer], [9, 8, 7]);
+});
+
+test("readPosterResponseBytes rejects missing body readers", async () => {
+  await assert.rejects(
+    () =>
+      readPosterResponseBytes(
+        { ok: true, status: 200, headers: { get: () => null } },
+        100,
+      ),
+    /no readable body/,
+  );
+});
+
+test("readPosterResponseBytes rejects oversized arrayBuffer bodies", async () => {
+  await assert.rejects(
+    () =>
+      readPosterResponseBytes(
+        {
+          ok: true,
+          status: 200,
+          headers: { get: () => null },
+          arrayBuffer: async () => Uint8Array.from([1, 2, 3, 4, 5]).buffer,
+        },
+        3,
+      ),
+    /Poster exceeds 3 bytes/,
+  );
+});
+
+test("readPosterResponseBytes stringifies non-Error body failures", async () => {
+  await assert.rejects(
+    () =>
+      readPosterResponseBytes(
+        {
+          ok: true,
+          status: 200,
+          headers: { get: () => null },
+          arrayBuffer: async () => {
+            throw "blob-fail";
+          },
+        },
+        16,
+      ),
+    (error) => {
+      assert.ok(error instanceof Error);
+      assert.equal(error.message, "blob-fail");
+      return true;
+    },
+  );
+});
+
+test("fetchPosterBytes honors a custom maxBytes ceiling", async () => {
+  await assert.rejects(
+    () =>
+      fetchPosterBytes(
+        "https://cdn.example/big.jpg",
+        async () => ({
+          ok: true,
+          status: 200,
+          headers: { get: () => null },
+          arrayBuffer: async () => Uint8Array.from([1, 2, 3, 4, 5]).buffer,
+        }),
+        posterFetchOpts({ attempts: 1, maxBytes: 4 }),
+      ),
+    /Poster exceeds 4 bytes/,
+  );
+});
+
+test("fetchPosterBytes rejects private poster sources before fetch", async () => {
+  let calls = 0;
+
+  await assert.rejects(
+    () =>
+      fetchPosterBytes(
+        "http://127.0.0.1/secret.jpg",
+        async () => {
+          calls += 1;
+          throw new Error("should not fetch");
+        },
+        posterFetchOpts(),
+      ),
+    /prohibited address|blocked hostname/,
+  );
+  assert.equal(calls, 0);
+});
+
+test("fetchPosterBytes rejects redirects to private addresses", async () => {
+  let calls = 0;
+
+  await assert.rejects(
+    () =>
+      fetchPosterBytes(
+        "https://cdn.example/jump.jpg",
+        async (url) => {
+          calls += 1;
+          if (String(url) === "https://cdn.example/jump.jpg") {
+            return {
+              ok: false,
+              status: 302,
+              headers: {
+                get: (name) =>
+                  String(name).toLowerCase() === "location"
+                    ? "http://169.254.169.254/latest/meta-data/"
+                    : null,
+              },
+            };
+          }
+
+          throw new Error(`unexpected fetch ${url}`);
+        },
+        posterFetchOpts({ attempts: 1 }),
+      ),
+    /prohibited address/,
+  );
+  assert.equal(calls, 1);
+});
+
+test("fetchPosterBytes rejects redirects without Location", async () => {
+  await assert.rejects(
+    () =>
+      fetchPosterBytes(
+        "https://cdn.example/noloc.jpg",
+        async () => ({
+          ok: false,
+          status: 302,
+          headers: { get: () => null },
+        }),
+        posterFetchOpts({ attempts: 1 }),
+      ),
+    /redirect without location/,
+  );
+});
+
+test("fetchPosterBytes rejects redirect hop overflow", async () => {
+  await assert.rejects(
+    () =>
+      fetchPosterBytes(
+        "https://cdn.example/loop.jpg",
+        async (url) => ({
+          ok: false,
+          status: 302,
+          headers: {
+            get: (name) =>
+              String(name).toLowerCase() === "location"
+                ? `${String(url)}?n=${Math.random()}`
+                : null,
+          },
+        }),
+        posterFetchOpts({ attempts: 1, maxRedirects: 2 }),
+      ),
+    /exceeded 2 redirects/,
+  );
+});
+
+test("fetchPosterBytes hard-times out a hung fetch that ignores abort", async () => {
+  await assert.rejects(
+    () =>
+      fetchPosterBytes(
+        "https://cdn.example/hang.jpg",
+        async (_url, init) =>
+          new Promise((_resolve, reject) => {
+            const signal =
+              init && typeof init === "object" && "signal" in init
+                ? /** @type {{ signal?: AbortSignal }} */ (init).signal
+                : undefined;
+            // Ignore abort — reproduce stalled CDN sockets.
+            if (signal) {
+              signal.addEventListener("abort", () => {}, { once: true });
+            }
+            setTimeout(
+              () => reject(new Error("should have raced timeout first")),
+              5_000,
+            );
+          }),
+        {
+          robotsGate: ALLOW_ALL_ROBOTS,
+          lookup: publicLookup,
+          timeoutMs: 40,
+          attempts: 1,
+        },
+      ),
+    /timed out after 40ms/,
+  );
+});
+
 test("fetchPosterBytes and materialize cover non-Error throw paths", async () => {
   await assert.rejects(
     () =>
@@ -389,7 +687,7 @@ test("fetchPosterBytes and materialize cover non-Error throw paths", async () =>
         async () => {
           throw "string-fail";
         },
-        { robotsGate: ALLOW_ALL_ROBOTS },
+        posterFetchOpts(),
       ),
     (error) => {
       assert.equal(error, "string-fail");
@@ -412,6 +710,7 @@ test("fetchPosterBytes and materialize cover non-Error throw paths", async () =>
     () =>
       materializeActivityPosters(views, posterRoot, {
         robotsGate: ALLOW_ALL_ROBOTS,
+        lookup: publicLookup,
         logError: muteLogError,
         log: muteLog,
         fetchImpl: async () => {
@@ -442,6 +741,7 @@ test("materializeActivityPosters fails closed when Showcase stays remote", async
     () =>
       materializeActivityPosters(views, posterRoot, {
         robotsGate: ALLOW_ALL_ROBOTS,
+        lookup: publicLookup,
         logError: muteLogError,
         log: muteLog,
         fetchImpl: async () => {
@@ -471,6 +771,7 @@ test("materializeActivityPosters can soft-skip Showcase gate for snapshot fallba
 
   await materializeActivityPosters(views, posterRoot, {
     robotsGate: ALLOW_ALL_ROBOTS,
+    lookup: publicLookup,
     logError: muteLogError,
     log: muteLog,
     requireLocalizedShowcase: false,
@@ -513,6 +814,7 @@ test("materializeActivityPosters writes, reuses cache, and drops unshown posters
     // fetch is the HTTP boundary we do not own.
     {
       robotsGate: ALLOW_ALL_ROBOTS,
+      lookup: publicLookup,
       logError: muteLogError,
       log: muteLog,
       fetchImpl: countingFetch,
@@ -547,6 +849,7 @@ test("materializeActivityPosters writes, reuses cache, and drops unshown posters
     posterRoot,
     {
       robotsGate: ALLOW_ALL_ROBOTS,
+      lookup: publicLookup,
       logError: muteLogError,
       log: muteLog,
       fetchImpl: countingFetch,
@@ -572,6 +875,7 @@ test("materializeActivityPosters writes, reuses cache, and drops unshown posters
     posterRoot,
     {
       robotsGate: ALLOW_ALL_ROBOTS,
+      lookup: publicLookup,
       logError: muteLogError,
       log: muteLog,
       fetchImpl: async () => {
@@ -589,6 +893,7 @@ test("materializeActivityPosters writes, reuses cache, and drops unshown posters
 
   await materializeActivityPosters({ activity: { primary: [] } }, posterRoot, {
     robotsGate: ALLOW_ALL_ROBOTS,
+    lookup: publicLookup,
     logError: muteLogError,
     log: muteLog,
   });
@@ -610,6 +915,7 @@ test("materializeActivityPosters keeps a previous file when the download fails",
 
   await materializeActivityPosters(views, posterRoot, {
     robotsGate: ALLOW_ALL_ROBOTS,
+    lookup: publicLookup,
     logError: muteLogError,
     log: muteLog,
     fetchImpl: fetchBuffer(png),
@@ -623,6 +929,7 @@ test("materializeActivityPosters keeps a previous file when the download fails",
   // Cached file short-circuits the network — offline fetch is never called.
   await materializeActivityPosters(views, posterRoot, {
     robotsGate: ALLOW_ALL_ROBOTS,
+    lookup: publicLookup,
     logError: softFails.logError,
     log: muteLog,
     fetchImpl: async () => {
@@ -650,6 +957,7 @@ test("materializeActivityPosters keeps a previous file when the download fails",
     otherRoot,
     {
       robotsGate: ALLOW_ALL_ROBOTS,
+      lookup: publicLookup,
       logError: badImageFails.logError,
       log: muteLog,
       fetchImpl: fetchBuffer(Buffer.from("not-an-image"), 200),
@@ -685,6 +993,7 @@ test("materializeActivityPosters keeps a previous file when the download fails",
     posterRoot,
     {
       robotsGate: ALLOW_ALL_ROBOTS,
+      lookup: publicLookup,
       logError: afterFails.logError,
       log: muteLog,
       fetchImpl: async () => {
@@ -732,6 +1041,7 @@ test("materializeActivityPosters rethrows unexpected read errors", async () => {
       posterRoot,
       {
         robotsGate: ALLOW_ALL_ROBOTS,
+        lookup: publicLookup,
         logError: muteLogError,
         log: muteLog,
         fetchImpl: fetchBuffer(png),
@@ -757,8 +1067,8 @@ test("sheet music posters are generated for PDF scores without images", async ()
   const meta = await sharp(webp).metadata();
 
   assert.equal(meta.format, "webp");
-  assert.equal(meta.width, 640);
-  assert.equal(meta.height, 480);
+  assert.equal(meta.width, SHEET_MUSIC_POSTER_WIDTH);
+  assert.equal(meta.height, SHEET_MUSIC_POSTER_HEIGHT);
 
   const posterRoot = path.join(root, `sheet-${Date.now()}`);
   const views = {
@@ -778,6 +1088,7 @@ test("sheet music posters are generated for PDF scores without images", async ()
 
   await materializeActivityPosters(views, posterRoot, {
     robotsGate: ALLOW_ALL_ROBOTS,
+    lookup: publicLookup,
     logError: muteLogError,
     log: muteLog,
     fetchImpl: async () => {
@@ -817,6 +1128,7 @@ test("materializeActivityPosters keeps pre-localized Playwright posters", async 
 
   await materializeActivityPosters(views, posterRoot, {
     robotsGate: ALLOW_ALL_ROBOTS,
+    lookup: publicLookup,
     logError: muteLogError,
     log: muteLog,
     fetchImpl: async () => {
@@ -1152,6 +1464,7 @@ test("materializeActivityPosters defaults logError to stderr and log to stdout",
       () =>
         materializeActivityPosters(views, posterRoot, {
           robotsGate: ALLOW_ALL_ROBOTS,
+          lookup: publicLookup,
           fetchImpl: async () => {
             throw new Error("offline");
           },

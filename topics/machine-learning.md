@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Machine learning writing on the Joshternet"
-description: "Explore Machine learning articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Machine learning, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Machine learning from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Machine learning, Joshternet, independent websites, Topics, shared interests"
 slug: "machine-learning"
 permalink: /topics/machine-learning/
 robots: max-snippet:160, max-image-preview:large

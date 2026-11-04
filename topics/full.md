@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Full articles from Joshternet websites"
-description: "Explore Full articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Full, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Full from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Full, Joshternet, independent websites, Topics, shared interests"
 slug: "full"
 permalink: /topics/full/
 robots: max-snippet:160, max-image-preview:large

@@ -154,7 +154,7 @@ if (form) {
         }
 
         showStatus(
-          "Thanks. That site is now in JoshBot's seed nomination queue.",
+          "Thanks! Your site has been added to JoshBot's nomination queue. The little robot will consider it under its normal crawling rules.",
           "success",
         );
       } else if (response.ok && result?.status === "already_nominated") {
@@ -166,7 +166,7 @@ if (form) {
         }
 
         showStatus(
-          "That site has already been nominated for JoshBot.",
+          "That website has already been nominated. There's no need to submit it again.",
           "success",
         );
       } else {
@@ -176,7 +176,7 @@ if (form) {
 
         showStatus(
           result?.message ||
-            "The nomination could not be submitted. Please try again.",
+            "We couldn't submit your nomination right now. Please try again.",
           "error",
         );
       }
@@ -186,7 +186,7 @@ if (form) {
       }
 
       showStatus(
-        "The nomination service could not be reached. Please try again.",
+        "JoshBot's nomination service couldn't be reached. Your request hasn't been confirmed, so please try again.",
         "error",
       );
     } finally {

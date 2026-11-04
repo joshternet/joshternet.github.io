@@ -66,6 +66,13 @@ export const ACTIVITY_WINDOW_DAYS = ACTIVITY_WINDOW_DAYS_LIVE;
 export const BOOKS_WINDOW_DAYS = 365;
 
 /**
+ * Showcase window for dated portfolio/project archive rows
+ * (`/projects|/portfolio|/work` children and portfolio-sourced items).
+ * Mirrors books: Year: 2022 stays out of the catalog.
+ */
+export const PROJECTS_WINDOW_DAYS = 365;
+
+/**
  * Max Showcase cards from one origin inside a single kind section.
  * Keeps large catalogs (year albums, daily uploads) from crowding out peers.
  */
@@ -1380,12 +1387,14 @@ export function isSiteHomeUrl(url) {
 
 /**
  * True when a homepage portfolio card title is indexed like
- * "02 M.A. Thesis · Installation ProductName …" (numbered portfolio chrome).
+ * "02 M.A. Thesis · Installation ProductName …" (zero-padded portfolio chrome).
+ * Single leading digits alone are ordinary prose ("4 Hours for This…"), not
+ * portfolio indexes.
  * @param {unknown} title
  * @returns {boolean}
  */
 export function isPortfolioIndexedProjectTitle(title) {
-  return /^\d{1,2}\s+\S/.test(String(title || "").trim());
+  return /^\d{2}\s+\S/.test(String(title || "").trim());
 }
 
 /**
@@ -2305,10 +2314,16 @@ export function isMadeContentItem(item, options = {}) {
       ? item.published_at.trim()
       : "";
 
-  // Undated portfolio/project rows are archival — not Showcase “new work.”
-  // Art/photo album hubs may be typed project under /painting/ and stay.
-  if (!publishedAt && isUndatedProjectBlockedFromShowcase(item, pathKind)) {
-    return false;
+  // Portfolio/project archive rows (/projects|portfolio|work + portfolio
+  // table): need a publisher year inside the last year. Undated and old
+  // years (e.g. Year: 2022) stay out. Named-root / shelf / art albums exempt.
+  if (isProjectArchiveShowcaseRow(item, pathKind)) {
+    if (
+      !publishedAt ||
+      !publishedWithinDays(publishedAt, clock, PROJECTS_WINDOW_DAYS)
+    ) {
+      return false;
+    }
   }
 
   // Books: only releases with a real publish date inside the last year.
@@ -2481,13 +2496,15 @@ export function shouldOmitYoutubeChannelCard(item, watchOrigins) {
 }
 
 /**
- * True when an undated portfolio/project archive row must stay out of Showcase.
- * Live shelf apps, named-root products, and dated creative toys stay eligible.
+ * True when the item is a portfolio/project archive row that needs a recent
+ * publisher date for Showcase (undated and aged years are excluded).
+ * Live shelf apps, named-root products, experiments, and art/photo albums
+ * are not archive rows.
  * @param {Record<string, unknown>} item
  * @param {string} pathKind
  * @returns {boolean}
  */
-function isUndatedProjectBlockedFromShowcase(item, pathKind) {
+function isProjectArchiveShowcaseRow(item, pathKind) {
   if (isPhotoOrArtCollectionUrl(item.url)) {
     return false;
   }
@@ -2509,7 +2526,7 @@ function isUndatedProjectBlockedFromShowcase(item, pathKind) {
     return true;
   }
 
-  // /projects|/portfolio|/work children without a publisher date (Drake-shaped).
+  // /projects|/portfolio|/work children (Drake / Stübner-shaped archives).
   try {
     const path = new URL(String(item.url)).pathname.toLowerCase();
     return /\/(projects?|portfolio|work)\/[^/]+/i.test(path);
@@ -4246,7 +4263,7 @@ export function buildActivityAtomXml(activity, options = {}) {
   <updated>${escapeAtomText(generatedAt)}</updated>
   <link rel="self" type="application/atom+xml" href="${escapeAtomText(feedUrl)}"/>
   <link rel="alternate" type="text/html" href="${escapeAtomText(selfHtml)}"/>
-  <subtitle>Recent articles from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
+  <subtitle>A selection of recent writing and creative work from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
   <generator uri="${escapeAtomText(hubOrigin)}/">Joshternet views:build</generator>
 ${entries.join("\n")}
 </feed>

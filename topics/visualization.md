@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Visualization articles from Joshternet websites"
-description: "Explore Visualization articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Visualization, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Visualization from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Visualization, Joshternet, independent websites, Topics, shared interests"
 slug: "visualization"
 permalink: /topics/visualization/
 robots: max-snippet:160, max-image-preview:large

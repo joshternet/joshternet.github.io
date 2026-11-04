@@ -21,6 +21,8 @@ import sharp from "sharp";
 import { USER_AGENT } from "../nlp/lib.mjs";
 import { createOriginRobotsGate } from "../nlp/origin-robots.mjs";
 import { loadPlaywright } from "../nlp/render.mjs";
+import { assertPublicURL } from "../network/lib.mjs";
+import { installPublicUrlRouteGuard } from "../network/public-fetch-guard.mjs";
 import {
   SHOWCASE_CONTENT_TYPES,
   isBareCreativeIndexUrl,
@@ -31,8 +33,40 @@ import {
   POSTER_DIRECTORY,
   applyPosterAssets,
   posterAssetPath,
+  posterWebpOptions,
   remainingRemoteShowcasePosters,
 } from "./posters.mjs";
+
+/**
+ * Assert the capture URL is public and block private Playwright subrequests.
+ * @param {{
+ *   route?: (pattern: string, handler: Function) => Promise<void>,
+ *   url?: () => string,
+ * }} page
+ * @param {string} workUrl
+ * @param {{ cache?: Map<string, unknown>, lookup?: unknown }} dnsOptions
+ * @returns {Promise<void>}
+ */
+async function guardWorkScreenshotPage(page, workUrl, dnsOptions) {
+  await assertPublicURL(workUrl, dnsOptions);
+
+  if (typeof page.route === "function") {
+    await installPublicUrlRouteGuard(page, dnsOptions);
+  }
+}
+
+/**
+ * Re-check the final document URL after navigation.
+ * @param {{ url?: () => string }} page
+ * @param {string} fallbackUrl
+ * @param {{ cache?: Map<string, unknown>, lookup?: unknown }} dnsOptions
+ * @returns {Promise<void>}
+ */
+async function assertPublicPageUrl(page, fallbackUrl, dnsOptions) {
+  const finalUrl =
+    typeof page.url === "function" && page.url() ? page.url() : fallbackUrl;
+  await assertPublicURL(finalUrl, dnsOptions);
+}
 
 /** @type {number} Max work screenshots per sync. */
 export const MAX_WORK_SCREENSHOTS_PER_SYNC = 48;
@@ -504,11 +538,15 @@ export async function captureMissingWorkScreenshots(items, options = {}) {
   const root = typeof options.root === "string" ? options.root : process.cwd();
   await attachExistingWorkPosters(items, root);
 
+  const dnsOptions = {
+    cache: options.cache || new Map(),
+    lookup: options.lookup,
+  };
   const robotsGate =
     options.robotsGate ||
     createOriginRobotsGate({
       userAgent: USER_AGENT,
-      cache: options.cache,
+      cache: dnsOptions.cache,
       fetchPublicText: options.fetchPublicText,
     });
   const pending = [];
@@ -599,10 +637,12 @@ export async function captureMissingWorkScreenshots(items, options = {}) {
           await softRace(
             (async () => {
               const page = await context.newPage();
+              await guardWorkScreenshotPage(page, workUrl, dnsOptions);
               await page.goto(workUrl, {
                 waitUntil: "load",
                 timeout: timeoutMs,
               });
+              await assertPublicPageUrl(page, workUrl, dnsOptions);
               await awaitPageReadyForScreenshot(page, timeoutMs);
               const png = await page.screenshot({
                 type: "png",
@@ -611,10 +651,12 @@ export async function captureMissingWorkScreenshots(items, options = {}) {
               });
               const webp = await sharp(png)
                 .resize(WORK_SCREENSHOT_WIDTH, WORK_SCREENSHOT_HEIGHT, {
-                  fit: "cover",
-                  position: "top",
+                  fit: "inside",
+                  withoutEnlargement: true,
+                  kernel: "lanczos3",
+                  fastShrinkOnLoad: false,
                 })
-                .webp({ quality: 82, effort: 5 })
+                .webp(posterWebpOptions())
                 .toBuffer();
               await fs.writeFile(absolute, webp);
               const written = await fs.stat(absolute);
@@ -714,11 +756,15 @@ export async function captureShowcasePosterFallbacks(views, options = {}) {
       : (message) => {
           process.stderr.write(message);
         };
+  const dnsOptions = {
+    cache: options.cache || new Map(),
+    lookup: options.lookup,
+  };
   const robotsGate =
     options.robotsGate ||
     createOriginRobotsGate({
       userAgent: USER_AGENT,
-      cache: options.cache,
+      cache: dnsOptions.cache,
       fetchPublicText: options.fetchPublicText,
     });
   const timeoutMs =
@@ -795,10 +841,12 @@ export async function captureShowcasePosterFallbacks(views, options = {}) {
           await softRace(
             (async () => {
               const page = await context.newPage();
+              await guardWorkScreenshotPage(page, row.url, dnsOptions);
               await page.goto(row.url, {
                 waitUntil: "load",
                 timeout: timeoutMs,
               });
+              await assertPublicPageUrl(page, row.url, dnsOptions);
               await awaitPageReadyForScreenshot(page, timeoutMs);
               const png = await page.screenshot({
                 type: "png",
@@ -807,10 +855,12 @@ export async function captureShowcasePosterFallbacks(views, options = {}) {
               });
               const webp = await sharp(png)
                 .resize(WORK_SCREENSHOT_WIDTH, WORK_SCREENSHOT_HEIGHT, {
-                  fit: "cover",
-                  position: "top",
+                  fit: "inside",
+                  withoutEnlargement: true,
+                  kernel: "lanczos3",
+                  fastShrinkOnLoad: false,
                 })
-                .webp({ quality: 82, effort: 5 })
+                .webp(posterWebpOptions())
                 .toBuffer();
               await fs.writeFile(absolute, webp);
               const written = await fs.stat(absolute);

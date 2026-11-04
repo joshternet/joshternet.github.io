@@ -14,17 +14,523 @@
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
       "image": "https://cdn.artlung.com/amiga/og-amiga.jpg"
+    },
+    {
+      "identity": "url:https://artlung.com/archive/portfolio/1999/",
+      "url": "https://artlung.com/archive/portfolio/1999/",
+      "site_origin": "https://artlung.com",
+      "title": "HTML was so primitive in 1999 that I described this portfolio piece as “interactive.” All “interactive” means was that it had content that changed as items were selected. We take such things for granted now.",
+      "summary": "HTML was so primitive in 1999 that I described this portfolio piece as “interactive.” All “interactive” means was that it had content that changed as items were selected. We take such things for granted now.",
+      "content_type": "visual_artwork",
+      "page_role": "project",
+      "language": "en-us",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-figure",
+        "page": "https://artlung.com/blog/2024/11/18/the-web-is-better-part-2/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-figure",
+          "url": "https://artlung.com/blog/2024/11/18/the-web-is-better-part-2/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://artlung.com/blog/wp-content/uploads/2024/11/portfolio-1999.jpeg"
+    },
+    {
+      "identity": "url:https://artlung.com/archive/portfolio/2010/",
+      "url": "https://artlung.com/archive/portfolio/2010/",
+      "site_origin": "https://artlung.com",
+      "title": "Ten years later, jQuery made things much easier. Updated it in 2010 to use jQuery (I also have versions in MooTools and Prototype). jQuery made things so much easier to deal with and I also learned to use CSS Sprite Sheets to do what had been mouseovers an",
+      "summary": "Ten years later, jQuery made things much easier. Updated it in 2010 to use jQuery (I also have versions in MooTools and Prototype). jQuery made things so much easier to deal with and I also learned to use CSS Sprite Sheets to do what had been mouseovers and image replacement.",
+      "content_type": "visual_artwork",
+      "page_role": "project",
+      "language": "en-us",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-figure",
+        "page": "https://artlung.com/blog/2024/11/18/the-web-is-better-part-2/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-figure",
+          "url": "https://artlung.com/blog/2024/11/18/the-web-is-better-part-2/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://artlung.com/blog/wp-content/uploads/2024/11/portfolio-2010.jpeg"
+    },
+    {
+      "identity": "url:https://artlung.com/archive/portfolio/2024/",
+      "url": "https://artlung.com/archive/portfolio/2024/",
+      "site_origin": "https://artlung.com",
+      "title": "Modern No-JavaScript version.",
+      "summary": "Modern No-JavaScript version.",
+      "content_type": "visual_artwork",
+      "page_role": "project",
+      "language": "en-us",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-figure",
+        "page": "https://artlung.com/blog/2024/11/18/the-web-is-better-part-2/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-figure",
+          "url": "https://artlung.com/blog/2024/11/18/the-web-is-better-part-2/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://artlung.com/blog/wp-content/uploads/2024/11/portfolio-2024.jpeg"
+    },
+    {
+      "identity": "url:https://artlung.com/archive/portfolio/dhtml/",
+      "url": "https://artlung.com/archive/portfolio/dhtml/",
+      "site_origin": "https://artlung.com",
+      "title": "A year later the buzzword was “Dynamic HTML.” Netscape and Internet Explorer were hot to help developers make the web even more interactive. Preferably using <em>only</em> their browser and not the one from that <em>other</em> company.<br />",
+      "summary": "A year later the buzzword was “Dynamic HTML.” Netscape and Internet Explorer were hot to help developers make the web even more interactive. Preferably using only their browser and not the one from that other company.",
+      "content_type": "visual_artwork",
+      "page_role": "archive",
+      "language": "en-us",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-figure",
+        "page": "https://artlung.com/blog/2024/11/18/the-web-is-better-part-2/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-figure",
+          "url": "https://artlung.com/blog/2024/11/18/the-web-is-better-part-2/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://artlung.com/blog/wp-content/uploads/2024/11/portfolio-dhtml.jpeg"
+    },
+    {
+      "identity": "url:https://artlung.com/archive/splashes/-20011210",
+      "url": "https://artlung.com/archive/splashes/-20011210",
+      "site_origin": "https://artlung.com",
+      "title": "ArtLung.com Home Page (2001)",
+      "summary": "ArtLung.com Home Page (2001)",
+      "content_type": "project",
+      "page_role": "archive",
+      "language": "en",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-figure",
+        "page": "https://artlung.com/portfolio/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-figure",
+          "url": "https://artlung.com/portfolio/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://cdn.artlung.com/archive/media/20011210.jpg"
+    },
+    {
+      "identity": "url:https://artlung.com/archive/splashes/-20011220",
+      "url": "https://artlung.com/archive/splashes/-20011220",
+      "site_origin": "https://artlung.com",
+      "title": "ArtLung.com Home Page (2001)",
+      "summary": "ArtLung.com Home Page (2001)",
+      "content_type": "project",
+      "page_role": "archive",
+      "language": "en",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-figure",
+        "page": "https://artlung.com/portfolio/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-figure",
+          "url": "https://artlung.com/portfolio/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://cdn.artlung.com/archive/media/20011220.jpg"
+    },
+    {
+      "identity": "url:https://artlung.com/archive/splashes/-20020106",
+      "url": "https://artlung.com/archive/splashes/-20020106",
+      "site_origin": "https://artlung.com",
+      "title": "ArtLung.com Home Page (2002)",
+      "summary": "ArtLung.com Home Page (2002)",
+      "content_type": "project",
+      "page_role": "archive",
+      "language": "en",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-figure",
+        "page": "https://artlung.com/portfolio/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-figure",
+          "url": "https://artlung.com/portfolio/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://cdn.artlung.com/archive/media/20020106.jpg"
+    },
+    {
+      "identity": "url:https://artlung.com/archive/splashes/-20020114",
+      "url": "https://artlung.com/archive/splashes/-20020114",
+      "site_origin": "https://artlung.com",
+      "title": "ArtLung.com Home Page (2002)",
+      "summary": "ArtLung.com Home Page (2002)",
+      "content_type": "project",
+      "page_role": "archive",
+      "language": "en",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-figure",
+        "page": "https://artlung.com/portfolio/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-figure",
+          "url": "https://artlung.com/portfolio/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://cdn.artlung.com/archive/media/20020114.gif"
+    },
+    {
+      "identity": "url:https://artlung.com/archive/splashes/-20020123",
+      "url": "https://artlung.com/archive/splashes/-20020123",
+      "site_origin": "https://artlung.com",
+      "title": "ArtLung.com Home Page (2002)",
+      "summary": "ArtLung.com Home Page (2002)",
+      "content_type": "project",
+      "page_role": "archive",
+      "language": "en",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-figure",
+        "page": "https://artlung.com/portfolio/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-figure",
+          "url": "https://artlung.com/portfolio/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://cdn.artlung.com/archive/media/20020123.gif"
+    },
+    {
+      "identity": "url:https://artlung.com/archive/splashes/-20020130",
+      "url": "https://artlung.com/archive/splashes/-20020130",
+      "site_origin": "https://artlung.com",
+      "title": "ArtLung.com Home Page (2002)",
+      "summary": "ArtLung.com Home Page (2002)",
+      "content_type": "project",
+      "page_role": "archive",
+      "language": "en",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-figure",
+        "page": "https://artlung.com/portfolio/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-figure",
+          "url": "https://artlung.com/portfolio/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://cdn.artlung.com/archive/media/20020130.jpg"
+    },
+    {
+      "identity": "url:https://artlung.com/archive/splashes/-20020221",
+      "url": "https://artlung.com/archive/splashes/-20020221",
+      "site_origin": "https://artlung.com",
+      "title": "ArtLung.com Home Page (2002)",
+      "summary": "ArtLung.com Home Page (2002)",
+      "content_type": "project",
+      "page_role": "archive",
+      "language": "en",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-figure",
+        "page": "https://artlung.com/portfolio/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-figure",
+          "url": "https://artlung.com/portfolio/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://cdn.artlung.com/archive/media/20020221.jpg"
+    },
+    {
+      "identity": "url:https://artlung.com/archive/splashes/-20020306",
+      "url": "https://artlung.com/archive/splashes/-20020306",
+      "site_origin": "https://artlung.com",
+      "title": "ArtLung.com Home Page (2002)",
+      "summary": "ArtLung.com Home Page (2002)",
+      "content_type": "project",
+      "page_role": "archive",
+      "language": "en",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-figure",
+        "page": "https://artlung.com/portfolio/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-figure",
+          "url": "https://artlung.com/portfolio/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://cdn.artlung.com/archive/media/20020306.jpg"
+    },
+    {
+      "identity": "url:https://artlung.com/archive/splashes/-20020424",
+      "url": "https://artlung.com/archive/splashes/-20020424",
+      "site_origin": "https://artlung.com",
+      "title": "ArtLung.com Home Page (2002)",
+      "summary": "ArtLung.com Home Page (2002)",
+      "content_type": "project",
+      "page_role": "archive",
+      "language": "en",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-figure",
+        "page": "https://artlung.com/portfolio/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-figure",
+          "url": "https://artlung.com/portfolio/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://cdn.artlung.com/archive/media/20020424.gif"
+    },
+    {
+      "identity": "url:https://artlung.com/archive/splashes/-20020806",
+      "url": "https://artlung.com/archive/splashes/-20020806",
+      "site_origin": "https://artlung.com",
+      "title": "ArtLung.com Home Page (2002)",
+      "summary": "ArtLung.com Home Page (2002)",
+      "content_type": "project",
+      "page_role": "archive",
+      "language": "en",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-figure",
+        "page": "https://artlung.com/portfolio/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-figure",
+          "url": "https://artlung.com/portfolio/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://cdn.artlung.com/archive/media/20020806.gif"
+    },
+    {
+      "identity": "url:https://artlung.com/archive/splashes/-20030702",
+      "url": "https://artlung.com/archive/splashes/-20030702",
+      "site_origin": "https://artlung.com",
+      "title": "ArtLung.com Home Page (2003)",
+      "summary": "ArtLung.com Home Page (2003)",
+      "content_type": "project",
+      "page_role": "archive",
+      "language": "en",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-figure",
+        "page": "https://artlung.com/portfolio/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-figure",
+          "url": "https://artlung.com/portfolio/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://cdn.artlung.com/archive/media/20030702.gif"
+    },
+    {
+      "identity": "url:https://artlung.com/archive/splashes/-20040612",
+      "url": "https://artlung.com/archive/splashes/-20040612",
+      "site_origin": "https://artlung.com",
+      "title": "ArtLung.com Home Page (2004)",
+      "summary": "ArtLung.com Home Page (2004)",
+      "content_type": "project",
+      "page_role": "archive",
+      "language": "en",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-figure",
+        "page": "https://artlung.com/portfolio/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-figure",
+          "url": "https://artlung.com/portfolio/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://cdn.artlung.com/archive/media/20040612.jpg"
+    },
+    {
+      "identity": "url:https://artlung.com/archive/splashes/-20060813",
+      "url": "https://artlung.com/archive/splashes/-20060813",
+      "site_origin": "https://artlung.com",
+      "title": "ArtLung.com Home Page (2006)",
+      "summary": "ArtLung.com Home Page (2006)",
+      "content_type": "project",
+      "page_role": "archive",
+      "language": "en",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-figure",
+        "page": "https://artlung.com/portfolio/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-figure",
+          "url": "https://artlung.com/portfolio/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://cdn.artlung.com/archive/media/20060813.jpg"
+    },
+    {
+      "identity": "url:https://artlung.com/archive/splashes/-20071006",
+      "url": "https://artlung.com/archive/splashes/-20071006",
+      "site_origin": "https://artlung.com",
+      "title": "ArtLung.com Home Page (2007)",
+      "summary": "ArtLung.com Home Page (2007)",
+      "content_type": "project",
+      "page_role": "archive",
+      "language": "en",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-figure",
+        "page": "https://artlung.com/portfolio/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-figure",
+          "url": "https://artlung.com/portfolio/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://cdn.artlung.com/archive/media/20071006.jpg"
+    },
+    {
+      "identity": "url:https://artlung.com/archive/splashes/-20180814",
+      "url": "https://artlung.com/archive/splashes/-20180814",
+      "site_origin": "https://artlung.com",
+      "title": "ArtLung.com Home Page (2018)",
+      "summary": "ArtLung.com Home Page (2018)",
+      "content_type": "project",
+      "page_role": "archive",
+      "language": "en",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-figure",
+        "page": "https://artlung.com/portfolio/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-figure",
+          "url": "https://artlung.com/portfolio/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://cdn.artlung.com/archive/media/20180814.jpg"
+    },
+    {
+      "identity": "url:https://artlung.com/archive/splashes/-20220114",
+      "url": "https://artlung.com/archive/splashes/-20220114",
+      "site_origin": "https://artlung.com",
+      "title": "ArtLung.com Home Page (2022)",
+      "summary": "ArtLung.com Home Page (2022)",
+      "content_type": "project",
+      "page_role": "archive",
+      "language": "en",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-figure",
+        "page": "https://artlung.com/portfolio/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-figure",
+          "url": "https://artlung.com/portfolio/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://cdn.artlung.com/archive/media/20220114.jpg"
+    },
+    {
+      "identity": "url:https://artlung.com/archive/splashes/-20260320",
+      "url": "https://artlung.com/archive/splashes/-20260320",
+      "site_origin": "https://artlung.com",
+      "title": "ArtLung.com Home Page (2026)",
+      "summary": "ArtLung.com Home Page (2026)",
+      "content_type": "project",
+      "page_role": "archive",
+      "language": "en",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-figure",
+        "page": "https://artlung.com/portfolio/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-figure",
+          "url": "https://artlung.com/portfolio/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://cdn.artlung.com/archive/media/20260320.jpg"
+    },
+    {
+      "identity": "url:https://artlung.com/archive/splashes/-20260903",
+      "url": "https://artlung.com/archive/splashes/-20260903",
+      "site_origin": "https://artlung.com",
+      "title": "ArtLung.com Home Page (2026)",
+      "summary": "ArtLung.com Home Page (2026)",
+      "content_type": "project",
+      "page_role": "archive",
+      "language": "en",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-figure",
+        "page": "https://artlung.com/portfolio/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-figure",
+          "url": "https://artlung.com/portfolio/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://cdn.artlung.com/archive/media/20260903.avif"
     },
     {
       "identity": "url:https://artlung.com/art/",
@@ -33,17 +539,17 @@
       "title": "/art/",
       "summary": "A selection of original artwork, prints, collages and exhibitions by Joe Crawford of ArtLung.com",
       "content_type": "project",
-      "page_role": "portfolio",
+      "page_role": "project",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -139,26 +645,11 @@
       "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
       "site_origin": "https://artlung.com",
       "title": "I got an email and text message nearly simultaneously today.",
-      "published_at": "2026-10-23T11:56:02.000Z",
+      "published_at": "2026-10-23T18:56:02.000Z",
       "content_type": "article",
       "language": "en-us",
       "summary": "",
-      "declared_topics": [
-        {
-          "slug": "misc",
-          "label": "misc",
-          "raw_value": "misc",
-          "source": "rss:category",
-          "community_eligible": true
-        },
-        {
-          "slug": "miscellaneous",
-          "label": "miscellaneous",
-          "raw_value": "miscellaneous",
-          "source": "rss:category",
-          "community_eligible": true
-        }
-      ],
+      "declared_topics": [],
       "source": {
         "kind": "h-entry",
         "page": "https://artlung.com/blog/2026/10/23/friday-miscellany/"
@@ -313,19 +804,11 @@
       "url": "https://artlung.com/blog/2026/10/29/patrick-stewart-rip/",
       "site_origin": "https://artlung.com",
       "title": "Patrick Stewart was a giant across television and movie franchises I enjoyed.",
-      "published_at": "2026-10-29T13:53:15.000Z",
+      "published_at": "2026-10-29T20:53:15.000Z",
       "content_type": "article",
       "language": "en-us",
       "summary": "",
-      "declared_topics": [
-        {
-          "slug": "star-trek",
-          "label": "star-trek",
-          "raw_value": "star-trek",
-          "source": "rss:category",
-          "community_eligible": true
-        }
-      ],
+      "declared_topics": [],
       "source": {
         "kind": "h-entry",
         "page": "https://artlung.com/blog/2026/10/29/patrick-stewart-rip/"
@@ -443,19 +926,19 @@
       "url": "https://artlung.com/blogofthe-day/",
       "site_origin": "https://artlung.com",
       "title": "other ways",
-      "summary": "The blog of the day is roadlessread.com - Zachary Kai's book blog: with links, recommendations, lists, and esoterica..",
+      "summary": "",
       "content_type": "project",
       "page_role": "project",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z"
@@ -464,20 +947,20 @@
       "identity": "url:https://artlung.com/comics/",
       "url": "https://artlung.com/comics/",
       "site_origin": "https://artlung.com",
-      "title": "artlung.com/comics/",
-      "summary": "I host an open forum for learning CSS & HTML called Front End Study Hall under the aegis of the IndieWeb . If CSS and HTML are of interest to you, and you like to explore and learn and experiment, you are welcome to join us. Meetings are held on Zoom.",
+      "title": "/comics/",
+      "summary": "Funny and not funny autobiographical and not autobiographical words and pictures.",
       "content_type": "project",
       "page_role": "project",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -494,13 +977,13 @@
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -517,13 +1000,13 @@
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z"
@@ -539,13 +1022,13 @@
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -555,20 +1038,20 @@
       "identity": "url:https://artlung.com/cssbattles/",
       "url": "https://artlung.com/cssbattles/",
       "site_origin": "https://artlung.com",
-      "title": "artlung.com/cssbattles/",
+      "title": "CSS Battles",
       "summary": "Solving CSS Battle Daily Targets (with video posted to YouTube)",
       "content_type": "project",
       "page_role": "project",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -585,13 +1068,13 @@
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -608,13 +1091,13 @@
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -631,13 +1114,13 @@
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -654,13 +1137,13 @@
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -677,36 +1160,59 @@
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
       "image": "https://cdn.artlung.com/foursquare/og-foursquare.jpg"
     },
     {
+      "identity": "url:https://artlung.com/front-end-study-hall/",
+      "url": "https://artlung.com/front-end-study-hall/",
+      "site_origin": "https://artlung.com",
+      "title": "/front-end-study-hall/",
+      "summary": "An IndieWeb event created and proctored by Joe Crawford where participants study HTML, CSS, and all things web",
+      "content_type": "project",
+      "page_role": "project",
+      "language": "en",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://cdn.artlung.com/front-end-study-hall/og-front-end-study-hall.jpg"
+    },
+    {
       "identity": "url:https://artlung.com/headers/",
       "url": "https://artlung.com/headers/",
       "site_origin": "https://artlung.com",
-      "title": "/headers/ 📁",
+      "title": "all the headers over here",
       "summary": "Designs for the header of my blog, since 2001",
       "content_type": "project",
       "page_role": "project",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z"
@@ -722,13 +1228,13 @@
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -745,13 +1251,13 @@
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -764,17 +1270,17 @@
       "title": "/images/ 📁",
       "summary": "A picture is worth a thousand words",
       "content_type": "project",
-      "page_role": "project",
+      "page_role": "unknown",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -787,17 +1293,17 @@
       "title": "/indienews/ 📁",
       "summary": "Links submitted for inclusion in the IndieWeb news aggregator, IndieNews",
       "content_type": "project",
-      "page_role": "project",
+      "page_role": "unknown",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -810,17 +1316,17 @@
       "title": "/instagram/ 📁",
       "summary": "",
       "content_type": "project",
-      "page_role": "project",
+      "page_role": "unknown",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z"
@@ -829,20 +1335,20 @@
       "identity": "url:https://artlung.com/likes/",
       "url": "https://artlung.com/likes/",
       "site_origin": "https://artlung.com",
-      "title": "Like",
+      "title": "/likes/ 📁",
       "summary": "Links I have found notable, webmentions sent where applicable",
       "content_type": "project",
       "page_role": "project",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -855,17 +1361,17 @@
       "title": "/longest-posts/",
       "summary": "",
       "content_type": "project",
-      "page_role": "project",
+      "page_role": "unknown",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z"
@@ -881,13 +1387,13 @@
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -900,17 +1406,17 @@
       "title": "/most-commented/",
       "summary": "",
       "content_type": "project",
-      "page_role": "project",
+      "page_role": "unknown",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z"
@@ -922,17 +1428,17 @@
       "title": "/most-images/",
       "summary": "",
       "content_type": "project",
-      "page_role": "project",
+      "page_role": "unknown",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z"
@@ -948,13 +1454,13 @@
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -971,13 +1477,13 @@
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -994,13 +1500,13 @@
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -1013,17 +1519,40 @@
       "title": "/photos/ 📁",
       "summary": "",
       "content_type": "project",
+      "page_role": "portfolio",
+      "language": "en",
+      "declared_topics": [],
+      "source": {
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
+      },
+      "source_feeds": [
+        {
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "published_at": "2024-05-26T22:49:35.000Z"
+    },
+    {
+      "identity": "url:https://artlung.com/photos/1999-screenshots/",
+      "url": "https://artlung.com/photos/1999-screenshots/",
+      "site_origin": "https://artlung.com",
+      "title": "Web Screenshots",
+      "summary": "",
+      "content_type": "photograph",
       "page_role": "project",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-index",
+        "page": "https://artlung.com/photos/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-index",
+          "url": "https://artlung.com/photos/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z"
@@ -1032,20 +1561,20 @@
       "identity": "url:https://artlung.com/prior/",
       "url": "https://artlung.com/prior/",
       "site_origin": "https://artlung.com",
-      "title": "/prior/",
+      "title": "Prior Projects",
       "summary": "Older vintage projects of Joe Crawford",
       "content_type": "project",
-      "page_role": "project",
+      "page_role": "unknown",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -1062,13 +1591,13 @@
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -1081,17 +1610,17 @@
       "title": "/quotes/",
       "summary": "Quotes which have had a lasting impact on me",
       "content_type": "project",
-      "page_role": "project",
+      "page_role": "unknown",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -1101,20 +1630,20 @@
       "identity": "url:https://artlung.com/reels/",
       "url": "https://artlung.com/reels/",
       "site_origin": "https://artlung.com",
-      "title": "artlung.com/reels/",
-      "summary": "I love the water. I try to ride waves as daily as possible year round. Some weeks it's six sessions, and some weeks two.",
+      "title": "/reels/ 📁",
+      "summary": "A collection of video reels akin to TikTok or Instagram Reels",
       "content_type": "project",
       "page_role": "unknown",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -1124,20 +1653,20 @@
       "identity": "url:https://artlung.com/robots/",
       "url": "https://artlung.com/robots/",
       "site_origin": "https://artlung.com",
-      "title": "artlung.com/robots/",
+      "title": "/robots/",
       "summary": "My whimsical collection of toy robots.",
       "content_type": "project",
-      "page_role": "project",
+      "page_role": "unknown",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -1154,13 +1683,13 @@
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -1426,17 +1955,17 @@
       "title": "/sketchnotes/",
       "summary": "Sketchnotes I've taken at events over the years.",
       "content_type": "project",
-      "page_role": "project",
+      "page_role": "unknown",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -1446,20 +1975,20 @@
       "identity": "url:https://artlung.com/splashes/",
       "url": "https://artlung.com/splashes/",
       "site_origin": "https://artlung.com",
-      "title": "splash pages",
-      "summary": "I'm on various social media silos too. But my website comes first and will outlast most of them. See Elsewhere for the full list past and present.",
+      "title": "/splashes/ 📁",
+      "summary": "Home page, front page, splash page, a history of artlung.com",
       "content_type": "project",
-      "page_role": "project",
+      "page_role": "unknown",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -1472,17 +2001,17 @@
       "title": "/starbucks/",
       "summary": "My usual coffee order!",
       "content_type": "project",
-      "page_role": "project",
+      "page_role": "unknown",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -1493,19 +2022,19 @@
       "url": "https://artlung.com/text-bots/",
       "site_origin": "https://artlung.com",
       "title": "social media bots",
-      "summary": "Recently posted affirmations:",
+      "summary": "Twitter, Mastodon, Bluesky bots which I have created and maintained",
       "content_type": "project",
       "page_role": "project",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -1518,17 +2047,17 @@
       "title": "/top4/",
       "summary": "Top four list of arbitrary appreciations of Joe Crawford",
       "content_type": "project",
-      "page_role": "project",
+      "page_role": "unknown",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -1538,20 +2067,20 @@
       "identity": "url:https://artlung.com/toys/",
       "url": "https://artlung.com/toys/",
       "site_origin": "https://artlung.com",
-      "title": "Toys",
-      "summary": "I'm on various social media silos too. But my website comes first and will outlast most of them. See Elsewhere for the full list past and present.",
+      "title": "/toys/",
+      "summary": "Amusing, confounding, interactive digital toys made by Joe Crawford",
       "content_type": "project",
-      "page_role": "project",
+      "page_role": "unknown",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -1564,17 +2093,17 @@
       "title": "/twitter/ 📁",
       "summary": "PESOS archive of Tweets from Twitter",
       "content_type": "project",
-      "page_role": "project",
+      "page_role": "unknown",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -1584,20 +2113,20 @@
       "identity": "url:https://artlung.com/videos/",
       "url": "https://artlung.com/videos/",
       "site_origin": "https://artlung.com",
-      "title": "artlung.com/videos/",
-      "summary": "This is similar to the Lab, but for stranger, goofier, and (mostly) non-technical items which I have found useful on the internet.",
+      "title": "/videos/ 📁",
+      "summary": "Bodysurfing videos of Joe Crawford captured using Surfline and DawnPatrol.app",
       "content_type": "project",
       "page_role": "project",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -1614,13 +2143,13 @@
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z"
@@ -1632,17 +2161,17 @@
       "title": "/visualization/",
       "summary": "",
       "content_type": "project",
-      "page_role": "project",
+      "page_role": "unknown",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z"
@@ -1652,19 +2181,19 @@
       "url": "https://artlung.com/wordpress/",
       "site_origin": "https://artlung.com",
       "title": "/wordpress/",
-      "summary": "Joe Crawford made this. He lives in San Diego. Go make a web page! Subscribe to his Newsletter , send a webmention or Say hi !",
+      "summary": "On my personal and professional experience using, programming, working with WordPress",
       "content_type": "project",
-      "page_role": "project",
+      "page_role": "unknown",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
@@ -1674,24 +2203,70 @@
       "identity": "url:https://artlung.com/words/",
       "url": "https://artlung.com/words/",
       "site_origin": "https://artlung.com",
-      "title": "/words/ 📁",
-      "summary": "Joe Crawford made this. He lives in San Diego. Go make a web page! Subscribe to his Newsletter , send a webmention or Say hi !",
+      "title": "on the radio",
+      "summary": "Writing by about or mentioning Joe Crawford.",
       "content_type": "project",
-      "page_role": "project",
+      "page_role": "unknown",
       "language": "en",
       "declared_topics": [],
       "source": {
-        "kind": "creative-homepage",
-        "page": "https://artlung.com/"
+        "kind": "creative-projects-shelf",
+        "page": "https://artlung.com/projects/"
       },
       "source_feeds": [
         {
-          "type": "creative-homepage",
-          "url": "https://artlung.com/"
+          "type": "creative-projects-shelf",
+          "url": "https://artlung.com/projects/"
         }
       ],
       "observed_at": "2026-11-04T09:47:24.987Z",
       "image": "https://cdn.artlung.com/words/og-words.jpg"
+    },
+    {
+      "identity": "url:https://chrisminnick.substack.com/p/advice-for-the-soon-to-be-self-employed",
+      "url": "https://chrisminnick.substack.com/p/advice-for-the-soon-to-be-self-employed",
+      "site_origin": "https://www.chrisminnick.com",
+      "title": "Advice for the Soon-To-Be Self Employed",
+      "published_at": "2026-10-11T18:49:51.000Z",
+      "content_type": "article",
+      "language": null,
+      "summary": "Why you might not want to do it like I did.",
+      "declared_topics": [],
+      "source": {
+        "kind": "rss",
+        "feed": "https://chrisminnick.substack.com/feed"
+      },
+      "source_feeds": [
+        {
+          "type": "rss",
+          "url": "https://chrisminnick.substack.com/feed"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://substack-post-media.s3.amazonaws.com/public/images/d3cbeffe-151d-4944-9935-49007c8cfb4e_600x388.png"
+    },
+    {
+      "identity": "url:https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
+      "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
+      "site_origin": "https://www.chrisminnick.com",
+      "title": "The Ballmer Peak in the Age of AI Coding",
+      "published_at": "2026-11-03T13:31:11.000Z",
+      "content_type": "article",
+      "language": null,
+      "summary": "Here’s a toast to the way great ideas are born",
+      "declared_topics": [],
+      "source": {
+        "kind": "rss",
+        "feed": "https://chrisminnick.substack.com/feed"
+      },
+      "source_feeds": [
+        {
+          "type": "rss",
+          "url": "https://chrisminnick.substack.com/feed"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "image": "https://substack-post-media.s3.amazonaws.com/public/images/c5eb026d-8795-4d8b-8d62-af930e8f620e_744x496.webp"
     },
     {
       "identity": "url:https://forwardbias.dev/ideas/",
@@ -4733,6 +5308,7 @@
       "content_type": "collection",
       "page_role": "unknown",
       "language": "en",
+      "published_at": "2026-01-01T00:00:00.000Z",
       "declared_topics": [],
       "source": {
         "kind": "creative-schema",
@@ -17659,7 +18235,7 @@
       "identity": "youtube-episode:https://joshua.seigler.net:https://www.youtube.com/watch?v=_5PwQKW62to",
       "url": "https://www.youtube.com/watch?v=_5PwQKW62to",
       "site_origin": "https://joshua.seigler.net",
-      "title": "Untitled",
+      "title": "Would You Trust This Corporation?",
       "summary": "",
       "content_type": "podcast_episode",
       "page_role": "project",
@@ -17689,7 +18265,7 @@
       "identity": "youtube-video:https://artlung.com:https://www.youtube.com/watch?v=_kuQflW2Db8",
       "url": "https://www.youtube.com/watch?v=_kuQflW2Db8",
       "site_origin": "https://artlung.com",
-      "title": "Untitled",
+      "title": "CSSBattle for NOVEMBER 3 (2026)",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -17717,10 +18293,41 @@
       ]
     },
     {
+      "identity": "youtube-episode:https://www.chrisminnick.com:https://www.youtube.com/watch?v=-LV8ghrRSv8",
+      "url": "https://www.youtube.com/watch?v=-LV8ghrRSv8",
+      "site_origin": "https://www.chrisminnick.com",
+      "title": "AI Won’t Tell You You’re Bad",
+      "summary": "",
+      "content_type": "podcast_episode",
+      "page_role": "project",
+      "language": null,
+      "declared_topics": [],
+      "source": {
+        "kind": "youtube-show-fallback",
+        "show": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+      },
+      "source_feeds": [
+        {
+          "type": "youtube-show",
+          "url": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "published_at": "2026-10-20T19:01:07.000Z",
+      "image": "https://i.ytimg.com/vi/-LV8ghrRSv8/hqdefault.jpg",
+      "actions": [
+        {
+          "label": "Watch",
+          "url": "https://www.youtube.com/watch?v=-LV8ghrRSv8",
+          "type": "watch"
+        }
+      ]
+    },
+    {
       "identity": "youtube-video:https://joshkoter.com:https://www.youtube.com/watch?v=5uni6eGeTX4",
       "url": "https://www.youtube.com/watch?v=5uni6eGeTX4",
       "site_origin": "https://joshkoter.com",
-      "title": "Untitled",
+      "title": "Build 2D Games with Vanilla JavaScript - Full Course Out Now",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -17751,7 +18358,7 @@
       "identity": "youtube-video:https://joshkoter.com:https://www.youtube.com/watch?v=7JtLHJbm0kA",
       "url": "https://www.youtube.com/watch?v=7JtLHJbm0kA",
       "site_origin": "https://joshkoter.com",
-      "title": "Untitled",
+      "title": "JavaScript Side Scroller Game Tutorial",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -17782,7 +18389,7 @@
       "identity": "youtube-episode:https://joshua.seigler.net:https://www.youtube.com/watch?v=A8pcb4xyCic",
       "url": "https://www.youtube.com/watch?v=A8pcb4xyCic",
       "site_origin": "https://joshua.seigler.net",
-      "title": "Untitled",
+      "title": "Law Without Government. Robert P. Murphy.",
       "summary": "",
       "content_type": "podcast_episode",
       "page_role": "project",
@@ -17809,10 +18416,72 @@
       ]
     },
     {
+      "identity": "youtube-episode:https://www.chrisminnick.com:https://www.youtube.com/watch?v=BJgbX21HEkY",
+      "url": "https://www.youtube.com/watch?v=BJgbX21HEkY",
+      "site_origin": "https://www.chrisminnick.com",
+      "title": "Challenge Checkin: Crochet with Arthritis, Morse Code by Ear",
+      "summary": "",
+      "content_type": "podcast_episode",
+      "page_role": "project",
+      "language": null,
+      "declared_topics": [],
+      "source": {
+        "kind": "youtube-show-fallback",
+        "show": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+      },
+      "source_feeds": [
+        {
+          "type": "youtube-show",
+          "url": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "published_at": "2026-11-02T01:39:51.000Z",
+      "image": "https://i.ytimg.com/vi/BJgbX21HEkY/hqdefault.jpg",
+      "actions": [
+        {
+          "label": "Watch",
+          "url": "https://www.youtube.com/watch?v=BJgbX21HEkY",
+          "type": "watch"
+        }
+      ]
+    },
+    {
+      "identity": "youtube-episode:https://www.chrisminnick.com:https://www.youtube.com/watch?v=bOA4eNEzZHc",
+      "url": "https://www.youtube.com/watch?v=bOA4eNEzZHc",
+      "site_origin": "https://www.chrisminnick.com",
+      "title": "AI Can’t Replace People",
+      "summary": "",
+      "content_type": "podcast_episode",
+      "page_role": "project",
+      "language": null,
+      "declared_topics": [],
+      "source": {
+        "kind": "youtube-show-fallback",
+        "show": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+      },
+      "source_feeds": [
+        {
+          "type": "youtube-show",
+          "url": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "published_at": "2026-10-28T19:03:09.000Z",
+      "image": "https://i.ytimg.com/vi/bOA4eNEzZHc/hqdefault.jpg",
+      "actions": [
+        {
+          "label": "Watch",
+          "url": "https://www.youtube.com/watch?v=bOA4eNEzZHc",
+          "type": "watch"
+        }
+      ]
+    },
+    {
       "identity": "youtube-video:https://joshkoter.com:https://www.youtube.com/watch?v=c-1dBd1_G8A",
       "url": "https://www.youtube.com/watch?v=c-1dBd1_G8A",
       "site_origin": "https://joshkoter.com",
-      "title": "Untitled",
+      "title": "JavaScript Game Tutorial with HTML Canvas",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -17843,7 +18512,7 @@
       "identity": "youtube-video:https://joshkoter.com:https://www.youtube.com/watch?v=CY0HE277IBM",
       "url": "https://www.youtube.com/watch?v=CY0HE277IBM",
       "site_origin": "https://joshkoter.com",
-      "title": "Untitled",
+      "title": "Sprite Animation in JavaScript",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -17874,7 +18543,7 @@
       "identity": "youtube-video:https://joshkoter.com:https://www.youtube.com/watch?v=d620nV6bp0A",
       "url": "https://www.youtube.com/watch?v=d620nV6bp0A",
       "site_origin": "https://joshkoter.com",
-      "title": "Untitled",
+      "title": "Particles JS Effect with Pure Vanilla JavaScript | Animated Background Tutorial with Examples",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -17905,7 +18574,7 @@
       "identity": "youtube-video:https://artlung.com:https://www.youtube.com/watch?v=Dp8-xlPIZ28",
       "url": "https://www.youtube.com/watch?v=Dp8-xlPIZ28",
       "site_origin": "https://artlung.com",
-      "title": "Untitled",
+      "title": "CSSBattle for NOVEMBER 2 (2026)",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -17933,10 +18602,41 @@
       ]
     },
     {
+      "identity": "youtube-episode:https://www.chrisminnick.com:https://www.youtube.com/watch?v=Drr_KEhfckQ",
+      "url": "https://www.youtube.com/watch?v=Drr_KEhfckQ",
+      "site_origin": "https://www.chrisminnick.com",
+      "title": "Should AI Tutors Be Allowed at All?",
+      "summary": "",
+      "content_type": "podcast_episode",
+      "page_role": "project",
+      "language": null,
+      "declared_topics": [],
+      "source": {
+        "kind": "youtube-show-fallback",
+        "show": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+      },
+      "source_feeds": [
+        {
+          "type": "youtube-show",
+          "url": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "published_at": "2026-10-26T19:03:30.000Z",
+      "image": "https://i.ytimg.com/vi/Drr_KEhfckQ/hqdefault.jpg",
+      "actions": [
+        {
+          "label": "Watch",
+          "url": "https://www.youtube.com/watch?v=Drr_KEhfckQ",
+          "type": "watch"
+        }
+      ]
+    },
+    {
       "identity": "youtube-episode:https://joshua.seigler.net:https://www.youtube.com/watch?v=DvxT7fryE3Q",
       "url": "https://www.youtube.com/watch?v=DvxT7fryE3Q",
       "site_origin": "https://joshua.seigler.net",
-      "title": "Untitled",
+      "title": "The Most Dangerous Monopoly: When Caution Kills",
       "summary": "",
       "content_type": "podcast_episode",
       "page_role": "project",
@@ -17966,7 +18666,7 @@
       "identity": "youtube-video:https://artlung.com:https://www.youtube.com/watch?v=etjRb2EaxWQ",
       "url": "https://www.youtube.com/watch?v=etjRb2EaxWQ",
       "site_origin": "https://artlung.com",
-      "title": "Untitled",
+      "title": "CSSBattle for OCTOBER 29 (2026)",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -17997,7 +18697,7 @@
       "identity": "youtube-video:https://joshkoter.com:https://www.youtube.com/watch?v=EvC3ge_puQk",
       "url": "https://www.youtube.com/watch?v=EvC3ge_puQk",
       "site_origin": "https://joshkoter.com",
-      "title": "Untitled",
+      "title": "Learn 2D Game Development with JavaScript",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -18028,7 +18728,7 @@
       "identity": "youtube-episode:https://joshua.seigler.net:https://www.youtube.com/watch?v=eyU3TgQqtV8",
       "url": "https://www.youtube.com/watch?v=eyU3TgQqtV8",
       "site_origin": "https://joshua.seigler.net",
-      "title": "Untitled",
+      "title": "How Bitcoin Can Stop War",
       "summary": "",
       "content_type": "podcast_episode",
       "page_role": "project",
@@ -18058,7 +18758,7 @@
       "identity": "youtube-episode:https://joshua.seigler.net:https://www.youtube.com/watch?v=fasTSY-dB-s",
       "url": "https://www.youtube.com/watch?v=fasTSY-dB-s",
       "site_origin": "https://joshua.seigler.net",
-      "title": "Untitled",
+      "title": "You Can Always Leave",
       "summary": "",
       "content_type": "podcast_episode",
       "page_role": "project",
@@ -18088,7 +18788,7 @@
       "identity": "youtube-episode:https://joshua.seigler.net:https://www.youtube.com/watch?v=fFoXyFmmGBQ",
       "url": "https://www.youtube.com/watch?v=fFoXyFmmGBQ",
       "site_origin": "https://joshua.seigler.net",
-      "title": "Untitled",
+      "title": "How Government Solved the Health Care Crisis - Animation",
       "summary": "",
       "content_type": "podcast_episode",
       "page_role": "project",
@@ -18118,7 +18818,7 @@
       "identity": "youtube-video:https://artlung.com:https://www.youtube.com/watch?v=FhQ8JMTPs9c",
       "url": "https://www.youtube.com/watch?v=FhQ8JMTPs9c",
       "site_origin": "https://artlung.com",
-      "title": "Untitled",
+      "title": "CSSBattle for OCTOBER 25 (2026)",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -18149,7 +18849,7 @@
       "identity": "youtube-video:https://artlung.com:https://www.youtube.com/watch?v=HcUV90vm2ow",
       "url": "https://www.youtube.com/watch?v=HcUV90vm2ow",
       "site_origin": "https://artlung.com",
-      "title": "Untitled",
+      "title": "CSSBattle for OCTOBER 27 (2026) Corner-Shape Talk Follow-Up!",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -18180,7 +18880,7 @@
       "identity": "youtube-video:https://artlung.com:https://www.youtube.com/watch?v=HJqMT15pEYg",
       "url": "https://www.youtube.com/watch?v=HJqMT15pEYg",
       "site_origin": "https://artlung.com",
-      "title": "Untitled",
+      "title": "CSSBattle for OCTOBER 30 (2026)",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -18211,7 +18911,7 @@
       "identity": "youtube-episode:https://joshua.seigler.net:https://www.youtube.com/watch?v=IFbYM2EDz40",
       "url": "https://www.youtube.com/watch?v=IFbYM2EDz40",
       "site_origin": "https://joshua.seigler.net",
-      "title": "Untitled",
+      "title": "Edgar the Exploiter",
       "summary": "",
       "content_type": "podcast_episode",
       "page_role": "project",
@@ -18241,7 +18941,7 @@
       "identity": "youtube-video:https://artlung.com:https://www.youtube.com/watch?v=IOLsMCkvy10",
       "url": "https://www.youtube.com/watch?v=IOLsMCkvy10",
       "site_origin": "https://artlung.com",
-      "title": "Untitled",
+      "title": "CSSBattle for OCTOBER 26 (2026)",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -18272,7 +18972,7 @@
       "identity": "youtube-video:https://joshkoter.com:https://www.youtube.com/watch?v=jl29qI62XPg",
       "url": "https://www.youtube.com/watch?v=jl29qI62XPg",
       "site_origin": "https://joshkoter.com",
-      "title": "Untitled",
+      "title": "JavaScript 2D Game Tutorial",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -18303,7 +19003,7 @@
       "identity": "youtube-episode:https://joshua.seigler.net:https://www.youtube.com/watch?v=jTYkdEU_B4o",
       "url": "https://www.youtube.com/watch?v=jTYkdEU_B4o",
       "site_origin": "https://joshua.seigler.net",
-      "title": "Untitled",
+      "title": "The Machinery Of Freedom: Illustrated summary",
       "summary": "",
       "content_type": "podcast_episode",
       "page_role": "project",
@@ -18333,7 +19033,7 @@
       "identity": "youtube-episode:https://joshua.seigler.net:https://www.youtube.com/watch?v=jwPGzkui8ow",
       "url": "https://www.youtube.com/watch?v=jwPGzkui8ow",
       "site_origin": "https://joshua.seigler.net",
-      "title": "Untitled",
+      "title": "Why Are Voters So Uninformed?",
       "summary": "",
       "content_type": "podcast_episode",
       "page_role": "project",
@@ -18360,10 +19060,72 @@
       ]
     },
     {
+      "identity": "youtube-episode:https://www.chrisminnick.com:https://www.youtube.com/watch?v=k5sBLhZPzrU",
+      "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
+      "site_origin": "https://www.chrisminnick.com",
+      "title": "AI Helped Their Grades—Then Crushed the Learning",
+      "summary": "",
+      "content_type": "podcast_episode",
+      "page_role": "project",
+      "language": null,
+      "declared_topics": [],
+      "source": {
+        "kind": "youtube-show-fallback",
+        "show": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+      },
+      "source_feeds": [
+        {
+          "type": "youtube-show",
+          "url": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "published_at": "2026-10-21T19:03:31.000Z",
+      "image": "https://i.ytimg.com/vi/k5sBLhZPzrU/hqdefault.jpg",
+      "actions": [
+        {
+          "label": "Watch",
+          "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
+          "type": "watch"
+        }
+      ]
+    },
+    {
+      "identity": "youtube-episode:https://www.chrisminnick.com:https://www.youtube.com/watch?v=kF07_Z3ZmXo",
+      "url": "https://www.youtube.com/watch?v=kF07_Z3ZmXo",
+      "site_origin": "https://www.chrisminnick.com",
+      "title": "4 Hours for This Tiny Result?!",
+      "summary": "",
+      "content_type": "podcast_episode",
+      "page_role": "project",
+      "language": null,
+      "declared_topics": [],
+      "source": {
+        "kind": "youtube-show-fallback",
+        "show": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+      },
+      "source_feeds": [
+        {
+          "type": "youtube-show",
+          "url": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "published_at": "2026-11-02T18:02:50.000Z",
+      "image": "https://i.ytimg.com/vi/kF07_Z3ZmXo/hqdefault.jpg",
+      "actions": [
+        {
+          "label": "Watch",
+          "url": "https://www.youtube.com/watch?v=kF07_Z3ZmXo",
+          "type": "watch"
+        }
+      ]
+    },
+    {
       "identity": "youtube-episode:https://joshua.seigler.net:https://www.youtube.com/watch?v=KHqfVRuLwCI",
       "url": "https://www.youtube.com/watch?v=KHqfVRuLwCI",
       "site_origin": "https://joshua.seigler.net",
-      "title": "Untitled",
+      "title": "Bitcoin For The Intelligent Layperson. Part One: Context.",
       "summary": "",
       "content_type": "podcast_episode",
       "page_role": "project",
@@ -18424,7 +19186,7 @@
       "identity": "youtube-video:https://artlung.com:https://www.youtube.com/watch?v=mBZeHOHfrXo",
       "url": "https://www.youtube.com/watch?v=mBZeHOHfrXo",
       "site_origin": "https://artlung.com",
-      "title": "Untitled",
+      "title": "CSSBattle for OCTOBER 31 (2026)",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -18455,7 +19217,7 @@
       "identity": "youtube-episode:https://joshua.seigler.net:https://www.youtube.com/watch?v=PGMQZEIXBMs",
       "url": "https://www.youtube.com/watch?v=PGMQZEIXBMs",
       "site_origin": "https://joshua.seigler.net",
-      "title": "Untitled",
+      "title": "George Ought to Help",
       "summary": "",
       "content_type": "podcast_episode",
       "page_role": "project",
@@ -18485,7 +19247,7 @@
       "identity": "youtube-video:https://artlung.com:https://www.youtube.com/watch?v=qBA2ttdhnaQ",
       "url": "https://www.youtube.com/watch?v=qBA2ttdhnaQ",
       "site_origin": "https://artlung.com",
-      "title": "Untitled",
+      "title": "CSSBattle for OCTOBER 28 (2026)",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -18516,7 +19278,7 @@
       "identity": "youtube-video:https://artlung.com:https://www.youtube.com/watch?v=QFPIB-IU_zA",
       "url": "https://www.youtube.com/watch?v=QFPIB-IU_zA",
       "site_origin": "https://artlung.com",
-      "title": "Untitled",
+      "title": "CSSBattle for NOVEMBER 4 (2026)",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -18547,7 +19309,7 @@
       "identity": "youtube-video:https://joshkoter.com:https://www.youtube.com/watch?v=QxYg8-mhhhs",
       "url": "https://www.youtube.com/watch?v=QxYg8-mhhhs",
       "site_origin": "https://joshkoter.com",
-      "title": "Untitled",
+      "title": "JavaScript Game Tutorial - 2D Tower Defense",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -18575,10 +19337,72 @@
       ]
     },
     {
+      "identity": "youtube-episode:https://www.chrisminnick.com:https://www.youtube.com/watch?v=Rn8bsZhlDhQ",
+      "url": "https://www.youtube.com/watch?v=Rn8bsZhlDhQ",
+      "site_origin": "https://www.chrisminnick.com",
+      "title": "This Morse Game Starts at a Brutal 40 WPM",
+      "summary": "",
+      "content_type": "podcast_episode",
+      "page_role": "project",
+      "language": null,
+      "declared_topics": [],
+      "source": {
+        "kind": "youtube-show-fallback",
+        "show": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+      },
+      "source_feeds": [
+        {
+          "type": "youtube-show",
+          "url": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "published_at": "2026-11-03T18:03:27.000Z",
+      "image": "https://i.ytimg.com/vi/Rn8bsZhlDhQ/hqdefault.jpg",
+      "actions": [
+        {
+          "label": "Watch",
+          "url": "https://www.youtube.com/watch?v=Rn8bsZhlDhQ",
+          "type": "watch"
+        }
+      ]
+    },
+    {
+      "identity": "youtube-episode:https://www.chrisminnick.com:https://www.youtube.com/watch?v=s25MA8ol6BI",
+      "url": "https://www.youtube.com/watch?v=s25MA8ol6BI",
+      "site_origin": "https://www.chrisminnick.com",
+      "title": "AI Tutors Steal From Teachers Too",
+      "summary": "",
+      "content_type": "podcast_episode",
+      "page_role": "project",
+      "language": null,
+      "declared_topics": [],
+      "source": {
+        "kind": "youtube-show-fallback",
+        "show": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+      },
+      "source_feeds": [
+        {
+          "type": "youtube-show",
+          "url": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "published_at": "2026-10-25T19:02:54.000Z",
+      "image": "https://i.ytimg.com/vi/s25MA8ol6BI/hqdefault.jpg",
+      "actions": [
+        {
+          "label": "Watch",
+          "url": "https://www.youtube.com/watch?v=s25MA8ol6BI",
+          "type": "watch"
+        }
+      ]
+    },
+    {
       "identity": "youtube-video:https://artlung.com:https://www.youtube.com/watch?v=U_2Hfhlah9c",
       "url": "https://www.youtube.com/watch?v=U_2Hfhlah9c",
       "site_origin": "https://artlung.com",
-      "title": "Untitled",
+      "title": "CSSBattle for NOVEMBER 1 (2026)",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -18609,7 +19433,7 @@
       "identity": "youtube-video:https://joshkoter.com:https://www.youtube.com/watch?v=uCH1ta5OUHw",
       "url": "https://www.youtube.com/watch?v=uCH1ta5OUHw",
       "site_origin": "https://joshkoter.com",
-      "title": "Untitled",
+      "title": "HTML Canvas DEEP DIVE",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -18637,10 +19461,41 @@
       ]
     },
     {
+      "identity": "youtube-episode:https://www.chrisminnick.com:https://www.youtube.com/watch?v=V7rPITixtnE",
+      "url": "https://www.youtube.com/watch?v=V7rPITixtnE",
+      "site_origin": "https://www.chrisminnick.com",
+      "title": "Stop Letting AI Do Your Homework",
+      "summary": "",
+      "content_type": "podcast_episode",
+      "page_role": "project",
+      "language": null,
+      "declared_topics": [],
+      "source": {
+        "kind": "youtube-show-fallback",
+        "show": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+      },
+      "source_feeds": [
+        {
+          "type": "youtube-show",
+          "url": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "published_at": "2026-10-19T19:02:17.000Z",
+      "image": "https://i.ytimg.com/vi/V7rPITixtnE/hqdefault.jpg",
+      "actions": [
+        {
+          "label": "Watch",
+          "url": "https://www.youtube.com/watch?v=V7rPITixtnE",
+          "type": "watch"
+        }
+      ]
+    },
+    {
       "identity": "youtube-video:https://joshkoter.com:https://www.youtube.com/watch?v=vAJEHf92tV0",
       "url": "https://www.youtube.com/watch?v=vAJEHf92tV0",
       "site_origin": "https://joshkoter.com",
-      "title": "Untitled",
+      "title": "Learn HTML Canvas: Pixels & Physics 🎨",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -18668,10 +19523,41 @@
       ]
     },
     {
+      "identity": "youtube-episode:https://www.chrisminnick.com:https://www.youtube.com/watch?v=vitTt7vtPXg",
+      "url": "https://www.youtube.com/watch?v=vitTt7vtPXg",
+      "site_origin": "https://www.chrisminnick.com",
+      "title": "AI Tutors Won’t Tell You You Stink",
+      "summary": "",
+      "content_type": "podcast_episode",
+      "page_role": "project",
+      "language": null,
+      "declared_topics": [],
+      "source": {
+        "kind": "youtube-show-fallback",
+        "show": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+      },
+      "source_feeds": [
+        {
+          "type": "youtube-show",
+          "url": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "published_at": "2026-10-22T19:02:35.000Z",
+      "image": "https://i.ytimg.com/vi/vitTt7vtPXg/hqdefault.jpg",
+      "actions": [
+        {
+          "label": "Watch",
+          "url": "https://www.youtube.com/watch?v=vitTt7vtPXg",
+          "type": "watch"
+        }
+      ]
+    },
+    {
       "identity": "youtube-video:https://joshkoter.com:https://www.youtube.com/watch?v=VXWvfrmpapI",
       "url": "https://www.youtube.com/watch?v=VXWvfrmpapI",
       "site_origin": "https://joshkoter.com",
-      "title": "Untitled",
+      "title": "JavaScript Audio CRASH COURSE For Beginners",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -18702,7 +19588,7 @@
       "identity": "youtube-video:https://artlung.com:https://www.youtube.com/watch?v=xg3F_T_aM7Q",
       "url": "https://www.youtube.com/watch?v=xg3F_T_aM7Q",
       "site_origin": "https://artlung.com",
-      "title": "Untitled",
+      "title": "CSSBattle for OCTOBER 27 (2026) a fun one!",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -18730,10 +19616,41 @@
       ]
     },
     {
+      "identity": "youtube-episode:https://www.chrisminnick.com:https://www.youtube.com/watch?v=xJPTvYvZiZM",
+      "url": "https://www.youtube.com/watch?v=xJPTvYvZiZM",
+      "site_origin": "https://www.chrisminnick.com",
+      "title": "Your Obsession Isn’t the Problem",
+      "summary": "",
+      "content_type": "podcast_episode",
+      "page_role": "project",
+      "language": null,
+      "declared_topics": [],
+      "source": {
+        "kind": "youtube-show-fallback",
+        "show": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+      },
+      "source_feeds": [
+        {
+          "type": "youtube-show",
+          "url": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "published_at": "2026-10-18T17:03:20.000Z",
+      "image": "https://i.ytimg.com/vi/xJPTvYvZiZM/hqdefault.jpg",
+      "actions": [
+        {
+          "label": "Watch",
+          "url": "https://www.youtube.com/watch?v=xJPTvYvZiZM",
+          "type": "watch"
+        }
+      ]
+    },
+    {
       "identity": "youtube-video:https://joshkoter.com:https://www.youtube.com/watch?v=Yvz_axxWG4Y",
       "url": "https://www.youtube.com/watch?v=Yvz_axxWG4Y",
       "site_origin": "https://joshkoter.com",
-      "title": "Untitled",
+      "title": "HTML5 Canvas CRASH COURSE for Beginners",
       "summary": "",
       "content_type": "video",
       "page_role": "project",
@@ -18764,7 +19681,7 @@
       "identity": "youtube-episode:https://joshua.seigler.net:https://www.youtube.com/watch?v=zkPGfTEZ_r4",
       "url": "https://www.youtube.com/watch?v=zkPGfTEZ_r4",
       "site_origin": "https://joshua.seigler.net",
-      "title": "Untitled",
+      "title": "What If There Were No Prices?",
       "summary": "",
       "content_type": "podcast_episode",
       "page_role": "project",
@@ -18786,6 +19703,37 @@
         {
           "label": "Watch",
           "url": "https://www.youtube.com/watch?v=zkPGfTEZ_r4",
+          "type": "watch"
+        }
+      ]
+    },
+    {
+      "identity": "youtube-episode:https://www.chrisminnick.com:https://www.youtube.com/watch?v=Zv4zeOOOSKk",
+      "url": "https://www.youtube.com/watch?v=Zv4zeOOOSKk",
+      "site_origin": "https://www.chrisminnick.com",
+      "title": "Use AI to Crush Job Interviews",
+      "summary": "",
+      "content_type": "podcast_episode",
+      "page_role": "project",
+      "language": null,
+      "declared_topics": [],
+      "source": {
+        "kind": "youtube-show-fallback",
+        "show": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+      },
+      "source_feeds": [
+        {
+          "type": "youtube-show",
+          "url": "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKo"
+        }
+      ],
+      "observed_at": "2026-11-04T07:49:40.771Z",
+      "published_at": "2026-10-27T19:03:39.000Z",
+      "image": "https://i.ytimg.com/vi/Zv4zeOOOSKk/hqdefault.jpg",
+      "actions": [
+        {
+          "label": "Watch",
+          "url": "https://www.youtube.com/watch?v=Zv4zeOOOSKk",
           "type": "watch"
         }
       ]

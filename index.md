@@ -1,10 +1,10 @@
 ---
 layout: default
-title: "Joshternet: An Open Network for Joshes and Independent Websites"
+title: "Joshternet | An Internet Full of Joshes and Friends"
 description: >-
-  Joshternet connects independent websites—Joshes and friends of Joshes—through
-  a tiny public /.well-known/josh declaration. Anyone can join; your site stays
-  yours.
+  Joshternet began with Joshes finding other Joshes and grew into an open
+  network of independent websites. Come explore what people are making, meet
+  some interesting folks, or join with your own site.
 keywords: >-
   Joshternet, Josh network, independent websites, indie web, open web,
   /.well-known/josh, personal websites, join Joshternet
@@ -18,11 +18,11 @@ scripts:
 
 <p class="home-tagline">An internet full of Joshes. And friends of Joshes.</p>
 
-Independent websites, linked by a tiny public declaration. No accounts. No feed algorithm. Your site stays yours.
+Joshternet began with a simple idea: find other Joshes who have their own little corners of the internet and see what they're making. What started as a funny search for namesakes has grown into a network of independent websites, interesting people, and plenty of places worth exploring. You don't have to be a Josh to join the fun, and nobody has to give up their own website to participate.
 
 <p class="home-invite">
   <strong class="home-invite__lead">Are you a Josh? Get yourself connected.</strong>
-  Not named Josh? Join anyway—everyone participates the same way.
+  Not a Josh? Come along anyway. Everyone participates on equal terms, and there are plenty more corners of the web to discover.
 </p>
 
 <p class="home-cta">
@@ -34,13 +34,13 @@ Independent websites, linked by a tiny public declaration. No accounts. No feed 
 
 ## Meet the websites
 
-Real sites, on their own domains.
+Every website has a person, an idea, or a story behind it. Here are a few places to start exploring. You never know what you'll find.
 
 {% include home-meet-sites.html %}
 
 ## What's happening
 
-Fresh posts from around the network.
+There's always something interesting happening in someone's corner of the web. Here's a little of what people have been writing and sharing lately.
 
 {% include home-recent-activity.html %}
 
@@ -50,84 +50,42 @@ Fresh posts from around the network.
 
 ## See how the Joshternet connects
 
-Independent sites beginning to link—and sometimes covering the same ground.
+An interesting thing happens when you start connecting independent websites: you discover who's linking to whom, and sometimes who's exploring similar ideas without ever having met.
 
 {% include home-connections.html %}
 
-## How it works
+[Joshua Morris][joshua] started the Joshternet while looking for other Joshes with personal websites. Somewhere between meeting namesakes and discovering all the things they were making, a small experiment turned into a much bigger adventure. You can read more about how it started on the [About][about] page.
 
-Put a small JSON file on your site:
+## How to join the fun
 
-```text
-/.well-known/josh
-```
+No accounts. No signup form. Joshternet doesn't need another place for you to post your work. You keep your website, your domain, and everything you've already built. All you need to participate is a small public declaration at `/.well-known/josh`, which tells the network your site wants to be part of the adventure.
 
-```json
-{
-  "version": 1,
-  "josh": true
-}
-```
-
-That is participation. Optional `josh: true` or `josh: false` says how you identify; leave `josh` out if you prefer not to say. Details live in [RFC-JOSH-0002][rfc-0002].
-
-[JoshBot][joshbot] can find and list participating sites. The registry helps with discovery—it is not the Joshternet, and it does not decide who is a Josh.
-
-## Join the Joshternet
-
-No signup form. No account. Publish a tiny file on a site you control—Joshes and non-Joshes alike.
-
-The guided walkthrough covers choosing a declaration, your platform, validation, optional discovery, and what to do once JoshBot lists you.
+Being named Josh is optional, and so is declaring Josh identity. The [Join][join] guide walks you through publishing the declaration on your own website, checking that it works, and getting discovered. JoshBot can later list sites in the Network—the registry helps with discovery; it is not the Joshternet, and it does not decide who is a Josh.
 
 <p class="home-cta home-cta--join-teaser">
-  <a class="home-cta__secondary" href="{{ '/join/' | relative_url }}">Start joining</a>
+  <a class="home-cta__secondary" href="{{ '/join/' | relative_url }}">Read the Join guide</a>
 </p>
 
-[The Network][network] · [Implementation guide][implementation] · [platform recipes][platforms] · [declaration checker][validate] · [nominate][nominate]
+## Still exploring
 
-## Status
+The Joshternet is still a work in progress, which is part of the fun. The network is growing, the specifications are still Drafts, and there are plenty of things left to figure out. The idea is to build with real people and real websites, learn from what works, and keep the door open for whatever interesting connections come next.
 
-The project is **PRE-JOSH**. The RFCs are Drafts.
+The [specifications][specifications] and [governance][governance] documents are public for anyone who wants to dig into the details. You don't need to read them to enjoy exploring the network.
 
-Live pieces today:
+## There's more out there
 
-- [joshuamorris.info][implementation-josh] — Affirmed Josh Identity
-- joshternet.org — [Undeclared][implementation-project]
-- [JoshBot][joshbot] [v1.0.0][joshbot-release] — discovery and registry crawler
+The web is still full of wonderful, weird, interesting places, and plenty of them are hiding behind an ordinary-looking domain name. Joshternet is one small excuse to go looking for them, meet the people behind them, and maybe make a few new connections along the way.
 
-None of those is an authority. [Governance][governance] covers how Drafts move.
+Take a wander, visit somebody's website, or bring your own corner of the internet into the mix. There are always more Joshes to meet, and more people ready to josh along.
 
-A few standing rules:
+<p class="home-cta">
+  <a class="home-cta__secondary" href="{{ '/wander/' | relative_url }}">Wander the Joshternet</a>
+  <a class="home-cta__secondary" href="{{ '/about/' | relative_url }}">About the project</a>
+  <a class="home-cta__secondary" href="{{ '/join/' | relative_url }}">Join the Joshternet</a>
+</p>
 
-- Joshness is declared, never derived.
-- Participation is voluntary.
-- Josh identity and participation are separate.
-- Non-Joshes may participate without being represented as Joshes; they josh the Joshes from the day they join.
-- Sites stay independently controlled.
-- No Josh outranks another Josh—and no Non-Josh is ranked below a Josh.
-- Identity and participation do not imply trust.
-- Discovery should not require one canonical authority.
-- Prefer open, boring web standards.
-
-## Keep going
-
-[About][about] · [Specifications][specifications] · [JoshBot][joshbot] · [spec repo][spec]
-
-Talk in [`#joshternet`][irc], skim the [community principles][community], or open an issue. Bring the weird edge cases—that is how the Drafts get better.
-
-[spec]: https://github.com/joshternet/spec
-[rfc-0002]: https://github.com/joshternet/spec/blob/main/rfcs/0002-well-known-josh.md
 [about]: /about/
 [specifications]: /specs/
 [governance]: /governance/
-[implementation]: /implement/
-[platforms]: /implement/platforms/
-[validate]: /implement/validate/
-[nominate]: /nominate/
-[network]: /network/
-[joshbot]: /joshbot/
-[community]: /community/
-[irc]: https://web.libera.chat/#joshternet
-[implementation-josh]: https://joshuamorris.info/.well-known/josh
-[implementation-project]: /.well-known/josh
-[joshbot-release]: https://github.com/joshternet/joshbot/releases/tag/v1.0.0
+[join]: /join/
+[joshua]: https://joshuamorris.info/

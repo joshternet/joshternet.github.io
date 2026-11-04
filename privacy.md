@@ -15,6 +15,8 @@ seo:
 
 # Privacy
 
+**In plain language:** joshternet.org is a public documentation and directory hub. Analytics count visits without accounts or advertising profiles. Official buttons look up whether a site appears in the public registry. Nominations and JoshBot follow their own documented paths. Independently operated member sites keep their own privacy practices—this page covers Joshternet-operated services.
+
 ## Hub hosting and analytics
 
 joshternet.org is a public website hosted on GitHub Pages. GitHub may see ordinary connection details when you load the site. See the [GitHub Privacy Statement][github-privacy].
@@ -29,7 +31,7 @@ The Joshternet does not use this analytics data for advertising, targeting peopl
 
 ## Official buttons
 
-Some sites show an official Joshternet button. The button service checks whether a website origin, such as `https://example.com`, appears in the public Joshternet registry.
+Some sites show an official Joshternet button. The button service checks whether a website origin, such as `https://joshua.example`, appears in the public Joshternet registry.
 
 The Button State service receives the normalized website origin. It compares that origin with the public Joshternet registry and returns the appropriate button state.
 

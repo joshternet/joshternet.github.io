@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Tyranny articles from Joshternet websites"
-description: "Explore Tyranny articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Tyranny, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Tyranny from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Tyranny, Joshternet, independent websites, Topics, shared interests"
 slug: "tyranny"
 permalink: /topics/tyranny/
 robots: max-snippet:160, max-image-preview:large

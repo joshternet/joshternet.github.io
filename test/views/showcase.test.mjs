@@ -61,6 +61,7 @@ import {
   fairPerOriginLimit,
   contentTitleDedupeKey,
   BOOKS_WINDOW_DAYS,
+  PROJECTS_WINDOW_DAYS,
   ACTIVITY_WINDOW_DAYS,
   ACTIVITY_WINDOW_DAYS_DEV,
   ACTIVITY_WINDOW_DAYS_LIVE,
@@ -2890,6 +2891,11 @@ test("isMadeContentItem requires creative-directory URLs for projects", () => {
     ),
     true,
   );
+  assert.equal(
+    isPortfolioIndexedProjectTitle("4 Hours for This Tiny Result?!"),
+    false,
+  );
+  assert.equal(isPortfolioIndexedProjectTitle("9 Projects"), false);
   assert.equal(isPortfolioIndexedProjectTitle("SomaSpace"), false);
   assert.equal(isPortfolioIndexedProjectTitle(null), false);
   assert.equal(isPortfolioIndexedProjectTitle(""), false);
@@ -3618,17 +3624,21 @@ test("isClientCaseStudyUrl: query-style /work/?work= case studies", () => {
 });
 
 test("isMadeContentItem: portfolio-sourced creative path projects are eligible", () => {
+  const now = new Date("2026-11-03T00:00:00.000Z");
   assert.equal(
-    isMadeContentItem({
-      url: "https://joshuadrake.org/projects/8bip",
-      title: "8-bit Integer Processor",
-      content_type: "project",
-      summary: "An FPGA educational processor project with documentation.",
-      site_origin: "https://joshuadrake.org",
-      published_at: "2023-06-01T00:00:00.000Z",
-      source: { kind: "portfolio" },
-      source_kind: "portfolio",
-    }),
+    isMadeContentItem(
+      {
+        url: "https://joshuadrake.org/projects/8bip",
+        title: "8-bit Integer Processor",
+        content_type: "project",
+        summary: "An FPGA educational processor project with documentation.",
+        site_origin: "https://joshuadrake.org",
+        published_at: "2026-06-01T00:00:00.000Z",
+        source: { kind: "portfolio" },
+        source_kind: "portfolio",
+      },
+      { now },
+    ),
     true,
   );
 });
@@ -3823,38 +3833,64 @@ test("Showcase books require published_at within one year", () => {
   );
 });
 
-test("undated portfolio projects are not Showcase-eligible", () => {
+test("undated and aged portfolio projects are not Showcase-eligible", () => {
+  const now = new Date("2026-11-03T00:00:00.000Z");
+  assert.equal(PROJECTS_WINDOW_DAYS, 365);
   assert.equal(
-    isMadeContentItem({
-      content_type: "project",
-      url: "https://a.example/projects/archive-toy/",
-      title: "Archive Toy",
-      summary: "An undated portfolio project must stay out of Showcase.",
-      source_kind: "portfolio",
-      observed_at: "2026-11-03T00:00:00.000Z",
-    }),
+    isMadeContentItem(
+      {
+        content_type: "project",
+        url: "https://a.example/projects/archive-toy/",
+        title: "Archive Toy",
+        summary: "An undated portfolio project must stay out of Showcase.",
+        source_kind: "portfolio",
+        observed_at: "2026-11-03T00:00:00.000Z",
+      },
+      { now },
+    ),
     false,
   );
   assert.equal(
-    isMadeContentItem({
-      content_type: "project",
-      url: "https://a.example/projects/dated-toy/",
-      title: "Dated Toy",
-      summary: "A dated portfolio project remains Showcase-eligible.",
-      published_at: "2023-06-01T00:00:00.000Z",
-      source_kind: "portfolio",
-    }),
+    isMadeContentItem(
+      {
+        content_type: "project",
+        url: "https://joshuastuebner.com/projects/details/achtung-die-kurve/",
+        title: "Achtung, die Kurve!",
+        summary:
+          "Year: 2022 project pages must not enter Showcase as new work.",
+        published_at: "2022-01-01T00:00:00.000Z",
+        source_kind: "creative-index",
+      },
+      { now },
+    ),
+    false,
+  );
+  assert.equal(
+    isMadeContentItem(
+      {
+        content_type: "project",
+        url: "https://a.example/projects/dated-toy/",
+        title: "Dated Toy",
+        summary: "A recent dated portfolio project remains Showcase-eligible.",
+        published_at: "2026-06-01T00:00:00.000Z",
+        source_kind: "portfolio",
+      },
+      { now },
+    ),
     true,
   );
   // Undated experiments stay eligible; undated /projects/ archives do not.
   assert.equal(
-    isMadeContentItem({
-      content_type: "project",
-      url: "https://a.example/experiments/corkboard/",
-      title: "Corkboard",
-      summary: "An undated experiment under a creative path stays eligible.",
-      image: "https://a.example/corkboard.webp",
-    }),
+    isMadeContentItem(
+      {
+        content_type: "project",
+        url: "https://a.example/experiments/corkboard/",
+        title: "Corkboard",
+        summary: "An undated experiment under a creative path stays eligible.",
+        image: "https://a.example/corkboard.webp",
+      },
+      { now },
+    ),
     true,
   );
 });

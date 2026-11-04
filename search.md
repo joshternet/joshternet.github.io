@@ -1,11 +1,12 @@
 ---
 layout: default
-title: Search articles from independent Joshternet websites
+title: Search
 description: >-
-  Search articles and pages from independent websites participating in the
-  Joshternet. Find writing by topic, site, or phrase across the open Josh network.
+  Search independent websites, articles, projects, and topics discovered across
+  the Joshternet. Find something interesting and follow it back to the people
+  and websites behind it.
 keywords: >-
-  search Joshternet, Josh network search, independent websites, topic search
+  Search, Joshternet, independent websites, topics, articles, projects
 seo:
   type: WebPage
   name: Search
@@ -18,7 +19,15 @@ script: /assets/js/search.js
 
 # Search
 
-Search from around the Joshternet.
+Looking for something in particular? Search the websites, writing, projects, and
+topics that Joshternet has discovered so far. You might find exactly what you
+came for, or stumble across something you didn't know you were looking for.
+
+Everything leads back to the independent websites where people publish their
+work. Joshternet helps you find the interesting bits, but the websites themselves
+remain the destination. Search covers the websites and content Joshternet has
+indexed so far. There's always more out there, so a missing result doesn't
+necessarily mean the website or work doesn't exist.
 
 <div class="explore-search" role="search">
   <label class="explore-filter-field" for="joshternet-search">
@@ -42,7 +51,7 @@ Search from around the Joshternet.
 </div>
 
 <p data-search-status role="status" aria-live="polite">
-  Type a word from a title, domain, or topic.
+  Try a website name, a subject, or something you're curious about.
 </p>
 
 <ol class="activity-list h-feed" data-search-results></ol>
@@ -50,11 +59,13 @@ Search from around the Joshternet.
 <noscript>
   <div class="network-empty">
     <p>
-      Search needs JavaScript in this browser. Meanwhile,
+      Search needs JavaScript to look through the index. You can still explore
       <a href="{{ '/activity/' | relative_url }}">What's New</a>,
-      the <a href="{{ '/network/' | relative_url }}">Network</a>,
-      and <a href="{{ '/topics/' | relative_url }}">Topics</a>
-      are readable without it.
+      browse the
+      <a href="{{ '/network/' | relative_url }}">Network</a>,
+      or follow
+      <a href="{{ '/topics/' | relative_url }}">Topics</a>
+      without it.
     </p>
   </div>
 </noscript>

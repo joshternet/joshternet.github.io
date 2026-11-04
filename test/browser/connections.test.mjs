@@ -96,7 +96,7 @@ function buildFixture(options = {}) {
           </h2>
           <div class="connections-site__columns">
             <div>
-              <h3>Connects to</h3>
+              <h3>Links to</h3>
               <ul class="connections-edge-list">
                 ${outbound
                   .map(
@@ -109,7 +109,7 @@ function buildFixture(options = {}) {
               </ul>
             </div>
             <div>
-              <h3>Connected from</h3>
+              <h3>Linked from</h3>
               <ul class="connections-edge-list">
                 ${inbound
                   .map(
@@ -293,8 +293,8 @@ test("selecting a participant shows outgoing and incoming lists", async () => {
 
   const detail = page.locator("[data-connections-detail]");
   assert.match(await detail.innerText(), /Site A/);
-  assert.match(await detail.innerText(), /Connects to/);
-  assert.match(await detail.innerText(), /Connected from/);
+  assert.match(await detail.innerText(), /Links to/);
+  assert.match(await detail.innerText(), /Linked from/);
   assert.match(await detail.innerText(), /Site B/);
   assert.doesNotMatch(await detail.innerText(), /Alpha/);
   assert.doesNotMatch(await detail.innerText(), /a\.example/);
@@ -325,16 +325,19 @@ test("one-way links and disconnected sites still render", async () => {
     .click();
   const detail = await page.locator("[data-connections-detail]").innerText();
   assert.match(detail, /Site C/);
-  assert.match(detail, /No observed connections yet/);
-  assert.doesNotMatch(detail, /Connects to/);
-  assert.doesNotMatch(detail, /Connected from/);
+  assert.match(
+    detail,
+    /JoshBot hasn't observed any links to or from this website yet/,
+  );
+  assert.doesNotMatch(detail, /Links to/);
+  assert.doesNotMatch(detail, /Linked from/);
 
   await page
     .locator('[data-connection-select][data-origin="https://b.example"]')
     .click();
   const bDetail = await page.locator("[data-connections-detail]").innerText();
-  assert.doesNotMatch(bDetail, /Connects to/);
-  assert.match(bDetail, /Connected from/);
+  assert.doesNotMatch(bDetail, /Links to/);
+  assert.match(bDetail, /Linked from/);
   assert.match(bDetail, /Site A/);
 
   await context.close();
@@ -358,7 +361,10 @@ test("empty connections and single participant still boot the graph", async () =
   await page.locator(".connections-graph__node").click();
   const detail = await page.locator("[data-connections-detail]").innerText();
   assert.match(detail, /Solo/);
-  assert.match(detail, /No observed connections yet/);
+  assert.match(
+    detail,
+    /JoshBot hasn't observed any links to or from this website yet/,
+  );
   assert.match(detail, /solo\.example/);
 
   await context.close();
@@ -407,10 +413,7 @@ test("pointer click on a chart node or line opens the bubble", async () => {
   await page.mouse.click(box.x + box.width / 2, box.y + 14);
   const detail = page.locator("[data-connections-detail]");
   assert.equal(await detail.isVisible(), true);
-  assert.match(
-    await detail.innerText(),
-    /Connects to|Connected from|Shared topics/,
-  );
+  assert.match(await detail.innerText(), /Links to|Linked from|Shared topics/);
 
   await page.locator(".connections-bubble__close").click();
   assert.equal(await detail.isHidden(), true);
@@ -500,7 +503,10 @@ test("hostile bootstrap values are rejected", async () => {
   assert.match(detailHTML, /&lt;img src=x onerror=alert\(1\)&gt;/);
   // Valid isolate still draws; hostile origin/path and bad edges are dropped.
   assert.equal(await page.locator(".connections-graph__node").count(), 1);
-  assert.match(detailHTML, /No observed connections yet/);
+  assert.match(
+    detailHTML,
+    /JoshBot hasn't observed any links to or from this website yet/,
+  );
 
   await context.close();
 });
@@ -517,7 +523,7 @@ test("reduced motion and narrow viewport still allow selection", async () => {
   const bubbleText = await page
     .locator("[data-connections-detail]")
     .innerText();
-  assert.match(bubbleText, /Connects to/);
+  assert.match(bubbleText, /Links to/);
   assert.doesNotMatch(bubbleText, /Open site/);
   assert.doesNotMatch(bubbleText, /Alpha/);
   assert.equal(await page.locator(".connections-graph__svg").count(), 1);

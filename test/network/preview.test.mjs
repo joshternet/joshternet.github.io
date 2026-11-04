@@ -358,7 +358,10 @@ test("simulated participants keep a valid declaration and skip the rest", async 
   const skipped = new Map(
     result.skipped.map((entry) => [entry.origin, entry.reason]),
   );
-  assert.match(skipped.get("https://missing.example"), /not publishing/);
+  assert.match(
+    skipped.get("https://missing.example"),
+    /couldn't find a published Joshternet declaration/,
+  );
   assert.match(skipped.get("https://broken.example"), /could not be read/);
   assert.match(skipped.get("https://invalid.example"), /not valid JSON/);
   assert.equal(

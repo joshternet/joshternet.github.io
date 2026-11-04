@@ -38,15 +38,15 @@ import {
 import {
   assertPublicURL,
   chooseDescription,
+  displayTitleOverridesFromDocument,
   framePolicy,
-  isDomainCompressingSlogan,
-  looksLikePersonName,
   networkDescriptionQuality,
   partitionPublicParticipants,
   projectRegistry,
   registryParticipationFields,
   sanitizeFeeds,
   screenshotPath,
+  selectPublishedNetworkTitle,
   stableSiteID,
 } from "./lib.mjs";
 
@@ -61,6 +61,7 @@ import {
   readPreviewFile,
   simulatedParticipants,
 } from "./preview.mjs";
+import { installPublicUrlRouteGuard } from "./public-fetch-guard.mjs";
 
 import {
   fallbackEntry,
@@ -89,6 +90,7 @@ const DEFAULT_REGISTRY_URL =
   "https://raw.githubusercontent.com/joshternet/index-data/main/registry.json";
 
 const DEFAULT_DATA_PATH = "_data/network.json";
+const DEFAULT_DISPLAY_TITLES_PATH = "_data/network_display_titles.json";
 const DEFAULT_BLOGROLLS_PATH = "_data/blogrolls.json";
 const DEFAULT_CONNECTIONS_PATH = "_data/connections.json";
 const DEFAULT_HOMEPAGE_CONNECTIONS_PATH = "_data/homepage_connections.json";
@@ -229,26 +231,7 @@ async function openParticipantHomepage(
 
   const page = await context.newPage();
 
-  await page.route("**/*", async (route) => {
-    const request = route.request();
-
-    try {
-      const requestURL = new URL(request.url());
-
-      if (requestURL.protocol !== "https:" && requestURL.protocol !== "http:") {
-        await route.abort("blockedbyclient");
-        return;
-      }
-
-      await assertPublicURL(requestURL.href, {
-        cache: dnsCache,
-      });
-
-      await route.continue();
-    } catch {
-      await route.abort("blockedbyclient");
-    }
-  });
+  await installPublicUrlRouteGuard(page, { cache: dnsCache });
 
   try {
     const response = await page.goto(participant.origin, {
@@ -699,12 +682,14 @@ async function enrichFromOpenedPage(
  * @param {{ origin: string, domain: string }} participant
  * @param {Set<string>} participantOrigins
  * @param {AbortSignal | undefined} signal
+ * @param {{ previousTitle?: string, titleOverride?: string }} [publish]
  */
 async function captureParticipant(
   browser,
   participant,
   participantOrigins,
   signal,
+  publish = {},
 ) {
   const opened = await openParticipantHomepage(browser, participant, {
     settle: true,
@@ -756,10 +741,17 @@ async function captureParticipant(
       participantOrigins,
       signal,
     );
-    const title = await resolveParticipantTitle(
-      enrichment.metadata,
-      participant.domain,
-    );
+    const title = selectPublishedNetworkTitle({
+      resolved: await resolveParticipantTitle(
+        enrichment.metadata,
+        participant.domain,
+      ),
+      previous:
+        typeof publish.previousTitle === "string" ? publish.previousTitle : "",
+      domain: participant.domain,
+      override:
+        typeof publish.titleOverride === "string" ? publish.titleOverride : "",
+    });
     const description = chooseDescription(enrichment.metadata);
 
     const entry = withEnrichment(
@@ -869,6 +861,9 @@ const { accepted: participants, rejected } =
 reportRejectedParticipants(rejected);
 
 const existing = await readJSONIfExists(DEFAULT_DATA_PATH, []);
+const displayTitleOverrides = displayTitleOverridesFromDocument(
+  await readJSONIfExists(DEFAULT_DISPLAY_TITLES_PATH, {}),
+);
 const previousBlogrollEdges = itemsFromCollection(
   await readJSONIfExists(DEFAULT_BLOGROLLS_PATH, {}),
   "edges",
@@ -927,20 +922,17 @@ try {
         );
         // Re-resolve titles on every sync so algorithm changes and new
         // author/GitHub signals apply without waiting for screenshot expiry.
-        const resolvedTitle = await resolveParticipantTitle(
-          enrichment.metadata,
-          participant.domain,
-        );
-        let title = resolvedTitle || kept.title || "";
-
-        // Prefer a previously published person name over a transient slogan
-        // when GitHub/author signals briefly miss.
-        if (
-          isDomainCompressingSlogan(title, participant.domain) &&
-          looksLikePersonName(kept.title)
-        ) {
-          title = kept.title;
-        }
+        // Curated overrides + sticky person names keep rebuilds from
+        // downgrading published cards (e.g. Chris Minnick, Joshua Stübner).
+        const title = selectPublishedNetworkTitle({
+          resolved: await resolveParticipantTitle(
+            enrichment.metadata,
+            participant.domain,
+          ),
+          previous: typeof kept.title === "string" ? kept.title : "",
+          domain: participant.domain,
+          override: displayTitleOverrides.get(participant.origin) || "",
+        });
 
         const description =
           chooseDescription(enrichment.metadata) || kept.description || "";
@@ -1000,7 +992,11 @@ try {
     try {
       const captured = await runWithEnrichmentBudget(
         (signal) =>
-          captureParticipant(browser, participant, participantOrigins, signal),
+          captureParticipant(browser, participant, participantOrigins, signal, {
+            previousTitle:
+              typeof oldEntry?.title === "string" ? oldEntry.title : "",
+            titleOverride: displayTitleOverrides.get(participant.origin) || "",
+          }),
         SITE_TIMEOUT_MS,
         participant.origin,
       );

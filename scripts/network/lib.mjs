@@ -388,12 +388,64 @@ export function screenshotPath(origin) {
   return `/assets/network/sites/${stableSiteID(origin)}.webp`;
 }
 
-function comparableText(value) {
-  return normalizeText(value)
+/**
+ * ASCII-ish forms for domain/name matching. German umlauts may encode as the
+ * digraph (Stübner ↔ stuebner) or as the bare vowel (Müller ↔ muller).
+ * @param {string} value
+ * @returns {Set<string>}
+ */
+function comparableVariants(value) {
+  const base = normalizeText(value)
     .normalize("NFKD")
-    .toLocaleLowerCase("en-US")
+    .toLocaleLowerCase("en-US");
+
+  if (!base) {
+    return new Set();
+  }
+
+  const digraph = base
+    .replace(/([aou])\u0308/gu, (_, letter) => `${letter}e`)
+    .replace(/ß/gu, "ss")
     .replace(/\p{M}/gu, "")
     .replace(/[^\p{L}\p{N}]+/gu, "");
+
+  const stripped = base
+    .replace(/ß/gu, "ss")
+    .replace(/\p{M}/gu, "")
+    .replace(/[^\p{L}\p{N}]+/gu, "");
+
+  return new Set([digraph, stripped].filter(Boolean));
+}
+
+/**
+ * Primary comparable form (umlaut digraph fold) for single-string callers.
+ * @param {string} value
+ * @returns {string}
+ */
+function comparableText(value) {
+  for (const variant of comparableVariants(value)) {
+    return variant;
+  }
+
+  return "";
+}
+
+/**
+ * True when two labels match under either umlaut ASCII encoding.
+ * @param {string} left
+ * @param {string} right
+ * @returns {boolean}
+ */
+export function comparableTextsMatch(left, right) {
+  const rightVariants = comparableVariants(right);
+
+  for (const variant of comparableVariants(left)) {
+    if (rightVariants.has(variant)) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 /** Labels that are not personal given-name / family-name host parts. */
@@ -427,6 +479,34 @@ const NON_PERSONAL_DOMAIN_LABELS = new Set([
 function isGreetingTitle(title) {
   return /^(hello|hi|hey|welcome|hola)(?:\s*[!?.…*]*)?$/iu.test(
     normalizeText(title),
+  );
+}
+
+/**
+ * True when a page title is a generic shell ("Joshuas very own page") rather
+ * than a person or brand name worth publishing on a Network card.
+ * @param {string} title
+ * @returns {boolean}
+ */
+export function isWeakPageTitle(title) {
+  const normalized = normalizeText(title);
+
+  if (!normalized) {
+    return true;
+  }
+
+  // Possessive / "own page" shells only — do not reject brands like
+  // "Example Site" or documents that merely mention "blog".
+  if (
+    /(?:^|\b)(?:my|your|our|his|her|their|\w+(?:'s|s))\s+(?:very\s+own\s+)?(?:home\s*)?(?:page|site|website)\b/iu.test(
+      normalized,
+    )
+  ) {
+    return true;
+  }
+
+  return /^(?:home|index|untitled|website|homepage|my\s+site|my\s+website|personal\s+(?:home\s*)?page)$/iu.test(
+    normalized,
   );
 }
 
@@ -577,9 +657,7 @@ export function isDomainCompressingSlogan(candidate, domain) {
   // only restate the host are not card titles.
   const wordCount = normalized.split(/\s+/u).filter(Boolean).length;
 
-  return (
-    wordCount >= 2 && comparableText(normalized) === comparableText(domainLabel)
-  );
+  return wordCount >= 2 && comparableTextsMatch(normalized, domainLabel);
 }
 
 /**
@@ -597,7 +675,7 @@ export function personNameMatchingDomain(candidate, domain) {
     return "";
   }
 
-  if (comparableText(normalized) !== comparableText(domainLabel)) {
+  if (!comparableTextsMatch(normalized, domainLabel)) {
     return "";
   }
 
@@ -635,10 +713,10 @@ export function personNameFromSelfIntro(text, domain) {
     return "";
   }
 
-  // Stop before sentence punctuation so "I'm Chris Minnick. I've…" does not
-  // swallow the following clause into the name span.
+  // Allow a short lead-in ("Hi. I'm…") but stop before sentence punctuation so
+  // "I'm Chris Minnick. I've…" does not swallow the following clause.
   const match = normalized.match(
-    /^(?:I['\u2019]m|I am|My name is)\s+([\p{L}][\p{L}'\u2019-]*(?:\s+[\p{L}][\p{L}'\u2019-]*){1,2})(?=\s*[.,:;!?]|\s|$)/iu,
+    /(?:^|[.!?]\s+)(?:I['\u2019]m|I am|My name is)\s+([\p{L}][\p{L}'\u2019-]*(?:\s+[\p{L}][\p{L}'\u2019-]*){1,2})(?=\s*[.,:;!?]|\s|$)/iu,
   );
 
   if (!match) {
@@ -651,7 +729,7 @@ export function personNameFromSelfIntro(text, domain) {
     return "";
   }
 
-  if (comparableText(candidate) !== comparableText(domainLabel)) {
+  if (!comparableTextsMatch(candidate, domainLabel)) {
     return "";
   }
 
@@ -782,6 +860,9 @@ export function chooseTitle({
   description = "",
   ogDescription = "",
   twitterDescription = "",
+  mainDescription = "",
+  aboutDescription = "",
+  identityNameText = "",
   domain = "",
 } = {}) {
   // Explicit person signals first (author / Person JSON-LD / GitHub-injected
@@ -811,7 +892,16 @@ export function chooseTitle({
     }
   }
 
-  for (const text of [description, ogDescription, twitterDescription]) {
+  // Include main/about/identity prose so self-intros like “I’m Chris Minnick…”
+  // win even when meta description is third-person and og:title is Non-Josh.
+  for (const text of [
+    description,
+    ogDescription,
+    twitterDescription,
+    mainDescription,
+    aboutDescription,
+    identityNameText,
+  ]) {
     const fromText = personNameFromText(text, domain);
 
     if (fromText) {
@@ -824,7 +914,11 @@ export function chooseTitle({
   for (const candidate of siteNameCandidates) {
     const normalized = normalizeText(candidate);
 
-    if (normalized && !isDomainCompressingSlogan(normalized, domain)) {
+    if (
+      normalized &&
+      !isDomainCompressingSlogan(normalized, domain) &&
+      !isWeakPageTitle(normalized)
+    ) {
       return normalized;
     }
   }
@@ -845,6 +939,7 @@ export function chooseTitle({
       (candidate) =>
         candidate &&
         !isGreetingTitle(candidate) &&
+        !isWeakPageTitle(candidate) &&
         !isDomainCompressingSlogan(candidate, domain),
     );
 
@@ -863,6 +958,10 @@ export function chooseTitle({
       continue;
     }
 
+    if (isWeakPageTitle(normalized)) {
+      continue;
+    }
+
     // "Josh Can Help - Software" still carries the slogan; prefer the host.
     if (
       titleParts(normalized).some((part) =>
@@ -878,6 +977,107 @@ export function chooseTitle({
   const domainFallback = normalizeText(domain);
 
   return domainFallback || "";
+}
+
+/**
+ * True when a title is only the host or its primary label.
+ * @param {string} title
+ * @param {string} domain
+ * @returns {boolean}
+ */
+export function isHostLikeTitle(title, domain) {
+  const normalized = normalizeText(title);
+  const host = normalizeText(domain);
+
+  if (!normalized || !host) {
+    return false;
+  }
+
+  if (comparableTextsMatch(normalized, host)) {
+    return true;
+  }
+
+  const label = primaryDomainLabel(host);
+
+  return Boolean(label) && comparableTextsMatch(normalized, label);
+}
+
+/**
+ * Reads curated Network card titles keyed by participant origin.
+ * @param {unknown} doc
+ * @returns {Map<string, string>}
+ */
+export function displayTitleOverridesFromDocument(doc) {
+  /** @type {Map<string, string>} */
+  const overrides = new Map();
+
+  if (!doc || typeof doc !== "object" || Array.isArray(doc)) {
+    return overrides;
+  }
+
+  const titles = /** @type {{ titles?: unknown }} */ (doc).titles;
+
+  if (!titles || typeof titles !== "object" || Array.isArray(titles)) {
+    return overrides;
+  }
+
+  for (const [origin, title] of Object.entries(titles)) {
+    const normalizedOrigin = normalizeText(origin);
+    const normalizedTitle = normalizeText(title);
+
+    if (!normalizedOrigin || !normalizedTitle) {
+      continue;
+    }
+
+    overrides.set(normalizedOrigin, normalizedTitle);
+  }
+
+  return overrides;
+}
+
+/**
+ * Picks the Network card title to publish after sync resolve.
+ * Curated overrides win. Person-shaped previous titles are not downgraded to
+ * host labels, weak shells, or domain-compressing slogans on rebuild.
+ * @param {{
+ *   resolved?: string,
+ *   previous?: string,
+ *   domain?: string,
+ *   override?: string,
+ * }} [fields]
+ * @returns {string}
+ */
+export function selectPublishedNetworkTitle({
+  resolved = "",
+  previous = "",
+  domain = "",
+  override = "",
+} = {}) {
+  const forced = normalizeText(override);
+
+  if (forced) {
+    return forced;
+  }
+
+  const next = normalizeText(resolved);
+  const kept = normalizeText(previous);
+
+  if (next && looksLikePersonName(next)) {
+    return next;
+  }
+
+  if (
+    kept &&
+    looksLikePersonName(kept) &&
+    (!next ||
+      isWeakPageTitle(next) ||
+      isDomainCompressingSlogan(next, domain) ||
+      isHostLikeTitle(next, domain))
+  ) {
+    return kept;
+  }
+
+  return next || kept || "";
 }
 
 /** @type {number} Blurbs shorter than this are treated as too thin for Network cards. */

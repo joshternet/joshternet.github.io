@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Bluesky articles from Joshternet websites"
-description: "Explore Bluesky articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Bluesky, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Bluesky from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Bluesky, Joshternet, independent websites, Topics, shared interests"
 slug: "bluesky"
 permalink: /topics/bluesky/
 robots: max-snippet:160, max-image-preview:large

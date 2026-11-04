@@ -199,6 +199,10 @@ test("What's New Atom feed links to original publishers with stable ids", () => 
   });
 
   assert.match(xml, /<feed xmlns="http:\/\/www\.w3\.org\/2005\/Atom">/);
+  assert.match(
+    xml,
+    /<subtitle>A selection of recent writing and creative work from independent websites participating in the Joshternet\. Entries link to the original publishers\.<\/subtitle>/,
+  );
   assert.match(xml, /<id>https:\/\/a\.example\/post\/<\/id>/);
   assert.match(
     xml,

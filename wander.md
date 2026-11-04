@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Wander through independent Joshternet websites
+title: Wander the Joshternet
 description: >-
-  Wander through independent Joshternet websites—open a random participant and
-  visit real sites on their own domains. Everyone is welcome to join the network.
+  Take a wander through the Joshternet and discover independent websites you
+  might never have found otherwise. Meet another Josh, find something unexpected,
+  and see where the web takes you.
 keywords: >-
-  wander Joshternet, explore websites, independent websites, Josh network,
-  indie web
+  Wander, Joshternet, independent websites, discover websites, Josh network
 seo:
   type: CollectionPage
   name: Wander
@@ -33,7 +33,8 @@ footer: false
       class="wander-bar__go"
       type="button"
       data-wander-go
-      aria-label="Go to another random site"
+      aria-label="Discover another website"
+      title="Discover another website"
     >
       Go ↻
     </button>
@@ -47,7 +48,7 @@ footer: false
         autocomplete="off"
         autocapitalize="none"
         spellcheck="false"
-        placeholder="Finding somewhere to wander…"
+        placeholder="Finding another corner of the internet to explore…"
         readonly
       >
     </label>
@@ -56,6 +57,7 @@ footer: false
       class="wander-bar__open"
       type="button"
       data-wander-open
+      aria-label="Open this website in a new tab"
       disabled
     >
       Open ↗
@@ -65,7 +67,7 @@ footer: false
   <div class="wander-app">
     <section class="wander-stage" data-wander-stage>
       <div class="wander-empty">
-        <p>Looking for somewhere to wander.</p>
+        <p>Finding another corner of the internet to explore…</p>
       </div>
     </section>
   </div>
@@ -73,10 +75,10 @@ footer: false
 
 <noscript>
   <div class="wander-noscript">
-    Wander needs JavaScript to move between sites.
-    <a href="{{ '/network/' | relative_url }}">Browse The Network</a>
-    or
-    <a href="{{ '/connections/' | relative_url }}">see Connections</a>
-    instead.
+    Wander needs JavaScript to pick your next destination. You can still
+    <a href="{{ '/network/' | relative_url }}">browse the Network</a>
+    or explore
+    <a href="{{ '/connections/' | relative_url }}">Connections</a>
+    and follow the links yourself.
   </div>
 </noscript>

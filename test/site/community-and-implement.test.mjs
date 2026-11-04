@@ -30,6 +30,21 @@ test("community page points at #joshternet without embedding chat; footer omits 
   const community = await read("community.md");
   const layout = await read("_layouts/default.html");
 
+  assert.match(community, /^title: Community$/m);
+  assert.match(community, /^# Community$/m);
+  assert.match(community, /join in the joshing/);
+  assert.match(community, /independent websites remain independent/i);
+  assert.match(community, /protections are not cut for length/);
+  assert.match(
+    community,
+    /Stewardship is responsibility for the project\. It is not ownership of the network\./,
+  );
+  assert.match(community, /Joshness is declared, never derived\./);
+  assert.match(community, /No Josh outranks another Josh/);
+  assert.match(
+    community,
+    /Interoperability does not require interaction, and freedom of expression does not require compelled amplification\./,
+  );
   assert.match(community, /#joshternet/);
   assert.match(community, /https:\/\/web\.libera\.chat\/#joshternet/);
   assert.match(community, /irc\.libera\.chat/);
@@ -53,6 +68,27 @@ test("community page points at #joshternet without embedding chat; footer omits 
   assert.match(layout, /joshternet-button\.js/);
 });
 
+test("governance page keeps founding maintainer PRE-JOSH and Draft boundaries", async () => {
+  const governance = await read("governance.md");
+
+  assert.match(governance, /^title: Governance$/m);
+  assert.match(governance, /^# Governance$/m);
+  assert.match(
+    governance,
+    /Joshua Morris created the Joshternet and currently serves as its founding maintainer/,
+  );
+  assert.match(governance, /\*\*PRE-JOSH\*\*/);
+  assert.match(governance, /None are Accepted/);
+  assert.match(governance, /What has not been established/);
+  assert.match(governance, /formal membership or member classes/);
+  assert.match(governance, /\[Community\]\[community\]/);
+  assert.match(governance, /Joshness is declared, never derived\./);
+  assert.match(governance, /No Josh outranks another Josh/);
+  assert.match(governance, /Josh identity is not required/);
+  assert.match(governance, /https:\/\/github\.com\/joshternet\/spec\/issues/);
+  assert.match(governance, /https:\/\/github\.com\/joshternet\/spec\/pulls/);
+});
+
 test("primary navigation keeps top-level labels and Implement children", async () => {
   const links = await read("_includes/site-nav-links.html");
   const children = await read("_includes/site-nav-implement-children.html");
@@ -64,6 +100,7 @@ test("primary navigation keeps top-level labels and Implement children", async (
 
   for (const label of [
     "Home",
+    "Join",
     "About",
     "Network",
     "Wander",
@@ -120,8 +157,8 @@ test("primary navigation keeps top-level labels and Implement children", async (
   assert.match(children, /site\.data\.implement_nav/);
   assert.doesNotMatch(data, /title: Guide/);
   assert.doesNotMatch(data, /path: \/implement\/\n/);
-  assert.match(data, /title: Join the Joshternet/);
-  assert.match(data, /path: \/join\//);
+  assert.doesNotMatch(data, /title: Join the Joshternet/);
+  assert.doesNotMatch(data, /path: \/join\//);
   assert.match(data, /path: \/implement\/validate\//);
   assert.match(data, /title: Platforms/);
   assert.match(data, /path: \/implement\/platforms\//);
@@ -132,6 +169,12 @@ test("primary navigation keeps top-level labels and Implement children", async (
   assert.match(data, /path: \/implement\/buttons\//);
   assert.match(data, /path: \/implement\/connections\//);
   assert.match(data, /title: Connections/);
+  assert.match(data, /title: Content handbook/);
+  assert.match(data, /path: \/implement\/content\//);
+  assert.doesNotMatch(data, /title: Slashpages/);
+  assert.doesNotMatch(data, /path: \/implement\/slashpages\//);
+  assert.doesNotMatch(data, /title: Explore notes/);
+  assert.doesNotMatch(data, /path: \/implement\/explore\//);
   const platformsNav = await read("_data/platforms_nav.yml");
   assert.match(platformsNav, /path: \/implement\/platforms\/eleventy\//);
   assert.match(platformsNav, /path: \/implement\/platforms\/ghost\//);
@@ -287,9 +330,9 @@ function assertPlatformRecipeContract(relativePath, body, platformsNav) {
   assert.match(body, /\/\.well-known\/josh/);
   assert.match(
     body,
-    /no `?\.json`? extension|without `?\.json`? extension|Do not publish the protocol resource as `\/\.well-known\/josh\.json`/i,
+    /no `?\.json`? extension|without `?\.json`? extension|Do not publish the protocol resource as `\/\.well-known\/josh\.json`|declaration-identity-ref\.html|declaration-verify-ref\.html/i,
   );
-  assert.match(body, /no trailing slash/i);
+  assert.match(body, /no trailing slash|declaration-verify-ref\.html/i);
   assert.doesNotMatch(
     body,
     /The public resource is exactly/,
@@ -305,16 +348,22 @@ function assertPlatformRecipeContract(relativePath, body, platformsNav) {
     /the (?:public|canonical) (?:resource|path) is exactly `\/\.well-known\/josh\//i,
     `${relativePath} must not present /.well-known/josh/ as the canonical resource`,
   );
-  assert.match(body, /\/implement\/validate\//);
-  assert.match(body, /curl -i https:\/\/example\.invalid\/\.well-known\/josh/);
-  assert.match(body, /origin root|root of an origin|belongs at the root/i);
+  assert.match(body, /\/implement\/validate\/|declaration-verify-ref\.html/);
   assert.match(
     body,
-    /does not separately notify JoshBot|does not notify JoshBot/i,
+    /curl -i https:\/\/joshua\.example\/\.well-known\/josh|declaration-verify-ref\.html/,
   );
-  assert.match(body, /## Stop publishing/);
-  assert.match(body, /404 Not Found/);
-  assert.match(body, /410 Gone/);
+  assert.match(
+    body,
+    /origin root|root of an origin|belongs at the root|declaration-origin-root-note\.html/i,
+  );
+  assert.match(
+    body,
+    /does not separately notify JoshBot|does not notify JoshBot|declaration-verify-ref\.html/i,
+  );
+  assert.match(body, /## Stop publishing|declaration-stop-publishing\.html/);
+  assert.match(body, /404 Not Found|declaration-stop-publishing\.html/);
+  assert.match(body, /410 Gone|declaration-stop-publishing\.html/);
   assert.match(body, /## Tested/);
   assert.match(body, /RFC-JOSH-0002 version 1/);
   assert.match(body, /Verified:\s*\d{4}-\d{2}-\d{2}/);
@@ -338,8 +387,47 @@ test("platform recipes satisfy the shared documentation contract", async () => {
   assert.doesNotMatch(guide, /include-hidden-files/);
 
   assert.match(hubs, /permalink: \/implement\/platforms\//);
+  assert.match(hubs, /^title: Platforms$/m);
   assert.match(hubs, /site\.data\.platforms_nav/);
   assert.match(hubs, /Hugo/);
+  assert.match(hubs, /joining the Joshternet shouldn't/);
+  assert.match(hubs, /## The result is the same on every platform/);
+  assert.match(hubs, /## Choose your platform/);
+  assert.match(hubs, /## Check the deployed declaration/);
+  assert.match(hubs, /## You remain in control/);
+  assert.match(hubs, /## Don't see your platform\?/);
+  assert.match(hubs, /joshua\.example/);
+  assert.match(hubs, /curl -i https:\/\/joshua\.example\/\.well-known\/josh/);
+  assert.match(hubs, /\/implement\/validate\//);
+  assert.match(hubs, /\/implement\/content\//);
+  assert.match(hubs, /platform\.group == group_key/);
+  assert.match(hubs, /<h3>\{\{\s*group_label\s*\}\}<\/h3>/);
+  assert.match(hubs, /assign platform_groups = 'static\|framework\|cms\|edge'/);
+  assert.doesNotMatch(hubs, /example\.invalid/);
+  assert.doesNotMatch(hubs, /content-joshbot-status/);
+
+  assert.match(
+    platformsNav,
+    /summary: Use the Joshternet plugin to serve the declaration/,
+  );
+  assert.match(
+    platformsNav,
+    /summary: Serve the declaration through a Worker route without changing your website's build/,
+  );
+
+  for (const group of ["static", "framework", "cms", "edge"]) {
+    assert.match(platformsNav, new RegExp(`group: ${group}\\b`));
+  }
+  for (const recipe of PLATFORM_RECIPES) {
+    assert.match(
+      platformsNav,
+      new RegExp(
+        `path: ${recipe.file
+          .replace(/^implement\/platforms\//, "/implement/platforms/")
+          .replace(/\.md$/, "/")}`,
+      ),
+    );
+  }
 
   for (const recipe of PLATFORM_RECIPES) {
     const body = await read(recipe.file);
@@ -366,7 +454,10 @@ test("Eleventy recipe keeps passthrough copy to /.well-known/josh", async () => 
     /addPassthroughCopy\(\{\s*"input\/josh\.json": "\.well-known\/josh",\s*\}\)/,
   );
   assert.match(eleventy, /test -f _site\/\.well-known\/josh/);
-  assert.match(eleventy, /include-hidden-files: true/);
+  assert.match(eleventy, /\.nojekyll/);
+  assert.match(eleventy, /branch-based publishing|publishing sources/i);
+  assert.doesNotMatch(eleventy, /upload-pages-artifact/);
+  assert.doesNotMatch(eleventy, /include-hidden-files/);
   await assertMissing("implement/eleventy.html");
 });
 
@@ -391,7 +482,7 @@ test("Ghost recipe keeps exact Nginx location and Ghost references", async () =>
 
   assert.match(
     ghost,
-    /location = \/\.well-known\/josh \{\s*default_type application\/json;\s*return 200 '{"version":1,"josh":true}';\s*\}/,
+    /location = \/\.well-known\/josh \{\s*default_type application\/json;\s*return 200 '{"version":1}';\s*\}/,
   );
   assert.match(ghost, /sudo nginx -t/);
   assert.match(
@@ -439,8 +530,14 @@ test("connections crawl page documents sync signals under Implement", async () =
   const page = await read("implement/connections.md");
 
   assert.match(guide, /\/implement\/connections\//);
+  assert.match(guide, /How Joshternet gathers connections/);
   assert.match(page, /permalink: \/implement\/connections\//);
   assert.match(page, /type: TechArticle/);
+  assert.match(page, /how websites connect/i);
+  assert.match(page, /`declared`/);
+  assert.match(page, /`observed`/);
+  assert.match(page, /`heuristic`/);
+  assert.match(page, /aren't proof of friendship/i);
   assert.match(page, /npm run nlp:sync/);
   assert.doesNotMatch(page, /nlp:probe-directory/);
   assert.doesNotMatch(page, /nlp:scale-probe/);
@@ -457,16 +554,126 @@ test("connections crawl page documents sync signals under Implement", async () =
   assert.match(page, /content-link/);
   assert.match(page, /\/connections\//);
   assert.match(page, /\/topics\//);
+  assert.match(page, /\/\.well-known\/slashpages/);
+  assert.match(page, /slashpages-manifest/);
+  assert.match(page, /\/implement\/content\/opml\//);
   assert.doesNotMatch(page, /_data\//);
   assert.doesNotMatch(page, /topics\.json/);
   assert.doesNotMatch(page, /connections\.json/);
   assert.doesNotMatch(page, /\.tmp\//);
 });
 
+test("implement landing is a join and handbook gateway", async () => {
+  const guide = await read("implement.md");
+
+  assert.match(guide, /permalink: \/implement\//);
+  assert.match(guide, /title: Implement the Joshternet/);
+  assert.match(guide, /Publish a valid \/\.well-known\/josh declaration/);
+  assert.match(guide, /## Join the Joshternet/);
+  assert.match(guide, /## Choose your declaration/);
+  assert.match(guide, /## Get connected in three steps/);
+  assert.match(guide, /## Help the web discover what you publish/);
+  assert.match(guide, /## What joining requires/);
+  assert.match(guide, /## Choose your publishing platform/);
+  assert.match(guide, /## Build something with Joshternet/);
+  assert.match(guide, /## Participation and discovery are separate/);
+  assert.match(guide, /## Technical references/);
+  assert.match(guide, /### Stop publishing a declaration/);
+  assert.match(guide, /\{\s*"version":\s*1\s*\}/);
+  assert.match(guide, /"josh": true/);
+  assert.match(guide, /"josh": false/);
+  assert.match(guide, /Property omitted/);
+  assert.match(guide, /\/join\//);
+  assert.match(guide, /\/implement\/validate\//);
+  assert.match(guide, /\/network\//);
+  assert.match(guide, /\/nominate\//);
+  assert.match(guide, /\/joshbot\//);
+  assert.match(guide, /\/implement\/content\//);
+  assert.match(guide, /\/implement\/platforms\//);
+  assert.match(guide, /\/implement\/buttons\//);
+  assert.match(guide, /\/specs\//);
+  assert.match(guide, /Connect independent websites/);
+  assert.match(guide, /\/implement\/content\/connections\//);
+  assert.match(guide, /Improve content discovery/);
+  assert.match(guide, /\/implement\/content\/explore\//);
+  assert.match(guide, /How Joshternet gathers connections/);
+  assert.match(guide, /\/implement\/connections\//);
+  assert.match(guide, /How Joshternet builds Explore views/);
+  assert.match(guide, /\/implement\/explore\//);
+  assert.match(guide, /Needed to join\?/);
+  assert.match(guide, /joshua\.example/);
+  assert.match(guide, /curl -i https:\/\/joshua\.example\/\.well-known\/josh/);
+  assert.match(guide, /\{ "version": "1" \}/);
+  assert.match(guide, /\{ "version": 1, "josh": "true" \}/);
+  assert.match(guide, /JSON integer token `1`/);
+  assert.match(guide, /404 Not Found/);
+  assert.match(guide, /410 Gone/);
+  assert.match(guide, /RFC-JOSH-0001/);
+  assert.match(guide, /RFC-JOSH-0002/);
+  assert.doesNotMatch(guide, /example\.invalid/);
+  assert.doesNotMatch(guide, /content-joshbot-status/);
+  assert.doesNotMatch(guide, /Optional: Help Joshternet explore your website/);
+});
+
+test("specs page maps Draft RFCs without becoming a second Implement guide", async () => {
+  const specs = await read("specs.md");
+
+  assert.match(specs, /permalink: \/specs\//);
+  assert.match(specs, /^title: Specifications$/m);
+  assert.match(specs, /^# Specifications$/m);
+  assert.match(specs, /type: TechArticle/);
+  assert.match(specs, /## Where things stand/);
+  assert.match(specs, /PRE-JOSH/);
+  assert.match(specs, /None has been Accepted yet/);
+  assert.match(specs, /\/governance\//);
+  assert.match(specs, /Joshness is declared, never derived\./);
+  assert.match(specs, /## Which RFC should you read\?/);
+  assert.match(specs, /\/join\//);
+  assert.match(specs, /\/implement\//);
+  assert.match(
+    specs,
+    /https:\/\/github\.com\/joshternet\/spec\/blob\/main\/rfcs\/0000-the-joshternet\.md/,
+  );
+  assert.match(
+    specs,
+    /https:\/\/github\.com\/joshternet\/spec\/blob\/main\/rfcs\/0001-josh-identity\.md/,
+  );
+  assert.match(
+    specs,
+    /https:\/\/github\.com\/joshternet\/spec\/blob\/main\/rfcs\/0002-well-known-josh\.md/,
+  );
+  assert.match(specs, /https:\/\/github\.com\/joshternet\/spec\/issues/);
+  assert.doesNotMatch(specs, /example\.invalid/);
+});
+
+test("slashpages OPML guide lives in the content handbook", async () => {
+  const guide = await read("implement.md");
+  const stub = await read("implement/slashpages.md");
+  const page = await read("implement/content/opml.md");
+
+  assert.match(guide, /\/implement\/content\/opml\//);
+  assert.match(guide, /Help the web discover what you publish/);
+  assert.match(stub, /permalink: \/implement\/slashpages\//);
+  assert.match(stub, /\/implement\/content\/opml\//);
+  assert.match(page, /permalink: \/implement\/content\/opml\//);
+  assert.match(page, /\/\.well-known\/slashpages/);
+  assert.match(page, /OPML 2\.0/);
+  assert.match(page, /type="link"/);
+  assert.match(page, /category="\/now"/);
+  assert.match(page, /joshua\.example/);
+  assert.match(page, /slashpages-manifest/);
+  assert.match(page, /github\.com\/pfefferle\/well-known-slashpages/);
+  assert.match(page, /opml\.org\/spec2\.opml/);
+  assert.match(page, /slashpages\.net/);
+  assert.match(page, /Participation still depends only/);
+  assert.doesNotMatch(page, /joshuamorris\.info/);
+});
+
 test("visitor pages do not lecture under the title", async () => {
   const pages = [
     "implement.md",
     "implement/connections.md",
+    "implement/slashpages.md",
     "implement/buttons.md",
     "implement/explore.md",
     "implement/platforms.md",
@@ -556,7 +763,7 @@ test("declaration check keeps paste and origin feedback in separate forms", asyn
   assert.ok(originResultAt > -1 && originResultAt < originInputAt);
   assert.ok(originInputAt < originErrorAt);
   assert.match(page, /placeholder='\{\n  "version": 1\n\}'/);
-  assert.match(page, /placeholder="https:\/\/example\.invalid"/);
+  assert.match(page, /placeholder="https:\/\/joshua\.example"/);
   assert.doesNotMatch(page, /two separate checks/);
   assert.doesNotMatch(page, /This page does not crawl/);
   assert.doesNotMatch(page, /<textarea[^>]*>\s*\{/);

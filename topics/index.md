@@ -1,11 +1,12 @@
 ---
 layout: default
-title: Topic neighborhoods across Joshternet websites
+title: Topics
 description: >-
-  Browse topic neighborhoods across the Joshternet—clusters of independent
-  websites writing about the same subjects, with evidence for why each site appears.
+  Explore ideas and shared interests across independent websites in the
+  Joshternet. Find articles, projects, and different perspectives on subjects
+  that catch your attention.
 keywords: >-
-  Joshternet topics, topic neighborhoods, independent websites, Josh network
+  Topics, Joshternet, independent websites, shared interests, articles, projects
 seo:
   type: CollectionPage
   name: Topics
@@ -20,9 +21,33 @@ script: /assets/js/topics.js
 
 # Topics
 
-Topics from around the Joshternet.
+One of the interesting things about wandering through independent websites is
+discovering how many people are exploring the same ideas in completely different
+ways. Someone might be writing about photography, another might be building
+software, and somewhere else a person is experimenting with something you never
+thought to look for.
+
+Topics brings some of those shared interests together. Pick something that
+catches your attention and see what people across the Joshternet have been
+writing, making, and exploring. Think of each topic as a little neighborhood of
+ideas, with different websites contributing their own perspectives.
+
+Some topics come from information publishers share about their websites. Others
+are discovered by looking at what they've published. Joshternet uses that
+information to help connect related work, but the labels are not always ones the
+publishers chose themselves. Writing about the same subject doesn't mean two
+people know each other or see things the same way—and a topic link is not an
+endorsement or a claim of expertise. Follow an article that catches your eye and
+you'll end up on the publisher's own website, where the work belongs.
+
+Curious how subject discovery works under the hood?
+[Read more in the Explore handbook]({{ '/implement/content/explore/' | relative_url }}).
 
 {% if community_count > 0 and neighborhoods.size > 0 %}
+<p class="topics-filter-hint">
+  Looking for something in particular? Start typing to narrow things down.
+</p>
+
 <div class="explore-toolbar" data-topics-toolbar>
   <label class="explore-filter-field">
     <span>Find a topic</span>
@@ -57,7 +82,7 @@ Topics from around the Joshternet.
             <p class="activity-card__topics"></p>
             <p class="activity-card__domain">
               {{ topic.occurrence_count | default: 0 }}
-              {% if topic.occurrence_count == 1 %}piece{% else %}pieces{% endif %}
+              {% if topic.occurrence_count == 1 %}work{% else %}works{% endif %}
               ·
               {{ topic.member_count }}
               {% if topic.member_count == 1 %}site{% else %}sites{% endif %}
@@ -71,9 +96,10 @@ Topics from around the Joshternet.
 {% else %}
 <div class="network-empty">
   <p>
-    No topics yet. Browse the
+    Nothing has made it into Topics just yet, but there are still plenty of
+    interesting websites to explore. Visit the
     <a href="{{ '/network/' | relative_url }}">Network</a>
-    to visit participating sites directly.
+    and see what people are writing, building, and sharing on their own sites.
   </p>
 </div>
 {% endif %}

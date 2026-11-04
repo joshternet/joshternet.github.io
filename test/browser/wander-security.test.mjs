@@ -208,7 +208,7 @@ test("validated HTTPS participant uses the constrained iframe sandbox", async ()
 
     assert.equal(
       await page.locator("[data-wander-status]").innerText(),
-      "Now viewing Safe Example.",
+      "Previewing Safe Example.",
     );
 
     assert.equal(await page.locator(".wander-embed__poster").count(), 0);
@@ -231,7 +231,7 @@ test("validated HTTPS participant uses the constrained iframe sandbox", async ()
 
 test("an external link shows the blocked-link bubble and a same-site link does not", async () => {
   const notice =
-    "Wander blocks links that leave that site, and Open opens the publisher's site in another tab.";
+    "This preview stays on the current website. To follow links elsewhere, open the publisher's site in a new tab.";
 
   const { context, page } = await wanderPage(
     [

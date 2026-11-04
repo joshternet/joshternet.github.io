@@ -1,0 +1,21 @@
+{% comment %}
+  Goal: One explanation that well-known URIs belong at the origin root.
+{% endcomment %}
+## Sites published below the origin root
+
+A well-known URI belongs at the root of an origin.
+
+For a site whose public URL is:
+
+```text https://joshua.example/blog/ ```
+
+the Joshternet declaration is still:
+
+```text https://joshua.example/.well-known/josh ```
+
+It is not:
+
+```text https://joshua.example/blog/.well-known/josh ```
+
+A site that only controls a path under someone else’s origin cannot declare for that origin through this protocol unless
+the host routes `/.well-known/josh` at the origin root.

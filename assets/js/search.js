@@ -208,8 +208,12 @@
     return total;
   }
 
+  const IDLE_STATUS =
+    "Try a website name, a subject, or something you're curious about.";
   let documents = [];
   let type = "all";
+  let indexReady = false;
+  let indexFailed = false;
   /** @type {ReturnType<typeof setTimeout> | null} */
   let searchTrackTimer = null;
 
@@ -248,13 +252,26 @@
 
     if (!query) {
       results.innerHTML = "";
-      status.textContent = "Type a word from a title, domain, or topic.";
+      status.textContent = IDLE_STATUS;
 
       if (searchTrackTimer !== null) {
         globalThis.clearTimeout(searchTrackTimer);
         searchTrackTimer = null;
       }
 
+      return;
+    }
+
+    if (indexFailed) {
+      results.innerHTML = "";
+      status.textContent =
+        "Search isn't available right now, but the rest of the Joshternet is still here. Browse the Network or see What's New while you explore.";
+      return;
+    }
+
+    if (!indexReady) {
+      results.innerHTML = "";
+      status.textContent = "Getting the search index ready…";
       return;
     }
 
@@ -292,10 +309,17 @@
       }
     }
 
-    status.textContent =
-      capped.length === 0
-        ? "No matches in the indexed Joshternet corpus."
-        : `${capped.length} matching ${capped.length === 1 ? "result" : "results"}`;
+    if (capped.length === 0) {
+      status.textContent =
+        type === "all"
+          ? "Nothing turned up for that search. Try another word or explore the Network. There are plenty of corners of the internet left to discover."
+          : "No results in this category. Try All or another search.";
+    } else {
+      status.textContent =
+        capped.length === 1
+          ? "Showing 1 result."
+          : `Showing ${capped.length} results.`;
+    }
 
     results.innerHTML = capped
       .map((entry) => renderCard(entry.document))
@@ -325,10 +349,15 @@
     })
     .then((payload) => {
       documents = Array.isArray(payload.documents) ? payload.documents : [];
+      indexReady = true;
+      indexFailed = false;
       render();
     })
     .catch(() => {
+      indexReady = false;
+      indexFailed = true;
+      results.innerHTML = "";
       status.textContent =
-        "The search index is unavailable. Browse What's New or the Network instead.";
+        "Search isn't available right now, but the rest of the Joshternet is still here. Browse the Network or see What's New while you explore.";
     });
 })();

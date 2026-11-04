@@ -37,11 +37,14 @@ import {
  * @param {{
  *   goto?: (url: string, opts?: Record<string, unknown>) => Promise<void>,
  *   screenshot?: () => Promise<Buffer>,
+ *   route?: (pattern: string, handler: Function) => Promise<void>,
+ *   url?: () => string,
  * }} [hooks]
  * @returns {Record<string, unknown>}
  */
 function mockCapturePage(hooks = {}) {
-  return {
+  /** @type {Record<string, unknown>} */
+  const page = {
     goto:
       hooks.goto ||
       (async () => {
@@ -56,6 +59,16 @@ function mockCapturePage(hooks = {}) {
         throw new Error("screenshot mock missing");
       }),
   };
+
+  if (typeof hooks.route === "function") {
+    page.route = hooks.route;
+  }
+
+  if (typeof hooks.url === "function") {
+    page.url = hooks.url;
+  }
+
+  return page;
 }
 
 /**
@@ -79,6 +92,25 @@ function captureLog() {
  * @param {string} _message
  */
 function muteLog(_message) {}
+
+/**
+ * Fake DNS for offline assertPublicURL. Literal IPs keep their address.
+ * @param {string} hostname
+ * @returns {Promise<Array<{ address: string, family: number }>>}
+ */
+async function publicLookup(hostname) {
+  const host = String(hostname || "");
+
+  if (/^\d{1,3}(?:\.\d{1,3}){3}$/.test(host)) {
+    return [{ address: host, family: 4 }];
+  }
+
+  if (host.includes(":")) {
+    return [{ address: host, family: 6 }];
+  }
+
+  return [{ address: "1.1.1.1", family: 4 }];
+}
 
 /**
  * Tiny valid PNG via sharp for mock screenshot bytes.
@@ -595,6 +627,7 @@ test("captureMissingWorkScreenshots writes local poster via mocked Playwright", 
     root,
     maxCaptures: 5,
     log,
+    lookup: publicLookup,
     importPlaywright: async () => ({
       chromium: {
         launch: async () => ({
@@ -606,6 +639,16 @@ test("captureMissingWorkScreenshots writes local poster via mocked Playwright", 
                   gotoWaitUntil = opts?.waitUntil;
                 },
                 screenshot: async () => png,
+                url: () => "https://themorning.app/",
+                route: async (_pattern, handler) => {
+                  await handler({
+                    request: () => ({
+                      url: () => "https://themorning.app/asset.js",
+                    }),
+                    abort: async () => {},
+                    continue: async () => {},
+                  });
+                },
               }),
             close: async () => {},
           }),
@@ -666,6 +709,7 @@ test("captureMissingWorkScreenshots prioritizes creative over older articles", a
     root,
     maxCaptures: 2,
     log: muteLog,
+    lookup: publicLookup,
     importPlaywright: async () => ({
       chromium: {
         launch: async () => ({
@@ -708,6 +752,7 @@ test("captureMissingWorkScreenshots skips URLs robots.txt disallows", async () =
       allows: async () => false,
       bodyForOrigin: async () => "",
     },
+    lookup: publicLookup,
     importPlaywright: async () => {
       launched = true;
       throw new Error("should not launch");
@@ -745,6 +790,7 @@ test("captureMissingWorkScreenshots no-ops without pending items or on launch fa
   ];
 
   await captureMissingWorkScreenshots(items, {
+    lookup: publicLookup,
     importPlaywright: async () => {
       throw new Error("no browser");
     },
@@ -768,6 +814,7 @@ test("captureMissingWorkScreenshots swallows per-URL goto failures", async () =>
   await captureMissingWorkScreenshots(items, {
     root,
     log,
+    lookup: publicLookup,
     importPlaywright: async () => ({
       chromium: {
         launch: async () => ({
@@ -825,6 +872,7 @@ test("captureMissingWorkScreenshots respects maxCaptures and skips mid-run fille
     maxCaptures: 2,
     timeoutMs: 5_000,
     log: muteLog,
+    lookup: publicLookup,
     importPlaywright: async () => ({
       chromium: {
         launch: async () => ({
@@ -878,6 +926,7 @@ test("captureMissingWorkScreenshots defaults log to console.log", async () => {
           allows: async () => true,
           bodyForOrigin: async () => "",
         },
+        lookup: publicLookup,
         importPlaywright: async () => ({
           chromium: {
             launch: async () => ({
@@ -928,6 +977,7 @@ test("captureMissingWorkScreenshots builds a default robots gate", async () => {
       body: "User-agent: *\nDisallow: /\n",
     }),
     cache: new Map([["themorning.app", [{ address: "1.1.1.1" }]]]),
+    lookup: publicLookup,
     importPlaywright: async () => {
       launched = true;
       throw new Error("should not launch when robots disallow");
@@ -974,6 +1024,7 @@ test("captureShowcasePosterFallbacks snapshots work pages when images stay remot
       errLines.push(message);
     },
     robotsGate: { allows: async () => true },
+    lookup: publicLookup,
     importPlaywright: async () => ({
       chromium: {
         launch: async () => ({
@@ -1025,6 +1076,7 @@ test("captureShowcasePosterFallbacks no-ops when Showcase is already local", asy
 
   let launched = false;
   const captured = await captureShowcasePosterFallbacks(views, {
+    lookup: publicLookup,
     importPlaywright: async () => {
       launched = true;
       throw new Error("should not launch");
@@ -1057,6 +1109,7 @@ test("captureShowcasePosterFallbacks skips robots-disallowed work URLs", async (
       errLines.push(message);
     },
     robotsGate: { allows: async () => false },
+    lookup: publicLookup,
     importPlaywright: async () => {
       launched = true;
       return {
@@ -1109,6 +1162,7 @@ test("captureShowcasePosterFallbacks skips non-https images and work URLs", asyn
     {
       log: () => {},
       logError: () => {},
+      lookup: publicLookup,
       importPlaywright: async () => {
         launched = true;
         throw new Error("should not launch when nothing is capturable");
@@ -1168,6 +1222,7 @@ test("captureShowcasePosterFallbacks defaults loggers, robots gate, and launch e
         body: "User-agent: *\nAllow: /\n",
       }),
       cache: new Map([["work.example", [{ address: "1.1.1.1" }]]]),
+      lookup: publicLookup,
       importPlaywright: async () => {
         throw new Error("launch boom");
       },
@@ -1188,6 +1243,7 @@ test("captureShowcasePosterFallbacks defaults loggers, robots gate, and launch e
         body: "User-agent: *\nAllow: /\n",
       }),
       cache: new Map([["work.example", [{ address: "1.1.1.1" }]]]),
+      lookup: publicLookup,
       importPlaywright: async () => {
         throw "launch string";
       },
@@ -1211,6 +1267,7 @@ test("captureShowcasePosterFallbacks defaults loggers, robots gate, and launch e
         body: "User-agent: *\nAllow: /\n",
       }),
       cache: new Map([["work.example", [{ address: "1.1.1.1" }]]]),
+      lookup: publicLookup,
       importPlaywright: async () => ({
         chromium: {
           launch: async () => ({
@@ -1264,6 +1321,7 @@ test("captureShowcasePosterFallbacks logs per-URL snapshot failures", async () =
       errLines.push(message);
     },
     robotsGate: { allows: async () => true },
+    lookup: publicLookup,
     importPlaywright: async () => ({
       chromium: {
         launch: async () => ({
@@ -1299,6 +1357,7 @@ test("captureShowcasePosterFallbacks logs per-URL snapshot failures", async () =
       errLines.push(message);
     },
     robotsGate: { allows: async () => true },
+    lookup: publicLookup,
     importPlaywright: async () => ({
       chromium: {
         launch: async () => ({

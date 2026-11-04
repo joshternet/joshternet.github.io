@@ -1,9 +1,10 @@
 ---
 layout: default
-title: Check a /.well-known/josh declaration
+title: Check a Declaration
 description: >-
-  Check whether a pasted file or a live origin is a valid version 1 Joshternet
-  /.well-known/josh declaration before publishing participation in the network.
+  Check your Joshternet declaration before or after publishing it. Validate the
+  JSON, inspect a live /.well-known/josh response, and understand what the
+  results mean.
 keywords: >-
   validate /.well-known/josh, Joshternet declaration checker, JSON validation
 seo:
@@ -17,6 +18,16 @@ declaration_check: true
 
 # Check a declaration
 
+Made your Joshternet declaration? Let's make sure everything looks right. You
+can paste the JSON here to check its contents, or enter your website's address
+to see whether the live declaration is being served correctly.
+
+The checker follows the current version 1 rules. It doesn't register your
+website or notify JoshBot, but it can help you catch mistakes before you move
+on. A valid result means the JSON matches those rules. That is separate from
+whether JoshBot has listed the site in the public
+[Network]({{ '/network/' | relative_url }}).
+
 <form
   hidden
   data-declaration-check-config
@@ -27,7 +38,11 @@ declaration_check: true
   {% endif %}
 ></form>
 
-## Paste the file
+## Paste the declaration
+
+Already have your JSON ready? Paste it below and we'll check whether it follows
+the version 1 declaration rules. You can do this before publishing anything on
+your website.
 
 <form class="declaration-check" data-declaration-paste>
   <div
@@ -59,10 +74,15 @@ declaration_check: true
     data-declaration-paste-error
     hidden
   ></p>
-  <button type="submit">Check this file</button>
+  <button type="submit">Check this declaration</button>
 </form>
 
-## Check a live origin
+## Check a live website
+
+Already published your declaration? Enter your website's address and we'll check
+the live `/.well-known/josh` resource at that origin. This helps confirm that the
+public response is available and follows the current protocol. The checker does
+not crawl the rest of your website.
 
 <form class="declaration-check" data-declaration-origin>
   <div
@@ -73,7 +93,11 @@ declaration_check: true
     aria-live="polite"
     hidden
   ></div>
-  <label for="declaration-origin">Origin</label>
+  <label for="declaration-origin">Website address</label>
+  <p id="declaration-origin-help">
+    Enter the address of the website you control, such as https://joshua.example.
+    The checker will look for <code>/.well-known/josh</code> at that origin.
+  </p>
   <input
     id="declaration-origin"
     data-declaration-origin-input
@@ -81,8 +105,8 @@ declaration_check: true
     inputmode="url"
     autocomplete="off"
     spellcheck="false"
-    placeholder="https://example.invalid"
-    aria-describedby="declaration-origin-result"
+    placeholder="https://joshua.example"
+    aria-describedby="declaration-origin-help declaration-origin-result"
     aria-errormessage="declaration-origin-error"
   >
   <p
@@ -109,6 +133,24 @@ declaration_check: true
 
 ## After a valid check
 
-A valid declaration means the file (or live `/.well-known/josh`) matches version 1 rules. Public registry discovery is separate: JoshBot may list the origin in the [Network]({{ '/network/' | relative_url }}) later, and an optional [nomination]({{ '/nominate/' | relative_url }}) only asks JoshBot to crawl—it does not establish participation by itself. The [join guide]({{ '/join/' | relative_url }}) walks through publishing, validation, discovery, and celebration.
+If you checked pasted JSON, the next step is to publish it on your website, then
+check the live address. If you checked a live website and received a valid
+result, the declaration is doing its job.
 
-When JavaScript is available, a successful check also shows whether the checked origin appears in the Network snapshot built into this page (as of the last hub publish). That listing state never overrides declaration validity.
+**Public registry discovery is separate:** JoshBot maintains a separate directory
+of verified participating websites. Your declaration can be valid before JoshBot
+discovers it, and you can optionally
+[nominate]({{ '/nominate/' | relative_url }}) a website you control to help the
+crawler find it. Listing never overrides validity. Browse the
+[Network]({{ '/network/' | relative_url }}) when you want to explore participating
+sites.
+
+| Outcome | Meaning |
+| --- | --- |
+| **Valid declaration** | Publishing it establishes participation. A pasted-only check does not prove it is live yet. |
+| **Invalid declaration** | Fix the JSON or how the site serves it. Common issues: wrong path, trailing slash, string `"1"` instead of integer `1`, or `josh` that is not a Boolean. |
+| **Unpublished** | The origin returned an authoritative response such as 404 or 410—no declaration is published at the required path. That is not the same as invalid JSON. |
+| **Unreadable** | The checker could not establish validity (timeouts, DNS/TLS problems, service failures, and similar). That is not an invalid declaration. |
+| **Public registry listed / not listed** | Whether this hub’s Network snapshot currently includes the checked website. This is not a live registry query. |
+
+The [join guide]({{ '/join/' | relative_url }}) walks through publishing and checking.

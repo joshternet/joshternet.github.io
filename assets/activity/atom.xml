@@ -2,22 +2,66 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://joshternet.org/assets/activity/atom.xml</id>
   <title>Joshternet What's New</title>
-  <updated>2026-11-03T06:36:12.251Z</updated>
+  <updated>2026-11-04T08:24:16.947Z</updated>
   <link rel="self" type="application/atom+xml" href="https://joshternet.org/assets/activity/atom.xml"/>
   <link rel="alternate" type="text/html" href="https://joshternet.org/activity/"/>
-  <subtitle>Recent articles from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
+  <subtitle>A selection of recent writing and creative work from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
   <generator uri="https://joshternet.org/">Joshternet views:build</generator>
+  <entry>
+    <id>https://www.youtube.com/watch?v=QFPIB-IU_zA</id>
+    <title>CSSBattle for NOVEMBER 4 (2026)</title>
+    <updated>2026-11-04T01:41:19.000Z</updated>
+    <published>2026-11-04T01:41:19.000Z</published>
+    <link rel="alternate" href="https://www.youtube.com/watch?v=QFPIB-IU_zA"/>
+    <author>
+      <name>Joe Crawford</name>
+      <uri>https://artlung.com</uri>
+    </author>
+  </entry>
   <entry xml:lang="en-us">
-    <id>https://www.joshfinnie.com/blog/micro-saas-october-retro/</id>
-    <title xml:lang="en-us">The October Micro SaaS Challenge: A Retro</title>
-    <updated>2026-11-02T00:00:00.000Z</updated>
-    <published>2026-11-02T00:00:00.000Z</published>
-    <link rel="alternate" href="https://www.joshfinnie.com/blog/micro-saas-october-retro/"/>
+    <id>https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/</id>
+    <title xml:lang="en-us">Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone</title>
+    <updated>2026-11-04T00:00:00.000Z</updated>
+    <published>2026-11-04T00:00:00.000Z</published>
+    <link rel="alternate" href="https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/"/>
     <author>
       <name>Josh Finnie</name>
       <uri>https://www.joshfinnie.com</uri>
     </author>
-    <summary xml:lang="en-us">Four micro SaaS products in four weeks, built with Claude Code: what shipped, which rules broke, what it cost, and what I&apos;d change next time.</summary>
+    <summary xml:lang="en-us">I spent a week having Claude Code audit my fork of LightCraft, the AI-built Rust Lightroom clone: fuzzing, crash safety, a locked control port, faster frames, and 50,000 deleted lines.</summary>
+  </entry>
+  <entry>
+    <id>https://www.youtube.com/watch?v=Rn8bsZhlDhQ</id>
+    <title>This Morse Game Starts at a Brutal 40 WPM</title>
+    <updated>2026-11-03T18:03:27.000Z</updated>
+    <published>2026-11-03T18:03:27.000Z</published>
+    <link rel="alternate" href="https://www.youtube.com/watch?v=Rn8bsZhlDhQ"/>
+    <author>
+      <name>Chris Minnick</name>
+      <uri>https://www.chrisminnick.com</uri>
+    </author>
+  </entry>
+  <entry>
+    <id>https://www.youtube.com/watch?v=_kuQflW2Db8</id>
+    <title>CSSBattle for NOVEMBER 3 (2026)</title>
+    <updated>2026-11-03T01:36:50.000Z</updated>
+    <published>2026-11-03T01:36:50.000Z</published>
+    <link rel="alternate" href="https://www.youtube.com/watch?v=_kuQflW2Db8"/>
+    <author>
+      <name>Joe Crawford</name>
+      <uri>https://artlung.com</uri>
+    </author>
+  </entry>
+  <entry>
+    <id>https://www.youtube.com/watch?v=kF07_Z3ZmXo</id>
+    <title>4 Hours for This Tiny Result?!</title>
+    <updated>2026-11-02T18:02:50.000Z</updated>
+    <published>2026-11-02T18:02:50.000Z</published>
+    <link rel="alternate" href="https://www.youtube.com/watch?v=kF07_Z3ZmXo"/>
+    <author>
+      <name>Chris Minnick</name>
+      <uri>https://www.chrisminnick.com</uri>
+    </author>
   </entry>
   <entry xml:lang="en">
     <id>https://joshtronic.com/2026/11/01/open-to-work/</id>
@@ -66,17 +110,6 @@
       <uri>https://joshgr.com</uri>
     </author>
     <summary xml:lang="en">It takes what we know and infers new words between the lines</summary>
-  </entry>
-  <entry xml:lang="en-us">
-    <id>https://artlung.com/blog/2026/10/29/patrick-stewart-rip/</id>
-    <title xml:lang="en-us">Patrick Stewart was a giant across television and movie franchises I enjoyed.</title>
-    <updated>2026-10-29T20:53:15.000Z</updated>
-    <published>2026-10-29T20:53:15.000Z</published>
-    <link rel="alternate" href="https://artlung.com/blog/2026/10/29/patrick-stewart-rip/"/>
-    <author>
-      <name>Joe Crawford</name>
-      <uri>https://artlung.com</uri>
-    </author>
   </entry>
   <entry xml:lang="en">
     <id>https://joshghent.com/enterprise-sales-teams/</id>

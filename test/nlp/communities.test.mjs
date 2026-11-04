@@ -677,11 +677,15 @@ test("topicSeoDescription: returns non-empty string with label", () => {
   const desc = topicSeoDescription("AI");
   assert.ok(typeof desc === "string" && desc.length > 0);
   assert.ok(desc.includes("Joshternet"));
+  assert.ok(desc.includes("independent websites participating in Joshternet"));
+  assert.ok(!/for Joshes/i.test(desc));
+  assert.ok(desc.length >= 120 && desc.length <= 170);
 });
 
 test("topicSeoDescription: empty label still returns description", () => {
   const desc = topicSeoDescription("");
   assert.ok(typeof desc === "string" && desc.length > 0);
+  assert.ok(!/for Joshes/i.test(desc));
 });
 
 // ─── topicSeoKeywords ─────────────────────────────────────────────────────────

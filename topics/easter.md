@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Easter articles from Joshternet websites"
-description: "Explore Easter articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Easter, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Easter from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Easter, Joshternet, independent websites, Topics, shared interests"
 slug: "easter"
 permalink: /topics/easter/
 robots: max-snippet:160, max-image-preview:large

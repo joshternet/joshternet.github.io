@@ -6,7 +6,10 @@
 {% assign home_showcase = site.data.showcase.home | default: empty %}
 {% if home_showcase.size > 0 %}
   <section class="home-showcase" aria-labelledby="home-showcase-heading">
-    <h2 id="home-showcase-heading">Creative work</h2>
+    <h2 id="home-showcase-heading">Things people are making</h2>
+    <p class="home-showcase__lede">
+      One of the best parts of wandering the web is discovering what people make simply because they want to.
+    </p>
     <ol class="showcase-list showcase-list--home h-feed">
       {% for item in home_showcase %}
         <li

@@ -29,16 +29,16 @@ test("homepage front matter keeps description and avoids explore", async () => {
 test("homepage links Wander, Network, activity, and join paths", async () => {
   const index = await read("index.md");
   const activity = await read("_includes/home-recent-activity.html");
+  const meet = await read("_includes/home-meet-sites.html");
 
   assert.match(index, /\/wander\//);
-  assert.match(index, /\/network\//);
+  assert.match(meet, /\/network\//);
   assert.match(index, /\/join\//);
+  assert.match(index, /\/about\//);
   assert.match(activity, /\/activity\//);
-  assert.match(index, /\/implement\//);
-  assert.match(index, /\/implement\/validate\//);
-  assert.match(index, /\/implement\/platforms\//);
-  assert.match(index, /\/nominate\//);
   assert.match(index, /\/specs\//);
+  assert.match(index, /\/governance\//);
+  assert.match(index, /joshuamorris\.info/);
   assert.match(index, /home-cta__primary/);
   assert.match(index, /home-cta__secondary/);
   assert.match(index, /Join the Joshternet/);
@@ -72,10 +72,12 @@ test("homepage meet and activity includes use generated datasets", async () => {
   assert.doesNotMatch(index, /\/assets\/js\/home-new-arrivals\.js/);
   assert.match(index, /\/assets\/js\/home-meet\.js/);
   assert.match(index, /\/assets\/js\/connections\.js/);
-  assert.match(index, /Not named Josh/);
+  assert.match(index, /Not a Josh\? Come along anyway/);
+  assert.match(index, /Joshua Morris/);
   assert.doesNotMatch(index, /Come josh around/);
   assert.doesNotMatch(index, /prose-emphasis/);
   assert.doesNotMatch(index, /^script:/m);
+  assert.doesNotMatch(index, /"josh":\s*true/);
   assert.match(eligible, /site\.data\.network/);
   assert.match(eligible, /first_participated_at/);
   assert.match(eligible, /home_arrival_cutoff_s/);
@@ -131,9 +133,10 @@ test("homepage join teaser points at guided join without duplicating declaration
   const index = await read("index.md");
   const join = await read("join.md");
 
-  assert.match(index, /## Join the Joshternet/);
-  assert.match(index, /No signup form|no account/i);
-  assert.match(index, /Start joining/);
+  assert.match(index, /## How to join the fun/);
+  assert.match(index, /No signup form|No accounts/i);
+  assert.match(index, /Read the Join guide/);
+  assert.match(index, /\/\.well-known\/josh/);
   assert.match(index, /\/join\//);
   assert.doesNotMatch(index, /home-join__option/);
   assert.match(join, /"josh": true/);

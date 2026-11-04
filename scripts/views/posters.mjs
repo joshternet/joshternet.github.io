@@ -1,13 +1,12 @@
 /**
  * Goal & Constraints:
  * What's New and Showcase cards use a local poster sized for the card, not
- * the publisher's full image. Sharp fits each https poster inside 960×540
- * (about 2× a What's New card) without cropping or upscaling, and writes
- * WebP under assets/activity/posters. This runs inside nlp:sync →
- * views:build (GitHub Actions). Network fetches cover only Activity + Showcase
- * (latest/featured surfaces); Search/topic cards reuse on-disk posters when
- * present and otherwise keep publisher https. Existing local WebP is never
- * re-downloaded. Sheet music without a publisher image gets a generated
+ * the publisher's full image. Sharp fits each https poster inside 1280×800
+ * (≈2–3× retina card width) without cropping or upscaling, and writes crisp
+ * WebP under assets/activity/posters. Encode version stamps the asset hash so
+ * quality bumps re-fetch. This runs inside nlp:sync → views:build. Network
+ * fetches cover only Activity + Showcase; Search/topic cards reuse on-disk
+ * posters when present. Sheet music without a publisher image gets a generated
  * staff-preview poster. Showcase must finish fully localized or the build
  * throws so CI does not publish remote img srcs. After download/resize fails,
  * views:build captures a viewport snapshot of the work page before that gate.
@@ -22,18 +21,35 @@ import sharp from "sharp";
 
 import { USER_AGENT } from "../nlp/lib.mjs";
 import { createOriginRobotsGate } from "../nlp/origin-robots.mjs";
+import { assertPublicURL } from "../network/lib.mjs";
+import {
+  MAX_PUBLIC_FETCH_REDIRECTS,
+  readCappedResponseBytes,
+} from "../network/public-fetch-guard.mjs";
 
-/** @type {number} Max poster width in pixels. */
-export const POSTER_MAX_WIDTH = 960;
+/** @type {number} Max poster width in pixels (2–3× retina creative cards). */
+export const POSTER_MAX_WIDTH = 1280;
 
 /** @type {number} Max poster height in pixels. */
-export const POSTER_MAX_HEIGHT = 540;
+export const POSTER_MAX_HEIGHT = 800;
 
 /** @type {number} Sheet-music preview width in pixels. */
-export const SHEET_MUSIC_POSTER_WIDTH = 640;
+export const SHEET_MUSIC_POSTER_WIDTH = 960;
 
 /** @type {number} Sheet-music preview height in pixels. */
-export const SHEET_MUSIC_POSTER_HEIGHT = 480;
+export const SHEET_MUSIC_POSTER_HEIGHT = 720;
+
+/**
+ * Bumped when encode settings change so asset paths rematerialize crisply.
+ * @type {string}
+ */
+export const POSTER_ENCODE_VERSION = "hq-v1";
+
+/** @type {number} WebP quality for readable UI / photo posters. */
+export const POSTER_WEBP_QUALITY = 92;
+
+/** @type {number} WebP CPU effort (0–6). */
+export const POSTER_WEBP_EFFORT = 6;
 
 /** @type {string} Repo-relative directory of generated posters. */
 export const POSTER_DIRECTORY = "assets/activity/posters";
@@ -46,6 +62,33 @@ export const POSTER_FETCH_TIMEOUT_MS = 45_000;
 
 /** @type {number} Attempts per poster URL before leaving it remote. */
 export const POSTER_FETCH_ATTEMPTS = 2;
+
+/**
+ * Hard cap for one downloaded poster body. Oversized CDN blobs must not hang
+ * sync in arrayBuffer()/Sharp (Vercel/edge stalls have stalled nlp:sync for hours).
+ * @type {number}
+ */
+export const POSTER_MAX_BYTES = 12_000_000;
+
+/**
+ * Shared WebP encode options for Activity / Showcase posters.
+ * @returns {{
+ *   quality: number,
+ *   alphaQuality: number,
+ *   smartSubsample: boolean,
+ *   effort: number,
+ *   preset: string,
+ * }}
+ */
+export function posterWebpOptions() {
+  return {
+    quality: POSTER_WEBP_QUALITY,
+    alphaQuality: 100,
+    smartSubsample: true,
+    effort: POSTER_WEBP_EFFORT,
+    preset: "picture",
+  };
+}
 
 /**
  * Public path for a poster, or "" when the source is not a plain https URL.
@@ -67,13 +110,16 @@ export function posterAssetPath(sourceUrl) {
     return "";
   }
 
-  const name = crypto.createHash("sha256").update(sourceUrl).digest("hex");
+  const name = crypto
+    .createHash("sha256")
+    .update(`${POSTER_ENCODE_VERSION}\0${sourceUrl}`)
+    .digest("hex");
 
   return `/${POSTER_DIRECTORY}/${name}.webp`;
 }
 
 /**
- * Fits a poster inside the card size and encodes WebP.
+ * Fits a poster inside the card size and encodes crisp WebP.
  * @param {Buffer} input
  * @returns {Promise<Buffer>}
  * @throws {Error} When the bytes are not an image Sharp can read.
@@ -83,11 +129,11 @@ export async function resizePoster(input) {
     .resize(POSTER_MAX_WIDTH, POSTER_MAX_HEIGHT, {
       fit: "inside",
       withoutEnlargement: true,
+      kernel: "lanczos3",
+      // Avoid JPEG/WebP shrink-on-load moiré on UI text and fine lines.
+      fastShrinkOnLoad: false,
     })
-    .webp({
-      quality: 82,
-      effort: 5,
-    })
+    .webp(posterWebpOptions())
     .toBuffer();
 }
 
@@ -330,7 +376,7 @@ export function sheetMusicPosterAssetPath(workUrl) {
 
   const name = crypto
     .createHash("sha256")
-    .update(`sheet-music:${workUrl}`)
+    .update(`${POSTER_ENCODE_VERSION}\0sheet-music:${workUrl}`)
     .digest("hex");
 
   return `/${POSTER_DIRECTORY}/${name}.webp`;
@@ -392,10 +438,7 @@ export function sheetMusicPreviewSvg(title) {
  */
 export async function renderSheetMusicPoster(title) {
   return sharp(Buffer.from(sheetMusicPreviewSvg(title)))
-    .webp({
-      quality: 82,
-      effort: 5,
-    })
+    .webp(posterWebpOptions())
     .toBuffer();
 }
 
@@ -510,11 +553,52 @@ export async function removeUnshownPosters(directory, keepNames) {
 }
 
 /**
- * Downloads one poster URL with retries, User-Agent, and a generous timeout.
+ * Reads a poster response body with an absolute byte ceiling.
+ * @param {{
+ *   ok?: boolean,
+ *   status?: number,
+ *   headers?: { get?: (name: string) => string | null },
+ *   body?: ReadableStream<Uint8Array> | null,
+ *   arrayBuffer?: () => Promise<ArrayBuffer>,
+ * }} response
+ * @param {number} maxBytes
+ * @returns {Promise<Buffer>}
+ */
+export async function readPosterResponseBytes(response, maxBytes) {
+  try {
+    return await readCappedResponseBytes(response, maxBytes, {
+      overflow: "throw",
+    });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    throw new Error(
+      message
+        .replace(/^Response exceeds/, "Poster exceeds")
+        .replace(
+          /^Response has no readable body/,
+          "Poster response has no readable body",
+        ),
+    );
+  }
+}
+
+/**
+ * Downloads one poster URL with retries, User-Agent, and a hard AbortController
+ * timeout (same pattern as fetchPublicText—AbortSignal.timeout alone has left
+ * ESTABLISHED CDN downloads hung for hours during nlp:sync).
  * Skips when robots.txt disallows the image URL.
  * @param {string} source
  * @param {typeof fetch} fetchImpl
- * @param {{ robotsGate?: import("../nlp/origin-robots.mjs").OriginRobotsGate }} [options]
+ * @param {{
+ *   robotsGate?: import("../nlp/origin-robots.mjs").OriginRobotsGate,
+ *   cache?: Map<string, unknown>,
+ *   fetchPublicText?: unknown,
+ *   timeoutMs?: number,
+ *   maxBytes?: number,
+ *   attempts?: number,
+ *   maxRedirects?: number,
+ *   lookup?: unknown,
+ * }} [options]
  * @returns {Promise<Buffer>}
  */
 export async function fetchPosterBytes(source, fetchImpl, options = {}) {
@@ -525,6 +609,28 @@ export async function fetchPosterBytes(source, fetchImpl, options = {}) {
       cache: options.cache,
       fetchPublicText: options.fetchPublicText,
     });
+  const timeoutMs =
+    typeof options.timeoutMs === "number" && options.timeoutMs > 0
+      ? options.timeoutMs
+      : POSTER_FETCH_TIMEOUT_MS;
+  const maxBytes =
+    typeof options.maxBytes === "number" && options.maxBytes > 0
+      ? options.maxBytes
+      : POSTER_MAX_BYTES;
+  const attempts =
+    typeof options.attempts === "number" && options.attempts > 0
+      ? options.attempts
+      : POSTER_FETCH_ATTEMPTS;
+  const maxRedirects =
+    typeof options.maxRedirects === "number" && options.maxRedirects >= 0
+      ? options.maxRedirects
+      : MAX_PUBLIC_FETCH_REDIRECTS;
+  const dnsOptions = {
+    cache: options.cache,
+    lookup: options.lookup,
+  };
+
+  await assertPublicURL(source, dnsOptions);
 
   if (!(await robotsGate.allows(source))) {
     throw new Error("Poster URL disallowed by robots.txt");
@@ -533,24 +639,75 @@ export async function fetchPosterBytes(source, fetchImpl, options = {}) {
   /** @type {unknown} */
   let lastError = new Error("poster fetch failed");
 
-  for (let attempt = 1; attempt <= POSTER_FETCH_ATTEMPTS; attempt += 1) {
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    const controller = new AbortController();
+    const timeoutError = new Error(
+      `Poster fetch timed out after ${timeoutMs}ms`,
+    );
+    /** @type {ReturnType<typeof setTimeout> | undefined} */
+    let hardTimer;
+
     try {
-      const response = await fetchImpl(source, {
-        headers: {
-          Accept: "image/avif,image/webp,image/*,*/*;q=0.8",
-          "User-Agent": POSTER_FETCH_USER_AGENT,
-        },
-        redirect: "follow",
-        signal: AbortSignal.timeout(POSTER_FETCH_TIMEOUT_MS),
-      });
+      // Abort the request AND race the whole attempt. Some stalled CDN
+      // sockets ignore AbortSignal alone (nlp:sync sat ESTABLISHED for hours).
+      const bytes = await Promise.race([
+        (async () => {
+          let current = source;
+          let hops = 0;
 
-      if (!response.ok) {
-        throw new Error(`Poster request failed (${response.status})`);
-      }
+          while (true) {
+            const response = await fetchImpl(current, {
+              headers: {
+                Accept: "image/avif,image/webp,image/*,*/*;q=0.8",
+                "User-Agent": POSTER_FETCH_USER_AGENT,
+              },
+              redirect: "manual",
+              signal: controller.signal,
+            });
 
-      return Buffer.from(await response.arrayBuffer());
+            if (response.status >= 300 && response.status < 400) {
+              const location = response.headers?.get?.("location");
+
+              if (!location) {
+                throw new Error(
+                  `Poster redirect without location from ${current}`,
+                );
+              }
+
+              hops += 1;
+
+              if (hops > maxRedirects) {
+                throw new Error(
+                  `Poster exceeded ${maxRedirects} redirects from ${source}`,
+                );
+              }
+
+              current = new URL(location, current).href;
+              await assertPublicURL(current, dnsOptions);
+              continue;
+            }
+
+            if (!response.ok) {
+              throw new Error(`Poster request failed (${response.status})`);
+            }
+
+            return readPosterResponseBytes(response, maxBytes);
+          }
+        })(),
+        new Promise((_, reject) => {
+          hardTimer = setTimeout(() => {
+            controller.abort(timeoutError);
+            reject(timeoutError);
+          }, timeoutMs);
+        }),
+      ]);
+      return bytes;
     } catch (error) {
       lastError = error;
+    } finally {
+      if (hardTimer !== undefined) {
+        clearTimeout(hardTimer);
+      }
     }
   }
 
@@ -641,6 +798,7 @@ export function assertShowcasePostersLocalized(views, options = {}) {
  *   fetchImpl?: typeof fetch,
  *   robotsGate?: import("../nlp/origin-robots.mjs").OriginRobotsGate,
  *   cache?: Map<string, unknown>,
+ *   lookup?: unknown,
  *   fetchPublicText?: unknown,
  *   logError?: (message: string) => void,
  *   log?: (message: string) => void,
@@ -652,11 +810,12 @@ export function assertShowcasePostersLocalized(views, options = {}) {
  */
 export async function materializeActivityPosters(views, root, options = {}) {
   const fetchImpl = options.fetchImpl || fetch;
+  const dnsCache = options.cache || new Map();
   const robotsGate =
     options.robotsGate ||
     createOriginRobotsGate({
       userAgent: POSTER_FETCH_USER_AGENT,
-      cache: options.cache,
+      cache: dnsCache,
       fetchPublicText: options.fetchPublicText,
     });
   /**
@@ -715,18 +874,28 @@ export async function materializeActivityPosters(views, root, options = {}) {
     `posters: ${fetchSources.length} latest, ${reused} cached, ${toFetch.length} to fetch\n`,
   );
 
-  for (const source of toFetch) {
+  let fetchedOk = 0;
+
+  for (let index = 0; index < toFetch.length; index += 1) {
+    const source = toFetch[index];
     const assetPath = posterAssetPath(source);
     const fileName = path.basename(assetPath);
     const outputPath = path.join(directory, fileName);
 
+    log(`poster ${index + 1}/${toFetch.length} ${source}\n`);
+
     try {
       const webp = await resizePoster(
-        await fetchPosterBytes(source, fetchImpl, { robotsGate }),
+        await fetchPosterBytes(source, fetchImpl, {
+          robotsGate,
+          cache: dnsCache,
+          lookup: options.lookup,
+        }),
       );
       await fs.writeFile(outputPath, webp);
       localBySource.set(source, assetPath);
       keepNames.add(fileName);
+      fetchedOk += 1;
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       logError(`poster materialize failed ${source}: ${message}\n`);
@@ -741,7 +910,7 @@ export async function materializeActivityPosters(views, root, options = {}) {
   }
 
   if (toFetch.length > 0) {
-    log(`posters: fetched ${toFetch.length}\n`);
+    log(`posters: fetched ${fetchedOk}/${toFetch.length}\n`);
   }
 
   applyPosterAssets(views, localBySource);

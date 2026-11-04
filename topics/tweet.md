@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Tweets articles from Joshternet websites"
-description: "Explore Tweets articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Tweets, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Tweets from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Tweets, Joshternet, independent websites, Topics, shared interests"
 slug: "tweet"
 permalink: /topics/tweet/
 robots: max-snippet:160, max-image-preview:large

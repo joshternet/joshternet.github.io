@@ -1,0 +1,10 @@
+{% comment %}
+  Goal: Shared withdrawal wording for platform recipes. Callers pass
+  include.stop_steps with platform-specific removal instructions.
+{% endcomment %}
+## Stop publishing
+
+{{ include.stop_steps }}
+
+A deliberate `404 Not Found` or `410 Gone` at `/.well-known/josh` indicates that no declaration is currently published.
+Temporary timeouts, TLS problems, DNS failures, and server errors do not mean the participant intentionally left.

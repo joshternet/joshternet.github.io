@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Writing articles from Joshternet websites"
-description: "Explore Writing articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
-keywords: "Writing, Joshternet, independent websites, Josh network, topic neighborhood"
+description: "Explore articles, notes, and projects about Writing from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
+keywords: "Writing, Joshternet, independent websites, Topics, shared interests"
 slug: "writing"
 permalink: /topics/writing/
 robots: max-snippet:160, max-image-preview:large
