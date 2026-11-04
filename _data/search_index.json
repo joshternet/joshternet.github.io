@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T17:38:13.287Z",
-  "document_count": 873,
+  "generated_at": "2026-11-04T18:35:52.894Z",
+  "document_count": 891,
   "documents": [
     {
       "type": "site",
@@ -82,6 +82,15 @@
       "domain": "joshozuna.com",
       "origin": "https://joshozuna.com",
       "url": "https://joshozuna.com",
+      "topics": []
+    },
+    {
+      "type": "site",
+      "title": "Josh Sherman",
+      "summary": "Thanks for visiting my website! Leave your mark on my graffiti wall to be added to the gallery. I am an Austin-area developer who loves making tools and working with others to solve problems.",
+      "domain": "joshsherman.dev",
+      "origin": "https://joshsherman.dev",
+      "url": "https://joshsherman.dev",
       "topics": []
     },
     {
@@ -302,15 +311,6 @@
     },
     {
       "type": "topic",
-      "title": "archive",
-      "summary": "3 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/archive/",
-      "topics": ["archive", "archive"]
-    },
-    {
-      "type": "topic",
       "title": "art",
       "summary": "4 participating sites",
       "domain": "",
@@ -344,6 +344,15 @@
       "origin": "",
       "url": "/topics/astro/",
       "topics": ["astro", "astro"]
+    },
+    {
+      "type": "topic",
+      "title": "audio",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/audio/",
+      "topics": ["audio", "audio"]
     },
     {
       "type": "topic",
@@ -392,6 +401,15 @@
     },
     {
       "type": "topic",
+      "title": "beautiful",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/beautiful/",
+      "topics": ["beautiful", "beautiful"]
+    },
+    {
+      "type": "topic",
       "title": "becomes",
       "summary": "3 participating sites",
       "domain": "",
@@ -428,6 +446,15 @@
     },
     {
       "type": "topic",
+      "title": "bodysurfing",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/bodysurfing/",
+      "topics": ["bodysurfing", "bodysurfing"]
+    },
+    {
+      "type": "topic",
       "title": "books",
       "summary": "5 participating sites",
       "domain": "",
@@ -452,6 +479,15 @@
       "origin": "",
       "url": "/topics/business/",
       "topics": ["business", "business"]
+    },
+    {
+      "type": "topic",
+      "title": "california",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/california/",
+      "topics": ["california", "california"]
     },
     {
       "type": "topic",
@@ -492,7 +528,7 @@
     {
       "type": "topic",
       "title": "challenges",
-      "summary": "3 participating sites",
+      "summary": "2 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/challenge/",
@@ -515,15 +551,6 @@
       "origin": "",
       "url": "/topics/chatgpt/",
       "topics": ["chatgpt", "Chatgpt"]
-    },
-    {
-      "type": "topic",
-      "title": "check",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/check/",
-      "topics": ["check", "check"]
     },
     {
       "type": "topic",
@@ -560,6 +587,15 @@
       "origin": "",
       "url": "/topics/claude-code/",
       "topics": ["claude-code", "claude-code"]
+    },
+    {
+      "type": "topic",
+      "title": "cli",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/cli/",
+      "topics": ["cli", "cli"]
     },
     {
       "type": "topic",
@@ -614,6 +650,15 @@
       "origin": "",
       "url": "/topics/command/",
       "topics": ["command", "command"]
+    },
+    {
+      "type": "topic",
+      "title": "Communication",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/communication/",
+      "topics": ["communication", "Communication"]
     },
     {
       "type": "topic",
@@ -726,7 +771,7 @@
     {
       "type": "topic",
       "title": "data",
-      "summary": "3 participating sites",
+      "summary": "4 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/data/",
@@ -740,6 +785,15 @@
       "origin": "",
       "url": "/topics/database/",
       "topics": ["database", "databases"]
+    },
+    {
+      "type": "topic",
+      "title": "dawnpatrol.app",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/dawnpatrol-app/",
+      "topics": ["dawnpatrol-app", "dawnpatrol.app"]
     },
     {
       "type": "topic",
@@ -803,6 +857,15 @@
       "origin": "",
       "url": "/topics/docs/",
       "topics": ["docs", "docs"]
+    },
+    {
+      "type": "topic",
+      "title": "dog",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/dog/",
+      "topics": ["dog", "dog"]
     },
     {
       "type": "topic",
@@ -977,21 +1040,21 @@
     },
     {
       "type": "topic",
+      "title": "fonts",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/font/",
+      "topics": ["font", "fonts"]
+    },
+    {
+      "type": "topic",
       "title": "food",
       "summary": "2 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/food/",
       "topics": ["food", "food"]
-    },
-    {
-      "type": "topic",
-      "title": "found",
-      "summary": "2 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/found/",
-      "topics": ["found", "found"]
     },
     {
       "type": "topic",
@@ -1023,7 +1086,7 @@
     {
       "type": "topic",
       "title": "game",
-      "summary": "7 participating sites",
+      "summary": "6 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/game/",
@@ -1037,6 +1100,15 @@
       "origin": "",
       "url": "/topics/game-design/",
       "topics": ["game-design", "game design"]
+    },
+    {
+      "type": "topic",
+      "title": "general",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/general/",
+      "topics": ["general", "general"]
     },
     {
       "type": "topic",
@@ -1082,6 +1154,15 @@
       "origin": "",
       "url": "/topics/green/",
       "topics": ["green", "green"]
+    },
+    {
+      "type": "topic",
+      "title": "gwenthegoblin",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/gwenthegoblin/",
+      "topics": ["gwenthegoblin", "gwenthegoblin"]
     },
     {
       "type": "topic",
@@ -1157,6 +1238,15 @@
     },
     {
       "type": "topic",
+      "title": "indienews",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/indienew/",
+      "topics": ["indienew", "indienews"]
+    },
+    {
+      "type": "topic",
       "title": "indieweb",
       "summary": "1 participating sites",
       "domain": "",
@@ -1221,7 +1311,7 @@
     {
       "type": "topic",
       "title": "job",
-      "summary": "2 participating sites",
+      "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/job/",
@@ -1284,7 +1374,7 @@
     {
       "type": "topic",
       "title": "learning",
-      "summary": "4 participating sites",
+      "summary": "3 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/learning/",
@@ -1382,6 +1472,15 @@
     },
     {
       "type": "topic",
+      "title": "Mcp",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/mcp/",
+      "topics": ["mcp", "Mcp"]
+    },
+    {
+      "type": "topic",
       "title": "means",
       "summary": "2 participating sites",
       "domain": "",
@@ -1406,6 +1505,15 @@
       "origin": "",
       "url": "/topics/media-publishing/",
       "topics": ["media-publishing", "media & publishing"]
+    },
+    {
+      "type": "topic",
+      "title": "Mental-Health",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/mental-health/",
+      "topics": ["mental-health", "Mental-Health"]
     },
     {
       "type": "topic",
@@ -1445,6 +1553,24 @@
     },
     {
       "type": "topic",
+      "title": "misc",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/misc/",
+      "topics": ["misc", "misc"]
+    },
+    {
+      "type": "topic",
+      "title": "miscellaneous",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/miscellaneous/",
+      "topics": ["miscellaneous", "miscellaneous"]
+    },
+    {
+      "type": "topic",
       "title": "mobile",
       "summary": "3 participating sites",
       "domain": "",
@@ -1455,7 +1581,7 @@
     {
       "type": "topic",
       "title": "models",
-      "summary": "1 participating sites",
+      "summary": "2 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/model/",
@@ -1598,6 +1724,15 @@
     },
     {
       "type": "topic",
+      "title": "permanence",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/permanence/",
+      "topics": ["permanence", "permanence"]
+    },
+    {
+      "type": "topic",
       "title": "person",
       "summary": "2 participating sites",
       "domain": "",
@@ -1625,6 +1760,15 @@
     },
     {
       "type": "topic",
+      "title": "php",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/php/",
+      "topics": ["php", "php"]
+    },
+    {
+      "type": "topic",
       "title": "point",
       "summary": "2 participating sites",
       "domain": "",
@@ -1640,6 +1784,15 @@
       "origin": "",
       "url": "/topics/policy/",
       "topics": ["policy", "policy"]
+    },
+    {
+      "type": "topic",
+      "title": "politics",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/politics/",
+      "topics": ["politics", "politics"]
     },
     {
       "type": "topic",
@@ -1667,6 +1820,15 @@
       "origin": "",
       "url": "/topics/privacy-policy/",
       "topics": ["privacy-policy", "privacy policy"]
+    },
+    {
+      "type": "topic",
+      "title": "private",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/private/",
+      "topics": ["private", "private"]
     },
     {
       "type": "topic",
@@ -1698,7 +1860,7 @@
     {
       "type": "topic",
       "title": "programming",
-      "summary": "2 participating sites",
+      "summary": "3 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/programming/",
@@ -1721,6 +1883,15 @@
       "origin": "",
       "url": "/topics/property-real-estate/",
       "topics": ["property-real-estate", "property & real estate"]
+    },
+    {
+      "type": "topic",
+      "title": "python",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/python/",
+      "topics": ["python", "python"]
     },
     {
       "type": "topic",
@@ -1850,12 +2021,12 @@
     },
     {
       "type": "topic",
-      "title": "robots",
+      "title": "Robots",
       "summary": "2 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/robot/",
-      "topics": ["robot", "robots"]
+      "topics": ["robot", "Robots"]
     },
     {
       "type": "topic",
@@ -1986,7 +2157,7 @@
     {
       "type": "topic",
       "title": "social",
-      "summary": "4 participating sites",
+      "summary": "5 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/social/",
@@ -2057,6 +2228,15 @@
     },
     {
       "type": "topic",
+      "title": "star trek",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/star-trek/",
+      "topics": ["star-trek", "star trek"]
+    },
+    {
+      "type": "topic",
       "title": "Startups",
       "summary": "1 participating sites",
       "domain": "",
@@ -2093,6 +2273,15 @@
     },
     {
       "type": "topic",
+      "title": "swim2026",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/swim2026/",
+      "topics": ["swim2026", "swim2026"]
+    },
+    {
+      "type": "topic",
       "title": "tables",
       "summary": "4 participating sites",
       "domain": "",
@@ -2108,15 +2297,6 @@
       "origin": "",
       "url": "/topics/technology/",
       "topics": ["technology", "technology"]
-    },
-    {
-      "type": "topic",
-      "title": "tell",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/tell/",
-      "topics": ["tell", "tell"]
     },
     {
       "type": "topic",
@@ -2243,6 +2423,15 @@
       "origin": "",
       "url": "/topics/water/",
       "topics": ["water", "water"]
+    },
+    {
+      "type": "topic",
+      "title": "webdev",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/webdev/",
+      "topics": ["webdev", "webdev"]
     },
     {
       "type": "topic",
@@ -2557,7 +2746,7 @@
       "domain": "artlung.com",
       "origin": "https://artlung.com",
       "url": "https://artlung.com/blog/2026/10/22/2027-web-platform-ranking/",
-      "topics": [],
+      "topics": ["programming", "webdev"],
       "site_title": "Joe Crawford",
       "published_at": "2026-10-22T08:26:51.000Z",
       "image": "https://artlung.com/blog/wp-content/uploads/og_image_previews/132940.jpg",
@@ -2572,12 +2761,12 @@
       "domain": "artlung.com",
       "origin": "https://artlung.com",
       "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
-      "topics": [],
+      "topics": ["misc", "miscellaneous"],
       "site_title": "Joe Crawford",
-      "published_at": "",
+      "published_at": "2026-10-23T11:56:02.000Z",
       "image": "",
       "image_origin": "",
-      "language": "",
+      "language": "en-us",
       "content_type": "article"
     },
     {
@@ -2587,12 +2776,12 @@
       "domain": "artlung.com",
       "origin": "https://artlung.com",
       "url": "https://artlung.com/blog/2026/10/24/programming-and-dog-walking/",
-      "topics": [],
+      "topics": ["dog", "gwenthegoblin", "PHP", "programming"],
       "site_title": "Joe Crawford",
-      "published_at": "",
+      "published_at": "2026-10-24T22:03:09.000Z",
       "image": "",
       "image_origin": "",
-      "language": "",
+      "language": "en-us",
       "content_type": "article"
     },
     {
@@ -2602,7 +2791,7 @@
       "domain": "artlung.com",
       "origin": "https://artlung.com",
       "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
-      "topics": [],
+      "topics": ["communication", "mental-health"],
       "site_title": "Joe Crawford",
       "published_at": "2026-10-26T13:43:31.000Z",
       "image": "https://artlung.com/blog/wp-content/uploads/og_image_previews/132975.jpg",
@@ -2617,7 +2806,7 @@
       "domain": "artlung.com",
       "origin": "https://artlung.com",
       "url": "https://artlung.com/blog/2026/10/28/novelty-wave/",
-      "topics": [],
+      "topics": ["bodysurfing", "dawnpatrol.app", "swim2026"],
       "site_title": "Joe Crawford",
       "published_at": "2026-10-28T21:00:20.000Z",
       "image": "",
@@ -2632,7 +2821,7 @@
       "domain": "artlung.com",
       "origin": "https://artlung.com",
       "url": "https://artlung.com/blog/2026/10/29/patrick-stewart-rip/",
-      "topics": [],
+      "topics": ["star-trek"],
       "site_title": "Joe Crawford",
       "published_at": "2026-10-29T13:53:15.000Z",
       "image": "",
@@ -2647,7 +2836,7 @@
       "domain": "artlung.com",
       "origin": "https://artlung.com",
       "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
-      "topics": [],
+      "topics": ["california", "general", "history", "permanence", "politics"],
       "site_title": "Joe Crawford",
       "published_at": "2026-11-02T22:49:28.000Z",
       "image": "https://artlung.com/blog/wp-content/uploads/og_image_previews/133013.jpg",
@@ -2662,7 +2851,7 @@
       "domain": "artlung.com",
       "origin": "https://artlung.com",
       "url": "https://artlung.com/blog/2026/11/03/and-shredding/",
-      "topics": [],
+      "topics": ["general", "swim2026"],
       "site_title": "Joe Crawford",
       "published_at": "2026-11-03T16:15:36.000Z",
       "image": "/assets/activity/posters/a5f704c82e275fd530bf5dc7fc5c18b3cace0b58f08f9c04c02286b031ad3e07.webp",
@@ -2919,7 +3108,7 @@
       "url": "https://artlung.com/indienews/",
       "topics": [],
       "site_title": "Joe Crawford",
-      "published_at": "2026-10-31T14:28:27.000Z",
+      "published_at": "",
       "image": "https://cdn.artlung.com/indienews/og-indienews.jpg",
       "image_origin": "https://cdn.artlung.com",
       "language": "en",
@@ -4289,6 +4478,21 @@
       "image_origin": "https://cdn.artlung.com",
       "language": "en",
       "content_type": "project"
+    },
+    {
+      "type": "content",
+      "title": "The Ballmer Peak in the Age of AI Coding",
+      "summary": "Here’s a toast to the way great ideas are born",
+      "domain": "www.chrisminnick.com",
+      "origin": "https://www.chrisminnick.com",
+      "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
+      "topics": [],
+      "site_title": "Chris Minnick",
+      "published_at": "2026-11-03T13:31:11.000Z",
+      "image": "/assets/activity/posters/4e0671778169b1739b59eacd50d3ed957d8eeca30d9371cbaff7ec06761d1eed.webp",
+      "image_origin": "",
+      "language": "",
+      "content_type": "article"
     },
     {
       "type": "content",
@@ -6269,6 +6473,111 @@
       "image_origin": "",
       "language": "en",
       "content_type": "collection"
+    },
+    {
+      "type": "content",
+      "title": "Annotate Archive | Josh Sherman",
+      "summary": "A spoiler-safe social reading app with private circles, progress-gated notes, reactions, predictions, and notifications.",
+      "domain": "joshsherman.dev",
+      "origin": "https://joshsherman.dev",
+      "url": "https://joshsherman.dev/projects/annotate-archive/",
+      "topics": [],
+      "site_title": "Josh Sherman",
+      "published_at": "",
+      "image": "https://joshsherman.dev/og.png",
+      "image_origin": "https://joshsherman.dev",
+      "language": "en",
+      "content_type": "project"
+    },
+    {
+      "type": "content",
+      "title": "Font Creator | Josh Sherman",
+      "summary": "A local tool that converts handwritten glyph sheets into production-ready TTF, OTF, and WOFF2 fonts with optical spacing and QA.",
+      "domain": "joshsherman.dev",
+      "origin": "https://joshsherman.dev",
+      "url": "https://joshsherman.dev/projects/fontcreator/",
+      "topics": [],
+      "site_title": "Josh Sherman",
+      "published_at": "",
+      "image": "https://joshsherman.dev/og.png",
+      "image_origin": "https://joshsherman.dev",
+      "language": "en",
+      "content_type": "project"
+    },
+    {
+      "type": "content",
+      "title": "OCR Screenshot Scraper | Josh Sherman",
+      "summary": "A Python OCR pipeline that extracts, corrects, deduplicates, and merges text from overlapping screenshots using local vision models.",
+      "domain": "joshsherman.dev",
+      "origin": "https://joshsherman.dev",
+      "url": "https://joshsherman.dev/projects/ocr-screenshot-scraper/",
+      "topics": [],
+      "site_title": "Josh Sherman",
+      "published_at": "",
+      "image": "https://joshsherman.dev/og.png",
+      "image_origin": "https://joshsherman.dev",
+      "language": "en",
+      "content_type": "project"
+    },
+    {
+      "type": "content",
+      "title": "OSINT Chainer | Josh Sherman",
+      "summary": "A self-hosted, scope-controlled OSINT orchestrator with CLI, MCP, and web interfaces, auditable evidence, budgets, and adapters.",
+      "domain": "joshsherman.dev",
+      "origin": "https://joshsherman.dev",
+      "url": "https://joshsherman.dev/projects/osint-chainer/",
+      "topics": [],
+      "site_title": "Josh Sherman",
+      "published_at": "",
+      "image": "https://joshsherman.dev/og.png",
+      "image_origin": "https://joshsherman.dev",
+      "language": "en",
+      "content_type": "project"
+    },
+    {
+      "type": "content",
+      "title": "Real Estate Website | Josh Sherman",
+      "summary": "A responsive Austin real-estate website with listing showcases, lead capture, structured data, accessibility, and required disclosures.",
+      "domain": "joshsherman.dev",
+      "origin": "https://joshsherman.dev",
+      "url": "https://joshsherman.dev/projects/real-estate-site/",
+      "topics": [],
+      "site_title": "Josh Sherman",
+      "published_at": "",
+      "image": "https://joshsherman.dev/og.png",
+      "image_origin": "https://joshsherman.dev",
+      "language": "en",
+      "content_type": "project"
+    },
+    {
+      "type": "content",
+      "title": "Spray Paint Tool | Josh Sherman",
+      "summary": "An interactive graffiti wall with velocity-sensitive spray, drip physics, audio, tuning controls, moderated submissions, and a gallery.",
+      "domain": "joshsherman.dev",
+      "origin": "https://joshsherman.dev",
+      "url": "https://joshsherman.dev/projects/spray-paint-tool/",
+      "topics": [],
+      "site_title": "Josh Sherman",
+      "published_at": "",
+      "image": "https://joshsherman.dev/og.png",
+      "image_origin": "https://joshsherman.dev",
+      "language": "en",
+      "content_type": "project"
+    },
+    {
+      "type": "content",
+      "title": "VALORANT Statistics Analyzer | Josh Sherman",
+      "summary": "A Streamlit dashboard comparing VALORANT results with and without a teammate using confidence intervals, trends, and exportable reports.",
+      "domain": "joshsherman.dev",
+      "origin": "https://joshsherman.dev",
+      "url": "https://joshsherman.dev/projects/valorant-stats-analyzer/",
+      "topics": [],
+      "site_title": "Josh Sherman",
+      "published_at": "",
+      "image": "https://joshsherman.dev/og.png",
+      "image_origin": "https://joshsherman.dev",
+      "language": "en",
+      "content_type": "project"
     },
     {
       "type": "content",
@@ -11388,14 +11697,14 @@
     },
     {
       "type": "content",
-      "title": "AI Won’t Tell You You’re Bad",
+      "title": "Untitled",
       "summary": "",
       "domain": "www.chrisminnick.com",
       "origin": "https://www.chrisminnick.com",
       "url": "https://www.youtube.com/watch?v=-LV8ghrRSv8",
       "topics": [],
       "site_title": "Chris Minnick",
-      "published_at": "2026-10-20T19:01:07.000Z",
+      "published_at": "",
       "image": "https://i.ytimg.com/vi/-LV8ghrRSv8/hqdefault.jpg",
       "image_origin": "https://i.ytimg.com",
       "language": "",
@@ -11415,171 +11724,6 @@
       "image_origin": "https://i.ytimg.com",
       "language": "",
       "content_type": "video"
-    },
-    {
-      "type": "content",
-      "title": "Challenge Checkin: Crochet with Arthritis, Morse Code by Ear",
-      "summary": "",
-      "domain": "www.chrisminnick.com",
-      "origin": "https://www.chrisminnick.com",
-      "url": "https://www.youtube.com/watch?v=BJgbX21HEkY",
-      "topics": [],
-      "site_title": "Chris Minnick",
-      "published_at": "2026-11-02T01:39:51.000Z",
-      "image": "https://i.ytimg.com/vi/BJgbX21HEkY/hqdefault.jpg",
-      "image_origin": "https://i.ytimg.com",
-      "language": "",
-      "content_type": "podcast_episode"
-    },
-    {
-      "type": "content",
-      "title": "AI Can’t Replace People",
-      "summary": "",
-      "domain": "www.chrisminnick.com",
-      "origin": "https://www.chrisminnick.com",
-      "url": "https://www.youtube.com/watch?v=bOA4eNEzZHc",
-      "topics": [],
-      "site_title": "Chris Minnick",
-      "published_at": "2026-10-28T19:03:09.000Z",
-      "image": "https://i.ytimg.com/vi/bOA4eNEzZHc/hqdefault.jpg",
-      "image_origin": "https://i.ytimg.com",
-      "language": "",
-      "content_type": "podcast_episode"
-    },
-    {
-      "type": "content",
-      "title": "Should AI Tutors Be Allowed at All?",
-      "summary": "",
-      "domain": "www.chrisminnick.com",
-      "origin": "https://www.chrisminnick.com",
-      "url": "https://www.youtube.com/watch?v=Drr_KEhfckQ",
-      "topics": [],
-      "site_title": "Chris Minnick",
-      "published_at": "2026-10-26T19:03:30.000Z",
-      "image": "https://i.ytimg.com/vi/Drr_KEhfckQ/hqdefault.jpg",
-      "image_origin": "https://i.ytimg.com",
-      "language": "",
-      "content_type": "podcast_episode"
-    },
-    {
-      "type": "content",
-      "title": "AI Helped Their Grades—Then Crushed the Learning",
-      "summary": "",
-      "domain": "www.chrisminnick.com",
-      "origin": "https://www.chrisminnick.com",
-      "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-      "topics": [],
-      "site_title": "Chris Minnick",
-      "published_at": "2026-10-21T19:03:31.000Z",
-      "image": "https://i.ytimg.com/vi/k5sBLhZPzrU/hqdefault.jpg",
-      "image_origin": "https://i.ytimg.com",
-      "language": "",
-      "content_type": "podcast_episode"
-    },
-    {
-      "type": "content",
-      "title": "4 Hours for This Tiny Result?!",
-      "summary": "",
-      "domain": "www.chrisminnick.com",
-      "origin": "https://www.chrisminnick.com",
-      "url": "https://www.youtube.com/watch?v=kF07_Z3ZmXo",
-      "topics": [],
-      "site_title": "Chris Minnick",
-      "published_at": "2026-11-02T18:02:50.000Z",
-      "image": "/assets/activity/posters/cfbca59403c32e91f10fe5e0aea9f66ea5a5c5834a23bdc125a00ebb4382d936.webp",
-      "image_origin": "",
-      "language": "",
-      "content_type": "podcast_episode"
-    },
-    {
-      "type": "content",
-      "title": "This Morse Game Starts at a Brutal 40 WPM",
-      "summary": "",
-      "domain": "www.chrisminnick.com",
-      "origin": "https://www.chrisminnick.com",
-      "url": "https://www.youtube.com/watch?v=Rn8bsZhlDhQ",
-      "topics": [],
-      "site_title": "Chris Minnick",
-      "published_at": "2026-11-03T18:03:27.000Z",
-      "image": "/assets/activity/posters/21c5d0066ee59cb1153184e9aa7c91e769992c38a924fab6f68ca6afc5953b58.webp",
-      "image_origin": "",
-      "language": "",
-      "content_type": "podcast_episode"
-    },
-    {
-      "type": "content",
-      "title": "AI Tutors Steal From Teachers Too",
-      "summary": "",
-      "domain": "www.chrisminnick.com",
-      "origin": "https://www.chrisminnick.com",
-      "url": "https://www.youtube.com/watch?v=s25MA8ol6BI",
-      "topics": [],
-      "site_title": "Chris Minnick",
-      "published_at": "2026-10-25T19:02:54.000Z",
-      "image": "https://i.ytimg.com/vi/s25MA8ol6BI/hqdefault.jpg",
-      "image_origin": "https://i.ytimg.com",
-      "language": "",
-      "content_type": "podcast_episode"
-    },
-    {
-      "type": "content",
-      "title": "Stop Letting AI Do Your Homework",
-      "summary": "",
-      "domain": "www.chrisminnick.com",
-      "origin": "https://www.chrisminnick.com",
-      "url": "https://www.youtube.com/watch?v=V7rPITixtnE",
-      "topics": [],
-      "site_title": "Chris Minnick",
-      "published_at": "2026-10-19T19:02:17.000Z",
-      "image": "https://i.ytimg.com/vi/V7rPITixtnE/hqdefault.jpg",
-      "image_origin": "https://i.ytimg.com",
-      "language": "",
-      "content_type": "podcast_episode"
-    },
-    {
-      "type": "content",
-      "title": "AI Tutors Won’t Tell You You Stink",
-      "summary": "",
-      "domain": "www.chrisminnick.com",
-      "origin": "https://www.chrisminnick.com",
-      "url": "https://www.youtube.com/watch?v=vitTt7vtPXg",
-      "topics": [],
-      "site_title": "Chris Minnick",
-      "published_at": "2026-10-22T19:02:35.000Z",
-      "image": "https://i.ytimg.com/vi/vitTt7vtPXg/hqdefault.jpg",
-      "image_origin": "https://i.ytimg.com",
-      "language": "",
-      "content_type": "podcast_episode"
-    },
-    {
-      "type": "content",
-      "title": "Your Obsession Isn’t the Problem",
-      "summary": "",
-      "domain": "www.chrisminnick.com",
-      "origin": "https://www.chrisminnick.com",
-      "url": "https://www.youtube.com/watch?v=xJPTvYvZiZM",
-      "topics": [],
-      "site_title": "Chris Minnick",
-      "published_at": "2026-10-18T17:03:20.000Z",
-      "image": "https://i.ytimg.com/vi/xJPTvYvZiZM/hqdefault.jpg",
-      "image_origin": "https://i.ytimg.com",
-      "language": "",
-      "content_type": "podcast_episode"
-    },
-    {
-      "type": "content",
-      "title": "Use AI to Crush Job Interviews",
-      "summary": "",
-      "domain": "www.chrisminnick.com",
-      "origin": "https://www.chrisminnick.com",
-      "url": "https://www.youtube.com/watch?v=Zv4zeOOOSKk",
-      "topics": [],
-      "site_title": "Chris Minnick",
-      "published_at": "2026-10-27T19:03:39.000Z",
-      "image": "https://i.ytimg.com/vi/Zv4zeOOOSKk/hqdefault.jpg",
-      "image_origin": "https://i.ytimg.com",
-      "language": "",
-      "content_type": "podcast_episode"
     }
   ]
 }

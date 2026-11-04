@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T17:18:01.392Z",
-  "community_count": 625,
+  "generated_at": "2026-11-04T18:19:19.608Z",
+  "community_count": 638,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
@@ -184,8 +184,8 @@
         }
       ],
       "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T17:18:01.392Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -571,6 +571,11 @@
           "title": "Chris Minnick",
           "membership": "heuristic",
           "pages": [
+            {
+              "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
+              "title": "",
+              "source": "catalog-match"
+            },
             {
               "url": "https://www.chrisminnick.com/books/a-developers-guide-to-integrating-generative-ai-into-applications/",
               "title": "",
@@ -1557,72 +1562,6 @@
       ]
     },
     {
-      "slug": "archive",
-      "label": "archive",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://artlung.com",
-          "domain": "artlung.com",
-          "title": "Joe Crawford",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://artlung.com/blog/2025/02/18/experimenting-with-new-pages/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2026/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2026/11/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2026/11/03/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuadrake.org/projects/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T17:18:01.392Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
-    },
-    {
       "slug": "art",
       "label": "art",
       "member_count": 2,
@@ -1654,7 +1593,7 @@
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2024/11/25/spite-sanity-one-sheet/",
+              "url": "https://artlung.com/blog/2026/10/19/be-indieweb-enough/",
               "title": "",
               "source": "visible-text"
             }
@@ -2169,7 +2108,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -2180,7 +2119,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "august",
@@ -2820,6 +2759,78 @@
       "active": true
     },
     {
+      "slug": "beautiful",
+      "label": "beautiful",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/25/surfer-plankton-worrisome/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/now/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshozuna.com",
+          "domain": "joshozuna.com",
+          "title": "Josh Ozuna",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshozuna.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshozuna.com/photo/expansive-mountain-prairie-sky-35mm",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshozuna.com/photo/magnolia-building-35mm",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshozuna.com/photo/yucca-white-sands-desert-plant-35mm",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": ["visible-text"],
+      "first_seen_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "active": true
+    },
+    {
       "slug": "become",
       "label": "becomes",
       "member_count": 3,
@@ -3298,22 +3309,22 @@
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2025/02/18/experimenting-with-new-pages/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2026/08/22/handgun-discussed-handgun-lost/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://artlung.com/blog/2026/09/27/1954-board-stoke/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/now/",
+              "url": "https://artlung.com/blog/2026/10/27/novelty-wave-ob/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/28/novelty-wave/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
               "title": "",
               "source": "visible-text"
             }
@@ -3354,8 +3365,8 @@
         }
       ],
       "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T17:18:01.392Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -3459,9 +3470,9 @@
         "topic-hub:page"
       ],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "blue",
@@ -3633,6 +3644,30 @@
       "sources": ["topic-hub:page"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "active": true
+    },
+    {
+      "slug": "bodysurfing",
+      "label": "bodysurfing",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/10/28/novelty-wave/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        }
+      ],
+      "sources": ["rss:category"],
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -4298,9 +4333,9 @@
         "visible-text"
       ],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "business",
@@ -4447,7 +4482,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -4472,7 +4507,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "california",
@@ -4483,32 +4518,12 @@
           "origin": "https://artlung.com",
           "domain": "artlung.com",
           "title": "Joe Crawford",
-          "membership": "heuristic",
+          "membership": "declared",
           "pages": [
             {
-              "url": "https://artlung.com/about/",
+              "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
               "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/art/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2020/09/28/anita-doesnt-like-her-picture-taken-webcomic-robomerman/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2024/09/24/actually-everything-is-healthcare/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2026/10/22/johnny-5-new-bot-day/",
-              "title": "",
-              "source": "visible-text"
+              "source": "rss:category"
             }
           ]
         },
@@ -4546,7 +4561,7 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": ["rss:category", "visible-text"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
       "last_changed_at": "2026-11-04T04:52:56.701Z",
       "active": true
@@ -4744,6 +4759,11 @@
               "url": "https://forwardbias.dev/tags/",
               "title": "",
               "source": "topic-hub:link"
+            },
+            {
+              "url": "https://forwardbias.dev/tags/career/",
+              "title": "",
+              "source": "topic-hub:page"
             }
           ]
         },
@@ -5057,9 +5077,9 @@
         "topic-hub:page"
       ],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "charity-nonprofit",
@@ -5152,106 +5172,6 @@
           "origin": "https://www.chrisminnick.com",
           "domain": "www.chrisminnick.com",
           "title": "Chris Minnick",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
-    },
-    {
-      "slug": "check",
-      "label": "check",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://artlung.com",
-          "domain": "artlung.com",
-          "title": "Joe Crawford",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://artlung.com/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2020/04/03/star-trek-conventions/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2023/10/26/ai-artificial-intelligence-is-not-that/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2026/10/22/2027-web-platform-ranking/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshghent.com",
-          "domain": "joshghent.com",
-          "title": "Josh Ghent",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshghent.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/created-my-own-status-page/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/groundwork/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/how-i-build-products-with-ai/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/php2shell-overreaction/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T09:47:24.987Z",
-      "last_changed_at": "2026-11-04T09:47:24.987Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshcox.co.uk",
-          "domain": "joshcox.co.uk",
-          "title": "Josh Cox",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshuastuebner.com",
-          "domain": "joshuastuebner.com",
-          "title": "Joshua Stübner",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
@@ -5452,7 +5372,7 @@
       ],
       "sources": ["catalog-match", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -5463,7 +5383,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "civic",
@@ -5613,6 +5533,30 @@
       "sources": ["article:tag"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "active": true
+    },
+    {
+      "slug": "classicbot-toy",
+      "label": "classicbot_toy",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/11/03/ibot-g3-2018/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        }
+      ],
+      "sources": ["rss:category"],
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -5979,7 +5923,7 @@
       ],
       "sources": ["article:tag", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -6368,8 +6312,21 @@
     {
       "slug": "communication",
       "label": "Communication",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        },
         {
           "origin": "https://joshghent.com",
           "domain": "joshghent.com",
@@ -6430,9 +6387,14 @@
           ]
         }
       ],
-      "sources": ["article:tag", "topic-hub:page", "visible-text"],
+      "sources": [
+        "article:tag",
+        "rss:category",
+        "topic-hub:page",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-30T14:08:13.355Z",
-      "last_changed_at": "2026-11-04T07:49:40.771Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -6571,7 +6533,7 @@
       ],
       "sources": ["catalog-match", "microformat:p-category", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -6596,7 +6558,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "company",
@@ -6620,17 +6582,17 @@
               "source": "visible-text"
             },
             {
+              "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
               "url": "https://artlung.com/blog/2026/11/",
               "title": "",
               "source": "visible-text"
             },
             {
               "url": "https://artlung.com/blog/2026/11/01/robot-number-3991/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/page/2/",
               "title": "",
               "source": "visible-text"
             }
@@ -7257,6 +7219,30 @@
       "active": true
     },
     {
+      "slug": "corgi",
+      "label": "corgi",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/10/24/sunny-day-shade-corgi/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        }
+      ],
+      "sources": ["rss:category"],
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
+      "active": true
+    },
+    {
       "slug": "covid-19",
       "label": "covid 19",
       "member_count": 1,
@@ -7561,7 +7547,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -7717,11 +7703,16 @@
               "url": "https://forwardbias.dev/tags/",
               "title": "",
               "source": "topic-hub:link"
+            },
+            {
+              "url": "https://forwardbias.dev/tags/creative-process/",
+              "title": "",
+              "source": "topic-hub:page"
             }
           ]
         }
       ],
-      "sources": ["topic-hub:link"],
+      "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-11-02T08:07:50.158Z",
       "last_changed_at": "2026-11-02T08:07:50.158Z",
       "active": true
@@ -7767,22 +7758,22 @@
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/bio/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2024/11/14/ive-done-20-of-these-css-battle-videos-now/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://artlung.com/blog/2026/10/22/2027-web-platform-ranking/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/now/",
+              "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/29/patrick-stewart-rip/",
               "title": "",
               "source": "visible-text"
             }
@@ -8331,6 +8322,30 @@
       ]
     },
     {
+      "slug": "dawnpatrol-app",
+      "label": "dawnpatrol.app",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/10/28/novelty-wave/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        }
+      ],
+      "sources": ["rss:category"],
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
+      "active": true
+    },
+    {
       "slug": "death",
       "label": "Death",
       "member_count": 2,
@@ -8476,9 +8491,9 @@
       ],
       "sources": ["article:tag", "topic-hub:link"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "democracy",
@@ -9276,7 +9291,7 @@
       ],
       "sources": ["microformat:p-category", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -9628,6 +9643,30 @@
       ]
     },
     {
+      "slug": "dog",
+      "label": "dog",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/10/24/programming-and-dog-walking/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        }
+      ],
+      "sources": ["rss:category"],
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
+      "active": true
+    },
+    {
       "slug": "dogs",
       "label": "dogs",
       "member_count": 1,
@@ -9958,7 +9997,7 @@
       ],
       "sources": ["article:tag", "catalog-match"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -10435,6 +10474,31 @@
               "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
               "title": "",
               "source": "catalog-match"
+            },
+            {
+              "url": "https://artlung.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/22/johnny-5-new-bot-day/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
+              "title": "",
+              "source": "visible-text"
             }
           ]
         },
@@ -11473,7 +11537,7 @@
       ],
       "sources": ["article:tag", "microformat:p-category"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -11505,7 +11569,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "fascism",
@@ -11761,12 +11825,12 @@
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2025/02/18/experimenting-with-new-pages/",
+              "url": "https://artlung.com/blog/2026/01/25/pb-today/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2026/01/25/pb-today/",
+              "url": "https://artlung.com/blog/2026/10/19/be-indieweb-enough/",
               "title": "",
               "source": "visible-text"
             },
@@ -12336,8 +12400,26 @@
     {
       "slug": "font",
       "label": "fonts",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshsherman.dev",
+          "domain": "joshsherman.dev",
+          "title": "Josh Sherman",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshsherman.dev/projects/fontcreator/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshsherman.dev/projects/fontcreator/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
         {
           "origin": "https://www.joshfinnie.com",
           "domain": "www.joshfinnie.com",
@@ -12357,9 +12439,14 @@
           ]
         }
       ],
-      "sources": ["article:tag", "topic-hub:link"],
+      "sources": [
+        "article:tag",
+        "catalog-match",
+        "topic-hub:link",
+        "visible-text"
+      ],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -12465,113 +12552,6 @@
       "first_seen_at": "2026-10-12T18:51:53.092Z",
       "last_changed_at": "2026-10-12T18:51:53.092Z",
       "active": true
-    },
-    {
-      "slug": "found",
-      "label": "found",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://artlung.com",
-          "domain": "artlung.com",
-          "title": "Joe Crawford",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://artlung.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/art/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2023/10/26/ai-artificial-intelligence-is-not-that/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2025/02/18/experimenting-with-new-pages/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2026/09/27/1954-board-stoke/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/25/firefox-is-quietly-making-the-web-more-capable/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T09:47:24.987Z",
-      "last_changed_at": "2026-11-04T09:47:24.987Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshghent.com",
-          "domain": "joshghent.com",
-          "title": "Josh Ghent",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshmuller.ca",
-          "domain": "joshmuller.ca",
-          "title": "Josh Müller",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshua.seigler.net",
-          "domain": "joshua.seigler.net",
-          "title": "Joshua Seigler",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://www.chrisminnick.com",
-          "domain": "www.chrisminnick.com",
-          "title": "Chris Minnick",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
     },
     {
       "slug": "free",
@@ -13319,6 +13299,107 @@
       ]
     },
     {
+      "slug": "general",
+      "label": "general",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/10/31/a-fine-way-to-occupy-a-saturday-morn/",
+              "title": "",
+              "source": "rss:category"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
+              "title": "",
+              "source": "rss:category"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/02/windy-and-fun/",
+              "title": "",
+              "source": "rss:category"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/03/and-shredding/",
+              "title": "",
+              "source": "rss:category"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/03/ibot-g3-2018/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/05/most-of-prop-1-is-a-loan-the-general-budget-pays-back-with-interest/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/12/prop-38-borrows-for-immune-research-and-takes-a-cut-if-a-drug-pays-off/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/14/prop-2-lets-the-rainy-day-fund-grow-taller-it-does-not-fill-the-jar/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/10/prop-5-still-asks-whether-to-fire-an-official-it-stops-asking-who-replaces-them/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/11/prop-43-would-make-some-local-taxes-need-two-yes-votes-for-every-no/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/12/prop-38-borrows-for-immune-research-and-takes-a-cut-if-a-drug-pays-off/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/13/prop-44s-90-percent-starts-on-a-clinics-tax-form-not-in-the-exam-room/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/14/prop-2-lets-the-rainy-day-fund-grow-taller-it-does-not-fill-the-jar/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": ["catalog-match", "rss:category", "visible-text"],
+      "first_seen_at": "2026-11-03T09:57:38.457Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://www.joshcanhelp.com",
+          "domain": "www.joshcanhelp.com",
+          "title": "Josh Cunningham",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
+    },
+    {
       "slug": "generator",
       "label": "generator",
       "member_count": 2,
@@ -13617,7 +13698,7 @@
       ],
       "sources": ["article:tag", "catalog-match", "topic-hub:link"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -14149,6 +14230,40 @@
       "active": true
     },
     {
+      "slug": "gwenthegoblin",
+      "label": "gwenthegoblin",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/10/22/gwenthegoblin-pumpkin/",
+              "title": "",
+              "source": "rss:category"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/24/programming-and-dog-walking/",
+              "title": "",
+              "source": "rss:category"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/24/sunny-day-shade-corgi/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        }
+      ],
+      "sources": ["rss:category"],
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
+      "active": true
+    },
+    {
       "slug": "habeas-corpus",
       "label": "Habeas-Corpus",
       "member_count": 1,
@@ -14595,6 +14710,30 @@
       "active": true
     },
     {
+      "slug": "hellokellykuhl",
+      "label": "hellokellykuhl",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/10/22/johnny-5-new-bot-day/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        }
+      ],
+      "sources": ["rss:category"],
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
+      "active": true
+    },
+    {
       "slug": "heroku",
       "label": "heroku",
       "member_count": 1,
@@ -14626,8 +14765,21 @@
     {
       "slug": "history",
       "label": "History",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        },
         {
           "origin": "https://joshmuller.ca",
           "domain": "joshmuller.ca",
@@ -14708,9 +14860,9 @@
           ]
         }
       ],
-      "sources": ["article:tag", "visible-text"],
+      "sources": ["article:tag", "rss:category", "visible-text"],
       "first_seen_at": "2026-11-01T10:42:20.299Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T04:52:56.701Z",
       "active": true,
       "related_discoveries": [
         {
@@ -14720,8 +14872,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      ]
     },
     {
       "slug": "holy-week",
@@ -15034,41 +15185,8 @@
     {
       "slug": "human",
       "label": "human",
-      "member_count": 3,
+      "member_count": 2,
       "sites": [
-        {
-          "origin": "https://artlung.com",
-          "domain": "artlung.com",
-          "title": "Joe Crawford",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://artlung.com/blog/2023/10/26/ai-artificial-intelligence-is-not-that/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2026/10/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/page/2/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/colophon/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
         {
           "origin": "https://joshmuller.ca",
           "domain": "joshmuller.ca",
@@ -15138,9 +15256,16 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T07:49:40.771Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -15183,7 +15308,8 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ]
+      ],
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "humanism",
@@ -15374,7 +15500,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -15448,7 +15574,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "immigration",
@@ -15714,9 +15840,33 @@
       ],
       "sources": ["article:tag", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
+    },
+    {
+      "slug": "indienew",
+      "label": "indienews",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/10/19/be-indieweb-enough/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        }
+      ],
+      "sources": ["rss:category"],
+      "first_seen_at": "2026-11-03T09:57:38.457Z",
+      "last_changed_at": "2026-11-03T09:57:38.457Z",
+      "active": true
     },
     {
       "slug": "indieweb",
@@ -15727,32 +15877,12 @@
           "origin": "https://artlung.com",
           "domain": "artlung.com",
           "title": "Joe Crawford",
-          "membership": "heuristic",
+          "membership": "declared",
           "pages": [
             {
-              "url": "https://artlung.com/",
+              "url": "https://artlung.com/blog/2026/10/19/be-indieweb-enough/",
               "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/bio/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2025/02/18/experimenting-with-new-pages/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/now/",
-              "title": "",
-              "source": "visible-text"
+              "source": "rss:category"
             }
           ]
         },
@@ -15844,8 +15974,8 @@
       "sources": [
         "article:tag",
         "microformat:p-category",
-        "topic-hub:link",
-        "visible-text"
+        "rss:category",
+        "topic-hub:link"
       ],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
@@ -16139,7 +16269,7 @@
       ],
       "sources": ["article:tag", "catalog-match", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -16673,7 +16803,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -16684,7 +16814,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "jekyll",
@@ -17045,101 +17175,6 @@
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
       "active": true
-    },
-    {
-      "slug": "json",
-      "label": "json",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://artlung.com",
-          "domain": "artlung.com",
-          "title": "Joe Crawford",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://artlung.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2025/05/06/110-css-battle/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2026/04/07/hello-human-json/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/colophon/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://www.joshfinnie.com",
-          "domain": "www.joshfinnie.com",
-          "title": "Josh Finnie",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://www.joshfinnie.com/blog/from-eslint-and-prettier-to-biome/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-week-one-bragboard/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-week-three-noshowfixer/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T07:49:40.771Z",
-      "last_changed_at": "2026-11-04T07:49:40.771Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshuastuebner.com",
-          "domain": "joshuastuebner.com",
-          "title": "Joshua Stübner",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://www.joshcanhelp.com",
-          "domain": "www.joshcanhelp.com",
-          "title": "Josh Cunningham",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
     },
     {
       "slug": "json-ld",
@@ -17900,8 +17935,41 @@
     {
       "slug": "learn",
       "label": "learn",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://artlung.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/02/windy-and-fun/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/03/and-shredding/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/03/ibot-g3-2018/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
         {
           "origin": "https://joshghent.com",
           "domain": "joshghent.com",
@@ -17971,16 +18039,9 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-04T09:47:24.987Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
-        {
-          "origin": "https://artlung.com",
-          "domain": "artlung.com",
-          "title": "Joe Crawford",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
         {
           "origin": "https://www.chrisminnick.com",
           "domain": "www.chrisminnick.com",
@@ -18190,7 +18251,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-10-30T14:08:13.355Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -18508,7 +18569,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -18533,7 +18594,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "lets-20encrypt",
@@ -18642,7 +18703,7 @@
       ],
       "sources": ["article:tag", "topic-hub:link", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -18660,7 +18721,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "lifestyle",
@@ -18819,7 +18880,7 @@
       ],
       "sources": ["article:tag", "catalog-match", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -19451,7 +19512,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-01T23:37:56.256Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -19490,7 +19551,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "machine-learning",
@@ -19583,7 +19644,7 @@
         "microformat:p-category"
       ],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -19822,7 +19883,16 @@
       "sources": ["article:tag", "topic-hub:link", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "matter",
@@ -20200,8 +20270,8 @@
         }
       ],
       "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T17:18:01.392Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -20354,8 +20424,21 @@
     {
       "slug": "mental-health",
       "label": "Mental-Health",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -20388,9 +20471,9 @@
           ]
         }
       ],
-      "sources": ["article:tag", "microformat:p-category"],
+      "sources": ["article:tag", "microformat:p-category", "rss:category"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
-      "last_changed_at": "2026-11-04T07:49:40.771Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -20600,9 +20683,9 @@
       ],
       "sources": ["article:tag", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "micro-software",
@@ -20787,6 +20870,54 @@
       "sources": ["article:tag"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "active": true
+    },
+    {
+      "slug": "misc",
+      "label": "misc",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        }
+      ],
+      "sources": ["rss:category"],
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
+      "active": true
+    },
+    {
+      "slug": "miscellaneous",
+      "label": "miscellaneous",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        }
+      ],
+      "sources": ["rss:category"],
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -21189,7 +21320,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -21221,7 +21352,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "music",
@@ -21639,7 +21770,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -21685,7 +21816,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "news",
@@ -21743,7 +21874,7 @@
       ],
       "sources": ["article:tag"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -21754,7 +21885,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "nextj",
@@ -22165,17 +22296,17 @@
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2024/11/14/ive-done-20-of-these-css-battle-videos-now/",
+              "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2024/11/25/spite-sanity-one-sheet/",
+              "url": "https://artlung.com/blog/2026/11/02/windy-and-fun/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2026/11/01/robot-number-3991/",
+              "url": "https://artlung.com/blog/2026/11/03/and-shredding/",
               "title": "",
               "source": "visible-text"
             },
@@ -22221,8 +22352,8 @@
         }
       ],
       "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T17:18:01.392Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -22442,22 +22573,22 @@
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2006/10/05/the-new-google-reader/",
+              "url": "https://artlung.com/blog/2026/10/27/novelty-wave-ob/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2023/10/26/ai-artificial-intelligence-is-not-that/",
+              "url": "https://artlung.com/blog/2026/10/28/novelty-wave/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2026/10/22/2027-web-platform-ranking/",
+              "url": "https://artlung.com/blog/2026/10/29/patrick-stewart-rip/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2026/10/22/johnny-5-new-bot-day/",
+              "url": "https://artlung.com/blog/2026/10/31/a-fine-way-to-occupy-a-saturday-morn/",
               "title": "",
               "source": "visible-text"
             }
@@ -22812,7 +22943,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -23388,7 +23519,7 @@
       ],
       "sources": ["catalog-match", "microformat:p-category"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -23589,7 +23720,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -23600,7 +23731,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "pebble",
@@ -23624,6 +23755,30 @@
       "sources": ["topic-hub:page"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "active": true
+    },
+    {
+      "slug": "permanence",
+      "label": "permanence",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        }
+      ],
+      "sources": ["rss:category"],
+      "first_seen_at": "2026-11-03T09:57:38.457Z",
+      "last_changed_at": "2026-11-04T04:52:56.701Z",
       "active": true
     },
     {
@@ -23700,7 +23855,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -23753,7 +23908,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "personal-data",
@@ -23975,7 +24130,7 @@
       ],
       "sources": ["catalog-match"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -23993,7 +24148,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "photos",
@@ -24127,8 +24282,21 @@
     {
       "slug": "php",
       "label": "php",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/10/24/programming-and-dog-walking/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        },
         {
           "origin": "https://joshghent.com",
           "domain": "joshghent.com",
@@ -24176,9 +24344,9 @@
           ]
         }
       ],
-      "sources": ["topic-hub:link", "visible-text"],
+      "sources": ["rss:category", "topic-hub:link", "visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-11-04T07:49:40.771Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -24514,8 +24682,26 @@
     {
       "slug": "politics",
       "label": "politics",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/10/19/be-indieweb-enough/",
+              "title": "",
+              "source": "rss:category"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        },
         {
           "origin": "https://joshuapsteele.com",
           "domain": "joshuapsteele.com",
@@ -24613,9 +24799,9 @@
           ]
         }
       ],
-      "sources": ["article:tag"],
+      "sources": ["article:tag", "rss:category"],
       "first_seen_at": "2026-11-01T23:37:56.256Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T04:52:56.701Z",
       "active": true,
       "related_discoveries": [
         {
@@ -24625,8 +24811,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      ]
     },
     {
       "slug": "posse",
@@ -24815,6 +25000,13 @@
       "last_changed_at": "2026-11-03T21:44:42.327Z",
       "active": true,
       "related_discoveries": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
         {
           "origin": "https://joshuadrake.org",
           "domain": "joshuadrake.org",
@@ -25506,8 +25698,26 @@
     {
       "slug": "programming",
       "label": "programming",
-      "member_count": 4,
+      "member_count": 5,
       "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/10/22/2027-web-platform-ranking/",
+              "title": "",
+              "source": "rss:category"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/24/programming-and-dog-walking/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        },
         {
           "origin": "https://joshghent.com",
           "domain": "joshghent.com",
@@ -25631,18 +25841,16 @@
           ]
         }
       ],
-      "sources": ["article:tag", "microformat:p-category", "visible-text"],
+      "sources": [
+        "article:tag",
+        "microformat:p-category",
+        "rss:category",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
-      "last_changed_at": "2026-11-04T07:49:40.771Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
-        {
-          "origin": "https://artlung.com",
-          "domain": "artlung.com",
-          "title": "Joe Crawford",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -26666,7 +26874,7 @@
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2024/10/29/going-to-concerts/",
+              "url": "https://artlung.com/blog/2026/10/19/be-indieweb-enough/",
               "title": "",
               "source": "visible-text"
             },
@@ -26717,8 +26925,8 @@
         }
       ],
       "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T17:18:01.392Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -27190,7 +27398,7 @@
       ],
       "sources": ["article:tag", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -27417,7 +27625,7 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://artlung.com/blog/2024/09/24/actually-everything-is-healthcare/",
+              "url": "https://artlung.com/blog/2026/10/19/be-indieweb-enough/",
               "title": "",
               "source": "visible-text"
             },
@@ -27427,12 +27635,12 @@
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2026/11/",
+              "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2026/11/03/",
+              "url": "https://artlung.com/blog/2026/10/29/patrick-stewart-rip/",
               "title": "",
               "source": "visible-text"
             },
@@ -27478,8 +27686,8 @@
         }
       ],
       "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T17:18:01.392Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -28237,7 +28445,7 @@
         "topic-hub:page"
       ],
       "first_seen_at": "2026-10-12T18:51:53.092Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -28448,39 +28656,29 @@
     },
     {
       "slug": "robot",
-      "label": "robots",
+      "label": "Robots",
       "member_count": 2,
       "sites": [
         {
           "origin": "https://artlung.com",
           "domain": "artlung.com",
           "title": "Joe Crawford",
-          "membership": "heuristic",
+          "membership": "declared",
           "pages": [
-            {
-              "url": "https://artlung.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/about/",
-              "title": "",
-              "source": "visible-text"
-            },
             {
               "url": "https://artlung.com/blog/2026/10/22/johnny-5-new-bot-day/",
               "title": "",
-              "source": "visible-text"
+              "source": "rss:category"
             },
             {
               "url": "https://artlung.com/blog/2026/11/01/robot-number-3991/",
               "title": "",
-              "source": "visible-text"
+              "source": "rss:category"
             },
             {
               "url": "https://artlung.com/blog/2026/11/03/ibot-g3-2018/",
               "title": "",
-              "source": "visible-text"
+              "source": "rss:category"
             }
           ]
         },
@@ -28518,7 +28716,7 @@
           ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": ["rss:category", "visible-text"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
       "active": true,
@@ -29144,12 +29342,12 @@
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2024/10/29/going-to-concerts/",
+              "url": "https://artlung.com/blog/2026/08/22/handgun-discussed-handgun-lost/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2026/08/22/handgun-discussed-handgun-lost/",
+              "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
               "title": "",
               "source": "visible-text"
             },
@@ -29176,7 +29374,7 @@
       ],
       "sources": ["catalog-match", "microformat:p-category", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -30097,7 +30295,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -30129,7 +30327,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "setup",
@@ -30278,9 +30476,9 @@
       ],
       "sources": ["article:tag", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "simple",
@@ -30653,7 +30851,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-01T23:37:56.256Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -30678,7 +30876,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "social-justice",
@@ -31637,7 +31835,7 @@
       ],
       "sources": ["article:tag", "catalog-match", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -31763,7 +31961,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -31788,7 +31986,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "space",
@@ -31880,6 +32078,30 @@
       "sources": ["microformat:p-category"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "active": true
+    },
+    {
+      "slug": "sploot",
+      "label": "sploot",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/10/24/sunny-day-shade-corgi/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        }
+      ],
+      "sources": ["rss:category"],
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -32032,27 +32254,12 @@
           "origin": "https://artlung.com",
           "domain": "artlung.com",
           "title": "Joe Crawford",
-          "membership": "heuristic",
+          "membership": "declared",
           "pages": [
-            {
-              "url": "https://artlung.com/blog/2020/04/03/star-trek-conventions/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2026/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2026/10/",
-              "title": "",
-              "source": "visible-text"
-            },
             {
               "url": "https://artlung.com/blog/2026/10/29/patrick-stewart-rip/",
               "title": "",
-              "source": "visible-text"
+              "source": "rss:category"
             }
           ]
         },
@@ -32070,9 +32277,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "visible-text"],
+      "sources": ["microformat:p-category", "rss:category"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -32353,9 +32560,9 @@
       ],
       "sources": ["atom:category", "json-feed:tag"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "stripe",
@@ -32453,6 +32660,51 @@
         "broader": [],
         "related": ["privacy"]
       }
+    },
+    {
+      "slug": "swim2026",
+      "label": "swim2026",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/10/27/novelty-wave-ob/",
+              "title": "",
+              "source": "rss:category"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/28/novelty-wave/",
+              "title": "",
+              "source": "rss:category"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/31/a-fine-way-to-occupy-a-saturday-morn/",
+              "title": "",
+              "source": "rss:category"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/02/windy-and-fun/",
+              "title": "",
+              "source": "rss:category"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/03/and-shredding/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        }
+      ],
+      "sources": ["rss:category"],
+      "first_seen_at": "2026-11-03T09:57:38.457Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
+      "active": true,
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "table",
@@ -33414,7 +33666,7 @@
       ],
       "sources": ["microformat:p-category", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -33591,9 +33843,9 @@
       ],
       "sources": ["article:tag", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-11-01T10:42:20.299Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "tweet",
@@ -33668,6 +33920,31 @@
               "url": "https://artlung.com/twitter/",
               "title": "",
               "source": "catalog-match"
+            },
+            {
+              "url": "https://artlung.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2013/07/01/adieu-google-reader/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/19/be-indieweb-enough/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
+              "title": "",
+              "source": "visible-text"
             }
           ]
         },
@@ -33712,7 +33989,8 @@
         "article:tag",
         "catalog-match",
         "topic-hub:link",
-        "topic-hub:page"
+        "topic-hub:page",
+        "visible-text"
       ],
       "first_seen_at": "2026-10-22T18:33:03.284Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
@@ -34415,6 +34693,50 @@
       "active": true
     },
     {
+      "slug": "via-instagram",
+      "label": "via-instagram",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/10/27/novelty-wave-ob/",
+              "title": "",
+              "source": "rss:category"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/31/a-fine-way-to-occupy-a-saturday-morn/",
+              "title": "",
+              "source": "rss:category"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/01/robot-number-3991/",
+              "title": "",
+              "source": "rss:category"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/02/windy-and-fun/",
+              "title": "",
+              "source": "rss:category"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/03/ibot-g3-2018/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        }
+      ],
+      "sources": ["rss:category"],
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
+      "active": true
+    },
+    {
       "slug": "video",
       "label": "video",
       "member_count": 4,
@@ -34479,7 +34801,7 @@
       ],
       "sources": ["catalog-match", "topic-hub:page"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -34525,7 +34847,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "video-game",
@@ -34803,12 +35125,12 @@
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2026/08/22/handgun-discussed-handgun-lost/",
+              "url": "https://artlung.com/blog/2026/10/25/surfer-plankton-worrisome/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2026/11/",
+              "url": "https://artlung.com/blog/2026/10/28/novelty-wave/",
               "title": "",
               "source": "visible-text"
             },
@@ -34854,8 +35176,8 @@
         }
       ],
       "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T17:18:01.392Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -35145,6 +35467,30 @@
       "active": true
     },
     {
+      "slug": "webdev",
+      "label": "webdev",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/10/22/2027-web-platform-ranking/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        }
+      ],
+      "sources": ["rss:category"],
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
+      "active": true
+    },
+    {
       "slug": "webgl",
       "label": "webgl",
       "member_count": 1,
@@ -35275,7 +35621,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -35300,7 +35646,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "weightlifting",
@@ -35421,6 +35767,11 @@
           "membership": "heuristic",
           "pages": [
             {
+              "url": "https://artlung.com/wordpress/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
               "url": "https://artlung.com/about/",
               "title": "",
               "source": "visible-text"
@@ -35512,7 +35863,12 @@
           ]
         }
       ],
-      "sources": ["article:tag", "topic-hub:link", "visible-text"],
+      "sources": [
+        "article:tag",
+        "catalog-match",
+        "topic-hub:link",
+        "visible-text"
+      ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
       "active": true,
@@ -35558,7 +35914,7 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshternet.org/implement/platforms/hugo/",
+              "url": "https://joshternet.org/implement/platforms/jekyll/",
               "title": "",
               "source": "visible-text"
             }
@@ -35599,8 +35955,8 @@
         }
       ],
       "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T17:18:01.392Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -35620,22 +35976,22 @@
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2023/10/26/ai-artificial-intelligence-is-not-that/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2026/01/25/pb-today/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2026/10/22/2027-web-platform-ranking/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://artlung.com/blog/2026/10/22/johnny-5-new-bot-day/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
               "title": "",
               "source": "visible-text"
             }
@@ -36012,17 +36368,17 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://artlung.com/blog/2026/",
+              "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2026/10/",
+              "url": "https://artlung.com/blog/2026/10/24/programming-and-dog-walking/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2026/10/22/2027-web-platform-ranking/",
+              "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
               "title": "",
               "source": "visible-text"
             },
@@ -36073,8 +36429,8 @@
         }
       ],
       "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T17:18:01.392Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -36322,7 +36678,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-11-04T17:18:01.392Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -36368,7 +36724,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-04T17:18:01.392Z"
+      "stale_since": "2026-11-04T18:19:19.608Z"
     },
     {
       "slug": "writing-publishing",

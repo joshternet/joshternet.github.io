@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T17:18:01.392Z",
+  "generated_at": "2026-11-04T18:19:19.608Z",
   "edge_count": 29,
   "edges": [
     {
@@ -359,29 +359,22 @@
       ]
     },
     {
-      "from": "https://joshternet.org",
-      "to": "https://artlung.com",
+      "from": "https://joshsherman.dev",
+      "to": "https://joshternet.org",
       "relation": "homepage-link",
       "directed": true,
       "source": "content",
-      "href": "https://artlung.com/photos/cajon_speedway/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-      "text": "Cajon Speedway (opens on the publisher’s site)",
+      "href": "https://joshternet.org/network/",
+      "text": "Verified Josh, Joshternet site",
       "rel": ["noopener"],
-      "page": "https://joshternet.org/",
-      "evidence_count": 2,
+      "page": "https://joshsherman.dev/",
+      "evidence_count": 1,
       "evidence": [
         {
           "class": "observed",
-          "page": "https://joshternet.org/",
-          "href": "https://artlung.com/photos/cajon_speedway/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Cajon Speedway (opens on the publisher’s site)",
-          "rel": ["noopener"]
-        },
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/",
-          "href": "https://artlung.com/prior/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Prior Projects (opens on the publisher’s site)",
+          "page": "https://joshsherman.dev/",
+          "href": "https://joshternet.org/network/",
+          "text": "Verified Josh, Joshternet site",
           "rel": ["noopener"]
         }
       ]
@@ -476,19 +469,12 @@
       "relation": "homepage-link",
       "directed": true,
       "source": "content",
-      "href": "https://joshozuna.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-      "text": "Participating website with affirmed Josh identity. Josh Ozuna ↗ a collection of 35mm photos, saved for posterity. Oak Cliff, Dallas, Texas Downtown, Dallas, Texas",
+      "href": "https://joshozuna.com/collections?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+      "text": "collections (opens on the publisher’s site)",
       "rel": ["noopener"],
       "page": "https://joshternet.org/",
-      "evidence_count": 3,
+      "evidence_count": 2,
       "evidence": [
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/",
-          "href": "https://joshozuna.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Participating website with affirmed Josh identity. Josh Ozuna ↗ a collection of 35mm photos, saved for posterity. Oak Cliff, Dallas, Texas Downtown, Dallas, Texas",
-          "rel": ["noopener"]
-        },
         {
           "class": "observed",
           "page": "https://joshternet.org/",
@@ -522,27 +508,6 @@
           "page": "https://joshternet.org/",
           "href": "https://joshtronic.com/games/river-of-doom/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
           "text": "River of DOOM!!! (opens on the publisher’s site)",
-          "rel": ["noopener"]
-        }
-      ]
-    },
-    {
-      "from": "https://joshternet.org",
-      "to": "https://joshuadrake.org",
-      "relation": "homepage-link",
-      "directed": true,
-      "source": "content",
-      "href": "https://joshuadrake.org/projects/turboelectriccessna?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-      "text": "TurboElectric Cessna (opens on the publisher’s site)",
-      "rel": ["noopener"],
-      "page": "https://joshternet.org/",
-      "evidence_count": 1,
-      "evidence": [
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/",
-          "href": "https://joshuadrake.org/projects/turboelectriccessna?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "TurboElectric Cessna (opens on the publisher’s site)",
           "rel": ["noopener"]
         }
       ]
@@ -634,6 +599,34 @@
           "page": "https://joshternet.org/",
           "href": "https://joshuastuebner.com/tools/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
           "text": "Tools (opens on the publisher’s site)",
+          "rel": ["noopener"]
+        }
+      ]
+    },
+    {
+      "from": "https://joshternet.org",
+      "to": "https://joshurbandavis.com",
+      "relation": "homepage-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://joshurbandavis.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+      "text": "Participating website with affirmed Josh identity. Josh Urban Davis ↗",
+      "rel": ["noopener"],
+      "page": "https://joshternet.org/",
+      "evidence_count": 2,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://joshternet.org/",
+          "href": "https://joshurbandavis.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "text": "Participating website with affirmed Josh identity. Josh Urban Davis ↗",
+          "rel": ["noopener"]
+        },
+        {
+          "class": "observed",
+          "page": "https://joshternet.org/",
+          "href": "https://joshurbandavis.com/experiments/no-one-in-particular/index.html?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "text": "no one in particular An obituary, written for someone who never lived. (opens on the publisher’s site)",
           "rel": ["noopener"]
         }
       ]

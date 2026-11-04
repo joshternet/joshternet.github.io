@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T17:38:13.287Z",
-  "participant_count": 23,
-  "community_count": 625,
-  "publication_count": 615,
+  "generated_at": "2026-11-04T18:35:52.894Z",
+  "participant_count": 24,
+  "community_count": 638,
+  "publication_count": 612,
   "connection_count": 29,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
@@ -15,7 +15,7 @@
       "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone",
       "summary": "I spent a week having Claude Code audit my fork of LightCraft, the AI-built Rust Lightroom clone: fuzzing, crash safety, a locked control port, faster frames, and 50,000 deleted lines.",
       "published_at": "2026-11-04T00:00:00.000Z",
-      "observed_at": "2026-11-04T17:18:01.392Z",
+      "observed_at": "2026-11-04T18:19:19.608Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -64,50 +64,49 @@
       "page_role": "article"
     },
     {
-      "url": "https://www.youtube.com/watch?v=Rn8bsZhlDhQ",
-      "title": "This Morse Game Starts at a Brutal 40 WPM",
-      "summary": "",
-      "published_at": "2026-11-03T18:03:27.000Z",
-      "observed_at": "2026-11-04T07:49:40.771Z",
-      "content_type": "podcast_episode",
-      "language": "",
-      "dir": "",
-      "site_origin": "https://www.chrisminnick.com",
-      "site_title": "Chris Minnick",
-      "domain": "www.chrisminnick.com",
-      "tags": [],
-      "neighborhoods": [],
-      "image": "/assets/activity/posters/21c5d0066ee59cb1153184e9aa7c91e769992c38a924fab6f68ca6afc5953b58.webp",
-      "image_origin": "",
-      "source_kind": "youtube-show-fallback",
-      "page_role": "project"
-    },
-    {
       "url": "https://artlung.com/blog/2026/11/03/and-shredding/",
       "title": "I went relatively early this morning.",
       "summary": "",
       "published_at": "2026-11-03T16:15:36.000Z",
-      "observed_at": "2026-11-04T17:18:01.392Z",
+      "observed_at": "2026-11-04T18:19:19.608Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
       "site_origin": "https://artlung.com",
       "site_title": "Joe Crawford",
       "domain": "artlung.com",
-      "tags": [],
-      "neighborhoods": [],
+      "tags": [
+        {
+          "slug": "general",
+          "label": "general"
+        },
+        {
+          "slug": "swim2026",
+          "label": "swim2026"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "general",
+          "label": "general"
+        },
+        {
+          "slug": "swim2026",
+          "label": "swim2026"
+        }
+      ],
       "image": "/assets/activity/posters/a5f704c82e275fd530bf5dc7fc5c18b3cace0b58f08f9c04c02286b031ad3e07.webp",
       "image_origin": "",
       "source_kind": "h-entry",
       "page_role": "article"
     },
     {
-      "url": "https://www.youtube.com/watch?v=kF07_Z3ZmXo",
-      "title": "4 Hours for This Tiny Result?!",
-      "summary": "",
-      "published_at": "2026-11-02T18:02:50.000Z",
-      "observed_at": "2026-11-04T07:49:40.771Z",
-      "content_type": "podcast_episode",
+      "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
+      "title": "The Ballmer Peak in the Age of AI Coding",
+      "summary": "Here’s a toast to the way great ideas are born",
+      "published_at": "2026-11-03T13:31:11.000Z",
+      "observed_at": "2026-11-04T18:19:19.608Z",
+      "content_type": "article",
       "language": "",
       "dir": "",
       "site_origin": "https://www.chrisminnick.com",
@@ -115,18 +114,16 @@
       "domain": "www.chrisminnick.com",
       "tags": [],
       "neighborhoods": [],
-      "image": "/assets/activity/posters/cfbca59403c32e91f10fe5e0aea9f66ea5a5c5834a23bdc125a00ebb4382d936.webp",
+      "image": "/assets/activity/posters/4e0671778169b1739b59eacd50d3ed957d8eeca30d9371cbaff7ec06761d1eed.webp",
       "image_origin": "",
-      "source_kind": "youtube-show-fallback",
-      "page_role": "project",
-      "kind": "podcasts"
+      "source_kind": "rss"
     },
     {
       "url": "https://joshtronic.com/2026/11/01/open-to-work/",
       "title": "I'm Open to Work",
       "summary": "Mailshake has terminated my employment after 8+ years. In that time, I... Started as engineer #3 Moved into management thanks to an awesome CTO Ran a 10-person team across backend, frontend, QA, and support Scaled down to 2 engineers while maintaining productivity Reduced annual AWS spend by ~70% over 3 years Was always on-call and handled support escalations Ran technical due diligence on 4 acqui",
       "published_at": "2026-11-01T00:00:00.000Z",
-      "observed_at": "2026-11-04T17:18:01.392Z",
+      "observed_at": "2026-11-04T18:19:19.608Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -145,7 +142,7 @@
       "title": "Gluten-Free Chocolate Cake",
       "summary": "Nutrition assumptions and sources",
       "published_at": "2026-10-31T19:55:58.000Z",
-      "observed_at": "2026-11-04T17:18:01.392Z",
+      "observed_at": "2026-11-04T18:19:19.608Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -168,11 +165,40 @@
       "image_origin": "",
       "source_kind": "rss",
       "page_role": "article"
+    },
+    {
+      "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
+      "title": "Worth Wandering: Radio Aporee",
+      "summary": "A worldwide collection of field recordings that lets you explore the sounds of cities, forests, rivers, train stations and ordinary places, with experimental radio projects that turn listening into an entirely different way of experiencing the world.",
+      "published_at": "2026-10-30T14:00:00.000Z",
+      "observed_at": "2026-11-04T18:19:19.608Z",
+      "content_type": "article",
+      "language": "en",
+      "dir": "",
+      "site_origin": "https://joshuamorris.info",
+      "site_title": "Joshua Morris",
+      "domain": "joshuamorris.info",
+      "tags": [
+        {
+          "slug": "field-recording",
+          "label": "field recording"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "field-recording",
+          "label": "field recording"
+        }
+      ],
+      "image": "/assets/activity/posters/00bec74cb77e409e19f31ea2df977361a7e21b3b853e3a0fe4a21a0e0862b72f.webp",
+      "image_origin": "",
+      "source_kind": "atom",
+      "page_role": "article"
     }
   ],
   "neighborhood": {
-    "slug": "data-center",
-    "label": "data-centers",
+    "slug": "marketing-advertising",
+    "label": "marketing advertising",
     "member_count": 1
   },
   "connection": {

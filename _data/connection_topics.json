@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T17:38:13.287Z",
-  "overlap_count": 110,
+  "generated_at": "2026-11-04T18:35:52.894Z",
+  "overlap_count": 117,
   "pairs": [
     {
       "a": "https://artlung.com",
@@ -76,6 +76,10 @@
       "b": "https://joshozuna.com",
       "topics": [
         {
+          "slug": "dog",
+          "label": "dog"
+        },
+        {
           "slug": "image",
           "label": "image"
         },
@@ -89,11 +93,25 @@
         },
         {
           "slug": "robot",
-          "label": "robots"
+          "label": "Robots"
         },
         {
           "slug": "water",
           "label": "water"
+        }
+      ]
+    },
+    {
+      "a": "https://artlung.com",
+      "b": "https://joshsherman.dev",
+      "topics": [
+        {
+          "slug": "data",
+          "label": "data"
+        },
+        {
+          "slug": "social",
+          "label": "social"
         }
       ]
     },
@@ -208,6 +226,14 @@
           "label": "design"
         },
         {
+          "slug": "miscellaneous",
+          "label": "miscellaneous"
+        },
+        {
+          "slug": "programming",
+          "label": "programming"
+        },
+        {
           "slug": "software",
           "label": "Software"
         },
@@ -231,10 +257,6 @@
       "a": "https://artlung.com",
       "b": "https://joshuamorris.info",
       "topics": [
-        {
-          "slug": "archive",
-          "label": "archive"
-        },
         {
           "slug": "art",
           "label": "art"
@@ -336,10 +358,6 @@
           "label": "digital"
         },
         {
-          "slug": "found",
-          "label": "found"
-        },
-        {
           "slug": "full",
           "label": "full"
         },
@@ -374,12 +392,12 @@
           "label": "javascript"
         },
         {
-          "slug": "learning",
-          "label": "learning"
-        },
-        {
           "slug": "music",
           "label": "music"
+        },
+        {
+          "slug": "programming",
+          "label": "programming"
         }
       ]
     },
@@ -409,10 +427,6 @@
       "a": "https://artlung.com",
       "b": "https://www.joshuabaker.com",
       "topics": [
-        {
-          "slug": "archive",
-          "label": "archive"
-        },
         {
           "slug": "company",
           "label": "company"
@@ -498,6 +512,10 @@
       "b": "https://joshozuna.com",
       "topics": [
         {
+          "slug": "beautiful",
+          "label": "beautiful"
+        },
+        {
           "slug": "blue",
           "label": "blue"
         },
@@ -525,6 +543,10 @@
       "a": "https://joshbeard.com",
       "b": "https://joshuastuebner.com",
       "topics": [
+        {
+          "slug": "beautiful",
+          "label": "beautiful"
+        },
         {
           "slug": "photos",
           "label": "photos"
@@ -1076,6 +1098,10 @@
       "b": "https://joshuastuebner.com",
       "topics": [
         {
+          "slug": "beautiful",
+          "label": "beautiful"
+        },
+        {
           "slug": "food",
           "label": "food"
         },
@@ -1115,10 +1141,6 @@
       "a": "https://joshozuna.com",
       "b": "https://www.chrisminnick.com",
       "topics": [
-        {
-          "slug": "game",
-          "label": "game"
-        },
         {
           "slug": "music",
           "label": "music"
@@ -1160,6 +1182,66 @@
         {
           "slug": "table",
           "label": "tables"
+        }
+      ]
+    },
+    {
+      "a": "https://joshsherman.dev",
+      "b": "https://joshua.seigler.net",
+      "topics": [
+        {
+          "slug": "social",
+          "label": "social"
+        }
+      ]
+    },
+    {
+      "a": "https://joshsherman.dev",
+      "b": "https://joshuadrake.org",
+      "topics": [
+        {
+          "slug": "data",
+          "label": "data"
+        }
+      ]
+    },
+    {
+      "a": "https://joshsherman.dev",
+      "b": "https://joshuamorris.info",
+      "topics": [
+        {
+          "slug": "model",
+          "label": "models"
+        }
+      ]
+    },
+    {
+      "a": "https://joshsherman.dev",
+      "b": "https://joshuastuebner.com",
+      "topics": [
+        {
+          "slug": "data",
+          "label": "data"
+        }
+      ]
+    },
+    {
+      "a": "https://joshsherman.dev",
+      "b": "https://www.joshfinnie.com",
+      "topics": [
+        {
+          "slug": "social",
+          "label": "social"
+        }
+      ]
+    },
+    {
+      "a": "https://joshsherman.dev",
+      "b": "https://www.joshuabaker.com",
+      "topics": [
+        {
+          "slug": "social",
+          "label": "social"
         }
       ]
     },
@@ -1306,10 +1388,6 @@
           "label": "books"
         },
         {
-          "slug": "check",
-          "label": "check"
-        },
-        {
           "slug": "rule",
           "label": "rules"
         }
@@ -1414,14 +1492,6 @@
         {
           "slug": "ai",
           "label": "ai"
-        },
-        {
-          "slug": "game",
-          "label": "game"
-        },
-        {
-          "slug": "learning",
-          "label": "learning"
         },
         {
           "slug": "music",
@@ -1750,16 +1820,8 @@
           "label": "ai"
         },
         {
-          "slug": "challenge",
-          "label": "challenges"
-        },
-        {
           "slug": "coding",
           "label": "coding"
-        },
-        {
-          "slug": "game",
-          "label": "game"
         },
         {
           "slug": "javascript",
@@ -1810,10 +1872,6 @@
           "label": "ai"
         },
         {
-          "slug": "archive",
-          "label": "archive"
-        },
-        {
           "slug": "game",
           "label": "game"
         },
@@ -1854,16 +1912,8 @@
       "b": "https://www.chrisminnick.com",
       "topics": [
         {
-          "slug": "game",
-          "label": "game"
-        },
-        {
           "slug": "javascript",
           "label": "javascript"
-        },
-        {
-          "slug": "learning",
-          "label": "learning"
         }
       ]
     },
@@ -1910,10 +1960,6 @@
         {
           "slug": "book",
           "label": "books"
-        },
-        {
-          "slug": "game",
-          "label": "game"
         },
         {
           "slug": "painting",
@@ -1978,20 +2024,12 @@
           "label": "books"
         },
         {
-          "slug": "challenge",
-          "label": "challenges"
-        },
-        {
           "slug": "claude",
           "label": "claude"
         },
         {
           "slug": "claude-code",
           "label": "claude-code"
-        },
-        {
-          "slug": "job",
-          "label": "job"
         }
       ]
     },
@@ -2002,10 +2040,6 @@
         {
           "slug": "ai",
           "label": "ai"
-        },
-        {
-          "slug": "game",
-          "label": "game"
         },
         {
           "slug": "react",
@@ -2048,56 +2082,6 @@
     {
       "origin": "https://artlung.com",
       "topics": [
-        {
-          "slug": "archive",
-          "label": "archive",
-          "articles": [
-            {
-              "url": "https://artlung.com/flash/",
-              "title": "/flash/ 📁"
-            },
-            {
-              "url": "https://artlung.com/sandiegobloggers-com/",
-              "title": "/sandiegobloggers-com/"
-            },
-            {
-              "url": "https://artlung.com/twitter/",
-              "title": "/twitter/ 📁"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.joshuabaker.com",
-              "domain": "www.joshuabaker.com",
-              "title": "Joshua Baker",
-              "articles": [
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=venturethree-vault-project-archive-pitch-builder-2014",
-                  "title": "Vault Project Archive & Pitch Builder"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/",
-                  "title": "Work — Joshua Baker"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=no-results",
-                  "title": "No results"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-                  "title": "Analog"
-                }
-              ]
-            }
-          ]
-        },
         {
           "slug": "art",
           "label": "art",
@@ -2370,6 +2354,17 @@
           ],
           "sites": [
             {
+              "origin": "https://joshsherman.dev",
+              "domain": "joshsherman.dev",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshsherman.dev/projects/real-estate-site/",
+                  "title": "Real Estate Website | Josh Sherman"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuadrake.org",
               "domain": "joshuadrake.org",
               "title": "Joshua Drake",
@@ -2531,6 +2526,45 @@
           ]
         },
         {
+          "slug": "dog",
+          "label": "dog",
+          "articles": [
+            {
+              "url": "https://artlung.com/blog/2026/10/24/programming-and-dog-walking/",
+              "title": "(not in that order)"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/photo/mountain-landscape-through-doorway-35mm",
+                  "title": "Where the Wild Things Zoom(ies)"
+                },
+                {
+                  "url": "https://joshozuna.com/photo/man-giving-dog-water-hand-35mm",
+                  "title": "Hydration Break"
+                },
+                {
+                  "url": "https://joshozuna.com/photo/spotted-cattle-dog-puppy-resting-couch-35mm",
+                  "title": "Otis, the Puppy"
+                },
+                {
+                  "url": "https://joshozuna.com/photo/charley-mobile-bath-35mm",
+                  "title": "Charley's Spa Day"
+                },
+                {
+                  "url": "https://joshozuna.com/photo/charley-profile-closeup-35mm",
+                  "title": "Charley, the Loyal"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "draft",
           "label": "Drafts",
           "articles": [
@@ -2579,37 +2613,6 @@
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
                   "title": "Learning a New Tech Stack with an LLM"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "found",
-          "label": "found",
-          "articles": [
-            {
-              "url": "https://artlung.com/likes/",
-              "title": "Like"
-            },
-            {
-              "url": "https://artlung.com/mixtapes/2026/",
-              "title": "2026 found faux fur tag"
-            },
-            {
-              "url": "https://artlung.com/videos/",
-              "title": "artlung.com/videos/"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshurbandavis.com",
-              "domain": "joshurbandavis.com",
-              "title": "Josh Urban Davis",
-              "articles": [
-                {
-                  "url": "https://joshurbandavis.com/experiments/in-other-words/index.html",
-                  "title": "18 in other words Say it plainly; nine voices say it back."
                 }
               ]
             }
@@ -2942,17 +2945,6 @@
           ],
           "sites": [
             {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-                  "title": "AI Helped Their Grades—Then Crushed the Learning"
-                }
-              ]
-            },
-            {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
               "title": "Josh Sherman",
@@ -3183,6 +3175,29 @@
                 {
                   "url": "https://joshua.seigler.net/music/",
                   "title": "/music"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "miscellaneous",
+          "label": "miscellaneous",
+          "articles": [
+            {
+              "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
+              "title": "I got an email and text message nearly simultaneously today."
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/resloadbank/",
+                  "title": "Turbo Generator Load-Bank"
                 }
               ]
             }
@@ -3430,8 +3445,46 @@
           ]
         },
         {
+          "slug": "programming",
+          "label": "programming",
+          "articles": [
+            {
+              "url": "https://artlung.com/blog/2026/10/24/programming-and-dog-walking/",
+              "title": "(not in that order)"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/22/2027-web-platform-ranking/",
+              "title": "When I was first creating for the web, “The Web Platform” was made up of “whatever Microsoft and Netscape thought would help them obliterate the other.” A lot of what that meant? Write two sets of code to do the same thing. I can probably still write the F"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/",
+                  "title": "Books"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/ingersollrandcompressor/",
+                  "title": "Ingersoll Rand Compressor"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "robot",
-          "label": "robots",
+          "label": "Robots",
           "articles": [
             {
               "url": "https://artlung.com/mixtapes/robots/",
@@ -3494,6 +3547,17 @@
                 {
                   "url": "https://www.joshfinnie.com/projects/picskyapp/",
                   "title": "PicSkyApp.com PicSkyApp is a photo sharing application built on top of the Bluesky social network, allowing users to share and discover images across the AT Protocol."
+                }
+              ]
+            },
+            {
+              "origin": "https://joshsherman.dev",
+              "domain": "joshsherman.dev",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshsherman.dev/projects/annotate-archive/",
+                  "title": "Annotate Archive | Josh Sherman"
                 }
               ]
             },
@@ -4004,6 +4068,40 @@
           ]
         },
         {
+          "slug": "beautiful",
+          "label": "beautiful",
+          "articles": [
+            {
+              "url": "https://joshbeard.com/photos/2018/2018-herman-gulch-01_jpg.html",
+              "title": "Herman Gulch, Colorado. September 9, 2018. Photos from a hike at Herman Gulch, Colorado in September, 2018. This was a trail with plenty of beautiful scenery of mountain peaks, dense forest, open meadows, long views, creeks, and a lake. Though there was pl"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/photo/expansive-mountain-prairie-sky-35mm",
+                  "title": "Colorado, the Beautiful"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/16_stars/",
+                  "title": "16: Stars"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "blue",
           "label": "blue",
           "articles": [
@@ -4343,32 +4441,16 @@
                   "title": "Books"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=bOA4eNEzZHc",
-                  "title": "AI Can’t Replace People"
+                  "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
+                  "title": "The Ballmer Peak in the Age of AI Coding"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=Zv4zeOOOSKk",
-                  "title": "Use AI to Crush Job Interviews"
+                  "url": "https://www.chrisminnick.com/books/a-developers-guide-to-integrating-generative-ai-into-applications/",
+                  "title": "A Developer’s Guide to Integrating Generative AI into Applications"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=Drr_KEhfckQ",
-                  "title": "Should AI Tutors Be Allowed at All?"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=s25MA8ol6BI",
-                  "title": "AI Tutors Steal From Teachers Too"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=vitTt7vtPXg",
-                  "title": "AI Tutors Won’t Tell You You Stink"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-                  "title": "AI Helped Their Grades—Then Crushed the Learning"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=-LV8ghrRSv8",
-                  "title": "AI Won’t Tell You You’re Bad"
+                  "url": "https://www.chrisminnick.com/books/coding-with-ai-for-dummies/",
+                  "title": "Coding with AI For Dummies"
                 }
               ]
             },
@@ -5272,32 +5354,16 @@
                   "title": "Books"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=bOA4eNEzZHc",
-                  "title": "AI Can’t Replace People"
+                  "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
+                  "title": "The Ballmer Peak in the Age of AI Coding"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=Zv4zeOOOSKk",
-                  "title": "Use AI to Crush Job Interviews"
+                  "url": "https://www.chrisminnick.com/books/a-developers-guide-to-integrating-generative-ai-into-applications/",
+                  "title": "A Developer’s Guide to Integrating Generative AI into Applications"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=Drr_KEhfckQ",
-                  "title": "Should AI Tutors Be Allowed at All?"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=s25MA8ol6BI",
-                  "title": "AI Tutors Steal From Teachers Too"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=vitTt7vtPXg",
-                  "title": "AI Tutors Won’t Tell You You Stink"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-                  "title": "AI Helped Their Grades—Then Crushed the Learning"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=-LV8ghrRSv8",
-                  "title": "AI Won’t Tell You You’re Bad"
+                  "url": "https://www.chrisminnick.com/books/coding-with-ai-for-dummies/",
+                  "title": "Coding with AI For Dummies"
                 }
               ]
             },
@@ -5894,6 +5960,40 @@
       "origin": "https://joshozuna.com",
       "topics": [
         {
+          "slug": "beautiful",
+          "label": "beautiful",
+          "articles": [
+            {
+              "url": "https://joshozuna.com/photo/expansive-mountain-prairie-sky-35mm",
+              "title": "Colorado, the Beautiful"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshbeard.com",
+              "domain": "joshbeard.com",
+              "title": "Josh Beard",
+              "articles": [
+                {
+                  "url": "https://joshbeard.com/photos/2018/2018-herman-gulch-01_jpg.html",
+                  "title": "Herman Gulch, Colorado. September 9, 2018. Photos from a hike at Herman Gulch, Colorado in September, 2018. This was a trail with plenty of beautiful scenery of mountain peaks, dense forest, open meadows, long views, creeks, and a lake. Though there was pl"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/16_stars/",
+                  "title": "16: Stars"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "blue",
           "label": "blue",
           "articles": [
@@ -5990,6 +6090,45 @@
           ]
         },
         {
+          "slug": "dog",
+          "label": "dog",
+          "articles": [
+            {
+              "url": "https://joshozuna.com/photo/mountain-landscape-through-doorway-35mm",
+              "title": "Where the Wild Things Zoom(ies)"
+            },
+            {
+              "url": "https://joshozuna.com/photo/man-giving-dog-water-hand-35mm",
+              "title": "Hydration Break"
+            },
+            {
+              "url": "https://joshozuna.com/photo/spotted-cattle-dog-puppy-resting-couch-35mm",
+              "title": "Otis, the Puppy"
+            },
+            {
+              "url": "https://joshozuna.com/photo/charley-mobile-bath-35mm",
+              "title": "Charley's Spa Day"
+            },
+            {
+              "url": "https://joshozuna.com/photo/charley-profile-closeup-35mm",
+              "title": "Charley, the Loyal"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/blog/2026/10/24/programming-and-dog-walking/",
+                  "title": "(not in that order)"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "food",
           "label": "food",
           "articles": [
@@ -6060,17 +6199,6 @@
             }
           ],
           "sites": [
-            {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=Rn8bsZhlDhQ",
-                  "title": "This Morse Game Starts at a Brutal 40 WPM"
-                }
-              ]
-            },
             {
               "origin": "https://joshtronic.com",
               "domain": "joshtronic.com",
@@ -6513,7 +6641,7 @@
         },
         {
           "slug": "robot",
-          "label": "robots",
+          "label": "Robots",
           "articles": [
             {
               "url": "https://joshozuna.com/photo/urban-robot-mural-building-art-35mm",
@@ -6724,6 +6852,171 @@
       ]
     },
     {
+      "origin": "https://joshsherman.dev",
+      "topics": [
+        {
+          "slug": "data",
+          "label": "data",
+          "articles": [
+            {
+              "url": "https://joshsherman.dev/projects/real-estate-site/",
+              "title": "Real Estate Website | Josh Sherman"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/blog/2026/10/28/novelty-wave/",
+                  "title": "The panorama today Dawn Patrol data visualization from today The base of the pier and the seawall is normally sand. Today I was able to ride waves in that area, some of them were waves going out to sea, some were cross waves headed perpendicular to the bea"
+                },
+                {
+                  "url": "https://artlung.com/blogofthe-day/",
+                  "title": "other ways"
+                },
+                {
+                  "url": "https://artlung.com/privacy-policy/",
+                  "title": "/privacy-policy/"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+                  "title": "Cessna HV Retrofit"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/seasonal/",
+                  "title": "Seasonal Calendar"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "model",
+          "label": "models",
+          "articles": [
+            {
+              "url": "https://joshsherman.dev/projects/ocr-screenshot-scraper/",
+              "title": "OCR Screenshot Scraper | Josh Sherman"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
+                  "title": "Analog"
+                },
+                {
+                  "url": "https://joshuamorris.info/experiments/model-viewer/",
+                  "title": "Model viewer Three Trion figures in matching stages — land clearing, voxel valley, underwater — with quiet orbit controls. Archived from a July 2015 CodePen."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "social",
+          "label": "social",
+          "articles": [
+            {
+              "url": "https://joshsherman.dev/projects/annotate-archive/",
+              "title": "Annotate Archive | Josh Sherman"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
+                  "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters."
+                },
+                {
+                  "url": "https://artlung.com/blogofthe-day/",
+                  "title": "other ways"
+                },
+                {
+                  "url": "https://artlung.com/pfp/",
+                  "title": "/pfp/"
+                },
+                {
+                  "url": "https://artlung.com/splashes/",
+                  "title": "splash pages"
+                },
+                {
+                  "url": "https://artlung.com/text-bots/",
+                  "title": "social media bots"
+                },
+                {
+                  "url": "https://artlung.com/toys/",
+                  "title": "Toys"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/projects/picskyapp/",
+                  "title": "PicSkyApp.com PicSkyApp is a photo sharing application built on top of the Bluesky social network, allowing users to share and discover images across the AT Protocol."
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=dandara-living-social-media-platforms-2023",
+                  "title": "Social Media Platforms"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/books/",
+                  "title": "/books"
+                },
+                {
+                  "url": "https://joshua.seigler.net/music/",
+                  "title": "/music"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "origin": "https://joshternet.org",
       "topics": [
         {
@@ -6826,29 +7119,6 @@
                 {
                   "url": "https://joshua.seigler.net/books/",
                   "title": "/books"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "check",
-          "label": "check",
-          "articles": [
-            {
-              "url": "https://joshternet.org/join/",
-              "title": "Join"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.joshfinnie.com",
-              "domain": "www.joshfinnie.com",
-              "title": "Josh Finnie",
-              "articles": [
-                {
-                  "url": "https://www.joshfinnie.com/projects/beerledge/",
-                  "title": "BeerLedge BeerLedge is a website that allows you to check in beers that you've drank in a post-privacy world."
                 }
               ]
             }
@@ -7409,32 +7679,16 @@
                   "title": "Books"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=bOA4eNEzZHc",
-                  "title": "AI Can’t Replace People"
+                  "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
+                  "title": "The Ballmer Peak in the Age of AI Coding"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=Zv4zeOOOSKk",
-                  "title": "Use AI to Crush Job Interviews"
+                  "url": "https://www.chrisminnick.com/books/a-developers-guide-to-integrating-generative-ai-into-applications/",
+                  "title": "A Developer’s Guide to Integrating Generative AI into Applications"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=Drr_KEhfckQ",
-                  "title": "Should AI Tutors Be Allowed at All?"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=s25MA8ol6BI",
-                  "title": "AI Tutors Steal From Teachers Too"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=vitTt7vtPXg",
-                  "title": "AI Tutors Won’t Tell You You Stink"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-                  "title": "AI Helped Their Grades—Then Crushed the Learning"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=-LV8ghrRSv8",
-                  "title": "AI Won’t Tell You You’re Bad"
+                  "url": "https://www.chrisminnick.com/books/coding-with-ai-for-dummies/",
+                  "title": "Coding with AI For Dummies"
                 }
               ]
             },
@@ -7564,17 +7818,6 @@
             }
           ],
           "sites": [
-            {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=Rn8bsZhlDhQ",
-                  "title": "This Morse Game Starts at a Brutal 40 WPM"
-                }
-              ]
-            },
             {
               "origin": "https://joshozuna.com",
               "domain": "joshozuna.com",
@@ -7711,17 +7954,6 @@
             }
           ],
           "sites": [
-            {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-                  "title": "AI Helped Their Grades—Then Crushed the Learning"
-                }
-              ]
-            },
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
@@ -8496,6 +8728,17 @@
               ]
             },
             {
+              "origin": "https://joshsherman.dev",
+              "domain": "joshsherman.dev",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshsherman.dev/projects/annotate-archive/",
+                  "title": "Annotate Archive | Josh Sherman"
+                }
+              ]
+            },
+            {
               "origin": "https://www.joshuabaker.com",
               "domain": "www.joshuabaker.com",
               "title": "Joshua Baker",
@@ -8887,6 +9130,17 @@
               ]
             },
             {
+              "origin": "https://joshsherman.dev",
+              "domain": "joshsherman.dev",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshsherman.dev/projects/real-estate-site/",
+                  "title": "Real Estate Website | Josh Sherman"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuastuebner.com",
               "domain": "joshuastuebner.com",
               "title": "Joshua Stübner",
@@ -8984,6 +9238,29 @@
           ]
         },
         {
+          "slug": "miscellaneous",
+          "label": "miscellaneous",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/resloadbank/",
+              "title": "Turbo Generator Load-Bank"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
+                  "title": "I got an email and text message nearly simultaneously today."
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "power",
           "label": "power",
           "articles": [
@@ -9024,6 +9301,21 @@
                 {
                   "url": "https://www.chrisminnick.com/books/",
                   "title": "Books"
+                }
+              ]
+            },
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/blog/2026/10/24/programming-and-dog-walking/",
+                  "title": "(not in that order)"
+                },
+                {
+                  "url": "https://artlung.com/blog/2026/10/22/2027-web-platform-ranking/",
+                  "title": "When I was first creating for the web, “The Web Platform” was made up of “whatever Microsoft and Netscape thought would help them obliterate the other.” A lot of what that meant? Write two sets of code to do the same thing. I can probably still write the F"
                 }
               ]
             }
@@ -9361,32 +9653,16 @@
                   "title": "Books"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=bOA4eNEzZHc",
-                  "title": "AI Can’t Replace People"
+                  "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
+                  "title": "The Ballmer Peak in the Age of AI Coding"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=Zv4zeOOOSKk",
-                  "title": "Use AI to Crush Job Interviews"
+                  "url": "https://www.chrisminnick.com/books/a-developers-guide-to-integrating-generative-ai-into-applications/",
+                  "title": "A Developer’s Guide to Integrating Generative AI into Applications"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=Drr_KEhfckQ",
-                  "title": "Should AI Tutors Be Allowed at All?"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=s25MA8ol6BI",
-                  "title": "AI Tutors Steal From Teachers Too"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=vitTt7vtPXg",
-                  "title": "AI Tutors Won’t Tell You You Stink"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-                  "title": "AI Helped Their Grades—Then Crushed the Learning"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=-LV8ghrRSv8",
-                  "title": "AI Won’t Tell You You’re Bad"
+                  "url": "https://www.chrisminnick.com/books/coding-with-ai-for-dummies/",
+                  "title": "Coding with AI For Dummies"
                 }
               ]
             },
@@ -9497,56 +9773,6 @@
                 {
                   "url": "https://joshbeard.com/photos/all/",
                   "title": "View All Photos"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "archive",
-          "label": "archive",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-              "title": "Analog"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/flash/",
-                  "title": "/flash/ 📁"
-                },
-                {
-                  "url": "https://artlung.com/sandiegobloggers-com/",
-                  "title": "/sandiegobloggers-com/"
-                },
-                {
-                  "url": "https://artlung.com/twitter/",
-                  "title": "/twitter/ 📁"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshuabaker.com",
-              "domain": "www.joshuabaker.com",
-              "title": "Joshua Baker",
-              "articles": [
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=venturethree-vault-project-archive-pitch-builder-2014",
-                  "title": "Vault Project Archive & Pitch Builder"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/",
-                  "title": "Work — Joshua Baker"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=no-results",
-                  "title": "No results"
                 }
               ]
             }
@@ -9696,17 +9922,6 @@
           ],
           "sites": [
             {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=BJgbX21HEkY",
-                  "title": "Challenge Checkin: Crochet with Arthritis, Morse Code by Ear"
-                }
-              ]
-            },
-            {
               "origin": "https://www.joshfinnie.com",
               "domain": "www.joshfinnie.com",
               "title": "Josh Finnie",
@@ -9734,6 +9949,10 @@
               "domain": "www.chrisminnick.com",
               "title": "Chris Minnick",
               "articles": [
+                {
+                  "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
+                  "title": "The Ballmer Peak in the Age of AI Coding"
+                },
                 {
                   "url": "https://www.chrisminnick.com/books/coding-all-in-one-for-dummies/",
                   "title": "Coding All-in-One For Dummies, 3rd Edition"
@@ -9857,17 +10076,6 @@
             }
           ],
           "sites": [
-            {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=Rn8bsZhlDhQ",
-                  "title": "This Morse Game Starts at a Brutal 40 WPM"
-                }
-              ]
-            },
             {
               "origin": "https://joshozuna.com",
               "domain": "joshozuna.com",
@@ -10173,6 +10381,33 @@
                 {
                   "url": "https://joshurbandavis.com/experiments/other-side/index.html",
                   "title": "22 the other side Your body enters. Something else looks back."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "model",
+          "label": "models",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
+              "title": "Analog"
+            },
+            {
+              "url": "https://joshuamorris.info/experiments/model-viewer/",
+              "title": "Model viewer Three Trion figures in matching stages — land clearing, voxel valley, underwater — with quiet orbit controls. Archived from a July 2015 CodePen."
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshsherman.dev",
+              "domain": "joshsherman.dev",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshsherman.dev/projects/ocr-screenshot-scraper/",
+                  "title": "OCR Screenshot Scraper | Josh Sherman"
                 }
               ]
             }
@@ -10772,6 +11007,40 @@
       "origin": "https://joshuastuebner.com",
       "topics": [
         {
+          "slug": "beautiful",
+          "label": "beautiful",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/experiments/ex/16_stars/",
+              "title": "16: Stars"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshbeard.com",
+              "domain": "joshbeard.com",
+              "title": "Josh Beard",
+              "articles": [
+                {
+                  "url": "https://joshbeard.com/photos/2018/2018-herman-gulch-01_jpg.html",
+                  "title": "Herman Gulch, Colorado. September 9, 2018. Photos from a hike at Herman Gulch, Colorado in September, 2018. This was a trail with plenty of beautiful scenery of mountain peaks, dense forest, open meadows, long views, creeks, and a lake. Though there was pl"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/photo/expansive-mountain-prairie-sky-35mm",
+                  "title": "Colorado, the Beautiful"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "become",
           "label": "becomes",
           "articles": [
@@ -10978,6 +11247,17 @@
               ]
             },
             {
+              "origin": "https://joshsherman.dev",
+              "domain": "joshsherman.dev",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshsherman.dev/projects/real-estate-site/",
+                  "title": "Real Estate Website | Josh Sherman"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuadrake.org",
               "domain": "joshuadrake.org",
               "title": "Joshua Drake",
@@ -11160,17 +11440,6 @@
             }
           ],
           "sites": [
-            {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=Rn8bsZhlDhQ",
-                  "title": "This Morse Game Starts at a Brutal 40 WPM"
-                }
-              ]
-            },
             {
               "origin": "https://joshozuna.com",
               "domain": "joshozuna.com",
@@ -11376,17 +11645,6 @@
             }
           ],
           "sites": [
-            {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-                  "title": "AI Helped Their Grades—Then Crushed the Learning"
-                }
-              ]
-            },
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
@@ -11974,37 +12232,6 @@
           ]
         },
         {
-          "slug": "found",
-          "label": "found",
-          "articles": [
-            {
-              "url": "https://joshurbandavis.com/experiments/in-other-words/index.html",
-              "title": "18 in other words Say it plainly; nine voices say it back."
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/likes/",
-                  "title": "Like"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/2026/",
-                  "title": "2026 found faux fur tag"
-                },
-                {
-                  "url": "https://artlung.com/videos/",
-                  "title": "artlung.com/videos/"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "full",
           "label": "full",
           "articles": [
@@ -12083,17 +12310,6 @@
             }
           ],
           "sites": [
-            {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=Rn8bsZhlDhQ",
-                  "title": "This Morse Game Starts at a Brutal 40 WPM"
-                }
-              ]
-            },
             {
               "origin": "https://joshozuna.com",
               "domain": "joshozuna.com",
@@ -12527,32 +12743,16 @@
               "title": "Books"
             },
             {
-              "url": "https://www.youtube.com/watch?v=bOA4eNEzZHc",
-              "title": "AI Can’t Replace People"
+              "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
+              "title": "The Ballmer Peak in the Age of AI Coding"
             },
             {
-              "url": "https://www.youtube.com/watch?v=Zv4zeOOOSKk",
-              "title": "Use AI to Crush Job Interviews"
+              "url": "https://www.chrisminnick.com/books/a-developers-guide-to-integrating-generative-ai-into-applications/",
+              "title": "A Developer’s Guide to Integrating Generative AI into Applications"
             },
             {
-              "url": "https://www.youtube.com/watch?v=Drr_KEhfckQ",
-              "title": "Should AI Tutors Be Allowed at All?"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=s25MA8ol6BI",
-              "title": "AI Tutors Steal From Teachers Too"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=vitTt7vtPXg",
-              "title": "AI Tutors Won’t Tell You You Stink"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-              "title": "AI Helped Their Grades—Then Crushed the Learning"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=-LV8ghrRSv8",
-              "title": "AI Won’t Tell You You’re Bad"
+              "url": "https://www.chrisminnick.com/books/coding-with-ai-for-dummies/",
+              "title": "Coding with AI For Dummies"
             }
           ],
           "sites": [
@@ -12717,40 +12917,6 @@
           ]
         },
         {
-          "slug": "challenge",
-          "label": "challenges",
-          "articles": [
-            {
-              "url": "https://www.youtube.com/watch?v=BJgbX21HEkY",
-              "title": "Challenge Checkin: Crochet with Arthritis, Morse Code by Ear"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.joshfinnie.com",
-              "domain": "www.joshfinnie.com",
-              "title": "Josh Finnie",
-              "articles": [
-                {
-                  "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
-                  "title": "The October Micro SaaS Challenge: A Retro"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/fake/",
-                  "title": "3 Fake"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "claude",
           "label": "claude",
           "articles": [
@@ -12850,6 +13016,10 @@
           "label": "coding",
           "articles": [
             {
+              "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
+              "title": "The Ballmer Peak in the Age of AI Coding"
+            },
+            {
               "url": "https://www.chrisminnick.com/books/coding-all-in-one-for-dummies/",
               "title": "Coding All-in-One For Dummies, 3rd Edition"
             },
@@ -12909,104 +13079,6 @@
                 {
                   "url": "https://joshuadrake.org/projects/JDMCMC",
                   "title": "Computer Vision"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "game",
-          "label": "game",
-          "articles": [
-            {
-              "url": "https://www.youtube.com/watch?v=Rn8bsZhlDhQ",
-              "title": "This Morse Game Starts at a Brutal 40 WPM"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshozuna.com",
-              "domain": "joshozuna.com",
-              "title": "Josh Ozuna",
-              "articles": [
-                {
-                  "url": "https://joshozuna.com/photo/texas-rangers-stadium-night-game-35mm",
-                  "title": "It's Baseball Time in Texas"
-                },
-                {
-                  "url": "https://joshozuna.com/photo/texas-rangers-baseball-stadium-game-35mm",
-                  "title": "Night Game at Globe Life"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/games/river-of-doom/",
-                  "title": "River of DOOM!!!"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshurbandavis.com",
-              "domain": "joshurbandavis.com",
-              "title": "Josh Urban Davis",
-              "articles": [
-                {
-                  "url": "https://joshurbandavis.com/experiments/checker-sequencer/index.html",
-                  "title": "11 checker sequencer Each game makes its own song."
-                },
-                {
-                  "url": "https://joshurbandavis.com/experiments/gyges-sequencer/index.html",
-                  "title": "19 gyges sequencer No ring belongs to you until you make it sing."
-                },
-                {
-                  "url": "https://joshurbandavis.com/experiments/house-band/index.html",
-                  "title": "17 the house band Six games, left on, and everyone hears the same move."
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshuabaker.com",
-              "domain": "www.joshuabaker.com",
-              "title": "Joshua Baker",
-              "articles": [
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=telegramme-telegramme-board-game-2010",
-                  "title": "Telegramme Board Game"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
-                },
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/fake/",
-                  "title": "3 Fake"
-                },
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spark/",
-                  "title": "2 Spark"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuastuebner.com",
-              "domain": "joshuastuebner.com",
-              "title": "Joshua Stübner",
-              "articles": [
-                {
-                  "url": "https://joshuastuebner.com/projects/details/achtung-die-kurve/",
-                  "title": "Achtung die Kurve"
                 }
               ]
             }
@@ -13076,78 +13148,6 @@
                 {
                   "url": "https://joshuastuebner.com/experiments/ex/20_css-shrinking-search/",
                   "title": "20: CSS Shrinking Search"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "job",
-          "label": "job",
-          "articles": [
-            {
-              "url": "https://www.youtube.com/watch?v=Zv4zeOOOSKk",
-              "title": "Use AI to Crush Job Interviews"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.joshfinnie.com",
-              "domain": "www.joshfinnie.com",
-              "title": "Josh Finnie",
-              "articles": [
-                {
-                  "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
-                  "title": "Micro SaaS Week Four: SignedOnSite"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "learning",
-          "label": "learning",
-          "articles": [
-            {
-              "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-              "title": "AI Helped Their Grades—Then Crushed the Learning"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/comics/",
-                  "title": "artlung.com/comics/"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/machine-learning-healing/",
-                  "title": "Machine Learning Healing"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuastuebner.com",
-              "domain": "joshuastuebner.com",
-              "title": "Joshua Stübner",
-              "articles": [
-                {
-                  "url": "https://joshuastuebner.com/experiments/ex/04_silvester/",
-                  "title": "04: Silvester"
                 }
               ]
             }
@@ -13265,6 +13265,21 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/blog/2026/10/24/programming-and-dog-walking/",
+                  "title": "(not in that order)"
+                },
+                {
+                  "url": "https://artlung.com/blog/2026/10/22/2027-web-platform-ranking/",
+                  "title": "When I was first creating for the web, “The Web Platform” was made up of “whatever Microsoft and Netscape thought would help them obliterate the other.” A lot of what that meant? Write two sets of code to do the same thing. I can probably still write the F"
+                }
+              ]
+            },
             {
               "origin": "https://joshuadrake.org",
               "domain": "joshuadrake.org",
@@ -13386,32 +13401,16 @@
                   "title": "Books"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=bOA4eNEzZHc",
-                  "title": "AI Can’t Replace People"
+                  "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
+                  "title": "The Ballmer Peak in the Age of AI Coding"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=Zv4zeOOOSKk",
-                  "title": "Use AI to Crush Job Interviews"
+                  "url": "https://www.chrisminnick.com/books/a-developers-guide-to-integrating-generative-ai-into-applications/",
+                  "title": "A Developer’s Guide to Integrating Generative AI into Applications"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=Drr_KEhfckQ",
-                  "title": "Should AI Tutors Be Allowed at All?"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=s25MA8ol6BI",
-                  "title": "AI Tutors Steal From Teachers Too"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=vitTt7vtPXg",
-                  "title": "AI Tutors Won’t Tell You You Stink"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-                  "title": "AI Helped Their Grades—Then Crushed the Learning"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=-LV8ghrRSv8",
-                  "title": "AI Won’t Tell You You’re Bad"
+                  "url": "https://www.chrisminnick.com/books/coding-with-ai-for-dummies/",
+                  "title": "Coding with AI For Dummies"
                 }
               ]
             },
@@ -13571,17 +13570,6 @@
           ],
           "sites": [
             {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=BJgbX21HEkY",
-                  "title": "Challenge Checkin: Crochet with Arthritis, Morse Code by Ear"
-                }
-              ]
-            },
-            {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
@@ -13589,29 +13577,6 @@
                 {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/fake/",
                   "title": "3 Fake"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "check",
-          "label": "check",
-          "articles": [
-            {
-              "url": "https://www.joshfinnie.com/projects/beerledge/",
-              "title": "BeerLedge BeerLedge is a website that allows you to check in beers that you've drank in a post-privacy world."
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshternet.org",
-              "domain": "joshternet.org",
-              "title": "Joshternet",
-              "articles": [
-                {
-                  "url": "https://joshternet.org/join/",
-                  "title": "Join"
                 }
               ]
             }
@@ -13757,29 +13722,6 @@
                 {
                   "url": "https://www.joshuabaker.com/work/?work=benetton-group-colors-magazine-website-community-2012",
                   "title": "COLORS Magazine Website & Community"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "job",
-          "label": "job",
-          "articles": [
-            {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
-              "title": "Micro SaaS Week Four: SignedOnSite"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=Zv4zeOOOSKk",
-                  "title": "Use AI to Crush Job Interviews"
                 }
               ]
             }
@@ -14098,6 +14040,17 @@
               ]
             },
             {
+              "origin": "https://joshsherman.dev",
+              "domain": "joshsherman.dev",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshsherman.dev/projects/annotate-archive/",
+                  "title": "Annotate Archive | Josh Sherman"
+                }
+              ]
+            },
+            {
               "origin": "https://www.joshuabaker.com",
               "domain": "www.joshuabaker.com",
               "title": "Joshua Baker",
@@ -14386,32 +14339,16 @@
                   "title": "Books"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=bOA4eNEzZHc",
-                  "title": "AI Can’t Replace People"
+                  "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
+                  "title": "The Ballmer Peak in the Age of AI Coding"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=Zv4zeOOOSKk",
-                  "title": "Use AI to Crush Job Interviews"
+                  "url": "https://www.chrisminnick.com/books/a-developers-guide-to-integrating-generative-ai-into-applications/",
+                  "title": "A Developer’s Guide to Integrating Generative AI into Applications"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=Drr_KEhfckQ",
-                  "title": "Should AI Tutors Be Allowed at All?"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=s25MA8ol6BI",
-                  "title": "AI Tutors Steal From Teachers Too"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=vitTt7vtPXg",
-                  "title": "AI Tutors Won’t Tell You You Stink"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-                  "title": "AI Helped Their Grades—Then Crushed the Learning"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=-LV8ghrRSv8",
-                  "title": "AI Won’t Tell You You’re Bad"
+                  "url": "https://www.chrisminnick.com/books/coding-with-ai-for-dummies/",
+                  "title": "Coding with AI For Dummies"
                 }
               ]
             },
@@ -14479,56 +14416,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
                   "title": "I Declared the Coding Interview Dead in 2021"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "archive",
-          "label": "archive",
-          "articles": [
-            {
-              "url": "https://www.joshuabaker.com/work/?work=venturethree-vault-project-archive-pitch-builder-2014",
-              "title": "Vault Project Archive & Pitch Builder"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/",
-              "title": "Work — Joshua Baker"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=no-results",
-              "title": "No results"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/flash/",
-                  "title": "/flash/ 📁"
-                },
-                {
-                  "url": "https://artlung.com/sandiegobloggers-com/",
-                  "title": "/sandiegobloggers-com/"
-                },
-                {
-                  "url": "https://artlung.com/twitter/",
-                  "title": "/twitter/ 📁"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-                  "title": "Analog"
                 }
               ]
             }
@@ -14985,17 +14872,6 @@
             }
           ],
           "sites": [
-            {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=Rn8bsZhlDhQ",
-                  "title": "This Morse Game Starts at a Brutal 40 WPM"
-                }
-              ]
-            },
             {
               "origin": "https://joshozuna.com",
               "domain": "joshozuna.com",
@@ -15615,6 +15491,17 @@
                 {
                   "url": "https://www.joshfinnie.com/projects/picskyapp/",
                   "title": "PicSkyApp.com PicSkyApp is a photo sharing application built on top of the Bluesky social network, allowing users to share and discover images across the AT Protocol."
+                }
+              ]
+            },
+            {
+              "origin": "https://joshsherman.dev",
+              "domain": "joshsherman.dev",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshsherman.dev/projects/annotate-archive/",
+                  "title": "Annotate Archive | Josh Sherman"
                 }
               ]
             },
