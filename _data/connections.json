@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T18:19:19.608Z",
-  "edge_count": 29,
+  "generated_at": "2026-11-04T23:21:01.342Z",
+  "edge_count": 30,
   "edges": [
     {
       "from": "https://artlung.com",
@@ -493,6 +493,27 @@
     },
     {
       "from": "https://joshternet.org",
+      "to": "https://joshsherman.dev",
+      "relation": "homepage-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://joshsherman.dev/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+      "text": "Participating website with affirmed Josh identity. Josh Sherman ↗ Thanks for visiting my website! Leave your mark on my graffiti wall to be added to the gallery. I am an Austin-area developer who love",
+      "rel": ["noopener"],
+      "page": "https://joshternet.org/",
+      "evidence_count": 1,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://joshternet.org/",
+          "href": "https://joshsherman.dev/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "text": "Participating website with affirmed Josh identity. Josh Sherman ↗ Thanks for visiting my website! Leave your mark on my graffiti wall to be added to the gallery. I am an Austin-area developer who love",
+          "rel": ["noopener"]
+        }
+      ]
+    },
+    {
+      "from": "https://joshternet.org",
       "to": "https://joshtronic.com",
       "relation": "homepage-link",
       "directed": true,
@@ -581,19 +602,12 @@
       "relation": "homepage-link",
       "directed": true,
       "source": "content",
-      "href": "https://joshuastuebner.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-      "text": "Participating website with affirmed Josh identity. Joshua Stübner ↗ Product engineer at Ariadne and half of Norcode Agency.I also (co-)run Vegan Hamburg and Was Los im Amt?.",
+      "href": "https://joshuastuebner.com/tools/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+      "text": "Tools (opens on the publisher’s site)",
       "rel": ["noopener"],
       "page": "https://joshternet.org/",
-      "evidence_count": 2,
+      "evidence_count": 1,
       "evidence": [
-        {
-          "class": "observed",
-          "page": "https://joshternet.org/",
-          "href": "https://joshuastuebner.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
-          "text": "Participating website with affirmed Josh identity. Joshua Stübner ↗ Product engineer at Ariadne and half of Norcode Agency.I also (co-)run Vegan Hamburg and Was Los im Amt?.",
-          "rel": ["noopener"]
-        },
         {
           "class": "observed",
           "page": "https://joshternet.org/",

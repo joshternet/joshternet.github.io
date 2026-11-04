@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T18:19:19.608Z",
+  "generated_at": "2026-11-04T23:21:01.342Z",
   "community_count": 638,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
@@ -571,11 +571,6 @@
           "title": "Chris Minnick",
           "membership": "heuristic",
           "pages": [
-            {
-              "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
-              "title": "",
-              "source": "catalog-match"
-            },
             {
               "url": "https://www.chrisminnick.com/books/a-developers-guide-to-integrating-generative-ai-into-applications/",
               "title": "",
@@ -2118,8 +2113,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "august",
@@ -3471,8 +3465,7 @@
       ],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-04T18:19:19.608Z",
-      "active": true,
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      "active": true
     },
     {
       "slug": "blue",
@@ -4334,8 +4327,7 @@
       ],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-04T18:19:19.608Z",
-      "active": true,
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      "active": true
     },
     {
       "slug": "business",
@@ -4506,8 +4498,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "california",
@@ -5078,8 +5069,7 @@
       ],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-04T18:19:19.608Z",
-      "active": true,
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      "active": true
     },
     {
       "slug": "charity-nonprofit",
@@ -5382,8 +5372,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "civic",
@@ -6557,8 +6546,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "company",
@@ -8395,7 +8383,16 @@
       "sources": ["article:tag", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshbeard.com",
+          "domain": "joshbeard.com",
+          "title": "Josh Beard",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "debian-ubuntu",
@@ -8492,8 +8489,7 @@
       "sources": ["article:tag", "topic-hub:link"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-04T18:19:19.608Z",
-      "active": true,
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      "active": true
     },
     {
       "slug": "democracy",
@@ -11568,8 +11564,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "fascism",
@@ -13301,7 +13296,7 @@
     {
       "slug": "general",
       "label": "general",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://artlung.com",
@@ -13333,6 +13328,19 @@
               "url": "https://artlung.com/blog/2026/11/03/ibot-g3-2018/",
               "title": "",
               "source": "rss:category"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshternet.org/",
+              "title": "",
+              "source": "microformat:p-category"
             }
           ]
         },
@@ -13385,9 +13393,14 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "rss:category", "visible-text"],
+      "sources": [
+        "catalog-match",
+        "microformat:p-category",
+        "rss:category",
+        "visible-text"
+      ],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T23:21:01.342Z",
       "active": true,
       "related_discoveries": [
         {
@@ -15308,8 +15321,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "humanism",
@@ -15573,8 +15585,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "immigration",
@@ -15841,8 +15852,7 @@
       "sources": ["article:tag", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
       "last_changed_at": "2026-11-04T18:19:19.608Z",
-      "active": true,
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      "active": true
     },
     {
       "slug": "indienew",
@@ -16813,8 +16823,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "jekyll",
@@ -18593,8 +18602,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "lets-20encrypt",
@@ -18720,8 +18728,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "lifestyle",
@@ -19550,8 +19557,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "machine-learning",
@@ -20684,8 +20690,7 @@
       "sources": ["article:tag", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
       "last_changed_at": "2026-11-04T18:19:19.608Z",
-      "active": true,
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      "active": true
     },
     {
       "slug": "micro-software",
@@ -21351,8 +21356,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "music",
@@ -21815,8 +21819,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "news",
@@ -21884,8 +21887,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "nextj",
@@ -23730,8 +23732,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "pebble",
@@ -23907,8 +23908,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "personal-data",
@@ -24147,8 +24147,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "photos",
@@ -30326,8 +30325,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "setup",
@@ -30477,8 +30475,7 @@
       "sources": ["article:tag", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
       "last_changed_at": "2026-11-04T18:19:19.608Z",
-      "active": true,
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      "active": true
     },
     {
       "slug": "simple",
@@ -30875,8 +30872,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "social-justice",
@@ -31985,8 +31981,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "space",
@@ -32561,8 +32556,7 @@
       "sources": ["atom:category", "json-feed:tag"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
       "last_changed_at": "2026-11-04T18:19:19.608Z",
-      "active": true,
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      "active": true
     },
     {
       "slug": "stripe",
@@ -32664,7 +32658,7 @@
     {
       "slug": "swim2026",
       "label": "swim2026",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
         {
           "origin": "https://artlung.com",
@@ -32698,13 +32692,25 @@
               "source": "rss:category"
             }
           ]
+        },
+        {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshternet.org/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
         }
       ],
-      "sources": ["rss:category"],
+      "sources": ["microformat:p-category", "rss:category"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-04T18:19:19.608Z",
-      "active": true,
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      "last_changed_at": "2026-11-04T23:21:01.342Z",
+      "active": true
     },
     {
       "slug": "table",
@@ -33844,8 +33850,7 @@
       "sources": ["article:tag", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-11-01T10:42:20.299Z",
       "last_changed_at": "2026-11-04T18:19:19.608Z",
-      "active": true,
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      "active": true
     },
     {
       "slug": "tweet",
@@ -34846,8 +34851,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "video-game",
@@ -35645,8 +35649,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "weightlifting",
@@ -35914,7 +35917,7 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshternet.org/implement/platforms/jekyll/",
+              "url": "https://joshternet.org/implement/platforms/hugo/",
               "title": "",
               "source": "visible-text"
             }
@@ -36723,8 +36726,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-04T18:19:19.608Z"
+      ]
     },
     {
       "slug": "writing-publishing",
