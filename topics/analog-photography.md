@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Analog Photography writing on the Joshternet"
-description: "Explore articles, notes, and projects about Analog Photography from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
-keywords: "Analog Photography, Joshternet, independent websites, Topics, shared interests"
+description: "Explore Analog Photography articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
+keywords: "Analog Photography, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "analog-photography"
 permalink: /topics/analog-photography/
 robots: max-snippet:160, max-image-preview:large

@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Weeks articles from Joshternet websites"
-description: "Explore articles, notes, and projects about Weeks from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
-keywords: "Weeks, Joshternet, independent websites, Topics, shared interests"
+description: "Explore Weeks articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
+keywords: "Weeks, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "week"
 permalink: /topics/week/
 robots: max-snippet:160, max-image-preview:large

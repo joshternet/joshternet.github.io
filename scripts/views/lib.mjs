@@ -10,11 +10,7 @@
 import { itemsFromCollection } from "../network/collections.mjs";
 import {
   decodeHtmlEntities,
-  isDomainCompressingSlogan,
-  isWeakPageTitle,
-  looksLikePersonName,
   personNameFromSelfIntro,
-  personNameFromText,
 } from "../network/lib.mjs";
 import { isShowcaseChromePath } from "../network/slash-pages.mjs";
 import { isNonSubjectSlug } from "../nlp/evidence.mjs";
@@ -252,41 +248,15 @@ export function publicCommunitySlugSet(communities) {
 }
 
 /**
- * Hostname for a Network origin when domain is missing.
- * @param {string} origin
- * @returns {string}
- */
-function hostLabelFromOrigin(origin) {
-  if (typeof origin !== "string" || !origin) {
-    return "";
-  }
-
-  try {
-    return new URL(origin).hostname;
-  } catch {
-    return origin.replace(/^https?:\/\//iu, "").split("/")[0] || "";
-  }
-}
-
-/**
  * @param {Array<Record<string, unknown>>} network
- * @param {Map<string, string>} [displayTitleOverrides] Curated origin → name.
  * @returns {Map<string, Record<string, unknown>>}
  */
-export function sitesByOrigin(network, displayTitleOverrides = new Map()) {
+export function sitesByOrigin(network) {
   const map = new Map();
-  const overrides =
-    displayTitleOverrides instanceof Map ? displayTitleOverrides : new Map();
 
   for (const site of network || []) {
     if (site && typeof site.origin === "string" && site.origin) {
-      const override = overrides.get(site.origin) || "";
-      const title = publisherDisplayTitle(site, site.origin, override);
-
-      map.set(site.origin, {
-        ...site,
-        title,
-      });
+      map.set(site.origin, site);
     }
   }
 
@@ -294,54 +264,37 @@ export function sitesByOrigin(network, displayTitleOverrides = new Map()) {
 }
 
 /**
- * Publisher name for Activity / Showcase / search / site-view attribution.
- * Preserves Unicode in person names (e.g. Stübner, Müller). Prefer curated
- * overrides, then person-shaped Network titles, then self-intro / description
- * matches — never weak shells like “Joshuas very own page.”
+ * Publisher name for Activity / Showcase attribution.
+ * Prefer Network card title; when that is still a host label, lift a person
+ * name from the self-intro description (e.g. “I’m Chris Minnick…”).
  * @param {Record<string, unknown> | null | undefined} site
  * @param {string} origin
- * @param {string} [override]
  * @returns {string}
  */
-export function publisherDisplayTitle(site, origin = "", override = "") {
-  const forced = String(override || "").trim();
-
-  if (forced) {
-    return forced;
-  }
-
+export function publisherDisplayTitle(site, origin = "") {
   const record = site && typeof site === "object" ? site : {};
-  let hostLabel = String(record.domain || "").trim();
-
-  if (!hostLabel) {
-    hostLabel = hostLabelFromOrigin(origin);
-  }
-
+  const domain = String(record.domain || "");
   const title = String(record.title || "").trim();
+  // Person-shaped titles include whitespace ("Chris Minnick"). Host labels and
+  // domain restatements do not — try a self-intro before falling back.
+  if (title && /\s/.test(title)) {
+    return title;
+  }
+
+  let hostLabel = domain;
+
+  if (!hostLabel && typeof origin === "string" && origin) {
+    hostLabel = origin.replace(/^https?:\/\//i, "").split("/")[0] || origin;
+  }
+
   const description = String(record.description || "");
+  const fromIntro = personNameFromSelfIntro(description, hostLabel);
 
-  // Person-shaped Network titles keep their authored spelling and diacritics.
-  if (looksLikePersonName(title)) {
-    return title;
+  if (fromIntro) {
+    return fromIntro;
   }
 
-  const fromDescription =
-    personNameFromSelfIntro(description, hostLabel) ||
-    personNameFromText(description, hostLabel);
-
-  if (fromDescription) {
-    return fromDescription;
-  }
-
-  if (
-    title &&
-    !isWeakPageTitle(title) &&
-    !isDomainCompressingSlogan(title, hostLabel)
-  ) {
-    return title;
-  }
-
-  return hostLabel || origin || "";
+  return title || domain || origin || "";
 }
 
 /**
@@ -608,15 +561,11 @@ export function compactContentItem(item, sites, publicSlugs) {
   const site = origin ? sites.get(origin) : undefined;
   const labels = contentTopicLabels(item, publicSlugs);
   const rawImage = typeof item.image === "string" ? item.image : "";
-  const siteScreenshot =
-    typeof site?.screenshot === "string" &&
-    site.screenshot.startsWith("/assets/network/sites/")
-      ? site.screenshot
-      : "";
   const image =
-    rawImage.startsWith("https://") || rawImage.startsWith("/assets/")
+    rawImage.startsWith("https://") ||
+    rawImage.startsWith("/assets/activity/posters/")
       ? rawImage
-      : siteScreenshot;
+      : "";
   let imageOrigin = "";
 
   if (image.startsWith("https://")) {
@@ -652,10 +601,7 @@ export function compactContentItem(item, sites, publicSlugs) {
     dir: dirForLanguage(language),
     site_origin: origin,
     site_title: publisherDisplayTitle(site, origin),
-    domain:
-      typeof site?.domain === "string" && site.domain
-        ? site.domain
-        : hostLabelFromOrigin(origin),
+    domain: typeof site?.domain === "string" ? site.domain : "",
     tags: labels.tags,
     neighborhoods: labels.neighborhoods,
     image,
@@ -2099,24 +2045,25 @@ export function isClientCaseStudyUrl(url) {
 }
 
 /**
- * True when the item has a remote https poster, local activity poster, or
- * Network site screenshot suitable for a Showcase card.
+ * True when the item has a remote https or local activity poster.
  * @param {Record<string, unknown>} item
  * @returns {boolean}
  */
-function hasShowcaseImage(item) {
+function hasHttpsPoster(item) {
   if (typeof item.image !== "string" || !item.image) {
     return false;
   }
 
-  return item.image.startsWith("https://") || item.image.startsWith("/assets/");
+  return (
+    item.image.startsWith("https://") ||
+    item.image.startsWith("/assets/activity/posters/")
+  );
 }
 
 /**
  * Showcase must have something to see or read—no empty year chips.
- * Photography/art/video require a poster. Other kinds need a real title or
- * summary beyond a bare year. Published Showcase lists also require an image
- * via {@link eligibleShowcaseItems}.
+ * Photography/art/video require an https poster; other kinds need a real
+ * title or summary beyond a bare year.
  * @param {Record<string, unknown>} item
  * @returns {boolean}
  */
@@ -2132,35 +2079,37 @@ export function showcaseItemHasSubstance(item) {
         ? String(/** @type {{ kind?: unknown }} */ (item.source).kind || "")
         : "";
 
-  // Channel cards and external watch links may lack publisher posters until
-  // a Network screenshot is attached during views:build.
+  // Channel cards and external watch links may lack publisher posters.
   if (
     sourceKind === "elsewhere-channel" ||
     sourceKind === "videos-watch-link" ||
     sourceKind === "elsewhere-youtube-video"
   ) {
-    return title.length >= 4 || hasShowcaseImage(item);
+    return title.length >= 4 || hasHttpsPoster(item);
   }
 
   if (kind === "comics" || kind === "education") {
     return (
-      hasShowcaseImage(item) ||
+      hasHttpsPoster(item) ||
       summary.length >= 12 ||
       (title.length >= 4 && !yearOnly)
     );
   }
 
   if (kind === "photography" || kind === "art" || kind === "video") {
-    return hasShowcaseImage(item);
+    return hasHttpsPoster(item);
   }
 
   // Sheet music gets a generated score preview during views:build when needed.
-  // hasShowcaseImage already accepts https:// and /assets/ posters.
   if (kind === "sheet music") {
-    return hasShowcaseImage(item) || title.length >= 8;
+    return (
+      hasHttpsPoster(item) ||
+      (typeof item.image === "string" && item.image.startsWith("/assets/")) ||
+      title.length >= 8
+    );
   }
 
-  if (hasShowcaseImage(item)) {
+  if (hasHttpsPoster(item)) {
     return true;
   }
 
@@ -2177,12 +2126,12 @@ export function showcaseItemHasSubstance(item) {
  * @param {Array<Record<string, unknown>>} items
  * @returns {Array<Record<string, unknown>>}
  */
-export function interleaveImagedItems(items) {
+function interleaveImagedItems(items) {
   const withImage = [];
   const withoutImage = [];
 
   for (const item of items) {
-    if (hasShowcaseImage(item)) {
+    if (hasHttpsPoster(item)) {
       withImage.push(item);
     } else {
       withoutImage.push(item);
@@ -2779,12 +2728,6 @@ function eligibleShowcaseItems(compactItems, now, activityWindowDays) {
       summary,
       kind: showcaseKindForItem(raw),
     };
-
-    // Creative work cards always show a poster — skip shells without one.
-    if (!hasShowcaseImage(item)) {
-      continue;
-    }
-
     const key = typeof item.site_origin === "string" ? item.site_origin : "";
     const originList = byOrigin.get(key) || [];
     originList.push(item);
@@ -2887,15 +2830,6 @@ export function channelItemsFromNetwork(
       const label = (typeof link.label === "string" && link.label) || networkId;
       const published =
         typeof dates[href] === "string" && dates[href] ? dates[href] : "";
-      const domain =
-        typeof site.domain === "string" && site.domain
-          ? site.domain
-          : hostLabelFromOrigin(origin);
-      const screenshot =
-        typeof site.screenshot === "string" &&
-        site.screenshot.startsWith("/assets/network/sites/")
-          ? site.screenshot
-          : "";
 
       items.push({
         identity: `channel:${origin}:${networkId}`,
@@ -2906,8 +2840,7 @@ export function channelItemsFromNetwork(
         content_type: "video",
         page_role: "project",
         site_title: siteTitle,
-        domain,
-        ...(screenshot ? { image: screenshot } : {}),
+        domain: typeof site.domain === "string" ? site.domain : "",
         source: { kind: "elsewhere-channel", network: networkId },
         observed_at: observedAt || new Date().toISOString(),
         ...(published ? { published_at: published } : {}),
@@ -3746,7 +3679,6 @@ export function buildEventIcs(happeningItems, options = {}) {
  *   now?: Date,
  *   activityWindowDays?: number,
  *   channelPublishByUrl?: Record<string, string>,
- *   displayTitleOverrides?: Map<string, string>,
  * }} input
  * @returns {{
  *   activity: Record<string, unknown>,
@@ -3759,12 +3691,7 @@ export function buildEventIcs(happeningItems, options = {}) {
  * }}
  */
 export function buildViewDocuments(input) {
-  const sites = sitesByOrigin(
-    input.network || [],
-    input.displayTitleOverrides instanceof Map
-      ? input.displayTitleOverrides
-      : new Map(),
-  );
+  const sites = sitesByOrigin(input.network || []);
   const contentItems = itemsFromCollection(input.content, "items");
   const signalsOrigins = Array.isArray(input.siteSignals?.origins)
     ? input.siteSignals.origins
@@ -3800,7 +3727,7 @@ export function buildViewDocuments(input) {
     windowDays,
   );
   const channelCompact = channelItemsFromNetwork(
-    [...sites.values()],
+    input.network || [],
     input.generatedAt,
     /** @type {Record<string, string> | null | undefined} */ (
       input.channelPublishByUrl
@@ -3937,9 +3864,7 @@ export function buildViewDocuments(input) {
         return {
           origin,
           domain: listed?.domain || site?.domain || "",
-          // sitesByOrigin always sets title (host/origin fallback), so domain/origin
-          // chains here were unreachable for branch coverage.
-          title: listed?.title || site?.title,
+          title: listed?.title || site?.title || site?.domain || origin,
           description:
             typeof site?.description === "string" ? site.description : "",
           membership:
@@ -4004,7 +3929,7 @@ export function buildViewDocuments(input) {
     return {
       origin,
       domain: site.domain,
-      title: site.title,
+      title: site.title || site.domain,
       description: site.description || "",
       identity: site.identity,
       feeds: site.feeds || [],
@@ -4091,7 +4016,7 @@ export function buildViewDocuments(input) {
   for (const site of sites.values()) {
     searchDocuments.push({
       type: "site",
-      title: site.title,
+      title: site.title || site.domain,
       summary: site.description || "",
       domain: site.domain,
       origin: site.origin,
@@ -4321,7 +4246,7 @@ export function buildActivityAtomXml(activity, options = {}) {
   <updated>${escapeAtomText(generatedAt)}</updated>
   <link rel="self" type="application/atom+xml" href="${escapeAtomText(feedUrl)}"/>
   <link rel="alternate" type="text/html" href="${escapeAtomText(selfHtml)}"/>
-  <subtitle>A selection of recent writing and creative work from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
+  <subtitle>Recent articles from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
   <generator uri="${escapeAtomText(hubOrigin)}/">Joshternet views:build</generator>
 ${entries.join("\n")}
 </feed>

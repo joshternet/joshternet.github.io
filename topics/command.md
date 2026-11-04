@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Command articles from Joshternet websites"
-description: "Explore articles, notes, and projects about Command from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
-keywords: "Command, Joshternet, independent websites, Topics, shared interests"
+description: "Explore Command articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
+keywords: "Command, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "command"
 permalink: /topics/command/
 robots: max-snippet:160, max-image-preview:large

@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "October articles from Joshternet websites"
-description: "Explore articles, notes, and projects about October from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
-keywords: "October, Joshternet, independent websites, Topics, shared interests"
+description: "Explore October articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
+keywords: "October, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "october"
 permalink: /topics/october/
 robots: max-snippet:160, max-image-preview:large

@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Astro articles from Joshternet websites"
-description: "Explore articles, notes, and projects about Astro from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
-keywords: "Astro, Joshternet, independent websites, Topics, shared interests"
+description: "Explore Astro articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
+keywords: "Astro, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "astro"
 permalink: /topics/astro/
 robots: max-snippet:160, max-image-preview:large

@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "General articles from Joshternet websites"
-description: "Explore articles, notes, and projects about General from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
-keywords: "General, Joshternet, independent websites, Topics, shared interests"
+description: "Explore General articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
+keywords: "General, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "general"
 permalink: /topics/general/
 robots: max-snippet:160, max-image-preview:large

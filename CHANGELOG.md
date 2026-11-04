@@ -70,9 +70,6 @@
 
 ### Added
 
-- **Content Discovery Handbook:** Publisher guide at `/implement/content/` (short, pointed chapters + code-backed support matrix). Implement secondary nav is Content (`match: prefix`)—Slashpages and Explore notes folded into Content; old URLs stay as thin stubs. No crawler behavior changes.
-- **Semantic HTML chapter rewrite:** `/implement/content/html/` expanded into a full publisher guide (document structure, regions, headings, dates, links, media, JoshBot extraction table, validation).
-- **Slashpages discovery guide:** Optional `/.well-known/slashpages` OPML documented at `/implement/slashpages/`, linked from Implement nav, `/implement/`, `/join/`, and Connections crawl notes. Membership still requires only `/.well-known/josh`.
 - **Elsewhere YouTube videos in Showcase Videos:** Network YouTube channel links harvest recent watch URLs into individual `video` rows (14-day window). Atom is used when robots allow; YouTube disallows `/feeds/videos.xml`, so channel HTML → watch-page `uploadDate` is the compliant path. The aggregate channel card is omitted when those uploads are listed. Cards use public `i.ytimg.com` thumbnails (localized under `/assets/activity/posters/` at views:build).
 - **YouTube show feeds for Showcase Podcasts:** Channel and playlist `videos.xml` helpers harvest recent episodes from member/Substack HTML into `podcast_episode` rows (Atom first, watch-page `uploadDate` fallback). Live feed debugging is for local sync runs.
 - **Optional `/.well-known/slashpages` OPML:** Robots-gated, SSRF-safe reader seeds same-origin crawl URLs; cross-origin outlines stay evidence-only. Includes are depth/count capped with loop detection.
@@ -86,10 +83,6 @@
 
 ### Fixed
 
-- **Topic pages:** Dropped the folded “Source evidence” disclosures under each member; topic pages list the site and its articles only.
-- **Creative work cards:** Every Showcase / homepage Creative work tile shows a poster (work image or Network screenshot fallback), then title, author, description, and domain bottom-right. Cards without an image no longer qualify for Showcase. Posters encode larger (1280×800) crisp WebP (quality 92, smart subsample); cards use `object-fit: contain` so UI and text stay readable instead of cropped, and the home strip cards are slightly wider.
-
-- **Network card person titles:** Non-Josh self-intros in main page prose (e.g. Chris Minnick) and umlaut names that match ASCII domains (e.g. Joshua Stübner ↔ joshuastuebner.com) win over host labels and generic shells like “Joshuas very own page.” Rebuilds keep those names via `_data/network_display_titles.json` overrides plus sticky person-title retention when sync would otherwise fall back to a host or shell. Activity, Showcase, search, site views, and NLP community labels use the same display-title path so member content attribution keeps Unicode spelling (Stübner, Müller) instead of host labels.
 - **Showcase/Activity fairness + attribution:** Cap **2 cards per origin per Showcase kind** (and **2 What’s New rows per origin**) so large catalogs cannot crowd out peers. Drop same-origin same-title crossposts (blog article vs podcast/video). Activity/Showcase author lines use Network person titles (e.g. “Chris Minnick”) instead of the host when a self-intro is available.
 - **Coverage: YouTube channel-vs-watch filter branches:** Extract `youtubeWatchOriginsInWindow` / `shouldOmitYoutubeChannelCard` with exhaustive unit tests so `views/lib.mjs` stays at 100% branch coverage under Node’s experimental reporter.
 - **Comics hub → Showcase Comics:** `/comics/` and `/webcomics/` indexes harvest same-origin strips even when posts live under `/blog/…` (Artlung-shaped). Typed as `comic`, enriched with og:image + publish date from the post page, and listed under Showcase Comics.

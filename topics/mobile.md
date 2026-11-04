@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "Mobile articles from Joshternet websites"
-description: "Explore articles, notes, and projects about Mobile from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
-keywords: "Mobile, Joshternet, independent websites, Topics, shared interests"
+description: "Explore Mobile articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
+keywords: "Mobile, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "mobile"
 permalink: /topics/mobile/
 robots: max-snippet:160, max-image-preview:large

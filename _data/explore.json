@@ -1,140 +1,58 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-03T19:23:29.852Z",
-  "participant_count": 21,
-  "community_count": 635,
-  "publication_count": 587,
-  "connection_count": 25,
+  "generated_at": "2026-11-04T02:13:11.052Z",
+  "participant_count": 22,
+  "community_count": 634,
+  "publication_count": 556,
+  "connection_count": 26,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
     "connection": "first edge after stable from, to, relation sort"
   },
   "fresh": [
     {
-      "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
-      "title": "The Ballmer Peak in the Age of AI Coding",
-      "summary": "Here’s a toast to the way great ideas are born",
-      "published_at": "2026-11-03T13:31:11.000Z",
-      "observed_at": "2026-11-03T19:03:54.719Z",
-      "content_type": "article",
-      "language": "",
-      "dir": "",
-      "site_origin": "https://www.chrisminnick.com",
-      "site_title": "Chris Minnick",
-      "domain": "www.chrisminnick.com",
-      "tags": [],
-      "neighborhoods": [],
-      "image": "/assets/activity/posters/ab7997bb66791bf899fa758cb25a49b0f40f15cf28a168276b6757e2623a7a90.webp",
-      "image_origin": "",
-      "source_kind": "rss"
-    },
-    {
-      "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
-      "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters.",
+      "url": "https://artlung.com/blog/2026/11/03/and-shredding/",
+      "title": "I went relatively early this morning.",
       "summary": "",
-      "published_at": "2026-11-03T06:49:28.000Z",
-      "observed_at": "2026-11-03T19:03:54.719Z",
+      "published_at": "2026-11-03T16:15:36.000Z",
+      "observed_at": "2026-11-04T01:56:36.324Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
       "site_origin": "https://artlung.com",
-      "site_title": "ArtLung ~ Joe Crawford",
+      "site_title": "Joe Crawford",
       "domain": "artlung.com",
       "tags": [
-        {
-          "slug": "california",
-          "label": "california"
-        },
         {
           "slug": "general",
           "label": "general"
         },
         {
-          "slug": "history",
-          "label": "history"
-        },
-        {
-          "slug": "permanence",
-          "label": "permanence"
-        },
-        {
-          "slug": "politics",
-          "label": "politics"
+          "slug": "swim2026",
+          "label": "swim2026"
         }
       ],
       "neighborhoods": [
         {
-          "slug": "california",
-          "label": "california"
-        },
-        {
           "slug": "general",
           "label": "general"
         },
         {
-          "slug": "history",
-          "label": "history"
-        },
-        {
-          "slug": "permanence",
-          "label": "permanence"
-        },
-        {
-          "slug": "politics",
-          "label": "politics"
+          "slug": "swim2026",
+          "label": "swim2026"
         }
       ],
-      "image": "/assets/activity/posters/764b7296d487335b4248db890aa60a36004ce159233eaba1732b970faf360681.webp",
+      "image": "/assets/activity/posters/5dbd08bb6f5a677ce2e70bd2cffa3672f6197c6c0c516d4e4b1627efb9ff9301.webp",
       "image_origin": "",
       "source_kind": "h-entry",
       "page_role": "article"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=_kuQflW2Db8",
-      "title": "CSSBattle for NOVEMBER 3 (2026)",
-      "summary": "",
-      "published_at": "2026-11-03T01:36:50.000Z",
-      "observed_at": "2026-11-03T19:03:54.719Z",
-      "content_type": "video",
-      "language": "",
-      "dir": "",
-      "site_origin": "https://artlung.com",
-      "site_title": "ArtLung ~ Joe Crawford",
-      "domain": "artlung.com",
-      "tags": [],
-      "neighborhoods": [],
-      "image": "/assets/activity/posters/212ae5dc15c30248168854c93c4cdbdda231cdd9ec16fb0ca8829cff2948f445.webp",
-      "image_origin": "",
-      "source_kind": "elsewhere-youtube-video",
-      "page_role": "project",
-      "kind": "video"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=kF07_Z3ZmXo",
-      "title": "4 Hours for This Tiny Result?!",
-      "summary": "",
-      "published_at": "2026-11-02T18:02:50.000Z",
-      "observed_at": "2026-11-03T19:03:54.719Z",
-      "content_type": "podcast_episode",
-      "language": "",
-      "dir": "",
-      "site_origin": "https://www.chrisminnick.com",
-      "site_title": "Chris Minnick",
-      "domain": "www.chrisminnick.com",
-      "tags": [],
-      "neighborhoods": [],
-      "image": "/assets/activity/posters/adddbef6096f524879661284b4b414ede0a03d19e97fda384fecbd1b0083eb20.webp",
-      "image_origin": "",
-      "source_kind": "youtube-show-fallback",
-      "page_role": "project",
-      "kind": "podcasts"
     },
     {
       "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
       "title": "The October Micro SaaS Challenge: A Retro",
       "summary": "Four micro SaaS products in four weeks, built with Claude Code: what shipped, which rules broke, what it cost, and what I'd change next time.",
       "published_at": "2026-11-02T00:00:00.000Z",
-      "observed_at": "2026-11-03T19:03:54.719Z",
+      "observed_at": "2026-11-04T01:56:36.324Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -187,7 +105,7 @@
       "title": "I'm Open to Work",
       "summary": "Mailshake has terminated my employment after 8+ years. In that time, I... Started as engineer #3 Moved into management thanks to an awesome CTO Ran a 10-person team across backend, frontend, QA, and support Scaled down to 2 engineers while maintaining productivity Reduced annual AWS spend by ~70% over 3 years Was always on-call and handled support escalations Ran technical due diligence on 4 acqui",
       "published_at": "2026-11-01T00:00:00.000Z",
-      "observed_at": "2026-11-03T19:03:54.719Z",
+      "observed_at": "2026-11-04T01:56:36.324Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -200,11 +118,88 @@
       "image_origin": "",
       "source_kind": "rss",
       "page_role": "unknown"
+    },
+    {
+      "url": "https://joshmuller.ca/recipes/desserts/gluten-free-chocolate-cake/",
+      "title": "Gluten-Free Chocolate Cake",
+      "summary": "Nutrition assumptions and sources",
+      "published_at": "2026-10-31T19:55:58.000Z",
+      "observed_at": "2026-11-04T01:56:36.324Z",
+      "content_type": "article",
+      "language": "en",
+      "dir": "",
+      "site_origin": "https://joshmuller.ca",
+      "site_title": "Josh Müller",
+      "domain": "joshmuller.ca",
+      "tags": [
+        {
+          "slug": "recipe",
+          "label": "recipe"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "recipe",
+          "label": "recipe"
+        }
+      ],
+      "image": "/assets/activity/posters/740a76bfeb5078c7042231dc3d28ff27380df09b88eb804be63c0abfd29f678b.webp",
+      "image_origin": "",
+      "source_kind": "rss",
+      "page_role": "article"
+    },
+    {
+      "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
+      "title": "Worth Wandering: Radio Aporee",
+      "summary": "A worldwide collection of field recordings that lets you explore the sounds of cities, forests, rivers, train stations and ordinary places, with experimental radio projects that turn listening into an entirely different way of experiencing the world.",
+      "published_at": "2026-10-30T14:00:00.000Z",
+      "observed_at": "2026-11-04T01:56:36.324Z",
+      "content_type": "article",
+      "language": "en",
+      "dir": "",
+      "site_origin": "https://joshuamorris.info",
+      "site_title": "Joshua Morris",
+      "domain": "joshuamorris.info",
+      "tags": [
+        {
+          "slug": "field-recording",
+          "label": "field recording"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "field-recording",
+          "label": "field recording"
+        }
+      ],
+      "image": "/assets/activity/posters/bd55e5a6e8a8b4b8e593596e876eb2d31f4a32beecea28adcfa36c210b00811f.webp",
+      "image_origin": "",
+      "source_kind": "atom",
+      "page_role": "article"
+    },
+    {
+      "url": "https://joshgr.com/writing/how-wizardly-words-invents-words/",
+      "title": "How Wizardly Words Invents Words",
+      "summary": "It takes what we know and infers new words between the lines",
+      "published_at": "2026-10-30T00:00:00.000Z",
+      "observed_at": "2026-11-04T01:56:36.324Z",
+      "content_type": "article",
+      "language": "en",
+      "dir": "",
+      "site_origin": "https://joshgr.com",
+      "site_title": "Joshua Grant",
+      "domain": "joshgr.com",
+      "tags": [],
+      "neighborhoods": [],
+      "image": "/assets/activity/posters/8d402470f9e309e86f40bbb8deab8d9a6f0f7756fe99ad17b2ce90f0f365a596.webp",
+      "image_origin": "",
+      "source_kind": "rss",
+      "page_role": "unknown"
     }
   ],
   "neighborhood": {
-    "slug": "private-ai",
-    "label": "private ai",
+    "slug": "refactor",
+    "label": "refactor",
     "member_count": 1
   },
   "connection": {
@@ -212,7 +207,7 @@
     "to": "https://joshmuller.ca",
     "relation": "content-link",
     "label": "linked to",
-    "from_title": "ArtLung ~ Joe Crawford",
+    "from_title": "Joe Crawford",
     "to_title": "Josh Müller",
     "href": "https://joshmuller.ca/",
     "page": "https://artlung.com/firehose/",

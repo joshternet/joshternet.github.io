@@ -57,8 +57,6 @@ import {
   youtubeWatchOriginsInWindow,
   resolveActivityWindowDays,
   publisherDisplayTitle,
-  sitesByOrigin,
-  interleaveImagedItems,
   dedupeCrosspostedContentItems,
   fairPerOriginLimit,
   contentTitleDedupeKey,
@@ -71,9 +69,6 @@ import {
   uniqueActivityItemsByUrl,
 } from "../../scripts/views/lib.mjs";
 import { isShowcaseChromePath } from "../../scripts/network/slash-pages.mjs";
-
-/** @type {string} Shared https poster for Showcase eligibility fixtures. */
-const SHOWCASE_POSTER = "https://cdn.example/poster.jpg";
 
 test("showcaseKind maps content types to Showcase labels", () => {
   assert.equal(showcaseKind("photograph"), "photography");
@@ -684,7 +679,6 @@ test("buildShowcaseItems highlights individual experiments and groups by kind", 
         site_origin: "https://joshuamorris.info",
         title: "Model viewer",
         summary: "Trion figures",
-        image: SHOWCASE_POSTER,
       },
       {
         content_type: "project",
@@ -698,7 +692,6 @@ test("buildShowcaseItems highlights individual experiments and groups by kind", 
         url: "https://joshtronic.com/games/age-of-combat/",
         site_origin: "https://joshtronic.com",
         title: "Age of Combat",
-        image: SHOWCASE_POSTER,
       },
       {
         content_type: "photograph",
@@ -774,7 +767,6 @@ test("buildMadeItems orders kinds A-Z and items by published_at within kind", ()
       site_origin: "https://b.example",
       title: "Pong",
       summary: "A browser pong clone with short matches.",
-      image: SHOWCASE_POSTER,
       published_at: "2026-09-01T00:00:00.000Z",
     },
   ]);
@@ -813,7 +805,6 @@ test("buildShowcaseItems is fair per origin and returns Showcase kind labels", (
         site_origin: "https://b.example",
         title: "Age of Combat",
         summary: "A browser fighting game with short matches.",
-        image: SHOWCASE_POSTER,
       },
     ],
     2,
@@ -1669,7 +1660,9 @@ test("showcaseKind: sheet_music content type returns sheet music (L690)", () => 
   assert.equal(showcaseKind("sheet_music"), "sheet music");
 });
 
-test("showcaseItemHasSubstance: sheet music with local /assets/ image returns true", () => {
+test("showcaseItemHasSubstance: sheet music with local /assets/ image returns true (L949-955 via L951)", () => {
+  // kind = "sheet music" → checks hasHttpsPoster (false) OR local /assets/ image (true).
+  // The /assets/ path short-circuits the || to true (line 951), line 952 not evaluated.
   const item = {
     url: "https://a.example/sheet/",
     content_type: "sheet_music",
@@ -1680,74 +1673,16 @@ test("showcaseItemHasSubstance: sheet music with local /assets/ image returns tr
   assert.equal(showcaseItemHasSubstance(item), true);
 });
 
-test("showcaseItemHasSubstance: sheet music with no image but long title returns true", () => {
+test("showcaseItemHasSubstance: sheet music with no image but long title returns true (L952)", () => {
+  // kind = "sheet music" → hasHttpsPoster false, image not /assets/ → L952: title.length >= 8 → true.
   const item = {
     url: "https://a.example/sheet/",
     content_type: "sheet_music",
     title: "Beethoven", // 9 chars >= 8
     summary: "",
+    // no image
   };
   assert.equal(showcaseItemHasSubstance(item), true);
-});
-
-test("showcaseItemHasSubstance: sheet music with short title and no image is empty", () => {
-  assert.equal(
-    showcaseItemHasSubstance({
-      url: "https://a.example/sheet/",
-      content_type: "sheet_music",
-      title: "Hi",
-    }),
-    false,
-  );
-});
-
-test("showcaseKindForItem: non-education events map to other", () => {
-  assert.equal(
-    showcaseKindForItem({
-      content_type: "event",
-      url: "https://a.example/meetup/weekly/",
-      title: "Weekly meetup",
-    }),
-    "other",
-  );
-  assert.equal(
-    showcaseKindForItem({
-      content_type: "event",
-      url: "https://a.example/study-hall/1/",
-      title: "Front End Study Hall",
-    }),
-    "education",
-  );
-});
-
-test("buildViewDocuments applies Map displayTitleOverrides", () => {
-  const views = buildViewDocuments({
-    network: [
-      {
-        origin: "https://plain.example",
-        domain: "plain.example",
-        title: "Plain",
-      },
-    ],
-    displayTitleOverrides: new Map([
-      ["https://plain.example", "Curated Plain"],
-    ]),
-    topics: { communities: [] },
-    content: { items: [] },
-    connections: { edges: [] },
-    generatedAt: "2026-11-01T00:00:00.000Z",
-    now: new Date("2026-11-01T00:00:00.000Z"),
-  });
-
-  assert.equal(views.site_views.sites[0]?.title, "Curated Plain");
-  assert.equal(
-    views.search_index.documents.find((doc) => doc.type === "site")?.title,
-    "Curated Plain",
-  );
-});
-
-test("publisherDisplayTitle recovers empty host from invalid https origin", () => {
-  assert.equal(publisherDisplayTitle({}, "https://"), "https://");
 });
 
 test("buildEventIcs: item without url or title falls back to dtstart for UID (L1692-1693)", () => {
@@ -1875,7 +1810,6 @@ test("isCreativeSeriesHubUrl excludes WWO hub when day toys exist", () => {
     site_origin: "https://joshuamorris.info",
     title: "Corkboard",
     summary: "A corkboard for notes and pins in the browser.",
-    image: SHOWCASE_POSTER,
   };
   const modelViewer = {
     content_type: "article",
@@ -1883,7 +1817,6 @@ test("isCreativeSeriesHubUrl excludes WWO hub when day toys exist", () => {
     site_origin: "https://joshuamorris.info",
     title: "Model viewer",
     summary: "Inspect Trion figures in the browser.",
-    image: SHOWCASE_POSTER,
   };
   const hubItem = {
     content_type: "collection",
@@ -1891,7 +1824,6 @@ test("isCreativeSeriesHubUrl excludes WWO hub when day toys exist", () => {
     site_origin: "https://joshuamorris.info",
     title: "Weird Web October 2026",
     summary: "Eight daily toys for Weird Web October.",
-    image: SHOWCASE_POSTER,
   };
   const dayItems = days.map((url, index) => ({
     content_type: "article",
@@ -1899,7 +1831,6 @@ test("isCreativeSeriesHubUrl excludes WWO hub when day toys exist", () => {
     site_origin: "https://joshuamorris.info",
     title: `Day toy ${index + 1}`,
     summary: "A Weird Web October day experiment with enough summary text.",
-    image: SHOWCASE_POSTER,
   }));
 
   const items = buildMadeItems(
@@ -2023,7 +1954,10 @@ test("publisherDisplayTitle lifts Chris Minnick from self-intro when title is ho
     ),
     "Chris Minnick",
   );
-  assert.equal(publisherDisplayTitle(null, "https://a.example"), "a.example");
+  assert.equal(
+    publisherDisplayTitle(null, "https://a.example"),
+    "https://a.example",
+  );
   assert.equal(publisherDisplayTitle("nope", ""), "");
   assert.equal(publisherDisplayTitle({}, ""), "");
   assert.equal(
@@ -2039,74 +1973,8 @@ test("publisherDisplayTitle lifts Chris Minnick from self-intro when title is ho
     "Chris Minnick",
   );
   assert.equal(
-    publisherDisplayTitle(
-      { title: "Host", domain: "chrisminnick.com" },
-      "https://www.chrisminnick.com",
-      "Forced Name",
-    ),
-    "Forced Name",
-  );
-  assert.equal(publisherDisplayTitle({}, "not-a-url"), "not-a-url");
-  assert.equal(
-    sitesByOrigin(
-      [
-        {
-          origin: "https://www.chrisminnick.com",
-          domain: "www.chrisminnick.com",
-        },
-      ],
-      new Map([["https://www.chrisminnick.com", "Map Override"]]),
-    ).get("https://www.chrisminnick.com")?.title,
-    "Map Override",
-  );
-  assert.equal(
-    sitesByOrigin(
-      [{ origin: "https://plain.example", domain: "plain.example" }],
-      /** @type {Map<string, string>} */ (
-        /** @type {unknown} */ ({ "https://plain.example": "Ignored" })
-      ),
-    ).get("https://plain.example")?.title,
-    "plain.example",
-  );
-  assert.equal(
     contentTitleDedupeKey("<b>4 Hours</b> for This Tiny Result?!"),
     "4 hours for this tiny result",
-  );
-});
-
-test("interleaveImagedItems alternates items with and without images", () => {
-  const interleaved = interleaveImagedItems([
-    { url: "https://a.example/1", image: "https://cdn.example/1.jpg" },
-    { url: "https://a.example/2", image: "" },
-    { url: "https://a.example/3", image: "/assets/activity/posters/x.webp" },
-    { url: "https://a.example/4" },
-  ]);
-
-  assert.deepEqual(
-    interleaved.map((item) => item.url),
-    [
-      "https://a.example/1",
-      "https://a.example/2",
-      "https://a.example/3",
-      "https://a.example/4",
-    ],
-  );
-
-  assert.deepEqual(
-    interleaveImagedItems([
-      { url: "https://a.example/a", image: "https://cdn.example/a.jpg" },
-      { url: "https://a.example/b", image: "https://cdn.example/b.jpg" },
-      { url: "https://a.example/c" },
-    ]).map((item) => item.url),
-    ["https://a.example/a", "https://a.example/c", "https://a.example/b"],
-  );
-  assert.deepEqual(
-    interleaveImagedItems([
-      { url: "https://a.example/a", image: "https://cdn.example/a.jpg" },
-      { url: "https://a.example/c" },
-      { url: "https://a.example/d" },
-    ]).map((item) => item.url),
-    ["https://a.example/a", "https://a.example/c", "https://a.example/d"],
   );
 });
 
@@ -2814,54 +2682,6 @@ test("compactContentItem keeps local activity poster paths", () => {
 
   assert.equal(compact?.image, "/assets/activity/posters/abc123.webp");
   assert.equal(compact?.image_origin, "");
-});
-
-test("compactContentItem falls back to network site screenshots", () => {
-  const compact = compactContentItem(
-    {
-      url: "https://joshgr.com/project/",
-      site_origin: "https://joshgr.com",
-      title: "Project",
-      content_type: "project",
-      image: "http://insecure.example/skip.jpg",
-    },
-    new Map([
-      [
-        "https://joshgr.com",
-        {
-          title: "Josh Grant",
-          domain: "joshgr.com",
-          screenshot: "/assets/network/sites/joshgr-com.webp",
-        },
-      ],
-    ]),
-    new Set(),
-  );
-
-  assert.equal(compact?.image, "/assets/network/sites/joshgr-com.webp");
-  assert.equal(compact?.image_origin, "");
-
-  const ignoredScreenshot = compactContentItem(
-    {
-      url: "https://joshgr.com/other/",
-      site_origin: "https://joshgr.com",
-      title: "Other",
-      content_type: "project",
-      image: "",
-    },
-    new Map([
-      [
-        "https://joshgr.com",
-        {
-          title: "Josh Grant",
-          domain: "joshgr.com",
-          screenshot: "/assets/elsewhere/not-a-site-shot.webp",
-        },
-      ],
-    ]),
-    new Set(),
-  );
-  assert.equal(ignoredScreenshot?.image, "");
 });
 
 test("isMadeContentItem requires creative-directory URLs for projects", () => {
@@ -3638,7 +3458,6 @@ test("elsewhere channels need a recent upload for Showcase and Activity", () => 
       origin: "https://a.example",
       domain: "a.example",
       title: "A Site",
-      screenshot: "/assets/network/sites/a-example.webp",
       elsewhere: [
         {
           network: "youtube",
@@ -3840,7 +3659,6 @@ test("showcaseItemsForActivity: observed_at alone does not admit undated works",
         summary: "A newly observed experiment without a publisher date.",
         site_origin: "https://a.example",
         observed_at: "2026-10-30T00:00:00.000Z",
-        image: SHOWCASE_POSTER,
       },
       {
         url: "https://a.example/experiments/dated/",
@@ -3850,7 +3668,6 @@ test("showcaseItemsForActivity: observed_at alone does not admit undated works",
         site_origin: "https://a.example",
         published_at: "2026-10-28T00:00:00.000Z",
         observed_at: "2026-11-01T00:00:00.000Z",
-        image: SHOWCASE_POSTER,
       },
     ],
     now,
@@ -4003,33 +3820,6 @@ test("Showcase books require published_at within one year", () => {
       { now },
     ),
     false,
-  );
-});
-
-test("undated shelf apps and named-root products stay Showcase-eligible", () => {
-  assert.equal(
-    isMadeContentItem({
-      content_type: "project",
-      url: "https://themorning.app/",
-      site_origin: "https://joshgr.com",
-      title: "The Morning App",
-      summary: "A first-party shelf app that may omit a publish date.",
-      image: SHOWCASE_POSTER,
-      source: { kind: "creative-homepage-shelf" },
-    }),
-    true,
-  );
-  assert.equal(
-    isMadeContentItem({
-      content_type: "project",
-      url: "https://studio.example/widget/",
-      site_origin: "https://studio.example",
-      title: "Widget",
-      summary: "A named-root studio product without a publish date.",
-      image: SHOWCASE_POSTER,
-      source: { kind: "creative-schema" },
-    }),
-    true,
   );
 });
 

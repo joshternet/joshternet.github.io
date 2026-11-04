@@ -1,8 +1,8 @@
 ---
 layout: topic
 title: "API articles from Joshternet websites"
-description: "Explore articles, notes, and projects about API from independent websites participating in Joshternet. Discover different perspectives and visit the original publishers."
-keywords: "API, Joshternet, independent websites, Topics, shared interests"
+description: "Explore API articles, notes, and projects published by independent websites in the Joshternet—an open, decentralized network for Joshes."
+keywords: "API, Joshternet, independent websites, Josh network, topic neighborhood"
 slug: "api"
 permalink: /topics/api/
 robots: max-snippet:160, max-image-preview:large

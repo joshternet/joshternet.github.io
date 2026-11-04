@@ -1,16 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-03T19:23:29.852Z",
-  "overlap_count": 85,
+  "generated_at": "2026-11-04T02:13:11.052Z",
+  "overlap_count": 97,
   "pairs": [
     {
       "a": "https://artlung.com",
       "b": "https://joshbeard.com",
       "topics": [
-        {
-          "slug": "october",
-          "label": "october"
-        },
         {
           "slug": "photos",
           "label": "photos"
@@ -29,6 +25,24 @@
     },
     {
       "a": "https://artlung.com",
+      "b": "https://joshgr.com",
+      "topics": [
+        {
+          "slug": "language",
+          "label": "language"
+        },
+        {
+          "slug": "music",
+          "label": "music"
+        },
+        {
+          "slug": "photos",
+          "label": "photos"
+        }
+      ]
+    },
+    {
+      "a": "https://artlung.com",
       "b": "https://joshmuller.ca",
       "topics": [
         {
@@ -38,10 +52,6 @@
         {
           "slug": "full",
           "label": "full"
-        },
-        {
-          "slug": "october",
-          "label": "october"
         },
         {
           "slug": "week",
@@ -154,10 +164,6 @@
         {
           "slug": "social-media",
           "label": "social media"
-        },
-        {
-          "slug": "would",
-          "label": "would"
         }
       ]
     },
@@ -202,10 +208,6 @@
         {
           "slug": "live",
           "label": "live"
-        },
-        {
-          "slug": "october",
-          "label": "october"
         },
         {
           "slug": "video",
@@ -264,10 +266,6 @@
           "label": "Computer"
         },
         {
-          "slug": "learning",
-          "label": "learning"
-        },
-        {
           "slug": "music",
           "label": "music"
         },
@@ -284,10 +282,6 @@
         {
           "slug": "book",
           "label": "books"
-        },
-        {
-          "slug": "october",
-          "label": "october"
         },
         {
           "slug": "privacy",
@@ -348,6 +342,16 @@
         {
           "slug": "side-project",
           "label": "side projects"
+        }
+      ]
+    },
+    {
+      "a": "https://joshbeard.com",
+      "b": "https://joshgr.com",
+      "topics": [
+        {
+          "slug": "photos",
+          "label": "photos"
         }
       ]
     },
@@ -445,7 +449,7 @@
       "topics": [
         {
           "slug": "room",
-          "label": "rooms"
+          "label": "room"
         }
       ]
     },
@@ -455,7 +459,17 @@
       "topics": [
         {
           "slug": "room",
-          "label": "rooms"
+          "label": "room"
+        }
+      ]
+    },
+    {
+      "a": "https://joshghent.com",
+      "b": "https://joshgr.com",
+      "topics": [
+        {
+          "slug": "software",
+          "label": "Software"
         }
       ]
     },
@@ -620,6 +634,116 @@
         {
           "slug": "week",
           "label": "weeks"
+        }
+      ]
+    },
+    {
+      "a": "https://joshgr.com",
+      "b": "https://joshozuna.com",
+      "topics": [
+        {
+          "slug": "music",
+          "label": "music"
+        },
+        {
+          "slug": "photos",
+          "label": "photos"
+        }
+      ]
+    },
+    {
+      "a": "https://joshgr.com",
+      "b": "https://joshternet.org",
+      "topics": [
+        {
+          "slug": "music",
+          "label": "music"
+        },
+        {
+          "slug": "software",
+          "label": "Software"
+        }
+      ]
+    },
+    {
+      "a": "https://joshgr.com",
+      "b": "https://joshtronic.com",
+      "topics": [
+        {
+          "slug": "music",
+          "label": "music"
+        }
+      ]
+    },
+    {
+      "a": "https://joshgr.com",
+      "b": "https://joshua.seigler.net",
+      "topics": [
+        {
+          "slug": "music",
+          "label": "music"
+        },
+        {
+          "slug": "software",
+          "label": "Software"
+        }
+      ]
+    },
+    {
+      "a": "https://joshgr.com",
+      "b": "https://joshuadrake.org",
+      "topics": [
+        {
+          "slug": "software",
+          "label": "Software"
+        }
+      ]
+    },
+    {
+      "a": "https://joshgr.com",
+      "b": "https://joshuamorris.info",
+      "topics": [
+        {
+          "slug": "software",
+          "label": "Software"
+        },
+        {
+          "slug": "world",
+          "label": "world"
+        }
+      ]
+    },
+    {
+      "a": "https://joshgr.com",
+      "b": "https://joshuastuebner.com",
+      "topics": [
+        {
+          "slug": "photos",
+          "label": "photos"
+        },
+        {
+          "slug": "world",
+          "label": "world"
+        }
+      ]
+    },
+    {
+      "a": "https://joshgr.com",
+      "b": "https://www.chrisminnick.com",
+      "topics": [
+        {
+          "slug": "music",
+          "label": "music"
+        }
+      ]
+    },
+    {
+      "a": "https://joshgr.com",
+      "b": "https://www.joshfinnie.com",
+      "topics": [
+        {
+          "slug": "world",
+          "label": "world"
         }
       ]
     },
@@ -821,7 +945,7 @@
         },
         {
           "slug": "room",
-          "label": "rooms"
+          "label": "room"
         },
         {
           "slug": "simple",
@@ -1110,10 +1234,6 @@
           "label": "ai"
         },
         {
-          "slug": "learning",
-          "label": "learning"
-        },
-        {
           "slug": "music",
           "label": "music"
         },
@@ -1182,10 +1302,6 @@
       "b": "https://joshuamorris.info",
       "topics": [
         {
-          "slug": "care",
-          "label": "cares"
-        },
-        {
           "slug": "software",
           "label": "Software"
         }
@@ -1223,14 +1339,6 @@
       "a": "https://joshua.seigler.net",
       "b": "https://www.joshuabaker.com",
       "topics": [
-        {
-          "slug": "government",
-          "label": "government"
-        },
-        {
-          "slug": "health",
-          "label": "health"
-        },
         {
           "slug": "social",
           "label": "social"
@@ -1400,10 +1508,6 @@
           "label": "ai"
         },
         {
-          "slug": "challenge",
-          "label": "challenges"
-        },
-        {
           "slug": "coding",
           "label": "coding"
         },
@@ -1476,10 +1580,6 @@
         {
           "slug": "javascript",
           "label": "javascript"
-        },
-        {
-          "slug": "learning",
-          "label": "learning"
         }
       ]
     },
@@ -1532,20 +1632,12 @@
           "label": "books"
         },
         {
-          "slug": "challenge",
-          "label": "challenges"
-        },
-        {
           "slug": "claude",
           "label": "claude"
         },
         {
           "slug": "claude-code",
           "label": "claude-code"
-        },
-        {
-          "slug": "job",
-          "label": "job"
         }
       ]
     },
@@ -1766,7 +1858,7 @@
             {
               "origin": "https://joshuastuebner.com",
               "domain": "joshuastuebner.com",
-              "title": "Joshuas very own page",
+              "title": "Joshua Stübner",
               "articles": [
                 {
                   "url": "https://joshuastuebner.com/experiments/ex/14_css-only-countup/",
@@ -2027,12 +2119,31 @@
               "title": "Joshua Morris",
               "articles": [
                 {
-                  "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-                  "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
-                },
-                {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-                  "title": "Analog"
+                  "title": "6 Analog"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "language",
+          "label": "language",
+          "articles": [
+            {
+              "url": "https://artlung.com/html/",
+              "title": "/html/"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/wizardly-words/",
+                  "title": "Wizardly Words"
                 }
               ]
             }
@@ -2105,21 +2216,6 @@
                 {
                   "url": "https://joshuastuebner.com/experiments/ex/04_silvester/",
                   "title": "04: Silvester"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "www.chrisminnick.com",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-                  "title": "AI Helped Their Grades—Then Crushed the Learning"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=qTt9ReZNmz4",
-                  "title": "She Says She Hates Learning—Then Starts Over From Zero"
                 }
               ]
             }
@@ -2292,6 +2388,17 @@
               ]
             },
             {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/music/",
+                  "title": "Music"
+                }
+              ]
+            },
+            {
               "origin": "https://joshua.seigler.net",
               "domain": "joshua.seigler.net",
               "title": "Joshua Seigler",
@@ -2310,106 +2417,6 @@
                 {
                   "url": "https://www.chrisminnick.com/music-for-losers/",
                   "title": "Music For Losers"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "october",
-          "label": "october",
-          "articles": [
-            {
-              "url": "https://www.youtube.com/watch?v=mBZeHOHfrXo",
-              "title": "CSSBattle for OCTOBER 31 (2026)"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=HJqMT15pEYg",
-              "title": "CSSBattle for OCTOBER 30 (2026)"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=etjRb2EaxWQ",
-              "title": "CSSBattle for OCTOBER 29 (2026)"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=qBA2ttdhnaQ",
-              "title": "CSSBattle for OCTOBER 28 (2026)"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=HcUV90vm2ow",
-              "title": "CSSBattle for OCTOBER 27 (2026) Corner-Shape Talk Follow-Up!"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=xg3F_T_aM7Q",
-              "title": "CSSBattle for OCTOBER 27 (2026) a fun one!"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=IOLsMCkvy10",
-              "title": "CSSBattle for OCTOBER 26 (2026)"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=FhQ8JMTPs9c",
-              "title": "CSSBattle for OCTOBER 25 (2026)"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshbeard.com",
-              "domain": "joshbeard.com",
-              "title": "Josh Beard",
-              "articles": [
-                {
-                  "url": "https://joshbeard.com/photos/2016/fullsizeoutput_3225_jpg.html",
-                  "title": "Pumpkin at Long Lake, Indian Peaks Wilderness, Colorado. October 16, 2016 - Josh Beard"
-                },
-                {
-                  "url": "https://joshbeard.com/photos/2017/20171008-lake-isabelle-1_jpg.html",
-                  "title": "Lake Isabelle, Indian Peaks Wilderness, Colorado. October 8, 2017. - Josh Beard"
-                },
-                {
-                  "url": "https://joshbeard.com/photos/2019/2019-catamount-1_jpg.html",
-                  "title": "Near Woodland Park, Colorado. October 1, 2019. - Josh Beard"
-                },
-                {
-                  "url": "https://joshbeard.com/photos/2019/2019-catamount-2_jpg.html",
-                  "title": "Catamount Trails near Pikes Peak, Colorado. October 1, 2019. - Josh Beard"
-                },
-                {
-                  "url": "https://joshbeard.com/photos/2019/glen-eyrie-1_jpg.html",
-                  "title": "Glen Eyrie Castle, Colorado. October, 2019. - Josh Beard"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshfinnie.com",
-              "domain": "www.joshfinnie.com",
-              "title": "Josh Finnie",
-              "articles": [
-                {
-                  "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
-                  "title": "The October Micro SaaS Challenge: A Retro"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshmuller.ca",
-              "domain": "joshmuller.ca",
-              "title": "Josh Müller",
-              "articles": [
-                {
-                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
-                  "title": "Healthy Weight Plan Builder"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/",
-                  "title": "Weird Web October 2026 Interactive Halloween browser toys and games, one October theme at a time."
                 }
               ]
             }
@@ -2480,6 +2487,17 @@
                 {
                   "url": "https://joshozuna.com/",
                   "title": "35mm Film Photography Gallery"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/photos/",
+                  "title": "Photos"
                 }
               ]
             },
@@ -2581,17 +2599,6 @@
           ],
           "sites": [
             {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
-              "articles": [
-                {
-                  "url": "https://www.chrisminnick.com/books/",
-                  "title": "Books"
-                }
-              ]
-            },
-            {
               "origin": "https://joshuadrake.org",
               "domain": "joshuadrake.org",
               "title": "Joshua Drake",
@@ -2599,6 +2606,17 @@
                 {
                   "url": "https://joshuadrake.org/projects/ingersollrandcompressor/",
                   "title": "Ingersoll Rand Compressor"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "www.chrisminnick.com",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/",
+                  "title": "Books"
                 }
               ]
             }
@@ -2957,29 +2975,6 @@
               ]
             }
           ]
-        },
-        {
-          "slug": "would",
-          "label": "would",
-          "articles": [
-            {
-              "url": "https://artlung.com/blog/2026/10/22/2027-web-platform-ranking/",
-              "title": "When I was first creating for the web, “The Web Platform” was made up of “whatever Microsoft and Netscape thought would help them obliterate the other.” A lot of what that meant? Write two sets of code to do the same thing. I can probably still write the F"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Joshua Seigler",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=_5PwQKW62to",
-                  "title": "Would You Trust This Corporation?"
-                }
-              ]
-            }
-          ]
         }
       ]
     },
@@ -3047,7 +3042,7 @@
               "articles": [
                 {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-                  "title": "Analog"
+                  "title": "6 Analog"
                 }
               ]
             }
@@ -3199,45 +3194,6 @@
           ],
           "sites": [
             {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=mBZeHOHfrXo",
-                  "title": "CSSBattle for OCTOBER 31 (2026)"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=HJqMT15pEYg",
-                  "title": "CSSBattle for OCTOBER 30 (2026)"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=etjRb2EaxWQ",
-                  "title": "CSSBattle for OCTOBER 29 (2026)"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=qBA2ttdhnaQ",
-                  "title": "CSSBattle for OCTOBER 28 (2026)"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=HcUV90vm2ow",
-                  "title": "CSSBattle for OCTOBER 27 (2026) Corner-Shape Talk Follow-Up!"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=xg3F_T_aM7Q",
-                  "title": "CSSBattle for OCTOBER 27 (2026) a fun one!"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=IOLsMCkvy10",
-                  "title": "CSSBattle for OCTOBER 26 (2026)"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=FhQ8JMTPs9c",
-                  "title": "CSSBattle for OCTOBER 25 (2026)"
-                }
-              ]
-            },
-            {
               "origin": "https://www.joshfinnie.com",
               "domain": "www.joshfinnie.com",
               "title": "Josh Finnie",
@@ -3351,7 +3307,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/flickr/",
@@ -3379,6 +3335,17 @@
               ]
             },
             {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/photos/",
+                  "title": "Photos"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuastuebner.com",
               "domain": "joshuastuebner.com",
               "title": "Joshua Stübner",
@@ -3398,7 +3365,7 @@
       "topics": [
         {
           "slug": "room",
-          "label": "rooms",
+          "label": "room",
           "articles": [
             {
               "url": "https://joshcox.co.uk/the-crypt/",
@@ -3538,32 +3505,12 @@
                   "title": "Books"
                 },
                 {
-                  "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
-                  "title": "The Ballmer Peak in the Age of AI Coding"
+                  "url": "https://www.chrisminnick.com/books/a-developers-guide-to-integrating-generative-ai-into-applications/",
+                  "title": "A Developer’s Guide to Integrating Generative AI into Applications"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=bOA4eNEzZHc",
-                  "title": "AI Can’t Replace People"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=Zv4zeOOOSKk",
-                  "title": "Use AI to Crush Job Interviews"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=Drr_KEhfckQ",
-                  "title": "Should AI Tutors Be Allowed at All?"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=s25MA8ol6BI",
-                  "title": "AI Tutors Steal From Teachers Too"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=vitTt7vtPXg",
-                  "title": "AI Tutors Won’t Tell You You Stink"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-                  "title": "AI Helped Their Grades—Then Crushed the Learning"
+                  "url": "https://www.chrisminnick.com/books/coding-with-ai-for-dummies/",
+                  "title": "Coding with AI For Dummies"
                 }
               ]
             }
@@ -3796,6 +3743,17 @@
               ]
             },
             {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/software/",
+                  "title": "Software"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
@@ -3807,10 +3765,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
                   "title": "Worth Wandering: Pippin Barr"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-                  "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
                 }
               ]
             },
@@ -3867,7 +3821,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
@@ -3939,6 +3893,344 @@
                 {
                   "url": "https://www.joshuabaker.com/work/?work=showstudio-london-fashion-week-2006",
                   "title": "London Fashion Week"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "origin": "https://joshgr.com",
+      "topics": [
+        {
+          "slug": "language",
+          "label": "language",
+          "articles": [
+            {
+              "url": "https://joshgr.com/wizardly-words/",
+              "title": "Wizardly Words"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/html/",
+                  "title": "/html/"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "music",
+          "label": "music",
+          "articles": [
+            {
+              "url": "https://joshgr.com/music/",
+              "title": "Music"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/amiga/",
+                  "title": "/amiga/"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1984-pirate-music-102/",
+                  "title": "Pirate Music 102*"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/1986-thurtean/",
+                  "title": "THURT-EAN MUZIC(music) no. 13"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/chanukah-music/",
+                  "title": "Chanukah Music (playlist by David Shanske)"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/photo/vinyl-record-shelf-collection-35mm",
+                  "title": "Own the Music"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/games/idol-idle/",
+                  "title": "Idol Idle"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshternet.org",
+              "domain": "joshternet.org",
+              "title": "Joshternet",
+              "articles": [
+                {
+                  "url": "https://joshternet.org/showcase/",
+                  "title": "Showcase"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/music/",
+                  "title": "/music"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "www.chrisminnick.com",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/music-for-losers/",
+                  "title": "Music For Losers"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "photos",
+          "label": "photos",
+          "articles": [
+            {
+              "url": "https://joshgr.com/photos/",
+              "title": "Photos"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/flickr/",
+                  "title": "/flickr/ 📁"
+                },
+                {
+                  "url": "https://artlung.com/pfp/",
+                  "title": "/pfp/"
+                },
+                {
+                  "url": "https://artlung.com/photos/",
+                  "title": "/photos/ 📁"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshbeard.com",
+              "domain": "joshbeard.com",
+              "title": "Josh Beard",
+              "articles": [
+                {
+                  "url": "https://joshbeard.com/photos/",
+                  "title": "Photos"
+                },
+                {
+                  "url": "https://joshbeard.com/photos/2014/",
+                  "title": "My Photos from 2014"
+                },
+                {
+                  "url": "https://joshbeard.com/photos/2015/",
+                  "title": "My Photos from 2015"
+                },
+                {
+                  "url": "https://joshbeard.com/photos/2016/",
+                  "title": "My Photos from 2016, including hikes around Colorado"
+                },
+                {
+                  "url": "https://joshbeard.com/photos/2017/",
+                  "title": "My Photos from 2017, including hikes around Colorado"
+                },
+                {
+                  "url": "https://joshbeard.com/photos/2018/",
+                  "title": "My Photos from 2018, including hikes around Colorado"
+                },
+                {
+                  "url": "https://joshbeard.com/photos/2018/2018-herman-gulch-01_jpg.html",
+                  "title": "Herman Gulch, Colorado. September 9, 2018. Photos from a hike at Herman Gulch, Colorado in September, 2018. This was a trail with plenty of beautiful scenery of mountain peaks, dense forest, open meadows, long views, creeks, and a lake. Though there was pl"
+                },
+                {
+                  "url": "https://joshbeard.com/photos/2019/",
+                  "title": "An assortment of photos from 2019, including a road trip through Colorado and to the Grand Canyon."
+                }
+              ]
+            },
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/",
+                  "title": "35mm Film Photography Gallery"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/heuschrecke-messe/",
+                  "title": "Heuschrecke Messe"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "software",
+          "label": "Software",
+          "articles": [
+            {
+              "url": "https://joshgr.com/software/",
+              "title": "Software"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/enterprise-sales-teams/",
+                  "title": "Enterprise sales teams, please, I beg you, stop"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshternet.org",
+              "domain": "joshternet.org",
+              "title": "Joshternet",
+              "articles": [
+                {
+                  "url": "https://joshternet.org/showcase/",
+                  "title": "Showcase"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+                  "title": "Cessna HV Retrofit"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
+                  "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
+                  "title": "Worth Wandering: Pippin Barr"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/books/",
+                  "title": "/books"
+                },
+                {
+                  "url": "https://joshua.seigler.net/music/",
+                  "title": "/music"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "world",
+          "label": "world",
+          "articles": [
+            {
+              "url": "https://joshgr.com/wizardly-words/",
+              "title": "Wizardly Words"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/projects/beerledge/",
+                  "title": "BeerLedge BeerLedge is a website that allows you to check in beers that you've drank in a post-privacy world."
+                },
+                {
+                  "url": "https://www.joshfinnie.com/projects/tikicompass/",
+                  "title": "TikiCompass.com TikiCompass is your ultimate guide to discovering authentic tiki bars around the world, featuring tropical cocktails, Polynesian culture, and a vibrant community of tiki enthusiasts."
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
+                  "title": "Worth Wandering: Radio Aporee"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
+                  "title": "What Happens When a Webpage Becomes Part of a 3D World?"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/21_colorful-entry/",
+                  "title": "21: Colorful Entry"
                 }
               ]
             }
@@ -4052,32 +4344,12 @@
                   "title": "Books"
                 },
                 {
-                  "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
-                  "title": "The Ballmer Peak in the Age of AI Coding"
+                  "url": "https://www.chrisminnick.com/books/a-developers-guide-to-integrating-generative-ai-into-applications/",
+                  "title": "A Developer’s Guide to Integrating Generative AI into Applications"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=bOA4eNEzZHc",
-                  "title": "AI Can’t Replace People"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=Zv4zeOOOSKk",
-                  "title": "Use AI to Crush Job Interviews"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=Drr_KEhfckQ",
-                  "title": "Should AI Tutors Be Allowed at All?"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=s25MA8ol6BI",
-                  "title": "AI Tutors Steal From Teachers Too"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=vitTt7vtPXg",
-                  "title": "AI Tutors Won’t Tell You You Stink"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-                  "title": "AI Helped Their Grades—Then Crushed the Learning"
+                  "url": "https://www.chrisminnick.com/books/coding-with-ai-for-dummies/",
+                  "title": "Coding with AI For Dummies"
                 }
               ]
             }
@@ -4145,7 +4417,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/flash/",
@@ -4202,7 +4474,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/splashes/",
@@ -4272,45 +4544,6 @@
             }
           ],
           "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=mBZeHOHfrXo",
-                  "title": "CSSBattle for OCTOBER 31 (2026)"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=HJqMT15pEYg",
-                  "title": "CSSBattle for OCTOBER 30 (2026)"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=etjRb2EaxWQ",
-                  "title": "CSSBattle for OCTOBER 29 (2026)"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=qBA2ttdhnaQ",
-                  "title": "CSSBattle for OCTOBER 28 (2026)"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=HcUV90vm2ow",
-                  "title": "CSSBattle for OCTOBER 27 (2026) Corner-Shape Talk Follow-Up!"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=xg3F_T_aM7Q",
-                  "title": "CSSBattle for OCTOBER 27 (2026) a fun one!"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=IOLsMCkvy10",
-                  "title": "CSSBattle for OCTOBER 26 (2026)"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=FhQ8JMTPs9c",
-                  "title": "CSSBattle for OCTOBER 25 (2026)"
-                }
-              ]
-            },
             {
               "origin": "https://joshbeard.com",
               "domain": "joshbeard.com",
@@ -4524,7 +4757,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
@@ -4754,7 +4987,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blog/2026/10/24/programming-and-dog-walking/",
@@ -4959,7 +5192,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/amiga/",
@@ -4998,6 +5231,17 @@
                 {
                   "url": "https://joshternet.org/showcase/",
                   "title": "Showcase"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/music/",
+                  "title": "Music"
                 }
               ]
             },
@@ -5100,7 +5344,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/flickr/",
@@ -5152,6 +5396,17 @@
                 {
                   "url": "https://joshbeard.com/photos/2019/",
                   "title": "An assortment of photos from 2019, including a road trip through Colorado and to the Grand Canyon."
+                }
+              ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/photos/",
+                  "title": "Photos"
                 }
               ]
             },
@@ -5247,7 +5502,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/mixtapes/robots/",
@@ -5263,7 +5518,7 @@
         },
         {
           "slug": "room",
-          "label": "rooms",
+          "label": "room",
           "articles": [
             {
               "url": "https://joshozuna.com/photo/digital-text-light-installation-gallery-35mm",
@@ -5415,7 +5670,7 @@
               "articles": [
                 {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
-                  "title": "Organic"
+                  "title": "7 Organic"
                 }
               ]
             }
@@ -5434,7 +5689,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/reels/",
@@ -5489,7 +5744,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/art/",
@@ -5527,7 +5782,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/mixtapes/2021-morning-draft/",
@@ -5616,7 +5871,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/amiga/",
@@ -5655,6 +5910,17 @@
                 {
                   "url": "https://joshtronic.com/games/idol-idle/",
                   "title": "Idol Idle"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/music/",
+                  "title": "Music"
                 }
               ]
             },
@@ -5715,6 +5981,17 @@
               ]
             },
             {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/software/",
+                  "title": "Software"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
@@ -5726,10 +6003,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
                   "title": "Worth Wandering: Pippin Barr"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-                  "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
                 }
               ]
             },
@@ -5797,7 +6070,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/cssbattles/",
@@ -5842,7 +6115,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
@@ -5932,7 +6205,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/wordpress/",
@@ -6106,32 +6379,12 @@
                   "title": "Books"
                 },
                 {
-                  "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
-                  "title": "The Ballmer Peak in the Age of AI Coding"
+                  "url": "https://www.chrisminnick.com/books/a-developers-guide-to-integrating-generative-ai-into-applications/",
+                  "title": "A Developer’s Guide to Integrating Generative AI into Applications"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=bOA4eNEzZHc",
-                  "title": "AI Can’t Replace People"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=Zv4zeOOOSKk",
-                  "title": "Use AI to Crush Job Interviews"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=Drr_KEhfckQ",
-                  "title": "Should AI Tutors Be Allowed at All?"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=s25MA8ol6BI",
-                  "title": "AI Tutors Steal From Teachers Too"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=vitTt7vtPXg",
-                  "title": "AI Tutors Won’t Tell You You Stink"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-                  "title": "AI Helped Their Grades—Then Crushed the Learning"
+                  "url": "https://www.chrisminnick.com/books/coding-with-ai-for-dummies/",
+                  "title": "Coding with AI For Dummies"
                 }
               ]
             }
@@ -6150,7 +6403,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
@@ -6245,7 +6498,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/comics/",
@@ -6279,7 +6532,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/comics/",
@@ -6301,21 +6554,6 @@
                   "title": "04: Silvester"
                 }
               ]
-            },
-            {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "www.chrisminnick.com",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-                  "title": "AI Helped Their Grades—Then Crushed the Learning"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=qTt9ReZNmz4",
-                  "title": "She Says She Hates Learning—Then Starts Over From Zero"
-                }
-              ]
             }
           ]
         },
@@ -6332,7 +6570,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/reels/",
@@ -6389,7 +6627,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/amiga/",
@@ -6428,6 +6666,17 @@
                 {
                   "url": "https://joshternet.org/showcase/",
                   "title": "Showcase"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/music/",
+                  "title": "Music"
                 }
               ]
             },
@@ -6533,7 +6782,7 @@
               "articles": [
                 {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
-                  "title": "Organic"
+                  "title": "7 Organic"
                 }
               ]
             }
@@ -6629,7 +6878,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
@@ -6780,7 +7029,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blogofthe-day/",
@@ -6817,107 +7066,6 @@
           ]
         },
         {
-          "slug": "care",
-          "label": "cares",
-          "articles": [
-            {
-              "url": "https://www.youtube.com/watch?v=fFoXyFmmGBQ",
-              "title": "How Government Solved the Health Care Crisis - Animation"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/22/what-i-learned-from-susanne-rockwell/",
-                  "title": "What I Learned From Susanne Rockwell"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "government",
-          "label": "government",
-          "articles": [
-            {
-              "url": "https://www.youtube.com/watch?v=A8pcb4xyCic",
-              "title": "Law Without Government. Robert P. Murphy."
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=fFoXyFmmGBQ",
-              "title": "How Government Solved the Health Care Crisis - Animation"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.joshuabaker.com",
-              "domain": "www.joshuabaker.com",
-              "title": "Joshua Baker",
-              "articles": [
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=milken-institute-american-dream-prosperity-index-2022",
-                  "title": "American Dream Prosperity Index"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=legatum-institute-united-states-prosperity-index-2020",
-                  "title": "United States Prosperity Index"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/not-optional/",
-                  "title": "Not Optional"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=baron-livermore-thirty-six-strategy-2012",
-                  "title": "Thirty Six Strategy"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=legacy-corporation-queen-elizabeth-olympic-park-2012",
-                  "title": "Queen Elizabeth Olympic Park"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=money-advice-service-money-map-2011",
-                  "title": "Money Map"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=olympics-countdown-2011",
-                  "title": "Countdown"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "health",
-          "label": "health",
-          "articles": [
-            {
-              "url": "https://www.youtube.com/watch?v=fFoXyFmmGBQ",
-              "title": "How Government Solved the Health Care Crisis - Animation"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.joshuabaker.com",
-              "domain": "www.joshuabaker.com",
-              "title": "Joshua Baker",
-              "articles": [
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=pure-sports-medicine-services-platform-workflows-2022",
-                  "title": "Services Platform & Workflows"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=pure-sports-medicine-pure-sports-medicine-2015",
-                  "title": "Pure Sports Medicine"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "music",
           "label": "music",
           "articles": [
@@ -6930,7 +7078,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/amiga/",
@@ -6984,6 +7132,17 @@
               ]
             },
             {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/music/",
+                  "title": "Music"
+                }
+              ]
+            },
+            {
               "origin": "https://www.chrisminnick.com",
               "domain": "www.chrisminnick.com",
               "title": "www.chrisminnick.com",
@@ -7013,7 +7172,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
@@ -7078,7 +7237,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
@@ -7163,6 +7322,17 @@
               ]
             },
             {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/software/",
+                  "title": "Software"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
@@ -7174,10 +7344,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
                   "title": "Worth Wandering: Pippin Barr"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-                  "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
                 }
               ]
             }
@@ -7255,29 +7421,6 @@
                 {
                   "url": "https://www.joshuabaker.com/work/the-dots/",
                   "title": "The Dots"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "would",
-          "label": "would",
-          "articles": [
-            {
-              "url": "https://www.youtube.com/watch?v=_5PwQKW62to",
-              "title": "Would You Trust This Corporation?"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/blog/2026/10/22/2027-web-platform-ranking/",
-                  "title": "When I was first creating for the web, “The Web Platform” was made up of “whatever Microsoft and Netscape thought would help them obliterate the other.” A lot of what that meant? Write two sets of code to do the same thing. I can probably still write the F"
                 }
               ]
             }
@@ -7363,7 +7506,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/amiga/",
@@ -7424,7 +7567,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blog/2026/10/28/novelty-wave/",
@@ -7512,7 +7655,7 @@
             {
               "origin": "https://joshuastuebner.com",
               "domain": "joshuastuebner.com",
-              "title": "Joshuas very own page",
+              "title": "Joshua Stübner",
               "articles": [
                 {
                   "url": "https://joshuastuebner.com/projects/details/ui-design-tool/",
@@ -7535,7 +7678,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
@@ -7581,7 +7724,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blog/2026/10/24/programming-and-dog-walking/",
@@ -7596,7 +7739,7 @@
             {
               "origin": "https://www.chrisminnick.com",
               "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
+              "title": "www.chrisminnick.com",
               "articles": [
                 {
                   "url": "https://www.chrisminnick.com/books/",
@@ -7622,12 +7765,12 @@
               "title": "Joshua P. Steele",
               "articles": [
                 {
-                  "url": "https://joshuapsteele.com/resist/",
-                  "title": "Resist ✊"
-                },
-                {
                   "url": "https://joshuapsteele.com/resources/",
                   "title": "Resources"
+                },
+                {
+                  "url": "https://joshuapsteele.com/resist/",
+                  "title": "Resist ✊"
                 }
               ]
             }
@@ -7666,6 +7809,17 @@
               ]
             },
             {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/software/",
+                  "title": "Software"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
@@ -7677,10 +7831,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
                   "title": "Worth Wandering: Pippin Barr"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-                  "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
                 }
               ]
             },
@@ -7859,7 +8009,7 @@
             {
               "origin": "https://joshuastuebner.com",
               "domain": "joshuastuebner.com",
-              "title": "Joshuas very own page",
+              "title": "Joshua Stübner",
               "articles": [
                 {
                   "url": "https://joshuastuebner.com/projects/details/ui-design-tool/",
@@ -7977,32 +8127,12 @@
                   "title": "Books"
                 },
                 {
-                  "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
-                  "title": "The Ballmer Peak in the Age of AI Coding"
+                  "url": "https://www.chrisminnick.com/books/a-developers-guide-to-integrating-generative-ai-into-applications/",
+                  "title": "A Developer’s Guide to Integrating Generative AI into Applications"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=bOA4eNEzZHc",
-                  "title": "AI Can’t Replace People"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=Zv4zeOOOSKk",
-                  "title": "Use AI to Crush Job Interviews"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=Drr_KEhfckQ",
-                  "title": "Should AI Tutors Be Allowed at All?"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=s25MA8ol6BI",
-                  "title": "AI Tutors Steal From Teachers Too"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=vitTt7vtPXg",
-                  "title": "AI Tutors Won’t Tell You You Stink"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-                  "title": "AI Helped Their Grades—Then Crushed the Learning"
+                  "url": "https://www.chrisminnick.com/books/coding-with-ai-for-dummies/",
+                  "title": "Coding with AI For Dummies"
                 }
               ]
             }
@@ -8014,7 +8144,7 @@
           "articles": [
             {
               "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-              "title": "Analog"
+              "title": "6 Analog"
             }
           ],
           "sites": [
@@ -8075,7 +8205,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/art/",
@@ -8132,10 +8262,6 @@
               "title": "Firefox Is Quietly Making the Web More Capable"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-              "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
-            },
-            {
               "url": "https://joshuamorris.info/experiments/weird-web-october-2026/",
               "title": "Weird Web October 2026 Interactive Halloween browser toys and games, one October theme at a time."
             },
@@ -8152,7 +8278,7 @@
             {
               "origin": "https://joshuastuebner.com",
               "domain": "joshuastuebner.com",
-              "title": "Joshuas very own page",
+              "title": "Joshua Stübner",
               "articles": [
                 {
                   "url": "https://joshuastuebner.com/projects/details/achtung-die-kurve/",
@@ -8161,29 +8287,6 @@
                 {
                   "url": "https://joshuastuebner.com/projects/details/testaccount-manager/",
                   "title": "Testaccount manager"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "care",
-          "label": "cares",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/22/what-i-learned-from-susanne-rockwell/",
-              "title": "What I Learned From Susanne Rockwell"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Joshua Seigler",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=fFoXyFmmGBQ",
-                  "title": "How Government Solved the Health Care Crisis - Animation"
                 }
               ]
             }
@@ -8209,17 +8312,6 @@
                   "title": "The October Micro SaaS Challenge: A Retro"
                 }
               ]
-            },
-            {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "www.chrisminnick.com",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=BJgbX21HEkY",
-                  "title": "Challenge Checkin: Crochet with Arthritis, Morse Code by Ear"
-                }
-              ]
             }
           ]
         },
@@ -8238,10 +8330,6 @@
               "domain": "www.chrisminnick.com",
               "title": "www.chrisminnick.com",
               "articles": [
-                {
-                  "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
-                  "title": "The Ballmer Peak in the Age of AI Coding"
-                },
                 {
                   "url": "https://www.chrisminnick.com/books/coding-all-in-one-for-dummies/",
                   "title": "Coding All-in-One For Dummies, 3rd Edition"
@@ -8275,7 +8363,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/comics/",
@@ -8294,7 +8382,7 @@
             {
               "origin": "https://joshuastuebner.com",
               "domain": "joshuastuebner.com",
-              "title": "Joshuas very own page",
+              "title": "Joshua Stübner",
               "articles": [
                 {
                   "url": "https://joshuastuebner.com/experiments/ex/14_css-only-countup/",
@@ -8447,19 +8535,15 @@
           "label": "Internet",
           "articles": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-              "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
-            },
-            {
               "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-              "title": "Analog"
+              "title": "6 Analog"
             }
           ],
           "sites": [
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/videos/",
@@ -8540,7 +8624,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/mixtapes/2016-live-and-let-live/",
@@ -8560,45 +8644,6 @@
             }
           ],
           "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=mBZeHOHfrXo",
-                  "title": "CSSBattle for OCTOBER 31 (2026)"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=HJqMT15pEYg",
-                  "title": "CSSBattle for OCTOBER 30 (2026)"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=etjRb2EaxWQ",
-                  "title": "CSSBattle for OCTOBER 29 (2026)"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=qBA2ttdhnaQ",
-                  "title": "CSSBattle for OCTOBER 28 (2026)"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=HcUV90vm2ow",
-                  "title": "CSSBattle for OCTOBER 27 (2026) Corner-Shape Talk Follow-Up!"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=xg3F_T_aM7Q",
-                  "title": "CSSBattle for OCTOBER 27 (2026) a fun one!"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=IOLsMCkvy10",
-                  "title": "CSSBattle for OCTOBER 26 (2026)"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=FhQ8JMTPs9c",
-                  "title": "CSSBattle for OCTOBER 25 (2026)"
-                }
-              ]
-            },
             {
               "origin": "https://joshbeard.com",
               "domain": "joshbeard.com",
@@ -8675,7 +8720,7 @@
         },
         {
           "slug": "room",
-          "label": "rooms",
+          "label": "room",
           "articles": [
             {
               "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spark/",
@@ -8794,10 +8839,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
               "title": "Worth Wandering: Pippin Barr"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-              "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
             }
           ],
           "sites": [
@@ -8835,6 +8876,17 @@
               ]
             },
             {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/software/",
+                  "title": "Software"
+                }
+              ]
+            },
+            {
               "origin": "https://joshua.seigler.net",
               "domain": "joshua.seigler.net",
               "title": "Joshua Seigler",
@@ -8857,7 +8909,7 @@
           "articles": [
             {
               "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
-              "title": "Organic"
+              "title": "7 Organic"
             }
           ],
           "sites": [
@@ -8925,7 +8977,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/cssbattles/",
@@ -8987,6 +9039,17 @@
               ]
             },
             {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/wizardly-words/",
+                  "title": "Wizardly Words"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuastuebner.com",
               "domain": "joshuastuebner.com",
               "title": "Joshua Stübner",
@@ -9016,7 +9079,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/images/",
@@ -9092,12 +9155,12 @@
           "label": "resources",
           "articles": [
             {
-              "url": "https://joshuapsteele.com/resist/",
-              "title": "Resist ✊"
-            },
-            {
               "url": "https://joshuapsteele.com/resources/",
               "title": "Resources"
+            },
+            {
+              "url": "https://joshuapsteele.com/resist/",
+              "title": "Resist ✊"
             }
           ],
           "sites": [
@@ -9231,10 +9294,6 @@
                   "title": "Firefox Is Quietly Making the Web More Capable"
                 },
                 {
-                  "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-                  "title": "The Internet's Trust Problem Was a Private Key With the Value 4"
-                },
-                {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/",
                   "title": "Weird Web October 2026 Interactive Halloween browser toys and games, one October theme at a time."
                 },
@@ -9275,7 +9334,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/comics/",
@@ -9317,7 +9376,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blog/2026/10/28/novelty-wave/",
@@ -9432,7 +9491,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
@@ -9619,7 +9678,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/comics/",
@@ -9653,7 +9712,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/comics/",
@@ -9675,21 +9734,6 @@
                   "title": "Learning a New Tech Stack with an LLM"
                 }
               ]
-            },
-            {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "www.chrisminnick.com",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-                  "title": "AI Helped Their Grades—Then Crushed the Learning"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=qTt9ReZNmz4",
-                  "title": "She Says She Hates Learning—Then Starts Over From Zero"
-                }
-              ]
             }
           ]
         },
@@ -9706,7 +9750,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/reels/",
@@ -9774,7 +9818,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/flickr/",
@@ -9837,6 +9881,17 @@
                 {
                   "url": "https://joshozuna.com/",
                   "title": "35mm Film Photography Gallery"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/photos/",
+                  "title": "Photos"
                 }
               ]
             }
@@ -9925,6 +9980,17 @@
               ]
             },
             {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/wizardly-words/",
+                  "title": "Wizardly Words"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
@@ -9955,32 +10021,12 @@
               "title": "Books"
             },
             {
-              "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
-              "title": "The Ballmer Peak in the Age of AI Coding"
+              "url": "https://www.chrisminnick.com/books/a-developers-guide-to-integrating-generative-ai-into-applications/",
+              "title": "A Developer’s Guide to Integrating Generative AI into Applications"
             },
             {
-              "url": "https://www.youtube.com/watch?v=bOA4eNEzZHc",
-              "title": "AI Can’t Replace People"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=Zv4zeOOOSKk",
-              "title": "Use AI to Crush Job Interviews"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=Drr_KEhfckQ",
-              "title": "Should AI Tutors Be Allowed at All?"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=s25MA8ol6BI",
-              "title": "AI Tutors Steal From Teachers Too"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=vitTt7vtPXg",
-              "title": "AI Tutors Won’t Tell You You Stink"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-              "title": "AI Helped Their Grades—Then Crushed the Learning"
+              "url": "https://www.chrisminnick.com/books/coding-with-ai-for-dummies/",
+              "title": "Coding with AI For Dummies"
             }
           ],
           "sites": [
@@ -10097,7 +10143,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blogofthe-day/",
@@ -10124,40 +10170,6 @@
                 {
                   "url": "https://joshua.seigler.net/books/",
                   "title": "/books"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "challenge",
-          "label": "challenges",
-          "articles": [
-            {
-              "url": "https://www.youtube.com/watch?v=BJgbX21HEkY",
-              "title": "Challenge Checkin: Crochet with Arthritis, Morse Code by Ear"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.joshfinnie.com",
-              "domain": "www.joshfinnie.com",
-              "title": "Josh Finnie",
-              "articles": [
-                {
-                  "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
-                  "title": "The October Micro SaaS Challenge: A Retro"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/fake/",
-                  "title": "3 Fake"
                 }
               ]
             }
@@ -10255,10 +10267,6 @@
           "label": "coding",
           "articles": [
             {
-              "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
-              "title": "The Ballmer Peak in the Age of AI Coding"
-            },
-            {
               "url": "https://www.chrisminnick.com/books/coding-all-in-one-for-dummies/",
               "title": "Coding All-in-One For Dummies, 3rd Edition"
             },
@@ -10302,7 +10310,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/amiga/",
@@ -10382,82 +10390,6 @@
           ]
         },
         {
-          "slug": "job",
-          "label": "job",
-          "articles": [
-            {
-              "url": "https://www.youtube.com/watch?v=Zv4zeOOOSKk",
-              "title": "Use AI to Crush Job Interviews"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.joshfinnie.com",
-              "domain": "www.joshfinnie.com",
-              "title": "Josh Finnie",
-              "articles": [
-                {
-                  "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
-                  "title": "Micro SaaS Week Four: SignedOnSite"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "learning",
-          "label": "learning",
-          "articles": [
-            {
-              "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-              "title": "AI Helped Their Grades—Then Crushed the Learning"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=qTt9ReZNmz4",
-              "title": "She Says She Hates Learning—Then Starts Over From Zero"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/comics/",
-                  "title": "artlung.com/comics/"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/machine-learning-healing/",
-                  "title": "Machine Learning Healing"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuastuebner.com",
-              "domain": "joshuastuebner.com",
-              "title": "Joshua Stübner",
-              "articles": [
-                {
-                  "url": "https://joshuastuebner.com/experiments/ex/04_silvester/",
-                  "title": "04: Silvester"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "music",
           "label": "music",
           "articles": [
@@ -10470,7 +10402,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/amiga/",
@@ -10524,6 +10456,17 @@
               ]
             },
             {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/music/",
+                  "title": "Music"
+                }
+              ]
+            },
+            {
               "origin": "https://joshua.seigler.net",
               "domain": "joshua.seigler.net",
               "title": "Joshua Seigler",
@@ -10549,7 +10492,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blog/2026/10/24/programming-and-dog-walking/",
@@ -10761,32 +10704,12 @@
                   "title": "Books"
                 },
                 {
-                  "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
-                  "title": "The Ballmer Peak in the Age of AI Coding"
+                  "url": "https://www.chrisminnick.com/books/a-developers-guide-to-integrating-generative-ai-into-applications/",
+                  "title": "A Developer’s Guide to Integrating Generative AI into Applications"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=bOA4eNEzZHc",
-                  "title": "AI Can’t Replace People"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=Zv4zeOOOSKk",
-                  "title": "Use AI to Crush Job Interviews"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=Drr_KEhfckQ",
-                  "title": "Should AI Tutors Be Allowed at All?"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=s25MA8ol6BI",
-                  "title": "AI Tutors Steal From Teachers Too"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=vitTt7vtPXg",
-                  "title": "AI Tutors Won’t Tell You You Stink"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-                  "title": "AI Helped Their Grades—Then Crushed the Learning"
+                  "url": "https://www.chrisminnick.com/books/coding-with-ai-for-dummies/",
+                  "title": "Coding with AI For Dummies"
                 }
               ]
             }
@@ -10805,7 +10728,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blogofthe-day/",
@@ -10859,17 +10782,6 @@
                 {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/fake/",
                   "title": "3 Fake"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "www.chrisminnick.com",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=BJgbX21HEkY",
-                  "title": "Challenge Checkin: Crochet with Arthritis, Morse Code by Ear"
                 }
               ]
             }
@@ -10990,29 +10902,6 @@
           ]
         },
         {
-          "slug": "job",
-          "label": "job",
-          "articles": [
-            {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
-              "title": "Micro SaaS Week Four: SignedOnSite"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=Zv4zeOOOSKk",
-                  "title": "Use AI to Crush Job Interviews"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "october",
           "label": "october",
           "articles": [
@@ -11022,45 +10911,6 @@
             }
           ],
           "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=mBZeHOHfrXo",
-                  "title": "CSSBattle for OCTOBER 31 (2026)"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=HJqMT15pEYg",
-                  "title": "CSSBattle for OCTOBER 30 (2026)"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=etjRb2EaxWQ",
-                  "title": "CSSBattle for OCTOBER 29 (2026)"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=qBA2ttdhnaQ",
-                  "title": "CSSBattle for OCTOBER 28 (2026)"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=HcUV90vm2ow",
-                  "title": "CSSBattle for OCTOBER 27 (2026) Corner-Shape Talk Follow-Up!"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=xg3F_T_aM7Q",
-                  "title": "CSSBattle for OCTOBER 27 (2026) a fun one!"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=IOLsMCkvy10",
-                  "title": "CSSBattle for OCTOBER 26 (2026)"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=FhQ8JMTPs9c",
-                  "title": "CSSBattle for OCTOBER 25 (2026)"
-                }
-              ]
-            },
             {
               "origin": "https://joshbeard.com",
               "domain": "joshbeard.com",
@@ -11186,7 +11036,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/privacy-policy/",
@@ -11263,7 +11113,7 @@
             {
               "origin": "https://forwardbias.dev",
               "domain": "forwardbias.dev",
-              "title": "forwardbias.dev",
+              "title": "Josh Caldwell",
               "articles": [
                 {
                   "url": "https://forwardbias.dev/ideas/",
@@ -11286,7 +11136,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
@@ -11374,7 +11224,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/cssbattles/",
@@ -11427,7 +11277,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
@@ -11510,6 +11360,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/wizardly-words/",
+                  "title": "Wizardly Words"
+                }
+              ]
+            },
             {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
@@ -11646,32 +11507,12 @@
                   "title": "Books"
                 },
                 {
-                  "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
-                  "title": "The Ballmer Peak in the Age of AI Coding"
+                  "url": "https://www.chrisminnick.com/books/a-developers-guide-to-integrating-generative-ai-into-applications/",
+                  "title": "A Developer’s Guide to Integrating Generative AI into Applications"
                 },
                 {
-                  "url": "https://www.youtube.com/watch?v=bOA4eNEzZHc",
-                  "title": "AI Can’t Replace People"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=Zv4zeOOOSKk",
-                  "title": "Use AI to Crush Job Interviews"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=Drr_KEhfckQ",
-                  "title": "Should AI Tutors Be Allowed at All?"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=s25MA8ol6BI",
-                  "title": "AI Tutors Steal From Teachers Too"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=vitTt7vtPXg",
-                  "title": "AI Tutors Won’t Tell You You Stink"
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-                  "title": "AI Helped Their Grades—Then Crushed the Learning"
+                  "url": "https://www.chrisminnick.com/books/coding-with-ai-for-dummies/",
+                  "title": "Coding with AI For Dummies"
                 }
               ]
             }
@@ -11914,7 +11755,7 @@
             {
               "origin": "https://joshuastuebner.com",
               "domain": "joshuastuebner.com",
-              "title": "Joshuas very own page",
+              "title": "Joshua Stübner",
               "articles": [
                 {
                   "url": "https://joshuastuebner.com/projects/details/ui-design-tool/",
@@ -11941,7 +11782,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
@@ -12049,7 +11890,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/splashes/",
@@ -12143,84 +11984,6 @@
           ]
         },
         {
-          "slug": "government",
-          "label": "government",
-          "articles": [
-            {
-              "url": "https://www.joshuabaker.com/work/?work=milken-institute-american-dream-prosperity-index-2022",
-              "title": "American Dream Prosperity Index"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=legatum-institute-united-states-prosperity-index-2020",
-              "title": "United States Prosperity Index"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/not-optional/",
-              "title": "Not Optional"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=baron-livermore-thirty-six-strategy-2012",
-              "title": "Thirty Six Strategy"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=legacy-corporation-queen-elizabeth-olympic-park-2012",
-              "title": "Queen Elizabeth Olympic Park"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=money-advice-service-money-map-2011",
-              "title": "Money Map"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=olympics-countdown-2011",
-              "title": "Countdown"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Joshua Seigler",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=A8pcb4xyCic",
-                  "title": "Law Without Government. Robert P. Murphy."
-                },
-                {
-                  "url": "https://www.youtube.com/watch?v=fFoXyFmmGBQ",
-                  "title": "How Government Solved the Health Care Crisis - Animation"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "health",
-          "label": "health",
-          "articles": [
-            {
-              "url": "https://www.joshuabaker.com/work/?work=pure-sports-medicine-services-platform-workflows-2022",
-              "title": "Services Platform & Workflows"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=pure-sports-medicine-pure-sports-medicine-2015",
-              "title": "Pure Sports Medicine"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Joshua Seigler",
-              "articles": [
-                {
-                  "url": "https://www.youtube.com/watch?v=fFoXyFmmGBQ",
-                  "title": "How Government Solved the Health Care Crisis - Animation"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "machine-learning",
           "label": "Machine learning",
           "articles": [
@@ -12241,7 +12004,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/mixtapes/machine-learning-healing/",
@@ -12384,7 +12147,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/privacy-policy/",
@@ -12561,7 +12324,7 @@
             {
               "origin": "https://joshuastuebner.com",
               "domain": "joshuastuebner.com",
-              "title": "Joshuas very own page",
+              "title": "Joshua Stübner",
               "articles": [
                 {
                   "url": "https://joshuastuebner.com/experiments/ex/20_css-shrinking-search/",
@@ -12584,7 +12347,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
@@ -12649,7 +12412,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
@@ -12776,7 +12539,7 @@
               "articles": [
                 {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
-                  "title": "Organic"
+                  "title": "7 Organic"
                 }
               ]
             }
@@ -12872,7 +12635,7 @@
             {
               "origin": "https://artlung.com",
               "domain": "artlung.com",
-              "title": "ArtLung ~ Joe Crawford",
+              "title": "Joe Crawford",
               "articles": [
                 {
                   "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
