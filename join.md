@@ -105,7 +105,7 @@ Publishing a valid declaration establishes participation. JoshBot discovering an
       changing the rest of your site. You do not need to switch publishing
       systems merely to participate.
     </p>
-    <ul class="join-platforms" data-join-platforms>
+    <ul class="join-platforms list-stack" data-join-platforms>
       {% for platform in site.data.platforms_nav %}
         <li>
           <a
@@ -231,7 +231,7 @@ Publishing a valid declaration establishes participation. JoshBot discovering an
       owners, and seeing what everyone is making. Once JoshBot verifies and lists
       your site, other visitors can find you in the Network, too.
     </p>
-    <ul class="join-celebrate">
+    <ul class="join-celebrate list-stack">
       <li>
         <a
           href="{{ '/network/' | relative_url }}"

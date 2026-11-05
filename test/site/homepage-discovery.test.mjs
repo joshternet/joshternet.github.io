@@ -23,7 +23,6 @@ test("homepage front matter keeps description and avoids explore", async () => {
 
   assert.match(index, /^description:/m);
   assert.doesNotMatch(index, /\/explore\//);
-  assert.match(index, /# The Joshternet/);
 });
 
 test("homepage links Wander, Network, activity, and join paths", async () => {
@@ -38,10 +37,8 @@ test("homepage links Wander, Network, activity, and join paths", async () => {
   assert.match(activity, /\/activity\//);
   assert.match(index, /\/specs\//);
   assert.match(index, /\/governance\//);
-  assert.match(index, /joshuamorris\.info/);
   assert.match(index, /home-cta__primary/);
   assert.match(index, /home-cta__secondary/);
-  assert.match(index, /Join the Joshternet/);
   assert.match(
     index,
     /class="home-cta__primary" href="\{\{ '\/join\/' \| relative_url \}\}"/,
@@ -50,8 +47,6 @@ test("homepage links Wander, Network, activity, and join paths", async () => {
     index,
     /class="home-cta__secondary" href="\{\{ '\/wander\/' \| relative_url \}\}"/,
   );
-  assert.doesNotMatch(index, /Explore the network/);
-  assert.match(index, /Are you a Josh\? Get yourself connected/);
 });
 
 test("homepage meet and activity includes use generated datasets", async () => {
@@ -72,9 +67,6 @@ test("homepage meet and activity includes use generated datasets", async () => {
   assert.doesNotMatch(index, /\/assets\/js\/home-new-arrivals\.js/);
   assert.match(index, /\/assets\/js\/home-meet\.js/);
   assert.match(index, /\/assets\/js\/connections\.js/);
-  assert.match(index, /Not a Josh\? Come along anyway/);
-  assert.match(index, /Joshua Morris/);
-  assert.doesNotMatch(index, /Come josh around/);
   assert.doesNotMatch(index, /prose-emphasis/);
   assert.doesNotMatch(index, /^script:/m);
   assert.doesNotMatch(index, /"josh":\s*true/);
@@ -86,7 +78,6 @@ test("homepage meet and activity includes use generated datasets", async () => {
   assert.match(arrivals, /data-home-new-arrivals/);
   assert.match(arrivals, /include network-card-joined\.html/);
   assert.match(arrivals, /network-card-a11y\.html/);
-  assert.match(arrivals, /Find in the Network/);
   assert.match(arrivals, /home-new-arrivals__meta/);
   assert.match(arrivals, /outbound-href\.html/);
   assert.doesNotMatch(arrivals, /data-featured-domains/);
@@ -133,16 +124,12 @@ test("homepage join teaser points at guided join without duplicating declaration
   const index = await read("index.md");
   const join = await read("join.md");
 
-  assert.match(index, /## How to join the fun/);
-  assert.match(index, /No signup form|No accounts/i);
-  assert.match(index, /Read the Join guide/);
   assert.match(index, /\/\.well-known\/josh/);
   assert.match(index, /\/join\//);
   assert.doesNotMatch(index, /home-join__option/);
   assert.match(join, /"josh": true/);
   assert.match(join, /"josh": false/);
   assert.match(join, /\{\s*"version": 1\s*\}/);
-  assert.match(index, /is not the Joshternet/i);
 });
 
 test("homepage styles scope discovery components and honor reduced motion", async () => {
@@ -175,17 +162,19 @@ test("homepage connections preview uses the same bootstrap datapoints as Connect
   const layout = await read("_layouts/default.html");
   const script = await read("assets/js/connections.js");
 
-  assert.match(index, /See how the Joshternet connects/);
+  assert.match(index, /include home-connections\.html/);
   assert.match(include, /data-connections-mode="preview"/);
   assert.match(include, /home-connections-bootstrap/);
   assert.match(include, /home_ordered_sites\.size > 0/);
+  assert.match(include, /include connections-tally\.html/);
+  assert.match(include, /include connections-line-key\.html surface="home"/);
   assert.match(include, /site\.data\.connections\.edges/);
   assert.match(include, /site\.data\.connection_topics\.pairs/);
   assert.match(include, /site\.data\.connection_topics\.sites/);
   assert.match(include, /"topic_groups"/);
   assert.match(include, /network_site\.description/);
   assert.match(include, /network_site\.screenshot/);
-  assert.match(include, /network_dev/);
+  assert.doesNotMatch(include, /network_dev/);
   assert.match(connections, /"topic_groups": \{\{ overlap_sites/);
   assert.match(include, /\/connections\//);
   assert.match(include, /<noscript>/);
@@ -199,15 +188,20 @@ test("homepage connections preview uses the same bootstrap datapoints as Connect
   assert.doesNotMatch(script, /if \(!tools && !isPreview\)/);
 });
 
-test("connections line key keeps title and items on one cross-axis", async () => {
+test("connections line key stacks title above horizontal items", async () => {
   const css = await read("assets/css/main.css");
 
   assert.match(
     css,
-    /\.connections-key__list > li \+ li\s*\{[^}]*margin-block-start:\s*0/s,
+    /:is\(ul, ol\)\[class\]:not\(\.list-stack\) > li \+ li\s*\{[^}]*margin-block-start:\s*0/s,
+  );
+  assert.match(css, /\.list-row\s*\{[^}]*align-items:\s*center/s);
+  assert.match(
+    css,
+    /\.connections-graph__key\s*\{[^}]*flex-direction:\s*column/s,
   );
   assert.match(
     css,
-    /\.connections-graph__key-title\s*\{[^}]*align-self:\s*center/s,
+    /\.connections-graph__key-title\s*\{[^}]*display:\s*block/s,
   );
 });

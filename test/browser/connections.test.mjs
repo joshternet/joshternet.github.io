@@ -242,6 +242,59 @@ test("HTML relationship lists and reciprocal edges are visible without selection
   assert.equal(await page.locator("[data-connection-origin]").count(), 3);
   assert.equal(await page.locator(".connections-graph__node").count(), 3);
   assert.equal(await page.locator(".connections-graph__node text").count(), 3);
+  const labelReadability = await page
+    .locator(".connections-graph__node")
+    .first()
+    .evaluate((node) => {
+      const label = node.querySelector(".connections-graph__label");
+      const plate = node.querySelector(".connections-graph__label-plate");
+
+      if (!label || !plate) {
+        return null;
+      }
+
+      const labelBox = label.getBoundingClientRect();
+      const plateBox = plate.getBoundingClientRect();
+      const svg = label.ownerSVGElement;
+      const view = svg.viewBox.baseVal;
+      const scale = Math.min(
+        svg.clientWidth / view.width,
+        svg.clientHeight / view.height,
+      );
+
+      return {
+        fontPx: Number(label.getAttribute("font-size")) * scale,
+        covers:
+          plateBox.left <= labelBox.left + 0.5 &&
+          plateBox.top <= labelBox.top + 0.5 &&
+          plateBox.right >= labelBox.right - 0.5 &&
+          plateBox.bottom >= labelBox.bottom - 0.5,
+      };
+    });
+
+  assert.ok(labelReadability);
+  assert.ok(labelReadability.fontPx >= 12);
+  assert.equal(labelReadability.covers, true);
+
+  const beforeZoom = labelReadability.fontPx;
+
+  await page.locator("[data-connections-zoom-in]").click();
+
+  const afterZoom = await page
+    .locator(".connections-graph__label")
+    .first()
+    .evaluate((label) => {
+      const svg = label.ownerSVGElement;
+      const view = svg.viewBox.baseVal;
+      const scale = Math.min(
+        svg.clientWidth / view.width,
+        svg.clientHeight / view.height,
+      );
+
+      return Number(label.getAttribute("font-size")) * scale;
+    });
+
+  assert.ok(Math.abs(afterZoom - beforeZoom) < 2);
   assert.equal(
     await page
       .locator("[data-relation-filters] input[type='checkbox']")
@@ -358,7 +411,7 @@ test("empty connections and single participant still boot the graph", async () =
   });
 
   assert.equal(await page.locator(".connections-graph__node").count(), 1);
-  await page.locator(".connections-graph__node").click();
+  await page.locator(".connections-graph__node-core").click();
   const detail = await page.locator("[data-connections-detail]").innerText();
   assert.match(detail, /Solo/);
   assert.match(
@@ -378,7 +431,7 @@ test("keyboard selection and Escape clear work", async () => {
   assert.equal(await page.locator(".connections-site.is-selected").count(), 1);
 
   const scrollBefore = await page.evaluate(() => window.scrollY);
-  await page.locator(".connections-graph__node").first().click();
+  await page.locator(".connections-graph__node-core").first().click();
   assert.equal(await page.evaluate(() => window.scrollY), scrollBefore);
   assert.equal(
     await page.locator("[data-connections-detail]").isVisible(),
@@ -747,7 +800,7 @@ test("shared-topic bubble shows one-way link direction between the pair", async 
   await context.close();
 });
 
-test("chart map centers Joshternet, spreads sites, and pans inside the viewport", async () => {
+test("chart map omits joshternet.org, spreads members, and pans inside the viewport", async () => {
   const { context, page } = await connectionsPage({
     participants: [
       {
@@ -764,6 +817,13 @@ test("chart map centers Joshternet, spreads sites, and pans inside the viewport"
         description: "Alpha",
         screenshot: "",
       },
+      {
+        origin: "https://b.example",
+        domain: "b.example",
+        title: "Site B",
+        description: "Beta",
+        screenshot: "",
+      },
     ],
     connections: [
       {
@@ -774,22 +834,43 @@ test("chart map centers Joshternet, spreads sites, and pans inside the viewport"
         rel: [],
         page: "https://joshternet.org/",
       },
+      {
+        from: "https://a.example",
+        to: "https://b.example",
+        href: "https://b.example/",
+        text: "B",
+        rel: [],
+        page: "https://a.example/",
+      },
     ],
   });
 
-  const hub = page.locator(
-    '.connections-graph__node[data-origin="https://joshternet.org"] circle',
+  assert.equal(
+    await page
+      .locator('.connections-graph__node[data-origin="https://joshternet.org"]')
+      .count(),
+    0,
   );
-  const other = page.locator(
+  assert.equal(
+    await page
+      .locator(
+        '.connections-graph__edge[data-edge-key*="joshternet.org"], .connections-graph__link[data-edge-key*="joshternet.org"]',
+      )
+      .count(),
+    0,
+  );
+
+  const siteA = page.locator(
     '.connections-graph__node[data-origin="https://a.example"] circle',
   );
-  const hubX = Number(await hub.getAttribute("cx"));
-  const hubY = Number(await hub.getAttribute("cy"));
-  const otherX = Number(await other.getAttribute("cx"));
-  const otherY = Number(await other.getAttribute("cy"));
-  assert.equal(hubX, 0);
-  assert.equal(hubY, 0);
-  assert.ok(Math.hypot(otherX - hubX, otherY - hubY) >= 240);
+  const siteB = page.locator(
+    '.connections-graph__node[data-origin="https://b.example"] circle',
+  );
+  const aX = Number(await siteA.getAttribute("cx"));
+  const aY = Number(await siteA.getAttribute("cy"));
+  const bX = Number(await siteB.getAttribute("cx"));
+  const bY = Number(await siteB.getAttribute("cy"));
+  assert.ok(Math.hypot(bX - aX, bY - aY) >= 200);
 
   /**
    * @param {string | null} value
@@ -805,8 +886,10 @@ test("chart map centers Joshternet, spreads sites, and pans inside the viewport"
   const svg = page.locator(".connections-graph__svg");
   const start = viewBoxParts(await svg.getAttribute("viewBox"));
   assert.equal(start.length, 4);
-  assert.ok(Math.abs(start[0] + start[2] / 2 - hubX) < 1);
-  assert.ok(Math.abs(start[1] + start[3] / 2 - hubY) < 1);
+  const centerX = (aX + bX) / 2;
+  const centerY = (aY + bY) / 2;
+  assert.ok(Math.abs(start[0] + start[2] / 2 - centerX) < 1);
+  assert.ok(Math.abs(start[1] + start[3] / 2 - centerY) < 1);
 
   await page.locator("[data-connections-zoom-in]").evaluate((button) => {
     button.click();
@@ -850,8 +933,8 @@ test("chart map centers Joshternet, spreads sites, and pans inside the viewport"
     button.click();
   });
   const reset = viewBoxParts(await svg.getAttribute("viewBox"));
-  assert.ok(Math.abs(reset[0] + reset[2] / 2 - hubX) < 1);
-  assert.ok(Math.abs(reset[1] + reset[3] / 2 - hubY) < 1);
+  assert.ok(Math.abs(reset[0] + reset[2] / 2 - centerX) < 1);
+  assert.ok(Math.abs(reset[1] + reset[3] / 2 - centerY) < 1);
 
   await context.close();
 });

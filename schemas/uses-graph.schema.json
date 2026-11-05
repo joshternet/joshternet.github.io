@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://joshternet.org/schemas/uses-graph.schema.json",
+  "title": "Uses typed usage graph",
+  "type": "object",
+  "required": ["schema_version", "period", "nodes", "edges"],
+  "properties": {
+    "schema_version": { "type": "integer", "minimum": 1 },
+    "period": { "type": "string" },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "label"],
+        "properties": {
+          "id": { "type": "string" },
+          "kind": {
+            "type": "string",
+            "enum": ["member", "tool", "category", "usecase"]
+          },
+          "label": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "relation"],
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "relation": {
+            "type": "string",
+            "enum": ["uses", "classified_as", "used_for", "co_used_with"]
+          },
+          "evidence_event_id": { "type": "string" },
+          "member_count": { "type": "integer", "minimum": 0 }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

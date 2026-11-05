@@ -35,6 +35,7 @@ import {
   captureShowcasePosterFallbacks,
   collectProjectionItemsNeedingPosters,
 } from "./work-screenshots.mjs";
+import { writeSeekingViewFromState } from "../nlp/seeking.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "../..");
 
@@ -188,6 +189,10 @@ export async function buildViewProjections(root = ROOT) {
   // made.json ≡ showcase.json from one document so the alias cannot drift.
   await writeShowcaseAliasFiles(dataDir, views.showcase);
   await writeStableJSON(path.join(dataDir, "happening.json"), views.happening);
+
+  // Seeking public view is build-local and gitignored; refresh from ephemeral
+  // state without mixing request text into content/search projections.
+  await writeSeekingViewFromState(root);
 
   // Generate iCalendar file when upcoming events exist.
   const happeningItems = Array.isArray(views.happening.items)

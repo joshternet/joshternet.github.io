@@ -23,30 +23,7 @@ happen when one interesting website leads to another. Connections is a look at
 how independent websites around the Joshternet link to one another, share
 interesting things, and occasionally end up exploring the same ideas.
 
-Follow a line, pick a website, or have a look at the links people have published.
-You might discover two sites that know about each other, or two people working on
-similar things who have never crossed paths.
-
-Each circle represents a participating website. The lines show links JoshBot has
-observed between websites, along with shared topics that might give you another
-reason to explore. Select a website or a line to see what connects them. An arrow
-points from the website containing a link toward the website it references.
-Sometimes the connection goes both ways, but plenty of links are one-way, just as
-they are across the rest of the web.
-
-Dashed lines show websites with published work about similar subjects. That
-doesn't mean the publishers know each other or have linked to one another—it
-simply gives you another path worth exploring. A blogroll is a list of websites
-somebody has chosen to link to; it's one of the old web's better ideas, and a
-lovely way to find people worth reading.
-
-Prefer following links to moving circles around? The website lists below show the
-same observed connections, with links to the original pages.
-
 {% assign network_sites = site.data.network %}
-{% if jekyll.environment == "development" %}
-{% assign network_sites = network_sites | concat: site.data.network_dev %}
-{% endif %}
 {% assign hub_origin = "https://joshternet.org" %}
 {% assign member_sites = "" | split: "" %}
 {% assign hub_sites = "" | split: "" %}
@@ -57,7 +34,11 @@ same observed connections, with links to the original pages.
     {% assign member_sites = member_sites | push: network_site %}
   {% endif %}
 {% endfor %}
-{% assign ordered_sites = member_sites | concat: hub_sites %}
+{% comment %}
+  Chart participants are members only. Hub membership spokes are infrastructure,
+  not peer discovery edges worth highlighting on the map.
+{% endcomment %}
+{% assign ordered_sites = member_sites %}
 {% assign connection_edges = site.data.connections.edges | default: empty %}
 {% assign overlap_sites = site.data.connection_topics.sites | default: empty %}
 {% assign overlap_pairs = site.data.connection_topics.pairs | default: empty %}
@@ -88,27 +69,7 @@ same observed connections, with links to the original pages.
 
 {% assign participant_count = ordered_sites.size | default: 0 %}
 
-<p class="network-count" aria-live="polite">
-  <strong data-connections-participant-count>{{ participant_count }}</strong>
-  <span>
-    {% if participant_count == 1 %}participating site{% else %}participating sites{% endif %}
-  </span>
-  ·
-  <strong data-connections-count>{{ connected_site_count }}</strong>
-  <span>
-    {% if connected_site_count == 1 %}site with observed links{% else %}sites with observed links{% endif %}
-  </span>
-  ·
-  <strong data-connections-edge-count>{{ connection_edges | size }}</strong>
-  <span>
-    {% if connection_edges.size == 1 %}observed link{% else %}observed links{% endif %}
-  </span>
-  ·
-  <strong data-connections-topic-count>{{ overlap_pair_count }}</strong>
-  <span>
-    {% if overlap_pair_count == 1 %}site pair with shared topics{% else %}site pairs with shared topics{% endif %}
-  </span>
-</p>
+{% include connections-tally.html %}
 
 {% if participant_count > 0 %}
 <div
@@ -144,39 +105,10 @@ same observed connections, with links to the original pages.
     <div class="connections-graph__footer">
       <fieldset class="connections-graph__filters" data-relation-filters>
         <legend class="visually-hidden">Show on the graph</legend>
-        <div class="connections-filter__list" data-relation-filter-list>
-          <span class="connections-filter__label">Show on the graph</span>
-        </div>
+        <span class="connections-filter__label" aria-hidden="true">Show on the graph</span>
+        <div class="connections-filter__list" data-relation-filter-list></div>
       </fieldset>
-      <div class="connections-graph__key" data-connections-key>
-        <p class="connections-graph__key-title">What the lines mean</p>
-        <ul class="connections-key__list">
-          <li>
-            <svg class="connections-key-line" data-connection-kind="content-link" viewBox="0 0 48 10" aria-hidden="true">
-              <line x1="2" y1="5" x2="46" y2="5"></line>
-            </svg>
-            <span>Linked to</span>
-          </li>
-          <li>
-            <svg class="connections-key-line" data-connection-kind="blogroll" viewBox="0 0 48 10" aria-hidden="true">
-              <line x1="2" y1="5" x2="46" y2="5"></line>
-            </svg>
-            <span>Blogroll</span>
-          </li>
-          <li>
-            <svg class="connections-key-line" data-connection-kind="reply-to" viewBox="0 0 48 10" aria-hidden="true">
-              <line x1="2" y1="5" x2="46" y2="5"></line>
-            </svg>
-            <span>Reply, repost, syndication</span>
-          </li>
-          <li>
-            <svg class="connections-key-line" data-connection-kind="shared-topic" viewBox="0 0 48 10" aria-hidden="true">
-              <line x1="2" y1="5" x2="46" y2="5"></line>
-            </svg>
-            <span>Shared topic</span>
-          </li>
-        </ul>
-      </div>
+      {% include connections-line-key.html %}
     </div>
   </section>
 </div>
@@ -318,27 +250,50 @@ same observed connections, with links to the original pages.
                   <li class="connections-edge" data-connection-kind="{{ edge_kind | escape }}">
                     <span class="connections-edge__direction" aria-hidden="true">→</span>
                     <div class="connections-edge__body">
-                      <span class="connections-edge__kind">{{ kind_label | escape }}</span>
-                      {% include outbound-href.html url=edge.href %}
-                      <a
-                        href="{{ outbound_href | escape }}"
-                        target="_blank"
-                        rel="noopener"
-                      >
-                        {{ link_label | escape }}
-                      </a>
-                      <span class="connections-edge__meta">
-                        to
-                        {% include outbound-href.html url=edge.to %}
+                      {% if kind_label == "linked to" %}
+                        {% include outbound-href.html url=edge.href %}
                         <a
+                          class="connections-edge__source"
                           href="{{ outbound_href | escape }}"
                           target="_blank"
                           rel="noopener"
                         >
                           {{ target_domain | escape }}
                         </a>
+                      {% else %}
+                        <span class="connections-edge__kind">{{ kind_label | escape }}</span>
+                      {% endif %}
+                      {% unless kind_label == "linked to" and target_title == target_domain %}
+                        {% include outbound-href.html url=edge.href %}
+                        <a
+                          href="{{ outbound_href | escape }}"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          {% if kind_label == "linked to" %}
+                            {{ target_title | escape }}
+                          {% else %}
+                            {{ link_label | escape }}
+                          {% endif %}
+                        </a>
+                      {% endunless %}
+                      <span class="connections-edge__meta">
+                        {% assign outbound_meta = false %}
+                        {% unless kind_label == "linked to" %}
+                          to
+                          {% include outbound-href.html url=edge.to %}
+                          <a
+                            href="{{ outbound_href | escape }}"
+                            target="_blank"
+                            rel="noopener"
+                          >
+                            {{ target_domain | escape }}
+                          </a>
+                          {% assign outbound_meta = true %}
+                        {% endunless %}
                         {% if edge.via and edge.via != "" %}
-                          · via
+                          {% if outbound_meta %} · {% endif %}
+                          via
                             {% include outbound-href.html url=edge.via %}
                             <a
                               href="{{ outbound_href | escape }}"
@@ -347,9 +302,11 @@ same observed connections, with links to the original pages.
                             >
                               {{ edge.via | escape }}
                             </a>
+                          {% assign outbound_meta = true %}
                         {% endif %}
                         {% if edge.page and edge.page != "" %}
-                          · seen on
+                          {% if outbound_meta %} · {% endif %}
+                          seen on
                           {% include outbound-href.html url=edge.page %}
                           {% include connections-page-label.html url=edge.page %}
                           <a
@@ -359,9 +316,12 @@ same observed connections, with links to the original pages.
                           >
                             {{ connections_page_label | escape }}
                           </a>
+                          {% assign outbound_meta = true %}
                         {% endif %}
                         {% if edge.source and edge.source != "" and edge.source != "content" %}
-                          · {{ edge.source | escape }}
+                          {% if outbound_meta %} · {% endif %}
+                          {{ edge.source | escape }}
+                          {% assign outbound_meta = true %}
                         {% endif %}
                         {% if edge.rel and edge.rel.size > 0 %}
                           {% include connections-visible-rel.html rel=edge.rel %}
@@ -407,21 +367,37 @@ same observed connections, with links to the original pages.
                   <li class="connections-edge" data-connection-kind="{{ edge_kind | escape }}">
                     <span class="connections-edge__direction" aria-hidden="true">←</span>
                     <div class="connections-edge__body">
-                      <span class="connections-edge__kind">{{ kind_label | escape }}</span>
-                      {% include outbound-href.html url=edge.from %}
-                      <a
-                        href="{{ outbound_href | escape }}"
-                        target="_blank"
-                        rel="noopener"
-                      >
-                        {{ source_title | escape }}
-                      </a>
+                      {% if kind_label == "linked from" %}
+                        {% include outbound-href.html url=edge.from %}
+                        <a
+                          class="connections-edge__source"
+                          href="{{ outbound_href | escape }}"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          {{ source_domain | escape }}
+                        </a>
+                      {% else %}
+                        <span class="connections-edge__kind">{{ kind_label | escape }}</span>
+                      {% endif %}
+                      {% unless kind_label == "linked from" and source_title == source_domain %}
+                        {% include outbound-href.html url=edge.from %}
+                        <a
+                          href="{{ outbound_href | escape }}"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          {{ source_title | escape }}
+                        </a>
+                      {% endunless %}
                       <span class="connections-edge__meta">
                         {% assign inbound_meta = false %}
-                        {% if source_domain and source_domain != source_title %}
-                          {{ source_domain | escape }}
-                          {% assign inbound_meta = true %}
-                        {% endif %}
+                        {% unless kind_label == "linked from" %}
+                          {% if source_domain and source_domain != source_title %}
+                            {{ source_domain | escape }}
+                            {% assign inbound_meta = true %}
+                          {% endif %}
+                        {% endunless %}
                         {% if edge.via and edge.via != "" %}
                           {% if inbound_meta %} · {% endif %}
                           via

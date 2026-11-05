@@ -377,6 +377,7 @@ test("fetchBlogrollOpml: returns OPML text on success", async () => {
   const opmlText = `<?xml version="1.0"?><opml><body></body></opml>`;
   const result = await fetchBlogrollOpml("https://example.test/blogroll.opml", {
     lookup: publicLookup(),
+    robotsGate: { allows: async () => true },
     fetchImpl: async () => ({
       ok: true,
       status: 200,
@@ -386,10 +387,41 @@ test("fetchBlogrollOpml: returns OPML text on success", async () => {
   assert.equal(result, opmlText);
 });
 
+test("fetchBlogrollOpml uses the default gate when robots.txt is absent", async () => {
+  const previous = globalThis.fetch;
+  const opmlText = `<?xml version="1.0"?><opml><body></body></opml>`;
+  globalThis.fetch = async (url) => {
+    if (String(url).endsWith("/robots.txt")) {
+      return {
+        ok: false,
+        status: 404,
+        headers: new Headers(),
+        arrayBuffer: async () => Buffer.from(""),
+      };
+    }
+    return {
+      ok: true,
+      status: 200,
+      headers: new Headers({ "content-type": "text/xml" }),
+      arrayBuffer: async () => Buffer.from(opmlText),
+    };
+  };
+  try {
+    const result = await fetchBlogrollOpml(
+      "https://example.test/blogroll.opml",
+      { lookup: publicLookup() },
+    );
+    assert.equal(result, opmlText);
+  } finally {
+    globalThis.fetch = previous;
+  }
+});
+
 test("fetchBlogrollOpml: non-OK response throws", async () => {
   await assert.rejects(
     fetchBlogrollOpml("https://example.test/blogroll.opml", {
       lookup: publicLookup(),
+      robotsGate: { allows: async () => true },
       fetchImpl: async () => ({
         ok: false,
         status: 403,

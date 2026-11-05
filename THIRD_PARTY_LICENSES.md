@@ -14,6 +14,24 @@
 - License: [MIT](https://github.com/ajv-validator/ajv-formats/blob/master/LICENSE)
 - Use: JSON Schema format validators (e.g. URI) alongside Ajv in `nlp:validate`
 
+### Cheerio
+
+- Package: [cheerio](https://cheerio.js.org/) (`cheerio@1.2.0`)
+- License: [MIT](https://github.com/cheeriojs/cheerio/blob/main/LICENSE)
+- Use: structured HTML extraction for Uses, topics, and connections. Parse only. It does not fetch pages or run scripts. Not shipped to site visitors.
+
+### Transformers.js
+
+- Package: [@huggingface/transformers](https://github.com/huggingface/transformers.js) (`@huggingface/transformers@4.3.2`)
+- License: [Apache-2.0](https://github.com/huggingface/transformers.js/blob/main/LICENSE)
+- Use: local CPU classification of crawled evidence. Weights stay in `.tmp/models` and are not committed. Not shipped to site visitors.
+
+### ONNX Runtime
+
+- Package: [onnxruntime-node](https://onnxruntime.ai/) (dependency of `@huggingface/transformers@4.3.2`)
+- License: [MIT](https://github.com/microsoft/onnxruntime/blob/main/LICENSE)
+- Use: runs the quantized ONNX model on CPU. Not shipped to site visitors.
+
 ## Elsewhere network icons
 
 Joshternet Network cards show brand marks only to identify profile links that participating sites published themselves (`rel="me"`). That use does not imply partnership, sponsorship, or endorsement by those brands.

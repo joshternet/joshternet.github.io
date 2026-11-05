@@ -210,6 +210,38 @@ test("homepage popular-post shelves are not creative projects", () => {
   );
 });
 
+test("homepage harvest skips wish-list, legal chrome, and LinkLog script hrefs", () => {
+  const html = `<!doctype html><html><body>
+    <a href="/wish-list/">Wish List</a>
+    <a href="/datenschutz/">Datapolicy</a>
+    <a href="/somaspace/">Soma</a>
+    <script>
+      i+='<a href="'+e(a)+'">Permalink</a>';
+      i+='<h3><a href="'+e(s)+'">'+e(c)+'</a></h3>';
+    </script>
+  </body></html>`;
+  const items = creativeItemsFromHomepageLinks(
+    html,
+    "https://joshua.example/",
+    "https://joshua.example",
+    "2026-11-01T12:00:00.000Z",
+  );
+  const urls = items.map((item) => String(item.url));
+  assert.equal(
+    urls.some((url) => url.includes("wish-list")),
+    false,
+  );
+  assert.equal(
+    urls.some((url) => url.includes("datenschutz")),
+    false,
+  );
+  assert.equal(
+    urls.some((url) => url.includes("e(a)") || url.includes("e(s)")),
+    false,
+  );
+  assert.ok(urls.includes("https://joshua.example/somaspace/"));
+});
+
 test("album-in-list year cards become photography collections", () => {
   const albums = creativeItemsFromAlbumList(
     readFixture("html/beard-photos-index.html"),
@@ -221,6 +253,7 @@ test("album-in-list year cards become photography collections", () => {
   assert.ok(albums.length >= 2);
   assert.equal(albums[0].content_type, "collection");
   assert.equal(albums[0].title, "2026");
+  assert.match(String(albums[0].summary || ""), /assortment|photos|from/i);
   assert.equal(showcaseKindForItem(albums[0]), "photography");
 
   const collected = collectCreativeWorks(
@@ -484,12 +517,12 @@ test("What's New includes in-window writing and skips non-string origins", () =>
       generated_at: generatedAt,
       items: [
         {
-          identity: "url:https://pod.example/ep/1/",
-          url: "https://pod.example/ep/1/",
+          identity: "url:https://pod.example/notes/recent/",
+          url: "https://pod.example/notes/recent/",
           site_origin: "https://pod.example",
-          title: "Recent episode",
-          content_type: "podcast_episode",
-          published_at: "2026-10-25T00:00:00.000Z",
+          title: "Recent note",
+          content_type: "article",
+          published_at: "2026-10-31T12:00:00.000Z",
           summary: "Episode",
           source: { kind: "rss", feed: "https://pod.example/feed.xml" },
           observed_at: generatedAt,
@@ -510,9 +543,7 @@ test("What's New includes in-window writing and skips non-string origins", () =>
     siteSignals: { schema_version: 1, generated_at: generatedAt, origins: [] },
   });
 
-  assert.ok(
-    docs.activity.primary.some((item) => item.title === "Recent episode"),
-  );
+  assert.ok(docs.activity.primary.some((item) => item.title === "Recent note"));
   assert.ok(!docs.activity.primary.some((item) => item.title === "Bad origin"));
 });
 

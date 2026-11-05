@@ -19,6 +19,7 @@ import {
   contentItemsFromHEntryList,
   contentItemsFromJsonFeed,
   contentItemsFromRssOrAtom,
+  isEpisodeAnnouncement,
   contentUrlMatchesSiteOrigin,
   contentUrlMatchesSourceFeed,
   amazonProductUrlFromHtml,
@@ -37,6 +38,8 @@ import {
   mergeContentItems,
   normalizeContentItemForPublish,
   plainTextSummary,
+  shouldPreferShareDescription,
+  summaryNeedsPageBackfill,
   publishedAtFromAmazonDateText,
   publishedAtFromAmazonHtml,
   publishedAtFromBookByline,
@@ -133,6 +136,15 @@ test("plainTextSummary: unclosed tag is removed", () => {
   // A string ending mid-tag should not leak angle bracket into output
   const result = plainTextSummary("Hello <a href=");
   assert.ok(!result.includes("<"));
+});
+
+test("plainTextSummary: a glued link list keeps the labels", () => {
+  assert.equal(
+    plainTextSummary(
+      "CSS Battle:https://cssbattle.devMy website:https://artlung.com/",
+    ),
+    "CSS Battle. My website.",
+  );
 });
 
 // ─── absoluteHttpsImageUrl ────────────────────────────────────────────────────
@@ -450,6 +462,82 @@ const ATOM_META = {
   siteOrigin: "https://a.example",
   observedAt: "2026-10-03T22:00:00.000Z",
 };
+
+test("isEpisodeAnnouncement separates episode blurbs from essays", () => {
+  assert.equal(isEpisodeAnnouncement(null, null, null), false);
+  assert.equal(isEpisodeAnnouncement("New episode: Tiny Result", ""), true);
+  assert.equal(
+    isEpisodeAnnouncement("Hello", "Watch the video when you have a minute."),
+    true,
+  );
+  assert.equal(
+    isEpisodeAnnouncement("Hi", "", "https://www.youtube.com/watch?v=abcdef"),
+    true,
+  );
+  assert.equal(
+    isEpisodeAnnouncement("Hi", "https://youtu.be/abcdef", ""),
+    true,
+  );
+  assert.equal(
+    isEpisodeAnnouncement(
+      "Show notes",
+      "https://joshua.example/podcasts/tiny-result/",
+      "",
+    ),
+    true,
+  );
+  assert.equal(
+    isEpisodeAnnouncement(
+      "Show notes",
+      "https://joshua.example/episodes/tiny-result/",
+      "",
+    ),
+    true,
+  );
+  const essay =
+    "I mentioned a podcast once in this essay about databases. The rest is the writing: indexes, backups, and the afternoon I spent checking them. This is not an announcement that an episode is out.";
+  assert.equal(essay.length > 180, true);
+  assert.equal(
+    isEpisodeAnnouncement("What I kept from a long conversation", essay),
+    false,
+  );
+  assert.equal(
+    isEpisodeAnnouncement(
+      "What I kept",
+      `${essay} on the podcast we kept talking.`,
+    ),
+    false,
+  );
+  assert.equal(
+    isEpisodeAnnouncement("Notes", "https://joshua.example/blog/notes/"),
+    false,
+  );
+});
+
+test("contentItemsFromRssOrAtom marks an episode announcement and keeps a real podcast", () => {
+  const xml = `<rss><channel>
+    <item>
+      <title>New episode: Tiny Result</title>
+      <link>https://a.example/new-episode</link>
+      <description>Watch the video</description>
+    </item>
+    <item>
+      <title>New episode: the recording</title>
+      <link>https://a.example/ep</link>
+      <enclosure url="https://a.example/ep.mp3" type="audio/mpeg" />
+      <description>The episode audio.</description>
+    </item>
+    <item>
+      <title>What I kept from a long conversation</title>
+      <link>https://a.example/essay</link>
+      <description>I mentioned a podcast once in this essay about databases. The rest is the writing: indexes, backups, and the afternoon I spent checking them. This is not an announcement that an episode is out.</description>
+    </item>
+  </channel></rss>`;
+  const items = contentItemsFromRssOrAtom(xml, RSS_META);
+  assert.equal(items[0].content_type, "episode_announcement");
+  assert.equal(items[1].content_type, "podcast_episode");
+  assert.equal(items[2].content_type, "article");
+});
 
 test("contentItemsFromRssOrAtom: empty or non-string XML → empty array", () => {
   assert.deepEqual(contentItemsFromRssOrAtom("", RSS_META), []);
@@ -899,7 +987,7 @@ test("joinContentWithPageSignals: uses the page poster and share description whe
   assert.equal(joined[0].summary, "What the publisher wrote for sharing.");
 });
 
-test("joinContentWithPageSignals: expands year-only album titles from share text", () => {
+test("joinContentWithPageSignals: year albums keep short title and put share in summary", () => {
   const joined = joinContentWithPageSignals(
     [
       {
@@ -926,7 +1014,124 @@ test("joinContentWithPageSignals: expands year-only album titles from share text
   );
   assert.equal(joined[0].image, "https://photos.example/photos/2014/cover.jpg");
   assert.equal(joined[0].summary, "My Photos from 2014");
-  assert.equal(joined[0].title, "My Photos from 2014");
+  assert.equal(joined[0].title, "2014");
+});
+
+test("joinContentWithPageSignals: upgrades title-echo and chrome summaries from share text", () => {
+  const echo = joinContentWithPageSignals(
+    [
+      {
+        identity: "url:https://a.example/books/guide/",
+        url: "https://a.example/books/guide/",
+        title: "Coding Guide",
+        summary: "Coding Guide",
+        declared_topics: [],
+      },
+    ],
+    [
+      {
+        pages: [
+          {
+            url: "https://a.example/books/guide/",
+            share_description:
+              "Learn to code from the basics to Python and beyond.",
+          },
+        ],
+        declared_topics: [],
+      },
+    ],
+  );
+  assert.equal(
+    echo[0].summary,
+    "Learn to code from the basics to Python and beyond.",
+  );
+
+  const chrome = joinContentWithPageSignals(
+    [
+      {
+        identity: "url:https://a.example/music/",
+        url: "https://a.example/music/",
+        title: "Music",
+        summary: "Elsewhere",
+        declared_topics: [],
+      },
+    ],
+    [
+      {
+        pages: [
+          {
+            url: "https://a.example/music/",
+            share_description: "Recordings and scores from the studio.",
+          },
+        ],
+        declared_topics: [],
+      },
+    ],
+  );
+  assert.equal(chrome[0].summary, "Recordings and scores from the studio.");
+});
+
+test("shouldPreferShareDescription and summaryNeedsPageBackfill gates", () => {
+  assert.equal(
+    shouldPreferShareDescription("", "Title", "A real blurb here."),
+    true,
+  );
+  assert.equal(
+    shouldPreferShareDescription("Title", "Title", "A real blurb here."),
+    true,
+  );
+  assert.equal(
+    shouldPreferShareDescription(
+      "Elsewhere",
+      "Music",
+      "Recordings and scores.",
+    ),
+    true,
+  );
+  assert.equal(
+    shouldPreferShareDescription(
+      "Short tip",
+      "Title",
+      "A longer share blurb wins.",
+    ),
+    true,
+  );
+  assert.equal(
+    shouldPreferShareDescription(
+      "A medium-length feed summary that is already useful on the card.",
+      "Title",
+      "A medium-length feed summary that is already useful on the card. Plus a much longer publisher share description for the page.",
+    ),
+    true,
+  );
+  assert.equal(
+    shouldPreferShareDescription(
+      "A solid feed summary that is already long enough.",
+      "Title",
+      "Short",
+    ),
+    false,
+  );
+  assert.equal(shouldPreferShareDescription("", "Title", "Title"), false);
+  assert.equal(shouldPreferShareDescription(null, "Title", null), false);
+  assert.equal(summaryNeedsPageBackfill(null), false);
+  assert.equal(summaryNeedsPageBackfill("nope"), false);
+  assert.equal(summaryNeedsPageBackfill({ summary: "", title: "X" }), true);
+  assert.equal(
+    summaryNeedsPageBackfill({ summary: "Same", title: "Same" }),
+    true,
+  );
+  assert.equal(
+    summaryNeedsPageBackfill({ summary: "Elsewhere", title: "Music" }),
+    true,
+  );
+  assert.equal(
+    summaryNeedsPageBackfill({
+      summary: "A long enough publisher summary that should not need backfill.",
+      title: "Title",
+    }),
+    false,
+  );
 });
 
 test("joinContentWithPageSignals: keeps a feed poster and summary", () => {
@@ -935,7 +1140,8 @@ test("joinContentWithPageSignals: keeps a feed poster and summary", () => {
       {
         identity: "url:https://a.example/post/",
         url: "https://a.example/post/",
-        summary: "Feed blurb",
+        title: "Post",
+        summary: "Feed blurb that is already a useful length for the card.",
         image: "https://cdn.example/feed.jpg",
         declared_topics: [],
       },
@@ -946,7 +1152,7 @@ test("joinContentWithPageSignals: keeps a feed poster and summary", () => {
           {
             url: "https://a.example/post/",
             poster_image: "https://cdn.example/social.jpg",
-            share_description: "Page blurb",
+            share_description: "Page blurb similar length.",
           },
         ],
         declared_topics: [],
@@ -954,7 +1160,10 @@ test("joinContentWithPageSignals: keeps a feed poster and summary", () => {
     ],
   );
   assert.equal(joined[0].image, "https://cdn.example/feed.jpg");
-  assert.equal(joined[0].summary, "Feed blurb");
+  assert.equal(
+    joined[0].summary,
+    "Feed blurb that is already a useful length for the card.",
+  );
 });
 
 test("joinContentWithPageSignals: does not overwrite existing language", () => {
@@ -2602,6 +2811,25 @@ test("contentItemNeedsPosterEnrichment targets creative paths without images", (
       url: "https://joshuamorris.info/experiments/corkboard/",
       content_type: "article",
       image: "https://joshuamorris.info/images/experiments/corkboard-og.webp",
+      summary: "A corkboard for notes and connecting threads across topics.",
+    }),
+    false,
+  );
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://www.chrisminnick.com/books/coding-all-in-one-for-dummies/",
+      content_type: "project",
+      image: "https://www.chrisminnick.com/cover.png",
+      title: "Coding All-in-One For Dummies",
+      summary: "Coding All-in-One For Dummies",
+    }),
+    true,
+  );
+  assert.equal(
+    contentItemNeedsPosterEnrichment({
+      url: "https://joshua.seigler.net/music/score.pdf",
+      content_type: "sheet_music",
+      summary: "",
     }),
     false,
   );
@@ -2746,6 +2974,61 @@ test("enrichContentItemPosters fills publisher og:image for experiments", async 
 
   assert.equal(items[0].image, poster);
   assert.match(String(items[0].summary), /corkboard/i);
+});
+
+test("enrichContentItemPosters fills summary when cover image already exists", async () => {
+  const items = [
+    {
+      url: "https://www.chrisminnick.com/books/coding-all-in-one-for-dummies/",
+      content_type: "project",
+      title: "Coding All-in-One For Dummies, 3rd Edition",
+      summary: "Coding All-in-One For Dummies, 3rd Edition",
+      image: "https://www.chrisminnick.com/cover.png",
+    },
+  ];
+
+  await enrichContentItemPosters(items, {
+    robotsGate: ALLOW_ALL_ROBOTS,
+    fetchText: async () => ({
+      url: items[0].url,
+      contentType: "text/html",
+      body: `<html><head>
+        <meta property="og:description" content="Learn to code from the basics to Python and beyond">
+      </head></html>`,
+    }),
+  });
+
+  assert.equal(items[0].image, "https://www.chrisminnick.com/cover.png");
+  assert.equal(
+    items[0].summary,
+    "Learn to code from the basics to Python and beyond",
+  );
+});
+
+test("enrichContentItemPosters falls back to body lede when OG is missing", async () => {
+  const items = [
+    {
+      url: "https://joshurbandavis.com/experiments/worn/index.html",
+      content_type: "project",
+      title: "worn",
+      summary: "",
+      image: "",
+    },
+  ];
+
+  await enrichContentItemPosters(items, {
+    robotsGate: ALLOW_ALL_ROBOTS,
+    fetchText: async () => ({
+      url: items[0].url,
+      contentType: "text/html",
+      body: `<html><body>
+        <h1>worn</h1>
+        <p>A mirror that fits you with other people's faces. It moves exactly as you move.</p>
+      </body></html>`,
+    }),
+  });
+
+  assert.match(String(items[0].summary), /mirror that fits you/i);
 });
 
 test("enrichContentItemPosters fills comic hub post og:image and published_at", async () => {
@@ -2915,6 +3198,9 @@ test("enrichContentItemPosters skips items that already have posters", async () 
     {
       url: "https://joshuamorris.info/experiments/model-viewer/",
       content_type: "article",
+      title: "Model Viewer",
+      summary:
+        "A WebGL model viewer with enough summary text to skip backfill.",
       image:
         "https://joshuamorris.info/images/experiments/model-viewer-og.webp",
     },
@@ -3004,6 +3290,8 @@ test("contentItemNeedsPosterEnrichment is true for games path without image", ()
       url: "https://joshtronic.com/games/age-of-combat/",
       content_type: "game",
       image: "https://joshtronic.com/images/age.png",
+      summary:
+        "A browser combat game with enough summary text to skip backfill.",
     }),
     false,
   );
@@ -3324,11 +3612,16 @@ test("enrichContentItemPosters default robots gate allows when robots.txt is abs
     },
   ];
 
-  // Neither robotsGate nor fetchRobotsText: createOriginRobotsGate({ cache })
-  // with lib fetch. Stub global fetch via fetchText only for the page HTML;
-  // robots load uses lib fetchPublicText which throws offline → empty body → allow.
+  // A 404 robots file is absent, so the default gate allows the page.
   await enrichContentItemPosters(items, {
-    cache: new Map(),
+    cache: new Map([["games.example", [{ address: "1.1.1.1" }]]]),
+    fetchRobotsText: async (url) => ({
+      url,
+      body: "",
+      status: 404,
+      body_complete: false,
+      contentType: "text/plain",
+    }),
     fetchText: async (url) => {
       assert.match(String(url), /\/games\/absent-robots\//);
       return {

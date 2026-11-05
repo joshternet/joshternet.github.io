@@ -295,6 +295,109 @@ test("contentItemNeedsWorkScreenshot gates card-worthy drafts", () => {
     }),
     true,
   );
+
+  const now = new Date("2026-11-04T12:00:00.000Z");
+  assert.equal(
+    contentItemNeedsWorkScreenshot(
+      {
+        url: "https://joshuastuebner.com/projects/details/wildtierrettung-rhein-berg/",
+        content_type: "project",
+        site_origin: "https://joshuastuebner.com",
+        published_at: "2023-01-01T00:00:00.000Z",
+      },
+      { now },
+    ),
+    false,
+  );
+  assert.equal(
+    contentItemNeedsWorkScreenshot(
+      {
+        url: "https://joshuastuebner.com/experiments/ex/01_ripples/",
+        content_type: "project",
+        site_origin: "https://joshuastuebner.com",
+      },
+      { now },
+    ),
+    false,
+  );
+  assert.equal(
+    contentItemNeedsWorkScreenshot(
+      {
+        url: "https://joshuastuebner.com/projects/details/modus-themes/",
+        content_type: "project",
+        site_origin: "https://joshuastuebner.com",
+        published_at: "2026-06-01T00:00:00.000Z",
+      },
+      { now },
+    ),
+    true,
+  );
+  assert.equal(
+    contentItemNeedsWorkScreenshot({
+      url: "https://joshuapsteele.com/'+e(a)+'",
+      content_type: "project",
+      site_origin: "https://joshuapsteele.com",
+    }),
+    false,
+  );
+  assert.equal(
+    contentItemNeedsWorkScreenshot({
+      url: "https://joshuapsteele.com/wish-list/",
+      content_type: "project",
+      site_origin: "https://joshuapsteele.com",
+    }),
+    false,
+  );
+  assert.equal(
+    contentItemNeedsWorkScreenshot({
+      url: "https://joshuastuebner.com/datenschutz/",
+      content_type: "project",
+      site_origin: "https://joshuastuebner.com",
+      page_role: "legal",
+    }),
+    false,
+  );
+  // Legal page_role alone (non-chrome URL) still skips Playwright.
+  assert.equal(
+    contentItemNeedsWorkScreenshot({
+      url: "https://a.example/games/terms-blurb/",
+      content_type: "game",
+      site_origin: "https://a.example",
+      page_role: "legal",
+    }),
+    false,
+  );
+  assert.equal(
+    contentItemNeedsWorkScreenshot(
+      {
+        url: "https://a.example/games/fresh/",
+        content_type: "game",
+        site_origin: "https://a.example",
+      },
+      { now: new Date("invalid") },
+    ),
+    true,
+  );
+  // Writing under a chrome tree root stays screenshot-eligible.
+  assert.equal(
+    contentItemNeedsWorkScreenshot({
+      url: "https://a.example/blog/hello/",
+      content_type: "article",
+      site_origin: "https://a.example",
+    }),
+    true,
+  );
+  assert.equal(
+    contentItemNeedsWorkScreenshot(
+      {
+        url: "https://a.example/games/fresh/",
+        content_type: "game",
+        site_origin: "https://a.example",
+      },
+      { now },
+    ),
+    true,
+  );
 });
 
 test("attachExistingWorkPosters reuses on-disk channel posters", async () => {
@@ -626,7 +729,9 @@ test("captureMissingWorkScreenshots writes local poster via mocked Playwright", 
   await captureMissingWorkScreenshots(items, {
     root,
     maxCaptures: 5,
+    robotsGate: { allows: async () => true },
     log,
+    now: new Date("2026-11-04T12:00:00.000Z"),
     lookup: publicLookup,
     importPlaywright: async () => ({
       chromium: {
@@ -708,6 +813,7 @@ test("captureMissingWorkScreenshots prioritizes creative over older articles", a
   await captureMissingWorkScreenshots(items, {
     root,
     maxCaptures: 2,
+    robotsGate: { allows: async () => true },
     log: muteLog,
     lookup: publicLookup,
     importPlaywright: async () => ({
@@ -791,6 +897,7 @@ test("captureMissingWorkScreenshots no-ops without pending items or on launch fa
 
   await captureMissingWorkScreenshots(items, {
     lookup: publicLookup,
+    robotsGate: { allows: async () => true },
     importPlaywright: async () => {
       throw new Error("no browser");
     },
@@ -813,6 +920,7 @@ test("captureMissingWorkScreenshots swallows per-URL goto failures", async () =>
 
   await captureMissingWorkScreenshots(items, {
     root,
+    robotsGate: { allows: async () => true },
     log,
     lookup: publicLookup,
     importPlaywright: async () => ({
@@ -870,6 +978,7 @@ test("captureMissingWorkScreenshots respects maxCaptures and skips mid-run fille
   await captureMissingWorkScreenshots(items, {
     root,
     maxCaptures: 2,
+    robotsGate: { allows: async () => true },
     timeoutMs: 5_000,
     log: muteLog,
     lookup: publicLookup,

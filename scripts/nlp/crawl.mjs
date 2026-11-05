@@ -34,12 +34,15 @@ import {
   fetchPublicText,
   parseHtmlDocument,
 } from "./lib.mjs";
+import { fetchMemberText } from "./request-policy.mjs";
 import { createOriginRobotsGate } from "./origin-robots.mjs";
+import { decideRobotsOutcome } from "./fetch-outcome.mjs";
 import { classifyPageRole } from "./page-role.mjs";
 import { robotsAllowsPath, sitemapUrlsFromRobots } from "./robots.mjs";
 import {
   canonicalHrefFromHtml,
   htmlBodyFingerprint,
+  isJsTemplateHref,
   normalizeExtractedText,
   schemaTypesFromHtml,
 } from "./text.mjs";
@@ -98,6 +101,11 @@ export function isPhotoAttachmentUrl(url) {
  */
 function resolveSameOrigin(origin, href) {
   try {
+    // Reject LinkLog-style JS concat fragments before URL resolution.
+    if (isJsTemplateHref(href)) {
+      return "";
+    }
+
     const absolute = new URL(href, origin).href;
 
     if (isParticipationDeclarationPath(absolute)) {
@@ -645,10 +653,29 @@ export async function fetchRobotsTxt(origin, cache, httpCache) {
       cache,
       httpCache,
       accept: "text/plain,*/*;q=0.8",
+      captureHttpErrors: true,
     });
-    return fetched.body;
-  } catch {
-    return "";
+    const outcome = decideRobotsOutcome({
+      status: fetched.status,
+      errorKind: "none",
+      body: fetched.body,
+      bodyComplete: fetched.body_complete !== false,
+      cached: null,
+    });
+    if (outcome.decision === "defer") {
+      throw new Error(`robots deferred: ${outcome.reason}`);
+    }
+    return outcome.body;
+  } catch (error) {
+    if (
+      error instanceof Error &&
+      error.message.startsWith("robots deferred:")
+    ) {
+      throw error;
+    }
+    throw new Error(
+      `robots deferred: ${error instanceof Error ? error.message : "unavailable"}`,
+    );
   }
 }
 
@@ -907,9 +934,14 @@ export async function crawlOrigin(origin, options = {}) {
     let fetched;
 
     try {
-      fetched = await fetchPublicText(next.url, { cache, httpCache });
+      fetched = await fetchMemberText(next.url, { cache, httpCache });
     } catch {
       skipReasons[next.url] = "fetch-failed";
+      continue;
+    }
+
+    if (fetched.deferred === true) {
+      skipReasons[next.url] = "fetch-deferred";
       continue;
     }
 

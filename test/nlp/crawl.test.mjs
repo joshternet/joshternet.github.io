@@ -461,6 +461,17 @@ test("urlsFromSitemap: respects limit parameter", () => {
   assert.equal(urls.length, 10);
 });
 
+test("urlsFromSitemap: skips JS string-concat loc fragments", () => {
+  const xml = `<?xml version="1.0"?>
+    <urlset>
+      <url><loc>https://a.example/'+e(a)+'</loc></url>
+      <url><loc>https://a.example/good/</loc></url>
+    </urlset>`;
+  assert.deepEqual(urlsFromSitemap(xml, "https://a.example"), [
+    "https://a.example/good/",
+  ]);
+});
+
 test("urlsFromSitemap: deduplicates URLs", () => {
   const xml = `<urlset>
     <url><loc>https://a.example/post</loc></url>
@@ -709,6 +720,58 @@ test("crawlOrigin: aboutUrls and /slashes index expand seeds", async () => {
     assert.ok(
       result.selection_reasons[`${origin}/custom-slash/`] === "slashes-index" ||
         result.pages.some((page) => page.url.includes("/custom-slash")),
+    );
+  } finally {
+    restore();
+  }
+});
+
+test("crawlOrigin skips a deferred page instead of parsing it", async () => {
+  const origin = "https://a.example";
+  const cache = dnsCache(["a.example"]);
+  install();
+  try {
+    globalThis.fetch = async (url) => {
+      const href = String(url);
+      if (href.endsWith("/robots.txt") || href.includes("sitemap")) {
+        return {
+          ok: false,
+          status: 404,
+          headers: new Headers(),
+          arrayBuffer: async () => Buffer.from(""),
+        };
+      }
+      if (href.endsWith("/uses/")) {
+        return {
+          ok: false,
+          status: 429,
+          headers: new Headers({
+            "content-type": "text/html",
+            "retry-after": "3600",
+          }),
+          arrayBuffer: async () =>
+            Buffer.from("<html><title>Slow</title></html>"),
+        };
+      }
+      return {
+        ok: true,
+        status: 200,
+        headers: new Headers({ "content-type": "text/html" }),
+        arrayBuffer: async () =>
+          Buffer.from(
+            "<!DOCTYPE html><html><head><title>Home</title></head><body><p>Home</p></body></html>",
+          ),
+      };
+    };
+    const result = await crawlOrigin(origin, {
+      cache,
+      aboutUrls: [`${origin}/uses/`],
+      feedEntryUrls: [],
+    });
+    assert.equal(result.skip_reasons[`${origin}/uses/`], "fetch-deferred");
+    assert.equal(
+      result.pages.some((page) => page.url.endsWith("/uses/")),
+      false,
     );
   } finally {
     restore();
@@ -2063,15 +2126,69 @@ test("crawlOrigin: custom child budgets and slashpages catch path", async () => 
   }
 });
 
-test("crawlOrigin: fetchRobotsTxt failure returns empty body", async () => {
+test("crawlOrigin: fetchRobotsTxt failure does not become an empty allow", async () => {
   const cache = dnsCache(["robotsfail.example"]);
   install();
   try {
     globalThis.fetch = async () => {
       throw new Error("robots down");
     };
-    const body = await fetchRobotsTxt("https://robotsfail.example", cache);
+    await assert.rejects(
+      () => fetchRobotsTxt("https://robotsfail.example", cache),
+      /robots deferred/,
+    );
+  } finally {
+    restore();
+  }
+});
+
+test("fetchRobotsTxt reports a non-Error failure as unavailable", async () => {
+  const cache = dnsCache(["robotsstring.example"]);
+  install();
+  try {
+    globalThis.fetch = async () => {
+      throw "robots down";
+    };
+    await assert.rejects(
+      () => fetchRobotsTxt("https://robotsstring.example", cache),
+      /robots deferred: unavailable/,
+    );
+  } finally {
+    restore();
+  }
+});
+
+test("fetchRobotsTxt returns an empty body when robots.txt is absent", async () => {
+  const cache = dnsCache(["robots404.example"]);
+  install();
+  try {
+    globalThis.fetch = async () => ({
+      ok: false,
+      status: 404,
+      headers: new Headers({ "content-type": "text/plain" }),
+      arrayBuffer: async () => Buffer.from(""),
+    });
+    const body = await fetchRobotsTxt("https://robots404.example", cache);
     assert.equal(body, "");
+  } finally {
+    restore();
+  }
+});
+
+test("fetchRobotsTxt defers a forbidden robots response", async () => {
+  const cache = dnsCache(["robots403.example"]);
+  install();
+  try {
+    globalThis.fetch = async () => ({
+      ok: false,
+      status: 403,
+      headers: new Headers({ "content-type": "text/plain" }),
+      arrayBuffer: async () => Buffer.from("no"),
+    });
+    await assert.rejects(
+      () => fetchRobotsTxt("https://robots403.example", cache),
+      /robots-forbidden/,
+    );
   } finally {
     restore();
   }

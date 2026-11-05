@@ -30,12 +30,16 @@ test("derived pages declare schema.org types and extra JSON-LD", async () => {
   assert.match(layout, /"@type": "Project"/);
   assert.match(layout, /joshternet-social\.png/);
   assert.match(layout, /github\.com\/joshternet/);
+  assert.match(layout, /"dateModified": \{\{ site_updated_at \| jsonify \}\}/);
+  assert.match(layout, /name="joshternet-built-at"/);
+  assert.match(layout, /name="joshternet-updated-at"/);
   assert.match(config, /^author:/m);
   assert.match(config, /name: Joshternet/);
   assert.doesNotMatch(config, /^twitter:/m);
   assert.match(jsonld, /application\/ld\+json/);
   assert.match(jsonld, /page\.seo.type/);
   assert.match(jsonld, /\/#project/);
+  assert.match(jsonld, /"dateModified": \{\{ site_updated_at \| jsonify \}\}/);
   assert.match(jsonld, /DefinedTerm/);
   assert.match(jsonld, /BreadcrumbList/);
   assert.match(jsonld, /ItemList/);

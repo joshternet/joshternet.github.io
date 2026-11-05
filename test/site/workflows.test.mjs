@@ -1,6 +1,7 @@
 /**
  * Goal: Lock hourly/registry sync triggers and the quality pipeline so CI cannot
- * silently drop coverage, browser, build, or site checks.
+ * silently drop coverage, browser, build, or site checks. Ban Actions artifact
+ * handoff for generated network/uses datasets.
  */
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
@@ -27,6 +28,7 @@ test("network-sync keeps hourly and registry triggers plus sync steps", async ()
   assert.match(sync, /repository_dispatch:/);
   assert.match(sync, /joshternet-registry-updated/);
   assert.match(sync, /workflow_dispatch:/);
+  assert.match(sync, /sync-and-publish:/);
   assert.match(sync, /npm run test:coverage/);
   assert.match(sync, /npm run test:browser/);
   assert.match(sync, /npm run network:sync/);
@@ -34,19 +36,40 @@ test("network-sync keeps hourly and registry triggers plus sync steps", async ()
   assert.match(sync, /Format generated datasets before validate/);
   assert.match(sync, /npm run nlp:validate/);
   assert.match(sync, /npm run nlp:quality/);
+  assert.match(sync, /npm run uses:validate/);
+  assert.match(sync, /npm run uses:quality/);
   assert.match(sync, /npm run format:data/);
-  assert.equal(
-    [...sync.matchAll(/npm run format:data/g)].length >= 2,
-    true,
-    "scrape and publish must both run format:data",
-  );
   assert.match(sync, /npm run format:check/);
-  assert.equal(
-    [...sync.matchAll(/npm run format:check/g)].length >= 2,
-    true,
-    "scrape and publish must both run format:check",
-  );
   assert.match(sync, /GITHUB_TOKEN:\s*\$\{\{\s*github\.token\s*\}\}/);
+  assert.match(sync, /BASE_SHA|base\.outputs\.sha|Capture base SHA/);
+  assert.match(sync, /JOSHTERNET_USES_PUBLISH/);
+});
+
+test("network-sync forbids Actions artifact upload/download for generated data", async () => {
+  const sync = await read(".github/workflows/network-sync.yml");
+
+  assert.doesNotMatch(
+    sync,
+    /actions\/upload-artifact/,
+    "network-sync must not upload generated data as Actions artifacts",
+  );
+  assert.doesNotMatch(
+    sync,
+    /actions\/download-artifact/,
+    "network-sync must not download generated data from Actions artifacts",
+  );
+  assert.doesNotMatch(
+    sync,
+    /retention-days:/,
+    "network-sync must not configure artifact retention",
+  );
+  assert.doesNotMatch(
+    sync,
+    /network-generated/,
+    "network-sync must not name a generated-data artifact",
+  );
+  assert.doesNotMatch(sync, /^\s*scrape:\s*$/m);
+  assert.doesNotMatch(sync, /^\s*publish:\s*$/m);
 });
 
 test("network-sync publish set lists CI-owned generated paths", async () => {
@@ -68,10 +91,10 @@ test("network-sync publish set lists CI-owned generated paths", async () => {
     "_data/search_index.json",
     "_data/showcase.json",
     "_data/happening.json",
-    "topics/",
+    "topics",
     "assets/network/joshternet.opml",
-    "assets/network/sites/",
-    "assets/activity/posters/",
+    "assets/network/sites",
+    "assets/activity/posters",
   ]) {
     assert.match(
       sync,
@@ -79,6 +102,20 @@ test("network-sync publish set lists CI-owned generated paths", async () => {
       `network-sync must publish ${relativePath}`,
     );
   }
+
+  assert.match(sync, /data\/uses/);
+  assert.match(sync, /_data\/uses_summary\.json/);
+  assert.match(sync, /assets\/data\/uses/);
+  assert.doesNotMatch(
+    sync,
+    /^\s+_data\/seeking(?:\.json)?\s*$/m,
+    "network-sync must not stage Seeking request bodies",
+  );
+  assert.match(
+    sync,
+    /Seeking request bodies are current-only/,
+    "network-sync must document the Seeking non-commit retention boundary",
+  );
 });
 
 test("site-quality runs coverage, browser, build, and site tests", async () => {

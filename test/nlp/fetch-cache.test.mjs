@@ -1,7 +1,9 @@
 /**
- * Goal: Conditional HTTP fetch cache — meta prune, 304 reuse, bypass flag.
+ * Goal: Conditional HTTP fetch cache — meta prune, 304 reuse, bypass flag,
+ * and a permanent original capture beside later updates.
  */
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
@@ -14,6 +16,7 @@ import {
   openFetchCache,
   pruneFetchCache,
   readFetchCacheBody,
+  readOriginalFetchCacheBody,
   saveFetchCache,
   writeFetchCacheEntry,
 } from "../../scripts/nlp/fetch-cache.mjs";
@@ -347,6 +350,306 @@ test("readFetchCacheBody drops missing body files", async () => {
       null,
     );
     assert.equal(cache.entries.has("https://a.example/gone"), false);
+    assert.equal(
+      await readOriginalFetchCacheBody(null, "https://a.example/"),
+      null,
+    );
+    assert.equal(
+      await readOriginalFetchCacheBody(
+        { bypass: true, entries: new Map(), root },
+        "https://a.example/",
+      ),
+      null,
+    );
+    assert.equal(await readOriginalFetchCacheBody(cache, ""), null);
+  } finally {
+    if (previous === undefined) {
+      delete process.env.NETWORK_REFRESH_ALL;
+    } else {
+      process.env.NETWORK_REFRESH_ALL = previous;
+    }
+    await fs.rm(root, { recursive: true, force: true });
+  }
+});
+
+/**
+ * Original body filename for one URL.
+ * @param {string} url
+ * @returns {string}
+ */
+function originalBodyName(url) {
+  return `${createHash("sha256").update(url).digest("hex").slice(0, 32)}.original.body`;
+}
+
+test("complete crawl captures keep the original body when the page updates", async () => {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), "josh-http-original-"));
+  const previous = process.env.NETWORK_REFRESH_ALL;
+  delete process.env.NETWORK_REFRESH_ALL;
+
+  try {
+    const cache = await openFetchCache(root);
+    const page = "https://a.example/page";
+    const first = await writeFetchCacheEntry(cache, {
+      url: page,
+      body: "<html>original</html>",
+      contentType: "text/html",
+      etag: '"v1"',
+      lastModified: "Mon, 01 Jan 2026 00:00:00 GMT",
+      cachedAt: "2026-01-01T00:00:00.000Z",
+      bodyComplete: true,
+    });
+    assert.equal(first.originalBodyFile, first.bodyFile);
+    assert.equal(
+      (await readOriginalFetchCacheBody(cache, page)).body,
+      "<html>original</html>",
+    );
+
+    const updated = await writeFetchCacheEntry(cache, {
+      url: page,
+      body: "<html>update</html>",
+      etag: '"v2"',
+      cachedAt: "2026-06-01T00:00:00.000Z",
+      bodyComplete: true,
+    });
+    assert.notEqual(updated.bodySha256, first.originalBodySha256);
+    assert.equal(updated.originalCachedAt, "2026-01-01T00:00:00.000Z");
+    assert.equal(
+      (await readFetchCacheBody(cache, page)).body,
+      "<html>update</html>",
+    );
+    assert.equal(
+      (await readOriginalFetchCacheBody(cache, page)).body,
+      "<html>original</html>",
+    );
+
+    cache.entries.get(page).originalCachedAt = "";
+    await writeFetchCacheEntry(cache, {
+      url: page,
+      body: "<html>update-2</html>",
+      cachedAt: "2026-07-01T00:00:00.000Z",
+      bodyComplete: true,
+    });
+    assert.equal(
+      cache.entries.get(page).originalCachedAt,
+      "2026-06-01T00:00:00.000Z",
+    );
+
+    cache.entries.get(page).originalCachedAt = "";
+    cache.entries.get(page).cachedAt = "";
+    await writeFetchCacheEntry(cache, {
+      url: page,
+      body: "<html>update-3</html>",
+      cachedAt: "2026-08-01T00:00:00.000Z",
+      bodyComplete: true,
+    });
+    assert.equal(
+      cache.entries.get(page).originalCachedAt,
+      "2026-08-01T00:00:00.000Z",
+    );
+
+    cache.entries.get(page).originalCachedAt = 12;
+    cache.entries.get(page).cachedAt = "2026-03-01T00:00:00.000Z";
+    await writeFetchCacheEntry(cache, {
+      url: page,
+      body: "<html>update-4</html>",
+      cachedAt: "2026-09-01T00:00:00.000Z",
+      bodyComplete: true,
+    });
+    assert.equal(
+      cache.entries.get(page).originalCachedAt,
+      "2026-03-01T00:00:00.000Z",
+    );
+
+    const adopted = "https://a.example/adopt";
+    await fs.writeFile(
+      path.join(root, originalBodyName(adopted)),
+      "<html>disk</html>",
+      "utf8",
+    );
+    const adoptedEntry = await writeFetchCacheEntry(cache, {
+      url: adopted,
+      body: "<html>newer</html>",
+      cachedAt: "2026-04-01T00:00:00.000Z",
+      bodyComplete: true,
+    });
+    assert.equal(
+      adoptedEntry.originalBodySha256,
+      bodySha256("<html>disk</html>"),
+    );
+    assert.equal(
+      (await readOriginalFetchCacheBody(cache, adopted)).body,
+      "<html>disk</html>",
+    );
+
+    const datedPrior = "https://a.example/adopt-dated";
+    await fs.writeFile(
+      path.join(root, originalBodyName(datedPrior)),
+      "<html>kept</html>",
+      "utf8",
+    );
+    cache.entries.set(datedPrior, {
+      url: datedPrior,
+      bodySha256: "current",
+      bodyFile: "dated-current.body",
+      cachedAt: "2026-02-01T00:00:00.000Z",
+    });
+    const datedEntry = await writeFetchCacheEntry(cache, {
+      url: datedPrior,
+      body: "<html>replacement</html>",
+      cachedAt: "2026-05-01T00:00:00.000Z",
+      bodyComplete: true,
+    });
+    assert.equal(datedEntry.originalCachedAt, "2026-02-01T00:00:00.000Z");
+    assert.equal(
+      (await readOriginalFetchCacheBody(cache, datedPrior)).body,
+      "<html>kept</html>",
+    );
+
+    const undatedPrior = "https://a.example/adopt-undated";
+    await fs.writeFile(
+      path.join(root, originalBodyName(undatedPrior)),
+      "<html>undated-disk</html>",
+      "utf8",
+    );
+    cache.entries.set(undatedPrior, {
+      url: undatedPrior,
+      bodySha256: "current",
+      bodyFile: "undated-current.body",
+      cachedAt: "",
+    });
+    const undatedEntry = await writeFetchCacheEntry(cache, {
+      url: undatedPrior,
+      body: "<html>replacement</html>",
+      cachedAt: "2026-05-02T00:00:00.000Z",
+      bodyComplete: true,
+    });
+    assert.equal(undatedEntry.originalCachedAt, "2026-05-02T00:00:00.000Z");
+
+    const legacy = "https://a.example/legacy";
+    await fs.writeFile(
+      path.join(root, "legacy.body"),
+      "<html>legacy</html>",
+      "utf8",
+    );
+    cache.entries.set(legacy, {
+      url: legacy,
+      bodySha256: bodySha256("<html>legacy</html>"),
+      bodyFile: "legacy.body",
+      cachedAt: "2026-01-15T00:00:00.000Z",
+    });
+    const legacyEntry = await writeFetchCacheEntry(cache, {
+      url: legacy,
+      body: "<html>legacy-update</html>",
+      cachedAt: "2026-06-15T00:00:00.000Z",
+      bodyComplete: true,
+    });
+    assert.equal(
+      legacyEntry.originalBodySha256,
+      bodySha256("<html>legacy</html>"),
+    );
+    assert.equal(legacyEntry.originalCachedAt, "2026-01-15T00:00:00.000Z");
+    assert.equal(
+      (await readFetchCacheBody(cache, legacy)).body,
+      "<html>legacy-update</html>",
+    );
+
+    const legacyUndated = "https://a.example/legacy-undated";
+    await fs.writeFile(
+      path.join(root, "legacy-undated.body"),
+      "<html>old</html>",
+      "utf8",
+    );
+    cache.entries.set(legacyUndated, {
+      url: legacyUndated,
+      bodySha256: bodySha256("<html>old</html>"),
+      bodyFile: "legacy-undated.body",
+      cachedAt: "",
+    });
+    const legacyUndatedEntry = await writeFetchCacheEntry(cache, {
+      url: legacyUndated,
+      body: "<html>new</html>",
+      cachedAt: "2026-06-16T00:00:00.000Z",
+      bodyComplete: true,
+    });
+    assert.equal(
+      legacyUndatedEntry.originalCachedAt,
+      "2026-06-16T00:00:00.000Z",
+    );
+    assert.equal(
+      (await readOriginalFetchCacheBody(cache, legacyUndated)).body,
+      "<html>old</html>",
+    );
+
+    const missingPrior = "https://a.example/missing-prior";
+    cache.entries.set(missingPrior, {
+      url: missingPrior,
+      bodySha256: "gone",
+      bodyFile: "missing-prior.body",
+      cachedAt: "2026-01-20T00:00:00.000Z",
+    });
+    const missingEntry = await writeFetchCacheEntry(cache, {
+      url: missingPrior,
+      body: "<html>first-surviving</html>",
+      cachedAt: "2026-06-20T00:00:00.000Z",
+      bodyComplete: true,
+    });
+    assert.equal(
+      missingEntry.originalBodySha256,
+      bodySha256("<html>first-surviving</html>"),
+    );
+
+    const blankFile = "https://a.example/blank-file";
+    cache.entries.set(blankFile, {
+      url: blankFile,
+      bodySha256: "blank",
+      bodyFile: "",
+      cachedAt: "2026-01-21T00:00:00.000Z",
+    });
+    const blankEntry = await writeFetchCacheEntry(cache, {
+      url: blankFile,
+      body: "<html>blank-original</html>",
+      cachedAt: "2026-06-21T00:00:00.000Z",
+      bodyComplete: true,
+    });
+    assert.equal(
+      blankEntry.originalBodySha256,
+      bodySha256("<html>blank-original</html>"),
+    );
+
+    const partial = await writeFetchCacheEntry(cache, {
+      url: "https://a.example/partial",
+      body: "<html>partial</html>",
+      cachedAt: "2026-01-01T00:00:00.000Z",
+    });
+    assert.equal(partial.originalBodyFile, undefined);
+    assert.equal(
+      await readOriginalFetchCacheBody(cache, "https://a.example/partial"),
+      null,
+    );
+
+    cache.entries.get(page).originalBodyFile = "gone.original.body";
+    assert.equal(await readOriginalFetchCacheBody(cache, page), null);
+    assert.equal(cache.entries.has(page), true);
+    cache.entries.get(page).originalBodyFile = "";
+    assert.equal(await readOriginalFetchCacheBody(cache, page), null);
+    assert.equal(
+      await readOriginalFetchCacheBody(cache, "https://a.example/unknown"),
+      null,
+    );
+
+    cache.entries.get(adopted).etag = '"stale"';
+    cache.entries.get(adopted).lastModified = "Tue, 01 Apr 2026 00:00:00 GMT";
+    cache.entries.get(adopted).cachedAt = "2026-01-01T00:00:00.000Z";
+    const evicted = pruneFetchCache(cache, "2026-12-15T00:00:00.000Z", 30);
+    assert.equal(cache.entries.has(adopted), true);
+    assert.equal(cache.entries.get(adopted).etag, undefined);
+    assert.equal(cache.entries.get(adopted).lastModified, undefined);
+    assert.equal(
+      (await readOriginalFetchCacheBody(cache, adopted)).body,
+      "<html>disk</html>",
+    );
+    assert.equal(cache.entries.has("https://a.example/partial"), false);
+    assert.ok(evicted >= 1);
   } finally {
     if (previous === undefined) {
       delete process.env.NETWORK_REFRESH_ALL;

@@ -20,9 +20,95 @@ import {
   decodeHrefForParse,
   normalizeExtractedText,
   normalizeLanguageTag,
+  firstMeaningfulParagraphFromHtml,
   posterImageFromHtml,
+  readableSummary,
   shareDescriptionFromHtml,
 } from "./text.mjs";
+
+/** Chrome / CTA blurbs that should lose to publisher share text. */
+const WEAK_SUMMARY_RE =
+  /^(elsewhere|read more|learn more|click here|more)\.?$/i;
+
+/**
+ * True when existing summary should be replaced by publisher share/lede text.
+ * @param {unknown} summary
+ * @param {unknown} title
+ * @param {unknown} share
+ * @returns {boolean}
+ * @example
+ * shouldPreferShareDescription("", "Title", "A real blurb.") // true
+ * shouldPreferShareDescription("Title", "Title", "A real blurb.") // true
+ */
+export function shouldPreferShareDescription(summary, title, share) {
+  const shareText = plainTextSummary(
+    typeof share === "string" ? share : String(share || ""),
+  );
+  const summaryText = plainTextSummary(
+    typeof summary === "string" ? summary : String(summary || ""),
+  );
+  const titleText = plainTextSummary(
+    typeof title === "string" ? title : String(title || ""),
+  );
+
+  if (!shareText) {
+    return false;
+  }
+
+  if (titleText && shareText.toLowerCase() === titleText.toLowerCase()) {
+    return false;
+  }
+
+  if (!summaryText) {
+    return true;
+  }
+
+  if (titleText && summaryText.toLowerCase() === titleText.toLowerCase()) {
+    return true;
+  }
+
+  if (WEAK_SUMMARY_RE.test(summaryText)) {
+    return true;
+  }
+
+  if (summaryText.length < 48 && shareText.length > summaryText.length) {
+    return true;
+  }
+
+  if (shareText.length >= summaryText.length + 24) {
+    return true;
+  }
+
+  return false;
+}
+
+/**
+ * True when a content row still needs a publisher-page summary fetch.
+ * @param {Record<string, unknown>} item
+ * @returns {boolean}
+ */
+export function summaryNeedsPageBackfill(item) {
+  if (!item || typeof item !== "object") {
+    return false;
+  }
+
+  const summaryText = plainTextSummary(String(item.summary || ""));
+  const titleText = plainTextSummary(String(item.title || ""));
+
+  if (!summaryText) {
+    return true;
+  }
+
+  if (titleText && summaryText.toLowerCase() === titleText.toLowerCase()) {
+    return true;
+  }
+
+  if (WEAK_SUMMARY_RE.test(summaryText)) {
+    return true;
+  }
+
+  return summaryText.length < 48;
+}
 
 /**
  * Creative index child paths whose publisher pages usually declare og:image.
@@ -117,7 +203,7 @@ export function plainTextSummary(htmlOrText) {
   const withoutCdata = htmlOrText.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1");
   const decoded = decodeHtmlEntities(withoutCdata);
   const withoutTags = decoded.replace(/<[^>]*>/g, " ").replace(/<[^>]*$/g, " ");
-  return capRemoteString(withoutTags, MAX_SUMMARY_CHARS);
+  return capRemoteString(readableSummary(withoutTags), MAX_SUMMARY_CHARS);
 }
 
 /**
@@ -1241,6 +1327,87 @@ export function isPodcastFeedItem(chunk, feedUrl) {
   );
 }
 
+/** Title or blurb phrases that announce an episode instead of being the writing. */
+const EPISODE_ANNOUNCEMENT_PHRASE =
+  /\b(?:new episode|latest episode|watch the video|on the podcast)\b/i;
+
+/** A short blurb can be the announcement. A longer excerpt is the essay. */
+const EPISODE_ANNOUNCEMENT_BLURB_CHARS = 180;
+
+/**
+ * Plain text for the announcement check.
+ * @param {unknown} value
+ * @returns {string}
+ */
+function announcementText(value) {
+  if (typeof value !== "string") {
+    return "";
+  }
+
+  return value
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * True when the text is mostly a link to a video or episode.
+ * @param {string} title
+ * @param {string} summary
+ * @param {string} url
+ * @returns {boolean}
+ */
+function isMostlyEpisodeLink(title, summary, url) {
+  const blob = `${title}\n${summary}\n${url}`;
+  const urls = blob.match(/https?:\/\/[^\s<>"']+/gi) || [];
+  const episodeLink = urls.some((href) =>
+    /(?:youtube\.com\/watch\?|youtu\.be\/|\/podcasts?\/|\/episodes?\/)/i.test(
+      href,
+    ),
+  );
+
+  if (!episodeLink) {
+    return false;
+  }
+
+  const leftover = `${title} ${summary}`
+    .replace(/https?:\/\/[^\s<>"']+/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  return leftover.length <= 48;
+}
+
+/**
+ * True when a post announces an episode instead of being the writing.
+ * A normal essay that only mentions a podcast stays writing.
+ * @param {unknown} title
+ * @param {unknown} [summary]
+ * @param {unknown} [url]
+ * @returns {boolean}
+ * @example
+ * isEpisodeAnnouncement("New episode: Tiny Result", "Watch the video");
+ */
+export function isEpisodeAnnouncement(title, summary = "", url = "") {
+  const heading = announcementText(title);
+  const blurb = announcementText(summary);
+  const link = announcementText(url);
+
+  if (EPISODE_ANNOUNCEMENT_PHRASE.test(heading)) {
+    return true;
+  }
+
+  if (
+    blurb &&
+    blurb.length <= EPISODE_ANNOUNCEMENT_BLURB_CHARS &&
+    EPISODE_ANNOUNCEMENT_PHRASE.test(blurb)
+  ) {
+    return true;
+  }
+
+  return isMostlyEpisodeLink(heading, blurb, link);
+}
+
 /**
  * Readable title for an RSS/Atom entry; empty/self-closing titles fall back to
  * summary/description then URL slug (PaperMod microblog notes).
@@ -1428,6 +1595,13 @@ export function contentItemsFromRssOrAtom(xml, meta) {
 
     if (isListeningCurationTitle(title) && contentType !== "photograph") {
       contentType = "article";
+    }
+
+    if (
+      contentType === "article" &&
+      isEpisodeAnnouncement(title, summary, absoluteUrl)
+    ) {
+      contentType = "episode_announcement";
     }
 
     /** @type {Array<{ label: string, url: string, type: string }>} */
@@ -2066,20 +2240,26 @@ export function joinContentWithPageSignals(items, originSignals) {
       next.image = page.poster_image;
     }
 
-    if (!plainTextSummary(next.summary) && page?.share_description) {
-      next.summary = page.share_description;
-    }
-
-    // Year-only album titles ("2014") become the publisher's share text when
-    // we have it, so Showcase cards are not blank year chips.
     const titleText = typeof next.title === "string" ? next.title.trim() : "";
+    const shareText =
+      typeof page?.share_description === "string" ? page.share_description : "";
 
-    if (
-      /^\d{4}$/.test(titleText) &&
-      typeof page?.share_description === "string" &&
-      page.share_description.trim()
+    // Year albums keep a short year title; put the publisher blurb in summary
+    // so Showcase does not title-echo the assortment line away.
+    if (/^\d{4}$/.test(titleText) && shareText.trim()) {
+      const sharePlain = plainTextSummary(shareText);
+
+      if (
+        sharePlain &&
+        sharePlain.toLowerCase() !== titleText.toLowerCase() &&
+        shouldPreferShareDescription(next.summary, titleText, sharePlain)
+      ) {
+        next.summary = sharePlain;
+      }
+    } else if (
+      shouldPreferShareDescription(next.summary, next.title, shareText)
     ) {
-      next.title = plainTextSummary(page.share_description) || titleText;
+      next.summary = shareText;
     }
 
     for (const topic of pageTopics) {
@@ -2100,12 +2280,10 @@ export function joinContentWithPageSignals(items, originSignals) {
 }
 
 /**
- * True when a content item should try the publisher page for a missing poster.
- * Items that already have a non-empty https image (e.g. games index extract)
- * are skipped so enrich never overwrites a good index poster. Creative paths,
- * Projects-shelf drafts, named-root products, Showcase types, and
- * articles/notes (blank type → article) are enrichable so OG runs before
- * Playwright screenshot fallback.
+ * True when a content item should try the publisher page for a missing poster
+ * and/or a weak/empty summary. Items that already have a non-empty https image
+ * are still enrichable when summaryNeedsPageBackfill is true (image stays
+ * write-once). PDF sheet_music URLs are never HTML-enriched.
  * @param {Record<string, unknown>} item
  * @returns {boolean}
  */
@@ -2114,11 +2292,15 @@ export function contentItemNeedsPosterEnrichment(item) {
     return false;
   }
 
-  if (typeof item.image === "string" && item.image.startsWith("https://")) {
+  if (typeof item.url !== "string" || !item.url.startsWith("https://")) {
     return false;
   }
 
-  if (typeof item.url !== "string" || !item.url.startsWith("https://")) {
+  const hasImage =
+    typeof item.image === "string" && item.image.startsWith("https://");
+  const needsSummary = summaryNeedsPageBackfill(item);
+
+  if (hasImage && !needsSummary) {
     return false;
   }
 
@@ -2126,6 +2308,11 @@ export function contentItemNeedsPosterEnrichment(item) {
     const parsed = new URL(item.url);
 
     if (parsed.username || parsed.password) {
+      return false;
+    }
+
+    // PDF scores get listing blurbs at harvest time, not HTML meta fetches.
+    if (/\.pdf(\?|$)/i.test(parsed.pathname)) {
       return false;
     }
 
@@ -2170,15 +2357,12 @@ export function contentItemNeedsPosterEnrichment(item) {
 }
 
 /**
- * Fills missing posters (and empty summaries) from each work page's Open Graph
- * tags. Used by nlp:sync so GitHub Actions Showcase cards get the publisher's
- * existing experiment/game posters even when the feed omitted enclosures and
- * the crawl window missed the detail page.
+ * Fills missing posters and weak/empty summaries from each work page's Open
+ * Graph tags (and a body lede when meta is missing). Used by nlp:sync so
+ * Showcase cards get the publisher's posters and blurbs.
  *
  * Invariant: never overwrites a non-empty https `image` already set by index
- * extract or feeds (`contentItemNeedsPosterEnrichment` gates that). Enrich only
- * fills when the work page has og:image / share description and the item still
- * lacks them—typical for `/games/…` and `/experiments/…` detail pages.
+ * extract or feeds. Summary may upgrade via shouldPreferShareDescription.
  * @param {Array<Record<string, unknown>>} items
  * @param {{
  *   cache?: Map<string, unknown>,
@@ -2239,12 +2423,21 @@ export async function enrichContentItemPosters(items, options = {}) {
         item.image = poster;
       }
 
-      if (!plainTextSummary(String(item.summary || ""))) {
-        const share = shareDescriptionFromHtml(html);
+      const share = shareDescriptionFromHtml(html);
+      let better = "";
 
-        if (share) {
-          item.summary = share;
+      if (shouldPreferShareDescription(item.summary, item.title, share)) {
+        better = share;
+      } else {
+        const lede = firstMeaningfulParagraphFromHtml(html);
+
+        if (shouldPreferShareDescription(item.summary, item.title, lede)) {
+          better = lede;
         }
+      }
+
+      if (better) {
+        item.summary = better;
       }
 
       // Comics-hub blog posts often omit dates on the index; fill from the post.

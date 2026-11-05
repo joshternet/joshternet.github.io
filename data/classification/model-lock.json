@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "model_id": "Xenova/nli-deberta-v3-xsmall",
+  "revision": "2a4f614a701367a02d51389039afc998faeda637",
+  "runtime": "onnxruntime-node",
+  "backend": "onnxruntime-node",
+  "quantization": "q8",
+  "package": "@huggingface/transformers",
+  "package_version": "4.3.2",
+  "license": "Apache-2.0",
+  "files": [
+    {
+      "path": "Xenova/nli-deberta-v3-xsmall/config.json",
+      "sha256": "ec0bd14cc28640326474399cd61d38ccd52b64900228799d0f81debda8c4bc53"
+    },
+    {
+      "path": "Xenova/nli-deberta-v3-xsmall/onnx/model_quantized.onnx",
+      "sha256": "3fac2500c45c75af42c7711de0d1b93d59577456100208be0dc1f9e8811946b6"
+    },
+    {
+      "path": "Xenova/nli-deberta-v3-xsmall/tokenizer.json",
+      "sha256": "a86f883318afa11c8c10466f1bf4efaeb6ded28a52cbe57217a8fa0d0a2a87df"
+    },
+    {
+      "path": "Xenova/nli-deberta-v3-xsmall/tokenizer_config.json",
+      "sha256": "d8d3bb123b99317634d5ee3d1d2d8b2ddb01510a0654687fc2639a5347a7291f"
+    }
+  ]
+}

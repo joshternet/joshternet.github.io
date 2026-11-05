@@ -125,6 +125,13 @@ const SHOWCASE_CHROME_EXTRA_SEGMENTS = new Set([
   "code",
   "unoffice-hours",
   "unofficehours",
+  // Gift / shopping wish lists (e.g. joshuapsteele.com/wish-list/).
+  "wish",
+  "wish-list",
+  "wishlist",
+  // German legal chrome (privacy / imprint).
+  "datenschutz",
+  "impressum",
 ]);
 
 const IDENTITY_SLASH_SET = new Set(

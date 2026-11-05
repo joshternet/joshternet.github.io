@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "model_id": "Xenova/nli-deberta-v3-xsmall",
+  "hypothesis_template": "This text is about {}.",
+  "threshold": 0.7,
+  "margin": 0.15,
+  "template_version": 1,
+  "note": "Accepted proposals publish a Uses slot when the rules left the claim unsorted. A top score is not acceptance."
+}

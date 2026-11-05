@@ -72,6 +72,11 @@ test("classifyPageRole: legal paths", () => {
     "legal",
   );
   assert.equal(classifyPageRole("https://a.example/cookies"), "legal");
+  assert.equal(
+    classifyPageRole("https://joshuastuebner.com/datenschutz/"),
+    "legal",
+  );
+  assert.equal(classifyPageRole("https://a.example/impressum/"), "legal");
 });
 
 test("classifyPageRole: legal by title", () => {
@@ -81,6 +86,10 @@ test("classifyPageRole: legal by title", () => {
   );
   assert.equal(
     classifyPageRole("https://a.example/p", { title: "Terms of service" }),
+    "legal",
+  );
+  assert.equal(
+    classifyPageRole("https://a.example/p", { title: "Datapolicy" }),
     "legal",
   );
 });
@@ -152,6 +161,21 @@ test("classifyPageRole: utility paths", () => {
   assert.equal(classifyPageRole("https://a.example/feed"), "utility");
   assert.equal(classifyPageRole("https://a.example/rss"), "utility");
   assert.equal(classifyPageRole("https://a.example/atom"), "utility");
+});
+
+test("classifyPageRole: /seeking is utility (no topic contribution)", () => {
+  assert.equal(classifyPageRole("https://joshua.example/seeking/"), "utility");
+  assert.equal(classifyPageRole("https://joshua.example/seeking"), "utility");
+  assert.equal(
+    classifyPageRole("https://joshua.example/seeking/docs/"),
+    "documentation",
+  );
+  assert.equal(
+    topicContributionForRole(
+      classifyPageRole("https://joshua.example/seeking/"),
+    ),
+    "none",
+  );
 });
 
 test("classifyPageRole: home path (trailing-slash root)", () => {

@@ -20,7 +20,14 @@ async function assertMissing(relativePath) {
 test("Jekyll exclude keeps proof tooling off the published site", async () => {
   const config = await readFile(path.join(root, "_config.yml"), "utf8");
 
-  for (const entry of ["scripts", "test", "workers", "examples", "docs"]) {
+  for (const entry of [
+    "scripts",
+    "test",
+    "workers",
+    "examples",
+    "docs",
+    "data",
+  ]) {
     assert.match(
       config,
       new RegExp(`^\\s*-\\s*${entry}\\s*$`, "m"),

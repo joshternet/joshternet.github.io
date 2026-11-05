@@ -41,6 +41,7 @@ const CHAPTER_IDS = [
   "media",
   "events",
   "uses",
+  "seeking",
   "explore",
   "validation",
   "reference",

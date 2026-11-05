@@ -8,6 +8,11 @@ node_modules/
 coverage.lcov
 .network-sync/
 .tmp/
+tmp/crawl-original/
+tmp/crawl-experiment/
+tmp/crawl-active.txt
+# Seeking request bodies stay current-only and must not enter Git history.
+_data/seeking.json
 workers/seed-nominations/.wrangler/
 workers/http-message-signatures-directory/.wrangler/
 workers/declaration-check/.wrangler/

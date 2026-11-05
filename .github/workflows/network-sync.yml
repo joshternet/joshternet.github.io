@@ -24,10 +24,14 @@ on:
       - "scripts/network/**"
       - "scripts/nlp/**"
       - "scripts/views/**"
+      - "scripts/uses/**"
       - "schemas/**"
+      - "data/uses/catalog/**"
+      - "data/classification/**"
       - "test/network/**"
       - "test/nlp/**"
       - "test/views/**"
+      - "test/uses/**"
       - "test/browser/**"
       - "package.json"
       - "package-lock.json"
@@ -38,12 +42,14 @@ on:
       - "network.md"
       - "wander.md"
       - "connections.md"
+      - "uses.md"
       - "topics/**"
       - "network-data.json"
       - "connections-data.json"
       - "assets/js/network.js"
       - "assets/js/wander.js"
       - "assets/js/connections.js"
+      - "assets/js/uses.js"
       - "assets/css/main.css"
 
 concurrency:
@@ -54,20 +60,28 @@ permissions:
   contents: read
 
 jobs:
-  scrape:
-    name: Capture participant sites
+  sync-and-publish:
+    name: Sync and publish network
     runs-on: ubuntu-latest
     # No job timeout: crawl/rebuild grows with membership. GitHub’s
     # default (360m) is the ceiling for hosted runners.
 
-    outputs:
-      needs_sync: ${{ steps.preflight.outputs.needs_sync }}
+    permissions:
+      contents: write
+      pages: write
 
     steps:
       - name: Check out site
         uses: actions/checkout@v4
         with:
-          persist-credentials: false
+          ref: main
+
+      - name: Capture base SHA
+        id: base
+        shell: bash
+        run: |
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "Base commit: $(git rev-parse HEAD)"
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -118,8 +132,30 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: npm run network:sync
 
+      - name: Restore local classifier
+        if: steps.preflight.outputs.needs_sync == 'true'
+        uses: actions/cache@v4
+        with:
+          path: .tmp/models
+          key: uses-model-${{ runner.os }}-${{ hashFiles('data/classification/model-lock.json') }}
+          restore-keys: |
+            uses-model-${{ runner.os }}-
+
+      - name: Prepare local classifier
+        if: steps.preflight.outputs.needs_sync == 'true'
+        run: node scripts/uses/prepare-model.mjs
+
+      - name: Classify frozen snapshot with network blocked
+        if: steps.preflight.outputs.needs_sync == 'true'
+        run: npm run test:classify-local
+
       - name: Crawl sites and rebuild topics/connections
         if: steps.preflight.outputs.needs_sync == 'true'
+        env:
+          # Shadow by default: uses history is computed and validated but
+          # not staged for commit until an operator enables publish.
+          # The Uses build loads the local classifier prepared above.
+          JOSHTERNET_USES_PUBLISH: ${{ vars.JOSHTERNET_USES_PUBLISH || '0' }}
         run: npm run nlp:sync
 
       - name: Format generated datasets before validate
@@ -137,6 +173,14 @@ jobs:
       - name: Validate topic quality
         if: steps.preflight.outputs.needs_sync == 'true'
         run: npm run nlp:quality
+
+      - name: Validate uses datasets
+        if: steps.preflight.outputs.needs_sync == 'true'
+        run: npm run uses:validate
+
+      - name: Validate uses quality
+        if: steps.preflight.outputs.needs_sync == 'true'
+        run: npm run uses:quality
 
       - name: Validate generated JSON
         if: steps.preflight.outputs.needs_sync == 'true'
@@ -323,175 +367,26 @@ jobs:
           );
           NODE
 
-      - name: Upload generated network
-        if: steps.preflight.outputs.needs_sync == 'true'
-        uses: actions/upload-artifact@v4
-        with:
-          name: network-generated
-          retention-days: 1
-          if-no-files-found: error
-          path: |
-            _data/network.json
-            _data/blogrolls.json
-            _data/connections.json
-            _data/topics.json
-            _data/site_signals.json
-            _data/content.json
-            _data/data_manifest.json
-            _data/activity.json
-            _data/explore.json
-            _data/topic_views.json
-            _data/connection_topics.json
-            _data/site_views.json
-            _data/search_index.json
-            _data/showcase.json
-            _data/happening.json
-            topics/
-            assets/network/joshternet.opml
-            assets/network/sites/
-            assets/activity/posters/
-
-  publish:
-    name: Publish generated network
-    needs:
-      - scrape
-    if: needs.scrape.outputs.needs_sync == 'true'
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-
-    permissions:
-      contents: write
-      pages: write
-
-    steps:
-      - name: Check out latest main
-        uses: actions/checkout@v4
-        with:
-          ref: main
-
-      - name: Download generated network
-        uses: actions/download-artifact@v4
-        with:
-          name: network-generated
-          path: .network-sync-output
-
-      - name: Replace generated files
-        run: |
-          test -f .network-sync-output/_data/network.json
-          test -f .network-sync-output/_data/blogrolls.json
-          test -f .network-sync-output/_data/connections.json
-          test -f .network-sync-output/_data/topics.json
-          test -f .network-sync-output/_data/site_signals.json
-          test -f .network-sync-output/assets/network/joshternet.opml
-
-          mkdir -p _data
-          mkdir -p assets/network
-          mkdir -p topics
-
-          cp \
-            .network-sync-output/_data/network.json \
-            _data/network.json
-
-          cp \
-            .network-sync-output/_data/blogrolls.json \
-            _data/blogrolls.json
-
-          cp \
-            .network-sync-output/_data/connections.json \
-            _data/connections.json
-
-          cp \
-            .network-sync-output/_data/topics.json \
-            _data/topics.json
-
-          cp \
-            .network-sync-output/_data/site_signals.json \
-            _data/site_signals.json
-
-          if [ -f .network-sync-output/_data/content.json ]; then
-            cp \
-              .network-sync-output/_data/content.json \
-              _data/content.json
-          fi
-
-          if [ -f .network-sync-output/_data/data_manifest.json ]; then
-            cp \
-              .network-sync-output/_data/data_manifest.json \
-              _data/data_manifest.json
-          fi
-
-          for dataset in \
-            activity.json \
-            explore.json \
-            topic_views.json \
-            connection_topics.json \
-            site_views.json \
-            search_index.json \
-            showcase.json \
-            happening.json
-          do
-            test -f ".network-sync-output/_data/${dataset}"
-            cp \
-              ".network-sync-output/_data/${dataset}" \
-              "_data/${dataset}"
-          done
-
-          find topics -maxdepth 1 -type f -name '*.md' ! -name 'index.md' -delete
-          mkdir -p topics
-
-          if [ -d .network-sync-output/topics ]; then
-            for page in .network-sync-output/topics/*.md; do
-              [ -f "$page" ] || continue
-              base="$(basename "$page")"
-              if [ "$base" != "index.md" ]; then
-                cp "$page" "topics/$base"
-              fi
-            done
-          fi
-
-          cp \
-            .network-sync-output/assets/network/joshternet.opml \
-            assets/network/joshternet.opml
-
-          rm -rf assets/network/sites
-          mkdir -p assets/network/sites
-
-          if [ -d .network-sync-output/assets/network/sites ]; then
-            cp -R \
-              .network-sync-output/assets/network/sites/. \
-              assets/network/sites/
-          fi
-
-          rm -rf assets/activity/posters
-          mkdir -p assets/activity/posters
-
-          if [ -d .network-sync-output/assets/activity/posters ]; then
-            cp -R \
-              .network-sync-output/assets/activity/posters/. \
-              assets/activity/posters/
-          fi
-
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Format generated datasets
-        run: npm run format:data
-
-      - name: Fail closed if Prettier still reports dirty files
-        run: npm run format:check
-
       - name: Commit generated changes
         id: commit_network
+        if: steps.preflight.outputs.needs_sync == 'true'
+        env:
+          JOSHTERNET_USES_PUBLISH: ${{ vars.JOSHTERNET_USES_PUBLISH || '0' }}
+          BASE_SHA: ${{ steps.base.outputs.sha }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email \
             "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Fail closed if main advanced under us before staging.
+          git fetch origin main
+          HEAD_SHA="$(git rev-parse HEAD)"
+          REMOTE_SHA="$(git rev-parse origin/main)"
+          if [ "$REMOTE_SHA" != "$BASE_SHA" ] && [ "$REMOTE_SHA" != "$HEAD_SHA" ]; then
+            echo "main advanced after BASE_SHA=$BASE_SHA (now $REMOTE_SHA)."
+            echo "Failing closed so the next scheduled run can reconcile."
+            exit 1
+          fi
 
           git add -- \
             _data/network.json \
@@ -513,6 +408,17 @@ jobs:
             assets/network/joshternet.opml \
             assets/network/sites \
             assets/activity/posters
+
+          if [ "${JOSHTERNET_USES_PUBLISH}" = "1" ] || [ "${JOSHTERNET_USES_PUBLISH}" = "true" ]; then
+            git add -- \
+              data/uses \
+              _data/uses_summary.json \
+              assets/data/uses || true
+          fi
+
+          # Seeking request bodies are current-only and must never be staged.
+          # The Seeking public JSON file is gitignored; keep ephemeral observation
+          # state out of git add as well. Live excerpts need a non-commit path.
 
           if git diff --cached --quiet; then
             echo "Network data is already current."

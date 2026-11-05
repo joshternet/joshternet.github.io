@@ -14,6 +14,7 @@ import {
   creativeItemsFromFigures,
   creativeItemsFromIndexLinks,
   isCreativeIndexPath,
+  splitIndexLinkTitleAndTagline,
 } from "../../scripts/nlp/creative.mjs";
 
 const fixtures = path.join(
@@ -203,6 +204,72 @@ test("creativeItemsFromFigures attaches https image on linked works", () => {
   assert.equal(items.length, 1);
   assert.equal(items[0].url, "https://photos.example/gallery/tide/");
   assert.equal(items[0].image, "https://photos.example/img/tide.jpg");
+});
+
+test("creativeItemsFromFigures clears title-echo captions", () => {
+  const html = `<figure>
+    <a href="/books/coding/"><img src="/cover.png" alt=""></a>
+    <figcaption><span class="title">Coding All-in-One</span></figcaption>
+  </figure>`;
+  const items = creativeItemsFromFigures(
+    html,
+    "https://a.example/books/",
+    "https://a.example",
+    "t",
+  );
+  assert.equal(items.length, 1);
+  assert.equal(items[0].title, "Coding All-in-One");
+  assert.equal(items[0].summary, "");
+});
+
+test("splitIndexLinkTitleAndTagline extracts staircase taglines", () => {
+  assert.deepEqual(
+    splitIndexLinkTitleAndTagline("worn Your movements, a stranger's face."),
+    {
+      title: "worn",
+      summary: "Your movements, a stranger's face.",
+    },
+  );
+  assert.deepEqual(splitIndexLinkTitleAndTagline("plain title"), {
+    title: "plain title",
+    summary: "",
+  });
+  assert.deepEqual(
+    splitIndexLinkTitleAndTagline("It Is Truly Meet - Macedonian"),
+    {
+      title: "It Is Truly Meet - Macedonian",
+      summary: "",
+    },
+  );
+});
+
+test("creativeItemsFromIndexLinks splits taglines and inherits music intro for PDFs", () => {
+  const experiments = creativeItemsFromIndexLinks(
+    `<html><body>
+      <a href="/experiments/worn/index.html">worn Your movements, a stranger's face.</a>
+    </body></html>`,
+    "https://joshurbandavis.com/experiments/",
+    "https://joshurbandavis.com",
+    "t",
+  );
+  assert.equal(experiments.length, 1);
+  assert.equal(experiments[0].title, "worn");
+  assert.equal(experiments[0].summary, "Your movements, a stranger's face.");
+
+  const music = creativeItemsFromIndexLinks(
+    `<html><body>
+      <p>These are songs chanted during certain Eastern Orthodox services. I transcribed them with MuseScore.</p>
+      <ul>
+        <li><a href="/music/It%20Is%20Truly%20Meet%20-%20Macedonian.pdf">It Is Truly Meet - Macedonian</a></li>
+      </ul>
+    </body></html>`,
+    "https://joshua.seigler.net/music/",
+    "https://joshua.seigler.net",
+    "t",
+  );
+  assert.equal(music.length, 1);
+  assert.equal(music[0].content_type, "sheet_music");
+  assert.match(String(music[0].summary), /Eastern Orthodox/i);
 });
 
 test("creativeItemsFromIndexLinks ignores non-index pages", () => {

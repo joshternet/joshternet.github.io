@@ -21,8 +21,6 @@ joshternet_analysis: derived
 
 There's always something interesting happening in somebody's corner of the internet. People are writing, building things, experimenting with ideas, and sharing whatever has caught their attention lately. Here's a look at a selection of recent writing and creative work from around the Joshternet.
 
-Everything here comes from participating independent websites. Follow something that catches your eye and you'll end up on the publisher's own site, right where it belongs. This is not an exhaustive feed of everything every participant has published—just a recent selection worth browsing.
-
 <p class="activity-subscribe">
   Want to keep up without coming back here every day?
   <a href="{{ '/assets/activity/atom.xml' | relative_url }}">Subscribe to What's New</a>
@@ -43,13 +41,6 @@ Everything here comes from participating independent websites. Follow something 
   Looking for more of what people have made? Explore the
   <a href="{{ '/showcase/' | relative_url }}">Showcase</a>,
   where projects and creative work have a home beyond the latest updates.
-</p>
-
-<p class="activity-close">
-  Found somebody interesting? Follow their work, explore their website, and see
-  where their links lead. There's a lot more to the independent web than any one
-  feed can show. There's a good chance you'll find something you weren't looking
-  for—that's usually how the best internet rabbit holes start.
 </p>
 {% else %}
 <div class="network-empty">

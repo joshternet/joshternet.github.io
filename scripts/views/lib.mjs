@@ -13,9 +13,12 @@ import {
   personNameFromSelfIntro,
 } from "../network/lib.mjs";
 import { isShowcaseChromePath } from "../network/slash-pages.mjs";
+import { isEpisodeAnnouncement } from "../nlp/content.mjs";
 import { isNonSubjectSlug } from "../nlp/evidence.mjs";
 import { itemMentionsTopic, textMentionsSlug } from "../nlp/match.mjs";
-import { normalizeLanguageTag } from "../nlp/text.mjs";
+import { isCssBattleShowTitle } from "../nlp/show-classification.mjs";
+import { youtubeVideoIdFromHref } from "../nlp/youtube-feeds.mjs";
+import { normalizeLanguageTag, readableSummary } from "../nlp/text.mjs";
 import {
   normalizeUnicodeText,
   unicodeLetterTokens,
@@ -144,7 +147,10 @@ export const SHOWCASE_KIND_LABELS = Object.freeze({
   games: Object.freeze(["Game", "Games"]),
   photography: Object.freeze(["Photography", "Photography"]),
   music: Object.freeze(["Music", "Music"]),
-  podcasts: Object.freeze(["Podcast", "Podcasts"]),
+  podcasts: Object.freeze([
+    "Podcasts and live streams",
+    "Podcasts and live streams",
+  ]),
   art: Object.freeze(["Art", "Art"]),
   comics: Object.freeze(["Comic", "Comics"]),
   "sheet music": Object.freeze(["Sheet music", "Sheet music"]),
@@ -320,7 +326,8 @@ export function contentTitleDedupeKey(title) {
 }
 
 /**
- * Rank cross-posted variants so podcast/video beat a same-title article.
+ * Rank cross-posted variants so a written article or note beats a same-title
+ * video or podcast. An episode announcement loses to the episode.
  * @param {Record<string, unknown>} item
  * @returns {number}
  */
@@ -330,8 +337,13 @@ function crosspostPreferenceScore(item) {
 
   if (type === "podcast_episode" || type === "video") {
     score += 40;
+  } else if (
+    type === "episode_announcement" ||
+    isEpisodeAnnouncement(item.title, item.summary, item.url)
+  ) {
+    score += 0;
   } else if (type === "article" || type === "note") {
-    score += 10;
+    score += 50;
   } else {
     score += 20;
   }
@@ -344,13 +356,12 @@ function crosspostPreferenceScore(item) {
 }
 
 /**
- * Drop same-origin same-title crossposts (e.g. Substack article + YouTube
- * episode). Keeps the stronger creative/video variant.
- * @param {Array<Record<string, unknown>>} items
- * @returns {Array<Record<string, unknown>>}
+ * Group key for one dedupe pass. Empty keys are not collapsed.
+ * @param {Array<Record<string, unknown>>} list
+ * @param {(item: Record<string, unknown>) => string} keyFor
+ * @returns {Map<string, Record<string, unknown>>}
  */
-export function dedupeCrosspostedContentItems(items) {
-  const list = Array.isArray(items) ? items : [];
+function crosspostWinners(list, keyFor) {
   /** @type {Map<string, Record<string, unknown>>} */
   const winners = new Map();
 
@@ -359,23 +370,46 @@ export function dedupeCrosspostedContentItems(items) {
       continue;
     }
 
-    const origin = String(item.site_origin || "");
-    const key = contentTitleDedupeKey(item.title);
+    const key = keyFor(item);
 
-    if (!origin || !key) {
+    if (!key) {
       continue;
     }
 
-    const groupKey = `${origin}\0${key}`;
-    const existing = winners.get(groupKey);
+    const existing = winners.get(key);
 
     if (
       !existing ||
       crosspostPreferenceScore(item) > crosspostPreferenceScore(existing)
     ) {
-      winners.set(groupKey, item);
+      winners.set(key, item);
     }
   }
+
+  return winners;
+}
+
+/**
+ * Drop same-origin same-title crossposts, and same-origin rows that are the
+ * same YouTube video. Keeps the written post. An announcement loses to the
+ * episode. A podcast and a video of one watch id collapse to one row.
+ * @param {Array<Record<string, unknown>>} items
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function dedupeCrosspostedContentItems(items) {
+  const list = Array.isArray(items) ? items : [];
+  const byTitle = crosspostWinners(list, (item) => {
+    const origin = String(item.site_origin || "");
+    const key = contentTitleDedupeKey(item.title);
+
+    return origin && key ? `${origin}\0${key}` : "";
+  });
+  const byVideo = crosspostWinners(list, (item) => {
+    const origin = String(item.site_origin || "");
+    const videoId = youtubeVideoIdFromHref(item.url);
+
+    return origin && videoId ? `${origin}\0video:${videoId}` : "";
+  });
 
   return list.filter((item) => {
     if (!item || typeof item !== "object") {
@@ -383,14 +417,44 @@ export function dedupeCrosspostedContentItems(items) {
     }
 
     const origin = String(item.site_origin || "");
-    const key = contentTitleDedupeKey(item.title);
+    const titleKey = contentTitleDedupeKey(item.title);
+    const videoId = youtubeVideoIdFromHref(item.url);
 
-    if (!origin || !key) {
+    if (!origin || (!titleKey && !videoId)) {
       return true;
     }
 
-    return winners.get(`${origin}\0${key}`) === item;
+    if (titleKey && byTitle.get(`${origin}\0${titleKey}`) !== item) {
+      return false;
+    }
+
+    if (videoId && byVideo.get(`${origin}\0video:${videoId}`) !== item) {
+      return false;
+    }
+
+    return true;
   });
+}
+
+/**
+ * True when a row is writing for What's New: an article or note, or an
+ * untyped post, that is not an episode announcement.
+ * @param {unknown} item
+ * @returns {boolean}
+ */
+export function isWritingActivityItem(item) {
+  if (!item || typeof item !== "object") {
+    return false;
+  }
+
+  const record = /** @type {Record<string, unknown>} */ (item);
+  const type = String(record.content_type || "");
+
+  if (type && type !== "article" && type !== "note") {
+    return false;
+  }
+
+  return !isEpisodeAnnouncement(record.title, record.summary, record.url);
 }
 
 /**
@@ -592,7 +656,7 @@ export function compactContentItem(item, sites, publicSlugs) {
   // Title-echo summaries (common on year albums) add noise on Showcase cards.
   const summaryEqualsTitle =
     decodedSummary.trim().toLowerCase() === String(title).trim().toLowerCase();
-  const summary = summaryEqualsTitle ? "" : decodedSummary;
+  const summary = summaryEqualsTitle ? "" : readableSummary(decodedSummary);
 
   /** @type {Record<string, unknown>} */
   const compact = {
@@ -1163,8 +1227,13 @@ export function creativePathKind(url) {
       return "project";
     }
 
-    if (/^(reels?|shorts|cssbattles?)$/.test(root)) {
+    if (/^(reels?|shorts)$/.test(root)) {
       return "video";
+    }
+
+    // CSS Battle pages are a recurring show, filed with podcasts and live streams.
+    if (/^cssbattles?$/.test(root)) {
+      return "podcasts";
     }
 
     if (/^(music|discography|tracks|sounds?)$/.test(root)) {
@@ -1228,11 +1297,6 @@ export function isCreativePathWorkUrl(url) {
 }
 
 /**
- * Kind for a Showcase card from content_type, categories, and creative path.
- * @param {Record<string, unknown>} item
- * @returns {string}
- */
-/**
  * True when an event or page is education / study-hall shaped (FrESH-like).
  * @param {Record<string, unknown>} item
  * @returns {boolean}
@@ -1294,6 +1358,12 @@ export function isPastEducationShowcaseEvent(item, now = new Date()) {
   return startMs < nowMs;
 }
 
+/**
+ * Kind for a Showcase card from content_type, categories, and creative path.
+ * CSS Battle recordings join podcasts and live streams.
+ * @param {Record<string, unknown>} item
+ * @returns {string}
+ */
 export function showcaseKindForItem(item) {
   const fromPath = creativePathKind(item.url);
 
@@ -1322,6 +1392,14 @@ export function showcaseKindForItem(item) {
     item.content_type,
     Array.isArray(item.categories) ? item.categories : [],
   );
+
+  // Daily CSS Battle recordings, and anything already under a show path, are not video works.
+  if (
+    fromType === "video" &&
+    (fromPath === "podcasts" || isCssBattleShowTitle(item.title))
+  ) {
+    return "podcasts";
+  }
 
   // Prefer path over a generic project/other type so /books/… → books,
   // /painting/… → art, comics/education paths, etc.
@@ -2309,32 +2387,16 @@ export function isMadeContentItem(item, options = {}) {
     return false;
   }
 
+  // Portfolio archives, books, and /experiments/ children need a real
+  // publisher date inside the Showcase window. Never invent dates.
+  if (isOutsideCreativeDatingWindow(item, clock)) {
+    return false;
+  }
+
   const publishedAt =
     typeof item.published_at === "string" && item.published_at.trim()
       ? item.published_at.trim()
       : "";
-
-  // Portfolio/project archive rows (/projects|portfolio|work + portfolio
-  // table): need a publisher year inside the last year. Undated and old
-  // years (e.g. Year: 2022) stay out. Named-root / shelf / art albums exempt.
-  if (isProjectArchiveShowcaseRow(item, pathKind)) {
-    if (
-      !publishedAt ||
-      !publishedWithinDays(publishedAt, clock, PROJECTS_WINDOW_DAYS)
-    ) {
-      return false;
-    }
-  }
-
-  // Books: only releases with a real publish date inside the last year.
-  if (pathKind === "books" || showcaseKindForItem(item) === "books") {
-    if (
-      !publishedAt ||
-      !publishedWithinDays(publishedAt, clock, BOOKS_WINDOW_DAYS)
-    ) {
-      return false;
-    }
-  }
 
   const activityWindowDays =
     typeof options.activityWindowDays === "number" &&
@@ -2496,10 +2558,26 @@ export function shouldOmitYoutubeChannelCard(item, watchOrigins) {
 }
 
 /**
+ * True when the URL is an /experiments/ (or /experiment/) child work page,
+ * not the index hub itself.
+ * @param {unknown} url
+ * @returns {boolean}
+ */
+export function isExperimentChildUrl(url) {
+  try {
+    const path = new URL(String(url || "")).pathname.toLowerCase();
+    return /\/experiments?\/[^/]+/i.test(path);
+  } catch {
+    return false;
+  }
+}
+
+/**
  * True when the item is a portfolio/project archive row that needs a recent
  * publisher date for Showcase (undated and aged years are excluded).
- * Live shelf apps, named-root products, experiments, and art/photo albums
- * are not archive rows.
+ * Live shelf apps, named-root products, and art/photo albums are not archive
+ * rows. Experiment children are dated separately via
+ * {@link isOutsideCreativeDatingWindow}.
  * @param {Record<string, unknown>} item
  * @param {string} pathKind
  * @returns {boolean}
@@ -2533,6 +2611,59 @@ function isProjectArchiveShowcaseRow(item, pathKind) {
   } catch {
     return false;
   }
+}
+
+/**
+ * True when dated creative (project archive, books, experiment children) is
+ * undated or outside the Showcase year window. Does not invent publish dates.
+ * Named-root products, shelf apps, and art/photo albums are not gated here.
+ * @param {Record<string, unknown> | null | undefined} item
+ * @param {Date} [now]
+ * @returns {boolean}
+ */
+export function isOutsideCreativeDatingWindow(item, now = new Date()) {
+  if (!item || typeof item !== "object") {
+    return false;
+  }
+
+  const clock =
+    now instanceof Date && !Number.isNaN(now.getTime()) ? now : new Date();
+  const pathKind = creativePathKind(item.url);
+  const publishedAt =
+    typeof item.published_at === "string" && item.published_at.trim()
+      ? item.published_at.trim()
+      : "";
+
+  if (isProjectArchiveShowcaseRow(item, pathKind)) {
+    if (
+      !publishedAt ||
+      !publishedWithinDays(publishedAt, clock, PROJECTS_WINDOW_DAYS)
+    ) {
+      return true;
+    }
+  }
+
+  if (pathKind === "books" || showcaseKindForItem(item) === "books") {
+    if (
+      !publishedAt ||
+      !publishedWithinDays(publishedAt, clock, BOOKS_WINDOW_DAYS)
+    ) {
+      return true;
+    }
+  }
+
+  // Undated /experiments/ leaves are archival — never invent dates from
+  // observed_at or sequence slugs.
+  if (isExperimentChildUrl(item.url)) {
+    if (
+      !publishedAt ||
+      !publishedWithinDays(publishedAt, clock, PROJECTS_WINDOW_DAYS)
+    ) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 /**
@@ -3012,14 +3143,23 @@ const HOME_SHOWCASE_KINDS = new Set([
 ]);
 
 /**
+ * Homepage “Things people are making” card cap.
+ * `/showcase/` uses {@link buildMadeItems} and stays uncapped.
+ */
+export const HOME_SHOWCASE_LIMIT = 6;
+
+/**
  * Homepage creative strip: one newest game, project, photograph, or music
  * work per member × kind. No publish-date window—undated works compete via
  * {@link compareShowcaseRecency} (`published_at`, then `observed_at`, then
- * URL). An optional `limit` truncates after the per-member-per-kind pick.
- * Optional `now` pins age gates for tests and views:build.
+ * URL). After that pick, an omitted or non-finite `limit` keeps at most
+ * {@link HOME_SHOWCASE_LIMIT} cards in that same order. Pass a finite limit
+ * to override, including a larger one. Optional `now` pins age gates for
+ * tests and views:build.
  * @param {Array<Record<string, unknown>>} compactItems
- * @param {number} [limit]
+ * @param {number} [limit] - Card cap. Defaults to {@link HOME_SHOWCASE_LIMIT}.
  * @param {Date | string} [now]
+ * @param {number} [activityWindowDays]
  * @returns {Array<Record<string, unknown>>}
  */
 export function buildShowcaseHomeItems(
@@ -3050,7 +3190,7 @@ export function buildShowcaseHomeItems(
   const maxItems =
     typeof limit === "number" && Number.isFinite(limit)
       ? Math.max(0, Math.floor(limit))
-      : selected.length;
+      : HOME_SHOWCASE_LIMIT;
 
   return selected.slice(0, maxItems);
 }
@@ -3117,6 +3257,8 @@ function relationshipTargets(community) {
 /**
  * Undirected participant pairs that share a public topic with articles on
  * both sites. Presentation only; never written to connections.json.
+ * The Joshternet hub is omitted: it publishes the directory, so pairing it
+ * with members only restates that every site is on the network.
  * Groups by topic, with each origin's own posts and the other members indented.
  * @param {Array<Record<string, unknown>>} neighborhoods
  * @returns {{
@@ -3160,6 +3302,10 @@ export function connectionTopicOverlaps(neighborhoods) {
    */
   function memberRecord(member) {
     if (!member || typeof member.origin !== "string") {
+      return null;
+    }
+
+    if (isJoshternetHubContentUrl(member.origin)) {
       return null;
     }
 
@@ -3763,19 +3909,30 @@ export function buildViewDocuments(input) {
       publishedWithinDays(item.published_at, clock, windowDays) &&
       !isJoshternetHubContentUrl(item.url),
   );
-  const feedPrimary = oneLatestPerOrigin(recentItems)
-    .map((item) => compactContentItem(item, sites, publicSlugs))
-    .filter(Boolean);
-  // Showcase creative works join What's New so "latest" is not articles-only.
-  // Dated Showcase rows in the window are included in full (not one-per-origin),
-  // so a same-origin note cannot hide a newly published experiment/toy.
-  const showcasePrimary = showcaseItemsForActivity(
-    compactItems,
-    clock,
-    windowDays,
-  );
+  // What's New is writing only. Episodes, videos, and projects stay on Showcase.
+  const writingPrimary = dedupeCrosspostedContentItems(
+    recentItems
+      .filter(
+        (item) =>
+          typeof item.site_origin === "string" &&
+          item.site_origin &&
+          isWritingActivityItem(item),
+      )
+      .map((item) => compactContentItem(item, sites, publicSlugs))
+      .filter(Boolean),
+  ).sort((left, right) => {
+    const date = activityTimestamp(right).localeCompare(
+      activityTimestamp(left),
+    );
+
+    if (date !== 0) {
+      return date;
+    }
+
+    return String(left.url).localeCompare(String(right.url));
+  });
   const primary = fairPerOriginLimit(
-    uniqueActivityItemsByUrl([...feedPrimary, ...showcasePrimary]),
+    uniqueActivityItemsByUrl(writingPrimary),
     ACTIVITY_MAX_PER_ORIGIN,
   );
 
@@ -4085,7 +4242,7 @@ export function buildViewDocuments(input) {
   );
   const showcaseHome = buildShowcaseHomeItems(
     compactItems,
-    undefined,
+    HOME_SHOWCASE_LIMIT,
     clock,
     windowDays,
   );

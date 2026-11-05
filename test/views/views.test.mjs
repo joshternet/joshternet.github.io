@@ -2537,6 +2537,55 @@ test("buildViewDocuments: community without label fires label||slug fallback; me
   assert.equal(photoRelated.label, "photo");
 });
 
+test("connectionTopicOverlaps: omits the Joshternet hub from pairs and site lists", () => {
+  const overlay = connectionTopicOverlaps([
+    {
+      slug: "web",
+      label: "Web",
+      members: [
+        {
+          origin: "https://joshternet.org",
+          domain: "joshternet.org",
+          title: "The Joshternet",
+          articles: [
+            { url: "https://joshternet.org/network/", title: "Network" },
+          ],
+        },
+        {
+          origin: "https://www.joshternet.org",
+          domain: "www.joshternet.org",
+          title: "The Joshternet",
+          articles: [
+            { url: "https://www.joshternet.org/about/", title: "About" },
+          ],
+        },
+        {
+          origin: "https://a.example",
+          domain: "a.example",
+          title: "A",
+          articles: [{ url: "https://a.example/post", title: "Post" }],
+        },
+        {
+          origin: "https://b.example",
+          domain: "b.example",
+          title: "B",
+          articles: [{ url: "https://b.example/post", title: "Post" }],
+        },
+      ],
+    },
+  ]);
+
+  assert.equal(overlay.pairs.length, 1);
+  assert.deepEqual(
+    overlay.pairs.map((pair) => [pair.a, pair.b]),
+    [["https://a.example", "https://b.example"]],
+  );
+  assert.deepEqual(
+    overlay.sites.map((site) => site.origin),
+    ["https://a.example", "https://b.example"],
+  );
+});
+
 test("connectionTopicOverlaps: keeps every member pair (no presentation cap)", () => {
   const members = [];
 

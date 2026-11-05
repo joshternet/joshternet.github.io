@@ -1,0 +1,59 @@
+<div class="connections-graph__key" data-connections-key>
+  <p class="connections-graph__key-title" tabindex="0">
+    What the lines mean
+    <span class="connections-key__tip" role="tooltip">
+      Follow a line, pick a website, or have a look at the links people have published. You might discover two sites
+      that know about each other, or two people working on similar things who have never crossed paths. Prefer following
+      links to moving circles around?
+      {% if include.surface == 'home' %}
+        The Connections page lists the same observed connections, with links to the original pages.
+      {% else %}
+        The website lists below show the same observed connections, with links to the original pages.
+      {% endif %}
+    </span>
+  </p>
+  <ul class="connections-key__list">
+    <li class="connections-key__item" tabindex="0">
+      <svg class="connections-key-line" data-connection-kind="content-link" viewBox="0 0 48 10" aria-hidden="true">
+        <line x1="2" y1="5" x2="46" y2="5"></line>
+      </svg>
+      <span>Linked to</span>
+      <span class="connections-key__tip" role="tooltip">
+        Each circle represents a participating website. The lines show links JoshBot has observed between websites.
+        Select a website or a line to see what connects them. An arrow points from the website containing a link toward
+        the website it references. Sometimes the connection goes both ways, but plenty of links are one-way, just as
+        they are across the rest of the web.
+      </span>
+    </li>
+    <li class="connections-key__item" tabindex="0">
+      <svg class="connections-key-line" data-connection-kind="blogroll" viewBox="0 0 48 10" aria-hidden="true">
+        <line x1="2" y1="5" x2="46" y2="5"></line>
+      </svg>
+      <span>Blogroll</span>
+      <span class="connections-key__tip" role="tooltip">
+        A blogroll is a list of websites somebody has chosen to link to; it's one of the old web's better ideas, and a
+        lovely way to find people worth reading.
+      </span>
+    </li>
+    <li class="connections-key__item" tabindex="0">
+      <svg class="connections-key-line" data-connection-kind="reply-to" viewBox="0 0 48 10" aria-hidden="true">
+        <line x1="2" y1="5" x2="46" y2="5"></line>
+      </svg>
+      <span>Reply, repost, syndication</span>
+      <span class="connections-key__tip" role="tooltip">
+        These lines are replies, reposts, and syndicated copies. An arrow points from the website that published them
+        toward the website it references.
+      </span>
+    </li>
+    <li class="connections-key__item" tabindex="0">
+      <svg class="connections-key-line" data-connection-kind="shared-topic" viewBox="0 0 48 10" aria-hidden="true">
+        <line x1="2" y1="5" x2="46" y2="5"></line>
+      </svg>
+      <span>Shared topic</span>
+      <span class="connections-key__tip" role="tooltip">
+        Dashed lines show websites with published work about similar subjects. That doesn't mean the publishers know
+        each other or have linked to one another—it simply gives you another path worth exploring.
+      </span>
+    </li>
+  </ul>
+</div>

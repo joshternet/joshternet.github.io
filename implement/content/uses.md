@@ -436,7 +436,7 @@ Product names alone can be ambiguous across brands, models, generations, softwar
 
 ## Uses pages and future tool discovery
 
-Accurately identified tools could someday help people find authors who discuss a tool, discover alternatives, explore workflows, find tutorials from practitioners, or find makers who use particular equipment. Those are possible applications of publisher-supplied information—not inherent capabilities of the `/uses` convention. A crawler finding a product name does not establish ownership, expertise, current use, endorsement, or adoption dates. Distinguish direct declarations from text extraction, inferred relationships, and verified metadata. Joshternet does not provide historical usage analytics or a complete equipment knowledge graph today.
+Accurately identified tools could someday help people find authors who discuss a tool, discover alternatives, explore workflows, find tutorials from practitioners, or find makers who use particular equipment. Those are possible applications of publisher-supplied information—not inherent capabilities of the `/uses` convention. A crawler finding a product name does not establish ownership, expertise, current use, endorsement, or adoption dates. Distinguish direct declarations from text extraction, inferred relationships, and verified metadata. Joshternet’s public [Uses explorer]({{ '/uses/' | relative_url }}) reports source-attributed observations from published `/uses` pages—not a complete equipment knowledge graph or product ranking.
 
 ## Complete Uses page example
 
@@ -538,7 +538,29 @@ Distinguish self-reported experience, manufacturer specifications, independent r
 
 Uses pages help people learn about participants’ interests, environments, and practical experience. The page remains publisher-controlled content. Product mentions are not automatically verified identities, usage events, or recommendations.
 
-Joshternet’s slash-page catalog recognizes `/uses/` as an identity “tools used daily” convention and may crawl it among identity seeds. Outbound links and host-elsewhere enrichment may apply when allowed; the page role resembles other identity pages for profile-level NLP. The hub does **not** use `/uses/` for Network about blurbs, does **not** harvest it as Showcase creative work, and does **not** run a Uses Intelligence inventory or adoption analytics product. Details: [Reference]({{ '/implement/content/reference/' | relative_url }}).
+Joshternet’s slash-page catalog recognizes `/uses/` as an identity “tools used daily” convention and may crawl it among identity seeds. Outbound links and host-elsewhere enrichment may apply when allowed; the page role resembles other identity pages for profile-level NLP. The hub does **not** use `/uses/` for Network about blurbs and does **not** harvest it as Showcase creative work. Separately, the public [Uses explorer]({{ '/uses/' | relative_url }}) publishes source-attributed observations from participating sites’ `/uses` pages when crawlable. Choices are compared inside a slot, such as editors or keyboards, and only when the page’s own words or link support that slot. A URL that only repeats the homepage is not a Uses page. An assessed page with no accepted tools still counts in coverage. Links to other pages on the same site, such as `/now`, `/cv`, or `/links`, are not tools. The item name comes from the heading; the sentence after it is context, not a second tool or a clipped name. Equivalent names share one count. A profile credit is not a tool. Parts, generic gear, and names the catalog cannot place stay visible and out of the percentages. The history view waits until two comparable reads exist, so a change in how many pages were assessed, or a change to the catalog, is not described as people switching tools. Details: [Reference]({{ '/implement/content/reference/' | relative_url }}).
+
+## How Joshternet observes `/uses` pages
+
+Eligible origins come from the verified JoshBot registry. Josh and non-Josh participants count equally. Evidence is an explicit `/uses` page (or a publisher-declared same-origin equivalent via OPML `category="/uses"` or navigation labels such as “Uses” / “My setup”), not a brand mention on `/now`, `/about`, or a blog post. Generated Joshternet pages marked `joshternet-analysis=derived` never become crawler evidence for this explorer.
+
+## How counts work
+
+| Measure | Meaning |
+| --- | --- |
+| Active members | Distinct eligible origins with a verified **current** declaration at period end |
+| Adoption score | `round(100 * active / sites that named a choice in that slot)`, or null if that slot has no ranked choices |
+| Period-ever | Distinct origins that declared the tool at least once inside the period |
+
+A product counts **once per site** inside its slot. A site that names two editors counts once in the editor denominator and once for each editor. A site that names no editor is outside that denominator. A slot is listed when at least one site has named a choice in it, including when no second site has reported that slot yet. Eligible registry sites are not automatically observed `/uses` publishers. An empty slot says “No comparable reports.” Filtering the visible rows does not change the slot’s denominator.
+
+## Corrections and recovery
+
+Unknown labels stay unresolved with a source link; they are not guessed into popular products. Alias and taxonomy changes bump `taxonomy_version` and rebuild projections from original evidence without inventing older observations. Failed crawls do not emit removals. A tool is removed only after two successful complete parses at least 24 hours apart show it gone. Operators can rebuild with `npm run uses:build -- --dry-run` and validate with `npm run uses:validate`. Durable history lives in Git under `data/uses/` (not Actions artifacts).
+
+## Privacy for observed Uses pages
+
+Joshternet only reads public pages JoshBot is allowed to fetch. Publishing a `/uses` page does not require a new protocol. Publishers may omit `/uses`, block the crawler, or remove the page at any time; historical evidence remains qualified, and current aggregates drop ineligible origins.
 
 ## Make sure your Uses page is useful and accurate
 
@@ -584,7 +606,7 @@ Joshternet’s slash-page catalog recognizes `/uses/` as an identity “tools us
 | Logo-only entries | Inaccessible | Text names and links |
 | Build stamp as last-updated | False freshness | Update date with real edits |
 | Path guarantees uses.tech | False inclusion | Submit per directory rules |
-| Mentions create hub analytics | Spec confusion | Label Joshternet separately |
+| Mentions invent hub rankings | Spec confusion | Explorer counts only explicit `/uses` declarations |
 
 ## Continue through the handbook
 

@@ -4,8 +4,9 @@
  * map-like directed graph. HTML lists already work without JS. Treat bootstrap
  * JSON as untrusted. No popularity ranking, no third-party graph libraries, no
  * CSP looseness. Equal visual weight for every participant node. Full page:
- * hub-centered pan/zoom with wheel zoom. Preview: button zoom/center and
- * drag-pan without wheel scroll trapping.
+ * member-centered pan/zoom with wheel zoom (joshternet.org hub omitted —
+ * membership spokes are not peer discovery edges). Preview: button zoom/center
+ * and drag-pan without wheel scroll trapping.
  */
 (() => {
   /**
@@ -685,8 +686,35 @@
       };
     }
 
-    const { participants, connections, topicOverlaps, topicGroups } = parsed;
-    // Every verified Network participant is a graph node, including isolates.
+    const { topicGroups } = parsed;
+    const HUB_HOST = "joshternet.org";
+
+    /**
+     * @param {string} origin
+     * @returns {boolean}
+     */
+    function originIsHubHost(origin) {
+      try {
+        const hostname = new URL(String(origin || "")).hostname
+          .replace(/^www\./, "")
+          .toLowerCase();
+        return hostname === HUB_HOST;
+      } catch {
+        return false;
+      }
+    }
+
+    // Members only: hub membership spokes are infrastructure, not peer edges.
+    const participants = (parsed.participants || []).filter(
+      (participant) => !originIsHubHost(participant.origin),
+    );
+    const connections = (parsed.connections || []).filter(
+      (edge) => !originIsHubHost(edge.from) && !originIsHubHost(edge.to),
+    );
+    const topicOverlaps = (parsed.topicOverlaps || []).filter(
+      (pair) => !originIsHubHost(pair.a) && !originIsHubHost(pair.b),
+    );
+    // Every verified member is a graph node, including isolates.
     const graphParticipants = participants;
     const byOrigin = new Map(
       participants.map((participant) => [participant.origin, participant]),
@@ -1015,7 +1043,9 @@
     }
 
     /**
-     * One connection line: relation and the other site. No domain or page URL.
+     * One connection line: the other site, and a relation when it is not
+     * already the section heading. Content links name the other domain
+     * beside the arrow instead of repeating "linked to" or "linked from".
      * @param {typeof connections[number]} edge
      * @param {"to" | "from"} side
      * @returns {string}
@@ -1024,12 +1054,29 @@
       const peerOrigin = side === "to" ? edge.to : edge.from;
       const peer = byOrigin.get(peerOrigin);
       const peerTitle = peer ? peer.title : peerOrigin;
+      const peerDomain = peer && peer.domain ? peer.domain : "";
+      const relation = edge.relation || edge.kind || "content-link";
       const arrow = side === "to" ? "→" : "←";
       const peerHref =
         side === "to" ? edge.href || edge.to : edge.from || peerOrigin;
       const decorated = outboundHref(peerHref);
+      const namesDomain = relation === "content-link";
+      const domain = peerDomain || peerTitle;
+      const showTitle =
+        !namesDomain || (peerDomain !== "" && peerTitle !== peerDomain);
+      const lead = namesDomain ? domain : bubbleRelation(edge, side);
+      let linked = peerTitle;
+      let prefix = `${lead} `;
 
-      return `<li class="connections-bubble__row connections-bubble__row--directed"><span class="connections-bubble__dir" aria-hidden="true">${arrow}</span><span class="connections-bubble__row-text">${escapeHTML(bubbleRelation(edge, side))} <a href="${escapeAttribute(decorated)}" target="_blank" rel="noopener">${escapeHTML(peerTitle)}</a></span></li>`;
+      if (namesDomain && showTitle) {
+        linked = peerTitle;
+        prefix = `${lead} `;
+      } else if (namesDomain) {
+        linked = domain;
+        prefix = "";
+      }
+
+      return `<li class="connections-bubble__row connections-bubble__row--directed"><span class="connections-bubble__dir" aria-hidden="true">${arrow}</span><span class="connections-bubble__row-text">${escapeHTML(prefix)}<a href="${escapeAttribute(decorated)}" target="_blank" rel="noopener">${escapeHTML(linked)}</a></span></li>`;
     }
 
     /**
@@ -1376,7 +1423,6 @@
       selectOrigin(null);
     });
 
-    const HUB_HOST = "joshternet.org";
     const VIEW_WIDTH = 640;
     const VIEW_HEIGHT = 420;
     const MIN_SCALE = 0.35;
@@ -1414,25 +1460,10 @@
       }
     }
 
-    /**
-     * @param {string} origin
-     * @returns {boolean}
-     */
-    function originIsHub(origin) {
-      const url = canonicalOrigin(origin);
-
-      if (!url) {
-        return false;
-      }
-
-      return url.hostname.replace(/^www\./, "") === HUB_HOST;
-    }
-
     const nodes = graphParticipants.map((participant) => ({
       origin: participant.origin,
       domain: participant.domain,
       title: participant.title,
-      hub: originIsHub(participant.origin),
       x: 0,
       y: 0,
       vx: 0,
@@ -1442,31 +1473,23 @@
     const links = visualEdges();
 
     /**
-     * Places the hub at the world origin and other sites on expanding rings.
+     * Places member sites on expanding rings around the world origin.
      */
     function placeNodes() {
-      const hub = nodes.find((node) => node.hub) || null;
-      const others = nodes.filter((node) => node !== hub);
-
-      if (hub) {
-        hub.x = 0;
-        hub.y = 0;
-      }
-
       let index = 0;
       let ring = 0;
 
-      while (index < others.length) {
+      while (index < nodes.length) {
         const radius = RING_GAP * (ring + 1);
         const capacity = Math.max(
           6,
           Math.floor((Math.PI * 2 * radius) / NODE_GAP),
         );
-        const count = Math.min(capacity, others.length - index);
+        const count = Math.min(capacity, nodes.length - index);
 
         for (let step = 0; step < count; step += 1) {
           const angle = -Math.PI / 2 + (Math.PI * 2 * step) / count;
-          const node = others[index + step];
+          const node = nodes[index + step];
           node.x = Math.cos(angle) * radius;
           node.y = Math.sin(angle) * radius;
         }
@@ -1478,7 +1501,6 @@
 
     /**
      * Tiny force iteration. Equal radius for every node—no degree sizing.
-     * The hub stays pinned so the map has a stable center as the network grows.
      * @param {number} iterations
      */
     function tickLayout(iterations) {
@@ -1500,16 +1522,10 @@
               const force = ((SEPARATION - distance) / distance) * 0.05;
               dx *= force;
               dy *= force;
-
-              if (!left.hub) {
-                left.vx -= dx;
-                left.vy -= dy;
-              }
-
-              if (!right.hub) {
-                right.vx += dx;
-                right.vy += dy;
-              }
+              left.vx -= dx;
+              left.vy -= dy;
+              right.vx += dx;
+              right.vy += dy;
             }
           }
         }
@@ -1526,27 +1542,13 @@
           const dy = target.y - source.y;
           const distance = Math.hypot(dx, dy) || 0.01;
           const force = ((distance - LINK_REST) / distance) * 0.01;
-
-          if (!source.hub) {
-            source.vx += dx * force;
-            source.vy += dy * force;
-          }
-
-          if (!target.hub) {
-            target.vx -= dx * force;
-            target.vy -= dy * force;
-          }
+          source.vx += dx * force;
+          source.vy += dy * force;
+          target.vx -= dx * force;
+          target.vy -= dy * force;
         }
 
         for (const node of nodes) {
-          if (node.hub) {
-            node.x = 0;
-            node.y = 0;
-            node.vx = 0;
-            node.vy = 0;
-            continue;
-          }
-
           node.vx *= 0.85;
           node.vy *= 0.85;
           node.x += node.vx;
@@ -1580,6 +1582,154 @@
     }
 
     /**
+     * Keeps domain labels a readable screen size and paints a plate behind
+     * each one so connection lines do not run through the letters.
+     */
+    function fitGraphLabels() {
+      const svg = graphStage.querySelector("svg");
+
+      if (!svg || svg.clientWidth <= 0) {
+        return;
+      }
+
+      const view = svg.viewBox.baseVal;
+      const scale = Math.min(
+        svg.clientWidth / view.width,
+        svg.clientHeight / view.height,
+      );
+
+      if (!Number.isFinite(scale) || scale <= 0) {
+        return;
+      }
+
+      const fontUser = 13 / scale;
+      const gapUser = 6 / scale;
+      const padX = 5 / scale;
+      const padY = 2 / scale;
+      const labels = svg.querySelectorAll(".connections-graph__label");
+
+      for (const text of labels) {
+        const parent = text.parentElement;
+        const circle = parent
+          ? parent.querySelector(".connections-graph__node-core")
+          : null;
+
+        if (!circle) {
+          continue;
+        }
+
+        const cx = Number(circle.getAttribute("cx"));
+        const cy = Number(circle.getAttribute("cy"));
+
+        text.setAttribute("font-size", String(fontUser));
+        text.setAttribute("x", String(cx));
+        text.setAttribute("y", String(cy + 14 + gapUser + fontUser * 0.82));
+        text.dataset.labelOriginX = text.getAttribute("x");
+        text.dataset.labelOriginY = text.getAttribute("y");
+        paintLabelPlate(text, padX, padY);
+      }
+
+      separateOverlappingLabels(labels, 36 / scale, 14 / scale);
+    }
+
+    /**
+     * Paints the solid plate behind one domain label.
+     * @param {Element} text
+     * @param {number} padX
+     * @param {number} padY
+     */
+    function paintLabelPlate(text, padX, padY) {
+      const box = text.getBBox();
+      let plate = text.previousElementSibling;
+
+      if (
+        !plate ||
+        !plate.classList.contains("connections-graph__label-plate")
+      ) {
+        plate = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        plate.setAttribute("class", "connections-graph__label-plate");
+        text.before(plate);
+      }
+
+      plate.setAttribute("x", String(box.x - padX));
+      plate.setAttribute("y", String(box.y - padY));
+      plate.setAttribute("width", String(box.width + padX * 2));
+      plate.setAttribute("height", String(box.height + padY * 2));
+      plate.setAttribute("rx", String(padY * 2));
+    }
+
+    /**
+     * Slides overlapping domain names apart by a short distance. The circles
+     * stay put, and a name cannot drift far from its own site.
+     * @param {NodeListOf<Element>} labels
+     * @param {number} maxShift User units. About 36 screen pixels.
+     * @param {number} gap Extra user units kept between two names.
+     */
+    function separateOverlappingLabels(labels, maxShift, gap) {
+      for (let pass = 0; pass < 8; pass += 1) {
+        let moved = false;
+
+        for (let index = 0; index < labels.length; index += 1) {
+          for (let other = index + 1; other < labels.length; other += 1) {
+            const left = labels[index];
+            const right = labels[other];
+            const a = left.getBBox();
+            const b = right.getBBox();
+            const overlapX =
+              Math.min(a.x + a.width, b.x + b.width) - Math.max(a.x, b.x) + gap;
+            const overlapY =
+              Math.min(a.y + a.height, b.y + b.height) -
+              Math.max(a.y, b.y) +
+              gap;
+
+            if (overlapX <= 0 || overlapY <= 0) {
+              continue;
+            }
+
+            const horizontal = overlapX <= overlapY;
+            const leftCenter = horizontal
+              ? a.x + a.width / 2
+              : a.y + a.height / 2;
+            const rightCenter = horizontal
+              ? b.x + b.width / 2
+              : b.y + b.height / 2;
+            const sign = leftCenter <= rightCenter ? -1 : 1;
+            const amount = (horizontal ? overlapX : overlapY) / 2;
+            nudgeLabel(left, horizontal, sign * amount, maxShift);
+            nudgeLabel(right, horizontal, -sign * amount, maxShift);
+            moved = true;
+          }
+        }
+
+        if (!moved) {
+          break;
+        }
+      }
+    }
+
+    /**
+     * Moves one label along x or y, then repaints its plate.
+     * @param {Element} text
+     * @param {boolean} horizontal
+     * @param {number} amount
+     * @param {number} maxShift
+     */
+    function nudgeLabel(text, horizontal, amount, maxShift) {
+      const attr = horizontal ? "x" : "y";
+      const origin = Number(
+        horizontal ? text.dataset.labelOriginX : text.dataset.labelOriginY,
+      );
+      const next = Number(text.getAttribute(attr)) + amount;
+      const clamped = Math.min(
+        origin + maxShift,
+        Math.max(origin - maxShift, next),
+      );
+      text.setAttribute(attr, String(clamped));
+      const font = Number(text.getAttribute("font-size")) || 13;
+      paintLabelPlate(text, (5 / 13) * font, (2 / 13) * font);
+    }
+
+    /**
      * Writes the camera into the SVG viewBox without rebuilding marks.
      */
     function applyCamera() {
@@ -1594,23 +1744,33 @@
         "viewBox",
         `${view.x} ${view.y} ${view.width} ${view.height}`,
       );
+      fitGraphLabels();
       placeBubble();
     }
 
     /**
-     * Centers Joshternet (or the graph centroid) and fits neighbors in the frame
-     * until they would shrink below a readable scale.
+     * Centers the member graph (geometric centroid) and fits neighbors in the
+     * frame until they would shrink below a readable scale.
      */
     function centerHub() {
-      const hub = nodes.find((node) => node.hub);
-      camera.x = hub ? hub.x : 0;
-      camera.y = hub ? hub.y : 0;
-
       if (nodes.length === 0) {
+        camera.x = 0;
+        camera.y = 0;
         camera.scale = 1;
         applyCamera();
         return;
       }
+
+      let sumX = 0;
+      let sumY = 0;
+
+      for (const node of nodes) {
+        sumX += node.x;
+        sumY += node.y;
+      }
+
+      camera.x = sumX / nodes.length;
+      camera.y = sumY / nodes.length;
 
       let maxReach = RING_GAP;
 
@@ -1788,7 +1948,7 @@
           <circle class="connections-graph__node-core" cx="${node.x}" cy="${node.y}" r="14"></circle>
           ${
             label
-              ? `<text x="${node.x}" y="${node.y + 28}" text-anchor="middle">${escapeHTML(label)}</text>`
+              ? `<text class="connections-graph__label" x="${node.x}" y="${node.y + 28}" text-anchor="middle" aria-hidden="true">${escapeHTML(label)}</text>`
               : ""
           }
         </g>`;

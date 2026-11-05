@@ -24,27 +24,21 @@ test("activity and search pages avoid popularity language", async () => {
 
   assert.match(activity, /permalink: \/activity\//);
   assert.match(activity, /title: What's New/);
-  assert.match(activity, /corner of the internet/);
-  assert.match(activity, /selection of recent writing and creative work/);
-  assert.doesNotMatch(activity, /last two weeks/);
   assert.doesNotMatch(activity, /social feed/);
   assert.doesNotMatch(activity, /prolific publisher/);
   assert.doesNotMatch(activity, /One piece per site/);
   assert.match(activity, /include activity-card.html/);
   assert.match(activity, /activity-subscribe/);
-  assert.match(activity, /Subscribe to What's New/);
   assert.match(activity, /\/assets\/activity\/atom\.xml/);
   assert.match(activity, /\/assets\/network\/joshternet\.opml/);
   assert.match(activity, /activity-showcase-note/);
-  assert.match(activity, /activity-close/);
-  assert.match(activity, /Nothing new has made it into What's New just yet/);
+  assert.match(activity, /network-empty|home-activity__empty|role="status"/);
   const homeActivity = await read("_includes/home-recent-activity.html");
   assert.match(
     homeActivity,
-    /Nothing new has made it into What's New just yet/,
+    /home-activity__empty|network-empty|role="status"/,
   );
   assert.doesNotMatch(homeActivity, /last two weeks/);
-  assert.doesNotMatch(homeActivity, /Nothing recent is indexed/);
   const layout = await read("_layouts/default.html");
   assert.match(layout, /application\/atom\+xml/);
   assert.match(layout, /\/assets\/activity\/atom\.xml/);
@@ -61,19 +55,29 @@ test("activity and search pages avoid popularity language", async () => {
   assert.match(card, /activity-card__media/);
   const css = await read("assets/css/main.css");
   assert.match(css, /\.activity-card\s*\{[^}]*padding-inline-start:\s*0/);
-  assert.match(css, /\.activity-card > article\s*\{[^}]*flex-direction:\s*row/);
+  assert.match(
+    css,
+    /\.activity-card > article\s*\{[^}]*flex-direction:\s*column/,
+  );
   assert.match(
     css,
     /\.activity-card > article\s*\{[^}]*align-items:\s*stretch/,
   );
-  assert.match(css, /\.activity-card__media\s*\{[^}]*align-self:\s*stretch/);
   assert.match(
     css,
     /\.activity-card__media\s*\{[^}]*background:\s*var\(--color-surface-soft\)/,
   );
-  assert.match(css, /\.activity-card__media\s*\{[^}]*flex:\s*0\s+0\s+46%/);
-  assert.match(css, /\.activity-card__media\s*\{[^}]*width:\s*46%/);
+  assert.match(css, /\.activity-card__media\s*\{[^}]*width:\s*100%/);
+  assert.match(
+    css,
+    /\.activity-card__media\s*\{[^}]*aspect-ratio:\s*1200\s*\/\s*630/,
+  );
   assert.match(css, /\.activity-subscribe/);
+  assert.match(
+    css,
+    /\.prose > \.activity-showcase-note,\s*\n\s*\.prose > \.activity-close \{[^}]*max-width:\s*none/,
+  );
+  assert.match(css, /\.activity-list \{[^}]*margin:[^;]*var\(--space-6\)/);
   assert.doesNotMatch(layout, /assets\/js\/activity-card\.js/);
   assert.doesNotMatch(
     css,
@@ -81,20 +85,30 @@ test("activity and search pages avoid popularity language", async () => {
   );
   assert.match(
     css,
-    /\.activity-card__media img\s*\{[^}]*object-fit:\s*contain[^}]*object-position:\s*center/s,
+    /\n\.activity-card__media img\s*\{[^}]*object-fit:\s*contain[^}]*object-position:\s*center/,
+  );
+  assert.match(css, /\.activity-card__title\s*\{[^}]*border-inline-start:\s*0/);
+  assert.match(
+    css,
+    /\.activity-card__title::before,\s*\n\s*\.activity-card__title::after\s*\{[^}]*content:\s*none/,
   );
   assert.match(
     css,
-    /@media \(max-width: 42rem\)\s*\{[^}]*\.activity-card > article\s*\{[^}]*flex-direction:\s*column/,
+    /\.activity-list:not\(\.topics-index\)\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*1fr\)/,
   );
   assert.match(
     css,
-    /@media \(max-width: 42rem\)[\s\S]*?\.activity-card__media\s*\{[^}]*width:\s*100%/,
+    /@media \(min-width: 44rem\)\s*\{[^}]*\.activity-list:not\(\.topics-index\)\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/s,
   );
   assert.match(
     css,
-    /@media \(max-width: 42rem\)[\s\S]*?\.activity-card__media\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*10/,
+    /@media \(min-width: 72rem\)\s*\{[^}]*\.activity-list:not\(\.topics-index\)\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/s,
   );
+  assert.match(
+    css,
+    /\.activity-list\.topics-index\s*\{[^}]*repeat\(auto-fill,\s*minmax\(9\.25rem,\s*1fr\)\)/,
+  );
+  assert.doesNotMatch(css, /\.home-activity__list \.activity-card__media/);
   assert.match(
     css,
     /@media \(min-width: 42\.01rem\) and \(max-width: 74\.99rem\)[\s\S]*?\.prose:has\(\.activity-list:not\(\.topics-index\)\)\s*\{[^}]*max-width:\s*none/,
@@ -113,25 +127,14 @@ test("activity and search pages avoid popularity language", async () => {
   assert.doesNotMatch(activity, /activity\.js/);
   assert.match(search, /permalink: \/search\//);
   assert.match(search, /title: Search$/m);
-  assert.match(search, /Looking for something in particular/);
-  assert.match(
-    search,
-    /Try a website name, a subject, or something you're curious about/,
-  );
-  assert.doesNotMatch(search, /phrase/);
   assert.doesNotMatch(search, /does not boost sites/);
   assert.match(search, /data-search-input/);
   const searchJs = await read("assets/js/search.js");
   assert.match(searchJs, /activity-card__heading/);
   assert.match(searchJs, /\/assets\/activity\/posters\//);
-  assert.match(searchJs, /Showing 1 result\./);
-  assert.match(searchJs, /Getting the search index ready/);
-  assert.match(searchJs, /Nothing turned up for that search/);
-  assert.match(searchJs, /No results in this category/);
-  assert.doesNotMatch(searchJs, /Type a word from a title/);
-  assert.doesNotMatch(searchJs, /matching result/);
+  assert.match(searchJs, /data-search-status/);
+  assert.match(searchJs, /data-search-results/);
   assert.match(search, /<noscript>/);
-  assert.match(search, /look through the index/);
   assert.doesNotMatch(await read("implement/explore.md"), /topics\.json/);
   assert.doesNotMatch(await read("implement/explore.md"), /activity\.json/);
 

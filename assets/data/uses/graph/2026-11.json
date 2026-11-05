@@ -1,0 +1,2836 @@
+{
+  "schema_version": 1,
+  "period": "2026-11",
+  "nodes": [
+    {
+      "id": "category:ai-assistant",
+      "kind": "category",
+      "label": "AI assistants"
+    },
+    {
+      "id": "category:analytics",
+      "kind": "category",
+      "label": "Analytics"
+    },
+    {
+      "id": "category:api-client",
+      "kind": "category",
+      "label": "API clients"
+    },
+    {
+      "id": "category:audio-adapter",
+      "kind": "category",
+      "label": "Audio adapters"
+    },
+    {
+      "id": "category:audio-interface",
+      "kind": "category",
+      "label": "Audio interfaces"
+    },
+    {
+      "id": "category:backup",
+      "kind": "category",
+      "label": "Backups"
+    },
+    {
+      "id": "category:bookmark",
+      "kind": "category",
+      "label": "Bookmarks"
+    },
+    {
+      "id": "category:browser",
+      "kind": "category",
+      "label": "Browsers"
+    },
+    {
+      "id": "category:camera",
+      "kind": "category",
+      "label": "Cameras"
+    },
+    {
+      "id": "category:chair",
+      "kind": "category",
+      "label": "Chairs"
+    },
+    {
+      "id": "category:ci",
+      "kind": "category",
+      "label": "Continuous integration"
+    },
+    {
+      "id": "category:coding-agent",
+      "kind": "category",
+      "label": "Coding agents"
+    },
+    {
+      "id": "category:computer",
+      "kind": "category",
+      "label": "Computers"
+    },
+    {
+      "id": "category:database",
+      "kind": "category",
+      "label": "Databases"
+    },
+    {
+      "id": "category:deploy-hook",
+      "kind": "category",
+      "label": "Deployment hooks"
+    },
+    {
+      "id": "category:design",
+      "kind": "category",
+      "label": "Design"
+    },
+    {
+      "id": "category:desk",
+      "kind": "category",
+      "label": "Desks"
+    },
+    {
+      "id": "category:desktop",
+      "kind": "category",
+      "label": "Desktops"
+    },
+    {
+      "id": "category:dev-environment",
+      "kind": "category",
+      "label": "Dev environments"
+    },
+    {
+      "id": "category:display",
+      "kind": "category",
+      "label": "Displays"
+    },
+    {
+      "id": "category:edge-cdn",
+      "kind": "category",
+      "label": "Edge and CDN"
+    },
+    {
+      "id": "category:editor-ide",
+      "kind": "category",
+      "label": "Editors"
+    },
+    {
+      "id": "category:email-app",
+      "kind": "category",
+      "label": "Email apps"
+    },
+    {
+      "id": "category:email-host",
+      "kind": "category",
+      "label": "Email hosting"
+    },
+    {
+      "id": "category:feed-reader",
+      "kind": "category",
+      "label": "Feed readers"
+    },
+    {
+      "id": "category:file-sync",
+      "kind": "category",
+      "label": "File sync"
+    },
+    {
+      "id": "category:font",
+      "kind": "category",
+      "label": "Fonts"
+    },
+    {
+      "id": "category:game-console",
+      "kind": "category",
+      "label": "Game consoles"
+    },
+    {
+      "id": "category:git-forge",
+      "kind": "category",
+      "label": "Git forges"
+    },
+    {
+      "id": "category:headphones",
+      "kind": "category",
+      "label": "Headphones"
+    },
+    {
+      "id": "category:hosting",
+      "kind": "category",
+      "label": "Hosting"
+    },
+    {
+      "id": "category:in-ear-monitor",
+      "kind": "category",
+      "label": "In-ear monitors"
+    },
+    {
+      "id": "category:keyboard",
+      "kind": "category",
+      "label": "Keyboards"
+    },
+    {
+      "id": "category:kvm",
+      "kind": "category",
+      "label": "KVM switches"
+    },
+    {
+      "id": "category:lampshade",
+      "kind": "category",
+      "label": "Lampshades"
+    },
+    {
+      "id": "category:launcher",
+      "kind": "category",
+      "label": "Launchers"
+    },
+    {
+      "id": "category:lighting",
+      "kind": "category",
+      "label": "Lighting"
+    },
+    {
+      "id": "category:local-model",
+      "kind": "category",
+      "label": "Local models"
+    },
+    {
+      "id": "category:media-service",
+      "kind": "category",
+      "label": "Media services"
+    },
+    {
+      "id": "category:microphone",
+      "kind": "category",
+      "label": "Microphones"
+    },
+    {
+      "id": "category:midi-interface",
+      "kind": "category",
+      "label": "MIDI interfaces"
+    },
+    {
+      "id": "category:monitoring",
+      "kind": "category",
+      "label": "Monitoring"
+    },
+    {
+      "id": "category:mouse",
+      "kind": "category",
+      "label": "Mice"
+    },
+    {
+      "id": "category:multiplexer",
+      "kind": "category",
+      "label": "Multiplexers"
+    },
+    {
+      "id": "category:music-production",
+      "kind": "category",
+      "label": "Music production"
+    },
+    {
+      "id": "category:networking",
+      "kind": "category",
+      "label": "Networking"
+    },
+    {
+      "id": "category:notes",
+      "kind": "category",
+      "label": "Notes"
+    },
+    {
+      "id": "category:object-storage",
+      "kind": "category",
+      "label": "Object storage"
+    },
+    {
+      "id": "category:operating-system",
+      "kind": "category",
+      "label": "Operating systems"
+    },
+    {
+      "id": "category:password-manager",
+      "kind": "category",
+      "label": "Password managers"
+    },
+    {
+      "id": "category:phone",
+      "kind": "category",
+      "label": "Phones"
+    },
+    {
+      "id": "category:power",
+      "kind": "category",
+      "label": "Power"
+    },
+    {
+      "id": "category:programming-language",
+      "kind": "category",
+      "label": "Languages"
+    },
+    {
+      "id": "category:prompt",
+      "kind": "category",
+      "label": "Prompts"
+    },
+    {
+      "id": "category:reader-hardware",
+      "kind": "category",
+      "label": "Reader hardware"
+    },
+    {
+      "id": "category:reading-app",
+      "kind": "category",
+      "label": "Reading apps"
+    },
+    {
+      "id": "category:registrar",
+      "kind": "category",
+      "label": "Domain registration"
+    },
+    {
+      "id": "category:runtime",
+      "kind": "category",
+      "label": "Runtimes"
+    },
+    {
+      "id": "category:search",
+      "kind": "category",
+      "label": "Search"
+    },
+    {
+      "id": "category:shell",
+      "kind": "category",
+      "label": "Shells"
+    },
+    {
+      "id": "category:streaming",
+      "kind": "category",
+      "label": "Streaming"
+    },
+    {
+      "id": "category:study-software",
+      "kind": "category",
+      "label": "Study software"
+    },
+    {
+      "id": "category:tasks",
+      "kind": "category",
+      "label": "Task management"
+    },
+    {
+      "id": "category:terminal-emulator",
+      "kind": "category",
+      "label": "Terminal emulators"
+    },
+    {
+      "id": "category:theme",
+      "kind": "category",
+      "label": "Themes"
+    },
+    {
+      "id": "category:travel",
+      "kind": "category",
+      "label": "Travel"
+    },
+    {
+      "id": "category:version-control",
+      "kind": "category",
+      "label": "Version control"
+    },
+    {
+      "id": "category:video",
+      "kind": "category",
+      "label": "Video"
+    },
+    {
+      "id": "member:https://joshcox.co.uk",
+      "kind": "member",
+      "label": "Josh Cox"
+    },
+    {
+      "id": "member:https://joshmuller.ca",
+      "kind": "member",
+      "label": "Josh Müller"
+    },
+    {
+      "id": "member:https://joshtronic.com",
+      "kind": "member",
+      "label": "Josh Sherman"
+    },
+    {
+      "id": "member:https://joshua.seigler.net",
+      "kind": "member",
+      "label": "Joshua Seigler"
+    },
+    {
+      "id": "member:https://www.joshfinnie.com",
+      "kind": "member",
+      "label": "Josh Finnie"
+    },
+    {
+      "id": "member:https://www.joshuabaker.com",
+      "kind": "member",
+      "label": "Joshua Baker"
+    },
+    {
+      "id": "tool:1password",
+      "kind": "tool",
+      "label": "1Password"
+    },
+    {
+      "id": "tool:ableton-live",
+      "kind": "tool",
+      "label": "Ableton Live 11"
+    },
+    {
+      "id": "tool:aeron",
+      "kind": "tool",
+      "label": "Herman Miller Aeron"
+    },
+    {
+      "id": "tool:alacritty",
+      "kind": "tool",
+      "label": "Alacritty"
+    },
+    {
+      "id": "tool:amazon-s3",
+      "kind": "tool",
+      "label": "Amazon S3"
+    },
+    {
+      "id": "tool:anbernic",
+      "kind": "tool",
+      "label": "Anbernic"
+    },
+    {
+      "id": "tool:apc-ups",
+      "kind": "tool",
+      "label": "APC UPS"
+    },
+    {
+      "id": "tool:apple-magic-keyboard",
+      "kind": "tool",
+      "label": "Apple Magic Keyboard"
+    },
+    {
+      "id": "tool:apple-magic-mouse",
+      "kind": "tool",
+      "label": "Apple Magic Mouse"
+    },
+    {
+      "id": "tool:apple-numeric-keyboard",
+      "kind": "tool",
+      "label": "Apple numeric keyboard"
+    },
+    {
+      "id": "tool:asus-24",
+      "kind": "tool",
+      "label": "ASUS 24\""
+    },
+    {
+      "id": "tool:atreus",
+      "kind": "tool",
+      "label": "Keyboard.io Atreus"
+    },
+    {
+      "id": "tool:autonomous-desk",
+      "kind": "tool",
+      "label": "Autonomous.ai Desk"
+    },
+    {
+      "id": "tool:back-the-fuck-up",
+      "kind": "tool",
+      "label": "Back the Fuck Up"
+    },
+    {
+      "id": "tool:bart-study",
+      "kind": "tool",
+      "label": "BART"
+    },
+    {
+      "id": "tool:berkeley-mono",
+      "kind": "tool",
+      "label": "Berkeley Mono"
+    },
+    {
+      "id": "tool:bitwarden",
+      "kind": "tool",
+      "label": "Bitwarden"
+    },
+    {
+      "id": "tool:brave",
+      "kind": "tool",
+      "label": "Brave"
+    },
+    {
+      "id": "tool:bruno",
+      "kind": "tool",
+      "label": "Bruno"
+    },
+    {
+      "id": "tool:chatgpt",
+      "kind": "tool",
+      "label": "ChatGPT"
+    },
+    {
+      "id": "tool:claude",
+      "kind": "tool",
+      "label": "Claude"
+    },
+    {
+      "id": "tool:claude-code",
+      "kind": "tool",
+      "label": "Claude Code"
+    },
+    {
+      "id": "tool:cloudflare",
+      "kind": "tool",
+      "label": "Cloudflare"
+    },
+    {
+      "id": "tool:code-keyboard",
+      "kind": "tool",
+      "label": "CODE Keyboard"
+    },
+    {
+      "id": "tool:codex",
+      "kind": "tool",
+      "label": "Codex"
+    },
+    {
+      "id": "tool:corne",
+      "kind": "tool",
+      "label": "Corne Keyboard"
+    },
+    {
+      "id": "tool:dartnode",
+      "kind": "tool",
+      "label": "DartNode"
+    },
+    {
+      "id": "tool:debian",
+      "kind": "tool",
+      "label": "Debian"
+    },
+    {
+      "id": "tool:dell-38",
+      "kind": "tool",
+      "label": "Dell 38\" Ultrawide"
+    },
+    {
+      "id": "tool:eero-pro-6",
+      "kind": "tool",
+      "label": "Amazon eero Pro 6"
+    },
+    {
+      "id": "tool:emeet-s600",
+      "kind": "tool",
+      "label": "Emeet S600"
+    },
+    {
+      "id": "tool:fastmail",
+      "kind": "tool",
+      "label": "FastMail"
+    },
+    {
+      "id": "tool:fedora",
+      "kind": "tool",
+      "label": "Fedora"
+    },
+    {
+      "id": "tool:figma",
+      "kind": "tool",
+      "label": "Figma"
+    },
+    {
+      "id": "tool:firefox",
+      "kind": "tool",
+      "label": "Firefox"
+    },
+    {
+      "id": "tool:fish",
+      "kind": "tool",
+      "label": "Fish"
+    },
+    {
+      "id": "tool:fl-studio",
+      "kind": "tool",
+      "label": "FL Studio"
+    },
+    {
+      "id": "tool:flighty",
+      "kind": "tool",
+      "label": "Flighty"
+    },
+    {
+      "id": "tool:focusrite-scarlett",
+      "kind": "tool",
+      "label": "Focusrite Scarlett"
+    },
+    {
+      "id": "tool:forgejo",
+      "kind": "tool",
+      "label": "Forgejo"
+    },
+    {
+      "id": "tool:forgejo-runner",
+      "kind": "tool",
+      "label": "Forgejo Runner"
+    },
+    {
+      "id": "tool:framework-laptop",
+      "kind": "tool",
+      "label": "Framework Laptop"
+    },
+    {
+      "id": "tool:github",
+      "kind": "tool",
+      "label": "GitHub"
+    },
+    {
+      "id": "tool:github-theme",
+      "kind": "tool",
+      "label": "GitHub theme"
+    },
+    {
+      "id": "tool:gnome",
+      "kind": "tool",
+      "label": "GNOME"
+    },
+    {
+      "id": "tool:goaccess",
+      "kind": "tool",
+      "label": "GoAccess"
+    },
+    {
+      "id": "tool:grapheneos",
+      "kind": "tool",
+      "label": "GrapheneOS"
+    },
+    {
+      "id": "tool:hag-capisco",
+      "kind": "tool",
+      "label": "HÅG Capisco"
+    },
+    {
+      "id": "tool:hd-6xx",
+      "kind": "tool",
+      "label": "Massdrop x Sennheiser HD 6XX"
+    },
+    {
+      "id": "tool:hedgedoc",
+      "kind": "tool",
+      "label": "HedgeDoc"
+    },
+    {
+      "id": "tool:ikea-chair",
+      "kind": "tool",
+      "label": "IKEA chair"
+    },
+    {
+      "id": "tool:ikea-galant",
+      "kind": "tool",
+      "label": "IKEA GALANT"
+    },
+    {
+      "id": "tool:ikea-regolit",
+      "kind": "tool",
+      "label": "IKEA REGOLIT"
+    },
+    {
+      "id": "tool:intel-nuc",
+      "kind": "tool",
+      "label": "Intel NUC"
+    },
+    {
+      "id": "tool:iphone-17-pro",
+      "kind": "tool",
+      "label": "iPhone 17 Pro"
+    },
+    {
+      "id": "tool:iterm",
+      "kind": "tool",
+      "label": "iTerm"
+    },
+    {
+      "id": "tool:iterm-2",
+      "kind": "tool",
+      "label": "iTerm 2"
+    },
+    {
+      "id": "tool:jujutsu",
+      "kind": "tool",
+      "label": "Jujutsu"
+    },
+    {
+      "id": "tool:kagi",
+      "kind": "tool",
+      "label": "Kagi"
+    },
+    {
+      "id": "tool:keepassxc",
+      "kind": "tool",
+      "label": "KeePassXC"
+    },
+    {
+      "id": "tool:kindle",
+      "kind": "tool",
+      "label": "Kindle"
+    },
+    {
+      "id": "tool:kindle-app",
+      "kind": "tool",
+      "label": "Kindle for Android"
+    },
+    {
+      "id": "tool:kindle-paperwhite",
+      "kind": "tool",
+      "label": "Kindle Paperwhite"
+    },
+    {
+      "id": "tool:led-light",
+      "kind": "tool",
+      "label": "High-output LED light"
+    },
+    {
+      "id": "tool:lenovo-loq",
+      "kind": "tool",
+      "label": "Lenovo LOQ"
+    },
+    {
+      "id": "tool:linode",
+      "kind": "tool",
+      "label": "Linode"
+    },
+    {
+      "id": "tool:logic-pro",
+      "kind": "tool",
+      "label": "Logic Pro"
+    },
+    {
+      "id": "tool:logitech-mx-ergo",
+      "kind": "tool",
+      "label": "Logitech MX Ergo"
+    },
+    {
+      "id": "tool:mac-mini",
+      "kind": "tool",
+      "label": "Mac mini"
+    },
+    {
+      "id": "tool:macbook-pro-14",
+      "kind": "tool",
+      "label": "MacBook Pro 14-inch"
+    },
+    {
+      "id": "tool:mariadb",
+      "kind": "tool",
+      "label": "MariaDB"
+    },
+    {
+      "id": "tool:maudio-midi",
+      "kind": "tool",
+      "label": "M-Audio MIDI interface"
+    },
+    {
+      "id": "tool:mimestream",
+      "kind": "tool",
+      "label": "Mimestream"
+    },
+    {
+      "id": "tool:minisforum-ms-01",
+      "kind": "tool",
+      "label": "MINISFORUM MS-01"
+    },
+    {
+      "id": "tool:minisforum-ms-a2",
+      "kind": "tool",
+      "label": "MINISFORUM MS-A2"
+    },
+    {
+      "id": "tool:mise",
+      "kind": "tool",
+      "label": "Mise"
+    },
+    {
+      "id": "tool:miyoo",
+      "kind": "tool",
+      "label": "Miyoo"
+    },
+    {
+      "id": "tool:mokose-webcam",
+      "kind": "tool",
+      "label": "MOKOSE CS-lens"
+    },
+    {
+      "id": "tool:mx-master-3s",
+      "kind": "tool",
+      "label": "MX Master 3S"
+    },
+    {
+      "id": "tool:namesilo",
+      "kind": "tool",
+      "label": "NameSilo"
+    },
+    {
+      "id": "tool:neomutt",
+      "kind": "tool",
+      "label": "neomutt"
+    },
+    {
+      "id": "tool:neovim",
+      "kind": "tool",
+      "label": "Neovim"
+    },
+    {
+      "id": "tool:netlify",
+      "kind": "tool",
+      "label": "Netlify"
+    },
+    {
+      "id": "tool:newsboat",
+      "kind": "tool",
+      "label": "Newsboat"
+    },
+    {
+      "id": "tool:nintendo-handhelds",
+      "kind": "tool",
+      "label": "Nintendo 3DS XL, Switch OLED, Switch 2"
+    },
+    {
+      "id": "tool:nodejs",
+      "kind": "tool",
+      "label": "Node.js"
+    },
+    {
+      "id": "tool:obs",
+      "kind": "tool",
+      "label": "OBS"
+    },
+    {
+      "id": "tool:obsidian",
+      "kind": "tool",
+      "label": "Obsidian"
+    },
+    {
+      "id": "tool:ocreader",
+      "kind": "tool",
+      "label": "OCReader"
+    },
+    {
+      "id": "tool:odyssey-g9",
+      "kind": "tool",
+      "label": "Samsung Odyssey G9"
+    },
+    {
+      "id": "tool:osaurus",
+      "kind": "tool",
+      "label": "Osaurus"
+    },
+    {
+      "id": "tool:php",
+      "kind": "tool",
+      "label": "PHP"
+    },
+    {
+      "id": "tool:pixel-9a",
+      "kind": "tool",
+      "label": "Google Pixel 9a"
+    },
+    {
+      "id": "tool:plausible",
+      "kind": "tool",
+      "label": "Plausible"
+    },
+    {
+      "id": "tool:pro-display-xdr",
+      "kind": "tool",
+      "label": "Pro Display XDR"
+    },
+    {
+      "id": "tool:python",
+      "kind": "tool",
+      "label": "Python"
+    },
+    {
+      "id": "tool:raycast",
+      "kind": "tool",
+      "label": "Raycast"
+    },
+    {
+      "id": "tool:readera",
+      "kind": "tool",
+      "label": "ReadEra"
+    },
+    {
+      "id": "tool:remotion",
+      "kind": "tool",
+      "label": "Remotion"
+    },
+    {
+      "id": "tool:rode-nt1",
+      "kind": "tool",
+      "label": "Rode NT1"
+    },
+    {
+      "id": "tool:rose-pine",
+      "kind": "tool",
+      "label": "Rosé Pine"
+    },
+    {
+      "id": "tool:shaarli",
+      "kind": "tool",
+      "label": "Shaarli"
+    },
+    {
+      "id": "tool:shure-mv7",
+      "kind": "tool",
+      "label": "Shure MV7"
+    },
+    {
+      "id": "tool:sony-wh1000xm2",
+      "kind": "tool",
+      "label": "Sony WH-1000XM2"
+    },
+    {
+      "id": "tool:starship",
+      "kind": "tool",
+      "label": "Starship.rs"
+    },
+    {
+      "id": "tool:steam-deck",
+      "kind": "tool",
+      "label": "Steam Deck OLED"
+    },
+    {
+      "id": "tool:sublime-text",
+      "kind": "tool",
+      "label": "Sublime Text"
+    },
+    {
+      "id": "tool:surfboard-sb8200",
+      "kind": "tool",
+      "label": "ARRIS SURFboard SB8200"
+    },
+    {
+      "id": "tool:syncthing",
+      "kind": "tool",
+      "label": "Syncthing"
+    },
+    {
+      "id": "tool:things-3",
+      "kind": "tool",
+      "label": "Things 3"
+    },
+    {
+      "id": "tool:thinkpad-x1",
+      "kind": "tool",
+      "label": "Lenovo ThinkPad X1 Carbon"
+    },
+    {
+      "id": "tool:tinhifi-t2",
+      "kind": "tool",
+      "label": "TinHiFi T2 Plus"
+    },
+    {
+      "id": "tool:tmux",
+      "kind": "tool",
+      "label": "tmux"
+    },
+    {
+      "id": "tool:tontru",
+      "kind": "tool",
+      "label": "TONTRU"
+    },
+    {
+      "id": "tool:toslink-bluetooth",
+      "kind": "tool",
+      "label": "TOSLINK-to-bluetooth adapter"
+    },
+    {
+      "id": "tool:typescript",
+      "kind": "tool",
+      "label": "TypeScript"
+    },
+    {
+      "id": "tool:ua-volt-1",
+      "kind": "tool",
+      "label": "UA Volt 1"
+    },
+    {
+      "id": "tool:umami",
+      "kind": "tool",
+      "label": "Umami"
+    },
+    {
+      "id": "tool:unitek-kvm",
+      "kind": "tool",
+      "label": "Unitek KVM switch"
+    },
+    {
+      "id": "tool:uptimerobot",
+      "kind": "tool",
+      "label": "UptimeRobot"
+    },
+    {
+      "id": "tool:usb-microphone-boom",
+      "kind": "tool",
+      "label": "USB microphone with boom"
+    },
+    {
+      "id": "tool:vercel",
+      "kind": "tool",
+      "label": "Vercel"
+    },
+    {
+      "id": "tool:victor-mono",
+      "kind": "tool",
+      "label": "Victor Mono"
+    },
+    {
+      "id": "tool:vim",
+      "kind": "tool",
+      "label": "Vim"
+    },
+    {
+      "id": "tool:visual-studio-code",
+      "kind": "tool",
+      "label": "Visual Studio Code"
+    },
+    {
+      "id": "tool:vscodium",
+      "kind": "tool",
+      "label": "VSCodium"
+    },
+    {
+      "id": "tool:waha",
+      "kind": "tool",
+      "label": "Waha"
+    },
+    {
+      "id": "tool:webhook-deploy",
+      "kind": "tool",
+      "label": "Webhook"
+    },
+    {
+      "id": "tool:youtube-music",
+      "kind": "tool",
+      "label": "YouTube Music"
+    },
+    {
+      "id": "tool:youversion",
+      "kind": "tool",
+      "label": "YouVersion"
+    },
+    {
+      "id": "tool:zed",
+      "kind": "tool",
+      "label": "Zed"
+    },
+    {
+      "id": "tool:zsh",
+      "kind": "tool",
+      "label": "Z shell"
+    },
+    {
+      "id": "usecase:collaboration",
+      "kind": "usecase",
+      "label": "Collaboration"
+    },
+    {
+      "id": "usecase:design",
+      "kind": "usecase",
+      "label": "Design"
+    },
+    {
+      "id": "usecase:music-making",
+      "kind": "usecase",
+      "label": "Music making"
+    },
+    {
+      "id": "usecase:photography",
+      "kind": "usecase",
+      "label": "Photography"
+    },
+    {
+      "id": "usecase:privacy-security",
+      "kind": "usecase",
+      "label": "Privacy and security"
+    },
+    {
+      "id": "usecase:programming",
+      "kind": "usecase",
+      "label": "Programming"
+    },
+    {
+      "id": "usecase:publishing",
+      "kind": "usecase",
+      "label": "Publishing"
+    },
+    {
+      "id": "usecase:writing",
+      "kind": "usecase",
+      "label": "Writing"
+    }
+  ],
+  "edges": [
+    {
+      "from": "member:https://joshcox.co.uk",
+      "to": "tool:apple-magic-keyboard",
+      "relation": "uses",
+      "evidence_event_id": "sha256:f199962b0140d4843c839231605a122bf22b373205a28f8c1e5e991adfd2ca40"
+    },
+    {
+      "from": "member:https://joshcox.co.uk",
+      "to": "tool:apple-magic-mouse",
+      "relation": "uses",
+      "evidence_event_id": "sha256:f686707e2f3c6076f965ce5acda17e077ce01e9293d34441bd3e963df0e4c5c4"
+    },
+    {
+      "from": "member:https://joshcox.co.uk",
+      "to": "tool:claude",
+      "relation": "uses",
+      "evidence_event_id": "sha256:51b3efdcb4e68683ee439004ddbe9a9cd0f645c3cd2c4b56b6630079d076ce5c"
+    },
+    {
+      "from": "member:https://joshcox.co.uk",
+      "to": "tool:cloudflare",
+      "relation": "uses",
+      "evidence_event_id": "sha256:bcdd0ad0fcc7864d4bb4e62b5c8556b108a146919a22234448b8b1cac8ea1d5c"
+    },
+    {
+      "from": "member:https://joshcox.co.uk",
+      "to": "tool:mac-mini",
+      "relation": "uses",
+      "evidence_event_id": "sha256:98ab5e6c405ca8af3f84f8ac81ab60720d7ac21e600266a9924952cfe713902c"
+    },
+    {
+      "from": "member:https://joshcox.co.uk",
+      "to": "tool:mimestream",
+      "relation": "uses",
+      "evidence_event_id": "sha256:ee5a53e0c3a28237a362de8b68563ef8b7c259317ac1227757381ab2d5cbf3be"
+    },
+    {
+      "from": "member:https://joshcox.co.uk",
+      "to": "tool:netlify",
+      "relation": "uses",
+      "evidence_event_id": "sha256:5999d6fb3256c77399e5f1054673dcfe0a4455bfda4b75359aa702635f2c52fe"
+    },
+    {
+      "from": "member:https://joshcox.co.uk",
+      "to": "tool:osaurus",
+      "relation": "uses",
+      "evidence_event_id": "sha256:ebbac826ada8d366e3bcfe86b271d991c805ef7b629a81de0d01ade4baa4ce25"
+    },
+    {
+      "from": "member:https://joshcox.co.uk",
+      "to": "tool:things-3",
+      "relation": "uses",
+      "evidence_event_id": "sha256:7848ddf01b4eb16e6dcc782d1cbc6e31c136f1ba349557bdb0a1e08998822362"
+    },
+    {
+      "from": "member:https://joshcox.co.uk",
+      "to": "tool:vercel",
+      "relation": "uses",
+      "evidence_event_id": "sha256:998e738ffc413493de8352876d91969dcda14acd20e6628a281272b44ff68c91"
+    },
+    {
+      "from": "member:https://joshcox.co.uk",
+      "to": "tool:visual-studio-code",
+      "relation": "uses",
+      "evidence_event_id": "sha256:1d6bfaf1ebcd7be383708082bc46ba1cae894ca27f98521056eac23cdcb734ef"
+    },
+    {
+      "from": "member:https://joshmuller.ca",
+      "to": "tool:bart-study",
+      "relation": "uses",
+      "evidence_event_id": "sha256:c6563fc9142b86e94d3800d3808d2f218b20aefb51ef51eb27c90cb004a6d50c"
+    },
+    {
+      "from": "member:https://joshmuller.ca",
+      "to": "tool:bitwarden",
+      "relation": "uses",
+      "evidence_event_id": "sha256:d2c9ae2b3a7438ac1bf8685dd6e6bb131f04b1ca6208dc2a8adc0faebefbdea7"
+    },
+    {
+      "from": "member:https://joshmuller.ca",
+      "to": "tool:brave",
+      "relation": "uses",
+      "evidence_event_id": "sha256:04dc43619131cf3d53b2a0dd4471fd658c30f205af3db2f9c3b41ace109516b7"
+    },
+    {
+      "from": "member:https://joshmuller.ca",
+      "to": "tool:kindle",
+      "relation": "uses",
+      "evidence_event_id": "sha256:3c34bf1a300e4e1d72950ffe8ebabed93a8139ec55ac17f4ab5a26247ab8188b"
+    },
+    {
+      "from": "member:https://joshmuller.ca",
+      "to": "tool:kindle-app",
+      "relation": "uses",
+      "evidence_event_id": ""
+    },
+    {
+      "from": "member:https://joshmuller.ca",
+      "to": "tool:neomutt",
+      "relation": "uses",
+      "evidence_event_id": "sha256:65e9b35cf82e8cfce22621df662524b79efe20173c77b39d957aa10f3d7b61b6"
+    },
+    {
+      "from": "member:https://joshmuller.ca",
+      "to": "tool:neovim",
+      "relation": "uses",
+      "evidence_event_id": "sha256:d6ed0a018aa95d9dcc1c80ca8f07301745e2c5372ed4fb7b1ad955807ee6e673"
+    },
+    {
+      "from": "member:https://joshmuller.ca",
+      "to": "tool:newsboat",
+      "relation": "uses",
+      "evidence_event_id": "sha256:241bdd49915dd4fea79bc63e13035049b90b88bea0249757454b4b1948847217"
+    },
+    {
+      "from": "member:https://joshmuller.ca",
+      "to": "tool:ocreader",
+      "relation": "uses",
+      "evidence_event_id": "sha256:a5b70515a37d253768b8b7011126bc331c0c2d26e4014ed93ace99ade2f42176"
+    },
+    {
+      "from": "member:https://joshmuller.ca",
+      "to": "tool:readera",
+      "relation": "uses",
+      "evidence_event_id": "sha256:a83edd8a2b1c7f8537ddb74472aee9375e18e3e42b6e71e33537e3728232d9a8"
+    },
+    {
+      "from": "member:https://joshmuller.ca",
+      "to": "tool:waha",
+      "relation": "uses",
+      "evidence_event_id": "sha256:cf3a1724e19c404d0a10fcca01fa5cd1f0c7b1c3bcd1af3f1182b7ae30920481"
+    },
+    {
+      "from": "member:https://joshmuller.ca",
+      "to": "tool:youversion",
+      "relation": "uses",
+      "evidence_event_id": "sha256:99295e61f7986d6434d8dff0a35dd7c9e71cde23a8ea78763a1009b4a9bf255a"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:1password",
+      "relation": "uses",
+      "evidence_event_id": "sha256:801bbca6549e52b25671aa644da21ae0b3647de66be9e1679ee9610a29bff17e"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:ableton-live",
+      "relation": "uses",
+      "evidence_event_id": "sha256:6bbe0fbe47c6f23effb42f8ede406da6336edc35f16715c93d7e344c30a17e65"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:alacritty",
+      "relation": "uses",
+      "evidence_event_id": "sha256:86b5b6053bb93bc4155e59f1781451234e4f9a342794e17312b636d88cce6cb5"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:amazon-s3",
+      "relation": "uses",
+      "evidence_event_id": "sha256:728c0c90be10b060edded3d61fe72ebcf09404f0d98a9476a231592ed643bfaf"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:anbernic",
+      "relation": "uses",
+      "evidence_event_id": "sha256:1479211c2adad7e54255d4340e68174e75c9b7528355176b61aae0ea82f9f181"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:apc-ups",
+      "relation": "uses",
+      "evidence_event_id": "sha256:d6efc87476e2b65e25c69d7aff603022b7c86da0efb9dc740c6357aed1924bdb"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:apple-magic-keyboard",
+      "relation": "uses",
+      "evidence_event_id": "sha256:27b67522e331a2b599acdae8dfa6625413c9ff2a5db8f99bfcb5392dace0b417"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:asus-24",
+      "relation": "uses",
+      "evidence_event_id": "sha256:141d8001dad5a8805e2ccef057b5137884cb531010238d8c391c5d464d38915a"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:autonomous-desk",
+      "relation": "uses",
+      "evidence_event_id": "sha256:b33c0b7ea7e6bd7ce1ea5b2bdd7af11ca8458f4b903ad035559ecf66c3107997"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:back-the-fuck-up",
+      "relation": "uses",
+      "evidence_event_id": "sha256:46bfa80974c7951a378f5ad434593a57e30253efef6eb70ae49c9228cfb7d2ae"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:chatgpt",
+      "relation": "uses",
+      "evidence_event_id": "sha256:db43944041a2996b9c7fb56b17817da15f4a5a7d8a1261c2ce7be86067b05117"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:claude-code",
+      "relation": "uses",
+      "evidence_event_id": "sha256:773a91fdffc0349d23696f6098ca8890fba486ad1b62defd3556b9a60e0aca5d"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:code-keyboard",
+      "relation": "uses",
+      "evidence_event_id": "sha256:cecc115a88c431dd246a39ab72b224e2eac705fb67ce3961c9b65c7ccf78604b"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:debian",
+      "relation": "uses",
+      "evidence_event_id": "sha256:ab7971e9733ff7e9ccea4017890034dce0c69138b0c7885f5150761ba368c0a4"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:dell-38",
+      "relation": "uses",
+      "evidence_event_id": "sha256:df7053370de0a589876f670cf347fd526dc21e85503349661a7a9a9ee74ad278"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:eero-pro-6",
+      "relation": "uses",
+      "evidence_event_id": "sha256:fd09e86f5d4e784b2cf223c1ef7e5f946b93eb2abd3b979e89c0c3e6a00df9a9"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:firefox",
+      "relation": "uses",
+      "evidence_event_id": "sha256:467e6b7de0cb3c1351ef20de11e3ad52bad0fb61a699c30c5269c3c44b995c88"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:fl-studio",
+      "relation": "uses",
+      "evidence_event_id": "sha256:290bca2fad6cd5960e82347766d1b493662329a767afe14162d212608790ef79"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:focusrite-scarlett",
+      "relation": "uses",
+      "evidence_event_id": "sha256:a371573e213a9d198eacfaa1ad30a215737adeffd0793d98e190cbe3524f12cf"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:forgejo",
+      "relation": "uses",
+      "evidence_event_id": "sha256:70ff26c2189a86afdb54761638552f261ad381ea72739d9487a13c305b17d137"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:forgejo-runner",
+      "relation": "uses",
+      "evidence_event_id": "sha256:03f4d4156a9a9809129b38fc0921889b63b1012c6868fb9a197f35a4628a90a5"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:gnome",
+      "relation": "uses",
+      "evidence_event_id": "sha256:4c8fa3dbd26f7e339ccaad89016008f4619960075068774a10f2cb5c5b5edb09"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:goaccess",
+      "relation": "uses",
+      "evidence_event_id": "sha256:77cc533211f859a04adaceb667160c98108c3a84997a9da8b8041053560ddf8e"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:ikea-chair",
+      "relation": "uses",
+      "evidence_event_id": "sha256:d3a3734fa6a708683c991b5a8fdb00f00ab88f6942703ba2e439fd8630891b43"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:intel-nuc",
+      "relation": "uses",
+      "evidence_event_id": "sha256:0b3163e91078291782b9d56ac99f0fff3cfc6a0ca562b3005685641ca08a781e"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:iphone-17-pro",
+      "relation": "uses",
+      "evidence_event_id": "sha256:dab5de560cb0721348c85b1739a3869d8002ab7393a2b9e57f790d9a949ef2a5"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:kagi",
+      "relation": "uses",
+      "evidence_event_id": "sha256:71151ca06c8d06dc4c153203daabbd41fd6ecb1a4421e7517d2dc849bb19e229"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:kindle-paperwhite",
+      "relation": "uses",
+      "evidence_event_id": "sha256:1e9068430304837b1877101a496e2c6f0ff30b4df90651599b4403833760c60b"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:linode",
+      "relation": "uses",
+      "evidence_event_id": "sha256:2d0ee0cc7049cafc33b1d58078d464f3a4d8401fb9d098d5d3f68ae2b6b15fee"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:logic-pro",
+      "relation": "uses",
+      "evidence_event_id": "sha256:e2775dfec76ab308ac7ecb1f9f3ca2da945624151dc5e008bad514d5c119d8b4"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:logitech-mx-ergo",
+      "relation": "uses",
+      "evidence_event_id": "sha256:0ea2442c97f72ef8364ffdaf6422f7c002972f72bef0d17966fd02555675a873"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:mac-mini",
+      "relation": "uses",
+      "evidence_event_id": ""
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:macbook-pro-14",
+      "relation": "uses",
+      "evidence_event_id": "sha256:0744513b22e263f7416519f9bb662293505fe940ad4b1a0ccc450b5e114e132b"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:mariadb",
+      "relation": "uses",
+      "evidence_event_id": "sha256:7a3432fcd96c189d0a9a1b3f780627349d340a491f176ec71727ed83465379e4"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:maudio-midi",
+      "relation": "uses",
+      "evidence_event_id": "sha256:e4e3ddb003d55017dc02e8412c0336134dabc7176f4c024fc8c0f7a7f88691b8"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:minisforum-ms-01",
+      "relation": "uses",
+      "evidence_event_id": "sha256:8a9b83e34a0f052195bb7a73d80ef3a247c2eb466c71a7ae41006a191ea51d57"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:minisforum-ms-a2",
+      "relation": "uses",
+      "evidence_event_id": "sha256:fb3f9bbf00c28843f1a834a25756318eb098325fe2aba8ef25f0fce038e3329f"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:miyoo",
+      "relation": "uses",
+      "evidence_event_id": "sha256:c09dcb1f86bcd4be7914a46f344b17b9785c0288978b3c0e442e6eb0b3351ca0"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:namesilo",
+      "relation": "uses",
+      "evidence_event_id": "sha256:e2083d49af3098816957b44f60d10a258ef54ee01a6a514d5614915ecfc8dad7"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:nintendo-handhelds",
+      "relation": "uses",
+      "evidence_event_id": "sha256:33a0df9aa24e4c3283f649f6cbe2e87d21ba879c088e295cc4bc9ded2726e95f"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:nodejs",
+      "relation": "uses",
+      "evidence_event_id": "sha256:4902c723d99d313101f2c9d1da6eae5e38ea7317f37c5a91c7f01f69a2ae76d5"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:php",
+      "relation": "uses",
+      "evidence_event_id": "sha256:35e45191525a45d89665b06cb9873408c1ff04e47b5cb124d9c5f72b112481bb"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:python",
+      "relation": "uses",
+      "evidence_event_id": "sha256:1465df538ec5cf4cc0ce1375a6c9c4b41db972444edc94965fd32974f410fc9f"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:rode-nt1",
+      "relation": "uses",
+      "evidence_event_id": "sha256:bcd928e5741c1fae27529db3833b47dbe6f31a9e8ceb6f87a54853f92669a38e"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:rose-pine",
+      "relation": "uses",
+      "evidence_event_id": "sha256:660e320064a67ab47c8af6a78960954c5144a15b3d25aa7c609be08ccb9009b7"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:steam-deck",
+      "relation": "uses",
+      "evidence_event_id": "sha256:eeddea44cf21b6f7a597435a59990b2853cb251e412339035c885fc17a447bc0"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:surfboard-sb8200",
+      "relation": "uses",
+      "evidence_event_id": "sha256:676f0f9a2d1b14ea056b32f621ee9caf2d8b50e9086f99b62d8d7cca3769ae39"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:thinkpad-x1",
+      "relation": "uses",
+      "evidence_event_id": "sha256:f870249c8c0d0f83cbcdee1d8514d01d7c6dcae744e3bcae27c5f9b2c07392c1"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:tmux",
+      "relation": "uses",
+      "evidence_event_id": "sha256:666c496137673155f8806fb07049fabb37898fffaacec057cf8a0896160091e7"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:typescript",
+      "relation": "uses",
+      "evidence_event_id": "sha256:158d6524bc4566638b8be1f263f6accf84e0b87794f7be2df5f81fa286399f95"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:uptimerobot",
+      "relation": "uses",
+      "evidence_event_id": "sha256:b6ada96a5b04a7e92e62d4d43ebf33fecc1abbb8d701e8a2a881bc1819f8fafb"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:victor-mono",
+      "relation": "uses",
+      "evidence_event_id": "sha256:120fa688ce2f11e3062f0ccfea530cfafedb3b24d51f6401c435c34282402e6d"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:vim",
+      "relation": "uses",
+      "evidence_event_id": "sha256:1bd93d53116c434f6a0a625b782e32d3039ad011838a7189a42b7427969e3f71"
+    },
+    {
+      "from": "member:https://joshtronic.com",
+      "to": "tool:zsh",
+      "relation": "uses",
+      "evidence_event_id": "sha256:08038e1a1d5b101462af11b06cf271a87cb9f6dc024ca384c54fe7e157bc892c"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:dartnode",
+      "relation": "uses",
+      "evidence_event_id": "sha256:813b806b5059f0b4942274757cac548c861a24a58203d129a4c86611e2c196cc"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:debian",
+      "relation": "uses",
+      "evidence_event_id": "sha256:f35ceafa5c483417b47fb2fc6ca84be47034b7feabdfe775eeb1591aa22c686f"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:fastmail",
+      "relation": "uses",
+      "evidence_event_id": "sha256:73be01ea36869e3b5317123f0a19928c25e161f9a5503101572e2edf3745513a"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:fedora",
+      "relation": "uses",
+      "evidence_event_id": "sha256:99f3abf9de687dfc8cc755c6b1afe1f25ebb895a8b6946c370387bd3ba382988"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:forgejo",
+      "relation": "uses",
+      "evidence_event_id": "sha256:42e5b92bd19d2c69a6c327c8666d5cdc09b161d8b662029d7767c5b0ba8fd94d"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:framework-laptop",
+      "relation": "uses",
+      "evidence_event_id": "sha256:984b2f262b377381138f93886fd4f6149468080a8f3eb8561b5fcf9ef313fc02"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:grapheneos",
+      "relation": "uses",
+      "evidence_event_id": "sha256:582f7b2aa463e8587d53b6a14d0cfdac7866659c5d198ebe44d2a51d4d73c45a"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:hedgedoc",
+      "relation": "uses",
+      "evidence_event_id": "sha256:400fd54ccb194ae8c93248a4313884b7674d587eb9249fe47a21ce6c840ee894"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:ikea-galant",
+      "relation": "uses",
+      "evidence_event_id": "sha256:117b4fcfe5ccad7b0818e2f5b7ddc7787766d9b637f22e4f97964769a0855f1a"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:ikea-regolit",
+      "relation": "uses",
+      "evidence_event_id": "sha256:edfd50c23e5b6262be1dca772e2834dd50403376b75e5c9b0a7a05ae332af3fe"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:jujutsu",
+      "relation": "uses",
+      "evidence_event_id": "sha256:57e7391705c781b32f33325d202d82729345258ae8d264bb6cb6bfc3351cd5ce"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:keepassxc",
+      "relation": "uses",
+      "evidence_event_id": "sha256:39d0e0432a3654b3eb0337be26f5ba00c8e1241a3ffe71b993eb23884b6039d1"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:led-light",
+      "relation": "uses",
+      "evidence_event_id": "sha256:bdc8554fcb6a5664aada7578c6e9d2261892ee858b852afcc8b10ec1ebb77d20"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:lenovo-loq",
+      "relation": "uses",
+      "evidence_event_id": "sha256:22f660c1ab2d19b05d53e61bfabd40b394a1c5ab15428ba5415b07c4fb160004"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:mise",
+      "relation": "uses",
+      "evidence_event_id": "sha256:c77a205e007defd8b4bdb2a20c387e02f6264445827e4529b37bfdc2ffa4d14c"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:mokose-webcam",
+      "relation": "uses",
+      "evidence_event_id": "sha256:c0afa22e7a87149594e396108cb41b7edfbfafd8630bc2157b73717aeb467282"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:namesilo",
+      "relation": "uses",
+      "evidence_event_id": "sha256:1fb32ff743dba107bc3cd5942bdce8b3cdda9839b3139d6b2c9eca49ec0c433c"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:obsidian",
+      "relation": "uses",
+      "evidence_event_id": "sha256:e84f479879e18e92ea2241b967e3b3448c4b82058652188135dba0d02ebba3fd"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:pixel-9a",
+      "relation": "uses",
+      "evidence_event_id": "sha256:96a38194c39dbd88344b2e8b84b0b8eb334ee8e78208673ebc427c455508e3a0"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:shaarli",
+      "relation": "uses",
+      "evidence_event_id": "sha256:073c277baf9a9627131f619db0201b69cfd41196bd96b4098ca79f2c3d3a321e"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:sony-wh1000xm2",
+      "relation": "uses",
+      "evidence_event_id": "sha256:86c39430d35a55823cf08f91e16fe091db128452b4e0ce446b97cfd779b96ad3"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:syncthing",
+      "relation": "uses",
+      "evidence_event_id": "sha256:aef13f0201c613953c89d41c27ba1822f9e8029b1945fd5f0cde9a9a290d1f2a"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:tontru",
+      "relation": "uses",
+      "evidence_event_id": "sha256:e2a92296aa6127653e9fb5392c31a3394a26e465531862f1f94bf615f6f523d6"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:toslink-bluetooth",
+      "relation": "uses",
+      "evidence_event_id": "sha256:dc4f821ffc2f44756917bbead88d074ade7a39fb2f7390b1e2f39d2c41b1e299"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:umami",
+      "relation": "uses",
+      "evidence_event_id": "sha256:bfb0ff997e144dfd68b3ea92f2cbe0117128410d386c425075dbf494248bb3d6"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:unitek-kvm",
+      "relation": "uses",
+      "evidence_event_id": "sha256:b4fde163a8de2b7904b8787a38a1a5e10bd3740e4f93ce7999994a8cbef6c77f"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:usb-microphone-boom",
+      "relation": "uses",
+      "evidence_event_id": "sha256:68b5e326dc19deaa8f1c433242365614f7d2b358cec3c0c971818478888143bd"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:vscodium",
+      "relation": "uses",
+      "evidence_event_id": "sha256:f2e50ca5f9edc362043d671f63c03b6940aa7658c30769eaaed9a313b3948132"
+    },
+    {
+      "from": "member:https://joshua.seigler.net",
+      "to": "tool:webhook-deploy",
+      "relation": "uses",
+      "evidence_event_id": "sha256:987f1c1bf49c66c48604abd46e1ecb41590417277757357aa46c9b0585b80969"
+    },
+    {
+      "from": "member:https://www.joshfinnie.com",
+      "to": "tool:atreus",
+      "relation": "uses",
+      "evidence_event_id": "sha256:ee6d1496e8e3666fb900b79d33ea2d5fa45e4f5d5d7fd38d041080ec4c454ce3"
+    },
+    {
+      "from": "member:https://www.joshfinnie.com",
+      "to": "tool:brave",
+      "relation": "uses",
+      "evidence_event_id": "sha256:8aea88441fca4497aef134a97d67c8e2c3096e00faf5f32a8b0684ff61ceea73"
+    },
+    {
+      "from": "member:https://www.joshfinnie.com",
+      "to": "tool:bruno",
+      "relation": "uses",
+      "evidence_event_id": "sha256:1f2c7b6a47077f8fe33e8c553294b623d63f5819f6e77a04bf2a88fc5d99d38a"
+    },
+    {
+      "from": "member:https://www.joshfinnie.com",
+      "to": "tool:corne",
+      "relation": "uses",
+      "evidence_event_id": "sha256:41b297d832427cd3f6a3f779078c575a9450fc7c3477f2d4a58917863fcb8136"
+    },
+    {
+      "from": "member:https://www.joshfinnie.com",
+      "to": "tool:emeet-s600",
+      "relation": "uses",
+      "evidence_event_id": "sha256:b2bd025135c2f715cf6a7d6662c49349791061da8b7a229977b8b1aab6a75451"
+    },
+    {
+      "from": "member:https://www.joshfinnie.com",
+      "to": "tool:fish",
+      "relation": "uses",
+      "evidence_event_id": "sha256:479d19cb40079ec1563ccebbd5c0ad89d97937d798a98ed5357174a5f83ce4ba"
+    },
+    {
+      "from": "member:https://www.joshfinnie.com",
+      "to": "tool:hag-capisco",
+      "relation": "uses",
+      "evidence_event_id": "sha256:b50680900cc5bbc4f1aa69ffbde7623571afce6ca588d20b90abd246333e1ba2"
+    },
+    {
+      "from": "member:https://www.joshfinnie.com",
+      "to": "tool:hd-6xx",
+      "relation": "uses",
+      "evidence_event_id": "sha256:4272795837e950e39605e38c4c0a8eed44032e1f58f287ad02430ec4b0344a09"
+    },
+    {
+      "from": "member:https://www.joshfinnie.com",
+      "to": "tool:iterm",
+      "relation": "uses",
+      "evidence_event_id": "sha256:17493ba97fbd874ba56d824c2a2a35bb613f88817c75f329cd416cc660a61685"
+    },
+    {
+      "from": "member:https://www.joshfinnie.com",
+      "to": "tool:neovim",
+      "relation": "uses",
+      "evidence_event_id": "sha256:e85db7560d4a7e4d8fbc5c8e3d059f4a84000587b13f8433123d1618d658c26e"
+    },
+    {
+      "from": "member:https://www.joshfinnie.com",
+      "to": "tool:obs",
+      "relation": "uses",
+      "evidence_event_id": "sha256:edca065039d729274790a097cee4f7ae4b6b22ec1a0c3535be0b93c7a1f7e5e2"
+    },
+    {
+      "from": "member:https://www.joshfinnie.com",
+      "to": "tool:obsidian",
+      "relation": "uses",
+      "evidence_event_id": "sha256:fbb5a878291611faba50a34b7cfae41b806780a0ad6a8b007ea861f1f2cc356b"
+    },
+    {
+      "from": "member:https://www.joshfinnie.com",
+      "to": "tool:odyssey-g9",
+      "relation": "uses",
+      "evidence_event_id": "sha256:f2380c6168f045d81220521dd9fe691c79883fd2899d3df2e39a345c4a13acb6"
+    },
+    {
+      "from": "member:https://www.joshfinnie.com",
+      "to": "tool:plausible",
+      "relation": "uses",
+      "evidence_event_id": "sha256:955dc60adcacf5f7b03e5ca807ba4291903b626ebb234d2f950a45d1c51423c1"
+    },
+    {
+      "from": "member:https://www.joshfinnie.com",
+      "to": "tool:shure-mv7",
+      "relation": "uses",
+      "evidence_event_id": "sha256:dac3abfa33620a19f67e7950509e6ab5997767bdec7c176cfa92705a801654b0"
+    },
+    {
+      "from": "member:https://www.joshfinnie.com",
+      "to": "tool:starship",
+      "relation": "uses",
+      "evidence_event_id": "sha256:bee05f4bdba15464f45585ad6b035ea7d6645002641125945cb8f6b05cc178ba"
+    },
+    {
+      "from": "member:https://www.joshfinnie.com",
+      "to": "tool:tinhifi-t2",
+      "relation": "uses",
+      "evidence_event_id": "sha256:5bccad7df36a979cfeb9167c2e71d747e29a9203255e047c5cd8521c73279184"
+    },
+    {
+      "from": "member:https://www.joshfinnie.com",
+      "to": "tool:ua-volt-1",
+      "relation": "uses",
+      "evidence_event_id": "sha256:8e496709ac7fc033a202064eb026286babf50febcdf34fcc85581d35bd0c515c"
+    },
+    {
+      "from": "member:https://www.joshfinnie.com",
+      "to": "tool:youtube-music",
+      "relation": "uses",
+      "evidence_event_id": "sha256:622d16b27b10a7aff4e6cce85b1653889494a81b91f0f83506552731a4a12659"
+    },
+    {
+      "from": "member:https://www.joshuabaker.com",
+      "to": "tool:1password",
+      "relation": "uses",
+      "evidence_event_id": "sha256:0dfef2b72d4d98241ba007ad512420dc7b4c143a001040ffc8898c203ba07fb7"
+    },
+    {
+      "from": "member:https://www.joshuabaker.com",
+      "to": "tool:aeron",
+      "relation": "uses",
+      "evidence_event_id": "sha256:76ecf5a742b98d4fa6d2811541471e6c08f577cd426939d7cb2dce04ad43cee0"
+    },
+    {
+      "from": "member:https://www.joshuabaker.com",
+      "to": "tool:apple-numeric-keyboard",
+      "relation": "uses",
+      "evidence_event_id": "sha256:bb4428ce4bbb5f032d5d8f69ff6d6579420b1c54eb1d74d4b4cf9914324a7bed"
+    },
+    {
+      "from": "member:https://www.joshuabaker.com",
+      "to": "tool:berkeley-mono",
+      "relation": "uses",
+      "evidence_event_id": "sha256:e93f340710e04fdb917cf4de44674e6107946e62c14425e0528cd35c947e9a3b"
+    },
+    {
+      "from": "member:https://www.joshuabaker.com",
+      "to": "tool:claude-code",
+      "relation": "uses",
+      "evidence_event_id": "sha256:43691988107e90b97aaba76bb282376dd0e8754123b02dbb092e46868a8f1726"
+    },
+    {
+      "from": "member:https://www.joshuabaker.com",
+      "to": "tool:cloudflare",
+      "relation": "uses",
+      "evidence_event_id": "sha256:1576e764316f17b9dde3653ddc4bbb3449b4ee38844fe5fec52ad147b45ee4e1"
+    },
+    {
+      "from": "member:https://www.joshuabaker.com",
+      "to": "tool:codex",
+      "relation": "uses",
+      "evidence_event_id": "sha256:282e3398564cc5d26ddde0982c2bcd6e17f8d13a3b489eea41157a2d78124cc5"
+    },
+    {
+      "from": "member:https://www.joshuabaker.com",
+      "to": "tool:figma",
+      "relation": "uses",
+      "evidence_event_id": "sha256:005bb5d86b99c55c1acdab431402686c920c0e42f7959595768d4646d4fe34b6"
+    },
+    {
+      "from": "member:https://www.joshuabaker.com",
+      "to": "tool:flighty",
+      "relation": "uses",
+      "evidence_event_id": "sha256:352f1dc428ddb339a9e7dafa5b9fbc288486d5bbbec3834d8aa1371e9c0d49ce"
+    },
+    {
+      "from": "member:https://www.joshuabaker.com",
+      "to": "tool:github",
+      "relation": "uses",
+      "evidence_event_id": "sha256:5101ab4e45f6d9b1c5c8c5fc5da0c6490859323175d835bd69769c106393825b"
+    },
+    {
+      "from": "member:https://www.joshuabaker.com",
+      "to": "tool:github-theme",
+      "relation": "uses",
+      "evidence_event_id": "sha256:d1ea417ba44397a5e683aa4da436c15191abb98d93fb3b122b715be3b2f0f6da"
+    },
+    {
+      "from": "member:https://www.joshuabaker.com",
+      "to": "tool:iterm-2",
+      "relation": "uses",
+      "evidence_event_id": "sha256:6f3697967eaf94e7e9f9c2b05cf2bda3d5ee0aec1d970a713ce0f39e62bbd36c"
+    },
+    {
+      "from": "member:https://www.joshuabaker.com",
+      "to": "tool:mx-master-3s",
+      "relation": "uses",
+      "evidence_event_id": "sha256:bec42f736ff08e008516670576295e8b22ebed054f0609727127f6e1a474ed05"
+    },
+    {
+      "from": "member:https://www.joshuabaker.com",
+      "to": "tool:pro-display-xdr",
+      "relation": "uses",
+      "evidence_event_id": "sha256:5ad22a63ce4947fd22b4607e6b13a57303fb89d5202d6d04f383b15b346f298e"
+    },
+    {
+      "from": "member:https://www.joshuabaker.com",
+      "to": "tool:raycast",
+      "relation": "uses",
+      "evidence_event_id": "sha256:3302a326521bdc584fdb13bc555041ec0216711c9be1206828b053ada9ba4003"
+    },
+    {
+      "from": "member:https://www.joshuabaker.com",
+      "to": "tool:remotion",
+      "relation": "uses",
+      "evidence_event_id": "sha256:04aeaed7eb66b78e765f5eb211e5014c8ee051bb224e5baaf2b4b9ef470de19a"
+    },
+    {
+      "from": "member:https://www.joshuabaker.com",
+      "to": "tool:sublime-text",
+      "relation": "uses",
+      "evidence_event_id": "sha256:5006cc36767dc5fee00dd2ceb2669d38335d8242d55d001315df4ebf8e49f143"
+    },
+    {
+      "from": "member:https://www.joshuabaker.com",
+      "to": "tool:zed",
+      "relation": "uses",
+      "evidence_event_id": "sha256:04045f09dedafe186cc6cf203e9728c8022e1e0dd40a7ffecee881b31e24efd0"
+    },
+    {
+      "from": "tool:1password",
+      "to": "category:password-manager",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:1password",
+      "to": "tool:claude-code",
+      "relation": "co_used_with",
+      "member_count": 2
+    },
+    {
+      "from": "tool:ableton-live",
+      "to": "category:music-production",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:ableton-live",
+      "to": "usecase:music-making",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:aeron",
+      "to": "category:chair",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:alacritty",
+      "to": "category:terminal-emulator",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:amazon-s3",
+      "to": "category:object-storage",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:anbernic",
+      "to": "category:game-console",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:apc-ups",
+      "to": "category:power",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:apple-magic-keyboard",
+      "to": "category:keyboard",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:apple-magic-keyboard",
+      "to": "tool:mac-mini",
+      "relation": "co_used_with",
+      "member_count": 2
+    },
+    {
+      "from": "tool:apple-magic-keyboard",
+      "to": "usecase:music-making",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:apple-magic-mouse",
+      "to": "category:mouse",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:apple-numeric-keyboard",
+      "to": "category:keyboard",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:asus-24",
+      "to": "category:display",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:asus-24",
+      "to": "usecase:music-making",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:atreus",
+      "to": "category:keyboard",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:autonomous-desk",
+      "to": "category:desk",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:back-the-fuck-up",
+      "to": "category:backup",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:bart-study",
+      "to": "category:study-software",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:berkeley-mono",
+      "to": "category:font",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:bitwarden",
+      "to": "category:password-manager",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:brave",
+      "to": "category:browser",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:brave",
+      "to": "tool:neovim",
+      "relation": "co_used_with",
+      "member_count": 2
+    },
+    {
+      "from": "tool:bruno",
+      "to": "category:api-client",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:chatgpt",
+      "to": "category:ai-assistant",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:claude",
+      "to": "category:ai-assistant",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:claude",
+      "to": "usecase:programming",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:claude-code",
+      "to": "category:coding-agent",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:claude-code",
+      "to": "usecase:programming",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:cloudflare",
+      "to": "category:edge-cdn",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:code-keyboard",
+      "to": "category:keyboard",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:codex",
+      "to": "category:coding-agent",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:codex",
+      "to": "usecase:programming",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:corne",
+      "to": "category:keyboard",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:dartnode",
+      "to": "category:hosting",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:debian",
+      "to": "category:operating-system",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:debian",
+      "to": "tool:forgejo",
+      "relation": "co_used_with",
+      "member_count": 2
+    },
+    {
+      "from": "tool:debian",
+      "to": "tool:namesilo",
+      "relation": "co_used_with",
+      "member_count": 2
+    },
+    {
+      "from": "tool:dell-38",
+      "to": "category:display",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:eero-pro-6",
+      "to": "category:networking",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:emeet-s600",
+      "to": "category:camera",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:fastmail",
+      "to": "category:email-host",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:fastmail",
+      "to": "usecase:collaboration",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:fastmail",
+      "to": "usecase:publishing",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:fedora",
+      "to": "category:operating-system",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:figma",
+      "to": "category:design",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:figma",
+      "to": "usecase:design",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:firefox",
+      "to": "category:browser",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:fish",
+      "to": "category:shell",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:fish",
+      "to": "usecase:programming",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:fl-studio",
+      "to": "category:music-production",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:fl-studio",
+      "to": "usecase:music-making",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:flighty",
+      "to": "category:travel",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:focusrite-scarlett",
+      "to": "category:audio-interface",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:focusrite-scarlett",
+      "to": "usecase:music-making",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:forgejo",
+      "to": "category:git-forge",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:forgejo",
+      "to": "tool:namesilo",
+      "relation": "co_used_with",
+      "member_count": 2
+    },
+    {
+      "from": "tool:forgejo-runner",
+      "to": "category:ci",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:framework-laptop",
+      "to": "category:computer",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:github",
+      "to": "category:git-forge",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:github",
+      "to": "usecase:programming",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:github",
+      "to": "usecase:publishing",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:github-theme",
+      "to": "category:theme",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:gnome",
+      "to": "category:desktop",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:goaccess",
+      "to": "category:analytics",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:grapheneos",
+      "to": "category:operating-system",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:grapheneos",
+      "to": "usecase:privacy-security",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:hag-capisco",
+      "to": "category:chair",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:hd-6xx",
+      "to": "category:headphones",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:hedgedoc",
+      "to": "category:notes",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:hedgedoc",
+      "to": "usecase:writing",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:ikea-chair",
+      "to": "category:chair",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:ikea-galant",
+      "to": "category:desk",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:ikea-regolit",
+      "to": "category:lampshade",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:intel-nuc",
+      "to": "category:computer",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:iphone-17-pro",
+      "to": "category:phone",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:iterm",
+      "to": "category:terminal-emulator",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:iterm",
+      "to": "usecase:programming",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:iterm-2",
+      "to": "category:terminal-emulator",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:iterm-2",
+      "to": "usecase:programming",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:jujutsu",
+      "to": "category:version-control",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:kagi",
+      "to": "category:search",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:keepassxc",
+      "to": "category:password-manager",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:kindle",
+      "to": "category:reading-app",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:kindle-app",
+      "to": "category:reading-app",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:kindle-paperwhite",
+      "to": "category:reader-hardware",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:led-light",
+      "to": "category:lighting",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:lenovo-loq",
+      "to": "category:computer",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:linode",
+      "to": "category:hosting",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:linode",
+      "to": "usecase:publishing",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:logic-pro",
+      "to": "category:music-production",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:logic-pro",
+      "to": "usecase:music-making",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:logitech-mx-ergo",
+      "to": "category:mouse",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:logitech-mx-ergo",
+      "to": "usecase:music-making",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:mac-mini",
+      "to": "category:computer",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:mac-mini",
+      "to": "usecase:music-making",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:macbook-pro-14",
+      "to": "category:computer",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:mariadb",
+      "to": "category:database",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:maudio-midi",
+      "to": "category:midi-interface",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:maudio-midi",
+      "to": "usecase:music-making",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:mimestream",
+      "to": "category:email-app",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:minisforum-ms-01",
+      "to": "category:computer",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:minisforum-ms-a2",
+      "to": "category:computer",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:mise",
+      "to": "category:dev-environment",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:miyoo",
+      "to": "category:game-console",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:mokose-webcam",
+      "to": "category:camera",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:mokose-webcam",
+      "to": "usecase:photography",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:mx-master-3s",
+      "to": "category:mouse",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:namesilo",
+      "to": "category:registrar",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:namesilo",
+      "to": "usecase:privacy-security",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:neomutt",
+      "to": "category:email-app",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:neovim",
+      "to": "category:editor-ide",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:netlify",
+      "to": "category:hosting",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:netlify",
+      "to": "usecase:publishing",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:newsboat",
+      "to": "category:feed-reader",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:nintendo-handhelds",
+      "to": "category:game-console",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:nodejs",
+      "to": "category:runtime",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:obs",
+      "to": "category:streaming",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:obsidian",
+      "to": "category:notes",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:obsidian",
+      "to": "usecase:writing",
+      "relation": "used_for",
+      "member_count": 2
+    },
+    {
+      "from": "tool:ocreader",
+      "to": "category:feed-reader",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:odyssey-g9",
+      "to": "category:display",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:osaurus",
+      "to": "category:local-model",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:php",
+      "to": "category:programming-language",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:pixel-9a",
+      "to": "category:phone",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:plausible",
+      "to": "category:analytics",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:pro-display-xdr",
+      "to": "category:display",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:python",
+      "to": "category:programming-language",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:raycast",
+      "to": "category:launcher",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:readera",
+      "to": "category:reading-app",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:remotion",
+      "to": "category:video",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:rode-nt1",
+      "to": "category:microphone",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:rode-nt1",
+      "to": "usecase:music-making",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:rose-pine",
+      "to": "category:theme",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:shaarli",
+      "to": "category:bookmark",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:shure-mv7",
+      "to": "category:microphone",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:sony-wh1000xm2",
+      "to": "category:headphones",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:starship",
+      "to": "category:prompt",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:starship",
+      "to": "usecase:programming",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:steam-deck",
+      "to": "category:game-console",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:sublime-text",
+      "to": "category:editor-ide",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:surfboard-sb8200",
+      "to": "category:networking",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:syncthing",
+      "to": "category:file-sync",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:things-3",
+      "to": "category:tasks",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:thinkpad-x1",
+      "to": "category:computer",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:tinhifi-t2",
+      "to": "category:in-ear-monitor",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:tmux",
+      "to": "category:multiplexer",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:tontru",
+      "to": "category:keyboard",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:toslink-bluetooth",
+      "to": "category:audio-adapter",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:toslink-bluetooth",
+      "to": "usecase:music-making",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:typescript",
+      "to": "category:programming-language",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:ua-volt-1",
+      "to": "category:audio-interface",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:ua-volt-1",
+      "to": "usecase:music-making",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:umami",
+      "to": "category:analytics",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:unitek-kvm",
+      "to": "category:kvm",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:uptimerobot",
+      "to": "category:monitoring",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:usb-microphone-boom",
+      "to": "category:microphone",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:vercel",
+      "to": "category:hosting",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:victor-mono",
+      "to": "category:font",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:vim",
+      "to": "category:editor-ide",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:visual-studio-code",
+      "to": "category:editor-ide",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:visual-studio-code",
+      "to": "usecase:programming",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:vscodium",
+      "to": "category:editor-ide",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:vscodium",
+      "to": "usecase:programming",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:waha",
+      "to": "category:reading-app",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:webhook-deploy",
+      "to": "category:deploy-hook",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:youtube-music",
+      "to": "category:media-service",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:youtube-music",
+      "to": "usecase:music-making",
+      "relation": "used_for",
+      "member_count": 1
+    },
+    {
+      "from": "tool:youversion",
+      "to": "category:study-software",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:zed",
+      "to": "category:editor-ide",
+      "relation": "classified_as"
+    },
+    {
+      "from": "tool:zsh",
+      "to": "category:shell",
+      "relation": "classified_as"
+    }
+  ]
+}

@@ -1,7 +1,9 @@
 {% comment %}
-  Goal: One-row homepage creative strip under What's happening.
+  Goal: Homepage creative grid under What's happening.
   One latest game, project, photo, or music work per member × kind
   (showcase.home)—no publish window. Same showcase-card as /showcase/.
+  At most six cards, in the home-list order. One column, two from 44rem,
+  three from 72rem; extra cards wrap.
 {% endcomment %}
 {% assign home_showcase = site.data.showcase.home | default: empty %}
 {% if home_showcase.size > 0 %}
@@ -11,7 +13,7 @@
       One of the best parts of wandering the web is discovering what people make simply because they want to.
     </p>
     <ol class="showcase-list showcase-list--home h-feed">
-      {% for item in home_showcase %}
+      {% for item in home_showcase limit: 6 %}
         <li
           class="showcase-list__item"
           {% if item.language and item.language != '' %}

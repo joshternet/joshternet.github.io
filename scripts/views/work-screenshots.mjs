@@ -7,10 +7,12 @@
  * remote/invalid publisher image after download+resize, snapshot the work
  * page and rewrite that card to a local WebP keyed by the image URL. Reuse
  * an on-disk poster when present before launching a browser. Never invent
- * works—only screenshot harvested https URLs. Skip hub, member-homepage, and
- * bare creative-index URLs. Reserve writing slots each sync so articles
- * progress when creative backlog is large. Injectable Playwright for offline
- * tests; cap captures per sync.
+ * works—only screenshot harvested https URLs. Skip hub, member-homepage,
+ * bare creative-index, Showcase chrome, legal pages, JS-template hrefs, and
+ * aged/undated project archives + /experiments/ children (same dating window
+ * as Showcase; never invent publish dates). Reserve writing slots each sync
+ * so articles progress when creative backlog is large. Injectable Playwright
+ * for offline tests; cap captures per sync.
  */
 
 import fs from "node:fs/promises";
@@ -21,13 +23,16 @@ import sharp from "sharp";
 import { USER_AGENT } from "../nlp/lib.mjs";
 import { createOriginRobotsGate } from "../nlp/origin-robots.mjs";
 import { loadPlaywright } from "../nlp/render.mjs";
+import { isJsTemplateHref } from "../nlp/text.mjs";
 import { assertPublicURL } from "../network/lib.mjs";
 import { installPublicUrlRouteGuard } from "../network/public-fetch-guard.mjs";
+import { isShowcaseChromePath } from "../network/slash-pages.mjs";
 import {
   SHOWCASE_CONTENT_TYPES,
   isBareCreativeIndexUrl,
   isJoshternetHubContentUrl,
   isMemberSiteHomeItem,
+  isOutsideCreativeDatingWindow,
 } from "./lib.mjs";
 import {
   POSTER_DIRECTORY,
@@ -140,9 +145,10 @@ export function isScreenshotEligibleContentType(type) {
 /**
  * True when a draft should get a Playwright poster if OG enrich left it empty.
  * @param {Record<string, unknown>} item
+ * @param {{ now?: Date }} [options]
  * @returns {boolean}
  */
-export function contentItemNeedsWorkScreenshot(item) {
+export function contentItemNeedsWorkScreenshot(item, options = {}) {
   if (!item || typeof item !== "object") {
     return false;
   }
@@ -172,6 +178,10 @@ export function contentItemNeedsWorkScreenshot(item) {
     return false;
   }
 
+  if (isJsTemplateHref(item.url)) {
+    return false;
+  }
+
   if (isJoshternetHubContentUrl(item.url)) {
     return false;
   }
@@ -181,6 +191,26 @@ export function contentItemNeedsWorkScreenshot(item) {
   }
 
   if (isBareCreativeIndexUrl(item.url)) {
+    return false;
+  }
+
+  // Identity/legal chrome (wish-list, datenschutz, …) must not burn Playwright.
+  // Writing trees (/notes/, /blog/, /posts/) stay eligible for Activity posters.
+  const type = screenshotContentType(item);
+  if (isShowcaseChromePath(item.url) && !WRITING_CONTENT_TYPES.has(type)) {
+    return false;
+  }
+
+  if (String(item.page_role || "") === "legal") {
+    return false;
+  }
+
+  const now =
+    options.now instanceof Date && !Number.isNaN(options.now.getTime())
+      ? options.now
+      : new Date();
+
+  if (isOutsideCreativeDatingWindow(item, now)) {
     return false;
   }
 
@@ -527,6 +557,7 @@ export async function awaitPageReadyForScreenshot(page, timeoutMs) {
  *   timeoutMs?: number,
  *   robotsGate?: import("../nlp/origin-robots.mjs").OriginRobotsGate,
  *   log?: (message: string) => void,
+ *   now?: Date,
  * }} [options]
  * @returns {Promise<Array<Record<string, unknown>>>}
  */
@@ -551,8 +582,13 @@ export async function captureMissingWorkScreenshots(items, options = {}) {
     });
   const pending = [];
 
+  const screenshotNow =
+    options.now instanceof Date && !Number.isNaN(options.now.getTime())
+      ? options.now
+      : new Date();
+
   for (const item of items.filter((row) =>
-    contentItemNeedsWorkScreenshot(row),
+    contentItemNeedsWorkScreenshot(row, { now: screenshotNow }),
   )) {
     // contentItemNeedsWorkScreenshot already requires a plain https URL.
     const workUrl = String(item.url);
@@ -605,7 +641,7 @@ export async function captureMissingWorkScreenshots(items, options = {}) {
     let index = 0;
 
     for (const item of targets) {
-      if (!contentItemNeedsWorkScreenshot(item)) {
+      if (!contentItemNeedsWorkScreenshot(item, { now: screenshotNow })) {
         continue;
       }
 
@@ -689,7 +725,7 @@ export async function captureMissingWorkScreenshots(items, options = {}) {
   }
 
   const remaining = items.filter((item) =>
-    contentItemNeedsWorkScreenshot(item),
+    contentItemNeedsWorkScreenshot(item, { now: screenshotNow }),
   ).length;
   const captured = writingCaptured + creativeCaptured;
   const summary = `work screenshots: ${captured} captured (${writingCaptured} writing, ${creativeCaptured} creative); ${remaining} pending remaining`;

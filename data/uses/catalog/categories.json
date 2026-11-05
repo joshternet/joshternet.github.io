@@ -1,0 +1,638 @@
+{
+  "schema_version": 1,
+  "taxonomy_version": 2,
+  "categories": [
+    {
+      "id": "editor-ide",
+      "name": "Editors",
+      "scope": "The editor or IDE a site says it uses.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "browser",
+      "name": "Browsers",
+      "scope": "The browser a site says it uses.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "programming-language",
+      "name": "Languages",
+      "scope": "A programming language a site says it writes.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "runtime",
+      "name": "Runtimes",
+      "scope": "A language runtime a site says it runs.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "database",
+      "name": "Databases",
+      "scope": "A database a site says it runs.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "git-forge",
+      "name": "Git forges",
+      "scope": "The git host a site says it uses.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "ci",
+      "name": "Continuous integration",
+      "scope": "The CI runner a site says it uses.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "terminal-emulator",
+      "name": "Terminal emulators",
+      "scope": "The terminal application a site says it uses.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "shell",
+      "name": "Shells",
+      "scope": "The shell a site says it uses.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "prompt",
+      "name": "Prompts",
+      "scope": "The shell prompt a site says it uses.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "multiplexer",
+      "name": "Multiplexers",
+      "scope": "The terminal multiplexer a site says it uses.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "password-manager",
+      "name": "Password managers",
+      "scope": "The password manager a site says it uses.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "notes",
+      "name": "Notes",
+      "scope": "The notes app a site says it uses.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "tasks",
+      "name": "Task management",
+      "scope": "The task manager a site says it uses.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "email-host",
+      "name": "Email hosting",
+      "scope": "The email host a site says it uses.",
+      "kind": "service",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "email-app",
+      "name": "Email apps",
+      "scope": "The email application a site says it uses.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "hosting",
+      "name": "Hosting",
+      "scope": "The host a site says it deploys to.",
+      "kind": "service",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "edge-cdn",
+      "name": "Edge and CDN",
+      "scope": "The edge or CDN provider a site says it uses.",
+      "kind": "service",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "dns",
+      "name": "DNS",
+      "scope": "The DNS provider a site names.",
+      "kind": "service",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "registrar",
+      "name": "Domain registration",
+      "scope": "The registrar a site says it uses.",
+      "kind": "service",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "object-storage",
+      "name": "Object storage",
+      "scope": "The object storage a site says it uses.",
+      "kind": "service",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "design",
+      "name": "Design",
+      "scope": "A design tool a site says it uses.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "writing",
+      "name": "Writing",
+      "scope": "A writing tool a site says it uses.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "font",
+      "name": "Fonts",
+      "scope": "A font a site says it uses.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "theme",
+      "name": "Themes",
+      "scope": "A theme a site says it uses.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "reading-app",
+      "name": "Reading apps",
+      "scope": "A reading application a site says it uses.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "reader-hardware",
+      "name": "Reader hardware",
+      "scope": "An e-reader device a site says it uses.",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "published-work",
+      "name": "Published works",
+      "scope": "A book, game, or other titled work a site names.",
+      "kind": "media",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "study-software",
+      "name": "Study software",
+      "scope": "Study software a site names in its own words.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "computer",
+      "name": "Computers",
+      "scope": "The computer a site says it uses. Processors, memory, and graphics cards stay with that computer.",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "phone",
+      "name": "Phones",
+      "scope": "The phone a site says it uses. An app listed with a phone stays its own software choice.",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "keyboard",
+      "name": "Keyboards",
+      "scope": "The keyboard a site says it uses. Switches stay with that keyboard.",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "display",
+      "name": "Displays",
+      "scope": "A named display a site says it uses.",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "microphone",
+      "name": "Microphones",
+      "scope": "A named microphone a site says it uses.",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "audio-interface",
+      "name": "Audio interfaces",
+      "scope": "An audio interface a site says it uses.",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "midi-interface",
+      "name": "MIDI interfaces",
+      "scope": "",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "headphones",
+      "name": "Headphones",
+      "scope": "Headphones a site says it uses.",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "in-ear-monitor",
+      "name": "In-ear monitors",
+      "scope": "",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "camera",
+      "name": "Cameras",
+      "scope": "A camera a site says it uses.",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "media-service",
+      "name": "Media services",
+      "scope": "A media service a site says it uses.",
+      "kind": "service",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "mouse",
+      "name": "Mice",
+      "scope": "",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "ai-assistant",
+      "name": "AI assistants",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "local-model",
+      "name": "Local models",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "coding-agent",
+      "name": "Coding agents",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "game",
+      "name": "Games",
+      "scope": "",
+      "kind": "media",
+      "role": "excluded",
+      "parent_id": null
+    },
+    {
+      "id": "feed-reader",
+      "name": "Feed readers",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "operating-system",
+      "name": "Operating systems",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "desktop",
+      "name": "Desktops",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "game-console",
+      "name": "Game consoles",
+      "scope": "",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "music-production",
+      "name": "Music production",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "networking",
+      "name": "Networking",
+      "scope": "",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "power",
+      "name": "Power",
+      "scope": "",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "desk",
+      "name": "Desks",
+      "scope": "",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "chair",
+      "name": "Chairs",
+      "scope": "",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "search",
+      "name": "Search",
+      "scope": "",
+      "kind": "service",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "analytics",
+      "name": "Analytics",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "monitoring",
+      "name": "Monitoring",
+      "scope": "",
+      "kind": "service",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "version-control",
+      "name": "Version control",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "dev-environment",
+      "name": "Dev environments",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "bookmark",
+      "name": "Bookmarks",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "file-sync",
+      "name": "File sync",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "api-client",
+      "name": "API clients",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "launcher",
+      "name": "Launchers",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "streaming",
+      "name": "Streaming",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "video",
+      "name": "Video",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "lighting",
+      "name": "Lighting",
+      "scope": "",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "lampshade",
+      "name": "Lampshades",
+      "scope": "",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "kvm",
+      "name": "KVM switches",
+      "scope": "",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "audio-adapter",
+      "name": "Audio adapters",
+      "scope": "",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "backup",
+      "name": "Backups",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "deploy-hook",
+      "name": "Deployment hooks",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "travel",
+      "name": "Travel",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "terminal",
+      "name": "Terminals",
+      "scope": "Combined terminal heading. Not a comparison slot.",
+      "kind": "software",
+      "role": "retired",
+      "parent_id": null
+    },
+    {
+      "id": "productivity",
+      "name": "Productivity",
+      "scope": "Combined productivity heading. Not a comparison slot.",
+      "kind": "software",
+      "role": "retired",
+      "parent_id": null
+    },
+    {
+      "id": "communication",
+      "name": "Communication",
+      "scope": "Combined communication heading. Not a comparison slot.",
+      "kind": "software",
+      "role": "retired",
+      "parent_id": null
+    },
+    {
+      "id": "audio-gear",
+      "name": "Audio gear",
+      "scope": "Combined audio heading. Not a comparison slot.",
+      "kind": "hardware",
+      "role": "retired",
+      "parent_id": null
+    },
+    {
+      "id": "cloud",
+      "name": "Cloud",
+      "scope": "Combined cloud heading. Not a comparison slot.",
+      "kind": "service",
+      "role": "retired",
+      "parent_id": null
+    },
+    {
+      "id": "self-hosted",
+      "name": "Self-hosted tools",
+      "scope": "Combined self-hosting heading. Not a comparison slot.",
+      "kind": "practice",
+      "role": "retired",
+      "parent_id": null
+    },
+    {
+      "id": "workflow",
+      "name": "Workflows and analog",
+      "scope": "Combined workflow heading. Not a comparison slot.",
+      "kind": "practice",
+      "role": "retired",
+      "parent_id": null
+    }
+  ]
+}
