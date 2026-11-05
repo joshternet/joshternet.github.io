@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-05T04:25:51.952Z",
+  "generated_at": "2026-11-05T13:20:34.501Z",
   "window_days": 14,
-  "primary_count": 8,
-  "item_count": 610,
+  "primary_count": 13,
+  "item_count": 615,
   "content_types": ["article"],
   "primary": [
     {
@@ -11,7 +11,7 @@
       "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone",
       "summary": "I spent a week having Claude Code audit my fork of LightCraft, the AI-built Rust Lightroom clone: fuzzing, crash safety, a locked control port, faster frames, and 50,000 deleted lines.",
       "published_at": "2026-11-04T00:00:00.000Z",
-      "observed_at": "2026-11-05T04:08:09.105Z",
+      "observed_at": "2026-11-05T12:57:57.086Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -64,7 +64,7 @@
       "title": "I went relatively early this morning.",
       "summary": "",
       "published_at": "2026-11-03T16:15:36.000Z",
-      "observed_at": "2026-11-05T04:08:09.105Z",
+      "observed_at": "2026-11-05T12:57:57.086Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -97,11 +97,125 @@
       "page_role": "article"
     },
     {
+      "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
+      "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters.",
+      "summary": "Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters.",
+      "published_at": "2026-11-02T22:49:28.000Z",
+      "observed_at": "2026-11-05T12:57:57.086Z",
+      "content_type": "article",
+      "language": "en-us",
+      "dir": "",
+      "site_origin": "https://artlung.com",
+      "site_title": "Joe Crawford",
+      "domain": "artlung.com",
+      "tags": [
+        {
+          "slug": "california",
+          "label": "california"
+        },
+        {
+          "slug": "general",
+          "label": "general"
+        },
+        {
+          "slug": "history",
+          "label": "history"
+        },
+        {
+          "slug": "permanence",
+          "label": "permanence"
+        },
+        {
+          "slug": "politics",
+          "label": "politics"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "california",
+          "label": "california"
+        },
+        {
+          "slug": "general",
+          "label": "general"
+        },
+        {
+          "slug": "history",
+          "label": "history"
+        },
+        {
+          "slug": "permanence",
+          "label": "permanence"
+        },
+        {
+          "slug": "politics",
+          "label": "politics"
+        }
+      ],
+      "image": "/assets/activity/posters/19530d0d3ba772a9e11292e6a5b1d25ebb3b5f82d1c5d56577a655064fcb64dd.webp",
+      "image_origin": "",
+      "source_kind": "h-entry",
+      "page_role": "article"
+    },
+    {
+      "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
+      "title": "The October Micro SaaS Challenge: A Retro",
+      "summary": "Four micro SaaS products in four weeks, built with Claude Code: what shipped, which rules broke, what it cost, and what I'd change next time.",
+      "published_at": "2026-11-02T00:00:00.000Z",
+      "observed_at": "2026-11-05T12:57:57.086Z",
+      "content_type": "article",
+      "language": "en-us",
+      "dir": "",
+      "site_origin": "https://www.joshfinnie.com",
+      "site_title": "Josh Finnie",
+      "domain": "www.joshfinnie.com",
+      "tags": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "indie-hacking",
+          "label": "indie hacking"
+        },
+        {
+          "slug": "micro-saas",
+          "label": "micro saas"
+        },
+        {
+          "slug": "side-project",
+          "label": "side projects"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "indie-hacking",
+          "label": "indie hacking"
+        },
+        {
+          "slug": "micro-saas",
+          "label": "micro saas"
+        },
+        {
+          "slug": "side-project",
+          "label": "side projects"
+        }
+      ],
+      "image": "/assets/activity/posters/8a633f9b8ae56b99128666c07592aa3e9ff0a41874f6ff1e726b4be760efe047.webp",
+      "image_origin": "",
+      "source_kind": "rss",
+      "page_role": "article"
+    },
+    {
       "url": "https://joshtronic.com/2026/11/01/open-to-work/",
       "title": "I'm Open to Work",
       "summary": "Mailshake has terminated my employment after 8+ years. In that time, I... Started as engineer #3 Moved into management thanks to an awesome CTO Ran a 10-person team across backend, frontend, QA, and support Scaled down to 2 engineers while maintaining productivity Reduced annual AWS spend by ~70% over 3 years Was always on-call and handled support escalations Ran technical due diligence on 4 acqui",
       "published_at": "2026-11-01T00:00:00.000Z",
-      "observed_at": "2026-11-05T04:08:09.105Z",
+      "observed_at": "2026-11-05T12:57:57.086Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -118,9 +232,9 @@
     {
       "url": "https://joshmuller.ca/recipes/desserts/gluten-free-chocolate-cake/",
       "title": "Gluten-Free Chocolate Cake",
-      "summary": "Nutrition assumptions and sources",
+      "summary": "A gluten-free chocolate cake made with black beans and cocoa, with estimated calories and macros.",
       "published_at": "2026-10-31T19:55:58.000Z",
-      "observed_at": "2026-11-05T04:08:09.105Z",
+      "observed_at": "2026-11-05T12:57:57.086Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -145,11 +259,40 @@
       "page_role": "article"
     },
     {
+      "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+      "title": "Healthy Weight Plan Builder",
+      "summary": "Download the Word document (.docx) A universal AI nutrition coach prompt by Span AI Solutions · Version 1.2 · October 2026 Created by Josh Müller ( @theJoshMuller ) and Kamila Buitrago ( @theKamilaBuitrago ) · spanaisolutions.com How to use it Click copy to copy the text in the box. Paste it into any AI chat: Claude, ChatGPT, Gemini, DeepSeek, or another one. Press send. The AI will ask you some e",
+      "published_at": "2026-10-30T18:19:07.000Z",
+      "observed_at": "2026-11-05T12:57:57.086Z",
+      "content_type": "article",
+      "language": "en",
+      "dir": "",
+      "site_origin": "https://joshmuller.ca",
+      "site_title": "Josh Müller",
+      "domain": "joshmuller.ca",
+      "tags": [
+        {
+          "slug": "docs",
+          "label": "docs"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "docs",
+          "label": "docs"
+        }
+      ],
+      "image": "/assets/activity/posters/3efa5d87693e9f8d14e4c04bb1c1768ed6b9fda02aca1c7395fd28694dbde8f6.webp",
+      "image_origin": "",
+      "source_kind": "rss",
+      "page_role": "documentation"
+    },
+    {
       "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
       "title": "Worth Wandering: Radio Aporee",
       "summary": "A worldwide collection of field recordings that lets you explore the sounds of cities, forests, rivers, train stations and ordinary places, with experimental radio projects that turn listening into an entirely different way of experiencing the world.",
       "published_at": "2026-10-30T14:00:00.000Z",
-      "observed_at": "2026-11-05T04:08:09.105Z",
+      "observed_at": "2026-11-05T12:57:57.086Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -176,9 +319,9 @@
     {
       "url": "https://joshgr.com/writing/how-wizardly-words-invents-words/",
       "title": "How Wizardly Words Invents Words",
-      "summary": "It takes what we know and infers new words between the lines",
+      "summary": "I wanted to make a random word generator to help write stories and think new thoughts. After all, naming is hard . What’s a convincing name for a new city? Or a person? Or a food?",
       "published_at": "2026-10-30T00:00:00.000Z",
-      "observed_at": "2026-11-05T04:08:09.105Z",
+      "observed_at": "2026-11-05T12:57:57.086Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -193,11 +336,56 @@
       "page_role": "unknown"
     },
     {
+      "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
+      "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built",
+      "summary": "Knowing how to build software is not the same as knowing what should be built. On craft, judgment, architecture, and why AI makes that distinction sharper.",
+      "published_at": "2026-10-28T17:00:00.000Z",
+      "observed_at": "2026-11-05T12:57:57.086Z",
+      "content_type": "article",
+      "language": "en",
+      "dir": "",
+      "site_origin": "https://joshuamorris.info",
+      "site_title": "Joshua Morris",
+      "domain": "joshuamorris.info",
+      "tags": [
+        {
+          "slug": "architecture",
+          "label": "architecture"
+        },
+        {
+          "slug": "career",
+          "label": "career"
+        },
+        {
+          "slug": "craftsmanship",
+          "label": "craftsmanship"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "architecture",
+          "label": "architecture"
+        },
+        {
+          "slug": "career",
+          "label": "career"
+        },
+        {
+          "slug": "craftsmanship",
+          "label": "craftsmanship"
+        }
+      ],
+      "image": "/assets/activity/posters/5782a3afa189c4d536bc5a68c1ded2379e0217517c2177af9703303bb94d0f7f.webp",
+      "image_origin": "",
+      "source_kind": "atom",
+      "page_role": "article"
+    },
+    {
       "url": "https://joshghent.com/enterprise-sales-teams/",
       "title": "Enterprise sales teams, please, I beg you, stop",
       "summary": "I asked for a price on a few extra seats of software we already pay for. Two days and a pile of irrelevant questions later, I got one.",
       "published_at": "2026-10-28T00:00:00.000Z",
-      "observed_at": "2026-11-05T04:08:09.105Z",
+      "observed_at": "2026-11-05T12:57:57.086Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -212,24 +400,42 @@
       "page_role": "article"
     },
     {
-      "url": "https://joshuamorris.info/experiments/weird-web-october-2026/skeuomorphism/",
-      "title": "Skeuomorphism",
-      "summary": "Operate a Radio Shack Armatron and move objects around its tabletop.",
-      "published_at": "2026-10-27T00:00:00.000Z",
-      "observed_at": "2026-11-05T04:08:09.105Z",
+      "url": "https://joshghent.com/php2shell-overreaction/",
+      "title": "Last week was terrible. It didn't have to be",
+      "summary": "PHP2Shell scored a CVSS 9.2 and sent governments and ops teams into a panic. A week later, nobody has shown it working end to end, and the AI story behind it doesn't hold up.",
+      "published_at": "2026-10-28T00:00:00.000Z",
+      "observed_at": "2026-11-05T12:57:57.086Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
-      "site_origin": "https://joshuamorris.info",
-      "site_title": "Joshua Morris",
-      "domain": "joshuamorris.info",
+      "site_origin": "https://joshghent.com",
+      "site_title": "Josh Ghent",
+      "domain": "joshghent.com",
       "tags": [],
       "neighborhoods": [],
-      "image": "/assets/activity/posters/3bc6494e20c2a676db0527f19fc245003560df0c80ca55d657ea74fcf3ed0380.webp",
-      "image_origin": "",
+      "image": "https://v1.screenshot.11ty.dev/https%3A%2F%2Fjoshghent.com%2Fsocial%2Fphp2shell-overreaction%2F/opengraph/_1793269302166",
+      "image_origin": "https://v1.screenshot.11ty.dev",
       "source_kind": "atom",
-      "page_role": "unknown",
-      "kind": "project"
+      "page_role": "article"
+    },
+    {
+      "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
+      "title": "Learning a New Tech Stack with an LLM",
+      "summary": "While I mentioned a few weeks back that I'm now recovering from AI Psychosis , that doesn't mean I've given up on the technology completely. I'm writing more emails, and engaging with human beings as much as I can, and that part's been great. I still use agents as a glorified typewriter to generate code, and still very much get my hands in the dirt and sling code myself. I've also gotten quite obs",
+      "published_at": "2026-10-26T00:00:00.000Z",
+      "observed_at": "2026-11-05T12:57:57.086Z",
+      "content_type": "article",
+      "language": "en",
+      "dir": "",
+      "site_origin": "https://joshtronic.com",
+      "site_title": "Josh Sherman",
+      "domain": "joshtronic.com",
+      "tags": [],
+      "neighborhoods": [],
+      "image": "/assets/activity/posters/bb76906ec11e24b4588f9e61e3618a22ae7b736fcecc8852aeb11f088c5d1850.webp",
+      "image_origin": "",
+      "source_kind": "rss",
+      "page_role": "unknown"
     }
   ]
 }
