@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T23:41:15.686Z",
+  "generated_at": "2026-11-05T04:25:51.952Z",
   "overlap_count": 117,
   "pairs": [
     {
@@ -274,10 +274,6 @@
           "label": "image"
         },
         {
-          "slug": "internet",
-          "label": "Internet"
-        },
-        {
           "slug": "javascript",
           "label": "javascript"
         },
@@ -529,10 +525,6 @@
       "a": "https://joshbeard.com",
       "b": "https://joshuamorris.info",
       "topics": [
-        {
-          "slug": "album",
-          "label": "albums"
-        },
         {
           "slug": "october",
           "label": "october"
@@ -1304,10 +1296,6 @@
           "label": "independent"
         },
         {
-          "slug": "internet",
-          "label": "Internet"
-        },
-        {
           "slug": "rule",
           "label": "rules"
         },
@@ -1792,10 +1780,6 @@
         {
           "slug": "game",
           "label": "game"
-        },
-        {
-          "slug": "internet",
-          "label": "Internet"
         },
         {
           "slug": "live",
@@ -2773,17 +2757,6 @@
                 {
                   "url": "https://joshternet.org/join/",
                   "title": "Join"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-                  "title": "Analog"
                 }
               ]
             }
@@ -4040,33 +4013,6 @@
     {
       "origin": "https://joshbeard.com",
       "topics": [
-        {
-          "slug": "album",
-          "label": "albums",
-          "articles": [
-            {
-              "url": "https://joshbeard.com/photos/",
-              "title": "Photos"
-            },
-            {
-              "url": "https://joshbeard.com/photos/all/",
-              "title": "View All Photos"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-                  "title": "Analog"
-                }
-              ]
-            }
-          ]
-        },
         {
           "slug": "beautiful",
           "label": "beautiful",
@@ -6915,10 +6861,6 @@
               "title": "Joshua Morris",
               "articles": [
                 {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-                  "title": "Analog"
-                },
-                {
                   "url": "https://joshuamorris.info/experiments/model-viewer/",
                   "title": "Model viewer Three Trion figures in matching stages — land clearing, voxel valley, underwater — with quiet orbit controls. Archived from a July 2015 CodePen."
                 }
@@ -7227,17 +7169,6 @@
                 {
                   "url": "https://joshurbandavis.com/experiments/internet-is-haunted/index.html",
                   "title": "03 the internet is haunted What's left of a link after the page is gone?"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-                  "title": "Analog"
                 }
               ]
             }
@@ -9736,33 +9667,6 @@
           ]
         },
         {
-          "slug": "album",
-          "label": "albums",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-              "title": "Analog"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshbeard.com",
-              "domain": "joshbeard.com",
-              "title": "Josh Beard",
-              "articles": [
-                {
-                  "url": "https://joshbeard.com/photos/",
-                  "title": "Photos"
-                },
-                {
-                  "url": "https://joshbeard.com/photos/all/",
-                  "title": "View All Photos"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "art",
           "label": "art",
           "articles": [
@@ -10211,55 +10115,6 @@
           ]
         },
         {
-          "slug": "internet",
-          "label": "Internet",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-              "title": "Analog"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/archive/portfolio/dhtml/",
-                  "title": "A year later the buzzword was “Dynamic HTML.” Netscape and Internet Explorer were hot to help developers make the web even more interactive. Preferably using only their browser and not the one from that other company."
-                },
-                {
-                  "url": "https://artlung.com/videos/",
-                  "title": "artlung.com/videos/"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshurbandavis.com",
-              "domain": "joshurbandavis.com",
-              "title": "Josh Urban Davis",
-              "articles": [
-                {
-                  "url": "https://joshurbandavis.com/experiments/internet-is-haunted/index.html",
-                  "title": "03 the internet is haunted What's left of a link after the page is gone?"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshternet.org",
-              "domain": "joshternet.org",
-              "title": "Joshternet",
-              "articles": [
-                {
-                  "url": "https://joshternet.org/join/",
-                  "title": "Join"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "javascript",
           "label": "javascript",
           "articles": [
@@ -10370,10 +10225,6 @@
           "slug": "model",
           "label": "models",
           "articles": [
-            {
-              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-              "title": "Analog"
-            },
             {
               "url": "https://joshuamorris.info/experiments/model-viewer/",
               "title": "Model viewer Three Trion figures in matching stages — land clearing, voxel valley, underwater — with quiet orbit controls. Archived from a July 2015 CodePen."
@@ -12419,17 +12270,6 @@
                 {
                   "url": "https://joshternet.org/join/",
                   "title": "Join"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-                  "title": "Analog"
                 }
               ]
             }
