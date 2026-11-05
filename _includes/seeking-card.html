@@ -1,0 +1,87 @@
+{% comment %}
+  Goal: One Seeking request with publisher wording, site attribution, optional
+  categories, and a source-linked "Read the request" action. Never invents a
+  fragment or substitutes a contact destination for the source page.
+{% endcomment %}
+{% assign request = include.request %}
+{% assign site_title = include.site_title | default: '' | strip %}
+{% assign site_domain = include.site_domain | default: '' | strip %}
+{% assign request_title = request.title | default: '' | strip %}
+{% assign request_description = request.description | default: '' | strip %}
+{% assign source_url = request.source_url | default: '' | strip %}
+{% assign categories = request.categories | default: empty %}
+{% assign request_published = request.request_published | default: '' | strip %}
+{% assign request_updated = request.request_updated | default: '' | strip %}
+
+<article
+  class="seeking-card h-listing"
+  {% if include.language and include.language != '' %}
+    lang="{{ include.language | escape }}"
+  {% endif %}
+  {% if categories.size > 0 %}
+    data-seeking-categories="{{ categories | join: ',' | downcase | escape }}"
+  {% else %}
+    data-seeking-categories=""
+  {% endif %}
+>
+  <p class="p-action visually-hidden">wanted</p>
+  {% if request_title != '' %}
+    <h3 class="seeking-card__title p-name">{{ request_title | escape }}</h3>
+    <div class="seeking-card__description e-description">
+      <p>{{ request_description | escape }}</p>
+    </div>
+  {% else %}
+    <div class="seeking-card__description e-description seeking-card__description--lead">
+      <p>{{ request_description | escape }}</p>
+    </div>
+  {% endif %}
+
+  <p class="seeking-card__publisher">
+    <span class="seeking-card__site">{{ site_title | escape }}</span>
+    {% if site_domain != '' %}
+      <span class="seeking-card__domain">{{ site_domain | escape }}</span>
+    {% endif %}
+  </p>
+
+  {% if categories.size > 0 %}
+    <ul class="seeking-card__categories list-row" aria-label="Topics">
+      {% for category in categories %}
+        <li>
+          <span class="p-category">{{ category | escape }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if request_published != '' or request_updated != '' %}
+    <p class="seeking-card__request-dates">
+      {% if request_published != '' %}
+        <span>
+          Published
+          <time datetime="{{ request_published | escape }}">{{ request_published | escape }}</time>
+        </span>
+      {% endif %}
+      {% if request_updated != '' %}
+        <span>
+          Updated
+          <time datetime="{{ request_updated | escape }}">{{ request_updated | escape }}</time>
+        </span>
+      {% endif %}
+    </p>
+  {% endif %}
+
+  {% if source_url != '' %}
+    {% include outbound-href.html url=source_url %}
+    <p class="seeking-card__action">
+      <a
+        class="seeking-card__link u-url"
+        href="{{ outbound_href | escape }}"
+        target="_blank"
+        rel="noopener"
+      >
+        Read the request
+        <span class="visually-hidden"> (opens on the publisher’s site)</span>
+      </a>
+    </p>
+  {% endif %}
+</article>

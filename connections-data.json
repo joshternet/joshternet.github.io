@@ -3,9 +3,6 @@ layout: null
 permalink: /connections/data.json
 ---
 {% assign network_sites = site.data.network %}
-{% if jekyll.environment == 'development' %}
-  {% assign network_sites = network_sites | concat: site.data.network_dev %}
-{% endif %}
 {% assign connection_edges = site.data.connections.edges | default: empty %}
 {
   "participants": [

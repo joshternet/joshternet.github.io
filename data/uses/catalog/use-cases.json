@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "use_cases": [
+    { "id": "programming", "name": "Programming" },
+    { "id": "writing", "name": "Writing" },
+    { "id": "reading", "name": "Reading" },
+    { "id": "publishing", "name": "Publishing" },
+    { "id": "collaboration", "name": "Collaboration" },
+    { "id": "photography", "name": "Photography" },
+    { "id": "illustration", "name": "Illustration" },
+    { "id": "design", "name": "Design" },
+    { "id": "music-making", "name": "Music making" },
+    { "id": "gaming", "name": "Gaming" },
+    { "id": "home-automation", "name": "Home automation" },
+    { "id": "self-hosting", "name": "Self-hosting" },
+    { "id": "privacy-security", "name": "Privacy and security" },
+    { "id": "planning", "name": "Planning" },
+    { "id": "learning", "name": "Learning" },
+    { "id": "health-fitness", "name": "Health and fitness" },
+    { "id": "everyday-carry", "name": "Everyday carry" }
+  ]
+}

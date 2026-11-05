@@ -22,6 +22,7 @@ import {
   isCreativeCreditSourcePage,
   isHubDirectoryLink,
   isHubDirectoryPage,
+  isHubParticipantOrigin,
   isParticipationDeclarationPath,
   originsFromLinkUrls,
   relationForPage,
@@ -234,7 +235,7 @@ test("hub activity-card author links are not connection evidence", () => {
   );
 });
 
-test("hub homepage editorial links to participants are kept", () => {
+test("hub homepage links are not peer connections", () => {
   const edges = connectionObservations({
     sourceOrigin: "https://joshternet.org",
     pageUrl: "https://joshternet.org/",
@@ -249,9 +250,80 @@ test("hub homepage editorial links to participants are kept", () => {
     participantOrigins: ["https://joshternet.org", "https://b.example"],
   });
 
+  assert.deepEqual(edges, []);
+});
+
+test("a hub directory page is not evidence even from a member record", () => {
+  const edges = connectionObservations({
+    sourceOrigin: "https://a.example",
+    pageUrl: "https://a.example/",
+    links: [
+      {
+        href: "https://b.example/",
+        text: "B",
+        page: "https://joshternet.org/network/",
+      },
+    ],
+    participantOrigins: ["https://a.example", "https://b.example"],
+  });
+
+  assert.deepEqual(edges, []);
+});
+
+test("member links to the hub are not peer connections", () => {
+  const edges = connectionObservations({
+    sourceOrigin: "https://a.example",
+    pageUrl: "https://a.example/",
+    links: [
+      { href: "https://joshternet.org/", text: "The Joshternet" },
+      { href: "https://www.joshternet.org/about/", text: "About" },
+      { href: "https://b.example/", text: "B" },
+    ],
+    participantOrigins: [
+      "https://a.example",
+      "https://b.example",
+      "https://joshternet.org",
+      "https://www.joshternet.org",
+    ],
+  });
+
   assert.equal(edges.length, 1);
-  assert.equal(edges[0].relation, "homepage-link");
   assert.equal(edges[0].to, "https://b.example");
+});
+
+test("blogroll observations omit hub endpoints", () => {
+  const edges = blogrollConnectionObservations([
+    {
+      from: "https://a.example",
+      to: "https://joshternet.org",
+      blogroll: "https://a.example/blogroll.opml",
+    },
+    {
+      from: "https://www.joshternet.org",
+      to: "https://b.example",
+      blogroll: "https://joshternet.org/links.opml",
+    },
+    {
+      from: "https://a.example",
+      to: "https://b.example",
+      blogroll: "https://a.example/blogroll.opml",
+    },
+  ]);
+
+  assert.equal(edges.length, 1);
+  assert.equal(edges[0].to, "https://b.example");
+});
+
+test("isHubParticipantOrigin matches the hub host only", () => {
+  assert.equal(isHubParticipantOrigin("https://joshternet.org"), true);
+  assert.equal(
+    isHubParticipantOrigin("https://www.joshternet.org/network/"),
+    true,
+  );
+  assert.equal(isHubParticipantOrigin("https://b.example"), false);
+  assert.equal(isHubParticipantOrigin(""), false);
+  assert.equal(isHubParticipantOrigin("not a url"), false);
+  assert.equal(isHubParticipantOrigin(null), false);
 });
 
 test("relative hrefs resolve against the observation page", () => {
@@ -302,11 +374,10 @@ test("minified /site/ HTML yields member content-links and drops declaration", (
     }),
   );
 
-  assert.equal(edges.length, 2);
+  assert.equal(edges.length, 1);
   assert.equal(edges[0].from, "https://joshbeard.com");
-  assert.equal(edges[0].to, "https://joshternet.org");
+  assert.equal(edges[0].to, "https://joshuamorris.info");
   assert.equal(edges[0].relation, "content-link");
-  assert.equal(edges[1].to, "https://joshuamorris.info");
 });
 
 test("friendConnectionObservations is disabled", () => {
@@ -942,13 +1013,28 @@ test("carryForwardConnectionEdges: declaration href is dropped", () => {
   assert.deepEqual(edges, []);
 });
 
+test("carryForwardConnectionEdges: hub endpoint is dropped", () => {
+  const edges = carryForwardConnectionEdges(
+    [
+      {
+        from: "https://a.example",
+        to: "https://www.joshternet.org",
+        href: "https://www.joshternet.org/",
+        page: "https://a.example/",
+      },
+    ],
+    "https://a.example",
+  );
+  assert.deepEqual(edges, []);
+});
+
 test("carryForwardConnectionEdges: hub directory page is dropped", () => {
   const edges = carryForwardConnectionEdges(
     [
       {
         from: "https://a.example",
-        to: "https://joshternet.org",
-        href: "https://joshternet.org/",
+        to: "https://b.example",
+        href: "https://b.example/",
         page: "https://joshternet.org/network",
       },
     ],
@@ -1730,36 +1816,47 @@ test("buildHomepageConnectionsDocument aggregates raw observations", () => {
     edges: [
       {
         from: "https://artlung.com",
-        to: "https://joshternet.org",
+        to: "https://joshbeard.com",
         relation: "homepage-link",
         directed: true,
         source: "content",
-        href: "https://joshternet.org/",
-        text: "The Joshternet",
+        href: "https://joshbeard.com/",
+        text: "Josh Beard",
         rel: [],
         page: "https://artlung.com/",
       },
       {
         from: "https://artlung.com",
-        to: "https://joshternet.org",
+        to: "https://joshbeard.com",
         relation: "homepage-link",
         directed: true,
         source: "content",
-        href: "https://joshternet.org/",
-        text: "The Joshternet",
+        href: "https://joshbeard.com/",
+        text: "Josh Beard",
         rel: [],
         page: "https://artlung.com/",
       },
       {
         from: "https://artlung.com",
-        to: "https://joshternet.org",
+        to: "https://joshbeard.com",
         relation: "content-link",
         directed: true,
         source: "content",
+        href: "https://joshbeard.com/",
+        text: "Josh Beard",
+        rel: [],
+        page: "https://artlung.com/links/",
+      },
+      {
+        from: "https://artlung.com",
+        to: "https://joshternet.org",
+        relation: "homepage-link",
+        directed: true,
+        source: "content",
         href: "https://joshternet.org/",
         text: "The Joshternet",
         rel: [],
-        page: "https://artlung.com/links/",
+        page: "https://artlung.com/",
       },
     ],
   });
@@ -1768,6 +1865,10 @@ test("buildHomepageConnectionsDocument aggregates raw observations", () => {
   assert.equal(doc.generated_at, "2026-11-02T00:00:00.000Z");
   assert.equal(doc.edge_count, 2);
   assert.equal(doc.edges.length, 2);
+  assert.equal(
+    doc.edges.some((edge) => edge.to === "https://joshternet.org"),
+    false,
+  );
   assert.equal(homepageConnectionObservationsFromDocument(doc).length, 2);
   assert.equal(homepageConnectionObservationsFromDocument({}).length, 0);
 });
@@ -1779,12 +1880,12 @@ test("homepage edges merge into aggregateConnectionEdges with crawl edges", () =
       edges: [
         {
           from: "https://artlung.com",
-          to: "https://joshternet.org",
+          to: "https://joshbeard.com",
           relation: "homepage-link",
           directed: true,
           source: "content",
-          href: "https://joshternet.org/",
-          text: "The Joshternet",
+          href: "https://joshbeard.com/",
+          text: "Josh Beard",
           rel: [],
           page: "https://artlung.com/",
         },
@@ -1811,8 +1912,12 @@ test("homepage edges merge into aggregateConnectionEdges with crawl edges", () =
     merged.some(
       (edge) =>
         edge.from === "https://artlung.com" &&
-        edge.to === "https://joshternet.org",
+        edge.to === "https://joshbeard.com",
     ),
+  );
+  assert.equal(
+    merged.some((edge) => edge.to === "https://joshternet.org"),
+    false,
   );
   assert.ok(
     merged.some(

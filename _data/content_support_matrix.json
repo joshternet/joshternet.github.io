@@ -400,6 +400,30 @@
       "chapter_path": "/implement/content/uses/"
     },
     {
+      "id": "seeking",
+      "name": "Seeking pages",
+      "normative_urls": ["https://joshuamorris.info/seeking/docs/"],
+      "maturity": "Community convention",
+      "status": "partial",
+      "properties_consumed": [
+        "h-listing p-action wanted",
+        "e-description",
+        "optional p-category",
+        "optional p-name",
+        "optional nested p-item",
+        "page-level update date"
+      ],
+      "destinations": ["Seeking explorer"],
+      "source_files": [
+        "scripts/nlp/seeking.mjs",
+        "scripts/nlp/page-role.mjs",
+        "scripts/nlp/sync.mjs"
+      ],
+      "limitations": "Optional. No /.well-known/josh field. Request bodies are not committed with network sync. Live excerpts await a non-commit publish path. Categories stay local to Seeking.",
+      "verified_date": "2026-11-04",
+      "chapter_path": "/implement/content/seeking/"
+    },
+    {
       "id": "explore",
       "name": "Explore projections",
       "normative_urls": [],

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-11-05T07:12:25.789Z",
+  "periods": [
+    {
+      "id": "2026-11",
+      "granularity": "month",
+      "complete": false
+    },
+    {
+      "id": "2026-Q4",
+      "granularity": "quarter",
+      "complete": false
+    },
+    {
+      "id": "2026",
+      "granularity": "year",
+      "complete": false
+    },
+    {
+      "id": "all-time",
+      "granularity": "all-time",
+      "complete": false
+    }
+  ],
+  "early_sample": false,
+  "trend_ready": false,
+  "extractor_version": 3,
+  "snapshot_id": "3.2.sha256:839b8",
+  "endpoints": {
+    "members": "/assets/data/uses/members.json",
+    "tools": "/assets/data/uses/tools.json",
+    "periods": "/assets/data/uses/periods/",
+    "graph": "/assets/data/uses/graph/"
+  }
+}

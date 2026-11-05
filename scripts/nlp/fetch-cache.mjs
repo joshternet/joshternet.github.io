@@ -1,9 +1,11 @@
 /**
  * Goal & Constraints:
  * Conditional HTTP fetch cache for crawl/gather. Bodies live under
- * `.tmp/http-cache/` (gitignored); never committed. Entries older than
- * CONTENT_CACHE_DAYS are evicted at prune time. Supports If-None-Match /
- * If-Modified-Since and body sha reuse.
+ * `.tmp/http-cache/` (gitignored); never committed. The first complete body
+ * for a URL is kept as an original backup and is never overwritten or pruned.
+ * Later crawls update the current body. Current entries older than
+ * CONTENT_CACHE_DAYS lose their validators so the next crawl refetches.
+ * Supports If-None-Match / If-Modified-Since and body sha reuse.
  */
 
 import { createHash } from "node:crypto";
@@ -25,6 +27,10 @@ const META_NAME = "meta.json";
  *   contentType?: string,
  *   cachedAt: string,
  *   bodyFile: string,
+ *   bodyComplete?: boolean,
+ *   originalBodyFile?: string,
+ *   originalBodySha256?: string,
+ *   originalCachedAt?: string,
  * }} FetchCacheEntry
  */
 
@@ -35,6 +41,26 @@ const META_NAME = "meta.json";
  *   bypass: boolean,
  * }} FetchCache
  */
+
+/**
+ * Stable body filename for one URL.
+ * @param {string} url
+ * @param {boolean} [original]
+ * @returns {string}
+ */
+function bodyFileForUrl(url, original = false) {
+  const hash = createHash("sha256").update(url).digest("hex").slice(0, 32);
+  return original ? `${hash}.original.body` : `${hash}.body`;
+}
+
+/**
+ * Keeps a stored timestamp and drops anything else.
+ * @param {unknown} value
+ * @returns {string}
+ */
+function dated(value) {
+  return typeof value === "string" && value ? value : "";
+}
 
 /**
  * SHA-256 hex of a UTF-8 body.
@@ -105,7 +131,9 @@ export async function openFetchCache(root = DEFAULT_ROOT, options = {}) {
 }
 
 /**
- * Drops entries whose cachedAt is older than cacheDays.
+ * Drops current entries whose cachedAt is older than cacheDays.
+ * An entry with an original capture stays, and its validators are cleared
+ * so the next crawl fetches an update. The original file is left on disk.
  * @param {FetchCache} cache
  * @param {Date | string} now
  * @param {number} [cacheDays]
@@ -122,15 +150,23 @@ export function pruneFetchCache(cache, now, cacheDays = CONTENT_CACHE_DAYS) {
 
   for (const [url, entry] of cache.entries) {
     const cachedMs = Date.parse(String(entry.cachedAt || ""));
-
-    if (
+    const stale =
       !Number.isFinite(nowMs) ||
       !Number.isFinite(cachedMs) ||
-      nowMs - cachedMs > windowMs
-    ) {
-      cache.entries.delete(url);
-      evicted += 1;
+      nowMs - cachedMs > windowMs;
+
+    if (!stale) {
+      continue;
     }
+
+    if (typeof entry.originalBodyFile === "string" && entry.originalBodyFile) {
+      delete entry.etag;
+      delete entry.lastModified;
+      continue;
+    }
+
+    cache.entries.delete(url);
+    evicted += 1;
   }
 
   return evicted;
@@ -190,7 +226,121 @@ export async function readFetchCacheBody(cache, url) {
 }
 
 /**
+ * Reads the frozen original capture. A missing backup does not drop the
+ * current entry.
+ * @param {FetchCache} cache
+ * @param {string} url
+ * @returns {Promise<{ body: string, entry: FetchCacheEntry } | null>}
+ */
+export async function readOriginalFetchCacheBody(cache, url) {
+  if (!cache || cache.bypass || typeof url !== "string" || !url) {
+    return null;
+  }
+
+  const entry = cache.entries.get(url);
+
+  if (
+    !entry ||
+    typeof entry.originalBodyFile !== "string" ||
+    !entry.originalBodyFile
+  ) {
+    return null;
+  }
+
+  const body = await readIfPresent(
+    path.join(cache.root, entry.originalBodyFile),
+  );
+
+  if (body == null) {
+    return null;
+  }
+
+  return { body, entry };
+}
+
+/**
+ * Reads a file when it exists.
+ * @param {string} filePath
+ * @returns {Promise<string | null>}
+ */
+async function readIfPresent(filePath) {
+  try {
+    return await fs.readFile(filePath, "utf8");
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Freezes the first complete body. Later writes must not replace it.
+ * @param {FetchCache} cache
+ * @param {FetchCacheEntry | undefined} prior
+ * @param {string} url
+ * @param {string} body
+ * @param {string} cachedAt
+ * @param {boolean} complete
+ * @returns {Promise<{ bodyFile: string, bodySha256: string, cachedAt: string } | null>}
+ */
+async function freezeOriginal(cache, prior, url, body, cachedAt, complete) {
+  if (
+    prior &&
+    typeof prior.originalBodyFile === "string" &&
+    prior.originalBodyFile &&
+    typeof prior.originalBodySha256 === "string" &&
+    prior.originalBodySha256
+  ) {
+    return {
+      bodyFile: prior.originalBodyFile,
+      bodySha256: prior.originalBodySha256,
+      cachedAt:
+        dated(prior.originalCachedAt) || dated(prior.cachedAt) || cachedAt,
+    };
+  }
+
+  if (!complete) {
+    return null;
+  }
+
+  const originalFile = bodyFileForUrl(url, true);
+  const originalPath = path.join(cache.root, originalFile);
+  const onDisk = await readIfPresent(originalPath);
+
+  if (onDisk != null) {
+    return {
+      bodyFile: originalFile,
+      bodySha256: bodySha256(onDisk),
+      cachedAt:
+        dated(prior?.originalCachedAt) || dated(prior?.cachedAt) || cachedAt,
+    };
+  }
+
+  let frozen = body;
+  let frozenAt = cachedAt;
+
+  if (prior && typeof prior.bodyFile === "string" && prior.bodyFile) {
+    const previousBody = await readIfPresent(
+      path.join(cache.root, prior.bodyFile),
+    );
+
+    if (previousBody != null) {
+      frozen = previousBody;
+      frozenAt = dated(prior.cachedAt) || cachedAt;
+    }
+  }
+
+  await fs.writeFile(originalPath, frozen, "utf8");
+
+  return {
+    bodyFile: originalFile,
+    bodySha256: bodySha256(frozen),
+    cachedAt: frozenAt,
+  };
+}
+
+/**
  * Stores a successful fetch in the cache.
+ * A complete body freezes the original capture the first time. Updates replace
+ * only the current body.
  * @param {FetchCache} cache
  * @param {{
  *   url: string,
@@ -199,6 +349,7 @@ export async function readFetchCacheBody(cache, url) {
  *   etag?: string | null,
  *   lastModified?: string | null,
  *   cachedAt?: string,
+ *   bodyComplete?: boolean,
  * }} input
  * @returns {Promise<FetchCacheEntry | null>}
  */
@@ -212,20 +363,43 @@ export async function writeFetchCacheEntry(cache, input) {
   }
 
   const body = String(input.body == null ? "" : input.body);
-  const bodyFile = `${createHash("sha256").update(input.url).digest("hex").slice(0, 32)}.body`;
+  const sha = bodySha256(body);
+  const cachedAt =
+    typeof input.cachedAt === "string" && input.cachedAt
+      ? input.cachedAt
+      : new Date().toISOString();
+  const prior = cache.entries.get(input.url);
   await fs.mkdir(cache.root, { recursive: true });
-  await fs.writeFile(path.join(cache.root, bodyFile), body, "utf8");
+  const original = await freezeOriginal(
+    cache,
+    prior,
+    input.url,
+    body,
+    cachedAt,
+    input.bodyComplete === true,
+  );
+  const bodyFile =
+    original && original.bodySha256 === sha
+      ? original.bodyFile
+      : bodyFileForUrl(input.url);
+
+  if (!original || original.bodySha256 !== sha) {
+    await fs.writeFile(path.join(cache.root, bodyFile), body, "utf8");
+  }
 
   /** @type {FetchCacheEntry} */
   const entry = {
     url: input.url,
-    bodySha256: bodySha256(body),
+    bodySha256: sha,
     bodyFile,
-    cachedAt:
-      typeof input.cachedAt === "string" && input.cachedAt
-        ? input.cachedAt
-        : new Date().toISOString(),
+    cachedAt,
   };
+
+  if (original) {
+    entry.originalBodyFile = original.bodyFile;
+    entry.originalBodySha256 = original.bodySha256;
+    entry.originalCachedAt = original.cachedAt;
+  }
 
   if (typeof input.contentType === "string" && input.contentType) {
     entry.contentType = input.contentType;
@@ -237,6 +411,10 @@ export async function writeFetchCacheEntry(cache, input) {
 
   if (typeof input.lastModified === "string" && input.lastModified) {
     entry.lastModified = input.lastModified;
+  }
+
+  if (input.bodyComplete === true) {
+    entry.bodyComplete = true;
   }
 
   cache.entries.set(input.url, entry);

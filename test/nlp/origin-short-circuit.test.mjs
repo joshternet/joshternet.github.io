@@ -114,6 +114,7 @@ test("decideOriginShortCircuit short-circuits when feeds unchanged and sitemap 3
       contentType: "application/xml",
       etag: '"s"',
       cachedAt: new Date().toISOString(),
+      bodyComplete: true,
     });
 
     const result = await decideOriginShortCircuit({

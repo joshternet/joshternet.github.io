@@ -662,9 +662,7 @@ test("hub homepage activity author links are not NLP connection evidence", () =>
     ],
   });
 
-  assert.equal(edges.length, 1);
-  assert.equal(edges[0].to, "https://b.example");
-  assert.equal(edges[0].relation, "homepage-link");
+  assert.equal(edges.length, 0);
 });
 
 test("normalizeExtractedText strips entity leftovers", () => {

@@ -431,7 +431,9 @@ test("subjectsFromFeeds: failed fetch is skipped without crashing", async () => 
     globalThis.fetch = async () => {
       throw new Error("simulated network error");
     };
-    const result = await subjectsFromFeeds([{ url: feedUrl }], cache);
+    const result = await subjectsFromFeeds([{ url: feedUrl }], cache, {
+      robotsGate: { allows: async () => true },
+    });
     assert.deepEqual(result.subjects, []);
   } finally {
     restore();
@@ -544,7 +546,9 @@ test("subjectsFromFeeds: JSON body with no items array fires ': []' (L203)", asy
       }
       throw new Error(`mock-fetch: no handler for ${url}`);
     };
-    const result = await subjectsFromFeeds([{ url: feedUrl }], cache);
+    const result = await subjectsFromFeeds([{ url: feedUrl }], cache, {
+      robotsGate: { allows: async () => true },
+    });
     assert.deepEqual(result.subjects, []);
     assert.deepEqual(result.entryUrls, []);
   } finally {

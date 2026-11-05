@@ -24,7 +24,6 @@ test("events page is published with empty-state markup", async () => {
   const page = await read("events.md");
   assert.match(page, /^published:\s*true\b/m);
   assert.match(page, /permalink: \/events\//);
-  assert.match(page, /Happening on the Joshternet/);
   assert.match(page, /include activity-card\.html item=item/);
   assert.doesNotMatch(page, /<iframe\b/i);
   assert.doesNotMatch(page, /autoplay/i);

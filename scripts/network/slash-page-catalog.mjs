@@ -386,6 +386,12 @@ export const SLASH_PAGE_CATALOG = [
     category: "identity",
     uses: ["site-info"],
   }),
+  entry("/seeking/", {
+    purpose: "Requests for help, collaborators, or hard-to-find things",
+    category: "community",
+    uses: ["content"],
+    extraction: "index",
+  }),
   entry("/verify/", {
     purpose: "Prove online identities",
     category: "identity",
@@ -404,6 +410,7 @@ export const SLASH_PAGE_CATALOG = [
     uses: ["site-info", "content"],
   }),
   entry("/wish/", {
+    aliases: ["/wish-list/", "/wishlist/"],
     purpose: "Wishlist",
     category: "identity",
     uses: ["site-info"],

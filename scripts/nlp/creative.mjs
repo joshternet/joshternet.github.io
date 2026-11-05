@@ -13,11 +13,84 @@ import { publishedAtFromPageHtml } from "./content.mjs";
 import { buildTopicEvidence } from "./evidence.mjs";
 import {
   decodeHrefForParse,
+  firstMeaningfulParagraphFromHtml,
+  htmlWithoutEmbeddedScripts,
+  isJsTemplateHref,
   jsonLdObjects,
   normalizeExtractedText,
   normalizeLanguageTag,
   schemaTypesFromHtml,
+  shareDescriptionFromHtml,
 } from "./text.mjs";
+
+/** Index/homepage chrome blurbs that are not work descriptions. */
+const CHROME_SUMMARY_RE =
+  /^(elsewhere|read more|learn more|click here|more)\.?$/i;
+
+/**
+ * Drops title-echo and chrome CTA blurbs.
+ * @param {string} summary
+ * @param {string} title
+ * @returns {string}
+ */
+function usableCreativeSummary(summary, title) {
+  const text = normalizeExtractedText(summary || "");
+  const titleText = normalizeExtractedText(title || "");
+
+  if (!text) {
+    return "";
+  }
+
+  if (titleText && text.toLowerCase() === titleText.toLowerCase()) {
+    return "";
+  }
+
+  if (CHROME_SUMMARY_RE.test(text)) {
+    return "";
+  }
+
+  return text;
+}
+
+/**
+ * Splits staircase-style index link text into a short title and tagline.
+ * @param {string} rawTitle
+ * @returns {{ title: string, summary: string }}
+ * @example
+ * splitIndexLinkTitleAndTagline("worn Your movements, a stranger's face.")
+ * // { title: "worn", summary: "Your movements, a stranger's face." }
+ */
+export function splitIndexLinkTitleAndTagline(rawTitle) {
+  const title = normalizeExtractedText(rawTitle || "");
+
+  if (!title) {
+    return { title: "", summary: "" };
+  }
+
+  const stripped = title.replace(/^\d{1,3}\s+/, "").trim();
+  // Only split when the work name is lowercase words (staircase indexes),
+  // so Title-Case score names like "It Is Truly Meet - Macedonian" stay intact.
+  const match = stripped.match(
+    /^([a-z][a-z0-9]*(?:\s+[a-z][a-z0-9]*)*)\s+([A-Z][\s\S]{11,})$/,
+  );
+
+  if (!match) {
+    return { title, summary: "" };
+  }
+
+  const name = normalizeExtractedText(match[1]);
+  const tagline = normalizeExtractedText(match[2]);
+
+  if (name.length < 2 || tagline.length < 12) {
+    return { title, summary: "" };
+  }
+
+  if (name.toLowerCase() === tagline.toLowerCase()) {
+    return { title, summary: "" };
+  }
+
+  return { title: name, summary: tagline };
+}
 
 /** Quoted or unquoted href (minified or Prettier-wrapped member HTML). */
 const ANCHOR_HREF_PATTERN =
@@ -212,7 +285,7 @@ function absoluteUrl(value, baseUrl) {
           ? value["@id"]
           : "";
 
-  if (!raw) {
+  if (!raw || isJsTemplateHref(raw)) {
     return "";
   }
 
@@ -220,6 +293,10 @@ function absoluteUrl(value, baseUrl) {
     const url = new URL(raw, baseUrl);
 
     if (url.protocol !== "https:" && url.protocol !== "http:") {
+      return "";
+    }
+
+    if (isJsTemplateHref(url.pathname) || isJsTemplateHref(url.href)) {
       return "";
     }
 
@@ -437,11 +514,12 @@ export function creativeItemsFromFigures(
       /<figcaption\b[^>]*>([\s\S]*?)<\/figcaption>/i,
     );
     const altMatch = chunk.match(/alt=["']([^"']+)["']/i);
+    const rawCaption = firstDefinedString(
+      figcaptionMatch ? figcaptionMatch[1] : undefined,
+      altMatch ? altMatch[1] : undefined,
+    );
     const caption = normalizeExtractedText(
-      firstDefinedString(
-        figcaptionMatch ? figcaptionMatch[1] : undefined,
-        altMatch ? altMatch[1] : undefined,
-      ),
+      String(rawCaption || "").replace(/<[^>]+>/g, " "),
     );
     const anchorMatch = chunk.match(
       /<a\b[^>]*href\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i,
@@ -482,12 +560,13 @@ export function creativeItemsFromFigures(
     const published =
       publishedAtFromPageHtml(chunk) || publishedAtFromPageHtml(caption);
 
+    const workTitle = title || caption;
     items.push({
       identity: `url:${url}`,
       url,
       site_origin: siteOrigin,
-      title: title || caption,
-      summary: caption,
+      title: workTitle,
+      summary: usableCreativeSummary(caption, workTitle),
       content_type: creativeContentType([], new URL(pageUrl).pathname),
       page_role: "project",
       language: null,
@@ -586,13 +665,37 @@ export function creativeItemsFromAlbumList(
       continue;
     }
 
+    let albumTitle = title;
+    let albumSummary = "";
+    const altText = normalizeExtractedText(
+      inner.match(/<img\b[^>]*alt=["']([^"']+)["']/i)?.[1] ||
+        inner.match(/<img\b[^>]*alt=([^\s>]+)/i)?.[1] ||
+        "",
+    );
+
+    try {
+      const yearMatch = new URL(url).pathname.match(/\/((?:19|20)\d{2})\/?$/);
+      const year = yearMatch?.[1] || "";
+
+      if (year && title !== year) {
+        // Long list titles ("An assortment of photos from 2026") become summary.
+        albumTitle = year;
+        albumSummary = usableCreativeSummary(title, year);
+      } else if (year) {
+        albumTitle = year;
+        albumSummary = usableCreativeSummary(altText, year);
+      }
+    } catch {
+      albumSummary = usableCreativeSummary(altText, albumTitle);
+    }
+
     seen.add(url);
     items.push({
       identity: `url:${url}`,
       url,
       site_origin: siteOrigin,
-      title,
-      summary: "",
+      title: albumTitle,
+      summary: albumSummary,
       content_type: "collection",
       page_role: "portfolio",
       language: null,
@@ -917,18 +1020,28 @@ export function creativeItemsFromIndexLinks(
     return items;
   }
 
+  const linkHtml = htmlWithoutEmbeddedScripts(html);
+  const indexIntro =
+    shareDescriptionFromHtml(html) ||
+    firstMeaningfulParagraphFromHtml(html) ||
+    "";
   const linkPattern = new RegExp(ANCHOR_HREF_PATTERN.source, "gi");
   let match;
 
   while (
-    (match = linkPattern.exec(html)) &&
+    (match = linkPattern.exec(linkHtml)) &&
     items.length < MAX_CREATIVE_WORKS_PER_PAGE
   ) {
     const href = decodeHrefForParse(match[2] ?? match[3] ?? match[4]);
     const url = absoluteUrl(href, pageUrl);
-    const title = normalizeExtractedText(match[6].replace(/<[^>]+>/g, " "));
+    const rawTitle = normalizeExtractedText(match[6].replace(/<[^>]+>/g, " "));
 
-    if (!url || !url.startsWith(siteOrigin) || !title || title.length < 2) {
+    if (
+      !url ||
+      !url.startsWith(siteOrigin) ||
+      !rawTitle ||
+      rawTitle.length < 2
+    ) {
       continue;
     }
 
@@ -977,9 +1090,10 @@ export function creativeItemsFromIndexLinks(
     );
     // Prefer media/copy that follows this card’s link (shelf cards often:
     // <h3><a>…</a></h3><img class="project">…<p>blurb</p>) instead of the
-    // previous card’s trailing image in a short ±120 window.
+    // previous card’s trailing image in a short ±120 window. match.index is
+    // relative to linkHtml (script-stripped), so slice that string—not raw html.
     const afterStart = match.index + anchorHtml.length;
-    const afterWindow = html.slice(afterStart, afterStart + 800);
+    const afterWindow = linkHtml.slice(afterStart, afterStart + 800);
     // Stop at the next opening heading so we keep this card’s trailing
     // </h3><img><p>… and do not steal the following card.
     const nextHeadingAt = afterWindow.search(/<h[1-6]\b/i);
@@ -990,9 +1104,9 @@ export function creativeItemsFromIndexLinks(
     const imgAfter = forward.match(
       /<img\b[^>]*src\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i,
     );
-    const nearby = html.slice(
+    const nearby = linkHtml.slice(
       Math.max(0, match.index - 120),
-      Math.min(html.length, afterStart + 120),
+      Math.min(linkHtml.length, afterStart + 120),
     );
     const imgNearby = nearby.match(
       /<img\b[^>]*src\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i,
@@ -1008,7 +1122,7 @@ export function creativeItemsFromIndexLinks(
         ? imageAbs
         : "";
     const paragraphMatch = forward.match(/<p\b[^>]*>([\s\S]*?)<\/p>/i);
-    const summary = paragraphMatch
+    const paragraphSummary = paragraphMatch
       ? normalizeExtractedText(paragraphMatch[1].replace(/<[^>]+>/g, " "))
       : "";
     const contentType = comicsHub
@@ -1017,6 +1131,19 @@ export function creativeItemsFromIndexLinks(
     const sourceKind = comicsOffPrefix
       ? "creative-comics-hub"
       : "creative-index";
+    const split = splitIndexLinkTitleAndTagline(rawTitle);
+    let title = rawTitle;
+    let summary = usableCreativeSummary(paragraphSummary, rawTitle);
+
+    if (!summary && split.summary) {
+      title = split.title;
+      summary = usableCreativeSummary(split.summary, title);
+    }
+
+    // PDF sheet-music links rarely have a trailing <p>; inherit the index intro.
+    if (!summary && contentType === "sheet_music") {
+      summary = usableCreativeSummary(indexIntro, title);
+    }
 
     seen.add(url);
     items.push({
@@ -1024,7 +1151,7 @@ export function creativeItemsFromIndexLinks(
       url,
       site_origin: siteOrigin,
       title,
-      summary: summary && summary !== title ? summary : "",
+      summary,
       content_type: contentType,
       page_role: "project",
       language: null,
@@ -1389,6 +1516,11 @@ const NON_PROJECT_SEGMENTS = new Set([
   "code",
   "unoffice-hours",
   "unofficehours",
+  "wish",
+  "wish-list",
+  "wishlist",
+  "datenschutz",
+  "impressum",
 ]);
 
 /**
@@ -1554,13 +1686,15 @@ export function creativeItemsFromHomepageLinks(
     return items;
   }
 
+  // Never scrape anchors out of inline LinkLog / template scripts.
+  const linkHtml = htmlWithoutEmbeddedScripts(html);
   const seen = new Set();
   /** @type {Set<number>} */
   const productShelfRanges = new Set();
   const headingPattern = /<h([1-6])\b[^>]*>([\s\S]*?)<\/h\1>/gi;
   let headingMatch;
 
-  while ((headingMatch = headingPattern.exec(html))) {
+  while ((headingMatch = headingPattern.exec(linkHtml))) {
     const headingText = normalizeExtractedText(
       headingMatch[2].replace(/<[^>]+>/g, " "),
     );
@@ -1570,8 +1704,8 @@ export function creativeItemsFromHomepageLinks(
     }
 
     const start = headingMatch.index + headingMatch[0].length;
-    const nextHeading = html.slice(start).search(/<h[1-6]\b/i);
-    const end = nextHeading >= 0 ? start + nextHeading : html.length;
+    const nextHeading = linkHtml.slice(start).search(/<h[1-6]\b/i);
+    const end = nextHeading >= 0 ? start + nextHeading : linkHtml.length;
 
     for (let index = start; index < end; index += 1) {
       productShelfRanges.add(index);
@@ -1582,7 +1716,7 @@ export function creativeItemsFromHomepageLinks(
   let match;
 
   while (
-    (match = linkPattern.exec(html)) &&
+    (match = linkPattern.exec(linkHtml)) &&
     items.length < MAX_CREATIVE_WORKS_PER_PAGE
   ) {
     const href = decodeHrefForParse(match[2] ?? match[3] ?? match[4]);
@@ -1638,7 +1772,7 @@ export function creativeItemsFromHomepageLinks(
     }
 
     const afterStart = match.index + (match[0] || "").length;
-    const forward = html.slice(afterStart, afterStart + 600);
+    const forward = linkHtml.slice(afterStart, afterStart + 600);
     const imgAfter = forward.match(
       /<img\b[^>]*src\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i,
     );
@@ -1691,7 +1825,7 @@ export function creativeItemsFromHomepageLinks(
       url,
       site_origin: siteOrigin,
       title,
-      summary: summary && summary !== title ? summary : "",
+      summary: usableCreativeSummary(summary, title),
       content_type: "project",
       page_role: "project",
       language: null,
@@ -1739,12 +1873,13 @@ export function creativeItemsFromProjectsIndex(
     return items;
   }
 
+  const linkHtml = htmlWithoutEmbeddedScripts(html);
   const seen = new Set();
   const linkPattern = new RegExp(ANCHOR_HREF_PATTERN.source, "gi");
   let match;
 
   while (
-    (match = linkPattern.exec(html)) &&
+    (match = linkPattern.exec(linkHtml)) &&
     items.length < MAX_CREATIVE_WORKS_PER_PAGE
   ) {
     const href = decodeHrefForParse(match[2] ?? match[3] ?? match[4]);

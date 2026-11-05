@@ -69,15 +69,31 @@ test("createOriginRobotsGate caches robots.txt and honors Disallow", async () =>
   assert.equal(await gate.allows("ftp://a.example/file"), false);
 });
 
-test("createOriginRobotsGate allows when robots.txt is missing", async () => {
+test("createOriginRobotsGate defers when robots.txt cannot be fetched", async () => {
   const gate = createOriginRobotsGate({
     fetchPublicText: async () => {
       throw new Error("offline");
     },
   });
-  assert.equal(await gate.allows("https://a.example/anything"), true);
-  assert.equal(await gate.allows("https://a.example"), true);
+  assert.equal(await gate.allows("https://a.example/anything"), false);
+  assert.equal(await gate.allows("https://a.example"), false);
   assert.equal(await gate.bodyForOrigin(""), "");
+  const missing = await gate.outcomeForOrigin("");
+  assert.equal(missing.decision, "defer");
+});
+
+test("createOriginRobotsGate allows when robots.txt is 404", async () => {
+  const gate = createOriginRobotsGate({
+    fetchPublicText: async () => ({
+      url: "https://a.example/robots.txt",
+      status: 404,
+      body: "",
+      body_complete: true,
+    }),
+  });
+  assert.equal(await gate.allows("https://a.example/anything"), true);
+  const outcome = await gate.outcomeForOrigin("https://a.example");
+  assert.equal(outcome.decision, "absent");
 });
 
 test("createOriginRobotsGate uses the caller-supplied User-Agent product token", async () => {
@@ -93,15 +109,37 @@ test("createOriginRobotsGate uses the caller-supplied User-Agent product token",
   assert.equal(await gate.allows("https://a.example/ok"), true);
 });
 
-test("createOriginRobotsGate treats non-string robots bodies as empty", async () => {
+test("createOriginRobotsGate defers when the robots body is unusable", async () => {
   const gate = createOriginRobotsGate({
     fetchPublicText: async () => ({
       url: "https://a.example/robots.txt",
+      status: 200,
       contentType: "text/plain",
       body: 12,
+      body_complete: false,
     }),
   });
-  assert.equal(await gate.allows("https://a.example/anywhere"), true);
+  assert.equal(await gate.allows("https://a.example/anywhere"), false);
+});
+
+test("createOriginRobotsGate reuses a cached policy when the refresh fails", async () => {
+  const policyCache = new Map([
+    [
+      "https://a.example",
+      {
+        body: "User-agent: *\nDisallow: /private/\n",
+        bodyComplete: true,
+      },
+    ],
+  ]);
+  const gate = createOriginRobotsGate({
+    policyCache,
+    fetchPublicText: async () => {
+      throw new Error("timeout");
+    },
+  });
+  assert.equal(await gate.allows("https://a.example/private/x"), false);
+  assert.equal(await gate.allows("https://a.example/ok"), true);
 });
 
 test("createOriginRobotsGate default fetchPublicText uses lib helper", async () => {

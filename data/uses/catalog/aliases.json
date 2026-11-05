@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "aliases": [
+    {
+      "alias": "Cursor",
+      "tool_id": "cursor-editor",
+      "require_context": ["editor", "ide", "code", "programming", "development"]
+    },
+    {
+      "alias": "Go",
+      "tool_id": "go-language",
+      "require_context": [
+        "language",
+        "programming",
+        "golang",
+        "develop",
+        "code"
+      ],
+      "forbid_context": ["board game", "game of go", "baduk"]
+    },
+    {
+      "alias": "Visual Studio",
+      "tool_id": "visual-studio",
+      "forbid_context": ["code", "vscode"]
+    },
+    {
+      "alias": "Apple Music",
+      "tool_id": "apple-music",
+      "require_context": ["music", "listen", "stream", "audio"]
+    },
+    {
+      "alias": "Things",
+      "tool_id": "things",
+      "require_context": ["task", "todo", "gtd", "cultured code"]
+    },
+    {
+      "alias": "Node",
+      "tool_id": "nodejs",
+      "require_context": ["runtime", "javascript", "node.js", "nodejs"]
+    },
+    {
+      "alias": "BART",
+      "tool_id": "bart-study",
+      "require_context": ["greek", "hebrew", "study"],
+      "forbid_context": ["transit", "train", "station", "bay area"]
+    },
+    {
+      "alias": "Fish",
+      "tool_id": "fish",
+      "require_context": ["shell", "terminal", "prompt"]
+    },
+    {
+      "alias": "Bruno",
+      "tool_id": "bruno",
+      "require_context": ["rest", "api", "endpoint"]
+    },
+    {
+      "alias": "Codex",
+      "tool_id": "codex",
+      "require_context": ["ai", "agent", "code"]
+    },
+    {
+      "alias": "OBS",
+      "tool_id": "obs",
+      "require_context": ["stream", "record", "broadcast"]
+    }
+  ]
+}

@@ -105,7 +105,7 @@ test("podcastEpisodesFromYoutubeAtom maps dated entries to podcast_episode", () 
     showUrl: "https://www.youtube.com/playlist?list=PLshow",
   });
   assert.equal(episodes.length, 2);
-  assert.equal(episodes[0].content_type, "podcast_episode");
+  assert.equal(episodes[0].content_type, "video");
   assert.equal(episodes[0].site_origin, "https://member.example");
   assert.equal(episodes[0].published_at, "2026-11-01T12:00:00.000Z");
   assert.equal(episodes[0].actions[0].type, "watch");
@@ -618,6 +618,113 @@ test("podcastEpisodesFromPlaylistHtmlFallback defaults and undated watch pages",
   assert.equal(limited[0].title, "Limited");
 });
 
+test("podcastEpisodesFromPlaylistHtmlFallback fills summary from watch og:description", async () => {
+  const podcast = await podcastEpisodesFromPlaylistHtmlFallback(
+    "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKoPODCAST",
+    {
+      siteOrigin: "https://www.chrisminnick.com",
+      robotsGate: offlineRobots,
+      fetchPublicText: async (href) => {
+        if (href.includes("playlist?list=")) {
+          return {
+            url: href,
+            contentType: "text/html",
+            body: '"videoId":"podsum1"',
+          };
+        }
+
+        if (href.includes("watch?v=podsum1")) {
+          return {
+            url: href,
+            contentType: "text/html",
+            body: `<title>His Easy Hobby Backfired Fast - YouTube</title>
+<meta property="og:description" content="We tried an easy hobby and it did not stay easy." />
+"uploadDate":"2026-11-04T18:04:42Z"`,
+          };
+        }
+
+        throw new Error(`unexpected ${href}`);
+      },
+    },
+  );
+  assert.equal(podcast.length, 1);
+  assert.equal(podcast[0].title, "His Easy Hobby Backfired Fast");
+  assert.equal(
+    podcast[0].summary,
+    "We tried an easy hobby and it did not stay easy.",
+  );
+  assert.equal(podcast[0].source?.kind, "youtube-show-fallback");
+
+  const video = await podcastEpisodesFromPlaylistHtmlFallback(
+    "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKoVIDEO",
+    {
+      siteOrigin: "https://artlung.com",
+      contentType: "video",
+      sourceKind: "elsewhere-youtube-video",
+      identityPrefix: "elsewhere-youtube",
+      robotsGate: offlineRobots,
+      fetchPublicText: async (href) => {
+        if (href.includes("playlist?list=")) {
+          return {
+            url: href,
+            contentType: "text/html",
+            body: '"videoId":"vidsum1"',
+          };
+        }
+
+        if (href.includes("watch?v=vidsum1")) {
+          return {
+            url: href,
+            contentType: "text/html",
+            body: `<title>CSSBattle for NOVEMBER 4 (2026) - YouTube</title>
+<meta name="description" content="Daily CSSBattle target walkthrough for November 4." />
+"uploadDate":"2026-11-04T01:41:19Z"`,
+          };
+        }
+
+        throw new Error(`unexpected ${href}`);
+      },
+    },
+  );
+  assert.equal(video.length, 1);
+  assert.equal(video[0].content_type, "podcast_episode");
+  assert.equal(video[0].source?.kind, "elsewhere-youtube-video");
+  assert.equal(
+    video[0].summary,
+    "Daily CSSBattle target walkthrough for November 4.",
+  );
+
+  const echo = await podcastEpisodesFromPlaylistHtmlFallback(
+    "https://www.youtube.com/playlist?list=PLPKNYnZ2gXKoECHO",
+    {
+      siteOrigin: "https://member.example",
+      robotsGate: offlineRobots,
+      fetchPublicText: async (href) => {
+        if (href.includes("playlist?list=")) {
+          return {
+            url: href,
+            contentType: "text/html",
+            body: '"videoId":"echo001"',
+          };
+        }
+
+        if (href.includes("watch?v=echo001")) {
+          return {
+            url: href,
+            contentType: "text/html",
+            body: `<title>Same Title - YouTube</title>
+<meta property="og:description" content="Same Title" />
+"uploadDate":"2026-11-01T00:00:00Z"`,
+          };
+        }
+
+        throw new Error(`unexpected ${href}`);
+      },
+    },
+  );
+  assert.equal(echo[0].summary, "");
+});
+
 test("youtubeFeedUrlForShow builds default robots gate when omitted", async () => {
   const feedUrl = await youtubeFeedUrlForShow(
     "https://www.youtube.com/@gated",
@@ -879,7 +986,7 @@ test("harvestElsewhereYoutubeVideos emits video rows from network channels", asy
   );
 
   assert.equal(videos.length, 2);
-  assert.equal(videos[0].content_type, "video");
+  assert.equal(videos[0].content_type, "podcast_episode");
   assert.equal(videos[0].source.kind, "elsewhere-youtube-video");
   assert.equal(
     videos[0].source.channel,
@@ -1041,7 +1148,7 @@ test("harvestElsewhereYoutubeVideos falls back to channel HTML when Atom disallo
   );
 
   assert.equal(videos.length, 2);
-  assert.equal(videos[0].content_type, "video");
+  assert.equal(videos[0].content_type, "podcast_episode");
   assert.equal(videos[0].source.kind, "elsewhere-youtube-video");
   assert.ok(
     videos.some(

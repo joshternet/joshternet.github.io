@@ -43,8 +43,12 @@ export function classifyPageRole(url, hints = {}) {
   const lower = path.toLowerCase();
 
   if (
-    /license|licen[cs]e|third.?party|privacy|terms|legal|cookie/.test(lower) ||
-    /license|privacy policy|terms of/.test(title)
+    /license|licen[cs]e|third.?party|privacy|terms|legal|cookie|datenschutz|impressum/.test(
+      lower,
+    ) ||
+    /license|privacy policy|terms of|datapolicy|datenschutz|impressum/.test(
+      title,
+    )
   ) {
     return "legal";
   }
@@ -89,6 +93,12 @@ export function classifyPageRole(url, hints = {}) {
 
   if (/\/(docs?|documentation|guide|handbook)\b/.test(lower)) {
     return "documentation";
+  }
+
+  // /seeking request pages must not feed biographical or expertise topics.
+  // /seeking/docs stays documentation via the rule above.
+  if (/^\/seeking(?:\/|\.html?)?$/.test(lower)) {
+    return "utility";
   }
 
   if (/\/(util|utility|login|search|feed|rss|atom)\b/.test(lower)) {

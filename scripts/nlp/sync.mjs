@@ -23,6 +23,7 @@ import {
   hasDerivedAnalysisMarker,
   homepageConnectionObservationsFromDocument,
   isHubDirectoryPage,
+  isHubParticipantOrigin,
 } from "../network/connections.mjs";
 import {
   itemsFromCollection,
@@ -121,6 +122,13 @@ import {
   schemaTypesFromHtml,
   shareDescriptionFromHtml,
 } from "./text.mjs";
+import { buildUsesDatasets } from "../uses/build.mjs";
+import { fetchUsesHtmlPages } from "../uses/discover.mjs";
+import {
+  buildSeekingDatasets,
+  fetchSeekingHtmlPages,
+  isSeekingPageUrl,
+} from "./seeking.mjs";
 
 /**
  * Topic and relationship evidence must come from public information Joshternet
@@ -274,6 +282,10 @@ async function main() {
   /** @type {Set<string>} */
   const shortCircuitedOrigins = new Set();
   let shortCircuitCount = 0;
+  /** @type {Array<{ origin: string, title?: string, pages?: Array<{ url: string, html?: string }> }>} */
+  const usesOriginInputs = [];
+  /** @type {Array<{ origin: string, title?: string, pages?: Array<{ url: string, html?: string, lang?: string }>, complete?: boolean, failed?: boolean }>} */
+  const seekingOriginInputs = [];
 
   for (const participant of network) {
     if (!participant || typeof participant.origin !== "string") {
@@ -335,7 +347,10 @@ async function main() {
         });
       }
 
-      /** @type {Array<Record<string, unknown>>} */
+      /** @type {Array<{ url: string, html: string, lang?: string }>} */
+      const usesHtmlPages = [];
+      /** @type {Array<{ url: string, html: string, lang?: string }>} */
+      const seekingHtmlPages = [];
       const pageRecords = [];
       /** @type {Array<Record<string, unknown>>} */
       const htmlSubjects = [];
@@ -396,6 +411,32 @@ async function main() {
           poster_image: posterImageFromHtml(page.html || "", page.url),
           share_description: shareDescriptionFromHtml(page.html || ""),
         });
+
+        // Capture /uses HTML before the body is discarded from durable signals.
+        if (
+          typeof page.html === "string" &&
+          page.html &&
+          /\/uses(?:\/|\.html?)?(?:$|\?)/i.test(page.url)
+        ) {
+          usesHtmlPages.push({
+            url: page.url,
+            html: page.html,
+            lang: regions.lang || "",
+          });
+        }
+
+        // Capture /seeking HTML for optional Seeking extraction (not content.json).
+        if (
+          typeof page.html === "string" &&
+          page.html &&
+          isSeekingPageUrl(page.url)
+        ) {
+          seekingHtmlPages.push({
+            url: page.url,
+            html: page.html,
+            lang: regions.lang || "",
+          });
+        }
 
         if (regions.lang) {
           locales.add(regions.lang);
@@ -631,6 +672,26 @@ async function main() {
         }
       }
 
+      // Deep-crawl short-circuit (and rare crawl misses) leave Uses/Seeking
+      // HTML empty; probe those slash pages so their datasets still refresh.
+      if (usesHtmlPages.length === 0) {
+        usesHtmlPages.push(
+          ...(await fetchUsesHtmlPages(origin, {
+            cache: dnsCache,
+            httpCache,
+          })),
+        );
+      }
+
+      if (seekingHtmlPages.length === 0) {
+        seekingHtmlPages.push(
+          ...(await fetchSeekingHtmlPages(origin, {
+            cache: dnsCache,
+            httpCache,
+          })),
+        );
+      }
+
       if (shortCircuitedOrigins.has(origin)) {
         const carried = carryForwardOriginSignal(priorSignal, {
           origin,
@@ -665,6 +726,18 @@ async function main() {
         process.stdout.write(
           `nlp ok ${origin}: ${carriedFetched} pages, ${carriedDeclared.length} declared, ${carriedSignals.length} signals (short-circuit reuse)\n`,
         );
+        usesOriginInputs.push({
+          origin,
+          title: participant.title || participant.domain || origin,
+          pages: usesHtmlPages,
+        });
+        // Dedicated /seeking fetch can complete Seeking even when deep crawl skipped.
+        seekingOriginInputs.push({
+          origin,
+          title: participant.title || participant.domain || origin,
+          pages: seekingHtmlPages,
+          complete: seekingHtmlPages.length > 0,
+        });
       } else {
         const coverage = {
           pages_discovered: discovered,
@@ -708,6 +781,17 @@ async function main() {
         process.stdout.write(
           `nlp ok ${origin}: ${crawled.pages.length} pages, ${declared_topics.length} declared, ${subject_signals.length} signals\n`,
         );
+        usesOriginInputs.push({
+          origin,
+          title: participant.title || participant.domain || origin,
+          pages: usesHtmlPages,
+        });
+        seekingOriginInputs.push({
+          origin,
+          title: participant.title || participant.domain || origin,
+          pages: seekingHtmlPages,
+          complete: true,
+        });
       }
     } catch (error) {
       process.stderr.write(
@@ -723,7 +807,55 @@ async function main() {
         declared_topics: [],
         subject_signals: [],
       });
+      usesOriginInputs.push({
+        origin,
+        title: participant.title || participant.domain || origin,
+        pages: [],
+      });
+      seekingOriginInputs.push({
+        origin,
+        title: participant.title || participant.domain || origin,
+        pages: [],
+        failed: true,
+      });
     }
+  }
+
+  try {
+    // publish omitted → local on / CI off unless JOSHTERNET_USES_PUBLISH set.
+    const usesMetrics = await buildUsesDatasets({
+      repoRoot: ROOT,
+      origins: usesOriginInputs,
+      observed_at: now,
+    });
+    process.stdout.write(
+      `nlp uses: verified=${usesMetrics.verified_count} items=${usesMetrics.extraction_item_count} events=${usesMetrics.events_added} publish=${usesMetrics.publish}\n`,
+    );
+  } catch (error) {
+    process.stderr.write(
+      `nlp uses failed: ${error instanceof Error ? error.message : error}\n`,
+    );
+    process.exitCode = 1;
+    return;
+  }
+
+  try {
+    // Seeking public JSON is always written (gitignored). publish flag is
+    // informational; local crawls default publish-enabled for preview metrics.
+    const seekingResult = await buildSeekingDatasets({
+      repoRoot: ROOT,
+      origins: seekingOriginInputs,
+      observed_at: now,
+    });
+    process.stdout.write(
+      `nlp seeking: requests=${seekingResult.view.request_count} websites=${seekingResult.view.website_count} status=${seekingResult.view.status} publish=${seekingResult.publish}\n`,
+    );
+  } catch (error) {
+    process.stderr.write(
+      `nlp seeking failed: ${error instanceof Error ? error.message : error}\n`,
+    );
+    process.exitCode = 1;
+    return;
   }
 
   // Elsewhere YouTube channels → individual watch URLs for Showcase Videos.
@@ -877,7 +1009,10 @@ async function main() {
 
         // Hub edges are rebuilt from the current crawl with classNames so
         // Meet / Network card links are not carried forward as evidence.
-        if (edge.from === HUB_ORIGIN) {
+        if (
+          isHubParticipantOrigin(edge.from) ||
+          isHubParticipantOrigin(edge.to)
+        ) {
           return false;
         }
 
@@ -921,7 +1056,8 @@ async function main() {
   ]);
 
   const deduped = connections.filter(
-    (edge) => !(edge.from === HUB_ORIGIN && isHubDirectoryPage(edge.page)),
+    (edge) =>
+      !isHubParticipantOrigin(edge.from) && !isHubParticipantOrigin(edge.to),
   );
 
   const topicsDoc = sparseCollectionDocument({

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://joshternet.org/schemas/uses-rollup.schema.json",
+  "title": "Uses period rollup",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "period",
+    "granularity",
+    "as_of",
+    "eligible_member_count",
+    "verified_uses_member_count",
+    "tools"
+  ],
+  "properties": {
+    "schema_version": { "type": "integer", "minimum": 1 },
+    "scoring_version": { "type": "integer", "minimum": 1 },
+    "period": { "type": "string" },
+    "granularity": {
+      "type": "string",
+      "enum": ["month", "quarter", "year", "all-time"]
+    },
+    "period_start": { "type": "string" },
+    "period_end_exclusive": { "type": "string" },
+    "as_of": { "type": "string" },
+    "is_complete": { "type": "boolean" },
+    "eligible_member_count": { "type": "integer", "minimum": 0 },
+    "verified_uses_member_count": { "type": "integer", "minimum": 0 },
+    "tool_count": { "type": "integer", "minimum": 0 },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "tool_id",
+          "active_member_count",
+          "active_member_origins",
+          "adoption_score"
+        ],
+        "properties": {
+          "tool_id": { "type": "string" },
+          "active_member_count": { "type": "integer", "minimum": 0 },
+          "active_member_origins": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "period_ever_member_count": { "type": "integer", "minimum": 0 },
+          "adoption_score": { "type": ["integer", "null"] },
+          "use_cases": { "type": "array" },
+          "change_from_previous_period": {},
+          "source_coverage": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,16 +1,19 @@
 /**
  * Goal & Constraints:
  * Discover YouTube channel/playlist show URLs from member HTML and harvest
- * dated podcast_episode rows via public Atom feeds (channel_id / playlist_id).
- * Also harvest elsewhere-channel uploads as Showcase `video` rows.
+ * dated video rows via public Atom feeds (channel_id / playlist_id).
+ * A playlist found in a post stays video. CSS Battle titles stay podcasts.
+ * Elsewhere channel uploads stay videos unless the row is a CSS Battle episode.
  * Fallback to watch-page uploadDate when Atom is empty/404. Injectable fetch
  * for offline fixtures; never invent dates; robots gate required. Live YouTube
  * debugging happens outside the agent sandbox on human sync runs.
  */
 
 import { contentItemsFromRssOrAtom, isoDateString } from "./content.mjs";
+import { contentTypeForHarvestedYoutube } from "./show-classification.mjs";
 import { fetchPublicText } from "./lib.mjs";
 import { createOriginRobotsGate } from "./origin-robots.mjs";
+import { shareDescriptionFromHtml } from "./text.mjs";
 import {
   youtubeChannelFeedUrl,
   youtubeChannelIdFromHref,
@@ -364,7 +367,11 @@ export function podcastEpisodesFromFeedItems(feedItems, meta) {
       site_origin: siteOrigin,
       title: title || url,
       summary: typeof record.summary === "string" ? record.summary : "",
-      content_type: contentType,
+      content_type: contentTypeForHarvestedYoutube(
+        contentType,
+        sourceKind,
+        title || url,
+      ),
       page_role: "project",
       language: null,
       declared_topics: [],
@@ -512,6 +519,9 @@ export async function podcastEpisodesFromPlaylistHtmlFallback(
       const titleMatch = watch.body.match(/<title>([^<]+)<\/title>/i);
       let title = titleMatch?.[1] || videoId;
       title = title.replace(/\s*-\s*YouTube\s*$/i, "").trim();
+      const share = shareDescriptionFromHtml(watch.body);
+      const summary =
+        share && share.toLowerCase() !== title.toLowerCase() ? share : "";
 
       /** @type {Record<string, unknown>} */
       const source = {
@@ -531,8 +541,12 @@ export async function podcastEpisodesFromPlaylistHtmlFallback(
         url: watchUrl,
         site_origin: siteOrigin,
         title,
-        summary: "",
-        content_type: contentType,
+        summary,
+        content_type: contentTypeForHarvestedYoutube(
+          contentType,
+          sourceKind,
+          title,
+        ),
         page_role: "project",
         language: null,
         declared_topics: [],
@@ -657,7 +671,7 @@ export async function harvestYoutubeShowEpisodes(showUrls, options) {
 
 /**
  * Harvest individual watch URLs from Network elsewhere YouTube channels.
- * Emits `content_type: "video"` rows for Showcase Videos (not Podcasts).
+ * Show episodes, including CSS Battle, are podcasts. Other uploads stay videos.
  * @param {unknown} network
  * @param {{
  *   observedAt?: string,

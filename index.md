@@ -54,8 +54,6 @@ An interesting thing happens when you start connecting independent websites: you
 
 {% include home-connections.html %}
 
-[Joshua Morris][joshua] started the Joshternet while looking for other Joshes with personal websites. Somewhere between meeting namesakes and discovering all the things they were making, a small experiment turned into a much bigger adventure. You can read more about how it started on the [About][about] page.
-
 ## How to join the fun
 
 No accounts. No signup form. Joshternet doesn't need another place for you to post your work. You keep your website, your domain, and everything you've already built. All you need to participate is a small public declaration at `/.well-known/josh`, which tells the network your site wants to be part of the adventure.
@@ -88,4 +86,3 @@ Take a wander, visit somebody's website, or bring your own corner of the interne
 [specifications]: /specs/
 [governance]: /governance/
 [join]: /join/
-[joshua]: https://joshuamorris.info/

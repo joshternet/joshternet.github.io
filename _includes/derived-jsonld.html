@@ -50,6 +50,7 @@
       "description": {{ page.description | jsonify }},
       "url": {{ page.url | absolute_url | jsonify }},
       "inLanguage": {{ site.lang | default: 'en' | jsonify }},
+      "dateModified": {{ site_updated_at | jsonify }},
       "isPartOf": {
         "@type": "WebSite",
         "name": {{ site.title | jsonify }},

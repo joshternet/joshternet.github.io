@@ -417,6 +417,7 @@ test("fetchSlashpagesManifest: custom fetchImpl without cache option", async () 
           ),
       };
     };
+    globalThis.fetch = fetchImpl;
     const result = await fetchSlashpagesManifest("https://custom.example", {
       cache,
       fetchImpl,

@@ -1,8 +1,9 @@
 /**
  * Goal & Constraints:
  * Observed participant relationships only (homepage-link, content-link,
- * blogroll, reply-to, repost-of, syndication). No inferred friendship,
- * no dual topic edges, no popularity. /.well-known/josh never creates a link.
+ * blogroll, reply-to, repost-of, syndication). The Joshternet hub is not a
+ * peer endpoint. No inferred friendship, no dual topic edges, no popularity.
+ * /.well-known/josh never creates a link.
  */
 
 import { createHash } from "node:crypto";
@@ -57,6 +58,28 @@ import { decodeHtmlEntities, normalizeText } from "./lib.mjs";
 
 /** Origin of the Joshternet site that lists Network participants. */
 export const HUB_ORIGIN = "https://joshternet.org";
+
+/**
+ * True when an origin is the Joshternet hub.
+ * Hub links state membership. They are not peer connections.
+ * @param {unknown} origin
+ * @returns {boolean}
+ */
+export function isHubParticipantOrigin(origin) {
+  if (typeof origin !== "string" || !origin) {
+    return false;
+  }
+
+  try {
+    const hostname = new URL(origin).hostname
+      .replace(/^www\./, "")
+      .toLowerCase();
+
+    return hostname === "joshternet.org";
+  } catch {
+    return false;
+  }
+}
 
 /**
  * True when the URL path is the Josh participation declaration.
@@ -326,6 +349,10 @@ export function blogrollConnectionObservations(edges) {
       continue;
     }
 
+    if (isHubParticipantOrigin(edge.from) || isHubParticipantOrigin(edge.to)) {
+      continue;
+    }
+
     const key = `blogroll\0${edge.from}\0${edge.to}\0${edge.blogroll}`;
 
     if (seen.has(key)) {
@@ -492,6 +519,10 @@ export function connectionObservations({
     return observations;
   }
 
+  if (isHubParticipantOrigin(sourceOrigin)) {
+    return observations;
+  }
+
   if (typeof pageUrl !== "string" || !pageUrl) {
     return observations;
   }
@@ -548,10 +579,6 @@ export function connectionObservations({
       continue;
     }
 
-    if (isHubDirectoryLink({ classNames, text }, sourceOrigin)) {
-      continue;
-    }
-
     let absoluteHref = "";
 
     try {
@@ -573,7 +600,11 @@ export function connectionObservations({
       continue;
     }
 
-    if (to === sourceOrigin || !participants.has(to)) {
+    if (
+      to === sourceOrigin ||
+      !participants.has(to) ||
+      isHubParticipantOrigin(to)
+    ) {
       continue;
     }
 
@@ -730,7 +761,9 @@ export function aggregateConnectionEdges(edges) {
       !edge ||
       typeof edge.from !== "string" ||
       typeof edge.to !== "string" ||
-      typeof edge.relation !== "string"
+      typeof edge.relation !== "string" ||
+      isHubParticipantOrigin(edge.from) ||
+      isHubParticipantOrigin(edge.to)
     ) {
       continue;
     }
@@ -881,7 +914,9 @@ export function carryForwardConnectionEdges(previousEdges, fromOrigin) {
       !edge ||
       typeof edge !== "object" ||
       edge.from !== fromOrigin ||
-      typeof edge.to !== "string"
+      typeof edge.to !== "string" ||
+      isHubParticipantOrigin(edge.from) ||
+      isHubParticipantOrigin(edge.to)
     ) {
       continue;
     }

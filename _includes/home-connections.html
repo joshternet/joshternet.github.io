@@ -1,13 +1,10 @@
 {% comment %}
-  Goal: Homepage Connections preview using the same bootstrap datapoints as
-  /connections/ (participants, observed edges, shared-topic pairs, and
-  per-site topic groups). Preview mode only changes interaction chrome.
-  Progressive enhancement: explanation + /connections/ link without JS.
+  Goal: Homepage Connections preview using the same tally, line key, and
+  bootstrap datapoints as /connections/ (participants, observed edges,
+  shared-topic pairs, and per-site topic groups). Preview mode only changes
+  interaction chrome. Progressive enhancement: /connections/ link without JS.
 {% endcomment %}
 {% assign home_network_sites = site.data.network %}
-{% if jekyll.environment == 'development' %}
-  {% assign home_network_sites = home_network_sites | concat: site.data.network_dev %}
-{% endif %}
 {% assign home_hub_origin = 'https://joshternet.org' %}
 {% assign home_member_sites = '' | split: '' %}
 {% assign home_hub_sites = '' | split: '' %}
@@ -18,17 +15,38 @@
     {% assign home_member_sites = home_member_sites | push: network_site %}
   {% endif %}
 {% endfor %}
-{% assign home_ordered_sites = home_member_sites | concat: home_hub_sites %}
+{% comment %}
+  Chart participants are members only — hub spokes are not peer connections.
+{% endcomment %}
+{% assign home_ordered_sites = home_member_sites %}
 {% assign home_connection_edges = site.data.connections.edges | default: empty %}
 {% assign home_overlap_pairs = site.data.connection_topics.pairs | default: empty %}
 {% assign home_overlap_sites = site.data.connection_topics.sites | default: empty %}
 
+{% assign participant_count = home_ordered_sites.size | default: 0 %}
+{% assign connected_site_count = 0 %}
+{% assign connection_edges = home_connection_edges %}
+{% assign overlap_pair_count = home_overlap_pairs.size | default: 0 %}
+{% for network_site in home_network_sites %}
+  {% assign site_origin = network_site.origin %}
+  {% assign outbound = 0 %}
+  {% assign inbound = 0 %}
+  {% for edge in connection_edges %}
+    {% if edge.from == site_origin %}
+      {% assign outbound = outbound | plus: 1 %}
+    {% endif %}
+    {% if edge.to == site_origin %}
+      {% assign inbound = inbound | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+  {% if outbound > 0 or inbound > 0 %}
+    {% assign connected_site_count = connected_site_count | plus: 1 %}
+  {% endif %}
+{% endfor %}
+
 {% if home_ordered_sites.size > 0 %}
   <div class="home-connections">
-    <p class="home-connections__lede">
-      Follow the links between independent websites, or discover people exploring similar ideas. Solid lines show
-      observed links. Dashed lines show shared topics, which don't necessarily mean the publishers know each other.
-    </p>
+    {% include connections-tally.html %}
 
     <div
       class="connections-shell home-connections__shell"
@@ -52,55 +70,7 @@
           ></div>
         </div>
         <div class="connections-graph__footer home-connections__footer">
-          <div class="connections-graph__key" data-connections-key>
-            <p class="connections-graph__key-title">What the lines mean</p>
-            <ul class="connections-key__list">
-              <li>
-                <svg
-                  class="connections-key-line"
-                  data-connection-kind="content-link"
-                  viewBox="0 0 48 10"
-                  aria-hidden="true"
-                >
-                  <line x1="2" y1="5" x2="46" y2="5"></line>
-                </svg>
-                <span>Linked to</span>
-              </li>
-              <li>
-                <svg
-                  class="connections-key-line"
-                  data-connection-kind="blogroll"
-                  viewBox="0 0 48 10"
-                  aria-hidden="true"
-                >
-                  <line x1="2" y1="5" x2="46" y2="5"></line>
-                </svg>
-                <span>Blogroll</span>
-              </li>
-              <li>
-                <svg
-                  class="connections-key-line"
-                  data-connection-kind="reply-to"
-                  viewBox="0 0 48 10"
-                  aria-hidden="true"
-                >
-                  <line x1="2" y1="5" x2="46" y2="5"></line>
-                </svg>
-                <span>Reply, repost, syndication</span>
-              </li>
-              <li>
-                <svg
-                  class="connections-key-line"
-                  data-connection-kind="shared-topic"
-                  viewBox="0 0 48 10"
-                  aria-hidden="true"
-                >
-                  <line x1="2" y1="5" x2="46" y2="5"></line>
-                </svg>
-                <span>Shared topic</span>
-              </li>
-            </ul>
-          </div>
+          {% include connections-line-key.html surface="home" %}
         </div>
       </section>
     </div>

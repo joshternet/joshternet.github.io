@@ -23,7 +23,7 @@ test("network cards link the primary feed outside the origin card link", async (
     await read("assets/css/main.css"),
     await read("assets/css/elsewhere-glyphs.css"),
   ].join("\n");
-  const networkDev = await read("_data/network_dev.json");
+  const network = await read("_data/network.json");
 
   assert.match(styles, /\.network-card\[hidden\]\s*\{[^}]*display:\s*none/s);
   assert.match(page, /network-card--{{ network_site.identity }} h-card/);
@@ -35,6 +35,8 @@ test("network cards link the primary feed outside the origin card link", async (
   assert.match(page, /include network-card-a11y\.html/);
   assert.doesNotMatch(page, /site\.data\.site_views/);
   assert.doesNotMatch(page, /recent_content/);
+  assert.doesNotMatch(page, /network_dev/);
+  assert.doesNotMatch(page, /network-dev-preview/);
 
   const a11y = await read("_includes/network-card-a11y.html");
   const joined = await read("_includes/network-card-joined.html");
@@ -90,10 +92,7 @@ test("network cards link the primary feed outside the origin card link", async (
     styles,
     /\.network-card__elsewhere\s*\{[^}]*display:\s*contents/s,
   );
-  assert.match(
-    networkDev,
-    /"url": "https:\/\/josh\.example\.invalid\/rss\.xml"/,
-  );
+  assert.match(network, /"url": "https:\/\/artlung\.com\/feed\/"/);
 });
 
 test("network cards expose elsewhere icons outside the origin link", async () => {
@@ -103,7 +102,7 @@ test("network cards expose elsewhere icons outside the origin link", async () =>
     await read("assets/css/elsewhere-glyphs.css"),
   ].join("\n");
   const sprite = await read("assets/icons/elsewhere-sprite.svg");
-  const networkDev = await read("_data/network_dev.json");
+  const network = await read("_data/network.json");
 
   assert.match(page, /network_site\.elsewhere/);
   assert.match(page, /network-card__elsewhere/);
@@ -138,8 +137,7 @@ test("network cards expose elsewhere icons outside the origin link", async () =>
     /Elsewhere network icons/,
   );
   assert.match(await read("THIRD_PARTY_LICENSES.md"), /brand\.linkedin\.com/);
-  assert.match(networkDev, /"network": "github"/);
-  assert.match(networkDev, /"network": "weibo"/);
+  assert.match(network, /"network": "github"/);
 });
 
 test("network page does not duplicate the blogroll subscribe copy", async () => {

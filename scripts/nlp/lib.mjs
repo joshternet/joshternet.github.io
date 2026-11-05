@@ -121,12 +121,23 @@ export async function writeTextAtomic(filePath, text) {
  *   overflow?: "truncate" | "throw",
  *   httpCache?: import("./fetch-cache.mjs").FetchCache,
  *   redirectsRemaining?: number,
+ *   captureHttpErrors?: boolean,
+ *   unconditional?: boolean,
+ *   deadlineAt?: number,
  * }} [options]
  * @returns {Promise<{
  *   url: string,
+ *   requested_url: string,
+ *   final_url: string,
  *   contentType: string,
  *   body: string,
+ *   status: number,
+ *   body_complete: boolean,
+ *   bytes_received: number,
+ *   byte_limit: number,
+ *   from_cache: boolean,
  *   unchanged?: boolean,
+ *   retry_after?: string,
  * }>}
  */
 export async function fetchPublicText(href, options = {}) {
@@ -134,9 +145,20 @@ export async function fetchPublicText(href, options = {}) {
     typeof options.redirectsRemaining === "number"
       ? options.redirectsRemaining
       : MAX_FETCH_REDIRECTS;
+  const deadlineAt =
+    typeof options.deadlineAt === "number"
+      ? options.deadlineAt
+      : Date.now() + FETCH_TIMEOUT_MS * (redirectsRemaining + 1);
+  if (Date.now() > deadlineAt) {
+    throw new Error(`fetch deadline exceeded for ${href}`);
+  }
   const url = await assertPublicURL(href, { cache: options.cache });
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+  const hopBudget = Math.max(1, deadlineAt - Date.now());
+  const timer = setTimeout(
+    () => controller.abort(),
+    Math.min(FETCH_TIMEOUT_MS, hopBudget),
+  );
   const maxBytes =
     typeof options.maxBytes === "number" && options.maxBytes > 0
       ? options.maxBytes
@@ -144,7 +166,9 @@ export async function fetchPublicText(href, options = {}) {
   const overflow = options.overflow === "throw" ? "throw" : "truncate";
   const httpCache = options.httpCache;
   const prior =
-    httpCache && !httpCache.bypass ? httpCache.entries.get(url.href) : null;
+    httpCache && !httpCache.bypass && options.unconditional !== true
+      ? httpCache.entries.get(url.href)
+      : null;
   const conditional = conditionalHeadersFromEntry(prior);
 
   try {
@@ -162,14 +186,31 @@ export async function fetchPublicText(href, options = {}) {
       if (httpCache) {
         const cached = await readFetchCacheBody(httpCache, url.href);
 
-        if (cached) {
+        if (cached && cached.entry.bodyComplete === true) {
           return {
             url: url.href,
+            requested_url: href,
+            final_url: url.href,
             contentType: cached.entry.contentType || "",
             body: cached.body,
+            status: 304,
+            body_complete: true,
+            bytes_received: Buffer.byteLength(cached.body),
+            byte_limit: maxBytes,
+            from_cache: true,
             unchanged: true,
+            retry_after: "",
           };
         }
+      }
+
+      if (options.unconditional !== true) {
+        return fetchPublicText(href, {
+          ...options,
+          unconditional: true,
+          deadlineAt,
+          redirectsRemaining,
+        });
       }
 
       throw new Error(`HTTP 304 without cache for ${url.href}`);
@@ -191,18 +232,40 @@ export async function fetchPublicText(href, options = {}) {
       return fetchPublicText(next, {
         ...options,
         redirectsRemaining: redirectsRemaining - 1,
+        deadlineAt,
       });
     }
 
     if (!response.ok) {
+      if (options.captureHttpErrors === true) {
+        return {
+          url: url.href,
+          requested_url: href,
+          final_url: url.href,
+          contentType: response.headers.get("content-type") || "",
+          body: "",
+          status: response.status,
+          body_complete: false,
+          bytes_received: 0,
+          byte_limit: maxBytes,
+          from_cache: false,
+          unchanged: false,
+          retry_after: response.headers.get("retry-after") || "",
+        };
+      }
       throw new Error(`HTTP ${response.status} for ${url.href}`);
     }
 
     const contentType = response.headers.get("content-type") || "";
+    /** @type {{ bodyComplete?: boolean, bytesReceived?: number }} */
+    const detail = {};
     let buffer;
 
     try {
-      buffer = await readCappedResponseBytes(response, maxBytes, { overflow });
+      buffer = await readCappedResponseBytes(response, maxBytes, {
+        overflow,
+        detail,
+      });
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
 
@@ -214,22 +277,32 @@ export async function fetchPublicText(href, options = {}) {
     }
 
     const body = buffer.toString("utf8");
+    const bodyComplete = detail.bodyComplete !== false;
 
-    if (httpCache && !httpCache.bypass) {
+    if (httpCache && !httpCache.bypass && bodyComplete) {
       await writeFetchCacheEntry(httpCache, {
         url: url.href,
         body,
         contentType,
         etag: response.headers.get("etag"),
         lastModified: response.headers.get("last-modified"),
+        bodyComplete: true,
       });
     }
 
     return {
       url: url.href,
+      requested_url: href,
+      final_url: url.href,
       contentType,
       body,
+      status: response.status,
+      body_complete: bodyComplete,
+      bytes_received: detail.bytesReceived,
+      byte_limit: maxBytes,
+      from_cache: false,
       unchanged: false,
+      retry_after: response.headers.get("retry-after") || "",
     };
   } finally {
     clearTimeout(timer);

@@ -80,6 +80,40 @@ export function decodeHrefForParse(href) {
 }
 
 /**
+ * True when an href looks like JS string-concat scraped from a &lt;script&gt;
+ * body (e.g. `'+e(a)+'`, `'+t(s)+'` from LinkLog-style templates).
+ * @param {unknown} href
+ * @returns {boolean}
+ * @example
+ * isJsTemplateHref("'+e(a)+'") // true
+ * isJsTemplateHref("/wish-list/") // false
+ */
+export function isJsTemplateHref(href) {
+  if (typeof href !== "string" || !href) {
+    return false;
+  }
+
+  return /['"`]\+[a-zA-Z_$]\w*\(/.test(href);
+}
+
+/**
+ * Strips script/style/noscript so anchor regexes never treat JS templates as
+ * HTML links. Does not remove nav/footer (crawl still needs those hrefs).
+ * @param {string} html
+ * @returns {string}
+ */
+export function htmlWithoutEmbeddedScripts(html) {
+  if (typeof html !== "string" || !html) {
+    return "";
+  }
+
+  return html
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<noscript[\s\S]*?<\/noscript>/gi, " ");
+}
+
+/**
  * Reads a quoted or unquoted HTML attribute value (minified sites often omit quotes).
  * @param {string} attrs
  * @param {string} name
@@ -184,10 +218,31 @@ export function parseHtmlRegions(html) {
 
   const headings = headingBits.filter(Boolean).join(" ").slice(0, 20_000);
 
-  let working = source
-    .replace(/<script[\s\S]*?<\/script>/gi, " ")
-    .replace(/<style[\s\S]*?<\/style>/gi, " ")
-    .replace(/<noscript[\s\S]*?<\/noscript>/gi, " ");
+  // Link discovery runs on script-stripped HTML so inline JS templates
+  // (href="'+e(a)+'") are never treated as crawl targets. Nav/footer stay.
+  let working = htmlWithoutEmbeddedScripts(source);
+
+  const links = [];
+  // Quoted or unquoted href (minified static sites).
+  const linkPattern =
+    /<a\b([^>]*)href\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))([^>]*)>([\s\S]*?)<\/a>/gi;
+
+  while ((match = linkPattern.exec(working))) {
+    const before = match[1];
+    const after = match[5] || "";
+    const attrs = `${before} ${after}`;
+    const href = decodeHrefForParse(match[2] ?? match[3] ?? match[4]);
+    const text = capRemoteString(
+      match[6].replace(/<[^>]+>/g, " "),
+      MAX_ANCHOR_CHARS,
+    );
+    const rel = attributeTokens(htmlAttributeValue(attrs, "rel"));
+    const classNames = attributeTokens(htmlAttributeValue(attrs, "class"));
+
+    if (href && !isJsTemplateHref(href)) {
+      links.push({ href, text, rel, classNames });
+    }
+  }
 
   const chromeBits = [];
   working = working.replace(
@@ -211,28 +266,6 @@ export function parseHtmlRegions(html) {
   const prose = normalizeExtractedText(
     proseSource.replace(/<[^>]+>/g, " "),
   ).slice(0, 100_000);
-
-  const links = [];
-  // Quoted or unquoted href (minified static sites).
-  const linkPattern =
-    /<a\b([^>]*)href\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))([^>]*)>([\s\S]*?)<\/a>/gi;
-
-  while ((match = linkPattern.exec(source))) {
-    const before = match[1];
-    const after = match[5] || "";
-    const attrs = `${before} ${after}`;
-    const href = decodeHrefForParse(match[2] ?? match[3] ?? match[4]);
-    const text = capRemoteString(
-      match[6].replace(/<[^>]+>/g, " "),
-      MAX_ANCHOR_CHARS,
-    );
-    const rel = attributeTokens(htmlAttributeValue(attrs, "rel"));
-    const classNames = attributeTokens(htmlAttributeValue(attrs, "class"));
-
-    if (href) {
-      links.push({ href, text, rel, classNames });
-    }
-  }
 
   const textForTopics = [title, headings, prose].filter(Boolean).join("\n");
 
@@ -350,6 +383,120 @@ export function posterImageFromHtml(html, pageUrl = "") {
   return httpsResourceHref(raw, pageUrl);
 }
 
+/** Characters that can appear inside an http(s) URL. */
+const SUMMARY_URL_CHAR = /[A-Za-z0-9\-._~:/?#\[\]@!$&'()*+,;=%]/;
+
+/**
+ * Length of the URL at the start of `value`, stopping before a word that was
+ * glued on when a line break was deleted.
+ * A title-case path (`/Links`) counts as glue only when the blurb has several URLs.
+ * @param {string} value
+ * @param {boolean} splitTitleCasePath
+ * @returns {number}
+ */
+function urlEndBeforeGluedWord(value, splitTitleCasePath) {
+  const scheme = /^https?:\/\//i.exec(value);
+  let index = scheme[0].length;
+  let passedHost = false;
+
+  while (index < value.length) {
+    const char = value[index];
+    const next = value[index + 1] || "";
+    const titleWord = /[A-Z]/.test(char) && /[a-z]/.test(next);
+
+    if (titleWord && passedHost) {
+      const previous = value[index - 1];
+
+      if (
+        /[a-z0-9]/.test(previous) ||
+        (splitTitleCasePath && previous === "/")
+      ) {
+        break;
+      }
+    }
+
+    if (char === "." || char === "/") {
+      passedHost = true;
+    }
+
+    if (!SUMMARY_URL_CHAR.test(char)) {
+      break;
+    }
+
+    index += 1;
+  }
+
+  return index;
+}
+
+/**
+ * Puts a space back where `:` is glued to `http`, and where a URL is glued to the next word.
+ * @param {string} text
+ * @returns {string}
+ */
+function separateGluedUrls(text) {
+  const withColons = text.replace(/:(?=https?:\/\/)/gi, ": ");
+  const multiple = (withColons.match(/https?:\/\//gi) || []).length >= 2;
+  let cursor = 0;
+  let out = "";
+
+  while (cursor < withColons.length) {
+    const slice = withColons.slice(cursor);
+    const at = slice.search(/https?:\/\//i);
+
+    if (at < 0) {
+      out += slice;
+      break;
+    }
+
+    out += slice.slice(0, at);
+    const fromUrl = slice.slice(at);
+    const end = urlEndBeforeGluedWord(fromUrl, multiple);
+    out += fromUrl.slice(0, end);
+    const glued = fromUrl[end] || "";
+
+    if (/[A-Z]/.test(glued)) {
+      out += " ";
+    }
+
+    cursor += at + end;
+  }
+
+  return normalizeText(out);
+}
+
+/**
+ * Separates a blurb whose line breaks were deleted so labels and URLs run together.
+ * Two or more links keep their labels and drop the URLs. One link inside a sentence stays.
+ * @param {unknown} input
+ * @returns {string}
+ * @example
+ * readableSummary("CSS Battle:https://joshua.example/aMy site:https://joshua.example/b");
+ * // "CSS Battle. My site."
+ */
+export function readableSummary(input) {
+  if (typeof input !== "string" || !input.trim()) {
+    return "";
+  }
+
+  const unglued = separateGluedUrls(normalizeExtractedText(input));
+  const urlCount = (unglued.match(/https?:\/\/\S+/gi) || []).length;
+
+  if (urlCount < 2) {
+    return unglued;
+  }
+
+  const labeled = unglued.replace(
+    /([^:]+?):\s*https?:\/\/\S+/gi,
+    (_match, label, offset) => {
+      const prefix = offset > 0 ? " " : "";
+      return `${prefix}${String(label).trim()}.`;
+    },
+  );
+
+  return normalizeText(labeled.replace(/https?:\/\/\S+/gi, " "));
+}
+
 /**
  * Share blurb declared on a page (Open Graph, then meta description).
  * @param {string} html
@@ -361,7 +508,43 @@ export function shareDescriptionFromHtml(html) {
     metaContent(html, "description") ||
     metaContent(html, "twitter:description");
 
-  return capRemoteString(normalizeExtractedText(raw), MAX_SUMMARY_CHARS);
+  return capRemoteString(readableSummary(raw), MAX_SUMMARY_CHARS);
+}
+
+/**
+ * First meaningful body paragraph when meta share text is missing.
+ * Skips empty/nav-sized scraps; never invents copy.
+ * @param {string} html
+ * @returns {string}
+ */
+export function firstMeaningfulParagraphFromHtml(html) {
+  if (typeof html !== "string" || !html) {
+    return "";
+  }
+
+  const withoutChrome = html
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<noscript[\s\S]*?<\/noscript>/gi, " ")
+    .replace(/<nav[\s\S]*?<\/nav>/gi, " ")
+    .replace(/<header[\s\S]*?<\/header>/gi, " ")
+    .replace(/<footer[\s\S]*?<\/footer>/gi, " ");
+
+  const paragraphPattern = /<p\b[^>]*>([\s\S]*?)<\/p>/gi;
+  let match;
+
+  while ((match = paragraphPattern.exec(withoutChrome))) {
+    const text = capRemoteString(
+      normalizeExtractedText(match[1].replace(/<[^>]+>/g, " ")),
+      MAX_SUMMARY_CHARS,
+    );
+
+    if (text.length >= 24) {
+      return text;
+    }
+  }
+
+  return "";
 }
 
 /**

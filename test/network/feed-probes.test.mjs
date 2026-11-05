@@ -13,6 +13,18 @@ import {
 } from "../../scripts/network/feed-probes.mjs";
 import { dnsCache, install, restore } from "../helpers/mock-fetch.mjs";
 
+/** These tests cover feed HTTP behavior. Robots allowance is a separate gate. */
+const allowRobots = {
+  allows: async () => true,
+  bodyForOrigin: async () => "",
+  outcomeForOrigin: async () => ({
+    decision: "absent",
+    reason: "robots-absent",
+    body: "",
+    status: 404,
+  }),
+};
+
 test("COMMON_FEED_PATHS lists indie defaults", () => {
   assert.ok(COMMON_FEED_PATHS.includes("/feed/"));
   assert.ok(COMMON_FEED_PATHS.includes("/rss.xml"));
@@ -104,6 +116,7 @@ test("probeCommonFeedPaths: discovers /rss.xml when homepage has no feeds", asyn
   let fetches = 0;
   const result = await probeCommonFeedPaths("https://a.example", null, {
     cache,
+    robotsGate: allowRobots,
     paths: ["/rss.xml", "/atom.xml"],
     fetchImpl: async (url) => {
       fetches += 1;
@@ -141,6 +154,7 @@ test("probeCommonFeedPaths: uses global fetch when fetchImpl omitted", async () 
     };
     const result = await probeCommonFeedPaths("https://a.example", [], {
       cache,
+      robotsGate: allowRobots,
       paths: ["/feed/"],
     });
     assert.deepEqual(result, []);
@@ -152,6 +166,7 @@ test("probeCommonFeedPaths: uses global fetch when fetchImpl omitted", async () 
 test("probeCommonFeedPaths: ignores non-feed responses", async () => {
   const result = await probeCommonFeedPaths("https://a.example", [], {
     cache: dnsCache(["a.example"]),
+    robotsGate: allowRobots,
     paths: ["/rss.xml"],
     fetchImpl: async () => ({
       ok: true,
@@ -182,6 +197,7 @@ test("probeCommonFeedPaths: fetch errors and private hosts are skipped", async (
   const cache = dnsCache(["a.example"]);
   const result = await probeCommonFeedPaths("https://a.example", [], {
     cache,
+    robotsGate: allowRobots,
     paths: ["/rss.xml", "http://127.0.0.1/rss.xml", "://bad"],
     fetchImpl: async () => {
       throw new Error("network down");
@@ -191,6 +207,7 @@ test("probeCommonFeedPaths: fetch errors and private hosts are skipped", async (
 
   const withAtom = await probeCommonFeedPaths("https://a.example", [], {
     cache,
+    robotsGate: allowRobots,
     paths: ["/atom.xml"],
     fetchImpl: async () => ({
       ok: true,
@@ -211,6 +228,7 @@ test("probeCommonFeedPaths: empty paths fall back to COMMON_FEED_PATHS", async (
   const seen = [];
   await probeCommonFeedPaths("https://a.example", [], {
     cache,
+    robotsGate: allowRobots,
     paths: [],
     fetchImpl: async (url) => {
       seen.push(String(url));
@@ -251,6 +269,7 @@ test("probeCommonFeedPaths: timeout aborts a hung fetch", async () => {
   const cache = dnsCache(["a.example"]);
   const result = await probeCommonFeedPaths("https://a.example", [], {
     cache,
+    robotsGate: allowRobots,
     paths: ["/rss.xml"],
     timeoutMs: 5,
     fetchImpl: async (_url, init) =>
@@ -271,6 +290,7 @@ test("probeCommonFeedPaths: skips redirects without Location", async () => {
   const cache = dnsCache(["a.example"]);
   const result = await probeCommonFeedPaths("https://a.example", [], {
     cache,
+    robotsGate: allowRobots,
     paths: ["/rss.xml"],
     fetchImpl: async () => ({
       ok: false,
@@ -287,6 +307,7 @@ test("probeCommonFeedPaths: skips when redirect hop budget is exhausted", async 
   let fetches = 0;
   const result = await probeCommonFeedPaths("https://a.example", [], {
     cache,
+    robotsGate: allowRobots,
     paths: ["/rss.xml"],
     fetchImpl: async (url, init) => {
       fetches += 1;
@@ -309,6 +330,7 @@ test("probeCommonFeedPaths: honors a custom maxRedirects ceiling", async () => {
   let fetches = 0;
   const result = await probeCommonFeedPaths("https://a.example", [], {
     cache,
+    robotsGate: allowRobots,
     paths: ["/rss.xml"],
     maxRedirects: 0,
     fetchImpl: async (url) => {
@@ -332,6 +354,7 @@ test("probeCommonFeedPaths: tolerates responses without headers.get", async () =
   let calls = 0;
   const result = await probeCommonFeedPaths("https://a.example", [], {
     cache,
+    robotsGate: allowRobots,
     paths: ["/rss.xml", "/atom.xml"],
     fetchImpl: async () => {
       calls += 1;
@@ -363,6 +386,7 @@ test("probeCommonFeedPaths: skips redirects to private addresses", async () => {
   let fetches = 0;
   const result = await probeCommonFeedPaths("https://a.example", [], {
     cache,
+    robotsGate: allowRobots,
     paths: ["/rss.xml"],
     fetchImpl: async (url) => {
       fetches += 1;

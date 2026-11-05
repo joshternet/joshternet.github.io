@@ -2,17 +2,17 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://joshternet.org/assets/activity/atom.xml</id>
   <title>Joshternet What's New</title>
-  <updated>2026-11-04T08:24:16.947Z</updated>
+  <updated>2026-11-05T11:52:52.551Z</updated>
   <link rel="self" type="application/atom+xml" href="https://joshternet.org/assets/activity/atom.xml"/>
   <link rel="alternate" type="text/html" href="https://joshternet.org/activity/"/>
   <subtitle>A selection of recent writing and creative work from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
   <generator uri="https://joshternet.org/">Joshternet views:build</generator>
-  <entry>
-    <id>https://www.youtube.com/watch?v=QFPIB-IU_zA</id>
-    <title>CSSBattle for NOVEMBER 4 (2026)</title>
-    <updated>2026-11-04T01:41:19.000Z</updated>
-    <published>2026-11-04T01:41:19.000Z</published>
-    <link rel="alternate" href="https://www.youtube.com/watch?v=QFPIB-IU_zA"/>
+  <entry xml:lang="en-us">
+    <id>https://artlung.com/blog/2026/11/03/and-shredding/</id>
+    <title xml:lang="en-us">I went relatively early this morning.</title>
+    <updated>2026-11-04T00:15:36.000Z</updated>
+    <published>2026-11-04T00:15:36.000Z</published>
+    <link rel="alternate" href="https://artlung.com/blog/2026/11/03/and-shredding/"/>
     <author>
       <name>Joe Crawford</name>
       <uri>https://artlung.com</uri>
@@ -31,37 +31,40 @@
     <summary xml:lang="en-us">I spent a week having Claude Code audit my fork of LightCraft, the AI-built Rust Lightroom clone: fuzzing, crash safety, a locked control port, faster frames, and 50,000 deleted lines.</summary>
   </entry>
   <entry>
-    <id>https://www.youtube.com/watch?v=Rn8bsZhlDhQ</id>
-    <title>This Morse Game Starts at a Brutal 40 WPM</title>
-    <updated>2026-11-03T18:03:27.000Z</updated>
-    <published>2026-11-03T18:03:27.000Z</published>
-    <link rel="alternate" href="https://www.youtube.com/watch?v=Rn8bsZhlDhQ"/>
+    <id>https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai</id>
+    <title>The Ballmer Peak in the Age of AI Coding</title>
+    <updated>2026-11-03T13:31:11.000Z</updated>
+    <published>2026-11-03T13:31:11.000Z</published>
+    <link rel="alternate" href="https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai"/>
     <author>
       <name>Chris Minnick</name>
       <uri>https://www.chrisminnick.com</uri>
     </author>
+    <summary>During the years when I was doing a lot of hands-on coding, roughly from 1998 to 2010, I lived by the rule of what xkcd comic author Randall Munroe named the “ Ballmer Peak ” after Steve Ballmer, the former CEO of Microsoft who was known for his exuberant and sweaty appearance on stage .</summary>
   </entry>
-  <entry>
-    <id>https://www.youtube.com/watch?v=_kuQflW2Db8</id>
-    <title>CSSBattle for NOVEMBER 3 (2026)</title>
-    <updated>2026-11-03T01:36:50.000Z</updated>
-    <published>2026-11-03T01:36:50.000Z</published>
-    <link rel="alternate" href="https://www.youtube.com/watch?v=_kuQflW2Db8"/>
+  <entry xml:lang="en-us">
+    <id>https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/</id>
+    <title xml:lang="en-us">Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters.</title>
+    <updated>2026-11-03T06:49:28.000Z</updated>
+    <published>2026-11-03T06:49:28.000Z</published>
+    <link rel="alternate" href="https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/"/>
     <author>
       <name>Joe Crawford</name>
       <uri>https://artlung.com</uri>
     </author>
+    <summary xml:lang="en-us">Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters.</summary>
   </entry>
-  <entry>
-    <id>https://www.youtube.com/watch?v=kF07_Z3ZmXo</id>
-    <title>4 Hours for This Tiny Result?!</title>
-    <updated>2026-11-02T18:02:50.000Z</updated>
-    <published>2026-11-02T18:02:50.000Z</published>
-    <link rel="alternate" href="https://www.youtube.com/watch?v=kF07_Z3ZmXo"/>
+  <entry xml:lang="en-us">
+    <id>https://www.joshfinnie.com/blog/micro-saas-october-retro/</id>
+    <title xml:lang="en-us">The October Micro SaaS Challenge: A Retro</title>
+    <updated>2026-11-02T00:00:00.000Z</updated>
+    <published>2026-11-02T00:00:00.000Z</published>
+    <link rel="alternate" href="https://www.joshfinnie.com/blog/micro-saas-october-retro/"/>
     <author>
-      <name>Chris Minnick</name>
-      <uri>https://www.chrisminnick.com</uri>
+      <name>Josh Finnie</name>
+      <uri>https://www.joshfinnie.com</uri>
     </author>
+    <summary xml:lang="en-us">Four micro SaaS products in four weeks, built with Claude Code: what shipped, which rules broke, what it cost, and what I&apos;d change next time.</summary>
   </entry>
   <entry xml:lang="en">
     <id>https://joshtronic.com/2026/11/01/open-to-work/</id>
@@ -85,7 +88,19 @@
       <name>Josh Müller</name>
       <uri>https://joshmuller.ca</uri>
     </author>
-    <summary xml:lang="en">Nutrition assumptions and sources</summary>
+    <summary xml:lang="en">A gluten-free chocolate cake made with black beans and cocoa, with estimated calories and macros.</summary>
+  </entry>
+  <entry xml:lang="en">
+    <id>https://joshmuller.ca/docs/healthy-eating-plan-builder/</id>
+    <title xml:lang="en">Healthy Weight Plan Builder</title>
+    <updated>2026-10-30T18:19:07.000Z</updated>
+    <published>2026-10-30T18:19:07.000Z</published>
+    <link rel="alternate" href="https://joshmuller.ca/docs/healthy-eating-plan-builder/"/>
+    <author>
+      <name>Josh Müller</name>
+      <uri>https://joshmuller.ca</uri>
+    </author>
+    <summary xml:lang="en">Download the Word document (.docx) A universal AI nutrition coach prompt by Span AI Solutions · Version 1.2 · October 2026 Created by Josh Müller ( @theJoshMuller ) and Kamila Buitrago ( @theKamilaBuitrago ) · spanaisolutions.com How to use it Click copy to copy the text in the box. Paste it into any AI chat: Claude, ChatGPT, Gemini, DeepSeek, or another one. Press send. The AI will ask you some e</summary>
   </entry>
   <entry xml:lang="en">
     <id>https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/</id>
@@ -109,7 +124,19 @@
       <name>Joshua Grant</name>
       <uri>https://joshgr.com</uri>
     </author>
-    <summary xml:lang="en">It takes what we know and infers new words between the lines</summary>
+    <summary xml:lang="en">I wanted to make a random word generator to help write stories and think new thoughts. After all, naming is hard . What’s a convincing name for a new city? Or a person? Or a food?</summary>
+  </entry>
+  <entry xml:lang="en">
+    <id>https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/</id>
+    <title xml:lang="en">Knowing How to Build Something Is Different From Knowing What Should Be Built</title>
+    <updated>2026-10-28T17:00:00.000Z</updated>
+    <published>2026-10-28T17:00:00.000Z</published>
+    <link rel="alternate" href="https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/"/>
+    <author>
+      <name>Joshua Morris</name>
+      <uri>https://joshuamorris.info</uri>
+    </author>
+    <summary xml:lang="en">Knowing how to build software is not the same as knowing what should be built. On craft, judgment, architecture, and why AI makes that distinction sharper.</summary>
   </entry>
   <entry xml:lang="en">
     <id>https://joshghent.com/enterprise-sales-teams/</id>
@@ -124,15 +151,27 @@
     <summary xml:lang="en">I asked for a price on a few extra seats of software we already pay for. Two days and a pile of irrelevant questions later, I got one.</summary>
   </entry>
   <entry xml:lang="en">
-    <id>https://joshuamorris.info/experiments/weird-web-october-2026/skeuomorphism/</id>
-    <title xml:lang="en">Skeuomorphism</title>
-    <updated>2026-10-27T00:00:00.000Z</updated>
-    <published>2026-10-27T00:00:00.000Z</published>
-    <link rel="alternate" href="https://joshuamorris.info/experiments/weird-web-october-2026/skeuomorphism/"/>
+    <id>https://joshghent.com/php2shell-overreaction/</id>
+    <title xml:lang="en">Last week was terrible. It didn&apos;t have to be</title>
+    <updated>2026-10-28T00:00:00.000Z</updated>
+    <published>2026-10-28T00:00:00.000Z</published>
+    <link rel="alternate" href="https://joshghent.com/php2shell-overreaction/"/>
     <author>
-      <name>Joshua Morris</name>
-      <uri>https://joshuamorris.info</uri>
+      <name>Josh Ghent</name>
+      <uri>https://joshghent.com</uri>
     </author>
-    <summary xml:lang="en">Operate a Radio Shack Armatron and move objects around its tabletop.</summary>
+    <summary xml:lang="en">PHP2Shell scored a CVSS 9.2 and sent governments and ops teams into a panic. A week later, nobody has shown it working end to end, and the AI story behind it doesn&apos;t hold up.</summary>
+  </entry>
+  <entry xml:lang="en">
+    <id>https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/</id>
+    <title xml:lang="en">Learning a New Tech Stack with an LLM</title>
+    <updated>2026-10-26T00:00:00.000Z</updated>
+    <published>2026-10-26T00:00:00.000Z</published>
+    <link rel="alternate" href="https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/"/>
+    <author>
+      <name>Josh Sherman</name>
+      <uri>https://joshtronic.com</uri>
+    </author>
+    <summary xml:lang="en">While I mentioned a few weeks back that I&apos;m now recovering from AI Psychosis , that doesn&apos;t mean I&apos;ve given up on the technology completely. I&apos;m writing more emails, and engaging with human beings as much as I can, and that part&apos;s been great. I still use agents as a glorified typewriter to generate code, and still very much get my hands in the dirt and sling code myself. I&apos;ve also gotten quite obs</summary>
   </entry>
 </feed>

@@ -1,0 +1,21 @@
+<p class="network-count" aria-live="polite">
+  <strong data-connections-participant-count>{{ participant_count }}</strong>
+  <span>
+    {% if participant_count == 1 %}participating site{% else %}participating sites{% endif %}
+  </span>
+  ·
+  <strong data-connections-count>{{ connected_site_count }}</strong>
+  <span>
+    {% if connected_site_count == 1 %}site with observed links{% else %}sites with observed links{% endif %}
+  </span>
+  ·
+  <strong data-connections-edge-count>{{ connection_edges | size }}</strong>
+  <span>
+    {% if connection_edges.size == 1 %}observed link{% else %}observed links{% endif %}
+  </span>
+  ·
+  <strong data-connections-topic-count>{{ overlap_pair_count }}</strong>
+  <span>
+    {% if overlap_pair_count == 1 %}site pair with shared topics{% else %}site pairs with shared topics{% endif %}
+  </span>
+</p>

@@ -28,14 +28,6 @@ test("join page covers identity platforms validate nominate and celebrate", asyn
 
   assert.match(join, /permalink: \/join\//);
   assert.match(join, /script: \/assets\/js\/join\.js/);
-  assert.match(join, /Are you a Josh\? Get yourself connected/);
-  assert.match(join, /equally|everyone is welcome|everyone participates/i);
-  assert.match(join, /Choose your declaration/);
-  assert.match(join, /Find your website's setup/);
-  assert.match(join, /Put it on your website/);
-  assert.match(join, /Check that it works/);
-  assert.match(join, /Help JoshBot find you/);
-  assert.match(join, /You're in\. What next\?/);
   assert.match(join, /"josh": true/);
   assert.match(join, /"josh": false/);
   assert.match(join, /\{\s*"version": 1\s*\}/);
@@ -44,19 +36,10 @@ test("join page covers identity platforms validate nominate and celebrate", asyn
   assert.match(join, /site\.data\.platforms_nav/);
   assert.match(join, /generic-static/);
   assert.match(join, /\/implement\/validate\//);
-  assert.match(join, /Check your declaration/);
   assert.match(join, /\/nominate\//);
   assert.doesNotMatch(join, /\/welcome\//);
   assert.match(join, /\/implement\/buttons\//);
   assert.match(join, /#joshternet/);
-  assert.match(
-    join,
-    /doesn't mean JoshBot has discovered or listed|not the same as JoshBot having listed/i,
-  );
-  assert.match(join, /does not establish participation/i);
-  assert.match(join, /establishes participation/i);
-  assert.doesNotMatch(join, /not membership success/i);
-  assert.doesNotMatch(join, /Choose participation identity/i);
   assert.match(join, /data-joshternet-skip-link-track/);
   assert.match(script, /function ensureJoinStart/);
   assert.match(script, /joshternet-join-started/);

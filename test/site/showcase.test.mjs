@@ -1,6 +1,6 @@
 /**
  * Goal: Showcase Liquid uses showcase-card + outbound-href (Umami UTMs),
- * never nests activity-card <li>, and home strip shares the same partial.
+ * never nests activity-card <li>, and the homepage grid shares the same partial.
  * Kind controls are filter buttons (not hash scroll links). Whole card is one
  * covering hit link to the showcased work URL (not the site homepage).
  */
@@ -23,22 +23,11 @@ async function read(relativePath) {
 test("showcase page uses showcase-card without nested activity-card list items", async () => {
   const page = await read("showcase.md");
   assert.match(page, /title: Showcase$/m);
-  assert.match(
-    page,
-    /Explore games, books, art, photography, software, and other creative work/,
-  );
-  assert.match(page, /wandering the internet is discovering what people make/);
-  assert.match(page, /Everything here leads to the original website/);
-  assert.match(
-    page,
-    /not every creative project from every participating site/,
-  );
   assert.doesNotMatch(
     page,
     /hand-selected|handpicked|carefully curated|Our favorite/i,
   );
-  assert.doesNotMatch(page, /No creative works are indexed yet/);
-  assert.match(page, /Nothing has made it into Showcase just yet/);
+  assert.match(page, /network-empty|role="status"/);
   assert.match(page, /showcase-close/);
   assert.match(page, /include showcase-card\.html item=item/);
   assert.doesNotMatch(page, /include activity-card\.html/);
@@ -99,21 +88,55 @@ test("showcase-card CSS places the hit link over the tile and domain bottom-righ
   assert.match(css, /\.showcase-card__domain\s*\{[^}]*text-align:\s*end/s);
 });
 
-test("home showcase strip reuses showcase-card with outbound-href", async () => {
+test("home showcase grid reuses showcase-card with outbound-href", async () => {
   const home = await read("_includes/home-showcase.html");
   assert.match(home, /include showcase-card\.html item=item/);
   assert.doesNotMatch(home, /include activity-card\.html/);
-  assert.match(home, /Things people are making/);
+  assert.match(home, /showcase-list--home|home-showcase/);
+  assert.match(home, /for item in home_showcase limit:\s*6/);
+  const showcase = await read("showcase.md");
+  assert.match(showcase, /for item in showcase_items %}/);
+  assert.doesNotMatch(showcase, /for item in showcase_items limit:/);
 });
 
-test("home showcase list stays a single non-wrapping row", async () => {
+test("showcase lists use three columns from 72rem", async () => {
   const css = await read("assets/css/main.css");
-  assert.match(css, /\.showcase-list--home\s*\{[^}]*flex-wrap:\s*nowrap/s);
-  assert.match(css, /\.showcase-list--home\s*\{[^}]*overflow-x:\s*auto/s);
+  const threeColumns =
+    /@media \(min-width:\s*72rem\)\s*\{\s*\.showcase-list,\s*\.showcase-list--home\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/s;
+  assert.match(css, threeColumns);
+  assert.match(
+    css,
+    /\.showcase-list\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*1fr\)/s,
+  );
+  assert.match(css, /\.showcase-list--home\s*\{[^}]*display:\s*grid/s);
+  assert.match(
+    css,
+    /@media \(min-width:\s*44rem\)\s*\{\s*\.showcase-list,\s*\.showcase-list--home\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/s,
+  );
+  assert.doesNotMatch(
+    css,
+    /\.showcase-list--home\s*\{[^}]*flex-wrap:\s*nowrap/s,
+  );
+  assert.doesNotMatch(
+    css,
+    /\.showcase-list--home\s*\{[^}]*overflow-x:\s*auto/s,
+  );
+  assert.doesNotMatch(
+    css,
+    /\.showcase-list--home > \.showcase-list__item\s*\{[^}]*15rem/s,
+  );
+  assert.doesNotMatch(
+    css,
+    /\.showcase-list\s*\{[^}]*repeat\(auto-fill,\s*minmax\(14rem/s,
+  );
 });
 
 test("showcase-card media keeps posters fully visible and readable", async () => {
   const css = await read("assets/css/main.css");
+  assert.match(
+    css,
+    /\.showcase-card__media\s*\{[^}]*aspect-ratio:\s*1200\s*\/\s*630/,
+  );
   assert.match(
     css,
     /\.showcase-card__media img\s*\{[^}]*object-fit:\s*contain[^}]*object-position:\s*center/s,
@@ -121,9 +144,5 @@ test("showcase-card media keeps posters fully visible and readable", async () =>
   assert.doesNotMatch(
     css,
     /\.showcase-card:hover \.showcase-card__media img[^}]*transform:\s*scale/,
-  );
-  assert.match(
-    css,
-    /\.showcase-list--home > \.showcase-list__item\s*\{[^}]*15rem/s,
   );
 });

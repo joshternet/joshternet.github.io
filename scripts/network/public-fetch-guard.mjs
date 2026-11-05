@@ -23,7 +23,7 @@ export const MAX_PUBLIC_FETCH_REDIRECTS = 5;
  *   arrayBuffer?: () => Promise<ArrayBuffer>,
  * }} response
  * @param {number} maxBytes
- * @param {{ overflow?: "truncate" | "throw" }} [options]
+ * @param {{ overflow?: "truncate" | "throw", detail?: { bodyComplete?: boolean, bytesReceived?: number } }} [options]
  * @returns {Promise<Buffer>}
  */
 export async function readCappedResponseBytes(
@@ -32,6 +32,18 @@ export async function readCappedResponseBytes(
   options = {},
 ) {
   const overflow = options.overflow === "throw" ? "throw" : "truncate";
+  /**
+   * @param {Buffer} buffer
+   * @param {boolean} bodyComplete
+   * @returns {Buffer}
+   */
+  const finish = (buffer, bodyComplete) => {
+    if (options.detail && typeof options.detail === "object") {
+      options.detail.bodyComplete = bodyComplete;
+      options.detail.bytesReceived = buffer.length;
+    }
+    return buffer;
+  };
   const lengthHeader =
     typeof response.headers?.get === "function"
       ? response.headers.get("content-length")
@@ -92,14 +104,20 @@ export async function readCappedResponseBytes(
           }
         }
 
-        break;
+        return finish(
+          Buffer.concat(chunks.map((chunk) => Buffer.from(chunk))),
+          false,
+        );
       }
 
       total += value.byteLength;
       chunks.push(value);
     }
 
-    return Buffer.concat(chunks.map((chunk) => Buffer.from(chunk)));
+    const streamed = Buffer.concat(chunks.map((chunk) => Buffer.from(chunk)));
+    const short =
+      Number.isFinite(contentLength) && contentLength > streamed.length;
+    return finish(streamed, !short);
   }
 
   if (typeof response.arrayBuffer !== "function") {
@@ -113,10 +131,11 @@ export async function readCappedResponseBytes(
       throw new Error(`Response exceeds ${maxBytes} bytes`);
     }
 
-    return buffer.subarray(0, maxBytes);
+    return finish(buffer.subarray(0, maxBytes), false);
   }
 
-  return buffer;
+  const short = Number.isFinite(contentLength) && contentLength > buffer.length;
+  return finish(buffer, !short);
 }
 
 /**

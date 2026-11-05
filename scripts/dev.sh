@@ -106,6 +106,7 @@ print_plan() {
   printf 'button: %s\n' "http://127.0.0.1:8790/embed/joshternet-button.js"
   printf 'declaration-check: %s\n' "http://127.0.0.1:8789/v1/declaration-check"
   printf 'seed-nominations: %s\n' "http://127.0.0.1:8787/v1/seed-nominations"
+  printf 'crawl: %s\n' "npm run update:local"
   printf 'jekyll: %s\n' "${jekyll_cmd[*]}"
   printf 'worker: %s\n' "${button_cmd[*]}"
   printf 'worker: %s\n' "${check_cmd[*]}"

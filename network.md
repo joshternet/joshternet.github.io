@@ -24,17 +24,7 @@ Pick a website that catches your eye and have a look around. You might find a gr
 
 This is the part of the Joshternet that JoshBot has found and checked so far. There may be plenty of other participating websites still waiting to be discovered. Participation starts by publishing a valid declaration at `/.well-known/josh`—you do not need to appear here first ([Join]({{ '/join/' | relative_url }})).
 
-{% if jekyll.environment == "development" %}
-<div class="network-dev-preview">
-  <strong>Development preview</strong>
-  <span>Fixture cards for Josh, Non-Josh, and Undeclared are appended locally.</span>
-</div>
-{% endif %}
-
 {% assign network_sites = site.data.network %}
-{% if jekyll.environment == "development" %}
-  {% assign network_sites = network_sites | concat: site.data.network_dev %}
-{% endif %}
 {% comment %}
   No-JS fallback: alphabetical by domain. JavaScript replaces order with Discover
   (random), Recently joined, Oldest first, or Alphabetical while preserving filters.

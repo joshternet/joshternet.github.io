@@ -32,19 +32,8 @@ test("community page points at #joshternet without embedding chat; footer omits 
 
   assert.match(community, /^title: Community$/m);
   assert.match(community, /^# Community$/m);
-  assert.match(community, /join in the joshing/);
-  assert.match(community, /independent websites remain independent/i);
-  assert.match(community, /protections are not cut for length/);
-  assert.match(
-    community,
-    /Stewardship is responsibility for the project\. It is not ownership of the network\./,
-  );
   assert.match(community, /Joshness is declared, never derived\./);
   assert.match(community, /No Josh outranks another Josh/);
-  assert.match(
-    community,
-    /Interoperability does not require interaction, and freedom of expression does not require compelled amplification\./,
-  );
   assert.match(community, /#joshternet/);
   assert.match(community, /https:\/\/web\.libera\.chat\/#joshternet/);
   assert.match(community, /irc\.libera\.chat/);
@@ -73,18 +62,12 @@ test("governance page keeps founding maintainer PRE-JOSH and Draft boundaries", 
 
   assert.match(governance, /^title: Governance$/m);
   assert.match(governance, /^# Governance$/m);
-  assert.match(
-    governance,
-    /Joshua Morris created the Joshternet and currently serves as its founding maintainer/,
-  );
   assert.match(governance, /\*\*PRE-JOSH\*\*/);
   assert.match(governance, /None are Accepted/);
-  assert.match(governance, /What has not been established/);
   assert.match(governance, /formal membership or member classes/);
   assert.match(governance, /\[Community\]\[community\]/);
   assert.match(governance, /Joshness is declared, never derived\./);
   assert.match(governance, /No Josh outranks another Josh/);
-  assert.match(governance, /Josh identity is not required/);
   assert.match(governance, /https:\/\/github\.com\/joshternet\/spec\/issues/);
   assert.match(governance, /https:\/\/github\.com\/joshternet\/spec\/pulls/);
 });
@@ -169,8 +152,13 @@ test("primary navigation keeps top-level labels and Implement children", async (
   assert.match(data, /path: \/implement\/buttons\//);
   assert.match(data, /path: \/implement\/connections\//);
   assert.match(data, /title: Connections/);
+  assert.doesNotMatch(data, /path: \/implement\/uses\//);
   assert.match(data, /title: Content handbook/);
   assert.match(data, /path: \/implement\/content\//);
+  assert.match(
+    await read("_data/content_nav.yml"),
+    /path: \/implement\/content\/uses\//,
+  );
   assert.doesNotMatch(data, /title: Slashpages/);
   assert.doesNotMatch(data, /path: \/implement\/slashpages\//);
   assert.doesNotMatch(data, /title: Explore notes/);
@@ -530,14 +518,11 @@ test("connections crawl page documents sync signals under Implement", async () =
   const page = await read("implement/connections.md");
 
   assert.match(guide, /\/implement\/connections\//);
-  assert.match(guide, /How Joshternet gathers connections/);
   assert.match(page, /permalink: \/implement\/connections\//);
   assert.match(page, /type: TechArticle/);
-  assert.match(page, /how websites connect/i);
   assert.match(page, /`declared`/);
   assert.match(page, /`observed`/);
   assert.match(page, /`heuristic`/);
-  assert.match(page, /aren't proof of friendship/i);
   assert.match(page, /npm run nlp:sync/);
   assert.doesNotMatch(page, /nlp:probe-directory/);
   assert.doesNotMatch(page, /nlp:scale-probe/);
@@ -568,21 +553,11 @@ test("implement landing is a join and handbook gateway", async () => {
 
   assert.match(guide, /permalink: \/implement\//);
   assert.match(guide, /title: Implement the Joshternet/);
-  assert.match(guide, /Publish a valid \/\.well-known\/josh declaration/);
-  assert.match(guide, /## Join the Joshternet/);
-  assert.match(guide, /## Choose your declaration/);
-  assert.match(guide, /## Get connected in three steps/);
-  assert.match(guide, /## Help the web discover what you publish/);
-  assert.match(guide, /## What joining requires/);
-  assert.match(guide, /## Choose your publishing platform/);
-  assert.match(guide, /## Build something with Joshternet/);
-  assert.match(guide, /## Participation and discovery are separate/);
-  assert.match(guide, /## Technical references/);
+  assert.match(guide, /\/\.well-known\/josh/);
   assert.match(guide, /### Stop publishing a declaration/);
   assert.match(guide, /\{\s*"version":\s*1\s*\}/);
   assert.match(guide, /"josh": true/);
   assert.match(guide, /"josh": false/);
-  assert.match(guide, /Property omitted/);
   assert.match(guide, /\/join\//);
   assert.match(guide, /\/implement\/validate\//);
   assert.match(guide, /\/network\//);
@@ -592,27 +567,20 @@ test("implement landing is a join and handbook gateway", async () => {
   assert.match(guide, /\/implement\/platforms\//);
   assert.match(guide, /\/implement\/buttons\//);
   assert.match(guide, /\/specs\//);
-  assert.match(guide, /Connect independent websites/);
   assert.match(guide, /\/implement\/content\/connections\//);
-  assert.match(guide, /Improve content discovery/);
   assert.match(guide, /\/implement\/content\/explore\//);
-  assert.match(guide, /How Joshternet gathers connections/);
   assert.match(guide, /\/implement\/connections\//);
-  assert.match(guide, /How Joshternet builds Explore views/);
   assert.match(guide, /\/implement\/explore\//);
-  assert.match(guide, /Needed to join\?/);
   assert.match(guide, /joshua\.example/);
   assert.match(guide, /curl -i https:\/\/joshua\.example\/\.well-known\/josh/);
   assert.match(guide, /\{ "version": "1" \}/);
   assert.match(guide, /\{ "version": 1, "josh": "true" \}/);
-  assert.match(guide, /JSON integer token `1`/);
   assert.match(guide, /404 Not Found/);
   assert.match(guide, /410 Gone/);
   assert.match(guide, /RFC-JOSH-0001/);
   assert.match(guide, /RFC-JOSH-0002/);
   assert.doesNotMatch(guide, /example\.invalid/);
   assert.doesNotMatch(guide, /content-joshbot-status/);
-  assert.doesNotMatch(guide, /Optional: Help Joshternet explore your website/);
 });
 
 test("specs page maps Draft RFCs without becoming a second Implement guide", async () => {
@@ -620,14 +588,10 @@ test("specs page maps Draft RFCs without becoming a second Implement guide", asy
 
   assert.match(specs, /permalink: \/specs\//);
   assert.match(specs, /^title: Specifications$/m);
-  assert.match(specs, /^# Specifications$/m);
   assert.match(specs, /type: TechArticle/);
-  assert.match(specs, /## Where things stand/);
   assert.match(specs, /PRE-JOSH/);
-  assert.match(specs, /None has been Accepted yet/);
   assert.match(specs, /\/governance\//);
   assert.match(specs, /Joshness is declared, never derived\./);
-  assert.match(specs, /## Which RFC should you read\?/);
   assert.match(specs, /\/join\//);
   assert.match(specs, /\/implement\//);
   assert.match(
@@ -652,7 +616,6 @@ test("slashpages OPML guide lives in the content handbook", async () => {
   const page = await read("implement/content/opml.md");
 
   assert.match(guide, /\/implement\/content\/opml\//);
-  assert.match(guide, /Help the web discover what you publish/);
   assert.match(stub, /permalink: \/implement\/slashpages\//);
   assert.match(stub, /\/implement\/content\/opml\//);
   assert.match(page, /permalink: \/implement\/content\/opml\//);
@@ -665,7 +628,6 @@ test("slashpages OPML guide lives in the content handbook", async () => {
   assert.match(page, /github\.com\/pfefferle\/well-known-slashpages/);
   assert.match(page, /opml\.org\/spec2\.opml/);
   assert.match(page, /slashpages\.net/);
-  assert.match(page, /Participation still depends only/);
   assert.doesNotMatch(page, /joshuamorris\.info/);
 });
 

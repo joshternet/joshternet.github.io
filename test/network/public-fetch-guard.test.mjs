@@ -90,6 +90,129 @@ test("readCappedResponseBytes ignores cancel failures on overflow", async () => 
   assert.deepEqual([...truncated], [9, 8]);
 });
 
+test("readCappedResponseBytes reports a short body when Content-Length is larger", async () => {
+  const detail = {};
+  const buffer = await readCappedResponseBytes(
+    {
+      headers: { get: () => "10" },
+      arrayBuffer: async () => Buffer.from("abcd"),
+    },
+    100,
+    { detail },
+  );
+  assert.equal(buffer.toString(), "abcd");
+  assert.equal(detail.bodyComplete, false);
+  assert.equal(detail.bytesReceived, 4);
+});
+
+test("readCappedResponseBytes throws when Content-Length exceeds the cap", async () => {
+  await assert.rejects(
+    () =>
+      readCappedResponseBytes(
+        {
+          headers: { get: () => "50" },
+          arrayBuffer: async () => Buffer.from("nope"),
+        },
+        2,
+        { overflow: "throw" },
+      ),
+    /Content-Length/,
+  );
+});
+
+test("readCappedResponseBytes rejects a response with no body", async () => {
+  await assert.rejects(
+    () => readCappedResponseBytes({ headers: { get: () => null } }, 10),
+    /no readable body/,
+  );
+});
+
+test("readCappedResponseBytes marks a short stream incomplete", async () => {
+  const detail = {};
+  const buffer = await readCappedResponseBytes(
+    {
+      headers: { get: () => "8" },
+      body: {
+        getReader() {
+          return {
+            async read() {
+              return { done: true, value: undefined };
+            },
+          };
+        },
+      },
+    },
+    10,
+    { detail },
+  );
+  assert.equal(buffer.length, 0);
+  assert.equal(detail.bodyComplete, false);
+});
+
+test("readCappedResponseBytes skips empty stream chunks", async () => {
+  let reads = 0;
+  const buffer = await readCappedResponseBytes(
+    {
+      headers: { get: () => null },
+      body: {
+        getReader() {
+          return {
+            async read() {
+              reads += 1;
+              if (reads === 1) {
+                return { done: false, value: new Uint8Array() };
+              }
+              if (reads === 2) {
+                return { done: false, value: undefined };
+              }
+              return { done: true, value: undefined };
+            },
+          };
+        },
+      },
+    },
+    10,
+  );
+  assert.equal(buffer.length, 0);
+});
+
+test("readCappedResponseBytes drops a chunk that starts past the cap", async () => {
+  let reads = 0;
+  const buffer = await readCappedResponseBytes(
+    {
+      headers: { get: () => null },
+      body: {
+        getReader() {
+          return {
+            async read() {
+              reads += 1;
+              if (reads === 1) {
+                return { done: false, value: Uint8Array.from([1, 2]) };
+              }
+              return { done: false, value: Uint8Array.from([3]) };
+            },
+            async cancel() {},
+          };
+        },
+      },
+    },
+    2,
+    { overflow: "truncate" },
+  );
+  assert.deepEqual([...buffer], [1, 2]);
+});
+
+test("readCappedResponseBytes ignores a non-object detail sink", async () => {
+  const buffer = await readCappedResponseBytes(
+    {
+      arrayBuffer: async () => Buffer.from("ab"),
+    },
+    10,
+    { detail: 1 },
+  );
+  assert.equal(buffer.toString(), "ab");
+});
+
 test("continueIfPublicUrl aborts non-http schemes", async () => {
   /** @type {string[]} */
   const outcomes = [];

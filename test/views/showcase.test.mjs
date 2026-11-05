@@ -13,6 +13,7 @@ import {
   buildMadeItems,
   buildShowcaseHomeItems,
   buildShowcaseItems,
+  HOME_SHOWCASE_LIMIT,
   buildViewDocuments,
   channelItemsFromNetwork,
   compareShowcaseRecency,
@@ -58,6 +59,7 @@ import {
   resolveActivityWindowDays,
   publisherDisplayTitle,
   dedupeCrosspostedContentItems,
+  isWritingActivityItem,
   fairPerOriginLimit,
   contentTitleDedupeKey,
   BOOKS_WINDOW_DAYS,
@@ -67,9 +69,160 @@ import {
   ACTIVITY_WINDOW_DAYS_LIVE,
   ACTIVITY_MAX_PER_ORIGIN,
   SHOWCASE_MAX_PER_ORIGIN_PER_KIND,
+  isExperimentChildUrl,
+  isOutsideCreativeDatingWindow,
   uniqueActivityItemsByUrl,
 } from "../../scripts/views/lib.mjs";
 import { isShowcaseChromePath } from "../../scripts/network/slash-pages.mjs";
+
+test("isExperimentChildUrl detects experiment leaves only", () => {
+  assert.equal(
+    isExperimentChildUrl("https://a.example/experiments/corkboard/"),
+    true,
+  );
+  assert.equal(isExperimentChildUrl("https://a.example/experiment/toy/"), true);
+  assert.equal(isExperimentChildUrl("https://a.example/experiments/"), false);
+  assert.equal(isExperimentChildUrl("https://a.example/games/x/"), false);
+  assert.equal(isExperimentChildUrl(null), false);
+  assert.equal(isExperimentChildUrl("not a url"), false);
+});
+
+test("isOutsideCreativeDatingWindow rejects non-objects and undated archives", () => {
+  const now = new Date("2026-11-04T12:00:00.000Z");
+  assert.equal(isOutsideCreativeDatingWindow(null), false);
+  assert.equal(isOutsideCreativeDatingWindow(undefined), false);
+  assert.equal(isOutsideCreativeDatingWindow("nope"), false);
+  assert.equal(isOutsideCreativeDatingWindow(42), false);
+  assert.equal(
+    isOutsideCreativeDatingWindow(
+      {
+        url: "https://a.example/projects/old/",
+        content_type: "project",
+        source_kind: "portfolio",
+      },
+      new Date("invalid"),
+    ),
+    true,
+  );
+  assert.equal(
+    isOutsideCreativeDatingWindow(
+      {
+        url: "https://a.example/projects/old/",
+        content_type: "project",
+        source_kind: "portfolio",
+      },
+      /** @type {Date} */ (/** @type {unknown} */ ("not-a-date")),
+    ),
+    true,
+  );
+  assert.equal(
+    isOutsideCreativeDatingWindow(
+      {
+        url: "https://a.example/projects/fresh/",
+        content_type: "project",
+        source_kind: "portfolio",
+        published_at: "2026-06-01T00:00:00.000Z",
+      },
+      now,
+    ),
+    false,
+  );
+  assert.equal(
+    isOutsideCreativeDatingWindow(
+      {
+        url: "https://a.example/experiments/fresh/",
+        content_type: "project",
+        published_at: "2026-06-01T00:00:00.000Z",
+      },
+      now,
+    ),
+    false,
+  );
+  assert.equal(
+    isOutsideCreativeDatingWindow(
+      {
+        url: "https://a.example/books/novel/",
+        content_type: "project",
+        published_at: "2026-06-01T00:00:00.000Z",
+      },
+      now,
+    ),
+    false,
+  );
+  assert.equal(
+    isOutsideCreativeDatingWindow(
+      {
+        url: "https://a.example/books/undated/",
+        content_type: "project",
+        published_at: "   ",
+      },
+      now,
+    ),
+    true,
+  );
+  assert.equal(
+    isOutsideCreativeDatingWindow(
+      {
+        url: "https://a.example/books/ancient/",
+        content_type: "project",
+        published_at: "2022-01-01T00:00:00.000Z",
+      },
+      now,
+    ),
+    true,
+  );
+  assert.equal(
+    isOutsideCreativeDatingWindow(
+      {
+        url: "https://a.example/misc/release/",
+        content_type: "project",
+        categories: ["a book"],
+      },
+      now,
+    ),
+    true,
+  );
+  assert.equal(
+    isOutsideCreativeDatingWindow(
+      {
+        url: "https://a.example/projects/ancient/",
+        content_type: "project",
+        source_kind: "portfolio",
+        published_at: "2022-01-01T00:00:00.000Z",
+      },
+      now,
+    ),
+    true,
+  );
+  assert.equal(
+    isOutsideCreativeDatingWindow(
+      {
+        url: "https://a.example/experiments/ancient/",
+        content_type: "project",
+        published_at: "2022-01-01T00:00:00.000Z",
+      },
+      now,
+    ),
+    true,
+  );
+  assert.equal(
+    isOutsideCreativeDatingWindow(
+      {
+        url: "https://a.example/games/arcade/",
+        content_type: "game",
+      },
+      now,
+    ),
+    false,
+  );
+  assert.equal(
+    isOutsideCreativeDatingWindow({
+      url: "://bad",
+      content_type: "project",
+    }),
+    false,
+  );
+});
 
 test("showcaseKind maps content types to Showcase labels", () => {
   assert.equal(showcaseKind("photograph"), "photography");
@@ -183,6 +336,7 @@ test("isShowcaseContentItem filters hub and non-creative", () => {
       url: "https://joshuamorris.info/experiments/corkboard/",
       title: "Corkboard",
       summary: "A corkboard for notes.",
+      published_at: "2026-06-01T00:00:00.000Z",
     }),
     true,
   );
@@ -191,6 +345,7 @@ test("isShowcaseContentItem filters hub and non-creative", () => {
       content_type: "article",
       url: "https://joshuamorris.info/experiments/model-viewer/",
       title: "Model viewer",
+      published_at: "2026-06-01T00:00:00.000Z",
     }),
     true,
   );
@@ -443,6 +598,33 @@ test("buildShowcaseHomeItems respects an explicit numeric limit", () => {
   assert.deepEqual(buildShowcaseHomeItems(null), []);
 });
 
+test("buildShowcaseHomeItems caps the homepage at six and keeps order", () => {
+  assert.equal(HOME_SHOWCASE_LIMIT, 6);
+  const pool = Array.from({ length: 8 }, (_, index) => {
+    const day = String(index + 1).padStart(2, "0");
+
+    return {
+      content_type: "game",
+      url: `https://maker-${index}.example/games/toy/`,
+      site_origin: `https://maker-${index}.example`,
+      title: `Toy ${index}`,
+      summary: `A game from member ${index} for the homepage cap.`,
+      published_at: `2026-10-${day}T00:00:00.000Z`,
+      image: `https://maker-${index}.example/images/toy.png`,
+    };
+  });
+  const capped = buildShowcaseHomeItems(pool);
+  const ordered = buildShowcaseHomeItems(pool, pool.length);
+
+  assert.equal(capped.length, 6);
+  assert.equal(ordered.length, pool.length);
+  assert.deepEqual(
+    capped.map((item) => item.url),
+    ordered.slice(0, 6).map((item) => item.url),
+  );
+  assert.equal(buildShowcaseItems(pool).length, pool.length);
+});
+
 test("buildShowcaseHomeItems skips eligible works without site_origin", () => {
   assert.deepEqual(
     buildShowcaseHomeItems([
@@ -673,6 +855,7 @@ test("buildShowcaseItems highlights individual experiments and groups by kind", 
         title: "Corkboard",
         summary: "Notes and pins",
         image: "https://joshuamorris.info/images/corkboard.webp",
+        published_at: "2026-06-01T00:00:00.000Z",
       },
       {
         content_type: "article",
@@ -680,6 +863,7 @@ test("buildShowcaseItems highlights individual experiments and groups by kind", 
         site_origin: "https://joshuamorris.info",
         title: "Model viewer",
         summary: "Trion figures",
+        published_at: "2026-06-01T00:00:00.000Z",
       },
       {
         content_type: "project",
@@ -889,7 +1073,7 @@ test("buildViewDocuments includes showcase, happening and search content_type", 
           site_origin: "https://a.example",
           content_type: "article",
           language: "en",
-          published_at: "",
+          published_at: "2026-06-01T00:00:00.000Z",
         },
         {
           identity: "url:https://b.example/experiments/model-viewer/",
@@ -900,7 +1084,7 @@ test("buildViewDocuments includes showcase, happening and search content_type", 
           site_origin: "https://b.example",
           content_type: "article",
           language: "en",
-          published_at: "",
+          published_at: "2026-06-01T00:00:00.000Z",
         },
       ],
     },
@@ -1529,7 +1713,7 @@ test("creativePathKind: maps known root paths to correct kinds (L762-803)", () =
   assert.equal(creativePathKind("https://a.example/reels/clip/"), "video");
   assert.equal(
     creativePathKind("https://a.example/cssbattles/nov-1/"),
-    "video",
+    "podcasts",
   );
   assert.equal(
     creativePathKind("https://a.example/study-hall/062/"),
@@ -1586,6 +1770,7 @@ test("isMadeContentItem: article with creative child URL uses creativePathKind (
     content_type: "article",
     title: "My Experiment",
     summary: "A detailed experimental write-up.",
+    published_at: "2026-06-01T00:00:00.000Z",
   };
   assert.equal(isMadeContentItem(item), true);
 });
@@ -1811,6 +1996,7 @@ test("isCreativeSeriesHubUrl excludes WWO hub when day toys exist", () => {
     site_origin: "https://joshuamorris.info",
     title: "Corkboard",
     summary: "A corkboard for notes and pins in the browser.",
+    published_at: "2026-06-01T00:00:00.000Z",
   };
   const modelViewer = {
     content_type: "article",
@@ -1818,6 +2004,7 @@ test("isCreativeSeriesHubUrl excludes WWO hub when day toys exist", () => {
     site_origin: "https://joshuamorris.info",
     title: "Model viewer",
     summary: "Inspect Trion figures in the browser.",
+    published_at: "2026-06-01T00:00:00.000Z",
   };
   const hubItem = {
     content_type: "collection",
@@ -1832,6 +2019,7 @@ test("isCreativeSeriesHubUrl excludes WWO hub when day toys exist", () => {
     site_origin: "https://joshuamorris.info",
     title: `Day toy ${index + 1}`,
     summary: "A Weird Web October day experiment with enough summary text.",
+    published_at: "2026-10-01T00:00:00.000Z",
   }));
 
   const items = buildMadeItems(
@@ -1979,7 +2167,7 @@ test("publisherDisplayTitle lifts Chris Minnick from self-intro when title is ho
   );
 });
 
-test("dedupeCrosspostedContentItems prefers podcast over same-title article", () => {
+test("dedupeCrosspostedContentItems prefers the written post over a same-title episode", () => {
   assert.deepEqual(dedupeCrosspostedContentItems(null), []);
   const kept = dedupeCrosspostedContentItems([
     null,
@@ -2016,14 +2204,12 @@ test("dedupeCrosspostedContentItems prefers podcast over same-title article", ()
   assert.ok(
     kept.some(
       (item) =>
-        item.content_type === "podcast_episode" &&
-        item.url === "https://www.youtube.com/watch?v=tiny",
+        item.content_type === "article" &&
+        item.url === "https://www.chrisminnick.com/blog/4-hours/",
     ),
   );
   assert.equal(
-    kept.some((item) =>
-      String(item.url).includes("www.chrisminnick.com/blog/"),
-    ),
+    kept.some((item) => item.url === "https://www.youtube.com/watch?v=tiny"),
     false,
   );
   assert.ok(
@@ -2045,8 +2231,8 @@ test("dedupeCrosspostedContentItems prefers podcast over same-title article", ()
     },
   ]);
   assert.equal(videoWins.length, 1);
-  assert.equal(videoWins[0].content_type, "video");
-  // Missing content_type uses the neutral score arm (not article/podcast).
+  assert.equal(videoWins[0].content_type, "note");
+  // Missing content_type uses the neutral score arm and loses to writing.
   const typelessWins = dedupeCrosspostedContentItems([
     {
       url: "https://a.example/typeless/",
@@ -2061,7 +2247,57 @@ test("dedupeCrosspostedContentItems prefers podcast over same-title article", ()
     },
   ]);
   assert.equal(typelessWins.length, 1);
-  assert.equal(typelessWins[0].url, "https://a.example/typeless/");
+  assert.equal(typelessWins[0].url, "https://a.example/typeless-article/");
+  const typedAnnouncementLoses = dedupeCrosspostedContentItems([
+    {
+      content_type: "episode_announcement",
+      url: "https://a.example/blog/out-now/",
+      site_origin: "https://a.example",
+      title: "Office hours",
+      summary: "A short note that the recording is posted.",
+    },
+    {
+      content_type: "video",
+      url: "https://www.youtube.com/watch?v=office1",
+      site_origin: "https://a.example",
+      title: "Office hours",
+    },
+  ]);
+  assert.equal(typedAnnouncementLoses.length, 1);
+  assert.equal(typedAnnouncementLoses[0].content_type, "video");
+  const announcementLoses = dedupeCrosspostedContentItems([
+    {
+      content_type: "article",
+      url: "https://a.example/blog/new-episode/",
+      site_origin: "https://a.example",
+      title: "New episode: Same Clip",
+      summary: "Watch the video",
+    },
+    {
+      content_type: "podcast_episode",
+      url: "https://www.youtube.com/watch?v=announce",
+      site_origin: "https://a.example",
+      title: "New episode: Same Clip",
+    },
+  ]);
+  assert.equal(announcementLoses.length, 1);
+  assert.equal(announcementLoses[0].content_type, "podcast_episode");
+  const sameVideo = dedupeCrosspostedContentItems([
+    {
+      content_type: "podcast_episode",
+      url: "https://www.youtube.com/watch?v=sameid1",
+      site_origin: "https://a.example",
+      title: "Podcast cut",
+    },
+    {
+      content_type: "video",
+      url: "https://youtu.be/sameid1",
+      site_origin: "https://a.example",
+      title: "Video cut",
+    },
+  ]);
+  assert.equal(sameVideo.length, 1);
+  assert.equal(sameVideo[0].content_type, "podcast_episode");
 });
 
 test("fairPerOriginLimit keeps at most N items per origin", () => {
@@ -2410,6 +2646,7 @@ test("isMadeContentItem uses siblingUrls option for series hubs", () => {
     url: "https://joshuamorris.info/experiments/weird-web-october-2026/",
     title: "Weird Web October 2026",
     summary: "Eight daily toys for Weird Web October.",
+    published_at: "2026-10-01T00:00:00.000Z",
   };
   assert.equal(
     isMadeContentItem(hub, {
@@ -3159,6 +3396,7 @@ test("isMadeContentItem keeps experiments games and rejects plain articles", () 
       title: "Analog",
       summary: "Weird Web October day toy",
       image: "https://joshuamorris.info/images/analog.webp",
+      published_at: "2026-10-07T00:00:00.000Z",
     }),
     true,
   );
@@ -3264,6 +3502,46 @@ test("What's New receives Showcase toys; writing does not enter Showcase", () =>
 });
 
 test("comics and education path kinds + past education Showcase", () => {
+  assert.equal(
+    showcaseKindForItem({
+      url: "https://www.youtube.com/watch?v=Q0_MeKq7nZo",
+      title: "CSSBattle for NOVEMBER 5 (2026)",
+      content_type: "video",
+    }),
+    "podcasts",
+  );
+  assert.equal(
+    showcaseKindForItem({
+      url: "https://www.youtube.com/watch?v=other",
+      title: "A product demo",
+      content_type: "video",
+    }),
+    "video",
+  );
+  assert.equal(
+    showcaseKindForItem({
+      url: "https://joshua.example/cssbattles/nov-1/",
+      content_type: "video",
+    }),
+    "podcasts",
+  );
+  assert.equal(
+    showcaseKindForItem({
+      url: "https://www.youtube.com/watch?v=plain",
+      content_type: "video",
+    }),
+    "video",
+  );
+  assert.equal(
+    showcaseKindForItem({
+      url: "https://joshua.example/blog/css-battle-notes/",
+      title: "CSS Battle notes",
+      content_type: "article",
+    }),
+    "other",
+  );
+  assert.equal(showcaseKindLabel("podcasts", 1), "Podcasts and live streams");
+  assert.equal(showcaseKindLabel("podcasts", 2), "Podcasts and live streams");
   assert.equal(showcaseKindLabel("comics", 2), "Comics");
   assert.equal(showcaseKindLabel("education", 1), "Education");
   assert.equal(
@@ -3516,7 +3794,7 @@ test("elsewhere channels need a recent upload for Showcase and Activity", () => 
   const showcaseUrls = dated.showcase.items.map((item) => item.url);
   const activityUrls = (dated.activity.primary || []).map((item) => item.url);
   assert.deepEqual(showcaseUrls, ["https://www.youtube.com/@fresh"]);
-  assert.ok(activityUrls.includes("https://www.youtube.com/@fresh"));
+  assert.equal(activityUrls.includes("https://www.youtube.com/@fresh"), false);
   assert.equal(activityUrls.includes("https://www.youtube.com/@stale"), false);
   assert.equal(showcaseUrls.includes("https://vimeo.com/undated"), false);
   assert.ok(
@@ -3879,19 +4157,60 @@ test("undated and aged portfolio projects are not Showcase-eligible", () => {
     ),
     true,
   );
-  // Undated experiments stay eligible; undated /projects/ archives do not.
+  // Undated /experiments/ children are archival — never invent dates.
   assert.equal(
     isMadeContentItem(
       {
         content_type: "project",
         url: "https://a.example/experiments/corkboard/",
         title: "Corkboard",
-        summary: "An undated experiment under a creative path stays eligible.",
+        summary: "An undated experiment under a creative path is excluded.",
         image: "https://a.example/corkboard.webp",
       },
       { now },
     ),
+    false,
+  );
+  assert.equal(
+    isMadeContentItem(
+      {
+        content_type: "project",
+        url: "https://joshuastuebner.com/experiments/ex/01_ripples/",
+        title: "01: Ripples",
+        summary: "Somehow reminds me of Metallica",
+        image: "https://joshuastuebner.com/experiments/ex/01_ripples/og.png",
+      },
+      { now },
+    ),
+    false,
+  );
+  assert.equal(
+    isMadeContentItem(
+      {
+        content_type: "project",
+        url: "https://a.example/experiments/fresh-toy/",
+        title: "Fresh Toy",
+        summary: "Dated experiment inside the Showcase year window.",
+        image: "https://a.example/fresh-toy.webp",
+        published_at: "2026-06-01T00:00:00.000Z",
+      },
+      { now },
+    ),
     true,
+  );
+  assert.equal(
+    isMadeContentItem(
+      {
+        content_type: "project",
+        url: "https://a.example/experiments/old-toy/",
+        title: "Old Toy",
+        summary: "Dated experiment outside the Showcase year window.",
+        image: "https://a.example/old-toy.webp",
+        published_at: "2022-01-01T00:00:00.000Z",
+      },
+      { now },
+    ),
+    false,
   );
 });
 
@@ -4309,6 +4628,219 @@ test("youtubeWatchOriginsInWindow and shouldOmitYoutubeChannelCard branches", ()
   );
 });
 
+test("activity omits podcast and CSS Battle shows that Showcase already lists", () => {
+  const views = buildViewDocuments({
+    network: [],
+    content: {
+      items: [
+        {
+          content_type: "video",
+          url: "https://www.youtube.com/watch?v=css",
+          site_origin: "https://artlung.com",
+          title: "CSSBattle for NOVEMBER 5 (2026)",
+          summary: "Daily CSS battle.",
+          image: "https://i.ytimg.com/vi/css/hqdefault.jpg",
+          published_at: "2026-11-03T12:00:00.000Z",
+        },
+        {
+          content_type: "podcast_episode",
+          url: "https://www.youtube.com/watch?v=pod",
+          site_origin: "https://www.chrisminnick.com",
+          title: "This Morse Game Starts at a Brutal 40 WPM",
+          summary: "Forget beginner mode. This oddly addictive Morse Wordle.",
+          image: "https://i.ytimg.com/vi/pod/hqdefault.jpg",
+          published_at: "2026-11-03T12:00:00.000Z",
+        },
+        {
+          content_type: "article",
+          url: "https://www.joshfinnie.com/blog/lightcraft/",
+          site_origin: "https://www.joshfinnie.com",
+          title: "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone",
+          summary: "I spent a week auditing the clone.",
+          published_at: "2026-11-04T00:00:00.000Z",
+        },
+      ],
+    },
+    topics: { communities: [] },
+    connections: {},
+    siteSignals: { origins: [] },
+    generatedAt: "2026-11-05T00:00:00.000Z",
+  });
+  const urls = views.activity.primary.map((item) => item.url);
+  assert.equal(urls.includes("https://www.youtube.com/watch?v=css"), false);
+  assert.equal(urls.includes("https://www.youtube.com/watch?v=pod"), false);
+  assert.ok(urls.includes("https://www.joshfinnie.com/blog/lightcraft/"));
+  assert.equal(isWritingActivityItem(null), false);
+  assert.equal(isWritingActivityItem("nope"), false);
+  assert.equal(
+    isWritingActivityItem({
+      content_type: "note",
+      title: "A note",
+      summary: "Just a note.",
+    }),
+    true,
+  );
+  assert.equal(
+    isWritingActivityItem({
+      content_type: "",
+      title: "Untyped post",
+      summary: "Still writing.",
+    }),
+    true,
+  );
+  assert.ok(
+    views.showcase.items.some(
+      (item) => item.url === "https://www.youtube.com/watch?v=css",
+    ),
+  );
+  assert.ok(
+    views.showcase.items.some(
+      (item) => item.url === "https://www.youtube.com/watch?v=pod",
+    ),
+  );
+});
+
+test("What's New keeps writing and leaves episodes on Showcase", () => {
+  const essay =
+    "I mentioned a podcast once in this essay about databases. The rest is the writing: indexes, backups, and the afternoon I spent checking them. This is not an announcement that an episode is out, and it should stay on What's New.";
+  const views = buildViewDocuments({
+    network: [],
+    content: {
+      items: [
+        {
+          content_type: "article",
+          url: "https://a.example/blog/4-hours/",
+          site_origin: "https://a.example",
+          title: "4 Hours for This Tiny Result?!",
+          summary: "I wrote up the afternoon.",
+          published_at: "2026-11-02T12:00:00.000Z",
+        },
+        {
+          content_type: "video",
+          url: "https://www.youtube.com/watch?v=tinyresult",
+          site_origin: "https://a.example",
+          title: "4 Hours for This Tiny Result?!",
+          summary: "The recording.",
+          published_at: "2026-11-02T12:00:00.000Z",
+          image: "https://i.ytimg.com/vi/tinyresult/hqdefault.jpg",
+        },
+        {
+          content_type: "article",
+          url: "https://a.example/blog/new-episode/",
+          site_origin: "https://a.example",
+          title: "New episode: Tiny Result",
+          summary: "Watch the video",
+          published_at: "2026-11-02T11:00:00.000Z",
+        },
+        {
+          content_type: "podcast_episode",
+          url: "https://www.youtube.com/watch?v=announce1",
+          site_origin: "https://a.example",
+          title: "New episode: Tiny Result",
+          summary: "The episode.",
+          image: "https://i.ytimg.com/vi/announce1/hqdefault.jpg",
+          published_at: "2026-11-02T11:00:00.000Z",
+        },
+        {
+          content_type: "article",
+          url: "https://b.example/essays/databases/",
+          site_origin: "https://b.example",
+          title: "What I kept from a long conversation",
+          summary: essay,
+          published_at: "2026-11-03T12:00:00.000Z",
+        },
+        {
+          content_type: "note",
+          url: "https://b.example/notes/hello/",
+          site_origin: "https://b.example",
+          title: "Hello",
+          summary: "A short note.",
+          published_at: "2026-11-01T12:00:00.000Z",
+        },
+        {
+          content_type: "project",
+          url: "https://b.example/projects/toy/",
+          site_origin: "https://b.example",
+          title: "Toy",
+          summary: "A project card.",
+          image: "https://b.example/toy.png",
+          published_at: "2026-11-03T12:00:00.000Z",
+        },
+        {
+          content_type: "article",
+          url: "https://c.example/b/",
+          site_origin: "https://c.example",
+          title: "Same time B",
+          summary: "Tied publish time.",
+          published_at: "2026-11-04T00:00:00.000Z",
+        },
+        {
+          content_type: "article",
+          url: "https://c.example/a/",
+          site_origin: "https://c.example",
+          title: "Same time A",
+          summary: "Tied publish time.",
+          published_at: "2026-11-04T00:00:00.000Z",
+        },
+        {
+          content_type: "article",
+          url: "https://orphan.example/x/",
+          site_origin: "",
+          title: "Empty origin",
+          summary: "No site.",
+          published_at: "2026-11-04T00:00:00.000Z",
+        },
+      ],
+    },
+    topics: { communities: [] },
+    connections: {},
+    siteSignals: { origins: [] },
+    generatedAt: "2026-11-05T00:00:00.000Z",
+  });
+  const types = views.activity.primary.map((item) => item.content_type);
+  const urls = views.activity.primary.map((item) => item.url);
+  assert.equal(types.includes("podcast_episode"), false);
+  assert.equal(types.includes("video"), false);
+  assert.equal(types.includes("project"), false);
+  assert.ok(urls.includes("https://a.example/blog/4-hours/"));
+  assert.equal(
+    urls.includes("https://www.youtube.com/watch?v=tinyresult"),
+    false,
+  );
+  assert.equal(urls.includes("https://a.example/blog/new-episode/"), false);
+  assert.equal(
+    urls.includes("https://www.youtube.com/watch?v=announce1"),
+    false,
+  );
+  assert.ok(urls.includes("https://b.example/essays/databases/"));
+  assert.ok(urls.includes("https://b.example/notes/hello/"));
+  assert.equal(urls.includes("https://b.example/projects/toy/"), false);
+  assert.equal(urls.includes("https://orphan.example/x/"), false);
+  assert.ok(
+    urls.indexOf("https://c.example/a/") < urls.indexOf("https://c.example/b/"),
+  );
+  assert.equal(
+    isWritingActivityItem({
+      content_type: "video",
+      title: "A recording",
+      url: "https://www.youtube.com/watch?v=tinyresult",
+    }),
+    false,
+  );
+  assert.equal(
+    isWritingActivityItem({
+      content_type: "episode_announcement",
+      title: "New episode: Tiny Result",
+    }),
+    false,
+  );
+  assert.ok(
+    views.showcase.items.some(
+      (item) => item.url === "https://www.youtube.com/watch?v=announce1",
+    ),
+  );
+});
+
 test("buildViewDocuments prefers YouTube watch rows over channel card", () => {
   const views = buildViewDocuments({
     network: [
@@ -4364,13 +4896,21 @@ test("buildViewDocuments prefers YouTube watch rows over channel card", () => {
     },
     generatedAt: "2026-11-03T18:00:00.000Z",
   });
-  const videoUrls = views.showcase.items
-    .filter((item) => item.kind === "video")
+  const showUrls = views.showcase.items
+    .filter((item) => item.kind === "podcasts")
     .map((item) => item.url);
-  assert.ok(videoUrls.includes("https://www.youtube.com/watch?v=nov3"));
-  assert.ok(videoUrls.includes("https://www.youtube.com/watch?v=nov2"));
+  assert.ok(showUrls.includes("https://www.youtube.com/watch?v=nov3"));
+  assert.ok(showUrls.includes("https://www.youtube.com/watch?v=nov2"));
   assert.equal(
-    videoUrls.includes(
+    views.showcase.items.some((item) => item.kind === "video"),
+    false,
+  );
+  assert.equal(
+    views.showcase.kind_labels.podcasts,
+    "Podcasts and live streams",
+  );
+  assert.equal(
+    showUrls.includes(
       "https://www.youtube.com/channel/UCcYgwQEo9G_pbwJbwd_8p7A",
     ),
     false,

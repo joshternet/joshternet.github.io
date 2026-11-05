@@ -51,6 +51,7 @@ test("content support matrix covers handbook chapters and extractor sources", as
     "media",
     "events",
     "uses",
+    "seeking",
     "explore",
     "validation",
     "reference",

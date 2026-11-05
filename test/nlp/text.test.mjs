@@ -11,7 +11,9 @@ import {
   decodeHrefForParse,
   htmlAttributeValue,
   htmlBodyFingerprint,
+  htmlWithoutEmbeddedScripts,
   isEnglishLanguage,
+  isJsTemplateHref,
   jsonLdObjects,
   knowsAboutFromHtml,
   metaContent,
@@ -21,9 +23,34 @@ import {
   parseHtmlRegions,
   posterImageFromHtml,
   schemaTypesFromHtml,
+  firstMeaningfulParagraphFromHtml,
+  readableSummary,
   shareDescriptionFromHtml,
   unwrapXmlCdata,
 } from "../../scripts/nlp/text.mjs";
+
+test("isJsTemplateHref detects LinkLog-style concat fragments", () => {
+  assert.equal(isJsTemplateHref("'+e(a)+'"), true);
+  assert.equal(isJsTemplateHref("'+e(s)+'"), true);
+  assert.equal(isJsTemplateHref("'+t(a)+'"), true);
+  assert.equal(isJsTemplateHref("/wish-list/"), false);
+  assert.equal(isJsTemplateHref(""), false);
+  assert.equal(isJsTemplateHref(null), false);
+});
+
+test("parseHtmlRegions ignores anchors inside script bodies", () => {
+  const html = `<html><body>
+    <a href="/real/">Real</a>
+    <script>
+      i+='<a href="'+e(a)+'">Permalink</a>';
+      i+='<a href="'+e(s)+'">Title</a>';
+    </script>
+  </body></html>`;
+  const result = parseHtmlRegions(html);
+  assert.equal(result.links.length, 1);
+  assert.equal(result.links[0].href, "/real/");
+  assert.ok(!htmlWithoutEmbeddedScripts(html).includes("e(a)"));
+});
 
 // ─── isEnglishLanguage ────────────────────────────────────────────────────────
 
@@ -365,6 +392,51 @@ test("posterImageFromHtml rejects non-https posters", () => {
   );
 });
 
+test("readableSummary separates a glued link list and leaves a sentence alone", () => {
+  assert.equal(readableSummary(null), "");
+  assert.equal(readableSummary("   "), "");
+  assert.equal(
+    readableSummary(
+      "CSS Battle:https://cssbattle.devMy CSS Battle Plugins:https://github.com/artlung/artlung-cssbattle-pluginsMy website:https://artlung.com/Links to All The Vid...",
+    ),
+    "CSS Battle. My CSS Battle Plugins. My website. Links to All The Vid...",
+  );
+  assert.equal(
+    readableSummary(
+      "See the notes at https://joshua.example/notes/hello today.",
+    ),
+    "See the notes at https://joshua.example/notes/hello today.",
+  );
+  assert.equal(
+    readableSummary(
+      "He thought crochet would be the simple win his changing hands needed.",
+    ),
+    "He thought crochet would be the simple win his changing hands needed.",
+  );
+  assert.equal(
+    readableSummary("See https://cssbattle.devMy notes."),
+    "See https://cssbattle.dev My notes.",
+  );
+  assert.equal(
+    readableSummary("See https://artlung.com/Links today."),
+    "See https://artlung.com/Links today.",
+  );
+  assert.equal(
+    readableSummary("Open https://Example.com/page today."),
+    "Open https://Example.com/page today.",
+  );
+  assert.equal(
+    readableSummary(
+      "Notes:http://joshua.example/a also https://joshua.example/b",
+    ),
+    "Notes. also",
+  );
+  assert.equal(
+    readableSummary("Watch https://joshua.example/notes/hello"),
+    "Watch https://joshua.example/notes/hello",
+  );
+});
+
 test("shareDescriptionFromHtml prefers the Open Graph description", () => {
   const html = `<head>
     <meta name="description" content="Meta blurb">
@@ -376,6 +448,24 @@ test("shareDescriptionFromHtml prefers the Open Graph description", () => {
     "Only meta",
   );
   assert.equal(shareDescriptionFromHtml(""), "");
+  assert.equal(
+    shareDescriptionFromHtml(
+      `<meta property="og:description" content="CSS Battle:https://cssbattle.devMy website:https://artlung.com/">`,
+    ),
+    "CSS Battle. My website.",
+  );
+});
+
+test("firstMeaningfulParagraphFromHtml skips chrome and short scraps", () => {
+  assert.equal(firstMeaningfulParagraphFromHtml(""), "");
+  assert.equal(firstMeaningfulParagraphFromHtml("<p>Too short</p>"), "");
+  assert.equal(
+    firstMeaningfulParagraphFromHtml(`<html><body>
+      <nav><p>Skip the navigation blurb that is long enough otherwise.</p></nav>
+      <p>A mirror that fits you with other people's faces.</p>
+    </body></html>`),
+    "A mirror that fits you with other people's faces.",
+  );
 });
 
 test("htmlAttributeValue returns empty for missing attrs or name", () => {

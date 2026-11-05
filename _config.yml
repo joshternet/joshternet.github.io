@@ -48,6 +48,7 @@ exclude:
   - workers
   - examples
   - docs
+  - data
 
 seed_nominations:
   api_origin: "https://joshternet-seed-nominations.joshternet.workers.dev"

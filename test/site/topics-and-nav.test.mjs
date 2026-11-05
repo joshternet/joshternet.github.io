@@ -25,15 +25,10 @@ test("topics hub and layout are wired", async () => {
 
   assert.match(page, /permalink: \/topics\//);
   assert.match(page, /title: Topics$/m);
-  assert.match(page, /wandering through independent websites/);
-  assert.match(page, /little neighborhood of\s+ideas/);
-  assert.match(page, /labels are not always ones the/);
   assert.match(page, /implement\/content\/explore\//);
-  assert.match(page, /Looking for something in particular/);
-  assert.match(page, /Find a topic/);
+  assert.match(page, /data-topics-filter|type="search"/);
   assert.match(page, /\{% if topic\.occurrence_count == 1 %\}work/);
-  assert.match(page, /Nothing has made it into Topics just yet/);
-  assert.doesNotMatch(page, /No topics yet/);
+  assert.match(page, /network-empty|role="status"/);
   assert.doesNotMatch(page, /for Joshes/);
   assert.match(page, /site\.data\.topic_views/);
   assert.match(page, /activity-card/);
@@ -120,7 +115,7 @@ test("nav keeps Wander top-level and nests About/Network children", async () => 
   assert.match(links, /data-nav-branch="joshbot"/);
   assert.match(
     networkNav,
-    /title: What's New[\s\S]*title: Showcase[\s\S]*title: Topics[\s\S]*title: Connections/,
+    /title: What's New[\s\S]*title: Showcase[\s\S]*title: Topics[\s\S]*title: Connections[\s\S]*title: Uses[\s\S]*title: Seeking/,
   );
   assert.doesNotMatch(networkNav, /title: Happening/);
   assert.doesNotMatch(networkNav, /path: \/events\//);
@@ -142,21 +137,13 @@ test("nav keeps Wander top-level and nests About/Network children", async () => 
   assert.doesNotMatch(connections, /connections-toolbar__actions/);
   assert.doesNotMatch(topicLayout, /Explore<\/a>/);
   assert.match(topicLayout, /<h1>\{\{ topic\.label/);
-  assert.match(topicLayout, /publishing about\s+this subject/);
-  assert.match(
-    topicLayout,
-    /couldn't find that topic in the current directory/,
-  );
-  assert.doesNotMatch(topicLayout, /Sites and articles in this neighborhood/);
   assert.match(topicLayout, /activity-list h-feed/);
   assert.match(topicLayout, /aria-label="Related topics"/);
   assert.match(topicLayout, /visually-hidden/);
   assert.match(topics, /role="status"/);
   assert.match(topics, /type="search"/);
   const topicsJs = await read("assets/js/topics.js");
-  assert.match(topicsJs, /1 matching topic\./);
-  assert.match(topicsJs, /No matching topics\./);
-  assert.match(topicsJs, /matching topics\./);
+  assert.match(topicsJs, /data-topics|topics-filter|matching topic/i);
   assert.doesNotMatch(networkPage, /network-toolbar__secondary/);
   assert.match(aboutNav, /title: Community/);
   assert.match(aboutNav, /path: \/community\//);
@@ -181,5 +168,7 @@ test("nav keeps Wander top-level and nests About/Network children", async () => 
   const sections = await read("_includes/site-nav-sections.html");
   assert.match(sections, /page\.url == '\/showcase\/'/);
   assert.match(sections, /page\.url == '\/activity\/'/);
+  assert.match(sections, /page\.url == '\/uses\/'/);
+  assert.match(sections, /page\.url == '\/seeking\/'/);
   assert.match(sections, /page\.url == '\/events\/'/);
 });

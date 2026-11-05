@@ -2,10 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    {%- comment -%}
+      Goal: Expose build vs network-data refresh times in meta, JSON-LD, and footer.
+      Built = Jekyll site.time (HTML generation). Updated = data_manifest.generated_at
+      (committed crawl/view publish), falling back to built when the manifest is absent.
+    {%- endcomment -%}
+    {% assign site_built_at = site.time | date_to_xmlschema %}
+    {% assign site_updated_at = site.data.data_manifest.generated_at %}
+    {% unless site_updated_at %}
+      {% assign site_updated_at = site_built_at %}
+    {% endunless %}
+    {% assign site_built_display = site.time | date: '%-d %b %Y, %H:%M UTC' %}
+    {% assign site_updated_display = site_updated_at | date: '%-d %b %Y, %H:%M UTC' %}
     {% assign frame_sites = site.data.network %}
-    {% if jekyll.environment == 'development' %}
-      {% assign frame_sites = frame_sites | concat: site.data.network_dev %}
-    {% endif %}
     {% capture wander_frame_sources %}
       {% for network_site in frame_sites %}
         {% assign origin_prefix = network_site.origin | slice: 0, 8 %}
@@ -109,6 +118,8 @@
       {% endfor %}
     {% endif %}
     {{ jekyll_seo | strip }}
+    <meta name="joshternet-built-at" content="{{ site_built_at | escape }}">
+    <meta name="joshternet-updated-at" content="{{ site_updated_at | escape }}">
     {% include derived-jsonld.html %}
     {% if page.url == '/' %}
       <script type="application/ld+json">
@@ -120,12 +131,14 @@
           "description": {{ site.description | jsonify }},
           "url": {{ '/' | absolute_url | jsonify }},
           "logo": {{ '/assets/images/joshternet-social.png' | absolute_url | jsonify }},
+          "dateModified": {{ site_updated_at | jsonify }},
           "sameAs": [
             "https://github.com/joshternet"
           ],
           "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": {{ '/' | absolute_url | jsonify }}
+            "@id": {{ '/' | absolute_url | jsonify }},
+            "dateModified": {{ site_updated_at | jsonify }}
           }
         }
       </script>
@@ -364,6 +377,13 @@
               {% endif %}
             </div>
           </div>
+
+          <p class="site-footer__stamp">
+            Built
+            <time datetime="{{ site_built_at | escape }}">{{ site_built_display | escape }}</time>
+            · Updated
+            <time datetime="{{ site_updated_at | escape }}">{{ site_updated_display | escape }}</time>
+          </p>
         </div>
       </footer>
     {% endif %}
