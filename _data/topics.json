@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-05T14:01:18.839Z",
-  "community_count": 632,
+  "generated_at": "2026-11-05T17:49:46.856Z",
+  "community_count": 641,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
@@ -234,7 +234,7 @@
     {
       "slug": "add",
       "label": "add",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -301,11 +301,44 @@
               "source": "visible-text"
             }
           ]
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/2024-in-review/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-1-architecture/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-2-developer-experience/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-3-ecosystem/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/my-plans-for-2025/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
         }
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-05T17:49:46.856Z",
       "active": true,
       "related_discoveries": [
         {
@@ -3397,6 +3430,13 @@
           "title": "Josh Cunningham",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
         }
       ]
     },
@@ -3584,7 +3624,7 @@
     {
       "slug": "bluesky",
       "label": "bluesky",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
         {
           "origin": "https://www.joshfinnie.com",
@@ -3608,11 +3648,44 @@
               "source": "topic-hub:page"
             }
           ]
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuakgoldberg.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-4-summary/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/speeding-up-centered-part-1-81-iframe-embeds/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/why-im-migrating-from-x-to-bluesky/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
         }
       ],
-      "sources": ["article:tag", "topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "article:tag",
+        "topic-hub:link",
+        "topic-hub:page",
+        "visible-text"
+      ],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-05T17:49:46.856Z",
       "active": true
     },
     {
@@ -6558,6 +6631,13 @@
           "title": "Joshua P. Steele",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
         }
       ]
     },
@@ -6724,6 +6804,13 @@
           "origin": "https://www.joshuabaker.com",
           "domain": "www.joshuabaker.com",
           "title": "Joshua Baker",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         },
@@ -7304,7 +7391,7 @@
     {
       "slug": "create",
       "label": "create",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -7404,11 +7491,44 @@
               "source": "visible-text"
             }
           ]
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/2025-in-review/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-1-architecture/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-2-developer-experience/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-3-ecosystem/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/my-plans-for-2025/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
         }
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-05T17:49:46.856Z",
       "active": true,
       "related_discoveries": [
         {
@@ -8088,6 +8208,13 @@
           "origin": "https://www.joshuabaker.com",
           "domain": "www.joshuabaker.com",
           "title": "Joshua Baker",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
@@ -9587,7 +9714,7 @@
     {
       "slug": "documentation",
       "label": "documentation",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
         {
           "origin": "https://www.joshfinnie.com",
@@ -9606,11 +9733,44 @@
               "source": "topic-hub:link"
             }
           ]
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/2025-in-review/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-1-architecture/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-2-developer-experience/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-3-ecosystem/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-4-summary/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
         }
       ],
-      "sources": ["article:tag", "topic-hub:link"],
+      "sources": ["article:tag", "topic-hub:link", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-05T17:49:46.856Z",
       "active": true,
       "related_discoveries": [
         {
@@ -10811,7 +10971,7 @@
     {
       "slug": "error",
       "label": "error",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -10878,11 +11038,116 @@
               "source": "visible-text"
             }
           ]
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/hybrid-linters-the-best-of-both-worlds/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-1-architecture/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-2-developer-experience/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-3-ecosystem/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-4-summary/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
         }
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-05T17:49:46.856Z",
+      "active": true
+    },
+    {
+      "slug": "error-message",
+      "label": "error message",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Josh Ghent",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/error-messages/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/php-hatred/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/software-beauty/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/whimsical-software/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/full-time-open-source/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/hybrid-linters-the-best-of-both-worlds/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-2-developer-experience/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/typescript-contribution-diary-code-before-super-technical-overview/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/typescript-contribution-diary-empty-dom-interfaces/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": ["visible-text"],
+      "first_seen_at": "2026-11-05T17:49:46.856Z",
+      "last_changed_at": "2026-11-05T17:49:46.856Z",
       "active": true
     },
     {
@@ -10907,6 +11172,83 @@
       "sources": ["article:tag"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "active": true
+    },
+    {
+      "slug": "eslint",
+      "label": "eslint",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://www.joshfinnie.com",
+          "domain": "www.joshfinnie.com",
+          "title": "Josh Finnie",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshfinnie.com/blog/2/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshfinnie.com/blog/adding-eslint-and-prettier-to-my-blog/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshfinnie.com/blog/from-eslint-and-prettier-to-biome/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshfinnie.com/blog/hacktoberfest-is-awesome-2/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshfinnie.com/blog/my-2020-react-startup-process/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/2025-finances-in-review/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/2025-in-review/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-4-summary/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/stepping-back-from-open-source-mostly/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": ["visible-text"],
+      "first_seen_at": "2026-11-05T17:49:46.856Z",
+      "last_changed_at": "2026-11-05T17:49:46.856Z",
       "active": true
     },
     {
@@ -11265,6 +11607,13 @@
           "origin": "https://joshuastuebner.com",
           "domain": "joshuastuebner.com",
           "title": "Joshua Stübner",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
@@ -11790,7 +12139,7 @@
     {
       "slug": "fast",
       "label": "fast",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -11820,6 +12169,39 @@
             },
             {
               "url": "https://joshghent.com/typing-fast/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/2025-in-review/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-2-developer-experience/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-3-ecosystem/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-4-summary/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/projects/",
               "title": "",
               "source": "visible-text"
             }
@@ -11861,7 +12243,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-05T17:49:46.856Z",
       "active": true,
       "related_discoveries": [
         {
@@ -12073,6 +12455,13 @@
           "origin": "https://www.joshcanhelp.com",
           "domain": "www.joshcanhelp.com",
           "title": "Josh Cunningham",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         },
@@ -12859,7 +13248,7 @@
     {
       "slug": "full",
       "label": "full",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
         {
           "origin": "https://joshmuller.ca",
@@ -12928,6 +13317,39 @@
           ]
         },
         {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/2025-finances-in-review/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/2025-in-review/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-1-architecture/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-2-developer-experience/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-3-ecosystem/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
           "origin": "https://www.joshvickerson.com",
           "domain": "www.joshvickerson.com",
           "title": "Josh Vickerson",
@@ -12963,7 +13385,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-05T17:49:46.856Z",
       "active": true,
       "related_discoveries": [
         {
@@ -13180,7 +13602,7 @@
     {
       "slug": "game",
       "label": "game",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://joshozuna.com",
@@ -13237,11 +13659,44 @@
               "source": "visible-text"
             }
           ]
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/full-time-open-source/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/how-i-apply-to-conferences-faqs/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/how-lazily-instantiated-classes-reduced-my-game-engines-reset-times-by-half/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/my-plans-for-2023/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/type-system-game-engines/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
         }
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-05T17:49:46.856Z",
       "active": true,
       "related_discoveries": [
         {
@@ -13513,6 +13968,13 @@
           "title": "Josh Cunningham",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
         }
       ]
     },
@@ -13577,6 +14039,13 @@
           "origin": "https://www.joshuabaker.com",
           "domain": "www.joshuabaker.com",
           "title": "Joshua Baker",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
@@ -13744,6 +14213,13 @@
           "title": "Josh Finnie",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
         }
       ]
     },
@@ -13906,6 +14382,13 @@
           "origin": "https://joshuastuebner.com",
           "domain": "joshuastuebner.com",
           "title": "Joshua Stübner",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         },
@@ -17501,6 +17984,13 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
           "origin": "https://www.joshvickerson.com",
           "domain": "www.joshvickerson.com",
           "title": "Josh Vickerson",
@@ -17740,6 +18230,13 @@
           "origin": "https://www.joshfinnie.com",
           "domain": "www.joshfinnie.com",
           "title": "Josh Finnie",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
@@ -18331,6 +18828,13 @@
       "active": true,
       "related_discoveries": [
         {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
           "origin": "https://www.joshvickerson.com",
           "domain": "www.joshvickerson.com",
           "title": "Josh Vickerson",
@@ -18644,6 +19148,13 @@
           "title": "Josh Urban Davis",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
         }
       ]
     },
@@ -18829,6 +19340,99 @@
       "first_seen_at": "2026-10-12T18:51:53.092Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
       "active": true
+    },
+    {
+      "slug": "line",
+      "label": "lines",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh Müller",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshmuller.ca/kamis-eating-plan/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshmuller.ca/kamis-workout-plan/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/desserts/fudgy-brownies/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/desserts/gluten-free-chocolate-cake/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshmuller.ca/recipes/snacks/high-protein-banana-bread/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/hybrid-linters-the-best-of-both-worlds/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-1-architecture/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-2-developer-experience/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/so-youve-got-a-gap-in-code-coverage/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/split-out-unrelated-changes/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": ["visible-text"],
+      "first_seen_at": "2026-11-05T17:49:46.856Z",
+      "last_changed_at": "2026-11-05T17:49:46.856Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshcox.co.uk",
+          "domain": "joshcox.co.uk",
+          "title": "Josh Cox",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshfinnie.com",
+          "domain": "www.joshfinnie.com",
+          "title": "Josh Finnie",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "link",
@@ -19077,6 +19681,134 @@
       "first_seen_at": "2026-10-03T09:36:17.761Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
       "active": true
+    },
+    {
+      "slug": "little",
+      "label": "little",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/2025-in-review/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/hybrid-linters-the-best-of-both-worlds/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-2-developer-experience/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/my-plans-for-2025/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/split-out-unrelated-changes/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshvickerson.com",
+          "domain": "www.joshvickerson.com",
+          "title": "Josh Vickerson",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshvickerson.com/posts/building-websites-is-a-craft/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshvickerson.com/posts/excluding-livestreams-from-the-youtube-data-api-in-javascript/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshvickerson.com/posts/migrating-to-eleventy-from-anchorcms/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshvickerson.com/posts/native-fallback-values-in-css-with-sass/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshvickerson.com/posts/year-in-review-2020/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": ["visible-text"],
+      "first_seen_at": "2026-11-05T17:49:46.856Z",
+      "last_changed_at": "2026-11-05T17:49:46.856Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshcox.co.uk",
+          "domain": "joshcox.co.uk",
+          "title": "Josh Cox",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Josh Ghent",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://joshmuller.ca",
+          "domain": "joshmuller.ca",
+          "title": "Josh Müller",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Joshua Seigler",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://joshuastuebner.com",
+          "domain": "joshuastuebner.com",
+          "title": "Joshua Stübner",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.chrisminnick.com",
+          "domain": "www.chrisminnick.com",
+          "title": "Chris Minnick",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "live",
@@ -20607,6 +21339,13 @@
           "title": "Joshua Drake",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
         }
       ]
     },
@@ -21255,7 +21994,7 @@
     {
       "slug": "month",
       "label": "month",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://joshmuller.ca",
@@ -21322,11 +22061,44 @@
               "source": "visible-text"
             }
           ]
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/2025-finances-in-review/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/2025-in-review/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-3-ecosystem/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/my-plans-for-2025/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/stepping-back-from-open-source-mostly/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
         }
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-05T17:49:46.856Z",
       "active": true,
       "related_discoveries": [
         {
@@ -22088,6 +22860,13 @@
           "origin": "https://www.joshcanhelp.com",
           "domain": "www.joshcanhelp.com",
           "title": "Josh Cunningham",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
@@ -23499,6 +24278,13 @@
           "title": "Josh Finnie",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
         }
       ]
     },
@@ -24372,6 +25158,99 @@
       "active": true
     },
     {
+      "slug": "plugin",
+      "label": "plugin",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshcox.co.uk",
+          "domain": "joshcox.co.uk",
+          "title": "Josh Cox",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshcox.co.uk/blog/2/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshcox.co.uk/blog/i-run-a-wordpress-agency-and-rebuilt-without-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshcox.co.uk/blog/if-you-build-it-they-wont-come/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshcox.co.uk/blog/why-i-folded-my-free-tool-into-the-agency-site/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshcox.co.uk/blog/wordpress-then-react-now-swift/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/2025-in-review/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-1-architecture/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-2-developer-experience/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-3-ecosystem/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-4-summary/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": ["visible-text"],
+      "first_seen_at": "2026-11-05T17:49:46.856Z",
+      "last_changed_at": "2026-11-05T17:49:46.856Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://joshuastuebner.com",
+          "domain": "joshuastuebner.com",
+          "title": "Joshua Stübner",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
+    },
+    {
       "slug": "pnpm",
       "label": "pnpm",
       "member_count": 1,
@@ -24570,6 +25449,13 @@
           "origin": "https://www.joshcanhelp.com",
           "domain": "www.joshcanhelp.com",
           "title": "Josh Cunningham",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         },
@@ -25108,6 +25994,83 @@
       "sources": ["article:tag"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "active": true
+    },
+    {
+      "slug": "prettier",
+      "label": "prettier",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://www.joshfinnie.com",
+          "domain": "www.joshfinnie.com",
+          "title": "Josh Finnie",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshfinnie.com/blog/adding-eslint-and-prettier-to-my-blog/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshfinnie.com/blog/from-eslint-and-prettier-to-biome/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshfinnie.com/blog/hacktoberfest-is-awesome-2/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshfinnie.com/blog/my-2020-react-startup-process/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshfinnie.com/blog/my-basic-isort-configuration/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/2023-in-review/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/definitelyformatted/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-1-architecture/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-3-ecosystem/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/split-out-unrelated-changes/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": ["visible-text"],
+      "first_seen_at": "2026-11-05T17:49:46.856Z",
+      "last_changed_at": "2026-11-05T17:49:46.856Z",
       "active": true
     },
     {
@@ -25976,6 +26939,13 @@
           "origin": "https://joshternet.org",
           "domain": "joshternet.org",
           "title": "Joshternet",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
@@ -27707,6 +28677,206 @@
       "active": true
     },
     {
+      "slug": "report",
+      "label": "reports",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/12/prop-38-borrows-for-immune-research-and-takes-a-cut-if-a-drug-pays-off/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/13/prop-44s-90-percent-starts-on-a-clinics-tax-form-not-in-the-exam-room/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-1-architecture/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-2-developer-experience/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-3-ecosystem/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-4-summary/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/stepping-back-from-open-source-mostly/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": ["visible-text"],
+      "first_seen_at": "2026-11-05T17:49:46.856Z",
+      "last_changed_at": "2026-11-05T17:49:46.856Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshcox.co.uk",
+          "domain": "joshcox.co.uk",
+          "title": "Josh Cox",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshvickerson.com",
+          "domain": "www.joshvickerson.com",
+          "title": "Josh Vickerson",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
+    },
+    {
+      "slug": "request",
+      "label": "requests",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Josh Ghent",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/eda-rules-of-thumb/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/enterprise-sales-teams/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/github-actions-lessons/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/repowarden/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/thoughts-on-llms/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/2025-in-review/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-1-architecture/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-2-developer-experience/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-3-ecosystem/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/stepping-back-from-open-source-mostly/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": ["visible-text"],
+      "first_seen_at": "2026-11-05T17:49:46.856Z",
+      "last_changed_at": "2026-11-05T17:49:46.856Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Joshua Seigler",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshfinnie.com",
+          "domain": "www.joshfinnie.com",
+          "title": "Josh Finnie",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
+    },
+    {
       "slug": "research",
       "label": "Research",
       "member_count": 3,
@@ -28144,7 +29314,7 @@
     {
       "slug": "review",
       "label": "review",
-      "member_count": 6,
+      "member_count": 7,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -28302,6 +29472,39 @@
           ]
         },
         {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/2025-finances-in-review/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/2025-in-review/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/my-plans-for-2025/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/so-youve-got-a-gap-in-code-coverage/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/stepping-back-from-open-source-mostly/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
           "origin": "https://www.joshvickerson.com",
           "domain": "www.joshvickerson.com",
           "title": "Josh Vickerson",
@@ -28337,7 +29540,7 @@
       ],
       "sources": ["article:tag", "catalog-match", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-05T17:49:46.856Z",
       "active": true,
       "related_discoveries": [
         {
@@ -28851,7 +30054,7 @@
     {
       "slug": "rule",
       "label": "rules",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -28918,11 +30121,44 @@
               "source": "visible-text"
             }
           ]
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/2025-in-review/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-1-architecture/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-2-developer-experience/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-3-ecosystem/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-4-summary/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
         }
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-05T17:49:46.856Z",
       "active": true,
       "related_discoveries": [
         {
@@ -29057,6 +30293,13 @@
           "origin": "https://www.joshfinnie.com",
           "domain": "www.joshfinnie.com",
           "title": "Josh Finnie",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
@@ -30298,6 +31541,13 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
           "origin": "https://www.joshvickerson.com",
           "domain": "www.joshvickerson.com",
           "title": "Josh Vickerson",
@@ -30689,7 +31939,16 @@
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "soccer",
@@ -31303,6 +32562,13 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
           "origin": "https://www.joshvickerson.com",
           "domain": "www.joshvickerson.com",
           "title": "Josh Vickerson",
@@ -31840,7 +33106,7 @@
     {
       "slug": "source",
       "label": "source",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -31940,11 +33206,44 @@
               "source": "visible-text"
             }
           ]
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuakgoldberg.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/2025-finances-in-review/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/2025-in-review/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/stepping-back-from-open-source-mostly/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
         }
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-05T17:49:46.856Z",
       "active": true,
       "related_discoveries": [
         {
@@ -33193,7 +34492,7 @@
     {
       "slug": "test",
       "label": "test",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://joshuamorris.info",
@@ -33260,11 +34559,44 @@
               "source": "visible-text"
             }
           ]
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/2025-in-review/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-2-developer-experience/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-3-ecosystem/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-4-summary/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/projects/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
         }
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-05T17:49:46.856Z",
       "active": true,
       "related_discoveries": [
         {
@@ -33596,7 +34928,16 @@
       "sources": ["article:tag"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "trade",
@@ -33928,6 +35269,134 @@
           "origin": "https://joshmuller.ca",
           "domain": "joshmuller.ca",
           "title": "Josh Müller",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
+    },
+    {
+      "slug": "type",
+      "label": "type",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Josh Ghent",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/11ty-or-bust/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/consulting-launch-2023/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/how-i-build-products-with-ai/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/todoist-setup/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/typing-fast/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/2025-in-review/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/hybrid-linters-the-best-of-both-worlds/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-1-architecture/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-2-developer-experience/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-4-summary/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": ["visible-text"],
+      "first_seen_at": "2026-11-05T17:49:46.856Z",
+      "last_changed_at": "2026-11-05T17:49:46.856Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshbeard.com",
+          "domain": "joshbeard.com",
+          "title": "Josh Beard",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://joshcox.co.uk",
+          "domain": "joshcox.co.uk",
+          "title": "Josh Cox",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Joshua Seigler",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://joshuastuebner.com",
+          "domain": "joshuastuebner.com",
+          "title": "Joshua Stübner",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.chrisminnick.com",
+          "domain": "www.chrisminnick.com",
+          "title": "Chris Minnick",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
@@ -34760,6 +36229,13 @@
           "title": "Chris Minnick",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
         }
       ]
     },
@@ -35553,6 +37029,13 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
           "origin": "https://www.joshvickerson.com",
           "domain": "www.joshvickerson.com",
           "title": "Josh Vickerson",
@@ -36089,6 +37572,13 @@
           "title": "Josh Urban Davis",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
         }
       ]
     },
@@ -36403,6 +37893,13 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
           "origin": "https://www.joshvickerson.com",
           "domain": "www.joshvickerson.com",
           "title": "Josh Vickerson",
@@ -36626,6 +38123,13 @@
           "origin": "https://www.joshcanhelp.com",
           "domain": "www.joshcanhelp.com",
           "title": "Josh Cunningham",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshuakgoldberg.com",
+          "domain": "www.joshuakgoldberg.com",
+          "title": "Josh Goldberg",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         },

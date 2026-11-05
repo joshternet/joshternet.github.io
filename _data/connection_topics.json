@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-05T14:18:09.859Z",
-  "overlap_count": 139,
+  "generated_at": "2026-11-05T18:05:54.479Z",
+  "overlap_count": 140,
   "pairs": [
     {
       "a": "https://artlung.com",
@@ -404,12 +404,20 @@
           "label": "learning"
         },
         {
+          "slug": "little",
+          "label": "little"
+        },
+        {
           "slug": "love",
           "label": "love"
         },
         {
           "slug": "photos",
           "label": "photos"
+        },
+        {
+          "slug": "plugin",
+          "label": "plugin"
         },
         {
           "slug": "search",
@@ -2480,6 +2488,10 @@
         {
           "slug": "game",
           "label": "game"
+        },
+        {
+          "slug": "line",
+          "label": "lines"
         }
       ]
     },
@@ -2514,6 +2526,10 @@
         {
           "slug": "learning",
           "label": "learning"
+        },
+        {
+          "slug": "line",
+          "label": "lines"
         }
       ]
     },
@@ -2521,6 +2537,10 @@
       "a": "https://joshuastuebner.com",
       "b": "https://www.joshfinnie.com",
       "topics": [
+        {
+          "slug": "line",
+          "label": "lines"
+        },
         {
           "slug": "video",
           "label": "video"
@@ -2562,6 +2582,10 @@
           "label": "browsers"
         },
         {
+          "slug": "line",
+          "label": "lines"
+        },
+        {
           "slug": "music",
           "label": "music"
         },
@@ -2578,6 +2602,10 @@
         {
           "slug": "book",
           "label": "books"
+        },
+        {
+          "slug": "line",
+          "label": "lines"
         },
         {
           "slug": "rule",
@@ -2638,6 +2666,10 @@
         {
           "slug": "command",
           "label": "command"
+        },
+        {
+          "slug": "line",
+          "label": "lines"
         }
       ]
     },
@@ -2668,6 +2700,16 @@
         {
           "slug": "technology",
           "label": "technology"
+        }
+      ]
+    },
+    {
+      "a": "https://www.chrisminnick.com",
+      "b": "https://www.joshuakgoldberg.com",
+      "topics": [
+        {
+          "slug": "analysis",
+          "label": "analysis"
         }
       ]
     },
@@ -3878,6 +3920,29 @@
           ]
         },
         {
+          "slug": "little",
+          "label": "little",
+          "articles": [
+            {
+              "url": "https://artlung.com/toys/",
+              "title": "Toys"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/tools/",
+                  "title": "Tools"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "live",
           "label": "live",
           "articles": [
@@ -4341,6 +4406,29 @@
                 {
                   "url": "https://joshuastuebner.com/projects/details/heuschrecke-messe/",
                   "title": "Heuschrecke Messe"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "plugin",
+          "label": "plugin",
+          "articles": [
+            {
+              "url": "https://artlung.com/wordpress/",
+              "title": "/wordpress/"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/18_fruity-reverb/",
+                  "title": "18: Fruity Reverb"
                 }
               ]
             }
@@ -15246,6 +15334,86 @@
           ]
         },
         {
+          "slug": "line",
+          "label": "lines",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/experiments/ex/25_sparkline/",
+              "title": "25: Sparkline"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/claude-code-for-dummies/",
+                  "title": "Claude Code For Dummies"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
+                  "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/projects/pushfile/",
+                  "title": "pushfile pushfile is a command-line tool that allows you to push files to your own S3 bucket, seamlessly!"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshurbandavis.com",
+              "domain": "joshurbandavis.com",
+              "title": "Josh Urban Davis",
+              "articles": [
+                {
+                  "url": "https://joshurbandavis.com/experiments/connectfour-sequencer/index.html",
+                  "title": "connect four sequencer"
+                },
+                {
+                  "url": "https://joshurbandavis.com/experiments/in-other-words/index.html",
+                  "title": "in other words"
+                },
+                {
+                  "url": "https://joshurbandavis.com/experiments/reversi-sequencer/index.html",
+                  "title": "reversi sequencer"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "little",
+          "label": "little",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/tools/",
+              "title": "Tools"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/toys/",
+                  "title": "Toys"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "love",
           "label": "love",
           "articles": [
@@ -15393,6 +15561,29 @@
                 {
                   "url": "https://joshgr.com/photos/",
                   "title": "Photos"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "plugin",
+          "label": "plugin",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/experiments/ex/18_fruity-reverb/",
+              "title": "18: Fruity Reverb"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/wordpress/",
+                  "title": "/wordpress/"
                 }
               ]
             }
@@ -16327,6 +16518,63 @@
           ]
         },
         {
+          "slug": "line",
+          "label": "lines",
+          "articles": [
+            {
+              "url": "https://joshurbandavis.com/experiments/connectfour-sequencer/index.html",
+              "title": "connect four sequencer"
+            },
+            {
+              "url": "https://joshurbandavis.com/experiments/in-other-words/index.html",
+              "title": "in other words"
+            },
+            {
+              "url": "https://joshurbandavis.com/experiments/reversi-sequencer/index.html",
+              "title": "reversi sequencer"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/claude-code-for-dummies/",
+                  "title": "Claude Code For Dummies"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
+                  "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/projects/pushfile/",
+                  "title": "pushfile pushfile is a command-line tool that allows you to push files to your own S3 bucket, seamlessly!"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/25_sparkline/",
+                  "title": "25: Sparkline"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "live",
           "label": "live",
           "articles": [
@@ -16896,6 +17144,29 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
                   "title": "I Declared the Coding Interview Dead in 2021"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "analysis",
+          "label": "analysis",
+          "articles": [
+            {
+              "url": "https://www.chrisminnick.com/books/coding-all-in-one-for-dummies/",
+              "title": "Coding All-in-One For Dummies, 3rd Edition"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshuakgoldberg.com",
+              "domain": "www.joshuakgoldberg.com",
+              "title": "Josh Goldberg",
+              "articles": [
+                {
+                  "url": "https://www.joshuakgoldberg.com/speaking",
+                  "title": "Speaking"
                 }
               ]
             }
@@ -17810,6 +18081,63 @@
                 {
                   "url": "https://joshuastuebner.com/experiments/ex/04_silvester/",
                   "title": "04: Silvester"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "line",
+          "label": "lines",
+          "articles": [
+            {
+              "url": "https://www.chrisminnick.com/books/claude-code-for-dummies/",
+              "title": "Claude Code For Dummies"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
+                  "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/projects/pushfile/",
+                  "title": "pushfile pushfile is a command-line tool that allows you to push files to your own S3 bucket, seamlessly!"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshurbandavis.com",
+              "domain": "joshurbandavis.com",
+              "title": "Josh Urban Davis",
+              "articles": [
+                {
+                  "url": "https://joshurbandavis.com/experiments/connectfour-sequencer/index.html",
+                  "title": "connect four sequencer"
+                },
+                {
+                  "url": "https://joshurbandavis.com/experiments/in-other-words/index.html",
+                  "title": "in other words"
+                },
+                {
+                  "url": "https://joshurbandavis.com/experiments/reversi-sequencer/index.html",
+                  "title": "reversi sequencer"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/25_sparkline/",
+                  "title": "25: Sparkline"
                 }
               ]
             }
@@ -18909,6 +19237,63 @@
                 {
                   "url": "https://forwardbias.dev/ideas/disentangling-career-from-creativity/",
                   "title": "Disentangling Career from Creativity"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "line",
+          "label": "lines",
+          "articles": [
+            {
+              "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
+              "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
+            },
+            {
+              "url": "https://www.joshfinnie.com/projects/pushfile/",
+              "title": "pushfile pushfile is a command-line tool that allows you to push files to your own S3 bucket, seamlessly!"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/claude-code-for-dummies/",
+                  "title": "Claude Code For Dummies"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshurbandavis.com",
+              "domain": "joshurbandavis.com",
+              "title": "Josh Urban Davis",
+              "articles": [
+                {
+                  "url": "https://joshurbandavis.com/experiments/connectfour-sequencer/index.html",
+                  "title": "connect four sequencer"
+                },
+                {
+                  "url": "https://joshurbandavis.com/experiments/in-other-words/index.html",
+                  "title": "in other words"
+                },
+                {
+                  "url": "https://joshurbandavis.com/experiments/reversi-sequencer/index.html",
+                  "title": "reversi sequencer"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/25_sparkline/",
+                  "title": "25: Sparkline"
                 }
               ]
             }
@@ -21197,6 +21582,34 @@
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
                   "title": "Learning a New Tech Stack with an LLM"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "origin": "https://www.joshuakgoldberg.com",
+      "topics": [
+        {
+          "slug": "analysis",
+          "label": "analysis",
+          "articles": [
+            {
+              "url": "https://www.joshuakgoldberg.com/speaking",
+              "title": "Speaking"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/coding-all-in-one-for-dummies/",
+                  "title": "Coding All-in-One For Dummies, 3rd Edition"
                 }
               ]
             }

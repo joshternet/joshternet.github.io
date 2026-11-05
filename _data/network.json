@@ -12,7 +12,7 @@
       "josh": false
     },
     "first_participated_at": "2026-11-02T15:42:11.854207Z",
-    "latest_declaration_check_at": "2026-11-04T15:45:12.127651Z",
+    "latest_declaration_check_at": "2026-11-05T15:45:14.653319Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Joe Crawford",
     "description": "I’ve written code for a living for a while. ArtLung.com itself runs on WordPress and it looks and works the way it does because I programmed the theme and underlying code.",
@@ -183,7 +183,7 @@
       "josh": true
     },
     "first_participated_at": "2026-11-02T15:03:18.018094Z",
-    "latest_declaration_check_at": "2026-11-04T15:13:37.919377Z",
+    "latest_declaration_check_at": "2026-11-05T15:13:44.376047Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Josh Cox",
     "description": "I've been building things on the web since 2016, mostly through Prystine, the web agency I run. Over the years that's grown from \"making websites\" into looking after them properly — performance, maintenance, and the unglamorous work that keeps a site alive.",
@@ -832,7 +832,7 @@
       "josh": true
     },
     "first_participated_at": "2026-11-03T14:46:46.65336Z",
-    "latest_declaration_check_at": "2026-11-04T14:48:14.801142Z",
+    "latest_declaration_check_at": "2026-11-05T14:48:31.967249Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Joshua Stübner",
     "description": "Product engineer at Ariadne and half of Norcode Agency.I also (co-)run Vegan Hamburg and Was Los im Amt?.",
@@ -1111,6 +1111,52 @@
         "url": "https://open.spotify.com/user/joshuabaker",
         "network": "spotify",
         "label": "Spotify"
+      }
+    ]
+  },
+  {
+    "origin": "https://www.joshuakgoldberg.com",
+    "domain": "www.joshuakgoldberg.com",
+    "identity": "affirmed",
+    "declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "initial_declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "first_participated_at": "2026-11-05T16:17:11.29413Z",
+    "latest_declaration_check_at": "2026-11-05T16:17:11.29413Z",
+    "latest_declaration_check_outcome": "valid",
+    "title": "Josh Goldberg",
+    "description": "I work to make web development better, most notably on typescript-eslint: a powerful static analysis toolset for JavaScript and TypeScript code.",
+    "screenshot": "/assets/network/sites/320ddea56b606b5aab047019ce0b90c42970f40ebc103b88419a956b6b8b083d.webp",
+    "embeddable": true,
+    "frame_reason": "allowed",
+    "captured_at": "2026-11-05T17:48:00.372Z",
+    "feeds": [
+      {
+        "url": "https://www.joshuakgoldberg.com/rss.xml",
+        "type": "application/rss+xml",
+        "title": "RSS Feed"
+      }
+    ],
+    "elsewhere": [
+      {
+        "url": "https://bsky.app/profile/joshuakgoldberg.com",
+        "network": "bluesky",
+        "label": "Bluesky"
+      },
+      {
+        "url": "https://github.com/JoshuaKGoldberg",
+        "network": "github",
+        "label": "GitHub"
+      },
+      {
+        "url": "https://fosstodon.org/@JoshuaKGoldberg",
+        "network": "mastodon",
+        "label": "Mastodon"
       }
     ]
   },

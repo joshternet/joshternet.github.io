@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-05T14:18:09.859Z",
-  "document_count": 897,
+  "generated_at": "2026-11-05T18:05:54.479Z",
+  "document_count": 904,
   "documents": [
     {
       "type": "site",
@@ -212,6 +212,15 @@
     },
     {
       "type": "site",
+      "title": "Josh Goldberg",
+      "summary": "I work to make web development better, most notably on typescript-eslint: a powerful static analysis toolset for JavaScript and TypeScript code.",
+      "domain": "www.joshuakgoldberg.com",
+      "origin": "https://www.joshuakgoldberg.com",
+      "url": "https://www.joshuakgoldberg.com",
+      "topics": []
+    },
+    {
+      "type": "site",
       "title": "Josh Vickerson",
       "summary": "In my nearly 10 years as a developer, I've worked with a wide range of technologies, and clients of varying size. From big names like Walmart and American Express, to small local businesses, to early stage tech start-ups that grew to 9-figure valuations, I've…",
       "domain": "www.joshvickerson.com",
@@ -285,7 +294,7 @@
     {
       "type": "topic",
       "title": "analysis",
-      "summary": "1 participating sites",
+      "summary": "2 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/analysis/",
@@ -1418,12 +1427,30 @@
     },
     {
       "type": "topic",
+      "title": "lines",
+      "summary": "4 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/line/",
+      "topics": ["line", "lines"]
+    },
+    {
+      "type": "topic",
       "title": "Link",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/link/",
       "topics": ["link", "Link"]
+    },
+    {
+      "type": "topic",
+      "title": "little",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/little/",
+      "topics": ["little", "little"]
     },
     {
       "type": "topic",
@@ -1787,6 +1814,15 @@
     },
     {
       "type": "topic",
+      "title": "plugin",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/plugin/",
+      "topics": ["plugin", "plugin"]
+    },
+    {
+      "type": "topic",
       "title": "point",
       "summary": "2 participating sites",
       "domain": "",
@@ -2009,6 +2045,15 @@
       "origin": "",
       "url": "/topics/rememberance/",
       "topics": ["rememberance", "rememberance"]
+    },
+    {
+      "type": "topic",
+      "title": "reports",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/report/",
+      "topics": ["report", "reports"]
     },
     {
       "type": "topic",
@@ -2387,6 +2432,15 @@
       "origin": "",
       "url": "/topics/twitter/",
       "topics": ["twitter", "twitter"]
+    },
+    {
+      "type": "topic",
+      "title": "type",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/type/",
+      "topics": ["type", "type"]
     },
     {
       "type": "topic",
@@ -6690,7 +6744,7 @@
       "url": "https://joshternet.org/governance/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-05T13:22:17.000Z",
+      "published_at": "2026-11-05T14:19:30.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6705,7 +6759,7 @@
       "url": "https://joshternet.org/implement/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-05T13:22:17.000Z",
+      "published_at": "2026-11-05T14:19:30.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6720,7 +6774,7 @@
       "url": "https://joshternet.org/implement/content/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-05T13:22:17.000Z",
+      "published_at": "2026-11-05T14:19:30.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6735,7 +6789,7 @@
       "url": "https://joshternet.org/implement/platforms/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-05T13:22:17.000Z",
+      "published_at": "2026-11-05T14:19:30.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6750,7 +6804,7 @@
       "url": "https://joshternet.org/join/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-05T13:22:17.000Z",
+      "published_at": "2026-11-05T14:19:30.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6765,7 +6819,7 @@
       "url": "https://joshternet.org/joshbot/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-05T13:22:17.000Z",
+      "published_at": "2026-11-05T14:19:30.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6795,7 +6849,7 @@
       "url": "https://joshternet.org/nominate/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-05T13:22:17.000Z",
+      "published_at": "2026-11-05T14:19:30.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6810,7 +6864,7 @@
       "url": "https://joshternet.org/security/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-05T13:22:17.000Z",
+      "published_at": "2026-11-05T14:19:30.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6840,7 +6894,7 @@
       "url": "https://joshternet.org/specs/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-05T13:22:17.000Z",
+      "published_at": "2026-11-05T14:19:30.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -11736,6 +11790,21 @@
       "image_origin": "https://www.joshuabaker.com",
       "language": "en",
       "content_type": "video"
+    },
+    {
+      "type": "content",
+      "title": "Speaking",
+      "summary": "I talk about static analysis, accessibility, and team culture.",
+      "domain": "www.joshuakgoldberg.com",
+      "origin": "https://www.joshuakgoldberg.com",
+      "url": "https://www.joshuakgoldberg.com/speaking",
+      "topics": [],
+      "site_title": "Josh Goldberg",
+      "published_at": "",
+      "image": "/assets/activity/posters/e1ce45a4eb3b9e063a15413167a1fc13f4189cabcefa0b92e866bca51902d5d6.webp",
+      "image_origin": "",
+      "language": "en",
+      "content_type": "project"
     },
     {
       "type": "content",
