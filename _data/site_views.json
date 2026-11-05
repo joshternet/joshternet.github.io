@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-05T10:37:04.755Z",
+  "generated_at": "2026-11-05T04:25:51.952Z",
   "sites": [
     {
       "origin": "https://artlung.com",
@@ -147,10 +147,6 @@
           "label": "general"
         },
         {
-          "slug": "github",
-          "label": "GitHub"
-        },
-        {
           "slug": "go",
           "label": "go"
         },
@@ -283,6 +279,10 @@
           "label": "swim2026"
         },
         {
+          "slug": "toy",
+          "label": "toy"
+        },
+        {
           "slug": "twitter",
           "label": "twitter"
         },
@@ -320,7 +320,7 @@
         "title": "/amiga/",
         "summary": "A few of my memories of using the a Commodore Amiga 1000 for computer graphics, music, etc.",
         "published_at": "",
-        "observed_at": "2026-11-05T07:12:25.789Z",
+        "observed_at": "2026-11-05T04:08:09.105Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -341,6 +341,22 @@
           "label": "linked to",
           "href": "https://joshmuller.ca/",
           "page": "https://artlung.com/firehose/",
+          "evidence_count": 2
+        },
+        {
+          "to": "https://joshternet.org",
+          "relation": "content-link",
+          "label": "linked to",
+          "href": "https://joshternet.org/",
+          "page": "https://artlung.com/https//joecrawford.com/",
+          "evidence_count": 7
+        },
+        {
+          "to": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshternet.org/",
+          "page": "https://artlung.com/",
           "evidence_count": 2
         }
       ],
@@ -394,7 +410,6 @@
           "https://artlung.com/log/": "content-index",
           "https://artlung.com/til/": "content-index",
           "https://artlung.com/ways/": "content-index",
-          "https://artlung.com/seeking/": "content-index",
           "https://artlung.com/notes/": "content-index",
           "https://artlung.com/blog/": "content-index",
           "https://artlung.com/weblog/": "content-index",
@@ -467,8 +482,6 @@
           "https://artlung.com/where/": "content-index",
           "https://artlung.com/why/": "content-index",
           "https://artlung.com/wish/": "content-index",
-          "https://artlung.com/wish-list/": "content-index",
-          "https://artlung.com/wishlist/": "content-index",
           "https://artlung.com/yep/": "content-index",
           "https://artlung.com/more/": "content-index",
           "https://artlung.com/site/": "content-index",
@@ -12416,6 +12429,10 @@
           "https://artlung.com/blog/2020/08/20/its-good-have-friends-thanks-for-asking-questions/1/": "budget-exhausted",
           "https://artlung.com/blog/tag/chrisgreazel/": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2020/08/20/its-good-have-friends-thanks-for-asking-questions/": "budget-exhausted",
+          "https://artlung.com/blog/2020/08/06/": "budget-exhausted",
+          "https://artlung.com/blog/2020/08/06/i-dont-know-how-it-ends-comic-cubecat/1/": "budget-exhausted",
+          "https://artlung.com/blog/wp-content/uploads/2020/08/IMG_0433.png": "budget-exhausted",
+          "https://artlung.com/contact/?url=https://artlung.com/blog/2020/08/06/i-dont-know-how-it-ends-comic-cubecat/": "budget-exhausted",
           "https://artlung.com/blog/2020/02/": "budget-exhausted",
           "https://artlung.com/blog/2020/02/02/": "budget-exhausted",
           "https://artlung.com/blog/2020/02/02/zappa-comic/1/": "budget-exhausted",
@@ -12812,10 +12829,784 @@
           "https://artlung.com/guestbook/?replytocom=1228512": "budget-exhausted",
           "https://artlung.com/guestbook/?replytocom=1234606": "budget-exhausted",
           "https://artlung.com/guestbook/?replytocom=1235617": "budget-exhausted",
-          "https://artlung.com/guestbook/?replytocom=1242350": "budget-exhausted"
+          "https://artlung.com/guestbook/?replytocom=1242350": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/07/you-only-live-every-day/": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/08/kid-busted-open-the-bridge-nose-falling-off/": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/08/quote-of-the-day-from-prof-galloway/": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/09/my-grandparents-joe-jean-and-their-dog-kimba-all-chilling-1970s/": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/10/my-grandmother-sewed-me-a-cape-superman-1970s/": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/10/new-blog-read-23-breaths/": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/13/and-i-missed-you-like-the-desert-missed-the-rain/": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/14/haute-couture/": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/16/ad-hoc-chalk/": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/16/mellow-jpg/": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/17/easter-far-coffee-beach-waves-found-shovel-stingray/": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/18/day-after-easter-was-fine-day-work-interrupted/": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/20/cant-lose/": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/21/a-short-conversation-with-and-about-a-bank-by-dan-hon/": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/21/good-news-on-the-tijuana-river-from-surfrider/": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/21/some-weather-coming/": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/23/soledad-with-kelly-and-gwen-not-pictured/": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/23/water-cold-today-think-the-weather-brought-lot/": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/24/lifeguards-in-training-out-here-still-pretty-cold-waves-still-pretty-big/": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/24/yesterday-i-added-a-sand-dollar-to-my-small-bucket-or-sand-dollars/": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/26/home-sweet-homepage/": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/30/bouncy-castle-morning/": "budget-exhausted",
+          "https://artlung.com/blog/2022/04/30/daisy-gwen/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/04/may-the-force-be-with-you-1977-age-7/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/05/saw-waterman_movie-last-night-with-kelly-lapalomatheatre-terrific/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/06/como-dali-pinto/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/07/corrida-de-perros-fun-for-dogs-and-monster-closeouts/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/08/immersion/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/08/in-service-shutdown-news-this-from-facebook/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/09/i-can-never-remember-the-name-of-gitprime-which-is-now-pluralsight-flow/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/09/mess-loved-it/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/10/keming-is-a-real-word/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/13/pads-cubs-with-kelly-a-night-at-the-ballpark-always-a-w/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/13/some-days-it-feels-like-youve-leveled-up-or-rather-ive-leveled-up-its-good/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/14/0815-is-just-alright-with-me/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/14/i-do-enjoy-watching-swimmers-no-matter-the-species-zoo-was-great-today/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/15/foggy-sunday-morning-nice-surf-and-was-getting/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/16/sunshine-sliver/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/17/i-shower-here-nearly-as-much-as-i-shower-at-home/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/18/from-mid-1990s-scrub-top-with-sharks-and/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/18/today-work-wiped-out-almost-didnt-come-the/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/19/have-idea-how-many-times-ive-walked-through/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/22/timing-is-everything-stoke/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/23/cant-use-ya-coz-ya-feets-too-big-fatswaller/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/25/long-promised-road-flows-to-the-source-gentle-force-neverending-neverending/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/26/better-late-than-never/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/28/stingray-the-water-minding-their-own-business-got/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/29/second-swim-today-was-mostly-hot-tub/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/29/some-sessions-whoa-clouds-clear-sunny-and-not/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/30/came-out-the-water-whistling-the-hawaii-theme/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/30/making-date-have-incredible-meal-luxury-for-holiday/": "budget-exhausted",
+          "https://artlung.com/blog/2022/05/31/two-giant-rides-close-to-the-jetty-make-goofy-smiles/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/01/every-evening-different/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/02/cuz-i-was-a-bit-too-leisurely/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/02/dropped-off-ballot-last-night-our-peculiar-partially/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/03/tread/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/04/after-a-long-shell-hiatus-a-fine-haul-this-morning/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/04/gave-snacks-to-a-camel-recommended/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/04/wetsuit-free-and-happy-as-a-clam-however-happy-a-clam-is/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/05/fin-savers-worked-well-new-fins-and-pretty/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/06/100-sunny-yesterday-100-overcast-this-afternoon/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/07/field-trip-for-daisy-gwenthegoblin-lovely-and-amazing/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/08/sometimes-there-are-dolphins-in-the-lineup/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/10/long-week-winding-down/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/11/now-that-springs-been-here-while-and-summer/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/12/before-the-sunshine-chomped-the-overcast/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/12/pre-steam-artichoke-removed-the-choke-with-favorite/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/14/i-think-ill-just-let-the-mystery-be/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/15/pretty-any-which-way/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/16/no-dumping-drains-to-ocean-2/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/18/sun-protection/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/19/astoundingly-clear-water-this-morning-at-the-jetty-during-the-low-tide/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/19/sidewalk-cap/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/20/2018-2021-2022/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/22/dinner-view-last-night/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/22/glint/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/22/mod-4-booster-2/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/23/badged-ready-for-the-con/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/23/started-cramping-after-minutes-post-vaccine-fatigue-think/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/25/daisy-at-queen-califas/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/25/dogsitting-overnight-started-with-very-nice-beach-walk/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/25/like-this-photo-because-its-like-wheres-gwen/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/26/bit-tired-small-waves-with-long-waits-between/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/27/sister-refers-scavenger-because-when-find-things-the/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/28/waterman-roboteering-area-of-the-apartment/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/28/zephyr-in-the-sky-at-night-i-wonder/": "budget-exhausted",
+          "https://artlung.com/blog/2022/06/30/and-if-youre-partial-to-the-night-sky-if-youre-vaguely-attracted-to-rooftops/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/01/wearing-the-color-off-my-handplane-stoke/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/02/second-day-swim-pool/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/02/while-was-looking-this-with-own-eyes-thought/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/03/the-parking-lot-jolla-shores-filled-745am-kelly/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/04/any-day-sequence-days-good-time-remember-pace/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/05/nobody-is-more-shocked-than-me-that-i-use-algebra-in-programming-lately/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/05/not-filtered-pre-sunset/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/06/assembling-puzzle-pieces-2-weeks-to-comic-con/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/07/clash-of-clans-maximized/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/07/detail-the-comic-delivered-for-theapartmentartshow-which-opens/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/09/salon-time/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/09/very-rare-to-be-at-the-beach-at-mid-morning-summer-in-full-swing/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/10/first-sewing-project-successfully-affixed-this-patch-tote/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/10/kelly-not-feeling-well-this-weekend-ive-not/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/10/like-ma-bell-i-got-the-ill-communication/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/10/yesterdays-shell-haul/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/11/most-the-fun-tonights-short-session-was-watching/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/13/at-chalcedony/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/15/the-sunset-was-invisible-due-cloud-cover-waves/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/16/hey-shark-sighting-north-scripps-pier-stayed-the/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/16/latest-comic-page-was-one-the-many-pieces/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/17/just-a-few-days-to-comic-con-endless-summer/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/18/dont-recognize-myself-this-but-ill-adjust-body/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/19/yesterday-tried-new-thread-still-sewing-storm-prepping/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/22/olivia-octaviuses-looking-sharp-liv-liv-sdcc-sdcc2022/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/23/one-favorite-ways-start-comic-con-saturday-with/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/23/swimming-with-wristband-where-usually-have-cheap-waterproof/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/23/the-prompt-quick-draw-was-for-the-first/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/24/final-day-of-comic-con-today-many-good-things-are-bubbling/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/24/its-not-a-comic-con-without-a-robot-selfie-astroboy-sdcc2022/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/24/its-not-a-comic-con-without-a-robot-selfie-r2d2-sdcc2022/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/25/first-swim-today-was-captured-by-my-sister/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/25/second-swim-today-included-my-nephew/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/26/adding-2022-sdcc-to-the-badge-wall/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/26/garibaldi-appearance/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/27/session-today-included-observing-my-nephew-getting-his-first-stoke/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/28/during-tonights-session-got-watch-nephew-and-brother/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/28/siblings/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/29/family-session/": "budget-exhausted",
+          "https://artlung.com/blog/2022/07/31/yesterday-at-the-self-realization-fellowship-in-encinitas/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/01/walked-gwen-today-we-chilled-watching-folks-go-by-a-bit/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/02/not-every-day-two-dolphins-sprint-front-think/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/03/feynman-lectures-online/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/04/getting-to-like-the-area-south-of-scripps-pier/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/05/beaches-in-los-angeles-1970s-1980s/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/05/quote-of-the-day-11/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/06/gray-waves-are-fine/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/07/who-did-you-see-riding-waves-without-surfboard/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/13/took-easy-this-week-back-hard-today-new/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/14/left-the-screaming-busy-early-afternoon-shore-break/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/15/amazed-ive-made-this-many-pages-of-comics-more-to-come/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/15/this-illustration-by-shaun-kerri/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/16/latest-family-scanning-batch-being-readied-to-take-flight/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/17/keep-coming-back-it-works-if-you-work-it-stoke/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/18/golden-hour-phone-shadow/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/18/sf-and-waveriding-i-enjoy/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/19/angry-galloway-is-the-best-galloway/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/19/left-place-with-gwenthegoblin-and-spending-little-time/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/20/pontiac-night-visit-to-the-beach/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/20/today-strand/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/21/dolphins-out-always-feels-like-auspicious-omen-for/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/22/love-zines-and-comics-arrival-the-mail-via/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/23/i-like-a-gershwin-tune-how-about-you/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/24/i-belong-to-the-_____-generation-i-can-take-it-or-leave-it-each-time/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/25/lj-tonite/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/25/tonight-learned-that-adam92102-tells-helluva-story-hes/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/26/i-can-feel-the-weather-changing-one-session-at-a-time/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/26/went-the-whistle-stop-last-night-see-sosayweallonlines/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/27/beach-time-often-requires-sun-protection/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/28/currently/": "budget-exhausted",
+          "https://artlung.com/blog/2022/08/31/eclipseish/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/01/went-and-saw-doctor-yesterday-part-follow-relatively/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/03/was-quite-month-for-both-its-great-get/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/04/bubbs/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/05/boiled-condensed-milk-can-yesterday-let-cool-didnt/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/05/theres-a-lot-going-on-under-the-water/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/07/last-light-home-beach-stoke/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/09/drizzly-morning-route-airport-earlier-that-san-diego/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/09/good-travel-with-because-sometimes-hard-boil-eggs/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/10/in-loving-memory-bobbi/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/10/you-can-trust-a-restaurant-with-kids-drawings-on-the-wall/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/11/westbound-tonite/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/12/was-great-relief-take-off-out-phoenix-this/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/13/low-tide-whomp-parking-lot-emptier-an-abandoned-toy-papillon-violet/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/17/2-hours-at-scripps/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/17/have-oysters/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/22/wetsuit-soon-maybe/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/23/7am-shadow-seen-the-water-man-with-prosthetic/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/24/today-reflected-waves-were-going-out-from-the/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/25/bathymetry-et-cetera/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/26/9-frames-in-the-water-culled-from-30-minutes-the-video-ran/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/27/when-you-have-piece-kit-you-like-you/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/28/bro-know-youre-cold-says-the-shaggy-blonde/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/28/costuming-high-school-from-stylish-devil-red-sweat/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/28/expatriate-kid-manila-grandma-had-sewn-that-shirt/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/29/joyous-and-exultant/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/29/wiltern-harrison-belew-remain-in-light/": "budget-exhausted",
+          "https://artlung.com/blog/2022/09/30/street-met-fellow-handplaning-bodysurfer-this-morning-blessed/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/01/glassy-a-m/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/02/kelly-and-i-visited-the-tijuana-estuary-in-imperial-beach-mellow-and-sublime/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/03/listened-much-music-and-much-talk-radio-that/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/04/parking-lots-the-beach-are-bit-emptier-each/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/05/stayed-in-the-water-15-minutes-past-sunset-wetsuit-time/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/06/wetsuit-last-year-xxxxl-wetsuit-now-xxxl-also/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/09/fellow-bodysurfer-quantumprimordial-i-met-in-the-water-stoke/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/09/i-found-these-in-the-sand-but-i-dont-think-theyre-me/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/09/third-photo-for-tonights-beach-session-rainbow-time/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/09/trash-classy-barrio-logan-because-this-lovely-loteria/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/10/15-minutes-past-sunset/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/12/terramar-beach-havent-been-here-since-march/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/13/bivalented-did-you-know-that-bivalent-is-a-synonym-for-divalent/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/13/los-angeles-times-august-23-1988-bodysurfing/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/13/the-lights-are-for-the-netsports-folk/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/15/session-in-the-rain-then-sun-then-rain/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/16/went-for-the-meeting-the-mats-put-lowerpowered/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/17/victory-at-sea/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/18/whether-wind-withers-memory/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/19/heck-yeah-i-voted-hey-you-vote/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/20/since-the-summer-ended-the-sun-goes-down/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/21/awaiting-the-sensation-of-a-short-sharp-shock/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/22/its-swell-out/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/23/beach-hazards-statement-did-not-disappoint-waves-big/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/24/waveriding-partly-motor-memory-and-partly-improvisational-happy/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/26/was-feeling-poorly-yesterday-and-took-some-time/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/27/orangey/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/27/us-level-125/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/29/after-sunset-sunset-beach-thats-the-moon-there/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/29/behind-the-shore-the-madness-that-socalcorgibeachday-huntington/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/29/bit-after-sunrise-sunset-beach-orange-county-punctuated/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/29/gwenthegoblin-doing-some-actual-fetching-with-hellokellykuhl-socalcorgibeachday/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/30/stopped-aliso-creek-beach-laguna-orange-county-not/": "budget-exhausted",
+          "https://artlung.com/blog/2022/10/31/sunset-was-on-fire-tonight/": "budget-exhausted",
+          "https://artlung.com/blog/2022/11/02/calling-these-conditions-chaotic-garbage-but-was-fun/": "budget-exhausted",
+          "https://artlung.com/blog/2022/11/03/twitter-went-private-then-it-got-weird/": "budget-exhausted",
+          "https://artlung.com/blog/2022/11/04/no-beach-yesterday-but-there-were-rainbows/": "budget-exhausted",
+          "https://artlung.com/blog/2022/11/08/mastodon/": "budget-exhausted",
+          "https://artlung.com/blog/2022/11/12/collect-shells-from-the-beaches-southern-california-and/": "budget-exhausted",
+          "https://artlung.com/blog/2022/11/13/its-perfectly-rational-acquire-the-same-make-and/": "budget-exhausted",
+          "https://artlung.com/blog/2022/11/16/predicted-quote-of-the-day/": "budget-exhausted",
+          "https://artlung.com/blog/2022/11/16/saw-moulin-rouge-orange-county-over-the-weekend/": "budget-exhausted",
+          "https://artlung.com/blog/2022/11/21/california-state-of-emergency-for-covid-19-ends-in-february/": "budget-exhausted",
+          "https://artlung.com/blog/2022/11/22/note-gwenthegoblin-is-not-particularly-a-morning-dog/": "budget-exhausted",
+          "https://artlung.com/blog/2022/11/22/qotd-code/": "budget-exhausted",
+          "https://artlung.com/blog/2022/11/23/im-over-on-mastodon/": "budget-exhausted",
+          "https://artlung.com/blog/2022/11/24/thanksgiving-relish-trays-2022-by-me-and-kelly-happy-thanksgiving/": "budget-exhausted",
+          "https://artlung.com/blog/2022/12/07/expatriate/": "budget-exhausted",
+          "https://artlung.com/blog/2022/12/07/this-photo-from-when-kelly-and-had-been/": "budget-exhausted",
+          "https://artlung.com/blog/2022/12/12/popehat-exits-twitter/": "budget-exhausted",
+          "https://artlung.com/blog/2022/12/13/qotd-mdwa/": "budget-exhausted",
+          "https://artlung.com/blog/2022/12/15/next-week-will-something-have-not-done-years/": "budget-exhausted",
+          "https://artlung.com/blog/2022/12/18/let-the-boxing-and-packing-and-dismantling-begin/": "budget-exhausted",
+          "https://artlung.com/blog/2022/12/21/moving-some-parts-the-english-speaking-world-say/": "budget-exhausted",
+          "https://artlung.com/blog/2022/12/23/cultures-and-religions-across-the-world-have-different/": "budget-exhausted",
+          "https://artlung.com/blog/2022/12/23/the-verdict-from-wonderful-girlfriend-the-end-yesterday/": "budget-exhausted",
+          "https://artlung.com/blog/2022/12/24/kelly-and-cant-quite-understand-how-and-why/": "budget-exhausted",
+          "https://artlung.com/blog/2022/12/25/jessica-and-miles-new-pup-as-yet-unnamed-dogfooting/": "budget-exhausted",
+          "https://artlung.com/blog/2022/12/30/you-love-art-would-you-like-buy-moody/": "budget-exhausted",
+          "https://artlung.com/blog/2022/12/31/ive-moved-much-not-totally-sure-how-many/": "budget-exhausted",
+          "https://artlung.com/blog/2023/01/01/gwenthegoblin-while-the-bed-is-unmade/": "budget-exhausted",
+          "https://artlung.com/blog/2023/01/05/the-rain-continues-off-and-on-sunset-walk-along-san-diego-river/": "budget-exhausted",
+          "https://artlung.com/blog/2023/01/07/back-to-it-as-the-first-big-2023-swell-wanes-the-rain-has-subsided-for-now/": "budget-exhausted",
+          "https://artlung.com/blog/2023/01/08/big-waves-expose-grander-shells-than-usual-this/": "budget-exhausted",
+          "https://artlung.com/blog/2023/01/08/whats-the-cliche-from-the-academy-awards-its/": "budget-exhausted",
+          "https://artlung.com/blog/2023/01/11/foot-waves-pipes-brief-post-work-session-sunset/": "budget-exhausted",
+          "https://artlung.com/blog/2023/01/12/quote-of-the-day-from-oliver-willis/": "budget-exhausted",
+          "https://artlung.com/blog/2023/01/13/its-been-a-long-week-beautiful-tho/": "budget-exhausted",
+          "https://artlung.com/blog/2023/01/13/swimming-2022-stoke-swimming/": "budget-exhausted",
+          "https://artlung.com/blog/2023/01/17/yesterday-and-today-around-the-corner/": "budget-exhausted",
+          "https://artlung.com/blog/2023/01/18/pools-are-also-a-privilege-i-remind-myself-as-i-pine-for-the-sea/": "budget-exhausted",
+          "https://artlung.com/blog/2023/01/21/you-werent-the-way-see-you-can-get/": "budget-exhausted",
+          "https://artlung.com/blog/2023/01/22/this-sunday/": "budget-exhausted",
+          "https://artlung.com/blog/2023/01/24/brief-swim-last-night/": "budget-exhausted",
+          "https://artlung.com/blog/2023/01/26/went-to-ponto-jetties-after-work-rocks-no-fun-to-walk-on/": "budget-exhausted",
+          "https://artlung.com/blog/2023/01/29/sea-lion-cruising-by-2-feet-away-from-me-a-local/": "budget-exhausted",
+          "https://artlung.com/blog/2023/01/30/more-rain-but-rainbows-too/": "budget-exhausted",
+          "https://artlung.com/blog/2023/02/03/prework-stoke/": "budget-exhausted",
+          "https://artlung.com/blog/2023/02/04/riding-waves-mostly-solitary-but-sometimes-theres-opportunity/": "budget-exhausted",
+          "https://artlung.com/blog/2023/02/07/brief-swim-last-night-2/": "budget-exhausted",
+          "https://artlung.com/blog/2023/02/07/postwork-terramar/": "budget-exhausted",
+          "https://artlung.com/blog/2023/02/10/that-blur-riding-wave-surfline-camera-maelstrom-today/": "budget-exhausted",
+          "https://artlung.com/blog/2023/02/11/a-frank-stella-painting-and-me-mcasd/": "budget-exhausted",
+          "https://artlung.com/blog/2023/02/12/i-dont-go-to-crystal-pier-often-but-it-looked-fun-on-the-cameras-and-it-was-fun/": "budget-exhausted",
+          "https://artlung.com/blog/2023/02/15/dinner-then-later-drinks-with-a-view-it-was-a-very-very-happy-valentines/": "budget-exhausted",
+          "https://artlung.com/blog/2023/02/18/spent-sundown-in-a-cluster-of-other-bodysurfers/": "budget-exhausted",
+          "https://artlung.com/blog/2023/02/19/beach-parking-lots-are-filling-spring-is-headed-here-quick/": "budget-exhausted",
+          "https://artlung.com/blog/2023/02/20/spent-hours-the-water-hanging-out-oceanside-pier/": "budget-exhausted",
+          "https://artlung.com/blog/2023/02/22/no-swim-today-its-windy-stormy-danger-so-beautiful/": "budget-exhausted",
+          "https://artlung.com/blog/2023/02/24/sign-of-the-times-2/": "budget-exhausted",
+          "https://artlung.com/blog/2023/02/25/i-cant-remember-if-ive-done-a-selfie-with-her-scripps/": "budget-exhausted",
+          "https://artlung.com/blog/2023/02/25/new-cardigan/": "budget-exhausted",
+          "https://artlung.com/blog/2023/02/27/magic-is-green-matt-wagners-mage-1984/": "budget-exhausted",
+          "https://artlung.com/blog/2023/03/03/breakadawn/": "budget-exhausted",
+          "https://artlung.com/blog/2023/03/04/pretty-sure-the-last-time-cousin-leeman-and/": "budget-exhausted",
+          "https://artlung.com/blog/2023/03/05/home-away-from-home/": "budget-exhausted",
+          "https://artlung.com/blog/2023/03/07/quote-of-the-day-anti-testimonial/": "budget-exhausted",
+          "https://artlung.com/blog/2023/03/08/dawn-patrol-dog-walk/": "budget-exhausted",
+          "https://artlung.com/blog/2023/03/11/this-photo-was-moms-fridge-for-very-long/": "budget-exhausted",
+          "https://artlung.com/blog/2023/03/12/this-was-12th-birthday-party-think-pretty-sure/": "budget-exhausted",
+          "https://artlung.com/blog/2023/03/18/dolphins-dont-ever-days-without-the-ocean-sea/": "budget-exhausted",
+          "https://artlung.com/blog/2023/03/19/waves-were-flat-today-was-alone-the-water/": "budget-exhausted",
+          "https://artlung.com/blog/2023/03/20/yesterday-the-jetty-there-was-fella-taking-his/": "budget-exhausted",
+          "https://artlung.com/blog/2023/03/21/what-did-i-do-for-my-birthday-yesterday/": "budget-exhausted",
+          "https://artlung.com/blog/2023/03/22/email-of-the-day-twitter-two-factor-authentication-is-now-off/": "budget-exhausted",
+          "https://artlung.com/blog/2023/03/23/i-liked-that-i-recognized-this-actor-was-the-same-dude-in-each/": "budget-exhausted",
+          "https://artlung.com/blog/2023/03/23/steve-yegge-is-writing-about-coding-with-an-ai/": "budget-exhausted",
+          "https://artlung.com/blog/2023/03/24/these-were-our-jams/": "budget-exhausted",
+          "https://artlung.com/blog/2023/03/24/top-10-artists-from-2022s-last-fm-summations/": "budget-exhausted",
+          "https://artlung.com/blog/2023/03/25/silly-in-santa-barbara-taken-by-kelly/": "budget-exhausted",
+          "https://artlung.com/blog/2023/03/27/august-2007-march-2023/": "budget-exhausted",
+          "https://artlung.com/blog/2023/03/29/part-moving-house-means-you-get-box-and/": "budget-exhausted",
+          "https://artlung.com/blog/2023/03/29/quote-of-the-day-twitter-edition/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/01/aces-to-be-back/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/01/quake-yesterday/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/02/a-live-well-wasted-returns/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/02/blog-refer/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/02/last-week-in-santa-barbara/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/02/wore-old-wetsuit-today-its-had-more-wear/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/04/afrofuturism-with-greg-tate/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/05/affirmations-bot-still-going/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/06/obglass/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/08/chilly-but-clear-and-sunny-and-people-are-back-at-the-beach/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/09/days-ago-bird-kelly-noticed-bird-started-hanging/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/09/last-easter-stepped-stingray-and-had-bag-removed/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/10/merger-email-of-the-day/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/14/personal-websites-are-good/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/14/sdsu-backdoor-venue-that-longer-exists-where-first/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/16/nice-bodysurfing-session-velella-velella/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/17/good-rideable-wave-rolls-and-starts-fold-over/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/18/went-out-at-one-spot-came-back-in-a-quarter-mile-north/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/19/oh-look-im-in-a-large-language-model-llm-corpus/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/20/the-sun-has-set-la-jolla/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/21/a-fine-remembrance-of-the-web/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/21/quote-of-the-day-12/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/22/kneel/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/23/summery-today-every-day-fresh-and-new-beach/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/24/during-one-ride-today-lost-one-handplanes-that/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/25/gear/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/27/still-working-some-code-create-image-artlung-signature/": "budget-exhausted",
+          "https://artlung.com/blog/2023/04/30/weekend-mornings-are-sometimes-eventful-some-great-corners/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/03/vuejs-app-to-create-ti-extended-basic-call-char-strings/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/04/easter-morning-had-visitors-mourning-doves-one-had/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/04/from-half-finished-autobiographical-comic-cinco-mayo-deeply/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/05/from-popehat-deserves-got-nothing-to-do-with-it/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/05/how-the-week-ends/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/06/sun-protection-2/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/07/time-for-reflection/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/10/july-2008-san-francisco-blogher-instead-attending-the/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/12/i-got-a-pocket-got-a-pocketful-of-sunshine/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/13/went-this-morning-and-rode-waves-with-bodysurfers/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/14/the-accessibility-ramp-the-sand-back-the-water/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/15/the-most-interesting-and-peculiar-photos-take-are/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/17/shoe-pillow-with-gwen/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/18/thatll-be-the-day-i-go-back-to-annandale/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/19/who-are-those-dudes/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/20/windansea-shack-behind-me-today/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/21/if-im-going-to-babysit-or-dogsit-im-going-to-inflict-my-predispositions-on-you/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/21/tell-tchaikovsky-the-news/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/23/beachcombing-past-4-days/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/24/g/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/26/here-for-r-y-g/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/27/post-bodysurf-session-walkabout-ob/": "budget-exhausted",
+          "https://artlung.com/blog/2023/05/28/bodysurfed-this-afternoon-even-mediocre-conditions-are-fun/": "budget-exhausted",
+          "https://artlung.com/blog/2023/06/01/new-kicks/": "budget-exhausted",
+          "https://artlung.com/blog/2023/06/02/beautiful-day-for-a-ball-game/": "budget-exhausted",
+          "https://artlung.com/blog/2023/06/03/hydrodynamics-this-morning/": "budget-exhausted",
+          "https://artlung.com/blog/2023/06/04/from-exploring-sunset-cliffs-last-night/": "budget-exhausted",
+          "https://artlung.com/blog/2023/06/04/swimming-area/": "budget-exhausted",
+          "https://artlung.com/blog/2023/06/06/by-the-end-of-the-beach-visit-id-lost-a-handplane-and-saw-a-funny-looking-dog-ob/": "budget-exhausted",
+          "https://artlung.com/blog/2023/06/08/on-camera-at-pb-after-sunset/": "budget-exhausted",
+          "https://artlung.com/blog/2023/06/10/you-covered-lot-ground-was-told-the-solitary/": "budget-exhausted",
+          "https://artlung.com/blog/2023/06/11/nimona-and-hindsight/": "budget-exhausted",
+          "https://artlung.com/blog/2023/06/17/no-swimming/": "budget-exhausted",
+          "https://artlung.com/blog/2023/06/18/crystal-pier/": "budget-exhausted",
+          "https://artlung.com/blog/2023/06/19/755pm/": "budget-exhausted",
+          "https://artlung.com/blog/2023/06/21/atemporality/": "budget-exhausted",
+          "https://artlung.com/blog/2023/06/22/quotes-of-the-day-3/": "budget-exhausted",
+          "https://artlung.com/blog/2023/06/23/finally-went-ans-dry-cleaning-thanks-gregorlove-for/": "budget-exhausted",
+          "https://artlung.com/blog/2023/06/25/this-time-tomorrow-ill-virginia-but-this-morning/": "budget-exhausted",
+          "https://artlung.com/blog/2023/06/26/southwestern-virginia-usa-land-acknowledgment-here-would-incredibly/": "budget-exhausted",
+          "https://artlung.com/blog/2023/06/26/suspicious-neko/": "budget-exhausted",
+          "https://artlung.com/blog/2023/06/28/several-hundred-miles-away-from-any-stingray/": "budget-exhausted",
+          "https://artlung.com/blog/2023/06/29/interim-pacific/": "budget-exhausted",
+          "https://artlung.com/blog/2023/06/30/got-malts-went-to-the-star-useful-week-in-roa/": "budget-exhausted",
+          "https://artlung.com/blog/2023/06/30/please-do-not-reveal-my-merman-status/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/01/its-honor-prepare-food-her-kitchen-meals-minutes/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/01/swipe-out-towner-the-ysan-diego-whoa-thats/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/02/leaving-roanoke/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/03/hello-world-from-byword/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/04/overcasthome/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/08/said-bodysurfer-though-she-knew-say-back-unsure/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/09/currently-watching-the-astounding-train-wreck-that-the/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/15/end-the-day-in-a-pool/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/16/a-day-at-the-beach-with-crawfords/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/16/who-wouldnt-want-to-be-a-jedi/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/17/everything-is-a-remix-latest-everythingisaremix-shirt-from-kirbyferguson/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/18/today-session-nephew-time/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/19/replacing-the-rear-window-sticker-i-made-with-a-newer-one-i-made/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/20/norma-rae-union-excellent-cosplay-metatextually-representing-sagaftra/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/21/baddie-current-slang-for-confident-attractive-woman-very/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/21/last-year-didnt-donate-tried-but-they-identified/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/23/cousin-miles-striking-blow-during-sdcc-with-the/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/26/the-php-logo-as-if-it-were-java/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/26/the-rock-zoom-background-repeated/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/28/head-shaving-time-lapse/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/29/last-week-met-droids-dont-think-have-the/": "budget-exhausted",
+          "https://artlung.com/blog/2023/07/30/first-time-the-water-too-long-started-scripps/": "budget-exhausted",
+          "https://artlung.com/blog/2023/08/01/ive-had-rocky-several-days-high-highs-elation/": "budget-exhausted",
+          "https://artlung.com/blog/2023/08/04/downhill-good-waves-then-miles-uphill-100-meters/": "budget-exhausted",
+          "https://artlung.com/blog/2023/08/05/ride-eternal-shiny-and-chrome/": "budget-exhausted",
+          "https://artlung.com/blog/2023/08/06/morning-today-getting-out-older-fellow-with-long/": "budget-exhausted",
+          "https://artlung.com/blog/2023/08/09/when-you-scan-the-radioi-hope-this-song-will-guide-you-home/": "budget-exhausted",
+          "https://artlung.com/blog/2023/08/12/3rd-time-at-blacks/": "budget-exhausted",
+          "https://artlung.com/blog/2023/08/12/we-hit-merry-wives-of-windsor-last-night-and-it-was-great/": "budget-exhausted",
+          "https://artlung.com/blog/2023/08/13/before-breakfast/": "budget-exhausted",
+          "https://artlung.com/blog/2023/08/18/last-day-at-the-dayjob-the-world-is-full-of-possibility/": "budget-exhausted",
+          "https://artlung.com/blog/2023/08/19/best-day-out-long-time-lefts-rights-spin/": "budget-exhausted",
+          "https://artlung.com/blog/2023/08/21/came-to-newport-had-fun-next-up-lunch-with-a-pal-%f0%9f%a4%99/": "budget-exhausted",
+          "https://artlung.com/blog/2023/08/22/flat-glassy-nary-wave-beautiful-saw-many-stingray/": "budget-exhausted",
+          "https://artlung.com/blog/2023/08/23/me-san-clemente/": "budget-exhausted",
+          "https://artlung.com/blog/2023/08/24/today-tamarack/": "budget-exhausted",
+          "https://artlung.com/blog/2023/08/25/lifeguard-came-out-and-said-was-coming-out/": "budget-exhausted",
+          "https://artlung.com/blog/2023/08/25/utterly-inspiring-and-energetic-san-diegan-atfuruya-trans/": "budget-exhausted",
+          "https://artlung.com/blog/2023/08/26/knowledge-not-drawn-the-schmoo-the-21st-century/": "budget-exhausted",
+          "https://artlung.com/blog/2023/08/26/todays-water-session-included-the-show-truck-stuck/": "budget-exhausted",
+          "https://artlung.com/blog/2023/08/27/scripps-august-26/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/01/sea-otter-xing-moss-landing-state-beach-california/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/02/unexpected-life-threatening-waves-currents/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/03/davenport-calif/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/04/enhydra-lutris-sea-otter-viewed-from-the-beach/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/05/after-hiatus-waveriding-back-used-app-called-dawn/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/06/persistence-and-sun-protection/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/07/full-of-stars/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/08/left-when-got-windy-enough-for-kitesurfers-terrible/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/09/dawn-patrol-to-catch-some-hurricane-swell-san-clemente-state-beach/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/09/part-2-was-t-street/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/11/ob-in-the-rain-today-photo-from-an-accidental-screenshot/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/11/shogun-warriors/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/11/this-year-old-photo-feedback-incentive-tool-kept/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/12/css-is-wild/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/12/return-to-so-mission/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/14/ive-been-playing-with-dawnpatrol-app-with-and/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/15/commit-messages/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/15/cyborg-sea-dog-tell-me-what-you-dream-of/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/16/sad-tomorrow-object-param-tags/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/16/vimeo-for-roku-disappeared/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/16/with-hellokellykuhl-at-the-sandiegowavefc-game-nwsl/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/17/mat-surfing/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/18/my-listening/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/19/strap-busted-leash-saved-it-good-sesh/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/20/people-competitive-sports-watch-game-films-understand-gameplay/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/21/militant-angeleno-is-moving-and-upgrading/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/21/music/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/21/the-quarter-mile-buoy-used-favorite-part-former/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/22/what-do-you-know-about-art-kid/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/23/first-today-coffee-then-shoring-cbldf-patch-adding/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/23/only-surfing/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/24/oceanside-harbor-this-morning-was-pretty-fun/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/25/wwmmd/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/26/but-everything-looks-perfect-from-far-away/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/26/dave-mckeans-rvi/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/27/pumping-today/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/28/let-it-be/": "budget-exhausted",
+          "https://artlung.com/blog/2023/09/29/my-cousin-out-at-shores-was-awesome-out-there-jonnysnow16/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/01/pier/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/02/dream/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/03/the-most-wonderful-time-the-year-when-non/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/05/its-gratifying-to-catch-a-kind-of-wave-that-used-to-feel-impossible-to-catch-pb/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/05/pal-erin-asked-why-are-you-effervescent-you/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/06/foggy-nite/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/07/foggy-morning-but-beach-plenty-busy-ob/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/08/chilly-foggy-this-is-the-beach/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/10/october-is-not-summer-but-isnt-it-though/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/11/waves-intense-photos-mediocre-heres-one-of-my-cousin-between-hectic-sets/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/12/the-size-the-sea-and-the-sun-eyes/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/13/grainy-and-pixely-but-its-fun-see-waves/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/14/airport-next/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/15/return-to-salem/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/17/hide-all-from/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/17/i-think-this-cat-doesnt-appreciate-the-view/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/19/listening-dads-stories-army-life-vietnam-richer-experience/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/19/reston-y/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/20/icons/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/21/snyder-on-musk/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/22/grocery-run/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/22/made-moms-red-beans-rice-in-moms-kitchen/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/23/excuse-me-madam-but-madam-is-not-flying-today/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/24/fun-jetty-lifeguard-tower-wetsuit-handplane/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/24/miscellaneous-everywhere-all-at-once/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/25/at-a-glance/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/25/the-pier-at-huntington-this-morning-big-stoke/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/27/like-how-much-frozen-gait-looks-like-bigfoot/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/27/we-have-made-the-trek-to-bakersfield-to-see-the-evil-dead-musical-groovy/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/28/how-many-you-that-sit-and-judge-ever/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/29/here-dawn-for-the-creeping-the-mats-put/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/30/little-fun-sesh/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/30/repost-from-packratrecords/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/31/flare/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/31/new-pages-links-merch/": "budget-exhausted",
+          "https://artlung.com/blog/2023/10/31/quote-of-the-day-mark-cunningham-on-bodysurfing/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/01/more-commit-messages/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/01/pb-afternoon-between-errands/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/03/lunch-was-excellent-ramen-and-excellent-company-with-gregorlove-at-underbelly/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/03/slow-going-but-time-for-more-commits-on-my-custom-theme/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/04/been-cleaning-and-optimizing-website-its-got-years/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/04/kelly-filled-the-hummingbird-feeder-and-its-a-hit/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/04/returning-comic-con-registration-prices-2024/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/04/the-bodysurfing-blog-has-published-a-great-list/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/05/last-light-coming-soon/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/05/thanks-repo-lookout/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/06/26-5mph/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/06/i-dont-remember-doing-posse-on-my-site-to-livejournal/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/07/clear-water-whomp-at-la-jolla-shores-this-morning/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/07/voted-yes-current-notebook/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/07/we-are-highly-incentivized-to-speak-in-code/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/08/acronym-of-the-day/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/08/more-i-didnt-learn-in-school/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/08/shores-again-this-morning-need-to-get-more-ibuprofen/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/08/time-is-up/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/09/how-many-words/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/09/side-eye/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/10/every-wave-is-a-lesson/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/11/can-you-dig-it-yes-i-can/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/12/fish/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/13/bonkers-sunset-tonight/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/14/cousin-jonnysnow16-invited-for-session-tourmaline-surf-park/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/14/started-playing-with-cssbattle-last-night-and-really/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/15/css-battle-again/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/15/the-birds-grounded-by-the-rain-dont-care-about-the-killer-left-today/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/15/torment-nexus-oi/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/16/just-get-away-from-the-shady-turf/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/17/dont-lose-sight-baby-dont-lose-sight/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/19/i-was-not-able-to-get-preview-night-for-myself-or-anyone-else/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/19/jetty-morn/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/20/kenzo-vid/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/20/sunset-sesh/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/21/photos-by-keith/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/21/quotes-of-the-day-4/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/21/today-after-my-session/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/22/testing-webmentions-with-matt-cool/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/22/thanksgiving-eve-day-is-that-a-thing-yes-maybe/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/23/happy-stokesgiving/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/24/waves-were-like-wild-animals-coming-at-me-today/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/25/birdy-2/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/26/todays-big-wave-session-i-grabbed-a-preview-of-last-night/": "budget-exhausted",
+          "https://artlung.com/blog/2023/11/27/pb-lunchtime/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/02/lawrence/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/04/eddie-nunez/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/04/the-world-mess-and-things-are-hard-for/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/06/at-the-belly-up/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/06/kelly-and-saw-buzzcampbellandtheheartaches-bellyuptavern-was-terrific-killer/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/07/virtual-light-by-william-gibson-read-by-peter-weller/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/08/2017-kelly-and-saw-john-mulaney-the-orpheum/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/10/things-to-love-about-san-diego-the-parade-of-lights/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/11/email-solicitation-of-the-day/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/12/aliso-creeks-berm/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/12/indieweb-carnival-2023/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/13/my-favorite-bodysurfing-quote/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/14/marquee-moon/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/17/day-2-of-indiewebcamp-san-diego-was-a-low-key-delight-long-live-the-web-indieweb/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/17/handwriting-to-my-website/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/17/open-graph-and-invisible-code/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/21/were-calling-december-our-anniversary-month-living-together/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/23/good-clouds-at-sunset-yesterday/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/26/email-from-amazon/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/26/one-of-my-favorite-people-at-one-of-my-favorite-places/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/27/quote-of-the-day-13/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/30/crow-oclock/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/31/bye-bye-2023-new-beach-toys-find-new/": "budget-exhausted",
+          "https://artlung.com/blog/2023/12/31/call-a-rabbit-a-smeerp/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/01/did-not-swim-bodysurf-every-day-2023-but/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/01/my-soundtrack-for-bodysurfing/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/01/swimming-summaries/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/02/make-mine-indieweb/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/03/guardians-of-the-galaxy-mission-breakout/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/03/miscellaneous-brain-dump/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/03/time-to-put-christmas-away/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/04/today-is-january-4th/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/05/incredible-sandcastle-and-found-the-largest-shell-ive/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/06/html-and-css-and-dont-lose-sight/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/06/nobody-out-then-some-surfers-came-out-and/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/09/im-not-interested-in-any-new-multiverses-until-we-get-this-highfidelity/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/09/water-colder-because-of-an-upwelling-the-cone-i-cant-explain/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/10/ljs/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/10/misc-writing-html-onto-paper/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/11/thursday/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/12/hung-out-with-kelly-and-rewildmissionbay-sd_coastkeeper-sandiegoaudubon/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/13/beach-prior-to/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/13/galactic-notes-from-the-indieweb/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/14/sea-lions-are-camera-shy-so-heres-the-pier/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/15/equipment/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/16/megastrea-undosa/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/16/mouse-house-whoa/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/17/dee-and-eee/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/17/from-the-berm-today/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/18/google-results-worse/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/19/chaos-mr-who/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/19/torrey-pines-5/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/20/the-sky-too-is-falling-over-you/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/21/make-a-website-already/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/22/hankered-for-grits-this-morning-went-and-found/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/22/monday-misk-ell-eh-knee-us/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/23/mrs-crawford-1968/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/23/phyllis-silva-in-the-news-in-1965/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/23/some-bodysurfing-ephemera/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/24/afternoon-at-la-jolla-today/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/24/al-my-friendship-as-garden-theory/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/25/blue-hawaiian-in-az-for-k-not-pictured-sazerac-for-me/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/25/drizzly-goodness-morning/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/26/looks-like-clubbing/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/26/water-is-the-salve-of-the-ravages/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/27/its-goofy-but-i-do-like-a-paper-flag-atop-pancakes/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/27/not-gonna-lie-with-the-orange-and-red/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/28/bumpin-morton-subotnick-double-naught-spy-car/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/28/collectorsmarketplace-phoenix-lucked-upon-their-moving-sale-and/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/28/good-to-travel-good-to-come-home/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/29/any-movie-favorite-part-when-they-the-beach/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/30/shining/": "budget-exhausted",
+          "https://artlung.com/blog/2024/01/31/im-quoted-in-san-diego-magazine/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/01/scripps-in-the-rain-ahead-of-more-days-of-bad-conditions/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/02/kudos-to-you-for-hitting-publish/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/03/not-the-worst-way-wake-5am-not-the/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/04/i-woke-up-to-find-out-a-4th-great-granduncle-was-murdered-in-san-juan-capistrano/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/04/sometimes-the-stoke-intense-giggle-after-wave-beautiful/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/05/were-the-neighborhood-and-visited-glen-abbey-cemetery/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/06/happy-tuesdays-and-dead-headers/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/07/mojo-nixon/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/07/quote-of-the-day-14/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/07/zero-theme-link-o-rama/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/08/golf-book-vs-golf-clubs/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/08/typography/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/10/turn-around-bright-eyes/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/11/first-memory-the-ocean-was-yards-the-south/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/12/afternoon-at-ob/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/12/moonday/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/12/qotd-tim-synder/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/13/context-and-guidelines/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/13/email-of-the-morning/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/13/items-you-may-or-may-not-wish-to-read-and-look-at/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/13/lunchtime-3/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/14/happy-heart/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/14/sunny-valentines/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/16/miquela-davis-crushes-art-show/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/16/scam-text-chat-with-1-501-999-3309/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/17/services-shutdown-email-of-the-day-invision/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/18/sunless-saturday-not/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/18/the-water-is-weird-today/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/19/23-yrs/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/19/morse-dedication/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/19/presidents-day-at-scripps/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/19/ten-more/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/21/benji-maps/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/21/tilde-club/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/22/delete-your-drafts-leap-day/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/22/ticket-to-ride/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/23/appreciating-and-identifying-with-delana-delgados-talk-creativemornings_sd/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/23/blue-skies-again/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/24/finite-game-one-you-play-win-while-infinite/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/25/when-alone-the-lineup-have-excuse-not-catch/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/26/dark-skies-afternoon/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/26/film-threat-sdcc-2023/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/26/open-shelves/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/27/2023-top-albums/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/27/another-day-another/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/28/digital-gardens/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/28/mistrust-based-technology-choices/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/29/leap-day/": "budget-exhausted",
+          "https://artlung.com/blog/2024/02/29/self-hosted-wp-gravatar-verification/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/01/autocomplete/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/01/be-the-change-you-wish-to-see-in-the-indieweb/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/01/how-to-print-a-web-page-1997-style/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/01/pup-morning-constitutional-w-gwenthegoblin-corgisofinstagram-corgisofsandiego/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/03/salon-is-closed-gwen-selfie-dogselfie-gwenthegoblin/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/04/mllc/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/05/bramble/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/06/dont-like-your-examples/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/06/xoxo2024/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/07/facebook-instagram-takeovers/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/08/during-sabbatical-ive-learned-lot-one-the-things/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/08/greeting-card/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/08/mentioned-before-the-wetsuit-that-wouldnt-stay-zipped/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/09/look/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/10/like-a-summer-day/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/11/mahoosive/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/11/mas-glitter/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/11/viridian-pages/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/12/on-topics-various-and-sundry-misc-morning/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/13/current-pushed-me-south-under-the-pier-fun-weird-session/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/13/oldweb/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/13/viridian-was/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/14/positive-day/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/15/cease/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/15/good-morning/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/15/latest-updates/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/15/sun-lj-shores-saw-a-windsurfer-ripping-out-there-today/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/16/daniels-cited-murray-bookchin-at-sxsw/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/16/ob-2/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/17/basically-summer/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/17/lovely-early-birthday-dinner-for-from-kelly-last/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/19/chaotic-afternoon-session/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/19/mmm-2024/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/20/birthday-crystal-pier/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/20/hbd-2024/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/21/annuals-and-robots/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/21/hatchback/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/23/nancy/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/23/qotd-james/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/23/the-best-thing-at-the-beach-today-was-an-older-couple-giggling-at-their-kite/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/24/sstf-misc/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/24/twitter-in-lynx/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/26/bridges-dont-float/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/27/links-morn-a-variety-of-links/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/27/minor-post-session-adventure/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/28/victory-at-sea-2/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/30/mary-blair-eff-yeah/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/30/musical-miscellany/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/30/sure-theres-rain-but-theres-still-the-falcon/": "budget-exhausted",
+          "https://artlung.com/blog/2024/03/31/twas-a-good-adventure-in-california/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/04/heart-heavy/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/06/fairly-convinced-migraine-yesterday-was-caused-not-ocean/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/07/south-side-of-the-pier-glassy/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/09/belated-cam/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/09/cubs-at-padres-with-kelly/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/09/feeling-tidbits/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/10/riso-from-tracy-durnell/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/10/roach-floppy/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/11/overcast-fun/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/12/linkorinos-for-friday/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/13/j-a-g-corps/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/14/today-hour-after-low-tide-learned-there-are/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/15/i-appreciate-a-lifeguard-even-when-made-of-bronze/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/16/its-tuesday/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/16/potentially-scam-contact-from-1-206-804-8090/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/17/worked-late-sale-fins-dolphins/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/18/danah-boyd-moral-crumple-zones/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/18/shenanigans-on-getting-involved/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/18/urls-remind-me-of-train-and-bus-schedules/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/19/first-swell-at-wedge-2024/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/19/saw-this-sea-gull-retrieve-this-mcdonalds-bag/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/20/good-place-to-be/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/21/in-the-water-3-hours-at-61-degrees/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/21/slava-ukraini/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/22/mark-suth/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/22/overcast-is-fine-by-me/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/23/meandering-thoughts-on-the-f-word-feelings-and-teamwork/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/23/qotd/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/23/tentative-rsvp-to-a-tentative-indieweb-event/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/24/front-end-study-hall-002/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/24/sdcc-music/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/25/from-video-shot-the-water-february-2023-the/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/25/hey-teacher-leave-those-kids-alone/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/25/scam-toll-services-text-from-1-306-409-0165/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/26/friday-afternoon-was-chaotic/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/27/be-at-the-water-at-sunset-kelly-took-that-shot/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/28/same-spot-as-last-night/": "budget-exhausted",
+          "https://artlung.com/blog/2024/04/30/tatgod/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/02/these-are-the-good-old-days-stoke/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/03/crash/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/03/notas-del-viernes/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/04/excellent-next-mulaney/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/05/ufw-flag-beautiful-classic-chevy-venice-beach-saw/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/08/comment-like-youre-going-to-read-it-in-5-years/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/08/declarative-vs-imperative-programming/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/09/crash-2/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/10/overdue-for-a-shave-good-week-though/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/11/and-a-sweetness-washes-over-what-has-been/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/11/hit-_woca_-radiantbeerco-because-pal-chris-greazel-had/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/12/roger-corman/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/12/sundown-patrol/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/15/20-year-article-idea-fulfilled/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/15/bo-hwc-social-norms-in-the-indieweb-upcoming-event/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/16/on-belonging/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/17/frank-zappa-american-composer/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/17/molly-white-is-optimistic-about-the-indieweb/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/18/wheres-the-indieweb-going-some-random-musings/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/20/hit-the-dog-park-with-gwen-after-work/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/21/webmention-check/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/24/css-illustrations/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/27/bits-and-pieces-programming/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/27/blogger-redirects-and-linkrot/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/28/not-now/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/30/questions-of-the-day/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/30/xoxo-fest-is-a-go/": "budget-exhausted",
+          "https://artlung.com/blog/2024/05/31/san-diego-airport-peetscoffee-xoxofest/": "budget-exhausted",
+          "https://artlung.com/blog/2024/06/01/my-dads-cat-neko-soaking-up-attention-from-kelly/": "budget-exhausted",
+          "https://artlung.com/blog/2024/06/02/its-the-time-of-the-trip-where-i-go-to-a-pool-kelly-came-with/": "budget-exhausted",
+          "https://artlung.com/blog/2024/06/04/i-go-away-for-a-weekend-and-theres-a-shark-attack/": "budget-exhausted",
+          "https://artlung.com/blog/2024/06/05/bandwidth-throttling/": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z"
+      "crawled_at": "2026-11-05T04:08:09.105Z"
     },
     {
       "origin": "https://forwardbias.dev",
@@ -12917,7 +13708,24 @@
         "source_kind": "creative-homepage",
         "page_role": "unknown"
       },
-      "outgoing": [],
+      "outgoing": [
+        {
+          "to": "https://joshternet.org",
+          "relation": "content-link",
+          "label": "linked to",
+          "href": "https://joshternet.org/network/",
+          "page": "https://forwardbias.dev/about-me/",
+          "evidence_count": 19
+        },
+        {
+          "to": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshternet.org/network/",
+          "page": "https://forwardbias.dev/",
+          "evidence_count": 1
+        }
+      ],
       "incoming": [],
       "coverage": {
         "pages_discovered": 30,
@@ -12927,21 +13735,12 @@
         "selection_strategy": "uncapped-site-crawl-v1",
         "selection_reasons": {
           "https://forwardbias.dev/": "home",
-          "https://forwardbias.dev/ideas/disentangling-career-from-creativity/": "feed",
-          "https://forwardbias.dev/ideas/february-album-writing-month/": "feed",
-          "https://forwardbias.dev/ideas/personal-micro-software/": "feed",
-          "https://forwardbias.dev/about/": "feed",
-          "https://forwardbias.dev/contact/": "feed",
-          "https://forwardbias.dev/posts/post-3/": "feed",
-          "https://forwardbias.dev/posts/post-2/": "feed",
-          "https://forwardbias.dev/posts/post-1/": "feed",
           "https://forwardbias.dev/changelog/": "content-index",
           "https://forwardbias.dev/log/": "content-index",
           "https://forwardbias.dev/ideas/": "content-index",
           "https://forwardbias.dev/sitemap/": "content-index",
           "https://forwardbias.dev/til/": "content-index",
           "https://forwardbias.dev/ways/": "content-index",
-          "https://forwardbias.dev/seeking/": "content-index",
           "https://forwardbias.dev/notes/": "content-index",
           "https://forwardbias.dev/blog/": "content-index",
           "https://forwardbias.dev/weblog/": "content-index",
@@ -12955,6 +13754,7 @@
           "https://forwardbias.dev/journal/": "content-index",
           "https://forwardbias.dev/weeknotes/": "content-index",
           "https://forwardbias.dev/archive/": "content-index",
+          "https://forwardbias.dev/about/": "content-index",
           "https://forwardbias.dev/about-me/": "content-index",
           "https://forwardbias.dev/aboutme/": "content-index",
           "https://forwardbias.dev/bio/": "content-index",
@@ -12971,6 +13771,7 @@
           "https://forwardbias.dev/chipotle/": "content-index",
           "https://forwardbias.dev/colophon/": "content-index",
           "https://forwardbias.dev/community/": "content-index",
+          "https://forwardbias.dev/contact/": "content-index",
           "https://forwardbias.dev/death/": "content-index",
           "https://forwardbias.dev/defaults/": "content-index",
           "https://forwardbias.dev/disability/": "content-index",
@@ -13024,8 +13825,6 @@
           "https://forwardbias.dev/where/": "content-index",
           "https://forwardbias.dev/why/": "content-index",
           "https://forwardbias.dev/wish/": "content-index",
-          "https://forwardbias.dev/wish-list/": "content-index",
-          "https://forwardbias.dev/wishlist/": "content-index",
           "https://forwardbias.dev/yep/": "content-index",
           "https://forwardbias.dev/more/": "content-index",
           "https://forwardbias.dev/site/": "content-index",
@@ -13103,16 +13902,22 @@
           "https://forwardbias.dev/category/": "topic-hub",
           "https://forwardbias.dev/tags/career/": "sitemap",
           "https://forwardbias.dev/tags/creative-process/": "sitemap",
+          "https://forwardbias.dev/ideas/disentangling-career-from-creativity/": "sitemap",
           "https://forwardbias.dev/categories/ideas/": "sitemap",
           "https://forwardbias.dev/tags/fawm/": "sitemap",
           "https://forwardbias.dev/tags/music/": "sitemap",
+          "https://forwardbias.dev/ideas/february-album-writing-month/": "sitemap",
           "https://forwardbias.dev/tags/ai/": "sitemap",
           "https://forwardbias.dev/tags/creative-coding/": "sitemap",
           "https://forwardbias.dev/tags/education/": "sitemap",
           "https://forwardbias.dev/tags/micro-software/": "sitemap",
+          "https://forwardbias.dev/ideas/personal-micro-software/": "sitemap",
           "https://forwardbias.dev/tags/blue/": "sitemap",
           "https://forwardbias.dev/tags/green/": "sitemap",
+          "https://forwardbias.dev/posts/post-3/": "sitemap",
           "https://forwardbias.dev/tags/red/": "sitemap",
+          "https://forwardbias.dev/posts/post-2/": "sitemap",
+          "https://forwardbias.dev/posts/post-1/": "sitemap",
           "https://forwardbias.dev/style/": "blind-probe",
           "https://forwardbias.dev/top4/": "blind-probe",
           "https://forwardbias.dev/topfour/": "blind-probe",
@@ -13136,7 +13941,7 @@
           "https://forwardbias.dev/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z"
+      "crawled_at": "2026-11-05T04:08:09.105Z"
     },
     {
       "origin": "https://joshbeard.com",
@@ -13187,7 +13992,7 @@
         "title": "Photos",
         "summary": "Photo albums from Colorado, travel, cycling, and everyday life.",
         "published_at": "",
-        "observed_at": "2026-11-05T07:12:25.789Z",
+        "observed_at": "2026-11-05T04:08:09.105Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -13203,6 +14008,14 @@
       },
       "outgoing": [
         {
+          "to": "https://joshternet.org",
+          "relation": "content-link",
+          "label": "linked to",
+          "href": "https://joshternet.org/",
+          "page": "https://joshbeard.com/site/",
+          "evidence_count": 1
+        },
+        {
           "to": "https://joshuamorris.info",
           "relation": "content-link",
           "label": "linked to",
@@ -13211,7 +14024,16 @@
           "evidence_count": 1
         }
       ],
-      "incoming": [],
+      "incoming": [
+        {
+          "from": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshbeard.com/photos/2026/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 1
+        }
+      ],
       "coverage": {
         "pages_discovered": 213,
         "pages_fetched": 213,
@@ -13226,7 +14048,6 @@
           "https://joshbeard.com/sitemap/": "content-index",
           "https://joshbeard.com/til/": "content-index",
           "https://joshbeard.com/ways/": "content-index",
-          "https://joshbeard.com/seeking/": "content-index",
           "https://joshbeard.com/notes/": "content-index",
           "https://joshbeard.com/blog/": "content-index",
           "https://joshbeard.com/weblog/": "content-index",
@@ -13311,8 +14132,6 @@
           "https://joshbeard.com/where/": "content-index",
           "https://joshbeard.com/why/": "content-index",
           "https://joshbeard.com/wish/": "content-index",
-          "https://joshbeard.com/wish-list/": "content-index",
-          "https://joshbeard.com/wishlist/": "content-index",
           "https://joshbeard.com/yep/": "content-index",
           "https://joshbeard.com/more/": "content-index",
           "https://joshbeard.com/site/": "content-index",
@@ -13673,7 +14492,7 @@
           "https://joshbeard.com/me": "content-index"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z"
+      "crawled_at": "2026-11-05T04:08:09.105Z"
     },
     {
       "origin": "https://joshcox.co.uk",
@@ -13743,7 +14562,7 @@
         },
         {
           "slug": "room",
-          "label": "rooms"
+          "label": "room"
         },
         {
           "slug": "run",
@@ -13771,7 +14590,7 @@
         "title": "Projects — Josh Cox",
         "summary": "Products and tools Josh Cox has built, including Prystine, SendTidings, Quotify, Lifting Times, LeerHaus, and the Mac app My House, My Things.",
         "published_at": "",
-        "observed_at": "2026-11-05T07:12:25.789Z",
+        "observed_at": "2026-11-05T04:08:09.105Z",
         "content_type": "collection",
         "language": "en-gb",
         "dir": "",
@@ -13795,42 +14614,12 @@
         "selection_strategy": "uncapped-site-crawl-v1",
         "selection_reasons": {
           "https://joshcox.co.uk/": "home",
-          "https://joshcox.co.uk/blog/meat-the-luxury-product/": "feed",
-          "https://joshcox.co.uk/blog/loose-bits-sink-ships-poster/": "feed",
-          "https://joshcox.co.uk/blog/wordpress-then-react-now-swift/": "feed",
-          "https://joshcox.co.uk/blog/i-could-have-made-it-a-subscription/": "feed",
-          "https://joshcox.co.uk/blog/if-you-build-it-they-wont-come/": "feed",
-          "https://joshcox.co.uk/blog/when-was-the-boiler-last-serviced/": "feed",
-          "https://joshcox.co.uk/blog/why-i-folded-my-free-tool-into-the-agency-site/": "feed",
-          "https://joshcox.co.uk/blog/my-laptop-was-lying-to-me/": "feed",
-          "https://joshcox.co.uk/blog/why-i-swapped-my-macbook-for-a-mac-mini/": "feed",
-          "https://joshcox.co.uk/blog/lifting-times-is-back/": "feed",
-          "https://joshcox.co.uk/blog/i-built-a-shop-that-sells-nothing/": "feed",
-          "https://joshcox.co.uk/blog/i-run-a-wordpress-agency-and-rebuilt-without-it/": "feed",
-          "https://joshcox.co.uk/blog/how-to-tell-if-a-wordpress-plugin-is-safe/": "feed",
-          "https://joshcox.co.uk/blog/where-people-quit-a-quote-form/": "feed",
-          "https://joshcox.co.uk/blog/notes-on-building-sendtidings/": "feed",
-          "https://joshcox.co.uk/blog/hello-world-again/": "feed",
-          "https://joshcox.co.uk/blog/you-party-hard-but-did-you-die/": "feed",
-          "https://joshcox.co.uk/blog/koh-phangan-koh-tao/": "feed",
-          "https://joshcox.co.uk/blog/ko-samui/": "feed",
-          "https://joshcox.co.uk/blog/saigon-ho-chi-minh-city-same-same-but-different/": "feed",
-          "https://joshcox.co.uk/blog/mui-ne/": "feed",
-          "https://joshcox.co.uk/blog/nha-trang/": "feed",
-          "https://joshcox.co.uk/blog/can-you-maintain-a-relationship-traveling/": "feed",
-          "https://joshcox.co.uk/blog/hoi-an/": "feed",
-          "https://joshcox.co.uk/blog/phong-nha-ke-bang/": "feed",
-          "https://joshcox.co.uk/blog/ha-long-bay-sapa/": "feed",
-          "https://joshcox.co.uk/blog/first-days-hanoi/": "feed",
-          "https://joshcox.co.uk/blog/packing/": "feed",
-          "https://joshcox.co.uk/blog/an-unexpected-journey/": "feed",
           "https://joshcox.co.uk/changelog/": "content-index",
           "https://joshcox.co.uk/log/": "content-index",
           "https://joshcox.co.uk/ideas/": "content-index",
           "https://joshcox.co.uk/sitemap/": "content-index",
           "https://joshcox.co.uk/til/": "content-index",
           "https://joshcox.co.uk/ways/": "content-index",
-          "https://joshcox.co.uk/seeking/": "content-index",
           "https://joshcox.co.uk/notes/": "content-index",
           "https://joshcox.co.uk/blog/": "content-index",
           "https://joshcox.co.uk/weblog/": "content-index",
@@ -13915,8 +14704,6 @@
           "https://joshcox.co.uk/where/": "content-index",
           "https://joshcox.co.uk/why/": "content-index",
           "https://joshcox.co.uk/wish/": "content-index",
-          "https://joshcox.co.uk/wish-list/": "content-index",
-          "https://joshcox.co.uk/wishlist/": "content-index",
           "https://joshcox.co.uk/yep/": "content-index",
           "https://joshcox.co.uk/more/": "content-index",
           "https://joshcox.co.uk/site/": "content-index",
@@ -13994,6 +14781,35 @@
           "https://joshcox.co.uk/category/": "topic-hub",
           "https://joshcox.co.uk/blog/2/": "sitemap",
           "https://joshcox.co.uk/blog/3/": "sitemap",
+          "https://joshcox.co.uk/blog/an-unexpected-journey/": "sitemap",
+          "https://joshcox.co.uk/blog/can-you-maintain-a-relationship-traveling/": "sitemap",
+          "https://joshcox.co.uk/blog/first-days-hanoi/": "sitemap",
+          "https://joshcox.co.uk/blog/ha-long-bay-sapa/": "sitemap",
+          "https://joshcox.co.uk/blog/hello-world-again/": "sitemap",
+          "https://joshcox.co.uk/blog/hoi-an/": "sitemap",
+          "https://joshcox.co.uk/blog/how-to-tell-if-a-wordpress-plugin-is-safe/": "sitemap",
+          "https://joshcox.co.uk/blog/i-built-a-shop-that-sells-nothing/": "sitemap",
+          "https://joshcox.co.uk/blog/i-could-have-made-it-a-subscription/": "sitemap",
+          "https://joshcox.co.uk/blog/i-run-a-wordpress-agency-and-rebuilt-without-it/": "sitemap",
+          "https://joshcox.co.uk/blog/if-you-build-it-they-wont-come/": "sitemap",
+          "https://joshcox.co.uk/blog/ko-samui/": "sitemap",
+          "https://joshcox.co.uk/blog/koh-phangan-koh-tao/": "sitemap",
+          "https://joshcox.co.uk/blog/lifting-times-is-back/": "sitemap",
+          "https://joshcox.co.uk/blog/loose-bits-sink-ships-poster/": "sitemap",
+          "https://joshcox.co.uk/blog/meat-the-luxury-product/": "sitemap",
+          "https://joshcox.co.uk/blog/mui-ne/": "sitemap",
+          "https://joshcox.co.uk/blog/my-laptop-was-lying-to-me/": "sitemap",
+          "https://joshcox.co.uk/blog/nha-trang/": "sitemap",
+          "https://joshcox.co.uk/blog/notes-on-building-sendtidings/": "sitemap",
+          "https://joshcox.co.uk/blog/packing/": "sitemap",
+          "https://joshcox.co.uk/blog/phong-nha-ke-bang/": "sitemap",
+          "https://joshcox.co.uk/blog/saigon-ho-chi-minh-city-same-same-but-different/": "sitemap",
+          "https://joshcox.co.uk/blog/when-was-the-boiler-last-serviced/": "sitemap",
+          "https://joshcox.co.uk/blog/where-people-quit-a-quote-form/": "sitemap",
+          "https://joshcox.co.uk/blog/why-i-folded-my-free-tool-into-the-agency-site/": "sitemap",
+          "https://joshcox.co.uk/blog/why-i-swapped-my-macbook-for-a-mac-mini/": "sitemap",
+          "https://joshcox.co.uk/blog/wordpress-then-react-now-swift/": "sitemap",
+          "https://joshcox.co.uk/blog/you-party-hard-but-did-you-die/": "sitemap",
           "https://joshcox.co.uk/privacy/": "sitemap",
           "https://joshcox.co.uk/style/": "blind-probe",
           "https://joshcox.co.uk/top4/": "blind-probe",
@@ -14019,7 +14835,7 @@
           "https://joshcox.co.uk/the-crypt/": "content-index"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z"
+      "crawled_at": "2026-11-05T04:08:09.105Z"
     },
     {
       "origin": "https://joshghent.com",
@@ -14125,10 +14941,6 @@
         {
           "slug": "gatsby",
           "label": "gatsby"
-        },
-        {
-          "slug": "github",
-          "label": "GitHub"
         },
         {
           "slug": "goal",
@@ -14267,6 +15079,10 @@
           "label": "version"
         },
         {
+          "slug": "video",
+          "label": "video"
+        },
+        {
           "slug": "week",
           "label": "weeks"
         }
@@ -14276,7 +15092,7 @@
         "title": "Enterprise sales teams, please, I beg you, stop",
         "summary": "I asked for a price on a few extra seats of software we already pay for. Two days and a pile of irrelevant questions later, I got one.",
         "published_at": "2026-10-28T00:00:00.000Z",
-        "observed_at": "2026-11-05T07:12:25.789Z",
+        "observed_at": "2026-11-05T04:08:09.105Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -14292,6 +15108,14 @@
       },
       "outgoing": [],
       "incoming": [
+        {
+          "from": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshghent.com/skills?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 1
+        },
         {
           "from": "https://joshuamorris.info",
           "relation": "content-link",
@@ -14468,7 +15292,6 @@
           "https://joshghent.com/sitemap/": "content-index",
           "https://joshghent.com/til/": "content-index",
           "https://joshghent.com/ways/": "content-index",
-          "https://joshghent.com/seeking/": "content-index",
           "https://joshghent.com/notes/": "content-index",
           "https://joshghent.com/blog/": "content-index",
           "https://joshghent.com/weblog/": "content-index",
@@ -14552,8 +15375,6 @@
           "https://joshghent.com/where/": "content-index",
           "https://joshghent.com/why/": "content-index",
           "https://joshghent.com/wish/": "content-index",
-          "https://joshghent.com/wish-list/": "content-index",
-          "https://joshghent.com/wishlist/": "content-index",
           "https://joshghent.com/yep/": "content-index",
           "https://joshghent.com/site/": "content-index",
           "https://joshghent.com/people/": "content-index",
@@ -14655,10 +15476,11 @@
           "https://joshghent.com/now": "content-index",
           "https://joshghent.com/skills": "content-index",
           "https://joshghent.com/cv": "content-index",
-          "https://joshghent.com/blog": "content-index"
+          "https://joshghent.com/blog": "content-index",
+          "https://joshghent.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z"
+      "crawled_at": "2026-11-05T04:08:09.105Z"
     },
     {
       "origin": "https://joshgr.com",
@@ -14705,11 +15527,11 @@
         }
       ],
       "recent_content": {
-        "url": "https://joshgr.com/graphics/",
-        "title": "Graphics",
-        "summary": "General Purpose Watt Check",
+        "url": "https://joshgr.com/music/",
+        "title": "Music",
+        "summary": "Elsewhere",
         "published_at": "",
-        "observed_at": "2026-11-05T07:12:25.789Z",
+        "observed_at": "2026-11-03T16:34:11.848Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -14721,13 +15543,31 @@
         "image": "",
         "image_origin": "",
         "source_kind": "creative-homepage",
-        "page_role": "unknown"
+        "page_role": "portfolio"
       },
-      "outgoing": [],
-      "incoming": [],
+      "outgoing": [
+        {
+          "to": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshternet.org/network/",
+          "page": "https://joshgr.com/",
+          "evidence_count": 1
+        }
+      ],
+      "incoming": [
+        {
+          "from": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshgr.com/wizardly-words/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 1
+        }
+      ],
       "coverage": {
-        "pages_discovered": 10,
-        "pages_fetched": 10,
+        "pages_discovered": 9,
+        "pages_fetched": 9,
         "fetch_limit": null,
         "limit_reached": false,
         "selection_strategy": "uncapped-site-crawl-v1",
@@ -14740,7 +15580,6 @@
           "https://joshgr.com/sitemap/": "content-index",
           "https://joshgr.com/til/": "content-index",
           "https://joshgr.com/ways/": "content-index",
-          "https://joshgr.com/seeking/": "content-index",
           "https://joshgr.com/notes/": "content-index",
           "https://joshgr.com/blog/": "content-index",
           "https://joshgr.com/weblog/": "content-index",
@@ -14825,8 +15664,6 @@
           "https://joshgr.com/where/": "content-index",
           "https://joshgr.com/why/": "content-index",
           "https://joshgr.com/wish/": "content-index",
-          "https://joshgr.com/wish-list/": "content-index",
-          "https://joshgr.com/wishlist/": "content-index",
           "https://joshgr.com/yep/": "content-index",
           "https://joshgr.com/more/": "content-index",
           "https://joshgr.com/site/": "content-index",
@@ -14923,11 +15760,11 @@
           "https://joshgr.com/class/": "blind-probe",
           "https://joshgr.com/courses/": "blind-probe",
           "https://joshgr.com/course/": "blind-probe",
-          "https://joshgr.com/graphics/": "content-index",
-          "https://joshgr.com/wizardly-words/": "content-index"
+          "https://joshgr.com/wizardly-words/": "content-index",
+          "https://joshgr.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z"
+      "crawled_at": "2026-11-05T04:08:09.105Z"
     },
     {
       "origin": "https://joshkoter.com",
@@ -14953,38 +15790,13 @@
           "label": "GitHub"
         }
       ],
-      "community_topics": [
-        {
-          "slug": "audio",
-          "label": "audio"
-        },
-        {
-          "slug": "deep-dive",
-          "label": "deep dive"
-        },
-        {
-          "slug": "javascript",
-          "label": "javascript"
-        },
-        {
-          "slug": "library",
-          "label": "libraries"
-        },
-        {
-          "slug": "tutorial",
-          "label": "tutorial"
-        },
-        {
-          "slug": "web-development",
-          "label": "web development"
-        }
-      ],
+      "community_topics": [],
       "recent_content": {
         "url": "https://www.youtube.com/watch?v=5uni6eGeTX4",
-        "title": "Build 2D Games with Vanilla JavaScript - Full Course Out Now",
-        "summary": "Full course here: https://www.udemy.com/course/javascript-game-development-pixel-by-pixel/?referral Code=BD572E51CCFEB2519855This is a limited-time launch off...",
-        "published_at": "2026-10-05T12:08:04.000Z",
-        "observed_at": "2026-11-05T07:12:25.789Z",
+        "title": "Untitled",
+        "summary": "",
+        "published_at": "",
+        "observed_at": "2026-11-05T04:08:09.105Z",
         "content_type": "video",
         "language": "",
         "dir": "",
@@ -14999,7 +15811,16 @@
         "page_role": "project"
       },
       "outgoing": [],
-      "incoming": [],
+      "incoming": [
+        {
+          "from": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshkoter.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 1
+        }
+      ],
       "coverage": {
         "pages_discovered": 3,
         "pages_fetched": 3,
@@ -15014,7 +15835,6 @@
           "https://joshkoter.com/sitemap/": "content-index",
           "https://joshkoter.com/til/": "content-index",
           "https://joshkoter.com/ways/": "content-index",
-          "https://joshkoter.com/seeking/": "content-index",
           "https://joshkoter.com/notes/": "content-index",
           "https://joshkoter.com/blog/": "content-index",
           "https://joshkoter.com/weblog/": "content-index",
@@ -15099,8 +15919,6 @@
           "https://joshkoter.com/where/": "content-index",
           "https://joshkoter.com/why/": "content-index",
           "https://joshkoter.com/wish/": "content-index",
-          "https://joshkoter.com/wish-list/": "content-index",
-          "https://joshkoter.com/wishlist/": "content-index",
           "https://joshkoter.com/yep/": "content-index",
           "https://joshkoter.com/more/": "content-index",
           "https://joshkoter.com/site/": "content-index",
@@ -15199,7 +16017,7 @@
           "https://joshkoter.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z"
+      "crawled_at": "2026-11-05T04:08:09.105Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -15606,9 +16424,9 @@
       "recent_content": {
         "url": "https://joshmuller.ca/",
         "title": "📸: Josh Müller",
-        "summary": "Personal Website of Josh Müller — Technologist | Leader | Regenerative Systems Designer",
+        "summary": "",
         "published_at": "",
-        "observed_at": "2026-11-05T07:12:25.789Z",
+        "observed_at": "2026-11-04T18:19:19.608Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -15845,7 +16663,6 @@
           "https://joshmuller.ca/sitemap/": "content-index",
           "https://joshmuller.ca/til/": "content-index",
           "https://joshmuller.ca/ways/": "content-index",
-          "https://joshmuller.ca/seeking/": "content-index",
           "https://joshmuller.ca/notes/": "content-index",
           "https://joshmuller.ca/blog/": "content-index",
           "https://joshmuller.ca/weblog/": "content-index",
@@ -15925,7 +16742,6 @@
           "https://joshmuller.ca/verify/": "content-index",
           "https://joshmuller.ca/where/": "content-index",
           "https://joshmuller.ca/wish/": "content-index",
-          "https://joshmuller.ca/wish-list/": "content-index",
           "https://joshmuller.ca/yep/": "content-index",
           "https://joshmuller.ca/more/": "content-index",
           "https://joshmuller.ca/site/": "content-index",
@@ -16097,7 +16913,6 @@
           "https://joshmuller.ca/email-blog-subscribe": "content-index",
           "https://joshmuller.ca/feed": "content-index",
           "https://joshmuller.ca/dailies": "content-index",
-          "https://joshmuller.ca/say-hi/wishlist.md": "content-index",
           "https://joshmuller.ca/cal": "content-index",
           "https://joshmuller.ca/contact@joshmuller.ca.asc": "content-index",
           "https://joshmuller.ca/hello": "budget-exhausted",
@@ -16124,6 +16939,7 @@
           "https://joshmuller.ca/recipes": "budget-exhausted",
           "https://joshmuller.ca/2023/subscribe-to-mailchimp-newsletters-with-rss/": "budget-exhausted",
           "https://joshmuller.ca/mp3/2023/fight-for-rest.mp3": "budget-exhausted",
+          "https://joshmuller.ca/say-hi/wishlist.md": "budget-exhausted",
           "https://joshmuller.ca/writings/own-your-feed": "budget-exhausted",
           "https://joshmuller.ca/writings/2023/fighting-cholera-with-sawdust": "budget-exhausted",
           "https://joshmuller.ca/img/2022/timezone-tips.screenshot.png": "budget-exhausted",
@@ -16149,10 +16965,11 @@
           "https://joshmuller.ca/simple_compost_toilet_model.stl": "budget-exhausted",
           "https://joshmuller.ca/toilet_specs.pdf": "budget-exhausted",
           "https://joshmuller.ca/categories/recipe/page/2/": "budget-exhausted",
-          "https://joshmuller.ca/recipes/page/2/": "budget-exhausted"
+          "https://joshmuller.ca/recipes/page/2/": "budget-exhausted",
+          "https://joshmuller.ca": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z"
+      "crawled_at": "2026-11-05T04:08:09.105Z"
     },
     {
       "origin": "https://joshozuna.com",
@@ -16278,9 +17095,9 @@
       "recent_content": {
         "url": "https://joshozuna.com/",
         "title": "35mm Film Photography Gallery",
-        "summary": "Hobbyist photographer. Shooting 35mm film since 2022.",
+        "summary": "Photos by Josh Ozuna, shot on 35mm film.",
         "published_at": "2025-08-17T05:00:00.000Z",
-        "observed_at": "2026-11-05T07:12:25.789Z",
+        "observed_at": "2026-11-05T04:08:09.105Z",
         "content_type": "collection",
         "language": "en",
         "dir": "",
@@ -16321,7 +17138,16 @@
         "page_role": "home"
       },
       "outgoing": [],
-      "incoming": [],
+      "incoming": [
+        {
+          "from": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshozuna.com/collections?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 2
+        }
+      ],
       "coverage": {
         "pages_discovered": 64,
         "pages_fetched": 64,
@@ -16356,7 +17182,6 @@
           "https://joshozuna.com/sitemap/": "content-index",
           "https://joshozuna.com/til/": "content-index",
           "https://joshozuna.com/ways/": "content-index",
-          "https://joshozuna.com/seeking/": "content-index",
           "https://joshozuna.com/notes/": "content-index",
           "https://joshozuna.com/blog/": "content-index",
           "https://joshozuna.com/weblog/": "content-index",
@@ -16441,8 +17266,6 @@
           "https://joshozuna.com/where/": "content-index",
           "https://joshozuna.com/why/": "content-index",
           "https://joshozuna.com/wish/": "content-index",
-          "https://joshozuna.com/wish-list/": "content-index",
-          "https://joshozuna.com/wishlist/": "content-index",
           "https://joshozuna.com/yep/": "content-index",
           "https://joshozuna.com/more/": "content-index",
           "https://joshozuna.com/site/": "content-index",
@@ -16580,7 +17403,7 @@
           "https://joshozuna.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z"
+      "crawled_at": "2026-11-05T04:08:09.105Z"
     },
     {
       "origin": "https://joshsherman.dev",
@@ -16612,7 +17435,7 @@
         "title": "Annotate Archive | Josh Sherman",
         "summary": "A spoiler-safe social reading app with private circles, progress-gated notes, reactions, predictions, and notifications.",
         "published_at": "",
-        "observed_at": "2026-11-05T07:12:25.789Z",
+        "observed_at": "2026-11-05T04:08:09.105Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -16626,8 +17449,26 @@
         "source_kind": "creative-og",
         "page_role": "project"
       },
-      "outgoing": [],
-      "incoming": [],
+      "outgoing": [
+        {
+          "to": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshternet.org/network/",
+          "page": "https://joshsherman.dev/",
+          "evidence_count": 1
+        }
+      ],
+      "incoming": [
+        {
+          "from": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshsherman.dev/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 1
+        }
+      ],
       "coverage": {
         "pages_discovered": 12,
         "pages_fetched": 12,
@@ -16642,7 +17483,6 @@
           "https://joshsherman.dev/sitemap/": "content-index",
           "https://joshsherman.dev/til/": "content-index",
           "https://joshsherman.dev/ways/": "content-index",
-          "https://joshsherman.dev/seeking/": "content-index",
           "https://joshsherman.dev/notes/": "content-index",
           "https://joshsherman.dev/blog/": "content-index",
           "https://joshsherman.dev/weblog/": "content-index",
@@ -16727,8 +17567,6 @@
           "https://joshsherman.dev/where/": "content-index",
           "https://joshsherman.dev/why/": "content-index",
           "https://joshsherman.dev/wish/": "content-index",
-          "https://joshsherman.dev/wish-list/": "content-index",
-          "https://joshsherman.dev/wishlist/": "content-index",
           "https://joshsherman.dev/yep/": "content-index",
           "https://joshsherman.dev/more/": "content-index",
           "https://joshsherman.dev/site/": "content-index",
@@ -16838,7 +17676,7 @@
           "https://joshsherman.dev/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z"
+      "crawled_at": "2026-11-05T04:08:09.105Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -16917,7 +17755,7 @@
         "title": "What's New",
         "summary": "See what people across the Joshternet have been writing, building, and sharing. Discover recent posts and creative work from independent websites, then follow the links to their original publishers.",
         "published_at": "",
-        "observed_at": "2026-11-05T07:12:25.789Z",
+        "observed_at": "2026-11-05T04:08:09.105Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -16931,8 +17769,194 @@
         "source_kind": "creative-homepage",
         "page_role": "project"
       },
-      "outgoing": [],
-      "incoming": [],
+      "outgoing": [
+        {
+          "to": "https://joshbeard.com",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshbeard.com/photos/2026/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 1
+        },
+        {
+          "to": "https://joshghent.com",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshghent.com/skills?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 1
+        },
+        {
+          "to": "https://joshgr.com",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshgr.com/wizardly-words/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 1
+        },
+        {
+          "to": "https://joshkoter.com",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshkoter.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 1
+        },
+        {
+          "to": "https://joshozuna.com",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshozuna.com/collections?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 2
+        },
+        {
+          "to": "https://joshsherman.dev",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshsherman.dev/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 1
+        },
+        {
+          "to": "https://joshtronic.com",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshtronic.com/games/river-of-doom/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 1
+        },
+        {
+          "to": "https://joshuamorris.info",
+          "relation": "content-link",
+          "label": "linked to",
+          "href": "https://joshuamorris.info/",
+          "page": "https://joshternet.org/about/",
+          "evidence_count": 2
+        },
+        {
+          "to": "https://joshuamorris.info",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshuamorris.info/",
+          "page": "https://joshternet.org/",
+          "evidence_count": 3
+        },
+        {
+          "to": "https://joshuastuebner.com",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshuastuebner.com/tools/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 1
+        },
+        {
+          "to": "https://joshurbandavis.com",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshurbandavis.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 2
+        }
+      ],
+      "incoming": [
+        {
+          "from": "https://artlung.com",
+          "relation": "content-link",
+          "label": "linked to",
+          "href": "https://joshternet.org/",
+          "page": "https://artlung.com/https//joecrawford.com/",
+          "evidence_count": 7
+        },
+        {
+          "from": "https://artlung.com",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshternet.org/",
+          "page": "https://artlung.com/",
+          "evidence_count": 2
+        },
+        {
+          "from": "https://forwardbias.dev",
+          "relation": "content-link",
+          "label": "linked to",
+          "href": "https://joshternet.org/network/",
+          "page": "https://forwardbias.dev/about-me/",
+          "evidence_count": 19
+        },
+        {
+          "from": "https://forwardbias.dev",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshternet.org/network/",
+          "page": "https://forwardbias.dev/",
+          "evidence_count": 1
+        },
+        {
+          "from": "https://joshbeard.com",
+          "relation": "content-link",
+          "label": "linked to",
+          "href": "https://joshternet.org/",
+          "page": "https://joshbeard.com/site/",
+          "evidence_count": 1
+        },
+        {
+          "from": "https://joshgr.com",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshternet.org/network/",
+          "page": "https://joshgr.com/",
+          "evidence_count": 1
+        },
+        {
+          "from": "https://joshsherman.dev",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshternet.org/network/",
+          "page": "https://joshsherman.dev/",
+          "evidence_count": 1
+        },
+        {
+          "from": "https://joshtronic.com",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshternet.org/network/",
+          "page": "https://joshtronic.com/",
+          "evidence_count": 1
+        },
+        {
+          "from": "https://joshua.seigler.net",
+          "relation": "content-link",
+          "label": "linked to",
+          "href": "https://joshternet.org/",
+          "page": "https://joshua.seigler.net/links/",
+          "evidence_count": 1
+        },
+        {
+          "from": "https://joshuadrake.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshternet.org/network/",
+          "page": "https://joshuadrake.org/",
+          "evidence_count": 1
+        },
+        {
+          "from": "https://joshuamorris.info",
+          "relation": "content-link",
+          "label": "linked to",
+          "href": "https://joshternet.org/network/?utm_source=joshuamorris.info&utm_medium=referral",
+          "page": "https://joshuamorris.info/about/",
+          "evidence_count": 10
+        },
+        {
+          "from": "https://joshuamorris.info",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshternet.org/network/?utm_source=joshuamorris.info&utm_medium=referral",
+          "page": "https://joshuamorris.info/",
+          "evidence_count": 1
+        }
+      ],
       "coverage": {
         "pages_discovered": 52,
         "pages_fetched": 52,
@@ -16947,7 +17971,6 @@
           "https://joshternet.org/sitemap/": "content-index",
           "https://joshternet.org/til/": "content-index",
           "https://joshternet.org/ways/": "content-index",
-          "https://joshternet.org/seeking/": "content-index",
           "https://joshternet.org/notes/": "content-index",
           "https://joshternet.org/blog/": "content-index",
           "https://joshternet.org/weblog/": "content-index",
@@ -17032,8 +18055,6 @@
           "https://joshternet.org/where/": "content-index",
           "https://joshternet.org/why/": "content-index",
           "https://joshternet.org/wish/": "content-index",
-          "https://joshternet.org/wish-list/": "content-index",
-          "https://joshternet.org/wishlist/": "content-index",
           "https://joshternet.org/yep/": "content-index",
           "https://joshternet.org/more/": "content-index",
           "https://joshternet.org/site/": "content-index",
@@ -17442,7 +18463,7 @@
           "https://joshternet.org/cdn-cgi/l/email-protection": "content-index"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z"
+      "crawled_at": "2026-11-05T04:08:09.105Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -17652,7 +18673,7 @@
         "title": "Learning a New Tech Stack with an LLM",
         "summary": "While I mentioned a few weeks back that I'm now recovering from AI Psychosis , that doesn't mean I've given up on the technology completely. I'm writing more emails, and engaging with human beings as much as I can, and that part's been great. I still use agents as a glorified typewriter to generate code, and still very much get my hands in the dirt and sling code myself. I've also gotten quite obs",
         "published_at": "2026-10-26T00:00:00.000Z",
-        "observed_at": "2026-11-05T07:12:25.789Z",
+        "observed_at": "2026-11-05T04:08:09.105Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -17668,6 +18689,14 @@
       },
       "outgoing": [
         {
+          "to": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshternet.org/network/",
+          "page": "https://joshtronic.com/",
+          "evidence_count": 1
+        },
+        {
           "to": "https://joshuamorris.info",
           "relation": "content-link",
           "label": "linked to",
@@ -17677,6 +18706,14 @@
         }
       ],
       "incoming": [
+        {
+          "from": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshtronic.com/games/river-of-doom/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 1
+        },
         {
           "from": "https://joshuamorris.info",
           "relation": "content-link",
@@ -17712,7 +18749,6 @@
           "https://joshtronic.com/sitemap/": "content-index",
           "https://joshtronic.com/til/": "content-index",
           "https://joshtronic.com/ways/": "content-index",
-          "https://joshtronic.com/seeking/": "content-index",
           "https://joshtronic.com/notes/": "content-index",
           "https://joshtronic.com/blog/": "content-index",
           "https://joshtronic.com/weblog/": "content-index",
@@ -17797,8 +18833,6 @@
           "https://joshtronic.com/where/": "content-index",
           "https://joshtronic.com/why/": "content-index",
           "https://joshtronic.com/wish/": "content-index",
-          "https://joshtronic.com/wish-list/": "content-index",
-          "https://joshtronic.com/wishlist/": "content-index",
           "https://joshtronic.com/yep/": "content-index",
           "https://joshtronic.com/more/": "content-index",
           "https://joshtronic.com/site/": "content-index",
@@ -19027,10 +20061,11 @@
           "https://joshtronic.com/how-to-use-colors-in-command-line-output/": "budget-exhausted",
           "https://joshtronic.com/how-to-pluralize-words/": "budget-exhausted",
           "https://joshtronic.com/how-to-increment-decrement-a-number/": "budget-exhausted",
-          "https://joshtronic.com/incrementing-decrementing-a-number-by-a-number/": "budget-exhausted"
+          "https://joshtronic.com/incrementing-decrementing-a-number-by-a-number/": "budget-exhausted",
+          "https://joshtronic.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z"
+      "crawled_at": "2026-11-05T04:08:09.105Z"
     },
     {
       "origin": "https://joshua.seigler.net",
@@ -19082,12 +20117,28 @@
           "label": "ffmpeg"
         },
         {
+          "slug": "freedom",
+          "label": "Freedom"
+        },
+        {
           "slug": "generator",
           "label": "generator"
         },
         {
+          "slug": "government",
+          "label": "government"
+        },
+        {
+          "slug": "health",
+          "label": "health"
+        },
+        {
           "slug": "howto",
           "label": "howto"
+        },
+        {
+          "slug": "law",
+          "label": "law"
         },
         {
           "slug": "learning",
@@ -19135,7 +20186,7 @@
         "title": "/books",
         "summary": "I’m Joshua Seigler, a software engineer since 2010 and a living being since the 1980s. I’ve watched technology advance from dial-up and Geocities pages, to federated social media and decentralized autonomous organizations, to people literally talking to computers (a lot!).",
         "published_at": "",
-        "observed_at": "2026-11-05T07:12:25.789Z",
+        "observed_at": "2026-11-03T16:34:11.848Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -19149,7 +20200,16 @@
         "source_kind": "creative-homepage",
         "page_role": "unknown"
       },
-      "outgoing": [],
+      "outgoing": [
+        {
+          "to": "https://joshternet.org",
+          "relation": "content-link",
+          "label": "linked to",
+          "href": "https://joshternet.org/",
+          "page": "https://joshua.seigler.net/links/",
+          "evidence_count": 1
+        }
+      ],
       "incoming": [],
       "coverage": {
         "pages_discovered": 65,
@@ -19199,7 +20259,6 @@
           "https://joshua.seigler.net/sitemap/": "content-index",
           "https://joshua.seigler.net/til/": "content-index",
           "https://joshua.seigler.net/ways/": "content-index",
-          "https://joshua.seigler.net/seeking/": "content-index",
           "https://joshua.seigler.net/notes/": "content-index",
           "https://joshua.seigler.net/blog/": "content-index",
           "https://joshua.seigler.net/weblog/": "content-index",
@@ -19284,8 +20343,6 @@
           "https://joshua.seigler.net/where/": "content-index",
           "https://joshua.seigler.net/why/": "content-index",
           "https://joshua.seigler.net/wish/": "content-index",
-          "https://joshua.seigler.net/wish-list/": "content-index",
-          "https://joshua.seigler.net/wishlist/": "content-index",
           "https://joshua.seigler.net/yep/": "content-index",
           "https://joshua.seigler.net/more/": "content-index",
           "https://joshua.seigler.net/site/": "content-index",
@@ -19403,10 +20460,11 @@
           "https://joshua.seigler.net/tags/music/": "content-index",
           "https://joshua.seigler.net/posts/embracing-mysticism": "content-index",
           "https://joshua.seigler.net/music/It%20Is%20Truly%20Meet%20-%20Macedonian.pdf": "content-index",
-          "https://joshua.seigler.net/music/%C3%8Engerul%20a%20Strigat%20-%20Varlaam%20-%20glasul%203.pdf": "content-index"
+          "https://joshua.seigler.net/music/%C3%8Engerul%20a%20Strigat%20-%20Varlaam%20-%20glasul%203.pdf": "content-index",
+          "https://joshua.seigler.net": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z"
+      "crawled_at": "2026-11-05T04:08:09.105Z"
     },
     {
       "origin": "https://joshuadrake.org",
@@ -19443,7 +20501,7 @@
         "title": "Projects:",
         "summary": "",
         "published_at": "",
-        "observed_at": "2026-11-05T07:12:25.789Z",
+        "observed_at": "2026-11-05T04:08:09.105Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -19457,7 +20515,16 @@
         "source_kind": "creative-homepage",
         "page_role": "project"
       },
-      "outgoing": [],
+      "outgoing": [
+        {
+          "to": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshternet.org/network/",
+          "page": "https://joshuadrake.org/",
+          "evidence_count": 1
+        }
+      ],
       "incoming": [],
       "coverage": {
         "pages_discovered": 77,
@@ -19473,7 +20540,6 @@
           "https://joshuadrake.org/sitemap/": "content-index",
           "https://joshuadrake.org/til/": "content-index",
           "https://joshuadrake.org/ways/": "content-index",
-          "https://joshuadrake.org/seeking/": "content-index",
           "https://joshuadrake.org/notes/": "content-index",
           "https://joshuadrake.org/blog/": "content-index",
           "https://joshuadrake.org/weblog/": "content-index",
@@ -19558,8 +20624,6 @@
           "https://joshuadrake.org/where/": "content-index",
           "https://joshuadrake.org/why/": "content-index",
           "https://joshuadrake.org/wish/": "content-index",
-          "https://joshuadrake.org/wish-list/": "content-index",
-          "https://joshuadrake.org/wishlist/": "content-index",
           "https://joshuadrake.org/yep/": "content-index",
           "https://joshuadrake.org/more/": "content-index",
           "https://joshuadrake.org/site/": "content-index",
@@ -19701,7 +20765,7 @@
           "https://joshuadrake.org/projects/n12rebuild/": "content-index"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z",
+      "crawled_at": "2026-11-05T04:08:09.105Z",
       "portfolio": {
         "url": "https://joshuadrake.org/projects/",
         "work_count": 39,
@@ -19737,7 +20801,7 @@
         "title": "Work, Joshua Kim",
         "summary": "Eight projects by Joshua Kim: internal tools, interactive and AR work, app case studies, and graphic design.",
         "published_at": "",
-        "observed_at": "2026-11-05T07:12:25.789Z",
+        "observed_at": "2026-11-05T04:08:09.105Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -19767,7 +20831,6 @@
           "https://joshuakim.studio/sitemap/": "content-index",
           "https://joshuakim.studio/til/": "content-index",
           "https://joshuakim.studio/ways/": "content-index",
-          "https://joshuakim.studio/seeking/": "content-index",
           "https://joshuakim.studio/notes/": "content-index",
           "https://joshuakim.studio/blog/": "content-index",
           "https://joshuakim.studio/weblog/": "content-index",
@@ -19852,8 +20915,6 @@
           "https://joshuakim.studio/where/": "content-index",
           "https://joshuakim.studio/why/": "content-index",
           "https://joshuakim.studio/wish/": "content-index",
-          "https://joshuakim.studio/wish-list/": "content-index",
-          "https://joshuakim.studio/wishlist/": "content-index",
           "https://joshuakim.studio/yep/": "content-index",
           "https://joshuakim.studio/more/": "content-index",
           "https://joshuakim.studio/site/": "content-index",
@@ -19962,7 +21023,7 @@
           "https://joshuakim.studio/about": "content-index"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z"
+      "crawled_at": "2026-11-05T04:08:09.105Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -20351,6 +21412,10 @@
           "label": "law"
         },
         {
+          "slug": "lego",
+          "label": "lego"
+        },
+        {
           "slug": "library",
           "label": "libraries"
         },
@@ -20381,6 +21446,10 @@
         {
           "slug": "medical-research",
           "label": "medical research"
+        },
+        {
+          "slug": "meetup-venue",
+          "label": "meetup-venue"
         },
         {
           "slug": "mental-health",
@@ -20447,6 +21516,10 @@
           "label": "Parenting"
         },
         {
+          "slug": "participant",
+          "label": "participants"
+        },
+        {
           "slug": "person",
           "label": "person"
         },
@@ -20491,6 +21564,10 @@
           "label": "programming"
         },
         {
+          "slug": "projector",
+          "label": "projector"
+        },
+        {
           "slug": "propulsion",
           "label": "propulsion"
         },
@@ -20501,6 +21578,10 @@
         {
           "slug": "python",
           "label": "python"
+        },
+        {
+          "slug": "reconnection",
+          "label": "reconnection"
         },
         {
           "slug": "regulation",
@@ -20532,7 +21613,7 @@
         },
         {
           "slug": "room",
-          "label": "rooms"
+          "label": "room"
         },
         {
           "slug": "rule",
@@ -20635,6 +21716,10 @@
           "label": "threads"
         },
         {
+          "slug": "toy",
+          "label": "toy"
+        },
+        {
           "slug": "trade",
           "label": "trade"
         },
@@ -20708,7 +21793,7 @@
         "title": "Experiments",
         "summary": "Web experiments and playground shells from Joshua Morris—toys, tools, and interface ideas built to see whether they can work in a browser.",
         "published_at": "",
-        "observed_at": "2026-11-05T07:12:25.789Z",
+        "observed_at": "2026-11-04T01:56:36.324Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -20740,6 +21825,22 @@
           "evidence_count": 1
         },
         {
+          "to": "https://joshternet.org",
+          "relation": "content-link",
+          "label": "linked to",
+          "href": "https://joshternet.org/network/?utm_source=joshuamorris.info&utm_medium=referral",
+          "page": "https://joshuamorris.info/about/",
+          "evidence_count": 10
+        },
+        {
+          "to": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshternet.org/network/?utm_source=joshuamorris.info&utm_medium=referral",
+          "page": "https://joshuamorris.info/",
+          "evidence_count": 1
+        },
+        {
           "to": "https://joshtronic.com",
           "relation": "content-link",
           "label": "linked to",
@@ -20764,6 +21865,22 @@
           "href": "https://joshuamorris.info/",
           "page": "https://joshbeard.com/site/",
           "evidence_count": 1
+        },
+        {
+          "from": "https://joshternet.org",
+          "relation": "content-link",
+          "label": "linked to",
+          "href": "https://joshuamorris.info/",
+          "page": "https://joshternet.org/about/",
+          "evidence_count": 2
+        },
+        {
+          "from": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshuamorris.info/",
+          "page": "https://joshternet.org/",
+          "evidence_count": 3
         },
         {
           "from": "https://joshtronic.com",
@@ -21150,8 +22267,6 @@
           "https://joshuamorris.info/where/": "content-index",
           "https://joshuamorris.info/why/": "content-index",
           "https://joshuamorris.info/wish/": "content-index",
-          "https://joshuamorris.info/wish-list/": "content-index",
-          "https://joshuamorris.info/wishlist/": "content-index",
           "https://joshuamorris.info/yep/": "content-index",
           "https://joshuamorris.info/more/": "content-index",
           "https://joshuamorris.info/site/": "content-index",
@@ -21352,6 +22467,7 @@
           "https://joshuamorris.info/reading/2026/10/12/count-zero/": "budget-exhausted",
           "https://joshuamorris.info/reading/2026/10/12/agency/": "budget-exhausted",
           "https://joshuamorris.info/reading/2026/10/12/the-peripheral/": "budget-exhausted",
+          "https://joshuamorris.info/wander/console/index.html": "budget-exhausted",
           "https://joshuamorris.info/atom.xml": "budget-exhausted",
           "https://joshuamorris.info/feed.xml": "budget-exhausted",
           "https://joshuamorris.info/feed.json": "budget-exhausted",
@@ -21528,10 +22644,12 @@
           "https://joshuamorris.info/notes/2026/07/24/": "budget-exhausted",
           "https://joshuamorris.info/notes/2026/07/23/": "budget-exhausted",
           "https://joshuamorris.info/topics/software-preservation/": "budget-exhausted",
-          "https://joshuamorris.info/notes/2026/07/22/": "budget-exhausted"
+          "https://joshuamorris.info/notes/2026/07/22/": "budget-exhausted",
+          "https://joshuamorris.info/notes/2026/07/21/": "budget-exhausted",
+          "https://joshuamorris.info": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z"
+      "crawled_at": "2026-11-05T04:08:09.105Z"
     },
     {
       "origin": "https://joshuapsteele.com",
@@ -22528,7 +23646,6 @@
           "https://joshuapsteele.com/sitemap/": "content-index",
           "https://joshuapsteele.com/til/": "content-index",
           "https://joshuapsteele.com/ways/": "content-index",
-          "https://joshuapsteele.com/seeking/": "content-index",
           "https://joshuapsteele.com/notes/": "content-index",
           "https://joshuapsteele.com/blog/": "content-index",
           "https://joshuapsteele.com/weblog/": "content-index",
@@ -22613,8 +23730,6 @@
           "https://joshuapsteele.com/where/": "content-index",
           "https://joshuapsteele.com/why/": "content-index",
           "https://joshuapsteele.com/wish/": "content-index",
-          "https://joshuapsteele.com/wish-list/": "content-index",
-          "https://joshuapsteele.com/wishlist/": "content-index",
           "https://joshuapsteele.com/yep/": "content-index",
           "https://joshuapsteele.com/more/": "content-index",
           "https://joshuapsteele.com/site/": "content-index",
@@ -23056,6 +24171,7 @@
           "https://joshuapsteele.com/search/": "sitemap",
           "https://joshuapsteele.com/sermons/": "sitemap",
           "https://joshuapsteele.com/catechism/": "sitemap",
+          "https://joshuapsteele.com/wishlist/": "sitemap",
           "https://joshuapsteele.com/style/": "blind-probe",
           "https://joshuapsteele.com/top4/": "blind-probe",
           "https://joshuapsteele.com/topfour/": "blind-probe",
@@ -23129,7 +24245,12 @@
           "https://joshuapsteele.com/wp-content/uploads/2016/12/A_Crucicentric_Credo.pdf": "content-index",
           "https://joshuapsteele.com/wp-content/uploads/2016/12/To-Be-or-Not-To-Be-Religious.pdf": "content-index",
           "https://joshuapsteele.com/wp-content/uploads/2017/12/STEELE-Theological-Hermeneutics-Essay-PDF.pdf": "content-index",
+          "https://joshuapsteele.com/'+t(a)+'": "content-index",
+          "https://joshuapsteele.com/'+t(s)+'": "content-index",
           "https://joshuapsteele.com/blog/feed.xml": "budget-exhausted",
+          "https://joshuapsteele.com/wish-list/": "budget-exhausted",
+          "https://joshuapsteele.com/'+e(s)+'": "budget-exhausted",
+          "https://joshuapsteele.com/'+e(a)+'": "budget-exhausted",
           "https://joshuapsteele.com/citizens-manifesto": "budget-exhausted",
           "https://joshuapsteele.com/files/Eco_1995_Ur-Fascism.pdf": "budget-exhausted",
           "https://joshuapsteele.com/files/craftsman_table_saw_manual.pdf": "budget-exhausted",
@@ -23162,10 +24283,13 @@
           "https://joshuapsteele.com/wp-content/uploads/2015/12/jesus-is-not-just-one-of-us-mark-61.pdf": "budget-exhausted",
           "https://joshuapsteele.com/wp-content/uploads/2015/12/following-the-cross-shaped-god-philippians-21.pdf": "budget-exhausted",
           "https://joshuapsteele.com/wp-content/uploads/2015/12/holy-innocents-matthew-21.pdf": "budget-exhausted",
-          "https://joshuapsteele.com/wp-content/uploads/2015/12/god-our-help1.pdf": "budget-exhausted"
+          "https://joshuapsteele.com/wp-content/uploads/2015/12/god-our-help1.pdf": "budget-exhausted",
+          "https://joshuapsteele.com/bookmarks/'+t(s)+'": "budget-exhausted",
+          "https://joshuapsteele.com/bookmarks/'+t(a)+'": "budget-exhausted",
+          "https://joshuapsteele.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z"
+      "crawled_at": "2026-11-05T04:08:09.105Z"
     },
     {
       "origin": "https://joshuastuebner.com",
@@ -23174,7 +24298,23 @@
       "description": "Product engineer at Ariadne and half of Norcode Agency.I also (co-)run Vegan Hamburg and Was Los im Amt?.",
       "identity": "affirmed",
       "feeds": [],
-      "elsewhere": [],
+      "elsewhere": [
+        {
+          "url": "https://joshuastuebner.com/",
+          "network": "web",
+          "label": "joshuastuebner.com"
+        },
+        {
+          "url": "https://codeberg.org/JSHSJ",
+          "network": "web",
+          "label": "codeberg.org"
+        },
+        {
+          "url": "https://github.com/JSHSJ",
+          "network": "github",
+          "label": "GitHub"
+        }
+      ],
       "community_topics": [
         {
           "slug": "browser",
@@ -23206,7 +24346,7 @@
         "title": "Datapolicy",
         "summary": "Pick your theme",
         "published_at": "",
-        "observed_at": "2026-11-04T20:05:21.389Z",
+        "observed_at": "2026-11-05T04:08:09.105Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -23221,7 +24361,16 @@
         "page_role": "unknown"
       },
       "outgoing": [],
-      "incoming": [],
+      "incoming": [
+        {
+          "from": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshuastuebner.com/tools/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 1
+        }
+      ],
       "coverage": {
         "pages_discovered": 145,
         "pages_fetched": 145,
@@ -23236,7 +24385,6 @@
           "https://joshuastuebner.com/sitemap/": "content-index",
           "https://joshuastuebner.com/til/": "content-index",
           "https://joshuastuebner.com/ways/": "content-index",
-          "https://joshuastuebner.com/seeking/": "content-index",
           "https://joshuastuebner.com/notes/": "content-index",
           "https://joshuastuebner.com/blog/": "content-index",
           "https://joshuastuebner.com/weblog/": "content-index",
@@ -23321,8 +24469,6 @@
           "https://joshuastuebner.com/where/": "content-index",
           "https://joshuastuebner.com/why/": "content-index",
           "https://joshuastuebner.com/wish/": "content-index",
-          "https://joshuastuebner.com/wish-list/": "content-index",
-          "https://joshuastuebner.com/wishlist/": "content-index",
           "https://joshuastuebner.com/yep/": "content-index",
           "https://joshuastuebner.com/more/": "content-index",
           "https://joshuastuebner.com/site/": "content-index",
@@ -23556,7 +24702,7 @@
           "https://joshuastuebner.com/joshuastuebner.asc": "content-index"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z"
+      "crawled_at": "2026-11-05T04:08:09.105Z"
     },
     {
       "origin": "https://joshurbandavis.com",
@@ -23565,11 +24711,49 @@
       "description": "",
       "identity": "affirmed",
       "feeds": [],
-      "elsewhere": [],
+      "elsewhere": [
+        {
+          "url": "https://github.com/joshurbandavis",
+          "network": "github",
+          "label": "GitHub"
+        },
+        {
+          "url": "https://www.instagram.com/joshurbandavis",
+          "network": "instagram",
+          "label": "Instagram"
+        },
+        {
+          "url": "https://twitter.com/joshurbandavis",
+          "network": "x",
+          "label": "X"
+        },
+        {
+          "url": "https://www.linkedin.com/in/joshurbandavis/",
+          "network": "linkedin",
+          "label": "LinkedIn"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=wcd1_HpeStA",
+          "network": "youtube",
+          "label": "YouTube"
+        }
+      ],
       "community_topics": [
         {
           "slug": "internet",
           "label": "Internet"
+        },
+        {
+          "slug": "link",
+          "label": "Link"
+        },
+        {
+          "slug": "painting",
+          "label": "painting"
+        },
+        {
+          "slug": "rhythm",
+          "label": "rhythms"
         },
         {
           "slug": "song",
@@ -23581,7 +24765,7 @@
         "title": "Download CV",
         "summary": "I build machines that perceive the world, and ask what happens when those machines change how we see it.",
         "published_at": "",
-        "observed_at": "2026-11-05T07:12:25.789Z",
+        "observed_at": "2026-11-05T04:08:09.105Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -23596,7 +24780,16 @@
         "page_role": "unknown"
       },
       "outgoing": [],
-      "incoming": [],
+      "incoming": [
+        {
+          "from": "https://joshternet.org",
+          "relation": "homepage-link",
+          "label": "links to from the homepage",
+          "href": "https://joshurbandavis.com/?utm_source=joshternet.org&utm_medium=referral&utm_campaign=home&utm_content=%2F",
+          "page": "https://joshternet.org/",
+          "evidence_count": 2
+        }
+      ],
       "coverage": {
         "pages_discovered": 37,
         "pages_fetched": 37,
@@ -23611,7 +24804,6 @@
           "https://joshurbandavis.com/sitemap/": "content-index",
           "https://joshurbandavis.com/til/": "content-index",
           "https://joshurbandavis.com/ways/": "content-index",
-          "https://joshurbandavis.com/seeking/": "content-index",
           "https://joshurbandavis.com/notes/": "content-index",
           "https://joshurbandavis.com/blog/": "content-index",
           "https://joshurbandavis.com/weblog/": "content-index",
@@ -23696,8 +24888,6 @@
           "https://joshurbandavis.com/where/": "content-index",
           "https://joshurbandavis.com/why/": "content-index",
           "https://joshurbandavis.com/wish/": "content-index",
-          "https://joshurbandavis.com/wish-list/": "content-index",
-          "https://joshurbandavis.com/wishlist/": "content-index",
           "https://joshurbandavis.com/yep/": "content-index",
           "https://joshurbandavis.com/more/": "content-index",
           "https://joshurbandavis.com/site/": "content-index",
@@ -23822,7 +25012,7 @@
           "https://joshurbandavis.com/index.html": "content-index"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z"
+      "crawled_at": "2026-11-05T04:08:09.105Z"
     },
     {
       "origin": "https://www.chrisminnick.com",
@@ -23865,10 +25055,6 @@
         {
           "slug": "book",
           "label": "books"
-        },
-        {
-          "slug": "challenge",
-          "label": "challenges"
         },
         {
           "slug": "claude",
@@ -24000,22 +25186,23 @@
         }
       ],
       "recent_content": {
-        "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
-        "title": "The Ballmer Peak in the Age of AI Coding",
-        "summary": "During the years when I was doing a lot of hands-on coding, roughly from 1998 to 2010, I lived by the rule of what xkcd comic author Randall Munroe named the “ Ballmer Peak ” after Steve Ballmer, the former CEO of Microsoft who was known for his exuberant and sweaty appearance on stage .",
-        "published_at": "2026-11-03T13:31:11.000Z",
-        "observed_at": "2026-11-05T07:12:25.789Z",
-        "content_type": "article",
-        "language": "",
+        "url": "https://www.chrisminnick.com/books/",
+        "title": "Books",
+        "summary": "More than twenty books on programming, the web, and AI — plus three novels.",
+        "published_at": "2027-04-01T00:00:00.000Z",
+        "observed_at": "2026-11-05T04:08:09.105Z",
+        "content_type": "project",
+        "language": "en",
         "dir": "",
         "site_origin": "https://www.chrisminnick.com",
         "site_title": "Chris Minnick",
         "domain": "www.chrisminnick.com",
         "tags": [],
         "neighborhoods": [],
-        "image": "https://substack-post-media.s3.amazonaws.com/public/images/c5eb026d-8795-4d8b-8d62-af930e8f620e_744x496.webp",
-        "image_origin": "https://substack-post-media.s3.amazonaws.com",
-        "source_kind": "rss"
+        "image": "https://www.chrisminnick.com/images/chris-minnick.jpg",
+        "image_origin": "https://www.chrisminnick.com",
+        "source_kind": "creative-homepage",
+        "page_role": "unknown"
       },
       "outgoing": [],
       "incoming": [
@@ -24042,7 +25229,6 @@
           "https://www.chrisminnick.com/sitemap/": "content-index",
           "https://www.chrisminnick.com/til/": "content-index",
           "https://www.chrisminnick.com/ways/": "content-index",
-          "https://www.chrisminnick.com/seeking/": "content-index",
           "https://www.chrisminnick.com/notes/": "content-index",
           "https://www.chrisminnick.com/blog/": "content-index",
           "https://www.chrisminnick.com/weblog/": "content-index",
@@ -24127,8 +25313,6 @@
           "https://www.chrisminnick.com/where/": "content-index",
           "https://www.chrisminnick.com/why/": "content-index",
           "https://www.chrisminnick.com/wish/": "content-index",
-          "https://www.chrisminnick.com/wish-list/": "content-index",
-          "https://www.chrisminnick.com/wishlist/": "content-index",
           "https://www.chrisminnick.com/yep/": "content-index",
           "https://www.chrisminnick.com/more/": "content-index",
           "https://www.chrisminnick.com/site/": "content-index",
@@ -24391,7 +25575,7 @@
           "https://www.chrisminnick.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z"
+      "crawled_at": "2026-11-05T04:08:09.105Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -24505,7 +25689,6 @@
           "https://www.joshcanhelp.com/sitemap/": "content-index",
           "https://www.joshcanhelp.com/til/": "content-index",
           "https://www.joshcanhelp.com/ways/": "content-index",
-          "https://www.joshcanhelp.com/seeking/": "content-index",
           "https://www.joshcanhelp.com/notes/": "content-index",
           "https://www.joshcanhelp.com/blog/": "content-index",
           "https://www.joshcanhelp.com/weblog/": "content-index",
@@ -24589,8 +25772,6 @@
           "https://www.joshcanhelp.com/where/": "content-index",
           "https://www.joshcanhelp.com/why/": "content-index",
           "https://www.joshcanhelp.com/wish/": "content-index",
-          "https://www.joshcanhelp.com/wish-list/": "content-index",
-          "https://www.joshcanhelp.com/wishlist/": "content-index",
           "https://www.joshcanhelp.com/yep/": "content-index",
           "https://www.joshcanhelp.com/more/": "content-index",
           "https://www.joshcanhelp.com/site/": "content-index",
@@ -25068,10 +26249,11 @@
           "https://www.joshcanhelp.com/_images/2010/04/jewelry_design03.png": "budget-exhausted",
           "https://www.joshcanhelp.com/_images/2010/04/jewelry_design04.png": "budget-exhausted",
           "https://www.joshcanhelp.com/_images/2010/02/Misc_003_fix.jpg": "budget-exhausted",
-          "https://www.joshcanhelp.com/_images/2010/02/logitech_mic.jpg": "budget-exhausted"
+          "https://www.joshcanhelp.com/_images/2010/02/logitech_mic.jpg": "budget-exhausted",
+          "https://www.joshcanhelp.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z"
+      "crawled_at": "2026-11-05T04:08:09.105Z"
     },
     {
       "origin": "https://www.joshfinnie.com",
@@ -26016,7 +27198,7 @@
         "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone",
         "summary": "I spent a week having Claude Code audit my fork of LightCraft, the AI-built Rust Lightroom clone: fuzzing, crash safety, a locked control port, faster frames, and 50,000 deleted lines.",
         "published_at": "2026-11-04T00:00:00.000Z",
-        "observed_at": "2026-11-05T07:12:25.789Z",
+        "observed_at": "2026-11-05T04:08:09.105Z",
         "content_type": "article",
         "language": "en-us",
         "dir": "",
@@ -26202,7 +27384,6 @@
           "https://www.joshfinnie.com/sitemap/": "content-index",
           "https://www.joshfinnie.com/til/": "content-index",
           "https://www.joshfinnie.com/ways/": "content-index",
-          "https://www.joshfinnie.com/seeking/": "content-index",
           "https://www.joshfinnie.com/notes/": "content-index",
           "https://www.joshfinnie.com/blog/": "content-index",
           "https://www.joshfinnie.com/weblog/": "content-index",
@@ -26287,8 +27468,6 @@
           "https://www.joshfinnie.com/where/": "content-index",
           "https://www.joshfinnie.com/why/": "content-index",
           "https://www.joshfinnie.com/wish/": "content-index",
-          "https://www.joshfinnie.com/wish-list/": "content-index",
-          "https://www.joshfinnie.com/wishlist/": "content-index",
           "https://www.joshfinnie.com/yep/": "content-index",
           "https://www.joshfinnie.com/more/": "content-index",
           "https://www.joshfinnie.com/site/": "content-index",
@@ -26689,10 +27868,11 @@
           "https://www.joshfinnie.com/tags/unions/": "budget-exhausted",
           "https://www.joshfinnie.com/tags/gaming/": "budget-exhausted",
           "https://www.joshfinnie.com/tags/climate/": "budget-exhausted",
-          "https://www.joshfinnie.com/tags/policy/": "budget-exhausted"
+          "https://www.joshfinnie.com/tags/policy/": "budget-exhausted",
+          "https://www.joshfinnie.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z",
+      "crawled_at": "2026-11-05T04:08:09.105Z",
       "portfolio": {
         "url": "https://www.joshfinnie.com/projects/",
         "work_count": 9,
@@ -26925,7 +28105,7 @@
         "title": "Work — Joshua Baker",
         "summary": "Selected case studies by Joshua Baker, plus the full archive — 140+ projects across two decades of design and engineering.",
         "published_at": "",
-        "observed_at": "2026-11-05T07:12:25.789Z",
+        "observed_at": "2026-11-05T04:08:09.105Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -27005,7 +28185,6 @@
           "https://www.joshuabaker.com/sitemap/": "content-index",
           "https://www.joshuabaker.com/til/": "content-index",
           "https://www.joshuabaker.com/ways/": "content-index",
-          "https://www.joshuabaker.com/seeking/": "content-index",
           "https://www.joshuabaker.com/notes/": "content-index",
           "https://www.joshuabaker.com/blog/": "content-index",
           "https://www.joshuabaker.com/weblog/": "content-index",
@@ -27090,8 +28269,6 @@
           "https://www.joshuabaker.com/where/": "content-index",
           "https://www.joshuabaker.com/why/": "content-index",
           "https://www.joshuabaker.com/wish/": "content-index",
-          "https://www.joshuabaker.com/wish-list/": "content-index",
-          "https://www.joshuabaker.com/wishlist/": "content-index",
           "https://www.joshuabaker.com/yep/": "content-index",
           "https://www.joshuabaker.com/more/": "content-index",
           "https://www.joshuabaker.com/site/": "content-index",
@@ -27197,7 +28374,7 @@
           "https://www.joshuabaker.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z",
+      "crawled_at": "2026-11-05T04:08:09.105Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,
@@ -27512,7 +28689,6 @@
           "https://www.joshvickerson.com/sitemap/": "content-index",
           "https://www.joshvickerson.com/til/": "content-index",
           "https://www.joshvickerson.com/ways/": "content-index",
-          "https://www.joshvickerson.com/seeking/": "content-index",
           "https://www.joshvickerson.com/notes/": "content-index",
           "https://www.joshvickerson.com/blog/": "content-index",
           "https://www.joshvickerson.com/weblog/": "content-index",
@@ -27597,8 +28773,6 @@
           "https://www.joshvickerson.com/where/": "content-index",
           "https://www.joshvickerson.com/why/": "content-index",
           "https://www.joshvickerson.com/wish/": "content-index",
-          "https://www.joshvickerson.com/wish-list/": "content-index",
-          "https://www.joshvickerson.com/wishlist/": "content-index",
           "https://www.joshvickerson.com/yep/": "content-index",
           "https://www.joshvickerson.com/more/": "content-index",
           "https://www.joshvickerson.com/site/": "content-index",
@@ -27697,10 +28871,11 @@
           "https://www.joshvickerson.com/class/": "blind-probe",
           "https://www.joshvickerson.com/courses/": "blind-probe",
           "https://www.joshvickerson.com/course/": "blind-probe",
-          "https://www.joshvickerson.com/posts/page/1/": "content-index"
+          "https://www.joshvickerson.com/posts/page/1/": "content-index",
+          "https://www.joshvickerson.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-05T07:12:25.789Z"
+      "crawled_at": "2026-11-05T04:08:09.105Z"
     }
   ]
 }

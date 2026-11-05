@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-05T07:12:25.789Z",
-  "community_count": 633,
+  "generated_at": "2026-11-05T04:08:09.105Z",
+  "community_count": 638,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
@@ -184,8 +184,8 @@
         }
       ],
       "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T20:05:21.389Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -572,42 +572,12 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
               "url": "https://www.chrisminnick.com/books/a-developers-guide-to-integrating-generative-ai-into-applications/",
               "title": "",
               "source": "catalog-match"
             },
             {
               "url": "https://www.chrisminnick.com/books/coding-with-ai-for-dummies/",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=-LV8ghrRSv8",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=bOA4eNEzZHc",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=Drr_KEhfckQ",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=k5sBLhZPzrU",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=s25MA8ol6BI",
               "title": "",
               "source": "catalog-match"
             }
@@ -1669,13 +1639,6 @@
       "active": true,
       "related_discoveries": [
         {
-          "origin": "https://joshkoter.com",
-          "domain": "joshkoter.com",
-          "title": "Josh Köter",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
           "origin": "https://joshozuna.com",
           "domain": "joshozuna.com",
           "title": "Josh Ozuna",
@@ -2051,26 +2014,8 @@
     {
       "slug": "audio",
       "label": "audio",
-      "member_count": 4,
+      "member_count": 3,
       "sites": [
-        {
-          "origin": "https://joshkoter.com",
-          "domain": "joshkoter.com",
-          "title": "Josh Köter",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://www.youtube.com/watch?v=VXWvfrmpapI",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://joshkoter.com/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
         {
           "origin": "https://joshmuller.ca",
           "domain": "joshmuller.ca",
@@ -2156,10 +2101,19 @@
           ]
         }
       ],
-      "sources": ["catalog-match", "visible-text"],
+      "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T22:20:06.760Z",
-      "active": true
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshkoter.com",
+          "domain": "joshkoter.com",
+          "title": "Josh Köter",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "august",
@@ -3405,8 +3359,8 @@
         }
       ],
       "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T20:05:21.389Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -3510,7 +3464,7 @@
         "topic-hub:page"
       ],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -3705,8 +3659,8 @@
         }
       ],
       "sources": ["rss:category"],
-      "first_seen_at": "2026-11-04T20:05:21.389Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -4372,7 +4326,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -4520,7 +4474,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -5058,7 +5012,7 @@
     {
       "slug": "challenge",
       "label": "challenges",
-      "member_count": 3,
+      "member_count": 2,
       "sites": [
         {
           "origin": "https://joshuamorris.info",
@@ -5073,19 +5027,6 @@
             },
             {
               "url": "https://joshuamorris.info/now/",
-              "title": "",
-              "source": "catalog-match"
-            }
-          ]
-        },
-        {
-          "origin": "https://www.chrisminnick.com",
-          "domain": "www.chrisminnick.com",
-          "title": "Chris Minnick",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://www.youtube.com/watch?v=BJgbX21HEkY",
               "title": "",
               "source": "catalog-match"
             }
@@ -5127,7 +5068,7 @@
         "topic-hub:page"
       ],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T06:44:48.237Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -5421,7 +5362,7 @@
       ],
       "sources": ["catalog-match", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -5603,8 +5544,8 @@
         }
       ],
       "sources": ["rss:category"],
-      "first_seen_at": "2026-11-04T20:05:21.389Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -5971,7 +5912,7 @@
       ],
       "sources": ["article:tag", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -6082,13 +6023,6 @@
       "last_changed_at": "2026-11-03T16:34:11.848Z",
       "active": true,
       "related_discoveries": [
-        {
-          "origin": "https://joshkoter.com",
-          "domain": "joshkoter.com",
-          "title": "Josh Köter",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -6449,7 +6383,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-10-30T14:08:13.355Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -6588,7 +6522,7 @@
       ],
       "sources": ["catalog-match", "microformat:p-category", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -7292,8 +7226,8 @@
         }
       ],
       "sources": ["rss:category"],
-      "first_seen_at": "2026-11-04T20:05:21.389Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -7601,7 +7535,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -7681,16 +7615,7 @@
       ],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshkoter.com",
-          "domain": "joshkoter.com",
-          "title": "Josh Köter",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
+      "active": true
     },
     {
       "slug": "creative-design",
@@ -7960,13 +7885,6 @@
       "last_changed_at": "2026-11-03T16:34:11.848Z",
       "active": true,
       "related_discoveries": [
-        {
-          "origin": "https://joshkoter.com",
-          "domain": "joshkoter.com",
-          "title": "Josh Köter",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
         {
           "origin": "https://joshua.seigler.net",
           "domain": "joshua.seigler.net",
@@ -8411,8 +8329,8 @@
         }
       ],
       "sources": ["rss:category"],
-      "first_seen_at": "2026-11-04T20:05:21.389Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -8542,21 +8460,8 @@
     {
       "slug": "deep-dive",
       "label": "deep dive",
-      "member_count": 2,
+      "member_count": 1,
       "sites": [
-        {
-          "origin": "https://joshkoter.com",
-          "domain": "joshkoter.com",
-          "title": "Josh Köter",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://www.youtube.com/watch?v=uCH1ta5OUHw",
-              "title": "",
-              "source": "catalog-match"
-            }
-          ]
-        },
         {
           "origin": "https://www.joshfinnie.com",
           "domain": "www.joshfinnie.com",
@@ -8581,9 +8486,9 @@
           ]
         }
       ],
-      "sources": ["article:tag", "catalog-match", "topic-hub:link"],
+      "sources": ["article:tag", "topic-hub:link"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T22:20:06.760Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -9382,7 +9287,7 @@
       ],
       "sources": ["microformat:p-category", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -9753,8 +9658,8 @@
         }
       ],
       "sources": ["rss:category"],
-      "first_seen_at": "2026-11-04T20:05:21.389Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -10088,7 +9993,7 @@
       ],
       "sources": ["article:tag", "catalog-match"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -11628,7 +11533,7 @@
       ],
       "sources": ["article:tag", "microformat:p-category"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -12536,7 +12441,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -12655,12 +12560,12 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshcox.co.uk/blog/how-to-tell-if-a-wordpress-plugin-is-safe/",
+              "url": "https://joshcox.co.uk/blog/an-unexpected-journey/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshcox.co.uk/blog/i-run-a-wordpress-agency-and-rebuilt-without-it/",
+              "url": "https://joshcox.co.uk/blog/can-you-maintain-a-relationship-traveling/",
               "title": "",
               "source": "visible-text"
             },
@@ -12746,8 +12651,36 @@
     {
       "slug": "freedom",
       "label": "Freedom",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Joshua Seigler",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.youtube.com/watch?v=jTYkdEU_B4o",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://joshua.seigler.net/posts/authority-consents-blind-spot/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshua.seigler.net/posts/embracing-mysticism/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshua.seigler.net/posts/needs-based-communication/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
         {
           "origin": "https://joshuapsteele.com",
           "domain": "joshuapsteele.com",
@@ -12762,20 +12695,10 @@
           ]
         }
       ],
-      "sources": ["article:tag"],
+      "sources": ["article:tag", "catalog-match", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-05T07:12:25.789Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshua.seigler.net",
-          "domain": "joshua.seigler.net",
-          "title": "Joshua Seigler",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ],
-      "stale_since": "2026-11-05T07:12:25.789Z"
+      "last_changed_at": "2026-11-04T06:44:48.237Z",
+      "active": true
     },
     {
       "slug": "friendship",
@@ -13428,6 +13351,11 @@
           "membership": "heuristic",
           "pages": [
             {
+              "url": "https://joshuamorris.info/notes/2026/10/05/most-of-prop-1-is-a-loan-the-general-budget-pays-back-with-interest/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/10/12/prop-38-borrows-for-immune-research-and-takes-a-cut-if-a-drug-pays-off/",
               "title": "",
               "source": "catalog-match"
@@ -13472,7 +13400,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T23:21:01.342Z",
       "active": true,
       "related_discoveries": [
         {
@@ -13586,121 +13514,6 @@
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
       "active": true
-    },
-    {
-      "slug": "github",
-      "label": "GitHub",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://artlung.com",
-          "domain": "artlung.com",
-          "title": "Joe Crawford",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://www.youtube.com/watch?v=_kuQflW2Db8",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=Dp8-xlPIZ28",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=etjRb2EaxWQ",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=HcUV90vm2ow",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=HJqMT15pEYg",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=IOLsMCkvy10",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=mBZeHOHfrXo",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=Q0_MeKq7nZo",
-              "title": "",
-              "source": "catalog-match"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshghent.com",
-          "domain": "joshghent.com",
-          "title": "Josh Ghent",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshghent.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/created-my-own-status-page/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/github-actions-lessons/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/php2shell-overreaction/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshghent.com/repowarden-update/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["catalog-match", "visible-text"],
-      "first_seen_at": "2026-11-04T22:20:06.760Z",
-      "last_changed_at": "2026-11-04T22:20:06.760Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshtronic.com",
-          "domain": "joshtronic.com",
-          "title": "Josh Sherman",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshuastuebner.com",
-          "domain": "joshuastuebner.com",
-          "title": "Joshua Stübner",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://www.joshcanhelp.com",
-          "domain": "www.joshcanhelp.com",
-          "title": "Josh Cunningham",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
     },
     {
       "slug": "give",
@@ -13898,7 +13711,7 @@
       ],
       "sources": ["article:tag", "catalog-match", "topic-hub:link"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -14105,8 +13918,26 @@
     {
       "slug": "government",
       "label": "government",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Joshua Seigler",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.youtube.com/watch?v=A8pcb4xyCic",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=fFoXyFmmGBQ",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -14182,11 +14013,15 @@
           ]
         }
       ],
-      "sources": ["article:tag", "microformat:p-category", "portfolio:sector"],
+      "sources": [
+        "article:tag",
+        "catalog-match",
+        "microformat:p-category",
+        "portfolio:sector"
+      ],
       "first_seen_at": "2026-10-03T08:29:09.357Z",
-      "last_changed_at": "2026-11-05T07:12:25.789Z",
-      "active": true,
-      "stale_since": "2026-11-05T07:12:25.789Z"
+      "last_changed_at": "2026-11-04T06:44:48.237Z",
+      "active": true
     },
     {
       "slug": "government-ethics",
@@ -14437,8 +14272,8 @@
         }
       ],
       "sources": ["rss:category"],
-      "first_seen_at": "2026-11-04T20:05:21.389Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -14535,16 +14370,7 @@
       "sources": ["article:tag", "topic-hub:link"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://www.chrisminnick.com",
-          "domain": "www.chrisminnick.com",
-          "title": "Chris Minnick",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
+      "active": true
     },
     {
       "slug": "hacking",
@@ -14700,7 +14526,7 @@
     {
       "slug": "health",
       "label": "health",
-      "member_count": 5,
+      "member_count": 6,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -14755,6 +14581,19 @@
               "url": "https://joshmuller.ca/tags/health/",
               "title": "",
               "source": "topic-hub:page"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Joshua Seigler",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.youtube.com/watch?v=fFoXyFmmGBQ",
+              "title": "",
+              "source": "catalog-match"
             }
           ]
         },
@@ -14815,6 +14654,7 @@
       ],
       "sources": [
         "article:tag",
+        "catalog-match",
         "microformat:p-category",
         "portfolio:sector",
         "topic-hub:link",
@@ -14822,7 +14662,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-11-05T07:12:25.789Z",
+      "last_changed_at": "2026-11-04T06:44:48.237Z",
       "active": true,
       "related_discoveries": [
         {
@@ -14832,8 +14672,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-05T07:12:25.789Z"
+      ]
     },
     {
       "slug": "health-fitness",
@@ -14903,8 +14742,8 @@
         }
       ],
       "sources": ["rss:category"],
-      "first_seen_at": "2026-11-04T20:05:21.389Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -15430,7 +15269,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -15673,7 +15512,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -16012,7 +15851,7 @@
       ],
       "sources": ["article:tag", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -16440,7 +16279,7 @@
       ],
       "sources": ["article:tag", "catalog-match", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -16838,56 +16677,8 @@
     {
       "slug": "javascript",
       "label": "javascript",
-      "member_count": 6,
+      "member_count": 5,
       "sites": [
-        {
-          "origin": "https://joshkoter.com",
-          "domain": "joshkoter.com",
-          "title": "Josh Köter",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://www.youtube.com/watch?v=5uni6eGeTX4",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=7JtLHJbm0kA",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=c-1dBd1_G8A",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=CY0HE277IBM",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=d620nV6bp0A",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=EvC3ge_puQk",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=jl29qI62XPg",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=QxYg8-mhhhs",
-              "title": "",
-              "source": "catalog-match"
-            }
-          ]
-        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -17016,14 +16807,13 @@
       ],
       "sources": [
         "article:tag",
-        "catalog-match",
         "microformat:p-category",
         "topic-hub:link",
         "topic-hub:page",
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-11-04T22:20:06.760Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -18040,8 +17830,21 @@
     {
       "slug": "law",
       "label": "law",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://joshua.seigler.net",
+          "domain": "joshua.seigler.net",
+          "title": "Joshua Seigler",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.youtube.com/watch?v=A8pcb4xyCic",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -18091,9 +17894,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category"],
+      "sources": ["catalog-match", "microformat:p-category"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-05T07:12:25.789Z",
+      "last_changed_at": "2026-11-04T06:44:48.237Z",
       "active": true,
       "related_discoveries": [
         {
@@ -18103,8 +17906,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-05T07:12:25.789Z"
+      ]
     },
     {
       "slug": "leadership",
@@ -18246,7 +18048,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -18458,16 +18260,9 @@
         "visible-text"
       ],
       "first_seen_at": "2026-10-30T14:08:13.355Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
-        {
-          "origin": "https://joshkoter.com",
-          "domain": "joshkoter.com",
-          "title": "Josh Köter",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
         {
           "origin": "https://www.joshvickerson.com",
           "domain": "www.joshvickerson.com",
@@ -18532,6 +18327,30 @@
         }
       ],
       "sources": ["article:tag"],
+      "first_seen_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "active": true
+    },
+    {
+      "slug": "lego",
+      "label": "lego",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/seeking/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
       "active": true
@@ -18759,7 +18578,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -18836,26 +18655,8 @@
     {
       "slug": "library",
       "label": "libraries",
-      "member_count": 3,
+      "member_count": 2,
       "sites": [
-        {
-          "origin": "https://joshkoter.com",
-          "domain": "joshkoter.com",
-          "title": "Josh Köter",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://www.youtube.com/watch?v=c-1dBd1_G8A",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=d620nV6bp0A",
-              "title": "",
-              "source": "catalog-match"
-            }
-          ]
-        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -18908,14 +18709,9 @@
           ]
         }
       ],
-      "sources": [
-        "article:tag",
-        "catalog-match",
-        "topic-hub:link",
-        "visible-text"
-      ],
+      "sources": ["article:tag", "topic-hub:link", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T22:20:06.760Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -18994,7 +18790,7 @@
     {
       "slug": "link",
       "label": "Link",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
         {
           "origin": "https://joshternet.org",
@@ -19043,6 +18839,19 @@
           ]
         },
         {
+          "origin": "https://joshurbandavis.com",
+          "domain": "joshurbandavis.com",
+          "title": "Josh Urban Davis",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshurbandavis.com/experiments/internet-is-haunted/index.html",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
           "origin": "https://www.chrisminnick.com",
           "domain": "www.chrisminnick.com",
           "title": "Chris Minnick",
@@ -19076,9 +18885,9 @@
           ]
         }
       ],
-      "sources": ["article:tag", "visible-text"],
+      "sources": ["article:tag", "catalog-match", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T21:45:02.540Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -19113,13 +18922,6 @@
           "origin": "https://joshuastuebner.com",
           "domain": "joshuastuebner.com",
           "title": "Joshua Stübner",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshurbandavis.com",
-          "domain": "joshurbandavis.com",
-          "title": "Josh Urban Davis",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
@@ -19717,7 +19519,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-01T23:37:56.256Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -19848,7 +19650,7 @@
         "microformat:p-category"
       ],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -20474,8 +20276,8 @@
         }
       ],
       "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T20:05:21.389Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -20602,6 +20404,30 @@
       "active": true
     },
     {
+      "slug": "meetup-venue",
+      "label": "meetup-venue",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/seeking/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category"],
+      "first_seen_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "active": true
+    },
+    {
       "slug": "mental-health",
       "label": "Mental-Health",
       "member_count": 3,
@@ -20653,7 +20479,7 @@
       ],
       "sources": ["article:tag", "microformat:p-category", "rss:category"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -20863,7 +20689,7 @@
       ],
       "sources": ["article:tag", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -21071,8 +20897,8 @@
         }
       ],
       "sources": ["rss:category"],
-      "first_seen_at": "2026-11-04T20:05:21.389Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -21095,8 +20921,8 @@
         }
       ],
       "sources": ["rss:category"],
-      "first_seen_at": "2026-11-04T20:05:21.389Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -21499,7 +21325,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -21733,13 +21559,6 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
-          "origin": "https://joshkoter.com",
-          "domain": "joshkoter.com",
-          "title": "Josh Köter",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
           "title": "Josh Sherman",
@@ -21790,6 +21609,11 @@
           "title": "Joshua Morris",
           "membership": "declared",
           "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/07/21/a-clubhouse-through-ssh/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
             {
               "url": "https://joshuamorris.info/notes/2026/07/22/a-bittorrent-swarm-for-large-language-models/",
               "title": "",
@@ -21950,7 +21774,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -22053,7 +21877,7 @@
       ],
       "sources": ["article:tag"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -22530,8 +22354,8 @@
         }
       ],
       "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T20:05:21.389Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -23121,7 +22945,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -23643,7 +23467,7 @@
     {
       "slug": "painting",
       "label": "painting",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://joshuamorris.info",
@@ -23669,6 +23493,19 @@
           ]
         },
         {
+          "origin": "https://joshurbandavis.com",
+          "domain": "joshurbandavis.com",
+          "title": "Josh Urban Davis",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshurbandavis.com/experiments/untended/index.html",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
           "origin": "https://www.chrisminnick.com",
           "domain": "www.chrisminnick.com",
           "title": "Chris Minnick",
@@ -23684,17 +23521,8 @@
       ],
       "sources": ["catalog-match", "microformat:p-category"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T21:45:02.540Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshurbandavis.com",
-          "domain": "joshurbandavis.com",
-          "title": "Josh Urban Davis",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
+      "active": true
     },
     {
       "slug": "paper",
@@ -23794,16 +23622,31 @@
       "sources": ["article:tag", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
-      "active": true,
-      "related_discoveries": [
+      "active": true
+    },
+    {
+      "slug": "participant",
+      "label": "participants",
+      "member_count": 1,
+      "sites": [
         {
-          "origin": "https://www.chrisminnick.com",
-          "domain": "www.chrisminnick.com",
-          "title": "Chris Minnick",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/seeking/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
         }
-      ]
+      ],
+      "sources": ["microformat:p-category"],
+      "first_seen_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "active": true
     },
     {
       "slug": "party",
@@ -23822,6 +23665,11 @@
               "source": "visible-text"
             },
             {
+              "url": "https://joshcox.co.uk/blog/3/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
               "url": "https://joshcox.co.uk/blog/can-you-maintain-a-relationship-traveling/",
               "title": "",
               "source": "visible-text"
@@ -23833,11 +23681,6 @@
             },
             {
               "url": "https://joshcox.co.uk/blog/saigon-ho-chi-minh-city-same-same-but-different/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshcox.co.uk/blog/you-party-hard-but-did-you-die/",
               "title": "",
               "source": "visible-text"
             }
@@ -23879,7 +23722,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -24013,7 +23856,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -24287,7 +24130,7 @@
       ],
       "sources": ["catalog-match"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -24336,39 +24179,39 @@
               "source": "catalog-match"
             },
             {
-              "url": "https://joshbeard.com/photos/2014/",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://joshbeard.com/photos/2015/",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://joshbeard.com/photos/2016/",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://joshbeard.com/photos/2017/",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://joshbeard.com/photos/2018/",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
               "url": "https://joshbeard.com/photos/2018/2018-herman-gulch-01_jpg.html",
               "title": "",
               "source": "catalog-match"
             },
             {
-              "url": "https://joshbeard.com/photos/2019/",
+              "url": "https://joshbeard.com/photos/all/",
               "title": "",
               "source": "catalog-match"
+            },
+            {
+              "url": "https://joshbeard.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshbeard.com/me",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshbeard.com/me/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshbeard.com/photos/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshbeard.com/social",
+              "title": "",
+              "source": "visible-text"
             }
           ]
         },
@@ -24502,7 +24345,7 @@
       ],
       "sources": ["rss:category", "topic-hub:link", "visible-text"],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -25314,13 +25157,6 @@
           "title": "Joe Crawford",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshkoter.com",
-          "domain": "joshkoter.com",
-          "title": "Josh Köter",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
         }
       ]
     },
@@ -25583,12 +25419,7 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshcox.co.uk/blog/i-could-have-made-it-a-subscription/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshcox.co.uk/blog/if-you-build-it-they-wont-come/",
+              "url": "https://joshcox.co.uk/about/",
               "title": "",
               "source": "visible-text"
             },
@@ -25598,7 +25429,12 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshcox.co.uk/blog/when-was-the-boiler-last-serviced/",
+              "url": "https://joshcox.co.uk/projects/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshcox.co.uk/uses/",
               "title": "",
               "source": "visible-text"
             }
@@ -26011,16 +25847,9 @@
         "visible-text"
       ],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
-        {
-          "origin": "https://joshkoter.com",
-          "domain": "joshkoter.com",
-          "title": "Josh Köter",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
         {
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
@@ -26029,6 +25858,30 @@
           "note": "Below the community quality threshold; not membership."
         }
       ]
+    },
+    {
+      "slug": "projector",
+      "label": "projector",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/seeking/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category"],
+      "first_seen_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "active": true
     },
     {
       "slug": "property",
@@ -26572,12 +26425,12 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshcox.co.uk/blog/hello-world-again/",
+              "url": "https://joshcox.co.uk/blog/2/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshcox.co.uk/blog/where-people-quit-a-quote-form/",
+              "url": "https://joshcox.co.uk/blog/hello-world-again/",
               "title": "",
               "source": "visible-text"
             },
@@ -27071,8 +26924,8 @@
         }
       ],
       "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T20:05:21.389Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -27274,6 +27127,30 @@
           "note": "Below the community quality threshold; not membership."
         }
       ]
+    },
+    {
+      "slug": "reconnection",
+      "label": "reconnection",
+      "member_count": 1,
+      "sites": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/seeking/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category"],
+      "first_seen_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "active": true
     },
     {
       "slug": "recruiter",
@@ -27520,7 +27397,7 @@
       ],
       "sources": ["article:tag", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -27808,8 +27685,8 @@
         }
       ],
       "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T20:05:21.389Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -28521,7 +28398,7 @@
     {
       "slug": "rhythm",
       "label": "rhythms",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
         {
           "origin": "https://joshmuller.ca",
@@ -28545,21 +28422,30 @@
               "source": "topic-hub:page"
             }
           ]
-        }
-      ],
-      "sources": ["article:tag", "topic-hub:link", "topic-hub:page"],
-      "first_seen_at": "2026-10-12T18:51:53.092Z",
-      "last_changed_at": "2026-11-04T21:45:02.540Z",
-      "active": true,
-      "related_discoveries": [
+        },
         {
           "origin": "https://joshurbandavis.com",
           "domain": "joshurbandavis.com",
           "title": "Josh Urban Davis",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshurbandavis.com/experiments/backgammon-sequencer/index.html",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
         }
-      ]
+      ],
+      "sources": [
+        "article:tag",
+        "catalog-match",
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
+      "first_seen_at": "2026-10-12T18:51:53.092Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
+      "active": true
     },
     {
       "slug": "right",
@@ -28918,7 +28804,7 @@
     },
     {
       "slug": "room",
-      "label": "rooms",
+      "label": "room",
       "member_count": 2,
       "sites": [
         {
@@ -28943,17 +28829,17 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshcox.co.uk/blog/koh-phangan-koh-tao/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshcox.co.uk/blog/when-was-the-boiler-last-serviced/",
               "title": "",
               "source": "visible-text"
             },
             {
               "url": "https://joshcox.co.uk/blog/why-i-swapped-my-macbook-for-a-mac-mini/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshcox.co.uk/uses/",
               "title": "",
               "source": "visible-text"
             }
@@ -29107,7 +28993,7 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshcox.co.uk/blog/i-could-have-made-it-a-subscription/",
+              "url": "https://joshcox.co.uk/about/",
               "title": "",
               "source": "visible-text"
             },
@@ -29117,12 +29003,12 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshcox.co.uk/blog/why-i-folded-my-free-tool-into-the-agency-site/",
+              "url": "https://joshcox.co.uk/projects/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshcox.co.uk/blog/wordpress-then-react-now-swift/",
+              "url": "https://joshcox.co.uk/uses/",
               "title": "",
               "source": "visible-text"
             }
@@ -29487,16 +29373,9 @@
       ],
       "sources": ["catalog-match", "microformat:p-category", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
-        {
-          "origin": "https://www.chrisminnick.com",
-          "domain": "www.chrisminnick.com",
-          "title": "Chris Minnick",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
         {
           "origin": "https://www.joshcanhelp.com",
           "domain": "www.joshcanhelp.com",
@@ -29929,12 +29808,7 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshcox.co.uk/blog/i-built-a-shop-that-sells-nothing/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshcox.co.uk/blog/i-run-a-wordpress-agency-and-rebuilt-without-it/",
+              "url": "https://joshcox.co.uk/blog/2/",
               "title": "",
               "source": "visible-text"
             },
@@ -29950,6 +29824,11 @@
             },
             {
               "url": "https://joshcox.co.uk/blog/why-i-folded-my-free-tool-into-the-agency-site/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshcox.co.uk/projects/",
               "title": "",
               "source": "visible-text"
             }
@@ -30415,7 +30294,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -30595,7 +30474,7 @@
       ],
       "sources": ["article:tag", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -30969,7 +30848,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-01T23:37:56.256Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -31305,6 +31184,11 @@
           "membership": "declared",
           "pages": [
             {
+              "url": "https://joshuamorris.info/notes/2026/07/21/a-clubhouse-through-ssh/",
+              "title": "",
+              "source": "microformat:p-category"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/07/22/source-code-from-the-moon/",
               "title": "",
               "source": "microformat:p-category"
@@ -31336,11 +31220,6 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/08/29/plugging-in-a-display-should-not-install-adware-on-my-computer/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/08/30/california-is-carving-linux-out-of-its-age-gating-law/",
               "title": "",
               "source": "microformat:p-category"
             }
@@ -31952,7 +31831,7 @@
       ],
       "sources": ["article:tag", "catalog-match", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -32078,7 +31957,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -32216,8 +32095,8 @@
         }
       ],
       "sources": ["rss:category"],
-      "first_seen_at": "2026-11-04T20:05:21.389Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -32395,7 +32274,7 @@
       ],
       "sources": ["microformat:p-category", "rss:category"],
       "first_seen_at": "2026-10-28T21:05:12.557Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -32676,7 +32555,7 @@
       ],
       "sources": ["atom:category", "json-feed:tag"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -32830,7 +32709,7 @@
       ],
       "sources": ["microformat:p-category", "rss:category"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T23:21:01.342Z",
       "active": true
     },
     {
@@ -33343,6 +33222,11 @@
           "membership": "heuristic",
           "pages": [
             {
+              "url": "https://joshuamorris.info/notes/2026/09/28/sometimes-i-dont-want-an-llm-to-answer-me/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/09/29/how-much-ai-slop-does-it-take-to-unslop-the-ai-slop/",
               "title": "",
               "source": "visible-text"
@@ -33359,11 +33243,6 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/seeking/docs/",
               "title": "",
               "source": "visible-text"
             }
@@ -33740,6 +33619,63 @@
       "active": true
     },
     {
+      "slug": "toy",
+      "label": "toy",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://artlung.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/bio/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2023/10/26/ai-artificial-intelligence-is-not-that/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/03/ibot-g3-2018/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/now/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/seeking/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category", "visible-text"],
+      "first_seen_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
+      "active": true
+    },
+    {
       "slug": "trade",
       "label": "trade",
       "member_count": 1,
@@ -33819,51 +33755,8 @@
     {
       "slug": "tutorial",
       "label": "tutorial",
-      "member_count": 4,
+      "member_count": 3,
       "sites": [
-        {
-          "origin": "https://joshkoter.com",
-          "domain": "joshkoter.com",
-          "title": "Josh Köter",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://www.youtube.com/watch?v=7JtLHJbm0kA",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=c-1dBd1_G8A",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=d620nV6bp0A",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=jl29qI62XPg",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=QxYg8-mhhhs",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=VXWvfrmpapI",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=Yvz_axxWG4Y",
-              "title": "",
-              "source": "catalog-match"
-            }
-          ]
-        },
         {
           "origin": "https://joshmuller.ca",
           "domain": "joshmuller.ca",
@@ -33954,14 +33847,9 @@
           ]
         }
       ],
-      "sources": [
-        "article:tag",
-        "catalog-match",
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
+      "sources": ["article:tag", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-11-01T10:42:20.299Z",
-      "last_changed_at": "2026-11-04T22:20:06.760Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -34849,15 +34737,28 @@
         }
       ],
       "sources": ["rss:category"],
-      "first_seen_at": "2026-11-04T20:05:21.389Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
       "slug": "video",
       "label": "video",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Josh Ghent",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/ring-e2ee/",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -34905,20 +34806,13 @@
       ],
       "sources": ["catalog-match", "topic-hub:page"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-05T07:12:25.789Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
           "origin": "https://artlung.com",
           "domain": "artlung.com",
           "title": "Joe Crawford",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshkoter.com",
-          "domain": "joshkoter.com",
-          "title": "Josh Köter",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         },
@@ -34957,8 +34851,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-05T07:12:25.789Z"
+      ]
     },
     {
       "slug": "video-game",
@@ -35287,8 +35180,8 @@
         }
       ],
       "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T20:05:21.389Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -35416,31 +35309,8 @@
     {
       "slug": "web-development",
       "label": "web development",
-      "member_count": 3,
+      "member_count": 2,
       "sites": [
-        {
-          "origin": "https://joshkoter.com",
-          "domain": "joshkoter.com",
-          "title": "Josh Köter",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://www.youtube.com/watch?v=jl29qI62XPg",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=QxYg8-mhhhs",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://www.youtube.com/watch?v=Yvz_axxWG4Y",
-              "title": "",
-              "source": "catalog-match"
-            }
-          ]
-        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -35538,14 +35408,9 @@
           ]
         }
       ],
-      "sources": [
-        "article:tag",
-        "catalog-match",
-        "microformat:p-category",
-        "topic-hub:link"
-      ],
+      "sources": ["article:tag", "microformat:p-category", "topic-hub:link"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T22:20:06.760Z",
+      "last_changed_at": "2026-11-03T16:34:11.848Z",
       "active": true,
       "relationships": {
         "broader": ["software-development"],
@@ -35625,8 +35490,8 @@
         }
       ],
       "sources": ["rss:category"],
-      "first_seen_at": "2026-11-04T20:05:21.389Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -35760,7 +35625,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -35948,11 +35813,6 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshcox.co.uk/blog/i-built-a-shop-that-sells-nothing/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshcox.co.uk/blog/if-you-build-it-they-wont-come/",
               "title": "",
               "source": "visible-text"
@@ -35964,6 +35824,11 @@
             },
             {
               "url": "https://joshcox.co.uk/blog/wordpress-then-react-now-swift/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshcox.co.uk/projects/",
               "title": "",
               "source": "visible-text"
             }
@@ -36093,8 +35958,8 @@
         }
       ],
       "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T20:05:21.389Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true
     },
     {
@@ -36142,6 +36007,11 @@
           "membership": "heuristic",
           "pages": [
             {
+              "url": "https://joshcox.co.uk/blog/2/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
               "url": "https://joshcox.co.uk/blog/ha-long-bay-sapa/",
               "title": "",
               "source": "visible-text"
@@ -36158,11 +36028,6 @@
             },
             {
               "url": "https://joshcox.co.uk/blog/phong-nha-ke-bang/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshcox.co.uk/blog/saigon-ho-chi-minh-city-same-same-but-different/",
               "title": "",
               "source": "visible-text"
             }
@@ -36567,8 +36432,8 @@
         }
       ],
       "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T20:05:21.389Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "first_seen_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -36816,7 +36681,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T11:08:42.736Z",
-      "last_changed_at": "2026-11-04T20:05:21.389Z",
+      "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
         {
@@ -37080,7 +36945,7 @@
       ],
       "sources": ["article:tag", "microformat:p-category", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-05T07:12:25.789Z",
+      "last_changed_at": "2026-11-03T16:34:11.848Z",
       "active": true,
       "related_discoveries": [
         {
@@ -37097,8 +36962,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-05T07:12:25.789Z"
+      ]
     },
     {
       "slug": "zanzibar",
