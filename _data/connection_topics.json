@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-05T18:05:54.479Z",
+  "generated_at": "2026-11-06T02:30:49.155Z",
   "overlap_count": 140,
   "pairs": [
     {
@@ -1528,20 +1528,12 @@
           "label": "image"
         },
         {
-          "slug": "right",
-          "label": "right"
-        },
-        {
           "slug": "room",
           "label": "room"
         },
         {
           "slug": "simple",
           "label": "simple"
-        },
-        {
-          "slug": "table",
-          "label": "tables"
         }
       ]
     },
@@ -1764,10 +1756,6 @@
           "label": "human"
         },
         {
-          "slug": "table",
-          "label": "tables"
-        },
-        {
           "slug": "video",
           "label": "video"
         },
@@ -1778,10 +1766,6 @@
         {
           "slug": "world",
           "label": "world"
-        },
-        {
-          "slug": "writing",
-          "label": "Writing"
         }
       ]
     },
@@ -2064,10 +2048,6 @@
         {
           "slug": "software",
           "label": "Software"
-        },
-        {
-          "slug": "writing",
-          "label": "Writing"
         }
       ]
     },
@@ -2300,16 +2280,8 @@
           "label": "Internet"
         },
         {
-          "slug": "keep",
-          "label": "keep"
-        },
-        {
           "slug": "live",
           "label": "live"
-        },
-        {
-          "slug": "right",
-          "label": "right"
         },
         {
           "slug": "rule",
@@ -2348,10 +2320,6 @@
         {
           "slug": "software",
           "label": "Software"
-        },
-        {
-          "slug": "writing",
-          "label": "Writing"
         }
       ]
     },
@@ -2404,10 +2372,6 @@
         {
           "slug": "rule",
           "label": "rules"
-        },
-        {
-          "slug": "table",
-          "label": "tables"
         }
       ]
     },
@@ -9023,17 +8987,6 @@
                   "title": "connect four sequencer"
                 }
               ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/22/what-i-learned-from-susanne-rockwell/",
-                  "title": "What I Learned From Susanne Rockwell"
-                }
-              ]
             }
           ]
         },
@@ -9243,17 +9196,6 @@
                 {
                   "url": "https://www.joshuabaker.com/work/not-optional/appendix/techcrunch-france-stock-options/",
                   "title": "France improves stock options policies · France changed its stock option rules, one of the reforms the campaign had called for. The open letter and pledge system my team built carried that case to policymakers. TechCrunch Read more"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
-                  "title": "Organic"
                 }
               ]
             }
@@ -10185,17 +10127,6 @@
                   "title": "France improves stock options policies · France changed its stock option rules, one of the reforms the campaign had called for. The open letter and pledge system my team built carried that case to policymakers. TechCrunch Read more"
                 }
               ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
-                  "title": "Organic"
-                }
-              ]
             }
           ]
         },
@@ -10591,17 +10522,6 @@
                 {
                   "url": "https://joshuadrake.org/projects/cessnaretrofit/",
                   "title": "Cessna HV Retrofit"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/22/what-i-learned-from-susanne-rockwell/",
-                  "title": "What I Learned From Susanne Rockwell"
                 }
               ]
             }
@@ -12476,17 +12396,6 @@
                   "title": "Learning a New Tech Stack with an LLM"
                 }
               ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/22/what-i-learned-from-susanne-rockwell/",
-                  "title": "What I Learned From Susanne Rockwell"
-                }
-              ]
             }
           ]
         }
@@ -13496,29 +13405,6 @@
           ]
         },
         {
-          "slug": "keep",
-          "label": "keep",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
-              "title": "Organic"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshurbandavis.com",
-              "domain": "joshurbandavis.com",
-              "title": "Josh Urban Davis",
-              "articles": [
-                {
-                  "url": "https://joshurbandavis.com/experiments/reversi-sequencer/index.html",
-                  "title": "reversi sequencer"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "live",
           "label": "live",
           "articles": [
@@ -13655,44 +13541,6 @@
                 {
                   "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
                   "title": "Healthy Weight Plan Builder"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "right",
-          "label": "right",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/22/what-i-learned-from-susanne-rockwell/",
-              "title": "What I Learned From Susanne Rockwell"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshozuna.com",
-              "domain": "joshozuna.com",
-              "title": "Josh Ozuna",
-              "articles": [
-                {
-                  "url": "https://joshozuna.com/photo/spotted-cattle-dog-puppy-resting-couch-35mm",
-                  "title": "Otis, the Puppy"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshurbandavis.com",
-              "domain": "joshurbandavis.com",
-              "title": "Josh Urban Davis",
-              "articles": [
-                {
-                  "url": "https://joshurbandavis.com/experiments/checker-sequencer/index.html",
-                  "title": "checker sequencer"
-                },
-                {
-                  "url": "https://joshurbandavis.com/experiments/connectfour-sequencer/index.html",
-                  "title": "connect four sequencer"
                 }
               ]
             }
@@ -13910,67 +13758,6 @@
           ]
         },
         {
-          "slug": "table",
-          "label": "tables",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
-              "title": "Organic"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshozuna.com",
-              "domain": "joshozuna.com",
-              "title": "Josh Ozuna",
-              "articles": [
-                {
-                  "url": "https://joshozuna.com/photo/outdoor-diner-seating-35mm",
-                  "title": "No Wait"
-                },
-                {
-                  "url": "https://joshozuna.com/photo/cafe-table-chairs-plant-shop-window-35mm",
-                  "title": "Sidewalk Charm"
-                },
-                {
-                  "url": "https://joshozuna.com/photo/charley-mobile-bath-35mm",
-                  "title": "Charley's Spa Day"
-                },
-                {
-                  "url": "https://joshozuna.com/photo/rainbow-light-chair-35mm",
-                  "title": "Table for None"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/games/know-the-table/",
-                  "title": "Know the Table"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshuabaker.com",
-              "domain": "www.joshuabaker.com",
-              "title": "Joshua Baker",
-              "articles": [
-                {
-                  "url": "https://www.joshuabaker.com/work/not-optional/appendix/sifted-europe-loosens-stock-options/",
-                  "title": "Europe loosens rules on stock options · Sifted covered the wave of European countries loosening their rules on stock options. The country ranking table my team built tracked each state’s progress. Sifted Read more"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/not-optional/appendix/techcrunch-france-stock-options/",
-                  "title": "France improves stock options policies · France changed its stock option rules, one of the reforms the campaign had called for. The open letter and pledge system my team built carried that case to policymakers. TechCrunch Read more"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "video",
           "label": "video",
           "articles": [
@@ -14173,51 +13960,6 @@
                 {
                   "url": "https://artlung.com/images/",
                   "title": "/images/ 📁"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "writing",
-          "label": "Writing",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/22/what-i-learned-from-susanne-rockwell/",
-              "title": "What I Learned From Susanne Rockwell"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
-              "articles": [
-                {
-                  "url": "https://www.chrisminnick.com/books/writing-computer-code/",
-                  "title": "Writing Computer Code"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuadrake.org",
-              "domain": "joshuadrake.org",
-              "title": "Joshua Drake",
-              "articles": [
-                {
-                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
-                  "title": "Cessna HV Retrofit"
                 }
               ]
             }
@@ -16495,29 +16237,6 @@
           ]
         },
         {
-          "slug": "keep",
-          "label": "keep",
-          "articles": [
-            {
-              "url": "https://joshurbandavis.com/experiments/reversi-sequencer/index.html",
-              "title": "reversi sequencer"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
-                  "title": "Organic"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "line",
           "label": "lines",
           "articles": [
@@ -16796,17 +16515,6 @@
                 {
                   "url": "https://joshozuna.com/photo/spotted-cattle-dog-puppy-resting-couch-35mm",
                   "title": "Otis, the Puppy"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/22/what-i-learned-from-susanne-rockwell/",
-                  "title": "What I Learned From Susanne Rockwell"
                 }
               ]
             }
@@ -18759,17 +18467,6 @@
                 {
                   "url": "https://joshuadrake.org/projects/cessnaretrofit/",
                   "title": "Cessna HV Retrofit"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/22/what-i-learned-from-susanne-rockwell/",
-                  "title": "What I Learned From Susanne Rockwell"
                 }
               ]
             }
@@ -21389,17 +21086,6 @@
                 {
                   "url": "https://joshtronic.com/games/know-the-table/",
                   "title": "Know the Table"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
-                  "title": "Organic"
                 }
               ]
             }
