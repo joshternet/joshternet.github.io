@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-06T02:30:49.155Z",
-  "document_count": 899,
+  "generated_at": "2026-11-06T18:26:36.815Z",
+  "document_count": 894,
   "documents": [
     {
       "type": "site",
@@ -249,7 +249,7 @@
     {
       "type": "topic",
       "title": "ai",
-      "summary": "7 participating sites",
+      "summary": "8 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/ai/",
@@ -330,7 +330,7 @@
     {
       "type": "topic",
       "title": "art",
-      "summary": "4 participating sites",
+      "summary": "3 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/art/",
@@ -560,6 +560,15 @@
       "origin": "",
       "url": "/topics/chatgpt/",
       "topics": ["chatgpt", "Chatgpt"]
+    },
+    {
+      "type": "topic",
+      "title": "check",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/check/",
+      "topics": ["check", "check"]
     },
     {
       "type": "topic",
@@ -833,15 +842,6 @@
     },
     {
       "type": "topic",
-      "title": "digital art",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/digital-art/",
-      "topics": ["digital-art", "digital art"]
-    },
-    {
-      "type": "topic",
       "title": "discovery",
       "summary": "2 participating sites",
       "domain": "",
@@ -933,7 +933,7 @@
     {
       "type": "topic",
       "title": "eleventy",
-      "summary": "2 participating sites",
+      "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/eleventy/",
@@ -965,15 +965,6 @@
       "origin": "",
       "url": "/topics/experimental/",
       "topics": ["experimental", "experimental"]
-    },
-    {
-      "type": "topic",
-      "title": "experimental games",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/experimental-game/",
-      "topics": ["experimental-game", "experimental games"]
     },
     {
       "type": "topic",
@@ -1067,6 +1058,15 @@
     },
     {
       "type": "topic",
+      "title": "found",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/found/",
+      "topics": ["found", "found"]
+    },
+    {
+      "type": "topic",
       "title": "free",
       "summary": "4 participating sites",
       "domain": "",
@@ -1103,15 +1103,6 @@
     },
     {
       "type": "topic",
-      "title": "game design",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/game-design/",
-      "topics": ["game-design", "game design"]
-    },
-    {
-      "type": "topic",
       "title": "general",
       "summary": "2 participating sites",
       "domain": "",
@@ -1122,7 +1113,7 @@
     {
       "type": "topic",
       "title": "generator",
-      "summary": "3 participating sites",
+      "summary": "2 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/generator/",
@@ -1193,15 +1184,6 @@
     },
     {
       "type": "topic",
-      "title": "hosting",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/hosting/",
-      "topics": ["hosting", "hosting"]
-    },
-    {
-      "type": "topic",
       "title": "Hugo",
       "summary": "1 participating sites",
       "domain": "",
@@ -1230,7 +1212,7 @@
     {
       "type": "topic",
       "title": "independent",
-      "summary": "2 participating sites",
+      "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/independent/",
@@ -1244,15 +1226,6 @@
       "origin": "",
       "url": "/topics/indie-hacking/",
       "topics": ["indie-hacking", "indie hacking"]
-    },
-    {
-      "type": "topic",
-      "title": "indienews",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/indienew/",
-      "topics": ["indienew", "indienews"]
     },
     {
       "type": "topic",
@@ -1320,7 +1293,7 @@
     {
       "type": "topic",
       "title": "job",
-      "summary": "2 participating sites",
+      "summary": "3 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/job/",
@@ -1553,15 +1526,6 @@
     },
     {
       "type": "topic",
-      "title": "message",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/message/",
-      "topics": ["message", "message"]
-    },
-    {
-      "type": "topic",
       "title": "micro saas",
       "summary": "1 participating sites",
       "domain": "",
@@ -1571,17 +1535,8 @@
     },
     {
       "type": "topic",
-      "title": "misc",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/misc/",
-      "topics": ["misc", "misc"]
-    },
-    {
-      "type": "topic",
       "title": "miscellaneous",
-      "summary": "2 participating sites",
+      "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/miscellaneous/",
@@ -1904,6 +1859,15 @@
     },
     {
       "type": "topic",
+      "title": "prompt",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/prompt/",
+      "topics": ["prompt", "prompt"]
+    },
+    {
+      "type": "topic",
       "title": "property",
       "summary": "1 participating sites",
       "domain": "",
@@ -2085,7 +2049,7 @@
     {
       "type": "topic",
       "title": "rules",
-      "summary": "5 participating sites",
+      "summary": "4 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/rule/",
@@ -2193,7 +2157,7 @@
     {
       "type": "topic",
       "title": "simple",
-      "summary": "3 participating sites",
+      "summary": "2 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/simple/",
@@ -2445,7 +2409,7 @@
     {
       "type": "topic",
       "title": "video",
-      "summary": "5 participating sites",
+      "summary": "4 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/video/",
@@ -2454,7 +2418,7 @@
     {
       "type": "topic",
       "title": "video games",
-      "summary": "2 participating sites",
+      "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/video-game/",
@@ -2535,7 +2499,7 @@
     {
       "type": "topic",
       "title": "worth",
-      "summary": "2 participating sites",
+      "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/worth/",
@@ -2795,21 +2759,6 @@
     },
     {
       "type": "content",
-      "title": "I got an email and text message nearly simultaneously today.",
-      "summary": "",
-      "domain": "artlung.com",
-      "origin": "https://artlung.com",
-      "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
-      "topics": ["misc", "miscellaneous"],
-      "site_title": "Joe Crawford",
-      "published_at": "2026-10-23T11:56:02.000Z",
-      "image": "",
-      "image_origin": "",
-      "language": "en-us",
-      "content_type": "article"
-    },
-    {
-      "type": "content",
       "title": "(not in that order)",
       "summary": "I took the trolley with Gwen (the Goblin) this morning.",
       "domain": "artlung.com",
@@ -2901,15 +2850,15 @@
     {
       "type": "content",
       "title": "other ways",
-      "summary": "I recently took over responsibility for blogofthe.day from James upon his spring cleaning . Over the weekend I had fun playing with the static site generator Eleventy and Netlify which I’m going to roughly describe as a “hosting service” though that doesn’t quite totally say it all.",
+      "summary": "The blog of the day is www.cboxes.icu - A photography blog.",
       "domain": "artlung.com",
       "origin": "https://artlung.com",
       "url": "https://artlung.com/blogofthe-day/",
       "topics": [],
       "site_title": "Joe Crawford",
       "published_at": "2024-05-20T08:38:48.000Z",
-      "image": "",
-      "image_origin": "",
+      "image": "https://artlung.com/%22https://artlung.com/blog",
+      "image_origin": "https://artlung.com",
       "language": "en",
       "content_type": "project"
     },
@@ -3126,7 +3075,7 @@
     {
       "type": "content",
       "title": "/images/ 📁",
-      "summary": "A picture is worth a thousand words",
+      "summary": "I have been putting images on my website for a long time. This page is a landing page for most of them. It's really not meant to be a page for you, the visitor, it's more for me, the site owner. See instead how they are used. Like on the headers page or on the splashes or toys pages.",
       "domain": "artlung.com",
       "origin": "https://artlung.com",
       "url": "https://artlung.com/images/",
@@ -3147,7 +3096,7 @@
       "url": "https://artlung.com/indienews/",
       "topics": [],
       "site_title": "Joe Crawford",
-      "published_at": "",
+      "published_at": "2026-10-31T14:28:27.000Z",
       "image": "https://cdn.artlung.com/indienews/og-indienews.jpg",
       "image_origin": "https://cdn.artlung.com",
       "language": "en",
@@ -4273,7 +4222,7 @@
       "topics": [],
       "site_title": "Joe Crawford",
       "published_at": "",
-      "image": "https://artlung.com/blog/wp-content/uploads/2026/11/IMG_6705-scaled.jpeg",
+      "image": "https://artlung.com/blog/wp-content/uploads/2026/11/FAE13433-F658-47F0-9A4E-993D16BFB7D6.jpg",
       "image_origin": "https://artlung.com",
       "language": "en",
       "content_type": "project"
@@ -5690,6 +5639,21 @@
     },
     {
       "type": "content",
+      "title": "An Open Letter to AI Barons",
+      "summary": "Congratulations! You did it! You raised the tide and now all boats are lifted. You made a cool. Good job!",
+      "domain": "joshgr.com",
+      "origin": "https://joshgr.com",
+      "url": "https://joshgr.com/writing/an-open-letter-to-ai-barons/",
+      "topics": [],
+      "site_title": "Joshua Grant",
+      "published_at": "2026-11-06T00:00:00.000Z",
+      "image": "",
+      "image_origin": "",
+      "language": "en",
+      "content_type": "article"
+    },
+    {
+      "type": "content",
       "title": "How Wizardly Words Invents Words",
       "summary": "I wanted to make a random word generator to help write stories and think new thoughts. After all, naming is hard . What’s a convincing name for a new city? Or a person? Or a food?",
       "domain": "joshgr.com",
@@ -6717,7 +6681,7 @@
       "url": "https://joshternet.org/governance/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-05T21:39:30.000Z",
+      "published_at": "2026-11-06T02:33:53.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6732,7 +6696,7 @@
       "url": "https://joshternet.org/implement/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-05T21:39:30.000Z",
+      "published_at": "2026-11-06T02:33:53.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6747,7 +6711,7 @@
       "url": "https://joshternet.org/implement/content/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-05T21:39:30.000Z",
+      "published_at": "2026-11-06T02:33:53.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6762,7 +6726,7 @@
       "url": "https://joshternet.org/implement/platforms/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-05T21:39:30.000Z",
+      "published_at": "2026-11-06T02:33:53.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6777,7 +6741,7 @@
       "url": "https://joshternet.org/join/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-05T21:39:30.000Z",
+      "published_at": "2026-11-06T02:33:53.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6792,7 +6756,7 @@
       "url": "https://joshternet.org/joshbot/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-05T21:39:30.000Z",
+      "published_at": "2026-11-06T02:33:53.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6822,7 +6786,7 @@
       "url": "https://joshternet.org/nominate/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-05T21:39:30.000Z",
+      "published_at": "2026-11-06T02:33:53.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6837,7 +6801,7 @@
       "url": "https://joshternet.org/security/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-05T21:39:30.000Z",
+      "published_at": "2026-11-06T02:33:53.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6867,7 +6831,7 @@
       "url": "https://joshternet.org/specs/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-05T21:39:30.000Z",
+      "published_at": "2026-11-06T02:33:53.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -7487,28 +7451,6 @@
       "image_origin": "https://joshuamorris.info",
       "language": "en",
       "content_type": "project"
-    },
-    {
-      "type": "content",
-      "title": "Worth Wandering: Pippin Barr",
-      "summary": "An independent game designer who has spent more than a decade making wonderfully strange experiments out of familiar video games, performance art, office work, Greek mythology, empty software projects and the simple question of what happens when you change the rules.",
-      "domain": "joshuamorris.info",
-      "origin": "https://joshuamorris.info",
-      "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-      "topics": [
-        "creative coding",
-        "digital art",
-        "experimental games",
-        "game design",
-        "interactive art",
-        "javascript"
-      ],
-      "site_title": "Joshua Morris",
-      "published_at": "2026-10-23T14:30:00.000Z",
-      "image": "https://joshuamorris.info/images/notes/2026-10-23/worth-wandering-pippin-barr/games-1200.png",
-      "image_origin": "https://joshuamorris.info",
-      "language": "en",
-      "content_type": "article"
     },
     {
       "type": "content",

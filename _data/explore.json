@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-06T02:30:49.155Z",
+  "generated_at": "2026-11-06T18:26:36.815Z",
   "participant_count": 25,
-  "community_count": 641,
-  "publication_count": 614,
+  "community_count": 643,
+  "publication_count": 613,
   "connection_count": 7,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
@@ -11,11 +11,30 @@
   },
   "fresh": [
     {
+      "url": "https://joshgr.com/writing/an-open-letter-to-ai-barons/",
+      "title": "An Open Letter to AI Barons",
+      "summary": "Congratulations! You did it! You raised the tide and now all boats are lifted. You made a cool. Good job!",
+      "published_at": "2026-11-06T00:00:00.000Z",
+      "observed_at": "2026-11-06T18:10:54.930Z",
+      "content_type": "article",
+      "language": "en",
+      "dir": "",
+      "site_origin": "https://joshgr.com",
+      "site_title": "Joshua Grant",
+      "domain": "joshgr.com",
+      "tags": [],
+      "neighborhoods": [],
+      "image": "/assets/activity/posters/d728ec0352633fdbd3f02f2d8ee48a2a8447598c6e878fa3ced20467253ef9d0.webp",
+      "image_origin": "",
+      "source_kind": "rss",
+      "page_role": "unknown"
+    },
+    {
       "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
       "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone",
       "summary": "I spent a week having Claude Code audit my fork of LightCraft, the AI-built Rust Lightroom clone: fuzzing, crash safety, a locked control port, faster frames, and 50,000 deleted lines.",
       "published_at": "2026-11-04T00:00:00.000Z",
-      "observed_at": "2026-11-06T02:13:06.283Z",
+      "observed_at": "2026-11-06T18:10:54.930Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -68,7 +87,7 @@
       "title": "I went relatively early this morning.",
       "summary": "",
       "published_at": "2026-11-03T16:15:36.000Z",
-      "observed_at": "2026-11-06T02:13:06.283Z",
+      "observed_at": "2026-11-06T18:10:54.930Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -105,7 +124,7 @@
       "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters.",
       "summary": "Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters.",
       "published_at": "2026-11-02T22:49:28.000Z",
-      "observed_at": "2026-11-06T02:13:06.283Z",
+      "observed_at": "2026-11-06T18:10:54.930Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -166,7 +185,7 @@
       "title": "The October Micro SaaS Challenge: A Retro",
       "summary": "Four micro SaaS products in four weeks, built with Claude Code: what shipped, which rules broke, what it cost, and what I'd change next time.",
       "published_at": "2026-11-02T00:00:00.000Z",
-      "observed_at": "2026-11-06T02:13:06.283Z",
+      "observed_at": "2026-11-06T18:10:54.930Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -219,7 +238,7 @@
       "title": "I'm Open to Work",
       "summary": "Mailshake has terminated my employment after 8+ years. In that time, I... Started as engineer #3 Moved into management thanks to an awesome CTO Ran a 10-person team across backend, frontend, QA, and support Scaled down to 2 engineers while maintaining productivity Reduced annual AWS spend by ~70% over 3 years Was always on-call and handled support escalations Ran technical due diligence on 4 acqui",
       "published_at": "2026-11-01T00:00:00.000Z",
-      "observed_at": "2026-11-06T02:13:06.283Z",
+      "observed_at": "2026-11-06T18:10:54.930Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -232,40 +251,11 @@
       "image_origin": "",
       "source_kind": "rss",
       "page_role": "unknown"
-    },
-    {
-      "url": "https://joshmuller.ca/recipes/desserts/gluten-free-chocolate-cake/",
-      "title": "Gluten-Free Chocolate Cake",
-      "summary": "A gluten-free chocolate cake made with black beans and cocoa, with estimated calories and macros.",
-      "published_at": "2026-10-31T19:55:58.000Z",
-      "observed_at": "2026-11-06T02:13:06.283Z",
-      "content_type": "article",
-      "language": "en",
-      "dir": "",
-      "site_origin": "https://joshmuller.ca",
-      "site_title": "Josh Müller",
-      "domain": "joshmuller.ca",
-      "tags": [
-        {
-          "slug": "recipe",
-          "label": "recipe"
-        }
-      ],
-      "neighborhoods": [
-        {
-          "slug": "recipe",
-          "label": "recipe"
-        }
-      ],
-      "image": "/assets/activity/posters/887a24a25612ce6458321dc4ea71d89a58cd6554873843e0f56af3e17bd944fa.webp",
-      "image_origin": "",
-      "source_kind": "rss",
-      "page_role": "article"
     }
   ],
   "neighborhood": {
-    "slug": "green",
-    "label": "green",
+    "slug": "engineering-leadership",
+    "label": "Engineering leadership",
     "member_count": 1
   },
   "connection": {

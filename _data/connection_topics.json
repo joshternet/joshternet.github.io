@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-06T02:30:49.155Z",
-  "overlap_count": 140,
+  "generated_at": "2026-11-06T18:26:36.815Z",
+  "overlap_count": 142,
   "pairs": [
     {
       "a": "https://artlung.com",
@@ -48,10 +48,6 @@
         {
           "slug": "general",
           "label": "general"
-        },
-        {
-          "slug": "generator",
-          "label": "generator"
         },
         {
           "slug": "music",
@@ -268,16 +264,8 @@
           "label": "Family"
         },
         {
-          "slug": "generator",
-          "label": "generator"
-        },
-        {
           "slug": "mean",
           "label": "means"
-        },
-        {
-          "slug": "miscellaneous",
-          "label": "miscellaneous"
         },
         {
           "slug": "programming",
@@ -308,10 +296,6 @@
       "b": "https://joshuamorris.info",
       "topics": [
         {
-          "slug": "art",
-          "label": "art"
-        },
-        {
           "slug": "browser",
           "label": "browsers"
         },
@@ -340,16 +324,8 @@
           "label": "live"
         },
         {
-          "slug": "video",
-          "label": "video"
-        },
-        {
           "slug": "world",
           "label": "world"
-        },
-        {
-          "slug": "worth",
-          "label": "worth"
         }
       ]
     },
@@ -452,6 +428,10 @@
         {
           "slug": "digital",
           "label": "digital"
+        },
+        {
+          "slug": "found",
+          "label": "found"
         },
         {
           "slug": "internet",
@@ -647,6 +627,10 @@
       "a": "https://forwardbias.dev",
       "b": "https://joshgr.com",
       "topics": [
+        {
+          "slug": "job",
+          "label": "job"
+        },
         {
           "slug": "music",
           "label": "music"
@@ -880,6 +864,10 @@
       "b": "https://joshgr.com",
       "topics": [
         {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
           "slug": "software",
           "label": "Software"
         }
@@ -1069,6 +1057,16 @@
     },
     {
       "a": "https://joshgr.com",
+      "b": "https://joshmuller.ca",
+      "topics": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        }
+      ]
+    },
+    {
+      "a": "https://joshgr.com",
       "b": "https://joshozuna.com",
       "topics": [
         {
@@ -1093,6 +1091,10 @@
       "a": "https://joshgr.com",
       "b": "https://joshtronic.com",
       "topics": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
         {
           "slug": "never",
           "label": "never"
@@ -1140,6 +1142,10 @@
       "b": "https://joshuamorris.info",
       "topics": [
         {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
           "slug": "software",
           "label": "Software"
         }
@@ -1182,6 +1188,10 @@
       "b": "https://www.chrisminnick.com",
       "topics": [
         {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
           "slug": "music",
           "label": "music"
         },
@@ -1197,8 +1207,30 @@
     },
     {
       "a": "https://joshgr.com",
+      "b": "https://www.joshfinnie.com",
+      "topics": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "check",
+          "label": "check"
+        },
+        {
+          "slug": "job",
+          "label": "job"
+        }
+      ]
+    },
+    {
+      "a": "https://joshgr.com",
       "b": "https://www.joshuabaker.com",
       "topics": [
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
         {
           "slug": "city",
           "label": "city"
@@ -1530,10 +1562,6 @@
         {
           "slug": "room",
           "label": "room"
-        },
-        {
-          "slug": "simple",
-          "label": "simple"
         }
       ]
     },
@@ -1754,14 +1782,6 @@
         {
           "slug": "human",
           "label": "human"
-        },
-        {
-          "slug": "video",
-          "label": "video"
-        },
-        {
-          "slug": "video-game",
-          "label": "video games"
         },
         {
           "slug": "world",
@@ -2236,14 +2256,6 @@
         {
           "slug": "javascript",
           "label": "javascript"
-        },
-        {
-          "slug": "simple",
-          "label": "simple"
-        },
-        {
-          "slug": "video",
-          "label": "video"
         }
       ]
     },
@@ -2251,10 +2263,6 @@
       "a": "https://joshuamorris.info",
       "b": "https://joshurbandavis.com",
       "topics": [
-        {
-          "slug": "art",
-          "label": "art"
-        },
         {
           "slug": "become",
           "label": "becomes"
@@ -2282,10 +2290,6 @@
         {
           "slug": "live",
           "label": "live"
-        },
-        {
-          "slug": "rule",
-          "label": "rules"
         },
         {
           "slug": "world",
@@ -2340,14 +2344,6 @@
           "label": "october"
         },
         {
-          "slug": "rule",
-          "label": "rules"
-        },
-        {
-          "slug": "video",
-          "label": "video"
-        },
-        {
           "slug": "world",
           "label": "world"
         }
@@ -2368,10 +2364,6 @@
         {
           "slug": "game",
           "label": "game"
-        },
-        {
-          "slug": "rule",
-          "label": "rules"
         }
       ]
     },
@@ -2768,17 +2760,6 @@
                 {
                   "url": "https://joshurbandavis.com/experiments/",
                   "title": "Experiments"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
                 }
               ]
             }
@@ -3467,10 +3448,6 @@
             {
               "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
               "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters."
-            },
-            {
-              "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
-              "title": "I got an email and text message nearly simultaneously today."
             }
           ],
           "sites": [
@@ -3533,6 +3510,45 @@
           ]
         },
         {
+          "slug": "found",
+          "label": "found",
+          "articles": [
+            {
+              "url": "https://artlung.com/flickr/",
+              "title": "/flickr/ 📁"
+            },
+            {
+              "url": "https://artlung.com/foursquare/",
+              "title": "/foursquare 📁"
+            },
+            {
+              "url": "https://artlung.com/likes/",
+              "title": "Like"
+            },
+            {
+              "url": "https://artlung.com/mixtapes/2026/",
+              "title": "2026 found faux fur tag"
+            },
+            {
+              "url": "https://artlung.com/videos/",
+              "title": "artlung.com/videos/"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshurbandavis.com",
+              "domain": "joshurbandavis.com",
+              "title": "Josh Urban Davis",
+              "articles": [
+                {
+                  "url": "https://joshurbandavis.com/experiments/in-other-words/index.html",
+                  "title": "in other words"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "general",
           "label": "general",
           "articles": [
@@ -3554,40 +3570,6 @@
                 {
                   "url": "https://joshgr.com/graphics/",
                   "title": "Graphics"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "generator",
-          "label": "generator",
-          "articles": [
-            {
-              "url": "https://artlung.com/blogofthe-day/",
-              "title": "other ways"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshuadrake.org",
-              "domain": "joshuadrake.org",
-              "title": "Joshua Drake",
-              "articles": [
-                {
-                  "url": "https://joshuadrake.org/projects/resloadbank/",
-                  "title": "Turbo Generator Load-Bank"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshgr.com",
-              "domain": "joshgr.com",
-              "title": "Joshua Grant",
-              "articles": [
-                {
-                  "url": "https://joshgr.com/writing/how-wizardly-words-invents-words/",
-                  "title": "How Wizardly Words Invents Words"
                 }
               ]
             }
@@ -3710,10 +3692,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/25/firefox-is-quietly-making-the-web-more-capable/",
                   "title": "Firefox Is Quietly Making the Web More Capable"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
                 }
               ]
             },
@@ -4149,29 +4127,6 @@
                 {
                   "url": "https://joshua.seigler.net/music/",
                   "title": "/music"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "miscellaneous",
-          "label": "miscellaneous",
-          "articles": [
-            {
-              "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
-              "title": "I got an email and text message nearly simultaneously today."
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshuadrake.org",
-              "domain": "joshuadrake.org",
-              "title": "Joshua Drake",
-              "articles": [
-                {
-                  "url": "https://joshuadrake.org/projects/resloadbank/",
-                  "title": "Turbo Generator Load-Bank"
                 }
               ]
             }
@@ -4972,17 +4927,6 @@
               ]
             },
             {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
-                }
-              ]
-            },
-            {
               "origin": "https://joshuastuebner.com",
               "domain": "joshuastuebner.com",
               "title": "Joshua Stübner",
@@ -5204,33 +5148,6 @@
           ]
         },
         {
-          "slug": "worth",
-          "label": "worth",
-          "articles": [
-            {
-              "url": "https://artlung.com/images/",
-              "title": "/images/ 📁"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
-                  "title": "Worth Wandering: Radio Aporee"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "youtube",
           "label": "Youtube",
           "articles": [
@@ -5364,6 +5281,17 @@
                 {
                   "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
                   "title": "Micro SaaS Week Four: SignedOnSite"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/writing/an-open-letter-to-ai-barons/",
+                  "title": "An Open Letter to AI Barons"
                 }
               ]
             }
@@ -5636,10 +5564,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
                 }
               ]
             },
@@ -6162,6 +6086,17 @@
               ]
             },
             {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/writing/an-open-letter-to-ai-barons/",
+                  "title": "An Open Letter to AI Barons"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
@@ -6519,10 +6454,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
                 }
               ]
             },
@@ -6666,6 +6597,174 @@
       "origin": "https://joshgr.com",
       "topics": [
         {
+          "slug": "ai",
+          "label": "ai",
+          "articles": [
+            {
+              "url": "https://joshgr.com/writing/an-open-letter-to-ai-barons/",
+              "title": "An Open Letter to AI Barons"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/",
+                  "title": "Books"
+                },
+                {
+                  "url": "https://www.chrisminnick.com/books/a-developers-guide-to-integrating-generative-ai-into-applications/",
+                  "title": "A Developer’s Guide to Integrating Generative AI into Applications"
+                },
+                {
+                  "url": "https://www.chrisminnick.com/books/coding-all-in-one-for-dummies/",
+                  "title": "Coding All-in-One For Dummies, 3rd Edition"
+                },
+                {
+                  "url": "https://www.chrisminnick.com/books/copilot-for-dummies/",
+                  "title": "Microsoft Copilot For Dummies"
+                },
+                {
+                  "url": "https://www.chrisminnick.com/books/artificial-intelligence-all-in-one-for-dummies/",
+                  "title": "Artificial Intelligence All-in-One For Dummies"
+                },
+                {
+                  "url": "https://www.chrisminnick.com/books/coding-with-ai-for-dummies/",
+                  "title": "Coding with AI For Dummies"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
+                  "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
+                  "title": "The October Micro SaaS Challenge: A Retro"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/php2shell-overreaction/",
+                  "title": "Last week was terrible. It didn't have to be"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                },
+                {
+                  "url": "https://joshmuller.ca/work/",
+                  "title": "Work Together"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
+                  "title": "Learning a New Tech Stack with an LLM"
+                },
+                {
+                  "url": "https://joshtronic.com/games/idol-idle/",
+                  "title": "Idol Idle"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=undisclosed-consumer-ai-platform-2025",
+                  "title": "Consumer AI Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/pure-sports-medicine/",
+                  "title": "Reception & Booking AI Agent"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/banked/",
+                  "title": "Comic Relief Donation Website"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/",
+                  "title": "Work — Joshua Baker"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/banked-pay-by-bank/",
+                  "title": "Pay by Bank I built payment components and merchant integration tools from one codebase for web, iOS, and Android. View case study"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/not-optional/appendix/rishi-sunak-elon-musk-ai-safety-summit/",
+                  "title": "on-stage discussion between UK Prime Minister Rishi Sunak and Elon Musk"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
+                  "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
+                  "title": "I Declared the Coding Interview Dead in 2021"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "check",
+          "label": "check",
+          "articles": [
+            {
+              "url": "https://joshgr.com/graphics/",
+              "title": "Graphics"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/projects/beerledge/",
+                  "title": "BeerLedge BeerLedge is a website that allows you to check in beers that you've drank in a post-privacy world."
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "city",
           "label": "city",
           "articles": [
@@ -6782,17 +6881,6 @@
           ],
           "sites": [
             {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/blogofthe-day/",
-                  "title": "other ways"
-                }
-              ]
-            },
-            {
               "origin": "https://joshuadrake.org",
               "domain": "joshuadrake.org",
               "title": "Joshua Drake",
@@ -6800,6 +6888,40 @@
                 {
                   "url": "https://joshuadrake.org/projects/resloadbank/",
                   "title": "Turbo Generator Load-Bank"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "job",
+          "label": "job",
+          "articles": [
+            {
+              "url": "https://joshgr.com/writing/an-open-letter-to-ai-barons/",
+              "title": "An Open Letter to AI Barons"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Josh Caldwell",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/disentangling-career-from-creativity/",
+                  "title": "Disentangling Career from Creativity"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
+                  "title": "Micro SaaS Week Four: SignedOnSite"
                 }
               ]
             }
@@ -7175,10 +7297,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
                 }
               ]
             },
@@ -7700,6 +7818,17 @@
                 {
                   "url": "https://www.joshuabaker.com/work/not-optional/appendix/rishi-sunak-elon-musk-ai-safety-summit/",
                   "title": "on-stage discussion between UK Prime Minister Rishi Sunak and Elon Musk"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/writing/an-open-letter-to-ai-barons/",
+                  "title": "An Open Letter to AI Barons"
                 }
               ]
             },
@@ -8640,10 +8769,6 @@
               "title": "Joshua Morris",
               "articles": [
                 {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
-                },
-                {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/fake/",
                   "title": "3 Fake"
                 },
@@ -9061,17 +9186,6 @@
             }
           ],
           "sites": [
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
-                }
-              ]
-            },
             {
               "origin": "https://joshuastuebner.com",
               "domain": "joshuastuebner.com",
@@ -9584,6 +9698,17 @@
               ]
             },
             {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/writing/an-open-letter-to-ai-barons/",
+                  "title": "An Open Letter to AI Barons"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
@@ -9664,10 +9789,6 @@
                 {
                   "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
                   "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters."
-                },
-                {
-                  "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
-                  "title": "I got an email and text message nearly simultaneously today."
                 }
               ]
             }
@@ -9741,10 +9862,6 @@
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
               "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
-                },
                 {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/fake/",
                   "title": "3 Fake"
@@ -10262,17 +10379,6 @@
               ]
             },
             {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
-                }
-              ]
-            },
-            {
               "origin": "https://joshuastuebner.com",
               "domain": "joshuastuebner.com",
               "title": "Joshua Stübner",
@@ -10280,29 +10386,6 @@
                 {
                   "url": "https://joshuastuebner.com/experiments/ex/24_big-number/",
                   "title": "24: Big Number"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "video-game",
-          "label": "video games",
-          "articles": [
-            {
-              "url": "https://joshtronic.com/games",
-              "title": "games"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
                 }
               ]
             }
@@ -11087,10 +11170,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
                 }
               ]
             }
@@ -11920,17 +11999,6 @@
           ],
           "sites": [
             {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/blogofthe-day/",
-                  "title": "other ways"
-                }
-              ]
-            },
-            {
               "origin": "https://joshgr.com",
               "domain": "joshgr.com",
               "title": "Joshua Grant",
@@ -11972,29 +12040,6 @@
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
                   "title": "Learning a New Tech Stack with an LLM"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "miscellaneous",
-          "label": "miscellaneous",
-          "articles": [
-            {
-              "url": "https://joshuadrake.org/projects/resloadbank/",
-              "title": "Turbo Generator Load-Bank"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
-                  "title": "I got an email and text message nearly simultaneously today."
                 }
               ]
             }
@@ -12284,10 +12329,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
                 }
               ]
             },
@@ -12651,6 +12692,17 @@
                   "title": "on-stage discussion between UK Prime Minister Rishi Sunak and Elon Musk"
                 }
               ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/writing/an-open-letter-to-ai-barons/",
+                  "title": "An Open Letter to AI Barons"
+                }
+              ]
             }
           ]
         },
@@ -12676,44 +12728,6 @@
                 {
                   "url": "https://joshbeard.com/photos/all/",
                   "title": "View All Photos"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "art",
-          "label": "art",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-              "title": "Worth Wandering: Pippin Barr"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/art/",
-                  "title": "/art/"
-                },
-                {
-                  "url": "https://artlung.com/words/",
-                  "title": "/words/ 📁"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshurbandavis.com",
-              "domain": "joshurbandavis.com",
-              "title": "Josh Urban Davis",
-              "articles": [
-                {
-                  "url": "https://joshurbandavis.com/experiments/",
-                  "title": "Experiments"
                 }
               ]
             }
@@ -13146,10 +13160,6 @@
           "label": "game",
           "articles": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-              "title": "Worth Wandering: Pippin Barr"
-            },
-            {
               "url": "https://joshuamorris.info/experiments/weird-web-october-2026/fake/",
               "title": "3 Fake"
             },
@@ -13338,10 +13348,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/10/25/firefox-is-quietly-making-the-web-more-capable/",
               "title": "Firefox Is Quietly Making the Web More Capable"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-              "title": "Worth Wandering: Pippin Barr"
             }
           ],
           "sites": [
@@ -13581,103 +13587,12 @@
           ]
         },
         {
-          "slug": "rule",
-          "label": "rules",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-              "title": "Worth Wandering: Pippin Barr"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.joshfinnie.com",
-              "domain": "www.joshfinnie.com",
-              "title": "Josh Finnie",
-              "articles": [
-                {
-                  "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
-                  "title": "The October Micro SaaS Challenge: A Retro"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshurbandavis.com",
-              "domain": "joshurbandavis.com",
-              "title": "Josh Urban Davis",
-              "articles": [
-                {
-                  "url": "https://joshurbandavis.com/experiments/chess-sequencer/index.html",
-                  "title": "chess sequencer"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshuabaker.com",
-              "domain": "www.joshuabaker.com",
-              "title": "Joshua Baker",
-              "articles": [
-                {
-                  "url": "https://www.joshuabaker.com/work/not-optional/appendix/sifted-europe-loosens-stock-options/",
-                  "title": "Europe loosens rules on stock options · Sifted covered the wave of European countries loosening their rules on stock options. The country ranking table my team built tracked each state’s progress. Sifted Read more"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/not-optional/appendix/tech-eu-5-billion-for-startup-employees/",
-                  "title": "€5 billion more into the hands of European startup employees · Tech.eu reported that the campaign had helped put over €5bn more into the hands of startup employees. I defined its digital strategy and led the team that built its platform. Tech.eu Read more"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/not-optional/appendix/techcrunch-france-stock-options/",
-                  "title": "France improves stock options policies · France changed its stock option rules, one of the reforms the campaign had called for. The open letter and pledge system my team built carried that case to policymakers. TechCrunch Read more"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "simple",
-          "label": "simple",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-              "title": "Worth Wandering: Pippin Barr"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshozuna.com",
-              "domain": "joshozuna.com",
-              "title": "Josh Ozuna",
-              "articles": [
-                {
-                  "url": "https://joshozuna.com/photo/josh-and-jackie-on-orange-bench-35mm",
-                  "title": "Simple Moments"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuastuebner.com",
-              "domain": "joshuastuebner.com",
-              "title": "Joshua Stübner",
-              "articles": [
-                {
-                  "url": "https://joshuastuebner.com/projects/details/testaccount-manager/",
-                  "title": "Testaccount manager"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "software",
           "label": "Software",
           "articles": [
             {
               "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
               "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-              "title": "Worth Wandering: Pippin Barr"
             }
           ],
           "sites": [
@@ -13752,85 +13667,6 @@
                 {
                   "url": "https://joshua.seigler.net/music/",
                   "title": "/music"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "video",
-          "label": "video",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-              "title": "Worth Wandering: Pippin Barr"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/cssbattles/",
-                  "title": "artlung.com/cssbattles/"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshfinnie.com",
-              "domain": "www.joshfinnie.com",
-              "title": "Josh Finnie",
-              "articles": [
-                {
-                  "url": "https://www.joshfinnie.com/projects/pbsorg/",
-                  "title": "PBS.org Landing page and video playback of PBS.org programs."
-                }
-              ]
-            },
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/games",
-                  "title": "games"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuastuebner.com",
-              "domain": "joshuastuebner.com",
-              "title": "Joshua Stübner",
-              "articles": [
-                {
-                  "url": "https://joshuastuebner.com/experiments/ex/24_big-number/",
-                  "title": "24: Big Number"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "video-game",
-          "label": "video games",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-              "title": "Worth Wandering: Pippin Barr"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/games",
-                  "title": "games"
                 }
               ]
             }
@@ -13933,33 +13769,6 @@
                 {
                   "url": "https://www.youtube.com/watch?v=_5PwQKW62to",
                   "title": "Untitled"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "worth",
-          "label": "worth",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
-              "title": "Worth Wandering: Radio Aporee"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-              "title": "Worth Wandering: Pippin Barr"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/images/",
-                  "title": "/images/ 📁"
                 }
               ]
             }
@@ -14877,10 +14686,6 @@
               "title": "Joshua Morris",
               "articles": [
                 {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
-                },
-                {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/fake/",
                   "title": "3 Fake"
                 },
@@ -14956,10 +14761,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/25/firefox-is-quietly-making-the-web-more-capable/",
                   "title": "Firefox Is Quietly Making the Web More Capable"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
                 }
               ]
             }
@@ -15389,17 +15190,6 @@
                   "title": "Simple Moments"
                 }
               ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
-                }
-              ]
             }
           ]
         },
@@ -15466,17 +15256,6 @@
                 {
                   "url": "https://joshtronic.com/games",
                   "title": "games"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
                 }
               ]
             }
@@ -15592,17 +15371,6 @@
                 {
                   "url": "https://artlung.com/words/",
                   "title": "/words/ 📁"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
                 }
               ]
             }
@@ -15982,6 +15750,45 @@
           ]
         },
         {
+          "slug": "found",
+          "label": "found",
+          "articles": [
+            {
+              "url": "https://joshurbandavis.com/experiments/in-other-words/index.html",
+              "title": "in other words"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/flickr/",
+                  "title": "/flickr/ 📁"
+                },
+                {
+                  "url": "https://artlung.com/foursquare/",
+                  "title": "/foursquare 📁"
+                },
+                {
+                  "url": "https://artlung.com/likes/",
+                  "title": "Like"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/2026/",
+                  "title": "2026 found faux fur tag"
+                },
+                {
+                  "url": "https://artlung.com/videos/",
+                  "title": "artlung.com/videos/"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "free",
           "label": "free",
           "articles": [
@@ -16171,10 +15978,6 @@
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
               "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
-                },
                 {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/fake/",
                   "title": "3 Fake"
@@ -16559,17 +16362,6 @@
                   "title": "France improves stock options policies · France changed its stock option rules, one of the reforms the campaign had called for. The open letter and pledge system my team built carried that case to policymakers. TechCrunch Read more"
                 }
               ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
-                }
-              ]
             }
           ]
         },
@@ -16837,6 +16629,17 @@
                 {
                   "url": "https://www.joshuabaker.com/work/not-optional/appendix/rishi-sunak-elon-musk-ai-safety-summit/",
                   "title": "on-stage discussion between UK Prime Minister Rishi Sunak and Elon Musk"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/writing/an-open-letter-to-ai-barons/",
+                  "title": "An Open Letter to AI Barons"
                 }
               ]
             },
@@ -17621,10 +17424,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/25/firefox-is-quietly-making-the-web-more-capable/",
                   "title": "Firefox Is Quietly Making the Web More Capable"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
                 }
               ]
             },
@@ -18315,10 +18114,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
                 }
               ]
             },
@@ -18595,6 +18390,17 @@
               ]
             },
             {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/writing/an-open-letter-to-ai-barons/",
+                  "title": "An Open Letter to AI Barons"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
@@ -18732,6 +18538,29 @@
                 {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/fake/",
                   "title": "3 Fake"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "check",
+          "label": "check",
+          "articles": [
+            {
+              "url": "https://www.joshfinnie.com/projects/beerledge/",
+              "title": "BeerLedge BeerLedge is a website that allows you to check in beers that you've drank in a post-privacy world."
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/graphics/",
+                  "title": "Graphics"
                 }
               ]
             }
@@ -18934,6 +18763,17 @@
                 {
                   "url": "https://forwardbias.dev/ideas/disentangling-career-from-creativity/",
                   "title": "Disentangling Career from Creativity"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/writing/an-open-letter-to-ai-barons/",
+                  "title": "An Open Letter to AI Barons"
                 }
               ]
             }
@@ -19200,17 +19040,6 @@
                   "title": "France improves stock options policies · France changed its stock option rules, one of the reforms the campaign had called for. The open letter and pledge system my team built carried that case to policymakers. TechCrunch Read more"
                 }
               ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
-                }
-              ]
             }
           ]
         },
@@ -19403,17 +19232,6 @@
                 {
                   "url": "https://joshtronic.com/games",
                   "title": "games"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
                 }
               ]
             },
@@ -19734,6 +19552,17 @@
                 {
                   "url": "https://joshtronic.com/games/idol-idle/",
                   "title": "Idol Idle"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/writing/an-open-letter-to-ai-barons/",
+                  "title": "An Open Letter to AI Barons"
                 }
               ]
             },
@@ -20389,10 +20218,6 @@
               "title": "Joshua Morris",
               "articles": [
                 {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
-                },
-                {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/fake/",
                   "title": "3 Fake"
                 },
@@ -20823,17 +20648,6 @@
                 {
                   "url": "https://joshurbandavis.com/experiments/chess-sequencer/index.html",
                   "title": "chess sequencer"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-                  "title": "Worth Wandering: Pippin Barr"
                 }
               ]
             }
