@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-07T11:08:52.194Z",
+  "generated_at": "2026-11-07T17:24:36.121Z",
   "overlap_count": 142,
   "pairs": [
     {
@@ -48,6 +48,10 @@
         {
           "slug": "general",
           "label": "general"
+        },
+        {
+          "slug": "generator",
+          "label": "generator"
         },
         {
           "slug": "music",
@@ -262,6 +266,10 @@
         {
           "slug": "family",
           "label": "Family"
+        },
+        {
+          "slug": "generator",
+          "label": "generator"
         },
         {
           "slug": "mean",
@@ -3707,6 +3715,40 @@
           ]
         },
         {
+          "slug": "generator",
+          "label": "generator",
+          "articles": [
+            {
+              "url": "https://artlung.com/blogofthe-day/",
+              "title": "other ways"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/resloadbank/",
+                  "title": "Turbo Generator Load-Bank"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/writing/how-wizardly-words-invents-words/",
+                  "title": "How Wizardly Words Invents Words"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "image",
           "label": "image",
           "articles": [
@@ -7062,6 +7104,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/blogofthe-day/",
+                  "title": "other ways"
+                }
+              ]
+            },
             {
               "origin": "https://joshuadrake.org",
               "domain": "joshuadrake.org",
@@ -12284,6 +12337,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/blogofthe-day/",
+                  "title": "other ways"
+                }
+              ]
+            },
             {
               "origin": "https://joshgr.com",
               "domain": "joshgr.com",

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-07T10:48:25.874Z",
+  "generated_at": "2026-11-07T17:06:59.285Z",
   "community_count": 644,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
@@ -432,7 +432,7 @@
     {
       "slug": "ai",
       "label": "ai",
-      "member_count": 12,
+      "member_count": 11,
       "sites": [
         {
           "origin": "https://forwardbias.dev",
@@ -503,19 +503,6 @@
               "url": "https://joshmuller.ca/writings/2024/translation-workflow/",
               "title": "",
               "source": "article:tag"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/",
-              "title": "",
-              "source": "microformat:p-category"
             }
           ]
         },
@@ -735,8 +722,9 @@
         "topic-hub:page"
       ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-11-06T18:10:54.930Z",
-      "active": true
+      "last_changed_at": "2026-11-07T17:06:59.285Z",
+      "active": true,
+      "stale_since": "2026-11-07T17:06:59.285Z"
     },
     {
       "slug": "ai-agent",
@@ -1684,13 +1672,6 @@
       "last_changed_at": "2026-11-03T16:34:11.848Z",
       "active": true,
       "related_discoveries": [
-        {
-          "origin": "https://joshozuna.com",
-          "domain": "joshozuna.com",
-          "title": "Josh Ozuna",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
         {
           "origin": "https://joshurbandavis.com",
           "domain": "joshurbandavis.com",
@@ -2851,16 +2832,6 @@
               "url": "https://joshozuna.com/photo/expansive-mountain-prairie-sky-35mm",
               "title": "",
               "source": "visible-text"
-            },
-            {
-              "url": "https://joshozuna.com/photo/magnolia-building-35mm",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshozuna.com/photo/yucca-white-sands-desert-plant-35mm",
-              "title": "",
-              "source": "visible-text"
             }
           ]
         }
@@ -3344,12 +3315,12 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://artlung.com/blog/2024/09/24/actually-everything-is-healthcare/",
+              "url": "https://artlung.com/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2026/09/27/1954-board-stoke/",
+              "url": "https://artlung.com/blog/2024/09/24/actually-everything-is-healthcare/",
               "title": "",
               "source": "visible-text"
             },
@@ -3611,6 +3582,16 @@
               "url": "https://joshozuna.com/photo/yucca-white-sands-desert-plant-35mm",
               "title": "",
               "source": "catalog-match"
+            },
+            {
+              "url": "https://joshozuna.com/photo/cattle-dog-puppy-sleeping-chair-sunlight-35mm",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshozuna.com/photo/magnolia-building-35mm",
+              "title": "",
+              "source": "visible-text"
             }
           ]
         }
@@ -9838,8 +9819,21 @@
     {
       "slug": "documentation",
       "label": "documentation",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
+        {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshternet.org/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        },
         {
           "origin": "https://www.joshfinnie.com",
           "domain": "www.joshfinnie.com",
@@ -9904,12 +9898,13 @@
       ],
       "sources": [
         "article:tag",
+        "microformat:p-category",
         "topic-hub:link",
         "topic-hub:page",
         "visible-text"
       ],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-05T17:49:46.856Z",
+      "last_changed_at": "2026-11-07T17:06:59.285Z",
       "active": true,
       "related_discoveries": [
         {
@@ -22346,21 +22341,6 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshozuna.com/photo/golden-hour-entryway-35mm",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshozuna.com/photo/mountain-landscape-through-doorway-35mm",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshozuna.com/photo/perot-museum-interior-view-35mm",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshozuna.com/photo/vinyl-record-shelf-collection-35mm",
               "title": "",
               "source": "visible-text"
@@ -23698,7 +23678,7 @@
     {
       "slug": "open-source",
       "label": "open source",
-      "member_count": 5,
+      "member_count": 4,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -23758,19 +23738,6 @@
               "url": "https://joshmuller.ca/tags/open-source/",
               "title": "",
               "source": "topic-hub:page"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/",
-              "title": "",
-              "source": "microformat:p-category"
             }
           ]
         },
@@ -23879,7 +23846,7 @@
         "visible-text"
       ],
       "first_seen_at": "2026-10-03T09:36:17.761Z",
-      "last_changed_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-07T17:06:59.285Z",
       "active": true,
       "related_discoveries": [
         {
@@ -23889,7 +23856,8 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ]
+      ],
+      "stale_since": "2026-11-07T17:06:59.285Z"
     },
     {
       "slug": "openapi",
@@ -23966,8 +23934,21 @@
     {
       "slug": "opinion",
       "label": "opinion",
-      "member_count": 3,
+      "member_count": 4,
       "sites": [
+        {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshternet.org/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        },
         {
           "origin": "https://joshuapsteele.com",
           "domain": "joshuapsteele.com",
@@ -24033,9 +24014,14 @@
           ]
         }
       ],
-      "sources": ["article:tag", "topic-hub:link", "topic-hub:page"],
+      "sources": [
+        "article:tag",
+        "microformat:p-category",
+        "topic-hub:link",
+        "topic-hub:page"
+      ],
       "first_seen_at": "2026-11-01T23:37:56.256Z",
-      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-07T17:06:59.285Z",
       "active": true
     },
     {
@@ -28454,21 +28440,8 @@
     {
       "slug": "refactor",
       "label": "refactor",
-      "member_count": 2,
+      "member_count": 1,
       "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/",
-              "title": "",
-              "source": "microformat:p-category"
-            }
-          ]
-        },
         {
           "origin": "https://www.joshfinnie.com",
           "domain": "www.joshfinnie.com",
@@ -28503,10 +28476,11 @@
           ]
         }
       ],
-      "sources": ["article:tag", "microformat:p-category", "topic-hub:link"],
+      "sources": ["article:tag", "topic-hub:link"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T18:19:19.608Z",
-      "active": true
+      "last_changed_at": "2026-11-07T17:06:59.285Z",
+      "active": true,
+      "stale_since": "2026-11-07T17:06:59.285Z"
     },
     {
       "slug": "refugee",
@@ -30013,22 +29987,7 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshozuna.com/photo/colorful-branches-brick-building-service-co-35mm",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshozuna.com/photo/urban-corner-store-sunset-35mm",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshozuna.com/photo/urban-robot-mural-building-art-35mm",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshozuna.com/photo/yellow-building-message-35mm",
               "title": "",
               "source": "visible-text"
             }
@@ -31922,22 +31881,7 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshozuna.com/photo/perot-museum-interior-view-35mm",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshozuna.com/photo/retro-roller-skate-disco-floor-35mm",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshozuna.com/photo/texas-rangers-stadium-night-game-35mm",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshozuna.com/photo/vinyl-record-shelf-collection-35mm",
+              "url": "https://joshozuna.com/photo/josh-and-jackie-on-orange-bench-35mm",
               "title": "",
               "source": "visible-text"
             }
@@ -34116,7 +34060,12 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshozuna.com/photo/mystery-lights-exhibit-seating-35mm",
+              "url": "https://joshozuna.com/photo/cafe-table-chairs-plant-shop-window-35mm",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshozuna.com/photo/charley-mobile-bath-35mm",
               "title": "",
               "source": "visible-text"
             },
@@ -34126,12 +34075,7 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshozuna.com/photo/rustic-chairs-corrugated-building-35mm",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshozuna.com/photo/snake-plant-against-white-wall-35mm",
+              "url": "https://joshozuna.com/photo/rainbow-light-chair-35mm",
               "title": "",
               "source": "visible-text"
             }
@@ -37756,17 +37700,12 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshozuna.com/photo/cattle-dog-puppy-sleeping-chair-sunlight-35mm",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshozuna.com/photo/digital-text-light-installation-gallery-35mm",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshozuna.com/photo/man-giving-dog-water-hand-35mm",
+              "url": "https://joshozuna.com/photo/welding-helmet-35mm",
               "title": "",
               "source": "visible-text"
             }
