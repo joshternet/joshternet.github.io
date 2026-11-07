@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-06T23:48:06.040Z",
+  "generated_at": "2026-11-07T03:28:49.388Z",
   "community_count": 644,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
@@ -4641,8 +4641,7 @@
       "sources": ["rss:category", "visible-text"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
       "last_changed_at": "2026-11-06T23:48:06.040Z",
-      "active": true,
-      "stale_since": "2026-11-06T23:48:06.040Z"
+      "active": true
     },
     {
       "slug": "california-ballot-2026",
@@ -11008,7 +11007,7 @@
     {
       "slug": "engineering-leadership",
       "label": "engineering leadership",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://joshghent.com",
@@ -11054,6 +11053,19 @@
           ]
         },
         {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshternet.org/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        },
+        {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
           "title": "Joshua Morris",
@@ -11069,7 +11081,7 @@
       ],
       "sources": ["json-ld:knowsAbout", "microformat:p-category"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-06T23:48:06.040Z",
+      "last_changed_at": "2026-11-07T03:28:49.388Z",
       "active": true
     },
     {
@@ -12450,42 +12462,9 @@
     },
     {
       "slug": "feel",
-      "label": "feel",
-      "member_count": 3,
+      "label": "feels",
+      "member_count": 2,
       "sites": [
-        {
-          "origin": "https://artlung.com",
-          "domain": "artlung.com",
-          "title": "Joe Crawford",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://artlung.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2025/02/18/experimenting-with-new-pages/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2026/01/25/pb-today/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2026/10/22/2027-web-platform-ranking/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2026/11/03/ibot-g3-2018/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
         {
           "origin": "https://joshmuller.ca",
           "domain": "joshmuller.ca",
@@ -12555,7 +12534,7 @@
       ],
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T07:49:40.771Z",
+      "last_changed_at": "2026-11-07T03:28:49.388Z",
       "active": true,
       "related_discoveries": [
         {
@@ -12607,7 +12586,8 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ]
+      ],
+      "stale_since": "2026-11-07T03:28:49.388Z"
     },
     {
       "slug": "ffmpeg",
@@ -13096,6 +13076,13 @@
       "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
         {
           "origin": "https://joshuastuebner.com",
           "domain": "joshuastuebner.com",
@@ -14102,7 +14089,7 @@
     {
       "slug": "general",
       "label": "general",
-      "member_count": 2,
+      "member_count": 1,
       "sites": [
         {
           "origin": "https://artlung.com",
@@ -14136,24 +14123,11 @@
               "source": "rss:category"
             }
           ]
-        },
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/",
-              "title": "",
-              "source": "microformat:p-category"
-            }
-          ]
         }
       ],
-      "sources": ["microformat:p-category", "rss:category"],
+      "sources": ["rss:category"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-06T23:48:06.040Z",
+      "last_changed_at": "2026-11-07T03:28:49.388Z",
       "active": true,
       "related_discoveries": [
         {
@@ -14178,7 +14152,7 @@
           "note": "Below the community quality threshold; not membership."
         }
       ],
-      "stale_since": "2026-11-06T23:48:06.040Z"
+      "stale_since": "2026-11-07T03:28:49.388Z"
     },
     {
       "slug": "generator",
@@ -15632,8 +15606,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-06T23:48:06.040Z"
+      ]
     },
     {
       "slug": "holy-week",
@@ -19401,8 +19374,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-06T23:48:06.040Z"
+      ]
     },
     {
       "slug": "lifestyle",
@@ -23155,8 +23127,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-06T23:48:06.040Z"
+      ]
     },
     {
       "slug": "nosql",
@@ -23194,12 +23165,12 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://artlung.com/",
+              "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
+              "url": "https://artlung.com/blog/2026/11/02/windy-and-fun/",
               "title": "",
               "source": "visible-text"
             },
@@ -24693,8 +24664,7 @@
       "sources": ["rss:category"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
       "last_changed_at": "2026-11-06T23:48:06.040Z",
-      "active": true,
-      "stale_since": "2026-11-06T23:48:06.040Z"
+      "active": true
     },
     {
       "slug": "person",
@@ -25812,8 +25782,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-06T23:48:06.040Z"
+      ]
     },
     {
       "slug": "posse",
@@ -33359,8 +33328,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-06T23:48:06.040Z"
+      ]
     },
     {
       "slug": "space",
@@ -34056,7 +34024,7 @@
     {
       "slug": "swim2026",
       "label": "swim2026",
-      "member_count": 2,
+      "member_count": 1,
       "sites": [
         {
           "origin": "https://artlung.com",
@@ -34090,25 +34058,13 @@
               "source": "rss:category"
             }
           ]
-        },
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/",
-              "title": "",
-              "source": "microformat:p-category"
-            }
-          ]
         }
       ],
-      "sources": ["microformat:p-category", "rss:category"],
+      "sources": ["rss:category"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-04T23:21:01.342Z",
-      "active": true
+      "last_changed_at": "2026-11-07T03:28:49.388Z",
+      "active": true,
+      "stale_since": "2026-11-07T03:28:49.388Z"
     },
     {
       "slug": "table",
