@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-06T18:26:36.815Z",
+  "generated_at": "2026-11-07T00:06:40.795Z",
   "overlap_count": 142,
   "pairs": [
     {
@@ -308,6 +308,10 @@
           "label": "digital"
         },
         {
+          "slug": "draft",
+          "label": "Drafts"
+        },
+        {
           "slug": "image",
           "label": "image"
         },
@@ -322,6 +326,10 @@
         {
           "slug": "live",
           "label": "live"
+        },
+        {
+          "slug": "mean",
+          "label": "means"
         },
         {
           "slug": "world",
@@ -952,6 +960,18 @@
           "label": "ai"
         },
         {
+          "slug": "claude",
+          "label": "claude"
+        },
+        {
+          "slug": "claude-code",
+          "label": "claude-code"
+        },
+        {
+          "slug": "code-review",
+          "label": "code review"
+        },
+        {
           "slug": "software",
           "label": "Software"
         }
@@ -1426,6 +1446,10 @@
           "label": "ai"
         },
         {
+          "slug": "claude",
+          "label": "claude"
+        },
+        {
           "slug": "october",
           "label": "october"
         }
@@ -1562,6 +1586,10 @@
         {
           "slug": "room",
           "label": "room"
+        },
+        {
+          "slug": "table",
+          "label": "tables"
         }
       ]
     },
@@ -1784,8 +1812,20 @@
           "label": "human"
         },
         {
+          "slug": "mean",
+          "label": "means"
+        },
+        {
+          "slug": "table",
+          "label": "tables"
+        },
+        {
           "slug": "world",
           "label": "world"
+        },
+        {
+          "slug": "writing",
+          "label": "Writing"
         }
       ]
     },
@@ -2066,8 +2106,16 @@
       "b": "https://joshuamorris.info",
       "topics": [
         {
+          "slug": "mean",
+          "label": "means"
+        },
+        {
           "slug": "software",
           "label": "Software"
+        },
+        {
+          "slug": "writing",
+          "label": "Writing"
         }
       ]
     },
@@ -2250,6 +2298,10 @@
           "label": "digital"
         },
         {
+          "slug": "extension",
+          "label": "extensions"
+        },
+        {
           "slug": "game",
           "label": "game"
         },
@@ -2288,6 +2340,10 @@
           "label": "Internet"
         },
         {
+          "slug": "keep",
+          "label": "keep"
+        },
+        {
           "slug": "live",
           "label": "live"
         },
@@ -2310,6 +2366,14 @@
           "label": "browsers"
         },
         {
+          "slug": "claude",
+          "label": "claude"
+        },
+        {
+          "slug": "claude-code",
+          "label": "claude-code"
+        },
+        {
           "slug": "coding",
           "label": "coding"
         },
@@ -2324,6 +2388,10 @@
         {
           "slug": "software",
           "label": "Software"
+        },
+        {
+          "slug": "writing",
+          "label": "Writing"
         }
       ]
     },
@@ -2338,6 +2406,18 @@
         {
           "slug": "challenge",
           "label": "challenges"
+        },
+        {
+          "slug": "claude",
+          "label": "claude"
+        },
+        {
+          "slug": "claude-code",
+          "label": "claude-code"
+        },
+        {
+          "slug": "code-review",
+          "label": "code review"
         },
         {
           "slug": "october",
@@ -2364,6 +2444,10 @@
         {
           "slug": "game",
           "label": "game"
+        },
+        {
+          "slug": "table",
+          "label": "tables"
         }
       ]
     },
@@ -2861,6 +2945,10 @@
                   "title": "Firefox Is Quietly Making the Web More Capable"
                 },
                 {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spicy/",
+                  "title": "Spicy"
+                },
+                {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
                   "title": "4 Plastic"
                 },
@@ -2879,10 +2967,6 @@
                 {
                   "url": "https://joshuamorris.info/experiments/corkboard/",
                   "title": "Corkboard A corkboard for notes, pins, and connecting threads in the browser—an open-web experiment for exploring ideas together and leaving a mark."
-                },
-                {
-                  "url": "https://joshuamorris.info/experiments/",
-                  "title": "Experiments"
                 }
               ]
             },
@@ -3436,6 +3520,29 @@
                 {
                   "url": "https://joshozuna.com/photo/charley-profile-closeup-35mm",
                   "title": "Charley, the Loyal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "draft",
+          "label": "Drafts",
+          "articles": [
+            {
+              "url": "https://artlung.com/mixtapes/2021-morning-draft/",
+              "title": "2021 Morning Draft"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
                 }
               ]
             }
@@ -4073,6 +4180,17 @@
                 {
                   "url": "https://joshuadrake.org/projects/JDMCMC",
                   "title": "Computer Vision"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
+                  "title": "Your Code Editor Is Now a Security Threat"
                 }
               ]
             }
@@ -4992,10 +5110,6 @@
                 {
                   "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
                   "title": "Micro SaaS Week Four: SignedOnSite"
-                },
-                {
-                  "url": "https://www.joshfinnie.com/blog/micro-saas-week-three-noshowfixer/",
-                  "title": "Micro SaaS Week Three: NoShowFixer"
                 }
               ]
             },
@@ -5487,10 +5601,6 @@
                   "title": "Micro SaaS Week Four: SignedOnSite"
                 },
                 {
-                  "url": "https://www.joshfinnie.com/blog/micro-saas-week-three-noshowfixer/",
-                  "title": "Micro SaaS Week Three: NoShowFixer"
-                },
-                {
                   "url": "https://www.joshfinnie.com/projects/",
                   "title": "Projects | Josh Finnie"
                 }
@@ -5561,6 +5671,10 @@
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
               "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
+                },
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
@@ -5777,6 +5891,10 @@
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
               "articles": [
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spicy/",
+                  "title": "Spicy"
+                },
                 {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
                   "title": "4 Plastic"
@@ -6102,6 +6220,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
                 },
@@ -6163,6 +6285,17 @@
                   "title": "Healthy Weight Plan Builder"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
+                  "title": "Your Code Editor Is Now a Security Threat"
+                }
+              ]
             }
           ]
         },
@@ -6205,6 +6338,17 @@
                   "title": "diffai A terminal diff viewer with inline commenting, built for reviewing code changes alongside Claude Code."
                 }
               ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
+                  "title": "Your Code Editor Is Now a Security Threat"
+                }
+              ]
             }
           ]
         },
@@ -6226,6 +6370,17 @@
                 {
                   "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
                   "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
                 }
               ]
             }
@@ -6452,6 +6607,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
                 }
@@ -6549,10 +6708,6 @@
                 {
                   "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
                   "title": "Micro SaaS Week Four: SignedOnSite"
-                },
-                {
-                  "url": "https://www.joshfinnie.com/blog/micro-saas-week-three-noshowfixer/",
-                  "title": "Micro SaaS Week Three: NoShowFixer"
                 }
               ]
             },
@@ -6729,6 +6884,10 @@
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
               "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
+                },
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
@@ -7295,6 +7454,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
                 }
@@ -7838,6 +8001,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
                 },
@@ -7920,6 +8087,17 @@
                 {
                   "url": "https://joshghent.com/skills",
                   "title": "Skills"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
+                  "title": "Your Code Editor Is Now a Security Threat"
                 }
               ]
             }
@@ -8170,6 +8348,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spicy/",
+                  "title": "Spicy"
+                },
+                {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
                   "title": "4 Plastic"
                 },
@@ -8405,10 +8587,6 @@
                 {
                   "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
                   "title": "Micro SaaS Week Four: SignedOnSite"
-                },
-                {
-                  "url": "https://www.joshfinnie.com/blog/micro-saas-week-three-noshowfixer/",
-                  "title": "Micro SaaS Week Three: NoShowFixer"
                 }
               ]
             },
@@ -9312,6 +9490,17 @@
                   "title": "France improves stock options policies · France changed its stock option rules, one of the reforms the campaign had called for. The open letter and pledge system my team built carried that case to policymakers. TechCrunch Read more"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
+                  "title": "7 Organic"
+                }
+              ]
             }
           ]
         },
@@ -9714,6 +9903,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
                 },
@@ -10049,6 +10242,17 @@
                   "title": "Computer Vision"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
+                  "title": "Your Code Editor Is Now a Security Threat"
+                }
+              ]
             }
           ]
         },
@@ -10244,6 +10448,17 @@
                   "title": "France improves stock options policies · France changed its stock option rules, one of the reforms the campaign had called for. The open letter and pledge system my team built carried that case to policymakers. TechCrunch Read more"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
+                  "title": "7 Organic"
+                }
+              ]
             }
           ]
         },
@@ -10432,10 +10647,6 @@
                 {
                   "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
                   "title": "Micro SaaS Week Four: SignedOnSite"
-                },
-                {
-                  "url": "https://www.joshfinnie.com/blog/micro-saas-week-three-noshowfixer/",
-                  "title": "Micro SaaS Week Three: NoShowFixer"
                 }
               ]
             },
@@ -10605,6 +10816,17 @@
                 {
                   "url": "https://joshuadrake.org/projects/cessnaretrofit/",
                   "title": "Cessna HV Retrofit"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
                 }
               ]
             }
@@ -11167,6 +11389,10 @@
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
               "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
+                },
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
@@ -12042,6 +12268,17 @@
                   "title": "Learning a New Tech Stack with an LLM"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
+                  "title": "Your Code Editor Is Now a Security Threat"
+                }
+              ]
             }
           ]
         },
@@ -12327,6 +12564,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
                 }
@@ -12435,6 +12676,17 @@
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
                   "title": "Learning a New Tech Stack with an LLM"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
                 }
               ]
             }
@@ -12565,6 +12817,10 @@
           "slug": "ai",
           "label": "ai",
           "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
+            },
             {
               "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
               "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
@@ -12788,6 +13044,10 @@
               "title": "Firefox Is Quietly Making the Web More Capable"
             },
             {
+              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spicy/",
+              "title": "Spicy"
+            },
+            {
               "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
               "title": "4 Plastic"
             },
@@ -12806,10 +13066,6 @@
             {
               "url": "https://joshuamorris.info/experiments/corkboard/",
               "title": "Corkboard A corkboard for notes, pins, and connecting threads in the browser—an open-web experiment for exploring ideas together and leaving a mark."
-            },
-            {
-              "url": "https://joshuamorris.info/experiments/",
-              "title": "Experiments"
             }
           ],
           "sites": [
@@ -12928,6 +13184,157 @@
                 {
                   "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
                   "title": "The October Micro SaaS Challenge: A Retro"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "claude",
+          "label": "claude",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
+              "title": "Your Code Editor Is Now a Security Threat"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/claude-code-for-dummies/",
+                  "title": "Claude Code For Dummies"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
+                  "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
+                  "title": "The October Micro SaaS Challenge: A Retro"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/projects/diffai/",
+                  "title": "diffai A terminal diff viewer with inline commenting, built for reviewing code changes alongside Claude Code."
+                }
+              ]
+            },
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/skills",
+                  "title": "Skills"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "claude-code",
+          "label": "claude-code",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
+              "title": "Your Code Editor Is Now a Security Threat"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/claude-code-for-dummies/",
+                  "title": "Claude Code For Dummies"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
+                  "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
+                  "title": "The October Micro SaaS Challenge: A Retro"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/projects/diffai/",
+                  "title": "diffai A terminal diff viewer with inline commenting, built for reviewing code changes alongside Claude Code."
+                }
+              ]
+            },
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/skills",
+                  "title": "Skills"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "code-review",
+          "label": "code review",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
+                  "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/skills",
+                  "title": "Skills"
                 }
               ]
             }
@@ -13133,6 +13540,29 @@
           ]
         },
         {
+          "slug": "draft",
+          "label": "Drafts",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/mixtapes/2021-morning-draft/",
+                  "title": "2021 Morning Draft"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "experimental",
           "label": "experimental",
           "articles": [
@@ -13150,6 +13580,29 @@
                 {
                   "url": "https://joshurbandavis.com/experiments/other-side/index.html",
                   "title": "the other side"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "extension",
+          "label": "extensions",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
+              "title": "Your Code Editor Is Now a Security Threat"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/testaccount-manager/",
+                  "title": "Testaccount manager"
                 }
               ]
             }
@@ -13411,6 +13864,29 @@
           ]
         },
         {
+          "slug": "keep",
+          "label": "keep",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
+              "title": "7 Organic"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshurbandavis.com",
+              "domain": "joshurbandavis.com",
+              "title": "Josh Urban Davis",
+              "articles": [
+                {
+                  "url": "https://joshurbandavis.com/experiments/reversi-sequencer/index.html",
+                  "title": "reversi sequencer"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "live",
           "label": "live",
           "articles": [
@@ -13449,6 +13925,51 @@
           ]
         },
         {
+          "slug": "mean",
+          "label": "means",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
+              "title": "Your Code Editor Is Now a Security Threat"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/archive/portfolio/1999/",
+                  "title": "HTML was so primitive in 1999 that I described this portfolio piece as “interactive.” All “interactive” means was that it had content that changed as items were selected. We take such things for granted now."
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
+                  "title": "Learning a New Tech Stack with an LLM"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/JDMCMC",
+                  "title": "Computer Vision"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "model",
           "label": "models",
           "articles": [
@@ -13479,6 +14000,10 @@
           "slug": "october",
           "label": "october",
           "articles": [
+            {
+              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spicy/",
+              "title": "Spicy"
+            },
             {
               "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
               "title": "4 Plastic"
@@ -13591,6 +14116,10 @@
           "label": "Software",
           "articles": [
             {
+              "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
+            },
+            {
               "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
               "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
             }
@@ -13667,6 +14196,67 @@
                 {
                   "url": "https://joshua.seigler.net/music/",
                   "title": "/music"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "table",
+          "label": "tables",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
+              "title": "7 Organic"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/photo/outdoor-diner-seating-35mm",
+                  "title": "No Wait"
+                },
+                {
+                  "url": "https://joshozuna.com/photo/cafe-table-chairs-plant-shop-window-35mm",
+                  "title": "Sidewalk Charm"
+                },
+                {
+                  "url": "https://joshozuna.com/photo/charley-mobile-bath-35mm",
+                  "title": "Charley's Spa Day"
+                },
+                {
+                  "url": "https://joshozuna.com/photo/rainbow-light-chair-35mm",
+                  "title": "Table for None"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/games/know-the-table/",
+                  "title": "Know the Table"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/not-optional/appendix/sifted-europe-loosens-stock-options/",
+                  "title": "Europe loosens rules on stock options · Sifted covered the wave of European countries loosening their rules on stock options. The country ranking table my team built tracked each state’s progress. Sifted Read more"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/not-optional/appendix/techcrunch-france-stock-options/",
+                  "title": "France improves stock options policies · France changed its stock option rules, one of the reforms the campaign had called for. The open letter and pledge system my team built carried that case to policymakers. TechCrunch Read more"
                 }
               ]
             }
@@ -13769,6 +14359,51 @@
                 {
                   "url": "https://www.youtube.com/watch?v=_5PwQKW62to",
                   "title": "Untitled"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "writing",
+          "label": "Writing",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/writing-computer-code/",
+                  "title": "Writing Computer Code"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
+                  "title": "Learning a New Tech Stack with an LLM"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+                  "title": "Cessna HV Retrofit"
                 }
               ]
             }
@@ -14218,6 +14853,10 @@
                   "title": "Firefox Is Quietly Making the Web More Capable"
                 },
                 {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spicy/",
+                  "title": "Spicy"
+                },
+                {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
                   "title": "4 Plastic"
                 },
@@ -14236,10 +14875,6 @@
                 {
                   "url": "https://joshuamorris.info/experiments/corkboard/",
                   "title": "Corkboard A corkboard for notes, pins, and connecting threads in the browser—an open-web experiment for exploring ideas together and leaving a mark."
-                },
-                {
-                  "url": "https://joshuamorris.info/experiments/",
-                  "title": "Experiments"
                 }
               ]
             }
@@ -14567,6 +15202,29 @@
                 {
                   "url": "https://joshuapsteele.com/resources/",
                   "title": "Resources"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "extension",
+          "label": "extensions",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/projects/details/testaccount-manager/",
+              "title": "Testaccount manager"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
+                  "title": "Your Code Editor Is Now a Security Threat"
                 }
               ]
             }
@@ -15548,6 +16206,10 @@
                   "title": "Firefox Is Quietly Making the Web More Capable"
                 },
                 {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spicy/",
+                  "title": "Spicy"
+                },
+                {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
                   "title": "4 Plastic"
                 },
@@ -15566,10 +16228,6 @@
                 {
                   "url": "https://joshuamorris.info/experiments/corkboard/",
                   "title": "Corkboard A corkboard for notes, pins, and connecting threads in the browser—an open-web experiment for exploring ideas together and leaving a mark."
-                },
-                {
-                  "url": "https://joshuamorris.info/experiments/",
-                  "title": "Experiments"
                 }
               ]
             },
@@ -16034,6 +16692,29 @@
                 {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
                   "title": "6 Analog"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "keep",
+          "label": "keep",
+          "articles": [
+            {
+              "url": "https://joshurbandavis.com/experiments/reversi-sequencer/index.html",
+              "title": "reversi sequencer"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
+                  "title": "7 Organic"
                 }
               ]
             }
@@ -16649,6 +17330,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
                 },
@@ -16813,6 +17498,10 @@
                   "title": "Firefox Is Quietly Making the Web More Capable"
                 },
                 {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spicy/",
+                  "title": "Spicy"
+                },
+                {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
                   "title": "4 Plastic"
                 },
@@ -16831,10 +17520,6 @@
                 {
                   "url": "https://joshuamorris.info/experiments/corkboard/",
                   "title": "Corkboard A corkboard for notes, pins, and connecting threads in the browser—an open-web experiment for exploring ideas together and leaving a mark."
-                },
-                {
-                  "url": "https://joshuamorris.info/experiments/",
-                  "title": "Experiments"
                 }
               ]
             },
@@ -16944,6 +17629,17 @@
                   "title": "Healthy Weight Plan Builder"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
+                  "title": "Your Code Editor Is Now a Security Threat"
+                }
+              ]
             }
           ]
         },
@@ -16984,6 +17680,17 @@
                 {
                   "url": "https://joshghent.com/skills",
                   "title": "Skills"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
+                  "title": "Your Code Editor Is Now a Security Threat"
                 }
               ]
             }
@@ -18112,6 +18819,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
+                },
+                {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
                 }
@@ -18264,6 +18975,17 @@
                   "title": "Cessna HV Retrofit"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
+                }
+              ]
             }
           ]
         }
@@ -18405,6 +19127,10 @@
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
               "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
+                },
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
@@ -18616,6 +19342,17 @@
                   "title": "Healthy Weight Plan Builder"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
+                  "title": "Your Code Editor Is Now a Security Threat"
+                }
+              ]
             }
           ]
         },
@@ -18658,6 +19395,17 @@
                   "title": "Skills"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
+                  "title": "Your Code Editor Is Now a Security Threat"
+                }
+              ]
             }
           ]
         },
@@ -18679,6 +19427,17 @@
                 {
                   "url": "https://joshghent.com/skills",
                   "title": "Skills"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
                 }
               ]
             }
@@ -18890,6 +19649,10 @@
               "title": "Joshua Morris",
               "articles": [
                 {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spicy/",
+                  "title": "Spicy"
+                },
+                {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
                   "title": "4 Plastic"
                 },
@@ -19079,10 +19842,6 @@
               "title": "Micro SaaS Week Four: SignedOnSite"
             },
             {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-week-three-noshowfixer/",
-              "title": "Micro SaaS Week Three: NoShowFixer"
-            },
-            {
               "url": "https://www.joshfinnie.com/projects/",
               "title": "Projects | Josh Finnie"
             }
@@ -19263,10 +20022,6 @@
             {
               "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
               "title": "Micro SaaS Week Four: SignedOnSite"
-            },
-            {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-week-three-noshowfixer/",
-              "title": "Micro SaaS Week Three: NoShowFixer"
             }
           ],
           "sites": [
@@ -19571,6 +20326,10 @@
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
               "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
+                },
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
@@ -20902,6 +21661,17 @@
                   "title": "Know the Table"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/organic/",
+                  "title": "7 Organic"
+                }
+              ]
             }
           ]
         },
@@ -21045,10 +21815,6 @@
                 {
                   "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
                   "title": "Micro SaaS Week Four: SignedOnSite"
-                },
-                {
-                  "url": "https://www.joshfinnie.com/blog/micro-saas-week-three-noshowfixer/",
-                  "title": "Micro SaaS Week Three: NoShowFixer"
                 }
               ]
             },

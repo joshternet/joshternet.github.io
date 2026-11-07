@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-06T18:26:36.815Z",
+  "generated_at": "2026-11-07T00:06:40.795Z",
   "participant_count": 25,
-  "community_count": 643,
-  "publication_count": 613,
+  "community_count": 644,
+  "publication_count": 616,
   "connection_count": 7,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
@@ -15,7 +15,7 @@
       "title": "An Open Letter to AI Barons",
       "summary": "Congratulations! You did it! You raised the tide and now all boats are lifted. You made a cool. Good job!",
       "published_at": "2026-11-06T00:00:00.000Z",
-      "observed_at": "2026-11-06T18:10:54.930Z",
+      "observed_at": "2026-11-06T23:48:06.040Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -30,11 +30,48 @@
       "page_role": "unknown"
     },
     {
+      "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+      "title": "AI Is Writing More Code. Who Is Reviewing All of It?",
+      "summary": "Agents draft more pull requests than ever. The harder question is whether teams can still understand and validate the software.",
+      "published_at": "2026-11-05T14:00:00.000Z",
+      "observed_at": "2026-11-06T23:48:06.040Z",
+      "content_type": "article",
+      "language": "en",
+      "dir": "",
+      "site_origin": "https://joshuamorris.info",
+      "site_title": "Joshua Morris",
+      "domain": "joshuamorris.info",
+      "tags": [
+        {
+          "slug": "code-review",
+          "label": "code review"
+        },
+        {
+          "slug": "engineering-leadership",
+          "label": "engineering leadership"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "code-review",
+          "label": "code review"
+        },
+        {
+          "slug": "engineering-leadership",
+          "label": "engineering leadership"
+        }
+      ],
+      "image": "/assets/activity/posters/401e7a430132c99b7ad10dc246f634337a426dd46553b4220c0c325ba6560739.webp",
+      "image_origin": "",
+      "source_kind": "atom",
+      "page_role": "article"
+    },
+    {
       "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
       "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone",
       "summary": "I spent a week having Claude Code audit my fork of LightCraft, the AI-built Rust Lightroom clone: fuzzing, crash safety, a locked control port, faster frames, and 50,000 deleted lines.",
       "published_at": "2026-11-04T00:00:00.000Z",
-      "observed_at": "2026-11-06T18:10:54.930Z",
+      "observed_at": "2026-11-06T23:48:06.040Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -83,11 +120,40 @@
       "page_role": "article"
     },
     {
+      "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
+      "title": "Your Code Editor Is Now a Security Threat",
+      "summary": "Attackers put malicious Claude Code extensions in Cursor's marketplace for about 11 hours. What that means for developer-tool trust.",
+      "published_at": "2026-11-03T22:00:00.000Z",
+      "observed_at": "2026-11-06T23:48:06.040Z",
+      "content_type": "article",
+      "language": "en",
+      "dir": "",
+      "site_origin": "https://joshuamorris.info",
+      "site_title": "Joshua Morris",
+      "domain": "joshuamorris.info",
+      "tags": [
+        {
+          "slug": "supply-chain",
+          "label": "supply chain"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "supply-chain",
+          "label": "supply chain"
+        }
+      ],
+      "image": "/assets/activity/posters/53bd94f5ba2fa60b9f7769e367ed54031da54f0614d219fb9d34bfb3d947d4d3.webp",
+      "image_origin": "",
+      "source_kind": "atom",
+      "page_role": "article"
+    },
+    {
       "url": "https://artlung.com/blog/2026/11/03/and-shredding/",
       "title": "I went relatively early this morning.",
       "summary": "",
       "published_at": "2026-11-03T16:15:36.000Z",
-      "observed_at": "2026-11-06T18:10:54.930Z",
+      "observed_at": "2026-11-06T23:48:06.040Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -124,7 +190,7 @@
       "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters.",
       "summary": "Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters.",
       "published_at": "2026-11-02T22:49:28.000Z",
-      "observed_at": "2026-11-06T18:10:54.930Z",
+      "observed_at": "2026-11-06T23:48:06.040Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -179,83 +245,11 @@
       "image_origin": "",
       "source_kind": "h-entry",
       "page_role": "article"
-    },
-    {
-      "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
-      "title": "The October Micro SaaS Challenge: A Retro",
-      "summary": "Four micro SaaS products in four weeks, built with Claude Code: what shipped, which rules broke, what it cost, and what I'd change next time.",
-      "published_at": "2026-11-02T00:00:00.000Z",
-      "observed_at": "2026-11-06T18:10:54.930Z",
-      "content_type": "article",
-      "language": "en-us",
-      "dir": "",
-      "site_origin": "https://www.joshfinnie.com",
-      "site_title": "Josh Finnie",
-      "domain": "www.joshfinnie.com",
-      "tags": [
-        {
-          "slug": "ai",
-          "label": "ai"
-        },
-        {
-          "slug": "indie-hacking",
-          "label": "indie hacking"
-        },
-        {
-          "slug": "micro-saas",
-          "label": "micro saas"
-        },
-        {
-          "slug": "side-project",
-          "label": "side projects"
-        }
-      ],
-      "neighborhoods": [
-        {
-          "slug": "ai",
-          "label": "ai"
-        },
-        {
-          "slug": "indie-hacking",
-          "label": "indie hacking"
-        },
-        {
-          "slug": "micro-saas",
-          "label": "micro saas"
-        },
-        {
-          "slug": "side-project",
-          "label": "side projects"
-        }
-      ],
-      "image": "/assets/activity/posters/8a633f9b8ae56b99128666c07592aa3e9ff0a41874f6ff1e726b4be760efe047.webp",
-      "image_origin": "",
-      "source_kind": "rss",
-      "page_role": "article"
-    },
-    {
-      "url": "https://joshtronic.com/2026/11/01/open-to-work/",
-      "title": "I'm Open to Work",
-      "summary": "Mailshake has terminated my employment after 8+ years. In that time, I... Started as engineer #3 Moved into management thanks to an awesome CTO Ran a 10-person team across backend, frontend, QA, and support Scaled down to 2 engineers while maintaining productivity Reduced annual AWS spend by ~70% over 3 years Was always on-call and handled support escalations Ran technical due diligence on 4 acqui",
-      "published_at": "2026-11-01T00:00:00.000Z",
-      "observed_at": "2026-11-06T18:10:54.930Z",
-      "content_type": "article",
-      "language": "en",
-      "dir": "",
-      "site_origin": "https://joshtronic.com",
-      "site_title": "Josh Sherman",
-      "domain": "joshtronic.com",
-      "tags": [],
-      "neighborhoods": [],
-      "image": "/assets/activity/posters/e73ddad03df7aca2470a41e28b4c38c825da43d5657e33f7ab4636f668fedcc6.webp",
-      "image_origin": "",
-      "source_kind": "rss",
-      "page_role": "unknown"
     }
   ],
   "neighborhood": {
-    "slug": "engineering-leadership",
-    "label": "Engineering leadership",
+    "slug": "digital-wellbeing",
+    "label": "digital wellbeing",
     "member_count": 1
   },
   "connection": {
