@@ -6,7 +6,7 @@
 
 - Package: [ajv](https://ajv.js.org/) (`ajv@8`)
 - License: [MIT](https://github.com/ajv-validator/ajv/blob/master/LICENSE)
-- Use: validates generated `_data/*.json` against `schemas/*.schema.json` in `npm run nlp:validate` (CI only; not shipped to site visitors)
+- Use: validates decoded crawl datasets against `scripts/nlp/crawl-shape.mjs` in `npm run nlp:validate` (CI only; not shipped to site visitors)
 
 ### Ajv Formats
 
@@ -93,7 +93,7 @@ Joshternet Network cards show brand marks only to identify profile links that pa
 - **LINE** (`line`): trademark of LINE brand owners. [guidelines](https://line.me/en/logo). Source: [https://line.me/en/logo](https://line.me/en/logo). Brand mark used only to identify a participant-published profile link.
 - **Kakao** (`kakao`): trademark of Kakao brand owners. Source: [https://www.kakaocorp.com/kakao/introduce/ci](https://www.kakaocorp.com/kakao/introduce/ci). Brand mark used only to identify a participant-published profile link.
 - **Naver** (`naver`): trademark of Naver brand owners. [guidelines](https://developers.naver.com/docs/login/bi/bi.md). Source: [https://developers.naver.com/docs/login/bi/bi.md](https://developers.naver.com/docs/login/bi/bi.md). Brand mark used only to identify a participant-published profile link.
-- **pixiv** (`pixiv`): trademark of pixiv brand owners. [guidelines](https://policies.pixiv.net/en.html#brand). Source: [https://policies.pixiv.net/en.html#brand](https://policies.pixiv.net/en.html#brand). Brand mark used only to identify a participant-published profile link.
+- **pixiv** (`pixiv`): trademark of pixiv brand owners. [guidelines](https://policies.pixiv.net/en.k2z#brand). Source: [https://policies.pixiv.net/en.k2z#brand](https://policies.pixiv.net/en.k2z#brand). Brand mark used only to identify a participant-published profile link.
 - **VK** (`vk`): trademark of VK brand owners. [guidelines](https://vk.com/brand). Source: [https://vk.com/brand](https://vk.com/brand). Brand mark used only to identify a participant-published profile link.
 - **Odnoklassniki** (`odnoklassniki`): trademark of Odnoklassniki brand owners. Source: [https://insideok.ru/brandbook](https://insideok.ru/brandbook). Brand mark used only to identify a participant-published profile link.
 - **Mastodon** (`mastodon`): trademark of Mastodon brand owners. [guidelines](https://joinmastodon.org/branding). Source: [https://github.com/mastodon/mastodon/blob/7ccf7a73f1c47a8c03712c39f7c591e837cf6d08/app/javascript/images/logo-symbol-icon.svg](https://github.com/mastodon/mastodon/blob/7ccf7a73f1c47a8c03712c39f7c591e837cf6d08/app/javascript/images/logo-symbol-icon.svg). Brand mark used only to identify a participant-published profile link.

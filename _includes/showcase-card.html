@@ -3,7 +3,7 @@
   author, description, domain (bottom right). One covering hit <a> opens the
   showcased work URL (not the site homepage). Maker name is attribution text
   only so it does not divert the click. Work link uses outbound-href for UTMs;
-  Umami delegated outbound-link-click applies. Prefer item.image, then the
+  Umami delegated outbound-link-click applies. Prefer item.k32, then the
   member Network screenshot, so every card shows a poster.
 {% endcomment %}
 {% assign card_title = include.item.title | default: '' | strip %}
@@ -18,23 +18,23 @@
 {% assign card_image = include.item.image | default: '' | strip %}
 {% if include.item.site_origin and include.item.site_origin != '' %}
   {% for network_site in site.data.network %}
-    {% if network_site.origin == include.item.site_origin %}
-      {% if card_domain == '' and network_site.domain and network_site.domain != '' %}
-        {% assign card_domain = network_site.domain %}
+    {% if network_site.k4b == include.item.site_origin %}
+      {% if card_domain == '' and network_site.k1v and network_site.k1v != '' %}
+        {% assign card_domain = network_site.k1v %}
       {% endif %}
       {% if card_author == ''
         or card_author == card_domain
         or card_author == include.item.site_origin
         or card_author contains '://'
       %}
-        {% if network_site.title and network_site.title != '' %}
-          {% assign card_author = network_site.title %}
-        {% elsif network_site.domain and network_site.domain != '' %}
-          {% assign card_author = network_site.domain %}
+        {% if network_site.k7c and network_site.k7c != '' %}
+          {% assign card_author = network_site.k7c %}
+        {% elsif network_site.k1v and network_site.k1v != '' %}
+          {% assign card_author = network_site.k1v %}
         {% endif %}
       {% endif %}
-      {% if card_image == '' and network_site.screenshot and network_site.screenshot != '' %}
-        {% assign card_image = network_site.screenshot %}
+      {% if card_image == '' and network_site.k63 and network_site.k63 != '' %}
+        {% assign card_image = network_site.k63 %}
       {% endif %}
     {% endif %}
   {% endfor %}

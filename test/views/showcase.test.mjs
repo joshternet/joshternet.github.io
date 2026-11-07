@@ -11,6 +11,7 @@ import {
   buildEventIcs,
   buildHappeningItems,
   buildMadeItems,
+  buildPastEventItems,
   buildShowcaseHomeItems,
   buildShowcaseItems,
   HOME_SHOWCASE_LIMIT,
@@ -1046,6 +1047,8 @@ test("buildViewDocuments includes showcase, happening and search content_type", 
   assert.equal(views.showcase.kind_labels.photography, "Photography");
   assert.equal(typeof views.happening.schema_version, "number");
   assert.equal(views.happening.item_count, 0);
+  assert.equal(views.past_events.item_count, 0);
+  assert.equal(views.past_events.group_by_year, false);
 
   const multi = buildViewDocuments({
     network: [
@@ -3826,6 +3829,29 @@ test("channelItemsFromNetwork attaches published_at from publish map", () => {
     channelItemsFromNetwork(
       [
         {
+          origin: "https://joshua.example",
+          title: "Joshua",
+          elsewhere: [
+            null,
+            { network: "youtube", url: "" },
+            { network: "mastodon", url: "https://joshua.example/@me" },
+            { url: "https://www.youtube.com/@missing" },
+            { network: "youtube", url: "http://[" },
+            {
+              network: "youtube",
+              url: "https://www.youtube.com/watch?v=abc",
+            },
+          ],
+        },
+      ],
+      "2026-11-01T00:00:00.000Z",
+    ).length,
+    0,
+  );
+  assert.equal(
+    channelItemsFromNetwork(
+      [
+        {
           origin: "https://a.example",
           elsewhere: [
             { network: "youtube", url: "https://www.youtube.com/@asite" },
@@ -3836,6 +3862,91 @@ test("channelItemsFromNetwork attaches published_at from publish map", () => {
       /** @type {unknown} */ (["not-a-map"]),
     )[0].published_at,
     undefined,
+  );
+});
+
+test("buildMadeItems stops once the limit is filled", () => {
+  const made = buildMadeItems(
+    [
+      {
+        content_type: "project",
+        url: "https://joshua.example/art/one",
+        site_origin: "https://joshua.example",
+        title: "One painting",
+        summary: "A small painting.",
+        image: "https://joshua.example/one.jpg",
+        published_at: "2026-10-01T00:00:00.000Z",
+      },
+      {
+        content_type: "project",
+        url: "https://joshua.example/photos/two",
+        site_origin: "https://joshua.example",
+        title: "Two photos",
+        summary: "A small piece.",
+        image: "https://joshua.example/two.jpg",
+        published_at: "2026-10-02T00:00:00.000Z",
+      },
+    ],
+    1,
+    new Date("2026-11-05T18:00:00.000Z"),
+  );
+  assert.equal(made.length, 1);
+  const sameStart = "2026-12-02T15:00:00.000Z";
+  const now = new Date("2026-11-05T18:00:00.000Z");
+  const untitled = {
+    content_type: "event",
+    title: "No url",
+    start: sameStart,
+    attribution_role: "hosted",
+  };
+  const titled = {
+    content_type: "event",
+    url: "https://joshua.example/events/b",
+    title: "With url",
+    start: sameStart,
+    attribution_role: "hosted",
+  };
+  const pastNow = new Date("2026-12-03T18:00:00.000Z");
+  assert.equal(buildPastEventItems([untitled, titled], pastNow).length, 2);
+  assert.equal(buildPastEventItems([titled, untitled], pastNow).length, 2);
+  assert.match(
+    buildEventIcs(
+      [
+        {
+          content_type: "event",
+          url: "https://joshua.example/events/blank",
+          title: "Blank day",
+          start_precision: "date",
+          attribution_role: "hosted",
+        },
+        {
+          content_type: "event",
+          url: "https://joshua.example/events/day",
+          title: "Day",
+          start: "2026-12-01",
+          start_precision: "date",
+          attribution_role: "hosted",
+        },
+      ],
+      { now },
+    ),
+    /DTSTART;VALUE=DATE:20261201/,
+  );
+  assert.equal(
+    buildHappeningItems(
+      [
+        {
+          content_type: "event",
+          url: "https://joshua.example/events/soon",
+          title: "Soon",
+          start: "soon",
+          start_precision: "date",
+          attribution_role: "hosted",
+        },
+      ],
+      new Date("2026-11-05T18:00:00.000Z"),
+    ).length,
+    0,
   );
 });
 

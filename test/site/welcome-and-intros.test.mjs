@@ -8,6 +8,8 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
+import { CRAWL_KEYS } from "../../scripts/nlp/site-record.mjs";
+
 const root = fileURLToPath(new URL("../../", import.meta.url));
 
 /**
@@ -62,10 +64,10 @@ test("connections bootstrap carries build-time recently_joined for arrival chrom
   const script = await read("assets/js/connections.js");
   const css = await read("assets/css/main.css");
 
-  assert.match(home, /first_participated_at/);
+  assert.match(home, new RegExp(CRAWL_KEYS.first_participated_at));
   assert.match(home, /recently_joined/);
   assert.match(home, /recently_joined_cutoff_s/);
-  assert.match(page, /first_participated_at/);
+  assert.match(page, new RegExp(CRAWL_KEYS.first_participated_at));
   assert.match(page, /recently_joined/);
   assert.match(page, /recently_joined_cutoff_s/);
   assert.match(script, /recently_joined/);

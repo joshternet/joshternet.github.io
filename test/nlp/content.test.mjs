@@ -932,6 +932,79 @@ test("mergeContentItems: results are sorted by url then title", () => {
 
 // ─── joinContentWithPageSignals ───────────────────────────────────────────────
 
+test("joinContentWithPageSignals: listing extracts keep their own role and topics", () => {
+  const joined = joinContentWithPageSignals(
+    [
+      {
+        identity: "presentation:https://a.example:linter",
+        url: "https://a.example/speaking/",
+        content_type: "presentation",
+        page_role: "presentation",
+        language: null,
+        title: "How to Learn to Love the Linter",
+        summary: "Boston Code Camp 40",
+        declared_topics: [
+          {
+            slug: "static-analysis",
+            label: "static analysis",
+            source: "item:declared",
+            community_eligible: true,
+          },
+        ],
+        source: {
+          kind: "speaking-archive",
+          page: "https://a.example/speaking/",
+        },
+      },
+      {
+        url: "https://a.example/speaking/",
+        content_type: "event",
+        title: "Untyped source",
+        source: "speaking-archive",
+      },
+    ],
+    [
+      {
+        pages: [
+          {
+            url: "https://a.example/speaking/",
+            lang: "en",
+            page_role: "speaking-archive",
+            poster_image: "https://cdn.example/bio.jpg",
+            share_description:
+              "Maintainer biography that is not about one talk.",
+          },
+        ],
+        declared_topics: [
+          {
+            slug: "typescript",
+            label: "TypeScript",
+            evidence: [
+              {
+                community_eligible: true,
+                class: "declared",
+                page: "https://a.example/speaking/",
+                raw_value: "TypeScript",
+                source: "meta:keywords",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  );
+
+  assert.equal(joined[0].page_role, "presentation");
+  assert.equal(joined[0].language, "en");
+  assert.equal(joined[0].summary, "Boston Code Camp 40");
+  assert.equal(joined[0].image, undefined);
+  assert.deepEqual(
+    joined[0].declared_topics.map((topic) => topic.slug),
+    ["static-analysis"],
+  );
+  assert.equal(joined[1].page_role, "speaking-archive");
+});
+
 test("joinContentWithPageSignals: joins language and page_role", () => {
   const joined = joinContentWithPageSignals(
     [
@@ -2771,14 +2844,8 @@ test("joinContentWithPageSignals never restores a null summary", () => {
 });
 
 test("merged empty summaries satisfy content.schema.json", async () => {
-  const schema = JSON.parse(
-    await readFile(
-      fileURLToPath(
-        new URL("../../schemas/content.schema.json", import.meta.url),
-      ),
-      "utf8",
-    ),
-  );
+  const { contentSchema } = await import("../../scripts/nlp/crawl-shape.mjs");
+  const schema = contentSchema;
   const xml = `<rss><channel>
     <item><title>A</title><link>https://a.example/a</link></item>
     <item><title>B</title><link>https://a.example/b</link></item>

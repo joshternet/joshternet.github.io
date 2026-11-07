@@ -432,4 +432,6 @@ test("network sync applies preview only through localPreviewEnabled", async () =
   assert.match(source, /readPreviewFile/);
   assert.match(source, /simulatedParticipants/);
   assert.match(source, /mergePreviewParticipants/);
+  assert.match(source, /localDevCacheParticipants/);
+  assert.match(source, /local_dev_cache = true/);
 });

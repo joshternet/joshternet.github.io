@@ -7,7 +7,8 @@
 
 import { readFile } from "node:fs/promises";
 
-import { assertAllowedModel } from "./infer-policy.mjs";
+import { assertAllowedModel, cacheMatchesLock } from "./infer-policy.mjs";
+import { hashTree } from "./prepare-model.mjs";
 
 /**
  * Loads the allowlisted classifier from local files.
@@ -25,6 +26,19 @@ export async function loadLockedClassifier(options) {
   if (requested !== lock.model_id) {
     throw new Error(`model is not allowlisted: ${requested}`);
   }
+  let cachedFiles;
+  try {
+    cachedFiles = await hashTree(options.localModelPath);
+  } catch (error) {
+    if (error && error.code === "ENOENT") {
+      throw new Error("uses model cache is missing");
+    }
+    throw error;
+  }
+  const check = cacheMatchesLock(lock.files, cachedFiles);
+  if (!check.ok) {
+    throw new Error(`uses model cache ${check.reason}`);
+  }
 
   const { env, pipeline } = await import("@huggingface/transformers");
   env.allowRemoteModels = false;
@@ -34,6 +48,8 @@ export async function loadLockedClassifier(options) {
 
   const classifier = await pipeline("zero-shot-classification", lock.model_id, {
     dtype: lock.quantization || "q8",
+    revision: lock.revision,
+    local_files_only: true,
   });
 
   return {

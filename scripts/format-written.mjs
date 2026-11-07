@@ -12,6 +12,8 @@ import { fileURLToPath } from "node:url";
 
 import prettier from "prettier";
 
+import { isCrawlJsonPath } from "./nlp/site-record.mjs";
+
 const REPO_ROOT = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   "..",
@@ -115,6 +117,9 @@ export async function formatTextForPath(filePath, text, options = {}) {
       : (message) => {
           process.stderr.write(message);
         };
+  if (isCrawlJsonPath(filePath)) {
+    return text;
+  }
   const absolute = path.resolve(filePath);
   const ignorePath = path.join(root, ".prettierignore");
 
@@ -198,6 +203,9 @@ export async function formatGeneratedOutputs(options = {}) {
   const failures = [];
 
   for (const filePath of paths) {
+    if (isCrawlJsonPath(filePath)) {
+      continue;
+    }
     const text = await fs.readFile(filePath, "utf8");
 
     if (!strict) {

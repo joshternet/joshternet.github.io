@@ -7,6 +7,8 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
+import { CRAWL_KEYS, decodeCrawlValue } from "../../scripts/nlp/site-record.mjs";
+
 const root = fileURLToPath(new URL("../../", import.meta.url));
 
 /**
@@ -26,8 +28,11 @@ test("network cards link the primary feed outside the origin card link", async (
   const network = await read("_data/network.json");
 
   assert.match(styles, /\.network-card\[hidden\]\s*\{[^}]*display:\s*none/s);
-  assert.match(page, /network-card--{{ network_site.identity }} h-card/);
-  assert.match(page, /network_site\.feeds/);
+  assert.match(
+    page,
+    new RegExp(`network-card--\\{\\{ network_site\\.${CRAWL_KEYS.identity} \\}\\} h-card`),
+  );
+  assert.match(page, new RegExp(`network_site\\.${CRAWL_KEYS.feeds}`));
   assert.match(page, /network-card__feed/);
   assert.match(page, /network-card__actions/);
   assert.match(page, /network-card__footer/);
@@ -45,7 +50,7 @@ test("network cards link the primary feed outside the origin card link", async (
   assert.match(a11y, /Participating website with undeclared Josh identity/);
   assert.doesNotMatch(a11y, /joshing the Joshes/);
   assert.match(joined, /Participating since/);
-  assert.match(joined, /first_participated_at/);
+  assert.match(joined, new RegExp(CRAWL_KEYS.first_participated_at));
   assert.match(styles, /\.network-card__joined\s*\{/);
 
   const feedAt = page.indexOf('class="network-card__feed"');
@@ -92,7 +97,8 @@ test("network cards link the primary feed outside the origin card link", async (
     styles,
     /\.network-card__elsewhere\s*\{[^}]*display:\s*contents/s,
   );
-  assert.match(network, /"url": "https:\/\/artlung\.com\/feed\/"/);
+  const decoded = decodeCrawlValue(JSON.parse(network));
+  assert.match(JSON.stringify(decoded), /https:\/\/artlung\.com\/feed\//);
 });
 
 test("network cards expose elsewhere icons outside the origin link", async () => {
@@ -104,7 +110,7 @@ test("network cards expose elsewhere icons outside the origin link", async () =>
   const sprite = await read("assets/icons/elsewhere-sprite.svg");
   const network = await read("_data/network.json");
 
-  assert.match(page, /network_site\.elsewhere/);
+  assert.match(page, new RegExp(`network_site\\.${CRAWL_KEYS.elsewhere}`));
   assert.match(page, /network-card__elsewhere/);
   assert.match(page, /network-card__elsewhere-glyph--/);
 
@@ -137,7 +143,8 @@ test("network cards expose elsewhere icons outside the origin link", async () =>
     /Elsewhere network icons/,
   );
   assert.match(await read("THIRD_PARTY_LICENSES.md"), /brand\.linkedin\.com/);
-  assert.match(network, /"network": "github"/);
+  const decoded = decodeCrawlValue(JSON.parse(network));
+  assert.match(JSON.stringify(decoded), /"network": "github"/);
 });
 
 test("network page does not duplicate the blogroll subscribe copy", async () => {

@@ -8,6 +8,8 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
+import { CRAWL_KEYS } from "../../scripts/nlp/site-record.mjs";
+
 const root = fileURLToPath(new URL("../../", import.meta.url));
 
 /**
@@ -71,7 +73,7 @@ test("homepage meet and activity includes use generated datasets", async () => {
   assert.doesNotMatch(index, /^script:/m);
   assert.doesNotMatch(index, /"josh":\s*true/);
   assert.match(eligible, /site\.data\.network/);
-  assert.match(eligible, /first_participated_at/);
+  assert.match(eligible, new RegExp(CRAWL_KEYS.first_participated_at));
   assert.match(eligible, /home_arrival_cutoff_s/);
   assert.match(eligible, /slice: 0, 3/);
   assert.match(arrivals, /include home-welcome-eligible\.html/);

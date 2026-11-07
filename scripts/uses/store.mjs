@@ -8,6 +8,7 @@ import { mkdir, readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 
 import { writeJSONAtomic } from "../nlp/lib.mjs";
+import { decodeCrawlValue } from "../nlp/site-record.mjs";
 
 import { USES_SCHEMA_VERSION } from "./constants.mjs";
 import { isReportableUseLabel, sanitizeLabel } from "./normalize.mjs";
@@ -69,7 +70,7 @@ export function checksShardPath(rootDir, period) {
  */
 export async function readJson(filePath, fallback) {
   try {
-    return JSON.parse(await readFile(filePath, "utf8"));
+    return decodeCrawlValue(JSON.parse(await readFile(filePath, "utf8")));
   } catch (error) {
     if (
       error &&

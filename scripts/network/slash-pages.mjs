@@ -132,6 +132,14 @@ const SHOWCASE_CHROME_EXTRA_SEGMENTS = new Set([
   // German legal chrome (privacy / imprint).
   "datenschutz",
   "impressum",
+  // Directories of works. The index is not itself a Showcase project.
+  "speaking",
+  "talks",
+  "presentations",
+  "slides",
+  "html-sitemap",
+  "collections",
+  "tools",
 ]);
 
 const IDENTITY_SLASH_SET = new Set(

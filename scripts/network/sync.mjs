@@ -61,6 +61,14 @@ import {
   readPreviewFile,
   simulatedParticipants,
 } from "./preview.mjs";
+import {
+  LOCAL_NONJOSHTERNET_INTAKE_LIMIT,
+  devCacheEnabled,
+  devCacheRoot,
+  localDevCacheParticipants,
+  readLocalIntakeOrigins,
+  selectLocalDevCacheIntake,
+} from "../uses/dev-cache.mjs";
 import { installPublicUrlRouteGuard } from "./public-fetch-guard.mjs";
 
 import {
@@ -832,6 +840,13 @@ async function shouldRefresh(previous) {
 const registry = await loadRegistry(registrySource);
 let projected = projectRegistry(registry);
 
+/** @type {Set<string>} Origins newly taken from the local cache this run. */
+const devCacheOrigins = new Set();
+/** @type {Set<string>} Prior local-only sites kept without a fresh browser capture. */
+const carriedLocalDevCacheOrigins = new Set();
+
+const existing = await readJSONIfExists(DEFAULT_DATA_PATH, []);
+
 if (localPreviewEnabled()) {
   const previewPath = path.join(process.cwd(), "_data/network_preview.json");
   const preview = await readPreviewFile(previewPath);
@@ -846,11 +861,54 @@ if (localPreviewEnabled()) {
   }
 
   projected = mergePreviewParticipants(projected, simulated.participants);
+  const cachedSites = await localDevCacheParticipants(
+    devCacheRoot(process.cwd()),
+    devCacheEnabled(),
+  );
+  // Registry / preview origins only. Prior local-only rows may be in intake
+  // again so a interrupted run can finish those five without pulling the rest.
+  const registryOrigins = new Set(
+    projected
+      .map((entry) =>
+        entry && typeof entry.origin === "string" ? entry.origin : "",
+      )
+      .filter(Boolean),
+  );
+  const intakeListed = await readLocalIntakeOrigins(
+    devCacheRoot(process.cwd()),
+  );
+  const intakeSites =
+    intakeListed.length > 0
+      ? selectLocalDevCacheIntake(
+          cachedSites.filter((site) => intakeListed.includes(site.origin)),
+          {
+            already: registryOrigins,
+            limit: LOCAL_NONJOSHTERNET_INTAKE_LIMIT,
+          },
+        )
+      : [];
+  for (const site of intakeSites) {
+    if (projected.some((entry) => entry && entry.origin === site.origin)) {
+      continue;
+    }
+    projected = mergePreviewParticipants(projected, [site]);
+    devCacheOrigins.add(site.origin);
+  }
 
   if (simulated.participants.length > 0) {
     process.stdout.write(
       `Local preview added ${simulated.participants.length} participant` +
         `${simulated.participants.length === 1 ? "" : "s"} not yet in the JoshBot registry.\n`,
+    );
+  }
+  if (devCacheOrigins.size > 0) {
+    process.stdout.write(
+      `Local dev cache intake ${devCacheOrigins.size} new personal site` +
+        `${devCacheOrigins.size === 1 ? "" : "s"} (limit ${LOCAL_NONJOSHTERNET_INTAKE_LIMIT}).\n`,
+    );
+  } else if (intakeListed.length === 0) {
+    process.stdout.write(
+      "Local dev cache intake empty; prior local-only sites are kept without a fresh capture.\n",
     );
   }
 }
@@ -859,8 +917,6 @@ const { accepted: participants, rejected } =
   await partitionPublicParticipants(projected);
 
 reportRejectedParticipants(rejected);
-
-const existing = await readJSONIfExists(DEFAULT_DATA_PATH, []);
 const displayTitleOverrides = displayTitleOverridesFromDocument(
   await readJSONIfExists(DEFAULT_DISPLAY_TITLES_PATH, {}),
 );
@@ -1029,6 +1085,42 @@ try {
   }
 } finally {
   await browser.close();
+}
+
+const capturedOrigins = new Set(nextEntries.map((entry) => entry.origin));
+for (const entry of existing) {
+  if (
+    !entry ||
+    entry.local_dev_cache !== true ||
+    typeof entry.origin !== "string" ||
+    !entry.origin ||
+    capturedOrigins.has(entry.origin)
+  ) {
+    continue;
+  }
+  if (participants.some((participant) => participant.origin === entry.origin)) {
+    continue;
+  }
+  nextEntries.push({ ...entry, local_dev_cache: true });
+  carriedLocalDevCacheOrigins.add(entry.origin);
+  capturedOrigins.add(entry.origin);
+}
+
+for (const entry of nextEntries) {
+  if (
+    devCacheOrigins.has(entry.origin) ||
+    carriedLocalDevCacheOrigins.has(entry.origin) ||
+    entry.local_dev_cache === true
+  ) {
+    entry.local_dev_cache = true;
+  }
+}
+
+if (carriedLocalDevCacheOrigins.size > 0) {
+  process.stdout.write(
+    `Local dev cache kept ${carriedLocalDevCacheOrigins.size} prior personal site` +
+      `${carriedLocalDevCacheOrigins.size === 1 ? "" : "s"} without recapture.\n`,
+  );
 }
 
 nextEntries.sort((left, right) => {

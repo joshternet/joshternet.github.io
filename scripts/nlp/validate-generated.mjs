@@ -1,7 +1,8 @@
 /**
  * Goal & Constraints:
- * Validate committed NLP/network JSON against schemas/*.schema.json (Ajv draft
- * 2020-12) plus graph invariants. Used by CI after nlp:sync / network:sync.
+ * Validate committed NLP/network JSON against the crawl shapes in
+ * crawl-shape.mjs (Ajv draft 2020-12) plus graph invariants. Files are decoded
+ * from short keys before validation. Used by CI after nlp:sync / network:sync.
  */
 
 import fs from "node:fs";
@@ -18,18 +19,39 @@ import {
   isSiteHomeUrl,
 } from "../views/lib.mjs";
 import { loadAliasMap, resolveAlias } from "./communities.mjs";
+import {
+  blogrollsSchema,
+  connectionsSchema,
+  contentSchema,
+  dataManifestSchema,
+  networkSchema,
+  siteSignalsSchema,
+  topicsSchema,
+} from "./crawl-shape.mjs";
 import { evidenceIdentityKey } from "./evidence.mjs";
 import { foldPluralSlug } from "./normalize.mjs";
+import { decodeCrawlValue } from "./site-record.mjs";
 
 const ROOT = process.cwd();
-const SCHEMAS_DIR = path.join(ROOT, "schemas");
 
-/**
- * @param {string} relativePath
- * @returns {unknown}
- */
-function readJSON(relativePath) {
-  return JSON.parse(fs.readFileSync(path.join(ROOT, relativePath), "utf8"));
+const ajv = new Ajv2020({ allErrors: true, strict: false });
+addFormats(ajv);
+
+const schemaFiles = {
+  network: networkSchema,
+  site_signals: siteSignalsSchema,
+  content: contentSchema,
+  topics: topicsSchema,
+  connections: connectionsSchema,
+  blogrolls: blogrollsSchema,
+  data_manifest: dataManifestSchema,
+};
+
+/** @type {Record<string, ReturnType<typeof ajv.compile>>} */
+const validators = {};
+
+for (const [key, schema] of Object.entries(schemaFiles)) {
+  validators[key] = ajv.compile(schema);
 }
 
 /**
@@ -41,31 +63,13 @@ function fail(message) {
 }
 
 /**
- * @param {string} fileName
- * @returns {object}
+ * @param {string} relativePath
+ * @returns {unknown}
  */
-function loadSchema(fileName) {
-  return JSON.parse(fs.readFileSync(path.join(SCHEMAS_DIR, fileName), "utf8"));
-}
-
-const ajv = new Ajv2020({ allErrors: true, strict: false });
-addFormats(ajv);
-
-const schemaFiles = {
-  network: "network.schema.json",
-  site_signals: "site-signals.schema.json",
-  content: "content.schema.json",
-  topics: "topics.schema.json",
-  connections: "connections.schema.json",
-  blogrolls: "blogrolls.schema.json",
-  data_manifest: "data-manifest.schema.json",
-};
-
-/** @type {Record<string, ReturnType<typeof ajv.compile>>} */
-const validators = {};
-
-for (const [key, fileName] of Object.entries(schemaFiles)) {
-  validators[key] = ajv.compile(loadSchema(fileName));
+function readJSON(relativePath) {
+  return decodeCrawlValue(
+    JSON.parse(fs.readFileSync(path.join(ROOT, relativePath), "utf8")),
+  );
 }
 
 /**

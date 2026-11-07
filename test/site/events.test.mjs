@@ -29,11 +29,14 @@ test("events page is published with empty-state markup", async () => {
   assert.doesNotMatch(page, /autoplay/i);
   assert.match(page, /joshternet\.ics/);
   assert.match(page, /site\.data\.happening\.items/);
+  assert.match(page, /site\.data\.past_events\.items/);
+  assert.match(page, /group_by_year/);
 });
 
 test("network nav shows Happening when happening items exist", async () => {
   const nav = await read("_includes/site-nav-network-children.html");
   assert.match(nav, /happening_count/);
+  assert.match(nav, /past_count/);
   assert.match(nav, /\/events\//);
   assert.match(nav, />Happening</);
 });

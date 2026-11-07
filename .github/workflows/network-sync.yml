@@ -25,7 +25,6 @@ on:
       - "scripts/nlp/**"
       - "scripts/views/**"
       - "scripts/uses/**"
-      - "schemas/**"
       - "data/uses/catalog/**"
       - "data/classification/**"
       - "test/network/**"
@@ -407,7 +406,18 @@ jobs:
             topics \
             assets/network/joshternet.opml \
             assets/network/sites \
-            assets/activity/posters
+            assets/activity/posters \
+            assets/activity/atom.xml \
+            _data/made.json
+
+          # Ignored locally so a developer crawl is not added with git add.
+          # Force-add the copies this job just wrote.
+          git add -f -- \
+            _data/past_events.json \
+            data/classification/quality-baseline.json
+          if [ -f assets/events/joshternet.ics ]; then
+            git add -f -- assets/events/joshternet.ics
+          fi
 
           if [ "${JOSHTERNET_USES_PUBLISH}" = "1" ] || [ "${JOSHTERNET_USES_PUBLISH}" = "true" ]; then
             git add -- \

@@ -17,11 +17,11 @@
    * @returns {string}
    */
   function toolLabel(tool) {
-    const name = String((tool && tool.name) || "");
+    const name = String((tool && tool.k42) || "");
     if (name && name.indexOf("observed:") !== 0) {
       return name;
     }
-    return String((tool && tool.tool_id) || "").replace(/^observed:/, "");
+    return String((tool && tool.k7g) || "").replace(/^observed:/, "");
   }
 
   /**
@@ -137,8 +137,8 @@
           : "";
         if (
           pageSnapshot &&
-          index.snapshot_id &&
-          pageSnapshot !== index.snapshot_id
+          index.k6p &&
+          pageSnapshot !== index.k6p
         ) {
           if (status) {
             status.textContent =
@@ -146,8 +146,8 @@
           }
           return;
         }
-        const match = (index.periods || []).find(function (entry) {
-          return entry.granularity === granularity;
+        const match = (index.k4y || []).find(function (entry) {
+          return entry.k2s === granularity;
         });
         if (!match) {
           if (status) {
@@ -168,7 +168,7 @@
             "/assets/data/uses/periods/" +
             granularity +
             "/" +
-            encodeURIComponent(match.id) +
+            encodeURIComponent(match.k30) +
             ".json";
         }
         const rollupRes = await fetch(path, { credentials: "same-origin" });
@@ -184,11 +184,11 @@
         }
         const rollup = await rollupRes.json();
         if (
-          index.trend_ready === false ||
-          rollup.trend_ready === false ||
-          (index.extractor_version &&
-            rollup.extractor_version &&
-            index.extractor_version !== rollup.extractor_version)
+          index.k7l === false ||
+          rollup.k7l === false ||
+          (index.k2c &&
+            rollup.k2c &&
+            index.k2c !== rollup.k2c)
         ) {
           if (chart) {
             chart.innerHTML = "";
@@ -198,7 +198,7 @@
           }
           return;
         }
-        const tools = rollup.tools || [];
+        const tools = rollup.k7h || [];
         if (!tools.length) {
           if (chart) {
             chart.innerHTML = "";
@@ -211,9 +211,9 @@
         }
         renderChart(chart, rollup);
         if (status) {
-          const label = rollup.is_complete ? "complete" : "in progress";
+          const label = rollup.k37 ? "complete" : "in progress";
           status.textContent =
-            "Showing " + (rollup.period || granularity) + " (" + label + ").";
+            "Showing " + (rollup.k4t || granularity) + " (" + label + ").";
         }
       } catch (error) {
         if (status) {
@@ -239,22 +239,22 @@
     if (!chart) {
       return;
     }
-    const slots = rollup.slots || [];
+    const slots = rollup.k6n || [];
     if (slots.length) {
       const max = Math.max.apply(
         null,
         slots.map(function (slot) {
-          return (slot.products || []).length;
+          return (slot.k56 || []).length;
         }),
       );
       chart.innerHTML = slots
         .map(function (slot) {
-          const count = (slot.products || []).length;
+          const count = (slot.k56 || []).length;
           const width = max > 0 ? Math.round((100 * count) / max) : 0;
           return (
             '<div class="uses-bar">' +
             '<div class="uses-bar__label">' +
-            escapeText(slot.name || slot.id || "") +
+            escapeText(slot.k42 || slot.k30 || "") +
             "</div>" +
             '<div class="uses-bar__track" role="img" aria-label="' +
             escapeText(String(count)) +
@@ -272,8 +272,8 @@
         .join("");
       return;
     }
-    const tools = rollup.tools || [];
-    const denom = rollup.verified_uses_member_count || 0;
+    const tools = rollup.k7h || [];
+    const denom = rollup.k7v || 0;
     if (!tools.length) {
       chart.innerHTML = "";
       return;
@@ -281,12 +281,12 @@
     const max = Math.max.apply(
       null,
       tools.map(function (tool) {
-        return tool.active_member_count || 0;
+        return tool.k4 || 0;
       }),
     );
     const rows = tools
       .map(function (tool) {
-        const count = tool.active_member_count || 0;
+        const count = tool.k4 || 0;
         const width = max > 0 ? Math.round((100 * count) / max) : 0;
         return (
           '<div class="uses-bar">' +

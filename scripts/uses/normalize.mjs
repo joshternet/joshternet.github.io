@@ -56,7 +56,8 @@ export function sanitizeLabel(input) {
  * @returns {string}
  */
 export function comparisonLabel(input) {
-  const label = sanitizeLabel(input);
+  const sanitized = sanitizeLabel(input).replace(/^(?:observed:\s*)+/i, "");
+  const label = sanitizeLabel(sanitized);
   if (!label) {
     return "";
   }
@@ -200,6 +201,53 @@ export function resolveToolLabel(label, options) {
   // A catalog alias exists, but context guards rejected it. Do not invent a
   // second tool id for that surface form.
   return { tool_id: null, comparison, unresolved: true, match: "abstain" };
+}
+
+/**
+ * Observed ids that repeat a catalog id already current for the same member.
+ * A similar name that does not resolve is left alone.
+ * @param {Array<{ tool_id?: string, name?: string, status?: string, section?: string, context?: string }>} tools
+ * @param {{ tools?: ToolRecord[], aliases?: AliasRule[] }} catalog
+ * @param {Iterable<string>} [alsoPresent] - Canonical ids in the new evidence.
+ * @returns {Array<{ observed_id: string, canonical_id: string, name: string }>}
+ */
+export function supersededObservedIds(tools, catalog, alsoPresent) {
+  const current = (tools || []).filter(
+    (tool) => tool && (!tool.status || tool.status === "current"),
+  );
+  /** @type {Set<string>} */
+  const ids = new Set(current.map((tool) => String(tool.tool_id || "")));
+  for (const id of alsoPresent || []) {
+    if (id) {
+      ids.add(String(id));
+    }
+  }
+  /** @type {Array<{ observed_id: string, canonical_id: string, name: string }>} */
+  const pairs = [];
+  for (const tool of current) {
+    const observedId = String(tool.tool_id || "");
+    if (!observedId.startsWith("observed:")) {
+      continue;
+    }
+    const name = tool.name || "";
+    const resolved = resolveToolLabel(name, {
+      section: tool.section || "",
+      excerpt: tool.context || "",
+      catalog,
+    });
+    if (resolved.match !== "unique") {
+      continue;
+    }
+    if (!ids.has(resolved.tool_id)) {
+      continue;
+    }
+    pairs.push({
+      observed_id: observedId,
+      canonical_id: resolved.tool_id,
+      name,
+    });
+  }
+  return pairs;
 }
 
 const GENERIC_GEAR =

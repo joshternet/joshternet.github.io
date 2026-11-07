@@ -5003,6 +5003,16 @@ video {
   color: var(--color-muted);
 }
 
+.showcase-card__appearance {
+  margin: 0;
+  font-size: var(--type-small);
+  color: var(--color-muted);
+}
+
+.showcase-card__appearance time {
+  margin-inline-start: 0.35rem;
+}
+
 .showcase-card__summary {
   display: -webkit-box;
   margin: 0;

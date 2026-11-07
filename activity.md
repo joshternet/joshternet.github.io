@@ -15,7 +15,7 @@ permalink: /activity/
 joshternet_analysis: derived
 ---
 
-{% assign primary = site.data.activity.primary | default: empty %}
+{% assign primary = site.data.activity.k54 | default: empty %}
 
 # What's New
 

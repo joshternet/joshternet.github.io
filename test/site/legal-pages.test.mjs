@@ -237,11 +237,7 @@ test("footer stamp and head meta expose build and data-update times", async () =
   assert.match(layout, /site-footer__stamp/);
   assert.match(
     layout,
-    /Built\s*<time datetime="\{\{ site_built_at \| escape \}\}">/,
-  );
-  assert.match(
-    layout,
-    /Updated\s*<time datetime="\{\{ site_updated_at \| escape \}\}">/,
+    /Network updated\s*<time datetime="\{\{ site_updated_at \| escape \}\}">[\s\S]*Site built\s*<time datetime="\{\{ site_built_at \| escape \}\}">/,
   );
   assert.match(css, /\.site-footer__stamp\s*\{/);
 });

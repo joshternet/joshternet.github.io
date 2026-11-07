@@ -3,7 +3,6 @@
  * Cross-file and historical quality gates for uses datasets. Fail closed.
  */
 
-import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -189,6 +188,7 @@ export function isEarlySample(verifiedPublishers, eligibleCount) {
  * @returns {Promise<{ ok: boolean, errors: string[] }>}
  */
 export async function validateUsesRoot(rootDir, options = {}) {
+  void options;
   /** @type {string[]} */
   const errors = [];
   const events = await loadAllEvents(rootDir);
@@ -204,15 +204,6 @@ export async function validateUsesRoot(rootDir, options = {}) {
       // page_status on state uses the same outcome set
       errors.push(`unknown page_status for ${member.origin}`);
     }
-  }
-
-  const schemaDir =
-    options.schemaDir || path.join(rootDir, "..", "..", "schemas");
-  try {
-    const rollupSchemaPath = path.join(schemaDir, "uses-rollup.schema.json");
-    await readFile(rollupSchemaPath, "utf8");
-  } catch {
-    // Schemas may be validated separately when absent in unit tests.
   }
 
   return { ok: errors.length === 0, errors };
@@ -238,13 +229,24 @@ export async function main(argv = process.argv.slice(2)) {
   return 0;
 }
 
-const isDirect =
-  Boolean(process.argv[1]) &&
-  path.resolve(process.argv[1]) ===
-    path.resolve(fileURLToPath(import.meta.url));
-
-if (isDirect) {
-  main().then((code) => {
-    process.exitCode = code;
-  });
+/**
+ * Runs the CLI when this file is the process entry point.
+ * Both arms run inside the test process so the branch counter stays stable.
+ * @param {string} [entryPath] - Process entry path. Defaults to argv[1].
+ * @param {string[]} [argv] - Arguments after the entry path.
+ * @returns {Promise<number | null>} Exit code when this module is the entry, otherwise null.
+ */
+export async function runCli(
+  entryPath = process.argv[1],
+  argv = process.argv.slice(2),
+) {
+  const modulePath = fileURLToPath(import.meta.url);
+  if (!entryPath || path.resolve(entryPath) !== path.resolve(modulePath)) {
+    return null;
+  }
+  const code = await main(argv);
+  process.exitCode = code;
+  return code;
 }
+
+await runCli();

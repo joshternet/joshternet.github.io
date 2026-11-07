@@ -13,6 +13,7 @@ import {
   deterministicEventId,
   resolveToolLabel,
   sanitizeLabel,
+  supersededObservedIds,
 } from "../../scripts/uses/normalize.mjs";
 
 const root = fileURLToPath(new URL("../../", import.meta.url));
@@ -34,6 +35,11 @@ test("sanitizeLabel and comparisonLabel fold case and accents", () => {
   assert.equal(sanitizeLabel("  VS   Code\n"), "VS Code");
   assert.equal(comparisonLabel("VS Code"), "vs code");
   assert.equal(comparisonLabel("Café"), "cafe");
+  assert.equal(
+    comparisonLabel("Observed: Apple Magic Keyboard"),
+    "apple magic keyboard",
+  );
+  assert.equal(comparisonLabel("observed:"), "");
 });
 
 test("VS Code maps; Visual Studio stays separate with context", async () => {
@@ -83,6 +89,78 @@ test("Go and Cursor require programming context", async () => {
     catalog: cat,
   });
   assert.equal(cursorBare.tool_id, null);
+});
+
+test("duplicate observed ids collapse only on a unique catalog match", () => {
+  const catalog = {
+    tools: [
+      { id: "apple-magic-keyboard", name: "Apple Magic Keyboard", aliases: [] },
+    ],
+    aliases: [],
+  };
+  const pairs = supersededObservedIds(
+    [
+      {
+        tool_id: "apple-magic-keyboard",
+        name: "Apple Magic Keyboard",
+        status: "current",
+      },
+      {
+        tool_id: "observed:apple-magic-keyboard",
+        name: "Apple Magic Keyboard",
+        status: "current",
+        section: "Workstation",
+        context: "Low-profile",
+      },
+      {
+        tool_id: "observed:custom-board",
+        name: "Custom Board",
+        status: "current",
+      },
+    ],
+    catalog,
+  );
+  assert.deepEqual(pairs, [
+    {
+      observed_id: "observed:apple-magic-keyboard",
+      canonical_id: "apple-magic-keyboard",
+      name: "Apple Magic Keyboard",
+    },
+  ]);
+  assert.deepEqual(
+    supersededObservedIds(
+      [
+        {
+          tool_id: "observed:apple-magic-keyboard",
+          name: "Apple Magic Keyboard",
+          status: "former",
+        },
+      ],
+      catalog,
+      ["apple-magic-keyboard"],
+    ),
+    [],
+  );
+  assert.deepEqual(supersededObservedIds(undefined, catalog), []);
+  assert.deepEqual(
+    supersededObservedIds(
+      [
+        null,
+        { tool_id: "kept" },
+        { status: "current" },
+        { tool_id: "plain", status: "current" },
+        { tool_id: "observed:unnamed", status: "current" },
+        {
+          tool_id: "observed:apple-magic-keyboard",
+          name: "Apple Magic Keyboard",
+          status: "current",
+        },
+      ],
+      catalog,
+      [""],
+    ),
+    [],
+  );
 });
 
 test("deterministic hashes are stable", () => {

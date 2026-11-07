@@ -5,8 +5,78 @@
  */
 
 /**
- * @typedef {'home'|'article'|'note'|'project'|'about'|'portfolio'|'documentation'|'index'|'archive'|'tag-index'|'utility'|'legal'|'error'|'generated'|'unknown'} PageRole
+ * Single-segment speaking archives. The page is a directory, not a talk.
+ * @type {ReadonlySet<string>}
  */
+export const SPEAKING_ARCHIVE_SEGMENTS = new Set([
+  "speaking",
+  "talks",
+  "presentations",
+  "slides",
+]);
+
+/**
+ * Single-segment directories that list other works. Not a work themselves.
+ * @type {ReadonlySet<string>}
+ */
+export const COLLECTION_INDEX_SEGMENTS = new Set([
+  "sitemap",
+  "html-sitemap",
+  "collections",
+  "tools",
+]);
+
+/**
+ * @typedef {'home'|'article'|'note'|'project'|'about'|'portfolio'|'documentation'|'index'|'archive'|'tag-index'|'utility'|'legal'|'error'|'generated'|'collection'|'speaking-archive'|'unknown'} PageRole
+ */
+
+/**
+ * Role for a one-segment directory slug, or "" when the slug is not a directory.
+ * @param {unknown} segment
+ * @returns {'collection'|'speaking-archive'|''}
+ */
+export function directoryIndexRole(segment) {
+  const slug = String(segment || "")
+    .replace(/\.(html?|php)$/i, "")
+    .toLowerCase();
+
+  if (SPEAKING_ARCHIVE_SEGMENTS.has(slug)) {
+    return "speaking-archive";
+  }
+
+  if (COLLECTION_INDEX_SEGMENTS.has(slug)) {
+    return "collection";
+  }
+
+  return "";
+}
+
+/**
+ * True when the URL is exactly a directory index such as `/speaking/` or `/tools/`.
+ * Child paths (`/tools/calendar/`) are not indexes.
+ * @param {unknown} url
+ * @returns {boolean}
+ */
+export function isDirectoryIndexPath(url) {
+  let segment = "";
+
+  try {
+    const parts = new URL(String(url)).pathname
+      .replace(/\/+$/, "")
+      .split("/")
+      .filter(Boolean);
+
+    if (parts.length !== 1) {
+      return false;
+    }
+
+    segment = parts[0];
+  } catch {
+    return false;
+  }
+
+  return directoryIndexRole(segment) !== "";
+}
 
 /**
  * @param {string} url
@@ -105,6 +175,16 @@ export function classifyPageRole(url, hints = {}) {
     return "utility";
   }
 
+  const directoryParts = lower.split("/").filter(Boolean);
+
+  if (directoryParts.length === 1) {
+    const directoryRole = directoryIndexRole(directoryParts[0]);
+
+    if (directoryRole) {
+      return directoryRole;
+    }
+  }
+
   if (path === "/" || path === "/index.html" || path === "/index.htm") {
     return "home";
   }
@@ -155,6 +235,8 @@ export function topicContributionForRole(role) {
     case "index":
     case "archive":
     case "tag-index":
+    case "collection":
+    case "speaking-archive":
       return "limited";
     case "utility":
     case "legal":

@@ -44,7 +44,10 @@ import {
 import { buildEvidenceRecords } from "./evidence.mjs";
 import { extractUsesFromHtml } from "./extract.mjs";
 import { buildUsageGraph } from "./graph.mjs";
-import { evaluateUsesQuality } from "./quality.mjs";
+import {
+  evaluateUsesQuality,
+  partitionIdentityCorrections,
+} from "./quality.mjs";
 import { buildMigrationReport } from "./classify.mjs";
 import { reconcileMemberUsage } from "./reconcile.mjs";
 import {
@@ -132,6 +135,9 @@ async function loadUsesClassifier(repoRoot) {
   });
   return {
     policy: { threshold: policy.threshold, margin: policy.margin },
+    revision: lock.revision || "",
+    templateVersion: policy.template_version || 1,
+    hypothesisTemplate: policy.hypothesis_template || "",
     classify: (text, labels) => loaded.classify(text, labels),
   };
 }
@@ -183,6 +189,7 @@ export async function buildUsesDatasets(input) {
   let extractionItems = 0;
   let unresolved = 0;
   let removals = 0;
+  let identityCorrections = 0;
 
   /** @type {Map<string, object>} */
   const nextMembers = new Map(
@@ -208,32 +215,49 @@ export async function buildUsesDatasets(input) {
     let pageUrl = discovered[0]?.page_url || `${origin}/uses/`;
     let pageStatus = "not_found";
     let homepageDuplicate = false;
+    /** @type {ReturnType<typeof extractUsesFromHtml> | null} */
+    let extracted = null;
+    const assessment = originEntry.assessment;
 
-    for (const page of originEntry.pages || []) {
-      if (page?.outcome === "out_of_scope") {
-        homepageDuplicate = true;
-        if (typeof page.url === "string" && page.url) {
-          pageUrl = page.url;
+    if (assessment && typeof assessment === "object") {
+      if (typeof assessment.page_url === "string" && assessment.page_url) {
+        pageUrl = assessment.page_url;
+      }
+      homepageDuplicate = assessment.homepage_duplicate === true;
+      if (typeof assessment.page_status === "string" && assessment.page_status) {
+        pageStatus = assessment.page_status;
+      }
+      extracted =
+        assessment.extracted && typeof assessment.extracted === "object"
+          ? assessment.extracted
+          : null;
+    } else {
+      for (const page of originEntry.pages || []) {
+        if (page?.outcome === "out_of_scope") {
+          homepageDuplicate = true;
+          if (typeof page.url === "string" && page.url) {
+            pageUrl = page.url;
+          }
+          break;
         }
-        break;
+        if (!page?.html || typeof page.url !== "string") {
+          continue;
+        }
+        if (/\/uses(?:\/|\.html?)?(?:$|\?)/i.test(page.url)) {
+          html = page.html;
+          pageUrl = page.url;
+          break;
+        }
       }
-      if (!page?.html || typeof page.url !== "string") {
-        continue;
-      }
-      if (/\/uses(?:\/|\.html?)?(?:$|\?)/i.test(page.url)) {
-        html = page.html;
-        pageUrl = page.url;
-        break;
-      }
-    }
 
-    if (
-      !homepageDuplicate &&
-      html &&
-      usesHtmlRepeatsHomepage(html, homeHtmlFromPages(originEntry.pages || []))
-    ) {
-      homepageDuplicate = true;
-      html = "";
+      if (
+        !homepageDuplicate &&
+        html &&
+        usesHtmlRepeatsHomepage(html, homeHtmlFromPages(originEntry.pages || []))
+      ) {
+        homepageDuplicate = true;
+        html = "";
+      }
     }
 
     if (homepageDuplicate) {
@@ -270,8 +294,10 @@ export async function buildUsesDatasets(input) {
       continue;
     }
 
-    if (!html) {
-      pageStatus = discovered.length ? "not_checked" : "not_found";
+    if (!html && !extracted) {
+      if (!assessment) {
+        pageStatus = discovered.length ? "not_checked" : "not_found";
+      }
       if (pageStatus === "not_found") {
         unreachable += 1;
       }
@@ -287,7 +313,9 @@ export async function buildUsesDatasets(input) {
       continue;
     }
 
-    const extracted = extractUsesFromHtml(html);
+    if (!extracted) {
+      extracted = extractUsesFromHtml(html);
+    }
     pageStatus = extracted.outcome;
     if (pageStatus === "verified" || pageStatus === "verified_empty") {
       verified += 1;
@@ -312,7 +340,7 @@ export async function buildUsesDatasets(input) {
     unresolved += evidence.filter((e) => e.unresolved).length;
 
     const previous = priorByOrigin.get(origin) || null;
-    const { events, next } = reconcileMemberUsage({
+    const { events, next, identityPairs } = reconcileMemberUsage({
       previous,
       origin,
       page_url: pageUrl,
@@ -321,8 +349,20 @@ export async function buildUsesDatasets(input) {
       evidence,
       pageComplete:
         pageStatus === "verified" || pageStatus === "verified_empty",
+      catalog: {
+        tools: catalog.tools,
+        aliases: catalog.aliases,
+      },
     });
     removals += events.filter((e) => e.event_type === "usage_removed").length;
+    const remainingIds = (next.tools || [])
+      .filter((tool) => !tool.status || tool.status === "current")
+      .map((tool) => tool.tool_id);
+    identityCorrections += partitionIdentityCorrections(
+      events,
+      identityPairs,
+      remainingIds,
+    ).identity_corrections;
     newEvents.push(...events);
     nextMembers.set(origin, next);
 
@@ -362,6 +402,18 @@ export async function buildUsesDatasets(input) {
   );
 
   const model = await loadUsesClassifier(repoRoot);
+  /** @type {Map<string, object>} */
+  const inferenceCache = new Map();
+  const inferenceStats = { hits: 0, misses: 0, decisions: 0, abstained: 0 };
+  const rollupModel = {
+    classify: model.classify,
+    policy: model.policy,
+    inferenceCache,
+    inferenceStats,
+    modelRevision: model.revision,
+    templateVersion: model.templateVersion,
+    hypothesisTemplate: model.hypothesisTemplate,
+  };
   const period = periodKeyFromIso(observedAt);
   const bounds = monthBounds(period);
   const monthEvents = allEvents.filter((e) => {
@@ -380,8 +432,7 @@ export async function buildUsesDatasets(input) {
     state,
     period_events: monthEvents,
     catalog,
-    classify: model.classify,
-    policy: model.policy,
+    ...rollupModel,
   });
   const rollupErrors = validateRollupInvariants(monthRollup);
   if (rollupErrors.length) {
@@ -412,8 +463,7 @@ export async function buildUsesDatasets(input) {
       );
     }),
     catalog,
-    classify: model.classify,
-    policy: model.policy,
+    ...rollupModel,
   });
   await mkdir(path.join(workRoot, "rollups", "quarter"), { recursive: true });
   await writeJSONAtomic(
@@ -439,8 +489,7 @@ export async function buildUsesDatasets(input) {
       );
     }),
     catalog,
-    classify: model.classify,
-    policy: model.policy,
+    ...rollupModel,
   });
   await mkdir(path.join(workRoot, "rollups", "year"), { recursive: true });
   await writeJSONAtomic(
@@ -459,8 +508,7 @@ export async function buildUsesDatasets(input) {
     state,
     period_events: allEvents,
     catalog,
-    classify: model.classify,
-    policy: model.policy,
+    ...rollupModel,
   });
   await writeJSONAtomic(
     path.join(workRoot, "rollups", "all-time.json"),
@@ -505,6 +553,24 @@ export async function buildUsesDatasets(input) {
     catalog,
   });
 
+  /** @type {Record<string, number>} */
+  const slotCounts = {};
+  for (const tool of monthRollup.tools || []) {
+    if (!tool?.slot_id) {
+      continue;
+    }
+    slotCounts[tool.slot_id] = (slotCounts[tool.slot_id] || 0) + 1;
+  }
+  const rankedCount = Object.values(slotCounts).reduce(
+    (sum, count) => sum + count,
+    0,
+  );
+  /** @type {Record<string, number>} */
+  const slotShares = {};
+  for (const [slot, count] of Object.entries(slotCounts)) {
+    slotShares[slot] = rankedCount > 0 ? count / rankedCount : 0;
+  }
+
   const metrics = {
     eligible_member_count: eligibleOrigins.length,
     verified_count: verified,
@@ -516,11 +582,46 @@ export async function buildUsesDatasets(input) {
     events_removed: removals,
     unresolved_count: unresolved,
     prior_active_edges: countActiveEdges(priorState),
+    identity_corrections: identityCorrections,
+    model_decisions: inferenceStats.decisions,
+    model_abstentions: inferenceStats.abstained,
+    model_cache_hits: inferenceStats.hits,
+    model_cache_misses: inferenceStats.misses,
+    ranked_count: rankedCount,
+    slot_shares: slotShares,
   };
 
-  const quality = evaluateUsesQuality(metrics, null);
+  const baselinePath = path.join(
+    repoRoot,
+    "data",
+    "classification",
+    "quality-baseline.json",
+  );
+  const metricsPath = path.join(
+    repoRoot,
+    "data",
+    "classification",
+    "run-metrics.json",
+  );
+  const previousQuality = await readJson(baselinePath, null);
+  if (!input.previewMix) {
+    await writeJSONAtomic(metricsPath, metrics);
+  }
+  const quality = evaluateUsesQuality(metrics, previousQuality);
   if (quality.block) {
+    if (input.previewMix) {
+      await rm(workRoot, { recursive: true, force: true });
+      return {
+        ...metrics,
+        dry_run: false,
+        publish: false,
+        preview_skipped: true,
+      };
+    }
     throw new Error(`uses quality blocked: ${quality.reasons.join(", ")}`);
+  }
+  if (!input.dryRun && !input.previewMix) {
+    await writeJSONAtomic(baselinePath, metrics);
   }
 
   const validation = await validateUsesRoot(workRoot);
@@ -528,15 +629,12 @@ export async function buildUsesDatasets(input) {
     throw new Error(`uses validate failed: ${validation.errors.join("; ")}`);
   }
 
-  if (input.dryRun) {
-    await rm(workRoot, { recursive: true, force: true });
-    return { ...metrics, dry_run: true, publish: false };
+  if (!input.dryRun && !input.previewMix) {
+    await mkdir(usesRoot, { recursive: true });
+    await cp(workRoot, usesRoot, { recursive: true });
   }
 
-  await mkdir(usesRoot, { recursive: true });
-  await cp(workRoot, usesRoot, { recursive: true });
-
-  if (publish) {
+  if (publish && !input.dryRun) {
     await writePublicViews({
       repoRoot,
       summary,
@@ -582,7 +680,11 @@ export async function buildUsesDatasets(input) {
   }
 
   await rm(workRoot, { recursive: true, force: true });
-  return { ...metrics, dry_run: false, publish };
+  return {
+    ...metrics,
+    dry_run: Boolean(input.dryRun),
+    publish: Boolean(publish && !input.dryRun),
+  };
 }
 
 /**

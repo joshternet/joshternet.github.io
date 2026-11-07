@@ -2146,6 +2146,29 @@ function canonicalPageUrl(url) {
 }
 
 /**
+ * Speaking-archive and event-index rows keep the topics and role extracted
+ * from their own list item. The directory page must not stamp its biography
+ * or page role onto every appearance.
+ * @param {Record<string, unknown>} item
+ * @returns {boolean}
+ */
+function isListingExtract(item) {
+  const type = item.content_type;
+
+  if (type !== "event" && type !== "presentation") {
+    return false;
+  }
+
+  const source = item.source;
+  const kind =
+    source && typeof source === "object"
+      ? /** @type {{ kind?: unknown }} */ (source).kind
+      : "";
+
+  return kind === "speaking-archive" || kind === "event-listing";
+}
+
+/**
  * Joins crawled page language, page_role, and community-eligible declarations
  * onto feed content items that share a canonical URL.
  * @param {Array<Record<string, unknown>>} items
@@ -2232,11 +2255,11 @@ export function joinContentWithPageSignals(items, originSignals) {
       next.language = normalizeLanguageTag(page.lang) || null;
     }
 
-    if (page?.page_role) {
+    if (page?.page_role && !isListingExtract(next)) {
       next.page_role = page.page_role;
     }
 
-    if (!next.image && page?.poster_image) {
+    if (!next.image && page?.poster_image && !isListingExtract(next)) {
       next.image = page.poster_image;
     }
 
@@ -2246,7 +2269,11 @@ export function joinContentWithPageSignals(items, originSignals) {
 
     // Year albums keep a short year title; put the publisher blurb in summary
     // so Showcase does not title-echo the assortment line away.
-    if (/^\d{4}$/.test(titleText) && shareText.trim()) {
+    if (
+      /^\d{4}$/.test(titleText) &&
+      shareText.trim() &&
+      !isListingExtract(next)
+    ) {
       const sharePlain = plainTextSummary(shareText);
 
       if (
@@ -2257,17 +2284,20 @@ export function joinContentWithPageSignals(items, originSignals) {
         next.summary = sharePlain;
       }
     } else if (
+      !isListingExtract(next) &&
       shouldPreferShareDescription(next.summary, next.title, shareText)
     ) {
       next.summary = shareText;
     }
 
-    for (const topic of pageTopics) {
-      const id = `${topic.slug}\0${topic.source || ""}`;
+    if (!isListingExtract(next)) {
+      for (const topic of pageTopics) {
+        const id = `${topic.slug}\0${topic.source || ""}`;
 
-      if (!topicKey.has(id)) {
-        next.declared_topics = [...(next.declared_topics || []), topic];
-        topicKey.add(id);
+        if (!topicKey.has(id)) {
+          next.declared_topics = [...(next.declared_topics || []), topic];
+          topicKey.add(id);
+        }
       }
     }
 

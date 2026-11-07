@@ -111,6 +111,7 @@ export const SHOWCASE_CONTENT_TYPES = [
   "game",
   "collection",
   "project",
+  "presentation",
 ];
 
 /**
@@ -133,6 +134,7 @@ export const SHOWCASE_KIND_ORDER = Object.freeze([
   "project",
   "sheet music",
   "software",
+  "talks",
   "video",
   "other",
 ]);
@@ -161,6 +163,7 @@ export const SHOWCASE_KIND_LABELS = Object.freeze({
   design: Object.freeze(["Design", "Design"]),
   books: Object.freeze(["Book", "Books"]),
   guides: Object.freeze(["Guide", "Guides"]),
+  talks: Object.freeze(["Talks & Presentations", "Talks & Presentations"]),
   other: Object.freeze(["Other", "Other"]),
 });
 
@@ -721,6 +724,26 @@ export function compactContentItem(item, sites, publicSlugs) {
     compact.attribution_role = item.attribution_role;
   }
 
+  if (typeof item.start_precision === "string" && item.start_precision) {
+    compact.start_precision = item.start_precision;
+  }
+
+  if (typeof item.conference === "string" && item.conference) {
+    compact.conference = item.conference;
+  }
+
+  if (typeof item.identity === "string" && item.identity) {
+    compact.identity = item.identity;
+  }
+
+  if (Array.isArray(item.resources) && item.resources.length > 0) {
+    compact.resources = item.resources;
+  }
+
+  if (Array.isArray(item.related) && item.related.length > 0) {
+    compact.related = item.related;
+  }
+
   // Preserve crawl source so Showcase can exclude client portfolio tables.
   const sourceKind =
     item.source && typeof item.source === "object"
@@ -1162,6 +1185,8 @@ export function showcaseKind(contentType, categories = []) {
       // Writing is not a Showcase project; creative-path articles use
       // showcaseKindForItem → creativePathKind instead.
       return "other";
+    case "presentation":
+      return "talks";
     default: {
       const _exhaustive = type;
       void _exhaustive;
@@ -1599,10 +1624,8 @@ export function isNamedRootCreativeProduct(item) {
     return true;
   }
 
-  if (creativeSourceKind(item) === "creative-schema") {
-    return true;
-  }
-
+  // Schema.org markup does not by itself make a single-segment URL a product.
+  // A sitemap ItemList can carry creative-schema and still be a directory.
   return isExactSlugProductTitle(item.title, item.url);
 }
 
@@ -2175,7 +2198,7 @@ export function showcaseItemHasSubstance(item) {
     return title.length >= 4 || hasHttpsPoster(item);
   }
 
-  if (kind === "comics" || kind === "education") {
+  if (kind === "comics" || kind === "education" || kind === "talks") {
     return (
       hasHttpsPoster(item) ||
       summary.length >= 12 ||
@@ -2304,7 +2327,8 @@ export function isMadeContentItem(item, options = {}) {
   if (
     isShowcaseChromePath(item.url) &&
     !educationPast &&
-    !isComicsHubShowcaseItem(item)
+    !isComicsHubShowcaseItem(item) &&
+    type !== "presentation"
   ) {
     return false;
   }
@@ -2712,7 +2736,11 @@ export function isVisitorFacingContentItem(
     typeof item.content_type === "string" ? item.content_type : "",
   ).trim();
 
-  if (SHOWCASE_CONTENT_TYPES.includes(type) || isMadeContentItem(item)) {
+  if (
+    SHOWCASE_CONTENT_TYPES.includes(type) ||
+    type === "event" ||
+    isMadeContentItem(item)
+  ) {
     return true;
   }
 
@@ -3638,55 +3666,13 @@ export function buildHappeningItems(compactItems, now = new Date()) {
   }
 
   const upcoming = (compactItems || []).filter((item) => {
-    if (!item || typeof item !== "object") {
+    if (!isListedEvent(item)) {
       return false;
     }
 
-    if (String(item.content_type) !== "event") {
-      return false;
-    }
+    const state = eventScheduleState(item, nowMs);
 
-    if (isJoshternetHubContentUrl(item.url)) {
-      return false;
-    }
-
-    // Mere mentions (blog cites of someone else's event) stay out of Happening.
-    const role =
-      typeof item.attribution_role === "string" ? item.attribution_role : "";
-
-    if (role === "mention") {
-      return false;
-    }
-
-    // Cancelled events are never shown as upcoming.
-    const status = typeof item.status === "string" ? item.status : "";
-
-    if (/cancelled|canceled/i.test(status)) {
-      return false;
-    }
-
-    const startStr = typeof item.start === "string" ? item.start : "";
-
-    if (!startStr) {
-      return false;
-    }
-
-    const startMs = Date.parse(startStr);
-
-    if (!Number.isFinite(startMs)) {
-      return false;
-    }
-
-    // Upcoming: start is in the future.
-    if (startMs > nowMs) {
-      return true;
-    }
-
-    // Ongoing: started but not yet ended.
-    const endStr = typeof item.end === "string" ? item.end : "";
-    const endMs = endStr ? Date.parse(endStr) : NaN;
-
-    return Number.isFinite(endMs) && endMs > nowMs;
+    return state === "upcoming" || state === "ongoing";
   });
 
   upcoming.sort((left, right) => {
@@ -3703,6 +3689,149 @@ export function buildHappeningItems(compactItems, now = new Date()) {
   });
 
   return upcoming;
+}
+
+/**
+ * True when a compact item is an event the public calendar may consider.
+ * Mentions, cancellations, and hub URLs stay out of both upcoming and past.
+ * @param {unknown} item
+ * @returns {boolean}
+ */
+function isListedEvent(item) {
+  if (!item || typeof item !== "object") {
+    return false;
+  }
+
+  const record = /** @type {Record<string, unknown>} */ (item);
+
+  if (String(record.content_type) !== "event") {
+    return false;
+  }
+
+  if (isJoshternetHubContentUrl(record.url)) {
+    return false;
+  }
+
+  const role =
+    typeof record.attribution_role === "string" ? record.attribution_role : "";
+
+  if (role === "mention") {
+    return false;
+  }
+
+  const status = typeof record.status === "string" ? record.status : "";
+
+  if (/cancelled|canceled/i.test(status)) {
+    return false;
+  }
+
+  return true;
+}
+
+/**
+ * True when the start is a calendar date with no clock time.
+ * @param {Record<string, unknown>} item
+ * @returns {boolean}
+ */
+function isDateOnlyStart(item) {
+  if (item.start_precision === "date") {
+    return true;
+  }
+
+  return /^\d{4}-\d{2}-\d{2}$/.test(String(item.start));
+}
+
+/**
+ * Upcoming, ongoing, past, or invalid relative to `nowMs`.
+ * Date-only events compare calendar days and do not invent a clock time.
+ * @param {Record<string, unknown>} item
+ * @param {number} nowMs
+ * @returns {'upcoming'|'ongoing'|'past'|'invalid'}
+ */
+function eventScheduleState(item, nowMs) {
+  const startStr = typeof item.start === "string" ? item.start : "";
+
+  if (!startStr) {
+    return "invalid";
+  }
+
+  if (isDateOnlyStart(item)) {
+    const today = new Date(nowMs).toISOString().slice(0, 10);
+    const startDay = startStr.slice(0, 10);
+
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(startDay)) {
+      return "invalid";
+    }
+
+    const endStr = typeof item.end === "string" ? item.end : "";
+    const endDay = /^\d{4}-\d{2}-\d{2}/.test(endStr) ? endStr.slice(0, 10) : "";
+
+    if (startDay > today) {
+      return "upcoming";
+    }
+
+    if (startDay === today || (endDay && endDay >= today)) {
+      return "ongoing";
+    }
+
+    return "past";
+  }
+
+  const startMs = Date.parse(startStr);
+
+  if (!Number.isFinite(startMs)) {
+    return "invalid";
+  }
+
+  if (startMs > nowMs) {
+    return "upcoming";
+  }
+
+  const endStr = typeof item.end === "string" ? item.end : "";
+  const endMs = endStr ? Date.parse(endStr) : NaN;
+
+  if (Number.isFinite(endMs) && endMs > nowMs) {
+    return "ongoing";
+  }
+
+  return "past";
+}
+
+/**
+ * Historical events with a verified start, newest first.
+ * Upcoming and in-progress events are omitted. Date-only values stay date-only.
+ * @param {Array<Record<string, unknown>>} compactItems
+ * @param {Date} [now]
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function buildPastEventItems(compactItems, now = new Date()) {
+  const nowMs = now instanceof Date ? now.getTime() : Date.parse(String(now));
+
+  if (!Number.isFinite(nowMs)) {
+    return [];
+  }
+
+  const past = (compactItems || []).filter((item) => {
+    if (!isListedEvent(item)) {
+      return false;
+    }
+
+    return eventScheduleState(item, nowMs) === "past";
+  });
+
+  past.sort((left, right) => {
+    const leftMs = Date.parse(String(left.start));
+    const rightMs = Date.parse(String(right.start));
+    const diff = rightMs - leftMs;
+
+    if (diff !== 0) {
+      return diff;
+    }
+
+    return String(left.url ?? "").localeCompare(String(right.url ?? ""));
+  });
+
+  return past;
 }
 
 /**
@@ -3739,6 +3868,21 @@ function icsDateTime(value) {
 }
 
 /**
+ * iCalendar DATE value (YYYYMMDD) for a date-only start. Empty when invalid.
+ * @param {string} value
+ * @returns {string}
+ */
+function icsDateOnly(value) {
+  const match = String(value).match(/^(\d{4})-(\d{2})-(\d{2})$/);
+
+  if (!match) {
+    return "";
+  }
+
+  return `${match[1]}${match[2]}${match[3]}`;
+}
+
+/**
  * Generates an iCalendar (RFC 5545) document for upcoming/ongoing events.
  * Entry UIDs are stable (derived from the item URL) so calendar clients can
  * sync without duplicates. Does not embed full descriptions or private data.
@@ -3761,16 +3905,48 @@ export function buildEventIcs(happeningItems, options = {}) {
   ];
 
   for (const item of items) {
-    const dtstart = icsDateTime(item.start ? String(item.start) : "");
+    const dateOnly =
+      item.start_precision === "date" ||
+      /^\d{4}-\d{2}-\d{2}$/.test(String(item.start || ""));
+    let dtstart = "";
+    let dtstartLine = "";
+    let dtendLine = "";
 
-    if (!dtstart) {
-      continue;
+    if (dateOnly) {
+      dtstart = icsDateOnly(String(item.start || "").slice(0, 10));
+
+      if (!dtstart) {
+        continue;
+      }
+
+      dtstartLine = `DTSTART;VALUE=DATE:${dtstart}`;
+      const endDay = icsDateOnly(
+        typeof item.end === "string" ? item.end.slice(0, 10) : "",
+      );
+
+      if (endDay) {
+        dtendLine = `DTEND;VALUE=DATE:${endDay}`;
+      }
+    } else {
+      dtstart = icsDateTime(item.start ? String(item.start) : "");
+
+      if (!dtstart) {
+        continue;
+      }
+
+      dtstartLine = `DTSTART:${dtstart}`;
+      const dtend = icsDateTime(item.end ? String(item.end) : "");
+
+      if (dtend) {
+        dtendLine = `DTEND:${dtend}`;
+      }
     }
 
-    const dtend = icsDateTime(item.end ? String(item.end) : "");
     let uidBase;
 
-    if (item.url) {
+    if (typeof item.identity === "string" && item.identity) {
+      uidBase = item.identity;
+    } else if (item.url) {
       uidBase = item.url;
     } else if (item.title) {
       uidBase = item.title;
@@ -3801,10 +3977,10 @@ export function buildEventIcs(happeningItems, options = {}) {
 
     lines.push("BEGIN:VEVENT");
     lines.push(`UID:${uid}`);
-    lines.push(`DTSTART:${dtstart}`);
+    lines.push(dtstartLine);
 
-    if (dtend) {
-      lines.push(`DTEND:${dtend}`);
+    if (dtendLine) {
+      lines.push(dtendLine);
     }
 
     lines.push(`SUMMARY:${summary}`);
@@ -4274,6 +4450,13 @@ export function buildViewDocuments(input) {
     compactItems,
     input.now || new Date(input.generatedAt),
   );
+  const pastEventItems = buildPastEventItems(
+    compactItems,
+    input.now || new Date(input.generatedAt),
+  );
+  const pastYears = new Set(
+    pastEventItems.map((item) => String(item.start).slice(0, 4)),
+  );
 
   return {
     activity,
@@ -4317,6 +4500,13 @@ export function buildViewDocuments(input) {
       generated_at: input.generatedAt,
       item_count: happeningItems.length,
       items: happeningItems,
+    },
+    past_events: {
+      schema_version: 1,
+      generated_at: input.generatedAt,
+      item_count: pastEventItems.length,
+      group_by_year: pastYears.size > 1,
+      items: pastEventItems,
     },
   };
 }

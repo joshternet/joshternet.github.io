@@ -1,5 +1,5 @@
 ---
-# Always built. Network nav "Happening" appears when happening.item_count > 0.
+# Always built. Network nav "Happening" appears when happening.k38 > 0.
 published: true
 layout: default
 title: Happening on the Joshternet — events from independent websites
@@ -17,7 +17,7 @@ permalink: /events/
 joshternet_analysis: derived
 ---
 
-{% assign happening_items = site.data.happening.items | default: empty %}
+{% assign happening_items = site.data.happening.k3a | default: empty %}
 
 # Happening on the Joshternet
 
@@ -42,7 +42,7 @@ Joshternet does not invent dates or locations.
 </div>
 {% endif %}
 
-{% if site.data.happening.items.size > 0 %}
+{% if site.data.happening.k3a.size > 0 %}
 <p class="happening-ical">
   <a href="{{ '/assets/events/joshternet.ics' | relative_url }}">Subscribe via iCalendar (.ics)</a>
 </p>

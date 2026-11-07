@@ -6,7 +6,7 @@ import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { after, before, test } from "node:test";
 
-import { chromium } from "playwright";
+import { encodeCrawlValue } from "../../scripts/nlp/site-record.mjs";
 
 const usesScriptPath = fileURLToPath(
   new URL("../../assets/js/uses.js", import.meta.url),
@@ -115,10 +115,12 @@ test("uses empty period reports no observations", async () => {
     await route.fulfill({
       status: 200,
       contentType: "application/json",
-      body: JSON.stringify({
-        schema_version: 1,
-        periods: [{ id: "2026-11", granularity: "month", complete: false }],
-      }),
+      body: JSON.stringify(
+        encodeCrawlValue({
+          schema_version: 1,
+          periods: [{ id: "2026-11", granularity: "month", complete: false }],
+        }),
+      ),
     });
   });
   await page.route(
@@ -127,12 +129,14 @@ test("uses empty period reports no observations", async () => {
       await route.fulfill({
         status: 200,
         contentType: "application/json",
-        body: JSON.stringify({
-          period: "2026-11",
-          is_complete: false,
-          verified_uses_member_count: 1,
-          tools: [],
-        }),
+        body: JSON.stringify(
+          encodeCrawlValue({
+            period: "2026-11",
+            is_complete: false,
+            verified_uses_member_count: 1,
+            tools: [],
+          }),
+        ),
       });
     },
   );
@@ -152,10 +156,12 @@ test("uses keyboard period control updates aria-pressed", async () => {
     await route.fulfill({
       status: 200,
       contentType: "application/json",
-      body: JSON.stringify({
-        schema_version: 1,
-        periods: [{ id: "2026-11", granularity: "month", complete: false }],
-      }),
+      body: JSON.stringify(
+        encodeCrawlValue({
+          schema_version: 1,
+          periods: [{ id: "2026-11", granularity: "month", complete: false }],
+        }),
+      ),
     });
   });
   await page.route(
@@ -164,12 +170,14 @@ test("uses keyboard period control updates aria-pressed", async () => {
       await route.fulfill({
         status: 200,
         contentType: "application/json",
-        body: JSON.stringify({
-          period: "2026-11",
-          is_complete: false,
-          verified_uses_member_count: 1,
-          tools: [{ tool_id: "firefox", active_member_count: 1 }],
-        }),
+        body: JSON.stringify(
+          encodeCrawlValue({
+            period: "2026-11",
+            is_complete: false,
+            verified_uses_member_count: 1,
+            tools: [{ tool_id: "firefox", active_member_count: 1 }],
+          }),
+        ),
       });
     },
   );

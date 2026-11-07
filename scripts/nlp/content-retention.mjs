@@ -54,7 +54,7 @@ export function isDurableCreativeContentItem(item) {
     typeof item.content_type === "string" ? item.content_type : "",
   ).trim();
 
-  if (SHOWCASE_CONTENT_TYPES.includes(type)) {
+  if (SHOWCASE_CONTENT_TYPES.includes(type) || type === "event") {
     return true;
   }
 
@@ -99,15 +99,22 @@ export function isVisitorFacingContentItem(item, now) {
  * @param {Record<string, unknown> | null | undefined} item
  * @param {Date | string} now
  * @param {number} [cacheDays]
+ * @param {{ retainLocalDevCache?: boolean }} [options]
  * @returns {boolean}
  */
 export function isContentCacheEligible(
   item,
   now,
   cacheDays = CONTENT_CACHE_DAYS,
+  options = {},
 ) {
   if (!item || typeof item !== "object") {
     return false;
+  }
+
+  // Local personal-site rows are a growing dataset. CI leaves them out.
+  if (item.local_dev_cache === true) {
+    return options.retainLocalDevCache === true;
   }
 
   if (isDurableCreativeContentItem(item)) {
@@ -128,7 +135,7 @@ export function isContentCacheEligible(
  * Runs before gather so crawl work targets a slim base.
  * @param {unknown} items
  * @param {Date | string} now
- * @param {{ cacheDays?: number }} [options]
+ * @param {{ cacheDays?: number, retainLocalDevCache?: boolean }} [options]
  * @returns {{ kept: Array<Record<string, unknown>>, prunedCount: number }}
  */
 export function pruneContentItems(items, now, options = {}) {
@@ -147,7 +154,11 @@ export function pruneContentItems(items, now, options = {}) {
       continue;
     }
 
-    if (isContentCacheEligible(item, now, cacheDays)) {
+    if (
+      isContentCacheEligible(item, now, cacheDays, {
+        retainLocalDevCache: options.retainLocalDevCache === true,
+      })
+    ) {
       kept.push(/** @type {Record<string, unknown>} */ (item));
     } else {
       prunedCount += 1;
@@ -179,6 +190,32 @@ function itemOriginKey(item) {
 }
 
 /**
+ * Marks gathered rows from local personal sites so later runs keep them.
+ * @param {object[]} items
+ * @param {Iterable<string>} origins
+ * @returns {void}
+ */
+export function markLocalDevCacheContent(items, origins) {
+  const local = new Set(
+    [...(origins || [])].filter(
+      (origin) => typeof origin === "string" && origin,
+    ),
+  );
+  if (local.size === 0 || !Array.isArray(items)) {
+    return;
+  }
+  for (const item of items) {
+    if (!item || typeof item !== "object") {
+      continue;
+    }
+    const origin = itemOriginKey(item);
+    if (origin && local.has(origin)) {
+      item.local_dev_cache = true;
+    }
+  }
+}
+
+/**
  * Identity key for content merge (prefer url).
  * @param {Record<string, unknown>} item
  * @returns {string}
@@ -206,6 +243,7 @@ function itemIdentityKey(item) {
  *   failedOrigins?: Iterable<string>,
  *   reuseOrigins?: Iterable<string>,
  *   cacheDays?: number,
+ *   retainLocalDevCache?: boolean,
  * }} options
  * @returns {{
  *   items: Array<Record<string, unknown>>,
@@ -248,6 +286,12 @@ export function mergeGatheredContent(prunedBase, gathered, options) {
       continue;
     }
 
+    // Local personal sites accumulate. A later crawl updates the same URL.
+    if (options.retainLocalDevCache === true && item.local_dev_cache === true) {
+      byKey.set(key, item);
+      continue;
+    }
+
     // Successful origins: keep durable creative from the base until gather
     // replaces the same URL; drop writing so gather must re-confirm it.
     if (isDurableCreativeContentItem(item)) {
@@ -263,7 +307,11 @@ export function mergeGatheredContent(prunedBase, gathered, options) {
       continue;
     }
 
-    if (!isContentCacheEligible(item, now, cacheDays)) {
+    if (
+      !isContentCacheEligible(item, now, cacheDays, {
+        retainLocalDevCache: options.retainLocalDevCache === true,
+      })
+    ) {
       continue;
     }
 
@@ -282,7 +330,10 @@ export function mergeGatheredContent(prunedBase, gathered, options) {
     }
   }
 
-  const { kept } = pruneContentItems([...byKey.values()], now, { cacheDays });
+  const { kept } = pruneContentItems([...byKey.values()], now, {
+    cacheDays,
+    retainLocalDevCache: options.retainLocalDevCache === true,
+  });
 
   kept.sort((left, right) => {
     const leftUrl = typeof left.url === "string" ? left.url : "";

@@ -578,6 +578,24 @@ test("audioEnclosureUrlFromFeedChunk: empty input, skips, atom link, invalid bas
     ),
     "/rel.mp3",
   );
+  assert.equal(
+    audioEnclosureUrlFromFeedChunk(`<enclosure/>`, "https://joshua.example/"),
+    "",
+  );
+  assert.equal(
+    audioEnclosureUrlFromFeedChunk(
+      `<link rel="alternate" type="audio/mpeg" href="https://joshua.example/ep.mp3" />`,
+      "https://joshua.example/",
+    ),
+    "",
+  );
+  assert.equal(
+    audioEnclosureUrlFromFeedChunk(
+      `<enclosure url="https://joshua.example/ep.mp3" />`,
+      "https://joshua.example/",
+    ),
+    "https://joshua.example/ep.mp3",
+  );
 });
 
 test("isPodcastFeedItem: empty and itunes-only without enclosure", () => {

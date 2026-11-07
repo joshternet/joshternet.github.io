@@ -61,6 +61,14 @@ test("site build and registry sync publish the view datasets", async () => {
   const views = await read("scripts/views/build.mjs");
 
   assert.match(pkg, /"build": "bash scripts\/build\.sh"/);
+  assert.match(
+    pkg,
+    /"update:local": "node scripts\/uses\/prepare-model\.mjs && npm run network:sync && npm run nlp:sync"/,
+  );
+  assert.match(
+    pkg,
+    /"update:local:nonjoshternet": "node scripts\/uses\/fetch-uses-tech\.mjs && npm run update:local"/,
+  );
   assert.match(quality, /npm run build/);
   assert.doesNotMatch(quality, /bundle exec jekyll build/);
 

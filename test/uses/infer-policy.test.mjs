@@ -12,6 +12,7 @@ import {
   automaticPublishAllowed,
   cacheMatchesLock,
   classificationFingerprint,
+  modelClaimText,
   pairSlotScores,
   slotLabels,
   windowText,
@@ -128,6 +129,75 @@ test("acceptProposal requires a margin over the next slot", () => {
     ).slot_id,
     "keyboard",
   );
+});
+
+test("model text uses the product section and not a neighboring heading", () => {
+  const text = modelClaimText({
+    name: "Mimestream",
+    section: "Things 3",
+    section_path: "Productivity",
+    context: "A native Gmail client",
+    excerpt: "A native Gmail client",
+  });
+  assert.match(text.presented, /^Mimestream\./);
+  assert.match(text.presented, /Productivity/);
+  assert.equal(text.presented.includes("Things 3"), false);
+  assert.equal(text.presented.includes("Product:"), false);
+  assert.equal(text.full.includes("A native Gmail client"), true);
+  assert.deepEqual(modelClaimText(null), { full: "", presented: "" });
+  assert.equal(
+    modelClaimText({ name: "Desk", section: "Desk", context: "Desk" })
+      .presented,
+    "Desk",
+  );
+  const long = modelClaimText({
+    name: "Keyboard",
+    context: `${"pad ".repeat(80)}replaced by`,
+  });
+  assert.equal(long.presented.length < long.full.length, true);
+});
+
+test("a cached score still has to clear the policy", async () => {
+  let calls = 0;
+  const cache = new Map();
+  const stats = { hits: 0, misses: 0, decisions: 0, abstained: 0 };
+  const claim = {
+    claim: { name: "CODE Keyboard", context: "daily driver" },
+    catalog: {
+      categories: [
+        {
+          id: "keyboard",
+          name: "Keyboards",
+          role: "ranked",
+          scope: "a keyboard",
+        },
+      ],
+    },
+    policy,
+    cache,
+    cacheKey: "same",
+    stats,
+    classify: async () => {
+      calls += 1;
+      return { labels: ["a keyboard"], scores: [0.2] };
+    },
+  };
+  const first = await applyModelProposal(claim);
+  const second = await applyModelProposal(claim);
+  assert.equal(first.reason, "below-threshold");
+  assert.equal(second.reason, "below-threshold");
+  assert.equal(calls, 1);
+  assert.equal(stats.hits, 1);
+  assert.equal(stats.misses, 1);
+  assert.equal(stats.abstained, 2);
+  const uncached = await applyModelProposal({
+    claim: { name: "CODE Keyboard" },
+    catalog: claim.catalog,
+    policy,
+    cache: new Map(),
+    classify: async () => ({ labels: ["a keyboard"], scores: [0.91] }),
+  });
+  assert.equal(uncached.reason, "accepted");
 });
 
 test("classification fingerprints change when the catalog hash changes", () => {

@@ -4,7 +4,7 @@
   Event times use the declared timezone; no auto-translation.
   activity-card is the list item (lang/dir + start/venue rendered inside).
 {% endcomment %}
-{% assign home_happening = site.data.happening.items | default: empty %}
+{% assign home_happening = site.data.happening.k3a | default: empty %}
 {% if home_happening.size > 0 %}
   <section class="home-happening" aria-labelledby="home-happening-heading">
     <h2 id="home-happening-heading">Coming up</h2>

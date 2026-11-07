@@ -211,9 +211,7 @@ test("buildDataManifest: includes all expected extractor keys", () => {
   }
 });
 
-test("buildDataManifest: includes all expected schema URLs", () => {
+test("buildDataManifest does not publish a schema URL legend", () => {
   const manifest = buildDataManifest({ generatedAt: "t", hashes: {} });
-  assert.ok(typeof manifest.schemas.network === "string");
-  assert.ok(typeof manifest.schemas.data_manifest === "string");
-  assert.ok(manifest.schemas.network.startsWith("https://"));
+  assert.equal(Object.hasOwn(manifest, "schemas"), false);
 });

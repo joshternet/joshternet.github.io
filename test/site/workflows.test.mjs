@@ -9,6 +9,8 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
+import { trackedCrawlOutputs } from "../../scripts/keep-crawl-local.mjs";
+
 const root = fileURLToPath(new URL("../../", import.meta.url));
 
 /**
@@ -43,6 +45,7 @@ test("network-sync keeps hourly and registry triggers plus sync steps", async ()
   assert.match(sync, /GITHUB_TOKEN:\s*\$\{\{\s*github\.token\s*\}\}/);
   assert.match(sync, /BASE_SHA|base\.outputs\.sha|Capture base SHA/);
   assert.match(sync, /JOSHTERNET_USES_PUBLISH/);
+  assert.doesNotMatch(sync, /data\/dev-crawl-cache/);
 });
 
 test("network-sync forbids Actions artifact upload/download for generated data", async () => {
@@ -95,6 +98,10 @@ test("network-sync publish set lists CI-owned generated paths", async () => {
     "assets/network/joshternet.opml",
     "assets/network/sites",
     "assets/activity/posters",
+    "assets/activity/atom.xml",
+    "_data/made.json",
+    "_data/past_events.json",
+    "data/classification/quality-baseline.json",
   ]) {
     assert.match(
       sync,
@@ -111,10 +118,31 @@ test("network-sync publish set lists CI-owned generated paths", async () => {
     /^\s+_data\/seeking(?:\.json)?\s*$/m,
     "network-sync must not stage Seeking request bodies",
   );
+  assert.doesNotMatch(sync, /channel_publish\.json/);
+  assert.doesNotMatch(sync, /homepage_connections\.json/);
+  assert.doesNotMatch(sync, /run-metrics\.json/);
+  assert.doesNotMatch(
+    sync,
+    /data\/crawl-sites/,
+    "network-sync must not stage per-site crawl files",
+  );
+  assert.match(sync, /git add -f --/);
   assert.match(
     sync,
     /Seeking request bodies are current-only/,
     "network-sync must document the Seeking non-commit retention boundary",
+  );
+});
+
+test("local crawl skip list keeps the catalog and topic hub committable", () => {
+  const files = trackedCrawlOutputs();
+
+  assert.equal(files.includes("_data/network.json"), true);
+  assert.equal(files.includes("_data/channel_publish.json"), false);
+  assert.equal(files.includes("topics/index.md"), false);
+  assert.equal(
+    files.some((file) => file.startsWith("data/uses/catalog/")),
+    false,
   );
 });
 

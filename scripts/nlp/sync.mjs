@@ -53,6 +53,7 @@ import {
 import {
   CONTENT_CACHE_DAYS,
   isContentCacheEligible,
+  markLocalDevCacheContent,
   mergeGatheredContent,
   pruneContentItems,
 } from "./content-retention.mjs";
@@ -123,12 +124,29 @@ import {
   shareDescriptionFromHtml,
 } from "./text.mjs";
 import { buildUsesDatasets } from "../uses/build.mjs";
+import { assessUsesPages } from "../uses/origin-assessment.mjs";
+import {
+  clearLocalIntakeOrigins,
+  devCacheEnabled,
+  devCacheRoot,
+  latestUsesOrigins,
+  participantsForThisRun,
+  readLocalIntakeOrigins,
+  rememberMemberCrawl,
+  splitUsesPreviewInputs,
+} from "../uses/dev-cache.mjs";
 import { fetchUsesHtmlPages } from "../uses/discover.mjs";
 import {
   buildSeekingDatasets,
+  collectSeeking,
   fetchSeekingHtmlPages,
   isSeekingPageUrl,
 } from "./seeking.mjs";
+import {
+  iterateSiteRecords,
+  originRecordId,
+  writeSiteRecord,
+} from "./site-record.mjs";
 
 /**
  * Topic and relationship evidence must come from public information Joshternet
@@ -161,6 +179,25 @@ const SITE_URL = "https://joshternet.org";
 /**
  * @returns {Promise<void>}
  */
+/**
+ * Drops page bodies after dates are copied onto content drafts.
+ * The next origin can be crawled without keeping every previous HTML body.
+ * @param {Array<{ html?: string, text?: string }> | undefined} pages
+ * @returns {void}
+ */
+function releaseCrawlPageBodies(pages) {
+  if (!Array.isArray(pages)) {
+    return;
+  }
+  for (const page of pages) {
+    if (!page || typeof page !== "object") {
+      continue;
+    }
+    page.html = "";
+    page.text = "";
+  }
+}
+
 async function main() {
   const network = await readJSONIfExists(NETWORK_PATH, []);
   const aliases = loadAliasMap(
@@ -191,8 +228,9 @@ async function main() {
     }
   }
   const now = new Date().toISOString();
+  const retainLocalDevCache = devCacheEnabled();
   const { kept: prunedContentBase, prunedCount: contentPrunedBeforeGather } =
-    pruneContentItems(previousContentItems, now);
+    pruneContentItems(previousContentItems, now, { retainLocalDevCache });
   process.stdout.write(
     `nlp content prune: dropped ${contentPrunedBeforeGather} aged writing; retained ${prunedContentBase.length} (cache ${CONTENT_CACHE_DAYS}d + durable creative)\n`,
   );
@@ -275,8 +313,6 @@ async function main() {
   const communityOrigins = [];
   /** @type {Array<Record<string, unknown>>} */
   const contentDrafts = [];
-  /** @type {Array<{ url?: string, html?: string }>} */
-  const pagesForPublishedAt = [];
   /** @type {Set<string>} */
   const failedOrigins = new Set();
   /** @type {Set<string>} */
@@ -286,16 +322,89 @@ async function main() {
   const usesOriginInputs = [];
   /** @type {Array<{ origin: string, title?: string, pages?: Array<{ url: string, html?: string, lang?: string }>, complete?: boolean, failed?: boolean }>} */
   const seekingOriginInputs = [];
+  /** @type {string[]} */
+  const writtenIds = [];
 
-  for (const participant of network) {
+  const crawlParticipants = participantsForThisRun(network, devCacheEnabled());
+  const localIntakeOrigins = new Set(
+    await readLocalIntakeOrigins(devCacheRoot(ROOT)),
+  );
+
+  for (const participant of crawlParticipants) {
     if (!participant || typeof participant.origin !== "string") {
       continue;
     }
 
     const origin = participant.origin;
+    const localDevCache = participant.local_dev_cache === true;
+    const marks = {
+      signals: originSignals.length,
+      links: originLinks.length,
+      community: communityOrigins.length,
+      drafts: contentDrafts.length,
+      uses: usesOriginInputs.length,
+      seeking: seekingOriginInputs.length,
+    };
     process.stdout.write(`nlp crawl ${origin}\n`);
 
     try {
+      if (localDevCache && !localIntakeOrigins.has(origin)) {
+        const priorSignal = priorSignalsByOrigin.get(origin);
+        const carried = carryForwardOriginSignal(priorSignal, {
+          origin,
+          crawledAt: now,
+        });
+        const carriedDeclared = Array.isArray(carried.declared_topics)
+          ? carried.declared_topics
+          : [];
+        const carriedSignals = Array.isArray(carried.subject_signals)
+          ? carried.subject_signals
+          : [];
+        const carriedOutbound = Array.isArray(carried.outbound_links)
+          ? carried.outbound_links
+          : [];
+        const carriedFetched =
+          Number(
+            /** @type {Record<string, unknown>} */ (carried.coverage || {})
+              .pages_fetched ??
+              /** @type {Record<string, unknown>} */ (carried.stats || {})
+                .pages_fetched ??
+              0,
+          ) || 0;
+        originSignals.push(carried);
+        originLinks.push({ origin, links: carriedOutbound });
+        communityOrigins.push({
+          origin,
+          title: participant.title || participant.domain || origin,
+          domain: participant.domain || new URL(origin).hostname,
+          declared_topics: carriedDeclared,
+          subject_signals: carriedSignals,
+        });
+        usesOriginInputs.push({
+          origin,
+          title: participant.title || participant.domain || origin,
+          pages: [],
+          local_dev_cache: true,
+          assessment: {
+            page_status: "not_checked",
+            page_url: "",
+            homepage_duplicate: false,
+            extracted: null,
+          },
+        });
+        seekingOriginInputs.push({
+          origin,
+          title: participant.title || participant.domain || origin,
+          pages: [],
+          collected: { pages: [], requests: [] },
+          complete: true,
+        });
+        process.stdout.write(
+          `nlp keep local ${origin}: ${carriedFetched} pages carried (not in this run's intake)\n`,
+        );
+        continue;
+      }
+
       const feeds = Array.isArray(participant.feeds) ? participant.feeds : [];
       const feedData = await subjectsFromFeeds(feeds, dnsCache, {
         observedAt: now,
@@ -730,6 +839,7 @@ async function main() {
           origin,
           title: participant.title || participant.domain || origin,
           pages: usesHtmlPages,
+          local_dev_cache: localDevCache,
         });
         // Dedicated /seeking fetch can complete Seeking even when deep crawl skipped.
         seekingOriginInputs.push({
@@ -785,6 +895,7 @@ async function main() {
           origin,
           title: participant.title || participant.domain || origin,
           pages: usesHtmlPages,
+          local_dev_cache: localDevCache,
         });
         seekingOriginInputs.push({
           origin,
@@ -792,6 +903,25 @@ async function main() {
           pages: seekingHtmlPages,
           complete: true,
         });
+        if (devCacheEnabled()) {
+          try {
+            await rememberMemberCrawl({
+              enabled: true,
+              root: devCacheRoot(ROOT),
+              origin,
+              pages: crawled.pages,
+              usesPages: usesHtmlPages,
+              seekingPages: seekingHtmlPages,
+              subjects: htmlSubjects,
+            });
+          } catch (error) {
+            process.stderr.write(
+              `nlp dev cache skipped ${origin}: ${error instanceof Error ? error.message : error}\n`,
+            );
+          }
+        }
+        enrichPublishedAtFromPages(contentDrafts, crawled.pages);
+        releaseCrawlPageBodies(crawled.pages);
       }
     } catch (error) {
       process.stderr.write(
@@ -811,6 +941,7 @@ async function main() {
         origin,
         title: participant.title || participant.domain || origin,
         pages: [],
+        local_dev_cache: localDevCache,
       });
       seekingOriginInputs.push({
         origin,
@@ -818,16 +949,133 @@ async function main() {
         pages: [],
         failed: true,
       });
+    } finally {
+      const usesInput = usesOriginInputs[usesOriginInputs.length - 1];
+      if (
+        usesInput &&
+        usesInput.origin === origin &&
+        !usesInput.assessment &&
+        Array.isArray(usesInput.pages)
+      ) {
+        usesInput.assessment = assessUsesPages(origin, usesInput.pages);
+        releaseCrawlPageBodies(usesInput.pages);
+        usesInput.pages = [];
+      }
+      const seekingInput = seekingOriginInputs[seekingOriginInputs.length - 1];
+      if (
+        seekingInput &&
+        seekingInput.origin === origin &&
+        !seekingInput.failed &&
+        !seekingInput.collected &&
+        Array.isArray(seekingInput.pages)
+      ) {
+        seekingInput.collected = collectSeeking(seekingInput.pages, {
+          siteOrigin: origin,
+          siteTitle: participant.title || participant.domain || origin,
+          observedAt: now,
+        });
+        releaseCrawlPageBodies(seekingInput.pages);
+        seekingInput.pages = [];
+      }
+      try {
+        const recordedSignal = originSignals[marks.signals];
+        const recordedPages =
+          recordedSignal &&
+          typeof recordedSignal === "object" &&
+          Array.isArray(recordedSignal.pages)
+            ? recordedSignal.pages
+            : [];
+        await writeSiteRecord(ROOT, {
+          origin,
+          title: participant.title || participant.domain || origin,
+          domain: participant.domain || "",
+          crawled_at: now,
+          local_dev_cache: localDevCache,
+          status: failedOrigins.has(origin) ? "failed" : "ok",
+          pages: recordedPages.map((page) => {
+            const record =
+              page && typeof page === "object"
+                ? /** @type {Record<string, unknown>} */ (page)
+                : {};
+            return {
+              url: record.url,
+              role: record.role || record.page_role,
+              published_at: record.published_at,
+              hash: record.hash || record.content_hash,
+            };
+          }),
+          content: contentDrafts.slice(marks.drafts),
+          signals: originSignals[marks.signals] || null,
+          links: originLinks[marks.links] || null,
+          community: communityOrigins[marks.community] || null,
+          uses: usesOriginInputs[marks.uses] || null,
+          seeking: seekingOriginInputs[marks.seeking] || null,
+        });
+        writtenIds.push(originRecordId(origin));
+        contentDrafts.length = marks.drafts;
+        originSignals.length = marks.signals;
+        originLinks.length = marks.links;
+        communityOrigins.length = marks.community;
+        usesOriginInputs.length = marks.uses;
+        seekingOriginInputs.length = marks.seeking;
+      } catch (error) {
+        process.stderr.write(
+          `nlp site record skipped ${origin}: ${error instanceof Error ? error.message : error}\n`,
+        );
+      }
     }
   }
 
+  for await (const record of iterateSiteRecords(ROOT, writtenIds)) {
+    if (Array.isArray(record.content)) {
+      contentDrafts.push(...record.content);
+    }
+    if (record.signals && typeof record.signals === "object") {
+      originSignals.push(record.signals);
+    }
+    if (record.links && typeof record.links === "object") {
+      originLinks.push(record.links);
+    }
+    if (record.community && typeof record.community === "object") {
+      communityOrigins.push(record.community);
+    }
+    if (record.uses && typeof record.uses === "object") {
+      usesOriginInputs.push(record.uses);
+    }
+    if (record.seeking && typeof record.seeking === "object") {
+      seekingOriginInputs.push(record.seeking);
+    }
+  }
+
+  let usesFailed = false;
   try {
     // publish omitted → local on / CI off unless JOSHTERNET_USES_PUBLISH set.
+    const { ledger, preview } = splitUsesPreviewInputs(
+      usesOriginInputs,
+      devCacheEnabled() ? await latestUsesOrigins(devCacheRoot(ROOT)) : [],
+    );
     const usesMetrics = await buildUsesDatasets({
       repoRoot: ROOT,
-      origins: usesOriginInputs,
+      origins: ledger,
       observed_at: now,
     });
+    if (preview.length > 0) {
+      try {
+        const mixed = await buildUsesDatasets({
+          repoRoot: ROOT,
+          origins: [...ledger, ...preview],
+          observed_at: now,
+          previewMix: true,
+        });
+        if (mixed.preview_skipped) {
+          process.stdout.write("nlp uses preview skipped\n");
+        }
+      } catch (error) {
+        process.stderr.write(
+          `nlp uses preview skipped: ${error instanceof Error ? error.message : error}\n`,
+        );
+      }
+    }
     process.stdout.write(
       `nlp uses: verified=${usesMetrics.verified_count} items=${usesMetrics.extraction_item_count} events=${usesMetrics.events_added} publish=${usesMetrics.publish}\n`,
     );
@@ -835,8 +1083,14 @@ async function main() {
     process.stderr.write(
       `nlp uses failed: ${error instanceof Error ? error.message : error}\n`,
     );
+    usesFailed = true;
     process.exitCode = 1;
-    return;
+  } finally {
+    for (const entry of usesOriginInputs) {
+      if (entry) {
+        entry.pages = [];
+      }
+    }
   }
 
   try {
@@ -856,6 +1110,12 @@ async function main() {
     );
     process.exitCode = 1;
     return;
+  } finally {
+    for (const entry of seekingOriginInputs) {
+      if (entry) {
+        entry.pages = [];
+      }
+    }
   }
 
   // Elsewhere YouTube channels → individual watch URLs for Showcase Videos.
@@ -878,9 +1138,16 @@ async function main() {
     );
   }
 
-  enrichPublishedAtFromPages(contentDrafts, pagesForPublishedAt);
+  markLocalDevCacheContent(
+    contentDrafts,
+    crawlParticipants
+      .filter((participant) => participant.local_dev_cache === true)
+      .map((participant) => participant.origin),
+  );
   const draftItems = mergeContentItems(contentDrafts).filter((item) =>
-    isContentCacheEligible(item, now),
+    isContentCacheEligible(item, now, CONTENT_CACHE_DAYS, {
+      retainLocalDevCache,
+    }),
   );
   const aliasesDoc = await readJSONIfExists(ALIASES_PATH, { aliases: [] });
   const catalog = networkCatalog(communityOrigins, draftItems);
@@ -943,6 +1210,7 @@ async function main() {
     now,
     failedOrigins,
     reuseOrigins: shortCircuitedOrigins,
+    retainLocalDevCache,
   });
   const contentItems = contentMerge.items;
   process.stdout.write(
@@ -1240,10 +1508,16 @@ async function main() {
 
   await buildViewProjections();
   await formatGeneratedOutputs();
+  if (devCacheEnabled()) {
+    await clearLocalIntakeOrigins(devCacheRoot(ROOT));
+  }
 
   process.stdout.write(
     `Wrote signals for ${originSignals.length} origins, ${communities.length} communities, ${contentItems.length} content items, ${deduped.length} connections.\n`,
   );
+  if (usesFailed) {
+    process.exitCode = 1;
+  }
 }
 
 main().catch((error) => {

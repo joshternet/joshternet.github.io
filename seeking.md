@@ -17,14 +17,14 @@ script: /assets/js/seeking.js
 ---
 
 {% assign seeking = site.data.seeking %}
-{% assign seeking_sites = seeking.sites | default: empty %}
-{% assign seeking_categories = seeking.categories | default: empty %}
-{% assign seeking_status = seeking.status | default: 'empty' %}
+{% assign seeking_sites = seeking.k6i | default: empty %}
+{% assign seeking_categories = seeking.km | default: empty %}
+{% assign seeking_status = seeking.k71 | default: 'empty' %}
 {% if seeking == nil %}
   {% assign seeking_status = 'empty' %}
 {% endif %}
-{% assign request_count = seeking.request_count | default: 0 %}
-{% assign website_count = seeking.website_count | default: 0 %}
+{% assign request_count = seeking.k5p | default: 0 %}
+{% assign website_count = seeking.k7z | default: 0 %}
 
 # What people are looking for
 

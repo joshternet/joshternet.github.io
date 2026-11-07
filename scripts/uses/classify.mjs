@@ -97,6 +97,22 @@ export function classifyClaim(claim, catalog) {
       return finishTool(tool, context, indexed, "catalog", preference);
     }
   }
+  const fromSection = sectionSlotId(
+    claim?.section_path || claim?.section || "",
+    catalog?.categories,
+  );
+  if (fromSection) {
+    return result({
+      role: "ranked",
+      slot_id: fromSection,
+      tool_id:
+        typeof claim?.tool_id === "string" && claim.tool_id
+          ? claim.tool_id
+          : resolved.tool_id,
+      rule: "section",
+      preference,
+    });
+  }
   if (resolved.match === "abstain" || resolved.match === "ambiguous") {
     return result({
       role: "unsorted",
@@ -110,6 +126,41 @@ export function classifyClaim(claim, catalog) {
     rule: "unresolved",
     preference,
   });
+}
+
+/**
+ * Ranked slot named by one section-path segment. Two different slots abstain.
+ * @param {string} sectionPath
+ * @param {object[]} [categories]
+ * @returns {string|null}
+ */
+export function sectionSlotId(sectionPath, categories) {
+  const segments = String(sectionPath || "")
+    .split("/")
+    .map((part) => comparisonLabel(part))
+    .filter(Boolean);
+  if (segments.length === 0) {
+    return null;
+  }
+  const ranked = (categories || []).filter(
+    (slot) => slot && slot.role === "ranked" && slot.id,
+  );
+  /** @type {Set<string>} */
+  const hits = new Set();
+  for (const segment of segments) {
+    const matched = ranked.filter((slot) => {
+      const name = comparisonLabel(slot.name || "");
+      const id = comparisonLabel(slot.id);
+      return segment === name || segment === id;
+    });
+    if (matched.length === 1) {
+      hits.add(matched[0].id);
+    }
+  }
+  if (hits.size !== 1) {
+    return null;
+  }
+  return [...hits][0];
 }
 
 /**
@@ -148,6 +199,7 @@ export function buildMigrationReport(members, catalog) {
           section_path: tool.section_path || "",
           href: tool.href || "",
           kind: tool.kind || "product",
+          tool_id: tool.tool_id || "",
         },
         catalog,
       );

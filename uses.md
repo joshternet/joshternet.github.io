@@ -12,7 +12,9 @@ seo:
 robots: max-snippet:160, max-image-preview:large
 permalink: /uses/
 joshternet_analysis: derived
-script: /assets/js/uses.js
+scripts:
+  - /assets/js/crawl-keys.js
+  - /assets/js/uses.js
 ---
 
 {% assign summary = site.data.uses_summary %}
@@ -24,7 +26,7 @@ participating websites report using, then follow the source pages for a closer
 look at the setups behind them.
 
 <div data-uses>
-{% if summary == nil or summary.schema_version == nil %}
+{% if summary == nil or summary.k5z == nil %}
 <section class="uses-summary" aria-labelledby="uses-network-heading">
   <h2 id="uses-network-heading">Across the network</h2>
   <p class="network-empty" role="status">
@@ -39,27 +41,27 @@ look at the setups behind them.
   <ul class="uses-summary__stats">
     <li>
       <span class="uses-summary__label">Eligible sites</span>
-      <span class="uses-summary__value">{% if summary.eligible_member_count == nil %}—{% else %}{{ summary.eligible_member_count }}{% endif %}</span>
+      <span class="uses-summary__value">{% if summary.k1z == nil %}—{% else %}{{ summary.k1z }}{% endif %}</span>
     </li>
     <li>
       <span class="uses-summary__label">Sites with verified Uses pages</span>
-      <span class="uses-summary__value">{% if summary.verified_uses_member_count == nil %}—{% else %}{{ summary.verified_uses_member_count }}{% endif %}</span>
+      <span class="uses-summary__value">{% if summary.k7v == nil %}—{% else %}{{ summary.k7v }}{% endif %}</span>
     </li>
     <li>
       <span class="uses-summary__label">Tools currently reported</span>
-      <span class="uses-summary__value">{% if summary.distinct_tool_count == nil %}—{% else %}{{ summary.distinct_tool_count }}{% endif %}</span>
+      <span class="uses-summary__value">{% if summary.k1s == nil %}—{% else %}{{ summary.k1s }}{% endif %}</span>
     </li>
   </ul>
 </section>
 
-<section class="uses-table-section" aria-labelledby="uses-tools-heading" data-uses-snapshot="{{ summary.snapshot_id | escape }}">
+<section class="uses-table-section" aria-labelledby="uses-tools-heading" data-uses-snapshot="{{ summary.k6p | escape }}">
   <h2 id="uses-tools-heading">Comparable choices</h2>
-  {% if summary.slots and summary.slots.size > 0 %}
+  {% if summary.k6n and summary.k6n.size > 0 %}
   <div data-uses-slots>
-    {% for slot in summary.slots %}
-    <section class="uses-slot" id="uses-slot-{{ slot.id | escape }}" data-uses-slot="{{ slot.id | escape }}" data-uses-denominator="{{ slot.denominator }}">
-      <h3>{{ slot.name | escape }}</h3>
-      {% if slot.denominator == 0 or slot.products == nil or slot.products.size == 0 %}
+    {% for slot in summary.k6n %}
+    <section class="uses-slot" id="uses-slot-{{ slot.k30 | escape }}" data-uses-slot="{{ slot.k30 | escape }}" data-uses-denominator="{{ slot.k1l }}">
+      <h3>{{ slot.k42 | escape }}</h3>
+      {% if slot.k1l == 0 or slot.k56 == nil or slot.k56.size == 0 %}
       <p>No comparable reports.</p>
       {% else %}
       <div class="uses-table-wrap">
@@ -72,40 +74,40 @@ look at the setups behind them.
             </tr>
           </thead>
           <tbody>
-            {% for tool in slot.products %}
-            <tr data-uses-product="{{ tool.tool_id | escape }}" data-uses-count="{{ tool.active_member_count }}" data-uses-name="{{ tool.name | default: tool.tool_id | escape }}">
+            {% for tool in slot.k56 %}
+            <tr data-uses-product="{{ tool.k7g | escape }}" data-uses-count="{{ tool.k4 }}" data-uses-name="{{ tool.k42 | default: tool.k7g | escape }}">
               <th scope="row">
-                {% if tool.sources and tool.sources.size > 0 %}
+                {% if tool.k6x and tool.k6x.size > 0 %}
                 <details class="uses-evidence">
                   <summary>
-                    {% if tool.website and tool.website != "" %}
-                    <a href="{{ tool.website | escape }}" target="_blank" rel="noopener">{{ tool.name | default: tool.tool_id | escape }}</a>
+                    {% if tool.k7y and tool.k7y != "" %}
+                    <a href="{{ tool.k7y | escape }}" target="_blank" rel="noopener">{{ tool.k42 | default: tool.k7g | escape }}</a>
                     {% else %}
-                    {{ tool.name | default: tool.tool_id | escape }}
+                    {{ tool.k42 | default: tool.k7g | escape }}
                     {% endif %}
                   </summary>
                   <ul class="uses-evidence__list list-stack">
-                    {% for source in tool.sources %}
+                    {% for source in tool.k6x %}
                     <li>
-                      <a href="{{ source.page_url | escape }}">{{ source.label | default: source.origin | escape }}</a>
+                      <a href="{{ source.k4m | escape }}">{{ source.k3g | default: source.k4b | escape }}</a>
                     </li>
                     {% endfor %}
                   </ul>
                 </details>
                 {% else %}
-                {% if tool.website and tool.website != "" %}
-                <a href="{{ tool.website | escape }}" target="_blank" rel="noopener">{{ tool.name | default: tool.tool_id | escape }}</a>
+                {% if tool.k7y and tool.k7y != "" %}
+                <a href="{{ tool.k7y | escape }}" target="_blank" rel="noopener">{{ tool.k42 | default: tool.k7g | escape }}</a>
                 {% else %}
-                {{ tool.name | default: tool.tool_id | escape }}
+                {{ tool.k42 | default: tool.k7g | escape }}
                 {% endif %}
                 {% endif %}
               </th>
-              <td>{{ tool.active_member_count }} of {{ slot.denominator }}</td>
+              <td>{{ tool.k4 }} of {{ slot.k1l }}</td>
               <td>
-                {% if tool.adoption_score == nil %}
+                {% if tool.k6 == nil %}
                   —
                 {% else %}
-                  {{ tool.adoption_score }}%
+                  {{ tool.k6 }}%
                 {% endif %}
               </td>
             </tr>
@@ -128,16 +130,16 @@ look at the setups behind them.
         </tr>
       </thead>
       <tbody>
-        {% for slot in summary.slots %}
+        {% for slot in summary.k6n %}
         <tr>
-          <th scope="row">{{ slot.name | escape }}</th>
-          <td>{{ slot.products.size }}</td>
+          <th scope="row">{{ slot.k42 | escape }}</th>
+          <td>{{ slot.k56.size }}</td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
   </div>
-  {% elsif summary.verified_uses_member_count and summary.verified_uses_member_count > 0 %}
+  {% elsif summary.k7v and summary.k7v > 0 %}
   <p class="network-empty" role="status">
     No comparable choices are available in this view yet.
   </p>
@@ -148,46 +150,46 @@ look at the setups behind them.
     participating websites.
   </p>
   {% endif %}
-  {% if summary.unsorted and summary.unsorted.size > 0 %}
+  {% if summary.k7n and summary.k7n.size > 0 %}
   <h3>Unsorted</h3>
   <p>These names are on a Uses page. This catalog does not support a slot for them yet, so they are not in the percentages.</p>
   <ul class="list-stack">
-    {% for item in summary.unsorted %}
+    {% for item in summary.k7n %}
     <li>
-      {{ item.name | escape }}
-      — <a href="{{ item.page_url | escape }}">{{ item.label | default: item.origin | escape }}</a>
+      {{ item.k42 | escape }}
+      — <a href="{{ item.k4m | escape }}">{{ item.k3g | default: item.k4b | escape }}</a>
     </li>
     {% endfor %}
   </ul>
   {% endif %}
-  {% if summary.setup and summary.setup.size > 0 %}
+  {% if summary.k6c and summary.k6c.size > 0 %}
   <h3>Setup details</h3>
   <p>Parts, generic gear, and explanations stay with the publisher’s setup. They are not compared as products.</p>
   <ul class="list-stack">
-    {% for item in summary.setup %}
+    {% for item in summary.k6c %}
     <li>
-      {{ item.name | escape }}
-      — <a href="{{ item.page_url | escape }}">{{ item.label | default: item.origin | escape }}</a>
+      {{ item.k42 | escape }}
+      — <a href="{{ item.k4m | escape }}">{{ item.k3g | default: item.k4b | escape }}</a>
     </li>
     {% endfor %}
   </ul>
   {% endif %}
-  {% if summary.use_case_counts and summary.use_case_counts.size > 0 %}
+  {% if summary.k7p and summary.k7p.size > 0 %}
   <h3>Stated uses</h3>
   <ul class="list-stack">
-    {% for entry in summary.use_case_counts %}
-    <li>{{ entry.id | escape }} — {{ entry.count }}</li>
+    {% for entry in summary.k7p %}
+    <li>{{ entry.k30 | escape }} — {{ entry.k1b }}</li>
     {% endfor %}
   </ul>
   {% endif %}
 </section>
 
-{% if summary.ledger and summary.ledger.size > 0 %}
+{% if summary.k3p and summary.k3p.size > 0 %}
 <section class="uses-ledger" aria-labelledby="uses-ledger-heading">
   <h2 id="uses-ledger-heading">Sources in this count</h2>
-  <p>{{ summary.denominator_note | escape }}</p>
+  <p>{{ summary.k1m | escape }}</p>
   <ul class="list-stack">
-    {% for row in summary.ledger %}
+    {% for row in summary.k3p %}
     <li>
       <a href="{{ row.page_url | escape }}">{{ row.label | default: row.origin | escape }}</a>
       — {{ row.outcome | escape }}{% if row.in_denominator %}, {{ row.accepted_count }} accepted{% endif %}.
@@ -213,7 +215,7 @@ look at the setups behind them.
     <button type="button" class="showcase-filters__button" data-uses-period="all-time" aria-pressed="false">All time</button>
   </div>
   <p class="uses-status" data-uses-status role="status">
-    {% if summary.trend_ready %}
+    {% if summary.k7l %}
     Historical views load in the browser.
     {% else %}
     History starts with the first recorded observations. There isn’t enough comparable history to show a trend yet, but you can explore the current snapshot and its sources.
@@ -223,6 +225,6 @@ look at the setups behind them.
 </section>
 
 <p class="uses-howto">
-  <a href="{{ summary.methodology_url | default: '/implement/content/uses/' }}">How this data is collected</a>
+  <a href="{{ summary.k40 | default: '/implement/content/uses/' }}">How this data is collected</a>
 </p>
 </div>

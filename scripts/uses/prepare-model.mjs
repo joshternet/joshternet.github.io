@@ -8,6 +8,8 @@ import { createHash } from "node:crypto";
 import { readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
+import { cacheMatchesLock } from "./infer-policy.mjs";
+
 export const MODEL_CACHE = path.resolve(".tmp/models");
 export const LOCK_PATH = path.resolve("data/classification/model-lock.json");
 
@@ -56,25 +58,37 @@ export async function prepareLockedModel(options = {}) {
   if (lock.model_id !== "Xenova/nli-deberta-v3-xsmall") {
     throw new Error(`model is not allowlisted: ${lock.model_id}`);
   }
+  /** @type {Array<{ path: string, sha256: string }>} */
+  let files = [];
+  try {
+    files = await hashTree(MODEL_CACHE);
+  } catch (error) {
+    if (!error || error.code !== "ENOENT") {
+      throw error;
+    }
+  }
+  const cached = cacheMatchesLock(lock.files, files);
+  if (cached.ok && !options.writeLock) {
+    return { revision: lock.revision, files, downloaded: false };
+  }
   const { env, pipeline } = await import("@huggingface/transformers");
   env.cacheDir = MODEL_CACHE;
   env.allowLocalModels = true;
   env.allowRemoteModels = true;
   await pipeline("zero-shot-classification", lock.model_id, {
-    dtype: "q8",
+    dtype: lock.quantization || "q8",
+    revision: lock.revision,
   });
-  const files = await hashTree(MODEL_CACHE);
-  const revision = files.find((file) => file.path.endsWith("config.json"));
-  const result = {
-    revision: revision ? revision.sha256.slice(0, 12) : lock.revision,
-    files,
-  };
+  files = await hashTree(MODEL_CACHE);
+  const check = cacheMatchesLock(lock.files, files);
+  if (!check.ok && !options.writeLock) {
+    throw new Error(`uses model cache ${check.reason}`);
+  }
   if (options.writeLock) {
-    lock.revision = result.revision;
     lock.files = files;
     await writeFile(LOCK_PATH, `${JSON.stringify(lock, null, 2)}\n`);
   }
-  return result;
+  return { revision: lock.revision, files, downloaded: true };
 }
 
 const writeLock = process.argv.includes("--write-lock");

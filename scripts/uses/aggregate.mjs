@@ -5,7 +5,12 @@
  */
 
 import { catalogFingerprint, classifyClaim } from "./classify.mjs";
-import { applyModelProposal } from "./infer-policy.mjs";
+import {
+  applyModelProposal,
+  classificationFingerprint,
+  modelClaimText,
+  slotLabels,
+} from "./infer-policy.mjs";
 import {
   AGGREGATION_VERSION,
   EXTRACTOR_VERSION,
@@ -141,6 +146,11 @@ export async function buildPeriodRollup(input) {
   const verifiedUsesMemberCount = uniqueCount(verifiedUsesOrigins);
 
   const catalog = input.catalog || { tools: [], categories: [], aliases: [] };
+  const catalogHashForModel = catalogFingerprint(catalog);
+  const labelHash = slotLabels(catalog)
+    .map((label) => label.description)
+    .join("\n");
+  const policyHash = `${input.policy?.threshold ?? ""}|${input.policy?.margin ?? ""}|${input.hypothesisTemplate || ""}`;
   const slotById = new Map(
     (catalog.categories || []).map((slot) => [slot.id, slot]),
   );
@@ -182,6 +192,7 @@ export async function buildPeriodRollup(input) {
         section_path: tool.section_path || "",
         excerpt: tool.excerpt || "",
         href: tool.href || "",
+        tool_id: tool.tool_id || "",
         kind: tool.kind || "product",
       };
       const classified = classifyClaim(claim, catalog);
@@ -199,11 +210,23 @@ export async function buildPeriodRollup(input) {
           choices.push(choice);
           continue;
         }
+        const claimText = modelClaimText(claim);
         const proposal = await applyModelProposal({
           claim,
           catalog,
           policy: input.policy,
           classify: input.classify,
+          cache: input.inferenceCache,
+          cacheKey: classificationFingerprint({
+            evidenceHash: claimText.presented,
+            extractorVersion: EXTRACTOR_VERSION,
+            modelRevision: input.modelRevision || "",
+            templateVersion: input.templateVersion || 0,
+            labelHash,
+            catalogHash: catalogHashForModel,
+            policyHash,
+          }),
+          stats: input.inferenceStats,
         });
         if (!proposal.accepted) {
           choices.push(choice);
@@ -309,48 +332,39 @@ export async function buildPeriodRollup(input) {
     periodEver.get(event.tool_id).add(event.origin);
   }
 
-  const tools = [...toolStats.entries()]
-    .map(([key, stat]) => {
-      const toolId = key.split("\u0000")[1];
-      const activeOrigins = [...stat.origins].sort();
-      const active = activeOrigins.length;
-      const denominator = slotOrigins.get(stat.slot_id).size;
-      const slot = slotById.get(stat.slot_id);
-      const publisherName = preferredToolName(stat.names, toolId);
-      return {
-        tool_id: toolId,
-        name: publicToolName(
-          toolById.get(toolId)?.name || publisherName,
-          toolId,
+  const rankedRows = [...toolStats.entries()].map(([key, stat]) => {
+    const toolId = key.split("\u0000")[1];
+    const activeOrigins = [...stat.origins].sort();
+    const active = activeOrigins.length;
+    const denominator = slotOrigins.get(stat.slot_id).size;
+    const slot = slotById.get(stat.slot_id);
+    const publisherName = preferredToolName(stat.names, toolId);
+    return {
+      tool_id: toolId,
+      name: publicToolName(toolById.get(toolId)?.name || publisherName, toolId),
+      slot_id: stat.slot_id,
+      slot_name: slot?.name || stat.slot_id,
+      denominator,
+      rule: stat.rule,
+      preference: Boolean(stat.preference),
+      active_member_count: active,
+      active_member_origins: activeOrigins,
+      period_ever_member_count: periodEver.get(toolId)?.size || 0,
+      adoption_score: adoptionScore(active, denominator),
+      statements: stat.statements,
+      use_cases: [...stat.useCases.entries()]
+        .map(([id, set]) => ({
+          id,
+          member_count: set.size,
+        }))
+        .sort(
+          (a, b) => b.member_count - a.member_count || a.id.localeCompare(b.id),
         ),
-        slot_id: stat.slot_id,
-        slot_name: slot?.name || stat.slot_id,
-        denominator,
-        rule: stat.rule,
-        preference: Boolean(stat.preference),
-        active_member_count: active,
-        active_member_origins: activeOrigins,
-        period_ever_member_count: periodEver.get(toolId)?.size || 0,
-        adoption_score: adoptionScore(active, denominator),
-        statements: stat.statements,
-        use_cases: [...stat.useCases.entries()]
-          .map(([id, set]) => ({
-            id,
-            member_count: set.size,
-          }))
-          .sort(
-            (a, b) =>
-              b.member_count - a.member_count || a.id.localeCompare(b.id),
-          ),
-        change_from_previous_period: null,
-        source_coverage: input.is_complete ? "complete" : "partial",
-      };
-    })
-    .sort(
-      (a, b) =>
-        b.active_member_count - a.active_member_count ||
-        a.tool_id.localeCompare(b.tool_id),
-    );
+      change_from_previous_period: null,
+      source_coverage: input.is_complete ? "complete" : "partial",
+    };
+  });
+  const tools = collapseDuplicateToolRows(rankedRows, toolById);
 
   const slots = [...slotOrigins.entries()]
     .map(([slotId, origins]) => {
@@ -373,7 +387,7 @@ export async function buildPeriodRollup(input) {
     })
     .sort((a, b) => a.name.localeCompare(b.name));
 
-  const catalogHash = catalogFingerprint(catalog);
+  const catalogHash = catalogHashForModel;
 
   return {
     schema_version: USES_SCHEMA_VERSION,
@@ -506,6 +520,50 @@ export function momentumAgainstPrevious(
       ? null
       : currentScore - previousScore;
   return { momentum_count, momentum_pp };
+}
+
+/**
+ * One product id is one rollup row. Context can file the same id under two
+ * slots; the public row keeps the larger count, then the catalog slot.
+ * @param {object[]} rows
+ * @param {Map<string, { category_id?: string }>} toolById
+ * @returns {object[]}
+ */
+function collapseDuplicateToolRows(rows, toolById) {
+  /** @type {Map<string, object>} */
+  const byId = new Map();
+  for (const row of rows) {
+    const current = byId.get(row.tool_id);
+    if (!current || preferToolRow(row, current, toolById)) {
+      byId.set(row.tool_id, row);
+    }
+  }
+  return [...byId.values()].sort(
+    (a, b) =>
+      b.active_member_count - a.active_member_count ||
+      a.tool_id.localeCompare(b.tool_id),
+  );
+}
+
+/**
+ * True when the candidate row should replace the current row for one tool id.
+ * @param {object} candidate
+ * @param {object} current
+ * @param {Map<string, { category_id?: string }>} toolById
+ * @returns {boolean}
+ */
+function preferToolRow(candidate, current, toolById) {
+  if (candidate.active_member_count !== current.active_member_count) {
+    return candidate.active_member_count > current.active_member_count;
+  }
+  const home = toolById.get(candidate.tool_id)?.category_id || "";
+  if (home && candidate.slot_id === home) {
+    return true;
+  }
+  if (home && current.slot_id === home) {
+    return false;
+  }
+  return String(candidate.slot_id) < String(current.slot_id);
 }
 
 /**

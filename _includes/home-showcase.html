@@ -1,11 +1,11 @@
 {% comment %}
   Goal: Homepage creative grid under What's happening.
   One latest game, project, photo, or music work per member × kind
-  (showcase.home)—no publish window. Same showcase-card as /showcase/.
+  (showcase.k2w)—no publish window. Same showcase-card as /showcase/.
   At most six cards, in the home-list order. One column, two from 44rem,
   three from 72rem; extra cards wrap.
 {% endcomment %}
-{% assign home_showcase = site.data.showcase.home | default: empty %}
+{% assign home_showcase = site.data.showcase.k2w | default: empty %}
 {% if home_showcase.size > 0 %}
   <section class="home-showcase" aria-labelledby="home-showcase-heading">
     <h2 id="home-showcase-heading">Things people are making</h2>

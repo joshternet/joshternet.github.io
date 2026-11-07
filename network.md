@@ -116,7 +116,7 @@ This is the part of the Joshternet that JoshBot has found and checked so far. Th
 {% if network_sites.size > 0 %}
 <div class="network-grid" data-network-grid>
   {% for network_site in network_sites %}
-    {% case network_site.identity %}
+    {% case network_site.k31 %}
       {% when "affirmed" %}
         {% assign identity_label = "Josh" %}
       {% when "declined" %}
@@ -126,15 +126,15 @@ This is the part of the Joshternet that JoshBot has found and checked so far. Th
     {% endcase %}
 
     <article
-      class="network-card network-card--{{ network_site.identity }} h-card"
+      class="network-card network-card--{{ network_site.k31 }} h-card"
       data-network-card
-      data-identity="{{ network_site.identity }}"
-      data-title="{{ network_site.title | default: network_site.domain | downcase | escape }}"
-      data-domain="{{ network_site.domain | downcase | escape }}"
-      data-origin="{{ network_site.origin | escape }}"
-      data-first-participated-at="{{ network_site.first_participated_at | escape }}"
+      data-identity="{{ network_site.k31 }}"
+      data-title="{{ network_site.k7c | default: network_site.k1v | downcase | escape }}"
+      data-domain="{{ network_site.k1v | downcase | escape }}"
+      data-origin="{{ network_site.k4b | escape }}"
+      data-first-participated-at="{{ network_site.k2j | escape }}"
     >
-      {% include outbound-href.html url=network_site.origin %}
+      {% include outbound-href.html url=network_site.k4b %}
       <a
         class="network-card__link u-url"
         href="{{ outbound_href | escape }}"
@@ -142,17 +142,17 @@ This is the part of the Joshternet that JoshBot has found and checked so far. Th
         rel="noopener"
       >
         <div class="network-card__preview">
-          {% if network_site.screenshot %}
+          {% if network_site.k63 %}
             <img
               class="network-card__image u-photo"
-              src="{{ network_site.screenshot | relative_url }}"
-              alt="Screenshot of {{ network_site.title | default: network_site.domain | escape }}"
+              src="{{ network_site.k63 | relative_url }}"
+              alt="Screenshot of {{ network_site.k7c | default: network_site.k1v | escape }}"
               loading="lazy"
               decoding="async"
             >
           {% else %}
             <div class="network-card__fallback" aria-hidden="true">
-              <span>{{ network_site.domain | slice: 0 | upcase }}</span>
+              <span>{{ network_site.k1v | slice: 0 | upcase }}</span>
             </div>
           {% endif %}
         </div>
@@ -162,31 +162,31 @@ This is the part of the Joshternet that JoshBot has found and checked so far. Th
           <span class="visually-hidden">{{ identity_a11y }}</span>
 
           <h2 class="network-card__title p-name">
-            {{ network_site.title | default: network_site.domain | escape }}
+            {{ network_site.k7c | default: network_site.k1v | escape }}
             <span aria-hidden="true">↗</span>
           </h2>
 
-          {% if network_site.description and network_site.description != "" %}
+          {% if network_site.k1n and network_site.k1n != "" %}
             <p class="network-card__description p-note">
-              {{ network_site.description | escape }}
+              {{ network_site.k1n | escape }}
             </p>
           {% endif %}
         </div>
       </a>
       {% assign show_elsewhere = false %}
-      {% if network_site.elsewhere and network_site.elsewhere.size > 0 %}
+      {% if network_site.k20 and network_site.k20.size > 0 %}
         {% assign show_elsewhere = true %}
       {% endif %}
       {% assign show_feed = false %}
-      {% if network_site.feeds and network_site.feeds.size > 0 %}
+      {% if network_site.k2g and network_site.k2g.size > 0 %}
         {% assign show_feed = true %}
       {% endif %}
       <div class="network-card__footer">
         {% if show_elsewhere or show_feed %}
           <div class="network-card__actions">
             {% if show_feed %}
-              {% assign primary_feed = network_site.feeds | first %}
-              {% include outbound-href.html url=primary_feed.url %}
+              {% assign primary_feed = network_site.k2g | first %}
+              {% include outbound-href.html url=primary_feed.k7o %}
               <a
                 class="network-card__feed"
                 href="{{ outbound_href | escape }}"
@@ -208,16 +208,16 @@ This is the part of the Joshternet that JoshBot has found and checked so far. Th
                 </svg>
                 <span class="visually-hidden">
                   Open feed for
-                  {{ network_site.title | default: network_site.domain | escape }}
+                  {{ network_site.k7c | default: network_site.k1v | escape }}
                 </span>
               </a>
             {% endif %}
             {% if show_elsewhere %}
               <ul class="network-card__elsewhere">
-                {% for elsewhere_link in network_site.elsewhere %}
-                  {% assign elsewhere_network = elsewhere_link.network | default: "web" %}
+                {% for elsewhere_link in network_site.k20 %}
+                  {% assign elsewhere_network = elsewhere_link.k45 | default: "web" %}
                   <li>
-                    {% include outbound-href.html url=elsewhere_link.url %}
+                    {% include outbound-href.html url=elsewhere_link.k7o %}
                     <a
                       class="network-card__elsewhere-link"
                       href="{{ outbound_href | escape }}"
@@ -229,7 +229,7 @@ This is the part of the Joshternet that JoshBot has found and checked so far. Th
                         aria-hidden="true"
                       ></span>
                       <span class="visually-hidden">
-                        {{ elsewhere_link.label | default: elsewhere_network | escape }}
+                        {{ elsewhere_link.k3g | default: elsewhere_network | escape }}
                         profile linked from this participant site
                       </span>
                     </a>
@@ -239,14 +239,14 @@ This is the part of the Joshternet that JoshBot has found and checked so far. Th
             {% endif %}
           </div>
         {% endif %}
-        {% include outbound-href.html url=network_site.origin %}
+        {% include outbound-href.html url=network_site.k4b %}
         <a
           class="network-card__domain u-url"
           href="{{ outbound_href | escape }}"
           target="_blank"
           rel="noopener"
         >
-          {{ network_site.domain | escape }}
+          {{ network_site.k1v | escape }}
         </a>
         {% include network-card-joined.html %}
       </div>

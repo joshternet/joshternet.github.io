@@ -136,6 +136,10 @@ export async function buildViewProjections(root = ROOT) {
     delete views.happening.items;
   }
 
+  if (!views.past_events.items.length) {
+    delete views.past_events.items;
+  }
+
   if (!views.connection_topics.pairs.length) {
     delete views.connection_topics.pairs;
   }
@@ -189,6 +193,10 @@ export async function buildViewProjections(root = ROOT) {
   // made.json ≡ showcase.json from one document so the alias cannot drift.
   await writeShowcaseAliasFiles(dataDir, views.showcase);
   await writeStableJSON(path.join(dataDir, "happening.json"), views.happening);
+  await writeStableJSON(
+    path.join(dataDir, "past_events.json"),
+    views.past_events,
+  );
 
   // Seeking public view is build-local and gitignored; refresh from ephemeral
   // state without mixing request text into content/search projections.
@@ -261,7 +269,7 @@ async function main() {
   const views = await buildViewProjections();
   await formatGeneratedOutputs();
   process.stdout.write(
-    `Wrote view projections: ${views.activity.primary_count} activity rows, ${views.explore.community_count} neighborhoods, ${views.search_index.document_count} search documents, ${views.showcase.item_count} showcase items, ${views.happening.item_count} upcoming events.\n`,
+    `Wrote view projections: ${views.activity.primary_count} activity rows, ${views.explore.community_count} neighborhoods, ${views.search_index.document_count} search documents, ${views.showcase.item_count} showcase items, ${views.happening.item_count} upcoming events, ${views.past_events.item_count} past events.\n`,
   );
 }
 

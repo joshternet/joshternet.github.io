@@ -17,9 +17,9 @@ joshternet_analysis: derived
 script: /assets/js/showcase.js
 ---
 
-{% assign showcase_items = site.data.showcase.items | default: empty %}
-{% assign showcase_kinds = site.data.showcase.kinds | default: empty %}
-{% assign showcase_kind_labels = site.data.showcase.kind_labels | default: empty %}
+{% assign showcase_items = site.data.showcase.k3a | default: empty %}
+{% assign showcase_kinds = site.data.showcase.k3f | default: empty %}
+{% assign showcase_kind_labels = site.data.showcase.k3e | default: empty %}
 
 # Showcase
 
@@ -62,14 +62,14 @@ curiosity takes you.
 {% if showcase_items.size > 0 %}
   {% assign current_kind = '' %}
   {% for item in showcase_items %}
-    {% assign item_kind = item.kind | default: 'other' %}
+    {% assign item_kind = item.k3c | default: 'other' %}
     {% if item_kind != current_kind %}
       {% if current_kind != '' %}
   </ol>
 </section>
       {% endif %}
       {% assign current_kind = item_kind %}
-      {% assign section_label = item.kind_label | default: showcase_kind_labels[item_kind] | default: item_kind | capitalize %}
+      {% assign section_label = item.k3d | default: showcase_kind_labels[item_kind] | default: item_kind | capitalize %}
 <section
   class="showcase-section"
   data-showcase-kind="{{ item_kind | escape }}"
@@ -82,11 +82,11 @@ curiosity takes you.
     {% endif %}
     <li
       class="showcase-list__item"
-      {% if item.language and item.language != '' %}
-        lang="{{ item.language | escape }}"
+      {% if item.k3i and item.k3i != '' %}
+        lang="{{ item.k3i | escape }}"
       {% endif %}
-      {% if item.dir and item.dir != '' %}
-        dir="{{ item.dir | escape }}"
+      {% if item.k1p and item.k1p != '' %}
+        dir="{{ item.k1p | escape }}"
       {% endif %}
     >
       {% include showcase-card.html item=item %}

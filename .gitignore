@@ -8,11 +8,23 @@ node_modules/
 coverage.lcov
 .network-sync/
 .tmp/
+data/dev-crawl-cache/
+data/crawl-sites/
 tmp/crawl-original/
 tmp/crawl-experiment/
+tmp/crawl-archives/
 tmp/crawl-active.txt
 # Seeking request bodies stay current-only and must not enter Git history.
 _data/seeking.json
+# Crawl sidecars. Hourly network-sync does not publish these. The files stay
+# on disk for the next local run. quality-baseline, past events, and the
+# calendar are published only by that workflow (git add -f).
+_data/channel_publish.json
+_data/homepage_connections.json
+_data/past_events.json
+assets/events/joshternet.ics
+data/classification/run-metrics.json
+data/classification/quality-baseline.json
 workers/seed-nominations/.wrangler/
 workers/http-message-signatures-directory/.wrangler/
 workers/declaration-check/.wrangler/

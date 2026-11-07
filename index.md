@@ -10,6 +10,7 @@ keywords: >-
   /.well-known/josh, personal websites, join Joshternet
 robots: max-snippet:160, max-image-preview:large
 scripts:
+  - /assets/js/crawl-keys.js
   - /assets/js/home-meet.js
   - /assets/js/connections.js
 ---

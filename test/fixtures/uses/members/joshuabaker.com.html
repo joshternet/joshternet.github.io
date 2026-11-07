@@ -1,0 +1,744 @@
+<!doctype html>
+<html lang="en" class="overflow-x-clip antialiased [color-scheme:dark_light] [text-rendering:optimizeLegibility]">
+  <head>
+    <script>
+      document.documentElement.classList.add('js');
+      // ClientRouter resets <html> attributes to the incoming page's (which has
+      // no `.js`), so re-add it after every view-transition swap — otherwise the
+      // `.js`-gated CSS (e.g. the scatter-card guard) breaks on navigation.
+      document.addEventListener('astro:after-swap', function () {
+        document.documentElement.classList.add('js');
+      });
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Astro v6.1.6">
+    <meta name="theme-color" content="#060504" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#fbfaf9" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x40">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="canonical" href="https://www.joshuabaker.com/uses/">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://www.joshuabaker.com/#person",
+            "name": "Joshua Baker",
+            "alternateName": "Josh Baker",
+            "url": "https://www.joshuabaker.com/",
+            "jobTitle": "Software engineer and designer",
+            "disambiguatingDescription": "Software engineer, designer, and founder",
+            "homeLocation": {
+              "@type": "Place",
+              "name": "London",
+              "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" }
+            },
+            "description": "London-based software engineer, designer, and founder who has spent 20+ years working with founders and chief executives on products that move revenue, valuations, fundraising, even the law.",
+            "sameAs": [
+              "https://www.linkedin.com/in/thejoshuabaker",
+              "https://github.com/joshuabaker",
+              "https://www.instagram.com/joshuabaker/",
+              "https://www.threads.net/@joshuabaker",
+              "https://x.com/joshuabaker"
+            ],
+            "knowsAbout": [
+              "Software engineering",
+              "Product design",
+              "Design systems",
+              "AI",
+              "Machine learning",
+              "Startups"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.joshuabaker.com/#website",
+            "url": "https://www.joshuabaker.com/",
+            "name": "Joshua Baker",
+            "publisher": { "@id": "https://www.joshuabaker.com/#person" }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://www.tuple.co/#organization",
+            "name": "Tuple",
+            "url": "https://www.tuple.co",
+            "founder": { "@id": "https://www.joshuabaker.com/#person" }
+          }
+        ]
+      }
+    </script>
+    <title>Uses — Joshua Baker</title>
+    <meta
+      name="description"
+      content="The tools Joshua Baker works with, day to day — from the AI agents doing the heavy lifting to the kit around the desk."
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Joshua Baker">
+    <meta property="og:title" content="Uses — Joshua Baker">
+    <meta
+      property="og:description"
+      content="The tools Joshua Baker works with, day to day — from the AI agents doing the heavy lifting to the kit around the desk."
+    >
+    <meta property="og:url" content="https://www.joshuabaker.com/uses/">
+    <meta property="og:image" content="https://www.joshuabaker.com/og/uses.3e73f103.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Uses — Joshua Baker">
+    <meta
+      name="twitter:description"
+      content="The tools Joshua Baker works with, day to day — from the AI agents doing the heavy lifting to the kit around the desk."
+    >
+    <meta name="twitter:image" content="https://www.joshuabaker.com/og/uses.3e73f103.png">
+    <link rel="stylesheet" href="/_astro/print.n58iUhtN.css" media="print">
+    <link rel="preload" href="/fonts/soehne-buch.woff2?v=7a2b389f" as="font" type="font/woff2" crossorigin="anonymous">
+    <link
+      rel="preload"
+      href="/fonts/soehne-kraftig.woff2?v=6e74e4e8"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    >
+    <meta name="astro-view-transitions-enabled" content="true">
+    <meta name="astro-view-transitions-fallback" content="animate">
+    <script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.D2-1vWZC.js"></script>
+    <noscript>
+      <style>
+        [data-table-footer] {
+          display: none;
+        }
+      </style>
+    </noscript>
+    <style>
+      ::view-transition-old(site-header) {
+        display: none;
+      }
+    </style>
+    <link rel="stylesheet" href="/_astro/BaseLayout.D9K5s5_8.css">
+  </head>
+</html>
+<!--
+  No typography-* on <body> (each text block opts into its scale step
+  explicitly). NOTE: nothing may render between </head> and <body> — even a
+  template expression here makes the parser open <body> implicitly and DROP
+  the real tag's attributes (class included → no bg-page). HTML comments
+  are safe; {/* JSX comments */} are not.
+-->
+<body class="min-h-screen min-w-[320px] overflow-x-clip flex flex-col text-mono-350 text-pretty bg-page">
+  <div class="header-blur" aria-hidden="true">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <header class="sticky top-0 z-50">
+    <div class="mx-auto max-w-page px-page-margin min-h-(--header-height) typography-md leading-5 flex items-center justify-between">
+      <p class="flex">
+        <a href="/" class="typography-lg font-medium text-mono-0 text-trim-both">
+          <span class="whitespace-nowrap before:content-['J._B.'] sm:hidden" aria-hidden="true"></span
+          ><span class="max-sm:sr-only">Joshua Baker</span>
+        </a>
+      </p>
+      <nav>
+        <ul class="flex gap-(--nav-gap)">
+          <li class="flex">
+            <a href="/work/" class="relative font-normal typography-sm text-trim-both text-mono-0/60 hover:text-mono-0">
+              Work
+            </a>
+          </li>
+          <li class="flex">
+            <a
+              href="/about/"
+              class="relative font-normal typography-sm text-trim-both text-mono-0/60 hover:text-mono-0"
+            >
+              About
+            </a>
+          </li>
+          <li class="flex">
+            <a
+              href="/contact/"
+              class="relative font-normal typography-sm text-trim-both text-mono-0/60 hover:text-mono-0"
+            >
+              Contact
+            </a>
+          </li>
+        </ul>
+        <template data-nav-dot-template
+          ><span
+            data-nav-dot
+            aria-hidden="true"
+            class="pointer-events-none absolute left-1/2 top-[calc(100%+8px)] -ml-0.5 size-1 rounded-full bg-mono-550"
+          ></span
+        ></template>
+      </nav>
+    </div>
+  </header>
+  <script type="module" src="/_astro/Header.astro_astro_type_script_index_0_lang.k1C-gmV6.js"></script>
+  <main class="relative z-[1] flex-1 min-h-[calc(100svh_-_var(--header-height)_*_3)]">
+    <div class="grid gap-block-lg pt-block-xl pb-block-xl">
+      <section class="w-full mx-auto max-w-page px-page-margin grid grid-cols-1 sm:grid-cols-12 sm:gap-x-grid-gap">
+        <div class="w-full grid grid-cols-1 gap-y-block-xs sm:col-[1/span_11] sm:max-w-[560px] md:col-[2/span_10] md:mx-auto lg:col-[4/span_6] lg:max-w-none">
+          <h1 class="text-trim-start font-medium text-mono-0 text-balance typography-display">Uses</h1>
+          <div class="space-y-block-xs typography-md">
+            <p>The tools I work with, day to day.</p>
+            <p class="typography-caption text-muted text-trim-end">
+              Updated July 2026&nbsp;&nbsp;·&nbsp;&nbsp;<a
+                href="https://uses.tech"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline"
+                >What is a “uses page”?</a
+              >
+            </p>
+          </div>
+        </div>
+      </section>
+      <section
+        data-enter
+        class="w-full mx-auto max-w-page px-page-margin grid grid-cols-1 sm:grid-cols-12 sm:gap-x-grid-gap"
+      >
+        <div class="w-full grid grid-cols-1 gap-y-block-xs sm:col-[1/span_11] sm:max-w-[560px] md:col-[2/span_10] md:mx-auto lg:col-[4/span_6] lg:max-w-none">
+          <h2 id="toolkit" class="typography-lg text-trim-start font-medium text-mono-0 text-balance">Toolkit</h2>
+          <div class="space-y-block-xs typography-md">
+            <ul class="space-y-prose">
+              <li class="relative pl-[0.9em] before:content-['–'] before:absolute before:left-0 before:text-mono-440">
+                <a
+                  href="https://claude.com/product/claude-code"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline"
+                  >Claude&nbsp;Code</a
+                >
+                and
+                <a href="https://openai.com/codex/" target="_blank" rel="noopener noreferrer" class="underline"
+                  >Codex</a
+                >
+                are my daily drivers — most of my work now runs through AI agents, following skills I’ve written myself
+                and working asynchronously on multiple streams at once
+              </li>
+              <li class="relative pl-[0.9em] before:content-['–'] before:absolute before:left-0 before:text-mono-440">
+                I was an early adopter of
+                <a href="https://www.figma.com" target="_blank" rel="noopener noreferrer" class="underline">Figma</a>,
+                which is still my go-to tool when I’m designing
+              </li>
+              <li class="relative pl-[0.9em] before:content-['–'] before:absolute before:left-0 before:text-mono-440">
+                Almost all of the animations on this site were made with
+                <a href="https://www.remotion.dev" target="_blank" rel="noopener noreferrer" class="underline"
+                  >Remotion</a
+                >
+              </li>
+              <li class="relative pl-[0.9em] before:content-['–'] before:absolute before:left-0 before:text-mono-440">
+                I use
+                <a href="https://www.sublimetext.com" target="_blank" rel="noopener noreferrer" class="underline"
+                  >Sublime&nbsp;Text</a
+                >
+                and <a href="https://zed.dev" target="_blank" rel="noopener noreferrer" class="underline">Zed</a> as
+                text editors (mostly as scratchpads or when I need to get my hands dirty coding again)
+              </li>
+              <li class="relative pl-[0.9em] before:content-['–'] before:absolute before:left-0 before:text-mono-440">
+                <a href="https://iterm2.com" target="_blank" rel="noopener noreferrer" class="underline"
+                  >iTerm&nbsp;2</a
+                >
+                remains my terminal of choice
+              </li>
+              <li class="relative pl-[0.9em] before:content-['–'] before:absolute before:left-0 before:text-mono-440">
+                I use the different variants of the
+                <a
+                  href="https://github.com/primer/github-vscode-theme"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline"
+                  >GitHub theme</a
+                >
+                to keep things visually consistent
+              </li>
+              <li class="relative pl-[0.9em] before:content-['–'] before:absolute before:left-0 before:text-mono-440">
+                My current monospace font is
+                <a
+                  href="https://usgraphics.com/products/berkeley-mono"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline"
+                  >Berkeley&nbsp;Mono</a
+                >
+              </li>
+              <li class="relative pl-[0.9em] before:content-['–'] before:absolute before:left-0 before:text-mono-440">
+                All of my code lives on
+                <a href="https://github.com/joshuabaker" target="_blank" rel="noopener noreferrer" class="underline"
+                  >GitHub</a
+                >, where I also publish utilities extracted from real projects that might save someone else an afternoon
+              </li>
+              <li class="relative pl-[0.9em] before:content-['–'] before:absolute before:left-0 before:text-mono-440">
+                More and more of my infrastructure runs on
+                <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" class="underline"
+                  >Cloudflare</a
+                >
+                as their offering keeps improving
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section
+        data-enter
+        class="w-full mx-auto max-w-page px-page-margin grid grid-cols-1 sm:grid-cols-12 sm:gap-x-grid-gap"
+      >
+        <div class="w-full grid grid-cols-1 gap-y-block-xs sm:col-[1/span_11] sm:max-w-[560px] md:col-[2/span_10] md:mx-auto lg:col-[4/span_6] lg:max-w-none">
+          <h2 id="workstation" class="typography-lg text-trim-start font-medium text-mono-0 text-balance">
+            Workstation
+          </h2>
+          <div class="space-y-block-xs typography-md">
+            <p>Pretty much everything I own is Apple, and has been for years.</p>
+            <ul class="space-y-prose">
+              <li class="relative pl-[0.9em] before:content-['–'] before:absolute before:left-0 before:text-mono-440">
+                I have the
+                <a
+                  href="https://www.apple.com/pro-display-xdr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline"
+                  >Pro&nbsp;Display&nbsp;XDR</a
+                >, which makes me way more performant (though I’m not thrilled that Apple’s newer Pro displays have
+                stepped down from 32&nbsp;inches)
+              </li>
+              <li class="relative pl-[0.9em] before:content-['–'] before:absolute before:left-0 before:text-mono-440">
+                The
+                <a
+                  href="https://www.hermanmiller.com/products/seating/office-chairs/aeron-chairs/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline"
+                  >Herman&nbsp;Miller Aeron</a
+                >
+                is my preferred task chair
+              </li>
+              <li class="relative pl-[0.9em] before:content-['–'] before:absolute before:left-0 before:text-mono-440">
+                My desk was custom made by my good friend
+                <a href="https://www.abdollahnafisi.com" target="_blank" rel="noopener noreferrer" class="underline"
+                  >Abdollah&nbsp;Nafisi</a
+                >, before he became an international art sensation
+              </li>
+              <li class="relative pl-[0.9em] before:content-['–'] before:absolute before:left-0 before:text-mono-440">
+                I use the Apple numeric keyboard, English layout — I love the larger return key and Touch&nbsp;ID is
+                incredibly convenient (I never much got into mechanical, despite loving the aesthetic)
+              </li>
+              <li class="relative pl-[0.9em] before:content-['–'] before:absolute before:left-0 before:text-mono-440">
+                I like Logitech mice and currently use an
+                <a
+                  href="https://www.logitech.com/en-gb/products/mice/mx-master-3s.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline"
+                  >MX&nbsp;Master&nbsp;3S</a
+                >
+              </li>
+              <li class="relative pl-[0.9em] before:content-['–'] before:absolute before:left-0 before:text-mono-440">
+                I formerly worked as a fashion photographer and have a decent
+                <a
+                  href="https://en.wikipedia.org/wiki/Canon_EOS_5DS"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline"
+                  >Canon DSLR</a
+                >, but these days I shoot almost exclusively on
+                <a href="https://www.apple.com/iphone/" target="_blank" rel="noopener noreferrer" class="underline"
+                  >iPhone</a
+                >
+                (“the best camera is the one you have with you”)
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section
+        data-enter
+        class="w-full mx-auto max-w-page px-page-margin grid grid-cols-1 sm:grid-cols-12 sm:gap-x-grid-gap"
+      >
+        <div class="w-full grid grid-cols-1 gap-y-block-xs sm:col-[1/span_11] sm:max-w-[560px] md:col-[2/span_10] md:mx-auto lg:col-[4/span_6] lg:max-w-none">
+          <h2 id="apps" class="typography-lg text-trim-start font-medium text-mono-0 text-balance">Apps</h2>
+          <div class="space-y-block-xs typography-md">
+            <ul class="space-y-prose">
+              <li class="relative pl-[0.9em] before:content-['–'] before:absolute before:left-0 before:text-mono-440">
+                <a href="https://1password.com" target="_blank" rel="noopener noreferrer" class="underline"
+                  >1Password</a
+                >
+                is my first install on a new device
+              </li>
+              <li class="relative pl-[0.9em] before:content-['–'] before:absolute before:left-0 before:text-mono-440">
+                I use
+                <a href="https://culturedcode.com/things/" target="_blank" rel="noopener noreferrer" class="underline"
+                  >Things</a
+                >
+                with the
+                <a href="https://gettingthingsdone.com" target="_blank" rel="noopener noreferrer" class="underline"
+                  >GTD</a
+                >
+                methodology for managing tasks
+              </li>
+              <li class="relative pl-[0.9em] before:content-['–'] before:absolute before:left-0 before:text-mono-440">
+                I have
+                <a href="https://www.raycast.com" target="_blank" rel="noopener noreferrer" class="underline"
+                  >Raycast</a
+                >
+                as my launcher and quick-access, multi-purpose calculator
+              </li>
+              <li class="relative pl-[0.9em] before:content-['–'] before:absolute before:left-0 before:text-mono-440">
+                <a href="https://flighty.com" target="_blank" rel="noopener noreferrer" class="underline">Flighty</a>
+                tracks my flights
+              </li>
+              <li class="relative pl-[0.9em] before:content-['–'] before:absolute before:left-0 before:text-mono-440">
+                I listen to music on Spotify (<a
+                  href="https://open.spotify.com/user/joshuabaker"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline"
+                  >@joshuabaker</a
+                >)
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section
+        data-enter
+        class="w-full mx-auto max-w-page px-page-margin grid grid-cols-1 sm:grid-cols-12 sm:gap-x-grid-gap"
+      >
+        <div class="w-full grid grid-cols-1 gap-y-block-xs sm:col-[1/span_11] sm:max-w-[560px] md:col-[2/span_10] md:mx-auto lg:col-[4/span_6] lg:max-w-none">
+          <h2 id="gaming" class="typography-lg text-trim-start font-medium text-mono-0 text-balance">Gaming</h2>
+          <div class="space-y-block-xs typography-md">
+            <p class="text-trim-end">
+              I game through
+              <a
+                href="https://www.nvidia.com/en-gb/geforce-now/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline"
+                >GeForce&nbsp;Now</a
+              >
+              Ultimate. As an early adopter I appreciate how solid the service has become. I can no longer imagine a
+              personal heater raging away under the desk whenever I want to
+              <a
+                href="https://en.wikipedia.org/wiki/Warhammer_40,000:_Space_Marine_2"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline"
+                >stomp around on Avarax</a
+              >.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="relative z-0 bg-page">
+    <div aria-hidden="true" class="footer-line mx-auto max-w-page"></div>
+    <div class="relative z-10 mx-auto max-w-page px-page-margin typography-sm leading-6 text-mono-0/60">
+      <div class="pt-[min(var(--spacing-page-margin),var(--spacing-block-md))] pb-[min(var(--spacing-page-margin),var(--spacing-block-lg))]">
+        <div class="grid grid-cols-2 gap-x-grid-gap gap-y-6 sm:grid-cols-12 sm:gap-y-0">
+          <p class="col-span-2 sm:col-span-4 sm:col-start-1 sm:row-start-1 sm:self-start">
+            Based in London.
+            <br>
+            Working worldwide.
+          </p>
+          <ul class="col-span-1 sm:col-start-7 sm:col-span-3 sm:row-start-1 sm:self-baseline-last xl:col-start-9 xl:col-span-2">
+            <li><a href="/" class="inline-block text-muted hover:text-mono-0">Home</a></li>
+            <li><a href="/work/" class="inline-block text-muted hover:text-mono-0">Work</a></li>
+            <li><a href="/about/" class="inline-block text-muted hover:text-mono-0">About</a></li>
+            <li><a href="/now/" class="inline-block text-muted hover:text-mono-0">Now</a></li>
+            <li><a href="/uses/" class="inline-block text-muted hover:text-mono-0">Uses</a></li>
+            <li><a href="/contact/" class="inline-block text-muted hover:text-mono-0">Contact</a></li>
+          </ul>
+          <ul class="col-span-1 sm:col-start-10 sm:col-span-3 sm:row-start-1 xl:col-start-11 xl:col-span-2">
+            <li>
+              <a
+                href="https://www.linkedin.com/in/thejoshuabaker"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block text-muted hover:text-mono-0"
+              >
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/joshuabaker"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block text-muted hover:text-mono-0"
+              >
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/joshuabaker/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block text-muted hover:text-mono-0"
+              >
+                Instagram
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.threads.net/@joshuabaker"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block text-muted hover:text-mono-0"
+              >
+                Threads
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://x.com/joshuabaker"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block text-muted hover:text-mono-0"
+              >
+                X&thinsp;/&thinsp;Twitter
+              </a>
+            </li>
+          </ul>
+          <p class="typography-caption text-mono-360 col-span-2 sm:col-span-4 sm:col-start-1 sm:row-start-1 sm:self-baseline-last">
+            ©2026 Joshua Baker&nbsp;&nbsp;·&nbsp;&nbsp;<a href="/privacy/" class="hover:text-mono-0">Privacy</a
+            ><span class="palette-hint"
+              >&nbsp;&nbsp;·&nbsp;&nbsp;<button
+                type="button"
+                data-palette-trigger
+                aria-label="Open command palette"
+                aria-keyshortcuts="Meta+K"
+                class="cursor-pointer hover:text-mono-0"
+              >
+                ⌘K
+              </button></span
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script type="module">
+    const r = 'grid-overlay',
+      d = 'grid-overlay',
+      a = () => {
+        try {
+          return sessionStorage.getItem(r) === '1';
+        } catch {
+          return !1;
+        }
+      },
+      i = (e) => {
+        try {
+          e ? sessionStorage.setItem(r, '1') : sessionStorage.removeItem(r);
+        } catch {}
+      },
+      s = () => {
+        let e = document.getElementById(d);
+        if (e) return e;
+        ((e = document.createElement('div')), (e.id = d), e.setAttribute('aria-hidden', 'true'));
+        const n = document.createElement('div');
+        for (let t = 0; t < 12; t++) n.appendChild(document.createElement('div'));
+        return (e.appendChild(n), document.body.appendChild(e), e);
+      },
+      o = () => {
+        try {
+          const t = new URL(location.href);
+          t.searchParams.has('grid') &&
+            (i(!0), t.searchParams.delete('grid'), history.replaceState(history.state, '', t));
+        } catch {}
+        const e = a(),
+          n = document.getElementById(d);
+        e ? (s().hidden = !1) : n && (n.hidden = !0);
+      },
+      c = () => {
+        (i(!a()), o());
+      };
+    window.__gridOverlayBound ||
+      ((window.__gridOverlayBound = !0),
+      document.addEventListener('keydown', (e) => {
+        e.altKey && !e.ctrlKey && !e.metaKey && !e.shiftKey && e.code === 'KeyG' && (e.preventDefault(), c());
+      }),
+      document.addEventListener('astro:page-load', o));
+    o();
+  </script>
+  <script type="module" src="/_astro/CommandPalette.astro_astro_type_script_index_0_lang.CM3ss6Dr.js"></script>
+  <script>
+    (function () {
+      if (window.__heroRevealBound) return;
+      window.__heroRevealBound = true;
+      document.addEventListener('astro:after-swap', function () {
+        document.querySelectorAll('[data-hero-container], .hero-word').forEach(function (el) {
+          el.style.animation = 'none';
+          void el.offsetWidth;
+          el.style.animation = '';
+        });
+      });
+    })();
+  </script>
+  <script>
+    (function () {
+      if (window.__deferredVideoBound) return;
+      window.__deferredVideoBound = true;
+      var observer = null;
+      // Checked lazily (`.matches` at decision time), so a mid-session
+      // change of the OS setting affects loops from the next page load /
+      // scroll-into-view without needing a change listener.
+      var reducedMotion = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+      function motionReduced() {
+        return !!(reducedMotion && reducedMotion.matches);
+      }
+      // The loop isn't playing (reduced motion, or autoplay refused) —
+      // surface the chrome so it can be started by hand (mirrors the
+      // toggle script's sync()).
+      function markPaused(video) {
+        var toggle = video.parentElement && video.parentElement.querySelector('[data-video-toggle]');
+        if (!toggle) return;
+        toggle.setAttribute('data-state', 'paused');
+        toggle.setAttribute('aria-label', 'Play');
+      }
+      function tryPlay(video) {
+        var attempt = video.play();
+        if (attempt && attempt.catch) {
+          attempt.catch(function (error) {
+            // NotSupportedError ("no supported sources") after a
+            // view-transition swap: ClientRouter parses the incoming page in
+            // an inert document, where media resource selection fails, and
+            // Chromium doesn't re-run it when the element is adopted.
+            // load() restarts selection in the live document; retry once.
+            if (error.name === 'NotSupportedError' && !video.dataset.revived) {
+              video.dataset.revived = '1';
+              video.load();
+              tryPlay(video);
+              return;
+            }
+            markPaused(video);
+          });
+        }
+      }
+      function start(video) {
+        if (video.dataset.poster) {
+          video.poster = video.dataset.poster;
+          video.removeAttribute('data-poster');
+        }
+        // Reduced motion: present the loop normally (sharp real poster in
+        // place) but don't start it — the Play chrome is the opt-in. The
+        // video bytes fetch on tap, exactly as after a refused autoplay.
+        if (motionReduced()) {
+          markPaused(video);
+          return;
+        }
+        tryPlay(video);
+      }
+      document.addEventListener('astro:page-load', function () {
+        if (observer) {
+          observer.disconnect();
+          observer = null;
+        }
+        // Revive every video the swap left sourceless (see tryPlay) — this
+        // pass exists for the user-driven players (the appendix pages'
+        // <video controls>, the modal players), whose native Play button
+        // would otherwise hit the same dead element; the loops below get
+        // the same treatment lazily via tryPlay's retry.
+        document.querySelectorAll('video').forEach(function (v) {
+          if (v.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) v.load();
+        });
+        // Eager loops (VideoLoop `eager`, the card/carousel videos) carry
+        // `autoplay`; if the browser blocked it, a fresh play() either
+        // starts them or rejects and reveals the chrome. Under reduced
+        // motion the attribute is REMOVED before the pause — the browser
+        // fires autoplay when the media finishes loading, which is usually
+        // after this handler, so a pause alone loses the race. `autoplay`
+        // is static HTML, so a few frames may still run before this lands;
+        // that brief start is the cost of keeping the markup static.
+        // Scoped to video[loop] so user-driven players (the appendix
+        // pages' <video controls>) are never touched.
+        document.querySelectorAll('video[loop][autoplay]').forEach(function (v) {
+          if (motionReduced()) {
+            v.removeAttribute('autoplay');
+            if (!v.paused) v.pause();
+            markPaused(v);
+          } else if (v.paused) {
+            tryPlay(v);
+          }
+        });
+        // Deferred loops are the loop videos WITHOUT autoplay.
+        var videos = document.querySelectorAll('video[loop]:not([autoplay])');
+        if (!videos.length) return;
+        if (!('IntersectionObserver' in window)) {
+          videos.forEach(start);
+          return;
+        }
+        observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting) return;
+              observer.unobserve(entry.target);
+              start(entry.target);
+            });
+          },
+          { rootMargin: '100% 0px' },
+        );
+        videos.forEach(function (video) {
+          observer.observe(video);
+        });
+      });
+    })();
+  </script>
+  <script>
+    (function () {
+      if (window.__videoToggleBound) return;
+      window.__videoToggleBound = true;
+      function sync(video) {
+        var toggle = video.parentElement && video.parentElement.querySelector('[data-video-toggle]');
+        if (!toggle) return;
+        toggle.setAttribute('data-state', video.paused ? 'paused' : 'playing');
+        toggle.setAttribute('aria-label', video.paused ? 'Play' : 'Pause');
+      }
+      document.addEventListener('click', function (event) {
+        var toggle = event.target.closest && event.target.closest('[data-video-toggle]');
+        if (!toggle) return;
+        var video = toggle.parentElement.querySelector('video');
+        if (!video) return;
+        if (video.dataset.poster) {
+          video.poster = video.dataset.poster;
+          video.removeAttribute('data-poster');
+        }
+        if (video.paused) {
+          // Sourceless after a view-transition swap (see the deferred-video
+          // script) — load() first so the tap actually starts playback.
+          if (video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) {
+            video.load();
+          }
+          video.play().catch(function () {});
+        } else {
+          video.pause();
+        }
+      });
+      function onMediaEvent(event) {
+        if (event.target.tagName === 'VIDEO') sync(event.target);
+      }
+      document.addEventListener('play', onMediaEvent, true);
+      document.addEventListener('pause', onMediaEvent, true);
+      document.addEventListener('astro:page-load', function () {
+        document.querySelectorAll('[data-video-toggle]').forEach(function (toggle) {
+          var video = toggle.parentElement.querySelector('video');
+          if (video) sync(video);
+        });
+      });
+    })();
+  </script>
+  <script
+    type="module"
+    src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw=="
+    data-cf-beacon='{"version":"2024.11.0","token":"60afe72145c847bf9368bf96eb41e50c","r":1,"spa":2}'
+    crossorigin="anonymous"
+  ></script>
+</body>

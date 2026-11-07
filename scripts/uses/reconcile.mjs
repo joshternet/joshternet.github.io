@@ -10,7 +10,7 @@ import {
   TAXONOMY_VERSION,
 } from "./constants.mjs";
 import { isKeptInState } from "./evidence.mjs";
-import { deterministicEventId } from "./normalize.mjs";
+import { deterministicEventId, supersededObservedIds } from "./normalize.mjs";
 
 /**
  * @typedef {object} MemberToolState
@@ -45,6 +45,7 @@ import { deterministicEventId } from "./normalize.mjs";
  * @param {boolean} [input.pageComplete] - Materially complete parse for removals.
  * @param {boolean} [input.bodyComplete] - False when the response was truncated. Blocks removals.
  * @param {'adoption'|'correction'} [input.mode] - Correction rewrites state without adoption events.
+ * @param {{ tools?: object[], aliases?: object[] }} [input.catalog] - Resolves duplicate observed ids.
  * @returns {{ events: object[], next: MemberState }}
  */
 export function reconcileMemberUsage(input) {
@@ -69,6 +70,23 @@ export function reconcileMemberUsage(input) {
     currentByTool.set(record.tool_id, record);
   }
 
+  const identityPairs = input.catalog
+    ? supersededObservedIds(
+        previous?.tools || [],
+        input.catalog,
+        currentByTool.keys(),
+      )
+    : [];
+  /** @type {Set<string>} */
+  const dropObserved = new Set(identityPairs.map((pair) => pair.observed_id));
+  /** @type {Set<string>} */
+  const canonicalFromObserved = new Set(
+    identityPairs.map((pair) => pair.canonical_id),
+  );
+  for (const observedId of dropObserved) {
+    currentByTool.delete(observedId);
+  }
+
   /** @type {MemberToolState[]} */
   const nextTools = [];
 
@@ -77,7 +95,10 @@ export function reconcileMemberUsage(input) {
     const useCases = [...(record.use_case_ids || [])].sort();
     if (!prior) {
       const event = makeEvent({
-        event_type: correction ? "correction" : "usage_added",
+        event_type:
+          correction || canonicalFromObserved.has(toolId)
+            ? "correction"
+            : "usage_added",
         observed_at: observedAt,
         origin: input.origin,
         page_url: input.page_url,
@@ -163,7 +184,7 @@ export function reconcileMemberUsage(input) {
       continue;
     }
 
-    if (correction) {
+    if (correction || dropObserved.has(toolId)) {
       const event = makeEvent({
         event_type: "correction",
         observed_at: observedAt,
@@ -283,7 +304,7 @@ export function reconcileMemberUsage(input) {
   }
 
   events.sort(compareEvents);
-  return { events, next };
+  return { events, next, identityPairs };
 }
 
 /**

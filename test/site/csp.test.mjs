@@ -9,6 +9,8 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
+import { decodeCrawlValue } from "../../scripts/nlp/site-record.mjs";
+
 const root = fileURLToPath(new URL("../../", import.meta.url));
 
 /**
@@ -166,7 +168,7 @@ try {
       read("_site/nominate/index.html"),
     ]);
 
-  network = JSON.parse(networkSource);
+  network = decodeCrawlValue(JSON.parse(networkSource));
   siteOrigin = configValue(config, "url");
   nominationAPIOrigin = configValue(config, "api_origin");
   homepageCSP = parseCSP(extractCSP(homepageHTML));

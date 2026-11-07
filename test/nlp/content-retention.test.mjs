@@ -11,6 +11,7 @@ import {
   isContentCacheEligible,
   isDurableCreativeContentItem,
   isVisitorFacingContentItem,
+  markLocalDevCacheContent,
   mergeGatheredContent,
   pruneContentItems,
 } from "../../scripts/nlp/content-retention.mjs";
@@ -43,6 +44,30 @@ test("contentItemTimestamp prefers published_at then observed_at", () => {
   assert.equal(
     contentItemTimestamp({ observed_at: "2026-11-01T00:00:00.000Z" }),
     "2026-11-01T00:00:00.000Z",
+  );
+});
+
+test("isDurableCreativeContentItem keeps events and presentations", () => {
+  assert.equal(
+    isDurableCreativeContentItem({
+      content_type: "event",
+      url: "https://a.example/speaking/",
+    }),
+    true,
+  );
+  assert.equal(
+    isDurableCreativeContentItem({
+      content_type: "presentation",
+      url: "https://a.example/speaking/",
+    }),
+    true,
+  );
+  assert.equal(
+    isDurableCreativeContentItem({
+      content_type: "article",
+      url: "https://a.example/notes/1",
+    }),
+    false,
   );
 });
 
@@ -322,4 +347,123 @@ test("pruneContentItems accepts custom cacheDays and non-array", () => {
   });
   assert.equal(kept.length, 0);
   assert.equal(prunedCount, 0);
+});
+
+test("local personal-site content grows and live writing still ages out", () => {
+  const oldLocal = {
+    content_type: "article",
+    url: "https://other.example/uses/old",
+    site_origin: "https://other.example",
+    published_at: daysAgoIso(400),
+    local_dev_cache: true,
+  };
+  const freshMember = {
+    content_type: "article",
+    url: "https://joshua.example/new",
+    site_origin: "https://joshua.example",
+    published_at: daysAgoIso(2),
+  };
+  const agedMember = {
+    content_type: "article",
+    url: "https://joshua.example/old",
+    site_origin: "https://joshua.example",
+    published_at: daysAgoIso(40),
+  };
+
+  assert.equal(
+    isContentCacheEligible(oldLocal, NOW, CONTENT_CACHE_DAYS, {
+      retainLocalDevCache: true,
+    }),
+    true,
+  );
+  assert.equal(isContentCacheEligible(oldLocal, NOW), false);
+  assert.equal(
+    isContentCacheEligible(
+      { local_dev_cache: true, content_type: "project" },
+      NOW,
+      CONTENT_CACHE_DAYS,
+      { retainLocalDevCache: false },
+    ),
+    false,
+  );
+
+  const keptLocal = pruneContentItems(
+    [oldLocal, agedMember, freshMember],
+    NOW,
+    {
+      retainLocalDevCache: true,
+    },
+  );
+  assert.equal(keptLocal.prunedCount, 1);
+  assert.ok(keptLocal.kept.some((item) => item.url === oldLocal.url));
+
+  const droppedLocal = pruneContentItems([oldLocal], NOW);
+  assert.equal(droppedLocal.kept.length, 0);
+
+  const drafts = [
+    null,
+    { content_type: "article", title: "no origin" },
+    { content_type: "article", url: "not a url" },
+    {
+      content_type: "article",
+      url: "https://friends.joshua.example/note",
+      published_at: daysAgoIso(90),
+    },
+    {
+      content_type: "article",
+      url: "https://other.example/older-note",
+      published_at: daysAgoIso(200),
+    },
+    {
+      content_type: "article",
+      url: "https://other.example/uses/old",
+      site_origin: "https://other.example",
+      published_at: daysAgoIso(10),
+      title: "updated",
+    },
+  ];
+  markLocalDevCacheContent(drafts, [null, "", "https://other.example"]);
+  markLocalDevCacheContent(drafts, []);
+  markLocalDevCacheContent(drafts);
+  markLocalDevCacheContent(null, ["https://other.example"]);
+  assert.equal(drafts[5].local_dev_cache, true);
+  assert.equal(drafts[4].local_dev_cache, true);
+  assert.equal(drafts[3].local_dev_cache, undefined);
+
+  const aside = {
+    content_type: "article",
+    url: "https://other.example/aside",
+    site_origin: "https://other.example",
+    published_at: daysAgoIso(500),
+    local_dev_cache: true,
+  };
+  const grown = mergeGatheredContent(
+    [oldLocal, aside, agedMember],
+    drafts.filter((item) => item),
+    { now: NOW, retainLocalDevCache: true },
+  );
+  assert.ok(
+    grown.items.some(
+      (item) => item.url === oldLocal.url && item.title === "updated",
+    ),
+  );
+  assert.ok(grown.items.some((item) => item.url === aside.url));
+  assert.ok(
+    grown.items.some((item) => item.url === "https://other.example/older-note"),
+  );
+  assert.ok(
+    !grown.items.some(
+      (item) => item.url === "https://friends.joshua.example/note",
+    ),
+  );
+  assert.ok(!grown.items.some((item) => item.url === agedMember.url));
+
+  const live = mergeGatheredContent(
+    [oldLocal],
+    drafts.filter((item) => item),
+    {
+      now: NOW,
+    },
+  );
+  assert.ok(!live.items.some((item) => item.local_dev_cache === true));
 });

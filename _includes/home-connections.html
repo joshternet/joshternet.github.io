@@ -9,7 +9,7 @@
 {% assign home_member_sites = '' | split: '' %}
 {% assign home_hub_sites = '' | split: '' %}
 {% for network_site in home_network_sites %}
-  {% if network_site.origin == home_hub_origin %}
+  {% if network_site.k4b == home_hub_origin %}
     {% assign home_hub_sites = home_hub_sites | push: network_site %}
   {% else %}
     {% assign home_member_sites = home_member_sites | push: network_site %}
@@ -19,23 +19,23 @@
   Chart participants are members only — hub spokes are not peer connections.
 {% endcomment %}
 {% assign home_ordered_sites = home_member_sites %}
-{% assign home_connection_edges = site.data.connections.edges | default: empty %}
-{% assign home_overlap_pairs = site.data.connection_topics.pairs | default: empty %}
-{% assign home_overlap_sites = site.data.connection_topics.sites | default: empty %}
+{% assign home_connection_edges = site.data.connections.k1y | default: empty %}
+{% assign home_overlap_pairs = site.data.connection_topics.k4q | default: empty %}
+{% assign home_overlap_sites = site.data.connection_topics.k6i | default: empty %}
 
 {% assign participant_count = home_ordered_sites.size | default: 0 %}
 {% assign connected_site_count = 0 %}
 {% assign connection_edges = home_connection_edges %}
 {% assign overlap_pair_count = home_overlap_pairs.size | default: 0 %}
 {% for network_site in home_network_sites %}
-  {% assign site_origin = network_site.origin %}
+  {% assign site_origin = network_site.k4b %}
   {% assign outbound = 0 %}
   {% assign inbound = 0 %}
   {% for edge in connection_edges %}
-    {% if edge.from == site_origin %}
+    {% if edge.k2o == site_origin %}
       {% assign outbound = outbound | plus: 1 %}
     {% endif %}
-    {% if edge.to == site_origin %}
+    {% if edge.k7d == site_origin %}
       {% assign inbound = inbound | plus: 1 %}
     {% endif %}
   {% endfor %}
@@ -96,19 +96,19 @@
 "participants": [
 {% for network_site in home_ordered_sites %}
 {% assign site_recently_joined = false %}
-{% if network_site.first_participated_at and network_site.first_participated_at != '' %}
-{% assign site_joined_at_s = network_site.first_participated_at | date: '%s' | plus: 0 %}
+{% if network_site.k2j and network_site.k2j != '' %}
+{% assign site_joined_at_s = network_site.k2j | date: '%s' | plus: 0 %}
 {% if site_joined_at_s >= recently_joined_cutoff_s and site_joined_at_s <= recently_joined_now_s %}
 {% assign site_recently_joined = true %}
 {% endif %}
 {% endif %}
 {
-"origin": {{ network_site.origin | jsonify }},
-"domain": {{ network_site.domain | jsonify }},
-"title": {{ network_site.title | default: network_site.domain | jsonify }},
-"description": {{ network_site.description | default: "" | jsonify }},
-"screenshot": {{ network_site.screenshot | default: "" | jsonify }},
-"first_participated_at": {{ network_site.first_participated_at | default: "" | jsonify }},
+"origin": {{ network_site.k4b | jsonify }},
+"domain": {{ network_site.k1v | jsonify }},
+"title": {{ network_site.k7c | default: network_site.k1v | jsonify }},
+"description": {{ network_site.k1n | default: "" | jsonify }},
+"screenshot": {{ network_site.k63 | default: "" | jsonify }},
+"first_participated_at": {{ network_site.k2j | default: "" | jsonify }},
 "recently_joined": {% if site_recently_joined %}true{% else %}false{% endif %}
 }{% unless forloop.last %},{% endunless %}
 {% endfor %}

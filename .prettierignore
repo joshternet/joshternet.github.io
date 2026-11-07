@@ -11,6 +11,21 @@ assets/network/sites/
 test/fixtures/html/
 
 *.md
+
+# Crawl JSON stays compact. Hand-edited datasets stay readable.
+_data/*.json
+!_data/topic_aliases.json
+!_data/topic_denylist.json
+!_data/network_display_titles.json
+!_data/network_dev.json
+!_data/network_preview.json
+!_data/content_support_matrix.json
+assets/data/uses/**/*.json
+data/uses/**/*.json
+!data/uses/catalog/**
+data/crawl-sites/**/*.json
+data/classification/quality-baseline.json
+**/*seeking-state.json
 connections-data.json
 network-data.json
 search-index.json

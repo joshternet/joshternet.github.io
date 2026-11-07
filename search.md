@@ -14,7 +14,9 @@ permalink: /search/
 joshternet_analysis: derived
 robots: noindex
 sitemap: false
-script: /assets/js/search.js
+scripts:
+  - /assets/js/crawl-keys.js
+  - /assets/js/search.js
 ---
 
 # Search

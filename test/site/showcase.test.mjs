@@ -71,6 +71,8 @@ test("showcase-card hit link uses the work URL only", async () => {
   assert.match(media[1], /<img\b/);
   assert.doesNotMatch(media[1], /<a\b/);
   assert.match(card, /showcase-card__maker/);
+  assert.match(card, /showcase-card__appearance/);
+  assert.match(card, /include\.item\.conference/);
   assert.match(card, /showcase-card__summary/);
   assert.match(card, /showcase-card__domain/);
   assert.match(card, /network_site\.screenshot/);

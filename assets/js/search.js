@@ -348,7 +348,9 @@
       return response.json();
     })
     .then((payload) => {
-      documents = Array.isArray(payload.documents) ? payload.documents : [];
+      const decode = globalThis.joshternetDecodeCrawl;
+      const decoded = typeof decode === "function" ? decode(payload) : payload;
+      documents = Array.isArray(decoded.documents) ? decoded.documents : [];
       indexReady = true;
       indexFailed = false;
       render();

@@ -1,9 +1,9 @@
 {% comment %}
-  Goal: Homepage “What’s happening” preview from activity.primary.
-  Inputs: site.data.activity.primary. Outputs: up to three activity cards or an
+  Goal: Homepage “What’s happening” preview from activity.k54.
+  Inputs: site.data.activity.k54. Outputs: up to three activity cards or an
   empty invitation to browse the network (no filler, no stale-as-new).
 {% endcomment %}
-{% assign home_activity = site.data.activity.primary | default: empty %}
+{% assign home_activity = site.data.activity.k54 | default: empty %}
 
 {% if home_activity.size > 0 %}
   <ol class="activity-list h-feed home-activity__list">

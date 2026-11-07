@@ -15,7 +15,7 @@
 
     <div class="home-new-arrivals__grid network-grid" data-home-new-arrivals-grid>
       {% for network_site in home_arrival_sites %}
-        {% case network_site.identity %}
+        {% case network_site.k31 %}
           {% when 'affirmed' %}
             {% assign identity_label = 'Josh' %}
           {% when 'declined' %}
@@ -25,13 +25,13 @@
         {% endcase %}
 
         <article
-          class="network-card network-card--{{ network_site.identity }} h-card"
+          class="network-card network-card--{{ network_site.k31 }} h-card"
           data-home-new-arrivals-card
-          data-identity="{{ network_site.identity | escape }}"
-          data-domain="{{ network_site.domain | downcase | escape }}"
-          data-origin="{{ network_site.origin | escape }}"
+          data-identity="{{ network_site.k31 | escape }}"
+          data-domain="{{ network_site.k1v | downcase | escape }}"
+          data-origin="{{ network_site.k4b | escape }}"
         >
-          {% include outbound-href.html url=network_site.origin %}
+          {% include outbound-href.html url=network_site.k4b %}
           <a
             class="network-card__link u-url"
             href="{{ outbound_href | escape }}"
@@ -39,17 +39,17 @@
             rel="noopener"
           >
             <div class="network-card__preview">
-              {% if network_site.screenshot and network_site.screenshot != '' %}
+              {% if network_site.k63 and network_site.k63 != '' %}
                 <img
                   class="network-card__image u-photo"
-                  src="{{ network_site.screenshot | relative_url }}"
-                  alt="Screenshot of {{ network_site.title | default: network_site.domain | escape }}"
+                  src="{{ network_site.k63 | relative_url }}"
+                  alt="Screenshot of {{ network_site.k7c | default: network_site.k1v | escape }}"
                   loading="lazy"
                   decoding="async"
                 >
               {% else %}
                 <div class="network-card__fallback" aria-hidden="true">
-                  <span>{{ network_site.domain | slice: 0 | upcase | escape }}</span>
+                  <span>{{ network_site.k1v | slice: 0 | upcase | escape }}</span>
                 </div>
               {% endif %}
             </div>
@@ -59,24 +59,24 @@
               <span class="visually-hidden">{{ identity_a11y }}</span>
 
               <h3 class="network-card__title p-name">
-                {{ network_site.title | default: network_site.domain | escape }}
+                {{ network_site.k7c | default: network_site.k1v | escape }}
                 <span aria-hidden="true">↗</span>
               </h3>
 
-              {% if network_site.description and network_site.description != '' %}
+              {% if network_site.k1n and network_site.k1n != '' %}
                 <p class="network-card__description p-note">
-                  {{ network_site.description | escape }}
+                  {{ network_site.k1n | escape }}
                 </p>
               {% endif %}
             </div>
           </a>
           <div class="network-card__footer home-new-arrivals__meta">
             <p class="network-card__domain p-org">
-              {{ network_site.domain | escape }}
+              {{ network_site.k1v | escape }}
             </p>
             {% include network-card-joined.html %}
             <p class="home-new-arrivals__network-link">
-              <a href="{{ '/network/' | relative_url }}?site={{ network_site.domain | downcase | url_encode }}">
+              <a href="{{ '/network/' | relative_url }}?site={{ network_site.k1v | downcase | url_encode }}">
                 Find in the Network
               </a>
             </p>

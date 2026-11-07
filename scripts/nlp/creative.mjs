@@ -9,7 +9,9 @@
  */
 
 import { isShowcaseChromePath } from "../network/slash-pages.mjs";
+import { projectsFromToolIndexes } from "./appearances.mjs";
 import { publishedAtFromPageHtml } from "./content.mjs";
+import { isDirectoryIndexPath } from "./page-role.mjs";
 import { buildTopicEvidence } from "./evidence.mjs";
 import {
   decodeHrefForParse,
@@ -391,7 +393,8 @@ function itemFromJsonLdNode(node, pageUrl, siteOrigin, observedAt) {
     return null;
   }
 
-  if (isShowcaseChromePath(url)) {
+  // A sitemap, speaking archive, or tools index is not a creative work.
+  if (isDirectoryIndexPath(url) || isShowcaseChromePath(url)) {
     return null;
   }
 
@@ -1364,6 +1367,18 @@ export function collectCreativeWorks(pages, meta) {
     }
   }
 
+  for (const item of projectsFromToolIndexes(pageList, {
+    siteOrigin,
+    observedAt,
+  })) {
+    if (seen.has(String(item.identity)) || isShowcaseChromePath(item.url)) {
+      continue;
+    }
+
+    seen.add(String(item.identity));
+    items.push(item);
+  }
+
   return { items, subjects };
 }
 
@@ -1521,6 +1536,13 @@ const NON_PROJECT_SEGMENTS = new Set([
   "wishlist",
   "datenschutz",
   "impressum",
+  "speaking",
+  "talks",
+  "presentations",
+  "slides",
+  "html-sitemap",
+  "collections",
+  "tools",
 ]);
 
 /**

@@ -87,6 +87,28 @@ test("writeJSONAtomic: overwrites existing file atomically", async () => {
   }
 });
 
+test("writeJSONAtomic encodes crawl datasets and reads them back clear", async () => {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), "nlp-lib-test-"));
+  const filePath = path.join(dir, "_data", "content.json");
+  try {
+    await writeJSONAtomic(filePath, {
+      title: "Note",
+      html: "<p>drop</p>",
+      origin: "https://joshua.example",
+    });
+    const raw = await fs.readFile(filePath, "utf8");
+    assert.equal(raw.includes("title"), false);
+    assert.equal(raw.includes("<p>drop</p>"), false);
+    assert.equal(raw.includes("\n"), false);
+    const loaded = await readJSONIfExists(filePath, null);
+    assert.equal(loaded.title, "Note");
+    assert.equal(loaded.origin, "https://joshua.example");
+    assert.equal(Object.hasOwn(loaded, "html"), false);
+  } finally {
+    await fs.rm(dir, { recursive: true, force: true });
+  }
+});
+
 // ─── writeTextAtomic ──────────────────────────────────────────────────────────
 
 test("writeTextAtomic: writes plain text and creates directories", async () => {

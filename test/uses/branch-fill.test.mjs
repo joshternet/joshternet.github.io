@@ -8,6 +8,9 @@ import os from "node:os";
 import path from "node:path";
 import { promisify } from "node:util";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
+
+import { decodeCrawlValue } from "../../scripts/nlp/site-record.mjs";
 
 import {
   adoptionChange,
@@ -57,6 +60,7 @@ import {
 import {
   createUsesAjv,
   main as validateMain,
+  runCli,
   validateRollupInvariants,
   validateUsesRoot,
 } from "../../scripts/uses/validate.mjs";
@@ -470,8 +474,10 @@ test("summary presents slots, unsorted names, and every coverage reason", async 
       ],
       graphDocs: [{ path: "graph/2026-11.json", document: { ok: true } }],
     });
-    const written = JSON.parse(
-      await readFile(path.join(dir, "_data", "uses_summary.json"), "utf8"),
+    const written = decodeCrawlValue(
+      JSON.parse(
+        await readFile(path.join(dir, "_data", "uses_summary.json"), "utf8"),
+      ),
     );
     assert.equal(written.snapshot_id, "3.2.abc");
   } finally {
@@ -546,11 +552,26 @@ test("quality and validate entry points run", async () => {
     ).block,
     true,
   );
-  assert.equal(await qualityMain(), 0);
   const dir = await mkdtemp(path.join(os.tmpdir(), "uses-validate-"));
   try {
+    assert.equal(
+      await qualityMain([
+        "--metrics",
+        path.join(dir, "missing-metrics.json"),
+        "--baseline",
+        path.join(dir, "missing-baseline.json"),
+      ]),
+      0,
+    );
     const code = await validateMain([`--root=${dir}`]);
     assert.equal(code, 0);
+    const validateModule = fileURLToPath(
+      new URL("../../scripts/uses/validate.mjs", import.meta.url),
+    );
+    assert.equal(await runCli(), null);
+    assert.equal(await runCli(""), null);
+    assert.equal(await runCli(path.join(dir, "other.mjs")), null);
+    assert.equal(await runCli(validateModule, [`--root=${dir}`]), 0);
     const broken = path.join(dir, "broken");
     await mkdir(path.join(broken, "events", "2026"), { recursive: true });
     await writeFile(
@@ -578,6 +599,10 @@ test("quality and validate entry points run", async () => {
     assert.equal(failed, 1);
     const qualityRun = await execFileAsync(process.execPath, [
       path.join(repoRoot, "scripts", "uses", "quality.mjs"),
+      "--metrics",
+      path.join(dir, "missing-metrics.json"),
+      "--baseline",
+      path.join(dir, "missing-baseline.json"),
     ]);
     assert.match(qualityRun.stdout, /uses:quality ok/);
     const validateRun = await execFileAsync(process.execPath, [

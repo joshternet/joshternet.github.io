@@ -119,7 +119,7 @@
       <div class="activity-card__footer">
         <p class="activity-card__topics">
           {% for topic in include.item.tags %}
-            <span class="p-category">{{ topic.label | escape }}</span>
+            <span class="p-category">{{ topic.k3g | escape }}</span>
           {% endfor %}
         </p>
         {% if include.item.domain and include.item.domain != '' %}
