@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-07T03:28:49.388Z",
+  "generated_at": "2026-11-07T10:48:25.874Z",
   "community_count": 644,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
@@ -1323,17 +1323,17 @@
               "source": "visible-text"
             },
             {
-              "url": "https://www.joshfinnie.com/blog/from-copy-code-to-expressive-code/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://www.joshfinnie.com/blog/pokemon-api/",
               "title": "",
               "source": "visible-text"
             },
             {
               "url": "https://www.joshfinnie.com/blog/switching-to-herdr/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
               "title": "",
               "source": "visible-text"
             },
@@ -6040,16 +6040,11 @@
               "url": "https://www.joshfinnie.com/tags/",
               "title": "",
               "source": "topic-hub:link"
-            },
-            {
-              "url": "https://www.joshfinnie.com/tags/cms/",
-              "title": "",
-              "source": "topic-hub:page"
             }
           ]
         }
       ],
-      "sources": ["article:tag", "topic-hub:link", "topic-hub:page"],
+      "sources": ["article:tag", "topic-hub:link"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
       "active": true,
@@ -8213,7 +8208,7 @@
               "source": "visible-text"
             },
             {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-week-three-noshowfixer/",
+              "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
               "title": "",
               "source": "visible-text"
             }
@@ -9738,7 +9733,7 @@
     {
       "slug": "docs",
       "label": "docs",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
         {
           "origin": "https://joshmuller.ca",
@@ -9752,11 +9747,44 @@
               "source": "article:section"
             }
           ]
+        },
+        {
+          "origin": "https://www.joshfinnie.com",
+          "domain": "www.joshfinnie.com",
+          "title": "Josh Finnie",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshfinnie.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshfinnie.com/blog/ai-made-me-a-polyglot-again/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshfinnie.com/blog/setting-up-standard-site/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshfinnie.com/blog/switching-to-herdr/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
         }
       ],
-      "sources": ["article:section"],
+      "sources": ["article:section", "visible-text"],
       "first_seen_at": "2026-10-30T20:55:12.915Z",
-      "last_changed_at": "2026-10-31T21:56:50.804Z",
+      "last_changed_at": "2026-11-07T10:48:25.874Z",
       "active": true
     },
     {
@@ -9819,6 +9847,11 @@
           "membership": "declared",
           "pages": [
             {
+              "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
               "url": "https://www.joshfinnie.com/blog/writing-python-docstrings-effectively/",
               "title": "",
               "source": "article:tag"
@@ -9827,6 +9860,11 @@
               "url": "https://www.joshfinnie.com/tags/",
               "title": "",
               "source": "topic-hub:link"
+            },
+            {
+              "url": "https://www.joshfinnie.com/tags/documentation/",
+              "title": "",
+              "source": "topic-hub:page"
             }
           ]
         },
@@ -9864,7 +9902,12 @@
           ]
         }
       ],
-      "sources": ["article:tag", "topic-hub:link", "visible-text"],
+      "sources": [
+        "article:tag",
+        "topic-hub:link",
+        "topic-hub:page",
+        "visible-text"
+      ],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-05T17:49:46.856Z",
       "active": true,
@@ -12586,8 +12629,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-07T03:28:49.388Z"
+      ]
     },
     {
       "slug": "ffmpeg",
@@ -13077,13 +13119,6 @@
       "active": true,
       "related_discoveries": [
         {
-          "origin": "https://artlung.com",
-          "domain": "artlung.com",
-          "title": "Joe Crawford",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
           "origin": "https://joshuastuebner.com",
           "domain": "joshuastuebner.com",
           "title": "Joshua Stübner",
@@ -13534,12 +13569,12 @@
               "source": "visible-text"
             },
             {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-week-one-bragboard/",
+              "url": "https://www.joshfinnie.com/blog/micro-saas-week-two-teamdues/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-week-two-teamdues/",
+              "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
               "title": "",
               "source": "visible-text"
             }
@@ -14103,11 +14138,6 @@
               "source": "rss:category"
             },
             {
-              "url": "https://artlung.com/blog/2026/11/02/windy-and-fun/",
-              "title": "",
-              "source": "rss:category"
-            },
-            {
               "url": "https://artlung.com/blog/2026/11/03/and-shredding/",
               "title": "",
               "source": "rss:category"
@@ -14119,6 +14149,11 @@
             },
             {
               "url": "https://artlung.com/blog/2026/11/05/a-few-big-enjoyable/",
+              "title": "",
+              "source": "rss:category"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/06/lost-fin/",
               "title": "",
               "source": "rss:category"
             }
@@ -14151,8 +14186,7 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ],
-      "stale_since": "2026-11-07T03:28:49.388Z"
+      ]
     },
     {
       "slug": "generator",
@@ -17693,11 +17727,6 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://www.joshfinnie.com/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
               "title": "",
               "source": "visible-text"
@@ -17714,6 +17743,11 @@
             },
             {
               "url": "https://www.joshfinnie.com/blog/micro-saas-week-two-teamdues/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
               "title": "",
               "source": "visible-text"
             }
@@ -17898,16 +17932,11 @@
               "url": "https://www.joshfinnie.com/tags/",
               "title": "",
               "source": "topic-hub:link"
-            },
-            {
-              "url": "https://www.joshfinnie.com/tags/json-ld/",
-              "title": "",
-              "source": "topic-hub:page"
             }
           ]
         }
       ],
-      "sources": ["article:tag", "topic-hub:link", "topic-hub:page"],
+      "sources": ["article:tag", "topic-hub:link"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
       "active": true
@@ -18352,13 +18381,6 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
-          "origin": "https://www.joshfinnie.com",
-          "domain": "www.joshfinnie.com",
-          "title": "Josh Finnie",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
           "origin": "https://www.joshuakgoldberg.com",
           "domain": "www.joshuakgoldberg.com",
           "title": "Josh Goldberg",
@@ -18647,11 +18669,6 @@
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://artlung.com/blog/2026/11/03/and-shredding/",
               "title": "",
               "source": "visible-text"
@@ -18663,6 +18680,11 @@
             },
             {
               "url": "https://artlung.com/blog/2026/11/05/a-few-big-enjoyable/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/06/lost-fin/",
               "title": "",
               "source": "visible-text"
             }
@@ -19990,17 +20012,17 @@
               "source": "visible-text"
             },
             {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-week-one-bragboard/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://www.joshfinnie.com/blog/micro-saas-week-three-noshowfixer/",
               "title": "",
               "source": "visible-text"
             },
             {
               "url": "https://www.joshfinnie.com/blog/micro-saas-week-two-teamdues/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
               "title": "",
               "source": "visible-text"
             }
@@ -21890,22 +21912,22 @@
           "membership": "heuristic",
           "pages": [
             {
+              "url": "https://www.joshfinnie.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
               "url": "https://www.joshfinnie.com/blog/ai-made-me-a-polyglot-again/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://www.joshfinnie.com/blog/building-a-go-saas-skeleton/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshfinnie.com/blog/from-eslint-and-prettier-to-biome/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
               "title": "",
               "source": "visible-text"
             },
@@ -22652,6 +22674,13 @@
       "active": true,
       "related_discoveries": [
         {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
           "origin": "https://joshcox.co.uk",
           "domain": "joshcox.co.uk",
           "title": "Josh Cox",
@@ -23165,12 +23194,7 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://artlung.com/blog/2026/11/02/windy-and-fun/",
+              "url": "https://artlung.com/",
               "title": "",
               "source": "visible-text"
             },
@@ -23186,6 +23210,11 @@
             },
             {
               "url": "https://artlung.com/blog/2026/11/05/a-few-big-enjoyable/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/06/lost-fin/",
               "title": "",
               "source": "visible-text"
             }
@@ -23959,6 +23988,11 @@
           "membership": "declared",
           "pages": [
             {
+              "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
+              "title": "",
+              "source": "article:tag"
+            },
+            {
               "url": "https://www.joshfinnie.com/blog/why-is-it-so-hard-to-find-a-job/",
               "title": "",
               "source": "article:tag"
@@ -23977,6 +24011,11 @@
               "url": "https://www.joshfinnie.com/tags/",
               "title": "",
               "source": "topic-hub:link"
+            },
+            {
+              "url": "https://www.joshfinnie.com/tags/opinion/",
+              "title": "",
+              "source": "topic-hub:page"
             }
           ]
         },
@@ -26533,7 +26572,7 @@
               "source": "visible-text"
             },
             {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-week-two-teamdues/",
+              "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
               "title": "",
               "source": "visible-text"
             }
@@ -29828,12 +29867,12 @@
               "source": "visible-text"
             },
             {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-week-one-bragboard/",
+              "url": "https://www.joshfinnie.com/blog/micro-saas-week-three-noshowfixer/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-week-three-noshowfixer/",
+              "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
               "title": "",
               "source": "visible-text"
             }
@@ -31209,16 +31248,11 @@
               "url": "https://www.joshfinnie.com/tags/",
               "title": "",
               "source": "topic-hub:link"
-            },
-            {
-              "url": "https://www.joshfinnie.com/tags/seo/",
-              "title": "",
-              "source": "topic-hub:page"
             }
           ]
         }
       ],
-      "sources": ["article:tag", "topic-hub:link", "topic-hub:page"],
+      "sources": ["article:tag", "topic-hub:link"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
       "active": true,
@@ -31461,7 +31495,7 @@
               "source": "visible-text"
             },
             {
-              "url": "https://www.joshfinnie.com/blog/pokemon-api/",
+              "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
               "title": "",
               "source": "visible-text"
             }
@@ -34033,11 +34067,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://artlung.com/blog/2026/10/28/novelty-wave/",
-              "title": "",
-              "source": "rss:category"
-            },
-            {
               "url": "https://artlung.com/blog/2026/10/31/a-fine-way-to-occupy-a-saturday-morn/",
               "title": "",
               "source": "rss:category"
@@ -34056,6 +34085,11 @@
               "url": "https://artlung.com/blog/2026/11/05/a-few-big-enjoyable/",
               "title": "",
               "source": "rss:category"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/06/lost-fin/",
+              "title": "",
+              "source": "rss:category"
             }
           ]
         }
@@ -34063,8 +34097,7 @@
       "sources": ["rss:category"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
       "last_changed_at": "2026-11-07T03:28:49.388Z",
-      "active": true,
-      "stale_since": "2026-11-07T03:28:49.388Z"
+      "active": true
     },
     {
       "slug": "table",
@@ -36021,11 +36054,6 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://www.joshfinnie.com/blog/ai-made-me-a-polyglot-again/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
               "title": "",
               "source": "visible-text"
@@ -36042,6 +36070,11 @@
             },
             {
               "url": "https://www.joshfinnie.com/blog/micro-saas-week-one-bragboard/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
               "title": "",
               "source": "visible-text"
             }
@@ -36143,11 +36176,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://artlung.com/blog/2026/10/31/a-fine-way-to-occupy-a-saturday-morn/",
-              "title": "",
-              "source": "rss:category"
-            },
-            {
               "url": "https://artlung.com/blog/2026/11/01/robot-number-3991/",
               "title": "",
               "source": "rss:category"
@@ -36164,6 +36192,11 @@
             },
             {
               "url": "https://artlung.com/blog/2026/11/05/a-few-big-enjoyable/",
+              "title": "",
+              "source": "rss:category"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/06/lost-fin/",
               "title": "",
               "source": "rss:category"
             }

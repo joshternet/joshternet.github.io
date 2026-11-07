@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-07T03:48:38.477Z",
+  "generated_at": "2026-11-07T11:08:52.194Z",
   "sites": [
     {
       "origin": "https://artlung.com",
@@ -320,7 +320,7 @@
         "title": "/amiga/",
         "summary": "A few of my memories of using the a Commodore Amiga 1000 for computer graphics, music, etc.",
         "published_at": "",
-        "observed_at": "2026-11-07T03:28:49.388Z",
+        "observed_at": "2026-11-07T10:48:25.874Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -353,6 +353,7 @@
         "selection_strategy": "uncapped-site-crawl-v1",
         "selection_reasons": {
           "https://artlung.com/": "home",
+          "https://artlung.com/blog/2026/11/06/lost-fin/": "feed",
           "https://artlung.com/blog/2026/11/05/a-few-big-enjoyable/": "feed",
           "https://artlung.com/blog/2026/11/03/and-shredding/": "feed",
           "https://artlung.com/blog/2026/11/03/ibot-g3-2018/": "feed",
@@ -372,7 +373,6 @@
           "https://artlung.com/blog/2026/10/22/johnny-5-new-bot-day/": "feed",
           "https://artlung.com/blog/2026/10/22/2027-web-platform-ranking/": "feed",
           "https://artlung.com/blog/2026/10/21/rain-coming/": "feed",
-          "https://artlung.com/blog/2026/10/20/the-sunset-from-home/": "feed",
           "https://artlung.com/ai/": "slashpages-manifest",
           "https://artlung.com/about/": "slashpages-manifest",
           "https://artlung.com/blank/": "slashpages-manifest",
@@ -9330,6 +9330,7 @@
           "https://artlung.com/blog/2026/10/18/from-senator-sanders/": "sitemap",
           "https://artlung.com/blog/2026/10/18/pb-drive-this-morning/": "sitemap",
           "https://artlung.com/blog/2026/10/19/be-indieweb-enough/": "sitemap",
+          "https://artlung.com/blog/2026/10/20/the-sunset-from-home/": "sitemap",
           "https://artlung.com/blogofthe-day/": "sitemap",
           "https://artlung.com/blogosphere-part-1/": "sitemap",
           "https://artlung.com/blogosphere-part-2/": "sitemap",
@@ -11461,7 +11462,6 @@
           "https://artlung.com/lab/": "content-index",
           "https://artlung.com/videos/reels/rideawave2026/": "content-index",
           "https://artlung.com/blog/page/2/": "content-index",
-          "https://artlung.com/blog/tag/sandiego": "content-index",
           "https://artlung.com/blog/tag/dawnpatrol-app/": "content-index",
           "https://artlung.com/blog/tag/bodysurfing/": "content-index",
           "https://artlung.com/blog/tag/star-trek/": "content-index",
@@ -11483,7 +11483,10 @@
           "https://artlung.com/blog/2022/10/07/setlist-fm-user-artlung/": "content-index",
           "https://artlung.com/blog/2023/10/17/music-concerts/": "content-index",
           "https://artlung.com/contact/?url=https://artlung.com/guestbook/": "content-index",
+          "https://artlung.com/videos/?v=Dream-0573": "budget-exhausted",
           "https://artlung.com/likes/feed.xml": "budget-exhausted",
+          "https://artlung.com/blog/2026/11/06/": "budget-exhausted",
+          "https://artlung.com/contact/?url=https://artlung.com/blog/2026/11/06/lost-fin/": "budget-exhausted",
           "https://artlung.com/blog/2026/11/05/": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2026/11/05/a-few-big-enjoyable/": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2026/11/03/and-shredding/": "budget-exhausted",
@@ -11503,6 +11506,7 @@
           "https://artlung.com/blog/2026/10/28/": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2026/10/28/novelty-wave/": "budget-exhausted",
           "https://artlung.com/blog/2026/10/27/": "budget-exhausted",
+          "https://artlung.com/blog/tag/sandiego": "budget-exhausted",
           "https://artlung.com/blog/2026/10/27/novelty-wave-ob/?replytocom=1247231": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2026/10/27/novelty-wave-ob/": "budget-exhausted",
           "https://artlung.com/blog/2026/10/26/": "budget-exhausted",
@@ -11546,8 +11550,6 @@
           "https://artlung.com/contact/?url=https://artlung.com/blog/2026/10/22/2027-web-platform-ranking/": "budget-exhausted",
           "https://artlung.com/blog/2026/10/21/": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2026/10/21/rain-coming/": "budget-exhausted",
-          "https://artlung.com/blog/2026/10/20/": "budget-exhausted",
-          "https://artlung.com/contact/?url=https://artlung.com/blog/2026/10/20/the-sunset-from-home/": "budget-exhausted",
           "https://artlung.com/blog/2023/": "budget-exhausted",
           "https://artlung.com/blog/2023/10/": "budget-exhausted",
           "https://artlung.com/blog/2023/10/26/": "budget-exhausted",
@@ -12260,13 +12262,6 @@
           "https://artlung.com/blog/tag/dawnpatrolapp/": "budget-exhausted",
           "https://artlung.com/blog/tag/dawnpatrol.app": "budget-exhausted",
           "https://artlung.com/blog/tag/dawnpatrol-app/page/2/": "budget-exhausted",
-          "https://artlung.com/tags/sandiego/": "budget-exhausted",
-          "https://artlung.com/blog/2024/04/22/turban-shell-yesterday/": "budget-exhausted",
-          "https://artlung.com/blog/tag/seashell/": "budget-exhausted",
-          "https://artlung.com/blog/tag/turbanshell/": "budget-exhausted",
-          "https://artlung.com/blog/2024/01/02/molten-evening-sandiego/": "budget-exhausted",
-          "https://artlung.com/blog/2023/12/17/indieweb-camp-san-diego-day-2/": "budget-exhausted",
-          "https://artlung.com/blog/tag/sandiego/page/2/": "budget-exhausted",
           "https://artlung.com/blog/page/": "budget-exhausted",
           "https://artlung.com/blog/page/3/": "budget-exhausted",
           "https://artlung.com/blog/2025/01/": "budget-exhausted",
@@ -12755,6 +12750,8 @@
           "https://artlung.com/words": "budget-exhausted",
           "https://artlung.com/dtd/artlung.dtd": "budget-exhausted",
           "https://artlung.com/dtd/artlung.dtd.txt": "budget-exhausted",
+          "https://artlung.com/videos/?v=Dream-0571": "budget-exhausted",
+          "https://artlung.com/videos/?v=Dream-0572": "budget-exhausted",
           "https://artlung.com/blog": "budget-exhausted",
           "https://artlung.com/foursquare/artlung/": "budget-exhausted",
           "https://artlung.com/gato": "budget-exhausted",
@@ -13738,10 +13735,69 @@
           "https://artlung.com/images/?i=whatsupdoc-7-Medium.jpeg": "budget-exhausted",
           "https://artlung.com/images/?i=windows_os_small.gif": "budget-exhausted",
           "https://artlung.com/images/?i=winter2000washington.jpg": "budget-exhausted",
-          "https://artlung.com/images/?i=xml.gif": "budget-exhausted"
+          "https://artlung.com/images/?i=xml.gif": "budget-exhausted",
+          "https://artlung.com/indienews/4d9ca9b2e1f3ad54a5d51c15557b40cc": "budget-exhausted",
+          "https://artlung.com/indienews/2c4bea1d89514fe0d3ab393dfbdd094d": "budget-exhausted",
+          "https://artlung.com/indienews/e6d29122bc6d460084364a0fee92d82d": "budget-exhausted",
+          "https://artlung.com/indienews/995c10f1b7110eef6feb594071b69038": "budget-exhausted",
+          "https://artlung.com/indienews/ff9bfbe85cf22002b6f90526e63e20a4": "budget-exhausted",
+          "https://artlung.com/indienews/7800633c3cb9704a45e2cff6f65f969b": "budget-exhausted",
+          "https://artlung.com/indienews/a3b25e1ff50802a5efac645a3d025666": "budget-exhausted",
+          "https://artlung.com/indienews/aaf5b799e649c76b84cda606d9f968b6": "budget-exhausted",
+          "https://artlung.com/indienews/600a6adb594d620e5108a1c7b2b6f1d4": "budget-exhausted",
+          "https://artlung.com/indienews/c5440322db9d91be797139d09b518bb5": "budget-exhausted",
+          "https://artlung.com/indienews/8963ec4bab0b8194b4cdfe5fce82c1c9": "budget-exhausted",
+          "https://artlung.com/indienews/c63337c0aabfe58226b1dc1f25498cc5": "budget-exhausted",
+          "https://artlung.com/indienews/55d8d3f489983b5feeb9dfb0600b31f9": "budget-exhausted",
+          "https://artlung.com/indienews/de29846a342f640a0f4fdf6e116e1334": "budget-exhausted",
+          "https://artlung.com/indienews/5abbf1c03541fff925906df62e3dcc2f": "budget-exhausted",
+          "https://artlung.com/indienews/b5b0f4e003d027d853d0bae88c3c8f50": "budget-exhausted",
+          "https://artlung.com/indienews/960c5d6e0479803de4758ce851ffb959": "budget-exhausted",
+          "https://artlung.com/indienews/37d878eb5b61f9a48db9a53143e28e9b": "budget-exhausted",
+          "https://artlung.com/indienews/1836993ab4858d723762dd46fd9e9a83": "budget-exhausted",
+          "https://artlung.com/indienews/de2fd5acd51b05547ddeeebf3aac3d36": "budget-exhausted",
+          "https://artlung.com/indienews/40c608a829a44a60753b2fe7bba2e138": "budget-exhausted",
+          "https://artlung.com/indienews/6fe2066777bc73ee6878cf5bddc7314b": "budget-exhausted",
+          "https://artlung.com/indienews/d99a3d45ceca5f3142ca104e4fe6418d": "budget-exhausted",
+          "https://artlung.com/indienews/9cddb5ee229cc24dac193d39e677ba78": "budget-exhausted",
+          "https://artlung.com/indienews/fc0b21539905a54278dbd97568819073": "budget-exhausted",
+          "https://artlung.com/indienews/7d8a127a1712abbb34f853e89d070b8b": "budget-exhausted",
+          "https://artlung.com/indienews/b2b676644a2a68af7205fad62a7244c4": "budget-exhausted",
+          "https://artlung.com/indienews/11889e11b1476d831a2aad3a35afa464": "budget-exhausted",
+          "https://artlung.com/indienews/d5ee0a9bc52fe09b6da006c8cba05570": "budget-exhausted",
+          "https://artlung.com/indienews/2dbbc8d29f00170cba507294c99d680c": "budget-exhausted",
+          "https://artlung.com/indienews/138d0aff0034a2ebb0e36e4b97c3079c": "budget-exhausted",
+          "https://artlung.com/indienews/fad910500e2c793dd55f599b1760ee38": "budget-exhausted",
+          "https://artlung.com/indienews/7529b8c433bb5c76d681719e3b6241c2": "budget-exhausted",
+          "https://artlung.com/indienews/1c21099a2cfa22a83ba53fe8d890df53": "budget-exhausted",
+          "https://artlung.com/indienews/b9f725345e7c5e8abdad4a0224a02f9d": "budget-exhausted",
+          "https://artlung.com/indienews/68d6d02430d5d351233e5b9e3196296f": "budget-exhausted",
+          "https://artlung.com/indienews/bbdbd434a0c5b125b069f2837781e24a": "budget-exhausted",
+          "https://artlung.com/indienews/cfff9e1203e2b58c6f964d66d2e1b245": "budget-exhausted",
+          "https://artlung.com/indienews/e5ec16c1bb64e3193ac05325cfe4ea51": "budget-exhausted",
+          "https://artlung.com/indienews/3bc6e65e4e482b63ffbe197e8585510c": "budget-exhausted",
+          "https://artlung.com/indienews/01db1cbbac9ae721434c1fcfa9e5b549": "budget-exhausted",
+          "https://artlung.com/indienews/c02f05bcc7ed828267a07f14cadbb533": "budget-exhausted",
+          "https://artlung.com/indienews/34d3af9b2db08a356b922ff46d24e746": "budget-exhausted",
+          "https://artlung.com/indienews/6e8f721014ff65bb9f4dd0cd56f00dda": "budget-exhausted",
+          "https://artlung.com/indienews/2e2e33a755738603aee56fe5d7f11b80": "budget-exhausted",
+          "https://artlung.com/indienews/4392400393b0c9f71b78fd15b0436116": "budget-exhausted",
+          "https://artlung.com/indienews/39b3ff870025a33d34a3e1dbe7969b38": "budget-exhausted",
+          "https://artlung.com/indienews/b98349df04fa70b6bbbc785ba868e500": "budget-exhausted",
+          "https://artlung.com/indienews/014eb48cb947dee9553931c68e912b30": "budget-exhausted",
+          "https://artlung.com/indienews/ed447fd6ab9fb490fe8f919214fc389d": "budget-exhausted",
+          "https://artlung.com/indienews/fa26a6314d23fd39d86498d440c6a078": "budget-exhausted",
+          "https://artlung.com/indienews/b5dec6c4fba7787191c1f3a83615351e": "budget-exhausted",
+          "https://artlung.com/indienews/84ee1423f6cd6a1cb4733edfb86a3aa6": "budget-exhausted",
+          "https://artlung.com/indienews/05de55083e6d92d43ff131358d47b949": "budget-exhausted",
+          "https://artlung.com/indienews/379d5b08a9b2dcedc39ce32e961ab2c2": "budget-exhausted",
+          "https://artlung.com/indienews/ba3d29ad9282db49c4aaa33716d5ce4b": "budget-exhausted",
+          "https://artlung.com/indienews/d72c3ef9bd52b1ac2b3c85b55c8b1951": "budget-exhausted",
+          "https://artlung.com/indienews/d5f50db49f2e75783bc3cc24bd5c5e9a": "budget-exhausted",
+          "https://artlung.com/indienews/bb7ab69d0a547f8a6988766f82b3a905": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z"
+      "crawled_at": "2026-11-07T10:48:25.874Z"
     },
     {
       "origin": "https://forwardbias.dev",
@@ -13833,7 +13889,7 @@
         "title": "Contact",
         "summary": "Ramblings and experiments from a recovering middle school teacher. Equity, joy, and agency in education through tech, music, arts. Who knows what comes next.",
         "published_at": "",
-        "observed_at": "2026-11-07T03:28:49.388Z",
+        "observed_at": "2026-11-07T10:48:25.874Z",
         "content_type": "article",
         "language": "en-us",
         "dir": "",
@@ -14062,7 +14118,7 @@
           "https://forwardbias.dev/tags/red/": "topic-hub"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z"
+      "crawled_at": "2026-11-07T10:48:25.874Z"
     },
     {
       "origin": "https://joshbeard.com",
@@ -14113,7 +14169,7 @@
         "title": "Photos",
         "summary": "Photo albums from Colorado, travel, cycling, and everyday life.",
         "published_at": "",
-        "observed_at": "2026-11-07T03:28:49.388Z",
+        "observed_at": "2026-11-07T10:48:25.874Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -14599,7 +14655,7 @@
           "https://joshbeard.com/me": "content-index"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z"
+      "crawled_at": "2026-11-07T10:48:25.874Z"
     },
     {
       "origin": "https://joshcox.co.uk",
@@ -14701,7 +14757,7 @@
         "title": "Projects — Josh Cox",
         "summary": "Products and tools Josh Cox has built, including Prystine, SendTidings, Quotify, Lifting Times, LeerHaus, and the Mac app My House, My Things.",
         "published_at": "",
-        "observed_at": "2026-11-07T03:28:49.388Z",
+        "observed_at": "2026-11-07T10:48:25.874Z",
         "content_type": "collection",
         "language": "en-gb",
         "dir": "",
@@ -14929,7 +14985,7 @@
           "https://joshcox.co.uk/blog/meat-the-luxury-product/": "content-index"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z"
+      "crawled_at": "2026-11-07T10:48:25.874Z"
     },
     {
       "origin": "https://joshghent.com",
@@ -15198,7 +15254,7 @@
         "title": "Enterprise sales teams, please, I beg you, stop",
         "summary": "I asked for a price on a few extra seats of software we already pay for. Two days and a pile of irrelevant questions later, I got one.",
         "published_at": "2026-10-28T00:00:00.000Z",
-        "observed_at": "2026-11-07T03:28:49.388Z",
+        "observed_at": "2026-11-07T10:48:25.874Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -15581,7 +15637,7 @@
           "https://joshghent.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z"
+      "crawled_at": "2026-11-07T10:48:25.874Z"
     },
     {
       "origin": "https://joshgr.com",
@@ -15856,7 +15912,7 @@
           "https://joshgr.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z"
+      "crawled_at": "2026-11-07T10:48:25.874Z"
     },
     {
       "origin": "https://joshkoter.com",
@@ -15901,7 +15957,7 @@
         "title": "Untitled",
         "summary": "Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on YouTube.",
         "published_at": "",
-        "observed_at": "2026-11-07T03:28:49.388Z",
+        "observed_at": "2026-11-07T10:48:25.874Z",
         "content_type": "video",
         "language": "",
         "dir": "",
@@ -16116,7 +16172,7 @@
           "https://joshkoter.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z"
+      "crawled_at": "2026-11-07T10:48:25.874Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -17078,7 +17134,7 @@
           "https://joshmuller.ca": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z"
+      "crawled_at": "2026-11-07T10:48:25.874Z"
     },
     {
       "origin": "https://joshozuna.com",
@@ -17206,7 +17262,7 @@
         "title": "35mm Film Photography Gallery",
         "summary": "Hobbyist photographer. Shooting 35mm film since 2022.",
         "published_at": "2025-08-17T05:00:00.000Z",
-        "observed_at": "2026-11-07T03:28:49.388Z",
+        "observed_at": "2026-11-07T10:48:25.874Z",
         "content_type": "collection",
         "language": "en",
         "dir": "",
@@ -17506,7 +17562,7 @@
           "https://joshozuna.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z"
+      "crawled_at": "2026-11-07T10:48:25.874Z"
     },
     {
       "origin": "https://joshsherman.dev",
@@ -17538,7 +17594,7 @@
         "title": "Annotate Archive | Josh Sherman",
         "summary": "A spoiler-safe social reading app with private circles, progress-gated notes, reactions, predictions, and notifications.",
         "published_at": "",
-        "observed_at": "2026-11-07T03:28:49.388Z",
+        "observed_at": "2026-11-07T10:48:25.874Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -17764,7 +17820,7 @@
           "https://joshsherman.dev/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z"
+      "crawled_at": "2026-11-07T10:48:25.874Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -17839,7 +17895,7 @@
         "title": "What's New",
         "summary": "See what people across the Joshternet have been writing, building, and sharing. Discover recent posts and creative work from independent websites, then follow the links to their original publishers.",
         "published_at": "",
-        "observed_at": "2026-11-07T03:28:49.388Z",
+        "observed_at": "2026-11-07T10:48:25.874Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -18368,7 +18424,7 @@
           "https://joshternet.org/cdn-cgi/l/email-protection": "content-index"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z"
+      "crawled_at": "2026-11-07T10:48:25.874Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -18578,7 +18634,7 @@
         "title": "Learning a New Tech Stack with an LLM",
         "summary": "While I mentioned a few weeks back that I'm now recovering from AI Psychosis , that doesn't mean I've given up on the technology completely. I'm writing more emails, and engaging with human beings as much as I can, and that part's been great. I still use agents as a glorified typewriter to generate code, and still very much get my hands in the dirt and sling code myself. I've also gotten quite obs",
         "published_at": "2026-10-26T00:00:00.000Z",
-        "observed_at": "2026-11-07T03:28:49.388Z",
+        "observed_at": "2026-11-07T10:48:25.874Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -19957,7 +20013,7 @@
           "https://joshtronic.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z"
+      "crawled_at": "2026-11-07T10:48:25.874Z"
     },
     {
       "origin": "https://joshua.seigler.net",
@@ -20342,7 +20398,7 @@
           "https://joshua.seigler.net": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z"
+      "crawled_at": "2026-11-07T10:48:25.874Z"
     },
     {
       "origin": "https://joshuadrake.org",
@@ -20379,7 +20435,7 @@
         "title": "Projects:",
         "summary": "",
         "published_at": "",
-        "observed_at": "2026-11-07T03:28:49.388Z",
+        "observed_at": "2026-11-07T10:48:25.874Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -20637,7 +20693,7 @@
           "https://joshuadrake.org/projects/n12rebuild/": "content-index"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z",
+      "crawled_at": "2026-11-07T10:48:25.874Z",
       "portfolio": {
         "url": "https://joshuadrake.org/projects/",
         "work_count": 39,
@@ -20673,7 +20729,7 @@
         "title": "Work, Joshua Kim",
         "summary": "Eight projects by Joshua Kim: internal tools, interactive and AR work, app case studies, and graphic design.",
         "published_at": "",
-        "observed_at": "2026-11-07T03:28:49.388Z",
+        "observed_at": "2026-11-07T10:48:25.874Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -20898,7 +20954,7 @@
           "https://joshuakim.studio/about": "content-index"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z"
+      "crawled_at": "2026-11-07T10:48:25.874Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -22484,7 +22540,7 @@
           "https://joshuamorris.info": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z"
+      "crawled_at": "2026-11-07T10:48:25.874Z"
     },
     {
       "origin": "https://joshuapsteele.com",
@@ -24119,7 +24175,7 @@
           "https://joshuapsteele.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z"
+      "crawled_at": "2026-11-07T10:48:25.874Z"
     },
     {
       "origin": "https://joshuastuebner.com",
@@ -24526,7 +24582,7 @@
           "https://joshuastuebner.com/joshuastuebner.asc": "content-index"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z"
+      "crawled_at": "2026-11-07T10:48:25.874Z"
     },
     {
       "origin": "https://joshurbandavis.com",
@@ -24577,7 +24633,7 @@
         "title": "Download CV",
         "summary": "I build machines that perceive the world, and ask what happens when those machines change how we see it.",
         "published_at": "",
-        "observed_at": "2026-11-07T03:28:49.388Z",
+        "observed_at": "2026-11-07T10:48:25.874Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -24818,7 +24874,7 @@
           "https://joshurbandavis.com/index.html": "content-index"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z"
+      "crawled_at": "2026-11-07T10:48:25.874Z"
     },
     {
       "origin": "https://www.chrisminnick.com",
@@ -24996,7 +25052,7 @@
         "title": "Books",
         "summary": "More than twenty books on programming, the web, and AI — plus three novels.",
         "published_at": "2027-04-01T00:00:00.000Z",
-        "observed_at": "2026-11-07T03:28:49.388Z",
+        "observed_at": "2026-11-07T10:48:25.874Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -25384,7 +25440,7 @@
           "https://www.chrisminnick.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z"
+      "crawled_at": "2026-11-07T10:48:25.874Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -26065,7 +26121,7 @@
           "https://www.joshcanhelp.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z"
+      "crawled_at": "2026-11-07T10:48:25.874Z"
     },
     {
       "origin": "https://www.joshfinnie.com",
@@ -26363,6 +26419,10 @@
         {
           "slug": "docker",
           "label": "docker"
+        },
+        {
+          "slug": "docs",
+          "label": "docs"
         },
         {
           "slug": "document-20processing",
@@ -27018,7 +27078,7 @@
         "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone",
         "summary": "I spent a week having Claude Code audit my fork of LightCraft, the AI-built Rust Lightroom clone: fuzzing, crash safety, a locked control port, faster frames, and 50,000 deleted lines.",
         "published_at": "2026-11-04T00:00:00.000Z",
-        "observed_at": "2026-11-07T03:28:49.388Z",
+        "observed_at": "2026-11-07T10:48:25.874Z",
         "content_type": "article",
         "language": "en-us",
         "dir": "",
@@ -27076,6 +27136,7 @@
         "selection_strategy": "uncapped-site-crawl-v1",
         "selection_reasons": {
           "https://www.joshfinnie.com/": "home",
+          "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/": "feed",
           "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/": "feed",
           "https://www.joshfinnie.com/blog/micro-saas-october-retro/": "feed",
           "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/": "feed",
@@ -27691,11 +27752,10 @@
           "https://www.joshfinnie.com/tags/unions/": "budget-exhausted",
           "https://www.joshfinnie.com/tags/gaming/": "budget-exhausted",
           "https://www.joshfinnie.com/tags/climate/": "budget-exhausted",
-          "https://www.joshfinnie.com/tags/policy/": "budget-exhausted",
-          "https://www.joshfinnie.com": "short-circuit-unchanged"
+          "https://www.joshfinnie.com/tags/policy/": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z",
+      "crawled_at": "2026-11-07T10:48:25.874Z",
       "portfolio": {
         "url": "https://www.joshfinnie.com/projects/",
         "work_count": 9,
@@ -27928,7 +27988,7 @@
         "title": "Work — Joshua Baker",
         "summary": "Selected case studies by Joshua Baker, plus the full archive — 140+ projects across two decades of design and engineering.",
         "published_at": "",
-        "observed_at": "2026-11-07T03:28:49.388Z",
+        "observed_at": "2026-11-07T10:48:25.874Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -28200,7 +28260,7 @@
           "https://www.joshuabaker.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z",
+      "crawled_at": "2026-11-07T10:48:25.874Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,
@@ -28348,7 +28408,7 @@
         "title": "Speaking",
         "summary": "I talk about static analysis, accessibility, and team culture.",
         "published_at": "",
-        "observed_at": "2026-11-07T03:28:49.388Z",
+        "observed_at": "2026-11-07T10:48:25.874Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -28641,7 +28701,7 @@
           "https://www.joshuakgoldberg.com/blog": "content-index"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z"
+      "crawled_at": "2026-11-07T10:48:25.874Z"
     },
     {
       "origin": "https://www.joshvickerson.com",
@@ -29128,7 +29188,7 @@
           "https://www.joshvickerson.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-07T03:28:49.388Z"
+      "crawled_at": "2026-11-07T10:48:25.874Z"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-07T00:06:40.795Z",
+  "generated_at": "2026-11-07T11:08:52.194Z",
   "participant_count": 25,
   "community_count": 644,
   "publication_count": 616,
@@ -11,11 +11,48 @@
   },
   "fresh": [
     {
+      "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
+      "title": "Tailwind, Stack Overflow, and the Docs Snowball",
+      "summary": "Tailwind's docs traffic fell 40% and Stack Overflow's questions collapsed as developers asked LLMs instead. Why that loop leaves us with worse docs, shallower skills, and models that stop learning.",
+      "published_at": "2026-11-07T00:00:00.000Z",
+      "observed_at": "2026-11-07T10:48:25.874Z",
+      "content_type": "article",
+      "language": "en-us",
+      "dir": "",
+      "site_origin": "https://www.joshfinnie.com",
+      "site_title": "Josh Finnie",
+      "domain": "www.joshfinnie.com",
+      "tags": [
+        {
+          "slug": "documentation",
+          "label": "documentation"
+        },
+        {
+          "slug": "opinion",
+          "label": "opinion"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "documentation",
+          "label": "documentation"
+        },
+        {
+          "slug": "opinion",
+          "label": "opinion"
+        }
+      ],
+      "image": "/assets/activity/posters/40175e23b4c3dfa4808bf384342091c06b12d15b825295b2ac52dc81d054b61c.webp",
+      "image_origin": "",
+      "source_kind": "rss",
+      "page_role": "article"
+    },
+    {
       "url": "https://joshgr.com/writing/an-open-letter-to-ai-barons/",
       "title": "An Open Letter to AI Barons",
       "summary": "Congratulations! You did it! You raised the tide and now all boats are lifted. You made a cool. Good job!",
       "published_at": "2026-11-06T00:00:00.000Z",
-      "observed_at": "2026-11-06T23:48:06.040Z",
+      "observed_at": "2026-11-07T10:48:25.874Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -34,7 +71,7 @@
       "title": "AI Is Writing More Code. Who Is Reviewing All of It?",
       "summary": "Agents draft more pull requests than ever. The harder question is whether teams can still understand and validate the software.",
       "published_at": "2026-11-05T14:00:00.000Z",
-      "observed_at": "2026-11-06T23:48:06.040Z",
+      "observed_at": "2026-11-07T10:48:25.874Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -71,7 +108,7 @@
       "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone",
       "summary": "I spent a week having Claude Code audit my fork of LightCraft, the AI-built Rust Lightroom clone: fuzzing, crash safety, a locked control port, faster frames, and 50,000 deleted lines.",
       "published_at": "2026-11-04T00:00:00.000Z",
-      "observed_at": "2026-11-06T23:48:06.040Z",
+      "observed_at": "2026-11-07T10:48:25.874Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -124,7 +161,7 @@
       "title": "Your Code Editor Is Now a Security Threat",
       "summary": "Attackers put malicious Claude Code extensions in Cursor's marketplace for about 11 hours. What that means for developer-tool trust.",
       "published_at": "2026-11-03T22:00:00.000Z",
-      "observed_at": "2026-11-06T23:48:06.040Z",
+      "observed_at": "2026-11-07T10:48:25.874Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -153,7 +190,7 @@
       "title": "I went relatively early this morning.",
       "summary": "",
       "published_at": "2026-11-03T16:15:36.000Z",
-      "observed_at": "2026-11-06T23:48:06.040Z",
+      "observed_at": "2026-11-07T10:48:25.874Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -181,67 +218,6 @@
         }
       ],
       "image": "/assets/activity/posters/a5f704c82e275fd530bf5dc7fc5c18b3cace0b58f08f9c04c02286b031ad3e07.webp",
-      "image_origin": "",
-      "source_kind": "h-entry",
-      "page_role": "article"
-    },
-    {
-      "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
-      "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters.",
-      "summary": "Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters.",
-      "published_at": "2026-11-02T22:49:28.000Z",
-      "observed_at": "2026-11-06T23:48:06.040Z",
-      "content_type": "article",
-      "language": "en-us",
-      "dir": "",
-      "site_origin": "https://artlung.com",
-      "site_title": "Joe Crawford",
-      "domain": "artlung.com",
-      "tags": [
-        {
-          "slug": "california",
-          "label": "california"
-        },
-        {
-          "slug": "general",
-          "label": "general"
-        },
-        {
-          "slug": "history",
-          "label": "history"
-        },
-        {
-          "slug": "permanence",
-          "label": "permanence"
-        },
-        {
-          "slug": "politics",
-          "label": "politics"
-        }
-      ],
-      "neighborhoods": [
-        {
-          "slug": "california",
-          "label": "california"
-        },
-        {
-          "slug": "general",
-          "label": "general"
-        },
-        {
-          "slug": "history",
-          "label": "history"
-        },
-        {
-          "slug": "permanence",
-          "label": "permanence"
-        },
-        {
-          "slug": "politics",
-          "label": "politics"
-        }
-      ],
-      "image": "/assets/activity/posters/19530d0d3ba772a9e11292e6a5b1d25ebb3b5f82d1c5d56577a655064fcb64dd.webp",
       "image_origin": "",
       "source_kind": "h-entry",
       "page_role": "article"

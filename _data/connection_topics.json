@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-07T00:06:40.795Z",
+  "generated_at": "2026-11-07T11:08:52.194Z",
   "overlap_count": 142,
   "pairs": [
     {
@@ -540,6 +540,10 @@
         {
           "slug": "community",
           "label": "community"
+        },
+        {
+          "slug": "learning",
+          "label": "learning"
         },
         {
           "slug": "privacy",
@@ -1504,6 +1508,10 @@
           "label": "claude"
         },
         {
+          "slug": "docs",
+          "label": "docs"
+        },
+        {
           "slug": "october",
           "label": "october"
         },
@@ -1752,6 +1760,10 @@
       "b": "https://www.joshfinnie.com",
       "topics": [
         {
+          "slug": "model",
+          "label": "models"
+        },
+        {
           "slug": "social",
           "label": "social"
         }
@@ -1906,6 +1918,10 @@
         {
           "slug": "ai",
           "label": "ai"
+        },
+        {
+          "slug": "learning",
+          "label": "learning"
         },
         {
           "slug": "video",
@@ -2374,10 +2390,6 @@
           "label": "claude-code"
         },
         {
-          "slug": "coding",
-          "label": "coding"
-        },
-        {
           "slug": "css",
           "label": "css"
         },
@@ -2418,6 +2430,10 @@
         {
           "slug": "code-review",
           "label": "code review"
+        },
+        {
+          "slug": "model",
+          "label": "models"
         },
         {
           "slug": "october",
@@ -2578,6 +2594,10 @@
       "b": "https://www.joshfinnie.com",
       "topics": [
         {
+          "slug": "learning",
+          "label": "learning"
+        },
+        {
           "slug": "line",
           "label": "lines"
         },
@@ -2706,6 +2726,10 @@
         {
           "slug": "command",
           "label": "command"
+        },
+        {
+          "slug": "learning",
+          "label": "learning"
         },
         {
           "slug": "line",
@@ -3941,6 +3965,17 @@
                 {
                   "url": "https://www.chrisminnick.com/books/javascript-for-kids/",
                   "title": "JavaScript For Kids"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
+                  "title": "Tailwind, Stack Overflow, and the Docs Snowball"
                 }
               ]
             },
@@ -5333,10 +5368,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
-                  "title": "I Declared the Coding Interview Dead in 2021"
                 }
               ]
             }
@@ -6226,10 +6257,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
-                  "title": "I Declared the Coding Interview Dead in 2021"
                 }
               ]
             }
@@ -6891,10 +6918,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
-                  "title": "I Declared the Coding Interview Dead in 2021"
                 }
               ]
             }
@@ -8007,10 +8030,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
-                  "title": "I Declared the Coding Interview Dead in 2021"
                 }
               ]
             }
@@ -8144,6 +8163,29 @@
                 {
                   "url": "https://joshuadrake.org/projects/8bip",
                   "title": "8-bit Integer Processor"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "docs",
+          "label": "docs",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+              "title": "Healthy Weight Plan Builder"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
+                  "title": "Tailwind, Stack Overflow, and the Docs Snowball"
                 }
               ]
             }
@@ -9646,6 +9688,17 @@
           ],
           "sites": [
             {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
+                  "title": "Tailwind, Stack Overflow, and the Docs Snowball"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
@@ -9909,10 +9962,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
-                  "title": "I Declared the Coding Interview Dead in 2021"
                 }
               ]
             }
@@ -10195,6 +10244,17 @@
                 {
                   "url": "https://artlung.com/mixtapes/machine-learning-healing/",
                   "title": "Machine Learning Healing"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
+                  "title": "Tailwind, Stack Overflow, and the Docs Snowball"
                 }
               ]
             },
@@ -12824,10 +12884,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
               "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
-              "title": "I Declared the Coding Interview Dead in 2021"
             }
           ],
           "sites": [
@@ -13146,10 +13202,6 @@
             {
               "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
               "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
-              "title": "I Declared the Coding Interview Dead in 2021"
             }
           ],
           "sites": [
@@ -13335,49 +13387,6 @@
                 {
                   "url": "https://joshghent.com/skills",
                   "title": "Skills"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "coding",
-          "label": "coding",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
-              "title": "I Declared the Coding Interview Dead in 2021"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
-              "articles": [
-                {
-                  "url": "https://www.chrisminnick.com/books/claude-code-for-dummies/",
-                  "title": "Claude Code For Dummies"
-                },
-                {
-                  "url": "https://www.chrisminnick.com/books/coding-all-in-one-for-dummies/",
-                  "title": "Coding All-in-One For Dummies, 3rd Edition"
-                },
-                {
-                  "url": "https://www.chrisminnick.com/books/coding-with-ai-for-dummies/",
-                  "title": "Coding with AI For Dummies"
-                },
-                {
-                  "url": "https://www.chrisminnick.com/books/adventures-in-coding/",
-                  "title": "Adventures in Coding"
-                },
-                {
-                  "url": "https://www.chrisminnick.com/books/javascript-for-kids/",
-                  "title": "JavaScript For Kids"
-                },
-                {
-                  "url": "https://www.chrisminnick.com/books/coding-with-javascript-for-dummies/",
-                  "title": "Coding With JavaScript For Dummies"
                 }
               ]
             }
@@ -13983,6 +13992,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
+                  "title": "Tailwind, Stack Overflow, and the Docs Snowball"
+                }
+              ]
+            },
             {
               "origin": "https://joshsherman.dev",
               "domain": "joshsherman.dev",
@@ -15518,6 +15538,17 @@
                 {
                   "url": "https://artlung.com/mixtapes/machine-learning-healing/",
                   "title": "Machine Learning Healing"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
+                  "title": "Tailwind, Stack Overflow, and the Docs Snowball"
                 }
               ]
             },
@@ -17336,10 +17367,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
-                  "title": "I Declared the Coding Interview Dead in 2021"
                 }
               ]
             }
@@ -17691,49 +17718,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
                   "title": "Your Code Editor Is Now a Security Threat"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "coding",
-          "label": "coding",
-          "articles": [
-            {
-              "url": "https://www.chrisminnick.com/books/claude-code-for-dummies/",
-              "title": "Claude Code For Dummies"
-            },
-            {
-              "url": "https://www.chrisminnick.com/books/coding-all-in-one-for-dummies/",
-              "title": "Coding All-in-One For Dummies, 3rd Edition"
-            },
-            {
-              "url": "https://www.chrisminnick.com/books/coding-with-ai-for-dummies/",
-              "title": "Coding with AI For Dummies"
-            },
-            {
-              "url": "https://www.chrisminnick.com/books/adventures-in-coding/",
-              "title": "Adventures in Coding"
-            },
-            {
-              "url": "https://www.chrisminnick.com/books/javascript-for-kids/",
-              "title": "JavaScript For Kids"
-            },
-            {
-              "url": "https://www.chrisminnick.com/books/coding-with-javascript-for-dummies/",
-              "title": "Coding With JavaScript For Dummies"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
-                  "title": "I Declared the Coding Interview Dead in 2021"
                 }
               ]
             }
@@ -18273,6 +18257,17 @@
                 {
                   "url": "https://artlung.com/mixtapes/machine-learning-healing/",
                   "title": "Machine Learning Healing"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
+                  "title": "Tailwind, Stack Overflow, and the Docs Snowball"
                 }
               ]
             },
@@ -19134,10 +19129,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
-                  "title": "I Declared the Coding Interview Dead in 2021"
                 }
               ]
             }
@@ -19505,6 +19496,29 @@
           ]
         },
         {
+          "slug": "docs",
+          "label": "docs",
+          "articles": [
+            {
+              "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
+              "title": "Tailwind, Stack Overflow, and the Docs Snowball"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "job",
           "label": "job",
           "articles": [
@@ -19533,6 +19547,70 @@
                 {
                   "url": "https://joshgr.com/writing/an-open-letter-to-ai-barons/",
                   "title": "An Open Letter to AI Barons"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "learning",
+          "label": "learning",
+          "articles": [
+            {
+              "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
+              "title": "Tailwind, Stack Overflow, and the Docs Snowball"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/writing-computer-code/",
+                  "title": "Writing Computer Code"
+                },
+                {
+                  "url": "https://www.chrisminnick.com/books/javascript-for-kids/",
+                  "title": "JavaScript For Kids"
+                }
+              ]
+            },
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/comics/",
+                  "title": "artlung.com/comics/"
+                },
+                {
+                  "url": "https://artlung.com/mixtapes/machine-learning-healing/",
+                  "title": "Machine Learning Healing"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
+                  "title": "Learning a New Tech Stack with an LLM"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/04_silvester/",
+                  "title": "04: Silvester"
                 }
               ]
             }
@@ -19590,6 +19668,44 @@
                 {
                   "url": "https://joshuastuebner.com/experiments/ex/25_sparkline/",
                   "title": "25: Sparkline"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "model",
+          "label": "models",
+          "articles": [
+            {
+              "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
+              "title": "Tailwind, Stack Overflow, and the Docs Snowball"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshsherman.dev",
+              "domain": "joshsherman.dev",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshsherman.dev/projects/ocr-screenshot-scraper/",
+                  "title": "OCR Screenshot Scraper | Josh Sherman"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
+                  "title": "6 Analog"
+                },
+                {
+                  "url": "https://joshuamorris.info/experiments/model-viewer/",
+                  "title": "Model viewer Three Trion figures in matching stages — land clearing, voxel valley, underwater — with quiet orbit controls. Archived from a July 2015 CodePen."
                 }
               ]
             }
@@ -20333,10 +20449,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
                   "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
-                  "title": "I Declared the Coding Interview Dead in 2021"
                 }
               ]
             }
