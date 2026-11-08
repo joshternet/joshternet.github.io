@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-08T16:10:26.396Z",
-  "participant_count": 24,
-  "community_count": 641,
-  "publication_count": 619,
+  "generated_at": "2026-11-08T20:44:07.472Z",
+  "participant_count": 25,
+  "community_count": 643,
+  "publication_count": 620,
   "connection_count": 7,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
@@ -11,11 +11,30 @@
   },
   "fresh": [
     {
+      "url": "https://joshtronic.com/2026/11/08/introducing-cuppa/",
+      "title": "Introducing Cuppa",
+      "summary": "It wouldn't be yet another retirement tour without a focus on side hustles. I've been focusing most of my time on the projects I've been kicking the can on for Holiday API but have also been working on something new with my wife . The past few years, she's been dipping her toes into day trading both stocks and options. To help support her, I started to build more focused tools than what the curren",
+      "published_at": "2026-11-08T00:00:00.000Z",
+      "observed_at": "2026-11-08T20:22:43.029Z",
+      "content_type": "article",
+      "language": "en",
+      "dir": "",
+      "site_origin": "https://joshtronic.com",
+      "site_title": "Josh Sherman",
+      "domain": "joshtronic.com",
+      "tags": [],
+      "neighborhoods": [],
+      "image": "/assets/activity/posters/6b4fb924aeec77d94ea56ef236390349e4a488bb7cd75f44f3a46f7bf6b1cee2.webp",
+      "image_origin": "",
+      "source_kind": "rss",
+      "page_role": "unknown"
+    },
+    {
       "url": "https://joshbeard.com/photos/2026/IMG_1904_jpeg.html",
       "title": "Cottonwood Creek Trail, Colorado Springs, Colorado. November 7, 2026.",
       "summary": "",
       "published_at": "2026-11-07T08:56:00.000Z",
-      "observed_at": "2026-11-08T15:51:45.463Z",
+      "observed_at": "2026-11-08T20:22:43.029Z",
       "content_type": "article",
       "language": "",
       "dir": "",
@@ -33,7 +52,7 @@
       "title": "Tailwind, Stack Overflow, and the Docs Snowball",
       "summary": "Tailwind's docs traffic fell 40% and Stack Overflow's questions collapsed as developers asked LLMs instead. Why that loop leaves us with worse docs, shallower skills, and models that stop learning.",
       "published_at": "2026-11-07T00:00:00.000Z",
-      "observed_at": "2026-11-08T15:51:45.463Z",
+      "observed_at": "2026-11-08T20:22:43.029Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -70,7 +89,7 @@
       "title": "Worth Wandering: The Mushroom Color Atlas",
       "summary": "An extraordinary interactive collection of colors made from mushrooms, where a walk through the forest becomes an exploration of chemistry, textiles, watercolor pigments and the surprising things nature has been making all along.",
       "published_at": "2026-11-06T16:00:00.000Z",
-      "observed_at": "2026-11-08T15:51:45.463Z",
+      "observed_at": "2026-11-08T20:22:43.029Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -89,7 +108,7 @@
       "title": "JPEG XL Is Becoming a Practical Choice for the Web",
       "summary": "Safari, Chrome, and Firefox can decode JPEG XL. Progressive loading, reversible JPEG storage, a measured compare, and how to ship it with picture fallbacks.",
       "published_at": "2026-11-06T14:00:00.000Z",
-      "observed_at": "2026-11-08T15:51:45.463Z",
+      "observed_at": "2026-11-08T20:22:43.029Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -126,7 +145,7 @@
       "title": "An Open Letter to AI Barons",
       "summary": "Congratulations! You did it! You raised the tide and now all boats are lifted. You made a cool. Good job!",
       "published_at": "2026-11-06T00:00:00.000Z",
-      "observed_at": "2026-11-08T15:51:45.463Z",
+      "observed_at": "2026-11-08T20:22:43.029Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -139,64 +158,11 @@
       "image_origin": "",
       "source_kind": "rss",
       "page_role": "unknown"
-    },
-    {
-      "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
-      "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone",
-      "summary": "I spent a week having Claude Code audit my fork of LightCraft, the AI-built Rust Lightroom clone: fuzzing, crash safety, a locked control port, faster frames, and 50,000 deleted lines.",
-      "published_at": "2026-11-04T00:00:00.000Z",
-      "observed_at": "2026-11-08T15:51:45.463Z",
-      "content_type": "article",
-      "language": "en-us",
-      "dir": "",
-      "site_origin": "https://www.joshfinnie.com",
-      "site_title": "Josh Finnie",
-      "domain": "www.joshfinnie.com",
-      "tags": [
-        {
-          "slug": "ai",
-          "label": "ai"
-        },
-        {
-          "slug": "code-review",
-          "label": "code review"
-        },
-        {
-          "slug": "open-source",
-          "label": "open source"
-        },
-        {
-          "slug": "refactor",
-          "label": "refactor"
-        }
-      ],
-      "neighborhoods": [
-        {
-          "slug": "ai",
-          "label": "ai"
-        },
-        {
-          "slug": "code-review",
-          "label": "code review"
-        },
-        {
-          "slug": "open-source",
-          "label": "open source"
-        },
-        {
-          "slug": "refactor",
-          "label": "refactor"
-        }
-      ],
-      "image": "/assets/activity/posters/9ec585cb2ba2e8b98ffed866c39156fa4c8d3ede90b98d79a88b42414d9d2688.webp",
-      "image_origin": "",
-      "source_kind": "rss",
-      "page_role": "article"
     }
   ],
   "neighborhood": {
-    "slug": "grief",
-    "label": "Grief",
+    "slug": "entrepreneurship",
+    "label": "entrepreneurship",
     "member_count": 1
   },
   "connection": {

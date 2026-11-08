@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-08T16:10:26.396Z",
-  "overlap_count": 127,
+  "generated_at": "2026-11-08T20:44:07.472Z",
+  "overlap_count": 143,
   "pairs": [
     {
       "a": "https://artlung.com",
@@ -48,6 +48,10 @@
         {
           "slug": "general",
           "label": "general"
+        },
+        {
+          "slug": "generator",
+          "label": "generator"
         },
         {
           "slug": "music",
@@ -133,6 +137,10 @@
       "a": "https://artlung.com",
       "b": "https://joshsherman.dev",
       "topics": [
+        {
+          "slug": "archive",
+          "label": "archive"
+        },
         {
           "slug": "data",
           "label": "data"
@@ -233,6 +241,52 @@
     },
     {
       "a": "https://artlung.com",
+      "b": "https://joshuadrake.org",
+      "topics": [
+        {
+          "slug": "add",
+          "label": "add"
+        },
+        {
+          "slug": "computer",
+          "label": "Computer"
+        },
+        {
+          "slug": "created",
+          "label": "created"
+        },
+        {
+          "slug": "data",
+          "label": "data"
+        },
+        {
+          "slug": "design",
+          "label": "design"
+        },
+        {
+          "slug": "family",
+          "label": "Family"
+        },
+        {
+          "slug": "generator",
+          "label": "generator"
+        },
+        {
+          "slug": "mean",
+          "label": "means"
+        },
+        {
+          "slug": "school",
+          "label": "schools"
+        },
+        {
+          "slug": "version",
+          "label": "version"
+        }
+      ]
+    },
+    {
+      "a": "https://artlung.com",
       "b": "https://joshuakim.studio",
       "topics": [
         {
@@ -245,6 +299,10 @@
       "a": "https://artlung.com",
       "b": "https://joshuamorris.info",
       "topics": [
+        {
+          "slug": "archive",
+          "label": "archive"
+        },
         {
           "slug": "browser",
           "label": "browsers"
@@ -518,6 +576,10 @@
       "b": "https://www.joshuabaker.com",
       "topics": [
         {
+          "slug": "archive",
+          "label": "archive"
+        },
+        {
           "slug": "community",
           "label": "community"
         },
@@ -622,6 +684,20 @@
         {
           "slug": "music",
           "label": "music"
+        },
+        {
+          "slug": "software",
+          "label": "Software"
+        }
+      ]
+    },
+    {
+      "a": "https://forwardbias.dev",
+      "b": "https://joshuadrake.org",
+      "topics": [
+        {
+          "slug": "school",
+          "label": "schools"
         },
         {
           "slug": "software",
@@ -871,6 +947,20 @@
     },
     {
       "a": "https://joshghent.com",
+      "b": "https://joshuadrake.org",
+      "topics": [
+        {
+          "slug": "engineering",
+          "label": "engineering"
+        },
+        {
+          "slug": "software",
+          "label": "Software"
+        }
+      ]
+    },
+    {
+      "a": "https://joshghent.com",
       "b": "https://joshuamorris.info",
       "topics": [
         {
@@ -1059,6 +1149,24 @@
     },
     {
       "a": "https://joshgr.com",
+      "b": "https://joshuadrake.org",
+      "topics": [
+        {
+          "slug": "generator",
+          "label": "generator"
+        },
+        {
+          "slug": "purpose",
+          "label": "Purpose"
+        },
+        {
+          "slug": "software",
+          "label": "Software"
+        }
+      ]
+    },
+    {
+      "a": "https://joshgr.com",
       "b": "https://joshuamorris.info",
       "topics": [
         {
@@ -1205,6 +1313,16 @@
     },
     {
       "a": "https://joshkoter.com",
+      "b": "https://joshuadrake.org",
+      "topics": [
+        {
+          "slug": "family",
+          "label": "Family"
+        }
+      ]
+    },
+    {
+      "a": "https://joshkoter.com",
       "b": "https://joshuamorris.info",
       "topics": [
         {
@@ -1306,6 +1424,24 @@
         {
           "slug": "technology",
           "label": "technology"
+        }
+      ]
+    },
+    {
+      "a": "https://joshmuller.ca",
+      "b": "https://joshuadrake.org",
+      "topics": [
+        {
+          "slug": "created",
+          "label": "created"
+        },
+        {
+          "slug": "full",
+          "label": "full"
+        },
+        {
+          "slug": "version",
+          "label": "version"
         }
       ]
     },
@@ -1591,8 +1727,22 @@
     },
     {
       "a": "https://joshsherman.dev",
+      "b": "https://joshuadrake.org",
+      "topics": [
+        {
+          "slug": "data",
+          "label": "data"
+        }
+      ]
+    },
+    {
+      "a": "https://joshsherman.dev",
       "b": "https://joshuamorris.info",
       "topics": [
+        {
+          "slug": "archive",
+          "label": "archive"
+        },
         {
           "slug": "model",
           "label": "models"
@@ -1642,6 +1792,10 @@
       "b": "https://www.joshuabaker.com",
       "topics": [
         {
+          "slug": "archive",
+          "label": "archive"
+        },
+        {
           "slug": "social",
           "label": "social"
         }
@@ -1658,6 +1812,20 @@
         {
           "slug": "world",
           "label": "world"
+        }
+      ]
+    },
+    {
+      "a": "https://joshtronic.com",
+      "b": "https://joshuadrake.org",
+      "topics": [
+        {
+          "slug": "mean",
+          "label": "means"
+        },
+        {
+          "slug": "writing",
+          "label": "Writing"
         }
       ]
     },
@@ -1808,6 +1976,10 @@
           "label": "ai agents"
         },
         {
+          "slug": "api",
+          "label": "api"
+        },
+        {
           "slug": "game",
           "label": "game"
         },
@@ -1826,6 +1998,20 @@
         {
           "slug": "week",
           "label": "weeks"
+        }
+      ]
+    },
+    {
+      "a": "https://joshua.seigler.net",
+      "b": "https://joshuadrake.org",
+      "topics": [
+        {
+          "slug": "family",
+          "label": "Family"
+        },
+        {
+          "slug": "software",
+          "label": "Software"
         }
       ]
     },
@@ -1952,6 +2138,152 @@
         {
           "slug": "technology",
           "label": "technology"
+        }
+      ]
+    },
+    {
+      "a": "https://joshuadrake.org",
+      "b": "https://joshuakim.studio",
+      "topics": [
+        {
+          "slug": "design",
+          "label": "design"
+        }
+      ]
+    },
+    {
+      "a": "https://joshuadrake.org",
+      "b": "https://joshuamorris.info",
+      "topics": [
+        {
+          "slug": "mean",
+          "label": "means"
+        },
+        {
+          "slug": "software",
+          "label": "Software"
+        },
+        {
+          "slug": "writing",
+          "label": "Writing"
+        }
+      ]
+    },
+    {
+      "a": "https://joshuadrake.org",
+      "b": "https://joshuapsteele.com",
+      "topics": [
+        {
+          "slug": "resource",
+          "label": "resources"
+        }
+      ]
+    },
+    {
+      "a": "https://joshuadrake.org",
+      "b": "https://joshuastuebner.com",
+      "topics": [
+        {
+          "slug": "bit",
+          "label": "bit"
+        },
+        {
+          "slug": "data",
+          "label": "data"
+        },
+        {
+          "slug": "design",
+          "label": "design"
+        },
+        {
+          "slug": "test",
+          "label": "test"
+        }
+      ]
+    },
+    {
+      "a": "https://joshuadrake.org",
+      "b": "https://joshurbandavis.com",
+      "topics": [
+        {
+          "slug": "add",
+          "label": "add"
+        },
+        {
+          "slug": "full",
+          "label": "full"
+        }
+      ]
+    },
+    {
+      "a": "https://joshuadrake.org",
+      "b": "https://www.chrisminnick.com",
+      "topics": [
+        {
+          "slug": "computer",
+          "label": "Computer"
+        },
+        {
+          "slug": "data",
+          "label": "data"
+        },
+        {
+          "slug": "design",
+          "label": "design"
+        },
+        {
+          "slug": "programming",
+          "label": "programming"
+        },
+        {
+          "slug": "school",
+          "label": "schools"
+        },
+        {
+          "slug": "server",
+          "label": "server"
+        },
+        {
+          "slug": "software",
+          "label": "Software"
+        },
+        {
+          "slug": "writing",
+          "label": "Writing"
+        }
+      ]
+    },
+    {
+      "a": "https://joshuadrake.org",
+      "b": "https://www.joshuabaker.com",
+      "topics": [
+        {
+          "slug": "banking",
+          "label": "banking"
+        },
+        {
+          "slug": "create",
+          "label": "create"
+        },
+        {
+          "slug": "design",
+          "label": "design"
+        },
+        {
+          "slug": "engineering",
+          "label": "engineering"
+        },
+        {
+          "slug": "full",
+          "label": "full"
+        },
+        {
+          "slug": "power",
+          "label": "power"
+        },
+        {
+          "slug": "research",
+          "label": "Research"
         }
       ]
     },
@@ -2158,6 +2490,10 @@
         {
           "slug": "ai",
           "label": "ai"
+        },
+        {
+          "slug": "archive",
+          "label": "archive"
         },
         {
           "slug": "digital",
@@ -2538,6 +2874,102 @@
                   "title": "chess sequencer"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/JDMCMC",
+                  "title": "Computer Vision"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "archive",
+          "label": "archive",
+          "articles": [
+            {
+              "url": "https://artlung.com/flash/",
+              "title": "/flash/ 📁"
+            },
+            {
+              "url": "https://artlung.com/sandiegobloggers-com/",
+              "title": "/sandiegobloggers-com/"
+            },
+            {
+              "url": "https://artlung.com/splashes/",
+              "title": "splash pages"
+            },
+            {
+              "url": "https://artlung.com/twitter/",
+              "title": "/twitter/ 📁"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshsherman.dev",
+              "domain": "joshsherman.dev",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshsherman.dev/projects/annotate-archive/",
+                  "title": "Annotate Archive | Josh Sherman"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=undisclosed-consumer-ai-platform-2025",
+                  "title": "Consumer AI Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=legatum-closer-look-2024",
+                  "title": "Closer Look"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=anthology-london-business-intelligence-platform-2023",
+                  "title": "Business Intelligence Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=anthology-london-sales-resident-platform-2023",
+                  "title": "Sales & Resident Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=dandara-living-social-media-platforms-2023",
+                  "title": "Social Media Platforms"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=taylor-bennett-client-portal-2023",
+                  "title": "Client Portal"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=animade-animade-2022",
+                  "title": "Animade"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-2022",
+                  "title": "Merchant Integration Tools"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
+                  "title": "6 Analog"
+                }
+              ]
             }
           ]
         },
@@ -2818,6 +3250,17 @@
                   "title": "Writing Computer Code"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/JDMCMC",
+                  "title": "Computer Vision"
+                }
+              ]
             }
           ]
         },
@@ -2851,6 +3294,17 @@
                 {
                   "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
                   "title": "Healthy Weight Plan Builder"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/8bip",
+                  "title": "8-bit Integer Processor"
                 }
               ]
             }
@@ -2963,6 +3417,17 @@
               ]
             },
             {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+                  "title": "Cessna HV Retrofit"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuastuebner.com",
               "domain": "joshuastuebner.com",
               "title": "Joshua Stübner",
@@ -3040,6 +3505,25 @@
                 {
                   "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-2022",
                   "title": "Merchant Integration Tools"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/8bip",
+                  "title": "8-bit Integer Processor"
+                },
+                {
+                  "url": "https://joshuadrake.org/projects/resloadbank/",
+                  "title": "Turbo Generator Load-Bank"
+                },
+                {
+                  "url": "https://joshuadrake.org/projects/turboelectric",
+                  "title": "TurboElectric"
                 }
               ]
             },
@@ -3210,6 +3694,17 @@
               ]
             },
             {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/n12rebuild/",
+                  "title": "BMW N12 Engine Rebuild"
+                }
+              ]
+            },
+            {
               "origin": "https://joshua.seigler.net",
               "domain": "joshua.seigler.net",
               "title": "Joshua Seigler",
@@ -3283,6 +3778,40 @@
                 {
                   "url": "https://joshgr.com/graphics/",
                   "title": "Graphics"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "generator",
+          "label": "generator",
+          "articles": [
+            {
+              "url": "https://artlung.com/blogofthe-day/",
+              "title": "other ways"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/resloadbank/",
+                  "title": "Turbo Generator Load-Bank"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/writing/how-wizardly-words-invents-words/",
+                  "title": "How Wizardly Words Invents Words"
                 }
               ]
             }
@@ -3814,6 +4343,17 @@
               ]
             },
             {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/JDMCMC",
+                  "title": "Computer Vision"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
@@ -4271,6 +4811,17 @@
                   "title": "The Era of Personal Micro-Software"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/turboelectriccessna",
+                  "title": "TurboElectric Cessna"
+                }
+              ]
             }
           ]
         },
@@ -4577,6 +5128,17 @@
                 {
                   "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
                   "title": "Healthy Weight Plan Builder"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/resloadbank/",
+                  "title": "Turbo Generator Load-Bank"
                 }
               ]
             }
@@ -5129,6 +5691,17 @@
                   "title": "Elder schools."
                 }
               ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/turboelectriccessna",
+                  "title": "TurboElectric Cessna"
+                }
+              ]
             }
           ]
         },
@@ -5196,6 +5769,17 @@
                 {
                   "url": "https://joshghent.com/enterprise-sales-teams/",
                   "title": "Enterprise sales teams, please, I beg you, stop"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+                  "title": "Cessna HV Retrofit"
                 }
               ]
             },
@@ -5978,6 +6562,17 @@
                   "title": "Merchant Integration Tools"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/turboelectriccessna",
+                  "title": "TurboElectric Cessna"
+                }
+              ]
             }
           ]
         },
@@ -6109,6 +6704,17 @@
                 {
                   "url": "https://forwardbias.dev/ideas/personal-micro-software/",
                   "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+                  "title": "Cessna HV Retrofit"
                 }
               ]
             },
@@ -6552,6 +7158,40 @@
           ]
         },
         {
+          "slug": "generator",
+          "label": "generator",
+          "articles": [
+            {
+              "url": "https://joshgr.com/writing/how-wizardly-words-invents-words/",
+              "title": "How Wizardly Words Invents Words"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/blogofthe-day/",
+                  "title": "other ways"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/resloadbank/",
+                  "title": "Turbo Generator Load-Bank"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "job",
           "label": "job",
           "articles": [
@@ -6867,6 +7507,29 @@
           ]
         },
         {
+          "slug": "purpose",
+          "label": "Purpose",
+          "articles": [
+            {
+              "url": "https://joshgr.com/graphics/",
+              "title": "Graphics"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/8bip",
+                  "title": "8-bit Integer Processor"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "software",
           "label": "Software",
           "articles": [
@@ -6910,6 +7573,17 @@
                 {
                   "url": "https://joshghent.com/enterprise-sales-teams/",
                   "title": "Enterprise sales teams, please, I beg you, stop"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+                  "title": "Cessna HV Retrofit"
                 }
               ]
             },
@@ -6972,6 +7646,17 @@
                 {
                   "url": "https://www.youtube.com/watch?v=_kuQflW2Db8",
                   "title": "Untitled"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/n12rebuild/",
+                  "title": "BMW N12 Engine Rebuild"
                 }
               ]
             },
@@ -7589,6 +8274,17 @@
                   "title": "/wordpress/"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/8bip",
+                  "title": "8-bit Integer Processor"
+                }
+              ]
             }
           ]
         },
@@ -7721,6 +8417,17 @@
                 {
                   "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-2022",
                   "title": "Merchant Integration Tools"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/8bip",
+                  "title": "8-bit Integer Processor"
                 }
               ]
             }
@@ -7985,6 +8692,17 @@
                 {
                   "url": "https://artlung.com/archive/portfolio/2024/",
                   "title": "Modern No-JavaScript version."
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/resloadbank/",
+                  "title": "Turbo Generator Load-Bank"
                 }
               ]
             }
@@ -9016,6 +9734,91 @@
       "origin": "https://joshsherman.dev",
       "topics": [
         {
+          "slug": "archive",
+          "label": "archive",
+          "articles": [
+            {
+              "url": "https://joshsherman.dev/projects/annotate-archive/",
+              "title": "Annotate Archive | Josh Sherman"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/flash/",
+                  "title": "/flash/ 📁"
+                },
+                {
+                  "url": "https://artlung.com/sandiegobloggers-com/",
+                  "title": "/sandiegobloggers-com/"
+                },
+                {
+                  "url": "https://artlung.com/splashes/",
+                  "title": "splash pages"
+                },
+                {
+                  "url": "https://artlung.com/twitter/",
+                  "title": "/twitter/ 📁"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=undisclosed-consumer-ai-platform-2025",
+                  "title": "Consumer AI Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=legatum-closer-look-2024",
+                  "title": "Closer Look"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=anthology-london-business-intelligence-platform-2023",
+                  "title": "Business Intelligence Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=anthology-london-sales-resident-platform-2023",
+                  "title": "Sales & Resident Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=dandara-living-social-media-platforms-2023",
+                  "title": "Social Media Platforms"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=taylor-bennett-client-portal-2023",
+                  "title": "Client Portal"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=animade-animade-2022",
+                  "title": "Animade"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-2022",
+                  "title": "Merchant Integration Tools"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
+                  "title": "6 Analog"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "data",
           "label": "data",
           "articles": [
@@ -9048,6 +9851,17 @@
                 {
                   "url": "https://artlung.com/privacy-policy/",
                   "title": "/privacy-policy/"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+                  "title": "Cessna HV Retrofit"
                 }
               ]
             },
@@ -9378,6 +10192,33 @@
           ]
         },
         {
+          "slug": "api",
+          "label": "api",
+          "articles": [
+            {
+              "url": "https://joshtronic.com/2026/11/08/introducing-cuppa/",
+              "title": "Introducing Cuppa"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/the-dots/appendix/apple-making-the-workplace-more-equal/",
+                  "title": "Making the workplace more equal · Apple’s App Store profiled Pip Jamieson and her ambitions for The Dots. The iOS app came out of the API-first rebuild I led. Apple Read more"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/the-dots/appendix/forbes-next-linkedin-creatives/",
+                  "title": "Is this the next LinkedIn? · Forbes profiled The Dots and its founder, Pip Jamieson, as the creative industry’s answer to LinkedIn. It is the network I rebuilt as fractional CTO. Forbes Read more"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "backend",
           "label": "backend",
           "articles": [
@@ -9699,6 +10540,17 @@
                 {
                   "url": "https://artlung.com/archive/portfolio/1999/",
                   "title": "HTML was so primitive in 1999 that I described this portfolio piece as “interactive.” All “interactive” means was that it had content that changed as items were selected. We take such things for granted now."
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/JDMCMC",
+                  "title": "Computer Vision"
                 }
               ]
             },
@@ -10268,6 +11120,17 @@
               ]
             },
             {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+                  "title": "Cessna HV Retrofit"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
@@ -10405,6 +11268,17 @@
                 {
                   "url": "https://www.youtube.com/watch?v=5uni6eGeTX4",
                   "title": "Untitled"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/n12rebuild/",
+                  "title": "BMW N12 Engine Rebuild"
                 }
               ]
             }
@@ -10811,6 +11685,17 @@
               ]
             },
             {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+                  "title": "Cessna HV Retrofit"
+                }
+              ]
+            },
+            {
               "origin": "https://joshgr.com",
               "domain": "joshgr.com",
               "title": "Joshua Grant",
@@ -11095,6 +11980,1051 @@
       ]
     },
     {
+      "origin": "https://joshuadrake.org",
+      "topics": [
+        {
+          "slug": "add",
+          "label": "add",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/JDMCMC",
+              "title": "Computer Vision"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
+                  "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters."
+                }
+              ]
+            },
+            {
+              "origin": "https://joshurbandavis.com",
+              "domain": "joshurbandavis.com",
+              "title": "Josh Urban Davis",
+              "articles": [
+                {
+                  "url": "https://joshurbandavis.com/experiments/chess-sequencer/index.html",
+                  "title": "chess sequencer"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "banking",
+          "label": "banking",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/resloadbank/",
+              "title": "Turbo Generator Load-Bank"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-2022",
+                  "title": "Merchant Integration Tools"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=banked-pay-by-bank-payment-components-2022",
+                  "title": "Pay by Bank Payment Components"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/banked/",
+                  "title": "Comic Relief Donation Website"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=banked-banked-2021",
+                  "title": "Banked"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "bit",
+          "label": "bit",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/8bip",
+              "title": "8-bit Integer Processor"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/chymeia/",
+                  "title": "Chymeia"
+                },
+                {
+                  "url": "https://joshuastuebner.com/tools/",
+                  "title": "Tools"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "computer",
+          "label": "Computer",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/JDMCMC",
+              "title": "Computer Vision"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/writing-computer-code/",
+                  "title": "Writing Computer Code"
+                }
+              ]
+            },
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/amiga/",
+                  "title": "/amiga/"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "create",
+          "label": "create",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/resloadbank/",
+              "title": "Turbo Generator Load-Bank"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/the-dots/appendix/apple-app-of-the-day-the-dots/",
+                  "title": "App of the Day: Create, connect, collaborate · Apple named The Dots its App of the Day. The app was built on the platform my team shipped. Apple Read more"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/the-dots/appendix/apple-making-the-workplace-more-equal/",
+                  "title": "Making the workplace more equal · Apple’s App Store profiled Pip Jamieson and her ambitions for The Dots. The iOS app came out of the API-first rebuild I led. Apple Read more"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "created",
+          "label": "created",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/8bip",
+              "title": "8-bit Integer Processor"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/flash/",
+                  "title": "/flash/ 📁"
+                },
+                {
+                  "url": "https://artlung.com/front-end-study-hall/",
+                  "title": "/front-end-study-hall/"
+                },
+                {
+                  "url": "https://artlung.com/text-bots/",
+                  "title": "social media bots"
+                },
+                {
+                  "url": "https://artlung.com/wordpress/",
+                  "title": "/wordpress/"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "data",
+          "label": "data",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+              "title": "Cessna HV Retrofit"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/coding-all-in-one-for-dummies/",
+                  "title": "Coding All-in-One For Dummies, 3rd Edition"
+                }
+              ]
+            },
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/blog/2026/10/28/novelty-wave/",
+                  "title": "The panorama today Dawn Patrol data visualization from today The base of the pier and the seawall is normally sand. Today I was able to ride waves in that area, some of them were waves going out to sea, some were cross waves headed perpendicular to the bea"
+                },
+                {
+                  "url": "https://artlung.com/privacy-policy/",
+                  "title": "/privacy-policy/"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshsherman.dev",
+              "domain": "joshsherman.dev",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshsherman.dev/projects/real-estate-site/",
+                  "title": "Real Estate Website | Josh Sherman"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/seasonal/",
+                  "title": "Seasonal Calendar"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "design",
+          "label": "design",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/8bip",
+              "title": "8-bit Integer Processor"
+            },
+            {
+              "url": "https://joshuadrake.org/projects/resloadbank/",
+              "title": "Turbo Generator Load-Bank"
+            },
+            {
+              "url": "https://joshuadrake.org/projects/turboelectric",
+              "title": "TurboElectric"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/a-developers-guide-to-integrating-generative-ai-into-applications/",
+                  "title": "A Developer’s Guide to Integrating Generative AI into Applications"
+                },
+                {
+                  "url": "https://www.chrisminnick.com/books/beginning-html5-and-css3-for-dummies/",
+                  "title": "Beginning HTML5 and CSS3 For Dummies"
+                }
+              ]
+            },
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/splashes/",
+                  "title": "splash pages"
+                },
+                {
+                  "url": "https://artlung.com/viridian/",
+                  "title": "/viridian/ 📁"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=undisclosed-consumer-ai-platform-2025",
+                  "title": "Consumer AI Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=legatum-closer-look-2024",
+                  "title": "Closer Look"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=anthology-london-business-intelligence-platform-2023",
+                  "title": "Business Intelligence Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=anthology-london-sales-resident-platform-2023",
+                  "title": "Sales & Resident Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=dandara-living-social-media-platforms-2023",
+                  "title": "Social Media Platforms"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=taylor-bennett-client-portal-2023",
+                  "title": "Client Portal"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=animade-animade-2022",
+                  "title": "Animade"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-2022",
+                  "title": "Merchant Integration Tools"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuakim.studio",
+              "domain": "joshuakim.studio",
+              "title": "Joshua Kim",
+              "articles": [
+                {
+                  "url": "https://joshuakim.studio/work.html",
+                  "title": "Work, Joshua Kim"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/ui-design-tool/",
+                  "title": "UI Design Tool"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "engineering",
+          "label": "engineering",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/turboelectriccessna",
+              "title": "TurboElectric Cessna"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/skills",
+                  "title": "Skills"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=undisclosed-consumer-ai-platform-2025",
+                  "title": "Consumer AI Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=legatum-closer-look-2024",
+                  "title": "Closer Look"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=anthology-london-business-intelligence-platform-2023",
+                  "title": "Business Intelligence Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=anthology-london-sales-resident-platform-2023",
+                  "title": "Sales & Resident Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=dandara-living-social-media-platforms-2023",
+                  "title": "Social Media Platforms"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=taylor-bennett-client-portal-2023",
+                  "title": "Client Portal"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=animade-animade-2022",
+                  "title": "Animade"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-2022",
+                  "title": "Merchant Integration Tools"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "family",
+          "label": "Family",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/n12rebuild/",
+              "title": "BMW N12 Engine Rebuild"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://www.youtube.com/watch?v=_kuQflW2Db8",
+                  "title": "Untitled"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshkoter.com",
+              "domain": "joshkoter.com",
+              "title": "Josh Köter",
+              "articles": [
+                {
+                  "url": "https://www.youtube.com/watch?v=5uni6eGeTX4",
+                  "title": "Untitled"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://www.youtube.com/watch?v=_5PwQKW62to",
+                  "title": "Untitled"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "full",
+          "label": "full",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/8bip",
+              "title": "8-bit Integer Processor"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2022/photo-northern-lights/",
+                  "title": "[Photo] Northern Lights"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshurbandavis.com",
+              "domain": "joshurbandavis.com",
+              "title": "Josh Urban Davis",
+              "articles": [
+                {
+                  "url": "https://joshurbandavis.com/experiments/chess-sequencer/index.html",
+                  "title": "chess sequencer"
+                },
+                {
+                  "url": "https://joshurbandavis.com/experiments/untended/index.html",
+                  "title": "untended"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=undisclosed-consumer-ai-platform-2025",
+                  "title": "Consumer AI Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=legatum-closer-look-2024",
+                  "title": "Closer Look"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=anthology-london-business-intelligence-platform-2023",
+                  "title": "Business Intelligence Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=anthology-london-sales-resident-platform-2023",
+                  "title": "Sales & Resident Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=dandara-living-social-media-platforms-2023",
+                  "title": "Social Media Platforms"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=taylor-bennett-client-portal-2023",
+                  "title": "Client Portal"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=animade-animade-2022",
+                  "title": "Animade"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-2022",
+                  "title": "Merchant Integration Tools"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "generator",
+          "label": "generator",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/resloadbank/",
+              "title": "Turbo Generator Load-Bank"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/blogofthe-day/",
+                  "title": "other ways"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/writing/how-wizardly-words-invents-words/",
+                  "title": "How Wizardly Words Invents Words"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "mean",
+          "label": "means",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/JDMCMC",
+              "title": "Computer Vision"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/archive/portfolio/1999/",
+                  "title": "HTML was so primitive in 1999 that I described this portfolio piece as “interactive.” All “interactive” means was that it had content that changed as items were selected. We take such things for granted now."
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
+                  "title": "Learning a New Tech Stack with an LLM"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
+                  "title": "Your Code Editor Is Now a Security Threat"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "power",
+          "label": "power",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/turboelectriccessna",
+              "title": "TurboElectric Cessna"
+            },
+            {
+              "url": "https://joshuadrake.org/projects/ingersollrandcompressor/",
+              "title": "Ingersoll Rand Compressor"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=getty-images-power-of-sponsorship-2011",
+                  "title": "Power of Sponsorship"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "programming",
+          "label": "programming",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/ingersollrandcompressor/",
+              "title": "Ingersoll Rand Compressor"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/",
+                  "title": "Books"
+                },
+                {
+                  "url": "https://www.chrisminnick.com/books/javascript-for-kids/",
+                  "title": "JavaScript For Kids"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "purpose",
+          "label": "Purpose",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/8bip",
+              "title": "8-bit Integer Processor"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/graphics/",
+                  "title": "Graphics"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "research",
+          "label": "Research",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/turboelectriccessna",
+              "title": "TurboElectric Cessna"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=unilever-research-development-map-2009",
+                  "title": "Research & Development Map"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "resource",
+          "label": "resources",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/resources.html",
+              "title": "Resources"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/resist/",
+                  "title": "Resist ✊"
+                },
+                {
+                  "url": "https://joshuapsteele.com/resources/",
+                  "title": "Resources"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "school",
+          "label": "schools",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/turboelectriccessna",
+              "title": "TurboElectric Cessna"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/javascript-for-kids/",
+                  "title": "JavaScript For Kids"
+                }
+              ]
+            },
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/mixtapes/elder-schools/",
+                  "title": "Elder schools."
+                }
+              ]
+            },
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Josh Caldwell",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/contact/",
+                  "title": "Contact"
+                },
+                {
+                  "url": "https://forwardbias.dev/ideas/disentangling-career-from-creativity/",
+                  "title": "Disentangling Career from Creativity"
+                },
+                {
+                  "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+                  "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "server",
+          "label": "server",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/n12rebuild/",
+              "title": "BMW N12 Engine Rebuild"
+            },
+            {
+              "url": "https://joshuadrake.org/projects/server",
+              "title": "Server"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/mastodon-for-dummies/",
+                  "title": "Mastodon For Dummies"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "software",
+          "label": "Software",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+              "title": "Cessna HV Retrofit"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/claude-code-for-dummies/",
+                  "title": "Claude Code For Dummies"
+                },
+                {
+                  "url": "https://www.chrisminnick.com/books/a-developers-guide-to-integrating-generative-ai-into-applications/",
+                  "title": "A Developer’s Guide to Integrating Generative AI into Applications"
+                }
+              ]
+            },
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Josh Caldwell",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+                  "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/enterprise-sales-teams/",
+                  "title": "Enterprise sales teams, please, I beg you, stop"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/software/",
+                  "title": "Software"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/now/",
+                  "title": "Joshua Morris: Around"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
+                  "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/books/",
+                  "title": "/books"
+                },
+                {
+                  "url": "https://joshua.seigler.net/music/",
+                  "title": "/music"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "test",
+          "label": "test",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/turboelectriccessna",
+              "title": "TurboElectric Cessna"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/28_pdf-test/",
+                  "title": "28: PDF Test"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "version",
+          "label": "version",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/resloadbank/",
+              "title": "Turbo Generator Load-Bank"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/archive/portfolio/2024/",
+                  "title": "Modern No-JavaScript version."
+                }
+              ]
+            },
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "writing",
+          "label": "Writing",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+              "title": "Cessna HV Retrofit"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/writing-computer-code/",
+                  "title": "Writing Computer Code"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
+                  "title": "Learning a New Tech Stack with an LLM"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "origin": "https://joshuakim.studio",
       "topics": [
         {
@@ -11173,6 +13103,25 @@
                 {
                   "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-2022",
                   "title": "Merchant Integration Tools"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/8bip",
+                  "title": "8-bit Integer Processor"
+                },
+                {
+                  "url": "https://joshuadrake.org/projects/resloadbank/",
+                  "title": "Turbo Generator Load-Bank"
+                },
+                {
+                  "url": "https://joshuadrake.org/projects/turboelectric",
+                  "title": "TurboElectric"
                 }
               ]
             },
@@ -11361,6 +13310,91 @@
                 {
                   "url": "https://joshbeard.com/photos/all/",
                   "title": "View All Photos"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "archive",
+          "label": "archive",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
+              "title": "6 Analog"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/flash/",
+                  "title": "/flash/ 📁"
+                },
+                {
+                  "url": "https://artlung.com/sandiegobloggers-com/",
+                  "title": "/sandiegobloggers-com/"
+                },
+                {
+                  "url": "https://artlung.com/splashes/",
+                  "title": "splash pages"
+                },
+                {
+                  "url": "https://artlung.com/twitter/",
+                  "title": "/twitter/ 📁"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshsherman.dev",
+              "domain": "joshsherman.dev",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshsherman.dev/projects/annotate-archive/",
+                  "title": "Annotate Archive | Josh Sherman"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=undisclosed-consumer-ai-platform-2025",
+                  "title": "Consumer AI Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=legatum-closer-look-2024",
+                  "title": "Closer Look"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=anthology-london-business-intelligence-platform-2023",
+                  "title": "Business Intelligence Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=anthology-london-sales-resident-platform-2023",
+                  "title": "Sales & Resident Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=dandara-living-social-media-platforms-2023",
+                  "title": "Social Media Platforms"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=taylor-bennett-client-portal-2023",
+                  "title": "Client Portal"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=animade-animade-2022",
+                  "title": "Animade"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-2022",
+                  "title": "Merchant Integration Tools"
                 }
               ]
             }
@@ -12288,6 +14322,17 @@
                   "title": "Learning a New Tech Stack with an LLM"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/JDMCMC",
+                  "title": "Computer Vision"
+                }
+              ]
             }
           ]
         },
@@ -12496,6 +14541,17 @@
                 {
                   "url": "https://joshghent.com/enterprise-sales-teams/",
                   "title": "Enterprise sales teams, please, I beg you, stop"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+                  "title": "Cessna HV Retrofit"
                 }
               ]
             },
@@ -12719,6 +14775,17 @@
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
                   "title": "Learning a New Tech Stack with an LLM"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+                  "title": "Cessna HV Retrofit"
                 }
               ]
             }
@@ -12962,6 +15029,33 @@
               ]
             }
           ]
+        },
+        {
+          "slug": "resource",
+          "label": "resources",
+          "articles": [
+            {
+              "url": "https://joshuapsteele.com/resist/",
+              "title": "Resist ✊"
+            },
+            {
+              "url": "https://joshuapsteele.com/resources/",
+              "title": "Resources"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/resources.html",
+                  "title": "Resources"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -13043,6 +15137,33 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
                   "title": "What Happens When a Webpage Becomes Part of a 3D World?"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "bit",
+          "label": "bit",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/projects/details/chymeia/",
+              "title": "Chymeia"
+            },
+            {
+              "url": "https://joshuastuebner.com/tools/",
+              "title": "Tools"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/8bip",
+                  "title": "8-bit Integer Processor"
                 }
               ]
             }
@@ -13272,6 +15393,17 @@
                   "title": "Real Estate Website | Josh Sherman"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+                  "title": "Cessna HV Retrofit"
+                }
+              ]
             }
           ]
         },
@@ -13351,6 +15483,25 @@
                 {
                   "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-2022",
                   "title": "Merchant Integration Tools"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/8bip",
+                  "title": "8-bit Integer Processor"
+                },
+                {
+                  "url": "https://joshuadrake.org/projects/resloadbank/",
+                  "title": "Turbo Generator Load-Bank"
+                },
+                {
+                  "url": "https://joshuadrake.org/projects/turboelectric",
+                  "title": "TurboElectric"
                 }
               ]
             },
@@ -14087,6 +16238,29 @@
           ]
         },
         {
+          "slug": "test",
+          "label": "test",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/experiments/ex/28_pdf-test/",
+              "title": "28: PDF Test"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/turboelectriccessna",
+                  "title": "TurboElectric Cessna"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "video",
           "label": "video",
           "articles": [
@@ -14203,6 +16377,17 @@
                 {
                   "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
                   "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters."
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/JDMCMC",
+                  "title": "Computer Vision"
                 }
               ]
             }
@@ -14768,6 +16953,17 @@
                 {
                   "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-2022",
                   "title": "Merchant Integration Tools"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/8bip",
+                  "title": "8-bit Integer Processor"
                 }
               ]
             }
@@ -15989,6 +18185,17 @@
                   "title": "/amiga/"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/JDMCMC",
+                  "title": "Computer Vision"
+                }
+              ]
             }
           ]
         },
@@ -16099,6 +18306,17 @@
               ]
             },
             {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+                  "title": "Cessna HV Retrofit"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuastuebner.com",
               "domain": "joshuastuebner.com",
               "title": "Joshua Stübner",
@@ -16176,6 +18394,25 @@
                 {
                   "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-2022",
                   "title": "Merchant Integration Tools"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/8bip",
+                  "title": "8-bit Integer Processor"
+                },
+                {
+                  "url": "https://joshuadrake.org/projects/resloadbank/",
+                  "title": "Turbo Generator Load-Bank"
+                },
+                {
+                  "url": "https://joshuadrake.org/projects/turboelectric",
+                  "title": "TurboElectric"
                 }
               ]
             },
@@ -16694,6 +18931,33 @@
           ]
         },
         {
+          "slug": "programming",
+          "label": "programming",
+          "articles": [
+            {
+              "url": "https://www.chrisminnick.com/books/",
+              "title": "Books"
+            },
+            {
+              "url": "https://www.chrisminnick.com/books/javascript-for-kids/",
+              "title": "JavaScript For Kids"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/ingersollrandcompressor/",
+                  "title": "Ingersoll Rand Compressor"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "python",
           "label": "python",
           "articles": [
@@ -16793,6 +19057,44 @@
                   "title": "The Era of Personal Micro-Software"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/turboelectriccessna",
+                  "title": "TurboElectric Cessna"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "server",
+          "label": "server",
+          "articles": [
+            {
+              "url": "https://www.chrisminnick.com/books/mastodon-for-dummies/",
+              "title": "Mastodon For Dummies"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/n12rebuild/",
+                  "title": "BMW N12 Engine Rebuild"
+                },
+                {
+                  "url": "https://joshuadrake.org/projects/server",
+                  "title": "Server"
+                }
+              ]
             }
           ]
         },
@@ -16829,6 +19131,17 @@
                 {
                   "url": "https://joshghent.com/enterprise-sales-teams/",
                   "title": "Enterprise sales teams, please, I beg you, stop"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+                  "title": "Cessna HV Retrofit"
                 }
               ]
             },
@@ -16996,6 +19309,17 @@
                 {
                   "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
                   "title": "Learning a New Tech Stack with an LLM"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+                  "title": "Cessna HV Retrofit"
                 }
               ]
             },
@@ -18586,6 +20910,153 @@
           ]
         },
         {
+          "slug": "api",
+          "label": "api",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/the-dots/appendix/apple-making-the-workplace-more-equal/",
+              "title": "Making the workplace more equal · Apple’s App Store profiled Pip Jamieson and her ambitions for The Dots. The iOS app came out of the API-first rebuild I led. Apple Read more"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/the-dots/appendix/forbes-next-linkedin-creatives/",
+              "title": "Is this the next LinkedIn? · Forbes profiled The Dots and its founder, Pip Jamieson, as the creative industry’s answer to LinkedIn. It is the network I rebuilt as fractional CTO. Forbes Read more"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/2026/11/08/introducing-cuppa/",
+                  "title": "Introducing Cuppa"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "archive",
+          "label": "archive",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/?work=undisclosed-consumer-ai-platform-2025",
+              "title": "Consumer AI Platform"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=legatum-closer-look-2024",
+              "title": "Closer Look"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=anthology-london-business-intelligence-platform-2023",
+              "title": "Business Intelligence Platform"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=anthology-london-sales-resident-platform-2023",
+              "title": "Sales & Resident Platform"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=dandara-living-social-media-platforms-2023",
+              "title": "Social Media Platforms"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=taylor-bennett-client-portal-2023",
+              "title": "Client Portal"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=animade-animade-2022",
+              "title": "Animade"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-2022",
+              "title": "Merchant Integration Tools"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/flash/",
+                  "title": "/flash/ 📁"
+                },
+                {
+                  "url": "https://artlung.com/sandiegobloggers-com/",
+                  "title": "/sandiegobloggers-com/"
+                },
+                {
+                  "url": "https://artlung.com/splashes/",
+                  "title": "splash pages"
+                },
+                {
+                  "url": "https://artlung.com/twitter/",
+                  "title": "/twitter/ 📁"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshsherman.dev",
+              "domain": "joshsherman.dev",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshsherman.dev/projects/annotate-archive/",
+                  "title": "Annotate Archive | Josh Sherman"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
+                  "title": "6 Analog"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "banking",
+          "label": "banking",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-2022",
+              "title": "Merchant Integration Tools"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=banked-pay-by-bank-payment-components-2022",
+              "title": "Pay by Bank Payment Components"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/banked/",
+              "title": "Comic Relief Donation Website"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=banked-banked-2021",
+              "title": "Banked"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/resloadbank/",
+                  "title": "Turbo Generator Load-Bank"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "city",
           "label": "city",
           "articles": [
@@ -18707,6 +21178,33 @@
           ]
         },
         {
+          "slug": "create",
+          "label": "create",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/the-dots/appendix/apple-app-of-the-day-the-dots/",
+              "title": "App of the Day: Create, connect, collaborate · Apple named The Dots its App of the Day. The app was built on the platform my team shipped. Apple Read more"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/the-dots/appendix/apple-making-the-workplace-more-equal/",
+              "title": "Making the workplace more equal · Apple’s App Store profiled Pip Jamieson and her ambitions for The Dots. The iOS app came out of the API-first rebuild I led. Apple Read more"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/resloadbank/",
+                  "title": "Turbo Generator Load-Bank"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "design",
           "label": "design",
           "articles": [
@@ -18771,6 +21269,25 @@
                 {
                   "url": "https://artlung.com/viridian/",
                   "title": "/viridian/ 📁"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/8bip",
+                  "title": "8-bit Integer Processor"
+                },
+                {
+                  "url": "https://joshuadrake.org/projects/resloadbank/",
+                  "title": "Turbo Generator Load-Bank"
+                },
+                {
+                  "url": "https://joshuadrake.org/projects/turboelectric",
+                  "title": "TurboElectric"
                 }
               ]
             },
@@ -18956,6 +21473,17 @@
                   "title": "Skills"
                 }
               ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/turboelectriccessna",
+                  "title": "TurboElectric Cessna"
+                }
+              ]
             }
           ]
         },
@@ -19020,6 +21548,17 @@
                 {
                   "url": "https://joshurbandavis.com/experiments/untended/index.html",
                   "title": "untended"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/8bip",
+                  "title": "8-bit Integer Processor"
                 }
               ]
             }
@@ -19345,6 +21884,33 @@
           ]
         },
         {
+          "slug": "power",
+          "label": "power",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/?work=getty-images-power-of-sponsorship-2011",
+              "title": "Power of Sponsorship"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/turboelectriccessna",
+                  "title": "TurboElectric Cessna"
+                },
+                {
+                  "url": "https://joshuadrake.org/projects/ingersollrandcompressor/",
+                  "title": "Ingersoll Rand Compressor"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "react",
           "label": "react",
           "articles": [
@@ -19409,6 +21975,29 @@
                 {
                   "url": "https://joshozuna.com/photo/cafe-table-chairs-plant-shop-window-35mm",
                   "title": "Sidewalk Charm"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "research",
+          "label": "Research",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/?work=unilever-research-development-map-2009",
+              "title": "Research & Development Map"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/turboelectriccessna",
+                  "title": "TurboElectric Cessna"
                 }
               ]
             }
