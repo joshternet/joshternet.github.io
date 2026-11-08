@@ -22,7 +22,7 @@
 ### Changed
 
 - **Uses crawl-to-page:** Each `nlp:sync` rebuilds Uses from fresh crawl data. MacBook family lines rank into Computers; section synonyms, compound splits, and nav/role/memory hygiene shrink Unsorted noise. Public `/uses/` shows anonymous coverage (verified of eligible) plus choice counts/shares—no per-member setup lists. Local `update:local*` mixes every cached Uses origin into gitignored preview views; durable ledger writes refuse `local_dev_cache` origins.
-- **Uses Unsorted list:** The Unsorted names block on `/uses/` renders only when `JEKYLL_ENV` is `development`, so production visitors see classified slots and setup details without the catalog backlog. Sync still writes `unsorted` into `uses_summary` for local review.
+- **Uses review sections:** Unsorted, Setup details, and Stated uses on `/uses/` render only when `JEKYLL_ENV` is `development`. Production shows anonymous coverage and comparable slots only. Sync still writes those fields into `uses_summary` for local review.
 - **Crawl outputs gitignored:** Datasets rebuilt by local `network:sync` / `nlp:sync` (view JSON, topic stubs, posters, network screenshots, Uses history outside the catalog) stay out of ordinary `git add`. Hourly `network-sync` force-adds them onto `main`. `keep-crawl-local.mjs` untracks any leftover indexed copies without deleting files on disk.
 - **Local non-Joshternet intake:** `npm run update:local:nonjoshternet` adds at most five new personal sites per run, then syncs Joshternet members plus the full accumulated local set.
 - **Footer stamp labels:** The footer names the two times in event order: Network updated, then Site built. “Built” and “Updated” made the earlier network refresh look like the site had been updated before it was built.

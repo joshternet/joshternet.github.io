@@ -1,5 +1,5 @@
 /**
- * Goal: Uses page Liquid — Unsorted is local-only; comparisons stay anonymous.
+ * Goal: Uses page Liquid — review sections are local-only; comparisons stay anonymous.
  */
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
@@ -18,20 +18,22 @@ async function read(relativePath) {
   return readFile(path.join(root, relativePath), "utf8");
 }
 
-test("uses page shows Unsorted only in development", async () => {
+test("uses page shows review sections only in development", async () => {
   const page = await read("uses.md");
 
   assert.match(page, /permalink: \/uses\//);
   assert.match(
     page,
-    /{% if jekyll\.environment == 'development' %}\s*{% if summary\.k7n and summary\.k7n\.size > 0 %}\s*<h3>Unsorted<\/h3>[\s\S]*?{% endif %}\s*{% endif %}/,
-    "Unsorted must render only when JEKYLL_ENV is development",
+    /{% if jekyll\.environment == 'development' %}[\s\S]*<h3>Unsorted<\/h3>[\s\S]*<h3>Setup details<\/h3>[\s\S]*<h3>Stated uses<\/h3>[\s\S]*{% endif %}/,
+    "Unsorted, Setup details, and Stated uses must render only in development",
   );
-  assert.equal(
-    (page.match(/<h3>Unsorted<\/h3>/g) || []).length,
-    1,
-    "Unsorted must appear once, inside the development gate",
-  );
+  for (const heading of ["Unsorted", "Setup details", "Stated uses"]) {
+    assert.equal(
+      (page.match(new RegExp(`<h3>${heading}</h3>`, "g")) || []).length,
+      1,
+      `${heading} must appear once, inside the development gate`,
+    );
+  }
 });
 
 test("uses page comparisons stay anonymous counts", async () => {

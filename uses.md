@@ -189,7 +189,6 @@ anyone’s setup.
     {% endfor %}
   </ul>
   {% endif %}
-  {% endif %}
   {% if summary.k6c and summary.k6c.size > 0 %}
   <h3>Setup details</h3>
   <p>Parts, generic gear, and explanations stay with publisher setups. They are not compared as products. Counts stay anonymous.</p>
@@ -208,6 +207,7 @@ anyone’s setup.
     <li>{{ entry.k30 | escape }} — {{ entry.k1b }}</li>
     {% endfor %}
   </ul>
+  {% endif %}
   {% endif %}
 </section>
 {% endif %}
