@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-07T17:24:36.121Z",
+  "generated_at": "2026-11-08T01:34:24.244Z",
   "overlap_count": 142,
   "pairs": [
     {
@@ -115,10 +115,6 @@
       "a": "https://artlung.com",
       "b": "https://joshozuna.com",
       "topics": [
-        {
-          "slug": "dog",
-          "label": "dog"
-        },
         {
           "slug": "image",
           "label": "image"
@@ -274,10 +270,6 @@
         {
           "slug": "mean",
           "label": "means"
-        },
-        {
-          "slug": "programming",
-          "label": "programming"
         },
         {
           "slug": "school",
@@ -518,10 +510,6 @@
         {
           "slug": "music",
           "label": "music"
-        },
-        {
-          "slug": "programming",
-          "label": "programming"
         },
         {
           "slug": "python",
@@ -2977,10 +2965,6 @@
                   "title": "Firefox Is Quietly Making the Web More Capable"
                 },
                 {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spicy/",
-                  "title": "Spicy"
-                },
-                {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
                   "title": "4 Plastic"
                 },
@@ -2999,6 +2983,10 @@
                 {
                   "url": "https://joshuamorris.info/experiments/corkboard/",
                   "title": "Corkboard A corkboard for notes, pins, and connecting threads in the browser—an open-web experiment for exploring ideas together and leaving a mark."
+                },
+                {
+                  "url": "https://joshuamorris.info/experiments/",
+                  "title": "Experiments"
                 }
               ]
             },
@@ -3513,45 +3501,6 @@
                 {
                   "url": "https://joshuastuebner.com/digital-garden/",
                   "title": "Digital Garden"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "dog",
-          "label": "dog",
-          "articles": [
-            {
-              "url": "https://artlung.com/blog/2026/10/24/programming-and-dog-walking/",
-              "title": "(not in that order)"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshozuna.com",
-              "domain": "joshozuna.com",
-              "title": "Josh Ozuna",
-              "articles": [
-                {
-                  "url": "https://joshozuna.com/photo/mountain-landscape-through-doorway-35mm",
-                  "title": "Where the Wild Things Zoom(ies)"
-                },
-                {
-                  "url": "https://joshozuna.com/photo/man-giving-dog-water-hand-35mm",
-                  "title": "Hydration Break"
-                },
-                {
-                  "url": "https://joshozuna.com/photo/spotted-cattle-dog-puppy-resting-couch-35mm",
-                  "title": "Otis, the Puppy"
-                },
-                {
-                  "url": "https://joshozuna.com/photo/charley-mobile-bath-35mm",
-                  "title": "Charley's Spa Day"
-                },
-                {
-                  "url": "https://joshozuna.com/photo/charley-profile-closeup-35mm",
-                  "title": "Charley, the Loyal"
                 }
               ]
             }
@@ -4613,44 +4562,6 @@
                 {
                   "url": "https://www.joshfinnie.com/projects/beerledge/",
                   "title": "BeerLedge BeerLedge is a website that allows you to check in beers that you've drank in a post-privacy world."
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "programming",
-          "label": "programming",
-          "articles": [
-            {
-              "url": "https://artlung.com/blog/2026/10/24/programming-and-dog-walking/",
-              "title": "(not in that order)"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
-              "articles": [
-                {
-                  "url": "https://www.chrisminnick.com/books/",
-                  "title": "Books"
-                },
-                {
-                  "url": "https://www.chrisminnick.com/books/javascript-for-kids/",
-                  "title": "JavaScript For Kids"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuadrake.org",
-              "domain": "joshuadrake.org",
-              "title": "Joshua Drake",
-              "articles": [
-                {
-                  "url": "https://joshuadrake.org/projects/ingersollrandcompressor/",
-                  "title": "Ingersoll Rand Compressor"
                 }
               ]
             }
@@ -5964,10 +5875,6 @@
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
               "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spicy/",
-                  "title": "Spicy"
-                },
                 {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
                   "title": "4 Plastic"
@@ -8443,10 +8350,6 @@
               "title": "Joshua Morris",
               "articles": [
                 {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spicy/",
-                  "title": "Spicy"
-                },
-                {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
                   "title": "4 Plastic"
                 },
@@ -8850,45 +8753,6 @@
                 {
                   "url": "https://joshgr.com/writing/how-wizardly-words-invents-words/",
                   "title": "How Wizardly Words Invents Words"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "dog",
-          "label": "dog",
-          "articles": [
-            {
-              "url": "https://joshozuna.com/photo/mountain-landscape-through-doorway-35mm",
-              "title": "Where the Wild Things Zoom(ies)"
-            },
-            {
-              "url": "https://joshozuna.com/photo/man-giving-dog-water-hand-35mm",
-              "title": "Hydration Break"
-            },
-            {
-              "url": "https://joshozuna.com/photo/spotted-cattle-dog-puppy-resting-couch-35mm",
-              "title": "Otis, the Puppy"
-            },
-            {
-              "url": "https://joshozuna.com/photo/charley-mobile-bath-35mm",
-              "title": "Charley's Spa Day"
-            },
-            {
-              "url": "https://joshozuna.com/photo/charley-profile-closeup-35mm",
-              "title": "Charley, the Loyal"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/blog/2026/10/24/programming-and-dog-walking/",
-                  "title": "(not in that order)"
                 }
               ]
             }
@@ -12457,17 +12321,6 @@
                   "title": "JavaScript For Kids"
                 }
               ]
-            },
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/blog/2026/10/24/programming-and-dog-walking/",
-                  "title": "(not in that order)"
-                }
-              ]
             }
           ]
         },
@@ -13164,10 +13017,6 @@
               "title": "Firefox Is Quietly Making the Web More Capable"
             },
             {
-              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spicy/",
-              "title": "Spicy"
-            },
-            {
               "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
               "title": "4 Plastic"
             },
@@ -13186,6 +13035,10 @@
             {
               "url": "https://joshuamorris.info/experiments/corkboard/",
               "title": "Corkboard A corkboard for notes, pins, and connecting threads in the browser—an open-web experiment for exploring ideas together and leaving a mark."
+            },
+            {
+              "url": "https://joshuamorris.info/experiments/",
+              "title": "Experiments"
             }
           ],
           "sites": [
@@ -14085,10 +13938,6 @@
           "label": "october",
           "articles": [
             {
-              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spicy/",
-              "title": "Spicy"
-            },
-            {
               "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
               "title": "4 Plastic"
             },
@@ -14937,10 +14786,6 @@
                   "title": "Firefox Is Quietly Making the Web More Capable"
                 },
                 {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spicy/",
-                  "title": "Spicy"
-                },
-                {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
                   "title": "4 Plastic"
                 },
@@ -14959,6 +14804,10 @@
                 {
                   "url": "https://joshuamorris.info/experiments/corkboard/",
                   "title": "Corkboard A corkboard for notes, pins, and connecting threads in the browser—an open-web experiment for exploring ideas together and leaving a mark."
+                },
+                {
+                  "url": "https://joshuamorris.info/experiments/",
+                  "title": "Experiments"
                 }
               ]
             }
@@ -16301,10 +16150,6 @@
                   "title": "Firefox Is Quietly Making the Web More Capable"
                 },
                 {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spicy/",
-                  "title": "Spicy"
-                },
-                {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
                   "title": "4 Plastic"
                 },
@@ -16323,6 +16168,10 @@
                 {
                   "url": "https://joshuamorris.info/experiments/corkboard/",
                   "title": "Corkboard A corkboard for notes, pins, and connecting threads in the browser—an open-web experiment for exploring ideas together and leaving a mark."
+                },
+                {
+                  "url": "https://joshuamorris.info/experiments/",
+                  "title": "Experiments"
                 }
               ]
             },
@@ -17589,10 +17438,6 @@
                   "title": "Firefox Is Quietly Making the Web More Capable"
                 },
                 {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spicy/",
-                  "title": "Spicy"
-                },
-                {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
                   "title": "4 Plastic"
                 },
@@ -17611,6 +17456,10 @@
                 {
                   "url": "https://joshuamorris.info/experiments/corkboard/",
                   "title": "Corkboard A corkboard for notes, pins, and connecting threads in the browser—an open-web experiment for exploring ideas together and leaving a mark."
+                },
+                {
+                  "url": "https://joshuamorris.info/experiments/",
+                  "title": "Experiments"
                 }
               ]
             },
@@ -18649,17 +18498,6 @@
             }
           ],
           "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/blog/2026/10/24/programming-and-dog-walking/",
-                  "title": "(not in that order)"
-                }
-              ]
-            },
             {
               "origin": "https://joshuadrake.org",
               "domain": "joshuadrake.org",
@@ -19828,10 +19666,6 @@
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
               "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spicy/",
-                  "title": "Spicy"
-                },
                 {
                   "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
                   "title": "4 Plastic"
