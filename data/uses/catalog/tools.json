@@ -847,12 +847,52 @@
       "retired": false
     },
     {
+      "id": "macbook-air",
+      "name": "MacBook Air",
+      "kind": "hardware",
+      "category_id": "computer",
+      "vendor": "",
+      "aliases": ["2025 MacBook Air M4", "MacBook Air M4", "MacBook Air"],
+      "website": "https://www.apple.com/macbook-air/",
+      "retired": false
+    },
+    {
+      "id": "macbook-pro",
+      "name": "MacBook Pro",
+      "kind": "hardware",
+      "category_id": "computer",
+      "vendor": "",
+      "aliases": ["MacBook Pro", "macbook pro m2"],
+      "website": "https://www.apple.com/macbook-pro/",
+      "retired": false
+    },
+    {
       "id": "macbook-pro-14",
       "name": "MacBook Pro 14-inch",
       "kind": "hardware",
       "category_id": "computer",
       "vendor": "",
-      "aliases": ["MacBook Pro - 14-inch"],
+      "aliases": [
+        "MacBook Pro - 14-inch",
+        "Macbook Pro 14\" 2021 M1 Pro for hustle and bustle",
+        "MacBook Pro 14-inch",
+        "MacBook Pro 14\""
+      ],
+      "website": "https://www.apple.com/macbook-pro/",
+      "retired": false
+    },
+    {
+      "id": "macbook-pro-16",
+      "name": "MacBook Pro 16-inch",
+      "kind": "hardware",
+      "category_id": "computer",
+      "vendor": "",
+      "aliases": [
+        "MacBook Pro 16-inch 2021",
+        "MacBook Pro 16-inch, M4 Max, 2024 64GB, Space Black",
+        "MacBook Pro 16-inch",
+        "MacBook Pro 16\""
+      ],
       "website": "https://www.apple.com/macbook-pro/",
       "retired": false
     },

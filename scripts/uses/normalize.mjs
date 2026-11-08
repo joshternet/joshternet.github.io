@@ -488,7 +488,7 @@ export function isReportableUseLabel(label) {
     return false;
   }
   if (
-    /^(home|about|contact|skip to|cookie|privacy|terms|menu|search|read more)$/i.test(
+    /^(home|about|contact|skip to|cookie|privacy|terms|menu|search|read more|more|photos|resume|software|hardware|uses|historical|setup|tools|gear|stack|tech|technology|home servers|servers|services|apps|applications|devices|peripherals|content creation|currently|previously|elsewhere)$/i.test(
       name,
     )
   ) {

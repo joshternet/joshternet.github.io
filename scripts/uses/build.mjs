@@ -161,6 +161,17 @@ export async function buildUsesDatasets(input) {
     input.publish,
   );
 
+  // Durable ledger writes must never include local-only crawl origins.
+  if (!input.previewMix) {
+    for (const originEntry of input.origins || []) {
+      if (originEntry?.local_dev_cache === true) {
+        throw new Error(
+          "uses ledger refused local_dev_cache origin; use previewMix for local preview",
+        );
+      }
+    }
+  }
+
   await ensureCatalogScaffold(usesRoot);
   const catalog = await loadCatalog(usesRoot);
   const priorState = await readJson(path.join(usesRoot, "state.json"), {
@@ -224,7 +235,10 @@ export async function buildUsesDatasets(input) {
         pageUrl = assessment.page_url;
       }
       homepageDuplicate = assessment.homepage_duplicate === true;
-      if (typeof assessment.page_status === "string" && assessment.page_status) {
+      if (
+        typeof assessment.page_status === "string" &&
+        assessment.page_status
+      ) {
         pageStatus = assessment.page_status;
       }
       extracted =
@@ -253,7 +267,10 @@ export async function buildUsesDatasets(input) {
       if (
         !homepageDuplicate &&
         html &&
-        usesHtmlRepeatsHomepage(html, homeHtmlFromPages(originEntry.pages || []))
+        usesHtmlRepeatsHomepage(
+          html,
+          homeHtmlFromPages(originEntry.pages || []),
+        )
       ) {
         homepageDuplicate = true;
         html = "";
@@ -653,16 +670,9 @@ export async function buildUsesDatasets(input) {
       }),
       membersDoc: {
         schema_version: USES_SCHEMA_VERSION,
-        members: state.members.map((m) => ({
-          origin: m.origin,
-          page_url: m.page_url,
-          page_status: m.page_status,
-          tool_count: (m.tools || []).filter(
-            (tool) =>
-              tool.status === "current" &&
-              (tool.kind || "product") === "product",
-          ).length,
-        })),
+        eligible_member_count: eligibleOrigins.length,
+        verified_uses_member_count: verified,
+        member_count: state.members.length,
       },
       toolsDoc: {
         schema_version: USES_SCHEMA_VERSION,

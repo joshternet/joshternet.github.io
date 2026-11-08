@@ -27,18 +27,18 @@ test("topics hub and layout are wired", async () => {
   assert.match(page, /title: Topics$/m);
   assert.match(page, /implement\/content\/explore\//);
   assert.match(page, /data-topics-filter|type="search"/);
-  assert.match(page, /\{% if topic\.occurrence_count == 1 %\}work/);
+  assert.match(page, /\{% if topic\.k4a == 1 %\}work/);
   assert.match(page, /network-empty|role="status"/);
   assert.doesNotMatch(page, /for Joshes/);
-  assert.match(page, /site\.data\.topic_views/);
+  assert.match(page, /site\.data\.topic_views\.k44/);
   assert.match(page, /activity-card/);
   assert.match(page, /topics-index/);
-  assert.match(page, /occurrence_count/);
+  assert.match(page, /topic\.k4a/);
   assert.match(
     await read("assets/css/main.css"),
     /\.activity-list\.topics-index \{[^}]*grid-template-columns:\s*repeat\(auto-fill, minmax\(9\.25rem/,
   );
-  assert.match(layout, /site\.data\.topic_views/);
+  assert.match(layout, /site\.data\.topic_views\.k44/);
   assert.match(layout, /\/topics\//);
   assert.match(layout, /topic-site/);
   assert.doesNotMatch(layout, /Source evidence/);
@@ -46,6 +46,7 @@ test("topics hub and layout are wired", async () => {
   assert.doesNotMatch(layout, /site_entry\.why/);
   assert.match(layout, /activity-card.html/);
   assert.match(layout, /articles.size > 0/);
+  assert.match(layout, /candidate\.k6o/);
   assert.doesNotMatch(layout, /Related discoveries/);
   assert.doesNotMatch(config, /^collections:/m);
   const topicStubs = (await readdir(path.join(root, "topics"))).filter(
@@ -136,10 +137,12 @@ test("nav keeps Wander top-level and nests About/Network children", async () => 
   assert.doesNotMatch(topics, /connections-toolbar__lead/);
   assert.doesNotMatch(connections, /connections-toolbar__actions/);
   assert.doesNotMatch(topicLayout, /Explore<\/a>/);
-  assert.match(topicLayout, /<h1>\{\{ topic\.label/);
+  assert.match(topicLayout, /<h1>\{\{ topic\.k3g/);
   assert.match(topicLayout, /activity-list h-feed/);
   assert.match(topicLayout, /aria-label="Related topics"/);
   assert.match(topicLayout, /visually-hidden/);
+  assert.match(topicLayout, /item\.k6o/);
+  assert.match(topicLayout, /item\.k3g/);
   assert.match(topics, /role="status"/);
   assert.match(topics, /type="search"/);
   const topicsJs = await read("assets/js/topics.js");

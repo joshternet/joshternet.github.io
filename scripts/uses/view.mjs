@@ -42,7 +42,8 @@ function publicProductWebsite(website) {
 }
 
 /**
- * Ranked row with the sources the page and the chart both read.
+ * Ranked row with anonymous site counts for the public explorer.
+ * Per-member source lists stay out of the published summary.
  * @param {object} tool
  * @param {Map<string, object>} memberByOrigin
  * @param {object} rollup
@@ -50,21 +51,7 @@ function publicProductWebsite(website) {
  * @returns {object}
  */
 function presentRankedTool(tool, memberByOrigin, rollup, websiteByToolId) {
-  const origins = tool.active_member_origins || [];
-  const statements = tool.statements || [];
-  const sources = origins.map((origin) => {
-    const member = memberByOrigin.get(origin);
-    const statement = statements.find((entry) => entry.origin === origin);
-    return {
-      origin,
-      page_url: member?.page_url || `${origin}/uses/`,
-      label: sourceLabelFromOrigin(origin),
-      section: statement?.section || "",
-      context: statement?.context || "",
-      observed_at: statement?.observed_at || "",
-      preference: Boolean(statement?.preference),
-    };
-  });
+  void memberByOrigin;
   return {
     tool_id: tool.tool_id,
     name: publicToolName(tool.name, tool.tool_id),
@@ -77,7 +64,6 @@ function presentRankedTool(tool, memberByOrigin, rollup, websiteByToolId) {
     slot_name: tool.slot_name || "",
     preference: Boolean(tool.preference),
     website: publicProductWebsite(websiteByToolId.get(tool.tool_id)),
-    sources,
   };
 }
 
@@ -100,6 +86,50 @@ function presentClaim(item, memberByOrigin) {
     relation: item.relation || "",
     parent_slot: item.parent_slot || "",
   };
+}
+
+/**
+ * One public row per product name with every publisher that listed it.
+ * @param {object[]} claims
+ * @returns {object[]}
+ */
+function collapseClaimsByName(claims) {
+  /** @type {Map<string, object>} */
+  const byName = new Map();
+  for (const claim of claims) {
+    const name = String(claim.name || "").trim();
+    if (!name) {
+      continue;
+    }
+    const key = name.toLowerCase();
+    const source = {
+      origin: claim.origin || "",
+      page_url: claim.page_url || "",
+      label: claim.label || sourceLabelFromOrigin(claim.origin),
+      section: claim.section || "",
+      context: claim.context || "",
+      observed_at: claim.observed_at || "",
+    };
+    const existing = byName.get(key);
+    if (!existing) {
+      byName.set(key, {
+        name,
+        relation: claim.relation || "",
+        parent_slot: claim.parent_slot || "",
+        sources: [source],
+      });
+      continue;
+    }
+    if (
+      !existing.sources.some(
+        (entry) =>
+          entry.origin === source.origin && entry.page_url === source.page_url,
+      )
+    ) {
+      existing.sources.push(source);
+    }
+  }
+  return [...byName.values()].sort((a, b) => a.name.localeCompare(b.name));
 }
 
 /**
@@ -197,18 +227,24 @@ export function buildUsesSummary(input) {
     id: slot.id,
     name: slot.name,
     scope: slot.scope || "",
+    kind: slot.kind || "",
     denominator: slot.denominator,
     origins: slot.origins || [],
     products: (slot.products || []).map((tool) =>
       presentRankedTool(tool, memberByOrigin, rollup, websiteByToolId),
     ),
   }));
-  const unsorted = (rollup.unsorted || []).map((item) =>
-    presentClaim(item, memberByOrigin),
+  const unsorted = collapseClaimsByName(
+    (rollup.unsorted || []).map((item) => presentClaim(item, memberByOrigin)),
   );
-  const setup = (rollup.setup || []).map((item) =>
-    presentClaim(item, memberByOrigin),
-  );
+  const setup = collapseClaimsByName(
+    (rollup.setup || []).map((item) => presentClaim(item, memberByOrigin)),
+  ).map((item) => ({
+    name: item.name,
+    relation: item.relation || "",
+    parent_slot: item.parent_slot || "",
+    site_count: Array.isArray(item.sources) ? item.sources.length : 0,
+  }));
 
   const early = isEarlySample(
     input.verified_uses_member_count,
@@ -225,21 +261,6 @@ export function buildUsesSummary(input) {
       );
     }
   }
-
-  const ledger = (input.members || [])
-    .filter((member) => member?.origin && member.page_status)
-    .map((member) => ({
-      origin: member.origin,
-      page_url: member.page_url || `${member.origin}/uses/`,
-      label: sourceLabelFromOrigin(member.origin),
-      outcome: member.page_status,
-      accepted_count: member.accepted_count || 0,
-      in_denominator:
-        member.page_status === "verified" ||
-        member.page_status === "verified_empty",
-      reason: coverageReason(member.page_status),
-    }))
-    .sort((a, b) => a.label.localeCompare(b.label));
 
   return {
     schema_version: USES_SCHEMA_VERSION,
@@ -260,14 +281,13 @@ export function buildUsesSummary(input) {
     use_case_counts: [...useCaseCounts.entries()]
       .map(([id, count]) => ({ id, count }))
       .sort((a, b) => b.count - a.count || a.id.localeCompare(b.id)),
-    ledger,
     supported_periods: input.supported_periods || [],
     methodology_url: input.methodology_url || "/implement/content/uses/",
     denominator_note:
       "A verified Uses page with no accepted tools stays in the count. A URL that only repeats the homepage does not.",
     coverage_note: early
-      ? "These observations cover a small part of the network. They describe the sites included so far, not the Joshternet as a whole."
-      : "Counts show distinct participating sites with verified current declarations on their /uses pages—observations, not endorsements.",
+      ? "These observations cover a small part of the network. They describe anonymous counts for the sites included so far, not the Joshternet as a whole."
+      : "Counts show how many verified Uses pages report each choice—anonymous aggregates, not a roster of member setups.",
   };
 }
 

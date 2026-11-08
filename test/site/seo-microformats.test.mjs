@@ -105,7 +105,7 @@ test("lists and cards expose h-feed, h-entry, and h-card", async () => {
   assert.match(card, /h-entry/);
   assert.match(card, /p-author h-card/);
   assert.match(card, /p-name u-url/);
-  assert.match(card, /site_origin/);
+  assert.match(card, /include\.item\.k6f/);
   assert.match(card, /p-category/);
   assert.match(card, /u-photo/);
   assert.match(activity, /activity-list h-feed/);

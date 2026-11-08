@@ -126,7 +126,22 @@ test("network-sync publish set lists CI-owned generated paths", async () => {
     /data\/crawl-sites/,
     "network-sync must not stage per-site crawl files",
   );
+  assert.doesNotMatch(
+    sync,
+    /data\/dev-crawl-cache/,
+    "network-sync must not stage the local non-Joshternet crawl cache",
+  );
+  assert.match(
+    sync,
+    /JOSHTERNET_USES_PUBLISH[\s\S]*git add -f --[\s\S]*data\/uses/,
+    "Uses history force-add stays behind JOSHTERNET_USES_PUBLISH",
+  );
   assert.match(sync, /git add -f --/);
+  assert.match(
+    sync,
+    /git add -f --[\s\S]*_data\/network\.json/,
+    "network-sync must force-add the gitignored crawl publish set",
+  );
   assert.match(
     sync,
     /Seeking request bodies are current-only/,
@@ -134,14 +149,30 @@ test("network-sync publish set lists CI-owned generated paths", async () => {
   );
 });
 
-test("local crawl skip list keeps the catalog and topic hub committable", () => {
-  const files = trackedCrawlOutputs();
+test("crawl publish set is gitignored while catalog and topic hub stay tracked", async () => {
+  const gitignore = await read(".gitignore");
 
-  assert.equal(files.includes("_data/network.json"), true);
-  assert.equal(files.includes("_data/channel_publish.json"), false);
-  assert.equal(files.includes("topics/index.md"), false);
+  for (const relativePath of [
+    "_data/network.json",
+    "_data/uses_summary.json",
+    "assets/activity/posters/",
+    "assets/network/sites/",
+    "assets/data/uses/",
+    "data/uses/**",
+    "topics/*",
+  ]) {
+    assert.match(
+      gitignore,
+      new RegExp(relativePath.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+      `${relativePath} must be gitignored for local crawls`,
+    );
+  }
+
+  assert.match(gitignore, /!topics\/index\.md/);
+  assert.match(gitignore, /!data\/uses\/catalog\//);
+  assert.equal(trackedCrawlOutputs().includes("topics/index.md"), false);
   assert.equal(
-    files.some((file) => file.startsWith("data/uses/catalog/")),
+    trackedCrawlOutputs().some((file) => file.startsWith("data/uses/catalog/")),
     false,
   );
 });

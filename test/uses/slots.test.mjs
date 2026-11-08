@@ -340,6 +340,37 @@ test("placeholders and dates are rejected", async () => {
     classifyClaim({ name: "Work Computer", kind: "product" }, catalog).role,
     "rejected",
   );
+  assert.equal(
+    classifyClaim({ name: "Work Computer:", kind: "product" }, catalog).role,
+    "rejected",
+  );
+  assert.equal(
+    classifyClaim({ name: "Gaming Computer:", kind: "product" }, catalog).role,
+    "rejected",
+  );
+});
+
+test("MacBook family lines rank into Computers", async () => {
+  const catalog = await loadCatalog();
+  const samples = [
+    ["2025 MacBook Air M4", "macbook-air"],
+    ["MacBook Pro 16-inch 2021", "macbook-pro-16"],
+    ['Macbook Pro 14" 2021 M1 Pro for hustle and bustle', "macbook-pro-14"],
+    ["macbook pro m2 · 32gb primary workhorse. fans never spin", "macbook-pro"],
+    ["MacBook Pro 16-inch, M4 Max, 2024 64GB, Space Black", "macbook-pro-16"],
+  ];
+  for (const [name, toolId] of samples) {
+    const classified = classifyClaim({ name, kind: "product" }, catalog);
+    assert.equal(classified.role, "ranked", name);
+    assert.equal(classified.slot_id, "computer", name);
+    assert.equal(classified.tool_id, toolId, name);
+  }
+  const memory = classifyClaim(
+    { name: "32GB of memory", kind: "product" },
+    catalog,
+  );
+  assert.equal(memory.role, "detail");
+  assert.equal(memory.parent_slot, "computer");
 });
 
 test("a catalog edit reclassifies the same stored claim", async () => {

@@ -23,6 +23,7 @@ import {
   isReportableUseLabel,
   productNameFromLabel,
   publicToolName,
+  splitCompoundName,
 } from "./normalize.mjs";
 
 /**
@@ -201,6 +202,7 @@ export async function buildPeriodRollup(input) {
       for (const choice of rankedChoicesForStoredName(
         displayName,
         classified,
+        catalog,
       )) {
         if (
           choice.role !== "unsorted" ||
@@ -380,6 +382,7 @@ export async function buildPeriodRollup(input) {
         id: slotId,
         name: slot?.name || slotId,
         scope: slot?.scope || "",
+        kind: slot?.kind || "",
         denominator: origins.size,
         origins: [...origins].sort(),
         products,
@@ -567,36 +570,70 @@ function preferToolRow(candidate, current, toolById) {
 }
 
 /**
- * One stored line can name two ranked choices. classifyClaim still returns
- * one slot; this rollup records both for that stored name.
+ * One stored line can name two ranked or detail choices (computer + display,
+ * browser + extension, laptop + memory). classifyClaim still returns one slot
+ * for the whole line; this rollup records each part.
  * @param {string} name
  * @param {import('./classify.mjs').Classification} classified
+ * @param {object} catalog
  * @returns {import('./classify.mjs').Classification[]}
  */
-function rankedChoicesForStoredName(name, classified) {
-  if (comparisonLabel(name) !== "mac mini asus 24") {
+function rankedChoicesForStoredName(name, classified, catalog) {
+  if (comparisonLabel(name) === "mac mini asus 24") {
+    return [
+      {
+        role: "ranked",
+        slot_id: "computer",
+        tool_id: "mac-mini",
+        rule: "split-compound",
+        preference: classified.preference,
+        relation: null,
+        parent_slot: null,
+      },
+      {
+        role: "ranked",
+        slot_id: "display",
+        tool_id: "asus-24",
+        rule: "split-compound",
+        preference: classified.preference,
+        relation: null,
+        parent_slot: null,
+      },
+    ];
+  }
+  const parts = splitCompoundName(name);
+  if (parts.length < 2) {
     return [classified];
   }
-  return [
-    {
-      role: "ranked",
-      slot_id: "computer",
-      tool_id: "mac-mini",
-      rule: "split-compound",
-      preference: classified.preference,
-      relation: null,
-      parent_slot: null,
-    },
-    {
-      role: "ranked",
-      slot_id: "display",
-      tool_id: "asus-24",
-      rule: "split-compound",
-      preference: classified.preference,
-      relation: null,
-      parent_slot: null,
-    },
-  ];
+  /** @type {import('./classify.mjs').Classification[]} */
+  const choices = [];
+  for (const part of parts) {
+    const partClaim = classifyClaim(
+      {
+        name: part,
+        kind: "product",
+      },
+      catalog,
+    );
+    if (
+      partClaim.role === "ranked" ||
+      partClaim.role === "detail" ||
+      partClaim.role === "unsorted"
+    ) {
+      choices.push({
+        ...partClaim,
+        rule:
+          partClaim.rule === "unresolved"
+            ? "split-compound"
+            : partClaim.rule || "split-compound",
+        preference: classified.preference || partClaim.preference,
+      });
+    }
+  }
+  if (choices.length >= 2) {
+    return choices;
+  }
+  return [classified];
 }
 
 /**

@@ -29,7 +29,7 @@ This is the part of the Joshternet that JoshBot has found and checked so far. Th
   No-JS fallback: alphabetical by domain. JavaScript replaces order with Discover
   (random), Recently joined, Oldest first, or Alphabetical while preserving filters.
 {% endcomment %}
-{% assign network_sites = network_sites | sort: 'domain' %}
+{% assign network_sites = network_sites | sort: 'k1v' %}
 
 <p class="network-toolbar-lede">
   Looking for a fellow Josh? Curious who's joined the fun without being one? Use the filters to explore, or leave them on All and see where you end up. Undeclared means the publisher has not declared Josh identity—it does not mean verification failed. Discover mixes things up so you don't always start in the same place. Recently joined and Oldest first follow when JoshBot first recorded participation in the registry.

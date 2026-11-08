@@ -131,7 +131,6 @@ import {
   devCacheRoot,
   latestUsesOrigins,
   participantsForThisRun,
-  readLocalIntakeOrigins,
   rememberMemberCrawl,
   splitUsesPreviewInputs,
 } from "../uses/dev-cache.mjs";
@@ -326,9 +325,6 @@ async function main() {
   const writtenIds = [];
 
   const crawlParticipants = participantsForThisRun(network, devCacheEnabled());
-  const localIntakeOrigins = new Set(
-    await readLocalIntakeOrigins(devCacheRoot(ROOT)),
-  );
 
   for (const participant of crawlParticipants) {
     if (!participant || typeof participant.origin !== "string") {
@@ -348,63 +344,6 @@ async function main() {
     process.stdout.write(`nlp crawl ${origin}\n`);
 
     try {
-      if (localDevCache && !localIntakeOrigins.has(origin)) {
-        const priorSignal = priorSignalsByOrigin.get(origin);
-        const carried = carryForwardOriginSignal(priorSignal, {
-          origin,
-          crawledAt: now,
-        });
-        const carriedDeclared = Array.isArray(carried.declared_topics)
-          ? carried.declared_topics
-          : [];
-        const carriedSignals = Array.isArray(carried.subject_signals)
-          ? carried.subject_signals
-          : [];
-        const carriedOutbound = Array.isArray(carried.outbound_links)
-          ? carried.outbound_links
-          : [];
-        const carriedFetched =
-          Number(
-            /** @type {Record<string, unknown>} */ (carried.coverage || {})
-              .pages_fetched ??
-              /** @type {Record<string, unknown>} */ (carried.stats || {})
-                .pages_fetched ??
-              0,
-          ) || 0;
-        originSignals.push(carried);
-        originLinks.push({ origin, links: carriedOutbound });
-        communityOrigins.push({
-          origin,
-          title: participant.title || participant.domain || origin,
-          domain: participant.domain || new URL(origin).hostname,
-          declared_topics: carriedDeclared,
-          subject_signals: carriedSignals,
-        });
-        usesOriginInputs.push({
-          origin,
-          title: participant.title || participant.domain || origin,
-          pages: [],
-          local_dev_cache: true,
-          assessment: {
-            page_status: "not_checked",
-            page_url: "",
-            homepage_duplicate: false,
-            extracted: null,
-          },
-        });
-        seekingOriginInputs.push({
-          origin,
-          title: participant.title || participant.domain || origin,
-          pages: [],
-          collected: { pages: [], requests: [] },
-          complete: true,
-        });
-        process.stdout.write(
-          `nlp keep local ${origin}: ${carriedFetched} pages carried (not in this run's intake)\n`,
-        );
-        continue;
-      }
-
       const feeds = Array.isArray(participant.feeds) ? participant.feeds : [];
       const feedData = await subjectsFromFeeds(feeds, dnsCache, {
         observedAt: now,
@@ -606,7 +545,6 @@ async function main() {
         html: page.html,
         lang: page.lang || "",
       }));
-      pagesForPublishedAt.push(...creativePages);
 
       if (shouldRenderHtml()) {
         process.stdout.write(
@@ -1068,7 +1006,13 @@ async function main() {
           previewMix: true,
         });
         if (mixed.preview_skipped) {
-          process.stdout.write("nlp uses preview skipped\n");
+          process.stdout.write(
+            `nlp uses preview skipped: quality blocked for ${preview.length} local origin(s); /uses/ stays ledger-only this run\n`,
+          );
+        } else {
+          process.stdout.write(
+            `nlp uses preview: mixed ${ledger.length} ledger + ${preview.length} local origin(s) into gitignored public views\n`,
+          );
         }
       } catch (error) {
         process.stderr.write(

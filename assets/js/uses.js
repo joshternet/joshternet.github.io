@@ -9,7 +9,7 @@
 
   const ALLOWED_PERIODS = new Set(["month", "quarter", "year", "all-time"]);
   const NO_TREND =
-    "History starts with the first recorded observations. There isn’t enough comparable history to show a trend yet, but you can explore the current snapshot and its sources.";
+    "History starts with the first recorded observations. There isn’t enough comparable history to show a trend yet, but you can explore the current anonymous snapshot.";
 
   /**
    * Publisher label for a tool row. Internal ids stay out of the table.
@@ -135,11 +135,7 @@
         const pageSnapshot = snapshotNode
           ? snapshotNode.getAttribute("data-uses-snapshot") || ""
           : "";
-        if (
-          pageSnapshot &&
-          index.k6p &&
-          pageSnapshot !== index.k6p
-        ) {
+        if (pageSnapshot && index.k6p && pageSnapshot !== index.k6p) {
           if (status) {
             status.textContent =
               "The interactive view is unavailable. The table above is the recorded snapshot.";
@@ -186,9 +182,7 @@
         if (
           index.k7l === false ||
           rollup.k7l === false ||
-          (index.k2c &&
-            rollup.k2c &&
-            index.k2c !== rollup.k2c)
+          (index.k2c && rollup.k2c && index.k2c !== rollup.k2c)
         ) {
           if (chart) {
             chart.innerHTML = "";

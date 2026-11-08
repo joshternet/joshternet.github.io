@@ -101,20 +101,20 @@ request to its source to see whether you can help.
 >
   <div class="seeking-site__header">
     <h3 id="seeking-site-{{ forloop.index }}" class="seeking-site__title">
-      {{ site_group.site_title | default: site_group.domain | escape }}
+      {{ site_group.k6h | default: site_group.k1v | escape }}
     </h3>
-    {% if site_group.domain and site_group.domain != '' %}
-      <p class="seeking-site__domain">{{ site_group.domain | escape }}</p>
+    {% if site_group.k1v and site_group.k1v != '' %}
+      <p class="seeking-site__domain">{{ site_group.k1v | escape }}</p>
     {% endif %}
   </div>
   <ol class="seeking-list">
-    {% for request in site_group.requests %}
+    {% for request in site_group.k5s %}
       <li class="seeking-list__item" data-seeking-item>
         {% include seeking-card.html
           request=request
-          site_title=site_group.site_title
-          site_domain=site_group.domain
-          language=site_group.language
+          site_title=site_group.k6h
+          site_domain=site_group.k1v
+          language=site_group.k3i
         %}
       </li>
     {% endfor %}

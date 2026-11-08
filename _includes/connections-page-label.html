@@ -34,18 +34,18 @@
     {% assign signal_origins = site.data.site_signals.k4c | default: empty %}
     {% for origin_entry in signal_origins %}
       {% if connections_page_label == '' %}
-        {% assign signal_pages = origin_entry.pages | default: empty %}
+        {% assign signal_pages = origin_entry.k4n | default: empty %}
         {% for signal_page in signal_pages %}
           {% if connections_page_label == '' %}
-            {% assign signal_url = signal_page.url | default: '' | strip | split: '?' | first | split: '#' | first %}
+            {% assign signal_url = signal_page.k7o | default: '' | strip | split: '?' | first | split: '#' | first %}
             {% if signal_url != '' %}
               {% assign signal_end = signal_url | slice: -1, 1 %}
               {% assign signal_key = signal_url %}
               {% unless signal_end == '/' %}
                 {% assign signal_key = signal_url | append: '/' %}
               {% endunless %}
-              {% if signal_key == page_want_key and signal_page.title and signal_page.title != '' %}
-                {% assign connections_page_label = signal_page.title %}
+              {% if signal_key == page_want_key and signal_page.k7c and signal_page.k7c != '' %}
+                {% assign connections_page_label = signal_page.k7c %}
               {% endif %}
             {% endif %}
           {% endif %}

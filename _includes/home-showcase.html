@@ -16,11 +16,11 @@
       {% for item in home_showcase limit: 6 %}
         <li
           class="showcase-list__item"
-          {% if item.language and item.language != '' %}
-            lang="{{ item.language | escape }}"
+          {% if item.k3i and item.k3i != '' %}
+            lang="{{ item.k3i | escape }}"
           {% endif %}
-          {% if item.dir and item.dir != '' %}
-            dir="{{ item.dir | escape }}"
+          {% if item.k1p and item.k1p != '' %}
+            dir="{{ item.k1p | escape }}"
           {% endif %}
         >
           {% include showcase-card.html item=item heading_tag="h3" %}

@@ -67,7 +67,6 @@ import {
   devCacheRoot,
   localDevCacheParticipants,
   readLocalIntakeOrigins,
-  selectLocalDevCacheIntake,
 } from "../uses/dev-cache.mjs";
 import { installPublicUrlRouteGuard } from "./public-fetch-guard.mjs";
 
@@ -840,9 +839,9 @@ async function shouldRefresh(previous) {
 const registry = await loadRegistry(registrySource);
 let projected = projectRegistry(registry);
 
-/** @type {Set<string>} Origins newly taken from the local cache this run. */
+/** @type {Set<string>} Origins from the local cache (not the Joshternet registry). */
 const devCacheOrigins = new Set();
-/** @type {Set<string>} Prior local-only sites kept without a fresh browser capture. */
+/** @type {Set<string>} Orphan local-only rows kept when the cache no longer lists them. */
 const carriedLocalDevCacheOrigins = new Set();
 
 const existing = await readJSONIfExists(DEFAULT_DATA_PATH, []);
@@ -865,34 +864,19 @@ if (localPreviewEnabled()) {
     devCacheRoot(process.cwd()),
     devCacheEnabled(),
   );
-  // Registry / preview origins only. Prior local-only rows may be in intake
-  // again so a interrupted run can finish those five without pulling the rest.
-  const registryOrigins = new Set(
-    projected
-      .map((entry) =>
-        entry && typeof entry.origin === "string" ? entry.origin : "",
-      )
-      .filter(Boolean),
+  const intakeListed = new Set(
+    await readLocalIntakeOrigins(devCacheRoot(process.cwd())),
   );
-  const intakeListed = await readLocalIntakeOrigins(
-    devCacheRoot(process.cwd()),
-  );
-  const intakeSites =
-    intakeListed.length > 0
-      ? selectLocalDevCacheIntake(
-          cachedSites.filter((site) => intakeListed.includes(site.origin)),
-          {
-            already: registryOrigins,
-            limit: LOCAL_NONJOSHTERNET_INTAKE_LIMIT,
-          },
-        )
-      : [];
-  for (const site of intakeSites) {
+  let newIntakeCount = 0;
+  for (const site of cachedSites) {
     if (projected.some((entry) => entry && entry.origin === site.origin)) {
       continue;
     }
     projected = mergePreviewParticipants(projected, [site]);
     devCacheOrigins.add(site.origin);
+    if (intakeListed.has(site.origin)) {
+      newIntakeCount += 1;
+    }
   }
 
   if (simulated.participants.length > 0) {
@@ -903,12 +887,13 @@ if (localPreviewEnabled()) {
   }
   if (devCacheOrigins.size > 0) {
     process.stdout.write(
-      `Local dev cache intake ${devCacheOrigins.size} new personal site` +
-        `${devCacheOrigins.size === 1 ? "" : "s"} (limit ${LOCAL_NONJOSHTERNET_INTAKE_LIMIT}).\n`,
-    );
-  } else if (intakeListed.length === 0) {
-    process.stdout.write(
-      "Local dev cache intake empty; prior local-only sites are kept without a fresh capture.\n",
+      `Local dev cache syncing ${devCacheOrigins.size} personal site` +
+        `${devCacheOrigins.size === 1 ? "" : "s"}` +
+        `${
+          newIntakeCount > 0
+            ? ` (${newIntakeCount} new this run, limit ${LOCAL_NONJOSHTERNET_INTAKE_LIMIT})`
+            : ""
+        }.\n`,
     );
   }
 }
@@ -1119,7 +1104,7 @@ for (const entry of nextEntries) {
 if (carriedLocalDevCacheOrigins.size > 0) {
   process.stdout.write(
     `Local dev cache kept ${carriedLocalDevCacheOrigins.size} prior personal site` +
-      `${carriedLocalDevCacheOrigins.size === 1 ? "" : "s"} without recapture.\n`,
+      `${carriedLocalDevCacheOrigins.size === 1 ? "" : "s"} missing from the Uses cache.\n`,
   );
 }
 

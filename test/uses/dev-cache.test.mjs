@@ -16,6 +16,7 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 import { pruneContentItems } from "../../scripts/nlp/content-retention.mjs";
+import { buildUsesDatasets } from "../../scripts/uses/build.mjs";
 import { classifyClaim, sectionSlotId } from "../../scripts/uses/classify.mjs";
 import {
   compareUsesUrls,
@@ -52,7 +53,11 @@ const categories = [
 ];
 
 test("a section path names one ranked slot", () => {
-  assert.equal(sectionSlotId("Hardware / Editors", categories), null);
+  assert.equal(
+    sectionSlotId("Hardware / Editors", categories),
+    "editor-ide",
+    "deepest unique ranked segment wins",
+  );
   assert.equal(
     sectionSlotId("Editors", [
       { id: "editor-ide", name: "Editors", role: "ranked" },
@@ -60,11 +65,28 @@ test("a section path names one ranked slot", () => {
     "editor-ide",
   );
   assert.equal(sectionSlotId("editor-ide", categories), "editor-ide");
-  assert.equal(sectionSlotId("Browsers / editor-ide", categories), null);
+  assert.equal(
+    sectionSlotId("Browsers / editor-ide", categories),
+    "editor-ide",
+    "deepest segment is preferred over an earlier browsers hit",
+  );
   assert.equal(sectionSlotId("Old", categories), null);
   assert.equal(sectionSlotId("", categories), null);
   assert.equal(sectionSlotId("Nowhere", categories), null);
   assert.equal(sectionSlotId("Editors"), null);
+  assert.equal(
+    sectionSlotId("Hardware / Laptops", [
+      { id: "computer", name: "Computers", role: "ranked" },
+    ]),
+    "computer",
+  );
+  assert.equal(
+    sectionSlotId("Hardware", [
+      { id: "computer", name: "Computers", role: "ranked" },
+    ]),
+    null,
+    "bare Hardware must not map to Computers",
+  );
   const classified = classifyClaim(
     {
       name: "Pocket Knife",
@@ -338,7 +360,9 @@ test("local non-Joshternet intake is capped and recorded", async () => {
     await clearLocalIntakeOrigins(path.join(dir, "absent-clear-root"));
     await mkdir(path.join(dir, "blocked-file"));
     await mkdir(path.join(dir, "blocked-file", "intake-origins.json"));
-    await assert.rejects(clearLocalIntakeOrigins(path.join(dir, "blocked-file")));
+    await assert.rejects(
+      clearLocalIntakeOrigins(path.join(dir, "blocked-file")),
+    );
   } finally {
     await rm(dir, { recursive: true, force: true });
   }
@@ -600,4 +624,29 @@ test("cached personal sites become local participants and stay out of the ledger
     ["https://joshua.example", "https://other.example"],
   );
   assert.deepEqual(participantsForThisRun(null, false), []);
+});
+
+test("durable Uses ledger refuses local_dev_cache origins", async () => {
+  const dir = await mkdtemp(path.join(os.tmpdir(), "uses-ledger-guard-"));
+  try {
+    await assert.rejects(
+      () =>
+        buildUsesDatasets({
+          repoRoot: dir,
+          origins: [
+            {
+              origin: "https://other.example",
+              local_dev_cache: true,
+              pages: [],
+            },
+          ],
+          observed_at: "2026-11-07T00:00:00.000Z",
+          dryRun: true,
+          publish: false,
+        }),
+      /local_dev_cache/,
+    );
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
 });

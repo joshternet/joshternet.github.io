@@ -97,6 +97,10 @@ export function classifyClaim(claim, catalog) {
       return finishTool(tool, context, indexed, "catalog", preference);
     }
   }
+  const macbook = matchMacBookFamily(name, indexed);
+  if (macbook) {
+    return finishTool(macbook, context, indexed, "macbook-family", preference);
+  }
   const fromSection = sectionSlotId(
     claim?.section_path || claim?.section || "",
     catalog?.categories,
@@ -129,7 +133,32 @@ export function classifyClaim(claim, catalog) {
 }
 
 /**
- * Ranked slot named by one section-path segment. Two different slots abstain.
+ * Publisher headings that safely name one ranked slot. Bare Hardware/Software
+ * stay out — they hold mixed gear and apps.
+ */
+const SECTION_SYNONYMS = new Map([
+  ["laptop", "computer"],
+  ["laptops", "computer"],
+  ["computers", "computer"],
+  ["workstation", "computer"],
+  ["workstations", "computer"],
+  ["editors", "editor-ide"],
+  ["editor", "editor-ide"],
+  ["ides", "editor-ide"],
+  ["ide", "editor-ide"],
+  ["browsers", "browser"],
+  ["phones", "phone"],
+  ["keyboards", "keyboard"],
+  ["displays", "display"],
+  ["monitors", "display"],
+  ["mice", "mouse"],
+  ["mouse", "mouse"],
+  ["chairs", "chair"],
+]);
+
+/**
+ * Ranked slot from the deepest unique section-path segment (name, id, or synonym).
+ * Bare umbrella headings such as Hardware never map to a product slot.
  * @param {string} sectionPath
  * @param {object[]} [categories]
  * @returns {string|null}
@@ -145,22 +174,25 @@ export function sectionSlotId(sectionPath, categories) {
   const ranked = (categories || []).filter(
     (slot) => slot && slot.role === "ranked" && slot.id,
   );
-  /** @type {Set<string>} */
-  const hits = new Set();
-  for (const segment of segments) {
+  for (let index = segments.length - 1; index >= 0; index -= 1) {
+    const segment = segments[index];
+    const synonymId = SECTION_SYNONYMS.get(segment);
+    if (synonymId) {
+      const synonymSlot = ranked.find((slot) => slot.id === synonymId);
+      if (synonymSlot) {
+        return synonymSlot.id;
+      }
+    }
     const matched = ranked.filter((slot) => {
-      const name = comparisonLabel(slot.name || "");
+      const slotName = comparisonLabel(slot.name || "");
       const id = comparisonLabel(slot.id);
-      return segment === name || segment === id;
+      return segment === slotName || segment === id;
     });
     if (matched.length === 1) {
-      hits.add(matched[0].id);
+      return matched[0].id;
     }
   }
-  if (hits.size !== 1) {
-    return null;
-  }
-  return [...hits][0];
+  return null;
 }
 
 /**
@@ -270,15 +302,16 @@ export function hasExplicitPreference(text) {
  * @returns {boolean}
  */
 function isRejectedFragment(name) {
-  if (/^(todo|work computer)$/i.test(name)) {
+  const key = comparisonLabel(name);
+  if (/^(todo|work computer|gaming computer)$/i.test(key)) {
     return true;
   }
   if (
-    /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\s+\d{4}$/i.test(name)
+    /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\s+\d{4}$/i.test(key)
   ) {
     return true;
   }
-  return /^\d{4}$/.test(name);
+  return /^\d{4}$/.test(key);
 }
 
 /**
@@ -291,7 +324,7 @@ function componentKind(name) {
   if (/\b(mac|laptop|mini pc|nuc|computer)\b/i.test(name)) {
     return "";
   }
-  if (/\b(ddr\d?|\bram\b)\b/i.test(name)) {
+  if (/\b(ddr\d?|\bram\b|\bmemory\b)\b/i.test(name)) {
     return "computer";
   }
   if (/^(amd ryzen|intel)\b/i.test(name)) {
@@ -304,6 +337,52 @@ function componentKind(name) {
     return "keyboard";
   }
   return "";
+}
+
+/**
+ * Freeform MacBook lines map into the Computers slot with a stable tool id.
+ * @param {string} name
+ * @param {{ tools: Map<string, object> }} indexed
+ * @returns {object|null}
+ */
+function matchMacBookFamily(name, indexed) {
+  const text = String(name || "");
+  const isAir = /\bmacbook\s+air\b/i.test(text);
+  const isPro = /\bmacbook\s+pro\b/i.test(text);
+  if (!isAir && !isPro) {
+    return null;
+  }
+  /** @type {string} */
+  let toolId = "macbook-pro";
+  if (isAir) {
+    toolId = "macbook-air";
+  } else if (
+    /\b14(?:\s*-?\s*inch|")\b/i.test(text) ||
+    /\bpro\s+14\b/i.test(text)
+  ) {
+    toolId = "macbook-pro-14";
+  } else if (
+    /\b16(?:\s*-?\s*inch|")\b/i.test(text) ||
+    /\bpro\s+16\b/i.test(text)
+  ) {
+    toolId = "macbook-pro-16";
+  }
+  const fromCatalog = indexed.tools.get(toolId);
+  if (fromCatalog) {
+    return fromCatalog;
+  }
+  const fallbackNames = {
+    "macbook-air": "MacBook Air",
+    "macbook-pro-14": "MacBook Pro 14-inch",
+    "macbook-pro-16": "MacBook Pro 16-inch",
+    "macbook-pro": "MacBook Pro",
+  };
+  return {
+    id: toolId,
+    name: fallbackNames[toolId] || "MacBook Pro",
+    category_id: "computer",
+    kind: "hardware",
+  };
 }
 
 /**

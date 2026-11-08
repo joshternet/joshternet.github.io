@@ -14,10 +14,10 @@ import { buildEvidenceRecords } from "../../scripts/uses/evidence.mjs";
 import { extractUsesFromHtml } from "../../scripts/uses/extract.mjs";
 import { reconcileMemberUsage } from "../../scripts/uses/reconcile.mjs";
 import { replayState } from "../../scripts/uses/store.mjs";
-import { buildUsesSummary } from "../../scripts/uses/view.mjs";
+import { buildUsesSummary, coverageReason } from "../../scripts/uses/view.mjs";
 
 const NO_TREND =
-  "History starts with the first recorded observations. There isn’t enough comparable history to show a trend yet, but you can explore the current snapshot and its sources.";
+  "History starts with the first recorded observations. There isn’t enough comparable history to show a trend yet, but you can explore the current anonymous snapshot.";
 
 const catalog = { tools: [], aliases: [], useCases: [] };
 
@@ -63,6 +63,21 @@ test("structure keeps names whole and leaves qualifiers as context", async () =>
   assert.equal(byLabel.get("@joshuabaker").kind, "unresolved");
   assert.equal(byLabel.has("Software"), false);
   assert.equal(byLabel.get("Apple Magic Keyboard").kind, "product");
+});
+
+test("outline section headings are not products", () => {
+  const result = extractUsesFromHtml(`
+    <h2>Software</h2>
+    <p>I write and ship tools for the open web.</p>
+    <h2>Hardware</h2>
+    <p>Desk gear stays with the setup notes below.</p>
+    <h2>Visual Studio Code</h2>
+    <p>My daily editor.</p>
+  `);
+  const labels = result.items.map((item) => item.label);
+  assert.equal(labels.includes("Software"), false);
+  assert.equal(labels.includes("Hardware"), false);
+  assert.equal(labels.includes("Visual Studio Code"), true);
 });
 
 test("prose links and reason lists are not extra products", () => {
@@ -312,7 +327,7 @@ test("a smaller denominator is not an adoption change", () => {
   );
 });
 
-test("ledger keeps an empty assessed page and drops a homepage copy", async () => {
+test("homepage copy is out of scope and summary stays anonymous", async () => {
   const copy = await fixture("homepage-copy.html");
   assert.equal(usesHtmlRepeatsHomepage(copy, copy), true);
   const summary = buildUsesSummary({
@@ -343,17 +358,11 @@ test("ledger keeps an empty assessed page and drops a homepage copy", async () =
       },
     ],
   });
-  const empty = summary.ledger.find(
-    (row) => row.origin === "https://joshua.example",
-  );
-  const home = summary.ledger.find(
-    (row) => row.origin === "https://other.example",
-  );
-  assert.equal(empty.in_denominator, true);
-  assert.equal(empty.outcome, "verified_empty");
-  assert.equal(home.in_denominator, false);
-  assert.match(home.reason, /homepage/i);
+  assert.equal(summary.ledger, undefined);
+  assert.equal(summary.verified_uses_member_count, 1);
+  assert.equal(summary.eligible_member_count, 2);
   assert.equal(summary.trend_ready, false);
+  assert.match(coverageReason("out_of_scope"), /homepage/i);
 });
 
 test("history copy states that a trend is not ready", async () => {

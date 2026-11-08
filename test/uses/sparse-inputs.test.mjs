@@ -317,10 +317,8 @@ test("graph, summary, and catalog helpers use defaults", () => {
       ],
     },
   });
-  assert.equal(
-    bare.top_tools[0].sources[0].page_url,
-    "https://missing.example/uses/",
-  );
+  assert.equal(bare.top_tools[0].sources, undefined);
+  assert.equal(bare.top_tools[0].active_member_count, 1);
   assert.equal(buildUsesSummary({ rollup: {} }).distinct_tool_count, 0);
 
   assert.equal(indexCatalog({}).byId.size, 0);
@@ -646,7 +644,7 @@ test("fallback branches run when a field is absent", async () => {
       ],
     },
   });
-  assert.equal(summary.top_tools[0].sources.length, 0);
+  assert.equal(summary.top_tools[0].sources, undefined);
   assert.equal(summary.use_case_counts.length, 2);
 
   reconcileMemberUsage({

@@ -225,9 +225,9 @@ interesting things, and occasionally end up exploring the same ideas.
                   {% assign target_title = edge.k7d %}
                   {% assign target_domain = edge.k7d %}
                   {% for candidate in network_sites %}
-                    {% if candidate.origin == edge.k7d %}
-                      {% assign target_title = candidate.title | default: candidate.domain %}
-                      {% assign target_domain = candidate.domain %}
+                    {% if candidate.k4b == edge.k7d %}
+                      {% assign target_title = candidate.k7c | default: candidate.k1v %}
+                      {% assign target_domain = candidate.k1v %}
                     {% endif %}
                   {% endfor %}
                   {% assign link_label = edge.k7a %}
@@ -346,9 +346,9 @@ interesting things, and occasionally end up exploring the same ideas.
                   {% assign source_title = edge.k2o %}
                   {% assign source_domain = edge.k2o %}
                   {% for candidate in network_sites %}
-                    {% if candidate.origin == edge.k2o %}
-                      {% assign source_title = candidate.title | default: candidate.domain %}
-                      {% assign source_domain = candidate.domain %}
+                    {% if candidate.k4b == edge.k2o %}
+                      {% assign source_title = candidate.k7c | default: candidate.k1v %}
+                      {% assign source_domain = candidate.k1v %}
                     {% endif %}
                   {% endfor %}
                   {% assign edge_kind = edge.k5l | default: edge.k3c | default: "content-link" %}
@@ -454,7 +454,7 @@ interesting things, and occasionally end up exploring the same ideas.
                 {% for topic in overlap_topics %}
                   {% assign article_count = topic.kc.size | default: 0 %}
                   {% for peer in topic.k6i %}
-                    {% assign article_count = article_count | plus: peer.articles.size %}
+                    {% assign article_count = article_count | plus: peer.kc.size %}
                   {% endfor %}
                   <li class="connections-topic" data-connection-kind="shared-topic">
                     <span class="connections-topic__label">

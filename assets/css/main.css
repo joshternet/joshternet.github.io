@@ -5226,6 +5226,19 @@ video {
   padding: 0;
 }
 
+.uses-summary__coverage {
+  margin: var(--space-4) 0 var(--space-2);
+  max-width: var(--reading-width);
+  font-size: var(--type-lead);
+}
+
+.uses-summary__note {
+  margin: 0 0 var(--space-4);
+  max-width: var(--reading-width);
+  color: var(--color-muted);
+  font-size: var(--type-small);
+}
+
 .uses-summary__label {
   display: block;
   color: var(--color-muted);

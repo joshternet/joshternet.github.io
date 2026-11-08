@@ -20,8 +20,8 @@
     {% endif %}
   {% endif %}
 {% endfor %}
-{% assign home_arrival_sites = home_arrival_sites | sort: 'origin' %}
-{% assign home_arrival_sites = home_arrival_sites | sort: 'first_participated_at' | reverse %}
+{% assign home_arrival_sites = home_arrival_sites | sort: 'k4b' %}
+{% assign home_arrival_sites = home_arrival_sites | sort: 'k2j' | reverse %}
 {% assign home_arrival_sites = home_arrival_sites | slice: 0, 3 %}
 {% assign home_arrival_domains = '' %}
 {% for network_site in home_arrival_sites %}

@@ -387,7 +387,9 @@ jobs:
             exit 1
           fi
 
-          git add -- \
+          # Ignored locally so a developer crawl is not added with git add.
+          # Force-add the copies this job just wrote.
+          git add -f -- \
             _data/network.json \
             _data/blogrolls.json \
             _data/connections.json \
@@ -408,11 +410,7 @@ jobs:
             assets/network/sites \
             assets/activity/posters \
             assets/activity/atom.xml \
-            _data/made.json
-
-          # Ignored locally so a developer crawl is not added with git add.
-          # Force-add the copies this job just wrote.
-          git add -f -- \
+            _data/made.json \
             _data/past_events.json \
             data/classification/quality-baseline.json
           if [ -f assets/events/joshternet.ics ]; then
@@ -420,7 +418,7 @@ jobs:
           fi
 
           if [ "${JOSHTERNET_USES_PUBLISH}" = "1" ] || [ "${JOSHTERNET_USES_PUBLISH}" = "true" ]; then
-            git add -- \
+            git add -f -- \
               data/uses \
               _data/uses_summary.json \
               assets/data/uses || true

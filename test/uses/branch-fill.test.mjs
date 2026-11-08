@@ -443,12 +443,12 @@ test("summary presents slots, unsorted names, and every coverage reason", async 
     },
   });
   assert.equal(summary.early_sample, false);
-  assert.equal(
-    summary.slots[0].products[0].sources[0].page_url.includes("/uses/"),
-    true,
-  );
+  assert.equal(summary.slots[0].products[0].active_member_count, 1);
+  assert.equal(summary.slots[0].products[0].sources, undefined);
   assert.equal(summary.unsorted[0].name, "DeskThing");
   assert.equal(summary.setup[0].name, "32GB DDR5 RAM");
+  assert.equal(summary.setup[0].site_count, 1);
+  assert.equal(summary.setup[0].sources, undefined);
   assert.equal(coverageReason("verified"), "Assessed Uses page");
   assert.equal(coverageReason("unreachable").includes("could not"), true);
   assert.equal(coverageReason("uncertain").includes("not recognized"), true);
@@ -846,6 +846,9 @@ test("discovery, evidence, extract, and store edge paths", async () => {
   assert.equal(publicToolName("", "neovim"), "neovim");
   assert.equal(isNamedEntity("a"), false);
   assert.equal(isReportableUseLabel("A"), false);
+  assert.equal(isReportableUseLabel("More"), false);
+  assert.equal(isReportableUseLabel("Photos"), false);
+  assert.equal(isReportableUseLabel("Resume"), false);
   assert.equal(observedToolId(""), "");
   assert.equal(contentFingerprint("same"), contentFingerprint("same"));
   assert.equal(

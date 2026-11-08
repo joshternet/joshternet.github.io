@@ -302,6 +302,11 @@
     k86: "seeking",
     k87: "signals",
     k88: "uses",
+    k89: "start",
+    k8a: "end",
+    k8b: "venue",
+    k8c: "location",
+    k8d: "site_count",
   };
   var seal = "joshternet-site-record-v1";
   function unseal(key) {

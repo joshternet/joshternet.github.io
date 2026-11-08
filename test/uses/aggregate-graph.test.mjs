@@ -639,15 +639,7 @@ test("buildUsesSummary marks early sample", () => {
   assert.equal(summary.methodology_url, "/implement/content/uses/");
   assert.match(summary.coverage_note, /small part of the network/i);
   assert.equal(summary.top_tools.length, 1);
-  assert.deepEqual(summary.top_tools[0].sources, [
-    {
-      origin: "https://example.com",
-      page_url: "https://example.com/uses/",
-      label: "example.com",
-      section: "",
-      context: "",
-      observed_at: "",
-      preference: false,
-    },
-  ]);
+  assert.equal(summary.top_tools[0].active_member_count, 1);
+  assert.equal(summary.top_tools[0].sources, undefined);
+  assert.equal(summary.ledger, undefined);
 });

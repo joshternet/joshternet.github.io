@@ -1,13 +1,13 @@
 /**
  * Goal & Constraints:
- * Keep the datasets GitHub Actions publishes in the index, and leave this
- * working tree free to rewrite them during a local crawl.
- * Does not change git config. Does not delete crawl output.
+ * Untrack the datasets GitHub Actions publishes so local crawls stay
+ * gitignored. Does not change git config. Does not delete crawl output on disk.
+ * Hand-edited topics/index.md and data/uses/catalog/ stay tracked.
  */
 
 import { execFileSync } from "node:child_process";
 
-/** Tracked paths a local crawl rewrites and hourly network-sync commits. */
+/** Paths a local crawl rewrites and hourly network-sync force-adds. */
 export const ACTIONS_CRAWL_PATHS = [
   "_data/network.json",
   "_data/blogrolls.json",
@@ -34,7 +34,28 @@ export const ACTIONS_CRAWL_PATHS = [
 ];
 
 /**
- * Tracked crawl outputs, without the hand-edited Uses catalog or topic hub.
+ * Whether a tracked path is a crawl output (not the hand-edited allowlist).
+ * @param {string} file - Path relative to the repository root.
+ * @returns {boolean}
+ */
+export function isGeneratedCrawlOutput(file) {
+  if (!file) {
+    return false;
+  }
+
+  if (file.startsWith("data/uses/catalog/")) {
+    return false;
+  }
+
+  if (file === "topics/index.md") {
+    return false;
+  }
+
+  return true;
+}
+
+/**
+ * Tracked crawl outputs still in the index, without the hand-edited allowlist.
  * @returns {string[]}
  */
 export function trackedCrawlOutputs() {
@@ -46,22 +67,13 @@ export function trackedCrawlOutputs() {
     },
   );
 
-  return listed.split("\0").filter((file) => {
-    if (!file) {
-      return false;
-    }
-
-    if (file.startsWith("data/uses/catalog/")) {
-      return false;
-    }
-
-    return file !== "topics/index.md";
-  });
+  return listed.split("\0").filter(isGeneratedCrawlOutput);
 }
 
 /**
- * Hides local edits to the Actions publish set from status and commit.
- * @returns {number} How many tracked files were marked.
+ * Clears skip-worktree bits and removes crawl outputs from the index so
+ * `.gitignore` can hide local rewrites. Files remain on disk.
+ * @returns {number} How many tracked files were removed from the index.
  */
 export function keepCrawlLocal() {
   const files = trackedCrawlOutputs();
@@ -70,7 +82,10 @@ export function keepCrawlLocal() {
     return 0;
   }
 
-  execFileSync("git", ["update-index", "--skip-worktree", "--", ...files], {
+  execFileSync("git", ["update-index", "--no-skip-worktree", "--", ...files], {
+    stdio: "inherit",
+  });
+  execFileSync("git", ["rm", "-f", "--cached", "--", ...files], {
     stdio: "inherit",
   });
 
@@ -83,6 +98,8 @@ const invoked =
 if (invoked) {
   const count = keepCrawlLocal();
   process.stdout.write(
-    `Local crawl edits will stay uncommitted for ${count} file(s).\n`,
+    count === 0
+      ? "Crawl publish set is already untracked (gitignored for local runs).\n"
+      : `Removed ${count} crawl output(s) from the index; files stay on disk and stay gitignored.\n`,
   );
 }

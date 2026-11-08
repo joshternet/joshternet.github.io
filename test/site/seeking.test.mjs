@@ -75,6 +75,7 @@ test("seeking payloads stay out of committed workflow staging", async () => {
   assert.match(gitignore, /_data\/channel_publish\.json/);
   assert.match(gitignore, /_data\/homepage_connections\.json/);
   assert.match(gitignore, /_data\/past_events\.json/);
+  assert.match(gitignore, /_data\/network\.json/);
   assert.match(gitignore, /assets\/events\/joshternet\.ics/);
   assert.match(gitignore, /data\/classification\/run-metrics\.json/);
   assert.match(gitignore, /data\/classification\/quality-baseline\.json/);
