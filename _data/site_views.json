@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-08T01:34:24.244Z",
+  "generated_at": "2026-11-08T16:10:26.396Z",
   "sites": [
     {
       "origin": "https://artlung.com",
@@ -171,6 +171,10 @@
           "label": "History"
         },
         {
+          "slug": "image",
+          "label": "images"
+        },
+        {
           "slug": "learn",
           "label": "learn"
         },
@@ -320,7 +324,7 @@
         "title": "/amiga/",
         "summary": "A few of my memories of using the a Commodore Amiga 1000 for computer graphics, music, etc.",
         "published_at": "",
-        "observed_at": "2026-11-08T01:16:12.088Z",
+        "observed_at": "2026-11-08T15:51:45.463Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -11486,6 +11490,22 @@
           "https://artlung.com/blog/2022/10/07/setlist-fm-user-artlung/": "content-index",
           "https://artlung.com/blog/2023/10/17/music-concerts/": "content-index",
           "https://artlung.com/contact/?url=https://artlung.com/guestbook/": "content-index",
+          "https://artlung.com/identity-cosplay-ic/": "content-index",
+          "https://artlung.com/understandingcomics-ibc/": "content-index",
+          "https://artlung.com/affirmations-ic/": "content-index",
+          "https://artlung.com/whatsupdoc-imc/": "content-index",
+          "https://artlung.com/blog/2024/02/28/mistrust-based-technology-choices/": "content-index",
+          "https://artlung.com/blog/2024/04/15/front-end-study-hall/": "content-index",
+          "https://artlung.com/blog/2024/04/23/tentative-rsvp-to-a-tentative-indieweb-event/": "content-index",
+          "https://artlung.com/blog/2024/04/24/front-end-study-hall-002/": "content-index",
+          "https://artlung.com/blog/2024/05/08/front-end-study-hall-continues/": "content-index",
+          "https://artlung.com/blog/2024/05/15/bo-hwc-social-norms-in-the-indieweb-upcoming-event/": "content-index",
+          "https://artlung.com/blog/2024/05/17/molly-white-is-optimistic-about-the-indieweb/": "content-index",
+          "https://artlung.com/blog/2024/05/29/the-web-is-better/": "content-index",
+          "https://artlung.com/blog/2024/05/31/goodbye-foaf/": "content-index",
+          "https://artlung.com/gardening-ic/": "content-index",
+          "https://artlung.com/blog/2025/10/07/fresh-028/": "content-index",
+          "https://artlung.com/surf-imc/": "content-index",
           "https://artlung.com/likes/feed.xml": "budget-exhausted",
           "https://artlung.com/blog/2026/11/06/": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2026/11/06/lost-fin/": "budget-exhausted",
@@ -11495,8 +11515,6 @@
           "https://artlung.com/contact/?url=https://artlung.com/blog/2026/11/03/ibot-g3-2018/": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2026/11/02/windy-and-fun/": "budget-exhausted",
-          "https://artlung.com/blog/2026/11/01/": "budget-exhausted",
-          "https://artlung.com/contact/?url=https://artlung.com/blog/2026/11/01/robot-number-3991/": "budget-exhausted",
           "https://artlung.com/blog/2026/10/31/": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2026/10/31/a-fine-way-to-occupy-a-saturday-morn/": "budget-exhausted",
           "https://artlung.com/blog/2026/10/29/": "budget-exhausted",
@@ -11544,7 +11562,6 @@
           "https://artlung.com/blog/2026/10/22/johnny-5-new-bot-day/?replytocom=1246857": "budget-exhausted",
           "https://artlung.com/blog/2026/10/22/johnny-5-new-bot-day/?replytocom=1247035": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2026/10/22/johnny-5-new-bot-day/": "budget-exhausted",
-          "https://artlung.com/blog/2024/05/29/the-web-is-better/": "budget-exhausted",
           "https://artlung.com/blog/tag/web-platform/": "budget-exhausted",
           "https://artlung.com/blog/tag/webdev/": "budget-exhausted",
           "https://artlung.com/blog/2026/10/22/2027-web-platform-ranking/?replytocom=1246854": "budget-exhausted",
@@ -12755,11 +12772,7 @@
           "https://artlung.com/blog": "budget-exhausted",
           "https://artlung.com/foursquare/artlung/": "budget-exhausted",
           "https://artlung.com/gato": "budget-exhausted",
-          "https://artlung.com/blog/2025/10/07/fresh-028/": "budget-exhausted",
-          "https://artlung.com/blog/2024/05/31/goodbye-foaf/": "budget-exhausted",
-          "https://artlung.com/blog/2024/05/08/front-end-study-hall-continues/": "budget-exhausted",
           "https://artlung.com/blog/2024/04/26/friday-links/": "budget-exhausted",
-          "https://artlung.com/blog/2024/04/15/front-end-study-hall/": "budget-exhausted",
           "https://artlung.com/guestbook/?replytocom=1142352": "budget-exhausted",
           "https://artlung.com/guestbook/?replytocom=1142369": "budget-exhausted",
           "https://artlung.com/guestbook/?replytocom=1142583": "budget-exhausted",
@@ -13797,7 +13810,7 @@
           "https://artlung.com/indienews/bb7ab69d0a547f8a6988766f82b3a905": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z"
+      "crawled_at": "2026-11-08T15:51:45.463Z"
     },
     {
       "origin": "https://forwardbias.dev",
@@ -13889,7 +13902,7 @@
         "title": "Contact",
         "summary": "Ramblings and experiments from a recovering middle school teacher. Equity, joy, and agency in education through tech, music, arts. Who knows what comes next.",
         "published_at": "",
-        "observed_at": "2026-11-08T01:16:12.088Z",
+        "observed_at": "2026-11-08T15:51:45.463Z",
         "content_type": "article",
         "language": "en-us",
         "dir": "",
@@ -14118,7 +14131,7 @@
           "https://forwardbias.dev/tags/red/": "topic-hub"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z"
+      "crawled_at": "2026-11-08T15:51:45.463Z"
     },
     {
       "origin": "https://joshbeard.com",
@@ -14126,7 +14139,13 @@
       "title": "Josh Beard",
       "description": "Josh Beard works on infrastructure, developer workflows, and software delivery systems",
       "identity": "affirmed",
-      "feeds": [],
+      "feeds": [
+        {
+          "url": "https://joshbeard.com/feed.xml",
+          "type": "application/atom+xml",
+          "title": "Josh Beard"
+        }
+      ],
       "elsewhere": [
         {
           "url": "https://github.com/joshbeard",
@@ -14169,7 +14188,7 @@
         "title": "Photos",
         "summary": "Photo albums from Colorado, travel, cycling, and everyday life.",
         "published_at": "",
-        "observed_at": "2026-11-08T01:16:12.088Z",
+        "observed_at": "2026-11-08T15:51:45.463Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -14202,6 +14221,26 @@
         "selection_strategy": "uncapped-site-crawl-v1",
         "selection_reasons": {
           "https://joshbeard.com/": "home",
+          "https://joshbeard.com/photos/2026/IMG_1904_jpeg.html": "feed",
+          "https://joshbeard.com/photos/2026/IMG_1910_jpeg.html": "feed",
+          "https://joshbeard.com/photos/2026/IMG_1915_jpeg.html": "feed",
+          "https://joshbeard.com/photos/2026/IMG_1888_jpeg.html": "feed",
+          "https://joshbeard.com/photos/2026/IMG_1890_jpeg.html": "feed",
+          "https://joshbeard.com/photos/2026/IMG_1811_jpeg.html": "feed",
+          "https://joshbeard.com/photos/2026/IMG_1748_jpeg.html": "feed",
+          "https://joshbeard.com/photos/2026/IMG_1733_jpeg.html": "feed",
+          "https://joshbeard.com/photos/2026/IMG_1736_jpeg.html": "feed",
+          "https://joshbeard.com/photos/2026/IMG_1713_jpeg.html": "feed",
+          "https://joshbeard.com/photos/2026/IMG_1715_jpeg.html": "feed",
+          "https://joshbeard.com/photos/2026/IMG_1671_jpeg.html": "feed",
+          "https://joshbeard.com/photos/2026/IMG_1648_jpeg.html": "feed",
+          "https://joshbeard.com/photos/2026/IMG_1642_jpeg.html": "feed",
+          "https://joshbeard.com/photos/2026/IMG_1598_jpeg.html": "feed",
+          "https://joshbeard.com/photos/2026/IMG_1545_jpeg.html": "feed",
+          "https://joshbeard.com/photos/2026/IMG_1548_jpeg.html": "feed",
+          "https://joshbeard.com/photos/2026/IMG_1563_jpeg.html": "feed",
+          "https://joshbeard.com/photos/2026/IMG_1581_jpeg.html": "feed",
+          "https://joshbeard.com/photos/2026/IMG_1411_jpeg.html": "feed",
           "https://joshbeard.com/changelog/": "content-index",
           "https://joshbeard.com/log/": "content-index",
           "https://joshbeard.com/ideas/": "content-index",
@@ -14375,25 +14414,6 @@
           "https://joshbeard.com/pgp/": "sitemap",
           "https://joshbeard.com/site/small.html": "sitemap",
           "https://joshbeard.com/workouts/": "sitemap",
-          "https://joshbeard.com/photos/2026/IMG_1915_jpeg.html": "sitemap",
-          "https://joshbeard.com/photos/2026/IMG_1910_jpeg.html": "sitemap",
-          "https://joshbeard.com/photos/2026/IMG_1904_jpeg.html": "sitemap",
-          "https://joshbeard.com/photos/2026/IMG_1890_jpeg.html": "sitemap",
-          "https://joshbeard.com/photos/2026/IMG_1888_jpeg.html": "sitemap",
-          "https://joshbeard.com/photos/2026/IMG_1811_jpeg.html": "sitemap",
-          "https://joshbeard.com/photos/2026/IMG_1748_jpeg.html": "sitemap",
-          "https://joshbeard.com/photos/2026/IMG_1736_jpeg.html": "sitemap",
-          "https://joshbeard.com/photos/2026/IMG_1733_jpeg.html": "sitemap",
-          "https://joshbeard.com/photos/2026/IMG_1715_jpeg.html": "sitemap",
-          "https://joshbeard.com/photos/2026/IMG_1713_jpeg.html": "sitemap",
-          "https://joshbeard.com/photos/2026/IMG_1671_jpeg.html": "sitemap",
-          "https://joshbeard.com/photos/2026/IMG_1648_jpeg.html": "sitemap",
-          "https://joshbeard.com/photos/2026/IMG_1642_jpeg.html": "sitemap",
-          "https://joshbeard.com/photos/2026/IMG_1598_jpeg.html": "sitemap",
-          "https://joshbeard.com/photos/2026/IMG_1581_jpeg.html": "sitemap",
-          "https://joshbeard.com/photos/2026/IMG_1563_jpeg.html": "sitemap",
-          "https://joshbeard.com/photos/2026/IMG_1545_jpeg.html": "sitemap",
-          "https://joshbeard.com/photos/2026/IMG_1548_jpeg.html": "sitemap",
           "https://joshbeard.com/photos/2026/IMG_1471_jpeg.html": "sitemap",
           "https://joshbeard.com/photos/2026/IMG_1466_jpeg.html": "sitemap",
           "https://joshbeard.com/photos/2026/IMG_1454_jpeg.html": "sitemap",
@@ -14401,7 +14421,6 @@
           "https://joshbeard.com/photos/2026/IMG_1427_jpeg.html": "sitemap",
           "https://joshbeard.com/photos/2026/IMG_1423_jpeg.html": "sitemap",
           "https://joshbeard.com/photos/2026/IMG_1414_jpeg.html": "sitemap",
-          "https://joshbeard.com/photos/2026/IMG_1411_jpeg.html": "sitemap",
           "https://joshbeard.com/photos/2026/IMG_1391_jpeg.html": "sitemap",
           "https://joshbeard.com/photos/2026/IMG_1354_jpeg.html": "sitemap",
           "https://joshbeard.com/photos/2026/IMG_1283_jpeg.html": "sitemap",
@@ -14658,13 +14677,13 @@
           "https://joshbeard.com/me": "content-index"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z"
+      "crawled_at": "2026-11-08T15:51:45.463Z"
     },
     {
       "origin": "https://joshcox.co.uk",
       "domain": "joshcox.co.uk",
       "title": "Josh Cox",
-      "description": "I'm Josh — a UK-based web developer. I run Prystine, a web agency, and build products and tools across the web. This is where I write about building, shipping, and the occasional tangent.",
+      "description": "I've been building things on the web since 2016, mostly through Prystine, the web agency I run. Over the years that's grown from \"making websites\" into looking after them properly — performance, maintenance, and the unglamorous work that keeps a site alive.",
       "identity": "affirmed",
       "feeds": [
         {
@@ -14700,7 +14719,7 @@
         },
         {
           "slug": "image",
-          "label": "image"
+          "label": "images"
         },
         {
           "slug": "laptop",
@@ -14760,7 +14779,7 @@
         "title": "Projects — Josh Cox",
         "summary": "Products and tools Josh Cox has built, including Prystine, SendTidings, Quotify, Lifting Times, LeerHaus, and the Mac app My House, My Things.",
         "published_at": "",
-        "observed_at": "2026-11-08T01:16:12.088Z",
+        "observed_at": "2026-11-08T15:51:45.463Z",
         "content_type": "collection",
         "language": "en-gb",
         "dir": "",
@@ -14988,7 +15007,7 @@
           "https://joshcox.co.uk/blog/meat-the-luxury-product/": "content-index"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z"
+      "crawled_at": "2026-11-08T15:51:45.463Z"
     },
     {
       "origin": "https://joshghent.com",
@@ -15156,6 +15175,10 @@
           "label": "package"
         },
         {
+          "slug": "performance",
+          "label": "performance"
+        },
+        {
           "slug": "php",
           "label": "php"
         },
@@ -15257,7 +15280,7 @@
         "title": "Enterprise sales teams, please, I beg you, stop",
         "summary": "I asked for a price on a few extra seats of software we already pay for. Two days and a pile of irrelevant questions later, I got one.",
         "published_at": "2026-10-28T00:00:00.000Z",
-        "observed_at": "2026-11-08T01:16:12.088Z",
+        "observed_at": "2026-11-08T15:51:45.463Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -15640,7 +15663,7 @@
           "https://joshghent.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z"
+      "crawled_at": "2026-11-08T15:51:45.463Z"
     },
     {
       "origin": "https://joshgr.com",
@@ -15915,7 +15938,7 @@
           "https://joshgr.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z"
+      "crawled_at": "2026-11-08T15:51:45.463Z"
     },
     {
       "origin": "https://joshkoter.com",
@@ -15960,7 +15983,7 @@
         "title": "Untitled",
         "summary": "Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on YouTube.",
         "published_at": "",
-        "observed_at": "2026-11-08T01:16:12.088Z",
+        "observed_at": "2026-11-08T15:51:45.463Z",
         "content_type": "video",
         "language": "",
         "dir": "",
@@ -16175,7 +16198,7 @@
           "https://joshkoter.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z"
+      "crawled_at": "2026-11-08T15:51:45.463Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -17137,7 +17160,7 @@
           "https://joshmuller.ca": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z"
+      "crawled_at": "2026-11-08T15:51:45.463Z"
     },
     {
       "origin": "https://joshozuna.com",
@@ -17224,6 +17247,10 @@
           "label": "game"
         },
         {
+          "slug": "image",
+          "label": "images"
+        },
+        {
           "slug": "music",
           "label": "music"
         },
@@ -17265,7 +17292,7 @@
         "title": "35mm Film Photography Gallery",
         "summary": "Hobbyist photographer. Shooting 35mm film since 2022.",
         "published_at": "2025-08-17T05:00:00.000Z",
-        "observed_at": "2026-11-07T21:34:22.547Z",
+        "observed_at": "2026-11-08T15:51:45.463Z",
         "content_type": "collection",
         "language": "en",
         "dir": "",
@@ -17562,11 +17589,10 @@
           "https://joshozuna.com/classes/": "blind-probe",
           "https://joshozuna.com/class/": "blind-probe",
           "https://joshozuna.com/courses/": "blind-probe",
-          "https://joshozuna.com/course/": "blind-probe",
-          "https://joshozuna.com": "short-circuit-unchanged"
+          "https://joshozuna.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z"
+      "crawled_at": "2026-11-08T15:51:45.463Z"
     },
     {
       "origin": "https://joshsherman.dev",
@@ -17598,7 +17624,7 @@
         "title": "Annotate Archive | Josh Sherman",
         "summary": "A spoiler-safe social reading app with private circles, progress-gated notes, reactions, predictions, and notifications.",
         "published_at": "",
-        "observed_at": "2026-11-08T01:16:12.088Z",
+        "observed_at": "2026-11-08T15:51:45.463Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -17824,7 +17850,7 @@
           "https://joshsherman.dev/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z"
+      "crawled_at": "2026-11-08T15:51:45.463Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -17895,7 +17921,7 @@
         "title": "What's New",
         "summary": "See what people across the Joshternet have been writing, building, and sharing. Discover recent posts and creative work from independent websites, then follow the links to their original publishers.",
         "published_at": "",
-        "observed_at": "2026-11-08T01:16:12.088Z",
+        "observed_at": "2026-11-08T15:51:45.463Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -18207,7 +18233,6 @@
           "https://joshternet.org/topics/government-policy/": "sitemap",
           "https://joshternet.org/topics/government/": "sitemap",
           "https://joshternet.org/topics/green/": "sitemap",
-          "https://joshternet.org/topics/gwenthegoblin/": "sitemap",
           "https://joshternet.org/topics/health/": "sitemap",
           "https://joshternet.org/topics/history/": "sitemap",
           "https://joshternet.org/topics/hospitality/": "sitemap",
@@ -18427,7 +18452,7 @@
           "https://joshternet.org/cdn-cgi/l/email-protection": "content-index"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z"
+      "crawled_at": "2026-11-08T15:51:45.463Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -18637,7 +18662,7 @@
         "title": "Learning a New Tech Stack with an LLM",
         "summary": "While I mentioned a few weeks back that I'm now recovering from AI Psychosis , that doesn't mean I've given up on the technology completely. I'm writing more emails, and engaging with human beings as much as I can, and that part's been great. I still use agents as a glorified typewriter to generate code, and still very much get my hands in the dirt and sling code myself. I've also gotten quite obs",
         "published_at": "2026-10-26T00:00:00.000Z",
-        "observed_at": "2026-11-08T01:16:12.088Z",
+        "observed_at": "2026-11-08T15:51:45.463Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -20016,7 +20041,7 @@
           "https://joshtronic.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z"
+      "crawled_at": "2026-11-08T15:51:45.463Z"
     },
     {
       "origin": "https://joshua.seigler.net",
@@ -20070,10 +20095,6 @@
         {
           "slug": "ffmpeg",
           "label": "ffmpeg"
-        },
-        {
-          "slug": "generator",
-          "label": "generator"
         },
         {
           "slug": "howto",
@@ -20401,307 +20422,7 @@
           "https://joshua.seigler.net": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z"
-    },
-    {
-      "origin": "https://joshuadrake.org",
-      "domain": "joshuadrake.org",
-      "title": "Joshua Drake",
-      "description": "I'm Joshua Drake. In the fall of 2024 I graduated from Oklahoma State University with a Master's in Electrical Engineering and am presently employed in Aerospace research. Ecclesiastes 9",
-      "identity": "affirmed",
-      "feeds": [],
-      "elsewhere": [],
-      "community_topics": [
-        {
-          "slug": "banking",
-          "label": "banking"
-        },
-        {
-          "slug": "computer",
-          "label": "Computer"
-        },
-        {
-          "slug": "computer-vision",
-          "label": "computer vision"
-        },
-        {
-          "slug": "generator",
-          "label": "generator"
-        },
-        {
-          "slug": "server",
-          "label": "server"
-        }
-      ],
-      "recent_content": {
-        "url": "https://joshuadrake.org/projects.html",
-        "title": "Projects:",
-        "summary": "",
-        "published_at": "",
-        "observed_at": "2026-11-08T01:16:12.088Z",
-        "content_type": "project",
-        "language": "en",
-        "dir": "",
-        "site_origin": "https://joshuadrake.org",
-        "site_title": "Joshua Drake",
-        "domain": "joshuadrake.org",
-        "tags": [],
-        "neighborhoods": [],
-        "image": "",
-        "image_origin": "",
-        "source_kind": "creative-homepage",
-        "page_role": "project"
-      },
-      "outgoing": [],
-      "incoming": [],
-      "coverage": {
-        "pages_discovered": 77,
-        "pages_fetched": 77,
-        "fetch_limit": null,
-        "limit_reached": false,
-        "selection_strategy": "uncapped-site-crawl-v1",
-        "selection_reasons": {
-          "https://joshuadrake.org/": "home",
-          "https://joshuadrake.org/changelog/": "content-index",
-          "https://joshuadrake.org/log/": "content-index",
-          "https://joshuadrake.org/ideas/": "content-index",
-          "https://joshuadrake.org/sitemap/": "content-index",
-          "https://joshuadrake.org/til/": "content-index",
-          "https://joshuadrake.org/ways/": "content-index",
-          "https://joshuadrake.org/seeking/": "content-index",
-          "https://joshuadrake.org/notes/": "content-index",
-          "https://joshuadrake.org/blog/": "content-index",
-          "https://joshuadrake.org/weblog/": "content-index",
-          "https://joshuadrake.org/writings/": "content-index",
-          "https://joshuadrake.org/posts/": "content-index",
-          "https://joshuadrake.org/post/": "content-index",
-          "https://joshuadrake.org/writing/": "content-index",
-          "https://joshuadrake.org/articles/": "content-index",
-          "https://joshuadrake.org/article/": "content-index",
-          "https://joshuadrake.org/essays/": "content-index",
-          "https://joshuadrake.org/journal/": "content-index",
-          "https://joshuadrake.org/weeknotes/": "content-index",
-          "https://joshuadrake.org/archive/": "content-index",
-          "https://joshuadrake.org/about/": "content-index",
-          "https://joshuadrake.org/about-me/": "content-index",
-          "https://joshuadrake.org/aboutme/": "content-index",
-          "https://joshuadrake.org/bio/": "content-index",
-          "https://joshuadrake.org/me/": "content-index",
-          "https://joshuadrake.org/profile/": "content-index",
-          "https://joshuadrake.org/ai/": "content-index",
-          "https://joshuadrake.org/blank/": "content-index",
-          "https://joshuadrake.org/blogroll/": "content-index",
-          "https://joshuadrake.org/calendar/": "content-index",
-          "https://joshuadrake.org/canon/": "content-index",
-          "https://joshuadrake.org/carry/": "content-index",
-          "https://joshuadrake.org/caw/": "content-index",
-          "https://joshuadrake.org/celebrities/": "content-index",
-          "https://joshuadrake.org/chipotle/": "content-index",
-          "https://joshuadrake.org/colophon/": "content-index",
-          "https://joshuadrake.org/community/": "content-index",
-          "https://joshuadrake.org/contact/": "content-index",
-          "https://joshuadrake.org/death/": "content-index",
-          "https://joshuadrake.org/defaults/": "content-index",
-          "https://joshuadrake.org/disability/": "content-index",
-          "https://joshuadrake.org/elsewhere/": "content-index",
-          "https://joshuadrake.org/appearances/": "content-index",
-          "https://joshuadrake.org/follow/": "content-index",
-          "https://joshuadrake.org/subscribe/": "content-index",
-          "https://joshuadrake.org/feeds/": "content-index",
-          "https://joshuadrake.org/for/": "content-index",
-          "https://joshuadrake.org/dedication/": "content-index",
-          "https://joshuadrake.org/glossary/": "content-index",
-          "https://joshuadrake.org/lexicon/": "content-index",
-          "https://joshuadrake.org/phrased/": "content-index",
-          "https://joshuadrake.org/green/": "content-index",
-          "https://joshuadrake.org/hats/": "content-index",
-          "https://joshuadrake.org/hello/": "content-index",
-          "https://joshuadrake.org/hills/": "content-index",
-          "https://joshuadrake.org/hill/": "content-index",
-          "https://joshuadrake.org/interests/": "content-index",
-          "https://joshuadrake.org/junk/": "content-index",
-          "https://joshuadrake.org/sale/": "content-index",
-          "https://joshuadrake.org/buy/": "content-index",
-          "https://joshuadrake.org/languages/": "content-index",
-          "https://joshuadrake.org/links/": "content-index",
-          "https://joshuadrake.org/bookmarks/": "content-index",
-          "https://joshuadrake.org/next/": "content-index",
-          "https://joshuadrake.org/nope/": "content-index",
-          "https://joshuadrake.org/now/": "content-index",
-          "https://joshuadrake.org/podroll/": "content-index",
-          "https://joshuadrake.org/posse/": "content-index",
-          "https://joshuadrake.org/postroll/": "content-index",
-          "https://joshuadrake.org/predictions/": "content-index",
-          "https://joshuadrake.org/pricing/": "content-index",
-          "https://joshuadrake.org/questions/": "content-index",
-          "https://joshuadrake.org/saudade/": "content-index",
-          "https://joshuadrake.org/save/": "content-index",
-          "https://joshuadrake.org/referrals/": "content-index",
-          "https://joshuadrake.org/self-hosting/": "content-index",
-          "https://joshuadrake.org/self-hosted/": "content-index",
-          "https://joshuadrake.org/hosted/": "content-index",
-          "https://joshuadrake.org/homelab/": "content-index",
-          "https://joshuadrake.org/shoebox/": "content-index",
-          "https://joshuadrake.org/since/": "content-index",
-          "https://joshuadrake.org/slashes/": "content-index",
-          "https://joshuadrake.org/someday/": "content-index",
-          "https://joshuadrake.org/tip/": "content-index",
-          "https://joshuadrake.org/pay/": "content-index",
-          "https://joshuadrake.org/coffee/": "content-index",
-          "https://joshuadrake.org/uses/": "content-index",
-          "https://joshuadrake.org/verify/": "content-index",
-          "https://joshuadrake.org/where/": "content-index",
-          "https://joshuadrake.org/why/": "content-index",
-          "https://joshuadrake.org/wish/": "content-index",
-          "https://joshuadrake.org/wish-list/": "content-index",
-          "https://joshuadrake.org/wishlist/": "content-index",
-          "https://joshuadrake.org/yep/": "content-index",
-          "https://joshuadrake.org/more/": "content-index",
-          "https://joshuadrake.org/site/": "content-index",
-          "https://joshuadrake.org/social/": "content-index",
-          "https://joshuadrake.org/people/": "content-index",
-          "https://joshuadrake.org/friends/": "content-index",
-          "https://joshuadrake.org/following/": "content-index",
-          "https://joshuadrake.org/webring/": "content-index",
-          "https://joshuadrake.org/webrings/": "content-index",
-          "https://joshuadrake.org/indieweb/": "content-index",
-          "https://joshuadrake.org/neighborhood/": "content-index",
-          "https://joshuadrake.org/guestbook/": "content-index",
-          "https://joshuadrake.org/meta/": "content-index",
-          "https://joshuadrake.org/health/": "content-index",
-          "https://joshuadrake.org/concerts/": "content-index",
-          "https://joshuadrake.org/daylists/": "content-index",
-          "https://joshuadrake.org/pfp/": "content-index",
-          "https://joshuadrake.org/photo/": "content-index",
-          "https://joshuadrake.org/pic/": "content-index",
-          "https://joshuadrake.org/work/": "content-index",
-          "https://joshuadrake.org/projects/": "content-index",
-          "https://joshuadrake.org/portfolio/": "content-index",
-          "https://joshuadrake.org/work.html/": "content-index",
-          "https://joshuadrake.org/projects.html/": "content-index",
-          "https://joshuadrake.org/portfolio.html/": "content-index",
-          "https://joshuadrake.org/studio-index/": "content-index",
-          "https://joshuadrake.org/gallery/": "content-index",
-          "https://joshuadrake.org/galleries/": "content-index",
-          "https://joshuadrake.org/albums/": "content-index",
-          "https://joshuadrake.org/photography/": "content-index",
-          "https://joshuadrake.org/photos/": "content-index",
-          "https://joshuadrake.org/art/": "content-index",
-          "https://joshuadrake.org/illustration/": "content-index",
-          "https://joshuadrake.org/artwork/": "content-index",
-          "https://joshuadrake.org/comics/": "content-index",
-          "https://joshuadrake.org/comic/": "content-index",
-          "https://joshuadrake.org/webcomics/": "content-index",
-          "https://joshuadrake.org/toys/": "content-index",
-          "https://joshuadrake.org/toy/": "content-index",
-          "https://joshuadrake.org/play/": "content-index",
-          "https://joshuadrake.org/reels/": "content-index",
-          "https://joshuadrake.org/reel/": "content-index",
-          "https://joshuadrake.org/shorts/": "content-index",
-          "https://joshuadrake.org/cssbattles/": "content-index",
-          "https://joshuadrake.org/cssbattle/": "content-index",
-          "https://joshuadrake.org/css-battles/": "content-index",
-          "https://joshuadrake.org/music/": "content-index",
-          "https://joshuadrake.org/discography/": "content-index",
-          "https://joshuadrake.org/tracks/": "content-index",
-          "https://joshuadrake.org/podcasts/": "content-index",
-          "https://joshuadrake.org/podcast/": "content-index",
-          "https://joshuadrake.org/listen/": "content-index",
-          "https://joshuadrake.org/videos/": "content-index",
-          "https://joshuadrake.org/film/": "content-index",
-          "https://joshuadrake.org/animation/": "content-index",
-          "https://joshuadrake.org/games/": "content-index",
-          "https://joshuadrake.org/game/": "content-index",
-          "https://joshuadrake.org/interactive/": "content-index",
-          "https://joshuadrake.org/exhibitions/": "content-index",
-          "https://joshuadrake.org/design/": "content-index",
-          "https://joshuadrake.org/apps/": "content-index",
-          "https://joshuadrake.org/software/": "content-index",
-          "https://joshuadrake.org/tools/": "content-index",
-          "https://joshuadrake.org/books/": "content-index",
-          "https://joshuadrake.org/guides/": "content-index",
-          "https://joshuadrake.org/resources/": "content-index",
-          "https://joshuadrake.org/experiments/": "content-index",
-          "https://joshuadrake.org/sounds/": "content-index",
-          "https://joshuadrake.org/hustles/": "content-index",
-          "https://joshuadrake.org/topics/": "topic-hub",
-          "https://joshuadrake.org/topic/": "topic-hub",
-          "https://joshuadrake.org/tags/": "topic-hub",
-          "https://joshuadrake.org/tag/": "topic-hub",
-          "https://joshuadrake.org/categories/": "topic-hub",
-          "https://joshuadrake.org/category/": "topic-hub",
-          "https://joshuadrake.org/style/": "blind-probe",
-          "https://joshuadrake.org/top4/": "blind-probe",
-          "https://joshuadrake.org/topfour/": "blind-probe",
-          "https://joshuadrake.org/events/": "blind-probe",
-          "https://joshuadrake.org/shows/": "blind-probe",
-          "https://joshuadrake.org/gigs/": "blind-probe",
-          "https://joshuadrake.org/tour/": "blind-probe",
-          "https://joshuadrake.org/live/": "blind-probe",
-          "https://joshuadrake.org/performances/": "blind-probe",
-          "https://joshuadrake.org/readings/": "blind-probe",
-          "https://joshuadrake.org/workshops/": "blind-probe",
-          "https://joshuadrake.org/study-hall/": "blind-probe",
-          "https://joshuadrake.org/frontend-study-hall/": "blind-probe",
-          "https://joshuadrake.org/front-end-study-hall/": "blind-probe",
-          "https://joshuadrake.org/fresh/": "blind-probe",
-          "https://joshuadrake.org/education/": "blind-probe",
-          "https://joshuadrake.org/learn/": "blind-probe",
-          "https://joshuadrake.org/classes/": "blind-probe",
-          "https://joshuadrake.org/class/": "blind-probe",
-          "https://joshuadrake.org/courses/": "blind-probe",
-          "https://joshuadrake.org/course/": "blind-probe",
-          "https://joshuadrake.org/projects.html": "content-index",
-          "https://joshuadrake.org/index.html": "content-index",
-          "https://joshuadrake.org/articles/author/theodore-kaczynski": "content-index",
-          "https://joshuadrake.org/articles/author/st.-athanasius": "content-index",
-          "https://joshuadrake.org/articles/author/soren-kierkegaard": "content-index",
-          "https://joshuadrake.org/articles/author/leo-tolstoy": "content-index",
-          "https://joshuadrake.org/articles/author/joshua-drake": "content-index",
-          "https://joshuadrake.org/articles/author/gottfried-wilhelm-leibniz": "content-index",
-          "https://joshuadrake.org/articles/author/fyodor-dostoevsky": "content-index",
-          "https://joshuadrake.org/articles/author/eugene-rose": "content-index",
-          "https://joshuadrake.org/articles/author/clive-staples-lewis": "content-index",
-          "https://joshuadrake.org/articles/tags/technology": "content-index",
-          "https://joshuadrake.org/articles/tags/skills": "content-index",
-          "https://joshuadrake.org/articles/tags/religion": "content-index",
-          "https://joshuadrake.org/articles/tags/philosophy": "content-index",
-          "https://joshuadrake.org/articles/tags/personal": "content-index",
-          "https://joshuadrake.org/articles/incarnationoftheword/": "content-index",
-          "https://joshuadrake.org/articles/discourse-on-metaphysics-and-other-essays/": "content-index",
-          "https://joshuadrake.org/articles/alwaysinthewrong/": "content-index",
-          "https://joshuadrake.org/articles/thepresentage/": "content-index",
-          "https://joshuadrake.org/articles/ridiculousman/": "content-index",
-          "https://joshuadrake.org/articles/grandinquisitor/": "content-index",
-          "https://joshuadrake.org/articles/lastmessage/": "content-index",
-          "https://joshuadrake.org/articles/the-weight-of-glory/": "content-index",
-          "https://joshuadrake.org/articles/slavesofthewelfarestate/": "content-index",
-          "https://joshuadrake.org/articles/nihilism/": "content-index",
-          "https://joshuadrake.org/articles/industrialsocietyanditsfuture/": "content-index",
-          "https://joshuadrake.org/articles/archfornormies/": "content-index",
-          "https://joshuadrake.org/articles/soldering/": "content-index",
-          "https://joshuadrake.org/articles": "content-index",
-          "https://joshuadrake.org/server": "content-index",
-          "https://joshuadrake.org/turboelectric": "content-index",
-          "https://joshuadrake.org/JDMCMC": "content-index",
-          "https://joshuadrake.org/eDrill": "content-index",
-          "https://joshuadrake.org/eUtil": "content-index",
-          "https://joshuadrake.org/eTrencher": "content-index",
-          "https://joshuadrake.org/loc8": "content-index",
-          "https://joshuadrake.org/8bip": "content-index",
-          "https://joshuadrake.org/turboelectriccessna": "content-index",
-          "https://joshuadrake.org/projects/cessnaretrofit/": "content-index",
-          "https://joshuadrake.org/projects/ingersollrandcompressor/": "content-index",
-          "https://joshuadrake.org/projects/resloadbank/": "content-index",
-          "https://joshuadrake.org/projects/n12rebuild/": "content-index"
-        }
-      },
-      "crawled_at": "2026-11-08T01:16:12.088Z",
-      "portfolio": {
-        "url": "https://joshuadrake.org/projects/",
-        "work_count": 39,
-        "sectors": []
-      }
+      "crawled_at": "2026-11-08T15:51:45.463Z"
     },
     {
       "origin": "https://joshuakim.studio",
@@ -20730,9 +20451,9 @@
       "recent_content": {
         "url": "https://joshuakim.studio/work.html",
         "title": "Work, Joshua Kim",
-        "summary": "Eight projects by Joshua Kim: internal tools, interactive and AR work, app case studies, and graphic design.",
+        "summary": "Eleven projects by Joshua Kim: internal tools, interactive and AR work, app case studies, and graphic design.",
         "published_at": "",
-        "observed_at": "2026-11-08T01:16:12.088Z",
+        "observed_at": "2026-11-08T15:51:45.463Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -20749,8 +20470,8 @@
       "outgoing": [],
       "incoming": [],
       "coverage": {
-        "pages_discovered": 14,
-        "pages_fetched": 14,
+        "pages_discovered": 17,
+        "pages_fetched": 17,
         "fetch_limit": null,
         "limit_reached": false,
         "selection_strategy": "uncapped-site-crawl-v1",
@@ -20953,11 +20674,14 @@
           "https://joshuakim.studio/prismcatch": "content-index",
           "https://joshuakim.studio/hotchocolate": "content-index",
           "https://joshuakim.studio/somaspace": "content-index",
+          "https://joshuakim.studio/inventory-tracker": "content-index",
+          "https://joshuakim.studio/laser-station": "content-index",
+          "https://joshuakim.studio/dxf-generator": "content-index",
           "https://joshuakim.studio/order-pipeline": "content-index",
           "https://joshuakim.studio/about": "content-index"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z"
+      "crawled_at": "2026-11-08T15:51:45.463Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -21092,10 +20816,6 @@
         {
           "slug": "cars",
           "label": "cars"
-        },
-        {
-          "slug": "challenge",
-          "label": "challenges"
         },
         {
           "slug": "chromebook",
@@ -21294,6 +21014,10 @@
           "label": "History"
         },
         {
+          "slug": "image",
+          "label": "images"
+        },
+        {
           "slug": "independent",
           "label": "independent"
         },
@@ -21394,10 +21118,6 @@
           "label": "models"
         },
         {
-          "slug": "money",
-          "label": "money"
-        },
-        {
           "slug": "networking",
           "label": "networking"
         },
@@ -21444,6 +21164,10 @@
         {
           "slug": "parenting",
           "label": "Parenting"
+        },
+        {
+          "slug": "performance",
+          "label": "performance"
         },
         {
           "slug": "person",
@@ -21510,16 +21234,8 @@
           "label": "rememberance"
         },
         {
-          "slug": "report",
-          "label": "reports"
-        },
-        {
           "slug": "research",
           "label": "Research"
-        },
-        {
-          "slug": "resilience",
-          "label": "resilience"
         },
         {
           "slug": "review",
@@ -21711,7 +21427,7 @@
         "title": "Experiments",
         "summary": "Web experiments and playground shells from Joshua Morris—toys, tools, and interface ideas built to see whether they can work in a browser.",
         "published_at": "",
-        "observed_at": "2026-11-06T23:48:06.040Z",
+        "observed_at": "2026-11-08T15:51:45.463Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -21785,6 +21501,9 @@
         "selection_strategy": "uncapped-site-crawl-v1",
         "selection_reasons": {
           "https://joshuamorris.info/": "home",
+          "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/": "feed",
+          "https://joshuamorris.info/notes/2026/11/06/jpeg-xl-is-back-and-the-web-is-better-for-it/": "feed",
+          "https://joshuamorris.info/now/": "feed",
           "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/": "feed",
           "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/": "feed",
           "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/": "feed",
@@ -21810,7 +21529,6 @@
           "https://joshuamorris.info/notes/2026/10/09/prop-4-clears-a-path-for-public-campaign-money-it-does-not-spend-any/": "feed",
           "https://joshuamorris.info/notes/2026/10/09/worth-wandering-camerons-world/": "feed",
           "https://joshuamorris.info/experiments/weird-web-october-2026/spicy/": "feed",
-          "https://joshuamorris.info/now/": "feed",
           "https://joshuamorris.info/notes/2026/10/08/what-one-promise-can-become-after-thirteen-years/": "feed",
           "https://joshuamorris.info/notes/2026/10/08/the-17-percent-in-prop-37-is-a-loan-the-buyer-pays-back/": "feed",
           "https://joshuamorris.info/notes/2026/10/07/prop-45-offers-some-projects-a-faster-environmental-review/": "feed",
@@ -21848,7 +21566,6 @@
           "https://joshuamorris.info/notes/2026/09/19/the-brain-may-have-two-developmental-origins-that-is-interesting-enough/": "feed",
           "https://joshuamorris.info/notes/2026/09/18/worth-wandering-robin-sloan/": "feed",
           "https://joshuamorris.info/notes/2026/09/16/a-20-youtube-promotion-turned-into-a-118000-lesson-in-guardrails/": "feed",
-          "https://joshuamorris.info/notes/2026/09/15/the-fuel-crisis-is-exposing-how-little-spare-capacity-we-have-left/": "feed",
           "https://joshuamorris.info/notes/2026/09/15/the-us-fuel-crisis-is-making-canadas-oil-more-valuable-than-ever/": "feed",
           "https://joshuamorris.info/notes/2026/09/13/flock-employees-dont-like-being-watched-either/": "feed",
           "https://joshuamorris.info/notes/2026/09/13/an-online-book-club-across-our-own-websites/": "feed",
@@ -22254,89 +21971,19 @@
           "https://joshuamorris.info/class/": "blind-probe",
           "https://joshuamorris.info/courses/": "blind-probe",
           "https://joshuamorris.info/course/": "blind-probe",
-          "https://joshuamorris.info/topics/worth-wandering/": "content-index",
           "https://joshuamorris.info/notes/page/14/": "content-index",
           "https://joshuamorris.info/notes/page/2/": "content-index",
           "https://joshuamorris.info/notes/2026/": "content-index",
           "https://joshuamorris.info/feeds/friends.opml": "content-index",
-          "https://joshuamorris.info/notes/2026/11/05/": "budget-exhausted",
-          "https://joshuamorris.info/topics/software-engineering/": "budget-exhausted",
-          "https://joshuamorris.info/topics/ai/": "budget-exhausted",
-          "https://joshuamorris.info/topics/engineering-leadership/": "budget-exhausted",
-          "https://joshuamorris.info/topics/code-review/": "budget-exhausted",
-          "https://joshuamorris.info/notes/2026/11/03/": "budget-exhausted",
-          "https://joshuamorris.info/topics/security/": "budget-exhausted",
-          "https://joshuamorris.info/topics/supply-chain/": "budget-exhausted",
-          "https://joshuamorris.info/topics/developer-tools/": "budget-exhausted",
-          "https://joshuamorris.info/notes/2026/10/30/": "budget-exhausted",
+          "https://joshuamorris.info/topics/worth-wandering/": "budget-exhausted",
+          "https://joshuamorris.info/notes/2026/11/06/": "budget-exhausted",
           "https://joshuamorris.info/topics/independent-web/": "budget-exhausted",
-          "https://joshuamorris.info/topics/field-recording/": "budget-exhausted",
-          "https://joshuamorris.info/notes/2026/10/28/": "budget-exhausted",
-          "https://joshuamorris.info/reading/2026/07/15/shop-class-as-soulcraft/": "budget-exhausted",
-          "https://joshuamorris.info/topics/craftsmanship/": "budget-exhausted",
-          "https://joshuamorris.info/topics/architecture/": "budget-exhausted",
-          "https://joshuamorris.info/topics/work/": "budget-exhausted",
-          "https://joshuamorris.info/topics/career/": "budget-exhausted",
-          "https://joshuamorris.info/notes/2026/10/26/": "budget-exhausted",
           "https://joshuamorris.info/topics/web-development/": "budget-exhausted",
-          "https://joshuamorris.info/topics/open-web/": "budget-exhausted",
           "https://joshuamorris.info/topics/browsers/": "budget-exhausted",
-          "https://joshuamorris.info/topics/creative-coding/": "budget-exhausted",
-          "https://joshuamorris.info/topics/interactive-art/": "budget-exhausted",
-          "https://joshuamorris.info/topics/webgl/": "budget-exhausted",
-          "https://joshuamorris.info/notes/2026/10/25/": "budget-exhausted",
-          "https://joshuamorris.info/topics/css/": "budget-exhausted",
-          "https://joshuamorris.info/topics/javascript/": "budget-exhausted",
-          "https://joshuamorris.info/notes/2026/10/24/": "budget-exhausted",
-          "https://joshuamorris.info/notes/2026/10/23/": "budget-exhausted",
-          "https://joshuamorris.info/topics/experimental-games/": "budget-exhausted",
-          "https://joshuamorris.info/topics/game-design/": "budget-exhausted",
-          "https://joshuamorris.info/topics/play/": "budget-exhausted",
-          "https://joshuamorris.info/topics/digital-art/": "budget-exhausted",
-          "https://joshuamorris.info/notes/2026/10/22/": "budget-exhausted",
-          "https://joshuamorris.info/topics/people/": "budget-exhausted",
-          "https://joshuamorris.info/topics/mentorship/": "budget-exhausted",
-          "https://joshuamorris.info/topics/rememberance/": "budget-exhausted",
-          "https://joshuamorris.info/topics/writing/": "budget-exhausted",
-          "https://joshuamorris.info/notes/2026/10/20/": "budget-exhausted",
-          "https://joshuamorris.info/topics/cryptography/": "budget-exhausted",
-          "https://joshuamorris.info/topics/infrastructure/": "budget-exhausted",
-          "https://joshuamorris.info/topics/networking/": "budget-exhausted",
-          "https://joshuamorris.info/notes/2026/10/16/": "budget-exhausted",
-          "https://joshuamorris.info/topics/indieweb/": "budget-exhausted",
-          "https://joshuamorris.info/notes/2026/10/14/": "budget-exhausted",
-          "https://joshuamorris.info/topics/california-ballot-2026/": "budget-exhausted",
-          "https://joshuamorris.info/topics/law/": "budget-exhausted",
-          "https://joshuamorris.info/topics/government-ethics/": "budget-exhausted",
-          "https://joshuamorris.info/topics/public-systems/": "budget-exhausted",
-          "https://joshuamorris.info/topics/economics/": "budget-exhausted",
-          "https://joshuamorris.info/notes/2026/10/13/": "budget-exhausted",
-          "https://joshuamorris.info/topics/markdown/": "budget-exhausted",
-          "https://joshuamorris.info/topics/interoperability/": "budget-exhausted",
-          "https://joshuamorris.info/topics/operating-systems/": "budget-exhausted",
-          "https://joshuamorris.info/topics/software/": "budget-exhausted",
-          "https://joshuamorris.info/topics/technology/": "budget-exhausted",
-          "https://joshuamorris.info/notes/2026/10/12/": "budget-exhausted",
-          "https://joshuamorris.info/notes/2026/10/11/": "budget-exhausted",
-          "https://joshuamorris.info/notes/2026/10/10/": "budget-exhausted",
-          "https://joshuamorris.info/topics/privacy/": "budget-exhausted",
-          "https://joshuamorris.info/topics/surveillance/": "budget-exhausted",
-          "https://joshuamorris.info/topics/digital-rights/": "budget-exhausted",
-          "https://joshuamorris.info/topics/civil-liberties/": "budget-exhausted",
-          "https://joshuamorris.info/topics/social-media/": "budget-exhausted",
-          "https://joshuamorris.info/topics/open-source/": "budget-exhausted",
-          "https://joshuamorris.info/notes/2026/10/09/": "budget-exhausted",
-          "https://joshuamorris.info/topics/mental-health/": "budget-exhausted",
-          "https://joshuamorris.info/topics/world-mental-health-day/": "budget-exhausted",
-          "https://joshuamorris.info/topics/life/": "budget-exhausted",
-          "https://joshuamorris.info/topics/community/": "budget-exhausted",
-          "https://joshuamorris.info/topics/veterans/": "budget-exhausted",
-          "https://joshuamorris.info/topics/family/": "budget-exhausted",
-          "https://joshuamorris.info/topics/support/": "budget-exhausted",
-          "https://joshuamorris.info/topics/personal-websites/": "budget-exhausted",
-          "https://joshuamorris.info/topics/computing-history/": "budget-exhausted",
-          "https://joshuamorris.info/topics/art/": "budget-exhausted",
+          "https://joshuamorris.info/topics/performance/": "budget-exhausted",
+          "https://joshuamorris.info/topics/images/": "budget-exhausted",
           "https://joshuamorris.info/reading/2026/10/25/homebound/": "budget-exhausted",
+          "https://joshuamorris.info/reading/2026/07/15/shop-class-as-soulcraft/": "budget-exhausted",
           "https://joshuamorris.info/reading/2026/09/15/weapons-of-math-destruction/": "budget-exhausted",
           "https://joshuamorris.info/reading/2026/07/20/neuromancer/": "budget-exhausted",
           "https://joshuamorris.info/reading/2026/09/10/attack-surface/": "budget-exhausted",
@@ -22384,19 +22031,85 @@
           "https://joshuamorris.info/humans.txt": "budget-exhausted",
           "https://joshuamorris.info/.well-known/gpc.json": "budget-exhausted",
           "https://joshuamorris.info/notes/2026/10/02/": "budget-exhausted",
+          "https://joshuamorris.info/topics/california-ballot-2026/": "budget-exhausted",
+          "https://joshuamorris.info/topics/law/": "budget-exhausted",
+          "https://joshuamorris.info/topics/government-ethics/": "budget-exhausted",
+          "https://joshuamorris.info/topics/public-systems/": "budget-exhausted",
+          "https://joshuamorris.info/topics/economics/": "budget-exhausted",
           "https://joshuamorris.info/notes/2026/page/2/": "budget-exhausted",
           "https://joshuamorris.info/notes/2026/page/14/": "budget-exhausted",
+          "https://joshuamorris.info/notes/2026/11/05/": "budget-exhausted",
+          "https://joshuamorris.info/topics/software-engineering/": "budget-exhausted",
+          "https://joshuamorris.info/topics/ai/": "budget-exhausted",
+          "https://joshuamorris.info/topics/engineering-leadership/": "budget-exhausted",
+          "https://joshuamorris.info/topics/code-review/": "budget-exhausted",
+          "https://joshuamorris.info/notes/2026/11/03/": "budget-exhausted",
+          "https://joshuamorris.info/topics/security/": "budget-exhausted",
+          "https://joshuamorris.info/topics/supply-chain/": "budget-exhausted",
+          "https://joshuamorris.info/topics/developer-tools/": "budget-exhausted",
+          "https://joshuamorris.info/notes/2026/10/30/": "budget-exhausted",
+          "https://joshuamorris.info/topics/field-recording/": "budget-exhausted",
+          "https://joshuamorris.info/notes/2026/10/28/": "budget-exhausted",
+          "https://joshuamorris.info/topics/craftsmanship/": "budget-exhausted",
+          "https://joshuamorris.info/topics/architecture/": "budget-exhausted",
+          "https://joshuamorris.info/topics/work/": "budget-exhausted",
+          "https://joshuamorris.info/topics/career/": "budget-exhausted",
+          "https://joshuamorris.info/notes/2026/10/26/": "budget-exhausted",
+          "https://joshuamorris.info/topics/open-web/": "budget-exhausted",
+          "https://joshuamorris.info/topics/creative-coding/": "budget-exhausted",
+          "https://joshuamorris.info/topics/interactive-art/": "budget-exhausted",
+          "https://joshuamorris.info/topics/webgl/": "budget-exhausted",
+          "https://joshuamorris.info/notes/2026/10/25/": "budget-exhausted",
+          "https://joshuamorris.info/topics/css/": "budget-exhausted",
+          "https://joshuamorris.info/topics/javascript/": "budget-exhausted",
+          "https://joshuamorris.info/notes/2026/10/24/": "budget-exhausted",
+          "https://joshuamorris.info/notes/2026/10/23/": "budget-exhausted",
+          "https://joshuamorris.info/topics/experimental-games/": "budget-exhausted",
+          "https://joshuamorris.info/topics/game-design/": "budget-exhausted",
+          "https://joshuamorris.info/topics/play/": "budget-exhausted",
+          "https://joshuamorris.info/topics/digital-art/": "budget-exhausted",
+          "https://joshuamorris.info/notes/2026/10/22/": "budget-exhausted",
+          "https://joshuamorris.info/topics/people/": "budget-exhausted",
+          "https://joshuamorris.info/topics/mentorship/": "budget-exhausted",
+          "https://joshuamorris.info/topics/rememberance/": "budget-exhausted",
+          "https://joshuamorris.info/topics/writing/": "budget-exhausted",
+          "https://joshuamorris.info/notes/2026/10/20/": "budget-exhausted",
+          "https://joshuamorris.info/topics/cryptography/": "budget-exhausted",
+          "https://joshuamorris.info/topics/infrastructure/": "budget-exhausted",
+          "https://joshuamorris.info/topics/networking/": "budget-exhausted",
+          "https://joshuamorris.info/notes/2026/10/16/": "budget-exhausted",
+          "https://joshuamorris.info/topics/indieweb/": "budget-exhausted",
+          "https://joshuamorris.info/notes/2026/10/14/": "budget-exhausted",
+          "https://joshuamorris.info/notes/2026/10/13/": "budget-exhausted",
+          "https://joshuamorris.info/topics/markdown/": "budget-exhausted",
+          "https://joshuamorris.info/topics/interoperability/": "budget-exhausted",
+          "https://joshuamorris.info/topics/operating-systems/": "budget-exhausted",
+          "https://joshuamorris.info/topics/software/": "budget-exhausted",
+          "https://joshuamorris.info/topics/technology/": "budget-exhausted",
+          "https://joshuamorris.info/notes/2026/10/12/": "budget-exhausted",
+          "https://joshuamorris.info/notes/2026/10/11/": "budget-exhausted",
+          "https://joshuamorris.info/notes/2026/10/10/": "budget-exhausted",
+          "https://joshuamorris.info/topics/privacy/": "budget-exhausted",
+          "https://joshuamorris.info/topics/surveillance/": "budget-exhausted",
+          "https://joshuamorris.info/topics/digital-rights/": "budget-exhausted",
+          "https://joshuamorris.info/topics/civil-liberties/": "budget-exhausted",
           "https://joshuamorris.info/notes/page/3/": "budget-exhausted",
           "https://joshuamorris.info/notes/page/13/": "budget-exhausted",
-          "https://joshuamorris.info/topics/blogging/": "budget-exhausted",
-          "https://joshuamorris.info/topics/discovery/": "budget-exhausted",
-          "https://joshuamorris.info/topics/education/": "budget-exhausted",
-          "https://joshuamorris.info/topics/engineering/": "budget-exhausted",
-          "https://joshuamorris.info/topics/hardware/": "budget-exhausted",
-          "https://joshuamorris.info/topics/interactive-essays/": "budget-exhausted",
-          "https://joshuamorris.info/topics/science/": "budget-exhausted",
-          "https://joshuamorris.info/topics/visualization/": "budget-exhausted",
+          "https://joshuamorris.info/topics/social-media/": "budget-exhausted",
+          "https://joshuamorris.info/topics/open-source/": "budget-exhausted",
+          "https://joshuamorris.info/notes/2026/10/09/": "budget-exhausted",
+          "https://joshuamorris.info/topics/mental-health/": "budget-exhausted",
+          "https://joshuamorris.info/topics/world-mental-health-day/": "budget-exhausted",
+          "https://joshuamorris.info/topics/life/": "budget-exhausted",
+          "https://joshuamorris.info/topics/community/": "budget-exhausted",
+          "https://joshuamorris.info/topics/veterans/": "budget-exhausted",
+          "https://joshuamorris.info/topics/family/": "budget-exhausted",
+          "https://joshuamorris.info/topics/support/": "budget-exhausted",
+          "https://joshuamorris.info/topics/personal-websites/": "budget-exhausted",
+          "https://joshuamorris.info/topics/computing-history/": "budget-exhausted",
+          "https://joshuamorris.info/topics/art/": "budget-exhausted",
           "https://joshuamorris.info/notes/2026/10/08/": "budget-exhausted",
+          "https://joshuamorris.info/topics/education/": "budget-exhausted",
           "https://joshuamorris.info/topics/philanthropy/": "budget-exhausted",
           "https://joshuamorris.info/topics/personal-growth/": "budget-exhausted",
           "https://joshuamorris.info/notes/2026/10/07/": "budget-exhausted",
@@ -22409,10 +22122,12 @@
           "https://joshuamorris.info/topics/ai-safety/": "budget-exhausted",
           "https://joshuamorris.info/notes/2026/10/04/": "budget-exhausted",
           "https://joshuamorris.info/notes/2026/10/03/": "budget-exhausted",
+          "https://joshuamorris.info/topics/hardware/": "budget-exhausted",
           "https://joshuamorris.info/notes/2026/10/01/": "budget-exhausted",
           "https://joshuamorris.info/topics/google/": "budget-exhausted",
           "https://joshuamorris.info/topics/search/": "budget-exhausted",
           "https://joshuamorris.info/topics/antitrust/": "budget-exhausted",
+          "https://joshuamorris.info/topics/discovery/": "budget-exhausted",
           "https://joshuamorris.info/topics/chromebooks/": "budget-exhausted",
           "https://joshuamorris.info/topics/schools/": "budget-exhausted",
           "https://joshuamorris.info/topics/lock-in/": "budget-exhausted",
@@ -22424,6 +22139,8 @@
           "https://joshuamorris.info/topics/internet-culture/": "budget-exhausted",
           "https://joshuamorris.info/notes/2026/09/28/": "budget-exhausted",
           "https://joshuamorris.info/topics/space-exploration/": "budget-exhausted",
+          "https://joshuamorris.info/topics/engineering/": "budget-exhausted",
+          "https://joshuamorris.info/topics/science/": "budget-exhausted",
           "https://joshuamorris.info/topics/satellites/": "budget-exhausted",
           "https://joshuamorris.info/topics/propulsion/": "budget-exhausted",
           "https://joshuamorris.info/topics/earth-observation/": "budget-exhausted",
@@ -22445,6 +22162,8 @@
           "https://joshuamorris.info/topics/consumer-protection/": "budget-exhausted",
           "https://joshuamorris.info/topics/data-brokers/": "budget-exhausted",
           "https://joshuamorris.info/notes/2026/09/25/": "budget-exhausted",
+          "https://joshuamorris.info/topics/interactive-essays/": "budget-exhausted",
+          "https://joshuamorris.info/topics/visualization/": "budget-exhausted",
           "https://joshuamorris.info/notes/2026/09/23/": "budget-exhausted",
           "https://joshuamorris.info/notes/2026/09/22/": "budget-exhausted",
           "https://joshuamorris.info/topics/ai-security/": "budget-exhausted",
@@ -22466,10 +22185,9 @@
           "https://joshuamorris.info/topics/online-advertising/": "budget-exhausted",
           "https://joshuamorris.info/notes/2026/09/15/": "budget-exhausted",
           "https://joshuamorris.info/topics/energy/": "budget-exhausted",
-          "https://joshuamorris.info/topics/oil/": "budget-exhausted",
-          "https://joshuamorris.info/topics/resilience/": "budget-exhausted",
           "https://joshuamorris.info/topics/canada/": "budget-exhausted",
           "https://joshuamorris.info/topics/united-states/": "budget-exhausted",
+          "https://joshuamorris.info/topics/oil/": "budget-exhausted",
           "https://joshuamorris.info/topics/trade/": "budget-exhausted",
           "https://joshuamorris.info/notes/2026/09/13/": "budget-exhausted",
           "https://joshuamorris.info/topics/online-book-club/": "budget-exhausted",
@@ -22478,6 +22196,7 @@
           "https://joshuamorris.info/notes/2026/09/11/": "budget-exhausted",
           "https://joshuamorris.info/notes/2026/09/10/": "budget-exhausted",
           "https://joshuamorris.info/topics/wearable-ai/": "budget-exhausted",
+          "https://joshuamorris.info/topics/blogging/": "budget-exhausted",
           "https://joshuamorris.info/notes/2026/09/09/": "budget-exhausted",
           "https://joshuamorris.info/topics/painting/": "budget-exhausted",
           "https://joshuamorris.info/topics/ownership/": "budget-exhausted",
@@ -22539,11 +22258,10 @@
           "https://joshuamorris.info/notes/2026/07/24/": "budget-exhausted",
           "https://joshuamorris.info/notes/2026/07/23/": "budget-exhausted",
           "https://joshuamorris.info/topics/software-preservation/": "budget-exhausted",
-          "https://joshuamorris.info/notes/2026/07/22/": "budget-exhausted",
-          "https://joshuamorris.info": "short-circuit-unchanged"
+          "https://joshuamorris.info/notes/2026/07/22/": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z"
+      "crawled_at": "2026-11-08T15:51:45.463Z"
     },
     {
       "origin": "https://joshuapsteele.com",
@@ -24178,7 +23896,7 @@
           "https://joshuapsteele.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z"
+      "crawled_at": "2026-11-08T15:51:45.463Z"
     },
     {
       "origin": "https://joshuastuebner.com",
@@ -24585,7 +24303,7 @@
           "https://joshuastuebner.com/joshuastuebner.asc": "content-index"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z"
+      "crawled_at": "2026-11-08T15:51:45.463Z"
     },
     {
       "origin": "https://joshurbandavis.com",
@@ -24636,7 +24354,7 @@
         "title": "Download CV",
         "summary": "I build machines that perceive the world, and ask what happens when those machines change how we see it.",
         "published_at": "",
-        "observed_at": "2026-11-08T01:16:12.088Z",
+        "observed_at": "2026-11-08T15:51:45.463Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -24877,7 +24595,7 @@
           "https://joshurbandavis.com/index.html": "content-index"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z"
+      "crawled_at": "2026-11-08T15:51:45.463Z"
     },
     {
       "origin": "https://www.chrisminnick.com",
@@ -25055,7 +24773,7 @@
         "title": "Books",
         "summary": "More than twenty books on programming, the web, and AI — plus three novels.",
         "published_at": "2027-04-01T00:00:00.000Z",
-        "observed_at": "2026-11-08T01:16:12.088Z",
+        "observed_at": "2026-11-08T15:51:45.463Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -25443,7 +25161,7 @@
           "https://www.chrisminnick.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z"
+      "crawled_at": "2026-11-08T15:51:45.463Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -26124,7 +25842,7 @@
           "https://www.joshcanhelp.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z"
+      "crawled_at": "2026-11-08T15:51:45.463Z"
     },
     {
       "origin": "https://www.joshfinnie.com",
@@ -26597,7 +26315,7 @@
         },
         {
           "slug": "image",
-          "label": "image"
+          "label": "images"
         },
         {
           "slug": "immigration",
@@ -26920,10 +26638,6 @@
           "label": "seo"
         },
         {
-          "slug": "server",
-          "label": "server"
-        },
-        {
           "slug": "set",
           "label": "set"
         },
@@ -27081,7 +26795,7 @@
         "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone",
         "summary": "I spent a week having Claude Code audit my fork of LightCraft, the AI-built Rust Lightroom clone: fuzzing, crash safety, a locked control port, faster frames, and 50,000 deleted lines.",
         "published_at": "2026-11-04T00:00:00.000Z",
-        "observed_at": "2026-11-08T01:16:12.088Z",
+        "observed_at": "2026-11-08T15:51:45.463Z",
         "content_type": "article",
         "language": "en-us",
         "dir": "",
@@ -27759,7 +27473,7 @@
           "https://www.joshfinnie.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z",
+      "crawled_at": "2026-11-08T15:51:45.463Z",
       "portfolio": {
         "url": "https://www.joshfinnie.com/projects/",
         "work_count": 9,
@@ -27895,6 +27609,10 @@
           "label": "hospitality"
         },
         {
+          "slug": "image",
+          "label": "images"
+        },
+        {
           "slug": "ios",
           "label": "ios"
         },
@@ -27992,7 +27710,7 @@
         "title": "Work — Joshua Baker",
         "summary": "Selected case studies by Joshua Baker, plus the full archive — 140+ projects across two decades of design and engineering.",
         "published_at": "",
-        "observed_at": "2026-11-08T01:16:12.088Z",
+        "observed_at": "2026-11-08T15:51:45.463Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -28264,7 +27982,7 @@
           "https://www.joshuabaker.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z",
+      "crawled_at": "2026-11-08T15:51:45.463Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,
@@ -28379,10 +28097,6 @@
           "label": "prettier"
         },
         {
-          "slug": "report",
-          "label": "reports"
-        },
-        {
           "slug": "request",
           "label": "requests"
         },
@@ -28412,7 +28126,7 @@
         "title": "Speaking",
         "summary": "I talk about static analysis, accessibility, and team culture.",
         "published_at": "",
-        "observed_at": "2026-11-08T01:16:12.088Z",
+        "observed_at": "2026-11-08T15:51:45.463Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -28705,7 +28419,7 @@
           "https://www.joshuakgoldberg.com/blog": "content-index"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z"
+      "crawled_at": "2026-11-08T15:51:45.463Z"
     },
     {
       "origin": "https://www.joshvickerson.com",
@@ -29192,7 +28906,7 @@
           "https://www.joshvickerson.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-08T01:16:12.088Z"
+      "crawled_at": "2026-11-08T15:51:45.463Z"
     }
   ]
 }

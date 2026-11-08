@@ -1,17 +1,35 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-08T01:34:24.244Z",
+  "generated_at": "2026-11-08T16:10:26.396Z",
   "window_days": 14,
-  "primary_count": 14,
-  "item_count": 614,
+  "primary_count": 16,
+  "item_count": 619,
   "content_types": ["article"],
   "primary": [
+    {
+      "url": "https://joshbeard.com/photos/2026/IMG_1904_jpeg.html",
+      "title": "Cottonwood Creek Trail, Colorado Springs, Colorado. November 7, 2026.",
+      "summary": "",
+      "published_at": "2026-11-07T08:56:00.000Z",
+      "observed_at": "2026-11-08T15:51:45.463Z",
+      "content_type": "article",
+      "language": "",
+      "dir": "",
+      "site_origin": "https://joshbeard.com",
+      "site_title": "Josh Beard",
+      "domain": "joshbeard.com",
+      "tags": [],
+      "neighborhoods": [],
+      "image": "/assets/activity/posters/4ce256f1d47c83639d4b5c4389174a578d32bd0729b696ccf75b801f6f4bb36b.webp",
+      "image_origin": "",
+      "source_kind": "atom"
+    },
     {
       "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
       "title": "Tailwind, Stack Overflow, and the Docs Snowball",
       "summary": "Tailwind's docs traffic fell 40% and Stack Overflow's questions collapsed as developers asked LLMs instead. Why that loop leaves us with worse docs, shallower skills, and models that stop learning.",
       "published_at": "2026-11-07T00:00:00.000Z",
-      "observed_at": "2026-11-08T01:16:12.088Z",
+      "observed_at": "2026-11-08T15:51:45.463Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -44,11 +62,67 @@
       "page_role": "article"
     },
     {
+      "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
+      "title": "Worth Wandering: The Mushroom Color Atlas",
+      "summary": "An extraordinary interactive collection of colors made from mushrooms, where a walk through the forest becomes an exploration of chemistry, textiles, watercolor pigments and the surprising things nature has been making all along.",
+      "published_at": "2026-11-06T16:00:00.000Z",
+      "observed_at": "2026-11-08T15:51:45.463Z",
+      "content_type": "article",
+      "language": "en",
+      "dir": "",
+      "site_origin": "https://joshuamorris.info",
+      "site_title": "Joshua Morris",
+      "domain": "joshuamorris.info",
+      "tags": [],
+      "neighborhoods": [],
+      "image": "/assets/activity/posters/1054461a26541e2258d697057a6c1f4c25bd155a8d47687992cdd47fbac0ad82.webp",
+      "image_origin": "",
+      "source_kind": "atom",
+      "page_role": "article"
+    },
+    {
+      "url": "https://joshuamorris.info/notes/2026/11/06/jpeg-xl-is-back-and-the-web-is-better-for-it/",
+      "title": "JPEG XL Is Becoming a Practical Choice for the Web",
+      "summary": "Safari, Chrome, and Firefox can decode JPEG XL. Progressive loading, reversible JPEG storage, a measured compare, and how to ship it with picture fallbacks.",
+      "published_at": "2026-11-06T14:00:00.000Z",
+      "observed_at": "2026-11-08T15:51:45.463Z",
+      "content_type": "article",
+      "language": "en",
+      "dir": "",
+      "site_origin": "https://joshuamorris.info",
+      "site_title": "Joshua Morris",
+      "domain": "joshuamorris.info",
+      "tags": [
+        {
+          "slug": "image",
+          "label": "images"
+        },
+        {
+          "slug": "performance",
+          "label": "performance"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "image",
+          "label": "images"
+        },
+        {
+          "slug": "performance",
+          "label": "performance"
+        }
+      ],
+      "image": "/assets/activity/posters/0e839805f763aed27c65b63463ac3fc9949a7319cf5be22333062456c7ccbd34.webp",
+      "image_origin": "",
+      "source_kind": "atom",
+      "page_role": "article"
+    },
+    {
       "url": "https://joshgr.com/writing/an-open-letter-to-ai-barons/",
       "title": "An Open Letter to AI Barons",
       "summary": "Congratulations! You did it! You raised the tide and now all boats are lifted. You made a cool. Good job!",
       "published_at": "2026-11-06T00:00:00.000Z",
-      "observed_at": "2026-11-08T01:16:12.088Z",
+      "observed_at": "2026-11-08T15:51:45.463Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -63,48 +137,11 @@
       "page_role": "unknown"
     },
     {
-      "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
-      "title": "AI Is Writing More Code. Who Is Reviewing All of It?",
-      "summary": "Agents draft more pull requests than ever. The harder question is whether teams can still understand and validate the software.",
-      "published_at": "2026-11-05T14:00:00.000Z",
-      "observed_at": "2026-11-08T01:16:12.088Z",
-      "content_type": "article",
-      "language": "en",
-      "dir": "",
-      "site_origin": "https://joshuamorris.info",
-      "site_title": "Joshua Morris",
-      "domain": "joshuamorris.info",
-      "tags": [
-        {
-          "slug": "code-review",
-          "label": "code review"
-        },
-        {
-          "slug": "engineering-leadership",
-          "label": "engineering leadership"
-        }
-      ],
-      "neighborhoods": [
-        {
-          "slug": "code-review",
-          "label": "code review"
-        },
-        {
-          "slug": "engineering-leadership",
-          "label": "engineering leadership"
-        }
-      ],
-      "image": "/assets/activity/posters/401e7a430132c99b7ad10dc246f634337a426dd46553b4220c0c325ba6560739.webp",
-      "image_origin": "",
-      "source_kind": "atom",
-      "page_role": "article"
-    },
-    {
       "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
       "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone",
       "summary": "I spent a week having Claude Code audit my fork of LightCraft, the AI-built Rust Lightroom clone: fuzzing, crash safety, a locked control port, faster frames, and 50,000 deleted lines.",
       "published_at": "2026-11-04T00:00:00.000Z",
-      "observed_at": "2026-11-08T01:16:12.088Z",
+      "observed_at": "2026-11-08T15:51:45.463Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -153,40 +190,11 @@
       "page_role": "article"
     },
     {
-      "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
-      "title": "Your Code Editor Is Now a Security Threat",
-      "summary": "Attackers put malicious Claude Code extensions in Cursor's marketplace for about 11 hours. What that means for developer-tool trust.",
-      "published_at": "2026-11-03T22:00:00.000Z",
-      "observed_at": "2026-11-08T01:16:12.088Z",
-      "content_type": "article",
-      "language": "en",
-      "dir": "",
-      "site_origin": "https://joshuamorris.info",
-      "site_title": "Joshua Morris",
-      "domain": "joshuamorris.info",
-      "tags": [
-        {
-          "slug": "supply-chain",
-          "label": "supply chain"
-        }
-      ],
-      "neighborhoods": [
-        {
-          "slug": "supply-chain",
-          "label": "supply chain"
-        }
-      ],
-      "image": "/assets/activity/posters/53bd94f5ba2fa60b9f7769e367ed54031da54f0614d219fb9d34bfb3d947d4d3.webp",
-      "image_origin": "",
-      "source_kind": "atom",
-      "page_role": "article"
-    },
-    {
       "url": "https://artlung.com/blog/2026/11/03/and-shredding/",
       "title": "I went relatively early this morning.",
       "summary": "",
       "published_at": "2026-11-03T16:15:36.000Z",
-      "observed_at": "2026-11-08T01:16:12.088Z",
+      "observed_at": "2026-11-08T15:51:45.463Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -223,7 +231,7 @@
       "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters.",
       "summary": "Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters.",
       "published_at": "2026-11-02T22:49:28.000Z",
-      "observed_at": "2026-11-08T01:16:12.088Z",
+      "observed_at": "2026-11-08T15:51:45.463Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -280,11 +288,29 @@
       "page_role": "article"
     },
     {
+      "url": "https://joshbeard.com/photos/2026/IMG_1888_jpeg.html",
+      "title": "Garden of the Gods, Colorado Springs, Colorado. November 1, 2026",
+      "summary": "",
+      "published_at": "2026-11-01T00:00:00.000Z",
+      "observed_at": "2026-11-08T15:51:45.463Z",
+      "content_type": "article",
+      "language": "",
+      "dir": "",
+      "site_origin": "https://joshbeard.com",
+      "site_title": "Josh Beard",
+      "domain": "joshbeard.com",
+      "tags": [],
+      "neighborhoods": [],
+      "image": "/assets/activity/posters/44bc0905d29051ceb5ce67f608c25428e53a148f6270fa8fc5d7fa22a6a02995.webp",
+      "image_origin": "",
+      "source_kind": "atom"
+    },
+    {
       "url": "https://joshtronic.com/2026/11/01/open-to-work/",
       "title": "I'm Open to Work",
       "summary": "Mailshake has terminated my employment after 8+ years. In that time, I... Started as engineer #3 Moved into management thanks to an awesome CTO Ran a 10-person team across backend, frontend, QA, and support Scaled down to 2 engineers while maintaining productivity Reduced annual AWS spend by ~70% over 3 years Was always on-call and handled support escalations Ran technical due diligence on 4 acqui",
       "published_at": "2026-11-01T00:00:00.000Z",
-      "observed_at": "2026-11-08T01:16:12.088Z",
+      "observed_at": "2026-11-08T15:51:45.463Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -303,7 +329,7 @@
       "title": "Gluten-Free Chocolate Cake",
       "summary": "A gluten-free chocolate cake made with black beans and cocoa, with estimated calories and macros.",
       "published_at": "2026-10-31T19:55:58.000Z",
-      "observed_at": "2026-11-08T01:16:12.088Z",
+      "observed_at": "2026-11-08T15:51:45.463Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -332,7 +358,7 @@
       "title": "Healthy Weight Plan Builder",
       "summary": "Download the Word document (.docx) A universal AI nutrition coach prompt by Span AI Solutions · Version 1.2 · October 2026 Created by Josh Müller ( @theJoshMuller ) and Kamila Buitrago ( @theKamilaBuitrago ) · spanaisolutions.com How to use it Click copy to copy the text in the box. Paste it into any AI chat: Claude, ChatGPT, Gemini, DeepSeek, or another one. Press send. The AI will ask you some e",
       "published_at": "2026-10-30T18:19:07.000Z",
-      "observed_at": "2026-11-08T01:16:12.088Z",
+      "observed_at": "2026-11-08T15:51:45.463Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -361,7 +387,7 @@
       "title": "How Wizardly Words Invents Words",
       "summary": "I wanted to make a random word generator to help write stories and think new thoughts. After all, naming is hard . What’s a convincing name for a new city? Or a person? Or a food?",
       "published_at": "2026-10-30T00:00:00.000Z",
-      "observed_at": "2026-11-08T01:16:12.088Z",
+      "observed_at": "2026-11-08T15:51:45.463Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -380,7 +406,7 @@
       "title": "Enterprise sales teams, please, I beg you, stop",
       "summary": "I asked for a price on a few extra seats of software we already pay for. Two days and a pile of irrelevant questions later, I got one.",
       "published_at": "2026-10-28T00:00:00.000Z",
-      "observed_at": "2026-11-08T01:16:12.088Z",
+      "observed_at": "2026-11-08T15:51:45.463Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -399,7 +425,7 @@
       "title": "Last week was terrible. It didn't have to be",
       "summary": "PHP2Shell scored a CVSS 9.2 and sent governments and ops teams into a panic. A week later, nobody has shown it working end to end, and the AI story behind it doesn't hold up.",
       "published_at": "2026-10-28T00:00:00.000Z",
-      "observed_at": "2026-11-08T01:16:12.088Z",
+      "observed_at": "2026-11-08T15:51:45.463Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -418,7 +444,7 @@
       "title": "Learning a New Tech Stack with an LLM",
       "summary": "While I mentioned a few weeks back that I'm now recovering from AI Psychosis , that doesn't mean I've given up on the technology completely. I'm writing more emails, and engaging with human beings as much as I can, and that part's been great. I still use agents as a glorified typewriter to generate code, and still very much get my hands in the dirt and sling code myself. I've also gotten quite obs",
       "published_at": "2026-10-26T00:00:00.000Z",
-      "observed_at": "2026-11-08T01:16:12.088Z",
+      "observed_at": "2026-11-08T15:51:45.463Z",
       "content_type": "article",
       "language": "en",
       "dir": "",

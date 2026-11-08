@@ -162,6 +162,13 @@
     "embeddable": true,
     "frame_reason": "allowed",
     "captured_at": "2026-11-08T00:42:21.618Z",
+    "feeds": [
+      {
+        "url": "https://joshbeard.com/feed.xml",
+        "type": "application/atom+xml",
+        "title": "Josh Beard"
+      }
+    ],
     "elsewhere": [
       {
         "url": "https://github.com/joshbeard",
@@ -186,7 +193,7 @@
     "latest_declaration_check_at": "2026-11-06T15:13:55.431283Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Josh Cox",
-    "description": "I'm Josh — a UK-based web developer. I run Prystine, a web agency, and build products and tools across the web. This is where I write about building, shipping, and the occasional tangent.",
+    "description": "I've been building things on the web since 2016, mostly through Prystine, the web agency I run. Over the years that's grown from \"making websites\" into looking after them properly — performance, maintenance, and the unglamorous work that keeps a site alive.",
     "screenshot": "/assets/network/sites/84f13187dea6b70821e3eeb6c3281d2104329052a22be508c13004864eed2a96.webp",
     "embeddable": false,
     "frame_reason": "blocked-by-site",
@@ -637,28 +644,6 @@
         "label": "GitHub"
       }
     ]
-  },
-  {
-    "origin": "https://joshuadrake.org",
-    "domain": "joshuadrake.org",
-    "identity": "affirmed",
-    "declaration": {
-      "version": 1,
-      "josh": true
-    },
-    "initial_declaration": {
-      "version": 1,
-      "josh": true
-    },
-    "first_participated_at": "2026-11-01T20:14:11.484485Z",
-    "latest_declaration_check_at": "2026-11-06T21:03:16.557185Z",
-    "latest_declaration_check_outcome": "valid",
-    "title": "Joshua Drake",
-    "description": "I'm Joshua Drake. In the fall of 2024 I graduated from Oklahoma State University with a Master's in Electrical Engineering and am presently employed in Aerospace research. Ecclesiastes 9",
-    "screenshot": "/assets/network/sites/bc7c017ece5fa409b28d0a4baef2b9ab2a8e767ad05d8daaeec1cb3b377f624b.webp",
-    "embeddable": true,
-    "frame_reason": "allowed",
-    "captured_at": "2026-11-08T00:59:07.960Z"
   },
   {
     "origin": "https://joshuakim.studio",

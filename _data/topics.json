@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-08T01:16:12.088Z",
-  "community_count": 644,
+  "generated_at": "2026-11-08T15:51:45.463Z",
+  "community_count": 641,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
@@ -156,7 +156,7 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
+              "url": "https://joshuamorris.info/about/",
               "title": "",
               "source": "visible-text"
             },
@@ -2308,16 +2308,7 @@
       "sources": ["article:tag"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshuakim.studio",
-          "domain": "joshuakim.studio",
-          "title": "Joshua Kim",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
+      "active": true
     },
     {
       "slug": "automation-20skepticism",
@@ -2670,21 +2661,8 @@
     {
       "slug": "banking",
       "label": "banking",
-      "member_count": 2,
+      "member_count": 1,
       "sites": [
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuadrake.org/projects/resloadbank/",
-              "title": "",
-              "source": "portfolio:sector"
-            }
-          ]
-        },
         {
           "origin": "https://www.joshuabaker.com",
           "domain": "www.joshuabaker.com",
@@ -2716,8 +2694,9 @@
       ],
       "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T12:00:56.613Z",
-      "last_changed_at": "2026-11-01T23:37:56.256Z",
-      "active": true
+      "last_changed_at": "2026-11-08T15:51:45.463Z",
+      "active": true,
+      "stale_since": "2026-11-08T15:51:45.463Z"
     },
     {
       "slug": "barth",
@@ -2885,27 +2864,27 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
+              "url": "https://joshuamorris.info/",
               "title": "",
               "source": "visible-text"
             },
             {
               "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/jpeg-xl-is-back-and-the-web-is-better-for-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/now/",
               "title": "",
               "source": "visible-text"
             }
@@ -3314,12 +3293,12 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://artlung.com/",
+              "url": "https://artlung.com/blog/2024/09/24/actually-everything-is-healthcare/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2024/09/24/actually-everything-is-healthcare/",
+              "url": "https://artlung.com/blog/2026/09/27/1954-board-stoke/",
               "title": "",
               "source": "visible-text"
             },
@@ -4596,12 +4575,12 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/12/prop-38-borrows-for-immune-research-and-takes-a-cut-if-a-drug-pays-off/",
+              "url": "https://joshuamorris.info/about/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/13/prop-44s-90-percent-starts-on-a-clinics-tax-form-not-in-the-exam-room/",
+              "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
               "title": "",
               "source": "visible-text"
             },
@@ -5078,26 +5057,8 @@
     {
       "slug": "challenge",
       "label": "challenges",
-      "member_count": 2,
+      "member_count": 1,
       "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/fake/",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://joshuamorris.info/now/",
-              "title": "",
-              "source": "catalog-match"
-            }
-          ]
-        },
         {
           "origin": "https://www.joshfinnie.com",
           "domain": "www.joshfinnie.com",
@@ -5127,15 +5088,20 @@
           ]
         }
       ],
-      "sources": [
-        "article:tag",
-        "catalog-match",
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
+      "sources": ["article:tag", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T18:19:19.608Z",
-      "active": true
+      "last_changed_at": "2026-11-08T15:51:45.463Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ],
+      "stale_since": "2026-11-08T15:51:45.463Z"
     },
     {
       "slug": "charity-nonprofit",
@@ -5401,7 +5367,16 @@
       "sources": ["article:tag", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
-      "active": true
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
     },
     {
       "slug": "chromebook",
@@ -6897,36 +6872,8 @@
     {
       "slug": "computer",
       "label": "Computer",
-      "member_count": 3,
+      "member_count": 2,
       "sites": [
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuadrake.org/projects/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuadrake.org/projects/cessnaretrofit/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuadrake.org/projects/JDMCMC/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuadrake.org/projects/resloadbank/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
         {
           "origin": "https://joshuapsteele.com",
           "domain": "joshuapsteele.com",
@@ -6976,7 +6923,7 @@
       ],
       "sources": ["article:tag", "visible-text"],
       "first_seen_at": "2026-11-01T23:37:56.256Z",
-      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-08T15:51:45.463Z",
       "active": true,
       "related_discoveries": [
         {
@@ -7021,31 +6968,14 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ]
+      ],
+      "stale_since": "2026-11-08T15:51:45.463Z"
     },
     {
       "slug": "computer-vision",
       "label": "computer vision",
-      "member_count": 2,
+      "member_count": 1,
       "sites": [
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuadrake.org/projects/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuadrake.org/projects/JDMCMC/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -7060,9 +6990,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "visible-text"],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-08T15:51:45.463Z",
       "active": true,
       "related_discoveries": [
         {
@@ -7072,7 +7002,8 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ]
+      ],
+      "stale_since": "2026-11-08T15:51:45.463Z"
     },
     {
       "slug": "computing-history",
@@ -7537,11 +7468,6 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
               "title": "",
               "source": "visible-text"
@@ -7558,6 +7484,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
               "title": "",
               "source": "visible-text"
             }
@@ -8080,13 +8011,6 @@
           "title": "Joshua Seigler",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshuakim.studio",
-          "domain": "joshuakim.studio",
-          "title": "Joshua Kim",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
         }
       ]
     },
@@ -8135,11 +8059,6 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/16/worth-wandering-public-domain-review/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
               "title": "",
               "source": "visible-text"
@@ -8156,6 +8075,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/jpeg-xl-is-back-and-the-web-is-better-for-it/",
               "title": "",
               "source": "visible-text"
             }
@@ -8251,13 +8175,6 @@
           "origin": "https://joshkoter.com",
           "domain": "joshkoter.com",
           "title": "Josh Köter",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         },
@@ -8992,13 +8909,6 @@
       "last_changed_at": "2026-11-03T16:34:11.848Z",
       "active": true,
       "related_discoveries": [
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
         {
           "origin": "https://joshuakim.studio",
           "domain": "joshuakim.studio",
@@ -10925,11 +10835,6 @@
               "source": "microformat:p-category"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/09/15/the-fuel-crisis-is-exposing-how-little-spare-capacity-we-have-left/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/15/the-us-fuel-crisis-is-making-canadas-oil-more-valuable-than-ever/",
               "title": "",
               "source": "microformat:p-category"
@@ -11008,13 +10913,6 @@
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
           "title": "Josh Sherman",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         },
@@ -12033,12 +11931,12 @@
               "source": "catalog-match"
             },
             {
-              "url": "https://www.youtube.com/watch?v=etjRb2EaxWQ",
+              "url": "https://www.youtube.com/watch?v=eceMmXznhQE",
               "title": "",
               "source": "catalog-match"
             },
             {
-              "url": "https://www.youtube.com/watch?v=HcUV90vm2ow",
+              "url": "https://www.youtube.com/watch?v=etjRb2EaxWQ",
               "title": "",
               "source": "catalog-match"
             },
@@ -12542,11 +12440,6 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/10/16/worth-wandering-public-domain-review/",
               "title": "",
               "source": "visible-text"
@@ -12563,6 +12456,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
               "title": "",
               "source": "visible-text"
             }
@@ -13261,27 +13159,27 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/25/firefox-is-quietly-making-the-web-more-capable/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
               "title": "",
               "source": "visible-text"
             },
             {
               "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/jpeg-xl-is-back-and-the-web-is-better-for-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/now/",
               "title": "",
               "source": "visible-text"
             }
@@ -13647,13 +13545,6 @@
       "active": true,
       "related_discoveries": [
         {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
           "origin": "https://www.joshuabaker.com",
           "domain": "www.joshuabaker.com",
           "title": "Joshua Baker",
@@ -13897,12 +13788,7 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/09/worth-wandering-camerons-world/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/16/worth-wandering-public-domain-review/",
+              "url": "https://joshuamorris.info/about/",
               "title": "",
               "source": "visible-text"
             },
@@ -13913,6 +13799,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/now/",
               "title": "",
               "source": "visible-text"
             }
@@ -14183,79 +14074,6 @@
       ]
     },
     {
-      "slug": "generator",
-      "label": "generator",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://joshua.seigler.net",
-          "domain": "joshua.seigler.net",
-          "title": "Joshua Seigler",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshua.seigler.net/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshua.seigler.net/posts/cool-musical-illusion-tritone-paradox/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshua.seigler.net/posts/i-made-myself-a-recipe-label-generator/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuadrake.org/projects/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuadrake.org/projects/cessnaretrofit/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuadrake.org/projects/resloadbank/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["visible-text"],
-      "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-03T16:34:11.848Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://www.joshuabaker.com",
-          "domain": "www.joshuabaker.com",
-          "title": "Joshua Baker",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://www.joshuakgoldberg.com",
-          "domain": "www.joshuakgoldberg.com",
-          "title": "Josh Goldberg",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
-    },
-    {
       "slug": "git",
       "label": "git",
       "member_count": 2,
@@ -14304,27 +14122,27 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
+              "url": "https://joshuamorris.info/about/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
+              "url": "https://joshuamorris.info/notes/2026/11/06/jpeg-xl-is-back-and-the-web-is-better-for-it/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
+              "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
+              "url": "https://joshuamorris.info/now/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "url": "https://joshuamorris.info/seeking/docs/",
               "title": "",
               "source": "visible-text"
             }
@@ -15582,11 +15400,6 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/10/flock-got-the-plate-right-and-the-person-was-still-wrongly-accused/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/10/16/worth-wandering-public-domain-review/",
               "title": "",
               "source": "visible-text"
@@ -15603,6 +15416,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
               "title": "",
               "source": "visible-text"
             }
@@ -16189,9 +16007,52 @@
     },
     {
       "slug": "image",
-      "label": "image",
-      "member_count": 2,
+      "label": "images",
+      "member_count": 6,
       "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://artlung.com/images/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://artlung.com/most-images/",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://artlung.com/about/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2024/10/29/going-to-concerts/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/22/2027-web-platform-ranking/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/page/2/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/colophon/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
         {
           "origin": "https://joshcox.co.uk",
           "domain": "joshcox.co.uk",
@@ -16222,6 +16083,32 @@
               "url": "https://joshcox.co.uk/blog/my-laptop-was-lying-to-me/",
               "title": "",
               "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshozuna.com",
+          "domain": "joshozuna.com",
+          "title": "Josh Ozuna",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshozuna.com/image-use",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/jpeg-xl-is-back-and-the-web-is-better-for-it/",
+              "title": "",
+              "source": "microformat:p-category"
             }
           ]
         },
@@ -16257,20 +16144,61 @@
               "source": "visible-text"
             }
           ]
+        },
+        {
+          "origin": "https://www.joshuabaker.com",
+          "domain": "www.joshuabaker.com",
+          "title": "Joshua Baker",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://www.joshuabaker.com/work/?work=getty-images-agency-network-platform-2010",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=getty-images-artist-platform-2010",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=getty-images-brand-portal-2014",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=getty-images-curve-2010",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=getty-images-employee-onboarding-2010",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=getty-images-flickr-2009",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=getty-images-likebox-moodboard-app-2009",
+              "title": "",
+              "source": "catalog-match"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/?work=getty-images-power-of-sponsorship-2011",
+              "title": "",
+              "source": "catalog-match"
+            }
+          ]
         }
       ],
-      "sources": ["visible-text"],
+      "sources": ["catalog-match", "microformat:p-category", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-04T18:19:19.608Z",
+      "last_changed_at": "2026-11-08T15:51:45.463Z",
       "active": true,
       "related_discoveries": [
-        {
-          "origin": "https://artlung.com",
-          "domain": "artlung.com",
-          "title": "Joe Crawford",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
         {
           "origin": "https://joshghent.com",
           "domain": "joshghent.com",
@@ -16293,13 +16221,6 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
           "origin": "https://joshuakim.studio",
           "domain": "joshuakim.studio",
           "title": "Joshua Kim",
@@ -16307,23 +16228,9 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
           "origin": "https://joshuastuebner.com",
           "domain": "joshuastuebner.com",
           "title": "Joshua Stübner",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://www.joshuabaker.com",
-          "domain": "www.joshuabaker.com",
-          "title": "Joshua Baker",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         },
@@ -16453,16 +16360,6 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/25/firefox-is-quietly-making-the-web-more-capable/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
               "title": "",
               "source": "visible-text"
@@ -16474,6 +16371,16 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/jpeg-xl-is-back-and-the-web-is-better-for-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
               "title": "",
               "source": "visible-text"
             }
@@ -16940,7 +16847,7 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
+              "url": "https://joshuamorris.info/about/",
               "title": "",
               "source": "visible-text"
             },
@@ -18010,27 +17917,27 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/25/firefox-is-quietly-making-the-web-more-capable/",
+              "url": "https://joshuamorris.info/about/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
+              "url": "https://joshuamorris.info/notes/2026/11/06/jpeg-xl-is-back-and-the-web-is-better-for-it/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
+              "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
+              "url": "https://joshuamorris.info/now/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "url": "https://joshuamorris.info/seeking/docs/",
               "title": "",
               "source": "visible-text"
             }
@@ -18204,13 +18111,6 @@
       "last_changed_at": "2026-11-03T16:34:11.848Z",
       "active": true,
       "related_discoveries": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
         {
           "origin": "https://www.joshcanhelp.com",
           "domain": "www.joshcanhelp.com",
@@ -20766,27 +20666,27 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
               "title": "",
               "source": "visible-text"
             },
             {
               "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/jpeg-xl-is-back-and-the-web-is-better-for-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/seeking/docs/",
               "title": "",
               "source": "visible-text"
             }
@@ -21419,13 +21319,6 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
           "origin": "https://www.joshuakgoldberg.com",
           "domain": "www.joshuakgoldberg.com",
           "title": "Josh Goldberg",
@@ -21878,7 +21771,7 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/16/worth-wandering-public-domain-review/",
+              "url": "https://joshuamorris.info/about/",
               "title": "",
               "source": "visible-text"
             },
@@ -21950,7 +21843,7 @@
     {
       "slug": "money",
       "label": "money",
-      "member_count": 4,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://joshtronic.com",
@@ -21962,44 +21855,6 @@
               "url": "https://joshtronic.com/categories/",
               "title": "",
               "source": "topic-hub:link"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/09/prop-4-clears-a-path-for-public-campaign-money-it-does-not-spend-any/",
-              "title": "",
-              "source": "catalog-match"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/10/flock-got-the-plate-right-and-the-person-was-still-wrongly-accused/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/11/prop-43-would-make-some-local-taxes-need-two-yes-votes-for-every-no/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/12/prop-38-borrows-for-immune-research-and-takes-a-cut-if-a-drug-pays-off/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/13/prop-44s-90-percent-starts-on-a-clinics-tax-form-not-in-the-exam-room/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/14/prop-2-lets-the-rainy-day-fund-grow-taller-it-does-not-fill-the-jar/",
-              "title": "",
-              "source": "visible-text"
             }
           ]
         },
@@ -22052,7 +21907,7 @@
       ],
       "sources": ["catalog-match", "topic-hub:link", "visible-text"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-03T16:34:11.848Z",
+      "last_changed_at": "2026-11-08T15:51:45.463Z",
       "active": true,
       "related_discoveries": [
         {
@@ -22063,13 +21918,21 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
           "origin": "https://www.joshvickerson.com",
           "domain": "www.joshvickerson.com",
           "title": "Josh Vickerson",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ]
+      ],
+      "stale_since": "2026-11-08T15:51:45.463Z"
     },
     {
       "slug": "month",
@@ -22620,12 +22483,7 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
+              "url": "https://joshuamorris.info/about/",
               "title": "",
               "source": "visible-text"
             },
@@ -22641,6 +22499,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
               "title": "",
               "source": "visible-text"
             }
@@ -23211,22 +23074,22 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/12/prop-38-borrows-for-immune-research-and-takes-a-cut-if-a-drug-pays-off/",
+              "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/13/prop-44s-90-percent-starts-on-a-clinics-tax-form-not-in-the-exam-room/",
+              "url": "https://joshuamorris.info/notes/2026/11/06/jpeg-xl-is-back-and-the-web-is-better-for-it/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/14/prop-2-lets-the-rainy-day-fund-grow-taller-it-does-not-fill-the-jar/",
+              "url": "https://joshuamorris.info/now/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
+              "url": "https://joshuamorris.info/uses/",
               "title": "",
               "source": "visible-text"
             }
@@ -23593,11 +23456,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/09/15/the-fuel-crisis-is-exposing-how-little-spare-capacity-we-have-left/",
-              "title": "",
-              "source": "microformat:p-category"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/09/15/the-us-fuel-crisis-is-making-canadas-oil-more-valuable-than-ever/",
               "title": "",
               "source": "microformat:p-category"
@@ -23614,13 +23472,6 @@
           "origin": "https://joshmuller.ca",
           "domain": "joshmuller.ca",
           "title": "Josh Müller",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
@@ -24214,16 +24065,7 @@
       ],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
       "last_changed_at": "2026-11-03T09:57:38.457Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
+      "active": true
     },
     {
       "slug": "ownership",
@@ -24485,6 +24327,13 @@
       "active": true,
       "related_discoveries": [
         {
+          "origin": "https://joshuakim.studio",
+          "domain": "joshuakim.studio",
+          "title": "Joshua Kim",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
           "title": "Joshua Morris",
@@ -24666,6 +24515,79 @@
       "active": true
     },
     {
+      "slug": "performance",
+      "label": "performance",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Josh Ghent",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/consulting-launch-2023/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/lambda-warming-antipattern/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/mid-to-senior-dev/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/rules-of-thumb/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/self-taught-mistakes/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshuamorris.info",
+          "domain": "joshuamorris.info",
+          "title": "Joshua Morris",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/jpeg-xl-is-back-and-the-web-is-better-for-it/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
+        }
+      ],
+      "sources": ["microformat:p-category", "visible-text"],
+      "first_seen_at": "2026-11-08T15:51:45.463Z",
+      "last_changed_at": "2026-11-08T15:51:45.463Z",
+      "active": true,
+      "related_discoveries": [
+        {
+          "origin": "https://joshuastuebner.com",
+          "domain": "joshuastuebner.com",
+          "title": "Joshua Stübner",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://www.joshvickerson.com",
+          "domain": "www.joshvickerson.com",
+          "title": "Josh Vickerson",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        }
+      ]
+    },
+    {
       "slug": "permanence",
       "label": "permanence",
       "member_count": 1,
@@ -24701,17 +24623,7 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
+              "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
               "title": "",
               "source": "visible-text"
             },
@@ -24722,6 +24634,16 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/seeking/docs/",
               "title": "",
               "source": "visible-text"
             }
@@ -25436,16 +25358,6 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
               "title": "",
               "source": "visible-text"
@@ -25457,6 +25369,16 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/seeking/docs/",
               "title": "",
               "source": "visible-text"
             }
@@ -25992,16 +25914,7 @@
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T21:44:42.327Z",
       "last_changed_at": "2026-11-03T21:44:42.327Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
+      "active": true
     },
     {
       "slug": "prayer",
@@ -26350,11 +26263,6 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/16/worth-wandering-public-domain-review/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
               "title": "",
               "source": "visible-text"
@@ -26371,6 +26279,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/seeking/docs/",
               "title": "",
               "source": "visible-text"
             }
@@ -28798,99 +28711,6 @@
       "active": true
     },
     {
-      "slug": "report",
-      "label": "reports",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/13/a-markdown-file-should-just-open/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://www.joshuakgoldberg.com",
-          "domain": "www.joshuakgoldberg.com",
-          "title": "Josh Goldberg",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-1-architecture/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-2-developer-experience/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-3-ecosystem/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshuakgoldberg.com/blog/if-i-wrote-a-linter-part-4-summary/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshuakgoldberg.com/blog/stepping-back-from-open-source-mostly/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["visible-text"],
-      "first_seen_at": "2026-11-05T17:49:46.856Z",
-      "last_changed_at": "2026-11-05T17:49:46.856Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshcox.co.uk",
-          "domain": "joshcox.co.uk",
-          "title": "Josh Cox",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://www.joshvickerson.com",
-          "domain": "www.joshvickerson.com",
-          "title": "Josh Vickerson",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
-    },
-    {
       "slug": "request",
       "label": "requests",
       "member_count": 2,
@@ -29107,30 +28927,6 @@
           "note": "Below the community quality threshold; not membership."
         }
       ]
-    },
-    {
-      "slug": "resilience",
-      "label": "resilience",
-      "member_count": 1,
-      "sites": [
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/09/15/the-fuel-crisis-is-exposing-how-little-spare-capacity-we-have-left/",
-              "title": "",
-              "source": "microformat:p-category"
-            }
-          ]
-        }
-      ],
-      "sources": ["microformat:p-category"],
-      "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-03T16:34:11.848Z",
-      "active": true
     },
     {
       "slug": "resolution",
@@ -29477,7 +29273,7 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/16/worth-wandering-public-domain-review/",
+              "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
               "title": "",
               "source": "visible-text"
             },
@@ -29790,27 +29586,27 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/16/worth-wandering-public-domain-review/",
+              "url": "https://joshuamorris.info/about/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/20/the-internets-trust-problem-was-a-private-key-with-the-value-4/",
+              "url": "https://joshuamorris.info/notes/2026/11/06/jpeg-xl-is-back-and-the-web-is-better-for-it/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/22/what-i-learned-from-susanne-rockwell/",
+              "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
+              "url": "https://joshuamorris.info/now/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
+              "url": "https://joshuamorris.info/seeking/docs/",
               "title": "",
               "source": "visible-text"
             }
@@ -29880,13 +29676,6 @@
           "origin": "https://joshua.seigler.net",
           "domain": "joshua.seigler.net",
           "title": "Joshua Seigler",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         },
@@ -30190,7 +29979,7 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/13/prop-44s-90-percent-starts-on-a-clinics-tax-form-not-in-the-exam-room/",
+              "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
               "title": "",
               "source": "visible-text"
             },
@@ -30377,9 +30166,9 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
+          "origin": "https://joshuakim.studio",
+          "domain": "joshuakim.studio",
+          "title": "Joshua Kim",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         },
@@ -31397,117 +31186,6 @@
       "active": true
     },
     {
-      "slug": "server",
-      "label": "server",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuadrake.org/projects/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuadrake.org/projects/n12rebuild/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuadrake.org/projects/server/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://www.joshfinnie.com",
-          "domain": "www.joshfinnie.com",
-          "title": "Josh Finnie",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-week-one-bragboard/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["visible-text"],
-      "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-03T16:34:11.848Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshcox.co.uk",
-          "domain": "joshcox.co.uk",
-          "title": "Josh Cox",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshghent.com",
-          "domain": "joshghent.com",
-          "title": "Josh Ghent",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshmuller.ca",
-          "domain": "joshmuller.ca",
-          "title": "Josh Müller",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshtronic.com",
-          "domain": "joshtronic.com",
-          "title": "Josh Sherman",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshua.seigler.net",
-          "domain": "joshua.seigler.net",
-          "title": "Joshua Seigler",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
-    },
-    {
       "slug": "server-serverless",
       "label": "servers serverless",
       "member_count": 1,
@@ -31619,6 +31297,13 @@
           "origin": "https://joshmuller.ca",
           "domain": "joshmuller.ca",
           "title": "Josh Müller",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
+          "origin": "https://joshuakim.studio",
+          "domain": "joshuakim.studio",
+          "title": "Joshua Kim",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         },
@@ -32987,27 +32672,27 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
               "title": "",
               "source": "visible-text"
             },
             {
               "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/jpeg-xl-is-back-and-the-web-is-better-for-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/seeking/docs/",
               "title": "",
               "source": "visible-text"
             }
@@ -33742,16 +33427,6 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/22/what-i-learned-from-susanne-rockwell/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/25/firefox-is-quietly-making-the-web-more-capable/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
               "title": "",
               "source": "visible-text"
@@ -33763,6 +33438,16 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/now/",
               "title": "",
               "source": "visible-text"
             }
@@ -34110,13 +33795,6 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
           "origin": "https://www.joshuabaker.com",
           "domain": "www.joshuabaker.com",
           "title": "Joshua Baker",
@@ -34451,16 +34129,6 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/22/what-i-learned-from-susanne-rockwell/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
               "title": "",
               "source": "visible-text"
@@ -34472,6 +34140,16 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/jpeg-xl-is-back-and-the-web-is-better-for-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
               "title": "",
               "source": "visible-text"
             }
@@ -34543,17 +34221,7 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/24/i-declared-the-coding-interview-dead-in-2021/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
+              "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
               "title": "",
               "source": "visible-text"
             },
@@ -34564,6 +34232,16 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/jpeg-xl-is-back-and-the-web-is-better-for-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/seeking/docs/",
               "title": "",
               "source": "visible-text"
             }
@@ -34656,13 +34334,6 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
           "origin": "https://joshuapsteele.com",
           "domain": "joshuapsteele.com",
           "title": "Joshua P. Steele",
@@ -34714,16 +34385,7 @@
       "sources": ["article:tag"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshuakim.studio",
-          "domain": "joshuakim.studio",
-          "title": "Joshua Kim",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
+      "active": true
     },
     {
       "slug": "theology",
@@ -37482,17 +37144,7 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/16/worth-wandering-public-domain-review/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/23/worth-wandering-pippin-barr/",
+              "url": "https://joshuamorris.info/about/",
               "title": "",
               "source": "visible-text"
             },
@@ -37503,6 +37155,16 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/now/",
               "title": "",
               "source": "visible-text"
             }
@@ -37720,12 +37382,7 @@
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
+              "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
               "title": "",
               "source": "visible-text"
             },
@@ -37736,6 +37393,11 @@
             },
             {
               "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
               "title": "",
               "source": "visible-text"
             }
@@ -37815,27 +37477,27 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
+              "url": "https://joshuamorris.info/about/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
+              "url": "https://joshuamorris.info/notes/2026/10/02/californias-november-2026-ballot/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
+              "url": "https://joshuamorris.info/notes/2026/11/06/jpeg-xl-is-back-and-the-web-is-better-for-it/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
+              "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
               "title": "",
               "source": "visible-text"
             },
             {
-              "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+              "url": "https://joshuamorris.info/now/",
               "title": "",
               "source": "visible-text"
             }
@@ -38103,6 +37765,13 @@
       "active": true,
       "related_discoveries": [
         {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "discovery": "heuristic",
+          "note": "Below the community quality threshold; not membership."
+        },
+        {
           "origin": "https://joshcox.co.uk",
           "domain": "joshcox.co.uk",
           "title": "Josh Cox",
@@ -38330,12 +37999,12 @@
               "source": "catalog-match"
             },
             {
-              "url": "https://www.youtube.com/watch?v=etjRb2EaxWQ",
+              "url": "https://www.youtube.com/watch?v=eceMmXznhQE",
               "title": "",
               "source": "catalog-match"
             },
             {
-              "url": "https://www.youtube.com/watch?v=HcUV90vm2ow",
+              "url": "https://www.youtube.com/watch?v=etjRb2EaxWQ",
               "title": "",
               "source": "catalog-match"
             },
