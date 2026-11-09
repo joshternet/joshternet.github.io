@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-08T20:44:07.472Z",
-  "overlap_count": 143,
+  "generated_at": "2026-11-09T00:48:54.863Z",
+  "overlap_count": 162,
   "pairs": [
     {
       "a": "https://artlung.com",
@@ -14,6 +14,32 @@
         {
           "slug": "school",
           "label": "schools"
+        }
+      ]
+    },
+    {
+      "a": "https://artlung.com",
+      "b": "https://josh.earth",
+      "topics": [
+        {
+          "slug": "browser",
+          "label": "browsers"
+        },
+        {
+          "slug": "data",
+          "label": "data"
+        },
+        {
+          "slug": "digital",
+          "label": "digital"
+        },
+        {
+          "slug": "live",
+          "label": "live"
+        },
+        {
+          "slug": "source",
+          "label": "source"
         }
       ]
     },
@@ -52,6 +78,10 @@
         {
           "slug": "generator",
           "label": "generator"
+        },
+        {
+          "slug": "graphics",
+          "label": "graphics"
         },
         {
           "slug": "music",
@@ -138,10 +168,6 @@
       "b": "https://joshsherman.dev",
       "topics": [
         {
-          "slug": "archive",
-          "label": "archive"
-        },
-        {
           "slug": "data",
           "label": "data"
         },
@@ -164,32 +190,12 @@
           "label": "backend"
         },
         {
-          "slug": "email",
-          "label": "emails"
-        },
-        {
           "slug": "learn",
           "label": "learn"
         },
         {
-          "slug": "learning",
-          "label": "learning"
-        },
-        {
-          "slug": "mean",
-          "label": "means"
-        },
-        {
-          "slug": "technology",
-          "label": "technology"
-        },
-        {
           "slug": "video",
           "label": "video"
-        },
-        {
-          "slug": "week",
-          "label": "weeks"
         },
         {
           "slug": "world",
@@ -299,10 +305,6 @@
       "a": "https://artlung.com",
       "b": "https://joshuamorris.info",
       "topics": [
-        {
-          "slug": "archive",
-          "label": "archive"
-        },
         {
           "slug": "browser",
           "label": "browsers"
@@ -469,7 +471,7 @@
         },
         {
           "slug": "company",
-          "label": "company"
+          "label": "companies"
         },
         {
           "slug": "computer",
@@ -538,6 +540,10 @@
           "label": "community"
         },
         {
+          "slug": "culture",
+          "label": "culture"
+        },
+        {
           "slug": "image",
           "label": "images"
         },
@@ -576,16 +582,12 @@
       "b": "https://www.joshuabaker.com",
       "topics": [
         {
-          "slug": "archive",
-          "label": "archive"
-        },
-        {
           "slug": "community",
           "label": "community"
         },
         {
           "slug": "company",
-          "label": "company"
+          "label": "companies"
         },
         {
           "slug": "design",
@@ -626,6 +628,26 @@
         {
           "slug": "week",
           "label": "weeks"
+        }
+      ]
+    },
+    {
+      "a": "https://artlung.com",
+      "b": "https://www.joshuakgoldberg.com",
+      "topics": [
+        {
+          "slug": "culture",
+          "label": "culture"
+        }
+      ]
+    },
+    {
+      "a": "https://forwardbias.dev",
+      "b": "https://josh.earth",
+      "topics": [
+        {
+          "slug": "software",
+          "label": "Software"
         }
       ]
     },
@@ -768,6 +790,294 @@
         {
           "slug": "education",
           "label": "education"
+        }
+      ]
+    },
+    {
+      "a": "https://josh.earth",
+      "b": "https://joshghent.com",
+      "topics": [
+        {
+          "slug": "open-source",
+          "label": "open source"
+        },
+        {
+          "slug": "software",
+          "label": "Software"
+        },
+        {
+          "slug": "source",
+          "label": "source"
+        }
+      ]
+    },
+    {
+      "a": "https://josh.earth",
+      "b": "https://joshgr.com",
+      "topics": [
+        {
+          "slug": "city",
+          "label": "city"
+        },
+        {
+          "slug": "software",
+          "label": "Software"
+        }
+      ]
+    },
+    {
+      "a": "https://josh.earth",
+      "b": "https://joshozuna.com",
+      "topics": [
+        {
+          "slug": "city",
+          "label": "city"
+        },
+        {
+          "slug": "small",
+          "label": "small"
+        }
+      ]
+    },
+    {
+      "a": "https://josh.earth",
+      "b": "https://joshsherman.dev",
+      "topics": [
+        {
+          "slug": "data",
+          "label": "data"
+        }
+      ]
+    },
+    {
+      "a": "https://josh.earth",
+      "b": "https://joshtronic.com",
+      "topics": [
+        {
+          "slug": "retro",
+          "label": "retro"
+        }
+      ]
+    },
+    {
+      "a": "https://josh.earth",
+      "b": "https://joshua.seigler.net",
+      "topics": [
+        {
+          "slug": "book",
+          "label": "books"
+        },
+        {
+          "slug": "software",
+          "label": "Software"
+        }
+      ]
+    },
+    {
+      "a": "https://josh.earth",
+      "b": "https://joshuadrake.org",
+      "topics": [
+        {
+          "slug": "data",
+          "label": "data"
+        },
+        {
+          "slug": "embedded",
+          "label": "embedded"
+        },
+        {
+          "slug": "research",
+          "label": "Research"
+        },
+        {
+          "slug": "set",
+          "label": "set"
+        },
+        {
+          "slug": "software",
+          "label": "Software"
+        }
+      ]
+    },
+    {
+      "a": "https://josh.earth",
+      "b": "https://joshuamorris.info",
+      "topics": [
+        {
+          "slug": "book",
+          "label": "books"
+        },
+        {
+          "slug": "browser",
+          "label": "browsers"
+        },
+        {
+          "slug": "digital",
+          "label": "digital"
+        },
+        {
+          "slug": "experimental",
+          "label": "experimental"
+        },
+        {
+          "slug": "hardware",
+          "label": "hardware"
+        },
+        {
+          "slug": "live",
+          "label": "live"
+        },
+        {
+          "slug": "model",
+          "label": "model"
+        },
+        {
+          "slug": "software",
+          "label": "Software"
+        }
+      ]
+    },
+    {
+      "a": "https://josh.earth",
+      "b": "https://joshuapsteele.com",
+      "topics": [
+        {
+          "slug": "book",
+          "label": "books"
+        },
+        {
+          "slug": "digital",
+          "label": "digital"
+        }
+      ]
+    },
+    {
+      "a": "https://josh.earth",
+      "b": "https://joshuastuebner.com",
+      "topics": [
+        {
+          "slug": "browser",
+          "label": "browsers"
+        },
+        {
+          "slug": "data",
+          "label": "data"
+        },
+        {
+          "slug": "digital",
+          "label": "digital"
+        },
+        {
+          "slug": "small",
+          "label": "small"
+        }
+      ]
+    },
+    {
+      "a": "https://josh.earth",
+      "b": "https://joshurbandavis.com",
+      "topics": [
+        {
+          "slug": "book",
+          "label": "books"
+        },
+        {
+          "slug": "browser",
+          "label": "browsers"
+        },
+        {
+          "slug": "city",
+          "label": "city"
+        },
+        {
+          "slug": "digital",
+          "label": "digital"
+        },
+        {
+          "slug": "experimental",
+          "label": "experimental"
+        },
+        {
+          "slug": "live",
+          "label": "live"
+        },
+        {
+          "slug": "small",
+          "label": "small"
+        }
+      ]
+    },
+    {
+      "a": "https://josh.earth",
+      "b": "https://www.chrisminnick.com",
+      "topics": [
+        {
+          "slug": "book",
+          "label": "books"
+        },
+        {
+          "slug": "browser",
+          "label": "browsers"
+        },
+        {
+          "slug": "data",
+          "label": "data"
+        },
+        {
+          "slug": "software",
+          "label": "Software"
+        },
+        {
+          "slug": "step",
+          "label": "step"
+        }
+      ]
+    },
+    {
+      "a": "https://josh.earth",
+      "b": "https://www.joshfinnie.com",
+      "topics": [
+        {
+          "slug": "book",
+          "label": "books"
+        },
+        {
+          "slug": "open-source",
+          "label": "open source"
+        },
+        {
+          "slug": "retro",
+          "label": "retro"
+        },
+        {
+          "slug": "rust",
+          "label": "rust"
+        },
+        {
+          "slug": "source",
+          "label": "source"
+        }
+      ]
+    },
+    {
+      "a": "https://josh.earth",
+      "b": "https://www.joshuabaker.com",
+      "topics": [
+        {
+          "slug": "city",
+          "label": "city"
+        },
+        {
+          "slug": "digital",
+          "label": "digital"
+        },
+        {
+          "slug": "ownership",
+          "label": "ownership"
+        },
+        {
+          "slug": "research",
+          "label": "Research"
         }
       ]
     },
@@ -928,10 +1238,6 @@
         {
           "slug": "ai",
           "label": "ai"
-        },
-        {
-          "slug": "week",
-          "label": "weeks"
         }
       ]
     },
@@ -1090,6 +1396,10 @@
         {
           "slug": "ai",
           "label": "ai"
+        },
+        {
+          "slug": "text",
+          "label": "text"
         }
       ]
     },
@@ -1112,6 +1422,16 @@
         {
           "slug": "person",
           "label": "person"
+        }
+      ]
+    },
+    {
+      "a": "https://joshgr.com",
+      "b": "https://joshsherman.dev",
+      "topics": [
+        {
+          "slug": "text",
+          "label": "text"
         }
       ]
     },
@@ -1190,6 +1510,10 @@
         {
           "slug": "photos",
           "label": "photos"
+        },
+        {
+          "slug": "text",
+          "label": "text"
         }
       ]
     },
@@ -1401,19 +1725,21 @@
     },
     {
       "a": "https://joshmuller.ca",
+      "b": "https://joshsherman.dev",
+      "topics": [
+        {
+          "slug": "text",
+          "label": "text"
+        }
+      ]
+    },
+    {
+      "a": "https://joshmuller.ca",
       "b": "https://joshtronic.com",
       "topics": [
         {
           "slug": "ai",
           "label": "ai"
-        },
-        {
-          "slug": "technology",
-          "label": "technology"
-        },
-        {
-          "slug": "week",
-          "label": "weeks"
         }
       ]
     },
@@ -1460,6 +1786,16 @@
         {
           "slug": "october",
           "label": "october"
+        }
+      ]
+    },
+    {
+      "a": "https://joshmuller.ca",
+      "b": "https://joshuastuebner.com",
+      "topics": [
+        {
+          "slug": "text",
+          "label": "text"
         }
       ]
     },
@@ -1518,6 +1854,10 @@
         {
           "slug": "october",
           "label": "october"
+        },
+        {
+          "slug": "phone",
+          "label": "phone"
         },
         {
           "slug": "photo",
@@ -1624,6 +1964,10 @@
         {
           "slug": "simple",
           "label": "simple"
+        },
+        {
+          "slug": "small",
+          "label": "small"
         }
       ]
     },
@@ -1650,6 +1994,10 @@
         {
           "slug": "right",
           "label": "right"
+        },
+        {
+          "slug": "small",
+          "label": "small"
         },
         {
           "slug": "windows",
@@ -1706,6 +2054,10 @@
           "label": "red"
         },
         {
+          "slug": "shop",
+          "label": "shop"
+        },
+        {
           "slug": "sport",
           "label": "Sports"
         },
@@ -1737,25 +2089,15 @@
     },
     {
       "a": "https://joshsherman.dev",
-      "b": "https://joshuamorris.info",
-      "topics": [
-        {
-          "slug": "archive",
-          "label": "archive"
-        },
-        {
-          "slug": "model",
-          "label": "models"
-        }
-      ]
-    },
-    {
-      "a": "https://joshsherman.dev",
       "b": "https://joshuastuebner.com",
       "topics": [
         {
           "slug": "data",
           "label": "data"
+        },
+        {
+          "slug": "text",
+          "label": "text"
         }
       ]
     },
@@ -1778,10 +2120,6 @@
       "b": "https://www.joshfinnie.com",
       "topics": [
         {
-          "slug": "model",
-          "label": "models"
-        },
-        {
           "slug": "social",
           "label": "social"
         }
@@ -1791,10 +2129,6 @@
       "a": "https://joshsherman.dev",
       "b": "https://www.joshuabaker.com",
       "topics": [
-        {
-          "slug": "archive",
-          "label": "archive"
-        },
         {
           "slug": "social",
           "label": "social"
@@ -1806,26 +2140,8 @@
       "b": "https://joshua.seigler.net",
       "topics": [
         {
-          "slug": "technology",
-          "label": "technology"
-        },
-        {
           "slug": "world",
           "label": "world"
-        }
-      ]
-    },
-    {
-      "a": "https://joshtronic.com",
-      "b": "https://joshuadrake.org",
-      "topics": [
-        {
-          "slug": "mean",
-          "label": "means"
-        },
-        {
-          "slug": "writing",
-          "label": "Writing"
         }
       ]
     },
@@ -1846,24 +2162,12 @@
           "label": "game"
         },
         {
-          "slug": "human",
-          "label": "human"
-        },
-        {
-          "slug": "mean",
-          "label": "means"
-        },
-        {
           "slug": "table",
           "label": "tables"
         },
         {
           "slug": "world",
           "label": "world"
-        },
-        {
-          "slug": "writing",
-          "label": "Writing"
         }
       ]
     },
@@ -1878,10 +2182,6 @@
         {
           "slug": "learn",
           "label": "learn"
-        },
-        {
-          "slug": "learning",
-          "label": "learning"
         },
         {
           "slug": "video",
@@ -1920,20 +2220,8 @@
           "label": "learn"
         },
         {
-          "slug": "learning",
-          "label": "learning"
-        },
-        {
           "slug": "never",
           "label": "never"
-        },
-        {
-          "slug": "technology",
-          "label": "technology"
-        },
-        {
-          "slug": "writing",
-          "label": "Writing"
         }
       ]
     },
@@ -1946,16 +2234,12 @@
           "label": "ai"
         },
         {
-          "slug": "learning",
-          "label": "learning"
+          "slug": "retro",
+          "label": "retro"
         },
         {
           "slug": "video",
           "label": "video"
-        },
-        {
-          "slug": "week",
-          "label": "weeks"
         },
         {
           "slug": "world",
@@ -1990,14 +2274,6 @@
         {
           "slug": "table",
           "label": "tables"
-        },
-        {
-          "slug": "technology",
-          "label": "technology"
-        },
-        {
-          "slug": "week",
-          "label": "weeks"
         }
       ]
     },
@@ -2232,6 +2508,10 @@
           "label": "design"
         },
         {
+          "slug": "introduction",
+          "label": "introduction"
+        },
+        {
           "slug": "programming",
           "label": "programming"
         },
@@ -2328,6 +2608,10 @@
         {
           "slug": "digital",
           "label": "digital"
+        },
+        {
+          "slug": "physical",
+          "label": "physical"
         }
       ]
     },
@@ -2335,10 +2619,6 @@
       "a": "https://joshuamorris.info",
       "b": "https://joshuastuebner.com",
       "topics": [
-        {
-          "slug": "become",
-          "label": "becomes"
-        },
         {
           "slug": "browser",
           "label": "browsers"
@@ -2362,16 +2642,20 @@
       "b": "https://joshurbandavis.com",
       "topics": [
         {
-          "slug": "become",
-          "label": "becomes"
-        },
-        {
           "slug": "book",
           "label": "books"
         },
         {
           "slug": "browser",
           "label": "browsers"
+        },
+        {
+          "slug": "canvas",
+          "label": "canvas"
+        },
+        {
+          "slug": "color",
+          "label": "color"
         },
         {
           "slug": "digital",
@@ -2470,12 +2754,12 @@
           "label": "images"
         },
         {
-          "slug": "model",
-          "label": "models"
-        },
-        {
           "slug": "october",
           "label": "october"
+        },
+        {
+          "slug": "watch",
+          "label": "watch"
         },
         {
           "slug": "world",
@@ -2490,10 +2774,6 @@
         {
           "slug": "ai",
           "label": "ai"
-        },
-        {
-          "slug": "archive",
-          "label": "archive"
         },
         {
           "slug": "digital",
@@ -2573,7 +2853,7 @@
       "topics": [
         {
           "slug": "become",
-          "label": "becomes"
+          "label": "become"
         },
         {
           "slug": "browser",
@@ -2590,6 +2870,10 @@
         {
           "slug": "line",
           "label": "lines"
+        },
+        {
+          "slug": "small",
+          "label": "small"
         }
       ]
     },
@@ -2789,7 +3073,7 @@
         },
         {
           "slug": "company",
-          "label": "company"
+          "label": "companies"
         },
         {
           "slug": "design",
@@ -2848,6 +3132,16 @@
           "label": "weeks"
         }
       ]
+    },
+    {
+      "a": "https://www.joshfinnie.com",
+      "b": "https://www.joshuakgoldberg.com",
+      "topics": [
+        {
+          "slug": "culture",
+          "label": "culture"
+        }
+      ]
     }
   ],
   "sites": [
@@ -2883,91 +3177,6 @@
                 {
                   "url": "https://joshuadrake.org/projects/JDMCMC",
                   "title": "Computer Vision"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "archive",
-          "label": "archive",
-          "articles": [
-            {
-              "url": "https://artlung.com/flash/",
-              "title": "/flash/ 📁"
-            },
-            {
-              "url": "https://artlung.com/sandiegobloggers-com/",
-              "title": "/sandiegobloggers-com/"
-            },
-            {
-              "url": "https://artlung.com/splashes/",
-              "title": "splash pages"
-            },
-            {
-              "url": "https://artlung.com/twitter/",
-              "title": "/twitter/ 📁"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshsherman.dev",
-              "domain": "joshsherman.dev",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshsherman.dev/projects/annotate-archive/",
-                  "title": "Annotate Archive | Josh Sherman"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshuabaker.com",
-              "domain": "www.joshuabaker.com",
-              "title": "Joshua Baker",
-              "articles": [
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=undisclosed-consumer-ai-platform-2025",
-                  "title": "Consumer AI Platform"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=legatum-closer-look-2024",
-                  "title": "Closer Look"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=anthology-london-business-intelligence-platform-2023",
-                  "title": "Business Intelligence Platform"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=anthology-london-sales-resident-platform-2023",
-                  "title": "Sales & Resident Platform"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=dandara-living-social-media-platforms-2023",
-                  "title": "Social Media Platforms"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=taylor-bennett-client-portal-2023",
-                  "title": "Client Portal"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=animade-animade-2022",
-                  "title": "Animade"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-2022",
-                  "title": "Merchant Integration Tools"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-                  "title": "6 Analog"
                 }
               ]
             }
@@ -3083,6 +3292,17 @@
               ]
             },
             {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/apps",
+                  "title": "Apps"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
@@ -3194,7 +3414,7 @@
         },
         {
           "slug": "company",
-          "label": "company",
+          "label": "companies",
           "articles": [
             {
               "url": "https://artlung.com/archive/portfolio/dhtml/",
@@ -3381,6 +3601,40 @@
           ]
         },
         {
+          "slug": "culture",
+          "label": "culture",
+          "articles": [
+            {
+              "url": "https://artlung.com/words/",
+              "title": "/words/ 📁"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/projects/tikicompass/",
+                  "title": "TikiCompass.com TikiCompass is your ultimate guide to discovering authentic tiki bars around the world, featuring tropical cocktails, Polynesian culture, and a vibrant community of tiki enthusiasts."
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuakgoldberg.com",
+              "domain": "www.joshuakgoldberg.com",
+              "title": "Josh Goldberg",
+              "articles": [
+                {
+                  "url": "https://www.joshuakgoldberg.com/speaking",
+                  "title": "Speaking"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "data",
           "label": "data",
           "articles": [
@@ -3413,6 +3667,21 @@
                 {
                   "url": "https://joshsherman.dev/projects/real-estate-site/",
                   "title": "Real Estate Website | Josh Sherman"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/level5_tools",
+                  "title": "Autonomous Driving Tools"
+                },
+                {
+                  "url": "https://josh.earth/portfolio/sensopolis",
+                  "title": "Sensopolis: A Connected Model City"
                 }
               ]
             },
@@ -3573,6 +3842,17 @@
               ]
             },
             {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/atlantis",
+                  "title": "Atlantis"
+                }
+              ]
+            },
+            {
               "origin": "https://www.joshuabaker.com",
               "domain": "www.joshuabaker.com",
               "title": "Joshua Baker",
@@ -3644,29 +3924,6 @@
                 {
                   "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
                   "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "email",
-          "label": "emails",
-          "articles": [
-            {
-              "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
-              "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters."
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
                 }
               ]
             }
@@ -3812,6 +4069,29 @@
                 {
                   "url": "https://joshgr.com/writing/how-wizardly-words-invents-words/",
                   "title": "How Wizardly Words Invents Words"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "graphics",
+          "label": "graphics",
+          "articles": [
+            {
+              "url": "https://artlung.com/amiga/",
+              "title": "/amiga/"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/graphics/",
+                  "title": "Graphics"
                 }
               ]
             }
@@ -4115,17 +4395,6 @@
               ]
             },
             {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
-                }
-              ]
-            },
-            {
               "origin": "https://joshuastuebner.com",
               "domain": "joshuastuebner.com",
               "title": "Joshua Stübner",
@@ -4183,6 +4452,17 @@
                 {
                   "url": "https://joshurbandavis.com/experiments/other-side/index.html",
                   "title": "the other side"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/sensopolis",
+                  "title": "Sensopolis: A Connected Model City"
                 }
               ]
             },
@@ -4331,17 +4611,6 @@
             }
           ],
           "sites": [
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
-                }
-              ]
-            },
             {
               "origin": "https://joshuadrake.org",
               "domain": "joshuadrake.org",
@@ -5008,6 +5277,17 @@
                   "title": "Skills"
                 }
               ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/apps",
+                  "title": "Apps"
+                }
+              ]
             }
           ]
         },
@@ -5040,17 +5320,6 @@
                 {
                   "url": "https://joshmuller.ca/work/",
                   "title": "Work Together"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
                 }
               ]
             },
@@ -5264,17 +5533,6 @@
                 {
                   "url": "https://joshmuller.ca/writings/2022/photo-northern-lights/",
                   "title": "[Photo] Northern Lights"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
                 }
               ]
             },
@@ -5773,6 +6031,17 @@
               ]
             },
             {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/embedded-rust",
+                  "title": "Embedded Rust, Iris UI & E-Paper"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuadrake.org",
               "domain": "joshuadrake.org",
               "title": "Joshua Drake",
@@ -5825,6 +6094,1046 @@
                 {
                   "url": "https://joshua.seigler.net/music/",
                   "title": "/music"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "origin": "https://josh.earth",
+      "topics": [
+        {
+          "slug": "book",
+          "label": "books",
+          "articles": [
+            {
+              "url": "https://josh.earth/portfolio/swinghacks",
+              "title": "Swing Hacks"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/",
+                  "title": "Books"
+                },
+                {
+                  "url": "https://www.chrisminnick.com/books/coding-all-in-one-for-dummies/",
+                  "title": "Coding All-in-One For Dummies, 3rd Edition"
+                },
+                {
+                  "url": "https://www.chrisminnick.com/books/artificial-intelligence-all-in-one-for-dummies/",
+                  "title": "Artificial Intelligence All-in-One For Dummies"
+                },
+                {
+                  "url": "https://www.chrisminnick.com/books/react-js-foundations/",
+                  "title": "React JS Foundations"
+                },
+                {
+                  "url": "https://www.chrisminnick.com/books/hip-pocket-guide-to-html-5-2/",
+                  "title": "Hip Pocket Guide to HTML 5.2"
+                },
+                {
+                  "url": "https://www.chrisminnick.com/books/writing-computer-code/",
+                  "title": "Writing Computer Code"
+                },
+                {
+                  "url": "https://www.chrisminnick.com/fiction/",
+                  "title": "Fiction"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/books/",
+                  "title": "Books | Josh Finnie"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshurbandavis.com",
+              "domain": "joshurbandavis.com",
+              "title": "Josh Urban Davis",
+              "articles": [
+                {
+                  "url": "https://joshurbandavis.com/experiments/in-other-words/index.html",
+                  "title": "in other words"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/now/",
+                  "title": "Joshua Morris: Around"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/resources/",
+                  "title": "Resources"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/books/",
+                  "title": "/books"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "browser",
+          "label": "browsers",
+          "articles": [
+            {
+              "url": "https://josh.earth/apps",
+              "title": "Apps"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/webkit-for-dummies/",
+                  "title": "WebKit For Dummies"
+                }
+              ]
+            },
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/archive/portfolio/dhtml/",
+                  "title": "A year later the buzzword was “Dynamic HTML.” Netscape and Internet Explorer were hot to help developers make the web even more interactive. Preferably using only their browser and not the one from that other company."
+                },
+                {
+                  "url": "https://artlung.com/dtd/",
+                  "title": "/dtd/ 📁"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshurbandavis.com",
+              "domain": "joshurbandavis.com",
+              "title": "Josh Urban Davis",
+              "articles": [
+                {
+                  "url": "https://joshurbandavis.com/experiments/the-occupant/index.html",
+                  "title": "the occupant"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
+                  "title": "What Happens When a Webpage Becomes Part of a 3D World?"
+                },
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spicy/",
+                  "title": "9 Spicy"
+                },
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/plastic/",
+                  "title": "4 Plastic"
+                },
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/spark/",
+                  "title": "2 Spark"
+                },
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/",
+                  "title": "Weird Web October 2026 Interactive Halloween browser toys and games, one October theme at a time."
+                },
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/reveal/",
+                  "title": "1 Reveal"
+                },
+                {
+                  "url": "https://joshuamorris.info/experiments/corkboard/",
+                  "title": "Corkboard A corkboard for notes, pins, and connecting threads in the browser—an open-web experiment for exploring ideas together and leaving a mark."
+                },
+                {
+                  "url": "https://joshuamorris.info/experiments/",
+                  "title": "Experiments"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/achtung-die-kurve/",
+                  "title": "Achtung die Kurve"
+                },
+                {
+                  "url": "https://joshuastuebner.com/projects/details/testaccount-manager/",
+                  "title": "Testaccount manager"
+                },
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/14_css-only-countup/",
+                  "title": "14: CSS only countup"
+                },
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/21_colorful-entry/",
+                  "title": "21: Colorful Entry"
+                },
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/23_scroll-and-spin/",
+                  "title": "23: Scroll and Spin"
+                },
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/28_pdf-test/",
+                  "title": "28: PDF Test"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "city",
+          "label": "city",
+          "articles": [
+            {
+              "url": "https://josh.earth/portfolio/sensopolis",
+              "title": "Sensopolis: A Connected Model City"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/photo/dinosaur-skeleton-museum-exhibit-35mm",
+                  "title": "T-Rex at the Perot"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshurbandavis.com",
+              "domain": "joshurbandavis.com",
+              "title": "Josh Urban Davis",
+              "articles": [
+                {
+                  "url": "https://joshurbandavis.com/experiments/obelisk/index.html",
+                  "title": "obelisk for a deleted world"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=city-outdoor-media-city-outdoor-media-2014",
+                  "title": "City Outdoor Media"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/writing/how-wizardly-words-invents-words/",
+                  "title": "How Wizardly Words Invents Words"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "data",
+          "label": "data",
+          "articles": [
+            {
+              "url": "https://josh.earth/portfolio/level5_tools",
+              "title": "Autonomous Driving Tools"
+            },
+            {
+              "url": "https://josh.earth/portfolio/sensopolis",
+              "title": "Sensopolis: A Connected Model City"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/coding-all-in-one-for-dummies/",
+                  "title": "Coding All-in-One For Dummies, 3rd Edition"
+                }
+              ]
+            },
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/blog/2026/10/28/novelty-wave/",
+                  "title": "The panorama today Dawn Patrol data visualization from today The base of the pier and the seawall is normally sand. Today I was able to ride waves in that area, some of them were waves going out to sea, some were cross waves headed perpendicular to the bea"
+                },
+                {
+                  "url": "https://artlung.com/privacy-policy/",
+                  "title": "/privacy-policy/"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshsherman.dev",
+              "domain": "joshsherman.dev",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshsherman.dev/projects/real-estate-site/",
+                  "title": "Real Estate Website | Josh Sherman"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+                  "title": "Cessna HV Retrofit"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/seasonal/",
+                  "title": "Seasonal Calendar"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "digital",
+          "label": "digital",
+          "articles": [
+            {
+              "url": "https://josh.earth/portfolio/atlantis",
+              "title": "Atlantis"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
+                  "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters."
+                }
+              ]
+            },
+            {
+              "origin": "https://joshurbandavis.com",
+              "domain": "joshurbandavis.com",
+              "title": "Josh Urban Davis",
+              "articles": [
+                {
+                  "url": "https://joshurbandavis.com/tarot-guidebook/",
+                  "title": "Browse the Guidebook"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=insley-nash-digital-fabric-printing-platform-2013",
+                  "title": "&Digital Fabric-printing Platform"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/not-optional/appendix/tech-eu-5-billion-for-startup-employees/",
+                  "title": "€5 billion more into the hands of European startup employees · Tech.eu reported that the campaign had helped put over €5bn more into the hands of startup employees. I defined its digital strategy and led the team that built its platform. Tech.eu Read more"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/sheet/",
+                  "title": "5 Sheet"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/resources/",
+                  "title": "Resources"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/heuschrecke-messe/",
+                  "title": "Heuschrecke Messe"
+                },
+                {
+                  "url": "https://joshuastuebner.com/digital-garden/",
+                  "title": "Digital Garden"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "embedded",
+          "label": "embedded",
+          "articles": [
+            {
+              "url": "https://josh.earth/portfolio/embedded-rust",
+              "title": "Embedded Rust, Iris UI & E-Paper"
+            },
+            {
+              "url": "https://josh.earth/portfolio/led-clock",
+              "title": "LED Matrix Clock & On Air Sign"
+            },
+            {
+              "url": "https://josh.earth/projects",
+              "title": "Projects — josh.earth"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/resloadbank/",
+                  "title": "Turbo Generator Load-Bank"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "experimental",
+          "label": "experimental",
+          "articles": [
+            {
+              "url": "https://josh.earth/portfolio/embedded-rust",
+              "title": "Embedded Rust, Iris UI & E-Paper"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshurbandavis.com",
+              "domain": "joshurbandavis.com",
+              "title": "Josh Urban Davis",
+              "articles": [
+                {
+                  "url": "https://joshurbandavis.com/experiments/other-side/index.html",
+                  "title": "the other side"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/30/worth-wandering-radio-aporee/",
+                  "title": "Worth Wandering: Radio Aporee"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "hardware",
+          "label": "hardware",
+          "articles": [
+            {
+              "url": "https://josh.earth/portfolio/embedded-rust",
+              "title": "Embedded Rust, Iris UI & E-Paper"
+            },
+            {
+              "url": "https://josh.earth/portfolio/led-clock",
+              "title": "LED Matrix Clock & On Air Sign"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/now/",
+                  "title": "Joshua Morris: Around"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "live",
+          "label": "live",
+          "articles": [
+            {
+              "url": "https://josh.earth/portfolio/sensopolis",
+              "title": "Sensopolis: A Connected Model City"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/mixtapes/2016-live-and-let-live/",
+                  "title": "Live And Let (Live)"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshurbandavis.com",
+              "domain": "joshurbandavis.com",
+              "title": "Josh Urban Davis",
+              "articles": [
+                {
+                  "url": "https://joshurbandavis.com/experiments/internet-is-haunted/index.html",
+                  "title": "the internet is haunted"
+                },
+                {
+                  "url": "https://joshurbandavis.com/experiments/other-side/index.html",
+                  "title": "the other side"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
+                  "title": "What Happens When a Webpage Becomes Part of a 3D World?"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "model",
+          "label": "model",
+          "articles": [
+            {
+              "url": "https://josh.earth/portfolio/sensopolis",
+              "title": "Sensopolis: A Connected Model City"
+            },
+            {
+              "url": "https://josh.earth/projects",
+              "title": "Projects — josh.earth"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
+                  "title": "6 Analog"
+                },
+                {
+                  "url": "https://joshuamorris.info/experiments/model-viewer/",
+                  "title": "Model viewer Three Trion figures in matching stages — land clearing, voxel valley, underwater — with quiet orbit controls. Archived from a July 2015 CodePen."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "open-source",
+          "label": "open source",
+          "articles": [
+            {
+              "url": "https://josh.earth/apps",
+              "title": "Apps"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
+                  "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
+                },
+                {
+                  "url": "https://www.joshfinnie.com/projects/",
+                  "title": "Projects | Josh Finnie"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/skills",
+                  "title": "Skills"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "ownership",
+          "label": "ownership",
+          "articles": [
+            {
+              "url": "https://josh.earth/projects",
+              "title": "Projects — josh.earth"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/banked/appendix/banked-comic-relief-red-nose-day/",
+                  "title": "Powering Red Nose Day donations · Banked became a technology partner to Comic Relief for Red Nose Day. The donation pages were one of the later projects in my work with Banked. Banked Read more"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/banked/appendix/fintech-futures-nab-acquires-banked/",
+                  "title": "Acquired by NAB · National Australia Bank, an investor since 2022, took full ownership of Banked. It is the company behind the work on this page. FinTech Futures Read more"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/not-optional/appendix/sifted-europe-loosens-stock-options/",
+                  "title": "Europe loosens rules on stock options · Sifted covered the wave of European countries loosening their rules on stock options. The country ranking table my team built tracked each state’s progress. Sifted Read more"
+                },
+                {
+                  "url": "https://www.joshuabaker.com/work/not-optional/appendix/tech-eu-5-years-employee-ownership/",
+                  "title": "European startups catch up on employee stock options · Five years on, Tech.eu reported European startups catching up on employee ownership. The campaign ran on the platform my team built. Tech.eu Read more"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "research",
+          "label": "Research",
+          "articles": [
+            {
+              "url": "https://josh.earth/portfolio/subarctic",
+              "title": "subArctic UI Toolkit"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=unilever-research-development-map-2009",
+                  "title": "Research & Development Map"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/turboelectriccessna",
+                  "title": "TurboElectric Cessna"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "retro",
+          "label": "retro",
+          "articles": [
+            {
+              "url": "https://josh.earth/portfolio/sensopolis",
+              "title": "Sensopolis: A Connected Model City"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
+                  "title": "The October Micro SaaS Challenge: A Retro"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/games/age-of-combat/",
+                  "title": "Age of Combat"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "rust",
+          "label": "rust",
+          "articles": [
+            {
+              "url": "https://josh.earth/portfolio/embedded-rust",
+              "title": "Embedded Rust, Iris UI & E-Paper"
+            },
+            {
+              "url": "https://josh.earth/projects",
+              "title": "Projects — josh.earth"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
+                  "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "set",
+          "label": "set",
+          "articles": [
+            {
+              "url": "https://josh.earth/projects",
+              "title": "Projects — josh.earth"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/server",
+                  "title": "Server"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "small",
+          "label": "small",
+          "articles": [
+            {
+              "url": "https://josh.earth/projects",
+              "title": "Projects — josh.earth"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/photo/cafe-table-chairs-plant-shop-window-35mm",
+                  "title": "Sidewalk Charm"
+                },
+                {
+                  "url": "https://joshozuna.com/photo/plane-overcast-sky-35mm",
+                  "title": "Flyover Country"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshurbandavis.com",
+              "domain": "joshurbandavis.com",
+              "title": "Josh Urban Davis",
+              "articles": [
+                {
+                  "url": "https://joshurbandavis.com/experiments/",
+                  "title": "Experiments"
+                },
+                {
+                  "url": "https://joshurbandavis.com/experiments/internet-is-haunted/index.html",
+                  "title": "the internet is haunted"
+                },
+                {
+                  "url": "https://joshurbandavis.com/experiments/the-occupant/index.html",
+                  "title": "the occupant"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/magic-league/",
+                  "title": "Magic League"
+                },
+                {
+                  "url": "https://joshuastuebner.com/digital-garden/",
+                  "title": "Digital Garden"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "software",
+          "label": "Software",
+          "articles": [
+            {
+              "url": "https://josh.earth/portfolio/embedded-rust",
+              "title": "Embedded Rust, Iris UI & E-Paper"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/claude-code-for-dummies/",
+                  "title": "Claude Code For Dummies"
+                },
+                {
+                  "url": "https://www.chrisminnick.com/books/a-developers-guide-to-integrating-generative-ai-into-applications/",
+                  "title": "A Developer’s Guide to Integrating Generative AI into Applications"
+                }
+              ]
+            },
+            {
+              "origin": "https://forwardbias.dev",
+              "domain": "forwardbias.dev",
+              "title": "Josh Caldwell",
+              "articles": [
+                {
+                  "url": "https://forwardbias.dev/ideas/personal-micro-software/",
+                  "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/enterprise-sales-teams/",
+                  "title": "Enterprise sales teams, please, I beg you, stop"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+                  "title": "Cessna HV Retrofit"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/software/",
+                  "title": "Software"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/now/",
+                  "title": "Joshua Morris: Around"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
+                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
+                },
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
+                  "title": "Knowing How to Build Something Is Different From Knowing What Should Be Built"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshua.seigler.net",
+              "domain": "joshua.seigler.net",
+              "title": "Joshua Seigler",
+              "articles": [
+                {
+                  "url": "https://joshua.seigler.net/books/",
+                  "title": "/books"
+                },
+                {
+                  "url": "https://joshua.seigler.net/music/",
+                  "title": "/music"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "source",
+          "label": "source",
+          "articles": [
+            {
+              "url": "https://josh.earth/apps",
+              "title": "Apps"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/words/",
+                  "title": "/words/ 📁"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/projects/",
+                  "title": "Projects | Josh Finnie"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshghent.com",
+              "domain": "joshghent.com",
+              "title": "Josh Ghent",
+              "articles": [
+                {
+                  "url": "https://joshghent.com/skills",
+                  "title": "Skills"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "step",
+          "label": "step",
+          "articles": [
+            {
+              "url": "https://josh.earth/portfolio/swinghacks",
+              "title": "Swing Hacks"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/beginning-html5-and-css3-for-dummies/",
+                  "title": "Beginning HTML5 and CSS3 For Dummies"
                 }
               ]
             }
@@ -6295,10 +7604,6 @@
               "title": "Josh Sherman",
               "articles": [
                 {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
-                },
-                {
                   "url": "https://joshtronic.com/games/idol-idle/",
                   "title": "Idol Idle"
                 }
@@ -6645,6 +7950,17 @@
                   "title": "Projects | Josh Finnie"
                 }
               ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/apps",
+                  "title": "Apps"
+                }
+              ]
             }
           ]
         },
@@ -6704,6 +8020,17 @@
                 {
                   "url": "https://forwardbias.dev/ideas/personal-micro-software/",
                   "title": "The Era of Personal Micro-Software"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/embedded-rust",
+                  "title": "Embedded Rust, Iris UI & E-Paper"
                 }
               ]
             },
@@ -6796,6 +8123,17 @@
                   "title": "Projects | Josh Finnie"
                 }
               ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/apps",
+                  "title": "Apps"
+                }
+              ]
             }
           ]
         },
@@ -6851,17 +8189,6 @@
                 {
                   "url": "https://joshmuller.ca/writings/2022/photo-northern-lights/",
                   "title": "[Photo] Northern Lights"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
                 }
               ]
             },
@@ -6970,10 +8297,6 @@
               "domain": "joshtronic.com",
               "title": "Josh Sherman",
               "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
-                },
                 {
                   "url": "https://joshtronic.com/games/idol-idle/",
                   "title": "Idol Idle"
@@ -7084,6 +8407,17 @@
               ]
             },
             {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/sensopolis",
+                  "title": "Sensopolis: A Connected Model City"
+                }
+              ]
+            },
+            {
               "origin": "https://www.joshuabaker.com",
               "domain": "www.joshuabaker.com",
               "title": "Joshua Baker",
@@ -7186,6 +8520,29 @@
                 {
                   "url": "https://joshuadrake.org/projects/resloadbank/",
                   "title": "Turbo Generator Load-Bank"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "graphics",
+          "label": "graphics",
+          "articles": [
+            {
+              "url": "https://joshgr.com/graphics/",
+              "title": "Graphics"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/amiga/",
+                  "title": "/amiga/"
                 }
               ]
             }
@@ -7577,6 +8934,17 @@
               ]
             },
             {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/embedded-rust",
+                  "title": "Embedded Rust, Iris UI & E-Paper"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuadrake.org",
               "domain": "joshuadrake.org",
               "title": "Joshua Drake",
@@ -7618,6 +8986,51 @@
                 {
                   "url": "https://joshua.seigler.net/music/",
                   "title": "/music"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "text",
+          "label": "text",
+          "articles": [
+            {
+              "url": "https://joshgr.com/wizardly-words/",
+              "title": "Wizardly Words"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshsherman.dev",
+              "domain": "joshsherman.dev",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshsherman.dev/projects/ocr-screenshot-scraper/",
+                  "title": "OCR Screenshot Scraper | Josh Sherman"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/13_animated-text/",
+                  "title": "13: Animated Text"
                 }
               ]
             }
@@ -8087,10 +9500,6 @@
               "title": "Josh Sherman",
               "articles": [
                 {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
-                },
-                {
                   "url": "https://joshtronic.com/games/idol-idle/",
                   "title": "Idol Idle"
                 }
@@ -8538,6 +9947,29 @@
           ]
         },
         {
+          "slug": "phone",
+          "label": "phone",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/writings/2022/photo-northern-lights/",
+              "title": "[Photo] Northern Lights"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
+                  "title": "Micro SaaS Week Four: SignedOnSite"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "photo",
           "label": "photo",
           "articles": [
@@ -8608,17 +10040,6 @@
               ]
             },
             {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
-                }
-              ]
-            },
-            {
               "origin": "https://www.joshuabaker.com",
               "domain": "www.joshuabaker.com",
               "title": "Joshua Baker",
@@ -8669,6 +10090,51 @@
                 {
                   "url": "https://joshua.seigler.net/music/",
                   "title": "/music"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "text",
+          "label": "text",
+          "articles": [
+            {
+              "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+              "title": "Healthy Weight Plan Builder"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshsherman.dev",
+              "domain": "joshsherman.dev",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshsherman.dev/projects/ocr-screenshot-scraper/",
+                  "title": "OCR Screenshot Scraper | Josh Sherman"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/wizardly-words/",
+                  "title": "Wizardly Words"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/13_animated-text/",
+                  "title": "13: Animated Text"
                 }
               ]
             }
@@ -8760,17 +10226,6 @@
                 {
                   "url": "https://joshghent.com/php2shell-overreaction/",
                   "title": "Last week was terrible. It didn't have to be"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
                 }
               ]
             },
@@ -8895,6 +10350,17 @@
                 {
                   "url": "https://joshurbandavis.com/experiments/obelisk/index.html",
                   "title": "obelisk for a deleted world"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/sensopolis",
+                  "title": "Sensopolis: A Connected Model City"
                 }
               ]
             },
@@ -9513,6 +10979,29 @@
           ]
         },
         {
+          "slug": "shop",
+          "label": "shop",
+          "articles": [
+            {
+              "url": "https://joshozuna.com/photo/cafe-table-chairs-plant-shop-window-35mm",
+              "title": "Sidewalk Charm"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshuabaker.com",
+              "domain": "www.joshuabaker.com",
+              "title": "Joshua Baker",
+              "articles": [
+                {
+                  "url": "https://www.joshuabaker.com/work/?work=kemistry-gallery-gallery-shop-2008",
+                  "title": "Gallery Shop"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "simple",
           "label": "simple",
           "articles": [
@@ -9530,6 +11019,67 @@
                 {
                   "url": "https://joshuastuebner.com/projects/details/testaccount-manager/",
                   "title": "Testaccount manager"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "small",
+          "label": "small",
+          "articles": [
+            {
+              "url": "https://joshozuna.com/photo/cafe-table-chairs-plant-shop-window-35mm",
+              "title": "Sidewalk Charm"
+            },
+            {
+              "url": "https://joshozuna.com/photo/plane-overcast-sky-35mm",
+              "title": "Flyover Country"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshurbandavis.com",
+              "domain": "joshurbandavis.com",
+              "title": "Josh Urban Davis",
+              "articles": [
+                {
+                  "url": "https://joshurbandavis.com/experiments/",
+                  "title": "Experiments"
+                },
+                {
+                  "url": "https://joshurbandavis.com/experiments/internet-is-haunted/index.html",
+                  "title": "the internet is haunted"
+                },
+                {
+                  "url": "https://joshurbandavis.com/experiments/the-occupant/index.html",
+                  "title": "the occupant"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/projects",
+                  "title": "Projects — josh.earth"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/magic-league/",
+                  "title": "Magic League"
+                },
+                {
+                  "url": "https://joshuastuebner.com/digital-garden/",
+                  "title": "Digital Garden"
                 }
               ]
             }
@@ -9734,91 +11284,6 @@
       "origin": "https://joshsherman.dev",
       "topics": [
         {
-          "slug": "archive",
-          "label": "archive",
-          "articles": [
-            {
-              "url": "https://joshsherman.dev/projects/annotate-archive/",
-              "title": "Annotate Archive | Josh Sherman"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/flash/",
-                  "title": "/flash/ 📁"
-                },
-                {
-                  "url": "https://artlung.com/sandiegobloggers-com/",
-                  "title": "/sandiegobloggers-com/"
-                },
-                {
-                  "url": "https://artlung.com/splashes/",
-                  "title": "splash pages"
-                },
-                {
-                  "url": "https://artlung.com/twitter/",
-                  "title": "/twitter/ 📁"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshuabaker.com",
-              "domain": "www.joshuabaker.com",
-              "title": "Joshua Baker",
-              "articles": [
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=undisclosed-consumer-ai-platform-2025",
-                  "title": "Consumer AI Platform"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=legatum-closer-look-2024",
-                  "title": "Closer Look"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=anthology-london-business-intelligence-platform-2023",
-                  "title": "Business Intelligence Platform"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=anthology-london-sales-resident-platform-2023",
-                  "title": "Sales & Resident Platform"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=dandara-living-social-media-platforms-2023",
-                  "title": "Social Media Platforms"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=taylor-bennett-client-portal-2023",
-                  "title": "Client Portal"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=animade-animade-2022",
-                  "title": "Animade"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-2022",
-                  "title": "Merchant Integration Tools"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-                  "title": "6 Analog"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "data",
           "label": "data",
           "articles": [
@@ -9855,6 +11320,21 @@
               ]
             },
             {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/level5_tools",
+                  "title": "Autonomous Driving Tools"
+                },
+                {
+                  "url": "https://josh.earth/portfolio/sensopolis",
+                  "title": "Sensopolis: A Connected Model City"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuadrake.org",
               "domain": "joshuadrake.org",
               "title": "Joshua Drake",
@@ -9873,44 +11353,6 @@
                 {
                   "url": "https://joshuastuebner.com/seasonal/",
                   "title": "Seasonal Calendar"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "model",
-          "label": "models",
-          "articles": [
-            {
-              "url": "https://joshsherman.dev/projects/ocr-screenshot-scraper/",
-              "title": "OCR Screenshot Scraper | Josh Sherman"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.joshfinnie.com",
-              "domain": "www.joshfinnie.com",
-              "title": "Josh Finnie",
-              "articles": [
-                {
-                  "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
-                  "title": "Tailwind, Stack Overflow, and the Docs Snowball"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-                  "title": "6 Analog"
-                },
-                {
-                  "url": "https://joshuamorris.info/experiments/model-viewer/",
-                  "title": "Model viewer Three Trion figures in matching stages — land clearing, voxel valley, underwater — with quiet orbit controls. Archived from a July 2015 CodePen."
                 }
               ]
             }
@@ -10017,6 +11459,51 @@
               ]
             }
           ]
+        },
+        {
+          "slug": "text",
+          "label": "text",
+          "articles": [
+            {
+              "url": "https://joshsherman.dev/projects/ocr-screenshot-scraper/",
+              "title": "OCR Screenshot Scraper | Josh Sherman"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/wizardly-words/",
+                  "title": "Wizardly Words"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/experiments/ex/13_animated-text/",
+                  "title": "13: Animated Text"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -10027,10 +11514,6 @@
           "slug": "ai",
           "label": "ai",
           "articles": [
-            {
-              "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-              "title": "Learning a New Tech Stack with an LLM"
-            },
             {
               "url": "https://joshtronic.com/games/idol-idle/",
               "title": "Idol Idle"
@@ -10265,29 +11748,6 @@
           ]
         },
         {
-          "slug": "email",
-          "label": "emails",
-          "articles": [
-            {
-              "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-              "title": "Learning a New Tech Stack with an LLM"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
-                  "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters."
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "game",
           "label": "game",
           "articles": [
@@ -10379,29 +11839,6 @@
           ]
         },
         {
-          "slug": "human",
-          "label": "human",
-          "articles": [
-            {
-              "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-              "title": "Learning a New Tech Stack with an LLM"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/fake/",
-                  "title": "3 Fake"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "learn",
           "label": "learn",
           "articles": [
@@ -10453,115 +11890,6 @@
                 {
                   "url": "https://joshuastuebner.com/experiments/ex/08_shaderstart/",
                   "title": "08: Shaderstart"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "learning",
-          "label": "learning",
-          "articles": [
-            {
-              "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-              "title": "Learning a New Tech Stack with an LLM"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
-              "articles": [
-                {
-                  "url": "https://www.chrisminnick.com/books/writing-computer-code/",
-                  "title": "Writing Computer Code"
-                },
-                {
-                  "url": "https://www.chrisminnick.com/books/javascript-for-kids/",
-                  "title": "JavaScript For Kids"
-                }
-              ]
-            },
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/comics/",
-                  "title": "artlung.com/comics/"
-                },
-                {
-                  "url": "https://artlung.com/mixtapes/machine-learning-healing/",
-                  "title": "Machine Learning Healing"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshfinnie.com",
-              "domain": "www.joshfinnie.com",
-              "title": "Josh Finnie",
-              "articles": [
-                {
-                  "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
-                  "title": "Tailwind, Stack Overflow, and the Docs Snowball"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuastuebner.com",
-              "domain": "joshuastuebner.com",
-              "title": "Joshua Stübner",
-              "articles": [
-                {
-                  "url": "https://joshuastuebner.com/experiments/ex/04_silvester/",
-                  "title": "04: Silvester"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "mean",
-          "label": "means",
-          "articles": [
-            {
-              "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-              "title": "Learning a New Tech Stack with an LLM"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/archive/portfolio/1999/",
-                  "title": "HTML was so primitive in 1999 that I described this portfolio piece as “interactive.” All “interactive” means was that it had content that changed as items were selected. We take such things for granted now."
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuadrake.org",
-              "domain": "joshuadrake.org",
-              "title": "Joshua Drake",
-              "articles": [
-                {
-                  "url": "https://joshuadrake.org/projects/JDMCMC",
-                  "title": "Computer Vision"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
-                  "title": "Your Code Editor Is Now a Security Threat"
                 }
               ]
             }
@@ -10674,6 +12002,40 @@
           ]
         },
         {
+          "slug": "retro",
+          "label": "retro",
+          "articles": [
+            {
+              "url": "https://joshtronic.com/games/age-of-combat/",
+              "title": "Age of Combat"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
+                  "title": "The October Micro SaaS Challenge: A Retro"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/sensopolis",
+                  "title": "Sensopolis: A Connected Model City"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "street",
           "label": "street",
           "articles": [
@@ -10774,105 +12136,6 @@
           ]
         },
         {
-          "slug": "technology",
-          "label": "technology",
-          "articles": [
-            {
-              "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-              "title": "Learning a New Tech Stack with an LLM"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
-              "articles": [
-                {
-                  "url": "https://www.chrisminnick.com/books/a-developers-guide-to-integrating-generative-ai-into-applications/",
-                  "title": "A Developer’s Guide to Integrating Generative AI into Applications"
-                }
-              ]
-            },
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/words/",
-                  "title": "/words/ 📁"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshmuller.ca",
-              "domain": "joshmuller.ca",
-              "title": "Josh Müller",
-              "articles": [
-                {
-                  "url": "https://joshmuller.ca/work/",
-                  "title": "Work Together"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshuabaker.com",
-              "domain": "www.joshuabaker.com",
-              "title": "Joshua Baker",
-              "articles": [
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=undisclosed-consumer-ai-platform-2025",
-                  "title": "Consumer AI Platform"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/pure-sports-medicine/",
-                  "title": "Reception & Booking AI Agent"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=dandara-living-social-media-platforms-2023",
-                  "title": "Social Media Platforms"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=constant-contact-constant-contact-brand-2020",
-                  "title": "Constant Contact Brand"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=endurance-group-endurance-group-2020",
-                  "title": "Endurance Group"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=endurance-group-investor-relations-2020",
-                  "title": "Investor Relations"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=endurance-group-recruitment-platform-2020",
-                  "title": "Recruitment Platform"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/the-dots/",
-                  "title": "The Dots"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshua.seigler.net",
-              "domain": "joshua.seigler.net",
-              "title": "Joshua Seigler",
-              "articles": [
-                {
-                  "url": "https://joshua.seigler.net/books/",
-                  "title": "/books"
-                },
-                {
-                  "url": "https://joshua.seigler.net/music/",
-                  "title": "/music"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "video",
           "label": "video",
           "articles": [
@@ -10912,85 +12175,6 @@
                 {
                   "url": "https://joshuastuebner.com/experiments/ex/24_big-number/",
                   "title": "24: Big Number"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "week",
-          "label": "weeks",
-          "articles": [
-            {
-              "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-              "title": "Learning a New Tech Stack with an LLM"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
-                  "title": "I sent a brief note to a friend via a major chat platform a few days ago. More than a day ago, less than a week ago."
-                },
-                {
-                  "url": "https://artlung.com/reels/",
-                  "title": "artlung.com/reels/"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshfinnie.com",
-              "domain": "www.joshfinnie.com",
-              "title": "Josh Finnie",
-              "articles": [
-                {
-                  "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
-                  "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
-                },
-                {
-                  "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
-                  "title": "The October Micro SaaS Challenge: A Retro"
-                },
-                {
-                  "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
-                  "title": "Micro SaaS Week Four: SignedOnSite"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshghent.com",
-              "domain": "joshghent.com",
-              "title": "Josh Ghent",
-              "articles": [
-                {
-                  "url": "https://joshghent.com/php2shell-overreaction/",
-                  "title": "Last week was terrible. It didn't have to be"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshmuller.ca",
-              "domain": "joshmuller.ca",
-              "title": "Josh Müller",
-              "articles": [
-                {
-                  "url": "https://joshmuller.ca/writings/2022/photo-northern-lights/",
-                  "title": "[Photo] Northern Lights"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshuabaker.com",
-              "domain": "www.joshuabaker.com",
-              "title": "Joshua Baker",
-              "articles": [
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=showstudio-london-fashion-week-2006",
-                  "title": "London Fashion Week"
                 }
               ]
             }
@@ -11097,51 +12281,6 @@
               ]
             }
           ]
-        },
-        {
-          "slug": "writing",
-          "label": "Writing",
-          "articles": [
-            {
-              "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-              "title": "Learning a New Tech Stack with an LLM"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://www.chrisminnick.com",
-              "domain": "www.chrisminnick.com",
-              "title": "Chris Minnick",
-              "articles": [
-                {
-                  "url": "https://www.chrisminnick.com/books/writing-computer-code/",
-                  "title": "Writing Computer Code"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuadrake.org",
-              "domain": "joshuadrake.org",
-              "title": "Joshua Drake",
-              "articles": [
-                {
-                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
-                  "title": "Cessna HV Retrofit"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/11/05/ai-is-writing-more-code-who-is-reviewing-all-of-it/",
-                  "title": "AI Is Writing More Code. Who Is Reviewing All of It?"
-                }
-              ]
-            }
-          ]
         }
       ]
     },
@@ -11212,6 +12351,17 @@
                 {
                   "url": "https://joshurbandavis.com/experiments/in-other-words/index.html",
                   "title": "in other words"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/swinghacks",
+                  "title": "Swing Hacks"
                 }
               ]
             },
@@ -11685,6 +12835,17 @@
               ]
             },
             {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/embedded-rust",
+                  "title": "Embedded Rust, Iris UI & E-Paper"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuadrake.org",
               "domain": "joshuadrake.org",
               "title": "Joshua Drake",
@@ -11771,17 +12932,6 @@
                 {
                   "url": "https://joshmuller.ca/work/",
                   "title": "Work Together"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
                 }
               ]
             },
@@ -12233,6 +13383,21 @@
               ]
             },
             {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/level5_tools",
+                  "title": "Autonomous Driving Tools"
+                },
+                {
+                  "url": "https://josh.earth/portfolio/sensopolis",
+                  "title": "Sensopolis: A Connected Model City"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuastuebner.com",
               "domain": "joshuastuebner.com",
               "title": "Joshua Stübner",
@@ -12351,6 +13516,37 @@
                 {
                   "url": "https://joshuastuebner.com/projects/details/ui-design-tool/",
                   "title": "UI Design Tool"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "embedded",
+          "label": "embedded",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/resloadbank/",
+              "title": "Turbo Generator Load-Bank"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/embedded-rust",
+                  "title": "Embedded Rust, Iris UI & E-Paper"
+                },
+                {
+                  "url": "https://josh.earth/portfolio/led-clock",
+                  "title": "LED Matrix Clock & On Air Sign"
+                },
+                {
+                  "url": "https://josh.earth/projects",
+                  "title": "Projects — josh.earth"
                 }
               ]
             }
@@ -12575,6 +13771,41 @@
           ]
         },
         {
+          "slug": "introduction",
+          "label": "introduction",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+              "title": "Cessna HV Retrofit"
+            },
+            {
+              "url": "https://joshuadrake.org/projects/ingersollrandcompressor/",
+              "title": "Ingersoll Rand Compressor"
+            },
+            {
+              "url": "https://joshuadrake.org/projects/n12rebuild/",
+              "title": "BMW N12 Engine Rebuild"
+            },
+            {
+              "url": "https://joshuadrake.org/projects/resloadbank/",
+              "title": "Turbo Generator Load-Bank"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.chrisminnick.com",
+              "domain": "www.chrisminnick.com",
+              "title": "Chris Minnick",
+              "articles": [
+                {
+                  "url": "https://www.chrisminnick.com/books/coding-all-in-one-for-dummies/",
+                  "title": "Coding All-in-One For Dummies, 3rd Edition"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "mean",
           "label": "means",
           "articles": [
@@ -12592,17 +13823,6 @@
                 {
                   "url": "https://artlung.com/archive/portfolio/1999/",
                   "title": "HTML was so primitive in 1999 that I described this portfolio piece as “interactive.” All “interactive” means was that it had content that changed as items were selected. We take such things for granted now."
-                }
-              ]
-            },
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
                 }
               ]
             },
@@ -12706,6 +13926,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/subarctic",
+                  "title": "subArctic UI Toolkit"
+                }
+              ]
+            },
             {
               "origin": "https://www.joshuabaker.com",
               "domain": "www.joshuabaker.com",
@@ -12827,6 +14058,29 @@
           ]
         },
         {
+          "slug": "set",
+          "label": "set",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/server",
+              "title": "Server"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/projects",
+                  "title": "Projects — josh.earth"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "software",
           "label": "Software",
           "articles": [
@@ -12870,6 +14124,17 @@
                 {
                   "url": "https://joshghent.com/enterprise-sales-teams/",
                   "title": "Enterprise sales teams, please, I beg you, stop"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/embedded-rust",
+                  "title": "Embedded Rust, Iris UI & E-Paper"
                 }
               ]
             },
@@ -12995,17 +14260,6 @@
                 {
                   "url": "https://www.chrisminnick.com/books/writing-computer-code/",
                   "title": "Writing Computer Code"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
                 }
               ]
             },
@@ -13235,10 +14489,6 @@
               "title": "Josh Sherman",
               "articles": [
                 {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
-                },
-                {
                   "url": "https://joshtronic.com/games/idol-idle/",
                   "title": "Idol Idle"
                 }
@@ -13316,137 +14566,6 @@
           ]
         },
         {
-          "slug": "archive",
-          "label": "archive",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-              "title": "6 Analog"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/flash/",
-                  "title": "/flash/ 📁"
-                },
-                {
-                  "url": "https://artlung.com/sandiegobloggers-com/",
-                  "title": "/sandiegobloggers-com/"
-                },
-                {
-                  "url": "https://artlung.com/splashes/",
-                  "title": "splash pages"
-                },
-                {
-                  "url": "https://artlung.com/twitter/",
-                  "title": "/twitter/ 📁"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshsherman.dev",
-              "domain": "joshsherman.dev",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshsherman.dev/projects/annotate-archive/",
-                  "title": "Annotate Archive | Josh Sherman"
-                }
-              ]
-            },
-            {
-              "origin": "https://www.joshuabaker.com",
-              "domain": "www.joshuabaker.com",
-              "title": "Joshua Baker",
-              "articles": [
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=undisclosed-consumer-ai-platform-2025",
-                  "title": "Consumer AI Platform"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=legatum-closer-look-2024",
-                  "title": "Closer Look"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=anthology-london-business-intelligence-platform-2023",
-                  "title": "Business Intelligence Platform"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=anthology-london-sales-resident-platform-2023",
-                  "title": "Sales & Resident Platform"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=dandara-living-social-media-platforms-2023",
-                  "title": "Social Media Platforms"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=taylor-bennett-client-portal-2023",
-                  "title": "Client Portal"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=animade-animade-2022",
-                  "title": "Animade"
-                },
-                {
-                  "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-2022",
-                  "title": "Merchant Integration Tools"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "become",
-          "label": "becomes",
-          "articles": [
-            {
-              "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
-              "title": "Worth Wandering: The Mushroom Color Atlas"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
-              "title": "What Happens When a Webpage Becomes Part of a 3D World?"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshurbandavis.com",
-              "domain": "joshurbandavis.com",
-              "title": "Josh Urban Davis",
-              "articles": [
-                {
-                  "url": "https://joshurbandavis.com/experiments/checker-sequencer/index.html",
-                  "title": "checker sequencer"
-                },
-                {
-                  "url": "https://joshurbandavis.com/experiments/chess-sequencer/index.html",
-                  "title": "chess sequencer"
-                },
-                {
-                  "url": "https://joshurbandavis.com/experiments/connectfour-sequencer/index.html",
-                  "title": "connect four sequencer"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuastuebner.com",
-              "domain": "joshuastuebner.com",
-              "title": "Joshua Stübner",
-              "articles": [
-                {
-                  "url": "https://joshuastuebner.com/experiments/ex/05_dialogs/",
-                  "title": "05: Dialogs"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "book",
           "label": "books",
           "articles": [
@@ -13510,6 +14629,17 @@
                 {
                   "url": "https://joshurbandavis.com/experiments/in-other-words/index.html",
                   "title": "in other words"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/swinghacks",
+                  "title": "Swing Hacks"
                 }
               ]
             },
@@ -13613,6 +14743,17 @@
               ]
             },
             {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/apps",
+                  "title": "Apps"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuastuebner.com",
               "domain": "joshuastuebner.com",
               "title": "Joshua Stübner",
@@ -13640,6 +14781,29 @@
                 {
                   "url": "https://joshuastuebner.com/experiments/ex/28_pdf-test/",
                   "title": "28: PDF Test"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "canvas",
+          "label": "canvas",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
+              "title": "What Happens When a Webpage Becomes Part of a 3D World?"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshurbandavis.com",
+              "domain": "joshurbandavis.com",
+              "title": "Josh Urban Davis",
+              "articles": [
+                {
+                  "url": "https://joshurbandavis.com/experiments/untended/index.html",
+                  "title": "untended"
                 }
               ]
             }
@@ -13843,6 +15007,41 @@
           ]
         },
         {
+          "slug": "color",
+          "label": "color",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
+              "title": "Worth Wandering: The Mushroom Color Atlas"
+            },
+            {
+              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/sheet/",
+              "title": "5 Sheet"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshurbandavis.com",
+              "domain": "joshurbandavis.com",
+              "title": "Josh Urban Davis",
+              "articles": [
+                {
+                  "url": "https://joshurbandavis.com/experiments/checker-sequencer/index.html",
+                  "title": "checker sequencer"
+                },
+                {
+                  "url": "https://joshurbandavis.com/experiments/chess-sequencer/index.html",
+                  "title": "chess sequencer"
+                },
+                {
+                  "url": "https://joshurbandavis.com/experiments/connectfour-sequencer/index.html",
+                  "title": "connect four sequencer"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "digital",
           "label": "digital",
           "articles": [
@@ -13871,6 +15070,17 @@
                 {
                   "url": "https://joshurbandavis.com/tarot-guidebook/",
                   "title": "Browse the Guidebook"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/atlantis",
+                  "title": "Atlantis"
                 }
               ]
             },
@@ -13981,6 +15191,17 @@
                 {
                   "url": "https://joshurbandavis.com/experiments/other-side/index.html",
                   "title": "the other side"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/embedded-rust",
+                  "title": "Embedded Rust, Iris UI & E-Paper"
                 }
               ]
             }
@@ -14101,23 +15322,27 @@
           ]
         },
         {
-          "slug": "human",
-          "label": "human",
+          "slug": "hardware",
+          "label": "hardware",
           "articles": [
             {
-              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/fake/",
-              "title": "3 Fake"
+              "url": "https://joshuamorris.info/now/",
+              "title": "Joshua Morris: Around"
             }
           ],
           "sites": [
             {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
               "articles": [
                 {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
+                  "url": "https://josh.earth/portfolio/embedded-rust",
+                  "title": "Embedded Rust, Iris UI & E-Paper"
+                },
+                {
+                  "url": "https://josh.earth/portfolio/led-clock",
+                  "title": "LED Matrix Clock & On Air Sign"
                 }
               ]
             }
@@ -14288,6 +15513,17 @@
                   "title": "the other side"
                 }
               ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/sensopolis",
+                  "title": "Sensopolis: A Connected Model City"
+                }
+              ]
             }
           ]
         },
@@ -14313,17 +15549,6 @@
               ]
             },
             {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
-                }
-              ]
-            },
-            {
               "origin": "https://joshuadrake.org",
               "domain": "joshuadrake.org",
               "title": "Joshua Drake",
@@ -14338,7 +15563,7 @@
         },
         {
           "slug": "model",
-          "label": "models",
+          "label": "model",
           "articles": [
             {
               "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
@@ -14351,24 +15576,17 @@
           ],
           "sites": [
             {
-              "origin": "https://www.joshfinnie.com",
-              "domain": "www.joshfinnie.com",
-              "title": "Josh Finnie",
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
               "articles": [
                 {
-                  "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
-                  "title": "Tailwind, Stack Overflow, and the Docs Snowball"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshsherman.dev",
-              "domain": "joshsherman.dev",
-              "title": "Josh Sherman",
-              "articles": [
+                  "url": "https://josh.earth/portfolio/sensopolis",
+                  "title": "Sensopolis: A Connected Model City"
+                },
                 {
-                  "url": "https://joshsherman.dev/projects/ocr-screenshot-scraper/",
-                  "title": "OCR Screenshot Scraper | Josh Sherman"
+                  "url": "https://josh.earth/projects",
+                  "title": "Projects — josh.earth"
                 }
               ]
             }
@@ -14450,6 +15668,29 @@
                 {
                   "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
                   "title": "Healthy Weight Plan Builder"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "physical",
+          "label": "physical",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/skeuomorphism/",
+              "title": "Skeuomorphism"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuapsteele.com",
+              "domain": "joshuapsteele.com",
+              "title": "Joshua P. Steele",
+              "articles": [
+                {
+                  "url": "https://joshuapsteele.com/resources/",
+                  "title": "Resources"
                 }
               ]
             }
@@ -14541,6 +15782,17 @@
                 {
                   "url": "https://joshghent.com/enterprise-sales-teams/",
                   "title": "Enterprise sales teams, please, I beg you, stop"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/embedded-rust",
+                  "title": "Embedded Rust, Iris UI & E-Paper"
                 }
               ]
             },
@@ -14639,6 +15891,29 @@
                 {
                   "url": "https://www.joshuabaker.com/work/not-optional/appendix/techcrunch-france-stock-options/",
                   "title": "France improves stock options policies · France changed its stock option rules, one of the reforms the campaign had called for. The open letter and pledge system my team built carried that case to policymakers. TechCrunch Read more"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "watch",
+          "label": "watch",
+          "articles": [
+            {
+              "url": "https://joshuamorris.info/experiments/weird-web-october-2026/reveal/",
+              "title": "1 Reveal"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/projects/hoitmc/",
+                  "title": "How Old Is This Metro Car? This is a website that will show you the age of the Washington DC Metro car you are currently riding. Watch out, they are all OLD!"
                 }
               ]
             }
@@ -14768,17 +16043,6 @@
               ]
             },
             {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
-                }
-              ]
-            },
-            {
               "origin": "https://joshuadrake.org",
               "domain": "joshuadrake.org",
               "title": "Joshua Drake",
@@ -14864,6 +16128,17 @@
               ]
             },
             {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/swinghacks",
+                  "title": "Swing Hacks"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
@@ -14916,6 +16191,17 @@
                 {
                   "url": "https://joshurbandavis.com/tarot-guidebook/",
                   "title": "Browse the Guidebook"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/atlantis",
+                  "title": "Atlantis"
                 }
               ]
             },
@@ -15031,6 +16317,29 @@
           ]
         },
         {
+          "slug": "physical",
+          "label": "physical",
+          "articles": [
+            {
+              "url": "https://joshuapsteele.com/resources/",
+              "title": "Resources"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/skeuomorphism/",
+                  "title": "Skeuomorphism"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "resource",
           "label": "resources",
           "articles": [
@@ -15098,7 +16407,7 @@
         },
         {
           "slug": "become",
-          "label": "becomes",
+          "label": "become",
           "articles": [
             {
               "url": "https://joshuastuebner.com/experiments/ex/05_dialogs/",
@@ -15112,31 +16421,8 @@
               "title": "Josh Urban Davis",
               "articles": [
                 {
-                  "url": "https://joshurbandavis.com/experiments/checker-sequencer/index.html",
-                  "title": "checker sequencer"
-                },
-                {
                   "url": "https://joshurbandavis.com/experiments/chess-sequencer/index.html",
                   "title": "chess sequencer"
-                },
-                {
-                  "url": "https://joshurbandavis.com/experiments/connectfour-sequencer/index.html",
-                  "title": "connect four sequencer"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
-                  "title": "Worth Wandering: The Mushroom Color Atlas"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
-                  "title": "What Happens When a Webpage Becomes Part of a 3D World?"
                 }
               ]
             }
@@ -15233,6 +16519,17 @@
                 {
                   "url": "https://joshurbandavis.com/experiments/the-occupant/index.html",
                   "title": "the occupant"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/apps",
+                  "title": "Apps"
                 }
               ]
             },
@@ -15395,6 +16692,21 @@
               ]
             },
             {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/level5_tools",
+                  "title": "Autonomous Driving Tools"
+                },
+                {
+                  "url": "https://josh.earth/portfolio/sensopolis",
+                  "title": "Sensopolis: A Connected Model City"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuadrake.org",
               "domain": "joshuadrake.org",
               "title": "Joshua Drake",
@@ -15551,6 +16863,17 @@
                 {
                   "url": "https://joshurbandavis.com/tarot-guidebook/",
                   "title": "Browse the Guidebook"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/atlantis",
+                  "title": "Atlantis"
                 }
               ]
             },
@@ -15906,17 +17229,6 @@
                   "title": "Tailwind, Stack Overflow, and the Docs Snowball"
                 }
               ]
-            },
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
-                }
-              ]
             }
           ]
         },
@@ -16238,6 +17550,67 @@
           ]
         },
         {
+          "slug": "small",
+          "label": "small",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/projects/details/magic-league/",
+              "title": "Magic League"
+            },
+            {
+              "url": "https://joshuastuebner.com/digital-garden/",
+              "title": "Digital Garden"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/photo/cafe-table-chairs-plant-shop-window-35mm",
+                  "title": "Sidewalk Charm"
+                },
+                {
+                  "url": "https://joshozuna.com/photo/plane-overcast-sky-35mm",
+                  "title": "Flyover Country"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshurbandavis.com",
+              "domain": "joshurbandavis.com",
+              "title": "Josh Urban Davis",
+              "articles": [
+                {
+                  "url": "https://joshurbandavis.com/experiments/",
+                  "title": "Experiments"
+                },
+                {
+                  "url": "https://joshurbandavis.com/experiments/internet-is-haunted/index.html",
+                  "title": "the internet is haunted"
+                },
+                {
+                  "url": "https://joshurbandavis.com/experiments/the-occupant/index.html",
+                  "title": "the occupant"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/projects",
+                  "title": "Projects — josh.earth"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "test",
           "label": "test",
           "articles": [
@@ -16255,6 +17628,51 @@
                 {
                   "url": "https://joshuadrake.org/projects/turboelectriccessna",
                   "title": "TurboElectric Cessna"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "text",
+          "label": "text",
+          "articles": [
+            {
+              "url": "https://joshuastuebner.com/experiments/ex/13_animated-text/",
+              "title": "13: Animated Text"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
+                  "title": "Healthy Weight Plan Builder"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshsherman.dev",
+              "domain": "joshsherman.dev",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshsherman.dev/projects/ocr-screenshot-scraper/",
+                  "title": "OCR Screenshot Scraper | Josh Sherman"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshgr.com",
+              "domain": "joshgr.com",
+              "title": "Joshua Grant",
+              "articles": [
+                {
+                  "url": "https://joshgr.com/wizardly-words/",
+                  "title": "Wizardly Words"
                 }
               ]
             }
@@ -16422,37 +17840,14 @@
         },
         {
           "slug": "become",
-          "label": "becomes",
+          "label": "become",
           "articles": [
-            {
-              "url": "https://joshurbandavis.com/experiments/checker-sequencer/index.html",
-              "title": "checker sequencer"
-            },
             {
               "url": "https://joshurbandavis.com/experiments/chess-sequencer/index.html",
               "title": "chess sequencer"
-            },
-            {
-              "url": "https://joshurbandavis.com/experiments/connectfour-sequencer/index.html",
-              "title": "connect four sequencer"
             }
           ],
           "sites": [
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
-                  "title": "Worth Wandering: The Mushroom Color Atlas"
-                },
-                {
-                  "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
-                  "title": "What Happens When a Webpage Becomes Part of a 3D World?"
-                }
-              ]
-            },
             {
               "origin": "https://joshuastuebner.com",
               "domain": "joshuastuebner.com",
@@ -16519,6 +17914,17 @@
                 {
                   "url": "https://www.joshfinnie.com/books/",
                   "title": "Books | Josh Finnie"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/swinghacks",
+                  "title": "Swing Hacks"
                 }
               ]
             },
@@ -16590,6 +17996,17 @@
                 {
                   "url": "https://artlung.com/dtd/",
                   "title": "/dtd/ 📁"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/apps",
+                  "title": "Apps"
                 }
               ]
             },
@@ -16666,6 +18083,29 @@
           ]
         },
         {
+          "slug": "canvas",
+          "label": "canvas",
+          "articles": [
+            {
+              "url": "https://joshurbandavis.com/experiments/untended/index.html",
+              "title": "untended"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
+                  "title": "What Happens When a Webpage Becomes Part of a 3D World?"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "city",
           "label": "city",
           "articles": [
@@ -16683,6 +18123,17 @@
                 {
                   "url": "https://joshozuna.com/photo/dinosaur-skeleton-museum-exhibit-35mm",
                   "title": "T-Rex at the Perot"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/sensopolis",
+                  "title": "Sensopolis: A Connected Model City"
                 }
               ]
             },
@@ -16711,6 +18162,41 @@
           ]
         },
         {
+          "slug": "color",
+          "label": "color",
+          "articles": [
+            {
+              "url": "https://joshurbandavis.com/experiments/checker-sequencer/index.html",
+              "title": "checker sequencer"
+            },
+            {
+              "url": "https://joshurbandavis.com/experiments/chess-sequencer/index.html",
+              "title": "chess sequencer"
+            },
+            {
+              "url": "https://joshurbandavis.com/experiments/connectfour-sequencer/index.html",
+              "title": "connect four sequencer"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/",
+                  "title": "Worth Wandering: The Mushroom Color Atlas"
+                },
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/sheet/",
+                  "title": "5 Sheet"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "digital",
           "label": "digital",
           "articles": [
@@ -16728,6 +18214,17 @@
                 {
                   "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
                   "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters."
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/atlantis",
+                  "title": "Atlantis"
                 }
               ]
             },
@@ -16795,6 +18292,17 @@
             }
           ],
           "sites": [
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/embedded-rust",
+                  "title": "Embedded Rust, Iris UI & E-Paper"
+                }
+              ]
+            },
             {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
@@ -17204,6 +18712,17 @@
               ]
             },
             {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/sensopolis",
+                  "title": "Sensopolis: A Connected Model City"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
@@ -17448,6 +18967,67 @@
           ]
         },
         {
+          "slug": "small",
+          "label": "small",
+          "articles": [
+            {
+              "url": "https://joshurbandavis.com/experiments/",
+              "title": "Experiments"
+            },
+            {
+              "url": "https://joshurbandavis.com/experiments/internet-is-haunted/index.html",
+              "title": "the internet is haunted"
+            },
+            {
+              "url": "https://joshurbandavis.com/experiments/the-occupant/index.html",
+              "title": "the occupant"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/photo/cafe-table-chairs-plant-shop-window-35mm",
+                  "title": "Sidewalk Charm"
+                },
+                {
+                  "url": "https://joshozuna.com/photo/plane-overcast-sky-35mm",
+                  "title": "Flyover Country"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/projects",
+                  "title": "Projects — josh.earth"
+                }
+              ]
+            },
+            {
+              "origin": "https://joshuastuebner.com",
+              "domain": "joshuastuebner.com",
+              "title": "Joshua Stübner",
+              "articles": [
+                {
+                  "url": "https://joshuastuebner.com/projects/details/magic-league/",
+                  "title": "Magic League"
+                },
+                {
+                  "url": "https://joshuastuebner.com/digital-garden/",
+                  "title": "Digital Garden"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "windows",
           "label": "windows",
           "articles": [
@@ -17674,10 +19254,6 @@
               "title": "Josh Sherman",
               "articles": [
                 {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
-                },
-                {
                   "url": "https://joshtronic.com/games/idol-idle/",
                   "title": "Idol Idle"
                 }
@@ -17822,6 +19398,17 @@
               ]
             },
             {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/swinghacks",
+                  "title": "Swing Hacks"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuamorris.info",
               "domain": "joshuamorris.info",
               "title": "Joshua Morris",
@@ -17889,6 +19476,17 @@
                 {
                   "url": "https://joshurbandavis.com/experiments/the-occupant/index.html",
                   "title": "the occupant"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/apps",
+                  "title": "Apps"
                 }
               ]
             },
@@ -18129,7 +19727,7 @@
         },
         {
           "slug": "company",
-          "label": "company",
+          "label": "companies",
           "articles": [
             {
               "url": "https://www.chrisminnick.com/books/artificial-intelligence-all-in-one-for-dummies/",
@@ -18306,6 +19904,21 @@
               ]
             },
             {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/level5_tools",
+                  "title": "Autonomous Driving Tools"
+                },
+                {
+                  "url": "https://josh.earth/portfolio/sensopolis",
+                  "title": "Sensopolis: A Connected Model City"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuadrake.org",
               "domain": "joshuadrake.org",
               "title": "Joshua Drake",
@@ -18435,6 +20048,41 @@
                 {
                   "url": "https://joshuastuebner.com/projects/details/ui-design-tool/",
                   "title": "UI Design Tool"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "introduction",
+          "label": "introduction",
+          "articles": [
+            {
+              "url": "https://www.chrisminnick.com/books/coding-all-in-one-for-dummies/",
+              "title": "Coding All-in-One For Dummies, 3rd Edition"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/cessnaretrofit/",
+                  "title": "Cessna HV Retrofit"
+                },
+                {
+                  "url": "https://joshuadrake.org/projects/ingersollrandcompressor/",
+                  "title": "Ingersoll Rand Compressor"
+                },
+                {
+                  "url": "https://joshuadrake.org/projects/n12rebuild/",
+                  "title": "BMW N12 Engine Rebuild"
+                },
+                {
+                  "url": "https://joshuadrake.org/projects/resloadbank/",
+                  "title": "Turbo Generator Load-Bank"
                 }
               ]
             }
@@ -18627,17 +20275,6 @@
                 {
                   "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
                   "title": "Tailwind, Stack Overflow, and the Docs Snowball"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
                 }
               ]
             },
@@ -19135,6 +20772,17 @@
               ]
             },
             {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/embedded-rust",
+                  "title": "Embedded Rust, Iris UI & E-Paper"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuadrake.org",
               "domain": "joshuadrake.org",
               "title": "Joshua Drake",
@@ -19193,6 +20841,29 @@
           ]
         },
         {
+          "slug": "step",
+          "label": "step",
+          "articles": [
+            {
+              "url": "https://www.chrisminnick.com/books/beginning-html5-and-css3-for-dummies/",
+              "title": "Beginning HTML5 and CSS3 For Dummies"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/swinghacks",
+                  "title": "Swing Hacks"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "technology",
           "label": "technology",
           "articles": [
@@ -19221,17 +20892,6 @@
                 {
                   "url": "https://joshmuller.ca/work/",
                   "title": "Work Together"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
                 }
               ]
             },
@@ -19301,17 +20961,6 @@
             }
           ],
           "sites": [
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
-                }
-              ]
-            },
             {
               "origin": "https://joshuadrake.org",
               "domain": "joshuadrake.org",
@@ -19417,10 +21066,6 @@
               "domain": "joshtronic.com",
               "title": "Josh Sherman",
               "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
-                },
                 {
                   "url": "https://joshtronic.com/games/idol-idle/",
                   "title": "Idol Idle"
@@ -19562,6 +21207,17 @@
                 {
                   "url": "https://joshurbandavis.com/experiments/in-other-words/index.html",
                   "title": "in other words"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/swinghacks",
+                  "title": "Swing Hacks"
                 }
               ]
             },
@@ -19859,6 +21515,40 @@
           ]
         },
         {
+          "slug": "culture",
+          "label": "culture",
+          "articles": [
+            {
+              "url": "https://www.joshfinnie.com/projects/tikicompass/",
+              "title": "TikiCompass.com TikiCompass is your ultimate guide to discovering authentic tiki bars around the world, featuring tropical cocktails, Polynesian culture, and a vibrant community of tiki enthusiasts."
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/words/",
+                  "title": "/words/ 📁"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshuakgoldberg.com",
+              "domain": "www.joshuakgoldberg.com",
+              "title": "Josh Goldberg",
+              "articles": [
+                {
+                  "url": "https://www.joshuakgoldberg.com/speaking",
+                  "title": "Speaking"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "docs",
           "label": "docs",
           "articles": [
@@ -20025,17 +21715,6 @@
               ]
             },
             {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
-                }
-              ]
-            },
-            {
               "origin": "https://joshuastuebner.com",
               "domain": "joshuastuebner.com",
               "title": "Joshua Stübner",
@@ -20100,44 +21779,6 @@
                 {
                   "url": "https://joshuastuebner.com/experiments/ex/25_sparkline/",
                   "title": "25: Sparkline"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "slug": "model",
-          "label": "models",
-          "articles": [
-            {
-              "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
-              "title": "Tailwind, Stack Overflow, and the Docs Snowball"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://joshsherman.dev",
-              "domain": "joshsherman.dev",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshsherman.dev/projects/ocr-screenshot-scraper/",
-                  "title": "OCR Screenshot Scraper | Josh Sherman"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-                  "title": "6 Analog"
-                },
-                {
-                  "url": "https://joshuamorris.info/experiments/model-viewer/",
-                  "title": "Model viewer Three Trion figures in matching stages — land clearing, voxel valley, underwater — with quiet orbit controls. Archived from a July 2015 CodePen."
                 }
               ]
             }
@@ -20248,6 +21889,40 @@
                   "title": "Skills"
                 }
               ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/apps",
+                  "title": "Apps"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "phone",
+          "label": "phone",
+          "articles": [
+            {
+              "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
+              "title": "Micro SaaS Week Four: SignedOnSite"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshmuller.ca",
+              "domain": "joshmuller.ca",
+              "title": "Josh Müller",
+              "articles": [
+                {
+                  "url": "https://joshmuller.ca/writings/2022/photo-northern-lights/",
+                  "title": "[Photo] Northern Lights"
+                }
+              ]
             }
           ]
         },
@@ -20313,6 +21988,40 @@
           ]
         },
         {
+          "slug": "retro",
+          "label": "retro",
+          "articles": [
+            {
+              "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
+              "title": "The October Micro SaaS Challenge: A Retro"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshtronic.com",
+              "domain": "joshtronic.com",
+              "title": "Josh Sherman",
+              "articles": [
+                {
+                  "url": "https://joshtronic.com/games/age-of-combat/",
+                  "title": "Age of Combat"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/sensopolis",
+                  "title": "Sensopolis: A Connected Model City"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "rule",
           "label": "rules",
           "articles": [
@@ -20349,6 +22058,33 @@
                 {
                   "url": "https://www.joshuabaker.com/work/not-optional/appendix/techcrunch-france-stock-options/",
                   "title": "France improves stock options policies · France changed its stock option rules, one of the reforms the campaign had called for. The open letter and pledge system my team built carried that case to policymakers. TechCrunch Read more"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "rust",
+          "label": "rust",
+          "articles": [
+            {
+              "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
+              "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/embedded-rust",
+                  "title": "Embedded Rust, Iris UI & E-Paper"
+                },
+                {
+                  "url": "https://josh.earth/projects",
+                  "title": "Projects — josh.earth"
                 }
               ]
             }
@@ -20507,6 +22243,17 @@
                   "title": "Skills"
                 }
               ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/apps",
+                  "title": "Apps"
+                }
+              ]
             }
           ]
         },
@@ -20550,6 +22297,29 @@
                 {
                   "url": "https://joshuastuebner.com/experiments/ex/24_big-number/",
                   "title": "24: Big Number"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "watch",
+          "label": "watch",
+          "articles": [
+            {
+              "url": "https://www.joshfinnie.com/projects/hoitmc/",
+              "title": "How Old Is This Metro Car? This is a website that will show you the age of the Washington DC Metro car you are currently riding. Watch out, they are all OLD!"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuamorris.info",
+              "domain": "joshuamorris.info",
+              "title": "Joshua Morris",
+              "articles": [
+                {
+                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/reveal/",
+                  "title": "1 Reveal"
                 }
               ]
             }
@@ -20607,17 +22377,6 @@
                 {
                   "url": "https://joshmuller.ca/writings/2022/photo-northern-lights/",
                   "title": "[Photo] Northern Lights"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
                 }
               ]
             },
@@ -20849,10 +22608,6 @@
               "title": "Josh Sherman",
               "articles": [
                 {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
-                },
-                {
                   "url": "https://joshtronic.com/games/idol-idle/",
                   "title": "Idol Idle"
                 }
@@ -20937,91 +22692,6 @@
           ]
         },
         {
-          "slug": "archive",
-          "label": "archive",
-          "articles": [
-            {
-              "url": "https://www.joshuabaker.com/work/?work=undisclosed-consumer-ai-platform-2025",
-              "title": "Consumer AI Platform"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=legatum-closer-look-2024",
-              "title": "Closer Look"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=anthology-london-business-intelligence-platform-2023",
-              "title": "Business Intelligence Platform"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=anthology-london-sales-resident-platform-2023",
-              "title": "Sales & Resident Platform"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=dandara-living-social-media-platforms-2023",
-              "title": "Social Media Platforms"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=taylor-bennett-client-portal-2023",
-              "title": "Client Portal"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=animade-animade-2022",
-              "title": "Animade"
-            },
-            {
-              "url": "https://www.joshuabaker.com/work/?work=banked-merchant-integration-tools-2022",
-              "title": "Merchant Integration Tools"
-            }
-          ],
-          "sites": [
-            {
-              "origin": "https://artlung.com",
-              "domain": "artlung.com",
-              "title": "Joe Crawford",
-              "articles": [
-                {
-                  "url": "https://artlung.com/flash/",
-                  "title": "/flash/ 📁"
-                },
-                {
-                  "url": "https://artlung.com/sandiegobloggers-com/",
-                  "title": "/sandiegobloggers-com/"
-                },
-                {
-                  "url": "https://artlung.com/splashes/",
-                  "title": "splash pages"
-                },
-                {
-                  "url": "https://artlung.com/twitter/",
-                  "title": "/twitter/ 📁"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshsherman.dev",
-              "domain": "joshsherman.dev",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshsherman.dev/projects/annotate-archive/",
-                  "title": "Annotate Archive | Josh Sherman"
-                }
-              ]
-            },
-            {
-              "origin": "https://joshuamorris.info",
-              "domain": "joshuamorris.info",
-              "title": "Joshua Morris",
-              "articles": [
-                {
-                  "url": "https://joshuamorris.info/experiments/weird-web-october-2026/analog/",
-                  "title": "6 Analog"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "slug": "banking",
           "label": "banking",
           "articles": [
@@ -21089,6 +22759,17 @@
               ]
             },
             {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/sensopolis",
+                  "title": "Sensopolis: A Connected Model City"
+                }
+              ]
+            },
+            {
               "origin": "https://joshgr.com",
               "domain": "joshgr.com",
               "title": "Joshua Grant",
@@ -21141,7 +22822,7 @@
         },
         {
           "slug": "company",
-          "label": "company",
+          "label": "companies",
           "articles": [
             {
               "url": "https://www.joshuabaker.com/work/banked/appendix/banked-comic-relief-red-nose-day/",
@@ -21348,6 +23029,17 @@
                 {
                   "url": "https://joshurbandavis.com/tarot-guidebook/",
                   "title": "Browse the Guidebook"
+                }
+              ]
+            },
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/atlantis",
+                  "title": "Atlantis"
                 }
               ]
             },
@@ -21837,6 +23529,41 @@
           ]
         },
         {
+          "slug": "ownership",
+          "label": "ownership",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/banked/appendix/banked-comic-relief-red-nose-day/",
+              "title": "Powering Red Nose Day donations · Banked became a technology partner to Comic Relief for Red Nose Day. The donation pages were one of the later projects in my work with Banked. Banked Read more"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/banked/appendix/fintech-futures-nab-acquires-banked/",
+              "title": "Acquired by NAB · National Australia Bank, an investor since 2022, took full ownership of Banked. It is the company behind the work on this page. FinTech Futures Read more"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/not-optional/appendix/sifted-europe-loosens-stock-options/",
+              "title": "Europe loosens rules on stock options · Sifted covered the wave of European countries loosening their rules on stock options. The country ranking table my team built tracked each state’s progress. Sifted Read more"
+            },
+            {
+              "url": "https://www.joshuabaker.com/work/not-optional/appendix/tech-eu-5-years-employee-ownership/",
+              "title": "European startups catch up on employee stock options · Five years on, Tech.eu reported European startups catching up on employee ownership. The campaign ran on the platform my team built. Tech.eu Read more"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/projects",
+                  "title": "Projects — josh.earth"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "slug": "policy",
           "label": "policy",
           "articles": [
@@ -21991,6 +23718,17 @@
           ],
           "sites": [
             {
+              "origin": "https://josh.earth",
+              "domain": "josh.earth",
+              "title": "josh.earth",
+              "articles": [
+                {
+                  "url": "https://josh.earth/portfolio/subarctic",
+                  "title": "subArctic UI Toolkit"
+                }
+              ]
+            },
+            {
               "origin": "https://joshuadrake.org",
               "domain": "joshuadrake.org",
               "title": "Joshua Drake",
@@ -22124,6 +23862,29 @@
                 {
                   "url": "https://joshuastuebner.com/experiments/ex/20_css-shrinking-search/",
                   "title": "20: CSS Shrinking Search"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "shop",
+          "label": "shop",
+          "articles": [
+            {
+              "url": "https://www.joshuabaker.com/work/?work=kemistry-gallery-gallery-shop-2008",
+              "title": "Gallery Shop"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshozuna.com",
+              "domain": "joshozuna.com",
+              "title": "Josh Ozuna",
+              "articles": [
+                {
+                  "url": "https://joshozuna.com/photo/cafe-table-chairs-plant-shop-window-35mm",
+                  "title": "Sidewalk Charm"
                 }
               ]
             }
@@ -22403,17 +24164,6 @@
               ]
             },
             {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
-                }
-              ]
-            },
-            {
               "origin": "https://joshua.seigler.net",
               "domain": "joshua.seigler.net",
               "title": "Joshua Seigler",
@@ -22495,17 +24245,6 @@
                   "title": "[Photo] Northern Lights"
                 }
               ]
-            },
-            {
-              "origin": "https://joshtronic.com",
-              "domain": "joshtronic.com",
-              "title": "Josh Sherman",
-              "articles": [
-                {
-                  "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-                  "title": "Learning a New Tech Stack with an LLM"
-                }
-              ]
             }
           ]
         }
@@ -22532,6 +24271,40 @@
                 {
                   "url": "https://www.chrisminnick.com/books/coding-all-in-one-for-dummies/",
                   "title": "Coding All-in-One For Dummies, 3rd Edition"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "culture",
+          "label": "culture",
+          "articles": [
+            {
+              "url": "https://www.joshuakgoldberg.com/speaking",
+              "title": "Speaking"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/words/",
+                  "title": "/words/ 📁"
+                }
+              ]
+            },
+            {
+              "origin": "https://www.joshfinnie.com",
+              "domain": "www.joshfinnie.com",
+              "title": "Josh Finnie",
+              "articles": [
+                {
+                  "url": "https://www.joshfinnie.com/projects/tikicompass/",
+                  "title": "TikiCompass.com TikiCompass is your ultimate guide to discovering authentic tiki bars around the world, featuring tropical cocktails, Polynesian culture, and a vibrant community of tiki enthusiasts."
                 }
               ]
             }

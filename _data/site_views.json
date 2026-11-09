@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-08T20:44:07.472Z",
+  "generated_at": "2026-11-09T00:48:54.863Z",
   "sites": [
     {
       "origin": "https://artlung.com",
@@ -79,10 +79,6 @@
       ],
       "community_topics": [
         {
-          "slug": "archive",
-          "label": "archive"
-        },
-        {
           "slug": "art",
           "label": "art"
         },
@@ -125,6 +121,10 @@
         {
           "slug": "css",
           "label": "css"
+        },
+        {
+          "slug": "data",
+          "label": "data"
         },
         {
           "slug": "dawnpatrol-app",
@@ -175,6 +175,10 @@
           "label": "History"
         },
         {
+          "slug": "idea",
+          "label": "idea"
+        },
+        {
           "slug": "image",
           "label": "images"
         },
@@ -193,6 +197,10 @@
         {
           "slug": "mental-health",
           "label": "Mental-Health"
+        },
+        {
+          "slug": "microsoft",
+          "label": "microsoft"
         },
         {
           "slug": "misc",
@@ -241,6 +249,10 @@
         {
           "slug": "programming",
           "label": "programming"
+        },
+        {
+          "slug": "prompt",
+          "label": "prompt"
         },
         {
           "slug": "quote",
@@ -324,7 +336,7 @@
         "title": "/amiga/",
         "summary": "A few of my memories of using the a Commodore Amiga 1000 for computer graphics, music, etc.",
         "published_at": "",
-        "observed_at": "2026-11-08T20:22:43.029Z",
+        "observed_at": "2026-11-09T00:26:52.180Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -11456,6 +11468,7 @@
           "https://artlung.com/archive/splashes/-20220114": "content-index",
           "https://artlung.com/https//joecrawford.com/": "content-index",
           "https://artlung.com/wwo/": "content-index",
+          "https://artlung.com/headers/-20261108": "content-index",
           "https://artlung.com/blog/2022/07/15/the-apartment-show-curated-by-raquelle-jac/": "content-index",
           "https://artlung.com/blog/2023/06/20/gemini-comic-2019-2021/": "content-index",
           "https://artlung.com/blog/2023/07/30/surrounded-diary-webcomic/": "content-index",
@@ -12386,15 +12399,6 @@
           "https://artlung.com/blog/wp-content/uploads/2020/10/IMG_0584-scaled.jpeg": "budget-exhausted",
           "https://artlung.com/blog/tag/nailedit/": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2020/10/05/stop-and-smell-the-roses-webcomic/": "budget-exhausted",
-          "https://artlung.com/blog/2020/09/14/": "budget-exhausted",
-          "https://artlung.com/blog/2020/09/14/best-practices-i-signed-up-to-fight-disease-long-ago-were-all-signed-up-now-covidcomic-respiratorytherapy-donoharm-masks-webcomic/1/": "budget-exhausted",
-          "https://artlung.com/blog/2020/09/14/best-practices-i-signed-up-to-fight-disease-long-ago-were-all-signed-up-now-covidcomic-respiratorytherapy-donoharm-masks-webcomic/2/": "budget-exhausted",
-          "https://artlung.com/blog/wp-content/uploads/2020/09/IMG_0524-scaled.jpeg": "budget-exhausted",
-          "https://artlung.com/blog/tag/covidcomic/": "budget-exhausted",
-          "https://artlung.com/blog/tag/donoharm/": "budget-exhausted",
-          "https://artlung.com/blog/tag/masks/": "budget-exhausted",
-          "https://artlung.com/blog/tag/respiratorytherapy/": "budget-exhausted",
-          "https://artlung.com/contact/?url=https://artlung.com/blog/2020/09/14/best-practices-i-signed-up-to-fight-disease-long-ago-were-all-signed-up-now-covidcomic-respiratorytherapy-donoharm-masks-webcomic/": "budget-exhausted",
           "https://artlung.com/blog/2020/09/07/": "budget-exhausted",
           "https://artlung.com/blog/2020/09/07/expedited-shipping-webcomic-nailedit/1/": "budget-exhausted",
           "https://artlung.com/blog/wp-content/uploads/2020/09/IMG_0487-scaled.jpeg": "budget-exhausted",
@@ -12405,6 +12409,11 @@
           "https://artlung.com/blog/tag/cubecatextendedunuverse/": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2020/09/02/everyone-needs-an-answer-with-hippolyta-surly-webcomic-cubecatextendedunuverse/": "budget-exhausted",
           "https://artlung.com/blog/2020/08/": "budget-exhausted",
+          "https://artlung.com/blog/2020/08/26/": "budget-exhausted",
+          "https://artlung.com/blog/2020/08/26/was-that-there-before-morningcomic/1/": "budget-exhausted",
+          "https://artlung.com/blog/wp-content/uploads/2020/08/was-that-there-before-scaled.jpg": "budget-exhausted",
+          "https://artlung.com/blog/tag/morningcomic/": "budget-exhausted",
+          "https://artlung.com/contact/?url=https://artlung.com/blog/2020/08/26/was-that-there-before-morningcomic/": "budget-exhausted",
           "https://artlung.com/blog/2020/08/20/": "budget-exhausted",
           "https://artlung.com/blog/2020/08/20/its-good-have-friends-thanks-for-asking-questions/1/": "budget-exhausted",
           "https://artlung.com/blog/tag/chrisgreazel/": "budget-exhausted",
@@ -13289,7 +13298,16 @@
           "https://artlung.com/images/?i=artlung-2026-320x320.jpeg": "budget-exhausted",
           "https://artlung.com/images/?i=artlung-com-headers--20030215.jpeg": "budget-exhausted",
           "https://artlung.com/images/?i=artlung-com-headers--20030707.jpeg": "budget-exhausted",
+          "https://artlung.com/images/?i=artlung-inner-filled.avif": "budget-exhausted",
+          "https://artlung.com/images/?i=artlung-inner-outline.avif": "budget-exhausted",
           "https://artlung.com/images/?i=artlung-logo-2002-2008.gif": "budget-exhausted",
+          "https://artlung.com/images/?i=artlung-outer-filled.avif": "budget-exhausted",
+          "https://artlung.com/images/?i=artlung-outer-outline.avif": "budget-exhausted",
+          "https://artlung.com/images/?i=artlung-sm-inner-filled.avif": "budget-exhausted",
+          "https://artlung.com/images/?i=artlung-sm-inner-outline.avif": "budget-exhausted",
+          "https://artlung.com/images/?i=artlung-sm-outer-filled.avif": "budget-exhausted",
+          "https://artlung.com/images/?i=artlung-sm-outer-filled.png": "budget-exhausted",
+          "https://artlung.com/images/?i=artlung-sm-outer-outline.avif": "budget-exhausted",
           "https://artlung.com/images/?i=artlung_ding_anim.gif": "budget-exhausted",
           "https://artlung.com/images/?i=artlung_kitkat_parody.gif": "budget-exhausted",
           "https://artlung.com/images/?i=artlung_logo_animated.GIF": "budget-exhausted",
@@ -13804,56 +13822,10 @@
           "https://artlung.com/indienews/ba3d29ad9282db49c4aaa33716d5ce4b": "budget-exhausted",
           "https://artlung.com/indienews/d72c3ef9bd52b1ac2b3c85b55c8b1951": "budget-exhausted",
           "https://artlung.com/indienews/d5f50db49f2e75783bc3cc24bd5c5e9a": "budget-exhausted",
-          "https://artlung.com/indienews/bb7ab69d0a547f8a6988766f82b3a905": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/": "budget-exhausted",
-          "https://artlung.com/blog/wp-content/uploads/2010/03/blogger-blogs-import.png": "budget-exhausted",
-          "https://artlung.com/blog/wp-content/uploads/2010/03/blogger-settings.png": "budget-exhausted",
-          "https://artlung.com/blog/wp-content/uploads/2010/03/blogger-export-your-blog.png": "budget-exhausted",
-          "https://artlung.com/blog/tag/blogger/": "budget-exhausted",
-          "https://artlung.com/blog/tag/blogger2wordpress/": "budget-exhausted",
-          "https://artlung.com/blog/tag/blogs/": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=391884": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=391890": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=391892": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=391974": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=391978": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=391979": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=392020": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=392023": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=392022": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=392036": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=392042": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=392086": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=392087": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=392088": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=392089": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=392243": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=392244": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=392288": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=392289": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=392290": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=392294": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=392326": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=392339": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=392340": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=392352": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=392465": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=392515": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=396643": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=396820": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=396953": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=397180": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=613521": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=613526": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=613527": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=613536": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=613551": "budget-exhausted",
-          "https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/?replytocom=1104598": "budget-exhausted",
-          "https://artlung.com/contact/?url=https://artlung.com/blog/2010/03/02/migrating-an-old-blogger-blog-to-wordpress/": "budget-exhausted"
+          "https://artlung.com/indienews/bb7ab69d0a547f8a6988766f82b3a905": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z"
+      "crawled_at": "2026-11-09T00:26:52.180Z"
     },
     {
       "origin": "https://forwardbias.dev",
@@ -13945,7 +13917,7 @@
         "title": "Contact",
         "summary": "Ramblings and experiments from a recovering middle school teacher. Equity, joy, and agency in education through tech, music, arts. Who knows what comes next.",
         "published_at": "",
-        "observed_at": "2026-11-08T20:22:43.029Z",
+        "observed_at": "2026-11-09T00:26:52.180Z",
         "content_type": "article",
         "language": "en-us",
         "dir": "",
@@ -14174,7 +14146,1619 @@
           "https://forwardbias.dev/tags/red/": "topic-hub"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z"
+      "crawled_at": "2026-11-09T00:26:52.180Z"
+    },
+    {
+      "origin": "https://josh.earth",
+      "domain": "josh.earth",
+      "title": "josh.earth",
+      "description": "I’m happy to share my latest Embedded Rust exploits with a new e-paper driver for the exhaustively named LilyGo T5 E-Paper S3 Pro. I got Rust running on it last year but could never find a driver for the epaper screen that worked.",
+      "identity": "affirmed",
+      "feeds": [
+        {
+          "url": "https://josh.earth/feed.xml",
+          "type": "application/rss+xml",
+          "title": "josh.earth RSS Feed"
+        }
+      ],
+      "elsewhere": [
+        {
+          "url": "https://www.linkedin.com/in/joshmarinacci/",
+          "network": "linkedin",
+          "label": "LinkedIn"
+        },
+        {
+          "url": "https://bsky.app/profile/joshmarinacci.bsky.social",
+          "network": "bluesky",
+          "label": "Bluesky"
+        }
+      ],
+      "community_topics": [
+        {
+          "slug": "3dprinting",
+          "label": "3dprinting"
+        },
+        {
+          "slug": "aframe",
+          "label": "aframe"
+        },
+        {
+          "slug": "ai",
+          "label": "ai"
+        },
+        {
+          "slug": "amino",
+          "label": "amino"
+        },
+        {
+          "slug": "apl",
+          "label": "apl"
+        },
+        {
+          "slug": "apple",
+          "label": "apple"
+        },
+        {
+          "slug": "arduino",
+          "label": "arduino"
+        },
+        {
+          "slug": "auction",
+          "label": "auction"
+        },
+        {
+          "slug": "beatle",
+          "label": "beatles"
+        },
+        {
+          "slug": "book",
+          "label": "books"
+        },
+        {
+          "slug": "bookreview",
+          "label": "bookreview"
+        },
+        {
+          "slug": "browser",
+          "label": "browsers"
+        },
+        {
+          "slug": "cad",
+          "label": "cad"
+        },
+        {
+          "slug": "canvas",
+          "label": "canvas"
+        },
+        {
+          "slug": "cars",
+          "label": "cars"
+        },
+        {
+          "slug": "circuitpython",
+          "label": "circuitpython"
+        },
+        {
+          "slug": "city",
+          "label": "city"
+        },
+        {
+          "slug": "cnc",
+          "label": "cnc"
+        },
+        {
+          "slug": "coding",
+          "label": "coding"
+        },
+        {
+          "slug": "color",
+          "label": "color"
+        },
+        {
+          "slug": "compiler",
+          "label": "compilers"
+        },
+        {
+          "slug": "concise",
+          "label": "concise"
+        },
+        {
+          "slug": "css",
+          "label": "css"
+        },
+        {
+          "slug": "culture",
+          "label": "culture"
+        },
+        {
+          "slug": "data",
+          "label": "data"
+        },
+        {
+          "slug": "demo",
+          "label": "demo"
+        },
+        {
+          "slug": "design",
+          "label": "design"
+        },
+        {
+          "slug": "devrel",
+          "label": "devrel"
+        },
+        {
+          "slug": "docs",
+          "label": "docs"
+        },
+        {
+          "slug": "ebook",
+          "label": "ebook"
+        },
+        {
+          "slug": "education",
+          "label": "education"
+        },
+        {
+          "slug": "electron",
+          "label": "electron"
+        },
+        {
+          "slug": "electronic",
+          "label": "electronics"
+        },
+        {
+          "slug": "embedded",
+          "label": "embedded"
+        },
+        {
+          "slug": "embeddedrust",
+          "label": "embeddedrust"
+        },
+        {
+          "slug": "epaper",
+          "label": "epaper"
+        },
+        {
+          "slug": "essay",
+          "label": "Essay"
+        },
+        {
+          "slug": "facebook",
+          "label": "facebook"
+        },
+        {
+          "slug": "family",
+          "label": "Family"
+        },
+        {
+          "slug": "fast",
+          "label": "fast"
+        },
+        {
+          "slug": "filament",
+          "label": "filament"
+        },
+        {
+          "slug": "font",
+          "label": "fonts"
+        },
+        {
+          "slug": "frp",
+          "label": "frp"
+        },
+        {
+          "slug": "function",
+          "label": "functions"
+        },
+        {
+          "slug": "future",
+          "label": "future"
+        },
+        {
+          "slug": "game",
+          "label": "game"
+        },
+        {
+          "slug": "github",
+          "label": "github"
+        },
+        {
+          "slug": "google",
+          "label": "google"
+        },
+        {
+          "slug": "gpu",
+          "label": "gpu"
+        },
+        {
+          "slug": "graphics",
+          "label": "graphics"
+        },
+        {
+          "slug": "gui",
+          "label": "gui"
+        },
+        {
+          "slug": "gwt",
+          "label": "gwt"
+        },
+        {
+          "slug": "hack",
+          "label": "hack"
+        },
+        {
+          "slug": "hardware",
+          "label": "hardware"
+        },
+        {
+          "slug": "hillfamily",
+          "label": "hillfamily"
+        },
+        {
+          "slug": "hl",
+          "label": "hl"
+        },
+        {
+          "slug": "humor",
+          "label": "humor"
+        },
+        {
+          "slug": "icon",
+          "label": "icons"
+        },
+        {
+          "slug": "idea",
+          "label": "idea"
+        },
+        {
+          "slug": "idealos",
+          "label": "idealos"
+        },
+        {
+          "slug": "image",
+          "label": "images"
+        },
+        {
+          "slug": "interview",
+          "label": "interview"
+        },
+        {
+          "slug": "introduction",
+          "label": "introduction"
+        },
+        {
+          "slug": "java",
+          "label": "java"
+        },
+        {
+          "slug": "java-net",
+          "label": "java.net"
+        },
+        {
+          "slug": "javascript",
+          "label": "javascript"
+        },
+        {
+          "slug": "job",
+          "label": "job"
+        },
+        {
+          "slug": "kickstarter",
+          "label": "kickstarter"
+        },
+        {
+          "slug": "kids",
+          "label": "Kids"
+        },
+        {
+          "slug": "language",
+          "label": "language"
+        },
+        {
+          "slug": "lego",
+          "label": "lego"
+        },
+        {
+          "slug": "leonardo",
+          "label": "leonardo"
+        },
+        {
+          "slug": "leosketch",
+          "label": "leosketch"
+        },
+        {
+          "slug": "link",
+          "label": "Link"
+        },
+        {
+          "slug": "linux",
+          "label": "linux"
+        },
+        {
+          "slug": "mac",
+          "label": "mac"
+        },
+        {
+          "slug": "manager",
+          "label": "manager"
+        },
+        {
+          "slug": "markdown",
+          "label": "markdown"
+        },
+        {
+          "slug": "microsoft",
+          "label": "microsoft"
+        },
+        {
+          "slug": "mixedreality",
+          "label": "mixedreality"
+        },
+        {
+          "slug": "mobile",
+          "label": "mobile"
+        },
+        {
+          "slug": "model",
+          "label": "model"
+        },
+        {
+          "slug": "mozilla",
+          "label": "mozilla"
+        },
+        {
+          "slug": "music",
+          "label": "music"
+        },
+        {
+          "slug": "musicapp",
+          "label": "musicapp"
+        },
+        {
+          "slug": "nes",
+          "label": "nes"
+        },
+        {
+          "slug": "node",
+          "label": "node"
+        },
+        {
+          "slug": "nodej",
+          "label": "nodejs"
+        },
+        {
+          "slug": "nokia",
+          "label": "nokia"
+        },
+        {
+          "slug": "npm",
+          "label": "npm"
+        },
+        {
+          "slug": "ohm",
+          "label": "ohm"
+        },
+        {
+          "slug": "ometa",
+          "label": "ometa"
+        },
+        {
+          "slug": "opengl",
+          "label": "opengl"
+        },
+        {
+          "slug": "opensource",
+          "label": "opensource"
+        },
+        {
+          "slug": "os",
+          "label": "os"
+        },
+        {
+          "slug": "oscon",
+          "label": "oscon"
+        },
+        {
+          "slug": "palm",
+          "label": "palm"
+        },
+        {
+          "slug": "paper",
+          "label": "paper"
+        },
+        {
+          "slug": "parameter",
+          "label": "parameters"
+        },
+        {
+          "slug": "philosophy",
+          "label": "philosophy"
+        },
+        {
+          "slug": "phone",
+          "label": "phone"
+        },
+        {
+          "slug": "phonegap",
+          "label": "phonegap"
+        },
+        {
+          "slug": "photography",
+          "label": "photography"
+        },
+        {
+          "slug": "physical",
+          "label": "physical"
+        },
+        {
+          "slug": "pixelart",
+          "label": "pixelart"
+        },
+        {
+          "slug": "pl-design",
+          "label": "pl design"
+        },
+        {
+          "slug": "podcast",
+          "label": "podcast"
+        },
+        {
+          "slug": "pokemon",
+          "label": "pokemon"
+        },
+        {
+          "slug": "politics",
+          "label": "politics"
+        },
+        {
+          "slug": "prediction",
+          "label": "predictions"
+        },
+        {
+          "slug": "presentation",
+          "label": "presentation"
+        },
+        {
+          "slug": "privacy",
+          "label": "privacy"
+        },
+        {
+          "slug": "process",
+          "label": "process"
+        },
+        {
+          "slug": "procgen",
+          "label": "procgen"
+        },
+        {
+          "slug": "programming",
+          "label": "programming"
+        },
+        {
+          "slug": "pubnub",
+          "label": "pubnub"
+        },
+        {
+          "slug": "rant",
+          "label": "rant"
+        },
+        {
+          "slug": "raspberrypi",
+          "label": "raspberrypi"
+        },
+        {
+          "slug": "react",
+          "label": "react"
+        },
+        {
+          "slug": "research",
+          "label": "Research"
+        },
+        {
+          "slug": "retro",
+          "label": "retro"
+        },
+        {
+          "slug": "review",
+          "label": "review"
+        },
+        {
+          "slug": "roku",
+          "label": "roku"
+        },
+        {
+          "slug": "rust",
+          "label": "rust"
+        },
+        {
+          "slug": "samsung",
+          "label": "samsung"
+        },
+        {
+          "slug": "scifi",
+          "label": "scifi"
+        },
+        {
+          "slug": "shortstory",
+          "label": "shortstory"
+        },
+        {
+          "slug": "simple",
+          "label": "simple"
+        },
+        {
+          "slug": "small",
+          "label": "small"
+        },
+        {
+          "slug": "smartphone",
+          "label": "smartphone"
+        },
+        {
+          "slug": "software",
+          "label": "Software"
+        },
+        {
+          "slug": "speaking",
+          "label": "speaking"
+        },
+        {
+          "slug": "step",
+          "label": "step"
+        },
+        {
+          "slug": "swing",
+          "label": "swing"
+        },
+        {
+          "slug": "swing-hack",
+          "label": "swing hacks"
+        },
+        {
+          "slug": "syntax",
+          "label": "syntax"
+        },
+        {
+          "slug": "text",
+          "label": "text"
+        },
+        {
+          "slug": "thrust",
+          "label": "thrust"
+        },
+        {
+          "slug": "travel",
+          "label": "travel"
+        },
+        {
+          "slug": "tree",
+          "label": "tree"
+        },
+        {
+          "slug": "type",
+          "label": "type"
+        },
+        {
+          "slug": "typography",
+          "label": "typography"
+        },
+        {
+          "slug": "unit",
+          "label": "unit"
+        },
+        {
+          "slug": "unit-test",
+          "label": "unit tests"
+        },
+        {
+          "slug": "unix",
+          "label": "unix"
+        },
+        {
+          "slug": "userinterface",
+          "label": "userinterface"
+        },
+        {
+          "slug": "ux",
+          "label": "ux"
+        },
+        {
+          "slug": "video",
+          "label": "video"
+        },
+        {
+          "slug": "vr",
+          "label": "vr"
+        },
+        {
+          "slug": "watch",
+          "label": "watch"
+        },
+        {
+          "slug": "wearable",
+          "label": "wearables"
+        },
+        {
+          "slug": "webgl",
+          "label": "webgl"
+        },
+        {
+          "slug": "webkit",
+          "label": "webkit"
+        },
+        {
+          "slug": "webos",
+          "label": "webos"
+        },
+        {
+          "slug": "webvr",
+          "label": "webvr"
+        },
+        {
+          "slug": "webxr",
+          "label": "webxr"
+        },
+        {
+          "slug": "wolfram",
+          "label": "wolfram"
+        }
+      ],
+      "recent_content": {
+        "url": "https://josh.earth/apps",
+        "title": "Apps",
+        "summary": "My lightweight collection of browser tools for making things, trying ideas, and shipping tiny utilities without overhead. Everything here stays static, quick to load, direct to use, and completely open source.",
+        "published_at": "",
+        "observed_at": "2026-11-09T00:26:52.180Z",
+        "content_type": "project",
+        "language": "en",
+        "dir": "",
+        "site_origin": "https://josh.earth",
+        "site_title": "josh.earth",
+        "domain": "josh.earth",
+        "tags": [],
+        "neighborhoods": [],
+        "image": "",
+        "image_origin": "",
+        "source_kind": "creative-homepage",
+        "page_role": "unknown"
+      },
+      "outgoing": [],
+      "incoming": [],
+      "coverage": {
+        "pages_discovered": 250,
+        "pages_fetched": 250,
+        "fetch_limit": null,
+        "limit_reached": false,
+        "selection_strategy": "uncapped-site-crawl-v1",
+        "selection_reasons": {
+          "https://josh.earth/": "home",
+          "https://josh.earth/changelog/": "content-index",
+          "https://josh.earth/log/": "content-index",
+          "https://josh.earth/ideas/": "content-index",
+          "https://josh.earth/sitemap/": "content-index",
+          "https://josh.earth/til/": "content-index",
+          "https://josh.earth/ways/": "content-index",
+          "https://josh.earth/seeking/": "content-index",
+          "https://josh.earth/notes/": "content-index",
+          "https://josh.earth/blog/": "content-index",
+          "https://josh.earth/weblog/": "content-index",
+          "https://josh.earth/writings/": "content-index",
+          "https://josh.earth/posts/": "content-index",
+          "https://josh.earth/post/": "content-index",
+          "https://josh.earth/writing/": "content-index",
+          "https://josh.earth/articles/": "content-index",
+          "https://josh.earth/article/": "content-index",
+          "https://josh.earth/essays/": "content-index",
+          "https://josh.earth/journal/": "content-index",
+          "https://josh.earth/weeknotes/": "content-index",
+          "https://josh.earth/archive/": "content-index",
+          "https://josh.earth/about/": "content-index",
+          "https://josh.earth/about-me/": "content-index",
+          "https://josh.earth/aboutme/": "content-index",
+          "https://josh.earth/bio/": "content-index",
+          "https://josh.earth/me/": "content-index",
+          "https://josh.earth/profile/": "content-index",
+          "https://josh.earth/ai/": "content-index",
+          "https://josh.earth/blank/": "content-index",
+          "https://josh.earth/blogroll/": "content-index",
+          "https://josh.earth/calendar/": "content-index",
+          "https://josh.earth/canon/": "content-index",
+          "https://josh.earth/carry/": "content-index",
+          "https://josh.earth/caw/": "content-index",
+          "https://josh.earth/celebrities/": "content-index",
+          "https://josh.earth/chipotle/": "content-index",
+          "https://josh.earth/colophon/": "content-index",
+          "https://josh.earth/community/": "content-index",
+          "https://josh.earth/contact/": "content-index",
+          "https://josh.earth/death/": "content-index",
+          "https://josh.earth/defaults/": "content-index",
+          "https://josh.earth/disability/": "content-index",
+          "https://josh.earth/elsewhere/": "content-index",
+          "https://josh.earth/appearances/": "content-index",
+          "https://josh.earth/follow/": "content-index",
+          "https://josh.earth/subscribe/": "content-index",
+          "https://josh.earth/feeds/": "content-index",
+          "https://josh.earth/for/": "content-index",
+          "https://josh.earth/dedication/": "content-index",
+          "https://josh.earth/glossary/": "content-index",
+          "https://josh.earth/lexicon/": "content-index",
+          "https://josh.earth/phrased/": "content-index",
+          "https://josh.earth/green/": "content-index",
+          "https://josh.earth/hats/": "content-index",
+          "https://josh.earth/hello/": "content-index",
+          "https://josh.earth/hills/": "content-index",
+          "https://josh.earth/hill/": "content-index",
+          "https://josh.earth/interests/": "content-index",
+          "https://josh.earth/junk/": "content-index",
+          "https://josh.earth/sale/": "content-index",
+          "https://josh.earth/buy/": "content-index",
+          "https://josh.earth/languages/": "content-index",
+          "https://josh.earth/links/": "content-index",
+          "https://josh.earth/bookmarks/": "content-index",
+          "https://josh.earth/next/": "content-index",
+          "https://josh.earth/nope/": "content-index",
+          "https://josh.earth/now/": "content-index",
+          "https://josh.earth/podroll/": "content-index",
+          "https://josh.earth/posse/": "content-index",
+          "https://josh.earth/postroll/": "content-index",
+          "https://josh.earth/predictions/": "content-index",
+          "https://josh.earth/pricing/": "content-index",
+          "https://josh.earth/questions/": "content-index",
+          "https://josh.earth/saudade/": "content-index",
+          "https://josh.earth/save/": "content-index",
+          "https://josh.earth/referrals/": "content-index",
+          "https://josh.earth/self-hosting/": "content-index",
+          "https://josh.earth/self-hosted/": "content-index",
+          "https://josh.earth/hosted/": "content-index",
+          "https://josh.earth/homelab/": "content-index",
+          "https://josh.earth/shoebox/": "content-index",
+          "https://josh.earth/since/": "content-index",
+          "https://josh.earth/slashes/": "content-index",
+          "https://josh.earth/someday/": "content-index",
+          "https://josh.earth/tip/": "content-index",
+          "https://josh.earth/pay/": "content-index",
+          "https://josh.earth/coffee/": "content-index",
+          "https://josh.earth/uses/": "content-index",
+          "https://josh.earth/verify/": "content-index",
+          "https://josh.earth/where/": "content-index",
+          "https://josh.earth/why/": "content-index",
+          "https://josh.earth/wish/": "content-index",
+          "https://josh.earth/wish-list/": "content-index",
+          "https://josh.earth/wishlist/": "content-index",
+          "https://josh.earth/yep/": "content-index",
+          "https://josh.earth/more/": "content-index",
+          "https://josh.earth/site/": "content-index",
+          "https://josh.earth/social/": "content-index",
+          "https://josh.earth/people/": "content-index",
+          "https://josh.earth/friends/": "content-index",
+          "https://josh.earth/following/": "content-index",
+          "https://josh.earth/webring/": "content-index",
+          "https://josh.earth/webrings/": "content-index",
+          "https://josh.earth/indieweb/": "content-index",
+          "https://josh.earth/neighborhood/": "content-index",
+          "https://josh.earth/guestbook/": "content-index",
+          "https://josh.earth/meta/": "content-index",
+          "https://josh.earth/health/": "content-index",
+          "https://josh.earth/concerts/": "content-index",
+          "https://josh.earth/daylists/": "content-index",
+          "https://josh.earth/pfp/": "content-index",
+          "https://josh.earth/photo/": "content-index",
+          "https://josh.earth/pic/": "content-index",
+          "https://josh.earth/work/": "content-index",
+          "https://josh.earth/projects/": "content-index",
+          "https://josh.earth/portfolio/": "content-index",
+          "https://josh.earth/work.html/": "content-index",
+          "https://josh.earth/projects.html/": "content-index",
+          "https://josh.earth/portfolio.html/": "content-index",
+          "https://josh.earth/studio-index/": "content-index",
+          "https://josh.earth/gallery/": "content-index",
+          "https://josh.earth/galleries/": "content-index",
+          "https://josh.earth/albums/": "content-index",
+          "https://josh.earth/photography/": "content-index",
+          "https://josh.earth/photos/": "content-index",
+          "https://josh.earth/art/": "content-index",
+          "https://josh.earth/illustration/": "content-index",
+          "https://josh.earth/artwork/": "content-index",
+          "https://josh.earth/comics/": "content-index",
+          "https://josh.earth/comic/": "content-index",
+          "https://josh.earth/webcomics/": "content-index",
+          "https://josh.earth/toys/": "content-index",
+          "https://josh.earth/toy/": "content-index",
+          "https://josh.earth/play/": "content-index",
+          "https://josh.earth/reels/": "content-index",
+          "https://josh.earth/reel/": "content-index",
+          "https://josh.earth/shorts/": "content-index",
+          "https://josh.earth/cssbattles/": "content-index",
+          "https://josh.earth/cssbattle/": "content-index",
+          "https://josh.earth/css-battles/": "content-index",
+          "https://josh.earth/music/": "content-index",
+          "https://josh.earth/discography/": "content-index",
+          "https://josh.earth/tracks/": "content-index",
+          "https://josh.earth/podcasts/": "content-index",
+          "https://josh.earth/podcast/": "content-index",
+          "https://josh.earth/listen/": "content-index",
+          "https://josh.earth/videos/": "content-index",
+          "https://josh.earth/film/": "content-index",
+          "https://josh.earth/animation/": "content-index",
+          "https://josh.earth/games/": "content-index",
+          "https://josh.earth/game/": "content-index",
+          "https://josh.earth/interactive/": "content-index",
+          "https://josh.earth/exhibitions/": "content-index",
+          "https://josh.earth/design/": "content-index",
+          "https://josh.earth/apps/": "content-index",
+          "https://josh.earth/software/": "content-index",
+          "https://josh.earth/tools/": "content-index",
+          "https://josh.earth/books/": "content-index",
+          "https://josh.earth/guides/": "content-index",
+          "https://josh.earth/resources/": "content-index",
+          "https://josh.earth/experiments/": "content-index",
+          "https://josh.earth/sounds/": "content-index",
+          "https://josh.earth/hustles/": "content-index",
+          "https://josh.earth/topics/": "topic-hub",
+          "https://josh.earth/topic/": "topic-hub",
+          "https://josh.earth/tags/": "topic-hub",
+          "https://josh.earth/tag/": "topic-hub",
+          "https://josh.earth/categories/": "topic-hub",
+          "https://josh.earth/category/": "topic-hub",
+          "https://josh.earth/about": "sitemap",
+          "https://josh.earth/apps": "sitemap",
+          "https://josh.earth/projects": "sitemap",
+          "https://josh.earth/archive": "sitemap",
+          "https://josh.earth/tags": "sitemap",
+          "https://josh.earth/contact": "sitemap",
+          "https://josh.earth/tags/java.net": "sitemap",
+          "https://josh.earth/tags/rant": "sitemap",
+          "https://josh.earth/tags/programming": "sitemap",
+          "https://josh.earth/tags/bookreview": "sitemap",
+          "https://josh.earth/tags/java": "sitemap",
+          "https://josh.earth/tags/rust": "sitemap",
+          "https://josh.earth/tags/amino": "sitemap",
+          "https://josh.earth/tags/personal": "sitemap",
+          "https://josh.earth/tags/arduino": "sitemap",
+          "https://josh.earth/tags/palm": "sitemap",
+          "https://josh.earth/tags/canvas": "sitemap",
+          "https://josh.earth/tags/idealos": "sitemap",
+          "https://josh.earth/tags/graphics": "sitemap",
+          "https://josh.earth/tags/embedded": "sitemap",
+          "https://josh.earth/tags/code": "sitemap",
+          "https://josh.earth/tags/javascript": "sitemap",
+          "https://josh.earth/tags/travel": "sitemap",
+          "https://josh.earth/tags/nodejs": "sitemap",
+          "https://josh.earth/tags/webos": "sitemap",
+          "https://josh.earth/tags/game": "sitemap",
+          "https://josh.earth/tags/browser": "sitemap",
+          "https://josh.earth/tags/node": "sitemap",
+          "https://josh.earth/tags/philosophy": "sitemap",
+          "https://josh.earth/tags/ebooks": "sitemap",
+          "https://josh.earth/tags/links": "sitemap",
+          "https://josh.earth/tags/swing-hacks": "sitemap",
+          "https://josh.earth/tags/hl": "sitemap",
+          "https://josh.earth/tags/lego": "sitemap",
+          "https://josh.earth/tags/electron": "sitemap",
+          "https://josh.earth/tags/fonts": "sitemap",
+          "https://josh.earth/tags/circuitpython": "sitemap",
+          "https://josh.earth/tags/procgen": "sitemap",
+          "https://josh.earth/tags/watch": "sitemap",
+          "https://josh.earth/tags/future": "sitemap",
+          "https://josh.earth/tags/design": "sitemap",
+          "https://josh.earth/tags/oscon": "sitemap",
+          "https://josh.earth/tags/interview": "sitemap",
+          "https://josh.earth/tags/leonardo": "sitemap",
+          "https://josh.earth/tags/essays": "sitemap",
+          "https://josh.earth/tags/Uncategorized": "sitemap",
+          "https://josh.earth/tags/embeddedrust": "sitemap",
+          "https://josh.earth/tags/html": "sitemap",
+          "https://josh.earth/tags/filament": "sitemap",
+          "https://josh.earth/tags/apple": "sitemap",
+          "https://josh.earth/tags/raspberrypi": "sitemap",
+          "https://josh.earth/tags/essay": "sitemap",
+          "https://josh.earth/tags/kickstarter": "sitemap",
+          "https://josh.earth/tags/cnc": "sitemap",
+          "https://josh.earth/tags/best": "sitemap",
+          "https://josh.earth/tags/vr": "sitemap",
+          "https://josh.earth/tags/gui": "sitemap",
+          "https://josh.earth/tags/ai": "sitemap",
+          "https://josh.earth/tags/life": "sitemap",
+          "https://josh.earth/tags/roku": "sitemap",
+          "https://josh.earth/tags/tools": "sitemap",
+          "https://josh.earth/tags/scifi": "sitemap",
+          "https://josh.earth/tags/review": "sitemap",
+          "https://josh.earth/tags/ux": "sitemap",
+          "https://josh.earth/tags/auction": "sitemap",
+          "https://josh.earth/tags/blog": "sitemap",
+          "https://josh.earth/tags/predictions": "sitemap",
+          "https://josh.earth/tags/mozilla": "sitemap",
+          "https://josh.earth/tags/css": "sitemap",
+          "https://josh.earth/tags/job": "sitemap",
+          "https://josh.earth/tags/pixelart": "sitemap",
+          "https://josh.earth/tags/devrel": "sitemap",
+          "https://josh.earth/tags/shortstory": "sitemap",
+          "https://josh.earth/tags/musicapp": "sitemap",
+          "https://josh.earth/tags/react": "sitemap",
+          "https://josh.earth/tags/presentation": "sitemap",
+          "https://josh.earth/tags/culture": "sitemap",
+          "https://josh.earth/tags/speaking": "sitemap",
+          "https://josh.earth/tags/opensource": "sitemap",
+          "https://josh.earth/tags/data": "sitemap",
+          "https://josh.earth/tags/software": "sitemap",
+          "https://josh.earth/tags/phone": "sitemap",
+          "https://josh.earth/tags/opengl": "sitemap",
+          "https://josh.earth/tags/3dprinting": "sitemap",
+          "https://josh.earth/tags/ometa": "sitemap",
+          "https://josh.earth/tags/demo": "sitemap",
+          "https://josh.earth/tags/physical": "sitemap",
+          "https://josh.earth/tags/electronics": "sitemap",
+          "https://josh.earth/tags/color": "sitemap",
+          "https://josh.earth/tags/Introduction": "sitemap",
+          "https://josh.earth/tags/swing": "sitemap",
+          "https://josh.earth/tags/epaper": "sitemap",
+          "https://josh.earth/tags/facebook": "sitemap",
+          "https://josh.earth/tags/webxr": "sitemap",
+          "https://josh.earth/tags/ohm": "sitemap",
+          "https://josh.earth/tags/research": "sitemap",
+          "https://josh.earth/tags/webvr": "sitemap",
+          "https://josh.earth/tags/mixedreality": "sitemap",
+          "https://josh.earth/tags/music": "sitemap",
+          "https://josh.earth/tags/beatles": "sitemap",
+          "https://josh.earth/tags/video": "sitemap",
+          "https://josh.earth/tags/linux": "sitemap",
+          "https://josh.earth/tags/aframe": "sitemap",
+          "https://josh.earth/tags/nes": "sitemap",
+          "https://josh.earth/tags/politics": "sitemap",
+          "https://josh.earth/tags/pokemon": "sitemap",
+          "https://josh.earth/tags/npm": "sitemap",
+          "https://josh.earth/tags/privacy": "sitemap",
+          "https://josh.earth/tags/pubnub": "sitemap",
+          "https://josh.earth/tags/nokia": "sitemap",
+          "https://josh.earth/tags/leosketch": "sitemap",
+          "https://josh.earth/tags/unix": "sitemap",
+          "https://josh.earth/tags/samsung": "sitemap",
+          "https://josh.earth/tags/wearables": "sitemap",
+          "https://josh.earth/tags/webgl": "sitemap",
+          "https://josh.earth/tags/smartphone": "sitemap",
+          "https://josh.earth/tags/os": "sitemap",
+          "https://josh.earth/tags/webkit": "sitemap",
+          "https://josh.earth/tags/thrust": "sitemap",
+          "https://josh.earth/tags/apl": "sitemap",
+          "https://josh.earth/tags/typography": "sitemap",
+          "https://josh.earth/tags/microsoft": "sitemap",
+          "https://josh.earth/tags/cad": "sitemap",
+          "https://josh.earth/tags/github": "sitemap",
+          "https://josh.earth/tags/wolfram": "sitemap",
+          "https://josh.earth/tags/docs": "sitemap",
+          "https://josh.earth/tags/gpu": "sitemap",
+          "https://josh.earth/tags/mac": "sitemap",
+          "https://josh.earth/tags/hillfamily": "sitemap",
+          "https://josh.earth/tags/font": "sitemap",
+          "https://josh.earth/tags/apps": "sitemap",
+          "https://josh.earth/tags/family": "sitemap",
+          "https://josh.earth/tags/humor": "sitemap",
+          "https://josh.earth/tags/mobile": "sitemap",
+          "https://josh.earth/tags/frp": "sitemap",
+          "https://josh.earth/tags/concise": "sitemap",
+          "https://josh.earth/tags/markdown": "sitemap",
+          "https://josh.earth/tags/compilers": "sitemap",
+          "https://josh.earth/tags/education": "sitemap",
+          "https://josh.earth/tags/retro": "sitemap",
+          "https://josh.earth/tags/cars": "sitemap",
+          "https://josh.earth/tags/ebook": "sitemap",
+          "https://josh.earth/tags/phonegap": "sitemap",
+          "https://josh.earth/tags/gwt": "sitemap",
+          "https://josh.earth/tags/articles": "sitemap",
+          "https://josh.earth/tags/userinterface": "sitemap",
+          "https://josh.earth/tags/photography": "sitemap",
+          "https://josh.earth/tags/podcast": "sitemap",
+          "https://josh.earth/tags/icons": "sitemap",
+          "https://josh.earth/tags/images": "sitemap",
+          "https://josh.earth/tags/kids": "sitemap",
+          "https://josh.earth/tags/pl-design": "sitemap",
+          "https://josh.earth/2026/11/08/epaper-rust": "sitemap",
+          "https://josh.earth/2026/07/23/secondhand_souls": "sitemap",
+          "https://josh.earth/2026/07/13/ledmatrix": "sitemap",
+          "https://josh.earth/2026/06/28/metaverse-failed": "sitemap",
+          "https://josh.earth/2026/03/19/software-joy": "sitemap",
+          "https://josh.earth/2026/03/01/vibecoding_experience": "sitemap",
+          "https://josh.earth/2025/10/07/embedded_rust_04": "sitemap",
+          "https://josh.earth/2025/09/25/webxr2025": "sitemap",
+          "https://josh.earth/2025/09/16/embedded_rust_03": "sitemap",
+          "https://josh.earth/2025/08/27/embedded_rust_02": "sitemap",
+          "https://josh.earth/2025/08/19/book-review-slaughterhouse-five": "sitemap",
+          "https://josh.earth/2025/08/13/embedded_rust_01": "sitemap",
+          "https://josh.earth/2025/02/13/llm-backlash": "sitemap",
+          "https://josh.earth/2025/01/23/remembering-mixed-reality": "sitemap",
+          "https://josh.earth/2025/01/16/areas-of-interest-2025": "sitemap",
+          "https://josh.earth/2024/06/25/idealos_thinking": "sitemap",
+          "https://josh.earth/2023/07/25/circuitpython-watch": "sitemap",
+          "https://josh.earth/2023/07/12/css_text_style_builder": "sitemap",
+          "https://josh.earth/2023/06/25/cp_font_conversion": "sitemap",
+          "https://josh.earth/2023/06/12/display_io_perf": "sitemap",
+          "https://josh.earth/2023/06/08/pico_round_lcd": "sitemap",
+          "https://josh.earth/2023/04/15/canvas_scale_smooth": "sitemap",
+          "https://josh.earth/2023/01/12/one_hour_pong": "sitemap",
+          "https://josh.earth/2022/12/14/browser_1000_loc": "sitemap",
+          "https://josh.earth/2022/12/03/canvas_computing": "sitemap",
+          "https://josh.earth/2022/09/29/make_rects_fast_rust": "sitemap",
+          "https://josh.earth/2022/09/21/idealos_mark6": "sitemap",
+          "https://josh.earth/2022/08/02/live_moves_fast": "sitemap",
+          "https://josh.earth/2022/04/14/browser-engine-monoculture": "sitemap",
+          "https://josh.earth/2022/02/23/gb_emu_2": "sitemap",
+          "https://josh.earth/2022/01/24/gb_emu_01": "sitemap",
+          "https://josh.earth/2021/11/20/roku_idk_mac": "sitemap",
+          "https://josh.earth/2021/07/16/ohm_markdown_parser": "sitemap",
+          "https://josh.earth/2021/07/06/idealos_mark5": "sitemap",
+          "https://josh.earth/2021/06/18/idealos_mark4": "sitemap",
+          "https://josh.earth/2021/05/27/idealos_mark3": "sitemap",
+          "https://josh.earth/2021/04/15/emu_pi_mac": "sitemap",
+          "https://josh.earth/2021/03/11/filament_04": "sitemap",
+          "https://josh.earth/2021/02/21/filament_03": "sitemap",
+          "https://josh.earth/2021/02/15/filament_02": "sitemap",
+          "https://josh.earth/2021/02/05/filament_01": "sitemap",
+          "https://josh.earth/2021/01/26/param_resolution": "sitemap",
+          "https://josh.earth/2021/01/17/hl_syntax": "sitemap",
+          "https://josh.earth/2021/01/14/intro_hl": "sitemap",
+          "https://josh.earth/2020/12/14/tallycat-release": "sitemap",
+          "https://josh.earth/2020/08/13/leaving_mozilla": "sitemap",
+          "https://josh.earth/2020/06/08/pixeleater": "sitemap",
+          "https://josh.earth/2020/04/15/next-steps": "sitemap",
+          "https://josh.earth/2020/04/13/browser_render": "sitemap",
+          "https://josh.earth/2020/04/11/rust_layout": "sitemap",
+          "https://josh.earth/2020/04/08/rust5_tree": "sitemap",
+          "https://josh.earth/2020/03/24/type_madness": "sitemap",
+          "https://josh.earth/2020/03/21/browser_long_slog": "sitemap",
+          "https://josh.earth/2020/03/14/rust_browser_parser": "sitemap",
+          "https://josh.earth/2020/03/10/rust_minibrowser": "sitemap",
+          "https://josh.earth/2020/03/03/hunger_games": "sitemap",
+          "https://josh.earth/2019/07/21/thoughts_build_systems": "sitemap",
+          "https://josh.earth/2019/07/15/climate-change-optimist": "sitemap",
+          "https://josh.earth/2019/06/28/markdown_vs_html": "sitemap",
+          "https://josh.earth/2019/06/25/canvas_book_reboot": "sitemap",
+          "https://josh.earth/2019/02/20/google-free": "sitemap",
+          "https://josh.earth/2019/01/31/mistakes_and_hacks": "sitemap",
+          "https://josh.earth/2019/01/29/drm_bad_mkay": "sitemap",
+          "https://josh.earth/2019/01/15/devrel_2018": "sitemap",
+          "https://josh.earth/2018/10/09/manga_crypto": "sitemap",
+          "https://josh.earth/2018/10/06/lego_power_functions": "sitemap",
+          "https://josh.earth/2018/10/06/scratchjr_coding_cards": "sitemap",
+          "https://josh.earth/2018/08/14/one_year_mozilla": "sitemap",
+          "https://josh.earth/2018/08/06/fluke_review": "sitemap",
+          "https://josh.earth/2018/07/11/bezier-curves": "sitemap",
+          "https://josh.earth/2018/07/10/independent-researcher": "sitemap",
+          "https://josh.earth/2018/06/11/daughter-vampire": "sitemap",
+          "https://josh.earth/2018/06/11/procgen-color": "sitemap",
+          "https://josh.earth/2018/06/11/year-of-our-lord-story": "sitemap",
+          "https://josh.earth/2018/06/07/procgen-gradients-lerps": "sitemap",
+          "https://josh.earth/2018/06/06/procgen-sinwaves": "sitemap",
+          "https://josh.earth/2018/06/06/procgen": "sitemap",
+          "https://josh.earth/2018/06/03/amx": "sitemap",
+          "https://josh.earth/2018/05/19/beat-saber-rawks": "sitemap",
+          "https://josh.earth/2018/05/15/mobile-vr-problems": "sitemap",
+          "https://josh.earth/2018/05/14/mr-trip": "sitemap",
+          "https://josh.earth/2018/05/12/editing-white-album": "sitemap",
+          "https://josh.earth/2018/05/09/modern-computer-annoyance": "sitemap",
+          "https://josh.earth/2018/05/09/video-test": "sitemap",
+          "https://josh.earth/2018/05/08/oculus-go": "sitemap",
+          "https://josh.earth/2018/05/05/music-app-update": "sitemap",
+          "https://josh.earth/2018/05/04/recycling_questions": "sitemap",
+          "https://josh.earth/2018/05/03/react-native-tips": "sitemap",
+          "https://josh.earth/2018/04/25/build-new-smartphone": "sitemap",
+          "https://josh.earth/2018/03/26/linux_graphics_state": "sitemap",
+          "https://josh.earth/2018/02/14/ideal-steps": "sitemap",
+          "https://josh.earth/2018/01/20/2017retro": "sitemap",
+          "https://josh.earth/2017/08/18/idealos_essay": "sitemap",
+          "https://josh.earth/2017/07/24/aframe_tips": "sitemap",
+          "https://josh.earth/2017/07/02/hire_old_programmer": "sitemap",
+          "https://josh.earth/2017/06/28/pixel_eater": "sitemap",
+          "https://josh.earth/2017/06/14/arduino_sale": "sitemap",
+          "https://josh.earth/2017/06/13/introducing_ministry_of_silly": "sitemap",
+          "https://josh.earth/2017/06/06/history-developer-evangelism": "sitemap",
+          "https://josh.earth/2017/05/30/worried_about_ai": "sitemap",
+          "https://josh.earth/2017/04/02/hire-me": "sitemap",
+          "https://josh.earth/2017/02/21/uber_gardens_culture": "sitemap",
+          "https://josh.earth/2017/01/11/nes_classic": "sitemap",
+          "https://josh.earth/2016/11/15/lego_technic_guide": "sitemap",
+          "https://josh.earth/2016/10/05/legocrafts": "sitemap",
+          "https://josh.earth/2016/09/14/lego_xmas_ornaments": "sitemap",
+          "https://josh.earth/2016/08/05/no-longer-republican": "sitemap",
+          "https://josh.earth/2016/07/21/nyctrip": "sitemap",
+          "https://josh.earth/2016/07/19/pokemongo": "sitemap",
+          "https://josh.earth/2016/07/16/mustgo": "sitemap",
+          "https://josh.earth/2016/07/15/tiny-lego-wonders": "sitemap",
+          "https://josh.earth/2016/06/13/the_parsing_problem": "sitemap",
+          "https://josh.earth/2016/03/24/npmproblem": "sitemap",
+          "https://josh.earth/2016/03/06/apple-watch-nine-months": "sitemap",
+          "https://josh.earth/2016/02/15/gwenmission": "sitemap",
+          "https://josh.earth/2016/01/18/razzmaster": "sitemap",
+          "https://josh.earth/2016/01/11/manga_physiology": "sitemap",
+          "https://josh.earth/2015/10/08/datarights": "sitemap",
+          "https://josh.earth/2015/09/26/pubnubhubbub": "sitemap",
+          "https://josh.earth/2015/09/08/jetbrains": "sitemap",
+          "https://josh.earth/2015/08/24/semanticeditor": "sitemap",
+          "https://josh.earth/2015/08/17/projectdupe": "sitemap",
+          "https://josh.earth/2015/08/17/turning40": "sitemap",
+          "https://josh.earth/2015/08/01/needajob": "sitemap",
+          "https://josh.earth/2015/07/13/betterorworse": "sitemap",
+          "https://josh.earth/2015/07/06/speckcase": "sitemap",
+          "https://josh.earth/2015/07/05/independenceday": "sitemap",
+          "https://josh.earth/2015/06/17/supermen": "sitemap",
+          "https://josh.earth/2015/05/23/csstable": "sitemap",
+          "https://josh.earth/2015/05/19/appletv": "sitemap",
+          "https://josh.earth/2015/05/15/applewatch": "sitemap",
+          "https://josh.earth/2015/05/14/unbuffering": "sitemap",
+          "https://josh.earth/2015/05/05/wiringhumanity": "sitemap",
+          "https://josh.earth/2015/04/01/samsungrant": "sitemap",
+          "https://josh.earth/2015/03/21/predictingfuture": "sitemap",
+          "https://josh.earth/2015/03/13/smartwatchthoughts": "sitemap",
+          "https://josh.earth/2015/02/28/threejsreview": "sitemap",
+          "https://josh.earth/2015/02/27/amino-refactored-2015": "sitemap",
+          "https://josh.earth/2015/01/21/yessmartphone": "sitemap",
+          "https://josh.earth/2015/01/14/idealos3": "sitemap",
+          "https://josh.earth/2015/01/10/idealos2": "sitemap",
+          "https://josh.earth/2015/01/08/idealos": "sitemap",
+          "https://josh.earth/2014/12/16/nodethrusttut": "sitemap",
+          "https://josh.earth/2014/12/13/beautifullego2": "sitemap",
+          "https://josh.earth/2014/11/18/aminolesscpp": "sitemap",
+          "https://josh.earth/2014/10/28/aminofractal": "sitemap",
+          "https://josh.earth/2014/10/23/thoughtsapl": "sitemap",
+          "https://josh.earth/2014/10/20/electron04b3": "sitemap",
+          "https://josh.earth/2014/10/15/photonsh": "sitemap",
+          "https://josh.earth/2014/10/06/typoplwrapup": "sitemap",
+          "https://josh.earth/2014/09/30/msfixwindows": "sitemap",
+          "https://josh.earth/2014/09/17/rustlang": "sitemap",
+          "https://josh.earth/2014/09/15/regextypo5": "sitemap",
+          "https://josh.earth/2014/09/10/cyberprog": "sitemap",
+          "https://josh.earth/2014/09/02/bar": "sitemap",
+          "https://josh.earth/2014/09/01/legodesign": "sitemap",
+          "https://josh.earth/2014/08/25/typopl2": "sitemap",
+          "https://josh.earth/2014/08/22/typopl": "sitemap",
+          "https://josh.earth/2014/08/19/amino3": "sitemap",
+          "https://josh.earth/2014/08/11/aminoslideshow": "sitemap",
+          "https://josh.earth/2014/08/08/aminorefactored": "sitemap",
+          "https://josh.earth/2014/08/06/electronv03": "sitemap",
+          "https://josh.earth/2014/08/04/tinkercadreview": "sitemap",
+          "https://josh.earth/2014/08/02/electron03": "sitemap",
+          "https://josh.earth/2014/08/02/kaku": "sitemap",
+          "https://josh.earth/2014/07/31/command-parser-arduino": "sitemap",
+          "https://josh.earth/2014/07/28/amino": "sitemap",
+          "https://josh.earth/2014/07/04/electronv02": "sitemap",
+          "https://josh.earth/2014/06/25/nodestreamsareawesome": "sitemap",
+          "https://josh.earth/2014/06/17/electron": "sitemap",
+          "https://josh.earth/2014/06/09/ftweet2": "sitemap",
+          "https://josh.earth/2014/06/09/how-apple-would-make-a-tv": "sitemap",
+          "https://josh.earth/2014/06/09/test1": "sitemap",
+          "https://josh.earth/2014/04/29/wherethedata": "sitemap",
+          "https://josh.earth/2014/03/18/wolfram": "sitemap",
+          "https://josh.earth/2014/02/07/3dprintingoverview": "sitemap",
+          "https://josh.earth/2014/01/28/oscon2014submissions": "sitemap",
+          "https://josh.earth/2013/12/23/slug": "sitemap",
+          "https://josh.earth/2013/12/02/nosmartphone": "sitemap",
+          "https://josh.earth/2013/11/27/beautifullego": "sitemap",
+          "https://josh.earth/2013/11/19/oldpi": "sitemap",
+          "https://josh.earth/2013/11/12/cpumacpi": "sitemap",
+          "https://josh.earth/2013/10/23/noderpi": "sitemap",
+          "https://josh.earth/2013/09/25/auctionover": "sitemap",
+          "https://josh.earth/2013/09/16/auctionstart": "sitemap",
+          "https://josh.earth/2013/09/12/auctiondetails": "sitemap",
+          "https://josh.earth/2013/08/31/auctionupdate": "sitemap",
+          "https://josh.earth/2013/08/30/fontslicer": "sitemap",
+          "https://josh.earth/2013/08/25/bridgethegap": "sitemap",
+          "https://josh.earth/2013/08/24/newblogagain": "sitemap",
+          "https://josh.earth/2013/08/23/projects": "sitemap",
+          "https://josh.earth/2013/08/23/writings": "sitemap",
+          "https://josh.earth/2013/08/22/about": "sitemap",
+          "https://josh.earth/2013/08/20/sparqeecell": "sitemap",
+          "https://josh.earth/2013/08/12/plaid": "sitemap",
+          "https://josh.earth/2013/08/04/lockscreen": "sitemap",
+          "https://josh.earth/2013/06/07/eventsfrp": "sitemap",
+          "https://josh.earth/2013/03/18/ConciseComputing": "sitemap",
+          "https://josh.earth/2013/03/05/ometa1": "sitemap",
+          "https://josh.earth/2013/03/01/improvedEasingEquations": "sitemap",
+          "https://josh.earth/2013/02/13/makelibsmore": "sitemap",
+          "https://josh.earth/2013/02/06/whykidsmath": "sitemap",
+          "https://josh.earth/2013/02/05/practicalcompvision": "sitemap",
+          "https://josh.earth/2013/01/28/OSCON2013ideas": "sitemap",
+          "https://josh.earth/2013/01/24/questionswemustask": "sitemap",
+          "https://josh.earth/2013/01/07/OSCON2013CFP": "sitemap",
+          "https://josh.earth/2012/12/24/xmasadventure": "sitemap",
+          "https://josh.earth/2012/12/19/name-here": "sitemap",
+          "https://josh.earth/2012/12/18/internetbankruptcy": "sitemap",
+          "https://josh.earth/2012/12/18/retrocrunchdone": "sitemap",
+          "https://josh.earth/2012/12/08/retrocrunch3": "sitemap",
+          "https://josh.earth/2012/12/07/retrocrunch2": "sitemap",
+          "https://josh.earth/2012/12/04/retrocrunch1": "sitemap",
+          "https://josh.earth/2012/11/22/arduinointro": "sitemap",
+          "https://josh.earth/2012/09/22/arduinocookbook": "sitemap",
+          "https://josh.earth/2012/09/17/innovator_terencetam": "sitemap",
+          "https://josh.earth/2012/08/31/cnc_v3": "sitemap",
+          "https://josh.earth/2012/08/27/how_to_hide_wires": "sitemap",
+          "https://josh.earth/2012/08/22/env_mon_arduino": "sitemap",
+          "https://josh.earth/2012/08/17/cnc_p12": "sitemap",
+          "https://josh.earth/2012/08/15/cnc_p1": "sitemap",
+          "https://josh.earth/2012/08/13/electronics_and_cnc": "sitemap",
+          "https://josh.earth/2012/07/28/newdirections": "sitemap",
+          "https://josh.earth/2012/07/24/deepdivegithub": "sitemap",
+          "https://josh.earth/2012/07/17/canvasdeepdivefree": "sitemap",
+          "https://josh.earth/2012/07/02/thefutureofdesktopcomputing": "sitemap",
+          "https://josh.earth/2012/06/06/webos-on-the-verge": "sitemap",
+          "https://josh.earth/2012/05/23/driverless-cars": "sitemap",
+          "https://josh.earth/2012/04/17/bookupdates": "sitemap",
+          "https://josh.earth/2012/04/14/sacred-cows-2": "sitemap",
+          "https://josh.earth/2012/04/09/open-letter-language-designers": "sitemap",
+          "https://josh.earth/2012/04/02/AprilFools2012": "sitemap",
+          "https://josh.earth/2012/03/28/is-the-roku-worth-it": "sitemap",
+          "https://josh.earth/2012/03/27/netmagazine1": "sitemap",
+          "https://josh.earth/2012/03/26/AppBundler_new_project": "sitemap",
+          "https://josh.earth/2012/03/23/HTML-Canvas-Book-for-iPad": "sitemap",
+          "https://josh.earth/2012/03/22/The-Future-Is-Now,-Part1": "sitemap",
+          "https://josh.earth/2012/03/20/leo-11-is-here": "sitemap",
+          "https://josh.earth/2012/03/14/site-is-live": "sitemap",
+          "https://josh.earth/2012/03/12/html-canvas-an-interactive-travelogue": "sitemap",
+          "https://josh.earth/2012/03/07/iframe-you-are-dead-to-me": "sitemap",
+          "https://josh.earth/2012/03/05/amino-1-1-released-and-retina-ready": "sitemap",
+          "https://josh.earth/2012/02/29/end-of-an-era": "sitemap",
+          "https://josh.earth/2012/02/27/amino-1-1-is-coming": "sitemap",
+          "https://josh.earth/2012/02/22/ebook-improvements": "sitemap",
+          "https://josh.earth/2012/02/17/my-final-draft-is-done-building-mobile-applications-with-java": "sitemap",
+          "https://josh.earth/2012/02/13/javascript-getters-and-setters-why-u-no-use-dem": "sitemap",
+          "https://josh.earth/2012/02/11/the-predictable-apple": "sitemap",
+          "https://josh.earth/2012/02/06/the-bathtub-of-global-commerce-and-the-keystone-pipeline": "sitemap",
+          "https://josh.earth/2012/01/25/genetic-programming-ai-opening-disappointment": "sitemap",
+          "https://josh.earth/2012/01/23/ibooks-and-an-html-experiment": "sitemap",
+          "https://josh.earth/2012/01/16/back-in-the-saddle": "sitemap",
+          "https://josh.earth/2011/12/26/blogging-year-in-review": "sitemap",
+          "https://josh.earth/2011/12/15/would-you-pay-for-facebook": "sitemap",
+          "https://josh.earth/2011/12/09/hp-to-open-source-webos": "sitemap",
+          "https://josh.earth/2011/12/06/book-report-world-of-ptavvs": "sitemap",
+          "https://josh.earth/2011/11/23/your-design-homework-this-weekend": "sitemap",
+          "https://josh.earth/2011/11/20/book-report-princess-of-mars": "sitemap",
+          "https://josh.earth/2011/11/14/flash-is-dead-long-live-adobe": "sitemap",
+          "https://josh.earth/2011/11/06/book-report-hackers-painters-by-paul-grahm": "sitemap",
+          "https://josh.earth/2011/10/25/this-gives-me-a-sad": "sitemap",
+          "https://josh.earth/2011/10/06/steve-jobs": "sitemap",
+          "https://josh.earth/2011/09/23/hidden-treasure-appbundler": "sitemap",
+          "https://josh.earth/2011/08/31/java-sdl-avian-webos-magically-delicious": "sitemap",
+          "https://josh.earth/2011/08/24/design-of-the-workstation-os": "sitemap",
+          "https://josh.earth/2011/08/05/webos-canvas-improvements-for-the-hp-touchpad": "sitemap",
+          "https://josh.earth/2011/07/25/html-canvas-deep-dive": "sitemap",
+          "https://josh.earth/2011/07/01/boom-its-action-time": "sitemap",
+          "https://josh.earth/2011/06/17/get-a-discount-to-see-me-speak-at-oscon": "sitemap",
+          "https://josh.earth/2011/06/05/week-one": "sitemap",
+          "https://josh.earth/2011/05/28/amino-1-0-is-released": "sitemap",
+          "https://josh.earth/2011/05/12/playing-with-noise": "sitemap",
+          "https://josh.earth/2011/04/26/first-beta-of-leonardo-1-0": "sitemap",
+          "https://josh.earth/2011/04/12/joshs-quick-intro-to-regex": "sitemap",
+          "https://josh.earth/2011/04/11/amino-and-leonardo-next-steps": "sitemap",
+          "https://josh.earth/2011/04/02/amino-2-buffering-roadmap-and-a-new-domain": "sitemap",
+          "https://josh.earth/2011/03/14/amino-2-overall-design": "sitemap",
+          "https://josh.earth/2011/03/05/amino-update-i-believe-the-shaders-are-the-future": "sitemap",
+          "https://josh.earth/2011/02/22/why-2014-wont-be-like-1984": "sitemap",
+          "https://josh.earth/2011/02/19/travel-tablets-and-sleep": "sitemap",
+          "https://josh.earth/2011/01/30/on-the-lateness-of-my-writing": "sitemap",
+          "https://josh.earth/2010/12/27/my-best-photos-of-2010": "sitemap",
+          "https://josh.earth/2010/12/09/Amino_+_Swing_=_Crazy_Delicious": "sitemap",
+          "https://josh.earth/2010/12/07/Leonardo_needs_a_server_side_engineer": "sitemap",
+          "https://josh.earth/2010/12/01/sidehatch": "sitemap",
+          "https://josh.earth/2010/11/22/Ruby_Red_is_Here": "sitemap",
+          "https://josh.earth/2010/11/21/back-from-mars": "sitemap",
+          "https://josh.earth/2010/11/09/did-open-sourcing-mozilla-matter": "sitemap",
+          "https://josh.earth/2010/11/05/When_Commented_Out_Code_Attacks": "sitemap",
+          "https://josh.earth/2010/11/03/Leonardo_Beta_2_is_Not_a_Witch": "sitemap",
+          "https://josh.earth/2010/11/03/The_Deprecation": "sitemap",
+          "https://josh.earth/2010/10/31/html-canvas-export-for-leonardo": "sitemap",
+          "https://josh.earth/2010/10/12/next-beta-of-leonardo-is-up": "sitemap",
+          "https://josh.earth/2010/10/09/Announcing_Amino,_a_new_UI_toolkit_for_Desktop_Java": "sitemap",
+          "https://josh.earth/2010/10/09/announcing-amino": "sitemap",
+          "https://josh.earth/2010/09/05/Anouncing_Leonardo": "sitemap",
+          "https://josh.earth/2010/09/02/apple-tv-a-big-fat-fail": "sitemap",
+          "https://josh.earth/2010/08/17/announcing-leonardo": "sitemap",
+          "https://josh.earth/2010/08/05/marketing-your-open-source-project-on-a-shoestring-budget": "sitemap",
+          "https://josh.earth/2010/07/27/oscon-and-mobile-portland-trip-report": "sitemap",
+          "https://josh.earth/2010/07/14/oscon-schedule": "sitemap",
+          "https://josh.earth/2010/07/12/tim-berners-lee-on-open-data": "sitemap",
+          "https://josh.earth/2010/07/10/free-books-and-other-stuff": "sitemap",
+          "https://josh.earth/2010/06/28/XML_Utility_Library": "sitemap",
+          "https://josh.earth/2010/05/22/podcast-help": "sitemap",
+          "https://josh.earth/2010/05/11/the-future-is-now": "sitemap",
+          "https://josh.earth/2010/04/28/ui-design-assets-and-tools": "sitemap",
+          "https://josh.earth/2010/04/27/palm-dev-days-recovery": "sitemap",
+          "https://josh.earth/2010/04/21/philippe-starck-vintage-ads-and-more": "sitemap",
+          "https://josh.earth/2010/04/20/ipad-hands-on-thoughts": "sitemap",
+          "https://josh.earth/2010/04/15/Palm's_webOS,_the_OS_Built_From_the_Web,_Puts_Users_and_Developers_First": "sitemap",
+          "https://josh.earth/2010/04/15/webos-the-os-built-from-the-web": "sitemap",
+          "https://josh.earth/2010/04/12/Palm's_Hot_Apps_Promotion,_and_the_Zen_of_Servlets": "sitemap",
+          "https://josh.earth/2010/04/12/_Palm_Developer_Day_and_OSCON": "sitemap",
+          "https://josh.earth/2010/04/09/palm-developer-day-and-oscon": "sitemap",
+          "https://josh.earth/2010/04/08/april-resolution-post-smaller-and-faster": "sitemap",
+          "https://josh.earth/2010/03/27/trip-report-game-developer-conference-ctia": "sitemap",
+          "https://josh.earth/2010/03/08/why-do-alarm-clocks-suck": "sitemap",
+          "https://josh.earth/2010/02/04/The_iPhone,_Open_Systems,_and_Leaving_Sun": "sitemap",
+          "https://josh.earth/2010/02/04/leaving-sun-joining-palm": "sitemap",
+          "https://josh.earth/2010/01/27/table-dreams": "sitemap",
+          "https://josh.earth/2010/01/07/2010-the-year-we-make-tablets-and-kill-the-pc": "sitemap",
+          "https://josh.earth/2010/01/04/2009_a_year_closes": "sitemap",
+          "https://josh.earth/2010/01/02/2010-in-design": "sitemap",
+          "https://josh.earth/2009/12/14/interesting-stuff-i-read-this-week": "sitemap",
+          "https://josh.earth/2009/12/03/typography-101": "sitemap",
+          "https://josh.earth/2009/11/27/the-success-of-multitouch-is-a-lie": "sitemap",
+          "https://josh.earth/2009/11/10/oredev-on-design": "sitemap",
+          "https://josh.earth/2009/11/01/art-design-and-sweden": "sitemap",
+          "https://josh.earth/2009/10/25/color-101": "sitemap",
+          "https://josh.earth/2009/10/20/My_new_blog": "sitemap",
+          "https://josh.earth/2009/10/19/in-defense-of-wires": "sitemap",
+          "https://josh.earth/2009/07/20/who-is-this-josh": "sitemap",
+          "https://josh.earth/2009/07/11/the-origin-of-the-species": "sitemap",
+          "https://josh.earth/2009/06/17/The_Java_Store,_a_Q&amp;A": "sitemap",
+          "https://josh.earth/2009/06/09/Top_5_Most_Important_Features_in_JavaFX_12": "sitemap",
+          "https://josh.earth/2009/05/31/JavaOne_And_so_it_begins": "sitemap",
+          "https://josh.earth/2009/03/26/Want_a_Job_Coding_Extreme_Swing": "sitemap",
+          "https://josh.earth/2009/03/22/A_Tale_of_Two_Challenges": "sitemap",
+          "https://josh.earth/2009/02/15/Introducing_the_JFXStudio": "sitemap",
+          "https://josh.earth/2009/02/05/There_is_no_JavaFX_Mobile_There_is_only_JavaFX": "sitemap",
+          "https://josh.earth/2008/12/13/JavaFX_at_Devoxx": "sitemap",
+          "https://josh.earth/2008/12/04/Goodbye_Mr_A": "sitemap",
+          "https://josh.earth/2008/12/03/The_Final_Countdown": "sitemap",
+          "https://josh.earth/2008/11/26/JavaFX_at_OreDev": "sitemap",
+          "https://josh.earth/2008/11/09/JavaFX_in_Sweden": "sitemap",
+          "https://josh.earth/2008/08/26/A_Better_Applet_Experience,_Part_2_Poster_Frames": "sitemap",
+          "https://josh.earth/2008/08/14/A_Better_Applet_Experience,_Part_1_a_custom_loading_screen": "sitemap",
+          "https://josh.earth/2008/08/05/JavaFX_bleg": "sitemap",
+          "https://josh.earth/2008/07/31/24_hours_later": "sitemap",
+          "https://josh.earth/2008/07/31/JavaFX_Preview_SDK_released": "sitemap",
+          "https://josh.earth/2008/07/29/WidgetFX_Glossitope_reinvented": "sitemap",
+          "https://josh.earth/2008/07/25/And_now_for_something_completely_different": "sitemap",
+          "https://josh.earth/2008/07/16/OSCON_and_the_JavaFX_SDK": "sitemap",
+          "https://josh.earth/2008/07/03/JavaFX_Innovations_Inline_Examples_and_Screenshots": "sitemap",
+          "https://josh.earth/2008/06/06/Java_Doodle_fading_translucent_windows,_on_PC_&amp;_Mac": "sitemap",
+          "https://josh.earth/2008/05/28/Java_Doodle_crossdomainxml_Support": "sitemap",
+          "https://josh.earth/2008/05/19/JavaOne_Exhaustion_(with_links)": "sitemap",
+          "https://josh.earth/2008/05/06/JavaFXcom": "sitemap",
+          "https://josh.earth/2008/05/06/JavaOne_video_blogs_with_Rachel_Hill": "sitemap",
+          "https://josh.earth/2008/05/06/My_keynote_demo": "sitemap",
+          "https://josh.earth/2008/04/30/Hear_me_on_RIA_Weekly": "sitemap",
+          "https://josh.earth/2008/04/19/JavaOne_is_like_Christmas": "sitemap",
+          "https://josh.earth/2008/04/06/At_the_speed_of_JavaFX": "sitemap",
+          "https://josh.earth/2008/04/05/Back_from_Australia": "sitemap",
+          "https://josh.earth/2008/03/29/Bleg_do_you_know_of_any_good_forum_software": "sitemap",
+          "https://josh.earth/2008/03/18/You_need_at_least_386_Power": "sitemap",
+          "https://josh.earth/2008/03/13/JavaFX_Doodle_": "sitemap",
+          "https://josh.earth/2008/02/18/JavaFX_Script_Doodles,_": "sitemap",
+          "https://josh.earth/2008/02/11/Upcoming_Java_and_JavaFX_Events_you_should_attend": "sitemap",
+          "https://josh.earth/2008/02/06/JavaFX_Doodles_Doodle_": "sitemap",
+          "https://josh.earth/2008/01/09/How_do_I_answer_the_question_What_is_Java": "sitemap",
+          "https://josh.earth/2007/12/22/A_JavaFX_Christmas_Demo": "sitemap",
+          "https://josh.earth/2007/12/20/Competition_and_the_Java_Ecosystem_why_Sun_launched_the_PDF_Renderer_and_Scene_Graph_projects": "sitemap",
+          "https://josh.earth/2007/12/13/The_big_secret_revealed_A_PDF_viewing_library": "sitemap",
+          "https://josh.earth/2007/12/11/Our_new_Java_Scene_Graph_is_open_sourced": "sitemap",
+          "https://josh.earth/2007/12/05/LightsOut,_a_JavaFX_Script_game": "sitemap",
+          "https://josh.earth/2007/12/03/The_Winds_of_Change": "sitemap",
+          "https://josh.earth/2007/11/16/How_to_remove_Java_6_from_your_Mac": "sitemap",
+          "https://josh.earth/2007/11/11/Why_don't_you_ship_Swing_Apps_two_years_later": "sitemap",
+          "https://josh.earth/2007/11/02/Dinner_in_Prague": "sitemap",
+          "https://josh.earth/2007/11/02/My_First_Screencast_Visually_build_an_RSS_reader_using_NetBeans_6": "sitemap",
+          "https://josh.earth/2007/10/23/NetBeans_6_beta_2_is_out": "sitemap",
+          "https://josh.earth/2007/10/18/It_seems_there_is_a_downside_to_having_unix_in_your_pocket": "sitemap",
+          "https://josh.earth/2007/10/11/Hang_out_with_me_at_the_Midwest_Tech_Days_in_Minneapolis_and_Chicago": "sitemap",
+          "https://josh.earth/2007/10/07/The_complexity_of_large_software_an_AT&amp;T_example": "sitemap",
+          "https://josh.earth/2007/09/26/The_votes_are_in": "sitemap",
+          "https://josh.earth/2007/09/20/A_question_about_SocketPermissions": "sitemap",
+          "https://josh.earth/2007/09/20/_You_vote_for_your_favorite_article_and_I'll_write_it": "sitemap",
+          "https://josh.earth/2007/09/14/See_me_speak_about_JavaFX_at_the_Midwest_Java_Technology_Days": "sitemap",
+          "https://josh.earth/2007/09/10/JavaFX_=_JavaFX_Script": "sitemap",
+          "https://josh.earth/2007/09/08/Nimbus_Nears_Completion": "sitemap",
+          "https://josh.earth/2007/08/31/My_new_life_in_JavaFX": "sitemap",
+          "https://josh.earth/2007/08/17/NetBeans_to_become_GPL": "sitemap",
+          "https://josh.earth/2007/08/07/UltraSparc_T2_launch_[keanu]_Whoa_[-keanu]": "sitemap",
+          "https://josh.earth/2007/08/01/Want_to_get_paid_to_work_Flying_Saucer": "sitemap",
+          "https://josh.earth/2007/07/20/Java_FX_updated,_and_a_visit_to_the_future_of_client_Java": "sitemap",
+          "https://josh.earth/2007/07/14/Flying_Saucer_R7_is_out": "sitemap",
+          "https://josh.earth/2007/06/14/A_Response_to_GUI_Building_tool_vs_hand_coded": "sitemap",
+          "https://josh.earth/2007/05/17/Problem_and_solution_for_compiling_NetBeans_on_Mac": "sitemap",
+          "https://josh.earth/2007/05/15/Glossitope_BoF_slides": "sitemap",
+          "https://josh.earth/2007/05/11/JavaOne_Another_One_is_Done": "sitemap",
+          "https://josh.earth/2007/05/09/AB5k_has_a_new_name,_and_a_JavaOne_contest": "sitemap",
+          "https://josh.earth/2007/05/08/JSR_296_Session_Success": "sitemap",
+          "https://josh.earth/2007/05/08/NetBeans_day_success": "sitemap",
+          "https://josh.earth/2007/05/03/Beans_binding_rocks": "sitemap",
+          "https://josh.earth/2007/04/25/Too_busy_to_blog": "sitemap",
+          "https://josh.earth/2007/04/09/Back_from_the_demo": "sitemap",
+          "https://josh.earth/2007/04/01/Back_to_the_Bay": "sitemap",
+          "https://josh.earth/2007/03/22/Yahoo_Widgets_4_is_released": "sitemap",
+          "https://josh.earth/2007/03/21/AB5k_Widgets_in_Depth": "sitemap",
+          "https://josh.earth/2007/03/18/Back_from_the_Java_Posse_Roundup": "sitemap",
+          "https://josh.earth/2007/03/14/Posse_Brain_Dump_JavaDocs_from_the_year_2020": "sitemap",
+          "https://josh.earth/2007/03/12/Quick_updates_Desktop_Matters,_Java_Posse_Roundup,_AB5k,_and_more": "sitemap",
+          "https://josh.earth/2007/03/07/AB5k_our_all_Java_widget_system_is_released": "sitemap",
+          "https://josh.earth/2007/03/03/My_Java_One_Talks": "sitemap",
+          "https://josh.earth/2007/02/27/Netbeans_M7_and_the_amazing_new_Web_Start_plugin": "sitemap",
+          "https://josh.earth/2007/02/22/Tricked_out_maps_and_a_new_tile_provider": "sitemap",
+          "https://josh.earth/2007/01/30/First_release_of_JSR_296": "sitemap",
+          "https://josh.earth/2007/01/19/Free_Projects_Part_4_an_LCD_Controller": "sitemap",
+          "https://josh.earth/2007/01/04/Tag_I'm_it": "sitemap",
+          "https://josh.earth/2007/01/02/Rockin'_2007": "sitemap",
+          "https://josh.earth/2006/12/22/A_Mapping_Christmas_Present": "sitemap",
+          "https://josh.earth/2006/12/18/Subversion_Support_in_NetBeans_55": "sitemap",
+          "https://josh.earth/2006/12/04/Free_Projects_Part_3_SketchPad": "sitemap",
+          "https://josh.earth/2006/11/27/Free_Projects_Part_2_the_Stacked_Image_Editor": "sitemap",
+          "https://josh.earth/2006/11/20/Free_Projects_Part_1_a_Screen_Capture_Uploader": "sitemap",
+          "https://josh.earth/2006/11/17/Posting_from_30k_ft_Cool_Projects,_Free_to_a_Good_Home": "sitemap",
+          "https://josh.earth/2006/11/12/A_nice_Java_evening_with_sour_cherry_beer": "sitemap",
+          "https://josh.earth/2006/11/12/Musings_on_the_new_opportunities_that_Open_Source_Java_brings": "sitemap",
+          "https://josh.earth/2006/11/09/My_first_two_weeks_at_Netbeans": "sitemap",
+          "https://josh.earth/2006/11/01/A_quick_intro_to_HttpClient": "sitemap",
+          "https://josh.earth/2006/10/28/Java_people_in_Prague": "sitemap",
+          "https://josh.earth/2006/10/26/I'm_getting_married,_leaving_the_Swing_Team,_and_flying_to_Prague": "sitemap",
+          "https://josh.earth/2006/10/18/Update_on_Bug_6477341,the_''_Windows_Combobox_bug": "sitemap",
+          "https://josh.earth/2006/10/12/NASA_Maps_in_your_Swing_App": "sitemap",
+          "https://josh.earth/2006/09/29/GIF_will_finally_be_free": "sitemap",
+          "https://josh.earth/2006/09/26/Introducing_Painters_II_filters,_shapes,_and_the_builder": "sitemap",
+          "https://josh.earth/2006/09/25/Vista_getting_better": "sitemap",
+          "https://josh.earth/2006/09/20/Introducing_Painters": "sitemap",
+          "https://josh.earth/2006/09/17/LA-stravaganza": "sitemap",
+          "https://josh.earth/2006/09/11/Source_to_the_Magnifying_Glass_Hack": "sitemap",
+          "https://josh.earth/2006/09/09/The_best_is_yet_to_come": "sitemap",
+          "https://josh.earth/2006/08/31/Windows_L&amp;F_Bugs_Part_2": "sitemap",
+          "https://josh.earth/2006/08/24/Painter_Trailer": "sitemap",
+          "https://josh.earth/2006/08/17/The_Big_One": "sitemap",
+          "https://josh.earth/2006/07/18/I_need_help_tracking_down_a_bug_with_the_WindowsTableHeaderUI": "sitemap",
+          "https://josh.earth/2006/07/17/Do_We_Need_Databases_on_the_Desktop": "sitemap",
+          "https://josh.earth/2006/07/11/Getting_started_with_the_Aerith_Mapping_Component": "sitemap",
+          "https://josh.earth/2006/06/28/Aerith_Code_is_Go": "sitemap",
+          "https://josh.earth/2006/06/22/Java_One,_Future_Projects,_and_Back_to_Work": "sitemap",
+          "https://josh.earth/2006/05/19/Aerith_Updates_and_the_End_of_Java_One_2006": "sitemap",
+          "https://josh.earth/2006/05/16/Aerith_live_from_the_floor": "sitemap",
+          "https://josh.earth/2006/05/15/Pretty_Pictures": "sitemap",
+          "https://josh.earth/2006/05/10/Freshly_Squeezed_Flash_a_micro-company": "sitemap",
+          "https://josh.earth/2006/05/04/Why_we_are_here": "sitemap",
+          "https://josh.earth/2006/05/03/Swing_Hacks_in_Japanese_Ships": "sitemap",
+          "https://josh.earth/2006/04/30/How_to_get_code_completion_with_Javadocs_in_Netbeans_on_Mac_OS_X": "sitemap",
+          "https://josh.earth/2006/04/26/Swing_Hacks_goes_East": "sitemap",
+          "https://josh.earth/2006/04/20/Rant_How_to_make_whitebox_PCs_be_less_horrible": "sitemap",
+          "https://josh.earth/2006/04/18/I_finally_fixed_my_first_Mustang_bug": "sitemap",
+          "https://josh.earth/2006/04/17/Stuff_to_Play_With_the_EnumComboBoxModel": "sitemap",
+          "https://josh.earth/2006/04/10/The_Summer_of_1998": "sitemap",
+          "https://josh.earth/2006/03/09/Once_more_Matisse_Rocks": "sitemap",
+          "https://josh.earth/2006/03/01/Props_to_the_Trig_Teacher": "sitemap",
+          "https://josh.earth/2006/02/26/All_hail_the_PropertyChangeListener": "sitemap",
+          "https://josh.earth/2006/02/21/My_Mustang_Beta_Thoughts": "sitemap",
+          "https://josh.earth/2006/02/21/SwiXml_builds_better_guis": "sitemap",
+          "https://josh.earth/2006/02/07/Easily_Use_Custom_Swing_Components_with_Matisse": "sitemap",
+          "https://josh.earth/2005/11/23/Netbeans_on_Mac_Tip": "sitemap",
+          "https://josh.earth/2005/11/18/I_don't_normally_post_about": "sitemap",
+          "https://josh.earth/2005/11/14/Why_use_Java_for_Web_20": "sitemap",
+          "https://josh.earth/2005/11/10/More_on_Day's_2_and_3_of_Java_One_Japan": "sitemap",
+          "https://josh.earth/2005/11/08/My_First_Full_Day_of_JavaOne_Japan": "sitemap",
+          "https://josh.earth/2005/11/06/My_LA-JUG_Peabody_Presentation": "sitemap",
+          "https://josh.earth/2005/11/05/Preparing_for_Tokyo": "sitemap",
+          "https://josh.earth/2005/09/02/Design_of_a_distributed_disaster_relief_system": "sitemap",
+          "https://josh.earth/2005/08/12/Swing_Hacks_Bonus_Article": "sitemap",
+          "https://josh.earth/2005/08/06/Get_Swing_Hacks_for_Five_bucks": "sitemap",
+          "https://josh.earth/2005/07/25/Using_Java2D_to_to_build_a_Stacked_Image_Editor": "sitemap",
+          "https://josh.earth/2005/07/19/Fold_N'_Drop": "sitemap",
+          "https://josh.earth/2005/07/15/Java_One_Lessons__The_book": "sitemap",
+          "https://josh.earth/2005/07/14/Delta_Lessons": "sitemap",
+          "https://josh.earth/2005/06/30/Exhausted": "sitemap",
+          "https://josh.earth/2005/06/28/JavaOne_Day_One": "sitemap",
+          "https://josh.earth/2005/06/28/Were_2": "sitemap",
+          "https://josh.earth/2005/06/26/JavaOne_Day_-1": "sitemap",
+          "https://josh.earth/2005/06/26/JavaOne_Day_0": "sitemap",
+          "https://josh.earth/2005/06/25/A_picture_is_worth_a_thousand_words": "sitemap",
+          "https://josh.earth/2005/06/24/Getting_ready_for_JavaOne_The_Day_of_the_Desktop": "sitemap",
+          "https://josh.earth/2005/06/17/technology_has_warped_my_brain": "sitemap",
+          "https://josh.earth/2005/06/14/Why_I_haven't_been_posting": "sitemap",
+          "https://josh.earth/2005/05/09/The_Reponse_to_Why_Don't_you_Ship_Swing_Apps": "sitemap",
+          "https://josh.earth/2005/04/29/Mac_OS_X_104_has_arrived,_with_a_Hi-Rez_secret": "sitemap",
+          "https://josh.earth/2005/04/21/A_Hi-Rez_Future": "sitemap",
+          "https://josh.earth/2005/04/11/Sometimes_you_only_need_a_little": "sitemap",
+          "https://josh.earth/2005/04/07/The_Portable_MiniApp_Mortgage_Calculator": "sitemap",
+          "https://josh.earth/2005/03/31/Quick_Tip_for_OSX_Users": "sitemap",
+          "https://josh.earth/2005/03/31/Why_don't_you_ship_Swing_apps": "sitemap",
+          "https://josh.earth/2005/03/24/Subversion_Rename_Rocks": "sitemap",
+          "https://josh.earth/2005/03/13/No_Session-y_Goodness_for_Me": "sitemap",
+          "https://josh.earth/2005/02/23/Big_news_I'm_going_West": "sitemap",
+          "https://josh.earth/2005/01/12/Apple's_latest_efforts_are_the_triumph_of_software_over_hardware": "sitemap",
+          "https://josh.earth/2004/12/07/XML_to_Swing_and_the_Gradual_API": "sitemap",
+          "https://josh.earth/2004/10/25/Webstart_Rant": "sitemap",
+          "https://josh.earth/2004/10/18/Please_think_of_the_users": "sitemap",
+          "https://josh.earth/2004/10/03/Countdown_to_Christmas_a_Customizable_MiniApp": "sitemap",
+          "https://josh.earth/2004/09/29/Weather_Watcher_Release_Deux": "sitemap",
+          "https://josh.earth/2004/09/27/A_New_Rich_Client_WeatherWatcher": "sitemap",
+          "https://josh.earth/2004/09/22/New_MiniApp_Storm_Drain": "sitemap",
+          "https://josh.earth/2004/09/10/mouthwhereIs()put(new_Money())": "sitemap",
+          "https://josh.earth/2004/09/05/Visions_of_truly_portable_applications": "sitemap",
+          "https://josh.earth/2004/08/23/Unleash_the_MiniApp": "sitemap",
+          "https://josh.earth/2004/08/20/My_1_year_anniversary_at_Javanet_the_social_side_of_software": "sitemap",
+          "https://josh.earth/2004/07/26/Quick_Radial_Blurring_w-_Java2D": "sitemap",
+          "https://josh.earth/2004/07/19/Myth_There_aren't_any_commercial_apps_written_in_Java": "sitemap",
+          "https://josh.earth/2004/06/18/My_new_opensource_project__Flying_Saucer,_an_all_Java_XHTML_renderer": "sitemap",
+          "https://josh.earth/2004/05/18/Swing_Hack_8_An_eyedropper_tool": "sitemap",
+          "https://josh.earth/2004/05/03/An_Analysis_of_Open_Sourcing_Java": "sitemap",
+          "https://josh.earth/2004/05/03/Java's_got_a_Bad_Rep_The_Rebuttal": "sitemap",
+          "https://josh.earth/2004/04/26/Does_Java_have_a_bad_reputation": "sitemap",
+          "https://josh.earth/2004/04/05/From_Scarcity_to_Excess_The_economics_of_commodity_software": "sitemap",
+          "https://josh.earth/2004/03/30/The_future_is_Vectorized": "sitemap",
+          "https://josh.earth/2004/02/03/Any_HTML_Renderers_for_Java": "sitemap",
+          "https://josh.earth/2004/01/05/2004_the_year_of_the_Net-App": "sitemap",
+          "https://josh.earth/2003/12/22/Swing_Hack_7__Let_it_Snow": "sitemap",
+          "https://josh.earth/2003/12/17/How_do_you_develop": "sitemap",
+          "https://josh.earth/2003/12/12/Spanish_Java": "sitemap",
+          "https://josh.earth/2003/12/09/Swing_Hack_6__Ghost_Mouse": "sitemap",
+          "https://josh.earth/2003/12/01/Point,_Click,_and_Drool": "sitemap",
+          "https://josh.earth/2003/11/24/Microwaves_Are_Evil_(at_least_mine)": "sitemap",
+          "https://josh.earth/2003/11/10/Swing_has_failed_What_can_we_do": "sitemap",
+          "https://josh.earth/2003/11/05/Swing_Hack_5_a_magic_lens": "sitemap",
+          "https://josh.earth/2003/10/21/How_about_a_jApp_for_my_car": "sitemap",
+          "https://josh.earth/2003/10/14/How_do_kids_program_today": "sitemap",
+          "https://josh.earth/2003/10/09/We_should_be_software_designers": "sitemap",
+          "https://josh.earth/2003/10/03/Swing_Hack_4_The_universal_right_click": "sitemap",
+          "https://josh.earth/2003/10/02/I_have_seen_the_light": "sitemap",
+          "https://josh.earth/2003/09/26/Swing_Hack_3_Overlay_Graphics": "sitemap",
+          "https://josh.earth/2003/09/24/Too_many_ways": "sitemap",
+          "https://josh.earth/2003/09/21/Truly_reliable_software": "sitemap",
+          "https://josh.earth/2003/09/15/The_two_opposing_forces_of_software_why_career_programmers_will_always_have_a_job": "sitemap",
+          "https://josh.earth/2003/09/09/Passive_Tech_on_the_Ocean": "sitemap",
+          "https://josh.earth/2003/08/28/SwingHack_keyboard_spinner": "sitemap",
+          "https://josh.earth/2003/08/22/Swing_Hack_Window_Snapping": "sitemap",
+          "https://josh.earth/2003/08/15/Strong_vs_Weak_Typing_Cant_we_have_the_best_of_both_worlds": "sitemap",
+          "https://josh.earth/2003/08/11/Where_are_my_free_JavaBeans": "sitemap",
+          "https://josh.earth/2003/08/06/CVS_or_Else": "sitemap",
+          "https://josh.earth/style/": "blind-probe",
+          "https://josh.earth/top4/": "blind-probe",
+          "https://josh.earth/topfour/": "blind-probe",
+          "https://josh.earth/events/": "blind-probe",
+          "https://josh.earth/shows/": "blind-probe",
+          "https://josh.earth/gigs/": "blind-probe",
+          "https://josh.earth/tour/": "blind-probe",
+          "https://josh.earth/live/": "blind-probe",
+          "https://josh.earth/performances/": "blind-probe",
+          "https://josh.earth/readings/": "blind-probe",
+          "https://josh.earth/workshops/": "blind-probe",
+          "https://josh.earth/study-hall/": "blind-probe",
+          "https://josh.earth/frontend-study-hall/": "blind-probe",
+          "https://josh.earth/front-end-study-hall/": "blind-probe",
+          "https://josh.earth/fresh/": "blind-probe",
+          "https://josh.earth/education/": "blind-probe",
+          "https://josh.earth/learn/": "blind-probe",
+          "https://josh.earth/classes/": "blind-probe",
+          "https://josh.earth/class/": "blind-probe",
+          "https://josh.earth/courses/": "blind-probe",
+          "https://josh.earth/course/": "blind-probe",
+          "https://josh.earth/join": "content-index",
+          "https://josh.earth/portfolio": "content-index",
+          "https://josh.earth/portfolio/swinghacks": "content-index",
+          "https://josh.earth/portfolio/subarctic": "content-index",
+          "https://josh.earth/portfolio/sensopolis": "content-index",
+          "https://josh.earth/portfolio/lego-macropad": "content-index",
+          "https://josh.earth/portfolio/led-clock": "content-index",
+          "https://josh.earth/portfolio/embedded-rust": "content-index",
+          "https://josh.earth/portfolio/level5_tools": "content-index",
+          "https://josh.earth/portfolio/atlantis": "content-index",
+          "https://josh.earth/feed.xml": "budget-exhausted",
+          "https://josh.earth/?page=2": "budget-exhausted",
+          "https://josh.earth/2009/06/17/The_Java_Store,_a_Q&A": "budget-exhausted",
+          "https://josh.earth/2008/06/06/Java_Doodle_fading_translucent_windows,_on_PC_&_Mac": "budget-exhausted",
+          "https://josh.earth/2007/10/07/The_complexity_of_large_software_an_AT&T_example": "budget-exhausted",
+          "https://josh.earth/2006/08/31/Windows_L&F_Bugs_Part_2": "budget-exhausted",
+          "https://josh.earth/posts/epaper-rust": "budget-exhausted",
+          "https://josh.earth/portfolio-assets/subarctic/systematic-output-modification.pdf": "budget-exhausted",
+          "https://josh.earth/posts/canvas_scale_smooth": "budget-exhausted",
+          "https://josh.earth/posts/emu_pi_mac": "budget-exhausted",
+          "https://josh.earth/posts/rust_minibrowser": "budget-exhausted",
+          "https://josh.earth/posts/webos-on-the-verge": "budget-exhausted",
+          "https://josh.earth/posts/metaverse-failed": "budget-exhausted",
+          "https://josh.earth/posts/fluke_review": "budget-exhausted",
+          "https://josh.earth/2021/05/27/link": "budget-exhausted",
+          "https://josh.earth/2020/04/13/link": "budget-exhausted",
+          "https://josh.earth/tags/java.net?page=2": "budget-exhausted",
+          "https://josh.earth/tags/rant?page=2": "budget-exhausted",
+          "https://josh.earth/tags/programming?page=2": "budget-exhausted",
+          "https://josh.earth/tags/bookreview?page=2": "budget-exhausted"
+        }
+      },
+      "crawled_at": "2026-11-09T00:26:52.180Z",
+      "portfolio": {
+        "url": "https://josh.earth/portfolio",
+        "work_count": 16,
+        "sectors": []
+      }
     },
     {
       "origin": "https://joshbeard.com",
@@ -14721,7 +16305,7 @@
           "https://joshbeard.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z"
+      "crawled_at": "2026-11-09T00:26:52.180Z"
     },
     {
       "origin": "https://joshcox.co.uk",
@@ -14770,6 +16354,10 @@
           "label": "Laptop"
         },
         {
+          "slug": "mac",
+          "label": "mac"
+        },
+        {
           "slug": "party",
           "label": "party"
         },
@@ -14806,8 +16394,16 @@
           "label": "sells"
         },
         {
+          "slug": "shop",
+          "label": "shop"
+        },
+        {
           "slug": "tell",
           "label": "tell"
+        },
+        {
+          "slug": "text",
+          "label": "text"
         },
         {
           "slug": "wordpress",
@@ -14823,7 +16419,7 @@
         "title": "Projects — Josh Cox",
         "summary": "Products and tools Josh Cox has built, including Prystine, SendTidings, Quotify, Lifting Times, LeerHaus, and the Mac app My House, My Things.",
         "published_at": "",
-        "observed_at": "2026-11-08T20:22:43.029Z",
+        "observed_at": "2026-11-09T00:26:52.180Z",
         "content_type": "collection",
         "language": "en-gb",
         "dir": "",
@@ -15051,7 +16647,7 @@
           "https://joshcox.co.uk/blog/meat-the-luxury-product/": "content-index"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z"
+      "crawled_at": "2026-11-09T00:26:52.180Z"
     },
     {
       "origin": "https://joshghent.com",
@@ -15092,7 +16688,7 @@
         },
         {
           "slug": "become",
-          "label": "becomes"
+          "label": "become"
         },
         {
           "slug": "book",
@@ -15112,7 +16708,7 @@
         },
         {
           "slug": "company",
-          "label": "company"
+          "label": "companies"
         },
         {
           "slug": "create",
@@ -15165,6 +16761,10 @@
         {
           "slug": "gatsby",
           "label": "gatsby"
+        },
+        {
+          "slug": "github",
+          "label": "github"
         },
         {
           "slug": "goal",
@@ -15324,7 +16924,7 @@
         "title": "Enterprise sales teams, please, I beg you, stop",
         "summary": "I asked for a price on a few extra seats of software we already pay for. Two days and a pile of irrelevant questions later, I got one.",
         "published_at": "2026-10-28T00:00:00.000Z",
-        "observed_at": "2026-11-08T20:22:43.029Z",
+        "observed_at": "2026-11-09T00:26:52.180Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -15707,7 +17307,7 @@
           "https://joshghent.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z"
+      "crawled_at": "2026-11-09T00:26:52.180Z"
     },
     {
       "origin": "https://joshgr.com",
@@ -15982,7 +17582,7 @@
           "https://joshgr.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z"
+      "crawled_at": "2026-11-09T00:26:52.180Z"
     },
     {
       "origin": "https://joshkoter.com",
@@ -16027,7 +17627,7 @@
         "title": "Untitled",
         "summary": "Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on YouTube.",
         "published_at": "",
-        "observed_at": "2026-11-08T20:22:43.029Z",
+        "observed_at": "2026-11-09T00:26:52.180Z",
         "content_type": "video",
         "language": "",
         "dir": "",
@@ -16242,7 +17842,7 @@
           "https://joshkoter.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z"
+      "crawled_at": "2026-11-09T00:26:52.180Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -16499,7 +18099,7 @@
         },
         {
           "slug": "model",
-          "label": "models"
+          "label": "model"
         },
         {
           "slug": "month",
@@ -16548,6 +18148,10 @@
         {
           "slug": "productivity",
           "label": "productivity"
+        },
+        {
+          "slug": "prompt",
+          "label": "prompt"
         },
         {
           "slug": "quote",
@@ -17200,7 +18804,7 @@
           "https://joshmuller.ca": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z"
+      "crawled_at": "2026-11-09T00:26:52.180Z"
     },
     {
       "origin": "https://joshozuna.com",
@@ -17291,6 +18895,10 @@
           "label": "images"
         },
         {
+          "slug": "link",
+          "label": "Link"
+        },
+        {
           "slug": "music",
           "label": "music"
         },
@@ -17301,6 +18909,10 @@
         {
           "slug": "outdoor",
           "label": "outdoors"
+        },
+        {
+          "slug": "photography",
+          "label": "photography"
         },
         {
           "slug": "red",
@@ -17332,7 +18944,7 @@
         "title": "35mm Film Photography Gallery",
         "summary": "Hobbyist photographer. Shooting 35mm film since 2022.",
         "published_at": "2025-08-17T05:00:00.000Z",
-        "observed_at": "2026-11-08T20:22:43.029Z",
+        "observed_at": "2026-11-09T00:26:52.180Z",
         "content_type": "collection",
         "language": "en",
         "dir": "",
@@ -17632,7 +19244,7 @@
           "https://joshozuna.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z"
+      "crawled_at": "2026-11-09T00:26:52.180Z"
     },
     {
       "origin": "https://joshsherman.dev",
@@ -17664,7 +19276,7 @@
         "title": "Annotate Archive | Josh Sherman",
         "summary": "A spoiler-safe social reading app with private circles, progress-gated notes, reactions, predictions, and notifications.",
         "published_at": "",
-        "observed_at": "2026-11-08T20:22:43.029Z",
+        "observed_at": "2026-11-09T00:26:52.180Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -17890,7 +19502,7 @@
           "https://joshsherman.dev/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z"
+      "crawled_at": "2026-11-09T00:26:52.180Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -17953,7 +19565,7 @@
         "title": "What's New",
         "summary": "See what people across the Joshternet have been writing, building, and sharing. Discover recent posts and creative work from independent websites, then follow the links to their original publishers.",
         "published_at": "",
-        "observed_at": "2026-11-08T20:22:43.029Z",
+        "observed_at": "2026-11-09T00:26:52.180Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -18157,6 +19769,7 @@
           "https://joshternet.org/topics/api/": "sitemap",
           "https://joshternet.org/topics/apple/": "sitemap",
           "https://joshternet.org/topics/architecture/": "sitemap",
+          "https://joshternet.org/topics/archive/": "sitemap",
           "https://joshternet.org/topics/art/": "sitemap",
           "https://joshternet.org/topics/artificial-intelligence/": "sitemap",
           "https://joshternet.org/topics/arts-culture/": "sitemap",
@@ -18203,6 +19816,7 @@
           "https://joshternet.org/topics/communication/": "sitemap",
           "https://joshternet.org/topics/community/": "sitemap",
           "https://joshternet.org/topics/company/": "sitemap",
+          "https://joshternet.org/topics/computer-vision/": "sitemap",
           "https://joshternet.org/topics/computer/": "sitemap",
           "https://joshternet.org/implement/content/connections/": "sitemap",
           "https://joshternet.org/implement/connections/": "sitemap",
@@ -18259,6 +19873,7 @@
           "https://joshternet.org/topics/future/": "sitemap",
           "https://joshternet.org/topics/game/": "sitemap",
           "https://joshternet.org/topics/general/": "sitemap",
+          "https://joshternet.org/topics/generator/": "sitemap",
           "https://joshternet.org/implement/platforms/ghost/": "sitemap",
           "https://joshternet.org/governance/": "sitemap",
           "https://joshternet.org/topics/government-policy/": "sitemap",
@@ -18319,6 +19934,7 @@
           "https://joshternet.org/topics/mental-health/": "sitemap",
           "https://joshternet.org/topics/micro-saas/": "sitemap",
           "https://joshternet.org/implement/content/microformats2/": "sitemap",
+          "https://joshternet.org/topics/miscellaneous/": "sitemap",
           "https://joshternet.org/topics/mobile/": "sitemap",
           "https://joshternet.org/topics/model/": "sitemap",
           "https://joshternet.org/topics/money/": "sitemap",
@@ -18365,7 +19981,6 @@
           "https://joshternet.org/topics/productivity/": "sitemap",
           "https://joshternet.org/topics/programming/": "sitemap",
           "https://joshternet.org/licensing/": "sitemap",
-          "https://joshternet.org/topics/prompt/": "sitemap",
           "https://joshternet.org/topics/property-real-estate/": "sitemap",
           "https://joshternet.org/topics/property/": "sitemap",
           "https://joshternet.org/topics/purpose/": "sitemap",
@@ -18402,6 +20017,8 @@
           "https://joshternet.org/implement/content/seeking/": "sitemap",
           "https://joshternet.org/implement/content/seo/": "sitemap",
           "https://joshternet.org/topics/september/": "sitemap",
+          "https://joshternet.org/topics/server/": "sitemap",
+          "https://joshternet.org/topics/set/": "sitemap",
           "https://joshternet.org/showcase/": "sitemap",
           "https://joshternet.org/topics/side-project/": "sitemap",
           "https://joshternet.org/topics/simple/": "sitemap",
@@ -18431,6 +20048,7 @@
           "https://joshternet.org/topics/terminal/": "sitemap",
           "https://joshternet.org/terms/": "sitemap",
           "https://joshternet.org/topics/test/": "sitemap",
+          "https://joshternet.org/topics/testing/": "sitemap",
           "https://joshternet.org/licensing/third-party-licenses/": "sitemap",
           "https://joshternet.org/topics/thread/": "sitemap",
           "https://joshternet.org/topics/tweet/": "sitemap",
@@ -18455,6 +20073,7 @@
           "https://joshternet.org/implement/platforms/wordpress/": "sitemap",
           "https://joshternet.org/topics/world/": "sitemap",
           "https://joshternet.org/topics/worth/": "sitemap",
+          "https://joshternet.org/topics/would/": "sitemap",
           "https://joshternet.org/topics/writing/": "sitemap",
           "https://joshternet.org/topics/youtube/": "sitemap",
           "https://joshternet.org/style/": "blind-probe",
@@ -18480,7 +20099,7 @@
           "https://joshternet.org/cdn-cgi/l/email-protection": "content-index"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z"
+      "crawled_at": "2026-11-09T00:26:52.180Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -18677,6 +20296,10 @@
           "label": "vps showdown"
         },
         {
+          "slug": "watch",
+          "label": "watch"
+        },
+        {
           "slug": "web-server",
           "label": "web servers"
         },
@@ -18686,11 +20309,11 @@
         }
       ],
       "recent_content": {
-        "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-        "title": "Learning a New Tech Stack with an LLM",
-        "summary": "While I mentioned a few weeks back that I'm now recovering from AI Psychosis , that doesn't mean I've given up on the technology completely. I'm writing more emails, and engaging with human beings as much as I can, and that part's been great. I still use agents as a glorified typewriter to generate code, and still very much get my hands in the dirt and sling code myself. I've also gotten quite obs",
-        "published_at": "2026-10-26T00:00:00.000Z",
-        "observed_at": "2026-11-08T20:22:43.029Z",
+        "url": "https://joshtronic.com/2026/11/01/open-to-work/",
+        "title": "I'm Open to Work",
+        "summary": "Mailshake has terminated my employment after 8+ years. In that time, I... Started as engineer #3 Moved into management thanks to an awesome CTO Ran a 10-person team across backend, frontend, QA, and support Scaled down to 2 engineers while maintaining productivity Reduced annual AWS spend by ~70% over 3 years Was always on-call and handled support escalations Ran technical due diligence on 4 acqui",
+        "published_at": "2026-11-01T00:00:00.000Z",
+        "observed_at": "2026-11-09T00:26:52.180Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -20069,7 +21692,7 @@
           "https://joshtronic.com/incrementing-decrementing-a-number-by-a-number/": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z"
+      "crawled_at": "2026-11-09T00:26:52.180Z"
     },
     {
       "origin": "https://joshua.seigler.net",
@@ -20143,6 +21766,10 @@
         {
           "slug": "philosophy",
           "label": "philosophy"
+        },
+        {
+          "slug": "presentation",
+          "label": "presentation"
         },
         {
           "slug": "selfhosting",
@@ -20454,7 +22081,7 @@
           "https://joshua.seigler.net": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z"
+      "crawled_at": "2026-11-09T00:26:52.180Z"
     },
     {
       "origin": "https://joshuadrake.org",
@@ -20465,10 +22092,6 @@
       "feeds": [],
       "elsewhere": [],
       "community_topics": [
-        {
-          "slug": "archive",
-          "label": "archive"
-        },
         {
           "slug": "banking",
           "label": "banking"
@@ -20495,7 +22118,7 @@
         "title": "Projects:",
         "summary": "",
         "published_at": "",
-        "observed_at": "2026-11-08T20:22:43.029Z",
+        "observed_at": "2026-11-09T00:26:52.180Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -20753,7 +22376,7 @@
           "https://joshuadrake.org/projects/n12rebuild/": "content-index"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z",
+      "crawled_at": "2026-11-09T00:26:52.180Z",
       "portfolio": {
         "url": "https://joshuadrake.org/projects/",
         "work_count": 39,
@@ -20764,7 +22387,7 @@
       "origin": "https://joshuakim.studio",
       "domain": "joshuakim.studio",
       "title": "Joshua Kim",
-      "description": "I design how people move through a product and how it answers them: the flow, the feedback, the moment of use. I start from user research and journey maps and work up to prototypes people can try, from app experiences and AR to a body-tracking installation and…",
+      "description": "I design how people move through a product and how it responds to them, from the overall flow to the feedback on each action.",
       "identity": "affirmed",
       "feeds": [],
       "elsewhere": [
@@ -20782,6 +22405,10 @@
         {
           "slug": "creative-coding",
           "label": "creative coding"
+        },
+        {
+          "slug": "designer",
+          "label": "designer"
         }
       ],
       "recent_content": {
@@ -20789,7 +22416,7 @@
         "title": "Work, Joshua Kim",
         "summary": "Eleven projects by Joshua Kim: internal tools, interactive and AR work, app case studies, and graphic design.",
         "published_at": "",
-        "observed_at": "2026-11-08T20:22:43.029Z",
+        "observed_at": "2026-11-09T00:26:52.180Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -21017,7 +22644,7 @@
           "https://joshuakim.studio/about": "content-index"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z"
+      "crawled_at": "2026-11-09T00:26:52.180Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -21107,7 +22734,7 @@
         },
         {
           "slug": "become",
-          "label": "becomes"
+          "label": "become"
         },
         {
           "slug": "benchmark",
@@ -21174,12 +22801,16 @@
           "label": "coding"
         },
         {
+          "slug": "color",
+          "label": "color"
+        },
+        {
           "slug": "community",
           "label": "community"
         },
         {
           "slug": "company",
-          "label": "company"
+          "label": "companies"
         },
         {
           "slug": "computer-vision",
@@ -21402,6 +23033,10 @@
           "label": "interoperability"
         },
         {
+          "slug": "interview",
+          "label": "interview"
+        },
+        {
           "slug": "javascript",
           "label": "javascript"
         },
@@ -21451,7 +23086,7 @@
         },
         {
           "slug": "model",
-          "label": "models"
+          "label": "model"
         },
         {
           "slug": "networking",
@@ -21527,7 +23162,7 @@
         },
         {
           "slug": "point",
-          "label": "point"
+          "label": "points"
         },
         {
           "slug": "postgresql",
@@ -21626,6 +23261,10 @@
           "label": "simplicity"
         },
         {
+          "slug": "small",
+          "label": "small"
+        },
+        {
           "slug": "social-media",
           "label": "social media"
         },
@@ -21720,6 +23359,10 @@
         {
           "slug": "vleo",
           "label": "vleo"
+        },
+        {
+          "slug": "watch",
+          "label": "watch"
         },
         {
           "slug": "wearable-ai",
@@ -22598,7 +24241,7 @@
           "https://joshuamorris.info": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z"
+      "crawled_at": "2026-11-09T00:26:52.180Z"
     },
     {
       "origin": "https://joshuapsteele.com",
@@ -22700,7 +24343,7 @@
         },
         {
           "slug": "become",
-          "label": "becomes"
+          "label": "become"
         },
         {
           "slug": "bible",
@@ -23100,7 +24743,7 @@
         },
         {
           "slug": "point",
-          "label": "point"
+          "label": "points"
         },
         {
           "slug": "political-theology",
@@ -23293,6 +24936,10 @@
         {
           "slug": "tips",
           "label": "Tips"
+        },
+        {
+          "slug": "tree",
+          "label": "tree"
         },
         {
           "slug": "trinity",
@@ -24233,7 +25880,7 @@
           "https://joshuapsteele.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z"
+      "crawled_at": "2026-11-09T00:26:52.180Z"
     },
     {
       "origin": "https://joshuastuebner.com",
@@ -24279,6 +25926,10 @@
         {
           "slug": "manager",
           "label": "manager"
+        },
+        {
+          "slug": "presentation",
+          "label": "presentation"
         },
         {
           "slug": "search",
@@ -24640,7 +26291,7 @@
           "https://joshuastuebner.com/joshuastuebner.asc": "content-index"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z"
+      "crawled_at": "2026-11-09T00:26:52.180Z"
     },
     {
       "origin": "https://joshurbandavis.com",
@@ -24691,7 +26342,7 @@
         "title": "Download CV",
         "summary": "I build machines that perceive the world, and ask what happens when those machines change how we see it.",
         "published_at": "",
-        "observed_at": "2026-11-08T20:22:43.029Z",
+        "observed_at": "2026-11-09T00:26:52.180Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -24932,7 +26583,7 @@
           "https://joshurbandavis.com/index.html": "content-index"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z"
+      "crawled_at": "2026-11-09T00:26:52.180Z"
     },
     {
       "origin": "https://www.chrisminnick.com",
@@ -25013,6 +26664,10 @@
           "label": "give"
         },
         {
+          "slug": "interview",
+          "label": "interview"
+        },
+        {
           "slug": "javascript",
           "label": "javascript"
         },
@@ -25053,6 +26708,10 @@
           "label": "matters"
         },
         {
+          "slug": "microsoft",
+          "label": "microsoft"
+        },
+        {
           "slug": "mobile",
           "label": "mobile"
         },
@@ -25089,8 +26748,16 @@
           "label": "sells"
         },
         {
+          "slug": "speaking",
+          "label": "speaking"
+        },
+        {
           "slug": "test",
           "label": "test"
+        },
+        {
+          "slug": "webkit",
+          "label": "webkit"
         },
         {
           "slug": "week",
@@ -25110,7 +26777,7 @@
         "title": "Books",
         "summary": "More than twenty books on programming, the web, and AI — plus three novels.",
         "published_at": "2027-04-01T00:00:00.000Z",
-        "observed_at": "2026-11-08T20:22:43.029Z",
+        "observed_at": "2026-11-09T00:26:52.180Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -25498,7 +27165,270 @@
           "https://www.chrisminnick.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z"
+      "crawled_at": "2026-11-09T00:26:52.180Z"
+    },
+    {
+      "origin": "https://www.galina.to",
+      "domain": "www.galina.to",
+      "title": "Galina.to",
+      "description": "For the past decade, I have worked across the music, vegan, and tech industries, picking up a unique set of skills through a wide range of roles.",
+      "identity": "affirmed",
+      "feeds": [],
+      "elsewhere": [],
+      "community_topics": [
+        {
+          "slug": "design",
+          "label": "design"
+        },
+        {
+          "slug": "designer",
+          "label": "designer"
+        },
+        {
+          "slug": "shop",
+          "label": "shop"
+        },
+        {
+          "slug": "update",
+          "label": "update"
+        }
+      ],
+      "recent_content": null,
+      "outgoing": [],
+      "incoming": [],
+      "coverage": {
+        "pages_discovered": 42,
+        "pages_fetched": 42,
+        "fetch_limit": null,
+        "limit_reached": false,
+        "selection_strategy": "uncapped-site-crawl-v1",
+        "selection_reasons": {
+          "https://www.galina.to/": "home",
+          "https://www.galina.to/changelog/": "content-index",
+          "https://www.galina.to/log/": "content-index",
+          "https://www.galina.to/ideas/": "content-index",
+          "https://www.galina.to/sitemap/": "content-index",
+          "https://www.galina.to/til/": "content-index",
+          "https://www.galina.to/ways/": "content-index",
+          "https://www.galina.to/seeking/": "content-index",
+          "https://www.galina.to/notes/": "content-index",
+          "https://www.galina.to/blog/": "content-index",
+          "https://www.galina.to/weblog/": "content-index",
+          "https://www.galina.to/writings/": "content-index",
+          "https://www.galina.to/posts/": "content-index",
+          "https://www.galina.to/post/": "content-index",
+          "https://www.galina.to/writing/": "content-index",
+          "https://www.galina.to/articles/": "content-index",
+          "https://www.galina.to/article/": "content-index",
+          "https://www.galina.to/essays/": "content-index",
+          "https://www.galina.to/journal/": "content-index",
+          "https://www.galina.to/weeknotes/": "content-index",
+          "https://www.galina.to/archive/": "content-index",
+          "https://www.galina.to/about/": "content-index",
+          "https://www.galina.to/about-me/": "content-index",
+          "https://www.galina.to/aboutme/": "content-index",
+          "https://www.galina.to/bio/": "content-index",
+          "https://www.galina.to/me/": "content-index",
+          "https://www.galina.to/profile/": "content-index",
+          "https://www.galina.to/ai/": "content-index",
+          "https://www.galina.to/blank/": "content-index",
+          "https://www.galina.to/blogroll/": "content-index",
+          "https://www.galina.to/calendar/": "content-index",
+          "https://www.galina.to/canon/": "content-index",
+          "https://www.galina.to/carry/": "content-index",
+          "https://www.galina.to/caw/": "content-index",
+          "https://www.galina.to/celebrities/": "content-index",
+          "https://www.galina.to/chipotle/": "content-index",
+          "https://www.galina.to/colophon/": "content-index",
+          "https://www.galina.to/community/": "content-index",
+          "https://www.galina.to/contact/": "content-index",
+          "https://www.galina.to/death/": "content-index",
+          "https://www.galina.to/defaults/": "content-index",
+          "https://www.galina.to/disability/": "content-index",
+          "https://www.galina.to/elsewhere/": "content-index",
+          "https://www.galina.to/appearances/": "content-index",
+          "https://www.galina.to/follow/": "content-index",
+          "https://www.galina.to/subscribe/": "content-index",
+          "https://www.galina.to/feeds/": "content-index",
+          "https://www.galina.to/for/": "content-index",
+          "https://www.galina.to/dedication/": "content-index",
+          "https://www.galina.to/glossary/": "content-index",
+          "https://www.galina.to/lexicon/": "content-index",
+          "https://www.galina.to/phrased/": "content-index",
+          "https://www.galina.to/green/": "content-index",
+          "https://www.galina.to/hats/": "content-index",
+          "https://www.galina.to/hello/": "content-index",
+          "https://www.galina.to/hills/": "content-index",
+          "https://www.galina.to/hill/": "content-index",
+          "https://www.galina.to/interests/": "content-index",
+          "https://www.galina.to/junk/": "content-index",
+          "https://www.galina.to/sale/": "content-index",
+          "https://www.galina.to/buy/": "content-index",
+          "https://www.galina.to/languages/": "content-index",
+          "https://www.galina.to/links/": "content-index",
+          "https://www.galina.to/bookmarks/": "content-index",
+          "https://www.galina.to/next/": "content-index",
+          "https://www.galina.to/nope/": "content-index",
+          "https://www.galina.to/now/": "content-index",
+          "https://www.galina.to/podroll/": "content-index",
+          "https://www.galina.to/posse/": "content-index",
+          "https://www.galina.to/postroll/": "content-index",
+          "https://www.galina.to/predictions/": "content-index",
+          "https://www.galina.to/pricing/": "content-index",
+          "https://www.galina.to/questions/": "content-index",
+          "https://www.galina.to/saudade/": "content-index",
+          "https://www.galina.to/save/": "content-index",
+          "https://www.galina.to/referrals/": "content-index",
+          "https://www.galina.to/self-hosting/": "content-index",
+          "https://www.galina.to/self-hosted/": "content-index",
+          "https://www.galina.to/hosted/": "content-index",
+          "https://www.galina.to/homelab/": "content-index",
+          "https://www.galina.to/shoebox/": "content-index",
+          "https://www.galina.to/since/": "content-index",
+          "https://www.galina.to/slashes/": "content-index",
+          "https://www.galina.to/someday/": "content-index",
+          "https://www.galina.to/tip/": "content-index",
+          "https://www.galina.to/pay/": "content-index",
+          "https://www.galina.to/coffee/": "content-index",
+          "https://www.galina.to/uses/": "content-index",
+          "https://www.galina.to/verify/": "content-index",
+          "https://www.galina.to/where/": "content-index",
+          "https://www.galina.to/why/": "content-index",
+          "https://www.galina.to/wish/": "content-index",
+          "https://www.galina.to/wish-list/": "content-index",
+          "https://www.galina.to/wishlist/": "content-index",
+          "https://www.galina.to/yep/": "content-index",
+          "https://www.galina.to/more/": "content-index",
+          "https://www.galina.to/site/": "content-index",
+          "https://www.galina.to/social/": "content-index",
+          "https://www.galina.to/people/": "content-index",
+          "https://www.galina.to/friends/": "content-index",
+          "https://www.galina.to/following/": "content-index",
+          "https://www.galina.to/webring/": "content-index",
+          "https://www.galina.to/webrings/": "content-index",
+          "https://www.galina.to/indieweb/": "content-index",
+          "https://www.galina.to/neighborhood/": "content-index",
+          "https://www.galina.to/guestbook/": "content-index",
+          "https://www.galina.to/meta/": "content-index",
+          "https://www.galina.to/health/": "content-index",
+          "https://www.galina.to/concerts/": "content-index",
+          "https://www.galina.to/daylists/": "content-index",
+          "https://www.galina.to/pfp/": "content-index",
+          "https://www.galina.to/photo/": "content-index",
+          "https://www.galina.to/pic/": "content-index",
+          "https://www.galina.to/work/": "content-index",
+          "https://www.galina.to/projects/": "content-index",
+          "https://www.galina.to/portfolio/": "content-index",
+          "https://www.galina.to/work.html/": "content-index",
+          "https://www.galina.to/projects.html/": "content-index",
+          "https://www.galina.to/portfolio.html/": "content-index",
+          "https://www.galina.to/studio-index/": "content-index",
+          "https://www.galina.to/gallery/": "content-index",
+          "https://www.galina.to/galleries/": "content-index",
+          "https://www.galina.to/albums/": "content-index",
+          "https://www.galina.to/photography/": "content-index",
+          "https://www.galina.to/photos/": "content-index",
+          "https://www.galina.to/art/": "content-index",
+          "https://www.galina.to/illustration/": "content-index",
+          "https://www.galina.to/artwork/": "content-index",
+          "https://www.galina.to/comics/": "content-index",
+          "https://www.galina.to/comic/": "content-index",
+          "https://www.galina.to/webcomics/": "content-index",
+          "https://www.galina.to/toys/": "content-index",
+          "https://www.galina.to/toy/": "content-index",
+          "https://www.galina.to/play/": "content-index",
+          "https://www.galina.to/reels/": "content-index",
+          "https://www.galina.to/reel/": "content-index",
+          "https://www.galina.to/shorts/": "content-index",
+          "https://www.galina.to/cssbattles/": "content-index",
+          "https://www.galina.to/cssbattle/": "content-index",
+          "https://www.galina.to/css-battles/": "content-index",
+          "https://www.galina.to/music/": "content-index",
+          "https://www.galina.to/discography/": "content-index",
+          "https://www.galina.to/tracks/": "content-index",
+          "https://www.galina.to/podcasts/": "content-index",
+          "https://www.galina.to/podcast/": "content-index",
+          "https://www.galina.to/listen/": "content-index",
+          "https://www.galina.to/videos/": "content-index",
+          "https://www.galina.to/film/": "content-index",
+          "https://www.galina.to/animation/": "content-index",
+          "https://www.galina.to/games/": "content-index",
+          "https://www.galina.to/game/": "content-index",
+          "https://www.galina.to/interactive/": "content-index",
+          "https://www.galina.to/exhibitions/": "content-index",
+          "https://www.galina.to/design/": "content-index",
+          "https://www.galina.to/apps/": "content-index",
+          "https://www.galina.to/software/": "content-index",
+          "https://www.galina.to/tools/": "content-index",
+          "https://www.galina.to/books/": "content-index",
+          "https://www.galina.to/guides/": "content-index",
+          "https://www.galina.to/resources/": "content-index",
+          "https://www.galina.to/experiments/": "content-index",
+          "https://www.galina.to/sounds/": "content-index",
+          "https://www.galina.to/hustles/": "content-index",
+          "https://www.galina.to/topics/": "topic-hub",
+          "https://www.galina.to/topic/": "topic-hub",
+          "https://www.galina.to/tags/": "topic-hub",
+          "https://www.galina.to/tag/": "topic-hub",
+          "https://www.galina.to/categories/": "topic-hub",
+          "https://www.galina.to/category/": "topic-hub",
+          "https://www.galina.to/style/": "blind-probe",
+          "https://www.galina.to/top4/": "blind-probe",
+          "https://www.galina.to/topfour/": "blind-probe",
+          "https://www.galina.to/events/": "blind-probe",
+          "https://www.galina.to/shows/": "blind-probe",
+          "https://www.galina.to/gigs/": "blind-probe",
+          "https://www.galina.to/tour/": "blind-probe",
+          "https://www.galina.to/live/": "blind-probe",
+          "https://www.galina.to/performances/": "blind-probe",
+          "https://www.galina.to/readings/": "blind-probe",
+          "https://www.galina.to/workshops/": "blind-probe",
+          "https://www.galina.to/study-hall/": "blind-probe",
+          "https://www.galina.to/frontend-study-hall/": "blind-probe",
+          "https://www.galina.to/front-end-study-hall/": "blind-probe",
+          "https://www.galina.to/fresh/": "blind-probe",
+          "https://www.galina.to/education/": "blind-probe",
+          "https://www.galina.to/learn/": "blind-probe",
+          "https://www.galina.to/classes/": "blind-probe",
+          "https://www.galina.to/class/": "blind-probe",
+          "https://www.galina.to/courses/": "blind-probe",
+          "https://www.galina.to/course/": "blind-probe",
+          "https://www.galina.to/blog/32": "content-index",
+          "https://www.galina.to/blog/calling-it-quits": "content-index",
+          "https://www.galina.to/blog/plain-text-system": "content-index",
+          "https://www.galina.to/blog/my-coding-journey": "content-index",
+          "https://www.galina.to/blog/vim": "content-index",
+          "https://www.galina.to/blog/2021-in-review": "content-index",
+          "https://www.galina.to/blog/33": "content-index",
+          "https://www.galina.to/blog/quantity-over-quality": "content-index",
+          "https://www.galina.to/blog/34": "content-index",
+          "https://www.galina.to/blog/35": "content-index",
+          "https://www.galina.to/blog/holding-myself-accountable": "content-index",
+          "https://www.galina.to/blog/sparking-creativity": "content-index",
+          "https://www.galina.to/blog/carving-out-time": "content-index",
+          "https://www.galina.to/blog/investing-in-myself": "content-index",
+          "https://www.galina.to/blog/a-busy-festive-season": "content-index",
+          "https://www.galina.to/blog/bounce-rate": "content-index",
+          "https://www.galina.to/blog/ruthlessly-prioritise": "content-index",
+          "https://www.galina.to/blog/launching-early": "content-index",
+          "https://www.galina.to/blog/orbi-gamifying-a-convention": "content-index",
+          "https://www.galina.to/blog/ai": "content-index",
+          "https://www.galina.to/blog/orbi-userpilot": "content-index",
+          "https://www.galina.to/blog/orbi-sso": "content-index",
+          "https://www.galina.to/blog/orbi-design-systems": "content-index",
+          "https://www.galina.to/blog/for-designers": "content-index",
+          "https://www.galina.to/blog/36": "content-index",
+          "https://www.galina.to/blog/website-overhaul": "content-index",
+          "https://www.galina.to/blog/path-to-design-updates-2601": "content-index",
+          "https://www.galina.to/blog/path-to-design-updates-2602": "content-index",
+          "https://www.galina.to/blog/path-to-design-updates-2603": "content-index",
+          "https://www.galina.to/blog/working-in-public": "content-index",
+          "https://www.galina.to/blog/path-to-design-updates-2605": "content-index",
+          "https://www.galina.to/now": "content-index",
+          "https://www.galina.to/blog": "content-index"
+        }
+      },
+      "crawled_at": "2026-11-09T00:26:52.180Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -26179,7 +28109,7 @@
           "https://www.joshcanhelp.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z"
+      "crawled_at": "2026-11-09T00:26:52.180Z"
     },
     {
       "origin": "https://www.joshfinnie.com",
@@ -26780,7 +28710,7 @@
         },
         {
           "slug": "model",
-          "label": "models"
+          "label": "model"
         },
         {
           "slug": "music",
@@ -26843,6 +28773,10 @@
           "label": "pnpm"
         },
         {
+          "slug": "pokemon",
+          "label": "pokemon"
+        },
+        {
           "slug": "policy",
           "label": "policy"
         },
@@ -26865,6 +28799,10 @@
         {
           "slug": "privacy",
           "label": "privacy"
+        },
+        {
+          "slug": "process",
+          "label": "process"
         },
         {
           "slug": "product",
@@ -26941,6 +28879,10 @@
         {
           "slug": "resume-parsing",
           "label": "Resume Parsing"
+        },
+        {
+          "slug": "retro",
+          "label": "retro"
         },
         {
           "slug": "review",
@@ -27136,7 +29078,7 @@
         "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone",
         "summary": "I spent a week having Claude Code audit my fork of LightCraft, the AI-built Rust Lightroom clone: fuzzing, crash safety, a locked control port, faster frames, and 50,000 deleted lines.",
         "published_at": "2026-11-04T00:00:00.000Z",
-        "observed_at": "2026-11-08T20:22:43.029Z",
+        "observed_at": "2026-11-09T00:26:52.180Z",
         "content_type": "article",
         "language": "en-us",
         "dir": "",
@@ -27814,7 +29756,7 @@
           "https://www.joshfinnie.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z",
+      "crawled_at": "2026-11-09T00:26:52.180Z",
       "portfolio": {
         "url": "https://www.joshfinnie.com/projects/",
         "work_count": 9,
@@ -27914,6 +29856,10 @@
           "label": "creative & design"
         },
         {
+          "slug": "culture",
+          "label": "culture"
+        },
+        {
           "slug": "design",
           "label": "design"
         },
@@ -27932,6 +29878,10 @@
         {
           "slug": "finance",
           "label": "finance"
+        },
+        {
+          "slug": "game",
+          "label": "game"
         },
         {
           "slug": "government",
@@ -28051,7 +30001,7 @@
         "title": "Work — Joshua Baker",
         "summary": "Selected case studies by Joshua Baker, plus the full archive — 140+ projects across two decades of design and engineering.",
         "published_at": "",
-        "observed_at": "2026-11-08T20:22:43.029Z",
+        "observed_at": "2026-11-09T00:26:52.180Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -28323,7 +30273,7 @@
           "https://www.joshuabaker.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z",
+      "crawled_at": "2026-11-09T00:26:52.180Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,
@@ -28414,6 +30364,10 @@
           "label": "full"
         },
         {
+          "slug": "function",
+          "label": "functions"
+        },
+        {
           "slug": "game",
           "label": "game"
         },
@@ -28428,6 +30382,10 @@
         {
           "slug": "month",
           "label": "month"
+        },
+        {
+          "slug": "parameter",
+          "label": "parameters"
         },
         {
           "slug": "plugin",
@@ -28454,12 +30412,28 @@
           "label": "source"
         },
         {
+          "slug": "speaking",
+          "label": "speaking"
+        },
+        {
+          "slug": "syntax",
+          "label": "syntax"
+        },
+        {
           "slug": "test",
           "label": "test"
         },
         {
           "slug": "type",
           "label": "type"
+        },
+        {
+          "slug": "unit",
+          "label": "unit"
+        },
+        {
+          "slug": "unit-test",
+          "label": "unit tests"
         }
       ],
       "recent_content": {
@@ -28467,7 +30441,7 @@
         "title": "Speaking",
         "summary": "I talk about static analysis, accessibility, and team culture.",
         "published_at": "",
-        "observed_at": "2026-11-08T20:22:43.029Z",
+        "observed_at": "2026-11-09T00:26:52.180Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -28760,7 +30734,7 @@
           "https://www.joshuakgoldberg.com/blog": "content-index"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z"
+      "crawled_at": "2026-11-09T00:26:52.180Z"
     },
     {
       "origin": "https://www.joshvickerson.com",
@@ -28925,6 +30899,10 @@
         {
           "slug": "social",
           "label": "social"
+        },
+        {
+          "slug": "step",
+          "label": "step"
         },
         {
           "slug": "technology",
@@ -29247,7 +31225,7 @@
           "https://www.joshvickerson.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-08T20:22:43.029Z"
+      "crawled_at": "2026-11-09T00:26:52.180Z"
     }
   ]
 }

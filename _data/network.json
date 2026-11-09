@@ -142,6 +142,47 @@
     ]
   },
   {
+    "origin": "https://josh.earth",
+    "domain": "josh.earth",
+    "identity": "affirmed",
+    "declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "initial_declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "first_participated_at": "2026-11-08T21:31:46.597119Z",
+    "latest_declaration_check_at": "2026-11-08T21:31:46.597119Z",
+    "latest_declaration_check_outcome": "valid",
+    "title": "josh.earth",
+    "description": "I’m happy to share my latest Embedded Rust exploits with a new e-paper driver for the exhaustively named LilyGo T5 E-Paper S3 Pro. I got Rust running on it last year but could never find a driver for the epaper screen that worked.",
+    "screenshot": "/assets/network/sites/e6092439a7da26364be6e7475058d08fbdacdebdc3b8ba5da7616a249897aa91.webp",
+    "embeddable": true,
+    "frame_reason": "allowed",
+    "captured_at": "2026-11-08T23:49:56.109Z",
+    "feeds": [
+      {
+        "url": "https://josh.earth/feed.xml",
+        "type": "application/rss+xml",
+        "title": "josh.earth RSS Feed"
+      }
+    ],
+    "elsewhere": [
+      {
+        "url": "https://www.linkedin.com/in/joshmarinacci/",
+        "network": "linkedin",
+        "label": "LinkedIn"
+      },
+      {
+        "url": "https://bsky.app/profile/joshmarinacci.bsky.social",
+        "network": "bluesky",
+        "label": "Bluesky"
+      }
+    ]
+  },
+  {
     "origin": "https://joshbeard.com",
     "domain": "joshbeard.com",
     "identity": "affirmed",
@@ -320,7 +361,7 @@
     "screenshot": "/assets/network/sites/795b093fcbe3a613d637aa00ab8c3d1a42f1f010b4c65debbeaae97a1342d7ac.webp",
     "embeddable": true,
     "frame_reason": "allowed",
-    "captured_at": "2026-11-07T21:06:38.458Z",
+    "captured_at": "2026-11-08T23:57:34.362Z",
     "elsewhere": [
       {
         "url": "https://www.youtube.com/c/Frankslaboratory",
@@ -683,7 +724,7 @@
     "latest_declaration_check_at": "2026-11-06T10:06:46.430842Z",
     "latest_declaration_check_outcome": "valid",
     "title": "Joshua Kim",
-    "description": "I design how people move through a product and how it answers them: the flow, the feedback, the moment of use. I start from user research and journey maps and work up to prototypes people can try, from app experiences and AR to a body-tracking installation and…",
+    "description": "I design how people move through a product and how it responds to them, from the overall flow to the feedback on each action.",
     "screenshot": "/assets/network/sites/f0b383ffd12ac254f8248a6cd7ccafd81c8d5b9e3f3b512077e5f1e267cbc454.webp",
     "embeddable": true,
     "frame_reason": "allowed",
@@ -956,6 +997,28 @@
     ]
   },
   {
+    "origin": "https://www.galina.to",
+    "domain": "www.galina.to",
+    "identity": "affirmed",
+    "declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "initial_declaration": {
+      "version": 1,
+      "josh": true
+    },
+    "first_participated_at": "2026-11-08T21:52:51.141992Z",
+    "latest_declaration_check_at": "2026-11-08T21:52:51.141992Z",
+    "latest_declaration_check_outcome": "valid",
+    "title": "Galina.to",
+    "description": "For the past decade, I have worked across the music, vegan, and tech industries, picking up a unique set of skills through a wide range of roles.",
+    "screenshot": "/assets/network/sites/910bff9eced0e4da3c4abfcf4e5f1ef4f8aad7ea5c18a191e6d0033996900bcc.webp",
+    "embeddable": true,
+    "frame_reason": "allowed",
+    "captured_at": "2026-11-09T00:18:57.692Z"
+  },
+  {
     "origin": "https://www.joshcanhelp.com",
     "domain": "www.joshcanhelp.com",
     "identity": "affirmed",
@@ -1141,7 +1204,7 @@
     "screenshot": "/assets/network/sites/320ddea56b606b5aab047019ce0b90c42970f40ebc103b88419a956b6b8b083d.webp",
     "embeddable": true,
     "frame_reason": "allowed",
-    "captured_at": "2026-11-07T21:32:33.191Z",
+    "captured_at": "2026-11-09T00:25:03.214Z",
     "feeds": [
       {
         "url": "https://www.joshuakgoldberg.com/rss.xml",

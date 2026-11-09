@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-08T20:44:07.472Z",
-  "document_count": 908,
+  "generated_at": "2026-11-09T00:48:54.863Z",
+  "document_count": 957,
   "documents": [
     {
       "type": "site",
@@ -19,6 +19,15 @@
       "domain": "forwardbias.dev",
       "origin": "https://forwardbias.dev",
       "url": "https://forwardbias.dev",
+      "topics": []
+    },
+    {
+      "type": "site",
+      "title": "josh.earth",
+      "summary": "I’m happy to share my latest Embedded Rust exploits with a new e-paper driver for the exhaustively named LilyGo T5 E-Paper S3 Pro. I got Rust running on it last year but could never find a driver for the epaper screen that worked.",
+      "domain": "josh.earth",
+      "origin": "https://josh.earth",
+      "url": "https://josh.earth",
       "topics": []
     },
     {
@@ -132,7 +141,7 @@
     {
       "type": "site",
       "title": "Joshua Kim",
-      "summary": "I design how people move through a product and how it answers them: the flow, the feedback, the moment of use. I start from user research and journey maps and work up to prototypes people can try, from app experiences and AR to a body-tracking installation and…",
+      "summary": "I design how people move through a product and how it responds to them, from the overall flow to the feedback on each action.",
       "domain": "joshuakim.studio",
       "origin": "https://joshuakim.studio",
       "url": "https://joshuakim.studio",
@@ -181,6 +190,15 @@
       "domain": "www.chrisminnick.com",
       "origin": "https://www.chrisminnick.com",
       "url": "https://www.chrisminnick.com",
+      "topics": []
+    },
+    {
+      "type": "site",
+      "title": "Galina.to",
+      "summary": "For the past decade, I have worked across the music, vegan, and tech industries, picking up a unique set of skills through a wide range of roles.",
+      "domain": "www.galina.to",
+      "origin": "https://www.galina.to",
+      "url": "https://www.galina.to",
       "topics": []
     },
     {
@@ -329,12 +347,12 @@
     },
     {
       "type": "topic",
-      "title": "archive",
-      "summary": "4 participating sites",
+      "title": "arduino",
+      "summary": "1 participating sites",
       "domain": "",
       "origin": "",
-      "url": "/topics/archive/",
-      "topics": ["archive", "archive"]
+      "url": "/topics/arduino/",
+      "topics": ["arduino", "arduino"]
     },
     {
       "type": "topic",
@@ -437,12 +455,12 @@
     },
     {
       "type": "topic",
-      "title": "becomes",
-      "summary": "3 participating sites",
+      "title": "become",
+      "summary": "2 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/become/",
-      "topics": ["become", "becomes"]
+      "topics": ["become", "become"]
     },
     {
       "type": "topic",
@@ -483,7 +501,7 @@
     {
       "type": "topic",
       "title": "books",
-      "summary": "7 participating sites",
+      "summary": "8 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/book/",
@@ -492,7 +510,7 @@
     {
       "type": "topic",
       "title": "browsers",
-      "summary": "5 participating sites",
+      "summary": "6 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/browser/",
@@ -524,6 +542,15 @@
       "origin": "",
       "url": "/topics/canada/",
       "topics": ["canada", "canada"]
+    },
+    {
+      "type": "topic",
+      "title": "canvas",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/canvas/",
+      "topics": ["canvas", "canvas"]
     },
     {
       "type": "topic",
@@ -600,7 +627,7 @@
     {
       "type": "topic",
       "title": "city",
-      "summary": "4 participating sites",
+      "summary": "5 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/city/",
@@ -680,6 +707,15 @@
     },
     {
       "type": "topic",
+      "title": "color",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/color/",
+      "topics": ["color", "color"]
+    },
+    {
+      "type": "topic",
       "title": "command",
       "summary": "2 participating sites",
       "domain": "",
@@ -716,12 +752,12 @@
     },
     {
       "type": "topic",
-      "title": "company",
+      "title": "companies",
       "summary": "3 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/company/",
-      "topics": ["company", "company"]
+      "topics": ["company", "companies"]
     },
     {
       "type": "topic",
@@ -740,6 +776,15 @@
       "origin": "",
       "url": "/topics/computer-vision/",
       "topics": ["computer-vision", "computer vision"]
+    },
+    {
+      "type": "topic",
+      "title": "concise",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/concise/",
+      "topics": ["concise", "concise"]
     },
     {
       "type": "topic",
@@ -806,8 +851,17 @@
     },
     {
       "type": "topic",
+      "title": "culture",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/culture/",
+      "topics": ["culture", "culture"]
+    },
+    {
+      "type": "topic",
       "title": "data",
-      "summary": "5 participating sites",
+      "summary": "6 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/data/",
@@ -851,8 +905,17 @@
     },
     {
       "type": "topic",
+      "title": "designer",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/designer/",
+      "topics": ["designer", "designer"]
+    },
+    {
+      "type": "topic",
       "title": "digital",
-      "summary": "6 participating sites",
+      "summary": "7 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/digital/",
@@ -969,11 +1032,20 @@
     {
       "type": "topic",
       "title": "emails",
-      "summary": "2 participating sites",
+      "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/email/",
       "topics": ["email", "emails"]
+    },
+    {
+      "type": "topic",
+      "title": "embedded",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/embedded/",
+      "topics": ["embedded", "embedded"]
     },
     {
       "type": "topic",
@@ -996,7 +1068,7 @@
     {
       "type": "topic",
       "title": "experimental",
-      "summary": "2 participating sites",
+      "summary": "3 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/experimental/",
@@ -1175,6 +1247,15 @@
     },
     {
       "type": "topic",
+      "title": "graphics",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/graphics/",
+      "topics": ["graphics", "graphics"]
+    },
+    {
+      "type": "topic",
       "title": "green",
       "summary": "1 participating sites",
       "domain": "",
@@ -1184,8 +1265,26 @@
     },
     {
       "type": "topic",
-      "title": "hardware",
+      "title": "gui",
       "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/gui/",
+      "topics": ["gui", "gui"]
+    },
+    {
+      "type": "topic",
+      "title": "hack",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/hack/",
+      "topics": ["hack", "hack"]
+    },
+    {
+      "type": "topic",
+      "title": "hardware",
+      "summary": "2 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/hardware/",
@@ -1239,11 +1338,20 @@
     {
       "type": "topic",
       "title": "human",
-      "summary": "2 participating sites",
+      "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/human/",
       "topics": ["human", "human"]
+    },
+    {
+      "type": "topic",
+      "title": "idea",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/idea/",
+      "topics": ["idea", "idea"]
     },
     {
       "type": "topic",
@@ -1301,6 +1409,15 @@
     },
     {
       "type": "topic",
+      "title": "introduction",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/introduction/",
+      "topics": ["introduction", "introduction"]
+    },
+    {
+      "type": "topic",
       "title": "ios",
       "summary": "1 participating sites",
       "domain": "",
@@ -1316,6 +1433,15 @@
       "origin": "",
       "url": "/topics/isolation/",
       "topics": ["isolation", "Isolation"]
+    },
+    {
+      "type": "topic",
+      "title": "java",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/java/",
+      "topics": ["java", "java"]
     },
     {
       "type": "topic",
@@ -1410,11 +1536,20 @@
     {
       "type": "topic",
       "title": "learning",
-      "summary": "5 participating sites",
+      "summary": "4 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/learning/",
       "topics": ["learning", "learning"]
+    },
+    {
+      "type": "topic",
+      "title": "lego",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/lego/",
+      "topics": ["lego", "lego"]
     },
     {
       "type": "topic",
@@ -1464,20 +1599,11 @@
     {
       "type": "topic",
       "title": "live",
-      "summary": "3 participating sites",
+      "summary": "4 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/live/",
       "topics": ["live", "live"]
-    },
-    {
-      "type": "topic",
-      "title": "llm",
-      "summary": "1 participating sites",
-      "domain": "",
-      "origin": "",
-      "url": "/topics/llm/",
-      "topics": ["llm", "llm"]
     },
     {
       "type": "topic",
@@ -1487,6 +1613,15 @@
       "origin": "",
       "url": "/topics/love/",
       "topics": ["love", "love"]
+    },
+    {
+      "type": "topic",
+      "title": "mac",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/mac/",
+      "topics": ["mac", "mac"]
     },
     {
       "type": "topic",
@@ -1536,7 +1671,7 @@
     {
       "type": "topic",
       "title": "means",
-      "summary": "4 participating sites",
+      "summary": "3 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/mean/",
@@ -1580,6 +1715,15 @@
     },
     {
       "type": "topic",
+      "title": "microsoft",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/microsoft/",
+      "topics": ["microsoft", "microsoft"]
+    },
+    {
+      "type": "topic",
       "title": "miscellaneous",
       "summary": "1 participating sites",
       "domain": "",
@@ -1598,12 +1742,12 @@
     },
     {
       "type": "topic",
-      "title": "models",
-      "summary": "3 participating sites",
+      "title": "model",
+      "summary": "2 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/model/",
-      "topics": ["model", "models"]
+      "topics": ["model", "model"]
     },
     {
       "type": "topic",
@@ -1661,6 +1805,15 @@
     },
     {
       "type": "topic",
+      "title": "nokia",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/nokia/",
+      "topics": ["nokia", "nokia"]
+    },
+    {
+      "type": "topic",
       "title": "nonprofit",
       "summary": "1 participating sites",
       "domain": "",
@@ -1707,7 +1860,7 @@
     {
       "type": "topic",
       "title": "open source",
-      "summary": "2 participating sites",
+      "summary": "3 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/open-source/",
@@ -1734,7 +1887,7 @@
     {
       "type": "topic",
       "title": "ownership",
-      "summary": "1 participating sites",
+      "summary": "2 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/ownership/",
@@ -1748,6 +1901,15 @@
       "origin": "",
       "url": "/topics/painting/",
       "topics": ["painting", "painting"]
+    },
+    {
+      "type": "topic",
+      "title": "paper",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/paper/",
+      "topics": ["paper", "paper"]
     },
     {
       "type": "topic",
@@ -1787,12 +1949,30 @@
     },
     {
       "type": "topic",
+      "title": "phone",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/phone/",
+      "topics": ["phone", "phone"]
+    },
+    {
+      "type": "topic",
       "title": "photo",
       "summary": "3 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/photo/",
       "topics": ["photo", "photo"]
+    },
+    {
+      "type": "topic",
+      "title": "photography",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/photography/",
+      "topics": ["photography", "photography"]
     },
     {
       "type": "topic",
@@ -1814,6 +1994,15 @@
     },
     {
       "type": "topic",
+      "title": "physical",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/physical/",
+      "topics": ["physical", "physical"]
+    },
+    {
+      "type": "topic",
       "title": "plugin",
       "summary": "2 participating sites",
       "domain": "",
@@ -1823,12 +2012,12 @@
     },
     {
       "type": "topic",
-      "title": "point",
+      "title": "points",
       "summary": "2 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/point/",
-      "topics": ["point", "point"]
+      "topics": ["point", "points"]
     },
     {
       "type": "topic",
@@ -1859,6 +2048,24 @@
     },
     {
       "type": "topic",
+      "title": "predictions",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/prediction/",
+      "topics": ["prediction", "predictions"]
+    },
+    {
+      "type": "topic",
+      "title": "presentation",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/presentation/",
+      "topics": ["presentation", "presentation"]
+    },
+    {
+      "type": "topic",
       "title": "privacy",
       "summary": "2 participating sites",
       "domain": "",
@@ -1883,6 +2090,15 @@
       "origin": "",
       "url": "/topics/private/",
       "topics": ["private", "private"]
+    },
+    {
+      "type": "topic",
+      "title": "process",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/process/",
+      "topics": ["process", "process"]
     },
     {
       "type": "topic",
@@ -1919,6 +2135,15 @@
       "origin": "",
       "url": "/topics/programming/",
       "topics": ["programming", "programming"]
+    },
+    {
+      "type": "topic",
+      "title": "prompt",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/prompt/",
+      "topics": ["prompt", "prompt"]
     },
     {
       "type": "topic",
@@ -2049,7 +2274,7 @@
     {
       "type": "topic",
       "title": "Research",
-      "summary": "2 participating sites",
+      "summary": "3 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/research/",
@@ -2063,6 +2288,15 @@
       "origin": "",
       "url": "/topics/resource/",
       "topics": ["resource", "resources"]
+    },
+    {
+      "type": "topic",
+      "title": "retro",
+      "summary": "3 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/retro/",
+      "topics": ["retro", "retro"]
     },
     {
       "type": "topic",
@@ -2112,7 +2346,7 @@
     {
       "type": "topic",
       "title": "rust",
-      "summary": "1 participating sites",
+      "summary": "2 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/rust/",
@@ -2174,6 +2408,15 @@
     },
     {
       "type": "topic",
+      "title": "sells",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/sell/",
+      "topics": ["sell", "sells"]
+    },
+    {
+      "type": "topic",
       "title": "september",
       "summary": "1 participating sites",
       "domain": "",
@@ -2193,11 +2436,20 @@
     {
       "type": "topic",
       "title": "set",
-      "summary": "1 participating sites",
+      "summary": "2 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/set/",
       "topics": ["set", "set"]
+    },
+    {
+      "type": "topic",
+      "title": "shop",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/shop/",
+      "topics": ["shop", "shop"]
     },
     {
       "type": "topic",
@@ -2216,6 +2468,15 @@
       "origin": "",
       "url": "/topics/simple/",
       "topics": ["simple", "simple"]
+    },
+    {
+      "type": "topic",
+      "title": "small",
+      "summary": "5 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/small/",
+      "topics": ["small", "small"]
     },
     {
       "type": "topic",
@@ -2238,7 +2499,7 @@
     {
       "type": "topic",
       "title": "Software",
-      "summary": "8 participating sites",
+      "summary": "9 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/software/",
@@ -2274,7 +2535,7 @@
     {
       "type": "topic",
       "title": "source",
-      "summary": "3 participating sites",
+      "summary": "4 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/source/",
@@ -2288,6 +2549,15 @@
       "origin": "",
       "url": "/topics/space/",
       "topics": ["space", "space"]
+    },
+    {
+      "type": "topic",
+      "title": "speaking",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/speaking/",
+      "topics": ["speaking", "speaking"]
     },
     {
       "type": "topic",
@@ -2315,6 +2585,15 @@
       "origin": "",
       "url": "/topics/startup/",
       "topics": ["startup", "Startups"]
+    },
+    {
+      "type": "topic",
+      "title": "step",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/step/",
+      "topics": ["step", "step"]
     },
     {
       "type": "topic",
@@ -2363,6 +2642,24 @@
     },
     {
       "type": "topic",
+      "title": "swing",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/swing/",
+      "topics": ["swing", "swing"]
+    },
+    {
+      "type": "topic",
+      "title": "swing hacks",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/swing-hack/",
+      "topics": ["swing-hack", "swing hacks"]
+    },
+    {
+      "type": "topic",
       "title": "tables",
       "summary": "4 participating sites",
       "domain": "",
@@ -2373,7 +2670,7 @@
     {
       "type": "topic",
       "title": "technology",
-      "summary": "6 participating sites",
+      "summary": "5 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/technology/",
@@ -2408,12 +2705,30 @@
     },
     {
       "type": "topic",
+      "title": "text",
+      "summary": "4 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/text/",
+      "topics": ["text", "text"]
+    },
+    {
+      "type": "topic",
       "title": "threads",
       "summary": "1 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/thread/",
       "topics": ["thread", "threads"]
+    },
+    {
+      "type": "topic",
+      "title": "travel",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/travel/",
+      "topics": ["travel", "travel"]
     },
     {
       "type": "topic",
@@ -2450,6 +2765,15 @@
       "origin": "",
       "url": "/topics/tyranny/",
       "topics": ["tyranny", "Tyranny"]
+    },
+    {
+      "type": "topic",
+      "title": "unit",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/unit/",
+      "topics": ["unit", "unit"]
     },
     {
       "type": "topic",
@@ -2498,6 +2822,15 @@
     },
     {
       "type": "topic",
+      "title": "watch",
+      "summary": "2 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/watch/",
+      "topics": ["watch", "watch"]
+    },
+    {
+      "type": "topic",
       "title": "water",
       "summary": "2 participating sites",
       "domain": "",
@@ -2525,8 +2858,17 @@
     },
     {
       "type": "topic",
+      "title": "webkit",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/webkit/",
+      "topics": ["webkit", "webkit"]
+    },
+    {
+      "type": "topic",
       "title": "weeks",
-      "summary": "6 participating sites",
+      "summary": "5 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/week/",
@@ -2580,7 +2922,7 @@
     {
       "type": "topic",
       "title": "Writing",
-      "summary": "5 participating sites",
+      "summary": "4 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/writing/",
@@ -4218,15 +4560,15 @@
     {
       "type": "content",
       "title": "/prior/",
-      "summary": "",
+      "summary": "Older vintage projects of Joe Crawford",
       "domain": "artlung.com",
       "origin": "https://artlung.com",
       "url": "https://artlung.com/prior/",
       "topics": [],
       "site_title": "Joe Crawford",
       "published_at": "",
-      "image": "",
-      "image_origin": "",
+      "image": "https://cdn.artlung.com/prior/og-prior.jpg",
+      "image_origin": "https://cdn.artlung.com",
       "language": "en",
       "content_type": "project"
     },
@@ -4270,8 +4612,8 @@
       "topics": [],
       "site_title": "Joe Crawford",
       "published_at": "",
-      "image": "https://cdn.artlung.com/reels/og-reels.jpg",
-      "image_origin": "https://cdn.artlung.com",
+      "image": "https://artlung.com/blog/wp-content/uploads/2026/11/IMG_0880-scaled.jpeg",
+      "image_origin": "https://artlung.com",
       "language": "en",
       "content_type": "project"
     },
@@ -4589,6 +4931,186 @@
       "image_origin": "",
       "language": "en-us",
       "content_type": "article"
+    },
+    {
+      "type": "content",
+      "title": "Apps",
+      "summary": "My lightweight collection of browser tools for making things, trying ideas, and shipping tiny utilities without overhead. Everything here stays static, quick to load, direct to use, and completely open source.",
+      "domain": "josh.earth",
+      "origin": "https://josh.earth",
+      "url": "https://josh.earth/apps",
+      "topics": [],
+      "site_title": "josh.earth",
+      "published_at": "",
+      "image": "",
+      "image_origin": "",
+      "language": "en",
+      "content_type": "project"
+    },
+    {
+      "type": "content",
+      "title": "Joshternet",
+      "summary": "Join the Joshternet: publish a tiny identity declaration on your own site, then validate and optionally ask JoshBot to discover it.",
+      "domain": "josh.earth",
+      "origin": "https://josh.earth",
+      "url": "https://josh.earth/join",
+      "topics": [],
+      "site_title": "josh.earth",
+      "published_at": "",
+      "image": "",
+      "image_origin": "",
+      "language": "en",
+      "content_type": "project"
+    },
+    {
+      "type": "content",
+      "title": "Portfolio — josh.earth",
+      "summary": "A selection of projects I have worked on.",
+      "domain": "josh.earth",
+      "origin": "https://josh.earth",
+      "url": "https://josh.earth/portfolio",
+      "topics": [],
+      "site_title": "josh.earth",
+      "published_at": "",
+      "image": "",
+      "image_origin": "",
+      "language": "en",
+      "content_type": "project"
+    },
+    {
+      "type": "content",
+      "title": "Atlantis",
+      "summary": "A secure marketplace for owners of digital models to sell licenses to print them on Markforged printers.",
+      "domain": "josh.earth",
+      "origin": "https://josh.earth",
+      "url": "https://josh.earth/portfolio/atlantis",
+      "topics": [],
+      "site_title": "josh.earth",
+      "published_at": "",
+      "image": "",
+      "image_origin": "",
+      "language": "en",
+      "content_type": "project"
+    },
+    {
+      "type": "content",
+      "title": "Embedded Rust, Iris UI & E-Paper",
+      "summary": "A collection of Rust interfaces, hardware examples, and experimental e-paper software for ESP32 devices.",
+      "domain": "josh.earth",
+      "origin": "https://josh.earth",
+      "url": "https://josh.earth/portfolio/embedded-rust",
+      "topics": [],
+      "site_title": "josh.earth",
+      "published_at": "",
+      "image": "",
+      "image_origin": "",
+      "language": "en",
+      "content_type": "project"
+    },
+    {
+      "type": "content",
+      "title": "LED Matrix Clock & On Air Sign",
+      "summary": "A 16×16 LED clock and on-air sign combining embedded hardware, a local web interface, and a 3D-printed diffuser.",
+      "domain": "josh.earth",
+      "origin": "https://josh.earth",
+      "url": "https://josh.earth/portfolio/led-clock",
+      "topics": [],
+      "site_title": "josh.earth",
+      "published_at": "",
+      "image": "",
+      "image_origin": "",
+      "language": "en",
+      "content_type": "project"
+    },
+    {
+      "type": "content",
+      "title": "LEGO-Compatible Macropad",
+      "summary": "A three-key macropad combining a custom PCB, 3D-printed prototypes, and LEGO-compatible construction.",
+      "domain": "josh.earth",
+      "origin": "https://josh.earth",
+      "url": "https://josh.earth/portfolio/lego-macropad",
+      "topics": [],
+      "site_title": "josh.earth",
+      "published_at": "",
+      "image": "",
+      "image_origin": "",
+      "language": "en",
+      "content_type": "project"
+    },
+    {
+      "type": "content",
+      "title": "Autonomous Driving Tools",
+      "summary": "I lead an ML & data viz tools team at Level 5, Lyft's self driving car division",
+      "domain": "josh.earth",
+      "origin": "https://josh.earth",
+      "url": "https://josh.earth/portfolio/level5_tools",
+      "topics": [],
+      "site_title": "josh.earth",
+      "published_at": "",
+      "image": "",
+      "image_origin": "",
+      "language": "en",
+      "content_type": "project"
+    },
+    {
+      "type": "content",
+      "title": "Sensopolis: A Connected Model City",
+      "summary": "A miniature smart city demonstration for Nokia and Korea Telecom, with a retro dashboard that brought live sensor data to life.",
+      "domain": "josh.earth",
+      "origin": "https://josh.earth",
+      "url": "https://josh.earth/portfolio/sensopolis",
+      "topics": [],
+      "site_title": "josh.earth",
+      "published_at": "",
+      "image": "",
+      "image_origin": "",
+      "language": "en",
+      "content_type": "project"
+    },
+    {
+      "type": "content",
+      "title": "subArctic UI Toolkit",
+      "summary": "Research into visual effects and transformations for an extensible Java user interface toolkit.",
+      "domain": "josh.earth",
+      "origin": "https://josh.earth",
+      "url": "https://josh.earth/portfolio/subarctic",
+      "topics": [],
+      "site_title": "josh.earth",
+      "published_at": "",
+      "image": "",
+      "image_origin": "",
+      "language": "en",
+      "content_type": "project"
+    },
+    {
+      "type": "content",
+      "title": "Swing Hacks",
+      "summary": "an O'Reilly book teaching you how to hack the Swing Java UI toolkit one step beyond.",
+      "domain": "josh.earth",
+      "origin": "https://josh.earth",
+      "url": "https://josh.earth/portfolio/swinghacks",
+      "topics": [],
+      "site_title": "josh.earth",
+      "published_at": "",
+      "image": "",
+      "image_origin": "",
+      "language": "en",
+      "content_type": "project"
+    },
+    {
+      "type": "content",
+      "title": "Projects — josh.earth",
+      "summary": "Embedded GUI Toolkit — A reusable UI toolkit for ESP32-based embedded devices written in Rust. Features dirty-rect rendering to avoid overdraw on slow SPI displays, a scene graph that works with Rust's ownership model, and a small set of primitive widgets. See the embedded Rust series on the blog for details.",
+      "domain": "josh.earth",
+      "origin": "https://josh.earth",
+      "url": "https://josh.earth/projects",
+      "topics": [],
+      "site_title": "josh.earth",
+      "published_at": "",
+      "image": "",
+      "image_origin": "",
+      "language": "en",
+      "content_type": "project"
     },
     {
       "type": "content",
@@ -6759,7 +7281,7 @@
       "url": "https://joshternet.org/governance/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-08T16:12:02.000Z",
+      "published_at": "2026-11-08T20:45:36.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6774,7 +7296,7 @@
       "url": "https://joshternet.org/implement/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-08T16:12:02.000Z",
+      "published_at": "2026-11-08T20:45:36.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6789,7 +7311,7 @@
       "url": "https://joshternet.org/implement/content/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-08T16:12:02.000Z",
+      "published_at": "2026-11-08T20:45:36.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6804,7 +7326,7 @@
       "url": "https://joshternet.org/implement/platforms/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-08T16:12:02.000Z",
+      "published_at": "2026-11-08T20:45:36.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6819,7 +7341,7 @@
       "url": "https://joshternet.org/join/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-08T16:12:02.000Z",
+      "published_at": "2026-11-08T20:45:36.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6834,7 +7356,7 @@
       "url": "https://joshternet.org/joshbot/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-08T16:12:02.000Z",
+      "published_at": "2026-11-08T20:45:36.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6864,7 +7386,7 @@
       "url": "https://joshternet.org/nominate/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-08T16:12:02.000Z",
+      "published_at": "2026-11-08T20:45:36.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6879,7 +7401,7 @@
       "url": "https://joshternet.org/security/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-08T16:12:02.000Z",
+      "published_at": "2026-11-08T20:45:36.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -6909,26 +7431,11 @@
       "url": "https://joshternet.org/specs/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-08T16:12:02.000Z",
+      "published_at": "2026-11-08T20:45:36.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
       "content_type": "project"
-    },
-    {
-      "type": "content",
-      "title": "Learning a New Tech Stack with an LLM",
-      "summary": "While I mentioned a few weeks back that I'm now recovering from AI Psychosis , that doesn't mean I've given up on the technology completely. I'm writing more emails, and engaging with human beings as much as I can, and that part's been great. I still use agents as a glorified typewriter to generate code, and still very much get my hands in the dirt and sling code myself. I've also gotten quite obs",
-      "domain": "joshtronic.com",
-      "origin": "https://joshtronic.com",
-      "url": "https://joshtronic.com/2026/10/26/learning-new-tech-stack-with-llm/",
-      "topics": [],
-      "site_title": "Josh Sherman",
-      "published_at": "2026-10-26T00:00:00.000Z",
-      "image": "",
-      "image_origin": "",
-      "language": "en",
-      "content_type": "article"
     },
     {
       "type": "content",
