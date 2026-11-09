@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-09T07:10:09.990Z",
-  "community_count": 751,
+  "generated_at": "2026-11-09T18:12:33.458Z",
+  "community_count": 749,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
     {
@@ -2830,21 +2830,8 @@
     {
       "slug": "banking",
       "label": "banking",
-      "member_count": 2,
+      "member_count": 1,
       "sites": [
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshuadrake.org/projects/resloadbank/",
-              "title": "",
-              "source": "portfolio:sector"
-            }
-          ]
-        },
         {
           "origin": "https://www.joshuabaker.com",
           "domain": "www.joshuabaker.com",
@@ -2876,8 +2863,9 @@
       ],
       "sources": ["portfolio:sector"],
       "first_seen_at": "2026-10-03T12:00:56.613Z",
-      "last_changed_at": "2026-11-08T20:22:43.029Z",
-      "active": true
+      "last_changed_at": "2026-11-09T18:12:33.458Z",
+      "active": true,
+      "stale_since": "2026-11-09T18:12:33.458Z"
     },
     {
       "slug": "barth",
@@ -4001,7 +3989,7 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://josh.earth/2026/11/08/epaper-rust",
+              "url": "https://josh.earth/2026/11/09/epaper-rust",
               "title": "",
               "source": "visible-text"
             },
@@ -6593,7 +6581,7 @@
               "source": "visible-text"
             },
             {
-              "url": "https://josh.earth/2026/11/08/epaper-rust",
+              "url": "https://josh.earth/2026/11/09/epaper-rust",
               "title": "",
               "source": "visible-text"
             },
@@ -7538,36 +7526,8 @@
     {
       "slug": "computer",
       "label": "Computer",
-      "member_count": 3,
+      "member_count": 2,
       "sites": [
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuadrake.org/projects/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuadrake.org/projects/cessnaretrofit/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuadrake.org/projects/JDMCMC/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuadrake.org/projects/resloadbank/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
         {
           "origin": "https://joshuapsteele.com",
           "domain": "joshuapsteele.com",
@@ -7617,7 +7577,7 @@
       ],
       "sources": ["article:tag", "visible-text"],
       "first_seen_at": "2026-11-01T23:37:56.256Z",
-      "last_changed_at": "2026-11-08T20:22:43.029Z",
+      "last_changed_at": "2026-11-09T18:12:33.458Z",
       "active": true,
       "related_discoveries": [
         {
@@ -7669,31 +7629,14 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ]
+      ],
+      "stale_since": "2026-11-09T18:12:33.458Z"
     },
     {
       "slug": "computer-vision",
       "label": "computer vision",
-      "member_count": 2,
+      "member_count": 1,
       "sites": [
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuadrake.org/projects/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuadrake.org/projects/JDMCMC/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
         {
           "origin": "https://joshuamorris.info",
           "domain": "joshuamorris.info",
@@ -7708,9 +7651,9 @@
           ]
         }
       ],
-      "sources": ["microformat:p-category", "visible-text"],
+      "sources": ["microformat:p-category"],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-08T20:22:43.029Z",
+      "last_changed_at": "2026-11-09T18:12:33.458Z",
       "active": true,
       "related_discoveries": [
         {
@@ -7720,7 +7663,8 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ]
+      ],
+      "stale_since": "2026-11-09T18:12:33.458Z"
     },
     {
       "slug": "computing-history",
@@ -9116,13 +9060,6 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
           "origin": "https://joshuastuebner.com",
           "domain": "joshuastuebner.com",
           "title": "Joshua Stübner",
@@ -9967,13 +9904,6 @@
       "last_changed_at": "2026-11-09T00:26:52.180Z",
       "active": true,
       "related_discoveries": [
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
         {
           "origin": "https://joshuakim.studio",
           "domain": "joshuakim.studio",
@@ -10932,21 +10862,8 @@
     {
       "slug": "documentation",
       "label": "documentation",
-      "member_count": 3,
+      "member_count": 2,
       "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/",
-              "title": "",
-              "source": "microformat:p-category"
-            }
-          ]
-        },
         {
           "origin": "https://www.joshfinnie.com",
           "domain": "www.joshfinnie.com",
@@ -11011,13 +10928,12 @@
       ],
       "sources": [
         "article:tag",
-        "microformat:p-category",
         "topic-hub:link",
         "topic-hub:page",
         "visible-text"
       ],
       "first_seen_at": "2026-11-03T16:34:11.848Z",
-      "last_changed_at": "2026-11-07T17:06:59.285Z",
+      "last_changed_at": "2026-11-09T18:12:33.458Z",
       "active": true,
       "related_discoveries": [
         {
@@ -11027,7 +10943,8 @@
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
-      ]
+      ],
+      "stale_since": "2026-11-09T18:12:33.458Z"
     },
     {
       "slug": "dog",
@@ -12355,13 +12272,6 @@
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
           "title": "Josh Sherman",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         },
@@ -13807,7 +13717,7 @@
               "source": "visible-text"
             },
             {
-              "url": "https://josh.earth/2026/11/08/epaper-rust",
+              "url": "https://josh.earth/2026/11/09/epaper-rust",
               "title": "",
               "source": "visible-text"
             }
@@ -15239,13 +15149,6 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
           "origin": "https://www.joshuabaker.com",
           "domain": "www.joshuabaker.com",
           "title": "Joshua Baker",
@@ -15881,7 +15784,7 @@
     {
       "slug": "general",
       "label": "general",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
         {
           "origin": "https://artlung.com",
@@ -15915,11 +15818,24 @@
               "source": "rss:category"
             }
           ]
+        },
+        {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshternet.org/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
         }
       ],
-      "sources": ["rss:category"],
+      "sources": ["microformat:p-category", "rss:category"],
       "first_seen_at": "2026-11-03T09:57:38.457Z",
-      "last_changed_at": "2026-11-07T03:28:49.388Z",
+      "last_changed_at": "2026-11-09T18:12:33.458Z",
       "active": true,
       "related_discoveries": [
         {
@@ -15933,86 +15849,6 @@
           "origin": "https://www.joshcanhelp.com",
           "domain": "www.joshcanhelp.com",
           "title": "Josh Cunningham",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://www.joshuakgoldberg.com",
-          "domain": "www.joshuakgoldberg.com",
-          "title": "Josh Goldberg",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
-    },
-    {
-      "slug": "generator",
-      "label": "generator",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://joshua.seigler.net",
-          "domain": "joshua.seigler.net",
-          "title": "Joshua Seigler",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshua.seigler.net/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshua.seigler.net/posts/cool-musical-illusion-tritone-paradox/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshua.seigler.net/posts/i-made-myself-a-recipe-label-generator/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuadrake.org/projects/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuadrake.org/projects/cessnaretrofit/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuadrake.org/projects/resloadbank/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["visible-text"],
-      "first_seen_at": "2026-11-08T20:22:43.029Z",
-      "last_changed_at": "2026-11-08T20:22:43.029Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshuakim.studio",
-          "domain": "joshuakim.studio",
-          "title": "Joshua Kim",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://www.joshuabaker.com",
-          "domain": "www.joshuabaker.com",
-          "title": "Joshua Baker",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         },
@@ -18853,13 +18689,6 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
           "origin": "https://joshuakim.studio",
           "domain": "joshuakim.studio",
           "title": "Joshua Kim",
@@ -19847,16 +19676,7 @@
       "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-11-09T00:26:52.180Z",
       "last_changed_at": "2026-11-09T00:26:52.180Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
+      "active": true
     },
     {
       "slug": "introversion",
@@ -24660,13 +24480,6 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
           "origin": "https://www.joshuakgoldberg.com",
           "domain": "www.joshuakgoldberg.com",
           "title": "Josh Goldberg",
@@ -25937,7 +25750,7 @@
     {
       "slug": "musing",
       "label": "musings",
-      "member_count": 2,
+      "member_count": 3,
       "sites": [
         {
           "origin": "https://artlung.com",
@@ -25984,11 +25797,24 @@
               "source": "visible-text"
             }
           ]
+        },
+        {
+          "origin": "https://joshternet.org",
+          "domain": "joshternet.org",
+          "title": "Joshternet",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://joshternet.org/",
+              "title": "",
+              "source": "microformat:p-category"
+            }
+          ]
         }
       ],
-      "sources": ["rss:category", "visible-text"],
+      "sources": ["microformat:p-category", "rss:category", "visible-text"],
       "first_seen_at": "2026-11-09T07:10:09.990Z",
-      "last_changed_at": "2026-11-09T07:10:09.990Z",
+      "last_changed_at": "2026-11-09T18:12:33.458Z",
       "active": true
     },
     {
@@ -27325,16 +27151,7 @@
       "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-11-09T00:26:52.180Z",
       "last_changed_at": "2026-11-09T00:26:52.180Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
+      "active": true
     },
     {
       "slug": "oil",
@@ -27364,13 +27181,6 @@
           "origin": "https://joshmuller.ca",
           "domain": "joshmuller.ca",
           "title": "Josh Müller",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         }
@@ -27784,21 +27594,8 @@
     {
       "slug": "opinion",
       "label": "opinion",
-      "member_count": 4,
+      "member_count": 3,
       "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "declared",
-          "pages": [
-            {
-              "url": "https://joshternet.org/",
-              "title": "",
-              "source": "microformat:p-category"
-            }
-          ]
-        },
         {
           "origin": "https://joshuapsteele.com",
           "domain": "joshuapsteele.com",
@@ -27864,15 +27661,11 @@
           ]
         }
       ],
-      "sources": [
-        "article:tag",
-        "microformat:p-category",
-        "topic-hub:link",
-        "topic-hub:page"
-      ],
+      "sources": ["article:tag", "topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-11-01T23:37:56.256Z",
-      "last_changed_at": "2026-11-07T17:06:59.285Z",
-      "active": true
+      "last_changed_at": "2026-11-09T18:12:33.458Z",
+      "active": true,
+      "stale_since": "2026-11-09T18:12:33.458Z"
     },
     {
       "slug": "ordination",
@@ -30598,16 +30391,7 @@
       "sources": ["visible-text"],
       "first_seen_at": "2026-11-03T21:44:42.327Z",
       "last_changed_at": "2026-11-03T21:44:42.327Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
+      "active": true
     },
     {
       "slug": "prayer",
@@ -31294,13 +31078,6 @@
           "origin": "https://joshmuller.ca",
           "domain": "joshmuller.ca",
           "title": "Josh Müller",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         },
@@ -34945,13 +34722,6 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
           "origin": "https://joshuapsteele.com",
           "domain": "joshuapsteele.com",
           "title": "Joshua P. Steele",
@@ -35482,13 +35252,6 @@
           "origin": "https://joshtronic.com",
           "domain": "joshtronic.com",
           "title": "Josh Sherman",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
           "discovery": "heuristic",
           "note": "Below the community quality threshold; not membership."
         },
@@ -36613,124 +36376,6 @@
       "active": true
     },
     {
-      "slug": "server",
-      "label": "server",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuadrake.org/projects/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuadrake.org/projects/n12rebuild/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuadrake.org/projects/server/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://www.joshfinnie.com",
-          "domain": "www.joshfinnie.com",
-          "title": "Josh Finnie",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://www.joshfinnie.com/blog/lightcraft-vibe-code-audit/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-october-retro/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-week-four-signedonsite/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshfinnie.com/blog/micro-saas-week-one-bragboard/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["visible-text"],
-      "first_seen_at": "2026-11-08T20:22:43.029Z",
-      "last_changed_at": "2026-11-08T20:22:43.029Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://josh.earth",
-          "domain": "josh.earth",
-          "title": "josh.earth",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshcox.co.uk",
-          "domain": "joshcox.co.uk",
-          "title": "Josh Cox",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshghent.com",
-          "domain": "joshghent.com",
-          "title": "Josh Ghent",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshmuller.ca",
-          "domain": "joshmuller.ca",
-          "title": "Josh Müller",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshtronic.com",
-          "domain": "joshtronic.com",
-          "title": "Josh Sherman",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
-          "origin": "https://joshua.seigler.net",
-          "domain": "joshua.seigler.net",
-          "title": "Joshua Seigler",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
-    },
-    {
       "slug": "server-serverless",
       "label": "servers serverless",
       "member_count": 1,
@@ -37150,7 +36795,7 @@
               "source": "visible-text"
             },
             {
-              "url": "https://josh.earth/2026/11/08/epaper-rust",
+              "url": "https://josh.earth/2026/11/09/epaper-rust",
               "title": "",
               "source": "visible-text"
             },
@@ -40004,13 +39649,6 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
           "origin": "https://www.joshuabaker.com",
           "domain": "www.joshuabaker.com",
           "title": "Joshua Baker",
@@ -40564,13 +40202,6 @@
           "note": "Below the community quality threshold; not membership."
         },
         {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
-        {
           "origin": "https://joshuapsteele.com",
           "domain": "joshuapsteele.com",
           "title": "Joshua P. Steele",
@@ -40646,7 +40277,7 @@
               "source": "visible-text"
             },
             {
-              "url": "https://josh.earth/2026/11/08/epaper-rust",
+              "url": "https://josh.earth/2026/11/09/epaper-rust",
               "title": "",
               "source": "visible-text"
             },
@@ -40856,16 +40487,7 @@
       "sources": ["topic-hub:link", "topic-hub:page"],
       "first_seen_at": "2026-11-09T00:26:52.180Z",
       "last_changed_at": "2026-11-09T00:26:52.180Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshuadrake.org",
-          "domain": "joshuadrake.org",
-          "title": "Joshua Drake",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
+      "active": true
     },
     {
       "slug": "tip",
@@ -41851,7 +41473,7 @@
               "source": "visible-text"
             },
             {
-              "url": "https://josh.earth/2026/11/08/epaper-rust",
+              "url": "https://josh.earth/2026/11/09/epaper-rust",
               "title": "",
               "source": "visible-text"
             },
@@ -41937,7 +41559,7 @@
               "source": "visible-text"
             },
             {
-              "url": "https://josh.earth/2026/11/08/epaper-rust",
+              "url": "https://josh.earth/2026/11/09/epaper-rust",
               "title": "",
               "source": "visible-text"
             },
@@ -45017,13 +44639,6 @@
       "last_changed_at": "2026-11-04T18:19:19.608Z",
       "active": true,
       "related_discoveries": [
-        {
-          "origin": "https://artlung.com",
-          "domain": "artlung.com",
-          "title": "Joe Crawford",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        },
         {
           "origin": "https://joshcox.co.uk",
           "domain": "joshcox.co.uk",
