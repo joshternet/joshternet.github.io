@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-09T00:48:54.863Z",
+  "generated_at": "2026-11-09T07:30:27.829Z",
   "participant_count": 27,
   "community_count": 751,
-  "publication_count": 631,
+  "publication_count": 632,
   "connection_count": 7,
   "selection": {
     "neighborhood": "utc-date rotation over alphabetically sorted community slugs",
@@ -11,11 +11,48 @@
   },
   "fresh": [
     {
+      "url": "https://artlung.com/blog/2026/11/08/elections-sister-aging/",
+      "title": "Elections come and go.",
+      "summary": "I would be hard-pressed to count precisely how many elections, midterm elections, primary elections, and special elections I’ve participated in. But if I can vote in an election, I do. I’ve voted for Jessie Jackson and John McCain. One of those I’m still proud of. At heart I am a kind of centrist. I tend to seek a middle way. At worst, this tends to make my opinions lukewarm: neither too hot nor t",
+      "published_at": "2026-11-08T16:46:34.000Z",
+      "observed_at": "2026-11-09T07:10:09.990Z",
+      "content_type": "article",
+      "language": "en-us",
+      "dir": "",
+      "site_origin": "https://artlung.com",
+      "site_title": "Joe Crawford",
+      "domain": "artlung.com",
+      "tags": [
+        {
+          "slug": "general",
+          "label": "general"
+        },
+        {
+          "slug": "musing",
+          "label": "musings"
+        }
+      ],
+      "neighborhoods": [
+        {
+          "slug": "general",
+          "label": "general"
+        },
+        {
+          "slug": "musing",
+          "label": "musings"
+        }
+      ],
+      "image": "/assets/activity/posters/1aa0486bfc6568ba403696286be0d40e4fbcb526a1805f0dedd032e258473228.webp",
+      "image_origin": "",
+      "source_kind": "h-entry",
+      "page_role": "article"
+    },
+    {
       "url": "https://joshtronic.com/2026/11/08/introducing-cuppa/",
       "title": "Introducing Cuppa",
       "summary": "It wouldn't be yet another retirement tour without a focus on side hustles. I've been focusing most of my time on the projects I've been kicking the can on for Holiday API but have also been working on something new with my wife . The past few years, she's been dipping her toes into day trading both stocks and options. To help support her, I started to build more focused tools than what the curren",
       "published_at": "2026-11-08T00:00:00.000Z",
-      "observed_at": "2026-11-09T00:26:52.180Z",
+      "observed_at": "2026-11-09T07:10:09.990Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -34,7 +71,7 @@
       "title": "Cottonwood Creek Trail, Colorado Springs, Colorado. November 7, 2026.",
       "summary": "",
       "published_at": "2026-11-07T08:56:00.000Z",
-      "observed_at": "2026-11-09T00:26:52.180Z",
+      "observed_at": "2026-11-09T07:10:09.990Z",
       "content_type": "article",
       "language": "",
       "dir": "",
@@ -52,7 +89,7 @@
       "title": "Tailwind, Stack Overflow, and the Docs Snowball",
       "summary": "Tailwind's docs traffic fell 40% and Stack Overflow's questions collapsed as developers asked LLMs instead. Why that loop leaves us with worse docs, shallower skills, and models that stop learning.",
       "published_at": "2026-11-07T00:00:00.000Z",
-      "observed_at": "2026-11-09T00:26:52.180Z",
+      "observed_at": "2026-11-09T07:10:09.990Z",
       "content_type": "article",
       "language": "en-us",
       "dir": "",
@@ -89,7 +126,7 @@
       "title": "Worth Wandering: The Mushroom Color Atlas",
       "summary": "An extraordinary interactive collection of colors made from mushrooms, where a walk through the forest becomes an exploration of chemistry, textiles, watercolor pigments and the surprising things nature has been making all along.",
       "published_at": "2026-11-06T16:00:00.000Z",
-      "observed_at": "2026-11-09T00:26:52.180Z",
+      "observed_at": "2026-11-09T07:10:09.990Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -108,7 +145,7 @@
       "title": "JPEG XL Is Becoming a Practical Choice for the Web",
       "summary": "Safari, Chrome, and Firefox can decode JPEG XL. Progressive loading, reversible JPEG storage, a measured compare, and how to ship it with picture fallbacks.",
       "published_at": "2026-11-06T14:00:00.000Z",
-      "observed_at": "2026-11-09T00:26:52.180Z",
+      "observed_at": "2026-11-09T07:10:09.990Z",
       "content_type": "article",
       "language": "en",
       "dir": "",
@@ -139,25 +176,6 @@
       "image_origin": "",
       "source_kind": "atom",
       "page_role": "article"
-    },
-    {
-      "url": "https://joshgr.com/writing/an-open-letter-to-ai-barons/",
-      "title": "An Open Letter to AI Barons",
-      "summary": "Congratulations! You did it! You raised the tide and now all boats are lifted. You made a cool. Good job!",
-      "published_at": "2026-11-06T00:00:00.000Z",
-      "observed_at": "2026-11-09T00:26:52.180Z",
-      "content_type": "article",
-      "language": "en",
-      "dir": "",
-      "site_origin": "https://joshgr.com",
-      "site_title": "Joshua Grant",
-      "domain": "joshgr.com",
-      "tags": [],
-      "neighborhoods": [],
-      "image": "/assets/activity/posters/d728ec0352633fdbd3f02f2d8ee48a2a8447598c6e878fa3ced20467253ef9d0.webp",
-      "image_origin": "",
-      "source_kind": "rss",
-      "page_role": "unknown"
     }
   ],
   "neighborhood": {

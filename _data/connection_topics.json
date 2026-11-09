@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-09T00:48:54.863Z",
+  "generated_at": "2026-11-09T07:30:27.829Z",
   "overlap_count": 162,
   "pairs": [
     {
@@ -288,6 +288,10 @@
         {
           "slug": "version",
           "label": "version"
+        },
+        {
+          "slug": "would",
+          "label": "would"
         }
       ]
     },
@@ -4018,12 +4022,12 @@
           "label": "general",
           "articles": [
             {
-              "url": "https://artlung.com/blog/2026/11/03/and-shredding/",
-              "title": "I went relatively early this morning."
+              "url": "https://artlung.com/blog/2026/11/08/elections-sister-aging/",
+              "title": "Elections come and go."
             },
             {
-              "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
-              "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters."
+              "url": "https://artlung.com/blog/2026/11/03/and-shredding/",
+              "title": "I went relatively early this morning."
             }
           ],
           "sites": [
@@ -5646,6 +5650,29 @@
                 {
                   "url": "https://www.youtube.com/watch?v=_5PwQKW62to",
                   "title": "Untitled"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "would",
+          "label": "would",
+          "articles": [
+            {
+              "url": "https://artlung.com/blog/2026/11/08/elections-sister-aging/",
+              "title": "Elections come and go."
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://joshuadrake.org",
+              "domain": "joshuadrake.org",
+              "title": "Joshua Drake",
+              "articles": [
+                {
+                  "url": "https://joshuadrake.org/projects/turboelectric",
+                  "title": "TurboElectric"
                 }
               ]
             }
@@ -8480,12 +8507,12 @@
               "title": "Joe Crawford",
               "articles": [
                 {
-                  "url": "https://artlung.com/blog/2026/11/03/and-shredding/",
-                  "title": "I went relatively early this morning."
+                  "url": "https://artlung.com/blog/2026/11/08/elections-sister-aging/",
+                  "title": "Elections come and go."
                 },
                 {
-                  "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
-                  "title": "Digital permanence and me Conceptually a URL shortener is a useful idea. A shorter url is simpler to speak aloud, to paste into an email without it breaking, to add to social media and not use too many characters."
+                  "url": "https://artlung.com/blog/2026/11/03/and-shredding/",
+                  "title": "I went relatively early this morning."
                 }
               ]
             }
@@ -14237,6 +14264,29 @@
                 {
                   "url": "https://joshmuller.ca/docs/healthy-eating-plan-builder/",
                   "title": "Healthy Weight Plan Builder"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "would",
+          "label": "would",
+          "articles": [
+            {
+              "url": "https://joshuadrake.org/projects/turboelectric",
+              "title": "TurboElectric"
+            }
+          ],
+          "sites": [
+            {
+              "origin": "https://artlung.com",
+              "domain": "artlung.com",
+              "title": "Joe Crawford",
+              "articles": [
+                {
+                  "url": "https://artlung.com/blog/2026/11/08/elections-sister-aging/",
+                  "title": "Elections come and go."
                 }
               ]
             }

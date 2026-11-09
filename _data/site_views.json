@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-09T00:48:54.863Z",
+  "generated_at": "2026-11-09T07:30:27.829Z",
   "sites": [
     {
       "origin": "https://artlung.com",
@@ -139,6 +139,10 @@
           "label": "Drafts"
         },
         {
+          "slug": "election",
+          "label": "elections"
+        },
+        {
           "slug": "email",
           "label": "emails"
         },
@@ -213,6 +217,10 @@
         {
           "slug": "music",
           "label": "music"
+        },
+        {
+          "slug": "musing",
+          "label": "musings"
         },
         {
           "slug": "november",
@@ -336,7 +344,7 @@
         "title": "/amiga/",
         "summary": "A few of my memories of using the a Commodore Amiga 1000 for computer graphics, music, etc.",
         "published_at": "",
-        "observed_at": "2026-11-09T00:26:52.180Z",
+        "observed_at": "2026-11-09T07:10:09.990Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -369,6 +377,7 @@
         "selection_strategy": "uncapped-site-crawl-v1",
         "selection_reasons": {
           "https://artlung.com/": "home",
+          "https://artlung.com/blog/2026/11/08/elections-sister-aging/": "feed",
           "https://artlung.com/blog/2026/11/06/lost-fin/": "feed",
           "https://artlung.com/blog/2026/11/05/a-few-big-enjoyable/": "feed",
           "https://artlung.com/blog/2026/11/03/and-shredding/": "feed",
@@ -388,7 +397,6 @@
           "https://artlung.com/blog/2026/10/22/gwenthegoblin-pumpkin/": "feed",
           "https://artlung.com/blog/2026/10/22/johnny-5-new-bot-day/": "feed",
           "https://artlung.com/blog/2026/10/22/2027-web-platform-ranking/": "feed",
-          "https://artlung.com/blog/2026/10/21/rain-coming/": "feed",
           "https://artlung.com/ai/": "slashpages-manifest",
           "https://artlung.com/about/": "slashpages-manifest",
           "https://artlung.com/blank/": "slashpages-manifest",
@@ -9347,6 +9355,7 @@
           "https://artlung.com/blog/2026/10/18/pb-drive-this-morning/": "sitemap",
           "https://artlung.com/blog/2026/10/19/be-indieweb-enough/": "sitemap",
           "https://artlung.com/blog/2026/10/20/the-sunset-from-home/": "sitemap",
+          "https://artlung.com/blog/2026/10/21/rain-coming/": "sitemap",
           "https://artlung.com/blogofthe-day/": "sitemap",
           "https://artlung.com/blogosphere-part-1/": "sitemap",
           "https://artlung.com/blogosphere-part-2/": "sitemap",
@@ -11482,8 +11491,6 @@
           "https://artlung.com/lab/": "content-index",
           "https://artlung.com/videos/reels/rideawave2026/": "content-index",
           "https://artlung.com/blog/page/2/": "content-index",
-          "https://artlung.com/blog/tag/dawnpatrol-app/": "content-index",
-          "https://artlung.com/blog/tag/bodysurfing/": "content-index",
           "https://artlung.com/blog/tag/star-trek/": "content-index",
           "https://artlung.com/blog/2026/10/": "content-index",
           "https://artlung.com/blog/tag/politics/": "content-index",
@@ -11496,6 +11503,7 @@
           "https://artlung.com/blog/tag/classicbot_toy": "content-index",
           "https://artlung.com/blog/2026/11/03/": "content-index",
           "https://artlung.com/blog/tag/via-instagram/": "content-index",
+          "https://artlung.com/blog/tag/musings/": "content-index",
           "https://artlung.com/blog/2026/11/": "content-index",
           "https://artlung.com/blog/2022/08/10/drop-it-like-its-bivalve-webcomic-gull-beach/": "content-index",
           "https://artlung.com/blog/2023/06/14/struggle-based-on-a-true-story-webcomic/": "content-index",
@@ -11520,6 +11528,8 @@
           "https://artlung.com/blog/2025/10/07/fresh-028/": "content-index",
           "https://artlung.com/surf-imc/": "content-index",
           "https://artlung.com/likes/feed.xml": "budget-exhausted",
+          "https://artlung.com/blog/2026/11/08/": "budget-exhausted",
+          "https://artlung.com/contact/?url=https://artlung.com/blog/2026/11/08/elections-sister-aging/": "budget-exhausted",
           "https://artlung.com/blog/2026/11/06/": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2026/11/06/lost-fin/": "budget-exhausted",
           "https://artlung.com/blog/2026/11/05/": "budget-exhausted",
@@ -11539,6 +11549,8 @@
           "https://artlung.com/blog/2026/10/29/patrick-stewart-rip/?replytocom=1247470": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2026/10/29/patrick-stewart-rip/": "budget-exhausted",
           "https://artlung.com/blog/2026/10/28/": "budget-exhausted",
+          "https://artlung.com/blog/tag/bodysurfing/": "budget-exhausted",
+          "https://artlung.com/blog/tag/dawnpatrol-app/": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2026/10/28/novelty-wave/": "budget-exhausted",
           "https://artlung.com/blog/2026/10/27/": "budget-exhausted",
           "https://artlung.com/blog/tag/sandiego": "budget-exhausted",
@@ -11582,8 +11594,6 @@
           "https://artlung.com/blog/2026/10/22/2027-web-platform-ranking/?replytocom=1246854": "budget-exhausted",
           "https://artlung.com/blog/2026/10/22/2027-web-platform-ranking/?replytocom=1247034": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2026/10/22/2027-web-platform-ranking/": "budget-exhausted",
-          "https://artlung.com/blog/2026/10/21/": "budget-exhausted",
-          "https://artlung.com/contact/?url=https://artlung.com/blog/2026/10/21/rain-coming/": "budget-exhausted",
           "https://artlung.com/blog/2023/": "budget-exhausted",
           "https://artlung.com/blog/2023/10/": "budget-exhausted",
           "https://artlung.com/blog/2023/10/26/": "budget-exhausted",
@@ -12091,7 +12101,6 @@
           "https://artlung.com/blog/tag/cube-cat/": "budget-exhausted",
           "https://artlung.com/blog/tag/halloween/": "budget-exhausted",
           "https://artlung.com/blog/tag/scam/": "budget-exhausted",
-          "https://artlung.com/blog/tag/musings/": "budget-exhausted",
           "https://artlung.com/blog/tag/phyllis-crawford/": "budget-exhausted",
           "https://artlung.com/blog/tag/frank-zappa/": "budget-exhausted",
           "https://artlung.com/blog/tag/google/": "budget-exhausted",
@@ -12211,6 +12220,12 @@
           "https://artlung.com/contact/?url=https://artlung.com/blog/2013/07/01/adieu-google-reader/": "budget-exhausted",
           "https://artlung.com/robots.txt": "budget-exhausted",
           "https://artlung.com/blog/2026/page/2/": "budget-exhausted",
+          "https://artlung.com/tags/musings/": "budget-exhausted",
+          "https://artlung.com/blog/tag/washington-dc/": "budget-exhausted",
+          "https://artlung.com/blog/tag/adventures/": "budget-exhausted",
+          "https://artlung.com/blog/tag/kitty/": "budget-exhausted",
+          "https://artlung.com/blog/tag/nighthawksatthediner/": "budget-exhausted",
+          "https://artlung.com/blog/tag/musings/page/2/": "budget-exhausted",
           "https://artlung.com/tags/via-instagram/": "budget-exhausted",
           "https://artlung.com/blog/tag/via-instagram/page/2/": "budget-exhausted",
           "https://artlung.com/tags/classicbot_toy/": "budget-exhausted",
@@ -12287,15 +12302,6 @@
           "https://artlung.com/blog/tag/qcontinuum": "budget-exhausted",
           "https://artlung.com/blog/tag/qcontinuum/": "budget-exhausted",
           "https://artlung.com/blog/tag/star-trek/page/2/": "budget-exhausted",
-          "https://artlung.com/tags/bodysurfing/": "budget-exhausted",
-          "https://artlung.com/blog/tag/zachary-kai/": "budget-exhausted",
-          "https://artlung.com/blog/tag/bodysurfing/page/2/": "budget-exhausted",
-          "https://artlung.com/tags/dawnpatrol-app/": "budget-exhausted",
-          "https://artlung.com/blog/tag/newsletter/": "budget-exhausted",
-          "https://artlung.com/blog/tag/panorama/": "budget-exhausted",
-          "https://artlung.com/blog/tag/dawnpatrolapp/": "budget-exhausted",
-          "https://artlung.com/blog/tag/dawnpatrol.app": "budget-exhausted",
-          "https://artlung.com/blog/tag/dawnpatrol-app/page/2/": "budget-exhausted",
           "https://artlung.com/blog/page/": "budget-exhausted",
           "https://artlung.com/blog/page/3/": "budget-exhausted",
           "https://artlung.com/blog/2025/01/": "budget-exhausted",
@@ -12399,6 +12405,15 @@
           "https://artlung.com/blog/wp-content/uploads/2020/10/IMG_0584-scaled.jpeg": "budget-exhausted",
           "https://artlung.com/blog/tag/nailedit/": "budget-exhausted",
           "https://artlung.com/contact/?url=https://artlung.com/blog/2020/10/05/stop-and-smell-the-roses-webcomic/": "budget-exhausted",
+          "https://artlung.com/blog/2020/09/14/": "budget-exhausted",
+          "https://artlung.com/blog/2020/09/14/best-practices-i-signed-up-to-fight-disease-long-ago-were-all-signed-up-now-covidcomic-respiratorytherapy-donoharm-masks-webcomic/1/": "budget-exhausted",
+          "https://artlung.com/blog/2020/09/14/best-practices-i-signed-up-to-fight-disease-long-ago-were-all-signed-up-now-covidcomic-respiratorytherapy-donoharm-masks-webcomic/2/": "budget-exhausted",
+          "https://artlung.com/blog/wp-content/uploads/2020/09/IMG_0524-scaled.jpeg": "budget-exhausted",
+          "https://artlung.com/blog/tag/covidcomic/": "budget-exhausted",
+          "https://artlung.com/blog/tag/donoharm/": "budget-exhausted",
+          "https://artlung.com/blog/tag/masks/": "budget-exhausted",
+          "https://artlung.com/blog/tag/respiratorytherapy/": "budget-exhausted",
+          "https://artlung.com/contact/?url=https://artlung.com/blog/2020/09/14/best-practices-i-signed-up-to-fight-disease-long-ago-were-all-signed-up-now-covidcomic-respiratorytherapy-donoharm-masks-webcomic/": "budget-exhausted",
           "https://artlung.com/blog/2020/09/07/": "budget-exhausted",
           "https://artlung.com/blog/2020/09/07/expedited-shipping-webcomic-nailedit/1/": "budget-exhausted",
           "https://artlung.com/blog/wp-content/uploads/2020/09/IMG_0487-scaled.jpeg": "budget-exhausted",
@@ -12456,7 +12471,6 @@
           "https://artlung.com/blog/2022/10/08/6-feet-away-from-me-this-morning/": "budget-exhausted",
           "https://artlung.com/tags/music/": "budget-exhausted",
           "https://artlung.com/blog/tag/hospitality/": "budget-exhausted",
-          "https://artlung.com/blog/tag/kitty/": "budget-exhausted",
           "https://artlung.com/blog/tag/stacey-ryan/": "budget-exhausted",
           "https://artlung.com/blog/tag/blusher/": "budget-exhausted",
           "https://artlung.com/blog/tag/elise-trouw/": "budget-exhausted",
@@ -12776,6 +12790,7 @@
           "https://artlung.com/dtd/artlung.dtd": "budget-exhausted",
           "https://artlung.com/dtd/artlung.dtd.txt": "budget-exhausted",
           "https://artlung.com/blog": "budget-exhausted",
+          "https://artlung.com/likes/e52f177ac8b67985e19ddd5a396f2adf": "budget-exhausted",
           "https://artlung.com/foursquare/artlung/": "budget-exhausted",
           "https://artlung.com/gato": "budget-exhausted",
           "https://artlung.com/blog/2024/04/26/friday-links/": "budget-exhausted",
@@ -13825,7 +13840,7 @@
           "https://artlung.com/indienews/bb7ab69d0a547f8a6988766f82b3a905": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     },
     {
       "origin": "https://forwardbias.dev",
@@ -13917,7 +13932,7 @@
         "title": "Contact",
         "summary": "Ramblings and experiments from a recovering middle school teacher. Equity, joy, and agency in education through tech, music, arts. Who knows what comes next.",
         "published_at": "",
-        "observed_at": "2026-11-09T00:26:52.180Z",
+        "observed_at": "2026-11-09T07:10:09.990Z",
         "content_type": "article",
         "language": "en-us",
         "dir": "",
@@ -14146,7 +14161,7 @@
           "https://forwardbias.dev/tags/red/": "topic-hub"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     },
     {
       "origin": "https://josh.earth",
@@ -14808,7 +14823,7 @@
         "title": "Apps",
         "summary": "My lightweight collection of browser tools for making things, trying ideas, and shipping tiny utilities without overhead. Everything here stays static, quick to load, direct to use, and completely open source.",
         "published_at": "",
-        "observed_at": "2026-11-09T00:26:52.180Z",
+        "observed_at": "2026-11-09T07:10:09.990Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -15753,7 +15768,7 @@
           "https://josh.earth/tags/bookreview?page=2": "budget-exhausted"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z",
+      "crawled_at": "2026-11-09T07:10:09.990Z",
       "portfolio": {
         "url": "https://josh.earth/portfolio",
         "work_count": 16,
@@ -16305,13 +16320,13 @@
           "https://joshbeard.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     },
     {
       "origin": "https://joshcox.co.uk",
       "domain": "joshcox.co.uk",
       "title": "Josh Cox",
-      "description": "I've been building things on the web since 2016, mostly through Prystine, the web agency I run. Over the years that's grown from \"making websites\" into looking after them properly — performance, maintenance, and the unglamorous work that keeps a site alive.",
+      "description": "I'm Josh — a UK-based web developer. I run Prystine, a web agency, and build products and tools across the web. This is where I write about building, shipping, and the occasional tangent.",
       "identity": "affirmed",
       "feeds": [
         {
@@ -16419,7 +16434,7 @@
         "title": "Projects — Josh Cox",
         "summary": "Products and tools Josh Cox has built, including Prystine, SendTidings, Quotify, Lifting Times, LeerHaus, and the Mac app My House, My Things.",
         "published_at": "",
-        "observed_at": "2026-11-09T00:26:52.180Z",
+        "observed_at": "2026-11-09T07:10:09.990Z",
         "content_type": "collection",
         "language": "en-gb",
         "dir": "",
@@ -16647,7 +16662,7 @@
           "https://joshcox.co.uk/blog/meat-the-luxury-product/": "content-index"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     },
     {
       "origin": "https://joshghent.com",
@@ -16807,6 +16822,10 @@
           "label": "minutes"
         },
         {
+          "slug": "musing",
+          "label": "musings"
+        },
+        {
           "slug": "node",
           "label": "node"
         },
@@ -16924,7 +16943,7 @@
         "title": "Enterprise sales teams, please, I beg you, stop",
         "summary": "I asked for a price on a few extra seats of software we already pay for. Two days and a pile of irrelevant questions later, I got one.",
         "published_at": "2026-10-28T00:00:00.000Z",
-        "observed_at": "2026-11-09T00:26:52.180Z",
+        "observed_at": "2026-11-09T07:10:09.990Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -17307,7 +17326,7 @@
           "https://joshghent.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     },
     {
       "origin": "https://joshgr.com",
@@ -17582,7 +17601,7 @@
           "https://joshgr.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     },
     {
       "origin": "https://joshkoter.com",
@@ -17627,7 +17646,7 @@
         "title": "Untitled",
         "summary": "Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on YouTube.",
         "published_at": "",
-        "observed_at": "2026-11-09T00:26:52.180Z",
+        "observed_at": "2026-11-09T07:10:09.990Z",
         "content_type": "video",
         "language": "",
         "dir": "",
@@ -17842,7 +17861,7 @@
           "https://joshkoter.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -18804,7 +18823,7 @@
           "https://joshmuller.ca": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     },
     {
       "origin": "https://joshozuna.com",
@@ -18944,7 +18963,7 @@
         "title": "35mm Film Photography Gallery",
         "summary": "Hobbyist photographer. Shooting 35mm film since 2022.",
         "published_at": "2025-08-17T05:00:00.000Z",
-        "observed_at": "2026-11-09T00:26:52.180Z",
+        "observed_at": "2026-11-09T07:10:09.990Z",
         "content_type": "collection",
         "language": "en",
         "dir": "",
@@ -19244,7 +19263,7 @@
           "https://joshozuna.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     },
     {
       "origin": "https://joshsherman.dev",
@@ -19276,7 +19295,7 @@
         "title": "Annotate Archive | Josh Sherman",
         "summary": "A spoiler-safe social reading app with private circles, progress-gated notes, reactions, predictions, and notifications.",
         "published_at": "",
-        "observed_at": "2026-11-09T00:26:52.180Z",
+        "observed_at": "2026-11-09T07:10:09.990Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -19502,7 +19521,7 @@
           "https://joshsherman.dev/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     },
     {
       "origin": "https://joshternet.org",
@@ -19519,10 +19538,6 @@
         }
       ],
       "community_topics": [
-        {
-          "slug": "access",
-          "label": "access"
-        },
         {
           "slug": "data",
           "label": "data"
@@ -19565,7 +19580,7 @@
         "title": "What's New",
         "summary": "See what people across the Joshternet have been writing, building, and sharing. Discover recent posts and creative work from independent websites, then follow the links to their original publishers.",
         "published_at": "",
-        "observed_at": "2026-11-09T00:26:52.180Z",
+        "observed_at": "2026-11-09T07:10:09.990Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -19769,7 +19784,7 @@
           "https://joshternet.org/topics/api/": "sitemap",
           "https://joshternet.org/topics/apple/": "sitemap",
           "https://joshternet.org/topics/architecture/": "sitemap",
-          "https://joshternet.org/topics/archive/": "sitemap",
+          "https://joshternet.org/topics/arduino/": "sitemap",
           "https://joshternet.org/topics/art/": "sitemap",
           "https://joshternet.org/topics/artificial-intelligence/": "sitemap",
           "https://joshternet.org/topics/arts-culture/": "sitemap",
@@ -19793,6 +19808,7 @@
           "https://joshternet.org/implement/buttons/": "sitemap",
           "https://joshternet.org/topics/california/": "sitemap",
           "https://joshternet.org/topics/canada/": "sitemap",
+          "https://joshternet.org/topics/canvas/": "sitemap",
           "https://joshternet.org/topics/career/": "sitemap",
           "https://joshternet.org/topics/case-study/": "sitemap",
           "https://joshternet.org/topics/challenge/": "sitemap",
@@ -19811,6 +19827,7 @@
           "https://joshternet.org/topics/coding/": "sitemap",
           "https://joshternet.org/topics/coffee/": "sitemap",
           "https://joshternet.org/topics/collect/": "sitemap",
+          "https://joshternet.org/topics/color/": "sitemap",
           "https://joshternet.org/topics/command/": "sitemap",
           "https://joshternet.org/topics/communication-pr/": "sitemap",
           "https://joshternet.org/topics/communication/": "sitemap",
@@ -19818,6 +19835,7 @@
           "https://joshternet.org/topics/company/": "sitemap",
           "https://joshternet.org/topics/computer-vision/": "sitemap",
           "https://joshternet.org/topics/computer/": "sitemap",
+          "https://joshternet.org/topics/concise/": "sitemap",
           "https://joshternet.org/implement/content/connections/": "sitemap",
           "https://joshternet.org/implement/connections/": "sitemap",
           "https://joshternet.org/connections/": "sitemap",
@@ -19829,11 +19847,13 @@
           "https://joshternet.org/topics/creative-coding/": "sitemap",
           "https://joshternet.org/topics/creative-design/": "sitemap",
           "https://joshternet.org/topics/css/": "sitemap",
+          "https://joshternet.org/topics/culture/": "sitemap",
           "https://joshternet.org/topics/data/": "sitemap",
           "https://joshternet.org/topics/dawnpatrol-app/": "sitemap",
           "https://joshternet.org/topics/democracy/": "sitemap",
           "https://joshternet.org/topics/design-system/": "sitemap",
           "https://joshternet.org/topics/design/": "sitemap",
+          "https://joshternet.org/topics/designer/": "sitemap",
           "https://joshternet.org/topics/digital/": "sitemap",
           "https://joshternet.org/topics/discovery/": "sitemap",
           "https://joshternet.org/topics/docs/": "sitemap",
@@ -19849,6 +19869,7 @@
           "https://joshternet.org/topics/eleventy/": "sitemap",
           "https://joshternet.org/implement/platforms/eleventy/": "sitemap",
           "https://joshternet.org/topics/email/": "sitemap",
+          "https://joshternet.org/topics/embedded/": "sitemap",
           "https://joshternet.org/topics/engineering-leadership/": "sitemap",
           "https://joshternet.org/topics/engineering/": "sitemap",
           "https://joshternet.org/implement/content/events/": "sitemap",
@@ -19878,7 +19899,10 @@
           "https://joshternet.org/governance/": "sitemap",
           "https://joshternet.org/topics/government-policy/": "sitemap",
           "https://joshternet.org/topics/government/": "sitemap",
+          "https://joshternet.org/topics/graphics/": "sitemap",
           "https://joshternet.org/topics/green/": "sitemap",
+          "https://joshternet.org/topics/gui/": "sitemap",
+          "https://joshternet.org/topics/hack/": "sitemap",
           "https://joshternet.org/topics/hardware/": "sitemap",
           "https://joshternet.org/topics/health/": "sitemap",
           "https://joshternet.org/topics/history/": "sitemap",
@@ -19888,6 +19912,7 @@
           "https://joshternet.org/topics/hugo/": "sitemap",
           "https://joshternet.org/implement/platforms/hugo/": "sitemap",
           "https://joshternet.org/topics/human/": "sitemap",
+          "https://joshternet.org/topics/idea/": "sitemap",
           "https://joshternet.org/implement/content/identity/": "sitemap",
           "https://joshternet.org/topics/image/": "sitemap",
           "https://joshternet.org/implement/": "sitemap",
@@ -19897,8 +19922,10 @@
           "https://joshternet.org/infrastructure/": "sitemap",
           "https://joshternet.org/topics/interactive-art/": "sitemap",
           "https://joshternet.org/topics/internet/": "sitemap",
+          "https://joshternet.org/topics/introduction/": "sitemap",
           "https://joshternet.org/topics/ios/": "sitemap",
           "https://joshternet.org/topics/isolation/": "sitemap",
+          "https://joshternet.org/topics/java/": "sitemap",
           "https://joshternet.org/topics/javascript/": "sitemap",
           "https://joshternet.org/topics/jekyll/": "sitemap",
           "https://joshternet.org/implement/platforms/jekyll/": "sitemap",
@@ -19913,6 +19940,7 @@
           "https://joshternet.org/topics/law/": "sitemap",
           "https://joshternet.org/topics/learn/": "sitemap",
           "https://joshternet.org/topics/learning/": "sitemap",
+          "https://joshternet.org/topics/lego/": "sitemap",
           "https://joshternet.org/topics/lesson/": "sitemap",
           "https://joshternet.org/topics/let/": "sitemap",
           "https://joshternet.org/topics/line/": "sitemap",
@@ -19920,8 +19948,8 @@
           "https://joshternet.org/implement/content/links/": "sitemap",
           "https://joshternet.org/topics/little/": "sitemap",
           "https://joshternet.org/topics/live/": "sitemap",
-          "https://joshternet.org/topics/llm/": "sitemap",
           "https://joshternet.org/topics/love/": "sitemap",
+          "https://joshternet.org/topics/mac/": "sitemap",
           "https://joshternet.org/topics/machine-learning/": "sitemap",
           "https://joshternet.org/topics/manager/": "sitemap",
           "https://joshternet.org/topics/mastodon/": "sitemap",
@@ -19934,6 +19962,7 @@
           "https://joshternet.org/topics/mental-health/": "sitemap",
           "https://joshternet.org/topics/micro-saas/": "sitemap",
           "https://joshternet.org/implement/content/microformats2/": "sitemap",
+          "https://joshternet.org/topics/microsoft/": "sitemap",
           "https://joshternet.org/topics/miscellaneous/": "sitemap",
           "https://joshternet.org/topics/mobile/": "sitemap",
           "https://joshternet.org/topics/model/": "sitemap",
@@ -19945,6 +19974,7 @@
           "https://joshternet.org/implement/platforms/nextjs/": "sitemap",
           "https://joshternet.org/topics/node-js/": "sitemap",
           "https://joshternet.org/topics/node/": "sitemap",
+          "https://joshternet.org/topics/nokia/": "sitemap",
           "https://joshternet.org/nominate/": "sitemap",
           "https://joshternet.org/topics/nonprofit/": "sitemap",
           "https://joshternet.org/topics/november/": "sitemap",
@@ -19959,28 +19989,36 @@
           "https://joshternet.org/topics/outdoor/": "sitemap",
           "https://joshternet.org/topics/ownership/": "sitemap",
           "https://joshternet.org/topics/painting/": "sitemap",
+          "https://joshternet.org/topics/paper/": "sitemap",
           "https://joshternet.org/topics/party/": "sitemap",
           "https://joshternet.org/topics/performance/": "sitemap",
           "https://joshternet.org/topics/permanence/": "sitemap",
           "https://joshternet.org/topics/person/": "sitemap",
+          "https://joshternet.org/topics/phone/": "sitemap",
           "https://joshternet.org/topics/photo/": "sitemap",
+          "https://joshternet.org/topics/photography/": "sitemap",
           "https://joshternet.org/topics/photos/": "sitemap",
           "https://joshternet.org/topics/php/": "sitemap",
+          "https://joshternet.org/topics/physical/": "sitemap",
           "https://joshternet.org/implement/platforms/": "sitemap",
           "https://joshternet.org/topics/plugin/": "sitemap",
           "https://joshternet.org/topics/point/": "sitemap",
           "https://joshternet.org/topics/policy/": "sitemap",
           "https://joshternet.org/topics/politics/": "sitemap",
           "https://joshternet.org/topics/power/": "sitemap",
+          "https://joshternet.org/topics/prediction/": "sitemap",
+          "https://joshternet.org/topics/presentation/": "sitemap",
           "https://joshternet.org/topics/privacy-policy/": "sitemap",
           "https://joshternet.org/topics/privacy/": "sitemap",
           "https://joshternet.org/privacy/": "sitemap",
           "https://joshternet.org/topics/private/": "sitemap",
+          "https://joshternet.org/topics/process/": "sitemap",
           "https://joshternet.org/topics/product-design/": "sitemap",
           "https://joshternet.org/topics/product/": "sitemap",
           "https://joshternet.org/topics/productivity/": "sitemap",
           "https://joshternet.org/topics/programming/": "sitemap",
           "https://joshternet.org/licensing/": "sitemap",
+          "https://joshternet.org/topics/prompt/": "sitemap",
           "https://joshternet.org/topics/property-real-estate/": "sitemap",
           "https://joshternet.org/topics/property/": "sitemap",
           "https://joshternet.org/topics/purpose/": "sitemap",
@@ -19999,6 +20037,7 @@
           "https://joshternet.org/topics/request/": "sitemap",
           "https://joshternet.org/topics/research/": "sitemap",
           "https://joshternet.org/topics/resource/": "sitemap",
+          "https://joshternet.org/topics/retro/": "sitemap",
           "https://joshternet.org/topics/review/": "sitemap",
           "https://joshternet.org/topics/right/": "sitemap",
           "https://joshternet.org/topics/robot/": "sitemap",
@@ -20015,16 +20054,19 @@
           "https://joshternet.org/topics/security/": "sitemap",
           "https://joshternet.org/security/": "sitemap",
           "https://joshternet.org/implement/content/seeking/": "sitemap",
+          "https://joshternet.org/topics/sell/": "sitemap",
           "https://joshternet.org/implement/content/seo/": "sitemap",
           "https://joshternet.org/topics/september/": "sitemap",
           "https://joshternet.org/topics/server/": "sitemap",
           "https://joshternet.org/topics/set/": "sitemap",
+          "https://joshternet.org/topics/shop/": "sitemap",
           "https://joshternet.org/showcase/": "sitemap",
           "https://joshternet.org/topics/side-project/": "sitemap",
           "https://joshternet.org/topics/simple/": "sitemap",
           "https://joshternet.org/implement/content/sitemaps/": "sitemap",
           "https://joshternet.org/implement/content/slashpages/": "sitemap",
           "https://joshternet.org/implement/slashpages/": "sitemap",
+          "https://joshternet.org/topics/small/": "sitemap",
           "https://joshternet.org/topics/social-media/": "sitemap",
           "https://joshternet.org/topics/social/": "sitemap",
           "https://joshternet.org/topics/software-engineering/": "sitemap",
@@ -20033,28 +20075,35 @@
           "https://joshternet.org/topics/song/": "sitemap",
           "https://joshternet.org/topics/source/": "sitemap",
           "https://joshternet.org/topics/space/": "sitemap",
+          "https://joshternet.org/topics/speaking/": "sitemap",
           "https://joshternet.org/specs/": "sitemap",
           "https://joshternet.org/topics/sport/": "sitemap",
           "https://joshternet.org/topics/star-trek/": "sitemap",
           "https://joshternet.org/topics/startup/": "sitemap",
+          "https://joshternet.org/topics/step/": "sitemap",
           "https://joshternet.org/topics/story/": "sitemap",
           "https://joshternet.org/topics/street/": "sitemap",
           "https://joshternet.org/topics/stripe/": "sitemap",
           "https://joshternet.org/topics/supply-chain/": "sitemap",
           "https://joshternet.org/implement/platforms/sveltekit/": "sitemap",
           "https://joshternet.org/topics/swim2026/": "sitemap",
+          "https://joshternet.org/topics/swing-hack/": "sitemap",
+          "https://joshternet.org/topics/swing/": "sitemap",
           "https://joshternet.org/topics/table/": "sitemap",
           "https://joshternet.org/topics/technology/": "sitemap",
           "https://joshternet.org/topics/terminal/": "sitemap",
           "https://joshternet.org/terms/": "sitemap",
           "https://joshternet.org/topics/test/": "sitemap",
           "https://joshternet.org/topics/testing/": "sitemap",
+          "https://joshternet.org/topics/text/": "sitemap",
           "https://joshternet.org/licensing/third-party-licenses/": "sitemap",
           "https://joshternet.org/topics/thread/": "sitemap",
+          "https://joshternet.org/topics/travel/": "sitemap",
           "https://joshternet.org/topics/tweet/": "sitemap",
           "https://joshternet.org/topics/twitter/": "sitemap",
           "https://joshternet.org/topics/type/": "sitemap",
           "https://joshternet.org/topics/tyranny/": "sitemap",
+          "https://joshternet.org/topics/unit/": "sitemap",
           "https://joshternet.org/topics/united-states/": "sitemap",
           "https://joshternet.org/implement/content/uses/": "sitemap",
           "https://joshternet.org/implement/validate/": "sitemap",
@@ -20064,9 +20113,11 @@
           "https://joshternet.org/topics/video/": "sitemap",
           "https://joshternet.org/topics/visualization/": "sitemap",
           "https://joshternet.org/wander/": "sitemap",
+          "https://joshternet.org/topics/watch/": "sitemap",
           "https://joshternet.org/topics/water/": "sitemap",
           "https://joshternet.org/topics/web-development/": "sitemap",
           "https://joshternet.org/topics/webgl/": "sitemap",
+          "https://joshternet.org/topics/webkit/": "sitemap",
           "https://joshternet.org/topics/week/": "sitemap",
           "https://joshternet.org/topics/windows/": "sitemap",
           "https://joshternet.org/topics/wordpress/": "sitemap",
@@ -20099,7 +20150,7 @@
           "https://joshternet.org/cdn-cgi/l/email-protection": "content-index"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     },
     {
       "origin": "https://joshtronic.com",
@@ -20313,7 +20364,7 @@
         "title": "I'm Open to Work",
         "summary": "Mailshake has terminated my employment after 8+ years. In that time, I... Started as engineer #3 Moved into management thanks to an awesome CTO Ran a 10-person team across backend, frontend, QA, and support Scaled down to 2 engineers while maintaining productivity Reduced annual AWS spend by ~70% over 3 years Was always on-call and handled support escalations Ran technical due diligence on 4 acqui",
         "published_at": "2026-11-01T00:00:00.000Z",
-        "observed_at": "2026-11-09T00:26:52.180Z",
+        "observed_at": "2026-11-09T07:10:09.990Z",
         "content_type": "article",
         "language": "en",
         "dir": "",
@@ -21689,10 +21740,11 @@
           "https://joshtronic.com/how-to-use-colors-in-command-line-output/": "budget-exhausted",
           "https://joshtronic.com/how-to-pluralize-words/": "budget-exhausted",
           "https://joshtronic.com/how-to-increment-decrement-a-number/": "budget-exhausted",
-          "https://joshtronic.com/incrementing-decrementing-a-number-by-a-number/": "budget-exhausted"
+          "https://joshtronic.com/incrementing-decrementing-a-number-by-a-number/": "budget-exhausted",
+          "https://joshtronic.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     },
     {
       "origin": "https://joshua.seigler.net",
@@ -22081,7 +22133,7 @@
           "https://joshua.seigler.net": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     },
     {
       "origin": "https://joshuadrake.org",
@@ -22118,7 +22170,7 @@
         "title": "Projects:",
         "summary": "",
         "published_at": "",
-        "observed_at": "2026-11-09T00:26:52.180Z",
+        "observed_at": "2026-11-09T07:10:09.990Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -22376,7 +22428,7 @@
           "https://joshuadrake.org/projects/n12rebuild/": "content-index"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z",
+      "crawled_at": "2026-11-09T07:10:09.990Z",
       "portfolio": {
         "url": "https://joshuadrake.org/projects/",
         "work_count": 39,
@@ -22416,7 +22468,7 @@
         "title": "Work, Joshua Kim",
         "summary": "Eleven projects by Joshua Kim: internal tools, interactive and AR work, app case studies, and graphic design.",
         "published_at": "",
-        "observed_at": "2026-11-09T00:26:52.180Z",
+        "observed_at": "2026-11-09T07:10:09.990Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -22644,7 +22696,7 @@
           "https://joshuakim.studio/about": "content-index"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     },
     {
       "origin": "https://joshuamorris.info",
@@ -22692,10 +22744,6 @@
         }
       ],
       "community_topics": [
-        {
-          "slug": "access",
-          "label": "access"
-        },
         {
           "slug": "ai",
           "label": "ai"
@@ -24241,7 +24289,7 @@
           "https://joshuamorris.info": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     },
     {
       "origin": "https://joshuapsteele.com",
@@ -25880,7 +25928,7 @@
           "https://joshuapsteele.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     },
     {
       "origin": "https://joshuastuebner.com",
@@ -26291,7 +26339,7 @@
           "https://joshuastuebner.com/joshuastuebner.asc": "content-index"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     },
     {
       "origin": "https://joshurbandavis.com",
@@ -26342,7 +26390,7 @@
         "title": "Download CV",
         "summary": "I build machines that perceive the world, and ask what happens when those machines change how we see it.",
         "published_at": "",
-        "observed_at": "2026-11-09T00:26:52.180Z",
+        "observed_at": "2026-11-09T07:10:09.990Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -26583,7 +26631,7 @@
           "https://joshurbandavis.com/index.html": "content-index"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     },
     {
       "origin": "https://www.chrisminnick.com",
@@ -26777,7 +26825,7 @@
         "title": "Books",
         "summary": "More than twenty books on programming, the web, and AI — plus three novels.",
         "published_at": "2027-04-01T00:00:00.000Z",
-        "observed_at": "2026-11-09T00:26:52.180Z",
+        "observed_at": "2026-11-09T07:10:09.990Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -27165,13 +27213,13 @@
           "https://www.chrisminnick.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     },
     {
       "origin": "https://www.galina.to",
       "domain": "www.galina.to",
       "title": "Galina.to",
-      "description": "For the past decade, I have worked across the music, vegan, and tech industries, picking up a unique set of skills through a wide range of roles.",
+      "description": "My little corner of the internet where I get to experiment and try things out.",
       "identity": "affirmed",
       "feeds": [],
       "elsewhere": [],
@@ -27428,7 +27476,7 @@
           "https://www.galina.to/blog": "content-index"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     },
     {
       "origin": "https://www.joshcanhelp.com",
@@ -28109,7 +28157,7 @@
           "https://www.joshcanhelp.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     },
     {
       "origin": "https://www.joshfinnie.com",
@@ -29078,7 +29126,7 @@
         "title": "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone",
         "summary": "I spent a week having Claude Code audit my fork of LightCraft, the AI-built Rust Lightroom clone: fuzzing, crash safety, a locked control port, faster frames, and 50,000 deleted lines.",
         "published_at": "2026-11-04T00:00:00.000Z",
-        "observed_at": "2026-11-09T00:26:52.180Z",
+        "observed_at": "2026-11-09T07:10:09.990Z",
         "content_type": "article",
         "language": "en-us",
         "dir": "",
@@ -29756,7 +29804,7 @@
           "https://www.joshfinnie.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z",
+      "crawled_at": "2026-11-09T07:10:09.990Z",
       "portfolio": {
         "url": "https://www.joshfinnie.com/projects/",
         "work_count": 9,
@@ -30001,7 +30049,7 @@
         "title": "Work — Joshua Baker",
         "summary": "Selected case studies by Joshua Baker, plus the full archive — 140+ projects across two decades of design and engineering.",
         "published_at": "",
-        "observed_at": "2026-11-09T00:26:52.180Z",
+        "observed_at": "2026-11-09T07:10:09.990Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -30273,7 +30321,7 @@
           "https://www.joshuabaker.com/course/": "blind-probe"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z",
+      "crawled_at": "2026-11-09T07:10:09.990Z",
       "portfolio": {
         "url": "https://www.joshuabaker.com/work/",
         "work_count": 146,
@@ -30441,7 +30489,7 @@
         "title": "Speaking",
         "summary": "I talk about static analysis, accessibility, and team culture.",
         "published_at": "",
-        "observed_at": "2026-11-09T00:26:52.180Z",
+        "observed_at": "2026-11-09T07:10:09.990Z",
         "content_type": "project",
         "language": "en",
         "dir": "",
@@ -30734,7 +30782,7 @@
           "https://www.joshuakgoldberg.com/blog": "content-index"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     },
     {
       "origin": "https://www.joshvickerson.com",
@@ -31225,7 +31273,7 @@
           "https://www.joshvickerson.com": "short-circuit-unchanged"
         }
       },
-      "crawled_at": "2026-11-09T00:26:52.180Z"
+      "crawled_at": "2026-11-09T07:10:09.990Z"
     }
   ]
 }

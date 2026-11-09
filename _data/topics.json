@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-09T00:26:52.180Z",
+  "generated_at": "2026-11-09T07:10:09.990Z",
   "community_count": 751,
   "membership_rule": "Public topics require at least one current participating origin with qualifying declared or heuristic evidence, and topic pages only list members that have matching articles.",
   "communities": [
@@ -144,92 +144,6 @@
       "first_seen_at": "2026-11-03T16:34:11.848Z",
       "last_changed_at": "2026-11-03T16:34:11.848Z",
       "active": true
-    },
-    {
-      "slug": "access",
-      "label": "access",
-      "member_count": 2,
-      "sites": [
-        {
-          "origin": "https://joshternet.org",
-          "domain": "joshternet.org",
-          "title": "Joshternet",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshternet.org/implement/connections/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshternet.org/implement/content/connections/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshternet.org/implement/platforms/astro/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshternet.org/implement/platforms/cloudflare-worker/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshternet.org/implement/platforms/eleventy/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        },
-        {
-          "origin": "https://joshuamorris.info",
-          "domain": "joshuamorris.info",
-          "title": "Joshua Morris",
-          "membership": "heuristic",
-          "pages": [
-            {
-              "url": "https://joshuamorris.info/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/25/firefox-is-quietly-making-the-web-more-capable/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/26/what-happens-when-a-webpage-becomes-part-of-a-3d-world/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/10/28/knowing-how-to-build-something-is-different-from-knowing-what-should-be-built/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
-              "url": "https://joshuamorris.info/notes/2026/11/03/your-code-editor-is-now-a-security-threat/",
-              "title": "",
-              "source": "visible-text"
-            }
-          ]
-        }
-      ],
-      "sources": ["visible-text"],
-      "first_seen_at": "2026-11-04T18:19:19.608Z",
-      "last_changed_at": "2026-11-04T18:19:19.608Z",
-      "active": true,
-      "related_discoveries": [
-        {
-          "origin": "https://joshkoter.com",
-          "domain": "joshkoter.com",
-          "title": "Josh Köter",
-          "discovery": "heuristic",
-          "note": "Below the community quality threshold; not membership."
-        }
-      ]
     },
     {
       "slug": "acna",
@@ -9005,17 +8919,17 @@
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2026/11/03/ibot-g3-2018/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://artlung.com/blog/2026/11/05/a-few-big-enjoyable/",
               "title": "",
               "source": "visible-text"
             },
             {
               "url": "https://artlung.com/blog/2026/11/06/lost-fin/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/08/elections-sister-aging/",
               "title": "",
               "source": "visible-text"
             }
@@ -11937,8 +11851,41 @@
     {
       "slug": "election",
       "label": "elections",
-      "member_count": 1,
+      "member_count": 2,
       "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/08/elections-sister-aging/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/now/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        },
         {
           "origin": "https://www.joshfinnie.com",
           "domain": "www.joshfinnie.com",
@@ -11953,9 +11900,9 @@
           ]
         }
       ],
-      "sources": ["article:tag"],
+      "sources": ["article:tag", "visible-text"],
       "first_seen_at": "2026-11-03T21:44:42.327Z",
-      "last_changed_at": "2026-11-03T21:44:42.327Z",
+      "last_changed_at": "2026-11-09T07:10:09.990Z",
       "active": true,
       "related_discoveries": [
         {
@@ -13532,7 +13479,7 @@
               "source": "catalog-match"
             },
             {
-              "url": "https://www.youtube.com/watch?v=Q0_MeKq7nZo",
+              "url": "https://www.youtube.com/watch?v=oNO0HnQR6-c",
               "title": "",
               "source": "catalog-match"
             }
@@ -14842,17 +14789,17 @@
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2025/02/18/experimenting-with-new-pages/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://artlung.com/blog/2026/09/27/1954-board-stoke/",
               "title": "",
               "source": "visible-text"
             },
             {
               "url": "https://artlung.com/blog/2026/10/26/asynchronous-communication-is-beautiful-and-humane/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/08/elections-sister-aging/",
               "title": "",
               "source": "visible-text"
             }
@@ -15943,11 +15890,6 @@
           "membership": "declared",
           "pages": [
             {
-              "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
-              "title": "",
-              "source": "rss:category"
-            },
-            {
               "url": "https://artlung.com/blog/2026/11/03/and-shredding/",
               "title": "",
               "source": "rss:category"
@@ -15964,6 +15906,11 @@
             },
             {
               "url": "https://artlung.com/blog/2026/11/06/lost-fin/",
+              "title": "",
+              "source": "rss:category"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/08/elections-sister-aging/",
               "title": "",
               "source": "rss:category"
             }
@@ -16382,6 +16329,11 @@
           "title": "Joe Crawford",
           "membership": "heuristic",
           "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/11/08/elections-sister-aging/",
+              "title": "",
+              "source": "catalog-match"
+            },
             {
               "url": "https://artlung.com/wordpress/",
               "title": "",
@@ -21601,17 +21553,17 @@
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2026/11/03/ibot-g3-2018/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://artlung.com/blog/2026/11/05/a-few-big-enjoyable/",
               "title": "",
               "source": "visible-text"
             },
             {
               "url": "https://artlung.com/blog/2026/11/06/lost-fin/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/08/elections-sister-aging/",
               "title": "",
               "source": "visible-text"
             }
@@ -25983,6 +25935,63 @@
       "active": true
     },
     {
+      "slug": "musing",
+      "label": "musings",
+      "member_count": 2,
+      "sites": [
+        {
+          "origin": "https://artlung.com",
+          "domain": "artlung.com",
+          "title": "Joe Crawford",
+          "membership": "declared",
+          "pages": [
+            {
+              "url": "https://artlung.com/blog/2026/11/08/elections-sister-aging/",
+              "title": "",
+              "source": "rss:category"
+            }
+          ]
+        },
+        {
+          "origin": "https://joshghent.com",
+          "domain": "joshghent.com",
+          "title": "Josh Ghent",
+          "membership": "heuristic",
+          "pages": [
+            {
+              "url": "https://joshghent.com/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/coffee-roasters/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/created-my-own-status-page/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/how-i-build-products-with-ai/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://joshghent.com/is-software-ever-done/",
+              "title": "",
+              "source": "visible-text"
+            }
+          ]
+        }
+      ],
+      "sources": ["rss:category", "visible-text"],
+      "first_seen_at": "2026-11-09T07:10:09.990Z",
+      "last_changed_at": "2026-11-09T07:10:09.990Z",
+      "active": true
+    },
+    {
       "slug": "nationalism",
       "label": "Nationalism",
       "member_count": 1,
@@ -26852,17 +26861,17 @@
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/blog/2026/11/03/ibot-g3-2018/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://artlung.com/blog/2026/11/05/a-few-big-enjoyable/",
               "title": "",
               "source": "visible-text"
             },
             {
               "url": "https://artlung.com/blog/2026/11/06/lost-fin/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/08/elections-sister-aging/",
               "title": "",
               "source": "visible-text"
             }
@@ -33744,11 +33753,6 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://artlung.com/blog/2024/09/24/actually-everything-is-healthcare/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://artlung.com/blog/2026/10/22/johnny-5-new-bot-day/",
               "title": "",
               "source": "visible-text"
@@ -33765,6 +33769,11 @@
             },
             {
               "url": "https://artlung.com/blog/2026/11/03/ibot-g3-2018/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/08/elections-sister-aging/",
               "title": "",
               "source": "visible-text"
             }
@@ -43178,11 +43187,6 @@
               "source": "visible-text"
             },
             {
-              "url": "https://artlung.com/about/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://artlung.com/blog/2026/10/25/surfer-plankton-worrisome/",
               "title": "",
               "source": "visible-text"
@@ -43194,6 +43198,11 @@
             },
             {
               "url": "https://artlung.com/blog/2026/11/03/and-shredding/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/08/elections-sister-aging/",
               "title": "",
               "source": "visible-text"
             }
@@ -44681,11 +44690,6 @@
           "membership": "heuristic",
           "pages": [
             {
-              "url": "https://artlung.com/blog/2026/10/23/friday-miscellany/",
-              "title": "",
-              "source": "visible-text"
-            },
-            {
               "url": "https://artlung.com/blog/2026/10/24/programming-and-dog-walking/",
               "title": "",
               "source": "visible-text"
@@ -44702,6 +44706,11 @@
             },
             {
               "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
+              "title": "",
+              "source": "visible-text"
+            },
+            {
+              "url": "https://artlung.com/blog/2026/11/08/elections-sister-aging/",
               "title": "",
               "source": "visible-text"
             }
@@ -45270,7 +45279,7 @@
               "source": "catalog-match"
             },
             {
-              "url": "https://www.youtube.com/watch?v=Q0_MeKq7nZo",
+              "url": "https://www.youtube.com/watch?v=oNO0HnQR6-c",
               "title": "",
               "source": "catalog-match"
             }

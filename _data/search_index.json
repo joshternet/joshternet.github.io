@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-09T00:48:54.863Z",
-  "document_count": 957,
+  "generated_at": "2026-11-09T07:30:27.829Z",
+  "document_count": 962,
   "documents": [
     {
       "type": "site",
@@ -42,7 +42,7 @@
     {
       "type": "site",
       "title": "Josh Cox",
-      "summary": "I've been building things on the web since 2016, mostly through Prystine, the web agency I run. Over the years that's grown from \"making websites\" into looking after them properly — performance, maintenance, and the unglamorous work that keeps a site alive.",
+      "summary": "I'm Josh — a UK-based web developer. I run Prystine, a web agency, and build products and tools across the web. This is where I write about building, shipping, and the occasional tangent.",
       "domain": "joshcox.co.uk",
       "origin": "https://joshcox.co.uk",
       "url": "https://joshcox.co.uk",
@@ -195,7 +195,7 @@
     {
       "type": "site",
       "title": "Galina.to",
-      "summary": "For the past decade, I have worked across the music, vegan, and tech industries, picking up a unique set of skills through a wide range of roles.",
+      "summary": "My little corner of the internet where I get to experiment and try things out.",
       "domain": "www.galina.to",
       "origin": "https://www.galina.to",
       "url": "https://www.galina.to",
@@ -1022,6 +1022,15 @@
     },
     {
       "type": "topic",
+      "title": "elections",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/election/",
+      "topics": ["election", "elections"]
+    },
+    {
+      "type": "topic",
       "title": "eleventy",
       "summary": "2 participating sites",
       "domain": "",
@@ -1226,6 +1235,15 @@
       "origin": "",
       "url": "/topics/generator/",
       "topics": ["generator", "generator"]
+    },
+    {
+      "type": "topic",
+      "title": "go",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/go/",
+      "topics": ["go", "go"]
     },
     {
       "type": "topic",
@@ -1478,6 +1496,15 @@
       "origin": "",
       "url": "/topics/jobs/",
       "topics": ["jobs", "jobs"]
+    },
+    {
+      "type": "topic",
+      "title": "John",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/john/",
+      "topics": ["john", "John"]
     },
     {
       "type": "topic",
@@ -1766,6 +1793,15 @@
       "origin": "",
       "url": "/topics/music/",
       "topics": ["music", "music"]
+    },
+    {
+      "type": "topic",
+      "title": "musings",
+      "summary": "1 participating sites",
+      "domain": "",
+      "origin": "",
+      "url": "/topics/musing/",
+      "topics": ["musing", "musings"]
     },
     {
       "type": "topic",
@@ -2913,7 +2949,7 @@
     {
       "type": "topic",
       "title": "would",
-      "summary": "1 participating sites",
+      "summary": "2 participating sites",
       "domain": "",
       "origin": "",
       "url": "/topics/would/",
@@ -3214,7 +3250,7 @@
       "domain": "artlung.com",
       "origin": "https://artlung.com",
       "url": "https://artlung.com/blog/2026/11/02/i-saw-an-engraved-bit-ly-url-today/",
-      "topics": ["california", "general", "history", "permanence", "politics"],
+      "topics": ["california", "history", "permanence", "politics"],
       "site_title": "Joe Crawford",
       "published_at": "2026-11-02T22:49:28.000Z",
       "image": "/assets/activity/posters/19530d0d3ba772a9e11292e6a5b1d25ebb3b5f82d1c5d56577a655064fcb64dd.webp",
@@ -3233,6 +3269,21 @@
       "site_title": "Joe Crawford",
       "published_at": "2026-11-03T16:15:36.000Z",
       "image": "/assets/activity/posters/a5f704c82e275fd530bf5dc7fc5c18b3cace0b58f08f9c04c02286b031ad3e07.webp",
+      "image_origin": "",
+      "language": "en-us",
+      "content_type": "article"
+    },
+    {
+      "type": "content",
+      "title": "Elections come and go.",
+      "summary": "I would be hard-pressed to count precisely how many elections, midterm elections, primary elections, and special elections I’ve participated in. But if I can vote in an election, I do. I’ve voted for Jessie Jackson and John McCain. One of those I’m still proud of. At heart I am a kind of centrist. I tend to seek a middle way. At worst, this tends to make my opinions lukewarm: neither too hot nor t",
+      "domain": "artlung.com",
+      "origin": "https://artlung.com",
+      "url": "https://artlung.com/blog/2026/11/08/elections-sister-aging/",
+      "topics": ["general", "musings"],
+      "site_title": "Joe Crawford",
+      "published_at": "2026-11-08T16:46:34.000Z",
+      "image": "",
       "image_origin": "",
       "language": "en-us",
       "content_type": "article"
@@ -7281,7 +7332,7 @@
       "url": "https://joshternet.org/governance/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-08T20:45:36.000Z",
+      "published_at": "2026-11-09T00:50:24.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -7296,7 +7347,7 @@
       "url": "https://joshternet.org/implement/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-08T20:45:36.000Z",
+      "published_at": "2026-11-09T00:50:24.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -7311,7 +7362,7 @@
       "url": "https://joshternet.org/implement/content/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-08T20:45:36.000Z",
+      "published_at": "2026-11-09T00:50:24.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -7326,7 +7377,7 @@
       "url": "https://joshternet.org/implement/platforms/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-08T20:45:36.000Z",
+      "published_at": "2026-11-09T00:50:24.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -7341,7 +7392,7 @@
       "url": "https://joshternet.org/join/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-08T20:45:36.000Z",
+      "published_at": "2026-11-09T00:50:24.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -7356,7 +7407,7 @@
       "url": "https://joshternet.org/joshbot/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-08T20:45:36.000Z",
+      "published_at": "2026-11-09T00:50:24.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -7386,7 +7437,7 @@
       "url": "https://joshternet.org/nominate/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-08T20:45:36.000Z",
+      "published_at": "2026-11-09T00:50:24.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -7401,7 +7452,7 @@
       "url": "https://joshternet.org/security/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-08T20:45:36.000Z",
+      "published_at": "2026-11-09T00:50:24.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
@@ -7431,7 +7482,7 @@
       "url": "https://joshternet.org/specs/",
       "topics": [],
       "site_title": "Joshternet",
-      "published_at": "2026-11-08T20:45:36.000Z",
+      "published_at": "2026-11-09T00:50:24.000Z",
       "image": "https://joshternet.org/assets/images/joshternet-social.png",
       "image_origin": "https://joshternet.org",
       "language": "en",
