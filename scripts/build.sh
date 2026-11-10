@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 # Goal & Constraints:
 # One production build refreshes datasets from the current registry, then
-# builds static HTML. Order is fixed: network:sync, nlp:sync, format:data,
-# format:check, nlp:validate, jekyll build. A second run with the same registry
-# and pages leaves timestamp-only dataset files unchanged. Does not kill other
-# processes.
+# builds static HTML. Order is fixed: network:sync, prepare-model, nlp:sync,
+# format:data, format:check, nlp:validate, jekyll build. A second run with the
+# same registry and pages leaves timestamp-only dataset files unchanged. Does
+# not kill other processes. prepare-model downloads the locked Uses classifier
+# into .tmp/models when the cache is missing (cold first run) or stale.
 # Body runs inside main() so mid-run edits to this file cannot shift the next
 # command (bash would otherwise re-read the script from disk).
 set -euo pipefail
@@ -24,6 +25,8 @@ Usage:
 
 Steps, in order:
   npm run network:sync    registry membership, feeds, elsewhere
+  node scripts/uses/prepare-model.mjs
+                          locked Uses classifier into .tmp/models (cold OK)
   npm run nlp:sync        topics, connections, content, view datasets
   npm run format:data     Prettier on generated sync outputs (_data, OPML, Atom, glyphs)
   npm run format:check    Fail closed if any tracked file is still unformatted
@@ -65,6 +68,7 @@ main() {
   if [[ "$dry_run" -eq 1 ]]; then
     printf 'Dry run — would run:\n'
     printf '  npm run network:sync\n'
+    printf '  node scripts/uses/prepare-model.mjs\n'
     printf '  npm run nlp:sync\n'
     printf '  npm run format:data\n'
     printf '  npm run format:check\n'
@@ -74,6 +78,7 @@ main() {
   fi
 
   npm run network:sync
+  node scripts/uses/prepare-model.mjs
   npm run nlp:sync
   npm run format:data
   npm run format:check

@@ -120,7 +120,12 @@ test("nav keeps Wander top-level and nests About/Network children", async () => 
   assert.match(links, /data-nav-branch="joshbot"/);
   assert.match(
     networkNav,
-    /title: What's New[\s\S]*title: Showcase[\s\S]*title: Topics[\s\S]*title: Connections[\s\S]*title: Uses[\s\S]*title: Seeking/,
+    /title: What's New[\s\S]*title: Showcase[\s\S]*title: Friends[\s\S]*title: Topics[\s\S]*title: Connections[\s\S]*title: Uses[\s\S]*title: Seeking/,
+  );
+  assert.match(networkNav, /path: \/friends\//);
+  assert.match(
+    await read("_includes/site-nav-sections.html"),
+    /page\.url == '\/friends\/'/,
   );
   assert.doesNotMatch(networkNav, /title: Happening/);
   assert.doesNotMatch(networkNav, /path: \/events\//);
@@ -174,6 +179,7 @@ test("nav keeps Wander top-level and nests About/Network children", async () => 
 
   const sections = await read("_includes/site-nav-sections.html");
   assert.match(sections, /page\.url == '\/showcase\/'/);
+  assert.match(sections, /page\.url == '\/friends\/'/);
   assert.match(sections, /page\.url == '\/activity\/'/);
   assert.match(sections, /page\.url == '\/uses\/'/);
   assert.match(sections, /page\.url == '\/seeking\/'/);

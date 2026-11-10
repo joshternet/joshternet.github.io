@@ -218,3 +218,19 @@ test("seed-nominations Worker workflow matches the other public Workers", async 
   assert.match(workflow, /npm test/);
   assert.match(workflow, /npm run check/);
 });
+
+test("github-stars workflow refreshes count on a six-hour schedule", async () => {
+  const workflow = await read(".github/workflows/github-stars.yml");
+
+  assert.match(workflow, /workflow_dispatch:/);
+  assert.match(workflow, /cron:\s*"23 \*\/6 \* \* \*"/);
+  assert.match(workflow, /node scripts\/github-stars\/update\.mjs/);
+  assert.match(workflow, /GITHUB_TOKEN:\s*\$\{\{\s*github\.token\s*\}\}/);
+  assert.match(workflow, /git diff --cached --quiet/);
+  assert.match(workflow, /Update GitHub star count/);
+  assert.match(workflow, /_data\/github\.json/);
+  assert.match(workflow, /pages\/builds/);
+  assert.match(workflow, /BASE_SHA/);
+  assert.match(workflow, /github-actions\[bot\]/);
+  assert.doesNotMatch(workflow, /actions\/upload-artifact/);
+});

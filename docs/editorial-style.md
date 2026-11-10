@@ -39,7 +39,7 @@ Write like someone who enjoys the web, understands how it works, and wants to in
 | Crawler | JoshBot |
 | Sites | Independent websites, participating sites/origins (by context) |
 | Affirmed | Joshes |
-| Declined | Non-Joshes |
+| Declined | Non-Joshes (Network filters); **Friends of the Joshternet** on `/friends/` (presentation only—canonical value stays `declined`) |
 | Omit `josh` | Undeclared Josh Identity |
 | Mechanism | Joshternet declaration at `/.well-known/josh` |
 | Listing | Joshternet registry or Network directory |

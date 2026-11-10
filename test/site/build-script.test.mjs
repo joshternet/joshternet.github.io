@@ -25,6 +25,7 @@ test("build script dry-run lists the registry rebuild before Jekyll", async () =
   const help = await execFileAsync("bash", [script, "--help"], { cwd: root });
 
   assert.match(help.stdout, /npm run network:sync/);
+  assert.match(help.stdout, /node scripts\/uses\/prepare-model\.mjs/);
   assert.match(help.stdout, /npm run nlp:sync/);
   assert.match(help.stdout, /npm run format:data/);
   assert.match(help.stdout, /npm run nlp:validate/);
@@ -33,12 +34,14 @@ test("build script dry-run lists the registry rebuild before Jekyll", async () =
 
   const dry = await execFileAsync("bash", [script, "--dry-run"], { cwd: root });
   const networkAt = dry.stdout.indexOf("npm run network:sync");
+  const prepareAt = dry.stdout.indexOf("node scripts/uses/prepare-model.mjs");
   const nlpAt = dry.stdout.indexOf("npm run nlp:sync");
   const formatAt = dry.stdout.indexOf("npm run format:data");
   const validateAt = dry.stdout.indexOf("npm run nlp:validate");
   const jekyllAt = dry.stdout.indexOf("jekyll build");
 
-  assert.ok(networkAt > -1 && networkAt < nlpAt);
+  assert.ok(networkAt > -1 && networkAt < prepareAt);
+  assert.ok(prepareAt < nlpAt);
   assert.ok(nlpAt < formatAt);
   assert.ok(formatAt < validateAt);
   assert.ok(validateAt < jekyllAt);

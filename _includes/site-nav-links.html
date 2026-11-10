@@ -148,4 +148,9 @@
       >
     {% endif %}
   </li>
+  {% if variant == 'compact' %}
+    <li class="site-nav__item site-nav__item--github-star">
+      {% include github-star.html variant="menu" %}
+    </li>
+  {% endif %}
 </ul>

@@ -1,0 +1,93 @@
+name: Update GitHub star count
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    # Every six hours at minute 23 (staggered from network-sync at :17).
+    - cron: "23 */6 * * *"
+
+concurrency:
+  group: joshternet-github-stars
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  update-star-count:
+    name: Update star count
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pages: write
+
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Capture base SHA
+        id: base
+        shell: bash
+        run: |
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "Base commit: $(git rev-parse HEAD)"
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Refresh GitHub star count
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/github-stars/update.mjs
+
+      - name: Commit star count when changed
+        id: commit_stars
+        env:
+          BASE_SHA: ${{ steps.base.outputs.sha }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git fetch origin main
+          HEAD_SHA="$(git rev-parse HEAD)"
+          REMOTE_SHA="$(git rev-parse origin/main)"
+          if [ "$REMOTE_SHA" != "$BASE_SHA" ] && [ "$REMOTE_SHA" != "$HEAD_SHA" ]; then
+            echo "main advanced after BASE_SHA=$BASE_SHA (now $REMOTE_SHA)."
+            echo "Failing closed so the next scheduled run can reconcile."
+            exit 1
+          fi
+
+          git add -- _data/github.json
+
+          if git diff --cached --quiet; then
+            echo "GitHub star count is already current."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git commit -m "Update GitHub star count"
+          git push origin HEAD:main
+
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Request GitHub Pages rebuild
+        if: steps.commit_stars.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api \
+            --method POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2026-03-10" \
+            "/repos/${GITHUB_REPOSITORY}/pages/builds"

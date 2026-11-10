@@ -286,7 +286,7 @@ test("ordinary pages expose only Umami script and connection origins", (t) => {
 
     assert.deepEqual(
       directives.get("connect-src"),
-      ["'self'", "https://gateway.umami.is"],
+      ["'self'", "https://gateway.umami.is", "https://api.github.com"],
       `${name} connect-src`,
     );
   }
@@ -359,6 +359,7 @@ test("Nominate grants only its required Turnstile and Worker permissions", (t) =
   assert.deepEqual(nominateCSP.get("connect-src"), [
     "'self'",
     "https://gateway.umami.is",
+    "https://api.github.com",
     "https://challenges.cloudflare.com",
     nominationAPIOrigin,
   ]);

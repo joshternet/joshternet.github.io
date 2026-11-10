@@ -75,7 +75,7 @@
     {% assign activity_image_origins = activity_image_origins | strip_newlines | strip | split: ' ' | join: ' ' %}
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' https://cloud.umami.is{% if jekyll.environment == "development" %} http://127.0.0.1:8790 http://127.0.0.1:35729{% endif %}{% if page.turnstile %} https://challenges.cloudflare.com{% endif %}; connect-src 'self' https://gateway.umami.is{% if jekyll.environment == "development" %} http://127.0.0.1:8790 ws://127.0.0.1:35729 http://127.0.0.1:35729{% endif %}{% if page.turnstile %} https://challenges.cloudflare.com{% endif %}{% if page.declaration_check %}{% if jekyll.environment == "development" %} http://127.0.0.1:8789{% else %} {{ site.declaration_check.api_origin }}{% endif %}{% endif %}{% if page.seed_nomination %}{% if jekyll.environment == "development" %} http://127.0.0.1:8787{% else %} {{ site.seed_nominations.api_origin }}{% endif %}{% endif %}; style-src 'self'; img-src 'self' data:{% if jekyll.environment == "development" %} https://joshternet.org{% endif %}{% if activity_image_origins != "" %} {{ activity_image_origins }}{% endif %}; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src {% if page.allow_frames %}{% if wander_frame_sources != "" %}{{ wander_frame_sources }}{% else %}'none'{% endif %}{% elsif page.turnstile %}https://challenges.cloudflare.com{% else %}'none'{% endif %}; media-src 'none'; manifest-src 'self'; worker-src 'none'"
+      content="default-src 'self'; script-src 'self' https://cloud.umami.is{% if jekyll.environment == "development" %} http://127.0.0.1:8790 http://127.0.0.1:35729{% endif %}{% if page.turnstile %} https://challenges.cloudflare.com{% endif %}; connect-src 'self' https://gateway.umami.is https://api.github.com{% if jekyll.environment == "development" %} http://127.0.0.1:8790 ws://127.0.0.1:35729 http://127.0.0.1:35729{% endif %}{% if page.turnstile %} https://challenges.cloudflare.com{% endif %}{% if page.declaration_check %}{% if jekyll.environment == "development" %} http://127.0.0.1:8789{% else %} {{ site.declaration_check.api_origin }}{% endif %}{% endif %}{% if page.seed_nomination %}{% if jekyll.environment == "development" %} http://127.0.0.1:8787{% else %} {{ site.seed_nominations.api_origin }}{% endif %}{% endif %}; style-src 'self'; img-src 'self' data:{% if jekyll.environment == "development" %} https://joshternet.org{% endif %}{% if activity_image_origins != "" %} {{ activity_image_origins }}{% endif %}; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src {% if page.allow_frames %}{% if wander_frame_sources != "" %}{{ wander_frame_sources }}{% else %}'none'{% endif %}{% elsif page.turnstile %}https://challenges.cloudflare.com{% else %}'none'{% endif %}; media-src 'none'; manifest-src 'self'; worker-src 'none'"
     >
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -196,6 +196,10 @@
       defer
       src="{{ '/assets/js/umami-events.js' | relative_url }}?v={{ asset_version }}"
     ></script>
+    <script
+      defer
+      src="{{ '/assets/js/github-star-count.js' | relative_url }}?v={{ asset_version }}"
+    ></script>
 
     {% if page.scripts %}
       {% for page_script in page.scripts %}
@@ -238,6 +242,8 @@
             <nav class="site-nav site-nav--wide" aria-label="Primary">
               {% include site-nav-links.html variant="wide" %}
             </nav>
+
+            {% include github-star.html variant="header" %}
           </div>
           <div class="site-header__motif" aria-hidden="true"></div>
         </div>

@@ -15,6 +15,7 @@
   --color-accent: #0b5f9f;
   --color-accent-soft: #d5e9fb;
   --color-focus: #924800;
+  --color-star: #c7920c;
   --color-motif-line: rgb(11 95 159 / 28%);
   --color-motif-node: rgb(11 95 159 / 72%);
   --color-shadow: rgb(7 27 49 / 10%);
@@ -71,6 +72,7 @@
     --color-accent: #70bdf5;
     --color-accent-soft: #123b5d;
     --color-focus: #ffbd4a;
+    --color-star: #f0c14a;
     --color-motif-line: rgb(112 189 245 / 26%);
     --color-motif-node: rgb(112 189 245 / 76%);
     --color-shadow: rgb(0 0 0 / 28%);
@@ -1659,7 +1661,7 @@ ol.content-discovery-flow > li > span {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--space-5);
-  margin-block-start: var(--space-5);
+  margin-block: var(--space-5) var(--space-7);
 }
 
 .network-card {
@@ -1849,6 +1851,38 @@ ol.content-discovery-flow > li > span {
 .network-card--declined .network-card__title span,
 .network-card--declined .network-card__domain {
   color: var(--network-card-accent);
+}
+
+.network-card__friend-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-block: 0 0.55rem;
+  color: var(--network-card-accent);
+}
+
+.network-card__friend-label-primary {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.network-card__friend-label-secondary {
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+.network-friends-link {
+  margin-block: 0.75rem 1.25rem;
+}
+
+.network-friends-link a {
+  font-weight: 600;
 }
 
 .network-card__joined {
@@ -2228,6 +2262,13 @@ ol.content-discovery-flow > li > span {
   border-radius: var(--radius-medium);
   background: var(--color-surface);
   box-shadow: 0 0.65rem 1.8rem var(--color-shadow);
+}
+
+.network-footnote {
+  margin-block-start: var(--space-8);
+  max-width: var(--reading-width);
+  color: var(--color-muted);
+  font-size: var(--type-small);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -3812,6 +3853,102 @@ ol.content-discovery-flow > li > span {
   justify-self: end;
 }
 
+/* -------------------------------------------------------------------------- */
+/* GitHub star CTA (header + compact menu)                                    */
+/* -------------------------------------------------------------------------- */
+
+.github-star {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  min-block-size: 2.6rem;
+  min-inline-size: 2.6rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-muted);
+  font-size: var(--type-small);
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.github-star__icon {
+  display: block;
+  flex-shrink: 0;
+}
+
+.github-star__icon path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+  transition: fill 0.15s ease;
+}
+
+.github-star__count {
+  font-variant-numeric: tabular-nums;
+}
+
+.github-star:hover,
+.github-star:focus-visible {
+  color: var(--color-ink);
+  transform: translateY(-1px);
+}
+
+.github-star:hover .github-star__icon path,
+.github-star:focus-visible .github-star__icon path {
+  fill: currentColor;
+}
+
+.github-star.is-starred {
+  color: var(--color-star);
+}
+
+.github-star.is-starred .github-star__icon path {
+  fill: var(--color-star);
+  stroke: var(--color-star);
+}
+
+.github-star.is-starred:hover,
+.github-star.is-starred:focus-visible {
+  color: var(--color-star);
+}
+
+.github-star:focus-visible {
+  outline: 0.2rem solid var(--color-focus);
+  outline-offset: 0.15rem;
+}
+
+.site-nav__item--github-star {
+  margin-block-start: var(--space-2);
+  padding-block-start: var(--space-2);
+  border-block-start: 1px solid var(--color-border);
+}
+
+.site-nav__item--github-star .github-star--menu {
+  display: inline-flex;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .github-star {
+    transition: none;
+  }
+
+  .github-star:hover,
+  .github-star:focus-visible {
+    transform: none;
+  }
+
+  .github-star__icon path {
+    transition: none;
+  }
+}
+
 .site-nav-menu > summary {
   display: inline-flex;
   min-block-size: 2.6rem;
@@ -4041,7 +4178,7 @@ ol.content-discovery-flow > li > span {
 
 @media (min-width: 40rem) {
   .site-header__inner {
-    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-columns: auto minmax(0, 1fr) auto;
     gap: var(--space-5);
     padding-block: var(--space-3);
   }
@@ -4054,6 +4191,15 @@ ol.content-discovery-flow > li > span {
     display: block;
     width: auto;
     justify-self: end;
+  }
+
+  .github-star--header {
+    display: inline-flex;
+    justify-self: end;
+  }
+
+  .site-nav__item--github-star {
+    display: none;
   }
 
   .site-nav--wide .site-nav__list {

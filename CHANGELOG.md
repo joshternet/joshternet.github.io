@@ -7,6 +7,15 @@ engineering notes stay in git history; this file is for people reading the repo.
 
 ### Added
 
+- **Friends of the Joshternet:** `/friends/` celebrates Network participants who
+  declared they are not Joshes (`identity: declined`), listed from the same
+  Network data as `/network/` with a Friends entry in Network secondary nav.
+- **GitHub star CTA:** Header (and mobile Menu) star icon with build-time count
+  linking to `joshternet/joshternet.github.io` (no chip label), `_data/github.json`
+  plus a six-hour Actions refresh, a small CSP `connect-src` hole for
+  `api.github.com` so JS can refresh the visible count, local gold fill after
+  the visitor clicks the control, and Umami event `github_star_cta_clicked`.
+  Launch baseline: **0 stars** as of 2026-11-08.
 - **Observation platform:** Crawl-derived datasets now share one lifecycle:
   discover → fetch through a central broker → durable source and observation
   stores → extract/reconcile/project → validate a candidate generation → commit
@@ -63,6 +72,10 @@ engineering notes stay in git history; this file is for people reading the repo.
 
 ### Fixed
 
+- **Cold `npm run build` Uses classifier:** `scripts/build.sh` runs
+  `node scripts/uses/prepare-model.mjs` before `nlp:sync` so a missing
+  `.tmp/models` cache on first run downloads the locked model instead of
+  exiting with `nlp uses failed: uses model cache is missing`.
 - **Prettier Liquid scope:** `liquid-html` applies only to `_includes/**/*.html`
   and `_layouts/**/*.html`. Other HTML uses Prettier’s built-in `html` parser.
   Harvest fixtures under `test/fixtures/**/*.html` stay ignored—Shopify’s

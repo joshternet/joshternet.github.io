@@ -44,29 +44,32 @@ async function readGenerated(relativePath) {
 
 test("network cards link the primary feed outside the origin card link", async () => {
   const page = await read("network.md");
+  const card = await read("_includes/network-participant-card.html");
   const styles = [
     await read("assets/css/main.css"),
     await read("assets/css/elsewhere-glyphs.css"),
   ].join("\n");
   const network = await readGenerated("_data/network.json");
 
+  assert.match(page, /include network-participant-card\.html/);
   assert.match(styles, /\.network-card\[hidden\]\s*\{[^}]*display:\s*none/s);
   assert.match(
-    page,
+    card,
     new RegExp(
       `network-card--\\{\\{ network_site\\.${CRAWL_KEYS.identity} \\}\\} h-card`,
     ),
   );
-  assert.match(page, new RegExp(`network_site\\.${CRAWL_KEYS.feeds}`));
-  assert.match(page, /network-card__feed/);
-  assert.match(page, /network-card__actions/);
-  assert.match(page, /network-card__footer/);
-  assert.match(page, /include network-card-joined\.html/);
-  assert.match(page, /include network-card-a11y\.html/);
+  assert.match(card, new RegExp(`network_site\\.${CRAWL_KEYS.feeds}`));
+  assert.match(card, /network-card__feed/);
+  assert.match(card, /network-card__actions/);
+  assert.match(card, /network-card__footer/);
+  assert.match(card, /include network-card-joined\.html/);
+  assert.match(card, /include network-card-a11y\.html/);
   assert.doesNotMatch(page, /site\.data\.site_views/);
   assert.doesNotMatch(page, /recent_content/);
   assert.doesNotMatch(page, /network_dev/);
   assert.doesNotMatch(page, /network-dev-preview/);
+  assert.doesNotMatch(card, /network_dev/);
 
   const a11y = await read("_includes/network-card-a11y.html");
   const joined = await read("_includes/network-card-joined.html");
@@ -78,12 +81,12 @@ test("network cards link the primary feed outside the origin card link", async (
   assert.match(joined, new RegExp(CRAWL_KEYS.first_participated_at));
   assert.match(styles, /\.network-card__joined\s*\{/);
 
-  const feedAt = page.indexOf('class="network-card__feed"');
-  const linkCloseAt = page.indexOf(
+  const feedAt = card.indexOf('class="network-card__feed"');
+  const linkCloseAt = card.indexOf(
     "</a>",
-    page.indexOf('class="network-card__link"'),
+    card.indexOf('class="network-card__link"'),
   );
-  const articleCloseAt = page.indexOf("</article>", feedAt);
+  const articleCloseAt = card.indexOf("</article>", feedAt);
 
   assert.ok(
     feedAt > linkCloseAt,
@@ -91,7 +94,7 @@ test("network cards link the primary feed outside the origin card link", async (
   );
   assert.ok(feedAt < articleCloseAt, "feed control must stay inside the card");
   assert.doesNotMatch(
-    page.slice(page.indexOf('class="network-card__link"'), linkCloseAt),
+    card.slice(card.indexOf('class="network-card__link"'), linkCloseAt),
     /network-card__feed/,
   );
 
@@ -130,6 +133,7 @@ test("network cards link the primary feed outside the origin card link", async (
 
 test("network cards expose elsewhere icons outside the origin link", async () => {
   const page = await read("network.md");
+  const card = await read("_includes/network-participant-card.html");
   const styles = [
     await read("assets/css/main.css"),
     await read("assets/css/elsewhere-glyphs.css"),
@@ -137,21 +141,22 @@ test("network cards expose elsewhere icons outside the origin link", async () =>
   const sprite = await read("assets/icons/elsewhere-sprite.svg");
   const network = await readGenerated("_data/network.json");
 
-  assert.match(page, new RegExp(`network_site\\.${CRAWL_KEYS.elsewhere}`));
-  assert.match(page, /network-card__elsewhere/);
-  assert.match(page, /network-card__elsewhere-glyph--/);
+  assert.match(page, /include network-participant-card\.html/);
+  assert.match(card, new RegExp(`network_site\\.${CRAWL_KEYS.elsewhere}`));
+  assert.match(card, /network-card__elsewhere/);
+  assert.match(card, /network-card__elsewhere-glyph--/);
 
-  const elsewhereAt = page.indexOf('class="network-card__elsewhere"');
-  const linkCloseAt = page.indexOf(
+  const elsewhereAt = card.indexOf('class="network-card__elsewhere"');
+  const linkCloseAt = card.indexOf(
     "</a>",
-    page.indexOf('class="network-card__link"'),
+    card.indexOf('class="network-card__link"'),
   );
-  const articleCloseAt = page.indexOf("</article>", elsewhereAt);
+  const articleCloseAt = card.indexOf("</article>", elsewhereAt);
 
   assert.ok(elsewhereAt > linkCloseAt, "elsewhere must follow origin link");
   assert.ok(elsewhereAt < articleCloseAt, "elsewhere must stay in the card");
   assert.doesNotMatch(
-    page.slice(page.indexOf('class="network-card__link"'), linkCloseAt),
+    card.slice(card.indexOf('class="network-card__link"'), linkCloseAt),
     /network-card__elsewhere/,
   );
 
