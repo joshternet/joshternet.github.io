@@ -2,10 +2,20 @@
  * Goal & Constraints:
  * Download the locked ONNX model once, then refuse any other id. Weights stay
  * in .tmp/models and are never committed. Coverage-excluded.
+ * Transformers.js caches pinned revisions under modelId/<revision>/…; the lock
+ * and localModelPath expect modelId/…. Promote after download (and before
+ * re-download) so cold CI matches the lock.
  */
 
 import { createHash } from "node:crypto";
-import { readdir, readFile, writeFile } from "node:fs/promises";
+import {
+  access,
+  mkdir,
+  readdir,
+  readFile,
+  rename,
+  writeFile,
+} from "node:fs/promises";
 import path from "node:path";
 
 import { cacheMatchesLock } from "./infer-policy.mjs";
@@ -49,9 +59,88 @@ export async function hashTree(dir) {
 }
 
 /**
+ * Hub FileCache key for a non-main revision: modelId/<revision>/<rest>.
+ * @param {string} lockPath Relative lock path (modelId/…).
+ * @param {string} modelId
+ * @param {string} revision
+ * @returns {string} Prefixed path, or empty when promotion does not apply.
+ */
+export function revisionPrefixedPath(lockPath, modelId, revision) {
+  const rel = String(lockPath || "");
+  const id = String(modelId || "");
+  const rev = String(revision || "").trim();
+  if (!rel || !id || !rev || rev === "main") {
+    return "";
+  }
+  const prefix = `${id}/`;
+  if (!rel.startsWith(prefix)) {
+    return "";
+  }
+  return `${id}/${rev}/${rel.slice(prefix.length)}`;
+}
+
+/**
+ * Move Hub revision-prefixed files into the flat lock layout when needed.
+ * @param {string} cacheDir
+ * @param {{ model_id?: string, revision?: string, files?: Array<{ path?: string }> }} lock
+ * @returns {Promise<boolean>} True when at least one file was moved.
+ */
+export async function promoteRevisionCache(cacheDir, lock) {
+  const modelId = typeof lock?.model_id === "string" ? lock.model_id : "";
+  const revision =
+    typeof lock?.revision === "string" ? lock.revision.trim() : "";
+  if (!modelId || !revision || revision === "main") {
+    return false;
+  }
+  let moved = false;
+  for (const row of lock?.files || []) {
+    const destRel = typeof row?.path === "string" ? row.path : "";
+    if (!destRel) {
+      continue;
+    }
+    const srcRel = revisionPrefixedPath(destRel, modelId, revision);
+    if (!srcRel) {
+      continue;
+    }
+    const dest = path.join(cacheDir, ...destRel.split("/"));
+    const src = path.join(cacheDir, ...srcRel.split("/"));
+    try {
+      await access(dest);
+      continue;
+    } catch {
+      // Dest missing; try promoting from the revision-prefixed Hub path.
+    }
+    try {
+      await access(src);
+    } catch {
+      continue;
+    }
+    await mkdir(path.dirname(dest), { recursive: true });
+    await rename(src, dest);
+    moved = true;
+  }
+  return moved;
+}
+
+/**
+ * @param {string} cacheDir
+ * @returns {Promise<Array<{ path: string, sha256: string }>>}
+ */
+async function hashTreeOrEmpty(cacheDir) {
+  try {
+    return await hashTree(cacheDir);
+  } catch (error) {
+    if (!error || error.code !== "ENOENT") {
+      throw error;
+    }
+    return [];
+  }
+}
+
+/**
  * Downloads the allowlisted model into the local cache.
  * @param {{ writeLock?: boolean }} [options]
- * @returns {Promise<{ revision: string, files: Array<{ path: string, sha256: string }> }>}
+ * @returns {Promise<{ revision: string, files: Array<{ path: string, sha256: string }>, downloaded: boolean }>}
  */
 export async function prepareLockedModel(options = {}) {
   const lock = JSON.parse(await readFile(LOCK_PATH, "utf8"));
@@ -59,26 +148,26 @@ export async function prepareLockedModel(options = {}) {
     throw new Error(`model is not allowlisted: ${lock.model_id}`);
   }
   /** @type {Array<{ path: string, sha256: string }>} */
-  let files = [];
-  try {
-    files = await hashTree(MODEL_CACHE);
-  } catch (error) {
-    if (!error || error.code !== "ENOENT") {
-      throw error;
-    }
+  let files = await hashTreeOrEmpty(MODEL_CACHE);
+  let cached = cacheMatchesLock(lock.files, files);
+  if (!cached.ok) {
+    await promoteRevisionCache(MODEL_CACHE, lock);
+    files = await hashTreeOrEmpty(MODEL_CACHE);
+    cached = cacheMatchesLock(lock.files, files);
   }
-  const cached = cacheMatchesLock(lock.files, files);
   if (cached.ok && !options.writeLock) {
     return { revision: lock.revision, files, downloaded: false };
   }
   const { env, pipeline } = await import("@huggingface/transformers");
   env.cacheDir = MODEL_CACHE;
+  env.localModelPath = MODEL_CACHE;
   env.allowLocalModels = true;
   env.allowRemoteModels = true;
   await pipeline("zero-shot-classification", lock.model_id, {
     dtype: lock.quantization || "q8",
     revision: lock.revision,
   });
+  await promoteRevisionCache(MODEL_CACHE, lock);
   files = await hashTree(MODEL_CACHE);
   const check = cacheMatchesLock(lock.files, files);
   if (!check.ok && !options.writeLock) {

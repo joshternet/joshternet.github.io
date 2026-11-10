@@ -75,7 +75,11 @@ engineering notes stay in git history; this file is for people reading the repo.
 - **Cold `npm run build` Uses classifier:** `scripts/build.sh` runs
   `node scripts/uses/prepare-model.mjs` before `nlp:sync` so a missing
   `.tmp/models` cache on first run downloads the locked model instead of
-  exiting with `nlp uses failed: uses model cache is missing`.
+  exiting with `nlp uses failed: uses model cache is missing`. After a
+  pinned-revision Hub download, prepare promotes
+  `modelId/<revision>/…` files into the flat lock paths Transformers.js
+  uses for `localModelPath`. Site quality restores the same Actions
+  `.tmp/models` cache key as network-sync.
 - **Prettier Liquid scope:** `liquid-html` applies only to `_includes/**/*.html`
   and `_layouts/**/*.html`. Other HTML uses Prettier’s built-in `html` parser.
   Harvest fixtures under `test/fixtures/**/*.html` stay ignored—Shopify’s
