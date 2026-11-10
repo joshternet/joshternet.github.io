@@ -63,6 +63,13 @@ engineering notes stay in git history; this file is for people reading the repo.
 
 ### Fixed
 
+- **Prettier Liquid scope:** `liquid-html` applies only to `_includes/**/*.html`
+  and `_layouts/**/*.html`. Other HTML uses Prettier’s built-in `html` parser.
+  Harvest fixtures under `test/fixtures/**/*.html` stay ignored—Shopify’s
+  `liquid-html` never converges on captured pages with inline `</script>` in JS.
+- **Uses aggregate coverage stability:** Replace optional-chaining / compound
+  `||` guards in `scripts/uses/aggregate.mjs` with explicit checks so Node’s
+  experimental branch coverage stays at 100% across full-suite runs.
 - **Showcase accuracy:** Utility/licensing segments stay out of creative
   harvest; graphics hubs, music indexes, year photo albums, and speaking-archive
   presentations classify and link more reliably. Empty or chrome titles no longer

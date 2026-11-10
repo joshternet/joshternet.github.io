@@ -182,6 +182,8 @@ test("aggregate quarter/year/momentum/freshness", async () => {
   const y = yearBounds("2026");
   assert.match(y.endExclusive, /2027-01-01/);
   assert.equal(isFreshObservation("bad", "2026-01-01T00:00:00Z"), false);
+  assert.equal(isFreshObservation("2026-01-01T00:00:00Z", "bad"), false);
+  assert.equal(adoptionScore(1, -3), null);
   assert.equal(
     isFreshObservation("2026-01-01T00:00:00Z", "2026-01-10T00:00:00Z"),
     true,

@@ -46,6 +46,27 @@ test("GENERATED_PRETTIER_GLOBS covers sync-written Prettier targets", () => {
   );
 });
 
+test("liquid-html is scoped to Jekyll includes and layouts only", async () => {
+  const raw = await fs.readFile(
+    path.join(REPO_ROOT, ".prettierrc.json"),
+    "utf8",
+  );
+  const config = JSON.parse(raw);
+  assert.deepEqual(config.plugins, ["@shopify/prettier-plugin-liquid"]);
+  assert.equal(config.overrides?.length, 1);
+  assert.deepEqual(config.overrides[0].files, [
+    "_includes/**/*.html",
+    "_layouts/**/*.html",
+  ]);
+  assert.equal(config.overrides[0].options?.parser, "liquid-html");
+
+  const ignore = await fs.readFile(
+    path.join(REPO_ROOT, ".prettierignore"),
+    "utf8",
+  );
+  assert.match(ignore, /test\/fixtures\/\*\*\/\*\.html/);
+});
+
 test("resolveGeneratedPaths: expands dir/*.ext and concrete files", async () => {
   const paths = await resolveGeneratedPaths(REPO_ROOT, [
     "_data/*.json",

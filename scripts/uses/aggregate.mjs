@@ -98,7 +98,8 @@ export function quarterKeyFromMonth(month) {
  * @returns {number|null}
  */
 export function adoptionScore(active, denominator) {
-  if (!denominator || denominator <= 0) {
+  // Single predicate avoids V8 experimental-coverage flaps on `!x || x <= 0`.
+  if (!(Number(denominator) > 0)) {
     return null;
   }
   return Math.round((100 * active) / denominator);
@@ -114,7 +115,11 @@ export function adoptionScore(active, denominator) {
 export function isFreshObservation(lastValidAt, asOf, days = FRESHNESS_DAYS) {
   const last = Date.parse(lastValidAt);
   const now = Date.parse(asOf);
-  if (!Number.isFinite(last) || !Number.isFinite(now)) {
+  // Avoid `||` short-circuit branch pairs that flake under parallel coverage.
+  if (!Number.isFinite(last)) {
+    return false;
+  }
+  if (!Number.isFinite(now)) {
     return false;
   }
   return now - last <= days * 24 * 60 * 60 * 1000;
@@ -140,9 +145,11 @@ export function isFreshObservation(lastValidAt, asOf, days = FRESHNESS_DAYS) {
 export async function buildPeriodRollup(input) {
   const eligible = new Set(input.eligible_origins || []);
   const asOf = input.as_of;
-  const members = (input.state?.members || []).filter((m) =>
-    eligible.has(m.origin),
-  );
+  const stateMembers =
+    input.state && Array.isArray(input.state.members)
+      ? input.state.members
+      : [];
+  const members = stateMembers.filter((m) => eligible.has(m.origin));
 
   const verifiedUsesOrigins = members
     .filter(
@@ -159,7 +166,15 @@ export async function buildPeriodRollup(input) {
   const labelHash = slotLabels(catalog)
     .map((label) => label.description)
     .join("\n");
-  const policyHash = `${input.policy?.threshold ?? ""}|${input.policy?.margin ?? ""}|${input.hypothesisTemplate || ""}`;
+  const policyThreshold =
+    input.policy && input.policy.threshold != null
+      ? String(input.policy.threshold)
+      : "";
+  const policyMargin =
+    input.policy && input.policy.margin != null
+      ? String(input.policy.margin)
+      : "";
+  const policyHash = `${policyThreshold}|${policyMargin}|${input.hypothesisTemplate || ""}`;
   const slotById = new Map(
     (catalog.categories || []).map((slot) => [slot.id, slot]),
   );
@@ -281,8 +296,12 @@ export async function buildPeriodRollup(input) {
         });
       }
       for (const choice of choices) {
-        const choiceName =
-          toolById.get(choice.tool_id)?.name || displayName || "";
+        const catalogTool = toolById.get(choice.tool_id);
+        const catalogName =
+          catalogTool && typeof catalogTool.name === "string"
+            ? catalogTool.name
+            : "";
+        const choiceName = catalogName || displayName || "";
         const statement = {
           origin: member.origin,
           name: choiceName || displayName,
@@ -400,7 +419,7 @@ export async function buildPeriodRollup(input) {
     const toolId = key.split("\u0000")[1];
     const activeOrigins = [...stat.origins].sort();
     const slot = slotById.get(stat.slot_id);
-    const countsUnits = slot?.count_basis === "units";
+    const countsUnits = Boolean(slot && slot.count_basis === "units");
     const unitTotal = [...stat.unitsByOrigin.values()].reduce(
       (sum, value) => sum + value,
       0,
@@ -410,18 +429,24 @@ export async function buildPeriodRollup(input) {
       ? slotUnits.get(stat.slot_id) || unitTotal
       : slotOrigins.get(stat.slot_id).size;
     const publisherName = preferredToolName(stat.names, toolId);
+    const catalogTool = toolById.get(toolId);
+    const catalogToolName =
+      catalogTool && typeof catalogTool.name === "string"
+        ? catalogTool.name
+        : "";
+    const periodOrigins = periodEver.get(toolId);
     return {
       tool_id: toolId,
-      name: publicToolName(toolById.get(toolId)?.name || publisherName, toolId),
+      name: publicToolName(catalogToolName || publisherName, toolId),
       slot_id: stat.slot_id,
-      slot_name: slot?.name || stat.slot_id,
+      slot_name: (slot && slot.name) || stat.slot_id,
       denominator,
       rule: stat.rule,
       preference: Boolean(stat.preference),
       active_member_count: active,
       active_member_origins: activeOrigins,
       count_basis: countsUnits ? "units" : "sites",
-      period_ever_member_count: periodEver.get(toolId)?.size || 0,
+      period_ever_member_count: periodOrigins ? periodOrigins.size : 0,
       adoption_score: adoptionScore(active, denominator),
       statements: stat.statements,
       use_cases: [...stat.useCases.entries()]
@@ -441,7 +466,7 @@ export async function buildPeriodRollup(input) {
   const slots = [...slotOrigins.entries()]
     .map(([slotId, origins]) => {
       const slot = slotById.get(slotId);
-      const countsUnits = slot?.count_basis === "units";
+      const countsUnits = Boolean(slot && slot.count_basis === "units");
       const products = tools
         .filter((tool) => tool.slot_id === slotId)
         .sort(
@@ -451,9 +476,9 @@ export async function buildPeriodRollup(input) {
         );
       return {
         id: slotId,
-        name: slot?.name || slotId,
-        scope: slot?.scope || "",
-        kind: slot?.kind || "",
+        name: (slot && slot.name) || slotId,
+        scope: (slot && slot.scope) || "",
+        kind: (slot && slot.kind) || "",
         denominator: countsUnits ? slotUnits.get(slotId) || 0 : origins.size,
         count_basis: countsUnits ? "units" : "sites",
         origins: [...origins].sort(),
@@ -585,7 +610,7 @@ export function withPreviousPeriodChanges(rollup, previous) {
       tool,
       prior,
       tool.denominator || 0,
-      prior?.denominator || 0,
+      (prior && prior.denominator) || 0,
     );
     return {
       ...tool,
@@ -636,14 +661,9 @@ export function momentumAgainstPrevious(
 }
 
 /**
+ * Collapses ranked rows that share a tool id (same product, different slots).
  * One product id is one rollup row. Context can file the same id under two
  * slots; the public row keeps the larger count, then the catalog slot.
- * @param {object[]} rows
- * @param {Map<string, { category_id?: string }>} toolById
- * @returns {object[]}
- */
-/**
- * Collapses ranked rows that share a tool id (same product, different slots).
  * @param {object[]} rows
  * @param {Map<string, { category_id?: string }>} toolById
  * @returns {object[]}
@@ -675,7 +695,11 @@ export function preferToolRow(candidate, current, toolById) {
   if (candidate.active_member_count !== current.active_member_count) {
     return candidate.active_member_count > current.active_member_count;
   }
-  const home = toolById.get(candidate.tool_id)?.category_id || "";
+  const homeTool = toolById.get(candidate.tool_id);
+  const home =
+    homeTool && typeof homeTool.category_id === "string"
+      ? homeTool.category_id
+      : "";
   if (home && candidate.slot_id === home) {
     return true;
   }
@@ -814,7 +838,9 @@ export function peel3dPrintersFromContext(
   }
   /** @type {Array<{ id: string, name: string, key: string }>} */
   const candidates = [];
-  for (const tool of catalog?.tools || []) {
+  const catalogTools =
+    catalog && Array.isArray(catalog.tools) ? catalog.tools : [];
+  for (const tool of catalogTools) {
     if (!tool || tool.retired) {
       continue;
     }
@@ -868,13 +894,17 @@ export function peel3dPrintersFromContext(
  * @returns {string}
  */
 function claimName(tool, toolById, catalog) {
-  const raw = productNameFromLabel(tool?.name || "");
+  const toolName = tool && typeof tool.name === "string" ? tool.name : "";
+  const raw = productNameFromLabel(toolName);
   if (!raw) {
-    const id = String(tool?.tool_id || "");
+    const id = String((tool && tool.tool_id) || "");
     if (!id || id.startsWith("observed:")) {
       return "";
     }
-    return toolById.get(id)?.name || "";
+    const catalogTool = toolById.get(id);
+    return catalogTool && typeof catalogTool.name === "string"
+      ? catalogTool.name
+      : "";
   }
   const peeled = peelDeclarativeLeadIn(raw);
   const separated = separateNameContext(peeled.name);
