@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-09T18:12:33.458Z",
+  "datasets": {
+    "network": 1,
+    "site_signals": 1,
+    "content": 1,
+    "topics": 1,
+    "connections": 1,
+    "blogrolls": 1
+  },
+  "extractors": {
+    "html": 1,
+    "topics": 1,
+    "relationships": 1,
+    "feeds": 1
+  },
+  "schemas": {
+    "network": "https://joshternet.org/schemas/network.schema.json",
+    "site_signals": "https://joshternet.org/schemas/site-signals.schema.json",
+    "content": "https://joshternet.org/schemas/content.schema.json",
+    "topics": "https://joshternet.org/schemas/topics.schema.json",
+    "connections": "https://joshternet.org/schemas/connections.schema.json",
+    "blogrolls": "https://joshternet.org/schemas/blogrolls.schema.json",
+    "data_manifest": "https://joshternet.org/schemas/data-manifest.schema.json"
+  },
+  "semantic_hashes": {
+    "network": "sha256:6f7d9416ac21c5d4694c3bdda8dc0641a85a4883b59de0dadaf7e45c725d183f",
+    "site_signals": "sha256:31a81dfa7ce270b2c8845a8ab88f41ed1bf5a8b0978f966f1d2f5744164564af",
+    "topics": "sha256:282fedd4b00cff313064848aa77d6854cff99bb2f020572e098238b77ac0cda3",
+    "connections": "sha256:183ed7fdb13616d20d0492daf8d3c3ced30f04e432a53f807a46dfdf1d8d147d",
+    "content": "sha256:0d908b4b7574c19d8bcc2bc6d1c5c11a0121962083c8cc3d3f5b7e9471e1d75e",
+    "blogrolls": "sha256:2743e75eac0e95f996587a3fbceda7c31360322a3029f5eab9056783aed4ef86"
+  }
+}

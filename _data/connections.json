@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-09T18:12:33.458Z",
+  "edge_count": 7,
+  "edges": [
+    {
+      "from": "https://artlung.com",
+      "to": "https://joshmuller.ca",
+      "relation": "content-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://joshmuller.ca/",
+      "text": "joshmuller.ca",
+      "rel": [],
+      "page": "https://artlung.com/firehose/",
+      "evidence_count": 2,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://artlung.com/firehose/",
+          "href": "https://joshmuller.ca/",
+          "text": "joshmuller.ca",
+          "rel": [],
+          "source": "content"
+        },
+        {
+          "class": "observed",
+          "page": "https://artlung.com/firehose/",
+          "href": "https://joshmuller.ca/",
+          "text": "joshmuller.ca",
+          "rel": []
+        }
+      ]
+    },
+    {
+      "from": "https://joshbeard.com",
+      "to": "https://joshuamorris.info",
+      "relation": "content-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://joshuamorris.info/",
+      "text": "Joshua Morris",
+      "rel": ["noopener", "noreferrer"],
+      "page": "https://joshbeard.com/site/",
+      "evidence_count": 1,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://joshbeard.com/site/",
+          "href": "https://joshuamorris.info/",
+          "text": "Joshua Morris",
+          "rel": ["noopener", "noreferrer"]
+        }
+      ]
+    },
+    {
+      "from": "https://joshtronic.com",
+      "to": "https://joshuamorris.info",
+      "relation": "content-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://joshuamorris.info/",
+      "text": "Joshua Morris",
+      "rel": [],
+      "page": "https://joshtronic.com/links/",
+      "evidence_count": 1,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://joshtronic.com/links/",
+          "href": "https://joshuamorris.info/",
+          "text": "Joshua Morris",
+          "rel": []
+        }
+      ]
+    },
+    {
+      "from": "https://joshuamorris.info",
+      "to": "https://joshghent.com",
+      "relation": "content-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://joshghent.com/?utm_source=joshuamorris.info&utm_medium=referral",
+      "text": "Josh Ghent",
+      "rel": ["noopener", "noreferrer"],
+      "page": "https://joshuamorris.info/friends/",
+      "evidence_count": 1,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://joshuamorris.info/friends/",
+          "href": "https://joshghent.com/?utm_source=joshuamorris.info&utm_medium=referral",
+          "text": "Josh Ghent",
+          "rel": ["noopener", "noreferrer"]
+        }
+      ]
+    },
+    {
+      "from": "https://joshuamorris.info",
+      "to": "https://joshmuller.ca",
+      "relation": "content-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://joshmuller.ca/?utm_source=joshuamorris.info&utm_medium=referral",
+      "text": "Josh Müller",
+      "rel": ["noopener", "noreferrer"],
+      "page": "https://joshuamorris.info/friends/",
+      "evidence_count": 1,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://joshuamorris.info/friends/",
+          "href": "https://joshmuller.ca/?utm_source=joshuamorris.info&utm_medium=referral",
+          "text": "Josh Müller",
+          "rel": ["noopener", "noreferrer"]
+        }
+      ]
+    },
+    {
+      "from": "https://joshuamorris.info",
+      "to": "https://joshtronic.com",
+      "relation": "content-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://joshtronic.com/?utm_source=joshuamorris.info&utm_medium=referral",
+      "text": "Josh Sherman",
+      "rel": ["noopener", "noreferrer"],
+      "page": "https://joshuamorris.info/friends/",
+      "evidence_count": 1,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://joshuamorris.info/friends/",
+          "href": "https://joshtronic.com/?utm_source=joshuamorris.info&utm_medium=referral",
+          "text": "Josh Sherman",
+          "rel": ["noopener", "noreferrer"]
+        }
+      ]
+    },
+    {
+      "from": "https://joshuamorris.info",
+      "to": "https://www.chrisminnick.com",
+      "relation": "content-link",
+      "directed": true,
+      "source": "content",
+      "href": "https://www.chrisminnick.com/",
+      "text": "Chris Minnick",
+      "rel": [],
+      "page": "https://joshuamorris.info/friends/",
+      "evidence_count": 2,
+      "evidence": [
+        {
+          "class": "observed",
+          "page": "https://joshuamorris.info/friends/",
+          "href": "https://www.chrisminnick.com/",
+          "text": "Chris Minnick",
+          "rel": [],
+          "source": "content"
+        },
+        {
+          "class": "observed",
+          "page": "https://joshuamorris.info/friends/",
+          "href": "https://www.chrisminnick.com/?utm_source=joshuamorris.info&utm_medium=referral",
+          "text": "Chris Minnick",
+          "rel": ["noopener", "noreferrer"]
+        }
+      ]
+    }
+  ]
+}
