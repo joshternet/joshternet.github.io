@@ -67,14 +67,6 @@ export async function runIterativeDiscovery(input) {
         stopped_reason: "budget",
       };
     }
-    if (produced.length === 0 && broker.pendingCount() === 0) {
-      return {
-        rounds,
-        observations,
-        budget_exhausted: broker.isBudgetExhausted(),
-        stopped_reason: "idle",
-      };
-    }
   }
 
   return {

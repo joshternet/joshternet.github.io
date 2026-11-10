@@ -79,6 +79,7 @@ export async function loadFixtureBodies(repoRoot, pages) {
  * @param {FixturePage[]} input.pages
  * @param {string} input.repoRoot
  * @param {number} [input.maxRounds]
+ * @param {((url: string) => Promise<object>)|undefined} [input.fetchImpl]
  * @returns {Promise<{
  *   generation: object,
  *   observations: object[],
@@ -105,7 +106,7 @@ export async function runFixtureMemberObservation(input) {
     observationStore,
     seed_urls,
     maxRounds: input.maxRounds ?? 1,
-    fetchImpl: createFixtureFetch(bodies),
+    fetchImpl: input.fetchImpl ?? createFixtureFetch(bodies),
   });
   return {
     ...result,
@@ -124,6 +125,7 @@ export async function runFixtureMemberObservation(input) {
  * @param {string} input.fixture_file
  * @param {object} input.catalog
  * @param {string} [input.base_git_sha]
+ * @param {((url: string) => Promise<object>)|undefined} [input.fetchImpl]
  * @returns {Promise<{
  *   observations: object[],
  *   extracted: object,
@@ -146,6 +148,7 @@ export async function runUsesFixturePipeline(input) {
         file: input.fixture_file,
       },
     ],
+    fetchImpl: input.fetchImpl,
   });
   const observation = run.observations.find(
     (row) => row.outcome === "success" && row.source_hash,

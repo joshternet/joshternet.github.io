@@ -42,9 +42,6 @@ export function createDefaultAbsencePolicy(familyId, options = {}) {
       );
     },
     mayEstablishVerifiedAbsence(observation) {
-      if (outcomeEstablishesVerifiedAbsence(observation?.outcome)) {
-        return false;
-      }
       return (
         coverageMayEstablishRemoval(observation?.coverage) &&
         observation?.outcome === "success"

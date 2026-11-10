@@ -40,10 +40,11 @@ import { isObservationRunStatus } from "./family-contract.mjs";
  * @returns {ObservationStore}
  */
 export function createFilesystemObservationStore(rootDir) {
-  const root = path.resolve(String(rootDir || ""));
-  if (!root) {
+  const raw = String(rootDir || "");
+  if (!raw) {
     throw new Error("observation store rootDir is required");
   }
+  const root = path.resolve(raw);
   const generationsDir = path.join(root, "generations");
   const resourcesDir = path.join(root, "resources");
 
@@ -177,12 +178,7 @@ export function createFilesystemObservationStore(rootDir) {
      */
     async listGenerations(statuses) {
       await mkdir(generationsDir, { recursive: true });
-      let files = [];
-      try {
-        files = await readdir(generationsDir);
-      } catch {
-        return [];
-      }
+      const files = await readdir(generationsDir);
       /** @type {ObservationGenerationRecord[]} */
       const rows = [];
       for (const file of files) {

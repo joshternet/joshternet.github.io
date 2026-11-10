@@ -34,10 +34,11 @@ import { hashSourceBody } from "./resource-observation.mjs";
  * @returns {SourceStore}
  */
 export function createFilesystemSourceStore(options) {
-  const rootDir = path.resolve(String(options?.rootDir || ""));
-  if (!rootDir) {
+  const raw = String(options?.rootDir || "");
+  if (!raw) {
     throw new Error("source store rootDir is required");
   }
+  const rootDir = path.resolve(raw);
 
   /**
    * @param {string} sourceHash

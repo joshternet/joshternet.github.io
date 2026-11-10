@@ -129,7 +129,7 @@ export function createFetchBroker(options) {
         for (const item of deferred) {
           const observation = createResourceObservation({
             observation_run_id: runId,
-            member_origin: item.member_origin || memberOrigin,
+            member_origin: item.member_origin,
             requested_url: item.url,
             outcome: "budget_exhausted",
             defer_reason: "crawl budget exhausted",
@@ -145,13 +145,7 @@ export function createFetchBroker(options) {
       }
 
       const item = queue.shift();
-      if (!item) {
-        break;
-      }
       const url = normalizeUrl(item.url);
-      if (byUrl.has(url)) {
-        continue;
-      }
       fetchCount += 1;
 
       let response;
