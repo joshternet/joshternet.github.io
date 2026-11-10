@@ -29,11 +29,19 @@ import {
 import {
   buildPeriodRollup,
   trendReady,
+  withPreviousPeriodChanges,
   monthBounds,
   quarterBounds,
   quarterKeyFromMonth,
   yearBounds,
 } from "./aggregate.mjs";
+import {
+  closeMonthPeriod,
+  closeQuarterPeriod,
+  closeYearPeriod,
+  listStoredPeriodEntries,
+  previousCompletePeriodKeys,
+} from "./period-close.mjs";
 import { contentFingerprint } from "./build-helpers.mjs";
 import {
   discoverUsesPages,
@@ -53,6 +61,8 @@ import { reconcileMemberUsage } from "./reconcile.mjs";
 import {
   appendEvents,
   dateKeyFromIso,
+  earlierExclusive,
+  exclusiveAfter,
   loadAllEvents,
   periodKeyFromIso,
   readJson,
@@ -160,17 +170,6 @@ export async function buildUsesDatasets(input) {
     "JOSHTERNET_USES_PUBLISH",
     input.publish,
   );
-
-  // Durable ledger writes must never include local-only crawl origins.
-  if (!input.previewMix) {
-    for (const originEntry of input.origins || []) {
-      if (originEntry?.local_dev_cache === true) {
-        throw new Error(
-          "uses ledger refused local_dev_cache origin; use previewMix for local preview",
-        );
-      }
-    }
-  }
 
   await ensureCatalogScaffold(usesRoot);
   const catalog = await loadCatalog(usesRoot);
@@ -396,22 +395,7 @@ export async function buildUsesDatasets(input) {
 
   await appendEvents(workRoot, newEvents);
   const allEvents = await loadAllEvents(workRoot);
-  const state = replayState(allEvents);
-  // Overlay page metadata only onto event-replayed members. Never invent
-  // members outside the event log (breaks validateHistoryInvariants).
-  for (const [origin, member] of nextMembers) {
-    const replayed = state.members.find((m) => m.origin === origin);
-    if (!replayed) {
-      continue;
-    }
-    replayed.page_status = member.page_status;
-    replayed.page_url = member.page_url;
-    replayed.first_valid_observation_at =
-      member.first_valid_observation_at || replayed.first_valid_observation_at;
-    replayed.last_valid_observation_at =
-      member.last_valid_observation_at || replayed.last_valid_observation_at;
-  }
-  state.members.sort((a, b) => a.origin.localeCompare(b.origin));
+  const state = overlayMemberPageMeta(replayState(allEvents), nextMembers);
   await writeState(workRoot, state);
   await writeJSONAtomic(
     path.join(workRoot, "slot-migration.json"),
@@ -433,12 +417,19 @@ export async function buildUsesDatasets(input) {
   };
   const period = periodKeyFromIso(observedAt);
   const bounds = monthBounds(period);
+  const asOfNowExclusive = exclusiveAfter(observedAt);
   const monthEvents = allEvents.filter((e) => {
     const t = Date.parse(e.observed_at);
     return t >= Date.parse(bounds.start) && t < Date.parse(bounds.endExclusive);
   });
+  const monthState = overlayMemberPageMeta(
+    replayState(allEvents, {
+      asOfExclusive: earlierExclusive(asOfNowExclusive, bounds.endExclusive),
+    }),
+    nextMembers,
+  );
 
-  const monthRollup = await buildPeriodRollup({
+  let monthRollup = await buildPeriodRollup({
     period,
     granularity: "month",
     period_start: bounds.start,
@@ -446,7 +437,7 @@ export async function buildUsesDatasets(input) {
     as_of: observedAt,
     is_complete: false,
     eligible_origins: eligibleOrigins,
-    state,
+    state: monthState,
     period_events: monthEvents,
     catalog,
     ...rollupModel,
@@ -464,7 +455,13 @@ export async function buildUsesDatasets(input) {
 
   const qKey = quarterKeyFromMonth(period);
   const qBounds = quarterBounds(qKey);
-  const quarterRollup = await buildPeriodRollup({
+  const quarterState = overlayMemberPageMeta(
+    replayState(allEvents, {
+      asOfExclusive: earlierExclusive(asOfNowExclusive, qBounds.endExclusive),
+    }),
+    nextMembers,
+  );
+  let quarterRollup = await buildPeriodRollup({
     period: qKey,
     granularity: "quarter",
     period_start: qBounds.start,
@@ -472,7 +469,7 @@ export async function buildUsesDatasets(input) {
     as_of: observedAt,
     is_complete: false,
     eligible_origins: eligibleOrigins,
-    state,
+    state: quarterState,
     period_events: allEvents.filter((e) => {
       const t = Date.parse(e.observed_at);
       return (
@@ -490,7 +487,13 @@ export async function buildUsesDatasets(input) {
 
   const year = period.slice(0, 4);
   const yBounds = yearBounds(year);
-  const yearRollup = await buildPeriodRollup({
+  const yearState = overlayMemberPageMeta(
+    replayState(allEvents, {
+      asOfExclusive: earlierExclusive(asOfNowExclusive, yBounds.endExclusive),
+    }),
+    nextMembers,
+  );
+  let yearRollup = await buildPeriodRollup({
     period: year,
     granularity: "year",
     period_start: yBounds.start,
@@ -498,7 +501,7 @@ export async function buildUsesDatasets(input) {
     as_of: observedAt,
     is_complete: false,
     eligible_origins: eligibleOrigins,
-    state,
+    state: yearState,
     period_events: allEvents.filter((e) => {
       const t = Date.parse(e.observed_at);
       return (
@@ -532,6 +535,48 @@ export async function buildUsesDatasets(input) {
     allTimeRollup,
   );
 
+  const priorKeys = previousCompletePeriodKeys(observedAt);
+  const closeOpts = {
+    usesRoot: workRoot,
+    as_of: observedAt,
+    eligible_origins: eligibleOrigins,
+    catalog,
+    ...rollupModel,
+  };
+  await closeMonthPeriod({ ...closeOpts, period: priorKeys.month });
+  await closeQuarterPeriod({ ...closeOpts, period: priorKeys.quarter });
+  await closeYearPeriod({ ...closeOpts, period: priorKeys.year });
+
+  const priorMonthRollup = await readJson(
+    path.join(workRoot, "rollups", "month", `${priorKeys.month}.json`),
+    null,
+  );
+  monthRollup = withPreviousPeriodChanges(monthRollup, priorMonthRollup);
+  await writeJSONAtomic(
+    path.join(workRoot, "rollups", "month", `${period}.json`),
+    monthRollup,
+  );
+  const priorQuarterRollup = await readJson(
+    path.join(workRoot, "rollups", "quarter", `${priorKeys.quarter}.json`),
+    null,
+  );
+  quarterRollup = withPreviousPeriodChanges(quarterRollup, priorQuarterRollup);
+  await writeJSONAtomic(
+    path.join(workRoot, "rollups", "quarter", `${qKey}.json`),
+    quarterRollup,
+  );
+  const priorYearRollup = await readJson(
+    path.join(workRoot, "rollups", "year", `${priorKeys.year}.json`),
+    null,
+  );
+  yearRollup = withPreviousPeriodChanges(yearRollup, priorYearRollup);
+  await writeJSONAtomic(
+    path.join(workRoot, "rollups", "year", `${year}.json`),
+    yearRollup,
+  );
+
+  const trend_ready = trendReady([priorMonthRollup, monthRollup]);
+
   const graph = buildUsageGraph({
     rollup: monthRollup,
     state,
@@ -552,12 +597,7 @@ export async function buildUsesDatasets(input) {
     as_of: observedAt,
     eligible_member_count: eligibleOrigins.length,
     verified_uses_member_count: monthRollup.verified_uses_member_count,
-    trend_ready: trendReady([
-      monthRollup,
-      quarterRollup,
-      yearRollup,
-      allTimeRollup,
-    ]),
+    trend_ready,
     members: state.members.map((m) => ({
       origin: m.origin,
       page_url: m.page_url,
@@ -621,23 +661,12 @@ export async function buildUsesDatasets(input) {
     "run-metrics.json",
   );
   const previousQuality = await readJson(baselinePath, null);
-  if (!input.previewMix) {
-    await writeJSONAtomic(metricsPath, metrics);
-  }
+  await writeJSONAtomic(metricsPath, metrics);
   const quality = evaluateUsesQuality(metrics, previousQuality);
   if (quality.block) {
-    if (input.previewMix) {
-      await rm(workRoot, { recursive: true, force: true });
-      return {
-        ...metrics,
-        dry_run: false,
-        publish: false,
-        preview_skipped: true,
-      };
-    }
     throw new Error(`uses quality blocked: ${quality.reasons.join(", ")}`);
   }
-  if (!input.dryRun && !input.previewMix) {
+  if (!input.dryRun) {
     await writeJSONAtomic(baselinePath, metrics);
   }
 
@@ -646,23 +675,37 @@ export async function buildUsesDatasets(input) {
     throw new Error(`uses validate failed: ${validation.errors.join("; ")}`);
   }
 
-  if (!input.dryRun && !input.previewMix) {
+  if (!input.dryRun) {
     await mkdir(usesRoot, { recursive: true });
     await cp(workRoot, usesRoot, { recursive: true });
   }
 
   if (publish && !input.dryRun) {
+    const storedPeriods = await listStoredPeriodEntries(workRoot);
+    const periodIndex = preferredPeriodIndexEntries(storedPeriods, {
+      month: period,
+      quarter: qKey,
+      year,
+    });
+    /** @type {Array<{ path: string, document: object }>} */
+    const periodDocs = [];
+    for (const entry of storedPeriods) {
+      const document = await readJson(entry.path, null);
+      if (!document) {
+        continue;
+      }
+      const rel =
+        entry.granularity === "all-time"
+          ? "periods/all-time.json"
+          : `periods/${entry.granularity}/${entry.id}.json`;
+      periodDocs.push({ path: rel, document });
+    }
     await writePublicViews({
       repoRoot,
       summary,
       index: buildPublicIndex({
         as_of: observedAt,
-        periods: [
-          { id: period, granularity: "month", complete: false },
-          { id: qKey, granularity: "quarter", complete: false },
-          { id: year, granularity: "year", complete: false },
-          { id: "all-time", granularity: "all-time", complete: false },
-        ],
+        periods: periodIndex,
         early_sample: summary.early_sample,
         trend_ready: summary.trend_ready,
         extractor_version: monthRollup.extractor_version,
@@ -679,12 +722,7 @@ export async function buildUsesDatasets(input) {
         taxonomy_version: catalog.taxonomy_version,
         tools: catalog.tools,
       },
-      periodDocs: [
-        { path: `periods/month/${period}.json`, document: monthRollup },
-        { path: `periods/quarter/${qKey}.json`, document: quarterRollup },
-        { path: `periods/year/${year}.json`, document: yearRollup },
-        { path: "periods/all-time.json", document: allTimeRollup },
-      ],
+      periodDocs,
       graphDocs: [{ path: `graph/${period}.json`, document: graph }],
     });
   }
@@ -711,6 +749,83 @@ function countActiveEdges(state) {
     }
   }
   return n;
+}
+
+/**
+ * Overlay page metadata only onto event-replayed members. Never invent
+ * members outside the event log (breaks validateHistoryInvariants).
+ * @param {{ members?: object[] }} state
+ * @param {Map<string, object>} nextMembers
+ * @returns {{ members: object[], schema_version?: number, through_event_id?: string }}
+ */
+function overlayMemberPageMeta(state, nextMembers) {
+  for (const [origin, member] of nextMembers) {
+    const replayed = (state.members || []).find((row) => row.origin === origin);
+    if (!replayed) {
+      continue;
+    }
+    replayed.page_status = member.page_status;
+    replayed.page_url = member.page_url;
+    replayed.first_valid_observation_at =
+      member.first_valid_observation_at || replayed.first_valid_observation_at;
+    replayed.last_valid_observation_at =
+      member.last_valid_observation_at || replayed.last_valid_observation_at;
+  }
+  (state.members || []).sort((a, b) => a.origin.localeCompare(b.origin));
+  return state;
+}
+
+/**
+ * Public index lists every stored period; preferred current ids lead each
+ * granularity so the browser `.find` resolves the live snapshot first.
+ * @param {Array<{ id: string, granularity: string, complete: boolean }>} stored
+ * @param {{ month: string, quarter: string, year: string }} current
+ * @returns {Array<{ id: string, granularity: string, complete: boolean }>}
+ */
+function preferredPeriodIndexEntries(stored, current) {
+  /** @type {Array<{ id: string, granularity: string, complete: boolean }>} */
+  const preferred = [
+    {
+      id: current.month,
+      granularity: "month",
+      complete: false,
+    },
+    {
+      id: current.quarter,
+      granularity: "quarter",
+      complete: false,
+    },
+    {
+      id: current.year,
+      granularity: "year",
+      complete: false,
+    },
+    {
+      id: "all-time",
+      granularity: "all-time",
+      complete: false,
+    },
+  ];
+  const seen = new Set(preferred.map((row) => `${row.granularity}:${row.id}`));
+  for (const entry of stored) {
+    const key = `${entry.granularity}:${entry.id}`;
+    if (seen.has(key)) {
+      const match = preferred.find(
+        (row) => row.granularity === entry.granularity && row.id === entry.id,
+      );
+      if (match) {
+        match.complete = entry.complete;
+      }
+      continue;
+    }
+    seen.add(key);
+    preferred.push({
+      id: entry.id,
+      granularity: entry.granularity,
+      complete: entry.complete,
+    });
+  }
+  return preferred;
 }
 
 /**

@@ -95,7 +95,7 @@ test("homepage meet and activity includes use generated datasets", async () => {
   assert.match(meet, /include home-welcome-eligible\.html/);
   assert.match(meet, /meet_is_welcome/);
   assert.match(meet, /site\.data\.network/);
-  assert.match(meet, /sort: ["']domain["']/);
+  assert.match(meet, new RegExp(`sort: ["']${CRAWL_KEYS.domain}["']`));
   assert.match(meet, /https:\/\/joshternet\.org/);
   assert.match(meet, /home_hub_origin/);
   assert.match(meet, /network_site\.k4b != home_hub_origin/);

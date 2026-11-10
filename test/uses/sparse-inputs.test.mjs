@@ -242,9 +242,9 @@ test("evidence and extraction keep partial items", () => {
     origin: "https://joshua.example",
     page_url: "https://joshua.example/uses/",
     items: [
-      { label: "Keyboard", status: "current", section: "Desk" },
+      { label: "Keychron Q1", status: "current", section: "Desk" },
       {
-        label: "Keyboard",
+        label: "Keychron Q1",
         status: "current",
         section: "Desk",
         excerpt: "",
@@ -257,7 +257,7 @@ test("evidence and extraction keep partial items", () => {
   assert.equal(records.length, 1);
 
   const extracted = extractUsesFromHtml(
-    '<ul><li>Keyboard <a href="https://joshua.example/key">\u0001</a></li></ul>',
+    '<ul><li>Keychron Q1 <a href="https://joshua.example/key">\u0001</a></li></ul>',
   );
   assert.ok(extracted.status === "uncertain" || extracted.items.length >= 0);
 });
@@ -480,7 +480,7 @@ test("fallback branches run when a field is absent", async () => {
           last_valid_observation_at: asOf,
           tools: [
             {
-              name: "Keyboard",
+              name: "Keychron Q1",
               status: "current",
               use_case_ids: ["writing", "code"],
             },
@@ -490,12 +490,17 @@ test("fallback branches run when a field is absent", async () => {
     },
     catalog: {
       tools: [
-        { id: "keyboard", aliases: ["Keyboard"], category_id: "keyboards" },
+        {
+          id: "keychron-q1",
+          name: "Keychron Q1",
+          aliases: ["Keychron Q1"],
+          category_id: "keyboards",
+        },
       ],
       categories: [{ id: "keyboards", role: "ranked" }],
     },
   });
-  assert.equal(ranked.tools[0].name, "Keyboard");
+  assert.equal(ranked.tools[0].name, "Keychron Q1");
   assert.equal(ranked.tools[0].slot_name, "keyboards");
   assert.equal(ranked.slots[0].scope, "");
   assert.equal(ranked.tools[0].use_cases.length, 2);
@@ -505,7 +510,7 @@ test("fallback branches run when a field is absent", async () => {
       {
         extractor_version: 1,
         verified_uses_member_count: 1,
-        tools: [{ tool_id: "keyboard", active_member_count: 0 }],
+        tools: [{ tool_id: "keychron-q1", active_member_count: 0 }],
       },
       {
         extractor_version: 1,
@@ -536,7 +541,7 @@ test("fallback branches run when a field is absent", async () => {
   );
   assert.equal(
     classifyClaim(
-      { label: "Keyboard", href: "https://boards.example/k" },
+      { label: "Mystery Board", href: "https://boards.example/k" },
       {
         tools: [
           {
@@ -551,7 +556,7 @@ test("fallback branches run when a field is absent", async () => {
   );
 
   const negated = extractUsesFromHtml(
-    "<h2>I don't use</h2><ul><li>Keyboard</li></ul>",
+    "<h2>I don't use</h2><ul><li>Keychron Q1</li></ul>",
   );
   assert.equal(negated.items[0].status, "current");
 
@@ -559,11 +564,60 @@ test("fallback branches run when a field is absent", async () => {
     origin: "https://joshua.example",
     page_url: "https://joshua.example/uses/",
     catalog: {
-      tools: [{ id: "keyboard", aliases: ["Keyboard"] }],
+      tools: [
+        { id: "keychron-q1", name: "Keychron Q1", aliases: ["Keychron Q1"] },
+      ],
     },
-    items: [{ label: "Keyboard", status: "current", section: "Desk" }],
+    items: [{ label: "Keychron Q1", status: "current", section: "Desk" }],
   });
-  assert.equal(named[0].name, "Keyboard");
+  assert.equal(named[0].name, "Keychron Q1");
+  const peeledEvidence = buildEvidenceRecords({
+    origin: "https://joshua.example",
+    page_url: "https://joshua.example/uses/",
+    catalog: {
+      tools: [
+        {
+          id: "alfred",
+          name: "Alfred",
+          aliases: ["alfred launcher"],
+          category_id: "launcher",
+        },
+      ],
+    },
+    items: [
+      {
+        label: "alfred launcher 6.4 launches apps",
+        status: "current",
+        section: "Tools",
+      },
+    ],
+  });
+  assert.equal(peeledEvidence[0].tool_id, "alfred");
+  assert.equal(peeledEvidence[0].name, "Alfred");
+  assert.equal(peeledEvidence[0].unresolved, false);
+  const emptyCatalogName = buildEvidenceRecords({
+    origin: "https://joshua.example",
+    page_url: "https://joshua.example/uses/",
+    catalog: {
+      tools: [
+        {
+          id: "blank-named",
+          name: "",
+          aliases: ["BlankNamedTool"],
+          category_id: "launcher",
+        },
+      ],
+    },
+    items: [
+      {
+        label: "BlankNamedTool",
+        status: "current",
+        section: "Tools",
+      },
+    ],
+  });
+  assert.equal(emptyCatalogName[0].tool_id, "blank-named");
+  assert.equal(emptyCatalogName[0].name, "BlankNamedTool");
   const unresolved = buildEvidenceRecords({
     origin: "https://joshua.example",
     page_url: "https://joshua.example/uses/",
@@ -575,8 +629,9 @@ test("fallback branches run when a field is absent", async () => {
   assert.equal(unresolved.length, 2);
   assert.equal(unresolved[0].tool_id, null);
 
-  assert.equal(publicToolName("home", "keyboard"), "home");
+  assert.equal(publicToolName("home", "keyboard"), "keyboard");
   assert.equal(publicToolName("observed:zz", "plain"), "plain");
+  assert.equal(publicToolName("", "observed:neovim"), "neovim");
   const emptySection = resolveToolLabel("Keyboard", {
     catalog: {
       aliases: [

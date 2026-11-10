@@ -5,6 +5,9 @@
   interaction chrome. Progressive enhancement: /connections/ link without JS.
 {% endcomment %}
 {% assign home_network_sites = site.data.network %}
+{% if home_network_sites == null %}
+  {% assign home_network_sites = '' | split: '' %}
+{% endif %}
 {% assign home_hub_origin = 'https://joshternet.org' %}
 {% assign home_member_sites = '' | split: '' %}
 {% assign home_hub_sites = '' | split: '' %}

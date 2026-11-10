@@ -153,7 +153,6 @@ test("Liquid templates do not read clear keys on encoded datasets", async () => 
       !rel.startsWith("docs/") &&
       !rel.startsWith("implement/content/") &&
       !rel.startsWith("test/") &&
-      !rel.startsWith("tmp/") &&
       !rel.startsWith(".tmp/")
     );
   });

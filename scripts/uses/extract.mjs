@@ -15,9 +15,15 @@ import { normalizeExtractedText } from "../nlp/text.mjs";
 import { MAX_EXCERPT_CHARS, MAX_LABEL_CHARS } from "./constants.mjs";
 import {
   classifyUseKind,
+  is3dPrinterUmbrellaLabel,
+  isBlogChromeSection,
   isNamedEntity,
+  isOperatingSystemProductLabel,
   isReportableUseLabel,
+  isUsesSectionLabel,
+  quantityNearLabel,
   sanitizeLabel,
+  peelDeclarativeLeadIn,
   separateNameContext,
   splitCompoundName,
 } from "./normalize.mjs";
@@ -34,6 +40,7 @@ import {
  * @property {number} list_depth
  * @property {string} excerpt
  * @property {string[]} use_case_hints
+ * @property {number} [quantity]
  */
 
 /**
@@ -188,6 +195,9 @@ export function extractUsesFromHtml(html, options = {}) {
     }
 
     const sectionPathText = sectionPath($, element);
+    if (isBlogChromeSection(sectionPathText)) {
+      return;
+    }
     const sectionParts = sectionPathText.split(" / ").filter(Boolean);
     const section = sectionParts.at(-1) || "";
     const status = inferStatus(`${sectionPathText} ${rawText}`);
@@ -196,7 +206,7 @@ export function extractUsesFromHtml(html, options = {}) {
     }
 
     for (const part of parsed) {
-      if (!part.label || isNoiseLabel(part.label)) {
+      if (!part.label || isNoiseLabel(part.label, part.kind)) {
         continue;
       }
       const echoed =
@@ -222,6 +232,7 @@ export function extractUsesFromHtml(html, options = {}) {
   });
 
   appendOutlineClaims($, items);
+  appendOperatingSystemHeadingClaims($, items);
 
   // Deduplicate by comparison-ish label within the page.
   const deduped = dedupeItems(items);
@@ -273,33 +284,164 @@ function elementSibling(node) {
  * @returns {void}
  */
 function pushOutlineClaim(items, label, context, sectionPathText, href) {
-  const name = sanitizeLabel(label);
-  if (!name || !isReportableUseLabel(name)) {
-    return;
-  }
+  const heading = sanitizeLabel(label);
   const prose = sanitizeLabel(context);
-  if (NEGATION.test(prose) && !hasPositiveUseVerb(prose)) {
+  if (!heading) {
     return;
   }
-  const sectionParts = sectionPathText.split(" / ").filter(Boolean);
-  const section = sectionParts.at(-1) || "";
-  const status = inferStatus(`${sectionPathText} ${prose}`);
-  if (status === "unspecified" && NEGATION.test(prose)) {
+
+  // Section titles (Website 🌐, Phone 📱, 3D Printing) are not products.
+  // When the next paragraph names a real tool (Hugo, Ender 3 v2), claim that
+  // tool under this section.
+  let name = heading;
+  let detail = prose;
+  let pathText = sectionPathText;
+  if (!isReportableUseLabel(name)) {
+    const sectionLike =
+      isUsesSectionLabel(heading) || is3dPrinterUmbrellaLabel(heading);
+    if (
+      !sectionLike ||
+      !isReportableUseLabel(prose) ||
+      !(isNamedEntity(prose) || (href && !href.startsWith("#")))
+    ) {
+      return;
+    }
+    name = prose;
+    detail = "";
+    const parts = sectionPathText.split(" / ").filter(Boolean);
+    parts.push(heading);
+    pathText = parts.join(" / ");
+  }
+
+  if (NEGATION.test(detail) && !hasPositiveUseVerb(detail)) {
     return;
+  }
+  const sectionParts = pathText.split(" / ").filter(Boolean);
+  const section = sectionParts.at(-1) || "";
+  const status = inferStatus(`${pathText} ${detail}`);
+  if (status === "unspecified" && NEGATION.test(detail)) {
+    return;
+  }
+  // Umbrella “3D printers” headings keep the machines named in the prose
+  // (and skip the heading itself when those machines are present).
+  if (is3dPrinterUmbrellaLabel(name) && detail) {
+    const machines = productNamesFromPrinterProse(detail);
+    if (machines.length > 0) {
+      for (const machine of machines) {
+        const excerpt = [machine.name, detail].filter(Boolean).join(". ");
+        items.push({
+          label: machine.name.slice(0, MAX_LABEL_CHARS),
+          context: detail.slice(0, MAX_EXCERPT_CHARS),
+          kind: "product",
+          status,
+          section,
+          section_path: pathText,
+          href: machine.href || "",
+          list_depth: 0,
+          excerpt: excerpt.slice(0, MAX_EXCERPT_CHARS),
+          use_case_hints: inferUseCaseHints(`${section} ${detail}`),
+          quantity: machine.quantity,
+        });
+      }
+      return;
+    }
   }
   const destination = href && !href.startsWith("#") ? href : "";
-  const excerpt = [name, prose].filter(Boolean).join(". ");
+  const excerpt = [name, detail].filter(Boolean).join(". ");
   items.push({
     label: name.slice(0, MAX_LABEL_CHARS),
-    context: prose.slice(0, MAX_EXCERPT_CHARS),
+    context: detail.slice(0, MAX_EXCERPT_CHARS),
     kind: classifyUseKind(name),
     status,
     section,
-    section_path: sectionPathText,
+    section_path: pathText,
     href: destination,
     list_depth: 0,
     excerpt: excerpt.slice(0, MAX_EXCERPT_CHARS),
-    use_case_hints: inferUseCaseHints(`${section} ${prose}`),
+    use_case_hints: inferUseCaseHints(`${section} ${detail}`),
+  });
+}
+
+/**
+ * Pulls named 3D printers from section prose when microformats were flattened.
+ * @param {string} prose
+ * @returns {Array<{ name: string, href: string, quantity: number }>}
+ */
+function productNamesFromPrinterProse(prose) {
+  // Caller already sanitizes outline prose; keep a sanitize here for safety.
+  const text = sanitizeLabel(prose);
+  /** @type {Array<{ name: string, href: string, quantity: number }>} */
+  // Shorter "Ender 3 v2" alias first so the Creality-titled form can dedupe it.
+  const known = [
+    "Creality K1 Max",
+    "Creality CR-10 Mini",
+    "Creality CR-10S",
+    "FLSUN QQ-S Pro",
+    "Ender 3 v2",
+    "Creality Ender 3 V2",
+  ];
+  /** @type {Array<{ name: string, href: string, quantity: number }>} */
+  const hits = [];
+  /** @type {Set<string>} */
+  const seen = new Set();
+  for (const label of known) {
+    const key = label.toLowerCase();
+    if (!text.toLowerCase().includes(key)) {
+      continue;
+    }
+    const canonical = label === "Ender 3 v2" ? "creality ender 3 v2" : key;
+    if (seen.has(canonical)) {
+      continue;
+    }
+    seen.add(canonical);
+    hits.push({
+      name: label === "Ender 3 v2" ? "Creality Ender 3 V2" : label,
+      href: "",
+      quantity: quantityNearLabel(text, label),
+    });
+  }
+  return hits;
+}
+
+/**
+ * OS section titles (Linux / MacOS / Windows) are products even when they
+ * introduce a list of apps. Children keep the heading as their section.
+ * @param {cheerio.CheerioAPI} $
+ * @param {RawUseItem[]} items
+ * @returns {void}
+ */
+function appendOperatingSystemHeadingClaims($, items) {
+  $("h1, h2, h3, h4, h5, h6").each((_, heading) => {
+    if ($(heading).parents("li, dt, tr, td, nav, footer, header").length > 0) {
+      return;
+    }
+    const label = headingLabel($(heading).text());
+    if (!isOperatingSystemProductLabel(label)) {
+      return;
+    }
+    const pathText = sectionPath($, heading);
+    const parts = pathText.split(" / ").filter(Boolean);
+    const alreadyInPath =
+      parts.length > 0 &&
+      isOperatingSystemProductLabel(parts[parts.length - 1]);
+    const claimPath = alreadyInPath
+      ? pathText
+      : [...parts, sanitizeLabel(label)].filter(Boolean).join(" / ");
+    const name = sanitizeLabel(label);
+    const sectionParts = claimPath.split(" / ").filter(Boolean);
+    const section = sectionParts.at(-1);
+    items.push({
+      label: name.slice(0, MAX_LABEL_CHARS),
+      context: "",
+      kind: "product",
+      status: "current",
+      section,
+      section_path: claimPath,
+      href: "",
+      list_depth: 0,
+      excerpt: name.slice(0, MAX_EXCERPT_CHARS),
+      use_case_hints: inferUseCaseHints(section),
+    });
   });
 }
 
@@ -328,15 +470,30 @@ function appendOutlineClaims($, items) {
     const clone = $(element).clone();
     clone.find("h1, h2, h3, h4, h5, h6").remove();
     const before = items.length;
-    pushOutlineClaim(
-      items,
-      headingLabel($(heading).text()),
-      textFromHtml($.html(clone)),
-      sectionPath($, element),
-      $(element).find("a[href]").attr("href") || "",
-    );
-    if (items.length > before) {
+    const headingText = headingLabel($(heading).text());
+    const pathText = sectionPath($, element);
+    if (
+      pushHProductClaims(
+        items,
+        $,
+        clone,
+        headingText,
+        pathText,
+        textFromHtml($.html(clone)),
+      )
+    ) {
       claimedHeadings.add(heading);
+    } else {
+      pushOutlineClaim(
+        items,
+        headingText,
+        textFromHtml($.html(clone)),
+        pathText,
+        $(element).find("a[href]").attr("href") || "",
+      );
+      if (items.length > before) {
+        claimedHeadings.add(heading);
+      }
     }
   });
 
@@ -358,16 +515,85 @@ function appendOutlineClaims($, items) {
     if (name !== "p" && name !== "blockquote") {
       return;
     }
-    pushOutlineClaim(
-      items,
-      headingLabel($(heading).text()),
-      textFromHtml($.html(next)),
-      sectionPath($, heading),
-      $(next).find("a[href]").attr("href") ||
-        $(heading).find("a[href]").attr("href") ||
-        "",
-    );
+    const headingText = headingLabel($(heading).text());
+    const pathText = sectionPath($, heading);
+    const prose = textFromHtml($.html(next));
+    if (!pushHProductClaims(items, $, $(next), headingText, pathText, prose)) {
+      pushOutlineClaim(
+        items,
+        headingText,
+        prose,
+        pathText,
+        $(next).find("a[href]").attr("href") ||
+          $(heading).find("a[href]").attr("href") ||
+          "",
+      );
+    }
   });
+}
+
+/**
+ * Emits one claim per `.h-product` under a section heading.
+ * @param {RawUseItem[]} items
+ * @param {cheerio.CheerioAPI} $
+ * @param {cheerio.Cheerio} root
+ * @param {string} headingText
+ * @param {string} pathText
+ * @param {string} prose
+ * @returns {boolean}
+ */
+function pushHProductClaims(items, $, root, headingText, pathText, prose) {
+  // Expand microformats under 3D-printer section headings.
+  if (!is3dPrinterUmbrellaLabel(headingText)) {
+    return false;
+  }
+  const nodes = root.find(".h-product").toArray();
+  if (nodes.length === 0) {
+    return false;
+  }
+  const sectionParts = pathText.split(" / ").filter(Boolean);
+  const section = sectionParts.at(-1) || headingText;
+  const status = inferStatus(`${pathText} ${prose}`);
+  let added = 0;
+  for (const node of nodes) {
+    const el = $(node);
+    const brand = sanitizeLabel(el.find(".p-brand").first().text());
+    const named = sanitizeLabel(el.find(".p-name").first().text());
+    const linkText = sanitizeLabel(el.find("a").first().text());
+    const whole = sanitizeLabel(el.text());
+    let label = named || linkText || whole;
+    // Prefer p-name / link text; fall back to the whole node (brand-only rows).
+    if (
+      brand &&
+      label &&
+      !label.toLowerCase().startsWith(brand.toLowerCase())
+    ) {
+      label = `${brand} ${label}`;
+    }
+    label = sanitizeLabel(label.replace(/\s+/g, " "));
+    if (!isReportableUseLabel(label) || !isNamedEntity(label)) {
+      continue;
+    }
+    const href = el.find("a[href]").first().attr("href") || "";
+    items.push({
+      label: label.slice(0, MAX_LABEL_CHARS),
+      context: prose.slice(0, MAX_EXCERPT_CHARS),
+      kind: "product",
+      status,
+      section,
+      section_path: pathText,
+      href: href.startsWith("#") ? "" : href,
+      list_depth: 0,
+      excerpt: [label, prose]
+        .filter(Boolean)
+        .join(". ")
+        .slice(0, MAX_EXCERPT_CHARS),
+      use_case_hints: inferUseCaseHints(`${section} ${prose}`),
+      quantity: quantityNearLabel(prose, label),
+    });
+    added += 1;
+  }
+  return added > 0;
 }
 
 /**
@@ -464,18 +690,16 @@ function parseItem(token, fallbackText, options = {}) {
     nameSource = fallbackText;
     forcePractice = true;
   } else if (links.length === 0 && !strong) {
-    nameSource = fallbackText.replace(
-      /^(?:I\s+(?:use|listen to|run|host|play)|My\s+current\s+[A-Za-z]+\s+is)\s+(?:the\s+)?/i,
-      "",
-    );
+    nameSource = fallbackText;
   } else if (links.every((linkText) => isFragmentLink(token, linkText))) {
     return [];
   } else {
     return [];
   }
 
-  const separated = separateNameContext(nameSource);
-  const context = [separated.context, trailing]
+  const peeled = peelDeclarativeLeadIn(nameSource);
+  const separated = separateNameContext(peeled.name);
+  const context = [peeled.context, separated.context, trailing]
     .map((part) => sanitizeLabel(part))
     .filter(Boolean)
     .join(" ");
@@ -613,11 +837,17 @@ function isAttribution(token, label) {
 
 /**
  * @param {string} label
+ * @param {'product'|'equipment'|'practice'|'unresolved'} [kind]
  * @returns {boolean}
  */
-function isNoiseLabel(label) {
+function isNoiseLabel(label, kind = "product") {
   if (/^https?:\/\//i.test(label)) {
     return true;
+  }
+  // Reason-list practices may reuse section words (Gaming) without ranking them.
+  if (kind === "practice" || kind === "unresolved") {
+    const text = sanitizeLabel(label);
+    return !text || text.length < 2;
   }
   return !isReportableUseLabel(label);
 }

@@ -11,10 +11,10 @@
 /** @typedef {'product'|'equipment'|'practice'|'unresolved'} UseKind */
 
 export const USES_SCHEMA_VERSION = 1;
-export const EXTRACTOR_VERSION = 4;
-export const TAXONOMY_VERSION = 2;
+export const EXTRACTOR_VERSION = 5;
+export const TAXONOMY_VERSION = 3;
 export const SCORING_VERSION = 1;
-export const AGGREGATION_VERSION = 2;
+export const AGGREGATION_VERSION = 4;
 
 /** @typedef {'ranked'|'detail'|'unsorted'|'rejected'} PresentationRole */
 

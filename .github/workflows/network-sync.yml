@@ -10,7 +10,8 @@ on:
         default: false
 
   schedule:
-    - cron: "17 * * * *"
+    # Six-hour complete observation generations at minute 17 (avoid top-of-hour delay).
+    - cron: "17 */6 * * *"
 
   repository_dispatch:
     types:
@@ -25,7 +26,10 @@ on:
       - "scripts/nlp/**"
       - "scripts/views/**"
       - "scripts/uses/**"
+      - "scripts/observation/**"
       - "data/uses/catalog/**"
+      - "data/ownership.json"
+      - "test/observation/**"
       - "data/classification/**"
       - "test/network/**"
       - "test/nlp/**"
@@ -180,6 +184,31 @@ jobs:
       - name: Validate uses quality
         if: steps.preflight.outputs.needs_sync == 'true'
         run: npm run uses:quality
+
+      - name: Enforce dataset ownership on generated paths
+        if: steps.preflight.outputs.needs_sync == 'true'
+        run: |
+          # Fail closed on undeclared generated datasets (ownership class + writer).
+          node scripts/observation/check-ownership.mjs \
+            _data/network.json \
+            _data/content.json \
+            _data/topics.json \
+            _data/site_signals.json \
+            _data/data_manifest.json \
+            _data/generation_manifest.json \
+            _data/connections.json \
+            _data/blogrolls.json \
+            _data/activity.json \
+            _data/showcase.json \
+            _data/happening.json
+
+      - name: Write observation generation provenance manifest
+        if: steps.preflight.outputs.needs_sync == 'true'
+        env:
+          OBSERVATION_RUN_ID: ${{ github.run_id }}-${{ github.run_attempt }}
+          BASE_GIT_SHA: ${{ steps.base.outputs.sha }}
+          STARTED_AT: ${{ github.event.head_commit.timestamp || github.event.repository.updated_at }}
+        run: node scripts/observation/write-generation-manifest.mjs
 
       - name: Validate generated JSON
         if: steps.preflight.outputs.needs_sync == 'true'
@@ -397,6 +426,7 @@ jobs:
             _data/site_signals.json \
             _data/content.json \
             _data/data_manifest.json \
+            _data/generation_manifest.json \
             _data/activity.json \
             _data/explore.json \
             _data/topic_views.json \

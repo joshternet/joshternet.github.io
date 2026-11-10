@@ -380,9 +380,9 @@
       "name": "FiraCode",
       "expected_section_path": "What I Use / Aesthetic / Previous Era (2015-2026)",
       "expected_section": "Previous Era (2015-2026)",
-      "expected_tool_id": "observed:firacode",
+      "expected_tool_id": "fira-code",
       "expected_status": "former",
-      "expected_slot_id": "unsorted",
+      "expected_slot_id": "font",
       "context": "FiraCode (2020-2026)",
       "split": "identity"
     },
@@ -653,13 +653,13 @@
     {
       "source_url": "https://joshua.seigler.net/uses/",
       "html_fixture": "test/fixtures/uses/members/joshua.seigler.net.html",
-      "name": "TONTRU 101-key mechanical keyboard. It’s affordable",
+      "name": "TONTRU 101-key mechanical keyboard",
       "expected_section_path": "Hardware",
       "expected_section": "Hardware",
       "expected_tool_id": "tontru",
       "expected_status": "current",
       "expected_slot_id": "keyboard",
-      "context": "rigid, and thocky, and has a volume control knob.",
+      "context": "It's affordable, rigid, and thocky, and has a volume control knob.",
       "split": "category"
     },
     {
@@ -809,36 +809,12 @@
     {
       "source_url": "https://www.joshfinnie.com/uses/",
       "html_fixture": "test/fixtures/uses/members/joshfinnie.com.html",
-      "name": "Work Computer:",
-      "expected_section_path": "Uses / Hardware",
-      "expected_section": "Hardware",
-      "expected_tool_id": "observed:work-computer",
-      "expected_status": "current",
-      "expected_slot_id": "unsorted",
-      "context": "",
-      "split": "identity"
-    },
-    {
-      "source_url": "https://www.joshfinnie.com/uses/",
-      "html_fixture": "test/fixtures/uses/members/joshfinnie.com.html",
       "name": "MacBook Pro 16-inch 2021",
       "expected_section_path": "Uses / Hardware",
       "expected_section": "Hardware",
       "expected_tool_id": "macbook-pro-16",
       "expected_status": "current",
       "expected_slot_id": "computer",
-      "context": "",
-      "split": "identity"
-    },
-    {
-      "source_url": "https://www.joshfinnie.com/uses/",
-      "html_fixture": "test/fixtures/uses/members/joshfinnie.com.html",
-      "name": "Gaming Computer:",
-      "expected_section_path": "Uses / Hardware",
-      "expected_section": "Hardware",
-      "expected_tool_id": "observed:gaming-computer",
-      "expected_status": "current",
-      "expected_slot_id": "unsorted",
       "context": "",
       "split": "identity"
     },

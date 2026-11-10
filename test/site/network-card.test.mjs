@@ -7,7 +7,10 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
-import { CRAWL_KEYS, decodeCrawlValue } from "../../scripts/nlp/site-record.mjs";
+import {
+  CRAWL_KEYS,
+  decodeCrawlValue,
+} from "../../scripts/nlp/site-record.mjs";
 
 const root = fileURLToPath(new URL("../../", import.meta.url));
 
@@ -19,18 +22,40 @@ async function read(relativePath) {
   return readFile(path.join(root, relativePath), "utf8");
 }
 
+/**
+ * Reads a generated crawl dataset when present.
+ * @param {string} relativePath
+ * @returns {Promise<string | null>}
+ */
+async function readGenerated(relativePath) {
+  try {
+    return await read(relativePath);
+  } catch (error) {
+    // External boundary: generated crawl files are absent after a clean wipe.
+    if (
+      error &&
+      /** @type {NodeJS.ErrnoException} */ (error).code === "ENOENT"
+    ) {
+      return null;
+    }
+    throw error;
+  }
+}
+
 test("network cards link the primary feed outside the origin card link", async () => {
   const page = await read("network.md");
   const styles = [
     await read("assets/css/main.css"),
     await read("assets/css/elsewhere-glyphs.css"),
   ].join("\n");
-  const network = await read("_data/network.json");
+  const network = await readGenerated("_data/network.json");
 
   assert.match(styles, /\.network-card\[hidden\]\s*\{[^}]*display:\s*none/s);
   assert.match(
     page,
-    new RegExp(`network-card--\\{\\{ network_site\\.${CRAWL_KEYS.identity} \\}\\} h-card`),
+    new RegExp(
+      `network-card--\\{\\{ network_site\\.${CRAWL_KEYS.identity} \\}\\} h-card`,
+    ),
   );
   assert.match(page, new RegExp(`network_site\\.${CRAWL_KEYS.feeds}`));
   assert.match(page, /network-card__feed/);
@@ -97,8 +122,10 @@ test("network cards link the primary feed outside the origin card link", async (
     styles,
     /\.network-card__elsewhere\s*\{[^}]*display:\s*contents/s,
   );
-  const decoded = decodeCrawlValue(JSON.parse(network));
-  assert.match(JSON.stringify(decoded), /https:\/\/artlung\.com\/feed\//);
+  if (network !== null) {
+    const decoded = decodeCrawlValue(JSON.parse(network));
+    assert.match(JSON.stringify(decoded), /https:\/\/artlung\.com\/feed\//);
+  }
 });
 
 test("network cards expose elsewhere icons outside the origin link", async () => {
@@ -108,7 +135,7 @@ test("network cards expose elsewhere icons outside the origin link", async () =>
     await read("assets/css/elsewhere-glyphs.css"),
   ].join("\n");
   const sprite = await read("assets/icons/elsewhere-sprite.svg");
-  const network = await read("_data/network.json");
+  const network = await readGenerated("_data/network.json");
 
   assert.match(page, new RegExp(`network_site\\.${CRAWL_KEYS.elsewhere}`));
   assert.match(page, /network-card__elsewhere/);
@@ -143,8 +170,10 @@ test("network cards expose elsewhere icons outside the origin link", async () =>
     /Elsewhere network icons/,
   );
   assert.match(await read("THIRD_PARTY_LICENSES.md"), /brand\.linkedin\.com/);
-  const decoded = decodeCrawlValue(JSON.parse(network));
-  assert.match(JSON.stringify(decoded), /"network": "github"/);
+  if (network !== null) {
+    const decoded = decodeCrawlValue(JSON.parse(network));
+    assert.match(JSON.stringify(decoded), /"network"\s*:\s*"github"/);
+  }
 });
 
 test("network page does not duplicate the blogroll subscribe copy", async () => {
@@ -152,6 +181,19 @@ test("network page does not duplicate the blogroll subscribe copy", async () => 
 
   assert.doesNotMatch(page, /Joshternet blogroll/);
   assert.doesNotMatch(page, /Subscribe with the/);
+});
+
+test("network templates tolerate a missing network dataset", async () => {
+  const page = await read("network.md");
+  const connections = await read("connections.md");
+  const homeConnections = await read("_includes/home-connections.html");
+  const layout = await read("_layouts/default.html");
+
+  for (const source of [page, connections, homeConnections, layout]) {
+    assert.match(source, /== (?:nil|null)/);
+    assert.match(source, /split:\s*['"]{2}/);
+  }
+  assert.match(page, /network_sites \| sort: 'k1v'/);
 });
 
 test("site head advertises the Joshternet blogroll on every page", async () => {

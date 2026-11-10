@@ -22,11 +22,11 @@ async function read(relativePath) {
   return readFile(path.join(root, relativePath), "utf8");
 }
 
-test("network-sync keeps hourly and registry triggers plus sync steps", async () => {
+test("network-sync keeps six-hour and registry triggers plus sync steps", async () => {
   const sync = await read(".github/workflows/network-sync.yml");
 
   assert.match(sync, /schedule:/);
-  assert.match(sync, /cron:\s*"17 \* \* \* \*"/);
+  assert.match(sync, /cron:\s*"17 \*\/6 \* \* \*"/);
   assert.match(sync, /repository_dispatch:/);
   assert.match(sync, /joshternet-registry-updated/);
   assert.match(sync, /workflow_dispatch:/);
@@ -129,7 +129,7 @@ test("network-sync publish set lists CI-owned generated paths", async () => {
   assert.doesNotMatch(
     sync,
     /data\/dev-crawl-cache/,
-    "network-sync must not stage the local non-Joshternet crawl cache",
+    "network-sync must not stage a local personal-site crawl cache",
   );
   assert.match(
     sync,

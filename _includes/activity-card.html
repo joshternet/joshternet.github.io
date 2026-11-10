@@ -2,9 +2,9 @@
   Goal: One What's New-style card. Expects include.item with short crawl keys
   (title k7c, url k7o, published_at k5a, site_title k6h, summary k76, tags k78,
   domain k1v, optional image k32). Optional Happening fields: start k89, end k8a,
-  venue k8b, location k8c (event dates stay in the publisher's declared timezone
-  string — no visitor TZ conversion). Optional include.heading_tag: "h2" (default)
-  or "h3" for nested sections.
+  venue k8b, location k8c, conference k8f (event dates stay in the publisher's
+  declared timezone string — no visitor TZ conversion). Optional
+  include.heading_tag: "h2" (default) or "h3" for nested sections.
 {% endcomment %}
 <li
   class="activity-card h-entry"
@@ -99,6 +99,13 @@
       {% if include.item.k8b and include.item.k8b != '' %}
         <p class="happening-venue">
           {{ include.item.k8b | escape }}
+          {% if include.item.k8c and include.item.k8c != '' %}
+            &mdash; {{ include.item.k8c | escape }}
+          {% endif %}
+        </p>
+      {% elsif include.item.k8f and include.item.k8f != '' %}
+        <p class="happening-venue">
+          {{ include.item.k8f | escape }}
           {% if include.item.k8c and include.item.k8c != '' %}
             &mdash; {{ include.item.k8c | escape }}
           {% endif %}

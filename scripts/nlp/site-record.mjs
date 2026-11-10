@@ -313,6 +313,10 @@ export const CRAWL_KEYS = Object.freeze({
   venue: "k8b",
   location: "k8c",
   site_count: "k8d",
+  attribution_role: "k8e",
+  conference: "k8f",
+  start_precision: "k8g",
+  resources: "k8h",
 });
 
 /** Keys whose values are page bodies and must not be written. */
@@ -516,7 +520,6 @@ export function buildSiteRecord(input) {
     title: String(input.title || ""),
     domain: String(input.domain || ""),
     crawled_at: String(input.crawled_at || ""),
-    local_dev_cache: input.local_dev_cache === true,
     status: input.status === "failed" ? "failed" : "ok",
     pages: pages.map((page) => {
       const record = page && typeof page === "object" ? page : {};

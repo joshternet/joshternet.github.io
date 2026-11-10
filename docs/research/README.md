@@ -1,9 +1,9 @@
 # Research notes
 
-Offline pipeline notes for Activity, Showcase, and Happening. Keep these
-**anonymized**: no member domains, article titles, or per-origin exclusion
-write-ups. Fixture paths under `test/fixtures/` are fine for regression; public
-docs describe gates and taxonomy only.
+Offline pipeline notes for Activity, Showcase, and Happening. Publicly
+published member pages, domains, and titles may be named when they are the
+evidence under discussion. Do not invent private facts or unpublished details.
+Fixture paths under `test/fixtures/` remain the regression source of truth.
 
 ## Kept here
 
@@ -11,6 +11,7 @@ docs describe gates and taxonomy only.
 | --- | --- |
 | [content-pipeline-audit.md](content-pipeline-audit.md) | Field mapping feed → content → hub cards |
 | [events-happening-offline-audit.md](events-happening-offline-audit.md) | Past vs upcoming event separation (fixture-based) |
+| [directory-event-presentation-baseline.md](directory-event-presentation-baseline.md) | Directory vs work, speaking archives, past events baseline |
 
 ## Exclusion taxonomy (Showcase)
 
@@ -31,6 +32,6 @@ docs describe gates and taxonomy only.
 
 | Surface | Rule |
 | --- | --- |
-| Happening | Upcoming, not cancelled, publisher schedule evidence |
-| Showcase | Past workshops/education may qualify; undated event prose does not |
+| Happening | Upcoming or ongoing; past archive is separate; publisher schedule evidence |
+| Showcase | Presentations and past education may qualify; directories and undated event prose do not |
 | Activity | Title + capped plain summary + optional poster; outbound to origin |

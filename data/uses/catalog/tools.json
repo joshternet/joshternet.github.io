@@ -8,7 +8,13 @@
       "kind": "software",
       "category_id": "editor-ide",
       "vendor": "Microsoft",
-      "aliases": ["VS Code", "vscode", "VSCode"],
+      "aliases": [
+        "VS Code",
+        "vscode",
+        "VSCode",
+        "vscode primary",
+        "VSCode IDE"
+      ],
       "website": "https://code.visualstudio.com/",
       "retired": false
     },
@@ -68,7 +74,7 @@
       "kind": "software",
       "category_id": "browser",
       "vendor": "Mozilla",
-      "aliases": [],
+      "aliases": ["firefox browser"],
       "website": "https://www.mozilla.org/firefox/",
       "retired": false
     },
@@ -118,17 +124,17 @@
       "kind": "software",
       "category_id": "terminal-emulator",
       "vendor": "",
-      "aliases": [],
+      "aliases": ["iTerm2"],
       "website": "https://iterm2.com/",
-      "retired": false
+      "retired": true
     },
     {
       "id": "iterm-2",
-      "name": "iTerm 2",
+      "name": "iTerm2",
       "kind": "software",
       "category_id": "terminal-emulator",
       "vendor": "",
-      "aliases": [],
+      "aliases": ["iTerm", "iTerm 2", "iTerm2"],
       "website": "https://iterm2.com/",
       "retired": false
     },
@@ -178,7 +184,11 @@
       "kind": "software",
       "category_id": "password-manager",
       "vendor": "",
-      "aliases": [],
+      "aliases": [
+        "1password password manager",
+        "1Password",
+        "1password secrets"
+      ],
       "website": "https://1password.com/",
       "retired": false
     },
@@ -278,7 +288,7 @@
       "kind": "service",
       "category_id": "edge-cdn",
       "vendor": "",
-      "aliases": [],
+      "aliases": ["cloudflare dns"],
       "website": "https://www.cloudflare.com/",
       "slot_rules": [
         {
@@ -312,7 +322,7 @@
       "kind": "software",
       "category_id": "runtime",
       "vendor": "",
-      "aliases": ["Node"],
+      "aliases": ["Node", "node primary", "node"],
       "website": "https://nodejs.org/",
       "retired": false
     },
@@ -392,7 +402,19 @@
       "kind": "hardware",
       "category_id": "computer",
       "vendor": "Apple",
-      "aliases": ["Mac mini (M4 Pro, 24GB RAM)"],
+      "aliases": [
+        "Mac mini (M4 Pro, 24GB RAM)",
+        "Mac Mini",
+        "Mac Min M2",
+        "Mac mini M2",
+        "Mac mini M4",
+        "Mac Mini M4",
+        "mac mini m4",
+        "M4 Mac mini",
+        "Apple Mac mini M4",
+        "Mac mini M4 Pro",
+        "Mac mini with an Apple M4 chip"
+      ],
       "website": "https://www.apple.com/mac-mini/",
       "retired": false
     },
@@ -402,7 +424,7 @@
       "kind": "hardware",
       "category_id": "phone",
       "vendor": "",
-      "aliases": [],
+      "aliases": ["iphone 17 pro", "iPhone 17 Pro", "Apple iPhone 17 Pro"],
       "website": "https://www.apple.com/iphone-17-pro/",
       "retired": false
     },
@@ -417,6 +439,20 @@
       "retired": false
     },
     {
+      "id": "samsung-s9-plus",
+      "name": "Samsung S9+",
+      "kind": "hardware",
+      "category_id": "phone",
+      "vendor": "Samsung",
+      "aliases": [
+        "Samsung Galaxy S9+",
+        "Samsung S9 Plus",
+        "Samsung Galaxy S9 Plus"
+      ],
+      "website": "https://www.samsung.com/us/smartphones/galaxy-s9/",
+      "retired": false
+    },
+    {
       "id": "apple-magic-mouse",
       "name": "Apple Magic Mouse",
       "kind": "hardware",
@@ -424,6 +460,16 @@
       "vendor": "",
       "aliases": [],
       "website": "https://www.apple.com/magic-mouse/",
+      "retired": false
+    },
+    {
+      "id": "apple-magic-trackpad",
+      "name": "Apple Magic Trackpad",
+      "kind": "hardware",
+      "category_id": "mouse",
+      "vendor": "",
+      "aliases": ["Magic Trackpad", "Apple Trackpad"],
+      "website": "https://www.apple.com/magic-trackpad/",
       "retired": false
     },
     {
@@ -437,12 +483,22 @@
       "retired": false
     },
     {
+      "id": "mx-master-2s",
+      "name": "MX Master 2S",
+      "kind": "hardware",
+      "category_id": "mouse",
+      "vendor": "Logitech",
+      "aliases": ["Logitech MX Master 2S", "MX Master 2S"],
+      "website": "https://www.logitech.com/en-us/products/mice/mx-master-2s-mac.910-005131.html",
+      "retired": false
+    },
+    {
       "id": "mx-master-3s",
       "name": "MX Master 3S",
       "kind": "hardware",
       "category_id": "mouse",
-      "vendor": "",
-      "aliases": [],
+      "vendor": "Logitech",
+      "aliases": ["Logitech MX Master 3S", "MX Master 3S", "3S mice"],
       "website": "https://www.logitech.com/en-us/shop/p/mx-master-3s",
       "retired": false
     },
@@ -464,6 +520,16 @@
       "vendor": "",
       "aliases": [],
       "website": "https://chatgpt.com/",
+      "retired": false
+    },
+    {
+      "id": "github-copilot",
+      "name": "GitHub Copilot",
+      "kind": "software",
+      "category_id": "ai-assistant",
+      "vendor": "GitHub",
+      "aliases": ["Github Copilot"],
+      "website": "https://github.com/features/copilot",
       "retired": false
     },
     {
@@ -637,6 +703,36 @@
       "retired": false
     },
     {
+      "id": "linux",
+      "name": "Linux",
+      "kind": "software",
+      "category_id": "operating-system",
+      "vendor": "",
+      "aliases": ["Linux 🐧"],
+      "website": "https://kernel.org/",
+      "retired": false
+    },
+    {
+      "id": "macos",
+      "name": "macOS",
+      "kind": "software",
+      "category_id": "operating-system",
+      "vendor": "Apple",
+      "aliases": ["MacOS", "MacOS 🍎", "macOS 🍎", "MacOS Ventura"],
+      "website": "https://www.apple.com/macos/",
+      "retired": false
+    },
+    {
+      "id": "windows",
+      "name": "Windows",
+      "kind": "software",
+      "category_id": "operating-system",
+      "vendor": "Microsoft",
+      "aliases": ["Windows 🪟"],
+      "website": "https://www.microsoft.com/windows",
+      "retired": false
+    },
+    {
       "id": "debian",
       "name": "Debian",
       "kind": "software",
@@ -752,7 +848,7 @@
       "kind": "software",
       "category_id": "git-forge",
       "vendor": "",
-      "aliases": [],
+      "aliases": ["github code"],
       "website": "https://github.com/",
       "retired": false
     },
@@ -794,6 +890,16 @@
       "vendor": "",
       "aliases": [],
       "website": "https://berkeleygraphics.com/typefaces/berkeley-mono/",
+      "retired": false
+    },
+    {
+      "id": "fira-code",
+      "name": "Fira Code",
+      "kind": "software",
+      "category_id": "font",
+      "vendor": "",
+      "aliases": ["FiraCode", "Fira Code font"],
+      "website": "https://github.com/tonsky/FiraCode",
       "retired": false
     },
     {
@@ -901,9 +1007,13 @@
       "name": "MINISFORUM MS-A2",
       "kind": "hardware",
       "category_id": "computer",
-      "vendor": "",
-      "aliases": ["MINISFORUM AMD Ryzen 9 9955HX MS-A2 Mini PC"],
-      "website": "",
+      "vendor": "MINISFORUM",
+      "aliases": [
+        "MINISFORUM AMD Ryzen 9 9955HX MS-A2 Mini PC",
+        "MINISFORUM MS-A2 workstation",
+        "Minisforum MS-A2"
+      ],
+      "website": "https://store.minisforum.com/products/minisforum-ms-a2-workstation",
       "retired": false
     },
     {
@@ -911,9 +1021,13 @@
       "name": "MINISFORUM MS-01",
       "kind": "hardware",
       "category_id": "computer",
-      "vendor": "",
-      "aliases": ["MINISFORUM Intel i5-12600H MS-01 Mini PC - 64 GB - 12 TB"],
-      "website": "",
+      "vendor": "MINISFORUM",
+      "aliases": [
+        "MINISFORUM Intel i5-12600H MS-01 Mini PC - 64 GB - 12 TB",
+        "MINISFORUM MS-01 workstation",
+        "Minisforum MS-01"
+      ],
+      "website": "https://store.minisforum.com/products/minisforum-ms-01-workstation",
       "retired": false
     },
     {
@@ -924,6 +1038,60 @@
       "vendor": "",
       "aliases": ["Framework laptop (work)"],
       "website": "https://frame.work/",
+      "retired": false
+    },
+    {
+      "id": "creality-k1-max",
+      "name": "Creality K1 Max",
+      "kind": "hardware",
+      "category_id": "3d-printer-fdm",
+      "vendor": "Creality",
+      "aliases": ["K1 Max", "Creality K1 Max 3D printer"],
+      "website": "https://www.creality.com/products/creality-k1-max-3d-printer",
+      "retired": false
+    },
+    {
+      "id": "creality-cr-10-mini",
+      "name": "Creality CR-10 Mini",
+      "kind": "hardware",
+      "category_id": "3d-printer-fdm",
+      "vendor": "Creality",
+      "aliases": ["CR-10 Mini", "Creality CR10 Mini"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "creality-cr-10s",
+      "name": "Creality CR-10S",
+      "kind": "hardware",
+      "category_id": "3d-printer-fdm",
+      "vendor": "Creality",
+      "aliases": ["CR-10S", "Creality CR10S"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "flsun-qq-s-pro",
+      "name": "FLSUN QQ-S Pro",
+      "kind": "hardware",
+      "category_id": "3d-printer-fdm",
+      "vendor": "FLSUN",
+      "aliases": [
+        "QQ-S Pro",
+        "FLSUN QQ-S Pro delta",
+        "FLSUN QQ-S Pro delta printer"
+      ],
+      "website": "https://flsun3d.com/pages/qq-s-pro",
+      "retired": false
+    },
+    {
+      "id": "creality-ender-3-v2",
+      "name": "Creality Ender 3 V2",
+      "kind": "hardware",
+      "category_id": "3d-printer-fdm",
+      "vendor": "Creality",
+      "aliases": ["Ender 3 v2", "Ender 3 V2", "Creality Ender 3 v2"],
+      "website": "https://www.creality3dofficial.com/products/ender-3-v2-3d-printer",
       "retired": false
     },
     {
@@ -953,6 +1121,36 @@
       "category_id": "game-console",
       "vendor": "",
       "aliases": [],
+      "website": "",
+      "retired": true
+    },
+    {
+      "id": "nintendo-3ds-xl",
+      "name": "Nintendo 3DS XL",
+      "kind": "hardware",
+      "category_id": "game-console",
+      "vendor": "",
+      "aliases": ["3DS XL"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "nintendo-switch-oled",
+      "name": "Nintendo Switch OLED",
+      "kind": "hardware",
+      "category_id": "game-console",
+      "vendor": "",
+      "aliases": ["Switch OLED"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "nintendo-switch-2",
+      "name": "Nintendo Switch 2",
+      "kind": "hardware",
+      "category_id": "game-console",
+      "vendor": "",
+      "aliases": ["Switch 2"],
       "website": "",
       "retired": false
     },
@@ -1082,7 +1280,7 @@
       "kind": "hardware",
       "category_id": "chair",
       "vendor": "",
-      "aliases": [],
+      "aliases": ["Herman Miller Aeron Chair", "Aeron Chair", "Aeron"],
       "website": "https://www.hermanmiller.com/products/seating/office-chairs/aeron-chairs/",
       "retired": false
     },
@@ -1357,6 +1555,16 @@
       "retired": false
     },
     {
+      "id": "qcy-earbuds",
+      "name": "QCY Earbuds",
+      "kind": "hardware",
+      "category_id": "in-ear-monitor",
+      "vendor": "QCY",
+      "aliases": ["QCY Earbud", "QCY earbuds"],
+      "website": "",
+      "retired": false
+    },
+    {
       "id": "unitek-kvm",
       "name": "Unitek KVM switch",
       "kind": "hardware",
@@ -1417,6 +1625,22 @@
       "retired": false
     },
     {
+      "id": "dell-s3425dw",
+      "name": "Dell S3425DW",
+      "kind": "hardware",
+      "category_id": "display",
+      "vendor": "Dell",
+      "aliases": [
+        "dell s3425dw 34\"",
+        "Dell S3425DW 34\"",
+        "dell s3425dw",
+        "Dell S3425DW 34-inch",
+        "Dell S3425DW monitor"
+      ],
+      "website": "",
+      "retired": false
+    },
+    {
       "id": "odyssey-g9",
       "name": "Samsung Odyssey G9",
       "kind": "hardware",
@@ -1442,7 +1666,10 @@
       "kind": "hardware",
       "category_id": "keyboard",
       "vendor": "",
-      "aliases": ["TONTRU 101-key mechanical keyboard. It’s affordable"],
+      "aliases": [
+        "TONTRU 101-key mechanical keyboard",
+        "TONTRU 101-key mechanical keyboard. It’s affordable"
+      ],
       "website": "",
       "retired": false
     },
@@ -1494,6 +1721,900 @@
       "vendor": "",
       "aliases": [],
       "website": "https://flighty.com/",
+      "retired": false
+    },
+    {
+      "id": "alfred",
+      "name": "Alfred",
+      "kind": "software",
+      "category_id": "launcher",
+      "vendor": "",
+      "aliases": ["alfred launcher"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "brewbar",
+      "name": "BrewBar",
+      "kind": "software",
+      "category_id": "package-manager",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "adobe-photoshop",
+      "name": "Adobe Photoshop",
+      "kind": "software",
+      "category_id": "design",
+      "vendor": "",
+      "aliases": ["Photoshop"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "adobe-lightroom-classic",
+      "name": "Adobe Lightroom Classic",
+      "kind": "software",
+      "category_id": "design",
+      "vendor": "",
+      "aliases": ["Lightroom Classic", "Adobe Lightroom"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "adobe-creative-cloud",
+      "name": "Adobe Creative Cloud",
+      "kind": "software",
+      "category_id": "design",
+      "vendor": "",
+      "aliases": ["Creative Cloud"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "canva",
+      "name": "Canva",
+      "kind": "software",
+      "category_id": "design",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "inkscape",
+      "name": "Inkscape",
+      "kind": "software",
+      "category_id": "design",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "photopea",
+      "name": "Photopea",
+      "kind": "software",
+      "category_id": "design",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "material-theme",
+      "name": "Material Theme",
+      "kind": "software",
+      "category_id": "theme",
+      "vendor": "",
+      "aliases": ["Material Theme and Icons"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "ipad",
+      "name": "iPad",
+      "kind": "hardware",
+      "category_id": "tablet",
+      "vendor": "",
+      "aliases": ["Apple iPad", "ipad a16"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "ipad-air",
+      "name": "iPad Air",
+      "kind": "hardware",
+      "category_id": "tablet",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "ipad-air-4",
+      "name": "iPad Air 4",
+      "kind": "hardware",
+      "category_id": "tablet",
+      "vendor": "",
+      "aliases": ["iPad Air (4th generation)", "iPad Air 4th generation"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "apple-watch-ultra-2",
+      "name": "Apple Watch Ultra 2",
+      "kind": "hardware",
+      "category_id": "watch",
+      "vendor": "",
+      "aliases": ["apple watch ultra 2"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "airpods-max",
+      "name": "AirPods Max",
+      "kind": "hardware",
+      "category_id": "headphones",
+      "vendor": "",
+      "aliases": ["airpods max"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "iphone-12-pro-max",
+      "name": "iPhone 12 Pro Max",
+      "kind": "hardware",
+      "category_id": "phone",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "iphone-13",
+      "name": "iPhone 13",
+      "kind": "hardware",
+      "category_id": "phone",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "iphone-13-mini",
+      "name": "iPhone 13 mini",
+      "kind": "hardware",
+      "category_id": "phone",
+      "vendor": "",
+      "aliases": ["iPhone 13 Mini"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "samsung-55-tv",
+      "name": "Samsung 55\" TV",
+      "kind": "hardware",
+      "category_id": "display",
+      "vendor": "Samsung",
+      "aliases": [
+        "Samsung 55\" TV (Monitor)",
+        "Samsung 55-inch TV",
+        "Samsung 55\" Monitor"
+      ],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "oppo-find-x7-ultra",
+      "name": "Oppo Find X7 Ultra",
+      "kind": "hardware",
+      "category_id": "phone",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "aoc-u3277pwqu",
+      "name": "AOC U3277PWQU",
+      "kind": "hardware",
+      "category_id": "display",
+      "vendor": "",
+      "aliases": ["AOC U3277PWQU Monitor"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "innocn-32m2v",
+      "name": "INNOCN 32M2V",
+      "kind": "hardware",
+      "category_id": "display",
+      "vendor": "",
+      "aliases": ["INNOCN 32m2v"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "lg-27un850-w",
+      "name": "LG 27UN850-W",
+      "kind": "hardware",
+      "category_id": "display",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "dji-osmo-pocket-3",
+      "name": "DJI Osmo Pocket 3",
+      "kind": "hardware",
+      "category_id": "camera",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "insta360-x3",
+      "name": "Insta360 X3",
+      "kind": "hardware",
+      "category_id": "camera",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "sony-alpha-7c-ii",
+      "name": "Sony Alpha 7C II",
+      "kind": "hardware",
+      "category_id": "camera",
+      "vendor": "",
+      "aliases": ["Sony A7C II"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "tamron-28-200",
+      "name": "Tamron 28-200",
+      "kind": "hardware",
+      "category_id": "camera",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "wacom-bamboo-capture",
+      "name": "Wacom Bamboo Capture",
+      "kind": "hardware",
+      "category_id": "design",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "shure-se215",
+      "name": "Shure SE215",
+      "kind": "hardware",
+      "category_id": "in-ear-monitor",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "tozo-o2",
+      "name": "TOZO O2",
+      "kind": "hardware",
+      "category_id": "headphones",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "a4tech-fbx51c",
+      "name": "A4Tech FBX51C",
+      "kind": "hardware",
+      "category_id": "mouse",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "a4tech-hu-10",
+      "name": "A4Tech HU-10",
+      "kind": "hardware",
+      "category_id": "mouse",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "ugreen-mouse4000",
+      "name": "UGREEN Mouse4000",
+      "kind": "hardware",
+      "category_id": "mouse",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "nuphy",
+      "name": "NuPhy",
+      "kind": "hardware",
+      "category_id": "keyboard",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "macally-ergonomic-keyboard",
+      "name": "Macally Ergonomic Keyboard",
+      "kind": "hardware",
+      "category_id": "keyboard",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "mozoter",
+      "name": "MOZOTER",
+      "kind": "hardware",
+      "category_id": "keyboard",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "sk-hynix-platinum-p41",
+      "name": "SK Hynix Platinum P41",
+      "kind": "hardware",
+      "category_id": "storage",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "eletab-dual-arm",
+      "name": "EleTab Dual Arm",
+      "kind": "hardware",
+      "category_id": "mount",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "telesin-magnetic-neck-mount",
+      "name": "TELESIN Magnetic Neck Mount",
+      "kind": "hardware",
+      "category_id": "mount",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "ten-one-design-mountie",
+      "name": "Ten One Design Mountie",
+      "kind": "hardware",
+      "category_id": "mount",
+      "vendor": "",
+      "aliases": ["Mountie"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "apple-terminal",
+      "name": "Terminal",
+      "kind": "software",
+      "category_id": "terminal-emulator",
+      "vendor": "",
+      "aliases": ["Terminal.app"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "docker",
+      "name": "Docker",
+      "kind": "software",
+      "category_id": "containers",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "homebrew",
+      "name": "Homebrew",
+      "kind": "software",
+      "category_id": "package-manager",
+      "vendor": "",
+      "aliases": ["Brew"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "ghostty",
+      "name": "Ghostty",
+      "kind": "software",
+      "category_id": "terminal-emulator",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "oh-my-zsh",
+      "name": "Oh My Zsh",
+      "kind": "software",
+      "category_id": "shell",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "nvm",
+      "name": "nvm",
+      "kind": "software",
+      "category_id": "package-manager",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "bun",
+      "name": "Bun",
+      "kind": "software",
+      "category_id": "runtime",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "nano",
+      "name": "nano",
+      "kind": "software",
+      "category_id": "editor-ide",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "zoxide",
+      "name": "zoxide",
+      "kind": "software",
+      "category_id": "shell",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "hugo",
+      "name": "Hugo",
+      "kind": "software",
+      "category_id": "static-site-generator",
+      "vendor": "",
+      "aliases": [],
+      "website": "https://gohugo.io/",
+      "retired": false
+    },
+    {
+      "id": "postman",
+      "name": "Postman",
+      "kind": "software",
+      "category_id": "api-client",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "tableplus",
+      "name": "TablePlus",
+      "kind": "software",
+      "category_id": "db-client",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "sentry",
+      "name": "Sentry",
+      "kind": "service",
+      "category_id": "monitoring",
+      "vendor": "",
+      "aliases": ["Sentry.io"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "proxmox",
+      "name": "Proxmox",
+      "kind": "software",
+      "category_id": "virtualization",
+      "vendor": "",
+      "aliases": ["Proxmox VE", "Proxmox Virtual Environment"],
+      "website": "https://www.proxmox.com/",
+      "retired": false
+    },
+    {
+      "id": "railway",
+      "name": "Railway",
+      "kind": "service",
+      "category_id": "hosting",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "cloudflare-workers",
+      "name": "Cloudflare Workers",
+      "kind": "service",
+      "category_id": "edge-cdn",
+      "vendor": "",
+      "aliases": ["cloudflare workers"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "migadu",
+      "name": "Migadu",
+      "kind": "service",
+      "category_id": "email-host",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "protonmail",
+      "name": "ProtonMail",
+      "kind": "service",
+      "category_id": "email-app",
+      "vendor": "",
+      "aliases": ["Proton Mail"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "nordvpn",
+      "name": "NordVPN",
+      "kind": "software",
+      "category_id": "vpn",
+      "vendor": "",
+      "aliases": ["Nord VPN"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "discord",
+      "name": "Discord",
+      "kind": "software",
+      "category_id": "chat",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "slack",
+      "name": "Slack",
+      "kind": "software",
+      "category_id": "chat",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "dropbox",
+      "name": "Dropbox",
+      "kind": "software",
+      "category_id": "file-sync",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "zapier",
+      "name": "Zapier",
+      "kind": "software",
+      "category_id": "deploy-hook",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "kind": "software",
+      "category_id": "notes",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "joplin",
+      "name": "Joplin",
+      "kind": "software",
+      "category_id": "notes",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "logseq",
+      "name": "LogSeq",
+      "kind": "software",
+      "category_id": "notes",
+      "vendor": "",
+      "aliases": ["Logseq"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "reflect",
+      "name": "Reflect",
+      "kind": "software",
+      "category_id": "notes",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "feedbin",
+      "name": "Feedbin",
+      "kind": "software",
+      "category_id": "feed-reader",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "navidrome",
+      "name": "Navidrome",
+      "kind": "software",
+      "category_id": "media-service",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "calibre",
+      "name": "Calibre",
+      "kind": "software",
+      "category_id": "reading-app",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "yacreader",
+      "name": "YACReader",
+      "kind": "software",
+      "category_id": "reading-app",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "blackhole",
+      "name": "BlackHole",
+      "kind": "software",
+      "category_id": "audio-adapter",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "gifski",
+      "name": "Gifski",
+      "kind": "software",
+      "category_id": "video",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "shottr",
+      "name": "Shottr",
+      "kind": "software",
+      "category_id": "video",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "spectacle",
+      "name": "Spectacle",
+      "kind": "software",
+      "category_id": "launcher",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "quicktime",
+      "name": "QuickTime",
+      "kind": "software",
+      "category_id": "video",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "vlc",
+      "name": "VLC",
+      "kind": "software",
+      "category_id": "media-service",
+      "vendor": "",
+      "aliases": ["VLC Player"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "commanderone",
+      "name": "CommanderOne",
+      "kind": "software",
+      "category_id": "file-sync",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "grammarly",
+      "name": "Grammarly",
+      "kind": "software",
+      "category_id": "writing",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "headspace",
+      "name": "Headspace",
+      "kind": "software",
+      "category_id": "study-software",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "lose-it",
+      "name": "Lose It!",
+      "kind": "software",
+      "category_id": "health-fitness",
+      "vendor": "",
+      "aliases": ["Lose It", "LoseIt"],
+      "website": "https://www.loseit.com/",
+      "retired": false
+    },
+    {
+      "id": "ynab",
+      "name": "YNAB",
+      "kind": "software",
+      "category_id": "personal-finance",
+      "vendor": "",
+      "aliases": ["You Need A Budget"],
+      "website": "https://www.ynab.com/",
+      "retired": false
+    },
+    {
+      "id": "ticktick",
+      "name": "TickTick",
+      "kind": "software",
+      "category_id": "tasks",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "todoist",
+      "name": "Todoist",
+      "kind": "software",
+      "category_id": "tasks",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "toggl",
+      "name": "Toggl",
+      "kind": "software",
+      "category_id": "tasks",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "savvycal",
+      "name": "SavvyCal",
+      "kind": "software",
+      "category_id": "tasks",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "convertkit",
+      "name": "ConvertKit",
+      "kind": "service",
+      "category_id": "analytics",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "namecheap",
+      "name": "Namecheap",
+      "kind": "service",
+      "category_id": "registrar",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "envato-elements",
+      "name": "Envato Elements",
+      "kind": "service",
+      "category_id": "design",
+      "vendor": "",
+      "aliases": ["Envato"],
+      "website": "",
+      "retired": false
+    },
+    {
+      "id": "skillshare",
+      "name": "Skillshare",
+      "kind": "service",
+      "category_id": "study-software",
+      "vendor": "",
+      "aliases": [],
+      "website": "",
       "retired": false
     }
   ]

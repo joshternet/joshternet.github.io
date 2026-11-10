@@ -1,0 +1,36 @@
+{
+  "description": "Multi-family coordinated observation seeds. Bodies are existing real-member or reviewed fixtures; one multi-family site is joshuamorris.info /uses/.",
+  "member_origin": "https://joshuamorris.info",
+  "pages": [
+    {
+      "family": "uses",
+      "url": "https://joshuamorris.info/uses/",
+      "file": "test/fixtures/uses/members/joshuamorris.info.html"
+    },
+    {
+      "family": "seeking",
+      "url": "https://joshua.example/seeking/",
+      "file": "test/fixtures/seeking/minimal-wanted.html"
+    },
+    {
+      "family": "events",
+      "url": "https://joshua.example/events/",
+      "file": "test/fixtures/events/upcoming-event.html"
+    },
+    {
+      "family": "showcase",
+      "url": "https://joshua.example/projects/",
+      "file": "test/fixtures/creative/members/morris-experiments.html"
+    },
+    {
+      "family": "articles",
+      "url": "https://joshua.example/notes/",
+      "file": "test/fixtures/html/indie-comics-hub-blog.html"
+    },
+    {
+      "family": "connections",
+      "url": "https://joshua.example/friends/",
+      "file": "test/fixtures/html/steele/home.html"
+    }
+  ]
+}

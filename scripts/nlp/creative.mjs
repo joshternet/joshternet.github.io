@@ -10,7 +10,7 @@
 
 import { isShowcaseChromePath } from "../network/slash-pages.mjs";
 import { projectsFromToolIndexes } from "./appearances.mjs";
-import { publishedAtFromPageHtml } from "./content.mjs";
+import { contentIdentityKey, publishedAtFromPageHtml } from "./content.mjs";
 import { isDirectoryIndexPath } from "./page-role.mjs";
 import { buildTopicEvidence } from "./evidence.mjs";
 import {
@@ -24,10 +24,35 @@ import {
   schemaTypesFromHtml,
   shareDescriptionFromHtml,
 } from "./text.mjs";
+import {
+  youtubeThumbnailUrl,
+  youtubeVideoIdFromHref,
+} from "./youtube-feeds.mjs";
 
 /** Index/homepage chrome blurbs that are not work descriptions. */
 const CHROME_SUMMARY_RE =
   /^(elsewhere|read more|learn more|click here|more)\.?$/i;
+
+/**
+ * Content identity with hash stripped so OG and schema #fragment rows merge.
+ * @param {string} url
+ * @returns {string}
+ */
+function creativeUrlIdentity(url) {
+  const key = contentIdentityKey({ url });
+
+  if (key) {
+    return key;
+  }
+
+  try {
+    const parsed = new URL(url);
+    parsed.hash = "";
+    return `url:${parsed.href}`;
+  } catch {
+    return `url:${String(url || "").split("#")[0]}`;
+  }
+}
 
 /**
  * Drops title-echo and chrome CTA blurbs.
@@ -469,7 +494,7 @@ function itemFromJsonLdNode(node, pageUrl, siteOrigin, observedAt) {
   const actionLabel = actionLabelForItem(contentType, availability);
 
   return {
-    identity: `url:${url}`,
+    identity: creativeUrlIdentity(url),
     url,
     site_origin: siteOrigin,
     title,
@@ -565,7 +590,7 @@ export function creativeItemsFromFigures(
 
     const workTitle = title || caption;
     items.push({
-      identity: `url:${url}`,
+      identity: creativeUrlIdentity(url),
       url,
       site_origin: siteOrigin,
       title: workTitle,
@@ -682,11 +707,11 @@ export function creativeItemsFromAlbumList(
 
       if (year && title !== year) {
         // Long list titles ("An assortment of photos from 2026") become summary.
-        albumTitle = year;
-        albumSummary = usableCreativeSummary(title, year);
+        albumTitle = `${year} photos`;
+        albumSummary = usableCreativeSummary(title, albumTitle);
       } else if (year) {
-        albumTitle = year;
-        albumSummary = usableCreativeSummary(altText, year);
+        albumTitle = `${year} photos`;
+        albumSummary = usableCreativeSummary(altText, albumTitle);
       }
     } catch {
       albumSummary = usableCreativeSummary(altText, albumTitle);
@@ -694,7 +719,7 @@ export function creativeItemsFromAlbumList(
 
     seen.add(url);
     items.push({
-      identity: `url:${url}`,
+      identity: creativeUrlIdentity(url),
       url,
       site_origin: siteOrigin,
       title: albumTitle,
@@ -714,8 +739,20 @@ export function creativeItemsFromAlbumList(
 }
 
 /**
+ * True when the page is a sounds / music / tracks / discography index.
+ * @param {string} pathname
+ * @returns {boolean}
+ */
+function isSoundsIndexPath(pathname) {
+  return /\/(sounds?|music|tracks|discography)(?:\/|$)/i.test(
+    String(pathname || ""),
+  );
+}
+
+/**
  * External listen links on /sounds/ or /music/ indexes (YouTube, Bandcamp, …).
- * Work identity stays on the member page; listen action points off-origin.
+ * Card target is the listen URL (index stays in source provenance). YouTube
+ * rows get an hqdefault poster when the video id parses.
  * @param {string} html
  * @param {string} pageUrl
  * @param {string} siteOrigin
@@ -738,7 +775,15 @@ export function creativeItemsFromExternalListenLinks(
     return items;
   }
 
-  if (!/\/(sounds?|music|tracks|discography)(?:\/|$)/i.test(path)) {
+  if (!isSoundsIndexPath(path)) {
+    return items;
+  }
+
+  let siteOriginUrl;
+
+  try {
+    siteOriginUrl = new URL(siteOrigin);
+  } catch {
     return items;
   }
 
@@ -764,7 +809,7 @@ export function creativeItemsFromExternalListenLinks(
       continue;
     }
 
-    if (absolute.origin === new URL(siteOrigin).origin) {
+    if (absolute.origin === siteOriginUrl.origin) {
       continue;
     }
 
@@ -791,9 +836,11 @@ export function creativeItemsFromExternalListenLinks(
     }
 
     seen.add(identity);
+    const videoId = youtubeVideoIdFromHref(listenUrl);
+    const image = videoId ? youtubeThumbnailUrl(videoId) : "";
     items.push({
       identity,
-      url: pageUrl,
+      url: listenUrl,
       site_origin: siteOrigin,
       title,
       summary: "",
@@ -804,6 +851,8 @@ export function creativeItemsFromExternalListenLinks(
       source: { kind: "sounds-listen-link", page: pageUrl },
       source_feeds: [{ type: "sounds-listen-link", url: pageUrl }],
       observed_at: observedAt,
+      action_label: "Listen",
+      action_url: listenUrl,
       actions: [
         {
           label: "Listen",
@@ -811,6 +860,136 @@ export function creativeItemsFromExternalListenLinks(
           type: "listen",
         },
       ],
+      ...(image ? { image } : {}),
+    });
+  }
+
+  return items;
+}
+
+/**
+ * Off-origin band/project cards listed as h2/h3 links on /sounds/ indexes
+ * (joshtronic-shaped: heading link + img.project + blurb).
+ * @param {string} html
+ * @param {string} pageUrl
+ * @param {string} siteOrigin
+ * @param {string} observedAt
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function creativeItemsFromSoundsProjectLinks(
+  html,
+  pageUrl,
+  siteOrigin,
+  observedAt,
+) {
+  const items = [];
+  const seen = new Set();
+  let path = "/";
+
+  try {
+    path = new URL(pageUrl).pathname.toLowerCase();
+  } catch {
+    return items;
+  }
+
+  if (!isSoundsIndexPath(path)) {
+    return items;
+  }
+
+  let siteOriginUrl;
+
+  try {
+    siteOriginUrl = new URL(siteOrigin);
+  } catch {
+    return items;
+  }
+
+  const headingPattern =
+    /<h([23])\b[^>]*>\s*<a\b([^>]*)href\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))([^>]*)>([\s\S]*?)<\/a\s*>\s*<\/h\1>/gi;
+  let match;
+
+  while (
+    (match = headingPattern.exec(html)) &&
+    items.length < MAX_CREATIVE_WORKS_PER_PAGE
+  ) {
+    const href = decodeHrefForParse(match[3] ?? match[4] ?? match[5]);
+    const title = normalizeExtractedText(match[7].replace(/<[^>]+>/g, " "));
+
+    if (!href || !title || title.length < 2) {
+      continue;
+    }
+
+    let absolute;
+
+    try {
+      absolute = new URL(href, pageUrl);
+    } catch {
+      continue;
+    }
+
+    if (absolute.origin === siteOriginUrl.origin) {
+      continue;
+    }
+
+    if (!/^https?:$/i.test(absolute.protocol)) {
+      continue;
+    }
+
+    const host = absolute.hostname.toLowerCase();
+
+    // Streaming listen hosts belong to creativeItemsFromExternalListenLinks.
+    if (
+      /(youtube\.com|youtu\.be|bandcamp\.com|soundcloud\.com|spotify\.com|vimeo\.com)/.test(
+        host,
+      )
+    ) {
+      continue;
+    }
+
+    const projectUrl = absolute.href;
+    const identity = `sounds-project:${siteOrigin}:${projectUrl}`;
+
+    if (seen.has(identity)) {
+      continue;
+    }
+
+    const afterHeading = html.slice(match.index + match[0].length);
+    const untilNextHeading = afterHeading.split(/<h[23]\b/i)[0] || "";
+    const imgMatch =
+      untilNextHeading.match(
+        /<img\b[^>]*class\s*=\s*(?:"[^"]*\bproject\b[^"]*"|'[^']*\bproject\b[^']*'|[^\s>]*\bproject\b)[^>]*>/i,
+      ) || untilNextHeading.match(/<img\b[^>]*>/i);
+    const imgTag = imgMatch?.[0] || "";
+    const srcMatch = imgTag.match(
+      /\bsrc\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i,
+    );
+    const rawImg = srcMatch?.[1] ?? srcMatch?.[2] ?? srcMatch?.[3] ?? "";
+    const imageAbs = rawImg ? absoluteUrl(rawImg, pageUrl) : "";
+    const image =
+      typeof imageAbs === "string" && imageAbs.startsWith("https://")
+        ? imageAbs
+        : "";
+    const paragraphMatch = untilNextHeading.match(/<p\b[^>]*>([\s\S]*?)<\/p>/i);
+    const summary = usableCreativeSummary(
+      paragraphMatch ? paragraphMatch[1].replace(/<[^>]+>/g, " ") : "",
+      title,
+    );
+
+    seen.add(identity);
+    items.push({
+      identity,
+      url: projectUrl,
+      site_origin: siteOrigin,
+      title,
+      summary,
+      content_type: "music_recording",
+      page_role: "project",
+      language: null,
+      declared_topics: [],
+      source: { kind: "sounds-project-link", page: pageUrl },
+      source_feeds: [{ type: "sounds-project-link", url: pageUrl }],
+      observed_at: observedAt,
+      ...(image ? { image } : {}),
     });
   }
 
@@ -1017,7 +1196,7 @@ export function creativeItemsFromIndexLinks(
   const path = new URL(pageUrl).pathname.toLowerCase();
   const comicsHub = isComicsHubPath(path);
   const indexRoots =
-    /^\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|paintings?|fiction|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|podcasts?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)(?:\/|$)/i;
+    /^\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|paintings?|graphics?|fiction|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|podcasts?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)(?:\/|$)/i;
 
   if (!indexRoots.test(path.replace(/\/+$/, "") + "/")) {
     return items;
@@ -1150,7 +1329,7 @@ export function creativeItemsFromIndexLinks(
 
     seen.add(url);
     items.push({
-      identity: `url:${url}`,
+      identity: creativeUrlIdentity(url),
       url,
       site_origin: siteOrigin,
       title,
@@ -1276,6 +1455,21 @@ export function collectCreativeWorks(pages, meta) {
     }
 
     for (const item of creativeItemsFromExternalListenLinks(
+      page.html,
+      page.url,
+      siteOrigin,
+      observedAt,
+    )) {
+      if (seen.has(String(item.identity))) {
+        continue;
+      }
+
+      applyPageLanguage(item, pageLang);
+      seen.add(String(item.identity));
+      items.push(item);
+    }
+
+    for (const item of creativeItemsFromSoundsProjectLinks(
       page.html,
       page.url,
       siteOrigin,
@@ -1443,7 +1637,7 @@ export function isCreativeIndexPath(pathname) {
     .toLowerCase()}`;
 
   const candidate = `${lower}/`;
-  return /^\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|paintings?|fiction|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|podcasts?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)(?:\/|$)/.test(
+  return /^\/(gallery|galleries|albums|photography|photos|art|illustration|artwork|paintings?|graphics?|fiction|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|podcasts?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)(?:\/|$)/.test(
     candidate,
   );
 }
@@ -1543,6 +1737,15 @@ const NON_PROJECT_SEGMENTS = new Set([
   "html-sitemap",
   "collections",
   "tools",
+  // Licensing / reuse pages are not Showcase works.
+  "image-use",
+  "imageuse",
+  "licensing",
+  "license",
+  "attribution",
+  "copyright",
+  "reuse",
+  "permissions",
 ]);
 
 /**
@@ -1843,7 +2046,7 @@ export function creativeItemsFromHomepageLinks(
 
     seen.add(url);
     items.push({
-      identity: `url:${url}`,
+      identity: creativeUrlIdentity(url),
       url,
       site_origin: siteOrigin,
       title,
@@ -1958,7 +2161,7 @@ export function creativeItemsFromProjectsIndex(
 
     seen.add(url);
     items.push({
-      identity: `url:${url}`,
+      identity: creativeUrlIdentity(url),
       url,
       site_origin: siteOrigin,
       title,
@@ -2053,7 +2256,7 @@ export function creativeItemsFromOpenGraph(
 
   return [
     {
-      identity: `url:${url}`,
+      identity: creativeUrlIdentity(url),
       url,
       site_origin: siteOrigin,
       title,

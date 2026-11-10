@@ -80,6 +80,26 @@ test("outline section headings are not products", () => {
   assert.equal(labels.includes("Visual Studio Code"), true);
 });
 
+test("Website section headings are not phones; paragraph tools stay under Website", () => {
+  const result = extractUsesFromHtml(`
+    <article>
+      <h2>Phone 📱</h2>
+      <h3>Hardware</h3>
+      <p>Samsung S9+</p>
+      <h3>Software</h3>
+      <h2>Website 🌐</h2>
+      <p><a href="https://gohugo.io/">Hugo</a></p>
+    </article>
+  `);
+  const byLabel = new Map(result.items.map((item) => [item.label, item]));
+  assert.equal(byLabel.has("Website 🌐"), false);
+  assert.equal(byLabel.has("Phone 📱"), false);
+  assert.equal(byLabel.has("Hugo"), true);
+  assert.equal(byLabel.get("Hugo").section_path, "Website 🌐");
+  assert.equal(byLabel.has("Samsung S9+"), true);
+  assert.match(byLabel.get("Samsung S9+").section_path, /Phone/);
+});
+
 test("prose links and reason lists are not extra products", () => {
   const result = extractUsesFromHtml(`
     <ul>

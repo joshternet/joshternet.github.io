@@ -15,6 +15,9 @@
     {% assign site_built_display = site.time | date: '%-d %b %Y, %H:%M UTC' %}
     {% assign site_updated_display = site_updated_at | date: '%-d %b %Y, %H:%M UTC' %}
     {% assign frame_sites = site.data.network %}
+    {% if frame_sites == null %}
+      {% assign frame_sites = '' | split: '' %}
+    {% endif %}
     {% capture wander_frame_sources %}
       {% for network_site in frame_sites %}
         {% assign origin_prefix = network_site.k4b | slice: 0, 8 %}

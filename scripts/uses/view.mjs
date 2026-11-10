@@ -9,6 +9,7 @@ import path from "node:path";
 
 import { writeJSONAtomic } from "../nlp/lib.mjs";
 
+import { compareSlotsByCoverage } from "./build-helpers.mjs";
 import { EXTRACTOR_VERSION, USES_SCHEMA_VERSION } from "./constants.mjs";
 import { publicToolName } from "./normalize.mjs";
 import { isEarlySample } from "./validate.mjs";
@@ -223,17 +224,19 @@ export function buildUsesSummary(input) {
   const topTools = (rollup.tools || []).map((tool) =>
     presentRankedTool(tool, memberByOrigin, rollup, websiteByToolId),
   );
-  const slots = (rollup.slots || []).map((slot) => ({
-    id: slot.id,
-    name: slot.name,
-    scope: slot.scope || "",
-    kind: slot.kind || "",
-    denominator: slot.denominator,
-    origins: slot.origins || [],
-    products: (slot.products || []).map((tool) =>
-      presentRankedTool(tool, memberByOrigin, rollup, websiteByToolId),
-    ),
-  }));
+  const slots = (rollup.slots || [])
+    .map((slot) => ({
+      id: slot.id,
+      name: slot.name,
+      scope: slot.scope ? slot.scope : "",
+      kind: slot.kind ? slot.kind : "",
+      denominator: slot.denominator,
+      origins: slot.origins ? slot.origins : [],
+      products: (slot.products ? slot.products : []).map((tool) =>
+        presentRankedTool(tool, memberByOrigin, rollup, websiteByToolId),
+      ),
+    }))
+    .sort(compareSlotsByCoverage);
   const unsorted = collapseClaimsByName(
     (rollup.unsorted || []).map((item) => presentClaim(item, memberByOrigin)),
   );
@@ -243,7 +246,7 @@ export function buildUsesSummary(input) {
     name: item.name,
     relation: item.relation || "",
     parent_slot: item.parent_slot || "",
-    site_count: Array.isArray(item.sources) ? item.sources.length : 0,
+    site_count: item.sources.length,
   }));
 
   const early = isEarlySample(

@@ -92,6 +92,8 @@ test("product headings and chrome headings stay out of the next section", () => 
     .find((element) => $(element).text().includes("Next"));
   assert.equal(sectionPath($, next), "Desk");
   assert.equal(sectionPath($, { type: "tag", name: "li" }), "");
+  assert.equal(sectionPath($, null), "");
+  assert.equal(sectionPath($, { type: "tag" }), "");
   const partial = new Map();
   partial.set(next, 50);
   assert.equal(sectionPath($, next, partial), "");
@@ -99,6 +101,26 @@ test("product headings and chrome headings stay out of the next section", () => 
     .toArray()
     .find((element) => $(element).text().includes("Inside"));
   assert.equal(sectionPath($, inside).includes("Wrapped"), false);
+});
+
+test("sibling h2 sections do not nest under a prior phone-shaped outline", () => {
+  const html = `<article>
+    <h2>Phone 📱</h2>
+    <h3>Hardware</h3>
+    <p>Samsung S9+</p>
+    <h3>Software</h3>
+    <h2>Website 🌐</h2>
+    <p>Hugo</p>
+  </article>`;
+  const $ = loadHtml(html);
+  const phone = $("h2").toArray()[0];
+  const website = $("h2").toArray()[1];
+  const hugo = $("p")
+    .toArray()
+    .find((element) => $(element).text().includes("Hugo"));
+  assert.equal(sectionPath($, phone), "");
+  assert.equal(sectionPath($, website), "");
+  assert.equal(sectionPath($, hugo), "Website 🌐");
 });
 
 test("a permalink hash is not part of the section title", () => {

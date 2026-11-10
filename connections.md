@@ -26,6 +26,9 @@ how independent websites around the Joshternet link to one another, share
 interesting things, and occasionally end up exploring the same ideas.
 
 {% assign network_sites = site.data.network %}
+{% if network_sites == nil %}
+  {% assign network_sites = "" | split: "" %}
+{% endif %}
 {% assign hub_origin = "https://joshternet.org" %}
 {% assign member_sites = "" | split: "" %}
 {% assign hub_sites = "" | split: "" %}

@@ -3,6 +3,7 @@
  * Progressive enhancement for /uses/. HTML summary works without JS.
  * Fetch public JSON when present; recover gracefully from missing assets.
  * Query params are allowlisted. No external chart libraries.
+ * Slot cards use one row per choice. No hover banners or dimming—links stay calm.
  */
 (function () {
   "use strict";
@@ -12,7 +13,7 @@
     "History starts with the first recorded observations. There isn’t enough comparable history to show a trend yet, but you can explore the current anonymous snapshot.";
 
   /**
-   * Publisher label for a tool row. Internal ids stay out of the table.
+   * Publisher label for a tool row. Internal ids stay out of the UI.
    * @param {{ name?: string, tool_id?: string }} tool
    * @returns {string}
    */
@@ -37,14 +38,98 @@
   }
 
   /**
+   * @param {unknown} value
+   * @returns {number|null}
+   */
+  function normalizeShare(value) {
+    if (value === null || value === undefined || value === "") {
+      return null;
+    }
+    const n = Number(value);
+    if (!Number.isFinite(n)) {
+      return null;
+    }
+    return n;
+  }
+
+  /**
+   * Mirrors scripts/uses/slot-chart-shape.mjs for optional card accents.
+   * @param {{ share: number|null }[]} products
+   * @returns {'solo'|'head_to_head'|'even_pack'|'leader_field'|'long_tail'|'overlapping'}
+   */
+  function classifySlotChartShape(products) {
+    const list = Array.isArray(products) ? products : [];
+    const shares = list
+      .map(function (p) {
+        return normalizeShare(p && p.share);
+      })
+      .filter(function (s) {
+        return s !== null;
+      })
+      .sort(function (a, b) {
+        return b - a;
+      });
+
+    if (list.length === 0 || shares.length === 0) {
+      return "solo";
+    }
+
+    if (list.length === 1 || (shares.length === 1 && shares[0] >= 100)) {
+      return "solo";
+    }
+
+    const sum = shares.reduce(function (acc, s) {
+      return acc + s;
+    }, 0);
+    const max = shares[0];
+    const second = shares[1] || 0;
+    const hasClearLeader = max >= second * 2 || (max >= 80 && second < 50);
+
+    if (sum > 105) {
+      if (list.length >= 5) {
+        return "long_tail";
+      }
+      if (list.length >= 3 && hasClearLeader) {
+        return "leader_field";
+      }
+      return "overlapping";
+    }
+
+    if (list.length >= 5) {
+      return "long_tail";
+    }
+
+    if (list.length === 2) {
+      return "head_to_head";
+    }
+
+    const min = shares[shares.length - 1];
+    const spread = max - min;
+
+    if (list.length >= 3 && list.length <= 4 && spread <= 15) {
+      return "even_pack";
+    }
+
+    if (hasClearLeader) {
+      return "leader_field";
+    }
+
+    if (list.length === 3 || list.length === 4) {
+      return "even_pack";
+    }
+
+    return "overlapping";
+  }
+
+  /**
    * @returns {boolean}
    */
   function hasCurrentResults() {
-    const table = document.querySelector("[data-uses-table]");
-    if (!table) {
+    const slots = document.querySelector("[data-uses-slots]");
+    if (!slots) {
       return false;
     }
-    return table.querySelectorAll("tbody tr").length > 0;
+    return slots.querySelectorAll("[data-uses-product]").length > 0;
   }
 
   /**
@@ -59,6 +144,45 @@
   }
 
   /**
+   * @param {Element} card
+   * @returns {{ id: string, name: string, count: number, share: number|null, denominator: number }[]}
+   */
+  function readCardProducts(card) {
+    const denominator = Number(card.getAttribute("data-uses-denominator") || 0);
+    return Array.prototype.map.call(
+      card.querySelectorAll("[data-uses-product]"),
+      function (node) {
+        return {
+          id: node.getAttribute("data-uses-product") || "",
+          name: node.getAttribute("data-uses-name") || "",
+          count: Number(node.getAttribute("data-uses-count") || 0),
+          share: normalizeShare(node.getAttribute("data-uses-share")),
+          denominator: denominator,
+        };
+      },
+    );
+  }
+
+  /**
+   * Tag cards with chart shape for progressive enhancement. No hover chrome.
+   * @returns {void}
+   */
+  function enhanceSlotCharts() {
+    document
+      .querySelectorAll(".uses-card[data-uses-slot]")
+      .forEach(function (card) {
+        const products = readCardProducts(card);
+        if (!products.length) {
+          return;
+        }
+        card.setAttribute(
+          "data-uses-chart-shape",
+          classifySlotChartShape(products),
+        );
+      });
+  }
+
+  /**
    * @returns {void}
    */
   function init() {
@@ -66,6 +190,8 @@
     if (!root) {
       return;
     }
+    enhanceSlotCharts();
+
     const enhance = document.querySelector("[data-uses-enhance]");
     if (enhance) {
       enhance.hidden = false;
@@ -138,13 +264,23 @@
         if (pageSnapshot && index.k6p && pageSnapshot !== index.k6p) {
           if (status) {
             status.textContent =
-              "The interactive view is unavailable. The table above is the recorded snapshot.";
+              "The interactive view is unavailable. The cards above are the recorded snapshot.";
           }
           return;
         }
-        const match = (index.k4y || []).find(function (entry) {
+        const matches = (index.k4y || []).filter(function (entry) {
           return entry.k2s === granularity;
         });
+        let match = null;
+        for (let i = matches.length - 1; i >= 0; i -= 1) {
+          if (matches[i].kz === true) {
+            match = matches[i];
+            break;
+          }
+        }
+        if (!match) {
+          match = matches[0];
+        }
         if (!match) {
           if (status) {
             status.textContent = withCurrentAbove(
@@ -250,13 +386,13 @@
             '<div class="uses-bar__label">' +
             escapeText(slot.k42 || slot.k30 || "") +
             "</div>" +
-            '<div class="uses-bar__track" role="img" aria-label="' +
+            '<svg class="uses-bar__track" viewBox="0 0 100 1" preserveAspectRatio="none" role="img" aria-label="' +
             escapeText(String(count)) +
             ' ranked product rows">' +
-            '<span class="uses-bar__fill" style="width:' +
+            '<rect class="uses-bar__fill" x="0" y="0" width="' +
             width +
-            '%"></span>' +
-            "</div>" +
+            '" height="1"></rect>' +
+            "</svg>" +
             '<div class="uses-bar__count">' +
             escapeText(String(count)) +
             " ranked product rows</div>" +
@@ -287,15 +423,15 @@
           '<div class="uses-bar__label">' +
           escapeText(toolLabel(tool)) +
           "</div>" +
-          '<div class="uses-bar__track" role="img" aria-label="' +
+          '<svg class="uses-bar__track" viewBox="0 0 100 1" preserveAspectRatio="none" role="img" aria-label="' +
           escapeText(String(count)) +
           " of " +
           escapeText(String(denom)) +
           '">' +
-          '<span class="uses-bar__fill" style="width:' +
+          '<rect class="uses-bar__fill" x="0" y="0" width="' +
           width +
-          '%"></span>' +
-          "</div>" +
+          '" height="1"></rect>' +
+          "</svg>" +
           '<div class="uses-bar__count">' +
           escapeText(String(count)) +
           "/" +

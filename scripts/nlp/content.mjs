@@ -111,6 +111,259 @@ export function summaryNeedsPageBackfill(item) {
 }
 
 /**
+ * True when a heading looks like a body lede used as a stand-in title.
+ * @param {unknown} title
+ * @param {unknown} [summary]
+ * @returns {boolean}
+ * @example
+ * titleLooksLikeBodyStandIn("I went early.", "I went early. Waves were soft.")
+ */
+export function titleLooksLikeBodyStandIn(title, summary = "") {
+  const titleText = plainTextSummary(
+    typeof title === "string" ? title : String(title ?? ""),
+  );
+  const summaryText = plainTextSummary(
+    typeof summary === "string" ? summary : String(summary ?? ""),
+  );
+
+  if (!titleText) {
+    return true;
+  }
+
+  if (titleText.length > 140) {
+    return true;
+  }
+
+  if (!summaryText) {
+    // Feed/h-entry shells that used the first sentence as the heading.
+    return (
+      /^[Ii]\s/.test(titleText) ||
+      (/[.!?…]["']?$/.test(titleText) && titleText.length >= 24)
+    );
+  }
+
+  const titleLower = titleText.toLowerCase();
+  const summaryLower = summaryText.toLowerCase();
+
+  return (
+    summaryLower === titleLower || summaryLower.startsWith(`${titleLower} `)
+  );
+}
+
+/**
+ * True when a later draft's heading should replace a body-as-title stand-in.
+ * @param {unknown} existingTitle
+ * @param {unknown} existingSummary
+ * @param {unknown} draftTitle
+ * @param {unknown} draftSummary
+ * @returns {boolean}
+ */
+export function shouldPreferDraftTitle(
+  existingTitle,
+  existingSummary,
+  draftTitle,
+  draftSummary,
+) {
+  const draftText = plainTextSummary(
+    typeof draftTitle === "string" ? draftTitle : String(draftTitle || ""),
+  );
+  const existingText = plainTextSummary(
+    typeof existingTitle === "string"
+      ? existingTitle
+      : String(existingTitle || ""),
+  );
+
+  if (!draftText || draftText.toLowerCase() === existingText.toLowerCase()) {
+    return false;
+  }
+
+  if (!titleLooksLikeBodyStandIn(existingTitle, existingSummary)) {
+    return false;
+  }
+
+  if (!titleLooksLikeBodyStandIn(draftTitle, draftSummary)) {
+    return true;
+  }
+
+  return draftText.length < existingText.length;
+}
+
+/**
+ * Microformats2 p-name text from an HTML chunk (anchors included).
+ * @param {string} chunk
+ * @returns {string}
+ */
+export function mf2NameFromHtml(chunk) {
+  if (typeof chunk !== "string" || !chunk) {
+    return "";
+  }
+
+  const valueMatch = chunk.match(
+    /<[^>]*class=["'][^"']*\bp-name\b[^"']*["'][^>]*\bvalue=["']([^"']+)["'][^>]*>/i,
+  );
+
+  if (valueMatch) {
+    return normalizeExtractedText(valueMatch[1]);
+  }
+
+  const textMatch = chunk.match(
+    /<[^>]*class=["'][^"']*\bp-name\b[^"']*["'][^>]*>([\s\S]*?)<\/\w+>/i,
+  );
+
+  if (!textMatch) {
+    return "";
+  }
+
+  return normalizeExtractedText(textMatch[1].replace(/<[^>]+>/g, " "));
+}
+
+/**
+ * Publisher entry title from a permalink page (p-name, then og:title).
+ * @param {string} html
+ * @returns {string}
+ */
+export function entryTitleFromHtml(html) {
+  if (typeof html !== "string" || !html) {
+    return "";
+  }
+
+  const fromName = mf2NameFromHtml(html);
+
+  if (fromName) {
+    return capRemoteString(fromName, MAX_TITLE_CHARS);
+  }
+
+  const ogTitle =
+    firstCapture(
+      html,
+      /<meta\b[^>]*property=["']og:title["'][^>]*content=["']([^"']*)["']/i,
+    ) ||
+    firstCapture(
+      html,
+      /<meta\b[^>]*content=["']([^"']*)["'][^>]*property=["']og:title["']/i,
+    ) ||
+    "";
+
+  return capRemoteString(normalizeExtractedText(ogTitle), MAX_TITLE_CHARS);
+}
+
+/**
+ * Declared p-category labels from an h-entry chunk.
+ * @param {string} chunk
+ * @returns {string[]}
+ */
+function mf2CategoryLabelsFromHtml(chunk) {
+  /** @type {string[]} */
+  const labels = [];
+  const seen = new Set();
+  const openPattern = /<[^>]*class=["'][^"']*\bp-category\b[^"']*["'][^>]*>/gi;
+  let openMatch;
+
+  while ((openMatch = openPattern.exec(chunk))) {
+    const openTag = openMatch[0];
+    const valueMatch = openTag.match(/\b(?:value|title)=["']([^"']+)["']/i);
+    let label = valueMatch ? normalizeExtractedText(valueMatch[1]) : "";
+
+    if (!label) {
+      const after = chunk.slice(openMatch.index + openTag.length);
+      const close = after.match(/^([\s\S]*?)<\/\w+>/);
+      label = normalizeExtractedText(
+        (close ? close[1] : "").replace(/<[^>]+>/g, " "),
+      );
+    }
+
+    const key = label.toLowerCase();
+
+    if (!label || seen.has(key)) {
+      continue;
+    }
+
+    seen.add(key);
+    labels.push(label);
+  }
+
+  return labels;
+}
+
+/**
+ * True when a topic slug marks a personal swim/surf journal series.
+ * @param {unknown} slug
+ * @returns {boolean}
+ */
+function isPersonalJournalTopicSlug(slug) {
+  const value = String(slug || "")
+    .trim()
+    .toLowerCase();
+
+  if (!value) {
+    return false;
+  }
+
+  return (
+    /^swim\d{4}$/.test(value) ||
+    value === "bodysurfing" ||
+    value === "surfing" ||
+    value === "surf"
+  );
+}
+
+/**
+ * Upgrades article shells to notes for personal swim/surf journal posts.
+ * @param {string} currentType
+ * @param {unknown} declaredTopics
+ * @returns {string}
+ * @example
+ * contentTypeForPersonalJournal("article", [{ slug: "swim2026" }]) // "note"
+ */
+export function contentTypeForPersonalJournal(currentType, declaredTopics) {
+  const type = String(currentType || "").trim() || "article";
+
+  if (type !== "article" && type !== "note") {
+    return type;
+  }
+
+  const topics = Array.isArray(declaredTopics) ? declaredTopics : [];
+
+  if (
+    topics.some((topic) =>
+      isPersonalJournalTopicSlug(
+        topic && typeof topic === "object"
+          ? /** @type {{ slug?: unknown }} */ (topic).slug
+          : topic,
+      ),
+    )
+  ) {
+    return "note";
+  }
+
+  return type;
+}
+
+/**
+ * Applies journal note typing when swim/surf topics are present.
+ * @param {Record<string, unknown>} item
+ * @returns {Record<string, unknown>}
+ */
+export function applyPersonalJournalTyping(item) {
+  if (!item || typeof item !== "object") {
+    return item;
+  }
+
+  const nextType = contentTypeForPersonalJournal(
+    String(item.content_type || "article"),
+    item.declared_topics,
+  );
+
+  item.content_type = nextType;
+
+  if (nextType === "note") {
+    item.page_role = "note";
+  }
+
+  return item;
+}
+
+/**
  * Creative index child paths whose publisher pages usually declare og:image.
  * @type {RegExp}
  */
@@ -1604,6 +1857,8 @@ export function contentItemsFromRssOrAtom(xml, meta) {
       contentType = "episode_announcement";
     }
 
+    contentType = contentTypeForPersonalJournal(contentType, declared_topics);
+
     /** @type {Array<{ label: string, url: string, type: string }>} */
     const actions = [];
 
@@ -1615,23 +1870,26 @@ export function contentItemsFromRssOrAtom(xml, meta) {
       });
     }
 
-    items.push({
-      identity: key,
-      url: absoluteUrl || null,
-      site_origin: meta.siteOrigin,
-      title,
-      published_at: isoDateString(published) || null,
-      updated_at: null,
-      content_type: contentType,
-      language: languageFromRssOrAtom(xml, chunk, isAtom) || null,
-      summary,
-      declared_topics,
-      source: { kind: isAtom ? "atom" : "rss", feed: meta.feedUrl },
-      source_feeds: [{ type: isAtom ? "atom" : "rss", url: meta.feedUrl }],
-      observed_at: meta.observedAt,
-      image: feedImageFromXml(chunk, meta.feedUrl) || undefined,
-      ...(actions.length ? { actions } : {}),
-    });
+    items.push(
+      applyPersonalJournalTyping({
+        identity: key,
+        url: absoluteUrl || null,
+        site_origin: meta.siteOrigin,
+        title,
+        published_at: isoDateString(published) || null,
+        updated_at: null,
+        content_type: contentType,
+        language: languageFromRssOrAtom(xml, chunk, isAtom) || null,
+        summary,
+        declared_topics,
+        source: { kind: isAtom ? "atom" : "rss", feed: meta.feedUrl },
+        source_feeds: [{ type: isAtom ? "atom" : "rss", url: meta.feedUrl }],
+        observed_at: meta.observedAt,
+        image: feedImageFromXml(chunk, meta.feedUrl) || undefined,
+        ...(actions.length ? { actions } : {}),
+        ...(contentType === "note" ? { page_role: "note" } : {}),
+      }),
+    );
   }
 
   return items;
@@ -1936,6 +2194,104 @@ export function contentItemsFromArchiveEntryList(html, meta) {
 }
 
 /**
+ * Balanced h-entry element slices so nested div/p markup stays inside the entry.
+ * @param {string} html
+ * @returns {string[]}
+ */
+function hEntryBlocksFromHtml(html) {
+  /** @type {string[]} */
+  const blocks = [];
+  const openPattern =
+    /<(article|div|li)\b[^>]*class=["'][^"']*\bh-entry\b[^"']*["'][^>]*>/gi;
+  let openMatch;
+
+  while ((openMatch = openPattern.exec(html))) {
+    const tag = openMatch[1].toLowerCase();
+    const start = openMatch.index;
+    let index = openMatch.index + openMatch[0].length;
+    let depth = 1;
+
+    while (index < html.length && depth > 0) {
+      const nextOpen = html.slice(index).search(new RegExp(`<${tag}\\b`, "i"));
+      const nextClose = html
+        .slice(index)
+        .search(new RegExp(`</${tag}\\s*>`, "i"));
+
+      if (nextClose < 0) {
+        break;
+      }
+
+      if (nextOpen >= 0 && nextOpen < nextClose) {
+        depth += 1;
+        index += nextOpen + 1;
+        continue;
+      }
+
+      depth -= 1;
+      index += nextClose + tag.length + 3;
+
+      if (depth === 0) {
+        blocks.push(html.slice(start, index));
+      }
+    }
+  }
+
+  return blocks;
+}
+
+/**
+ * Inner HTML for the first e-content region in an h-entry chunk.
+ * @param {string} block
+ * @returns {string}
+ */
+function eContentHtmlFromHEntry(block) {
+  const openMatch = block.match(
+    /<(div|section|article)\b[^>]*class=["'][^"']*\be-content\b[^"']*["'][^>]*>/i,
+  );
+
+  if (!openMatch || openMatch.index == null) {
+    return (
+      firstCapture(
+        block,
+        /<p\b[^>]*class=["'][^"']*\be-content\b[^"']*["'][^>]*>([\s\S]*?)<\/p>/i,
+      ) || ""
+    );
+  }
+
+  const tag = openMatch[1].toLowerCase();
+  const start = openMatch.index + openMatch[0].length;
+  let index = start;
+  let depth = 1;
+
+  while (index < block.length && depth > 0) {
+    const nextOpen = block.slice(index).search(new RegExp(`<${tag}\\b`, "i"));
+    const nextClose = block
+      .slice(index)
+      .search(new RegExp(`</${tag}\\s*>`, "i"));
+
+    if (nextClose < 0) {
+      break;
+    }
+
+    if (nextOpen >= 0 && nextOpen < nextClose) {
+      depth += 1;
+      index += nextOpen + 1;
+      continue;
+    }
+
+    depth -= 1;
+
+    if (depth === 0) {
+      return block.slice(start, index + nextClose);
+    }
+
+    index += nextClose + tag.length + 3;
+  }
+
+  return block.slice(start);
+}
+
+/**
  * Microblog / notes h-entry lists (PaperMod homepage + /notes/).
  * @param {string} html
  * @param {{ pageUrl: string, siteOrigin: string, observedAt: string }} meta
@@ -1948,11 +2304,8 @@ export function contentItemsFromHEntryList(html, meta) {
 
   const items = [];
   const seen = new Set();
-  const entryPattern =
-    /<(?:article|div|li)\b[^>]*class=["'][^"']*\bh-entry\b[^"']*["'][^>]*>[\s\S]*?<\/(?:article|div|li)>/gi;
 
-  for (const match of html.matchAll(entryPattern)) {
-    const block = match[0];
+  for (const block of hEntryBlocksFromHtml(html)) {
     const urlMatch =
       block.match(
         /<a\b[^>]*class(?:=["'][^"']*\bu-url\b[^"']*["']|=u-url\b)[^>]*href\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i,
@@ -1977,19 +2330,7 @@ export function contentItemsFromHEntryList(html, meta) {
       continue;
     }
 
-    const name = normalizeExtractedText(
-      (
-        firstCapture(
-          block,
-          /<(?:h[1-6]|data|span|p)\b[^>]*class=["'][^"']*\bp-name\b[^"']*["'][^>]*>([\s\S]*?)<\/(?:h[1-6]|data|span|p)>/i,
-        ) ||
-        firstCapture(
-          block,
-          /<data\b[^>]*class=["'][^"']*\bp-name\b[^"']*["'][^>]*value=["']([^"']+)["']/i,
-        ) ||
-        ""
-      ).replace(/<[^>]+>/g, " "),
-    );
+    const name = mf2NameFromHtml(block);
     // Prefer p-summary / dedicated blurb over raw e-content so short notes are
     // not near-fully copied into hub cards (snippet aggregator hygiene).
     const pSummaryHtml =
@@ -1997,11 +2338,7 @@ export function contentItemsFromHEntryList(html, meta) {
         block,
         /<(?:p|div|span)\b[^>]*class=["'][^"']*\bp-summary\b[^"']*["'][^>]*>([\s\S]*?)<\/(?:p|div|span)>/i,
       ) || "";
-    const contentHtml =
-      firstCapture(
-        block,
-        /<(?:div|p)\b[^>]*class=["'][^"']*\be-content\b[^"']*["'][^>]*>([\s\S]*?)<\/(?:div|p)>/i,
-      ) || "";
+    const contentHtml = eContentHtmlFromHEntry(block);
     const fromPSummary = plainTextSummary(pSummaryHtml);
     const summary = fromPSummary || plainTextSummary(contentHtml);
     const title = capRemoteString(name || summary, MAX_TITLE_CHARS);
@@ -2016,22 +2353,60 @@ export function contentItemsFromHEntryList(html, meta) {
       continue;
     }
 
+    /** @type {Array<Record<string, unknown>>} */
+    const declared_topics = [];
+
+    for (const raw of mf2CategoryLabelsFromHtml(block)) {
+      const evidence = buildTopicEvidence({
+        rawValue: raw,
+        source: "microformat:p-category",
+        page: absoluteUrl || meta.pageUrl,
+        evidenceClass: "declared",
+        communityEligible: isCommunityEligibleSource("microformat:p-category"),
+        observedAt: meta.observedAt,
+      });
+
+      if (evidence) {
+        declared_topics.push({
+          slug: evidence.slug,
+          label: evidence.value,
+          raw_value: evidence.raw_value,
+          source: "microformat:p-category",
+          community_eligible: evidence.community_eligible === true,
+        });
+      }
+    }
+
+    const contentType = contentTypeForPersonalJournal(
+      "article",
+      declared_topics,
+    );
+    const titleText = plainTextSummary(title);
+    const summaryText = plainTextSummary(summary);
+    const keepSummary =
+      summaryText && summaryText.toLowerCase() !== titleText.toLowerCase()
+        ? summaryText
+        : "";
+
     seen.add(absoluteUrl);
-    items.push({
-      identity: `url:${absoluteUrl}`,
-      url: absoluteUrl,
-      site_origin: meta.siteOrigin,
-      title,
-      published_at: isoDateString(published) || null,
-      updated_at: null,
-      content_type: "article",
-      language: null,
-      summary: summary && summary !== title ? summary : "",
-      declared_topics: [],
-      source: { kind: "h-entry", page: meta.pageUrl },
-      source_feeds: [{ type: "h-entry", url: meta.pageUrl }],
-      observed_at: meta.observedAt,
-    });
+    items.push(
+      applyPersonalJournalTyping({
+        identity: `url:${absoluteUrl}`,
+        url: absoluteUrl,
+        site_origin: meta.siteOrigin,
+        title,
+        published_at: isoDateString(published) || null,
+        updated_at: null,
+        content_type: contentType,
+        language: null,
+        summary: keepSummary,
+        declared_topics,
+        source: { kind: "h-entry", page: meta.pageUrl },
+        source_feeds: [{ type: "h-entry", url: meta.pageUrl }],
+        observed_at: meta.observedAt,
+        ...(contentType === "note" ? { page_role: "note" } : {}),
+      }),
+    );
   }
 
   return items;
@@ -2107,7 +2482,27 @@ export function mergeContentItems(drafts) {
     const draftSummary =
       typeof draft.summary === "string" ? draft.summary.trim() : "";
 
-    if (!existingSummary && draftSummary) {
+    if (
+      shouldPreferDraftTitle(
+        existing.title,
+        existingSummary,
+        draft.title,
+        draftSummary,
+      )
+    ) {
+      existing.title = draft.title;
+    }
+
+    if (
+      (!existingSummary && draftSummary) ||
+      (draftSummary &&
+        titleLooksLikeBodyStandIn(existing.title, existingSummary) &&
+        shouldPreferShareDescription(
+          existingSummary,
+          existing.title,
+          draftSummary,
+        ))
+    ) {
       existing.summary = draft.summary;
     }
 
@@ -2122,10 +2517,14 @@ export function mergeContentItems(drafts) {
     ) {
       existing.content_type = draftType;
     }
+
+    applyPersonalJournalTyping(existing);
   }
 
   return [...byId.values()]
-    .map((item) => normalizeContentItemForPublish(item))
+    .map((item) =>
+      normalizeContentItemForPublish(applyPersonalJournalTyping(item)),
+    )
     .filter((item) => item !== null)
     .sort((left, right) => String(left.url).localeCompare(String(right.url)));
 }
@@ -2256,7 +2655,7 @@ export function joinContentWithPageSignals(items, originSignals) {
     }
 
     if (page?.page_role && !isListingExtract(next)) {
-      next.page_role = page.page_role;
+      next.page_role = next.content_type === "note" ? "note" : page.page_role;
     }
 
     if (!next.image && page?.poster_image && !isListingExtract(next)) {
@@ -2305,7 +2704,7 @@ export function joinContentWithPageSignals(items, originSignals) {
       typeof next.summary === "string" ? next.summary : "",
     );
 
-    return next;
+    return applyPersonalJournalTyping(next);
   });
 }
 
@@ -2453,6 +2852,21 @@ export async function enrichContentItemPosters(items, options = {}) {
         item.image = poster;
       }
 
+      const pageTitle = entryTitleFromHtml(html);
+
+      if (
+        pageTitle &&
+        shouldPreferDraftTitle(
+          item.title,
+          item.summary,
+          pageTitle,
+          shareDescriptionFromHtml(html) ||
+            firstMeaningfulParagraphFromHtml(html),
+        )
+      ) {
+        item.title = pageTitle;
+      }
+
       const share = shareDescriptionFromHtml(html);
       let better = "";
 
@@ -2471,6 +2885,7 @@ export async function enrichContentItemPosters(items, options = {}) {
       }
 
       // Comics-hub blog posts often omit dates on the index; fill from the post.
+      // Read comic signals before journal typing rewrites a thin content_type.
       const existingPublished =
         typeof item.published_at === "string" ? item.published_at.trim() : "";
       const enrichSource =
@@ -2486,6 +2901,8 @@ export async function enrichContentItemPosters(items, options = {}) {
       const isComic =
         String(item.content_type || "") === "comic" ||
         enrichSourceKind === "creative-comics-hub";
+
+      applyPersonalJournalTyping(item);
 
       if (!existingPublished && isComic) {
         const published = publishedAtFromPageHtml(html);

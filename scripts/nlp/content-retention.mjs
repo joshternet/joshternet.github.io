@@ -10,9 +10,29 @@ import {
   SHOWCASE_CONTENT_TYPES,
   publishedWithinDays,
 } from "../views/lib.mjs";
+import { isDirectoryIndexPath } from "./page-role.mjs";
 
 /** Operational writing cache in `_data/content.json` (days). */
 export const CONTENT_CACHE_DAYS = 30;
+
+/**
+ * True when a content row is a directory index mis-typed as a durable work.
+ * Speaking archives may still be the link URL on real `event` / `presentation`
+ * rows; those stay. Project/collection/sitemap leftovers are dropped.
+ * @param {Record<string, unknown> | null | undefined} item
+ * @returns {boolean}
+ */
+function isStaleDirectoryIndexWork(item) {
+  if (typeof item.url !== "string" || !isDirectoryIndexPath(item.url)) {
+    return false;
+  }
+
+  const type = String(
+    typeof item.content_type === "string" ? item.content_type : "",
+  ).trim();
+
+  return type !== "event" && type !== "presentation";
+}
 
 /** Re-export display window for callers that import retention policy. */
 export { ACTIVITY_WINDOW_DAYS };
@@ -47,6 +67,11 @@ export function contentItemTimestamp(item) {
  */
 export function isDurableCreativeContentItem(item) {
   if (!item || typeof item !== "object") {
+    return false;
+  }
+
+  // Directory indexes stay discoverable via page role; they are not works.
+  if (isStaleDirectoryIndexWork(item)) {
     return false;
   }
 
@@ -99,22 +124,21 @@ export function isVisitorFacingContentItem(item, now) {
  * @param {Record<string, unknown> | null | undefined} item
  * @param {Date | string} now
  * @param {number} [cacheDays]
- * @param {{ retainLocalDevCache?: boolean }} [options]
  * @returns {boolean}
  */
 export function isContentCacheEligible(
   item,
   now,
   cacheDays = CONTENT_CACHE_DAYS,
-  options = {},
 ) {
   if (!item || typeof item !== "object") {
     return false;
   }
 
-  // Local personal-site rows are a growing dataset. CI leaves them out.
-  if (item.local_dev_cache === true) {
-    return options.retainLocalDevCache === true;
+  // Stale directory leftovers must leave even when carry-forward would
+  // otherwise keep a durable creative row.
+  if (isStaleDirectoryIndexWork(item)) {
+    return false;
   }
 
   if (isDurableCreativeContentItem(item)) {
@@ -135,7 +159,7 @@ export function isContentCacheEligible(
  * Runs before gather so crawl work targets a slim base.
  * @param {unknown} items
  * @param {Date | string} now
- * @param {{ cacheDays?: number, retainLocalDevCache?: boolean }} [options]
+ * @param {{ cacheDays?: number }} [options]
  * @returns {{ kept: Array<Record<string, unknown>>, prunedCount: number }}
  */
 export function pruneContentItems(items, now, options = {}) {
@@ -154,11 +178,7 @@ export function pruneContentItems(items, now, options = {}) {
       continue;
     }
 
-    if (
-      isContentCacheEligible(item, now, cacheDays, {
-        retainLocalDevCache: options.retainLocalDevCache === true,
-      })
-    ) {
+    if (isContentCacheEligible(item, now, cacheDays)) {
       kept.push(/** @type {Record<string, unknown>} */ (item));
     } else {
       prunedCount += 1;
@@ -190,37 +210,17 @@ function itemOriginKey(item) {
 }
 
 /**
- * Marks gathered rows from local personal sites so later runs keep them.
- * @param {object[]} items
- * @param {Iterable<string>} origins
- * @returns {void}
- */
-export function markLocalDevCacheContent(items, origins) {
-  const local = new Set(
-    [...(origins || [])].filter(
-      (origin) => typeof origin === "string" && origin,
-    ),
-  );
-  if (local.size === 0 || !Array.isArray(items)) {
-    return;
-  }
-  for (const item of items) {
-    if (!item || typeof item !== "object") {
-      continue;
-    }
-    const origin = itemOriginKey(item);
-    if (origin && local.has(origin)) {
-      item.local_dev_cache = true;
-    }
-  }
-}
-
-/**
- * Identity key for content merge (prefer url).
+ * Identity key for content merge.
+ * Prefer publisher `identity` so many speaking appearances can share one archive
+ * URL without collapsing into a single row.
  * @param {Record<string, unknown>} item
  * @returns {string}
  */
 function itemIdentityKey(item) {
+  if (typeof item.identity === "string" && item.identity) {
+    return item.identity;
+  }
+
   if (typeof item.url === "string" && item.url) {
     return item.url;
   }
@@ -230,6 +230,62 @@ function itemIdentityKey(item) {
   }
 
   return "";
+}
+
+/**
+ * Source kind from `source.kind` or `source_kind` / `source_feeds`.
+ * @param {Record<string, unknown>} item
+ * @returns {string}
+ */
+function itemSourceKind(item) {
+  if (typeof item.source_kind === "string" && item.source_kind) {
+    return item.source_kind;
+  }
+
+  if (item.source && typeof item.source === "object") {
+    const kind = /** @type {{ kind?: unknown }} */ (item.source).kind;
+    if (typeof kind === "string" && kind) {
+      return kind;
+    }
+  }
+
+  if (Array.isArray(item.source_feeds)) {
+    for (const feed of item.source_feeds) {
+      if (!feed || typeof feed !== "object") {
+        continue;
+      }
+      const type = /** @type {{ type?: unknown }} */ (feed).type;
+      if (typeof type === "string" && type) {
+        return type;
+      }
+    }
+  }
+
+  return "";
+}
+
+/**
+ * True when an event/presentation came from a speaking archive or event index.
+ * These rows must be re-confirmed on a successful gather or they leave the cache
+ * (hygiene renames identities; blog false-positives must not zombie forever).
+ * @param {Record<string, unknown>} item
+ * @returns {boolean}
+ */
+export function isAppearanceListingSourcedItem(item) {
+  if (!item || typeof item !== "object") {
+    return false;
+  }
+
+  const type = String(
+    typeof item.content_type === "string" ? item.content_type : "",
+  ).trim();
+
+  if (type !== "event" && type !== "presentation") {
+    return false;
+  }
+
+  const sourceKind = itemSourceKind(item);
+  return sourceKind === "speaking-archive" || sourceKind === "event-listing";
 }
 
 /**
@@ -243,7 +299,6 @@ function itemIdentityKey(item) {
  *   failedOrigins?: Iterable<string>,
  *   reuseOrigins?: Iterable<string>,
  *   cacheDays?: number,
- *   retainLocalDevCache?: boolean,
  * }} options
  * @returns {{
  *   items: Array<Record<string, unknown>>,
@@ -286,15 +341,13 @@ export function mergeGatheredContent(prunedBase, gathered, options) {
       continue;
     }
 
-    // Local personal sites accumulate. A later crawl updates the same URL.
-    if (options.retainLocalDevCache === true && item.local_dev_cache === true) {
-      byKey.set(key, item);
-      continue;
-    }
-
     // Successful origins: keep durable creative from the base until gather
-    // replaces the same URL; drop writing so gather must re-confirm it.
-    if (isDurableCreativeContentItem(item)) {
+    // replaces the same identity. Speaking/event listing rows must be
+    // re-emitted — title hygiene and blog false-positives change identities.
+    if (
+      isDurableCreativeContentItem(item) &&
+      !isAppearanceListingSourcedItem(item)
+    ) {
       byKey.set(key, item);
     }
   }
@@ -307,11 +360,7 @@ export function mergeGatheredContent(prunedBase, gathered, options) {
       continue;
     }
 
-    if (
-      !isContentCacheEligible(item, now, cacheDays, {
-        retainLocalDevCache: options.retainLocalDevCache === true,
-      })
-    ) {
+    if (!isContentCacheEligible(item, now, cacheDays)) {
       continue;
     }
 
@@ -332,7 +381,6 @@ export function mergeGatheredContent(prunedBase, gathered, options) {
 
   const { kept } = pruneContentItems([...byKey.values()], now, {
     cacheDays,
-    retainLocalDevCache: options.retainLocalDevCache === true,
   });
 
   kept.sort((left, right) => {

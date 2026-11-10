@@ -18,9 +18,12 @@ import {
   indexCatalog,
   isReportableUseLabel,
   observedToolId,
+  peelCatalogLead,
+  peelDeclarativeLeadIn,
   productNameFromLabel,
   resolveToolLabel,
   sanitizeLabel,
+  separateNameContext,
 } from "./normalize.mjs";
 
 /**
@@ -39,6 +42,7 @@ import {
  * @property {string} href
  * @property {number} list_depth
  * @property {string} context
+ * @property {number} [quantity]
  * @property {'product'|'equipment'|'practice'|'unresolved'} kind
  * @property {string} excerpt
  * @property {string} source_hash
@@ -68,7 +72,11 @@ export function buildEvidenceRecords(input) {
   const records = [];
 
   for (const item of input.items || []) {
-    const label = productNameFromLabel(sanitizeLabel(item.label));
+    const rawLabel = productNameFromLabel(sanitizeLabel(item.label));
+    const peeled = peelDeclarativeLeadIn(rawLabel);
+    const separated = separateNameContext(peeled.name);
+    const catalogLead = peelCatalogLead(separated.name, input.catalog);
+    const label = productNameFromLabel(catalogLead.name || separated.name);
     if (!isReportableUseLabel(label)) {
       continue;
     }
@@ -88,8 +96,14 @@ export function buildEvidenceRecords(input) {
     let unresolved = resolved.unresolved;
     let name = label;
 
-    if (resolved.match === "unique" && toolId) {
-      name = catalogIndex.byId.get(toolId)?.name || label;
+    if (catalogLead.tool_id) {
+      toolId = catalogLead.tool_id;
+      unresolved = false;
+      const catalogTool = catalogIndex.byId.get(toolId);
+      name = catalogTool && catalogTool.name ? catalogTool.name : label;
+    } else if (resolved.match === "unique" && toolId) {
+      const catalogTool = catalogIndex.byId.get(toolId);
+      name = catalogTool && catalogTool.name ? catalogTool.name : label;
     } else if (resolved.match === "none") {
       const observed = observedToolId(resolved.comparison);
       if (observed) {
@@ -169,6 +183,10 @@ export function buildEvidenceRecords(input) {
       href: String(item.href || ""),
       list_depth: Number.isFinite(item.list_depth) ? item.list_depth : 0,
       context: sanitizeLabel(item.context || "").slice(0, MAX_EXCERPT_CHARS),
+      quantity:
+        Number.isFinite(item.quantity) && item.quantity > 0
+          ? Math.min(99, Math.floor(item.quantity))
+          : 1,
       kind,
       excerpt: String(item.excerpt || item.context || "").slice(
         0,

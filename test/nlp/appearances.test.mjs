@@ -8,9 +8,12 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
+import { isEmptyAppearanceTitle } from "../../scripts/nlp/appearance-title.mjs";
 import {
+  appearanceListingCandidateUrls,
   appearanceSlug,
   collectAppearances,
+  fetchAppearanceListingPages,
   listingMode,
   parseAppearanceDate,
   projectsFromToolIndexes,
@@ -65,6 +68,67 @@ test("parseAppearanceDate keeps date-only values and rejects impossible days", (
   assert.equal(parseAppearanceDate("sometime").start, "");
   assert.equal(parseAppearanceDate("2026-02-31T15:00:00Z").start, "");
   assert.equal(parseAppearanceDate("99 March 2026").start, "");
+  assert.equal(parseAppearanceDate("Mar 28").start, "");
+  assert.equal(parseAppearanceDate("Mar 99", { year: "2026" }).start, "");
+  assert.equal(parseAppearanceDate("99 Mar", { year: 2026 }).start, "");
+  assert.deepEqual(parseAppearanceDate("Mar 28", { year: "2026" }), {
+    start: "2026-03-28",
+    precision: "date",
+  });
+  assert.deepEqual(parseAppearanceDate("28 Mar", { year: 2025 }), {
+    start: "2025-03-28",
+    precision: "date",
+  });
+  assert.deepEqual(
+    parseAppearanceDate("Boston Code Camp 40Mar 28 - Boston, USA", {
+      year: "2026",
+    }),
+    {
+      start: "2026-03-28",
+      precision: "date",
+    },
+  );
+  assert.equal(parseAppearanceDate("Mar 28", { year: "not-a-year" }).start, "");
+});
+
+test("year-heading speaking archive fills month-day dates from section year", () => {
+  const html = read("test/fixtures/events/speaking-archive-year-headings.html");
+  const { items } = collectEvents(
+    [
+      {
+        url: "https://member.example/speaking/",
+        html,
+        lang: "en",
+      },
+    ],
+    {
+      siteOrigin: "https://member.example",
+      observedAt: "2026-11-05T18:00:00.000Z",
+    },
+  );
+  const presentations = items.filter(
+    (item) => item.content_type === "presentation",
+  );
+  const events = items.filter((item) => item.content_type === "event");
+
+  assert.equal(presentations.length, 4);
+  assert.equal(events.length, 5);
+
+  const linter = presentations.find(
+    (item) => item.title === "How to Learn to Love the Linter",
+  );
+  assert.ok(linter);
+  assert.equal(linter.start, "2026-03-28");
+  assert.equal(linter.start_precision, "date");
+  assert.equal(linter.conference, "Boston Code Camp 40");
+
+  const tooling = presentations.find(
+    (item) => item.title === "Tooling Like It's 2025",
+  );
+  assert.ok(tooling);
+  assert.equal(tooling.related.length, 2);
+  assert.ok(events.some((item) => item.start === "2025-05-29"));
+  assert.ok(events.some((item) => item.start === "2025-11-14"));
 });
 
 test("listingMode distinguishes archives, tools, and hosted indexes", () => {
@@ -74,6 +138,99 @@ test("listingMode distinguishes archives, tools, and hosted indexes", () => {
   assert.equal(listingMode("https://member.example/tools/calendar/"), "");
   assert.equal(listingMode("https://member.example/availability/"), "");
   assert.equal(listingMode("not a url"), "");
+});
+
+test("appearanceListingCandidateUrls lists speaking tools and event indexes", () => {
+  const urls = appearanceListingCandidateUrls("https://joshua.example");
+  assert.ok(urls.includes("https://joshua.example/speaking/"));
+  assert.ok(urls.includes("https://joshua.example/tools/"));
+  assert.ok(urls.includes("https://joshua.example/events/"));
+  assert.deepEqual(appearanceListingCandidateUrls("not-a-url"), []);
+});
+
+test("fetchAppearanceListingPages returns listing HTML and skips known modes", async () => {
+  const calls = [];
+  const pages = await fetchAppearanceListingPages("https://joshua.example", {
+    haveModes: ["tools", "hosted"],
+    fetchText: async (url) => {
+      calls.push(url);
+      if (url.endsWith("/speaking/")) {
+        return {
+          url: "https://joshua.example/speaking/",
+          body: read("test/fixtures/events/speaking-archive.html"),
+          contentType: "text/html",
+        };
+      }
+      throw new Error(`unexpected ${url}`);
+    },
+  });
+
+  assert.equal(pages.length, 1);
+  assert.equal(pages[0].url, "https://joshua.example/speaking/");
+  assert.ok(pages[0].html.includes("Speaking"));
+  assert.ok(calls.every((url) => !url.includes("/tools")));
+  assert.ok(calls.some((url) => url.includes("/speaking")));
+});
+
+test("fetchAppearanceListingPages skips empty bodies, repeats, and fetch errors", async () => {
+  let speakingHits = 0;
+  const pages = await fetchAppearanceListingPages("https://joshua.example", {
+    haveModes: [],
+    fetchText: async (url) => {
+      if (url.endsWith("/speaking/") || url.endsWith("/speaking")) {
+        speakingHits += 1;
+        if (speakingHits === 1) {
+          return {
+            url: "https://joshua.example/speaking/",
+            body: "",
+            contentType: "text/html",
+          };
+        }
+        if (speakingHits === 2) {
+          return {
+            body: read("test/fixtures/events/speaking-archive.html"),
+            contentType: "text/html",
+          };
+        }
+        return {
+          url: "https://joshua.example/speaking/",
+          body: read("test/fixtures/events/speaking-archive.html"),
+          contentType: "text/html",
+        };
+      }
+      if (url.includes("/tools")) {
+        throw new Error("tools offline");
+      }
+      if (url.includes("/events")) {
+        return {
+          url: "https://joshua.example/events/",
+          body: "<main><h1>Events</h1></main>",
+          contentType: "text/html",
+        };
+      }
+      return { url, body: "", contentType: "text/html" };
+    },
+  });
+
+  assert.ok(pages.some((page) => page.url.includes("/speaking")));
+  assert.ok(pages.some((page) => page.url.includes("/events")));
+
+  const skipped = await fetchAppearanceListingPages("https://joshua.example", {
+    haveModes: ["presented", "tools", "hosted"],
+  });
+  assert.deepEqual(skipped, []);
+
+  const noModesOption = await fetchAppearanceListingPages(
+    "https://joshua.example",
+    {
+      fetchText: async () => ({
+        url: "https://joshua.example/speaking/",
+        body: "",
+        contentType: "text/html",
+      }),
+    },
+  );
+  assert.deepEqual(noModesOption, []);
 });
 
 test("speaking archive becomes presentations and presented events", () => {
@@ -123,7 +280,8 @@ test("speaking archive becomes presentations and presented events", () => {
   assert.ok(linter);
   assert.equal(linter.conference, "Boston Code Camp 40");
   assert.equal(linter.start, "2026-03-28");
-  assert.equal(linter.url, "https://member.example/speaking/");
+  // Prefer slides as the card target when the talk has no same-origin permalink.
+  assert.equal(linter.url, "https://speakerdeck.com/example/linter");
   assert.equal(linter.action_url, "https://speakerdeck.com/example/linter");
   assert.deepEqual(
     linter.declared_topics.map((topic) => topic.slug),
@@ -336,6 +494,103 @@ test("collectAppearances ignores pages that are not listings", () => {
   );
   assert.deepEqual(collectAppearances([], {}).items, []);
   assert.deepEqual(
+    collectAppearances("nope", { siteOrigin: "https://member.example" }).items,
+    [],
+  );
+  assert.deepEqual(
+    collectAppearances(
+      [
+        null,
+        { url: "https://member.example/speaking/", html: "" },
+        { url: "https://member.example/about/", html: "<p>Hi</p>" },
+        {
+          url: "https://member.example/speaking/",
+          html: `<main><ul>
+            <li class="h-event">
+              <time datetime="2026-03-28">Mar 28</time>
+              <a href="https://conf.example/">Conf</a>
+              <div>Schema Talk</div>
+            </li>
+            <li>
+              <a href="https://conf.example/">Conf</a>
+              <p>Mar 29 - Online</p>
+              <div>Cheerio Talk</div>
+            </li>
+          </ul></main>`,
+        },
+      ],
+      { siteOrigin: "https://member.example" },
+    ).items.some((item) => item.title === "Schema Talk"),
+    false,
+  );
+  assert.ok(
+    collectAppearances(
+      [
+        {
+          url: "https://member.example/speaking/",
+          html: `<main>
+            <h2>2026</h2>
+            <ul>
+            <li>
+              <a href="https://conf.example/">Conf</a>
+              <p>Mar 29 - Online</p>
+              <div>Cheerio Talk</div>
+            </li>
+            <li>
+              <time datetime="2026-06-01">2026-06-01</time>
+              <a href="https://conf.example/two">Two Conf</a>
+              <a href="https://joshua.example/talks/two-links">Two Link Talk</a>
+            </li>
+            </ul>
+          </main>`,
+        },
+        {
+          url: "https://member.example/speaking/",
+          html: `<body><ul>
+            <li>
+              <time datetime="2026-07-01">2026-07-01</time>
+              <div>Body Only Talk</div>
+            </li>
+          </ul></body>`,
+        },
+      ],
+      { siteOrigin: "https://member.example" },
+    ).items.some((item) => item.title === "Cheerio Talk"),
+  );
+  assert.ok(
+    collectAppearances(
+      [
+        {
+          url: "https://member.example/speaking/",
+          html: `<body><ul>
+            <li>
+              <time datetime="2026-07-01">2026-07-01</time>
+              <div>Body Only Talk</div>
+            </li>
+          </ul></body>`,
+        },
+      ],
+      { siteOrigin: "https://member.example" },
+    ).items.some((item) => item.title === "Body Only Talk"),
+  );
+  assert.ok(
+    collectAppearances(
+      [
+        {
+          url: "https://member.example/speaking/",
+          html: `<main><ul>
+            <li>
+              <time datetime="2026-06-01">2026-06-01</time>
+              <a href="https://conf.example/two">Two Conf</a>
+              <a href="https://joshua.example/talks/two-links">Two Link Talk</a>
+            </li>
+          </ul></main>`,
+        },
+      ],
+      { siteOrigin: "https://member.example" },
+    ).items.some((item) => item.title === "Two Link Talk"),
+  );
+  assert.deepEqual(
     projectsFromToolIndexes(
       [{ url: "https://member.example/about/", html: "<p>Hi</p>" }],
       { siteOrigin: "https://member.example" },
@@ -493,4 +748,53 @@ test("speaking rows keep a later copy, one shared event, and publisher dates", (
       .length,
     0,
   );
+});
+
+test("year-crumb conference falls back to the talk title", () => {
+  const html = read("test/fixtures/events/speaking-year-crumb.html");
+  const { items } = collectAppearances(
+    [{ url: "https://member.example/speaking/", html }],
+    {
+      siteOrigin: "https://member.example",
+      observedAt: "2026-11-05T18:00:00.000Z",
+    },
+  );
+
+  assert.equal(
+    items.some((item) => String(item.title).includes(", 2026")),
+    false,
+  );
+  assert.ok(
+    items.some(
+      (item) =>
+        item.content_type === "presentation" &&
+        item.title === "Front End Study Hall #061",
+    ),
+  );
+  const presentation = items.find(
+    (item) =>
+      item.content_type === "presentation" &&
+      item.title === "Front End Study Hall #061",
+  );
+  assert.equal(presentation.url, "https://speakerdeck.com/example/061");
+  const event = items.find(
+    (item) =>
+      item.content_type === "event" &&
+      item.title === "Front End Study Hall #061",
+  );
+  assert.ok(event);
+  assert.equal(isEmptyAppearanceTitle(event.title), false);
+});
+
+test("min-read chrome titles are not speaking appearances", () => {
+  const html = read("test/fixtures/events/speaking-min-read-chrome.html");
+  const { items } = collectAppearances(
+    [{ url: "https://member.example/speaking/", html }],
+    {
+      siteOrigin: "https://member.example",
+      observedAt: "2026-11-05T18:00:00.000Z",
+    },
+  );
+
+  assert.equal(items.length, 0);
 });

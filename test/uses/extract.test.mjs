@@ -59,6 +59,17 @@ test("false-positive shaped page does not treat prose mentions as uses", async (
     !result.items.some((item) => /visual studio code/i.test(item.label)),
   );
   assert.ok(!result.items.some((item) => /buy headphones/i.test(item.label)));
+  const labels = result.items.map((item) => item.label.toLowerCase());
+  assert.ok(!labels.some((label) => label.includes("lessons i learned")));
+  assert.ok(!labels.some((label) => label.includes("chips vs")));
+  assert.ok(!labels.includes("agile"));
+  assert.ok(!labels.includes("journal"));
+  assert.ok(!labels.includes("tablet:"));
+  assert.ok(!labels.includes("monitor:"));
+  assert.ok(!labels.includes("what i use"));
+  assert.ok(!labels.includes("react"));
+  assert.ok(!labels.includes("better comments"));
+  assert.ok(labels.includes("neovim"));
 });
 
 test("empty html is parse_error", () => {
@@ -140,6 +151,41 @@ test("incomplete HTML is not a verified-empty Uses page", () => {
   assert.equal(result.outcome, "uncertain");
 });
 
+test("Linux MacOS and Windows headings are OS products under Software", () => {
+  const result = extractUsesFromHtml(`
+    <h2>Laptop</h2>
+    <h3>Software</h3>
+    <h4>Linux 🐧</h4>
+    <ul><li>Neovim</li></ul>
+    <h4>Windows 🪟</h4>
+    <ul><li>Steam</li></ul>
+    <h4>MacOS 🍎</h4>
+    <p>Virtual machine for contracts.</p>
+  `);
+  const labels = result.items.map((item) => item.label);
+  assert.ok(labels.includes("Linux 🐧"));
+  assert.ok(labels.includes("Windows 🪟"));
+  assert.ok(labels.includes("MacOS 🍎"));
+  assert.ok(labels.includes("Neovim"));
+  const linux = result.items.find((item) => item.label === "Linux 🐧");
+  assert.match(linux.section_path, /Linux/);
+  const neovim = result.items.find((item) => item.label === "Neovim");
+  assert.match(neovim.section_path, /Linux/);
+});
+
+test("joshbeard hardware splits MacBook memory and MX Master mice", async () => {
+  const html = await readFile(
+    new URL("../fixtures/uses/members/joshbeard.com.html", import.meta.url),
+    "utf8",
+  );
+  const result = extractUsesFromHtml(html);
+  const labels = result.items.map((item) => item.label);
+  assert.ok(labels.includes("2025 MacBook Air M4"));
+  assert.ok(labels.includes("32GB of memory"));
+  assert.ok(labels.includes("Logitech MX Master 2S"));
+  assert.ok(labels.includes("3S mice"));
+});
+
 test("a heading plus a paragraph and a single-heading card are claims", () => {
   const result = extractUsesFromHtml(`
     <h2>Hardware</h2>
@@ -186,4 +232,36 @@ test("a heading plus a paragraph and a single-heading card are claims", () => {
   );
   assert.equal(prose.outcome, "uncertain");
   assert.equal(prose.items.length, 0);
+});
+
+test("IDE prose list peels products and drops section leftovers", async () => {
+  const html = await fixture("ide-prose-list.html");
+  const result = extractUsesFromHtml(html);
+  const labels = result.items.map((item) => item.label);
+
+  assert.ok(labels.includes("Visual Studio Code"));
+  assert.ok(labels.includes("GitHub Copilot"));
+  assert.ok(labels.includes("Fira Code"));
+  assert.ok(labels.includes("Mac mini"));
+
+  assert.equal(
+    labels.some((label) => /^plugins$/i.test(label)),
+    false,
+  );
+  assert.equal(
+    labels.some((label) => /and yes|occasionally useful/i.test(label)),
+    false,
+  );
+  assert.equal(
+    labels.some((label) => /my font is/i.test(label)),
+    false,
+  );
+  assert.equal(
+    labels.some((label) => /operating systems/i.test(label)),
+    false,
+  );
+  assert.ok(
+    labels.includes("Samsung S9+ QCY Earbuds"),
+    "phone/earbuds mashup stays one extract label; rollup peels it",
+  );
 });

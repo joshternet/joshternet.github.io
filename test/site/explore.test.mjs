@@ -28,11 +28,21 @@ test("activity and search pages avoid popularity language", async () => {
   assert.doesNotMatch(activity, /prolific publisher/);
   assert.doesNotMatch(activity, /One piece per site/);
   assert.match(activity, /include activity-card.html/);
-  assert.match(activity, /activity-subscribe/);
+  assert.match(activity, /activity-close/);
   assert.match(activity, /\/assets\/activity\/atom\.xml/);
   assert.match(activity, /\/assets\/network\/joshternet\.opml/);
   assert.match(activity, /activity-showcase-note/);
   assert.match(activity, /network-empty|home-activity__empty|role="status"/);
+  const listOrEmptyIndex = Math.max(
+    activity.search(/activity-list|network-empty/),
+    0,
+  );
+  const closeIndex = activity.indexOf("activity-close");
+  assert.ok(
+    closeIndex > listOrEmptyIndex,
+    "subscribe footnote should follow the activity list or empty state",
+  );
+  assert.doesNotMatch(activity, /activity-subscribe/);
   const homeActivity = await read("_includes/home-recent-activity.html");
   assert.match(
     homeActivity,
@@ -72,7 +82,11 @@ test("activity and search pages avoid popularity language", async () => {
     css,
     /\.activity-card__media\s*\{[^}]*aspect-ratio:\s*1200\s*\/\s*630/,
   );
-  assert.match(css, /\.activity-subscribe/);
+  assert.match(
+    css,
+    /\.activity-close\s*\{[^}]*color:\s*var\(--color-muted\)[^}]*font-size:\s*var\(--type-small\)/,
+  );
+  assert.doesNotMatch(css, /\.activity-subscribe\s*\{/);
   assert.match(
     css,
     /\.prose > \.activity-showcase-note,\s*\n\s*\.prose > \.activity-close \{[^}]*max-width:\s*none/,

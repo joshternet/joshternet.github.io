@@ -110,6 +110,20 @@ test("buildPastEventItems rejects invalid clocks, mentions, and ties on url", ()
         title: "Hub",
         start: "2020-01-01",
       },
+      {
+        content_type: "event",
+        url: "https://a.example/chrome",
+        title: ", 2026 · 2 min read Enterprise sales teams",
+        start: "2020-01-01",
+        attribution_role: "presented",
+      },
+      {
+        content_type: "event",
+        url: "https://a.example/year-crumb",
+        title: ", 2026",
+        start: "2020-01-01",
+        attribution_role: "presented",
+      },
     ],
     now,
   );

@@ -1,6 +1,7 @@
 /**
  * Goal & Constraints:
- * UTC calendar rollups with explicit denominators. Distinct origins only.
+ * UTC calendar rollups with explicit denominators. Site slots count distinct
+ * origins; unit slots (e.g. FDM printers) sum stated machine quantities.
  * Never sum monthly unique counts into quarterly/yearly unique counts.
  */
 
@@ -11,6 +12,7 @@ import {
   modelClaimText,
   slotLabels,
 } from "./infer-policy.mjs";
+import { compareSlotsByCoverage } from "./build-helpers.mjs";
 import {
   AGGREGATION_VERSION,
   EXTRACTOR_VERSION,
@@ -19,10 +21,16 @@ import {
   USES_SCHEMA_VERSION,
 } from "./constants.mjs";
 import {
+  catalogPeelCandidates,
   comparisonLabel,
+  is3dPrinterUmbrellaLabel,
   isReportableUseLabel,
+  peelCatalogLead,
+  peelDeclarativeLeadIn,
   productNameFromLabel,
   publicToolName,
+  quantityNearLabel,
+  separateNameContext,
   splitCompoundName,
 } from "./normalize.mjs";
 
@@ -159,10 +167,12 @@ export async function buildPeriodRollup(input) {
     (catalog.tools || []).map((tool) => [tool.id, tool]),
   );
 
-  /** @type {Map<string, { origins: Set<string>, useCases: Map<string, Set<string>>, names: Map<string, number>, statements: object[], slot_id: string, rule: string, preference: boolean }>} */
+  /** @type {Map<string, { origins: Set<string>, unitsByOrigin: Map<string, number>, useCases: Map<string, Set<string>>, names: Map<string, number>, statements: object[], slot_id: string, rule: string, preference: boolean }>} */
   const toolStats = new Map();
   /** @type {Map<string, Set<string>>} */
   const slotOrigins = new Map();
+  /** @type {Map<string, number>} */
+  const slotUnits = new Map();
   /** @type {object[]} */
   const unsorted = [];
   /** @type {object[]} */
@@ -174,21 +184,34 @@ export async function buildPeriodRollup(input) {
     }
     /** @type {Set<string>} */
     const rankedSlots = new Set();
+    /** @type {Map<string, number>} */
+    const rankedSlotUnits = new Map();
     for (const tool of member.tools || []) {
       if (tool.status !== "current") {
         continue;
       }
-      const displayName = claimName(tool, toolById);
+      const displayName = claimName(tool, toolById, catalog);
       if (displayName && !isReportableUseLabel(displayName)) {
         continue;
       }
-      if (!displayName && String(tool.tool_id || "").startsWith("observed:")) {
+      const contextText = tool.context || "";
+      const printerPeel = peel3dPrintersFromContext(
+        displayName || tool.section || "",
+        contextText,
+        catalog,
+        { toolId: tool.tool_id || "", section: tool.section || "" },
+      );
+      if (
+        !displayName &&
+        String(tool.tool_id || "").startsWith("observed:") &&
+        printerPeel.length === 0
+      ) {
         continue;
       }
       const claim = {
         name: displayName,
         label: displayName,
-        context: tool.context || "",
+        context: contextText,
         section: tool.section || "",
         section_path: tool.section_path || "",
         excerpt: tool.excerpt || "",
@@ -196,13 +219,26 @@ export async function buildPeriodRollup(input) {
         tool_id: tool.tool_id || "",
         kind: tool.kind || "product",
       };
-      const classified = classifyClaim(claim, catalog);
+      const classified =
+        displayName || printerPeel.length === 0
+          ? classifyClaim(claim, catalog)
+          : {
+              role: "unsorted",
+              slot_id: null,
+              tool_id: null,
+              rule: "unresolved",
+              preference: false,
+              relation: null,
+              parent_slot: null,
+            };
       /** @type {import('./classify.mjs').Classification[]} */
       const choices = [];
       for (const choice of rankedChoicesForStoredName(
         displayName,
         classified,
         catalog,
+        contextText,
+        { toolId: tool.tool_id || "", section: tool.section || "" },
       )) {
         if (
           choice.role !== "unsorted" ||
@@ -245,9 +281,11 @@ export async function buildPeriodRollup(input) {
         });
       }
       for (const choice of choices) {
+        const choiceName =
+          toolById.get(choice.tool_id)?.name || displayName || "";
         const statement = {
           origin: member.origin,
-          name: displayName,
+          name: choiceName || displayName,
           section: tool.section || "",
           section_path: tool.section_path || "",
           context: tool.context || "",
@@ -263,16 +301,32 @@ export async function buildPeriodRollup(input) {
           continue;
         }
         if (choice.role !== "ranked" || !choice.slot_id || !choice.tool_id) {
+          // Peeling replaces the umbrella row with ranked machines, so an
+          // unsorted umbrella choice only appears when peel found nothing.
           if (choice.role === "unsorted") {
             unsorted.push(statement);
           }
           continue;
         }
+        const quantity = Math.max(
+          1,
+          Number(choice.quantity) ||
+            Number(tool.quantity) ||
+            quantityNearLabel(
+              `${tool.context || ""} ${displayName}`,
+              choiceName || displayName,
+            ),
+        );
         rankedSlots.add(choice.slot_id);
+        rankedSlotUnits.set(
+          choice.slot_id,
+          (rankedSlotUnits.get(choice.slot_id) || 0) + quantity,
+        );
         const key = `${choice.slot_id}\u0000${choice.tool_id}`;
         if (!toolStats.has(key)) {
           toolStats.set(key, {
             origins: new Set(),
+            unitsByOrigin: new Map(),
             useCases: new Map(),
             names: new Map(),
             statements: [],
@@ -283,12 +337,16 @@ export async function buildPeriodRollup(input) {
         }
         const stat = toolStats.get(key);
         stat.origins.add(member.origin);
+        const priorUnits = stat.unitsByOrigin.get(member.origin) || 0;
+        stat.unitsByOrigin.set(member.origin, Math.max(priorUnits, quantity));
         stat.statements.push(statement);
         if (choice.preference) {
           stat.preference = true;
         }
-        if (displayName) {
-          stat.names.set(displayName, (stat.names.get(displayName) || 0) + 1);
+        if (choiceName) {
+          // choiceName already falls back to displayName when the catalog
+          // row has no title, so a separate displayName branch is unreachable.
+          stat.names.set(choiceName, (stat.names.get(choiceName) || 0) + 1);
         }
         for (const useCase of tool.use_case_ids || []) {
           if (!stat.useCases.has(useCase)) {
@@ -303,6 +361,10 @@ export async function buildPeriodRollup(input) {
         slotOrigins.set(slotId, new Set());
       }
       slotOrigins.get(slotId).add(member.origin);
+      slotUnits.set(
+        slotId,
+        (slotUnits.get(slotId) || 0) + rankedSlotUnits.get(slotId),
+      );
     }
   }
 
@@ -337,9 +399,16 @@ export async function buildPeriodRollup(input) {
   const rankedRows = [...toolStats.entries()].map(([key, stat]) => {
     const toolId = key.split("\u0000")[1];
     const activeOrigins = [...stat.origins].sort();
-    const active = activeOrigins.length;
-    const denominator = slotOrigins.get(stat.slot_id).size;
     const slot = slotById.get(stat.slot_id);
+    const countsUnits = slot?.count_basis === "units";
+    const unitTotal = [...stat.unitsByOrigin.values()].reduce(
+      (sum, value) => sum + value,
+      0,
+    );
+    const active = countsUnits ? unitTotal : activeOrigins.length;
+    const denominator = countsUnits
+      ? slotUnits.get(stat.slot_id) || unitTotal
+      : slotOrigins.get(stat.slot_id).size;
     const publisherName = preferredToolName(stat.names, toolId);
     return {
       tool_id: toolId,
@@ -351,6 +420,7 @@ export async function buildPeriodRollup(input) {
       preference: Boolean(stat.preference),
       active_member_count: active,
       active_member_origins: activeOrigins,
+      count_basis: countsUnits ? "units" : "sites",
       period_ever_member_count: periodEver.get(toolId)?.size || 0,
       adoption_score: adoptionScore(active, denominator),
       statements: stat.statements,
@@ -371,6 +441,7 @@ export async function buildPeriodRollup(input) {
   const slots = [...slotOrigins.entries()]
     .map(([slotId, origins]) => {
       const slot = slotById.get(slotId);
+      const countsUnits = slot?.count_basis === "units";
       const products = tools
         .filter((tool) => tool.slot_id === slotId)
         .sort(
@@ -383,12 +454,13 @@ export async function buildPeriodRollup(input) {
         name: slot?.name || slotId,
         scope: slot?.scope || "",
         kind: slot?.kind || "",
-        denominator: origins.size,
+        denominator: countsUnits ? slotUnits.get(slotId) || 0 : origins.size,
+        count_basis: countsUnits ? "units" : "sites",
         origins: [...origins].sort(),
         products,
       };
     })
-    .sort((a, b) => a.name.localeCompare(b.name));
+    .sort(compareSlotsByCoverage);
 
   const catalogHash = catalogHashForModel;
 
@@ -477,18 +549,56 @@ export function adoptionChange(previous, current) {
 }
 
 /**
- * True when two or more rollups show an adoption change under one extractor.
+ * True when consecutive same-granularity rollups show an adoption change
+ * under one extractor/aggregation/catalog. Pass prior then current month
+ * (or quarter/year), not month/quarter/year from a single run.
  * @param {object[]} rollups
  * @returns {boolean}
  */
 export function trendReady(rollups) {
-  const list = rollups || [];
+  const list = (rollups || []).filter(Boolean);
   for (let index = 1; index < list.length; index += 1) {
     if (adoptionChange(list[index - 1], list[index]).adoption_change) {
       return true;
     }
   }
   return false;
+}
+
+/**
+ * Fills change_from_previous_period from a prior same-granularity rollup.
+ * @param {object} rollup
+ * @param {object|null|undefined} previous
+ * @returns {object}
+ */
+export function withPreviousPeriodChanges(rollup, previous) {
+  if (!rollup || !previous) {
+    return rollup;
+  }
+  /** @type {Map<string, object>} */
+  const priorTools = new Map(
+    (previous.tools || []).map((tool) => [tool.tool_id, tool]),
+  );
+  const tools = (rollup.tools || []).map((tool) => {
+    const prior = priorTools.get(tool.tool_id) || null;
+    const momentum = momentumAgainstPrevious(
+      tool,
+      prior,
+      tool.denominator || 0,
+      prior?.denominator || 0,
+    );
+    return {
+      ...tool,
+      change_from_previous_period: prior
+        ? {
+            active_delta: tool.active_member_count - prior.active_member_count,
+            momentum_count: momentum.momentum_count,
+            momentum_pp: momentum.momentum_pp,
+          }
+        : null,
+    };
+  });
+  return { ...rollup, tools };
 }
 
 /**
@@ -532,7 +642,13 @@ export function momentumAgainstPrevious(
  * @param {Map<string, { category_id?: string }>} toolById
  * @returns {object[]}
  */
-function collapseDuplicateToolRows(rows, toolById) {
+/**
+ * Collapses ranked rows that share a tool id (same product, different slots).
+ * @param {object[]} rows
+ * @param {Map<string, { category_id?: string }>} toolById
+ * @returns {object[]}
+ */
+export function collapseDuplicateToolRows(rows, toolById) {
   /** @type {Map<string, object>} */
   const byId = new Map();
   for (const row of rows) {
@@ -555,7 +671,7 @@ function collapseDuplicateToolRows(rows, toolById) {
  * @param {Map<string, { category_id?: string }>} toolById
  * @returns {boolean}
  */
-function preferToolRow(candidate, current, toolById) {
+export function preferToolRow(candidate, current, toolById) {
   if (candidate.active_member_count !== current.active_member_count) {
     return candidate.active_member_count > current.active_member_count;
   }
@@ -570,42 +686,74 @@ function preferToolRow(candidate, current, toolById) {
 }
 
 /**
+ * Peels a space-joined line into catalog products when every segment matches
+ * (Mac Mini ASUS 24" Apple Magic Keyboard Logitech MX Ergo).
+ * @param {string} name
+ * @param {object} catalog
+ * @returns {string[]}
+ */
+function peelCatalogProductNames(name, catalog) {
+  let text = comparisonLabel(name);
+  if (!text) {
+    return [];
+  }
+  const candidates = catalogPeelCandidates(catalog);
+  /** @type {string[]} */
+  const parts = [];
+  while (text) {
+    const hit = candidates.find(
+      (candidate) =>
+        text === candidate.key || text.startsWith(`${candidate.key} `),
+    );
+    if (!hit) {
+      return [];
+    }
+    parts.push(hit.name);
+    text = text.slice(hit.key.length).trim();
+  }
+  return parts.length >= 2 ? parts : [];
+}
+
+/**
  * One stored line can name two ranked or detail choices (computer + display,
  * browser + extension, laptop + memory). classifyClaim still returns one slot
  * for the whole line; this rollup records each part.
+ * Umbrella “3D printers” rows peel named machines out of context.
  * @param {string} name
  * @param {import('./classify.mjs').Classification} classified
  * @param {object} catalog
- * @returns {import('./classify.mjs').Classification[]}
+ * @param {string} [context]
+ * @param {{ toolId?: string, section?: string }} [options]
+ * @returns {Array<import('./classify.mjs').Classification & { quantity?: number }>}
  */
-function rankedChoicesForStoredName(name, classified, catalog) {
-  if (comparisonLabel(name) === "mac mini asus 24") {
-    return [
-      {
-        role: "ranked",
-        slot_id: "computer",
-        tool_id: "mac-mini",
-        rule: "split-compound",
-        preference: classified.preference,
-        relation: null,
-        parent_slot: null,
-      },
-      {
-        role: "ranked",
-        slot_id: "display",
-        tool_id: "asus-24",
-        rule: "split-compound",
-        preference: classified.preference,
-        relation: null,
-        parent_slot: null,
-      },
-    ];
+function rankedChoicesForStoredName(
+  name,
+  classified,
+  catalog,
+  context = "",
+  options = {},
+) {
+  const fromUmbrella = peel3dPrintersFromContext(
+    name,
+    context,
+    catalog,
+    options,
+  );
+  if (fromUmbrella.length >= 1) {
+    return fromUmbrella.map((part) => ({
+      ...part.classified,
+      quantity: part.quantity,
+      // Peel only keeps ranked rows, so unresolved → split-compound never applies.
+      rule: part.classified.rule,
+      preference: classified.preference || part.classified.preference,
+    }));
   }
-  const parts = splitCompoundName(name);
+  const peeled = peelCatalogProductNames(name, catalog);
+  const parts = peeled.length >= 2 ? peeled : splitCompoundName(name);
   if (parts.length < 2) {
     return [classified];
   }
-  /** @type {import('./classify.mjs').Classification[]} */
+  /** @type {Array<import('./classify.mjs').Classification & { quantity?: number }>} */
   const choices = [];
   for (const part of parts) {
     const partClaim = classifyClaim(
@@ -622,10 +770,9 @@ function rankedChoicesForStoredName(name, classified, catalog) {
     ) {
       choices.push({
         ...partClaim,
+        quantity: quantityNearLabel(`${context} ${name}`, part),
         rule:
-          partClaim.rule === "unresolved"
-            ? "split-compound"
-            : partClaim.rule || "split-compound",
+          partClaim.rule === "unresolved" ? "split-compound" : partClaim.rule,
         preference: classified.preference || partClaim.preference,
       });
     }
@@ -637,21 +784,102 @@ function rankedChoicesForStoredName(name, classified, catalog) {
 }
 
 /**
+ * Peels catalog 3D printers named in context under an umbrella heading.
+ * Also recovers ledger rows stored as observed:3d-printing with an empty name
+ * when the section or tool id marks a printer umbrella.
+ * @param {string} name
+ * @param {string} context
+ * @param {object} catalog
+ * @param {{ toolId?: string, section?: string }} [options]
+ * @returns {Array<{ classified: import('./classify.mjs').Classification, quantity: number }>}
+ */
+export function peel3dPrintersFromContext(
+  name,
+  context,
+  catalog,
+  options = {},
+) {
+  const toolId = String(options.toolId || "");
+  const section = String(options.section || "");
+  const umbrella =
+    is3dPrinterUmbrellaLabel(name) ||
+    is3dPrinterUmbrellaLabel(section) ||
+    /^observed:3d-print(?:ers?|ing)?$/i.test(toolId);
+  if (!umbrella) {
+    return [];
+  }
+  const hay = comparisonLabel(context);
+  if (!hay) {
+    return [];
+  }
+  /** @type {Array<{ id: string, name: string, key: string }>} */
+  const candidates = [];
+  for (const tool of catalog?.tools || []) {
+    if (!tool || tool.retired) {
+      continue;
+    }
+    if (!String(tool.category_id || "").startsWith("3d-printer")) {
+      continue;
+    }
+    const labels = [tool.name, ...(tool.aliases || [])].filter(Boolean);
+    for (const label of labels) {
+      const key = comparisonLabel(label);
+      if (!key || key.length < 4) {
+        continue;
+      }
+      candidates.push({ id: tool.id, name: String(tool.name || label), key });
+    }
+  }
+  candidates.sort(
+    (a, b) => b.key.length - a.key.length || a.key.localeCompare(b.key),
+  );
+  /** @type {Set<string>} */
+  const seen = new Set();
+  /** @type {Array<{ classified: import('./classify.mjs').Classification, quantity: number }>} */
+  const hits = [];
+  for (const candidate of candidates) {
+    if (seen.has(candidate.id)) {
+      continue;
+    }
+    if (!hay.includes(candidate.key)) {
+      continue;
+    }
+    seen.add(candidate.id);
+    const classified = classifyClaim(
+      { name: candidate.name, context, kind: "product" },
+      catalog,
+    );
+    if (classified.role !== "ranked" || !classified.tool_id) {
+      continue;
+    }
+    hits.push({
+      classified,
+      quantity: quantityNearLabel(context, candidate.name),
+    });
+  }
+  return hits;
+}
+
+/**
  * Publisher wording, or the catalog name when the stored id is already canonical.
  * @param {object} tool
  * @param {Map<string, object>} toolById
+ * @param {object} [catalog]
  * @returns {string}
  */
-function claimName(tool, toolById) {
-  const fromPublisher = productNameFromLabel(tool?.name || "");
-  if (fromPublisher) {
-    return fromPublisher;
+function claimName(tool, toolById, catalog) {
+  const raw = productNameFromLabel(tool?.name || "");
+  if (!raw) {
+    const id = String(tool?.tool_id || "");
+    if (!id || id.startsWith("observed:")) {
+      return "";
+    }
+    return toolById.get(id)?.name || "";
   }
-  const id = String(tool?.tool_id || "");
-  if (!id || id.startsWith("observed:")) {
-    return "";
-  }
-  return toolById.get(id)?.name || "";
+  const peeled = peelDeclarativeLeadIn(raw);
+  const separated = separateNameContext(peeled.name);
+  const catalogLead = peelCatalogLead(separated.name, catalog);
+  return productNameFromLabel(catalogLead.name);
 }
 
 /**

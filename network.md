@@ -25,6 +25,9 @@ Pick a website that catches your eye and have a look around. You might find a gr
 This is the part of the Joshternet that JoshBot has found and checked so far. There may be plenty of other participating websites still waiting to be discovered. Participation starts by publishing a valid declaration at `/.well-known/josh`—you do not need to appear here first ([Join]({{ '/join/' | relative_url }})).
 
 {% assign network_sites = site.data.network %}
+{% if network_sites == nil %}
+  {% assign network_sites = "" | split: "" %}
+{% endif %}
 {% comment %}
   No-JS fallback: alphabetical by domain. JavaScript replaces order with Discover
   (random), Recently joined, Oldest first, or Alphabetical while preserving filters.

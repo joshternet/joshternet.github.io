@@ -1,8 +1,8 @@
 /**
  * Goal: Happening (/events/) is always built; Network nav appears when
- * happening data has upcoming items. Page markup credits publishers via
- * activity-card, omits embeds/autoplay, and the homepage strip reuses the
- * same card without nested list items.
+ * upcoming events exist (past archive is JEKYLL_ENV=development only).
+ * Page markup credits publishers via activity-card, omits embeds/autoplay,
+ * and the homepage strip reuses the same card without nested list items.
  */
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
@@ -29,12 +29,24 @@ test("events page is published with empty-state markup", async () => {
   assert.doesNotMatch(page, /autoplay/i);
   assert.match(page, /joshternet\.ics/);
   assert.match(page, /site\.data\.happening\.k3a/);
+  assert.match(page, /site\.data\.past_events\.k3a/);
+  assert.match(page, /show_past_events/);
+  assert.match(page, /jekyll\.environment == 'development'/);
+  assert.match(page, /## Past events/);
+  assert.match(page, /past_group_by_year/);
 });
 
-test("network nav shows Happening when happening items exist", async () => {
+test("network nav shows Happening for upcoming; past only in development", async () => {
   const nav = await read("_includes/site-nav-network-children.html");
   assert.match(nav, /happening_count/);
+  assert.match(nav, /past_count/);
+  assert.match(nav, /events_nav_count/);
   assert.match(nav, /site\.data\.happening\.k38|site\.data\.happening\.k3a/);
+  assert.match(nav, /jekyll\.environment == 'development'/);
+  assert.match(
+    nav,
+    /site\.data\.past_events\.k38|site\.data\.past_events\.k3a/,
+  );
   assert.match(nav, /\/events\//);
   assert.match(nav, />Happening</);
 });
@@ -47,12 +59,13 @@ test("home happening strip omits when empty and uses activity-card", async () =>
   assert.match(home, /\/events\//);
 });
 
-test("activity-card renders event start/venue and site credit", async () => {
+test("activity-card renders event start/venue/conference and site credit", async () => {
   const card = await read("_includes/activity-card.html");
   assert.match(card, /happening-date/);
   assert.match(card, /happening-venue/);
   assert.match(card, /include\.item\.k6h/);
   assert.match(card, /include\.item\.k89/);
+  assert.match(card, /include\.item\.k8f/);
   assert.doesNotMatch(card, /autoplay/i);
   assert.doesNotMatch(card, /<iframe\b/i);
 });

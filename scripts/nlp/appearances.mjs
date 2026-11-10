@@ -6,7 +6,13 @@
  * No person-specific rules. Undated listings and booking pages produce nothing.
  */
 
-import { directoryIndexRole } from "./page-role.mjs";
+import {
+  isEmptyAppearanceTitle,
+  isYearCrumbConference,
+  resolveEventTitle,
+} from "./appearance-title.mjs";
+import { fetchPublicText } from "./lib.mjs";
+import { SPEAKING_ARCHIVE_SEGMENTS, directoryIndexRole } from "./page-role.mjs";
 import { subjectsFromHtml } from "./subjects.mjs";
 import { loadHtml } from "./structured-html.mjs";
 import { normalizeExtractedText } from "./text.mjs";
@@ -17,6 +23,16 @@ const HOSTED_INDEX_SEGMENTS = new Set([
   "calendar",
   "meetups",
   "schedule",
+]);
+
+/**
+ * One-segment listing paths probed when deep crawl is short-circuited.
+ * @type {readonly string[]}
+ */
+const APPEARANCE_LISTING_SEGMENTS = Object.freeze([
+  ...SPEAKING_ARCHIVE_SEGMENTS,
+  "tools",
+  ...HOSTED_INDEX_SEGMENTS,
 ]);
 
 const MONTH_INDEX = new Map([
@@ -109,10 +125,13 @@ function calendarDate(year, monthName, day) {
 
 /**
  * Reads a publisher date. Does not invent a clock time.
+ * Month-day strings such as `Mar 28` need a section year (for example an `h2`
+ * that is only `2026`) via `options.year`.
  * @param {string} value
+ * @param {{ year?: string | number }} [options]
  * @returns {{ start: string, precision: 'date'|'datetime'|'' }}
  */
-export function parseAppearanceDate(value) {
+export function parseAppearanceDate(value, options = {}) {
   const raw = collapse(value);
 
   if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) {
@@ -156,6 +175,35 @@ export function parseAppearanceDate(value) {
     const start = calendarDate(dayFirst[3], dayFirst[2], dayFirst[1]);
 
     return start ? { start, precision: "date" } : { start: "", precision: "" };
+  }
+
+  const yearHint = String(options.year || "").trim();
+
+  if (/^\d{4}$/.test(yearHint)) {
+    // `(?<![A-Za-z])` so `40Mar 28` (no space after a conference number) still matches.
+    const monthDay = raw.match(
+      new RegExp(`(?<![A-Za-z])(${MONTH_PATTERN})\\s+(\\d{1,2})\\b`, "i"),
+    );
+
+    if (monthDay) {
+      const start = calendarDate(yearHint, monthDay[1], monthDay[2]);
+
+      return start
+        ? { start, precision: "date" }
+        : { start: "", precision: "" };
+    }
+
+    const dayMonth = raw.match(
+      new RegExp(`\\b(\\d{1,2})\\s+(${MONTH_PATTERN})(?![A-Za-z])`, "i"),
+    );
+
+    if (dayMonth) {
+      const start = calendarDate(yearHint, dayMonth[2], dayMonth[1]);
+
+      return start
+        ? { start, precision: "date" }
+        : { start: "", precision: "" };
+    }
   }
 
   return { start: "", precision: "" };
@@ -298,6 +346,69 @@ function withoutParts(text, parts) {
 }
 
 /**
+ * Drop month-day crumbs and a trailing " - City" location from conference text.
+ * @param {string} value
+ * @returns {string}
+ */
+function cleanConferenceLabel(value) {
+  let rest = collapse(value);
+
+  rest = rest.replace(
+    new RegExp(`(?<![A-Za-z])(${MONTH_PATTERN})\\s+\\d{1,2}\\b`, "gi"),
+    " ",
+  );
+  rest = rest.replace(
+    new RegExp(`\\b\\d{1,2}\\s+(${MONTH_PATTERN})(?![A-Za-z])`, "gi"),
+    " ",
+  );
+  rest = rest.replace(/\s*[-–—]\s+\S.*$/u, "");
+  rest = collapse(rest);
+
+  // Year crumbs are not conference names; clear them so talk titles win.
+  if (isYearCrumbConference(rest) || isEmptyAppearanceTitle(rest)) {
+    return "";
+  }
+
+  return rest;
+}
+
+/**
+ * Talk title when the conference is the link and the talk name is plain text.
+ * @param {ReturnType<typeof loadHtml>} $
+ * @param {unknown} blockElement
+ * @param {string} conference
+ * @param {string} yearHint
+ * @returns {string}
+ */
+function descriptionTitle($, blockElement, conference, yearHint) {
+  for (const node of $(blockElement).find("div, p, span").toArray()) {
+    const clone = $(node).clone();
+    clone.find("a").remove();
+    const text = collapse(clone.text());
+
+    if (!text || text.length < 3 || text.length > 200) {
+      continue;
+    }
+
+    if (conference && text === conference) {
+      continue;
+    }
+
+    if (parseAppearanceDate(text, yearHint ? { year: yearHint } : {}).start) {
+      continue;
+    }
+
+    if (/^(slides?|deck|recording|video|watch|source|repo|code)$/i.test(text)) {
+      continue;
+    }
+
+    return text;
+  }
+
+  return "";
+}
+
+/**
  * Topics declared on this item only. Page-level biography is not included.
  * @param {string} html
  * @param {string} pageUrl
@@ -328,30 +439,60 @@ function topicsFromItem(html, pageUrl, observedAt) {
 /**
  * @param {ReturnType<typeof loadHtml>} $
  * @param {unknown} element
+ * @param {string} [yearHint]
  * @returns {{ start: string, precision: 'date'|'datetime'|'', label: string }}
  */
-function dateFromBlock($, element) {
+function dateFromBlock($, element, yearHint = "") {
+  const options = yearHint ? { year: yearHint } : {};
   const time = $(element).find("time").first();
 
   if (time.length) {
     const datetime = collapse(time.attr("datetime") || "");
     const label = collapse(time.text());
-    const fromDatetime = parseAppearanceDate(datetime);
+    const fromDatetime = parseAppearanceDate(datetime, options);
 
     if (fromDatetime.start) {
       return { ...fromDatetime, label: label || datetime };
     }
 
-    const fromLabel = parseAppearanceDate(label);
+    const fromLabel = parseAppearanceDate(label, options);
 
     if (fromLabel.start) {
       return { ...fromLabel, label };
     }
   }
 
-  const fromText = parseAppearanceDate($(element).text());
+  const fromText = parseAppearanceDate($(element).text(), options);
 
   return { ...fromText, label: fromText.start };
+}
+
+/**
+ * Nearest preceding same-level outline year (`h2` text `2026`) for a block.
+ * @param {ReturnType<typeof loadHtml>} $
+ * @param {unknown} element
+ * @returns {string}
+ */
+function precedingSectionYear($, element) {
+  const root = $("main").length ? $("main").first() : $("body").first();
+  const nodes = root.find("h1, h2, h3, h4, h5, h6, li, article, tr").toArray();
+  let year = "";
+
+  for (const node of nodes) {
+    if (node === element) {
+      break;
+    }
+
+    if ($(node).is("h1, h2, h3, h4, h5, h6")) {
+      const heading = collapse($(node).text());
+
+      if (/^\d{4}$/.test(heading)) {
+        year = heading;
+      }
+    }
+  }
+
+  return year;
 }
 
 /**
@@ -376,6 +517,29 @@ function peerBlocks($) {
 
       return true;
     });
+}
+
+/**
+ * Prefer slides/recording when the talk URL is only the speaking archive index.
+ * @param {string} itemUrl
+ * @param {string} pageUrl
+ * @param {Array<{ kind: string, url: string }>} resources
+ * @returns {string}
+ */
+function presentationCardUrl(itemUrl, pageUrl, resources) {
+  const slides = resources.find((resource) => resource.kind === "slides");
+  const recording = resources.find((resource) => resource.kind === "recording");
+  const preferred = slides || recording;
+  const onArchiveIndex =
+    itemUrl === pageUrl ||
+    /\/speaking\/?$/i.test(itemUrl) ||
+    /\/talks\/?$/i.test(itemUrl);
+
+  if (preferred && typeof preferred.url === "string" && onArchiveIndex) {
+    return preferred.url;
+  }
+
+  return itemUrl;
 }
 
 /**
@@ -424,7 +588,8 @@ function appearancesFromHtml(html, pageUrl, siteOrigin, observedAt, mode) {
     block.children("ul, ol, table").remove();
     const topicsHtml = $.html(block);
     block.find(".p-category").remove();
-    const dated = dateFromBlock($, block.get(0));
+    const yearHint = precedingSectionYear($, element);
+    const dated = dateFromBlock($, block.get(0), yearHint);
     const text = collapse(block.text());
 
     if (!dated.start || /\bcancell?ed\b/i.test(text)) {
@@ -449,18 +614,27 @@ function appearancesFromHtml(html, pageUrl, siteOrigin, observedAt, mode) {
       });
     }
 
-    const titleLink = links.find(
-      (link) =>
-        !/^(slides?|deck|recording|video|watch|source|repo|code)$/i.test(
-          link.text,
-        ) && link.text.length >= 3,
-    );
-    const title = titleLink ? titleLink.text : "";
+    const contentLinks = links.filter((link) => {
+      if (link.text.length < 3) {
+        return false;
+      }
 
-    if (!title) {
-      continue;
-    }
+      if (!link.kind) {
+        return true;
+      }
 
+      // Google Slides / video hosts can still be the talk title permalink.
+      if (
+        (link.kind === "slides" || link.kind === "recording") &&
+        !/^(slides?|deck|recording|video|watch|session video)$/i.test(link.text)
+      ) {
+        return true;
+      }
+
+      return false;
+    });
+    const titleLink =
+      contentLinks.length > 1 ? contentLinks[1] : contentLinks[0];
     const explicitConference = collapse(
       block.attr("data-conference") ||
         block.find("[data-conference]").first().text(),
@@ -472,16 +646,39 @@ function appearancesFromHtml(html, pageUrl, siteOrigin, observedAt, mode) {
     const resourceLabels = links
       .filter((link) => link.kind)
       .map((link) => link.text);
-    const conference =
+    const description = descriptionTitle(
+      $,
+      block.get(0),
+      explicitConference || (contentLinks[0] ? contentLinks[0].text : ""),
+      yearHint,
+    );
+    let title = description || (titleLink ? titleLink.text : "");
+    const conferenceFromLink =
+      description && contentLinks[0] ? contentLinks[0].text : "";
+    const conference = cleanConferenceLabel(
       explicitConference ||
-      withoutParts(text, [title, dated.label, location, ...resourceLabels]);
-    let eventTitle = conference || title;
+        conferenceFromLink ||
+        withoutParts(text, [title, dated.label, location, ...resourceLabels]),
+    );
+
+    if (!title || isEmptyAppearanceTitle(title)) {
+      continue;
+    }
+
+    // When the only content link was the conference, keep slides/recording on
+    // the presentation but do not treat that link as the talk permalink.
+    const talkLink =
+      description && contentLinks.length === 1 ? null : titleLink;
+    let eventTitle = title;
     let eventLocation = location;
 
     if (mode === "hosted") {
-      eventTitle = title;
       eventLocation = location || conference;
+    } else {
+      eventTitle = resolveEventTitle(conference, title);
     }
+
+    // Title already passed hygiene; resolveEventTitle keeps a good talk title.
     const identity = eventIdentity(siteOrigin, eventTitle, dated.start);
 
     if (seenEvents.has(identity)) {
@@ -495,7 +692,7 @@ function appearancesFromHtml(html, pageUrl, siteOrigin, observedAt, mode) {
     const seenResources = new Set();
 
     for (const link of links) {
-      const kind = link === titleLink ? resourceKind(link.url, "") : link.kind;
+      const kind = link === talkLink ? resourceKind(link.url, "") : link.kind;
 
       if (!kind || seenResources.has(link.url)) {
         continue;
@@ -508,11 +705,11 @@ function appearancesFromHtml(html, pageUrl, siteOrigin, observedAt, mode) {
     let itemUrl = pageUrl;
 
     if (
-      titleLink &&
-      titleLink.url.startsWith(siteOrigin) &&
-      titleLink.url !== pageUrl
+      talkLink &&
+      talkLink.url.startsWith(siteOrigin) &&
+      talkLink.url !== pageUrl
     ) {
-      itemUrl = titleLink.url;
+      itemUrl = talkLink.url;
     }
 
     const sourceKind =
@@ -542,12 +739,16 @@ function appearancesFromHtml(html, pageUrl, siteOrigin, observedAt, mode) {
       event.related = [{ id: presentationId, relation: "presentation" }];
       const topics = topicsFromItem(topicsHtml, pageUrl, observedAt);
       const slides = resources.find((resource) => resource.kind === "slides");
+      const recording = resources.find(
+        (resource) => resource.kind === "recording",
+      );
+      const cardTarget = presentationCardUrl(itemUrl, pageUrl, resources);
       let presentation = presentations.get(presentationId);
 
       if (!presentation) {
         presentation = {
           identity: presentationId,
-          url: itemUrl,
+          url: cardTarget,
           site_origin: siteOrigin,
           title,
           summary: conference ? `${conference}` : "",
@@ -564,6 +765,9 @@ function appearancesFromHtml(html, pageUrl, siteOrigin, observedAt, mode) {
           source_feeds: [{ type: "speaking-archive", url: pageUrl }],
           observed_at: observedAt,
           ...(slides ? { action_url: slides.url, action_label: "Slides" } : {}),
+          ...(!slides && recording
+            ? { action_url: recording.url, action_label: "Recording" }
+            : {}),
         };
         presentations.set(presentationId, presentation);
       } else if (
@@ -577,9 +781,12 @@ function appearancesFromHtml(html, pageUrl, siteOrigin, observedAt, mode) {
           presentation.conference = conference;
         }
 
-        if (itemUrl.startsWith(siteOrigin)) {
-          presentation.url = itemUrl;
-        }
+        presentation.url = presentationCardUrl(itemUrl, pageUrl, [
+          .../** @type {Array<{ kind: string, url: string }>} */ (
+            presentation.resources
+          ),
+          ...resources,
+        ]);
       }
 
       const related = /** @type {Array<{ id: string, relation: string }>} */ (
@@ -668,6 +875,102 @@ function toolsFromHtml(html, pageUrl, siteOrigin, observedAt) {
   }
 
   return items;
+}
+
+/**
+ * Same-origin speaking / tools / event-index URL candidates for a site.
+ * @param {string} origin - Absolute origin.
+ * @returns {string[]}
+ */
+export function appearanceListingCandidateUrls(origin) {
+  let base;
+
+  try {
+    base = new URL(origin);
+  } catch {
+    return [];
+  }
+
+  const root = `${base.protocol}//${base.host}`;
+  /** @type {string[]} */
+  const urls = [];
+
+  for (const segment of APPEARANCE_LISTING_SEGMENTS) {
+    urls.push(
+      `${root}/${segment}/`,
+      `${root}/${segment}`,
+      `${root}/${segment}.html`,
+    );
+  }
+
+  return urls;
+}
+
+/**
+ * Fetches speaking / tools / event listing HTML for an origin.
+ * Used when deep crawl is short-circuited (or missed those slash pages) so
+ * appearances still refresh on every sync without waiting for feed/sitemap churn.
+ * @param {string} origin
+ * @param {{
+ *   cache?: object,
+ *   httpCache?: import("./fetch-cache.mjs").FetchCache,
+ *   fetchText?: typeof fetchPublicText,
+ *   haveModes?: Iterable<string>,
+ * }} [options]
+ * @returns {Promise<Array<{ url: string, html: string, lang: string }>>}
+ */
+export async function fetchAppearanceListingPages(origin, options = {}) {
+  const fetchText =
+    typeof options.fetchText === "function"
+      ? options.fetchText
+      : fetchPublicText;
+  /** @type {Array<{ url: string, html: string, lang: string }>} */
+  const pages = [];
+  const seenUrls = new Set();
+  const modesFound = new Set(
+    [...(options.haveModes || [])].filter(
+      (mode) => typeof mode === "string" && mode,
+    ),
+  );
+
+  for (const candidate of appearanceListingCandidateUrls(origin)) {
+    const candidateMode = listingMode(candidate);
+
+    if (!candidateMode || modesFound.has(candidateMode)) {
+      continue;
+    }
+
+    try {
+      const fetched = await fetchText(candidate, {
+        cache: options.cache,
+        httpCache: options.httpCache,
+      });
+      const finalUrl = String(fetched?.url || candidate);
+      const mode = listingMode(finalUrl);
+
+      if (
+        typeof fetched?.body !== "string" ||
+        !fetched.body ||
+        !mode ||
+        seenUrls.has(finalUrl) ||
+        modesFound.has(mode)
+      ) {
+        continue;
+      }
+
+      seenUrls.add(finalUrl);
+      modesFound.add(mode);
+      pages.push({
+        url: finalUrl,
+        html: fetched.body,
+        lang: "",
+      });
+    } catch {
+      // Try the next candidate path.
+    }
+  }
+
+  return pages;
 }
 
 /**

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "taxonomy_version": 2,
+  "taxonomy_version": 3,
   "categories": [
     {
       "id": "editor-ide",
@@ -231,7 +231,7 @@
       "name": "Study software",
       "scope": "Study software a site names in its own words.",
       "kind": "software",
-      "role": "ranked",
+      "role": "detail",
       "parent_id": null
     },
     {
@@ -373,7 +373,7 @@
     {
       "id": "operating-system",
       "name": "Operating systems",
-      "scope": "",
+      "scope": "An OS a site names. Bare Linux can appear beside a distro when both are declared.",
       "kind": "software",
       "role": "ranked",
       "parent_id": null
@@ -392,6 +392,24 @@
       "scope": "",
       "kind": "hardware",
       "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "3d-printer-fdm",
+      "name": "FDM printers",
+      "scope": "Filament / FDM 3D printers a site says it uses. Counts are machines, including stated quantities.",
+      "kind": "hardware",
+      "role": "ranked",
+      "count_basis": "units",
+      "parent_id": null
+    },
+    {
+      "id": "3d-printer-resin",
+      "name": "Resin printers",
+      "scope": "Resin / MSLA / SLA 3D printers a site says it uses. Counts are machines, including stated quantities.",
+      "kind": "hardware",
+      "role": "ranked",
+      "count_basis": "units",
       "parent_id": null
     },
     {
@@ -632,6 +650,110 @@
       "scope": "Combined workflow heading. Not a comparison slot.",
       "kind": "practice",
       "role": "retired",
+      "parent_id": null
+    },
+    {
+      "id": "tablet",
+      "name": "Tablets",
+      "scope": "",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "watch",
+      "name": "Watches",
+      "scope": "",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "containers",
+      "name": "Containers",
+      "scope": "Container runtimes and orchestrators (Docker-style), not hypervisors.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "virtualization",
+      "name": "Virtualization",
+      "scope": "Hypervisors and virtual-machine hosts a site says it runs.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "static-site-generator",
+      "name": "Static site generators",
+      "scope": "The static site generator a site says it builds with.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "personal-finance",
+      "name": "Personal finance",
+      "scope": "Budgeting and personal finance apps a site says it uses.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "health-fitness",
+      "name": "Health and fitness",
+      "scope": "Health, fitness, and weight-tracking apps a site says it uses.",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "chat",
+      "name": "Chat",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "vpn",
+      "name": "VPNs",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "db-client",
+      "name": "Database clients",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "mount",
+      "name": "Mounts",
+      "scope": "",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "storage",
+      "name": "Storage",
+      "scope": "",
+      "kind": "hardware",
+      "role": "ranked",
+      "parent_id": null
+    },
+    {
+      "id": "package-manager",
+      "name": "Package managers",
+      "scope": "",
+      "kind": "software",
+      "role": "ranked",
       "parent_id": null
     }
   ]

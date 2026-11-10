@@ -134,6 +134,10 @@ test("buildPeriodRollup counts distinct origins and scores", async () => {
   assert.equal(vscode.active_member_count, 2);
   assert.equal(vscode.adoption_score, 100);
   assert.deepEqual(validateRollupInvariants(rollup), []);
+  assert.equal(rollup.slots[0].id, "editor-ide");
+  assert.equal(rollup.slots[0].denominator, 2);
+  assert.equal(rollup.slots[1].id, "browser");
+  assert.equal(rollup.slots[1].denominator, 1);
 });
 
 test("one tool id stays one rollup row when context files it under two slots", async () => {

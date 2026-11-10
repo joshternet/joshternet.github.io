@@ -8,10 +8,10 @@ import {
   ACTIVITY_WINDOW_DAYS,
   CONTENT_CACHE_DAYS,
   contentItemTimestamp,
+  isAppearanceListingSourcedItem,
   isContentCacheEligible,
   isDurableCreativeContentItem,
   isVisitorFacingContentItem,
-  markLocalDevCacheContent,
   mergeGatheredContent,
   pruneContentItems,
 } from "../../scripts/nlp/content-retention.mjs";
@@ -152,6 +152,113 @@ test("pruneContentItems drops aged writing and keeps durable creative", () => {
   assert.ok(kept.some((item) => item.url === freshArticle.url));
 });
 
+test("isAppearanceListingSourcedItem detects speaking and event listings", () => {
+  assert.equal(isAppearanceListingSourcedItem(null), false);
+  assert.equal(
+    isAppearanceListingSourcedItem({
+      content_type: "event",
+      source: { kind: "speaking-archive" },
+    }),
+    true,
+  );
+  assert.equal(
+    isAppearanceListingSourcedItem({
+      content_type: "event",
+      source_kind: "speaking-archive",
+    }),
+    true,
+  );
+  assert.equal(
+    isAppearanceListingSourcedItem({
+      content_type: "presentation",
+      source_feeds: [
+        { type: "event-listing", url: "https://a.example/events/" },
+      ],
+    }),
+    true,
+  );
+  assert.equal(
+    isAppearanceListingSourcedItem({
+      content_type: "event",
+      source_feeds: [null, "skip", { type: "" }, { type: "event-listing" }],
+    }),
+    true,
+  );
+  assert.equal(
+    isAppearanceListingSourcedItem({
+      content_type: "event",
+      source: { kind: "schema-event" },
+    }),
+    false,
+  );
+  assert.equal(
+    isAppearanceListingSourcedItem({
+      content_type: "project",
+      source: { kind: "speaking-archive" },
+    }),
+    false,
+  );
+  assert.equal(
+    isAppearanceListingSourcedItem({
+      content_type: "event",
+      source_feeds: [null, { type: "" }],
+    }),
+    false,
+  );
+  assert.equal(
+    isAppearanceListingSourcedItem({
+      content_type: 42,
+      source_kind: "speaking-archive",
+    }),
+    false,
+  );
+});
+
+test("mergeGatheredContent drops unreplaced speaking-archive zombies on success", () => {
+  const zombie = {
+    identity: "event:https://ok.example:2026:2026-10-01",
+    content_type: "event",
+    url: "https://ok.example/speaking/",
+    site_origin: "https://ok.example",
+    title: ", 2026",
+    source: { kind: "speaking-archive", page: "https://ok.example/speaking/" },
+    observed_at: daysAgoIso(10),
+  };
+  const freshTalk = {
+    identity: "event:https://ok.example:front-end-study-hall-061:2026-10-29",
+    content_type: "event",
+    url: "https://ok.example/speaking/",
+    site_origin: "https://ok.example",
+    title: "Front End Study Hall #061",
+    source: { kind: "speaking-archive", page: "https://ok.example/speaking/" },
+    observed_at: daysAgoIso(1),
+  };
+  const photo = {
+    content_type: "photograph",
+    url: "https://ok.example/photos/1",
+    site_origin: "https://ok.example",
+    title: "Album",
+    observed_at: daysAgoIso(2),
+  };
+
+  const merged = mergeGatheredContent([zombie, photo], [freshTalk], {
+    now: NOW,
+  });
+
+  assert.equal(
+    merged.items.some((item) => item.identity === zombie.identity),
+    false,
+  );
+  assert.ok(merged.items.some((item) => item.identity === freshTalk.identity));
+  assert.ok(merged.items.some((item) => item.url === photo.url));
+
+  const carried = mergeGatheredContent([zombie, photo], [], {
+    now: NOW,
+    failedOrigins: ["https://ok.example"],
+  });
+  assert.ok(carried.items.some((item) => item.identity === zombie.identity));
+});
+
 test("mergeGatheredContent carries forward failed origins and filters aged gather", () => {
   const baseProject = {
     content_type: "project",
@@ -267,6 +374,171 @@ test("isDurableCreativeContentItem covers creative source kinds", () => {
   );
 });
 
+test("appearance identity keys keep multiple talks that share an archive URL", () => {
+  const archive = "https://member.example/speaking/";
+  const first = {
+    identity: "event:https://member.example:boston:2026-03-28",
+    content_type: "event",
+    url: archive,
+    site_origin: "https://member.example",
+    title: "Boston Code Camp 40",
+    start: "2026-03-28",
+    observed_at: daysAgoIso(1),
+  };
+  const second = {
+    identity: "event:https://member.example:aspireconf:2026-03-23",
+    content_type: "event",
+    url: archive,
+    site_origin: "https://member.example",
+    title: "AspireConf 2026",
+    start: "2026-03-23",
+    observed_at: daysAgoIso(1),
+  };
+  const talk = {
+    identity:
+      "presentation:https://member.example:how-to-learn-to-love-the-linter",
+    content_type: "presentation",
+    url: archive,
+    site_origin: "https://member.example",
+    title: "How to Learn to Love the Linter",
+    start: "2026-03-28",
+    observed_at: daysAgoIso(1),
+  };
+
+  const merged = mergeGatheredContent([], [first, second, talk], { now: NOW });
+  assert.equal(merged.items.length, 3);
+  assert.ok(merged.items.some((item) => item.identity === first.identity));
+  assert.ok(merged.items.some((item) => item.identity === second.identity));
+  assert.ok(merged.items.some((item) => item.identity === talk.identity));
+});
+
+test("directory index URLs are never durable and leave on merge", () => {
+  const collections = {
+    content_type: "project",
+    url: "https://joshozuna.com/collections",
+    site_origin: "https://joshozuna.com",
+    source: { kind: "creative-homepage" },
+    observed_at: daysAgoIso(2),
+  };
+  const sitemap = {
+    content_type: "collection",
+    url: "https://joshozuna.com/html-sitemap",
+    site_origin: "https://joshozuna.com",
+    source: { kind: "creative-schema" },
+    observed_at: daysAgoIso(2),
+  };
+  const toolsIndex = {
+    content_type: "project",
+    url: "https://joshuastuebner.com/tools/",
+    site_origin: "https://joshuastuebner.com",
+    source: { kind: "creative-homepage" },
+    observed_at: daysAgoIso(2),
+  };
+  const toolChild = {
+    content_type: "project",
+    url: "https://joshuastuebner.com/tools/calendar/",
+    site_origin: "https://joshuastuebner.com",
+    source: { kind: "tool-index" },
+    observed_at: daysAgoIso(1),
+  };
+  const photoAlbum = {
+    content_type: "photograph",
+    url: "https://joshozuna.com/film/kodak-ultramax",
+    site_origin: "https://joshozuna.com",
+    source: { kind: "creative-og" },
+    observed_at: daysAgoIso(1),
+  };
+
+  assert.equal(isDurableCreativeContentItem(collections), false);
+  assert.equal(isDurableCreativeContentItem(sitemap), false);
+  assert.equal(isDurableCreativeContentItem(toolsIndex), false);
+  assert.equal(
+    isDurableCreativeContentItem({
+      url: "https://joshozuna.com/tools/",
+      content_type: 1,
+    }),
+    false,
+  );
+  assert.equal(isContentCacheEligible(collections, NOW), false);
+  assert.equal(isContentCacheEligible(toolsIndex, NOW), false);
+  assert.equal(isDurableCreativeContentItem(toolChild), true);
+  assert.equal(
+    isDurableCreativeContentItem({
+      content_type: "presentation",
+      url: "https://member.example/speaking/",
+    }),
+    true,
+  );
+  assert.equal(
+    isContentCacheEligible(
+      {
+        content_type: "event",
+        url: "https://member.example/speaking/",
+        observed_at: daysAgoIso(2),
+      },
+      NOW,
+    ),
+    true,
+  );
+
+  const pruned = pruneContentItems(
+    [collections, sitemap, toolsIndex, toolChild, photoAlbum],
+    NOW,
+  );
+  assert.equal(
+    pruned.kept.some((item) => item.url === collections.url),
+    false,
+  );
+  assert.equal(
+    pruned.kept.some((item) => item.url === sitemap.url),
+    false,
+  );
+  assert.equal(
+    pruned.kept.some((item) => item.url === toolsIndex.url),
+    false,
+  );
+  assert.ok(pruned.kept.some((item) => item.url === toolChild.url));
+  assert.ok(pruned.kept.some((item) => item.url === photoAlbum.url));
+
+  const merged = mergeGatheredContent(
+    [collections, sitemap, toolsIndex, toolChild, photoAlbum],
+    [toolChild, photoAlbum],
+    { now: NOW },
+  );
+  assert.equal(
+    merged.items.some((item) => item.url === collections.url),
+    false,
+  );
+  assert.equal(
+    merged.items.some((item) => item.url === sitemap.url),
+    false,
+  );
+  assert.equal(
+    merged.items.some((item) => item.url === toolsIndex.url),
+    false,
+  );
+  assert.ok(merged.items.some((item) => item.url === toolChild.url));
+  assert.ok(merged.items.some((item) => item.url === photoAlbum.url));
+
+  const carried = mergeGatheredContent(
+    [collections, toolsIndex, toolChild],
+    [],
+    {
+      now: NOW,
+      failedOrigins: ["https://joshozuna.com", "https://joshuastuebner.com"],
+    },
+  );
+  assert.equal(
+    carried.items.some((item) => item.url === collections.url),
+    false,
+  );
+  assert.equal(
+    carried.items.some((item) => item.url === toolsIndex.url),
+    false,
+  );
+  assert.ok(carried.items.some((item) => item.url === toolChild.url));
+});
+
 test("mergeGatheredContent covers id keys, updates, and sort ties", () => {
   const base = {
     content_type: "project",
@@ -349,14 +621,7 @@ test("pruneContentItems accepts custom cacheDays and non-array", () => {
   assert.equal(prunedCount, 0);
 });
 
-test("local personal-site content grows and live writing still ages out", () => {
-  const oldLocal = {
-    content_type: "article",
-    url: "https://other.example/uses/old",
-    site_origin: "https://other.example",
-    published_at: daysAgoIso(400),
-    local_dev_cache: true,
-  };
+test("aged writing leaves the cache while fresh writing remains", () => {
   const freshMember = {
     content_type: "article",
     url: "https://joshua.example/new",
@@ -370,100 +635,19 @@ test("local personal-site content grows and live writing still ages out", () => 
     published_at: daysAgoIso(40),
   };
 
-  assert.equal(
-    isContentCacheEligible(oldLocal, NOW, CONTENT_CACHE_DAYS, {
-      retainLocalDevCache: true,
-    }),
-    true,
-  );
-  assert.equal(isContentCacheEligible(oldLocal, NOW), false);
-  assert.equal(
-    isContentCacheEligible(
-      { local_dev_cache: true, content_type: "project" },
-      NOW,
-      CONTENT_CACHE_DAYS,
-      { retainLocalDevCache: false },
-    ),
-    false,
+  assert.equal(isContentCacheEligible(freshMember, NOW), true);
+  assert.equal(isContentCacheEligible(agedMember, NOW), false);
+
+  const pruned = pruneContentItems([agedMember, freshMember], NOW);
+  assert.equal(pruned.prunedCount, 1);
+  assert.deepEqual(
+    pruned.kept.map((item) => item.url),
+    [freshMember.url],
   );
 
-  const keptLocal = pruneContentItems(
-    [oldLocal, agedMember, freshMember],
-    NOW,
-    {
-      retainLocalDevCache: true,
-    },
-  );
-  assert.equal(keptLocal.prunedCount, 1);
-  assert.ok(keptLocal.kept.some((item) => item.url === oldLocal.url));
-
-  const droppedLocal = pruneContentItems([oldLocal], NOW);
-  assert.equal(droppedLocal.kept.length, 0);
-
-  const drafts = [
-    null,
-    { content_type: "article", title: "no origin" },
-    { content_type: "article", url: "not a url" },
-    {
-      content_type: "article",
-      url: "https://friends.joshua.example/note",
-      published_at: daysAgoIso(90),
-    },
-    {
-      content_type: "article",
-      url: "https://other.example/older-note",
-      published_at: daysAgoIso(200),
-    },
-    {
-      content_type: "article",
-      url: "https://other.example/uses/old",
-      site_origin: "https://other.example",
-      published_at: daysAgoIso(10),
-      title: "updated",
-    },
-  ];
-  markLocalDevCacheContent(drafts, [null, "", "https://other.example"]);
-  markLocalDevCacheContent(drafts, []);
-  markLocalDevCacheContent(drafts);
-  markLocalDevCacheContent(null, ["https://other.example"]);
-  assert.equal(drafts[5].local_dev_cache, true);
-  assert.equal(drafts[4].local_dev_cache, true);
-  assert.equal(drafts[3].local_dev_cache, undefined);
-
-  const aside = {
-    content_type: "article",
-    url: "https://other.example/aside",
-    site_origin: "https://other.example",
-    published_at: daysAgoIso(500),
-    local_dev_cache: true,
-  };
-  const grown = mergeGatheredContent(
-    [oldLocal, aside, agedMember],
-    drafts.filter((item) => item),
-    { now: NOW, retainLocalDevCache: true },
-  );
-  assert.ok(
-    grown.items.some(
-      (item) => item.url === oldLocal.url && item.title === "updated",
-    ),
-  );
-  assert.ok(grown.items.some((item) => item.url === aside.url));
-  assert.ok(
-    grown.items.some((item) => item.url === "https://other.example/older-note"),
-  );
-  assert.ok(
-    !grown.items.some(
-      (item) => item.url === "https://friends.joshua.example/note",
-    ),
-  );
-  assert.ok(!grown.items.some((item) => item.url === agedMember.url));
-
-  const live = mergeGatheredContent(
-    [oldLocal],
-    drafts.filter((item) => item),
-    {
-      now: NOW,
-    },
-  );
-  assert.ok(!live.items.some((item) => item.local_dev_cache === true));
+  const merged = mergeGatheredContent([agedMember], [freshMember], {
+    now: NOW,
+  });
+  assert.ok(merged.items.some((item) => item.url === freshMember.url));
+  assert.ok(!merged.items.some((item) => item.url === agedMember.url));
 });

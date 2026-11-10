@@ -16,9 +16,7 @@ test("assessUsesPages covers missing, duplicate, and extracted pages", () => {
   const unchecked = assessUsesPages(origin, undefined);
   assert.equal(unchecked.page_status, "not_checked");
 
-  const scoped = assessUsesPages(origin, [
-    { outcome: "out_of_scope" },
-  ]);
+  const scoped = assessUsesPages(origin, [{ outcome: "out_of_scope" }]);
   assert.match(scoped.page_url, /\/uses/);
   assert.equal(scoped.homepage_duplicate, true);
 

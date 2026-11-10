@@ -36,6 +36,7 @@ import {
   buildTopicCommunities,
   loadAliasMap,
   loadDenylist,
+  resolveContentTopicAliases,
   topicCollectionMarkdown,
 } from "./communities.mjs";
 import {
@@ -53,7 +54,6 @@ import {
 import {
   CONTENT_CACHE_DAYS,
   isContentCacheEligible,
-  markLocalDevCacheContent,
   mergeGatheredContent,
   pruneContentItems,
 } from "./content-retention.mjs";
@@ -92,6 +92,11 @@ import {
 import { createOriginRobotsGate } from "./origin-robots.mjs";
 import { formatGeneratedOutputs } from "../format-written.mjs";
 import { collectCreativeWorks } from "./creative.mjs";
+import {
+  fetchAppearanceListingPages,
+  listingMode,
+  projectsFromToolIndexes,
+} from "./appearances.mjs";
 import { collectEvents } from "./events.mjs";
 import { collectPortfolio } from "./portfolio.mjs";
 import { shouldRenderHtml } from "./render.mjs";
@@ -125,15 +130,6 @@ import {
 } from "./text.mjs";
 import { buildUsesDatasets } from "../uses/build.mjs";
 import { assessUsesPages } from "../uses/origin-assessment.mjs";
-import {
-  clearLocalIntakeOrigins,
-  devCacheEnabled,
-  devCacheRoot,
-  latestUsesOrigins,
-  participantsForThisRun,
-  rememberMemberCrawl,
-  splitUsesPreviewInputs,
-} from "../uses/dev-cache.mjs";
 import { fetchUsesHtmlPages } from "../uses/discover.mjs";
 import {
   buildSeekingDatasets,
@@ -227,9 +223,8 @@ async function main() {
     }
   }
   const now = new Date().toISOString();
-  const retainLocalDevCache = devCacheEnabled();
   const { kept: prunedContentBase, prunedCount: contentPrunedBeforeGather } =
-    pruneContentItems(previousContentItems, now, { retainLocalDevCache });
+    pruneContentItems(previousContentItems, now);
   process.stdout.write(
     `nlp content prune: dropped ${contentPrunedBeforeGather} aged writing; retained ${prunedContentBase.length} (cache ${CONTENT_CACHE_DAYS}d + durable creative)\n`,
   );
@@ -324,7 +319,11 @@ async function main() {
   /** @type {string[]} */
   const writtenIds = [];
 
-  const crawlParticipants = participantsForThisRun(network, devCacheEnabled());
+  const crawlParticipants = Array.isArray(network)
+    ? network.filter(
+        (entry) => entry && typeof entry.origin === "string" && entry.origin,
+      )
+    : [];
 
   for (const participant of crawlParticipants) {
     if (!participant || typeof participant.origin !== "string") {
@@ -332,7 +331,6 @@ async function main() {
     }
 
     const origin = participant.origin;
-    const localDevCache = participant.local_dev_cache === true;
     const marks = {
       signals: originSignals.length,
       links: originLinks.length,
@@ -739,6 +737,62 @@ async function main() {
         );
       }
 
+      // Speaking / tools / event indexes: probe slash pages when deep crawl is
+      // short-circuited or missed them, same pattern as Uses and Seeking.
+      /** @type {Map<string, { url: string, html: string, lang?: string }>} */
+      const appearanceByUrl = new Map();
+
+      for (const page of crawled.pages) {
+        if (
+          !page ||
+          typeof page.url !== "string" ||
+          typeof page.html !== "string" ||
+          !page.html ||
+          !listingMode(page.url)
+        ) {
+          continue;
+        }
+
+        appearanceByUrl.set(page.url, {
+          url: page.url,
+          html: page.html,
+          lang: page.lang || "",
+        });
+      }
+
+      const haveAppearanceModes = new Set(
+        [...appearanceByUrl.keys()]
+          .map((url) => listingMode(url))
+          .filter(Boolean),
+      );
+
+      for (const page of await fetchAppearanceListingPages(origin, {
+        cache: dnsCache,
+        httpCache,
+        haveModes: haveAppearanceModes,
+      })) {
+        if (!appearanceByUrl.has(page.url)) {
+          appearanceByUrl.set(page.url, page);
+        }
+      }
+
+      // Short-circuit leaves crawled.pages empty; dedicated listing HTML must
+      // still mint event/presentation drafts on every sync. Deep crawl may also
+      // miss a listing slash page — extract here when we have listing HTML.
+      // Deep crawl already ran collectEvents on all pages; identity merge dedupes.
+      if (appearanceByUrl.size > 0) {
+        const appearancePages = [...appearanceByUrl.values()];
+        const appearanceMeta = {
+          siteOrigin: origin,
+          observedAt: now,
+        };
+        const appearanceEvents = collectEvents(appearancePages, appearanceMeta);
+        contentDrafts.push(...appearanceEvents.items);
+        contentDrafts.push(
+          ...projectsFromToolIndexes(appearancePages, appearanceMeta),
+        );
+      }
+
       if (shortCircuitedOrigins.has(origin)) {
         const carried = carryForwardOriginSignal(priorSignal, {
           origin,
@@ -777,7 +831,6 @@ async function main() {
           origin,
           title: participant.title || participant.domain || origin,
           pages: usesHtmlPages,
-          local_dev_cache: localDevCache,
         });
         // Dedicated /seeking fetch can complete Seeking even when deep crawl skipped.
         seekingOriginInputs.push({
@@ -833,7 +886,6 @@ async function main() {
           origin,
           title: participant.title || participant.domain || origin,
           pages: usesHtmlPages,
-          local_dev_cache: localDevCache,
         });
         seekingOriginInputs.push({
           origin,
@@ -841,23 +893,6 @@ async function main() {
           pages: seekingHtmlPages,
           complete: true,
         });
-        if (devCacheEnabled()) {
-          try {
-            await rememberMemberCrawl({
-              enabled: true,
-              root: devCacheRoot(ROOT),
-              origin,
-              pages: crawled.pages,
-              usesPages: usesHtmlPages,
-              seekingPages: seekingHtmlPages,
-              subjects: htmlSubjects,
-            });
-          } catch (error) {
-            process.stderr.write(
-              `nlp dev cache skipped ${origin}: ${error instanceof Error ? error.message : error}\n`,
-            );
-          }
-        }
         enrichPublishedAtFromPages(contentDrafts, crawled.pages);
         releaseCrawlPageBodies(crawled.pages);
       }
@@ -879,7 +914,6 @@ async function main() {
         origin,
         title: participant.title || participant.domain || origin,
         pages: [],
-        local_dev_cache: localDevCache,
       });
       seekingOriginInputs.push({
         origin,
@@ -928,7 +962,6 @@ async function main() {
           title: participant.title || participant.domain || origin,
           domain: participant.domain || "",
           crawled_at: now,
-          local_dev_cache: localDevCache,
           status: failedOrigins.has(origin) ? "failed" : "ok",
           pages: recordedPages.map((page) => {
             const record =
@@ -988,38 +1021,11 @@ async function main() {
   let usesFailed = false;
   try {
     // publish omitted → local on / CI off unless JOSHTERNET_USES_PUBLISH set.
-    const { ledger, preview } = splitUsesPreviewInputs(
-      usesOriginInputs,
-      devCacheEnabled() ? await latestUsesOrigins(devCacheRoot(ROOT)) : [],
-    );
     const usesMetrics = await buildUsesDatasets({
       repoRoot: ROOT,
-      origins: ledger,
+      origins: usesOriginInputs,
       observed_at: now,
     });
-    if (preview.length > 0) {
-      try {
-        const mixed = await buildUsesDatasets({
-          repoRoot: ROOT,
-          origins: [...ledger, ...preview],
-          observed_at: now,
-          previewMix: true,
-        });
-        if (mixed.preview_skipped) {
-          process.stdout.write(
-            `nlp uses preview skipped: quality blocked for ${preview.length} local origin(s); /uses/ stays ledger-only this run\n`,
-          );
-        } else {
-          process.stdout.write(
-            `nlp uses preview: mixed ${ledger.length} ledger + ${preview.length} local origin(s) into gitignored public views\n`,
-          );
-        }
-      } catch (error) {
-        process.stderr.write(
-          `nlp uses preview skipped: ${error instanceof Error ? error.message : error}\n`,
-        );
-      }
-    }
     process.stdout.write(
       `nlp uses: verified=${usesMetrics.verified_count} items=${usesMetrics.extraction_item_count} events=${usesMetrics.events_added} publish=${usesMetrics.publish}\n`,
     );
@@ -1081,17 +1087,8 @@ async function main() {
       `elsewhere youtube harvest failed: ${error instanceof Error ? error.message : error}\n`,
     );
   }
-
-  markLocalDevCacheContent(
-    contentDrafts,
-    crawlParticipants
-      .filter((participant) => participant.local_dev_cache === true)
-      .map((participant) => participant.origin),
-  );
   const draftItems = mergeContentItems(contentDrafts).filter((item) =>
-    isContentCacheEligible(item, now, CONTENT_CACHE_DAYS, {
-      retainLocalDevCache,
-    }),
+    isContentCacheEligible(item, now, CONTENT_CACHE_DAYS),
   );
   const aliasesDoc = await readJSONIfExists(ALIASES_PATH, { aliases: [] });
   const catalog = networkCatalog(communityOrigins, draftItems);
@@ -1150,11 +1147,11 @@ async function main() {
     cache: dnsCache,
     robotsGate,
   });
+  resolveContentTopicAliases(gatheredItems, aliases);
   const contentMerge = mergeGatheredContent(prunedContentBase, gatheredItems, {
     now,
     failedOrigins,
     reuseOrigins: shortCircuitedOrigins,
-    retainLocalDevCache,
   });
   const contentItems = contentMerge.items;
   process.stdout.write(
@@ -1452,9 +1449,6 @@ async function main() {
 
   await buildViewProjections();
   await formatGeneratedOutputs();
-  if (devCacheEnabled()) {
-    await clearLocalIntakeOrigins(devCacheRoot(ROOT));
-  }
 
   process.stdout.write(
     `Wrote signals for ${originSignals.length} origins, ${communities.length} communities, ${contentItems.length} content items, ${deduped.length} connections.\n`,

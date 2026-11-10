@@ -7,8 +7,16 @@
 import {
   comparisonLabel,
   contentFingerprint,
+  isArticleShapedLabel,
+  isNonComparableUseLabel,
+  isReportableUseLabel,
+  isSentenceShapedLabel,
+  isUsesSectionLabel,
+  peelCatalogLead,
+  peelDeclarativeLeadIn,
   resolveToolLabel,
   sanitizeLabel,
+  separateNameContext,
 } from "./normalize.mjs";
 
 /**
@@ -28,15 +36,30 @@ import {
  * @returns {Classification}
  */
 export function classifyClaim(claim, catalog) {
-  const name = sanitizeLabel(claim?.name || claim?.label || "");
-  const context = sanitizeLabel(
-    `${claim?.section || ""} ${claim?.section_path || ""} ${claim?.context || ""} ${claim?.excerpt || ""}`,
-  );
-  const href = String(claim?.href || "");
-  const preference = hasExplicitPreference(context);
-  const indexed = indexSlots(catalog);
+  if (claim == null) {
+    return result({
+      role: "rejected",
+      rule: "fragment",
+      preference: false,
+    });
+  }
+  let safeCatalog = {};
+  if (catalog != null) {
+    safeCatalog = catalog;
+  }
+  const rawName = sanitizeLabel(claimName(claim));
+  const href = String(fieldString(claim.href));
+  const preference = hasExplicitPreference(claimContextText(claim));
+  const indexed = indexSlots(safeCatalog);
 
-  if (!name || isRejectedFragment(name)) {
+  if (!rawName) {
+    return result({
+      role: "rejected",
+      rule: "fragment",
+      preference,
+    });
+  }
+  if (isRejectedFragment(rawName)) {
     return result({
       role: "rejected",
       rule: "fragment",
@@ -44,9 +67,32 @@ export function classifyClaim(claim, catalog) {
     });
   }
 
-  if (claim?.kind === "practice" || claim?.kind === "unresolved") {
+  // Reject extension/framework/article/sentence chrome on the publisher string
+  // before peels turn Copilot asides or "vscode-styled-components" into tools.
+  const earlyReject = nonProductClassification(rawName, preference);
+  if (earlyReject) {
+    return earlyReject;
+  }
+
+  const peeledLead = peelDeclarativeLeadIn(rawName);
+  const separated = separateNameContext(peeledLead.name);
+  const catalogLead = peelCatalogLead(separated.name, safeCatalog);
+  // peelCatalogLead always returns a name for non-empty input (canonical or original).
+  const name = sanitizeLabel(catalogLead.name);
+  const context = sanitizeLabel(
+    `${claimContextText(claim)} ${peeledLead.context} ${separated.context} ${catalogLead.context}`,
+  );
+
+  if (claim.kind === "practice") {
     return result({
-      role: claim.kind === "unresolved" ? "rejected" : "detail",
+      role: "detail",
+      rule: "kind",
+      preference,
+    });
+  }
+  if (claim.kind === "unresolved") {
+    return result({
+      role: "rejected",
       rule: "kind",
       preference,
     });
@@ -72,8 +118,17 @@ export function classifyClaim(claim, catalog) {
       preference,
     });
   }
+  if (isIdeExtensionOrFeature(name)) {
+    return result({
+      role: "detail",
+      rule: "extension",
+      relation: "extension_of",
+      parent_slot: "editor-ide",
+      preference,
+    });
+  }
 
-  if (claim?.kind === "equipment") {
+  if (claim.kind === "equipment") {
     return result({
       role: "detail",
       rule: "generic-gear",
@@ -86,41 +141,78 @@ export function classifyClaim(claim, catalog) {
     return finishTool(byUrl, context, indexed, "approved-url", preference);
   }
 
-  const resolved = resolveToolLabel(name, {
-    section: claim?.section || "",
-    excerpt: context,
-    catalog,
-  });
-  if (resolved.match === "unique" && resolved.tool_id) {
-    const tool = indexed.tools.get(resolved.tool_id);
-    if (tool) {
-      return finishTool(tool, context, indexed, "catalog", preference);
+  if (catalogLead.tool_id) {
+    const peeledTool = indexed.tools.get(catalogLead.tool_id);
+    if (peeledTool) {
+      return finishTool(
+        peeledTool,
+        context,
+        indexed,
+        "catalog-peel",
+        preference,
+      );
     }
   }
-  const macbook = matchMacBookFamily(name, indexed);
+
+  const resolved = resolveToolLabel(name, {
+    section: fieldString(claim.section),
+    excerpt: context,
+    catalog: safeCatalog,
+  });
+  if (resolved.match === "unique") {
+    if (resolved.tool_id) {
+      const tool = indexed.tools.get(resolved.tool_id);
+      if (tool) {
+        return finishTool(tool, context, indexed, "catalog", preference);
+      }
+    }
+  }
+  const macbook = matchMacBookFamily(`${name} ${context}`, indexed);
   if (macbook) {
     return finishTool(macbook, context, indexed, "macbook-family", preference);
   }
+  const macMini = matchMacMiniFamily(name, indexed);
+  if (macMini) {
+    return finishTool(macMini, context, indexed, "mac-mini-family", preference);
+  }
+  const shaped = matchProductShapeTool(name, indexed);
+  if (shaped) {
+    return finishTool(shaped, context, indexed, "product-shape", preference);
+  }
+  const shapeSlot = productShapeSlotId(name);
   const fromSection = sectionSlotId(
-    claim?.section_path || claim?.section || "",
-    catalog?.categories,
+    claimSectionHint(claim),
+    safeCatalog.categories,
   );
-  if (fromSection) {
+  // Product nouns (chair, trackpad, iPad, TV) beat umbrella sections like
+  // Workstation/Computers that publishers use for mixed gear lists.
+  const slotId = shapeSlot || fromSection;
+  if (slotId) {
+    let sectionToolId = resolved.tool_id;
+    if (typeof claim.tool_id === "string") {
+      if (claim.tool_id) {
+        sectionToolId = claim.tool_id;
+      }
+    }
     return result({
       role: "ranked",
-      slot_id: fromSection,
-      tool_id:
-        typeof claim?.tool_id === "string" && claim.tool_id
-          ? claim.tool_id
-          : resolved.tool_id,
-      rule: "section",
+      slot_id: slotId,
+      tool_id: sectionToolId,
+      rule: shapeSlot ? "product-shape" : "section",
       preference,
     });
   }
-  if (resolved.match === "abstain" || resolved.match === "ambiguous") {
+  if (resolved.match === "abstain") {
     return result({
       role: "unsorted",
-      rule: resolved.match,
+      rule: "abstain",
+      preference,
+    });
+  }
+  if (resolved.match === "ambiguous") {
+    return result({
+      role: "unsorted",
+      rule: "ambiguous",
       preference,
     });
   }
@@ -147,13 +239,55 @@ const SECTION_SYNONYMS = new Map([
   ["ides", "editor-ide"],
   ["ide", "editor-ide"],
   ["browsers", "browser"],
+  ["browser", "browser"],
   ["phones", "phone"],
+  ["phone", "phone"],
   ["keyboards", "keyboard"],
   ["displays", "display"],
   ["monitors", "display"],
+  ["monitor", "display"],
+  ["tv", "display"],
+  ["tvs", "display"],
   ["mice", "mouse"],
   ["mouse", "mouse"],
+  ["trackpad", "mouse"],
+  ["trackpads", "mouse"],
   ["chairs", "chair"],
+  ["chair", "chair"],
+  ["tablet", "tablet"],
+  ["tablets", "tablet"],
+  ["ipad", "tablet"],
+  ["ipads", "tablet"],
+  ["health", "health-fitness"],
+  ["fitness", "health-fitness"],
+  ["weight loss", "health-fitness"],
+  ["watch", "watch"],
+  ["watches", "watch"],
+  ["password", "password-manager"],
+  ["passwords", "password-manager"],
+  ["headphones", "headphones"],
+  ["earphones", "headphones"],
+  ["earphone", "headphones"],
+  ["containers", "containers"],
+  ["docker", "containers"],
+  ["launcher", "launcher"],
+  ["launchers", "launcher"],
+  ["creative", "design"],
+  ["photo", "design"],
+  ["terminal", "terminal-emulator"],
+  ["terminals", "terminal-emulator"],
+  ["vpn", "vpn"],
+  ["vpns", "vpn"],
+  ["chat", "chat"],
+  ["messaging", "chat"],
+  ["api", "api-client"],
+  ["apis", "api-client"],
+  ["database client", "db-client"],
+  ["db client", "db-client"],
+  ["mount", "mount"],
+  ["mounts", "mount"],
+  ["storage", "storage"],
+  ["ssd", "storage"],
 ]);
 
 /**
@@ -164,16 +298,26 @@ const SECTION_SYNONYMS = new Map([
  * @returns {string|null}
  */
 export function sectionSlotId(sectionPath, categories) {
-  const segments = String(sectionPath || "")
+  const pathText = fieldString(sectionPath);
+  const segments = pathText
     .split("/")
     .map((part) => comparisonLabel(part))
     .filter(Boolean);
   if (segments.length === 0) {
     return null;
   }
-  const ranked = (categories || []).filter(
-    (slot) => slot && slot.role === "ranked" && slot.id,
-  );
+  const ranked = asArray(categories).filter((slot) => {
+    if (!slot) {
+      return false;
+    }
+    if (slot.role !== "ranked") {
+      return false;
+    }
+    if (!slot.id) {
+      return false;
+    }
+    return true;
+  });
   for (let index = segments.length - 1; index >= 0; index -= 1) {
     const segment = segments[index];
     const synonymId = SECTION_SYNONYMS.get(segment);
@@ -184,9 +328,12 @@ export function sectionSlotId(sectionPath, categories) {
       }
     }
     const matched = ranked.filter((slot) => {
-      const slotName = comparisonLabel(slot.name || "");
+      const slotName = comparisonLabel(fieldString(slot.name));
       const id = comparisonLabel(slot.id);
-      return segment === slotName || segment === id;
+      if (segment === slotName) {
+        return true;
+      }
+      return segment === id;
     });
     if (matched.length === 1) {
       return matched[0].id;
@@ -216,39 +363,42 @@ export function buildMigrationReport(members, catalog) {
   /** @type {object[]} */
   const compounds = [];
 
-  for (const member of members || []) {
-    for (const tool of member.tools || []) {
-      const name = String(tool.name || "");
-      if (/\b(and|with)\b/i.test(name)) {
+  for (const member of asArray(members)) {
+    for (const tool of asArray(member.tools)) {
+      const name = fieldString(tool.name);
+      if (/\band\b/i.test(name)) {
+        compounds.push({ origin: member.origin, name });
+      } else if (/\bwith\b/i.test(name)) {
         compounds.push({ origin: member.origin, name });
       }
+      const storedId = fieldString(tool.tool_id);
       const classified = classifyClaim(
         {
           name,
           label: name,
-          context: tool.context || "",
-          section: tool.section || "",
-          section_path: tool.section_path || "",
-          href: tool.href || "",
-          kind: tool.kind || "product",
-          tool_id: tool.tool_id || "",
+          context: fieldString(tool.context),
+          section: fieldString(tool.section),
+          section_path: fieldString(tool.section_path),
+          href: fieldString(tool.href),
+          kind: fieldString(tool.kind) || "product",
+          tool_id: storedId,
         },
         catalog,
       );
       const row = {
         origin: member.origin,
         name,
-        stored_id: tool.tool_id || "",
+        stored_id: storedId,
         tool_id: classified.tool_id,
         slot_id: classified.slot_id,
         rule: classified.rule,
       };
-      if (
-        classified.role === "ranked" &&
-        String(tool.tool_id || "").startsWith("observed:") &&
-        classified.tool_id
-      ) {
-        merged.push(row);
+      if (classified.role === "ranked") {
+        if (storedId.startsWith("observed:")) {
+          if (classified.tool_id) {
+            merged.push(row);
+          }
+        }
       }
       if (classified.role === "ranked") {
         slots.push(row);
@@ -278,11 +428,15 @@ export function buildMigrationReport(members, catalog) {
  * @returns {string}
  */
 export function catalogFingerprint(catalog) {
+  let safeCatalog = {};
+  if (catalog != null) {
+    safeCatalog = catalog;
+  }
   return contentFingerprint(
     JSON.stringify({
-      categories: catalog?.categories || [],
-      tools: catalog?.tools || [],
-      aliases: catalog?.aliases || [],
+      categories: asArray(safeCatalog.categories),
+      tools: asArray(safeCatalog.tools),
+      aliases: asArray(safeCatalog.aliases),
     }),
   );
 }
@@ -292,24 +446,57 @@ export function catalogFingerprint(catalog) {
  * @returns {boolean}
  */
 export function hasExplicitPreference(text) {
-  return /\b(favou?rites?|preferred|prefers|prefer)\b/i.test(
-    String(text || ""),
-  );
+  const value = String(text).toLowerCase();
+  if (value.includes("favourite")) {
+    return true;
+  }
+  if (value.includes("favorite")) {
+    return true;
+  }
+  if (value.includes("preferred")) {
+    return true;
+  }
+  if (value.includes("prefers")) {
+    return true;
+  }
+  return /\bprefer\b/.test(value);
 }
 
 /**
  * @param {string} name
  * @returns {boolean}
  */
+const REJECTED_FRAGMENT_LABELS = new Set([
+  "todo",
+  "work computer",
+  "gaming computer",
+]);
+
+const MONTH_PREFIXES = new Set([
+  "jan",
+  "feb",
+  "mar",
+  "apr",
+  "may",
+  "jun",
+  "jul",
+  "aug",
+  "sep",
+  "oct",
+  "nov",
+  "dec",
+]);
+
 function isRejectedFragment(name) {
   const key = comparisonLabel(name);
-  if (/^(todo|work computer|gaming computer)$/i.test(key)) {
+  if (REJECTED_FRAGMENT_LABELS.has(key)) {
     return true;
   }
-  if (
-    /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\s+\d{4}$/i.test(key)
-  ) {
-    return true;
+  const monthMatch = /^([a-z]+)\s+(\d{4})$/i.exec(key);
+  if (monthMatch) {
+    if (MONTH_PREFIXES.has(monthMatch[1].toLowerCase())) {
+      return true;
+    }
   }
   return /^\d{4}$/.test(key);
 }
@@ -321,22 +508,156 @@ function isRejectedFragment(name) {
  * @returns {string}
  */
 function componentKind(name) {
-  if (/\b(mac|laptop|mini pc|nuc|computer)\b/i.test(name)) {
+  const text = String(name);
+  if (/\bmac\b/i.test(text)) {
     return "";
   }
-  if (/\b(ddr\d?|\bram\b|\bmemory\b)\b/i.test(name)) {
+  if (/\blaptop\b/i.test(text)) {
+    return "";
+  }
+  if (/\bmini pc\b/i.test(text)) {
+    return "";
+  }
+  if (/\bnuc\b/i.test(text)) {
+    return "";
+  }
+  if (/\bcomputer\b/i.test(text)) {
+    return "";
+  }
+  if (/\bddr/i.test(text)) {
     return "computer";
   }
-  if (/^(amd ryzen|intel)\b/i.test(name)) {
+  if (/\bram\b/i.test(text)) {
     return "computer";
   }
-  if (/\b(graphics card|radeon|geforce|\bgpu\b)\b/i.test(name)) {
+  if (/\bmemory\b/i.test(text)) {
     return "computer";
   }
-  if (/\b(key switches|kailh)\b/i.test(name)) {
+  if (/^amd ryzen\b/i.test(text)) {
+    return "computer";
+  }
+  if (/^intel\b/i.test(text)) {
+    return "computer";
+  }
+  if (/\bgraphics card\b/i.test(text)) {
+    return "computer";
+  }
+  if (/\bradeon\b/i.test(text)) {
+    return "computer";
+  }
+  if (/\bgeforce\b/i.test(text)) {
+    return "computer";
+  }
+  if (/\bgpu\b/i.test(text)) {
+    return "computer";
+  }
+  if (/\bkey switches\b/i.test(text)) {
+    return "keyboard";
+  }
+  if (/\bkailh\b/i.test(text)) {
     return "keyboard";
   }
   return "";
+}
+
+/**
+ * Clear product nouns that must not inherit an umbrella section slot
+ * (Workstation / Computers / Hardware).
+ * @param {unknown} name
+ * @returns {string|null}
+ */
+export function productShapeSlotId(name) {
+  const text = String(name || "");
+  if (!text) {
+    return null;
+  }
+  if (/\btrackpad\b/i.test(text)) {
+    return "mouse";
+  }
+  if (/\b(aeron|chair)\b/i.test(text)) {
+    return "chair";
+  }
+  if (/\bipad\b/i.test(text)) {
+    return "tablet";
+  }
+  if (/\biphone\b/i.test(text)) {
+    return "phone";
+  }
+  if (/\b(tv|monitor)\b/i.test(text)) {
+    // Keep short panel names; reject "monitor … second screen off to the side…" prose.
+    if (text.trim().split(/\s+/).length <= 6) {
+      return "display";
+    }
+  }
+  // Dell / ASUS / LG / Samsung panel SKUs with an inch size (e.g. Dell S3425DW 34").
+  if (
+    /\b(?:dell|asus|lg|samsung)\s+[a-z]?\d{3,}[a-z0-9-]*\b/i.test(text) &&
+    /\d+(?:\.\d+)?\s*(?:inch|in|["”])/i.test(text)
+  ) {
+    return "display";
+  }
+  return null;
+}
+
+/**
+ * Catalog rows for well-known device lines when aliases already cover them.
+ * @param {string} name
+ * @param {{ tools: Map<string, object> }} indexed
+ * @returns {object|null}
+ */
+function matchProductShapeTool(name, indexed) {
+  const text = String(name);
+  /** @type {Array<[RegExp, string]>} */
+  const patterns = [
+    [/\bmagic\s+trackpad\b/i, "apple-magic-trackpad"],
+    [/\bherman\s+miller\s+aeron\b/i, "aeron"],
+    [/\bipad\s+air\s*4\b/i, "ipad-air-4"],
+    [/\biphone\s+13\s*mini\b/i, "iphone-13-mini"],
+    [/\biphone\s+17\s*pro\b(?!\s*max)/i, "iphone-17-pro"],
+    [/samsung\s+55(?:\s*"|-?inch)?\s*tv\b/i, "samsung-55-tv"],
+    [/\bdell\s+s3425dw\b/i, "dell-s3425dw"],
+  ];
+  for (const [pattern, toolId] of patterns) {
+    if (!pattern.test(text)) {
+      continue;
+    }
+    const tool = indexed.tools.get(toolId);
+    if (tool) {
+      return tool;
+    }
+  }
+  return null;
+}
+
+/**
+ * Mac mini lines with chip/RAM tails (e.g. "mac mini m4") map to Computers.
+ * Rejects mashups that also name other gear (keyboard, display, ASUS, …).
+ * @param {string} name
+ * @param {{ tools: Map<string, object> }} indexed
+ * @returns {object|null}
+ */
+function matchMacMiniFamily(name, indexed) {
+  const text = String(name);
+  if (!/\bmac\s*mini\b/i.test(text)) {
+    return null;
+  }
+  if (
+    /\b(asus|dell|samsung|keyboard|mouse|trackpad|display|monitor|magic\s+keyboard|mx\s+master|logitech)\b/i.test(
+      text,
+    )
+  ) {
+    return null;
+  }
+  const fromCatalog = indexed.tools.get("mac-mini");
+  if (fromCatalog) {
+    return fromCatalog;
+  }
+  return {
+    id: "mac-mini",
+    name: "Mac mini",
+    category_id: "computer",
+    kind: "hardware",
+  };
 }
 
 /**
@@ -346,27 +667,22 @@ function componentKind(name) {
  * @returns {object|null}
  */
 function matchMacBookFamily(name, indexed) {
-  const text = String(name || "");
-  const isAir = /\bmacbook\s+air\b/i.test(text);
-  const isPro = /\bmacbook\s+pro\b/i.test(text);
-  if (!isAir && !isPro) {
+  const text = String(name);
+  if (/\bmacbook\s+air\b/i.test(text)) {
+    return macbookToolRecord("macbook-air", indexed);
+  }
+  if (!/\bmacbook\s+pro\b/i.test(text)) {
     return null;
   }
-  /** @type {string} */
-  let toolId = "macbook-pro";
-  if (isAir) {
-    toolId = "macbook-air";
-  } else if (
-    /\b14(?:\s*-?\s*inch|")\b/i.test(text) ||
-    /\bpro\s+14\b/i.test(text)
-  ) {
-    toolId = "macbook-pro-14";
-  } else if (
-    /\b16(?:\s*-?\s*inch|")\b/i.test(text) ||
-    /\bpro\s+16\b/i.test(text)
-  ) {
-    toolId = "macbook-pro-16";
-  }
+  return macbookToolRecord(macbookProSizeToolId(text), indexed);
+}
+
+/**
+ * @param {string} toolId
+ * @param {{ tools: Map<string, object> }} indexed
+ * @returns {object}
+ */
+function macbookToolRecord(toolId, indexed) {
   const fromCatalog = indexed.tools.get(toolId);
   if (fromCatalog) {
     return fromCatalog;
@@ -379,10 +695,37 @@ function matchMacBookFamily(name, indexed) {
   };
   return {
     id: toolId,
-    name: fallbackNames[toolId] || "MacBook Pro",
+    name: fallbackNames[toolId],
     category_id: "computer",
     kind: "hardware",
   };
+}
+
+/**
+ * Maps size cues onto a stable MacBook Pro catalog id.
+ * @param {string} text
+ * @returns {string}
+ */
+function macbookProSizeToolId(text) {
+  if (/\b14-inch\b/i.test(text)) {
+    return "macbook-pro-14";
+  }
+  if (/\b14"/.test(text)) {
+    return "macbook-pro-14";
+  }
+  if (/\bpro\s+14\b/i.test(text)) {
+    return "macbook-pro-14";
+  }
+  if (/\b16-inch\b/i.test(text)) {
+    return "macbook-pro-16";
+  }
+  if (/\b16"/.test(text)) {
+    return "macbook-pro-16";
+  }
+  if (/\bpro\s+16\b/i.test(text)) {
+    return "macbook-pro-16";
+  }
+  return "macbook-pro";
 }
 
 /**
@@ -391,6 +734,38 @@ function matchMacBookFamily(name, indexed) {
  */
 function isBrowserExtension(name) {
   return /\bublock\b/i.test(name);
+}
+
+/**
+ * VS Code extension / IntelliSense feature names stay detail, not ranked gear.
+ * @type {ReadonlySet<string>}
+ */
+const IDE_EXTENSION_OR_FEATURE_LABELS = new Set([
+  "intellisense",
+  "intellicode",
+  "better comments",
+  "color highlight",
+  "code spell checker",
+  "import cost",
+  "path intellisense",
+  "npm intellisense",
+  "even better toml",
+  "presentation assistant",
+  "gremlins tracker",
+  "markdown all in one",
+  "vscode-styled-components",
+  "vscode styled components",
+  "react-bootstrap snippets",
+  "react bootstrap snippets",
+]);
+
+/**
+ * VS Code extension / IntelliSense feature names stay detail, not ranked gear.
+ * @param {string} name
+ * @returns {boolean}
+ */
+function isIdeExtensionOrFeature(name) {
+  return IDE_EXTENSION_OR_FEATURE_LABELS.has(comparisonLabel(name));
 }
 
 /**
@@ -410,12 +785,22 @@ function matchApprovedUrl(name, href, indexed) {
     return null;
   }
   const host = claimUrl.hostname.replace(/^www\./, "");
-  if (
-    (host === "play.google.com" || host === "apps.apple.com") &&
-    /\bkindle\b/i.test(name) &&
-    !/paperwhite/i.test(name)
-  ) {
-    return indexed.tools.get("kindle-app") || null;
+  let isStoreHost = false;
+  if (host === "play.google.com") {
+    isStoreHost = true;
+  } else if (host === "apps.apple.com") {
+    isStoreHost = true;
+  }
+  if (isStoreHost) {
+    if (/\bkindle\b/i.test(name)) {
+      if (!/paperwhite/i.test(name)) {
+        const kindleApp = indexed.tools.get("kindle-app");
+        if (kindleApp) {
+          return kindleApp;
+        }
+        return null;
+      }
+    }
   }
   const sharedHosts = new Set([
     "github.com",
@@ -426,7 +811,10 @@ function matchApprovedUrl(name, href, indexed) {
   /** @type {object[]} */
   const matches = [];
   for (const tool of indexed.tools.values()) {
-    if (!tool.website || tool.id === "kindle-app") {
+    if (!tool.website) {
+      continue;
+    }
+    if (tool.id === "kindle-app") {
       continue;
     }
     let toolUrl;
@@ -440,17 +828,19 @@ function matchApprovedUrl(name, href, indexed) {
       continue;
     }
     if (sharedHosts.has(host)) {
-      if (
-        toolUrl.pathname.length > 1 &&
-        claimUrl.pathname.startsWith(toolUrl.pathname)
-      ) {
-        matches.push(tool);
+      if (toolUrl.pathname.length > 1) {
+        if (claimUrl.pathname.startsWith(toolUrl.pathname)) {
+          matches.push(tool);
+        }
       }
       continue;
     }
     matches.push(tool);
   }
-  if (matches.length !== 1 || !nameAgrees(name, matches[0])) {
+  if (matches.length !== 1) {
+    return null;
+  }
+  if (!nameAgrees(name, matches[0])) {
     return null;
   }
   return matches[0];
@@ -464,10 +854,18 @@ function matchApprovedUrl(name, href, indexed) {
 function nameAgrees(name, tool) {
   const left = comparisonLabel(name);
   const right = comparisonLabel(tool.name);
-  if (!left || !right) {
+  // Claim names that reach URL matching already passed reportable checks, so
+  // left is non-empty. Empty tool names refuse the agreement.
+  if (!right) {
     return false;
   }
-  return left === right || left.includes(right) || right.includes(left);
+  if (left === right) {
+    return true;
+  }
+  if (left.includes(right)) {
+    return true;
+  }
+  return right.includes(left);
 }
 
 /**
@@ -480,8 +878,20 @@ function nameAgrees(name, tool) {
  */
 function finishTool(tool, context, indexed, rule, preference) {
   const slotId = pickSlot(tool, context);
-  const slot = slotId ? indexed.slots.get(slotId) : null;
-  if (!slot || slot.role === "retired") {
+  /** @type {object|null|undefined} */
+  let slot = null;
+  if (slotId) {
+    slot = indexed.slots.get(slotId);
+  }
+  if (!slot) {
+    return result({
+      role: "unsorted",
+      tool_id: tool.id,
+      rule: "abstain",
+      preference,
+    });
+  }
+  if (slot.role === "retired") {
     return result({
       role: "unsorted",
       tool_id: tool.id,
@@ -523,13 +933,16 @@ function finishTool(tool, context, indexed, rule, preference) {
  */
 function pickSlot(tool, context) {
   const text = context.toLowerCase();
-  for (const rule of tool.slot_rules || []) {
-    const needles = rule.require_context || [];
+  for (const rule of asArray(tool.slot_rules)) {
+    const needles = asArray(rule.require_context);
     if (needles.some((needle) => text.includes(String(needle).toLowerCase()))) {
       return rule.slot_id;
     }
   }
-  return tool.category_id || null;
+  if (tool.category_id) {
+    return tool.category_id;
+  }
+  return null;
 }
 
 /**
@@ -541,13 +954,20 @@ function indexSlots(catalog) {
   const tools = new Map();
   /** @type {Map<string, object>} */
   const slots = new Map();
-  for (const tool of catalog?.tools || []) {
-    if (tool?.id) {
+  // Callers always pass a concrete object (possibly empty).
+  for (const tool of asArray(catalog.tools)) {
+    if (!tool) {
+      continue;
+    }
+    if (tool.id) {
       tools.set(tool.id, tool);
     }
   }
-  for (const slot of catalog?.categories || []) {
-    if (slot?.id) {
+  for (const slot of asArray(catalog.categories)) {
+    if (!slot) {
+      continue;
+    }
+    if (slot.id) {
       slots.set(slot.id, slot);
     }
   }
@@ -568,4 +988,109 @@ function result(fields) {
     relation: fields.relation || null,
     parent_slot: fields.parent_slot || null,
   };
+}
+
+/**
+ * Section path preferred over a bare section heading.
+ * @param {object} claim
+ * @returns {string}
+ */
+function claimSectionHint(claim) {
+  const fromPath = fieldString(claim.section_path);
+  if (fromPath) {
+    return fromPath;
+  }
+  return fieldString(claim.section);
+}
+
+/**
+ * @param {unknown} value
+ * @returns {string}
+ */
+function fieldString(value) {
+  if (typeof value === "string") {
+    return value;
+  }
+  return "";
+}
+
+/**
+ * @param {object} claim
+ * @returns {string}
+ */
+function claimName(claim) {
+  const fromName = fieldString(claim.name);
+  if (fromName) {
+    return fromName;
+  }
+  return fieldString(claim.label);
+}
+
+/**
+ * @param {object} claim
+ * @returns {string}
+ */
+function claimContextText(claim) {
+  return [
+    fieldString(claim.section),
+    fieldString(claim.section_path),
+    fieldString(claim.context),
+    fieldString(claim.excerpt),
+  ].join(" ");
+}
+
+/**
+ * @param {unknown} value
+ * @returns {any[]}
+ */
+function asArray(value) {
+  if (Array.isArray(value)) {
+    return value;
+  }
+  return [];
+}
+
+/**
+ * Shared chrome/section/non-product rejection used before and after peels.
+ * @param {string} name
+ * @param {boolean} preference
+ * @returns {Classification|null}
+ */
+function nonProductClassification(name, preference) {
+  if (isUsesSectionLabel(name)) {
+    return result({
+      role: "rejected",
+      rule: "non-product",
+      preference,
+    });
+  }
+  if (isSentenceShapedLabel(name)) {
+    return result({
+      role: "rejected",
+      rule: "non-product",
+      preference,
+    });
+  }
+  if (isArticleShapedLabel(name)) {
+    return result({
+      role: "rejected",
+      rule: "non-product",
+      preference,
+    });
+  }
+  if (isNonComparableUseLabel(name)) {
+    return result({
+      role: "rejected",
+      rule: "non-product",
+      preference,
+    });
+  }
+  if (!isReportableUseLabel(name)) {
+    return result({
+      role: "rejected",
+      rule: "non-product",
+      preference,
+    });
+  }
+  return null;
 }

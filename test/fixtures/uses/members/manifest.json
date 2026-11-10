@@ -1,6 +1,18 @@
 {
-  "fetched_at": "2026-11-05T18:25:23.519Z",
+  "fetched_at": "2026-11-09T05:01:25.000Z",
   "pages": [
+    {
+      "slug": "joshuamorris.info",
+      "source_url": "https://joshuamorris.info/uses/",
+      "requested_url": "https://joshuamorris.info/uses/",
+      "file": "joshuamorris.info.html",
+      "sha256": "b3b05aba9b61944c3de5fa99b715dbbf4002d1dacca5170c9f68e7758c14a4e0",
+      "status": 200,
+      "bytes": 163847,
+      "allowed": true,
+      "content_type": "text/html",
+      "retrieved_at": "2026-11-09T05:01:25.000Z"
+    },
     {
       "slug": "joshcox.co.uk",
       "source_url": "https://joshcox.co.uk/uses/",
@@ -59,6 +71,16 @@
       "sha256": "eb3fce4d09c1f41e16a624e2f9434af6c70b89cbea1b2d4f31dbb7b70787c8b3",
       "status": 200,
       "bytes": 27752,
+      "allowed": true
+    },
+    {
+      "slug": "joshbeard.com",
+      "source_url": "https://joshbeard.com/uses/",
+      "requested_url": "https://joshbeard.com/uses/",
+      "file": "joshbeard.com.html",
+      "sha256": "fixture-local-joshbeard-uses",
+      "status": 200,
+      "bytes": 0,
       "allowed": true
     }
   ]

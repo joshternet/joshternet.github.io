@@ -146,12 +146,10 @@ test("a site record rejects page bodies and writes one compact file", async () =
       "skip",
       { page_role: "post", url: "https://joshua.example/notes" },
     ],
-    local_dev_cache: true,
     status: "failed",
     content: "nope",
   });
   assert.equal(built.status, "failed");
-  assert.equal(built.local_dev_cache, true);
   assert.equal(built.origin, "");
   assert.deepEqual(built.content, []);
   assert.equal(built.pages[1].url, "");

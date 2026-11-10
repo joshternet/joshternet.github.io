@@ -105,6 +105,22 @@
         <span class="p-name">{{ card_author | escape }}</span>
       </p>
     {% endif %}
+    {% if include.item.k8f and include.item.k8f != '' %}
+      <p class="showcase-card__appearance">
+        {{ include.item.k8f | escape }}
+        {% if include.item.k89 and include.item.k89 != '' %}
+          <time datetime="{{ include.item.k89 | escape }}">
+            {{- include.item.k89 | date: '%b %-d, %Y' -}}
+          </time>
+        {% endif %}
+      </p>
+    {% elsif include.item.k89 and include.item.k17 == 'presentation' %}
+      <p class="showcase-card__appearance">
+        <time datetime="{{ include.item.k89 | escape }}">
+          {{- include.item.k89 | date: '%b %-d, %Y' -}}
+        </time>
+      </p>
+    {% endif %}
     {% if card_summary != '' %}
       <p
         class="showcase-card__summary p-summary"

@@ -111,7 +111,7 @@ function inChrome($, element) {
 export function sectionPath($, element, order) {
   const index = order || documentOrder($);
   const at = index.get(element);
-  /** @type {string[]} */
+  /** @type {Array<{ level: number, text: string }>} */
   const stack = [];
   if (at === undefined) {
     return "";
@@ -133,14 +133,33 @@ export function sectionPath($, element, order) {
     }
     const level = Number(String(heading.name).slice(1));
     const text = headingLabel($(heading).text());
-    if (!text) {
+    if (!text || !Number.isFinite(level) || level < 1) {
       continue;
     }
-    stack.length = Math.min(stack.length, level - 1);
-    stack[level - 1] = text;
-    stack.length = level;
+    // Close prior deeper/same-level siblings (h2 after h3/h2 is not nested).
+    while (stack.length > 0 && stack[stack.length - 1].level >= level) {
+      stack.pop();
+    }
+    stack.push({ level, text });
   }
-  return stack.filter(Boolean).join(" / ");
+  // When the claim element is itself a heading, preceding same-level siblings
+  // are peers, not ancestors — drop them without pushing this heading.
+  const tag = String(element.name);
+  if (/^h[1-6]$/i.test(tag)) {
+    const level = Number(String(tag).slice(1));
+    while (
+      Number.isFinite(level) &&
+      level >= 1 &&
+      stack.length > 0 &&
+      stack[stack.length - 1].level >= level
+    ) {
+      stack.pop();
+    }
+  }
+  return stack
+    .map((entry) => entry.text)
+    .filter(Boolean)
+    .join(" / ");
 }
 
 /**

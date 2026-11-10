@@ -345,6 +345,10 @@ function evidencePayload(record) {
     context: record.context || "",
     kind: record.kind || "product",
     excerpt: record.excerpt,
+    quantity:
+      Number.isFinite(record.quantity) && record.quantity > 0
+        ? Math.min(99, Math.floor(record.quantity))
+        : 1,
   };
 }
 
@@ -357,6 +361,12 @@ function evidencePayload(record) {
  * @returns {MemberToolState}
  */
 function toolStateFromRecord(toolId, record, prior, event, observedAt) {
+  const quantity =
+    Number.isFinite(record.quantity) && record.quantity > 0
+      ? Math.min(99, Math.floor(record.quantity))
+      : Number.isFinite(prior?.quantity) && prior.quantity > 0
+        ? Math.min(99, Math.floor(prior.quantity))
+        : 1;
   return {
     tool_id: toolId,
     name: record.name || record.label || prior?.name || toolId,
@@ -366,6 +376,7 @@ function toolStateFromRecord(toolId, record, prior, event, observedAt) {
     section_path: record.section_path || "",
     href: record.href || "",
     status: record.status,
+    quantity,
     use_case_ids: [...(record.use_case_ids || [])].sort(),
     first_observed_at: prior?.first_observed_at || observedAt,
     last_event_at: observedAt,

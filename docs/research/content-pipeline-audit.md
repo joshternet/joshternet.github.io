@@ -38,10 +38,22 @@ JoshBot registry
 
 ## Deduplication and survival
 
-- Identity: URL-first (`url:…`), else feed id; `mergeContentItems` unions feeds/topics.
-- Showcase eligibility: `isMadeContentItem` (hub/home/index/aggregator/individual photo/portfolio/case-study/chrome/substance).
+- Identity: URL-first (`url:…`), else feed id; `mergeContentItems` unions feeds/topics. Creative harvest mints identities via `contentIdentityKey` (hash stripped) so OG and schema `#fragment` twins collapse.
+- Speaking titles: `appearance-title` hygiene rejects `N min read` / `, YYYY` crumbs; year-crumb conferences fall back to the talk title; slides/recording become the presentation card URL when the archive index is the only permalink.
+- Showcase eligibility: `isMadeContentItem` (hub/home/index/aggregator/individual photo/portfolio/case-study/chrome/substance + empty appearance titles). Past education events defer to a related presentation. `dedupeCrosspostedContentItems` also collapses same-origin `url:` identities that share a hash-stripped URL.
 - Activity: writing + dated Showcase works with publisher `published_at` in 14 days.
+- **Audit:** `npm run showcase:audit` is read-only over `_data/content.json` + `_data/showcase.json` (never patches datasets).
 - **Feed harvest bug:** `subjectsFromFeeds` and sync content loop use `feeds.slice(0, 3)` — later feeds dropped (must fix on Action path).
+
+## Snapshot (local `_data`, 2026-11-09 attribution pass)
+
+| Metric | Value |
+| --- | --- |
+| Content items | 871 (parser remint of identities needs next `nlp:sync`) |
+| Showcase items (after `views:build`) | 29 |
+| Cleared on Showcase | min-read talks, `, 2026` education crumbs, `#gallery` photo doubles, event+presentation pairs |
+| Regeneration | Code-only; `_data` refreshed via `views:build` (no hand edits) |
+| Gate | `npm run showcase:audit` → ok |
 
 ## Snapshot (local `_data`, 2026-11-02)
 

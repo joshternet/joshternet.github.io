@@ -265,20 +265,22 @@ export function applyCatalogMatches(
       }
 
       const qualifies = catalogMentionQualifies(hits, topic);
-      const evidence = hits
-        .slice(0, 8)
-        .map((item) =>
-          buildTopicEvidence({
-            rawValue: topic.label,
-            source: "catalog-match",
-            page: typeof item.url === "string" ? item.url : "",
-            evidenceClass: "heuristic",
-            communityEligible: qualifies,
-            observedAt,
-            count: hits.length,
-          }),
-        )
-        .filter(Boolean);
+      // Many appearances can share one archive URL; collapse identical keys.
+      const evidence = dedupeEvidence(
+        hits
+          .map((item) =>
+            buildTopicEvidence({
+              rawValue: topic.label,
+              source: "catalog-match",
+              page: typeof item.url === "string" ? item.url : "",
+              evidenceClass: "heuristic",
+              communityEligible: qualifies,
+              observedAt,
+              count: hits.length,
+            }),
+          )
+          .filter(Boolean),
+      );
 
       if (existing) {
         existing.community_eligible = qualifies;

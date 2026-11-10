@@ -13,6 +13,7 @@ import {
   personNameFromSelfIntro,
 } from "../network/lib.mjs";
 import { isShowcaseChromePath } from "../network/slash-pages.mjs";
+import { isEmptyAppearanceTitle } from "../nlp/appearance-title.mjs";
 import { isEpisodeAnnouncement } from "../nlp/content.mjs";
 import { isNonSubjectSlug } from "../nlp/evidence.mjs";
 import { itemMentionsTopic, textMentionsSlug } from "../nlp/match.mjs";
@@ -362,9 +363,10 @@ function crosspostPreferenceScore(item) {
  * Group key for one dedupe pass. Empty keys are not collapsed.
  * @param {Array<Record<string, unknown>>} list
  * @param {(item: Record<string, unknown>) => string} keyFor
+ * @param {(item: Record<string, unknown>) => number} [scoreFor]
  * @returns {Map<string, Record<string, unknown>>}
  */
-function crosspostWinners(list, keyFor) {
+function crosspostWinners(list, keyFor, scoreFor = crosspostPreferenceScore) {
   /** @type {Map<string, Record<string, unknown>>} */
   const winners = new Map();
 
@@ -381,10 +383,7 @@ function crosspostWinners(list, keyFor) {
 
     const existing = winners.get(key);
 
-    if (
-      !existing ||
-      crosspostPreferenceScore(item) > crosspostPreferenceScore(existing)
-    ) {
+    if (!existing || scoreFor(item) > scoreFor(existing)) {
       winners.set(key, item);
     }
   }
@@ -393,9 +392,44 @@ function crosspostWinners(list, keyFor) {
 }
 
 /**
- * Drop same-origin same-title crossposts, and same-origin rows that are the
- * same YouTube video. Keeps the written post. An announcement loses to the
- * episode. A podcast and a video of one watch id collapse to one row.
+ * Hash-stripped absolute URL for cross-source Showcase dedupe.
+ * @param {unknown} url
+ * @returns {string}
+ */
+function hashStrippedContentUrl(url) {
+  if (typeof url !== "string" || !url) {
+    return "";
+  }
+
+  try {
+    const parsed = new URL(url);
+    parsed.hash = "";
+    return parsed.href;
+  } catch {
+    return url.split("#")[0] || "";
+  }
+}
+
+/**
+ * Prefer the identity without a URL fragment when two url: rows share a page.
+ * @param {Record<string, unknown>} item
+ * @returns {number}
+ */
+function urlIdentityFragmentScore(item) {
+  const identity = String(item.identity);
+  let score = crosspostPreferenceScore(item) * 10;
+
+  if (identity.startsWith("url:") && !identity.includes("#")) {
+    score += 3;
+  }
+
+  return score;
+}
+
+/**
+ * Drop same-origin same-title crossposts, same-origin YouTube watch ids, and
+ * url:-identity twins that differ only by a hash fragment (#gallery).
+ * Presentation/event identities that share an archive URL stay distinct.
  * @param {Array<Record<string, unknown>>} items
  * @returns {Array<Record<string, unknown>>}
  */
@@ -413,6 +447,23 @@ export function dedupeCrosspostedContentItems(items) {
 
     return origin && videoId ? `${origin}\0video:${videoId}` : "";
   });
+  // Only url: identities — presentation:/event: keys sharing /speaking/ stay.
+  const byHashStrippedUrl = crosspostWinners(
+    list,
+    (item) => {
+      const identity = String(item.identity || "");
+
+      if (!identity.startsWith("url:")) {
+        return "";
+      }
+
+      const origin = String(item.site_origin || "");
+      const key = hashStrippedContentUrl(item.url);
+
+      return origin && key ? `${origin}\0url:${key}` : "";
+    },
+    urlIdentityFragmentScore,
+  );
 
   return list.filter((item) => {
     if (!item || typeof item !== "object") {
@@ -422,8 +473,13 @@ export function dedupeCrosspostedContentItems(items) {
     const origin = String(item.site_origin || "");
     const titleKey = contentTitleDedupeKey(item.title);
     const videoId = youtubeVideoIdFromHref(item.url);
+    const identity = String(item.identity || "");
+    const urlKey =
+      identity.startsWith("url:") && hashStrippedContentUrl(item.url)
+        ? hashStrippedContentUrl(item.url)
+        : "";
 
-    if (!origin || (!titleKey && !videoId)) {
+    if (!origin || (!titleKey && !videoId && !urlKey)) {
       return true;
     }
 
@@ -432,6 +488,10 @@ export function dedupeCrosspostedContentItems(items) {
     }
 
     if (videoId && byVideo.get(`${origin}\0video:${videoId}`) !== item) {
+      return false;
+    }
+
+    if (urlKey && byHashStrippedUrl.get(`${origin}\0url:${urlKey}`) !== item) {
       return false;
     }
 
@@ -653,12 +713,18 @@ export function compactContentItem(item, sites, publicSlugs) {
   const language = normalizeLanguageTag(item.language);
   const rawTitle =
     typeof item.title === "string" && item.title ? item.title : item.url;
-  const title = stripHtmlToText(rawTitle) || String(rawTitle);
+  const strippedTitle = stripHtmlToText(rawTitle) || String(rawTitle);
+  const title =
+    photoAlbumDisplayTitle(strippedTitle, item.content_type, item.url) ||
+    strippedTitle;
   const rawSummary = typeof item.summary === "string" ? item.summary : "";
   const decodedSummary = stripHtmlToText(rawSummary);
   // Title-echo summaries (common on year albums) add noise on Showcase cards.
   const summaryEqualsTitle =
-    decodedSummary.trim().toLowerCase() === String(title).trim().toLowerCase();
+    decodedSummary.trim().toLowerCase() ===
+      String(title).trim().toLowerCase() ||
+    decodedSummary.trim().toLowerCase() ===
+      String(strippedTitle).trim().toLowerCase();
   const summary = summaryEqualsTitle ? "" : readableSummary(decodedSummary);
 
   /** @type {Record<string, unknown>} */
@@ -742,6 +808,56 @@ export function compactContentItem(item, sites, publicSlugs) {
 
   if (Array.isArray(item.related) && item.related.length > 0) {
     compact.related = item.related;
+  }
+
+  // Prefer a concrete card target when the work URL is only the speaking
+  // archive index (many talks otherwise share one /speaking/ link): slides or
+  // recording first, then action_url, then a distinct #identity hash.
+  if (String(item.content_type || "") === "presentation") {
+    const onArchiveIndex = /\/(speaking|talks)\/?$/i.test(String(item.url));
+    const resources = Array.isArray(item.resources) ? item.resources : [];
+    const slides = resources.find(
+      (resource) =>
+        resource &&
+        typeof resource === "object" &&
+        /** @type {{ kind?: unknown }} */ (resource).kind === "slides" &&
+        typeof (/** @type {{ url?: unknown }} */ (resource).url) === "string",
+    );
+    const recording = resources.find(
+      (resource) =>
+        resource &&
+        typeof resource === "object" &&
+        /** @type {{ kind?: unknown }} */ (resource).kind === "recording" &&
+        typeof (/** @type {{ url?: unknown }} */ (resource).url) === "string",
+    );
+    const preferred = slides || recording;
+    const actionUrl =
+      typeof item.action_url === "string" ? item.action_url.trim() : "";
+
+    if (
+      preferred &&
+      onArchiveIndex &&
+      typeof (/** @type {{ url?: unknown }} */ (preferred).url) === "string"
+    ) {
+      compact.url = /** @type {{ url: string }} */ (preferred).url;
+    } else if (
+      onArchiveIndex &&
+      actionUrl &&
+      !/\/(speaking|talks)\/?$/i.test(actionUrl)
+    ) {
+      compact.url = actionUrl;
+    } else if (
+      onArchiveIndex &&
+      typeof item.identity === "string" &&
+      item.identity
+    ) {
+      // Distinct card targets when many talks share one archive index URL.
+      const slug = item.identity.split(":").filter(Boolean).pop() || "";
+
+      if (slug && !String(item.url).includes("#")) {
+        compact.url = `${String(item.url).replace(/\/?$/, "/")}#${slug}`;
+      }
+    }
   }
 
   // Preserve crawl source so Showcase can exclude client portfolio tables.
@@ -1205,7 +1321,7 @@ export const madeKind = showcaseKind;
 
 /** Path segment that marks a creative index root. */
 const CREATIVE_INDEX_ROOT =
-  /^(gallery|galleries|albums|photography|photos|art|illustration|artwork|paintings?|fiction|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|podcasts?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)$/i;
+  /^(gallery|galleries|albums|photography|photos|art|illustration|artwork|paintings?|graphics?|fiction|comics?|webcomics|toys?|play|reels?|shorts|cssbattles?|music|discography|tracks|videos|film|animation|games|game|interactive|exhibitions|design|portfolio|work|projects?|experiments?|sounds?|apps?|software|books?|guides?|resources?|shows?|concerts?|events?|podcasts?|study-hall|frontend-study-hall|front-end-study-hall|fresh|education|learn|classes?|courses?)$/i;
 
 /**
  * Showcase kind inferred from a creative child path (e.g. /experiments/corkboard/).
@@ -1236,7 +1352,7 @@ export function creativePathKind(url) {
       return "photography";
     }
 
-    if (/^(art|illustration|artwork|paintings?)$/.test(root)) {
+    if (/^(art|illustration|artwork|paintings?|graphics?)$/.test(root)) {
       return "art";
     }
 
@@ -1418,12 +1534,26 @@ export function showcaseKindForItem(item) {
     Array.isArray(item.categories) ? item.categories : [],
   );
 
-  // Daily CSS Battle recordings, and anything already under a show path, are not video works.
-  if (
-    fromType === "video" &&
-    (fromPath === "podcasts" || isCssBattleShowTitle(item.title))
-  ) {
-    return "podcasts";
+  // YouTube watches, first-party /videos/ works, show paths, and CSS Battle
+  // recordings live under Podcasts and live streams—not a separate Videos kind.
+  if (fromType === "video") {
+    const sourceKind =
+      item.source && typeof item.source === "object"
+        ? String(/** @type {{ kind?: unknown }} */ (item.source).kind || "")
+        : typeof item.source_kind === "string"
+          ? item.source_kind
+          : "";
+
+    if (
+      fromPath === "podcasts" ||
+      fromPath === "video" ||
+      isCssBattleShowTitle(item.title) ||
+      isYoutubeWatchUrl(item.url) ||
+      sourceKind === "elsewhere-youtube-video" ||
+      sourceKind.startsWith("youtube-show-")
+    ) {
+      return "podcasts";
+    }
   }
 
   // Prefer path over a generic project/other type so /books/… → books,
@@ -1472,6 +1602,93 @@ export function isBareCreativeIndexUrl(url) {
   } catch {
     return false;
   }
+}
+
+/**
+ * Licensing / reuse / permissions pages are never Showcase works.
+ * @param {unknown} url
+ * @returns {boolean}
+ */
+export function isCreativeUtilityPath(url) {
+  try {
+    const parts = new URL(String(url || "")).pathname
+      .replace(/\/+$/, "")
+      .split("/")
+      .filter(Boolean)
+      .map((part) => part.replace(/\.(html?|php|aspx?)$/i, "").toLowerCase());
+
+    if (parts.length === 0) {
+      return false;
+    }
+
+    return /^(image-use|imageuse|licensing|license|attribution|copyright|reuse|permissions)$/i.test(
+      parts[parts.length - 1],
+    );
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * True when a bare `/sounds|music|tracks|discography` URL is itself a music work.
+ * @param {unknown} item
+ * @returns {boolean}
+ */
+export function isMusicIndexWorkItem(item) {
+  if (!item || typeof item !== "object") {
+    return false;
+  }
+
+  const type = String(
+    /** @type {{ content_type?: unknown }} */ (item).content_type || "",
+  );
+
+  if (type !== "music_recording" && type !== "music_album") {
+    return false;
+  }
+
+  try {
+    const parts = new URL(String(item.url || "")).pathname
+      .replace(/\/+$/, "")
+      .split("/")
+      .filter(Boolean);
+
+    if (parts.length !== 1) {
+      return false;
+    }
+
+    return /^(music|discography|tracks|sounds?)$/i.test(parts[0]);
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Expand bare year album titles (`2026`) to visitor-facing `2026 photos`.
+ * @param {unknown} title
+ * @param {unknown} contentType
+ * @param {unknown} url
+ * @returns {string}
+ */
+export function photoAlbumDisplayTitle(title, contentType, url) {
+  const text = String(title || "").trim();
+
+  if (!/^\d{4}$/.test(text)) {
+    return text;
+  }
+
+  const type = String(contentType || "");
+  const pathKind = creativePathKind(url);
+  const photoShaped =
+    type === "photograph" ||
+    type === "collection" ||
+    pathKind === "photography";
+
+  if (!photoShaped) {
+    return text;
+  }
+
+  return `${text} photos`;
 }
 
 /**
@@ -1898,6 +2115,7 @@ export function expandSlugTitleFromSummary(title, summary) {
  */
 export function showcaseCardTitle(item) {
   let title = stripHtmlToText(item?.title);
+  title = photoAlbumDisplayTitle(title, item?.content_type, item?.url) || title;
 
   const url = String(item?.url || "");
   const parts = pathnameParts(url);
@@ -2189,11 +2407,13 @@ export function showcaseItemHasSubstance(item) {
         ? String(/** @type {{ kind?: unknown }} */ (item.source).kind || "")
         : "";
 
-  // Channel cards and external watch links may lack publisher posters.
+  // Channel cards and external watch/listen/project links may lack posters.
   if (
     sourceKind === "elsewhere-channel" ||
     sourceKind === "videos-watch-link" ||
-    sourceKind === "elsewhere-youtube-video"
+    sourceKind === "elsewhere-youtube-video" ||
+    sourceKind === "sounds-listen-link" ||
+    sourceKind === "sounds-project-link"
   ) {
     return title.length >= 4 || hasHttpsPoster(item);
   }
@@ -2297,7 +2517,28 @@ export function isMadeContentItem(item, options = {}) {
     return false;
   }
 
+  const earlyType = String(item.content_type || "");
+
+  // Speaking/event chrome titles ("2 min read", ", 2026") are never Showcase.
+  if (
+    (earlyType === "presentation" || earlyType === "event") &&
+    isEmptyAppearanceTitle(item.title)
+  ) {
+    return false;
+  }
+
   if (isJoshternetHubContentUrl(item.url)) {
+    return false;
+  }
+
+  // YouTube Elsewhere channel pages are never Showcase cards—episode/watch
+  // uploads only (Podcasts and live streams).
+  if (shouldOmitYoutubeChannelCard(item)) {
+    return false;
+  }
+
+  // Licensing / image-use / permissions pages are never Showcase works.
+  if (isCreativeUtilityPath(item.url)) {
     return false;
   }
 
@@ -2333,7 +2574,7 @@ export function isMadeContentItem(item, options = {}) {
     return false;
   }
 
-  if (isBareCreativeIndexUrl(item.url)) {
+  if (isBareCreativeIndexUrl(item.url) && !isMusicIndexWorkItem(item)) {
     return false;
   }
 
@@ -2495,8 +2736,9 @@ export function isYoutubeWatchUrl(url) {
 }
 
 /**
- * Site origins that already have YouTube watch rows inside the Activity window.
- * Used to drop the aggregate Elsewhere channel card when uploads are listed.
+ * Site origins that already have YouTube watch rows inside the Activity window
+ * (video or podcast_episode). Kept for callers that still key off watch
+ * presence; Showcase drops YouTube channel pages unconditionally.
  * @param {unknown} items
  * @param {Date | string} clock
  * @param {number} [windowDays]
@@ -2522,7 +2764,11 @@ export function youtubeWatchOriginsInWindow(
       continue;
     }
 
-    if (item.content_type !== "video") {
+    const type = String(
+      /** @type {{ content_type?: unknown }} */ (item).content_type || "",
+    );
+
+    if (type !== "video" && type !== "podcast_episode") {
       continue;
     }
 
@@ -2545,13 +2791,13 @@ export function youtubeWatchOriginsInWindow(
 }
 
 /**
- * True when a YouTube Elsewhere channel card should be omitted because the
- * same origin already has in-window watch uploads in Showcase Videos.
+ * True when a YouTube Elsewhere channel card should be omitted from Showcase.
+ * Channel pages never appear as cards—only episode/watch uploads do.
  * @param {unknown} item
- * @param {Set<string>} watchOrigins
+ * @param {Set<string>} [_watchOrigins] Unused; retained for call-site compat.
  * @returns {boolean}
  */
-export function shouldOmitYoutubeChannelCard(item, watchOrigins) {
+export function shouldOmitYoutubeChannelCard(item, _watchOrigins) {
   if (!item || typeof item !== "object") {
     return false;
   }
@@ -2568,17 +2814,7 @@ export function shouldOmitYoutubeChannelCard(item, watchOrigins) {
     return false;
   }
 
-  if (typed.network !== "youtube") {
-    return false;
-  }
-
-  const origin = /** @type {{ site_origin?: unknown }} */ (item).site_origin;
-
-  if (typeof origin !== "string" || !origin) {
-    return false;
-  }
-
-  return watchOrigins instanceof Set && watchOrigins.has(origin);
+  return typed.network === "youtube";
 }
 
 /**
@@ -2888,9 +3124,40 @@ function eligibleShowcaseItems(compactItems, now, activityWindowDays) {
     madeOptions.activityWindowDays = Math.floor(activityWindowDays);
   }
 
+  /** Presentation identities in this pass — education events defer to them. */
+  const presentationIds = new Set(
+    list
+      .filter((item) => String(item.content_type) === "presentation")
+      .map((item) => String(item.identity || ""))
+      .filter(Boolean),
+  );
+
   for (const raw of list) {
     if (!isMadeContentItem(raw, madeOptions)) {
       continue;
+    }
+
+    // Prefer the presentation card over a related past education event.
+    // Same-title pairs are already collapsed by dedupeCrosspostedContentItems.
+    if (
+      String(raw.content_type) === "event" &&
+      isPastEducationShowcaseEvent(raw, now || new Date())
+    ) {
+      const related = Array.isArray(raw.related) ? raw.related : [];
+      const coveredByRelated = related.some(
+        (entry) =>
+          entry &&
+          typeof entry === "object" &&
+          /** @type {{ relation?: unknown }} */ (entry).relation ===
+            "presentation" &&
+          presentationIds.has(
+            String(/** @type {{ id?: unknown }} */ (entry).id || ""),
+          ),
+      );
+
+      if (coveredByRelated) {
+        continue;
+      }
     }
 
     const title = showcaseCardTitle(raw);
@@ -3168,6 +3435,7 @@ const HOME_SHOWCASE_KINDS = new Set([
   "video",
   "comics",
   "education",
+  "talks",
 ]);
 
 /**
@@ -3712,6 +3980,10 @@ function isListedEvent(item) {
     return false;
   }
 
+  if (isEmptyAppearanceTitle(record.title)) {
+    return false;
+  }
+
   const role =
     typeof record.attribution_role === "string" ? record.attribution_role : "";
 
@@ -4056,28 +4328,17 @@ export function buildViewDocuments(input) {
       .filter(Boolean)
       .filter((item) => isVisitorFacingContentItem(item, clock, windowDays)),
   );
-  // Elsewhere channels only join Showcase / Activity / search when their
-  // latest upload published_at falls in the Activity window (undated omitted).
-  // When the same origin already has in-window YouTube watch rows, skip the
-  // aggregate channel card so Videos lists each upload instead.
-  const originsWithYoutubeWatchVideos = youtubeWatchOriginsInWindow(
-    compactFromContent,
-    clock,
-    windowDays,
-  );
+  // Elsewhere channels join search when their latest upload published_at
+  // falls in the Activity window (undated omitted). YouTube channel pages
+  // stay out of Showcase via isMadeContentItem (shouldOmitYoutubeChannelCard)
+  // so only watch and episode rows appear under Podcasts and live streams.
   const channelCompact = channelItemsFromNetwork(
     input.network || [],
     input.generatedAt,
     /** @type {Record<string, string> | null | undefined} */ (
       input.channelPublishByUrl
     ),
-  ).filter((item) => {
-    if (!publishedWithinDays(item.published_at, clock, windowDays)) {
-      return false;
-    }
-
-    return !shouldOmitYoutubeChannelCard(item, originsWithYoutubeWatchVideos);
-  });
+  ).filter((item) => publishedWithinDays(item.published_at, clock, windowDays));
   const compactItems = [...compactFromContent, ...channelCompact];
   const recentItems = contentItems.filter(
     (item) =>
