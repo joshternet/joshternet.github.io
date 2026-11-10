@@ -26,10 +26,13 @@ export const ACTIONS_CRAWL_PATHS = [
   "_data/happening.json",
   "_data/made.json",
   "_data/uses_summary.json",
+  "_data/past_events.json",
+  "_data/generation_manifest.json",
   "topics",
   "assets/network",
   "assets/activity",
   "assets/data/uses",
+  "assets/events/joshternet.ics",
   "data/uses",
 ];
 

@@ -5,7 +5,12 @@ _site/
 vendor/
 Gemfile.lock
 node_modules/
-coverage.lcov
+.DS_Store
+Thumbs.db
+coverage/
+*.lcov
+coverage-*.txt
+coverage-run.txt
 .network-sync/
 .tmp/
 data/crawl-sites/
@@ -38,6 +43,7 @@ _data/happening.json
 _data/made.json
 _data/uses_summary.json
 _data/past_events.json
+_data/generation_manifest.json
 topics/*
 !topics/index.md
 assets/network/joshternet.opml

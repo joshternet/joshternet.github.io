@@ -155,11 +155,15 @@ test("crawl publish set is gitignored while catalog and topic hub stay tracked",
   for (const relativePath of [
     "_data/network.json",
     "_data/uses_summary.json",
+    "_data/past_events.json",
+    "_data/generation_manifest.json",
     "assets/activity/posters/",
     "assets/network/sites/",
     "assets/data/uses/",
     "data/uses/**",
     "topics/*",
+    "coverage/",
+    "*.lcov",
   ]) {
     assert.match(
       gitignore,
