@@ -12,6 +12,8 @@
     "test:site": "node --test test/site/*.test.mjs",
     "declaration:verify": "node scripts/declaration-verify.mjs",
     "test:declaration-verify": "node --test scripts/declaration-verify.test.mjs",
+    "security:verify-edge": "bash scripts/security/verify-edge-security.sh",
+    "test:security": "node --test test/security/*.test.mjs test/site/canonical-host.test.mjs",
     "network:sync": "node scripts/network/sync.mjs",
     "nlp:sync": "node scripts/nlp/sync.mjs",
     "nlp:validate": "node scripts/nlp/validate-generated.mjs",

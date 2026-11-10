@@ -165,7 +165,7 @@ The following relationships are confirmed by current Joshternet repository confi
 | Provider | Joshternet use |
 | --- | --- |
 | GitHub | Source hosting, Actions, GitHub Pages, public registry files |
-| Cloudflare | Edge Workers, Turnstile, nominations D1, Cache API, rate limiting |
+| Cloudflare | Edge proxy for joshternet.org, Workers, Turnstile, nominations D1, Cache API, rate limiting |
 | Umami Cloud | Hub analytics |
 | IndexNow | Search-engine URL submission after deploy |
 
@@ -175,5 +175,5 @@ Joshternet may add, change, or discontinue providers. Independent participating 
 
 Questions about these principles: [hello@joshternet.org](mailto:hello@joshternet.org).
 
-Effective 5 October 2026. Last updated 5 October 2026.
+Effective 5 October 2026. Last updated 10 November 2026.
 {: .legal-dates}
