@@ -104,6 +104,11 @@ test("privacy and terms keep permalinks and operated-service facts", async () =>
   assert.doesNotMatch(privacy, /webmention\.io/);
   assert.match(privacy, /Independent sites may use Webmentions/);
   assert.match(privacy, /does not use cookies/);
+  assert.match(privacy, /delivered through/);
+  assert.match(privacy, /Cloudflare/);
+  assert.match(privacy, /GitHub Pages/);
+  assert.match(privacy, /Cloudflare Workers/);
+  assert.match(privacy, /does not use Cloudflare Web Analytics/);
   assert.match(privacy, /account IDs/);
   assert.match(privacy, /utm_source=joshternet\.org/);
   assert.match(privacy, /named interaction events/);

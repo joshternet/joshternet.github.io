@@ -2,11 +2,12 @@
 layout: default
 title: Privacy on Joshternet-operated services
 description: >-
-  What Joshternet-operated services collect and send: hub analytics, outbound
-  referrers, official buttons, nominations, JoshBot, Wander, and providers.
+  What Joshternet-operated services collect and send: hub hosting through
+  Cloudflare and GitHub Pages, analytics, outbound referrers, official buttons,
+  nominations, JoshBot, Wander, and providers.
 keywords: >-
-  Joshternet privacy, analytics, Umami, buttons, Turnstile, JoshBot,
-  independent websites
+  Joshternet privacy, analytics, Umami, Cloudflare, GitHub Pages, buttons,
+  Turnstile, JoshBot, independent websites
 permalink: /privacy/
 seo:
   type: WebPage
@@ -15,11 +16,13 @@ seo:
 
 # Privacy
 
-**In plain language:** joshternet.org is a public documentation and directory hub. Analytics count visits without accounts or advertising profiles. Official buttons look up whether a site appears in the public registry. Nominations and JoshBot follow their own documented paths. Independently operated member sites keep their own privacy practices—this page covers Joshternet-operated services.
+**In plain language:** joshternet.org is a public documentation and directory hub delivered through Cloudflare to GitHub Pages. Analytics count visits without accounts or advertising profiles. Official buttons look up whether a site appears in the public registry. Nominations and JoshBot follow their own documented paths. Independently operated member sites keep their own privacy practices—this page covers Joshternet-operated services.
 
 ## Hub hosting and analytics
 
-joshternet.org is a public website hosted on GitHub Pages. GitHub may see ordinary connection details when you load the site. See the [GitHub Privacy Statement][github-privacy].
+joshternet.org is a public website. Static files are published with GitHub Pages. Public hub traffic to `joshternet.org` (and `www.joshternet.org`) is delivered through [Cloudflare][cloudflare-privacy] before it reaches that origin. Cloudflare may process ordinary connection details—such as IP address, TLS information, requested URL, and standard request headers—to deliver the site, cache content, and help protect Joshternet-operated services from abuse. See the [Cloudflare Privacy Policy][cloudflare-privacy]. GitHub may also see ordinary connection details for origin and repository traffic. See the [GitHub Privacy Statement][github-privacy].
+
+Some Joshternet-operated features on the hub also run as Cloudflare Workers (for example Button State and related edge routes). Those requests likewise pass through Cloudflare’s network under the same provider relationship.
 
 When JavaScript is available, the hub may also ask GitHub’s public repository API (`api.github.com`) for the current star count of `joshternet/joshternet.github.io` so the header star control can refresh the number. That request is for public repository metadata only. If the request fails, the build-time count already on the page stays in place. If you click the star control, this browser may keep a local flag so the icon can stay gold on later visits; that flag does not prove a GitHub star and is not sent to Joshternet servers.
 
@@ -117,18 +120,18 @@ Joshternet chooses infrastructure providers for Joshternet-operated services acc
 We link provider policies rather than copying them:
 
 - [Umami platform][umami] and [Umami privacy][umami-privacy]
-- [Cloudflare Privacy Policy][cloudflare-privacy] and [Turnstile Privacy Addendum][turnstile-privacy]
-- [GitHub Privacy Statement][github-privacy]
+- [Cloudflare Privacy Policy][cloudflare-privacy] and [Turnstile Privacy Addendum][turnstile-privacy] (hub delivery, Workers, and Turnstile)
+- [GitHub Privacy Statement][github-privacy] (Pages origin, Actions, and public APIs)
 
 Third-party software and brand marks used on this hub are listed on [Third-party licenses](/licensing/third-party-licenses/).
 
-Infrastructure operators may keep ordinary connection logs (IP, browser software, timestamps) under their own policies. Joshternet does not publish those logs.
+Infrastructure operators may keep ordinary connection logs (IP, browser software, timestamps) under their own policies. Joshternet does not publish those logs. Joshternet does not use Cloudflare Web Analytics on the hub; visit counts described above come from Umami Cloud.
 
 ## Questions
 
 [hello@joshternet.org](mailto:hello@joshternet.org). Security reports: [Security](/security/).
 
-Effective 5 October 2026. Last updated 5 October 2026.
+Effective 5 October 2026. Last updated 10 November 2026.
 {: .legal-dates}
 
 [umami]: https://umami.is/platform

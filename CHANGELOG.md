@@ -7,6 +7,14 @@ engineering notes stay in git history; this file is for people reading the repo.
 
 ### Added
 
+- **Edge security regression tooling:** `scripts/security/verify-edge-security.sh`
+  (`npm run security:verify-edge`) and canonical-host tests that keep
+  `https://joshternet.org` as the published site origin. Operational Cloudflare
+  configuration remains outside the public repository.
+- **Privacy: Cloudflare hub delivery:** `/privacy/` now states that public
+  joshternet.org traffic is delivered through Cloudflare before GitHub Pages,
+  that Workers share that provider relationship, and that Cloudflare Web
+  Analytics is not used on the hub.
 - **Friends of the Joshternet:** `/friends/` celebrates Network participants who
   declared they are not Joshes (`identity: declined`), listed from the same
   Network data as `/network/` with a Friends entry in Network secondary nav.
