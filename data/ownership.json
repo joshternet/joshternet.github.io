@@ -1,0 +1,138 @@
+{
+  "schema": "joshternet.ownership.v1",
+  "entries": [
+    {
+      "pattern": "data/ownership.json",
+      "class": "authored-policy",
+      "writer": "any-reviewed-development",
+      "notes": "Dataset ownership manifest"
+    },
+    {
+      "pattern": "data/uses/catalog/**",
+      "class": "authored-policy",
+      "writer": "any-reviewed-development"
+    },
+    {
+      "pattern": "_data/topic_aliases.json",
+      "class": "authored-policy",
+      "writer": "any-reviewed-development"
+    },
+    {
+      "pattern": "_data/topic_denylist.json",
+      "class": "authored-policy",
+      "writer": "any-reviewed-development"
+    },
+    {
+      "pattern": "_data/*_nav.yml",
+      "class": "authored-policy",
+      "writer": "any-reviewed-development"
+    },
+    {
+      "pattern": "data/uses/events/**",
+      "class": "observed-history",
+      "writer": "scripts/uses/build.mjs"
+    },
+    {
+      "pattern": "data/uses/checks/**",
+      "class": "observed-history",
+      "writer": "scripts/uses/build.mjs"
+    },
+    {
+      "pattern": "data/observation/**",
+      "class": "observed-history",
+      "writer": "scripts/observation/*",
+      "notes": "Local/dev observation and source mirrors; production durable stores are external"
+    },
+    {
+      "pattern": "data/uses/state.json",
+      "class": "reconstructed-state",
+      "writer": "scripts/uses/build.mjs"
+    },
+    {
+      "pattern": "data/uses/rollups/**",
+      "class": "derived-projection",
+      "writer": "scripts/uses/build.mjs"
+    },
+    {
+      "pattern": "data/uses/slot-migration.json",
+      "class": "derived-projection",
+      "writer": "scripts/uses/build.mjs"
+    },
+    {
+      "pattern": "_data/uses_summary.json",
+      "class": "derived-projection",
+      "writer": "scripts/uses/view.mjs"
+    },
+    {
+      "pattern": "assets/data/uses/**",
+      "class": "derived-projection",
+      "writer": "scripts/uses/view.mjs"
+    },
+    {
+      "pattern": "_data/network.json",
+      "class": "derived-projection",
+      "writer": "scripts/network/sync.mjs"
+    },
+    {
+      "pattern": "_data/content.json",
+      "class": "derived-projection",
+      "writer": "scripts/nlp/sync.mjs"
+    },
+    {
+      "pattern": "_data/topics.json",
+      "class": "derived-projection",
+      "writer": "scripts/nlp/sync.mjs"
+    },
+    {
+      "pattern": "_data/site_signals.json",
+      "class": "reconstructed-state",
+      "writer": "scripts/nlp/sync.mjs"
+    },
+    {
+      "pattern": "_data/showcase.json",
+      "class": "derived-projection",
+      "writer": "scripts/views/build.mjs"
+    },
+    {
+      "pattern": "_data/happening.json",
+      "class": "derived-projection",
+      "writer": "scripts/views/build.mjs"
+    },
+    {
+      "pattern": "_data/activity.json",
+      "class": "derived-projection",
+      "writer": "scripts/views/build.mjs"
+    },
+    {
+      "pattern": "_data/connections.json",
+      "class": "derived-projection",
+      "writer": "scripts/network/sync.mjs"
+    },
+    {
+      "pattern": "_data/blogrolls.json",
+      "class": "derived-projection",
+      "writer": "scripts/network/sync.mjs"
+    },
+    {
+      "pattern": "_data/data_manifest.json",
+      "class": "derived-projection",
+      "writer": "scripts/nlp/sync.mjs"
+    },
+    {
+      "pattern": "_data/generation_manifest.json",
+      "class": "derived-projection",
+      "writer": "scripts/observation/provenance.mjs",
+      "notes": "Git-owned observation_run provenance; never embeds generation_git_sha"
+    },
+    {
+      "pattern": "data/crawl-sites/**",
+      "class": "observed-history",
+      "writer": "scripts/nlp/sync.mjs"
+    },
+    {
+      "pattern": "data/classification/**",
+      "class": "authored-policy",
+      "writer": "any-reviewed-development"
+    }
+  ]
+}

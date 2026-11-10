@@ -96,6 +96,51 @@ test("catalog matches unstructured articles without Microformats", () => {
   );
 });
 
+test("catalog match dedupes evidence when many content rows share one URL", () => {
+  const matched = applyCatalogMatches(
+    [
+      {
+        origin: "https://joshghent.com",
+        declared_topics: [],
+        subject_signals: [],
+      },
+    ],
+    [
+      {
+        site_origin: "https://joshghent.com",
+        url: "https://joshghent.com/speaking/",
+        title: "Talk one about AI",
+        summary: "ai",
+        content_type: "event",
+      },
+      {
+        site_origin: "https://joshghent.com",
+        url: "https://joshghent.com/speaking/",
+        title: "Talk two about AI",
+        summary: "ai",
+        content_type: "event",
+      },
+      {
+        site_origin: "https://joshghent.com",
+        url: "https://joshghent.com/speaking/",
+        title: "Presentation about AI",
+        summary: "ai",
+        content_type: "presentation",
+      },
+    ],
+    [{ slug: "ai", label: "ai" }],
+  );
+
+  const signal = matched[0].subject_signals.find(
+    (entry) => entry.slug === "ai",
+  );
+  assert.ok(signal);
+  assert.equal(signal.evidence.length, 1);
+  assert.equal(signal.evidence_count, 1);
+  assert.equal(signal.evidence[0].page, "https://joshghent.com/speaking/");
+  assert.equal(signal.evidence[0].count, 3);
+});
+
 test("catalog match keeps evidence_count aligned when upgrading a signal", () => {
   const matched = applyCatalogMatches(
     [

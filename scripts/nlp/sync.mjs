@@ -36,6 +36,7 @@ import {
   buildTopicCommunities,
   loadAliasMap,
   loadDenylist,
+  resolveContentTopicAliases,
   topicCollectionMarkdown,
 } from "./communities.mjs";
 import {
@@ -91,6 +92,11 @@ import {
 import { createOriginRobotsGate } from "./origin-robots.mjs";
 import { formatGeneratedOutputs } from "../format-written.mjs";
 import { collectCreativeWorks } from "./creative.mjs";
+import {
+  fetchAppearanceListingPages,
+  listingMode,
+  projectsFromToolIndexes,
+} from "./appearances.mjs";
 import { collectEvents } from "./events.mjs";
 import { collectPortfolio } from "./portfolio.mjs";
 import { shouldRenderHtml } from "./render.mjs";
@@ -123,12 +129,19 @@ import {
   shareDescriptionFromHtml,
 } from "./text.mjs";
 import { buildUsesDatasets } from "../uses/build.mjs";
+import { assessUsesPages } from "../uses/origin-assessment.mjs";
 import { fetchUsesHtmlPages } from "../uses/discover.mjs";
 import {
   buildSeekingDatasets,
+  collectSeeking,
   fetchSeekingHtmlPages,
   isSeekingPageUrl,
 } from "./seeking.mjs";
+import {
+  iterateSiteRecords,
+  originRecordId,
+  writeSiteRecord,
+} from "./site-record.mjs";
 
 /**
  * Topic and relationship evidence must come from public information Joshternet
@@ -161,6 +174,25 @@ const SITE_URL = "https://joshternet.org";
 /**
  * @returns {Promise<void>}
  */
+/**
+ * Drops page bodies after dates are copied onto content drafts.
+ * The next origin can be crawled without keeping every previous HTML body.
+ * @param {Array<{ html?: string, text?: string }> | undefined} pages
+ * @returns {void}
+ */
+function releaseCrawlPageBodies(pages) {
+  if (!Array.isArray(pages)) {
+    return;
+  }
+  for (const page of pages) {
+    if (!page || typeof page !== "object") {
+      continue;
+    }
+    page.html = "";
+    page.text = "";
+  }
+}
+
 async function main() {
   const network = await readJSONIfExists(NETWORK_PATH, []);
   const aliases = loadAliasMap(
@@ -275,8 +307,6 @@ async function main() {
   const communityOrigins = [];
   /** @type {Array<Record<string, unknown>>} */
   const contentDrafts = [];
-  /** @type {Array<{ url?: string, html?: string }>} */
-  const pagesForPublishedAt = [];
   /** @type {Set<string>} */
   const failedOrigins = new Set();
   /** @type {Set<string>} */
@@ -286,13 +316,29 @@ async function main() {
   const usesOriginInputs = [];
   /** @type {Array<{ origin: string, title?: string, pages?: Array<{ url: string, html?: string, lang?: string }>, complete?: boolean, failed?: boolean }>} */
   const seekingOriginInputs = [];
+  /** @type {string[]} */
+  const writtenIds = [];
 
-  for (const participant of network) {
+  const crawlParticipants = Array.isArray(network)
+    ? network.filter(
+        (entry) => entry && typeof entry.origin === "string" && entry.origin,
+      )
+    : [];
+
+  for (const participant of crawlParticipants) {
     if (!participant || typeof participant.origin !== "string") {
       continue;
     }
 
     const origin = participant.origin;
+    const marks = {
+      signals: originSignals.length,
+      links: originLinks.length,
+      community: communityOrigins.length,
+      drafts: contentDrafts.length,
+      uses: usesOriginInputs.length,
+      seeking: seekingOriginInputs.length,
+    };
     process.stdout.write(`nlp crawl ${origin}\n`);
 
     try {
@@ -497,7 +543,6 @@ async function main() {
         html: page.html,
         lang: page.lang || "",
       }));
-      pagesForPublishedAt.push(...creativePages);
 
       if (shouldRenderHtml()) {
         process.stdout.write(
@@ -692,6 +737,62 @@ async function main() {
         );
       }
 
+      // Speaking / tools / event indexes: probe slash pages when deep crawl is
+      // short-circuited or missed them, same pattern as Uses and Seeking.
+      /** @type {Map<string, { url: string, html: string, lang?: string }>} */
+      const appearanceByUrl = new Map();
+
+      for (const page of crawled.pages) {
+        if (
+          !page ||
+          typeof page.url !== "string" ||
+          typeof page.html !== "string" ||
+          !page.html ||
+          !listingMode(page.url)
+        ) {
+          continue;
+        }
+
+        appearanceByUrl.set(page.url, {
+          url: page.url,
+          html: page.html,
+          lang: page.lang || "",
+        });
+      }
+
+      const haveAppearanceModes = new Set(
+        [...appearanceByUrl.keys()]
+          .map((url) => listingMode(url))
+          .filter(Boolean),
+      );
+
+      for (const page of await fetchAppearanceListingPages(origin, {
+        cache: dnsCache,
+        httpCache,
+        haveModes: haveAppearanceModes,
+      })) {
+        if (!appearanceByUrl.has(page.url)) {
+          appearanceByUrl.set(page.url, page);
+        }
+      }
+
+      // Short-circuit leaves crawled.pages empty; dedicated listing HTML must
+      // still mint event/presentation drafts on every sync. Deep crawl may also
+      // miss a listing slash page — extract here when we have listing HTML.
+      // Deep crawl already ran collectEvents on all pages; identity merge dedupes.
+      if (appearanceByUrl.size > 0) {
+        const appearancePages = [...appearanceByUrl.values()];
+        const appearanceMeta = {
+          siteOrigin: origin,
+          observedAt: now,
+        };
+        const appearanceEvents = collectEvents(appearancePages, appearanceMeta);
+        contentDrafts.push(...appearanceEvents.items);
+        contentDrafts.push(
+          ...projectsFromToolIndexes(appearancePages, appearanceMeta),
+        );
+      }
+
       if (shortCircuitedOrigins.has(origin)) {
         const carried = carryForwardOriginSignal(priorSignal, {
           origin,
@@ -792,6 +893,8 @@ async function main() {
           pages: seekingHtmlPages,
           complete: true,
         });
+        enrichPublishedAtFromPages(contentDrafts, crawled.pages);
+        releaseCrawlPageBodies(crawled.pages);
       }
     } catch (error) {
       process.stderr.write(
@@ -818,9 +921,104 @@ async function main() {
         pages: [],
         failed: true,
       });
+    } finally {
+      const usesInput = usesOriginInputs[usesOriginInputs.length - 1];
+      if (
+        usesInput &&
+        usesInput.origin === origin &&
+        !usesInput.assessment &&
+        Array.isArray(usesInput.pages)
+      ) {
+        usesInput.assessment = assessUsesPages(origin, usesInput.pages);
+        releaseCrawlPageBodies(usesInput.pages);
+        usesInput.pages = [];
+      }
+      const seekingInput = seekingOriginInputs[seekingOriginInputs.length - 1];
+      if (
+        seekingInput &&
+        seekingInput.origin === origin &&
+        !seekingInput.failed &&
+        !seekingInput.collected &&
+        Array.isArray(seekingInput.pages)
+      ) {
+        seekingInput.collected = collectSeeking(seekingInput.pages, {
+          siteOrigin: origin,
+          siteTitle: participant.title || participant.domain || origin,
+          observedAt: now,
+        });
+        releaseCrawlPageBodies(seekingInput.pages);
+        seekingInput.pages = [];
+      }
+      try {
+        const recordedSignal = originSignals[marks.signals];
+        const recordedPages =
+          recordedSignal &&
+          typeof recordedSignal === "object" &&
+          Array.isArray(recordedSignal.pages)
+            ? recordedSignal.pages
+            : [];
+        await writeSiteRecord(ROOT, {
+          origin,
+          title: participant.title || participant.domain || origin,
+          domain: participant.domain || "",
+          crawled_at: now,
+          status: failedOrigins.has(origin) ? "failed" : "ok",
+          pages: recordedPages.map((page) => {
+            const record =
+              page && typeof page === "object"
+                ? /** @type {Record<string, unknown>} */ (page)
+                : {};
+            return {
+              url: record.url,
+              role: record.role || record.page_role,
+              published_at: record.published_at,
+              hash: record.hash || record.content_hash,
+            };
+          }),
+          content: contentDrafts.slice(marks.drafts),
+          signals: originSignals[marks.signals] || null,
+          links: originLinks[marks.links] || null,
+          community: communityOrigins[marks.community] || null,
+          uses: usesOriginInputs[marks.uses] || null,
+          seeking: seekingOriginInputs[marks.seeking] || null,
+        });
+        writtenIds.push(originRecordId(origin));
+        contentDrafts.length = marks.drafts;
+        originSignals.length = marks.signals;
+        originLinks.length = marks.links;
+        communityOrigins.length = marks.community;
+        usesOriginInputs.length = marks.uses;
+        seekingOriginInputs.length = marks.seeking;
+      } catch (error) {
+        process.stderr.write(
+          `nlp site record skipped ${origin}: ${error instanceof Error ? error.message : error}\n`,
+        );
+      }
     }
   }
 
+  for await (const record of iterateSiteRecords(ROOT, writtenIds)) {
+    if (Array.isArray(record.content)) {
+      contentDrafts.push(...record.content);
+    }
+    if (record.signals && typeof record.signals === "object") {
+      originSignals.push(record.signals);
+    }
+    if (record.links && typeof record.links === "object") {
+      originLinks.push(record.links);
+    }
+    if (record.community && typeof record.community === "object") {
+      communityOrigins.push(record.community);
+    }
+    if (record.uses && typeof record.uses === "object") {
+      usesOriginInputs.push(record.uses);
+    }
+    if (record.seeking && typeof record.seeking === "object") {
+      seekingOriginInputs.push(record.seeking);
+    }
+  }
+
+  let usesFailed = false;
   try {
     // publish omitted → local on / CI off unless JOSHTERNET_USES_PUBLISH set.
     const usesMetrics = await buildUsesDatasets({
@@ -835,8 +1033,14 @@ async function main() {
     process.stderr.write(
       `nlp uses failed: ${error instanceof Error ? error.message : error}\n`,
     );
+    usesFailed = true;
     process.exitCode = 1;
-    return;
+  } finally {
+    for (const entry of usesOriginInputs) {
+      if (entry) {
+        entry.pages = [];
+      }
+    }
   }
 
   try {
@@ -856,6 +1060,12 @@ async function main() {
     );
     process.exitCode = 1;
     return;
+  } finally {
+    for (const entry of seekingOriginInputs) {
+      if (entry) {
+        entry.pages = [];
+      }
+    }
   }
 
   // Elsewhere YouTube channels → individual watch URLs for Showcase Videos.
@@ -877,10 +1087,8 @@ async function main() {
       `elsewhere youtube harvest failed: ${error instanceof Error ? error.message : error}\n`,
     );
   }
-
-  enrichPublishedAtFromPages(contentDrafts, pagesForPublishedAt);
   const draftItems = mergeContentItems(contentDrafts).filter((item) =>
-    isContentCacheEligible(item, now),
+    isContentCacheEligible(item, now, CONTENT_CACHE_DAYS),
   );
   const aliasesDoc = await readJSONIfExists(ALIASES_PATH, { aliases: [] });
   const catalog = networkCatalog(communityOrigins, draftItems);
@@ -939,6 +1147,7 @@ async function main() {
     cache: dnsCache,
     robotsGate,
   });
+  resolveContentTopicAliases(gatheredItems, aliases);
   const contentMerge = mergeGatheredContent(prunedContentBase, gatheredItems, {
     now,
     failedOrigins,
@@ -1244,6 +1453,9 @@ async function main() {
   process.stdout.write(
     `Wrote signals for ${originSignals.length} origins, ${communities.length} communities, ${contentItems.length} content items, ${deduped.length} connections.\n`,
   );
+  if (usesFailed) {
+    process.exitCode = 1;
+  }
 }
 
 main().catch((error) => {

@@ -98,7 +98,8 @@ export function acceptProposal(scores, policy) {
   return { accepted: true, slot_id: top.id, reason: "accepted" };
 }
 
-const NEGATION = /\b(?:no longer|not|never|formerly|considering)\b/i;
+const NEGATION =
+  /\b(?:no longer|not|never|formerly|considering|replaced by)\b/i;
 
 /**
  * A dropped negation cannot be published automatically.
@@ -152,12 +153,50 @@ export function pairSlotScores(result, labels) {
 }
 
 /**
+ * Classification text from the product, its section, and its own description.
+ * Neighboring products are not included. Long text keeps the existing window.
+ * @param {object} claim
+ * @returns {{ full: string, presented: string }}
+ */
+export function modelClaimText(claim) {
+  const name = typeof claim?.name === "string" ? claim.name.trim() : "";
+  const sectionPath =
+    typeof claim?.section_path === "string" ? claim.section_path.trim() : "";
+  const section =
+    sectionPath ||
+    (typeof claim?.section === "string" ? claim.section.trim() : "");
+  const context =
+    typeof claim?.context === "string" ? claim.context.trim() : "";
+  const excerpt =
+    typeof claim?.excerpt === "string" ? claim.excerpt.trim() : "";
+  const description = context || excerpt;
+  /** @type {string[]} */
+  const parts = [];
+  if (name) {
+    parts.push(name);
+  }
+  if (section && section !== name) {
+    parts.push(section);
+  }
+  if (description && description !== name && description !== section) {
+    parts.push(description);
+  }
+  const full = parts.join(". ");
+  const presented = full.length > 240 ? windowText(full, name) : full;
+  return { full, presented };
+}
+
+/**
  * Asks the injected classifier for a slot. A top score is not acceptance.
+ * Cached scores still pass the threshold, margin, and negation checks.
  * @param {object} input
  * @param {object} input.claim
  * @param {object} input.catalog
  * @param {{ threshold: number, margin: number }} input.policy
  * @param {(text: string, labels: string[]) => Promise<{ labels?: string[], scores?: number[] }>} input.classify
+ * @param {Map<string, object>} [input.cache]
+ * @param {string} [input.cacheKey]
+ * @param {{ hits?: number, misses?: number, decisions?: number, abstained?: number }} [input.stats]
  * @returns {Promise<{ accepted: boolean, slot_id: string, reason: string }>}
  */
 export async function applyModelProposal(input) {
@@ -166,28 +205,40 @@ export async function applyModelProposal(input) {
     return { accepted: false, slot_id: "", reason: "no-labels" };
   }
   const claim = input.claim || {};
-  const fullText = [
-    claim.name,
-    claim.section,
-    claim.section_path,
-    claim.context,
-    claim.excerpt,
-  ]
-    .filter((part) => typeof part === "string" && part)
-    .join(" ");
-  const windowed = windowText(fullText, claim.name || "");
-  const raw = await input.classify(
-    windowed,
-    labels.map((label) => label.description),
-  );
+  const { full, presented } = modelClaimText(claim);
+  const descriptions = labels.map((label) => label.description);
+  const cache = input.cache;
+  const cacheKey = typeof input.cacheKey === "string" ? input.cacheKey : "";
+  let raw;
+  if (cache && cacheKey && cache.has(cacheKey)) {
+    if (input.stats) {
+      input.stats.hits = (input.stats.hits || 0) + 1;
+    }
+    raw = cache.get(cacheKey);
+  } else {
+    if (input.stats) {
+      input.stats.misses = (input.stats.misses || 0) + 1;
+    }
+    raw = await input.classify(presented, descriptions);
+    if (cache && cacheKey) {
+      cache.set(cacheKey, raw);
+    }
+  }
   const proposal = acceptProposal(pairSlotScores(raw, labels), input.policy);
+  let result = proposal;
   if (
     proposal.accepted &&
-    !automaticPublishAllowed(fullText, windowed, proposal)
+    !automaticPublishAllowed(full, presented, proposal)
   ) {
-    return { accepted: false, slot_id: "", reason: "negation" };
+    result = { accepted: false, slot_id: "", reason: "negation" };
   }
-  return proposal;
+  if (input.stats) {
+    input.stats.decisions = (input.stats.decisions || 0) + 1;
+    if (!result.accepted) {
+      input.stats.abstained = (input.stats.abstained || 0) + 1;
+    }
+  }
+  return result;
 }
 
 /**
@@ -237,6 +288,7 @@ export function classificationFingerprint(parts) {
         parts.templateVersion || 0,
         parts.labelHash || "",
         parts.catalogHash || "",
+        parts.policyHash || "",
       ]),
     )
     .digest("hex");

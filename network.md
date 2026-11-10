@@ -24,12 +24,19 @@ Pick a website that catches your eye and have a look around. You might find a gr
 
 This is the part of the Joshternet that JoshBot has found and checked so far. There may be plenty of other participating websites still waiting to be discovered. Participation starts by publishing a valid declaration at `/.well-known/josh`—you do not need to appear here first ([Join]({{ '/join/' | relative_url }})).
 
+<p class="network-friends-link">
+  <a href="{{ '/friends/' | relative_url }}">Meet the Friends of the Joshternet →</a>
+</p>
+
 {% assign network_sites = site.data.network %}
+{% if network_sites == nil %}
+  {% assign network_sites = "" | split: "" %}
+{% endif %}
 {% comment %}
   No-JS fallback: alphabetical by domain. JavaScript replaces order with Discover
   (random), Recently joined, Oldest first, or Alphabetical while preserving filters.
 {% endcomment %}
-{% assign network_sites = network_sites | sort: 'domain' %}
+{% assign network_sites = network_sites | sort: 'k1v' %}
 
 <p class="network-toolbar-lede">
   Looking for a fellow Josh? Curious who's joined the fun without being one? Use the filters to explore, or leave them on All and see where you end up. Undeclared means the publisher has not declared Josh identity—it does not mean verification failed. Discover mixes things up so you don't always start in the same place. Recently joined and Oldest first follow when JoshBot first recorded participation in the registry.
@@ -116,141 +123,7 @@ This is the part of the Joshternet that JoshBot has found and checked so far. Th
 {% if network_sites.size > 0 %}
 <div class="network-grid" data-network-grid>
   {% for network_site in network_sites %}
-    {% case network_site.identity %}
-      {% when "affirmed" %}
-        {% assign identity_label = "Josh" %}
-      {% when "declined" %}
-        {% assign identity_label = "Non-Josh" %}
-      {% else %}
-        {% assign identity_label = "Undeclared" %}
-    {% endcase %}
-
-    <article
-      class="network-card network-card--{{ network_site.identity }} h-card"
-      data-network-card
-      data-identity="{{ network_site.identity }}"
-      data-title="{{ network_site.title | default: network_site.domain | downcase | escape }}"
-      data-domain="{{ network_site.domain | downcase | escape }}"
-      data-origin="{{ network_site.origin | escape }}"
-      data-first-participated-at="{{ network_site.first_participated_at | escape }}"
-    >
-      {% include outbound-href.html url=network_site.origin %}
-      <a
-        class="network-card__link u-url"
-        href="{{ outbound_href | escape }}"
-        target="_blank"
-        rel="noopener"
-      >
-        <div class="network-card__preview">
-          {% if network_site.screenshot %}
-            <img
-              class="network-card__image u-photo"
-              src="{{ network_site.screenshot | relative_url }}"
-              alt="Screenshot of {{ network_site.title | default: network_site.domain | escape }}"
-              loading="lazy"
-              decoding="async"
-            >
-          {% else %}
-            <div class="network-card__fallback" aria-hidden="true">
-              <span>{{ network_site.domain | slice: 0 | upcase }}</span>
-            </div>
-          {% endif %}
-        </div>
-
-        <div class="network-card__body">
-          {% include network-card-a11y.html %}
-          <span class="visually-hidden">{{ identity_a11y }}</span>
-
-          <h2 class="network-card__title p-name">
-            {{ network_site.title | default: network_site.domain | escape }}
-            <span aria-hidden="true">↗</span>
-          </h2>
-
-          {% if network_site.description and network_site.description != "" %}
-            <p class="network-card__description p-note">
-              {{ network_site.description | escape }}
-            </p>
-          {% endif %}
-        </div>
-      </a>
-      {% assign show_elsewhere = false %}
-      {% if network_site.elsewhere and network_site.elsewhere.size > 0 %}
-        {% assign show_elsewhere = true %}
-      {% endif %}
-      {% assign show_feed = false %}
-      {% if network_site.feeds and network_site.feeds.size > 0 %}
-        {% assign show_feed = true %}
-      {% endif %}
-      <div class="network-card__footer">
-        {% if show_elsewhere or show_feed %}
-          <div class="network-card__actions">
-            {% if show_feed %}
-              {% assign primary_feed = network_site.feeds | first %}
-              {% include outbound-href.html url=primary_feed.url %}
-              <a
-                class="network-card__feed"
-                href="{{ outbound_href | escape }}"
-                target="_blank"
-                rel="noopener"
-              >
-                <svg
-                  class="network-card__feed-icon"
-                  viewBox="0 0 16 16"
-                  width="16"
-                  height="16"
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M2.5 12.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm0-5.5a7 7 0 0 1 7 7h-2a5 5 0 0 0-5-5v-2Zm0-5.5A12.5 12.5 0 0 1 15 13.5h-2A10.5 10.5 0 0 0 2.5 3.5v-2Z"
-                  />
-                </svg>
-                <span class="visually-hidden">
-                  Open feed for
-                  {{ network_site.title | default: network_site.domain | escape }}
-                </span>
-              </a>
-            {% endif %}
-            {% if show_elsewhere %}
-              <ul class="network-card__elsewhere">
-                {% for elsewhere_link in network_site.elsewhere %}
-                  {% assign elsewhere_network = elsewhere_link.network | default: "web" %}
-                  <li>
-                    {% include outbound-href.html url=elsewhere_link.url %}
-                    <a
-                      class="network-card__elsewhere-link"
-                      href="{{ outbound_href | escape }}"
-                      target="_blank"
-                      rel="noopener"
-                    >
-                      <span
-                        class="network-card__elsewhere-glyph network-card__elsewhere-glyph--{{ elsewhere_network | escape }}"
-                        aria-hidden="true"
-                      ></span>
-                      <span class="visually-hidden">
-                        {{ elsewhere_link.label | default: elsewhere_network | escape }}
-                        profile linked from this participant site
-                      </span>
-                    </a>
-                  </li>
-                {% endfor %}
-              </ul>
-            {% endif %}
-          </div>
-        {% endif %}
-        {% include outbound-href.html url=network_site.origin %}
-        <a
-          class="network-card__domain u-url"
-          href="{{ outbound_href | escape }}"
-          target="_blank"
-          rel="noopener"
-        >
-          {{ network_site.domain | escape }}
-        </a>
-        {% include network-card-joined.html %}
-      </div>
-    </article>
+    {% include network-participant-card.html %}
   {% endfor %}
 
   <a class="network-surprise-card" href="{{ '/wander/' | relative_url }}">
@@ -271,7 +144,7 @@ This is the part of the Joshternet that JoshBot has found and checked so far. Th
 </div>
 {% endif %}
 
-<p class="network-join-invite">
+<p class="network-footnote">
   Have a website of your own? There's room for you here, whether you're a Josh
   or not. The
   <a href="{{ '/join/' | relative_url }}">Join guide</a>

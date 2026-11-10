@@ -54,13 +54,13 @@ test("showcase filters are buttons that filter by kind, not hash scroll links", 
 
 test("showcase-card hit link uses the work URL only", async () => {
   const card = await read("_includes/showcase-card.html");
-  assert.match(card, /include outbound-href\.html url=include\.item\.url/);
+  assert.match(card, /include outbound-href\.html url=include\.item\.k7o/);
   assert.doesNotMatch(
     card,
-    /include outbound-href\.html url=include\.item\.site_origin/,
+    /include outbound-href\.html url=include\.item\.k6f/,
   );
   assert.doesNotMatch(card, /showcase-card__maker-link/);
-  assert.doesNotMatch(card, /href="\{\{\s*include\.item\.url/);
+  assert.doesNotMatch(card, /href="\{\{\s*include\.item\.k7o/);
   assert.doesNotMatch(card, /data-joshternet-skip-link-track/);
   assert.match(card, /class="showcase-card__hit u-url"/);
   assert.equal((card.match(/^\s*<a\b/gm) || []).length, 1);
@@ -71,9 +71,11 @@ test("showcase-card hit link uses the work URL only", async () => {
   assert.match(media[1], /<img\b/);
   assert.doesNotMatch(media[1], /<a\b/);
   assert.match(card, /showcase-card__maker/);
+  assert.match(card, /showcase-card__appearance/);
+  assert.match(card, /include\.item\.k8f/);
   assert.match(card, /showcase-card__summary/);
   assert.match(card, /showcase-card__domain/);
-  assert.match(card, /network_site\.screenshot/);
+  assert.match(card, /network_site\.k63/);
 });
 
 test("showcase-card CSS places the hit link over the tile and domain bottom-right", async () => {
@@ -81,6 +83,7 @@ test("showcase-card CSS places the hit link over the tile and domain bottom-righ
   assert.match(css, /\.showcase-card__hit\s*\{[^}]*inset:\s*0/s);
   assert.match(css, /\.showcase-card__hit\s*\{[^}]*z-index:\s*1/s);
   assert.doesNotMatch(css, /\.showcase-card__maker-link/);
+  assert.match(css, /\.showcase-card__appearance\s*\{/);
   assert.match(
     css,
     /\.showcase-card__domain\s*\{[^}]*margin-block-start:\s*auto/s,

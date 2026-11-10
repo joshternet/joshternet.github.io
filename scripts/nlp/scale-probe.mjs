@@ -72,6 +72,15 @@ import {
   splitDeclaredAndSignals,
   subjectsFromHtml,
 } from "./subjects.mjs";
+import {
+  blogrollsSchema,
+  connectionsSchema,
+  contentSchema,
+  dataManifestSchema,
+  networkSchema,
+  siteSignalsSchema,
+  topicsSchema,
+} from "./crawl-shape.mjs";
 import { isEnglishLanguage, parseHtmlRegions } from "./text.mjs";
 import { buildViewProjections } from "../views/build.mjs";
 
@@ -80,14 +89,14 @@ const HARVEST_DIR = path.join(ROOT, ".tmp", "scale-harvest");
 const SCALE_ROOT = path.join(ROOT, ".tmp", "scale-root");
 const DEFAULT_RUNS = 3000;
 const DEFAULT_SEED = 1;
-const SCHEMA_FILES = {
-  network: "network.schema.json",
-  site_signals: "site-signals.schema.json",
-  content: "content.schema.json",
-  topics: "topics.schema.json",
-  connections: "connections.schema.json",
-  blogrolls: "blogrolls.schema.json",
-  data_manifest: "data-manifest.schema.json",
+const CRAWL_SHAPES = {
+  network: networkSchema,
+  site_signals: siteSignalsSchema,
+  content: contentSchema,
+  topics: topicsSchema,
+  connections: connectionsSchema,
+  blogrolls: blogrollsSchema,
+  data_manifest: dataManifestSchema,
 };
 
 /**
@@ -642,10 +651,7 @@ async function validateGraph(graph) {
   addFormats(ajv);
   const validators = {};
 
-  for (const [name, fileName] of Object.entries(SCHEMA_FILES)) {
-    const schema = JSON.parse(
-      await fs.readFile(path.join(ROOT, "schemas", fileName), "utf8"),
-    );
+  for (const [name, schema] of Object.entries(CRAWL_SHAPES)) {
     validators[name] = ajv.compile(schema);
   }
 

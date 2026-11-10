@@ -10,7 +10,8 @@ on:
         default: false
 
   schedule:
-    - cron: "17 * * * *"
+    # Six-hour complete observation generations at minute 17 (avoid top-of-hour delay).
+    - cron: "17 */6 * * *"
 
   repository_dispatch:
     types:
@@ -25,8 +26,10 @@ on:
       - "scripts/nlp/**"
       - "scripts/views/**"
       - "scripts/uses/**"
-      - "schemas/**"
+      - "scripts/observation/**"
       - "data/uses/catalog/**"
+      - "data/ownership.json"
+      - "test/observation/**"
       - "data/classification/**"
       - "test/network/**"
       - "test/nlp/**"
@@ -181,6 +184,31 @@ jobs:
       - name: Validate uses quality
         if: steps.preflight.outputs.needs_sync == 'true'
         run: npm run uses:quality
+
+      - name: Enforce dataset ownership on generated paths
+        if: steps.preflight.outputs.needs_sync == 'true'
+        run: |
+          # Fail closed on undeclared generated datasets (ownership class + writer).
+          node scripts/observation/check-ownership.mjs \
+            _data/network.json \
+            _data/content.json \
+            _data/topics.json \
+            _data/site_signals.json \
+            _data/data_manifest.json \
+            _data/generation_manifest.json \
+            _data/connections.json \
+            _data/blogrolls.json \
+            _data/activity.json \
+            _data/showcase.json \
+            _data/happening.json
+
+      - name: Write observation generation provenance manifest
+        if: steps.preflight.outputs.needs_sync == 'true'
+        env:
+          OBSERVATION_RUN_ID: ${{ github.run_id }}-${{ github.run_attempt }}
+          BASE_GIT_SHA: ${{ steps.base.outputs.sha }}
+          STARTED_AT: ${{ github.event.head_commit.timestamp || github.event.repository.updated_at }}
+        run: node scripts/observation/write-generation-manifest.mjs
 
       - name: Validate generated JSON
         if: steps.preflight.outputs.needs_sync == 'true'
@@ -388,7 +416,9 @@ jobs:
             exit 1
           fi
 
-          git add -- \
+          # Ignored locally so a developer crawl is not added with git add.
+          # Force-add the copies this job just wrote.
+          git add -f -- \
             _data/network.json \
             _data/blogrolls.json \
             _data/connections.json \
@@ -396,6 +426,7 @@ jobs:
             _data/site_signals.json \
             _data/content.json \
             _data/data_manifest.json \
+            _data/generation_manifest.json \
             _data/activity.json \
             _data/explore.json \
             _data/topic_views.json \
@@ -407,10 +438,17 @@ jobs:
             topics \
             assets/network/joshternet.opml \
             assets/network/sites \
-            assets/activity/posters
+            assets/activity/posters \
+            assets/activity/atom.xml \
+            _data/made.json \
+            _data/past_events.json \
+            data/classification/quality-baseline.json
+          if [ -f assets/events/joshternet.ics ]; then
+            git add -f -- assets/events/joshternet.ics
+          fi
 
           if [ "${JOSHTERNET_USES_PUBLISH}" = "1" ] || [ "${JOSHTERNET_USES_PUBLISH}" = "true" ]; then
-            git add -- \
+            git add -f -- \
               data/uses \
               _data/uses_summary.json \
               assets/data/uses || true

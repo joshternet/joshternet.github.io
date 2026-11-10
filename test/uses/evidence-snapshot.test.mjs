@@ -71,7 +71,7 @@ test("freezeEvidenceSnapshot is stable when only the observation time changes", 
   const stored = JSON.parse(
     await readFile(
       new URL(
-        "../../data/classification/evidence-snapshot.json",
+        "../../test/fixtures/uses/evidence-snapshot.json",
         import.meta.url,
       ),
       "utf8",

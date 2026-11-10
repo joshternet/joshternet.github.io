@@ -17,14 +17,14 @@ script: /assets/js/seeking.js
 ---
 
 {% assign seeking = site.data.seeking %}
-{% assign seeking_sites = seeking.sites | default: empty %}
-{% assign seeking_categories = seeking.categories | default: empty %}
-{% assign seeking_status = seeking.status | default: 'empty' %}
+{% assign seeking_sites = seeking.k6i | default: empty %}
+{% assign seeking_categories = seeking.km | default: empty %}
+{% assign seeking_status = seeking.k71 | default: 'empty' %}
 {% if seeking == nil %}
   {% assign seeking_status = 'empty' %}
 {% endif %}
-{% assign request_count = seeking.request_count | default: 0 %}
-{% assign website_count = seeking.website_count | default: 0 %}
+{% assign request_count = seeking.k5p | default: 0 %}
+{% assign website_count = seeking.k7z | default: 0 %}
 
 # What people are looking for
 
@@ -101,20 +101,20 @@ request to its source to see whether you can help.
 >
   <div class="seeking-site__header">
     <h3 id="seeking-site-{{ forloop.index }}" class="seeking-site__title">
-      {{ site_group.site_title | default: site_group.domain | escape }}
+      {{ site_group.k6h | default: site_group.k1v | escape }}
     </h3>
-    {% if site_group.domain and site_group.domain != '' %}
-      <p class="seeking-site__domain">{{ site_group.domain | escape }}</p>
+    {% if site_group.k1v and site_group.k1v != '' %}
+      <p class="seeking-site__domain">{{ site_group.k1v | escape }}</p>
     {% endif %}
   </div>
   <ol class="seeking-list">
-    {% for request in site_group.requests %}
+    {% for request in site_group.k5s %}
       <li class="seeking-list__item" data-seeking-item>
         {% include seeking-card.html
           request=request
-          site_title=site_group.site_title
-          site_domain=site_group.domain
-          language=site_group.language
+          site_title=site_group.k6h
+          site_domain=site_group.k1v
+          language=site_group.k3i
         %}
       </li>
     {% endfor %}

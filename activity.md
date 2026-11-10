@@ -15,20 +15,11 @@ permalink: /activity/
 joshternet_analysis: derived
 ---
 
-{% assign primary = site.data.activity.primary | default: empty %}
+{% assign primary = site.data.activity.k54 | default: empty %}
 
 # What's New
 
 There's always something interesting happening in somebody's corner of the internet. People are writing, building things, experimenting with ideas, and sharing whatever has caught their attention lately. Here's a look at a selection of recent writing and creative work from around the Joshternet.
-
-<p class="activity-subscribe">
-  Want to keep up without coming back here every day?
-  <a href="{{ '/assets/activity/atom.xml' | relative_url }}">Subscribe to What's New</a>
-  in your favorite feed reader, or grab the
-  <a href="{{ '/assets/network/joshternet.opml' | relative_url }}">OPML blogroll</a>
-  (a list of feeds you can import) to follow participating publishers directly.
-  Their websites stay theirs, and you get the updates in a place you choose.
-</p>
 
 {% if primary.size > 0 %}
 <ol class="activity-list h-feed">
@@ -54,3 +45,12 @@ There's always something interesting happening in somebody's corner of the inter
   </p>
 </div>
 {% endif %}
+
+<p class="activity-close">
+  Want to keep up without coming back here every day?
+  <a href="{{ '/assets/activity/atom.xml' | relative_url }}">Subscribe to What's New</a>
+  in your favorite feed reader, or grab the
+  <a href="{{ '/assets/network/joshternet.opml' | relative_url }}">OPML blogroll</a>
+  (a list of feeds you can import) to follow participating publishers directly.
+  Their websites stay theirs, and you get the updates in a place you choose.
+</p>

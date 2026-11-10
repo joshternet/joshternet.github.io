@@ -9,6 +9,8 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
+import { trackedCrawlOutputs } from "../../scripts/keep-crawl-local.mjs";
+
 const root = fileURLToPath(new URL("../../", import.meta.url));
 
 /**
@@ -20,11 +22,11 @@ async function read(relativePath) {
   return readFile(path.join(root, relativePath), "utf8");
 }
 
-test("network-sync keeps hourly and registry triggers plus sync steps", async () => {
+test("network-sync keeps six-hour and registry triggers plus sync steps", async () => {
   const sync = await read(".github/workflows/network-sync.yml");
 
   assert.match(sync, /schedule:/);
-  assert.match(sync, /cron:\s*"17 \* \* \* \*"/);
+  assert.match(sync, /cron:\s*"17 \*\/6 \* \* \*"/);
   assert.match(sync, /repository_dispatch:/);
   assert.match(sync, /joshternet-registry-updated/);
   assert.match(sync, /workflow_dispatch:/);
@@ -43,6 +45,7 @@ test("network-sync keeps hourly and registry triggers plus sync steps", async ()
   assert.match(sync, /GITHUB_TOKEN:\s*\$\{\{\s*github\.token\s*\}\}/);
   assert.match(sync, /BASE_SHA|base\.outputs\.sha|Capture base SHA/);
   assert.match(sync, /JOSHTERNET_USES_PUBLISH/);
+  assert.doesNotMatch(sync, /data\/dev-crawl-cache/);
 });
 
 test("network-sync forbids Actions artifact upload/download for generated data", async () => {
@@ -95,6 +98,10 @@ test("network-sync publish set lists CI-owned generated paths", async () => {
     "assets/network/joshternet.opml",
     "assets/network/sites",
     "assets/activity/posters",
+    "assets/activity/atom.xml",
+    "_data/made.json",
+    "_data/past_events.json",
+    "data/classification/quality-baseline.json",
   ]) {
     assert.match(
       sync,
@@ -111,10 +118,66 @@ test("network-sync publish set lists CI-owned generated paths", async () => {
     /^\s+_data\/seeking(?:\.json)?\s*$/m,
     "network-sync must not stage Seeking request bodies",
   );
+  assert.doesNotMatch(sync, /channel_publish\.json/);
+  assert.doesNotMatch(sync, /homepage_connections\.json/);
+  assert.doesNotMatch(sync, /run-metrics\.json/);
+  assert.doesNotMatch(
+    sync,
+    /data\/crawl-sites/,
+    "network-sync must not stage per-site crawl files",
+  );
+  assert.doesNotMatch(
+    sync,
+    /data\/dev-crawl-cache/,
+    "network-sync must not stage a local personal-site crawl cache",
+  );
+  assert.match(
+    sync,
+    /JOSHTERNET_USES_PUBLISH[\s\S]*git add -f --[\s\S]*data\/uses/,
+    "Uses history force-add stays behind JOSHTERNET_USES_PUBLISH",
+  );
+  assert.match(sync, /git add -f --/);
+  assert.match(
+    sync,
+    /git add -f --[\s\S]*_data\/network\.json/,
+    "network-sync must force-add the gitignored crawl publish set",
+  );
   assert.match(
     sync,
     /Seeking request bodies are current-only/,
     "network-sync must document the Seeking non-commit retention boundary",
+  );
+});
+
+test("crawl publish set is gitignored while catalog and topic hub stay tracked", async () => {
+  const gitignore = await read(".gitignore");
+
+  for (const relativePath of [
+    "_data/network.json",
+    "_data/uses_summary.json",
+    "_data/past_events.json",
+    "_data/generation_manifest.json",
+    "assets/activity/posters/",
+    "assets/network/sites/",
+    "assets/data/uses/",
+    "data/uses/**",
+    "topics/*",
+    "coverage/",
+    "*.lcov",
+  ]) {
+    assert.match(
+      gitignore,
+      new RegExp(relativePath.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+      `${relativePath} must be gitignored for local crawls`,
+    );
+  }
+
+  assert.match(gitignore, /!topics\/index\.md/);
+  assert.match(gitignore, /!data\/uses\/catalog\//);
+  assert.equal(trackedCrawlOutputs().includes("topics/index.md"), false);
+  assert.equal(
+    trackedCrawlOutputs().some((file) => file.startsWith("data/uses/catalog/")),
+    false,
   );
 });
 
@@ -154,4 +217,20 @@ test("seed-nominations Worker workflow matches the other public Workers", async 
   assert.match(workflow, /npm ci/);
   assert.match(workflow, /npm test/);
   assert.match(workflow, /npm run check/);
+});
+
+test("github-stars workflow refreshes count on a six-hour schedule", async () => {
+  const workflow = await read(".github/workflows/github-stars.yml");
+
+  assert.match(workflow, /workflow_dispatch:/);
+  assert.match(workflow, /cron:\s*"23 \*\/6 \* \* \*"/);
+  assert.match(workflow, /node scripts\/github-stars\/update\.mjs/);
+  assert.match(workflow, /GITHUB_TOKEN:\s*\$\{\{\s*github\.token\s*\}\}/);
+  assert.match(workflow, /git diff --cached --quiet/);
+  assert.match(workflow, /Update GitHub star count/);
+  assert.match(workflow, /_data\/github\.json/);
+  assert.match(workflow, /pages\/builds/);
+  assert.match(workflow, /BASE_SHA/);
+  assert.match(workflow, /github-actions\[bot\]/);
+  assert.doesNotMatch(workflow, /actions\/upload-artifact/);
 });

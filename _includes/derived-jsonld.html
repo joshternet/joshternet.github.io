@@ -21,19 +21,19 @@
   {% unless jsonld_is_topic_stub %}
     {% if page.url == '/network/' %}
       {% for network_site in site.data.network limit: jsonld_itemlist_cap %}
-        {% assign jsonld_itemlist_urls = jsonld_itemlist_urls | push: network_site.origin %}
+        {% assign jsonld_itemlist_urls = jsonld_itemlist_urls | push: network_site.k4b %}
       {% endfor %}
       {% assign jsonld_has_itemlist = true %}
     {% elsif page.url == '/activity/' %}
-      {% assign jsonld_activity_items = site.data.activity.primary | default: empty %}
+      {% assign jsonld_activity_items = site.data.activity.k54 | default: empty %}
       {% for item in jsonld_activity_items limit: jsonld_itemlist_cap %}
-        {% assign jsonld_itemlist_urls = jsonld_itemlist_urls | push: item.url %}
+        {% assign jsonld_itemlist_urls = jsonld_itemlist_urls | push: item.k7o %}
       {% endfor %}
       {% assign jsonld_has_itemlist = true %}
     {% elsif page.url == '/topics/' %}
-      {% assign jsonld_neighborhoods = site.data.topic_views.neighborhoods | default: empty %}
+      {% assign jsonld_neighborhoods = site.data.topic_views.k44 | default: empty %}
       {% for topic in jsonld_neighborhoods limit: jsonld_itemlist_cap %}
-        {% capture jsonld_topic_url %}{{ '/topics/' | append: topic.slug | append: '/' | absolute_url }}{% endcapture %}
+        {% capture jsonld_topic_url %}{{ '/topics/' | append: topic.k6o | append: '/' | absolute_url }}{% endcapture %}
         {% assign jsonld_itemlist_urls = jsonld_itemlist_urls | push: jsonld_topic_url %}
       {% endfor %}
       {% assign jsonld_has_itemlist = true %}

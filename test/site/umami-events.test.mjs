@@ -165,6 +165,106 @@ test("umami-events skips dedicated join CTA link tracking via data attribute", a
   );
 
   assert.match(source, /data-joshternet-skip-link-track/);
+  assert.match(source, /data-joshternet-track/);
+  assert.match(source, /maybeTrackDedicatedAnchor/);
+});
+
+test("dedicated data-joshternet-track fires once and skips outbound", () => {
+  const calls = [];
+  /** @type {Function[]} */
+  const clickHandlers = [];
+
+  const probeContext = {
+    URL,
+    setInterval: globalThis.setInterval.bind(globalThis),
+    clearInterval: globalThis.clearInterval.bind(globalThis),
+    setTimeout: globalThis.setTimeout.bind(globalThis),
+    clearTimeout: globalThis.clearTimeout.bind(globalThis),
+    location: {
+      pathname: "/about/",
+      origin: "https://joshternet.org",
+    },
+    document: {
+      readyState: "complete",
+      referrer: "",
+      getElementById() {
+        return null;
+      },
+      /**
+       * @param {string} type
+       * @param {Function} handler
+       * @returns {void}
+       */
+      addEventListener(type, handler) {
+        if (type === "click") {
+          clickHandlers.push(handler);
+        }
+      },
+    },
+    umami: {
+      /**
+       * @param {string} name
+       * @param {Record<string, unknown>} [data]
+       * @returns {void}
+       */
+      track(name, data) {
+        calls.push({ name, data });
+      },
+    },
+  };
+
+  runInNewContext(source, probeContext);
+  assert.equal(clickHandlers.length, 1);
+
+  const attrs = {
+    href: "https://github.com/joshternet/joshternet.github.io",
+    "data-joshternet-track": "github_star_cta_clicked",
+    "data-joshternet-track-location": "header",
+    "data-joshternet-skip-link-track": "",
+  };
+
+  const anchor = {
+    /**
+     * @param {string} name
+     * @returns {boolean}
+     */
+    hasAttribute(name) {
+      return Object.prototype.hasOwnProperty.call(attrs, name);
+    },
+    /**
+     * @param {string} name
+     * @returns {string | null}
+     */
+    getAttribute(name) {
+      return Object.prototype.hasOwnProperty.call(attrs, name)
+        ? attrs[name]
+        : null;
+    },
+  };
+
+  clickHandlers[0]({
+    button: 0,
+    target: {
+      /**
+       * @param {string} selector
+       * @returns {typeof anchor | null}
+       */
+      closest(selector) {
+        return selector === "a[href]" ? anchor : null;
+      },
+    },
+  });
+
+  assertJsonEqual(calls, [
+    {
+      name: "github_star_cta_clicked",
+      data: {
+        location: "header",
+        repository: "joshternet/joshternet.github.io",
+        page: "/about/",
+      },
+    },
+  ]);
 });
 
 test("inbound-arrival classifies member, other, and skips direct or same-origin", () => {

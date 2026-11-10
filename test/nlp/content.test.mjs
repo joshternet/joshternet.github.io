@@ -35,11 +35,17 @@ import {
   isBookWorkUrl,
   isUsableCardImageSize,
   joinContentWithPageSignals,
+  applyPersonalJournalTyping,
+  contentTypeForPersonalJournal,
+  entryTitleFromHtml,
   mergeContentItems,
+  mf2NameFromHtml,
   normalizeContentItemForPublish,
   plainTextSummary,
+  shouldPreferDraftTitle,
   shouldPreferShareDescription,
   summaryNeedsPageBackfill,
+  titleLooksLikeBodyStandIn,
   publishedAtFromAmazonDateText,
   publishedAtFromAmazonHtml,
   publishedAtFromBookByline,
@@ -931,6 +937,79 @@ test("mergeContentItems: results are sorted by url then title", () => {
 });
 
 // ─── joinContentWithPageSignals ───────────────────────────────────────────────
+
+test("joinContentWithPageSignals: listing extracts keep their own role and topics", () => {
+  const joined = joinContentWithPageSignals(
+    [
+      {
+        identity: "presentation:https://a.example:linter",
+        url: "https://a.example/speaking/",
+        content_type: "presentation",
+        page_role: "presentation",
+        language: null,
+        title: "How to Learn to Love the Linter",
+        summary: "Boston Code Camp 40",
+        declared_topics: [
+          {
+            slug: "static-analysis",
+            label: "static analysis",
+            source: "item:declared",
+            community_eligible: true,
+          },
+        ],
+        source: {
+          kind: "speaking-archive",
+          page: "https://a.example/speaking/",
+        },
+      },
+      {
+        url: "https://a.example/speaking/",
+        content_type: "event",
+        title: "Untyped source",
+        source: "speaking-archive",
+      },
+    ],
+    [
+      {
+        pages: [
+          {
+            url: "https://a.example/speaking/",
+            lang: "en",
+            page_role: "speaking-archive",
+            poster_image: "https://cdn.example/bio.jpg",
+            share_description:
+              "Maintainer biography that is not about one talk.",
+          },
+        ],
+        declared_topics: [
+          {
+            slug: "typescript",
+            label: "TypeScript",
+            evidence: [
+              {
+                community_eligible: true,
+                class: "declared",
+                page: "https://a.example/speaking/",
+                raw_value: "TypeScript",
+                source: "meta:keywords",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  );
+
+  assert.equal(joined[0].page_role, "presentation");
+  assert.equal(joined[0].language, "en");
+  assert.equal(joined[0].summary, "Boston Code Camp 40");
+  assert.equal(joined[0].image, undefined);
+  assert.deepEqual(
+    joined[0].declared_topics.map((topic) => topic.slug),
+    ["static-analysis"],
+  );
+  assert.equal(joined[1].page_role, "speaking-archive");
+});
 
 test("joinContentWithPageSignals: joins language and page_role", () => {
   const joined = joinContentWithPageSignals(
@@ -2771,14 +2850,8 @@ test("joinContentWithPageSignals never restores a null summary", () => {
 });
 
 test("merged empty summaries satisfy content.schema.json", async () => {
-  const schema = JSON.parse(
-    await readFile(
-      fileURLToPath(
-        new URL("../../schemas/content.schema.json", import.meta.url),
-      ),
-      "utf8",
-    ),
-  );
+  const { contentSchema } = await import("../../scripts/nlp/crawl-shape.mjs");
+  const schema = contentSchema;
   const xml = `<rss><channel>
     <item><title>A</title><link>https://a.example/a</link></item>
     <item><title>B</title><link>https://a.example/b</link></item>
@@ -3139,6 +3212,30 @@ test("enrichContentItemPosters fills dates from source.kind comics hub", async (
   assert.equal(items[0].published_at, "2025-02-01T00:00:00.000Z");
   assert.equal(items[1].image, "https://artlung.example/h.png");
   assert.equal(items[1].published_at, "2025-02-01T00:00:00.000Z");
+});
+
+test("enrichContentItemPosters comic type without hub source still dates", async () => {
+  const items = [
+    {
+      url: "https://artlung.example/comics/solo-strip/",
+      content_type: "comic",
+      title: "Solo strip",
+      summary: "ok",
+      image: "",
+    },
+  ];
+  await enrichContentItemPosters(items, {
+    robotsGate: ALLOW_ALL_ROBOTS,
+    fetchText: async (url) => ({
+      url,
+      contentType: "text/html",
+      body: `<html><head>
+        <meta property="og:image" content="https://artlung.example/s.png">
+        <meta property="article:published_time" content="2025-04-01T00:00:00.000Z">
+      </head></html>`,
+    }),
+  });
+  assert.equal(items[0].published_at, "2025-04-01T00:00:00.000Z");
 });
 
 test("enrichContentItemPosters comic with no page date leaves published_at empty", async () => {
@@ -3882,6 +3979,334 @@ test("contentItemsFromHEntryList: empty u-url href skips the entry", () => {
   assert.equal(notes.length, 1);
   assert.equal(notes[0].url, "https://a.example/notes/ok/");
   assert.equal(notes[0].published_at, null);
+});
+
+test("contentItemsFromHEntryList: Artlung-shaped p-name on anchor keeps title and body summary", () => {
+  const items = contentItemsFromHEntryList(
+    `<div class="h-entry category-general tag-swim2026">
+      <h1 class="title post-header">
+        <a href="https://joshua.example/blog/2026/11/03/and-shredding/" class="u-url p-name post-header-inner">
+          <span class="header-text">and shredding…</span>
+        </a>
+      </h1>
+      <div class="inner-content e-content post-body">
+        <p>I went relatively early this morning.</p>
+        <p>I didn't catch much in the way of waves.</p>
+        <p>But I got thrown around a good deal.</p>
+      </div>
+      <a href="https://joshua.example/blog/tag/swim2026/" rel="tag" class="p-category">swim2026</a>
+      <time class="dt-published" datetime="2026-11-03T16:15:36"></time>
+    </div>`,
+    {
+      pageUrl: "https://joshua.example/blog/2026/11/03/and-shredding/",
+      siteOrigin: "https://joshua.example",
+      observedAt: "2026-11-07T00:00:00.000Z",
+    },
+  );
+
+  assert.equal(items.length, 1);
+  assert.equal(items[0].title, "and shredding…");
+  assert.match(items[0].summary, /relatively early this morning/i);
+  assert.equal(items[0].content_type, "note");
+  assert.equal(items[0].page_role, "note");
+  assert.equal(
+    items[0].declared_topics.some((topic) => topic.slug === "swim2026"),
+    true,
+  );
+});
+
+test("titleLooksLikeBodyStandIn and shouldPreferDraftTitle recover feed headings", () => {
+  assert.equal(
+    titleLooksLikeBodyStandIn(
+      "I went relatively early this morning.",
+      "I went relatively early this morning. I didn't catch much.",
+    ),
+    true,
+  );
+  assert.equal(
+    titleLooksLikeBodyStandIn("and shredding…", "I went relatively early."),
+    false,
+  );
+  assert.equal(
+    titleLooksLikeBodyStandIn(`${"word ".repeat(40).trim()}.`, ""),
+    true,
+  );
+  assert.equal(titleLooksLikeBodyStandIn("", "body text"), true);
+  assert.equal(titleLooksLikeBodyStandIn(null, ""), true);
+  assert.equal(titleLooksLikeBodyStandIn("Hello", 12), false);
+  assert.equal(titleLooksLikeBodyStandIn("Hello", null), false);
+  assert.equal(
+    titleLooksLikeBodyStandIn("Waves were soft this morning today.", ""),
+    true,
+  );
+  assert.equal(
+    contentTypeForPersonalJournal("", [{ slug: "bodysurfing" }]),
+    "note",
+  );
+  assert.equal(contentTypeForPersonalJournal("article", ["surfing"]), "note");
+  assert.equal(contentTypeForPersonalJournal("video", []), "video");
+  assert.equal(
+    shouldPreferDraftTitle(
+      "I went relatively early this morning.",
+      "",
+      "and shredding…",
+      "I went relatively early this morning. I didn't catch much.",
+    ),
+    true,
+  );
+  assert.equal(
+    shouldPreferDraftTitle(
+      "and shredding…",
+      "I went relatively early.",
+      "I went relatively early this morning.",
+      "",
+    ),
+    false,
+  );
+  assert.equal(
+    shouldPreferDraftTitle(
+      "I went relatively early this morning and stayed for a long set.",
+      "I went relatively early this morning and stayed for a long set. Soft waves.",
+      "I went early.",
+      "I went early. Soft waves after sunrise on a quiet beach day.",
+    ),
+    true,
+  );
+  assert.equal(mf2NameFromHtml(""), "");
+  assert.equal(mf2NameFromHtml(null), "");
+  assert.equal(
+    mf2NameFromHtml(`<span class="p-name" value="Named"></span>`),
+    "Named",
+  );
+  assert.equal(applyPersonalJournalTyping(null), null);
+  assert.equal(
+    contentTypeForPersonalJournal("article", [{ slug: "" }]),
+    "article",
+  );
+});
+
+test("contentItemsFromHEntryList covers unclosed and nested e-content", () => {
+  assert.deepEqual(
+    contentItemsFromHEntryList("", {
+      pageUrl: "https://joshua.example/",
+      siteOrigin: "https://joshua.example",
+      observedAt: "2026-11-03T00:00:00.000Z",
+    }),
+    [],
+  );
+  const unclosed = contentItemsFromHEntryList(
+    `<article class="h-entry"><a class="u-url" href="/notes/open/"><span class="p-name">Open</span></a>
+     <div class="e-content"><div>still open</div></article>`,
+    {
+      pageUrl: "https://joshua.example/notes/",
+      siteOrigin: "https://joshua.example",
+      observedAt: "2026-11-03T00:00:00.000Z",
+    },
+  );
+  assert.equal(unclosed.length, 1);
+  assert.match(String(unclosed[0].summary || ""), /still open/i);
+
+  const trailingInner = contentItemsFromHEntryList(
+    `<article class="h-entry"><a class="u-url" href="/notes/trail/"><span class="p-name">Trail</span></a>
+     <div class="e-content"><div>only inner</div></article>`,
+    {
+      pageUrl: "https://joshua.example/notes/",
+      siteOrigin: "https://joshua.example",
+      observedAt: "2026-11-03T00:00:00.000Z",
+    },
+  );
+  assert.equal(trailingInner.length, 1);
+  assert.match(String(trailingInner[0].summary || ""), /only inner/i);
+
+  const nested = contentItemsFromHEntryList(
+    `<article class="h-entry">
+       <a class="u-url" href="/notes/nest/"><span class="p-name">Nest</span></a>
+       <div class="e-content">outer <div>inner <div>deep</div></div> after</div>
+       <span class="p-category">surf</span>
+       <span class="p-category"></span>
+     </article>
+     <article class="h-entry"><div class="e-content">no url</div></article>`,
+    {
+      pageUrl: "https://joshua.example/notes/",
+      siteOrigin: "https://joshua.example",
+      observedAt: "2026-11-03T00:00:00.000Z",
+    },
+  );
+  assert.ok(nested.some((item) => item.title === "Nest"));
+  assert.ok(
+    nested.some((item) =>
+      (item.declared_topics || []).some((topic) => topic.slug === "surf"),
+    ),
+  );
+
+  const unclosedEntry = contentItemsFromHEntryList(
+    `<div class="h-entry"><a class="u-url" href="/notes/hang/"><span class="p-name">Hang</span></a>
+     <p class="e-content">body</p>`,
+    {
+      pageUrl: "https://joshua.example/notes/",
+      siteOrigin: "https://joshua.example",
+      observedAt: "2026-11-03T00:00:00.000Z",
+    },
+  );
+  assert.equal(unclosedEntry.length, 0);
+});
+
+test("mergeContentItems prefers a longer share summary over a body-as-title shell", () => {
+  const key = "url:https://joshua.example/blog/share-upgrade/";
+  const merged = mergeContentItems([
+    {
+      identity: key,
+      url: "https://joshua.example/blog/share-upgrade/",
+      title: "I went relatively early this morning.",
+      summary: "I went relatively early this morning.",
+      content_type: "article",
+      source_feeds: [{ type: "h-entry", url: key }],
+      declared_topics: [],
+    },
+    {
+      identity: key,
+      url: "https://joshua.example/blog/share-upgrade/",
+      title: "I went relatively early this morning.",
+      summary:
+        "I went relatively early this morning and the water was glass before the wind came up.",
+      content_type: "article",
+      source_feeds: [{ type: "rss", url: "https://joshua.example/feed/" }],
+      declared_topics: [],
+    },
+  ]);
+  assert.match(merged[0].summary, /water was glass/i);
+});
+
+test("RSS swim categories mark note page_role and join keeps note roles", () => {
+  const items = contentItemsFromRssOrAtom(
+    `<?xml version="1.0"?><rss version="2.0"><channel>
+      <item>
+        <title>Morning swim</title>
+        <link>https://joshua.example/blog/swim/</link>
+        <category>swim2026</category>
+        <description>In the water.</description>
+      </item>
+    </channel></rss>`,
+    {
+      feedUrl: "https://joshua.example/feed.xml",
+      siteOrigin: "https://joshua.example",
+      observedAt: "2026-11-03T00:00:00.000Z",
+    },
+  );
+  assert.equal(items[0].content_type, "note");
+  assert.equal(items[0].page_role, "note");
+
+  const joined = joinContentWithPageSignals(items, [
+    {
+      origin: "https://joshua.example",
+      pages: [
+        {
+          url: "https://joshua.example/blog/swim/",
+          page_role: "article",
+          lang: "en",
+        },
+      ],
+    },
+  ]);
+  assert.equal(joined[0].page_role, "note");
+});
+
+test("mergeContentItems: RSS heading replaces h-entry body-as-title stand-in", () => {
+  const key = "url:https://joshua.example/blog/2026/11/03/and-shredding/";
+  const merged = mergeContentItems([
+    {
+      identity: key,
+      url: "https://joshua.example/blog/2026/11/03/and-shredding/",
+      title: "I went relatively early this morning.",
+      summary: "",
+      content_type: "article",
+      source_feeds: [{ type: "h-entry", url: key }],
+      declared_topics: [],
+    },
+    {
+      identity: key,
+      url: "https://joshua.example/blog/2026/11/03/and-shredding/",
+      title: "and shredding…",
+      summary:
+        "I went relatively early this morning. I didn't catch much in the way of waves.",
+      content_type: "article",
+      source_feeds: [{ type: "rss", url: "https://joshua.example/feed/" }],
+      declared_topics: [
+        {
+          slug: "swim2026",
+          label: "swim2026",
+          source: "rss:category",
+          community_eligible: true,
+        },
+      ],
+    },
+  ]);
+
+  assert.equal(merged[0].title, "and shredding…");
+  assert.match(merged[0].summary, /relatively early/i);
+  assert.equal(merged[0].content_type, "note");
+  assert.equal(merged[0].page_role, "note");
+});
+
+test("contentTypeForPersonalJournal: swimYYYY and surfing topics become notes", () => {
+  assert.equal(
+    contentTypeForPersonalJournal("article", [{ slug: "swim2026" }]),
+    "note",
+  );
+  assert.equal(
+    contentTypeForPersonalJournal("article", [{ slug: "bodysurfing" }]),
+    "note",
+  );
+  assert.equal(
+    contentTypeForPersonalJournal("podcast_episode", [{ slug: "swim2026" }]),
+    "podcast_episode",
+  );
+  assert.equal(
+    contentTypeForPersonalJournal("article", [{ slug: "programming" }]),
+    "article",
+  );
+});
+
+test("entryTitleFromHtml prefers h-entry p-name on anchors", () => {
+  const title = entryTitleFromHtml(`<!doctype html><html><body>
+    <div class="h-entry">
+      <a class="u-url p-name" href="/post/"><span class="header-text">and shredding…</span></a>
+      <div class="e-content"><p>I went relatively early this morning.</p></div>
+    </div>
+  </body></html>`);
+  assert.equal(title, "and shredding…");
+});
+
+test("enrichContentItemPosters upgrades body-as-title and fills the journal summary", async () => {
+  const items = [
+    {
+      identity: "url:https://joshua.example/blog/swim/",
+      url: "https://joshua.example/blog/swim/",
+      title: "I went relatively early this morning.",
+      summary: "",
+      content_type: "article",
+      image: "https://joshua.example/poster.jpg",
+      declared_topics: [{ slug: "swim2026", label: "swim2026" }],
+    },
+  ];
+
+  await enrichContentItemPosters(items, {
+    robotsGate: ALLOW_ALL_ROBOTS,
+    fetchText: async () => ({
+      url: "https://joshua.example/blog/swim/",
+      body: `<div class="h-entry">
+        <a class="u-url p-name" href="/blog/swim/"><span>and shredding…</span></a>
+        <div class="e-content">
+          <p>I went relatively early this morning.</p>
+          <p>I didn't catch much in the way of waves.</p>
+        </div>
+      </div>`,
+    }),
+  });
+
+  assert.equal(items[0].title, "and shredding…");
+  assert.match(items[0].summary, /relatively early this morning/i);
+  assert.equal(items[0].content_type, "note");
 });
 
 test("contentItemsFromRssOrAtom: reads feed and entry language tags", () => {

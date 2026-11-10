@@ -123,6 +123,30 @@ test("model slots are published only for rules-unsorted claims", async () => {
   assert.equal(calls, 0);
   assert.equal(unnamed.unsorted[0].name, "Pocket Knife");
 
+  const cache = new Map();
+  const stats = { hits: 0, misses: 0, decisions: 0, abstained: 0 };
+  calls = 0;
+  const shared = input([{ tool_id: "observed:knife", name: "Pocket Knife" }], {
+    classify,
+    policy,
+    inferenceCache: cache,
+    inferenceStats: stats,
+    modelRevision: "rev-a",
+    templateVersion: 1,
+    hypothesisTemplate: "This text is about {}.",
+  });
+  await buildPeriodRollup(shared);
+  await buildPeriodRollup({
+    ...shared,
+    period: "2026-Q4",
+    granularity: "quarter",
+  });
+  assert.equal(calls, 1);
+  assert.equal(stats.hits, 1);
+  assert.equal(stats.misses, 1);
+  await buildPeriodRollup({ ...shared, modelRevision: "rev-b" });
+  assert.equal(calls, 2);
+
   const untouched = await buildPeriodRollup(
     input([{ tool_id: "observed:knife", name: "Pocket Knife" }]),
   );

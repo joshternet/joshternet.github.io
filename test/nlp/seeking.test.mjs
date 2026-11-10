@@ -9,6 +9,8 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
+import { decodeCrawlValue } from "../../scripts/nlp/site-record.mjs";
+
 import {
   SEEKING_COPY,
   SEEKING_FRESHNESS_DAYS,
@@ -106,6 +108,34 @@ test("short-circuit complete Seeking pages replace empty prior state", () => {
         title: "Harbor Notes",
         complete: true,
         pages: [{ url: "https://joshua.example/seeking/", html }],
+      },
+    ],
+    { observedAt: "2026-11-04T12:00:00.000Z" },
+  );
+
+  assert.equal(state.origins.length, 1);
+  assert.ok(state.origins[0].requests.length > 0);
+});
+
+test("precollected Seeking observations do not need page HTML", () => {
+  const html = fixture("minimal-wanted.html");
+  const collected = collectSeeking(
+    [{ url: "https://joshua.example/seeking/", html }],
+    {
+      siteOrigin: "https://joshua.example",
+      siteTitle: "Harbor Notes",
+      observedAt: "2026-11-04T12:00:00.000Z",
+    },
+  );
+  const state = reconcileSeekingState(
+    { origins: [] },
+    [
+      {
+        origin: "https://joshua.example",
+        title: "Harbor Notes",
+        complete: true,
+        pages: [],
+        collected,
       },
     ],
     { observedAt: "2026-11-04T12:00:00.000Z" },
@@ -465,7 +495,9 @@ test("buildSeekingDatasets always writes public excerpts (gitignored preview)", 
 
     assert.equal(result.publish, false);
     assert.equal(result.view.request_count, 1);
-    const publicDoc = JSON.parse(fs.readFileSync(result.publicPath, "utf8"));
+    const publicDoc = decodeCrawlValue(
+      JSON.parse(fs.readFileSync(result.publicPath, "utf8")),
+    );
     assert.equal(publicDoc.publish_enabled, false);
     assert.equal(publicDoc.request_count, 1);
     assert.match(
@@ -473,7 +505,9 @@ test("buildSeekingDatasets always writes public excerpts (gitignored preview)", 
       /thoughtful feedback/i,
     );
 
-    const stateDoc = JSON.parse(fs.readFileSync(result.statePath, "utf8"));
+    const stateDoc = decodeCrawlValue(
+      JSON.parse(fs.readFileSync(result.statePath, "utf8")),
+    );
     assert.equal(stateDoc.origins[0].requests.length, 1);
   } finally {
     fs.rmSync(tmp, { recursive: true, force: true });
@@ -503,7 +537,9 @@ test("buildSeekingDatasets publish on writes request excerpts to public view", a
       ],
     });
 
-    const publicDoc = JSON.parse(fs.readFileSync(result.publicPath, "utf8"));
+    const publicDoc = decodeCrawlValue(
+      JSON.parse(fs.readFileSync(result.publicPath, "utf8")),
+    );
     assert.equal(publicDoc.status, "ok");
     assert.equal(publicDoc.request_count, 1);
     assert.match(
@@ -773,8 +809,10 @@ test("writeSeekingViewFromState refreshes public excerpts from state", async () 
 
     const refreshed = await writeSeekingViewFromState(tmp);
     assert.equal(refreshed.request_count, 1);
-    const livePublic = JSON.parse(
-      fs.readFileSync(path.join(tmp, "_data", "seeking.json"), "utf8"),
+    const livePublic = decodeCrawlValue(
+      JSON.parse(
+        fs.readFileSync(path.join(tmp, "_data", "seeking.json"), "utf8"),
+      ),
     );
     assert.equal(livePublic.status, "ok");
     assert.match(livePublic.sites[0].requests[0].description, /feedback/i);

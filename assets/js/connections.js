@@ -676,7 +676,11 @@
     let parsed;
 
     try {
-      parsed = validatePayload(JSON.parse(bootstrap.textContent || "{}"));
+      const parsedJson = JSON.parse(bootstrap.textContent || "{}");
+      const decode = globalThis.joshternetDecodeCrawl;
+      parsed = validatePayload(
+        typeof decode === "function" ? decode(parsedJson) : parsedJson,
+      );
     } catch {
       parsed = {
         participants: [],

@@ -228,20 +228,13 @@ test("footer stamp and head meta expose build and data-update times", async () =
   const css = await read("assets/css/main.css");
 
   assert.match(layout, /site_built_at = site\.time \| date_to_xmlschema/);
-  assert.match(
-    layout,
-    /site_updated_at = site\.data\.data_manifest\.generated_at/,
-  );
+  assert.match(layout, /site_updated_at = site\.data\.data_manifest\.k2r/);
   assert.match(layout, /name="joshternet-built-at"/);
   assert.match(layout, /name="joshternet-updated-at"/);
   assert.match(layout, /site-footer__stamp/);
   assert.match(
     layout,
-    /Built\s*<time datetime="\{\{ site_built_at \| escape \}\}">/,
-  );
-  assert.match(
-    layout,
-    /Updated\s*<time datetime="\{\{ site_updated_at \| escape \}\}">/,
+    /Built\s*<time datetime="\{\{ site_built_at \| escape \}\}">[\s\S]*Updated\s*<time datetime="\{\{ site_updated_at \| escape \}\}">/,
   );
   assert.match(css, /\.site-footer__stamp\s*\{/);
 });

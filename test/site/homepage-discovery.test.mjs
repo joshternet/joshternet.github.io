@@ -8,6 +8,8 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
+import { CRAWL_KEYS } from "../../scripts/nlp/site-record.mjs";
+
 const root = fileURLToPath(new URL("../../", import.meta.url));
 
 /**
@@ -71,7 +73,7 @@ test("homepage meet and activity includes use generated datasets", async () => {
   assert.doesNotMatch(index, /^script:/m);
   assert.doesNotMatch(index, /"josh":\s*true/);
   assert.match(eligible, /site\.data\.network/);
-  assert.match(eligible, /first_participated_at/);
+  assert.match(eligible, new RegExp(CRAWL_KEYS.first_participated_at));
   assert.match(eligible, /home_arrival_cutoff_s/);
   assert.match(eligible, /slice: 0, 3/);
   assert.match(arrivals, /include home-welcome-eligible\.html/);
@@ -93,10 +95,10 @@ test("homepage meet and activity includes use generated datasets", async () => {
   assert.match(meet, /include home-welcome-eligible\.html/);
   assert.match(meet, /meet_is_welcome/);
   assert.match(meet, /site\.data\.network/);
-  assert.match(meet, /sort: ["']domain["']/);
+  assert.match(meet, new RegExp(`sort: ["']${CRAWL_KEYS.domain}["']`));
   assert.match(meet, /https:\/\/joshternet\.org/);
   assert.match(meet, /home_hub_origin/);
-  assert.match(meet, /network_site\.origin != home_hub_origin/);
+  assert.match(meet, /network_site\.k4b != home_hub_origin/);
   assert.match(meet, /home_network_count = site\.data\.network \| size/);
   assert.doesNotMatch(meet, /limit: 3/);
   assert.match(meet, /data-home-meet-grid/);
@@ -111,7 +113,7 @@ test("homepage meet and activity includes use generated datasets", async () => {
     css,
     /\.home-meet__grid:not\(\[data-home-meet-ready\]\)[\s\S]*nth-child\(n \+ 4\)/,
   );
-  assert.match(activity, /site\.data\.activity\.primary/);
+  assert.match(activity, /site\.data\.activity\.k54/);
   assert.match(activity, /limit: 3/);
   assert.match(activity, /activity-card\.html/);
   assert.match(activity, /heading_tag="h3"/);
@@ -168,12 +170,12 @@ test("homepage connections preview uses the same bootstrap datapoints as Connect
   assert.match(include, /home_ordered_sites\.size > 0/);
   assert.match(include, /include connections-tally\.html/);
   assert.match(include, /include connections-line-key\.html surface="home"/);
-  assert.match(include, /site\.data\.connections\.edges/);
-  assert.match(include, /site\.data\.connection_topics\.pairs/);
-  assert.match(include, /site\.data\.connection_topics\.sites/);
+  assert.match(include, /site\.data\.connections\.k1y/);
+  assert.match(include, /site\.data\.connection_topics\.k4q/);
+  assert.match(include, /site\.data\.connection_topics\.k6i/);
   assert.match(include, /"topic_groups"/);
-  assert.match(include, /network_site\.description/);
-  assert.match(include, /network_site\.screenshot/);
+  assert.match(include, /network_site\.k1n/);
+  assert.match(include, /network_site\.k63/);
   assert.doesNotMatch(include, /network_dev/);
   assert.match(connections, /"topic_groups": \{\{ overlap_sites/);
   assert.match(include, /\/connections\//);

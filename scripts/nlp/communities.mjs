@@ -84,6 +84,72 @@ export function resolveAlias(slug, aliases) {
 }
 
 /**
+ * Human label for an aliased slug when the publisher label was a campaign tag.
+ * @param {string} slug
+ * @returns {string}
+ */
+function labelForResolvedSlug(slug) {
+  const value = String(slug).trim();
+
+  return value
+    .split("-")
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
+/**
+ * Rewrites content declared_topics through equivalent aliases so cards and
+ * topic pages share the canonical neighborhood slug (e.g. swim2026 → bodysurfing).
+ * @param {Array<Record<string, unknown>>} items
+ * @param {Map<string, string>} aliases
+ * @returns {Array<Record<string, unknown>>}
+ */
+export function resolveContentTopicAliases(items, aliases) {
+  if (!Array.isArray(items) || !aliases || aliases.size === 0) {
+    return Array.isArray(items) ? items : [];
+  }
+
+  for (const item of items) {
+    if (!item || !Array.isArray(item.declared_topics)) {
+      continue;
+    }
+
+    /** @type {Array<Record<string, unknown>>} */
+    const next = [];
+    const seen = new Set();
+
+    for (const topic of item.declared_topics) {
+      if (!topic || typeof topic.slug !== "string" || !topic.slug) {
+        continue;
+      }
+
+      const resolved = resolveAlias(topic.slug, aliases);
+
+      if (!resolved || seen.has(resolved)) {
+        continue;
+      }
+
+      seen.add(resolved);
+      next.push({
+        ...topic,
+        slug: resolved,
+        label:
+          resolved === topic.slug &&
+          typeof topic.label === "string" &&
+          topic.label
+            ? topic.label
+            : labelForResolvedSlug(resolved),
+      });
+    }
+
+    item.declared_topics = next;
+  }
+
+  return items;
+}
+
+/**
  * True when origin has qualifying declared evidence for a topic slug.
  * @param {Record<string, unknown>} signal
  * @returns {boolean}

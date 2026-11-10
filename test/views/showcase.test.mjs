@@ -11,6 +11,7 @@ import {
   buildEventIcs,
   buildHappeningItems,
   buildMadeItems,
+  buildPastEventItems,
   buildShowcaseHomeItems,
   buildShowcaseItems,
   HOME_SHOWCASE_LIMIT,
@@ -28,7 +29,10 @@ import {
   isBareCreativeIndexUrl,
   isBlogShapedProjectTitle,
   isClientCaseStudyUrl,
+  isCreativeUtilityPath,
   isCreativeSeriesHubUrl,
+  isMusicIndexWorkItem,
+  photoAlbumDisplayTitle,
   isIndividualPhotoOrArtWorkUrl,
   isExactSlugProductTitle,
   isExternalShelfProject,
@@ -927,40 +931,45 @@ test("buildShowcaseItems highlights individual experiments and groups by kind", 
 });
 
 test("buildMadeItems orders kinds A-Z and items by published_at within kind", () => {
-  const items = buildMadeItems([
-    {
-      content_type: "video",
-      url: "https://a.example/watch?v=old",
-      site_origin: "https://a.example",
-      title: "Older video",
-      summary: "An older upload on the channel.",
-      image: "https://a.example/old.jpg",
-      published_at: "2026-10-01T00:00:00.000Z",
-    },
-    {
-      content_type: "video",
-      url: "https://a.example/watch?v=new",
-      site_origin: "https://a.example",
-      title: "Newer video",
-      summary: "A newer upload on the channel.",
-      image: "https://a.example/new.jpg",
-      published_at: "2026-11-01T00:00:00.000Z",
-    },
-    {
-      content_type: "game",
-      url: "https://b.example/games/pong/",
-      site_origin: "https://b.example",
-      title: "Pong",
-      summary: "A browser pong clone with short matches.",
-      published_at: "2026-09-01T00:00:00.000Z",
-    },
-  ]);
+  const now = new Date("2026-11-03T18:00:00.000Z");
+  const items = buildMadeItems(
+    [
+      {
+        content_type: "video",
+        url: "https://www.youtube.com/watch?v=old",
+        site_origin: "https://a.example",
+        title: "Older video",
+        summary: "An older upload on the channel.",
+        image: "https://a.example/old.jpg",
+        published_at: "2026-10-25T00:00:00.000Z",
+      },
+      {
+        content_type: "video",
+        url: "https://www.youtube.com/watch?v=new",
+        site_origin: "https://a.example",
+        title: "Newer video",
+        summary: "A newer upload on the channel.",
+        image: "https://a.example/new.jpg",
+        published_at: "2026-11-01T00:00:00.000Z",
+      },
+      {
+        content_type: "game",
+        url: "https://b.example/games/pong/",
+        site_origin: "https://b.example",
+        title: "Pong",
+        summary: "A browser pong clone with short matches.",
+        published_at: "2026-09-01T00:00:00.000Z",
+      },
+    ],
+    undefined,
+    now,
+  );
 
   assert.equal(items[0].kind, "games");
-  const videos = items.filter((item) => item.kind === "video");
-  assert.equal(videos.length, 2);
-  assert.equal(videos[0].url, "https://a.example/watch?v=new");
-  assert.equal(videos[1].url, "https://a.example/watch?v=old");
+  const podcasts = items.filter((item) => item.kind === "podcasts");
+  assert.equal(podcasts.length, 2);
+  assert.equal(podcasts[0].url, "https://www.youtube.com/watch?v=new");
+  assert.equal(podcasts[1].url, "https://www.youtube.com/watch?v=old");
 });
 
 test("buildShowcaseItems is fair per origin and returns Showcase kind labels", () => {
@@ -1046,6 +1055,8 @@ test("buildViewDocuments includes showcase, happening and search content_type", 
   assert.equal(views.showcase.kind_labels.photography, "Photography");
   assert.equal(typeof views.happening.schema_version, "number");
   assert.equal(views.happening.item_count, 0);
+  assert.equal(views.past_events.item_count, 0);
+  assert.equal(views.past_events.group_by_year, false);
 
   const multi = buildViewDocuments({
     network: [
@@ -1182,6 +1193,30 @@ test("compactContentItem carries optional creative and event fields", () => {
   assert.equal(result.attribution_role, "organized");
 });
 
+test("compactContentItem prefers recording URL on speaking archive indexes", () => {
+  const result = compactContentItem(
+    {
+      identity: "presentation:https://speaker.example:recording-only-talk",
+      url: "https://speaker.example/speaking/",
+      title: "Recording Only Talk",
+      summary: "Archive index permalink with a session video.",
+      site_origin: "https://speaker.example",
+      content_type: "presentation",
+      resources: [
+        { kind: "code", url: "https://github.com/example/talk" },
+        {
+          kind: "recording",
+          url: "https://www.youtube.com/watch?v=recordingOnly1",
+        },
+      ],
+    },
+    new Map(),
+    [],
+  );
+
+  assert.equal(result.url, "https://www.youtube.com/watch?v=recordingOnly1");
+});
+
 // ─── Coverage: buildHappeningItems edge cases (lines 1173-1222) ───────────────
 
 test("buildHappeningItems returns empty array for invalid now", () => {
@@ -1207,18 +1242,21 @@ test("buildHappeningItems skips mention and cancelled events", () => {
       [
         {
           content_type: "event",
+          title: "Mentioned meetup",
           url: "https://a.example/e1/",
           start: "2026-12-01T00:00:00.000Z",
           attribution_role: "mention",
         },
         {
           content_type: "event",
+          title: "Cancelled summit",
           url: "https://a.example/e2/",
           start: "2026-12-01T00:00:00.000Z",
           status: "cancelled",
         },
         {
           content_type: "event",
+          title: "Hosted gathering",
           url: "https://a.example/e3/",
           start: "2026-12-01T00:00:00.000Z",
           attribution_role: "hosted",
@@ -1255,6 +1293,7 @@ test("buildHappeningItems skips items with unparseable start date", () => {
     [
       {
         content_type: "event",
+        title: "Broken date gathering",
         start: "not-a-date",
         url: "https://a.example/e/",
       },
@@ -1339,7 +1378,14 @@ test("fairTopicArticles skips null and non-object entries", () => {
 test("buildHappeningItems skips items with non-string start", () => {
   const now = new Date("2026-01-01T00:00:00.000Z");
   const result = buildHappeningItems(
-    [{ content_type: "event", start: 42, url: "https://a.example/e/" }],
+    [
+      {
+        content_type: "event",
+        title: "Numeric start gathering",
+        start: 42,
+        url: "https://a.example/e/",
+      },
+    ],
     now,
   );
   assert.equal(result.length, 0);
@@ -1467,6 +1513,7 @@ test("buildHappeningItems accepts string now parameter (non-Date branch)", () =>
     [
       {
         content_type: "event",
+        title: "Future gathering",
         start: "2099-01-01",
         url: "https://a.example/e/",
       },
@@ -3516,7 +3563,7 @@ test("comics and education path kinds + past education Showcase", () => {
       title: "A product demo",
       content_type: "video",
     }),
-    "video",
+    "podcasts",
   );
   assert.equal(
     showcaseKindForItem({
@@ -3530,7 +3577,7 @@ test("comics and education path kinds + past education Showcase", () => {
       url: "https://www.youtube.com/watch?v=plain",
       content_type: "video",
     }),
-    "video",
+    "podcasts",
   );
   assert.equal(
     showcaseKindForItem({
@@ -3789,17 +3836,54 @@ test("elsewhere channels need a recent upload for Showcase and Activity", () => 
     channelPublishByUrl: {
       "https://www.youtube.com/@fresh": "2026-10-25T00:00:00.000Z",
       "https://www.youtube.com/@stale": "2026-09-01T00:00:00.000Z",
+      "https://vimeo.com/freshvimeo": "2026-10-25T00:00:00.000Z",
     },
+    network: [
+      {
+        origin: "https://a.example",
+        domain: "a.example",
+        title: "A Site",
+        elsewhere: [
+          {
+            network: "youtube",
+            label: "YouTube",
+            url: "https://www.youtube.com/@fresh",
+          },
+          {
+            network: "youtube",
+            label: "YouTube",
+            url: "https://www.youtube.com/@stale",
+          },
+          {
+            network: "vimeo",
+            label: "Vimeo",
+            url: "https://vimeo.com/undated",
+          },
+          {
+            network: "vimeo",
+            label: "Vimeo",
+            url: "https://vimeo.com/freshvimeo",
+          },
+        ],
+      },
+    ],
   });
   const showcaseUrls = dated.showcase.items.map((item) => item.url);
   const activityUrls = (dated.activity.primary || []).map((item) => item.url);
-  assert.deepEqual(showcaseUrls, ["https://www.youtube.com/@fresh"]);
+  // YouTube channel pages never enter Showcase; dated Vimeo channels still can.
+  assert.deepEqual(showcaseUrls, ["https://vimeo.com/freshvimeo"]);
   assert.equal(activityUrls.includes("https://www.youtube.com/@fresh"), false);
   assert.equal(activityUrls.includes("https://www.youtube.com/@stale"), false);
   assert.equal(showcaseUrls.includes("https://vimeo.com/undated"), false);
+  assert.equal(
+    dated.search_index.documents.some(
+      (doc) => doc.url === "https://www.youtube.com/@fresh",
+    ),
+    true,
+  );
   assert.ok(
     dated.showcase.home.some(
-      (item) => item.url === "https://www.youtube.com/@fresh",
+      (item) => item.url === "https://vimeo.com/freshvimeo",
     ),
   );
 });
@@ -3826,6 +3910,29 @@ test("channelItemsFromNetwork attaches published_at from publish map", () => {
     channelItemsFromNetwork(
       [
         {
+          origin: "https://joshua.example",
+          title: "Joshua",
+          elsewhere: [
+            null,
+            { network: "youtube", url: "" },
+            { network: "mastodon", url: "https://joshua.example/@me" },
+            { url: "https://www.youtube.com/@missing" },
+            { network: "youtube", url: "http://[" },
+            {
+              network: "youtube",
+              url: "https://www.youtube.com/watch?v=abc",
+            },
+          ],
+        },
+      ],
+      "2026-11-01T00:00:00.000Z",
+    ).length,
+    0,
+  );
+  assert.equal(
+    channelItemsFromNetwork(
+      [
+        {
           origin: "https://a.example",
           elsewhere: [
             { network: "youtube", url: "https://www.youtube.com/@asite" },
@@ -3836,6 +3943,91 @@ test("channelItemsFromNetwork attaches published_at from publish map", () => {
       /** @type {unknown} */ (["not-a-map"]),
     )[0].published_at,
     undefined,
+  );
+});
+
+test("buildMadeItems stops once the limit is filled", () => {
+  const made = buildMadeItems(
+    [
+      {
+        content_type: "project",
+        url: "https://joshua.example/art/one",
+        site_origin: "https://joshua.example",
+        title: "One painting",
+        summary: "A small painting.",
+        image: "https://joshua.example/one.jpg",
+        published_at: "2026-10-01T00:00:00.000Z",
+      },
+      {
+        content_type: "project",
+        url: "https://joshua.example/photos/two",
+        site_origin: "https://joshua.example",
+        title: "Two photos",
+        summary: "A small piece.",
+        image: "https://joshua.example/two.jpg",
+        published_at: "2026-10-02T00:00:00.000Z",
+      },
+    ],
+    1,
+    new Date("2026-11-05T18:00:00.000Z"),
+  );
+  assert.equal(made.length, 1);
+  const sameStart = "2026-12-02T15:00:00.000Z";
+  const now = new Date("2026-11-05T18:00:00.000Z");
+  const untitled = {
+    content_type: "event",
+    title: "No url",
+    start: sameStart,
+    attribution_role: "hosted",
+  };
+  const titled = {
+    content_type: "event",
+    url: "https://joshua.example/events/b",
+    title: "With url",
+    start: sameStart,
+    attribution_role: "hosted",
+  };
+  const pastNow = new Date("2026-12-03T18:00:00.000Z");
+  assert.equal(buildPastEventItems([untitled, titled], pastNow).length, 2);
+  assert.equal(buildPastEventItems([titled, untitled], pastNow).length, 2);
+  assert.match(
+    buildEventIcs(
+      [
+        {
+          content_type: "event",
+          url: "https://joshua.example/events/blank",
+          title: "Blank day",
+          start_precision: "date",
+          attribution_role: "hosted",
+        },
+        {
+          content_type: "event",
+          url: "https://joshua.example/events/day",
+          title: "Day",
+          start: "2026-12-01",
+          start_precision: "date",
+          attribution_role: "hosted",
+        },
+      ],
+      { now },
+    ),
+    /DTSTART;VALUE=DATE:20261201/,
+  );
+  assert.equal(
+    buildHappeningItems(
+      [
+        {
+          content_type: "event",
+          url: "https://joshua.example/events/soon",
+          title: "Soon",
+          start: "soon",
+          start_precision: "date",
+          attribution_role: "hosted",
+        },
+      ],
+      new Date("2026-11-05T18:00:00.000Z"),
+    ).length,
+    0,
   );
 });
 
@@ -3880,8 +4072,12 @@ test("channelItemsFromNetwork builds Showcase video cards", () => {
   assert.equal(items.length, 2);
   assert.equal(items[0].content_type, "video");
   assert.equal(items[0].source.kind, "elsewhere-channel");
+  assert.equal(items[0].source.network, "youtube");
   assert.equal(showcaseItemHasSubstance(items[0]), true);
-  assert.equal(isMadeContentItem(items[0]), true);
+  // YouTube channel pages are never Showcase cards.
+  assert.equal(isMadeContentItem(items[0]), false);
+  assert.equal(items[1].source.network, "vimeo");
+  assert.equal(isMadeContentItem(items[1]), true);
 });
 
 test("isClientCaseStudyUrl: query-style /work/?work= case studies", () => {
@@ -4027,6 +4223,51 @@ test("showcaseKindForItem maps /film/ galleries to photography over video type",
     showcaseKindForItem({
       content_type: "video",
       url: "https://a.example/videos/clip/",
+    }),
+    "podcasts",
+  );
+  assert.equal(
+    showcaseKindForItem({
+      content_type: "video",
+      url: "https://vimeo.com/12345",
+      title: "Member Vimeo cut",
+      source: { kind: "youtube-show-fallback" },
+    }),
+    "podcasts",
+  );
+  assert.equal(
+    showcaseKindForItem({
+      content_type: "video",
+      url: "https://vimeo.com/67890",
+      title: "Show feed cut",
+      source_kind: "youtube-show-feed",
+    }),
+    "podcasts",
+  );
+  assert.equal(
+    showcaseKindForItem({
+      content_type: "video",
+      url: "https://vimeo.com/channels/member",
+      title: "Plain channel cut",
+    }),
+    "video",
+  );
+  assert.equal(
+    showcaseKindForItem({
+      content_type: "video",
+      url: "https://vimeo.com/channels/nosourcekind",
+      title: "Object source without kind",
+      source: {},
+    }),
+    "video",
+  );
+  assert.equal(
+    showcaseKindForItem({
+      content_type: "video",
+      url: "https://vimeo.com/channels/string-source",
+      title: "Non-object source field",
+      source: "elsewhere-youtube-video",
+      source_kind: null,
     }),
     "video",
   );
@@ -4497,6 +4738,11 @@ test("youtubeWatchOriginsInWindow and shouldOmitYoutubeChannelCard branches", ()
           42,
           { content_type: "article", url: "https://a.example/p/" },
           {
+            url: "https://a.example/typeless/",
+            site_origin: "https://a.example",
+            published_at: "2026-11-02T12:00:00.000Z",
+          },
+          {
             content_type: "video",
             url: "https://videos.example/local/",
             site_origin: "https://videos.example",
@@ -4530,11 +4776,17 @@ test("youtubeWatchOriginsInWindow and shouldOmitYoutubeChannelCard branches", ()
             site_origin: "https://artlung.com",
             published_at: "2026-11-02T12:00:00.000Z",
           },
+          {
+            content_type: "podcast_episode",
+            url: "https://www.youtube.com/watch?v=csspod",
+            site_origin: "https://cssbattle.example",
+            published_at: "2026-11-02T12:00:00.000Z",
+          },
         ],
         now,
       ),
     ],
-    ["https://artlung.com"],
+    ["https://artlung.com", "https://cssbattle.example"],
   );
 
   const watchOrigins = new Set(["https://artlung.com"]);
@@ -4577,6 +4829,8 @@ test("youtubeWatchOriginsInWindow and shouldOmitYoutubeChannelCard branches", ()
     ),
     false,
   );
+  // YouTube channel pages are always omitted—even without a site_origin or
+  // matching watch origin.
   assert.equal(
     shouldOmitYoutubeChannelCard(
       {
@@ -4584,7 +4838,7 @@ test("youtubeWatchOriginsInWindow and shouldOmitYoutubeChannelCard branches", ()
       },
       watchOrigins,
     ),
-    false,
+    true,
   );
   assert.equal(
     shouldOmitYoutubeChannelCard(
@@ -4594,7 +4848,7 @@ test("youtubeWatchOriginsInWindow and shouldOmitYoutubeChannelCard branches", ()
       },
       watchOrigins,
     ),
-    false,
+    true,
   );
   assert.equal(
     shouldOmitYoutubeChannelCard(
@@ -4604,7 +4858,7 @@ test("youtubeWatchOriginsInWindow and shouldOmitYoutubeChannelCard branches", ()
       },
       /** @type {any} */ (null),
     ),
-    false,
+    true,
   );
   assert.equal(
     shouldOmitYoutubeChannelCard(
@@ -4614,7 +4868,7 @@ test("youtubeWatchOriginsInWindow and shouldOmitYoutubeChannelCard branches", ()
       },
       watchOrigins,
     ),
-    false,
+    true,
   );
   assert.equal(
     shouldOmitYoutubeChannelCard(
@@ -4917,6 +5171,139 @@ test("buildViewDocuments prefers YouTube watch rows over channel card", () => {
   );
 });
 
+test("Showcase merges podcast_episode watches and drops YouTube channel cards", () => {
+  const views = buildViewDocuments({
+    network: [
+      {
+        origin: "https://artlung.com",
+        title: "Joe Crawford",
+        domain: "artlung.com",
+        elsewhere: [
+          {
+            network: "youtube",
+            label: "YouTube",
+            url: "https://www.youtube.com/channel/UCcYgwQEo9G_pbwJbwd_8p7A",
+          },
+        ],
+      },
+      {
+        origin: "https://chrisminnick.com",
+        title: "Chris Minnick",
+        domain: "chrisminnick.com",
+        elsewhere: [
+          {
+            network: "youtube",
+            label: "YouTube",
+            url: "https://www.youtube.com/@chrisminnick",
+          },
+        ],
+      },
+    ],
+    content: {
+      items: [
+        {
+          content_type: "podcast_episode",
+          url: "https://www.youtube.com/watch?v=csspod",
+          site_origin: "https://artlung.com",
+          title: "CSSBattle for NOVEMBER 5 (2026)",
+          summary: "Daily CSS battle stream.",
+          image: "https://i.ytimg.com/vi/csspod/hqdefault.jpg",
+          published_at: "2026-11-03T12:00:00.000Z",
+          source: {
+            kind: "elsewhere-youtube-video",
+            channel: "https://www.youtube.com/channel/UCcYgwQEo9G_pbwJbwd_8p7A",
+          },
+        },
+        {
+          content_type: "video",
+          url: "https://www.youtube.com/watch?v=minnick1",
+          site_origin: "https://chrisminnick.com",
+          title: "JavaScript tip: closures",
+          summary: "A short teaching clip about closures.",
+          image: "https://i.ytimg.com/vi/minnick1/hqdefault.jpg",
+          published_at: "2026-11-02T12:00:00.000Z",
+          source: {
+            kind: "elsewhere-youtube-video",
+            channel: "https://www.youtube.com/@chrisminnick",
+          },
+        },
+        {
+          content_type: "video",
+          url: "https://joshua.example/videos/demo/",
+          site_origin: "https://joshua.example",
+          title: "First-party demo reel",
+          summary: "A short demo reel hosted on the member site.",
+          image: "https://joshua.example/videos/demo/poster.jpg",
+          published_at: "2026-11-01T12:00:00.000Z",
+        },
+      ],
+    },
+    topics: { communities: [] },
+    connections: {},
+    siteSignals: { origins: [] },
+    channelPublishByUrl: {
+      "https://www.youtube.com/channel/UCcYgwQEo9G_pbwJbwd_8p7A":
+        "2026-11-03T12:00:00.000Z",
+      "https://www.youtube.com/@chrisminnick": "2026-11-02T12:00:00.000Z",
+    },
+    generatedAt: "2026-11-03T18:00:00.000Z",
+  });
+  const podcastUrls = views.showcase.items
+    .filter((item) => item.kind === "podcasts")
+    .map((item) => item.url);
+  assert.ok(podcastUrls.includes("https://www.youtube.com/watch?v=csspod"));
+  assert.ok(podcastUrls.includes("https://www.youtube.com/watch?v=minnick1"));
+  assert.ok(podcastUrls.includes("https://joshua.example/videos/demo/"));
+  assert.equal(
+    views.showcase.items.some((item) => item.kind === "video"),
+    false,
+  );
+  assert.equal(
+    views.showcase.items.some(
+      (item) =>
+        item.source &&
+        item.source.kind === "elsewhere-channel" &&
+        item.source.network === "youtube",
+    ),
+    false,
+  );
+});
+
+test("Showcase omits YouTube channel cards even without watch rows", () => {
+  const views = buildViewDocuments({
+    network: [
+      {
+        origin: "https://artlung.com",
+        title: "Joe Crawford",
+        domain: "artlung.com",
+        elsewhere: [
+          {
+            network: "youtube",
+            label: "YouTube",
+            url: "https://www.youtube.com/channel/UCcYgwQEo9G_pbwJbwd_8p7A",
+          },
+        ],
+      },
+    ],
+    content: { items: [] },
+    topics: { communities: [] },
+    connections: {},
+    siteSignals: { origins: [] },
+    channelPublishByUrl: {
+      "https://www.youtube.com/channel/UCcYgwQEo9G_pbwJbwd_8p7A":
+        "2026-11-03T12:00:00.000Z",
+    },
+    generatedAt: "2026-11-03T18:00:00.000Z",
+  });
+  assert.equal(
+    views.showcase.items.some(
+      (item) =>
+        item.url === "https://www.youtube.com/channel/UCcYgwQEo9G_pbwJbwd_8p7A",
+    ),
+    false,
+  );
+});
+
 test("resolveActivityWindowDays: live 14, local/dev 30", () => {
   assert.equal(ACTIVITY_WINDOW_DAYS, 14);
   assert.equal(ACTIVITY_WINDOW_DAYS_LIVE, 14);
@@ -5156,5 +5543,488 @@ test("podcast episodes only Showcase inside the activity window", () => {
       { now },
     ),
     false,
+  );
+});
+
+test("isMadeContentItem rejects empty appearance titles", () => {
+  assert.equal(
+    isMadeContentItem({
+      content_type: "presentation",
+      title: "2 min read",
+      url: "https://member.example/speaking/",
+      site_origin: "https://member.example",
+      start: "2026-10-01",
+    }),
+    false,
+  );
+  assert.equal(
+    isMadeContentItem({
+      content_type: "event",
+      title: ", 2026",
+      url: "https://member.example/speaking/",
+      site_origin: "https://member.example",
+      start: "2026-10-01",
+      summary: "Front End Study Hall #061",
+    }),
+    false,
+  );
+});
+
+test("dedupeCrosspostedContentItems collapses url: hash-fragment twins", () => {
+  const kept = dedupeCrosspostedContentItems([
+    {
+      identity: "url:https://photos.example/film/ultramax#gallery",
+      content_type: "photograph",
+      title: "Shot on Kodak UltraMax",
+      url: "https://photos.example/film/ultramax",
+      site_origin: "https://photos.example",
+      image: "https://photos.example/u.jpg",
+    },
+    {
+      identity: "url:https://photos.example/film/ultramax",
+      content_type: "photograph",
+      title: "Kodak UltraMax — 35mm Film Photography",
+      url: "https://photos.example/film/ultramax",
+      site_origin: "https://photos.example",
+      image: "https://photos.example/u.jpg",
+    },
+    {
+      identity: "url:https://photos.example/broken#frag",
+      content_type: "photograph",
+      title: "Broken URL twin",
+      url: "not a url#frag",
+      site_origin: "https://photos.example",
+      image: "https://photos.example/b.jpg",
+    },
+    {
+      identity: "url:https://photos.example/empty",
+      content_type: "photograph",
+      title: "Empty URL identity",
+      url: "",
+      site_origin: "https://photos.example",
+      image: "https://photos.example/e.jpg",
+    },
+    {
+      identity:
+        "presentation:https://speaker.example:zero-frontend-crashes-in-production",
+      content_type: "presentation",
+      title: "Zero Frontend Crashes",
+      url: "https://speaker.example/speaking/",
+      site_origin: "https://speaker.example",
+    },
+    {
+      identity:
+        "presentation:https://speaker.example:adventures-in-type-safe-prisma",
+      content_type: "presentation",
+      title: "Adventures in Type Safe Prisma",
+      url: "https://speaker.example/speaking/",
+      site_origin: "https://speaker.example",
+    },
+  ]);
+
+  assert.equal(
+    kept.filter((item) => item.site_origin === "https://photos.example").length,
+    3,
+  );
+  assert.equal(
+    kept.some(
+      (item) =>
+        item.identity === "url:https://photos.example/film/ultramax#gallery",
+    ),
+    false,
+  );
+  assert.equal(
+    kept.filter((item) => item.content_type === "presentation").length,
+    2,
+  );
+});
+
+test("buildShowcaseItems prefers presentations over related education events", () => {
+  const clock = new Date("2026-11-05T18:00:00.000Z");
+  const presentation = {
+    identity: "presentation:https://member.example:front-end-study-hall-061",
+    content_type: "presentation",
+    title: "Front End Study Hall #061",
+    url: "https://speakerdeck.com/example/061",
+    site_origin: "https://member.example",
+    site_title: "Member",
+    domain: "member.example",
+    start: "2026-10-29",
+    observed_at: "2026-11-05T18:00:00.000Z",
+    tags: [],
+    neighborhoods: [],
+    image: "https://member.example/talk.png",
+    image_origin: "https://member.example",
+    language: "",
+    dir: "ltr",
+    summary: "A past Front End Study Hall gathering.",
+    published_at: "",
+  };
+  // Distinct title so cross-post title dedupe does not remove the event first.
+  const relatedEvent = {
+    identity:
+      "event:https://member.example:study-hall-gathering-061:2026-10-29",
+    content_type: "event",
+    title: "Study Hall gathering 061",
+    url: "https://member.example/study-hall/061/",
+    site_origin: "https://member.example",
+    site_title: "Member",
+    domain: "member.example",
+    start: "2026-10-29",
+    attribution_role: "presented",
+    related: [
+      null,
+      { relation: "presentation" },
+      {
+        id: "presentation:https://member.example:front-end-study-hall-061",
+        relation: "presentation",
+      },
+    ],
+    observed_at: "2026-11-05T18:00:00.000Z",
+    tags: [],
+    neighborhoods: [],
+    image: "https://member.example/event.png",
+    image_origin: "https://member.example",
+    language: "",
+    dir: "ltr",
+    summary: "Front End Study Hall gathering notes.",
+    published_at: "",
+  };
+  const uncoveredEducation = {
+    identity: "event:https://member.example:open-office-hours:2026-09-01",
+    content_type: "event",
+    title: "Open office hours",
+    url: "https://member.example/study-hall/office-hours/",
+    site_origin: "https://member.example",
+    site_title: "Member",
+    domain: "member.example",
+    start: "2026-09-01",
+    attribution_role: "presented",
+    related: undefined,
+    observed_at: "2026-11-05T18:00:00.000Z",
+    tags: [],
+    neighborhoods: [],
+    image: "https://member.example/hours.png",
+    image_origin: "https://member.example",
+    language: "",
+    dir: "ltr",
+    summary: "Past study-hall office hours without a slides card.",
+    published_at: "",
+  };
+
+  assert.equal(isMadeContentItem(relatedEvent, { now: clock }), true);
+  assert.equal(isMadeContentItem(uncoveredEducation, { now: clock }), true);
+
+  const items = buildShowcaseItems(
+    [
+      null,
+      // Empty identity still participates in the presentation-id scan.
+      {
+        content_type: "presentation",
+        identity: "",
+        title: "Identity-less talk",
+        url: "https://member.example/speaking/identity-less/",
+        site_origin: "https://member.example",
+      },
+      presentation,
+      relatedEvent,
+      uncoveredEducation,
+    ],
+    undefined,
+    clock,
+  );
+
+  assert.ok(
+    items.some(
+      (item) =>
+        item.content_type === "presentation" &&
+        item.title === "Front End Study Hall #061",
+    ),
+  );
+  assert.equal(
+    items.some((item) => item.title === "Study Hall gathering 061"),
+    false,
+  );
+  assert.ok(items.some((item) => item.title === "Open office hours"));
+
+  const withoutNow = buildShowcaseItems([presentation, relatedEvent]);
+  assert.equal(
+    withoutNow.some((item) => item.title === "Study Hall gathering 061"),
+    false,
+  );
+});
+
+test("Showcase category hygiene: utility, graphics hub, music index, year albums, talks", () => {
+  assert.equal(isCreativeUtilityPath("https://joshozuna.com/image-use"), true);
+  assert.equal(isCreativeUtilityPath("https://a.example/licensing/"), true);
+  assert.equal(isCreativeUtilityPath("https://joshozuna.com/map"), false);
+  assert.equal(isCreativeUtilityPath("https://a.example/"), false);
+  assert.equal(isCreativeUtilityPath("not a url"), false);
+  assert.equal(isCreativeUtilityPath(null), false);
+  assert.equal(isCreativeUtilityPath(""), false);
+  assert.equal(
+    isMadeContentItem({
+      content_type: "project",
+      url: "https://joshozuna.com/image-use",
+      title: "Image Use",
+      summary: "Guidelines for using images from film photography.",
+      image: "https://joshozuna.com/og-image.jpg",
+      site_origin: "https://joshozuna.com",
+      source: { kind: "creative-homepage" },
+    }),
+    false,
+  );
+
+  assert.equal(isBareCreativeIndexUrl("https://joshgr.com/graphics/"), true);
+  assert.equal(creativePathKind("https://joshgr.com/graphics/poster/"), "art");
+  assert.equal(
+    isMadeContentItem({
+      content_type: "project",
+      url: "https://joshgr.com/graphics/",
+      title: "Graphics",
+      summary: "General Purpose Watt Check",
+      site_origin: "https://joshgr.com",
+      source: { kind: "creative-homepage" },
+    }),
+    false,
+  );
+
+  assert.equal(
+    isMusicIndexWorkItem({
+      content_type: "music_recording",
+      url: "https://joshtronic.com/sounds/",
+    }),
+    true,
+  );
+  assert.equal(isMusicIndexWorkItem(null), false);
+  assert.equal(
+    isMusicIndexWorkItem({
+      content_type: "music_album",
+      url: "https://joshtronic.com/music/",
+    }),
+    true,
+  );
+  assert.equal(
+    isMusicIndexWorkItem({
+      content_type: "article",
+      url: "https://joshtronic.com/sounds/",
+    }),
+    false,
+  );
+  assert.equal(
+    isMusicIndexWorkItem({
+      content_type: "music_recording",
+      url: "https://joshtronic.com/sounds/extra/",
+    }),
+    false,
+  );
+  assert.equal(
+    isMusicIndexWorkItem({
+      content_type: "music_recording",
+      url: "not a url",
+    }),
+    false,
+  );
+  assert.equal(
+    isMusicIndexWorkItem({
+      content_type: "music_recording",
+      url: "",
+    }),
+    false,
+  );
+  assert.equal(
+    isMusicIndexWorkItem({
+      content_type: "music_recording",
+    }),
+    false,
+  );
+  assert.equal(isBareCreativeIndexUrl("https://joshtronic.com/sounds/"), true);
+  assert.equal(
+    isMadeContentItem({
+      content_type: "music_recording",
+      url: "https://joshtronic.com/sounds/",
+      title: "loud and bouncy",
+      summary:
+        "I make a lot of racket, but most of it never makes it off my hard drive.",
+      site_origin: "https://joshtronic.com",
+      published_at: "2026-08-02T00:00:00.000Z",
+    }),
+    true,
+  );
+  assert.equal(
+    isMadeContentItem({
+      content_type: "music_recording",
+      url: "https://www.youtube.com/watch?v=250zLvJqXcM",
+      title: "loud and bouncy",
+      image: "https://i.ytimg.com/vi/250zLvJqXcM/hqdefault.jpg",
+      site_origin: "https://joshtronic.com",
+      published_at: "2026-08-02T00:00:00.000Z",
+      source: { kind: "sounds-listen-link" },
+    }),
+    true,
+  );
+  assert.equal(
+    isMadeContentItem({
+      content_type: "music_recording",
+      url: "https://sororityhamster.com/",
+      title: "Sorority Hamster",
+      summary: "Fuck it, ship it as a musical aesthetic.",
+      image: "https://joshtronic.com/images/sounds/sorority-hamster.jpg",
+      site_origin: "https://joshtronic.com",
+      published_at: "2026-08-02T00:00:00.000Z",
+      source: { kind: "sounds-project-link" },
+    }),
+    true,
+  );
+  assert.equal(
+    showcaseItemHasSubstance({
+      content_type: "music_recording",
+      title: "loud",
+      source_kind: "sounds-listen-link",
+    }),
+    true,
+  );
+  assert.equal(
+    showcaseItemHasSubstance({
+      content_type: "music_recording",
+      title: "SH",
+      source_kind: "sounds-project-link",
+      image: "https://joshtronic.com/images/sounds/sorority-hamster.jpg",
+    }),
+    true,
+  );
+  assert.equal(
+    showcaseKindForItem({
+      content_type: "music_recording",
+      url: "https://www.youtube.com/watch?v=250zLvJqXcM",
+    }),
+    "music",
+  );
+
+  assert.equal(
+    photoAlbumDisplayTitle(
+      "2026",
+      "collection",
+      "https://a.example/photos/2026/",
+    ),
+    "2026 photos",
+  );
+  assert.equal(
+    photoAlbumDisplayTitle(
+      "2026",
+      "project",
+      "https://a.example/projects/2026/",
+    ),
+    "2026",
+  );
+  assert.equal(
+    photoAlbumDisplayTitle("2026", null, "https://a.example/blog/2026/"),
+    "2026",
+  );
+  assert.equal(
+    photoAlbumDisplayTitle("2026", undefined, "https://a.example/photos/2026/"),
+    "2026 photos",
+  );
+  assert.equal(
+    showcaseCardTitle({
+      title: "2025",
+      content_type: "collection",
+      url: "https://joshbeard.com/photos/2025/",
+    }),
+    "2025 photos",
+  );
+  const album = compactContentItem(
+    {
+      content_type: "collection",
+      url: "https://joshbeard.com/photos/2026/",
+      title: "2026",
+      summary: "An assortment of photos from 2026",
+      site_origin: "https://joshbeard.com",
+      image: "https://joshbeard.com/photos/2026/cover.jpg",
+      source: { kind: "photo-album-list" },
+    },
+    new Map([
+      [
+        "https://joshbeard.com",
+        { title: "Josh Beard", domain: "joshbeard.com" },
+      ],
+    ]),
+    new Set(),
+  );
+  assert.equal(album?.title, "2026 photos");
+
+  const whitespaceTitle = compactContentItem(
+    {
+      content_type: "collection",
+      url: "https://joshbeard.com/photos/2019/",
+      title: "   ",
+      site_origin: "https://joshbeard.com",
+      image: "https://joshbeard.com/photos/2019/cover.jpg",
+    },
+    new Map([
+      [
+        "https://joshbeard.com",
+        { title: "Josh Beard", domain: "joshbeard.com" },
+      ],
+    ]),
+    new Set(),
+  );
+  assert.equal(whitespaceTitle?.title, "   ");
+
+  const talkWithAction = compactContentItem(
+    {
+      content_type: "presentation",
+      url: "https://artlung.com/speaking",
+      title: "Front End Study Hall #058",
+      identity: "presentation:https://artlung.com:front-end-study-hall-058",
+      site_origin: "https://artlung.com",
+      action_url: "https://artlung.com/study-hall/058/",
+      source: { kind: "speaking-archive" },
+    },
+    new Map([
+      ["https://artlung.com", { title: "Joe Crawford", domain: "artlung.com" }],
+    ]),
+    new Set(),
+  );
+  assert.equal(talkWithAction?.url, "https://artlung.com/study-hall/058/");
+
+  const talkArchiveActionIgnored = compactContentItem(
+    {
+      content_type: "presentation",
+      url: "https://artlung.com/speaking",
+      title: "Front End Study Hall #059",
+      identity: "presentation:https://artlung.com:front-end-study-hall-059",
+      site_origin: "https://artlung.com",
+      action_url: "https://artlung.com/speaking",
+      source: { kind: "speaking-archive" },
+    },
+    new Map([
+      ["https://artlung.com", { title: "Joe Crawford", domain: "artlung.com" }],
+    ]),
+    new Set(),
+  );
+  assert.equal(
+    talkArchiveActionIgnored?.url,
+    "https://artlung.com/speaking/#front-end-study-hall-059",
+  );
+
+  const talkHashFallback = compactContentItem(
+    {
+      content_type: "presentation",
+      url: "https://artlung.com/speaking",
+      title: "Front End Study Hall #057",
+      identity: "presentation:https://artlung.com:front-end-study-hall-057",
+      site_origin: "https://artlung.com",
+      resources: [],
+      source: { kind: "speaking-archive" },
+    },
+    new Map([
+      ["https://artlung.com", { title: "Joe Crawford", domain: "artlung.com" }],
+    ]),
+    new Set(),
+  );
+  assert.equal(
+    talkHashFallback?.url,
+    "https://artlung.com/speaking/#front-end-study-hall-057",
   );
 });

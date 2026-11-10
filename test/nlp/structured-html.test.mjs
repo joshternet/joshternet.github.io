@@ -11,6 +11,7 @@ import {
   documentMeta,
   loadHtml,
   topicPassages,
+  sectionPath,
   usesBlocks,
 } from "../../scripts/nlp/structured-html.mjs";
 
@@ -56,13 +57,14 @@ test("uses blocks keep nesting without copying child text onto the parent", () =
   assert.equal(keyboard.target_text.includes("Cherry"), false);
   assert.equal(switches.parent_block_id, keyboard.block_id);
   assert.deepEqual(keyboard.child_block_ids, [switches.block_id]);
-  assert.equal(keyboard.section_path.includes("Desk"), true);
+  assert.equal(keyboard.section_path, "Desk");
+  const pixel = blocks.find((block) => block.target_text.startsWith("Pixel"));
+  assert.equal(pixel.section_path, "Phone");
   assert.equal(
     blocks.some((block) => block.target_text.includes("no longer use")),
     true,
   );
   const kindle = blocks.find((block) => block.target_text === "Kindle");
-  const pixel = blocks.find((block) => block.target_text.startsWith("Pixel"));
   assert.equal(kindle.parent_block_id, pixel.block_id);
   assert.equal(pixel.target_text.includes("Kindle"), false);
   assert.equal(
@@ -80,6 +82,53 @@ test("uses blocks keep nesting without copying child text onto the parent", () =
   const neovim = blocks.find((block) => block.target_text === "Neovim");
   assert.equal(neovim.relevant_links[0].href, "https://neovim.io/");
   assert.equal(neovim.language, "en");
+});
+
+test("product headings and chrome headings stay out of the next section", () => {
+  const html = `<nav><h2>Menu</h2></nav><main><h2>Wrapped<ul><li>Inside</li></ul></h2><h2>Desk</h2><ul><li><h3>Product</h3></li><li>Next</li></ul></main>`;
+  const $ = loadHtml(html);
+  const next = $("li")
+    .toArray()
+    .find((element) => $(element).text().includes("Next"));
+  assert.equal(sectionPath($, next), "Desk");
+  assert.equal(sectionPath($, { type: "tag", name: "li" }), "");
+  assert.equal(sectionPath($, null), "");
+  assert.equal(sectionPath($, { type: "tag" }), "");
+  const partial = new Map();
+  partial.set(next, 50);
+  assert.equal(sectionPath($, next, partial), "");
+  const inside = $("li")
+    .toArray()
+    .find((element) => $(element).text().includes("Inside"));
+  assert.equal(sectionPath($, inside).includes("Wrapped"), false);
+});
+
+test("sibling h2 sections do not nest under a prior phone-shaped outline", () => {
+  const html = `<article>
+    <h2>Phone 📱</h2>
+    <h3>Hardware</h3>
+    <p>Samsung S9+</p>
+    <h3>Software</h3>
+    <h2>Website 🌐</h2>
+    <p>Hugo</p>
+  </article>`;
+  const $ = loadHtml(html);
+  const phone = $("h2").toArray()[0];
+  const website = $("h2").toArray()[1];
+  const hugo = $("p")
+    .toArray()
+    .find((element) => $(element).text().includes("Hugo"));
+  assert.equal(sectionPath($, phone), "");
+  assert.equal(sectionPath($, website), "");
+  assert.equal(sectionPath($, hugo), "Website 🌐");
+});
+
+test("a permalink hash is not part of the section title", () => {
+  const blocks = usesBlocks(
+    "<main><h2>Software#</h2><ul><li>Neovim</li></ul><h2>C#</h2><ul><li>Rider</li></ul></main>",
+  );
+  assert.equal(blocks[0].section_path, "Software");
+  assert.equal(blocks[1].section_path, "C#");
 });
 
 test("a blank heading does not enter the section path", () => {

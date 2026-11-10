@@ -27,9 +27,11 @@ import {
   creativeItemsFromExternalListenLinks,
   creativeItemsFromHomepageLinks,
   creativeItemsFromProjectsIndex,
+  creativeItemsFromSoundsProjectLinks,
   isExternalProductProjectUrl,
   shelfLinkTitleAndSummary,
 } from "../../scripts/nlp/creative.mjs";
+import { youtubeThumbnailUrl } from "../../scripts/nlp/youtube-feeds.mjs";
 import { classifyPageRole } from "../../scripts/nlp/page-role.mjs";
 import {
   buildViewDocuments,
@@ -252,7 +254,7 @@ test("album-in-list year cards become photography collections", () => {
 
   assert.ok(albums.length >= 2);
   assert.equal(albums[0].content_type, "collection");
-  assert.equal(albums[0].title, "2026");
+  assert.equal(albums[0].title, "2026 photos");
   assert.match(String(albums[0].summary || ""), /assortment|photos|from/i);
   assert.equal(showcaseKindForItem(albums[0]), "photography");
 
@@ -269,21 +271,84 @@ test("album-in-list year cards become photography collections", () => {
     },
   );
 
-  assert.ok(collected.items.some((item) => item.title === "2026"));
+  assert.ok(collected.items.some((item) => item.title === "2026 photos"));
 });
 
-test("/sounds/ YouTube links become music_recording listen actions", () => {
+test("/sounds/ YouTube links become music_recording listen cards", () => {
+  const pageUrl = "https://joshtronic.com/sounds/";
   const items = creativeItemsFromExternalListenLinks(
     readFixture("html/joshtronic-sounds.html"),
-    "https://joshtronic.com/sounds/",
+    pageUrl,
     "https://joshtronic.com",
     "2026-11-01T12:00:00.000Z",
   );
 
-  assert.ok(items.length >= 1);
+  assert.equal(items.length, 1);
   assert.equal(items[0].content_type, "music_recording");
-  assert.equal(items[0].url, "https://joshtronic.com/sounds/");
-  assert.match(String(items[0].actions?.[0]?.url), /youtube\.com/);
+  assert.equal(items[0].title, "loud and bouncy");
+  assert.equal(items[0].url, "https://www.youtube.com/watch?v=250zLvJqXcM");
+  assert.equal(items[0].action_url, items[0].url);
+  assert.equal(items[0].action_label, "Listen");
+  assert.equal(items[0].image, youtubeThumbnailUrl("250zLvJqXcM"));
+  assert.equal(
+    /** @type {{ kind?: string, page?: string }} */ (items[0].source).page,
+    pageUrl,
+  );
+});
+
+test("/sounds/ h2 project links become imaged music cards", () => {
+  const pageUrl = "https://joshtronic.com/sounds/";
+  const items = creativeItemsFromSoundsProjectLinks(
+    readFixture("html/joshtronic-sounds.html"),
+    pageUrl,
+    "https://joshtronic.com",
+    "2026-11-01T12:00:00.000Z",
+  );
+
+  assert.equal(items.length, 2);
+  const hamster = items.find((item) =>
+    /sororityhamster/i.test(String(item.url)),
+  );
+  const venus = items.find((item) => /venusontherocks/i.test(String(item.url)));
+  assert.ok(hamster);
+  assert.equal(hamster.title, "Sorority Hamster");
+  assert.equal(
+    hamster.image,
+    "https://joshtronic.com/images/sounds/sorority-hamster.jpg",
+  );
+  assert.match(String(hamster.summary || ""), /musical aesthetic/i);
+  assert.equal(
+    /** @type {{ kind?: string }} */ (hamster.source).kind,
+    "sounds-project-link",
+  );
+  assert.ok(venus);
+  assert.equal(venus.title, "Venus on the Rocks");
+  assert.equal(
+    venus.image,
+    "https://joshtronic.com/images/sounds/venus-on-the-rocks.jpg",
+  );
+
+  const collected = collectCreativeWorks(
+    [
+      {
+        url: pageUrl,
+        html: readFixture("html/joshtronic-sounds.html"),
+      },
+    ],
+    {
+      siteOrigin: "https://joshtronic.com",
+      observedAt: "2026-11-01T12:00:00.000Z",
+    },
+  );
+  const music = collected.items.filter(
+    (item) => item.content_type === "music_recording",
+  );
+  assert.ok(music.length >= 3);
+  assert.ok(
+    music.some((item) => String(item.url).includes("youtube.com/watch")),
+  );
+  assert.ok(music.some((item) => /sororityhamster/i.test(String(item.url))));
+  assert.ok(music.some((item) => /venusontherocks/i.test(String(item.url))));
 });
 
 test("homepage shelf tolerates Prettier-wrapped </a> and </span> closers", () => {
@@ -577,6 +642,24 @@ test("audioEnclosureUrlFromFeedChunk: empty input, skips, atom link, invalid bas
       "not-a-base",
     ),
     "/rel.mp3",
+  );
+  assert.equal(
+    audioEnclosureUrlFromFeedChunk(`<enclosure/>`, "https://joshua.example/"),
+    "",
+  );
+  assert.equal(
+    audioEnclosureUrlFromFeedChunk(
+      `<link rel="alternate" type="audio/mpeg" href="https://joshua.example/ep.mp3" />`,
+      "https://joshua.example/",
+    ),
+    "",
+  );
+  assert.equal(
+    audioEnclosureUrlFromFeedChunk(
+      `<enclosure url="https://joshua.example/ep.mp3" />`,
+      "https://joshua.example/",
+    ),
+    "https://joshua.example/ep.mp3",
   );
 });
 

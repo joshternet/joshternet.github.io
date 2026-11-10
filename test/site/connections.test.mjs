@@ -29,10 +29,10 @@ test("connections page is HTML-first and cross-linked", async () => {
   const styles = await read("assets/css/main.css");
 
   assert.match(page, /permalink: \/connections\//);
-  assert.match(page, /script: \/assets\/js\/connections\.js/);
+  assert.match(page, /\/assets\/js\/connections\.js/);
   assert.match(page, /title: Connections$/m);
   assert.match(page, /participant_count/);
-  assert.match(page, /topic_overlaps/);
+  assert.match(page, /connection_topics/);
   assert.match(page, /site\.data\.connection_topics/);
   assert.match(page, /connections-graph__footer/);
   assert.doesNotMatch(page, /connections-graph__note/);
@@ -138,7 +138,7 @@ test("connections page is HTML-first and cross-linked", async () => {
   assert.match(page, /connections-page-label/);
   assert.doesNotMatch(page, /\{\{\s*edge\.page\s*\|\s*escape\s*\}\}/);
   assert.match(page, /source_title/);
-  assert.match(page, /outbound-href\.html url=edge\.from/);
+  assert.match(page, /outbound-href\.html url=edge\.k2y/);
   assert.match(page, /connections-edge__source/);
   assert.match(
     page,
@@ -155,11 +155,12 @@ test("connections page is HTML-first and cross-linked", async () => {
   assert.match(page, /connections-close/);
   assert.match(page, /<noscript>/);
   assert.doesNotMatch(page, /rel=\{\{ edge\.rel/);
+  assert.match(page, /candidate\.k4b/);
 
   const pageLabel = await read("_includes/connections-page-label.html");
   assert.match(pageLabel, /connections_page_label/);
-  assert.match(pageLabel, /site\.data\.content\.items/);
-  assert.match(pageLabel, /site\.data\.site_signals\.origins/);
+  assert.match(pageLabel, /site\.data\.content\.k3a/);
+  assert.match(pageLabel, /site\.data\.site_signals\.k4c/);
   assert.doesNotMatch(pageLabel, /connections_page_label = include\.url/);
 
   const visibleRel = await read("_includes/connections-visible-rel.html");

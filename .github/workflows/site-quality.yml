@@ -49,6 +49,14 @@ jobs:
       - name: Install Ruby dependencies
         run: bundle install
 
+      - name: Restore local classifier
+        uses: actions/cache@v4
+        with:
+          path: .tmp/models
+          key: uses-model-${{ runner.os }}-${{ hashFiles('data/classification/model-lock.json') }}
+          restore-keys: |
+            uses-model-${{ runner.os }}-
+
       - name: Rebuild datasets from the registry and build the site
         run: npm run build
 

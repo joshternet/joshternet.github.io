@@ -3,43 +3,44 @@
   author, description, domain (bottom right). One covering hit <a> opens the
   showcased work URL (not the site homepage). Maker name is attribution text
   only so it does not divert the click. Work link uses outbound-href for UTMs;
-  Umami delegated outbound-link-click applies. Prefer item.image, then the
-  member Network screenshot, so every card shows a poster.
+  Umami delegated outbound-link-click applies. Prefer item.k32, then the
+  member Network screenshot, so every card shows a poster. Item fields use
+  short crawl keys.
 {% endcomment %}
-{% assign card_title = include.item.title | default: '' | strip %}
-{% assign card_summary = include.item.summary | default: '' | strip %}
+{% assign card_title = include.item.k7c | default: '' | strip %}
+{% assign card_summary = include.item.k76 | default: '' | strip %}
 {% assign card_summary_norm = card_summary | downcase %}
 {% assign card_title_norm = card_title | downcase %}
 {% if card_summary_norm == card_title_norm %}
   {% assign card_summary = '' %}
 {% endif %}
-{% assign card_author = include.item.site_title | default: '' | strip %}
-{% assign card_domain = include.item.domain | default: '' | strip %}
-{% assign card_image = include.item.image | default: '' | strip %}
-{% if include.item.site_origin and include.item.site_origin != '' %}
+{% assign card_author = include.item.k6h | default: '' | strip %}
+{% assign card_domain = include.item.k1v | default: '' | strip %}
+{% assign card_image = include.item.k32 | default: '' | strip %}
+{% if include.item.k6f and include.item.k6f != '' %}
   {% for network_site in site.data.network %}
-    {% if network_site.origin == include.item.site_origin %}
-      {% if card_domain == '' and network_site.domain and network_site.domain != '' %}
-        {% assign card_domain = network_site.domain %}
+    {% if network_site.k4b == include.item.k6f %}
+      {% if card_domain == '' and network_site.k1v and network_site.k1v != '' %}
+        {% assign card_domain = network_site.k1v %}
       {% endif %}
       {% if card_author == ''
         or card_author == card_domain
-        or card_author == include.item.site_origin
+        or card_author == include.item.k6f
         or card_author contains '://'
       %}
-        {% if network_site.title and network_site.title != '' %}
-          {% assign card_author = network_site.title %}
-        {% elsif network_site.domain and network_site.domain != '' %}
-          {% assign card_author = network_site.domain %}
+        {% if network_site.k7c and network_site.k7c != '' %}
+          {% assign card_author = network_site.k7c %}
+        {% elsif network_site.k1v and network_site.k1v != '' %}
+          {% assign card_author = network_site.k1v %}
         {% endif %}
       {% endif %}
-      {% if card_image == '' and network_site.screenshot and network_site.screenshot != '' %}
-        {% assign card_image = network_site.screenshot %}
+      {% if card_image == '' and network_site.k63 and network_site.k63 != '' %}
+        {% assign card_image = network_site.k63 %}
       {% endif %}
     {% endif %}
   {% endfor %}
   {% if card_domain == '' %}
-    {% assign card_domain = include.item.site_origin
+    {% assign card_domain = include.item.k6f
       | remove_first: 'https://'
       | remove_first: 'http://'
       | split: '/'
@@ -47,15 +48,15 @@
     %}
   {% endif %}
 {% endif %}
-{% include outbound-href.html url=include.item.url %}
+{% include outbound-href.html url=include.item.k7o %}
 <article class="showcase-card h-entry">
   <a
     class="showcase-card__hit u-url"
     href="{{ outbound_href | escape }}"
     target="_blank"
     rel="noopener"
-    {% if include.item.language and include.item.language != '' %}
-      lang="{{ include.item.language | escape }}"
+    {% if include.item.k3i and include.item.k3i != '' %}
+      lang="{{ include.item.k3i | escape }}"
     {% endif %}
   >
     <span class="visually-hidden">{{- card_title | escape }} (opens on the publisher’s site) </span>
@@ -77,19 +78,19 @@
       <h3
         class="showcase-card__title p-name"
         aria-hidden="true"
-        {% if include.item.language and include.item.language != '' %}
-          lang="{{ include.item.language | escape }}"
+        {% if include.item.k3i and include.item.k3i != '' %}
+          lang="{{ include.item.k3i | escape }}"
         {% endif %}
-        dir="{{ include.item.dir | default: 'auto' | escape }}"
+        dir="{{ include.item.k1p | default: 'auto' | escape }}"
       >
     {% else %}
       <h2
         class="showcase-card__title p-name"
         aria-hidden="true"
-        {% if include.item.language and include.item.language != '' %}
-          lang="{{ include.item.language | escape }}"
+        {% if include.item.k3i and include.item.k3i != '' %}
+          lang="{{ include.item.k3i | escape }}"
         {% endif %}
-        dir="{{ include.item.dir | default: 'auto' | escape }}"
+        dir="{{ include.item.k1p | default: 'auto' | escape }}"
       >
     {% endif %}
     {{ card_title | escape }}
@@ -104,13 +105,29 @@
         <span class="p-name">{{ card_author | escape }}</span>
       </p>
     {% endif %}
+    {% if include.item.k8f and include.item.k8f != '' %}
+      <p class="showcase-card__appearance">
+        {{ include.item.k8f | escape }}
+        {% if include.item.k89 and include.item.k89 != '' %}
+          <time datetime="{{ include.item.k89 | escape }}">
+            {{- include.item.k89 | date: '%b %-d, %Y' -}}
+          </time>
+        {% endif %}
+      </p>
+    {% elsif include.item.k89 and include.item.k17 == 'presentation' %}
+      <p class="showcase-card__appearance">
+        <time datetime="{{ include.item.k89 | escape }}">
+          {{- include.item.k89 | date: '%b %-d, %Y' -}}
+        </time>
+      </p>
+    {% endif %}
     {% if card_summary != '' %}
       <p
         class="showcase-card__summary p-summary"
-        {% if include.item.language and include.item.language != '' %}
-          lang="{{ include.item.language | escape }}"
+        {% if include.item.k3i and include.item.k3i != '' %}
+          lang="{{ include.item.k3i | escape }}"
         {% endif %}
-        dir="{{ include.item.dir | default: 'auto' | escape }}"
+        dir="{{ include.item.k1p | default: 'auto' | escape }}"
       >
         {{ card_summary | escape }}
       </p>

@@ -290,6 +290,37 @@
   }
 
   /**
+   * Tracks a dedicated data-joshternet-track event when present on an anchor.
+   * @param {Element} anchor
+   * @returns {boolean} True when a dedicated track attribute was handled.
+   */
+  function maybeTrackDedicatedAnchor(anchor) {
+    if (!anchor.hasAttribute("data-joshternet-track")) {
+      return false;
+    }
+
+    const eventName = String(
+      anchor.getAttribute("data-joshternet-track") || "",
+    ).trim();
+
+    if (!eventName) {
+      return false;
+    }
+
+    const locationAttr = String(
+      anchor.getAttribute("data-joshternet-track-location") || "header",
+    ).trim();
+
+    joshternetTrack(eventName, {
+      location: locationAttr || "header",
+      repository: "joshternet/joshternet.github.io",
+      page: globalThis.location?.pathname || "/",
+    });
+
+    return true;
+  }
+
+  /**
    * Handles delegated link clicks on the document.
    * @param {MouseEvent} event
    * @returns {void}
@@ -311,7 +342,9 @@
       return;
     }
 
-    if (anchor.hasAttribute("data-joshternet-skip-link-track")) {
+    const dedicated = maybeTrackDedicatedAnchor(anchor);
+
+    if (dedicated || anchor.hasAttribute("data-joshternet-skip-link-track")) {
       return;
     }
 

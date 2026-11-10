@@ -832,6 +832,8 @@ async function shouldRefresh(previous) {
 const registry = await loadRegistry(registrySource);
 let projected = projectRegistry(registry);
 
+const existing = await readJSONIfExists(DEFAULT_DATA_PATH, []);
+
 if (localPreviewEnabled()) {
   const previewPath = path.join(process.cwd(), "_data/network_preview.json");
   const preview = await readPreviewFile(previewPath);
@@ -859,8 +861,6 @@ const { accepted: participants, rejected } =
   await partitionPublicParticipants(projected);
 
 reportRejectedParticipants(rejected);
-
-const existing = await readJSONIfExists(DEFAULT_DATA_PATH, []);
 const displayTitleOverrides = displayTitleOverridesFromDocument(
   await readJSONIfExists(DEFAULT_DISPLAY_TITLES_PATH, {}),
 );

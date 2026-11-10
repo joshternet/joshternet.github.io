@@ -12,7 +12,9 @@ seo:
   type: CollectionPage
   name: Connections
 permalink: /connections/
-script: /assets/js/connections.js
+scripts:
+  - /assets/js/crawl-keys.js
+  - /assets/js/connections.js
 joshternet_analysis: derived
 ---
 
@@ -24,11 +26,14 @@ how independent websites around the Joshternet link to one another, share
 interesting things, and occasionally end up exploring the same ideas.
 
 {% assign network_sites = site.data.network %}
+{% if network_sites == nil %}
+  {% assign network_sites = "" | split: "" %}
+{% endif %}
 {% assign hub_origin = "https://joshternet.org" %}
 {% assign member_sites = "" | split: "" %}
 {% assign hub_sites = "" | split: "" %}
 {% for network_site in network_sites %}
-  {% if network_site.origin == hub_origin %}
+  {% if network_site.k4b == hub_origin %}
     {% assign hub_sites = hub_sites | push: network_site %}
   {% else %}
     {% assign member_sites = member_sites | push: network_site %}
@@ -39,27 +44,27 @@ interesting things, and occasionally end up exploring the same ideas.
   not peer discovery edges worth highlighting on the map.
 {% endcomment %}
 {% assign ordered_sites = member_sites %}
-{% assign connection_edges = site.data.connections.edges | default: empty %}
-{% assign overlap_sites = site.data.connection_topics.sites | default: empty %}
-{% assign overlap_pairs = site.data.connection_topics.pairs | default: empty %}
+{% assign connection_edges = site.data.connections.k1y | default: empty %}
+{% assign overlap_sites = site.data.connection_topics.k6i | default: empty %}
+{% assign overlap_pairs = site.data.connection_topics.k4q | default: empty %}
 {% assign overlap_pair_count = overlap_pairs.size | default: 0 %}
 {% assign connected_site_count = 0 %}
 {% for network_site in network_sites %}
-  {% assign site_origin = network_site.origin %}
+  {% assign site_origin = network_site.k4b %}
   {% assign outbound = 0 %}
   {% assign inbound = 0 %}
   {% assign overlap_count = 0 %}
   {% for edge in connection_edges %}
-    {% if edge.from == site_origin %}
+    {% if edge.k2o == site_origin %}
       {% assign outbound = outbound | plus: 1 %}
     {% endif %}
-    {% if edge.to == site_origin %}
+    {% if edge.k7d == site_origin %}
       {% assign inbound = inbound | plus: 1 %}
     {% endif %}
   {% endfor %}
   {% for overlap_site in overlap_sites %}
-    {% if overlap_site.origin == site_origin %}
-      {% assign overlap_count = overlap_site.topics.size %}
+    {% if overlap_site.k4b == site_origin %}
+      {% assign overlap_count = overlap_site.k7j.size %}
     {% endif %}
   {% endfor %}
   {% if outbound > 0 or inbound > 0 %}
@@ -115,25 +120,25 @@ interesting things, and occasionally end up exploring the same ideas.
 
 <div class="connections-list" data-connections-list>
   {% for network_site in ordered_sites %}
-    {% assign site_origin = network_site.origin %}
-    {% assign site_domain = network_site.domain %}
-    {% assign site_title = network_site.title | default: site_domain %}
+    {% assign site_origin = network_site.k4b %}
+    {% assign site_domain = network_site.k1v %}
+    {% assign site_title = network_site.k7c | default: site_domain %}
     {% assign outbound = 0 %}
     {% assign inbound = 0 %}
     {% assign overlap_topics = nil %}
     {% assign overlap_count = 0 %}
     {% for edge in connection_edges %}
-      {% if edge.from == site_origin %}
+      {% if edge.k2o == site_origin %}
         {% assign outbound = outbound | plus: 1 %}
       {% endif %}
-      {% if edge.to == site_origin %}
+      {% if edge.k7d == site_origin %}
         {% assign inbound = inbound | plus: 1 %}
       {% endif %}
     {% endfor %}
     {% for overlap_site in overlap_sites %}
-      {% if overlap_site.origin == site_origin %}
-        {% assign overlap_topics = overlap_site.topics %}
-        {% assign overlap_count = overlap_site.topics.size %}
+      {% if overlap_site.k4b == site_origin %}
+        {% assign overlap_topics = overlap_site.k7j %}
+        {% assign overlap_count = overlap_site.k7j.size %}
       {% endif %}
     {% endfor %}
 
@@ -146,7 +151,7 @@ interesting things, and occasionally end up exploring the same ideas.
     >
       <span class="connections-site__keys" data-connection-keys></span>
       <header class="connections-site__header">
-        {% if network_site.screenshot and network_site.screenshot != "" %}
+        {% if network_site.k63 and network_site.k63 != "" %}
           <button
             type="button"
             class="connections-site__select connections-site__select--shot"
@@ -156,7 +161,7 @@ interesting things, and occasionally end up exploring the same ideas.
           >
             <img
               class="connections-site__shot u-photo"
-              src="{{ network_site.screenshot | relative_url }}"
+              src="{{ network_site.k63 | relative_url }}"
               alt="Screenshot of {{ site_title | escape }}"
               loading="lazy"
               decoding="async"
@@ -196,9 +201,9 @@ interesting things, and occasionally end up exploring the same ideas.
           >
             {{ site_domain | escape }}
           </a>
-          {% if network_site.description and network_site.description != "" %}
+          {% if network_site.k1n and network_site.k1n != "" %}
             <p class="connections-site__description p-note">
-              {{ network_site.description | escape }}
+              {{ network_site.k1n | escape }}
             </p>
           {% endif %}
         </div>
@@ -219,20 +224,20 @@ interesting things, and occasionally end up exploring the same ideas.
           <h3>Links to</h3>
             <ul class="connections-edge-list">
               {% for edge in connection_edges %}
-                {% if edge.from == site_origin %}
-                  {% assign target_title = edge.to %}
-                  {% assign target_domain = edge.to %}
+                {% if edge.k2o == site_origin %}
+                  {% assign target_title = edge.k7d %}
+                  {% assign target_domain = edge.k7d %}
                   {% for candidate in network_sites %}
-                    {% if candidate.origin == edge.to %}
-                      {% assign target_title = candidate.title | default: candidate.domain %}
-                      {% assign target_domain = candidate.domain %}
+                    {% if candidate.k4b == edge.k7d %}
+                      {% assign target_title = candidate.k7c | default: candidate.k1v %}
+                      {% assign target_domain = candidate.k1v %}
                     {% endif %}
                   {% endfor %}
-                  {% assign link_label = edge.text %}
+                  {% assign link_label = edge.k7a %}
                   {% if link_label == nil or link_label == "" %}
                     {% assign link_label = target_title %}
                   {% endif %}
-                  {% assign edge_kind = edge.relation | default: edge.kind | default: "content-link" %}
+                  {% assign edge_kind = edge.k5l | default: edge.k3c | default: "content-link" %}
                   {% case edge_kind %}
                     {% when "homepage-link" %}
                       {% assign kind_label = "links to from the homepage" %}
@@ -251,7 +256,7 @@ interesting things, and occasionally end up exploring the same ideas.
                     <span class="connections-edge__direction" aria-hidden="true">→</span>
                     <div class="connections-edge__body">
                       {% if kind_label == "linked to" %}
-                        {% include outbound-href.html url=edge.href %}
+                        {% include outbound-href.html url=edge.k2y %}
                         <a
                           class="connections-edge__source"
                           href="{{ outbound_href | escape }}"
@@ -264,7 +269,7 @@ interesting things, and occasionally end up exploring the same ideas.
                         <span class="connections-edge__kind">{{ kind_label | escape }}</span>
                       {% endif %}
                       {% unless kind_label == "linked to" and target_title == target_domain %}
-                        {% include outbound-href.html url=edge.href %}
+                        {% include outbound-href.html url=edge.k2y %}
                         <a
                           href="{{ outbound_href | escape }}"
                           target="_blank"
@@ -281,7 +286,7 @@ interesting things, and occasionally end up exploring the same ideas.
                         {% assign outbound_meta = false %}
                         {% unless kind_label == "linked to" %}
                           to
-                          {% include outbound-href.html url=edge.to %}
+                          {% include outbound-href.html url=edge.k7d %}
                           <a
                             href="{{ outbound_href | escape }}"
                             target="_blank"
@@ -304,11 +309,11 @@ interesting things, and occasionally end up exploring the same ideas.
                             </a>
                           {% assign outbound_meta = true %}
                         {% endif %}
-                        {% if edge.page and edge.page != "" %}
+                        {% if edge.k4i and edge.k4i != "" %}
                           {% if outbound_meta %} · {% endif %}
                           seen on
-                          {% include outbound-href.html url=edge.page %}
-                          {% include connections-page-label.html url=edge.page %}
+                          {% include outbound-href.html url=edge.k4i %}
+                          {% include connections-page-label.html url=edge.k4i %}
                           <a
                             href="{{ outbound_href | escape }}"
                             target="_blank"
@@ -318,13 +323,13 @@ interesting things, and occasionally end up exploring the same ideas.
                           </a>
                           {% assign outbound_meta = true %}
                         {% endif %}
-                        {% if edge.source and edge.source != "" and edge.source != "content" %}
+                        {% if edge.k6q and edge.k6q != "" and edge.k6q != "content" %}
                           {% if outbound_meta %} · {% endif %}
-                          {{ edge.source | escape }}
+                          {{ edge.k6q | escape }}
                           {% assign outbound_meta = true %}
                         {% endif %}
-                        {% if edge.rel and edge.rel.size > 0 %}
-                          {% include connections-visible-rel.html rel=edge.rel %}
+                        {% if edge.k5i and edge.k5i.size > 0 %}
+                          {% include connections-visible-rel.html rel=edge.k5i %}
                         {% endif %}
                       </span>
                     </div>
@@ -340,16 +345,16 @@ interesting things, and occasionally end up exploring the same ideas.
           <h3>Linked from</h3>
             <ul class="connections-edge-list">
               {% for edge in connection_edges %}
-                {% if edge.to == site_origin %}
-                  {% assign source_title = edge.from %}
-                  {% assign source_domain = edge.from %}
+                {% if edge.k7d == site_origin %}
+                  {% assign source_title = edge.k2o %}
+                  {% assign source_domain = edge.k2o %}
                   {% for candidate in network_sites %}
-                    {% if candidate.origin == edge.from %}
-                      {% assign source_title = candidate.title | default: candidate.domain %}
-                      {% assign source_domain = candidate.domain %}
+                    {% if candidate.k4b == edge.k2o %}
+                      {% assign source_title = candidate.k7c | default: candidate.k1v %}
+                      {% assign source_domain = candidate.k1v %}
                     {% endif %}
                   {% endfor %}
-                  {% assign edge_kind = edge.relation | default: edge.kind | default: "content-link" %}
+                  {% assign edge_kind = edge.k5l | default: edge.k3c | default: "content-link" %}
                   {% case edge_kind %}
                     {% when "homepage-link" %}
                       {% assign kind_label = "linked from the homepage" %}
@@ -368,7 +373,7 @@ interesting things, and occasionally end up exploring the same ideas.
                     <span class="connections-edge__direction" aria-hidden="true">←</span>
                     <div class="connections-edge__body">
                       {% if kind_label == "linked from" %}
-                        {% include outbound-href.html url=edge.from %}
+                        {% include outbound-href.html url=edge.k2o %}
                         <a
                           class="connections-edge__source"
                           href="{{ outbound_href | escape }}"
@@ -381,7 +386,7 @@ interesting things, and occasionally end up exploring the same ideas.
                         <span class="connections-edge__kind">{{ kind_label | escape }}</span>
                       {% endif %}
                       {% unless kind_label == "linked from" and source_title == source_domain %}
-                        {% include outbound-href.html url=edge.from %}
+                        {% include outbound-href.html url=edge.k2o %}
                         <a
                           href="{{ outbound_href | escape }}"
                           target="_blank"
@@ -411,11 +416,11 @@ interesting things, and occasionally end up exploring the same ideas.
                             </a>
                           {% assign inbound_meta = true %}
                         {% endif %}
-                        {% if edge.page and edge.page != "" %}
+                        {% if edge.k4i and edge.k4i != "" %}
                           {% if inbound_meta %} · {% endif %}
                           seen on
-                          {% include outbound-href.html url=edge.page %}
-                          {% include connections-page-label.html url=edge.page %}
+                          {% include outbound-href.html url=edge.k4i %}
+                          {% include connections-page-label.html url=edge.k4i %}
                           <a
                             href="{{ outbound_href | escape }}"
                             target="_blank"
@@ -450,14 +455,14 @@ interesting things, and occasionally end up exploring the same ideas.
               </p>
               <ul class="connections-topic-list">
                 {% for topic in overlap_topics %}
-                  {% assign article_count = topic.articles.size | default: 0 %}
-                  {% for peer in topic.sites %}
-                    {% assign article_count = article_count | plus: peer.articles.size %}
+                  {% assign article_count = topic.kc.size | default: 0 %}
+                  {% for peer in topic.k6i %}
+                    {% assign article_count = article_count | plus: peer.kc.size %}
                   {% endfor %}
                   <li class="connections-topic" data-connection-kind="shared-topic">
                     <span class="connections-topic__label">
-                      <a href="{{ '/topics/' | append: topic.slug | append: '/' | relative_url }}">
-                        {{ topic.label | escape }}
+                      <a href="{{ '/topics/' | append: topic.k6o | append: '/' | relative_url }}">
+                        {{ topic.k3g | escape }}
                       </a>
                     </span>
                     {% if article_count > 0 %}
@@ -485,19 +490,19 @@ interesting things, and occasionally end up exploring the same ideas.
 "participants": [
 {% for network_site in ordered_sites %}
 {% assign site_recently_joined = false %}
-{% if network_site.first_participated_at and network_site.first_participated_at != '' %}
-{% assign site_joined_at_s = network_site.first_participated_at | date: '%s' | plus: 0 %}
+{% if network_site.k2j and network_site.k2j != '' %}
+{% assign site_joined_at_s = network_site.k2j | date: '%s' | plus: 0 %}
 {% if site_joined_at_s >= recently_joined_cutoff_s and site_joined_at_s <= recently_joined_now_s %}
 {% assign site_recently_joined = true %}
 {% endif %}
 {% endif %}
 {
-"origin": {{ network_site.origin | jsonify }},
-"domain": {{ network_site.domain | jsonify }},
-"title": {{ network_site.title | default: network_site.domain | jsonify }},
-"description": {{ network_site.description | default: "" | jsonify }},
-"screenshot": {{ network_site.screenshot | default: "" | jsonify }},
-"first_participated_at": {{ network_site.first_participated_at | default: "" | jsonify }},
+"origin": {{ network_site.k4b | jsonify }},
+"domain": {{ network_site.k1v | jsonify }},
+"title": {{ network_site.k7c | default: network_site.k1v | jsonify }},
+"description": {{ network_site.k1n | default: "" | jsonify }},
+"screenshot": {{ network_site.k63 | default: "" | jsonify }},
+"first_participated_at": {{ network_site.k2j | default: "" | jsonify }},
 "recently_joined": {% if site_recently_joined %}true{% else %}false{% endif %}
 }{% unless forloop.last %},{% endunless %}
 {% endfor %}

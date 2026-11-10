@@ -10,11 +10,20 @@ import test from "node:test";
 import {
   closeMonthPeriod,
   formatOpsMetrics,
+  listStoredPeriodEntries,
+  mergeDurablePageMeta,
   periodBoundaryPassed,
   previousCompletePeriodKeys,
   weeklyReconcile,
 } from "../../scripts/uses/period-close.mjs";
 import { ensureCatalogScaffold } from "../../scripts/uses/build.mjs";
+import {
+  appendEvents,
+  loadAllEvents,
+  readJson,
+  replayState,
+  writeState,
+} from "../../scripts/uses/store.mjs";
 
 test("periodBoundaryPassed and previousCompletePeriodKeys", () => {
   assert.equal(
@@ -67,6 +76,73 @@ test("weeklyReconcile and formatOpsMetrics", async () => {
     });
     assert.equal(metrics.registry_eligible, 2);
     assert.equal(metrics.publish, false);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("replayState asOfExclusive keeps prior month tools after a later removal", async () => {
+  const dir = await mkdtemp(path.join(os.tmpdir(), "uses-asof-"));
+  try {
+    await ensureCatalogScaffold(dir);
+    await appendEvents(dir, [
+      {
+        event_id: "e1",
+        event_type: "usage_added",
+        origin: "https://joshua.example",
+        page_url: "https://joshua.example/uses/",
+        tool_id: "neovim",
+        status: "current",
+        observed_at: "2026-10-15T12:00:00.000Z",
+        evidence: { label: "Neovim", kind: "product" },
+        use_case_ids: [],
+      },
+      {
+        event_id: "e2",
+        event_type: "usage_removed",
+        origin: "https://joshua.example",
+        page_url: "https://joshua.example/uses/",
+        tool_id: "neovim",
+        status: "removed",
+        observed_at: "2026-11-05T12:00:00.000Z",
+        evidence: { label: "Neovim", kind: "product" },
+        use_case_ids: [],
+      },
+    ]);
+    const events = await loadAllEvents(dir);
+    const october = replayState(events, {
+      asOfExclusive: "2026-11-01T00:00:00.000Z",
+    });
+    const november = replayState(events);
+    assert.equal(october.members[0].tools.length, 1);
+    assert.equal(october.members[0].tools[0].tool_id, "neovim");
+    assert.equal(november.members[0].tools.length, 0);
+
+    const overlaid = replayState(events);
+    overlaid.members[0].page_status = "disallowed";
+    overlaid.members[0].page_url = "https://joshua.example/uses/";
+    await writeState(dir, overlaid);
+
+    const closed = await closeMonthPeriod({
+      usesRoot: dir,
+      period: "2026-10",
+      as_of: "2026-11-05T12:00:00.000Z",
+      eligible_origins: ["https://joshua.example"],
+    });
+    assert.equal(closed.closed, true);
+    assert.equal(closed.rollup.is_complete, true);
+    const afterClose = await readJson(path.join(dir, "state.json"), null);
+    assert.equal(afterClose.members[0].page_status, "disallowed");
+    assert.equal(
+      mergeDurablePageMeta(october, afterClose).members[0].page_status,
+      "disallowed",
+    );
+    const listed = await listStoredPeriodEntries(dir);
+    assert.ok(
+      listed.some(
+        (entry) => entry.granularity === "month" && entry.id === "2026-10",
+      ),
+    );
   } finally {
     await rm(dir, { recursive: true, force: true });
   }

@@ -10,8 +10,10 @@ import { fileURLToPath } from "node:url";
 import {
   collectCreativeWorks,
   creativeContentType,
+  creativeItemsFromAlbumList,
   creativeItemsFromExternalWatchLinks,
   creativeItemsFromFigures,
+  creativeItemsFromHomepageLinks,
   creativeItemsFromIndexLinks,
   isCreativeIndexPath,
   splitIndexLinkTitleAndTagline,
@@ -408,4 +410,87 @@ test("video indexes harvest external YouTube watch links", () => {
   assert.equal(items[0].source.kind, "videos-watch-link");
   assert.equal(items[0].actions[0].label, "Watch");
   assert.match(String(items[0].url), /youtube\.com\/watch/);
+});
+
+test("collectCreativeWorks strips hash from creative identities", () => {
+  const html = `<!doctype html>
+<html lang="en">
+  <head>
+    <meta property="og:title" content="Kodak UltraMax — Film" />
+    <meta property="og:url" content="https://photos.example/film/ultramax" />
+    <meta property="og:type" content="website" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Photograph",
+        "name": "Shot on Kodak UltraMax",
+        "url": "https://photos.example/film/ultramax#gallery"
+      }
+    </script>
+  </head>
+  <body><main><h1>Kodak UltraMax</h1></main></body>
+</html>`;
+  const { items } = collectCreativeWorks(
+    [{ url: "https://photos.example/film/ultramax", html }],
+    {
+      siteOrigin: "https://photos.example",
+      observedAt: "2026-11-05T18:00:00.000Z",
+    },
+  );
+
+  assert.ok(items.length >= 1);
+  assert.equal(
+    items.every(
+      (item) =>
+        !String(item.identity || "").includes("#") &&
+        item.identity === "url:https://photos.example/film/ultramax",
+    ),
+    true,
+  );
+});
+
+test("photo album list titles become YYYY photos", () => {
+  const html = `<!doctype html><html><body><main>
+    <a class="album-in-list-link" href="/photos/2026/"><span class="album-in-list-title"><span>An assortment of photos from 2026</span></span><img alt="cover" src="https://a.example/c.jpg"></a>
+    <a class="album-in-list-link" href="/photos/2025/"><span class="album-in-list-title"><span>2025</span></span></a>
+  </main></body></html>`;
+  const items = creativeItemsFromAlbumList(
+    html,
+    "https://a.example/photos/",
+    "https://a.example",
+    "2026-11-09T12:00:00.000Z",
+  );
+  const y2026 = items.find((item) => String(item.url).includes("/2026"));
+  const y2025 = items.find((item) => String(item.url).includes("/2025"));
+  assert.ok(y2026);
+  assert.equal(y2026.title, "2026 photos");
+  assert.ok(y2025);
+  assert.equal(y2025.title, "2025 photos");
+});
+
+test("homepage creative extract skips image-use licensing pages", () => {
+  const html = `<!doctype html><html><body>
+    <a href="/map">Map</a>
+    <p>Explore where every photograph was taken.</p>
+    <a href="/image-use">Image Use</a>
+    <p>Guidelines for using images.</p>
+    <a href="/wizardly-words">Wizardly Words</a>
+    <p>Invents new words that sound real.</p>
+  </body></html>`;
+  const items = creativeItemsFromHomepageLinks(
+    html,
+    "https://joshua.example/",
+    "https://joshua.example",
+    "2026-11-09T12:00:00.000Z",
+  );
+  assert.equal(
+    items.some((item) => String(item.url).includes("image-use")),
+    false,
+  );
+  assert.ok(items.some((item) => String(item.url).includes("/map")));
+});
+
+test("isCreativeIndexPath recognizes graphics hubs", () => {
+  assert.equal(isCreativeIndexPath("/graphics/"), true);
+  assert.equal(isCreativeIndexPath("/graphics/poster/"), true);
 });

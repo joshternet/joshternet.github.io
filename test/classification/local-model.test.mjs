@@ -8,10 +8,18 @@ import dns from "node:dns";
 import { readFile } from "node:fs/promises";
 import http from "node:http";
 import https from "node:https";
+import path from "node:path";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
 
-import { LOCK_PATH, MODEL_CACHE } from "../../scripts/uses/prepare-model.mjs";
+import {
+  acceptProposal,
+  modelClaimText,
+  pairSlotScores,
+  slotLabels,
+} from "../../scripts/uses/infer-policy.mjs";
 import { loadLockedClassifier } from "../../scripts/uses/infer-local.mjs";
+import { LOCK_PATH, MODEL_CACHE } from "../../scripts/uses/prepare-model.mjs";
 
 test("classification makes no outbound request", async () => {
   const blocked = (target) => {
@@ -50,7 +58,7 @@ test("classification makes no outbound request", async () => {
   assert.ok(result.labels.includes("a keyboard"));
 
   const snapshotPath = new URL(
-    "../../data/classification/evidence-snapshot.json",
+    "../../test/fixtures/uses/evidence-snapshot.json",
     import.meta.url,
   );
   const before = await readFile(snapshotPath, "utf8");
@@ -64,4 +72,58 @@ test("classification makes no outbound request", async () => {
     assert.equal(record.target_text, "CODE Keyboard");
   }
   assert.equal(await readFile(snapshotPath, "utf8"), before);
+
+  const root = fileURLToPath(new URL("../../", import.meta.url));
+  const benchmark = JSON.parse(
+    await readFile(
+      path.join(root, "test/fixtures/uses/benchmark.json"),
+      "utf8",
+    ),
+  );
+  const categories = JSON.parse(
+    await readFile(
+      path.join(root, "data/uses/catalog/categories.json"),
+      "utf8",
+    ),
+  );
+  const policy = JSON.parse(
+    await readFile(path.join(root, "data/classification/policy.json"), "utf8"),
+  );
+  const labels = slotLabels({ categories: categories.categories });
+  const descriptions = labels.map((label) => label.description);
+  let accepted = 0;
+  let correct = 0;
+  let abstained = 0;
+  const scored = benchmark.examples.filter(
+    (example) =>
+      example.split === "category" && example.expected_slot_id !== "unsorted",
+  );
+  for (const example of scored) {
+    const text = modelClaimText({
+      name: example.name,
+      section_path: example.expected_section_path,
+      context: example.context,
+    });
+    const raw = await loaded.classify(text.presented, descriptions);
+    const proposal = acceptProposal(pairSlotScores(raw, labels), {
+      threshold: policy.threshold,
+      margin: policy.margin,
+    });
+    if (!proposal.accepted) {
+      abstained += 1;
+      continue;
+    }
+    accepted += 1;
+    if (proposal.slot_id === example.expected_slot_id) {
+      correct += 1;
+    }
+  }
+  const precision = accepted === 0 ? 1 : correct / accepted;
+  assert.ok(benchmark.examples.length >= 75);
+  assert.ok(scored.length > 0);
+  assert.equal(
+    precision >= 0.95,
+    true,
+    `accepted ${correct}/${accepted}, abstained ${abstained}, precision ${precision}`,
+  );
 });

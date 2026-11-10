@@ -42,6 +42,43 @@ function collapse(value) {
 }
 
 /**
+ * Heading text used for section paths. A trailing permalink hash is not a title.
+ * @param {unknown} value
+ * @returns {string}
+ */
+export function headingLabel(value) {
+  let text = collapse(value)
+    .replace(/\s+#+\s*$/u, "")
+    .trim();
+  if (text.endsWith("#") && !/^[A-Za-z]#+$/.test(text)) {
+    text = text.replace(/#+$/u, "").trim();
+  }
+  return text;
+}
+
+/**
+ * Document order for element nodes. Text nodes are not indexed.
+ * @param {cheerio.CheerioAPI} $
+ * @returns {Map<unknown, number>}
+ */
+function documentOrder($) {
+  /** @type {Map<unknown, number>} */
+  const order = new Map();
+  let next = 0;
+  const walk = (node) => {
+    if (node.type === "tag") {
+      order.set(node, next);
+      next += 1;
+    }
+    for (const child of node.children || []) {
+      walk(child);
+    }
+  };
+  walk($.root().get(0));
+  return order;
+}
+
+/**
  * Text of this element without nested lists or tables.
  * @param {cheerio.CheerioAPI} $
  * @param {unknown} element
@@ -63,26 +100,66 @@ function inChrome($, element) {
 }
 
 /**
+ * Section path for one claim. Preceding page headings form the outline.
+ * A heading inside a list item, definition, or table cell names that product
+ * and does not become the section for a later sibling.
  * @param {cheerio.CheerioAPI} $
  * @param {unknown} element
+ * @param {Map<unknown, number>} [order]
  * @returns {string}
  */
-function sectionPath($, element) {
-  /** @type {string[]} */
-  const headings = [];
-  $(element)
-    .parents()
-    .each((_, parent) => {
-      $(parent)
-        .children("h1, h2, h3, h4, h5, h6")
-        .each((__, heading) => {
-          const text = collapse($(heading).text());
-          if (text) {
-            headings.push(text);
-          }
-        });
-    });
-  return headings.reverse().join(" / ");
+export function sectionPath($, element, order) {
+  const index = order || documentOrder($);
+  const at = index.get(element);
+  /** @type {Array<{ level: number, text: string }>} */
+  const stack = [];
+  if (at === undefined) {
+    return "";
+  }
+  const headings = $("h1, h2, h3, h4, h5, h6").toArray();
+  for (const heading of headings) {
+    const pos = index.get(heading);
+    if (pos === undefined || pos >= at) {
+      break;
+    }
+    if (inChrome($, heading)) {
+      continue;
+    }
+    if ($(heading).parents("li, dt, tr, td").length > 0) {
+      continue;
+    }
+    if ($(element).parents().toArray().includes(heading)) {
+      continue;
+    }
+    const level = Number(String(heading.name).slice(1));
+    const text = headingLabel($(heading).text());
+    if (!text || !Number.isFinite(level) || level < 1) {
+      continue;
+    }
+    // Close prior deeper/same-level siblings (h2 after h3/h2 is not nested).
+    while (stack.length > 0 && stack[stack.length - 1].level >= level) {
+      stack.pop();
+    }
+    stack.push({ level, text });
+  }
+  // When the claim element is itself a heading, preceding same-level siblings
+  // are peers, not ancestors — drop them without pushing this heading.
+  const tag = String(element.name);
+  if (/^h[1-6]$/i.test(tag)) {
+    const level = Number(String(tag).slice(1));
+    while (
+      Number.isFinite(level) &&
+      level >= 1 &&
+      stack.length > 0 &&
+      stack[stack.length - 1].level >= level
+    ) {
+      stack.pop();
+    }
+  }
+  return stack
+    .map((entry) => entry.text)
+    .filter(Boolean)
+    .join(" / ");
 }
 
 /**
@@ -121,6 +198,7 @@ function languageOf($) {
 export function usesBlocks(html) {
   const $ = loadHtml(html);
   const language = languageOf($);
+  const order = documentOrder($);
   /** @type {object[]} */
   const blocks = [];
   /** @type {Map<unknown, string>} */
@@ -135,7 +213,7 @@ export function usesBlocks(html) {
     if (!target) {
       return;
     }
-    const section = sectionPath($, element);
+    const section = sectionPath($, element, order);
     const id = blockId([section, tag, target]);
     ids.set(element, id);
     blocks.push({
@@ -179,6 +257,7 @@ export function usesBlocks(html) {
 export function topicPassages(html) {
   const $ = loadHtml(html);
   const language = languageOf($);
+  const order = documentOrder($);
   /** @type {object[]} */
   const passages = [];
   const articles = $("article").toArray();
@@ -195,7 +274,7 @@ export function topicPassages(html) {
     passages.push({
       block_id: blockId(["topic", text.slice(0, 80)]),
       block_type: articles.length > 0 ? "article" : "paragraph",
-      section_path: sectionPath($, element),
+      section_path: sectionPath($, element, order),
       target_text: text,
       language,
     });

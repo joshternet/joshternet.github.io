@@ -1,0 +1,72 @@
+{% comment %}
+  Goal & Constraints:
+  One mosaic card per comparable slot. Each choice is a single row: name,
+  coverage bar, and metrics (no duplicate chart + list). Anonymous counts;
+  choice links via k7y. Inputs: slot. Heading via include.heading (h2|h3|h4).
+{% endcomment %}
+{% assign uses_card_heading = include.heading | default: 'h3' %}
+<section
+  class="uses-slot uses-card"
+  id="uses-slot-{{ slot.k30 | escape }}"
+  data-uses-slot="{{ slot.k30 | escape }}"
+  data-uses-denominator="{{ slot.k1l }}"
+>
+  {% if uses_card_heading == 'h2' %}
+    <h2 class="uses-card__title">{{ slot.k42 | escape }}</h2>
+  {% elsif uses_card_heading == 'h4' %}
+    <h4 class="uses-card__title">{{ slot.k42 | escape }}</h4>
+  {% else %}
+    <h3 class="uses-card__title">{{ slot.k42 | escape }}</h3>
+  {% endif %}
+  {% if slot.k1l == 0 or slot.k56 == null or slot.k56.size == 0 %}
+    <p class="uses-card__empty">No comparable reports.</p>
+  {% else %}
+    <ol class="uses-card__choices">
+      {% for tool in slot.k56 %}
+        {% assign uses_bar_width = 0 %}
+        {% if tool.k6 != null %}
+          {% assign uses_bar_width = tool.k6 %}
+        {% endif %}
+        <li
+          class="uses-card__choice"
+          data-uses-product="{{ tool.k7g | escape }}"
+          data-uses-count="{{ tool.k4 }}"
+          data-uses-name="{{ tool.k42 | default: tool.k7g | escape }}"
+          data-uses-share="{% if tool.k6 == nil %}{% else %}{{ tool.k6 }}{% endif %}"
+        >
+          <span class="uses-card__choice-name">
+            {% if tool.k7y and tool.k7y != '' %}
+              <a href="{{ tool.k7y | escape }}" target="_blank" rel="noopener">
+                {{- tool.k42 | default: tool.k7g | escape -}}
+              </a>
+            {% else %}
+              {{ tool.k42 | default: tool.k7g | escape }}
+            {% endif %}
+          </span>
+          <svg
+            class="uses-cov__track"
+            viewBox="0 0 100 1"
+            preserveAspectRatio="none"
+            role="presentation"
+            focusable="false"
+            aria-hidden="true"
+          >
+            <rect
+              class="uses-cov__fill"
+              x="0"
+              y="0"
+              width="{{ uses_bar_width }}"
+              height="1"
+            ></rect>
+          </svg>
+          <span class="uses-card__choice-metrics">
+            <span class="uses-card__choice-count">{{ tool.k4 }} of {{ slot.k1l }}</span>
+            <span class="uses-card__choice-share">
+              {% if tool.k6 == null %}—{% else %}{{ tool.k6 }}%{% endif %}
+            </span>
+          </span>
+        </li>
+      {% endfor %}
+    </ol>
+  {% endif %}
+</section>

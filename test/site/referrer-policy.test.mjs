@@ -8,6 +8,8 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
+import { CRAWL_KEYS } from "../../scripts/nlp/site-record.mjs";
+
 const root = fileURLToPath(new URL("../../", import.meta.url));
 
 /**
@@ -27,8 +29,8 @@ const OUTBOUND_NAV_SOURCES = [
   "_layouts/default.html",
   "_layouts/topic.html",
   "_includes/activity-card.html",
+  "_includes/network-participant-card.html",
   "_includes/site-nav-child-items.html",
-  "network.md",
   "connections.md",
   "assets/js/search.js",
   "assets/js/connections.js",
@@ -97,6 +99,7 @@ test("privacy discloses bidirectional referrers and UTM parameters", async () =>
 
 test("network cards and layout attach UTM params to outbound hrefs", async () => {
   const network = await read("network.md");
+  const card = await read("_includes/network-participant-card.html");
   const layout = await read("_layouts/default.html");
   const include = await read("_includes/outbound-href.html");
 
@@ -104,9 +107,25 @@ test("network cards and layout attach UTM params to outbound hrefs", async () =>
   assert.match(include, /outbound_scheme == 'https:\/\/'/);
   assert.match(layout, /footer_github_rel = 'me noopener'/);
   assert.match(layout, /rel="\{\{\s*footer_github_rel\s*\}\}"/);
-  assert.match(network, /include outbound-href\.html url=network_site\.origin/);
-  assert.match(network, /include outbound-href\.html url=primary_feed\.url/);
-  assert.match(network, /include outbound-href\.html url=elsewhere_link\.url/);
+  assert.match(network, /include network-participant-card\.html/);
+  assert.match(
+    card,
+    new RegExp(
+      `include outbound-href\\.html url=network_site\\.${CRAWL_KEYS.origin}`,
+    ),
+  );
+  assert.match(
+    card,
+    new RegExp(
+      `include outbound-href\\.html url=primary_feed\\.${CRAWL_KEYS.url}`,
+    ),
+  );
+  assert.match(
+    card,
+    new RegExp(
+      `include outbound-href\\.html url=elsewhere_link\\.${CRAWL_KEYS.url}`,
+    ),
+  );
   assert.match(layout, /assets\/js\/outbound-referrer\.js/);
   assert.doesNotMatch(layout, /web\.libera\.chat/);
   assert.match(

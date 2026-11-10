@@ -8,6 +8,11 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 import { formatTextForPath } from "../format-written.mjs";
+import {
+  decodeCrawlValue,
+  encodeCrawlValue,
+  isCrawlJsonPath,
+} from "./site-record.mjs";
 import { assertPublicURL, normalizeText } from "../network/lib.mjs";
 import { slugifyTopic } from "../network/connections.mjs";
 import {
@@ -68,7 +73,8 @@ yourselves also via etc com www http https html made may need now
  */
 export async function readJSONIfExists(filePath, fallback) {
   try {
-    return JSON.parse(await fs.readFile(filePath, "utf8"));
+    const parsed = JSON.parse(await fs.readFile(filePath, "utf8"));
+    return isCrawlJsonPath(filePath) ? decodeCrawlValue(parsed) : parsed;
   } catch (error) {
     if (error && error.code === "ENOENT") {
       return fallback;
@@ -88,6 +94,15 @@ export async function writeJSONAtomic(filePath, value) {
   const directory = path.dirname(filePath);
   await fs.mkdir(directory, { recursive: true });
   const temporary = `${filePath}.${process.pid}.tmp`;
+  if (isCrawlJsonPath(filePath)) {
+    await fs.writeFile(
+      temporary,
+      JSON.stringify(encodeCrawlValue(value)),
+      "utf8",
+    );
+    await fs.rename(temporary, filePath);
+    return;
+  }
   const raw = `${JSON.stringify(value, null, 2)}\n`;
   const formatted = await formatTextForPath(filePath, raw);
   await fs.writeFile(temporary, formatted, "utf8");

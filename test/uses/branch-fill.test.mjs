@@ -8,17 +8,23 @@ import os from "node:os";
 import path from "node:path";
 import { promisify } from "node:util";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
+
+import { decodeCrawlValue } from "../../scripts/nlp/site-record.mjs";
 
 import {
   adoptionChange,
   buildPeriodRollup,
+  collapseDuplicateToolRows,
   momentumAgainstPrevious,
+  preferToolRow,
   trendReady,
 } from "../../scripts/uses/aggregate.mjs";
 import {
   buildMigrationReport,
   catalogFingerprint,
   classifyClaim,
+  productShapeSlotId,
 } from "../../scripts/uses/classify.mjs";
 import {
   classifyRedirectScope,
@@ -42,6 +48,7 @@ import { buildUsageGraph } from "../../scripts/uses/graph.mjs";
 import {
   evaluateUsesQuality,
   main as qualityMain,
+  partitionIdentityCorrections,
 } from "../../scripts/uses/quality.mjs";
 import { closeMonthPeriod } from "../../scripts/uses/period-close.mjs";
 import {
@@ -57,6 +64,7 @@ import {
 import {
   createUsesAjv,
   main as validateMain,
+  runCli,
   validateRollupInvariants,
   validateUsesRoot,
 } from "../../scripts/uses/validate.mjs";
@@ -416,19 +424,68 @@ test("summary presents slots, unsorted names, and every coverage reason", async 
       ],
       slots: [
         {
+          id: "browser",
+          name: "Browsers",
+          denominator: 1,
+          products: [
+            {
+              tool_id: "firefox",
+              name: "Firefox",
+              active_member_count: 1,
+              active_member_origins: ["https://joshua.example"],
+              adoption_score: 100,
+              denominator: 1,
+              statements: [],
+            },
+          ],
+        },
+        {
+          id: "mouse",
+          name: "Mice",
+          scope: "",
+          kind: "",
+          denominator: 3,
+          origins: [],
+          products: [
+            {
+              tool_id: "mx-master-3s",
+              name: "MX Master 3S",
+              active_member_count: 1,
+              active_member_origins: ["https://joshua.example"],
+              adoption_score: 33,
+              denominator: 3,
+              statements: [],
+            },
+          ],
+        },
+        {
           id: "editor-ide",
           name: "Editors",
           scope: "Editors.",
-          denominator: 1,
-          origins: ["https://joshua.example"],
+          kind: "software",
+          denominator: 3,
+          origins: [
+            "https://joshua.example",
+            "https://a.example",
+            "https://b.example",
+          ],
           products: [
             {
               tool_id: "neovim",
               name: "Neovim",
               active_member_count: 1,
               active_member_origins: ["https://joshua.example"],
-              adoption_score: 100,
-              denominator: 1,
+              adoption_score: 33,
+              denominator: 3,
+              statements: [],
+            },
+            {
+              tool_id: "vim",
+              name: "Vim",
+              active_member_count: 1,
+              active_member_origins: ["https://a.example"],
+              adoption_score: 33,
+              denominator: 3,
               statements: [],
             },
           ],
@@ -439,12 +496,15 @@ test("summary presents slots, unsorted names, and every coverage reason", async 
     },
   });
   assert.equal(summary.early_sample, false);
-  assert.equal(
-    summary.slots[0].products[0].sources[0].page_url.includes("/uses/"),
-    true,
-  );
+  assert.equal(summary.slots[0].id, "editor-ide");
+  assert.equal(summary.slots[1].id, "mouse");
+  assert.equal(summary.slots[2].id, "browser");
+  assert.equal(summary.slots[0].products[0].active_member_count, 1);
+  assert.equal(summary.slots[0].products[0].sources, undefined);
   assert.equal(summary.unsorted[0].name, "DeskThing");
   assert.equal(summary.setup[0].name, "32GB DDR5 RAM");
+  assert.equal(summary.setup[0].site_count, 1);
+  assert.equal(summary.setup[0].sources, undefined);
   assert.equal(coverageReason("verified"), "Assessed Uses page");
   assert.equal(coverageReason("unreachable").includes("could not"), true);
   assert.equal(coverageReason("uncertain").includes("not recognized"), true);
@@ -470,8 +530,10 @@ test("summary presents slots, unsorted names, and every coverage reason", async 
       ],
       graphDocs: [{ path: "graph/2026-11.json", document: { ok: true } }],
     });
-    const written = JSON.parse(
-      await readFile(path.join(dir, "_data", "uses_summary.json"), "utf8"),
+    const written = decodeCrawlValue(
+      JSON.parse(
+        await readFile(path.join(dir, "_data", "uses_summary.json"), "utf8"),
+      ),
     );
     assert.equal(written.snapshot_id, "3.2.abc");
   } finally {
@@ -497,9 +559,17 @@ test("period close writes a rollup after the boundary", async () => {
       ),
     );
     assert.equal(saved.period, "2026-10");
+    const kept = await closeMonthPeriod({
+      usesRoot: dir,
+      period: "2026-10",
+      as_of: "2026-11-04T00:00:00.000Z",
+      eligible_origins: [],
+    });
+    assert.equal(kept.closed, true);
+    assert.equal(kept.reason, "already_complete");
     await mkdir(path.join(dir, "events", "2026"), { recursive: true });
     await writeFile(
-      path.join(dir, "events", "2026", "2026-10.json"),
+      path.join(dir, "events", "2026", "2026-09.json"),
       JSON.stringify({
         events: [
           {
@@ -518,7 +588,7 @@ test("period close writes a rollup after the boundary", async () => {
     );
     const rejected = await closeMonthPeriod({
       usesRoot: dir,
-      period: "2026-10",
+      period: "2026-09",
       as_of: "2026-11-04T00:00:00.000Z",
       eligible_origins: ["https://joshua.example"],
     });
@@ -526,6 +596,231 @@ test("period close writes a rollup after the boundary", async () => {
   } finally {
     await rm(dir, { recursive: true, force: true });
   }
+});
+
+test("preferredToolName tie-break needs two publisher labels", async () => {
+  const rollup = await buildPeriodRollup({
+    period: "2026-11",
+    granularity: "month",
+    period_start: "2026-11-01T00:00:00.000Z",
+    period_end_exclusive: "2026-12-01T00:00:00.000Z",
+    as_of: "2026-11-15T00:00:00.000Z",
+    is_complete: true,
+    eligible_origins: ["https://a.example", "https://b.example"],
+    state: {
+      members: [
+        {
+          origin: "https://a.example",
+          page_status: "verified",
+          last_valid_observation_at: "2026-11-02T00:00:00.000Z",
+          tools: [
+            {
+              tool_id: "observed:custom-editor",
+              name: "Zed Editor",
+              section: "Editors",
+              status: "current",
+              use_case_ids: [],
+            },
+          ],
+        },
+        {
+          origin: "https://b.example",
+          page_status: "verified",
+          last_valid_observation_at: "2026-11-02T00:00:00.000Z",
+          tools: [
+            {
+              tool_id: "observed:custom-editor",
+              name: "Zed",
+              section: "Editors",
+              status: "current",
+              use_case_ids: [],
+            },
+          ],
+        },
+      ],
+    },
+    period_events: [],
+    catalog: {
+      tools: [],
+      categories: [
+        {
+          id: "editor-ide",
+          name: "Editors",
+          role: "ranked",
+          scope: "Editors.",
+        },
+      ],
+      aliases: [],
+    },
+  });
+  assert.equal(
+    rollup.tools.find((tool) => tool.tool_id === "observed:custom-editor")
+      ?.name,
+    "Zed",
+  );
+});
+
+test("collapseDuplicateToolRows prefers home-slot and higher counts", () => {
+  const toolById = new Map([
+    ["neovim", { category_id: "editor-ide" }],
+    ["orphan", { category_id: "" }],
+  ]);
+  const collapsed = collapseDuplicateToolRows(
+    [
+      {
+        tool_id: "neovim",
+        slot_id: "computer",
+        active_member_count: 1,
+      },
+      {
+        tool_id: "neovim",
+        slot_id: "editor-ide",
+        active_member_count: 1,
+      },
+      {
+        tool_id: "neovim",
+        slot_id: "editor-ide",
+        active_member_count: 3,
+      },
+      {
+        tool_id: "orphan",
+        slot_id: "b-slot",
+        active_member_count: 1,
+      },
+      {
+        tool_id: "orphan",
+        slot_id: "a-slot",
+        active_member_count: 1,
+      },
+    ],
+    toolById,
+  );
+  assert.equal(collapsed.length, 2);
+  assert.equal(
+    collapsed.find((row) => row.tool_id === "neovim")?.active_member_count,
+    3,
+  );
+  assert.equal(
+    collapsed.find((row) => row.tool_id === "orphan")?.slot_id,
+    "a-slot",
+  );
+  assert.equal(
+    preferToolRow(
+      { tool_id: "neovim", slot_id: "computer", active_member_count: 1 },
+      { tool_id: "neovim", slot_id: "editor-ide", active_member_count: 1 },
+      toolById,
+    ),
+    false,
+  );
+});
+
+test("productShapeSlotId maps clear device nouns", () => {
+  assert.equal(productShapeSlotId(""), null);
+  assert.equal(productShapeSlotId("Apple Magic Trackpad"), "mouse");
+  assert.equal(productShapeSlotId("Herman Miller Aeron"), "chair");
+  assert.equal(productShapeSlotId("iPad Air 4"), "tablet");
+  assert.equal(productShapeSlotId("iPhone 13 mini"), "phone");
+  assert.equal(productShapeSlotId("Samsung 55 TV"), "display");
+  assert.equal(
+    productShapeSlotId("monitor sitting off to the side of my desk forever"),
+    null,
+  );
+  assert.equal(productShapeSlotId('Dell S3425DW 34"'), "display");
+});
+
+test("classifyClaim uses product-shape when aliases do not resolve", () => {
+  const shapedCatalog = {
+    tools: [
+      {
+        id: "apple-magic-trackpad",
+        name: "Apple Magic Trackpad",
+        category_id: "mouse",
+        aliases: [],
+      },
+      {
+        id: "aeron",
+        name: "Aeron",
+        category_id: "chair",
+        aliases: [],
+      },
+    ],
+    aliases: [],
+    categories: [
+      {
+        id: "mouse",
+        name: "Mice",
+        role: "ranked",
+        scope: "Pointing devices.",
+      },
+      {
+        id: "chair",
+        name: "Chairs",
+        role: "ranked",
+        scope: "Desk chairs.",
+      },
+    ],
+  };
+  const trackpad = classifyClaim(
+    { name: "Magic Trackpad", kind: "product", section: "Workstation" },
+    shapedCatalog,
+  );
+  assert.equal(trackpad.rule, "product-shape");
+  assert.equal(trackpad.tool_id, "apple-magic-trackpad");
+  const chair = classifyClaim(
+    {
+      name: "Herman Miller Aeron",
+      kind: "product",
+      section: "Workstation",
+    },
+    shapedCatalog,
+  );
+  assert.equal(chair.rule, "product-shape");
+  assert.equal(chair.tool_id, "aeron");
+  const slotOnly = classifyClaim(
+    { name: "office chair", kind: "product", section: "Workstation" },
+    { tools: [], aliases: [], categories: shapedCatalog.categories },
+  );
+  assert.equal(slotOnly.slot_id, "chair");
+});
+
+test("partitionIdentityCorrections counts collapses versus edits", () => {
+  const partitioned = partitionIdentityCorrections(
+    [
+      null,
+      { event_type: "correction", status: "kept", tool_id: "observed:x" },
+      {
+        event_type: "correction",
+        status: "removed",
+        tool_id: "observed:old",
+      },
+      {
+        event_type: "correction",
+        status: "removed",
+        tool_id: "",
+      },
+      {
+        event_type: "correction",
+        status: "removed",
+        tool_id: "catalog:kept",
+      },
+    ],
+    [
+      null,
+      { observed_id: "observed:old", canonical_id: "neovim" },
+      { observed_id: "observed:other", canonical_id: "" },
+    ],
+    ["neovim", "alfred"],
+  );
+  assert.equal(partitioned.collapses, 1);
+  assert.equal(partitioned.identity_corrections, 1);
+  assert.deepEqual(partitionIdentityCorrections(null, null, null), {
+    collapses: 0,
+    identity_corrections: 0,
+  });
+  assert.deepEqual(partitionIdentityCorrections([], undefined, [""]), {
+    collapses: 0,
+    identity_corrections: 0,
+  });
 });
 
 test("quality and validate entry points run", async () => {
@@ -546,11 +841,36 @@ test("quality and validate entry points run", async () => {
     ).block,
     true,
   );
-  assert.equal(await qualityMain(), 0);
   const dir = await mkdtemp(path.join(os.tmpdir(), "uses-validate-"));
   try {
+    assert.equal(
+      await qualityMain([
+        "--metrics",
+        path.join(dir, "missing-metrics.json"),
+        "--baseline",
+        path.join(dir, "missing-baseline.json"),
+      ]),
+      0,
+    );
     const code = await validateMain([`--root=${dir}`]);
     assert.equal(code, 0);
+    const validateModule = fileURLToPath(
+      new URL("../../scripts/uses/validate.mjs", import.meta.url),
+    );
+    assert.equal(await runCli(), null);
+    assert.equal(await runCli(""), null);
+    assert.equal(await runCli(path.join(dir, "other.mjs")), null);
+    assert.equal(await runCli(validateModule, [`--root=${dir}`]), 0);
+    const previousArgv = process.argv;
+    process.argv = [previousArgv[0], previousArgv[1], `--root=${dir}`];
+    try {
+      assert.equal(await validateMain(), 0);
+      assert.equal(await runCli(validateModule), 0);
+    } finally {
+      process.argv = previousArgv;
+    }
+    assert.equal((await validateUsesRoot(dir)).ok, true);
+    assert.equal((await validateUsesRoot(dir, undefined)).ok, true);
     const broken = path.join(dir, "broken");
     await mkdir(path.join(broken, "events", "2026"), { recursive: true });
     await writeFile(
@@ -578,6 +898,10 @@ test("quality and validate entry points run", async () => {
     assert.equal(failed, 1);
     const qualityRun = await execFileAsync(process.execPath, [
       path.join(repoRoot, "scripts", "uses", "quality.mjs"),
+      "--metrics",
+      path.join(dir, "missing-metrics.json"),
+      "--baseline",
+      path.join(dir, "missing-baseline.json"),
     ]);
     assert.match(qualityRun.stdout, /uses:quality ok/);
     const validateRun = await execFileAsync(process.execPath, [
@@ -821,6 +1145,9 @@ test("discovery, evidence, extract, and store edge paths", async () => {
   assert.equal(publicToolName("", "neovim"), "neovim");
   assert.equal(isNamedEntity("a"), false);
   assert.equal(isReportableUseLabel("A"), false);
+  assert.equal(isReportableUseLabel("More"), false);
+  assert.equal(isReportableUseLabel("Photos"), false);
+  assert.equal(isReportableUseLabel("Resume"), false);
   assert.equal(observedToolId(""), "");
   assert.equal(contentFingerprint("same"), contentFingerprint("same"));
   assert.equal(
@@ -1020,6 +1347,16 @@ test("discovery, evidence, extract, and store edge paths", async () => {
           active_member_count: -1,
           active_member_origins: [],
           adoption_score: -1,
+        },
+        {
+          tool_id: "flsun-qq-s-pro",
+          count_basis: "units",
+          active_member_count: 1,
+          active_member_origins: [
+            "https://joshua.example",
+            "https://other.example",
+          ],
+          adoption_score: null,
         },
       ],
     }).length > 0,

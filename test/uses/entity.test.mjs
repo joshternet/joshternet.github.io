@@ -14,10 +14,10 @@ import { buildEvidenceRecords } from "../../scripts/uses/evidence.mjs";
 import { extractUsesFromHtml } from "../../scripts/uses/extract.mjs";
 import { reconcileMemberUsage } from "../../scripts/uses/reconcile.mjs";
 import { replayState } from "../../scripts/uses/store.mjs";
-import { buildUsesSummary } from "../../scripts/uses/view.mjs";
+import { buildUsesSummary, coverageReason } from "../../scripts/uses/view.mjs";
 
 const NO_TREND =
-  "History starts with the first recorded observations. There isn’t enough comparable history to show a trend yet, but you can explore the current snapshot and its sources.";
+  "History starts with the first recorded observations. There isn’t enough comparable history to show a trend yet, but you can explore the current anonymous snapshot.";
 
 const catalog = { tools: [], aliases: [], useCases: [] };
 
@@ -63,6 +63,41 @@ test("structure keeps names whole and leaves qualifiers as context", async () =>
   assert.equal(byLabel.get("@joshuabaker").kind, "unresolved");
   assert.equal(byLabel.has("Software"), false);
   assert.equal(byLabel.get("Apple Magic Keyboard").kind, "product");
+});
+
+test("outline section headings are not products", () => {
+  const result = extractUsesFromHtml(`
+    <h2>Software</h2>
+    <p>I write and ship tools for the open web.</p>
+    <h2>Hardware</h2>
+    <p>Desk gear stays with the setup notes below.</p>
+    <h2>Visual Studio Code</h2>
+    <p>My daily editor.</p>
+  `);
+  const labels = result.items.map((item) => item.label);
+  assert.equal(labels.includes("Software"), false);
+  assert.equal(labels.includes("Hardware"), false);
+  assert.equal(labels.includes("Visual Studio Code"), true);
+});
+
+test("Website section headings are not phones; paragraph tools stay under Website", () => {
+  const result = extractUsesFromHtml(`
+    <article>
+      <h2>Phone 📱</h2>
+      <h3>Hardware</h3>
+      <p>Samsung S9+</p>
+      <h3>Software</h3>
+      <h2>Website 🌐</h2>
+      <p><a href="https://gohugo.io/">Hugo</a></p>
+    </article>
+  `);
+  const byLabel = new Map(result.items.map((item) => [item.label, item]));
+  assert.equal(byLabel.has("Website 🌐"), false);
+  assert.equal(byLabel.has("Phone 📱"), false);
+  assert.equal(byLabel.has("Hugo"), true);
+  assert.equal(byLabel.get("Hugo").section_path, "Website 🌐");
+  assert.equal(byLabel.has("Samsung S9+"), true);
+  assert.match(byLabel.get("Samsung S9+").section_path, /Phone/);
 });
 
 test("prose links and reason lists are not extra products", () => {
@@ -193,6 +228,104 @@ test("correction replaces a clipped id without an adoption event", () => {
   assert.deepEqual(tools, ["observed:netlify"]);
 });
 
+test("a canonical and observed pair collapses without an adoption event", () => {
+  const catalog = {
+    tools: [
+      { id: "apple-magic-keyboard", name: "Apple Magic Keyboard", aliases: [] },
+    ],
+    aliases: [],
+  };
+  const observedAt = "2026-11-05T12:00:00.000Z";
+  const keyboard = {
+    origin: "https://joshcox.co.uk",
+    page_url: "https://joshcox.co.uk/uses/",
+    label: "Apple Magic Keyboard",
+    name: "Apple Magic Keyboard",
+    comparison: "apple magic keyboard",
+    tool_id: "apple-magic-keyboard",
+    unresolved: false,
+    status: "current",
+    use_case_ids: [],
+    section: "Workstation",
+    section_path: "Workstation",
+    context: "Low-profile and tidy.",
+    kind: "product",
+    excerpt: "Low-profile and tidy.",
+    source_hash: "sha256:keyboard",
+    confidence: 0.95,
+  };
+  const previous = {
+    origin: "https://joshcox.co.uk",
+    page_url: "https://joshcox.co.uk/uses/",
+    page_status: "verified",
+    tools: [
+      {
+        tool_id: "apple-magic-keyboard",
+        name: "Apple Magic Keyboard",
+        status: "current",
+        use_case_ids: [],
+        section: "16” second monitor",
+        section_path: "Workstation / 16” second monitor",
+        context: "Low-profile and tidy.",
+        kind: "product",
+      },
+      {
+        tool_id: "observed:apple-magic-keyboard",
+        name: "Apple Magic Keyboard",
+        status: "current",
+        use_case_ids: [],
+        section: "Workstation",
+        context: "Low-profile and tidy.",
+        kind: "product",
+      },
+    ],
+  };
+  const reconciled = reconcileMemberUsage({
+    previous,
+    origin: previous.origin,
+    page_url: previous.page_url,
+    page_status: "verified",
+    observed_at: observedAt,
+    evidence: [keyboard],
+    pageComplete: true,
+    catalog,
+  });
+  assert.equal(
+    reconciled.events.some((event) => event.event_type === "usage_added"),
+    false,
+  );
+  assert.equal(
+    reconciled.events.some((event) => event.event_type === "usage_removed"),
+    false,
+  );
+  const removed = reconciled.events.find(
+    (event) => event.tool_id === "observed:apple-magic-keyboard",
+  );
+  assert.equal(removed.event_type, "correction");
+  assert.equal(removed.status, "removed");
+  const replayed = replayState([
+    {
+      ...removed,
+      event_type: "usage_added",
+      status: "current",
+      tool_id: "observed:apple-magic-keyboard",
+      observed_at: "2026-11-05T00:00:00.000Z",
+    },
+    {
+      ...removed,
+      event_type: "usage_added",
+      status: "current",
+      tool_id: "apple-magic-keyboard",
+      observed_at: "2026-11-05T00:00:00.000Z",
+    },
+    removed,
+  ]);
+  assert.deepEqual(
+    replayed.members[0].tools.map((tool) => tool.tool_id),
+    ["apple-magic-keyboard"],
+  );
+});
+
 test("a smaller denominator is not an adoption change", () => {
   const previous = {
     extractor_version: 2,
@@ -214,7 +347,7 @@ test("a smaller denominator is not an adoption change", () => {
   );
 });
 
-test("ledger keeps an empty assessed page and drops a homepage copy", async () => {
+test("homepage copy is out of scope and summary stays anonymous", async () => {
   const copy = await fixture("homepage-copy.html");
   assert.equal(usesHtmlRepeatsHomepage(copy, copy), true);
   const summary = buildUsesSummary({
@@ -245,17 +378,11 @@ test("ledger keeps an empty assessed page and drops a homepage copy", async () =
       },
     ],
   });
-  const empty = summary.ledger.find(
-    (row) => row.origin === "https://joshua.example",
-  );
-  const home = summary.ledger.find(
-    (row) => row.origin === "https://other.example",
-  );
-  assert.equal(empty.in_denominator, true);
-  assert.equal(empty.outcome, "verified_empty");
-  assert.equal(home.in_denominator, false);
-  assert.match(home.reason, /homepage/i);
+  assert.equal(summary.ledger, undefined);
+  assert.equal(summary.verified_uses_member_count, 1);
+  assert.equal(summary.eligible_member_count, 2);
   assert.equal(summary.trend_ready, false);
+  assert.match(coverageReason("out_of_scope"), /homepage/i);
 });
 
 test("history copy states that a trend is not ready", async () => {

@@ -46,6 +46,27 @@ test("GENERATED_PRETTIER_GLOBS covers sync-written Prettier targets", () => {
   );
 });
 
+test("liquid-html is scoped to Jekyll includes and layouts only", async () => {
+  const raw = await fs.readFile(
+    path.join(REPO_ROOT, ".prettierrc.json"),
+    "utf8",
+  );
+  const config = JSON.parse(raw);
+  assert.deepEqual(config.plugins, ["@shopify/prettier-plugin-liquid"]);
+  assert.equal(config.overrides?.length, 1);
+  assert.deepEqual(config.overrides[0].files, [
+    "_includes/**/*.html",
+    "_layouts/**/*.html",
+  ]);
+  assert.equal(config.overrides[0].options?.parser, "liquid-html");
+
+  const ignore = await fs.readFile(
+    path.join(REPO_ROOT, ".prettierignore"),
+    "utf8",
+  );
+  assert.match(ignore, /test\/fixtures\/\*\*\/\*\.html/);
+});
+
 test("resolveGeneratedPaths: expands dir/*.ext and concrete files", async () => {
   const paths = await resolveGeneratedPaths(REPO_ROOT, [
     "_data/*.json",
@@ -83,7 +104,7 @@ test("resolveGeneratedPaths: rejects unsupported glob shapes", async () => {
 
 test("formatTextForPath: formats messy JSON with repo Prettier config", async () => {
   const messy = '{"alpha":1,"beta":2}';
-  const filePath = path.join(REPO_ROOT, "_data", "format-written-probe.json");
+  const filePath = path.join(REPO_ROOT, ".tmp", "format-written-probe.json");
   const formatted = await formatTextForPath(filePath, messy, {
     root: REPO_ROOT,
   });
@@ -130,7 +151,7 @@ test("formatTextForPath: returns text unchanged for prettierignored markdown", a
 
 test("formatTextForPath: empty root option falls back to repo root", async () => {
   const messy = '{"k":1}';
-  const filePath = path.join(REPO_ROOT, "_data", "format-written-probe.json");
+  const filePath = path.join(REPO_ROOT, ".tmp", "format-written-probe.json");
   const formatted = await formatTextForPath(filePath, messy, { root: "" });
   assert.equal(JSON.parse(formatted).k, 1);
   assert.match(formatted, /\n$/);
@@ -153,14 +174,14 @@ test("formatTextForPath: uses package.json Prettier config for paths outside the
 });
 
 test("formatTextForPath: default options use repo root", async () => {
-  const filePath = path.join(REPO_ROOT, "_data", "format-written-probe.json");
+  const filePath = path.join(REPO_ROOT, ".tmp", "format-written-probe.json");
   const formatted = await formatTextForPath(filePath, '{"solo":true}');
   assert.equal(JSON.parse(formatted).solo, true);
 });
 
 test("formatTextForPath: invalid JSON keeps original text instead of throwing", async () => {
   const raw = "{not-json";
-  const filePath = path.join(REPO_ROOT, "_data", "format-written-probe.json");
+  const filePath = path.join(REPO_ROOT, ".tmp", "format-written-probe.json");
   const { lines, logError } = captureLogError();
   const formatted = await formatTextForPath(filePath, raw, {
     root: REPO_ROOT,
@@ -175,7 +196,7 @@ test("formatTextForPath: invalid JSON keeps original text instead of throwing", 
 
 test("formatTextForPath: strict mode rethrows format failures", async () => {
   const raw = "{not-json";
-  const filePath = path.join(REPO_ROOT, "_data", "format-written-probe.json");
+  const filePath = path.join(REPO_ROOT, ".tmp", "format-written-probe.json");
   await assert.rejects(
     () =>
       formatTextForPath(filePath, raw, {
@@ -190,7 +211,7 @@ test("formatTextForPath: getFileInfo failure keeps original text", async () => {
   const raw = '{"keep":true}';
   const { lines, logError } = captureLogError();
   const formatted = await formatTextForPath(
-    path.join(REPO_ROOT, "_data", "format-written-probe.json"),
+    path.join(REPO_ROOT, ".tmp", "format-written-probe.json"),
     raw,
     {
       root: REPO_ROOT,
@@ -219,7 +240,7 @@ test("formatTextForPath: strict getFileInfo failure throws", async () => {
   await assert.rejects(
     () =>
       formatTextForPath(
-        path.join(REPO_ROOT, "_data", "format-written-probe.json"),
+        path.join(REPO_ROOT, ".tmp", "format-written-probe.json"),
         '{"keep":true}',
         {
           root: REPO_ROOT,
@@ -245,7 +266,7 @@ test("formatTextForPath: resolveConfig failure keeps original text", async () =>
   const raw = '{"keep":true}';
   const { lines, logError } = captureLogError();
   const formatted = await formatTextForPath(
-    path.join(REPO_ROOT, "_data", "format-written-probe.json"),
+    path.join(REPO_ROOT, ".tmp", "format-written-probe.json"),
     raw,
     {
       root: REPO_ROOT,
@@ -291,7 +312,7 @@ test("formatTextForPath: soft skips default to stderr", async () => {
   try {
     const raw = "{not-json";
     const formatted = await formatTextForPath(
-      path.join(REPO_ROOT, "_data", "format-written-probe.json"),
+      path.join(REPO_ROOT, ".tmp", "format-written-probe.json"),
       raw,
       { root: REPO_ROOT },
     );
@@ -310,7 +331,7 @@ test("formatTextForPath: strict resolveConfig failure throws", async () => {
   await assert.rejects(
     () =>
       formatTextForPath(
-        path.join(REPO_ROOT, "_data", "format-written-probe.json"),
+        path.join(REPO_ROOT, ".tmp", "format-written-probe.json"),
         '{"keep":true}',
         {
           root: REPO_ROOT,
@@ -458,6 +479,22 @@ test("formatGeneratedOutputs: strict mode stringifies non-Error throw values", a
         }),
       /plain-string-boom/,
     );
+  } finally {
+    await fs.rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("formatters leave crawl JSON compact", async () => {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), "format-crawl-"));
+  const filePath = path.join(dir, "_data", "content.json");
+  const compact = '{"k7c":"Note"}';
+  try {
+    await fs.mkdir(path.dirname(filePath), { recursive: true });
+    await fs.writeFile(filePath, compact, "utf8");
+    const formatted = await formatTextForPath(filePath, compact, { root: dir });
+    assert.equal(formatted, compact);
+    await formatGeneratedOutputs({ root: dir, globs: ["_data/*.json"] });
+    assert.equal(await fs.readFile(filePath, "utf8"), compact);
   } finally {
     await fs.rm(dir, { recursive: true, force: true });
   }

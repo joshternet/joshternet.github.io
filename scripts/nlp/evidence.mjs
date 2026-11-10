@@ -212,6 +212,7 @@ export const NON_SUBJECT_UNIGRAMS = new Set([
   "friend",
   "fun",
   "funny",
+  "general",
   "get",
   "good",
   "got",

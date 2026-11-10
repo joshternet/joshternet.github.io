@@ -9,6 +9,8 @@ import {
   allowsCommunityTopics,
   allowsHeuristicTopics,
   classifyPageRole,
+  directoryIndexRole,
+  isDirectoryIndexPath,
   topicContributionForRole,
 } from "../../scripts/nlp/page-role.mjs";
 
@@ -241,6 +243,56 @@ test("classifyPageRole: blog/posts path without schema → article", () => {
     classifyPageRole("https://joshbeard.com/tips/mutt-1password/"),
     "article",
   );
+});
+
+test("classifyPageRole: speaking archives and collection indexes", () => {
+  assert.equal(
+    classifyPageRole("https://member.example/speaking/"),
+    "speaking-archive",
+  );
+  assert.equal(
+    classifyPageRole("https://member.example/talks.html"),
+    "speaking-archive",
+  );
+  assert.equal(
+    classifyPageRole("https://member.example/presentations"),
+    "speaking-archive",
+  );
+  assert.equal(
+    classifyPageRole("https://member.example/slides.php"),
+    "speaking-archive",
+  );
+  assert.equal(
+    classifyPageRole("https://member.example/html-sitemap/"),
+    "collection",
+  );
+  assert.equal(
+    classifyPageRole("https://member.example/sitemap"),
+    "collection",
+  );
+  assert.equal(
+    classifyPageRole("https://member.example/collections/"),
+    "collection",
+  );
+  assert.equal(classifyPageRole("https://member.example/tools/"), "collection");
+  assert.equal(
+    classifyPageRole("https://member.example/tools/calendar/"),
+    "unknown",
+  );
+  assert.equal(topicContributionForRole("collection"), "limited");
+  assert.equal(topicContributionForRole("speaking-archive"), "limited");
+  assert.equal(allowsHeuristicTopics("collection"), false);
+  assert.equal(allowsCommunityTopics("speaking-archive"), true);
+  assert.equal(directoryIndexRole("speaking"), "speaking-archive");
+  assert.equal(directoryIndexRole("tools"), "collection");
+  assert.equal(directoryIndexRole("about"), "");
+  assert.equal(directoryIndexRole(""), "");
+  assert.equal(isDirectoryIndexPath("https://member.example/speaking/"), true);
+  assert.equal(
+    isDirectoryIndexPath("https://member.example/tools/calendar/"),
+    false,
+  );
+  assert.equal(isDirectoryIndexPath("not a url"), false);
 });
 
 test("classifyPageRole: unrecognised path → unknown", () => {

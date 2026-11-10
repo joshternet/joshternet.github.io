@@ -1,1105 +1,181 @@
 {
   "merged_identities": [
     {
-      "origin": "https://joshcox.co.uk",
-      "name": "Apple Magic Keyboard",
-      "stored_id": "observed:apple-magic-keyboard",
-      "tool_id": "apple-magic-keyboard",
-      "slot_id": "keyboard",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshcox.co.uk",
-      "name": "Apple Magic Mouse",
-      "stored_id": "observed:apple-magic-mouse",
-      "tool_id": "apple-magic-mouse",
-      "slot_id": "mouse",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshcox.co.uk",
-      "name": "Claude",
-      "stored_id": "observed:claude",
-      "tool_id": "claude",
-      "slot_id": "ai-assistant",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshcox.co.uk",
-      "name": "Cloudflare",
-      "stored_id": "observed:cloudflare",
-      "tool_id": "cloudflare",
-      "slot_id": "edge-cdn",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshcox.co.uk",
-      "name": "Mac mini (M4 Pro, 24GB RAM)",
-      "stored_id": "observed:mac-mini-m4-pro-24gb-ram",
-      "tool_id": "mac-mini",
-      "slot_id": "computer",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshcox.co.uk",
-      "name": "Mimestream",
-      "stored_id": "observed:mimestream",
-      "tool_id": "mimestream",
-      "slot_id": "email-app",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshcox.co.uk",
-      "name": "Netlify",
-      "stored_id": "observed:netlify",
-      "tool_id": "netlify",
-      "slot_id": "hosting",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshcox.co.uk",
-      "name": "Osaurus",
-      "stored_id": "observed:osaurus",
-      "tool_id": "osaurus",
-      "slot_id": "local-model",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshcox.co.uk",
-      "name": "Things 3",
-      "stored_id": "observed:things-3",
-      "tool_id": "things-3",
-      "slot_id": "tasks",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshcox.co.uk",
-      "name": "Vercel",
-      "stored_id": "observed:vercel",
-      "tool_id": "vercel",
-      "slot_id": "hosting",
-      "rule": "catalog"
-    },
-    {
       "origin": "https://joshmuller.ca",
-      "name": "BART",
-      "stored_id": "observed:bart",
-      "tool_id": "bart-study",
-      "slot_id": "study-software",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "Bitwarden",
-      "stored_id": "observed:bitwarden",
-      "tool_id": "bitwarden",
-      "slot_id": "password-manager",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "Brave",
-      "stored_id": "observed:brave",
-      "tool_id": "brave",
-      "slot_id": "browser",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "Kindle",
-      "stored_id": "observed:kindle",
-      "tool_id": "kindle",
-      "slot_id": "reading-app",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "neomutt",
-      "stored_id": "observed:neomutt",
-      "tool_id": "neomutt",
-      "slot_id": "email-app",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "Newsboat",
-      "stored_id": "observed:newsboat",
-      "tool_id": "newsboat",
-      "slot_id": "feed-reader",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "OCReader",
-      "stored_id": "observed:ocreader",
-      "tool_id": "ocreader",
-      "slot_id": "feed-reader",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "ReadEra",
-      "stored_id": "observed:readera",
-      "tool_id": "readera",
-      "slot_id": "reading-app",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "Waha",
-      "stored_id": "observed:waha",
-      "tool_id": "waha",
-      "slot_id": "reading-app",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "YouVersion",
-      "stored_id": "observed:youversion",
-      "tool_id": "youversion",
-      "slot_id": "study-software",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "1Password",
-      "stored_id": "observed:1password",
-      "tool_id": "1password",
-      "slot_id": "password-manager",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Ableton Live 11",
-      "stored_id": "observed:ableton-live-11",
-      "tool_id": "ableton-live",
-      "slot_id": "music-production",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Alacritty",
-      "stored_id": "observed:alacritty",
-      "tool_id": "alacritty",
-      "slot_id": "terminal-emulator",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Amazon eero Pro 6 mesh Wi-Fi 6 system",
-      "stored_id": "observed:amazon-eero-pro-6-mesh-wi-fi-6-system",
-      "tool_id": "eero-pro-6",
-      "slot_id": "networking",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Amazon Simple Storage Service (S3)",
-      "stored_id": "observed:amazon-simple-storage-service-s3",
-      "tool_id": "amazon-s3",
-      "slot_id": "object-storage",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "APC UPS",
-      "stored_id": "observed:apc-ups",
-      "tool_id": "apc-ups",
-      "slot_id": "power",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Apple Magic Keyboard",
-      "stored_id": "observed:apple-magic-keyboard",
-      "tool_id": "apple-magic-keyboard",
-      "slot_id": "keyboard",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "ARRIS SURFboard SB8200 DOCSIS 3.1 Cable Modem",
-      "stored_id": "observed:arris-surfboard-sb8200-docsis-3-1-cable-modem",
-      "tool_id": "surfboard-sb8200",
-      "slot_id": "networking",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Autonomous.ai Desk",
-      "stored_id": "observed:autonomous-ai-desk",
-      "tool_id": "autonomous-desk",
-      "slot_id": "desk",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Back the Fuck Up",
-      "stored_id": "observed:back-the-fuck-up",
-      "tool_id": "back-the-fuck-up",
-      "slot_id": "backup",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "ChatGPT",
-      "stored_id": "observed:chatgpt",
-      "tool_id": "chatgpt",
-      "slot_id": "ai-assistant",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Claude Code",
-      "stored_id": "observed:claude-code",
-      "tool_id": "claude-code",
-      "slot_id": "coding-agent",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "CODE Keyboard",
-      "stored_id": "observed:code-keyboard",
-      "tool_id": "code-keyboard",
-      "slot_id": "keyboard",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Debian",
-      "stored_id": "observed:debian",
-      "tool_id": "debian",
-      "slot_id": "operating-system",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Dell 38\" Ultrawide",
-      "stored_id": "observed:dell-38-ultrawide",
-      "tool_id": "dell-38",
-      "slot_id": "display",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "FL Studio",
-      "stored_id": "observed:fl-studio",
-      "tool_id": "fl-studio",
-      "slot_id": "music-production",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Focusrite Scarlett",
-      "stored_id": "observed:focusrite-scarlett",
-      "tool_id": "focusrite-scarlett",
-      "slot_id": "audio-interface",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Forgejo",
-      "stored_id": "observed:forgejo",
-      "tool_id": "forgejo",
-      "slot_id": "git-forge",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Forgejo Runner",
-      "stored_id": "observed:forgejo-runner",
-      "tool_id": "forgejo-runner",
-      "slot_id": "ci",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "GNOME",
-      "stored_id": "observed:gnome",
-      "tool_id": "gnome",
-      "slot_id": "desktop",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "GoAccess",
-      "stored_id": "observed:goaccess",
-      "tool_id": "goaccess",
-      "slot_id": "analytics",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "In dire need of replacement Ikea chair",
-      "stored_id": "observed:in-dire-need-of-replacement-ikea-chair",
-      "tool_id": "ikea-chair",
-      "slot_id": "chair",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Intel NUC - 32 GB - 4 TB",
-      "stored_id": "observed:intel-nuc-32-gb-4-tb",
-      "tool_id": "intel-nuc",
-      "slot_id": "computer",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "iPhone 17 Pro",
-      "stored_id": "observed:iphone-17-pro",
-      "tool_id": "iphone-17-pro",
+      "name": "Samsung S9+ QCY Earbuds",
+      "stored_id": "observed:samsung-s9+-qcy-earbuds",
+      "tool_id": "observed:samsung-s9+-qcy-earbuds",
       "slot_id": "phone",
-      "rule": "catalog"
+      "rule": "section"
     },
     {
       "origin": "https://joshtronic.com",
-      "name": "Kagi",
-      "stored_id": "observed:kagi",
-      "tool_id": "kagi",
-      "slot_id": "search",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Kindle Paperwhite Signature Edition",
-      "stored_id": "observed:kindle-paperwhite-signature-edition",
-      "tool_id": "kindle-paperwhite",
-      "slot_id": "reader-hardware",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Lenovo ThinkPad X1 Carbon",
-      "stored_id": "observed:lenovo-thinkpad-x1-carbon",
-      "tool_id": "thinkpad-x1",
-      "slot_id": "computer",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Linode",
-      "stored_id": "observed:linode",
-      "tool_id": "linode",
-      "slot_id": "hosting",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Logic Pro",
-      "stored_id": "observed:logic-pro",
-      "tool_id": "logic-pro",
-      "slot_id": "music-production",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Logitech MX Ergo",
-      "stored_id": "observed:logitech-mx-ergo",
-      "tool_id": "logitech-mx-ergo",
-      "slot_id": "mouse",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "M-Audio MIDI interface",
-      "stored_id": "observed:m-audio-midi-interface",
-      "tool_id": "maudio-midi",
-      "slot_id": "midi-interface",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "MacBook Pro - 14-inch",
-      "stored_id": "observed:macbook-pro-14-inch",
-      "tool_id": "macbook-pro-14",
-      "slot_id": "computer",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "MariaDB",
-      "stored_id": "observed:mariadb",
-      "tool_id": "mariadb",
-      "slot_id": "database",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "MINISFORUM AMD Ryzen 9 9955HX MS-A2 Mini PC",
-      "stored_id": "observed:minisforum-amd-ryzen-9-9955hx-ms-a2-mini-pc",
-      "tool_id": "minisforum-ms-a2",
-      "slot_id": "computer",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "MINISFORUM Intel i5-12600H MS-01 Mini PC - 64 GB - 12 TB",
-      "stored_id": "observed:minisforum-intel-i5-12600h-ms-01-mini-pc-64-gb-12-tb",
-      "tool_id": "minisforum-ms-01",
-      "slot_id": "computer",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Miyoo",
-      "stored_id": "observed:miyoo",
-      "tool_id": "miyoo",
-      "slot_id": "game-console",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "NameSilo",
-      "stored_id": "observed:namesilo",
-      "tool_id": "namesilo",
-      "slot_id": "registrar",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Nintendo 3DS XL, Switch OLED, Switch 2",
-      "stored_id": "observed:nintendo-3ds-xl-switch-oled-switch-2",
-      "tool_id": "nintendo-handhelds",
-      "slot_id": "game-console",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Node.js",
-      "stored_id": "observed:node-js",
-      "tool_id": "nodejs",
-      "slot_id": "runtime",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "PHP",
-      "stored_id": "observed:php",
-      "tool_id": "php",
-      "slot_id": "programming-language",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Python",
-      "stored_id": "observed:python",
-      "tool_id": "python",
-      "slot_id": "programming-language",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Rode NT1",
-      "stored_id": "observed:rode-nt1",
-      "tool_id": "rode-nt1",
-      "slot_id": "microphone",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Rosé Pine",
-      "stored_id": "observed:rose-pine",
-      "tool_id": "rose-pine",
-      "slot_id": "theme",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Steam Deck OLED",
-      "stored_id": "observed:steam-deck-oled",
-      "tool_id": "steam-deck",
-      "slot_id": "game-console",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "tmux",
-      "stored_id": "observed:tmux",
-      "tool_id": "tmux",
-      "slot_id": "multiplexer",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "TypeScript",
-      "stored_id": "observed:typescript",
-      "tool_id": "typescript",
-      "slot_id": "programming-language",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "UptimeRobot",
-      "stored_id": "observed:uptimerobot",
-      "tool_id": "uptimerobot",
-      "slot_id": "monitoring",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Various retro consoles from Anbernic",
-      "stored_id": "observed:various-retro-consoles-from-anbernic",
-      "tool_id": "anbernic",
-      "slot_id": "game-console",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Victor Mono",
-      "stored_id": "observed:victor-mono",
-      "tool_id": "victor-mono",
-      "slot_id": "font",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Vim",
-      "stored_id": "observed:vim",
-      "tool_id": "vim",
-      "slot_id": "editor-ide",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Z shell",
-      "stored_id": "observed:z-shell",
-      "tool_id": "zsh",
-      "slot_id": "shell",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "DartNode",
-      "stored_id": "observed:dartnode",
-      "tool_id": "dartnode",
-      "slot_id": "hosting",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Debian",
-      "stored_id": "observed:debian",
-      "tool_id": "debian",
-      "slot_id": "operating-system",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "FastMail",
-      "stored_id": "observed:fastmail",
-      "tool_id": "fastmail",
-      "slot_id": "email-host",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Fedora",
-      "stored_id": "observed:fedora",
-      "tool_id": "fedora",
-      "slot_id": "operating-system",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Forgejo",
-      "stored_id": "observed:forgejo",
-      "tool_id": "forgejo",
-      "slot_id": "git-forge",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Framework laptop (work)",
-      "stored_id": "observed:framework-laptop-work",
-      "tool_id": "framework-laptop",
-      "slot_id": "computer",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Google Pixel 9a phone",
-      "stored_id": "observed:google-pixel-9a-phone",
-      "tool_id": "pixel-9a",
-      "slot_id": "phone",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "GrapheneOS",
-      "stored_id": "observed:grapheneos",
-      "tool_id": "grapheneos",
-      "slot_id": "operating-system",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "HedgeDoc",
-      "stored_id": "observed:hedgedoc",
-      "tool_id": "hedgedoc",
-      "slot_id": "notes",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "High-output LED light",
-      "stored_id": "observed:high-output-led-light",
-      "tool_id": "led-light",
-      "slot_id": "lighting",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "IKEA REGOLIT shade",
-      "stored_id": "observed:ikea-regolit-shade",
-      "tool_id": "ikea-regolit",
-      "slot_id": "lampshade",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Jujutsu",
-      "stored_id": "observed:jujutsu",
-      "tool_id": "jujutsu",
-      "slot_id": "version-control",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "KeePassXC",
-      "stored_id": "observed:keepassxc",
-      "tool_id": "keepassxc",
-      "slot_id": "password-manager",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Lenovo LOQ laptop (personal)",
-      "stored_id": "observed:lenovo-loq-laptop-personal",
-      "tool_id": "lenovo-loq",
-      "slot_id": "computer",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Mise",
-      "stored_id": "observed:mise",
-      "tool_id": "mise",
-      "slot_id": "dev-environment",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "MOKOSE CS-lens 4k webcam",
-      "stored_id": "observed:mokose-cs-lens-4k-webcam",
-      "tool_id": "mokose-webcam",
-      "slot_id": "camera",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "NameSilo",
-      "stored_id": "observed:namesilo",
-      "tool_id": "namesilo",
-      "slot_id": "registrar",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Obsidian",
-      "stored_id": "observed:obsidian",
-      "tool_id": "obsidian",
-      "slot_id": "notes",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Shaarli",
-      "stored_id": "observed:shaarli",
-      "tool_id": "shaarli",
-      "slot_id": "bookmark",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Sony WH1000XM2 headphones",
-      "stored_id": "observed:sony-wh1000xm2-headphones",
-      "tool_id": "sony-wh1000xm2",
-      "slot_id": "headphones",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "SyncThing",
-      "stored_id": "observed:syncthing",
-      "tool_id": "syncthing",
-      "slot_id": "file-sync",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "TONTRU 101-key mechanical keyboard. It’s affordable",
-      "stored_id": "observed:tontru-101-key-mechanical-keyboard-it-s-affordable",
-      "tool_id": "tontru",
-      "slot_id": "keyboard",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "TOSLINK-to-bluetooth adapter",
-      "stored_id": "observed:toslink-to-bluetooth-adapter",
-      "tool_id": "toslink-bluetooth",
-      "slot_id": "audio-adapter",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Umami",
-      "stored_id": "observed:umami",
-      "tool_id": "umami",
-      "slot_id": "analytics",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Unitek KVM switch",
-      "stored_id": "observed:unitek-kvm-switch",
-      "tool_id": "unitek-kvm",
-      "slot_id": "kvm",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "USB microphone with boom",
-      "stored_id": "observed:usb-microphone-with-boom",
-      "tool_id": "usb-microphone-boom",
-      "slot_id": "microphone",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "VSCodium",
-      "stored_id": "observed:vscodium",
-      "tool_id": "vscodium",
-      "slot_id": "editor-ide",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Webhook",
-      "stored_id": "observed:webhook",
-      "tool_id": "webhook-deploy",
-      "slot_id": "deploy-hook",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Wide IKEA GALANT desk (discontinued)",
-      "stored_id": "observed:wide-ikea-galant-desk-discontinued",
-      "tool_id": "ikea-galant",
-      "slot_id": "desk",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Brave",
-      "stored_id": "observed:brave",
-      "tool_id": "brave",
-      "slot_id": "browser",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Bruno",
-      "stored_id": "observed:bruno",
-      "tool_id": "bruno",
-      "slot_id": "api-client",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Corne Keyboard",
-      "stored_id": "observed:corne-keyboard",
-      "tool_id": "corne",
-      "slot_id": "keyboard",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Emeet S600",
-      "stored_id": "observed:emeet-s600",
-      "tool_id": "emeet-s600",
-      "slot_id": "camera",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Fish",
-      "stored_id": "observed:fish",
-      "tool_id": "fish",
-      "slot_id": "shell",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "HÅG Capisco",
-      "stored_id": "observed:hag-capisco",
-      "tool_id": "hag-capisco",
-      "slot_id": "chair",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "iTerm",
-      "stored_id": "observed:iterm",
-      "tool_id": "iterm",
-      "slot_id": "terminal-emulator",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Keyboard.io Atreus",
-      "stored_id": "observed:keyboard-io-atreus",
-      "tool_id": "atreus",
-      "slot_id": "keyboard",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Massdrop X Sennheiser HD 6XX headphones",
-      "stored_id": "observed:massdrop-x-sennheiser-hd-6xx-headphones",
-      "tool_id": "hd-6xx",
-      "slot_id": "headphones",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "OBS",
-      "stored_id": "observed:obs",
-      "tool_id": "obs",
-      "slot_id": "streaming",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Obsidian",
-      "stored_id": "observed:obsidian",
-      "tool_id": "obsidian",
-      "slot_id": "notes",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Plausible.io",
-      "stored_id": "observed:plausible-io",
-      "tool_id": "plausible",
-      "slot_id": "analytics",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Samsung 49” Odyssey G9",
-      "stored_id": "observed:samsung-49-odyssey-g9",
-      "tool_id": "odyssey-g9",
-      "slot_id": "display",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Shure MV7",
-      "stored_id": "observed:shure-mv7",
-      "tool_id": "shure-mv7",
-      "slot_id": "microphone",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Starship.rs",
-      "stored_id": "observed:starship-rs",
-      "tool_id": "starship",
-      "slot_id": "prompt",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "TinHIFI T2 Plus IEM",
-      "stored_id": "observed:tinhifi-t2-plus-iem",
-      "tool_id": "tinhifi-t2",
-      "slot_id": "in-ear-monitor",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "UA Volt 1",
-      "stored_id": "observed:ua-volt-1",
-      "tool_id": "ua-volt-1",
-      "slot_id": "audio-interface",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Youtube Music",
-      "stored_id": "observed:youtube-music",
-      "tool_id": "youtube-music",
-      "slot_id": "media-service",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "1Password",
-      "stored_id": "observed:1password",
-      "tool_id": "1password",
-      "slot_id": "password-manager",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Apple numeric keyboard",
-      "stored_id": "observed:apple-numeric-keyboard",
-      "tool_id": "apple-numeric-keyboard",
-      "slot_id": "keyboard",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Berkeley Mono",
-      "stored_id": "observed:berkeley-mono",
-      "tool_id": "berkeley-mono",
+      "name": "FiraCode",
+      "stored_id": "observed:firacode",
+      "tool_id": "fira-code",
       "slot_id": "font",
       "rule": "catalog"
     },
     {
       "origin": "https://www.joshuabaker.com",
-      "name": "Claude Code",
-      "stored_id": "observed:claude-code",
-      "tool_id": "claude-code",
-      "slot_id": "coding-agent",
-      "rule": "catalog"
+      "name": "Canon DSLR",
+      "stored_id": "observed:canon-dslr",
+      "tool_id": "observed:canon-dslr",
+      "slot_id": "computer",
+      "rule": "section"
     },
     {
       "origin": "https://www.joshuabaker.com",
-      "name": "Cloudflare",
-      "stored_id": "observed:cloudflare",
-      "tool_id": "cloudflare",
-      "slot_id": "edge-cdn",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Codex",
-      "stored_id": "observed:codex",
-      "tool_id": "codex",
-      "slot_id": "coding-agent",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Figma",
-      "stored_id": "observed:figma",
-      "tool_id": "figma",
-      "slot_id": "design",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Flighty",
-      "stored_id": "observed:flighty",
-      "tool_id": "flighty",
-      "slot_id": "travel",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "GitHub",
-      "stored_id": "observed:github",
-      "tool_id": "github",
-      "slot_id": "git-forge",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "GitHub theme",
-      "stored_id": "observed:github-theme",
-      "tool_id": "github-theme",
-      "slot_id": "theme",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Herman Miller Aeron",
-      "stored_id": "observed:herman-miller-aeron",
-      "tool_id": "aeron",
-      "slot_id": "chair",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "iTerm 2",
-      "stored_id": "observed:iterm-2",
-      "tool_id": "iterm-2",
-      "slot_id": "terminal-emulator",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "MX Master 3S",
-      "stored_id": "observed:mx-master-3s",
-      "tool_id": "mx-master-3s",
-      "slot_id": "mouse",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Pro Display XDR",
-      "stored_id": "observed:pro-display-xdr",
-      "tool_id": "pro-display-xdr",
-      "slot_id": "display",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Raycast",
-      "stored_id": "observed:raycast",
-      "tool_id": "raycast",
-      "slot_id": "launcher",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Remotion",
-      "stored_id": "observed:remotion",
-      "tool_id": "remotion",
-      "slot_id": "video",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Sublime Text",
-      "stored_id": "observed:sublime-text",
-      "tool_id": "sublime-text",
-      "slot_id": "editor-ide",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Zed",
-      "stored_id": "observed:zed",
-      "tool_id": "zed",
-      "slot_id": "editor-ide",
-      "rule": "catalog"
+      "name": "iPhone",
+      "stored_id": "observed:iphone",
+      "tool_id": "observed:iphone",
+      "slot_id": "phone",
+      "rule": "product-shape"
     }
   ],
   "split_compounds": [
     {
       "origin": "https://joshua.seigler.net",
       "name": "USB microphone with boom"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "USB microphone with boom"
     }
   ],
   "slot_assignments": [
+    {
+      "origin": "https://joshbeard.com",
+      "name": "1Password",
+      "stored_id": "1password",
+      "tool_id": "1password",
+      "slot_id": "password-manager",
+      "rule": "approved-url"
+    },
+    {
+      "origin": "https://joshbeard.com",
+      "name": "Brave",
+      "stored_id": "brave",
+      "tool_id": "brave",
+      "slot_id": "browser",
+      "rule": "approved-url"
+    },
+    {
+      "origin": "https://joshbeard.com",
+      "name": "BrewBar",
+      "stored_id": "brewbar",
+      "tool_id": "brewbar",
+      "slot_id": "package-manager",
+      "rule": "catalog"
+    },
+    {
+      "origin": "https://joshbeard.com",
+      "name": "Ghostty",
+      "stored_id": "ghostty",
+      "tool_id": "ghostty",
+      "slot_id": "terminal-emulator",
+      "rule": "catalog"
+    },
+    {
+      "origin": "https://joshbeard.com",
+      "name": "Homebrew",
+      "stored_id": "homebrew",
+      "tool_id": "homebrew",
+      "slot_id": "package-manager",
+      "rule": "catalog"
+    },
+    {
+      "origin": "https://joshbeard.com",
+      "name": "Lose It!",
+      "stored_id": "lose-it",
+      "tool_id": "lose-it",
+      "slot_id": "health-fitness",
+      "rule": "approved-url"
+    },
+    {
+      "origin": "https://joshbeard.com",
+      "name": "2025 MacBook Air M4",
+      "stored_id": "macbook-air",
+      "tool_id": "macbook-air",
+      "slot_id": "computer",
+      "rule": "catalog"
+    },
+    {
+      "origin": "https://joshbeard.com",
+      "name": "Migadu",
+      "stored_id": "migadu",
+      "tool_id": "migadu",
+      "slot_id": "email-host",
+      "rule": "catalog"
+    },
+    {
+      "origin": "https://joshbeard.com",
+      "name": "Logitech MX Master 2S",
+      "stored_id": "mx-master-2s",
+      "tool_id": "mx-master-2s",
+      "slot_id": "mouse",
+      "rule": "catalog"
+    },
+    {
+      "origin": "https://joshbeard.com",
+      "name": "3S mice",
+      "stored_id": "mx-master-3s",
+      "tool_id": "mx-master-3s",
+      "slot_id": "mouse",
+      "rule": "catalog"
+    },
+    {
+      "origin": "https://joshbeard.com",
+      "name": "NeoMutt",
+      "stored_id": "neomutt",
+      "tool_id": "neomutt",
+      "slot_id": "email-app",
+      "rule": "approved-url"
+    },
+    {
+      "origin": "https://joshbeard.com",
+      "name": "NeoVim",
+      "stored_id": "neovim",
+      "tool_id": "neovim",
+      "slot_id": "editor-ide",
+      "rule": "catalog"
+    },
+    {
+      "origin": "https://joshbeard.com",
+      "name": "NuPhy",
+      "stored_id": "nuphy",
+      "tool_id": "nuphy",
+      "slot_id": "keyboard",
+      "rule": "catalog"
+    },
+    {
+      "origin": "https://joshbeard.com",
+      "name": "Obsidian",
+      "stored_id": "obsidian",
+      "tool_id": "obsidian",
+      "slot_id": "notes",
+      "rule": "approved-url"
+    },
+    {
+      "origin": "https://joshbeard.com",
+      "name": "Proxmox",
+      "stored_id": "proxmox",
+      "tool_id": "proxmox",
+      "slot_id": "virtualization",
+      "rule": "approved-url"
+    },
+    {
+      "origin": "https://joshbeard.com",
+      "name": "Raycast",
+      "stored_id": "raycast",
+      "tool_id": "raycast",
+      "slot_id": "launcher",
+      "rule": "approved-url"
+    },
+    {
+      "origin": "https://joshbeard.com",
+      "name": "YNAB",
+      "stored_id": "ynab",
+      "tool_id": "ynab",
+      "slot_id": "personal-finance",
+      "rule": "approved-url"
+    },
     {
       "origin": "https://joshcox.co.uk",
       "name": "Apple Magic Keyboard",
@@ -1158,86 +234,6 @@
     },
     {
       "origin": "https://joshcox.co.uk",
-      "name": "Apple Magic Keyboard",
-      "stored_id": "observed:apple-magic-keyboard",
-      "tool_id": "apple-magic-keyboard",
-      "slot_id": "keyboard",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshcox.co.uk",
-      "name": "Apple Magic Mouse",
-      "stored_id": "observed:apple-magic-mouse",
-      "tool_id": "apple-magic-mouse",
-      "slot_id": "mouse",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshcox.co.uk",
-      "name": "Claude",
-      "stored_id": "observed:claude",
-      "tool_id": "claude",
-      "slot_id": "ai-assistant",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshcox.co.uk",
-      "name": "Cloudflare",
-      "stored_id": "observed:cloudflare",
-      "tool_id": "cloudflare",
-      "slot_id": "edge-cdn",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshcox.co.uk",
-      "name": "Mac mini (M4 Pro, 24GB RAM)",
-      "stored_id": "observed:mac-mini-m4-pro-24gb-ram",
-      "tool_id": "mac-mini",
-      "slot_id": "computer",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshcox.co.uk",
-      "name": "Mimestream",
-      "stored_id": "observed:mimestream",
-      "tool_id": "mimestream",
-      "slot_id": "email-app",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshcox.co.uk",
-      "name": "Netlify",
-      "stored_id": "observed:netlify",
-      "tool_id": "netlify",
-      "slot_id": "hosting",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshcox.co.uk",
-      "name": "Osaurus",
-      "stored_id": "observed:osaurus",
-      "tool_id": "osaurus",
-      "slot_id": "local-model",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshcox.co.uk",
-      "name": "Things 3",
-      "stored_id": "observed:things-3",
-      "tool_id": "things-3",
-      "slot_id": "tasks",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshcox.co.uk",
-      "name": "Vercel",
-      "stored_id": "observed:vercel",
-      "tool_id": "vercel",
-      "slot_id": "hosting",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshcox.co.uk",
       "name": "Osaurus",
       "stored_id": "osaurus",
       "tool_id": "osaurus",
@@ -1270,14 +266,6 @@
     },
     {
       "origin": "https://joshmuller.ca",
-      "name": "BART",
-      "stored_id": "bart-study",
-      "tool_id": "bart-study",
-      "slot_id": "study-software",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshmuller.ca",
       "name": "Bitwarden",
       "stored_id": "bitwarden",
       "tool_id": "bitwarden",
@@ -1294,11 +282,43 @@
     },
     {
       "origin": "https://joshmuller.ca",
+      "name": "Ender 3 v2",
+      "stored_id": "creality-ender-3-v2",
+      "tool_id": "creality-ender-3-v2",
+      "slot_id": "3d-printer-fdm",
+      "rule": "approved-url"
+    },
+    {
+      "origin": "https://joshmuller.ca",
+      "name": "Hugo",
+      "stored_id": "hugo",
+      "tool_id": "hugo",
+      "slot_id": "static-site-generator",
+      "rule": "approved-url"
+    },
+    {
+      "origin": "https://joshmuller.ca",
       "name": "Kindle",
       "stored_id": "kindle",
       "tool_id": "kindle-app",
       "slot_id": "reading-app",
       "rule": "approved-url"
+    },
+    {
+      "origin": "https://joshmuller.ca",
+      "name": "Linux 🐧",
+      "stored_id": "linux",
+      "tool_id": "linux",
+      "slot_id": "operating-system",
+      "rule": "catalog"
+    },
+    {
+      "origin": "https://joshmuller.ca",
+      "name": "MacOS 🍎",
+      "stored_id": "macos",
+      "tool_id": "macos",
+      "slot_id": "operating-system",
+      "rule": "catalog"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -1326,83 +346,11 @@
     },
     {
       "origin": "https://joshmuller.ca",
-      "name": "BART",
-      "stored_id": "observed:bart",
-      "tool_id": "bart-study",
-      "slot_id": "study-software",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "Bitwarden",
-      "stored_id": "observed:bitwarden",
-      "tool_id": "bitwarden",
-      "slot_id": "password-manager",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "Brave",
-      "stored_id": "observed:brave",
-      "tool_id": "brave",
-      "slot_id": "browser",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "Kindle",
-      "stored_id": "observed:kindle",
-      "tool_id": "kindle",
-      "slot_id": "reading-app",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "neomutt",
-      "stored_id": "observed:neomutt",
-      "tool_id": "neomutt",
-      "slot_id": "email-app",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "Newsboat",
-      "stored_id": "observed:newsboat",
-      "tool_id": "newsboat",
-      "slot_id": "feed-reader",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "OCReader",
-      "stored_id": "observed:ocreader",
-      "tool_id": "ocreader",
-      "slot_id": "feed-reader",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "ReadEra",
-      "stored_id": "observed:readera",
-      "tool_id": "readera",
-      "slot_id": "reading-app",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "Waha",
-      "stored_id": "observed:waha",
-      "tool_id": "waha",
-      "slot_id": "reading-app",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "YouVersion",
-      "stored_id": "observed:youversion",
-      "tool_id": "youversion",
-      "slot_id": "study-software",
-      "rule": "catalog"
+      "name": "Samsung S9+ QCY Earbuds",
+      "stored_id": "observed:samsung-s9+-qcy-earbuds",
+      "tool_id": "observed:samsung-s9+-qcy-earbuds",
+      "slot_id": "phone",
+      "rule": "section"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -1430,10 +378,10 @@
     },
     {
       "origin": "https://joshmuller.ca",
-      "name": "YouVersion",
-      "stored_id": "youversion",
-      "tool_id": "youversion",
-      "slot_id": "study-software",
+      "name": "Windows 🪟",
+      "stored_id": "windows",
+      "tool_id": "windows",
+      "slot_id": "operating-system",
       "rule": "catalog"
     },
     {
@@ -1566,6 +514,14 @@
     },
     {
       "origin": "https://joshtronic.com",
+      "name": "FiraCode",
+      "stored_id": "fira-code",
+      "tool_id": "fira-code",
+      "slot_id": "font",
+      "rule": "catalog"
+    },
+    {
+      "origin": "https://joshtronic.com",
       "name": "Firefox",
       "stored_id": "firefox",
       "tool_id": "firefox",
@@ -1686,6 +642,14 @@
     },
     {
       "origin": "https://joshtronic.com",
+      "name": "Mac Mini",
+      "stored_id": "mac-mini",
+      "tool_id": "mac-mini",
+      "slot_id": "computer",
+      "rule": "catalog"
+    },
+    {
+      "origin": "https://joshtronic.com",
       "name": "MacBook Pro - 14-inch",
       "stored_id": "macbook-pro-14",
       "tool_id": "macbook-pro-14",
@@ -1742,9 +706,25 @@
     },
     {
       "origin": "https://joshtronic.com",
-      "name": "Nintendo 3DS XL, Switch OLED, Switch 2",
-      "stored_id": "nintendo-handhelds",
-      "tool_id": "nintendo-handhelds",
+      "name": "Nintendo 3DS XL",
+      "stored_id": "nintendo-3ds-xl",
+      "tool_id": "nintendo-3ds-xl",
+      "slot_id": "game-console",
+      "rule": "catalog"
+    },
+    {
+      "origin": "https://joshtronic.com",
+      "name": "Switch 2",
+      "stored_id": "nintendo-switch-2",
+      "tool_id": "nintendo-switch-2",
+      "slot_id": "game-console",
+      "rule": "catalog"
+    },
+    {
+      "origin": "https://joshtronic.com",
+      "name": "Switch OLED",
+      "stored_id": "nintendo-switch-oled",
+      "tool_id": "nintendo-switch-oled",
       "slot_id": "game-console",
       "rule": "catalog"
     },
@@ -1758,410 +738,10 @@
     },
     {
       "origin": "https://joshtronic.com",
-      "name": "1Password",
-      "stored_id": "observed:1password",
-      "tool_id": "1password",
-      "slot_id": "password-manager",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Ableton Live 11",
-      "stored_id": "observed:ableton-live-11",
-      "tool_id": "ableton-live",
-      "slot_id": "music-production",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Alacritty",
-      "stored_id": "observed:alacritty",
-      "tool_id": "alacritty",
-      "slot_id": "terminal-emulator",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Amazon eero Pro 6 mesh Wi-Fi 6 system",
-      "stored_id": "observed:amazon-eero-pro-6-mesh-wi-fi-6-system",
-      "tool_id": "eero-pro-6",
-      "slot_id": "networking",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Amazon Simple Storage Service (S3)",
-      "stored_id": "observed:amazon-simple-storage-service-s3",
-      "tool_id": "amazon-s3",
-      "slot_id": "object-storage",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "APC UPS",
-      "stored_id": "observed:apc-ups",
-      "tool_id": "apc-ups",
-      "slot_id": "power",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Apple Magic Keyboard",
-      "stored_id": "observed:apple-magic-keyboard",
-      "tool_id": "apple-magic-keyboard",
-      "slot_id": "keyboard",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "ARRIS SURFboard SB8200 DOCSIS 3.1 Cable Modem",
-      "stored_id": "observed:arris-surfboard-sb8200-docsis-3-1-cable-modem",
-      "tool_id": "surfboard-sb8200",
-      "slot_id": "networking",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Autonomous.ai Desk",
-      "stored_id": "observed:autonomous-ai-desk",
-      "tool_id": "autonomous-desk",
-      "slot_id": "desk",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Back the Fuck Up",
-      "stored_id": "observed:back-the-fuck-up",
-      "tool_id": "back-the-fuck-up",
-      "slot_id": "backup",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "ChatGPT",
-      "stored_id": "observed:chatgpt",
-      "tool_id": "chatgpt",
-      "slot_id": "ai-assistant",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Claude Code",
-      "stored_id": "observed:claude-code",
-      "tool_id": "claude-code",
-      "slot_id": "coding-agent",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "CODE Keyboard",
-      "stored_id": "observed:code-keyboard",
-      "tool_id": "code-keyboard",
-      "slot_id": "keyboard",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Debian",
-      "stored_id": "observed:debian",
-      "tool_id": "debian",
-      "slot_id": "operating-system",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Dell 38\" Ultrawide",
-      "stored_id": "observed:dell-38-ultrawide",
-      "tool_id": "dell-38",
-      "slot_id": "display",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "FL Studio",
-      "stored_id": "observed:fl-studio",
-      "tool_id": "fl-studio",
-      "slot_id": "music-production",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Focusrite Scarlett",
-      "stored_id": "observed:focusrite-scarlett",
-      "tool_id": "focusrite-scarlett",
-      "slot_id": "audio-interface",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Forgejo",
-      "stored_id": "observed:forgejo",
-      "tool_id": "forgejo",
-      "slot_id": "git-forge",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Forgejo Runner",
-      "stored_id": "observed:forgejo-runner",
-      "tool_id": "forgejo-runner",
-      "slot_id": "ci",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "GNOME",
-      "stored_id": "observed:gnome",
-      "tool_id": "gnome",
-      "slot_id": "desktop",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "GoAccess",
-      "stored_id": "observed:goaccess",
-      "tool_id": "goaccess",
-      "slot_id": "analytics",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "In dire need of replacement Ikea chair",
-      "stored_id": "observed:in-dire-need-of-replacement-ikea-chair",
-      "tool_id": "ikea-chair",
-      "slot_id": "chair",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Intel NUC - 32 GB - 4 TB",
-      "stored_id": "observed:intel-nuc-32-gb-4-tb",
-      "tool_id": "intel-nuc",
-      "slot_id": "computer",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "iPhone 17 Pro",
-      "stored_id": "observed:iphone-17-pro",
-      "tool_id": "iphone-17-pro",
-      "slot_id": "phone",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Kagi",
-      "stored_id": "observed:kagi",
-      "tool_id": "kagi",
-      "slot_id": "search",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Kindle Paperwhite Signature Edition",
-      "stored_id": "observed:kindle-paperwhite-signature-edition",
-      "tool_id": "kindle-paperwhite",
-      "slot_id": "reader-hardware",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Lenovo ThinkPad X1 Carbon",
-      "stored_id": "observed:lenovo-thinkpad-x1-carbon",
-      "tool_id": "thinkpad-x1",
-      "slot_id": "computer",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Linode",
-      "stored_id": "observed:linode",
-      "tool_id": "linode",
-      "slot_id": "hosting",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Logic Pro",
-      "stored_id": "observed:logic-pro",
-      "tool_id": "logic-pro",
-      "slot_id": "music-production",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Logitech MX Ergo",
-      "stored_id": "observed:logitech-mx-ergo",
-      "tool_id": "logitech-mx-ergo",
-      "slot_id": "mouse",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "M-Audio MIDI interface",
-      "stored_id": "observed:m-audio-midi-interface",
-      "tool_id": "maudio-midi",
-      "slot_id": "midi-interface",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "MacBook Pro - 14-inch",
-      "stored_id": "observed:macbook-pro-14-inch",
-      "tool_id": "macbook-pro-14",
-      "slot_id": "computer",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "MariaDB",
-      "stored_id": "observed:mariadb",
-      "tool_id": "mariadb",
-      "slot_id": "database",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "MINISFORUM AMD Ryzen 9 9955HX MS-A2 Mini PC",
-      "stored_id": "observed:minisforum-amd-ryzen-9-9955hx-ms-a2-mini-pc",
-      "tool_id": "minisforum-ms-a2",
-      "slot_id": "computer",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "MINISFORUM Intel i5-12600H MS-01 Mini PC - 64 GB - 12 TB",
-      "stored_id": "observed:minisforum-intel-i5-12600h-ms-01-mini-pc-64-gb-12-tb",
-      "tool_id": "minisforum-ms-01",
-      "slot_id": "computer",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Miyoo",
-      "stored_id": "observed:miyoo",
-      "tool_id": "miyoo",
-      "slot_id": "game-console",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "NameSilo",
-      "stored_id": "observed:namesilo",
-      "tool_id": "namesilo",
-      "slot_id": "registrar",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Nintendo 3DS XL, Switch OLED, Switch 2",
-      "stored_id": "observed:nintendo-3ds-xl-switch-oled-switch-2",
-      "tool_id": "nintendo-handhelds",
-      "slot_id": "game-console",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Node.js",
-      "stored_id": "observed:node-js",
-      "tool_id": "nodejs",
-      "slot_id": "runtime",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "PHP",
-      "stored_id": "observed:php",
-      "tool_id": "php",
-      "slot_id": "programming-language",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Python",
-      "stored_id": "observed:python",
-      "tool_id": "python",
-      "slot_id": "programming-language",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Rode NT1",
-      "stored_id": "observed:rode-nt1",
-      "tool_id": "rode-nt1",
-      "slot_id": "microphone",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Rosé Pine",
-      "stored_id": "observed:rose-pine",
-      "tool_id": "rose-pine",
-      "slot_id": "theme",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Steam Deck OLED",
-      "stored_id": "observed:steam-deck-oled",
-      "tool_id": "steam-deck",
-      "slot_id": "game-console",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "tmux",
-      "stored_id": "observed:tmux",
-      "tool_id": "tmux",
-      "slot_id": "multiplexer",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "TypeScript",
-      "stored_id": "observed:typescript",
-      "tool_id": "typescript",
-      "slot_id": "programming-language",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "UptimeRobot",
-      "stored_id": "observed:uptimerobot",
-      "tool_id": "uptimerobot",
-      "slot_id": "monitoring",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Various retro consoles from Anbernic",
-      "stored_id": "observed:various-retro-consoles-from-anbernic",
-      "tool_id": "anbernic",
-      "slot_id": "game-console",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Victor Mono",
-      "stored_id": "observed:victor-mono",
-      "tool_id": "victor-mono",
+      "name": "FiraCode",
+      "stored_id": "observed:firacode",
+      "tool_id": "fira-code",
       "slot_id": "font",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Vim",
-      "stored_id": "observed:vim",
-      "tool_id": "vim",
-      "slot_id": "editor-ide",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshtronic.com",
-      "name": "Z shell",
-      "stored_id": "observed:z-shell",
-      "tool_id": "zsh",
-      "slot_id": "shell",
       "rule": "catalog"
     },
     {
@@ -2406,238 +986,6 @@
     },
     {
       "origin": "https://joshua.seigler.net",
-      "name": "DartNode",
-      "stored_id": "observed:dartnode",
-      "tool_id": "dartnode",
-      "slot_id": "hosting",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Debian",
-      "stored_id": "observed:debian",
-      "tool_id": "debian",
-      "slot_id": "operating-system",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "FastMail",
-      "stored_id": "observed:fastmail",
-      "tool_id": "fastmail",
-      "slot_id": "email-host",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Fedora",
-      "stored_id": "observed:fedora",
-      "tool_id": "fedora",
-      "slot_id": "operating-system",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Forgejo",
-      "stored_id": "observed:forgejo",
-      "tool_id": "forgejo",
-      "slot_id": "git-forge",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Framework laptop (work)",
-      "stored_id": "observed:framework-laptop-work",
-      "tool_id": "framework-laptop",
-      "slot_id": "computer",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Google Pixel 9a phone",
-      "stored_id": "observed:google-pixel-9a-phone",
-      "tool_id": "pixel-9a",
-      "slot_id": "phone",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "GrapheneOS",
-      "stored_id": "observed:grapheneos",
-      "tool_id": "grapheneos",
-      "slot_id": "operating-system",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "HedgeDoc",
-      "stored_id": "observed:hedgedoc",
-      "tool_id": "hedgedoc",
-      "slot_id": "notes",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "High-output LED light",
-      "stored_id": "observed:high-output-led-light",
-      "tool_id": "led-light",
-      "slot_id": "lighting",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "IKEA REGOLIT shade",
-      "stored_id": "observed:ikea-regolit-shade",
-      "tool_id": "ikea-regolit",
-      "slot_id": "lampshade",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Jujutsu",
-      "stored_id": "observed:jujutsu",
-      "tool_id": "jujutsu",
-      "slot_id": "version-control",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "KeePassXC",
-      "stored_id": "observed:keepassxc",
-      "tool_id": "keepassxc",
-      "slot_id": "password-manager",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Lenovo LOQ laptop (personal)",
-      "stored_id": "observed:lenovo-loq-laptop-personal",
-      "tool_id": "lenovo-loq",
-      "slot_id": "computer",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Mise",
-      "stored_id": "observed:mise",
-      "tool_id": "mise",
-      "slot_id": "dev-environment",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "MOKOSE CS-lens 4k webcam",
-      "stored_id": "observed:mokose-cs-lens-4k-webcam",
-      "tool_id": "mokose-webcam",
-      "slot_id": "camera",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "NameSilo",
-      "stored_id": "observed:namesilo",
-      "tool_id": "namesilo",
-      "slot_id": "registrar",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Obsidian",
-      "stored_id": "observed:obsidian",
-      "tool_id": "obsidian",
-      "slot_id": "notes",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Shaarli",
-      "stored_id": "observed:shaarli",
-      "tool_id": "shaarli",
-      "slot_id": "bookmark",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Sony WH1000XM2 headphones",
-      "stored_id": "observed:sony-wh1000xm2-headphones",
-      "tool_id": "sony-wh1000xm2",
-      "slot_id": "headphones",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "SyncThing",
-      "stored_id": "observed:syncthing",
-      "tool_id": "syncthing",
-      "slot_id": "file-sync",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "TONTRU 101-key mechanical keyboard. It’s affordable",
-      "stored_id": "observed:tontru-101-key-mechanical-keyboard-it-s-affordable",
-      "tool_id": "tontru",
-      "slot_id": "keyboard",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "TOSLINK-to-bluetooth adapter",
-      "stored_id": "observed:toslink-to-bluetooth-adapter",
-      "tool_id": "toslink-bluetooth",
-      "slot_id": "audio-adapter",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Umami",
-      "stored_id": "observed:umami",
-      "tool_id": "umami",
-      "slot_id": "analytics",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Unitek KVM switch",
-      "stored_id": "observed:unitek-kvm-switch",
-      "tool_id": "unitek-kvm",
-      "slot_id": "kvm",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "USB microphone with boom",
-      "stored_id": "observed:usb-microphone-with-boom",
-      "tool_id": "usb-microphone-boom",
-      "slot_id": "microphone",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "VSCodium",
-      "stored_id": "observed:vscodium",
-      "tool_id": "vscodium",
-      "slot_id": "editor-ide",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Webhook",
-      "stored_id": "observed:webhook",
-      "tool_id": "webhook-deploy",
-      "slot_id": "deploy-hook",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "Wide IKEA GALANT desk (discontinued)",
-      "stored_id": "observed:wide-ikea-galant-desk-discontinued",
-      "tool_id": "ikea-galant",
-      "slot_id": "desk",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
       "name": "Obsidian",
       "stored_id": "obsidian",
       "tool_id": "obsidian",
@@ -2675,14 +1023,6 @@
       "tool_id": "syncthing",
       "slot_id": "file-sync",
       "rule": "approved-url"
-    },
-    {
-      "origin": "https://joshua.seigler.net",
-      "name": "TONTRU 101-key mechanical keyboard. It’s affordable",
-      "stored_id": "tontru",
-      "tool_id": "tontru",
-      "slot_id": "keyboard",
-      "rule": "catalog"
     },
     {
       "origin": "https://joshua.seigler.net",
@@ -2733,6 +1073,38 @@
       "rule": "catalog"
     },
     {
+      "origin": "https://joshuamorris.info",
+      "name": "Creality CR-10 Mini",
+      "stored_id": "creality-cr-10-mini",
+      "tool_id": "creality-cr-10-mini",
+      "slot_id": "3d-printer-fdm",
+      "rule": "catalog"
+    },
+    {
+      "origin": "https://joshuamorris.info",
+      "name": "Creality CR-10S",
+      "stored_id": "creality-cr-10s",
+      "tool_id": "creality-cr-10s",
+      "slot_id": "3d-printer-fdm",
+      "rule": "catalog"
+    },
+    {
+      "origin": "https://joshuamorris.info",
+      "name": "Creality K1 Max",
+      "stored_id": "creality-k1-max",
+      "tool_id": "creality-k1-max",
+      "slot_id": "3d-printer-fdm",
+      "rule": "approved-url"
+    },
+    {
+      "origin": "https://joshuamorris.info",
+      "name": "FLSUN QQ-S Pro",
+      "stored_id": "flsun-qq-s-pro",
+      "tool_id": "flsun-qq-s-pro",
+      "slot_id": "3d-printer-fdm",
+      "rule": "approved-url"
+    },
+    {
       "origin": "https://www.joshfinnie.com",
       "name": "Keyboard.io Atreus",
       "stored_id": "atreus",
@@ -2755,6 +1127,14 @@
       "tool_id": "bruno",
       "slot_id": "api-client",
       "rule": "approved-url"
+    },
+    {
+      "origin": "https://www.joshfinnie.com",
+      "name": "Claude",
+      "stored_id": "claude",
+      "tool_id": "claude",
+      "slot_id": "ai-assistant",
+      "rule": "catalog"
     },
     {
       "origin": "https://www.joshfinnie.com",
@@ -2800,8 +1180,24 @@
       "origin": "https://www.joshfinnie.com",
       "name": "iTerm",
       "stored_id": "iterm",
-      "tool_id": "iterm",
+      "tool_id": "iterm-2",
       "slot_id": "terminal-emulator",
+      "rule": "catalog"
+    },
+    {
+      "origin": "https://www.joshfinnie.com",
+      "name": "iTerm",
+      "stored_id": "iterm-2",
+      "tool_id": "iterm-2",
+      "slot_id": "terminal-emulator",
+      "rule": "catalog"
+    },
+    {
+      "origin": "https://www.joshfinnie.com",
+      "name": "MacBook Pro 16-inch 2021",
+      "stored_id": "macbook-pro-16",
+      "tool_id": "macbook-pro-16",
+      "slot_id": "computer",
       "rule": "catalog"
     },
     {
@@ -2819,150 +1215,6 @@
       "tool_id": "obs",
       "slot_id": "streaming",
       "rule": "approved-url"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Brave",
-      "stored_id": "observed:brave",
-      "tool_id": "brave",
-      "slot_id": "browser",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Bruno",
-      "stored_id": "observed:bruno",
-      "tool_id": "bruno",
-      "slot_id": "api-client",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Corne Keyboard",
-      "stored_id": "observed:corne-keyboard",
-      "tool_id": "corne",
-      "slot_id": "keyboard",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Emeet S600",
-      "stored_id": "observed:emeet-s600",
-      "tool_id": "emeet-s600",
-      "slot_id": "camera",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Fish",
-      "stored_id": "observed:fish",
-      "tool_id": "fish",
-      "slot_id": "shell",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "HÅG Capisco",
-      "stored_id": "observed:hag-capisco",
-      "tool_id": "hag-capisco",
-      "slot_id": "chair",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "iTerm",
-      "stored_id": "observed:iterm",
-      "tool_id": "iterm",
-      "slot_id": "terminal-emulator",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Keyboard.io Atreus",
-      "stored_id": "observed:keyboard-io-atreus",
-      "tool_id": "atreus",
-      "slot_id": "keyboard",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Massdrop X Sennheiser HD 6XX headphones",
-      "stored_id": "observed:massdrop-x-sennheiser-hd-6xx-headphones",
-      "tool_id": "hd-6xx",
-      "slot_id": "headphones",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "OBS",
-      "stored_id": "observed:obs",
-      "tool_id": "obs",
-      "slot_id": "streaming",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Obsidian",
-      "stored_id": "observed:obsidian",
-      "tool_id": "obsidian",
-      "slot_id": "notes",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Plausible.io",
-      "stored_id": "observed:plausible-io",
-      "tool_id": "plausible",
-      "slot_id": "analytics",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Samsung 49” Odyssey G9",
-      "stored_id": "observed:samsung-49-odyssey-g9",
-      "tool_id": "odyssey-g9",
-      "slot_id": "display",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Shure MV7",
-      "stored_id": "observed:shure-mv7",
-      "tool_id": "shure-mv7",
-      "slot_id": "microphone",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Starship.rs",
-      "stored_id": "observed:starship-rs",
-      "tool_id": "starship",
-      "slot_id": "prompt",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "TinHIFI T2 Plus IEM",
-      "stored_id": "observed:tinhifi-t2-plus-iem",
-      "tool_id": "tinhifi-t2",
-      "slot_id": "in-ear-monitor",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "UA Volt 1",
-      "stored_id": "observed:ua-volt-1",
-      "tool_id": "ua-volt-1",
-      "slot_id": "audio-interface",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshfinnie.com",
-      "name": "Youtube Music",
-      "stored_id": "observed:youtube-music",
-      "tool_id": "youtube-music",
-      "slot_id": "media-service",
-      "rule": "catalog"
     },
     {
       "origin": "https://www.joshfinnie.com",
@@ -3130,151 +1382,23 @@
       "stored_id": "mx-master-3s",
       "tool_id": "mx-master-3s",
       "slot_id": "mouse",
-      "rule": "approved-url"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "1Password",
-      "stored_id": "observed:1password",
-      "tool_id": "1password",
-      "slot_id": "password-manager",
       "rule": "catalog"
     },
     {
       "origin": "https://www.joshuabaker.com",
-      "name": "Apple numeric keyboard",
-      "stored_id": "observed:apple-numeric-keyboard",
-      "tool_id": "apple-numeric-keyboard",
-      "slot_id": "keyboard",
-      "rule": "catalog"
+      "name": "Canon DSLR",
+      "stored_id": "observed:canon-dslr",
+      "tool_id": "observed:canon-dslr",
+      "slot_id": "computer",
+      "rule": "section"
     },
     {
       "origin": "https://www.joshuabaker.com",
-      "name": "Berkeley Mono",
-      "stored_id": "observed:berkeley-mono",
-      "tool_id": "berkeley-mono",
-      "slot_id": "font",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Claude Code",
-      "stored_id": "observed:claude-code",
-      "tool_id": "claude-code",
-      "slot_id": "coding-agent",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Cloudflare",
-      "stored_id": "observed:cloudflare",
-      "tool_id": "cloudflare",
-      "slot_id": "edge-cdn",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Codex",
-      "stored_id": "observed:codex",
-      "tool_id": "codex",
-      "slot_id": "coding-agent",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Figma",
-      "stored_id": "observed:figma",
-      "tool_id": "figma",
-      "slot_id": "design",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Flighty",
-      "stored_id": "observed:flighty",
-      "tool_id": "flighty",
-      "slot_id": "travel",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "GitHub",
-      "stored_id": "observed:github",
-      "tool_id": "github",
-      "slot_id": "git-forge",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "GitHub theme",
-      "stored_id": "observed:github-theme",
-      "tool_id": "github-theme",
-      "slot_id": "theme",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Herman Miller Aeron",
-      "stored_id": "observed:herman-miller-aeron",
-      "tool_id": "aeron",
-      "slot_id": "chair",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "iTerm 2",
-      "stored_id": "observed:iterm-2",
-      "tool_id": "iterm-2",
-      "slot_id": "terminal-emulator",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "MX Master 3S",
-      "stored_id": "observed:mx-master-3s",
-      "tool_id": "mx-master-3s",
-      "slot_id": "mouse",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Pro Display XDR",
-      "stored_id": "observed:pro-display-xdr",
-      "tool_id": "pro-display-xdr",
-      "slot_id": "display",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Raycast",
-      "stored_id": "observed:raycast",
-      "tool_id": "raycast",
-      "slot_id": "launcher",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Remotion",
-      "stored_id": "observed:remotion",
-      "tool_id": "remotion",
-      "slot_id": "video",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Sublime Text",
-      "stored_id": "observed:sublime-text",
-      "tool_id": "sublime-text",
-      "slot_id": "editor-ide",
-      "rule": "catalog"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Zed",
-      "stored_id": "observed:zed",
-      "tool_id": "zed",
-      "slot_id": "editor-ide",
-      "rule": "catalog"
+      "name": "iPhone",
+      "stored_id": "observed:iphone",
+      "tool_id": "observed:iphone",
+      "slot_id": "phone",
+      "rule": "product-shape"
     },
     {
       "origin": "https://www.joshuabaker.com",
@@ -3319,6 +1443,14 @@
   ],
   "moved_to_detail": [
     {
+      "origin": "https://joshbeard.com",
+      "name": "32GB of memory",
+      "stored_id": "observed:32gb-of-memory",
+      "tool_id": null,
+      "slot_id": null,
+      "rule": "component"
+    },
+    {
       "origin": "https://joshcox.co.uk",
       "name": "16” second monitor",
       "stored_id": "observed:16-second-monitor",
@@ -3344,35 +1476,19 @@
     },
     {
       "origin": "https://joshmuller.ca",
-      "name": "Choose your own I/O!",
-      "stored_id": "observed:choose-your-own-i-o",
-      "tool_id": null,
-      "slot_id": null,
-      "rule": "kind"
+      "name": "BART",
+      "stored_id": "bart-study",
+      "tool_id": "bart-study",
+      "slot_id": "study-software",
+      "rule": "catalog"
     },
     {
       "origin": "https://joshmuller.ca",
-      "name": "Creating tutorials/explanations that are Windows-only",
-      "stored_id": "observed:creating-tutorials-explanations-that-are-windows-only",
-      "tool_id": null,
-      "slot_id": null,
-      "rule": "kind"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "Every single component is user-replaceable!",
-      "stored_id": "observed:every-single-component-is-user-replaceable",
-      "tool_id": null,
-      "slot_id": null,
-      "rule": "kind"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "Gaming",
-      "stored_id": "observed:gaming",
-      "tool_id": null,
-      "slot_id": null,
-      "rule": "kind"
+      "name": "YouVersion",
+      "stored_id": "youversion",
+      "tool_id": "youversion",
+      "slot_id": "study-software",
+      "rule": "catalog"
     },
     {
       "origin": "https://joshtronic.com",
@@ -3456,22 +1572,6 @@
     },
     {
       "origin": "https://www.joshuabaker.com",
-      "name": "GTD",
-      "stored_id": "observed:gtd",
-      "tool_id": null,
-      "slot_id": null,
-      "rule": "kind"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Things",
-      "stored_id": "observed:things",
-      "tool_id": null,
-      "slot_id": null,
-      "rule": "kind"
-    },
-    {
-      "origin": "https://www.joshuabaker.com",
       "name": "Things",
       "stored_id": "things",
       "tool_id": null,
@@ -3514,59 +1614,35 @@
     },
     {
       "origin": "https://joshmuller.ca",
-      "name": "Age of Empires 2",
-      "stored_id": "observed:age-of-empires-2",
-      "tool_id": "age-of-empires-2",
-      "slot_id": "game",
-      "rule": "entertainment"
+      "name": "",
+      "stored_id": "observed:choose-your-own-i-o",
+      "tool_id": null,
+      "slot_id": null,
+      "rule": "fragment"
     },
     {
       "origin": "https://joshmuller.ca",
-      "name": "Jackbox Games",
-      "stored_id": "observed:jackbox-games",
-      "tool_id": "jackbox",
-      "slot_id": "game",
-      "rule": "entertainment"
+      "name": "",
+      "stored_id": "observed:creating-tutorials-explanations-that-are-windows-only",
+      "tool_id": null,
+      "slot_id": null,
+      "rule": "fragment"
     },
     {
       "origin": "https://joshmuller.ca",
-      "name": "Lovers in a Dangerous Spacetime",
-      "stored_id": "observed:lovers-in-a-dangerous-spacetime",
-      "tool_id": "lovers-in-a-dangerous-spacetime",
-      "slot_id": "game",
-      "rule": "entertainment"
+      "name": "",
+      "stored_id": "observed:every-single-component-is-user-replaceable",
+      "tool_id": null,
+      "slot_id": null,
+      "rule": "fragment"
     },
     {
       "origin": "https://joshmuller.ca",
-      "name": "Mario Kart 64",
-      "stored_id": "observed:mario-kart-64",
-      "tool_id": "mario-kart-64",
-      "slot_id": "game",
-      "rule": "entertainment"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "Outer Wilds",
-      "stored_id": "observed:outer-wilds",
-      "tool_id": "outer-wilds",
-      "slot_id": "game",
-      "rule": "entertainment"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "SpiderHeck",
-      "stored_id": "observed:spiderheck",
-      "tool_id": "spiderheck",
-      "slot_id": "game",
-      "rule": "entertainment"
-    },
-    {
-      "origin": "https://joshmuller.ca",
-      "name": "TowerFall",
-      "stored_id": "observed:towerfall",
-      "tool_id": "towerfall",
-      "slot_id": "game",
-      "rule": "entertainment"
+      "name": "",
+      "stored_id": "observed:gaming",
+      "tool_id": null,
+      "slot_id": null,
+      "rule": "fragment"
     },
     {
       "origin": "https://joshmuller.ca",
@@ -3594,7 +1670,7 @@
     },
     {
       "origin": "https://joshtronic.com",
-      "name": "Nov 2024",
+      "name": "",
       "stored_id": "observed:nov-2024",
       "tool_id": null,
       "slot_id": null,
@@ -3602,16 +1678,32 @@
     },
     {
       "origin": "https://joshtronic.com",
-      "name": "TODO",
+      "name": "",
       "stored_id": "observed:todo",
       "tool_id": null,
       "slot_id": null,
       "rule": "fragment"
     },
     {
+      "origin": "https://joshua.seigler.net",
+      "name": "",
+      "stored_id": "tontru",
+      "tool_id": null,
+      "slot_id": null,
+      "rule": "fragment"
+    },
+    {
       "origin": "https://www.joshfinnie.com",
-      "name": "Work Computer",
+      "name": "",
       "stored_id": "observed:work-computer",
+      "tool_id": null,
+      "slot_id": null,
+      "rule": "fragment"
+    },
+    {
+      "origin": "https://www.joshuabaker.com",
+      "name": "",
+      "stored_id": "observed:gtd",
       "tool_id": null,
       "slot_id": null,
       "rule": "fragment"
@@ -3619,9 +1711,17 @@
   ],
   "unsorted": [
     {
+      "origin": "https://joshmuller.ca",
+      "name": "NextCloud https://twoseven.xyz/",
+      "stored_id": "observed:nextcloud-https-twoseven-xyz",
+      "tool_id": null,
+      "slot_id": null,
+      "rule": "unresolved"
+    },
+    {
       "origin": "https://joshtronic.com",
-      "name": "FiraCode",
-      "stored_id": "observed:firacode",
+      "name": "Nintendo 3DS XL, Switch OLED, Switch 2",
+      "stored_id": "nintendo-handhelds",
       "tool_id": null,
       "slot_id": null,
       "rule": "unresolved"
@@ -3660,6 +1760,14 @@
     },
     {
       "origin": "https://joshtronic.com",
+      "name": "Nintendo 3DS XL, Switch OLED, Switch 2",
+      "stored_id": "observed:nintendo-3ds-xl-switch-oled-switch-2",
+      "tool_id": null,
+      "slot_id": null,
+      "rule": "unresolved"
+    },
+    {
+      "origin": "https://joshtronic.com",
       "name": "Solarized",
       "stored_id": "observed:solarized",
       "tool_id": null,
@@ -3668,24 +1776,32 @@
     },
     {
       "origin": "https://www.joshfinnie.com",
-      "name": "MacBook Pro 16-inch 2021",
-      "stored_id": "observed:macbook-pro-16-inch-2021",
+      "name": "herdr",
+      "stored_id": "observed:herdr",
       "tool_id": null,
       "slot_id": null,
       "rule": "unresolved"
     },
     {
-      "origin": "https://www.joshuabaker.com",
-      "name": "Canon DSLR",
-      "stored_id": "observed:canon-dslr",
+      "origin": "https://www.joshfinnie.com",
+      "name": "Spotify",
+      "stored_id": "observed:spotify",
       "tool_id": null,
       "slot_id": null,
       "rule": "unresolved"
     },
     {
-      "origin": "https://www.joshuabaker.com",
-      "name": "iPhone",
-      "stored_id": "observed:iphone",
+      "origin": "https://www.joshfinnie.com",
+      "name": "WezTerm",
+      "stored_id": "observed:wezterm",
+      "tool_id": null,
+      "slot_id": null,
+      "rule": "unresolved"
+    },
+    {
+      "origin": "https://www.joshfinnie.com",
+      "name": "XTEINK X4 Classic",
+      "stored_id": "observed:xteink-x4-classic",
       "tool_id": null,
       "slot_id": null,
       "rule": "unresolved"

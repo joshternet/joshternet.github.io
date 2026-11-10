@@ -125,15 +125,6 @@ export function buildDataManifest(input) {
       relationships: 1,
       feeds: 1,
     },
-    schemas: {
-      network: "https://joshternet.org/schemas/network.schema.json",
-      site_signals: "https://joshternet.org/schemas/site-signals.schema.json",
-      content: "https://joshternet.org/schemas/content.schema.json",
-      topics: "https://joshternet.org/schemas/topics.schema.json",
-      connections: "https://joshternet.org/schemas/connections.schema.json",
-      blogrolls: "https://joshternet.org/schemas/blogrolls.schema.json",
-      data_manifest: "https://joshternet.org/schemas/data-manifest.schema.json",
-    },
     semantic_hashes: input.hashes,
   };
 }

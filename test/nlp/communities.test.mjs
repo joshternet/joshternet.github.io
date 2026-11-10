@@ -13,6 +13,7 @@ import {
   loadAliasMap,
   loadDenylist,
   resolveAlias,
+  resolveContentTopicAliases,
   signalIsCommunityEligible,
   topicCollectionMarkdown,
   topicSeoDescription,
@@ -161,6 +162,52 @@ test("resolveAlias: cycle is detected and does not loop forever", () => {
 
 test("resolveAlias: empty alias map returns slug unchanged", () => {
   assert.equal(resolveAlias("design", new Map()), "design");
+});
+
+test("resolveContentTopicAliases: swim campaign tags fold into bodysurfing", () => {
+  const items = [
+    {
+      url: "https://joshua.example/blog/swim/",
+      declared_topics: [
+        { slug: "swim2026", label: "swim2026", community_eligible: true },
+        { slug: "general", label: "general", community_eligible: true },
+        { slug: "swim2026", label: "dup", community_eligible: true },
+      ],
+    },
+  ];
+  const aliases = new Map([["swim2026", "bodysurfing"]]);
+  resolveContentTopicAliases(items, aliases);
+  assert.deepEqual(
+    items[0].declared_topics.map((topic) => topic.slug),
+    ["bodysurfing", "general"],
+  );
+  assert.equal(items[0].declared_topics[0].label, "Bodysurfing");
+  assert.deepEqual(resolveContentTopicAliases(null, aliases), []);
+  assert.deepEqual(resolveContentTopicAliases(items, new Map()), items);
+});
+
+test("resolveContentTopicAliases: skips empty rows and keeps publisher labels", () => {
+  const aliases = new Map([["swim2026", "bodysurfing"]]);
+  const items = [
+    null,
+    { url: "https://joshua.example/a/", declared_topics: "nope" },
+    {
+      url: "https://joshua.example/b/",
+      declared_topics: [
+        null,
+        { slug: "", label: "empty" },
+        { slug: 42, label: "number" },
+        { slug: "bodysurfing", label: "Bodysurfing", community_eligible: true },
+        { slug: "swim2026" },
+      ],
+    },
+  ];
+  resolveContentTopicAliases(items, aliases);
+  assert.deepEqual(
+    items[2].declared_topics.map((topic) => topic.slug),
+    ["bodysurfing"],
+  );
+  assert.equal(items[2].declared_topics[0].label, "Bodysurfing");
 });
 
 // ─── signalIsCommunityEligible ────────────────────────────────────────────────

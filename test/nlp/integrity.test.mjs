@@ -269,11 +269,9 @@ test("declared-only topics omit visible-text sources from below-threshold heuris
   assert.doesNotMatch(JSON.stringify(communities[0].sources), /visible-text/);
 });
 
-test("topics schema accepts single-member public communities", () => {
-  const root = fileURLToPath(new URL("../../", import.meta.url));
-  const schema = JSON.parse(
-    readFileSync(path.join(root, "schemas/topics.schema.json"), "utf8"),
-  );
+test("topics schema accepts single-member public communities", async () => {
+  const { topicsSchema } = await import("../../scripts/nlp/crawl-shape.mjs");
+  const schema = topicsSchema;
   const ajv = new Ajv2020({ allErrors: true, strict: false });
   addFormats(ajv);
   const validate = ajv.compile(schema);

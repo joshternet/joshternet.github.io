@@ -220,6 +220,10 @@ test("handbook chapter TOC floats below motif under the title", async () => {
   assert.doesNotMatch(css, /\.site-main--handbook::before/);
   assert.doesNotMatch(css, /\.handbook-shell__nav/);
   assert.doesNotMatch(css, /\.handbook-shell__rail/);
+  assert.match(
+    css,
+    /ol\.content-discovery-flow\s*>\s*li\s*\{[^}]*padding-inline:\s*var\(--space-4\)/s,
+  );
 
   for (const id of CHAPTER_IDS) {
     const page = await read(`implement/content/${id}.md`);

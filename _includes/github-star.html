@@ -1,0 +1,33 @@
+{% comment %}
+  Goal: Star icon plus optional build-time count for the shared header and
+  compact Menu. No bordered chip and no “Star on GitHub” label. Accessible
+  name stays on the link. Live count may refresh via github-star-count.js.
+{% endcomment %}
+{% assign github_star_variant = include.variant | default: 'header' %}
+{% assign github_stars = site.data.github.stars %}
+<a
+  class="github-star github-star--{{ github_star_variant }}"
+  href="https://github.com/joshternet/joshternet.github.io"
+  rel="noopener"
+  aria-label="Star Joshternet on GitHub"
+  title="Support Joshternet by starring the project on GitHub."
+  data-joshternet-skip-link-track
+  data-joshternet-track="github_star_cta_clicked"
+  data-joshternet-track-location="{{ github_star_variant }}"
+>
+  <svg
+    class="github-star__icon"
+    viewBox="0 0 24 24"
+    width="18"
+    height="18"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <path
+      d="M12 2.75l2.72 5.51 6.08.88-4.4 4.29 1.04 6.07L12 16.77l-5.44 2.73 1.04-6.07-4.4-4.29 6.08-.88L12 2.75z"
+    />
+  </svg>
+  {% if github_stars != null %}
+    <span class="github-star__count" aria-hidden="true">{{ github_stars }}</span>
+  {% endif %}
+</a>

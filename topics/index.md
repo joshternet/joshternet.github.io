@@ -16,8 +16,9 @@ joshternet_analysis: derived
 script: /assets/js/topics.js
 ---
 
-{% assign neighborhoods = site.data.topic_views.neighborhoods | default: empty %}
-{% assign community_count = site.data.topic_views.community_count | default: 0 %}
+{% assign neighborhoods = site.data.topic_views.k44 | default: empty %}
+{% assign community_count = site.data.topic_views.kv | default: 0 %}
+{% assign neighborhood_count = neighborhoods | size %}
 
 # Topics
 
@@ -43,7 +44,7 @@ you'll end up on the publisher's own website, where the work belongs.
 Curious how subject discovery works under the hood?
 [Read more in the Explore handbook]({{ '/implement/content/explore/' | relative_url }}).
 
-{% if community_count > 0 and neighborhoods.size > 0 %}
+{% if neighborhood_count > 0 %}
 <p class="topics-filter-hint">
   Looking for something in particular? Start typing to narrow things down.
 </p>
@@ -67,25 +68,25 @@ Curious how subject discovery works under the hood?
     <li
       class="activity-card h-card"
       data-topic-item
-      data-label="{{ topic.label | downcase | escape }}"
+      data-label="{{ topic.k3g | downcase | escape }}"
     >
       <article>
         <div class="activity-card__body">
           <div class="activity-card__heading">
             <h2 class="activity-card__title p-name">
-              <a class="u-url" href="{{ '/topics/' | append: topic.slug | append: '/' | relative_url }}">
-                {{ topic.label | escape }}
+              <a class="u-url" href="{{ '/topics/' | append: topic.k6o | append: '/' | relative_url }}">
+                {{ topic.k3g | escape }}
               </a>
             </h2>
           </div>
           <div class="activity-card__footer">
             <p class="activity-card__topics"></p>
             <p class="activity-card__domain">
-              {{ topic.occurrence_count | default: 0 }}
-              {% if topic.occurrence_count == 1 %}work{% else %}works{% endif %}
+              {{ topic.k4a | default: 0 }}
+              {% if topic.k4a == 1 %}work{% else %}works{% endif %}
               ·
-              {{ topic.member_count }}
-              {% if topic.member_count == 1 %}site{% else %}sites{% endif %}
+              {{ topic.k3u }}
+              {% if topic.k3u == 1 %}site{% else %}sites{% endif %}
             </p>
           </div>
         </div>

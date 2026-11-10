@@ -122,9 +122,9 @@ not crawl the rest of your website.
 [
 {%- assign registry_origin_first = true -%}
 {%- for network_site in site.data.network -%}
-  {%- if network_site.origin and network_site.origin != '' -%}
+  {%- if network_site.k4b and network_site.k4b != '' -%}
     {%- unless registry_origin_first -%},{%- endunless -%}
-    {{ network_site.origin | jsonify }}
+    {{ network_site.k4b | jsonify }}
     {%- assign registry_origin_first = false -%}
   {%- endif -%}
 {%- endfor -%}

@@ -1,0 +1,463 @@
+/**
+ * Goal & Constraints:
+ * Structural checks for decoded crawl datasets. No public field legend.
+ */
+
+export const networkSchema = {
+  type: "array",
+  items: {
+    type: "object",
+    required: ["origin", "domain"],
+    properties: {
+      origin: { type: "string" },
+      domain: { type: "string" },
+      screenshot: { type: "string" },
+      josh: { type: "string" },
+      feeds: { type: "array" },
+      elsewhere: { type: "array" },
+      blogroll: { type: "string" },
+    },
+    additionalProperties: true,
+  },
+};
+
+export const siteSignalsSchema = {
+  type: "object",
+  required: ["schema_version", "origins"],
+  properties: {
+    schema_version: { type: "integer", minimum: 1 },
+    generated_at: { type: "string" },
+    origins: {
+      type: "array",
+      items: {
+        type: "object",
+        required: ["origin"],
+        properties: {
+          origin: { type: "string" },
+          crawled_at: { type: "string" },
+          coverage: {
+            type: "object",
+            properties: {
+              pages_discovered: { type: "integer" },
+              pages_fetched: { type: "integer" },
+              fetch_limit: { type: ["integer", "null"] },
+              limit_reached: { type: "boolean" },
+              selection_strategy: { type: "string" },
+            },
+            additionalProperties: true,
+          },
+          pages: { type: "array" },
+          declared_topics: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: {
+                evidence: {
+                  type: "array",
+                  items: {
+                    type: "object",
+                    properties: {
+                      observed_at: { type: "string", format: "date-time" },
+                    },
+                    additionalProperties: true,
+                  },
+                },
+              },
+              additionalProperties: true,
+            },
+          },
+          subject_signals: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: {
+                evidence: {
+                  type: "array",
+                  items: {
+                    type: "object",
+                    properties: {
+                      observed_at: { type: "string", format: "date-time" },
+                    },
+                    additionalProperties: true,
+                  },
+                },
+              },
+              additionalProperties: true,
+            },
+          },
+          subjects: { type: "array" },
+          outbound_links: { type: "array" },
+          community_slugs: { type: "array", items: { type: "string" } },
+          stats: { type: "object" },
+          error: { type: "string" },
+        },
+        additionalProperties: true,
+      },
+    },
+  },
+  additionalProperties: true,
+};
+
+export const contentSchema = {
+  type: "object",
+  required: ["schema_version", "item_count"],
+  properties: {
+    schema_version: { type: "integer", minimum: 1 },
+    generated_at: { type: "string" },
+    item_count: { type: "integer", minimum: 0 },
+    items: {
+      type: "array",
+      minItems: 1,
+      items: {
+        type: "object",
+        required: ["identity", "url"],
+        properties: {
+          identity: { type: "string", minLength: 1 },
+          url: { type: "string" },
+          summary: { type: "string" },
+          published_at: { type: "string" },
+          site_origin: { type: "string" },
+          language: { type: ["string", "null"] },
+          page_role: { type: "string" },
+          content_type: { type: "string" },
+          source_feeds: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: { type: { type: "string" }, url: { type: "string" } },
+              additionalProperties: true,
+            },
+          },
+          declared_topics: { type: "array" },
+        },
+        additionalProperties: true,
+        not: { required: ["content_html"] },
+      },
+    },
+  },
+  additionalProperties: true,
+};
+
+export const topicsSchema = {
+  type: "object",
+  required: ["schema_version", "community_count"],
+  properties: {
+    schema_version: { type: "integer", minimum: 1 },
+    generated_at: { type: "string" },
+    community_count: { type: "integer", minimum: 0 },
+    membership_rule: { type: "string" },
+    communities: {
+      type: "array",
+      minItems: 1,
+      items: {
+        type: "object",
+        required: ["slug", "label", "sites", "member_count"],
+        properties: {
+          slug: { type: "string", minLength: 1 },
+          label: { type: "string" },
+          member_count: { type: "integer", minimum: 1 },
+          sites: {
+            type: "array",
+            minItems: 1,
+            items: {
+              type: "object",
+              required: ["origin", "domain"],
+              properties: {
+                origin: { type: "string" },
+                domain: { type: "string" },
+                membership: { type: "string", enum: ["declared", "heuristic"] },
+                pages: { type: "array" },
+              },
+              additionalProperties: true,
+            },
+          },
+          related_discoveries: {
+            type: "array",
+            minItems: 1,
+            items: {
+              type: "object",
+              required: ["origin", "domain"],
+              properties: {
+                origin: { type: "string" },
+                domain: { type: "string" },
+                discovery: { type: "string" },
+                note: { type: "string" },
+              },
+              additionalProperties: true,
+            },
+          },
+          sources: { type: "array", items: { type: "string" } },
+          content: { type: "array" },
+          first_seen_at: { type: "string" },
+          last_changed_at: { type: "string" },
+          stale_since: { type: "string" },
+          active: { type: "boolean" },
+        },
+        additionalProperties: true,
+      },
+    },
+  },
+  additionalProperties: true,
+};
+
+export const connectionsSchema = {
+  type: "object",
+  required: ["schema_version", "edge_count"],
+  properties: {
+    schema_version: { type: "integer", minimum: 1 },
+    generated_at: { type: "string" },
+    edge_count: { type: "integer", minimum: 0 },
+    edges: {
+      type: "array",
+      minItems: 1,
+      items: {
+        type: "object",
+        required: ["from", "to", "relation", "href"],
+        properties: {
+          from: { type: "string" },
+          to: { type: "string" },
+          relation: {
+            type: "string",
+            enum: [
+              "homepage-link",
+              "content-link",
+              "blogroll",
+              "reply-to",
+              "repost-of",
+              "syndication",
+              "credit",
+            ],
+          },
+          directed: { type: "boolean" },
+          href: { type: "string" },
+          page: { type: "string" },
+          text: { type: "string" },
+          via: { type: "string", minLength: 1 },
+          source: { type: "string" },
+          rel: { type: "array", items: { type: "string" } },
+          evidence_count: { type: "integer", minimum: 1 },
+          evidence: { type: "array", minItems: 1, items: { type: "object" } },
+        },
+        dependentRequired: { evidence: ["evidence_count"] },
+        additionalProperties: true,
+      },
+    },
+  },
+  additionalProperties: true,
+};
+
+export const blogrollsSchema = {
+  type: "object",
+  required: ["schema_version", "edge_count"],
+  properties: {
+    schema_version: { type: "integer", minimum: 1 },
+    generated_at: { type: "string" },
+    edge_count: { type: "integer", minimum: 0 },
+    advertisement_count: { type: "integer", minimum: 0 },
+    advertisements: {
+      type: "array",
+      minItems: 1,
+      items: {
+        type: "object",
+        required: ["origin", "blogroll", "source_authority"],
+        properties: {
+          origin: { type: "string" },
+          blogroll: { type: "string" },
+          source_authority: { type: "string" },
+          relationship_evidence: { type: "boolean" },
+          reason: { type: "string" },
+        },
+        additionalProperties: true,
+      },
+    },
+    edges: {
+      type: "array",
+      minItems: 1,
+      items: {
+        type: "object",
+        required: ["from", "to", "blogroll"],
+        properties: {
+          from: { type: "string" },
+          to: { type: "string" },
+          blogroll: { type: "string" },
+          source_authority: { type: "string" },
+        },
+        additionalProperties: true,
+      },
+    },
+  },
+  additionalProperties: true,
+};
+
+export const dataManifestSchema = {
+  type: "object",
+  required: ["schema_version", "datasets", "semantic_hashes"],
+  properties: {
+    schema_version: { type: "integer", minimum: 1 },
+    generated_at: { type: "string" },
+    datasets: {
+      type: "object",
+      required: [
+        "network",
+        "site_signals",
+        "content",
+        "topics",
+        "connections",
+        "blogrolls",
+      ],
+      additionalProperties: { type: "integer" },
+    },
+    extractors: { type: "object", additionalProperties: { type: "integer" } },
+    semantic_hashes: {
+      type: "object",
+      additionalProperties: { type: "string" },
+    },
+    schemas: { type: "object", additionalProperties: { type: "string" } },
+  },
+  additionalProperties: true,
+};
+
+export const usesRollupSchema = {
+  type: "object",
+  required: [
+    "schema_version",
+    "period",
+    "granularity",
+    "as_of",
+    "eligible_member_count",
+    "verified_uses_member_count",
+    "tools",
+  ],
+  properties: {
+    schema_version: { type: "integer", minimum: 1 },
+    scoring_version: { type: "integer", minimum: 1 },
+    period: { type: "string" },
+    granularity: {
+      type: "string",
+      enum: ["month", "quarter", "year", "all-time"],
+    },
+    period_start: { type: "string" },
+    period_end_exclusive: { type: "string" },
+    as_of: { type: "string" },
+    is_complete: { type: "boolean" },
+    eligible_member_count: { type: "integer", minimum: 0 },
+    verified_uses_member_count: { type: "integer", minimum: 0 },
+    tool_count: { type: "integer", minimum: 0 },
+    tools: {
+      type: "array",
+      items: {
+        type: "object",
+        required: [
+          "tool_id",
+          "active_member_count",
+          "active_member_origins",
+          "adoption_score",
+        ],
+        properties: {
+          tool_id: { type: "string" },
+          active_member_count: { type: "integer", minimum: 0 },
+          active_member_origins: { type: "array", items: { type: "string" } },
+          period_ever_member_count: { type: "integer", minimum: 0 },
+          adoption_score: { type: ["integer", "null"] },
+          use_cases: { type: "array" },
+          change_from_previous_period: {},
+          source_coverage: { type: "string" },
+        },
+        additionalProperties: true,
+      },
+    },
+  },
+  additionalProperties: true,
+};
+
+export const usesEventsSchema = {
+  type: "object",
+  required: ["schema_version", "period", "events"],
+  properties: {
+    schema_version: { type: "integer", minimum: 1 },
+    period: { type: "string", pattern: "^[0-9]{4}-[0-9]{2}$" },
+    events: {
+      type: "array",
+      items: {
+        type: "object",
+        required: [
+          "event_id",
+          "event_type",
+          "observed_at",
+          "origin",
+          "page_url",
+        ],
+        properties: {
+          event_id: { type: "string", pattern: "^sha256:[a-f0-9]{64}$" },
+          event_type: {
+            type: "string",
+            enum: [
+              "usage_added",
+              "usage_changed",
+              "usage_removed",
+              "usage_reclassified",
+              "source_status_changed",
+              "member_eligibility_changed",
+              "correction",
+            ],
+          },
+          observed_at: { type: "string", format: "date-time" },
+          origin: { type: "string", format: "uri" },
+          page_url: { type: "string", format: "uri" },
+          tool_id: { type: ["string", "null"] },
+          status: { type: "string" },
+          use_case_ids: { type: "array", items: { type: "string" } },
+          evidence: { type: "object" },
+          extractor_version: { type: "integer" },
+          taxonomy_version: { type: "integer" },
+        },
+        additionalProperties: true,
+      },
+    },
+  },
+  additionalProperties: false,
+};
+
+export const usesGraphSchema = {
+  type: "object",
+  required: ["schema_version", "period", "nodes", "edges"],
+  properties: {
+    schema_version: { type: "integer", minimum: 1 },
+    period: { type: "string" },
+    nodes: {
+      type: "array",
+      items: {
+        type: "object",
+        required: ["id", "kind", "label"],
+        properties: {
+          id: { type: "string" },
+          kind: {
+            type: "string",
+            enum: ["member", "tool", "category", "usecase"],
+          },
+          label: { type: "string" },
+        },
+        additionalProperties: true,
+      },
+    },
+    edges: {
+      type: "array",
+      items: {
+        type: "object",
+        required: ["from", "to", "relation"],
+        properties: {
+          from: { type: "string" },
+          to: { type: "string" },
+          relation: {
+            type: "string",
+            enum: ["uses", "classified_as", "used_for", "co_used_with"],
+          },
+          evidence_event_id: { type: "string" },
+          member_count: { type: "integer", minimum: 0 },
+        },
+        additionalProperties: true,
+      },
+    },
+  },
+  additionalProperties: false,
+};

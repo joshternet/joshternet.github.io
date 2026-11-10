@@ -8,10 +8,34 @@ import { mkdir, readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 
 import { writeJSONAtomic } from "../nlp/lib.mjs";
+import { decodeCrawlValue } from "../nlp/site-record.mjs";
 
 import { USES_SCHEMA_VERSION } from "./constants.mjs";
 import { isReportableUseLabel, sanitizeLabel } from "./normalize.mjs";
 import { compareEvents } from "./reconcile.mjs";
+
+/**
+ * Instant strictly after `iso` for inclusive “as of now” replay filters.
+ * @param {string} iso
+ * @returns {string}
+ */
+export function exclusiveAfter(iso) {
+  const ms = Date.parse(iso);
+  if (!Number.isFinite(ms)) {
+    throw new Error(`Invalid timestamp: ${iso}`);
+  }
+  return new Date(ms + 1).toISOString();
+}
+
+/**
+ * Earlier of two exclusive bounds (ISO timestamps).
+ * @param {string} a
+ * @param {string} b
+ * @returns {string}
+ */
+export function earlierExclusive(a, b) {
+  return Date.parse(a) <= Date.parse(b) ? a : b;
+}
 
 /**
  * UTC month key for an RFC3339 timestamp.
@@ -69,7 +93,7 @@ export function checksShardPath(rootDir, period) {
  */
 export async function readJson(filePath, fallback) {
   try {
-    return JSON.parse(await readFile(filePath, "utf8"));
+    return decodeCrawlValue(JSON.parse(await readFile(filePath, "utf8")));
   } catch (error) {
     if (
       error &&
@@ -220,14 +244,28 @@ export async function loadAllEvents(rootDir) {
 
 /**
  * Replays events into member state.
+ * When `asOfExclusive` is set, only events strictly before that instant count
+ * so a closed month keeps the setup as of its UTC boundary.
  * @param {object[]} events
+ * @param {{ asOfExclusive?: string }} [options]
  * @returns {{ schema_version: number, through_event_id: string, members: object[] }}
  */
-export function replayState(events) {
+export function replayState(events, options = {}) {
   /** @type {Map<string, object>} */
   const members = new Map();
 
-  const ordered = [...events].sort(compareEvents);
+  const asOfExclusive = options.asOfExclusive
+    ? Date.parse(options.asOfExclusive)
+    : Number.NaN;
+  const ordered = [...events]
+    .filter((event) => {
+      if (!Number.isFinite(asOfExclusive)) {
+        return true;
+      }
+      const observed = Date.parse(event.observed_at);
+      return Number.isFinite(observed) && observed < asOfExclusive;
+    })
+    .sort(compareEvents);
   let through = "";
 
   for (const event of ordered) {
@@ -273,6 +311,13 @@ export function replayState(events) {
 
     const label = sanitizeLabel(event.evidence?.label || "");
     const priorTool = index >= 0 ? tools[index] : null;
+    const evidenceQuantity = event.evidence?.quantity;
+    const quantity =
+      Number.isFinite(evidenceQuantity) && evidenceQuantity > 0
+        ? Math.min(99, Math.floor(evidenceQuantity))
+        : Number.isFinite(priorTool?.quantity) && priorTool.quantity > 0
+          ? Math.min(99, Math.floor(priorTool.quantity))
+          : 1;
     const nextTool = {
       tool_id: event.tool_id,
       name: isReportableUseLabel(label)
@@ -286,6 +331,7 @@ export function replayState(events) {
       section_path: event.evidence?.section_path || "",
       href: event.evidence?.href || "",
       status: event.status,
+      quantity,
       use_case_ids: [...(event.use_case_ids || [])].sort(),
       first_observed_at: priorTool
         ? priorTool.first_observed_at

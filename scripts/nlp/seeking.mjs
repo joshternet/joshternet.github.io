@@ -14,6 +14,7 @@ import { fileURLToPath } from "node:url";
 
 import { fetchPublicText, writeJSONAtomic } from "./lib.mjs";
 import { resolvePreviewPublish } from "./preview-publish.mjs";
+import { decodeCrawlValue } from "./site-record.mjs";
 import {
   MAX_SUMMARY_CHARS,
   MAX_TITLE_CHARS,
@@ -637,11 +638,13 @@ export function reconcileSeekingState(prior, originInputs, options = {}) {
       continue;
     }
 
-    const collected = collectSeeking(input.pages || [], {
-      siteOrigin: origin,
-      siteTitle: input.title || "",
-      observedAt,
-    });
+    const collected = input.collected
+      ? input.collected
+      : collectSeeking(input.pages || [], {
+          siteOrigin: origin,
+          siteTitle: input.title || "",
+          observedAt,
+        });
 
     if (collected.pages.length === 0) {
       // Complete origin crawl without a Seeking page fetch is not confirmation
@@ -836,7 +839,7 @@ export async function buildSeekingDatasets(input) {
   let prior = null;
 
   try {
-    prior = JSON.parse(await fs.readFile(statePath, "utf8"));
+    prior = decodeCrawlValue(JSON.parse(await fs.readFile(statePath, "utf8")));
   } catch {
     prior = null;
   }
@@ -884,7 +887,7 @@ export async function writeSeekingViewFromState(repoRoot = ROOT) {
   let state = null;
 
   try {
-    state = JSON.parse(await fs.readFile(statePath, "utf8"));
+    state = decodeCrawlValue(JSON.parse(await fs.readFile(statePath, "utf8")));
   } catch {
     state = null;
   }

@@ -5,14 +5,61 @@ _site/
 vendor/
 Gemfile.lock
 node_modules/
-coverage.lcov
+.DS_Store
+Thumbs.db
+coverage/
+*.lcov
+coverage-*.txt
+coverage-run.txt
 .network-sync/
 .tmp/
-tmp/crawl-original/
-tmp/crawl-experiment/
-tmp/crawl-active.txt
+data/crawl-sites/
 # Seeking request bodies stay current-only and must not enter Git history.
 _data/seeking.json
+# Crawl sidecars. Hourly network-sync does not publish these. The files stay
+# on disk for the next local run.
+_data/channel_publish.json
+_data/homepage_connections.json
+data/classification/run-metrics.json
+# Crawl / aggregation publish set. Local network:sync + nlp:sync rewrite these
+# every run. Hourly network-sync force-adds them onto main (git add -f).
+# Hand-edited allowlist stays tracked: topics/index.md, data/uses/catalog/,
+# and clear config under _data/ (topic_aliases, topic_denylist, …).
+_data/network.json
+_data/blogrolls.json
+_data/connections.json
+_data/topics.json
+_data/site_signals.json
+_data/content.json
+_data/data_manifest.json
+_data/activity.json
+_data/explore.json
+_data/topic_views.json
+_data/connection_topics.json
+_data/site_views.json
+_data/search_index.json
+_data/showcase.json
+_data/happening.json
+_data/made.json
+_data/uses_summary.json
+_data/past_events.json
+_data/generation_manifest.json
+topics/*
+!topics/index.md
+assets/network/joshternet.opml
+assets/network/sites/
+assets/activity/posters/
+assets/activity/atom.xml
+assets/data/uses/
+assets/events/joshternet.ics
+data/uses/**
+!data/uses/catalog/
+!data/uses/catalog/**
+# Durable observation/source mirrors (local/dev). Production authoritative
+# stores are external object storage—not Git and not Actions cache.
+data/observation/store/
+data/observation/sources/
+data/classification/quality-baseline.json
 workers/seed-nominations/.wrangler/
 workers/http-message-signatures-directory/.wrangler/
 workers/declaration-check/.wrangler/

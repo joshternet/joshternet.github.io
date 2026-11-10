@@ -1,22 +1,23 @@
 {% comment %}
-  Goal: One What's New-style card. Expects include.item with title, url,
-  published_at, site_title, summary, tags, domain, optional image.
-  Optional Happening fields: start, end, venue, location (event dates stay in
-  the publisher's declared timezone string — no visitor TZ conversion).
-  Optional include.heading_tag: "h2" (default) or "h3" for nested sections.
+  Goal: One What's New-style card. Expects include.item with short crawl keys
+  (title k7c, url k7o, published_at k5a, site_title k6h, summary k76, tags k78,
+  domain k1v, optional image k32). Optional Happening fields: start k89, end k8a,
+  venue k8b, location k8c, conference k8f (event dates stay in the publisher's
+  declared timezone string — no visitor TZ conversion). Optional
+  include.heading_tag: "h2" (default) or "h3" for nested sections.
 {% endcomment %}
 <li
   class="activity-card h-entry"
-  {% if include.item.language and include.item.language != '' %}
-    lang="{{ include.item.language | escape }}"
+  {% if include.item.k3i and include.item.k3i != '' %}
+    lang="{{ include.item.k3i | escape }}"
   {% endif %}
-  {% if include.item.dir and include.item.dir != '' %}
-    dir="{{ include.item.dir | escape }}"
+  {% if include.item.k1p and include.item.k1p != '' %}
+    dir="{{ include.item.k1p | escape }}"
   {% endif %}
 >
   <article>
-    {% if include.item.image and include.item.image != '' %}
-      {% include outbound-href.html url=include.item.url %}
+    {% if include.item.k32 and include.item.k32 != '' %}
+      {% include outbound-href.html url=include.item.k7o %}
       <a
         class="activity-card__media"
         href="{{ outbound_href | escape }}"
@@ -27,7 +28,7 @@
       >
         <img
           class="u-photo"
-          src="{{ include.item.image | escape }}"
+          src="{{ include.item.k32 | escape }}"
           alt=""
           loading="lazy"
           decoding="async"
@@ -42,18 +43,18 @@
         {% else %}
           <h2 class="activity-card__title p-name">
         {% endif %}
-        {% include outbound-href.html url=include.item.url %}
+        {% include outbound-href.html url=include.item.k7o %}
         <a
           class="activity-card__link u-url"
           href="{{ outbound_href | escape }}"
           target="_blank"
           rel="noopener"
-          {% if include.item.language and include.item.language != '' %}
-            lang="{{ include.item.language | escape }}"
+          {% if include.item.k3i and include.item.k3i != '' %}
+            lang="{{ include.item.k3i | escape }}"
           {% endif %}
           dir="auto"
         >
-          {{ include.item.title | escape }}
+          {{ include.item.k7c | escape }}
           <span aria-hidden="true">↗</span>
           <span class="visually-hidden">(opens on the publisher’s site)</span>
         </a>
@@ -62,68 +63,75 @@
         {% else %}
           </h2>
         {% endif %}
-        {% if include.item.published_at and include.item.published_at != '' %}
-          <time class="activity-card__date dt-published" datetime="{{ include.item.published_at | escape }}">
-            {{- include.item.published_at | date: '%b %-d, %Y' -}}
+        {% if include.item.k5a and include.item.k5a != '' %}
+          <time class="activity-card__date dt-published" datetime="{{ include.item.k5a | escape }}">
+            {{- include.item.k5a | date: '%b %-d, %Y' -}}
           </time>
         {% endif %}
       </div>
-      {% if include.item.site_title and include.item.site_title != '' %}
+      {% if include.item.k6h and include.item.k6h != '' %}
         <p class="activity-card__author p-author h-card">
-          {% if include.item.site_origin and include.item.site_origin != '' %}
+          {% if include.item.k6f and include.item.k6f != '' %}
             <a
               class="activity-card__author-link p-name u-url"
-              href="{{ include.item.site_origin | escape }}"
+              href="{{ include.item.k6f | escape }}"
             >
-              {{- include.item.site_title | escape -}}
+              {{- include.item.k6h | escape -}}
             </a>
           {% else %}
-            <span class="p-name">{{ include.item.site_title | escape }}</span>
+            <span class="p-name">{{ include.item.k6h | escape }}</span>
           {% endif %}
         </p>
       {% endif %}
-      {% if include.item.start and include.item.start != '' %}
+      {% if include.item.k89 and include.item.k89 != '' %}
         <p class="happening-date">
-          <time datetime="{{ include.item.start | escape }}">
-            {{- include.item.start | date: '%b %-d, %Y' -}}
+          <time datetime="{{ include.item.k89 | escape }}">
+            {{- include.item.k89 | date: '%b %-d, %Y' -}}
           </time>
-          {% if include.item.end and include.item.end != '' %}
+          {% if include.item.k8a and include.item.k8a != '' %}
             &ndash;
-            <time datetime="{{ include.item.end | escape }}">
-              {{- include.item.end | date: '%b %-d, %Y' -}}
+            <time datetime="{{ include.item.k8a | escape }}">
+              {{- include.item.k8a | date: '%b %-d, %Y' -}}
             </time>
           {% endif %}
         </p>
       {% endif %}
-      {% if include.item.venue and include.item.venue != '' %}
+      {% if include.item.k8b and include.item.k8b != '' %}
         <p class="happening-venue">
-          {{ include.item.venue | escape }}
-          {% if include.item.location and include.item.location != '' %}
-            &mdash; {{ include.item.location | escape }}
+          {{ include.item.k8b | escape }}
+          {% if include.item.k8c and include.item.k8c != '' %}
+            &mdash; {{ include.item.k8c | escape }}
           {% endif %}
         </p>
-      {% elsif include.item.location and include.item.location != '' %}
-        <p class="happening-venue">{{ include.item.location | escape }}</p>
+      {% elsif include.item.k8f and include.item.k8f != '' %}
+        <p class="happening-venue">
+          {{ include.item.k8f | escape }}
+          {% if include.item.k8c and include.item.k8c != '' %}
+            &mdash; {{ include.item.k8c | escape }}
+          {% endif %}
+        </p>
+      {% elsif include.item.k8c and include.item.k8c != '' %}
+        <p class="happening-venue">{{ include.item.k8c | escape }}</p>
       {% endif %}
-      {% if include.item.summary and include.item.summary != '' %}
+      {% if include.item.k76 and include.item.k76 != '' %}
         <p
           class="activity-card__summary p-summary"
-          {% if include.item.language and include.item.language != '' %}
-            lang="{{ include.item.language | escape }}"
+          {% if include.item.k3i and include.item.k3i != '' %}
+            lang="{{ include.item.k3i | escape }}"
           {% endif %}
           dir="auto"
         >
-          {{ include.item.summary | escape }}
+          {{ include.item.k76 | escape }}
         </p>
       {% endif %}
       <div class="activity-card__footer">
         <p class="activity-card__topics">
-          {% for topic in include.item.tags %}
-            <span class="p-category">{{ topic.label | escape }}</span>
+          {% for topic in include.item.k78 %}
+            <span class="p-category">{{ topic.k3g | escape }}</span>
           {% endfor %}
         </p>
-        {% if include.item.domain and include.item.domain != '' %}
-          <p class="activity-card__domain">{{ include.item.domain | escape }}</p>
+        {% if include.item.k1v and include.item.k1v != '' %}
+          <p class="activity-card__domain">{{ include.item.k1v | escape }}</p>
         {% endif %}
       </div>
     </div>

@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en-GB" class="h-full antialiased">
+  <head>
+    <!--
+      Still reading the source? Good, so do I.
+      There's a bit more in the console, if you're the sort.
+      Or skip ahead: https://joshcox.co.uk/well-spotted/
+    -->
+    <meta charset="utf-8">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="author" href="/humans.txt">
+    <title>Uses · Josh Cox</title>
+    <meta name="description" content="The hardware, software and tools I use day to day to build for the web.">
+    <link rel="canonical" href="https://joshcox.co.uk/uses/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://joshcox.co.uk/uses/">
+    <meta property="og:title" content="Uses · Josh Cox">
+    <meta property="og:description" content="The hardware, software and tools I use day to day to build for the web.">
+    <meta property="og:image" content="https://joshcox.co.uk/open-graph.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Uses · Josh Cox">
+    <meta name="twitter:description" content="The hardware, software and tools I use day to day to build for the web.">
+    <meta name="twitter:image" content="https://joshcox.co.uk/open-graph.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Josh Cox" href="/rss.xml">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "CollectionPage",
+            "@id": "https://joshcox.co.uk/uses/#collectionpage",
+            "url": "https://joshcox.co.uk/uses/",
+            "name": "Uses — Josh Cox",
+            "description": "The hardware, software and tools Josh Cox uses day to day to build for the web."
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Josh Cox", "item": "https://joshcox.co.uk/" },
+              { "@type": "ListItem", "position": 2, "name": "Uses", "item": "https://joshcox.co.uk/uses/" }
+            ]
+          }
+        ]
+      }
+    </script>
+    <script>
+      // Set theme before paint to avoid a flash.
+      //
+      // Two separate things are tracked. `data-theme-mode` is what the reader
+      // chose: "system", "light" or "dark". The `dark` class is what that
+      // currently resolves to, which is what Tailwind's dark: variants key off.
+      // In system mode the two stay in sync with the OS, including when it
+      // flips mid-visit (see the matchMedia listener in the header).
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          var mode = saved === 'light' || saved === 'dark' ? saved : 'system';
+          var dark = mode === 'system' ? window.matchMedia('(prefers-color-scheme: dark)').matches : mode === 'dark';
+          document.documentElement.dataset.themeMode = mode;
+          if (dark) document.documentElement.classList.add('dark');
+        } catch (e) {}
+      })();
+    </script>
+    <script defer data-domain="joshcox.co.uk" src="https://analytics.prystine.co.uk/js/script.js"></script>
+    <script>
+      // For anyone who opens the console.
+      try {
+        console.log(
+          "%cNothing's broken. You just opened the console.\n" +
+            '%cWhich makes you a developer, or nosy. Either is fine by me.\n' +
+            "There's a reward for getting this far, such as it is.\n" +
+            '→ https://joshcox.co.uk/well-spotted/',
+          'font:600 14px system-ui,-apple-system,sans-serif;color:#14b8a6',
+          'font:13px system-ui,-apple-system,sans-serif;color:#71717a',
+        );
+      } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="/_astro/BaseLayout.D0CY8Ntw.css">
+  </head>
+  <body class="flex h-full flex-col">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-60 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-zinc-800 focus:shadow-lg focus:ring-1 focus:ring-zinc-900/10 dark:focus:bg-zinc-800 dark:focus:text-zinc-100 dark:focus:ring-white/10"
+      >Skip to content</a
+    >
+    <!-- Fixed background panel: creates the centred "content within rule-lines" frame on wide screens -->
+    <div class="fixed inset-0 flex justify-center sm:px-8">
+      <div class="flex w-full max-w-7xl lg:px-8">
+        <div class="w-full bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20"></div>
+      </div>
+    </div>
+    <div class="relative flex w-full flex-col">
+      <header
+        class="pointer-events-none relative z-50 flex flex-none flex-col"
+        style="height: var(--header-height); margin-bottom: var(--header-mb)"
+      >
+        <div id="header-inner" class="top-0 z-10 h-16 pt-6" style="position: var(--header-position)">
+          <div class="sm:px-8 w-full" style="position: var(--header-inner-position); top: var(--header-top, 1.5rem)">
+            <div class="mx-auto w-full max-w-7xl lg:px-8">
+              <div class="relative px-4 sm:px-8 lg:px-12">
+                <div class="mx-auto max-w-2xl lg:max-w-5xl">
+                  <div class="relative flex gap-4">
+                    <div class="flex flex-1">
+                      <div class="pointer-events-auto h-10 w-10 rounded-full bg-white/90 p-0.5 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-sm dark:bg-zinc-800/90 dark:ring-white/10">
+                        <a href="/" aria-label="Home">
+                          <picture class="contents">
+                            <source
+                              srcset="/images/avatar-400.webp 400w, /images/avatar-512.webp 512w"
+                              sizes="36px"
+                              type="image/webp">
+                            <img
+                              src="/images/avatar.jpg"
+                              alt="Josh Cox"
+                              width="36"
+                              height="36"
+                              loading="eager"
+                              decoding="async"
+                              class="h-9 w-9 rounded-full bg-zinc-100 object-cover dark:bg-zinc-800"
+                          ></picture>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="flex flex-1 justify-end md:justify-center">
+                      <div class="pointer-events-auto md:hidden">
+                        <button
+                          type="button"
+                          id="mobile-nav-button"
+                          aria-expanded="false"
+                          aria-controls="mobile-nav-panel"
+                          class="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-sm dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20"
+                        >
+                          Menu
+                          <svg
+                            viewBox="0 0 8 6"
+                            aria-hidden="true"
+                            class="ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400"
+                          >
+                            <path d="M1.75 1.75 4 4.25l2.25-2.5" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                          </svg>
+                        </button>
+                      </div>
+                      <nav class="pointer-events-auto hidden md:block" aria-label="Main">
+                        <ul class="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-sm dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
+                          <li>
+                            <a
+                              href="/about/"
+                              class="relative block px-3 py-2 transition hover:text-teal-700 dark:hover:text-teal-400"
+                            >
+                              About
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/blog/"
+                              class="relative block px-3 py-2 transition hover:text-teal-700 dark:hover:text-teal-400"
+                            >
+                              Articles
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/projects/"
+                              class="relative block px-3 py-2 transition hover:text-teal-700 dark:hover:text-teal-400"
+                            >
+                              Projects
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/uses/"
+                              class="relative block px-3 py-2 transition text-teal-700 dark:text-teal-400"
+                            >
+                              Uses
+                              <span
+                                class="absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0"
+                              ></span>
+                            </a>
+                          </li>
+                        </ul>
+                      </nav>
+                    </div>
+                    <div class="flex justify-end md:flex-1">
+                      <div class="pointer-events-auto">
+                        <button
+                          type="button"
+                          id="theme-toggle"
+                          aria-label="Theme: follow system. Activate to switch to light."
+                          class="group rounded-full bg-white/90 px-3 py-2 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-sm transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+                        >
+                          <svg
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            data-theme-icon="light"
+                            class="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:fill-teal-400/10 dark:stroke-teal-500"
+                          >
+                            <path d="M8 12.25A4.25 4.25 0 0 1 12.25 8v0a4.25 4.25 0 0 1 4.25 4.25v0a4.25 4.25 0 0 1-4.25 4.25v0A4.25 4.25 0 0 1 8 12.25v0Z"></path> <path d="M12.25 3v1.5M21.5 12.25H20M18.791 18.791l-1.06-1.06M18.791 5.709l-1.06 1.06M12.25 20v1.5M4.5 12.25H3M6.77 6.77 5.709 5.709M6.77 17.73l-1.061 1.061" fill="none"></path>
+                          </svg>
+                          <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            data-theme-icon="dark"
+                            class="h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:fill-teal-400/10 dark:stroke-teal-500"
+                          >
+                            <path d="M17.25 16.22a6.937 6.937 0 0 1-9.47-9.47 7.451 7.451 0 1 0 9.47 9.47ZM12.75 7C17 7 17 2.75 17 2.75S17 7 21.25 7C17 7 17 11.25 17 11.25S17 7 12.75 7Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                          </svg>
+                          <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            data-theme-icon="system"
+                            class="h-6 w-6 fill-zinc-500 stroke-zinc-500 transition group-hover:fill-zinc-700 group-hover:stroke-zinc-700 dark:fill-teal-500 dark:stroke-teal-500"
+                          >
+                            <circle cx="12" cy="12" r="8.25" fill="none" stroke-width="1.5"></circle> <path d="M12 3.75a8.25 8.25 0 0 1 0 16.5Z" stroke="none"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div
+        id="mobile-nav-backdrop"
+        class="fixed inset-0 z-40 hidden bg-zinc-800/40 backdrop-blur-sm dark:bg-black/80"
+      ></div>
+      <div
+        id="mobile-nav-panel"
+        class="fixed inset-x-4 top-8 z-50 hidden origin-top rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5 dark:bg-zinc-900 dark:ring-zinc-800"
+      >
+        <div class="flex flex-row-reverse items-center justify-between">
+          <button type="button" id="mobile-nav-close" aria-label="Close menu" class="-m-1 p-1">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 text-zinc-500 dark:text-zinc-400">
+              <path d="m17.25 6.75-10.5 10.5M6.75 6.75l10.5 10.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </button>
+          <h2 class="text-sm font-medium text-zinc-600 dark:text-zinc-400">Navigation</h2>
+        </div>
+        <nav class="mt-6" aria-label="Main">
+          <ul class="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
+            <li><a href="/about/" class="block py-2">About</a></li>
+            <li><a href="/blog/" class="block py-2">Articles</a></li>
+            <li><a href="/projects/" class="block py-2">Projects</a></li>
+            <li><a href="/uses/" class="block py-2">Uses</a></li>
+          </ul>
+        </nav>
+      </div>
+      <script type="module">
+        globalThis.process ??= {};
+        globalThis.process.env ??= {};
+        {
+          let t = function (o) {
+            ((e.dataset.themeMode = o), e.classList.toggle('dark', o === 'dark' || (o === 'system' && a.matches)));
+            const B = r[(r.indexOf(o) + 1) % r.length];
+            n?.setAttribute('aria-label', `Theme: ${c[o]}. Activate to switch to ${c[B]}.`);
+            try {
+              o === 'system' ? localStorage.removeItem('theme') : localStorage.setItem('theme', o);
+            } catch {}
+          };
+          const e = document.documentElement,
+            n = document.getElementById('theme-toggle'),
+            a = window.matchMedia('(prefers-color-scheme: dark)'),
+            r = ['system', 'light', 'dark'],
+            c = { system: 'follow system', light: 'light', dark: 'dark' },
+            l = {
+              dark: 'They delved too greedily and too deep. You know what they awoke in the darkness.',
+              light: 'Look to my coming at first light on the fifth day. At dawn, look to the East.',
+              system: "I am on nobody's side, because nobody is on my side.",
+            },
+            d = () => {
+              const o = e.dataset.themeMode;
+              return o === 'light' || o === 'dark' ? o : 'system';
+            };
+          (t(d()),
+            n?.addEventListener('click', () => {
+              const o = r[(r.indexOf(d()) + 1) % r.length];
+              t(o);
+              try {
+                console.log(`%c${l[o]}`, 'font:italic 13px system-ui,-apple-system,sans-serif;color:#14b8a6');
+              } catch {}
+            }),
+            a.addEventListener('change', () => {
+              d() === 'system' && t('system');
+            }));
+          const m = () => {
+            d() === 'system' && t('system');
+          };
+          (window.addEventListener('pageshow', m),
+            document.addEventListener('visibilitychange', () => {
+              document.hidden || m();
+            }));
+        }
+        const u = document.getElementById('mobile-nav-button'),
+          w = document.getElementById('mobile-nav-panel'),
+          g = document.getElementById('mobile-nav-backdrop'),
+          M = document.getElementById('mobile-nav-close');
+        function A() {
+          (w?.classList.remove('hidden'),
+            g?.classList.remove('hidden'),
+            u?.setAttribute('aria-expanded', 'true'),
+            document.addEventListener('keydown', E));
+        }
+        function v() {
+          (w?.classList.add('hidden'),
+            g?.classList.add('hidden'),
+            u?.setAttribute('aria-expanded', 'false'),
+            document.removeEventListener('keydown', E));
+        }
+        function E(t) {
+          t.key === 'Escape' && v();
+        }
+        u?.addEventListener('click', A);
+        M?.addEventListener('click', v);
+        g?.addEventListener('click', v);
+        const x = document.documentElement,
+          k = document.getElementById('header-inner'),
+          b = document.getElementById('avatar-anchor'),
+          S = !!b,
+          p = (t, e, n) => {
+            const a = Math.min(e, n),
+              r = Math.max(e, n);
+            return Math.min(Math.max(t, a), r);
+          },
+          s = (t, e) => x.style.setProperty(t, e),
+          f = (t) => x.style.removeProperty(t);
+        let h = !0,
+          i = 0;
+        function L() {
+          if (!k) return;
+          const { top: t, height: e } = k.getBoundingClientRect(),
+            n = p(window.scrollY, 0, document.body.scrollHeight - window.innerHeight);
+          if ((h && s('--header-position', 'sticky'), s('--content-offset', `${i}px`), h || n < i))
+            (s('--header-height', `${i + e}px`), s('--header-mb', `${-i}px`));
+          else if (t + e < -64) {
+            const a = Math.max(e, n - 64);
+            (s('--header-height', `${a}px`), s('--header-mb', `${e - a}px`));
+          } else t === 0 && (s('--header-height', `${n + e}px`), s('--header-mb', `${-n}px`));
+          t === 0 && n > 0 && n >= i
+            ? (s('--header-inner-position', 'fixed'), f('--header-top'), f('--avatar-top'))
+            : (f('--header-inner-position'), s('--header-top', '0px'), s('--avatar-top', '0px'));
+        }
+        function $() {
+          if (!S) return;
+          const t = 1,
+            e = 36 / 64,
+            n = 0,
+            a = 2 / 16,
+            r = i - window.scrollY;
+          let c = (r * (t - e)) / i + e;
+          c = p(c, t, e);
+          let l = (r * (n - a)) / i + a;
+          ((l = p(l, n, a)), s('--avatar-image-transform', `translate3d(${l}rem, 0, 0) scale(${c})`));
+          const d = 1 / (e / c),
+            m = (-a + l) * d;
+          (s('--avatar-border-transform', `translate3d(${m}rem, 0, 0) scale(${d})`),
+            s('--avatar-border-opacity', c === e ? '1' : '0'));
+        }
+        let y = !1;
+        function I() {
+          y ||
+            ((y = !0),
+            requestAnimationFrame(() => {
+              ((i = b?.offsetTop ?? 0), L(), $(), (h = !1), (y = !1));
+            }));
+        }
+        i = b?.offsetTop ?? 0;
+        L();
+        $();
+        h = !1;
+        window.addEventListener('scroll', I, { passive: !0 });
+        window.addEventListener('resize', I);
+      </script>
+      <main id="main" class="flex-auto">
+        <div class="sm:px-8 mt-16 sm:mt-32">
+          <div class="mx-auto w-full max-w-7xl lg:px-8">
+            <div class="relative px-4 sm:px-8 lg:px-12">
+              <div class="mx-auto max-w-2xl lg:max-w-5xl">
+                <header class="max-w-2xl">
+                  <h1 class="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
+                    The kit and software I use every day.
+                  </h1>
+                  <p class="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+                    I get asked now and then what I use to build things. Here's the current setup — the machine, the
+                    tools, and the bits and pieces that keep the work moving.
+                  </p>
+                </header>
+                <div class="mt-16 space-y-20 sm:mt-20">
+                  <section class="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
+                    <div class="grid max-w-3xl grid-cols-1 items-baseline gap-y-8 md:grid-cols-4">
+                      <h2 class="text-sm font-semibold text-zinc-800 dark:text-zinc-100">Workstation</h2>
+                      <div class="md:col-span-3">
+                        <ul role="list" class="space-y-16">
+                          <li class="group relative flex flex-col items-start">
+                            <h3 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+                              Mac mini (M4 Pro, 24GB RAM)
+                            </h3>
+                            <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                              My main machine — small, silent, and plenty of power for client sites and product work.
+                            </p>
+                          </li>
+                          <li class="group relative flex flex-col items-start">
+                            <h3 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+                              32” external monitor
+                            </h3>
+                            <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                              The main display. Enough room to keep the editor, the browser and the terminal all in view
+                              at once.
+                            </p>
+                          </li>
+                          <li class="group relative flex flex-col items-start">
+                            <h3 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+                              16” second monitor
+                            </h3>
+                            <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                              A second screen off to the side for docs, reference, and anything I want to keep half an
+                              eye on.
+                            </p>
+                          </li>
+                          <li class="group relative flex flex-col items-start">
+                            <h3 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+                              Apple Magic Keyboard
+                            </h3>
+                            <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                              Low-profile and tidy — keeps the desk clean.
+                            </p>
+                          </li>
+                          <li class="group relative flex flex-col items-start">
+                            <h3 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+                              Apple Magic Mouse
+                            </h3>
+                            <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                              Whatever the internet thinks of it, I get on with it fine.
+                            </p>
+                          </li>
+                          <li class="group relative flex flex-col items-start">
+                            <h3 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+                              Sit-stand desk
+                            </h3>
+                            <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                              So I&#39;m not glued to the chair all day. I switch to standing when I need a reset.
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+                  <section class="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
+                    <div class="grid max-w-3xl grid-cols-1 items-baseline gap-y-8 md:grid-cols-4">
+                      <h2 class="text-sm font-semibold text-zinc-800 dark:text-zinc-100">Development</h2>
+                      <div class="md:col-span-3">
+                        <ul role="list" class="space-y-16">
+                          <li class="group relative flex flex-col items-start">
+                            <h3 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+                              VS Code
+                            </h3>
+                            <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                              My editor of choice. A handful of extensions, a calm theme, and not much else.
+                            </p>
+                          </li>
+                          <li class="group relative flex flex-col items-start">
+                            <h3 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+                              Claude
+                            </h3>
+                            <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                              My pair programmer for the fiddly bits — it takes the boilerplate so I can think about the
+                              hard parts.
+                            </p>
+                          </li>
+                          <li class="group relative flex flex-col items-start">
+                            <h3 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+                              Osaurus
+                            </h3>
+                            <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                              For running local LLMs on the Mac when I&#39;d rather not send everything off to the
+                              cloud.
+                            </p>
+                          </li>
+                          <li class="group relative flex flex-col items-start">
+                            <h3 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+                              Cloudflare
+                            </h3>
+                            <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                              Where a lot of my sites live now — static at the edge, fast and cheap to run.
+                            </p>
+                          </li>
+                          <li class="group relative flex flex-col items-start">
+                            <h3 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+                              Vercel
+                            </h3>
+                            <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                              For the Next.js apps — push a branch, get a preview URL, ship when it&#39;s ready.
+                            </p>
+                          </li>
+                          <li class="group relative flex flex-col items-start">
+                            <h3 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+                              Netlify
+                            </h3>
+                            <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                              Still my go-to for quick static sites and the odd client deploy.
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+                  <section class="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
+                    <div class="grid max-w-3xl grid-cols-1 items-baseline gap-y-8 md:grid-cols-4">
+                      <h2 class="text-sm font-semibold text-zinc-800 dark:text-zinc-100">Productivity</h2>
+                      <div class="md:col-span-3">
+                        <ul role="list" class="space-y-16">
+                          <li class="group relative flex flex-col items-start">
+                            <h3 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+                              Things 3
+                            </h3>
+                            <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                              Every task, project and half-formed idea lives here. The one app I couldn&#39;t work
+                              without.
+                            </p>
+                          </li>
+                          <li class="group relative flex flex-col items-start">
+                            <h3 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+                              Mimestream
+                            </h3>
+                            <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                              A proper native Gmail client for the Mac — fast, keyboard-first, and out of the way.
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="mt-32 flex-none">
+        <div class="sm:px-8">
+          <div class="mx-auto w-full max-w-7xl lg:px-8">
+            <div class="border-t border-zinc-100 pt-10 pb-16 dark:border-zinc-700/40">
+              <div class="relative px-4 sm:px-8 lg:px-12">
+                <div class="mx-auto max-w-2xl lg:max-w-5xl">
+                  <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+                    <div class="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm font-medium text-zinc-800 dark:text-zinc-200">
+                      <a href="/about/" class="transition hover:text-teal-700 dark:hover:text-teal-400"> About </a
+                      ><a href="/blog/" class="transition hover:text-teal-700 dark:hover:text-teal-400"> Articles </a
+                      ><a href="/projects/" class="transition hover:text-teal-700 dark:hover:text-teal-400">
+                        Projects </a
+                      ><a href="/uses/" class="transition hover:text-teal-700 dark:hover:text-teal-400"> Uses </a
+                      ><a href="/privacy/" class="transition hover:text-teal-700 dark:hover:text-teal-400"> Privacy </a>
+                    </div>
+                    <p class="text-sm text-zinc-500 dark:text-zinc-400">&copy; 2026 Josh Cox. All rights reserved.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- The other half of the Konami code below. Hidden until someone enters it. -->
+    <div
+      id="konami"
+      role="status"
+      class="pointer-events-auto fixed bottom-6 left-1/2 z-50 hidden w-[min(92vw,30rem)] -translate-x-1/2 rounded-2xl bg-white/90 px-5 py-4 text-sm text-zinc-600 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-sm dark:bg-zinc-800/90 dark:text-zinc-400 dark:ring-white/10"
+    >
+      🕹️ <strong class="font-semibold text-zinc-800 dark:text-zinc-100">Thirty lives.</strong> You'll not need one.
+      <a href="/the-crypt/" class="font-medium text-teal-700 hover:text-teal-800 dark:text-teal-400"
+        >There's a room back here anyway.</a
+      >
+    </div>
+    <script>
+      // The old code. Konami's own, and thirty lives in Contra.
+      //
+      // Tracks position in the sequence on every keydown; a wrong key resets,
+      // unless the wrong key happens to be the first one again. The payoff is
+      // the same room the console message and the HTML comment point at.
+      (function () {
+        var seq = [
+          'ArrowUp',
+          'ArrowUp',
+          'ArrowDown',
+          'ArrowDown',
+          'ArrowLeft',
+          'ArrowRight',
+          'ArrowLeft',
+          'ArrowRight',
+          'b',
+          'a',
+        ];
+        var at = 0;
+        var timer;
+        document.addEventListener('keydown', function (e) {
+          var key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+          at = key === seq[at] ? at + 1 : key === seq[0] ? 1 : 0;
+          if (at !== seq.length) return;
+          at = 0;
+          var toast = document.getElementById('konami');
+          if (!toast) return;
+          toast.classList.remove('hidden');
+          if (window.plausible) window.plausible('Konami');
+          // Long enough to read and reach for the link, and it waits while
+          // the pointer is on it.
+          var hide = function () {
+            timer = setTimeout(function () {
+              toast.classList.add('hidden');
+            }, 12000);
+          };
+          clearTimeout(timer);
+          hide();
+          toast.onmouseenter = function () {
+            clearTimeout(timer);
+          };
+          toast.onmouseleave = hide;
+        });
+      })();
+    </script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || (a.contentWindow && a.contentWindow.document);
+          if (b) {
+            var d = b.createElement('script');
+            d.innerHTML =
+              "window.__CF$cv$params={r:'a55de681cba8df82',t:'MTc5MzkwMzExOQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a55de681cba8df82',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName('head')[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement('iframe');
+          a.height = 1;
+          a.width = 1;
+          a.style.position = 'absolute';
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = 'none';
+          a.style.visibility = 'hidden';
+          document.body.appendChild(a);
+          if ('loading' !== document.readyState) c();
+          else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              'loading' !== document.readyState && ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+    <script
+      type="module"
+      src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw=="
+      data-cf-beacon='{"version":"2024.11.0","token":"b22320a8a4954eeb8e535850e69fce75","r":1,"spa":2}'
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

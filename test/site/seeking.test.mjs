@@ -72,6 +72,13 @@ test("seeking payloads stay out of committed workflow staging", async () => {
   const gitignore = await read(".gitignore");
 
   assert.match(gitignore, /_data\/seeking\.json/);
+  assert.match(gitignore, /_data\/channel_publish\.json/);
+  assert.match(gitignore, /_data\/homepage_connections\.json/);
+  assert.match(gitignore, /_data\/past_events\.json/);
+  assert.match(gitignore, /_data\/network\.json/);
+  assert.match(gitignore, /assets\/events\/joshternet\.ics/);
+  assert.match(gitignore, /data\/classification\/run-metrics\.json/);
+  assert.match(gitignore, /data\/classification\/quality-baseline\.json/);
   assert.doesNotMatch(workflow, /^\s+_data\/seeking(?:\.json)?\s*$/m);
   assert.doesNotMatch(workflow, /^\s+git add --[^\n]*seeking/m);
   assert.match(workflow, /Seeking request bodies are current-only/);

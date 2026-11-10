@@ -5,7 +5,6 @@
  * Usage: npm run nlp:probe-directory -- --limit 100 --seed 1
  */
 
-import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 
@@ -13,6 +12,7 @@ import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 
 import { assertPublicURL } from "../network/lib.mjs";
+import { contentSchema } from "./crawl-shape.mjs";
 import {
   contentItemsFromJsonFeed,
   contentItemsFromRssOrAtom,
@@ -171,15 +171,9 @@ async function main() {
     return;
   }
 
-  const schema = JSON.parse(
-    await fs.readFile(
-      path.join(process.cwd(), "schemas", "content.schema.json"),
-      "utf8",
-    ),
-  );
   const ajv = new Ajv2020({ allErrors: true, strict: false });
   addFormats(ajv);
-  const validate = ajv.compile(schema);
+  const validate = ajv.compile(contentSchema);
 
   if (!validate(document)) {
     const detail = (validate.errors || [])

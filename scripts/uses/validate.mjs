@@ -3,7 +3,6 @@
  * Cross-file and historical quality gates for uses datasets. Fail closed.
  */
 
-import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -35,43 +34,61 @@ export function createUsesAjv() {
 export function validateRollupInvariants(rollup) {
   /** @type {string[]} */
   const errors = [];
-  if (!rollup || typeof rollup !== "object") {
+  if (rollup == null) {
     return ["rollup missing"];
   }
+  if (typeof rollup !== "object") {
+    return ["rollup missing"];
+  }
+  const tools = Array.isArray(rollup.tools) ? rollup.tools : [];
   const seenTools = new Set();
-  for (const tool of rollup.tools || []) {
+  for (const tool of tools) {
     if (seenTools.has(tool.tool_id)) {
       errors.push(`duplicate tool row: ${tool.tool_id}`);
     }
     seenTools.add(tool.tool_id);
-    const unique = new Set(tool.active_member_origins || []).size;
-    if (tool.active_member_count !== unique) {
+    const origins = Array.isArray(tool.active_member_origins)
+      ? tool.active_member_origins
+      : [];
+    const unique = new Set(origins).size;
+    const countsUnits = tool.count_basis === "units";
+    if (!countsUnits && tool.active_member_count !== unique) {
       errors.push(`active_member_count !== unique origins for ${tool.tool_id}`);
+    }
+    if (countsUnits && tool.active_member_count < unique) {
+      errors.push(`unit count below unique origins for ${tool.tool_id}`);
     }
     if (tool.active_member_count < 0) {
       errors.push(`negative count for ${tool.tool_id}`);
     }
-    if (
-      tool.adoption_score !== null &&
-      (tool.adoption_score < 0 || tool.adoption_score > 100)
-    ) {
-      errors.push(`adoption_score out of range for ${tool.tool_id}`);
+    if (tool.adoption_score !== null) {
+      if (tool.adoption_score < 0) {
+        errors.push(`adoption_score out of range for ${tool.tool_id}`);
+      } else if (tool.adoption_score > 100) {
+        errors.push(`adoption_score out of range for ${tool.tool_id}`);
+      }
     }
-    const denominator = Number.isFinite(tool.denominator)
-      ? tool.denominator
-      : rollup.verified_uses_member_count;
-    if (tool.adoption_score !== null && denominator > 0) {
-      const expected = Math.round(
-        (100 * tool.active_member_count) / denominator,
-      );
-      if (tool.adoption_score !== expected) {
-        errors.push(`adoption_score mismatch for ${tool.tool_id}`);
+    let denominator = rollup.verified_uses_member_count;
+    if (Number.isFinite(tool.denominator)) {
+      denominator = tool.denominator;
+    }
+    if (tool.adoption_score !== null) {
+      if (denominator > 0) {
+        const expected = Math.round(
+          (100 * tool.active_member_count) / denominator,
+        );
+        if (tool.adoption_score !== expected) {
+          errors.push(`adoption_score mismatch for ${tool.tool_id}`);
+        }
       }
     }
     if (tool.active_member_count > denominator) {
       errors.push(`active exceeds denominator for ${tool.tool_id}`);
     }
-    if (tool.active_member_count > rollup.verified_uses_member_count) {
+    if (
+      !countsUnits &&
+      tool.active_member_count > rollup.verified_uses_member_count
+    ) {
       errors.push(`active exceeds coverage for ${tool.tool_id}`);
     }
   }
@@ -86,22 +103,29 @@ export function validateRollupInvariants(rollup) {
 export function validateGraphInvariants(graph) {
   /** @type {string[]} */
   const errors = [];
-  const nodeIds = new Set((graph.nodes || []).map((n) => n.id));
-  if (nodeIds.size !== (graph.nodes || []).length) {
+  const nodes = Array.isArray(graph.nodes) ? graph.nodes : [];
+  const edges = Array.isArray(graph.edges) ? graph.edges : [];
+  const nodeIds = new Set(nodes.map((n) => n.id));
+  if (nodeIds.size !== nodes.length) {
     errors.push("duplicate graph node ids");
   }
-  for (const edge of graph.edges || []) {
-    if (!nodeIds.has(edge.from) || !nodeIds.has(edge.to)) {
+  for (const edge of edges) {
+    if (!nodeIds.has(edge.from)) {
+      errors.push(`orphan edge ${edge.from} -> ${edge.to}`);
+    } else if (!nodeIds.has(edge.to)) {
       errors.push(`orphan edge ${edge.from} -> ${edge.to}`);
     }
-    if (edge.relation === "uses" && !edge.evidence_event_id) {
-      errors.push(`uses edge missing evidence: ${edge.from}`);
+    if (edge.relation === "uses") {
+      if (!edge.evidence_event_id) {
+        errors.push(`uses edge missing evidence: ${edge.from}`);
+      }
     }
-    if (
-      String(edge.from).startsWith("member:") &&
-      String(edge.to).startsWith("member:")
-    ) {
-      errors.push("forbidden member-member edge");
+    const fromMember = String(edge.from).startsWith("member:");
+    const toMember = String(edge.to).startsWith("member:");
+    if (fromMember) {
+      if (toMember) {
+        errors.push("forbidden member-member edge");
+      }
     }
   }
   return errors;
@@ -131,13 +155,19 @@ export function validateHistoryInvariants(events, state) {
     }
   }
   const replayed = replayState(events);
-  if (replayed.through_event_id !== (state.through_event_id || "")) {
-    if (events.length > 0 || state.through_event_id) {
+  const stateThrough = state.through_event_id
+    ? String(state.through_event_id)
+    : "";
+  if (replayed.through_event_id !== stateThrough) {
+    if (events.length > 0) {
+      errors.push("state through_event_id does not match replay");
+    } else if (state.through_event_id) {
       errors.push("state through_event_id does not match replay");
     }
   }
   const replayTools = toolProjection(replayed.members);
-  const stateTools = toolProjection(state.members || []);
+  const stateMembers = Array.isArray(state.members) ? state.members : [];
+  const stateTools = toolProjection(stateMembers);
   if (JSON.stringify(replayTools) !== JSON.stringify(stateTools)) {
     errors.push("state tool projection does not match event replay");
   }
@@ -151,17 +181,25 @@ export function validateHistoryInvariants(events, state) {
  */
 function toolProjection(members) {
   return [...members]
-    .map((member) => ({
-      origin: member.origin,
-      tools: [...(member.tools || [])]
-        .map((tool) => ({
-          tool_id: tool.tool_id,
-          status: tool.status,
-          use_case_ids: [...(tool.use_case_ids || [])].sort(),
-          evidence_event_id: tool.evidence_event_id,
-        }))
-        .sort((a, b) => a.tool_id.localeCompare(b.tool_id)),
-    }))
+    .map((member) => {
+      const tools = Array.isArray(member.tools) ? member.tools : [];
+      return {
+        origin: member.origin,
+        tools: [...tools]
+          .map((tool) => {
+            const useCases = Array.isArray(tool.use_case_ids)
+              ? tool.use_case_ids
+              : [];
+            return {
+              tool_id: tool.tool_id,
+              status: tool.status,
+              use_case_ids: [...useCases].sort(),
+              evidence_event_id: tool.evidence_event_id,
+            };
+          })
+          .sort((a, b) => a.tool_id.localeCompare(b.tool_id)),
+      };
+    })
     .sort((a, b) => a.origin.localeCompare(b.origin));
 }
 
@@ -188,7 +226,9 @@ export function isEarlySample(verifiedPublishers, eligibleCount) {
  * @param {string} [options.schemaDir]
  * @returns {Promise<{ ok: boolean, errors: string[] }>}
  */
-export async function validateUsesRoot(rootDir, options = {}) {
+export async function validateUsesRoot(rootDir, options) {
+  const resolvedOptions = options == null ? {} : options;
+  void resolvedOptions;
   /** @type {string[]} */
   const errors = [];
   const events = await loadAllEvents(rootDir);
@@ -199,20 +239,13 @@ export async function validateUsesRoot(rootDir, options = {}) {
   });
   errors.push(...validateHistoryInvariants(events, state));
 
-  for (const member of state.members || []) {
-    if (!PAGE_OUTCOMES.has(member.page_status) && member.page_status) {
-      // page_status on state uses the same outcome set
-      errors.push(`unknown page_status for ${member.origin}`);
+  const members = Array.isArray(state.members) ? state.members : [];
+  for (const member of members) {
+    if (!PAGE_OUTCOMES.has(member.page_status)) {
+      if (member.page_status) {
+        errors.push(`unknown page_status for ${member.origin}`);
+      }
     }
-  }
-
-  const schemaDir =
-    options.schemaDir || path.join(rootDir, "..", "..", "schemas");
-  try {
-    const rollupSchemaPath = path.join(schemaDir, "uses-rollup.schema.json");
-    await readFile(rollupSchemaPath, "utf8");
-  } catch {
-    // Schemas may be validated separately when absent in unit tests.
   }
 
   return { ok: errors.length === 0, errors };
@@ -220,13 +253,16 @@ export async function validateUsesRoot(rootDir, options = {}) {
 
 /**
  * CLI entry used by npm run uses:validate.
- * @param {string[]} argv
+ * @param {string[]} [argv] - CLI args after the entry path. Defaults to process.argv.slice(2).
  * @returns {Promise<number>}
  */
-export async function main(argv = process.argv.slice(2)) {
-  const root =
-    argv.find((a) => a.startsWith("--root="))?.slice("--root=".length) ||
-    path.join(process.cwd(), "data", "uses");
+export async function main(argv) {
+  const args = Array.isArray(argv) ? argv : process.argv.slice(2);
+  const rootArg = args.find((a) => a.startsWith("--root="));
+  let root = path.join(process.cwd(), "data", "uses");
+  if (rootArg) {
+    root = rootArg.slice("--root=".length);
+  }
   const result = await validateUsesRoot(root);
   if (!result.ok) {
     for (const error of result.errors) {
@@ -238,13 +274,30 @@ export async function main(argv = process.argv.slice(2)) {
   return 0;
 }
 
-const isDirect =
-  Boolean(process.argv[1]) &&
-  path.resolve(process.argv[1]) ===
-    path.resolve(fileURLToPath(import.meta.url));
-
-if (isDirect) {
-  main().then((code) => {
-    process.exitCode = code;
-  });
+/**
+ * Runs the CLI when this file is the process entry point.
+ * Defaults are resolved in the body so coverage stays stable under full suite runs.
+ * @param {string} [entryPath] - Process entry path. Defaults to argv[1].
+ * @param {string[]} [argv] - Arguments after the entry path.
+ * @returns {Promise<number | null>} Exit code when this module is the entry, otherwise null.
+ */
+export async function runCli(entryPath, argv) {
+  const modulePath = fileURLToPath(import.meta.url);
+  if (entryPath == null) {
+    return null;
+  }
+  if (entryPath === "") {
+    return null;
+  }
+  if (path.resolve(String(entryPath)) !== path.resolve(modulePath)) {
+    return null;
+  }
+  const args = Array.isArray(argv) ? argv : process.argv.slice(2);
+  const code = await main(args);
+  process.exitCode = code;
+  return code;
 }
+
+// Always hand argv through runCli so module-load coverage does not depend on
+// whether process.argv[1] is a string (node --test vs direct entry).
+await runCli(process.argv[1], process.argv.slice(2));

@@ -1,13 +1,14 @@
 /**
  * Goal & Constraints:
- * Extract Schema.org Event/MusicEvent/ExhibitionEvent and mf2 h-event from
- * crawled HTML. Builds content items with content_type "event".
- * Past events are never surfaced in the public Happening calendar—only future
- * or ongoing events relative to an injectable `now` are included.
- * Requires a dependable start date; undated or mention-only events are skipped.
- * Does not mint participation edges from event pages—only `attribution_role`.
+ * Extract Schema.org Event types, mf2 h-event, and human-readable speaking
+ * archives or event indexes. Builds content items with content_type "event".
+ * Speaking archives also emit content_type "presentation". Past events stay
+ * in the content store; Happening shows upcoming and ongoing items only.
+ * A date without a clock time stays date-only. Attribution on a speaking
+ * archive is "presented", not organized.
  */
 
+import { collectAppearances } from "./appearances.mjs";
 import {
   jsonLdObjects,
   normalizeExtractedText,
@@ -125,6 +126,19 @@ function normalizeDate(value) {
   }
 
   return raw;
+}
+
+/**
+ * Date-only values have no clock time. Timed values keep the publisher offset.
+ * @param {string} start
+ * @returns {'date'|'datetime'}
+ */
+function startPrecision(start) {
+  if (/^\d{4}-\d{2}-\d{2}$/.test(start)) {
+    return "date";
+  }
+
+  return "datetime";
 }
 
 /**
@@ -252,6 +266,7 @@ function itemFromEventNode(node, pageUrl, siteOrigin, observedAt) {
     ...(location ? { location } : {}),
     ...(status ? { status } : {}),
     attribution_role: attributionRole,
+    start_precision: startPrecision(start),
     source: { kind: "event-schema", page: pageUrl },
     source_feeds: [{ type: "event-schema", url: pageUrl }],
     observed_at: observedAt,
@@ -442,6 +457,7 @@ export function eventsFromMf2(html, pageUrl, siteOrigin, observedAt) {
       ...(location ? { location } : {}),
       // Publisher's own h-event page → hosted (mention is for third-party cites only).
       attribution_role: "hosted",
+      start_precision: startPrecision(start),
       source: { kind: "event-mf2", page: pageUrl },
       source_feeds: [{ type: "event-mf2", url: pageUrl }],
       observed_at: observedAt,
@@ -510,6 +526,15 @@ export function collectEvents(pages, meta) {
       seen.add(String(item.identity));
       items.push(item);
     }
+  }
+
+  for (const item of collectAppearances(pages, meta).items) {
+    if (seen.has(String(item.identity))) {
+      continue;
+    }
+
+    seen.add(String(item.identity));
+    items.push(item);
   }
 
   return { items };
