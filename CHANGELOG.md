@@ -7,43 +7,32 @@ engineering notes stay in git history; this file is for people reading the repo.
 
 ### Fixed
 
-- **Playwright CI apt deps:** `network-sync` and `site-quality` install Chromium
-  with `npx playwright install chromium` only. Dropping `--with-deps` avoids
-  GitHub Ubuntu runner apt mirror DNS failures that blocked Sync and publish
-  network.
-- **Network sync CI / crawl short keys:** Scheduled network updates no longer
-  fail after a successful sync on a stale clear-key JSON check. Validation is
-  decode-aware (`nlp:validate`), sync/preflight read encoded `_data/network.json`
-  through the shared decoder so fresh captures stay incremental as members grow,
-  Wander decodes `/network/data.json`, and `/connections/data.json` reads short
-  Liquid keys while still emitting clear visitor API field names.
+- **Network updates:** Scheduled registry refreshes no longer stall when
+  installing Chromium for browser checks; the job downloads the browser without
+  relying on flaky Ubuntu package mirrors.
+- **Network views after sync:** Wander, Connections, and related pages keep
+  reading the published network datasets correctly after an encoded crawl
+  publish.
 - **Network / Topics cross-links:** Network footnote links to Friends; Topics
   footnote links to the Explore content-handbook chapter again.
 
 ### Added
 
-- **JoshBot verified crawler identity:** `/joshbot/` documents Cloudflare
-  Verified Bot / BotBase listing, Web Bot Auth request signing, the public
-  HTTP Message Signatures directory, and the Cloudflare Radar Bots Directory
-  entry for Joshternet-Joshbot. Privacy and robots handbook copy point at the
-  same disclosure.
-- **Edge security regression tooling:** `scripts/security/verify-edge-security.sh`
-  (`npm run security:verify-edge`) and canonical-host tests that keep
-  `https://joshternet.org` as the published site origin. Operational Cloudflare
-  configuration remains outside the public repository.
-- **Privacy: Cloudflare hub delivery:** `/privacy/` now states that public
+- **JoshBot verified crawler identity:** `/joshbot/` explains that JoshBot is a
+  Cloudflare Verified Bot, signs requests with Web Bot Auth, publishes a public
+  signing-key directory, and lists identity details in the Cloudflare Radar
+  Bots Directory. Privacy and robots handbook pages point to the same
+  disclosure.
+- **Privacy: Cloudflare hub delivery:** `/privacy/` states that public
   joshternet.org traffic is delivered through Cloudflare before GitHub Pages,
   that Workers share that provider relationship, and that Cloudflare Web
   Analytics is not used on the hub.
 - **Friends of the Joshternet:** `/friends/` celebrates Network participants who
-  declared they are not Joshes (`identity: declined`), listed from the same
-  Network data as `/network/` with a Friends entry in Network secondary nav.
-- **GitHub star CTA:** Header (and mobile Menu) star icon with build-time count
-  linking to `joshternet/joshternet.github.io` (no chip label), `_data/github.json`
-  plus a six-hour Actions refresh, a small CSP `connect-src` hole for
-  `api.github.com` so JS can refresh the visible count, local gold fill after
-  the visitor clicks the control, and Umami event `github_star_cta_clicked`.
-  Launch baseline: **0 stars** as of 2026-11-08.
+  declared they are not Joshes, listed from the same Network data as `/network/`
+  with a Friends entry in Network secondary nav.
+- **GitHub star CTA:** Header and mobile Menu star control for
+  `joshternet/joshternet.github.io`, with a build-time count that can refresh
+  from GitHub’s public API when JavaScript is available.
 - **Observation platform:** Crawl-derived datasets now share one lifecycle:
   discover → fetch through a central broker → durable source and observation
   stores → extract/reconcile/project → validate a candidate generation → commit

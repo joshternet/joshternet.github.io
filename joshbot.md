@@ -86,22 +86,21 @@ Joshternet declaration.
 
 ## Verified crawler identity
 
-JoshBot is a Cloudflare Verified Bot and has been listed in Cloudflare BotBase
-since Oct. 19, 2026.
+JoshBot is a Cloudflare Verified Bot. Cloudflare has listed it in BotBase, its
+public catalog of known bots and agents, since Oct. 19, 2026.
 
 JoshBot uses [Web Bot Auth][web-bot-auth] to cryptographically sign its requests.
-That lets supported infrastructure check that traffic identifying itself as
-JoshBot actually comes from JoshBot, rather than relying on the `User-Agent`
-string alone. The public signing-key directory is published at
+Supported infrastructure can check that traffic identifying itself as JoshBot
+actually comes from JoshBot, rather than relying on the `User-Agent` string
+alone. The public signing-key directory is at
 [https://joshternet.org/.well-known/http-message-signatures-directory][signatures-directory].
 
 Verification does not give JoshBot permission to ignore a website's preferences.
 JoshBot still retrieves and follows the applicable `robots.txt` policy, respects
 crawl restrictions, and operates within its documented request limits.
 
-JoshBot's identity, operator, access classification, and verification information
-are publicly available in the [Cloudflare Radar Bots Directory entry for
-Joshternet-Joshbot][radar-joshbot].
+Identity, operator, access classification, and verification details are public
+in the [Cloudflare Radar entry for Joshternet-Joshbot][radar-joshbot].
 
 ## Report a problem
 
