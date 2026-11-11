@@ -5,8 +5,28 @@ engineering notes stay in git history; this file is for people reading the repo.
 
 ## Unreleased
 
+### Fixed
+
+- **Playwright CI apt deps:** `network-sync` and `site-quality` install Chromium
+  with `npx playwright install chromium` only. Dropping `--with-deps` avoids
+  GitHub Ubuntu runner apt mirror DNS failures that blocked Sync and publish
+  network.
+- **Network sync CI / crawl short keys:** Scheduled network updates no longer
+  fail after a successful sync on a stale clear-key JSON check. Validation is
+  decode-aware (`nlp:validate`), sync/preflight read encoded `_data/network.json`
+  through the shared decoder so fresh captures stay incremental as members grow,
+  Wander decodes `/network/data.json`, and `/connections/data.json` reads short
+  Liquid keys while still emitting clear visitor API field names.
+- **Network / Topics cross-links:** Network footnote links to Friends; Topics
+  footnote links to the Explore content-handbook chapter again.
+
 ### Added
 
+- **JoshBot verified crawler identity:** `/joshbot/` documents Cloudflare
+  Verified Bot / BotBase listing, Web Bot Auth request signing, the public
+  HTTP Message Signatures directory, and the Cloudflare Radar Bots Directory
+  entry for Joshternet-Joshbot. Privacy and robots handbook copy point at the
+  same disclosure.
 - **Edge security regression tooling:** `scripts/security/verify-edge-security.sh`
   (`npm run security:verify-edge`) and canonical-host tests that keep
   `https://joshternet.org` as the published site origin. Operational Cloudflare
@@ -54,6 +74,8 @@ engineering notes stay in git history; this file is for people reading the repo.
 
 ### Changed
 
+- **Topics footnote:** Pitch and discovery disclaimer sit under the topic list as
+  a muted page footnote instead of mid-intro body copy.
 - **Visitor copy:** Homepage, Network, Wander, Search, Topics, Showcase, What's
   New, Connections, Events, Join, Implement, and related pages use a warmer
   discovery voice without changing protocol or data contracts.
@@ -94,7 +116,10 @@ engineering notes stay in git history; this file is for people reading the repo.
   `liquid-html` never converges on captured pages with inline `</script>` in JS.
 - **Uses aggregate coverage stability:** Replace optional-chaining / compound
   `||` guards in `scripts/uses/aggregate.mjs` with explicit checks so Node’s
-  experimental branch coverage stays at 100% across full-suite runs.
+  experimental branch coverage stays at 100% across full-suite runs. Drop
+  unreachable `slotUnits.get(...) || fallback` denominators and redundant
+  `choiceName || displayName` short circuits that flaked at ~99.36% branches
+  under parallel coverage merges.
 - **Showcase accuracy:** Utility/licensing segments stay out of creative
   harvest; graphics hubs, music indexes, year photo albums, and speaking-archive
   presentations classify and link more reliably. Empty or chrome titles no longer

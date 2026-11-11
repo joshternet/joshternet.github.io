@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 
-import { USER_AGENT } from "../nlp/lib.mjs";
+import { readJSONIfExists, USER_AGENT } from "../nlp/lib.mjs";
 import { partitionPublicParticipants, projectRegistry } from "./lib.mjs";
 
 import { registryNeedsSync, screenshotFileIsPresent } from "./state.mjs";
@@ -13,18 +13,6 @@ const DEFAULT_REGISTRY_URL =
 const DEFAULT_DATA_PATH = "_data/network.json";
 
 const registrySource = process.env.NETWORK_REGISTRY_URL || DEFAULT_REGISTRY_URL;
-
-async function readJSONIfExists(filePath, fallback) {
-  try {
-    return JSON.parse(await fs.readFile(filePath, "utf8"));
-  } catch (error) {
-    if (error?.code === "ENOENT") {
-      return fallback;
-    }
-
-    throw error;
-  }
-}
 
 async function loadRegistry(source) {
   if (source.startsWith("https://") || source.startsWith("http://")) {

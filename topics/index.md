@@ -28,27 +28,7 @@ ways. Someone might be writing about photography, another might be building
 software, and somewhere else a person is experimenting with something you never
 thought to look for.
 
-Topics brings some of those shared interests together. Pick something that
-catches your attention and see what people across the Joshternet have been
-writing, making, and exploring. Think of each topic as a little neighborhood of
-ideas, with different websites contributing their own perspectives.
-
-Some topics come from information publishers share about their websites. Others
-are discovered by looking at what they've published. Joshternet uses that
-information to help connect related work, but the labels are not always ones the
-publishers chose themselves. Writing about the same subject doesn't mean two
-people know each other or see things the same way—and a topic link is not an
-endorsement or a claim of expertise. Follow an article that catches your eye and
-you'll end up on the publisher's own website, where the work belongs.
-
-Curious how subject discovery works under the hood?
-[Read more in the Explore handbook]({{ '/implement/content/explore/' | relative_url }}).
-
 {% if neighborhood_count > 0 %}
-<p class="topics-filter-hint">
-  Looking for something in particular? Start typing to narrow things down.
-</p>
-
 <div class="explore-toolbar" data-topics-toolbar>
   <label class="explore-filter-field">
     <span>Find a topic</span>
@@ -104,3 +84,24 @@ Curious how subject discovery works under the hood?
   </p>
 </div>
 {% endif %}
+
+<footer class="topics-footnote">
+  <p>
+    Topics brings some of those shared interests together. Pick something that
+    catches your attention and see what people across the Joshternet have been
+    writing, making, and exploring. Think of each topic as a little neighborhood of
+    ideas, with different websites contributing their own perspectives.
+  </p>
+  <p>
+    Some topics come from information publishers share about their websites. Others
+    are discovered by looking at what they've published. Joshternet uses that
+    information to help connect related work, but the labels are not always ones the
+    publishers chose themselves. Writing about the same subject doesn't mean two
+    people know each other or see things the same way—and a topic link is not an
+    endorsement or a claim of expertise. Follow an article that catches your eye and
+    you'll end up on the publisher's own website, where the work belongs. Publishers
+    who want to make work easier to find can read
+    <a href="{{ '/implement/content/explore/' | relative_url }}">Explore</a>
+    in the content handbook.
+  </p>
+</footer>

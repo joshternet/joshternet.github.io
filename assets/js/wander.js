@@ -903,7 +903,10 @@
       return response.json();
     })
     .then((networkData) => {
-      sites = validateSites(networkData);
+      const decode = globalThis.joshternetDecodeCrawl;
+      const decoded =
+        typeof decode === "function" ? decode(networkData) : networkData;
+      sites = validateSites(decoded);
       restore();
 
       if (currentOrigin) {

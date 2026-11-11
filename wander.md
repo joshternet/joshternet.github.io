@@ -12,7 +12,9 @@ seo:
   name: Wander
 permalink: /wander/
 joshternet_analysis: derived
-script: /assets/js/wander.js
+scripts:
+  - /assets/js/crawl-keys.js
+  - /assets/js/wander.js
 full_bleed: true
 allow_frames: true
 footer: false

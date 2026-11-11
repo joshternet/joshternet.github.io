@@ -25643,6 +25643,49 @@
       "extractor_version": 5,
       "taxonomy_version": 3,
       "observed_at": "2026-11-10T01:55:56.724Z"
+    },
+    {
+      "event_id": "sha256:09a90f2656600d56d0a79e85c7f7334fd6e849e24230eb2a06ba45ff4103b2f3",
+      "event_type": "source_status_changed",
+      "origin": "https://www.joshmedeski.com",
+      "page_url": "https://www.joshmedeski.com/uses/",
+      "tool_id": null,
+      "status": "unspecified",
+      "use_case_ids": [],
+      "evidence": {
+        "source_url": "https://www.joshmedeski.com/uses/",
+        "source_hash": "",
+        "label": "->verified",
+        "section": "",
+        "excerpt": ""
+      },
+      "extractor_version": 5,
+      "taxonomy_version": 3,
+      "observed_at": "2026-11-11T06:59:22.472Z"
+    },
+    {
+      "event_id": "sha256:6ffa69331ca78e6a07604fc70161b71a25c27b3d0b9d5441f4b55cb3a2b3901b",
+      "event_type": "usage_added",
+      "origin": "https://www.joshmedeski.com",
+      "page_url": "https://www.joshmedeski.com/uses/",
+      "tool_id": "observed:audio",
+      "status": "current",
+      "use_case_ids": ["music-making"],
+      "evidence": {
+        "source_url": "https://www.joshmedeski.com/uses/",
+        "source_hash": "sha256:1a474037251eb81510e6ec4134bd185414ea4952eae006dcf7bc634c4547af1e",
+        "label": "🎧 Audio",
+        "section": "AirPods",
+        "section_path": "Uses / Hardware / AirPods",
+        "href": "/areas/audio",
+        "context": "🎧 Audio",
+        "kind": "product",
+        "excerpt": "🎧 Audio. 🎧 Audio",
+        "quantity": 1
+      },
+      "extractor_version": 5,
+      "taxonomy_version": 3,
+      "observed_at": "2026-11-11T06:59:22.472Z"
     }
   ]
 }

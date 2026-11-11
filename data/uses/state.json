@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "through_event_id": "sha256:d444aac17b9f13fea1a8034b6f4541bebaf9d9dc66000bb8a3d840b8f3c2b53f",
+  "through_event_id": "sha256:6ffa69331ca78e6a07604fc70161b71a25c27b3d0b9d5441f4b55cb3a2b3901b",
   "members": [
     {
       "origin": "https://artlung.com",
       "page_url": "https://artlung.com/uses",
       "page_status": "out_of_scope",
       "first_valid_observation_at": "2026-11-04T22:20:06.760Z",
-      "last_valid_observation_at": "2026-11-10T01:55:56.724Z",
+      "last_valid_observation_at": "2026-11-11T06:59:22.472Z",
       "tools": []
     },
     {
@@ -15,7 +15,7 @@
       "page_url": "https://joshbeard.com/uses",
       "page_status": "verified",
       "first_valid_observation_at": "2026-11-04T20:05:21.389Z",
-      "last_valid_observation_at": "2026-11-10T01:55:56.724Z",
+      "last_valid_observation_at": "2026-11-11T06:59:22.472Z",
       "tools": [
         {
           "tool_id": "1password",
@@ -294,7 +294,7 @@
       "page_url": "https://joshcox.co.uk/uses/",
       "page_status": "verified",
       "first_valid_observation_at": "2026-11-04T22:20:06.760Z",
-      "last_valid_observation_at": "2026-11-10T01:55:56.724Z",
+      "last_valid_observation_at": "2026-11-11T06:59:22.472Z",
       "tools": [
         {
           "tool_id": "apple-magic-keyboard",
@@ -513,7 +513,7 @@
       "page_url": "https://joshghent.com/uses/",
       "page_status": "out_of_scope",
       "first_valid_observation_at": "2026-11-04T22:20:06.760Z",
-      "last_valid_observation_at": "2026-11-10T01:55:56.724Z",
+      "last_valid_observation_at": "2026-11-11T06:59:22.472Z",
       "tools": []
     },
     {
@@ -521,7 +521,7 @@
       "page_url": "https://joshmuller.ca/uses/",
       "page_status": "verified",
       "first_valid_observation_at": "2026-11-04T20:05:21.389Z",
-      "last_valid_observation_at": "2026-11-10T01:55:56.724Z",
+      "last_valid_observation_at": "2026-11-11T06:59:22.472Z",
       "tools": [
         {
           "tool_id": "age-of-empires-2",
@@ -965,7 +965,7 @@
       "page_url": "https://joshtronic.com/uses/",
       "page_status": "verified",
       "first_valid_observation_at": "2026-11-04T22:20:06.760Z",
-      "last_valid_observation_at": "2026-11-10T01:55:56.724Z",
+      "last_valid_observation_at": "2026-11-11T06:59:22.472Z",
       "tools": [
         {
           "tool_id": "1password",
@@ -1994,7 +1994,7 @@
       "page_url": "https://joshua.seigler.net/uses/",
       "page_status": "verified",
       "first_valid_observation_at": "2026-11-04T22:20:06.760Z",
-      "last_valid_observation_at": "2026-11-10T01:55:56.724Z",
+      "last_valid_observation_at": "2026-11-11T06:59:22.472Z",
       "tools": [
         {
           "tool_id": "dartnode",
@@ -2453,7 +2453,7 @@
       "page_url": "https://joshuamorris.info/uses/",
       "page_status": "verified",
       "first_valid_observation_at": "2026-11-10T01:55:56.724Z",
-      "last_valid_observation_at": "2026-11-10T01:55:56.724Z",
+      "last_valid_observation_at": "2026-11-11T06:59:22.472Z",
       "tools": [
         {
           "tool_id": "creality-cr-10-mini",
@@ -2522,7 +2522,7 @@
       "page_url": "https://www.joshfinnie.com/uses/",
       "page_status": "verified",
       "first_valid_observation_at": "2026-11-04T20:05:21.389Z",
-      "last_valid_observation_at": "2026-11-10T01:55:56.724Z",
+      "last_valid_observation_at": "2026-11-11T06:59:22.472Z",
       "tools": [
         {
           "tool_id": "atreus",
@@ -3052,11 +3052,35 @@
       ]
     },
     {
+      "origin": "https://www.joshmedeski.com",
+      "page_url": "https://www.joshmedeski.com/uses/",
+      "page_status": "verified",
+      "first_valid_observation_at": "2026-11-11T06:59:22.472Z",
+      "last_valid_observation_at": "2026-11-11T06:59:22.472Z",
+      "tools": [
+        {
+          "tool_id": "observed:audio",
+          "name": "🎧 Audio",
+          "kind": "product",
+          "context": "🎧 Audio",
+          "section": "AirPods",
+          "section_path": "Uses / Hardware / AirPods",
+          "href": "/areas/audio",
+          "status": "current",
+          "quantity": 1,
+          "use_case_ids": ["music-making"],
+          "first_observed_at": "2026-11-11T06:59:22.472Z",
+          "last_event_at": "2026-11-11T06:59:22.472Z",
+          "evidence_event_id": "sha256:6ffa69331ca78e6a07604fc70161b71a25c27b3d0b9d5441f4b55cb3a2b3901b"
+        }
+      ]
+    },
+    {
       "origin": "https://www.joshuabaker.com",
       "page_url": "https://www.joshuabaker.com/uses/",
       "page_status": "verified",
       "first_valid_observation_at": "2026-11-04T20:05:21.389Z",
-      "last_valid_observation_at": "2026-11-10T01:55:56.724Z",
+      "last_valid_observation_at": "2026-11-11T06:59:22.472Z",
       "tools": [
         {
           "tool_id": "1password",

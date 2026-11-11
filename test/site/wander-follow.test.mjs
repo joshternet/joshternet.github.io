@@ -22,6 +22,8 @@ test("Wander toolbar is Go, address, and Open only", async () => {
   const script = await read("assets/js/wander.js");
 
   assert.match(page, /title: Wander the Joshternet$/m);
+  assert.match(page, /\/assets\/js\/crawl-keys\.js/);
+  assert.match(page, /\/assets\/js\/wander\.js/);
   assert.match(page, /data-wander-go/);
   assert.match(page, /data-wander-address/);
   assert.match(page, /data-wander-open/);
@@ -31,6 +33,7 @@ test("Wander toolbar is Go, address, and Open only", async () => {
 
   assert.match(script, /joshternet-wander-v4/);
   assert.match(script, /\/network\/data\.json/);
+  assert.match(script, /joshternetDecodeCrawl/);
   assert.match(script, /Previewing \$\{site\.title/);
   assert.doesNotMatch(script, /\/connections\/data\.json/);
   assert.doesNotMatch(script, /previousStack/);

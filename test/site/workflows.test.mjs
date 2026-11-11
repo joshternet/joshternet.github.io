@@ -33,6 +33,12 @@ test("network-sync keeps six-hour and registry triggers plus sync steps", async 
   assert.match(sync, /sync-and-publish:/);
   assert.match(sync, /npm run test:coverage/);
   assert.match(sync, /npm run test:browser/);
+  assert.match(sync, /npx playwright install chromium/);
+  assert.doesNotMatch(
+    sync,
+    /playwright install --with-deps/,
+    "network-sync must not apt-install Playwright deps (flaky Ubuntu mirrors)",
+  );
   assert.match(sync, /npm run network:sync/);
   assert.match(sync, /npm run nlp:sync/);
   assert.match(sync, /Format generated datasets before validate/);
@@ -46,6 +52,26 @@ test("network-sync keeps six-hour and registry triggers plus sync steps", async 
   assert.match(sync, /BASE_SHA|base\.outputs\.sha|Capture base SHA/);
   assert.match(sync, /JOSHTERNET_USES_PUBLISH/);
   assert.doesNotMatch(sync, /data\/dev-crawl-cache/);
+  assert.doesNotMatch(
+    sync,
+    /Validate generated JSON/,
+    "network-sync must not keep a second clear-key JSON validator",
+  );
+  assert.doesNotMatch(
+    sync,
+    /entry\.origin\s*!==\s*"string"|typeof entry\.origin !== "string"/,
+    "network-sync must not raw-check clear entry.origin on encoded network.json",
+  );
+  assert.doesNotMatch(
+    sync,
+    /typeof entry\.domain/,
+    "network-sync must not raw-check clear entry.domain on encoded network.json",
+  );
+  assert.doesNotMatch(
+    sync,
+    /typeof entry\.identity/,
+    "network-sync must not raw-check clear entry.identity on encoded network.json",
+  );
 });
 
 test("network-sync forbids Actions artifact upload/download for generated data", async () => {
@@ -187,6 +213,12 @@ test("site-quality runs coverage, browser, build, and site tests", async () => {
   assert.match(quality, /pull_request:/);
   assert.match(quality, /npm run format:check/);
   assert.match(quality, /npm run test:coverage/);
+  assert.match(quality, /npx playwright install chromium/);
+  assert.doesNotMatch(
+    quality,
+    /playwright install --with-deps/,
+    "site-quality must not apt-install Playwright deps (flaky Ubuntu mirrors)",
+  );
   assert.match(quality, /npm run test:browser/);
   assert.match(quality, /npm run build/);
   assert.match(quality, /npm run test:site/);

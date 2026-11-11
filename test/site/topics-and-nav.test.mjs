@@ -154,6 +154,8 @@ test("nav keeps Wander top-level and nests About/Network children", async () => 
   assert.match(topicLayout, /item\.k3g/);
   assert.match(topics, /role="status"/);
   assert.match(topics, /type="search"/);
+  assert.match(topics, /topics-footnote/);
+  assert.match(topics, /implement\/content\/explore\//);
   const topicsJs = await read("assets/js/topics.js");
   assert.match(topicsJs, /data-topics|topics-filter|matching topic/i);
   assert.doesNotMatch(networkPage, /network-toolbar__secondary/);

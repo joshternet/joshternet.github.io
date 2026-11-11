@@ -9,6 +9,10 @@ const wanderScriptPath = fileURLToPath(
   new URL("../../assets/js/wander.js", import.meta.url),
 );
 
+const crawlKeysScriptPath = fileURLToPath(
+  new URL("../../assets/js/crawl-keys.js", import.meta.url),
+);
+
 const outboundScriptPath = fileURLToPath(
   new URL("../../assets/js/outbound-referrer.js", import.meta.url),
 );
@@ -18,6 +22,7 @@ const mainStylesPath = fileURLToPath(
 );
 
 const wanderScript = await readFile(wanderScriptPath, "utf8");
+const crawlKeysScript = await readFile(crawlKeysScriptPath, "utf8");
 const outboundScript = await readFile(outboundScriptPath, "utf8");
 const mainStyles = await readFile(mainStylesPath, "utf8");
 
@@ -154,6 +159,10 @@ async function wanderPage(data, { sessionState, prepare } = {}) {
 
   await page.addScriptTag({
     content: outboundScript,
+  });
+
+  await page.addScriptTag({
+    content: crawlKeysScript,
   });
 
   await page.addScriptTag({
@@ -746,6 +755,51 @@ test("Joshternet hub uses the self-host fallback instead of a CSP-blocked iframe
       await page.locator(".wander-fallback").getAttribute("data-frame-reason"),
       "self",
     );
+  } finally {
+    await context.close();
+  }
+});
+
+test("short-keyed network payloads decode into a growing Wander participant list", async () => {
+  const memberCount = 8;
+  const encoded = Array.from({ length: memberCount }, (_, index) => {
+    const host = `member${index}.example`;
+    return {
+      k4b: `https://${host}`,
+      k1v: host,
+      k31: "affirmed",
+      k7c: `Member ${index}`,
+      k1n: `Synthetic wander member ${index}`,
+      k63: `/assets/network/sites/member${index}.webp`,
+      k21: false,
+      k2m: "blocked-by-site",
+    };
+  });
+
+  const { context, page } = await wanderPage(encoded);
+
+  try {
+    await page.waitForFunction(() => {
+      const address = document.querySelector("[data-wander-address]")?.value;
+      return (
+        typeof address === "string" && address.startsWith("https://member")
+      );
+    });
+
+    const seen = new Set();
+
+    for (let index = 0; index < memberCount * 2; index += 1) {
+      const address = await page.locator("[data-wander-address]").inputValue();
+      seen.add(address);
+      await page.locator("[data-wander-go]").click();
+      await page.waitForFunction((previous) => {
+        return (
+          document.querySelector("[data-wander-address]")?.value !== previous
+        );
+      }, address);
+    }
+
+    assert.equal(seen.size, memberCount);
   } finally {
     await context.close();
   }

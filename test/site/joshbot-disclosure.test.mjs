@@ -1,7 +1,8 @@
 /**
  * Goal: Lock mechanical JoshBot crawler-identity disclosure facts on /joshbot/
- * and Nominate form wiring—UA, product token, identity URL, retention links,
- * and form data hooks—without freezing visitor marketing prose.
+ * and Nominate form wiring—UA, product token, Web Bot Auth / Radar identity
+ * URLs, retention links, and form data hooks—without freezing visitor
+ * marketing prose.
  */
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
@@ -33,6 +34,16 @@ test("JoshBot disclosure keeps crawler identity and retention contracts", async 
   assert.match(page, /Joshternet-Joshbot/);
   assert.match(page, /https:\/\/joshternet\.org\/joshbot/);
   assert.match(page, /User-agent: Joshternet-Joshbot\nDisallow: \//);
+  assert.match(page, /Web Bot Auth/);
+  assert.match(page, /Verified Bot/);
+  assert.match(
+    page,
+    /https:\/\/joshternet\.org\/\.well-known\/http-message-signatures-directory/,
+  );
+  assert.match(
+    page,
+    /https:\/\/radar\.cloudflare\.com\/bots\/directory\/Joshternet-Joshbot/,
+  );
   assert.match(page, /sanitized requested and final page URLs/);
   assert.match(page, /complete page bodies/);
   assert.match(page, /not a web archive/i);

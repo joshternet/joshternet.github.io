@@ -211,6 +211,14 @@ test("connections page is HTML-first and cross-linked", async () => {
   assert.match(script, /validateTopicOverlap/);
   assert.doesNotMatch(script, /most connected|PageRank|influencer/i);
   assert.match(data, /permalink: \/connections\/data\.json/);
+  assert.match(data, /network_site\.k4b/);
+  assert.match(data, /network_site\.k1v/);
+  assert.match(data, /network_site\.k7c/);
+  assert.match(data, /network_site\.k1n/);
+  assert.match(data, /network_site\.k63/);
+  assert.match(data, /site\.data\.connections\.k1y/);
+  assert.doesNotMatch(data, /network_site\.origin\b/);
+  assert.doesNotMatch(data, /connections\.edges\b/);
 });
 
 test("connection observations keep bridge fields without scores", async () => {
