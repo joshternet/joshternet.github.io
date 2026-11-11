@@ -13,7 +13,11 @@ import {
   itemsFromCollection,
   sparseCollectionDocument,
 } from "./collections.mjs";
-import { decodeHtmlEntities, normalizeText } from "./lib.mjs";
+import {
+  decodeHtmlEntities,
+  normalizeText,
+  stripTrackingSearchParams,
+} from "./lib.mjs";
 
 /**
  * @typedef {'homepage-link' | 'content-link' | 'blogroll' | 'reply-to' | 'repost-of' | 'syndication' | 'credit'} ConnectionRelation
@@ -582,7 +586,9 @@ export function connectionObservations({
     let absoluteHref = "";
 
     try {
-      absoluteHref = new URL(href, observationPage).href;
+      absoluteHref = stripTrackingSearchParams(
+        new URL(href, observationPage).href,
+      );
     } catch {
       continue;
     }
@@ -819,12 +825,24 @@ export function aggregateConnectionEdges(edges) {
           continue;
         }
 
+        const cleanedHref =
+          typeof item.href === "string" && item.href
+            ? stripTrackingSearchParams(item.href)
+            : item.href;
+        const cleanedItem =
+          cleanedHref === item.href
+            ? item
+            : {
+                ...item,
+                href: cleanedHref,
+              };
+
         const evidenceKey = [
-          item.class || "observed",
-          item.source || "",
-          item.page || "",
-          item.href || "",
-          item.via || "",
+          cleanedItem.class || "observed",
+          cleanedItem.source || "",
+          cleanedItem.page || "",
+          cleanedItem.href || "",
+          cleanedItem.via || "",
         ].join("\0");
 
         if (seenEvidence.has(evidenceKey)) {
@@ -832,7 +850,7 @@ export function aggregateConnectionEdges(edges) {
         }
 
         seenEvidence.add(evidenceKey);
-        evidence.push(item);
+        evidence.push(cleanedItem);
       }
     }
 
@@ -843,7 +861,10 @@ export function aggregateConnectionEdges(edges) {
       relation: first.relation,
       directed: true,
       source: typeof first.source === "string" ? first.source : "content",
-      href: first.href,
+      href:
+        typeof first.href === "string"
+          ? stripTrackingSearchParams(first.href)
+          : first.href,
       text: typeof first.text === "string" ? first.text : "",
       rel: Array.isArray(first.rel) ? first.rel : [],
       page: first.page,
@@ -934,7 +955,7 @@ export function carryForwardConnectionEdges(previousEdges, fromOrigin) {
     let normalizedPage = "";
 
     try {
-      normalizedHref = new URL(href).href;
+      normalizedHref = stripTrackingSearchParams(new URL(href).href);
       normalizedPage = new URL(page).href;
     } catch {
       continue;

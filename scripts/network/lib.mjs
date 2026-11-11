@@ -49,6 +49,86 @@ export function normalizeText(value) {
 }
 
 /**
+ * Analytics / referral query names stripped from scraped http(s) URLs.
+ * Exact matches only (plus any `utm_*` prefix via {@link isTrackingSearchParam}).
+ */
+const TRACKING_SEARCH_PARAMS = new Set([
+  "fbclid",
+  "gclid",
+  "dclid",
+  "gbraid",
+  "wbraid",
+  "msclkid",
+  "mc_cid",
+  "mc_eid",
+  "igshid",
+  "_ga",
+  "_gl",
+]);
+
+/**
+ * True when a query parameter name is a tracking or campaign tag.
+ * @param {string} name - Raw search-param key.
+ * @returns {boolean}
+ */
+export function isTrackingSearchParam(name) {
+  if (typeof name !== "string" || !name) {
+    return false;
+  }
+
+  const key = name.toLocaleLowerCase("en-US");
+
+  if (key.startsWith("utm_")) {
+    return true;
+  }
+
+  return TRACKING_SEARCH_PARAMS.has(key);
+}
+
+/**
+ * Removes tracking and campaign query params from an absolute http(s) URL.
+ * Keeps non-tracking query params and the fragment. Unparseable or non-http
+ * inputs are returned unchanged.
+ * @param {string} href - Absolute or scrape-resolved URL.
+ * @returns {string} URL without tracking params (or the original string).
+ * @example
+ * stripTrackingSearchParams(
+ *   "https://joshghent.com/?utm_source=joshuamorris.info&utm_medium=referral",
+ * );
+ * // => "https://joshghent.com/"
+ */
+export function stripTrackingSearchParams(href) {
+  if (typeof href !== "string" || !href) {
+    return "";
+  }
+
+  let url;
+
+  try {
+    url = new URL(href);
+  } catch {
+    return href;
+  }
+
+  if (url.protocol !== "http:" && url.protocol !== "https:") {
+    return href;
+  }
+
+  let changed = false;
+
+  for (const key of [...url.searchParams.keys()]) {
+    if (!isTrackingSearchParam(key)) {
+      continue;
+    }
+
+    url.searchParams.delete(key);
+    changed = true;
+  }
+
+  return changed ? url.href : href;
+}
+
+/**
  * Known named character references → plain Unicode (or space for nbsp).
  * Not an HTML sanitizer: unknown `&name;` is left unchanged; callers must
  * still escape on render.

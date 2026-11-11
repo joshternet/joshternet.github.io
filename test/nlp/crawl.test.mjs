@@ -317,6 +317,22 @@ test("externalOutboundLinks: absolutizes and keeps only cross-origin http(s)", (
   assert.deepEqual(outbound[1].classNames, ["ext"]);
 });
 
+test("externalOutboundLinks strips utm referral params from cross-origin hrefs", () => {
+  const outbound = externalOutboundLinks(
+    "https://joshuamorris.info",
+    "https://joshuamorris.info/friends/",
+    [
+      {
+        href: "https://joshmuller.ca/?utm_source=joshuamorris.info&utm_medium=referral",
+        text: "Josh Müller",
+      },
+    ],
+  );
+
+  assert.equal(outbound.length, 1);
+  assert.equal(outbound[0].href, "https://joshmuller.ca/");
+});
+
 test("externalOutboundLinks: rejects bad origin/pageUrl and empty hrefs", () => {
   assert.deepEqual(externalOutboundLinks("", "https://a.example/", []), []);
   assert.deepEqual(externalOutboundLinks("https://a.example", null, []), []);

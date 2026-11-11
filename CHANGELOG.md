@@ -7,6 +7,9 @@ engineering notes stay in git history; this file is for people reading the repo.
 
 ### Fixed
 
+- **Connection link hygiene:** Scraped connection targets drop `utm_*` and
+  common click-id query params (for example referral tags on friends links) so
+  Connections stores clean destination URLs.
 - **Network updates:** Scheduled registry refreshes no longer stall when
   installing Chromium for browser checks; the job downloads the browser without
   relying on flaky Ubuntu package mirrors.
