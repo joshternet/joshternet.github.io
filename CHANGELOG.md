@@ -5,14 +5,6 @@ engineering notes stay in git history; this file is for people reading the repo.
 
 ## Unreleased
 
-### Changed
-
-- **Public repository docs:** README is a public project introduction; contributor
-  and operator guidance live in `CONTRIBUTING.md`, `docs/development.md`,
-  `docs/data-pipeline.md`, and `docs/operations.md`. Those guides avoid
-  documenting internal datasets or how to refresh member-site observations. The
-  previous internal research and audit markdown under `docs/` was removed.
-
 ### Fixed
 
 - **Multi-site content attribution:** Aggregate feeds no longer publish another
