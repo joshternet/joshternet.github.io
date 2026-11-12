@@ -7,6 +7,10 @@ engineering notes stay in git history; this file is for people reading the repo.
 
 ### Fixed
 
+- **Showcase validate / music indexes:** `nlp:validate` allows Showcase music
+  recordings and albums at bare `/sounds`/`/music` paths (same exception as
+  Showcase selection), so sync no longer fails on entries like
+  `https://joshtronic.com/sounds/`.
 - **Connection link hygiene:** Scraped connection targets drop `utm_*` and
   common click-id query params (for example referral tags on friends links) so
   Connections stores clean destination URLs.

@@ -15,6 +15,7 @@ import addFormats from "ajv-formats";
 import { itemsFromCollection } from "../network/collections.mjs";
 import {
   isBareCreativeIndexUrl,
+  isMusicIndexWorkItem,
   isPortfolioIndexedProjectTitle,
   isSiteHomeUrl,
 } from "../views/lib.mjs";
@@ -464,7 +465,13 @@ if (fs.existsSync(showcasePath)) {
 
     // views:build (nlp:sync in GitHub Actions) must drop bare /work indexes and
     // recover numbered portfolio card titles to the product name only.
-    if (url && (isBareCreativeIndexUrl(url) || isSiteHomeUrl(url))) {
+    // Music recordings/albums may intentionally live at bare /sounds|/music
+    // paths (same exception as isMadeContentItem).
+    if (
+      url &&
+      (isSiteHomeUrl(url) ||
+        (isBareCreativeIndexUrl(url) && !isMusicIndexWorkItem(item)))
+    ) {
       fail(
         `showcase must not include site homepages or bare creative indexes: ${url}`,
       );
