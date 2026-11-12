@@ -49,7 +49,8 @@ engineering notes stay in git history; this file is for people reading the repo.
   discover → fetch through a central broker → durable source and observation
   stores → extract/reconcile/project → validate a candidate generation → commit
   only after a successful push. Ownership rules, registry fail-closed checks, and
-  generation provenance are documented in `docs/observation-platform.md`.
+  generation provenance are documented in `docs/data-pipeline.md` and
+  `docs/operations.md`.
 - **Uses explorer:** Anonymous network `/uses/` comparisons from publisher Uses
   pages—coverage counts, comparable tool slots, accrued history, and handbook
   methodology under `/implement/content/uses/`.
