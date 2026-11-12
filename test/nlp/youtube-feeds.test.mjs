@@ -399,6 +399,35 @@ test("podcastEpisodesFromFeedItems skips null entries and empty urls", () => {
   assert.deepEqual(podcastEpisodesFromFeedItems(null, { siteOrigin: "x" }), []);
 });
 
+test("podcastEpisodesFromFeedItems stops once the limit is reached", () => {
+  const episodes = podcastEpisodesFromFeedItems(
+    [
+      {
+        url: "https://www.youtube.com/watch?v=one",
+        title: "One",
+        published_at: "2026-11-01T00:00:00Z",
+      },
+      {
+        url: "https://youtu.be/two",
+        title: "Two",
+        published_at: "2026-11-02T00:00:00Z",
+      },
+      {
+        url: "https://www.youtube.com/watch?v=three",
+        title: "Three",
+        published_at: "2026-11-03T00:00:00Z",
+      },
+    ],
+    {
+      siteOrigin: "https://member.example",
+      showUrl: "https://www.youtube.com/playlist?list=PLlimit",
+      limit: 1,
+    },
+  );
+
+  assert.equal(episodes.length, 1);
+  assert.equal(episodes[0].title, "One");
+});
 test("podcastEpisodesFromYoutubeAtom skips non-youtube and respects limit", () => {
   const xml = `<?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">

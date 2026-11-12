@@ -7,6 +7,11 @@ engineering notes stay in git history; this file is for people reading the repo.
 
 ### Fixed
 
+- **Multi-site content attribution:** Aggregate feeds no longer publish another
+  participant origin’s URLs under the wrong `site_origin` (for example
+  joshwithers.au owning joshwithers.blog / marriedbyjosh.com posts), which had
+  tripped `cross-origin-content` during `nlp:sync`. YouTube Atom harvest still
+  accepts `youtu.be` entries alongside `youtube.com`.
 - **Showcase validate / music indexes:** `nlp:validate` allows Showcase music
   recordings and albums at bare `/sounds`/`/music` paths (same exception as
   Showcase selection), so sync no longer fails on entries like

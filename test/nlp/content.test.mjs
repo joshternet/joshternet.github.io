@@ -17,9 +17,11 @@ import {
   contentIdentityKey,
   contentItemNeedsPosterEnrichment,
   contentItemsFromHEntryList,
+  contentItemsFromHugoIndexJson,
   contentItemsFromJsonFeed,
   contentItemsFromRssOrAtom,
   isEpisodeAnnouncement,
+  contentUrlAttributedToFeed,
   contentUrlMatchesSiteOrigin,
   contentUrlMatchesSourceFeed,
   amazonProductUrlFromHtml,
@@ -550,6 +552,165 @@ test("contentItemsFromRssOrAtom: empty or non-string XML → empty array", () =>
   assert.deepEqual(contentItemsFromRssOrAtom(null, RSS_META), []);
 });
 
+test("contentUrlAttributedToFeed allows member and hosted-feed origins", () => {
+  assert.equal(
+    contentUrlAttributedToFeed(
+      "https://joshwithers.au/notes/hi/",
+      "https://joshwithers.au",
+      "https://joshwithers.au/rss.xml",
+    ),
+    true,
+  );
+  assert.equal(
+    contentUrlAttributedToFeed(
+      "https://chrisminnick.substack.com/p/hello",
+      "https://www.chrisminnick.com",
+      "https://chrisminnick.substack.com/feed",
+    ),
+    true,
+  );
+  assert.equal(
+    contentUrlAttributedToFeed(
+      "https://joshwithers.blog/2026/10/06/i-dont-use-ai.html",
+      "https://joshwithers.au",
+      "https://joshwithers.au/rss.xml",
+    ),
+    false,
+  );
+  assert.equal(
+    contentUrlAttributedToFeed(
+      "https://youtu.be/abc123",
+      "https://www.youtube.com",
+      "https://www.youtube.com/feeds/videos.xml",
+    ),
+    true,
+  );
+  assert.equal(
+    contentUrlAttributedToFeed(
+      "https://music.youtube.com/watch?v=abc123",
+      "https://www.youtube.com",
+      "https://www.youtube.com/feeds/videos.xml",
+    ),
+    true,
+  );
+  assert.equal(contentUrlAttributedToFeed("", "https://a.example", ""), false);
+  assert.equal(
+    contentUrlAttributedToFeed("   ", "https://a.example", ""),
+    false,
+  );
+  assert.equal(
+    contentUrlAttributedToFeed("not a url", "https://a.example", ""),
+    false,
+  );
+  assert.equal(
+    contentUrlAttributedToFeed(
+      "https://other.example/p",
+      "https://a.example",
+      "",
+    ),
+    false,
+  );
+  assert.equal(
+    contentUrlAttributedToFeed(
+      "https://other.example/p",
+      "https://a.example",
+      "   ",
+    ),
+    false,
+  );
+  assert.equal(
+    contentUrlAttributedToFeed(
+      "https://other.example/p",
+      "https://a.example",
+      "not a feed url",
+    ),
+    false,
+  );
+  assert.equal(
+    contentUrlAttributedToFeed(
+      "https://a.example/p",
+      "://bad-site-origin",
+      "https://a.example/rss.xml",
+    ),
+    true,
+  );
+});
+
+test("contentItemsFromRssOrAtom skips aggregate entries on a peer origin", () => {
+  const xml = `<?xml version="1.0"?>
+    <rss version="2.0"><channel>
+      <item>
+        <title>Own post</title>
+        <link>https://joshwithers.au/notes/hi/</link>
+        <guid>https://joshwithers.au/notes/hi/</guid>
+      </item>
+      <item>
+        <title>Peer blog post</title>
+        <link>https://joshwithers.blog/2026/10/06/i-dont-use-ai.html</link>
+        <guid>https://joshwithers.blog/2026/10/06/i-dont-use-ai.html</guid>
+      </item>
+    </channel></rss>`;
+  const items = contentItemsFromRssOrAtom(xml, {
+    feedUrl: "https://joshwithers.au/rss.xml",
+    feedKind: "rss",
+    siteOrigin: "https://joshwithers.au",
+    observedAt: "2026-11-11T00:00:00.000Z",
+  });
+
+  assert.equal(items.length, 1);
+  assert.equal(items[0].url, "https://joshwithers.au/notes/hi/");
+  assert.equal(items[0].site_origin, "https://joshwithers.au");
+});
+
+test("contentItemsFromJsonFeed skips aggregate entries on a peer origin", () => {
+  const json = JSON.stringify({
+    version: "https://jsonfeed.org/version/1.1",
+    items: [
+      {
+        id: "own",
+        url: "https://joshwithers.au/notes/hi/",
+        title: "Own post",
+      },
+      {
+        id: "peer",
+        url: "https://marriedbyjosh.com/authorised-celebrant",
+        title: "Peer site page",
+      },
+    ],
+  });
+  const items = contentItemsFromJsonFeed(json, {
+    feedUrl: "https://joshwithers.au/feed.json",
+    siteOrigin: "https://joshwithers.au",
+    observedAt: "2026-11-11T00:00:00.000Z",
+  });
+
+  assert.equal(items.length, 1);
+  assert.equal(items[0].url, "https://joshwithers.au/notes/hi/");
+});
+
+test("contentItemsFromHugoIndexJson skips aggregate entries on a peer origin", () => {
+  const items = contentItemsFromHugoIndexJson(
+    JSON.stringify([
+      {
+        permalink: "https://joshwithers.au/notes/hi/",
+        title: "Own post",
+      },
+      {
+        permalink: "https://joshwithers.blog/2026/10/06/i-dont-use-ai.html",
+        title: "Peer blog post",
+      },
+    ]),
+    {
+      feedUrl: "https://joshwithers.au/index.json",
+      siteOrigin: "https://joshwithers.au",
+      observedAt: "2026-11-11T00:00:00.000Z",
+    },
+  );
+
+  assert.equal(items.length, 1);
+  assert.equal(items[0].url, "https://joshwithers.au/notes/hi/");
+});
+
 test("contentItemsFromRssOrAtom: RSS item with URL and category", () => {
   const xml = `<rss><channel>
     <item>
@@ -573,7 +734,7 @@ test("contentItemsFromRssOrAtom: CMS feed-path categories are dropped", () => {
   const xml = `<rss><channel>
     <item>
       <title>Campus news</title>
-      <link>https://www.cs.cmu.edu/news</link>
+      <link>https://a.example/news</link>
       <category>feeds/default</category>
       <category>keywords/Government</category>
       <category>Photography</category>
@@ -590,7 +751,7 @@ test("contentItemsFromRssOrAtom: CDATA categories become plain topic labels", ()
   const xml = `<rss><channel>
     <item>
       <title>Goals achieved</title>
-      <link>https://joshreads.com/goals</link>
+      <link>https://a.example/goals</link>
       <category><![CDATA[Heathcliff]]></category>
       <category><![CDATA[Marvin]]></category>
     </item>
@@ -934,6 +1095,66 @@ test("mergeContentItems: results are sorted by url then title", () => {
   ]);
   assert.equal(merged[0].url, "https://a.example/");
   assert.equal(merged[1].url, "https://b.example/");
+});
+
+test("mergeContentItems prefers site_origin that matches the content URL", () => {
+  const postUrl = "https://joshwithers.blog/2026/10/06/i-dont-use-ai.html";
+  const identity = `url:${postUrl}`;
+  const merged = mergeContentItems([
+    {
+      identity,
+      url: postUrl,
+      site_origin: "https://joshwithers.au",
+      title: "I don't use AI",
+      summary: "",
+      source_feeds: [{ type: "rss", url: "https://joshwithers.au/rss.xml" }],
+      declared_topics: [],
+    },
+    {
+      identity,
+      url: postUrl,
+      site_origin: "https://joshwithers.blog",
+      title: "I don't use AI",
+      summary: "",
+      source_feeds: [{ type: "rss", url: "https://joshwithers.blog/rss.xml" }],
+      declared_topics: [],
+    },
+  ]);
+
+  assert.equal(merged.length, 1);
+  assert.equal(merged[0].site_origin, "https://joshwithers.blog");
+  assert.equal(merged[0].url, postUrl);
+  assert.equal(merged[0].source_feeds.length, 2);
+});
+
+test("mergeContentItems reads draft.url when existing.url is a non-string", () => {
+  const postUrl = "https://joshwithers.blog/post.html";
+  const identity = "id:non-string-url";
+  // Truthy non-string existing.url skips the fill-from-draft assignment, so
+  // site_origin preference still resolves itemUrl from draft.url (then publish
+  // drops the row because the stored url is not http).
+  const merged = mergeContentItems([
+    {
+      identity,
+      url: true,
+      site_origin: "https://joshwithers.au",
+      title: "First",
+      summary: "",
+      source_feeds: [],
+      declared_topics: [],
+    },
+    {
+      identity,
+      url: postUrl,
+      site_origin: "https://joshwithers.blog",
+      title: "Second",
+      summary: "",
+      source_feeds: [],
+      declared_topics: [],
+    },
+  ]);
+
+  assert.equal(merged.length, 0);
 });
 
 // ─── joinContentWithPageSignals ───────────────────────────────────────────────
