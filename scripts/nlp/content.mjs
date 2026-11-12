@@ -1098,6 +1098,88 @@ export function contentUrlMatchesSiteOrigin(url, siteOrigin) {
 }
 
 /**
+ * Collapse YouTube watch hosts so youtube.com and youtu.be compare equal.
+ * Origins are always absolute `https://…` strings from `URL.origin`.
+ * @param {string} origin
+ * @returns {string}
+ */
+function attributionOriginKey(origin) {
+  const host = String(origin)
+    .replace(/^https?:\/\//i, "")
+    .split("/")[0]
+    .replace(/:\d+$/, "")
+    .replace(/^www\./i, "")
+    .toLowerCase();
+
+  if (
+    host === "youtube.com" ||
+    host === "youtu.be" ||
+    host.endsWith(".youtube.com")
+  ) {
+    return "youtube";
+  }
+
+  return origin;
+}
+
+/**
+ * True when two origins may attribute the same feed entry (exact match, or
+ * YouTube watch-host family).
+ * @param {string} left
+ * @param {string} right
+ * @returns {boolean}
+ */
+function attributionOriginsMatch(left, right) {
+  return (
+    left === right || attributionOriginKey(left) === attributionOriginKey(right)
+  );
+}
+
+/**
+ * True when a feed entry URL may be attributed to this participant crawl.
+ * Same-origin as the member site, or same-origin as the feed host (Substack /
+ * hosted newsletter). Aggregate feeds that point at another origin fail.
+ * YouTube Atom harvest treats youtube.com and youtu.be as one feed family.
+ * @param {string} url
+ * @param {unknown} siteOrigin
+ * @param {unknown} feedUrl
+ * @returns {boolean}
+ */
+export function contentUrlAttributedToFeed(url, siteOrigin, feedUrl) {
+  if (typeof url !== "string" || !url.trim()) {
+    return false;
+  }
+
+  let contentOrigin = "";
+
+  try {
+    contentOrigin = new URL(url).origin;
+  } catch {
+    return false;
+  }
+
+  if (typeof siteOrigin === "string" && siteOrigin.trim()) {
+    try {
+      if (attributionOriginsMatch(contentOrigin, new URL(siteOrigin).origin)) {
+        return true;
+      }
+    } catch {
+      // Invalid siteOrigin — fall through to feed-host check.
+    }
+  }
+
+  if (typeof feedUrl !== "string" || !feedUrl.trim()) {
+    return false;
+  }
+
+  try {
+    return attributionOriginsMatch(contentOrigin, new URL(feedUrl).origin);
+  } catch {
+    return false;
+  }
+}
+
+/**
  * True when the content URL shares an origin with a recorded source feed
  * (e.g. Substack posts from a participant-card Substack RSS URL).
  * @param {string} url
@@ -1804,6 +1886,13 @@ export function contentItemsFromRssOrAtom(xml, meta) {
       absoluteUrl = "";
     }
 
+    if (
+      absoluteUrl &&
+      !contentUrlAttributedToFeed(absoluteUrl, meta.siteOrigin, meta.feedUrl)
+    ) {
+      continue;
+    }
+
     const key = contentIdentityKey({
       url: absoluteUrl,
       id: normalizeExtractedText(id),
@@ -1933,6 +2022,13 @@ export function contentItemsFromJsonFeed(jsonText, meta) {
       absoluteUrl = "";
     }
 
+    if (
+      absoluteUrl &&
+      !contentUrlAttributedToFeed(absoluteUrl, meta.siteOrigin, meta.feedUrl)
+    ) {
+      continue;
+    }
+
     const id = typeof item.id === "string" ? item.id : "";
     const key = contentIdentityKey({
       url: absoluteUrl,
@@ -2050,6 +2146,13 @@ export function contentItemsFromHugoIndexJson(jsonText, meta) {
       absoluteUrl = permalink ? new URL(permalink, meta.feedUrl).href : "";
     } catch {
       absoluteUrl = "";
+    }
+
+    if (
+      absoluteUrl &&
+      !contentUrlAttributedToFeed(absoluteUrl, meta.siteOrigin, meta.feedUrl)
+    ) {
+      continue;
     }
 
     const key = contentIdentityKey({
@@ -2465,6 +2568,25 @@ export function mergeContentItems(drafts) {
 
     if (!existing.url && draft.url) {
       existing.url = draft.url;
+    }
+
+    // Prefer the publisher origin that matches the content URL (aggregate feeds
+    // from a sibling site must not keep the wrong site_origin after merge).
+    const itemUrl =
+      typeof existing.url === "string"
+        ? existing.url
+        : typeof draft.url === "string"
+          ? draft.url
+          : "";
+
+    if (
+      itemUrl &&
+      typeof draft.site_origin === "string" &&
+      draft.site_origin &&
+      contentUrlMatchesSiteOrigin(itemUrl, draft.site_origin) &&
+      !contentUrlMatchesSiteOrigin(itemUrl, existing.site_origin)
+    ) {
+      existing.site_origin = draft.site_origin;
     }
 
     if (!existing.published_at && draft.published_at) {

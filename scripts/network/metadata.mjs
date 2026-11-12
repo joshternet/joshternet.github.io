@@ -387,6 +387,37 @@ export function extractPageMetadata(hostCatalog) {
    * Returns the publisher's own bridge evidence: href, anchor text, and rel.
    * @returns {Array<{href: string, text: string, rel: string[]}>}
    */
+  /**
+   * Drops utm_* and common click-id query params from scraped outbound hrefs.
+   * Kept local: this function runs inside Playwright page.evaluate.
+   * @param {URL} url
+   * @returns {string}
+   */
+  function hrefWithoutTracking(url) {
+    for (const key of [...url.searchParams.keys()]) {
+      const lower = String(key).toLowerCase();
+
+      if (
+        lower.startsWith("utm_") ||
+        lower === "fbclid" ||
+        lower === "gclid" ||
+        lower === "dclid" ||
+        lower === "gbraid" ||
+        lower === "wbraid" ||
+        lower === "msclkid" ||
+        lower === "mc_cid" ||
+        lower === "mc_eid" ||
+        lower === "igshid" ||
+        lower === "_ga" ||
+        lower === "_gl"
+      ) {
+        url.searchParams.delete(key);
+      }
+    }
+
+    return url.href;
+  }
+
   function extractOutboundLinks() {
     const links = [];
     const seen = new Set();
@@ -426,7 +457,7 @@ export function extractPageMetadata(hostCatalog) {
         continue;
       }
 
-      const href = url.href;
+      const href = hrefWithoutTracking(url);
 
       if (seen.has(href)) {
         continue;

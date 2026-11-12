@@ -674,6 +674,29 @@ test("connectionObservations: string link is supported", () => {
   assert.equal(obs[0].relation, "homepage-link");
 });
 
+test("connectionObservations strips utm params from href and dedupes clean targets", () => {
+  const obs = connectionObservations({
+    sourceOrigin: "https://joshuamorris.info",
+    pageUrl: "https://joshuamorris.info/friends/",
+    links: [
+      {
+        href: "https://joshghent.com/?utm_source=joshuamorris.info&utm_medium=referral",
+        text: "Josh Ghent",
+        rel: ["noopener", "noreferrer"],
+      },
+      {
+        href: "https://joshghent.com/",
+        text: "Josh Ghent again",
+      },
+    ],
+    participantOrigins: ["https://joshuamorris.info", "https://joshghent.com"],
+  });
+
+  assert.equal(obs.length, 1);
+  assert.equal(obs[0].href, "https://joshghent.com/");
+  assert.doesNotMatch(obs[0].href, /utm_/);
+});
+
 test("connectionObservations: null/non-object candidate is skipped", () => {
   const obs = connectionObservations({
     sourceOrigin: "https://a.example",
@@ -970,6 +993,41 @@ test("aggregateConnectionEdges: evidence item deduplication works", () => {
     },
   ]);
   assert.equal(edges[0].evidence_count, 1);
+});
+
+test("aggregateConnectionEdges strips utm params from href and evidence", () => {
+  const edges = aggregateConnectionEdges([
+    {
+      from: "https://joshuamorris.info",
+      to: "https://joshghent.com",
+      relation: "content-link",
+      href: "https://joshghent.com/?utm_source=joshuamorris.info&utm_medium=referral",
+      page: "https://joshuamorris.info/friends/",
+      text: "Josh Ghent",
+      rel: ["noopener"],
+      evidence: [
+        {
+          class: "observed",
+          page: "https://joshuamorris.info/friends/",
+          href: "https://joshghent.com/?utm_source=joshuamorris.info&utm_medium=referral",
+          text: "Josh Ghent",
+          rel: ["noopener"],
+        },
+        {
+          class: "observed",
+          page: "https://joshuamorris.info/friends/",
+          href: "https://joshghent.com/",
+          text: "Josh Ghent clean",
+          rel: [],
+        },
+      ],
+    },
+  ]);
+
+  assert.equal(edges.length, 1);
+  assert.equal(edges[0].href, "https://joshghent.com/");
+  assert.equal(edges[0].evidence_count, 1);
+  assert.equal(edges[0].evidence[0].href, "https://joshghent.com/");
 });
 
 test("aggregateConnectionEdges: edge without evidence array uses inline fields", () => {

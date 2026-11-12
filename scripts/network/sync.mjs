@@ -76,8 +76,12 @@ import {
   visitIdentityPages,
 } from "./enrichment-budget.mjs";
 import { formatGeneratedOutputs } from "../format-written.mjs";
-import { writeJSONAtomic, writeTextAtomic } from "../nlp/lib.mjs";
-import { USER_AGENT } from "../nlp/lib.mjs";
+import {
+  readJSONIfExists,
+  USER_AGENT,
+  writeJSONAtomic,
+  writeTextAtomic,
+} from "../nlp/lib.mjs";
 import { createOriginRobotsGate } from "../nlp/origin-robots.mjs";
 import { probeCommonFeedPaths } from "./feed-probes.mjs";
 import {
@@ -112,18 +116,6 @@ const refreshAll =
 
 function nowISO() {
   return new Date().toISOString();
-}
-
-async function readJSONIfExists(filePath, fallback) {
-  try {
-    return JSON.parse(await fs.readFile(filePath, "utf8"));
-  } catch (error) {
-    if (error?.code === "ENOENT") {
-      return fallback;
-    }
-
-    throw error;
-  }
 }
 
 async function loadRegistry(source) {

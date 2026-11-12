@@ -15,6 +15,7 @@ import addFormats from "ajv-formats";
 import { itemsFromCollection } from "../network/collections.mjs";
 import {
   isBareCreativeIndexUrl,
+  isMusicIndexWorkItem,
   isPortfolioIndexedProjectTitle,
   isSiteHomeUrl,
 } from "../views/lib.mjs";
@@ -116,6 +117,56 @@ assertSchema("site_signals", signals);
 assertSchema("blogrolls", blogrolls);
 assertSchema("content", content);
 assertSchema("data_manifest", manifest);
+
+const ALLOWED_IDENTITIES = new Set(["affirmed", "declined", "undeclared"]);
+
+if (!Array.isArray(network)) {
+  fail("_data/network.json must contain an array");
+}
+
+for (const entry of network) {
+  if (
+    !entry ||
+    typeof entry !== "object" ||
+    typeof entry.origin !== "string" ||
+    typeof entry.domain !== "string" ||
+    !ALLOWED_IDENTITIES.has(entry.identity)
+  ) {
+    fail(`Invalid generated network entry: ${JSON.stringify(entry)}`);
+  }
+
+  if (Object.hasOwn(entry, "elsewhere")) {
+    if (!Array.isArray(entry.elsewhere)) {
+      fail(`elsewhere must be an array: ${entry.origin}`);
+    }
+
+    for (const item of entry.elsewhere) {
+      if (
+        !item ||
+        typeof item !== "object" ||
+        typeof item.url !== "string" ||
+        typeof item.network !== "string" ||
+        typeof item.label !== "string"
+      ) {
+        fail(
+          `Invalid elsewhere item for ${entry.origin}: ${JSON.stringify(item)}`,
+        );
+      }
+    }
+  }
+}
+
+const opmlPath = path.join(ROOT, "assets/network/joshternet.opml");
+
+if (!fs.existsSync(opmlPath)) {
+  fail("assets/network/joshternet.opml is missing");
+}
+
+const opml = fs.readFileSync(opmlPath, "utf8");
+
+if (!opml.includes("<opml")) {
+  fail("assets/network/joshternet.opml must contain OPML");
+}
 
 const aliases = loadAliasMap(readJSON("_data/topic_aliases.json"));
 
@@ -403,7 +454,9 @@ if (fs.existsSync(path.join(ROOT, "_data/topic_candidates.json"))) {
 const showcasePath = path.join(ROOT, "_data/showcase.json");
 
 if (fs.existsSync(showcasePath)) {
-  const showcase = JSON.parse(fs.readFileSync(showcasePath, "utf8"));
+  const showcase = /** @type {{ items?: unknown[] }} */ (
+    decodeCrawlValue(JSON.parse(fs.readFileSync(showcasePath, "utf8")))
+  );
   const showcaseItems = Array.isArray(showcase?.items) ? showcase.items : [];
 
   for (const item of showcaseItems) {
@@ -412,7 +465,13 @@ if (fs.existsSync(showcasePath)) {
 
     // views:build (nlp:sync in GitHub Actions) must drop bare /work indexes and
     // recover numbered portfolio card titles to the product name only.
-    if (url && (isBareCreativeIndexUrl(url) || isSiteHomeUrl(url))) {
+    // Music recordings/albums may intentionally live at bare /sounds|/music
+    // paths (same exception as isMadeContentItem).
+    if (
+      url &&
+      (isSiteHomeUrl(url) ||
+        (isBareCreativeIndexUrl(url) && !isMusicIndexWorkItem(item)))
+    ) {
       fail(
         `showcase must not include site homepages or bare creative indexes: ${url}`,
       );

@@ -17,6 +17,70 @@
       "rule": "catalog"
     },
     {
+      "origin": "https://www.joshmedeski.com",
+      "name": "Apple MacBook Pro",
+      "stored_id": "observed:apple-macbook-pro",
+      "tool_id": "macbook-pro-16",
+      "slot_id": "computer",
+      "rule": "macbook-family"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "ASUS Jelly75 KD201",
+      "stored_id": "observed:asus-jelly75-kd201",
+      "tool_id": "observed:asus-jelly75-kd201",
+      "slot_id": "keyboard",
+      "rule": "section"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "iQunix L80 Cosmic Traveller",
+      "stored_id": "observed:iqunix-l80-cosmic-traveller",
+      "tool_id": "observed:iqunix-l80-cosmic-traveller",
+      "slot_id": "keyboard",
+      "rule": "section"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "KBDcraft Atom Kit",
+      "stored_id": "observed:kbdcraft-atom-kit",
+      "tool_id": "observed:kbdcraft-atom-kit",
+      "slot_id": "keyboard",
+      "rule": "section"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "Keychron K2 HE",
+      "stored_id": "observed:keychron-k2-he",
+      "tool_id": "observed:keychron-k2-he",
+      "slot_id": "keyboard",
+      "rule": "section"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "Nuphy Air 75",
+      "stored_id": "observed:nuphy-air-75",
+      "tool_id": "observed:nuphy-air-75",
+      "slot_id": "keyboard",
+      "rule": "section"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "ZSA ErgoDox EZ",
+      "stored_id": "observed:zsa-ergodox-ez",
+      "tool_id": "observed:zsa-ergodox-ez",
+      "slot_id": "keyboard",
+      "rule": "section"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "ZSA Moonlander",
+      "stored_id": "observed:zsa-moonlander",
+      "tool_id": "observed:zsa-moonlander",
+      "slot_id": "keyboard",
+      "rule": "section"
+    },
+    {
       "origin": "https://www.joshuabaker.com",
       "name": "Canon DSLR",
       "stored_id": "observed:canon-dslr",
@@ -1281,6 +1345,78 @@
       "rule": "approved-url"
     },
     {
+      "origin": "https://www.joshmedeski.com",
+      "name": "AirPods Max",
+      "stored_id": "airpods-max",
+      "tool_id": "airpods-max",
+      "slot_id": "headphones",
+      "rule": "catalog"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "Apple MacBook Pro",
+      "stored_id": "observed:apple-macbook-pro",
+      "tool_id": "macbook-pro-16",
+      "slot_id": "computer",
+      "rule": "macbook-family"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "ASUS Jelly75 KD201",
+      "stored_id": "observed:asus-jelly75-kd201",
+      "tool_id": "observed:asus-jelly75-kd201",
+      "slot_id": "keyboard",
+      "rule": "section"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "iQunix L80 Cosmic Traveller",
+      "stored_id": "observed:iqunix-l80-cosmic-traveller",
+      "tool_id": "observed:iqunix-l80-cosmic-traveller",
+      "slot_id": "keyboard",
+      "rule": "section"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "KBDcraft Atom Kit",
+      "stored_id": "observed:kbdcraft-atom-kit",
+      "tool_id": "observed:kbdcraft-atom-kit",
+      "slot_id": "keyboard",
+      "rule": "section"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "Keychron K2 HE",
+      "stored_id": "observed:keychron-k2-he",
+      "tool_id": "observed:keychron-k2-he",
+      "slot_id": "keyboard",
+      "rule": "section"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "Nuphy Air 75",
+      "stored_id": "observed:nuphy-air-75",
+      "tool_id": "observed:nuphy-air-75",
+      "slot_id": "keyboard",
+      "rule": "section"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "ZSA ErgoDox EZ",
+      "stored_id": "observed:zsa-ergodox-ez",
+      "tool_id": "observed:zsa-ergodox-ez",
+      "slot_id": "keyboard",
+      "rule": "section"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "ZSA Moonlander",
+      "stored_id": "observed:zsa-moonlander",
+      "tool_id": "observed:zsa-moonlander",
+      "slot_id": "keyboard",
+      "rule": "section"
+    },
+    {
       "origin": "https://www.joshuabaker.com",
       "name": "1Password",
       "stored_id": "1password",
@@ -1802,6 +1938,70 @@
       "origin": "https://www.joshfinnie.com",
       "name": "XTEINK X4 Classic",
       "stored_id": "observed:xteink-x4-classic",
+      "tool_id": null,
+      "slot_id": null,
+      "rule": "unresolved"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "AirPods",
+      "stored_id": "observed:airpods",
+      "tool_id": null,
+      "slot_id": null,
+      "rule": "unresolved"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "Apple Studio Display",
+      "stored_id": "observed:apple-studio-display",
+      "tool_id": null,
+      "slot_id": null,
+      "rule": "unresolved"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "AT-LP120XUSB",
+      "stored_id": "observed:at-lp120xusb",
+      "tool_id": null,
+      "slot_id": null,
+      "rule": "unresolved"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "🎧 Audio",
+      "stored_id": "observed:audio",
+      "tool_id": null,
+      "slot_id": null,
+      "rule": "unresolved"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "Audio-Engine A2",
+      "stored_id": "observed:audio-engine-a2",
+      "tool_id": null,
+      "slot_id": null,
+      "rule": "unresolved"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "Audio-Engine A2 Sub",
+      "stored_id": "observed:audio-engine-a2-sub",
+      "tool_id": null,
+      "slot_id": null,
+      "rule": "unresolved"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "Drop + Grell OAE1",
+      "stored_id": "observed:drop-+-grell-oae1",
+      "tool_id": null,
+      "slot_id": null,
+      "rule": "unresolved"
+    },
+    {
+      "origin": "https://www.joshmedeski.com",
+      "name": "Sennheiser HD 6XX",
+      "stored_id": "observed:sennheiser-hd-6xx",
       "tool_id": null,
       "slot_id": null,
       "rule": "unresolved"

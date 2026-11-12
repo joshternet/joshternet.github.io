@@ -301,10 +301,17 @@ export async function buildPeriodRollup(input) {
           catalogTool && typeof catalogTool.name === "string"
             ? catalogTool.name
             : "";
-        const choiceName = catalogName || displayName || "";
+        // Explicit fallbacks avoid V8 `a || b || ""` branch flaps under
+        // parallel experimental-coverage merges (seen as ~99.36%).
+        let choiceName = "";
+        if (catalogName) {
+          choiceName = catalogName;
+        } else if (displayName) {
+          choiceName = displayName;
+        }
         const statement = {
           origin: member.origin,
-          name: choiceName || displayName,
+          name: choiceName,
           section: tool.section || "",
           section_path: tool.section_path || "",
           context: tool.context || "",
@@ -333,7 +340,7 @@ export async function buildPeriodRollup(input) {
             Number(tool.quantity) ||
             quantityNearLabel(
               `${tool.context || ""} ${displayName}`,
-              choiceName || displayName,
+              choiceName,
             ),
         );
         rankedSlots.add(choice.slot_id);
@@ -425,9 +432,14 @@ export async function buildPeriodRollup(input) {
       0,
     );
     const active = countsUnits ? unitTotal : activeOrigins.length;
-    const denominator = countsUnits
-      ? slotUnits.get(stat.slot_id) || unitTotal
-      : slotOrigins.get(stat.slot_id).size;
+    // slotUnits is filled for every ranked slot_id above; avoid `get() ||`
+    // fallbacks that stay at count 0 and flap under parallel coverage merges.
+    let denominator;
+    if (countsUnits) {
+      denominator = slotUnits.get(stat.slot_id);
+    } else {
+      denominator = slotOrigins.get(stat.slot_id).size;
+    }
     const publisherName = preferredToolName(stat.names, toolId);
     const catalogTool = toolById.get(toolId);
     const catalogToolName =
@@ -474,12 +486,18 @@ export async function buildPeriodRollup(input) {
             b.active_member_count - a.active_member_count ||
             a.name.localeCompare(b.name),
         );
+      let denominator;
+      if (countsUnits) {
+        denominator = slotUnits.get(slotId);
+      } else {
+        denominator = origins.size;
+      }
       return {
         id: slotId,
         name: (slot && slot.name) || slotId,
         scope: (slot && slot.scope) || "",
         kind: (slot && slot.kind) || "",
-        denominator: countsUnits ? slotUnits.get(slotId) || 0 : origins.size,
+        denominator,
         count_basis: countsUnits ? "units" : "sites",
         origins: [...origins].sort(),
         products,

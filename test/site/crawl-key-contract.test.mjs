@@ -7,7 +7,10 @@ import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
-import { CRAWL_KEYS } from "../../scripts/nlp/site-record.mjs";
+import {
+  CRAWL_KEYS,
+  decodeCrawlValue,
+} from "../../scripts/nlp/site-record.mjs";
 
 const root = fileURLToPath(new URL("../../", import.meta.url));
 
@@ -94,6 +97,30 @@ const FORBIDDEN_LIQUID = [
     pattern: /signal_page\.title\b/,
     message: "connections-page-label must use signal_page.k7c",
   },
+  {
+    pattern: /network_site\.origin\b/,
+    message: "connections-data must use network_site.k4b",
+  },
+  {
+    pattern: /network_site\.domain\b/,
+    message: "connections-data must use network_site.k1v",
+  },
+  {
+    pattern: /network_site\.title\b/,
+    message: "connections-data must use network_site.k7c",
+  },
+  {
+    pattern: /network_site\.description\b/,
+    message: "connections-data must use network_site.k1n",
+  },
+  {
+    pattern: /network_site\.screenshot\b/,
+    message: "connections-data must use network_site.k63",
+  },
+  {
+    pattern: /site\.data\.connections\.edges\b/,
+    message: "connections-data must use site.data.connections.k1y",
+  },
 ];
 
 /**
@@ -135,6 +162,68 @@ test("network.json on disk uses short crawl keys", async () => {
   assert.ok(Array.isArray(network) && network.length > 0);
   assert.equal(typeof network[0].k4b, "string");
   assert.equal(network[0].origin, undefined);
+});
+
+test("connections-data.json reads short network keys and emits clear API fields", async () => {
+  const source = await readFile(
+    path.join(root, "connections-data.json"),
+    "utf8",
+  );
+  assert.match(source, /network_site\.k4b/);
+  assert.match(source, /network_site\.k1v/);
+  assert.match(source, /network_site\.k7c/);
+  assert.match(source, /network_site\.k1n/);
+  assert.match(source, /network_site\.k63/);
+  assert.match(source, /site\.data\.connections\.k1y/);
+  assert.match(source, /"origin": \{\{ network_site\.k4b/);
+  assert.match(source, /"domain": \{\{ network_site\.k1v/);
+  assert.match(source, /"title": \{\{ network_site\.k7c/);
+  assert.match(source, /"description": \{\{ network_site\.k1n/);
+  assert.match(source, /"screenshot": \{\{ network_site\.k63/);
+  assert.doesNotMatch(source, /network_site\.origin\b/);
+  assert.doesNotMatch(source, /connections\.edges\b/);
+});
+
+test("wander loads crawl-keys before wander and decodes network data", async () => {
+  const page = await readFile(path.join(root, "wander.md"), "utf8");
+  const script = await readFile(path.join(root, "assets/js/wander.js"), "utf8");
+  assert.match(page, /scripts:[\s\S]*crawl-keys\.js[\s\S]*wander\.js/);
+  assert.match(script, /joshternetDecodeCrawl/);
+  assert.match(script, /validateSites\(decoded\)/);
+});
+
+test("short-keyed network rows decode into clear Wander fields as N grows", () => {
+  const memberCount = 24;
+  const encoded = Array.from({ length: memberCount }, (_, index) => {
+    const host = `member${index}.joshua.example`;
+    return {
+      k4b: `https://${host}`,
+      k1v: host,
+      k31: index % 2 === 0 ? "affirmed" : "undeclared",
+      k7c: `Member ${index}`,
+      k1n: `Description ${index}`,
+      k63: `/assets/network/sites/member${index}.webp`,
+      k21: true,
+      k2m: "allowed",
+    };
+  });
+
+  const decoded = decodeCrawlValue(encoded);
+  assert.ok(Array.isArray(decoded));
+  assert.equal(decoded.length, memberCount);
+
+  for (let index = 0; index < memberCount; index += 1) {
+    const entry = decoded[index];
+    assert.equal(entry.origin, encoded[index].k4b);
+    assert.equal(entry.domain, encoded[index].k1v);
+    assert.equal(entry.identity, encoded[index].k31);
+    assert.equal(entry.title, encoded[index].k7c);
+    assert.equal(entry.description, encoded[index].k1n);
+    assert.equal(entry.screenshot, encoded[index].k63);
+    assert.equal(entry.embeddable, true);
+    assert.equal(entry.frame_reason, "allowed");
+    assert.equal(entry.k4b, undefined);
+  }
 });
 
 test("Liquid templates do not read clear keys on encoded datasets", async () => {

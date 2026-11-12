@@ -129,7 +129,7 @@ User-agent: ExampleBot
 Disallow: /experiments/
 ```
 
-A named group is **not** simply stacked on top of every `*` rule. The protocol selects which group(s) apply. Typically a more specific named match is used instead of falling back to `*`. HTTP user-agent strings can be spoofed; they are not authentication. Some operators publish verification mechanisms (IP ranges, reverse DNS, signed tokens)—those are separate from claiming a product token in a header.
+A named group is **not** simply stacked on top of every `*` rule. The protocol selects which group(s) apply. Typically a more specific named match is used instead of falling back to `*`. HTTP user-agent strings can be spoofed; they are not authentication. Some operators publish verification mechanisms (IP ranges, reverse DNS, signed tokens)—those are separate from claiming a product token in a header. JoshBot signs requests with Web Bot Auth; see [JoshBot]({{ '/joshbot/' | relative_url }}).
 
 ## Allow and Disallow
 
@@ -596,7 +596,7 @@ JoshBot identifies as:
 Joshternet-Joshbot (+https://joshternet.org/joshbot)
 ```
 
-Product token: `Joshternet-Joshbot`. The hub loads each origin’s `/robots.txt`, treats missing or unreadable files as allow, prefers a named group over `*`, and applies **longest prefix** Allow/Disallow (equal length prefers Allow). It uses the **first** matching named group and does **not** implement full RFC path wildcards (`*` / `$`), nor does it interpret `Content-Usage`, `Content-Signal`, or `__usage_ai-training`. Details: [JoshBot]({{ '/joshbot/' | relative_url }}) and [Reference]({{ '/implement/content/reference/' | relative_url }}).
+Product token: `Joshternet-Joshbot`. JoshBot also signs requests with Web Bot Auth so operators can verify crawler identity beyond the user-agent string when their stack supports it. The hub loads each origin’s `/robots.txt`, treats missing or unreadable files as allow, prefers a named group over `*`, and applies **longest prefix** Allow/Disallow (equal length prefers Allow). It uses the **first** matching named group and does **not** implement full RFC path wildcards (`*` / `$`), nor does it interpret `Content-Usage`, `Content-Signal`, or `__usage_ai-training`. Details: [JoshBot]({{ '/joshbot/' | relative_url }}) and [Reference]({{ '/implement/content/reference/' | relative_url }}).
 
 ## Continue through the handbook
 

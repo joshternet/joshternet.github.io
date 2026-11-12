@@ -2271,6 +2271,13 @@ ol.content-discovery-flow > li > span {
   font-size: var(--type-small);
 }
 
+.topics-footnote {
+  margin-block-start: var(--space-8);
+  max-width: var(--reading-width);
+  color: var(--color-muted);
+  font-size: var(--type-small);
+}
+
 /* -------------------------------------------------------------------------- */
 /* Joshternet Wander                                                          */
 /* -------------------------------------------------------------------------- */

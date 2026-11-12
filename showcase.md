@@ -29,11 +29,6 @@ wonderfully strange little projects are scattered across independent websites.
 Showcase brings some of those creations together so you can find something
 interesting and follow it back to the person who made it.
 
-Everything here leads to the original website, where the work belongs. This is
-not every creative project from every participating site—just a selection worth
-exploring. Have a look around, discover something new, and see where your
-curiosity takes you.
-
 <div class="showcase" data-showcase>
 {% if showcase_kinds.size > 0 %}
 <nav class="showcase-filters" aria-label="Filter by kind">

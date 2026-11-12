@@ -480,6 +480,8 @@ test("extracts outbound participant page links", async () => {
             <h1>Links</h1>
             <a href="https://b.example/posts">B</a>
             <a href="https://b.example/posts#frag">B again</a>
+            <a href="https://e.example/?utm_source=a.example&utm_medium=referral">E tracked</a>
+            <a href="https://e.example/">E clean</a>
             <a href="/about">Same origin</a>
             <a href="//c.example/path">Protocol relative</a>
             <a rel="nofollow" href="https://d.example/">Nofollow</a>
@@ -506,6 +508,12 @@ test("extracts outbound participant page links", async () => {
         {
           href: "https://b.example/posts#frag",
           text: "B again",
+          rel: [],
+          classNames: [],
+        },
+        {
+          href: "https://e.example/",
+          text: "E tracked",
           rel: [],
           classNames: [],
         },

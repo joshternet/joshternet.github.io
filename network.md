@@ -20,14 +20,6 @@ script: /assets/js/network.js
 
 Welcome to the Network, where you can explore the independent websites that JoshBot has found and verified so far. Some belong to Joshes, others to Non-Joshes, and some haven't declared Josh identity at all. They are all part of the same adventure, each with their own ideas, projects, and little corners of the internet.
 
-Pick a website that catches your eye and have a look around. You might find a great article, an unusual project, a wonderful piece of art, or something you didn't know you were looking for. That's part of the fun of wandering the web.
-
-This is the part of the Joshternet that JoshBot has found and checked so far. There may be plenty of other participating websites still waiting to be discovered. Participation starts by publishing a valid declaration at `/.well-known/josh`—you do not need to appear here first ([Join]({{ '/join/' | relative_url }})).
-
-<p class="network-friends-link">
-  <a href="{{ '/friends/' | relative_url }}">Meet the Friends of the Joshternet →</a>
-</p>
-
 {% assign network_sites = site.data.network %}
 {% if network_sites == nil %}
   {% assign network_sites = "" | split: "" %}
@@ -37,10 +29,6 @@ This is the part of the Joshternet that JoshBot has found and checked so far. Th
   (random), Recently joined, Oldest first, or Alphabetical while preserving filters.
 {% endcomment %}
 {% assign network_sites = network_sites | sort: 'k1v' %}
-
-<p class="network-toolbar-lede">
-  Looking for a fellow Josh? Curious who's joined the fun without being one? Use the filters to explore, or leave them on All and see where you end up. Undeclared means the publisher has not declared Josh identity—it does not mean verification failed. Discover mixes things up so you don't always start in the same place. Recently joined and Oldest first follow when JoshBot first recorded participation in the registry.
-</p>
 
 <div class="network-toolbar" data-network-toolbar hidden>
   <div class="network-filters" aria-label="Filter the network">
@@ -146,8 +134,9 @@ This is the part of the Joshternet that JoshBot has found and checked so far. Th
 
 <p class="network-footnote">
   Have a website of your own? There's room for you here, whether you're a Josh
-  or not. The
+  or not. Meet the
+  <a href="{{ '/friends/' | relative_url }}">Friends of the Joshternet</a>,
+  or use the
   <a href="{{ '/join/' | relative_url }}">Join guide</a>
-  shows you how to get connected without moving anything or creating another
-  account.
+  to get connected without moving anything or creating another account.
 </p>

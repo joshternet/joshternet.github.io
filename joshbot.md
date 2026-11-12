@@ -84,6 +84,24 @@ not change previously recorded declaration observations or make a statement abou
 Josh identity. Blocking crawling does not automatically withdraw a valid
 Joshternet declaration.
 
+## Verified crawler identity
+
+JoshBot is a Cloudflare Verified Bot. Cloudflare has listed it in BotBase, its
+public catalog of known bots and agents, since Oct. 19, 2026.
+
+JoshBot uses [Web Bot Auth][web-bot-auth] to cryptographically sign its requests.
+Supported infrastructure can check that traffic identifying itself as JoshBot
+actually comes from JoshBot, rather than relying on the `User-Agent` string
+alone. The public signing-key directory is at
+[https://joshternet.org/.well-known/http-message-signatures-directory][signatures-directory].
+
+Verification does not give JoshBot permission to ignore a website's preferences.
+JoshBot still retrieves and follows the applicable `robots.txt` policy, respects
+crawl restrictions, and operates within its documented request limits.
+
+Identity, operator, access classification, and verification details are public
+in the [Cloudflare Radar entry for Joshternet-Joshbot][radar-joshbot].
+
 ## Report a problem
 
 JoshBot should be a polite visitor. If something about its behavior looks wrong,
@@ -116,7 +134,9 @@ issue.
 
 ### Crawler identity and source
 
-The crawler's source code and technical documentation are available in the
+Visitor-facing Verified Bot and Web Bot Auth details are under
+[Verified crawler identity](#verified-crawler-identity) above. The crawler's
+source code and technical documentation are available in the
 [JoshBot repository][source].
 
 ### How JoshBot crawls
@@ -229,3 +249,6 @@ It does not retain:
 [crawler-report]: https://github.com/joshternet/joshbot/issues/new?template=crawler_report.yml
 [bug-report]: https://github.com/joshternet/joshbot/issues/new?template=bug_report.yml
 [security-report]: https://github.com/joshternet/joshbot/security/advisories/new
+[web-bot-auth]: https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/
+[signatures-directory]: https://joshternet.org/.well-known/http-message-signatures-directory
+[radar-joshbot]: https://radar.cloudflare.com/bots/directory/Joshternet-Joshbot

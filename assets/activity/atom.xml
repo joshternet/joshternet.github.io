@@ -2,11 +2,59 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://joshternet.org/assets/activity/atom.xml</id>
   <title>Joshternet What's New</title>
-  <updated>2026-11-10T05:28:05.981Z</updated>
+  <updated>2026-11-11T17:27:43.801Z</updated>
   <link rel="self" type="application/atom+xml" href="https://joshternet.org/assets/activity/atom.xml"/>
   <link rel="alternate" type="text/html" href="https://joshternet.org/activity/"/>
   <subtitle>A selection of recent writing and creative work from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
   <generator uri="https://joshternet.org/">Joshternet views:build</generator>
+  <entry xml:lang="en">
+    <id>https://www.joshmedeski.com/posts/how-to-make-your-site-llm-friendly/</id>
+    <title xml:lang="en">How to Make Your Site LLM-Friendly</title>
+    <updated>2026-11-11T12:00:00.000Z</updated>
+    <published>2026-11-11T12:00:00.000Z</published>
+    <link rel="alternate" href="https://www.joshmedeski.com/posts/how-to-make-your-site-llm-friendly/"/>
+    <author>
+      <name>Josh Medeski</name>
+      <uri>https://www.joshmedeski.com</uri>
+    </author>
+    <summary xml:lang="en">Serve your content as markdown, treat llms.txt like a table of contents, and let AI agents find their own way around your site</summary>
+  </entry>
+  <entry xml:lang="en-us">
+    <id>https://artlung.com/blog/2026/11/10/linkies-jinkies/</id>
+    <title xml:lang="en-us">Linkies, jinkies</title>
+    <updated>2026-11-11T01:13:32.000Z</updated>
+    <published>2026-11-11T01:13:32.000Z</published>
+    <link rel="alternate" href="https://artlung.com/blog/2026/11/10/linkies-jinkies/"/>
+    <author>
+      <name>Joe Crawford</name>
+      <uri>https://artlung.com</uri>
+    </author>
+    <summary xml:lang="en-us">I appreciate when things I’ve written or made get linked to, for example in Jeff Bridgforth ‘s Week notes and in Mike (Shellsharks) Scroll volume 47 . I was also glad to see more Interop posts on Adrian Roselli InterOp picks post. Links are the actual good social network that exists on the internet. My own links are mostly from my blogroll and likes pages. Keep networking.</summary>
+  </entry>
+  <entry xml:lang="en-us">
+    <id>https://artlung.com/blog/2026/11/10/iboy-classic-edition/</id>
+    <title xml:lang="en-us">New Bot Day! Welcome iBoy (Classic Edition) from 2020. It was created by @classicbot_toy</title>
+    <updated>2026-11-10T23:39:42.000Z</updated>
+    <published>2026-11-10T23:39:42.000Z</published>
+    <link rel="alternate" href="https://artlung.com/blog/2026/11/10/iboy-classic-edition/"/>
+    <author>
+      <name>Joe Crawford</name>
+      <uri>https://artlung.com</uri>
+    </author>
+    <summary xml:lang="en-us">New Bot Day! Welcome iBoy (Classic Edition) from 2020. It was created by @classicbot_toy inspired by the earliest Apple iPods in 2001-2002. He was a gift from @hellokellykuhl and comes with little earbuds! He doesn’t actually play music but he’s lovable as heck!</summary>
+  </entry>
+  <entry>
+    <id>https://joshbeard.com/photos/2026/IMG_1941_jpeg.html</id>
+    <title>Autumn morning at Fairfax Park, Colorado Springs, Colorado. November 10, 2026. - Josh Beard</title>
+    <updated>2026-11-10T00:00:00.000Z</updated>
+    <published>2026-11-10T00:00:00.000Z</published>
+    <link rel="alternate" href="https://joshbeard.com/photos/2026/IMG_1941_jpeg.html"/>
+    <author>
+      <name>Josh Beard</name>
+      <uri>https://joshbeard.com</uri>
+    </author>
+    <summary>Autumn morning at Fairfax Park, Colorado Springs, Colorado. November 10, 2026.</summary>
+  </entry>
   <entry xml:lang="en-us">
     <id>https://www.joshfinnie.com/blog/dead-internet-coming-for-your-code/</id>
     <title xml:lang="en-us">The Dead Internet Is Coming for Your Code</title>
@@ -18,30 +66,6 @@
       <uri>https://www.joshfinnie.com</uri>
     </author>
     <summary xml:lang="en-us">Coding models learn from public GitHub, and public GitHub is filling with untested, error-swallowing hello world apps, many written by other models. Why code quality is heading for model collapse.</summary>
-  </entry>
-  <entry xml:lang="en-us">
-    <id>https://artlung.com/blog/2026/11/09/politics-misc-music/</id>
-    <title xml:lang="en-us">Politics, Misc, Music!</title>
-    <updated>2026-11-09T20:43:15.000Z</updated>
-    <published>2026-11-09T20:43:15.000Z</published>
-    <link rel="alternate" href="https://artlung.com/blog/2026/11/09/politics-misc-music/"/>
-    <author>
-      <name>Joe Crawford</name>
-      <uri>https://artlung.com</uri>
-    </author>
-    <summary xml:lang="en-us">Herewith, a variety of comments and links and shenanigans and folderol. Thanks for reading and clicking! Bluesky and Mastodon posts (a selection) : My household received mail from a cremation services company. The recipient was cremated 4 years ago. They’re not wrong so much as they are late . It is good that murdering US citizens and immigrants at a steady clip is a losing strategy for a politica</summary>
-  </entry>
-  <entry xml:lang="en-us">
-    <id>https://artlung.com/blog/2026/11/08/elections-sister-aging/</id>
-    <title xml:lang="en-us">Elections, sister, aging</title>
-    <updated>2026-11-09T00:46:34.000Z</updated>
-    <published>2026-11-09T00:46:34.000Z</published>
-    <link rel="alternate" href="https://artlung.com/blog/2026/11/08/elections-sister-aging/"/>
-    <author>
-      <name>Joe Crawford</name>
-      <uri>https://artlung.com</uri>
-    </author>
-    <summary xml:lang="en-us">Elections come and go. I would be hard-pressed to count precisely how many elections, midterm elections, primary elections, and special elections I’ve participated in. But if I can vote in an election, I do. I’ve voted for Jessie Jackson and John McCain. One of those I’m still proud of. At heart I am a kind of centrist. I tend to seek a middle way. At worst, this tends to make my opinions lukewarm</summary>
   </entry>
   <entry xml:lang="en">
     <id>https://joshtronic.com/2026/11/08/introducing-cuppa/</id>
@@ -126,18 +150,6 @@
       <uri>https://www.chrisminnick.com</uri>
     </author>
     <summary>During the years when I was doing a lot of hands-on coding, roughly from 1998 to 2010, I lived by the rule of what xkcd comic author Randall Munroe named the “ Ballmer Peak ” after Steve Ballmer, the former CEO of Microsoft who was known for his exuberant and sweaty appearance on stage .</summary>
-  </entry>
-  <entry>
-    <id>https://joshbeard.com/photos/2026/IMG_1888_jpeg.html</id>
-    <title>Photo: Garden of the Gods, Colorado Springs, Colorado. November 1, 2026</title>
-    <updated>2026-11-01T00:00:00.000Z</updated>
-    <published>2026-11-01T00:00:00.000Z</published>
-    <link rel="alternate" href="https://joshbeard.com/photos/2026/IMG_1888_jpeg.html"/>
-    <author>
-      <name>Josh Beard</name>
-      <uri>https://joshbeard.com</uri>
-    </author>
-    <summary>Garden of the Gods, Colorado Springs, Colorado. November 1, 2026</summary>
   </entry>
   <entry xml:lang="en">
     <id>https://joshtronic.com/2026/11/01/open-to-work/</id>

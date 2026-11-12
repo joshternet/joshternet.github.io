@@ -15,6 +15,7 @@ import {
   isHubDirectoryPage,
   isParticipationDeclarationPath,
 } from "../network/connections.mjs";
+import { stripTrackingSearchParams } from "../network/lib.mjs";
 import {
   IDENTITY_SLASH_PATHS,
   PROBE_SLASH_PATHS,
@@ -475,7 +476,7 @@ export function externalOutboundLinks(origin, pageUrl, links) {
     let absolute = "";
 
     try {
-      absolute = new URL(raw, pageCanonical).href;
+      absolute = stripTrackingSearchParams(new URL(raw, pageCanonical).href);
     } catch {
       continue;
     }

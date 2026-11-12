@@ -1,6 +1,7 @@
 /**
- * Goal: Lock the shared GitHub star CTA markup, header/menu wiring, data
- * baseline, and CSS visibility contract without client GitHub API usage.
+ * Goal: Lock the shared GitHub star CTA markup, header/menu wiring, github.json
+ * shape (repo + numeric stars field + ISO timestamp), and CSS visibility
+ * contract without client GitHub API usage. Do not freeze the live star count.
  */
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
@@ -58,12 +59,16 @@ test("default layout and compact nav wire header and menu star variants", async 
   assert.match(layout, /connect-src[^"]*https:\/\/api\.github\.com/);
 });
 
-test("github.json keeps a numeric baseline star count", async () => {
+test("github.json keeps repo metadata shape without freezing star count", async () => {
   const data = JSON.parse(await read("_data/github.json"));
 
   assert.equal(data.repository, "joshternet/joshternet.github.io");
-  assert.equal(data.stars, 0);
-  assert.match(data.updated_at, /^2026-11-08T00:00:00Z$/);
+  assert.equal(typeof data.stars, "number");
+  assert.ok(Number.isFinite(data.stars));
+  assert.match(
+    data.updated_at,
+    /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$/,
+  );
 });
 
 test("main.css keeps the star CTA secondary and responsive", async () => {

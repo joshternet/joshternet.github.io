@@ -93,7 +93,7 @@ JoshBot is the discovery and registry crawler. Who it is, what is kept, and what
 
 The public registry snapshot is published in [joshternet/index-data][index-data]. It contains information derived from successfully verified declarations. Private discovery, queue, and telemetry state are not published there. License and format-version policy for that repository are documented there.
 
-JoshBot also publishes public keys so other systems can recognize the crawler. That is bot identity, not visitor analytics. Details are on [JoshBot](/joshbot/).
+JoshBot is a Cloudflare Verified Bot that signs requests with Web Bot Auth and publishes public keys so other systems can recognize the crawler. That is bot identity, not visitor analytics. Details are on [JoshBot](/joshbot/).
 
 ## Wander, images, search, and OPML
 

@@ -5,25 +5,46 @@ engineering notes stay in git history; this file is for people reading the repo.
 
 ## Unreleased
 
+### Fixed
+
+- **Multi-site content attribution:** Aggregate feeds no longer publish another
+  participant origin’s URLs under the wrong `site_origin` (for example
+  joshwithers.au owning joshwithers.blog / marriedbyjosh.com posts), which had
+  tripped `cross-origin-content` during `nlp:sync`. YouTube Atom harvest still
+  accepts `youtu.be` entries alongside `youtube.com`.
+- **Showcase validate / music indexes:** `nlp:validate` allows Showcase music
+  recordings and albums at bare `/sounds`/`/music` paths (same exception as
+  Showcase selection), so sync no longer fails on entries like
+  `https://joshtronic.com/sounds/`.
+- **Connection link hygiene:** Scraped connection targets drop `utm_*` and
+  common click-id query params (for example referral tags on friends links) so
+  Connections stores clean destination URLs.
+- **Network updates:** Scheduled registry refreshes no longer stall when
+  installing Chromium for browser checks; the job downloads the browser without
+  relying on flaky Ubuntu package mirrors.
+- **Network views after sync:** Wander, Connections, and related pages keep
+  reading the published network datasets correctly after an encoded crawl
+  publish.
+- **Network / Topics cross-links:** Network footnote links to Friends; Topics
+  footnote links to the Explore content-handbook chapter again.
+
 ### Added
 
-- **Edge security regression tooling:** `scripts/security/verify-edge-security.sh`
-  (`npm run security:verify-edge`) and canonical-host tests that keep
-  `https://joshternet.org` as the published site origin. Operational Cloudflare
-  configuration remains outside the public repository.
-- **Privacy: Cloudflare hub delivery:** `/privacy/` now states that public
+- **JoshBot verified crawler identity:** `/joshbot/` explains that JoshBot is a
+  Cloudflare Verified Bot, signs requests with Web Bot Auth, publishes a public
+  signing-key directory, and lists identity details in the Cloudflare Radar
+  Bots Directory. Privacy and robots handbook pages point to the same
+  disclosure.
+- **Privacy: Cloudflare hub delivery:** `/privacy/` states that public
   joshternet.org traffic is delivered through Cloudflare before GitHub Pages,
   that Workers share that provider relationship, and that Cloudflare Web
   Analytics is not used on the hub.
 - **Friends of the Joshternet:** `/friends/` celebrates Network participants who
-  declared they are not Joshes (`identity: declined`), listed from the same
-  Network data as `/network/` with a Friends entry in Network secondary nav.
-- **GitHub star CTA:** Header (and mobile Menu) star icon with build-time count
-  linking to `joshternet/joshternet.github.io` (no chip label), `_data/github.json`
-  plus a six-hour Actions refresh, a small CSP `connect-src` hole for
-  `api.github.com` so JS can refresh the visible count, local gold fill after
-  the visitor clicks the control, and Umami event `github_star_cta_clicked`.
-  Launch baseline: **0 stars** as of 2026-11-08.
+  declared they are not Joshes, listed from the same Network data as `/network/`
+  with a Friends entry in Network secondary nav.
+- **GitHub star CTA:** Header and mobile Menu star control for
+  `joshternet/joshternet.github.io`, with a build-time count that can refresh
+  from GitHub’s public API when JavaScript is available.
 - **Observation platform:** Crawl-derived datasets now share one lifecycle:
   discover → fetch through a central broker → durable source and observation
   stores → extract/reconcile/project → validate a candidate generation → commit
@@ -54,6 +75,8 @@ engineering notes stay in git history; this file is for people reading the repo.
 
 ### Changed
 
+- **Topics footnote:** Pitch and discovery disclaimer sit under the topic list as
+  a muted page footnote instead of mid-intro body copy.
 - **Visitor copy:** Homepage, Network, Wander, Search, Topics, Showcase, What's
   New, Connections, Events, Join, Implement, and related pages use a warmer
   discovery voice without changing protocol or data contracts.
@@ -94,7 +117,10 @@ engineering notes stay in git history; this file is for people reading the repo.
   `liquid-html` never converges on captured pages with inline `</script>` in JS.
 - **Uses aggregate coverage stability:** Replace optional-chaining / compound
   `||` guards in `scripts/uses/aggregate.mjs` with explicit checks so Node’s
-  experimental branch coverage stays at 100% across full-suite runs.
+  experimental branch coverage stays at 100% across full-suite runs. Drop
+  unreachable `slotUnits.get(...) || fallback` denominators and redundant
+  `choiceName || displayName` short circuits that flaked at ~99.36% branches
+  under parallel coverage merges.
 - **Showcase accuracy:** Utility/licensing segments stay out of creative
   harvest; graphics hubs, music indexes, year photo albums, and speaking-archive
   presentations classify and link more reliably. Empty or chrome titles no longer

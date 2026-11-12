@@ -35,6 +35,8 @@ import {
   comparableTextsMatch,
   isHostLikeTitle,
   isWeakPageTitle,
+  isTrackingSearchParam,
+  stripTrackingSearchParams,
   stableSiteID,
   trimNetworkDescription,
 } from "../../scripts/network/lib.mjs";
@@ -1738,4 +1740,34 @@ test("partitionPublicParticipants: non-Error thrown by lookup fires ': new Error
   assert.equal(result.rejected.length, 1);
   assert.ok(result.rejected[0].error instanceof Error);
   assert.match(result.rejected[0].error.message, /string lookup error/);
+});
+
+test("isTrackingSearchParam recognizes utm_* and click ids", () => {
+  assert.equal(isTrackingSearchParam("utm_source"), true);
+  assert.equal(isTrackingSearchParam("UTM_MEDIUM"), true);
+  assert.equal(isTrackingSearchParam("gclid"), true);
+  assert.equal(isTrackingSearchParam("fbclid"), true);
+  assert.equal(isTrackingSearchParam("page"), false);
+  assert.equal(isTrackingSearchParam(""), false);
+});
+
+test("stripTrackingSearchParams removes referral utm tags and keeps other query or hash", () => {
+  assert.equal(
+    stripTrackingSearchParams(
+      "https://joshghent.com/?utm_source=joshuamorris.info&utm_medium=referral",
+    ),
+    "https://joshghent.com/",
+  );
+  assert.equal(
+    stripTrackingSearchParams(
+      "https://example.com/path?utm_campaign=x&id=42#frag",
+    ),
+    "https://example.com/path?id=42#frag",
+  );
+  assert.equal(
+    stripTrackingSearchParams("https://example.com/ok"),
+    "https://example.com/ok",
+  );
+  assert.equal(stripTrackingSearchParams("not a url"), "not a url");
+  assert.equal(stripTrackingSearchParams(""), "");
 });

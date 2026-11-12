@@ -3,16 +3,16 @@ layout: null
 permalink: /connections/data.json
 ---
 {% assign network_sites = site.data.network %}
-{% assign connection_edges = site.data.connections.edges | default: empty %}
+{% assign connection_edges = site.data.connections.k1y | default: empty %}
 {
   "participants": [
     {% for network_site in network_sites %}
       {
-        "origin": {{ network_site.origin | jsonify }},
-        "domain": {{ network_site.domain | jsonify }},
-        "title": {{ network_site.title | default: network_site.domain | jsonify }},
-        "description": {{ network_site.description | default: "" | jsonify }},
-        "screenshot": {{ network_site.screenshot | default: "" | jsonify }}
+        "origin": {{ network_site.k4b | jsonify }},
+        "domain": {{ network_site.k1v | jsonify }},
+        "title": {{ network_site.k7c | default: network_site.k1v | jsonify }},
+        "description": {{ network_site.k1n | default: "" | jsonify }},
+        "screenshot": {{ network_site.k63 | default: "" | jsonify }}
       }{% unless forloop.last %},{% endunless %}
     {% endfor %}
   ],
