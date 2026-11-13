@@ -2,11 +2,35 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://joshternet.org/assets/activity/atom.xml</id>
   <title>Joshternet What's New</title>
-  <updated>2026-11-13T00:49:35.474Z</updated>
+  <updated>2026-11-13T07:49:57.467Z</updated>
   <link rel="self" type="application/atom+xml" href="https://joshternet.org/assets/activity/atom.xml"/>
   <link rel="alternate" type="text/html" href="https://joshternet.org/activity/"/>
   <subtitle>A selection of recent writing and creative work from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
   <generator uri="https://joshternet.org/">Joshternet views:build</generator>
+  <entry xml:lang="en-us">
+    <id>https://artlung.com/blog/2026/11/12/almost-dawn-patrol-at-ob/</id>
+    <title xml:lang="en-us">(Almost) dawn patrol at OB</title>
+    <updated>2026-11-12T21:02:05.000Z</updated>
+    <published>2026-11-12T21:02:05.000Z</published>
+    <link rel="alternate" href="https://artlung.com/blog/2026/11/12/almost-dawn-patrol-at-ob/"/>
+    <author>
+      <name>Joe Crawford</name>
+      <uri>https://artlung.com</uri>
+    </author>
+    <summary xml:lang="en-us">Your email address will not be published. We reserve the right to remove irrelevant links.</summary>
+  </entry>
+  <entry xml:lang="en">
+    <id>https://joshuamorris.info/notes/2026/11/12/is-your-website-ready-for-safaris-adaptive-dark-mode/</id>
+    <title xml:lang="en">Is Your Website Ready for Safari’s Adaptive Dark Mode?</title>
+    <updated>2026-11-12T07:30:00.000Z</updated>
+    <published>2026-11-12T07:30:00.000Z</published>
+    <link rel="alternate" href="https://joshuamorris.info/notes/2026/11/12/is-your-website-ready-for-safaris-adaptive-dark-mode/"/>
+    <author>
+      <name>Joshua Morris</name>
+      <uri>https://joshuamorris.info</uri>
+    </author>
+    <summary xml:lang="en">Safari 27.3 introduces Adaptive Dark Mode. I made JoshuaMorris.info’s existing light and dark theme support explicit in the document head and tested the result.</summary>
+  </entry>
   <entry xml:lang="en-us">
     <id>https://artlung.com/blog/2026/11/11/big-waves-some-rideable/</id>
     <title xml:lang="en-us">Big waves keep coming through. Some rideable.</title>
@@ -31,29 +55,17 @@
     </author>
     <summary xml:lang="en">Serve your content as markdown, treat llms.txt like a table of contents, and let AI agents find their own way around your site</summary>
   </entry>
-  <entry>
-    <id>https://joshbeard.com/photos/2026/IMG_1955_jpeg.html</id>
-    <title>Photo: A towering tree with a tangle of exposed roots along a singletrack off of the Cottonwood Creek Trail, Colorado Springs. November 11, 2026.</title>
+  <entry xml:lang="en">
+    <id>https://joshbeard.com/notes/2026/forty-six-across-town/</id>
+    <title xml:lang="en">🇺🇸 🪖 Veteran&apos;s Day 46 Mile Ride</title>
     <updated>2026-11-11T09:19:00.000Z</updated>
     <published>2026-11-11T09:19:00.000Z</published>
-    <link rel="alternate" href="https://joshbeard.com/photos/2026/IMG_1955_jpeg.html"/>
+    <link rel="alternate" href="https://joshbeard.com/notes/2026/forty-six-across-town/"/>
     <author>
       <name>Josh Beard</name>
       <uri>https://joshbeard.com</uri>
     </author>
-    <summary>A towering tree with a tangle of exposed roots along a singletrack off of the Cottonwood Creek Trail, Colorado Springs. November 11, 2026.</summary>
-  </entry>
-  <entry>
-    <id>https://joshbeard.com/photos/2026/IMG_1958_jpeg.html</id>
-    <title>Pikes Peak in the distance from the Cottonwood Creek Trail, Colorado Springs. November 11, 2026. - Josh Beard</title>
-    <updated>2026-11-11T09:19:00.000Z</updated>
-    <published>2026-11-11T09:19:00.000Z</published>
-    <link rel="alternate" href="https://joshbeard.com/photos/2026/IMG_1958_jpeg.html"/>
-    <author>
-      <name>Josh Beard</name>
-      <uri>https://joshbeard.com</uri>
-    </author>
-    <summary>Pikes Peak in the distance from the Cottonwood Creek Trail, Colorado Springs. November 11, 2026.</summary>
+    <summary xml:lang="en">It’s been a few weeks since I did a “longer” ride - something over 30 miles - and I’ve been itching to do it. I was sick a couple of weeks ago and have had family commitments the past few weeks, along with some bad weather conditions. Since I had Veteran’s Day off, I took advantage of it and the beautiful weather to do a long ride.</summary>
   </entry>
   <entry xml:lang="en-gb">
     <id>https://joshcox.co.uk/blog/my-house-my-things-is-on-the-iphone/</id>
@@ -79,17 +91,17 @@
     </author>
     <summary xml:lang="en-au">Dror Poleg on artificial intelligence, tamim, and Deuteronomy 18:13: In a world of strong artificial intelligence, we must operate as if we have no privacy, as if all our actions can ultimately be exp...</summary>
   </entry>
-  <entry xml:lang="en-us">
-    <id>https://artlung.com/blog/2026/11/10/linkies-jinkies/</id>
-    <title xml:lang="en-us">Linkies, jinkies</title>
-    <updated>2026-11-10T17:13:32.000Z</updated>
-    <published>2026-11-10T17:13:32.000Z</published>
-    <link rel="alternate" href="https://artlung.com/blog/2026/11/10/linkies-jinkies/"/>
+  <entry>
+    <id>https://joshbeard.com/photos/2026/IMG_1941_jpeg.html</id>
+    <title>Autumn morning at Fairfax Park, Colorado Springs, Colorado. November 10, 2026. - Josh Beard</title>
+    <updated>2026-11-10T00:00:00.000Z</updated>
+    <published>2026-11-10T00:00:00.000Z</published>
+    <link rel="alternate" href="https://joshbeard.com/photos/2026/IMG_1941_jpeg.html"/>
     <author>
-      <name>Joe Crawford</name>
-      <uri>https://artlung.com</uri>
+      <name>Josh Beard</name>
+      <uri>https://joshbeard.com</uri>
     </author>
-    <summary xml:lang="en-us">I appreciate when things I’ve written or made get linked to, for example in Jeff Bridgforth ‘s Week notes and in Mike (Shellsharks) Scroll volume 47 . I was also glad to see more Interop posts on Adrian Roselli InterOp picks post. Links are the actual good social network that exists on the internet. My own links are mostly from my blogroll and likes pages. Keep networking.</summary>
+    <summary>Autumn morning at Fairfax Park, Colorado Springs, Colorado. November 10, 2026.</summary>
   </entry>
   <entry xml:lang="en-us">
     <id>https://www.joshfinnie.com/blog/dead-internet-coming-for-your-code/</id>
@@ -138,18 +150,6 @@
       <uri>https://joshuamorris.info</uri>
     </author>
     <summary xml:lang="en">An extraordinary interactive collection of colors made from mushrooms, where a walk through the forest becomes an exploration of chemistry, textiles, watercolor pigments and the surprising things nature has been making all along.</summary>
-  </entry>
-  <entry xml:lang="en">
-    <id>https://joshuamorris.info/notes/2026/11/06/jpeg-xl-is-back-and-the-web-is-better-for-it/</id>
-    <title xml:lang="en">JPEG XL Is Becoming a Practical Choice for the Web</title>
-    <updated>2026-11-06T14:00:00.000Z</updated>
-    <published>2026-11-06T14:00:00.000Z</published>
-    <link rel="alternate" href="https://joshuamorris.info/notes/2026/11/06/jpeg-xl-is-back-and-the-web-is-better-for-it/"/>
-    <author>
-      <name>Joshua Morris</name>
-      <uri>https://joshuamorris.info</uri>
-    </author>
-    <summary xml:lang="en">Safari, Chrome, and Firefox can decode JPEG XL. Progressive loading, reversible JPEG storage, a measured compare, and how to ship it with picture fallbacks.</summary>
   </entry>
   <entry xml:lang="en">
     <id>https://joshgr.com/writing/an-open-letter-to-ai-barons/</id>
