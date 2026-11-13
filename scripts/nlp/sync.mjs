@@ -472,7 +472,9 @@ async function main() {
         }
 
         // Capture /seeking HTML for optional Seeking extraction (not content.json).
+        // Skip the hub: its /seeking/ page aggregates members and would double up.
         if (
+          !isHubParticipantOrigin(origin) &&
           typeof page.html === "string" &&
           page.html &&
           isSeekingPageUrl(page.url)
@@ -728,7 +730,7 @@ async function main() {
         );
       }
 
-      if (seekingHtmlPages.length === 0) {
+      if (seekingHtmlPages.length === 0 && !isHubParticipantOrigin(origin)) {
         seekingHtmlPages.push(
           ...(await fetchSeekingHtmlPages(origin, {
             cache: dnsCache,
@@ -1050,6 +1052,7 @@ async function main() {
       repoRoot: ROOT,
       origins: seekingOriginInputs,
       observed_at: now,
+      network: Array.isArray(network) ? network : [],
     });
     process.stdout.write(
       `nlp seeking: requests=${seekingResult.view.request_count} websites=${seekingResult.view.website_count} status=${seekingResult.view.status} publish=${seekingResult.publish}\n`,

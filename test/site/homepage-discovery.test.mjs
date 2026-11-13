@@ -99,7 +99,11 @@ test("homepage meet and activity includes use generated datasets", async () => {
   assert.match(meet, /https:\/\/joshternet\.org/);
   assert.match(meet, /home_hub_origin/);
   assert.match(meet, /network_site\.k4b != home_hub_origin/);
-  assert.match(meet, /home_network_count = site\.data\.network \| size/);
+  assert.match(meet, new RegExp(`${CRAWL_KEYS.promoted} != false`));
+  assert.match(meet, /home_network_count = home_network_count \| plus: 1/);
+  assert.match(arrivals, /include network-card-destinations\.html/);
+  assert.match(meet, /include network-card-destinations\.html/);
+  assert.match(eligible, new RegExp(`${CRAWL_KEYS.promoted} != false`));
   assert.doesNotMatch(meet, /limit: 3/);
   assert.match(meet, /data-home-meet-grid/);
   assert.match(meet, /outbound-href\.html/);

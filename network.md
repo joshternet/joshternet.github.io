@@ -20,13 +20,20 @@ script: /assets/js/network.js
 
 Welcome to the Network, where you can explore the independent websites that JoshBot has found and verified so far. Some belong to Joshes, others to Non-Joshes, and some haven't declared Josh identity at all. They are all part of the same adventure, each with their own ideas, projects, and little corners of the internet.
 
-{% assign network_sites = site.data.network %}
-{% if network_sites == nil %}
-  {% assign network_sites = "" | split: "" %}
+{% assign network_sites_all = site.data.network %}
+{% if network_sites_all == nil %}
+  {% assign network_sites_all = "" | split: "" %}
 {% endif %}
+{% assign network_sites = "" | split: "" %}
+{% for network_site in network_sites_all %}
+  {% if network_site.k8j != false %}
+    {% assign network_sites = network_sites | push: network_site %}
+  {% endif %}
+{% endfor %}
 {% comment %}
   No-JS fallback: alphabetical by domain. JavaScript replaces order with Discover
   (random), Recently joined, Oldest first, or Alphabetical while preserving filters.
+  Site families: only promoted primaries appear as cards (k8j != false).
 {% endcomment %}
 {% assign network_sites = network_sites | sort: 'k1v' %}
 

@@ -14,10 +14,16 @@ permalink: /friends/
 joshternet_analysis: derived
 ---
 
-{% assign friends = site.data.network | where: "k31", "declined" %}
-{% if friends == nil %}
-  {% assign friends = "" | split: "" %}
+{% assign friends_all = site.data.network | where: "k31", "declined" %}
+{% if friends_all == nil %}
+  {% assign friends_all = "" | split: "" %}
 {% endif %}
+{% assign friends = "" | split: "" %}
+{% for network_site in friends_all %}
+  {% if network_site.k8j != false %}
+    {% assign friends = friends | push: network_site %}
+  {% endif %}
+{% endfor %}
 {% assign friends = friends | sort: "k1v" %}
 
 # Friends of the Joshternet

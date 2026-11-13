@@ -1,0 +1,15 @@
+{% comment %}
+  Goal: Sets family_edge_match true when edge_endpoint equals the current
+  network_site origin or one of its destinations (k8i). Expects
+  network_site, edge_endpoint.
+{% endcomment %}
+{% assign family_edge_match = false %}
+{% if edge_endpoint == network_site.k4b %}
+  {% assign family_edge_match = true %}
+{% elsif network_site.k8i and network_site.k8i.size > 0 %}
+  {% for destination in network_site.k8i %}
+    {% if edge_endpoint == destination.k4b %}
+      {% assign family_edge_match = true %}
+    {% endif %}
+  {% endfor %}
+{% endif %}

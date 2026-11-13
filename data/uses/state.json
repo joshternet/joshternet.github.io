@@ -1,21 +1,21 @@
 {
   "schema_version": 1,
-  "through_event_id": "sha256:8d5a34d1f30b08262da53a27666ba7b6224e05fb3e1253200ac98a5b0dc3a043",
+  "through_event_id": "sha256:b848c75d4eff953b33a7292cad896da428d5d54bb4ba5dc8a29ddf1e83206028",
   "members": [
     {
       "origin": "https://artlung.com",
       "page_url": "https://artlung.com/uses",
       "page_status": "out_of_scope",
       "first_valid_observation_at": "2026-11-04T22:20:06.760Z",
-      "last_valid_observation_at": "2026-11-12T02:57:31.823Z",
+      "last_valid_observation_at": "2026-11-13T19:01:31.043Z",
       "tools": []
     },
     {
       "origin": "https://joshbeard.com",
-      "page_url": "https://joshbeard.com/uses/",
+      "page_url": "https://joshbeard.com/uses",
       "page_status": "verified",
       "first_valid_observation_at": "2026-11-04T20:05:21.389Z",
-      "last_valid_observation_at": "2026-11-12T02:57:31.823Z",
+      "last_valid_observation_at": "2026-11-13T19:01:31.043Z",
       "tools": [
         {
           "tool_id": "1password",
@@ -228,6 +228,21 @@
           "evidence_event_id": "sha256:c03649b700ff771f6844d3202f2b5ffc8df18e917494b70460eaa12934a893f3"
         },
         {
+          "tool_id": "observed:notes",
+          "name": "Notes",
+          "kind": "product",
+          "context": "Notes",
+          "section": "Josh Beard",
+          "section_path": "Josh Beard",
+          "href": "/notes/",
+          "status": "current",
+          "quantity": 1,
+          "use_case_ids": ["writing"],
+          "first_observed_at": "2026-11-13T19:01:31.043Z",
+          "last_event_at": "2026-11-13T19:01:31.043Z",
+          "evidence_event_id": "sha256:b848c75d4eff953b33a7292cad896da428d5d54bb4ba5dc8a29ddf1e83206028"
+        },
+        {
           "tool_id": "obsidian",
           "name": "Obsidian",
           "kind": "product",
@@ -294,7 +309,7 @@
       "page_url": "https://joshcox.co.uk/uses/",
       "page_status": "verified",
       "first_valid_observation_at": "2026-11-04T22:20:06.760Z",
-      "last_valid_observation_at": "2026-11-12T02:57:31.823Z",
+      "last_valid_observation_at": "2026-11-13T19:01:31.043Z",
       "tools": [
         {
           "tool_id": "apple-magic-keyboard",
@@ -513,7 +528,7 @@
       "page_url": "https://joshghent.com/uses/",
       "page_status": "out_of_scope",
       "first_valid_observation_at": "2026-11-04T22:20:06.760Z",
-      "last_valid_observation_at": "2026-11-12T02:57:31.823Z",
+      "last_valid_observation_at": "2026-11-13T19:01:31.043Z",
       "tools": []
     },
     {
@@ -521,7 +536,7 @@
       "page_url": "https://joshmuller.ca/uses/",
       "page_status": "verified",
       "first_valid_observation_at": "2026-11-04T20:05:21.389Z",
-      "last_valid_observation_at": "2026-11-12T02:57:31.823Z",
+      "last_valid_observation_at": "2026-11-13T19:01:31.043Z",
       "tools": [
         {
           "tool_id": "age-of-empires-2",
@@ -965,7 +980,7 @@
       "page_url": "https://joshtronic.com/uses/",
       "page_status": "verified",
       "first_valid_observation_at": "2026-11-04T22:20:06.760Z",
-      "last_valid_observation_at": "2026-11-12T02:57:31.823Z",
+      "last_valid_observation_at": "2026-11-13T19:01:31.043Z",
       "tools": [
         {
           "tool_id": "1password",
@@ -1994,7 +2009,7 @@
       "page_url": "https://joshua.seigler.net/uses/",
       "page_status": "verified",
       "first_valid_observation_at": "2026-11-04T22:20:06.760Z",
-      "last_valid_observation_at": "2026-11-12T02:57:31.823Z",
+      "last_valid_observation_at": "2026-11-13T19:01:31.043Z",
       "tools": [
         {
           "tool_id": "dartnode",
@@ -2453,7 +2468,7 @@
       "page_url": "https://joshuamorris.info/uses/",
       "page_status": "verified",
       "first_valid_observation_at": "2026-11-10T01:55:56.724Z",
-      "last_valid_observation_at": "2026-11-12T02:57:31.823Z",
+      "last_valid_observation_at": "2026-11-13T19:01:31.043Z",
       "tools": [
         {
           "tool_id": "creality-cr-10-mini",
@@ -2522,7 +2537,7 @@
       "page_url": "https://www.joshfinnie.com/uses/",
       "page_status": "verified",
       "first_valid_observation_at": "2026-11-04T20:05:21.389Z",
-      "last_valid_observation_at": "2026-11-12T02:57:31.823Z",
+      "last_valid_observation_at": "2026-11-13T19:01:31.043Z",
       "tools": [
         {
           "tool_id": "atreus",
@@ -3056,7 +3071,7 @@
       "page_url": "https://www.joshmedeski.com/uses/",
       "page_status": "verified",
       "first_valid_observation_at": "2026-11-11T06:59:22.472Z",
-      "last_valid_observation_at": "2026-11-12T02:57:31.823Z",
+      "last_valid_observation_at": "2026-11-13T19:01:31.043Z",
       "tools": [
         {
           "tool_id": "airpods-max",
@@ -3320,7 +3335,7 @@
       "page_url": "https://www.joshuabaker.com/uses/",
       "page_status": "verified",
       "first_valid_observation_at": "2026-11-04T20:05:21.389Z",
-      "last_valid_observation_at": "2026-11-12T02:57:31.823Z",
+      "last_valid_observation_at": "2026-11-13T19:01:31.043Z",
       "tools": [
         {
           "tool_id": "1password",

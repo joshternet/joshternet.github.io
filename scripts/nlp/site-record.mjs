@@ -72,6 +72,7 @@ export const CRAWL_KEYS = Object.freeze({
   denominator_note: "k1m",
   description: "k1n",
   descriptions: "k1o",
+  destinations: "k8i",
   dir: "k1p",
   directed: "k1q",
   discovery: "k1r",
@@ -199,6 +200,7 @@ export const CRAWL_KEYS = Object.freeze({
   primary_count: "k55",
   products: "k56",
   project: "k57",
+  promoted: "k8j",
   publication_count: "k58",
   publish_enabled: "k59",
   published_at: "k5a",
@@ -441,7 +443,7 @@ export function isCrawlJsonPath(filePath) {
     return false;
   }
   if (
-    /(?:^|\/)_data\/(?:topic_aliases|topic_denylist|network_display_titles|network_dev|network_preview|content_support_matrix)\.json$/.test(
+    /(?:^|\/)_data\/(?:topic_aliases|topic_denylist|network_display_titles|network_site_families|network_dev|network_preview|content_support_matrix)\.json$/.test(
       normalized,
     )
   ) {

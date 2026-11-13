@@ -12,6 +12,12 @@ import {
   decodeHtmlEntities,
   personNameFromSelfIntro,
 } from "../network/lib.mjs";
+import {
+  destinationOriginsFromEntry,
+  isNetworkEntryPromoted,
+  promoteNetworkOrigin,
+  secondaryToPrimaryFromNetwork,
+} from "../network/site-families.mjs";
 import { isShowcaseChromePath } from "../network/slash-pages.mjs";
 import { isEmptyAppearanceTitle } from "../nlp/appearance-title.mjs";
 import { isEpisodeAnnouncement } from "../nlp/content.mjs";
@@ -4302,7 +4308,9 @@ export function buildEventIcs(happeningItems, options = {}) {
  * }}
  */
 export function buildViewDocuments(input) {
-  const sites = sitesByOrigin(input.network || []);
+  const network = Array.isArray(input.network) ? input.network : [];
+  const sites = sitesByOrigin(network);
+  const secondaryToPrimary = secondaryToPrimaryFromNetwork(network);
   const contentItems = itemsFromCollection(input.content, "items");
   const signalsOrigins = Array.isArray(input.siteSignals?.origins)
     ? input.siteSignals.origins
@@ -4444,22 +4452,30 @@ export function buildViewDocuments(input) {
 
     for (const member of community.sites) {
       if (member && typeof member.origin === "string" && member.origin) {
-        memberOrigins.add(member.origin);
+        memberOrigins.add(
+          promoteNetworkOrigin(member.origin, secondaryToPrimary),
+        );
       }
     }
 
     for (const item of matching) {
       if (typeof item.site_origin === "string" && item.site_origin) {
-        memberOrigins.add(item.site_origin);
+        memberOrigins.add(
+          promoteNetworkOrigin(item.site_origin, secondaryToPrimary),
+        );
       }
     }
 
     const members = [...memberOrigins]
       .map((origin) => {
         const listed = community.sites.find(
-          (member) => member.origin === origin,
+          (member) =>
+            promoteNetworkOrigin(member?.origin, secondaryToPrimary) === origin,
         );
-        const signal = signalsOrigins.find((entry) => entry.origin === origin);
+        const signal = signalsOrigins.find(
+          (entry) =>
+            promoteNetworkOrigin(entry?.origin, secondaryToPrimary) === origin,
+        );
         const declared = (signal?.declared_topics || []).find(
           (topic) => topic.slug === community.slug,
         );
@@ -4470,12 +4486,16 @@ export function buildViewDocuments(input) {
         );
         const site = sites.get(origin);
         const whyEvidence = declared?.evidence || heuristic?.evidence || [];
-        const articles = matching.filter((item) => item.site_origin === origin);
+        const articles = matching.filter(
+          (item) =>
+            promoteNetworkOrigin(item.site_origin, secondaryToPrimary) ===
+            origin,
+        );
 
         return {
           origin,
-          domain: listed?.domain || site?.domain || "",
-          title: listed?.title || site?.title || site?.domain || origin,
+          domain: site?.domain || listed?.domain || "",
+          title: site?.title || listed?.title || site?.domain || origin,
           description:
             typeof site?.description === "string" ? site.description : "",
           membership:
@@ -4487,7 +4507,10 @@ export function buildViewDocuments(input) {
         };
       })
       .filter(
-        (member) => member.articles.length > 0 && sites.has(member.origin),
+        (member) =>
+          member.articles.length > 0 &&
+          sites.has(member.origin) &&
+          isNetworkEntryPromoted(sites.get(member.origin)),
       );
 
     members.sort((left, right) =>
@@ -4525,54 +4548,71 @@ export function buildViewDocuments(input) {
 
   const connectionTopics = connectionTopicOverlaps(neighborhoods);
 
-  const siteViews = [...sites.values()].map((site) => {
-    const origin = site.origin;
-    const signal = signalsOrigins.find((entry) => entry.origin === origin);
-    const outgoing = edges.filter((edge) => edge.from === origin);
-    const incoming = edges.filter((edge) => edge.to === origin);
-    const communityTopics = communities
-      .filter((community) =>
-        community.sites.some((member) => member.origin === origin),
-      )
-      .map((community) => ({ slug: community.slug, label: community.label }));
-    const recent = compactItems.find((item) => item.site_origin === origin);
+  const siteViews = [...sites.values()]
+    .filter((site) => isNetworkEntryPromoted(site))
+    .map((site) => {
+      const origin = site.origin;
+      const familyOrigins = new Set([
+        origin,
+        ...destinationOriginsFromEntry(site),
+      ]);
+      const signal = signalsOrigins.find(
+        (entry) =>
+          promoteNetworkOrigin(entry?.origin, secondaryToPrimary) === origin,
+      );
+      const outgoing = edges.filter((edge) => familyOrigins.has(edge.from));
+      const incoming = edges.filter((edge) => familyOrigins.has(edge.to));
+      const communityTopics = communities
+        .filter((community) =>
+          community.sites.some(
+            (member) =>
+              promoteNetworkOrigin(member?.origin, secondaryToPrimary) ===
+              origin,
+          ),
+        )
+        .map((community) => ({ slug: community.slug, label: community.label }));
+      const recent = compactItems.find(
+        (item) =>
+          promoteNetworkOrigin(item.site_origin, secondaryToPrimary) === origin,
+      );
 
-    return {
-      origin,
-      domain: site.domain,
-      title: site.title || site.domain,
-      description: site.description || "",
-      identity: site.identity,
-      feeds: site.feeds || [],
-      elsewhere: site.elsewhere || [],
-      community_topics: communityTopics,
-      recent_content: recent || null,
-      outgoing: outgoing.map((edge) => ({
-        to: edge.to,
-        relation: edge.relation,
-        label: relationLabel(String(edge.relation)),
-        href: edge.href,
-        page: edge.page,
-        evidence_count:
-          edge.evidence_count || (edge.evidence || []).length || 1,
-      })),
-      incoming: incoming.map((edge) => ({
-        from: edge.from,
-        relation: edge.relation,
-        label: relationLabel(String(edge.relation)),
-        href: edge.href,
-        page: edge.page,
-        evidence_count:
-          edge.evidence_count || (edge.evidence || []).length || 1,
-      })),
-      coverage: signal?.coverage || null,
-      crawled_at:
-        typeof signal?.crawled_at === "string" ? signal.crawled_at : "",
-      ...(signal?.portfolio && typeof signal.portfolio.url === "string"
-        ? { portfolio: signal.portfolio }
-        : {}),
-    };
-  });
+      return {
+        origin,
+        domain: site.domain,
+        title: site.title || site.domain,
+        description: site.description || "",
+        identity: site.identity,
+        feeds: site.feeds || [],
+        elsewhere: site.elsewhere || [],
+        destinations: Array.isArray(site.destinations) ? site.destinations : [],
+        community_topics: communityTopics,
+        recent_content: recent || null,
+        outgoing: outgoing.map((edge) => ({
+          to: promoteNetworkOrigin(edge.to, secondaryToPrimary),
+          relation: edge.relation,
+          label: relationLabel(String(edge.relation)),
+          href: edge.href,
+          page: edge.page,
+          evidence_count:
+            edge.evidence_count || (edge.evidence || []).length || 1,
+        })),
+        incoming: incoming.map((edge) => ({
+          from: promoteNetworkOrigin(edge.from, secondaryToPrimary),
+          relation: edge.relation,
+          label: relationLabel(String(edge.relation)),
+          href: edge.href,
+          page: edge.page,
+          evidence_count:
+            edge.evidence_count || (edge.evidence || []).length || 1,
+        })),
+        coverage: signal?.coverage || null,
+        crawled_at:
+          typeof signal?.crawled_at === "string" ? signal.crawled_at : "",
+        ...(signal?.portfolio && typeof signal.portfolio.url === "string"
+          ? { portfolio: signal.portfolio }
+          : {}),
+      };
+    });
 
   const explore = {
     schema_version: 1,
@@ -4625,6 +4665,10 @@ export function buildViewDocuments(input) {
   const searchDocuments = [];
 
   for (const site of sites.values()) {
+    if (!isNetworkEntryPromoted(site)) {
+      continue;
+    }
+
     searchDocuments.push({
       type: "site",
       title: site.title || site.domain,

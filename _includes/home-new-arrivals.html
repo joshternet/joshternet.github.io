@@ -74,6 +74,7 @@
             <p class="network-card__domain p-org">
               {{ network_site.k1v | escape }}
             </p>
+            {% include network-card-destinations.html %}
             {% include network-card-joined.html %}
             <p class="home-new-arrivals__network-link">
               <a href="{{ '/network/' | relative_url }}?site={{ network_site.k1v | downcase | url_encode }}">

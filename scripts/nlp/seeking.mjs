@@ -12,6 +12,8 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { isHubParticipantOrigin } from "../network/connections.mjs";
+import { secondaryToPrimaryFromNetwork } from "../network/site-families.mjs";
 import { fetchPublicText, writeJSONAtomic } from "./lib.mjs";
 import { resolvePreviewPublish } from "./preview-publish.mjs";
 import { decodeCrawlValue } from "./site-record.mjs";
@@ -22,6 +24,17 @@ import {
   normalizeExtractedText,
   normalizeLanguageTag,
 } from "./text.mjs";
+
+/**
+ * True when Seeking must ignore this origin or page URL.
+ * The hub `/seeking/` page aggregates member requests; crawling it would
+ * duplicate those listings as if they were hub-owned observations.
+ * @param {unknown} value
+ * @returns {boolean}
+ */
+export function isSeekingHubOrigin(value) {
+  return isHubParticipantOrigin(typeof value === "string" ? value : "");
+}
 
 /** Days without a successful complete source check before hiding a request. */
 export const SEEKING_FRESHNESS_DAYS = 30;
@@ -78,6 +91,10 @@ export function isSeekingPublishEnabled(explicit) {
  * @returns {string[]} Absolute URLs.
  */
 export function seekingCandidateUrls(origin) {
+  if (isSeekingHubOrigin(origin)) {
+    return [];
+  }
+
   let base;
 
   try {
@@ -538,7 +555,7 @@ export function collectSeeking(pages, meta) {
   const pageRows = [];
   const requests = [];
 
-  if (!siteOrigin) {
+  if (!siteOrigin || isSeekingHubOrigin(siteOrigin)) {
     return { pages: pageRows, requests };
   }
 
@@ -547,7 +564,7 @@ export function collectSeeking(pages, meta) {
       continue;
     }
 
-    if (!isSeekingPageUrl(page.url)) {
+    if (isSeekingHubOrigin(page.url) || !isSeekingPageUrl(page.url)) {
       continue;
     }
 
@@ -608,7 +625,7 @@ export function reconcileSeekingState(prior, originInputs, options = {}) {
 
     const origin = String(row.origin || "");
 
-    if (!origin) {
+    if (!origin || isSeekingHubOrigin(origin)) {
       continue;
     }
 
@@ -629,7 +646,7 @@ export function reconcileSeekingState(prior, originInputs, options = {}) {
   for (const input of Array.isArray(originInputs) ? originInputs : []) {
     const origin = String(input?.origin || "");
 
-    if (!origin) {
+    if (!origin || isSeekingHubOrigin(origin)) {
       continue;
     }
 
@@ -701,8 +718,19 @@ export function buildSeekingView(state, options = {}) {
 
   const origins = Array.isArray(state?.origins) ? state.origins : [];
   /** @type {Map<string, string>} */
+  const secondaryToPrimary =
+    options.secondaryToPrimary instanceof Map
+      ? options.secondaryToPrimary
+      : new Map();
+  /** @type {Map<string, Record<string, unknown>>} */
+  const networkByOrigin =
+    options.networkByOrigin instanceof Map
+      ? options.networkByOrigin
+      : new Map();
+  /** @type {Map<string, string>} */
   const categorySet = new Map();
-  const sites = [];
+  /** @type {Map<string, Record<string, unknown>>} */
+  const sitesByPromotedOrigin = new Map();
 
   for (const originRow of origins) {
     const requests = Array.isArray(originRow.requests)
@@ -713,12 +741,20 @@ export function buildSeekingView(state, options = {}) {
       continue;
     }
 
+    const rawOrigin = String(originRow.origin || "");
+    const promotedOrigin = secondaryToPrimary.get(rawOrigin) || rawOrigin || "";
+
+    if (!promotedOrigin) {
+      continue;
+    }
+
+    const promotedSite = networkByOrigin.get(promotedOrigin);
     let domain = "";
 
     try {
-      domain = new URL(String(originRow.origin || "")).hostname;
+      domain = new URL(String(promotedSite?.origin || promotedOrigin)).hostname;
     } catch {
-      domain = String(originRow.origin || "");
+      domain = String(promotedSite?.domain || promotedOrigin);
     }
 
     const siteRequests = requests.map((request) => {
@@ -748,10 +784,20 @@ export function buildSeekingView(state, options = {}) {
       };
     });
 
-    sites.push({
-      origin: String(originRow.origin || ""),
+    const existing = sitesByPromotedOrigin.get(promotedOrigin);
+
+    if (existing) {
+      existing.requests = [
+        ...(Array.isArray(existing.requests) ? existing.requests : []),
+        ...siteRequests,
+      ];
+      continue;
+    }
+
+    sitesByPromotedOrigin.set(promotedOrigin, {
+      origin: promotedOrigin,
       domain,
-      site_title: String(originRow.title || domain),
+      site_title: String(promotedSite?.title || originRow.title || domain),
       page_url: String(originRow.page_url || ""),
       page_updated: String(originRow.page_updated || ""),
       last_checked: String(originRow.last_checked || ""),
@@ -759,6 +805,8 @@ export function buildSeekingView(state, options = {}) {
       requests: siteRequests,
     });
   }
+
+  const sites = [...sitesByPromotedOrigin.values()];
 
   sites.sort((a, b) =>
     String(a.site_title || a.domain).localeCompare(
@@ -855,9 +903,21 @@ export async function buildSeekingDatasets(input) {
         observedAt,
       });
 
+  const network = Array.isArray(input.network) ? input.network : [];
+  /** @type {Map<string, Record<string, unknown>>} */
+  const networkByOrigin = new Map();
+
+  for (const site of network) {
+    if (site && typeof site.origin === "string" && site.origin) {
+      networkByOrigin.set(site.origin, site);
+    }
+  }
+
   const view = buildSeekingView(state, {
     generatedAt: observedAt,
     unavailable: Boolean(input.unavailable || state.unavailable),
+    secondaryToPrimary: secondaryToPrimaryFromNetwork(network),
+    networkByOrigin,
   });
 
   await fs.mkdir(path.dirname(statePath), { recursive: true });
@@ -892,8 +952,35 @@ export async function writeSeekingViewFromState(repoRoot = ROOT) {
     state = null;
   }
 
+  let network = [];
+
+  try {
+    network = decodeCrawlValue(
+      JSON.parse(
+        await fs.readFile(path.join(repoRoot, "_data", "network.json"), "utf8"),
+      ),
+    );
+  } catch {
+    network = [];
+  }
+
+  if (!Array.isArray(network)) {
+    network = [];
+  }
+
+  /** @type {Map<string, Record<string, unknown>>} */
+  const networkByOrigin = new Map();
+
+  for (const site of network) {
+    if (site && typeof site.origin === "string" && site.origin) {
+      networkByOrigin.set(site.origin, site);
+    }
+  }
+
   const view = buildSeekingView(state, {
     unavailable: Boolean(state?.unavailable),
+    secondaryToPrimary: secondaryToPrimaryFromNetwork(network),
+    networkByOrigin,
   });
 
   await fs.mkdir(path.dirname(publicPath), { recursive: true });

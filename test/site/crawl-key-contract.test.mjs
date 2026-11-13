@@ -19,6 +19,7 @@ const CLEAR_DATA_ALLOWLIST = new Set([
   "topic_aliases",
   "topic_denylist",
   "network_display_titles",
+  "network_site_families",
   "network_dev",
   "network_preview",
   "content_support_matrix",
@@ -190,6 +191,7 @@ test("wander loads crawl-keys before wander and decodes network data", async () 
   assert.match(page, /scripts:[\s\S]*crawl-keys\.js[\s\S]*wander\.js/);
   assert.match(script, /joshternetDecodeCrawl/);
   assert.match(script, /validateSites\(decoded\)/);
+  assert.match(script, /promoted === false/);
 });
 
 test("short-keyed network rows decode into clear Wander fields as N grows", () => {

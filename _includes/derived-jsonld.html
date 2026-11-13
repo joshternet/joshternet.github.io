@@ -20,8 +20,15 @@
 
   {% unless jsonld_is_topic_stub %}
     {% if page.url == '/network/' %}
-      {% for network_site in site.data.network limit: jsonld_itemlist_cap %}
-        {% assign jsonld_itemlist_urls = jsonld_itemlist_urls | push: network_site.k4b %}
+      {% assign jsonld_network_added = 0 %}
+      {% for network_site in site.data.network %}
+        {% if jsonld_network_added >= jsonld_itemlist_cap %}
+          {% break %}
+        {% endif %}
+        {% if network_site.k8j != false %}
+          {% assign jsonld_itemlist_urls = jsonld_itemlist_urls | push: network_site.k4b %}
+          {% assign jsonld_network_added = jsonld_network_added | plus: 1 %}
+        {% endif %}
       {% endfor %}
       {% assign jsonld_has_itemlist = true %}
     {% elsif page.url == '/activity/' %}

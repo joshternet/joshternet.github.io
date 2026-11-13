@@ -11,7 +11,7 @@
 {% assign home_arrival_cutoff_s = home_arrival_now_s | minus: home_arrival_window_s %}
 {% assign home_arrival_sites = '' | split: '' %}
 {% for network_site in site.data.network %}
-  {% if network_site.k4b != home_hub_origin and network_site.k4b != home_hub_www %}
+  {% if network_site.k8j != false and network_site.k4b != home_hub_origin and network_site.k4b != home_hub_www %}
     {% if network_site.k2j and network_site.k2j != '' %}
       {% assign home_arrival_at_s = network_site.k2j | date: '%s' | plus: 0 %}
       {% if home_arrival_at_s >= home_arrival_cutoff_s and home_arrival_at_s <= home_arrival_now_s %}

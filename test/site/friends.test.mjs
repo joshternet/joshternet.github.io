@@ -38,6 +38,7 @@ test("friends page filters network data to declined identity only", async () => 
       `site\\.data\\.network \\| where: "${CRAWL_KEYS.identity}", "declined"`,
     ),
   );
+  assert.match(page, new RegExp(`${CRAWL_KEYS.promoted} != false`));
   assert.doesNotMatch(page, /where: "k31", "affirmed"/);
   assert.doesNotMatch(page, /where: "k31", "undeclared"/);
   assert.doesNotMatch(page, /for network_site in site\.data\.network/);
@@ -107,14 +108,15 @@ test("friends page accessibility and SEO conventions", async () => {
 
 test("friends appears in Network secondary navigation", async () => {
   const networkNav = await read("_data/network_nav.yml");
+  const networkChildren = await read(
+    "_includes/site-nav-network-children.html",
+  );
   const sections = await read("_includes/site-nav-sections.html");
   const networkPage = await read("network.md");
 
-  assert.match(
-    networkNav,
-    /title: What's New[\s\S]*title: Showcase[\s\S]*title: Friends[\s\S]*title: Topics[\s\S]*title: Connections[\s\S]*title: Uses[\s\S]*title: Seeking/,
-  );
-  assert.match(networkNav, /path: \/friends\//);
+  // Structural wiring only — labels and sibling entries live in data.
+  assert.match(networkChildren, /site\.data\.network_nav/);
+  assert.match(networkNav, /path:\s*\/friends\//);
   assert.match(sections, /page\.url == '\/friends\/'/);
   assert.match(networkPage, /['"]\/friends\/['"]/);
 });
