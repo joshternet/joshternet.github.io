@@ -307,6 +307,12 @@
     k8b: "venue",
     k8c: "location",
     k8d: "site_count",
+    k8e: "attribution_role",
+    k8f: "conference",
+    k8g: "start_precision",
+    k8h: "resources",
+    k8i: "destinations",
+    k8j: "promoted",
   };
   var seal = "joshternet-site-record-v1";
   function unseal(key) {

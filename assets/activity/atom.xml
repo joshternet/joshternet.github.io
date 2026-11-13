@@ -2,22 +2,33 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://joshternet.org/assets/activity/atom.xml</id>
   <title>Joshternet What's New</title>
-  <updated>2026-11-13T07:49:57.467Z</updated>
+  <updated>2026-11-13T19:38:41.497Z</updated>
   <link rel="self" type="application/atom+xml" href="https://joshternet.org/assets/activity/atom.xml"/>
   <link rel="alternate" type="text/html" href="https://joshternet.org/activity/"/>
   <subtitle>A selection of recent writing and creative work from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
   <generator uri="https://joshternet.org/">Joshternet views:build</generator>
+  <entry xml:lang="en">
+    <id>https://joshuamorris.info/notes/2026/11/13/worth-wandering-the-html-review/</id>
+    <title xml:lang="en">Worth Wandering: The HTML Review</title>
+    <updated>2026-11-13T16:00:00.000Z</updated>
+    <published>2026-11-13T16:00:00.000Z</published>
+    <link rel="alternate" href="https://joshuamorris.info/notes/2026/11/13/worth-wandering-the-html-review/"/>
+    <author>
+      <name>Joshua Morris</name>
+      <uri>https://joshuamorris.info</uri>
+    </author>
+    <summary xml:lang="en">An independent literary journal where poems become rivers, stories unfold through puzzles, memories take the shape of old computers, and a collection of mouse cursors can gather in a park. Five issues of writing, art and experimentation that remind us a webpage can be much more than a place to display words.</summary>
+  </entry>
   <entry xml:lang="en-us">
     <id>https://artlung.com/blog/2026/11/12/almost-dawn-patrol-at-ob/</id>
     <title xml:lang="en-us">(Almost) dawn patrol at OB</title>
-    <updated>2026-11-12T21:02:05.000Z</updated>
-    <published>2026-11-12T21:02:05.000Z</published>
+    <updated>2026-11-13T05:02:05.000Z</updated>
+    <published>2026-11-13T05:02:05.000Z</published>
     <link rel="alternate" href="https://artlung.com/blog/2026/11/12/almost-dawn-patrol-at-ob/"/>
     <author>
       <name>Joe Crawford</name>
       <uri>https://artlung.com</uri>
     </author>
-    <summary xml:lang="en-us">Your email address will not be published. We reserve the right to remove irrelevant links.</summary>
   </entry>
   <entry xml:lang="en">
     <id>https://joshuamorris.info/notes/2026/11/12/is-your-website-ready-for-safaris-adaptive-dark-mode/</id>
@@ -34,14 +45,13 @@
   <entry xml:lang="en-us">
     <id>https://artlung.com/blog/2026/11/11/big-waves-some-rideable/</id>
     <title xml:lang="en-us">Big waves keep coming through. Some rideable.</title>
-    <updated>2026-11-11T20:30:22.000Z</updated>
-    <published>2026-11-11T20:30:22.000Z</published>
+    <updated>2026-11-12T04:30:22.000Z</updated>
+    <published>2026-11-12T04:30:22.000Z</published>
     <link rel="alternate" href="https://artlung.com/blog/2026/11/11/big-waves-some-rideable/"/>
     <author>
       <name>Joe Crawford</name>
       <uri>https://artlung.com</uri>
     </author>
-    <summary xml:lang="en-us">Your email address will not be published. We reserve the right to remove irrelevant links.</summary>
   </entry>
   <entry xml:lang="en">
     <id>https://www.joshmedeski.com/posts/how-to-make-your-site-llm-friendly/</id>
@@ -67,9 +77,9 @@
     </author>
     <summary xml:lang="en">It’s been a few weeks since I did a “longer” ride - something over 30 miles - and I’ve been itching to do it. I was sick a couple of weeks ago and have had family commitments the past few weeks, along with some bad weather conditions. Since I had Veteran’s Day off, I took advantage of it and the beautiful weather to do a long ride.</summary>
   </entry>
-  <entry xml:lang="en-gb">
+  <entry>
     <id>https://joshcox.co.uk/blog/my-house-my-things-is-on-the-iphone/</id>
-    <title xml:lang="en-gb">My House, My Things is on the iPhone</title>
+    <title>My House, My Things is on the iPhone</title>
     <updated>2026-11-11T00:00:00.000Z</updated>
     <published>2026-11-11T00:00:00.000Z</published>
     <link rel="alternate" href="https://joshcox.co.uk/blog/my-house-my-things-is-on-the-iphone/"/>
@@ -77,7 +87,7 @@
       <name>Josh Cox</name>
       <uri>https://joshcox.co.uk</uri>
     </author>
-    <summary xml:lang="en-gb">The iPhone app is out, on the same purchase as the Mac. £19.99 for both, once, and your house syncs through your own iCloud rather than a server of mine.</summary>
+    <summary>The iPhone app is out, on the same purchase as the Mac. £19.99 for both, once, and your house syncs through your own iCloud rather than a server of mine.</summary>
   </entry>
   <entry xml:lang="en-au">
     <id>https://joshwithers.blog/2026/11/11/dror-poleg-on-artificial-intelligence-tamim-and-deuteronomy.html</id>
@@ -140,18 +150,6 @@
     <summary xml:lang="en-us">Tailwind&apos;s docs traffic fell 40% and Stack Overflow&apos;s questions collapsed as developers asked LLMs instead. Why that loop leaves us with worse docs, shallower skills, and models that stop learning.</summary>
   </entry>
   <entry xml:lang="en">
-    <id>https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/</id>
-    <title xml:lang="en">Worth Wandering: The Mushroom Color Atlas</title>
-    <updated>2026-11-06T16:00:00.000Z</updated>
-    <published>2026-11-06T16:00:00.000Z</published>
-    <link rel="alternate" href="https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/"/>
-    <author>
-      <name>Joshua Morris</name>
-      <uri>https://joshuamorris.info</uri>
-    </author>
-    <summary xml:lang="en">An extraordinary interactive collection of colors made from mushrooms, where a walk through the forest becomes an exploration of chemistry, textiles, watercolor pigments and the surprising things nature has been making all along.</summary>
-  </entry>
-  <entry xml:lang="en">
     <id>https://joshgr.com/writing/an-open-letter-to-ai-barons/</id>
     <title xml:lang="en">An Open Letter to AI Barons</title>
     <updated>2026-11-06T00:00:00.000Z</updated>
@@ -162,6 +160,18 @@
       <uri>https://joshgr.com</uri>
     </author>
     <summary xml:lang="en">Congratulations! You did it! You raised the tide and now all boats are lifted. You made a cool. Good job!</summary>
+  </entry>
+  <entry>
+    <id>https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai</id>
+    <title>The Ballmer Peak in the Age of AI Coding</title>
+    <updated>2026-11-03T13:31:11.000Z</updated>
+    <published>2026-11-03T13:31:11.000Z</published>
+    <link rel="alternate" href="https://chrisminnick.substack.com/p/the-ballmer-peak-in-the-age-of-ai"/>
+    <author>
+      <name>Chris Minnick</name>
+      <uri>https://www.chrisminnick.com</uri>
+    </author>
+    <summary>During the years when I was doing a lot of hands-on coding, roughly from 1998 to 2010, I lived by the rule of what xkcd comic author Randall Munroe named the “ Ballmer Peak ” after Steve Ballmer, the former CEO of Microsoft who was known for his exuberant and sweaty appearance on stage .</summary>
   </entry>
   <entry xml:lang="en">
     <id>https://joshtronic.com/2026/11/01/open-to-work/</id>
@@ -198,17 +208,5 @@
       <uri>https://joshmuller.ca</uri>
     </author>
     <summary xml:lang="en">A gluten-free chocolate cake made with black beans and cocoa, with estimated calories and macros.</summary>
-  </entry>
-  <entry xml:lang="en">
-    <id>https://joshmuller.ca/docs/healthy-eating-plan-builder/</id>
-    <title xml:lang="en">Healthy Weight Plan Builder</title>
-    <updated>2026-10-30T18:19:07.000Z</updated>
-    <published>2026-10-30T18:19:07.000Z</published>
-    <link rel="alternate" href="https://joshmuller.ca/docs/healthy-eating-plan-builder/"/>
-    <author>
-      <name>Josh Müller</name>
-      <uri>https://joshmuller.ca</uri>
-    </author>
-    <summary xml:lang="en">Download the Word document (.docx) A universal AI nutrition coach prompt by Span AI Solutions · Version 1.2 · October 2026 Created by Josh Müller ( @theJoshMuller ) and Kamila Buitrago ( @theKamilaBuitrago ) · spanaisolutions.com How to use it Click copy to copy the text in the box. Paste it into any AI chat: Claude, ChatGPT, Gemini, DeepSeek, or another one. Press send. The AI will ask you some e</summary>
   </entry>
 </feed>

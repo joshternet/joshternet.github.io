@@ -40,6 +40,8 @@ Crawled input is untrusted, including page markup, links, structured data and te
 
 Visitor-facing activity views can prioritize recent work and limit how much one origin dominates a listing. Retention of upstream evidence is a different question from how much the website displays.
 
+**Site families** are a curated presentation overlay (`_data/network_site_families.json`), not membership. On every `network:sync`, the sync attaches `destinations` to the primary origin and marks secondaries `promoted: false`. NLP still crawls every participating origin for feeds and content attribution; visitor-facing site lists (Network cards, Welcome, Meet, Wander, Connections nodes, Search site documents, OPML) promote only primaries. Changing or removing a family takes effect on the next sync projection.
+
 The exact limits are implementation policy, not membership rules, and may change. Tests should validate ordering, deduplication, attribution, fair representation and sensible empty states without depending on particular live participants or article counts.
 
 ## Migration contract

@@ -25,6 +25,8 @@ test("seeking page keeps filters, status shells, and data hooks", async () => {
   const css = await read("assets/css/main.css");
 
   assert.match(page, /permalink: \/seeking\//);
+  assert.match(page, /^published:\s*false\b/m);
+  assert.match(page, /^sitemap:\s*false\b/m);
   assert.match(page, /nav_title: Seeking/);
   assert.match(page, /joshternet_analysis: derived/);
   assert.match(page, /script: \/assets\/js\/seeking\.js/);

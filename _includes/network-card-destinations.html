@@ -1,0 +1,29 @@
+{% comment %}
+  Goal & Constraints: Other Network destinations on a promoted primary card.
+  Expects network_site with optional destinations (k8i). Domain labels; title
+  in the accessible name. No nested cards.
+{% endcomment %}
+{% if network_site.k8i and network_site.k8i.size > 0 %}
+  <div class="network-card__destinations">
+    <p class="network-card__destinations-label">Also in the Network</p>
+    <ul class="network-card__destinations-list">
+      {% for destination in network_site.k8i %}
+        {% include outbound-href.html url=destination.k4b %}
+        <li>
+          <a
+            class="network-card__destination-link"
+            href="{{ outbound_href | escape }}"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="visually-hidden">
+              {{ destination.k7c | default: destination.k1v | escape }}
+              (opens on the publisher’s site)
+            </span>
+            <span aria-hidden="true">{{ destination.k1v | escape }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

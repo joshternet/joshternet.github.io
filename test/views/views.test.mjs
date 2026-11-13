@@ -2806,3 +2806,187 @@ test("topic pages include curated related subjects that are public", () => {
     "nolabel",
   );
 });
+
+test("buildViewDocuments promotes primary sites and folds destination edges", () => {
+  const now = new Date("2026-10-03T12:00:00.000Z");
+  const views = buildViewDocuments({
+    network: [
+      {
+        origin: "https://primary.example",
+        domain: "",
+        title: "",
+        description: "Main",
+        destinations: [
+          { origin: "https://secondary.example", domain: "secondary.example" },
+          null,
+          "skip",
+          { origin: "" },
+          {},
+        ],
+      },
+      {
+        origin: "https://secondary.example",
+        domain: "secondary.example",
+        title: "Secondary",
+        promoted: false,
+      },
+      {
+        origin: "https://solo.example",
+        domain: "solo.example",
+        title: "Solo",
+        destinations: "not-an-array",
+      },
+    ],
+    content: {
+      items: [
+        {
+          url: "https://secondary.example/post",
+          site_origin: "https://secondary.example",
+          title: "From secondary",
+          published_at: "2026-10-01T00:00:00.000Z",
+          declared_topics: [
+            {
+              slug: "design",
+              label: "Design",
+              community_eligible: true,
+            },
+          ],
+        },
+        {
+          url: "https://solo.example/post",
+          site_origin: "https://solo.example",
+          title: "From solo",
+          published_at: "2026-10-01T00:00:00.000Z",
+          declared_topics: [
+            {
+              slug: "design",
+              label: "Design",
+              community_eligible: true,
+            },
+          ],
+        },
+      ],
+    },
+    topics: {
+      community_count: 1,
+      communities: [
+        {
+          slug: "design",
+          label: "Design",
+          sites: [
+            null,
+            {
+              origin: "https://secondary.example",
+              domain: "secondary.example",
+              title: "Secondary Site",
+              membership: "declared",
+            },
+            {
+              origin: "https://solo.example",
+              domain: "solo.example",
+              title: "Solo",
+              membership: "declared",
+            },
+          ],
+        },
+      ],
+    },
+    connections: {
+      edges: [
+        {
+          from: "https://secondary.example",
+          to: "https://solo.example",
+          relation: "content-link",
+          href: "https://solo.example/",
+          page: "https://secondary.example/",
+        },
+        {
+          from: "https://solo.example",
+          to: "https://secondary.example",
+          relation: "content-link",
+          href: "https://secondary.example/",
+          page: "https://solo.example/",
+        },
+        {
+          from: "https://solo.example",
+          to: "",
+          relation: "content-link",
+          href: "https://solo.example/",
+          page: "https://solo.example/",
+        },
+      ],
+    },
+    siteSignals: {
+      origins: [
+        null,
+        {
+          origin: "https://secondary.example",
+          declared_topics: [{ slug: "design", label: "Design", evidence: [] }],
+        },
+      ],
+    },
+    generatedAt: "2026-10-03T12:00:00.000Z",
+    now,
+  });
+
+  const siteOrigins = views.site_views.sites.map((site) => site.origin).sort();
+  assert.deepEqual(siteOrigins, [
+    "https://primary.example",
+    "https://solo.example",
+  ]);
+
+  const searchSites = views.search_index.documents.filter(
+    (doc) => doc.type === "site",
+  );
+  assert.deepEqual(searchSites.map((doc) => doc.origin).sort(), [
+    "https://primary.example",
+    "https://solo.example",
+  ]);
+
+  const primary = views.site_views.sites.find(
+    (site) => site.origin === "https://primary.example",
+  );
+  assert.equal(primary.outgoing.length, 1);
+  assert.equal(primary.outgoing[0].to, "https://solo.example");
+  assert.equal(primary.incoming.length, 1);
+  assert.equal(primary.incoming[0].from, "https://solo.example");
+
+  const solo = views.site_views.sites.find(
+    (site) => site.origin === "https://solo.example",
+  );
+  assert.equal(solo.outgoing[0].to, "https://primary.example");
+
+  const design = views.topic_views.neighborhoods.find(
+    (topic) => topic.slug === "design",
+  );
+  assert.ok(design);
+  assert.deepEqual(design.members.map((member) => member.origin).sort(), [
+    "https://primary.example",
+    "https://solo.example",
+  ]);
+});
+
+test("buildViewDocuments omits demoted sites from site lists and search", () => {
+  const views = buildViewDocuments({
+    network: [
+      {
+        origin: "https://demoted.example",
+        domain: "demoted.example",
+        title: "Demoted",
+        promoted: false,
+      },
+    ],
+    content: { items: [] },
+    topics: { community_count: 0 },
+    connections: {},
+    siteSignals: { origins: [] },
+    generatedAt: "2026-10-03T12:00:00.000Z",
+    now: new Date("2026-10-03T12:00:00.000Z"),
+  });
+
+  assert.equal(views.site_views.sites.length, 0);
+  assert.equal(
+    views.search_index.documents.filter((doc) => doc.type === "site").length,
+    0,
+  );
+});

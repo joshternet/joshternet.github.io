@@ -76,6 +76,7 @@ import {
   visitIdentityPages,
 } from "./enrichment-budget.mjs";
 import { formatGeneratedOutputs } from "../format-written.mjs";
+import { applySiteFamilies, isNetworkEntryPromoted } from "./site-families.mjs";
 import {
   readJSONIfExists,
   USER_AGENT,
@@ -95,6 +96,7 @@ const DEFAULT_REGISTRY_URL =
 
 const DEFAULT_DATA_PATH = "_data/network.json";
 const DEFAULT_DISPLAY_TITLES_PATH = "_data/network_display_titles.json";
+const DEFAULT_SITE_FAMILIES_PATH = "_data/network_site_families.json";
 const DEFAULT_BLOGROLLS_PATH = "_data/blogrolls.json";
 const DEFAULT_CONNECTIONS_PATH = "_data/connections.json";
 const DEFAULT_HOMEPAGE_CONNECTIONS_PATH = "_data/homepage_connections.json";
@@ -1030,6 +1032,12 @@ nextEntries.sort((left, right) => {
   });
 });
 
+const siteFamiliesDoc = await readJSONIfExists(DEFAULT_SITE_FAMILIES_PATH, {
+  format_version: 1,
+  families: [],
+});
+applySiteFamilies(nextEntries, siteFamiliesDoc);
+
 const blogrollEdgeList = sortBlogrollEdges(
   nextEdges.filter(
     (edge) => !isJoshternetGeneratedOpml(edge.blogroll, HUB_ORIGIN),
@@ -1051,7 +1059,9 @@ const homepageConnectionsDocument = buildHomepageConnectionsDocument({
   generatedAt: new Date().toISOString(),
   edges: connectionEdgeList,
 });
-const opml = buildJoshternetOpml(nextEntries);
+const opml = buildJoshternetOpml(
+  nextEntries.filter((entry) => isNetworkEntryPromoted(entry)),
+);
 
 await removeOrphanScreenshots(nextEntries, DEFAULT_SCREENSHOT_ROOT);
 await writeJSONAtomic(DEFAULT_DATA_PATH, nextEntries);

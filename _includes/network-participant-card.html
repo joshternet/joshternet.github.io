@@ -114,25 +114,37 @@
         {% if show_elsewhere %}
           <ul class="network-card__elsewhere">
             {% for elsewhere_link in network_site.k20 %}
-              {% assign elsewhere_network = elsewhere_link.k45 | default: 'web' %}
-              <li>
-                {% include outbound-href.html url=elsewhere_link.k7o %}
-                <a
-                  class="network-card__elsewhere-link"
-                  href="{{ outbound_href | escape }}"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <span
-                    class="network-card__elsewhere-glyph network-card__elsewhere-glyph--{{ elsewhere_network | escape }}"
-                    aria-hidden="true"
-                  ></span>
-                  <span class="visually-hidden">
-                    {{ elsewhere_link.k3g | default: elsewhere_network | escape }}
-                    profile linked from this participant site
-                  </span>
-                </a>
-              </li>
+              {% assign elsewhere_is_destination = false %}
+              {% if network_site.k8i and network_site.k8i.size > 0 %}
+                {% assign elsewhere_url_l = elsewhere_link.k7o | downcase %}
+                {% for destination in network_site.k8i %}
+                  {% assign destination_host = destination.k1v | downcase %}
+                  {% if destination_host != '' and elsewhere_url_l contains destination_host %}
+                    {% assign elsewhere_is_destination = true %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+              {% unless elsewhere_is_destination %}
+                {% assign elsewhere_network = elsewhere_link.k45 | default: 'web' %}
+                <li>
+                  {% include outbound-href.html url=elsewhere_link.k7o %}
+                  <a
+                    class="network-card__elsewhere-link"
+                    href="{{ outbound_href | escape }}"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <span
+                      class="network-card__elsewhere-glyph network-card__elsewhere-glyph--{{ elsewhere_network | escape }}"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="visually-hidden">
+                      {{ elsewhere_link.k3g | default: elsewhere_network | escape }}
+                      profile linked from this participant site
+                    </span>
+                  </a>
+                </li>
+              {% endunless %}
             {% endfor %}
           </ul>
         {% endif %}
@@ -147,6 +159,7 @@
     >
       {{ network_site.k1v | escape }}
     </a>
+    {% include network-card-destinations.html %}
     {% include network-card-joined.html %}
   </div>
 </article>

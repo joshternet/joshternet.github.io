@@ -33,10 +33,12 @@ interesting things, and occasionally end up exploring the same ideas.
 {% assign member_sites = "" | split: "" %}
 {% assign hub_sites = "" | split: "" %}
 {% for network_site in network_sites %}
-  {% if network_site.k4b == hub_origin %}
-    {% assign hub_sites = hub_sites | push: network_site %}
-  {% else %}
-    {% assign member_sites = member_sites | push: network_site %}
+  {% if network_site.k8j != false %}
+    {% if network_site.k4b == hub_origin %}
+      {% assign hub_sites = hub_sites | push: network_site %}
+    {% else %}
+      {% assign member_sites = member_sites | push: network_site %}
+    {% endif %}
   {% endif %}
 {% endfor %}
 {% comment %}
@@ -49,21 +51,27 @@ interesting things, and occasionally end up exploring the same ideas.
 {% assign overlap_pairs = site.data.connection_topics.k4q | default: empty %}
 {% assign overlap_pair_count = overlap_pairs.size | default: 0 %}
 {% assign connected_site_count = 0 %}
-{% for network_site in network_sites %}
+{% for network_site in ordered_sites %}
   {% assign site_origin = network_site.k4b %}
   {% assign outbound = 0 %}
   {% assign inbound = 0 %}
   {% assign overlap_count = 0 %}
   {% for edge in connection_edges %}
-    {% if edge.k2o == site_origin %}
+    {% assign edge_endpoint = edge.k2o %}
+    {% include network-family-edge-match.html %}
+    {% if family_edge_match %}
       {% assign outbound = outbound | plus: 1 %}
     {% endif %}
-    {% if edge.k7d == site_origin %}
+    {% assign edge_endpoint = edge.k7d %}
+    {% include network-family-edge-match.html %}
+    {% if family_edge_match %}
       {% assign inbound = inbound | plus: 1 %}
     {% endif %}
   {% endfor %}
   {% for overlap_site in overlap_sites %}
-    {% if overlap_site.k4b == site_origin %}
+    {% assign edge_endpoint = overlap_site.k4b %}
+    {% include network-family-edge-match.html %}
+    {% if family_edge_match %}
       {% assign overlap_count = overlap_site.k7j.size %}
     {% endif %}
   {% endfor %}
@@ -128,15 +136,21 @@ interesting things, and occasionally end up exploring the same ideas.
     {% assign overlap_topics = nil %}
     {% assign overlap_count = 0 %}
     {% for edge in connection_edges %}
-      {% if edge.k2o == site_origin %}
+      {% assign edge_endpoint = edge.k2o %}
+      {% include network-family-edge-match.html %}
+      {% if family_edge_match %}
         {% assign outbound = outbound | plus: 1 %}
       {% endif %}
-      {% if edge.k7d == site_origin %}
+      {% assign edge_endpoint = edge.k7d %}
+      {% include network-family-edge-match.html %}
+      {% if family_edge_match %}
         {% assign inbound = inbound | plus: 1 %}
       {% endif %}
     {% endfor %}
     {% for overlap_site in overlap_sites %}
-      {% if overlap_site.k4b == site_origin %}
+      {% assign edge_endpoint = overlap_site.k4b %}
+      {% include network-family-edge-match.html %}
+      {% if family_edge_match %}
         {% assign overlap_topics = overlap_site.k7j %}
         {% assign overlap_count = overlap_site.k7j.size %}
       {% endif %}
@@ -224,13 +238,23 @@ interesting things, and occasionally end up exploring the same ideas.
           <h3>Links to</h3>
             <ul class="connections-edge-list">
               {% for edge in connection_edges %}
-                {% if edge.k2o == site_origin %}
+                {% assign edge_endpoint = edge.k2o %}
+                {% include network-family-edge-match.html %}
+                {% if family_edge_match %}
                   {% assign target_title = edge.k7d %}
                   {% assign target_domain = edge.k7d %}
                   {% for candidate in network_sites %}
                     {% if candidate.k4b == edge.k7d %}
                       {% assign target_title = candidate.k7c | default: candidate.k1v %}
                       {% assign target_domain = candidate.k1v %}
+                    {% endif %}
+                    {% if candidate.k8i %}
+                      {% for destination in candidate.k8i %}
+                        {% if destination.k4b == edge.k7d %}
+                          {% assign target_title = candidate.k7c | default: candidate.k1v %}
+                          {% assign target_domain = candidate.k1v %}
+                        {% endif %}
+                      {% endfor %}
                     {% endif %}
                   {% endfor %}
                   {% assign link_label = edge.k7a %}
@@ -345,13 +369,23 @@ interesting things, and occasionally end up exploring the same ideas.
           <h3>Linked from</h3>
             <ul class="connections-edge-list">
               {% for edge in connection_edges %}
-                {% if edge.k7d == site_origin %}
+                {% assign edge_endpoint = edge.k7d %}
+                {% include network-family-edge-match.html %}
+                {% if family_edge_match %}
                   {% assign source_title = edge.k2o %}
                   {% assign source_domain = edge.k2o %}
                   {% for candidate in network_sites %}
                     {% if candidate.k4b == edge.k2o %}
                       {% assign source_title = candidate.k7c | default: candidate.k1v %}
                       {% assign source_domain = candidate.k1v %}
+                    {% endif %}
+                    {% if candidate.k8i %}
+                      {% for destination in candidate.k8i %}
+                        {% if destination.k4b == edge.k2o %}
+                          {% assign source_title = candidate.k7c | default: candidate.k1v %}
+                          {% assign source_domain = candidate.k1v %}
+                        {% endif %}
+                      {% endfor %}
                     {% endif %}
                   {% endfor %}
                   {% assign edge_kind = edge.k5l | default: edge.k3c | default: "content-link" %}
@@ -503,7 +537,8 @@ interesting things, and occasionally end up exploring the same ideas.
 "description": {{ network_site.k1n | default: "" | jsonify }},
 "screenshot": {{ network_site.k63 | default: "" | jsonify }},
 "first_participated_at": {{ network_site.k2j | default: "" | jsonify }},
-"recently_joined": {% if site_recently_joined %}true{% else %}false{% endif %}
+"recently_joined": {% if site_recently_joined %}true{% else %}false{% endif %},
+"destinations": [{% if network_site.k8i %}{% for destination in network_site.k8i %}{"origin":{{ destination.k4b | jsonify }},"domain":{{ destination.k1v | jsonify }},"title":{{ destination.k7c | default: destination.k1v | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}{% endif %}]
 }{% unless forloop.last %},{% endunless %}
 {% endfor %}
 ],

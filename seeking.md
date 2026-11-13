@@ -1,4 +1,6 @@
 ---
+published: false
+sitemap: false
 layout: default
 title: What people are looking for
 description: >-

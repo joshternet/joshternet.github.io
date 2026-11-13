@@ -493,6 +493,10 @@
       return null;
     }
 
+    if (value.promoted === false) {
+      return null;
+    }
+
     return {
       origin: origin.origin,
       domain: origin.host,

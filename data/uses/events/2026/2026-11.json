@@ -26070,6 +26070,30 @@
       "extractor_version": 5,
       "taxonomy_version": 3,
       "observed_at": "2026-11-12T02:57:31.823Z"
+    },
+    {
+      "event_id": "sha256:b848c75d4eff953b33a7292cad896da428d5d54bb4ba5dc8a29ddf1e83206028",
+      "event_type": "usage_added",
+      "origin": "https://joshbeard.com",
+      "page_url": "https://joshbeard.com/uses",
+      "tool_id": "observed:notes",
+      "status": "current",
+      "use_case_ids": ["writing"],
+      "evidence": {
+        "source_url": "https://joshbeard.com/uses",
+        "source_hash": "sha256:2d4d97ceef042c58e467113189efac407fbcc07e321e5472b3831e672fe57429",
+        "label": "Notes",
+        "section": "Josh Beard",
+        "section_path": "Josh Beard",
+        "href": "/notes/",
+        "context": "Notes",
+        "kind": "product",
+        "excerpt": "Notes. Notes",
+        "quantity": 1
+      },
+      "extractor_version": 5,
+      "taxonomy_version": 3,
+      "observed_at": "2026-11-13T19:01:31.043Z"
     }
   ]
 }

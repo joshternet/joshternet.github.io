@@ -19,6 +19,7 @@ import {
   collectSeeking,
   fetchSeekingHtmlPages,
   formatSeekingCounts,
+  isSeekingHubOrigin,
   isSeekingPageUrl,
   isSeekingPublishEnabled,
   pageUpdatedFromHtml,
@@ -58,6 +59,66 @@ test("seekingCandidateUrls lists same-origin slash variants", () => {
     "https://joshua.example/seeking.html",
   ]);
   assert.deepEqual(seekingCandidateUrls("not-a-url"), []);
+});
+
+test("Seeking skips the Joshternet hub so aggregate /seeking does not double up", () => {
+  assert.equal(isSeekingHubOrigin("https://joshternet.org"), true);
+  assert.equal(isSeekingHubOrigin("https://www.joshternet.org"), true);
+  assert.equal(isSeekingHubOrigin("https://joshua.example"), false);
+  assert.deepEqual(seekingCandidateUrls("https://joshternet.org"), []);
+  assert.deepEqual(seekingCandidateUrls("https://www.joshternet.org/"), []);
+
+  const hubHtml = `<div class="h-listing">
+    <p class="p-name">Hub mirror of a member request</p>
+    <p class="p-description">Should not become a Seeking observation.</p>
+    <a class="u-url" href="mailto:help@joshua.example">email</a>
+    <data class="p-category" value="help"></data>
+    <data class="p-action" value="wanted"></data>
+  </div>`;
+
+  assert.deepEqual(
+    collectSeeking(
+      [{ url: "https://joshternet.org/seeking/", html: hubHtml }],
+      {
+        siteOrigin: "https://joshternet.org",
+        observedAt: "2026-11-12T00:00:00.000Z",
+      },
+    ),
+    { pages: [], requests: [] },
+  );
+
+  const reconciled = reconcileSeekingState(
+    {
+      origins: [
+        {
+          origin: "https://joshternet.org",
+          title: "Joshternet",
+          page_url: "https://joshternet.org/seeking/",
+          requests: [
+            {
+              identity: "seeking:https://joshternet.org:stale",
+              description: "stale hub row",
+              last_checked: "2026-11-12T00:00:00.000Z",
+            },
+          ],
+        },
+      ],
+    },
+    [
+      {
+        origin: "https://joshternet.org",
+        title: "Joshternet",
+        pages: [{ url: "https://joshternet.org/seeking/", html: hubHtml }],
+        complete: true,
+      },
+    ],
+    { observedAt: "2026-11-12T00:00:00.000Z" },
+  );
+
+  assert.equal(
+    reconciled.origins.some((row) => row.origin === "https://joshternet.org"),
+    false,
+  );
 });
 
 test("fetchSeekingHtmlPages returns first successful Seeking page", async () => {

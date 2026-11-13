@@ -10,7 +10,7 @@
 {% assign home_hub_www = 'https://www.joshternet.org' %}
 {% assign home_meet_sites = '' | split: '' %}
 {% for network_site in site.data.network %}
-  {% if network_site.k4b != home_hub_origin and network_site.k4b != home_hub_www %}
+  {% if network_site.k8j != false and network_site.k4b != home_hub_origin and network_site.k4b != home_hub_www %}
     {% assign meet_domain = network_site.k1v | downcase %}
     {% assign meet_is_welcome = false %}
     {% for arrival_site in home_arrival_sites %}
@@ -25,7 +25,12 @@
   {% endif %}
 {% endfor %}
 {% assign home_meet_sites = home_meet_sites | sort: 'k1v' %}
-{% assign home_network_count = site.data.network | size %}
+{% assign home_network_count = 0 %}
+{% for network_site in site.data.network %}
+  {% if network_site.k8j != false %}
+    {% assign home_network_count = home_network_count | plus: 1 %}
+  {% endif %}
+{% endfor %}
 
 <p class="home-meet__count">
   {% if home_network_count == 1 %}
@@ -100,6 +105,7 @@
           <p class="network-card__domain p-org">
             {{ network_site.k1v | escape }}
           </p>
+          {% include network-card-destinations.html %}
           {% include network-card-joined.html %}
         </div>
       </article>

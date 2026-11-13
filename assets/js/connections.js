@@ -675,12 +675,125 @@
 
     let parsed;
 
+    /**
+     * Remap secondary family destinations onto their promoted primary origin
+     * so graph edges and topic overlaps stay attached after card grouping.
+     * @param {unknown} payload
+     * @returns {unknown}
+     */
+    function promoteFamilyPayload(payload) {
+      if (!payload || typeof payload !== "object" || Array.isArray(payload)) {
+        return payload;
+      }
+
+      /** @type {Map<string, string>} */
+      const secondaryToPrimary = new Map();
+
+      if (Array.isArray(payload.participants)) {
+        for (const participant of payload.participants) {
+          if (
+            !participant ||
+            typeof participant !== "object" ||
+            typeof participant.origin !== "string"
+          ) {
+            continue;
+          }
+
+          const primary = participant.origin;
+          const destinations = Array.isArray(participant.destinations)
+            ? participant.destinations
+            : [];
+
+          for (const destination of destinations) {
+            if (
+              destination &&
+              typeof destination === "object" &&
+              typeof destination.origin === "string" &&
+              destination.origin
+            ) {
+              secondaryToPrimary.set(destination.origin, primary);
+            }
+          }
+        }
+      }
+
+      /**
+       * @param {unknown} origin
+       * @returns {string}
+       */
+      function promoteOrigin(origin) {
+        if (typeof origin !== "string" || !origin) {
+          return "";
+        }
+
+        return secondaryToPrimary.get(origin) || origin;
+      }
+
+      if (Array.isArray(payload.connections)) {
+        payload.connections = payload.connections
+          .map((edge) => {
+            if (!edge || typeof edge !== "object") {
+              return null;
+            }
+
+            const from = promoteOrigin(edge.from);
+            const to = promoteOrigin(edge.to);
+
+            if (!from || !to || from === to) {
+              return null;
+            }
+
+            return { ...edge, from, to };
+          })
+          .filter(Boolean);
+      }
+
+      if (Array.isArray(payload.topic_overlaps)) {
+        payload.topic_overlaps = payload.topic_overlaps
+          .map((pair) => {
+            if (!pair || typeof pair !== "object") {
+              return null;
+            }
+
+            const a = promoteOrigin(pair.a);
+            const b = promoteOrigin(pair.b);
+
+            if (!a || !b || a === b) {
+              return null;
+            }
+
+            return { ...pair, a, b };
+          })
+          .filter(Boolean);
+      }
+
+      if (Array.isArray(payload.topic_groups)) {
+        payload.topic_groups = payload.topic_groups
+          .map((group) => {
+            if (!group || typeof group !== "object") {
+              return null;
+            }
+
+            const origin = promoteOrigin(group.origin);
+
+            if (!origin) {
+              return null;
+            }
+
+            return { ...group, origin };
+          })
+          .filter(Boolean);
+      }
+
+      return payload;
+    }
+
     try {
       const parsedJson = JSON.parse(bootstrap.textContent || "{}");
       const decode = globalThis.joshternetDecodeCrawl;
-      parsed = validatePayload(
-        typeof decode === "function" ? decode(parsedJson) : parsedJson,
-      );
+      const decoded =
+        typeof decode === "function" ? decode(parsedJson) : parsedJson;
+      parsed = validatePayload(promoteFamilyPayload(decoded));
     } catch {
       parsed = {
         participants: [],

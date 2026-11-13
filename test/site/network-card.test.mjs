@@ -63,8 +63,16 @@ test("network cards link the primary feed outside the origin card link", async (
   assert.match(card, /network-card__feed/);
   assert.match(card, /network-card__actions/);
   assert.match(card, /network-card__footer/);
+  assert.match(card, /include network-card-destinations\.html/);
   assert.match(card, /include network-card-joined\.html/);
   assert.match(card, /include network-card-a11y\.html/);
+  assert.match(card, new RegExp(CRAWL_KEYS.destinations));
+  assert.match(page, new RegExp(`${CRAWL_KEYS.promoted} != false`));
+  assert.match(styles, /\.network-card__destinations\s*\{/);
+  assert.match(
+    await read("_includes/network-card-destinations.html"),
+    /Also in the Network/,
+  );
   assert.doesNotMatch(page, /site\.data\.site_views/);
   assert.doesNotMatch(page, /recent_content/);
   assert.doesNotMatch(page, /network_dev/);
@@ -128,6 +136,16 @@ test("network cards link the primary feed outside the origin card link", async (
   if (network !== null) {
     const decoded = decodeCrawlValue(JSON.parse(network));
     assert.match(JSON.stringify(decoded), /https:\/\/artlung\.com\/feed\//);
+    const withers = decoded.find(
+      (site) => site && site.origin === "https://joshwithers.au",
+    );
+    const blog = decoded.find(
+      (site) => site && site.origin === "https://joshwithers.blog",
+    );
+    assert.ok(withers, "joshwithers.au remains a network participant");
+    assert.equal(Array.isArray(withers.destinations), true);
+    assert.equal(withers.destinations.length, 2);
+    assert.equal(blog?.promoted, false);
   }
 });
 

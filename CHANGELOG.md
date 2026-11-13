@@ -7,6 +7,12 @@ engineering notes stay in git history; this file is for people reading the repo.
 
 ### Fixed
 
+- **Site-family view projection:** Topic and site views remap secondary origins
+  through `promoteNetworkOrigin` (including null signal rows) so family
+  primaries keep destination edges and neighborhood membership after sync.
+- **Seeking hub dedupe:** Seeking no longer extracts requests from
+  joshternet.org’s own `/seeking/` page, which aggregates member listings and
+  had duplicated those requests in the Seeking view.
 - **Multi-site content attribution:** Aggregate feeds no longer publish another
   participant origin’s URLs under the wrong `site_origin` (for example
   joshwithers.au owning joshwithers.blog / marriedbyjosh.com posts), which had
@@ -30,6 +36,12 @@ engineering notes stay in git history; this file is for people reading the repo.
 
 ### Added
 
+- **Network site families:** Curated `_data/network_site_families.json` groups
+  multi-site people under one promoted primary (starting with Josh Withers:
+  `joshwithers.au` with blog and wedding destinations). Projection re-runs on
+  every `network:sync`; secondaries stay crawl participants but are omitted from
+  Network, Friends, Welcome, Meet, Wander, Connections nodes, Search site hits,
+  and OPML, and appear as “Also in the Network” links on the primary card.
 - **JoshBot verified crawler identity:** `/joshbot/` explains that JoshBot is a
   Cloudflare Verified Bot, signs requests with Web Bot Auth, publishes a public
   signing-key directory, and lists identity details in the Cloudflare Radar
@@ -75,6 +87,8 @@ engineering notes stay in git history; this file is for people reading the repo.
   matching meta / JSON-LD fields.
 
 ### Changed
+
+- **Seeking unpublished:** Hub `/seeking/` is unpublished and removed from Network nav while duplicate aggregation is sorted out.
 
 - **Topics footnote:** Pitch and discovery disclaimer sit under the topic list as
   a muted page footnote instead of mid-intro body copy.

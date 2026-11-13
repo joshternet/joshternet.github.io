@@ -12,10 +12,12 @@
 {% assign home_member_sites = '' | split: '' %}
 {% assign home_hub_sites = '' | split: '' %}
 {% for network_site in home_network_sites %}
-  {% if network_site.k4b == home_hub_origin %}
-    {% assign home_hub_sites = home_hub_sites | push: network_site %}
-  {% else %}
-    {% assign home_member_sites = home_member_sites | push: network_site %}
+  {% if network_site.k8j != false %}
+    {% if network_site.k4b == home_hub_origin %}
+      {% assign home_hub_sites = home_hub_sites | push: network_site %}
+    {% else %}
+      {% assign home_member_sites = home_member_sites | push: network_site %}
+    {% endif %}
   {% endif %}
 {% endfor %}
 {% comment %}
@@ -30,15 +32,18 @@
 {% assign connected_site_count = 0 %}
 {% assign connection_edges = home_connection_edges %}
 {% assign overlap_pair_count = home_overlap_pairs.size | default: 0 %}
-{% for network_site in home_network_sites %}
-  {% assign site_origin = network_site.k4b %}
+{% for network_site in home_ordered_sites %}
   {% assign outbound = 0 %}
   {% assign inbound = 0 %}
   {% for edge in connection_edges %}
-    {% if edge.k2o == site_origin %}
+    {% assign edge_endpoint = edge.k2o %}
+    {% include network-family-edge-match.html %}
+    {% if family_edge_match %}
       {% assign outbound = outbound | plus: 1 %}
     {% endif %}
-    {% if edge.k7d == site_origin %}
+    {% assign edge_endpoint = edge.k7d %}
+    {% include network-family-edge-match.html %}
+    {% if family_edge_match %}
       {% assign inbound = inbound | plus: 1 %}
     {% endif %}
   {% endfor %}
@@ -112,7 +117,8 @@
 "description": {{ network_site.k1n | default: "" | jsonify }},
 "screenshot": {{ network_site.k63 | default: "" | jsonify }},
 "first_participated_at": {{ network_site.k2j | default: "" | jsonify }},
-"recently_joined": {% if site_recently_joined %}true{% else %}false{% endif %}
+"recently_joined": {% if site_recently_joined %}true{% else %}false{% endif %},
+"destinations": [{% if network_site.k8i %}{% for destination in network_site.k8i %}{"origin":{{ destination.k4b | jsonify }},"domain":{{ destination.k1v | jsonify }},"title":{{ destination.k7c | default: destination.k1v | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}{% endif %}]
 }{% unless forloop.last %},{% endunless %}
 {% endfor %}
 ],
