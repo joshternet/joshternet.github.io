@@ -2,11 +2,35 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://joshternet.org/assets/activity/atom.xml</id>
   <title>Joshternet What's New</title>
-  <updated>2026-11-13T07:49:57.467Z</updated>
+  <updated>2026-11-13T20:56:47.703Z</updated>
   <link rel="self" type="application/atom+xml" href="https://joshternet.org/assets/activity/atom.xml"/>
   <link rel="alternate" type="text/html" href="https://joshternet.org/activity/"/>
   <subtitle>A selection of recent writing and creative work from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
   <generator uri="https://joshternet.org/">Joshternet views:build</generator>
+  <entry xml:lang="en">
+    <id>https://joshuamorris.info/notes/2026/11/13/worth-wandering-the-html-review/</id>
+    <title xml:lang="en">Worth Wandering: The HTML Review</title>
+    <updated>2026-11-13T16:00:00.000Z</updated>
+    <published>2026-11-13T16:00:00.000Z</published>
+    <link rel="alternate" href="https://joshuamorris.info/notes/2026/11/13/worth-wandering-the-html-review/"/>
+    <author>
+      <name>Joshua Morris</name>
+      <uri>https://joshuamorris.info</uri>
+    </author>
+    <summary xml:lang="en">An independent literary journal where poems become rivers, stories unfold through puzzles, memories take the shape of old computers, and a collection of mouse cursors can gather in a park. Five issues of writing, art and experimentation that remind us a webpage can be much more than a place to display words.</summary>
+  </entry>
+  <entry xml:lang="en-us">
+    <id>https://artlung.com/blog/2026/11/13/heavy-toes/</id>
+    <title xml:lang="en-us">South current so strong I couldn’t stay in one spot. I don’t think of it as fighting the ocean as much as I think of it as dancing with it. Hurts when its feet step on my toes. I don’t think I can really hurt the ocean’s toes. Metaphorically.</title>
+    <updated>2026-11-13T11:46:16.000Z</updated>
+    <published>2026-11-13T11:46:16.000Z</published>
+    <link rel="alternate" href="https://artlung.com/blog/2026/11/13/heavy-toes/"/>
+    <author>
+      <name>Joe Crawford</name>
+      <uri>https://artlung.com</uri>
+    </author>
+    <summary xml:lang="en-us">Your email address will not be published. We reserve the right to remove irrelevant links.</summary>
+  </entry>
   <entry xml:lang="en-us">
     <id>https://artlung.com/blog/2026/11/12/almost-dawn-patrol-at-ob/</id>
     <title xml:lang="en-us">(Almost) dawn patrol at OB</title>
@@ -31,18 +55,6 @@
     </author>
     <summary xml:lang="en">Safari 27.3 introduces Adaptive Dark Mode. I made JoshuaMorris.info’s existing light and dark theme support explicit in the document head and tested the result.</summary>
   </entry>
-  <entry xml:lang="en-us">
-    <id>https://artlung.com/blog/2026/11/11/big-waves-some-rideable/</id>
-    <title xml:lang="en-us">Big waves keep coming through. Some rideable.</title>
-    <updated>2026-11-11T20:30:22.000Z</updated>
-    <published>2026-11-11T20:30:22.000Z</published>
-    <link rel="alternate" href="https://artlung.com/blog/2026/11/11/big-waves-some-rideable/"/>
-    <author>
-      <name>Joe Crawford</name>
-      <uri>https://artlung.com</uri>
-    </author>
-    <summary xml:lang="en-us">Your email address will not be published. We reserve the right to remove irrelevant links.</summary>
-  </entry>
   <entry xml:lang="en">
     <id>https://www.joshmedeski.com/posts/how-to-make-your-site-llm-friendly/</id>
     <title xml:lang="en">How to Make Your Site LLM-Friendly</title>
@@ -57,7 +69,7 @@
   </entry>
   <entry xml:lang="en">
     <id>https://joshbeard.com/notes/2026/forty-six-across-town/</id>
-    <title xml:lang="en">🇺🇸 🪖 Veteran&apos;s Day 46 Mile Ride</title>
+    <title xml:lang="en">Veteran&apos;s Day 46 Mile Ride</title>
     <updated>2026-11-11T09:19:00.000Z</updated>
     <published>2026-11-11T09:19:00.000Z</published>
     <link rel="alternate" href="https://joshbeard.com/notes/2026/forty-six-across-town/"/>
@@ -140,18 +152,6 @@
     <summary xml:lang="en-us">Tailwind&apos;s docs traffic fell 40% and Stack Overflow&apos;s questions collapsed as developers asked LLMs instead. Why that loop leaves us with worse docs, shallower skills, and models that stop learning.</summary>
   </entry>
   <entry xml:lang="en">
-    <id>https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/</id>
-    <title xml:lang="en">Worth Wandering: The Mushroom Color Atlas</title>
-    <updated>2026-11-06T16:00:00.000Z</updated>
-    <published>2026-11-06T16:00:00.000Z</published>
-    <link rel="alternate" href="https://joshuamorris.info/notes/2026/11/06/worth-wandering-mushroom-color-atlas/"/>
-    <author>
-      <name>Joshua Morris</name>
-      <uri>https://joshuamorris.info</uri>
-    </author>
-    <summary xml:lang="en">An extraordinary interactive collection of colors made from mushrooms, where a walk through the forest becomes an exploration of chemistry, textiles, watercolor pigments and the surprising things nature has been making all along.</summary>
-  </entry>
-  <entry xml:lang="en">
     <id>https://joshgr.com/writing/an-open-letter-to-ai-barons/</id>
     <title xml:lang="en">An Open Letter to AI Barons</title>
     <updated>2026-11-06T00:00:00.000Z</updated>
@@ -198,17 +198,5 @@
       <uri>https://joshmuller.ca</uri>
     </author>
     <summary xml:lang="en">A gluten-free chocolate cake made with black beans and cocoa, with estimated calories and macros.</summary>
-  </entry>
-  <entry xml:lang="en">
-    <id>https://joshmuller.ca/docs/healthy-eating-plan-builder/</id>
-    <title xml:lang="en">Healthy Weight Plan Builder</title>
-    <updated>2026-10-30T18:19:07.000Z</updated>
-    <published>2026-10-30T18:19:07.000Z</published>
-    <link rel="alternate" href="https://joshmuller.ca/docs/healthy-eating-plan-builder/"/>
-    <author>
-      <name>Josh Müller</name>
-      <uri>https://joshmuller.ca</uri>
-    </author>
-    <summary xml:lang="en">Download the Word document (.docx) A universal AI nutrition coach prompt by Span AI Solutions · Version 1.2 · October 2026 Created by Josh Müller ( @theJoshMuller ) and Kamila Buitrago ( @theKamilaBuitrago ) · spanaisolutions.com How to use it Click copy to copy the text in the box. Paste it into any AI chat: Claude, ChatGPT, Gemini, DeepSeek, or another one. Press send. The AI will ask you some e</summary>
   </entry>
 </feed>
