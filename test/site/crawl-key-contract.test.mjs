@@ -20,6 +20,7 @@ const CLEAR_DATA_ALLOWLIST = new Set([
   "topic_denylist",
   "network_display_titles",
   "network_site_families",
+  "network_crawl_roots",
   "network_dev",
   "network_preview",
   "content_support_matrix",

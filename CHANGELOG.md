@@ -7,6 +7,13 @@ engineering notes stay in git history; this file is for people reading the repo.
 
 ### Fixed
 
+- **Network card display titles:** Curated overrides publish Joshua Galinato
+  (`galina.to`), Josh Marinacci (`josh.earth`), Josh Leeb (`joshleeb.com`),
+  Josh Levinger (`levinger.net`), and Josh Hall (`peira.dev`) instead of host or
+  slogan titles, and keep those names on later `network:sync` runs.
+- **Path-scoped crawl roots:** Curated `_data/network_crawl_roots.json` points
+  network capture and NLP crawl at a participant path (starting with
+  `levinger.net` → `/josh/`) while the registry origin stays apex-only.
 - **Site-family view projection:** Topic and site views remap secondary origins
   through `promoteNetworkOrigin` (including null signal rows) so family
   primaries keep destination edges and neighborhood membership after sync.

@@ -928,6 +928,86 @@ test("crawlOrigin: crawls homepage and returns pages", async () => {
   }
 });
 
+test("crawlOrigin: crawlPath seeds and scopes under a participant path", async () => {
+  const origin = "https://family.example";
+  const cache = dnsCache(["family.example"]);
+  const fetched = [];
+  install();
+  try {
+    // External HTTP boundary — real fetch replaced by mock stub
+    globalThis.fetch = async (url) => {
+      const urlStr = String(url);
+      fetched.push(urlStr);
+      if (urlStr.includes("robots.txt")) {
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "text/plain" }),
+          arrayBuffer: async () => Buffer.from("User-agent: *\nAllow: /\n"),
+        };
+      }
+      if (urlStr.includes("sitemap")) {
+        return {
+          ok: false,
+          status: 404,
+          headers: new Headers({ "content-type": "text/html" }),
+          arrayBuffer: async () => Buffer.from(""),
+        };
+      }
+      if (urlStr === `${origin}/josh/` || urlStr === `${origin}/josh`) {
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "text/html" }),
+          arrayBuffer: async () =>
+            Buffer.from(
+              `<!DOCTYPE html><html><head><title>Josh</title></head><body>
+                <a href="/josh/travel/">Travel</a>
+                <a href="/family/">Family root</a>
+              </body></html>`,
+            ),
+        };
+      }
+      if (urlStr.includes("/josh/travel")) {
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ "content-type": "text/html" }),
+          arrayBuffer: async () => Buffer.from(SIMPLE_HTML("Travel")),
+        };
+      }
+      if (urlStr.includes("/family/")) {
+        assert.fail(`crawlPath must not fetch apex family page: ${urlStr}`);
+      }
+      return {
+        ok: true,
+        status: 200,
+        headers: new Headers({ "content-type": "text/html" }),
+        arrayBuffer: async () => Buffer.from(SIMPLE_HTML("Other")),
+      };
+    };
+    const result = await crawlOrigin(origin, {
+      cache,
+      crawlPath: "/josh/",
+      skipSlashpagesManifest: true,
+    });
+    assert.ok(result.pages.some((p) => p.url.startsWith(`${origin}/josh`)));
+    assert.equal(
+      result.pages.some(
+        (p) => p.url === `${origin}/` || p.url.includes("/family/"),
+      ),
+      false,
+    );
+    assert.ok(fetched.some((url) => url.includes("/josh/")));
+    assert.equal(
+      fetched.some((url) => url === `${origin}/` || url.includes("/family/")),
+      false,
+    );
+  } finally {
+    restore();
+  }
+});
+
 test("crawlOrigin: uses sitemap.xml when available", async () => {
   const origin = "https://a.example";
   const cache = dnsCache(["a.example"]);

@@ -443,7 +443,7 @@ export function isCrawlJsonPath(filePath) {
     return false;
   }
   if (
-    /(?:^|\/)_data\/(?:topic_aliases|topic_denylist|network_display_titles|network_site_families|network_dev|network_preview|content_support_matrix)\.json$/.test(
+    /(?:^|\/)_data\/(?:topic_aliases|topic_denylist|network_display_titles|network_site_families|network_crawl_roots|network_dev|network_preview|content_support_matrix)\.json$/.test(
       normalized,
     )
   ) {
