@@ -17,6 +17,11 @@ import {
 } from "../network/connections.mjs";
 import { stripTrackingSearchParams } from "../network/lib.mjs";
 import {
+  crawlStartUrl,
+  normalizeCrawlPath,
+  urlMatchesCrawlRoot,
+} from "../network/crawl-roots.mjs";
+import {
   IDENTITY_SLASH_PATHS,
   PROBE_SLASH_PATHS,
   contentIndexPaths,
@@ -841,8 +846,26 @@ export async function crawlOrigin(origin, options = {}) {
    * @param {string} url
    * @param {string} reason
    */
+  const crawlPath = normalizeCrawlPath(options.crawlPath || "");
+  const homeUrl =
+    crawlPath && crawlPath !== "/"
+      ? crawlStartUrl(origin, crawlPath)
+      : `${origin}/`;
+  const homePathBase = new URL(homeUrl).pathname.replace(/\/+$/, "") || "/";
+
+  /**
+   * True when the URL is allowed by robots and any curated crawl-root path.
+   * @param {string} url
+   * @returns {boolean}
+   */
+  function inCrawlScope(url) {
+    return (
+      pathAllowed(url) && urlMatchesCrawlRoot(origin, url, crawlPath || "/")
+    );
+  }
+
   function enqueueSeed(url, reason = "seed") {
-    if (!url || seedSeen.has(url) || !pathAllowed(url)) {
+    if (!url || seedSeen.has(url) || !inCrawlScope(url)) {
       return;
     }
 
@@ -851,7 +874,6 @@ export async function crawlOrigin(origin, options = {}) {
     queue.push({ url, depth: 0, seedClass: reason });
   }
 
-  const homeUrl = `${origin}/`;
   enqueueSeed(homeUrl, "home");
 
   if (typeof options.aboutUrl === "string" && options.aboutUrl) {
@@ -964,7 +986,7 @@ export async function crawlOrigin(origin, options = {}) {
     // fetchPublicText always returns an absolute http(s) URL.
     const pagePath = new URL(fetched.url).pathname.replace(/\/+$/, "") || "/";
 
-    if (pagePath === "/") {
+    if (pagePath === homePathBase) {
       homeSignature = {
         title: document.title,
         canonical: canonical || homeUrl,
@@ -1030,7 +1052,7 @@ export async function crawlOrigin(origin, options = {}) {
         if (next.depth < MAX_CRAWL_DEPTH) {
           const same = resolveSameOrigin(origin, absolute);
 
-          if (same && !seen.has(same) && pathAllowed(same)) {
+          if (same && !seen.has(same) && inCrawlScope(same)) {
             queue.push({ url: same, depth: next.depth + 1 });
           }
         }
@@ -1047,7 +1069,7 @@ export async function crawlOrigin(origin, options = {}) {
       document.links,
       maxTopicChildren,
     )) {
-      if (!seen.has(child) && pathAllowed(child)) {
+      if (!seen.has(child) && inCrawlScope(child)) {
         selectionReasons[child] = selectionReasons[child] || "topic-hub";
         queue.push({ url: child, depth: 0, seedClass: "topic-hub" });
       }
@@ -1066,7 +1088,7 @@ export async function crawlOrigin(origin, options = {}) {
     for (let index = indexChildren.length - 1; index >= 0; index -= 1) {
       const child = indexChildren[index];
 
-      if (!seen.has(child) && pathAllowed(child)) {
+      if (!seen.has(child) && inCrawlScope(child)) {
         selectionReasons[child] = selectionReasons[child] || "content-index";
         queue.unshift({ url: child, depth: 0, seedClass: "content-index" });
       }
@@ -1077,7 +1099,7 @@ export async function crawlOrigin(origin, options = {}) {
       for (const link of document.links) {
         const same = resolveSameOrigin(origin, link.href);
 
-        if (same && !seen.has(same) && pathAllowed(same)) {
+        if (same && !seen.has(same) && inCrawlScope(same)) {
           selectionReasons[same] = "slashes-index";
           queue.push({ url: same, depth: 0, seedClass: "content-index" });
         }

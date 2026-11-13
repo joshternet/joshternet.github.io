@@ -79,6 +79,11 @@ test("crawl paths are the generated datasets only", () => {
     isCrawlJsonPath("/repo/_data/network_display_titles.json"),
     false,
   );
+  assert.equal(isCrawlJsonPath("/repo/_data/network_crawl_roots.json"), false);
+  assert.equal(
+    isCrawlJsonPath("/repo/_data/network_site_families.json"),
+    false,
+  );
   assert.equal(isCrawlJsonPath("/repo/_data/network_dev.json"), false);
   assert.equal(isCrawlJsonPath("/repo/_data/network_preview.json"), false);
   assert.equal(

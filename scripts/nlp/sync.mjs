@@ -29,6 +29,11 @@ import {
   itemsFromCollection,
   sparseCollectionDocument,
 } from "../network/collections.mjs";
+import {
+  assertValidCrawlRoots,
+  crawlRootPathByOrigin,
+  crawlRootsFromDocument,
+} from "../network/crawl-roots.mjs";
 import { buildViewProjections } from "../views/build.mjs";
 import { applyCatalogMatches, networkCatalog } from "./catalog.mjs";
 import {
@@ -166,6 +171,7 @@ const HOMEPAGE_CONNECTIONS_PATH = path.join(
 const MANIFEST_PATH = path.join(ROOT, "_data/data_manifest.json");
 const ALIASES_PATH = path.join(ROOT, "_data/topic_aliases.json");
 const DENYLIST_PATH = path.join(ROOT, "_data/topic_denylist.json");
+const CRAWL_ROOTS_PATH = path.join(ROOT, "_data/network_crawl_roots.json");
 const TOPICS_DIR = path.join(ROOT, "topics");
 const CANDIDATES_DIR = path.join(ROOT, ".tmp");
 const CANDIDATES_PATH = path.join(CANDIDATES_DIR, "topic_candidates.json");
@@ -195,6 +201,11 @@ function releaseCrawlPageBodies(pages) {
 
 async function main() {
   const network = await readJSONIfExists(NETWORK_PATH, []);
+  const crawlRoots = crawlRootsFromDocument(
+    await readJSONIfExists(CRAWL_ROOTS_PATH, {}),
+  );
+  assertValidCrawlRoots(crawlRoots);
+  const crawlPaths = crawlRootPathByOrigin(crawlRoots);
   const aliases = loadAliasMap(
     await readJSONIfExists(ALIASES_PATH, { aliases: [] }),
   );
@@ -390,6 +401,7 @@ async function main() {
           httpCache,
           feedEntryUrls: feedData.entryUrls,
           aboutUrls,
+          crawlPath: crawlPaths.get(origin) || "",
         });
       }
 

@@ -78,6 +78,12 @@ import {
 import { formatGeneratedOutputs } from "../format-written.mjs";
 import { applySiteFamilies, isNetworkEntryPromoted } from "./site-families.mjs";
 import {
+  assertValidCrawlRoots,
+  crawlRootPathByOrigin,
+  crawlRootsFromDocument,
+  crawlStartUrlForOrigin,
+} from "./crawl-roots.mjs";
+import {
   readJSONIfExists,
   USER_AGENT,
   writeJSONAtomic,
@@ -97,6 +103,7 @@ const DEFAULT_REGISTRY_URL =
 const DEFAULT_DATA_PATH = "_data/network.json";
 const DEFAULT_DISPLAY_TITLES_PATH = "_data/network_display_titles.json";
 const DEFAULT_SITE_FAMILIES_PATH = "_data/network_site_families.json";
+const DEFAULT_CRAWL_ROOTS_PATH = "_data/network_crawl_roots.json";
 const DEFAULT_BLOGROLLS_PATH = "_data/blogrolls.json";
 const DEFAULT_CONNECTIONS_PATH = "_data/connections.json";
 const DEFAULT_HOMEPAGE_CONNECTIONS_PATH = "_data/homepage_connections.json";
@@ -211,6 +218,20 @@ async function openParticipantHomepage(
     throw new Error(`robots.txt disallows ${participant.origin}`);
   }
 
+  const startUrl =
+    typeof participant.crawl_start_url === "string" &&
+    participant.crawl_start_url
+      ? participant.crawl_start_url
+      : participant.origin;
+
+  await assertPublicURL(startUrl, {
+    cache: dnsCache,
+  });
+
+  if (!(await gate.allows(startUrl))) {
+    throw new Error(`robots.txt disallows ${startUrl}`);
+  }
+
   const context = await browser.newContext({
     viewport: {
       width: 1440,
@@ -228,7 +249,7 @@ async function openParticipantHomepage(
   await installPublicUrlRouteGuard(page, { cache: dnsCache });
 
   try {
-    const response = await page.goto(participant.origin, {
+    const response = await page.goto(startUrl, {
       waitUntil: "load",
       timeout: NAVIGATION_TIMEOUT_MS,
     });
@@ -855,6 +876,15 @@ const { accepted: participants, rejected } =
   await partitionPublicParticipants(projected);
 
 reportRejectedParticipants(rejected);
+const crawlRoots = crawlRootsFromDocument(
+  await readJSONIfExists(DEFAULT_CRAWL_ROOTS_PATH, {}),
+);
+assertValidCrawlRoots(crawlRoots);
+const crawlPaths = crawlRootPathByOrigin(crawlRoots);
+const captureParticipants = participants.map((participant) => ({
+  ...participant,
+  crawl_start_url: crawlStartUrlForOrigin(participant.origin, crawlPaths),
+}));
 const displayTitleOverrides = displayTitleOverridesFromDocument(
   await readJSONIfExists(DEFAULT_DISPLAY_TITLES_PATH, {}),
 );
@@ -890,7 +920,7 @@ const nextConnections = [];
 const originLinkBundles = [];
 
 try {
-  for (const participant of participants) {
+  for (const participant of captureParticipants) {
     const oldEntry = previous.get(participant.origin);
 
     if (!(await shouldRefresh(oldEntry))) {
