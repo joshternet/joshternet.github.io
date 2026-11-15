@@ -17,6 +17,7 @@ import {
   oneLatestPerOrigin,
   pickFeaturedCommunity,
   pickFeaturedConnection,
+  promotedFamilyMemberCount,
   publicCommunities,
   publishedWithinDays,
   randomLinkTrail,
@@ -27,6 +28,44 @@ import {
   sourceLabel,
   topicCooccurrence,
 } from "../../scripts/views/lib.mjs";
+
+test("promotedFamilyMemberCount remaps secondaries and skips demoted", () => {
+  const sites = new Map([
+    [
+      "https://primary.example",
+      { origin: "https://primary.example", promoted: true },
+    ],
+    [
+      "https://solo.example",
+      { origin: "https://solo.example", promoted: true },
+    ],
+    [
+      "https://demoted.example",
+      { origin: "https://demoted.example", promoted: false },
+    ],
+  ]);
+  const secondaryToPrimary = new Map([
+    ["https://secondary.example", "https://primary.example"],
+  ]);
+
+  assert.equal(
+    promotedFamilyMemberCount(
+      [
+        null,
+        { origin: "https://secondary.example" },
+        { origin: "https://primary.example" },
+        { origin: "https://solo.example" },
+        { origin: "https://demoted.example" },
+        { origin: "https://missing.example" },
+        { origin: "" },
+      ],
+      sites,
+      secondaryToPrimary,
+    ),
+    2,
+  );
+  assert.equal(promotedFamilyMemberCount(null, sites, secondaryToPrimary), 0);
+});
 
 test("relation and source labels stay visitor-facing", () => {
   assert.equal(relationLabel("content-link"), "linked to");
@@ -2035,7 +2074,7 @@ test("buildViewDocuments: signal portfolio branch, crawled_at branch, member_cou
   // no coverage → null
   assert.equal(siteViewA.coverage, null);
 
-  // community has no member_count → L1106 fallback fires
+  // Featured neighborhood counts promoted sites after family remap
   assert.ok(views.explore.neighborhood);
   assert.equal(views.explore.neighborhood.member_count, 2);
 
@@ -2419,12 +2458,11 @@ test("buildViewDocuments: signal.crawled_at string fires L1077; declared signal 
 });
 
 // ─── buildViewDocuments: community without label fires || other (BRDA:930) ────
-// community with truthy member_count fires member_count LEFT branch (BRDA:1107)
-test("buildViewDocuments: community without label fires label||slug fallback; member_count truthy fires L1107 LEFT", () => {
-  // Two communities: "design" has label+member_count; "photo" has NO label
+test("buildViewDocuments: community without label fires label||slug fallback; featured count uses promoted sites", () => {
+  // Two communities: "design" has label; "photo" has NO label
   // A content item mentioning both creates a cooccurrence pair.
   // For "design" topicView: related "photo" → otherCommunity.label = undefined → || other fires
-  // featuredCommunity at day=0 picks "design" (alphabetically first), which has member_count > 0
+  // featuredCommunity at day=0 picks "design" (alphabetically first)
   const network = [
     {
       origin: "https://a.example",
@@ -2456,7 +2494,8 @@ test("buildViewDocuments: community without label fires label||slug fallback; me
       {
         slug: "design",
         label: "Design",
-        member_count: 3, // truthy → BRDA:1107 LEFT fires when design is featured
+        // Stale NLP count must not win over promoted remapped sites
+        member_count: 3,
         sites: [
           {
             origin: "https://a.example",
@@ -2522,10 +2561,9 @@ test("buildViewDocuments: community without label fires label||slug fallback; me
     now: clock, // epoch → day 0 → picks index 0 = "design" (alphabetically first)
   });
 
-  // BRDA:1107 LEFT: design has member_count:3 (truthy) → neighborhood uses member_count directly
   assert.ok(views.explore.neighborhood);
   assert.equal(views.explore.neighborhood.slug, "design");
-  assert.equal(views.explore.neighborhood.member_count, 3);
+  assert.equal(views.explore.neighborhood.member_count, 2);
 
   // BRDA:930: "design" topicView's related entry for "photo" should use "photo" (slug) as label
   const topicViews = views.topic_views;
@@ -2934,6 +2972,7 @@ test("buildViewDocuments promotes primary sites and folds destination edges", ()
     "https://primary.example",
     "https://solo.example",
   ]);
+  assert.equal(views.explore.participant_count, 2);
 
   const searchSites = views.search_index.documents.filter(
     (doc) => doc.type === "site",
@@ -2960,10 +2999,12 @@ test("buildViewDocuments promotes primary sites and folds destination edges", ()
     (topic) => topic.slug === "design",
   );
   assert.ok(design);
+  assert.equal(design.member_count, 2);
   assert.deepEqual(design.members.map((member) => member.origin).sort(), [
     "https://primary.example",
     "https://solo.example",
   ]);
+  assert.equal(views.explore.neighborhood?.member_count, 2);
 });
 
 test("buildViewDocuments omits demoted sites from site lists and search", () => {
@@ -2985,6 +3026,7 @@ test("buildViewDocuments omits demoted sites from site lists and search", () => 
   });
 
   assert.equal(views.site_views.sites.length, 0);
+  assert.equal(views.explore.participant_count, 0);
   assert.equal(
     views.search_index.documents.filter((doc) => doc.type === "site").length,
     0,

@@ -7,13 +7,21 @@ engineering notes stay in git history; this file is for people reading the repo.
 
 ### Fixed
 
+- **Fetch-cache prune test:** Round-trip coverage pins `cachedAt` on every
+  fixture entry so prune assertions do not depend on wall-clock “now.”
 - **Network card display titles:** Curated overrides publish Joshua Galinato
   (`galina.to`), Josh Marinacci (`josh.earth`), Josh Leeb (`joshleeb.com`),
   Josh Levinger (`levinger.net`), and Josh Hall (`peira.dev`) instead of host or
   slogan titles, and keep those names on later `network:sync` runs.
 - **Path-scoped crawl roots:** Curated `_data/network_crawl_roots.json` points
-  network capture and NLP crawl at a participant path (starting with
-  `levinger.net` → `/josh/`) while the registry origin stays apex-only.
+  network capture, feed probes, identity pages, and NLP crawl at a participant
+  path (starting with `levinger.net` → `/josh/`) while the registry origin stays
+  apex-only. www ↔ apex aliases are resolved; add more roots via JSON only.
+- **Site-family member counts:** Explore `participant_count` and featured
+  neighborhood membership count promoted primaries only, so multi-site people
+  (for example Josh Withers) count once instead of once per destination. Every
+  `nlp:sync` / `views:build` recomputes those tallies; `nlp:validate` fails if
+  Explore or `site_views` drift from the promoted Network set.
 - **Site-family view projection:** Topic and site views remap secondary origins
   through `promoteNetworkOrigin` (including null signal rows) so family
   primaries keep destination edges and neighborhood membership after sync.

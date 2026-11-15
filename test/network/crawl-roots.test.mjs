@@ -14,7 +14,10 @@ import {
   crawlRootsFromDocument,
   crawlStartUrl,
   crawlStartUrlForOrigin,
+  lookupCrawlRootPath,
   normalizeCrawlPath,
+  originLookupKeys,
+  resolveUnderCrawlRoot,
   urlMatchesCrawlRoot,
 } from "../../scripts/network/crawl-roots.mjs";
 
@@ -59,6 +62,7 @@ test("crawlStartUrl and path map resolve scoped start URLs", () => {
     crawlStartUrl("https://family.example", ""),
     "https://family.example",
   );
+  assert.equal(crawlStartUrl("", "/josh/"), "");
   const map = crawlRootPathByOrigin([
     { origin: "https://family.example", path: "/josh/" },
   ]);
@@ -67,9 +71,56 @@ test("crawlStartUrl and path map resolve scoped start URLs", () => {
     "https://family.example/josh/",
   );
   assert.equal(
+    crawlStartUrlForOrigin("https://www.family.example", map),
+    "https://www.family.example/josh/",
+  );
+  assert.equal(
     crawlStartUrlForOrigin("https://other.example", map),
     "https://other.example",
   );
+  assert.equal(
+    lookupCrawlRootPath("https://www.family.example", map),
+    "/josh/",
+  );
+  assert.deepEqual(originLookupKeys("https://family.example"), [
+    "https://family.example",
+    "https://www.family.example",
+  ]);
+  assert.deepEqual(originLookupKeys("https://www.family.example"), [
+    "https://www.family.example",
+    "https://family.example",
+  ]);
+  assert.deepEqual(originLookupKeys(""), []);
+  assert.deepEqual(originLookupKeys("not a url"), ["not a url"]);
+});
+
+test("resolveUnderCrawlRoot keeps root-absolute paths under the site base", () => {
+  assert.equal(
+    resolveUnderCrawlRoot("https://family.example/josh/", "/about/"),
+    "https://family.example/josh/about/",
+  );
+  assert.equal(
+    resolveUnderCrawlRoot("https://family.example/josh/", "/feed/"),
+    "https://family.example/josh/feed/",
+  );
+  assert.equal(
+    resolveUnderCrawlRoot("https://family.example/josh/", "travel/"),
+    "https://family.example/josh/travel/",
+  );
+  assert.equal(
+    resolveUnderCrawlRoot("https://family.example", "/about/"),
+    "https://family.example/about/",
+  );
+  assert.equal(
+    resolveUnderCrawlRoot(
+      "https://family.example/josh/",
+      "https://other.example/x",
+    ),
+    "https://other.example/x",
+  );
+  assert.equal(resolveUnderCrawlRoot("", "/about/"), "");
+  assert.equal(resolveUnderCrawlRoot("https://family.example/josh/", ""), "");
+  assert.equal(resolveUnderCrawlRoot("not a url", "/about/"), "");
 });
 
 test("urlMatchesCrawlRoot enforces path boundaries", () => {
@@ -140,5 +191,13 @@ test("checked-in crawl roots stay clear and include levinger /josh/", async () =
   assert.equal(
     crawlStartUrlForOrigin("https://levinger.net", map),
     "https://levinger.net/josh/",
+  );
+  assert.equal(
+    crawlStartUrlForOrigin("https://www.levinger.net", map),
+    "https://www.levinger.net/josh/",
+  );
+  assert.equal(
+    resolveUnderCrawlRoot("https://levinger.net/josh/", "/feed/"),
+    "https://levinger.net/josh/feed/",
   );
 });

@@ -31,6 +31,7 @@ import {
 } from "./crawl-shape.mjs";
 import { evidenceIdentityKey } from "./evidence.mjs";
 import { foldPluralSlug } from "./normalize.mjs";
+import { promotedCountInvariantErrors } from "./promoted-counts.mjs";
 import { decodeCrawlValue } from "./site-record.mjs";
 
 const ROOT = process.cwd();
@@ -500,6 +501,25 @@ if (fs.existsSync(showcasePath)) {
     }
 
     fail(`showcase item image must be a local poster path: ${item.url}`);
+  }
+}
+
+const explorePath = path.join(ROOT, "_data/explore.json");
+
+if (fs.existsSync(explorePath)) {
+  const explore = readJSON("_data/explore.json");
+  const siteViewsPath = path.join(ROOT, "_data/site_views.json");
+  const siteViews = fs.existsSync(siteViewsPath)
+    ? readJSON("_data/site_views.json")
+    : undefined;
+
+  for (const message of promotedCountInvariantErrors({
+    network,
+    explore,
+    siteViews,
+    topics,
+  })) {
+    fail(message);
   }
 }
 

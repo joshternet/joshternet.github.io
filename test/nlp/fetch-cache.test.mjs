@@ -107,6 +107,8 @@ test("open/write/read/save/prune fetch cache round-trip", async () => {
     await writeFetchCacheEntry(cache, {
       url: "https://b.example/other",
       body: undefined,
+      // Fixed clock: wall-clock "now" would stay inside the Dec 15 − 30d window.
+      cachedAt: "2026-11-01T00:00:00.000Z",
     });
 
     const hit = await readFetchCacheBody(cache, "https://a.example/post");

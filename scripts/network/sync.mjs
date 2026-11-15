@@ -82,6 +82,7 @@ import {
   crawlRootPathByOrigin,
   crawlRootsFromDocument,
   crawlStartUrlForOrigin,
+  resolveUnderCrawlRoot,
 } from "./crawl-roots.mjs";
 import {
   readJSONIfExists,
@@ -90,7 +91,7 @@ import {
   writeTextAtomic,
 } from "../nlp/lib.mjs";
 import { createOriginRobotsGate } from "../nlp/origin-robots.mjs";
-import { probeCommonFeedPaths } from "./feed-probes.mjs";
+import { COMMON_FEED_PATHS, probeCommonFeedPaths } from "./feed-probes.mjs";
 import {
   navigateAndSettle,
   PAGE_NAV_SETTLE_MS,
@@ -382,14 +383,21 @@ function stampLinkPages(links, pageUrl) {
 /**
  * Ordered same-origin identity slash pages to visit for elsewhere + link edges.
  * Prefer homepage-discovered hrefs, then conventional indieweb slash seeds.
+ * Root-absolute seeds resolve under the crawl start URL when scoped.
  * @param {Record<string, unknown>} metadata
  * @param {string} participantOrigin
+ * @param {string} [siteBaseUrl] - Crawl start URL (may include a path prefix).
  * @returns {string[]}
  */
-function identityPagesToVisit(metadata, participantOrigin) {
+function identityPagesToVisit(
+  metadata,
+  participantOrigin,
+  siteBaseUrl = participantOrigin,
+) {
   const seen = new Set();
   /** @type {string[]} */
   const ordered = [];
+  const baseUrl = siteBaseUrl || participantOrigin;
 
   /**
    * @param {string} href
@@ -399,11 +407,9 @@ function identityPagesToVisit(metadata, participantOrigin) {
       return;
     }
 
-    let absolute = "";
+    const absolute = resolveUnderCrawlRoot(baseUrl, href);
 
-    try {
-      absolute = new URL(href, participantOrigin).href;
-    } catch {
+    if (!absolute) {
       return;
     }
 
@@ -461,6 +467,7 @@ async function collectElsewhereAndLinks(
   participantOrigin,
   signal,
   robotsGate,
+  siteBaseUrl = participantOrigin,
 ) {
   const raw = Array.isArray(metadata.elsewhere) ? [...metadata.elsewhere] : [];
   const homepagePageUrl = page.url();
@@ -476,7 +483,7 @@ async function collectElsewhereAndLinks(
   let aboutScore = -1;
 
   await visitIdentityPages(
-    identityPagesToVisit(metadata, participantOrigin),
+    identityPagesToVisit(metadata, participantOrigin, siteBaseUrl),
     async (identityHref, visitSignal) => {
       if (enrichmentBudgetExhausted(visitSignal)) {
         return;
@@ -642,13 +649,21 @@ async function enrichFromOpenedPage(
   signal,
 ) {
   const { metadata, dnsCache, page, robotsGate } = opened;
+  const siteBaseUrl =
+    typeof participant.crawl_start_url === "string" &&
+    participant.crawl_start_url
+      ? participant.crawl_start_url
+      : participant.origin;
   const advertisedFeeds = await sanitizeFeeds(metadata.feeds, {
     cache: dnsCache,
   });
+  const feedProbePaths = COMMON_FEED_PATHS.map((feedPath) =>
+    resolveUnderCrawlRoot(siteBaseUrl, feedPath),
+  ).filter(Boolean);
   const feeds = await probeCommonFeedPaths(
     participant.origin,
     advertisedFeeds,
-    { cache: dnsCache, robotsGate },
+    { cache: dnsCache, robotsGate, paths: feedProbePaths },
   );
   const blogrollUrls = await sanitizeBlogrollUrls(metadata.blogrolls, {
     cache: dnsCache,
@@ -662,6 +677,7 @@ async function enrichFromOpenedPage(
     participant.origin,
     signal,
     robotsGate,
+    siteBaseUrl,
   );
   const edges = await edgesFromBlogrollAds(
     participant.origin,
@@ -881,10 +897,23 @@ const crawlRoots = crawlRootsFromDocument(
 );
 assertValidCrawlRoots(crawlRoots);
 const crawlPaths = crawlRootPathByOrigin(crawlRoots);
-const captureParticipants = participants.map((participant) => ({
-  ...participant,
-  crawl_start_url: crawlStartUrlForOrigin(participant.origin, crawlPaths),
-}));
+const captureParticipants = participants.map((participant) => {
+  const crawl_start_url = crawlStartUrlForOrigin(
+    participant.origin,
+    crawlPaths,
+  );
+
+  if (crawl_start_url !== participant.origin) {
+    process.stdout.write(
+      `crawl root ${participant.origin} → ${crawl_start_url}\n`,
+    );
+  }
+
+  return {
+    ...participant,
+    crawl_start_url,
+  };
+});
 const displayTitleOverrides = displayTitleOverridesFromDocument(
   await readJSONIfExists(DEFAULT_DISPLAY_TITLES_PATH, {}),
 );
