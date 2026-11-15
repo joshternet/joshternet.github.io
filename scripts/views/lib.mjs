@@ -287,6 +287,42 @@ export function sitesByOrigin(network) {
 }
 
 /**
+ * Counts unique promoted Network members after site-family remapping.
+ * Secondaries collapse onto their primary so multi-site people count once.
+ * @param {Array<Record<string, unknown>> | null | undefined} communitySites
+ * @param {Map<string, Record<string, unknown>>} sites
+ * @param {Map<string, string>} secondaryToPrimary
+ * @returns {number}
+ */
+export function promotedFamilyMemberCount(
+  communitySites,
+  sites,
+  secondaryToPrimary,
+) {
+  const origins = new Set();
+
+  for (const member of Array.isArray(communitySites) ? communitySites : []) {
+    if (!member || typeof member !== "object") {
+      continue;
+    }
+
+    const origin = promoteNetworkOrigin(member.origin, secondaryToPrimary);
+
+    if (!origin) {
+      continue;
+    }
+
+    const site = sites.get(origin);
+
+    if (site && isNetworkEntryPromoted(site)) {
+      origins.add(origin);
+    }
+  }
+
+  return origins.size;
+}
+
+/**
  * Publisher name for Activity / Showcase attribution.
  * Prefer Network card title; when that is still a host label, lift a person
  * name from the self-intro description (e.g. “I’m Chris Minnick…”).
@@ -4617,7 +4653,8 @@ export function buildViewDocuments(input) {
   const explore = {
     schema_version: 1,
     generated_at: input.generatedAt,
-    participant_count: sites.size,
+    // Promoted primaries only — family secondaries stay crawl participants.
+    participant_count: siteViews.length,
     community_count: communities.length,
     publication_count: compactItems.length,
     connection_count: edges.length,
@@ -4635,8 +4672,11 @@ export function buildViewDocuments(input) {
           neighborhood: {
             slug: featuredCommunity.slug,
             label: featuredCommunity.label,
-            member_count:
-              featuredCommunity.member_count || featuredCommunity.sites.length,
+            member_count: promotedFamilyMemberCount(
+              featuredCommunity.sites,
+              sites,
+              secondaryToPrimary,
+            ),
           },
         }
       : {}),

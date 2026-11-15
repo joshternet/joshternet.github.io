@@ -33,6 +33,7 @@ import {
   assertValidCrawlRoots,
   crawlRootPathByOrigin,
   crawlRootsFromDocument,
+  lookupCrawlRootPath,
 } from "../network/crawl-roots.mjs";
 import { buildViewProjections } from "../views/build.mjs";
 import { applyCatalogMatches, networkCatalog } from "./catalog.mjs";
@@ -401,7 +402,7 @@ async function main() {
           httpCache,
           feedEntryUrls: feedData.entryUrls,
           aboutUrls,
-          crawlPath: crawlPaths.get(origin) || "",
+          crawlPath: lookupCrawlRootPath(origin, crawlPaths),
         });
       }
 

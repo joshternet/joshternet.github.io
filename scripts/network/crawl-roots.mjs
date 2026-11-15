@@ -1,7 +1,9 @@
 /**
  * Goal & Constraints: Curated crawl roots for participants whose Josh site
  * lives under a path (not the apex homepage). Clear JSON survives sync;
- * registry origins stay path-free. Temporary until JoshBot owns path scope.
+ * registry origins stay path-free. Capture, feed probes, identity pages, and
+ * NLP crawl all resolve under the configured path. Temporary until JoshBot
+ * owns path-scoped membership.
  */
 
 import { canonicalOrigin, normalizeText } from "./lib.mjs";
@@ -27,6 +29,40 @@ export function normalizeCrawlPath(value) {
   }
 
   return raw.endsWith("/") ? raw : `${raw}/`;
+}
+
+/**
+ * Origin spellings to try when looking up a crawl root (apex ↔ www).
+ * @param {string} origin
+ * @returns {string[]}
+ */
+export function originLookupKeys(origin) {
+  const normalized = normalizeText(origin);
+
+  if (!normalized) {
+    return [];
+  }
+
+  /** @type {string[]} */
+  const keys = [normalized];
+
+  try {
+    const url = new URL(normalized);
+    const host = url.hostname;
+
+    if (host) {
+      url.hostname = host.startsWith("www.") ? host.slice(4) : `www.${host}`;
+      const alternate = url.origin;
+
+      if (alternate !== normalized) {
+        keys.push(alternate);
+      }
+    }
+  } catch {
+    // Non-URL origins keep the single normalized key.
+  }
+
+  return keys;
 }
 
 /**
@@ -92,6 +128,24 @@ export function crawlRootPathByOrigin(roots) {
 }
 
 /**
+ * Looks up a crawl path for an origin, including www ↔ apex aliases.
+ * @param {string} origin
+ * @param {Map<string, string>} pathByOrigin
+ * @returns {string}
+ */
+export function lookupCrawlRootPath(origin, pathByOrigin) {
+  for (const key of originLookupKeys(origin)) {
+    const pathPrefix = pathByOrigin.get(key);
+
+    if (pathPrefix) {
+      return pathPrefix;
+    }
+  }
+
+  return "";
+}
+
+/**
  * Absolute start URL for capture/crawl when a path root is configured.
  * @param {string} origin
  * @param {string} pathPrefix
@@ -116,13 +170,50 @@ export function crawlStartUrl(origin, pathPrefix) {
  */
 export function crawlStartUrlForOrigin(origin, pathByOrigin) {
   const normalizedOrigin = normalizeText(origin);
-  const path = pathByOrigin.get(normalizedOrigin) || "";
+  const path = lookupCrawlRootPath(normalizedOrigin, pathByOrigin);
 
   if (!path) {
     return normalizedOrigin;
   }
 
   return crawlStartUrl(normalizedOrigin, path);
+}
+
+/**
+ * Resolves a path or href under a crawl start URL.
+ * Root-absolute paths (`/about/`) stay under the crawl root, not the apex.
+ * @param {string} baseUrl - Origin or crawl start URL.
+ * @param {string} href
+ * @returns {string}
+ */
+export function resolveUnderCrawlRoot(baseUrl, href) {
+  const base = normalizeText(baseUrl);
+  const ref = normalizeText(href);
+
+  if (!base || !ref) {
+    return "";
+  }
+
+  try {
+    if (/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(ref)) {
+      return new URL(ref).href;
+    }
+
+    const baseUrlObj = new URL(base.endsWith("/") ? base : `${base}/`);
+
+    if (ref.startsWith("/")) {
+      const rootPath = baseUrlObj.pathname.replace(/\/+$/, "");
+      const suffix = ref.replace(/^\/+/, "");
+      baseUrlObj.pathname = rootPath ? `${rootPath}/${suffix}` : `/${suffix}`;
+      baseUrlObj.search = "";
+      baseUrlObj.hash = "";
+      return baseUrlObj.href;
+    }
+
+    return new URL(ref, baseUrlObj).href;
+  } catch {
+    return "";
+  }
 }
 
 /**
@@ -158,9 +249,9 @@ export function urlMatchesCrawlRoot(origin, url, pathPrefix) {
   }
 
   const pathname = parsed.pathname;
-  const base = path.replace(/\/+$/, "");
+  const pathBase = path.replace(/\/+$/, "");
 
-  return pathname === base || pathname.startsWith(`${base}/`);
+  return pathname === pathBase || pathname.startsWith(`${pathBase}/`);
 }
 
 /**

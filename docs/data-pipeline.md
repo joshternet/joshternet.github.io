@@ -42,7 +42,9 @@ Visitor-facing activity views can prioritize recent work and limit how much one 
 
 **Site families** are a curated presentation overlay (`_data/network_site_families.json`), not membership. On every `network:sync`, the sync attaches `destinations` to the primary origin and marks secondaries `promoted: false`. NLP still crawls every participating origin for feeds and content attribution; visitor-facing site lists (Network cards, Welcome, Meet, Wander, Connections nodes, Search site documents, OPML) promote only primaries. Changing or removing a family takes effect on the next sync projection.
 
-**Crawl roots** (`_data/network_crawl_roots.json`) are a temporary curated exception when a participant’s Josh site lives under a path on a shared apex (for example `https://levinger.net/josh/`). Registry origins stay path-free; network capture and NLP crawl seed and scope that origin to the configured path until JoshBot can express path-scoped membership upstream.
+On every `views:build` (including the projection step inside `nlp:sync`), Explore `participant_count`, `site_views` site rows, and featured neighborhood `member_count` are recomputed from promoted primaries only—multi-site people count once. `nlp:validate` fails closed if those tallies drift from the promoted Network set.
+
+**Crawl roots** (`_data/network_crawl_roots.json`) are a reusable curated exception when a participant’s Josh site lives under a path on a shared apex (for example `https://levinger.net` → `/josh/`). Registry origins stay path-free. On every `network:sync` / `nlp:sync`, capture screenshots, feed probes, identity slash visits, and NLP crawl seeding resolve under that path (including www ↔ apex origin aliases) until JoshBot can express path-scoped membership upstream. Add another origin by extending the JSON `roots` map—no code change required.
 
 The exact limits are implementation policy, not membership rules, and may change. Tests should validate ordering, deduplication, attribution, fair representation and sensible empty states without depending on particular live participants or article counts.
 
