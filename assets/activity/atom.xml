@@ -2,22 +2,58 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://joshternet.org/assets/activity/atom.xml</id>
   <title>Joshternet What's New</title>
-  <updated>2026-11-15T17:22:48.443Z</updated>
+  <updated>2026-11-16T07:38:56.916Z</updated>
   <link rel="self" type="application/atom+xml" href="https://joshternet.org/assets/activity/atom.xml"/>
   <link rel="alternate" type="text/html" href="https://joshternet.org/activity/"/>
   <subtitle>A selection of recent writing and creative work from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
   <generator uri="https://joshternet.org/">Joshternet views:build</generator>
   <entry xml:lang="en-us">
-    <id>https://artlung.com/blog/2026/11/13/heavy-toes/</id>
-    <title xml:lang="en-us">South current so strong I couldn’t stay in one spot. I don’t think of it as fighting the ocean as much as I think of it as dancing with it. Hurts when its feet step on my toes. I don’t think I can really hurt the ocean’s toes. Metaphorically.</title>
-    <updated>2026-11-13T19:46:16.000Z</updated>
-    <published>2026-11-13T19:46:16.000Z</published>
-    <link rel="alternate" href="https://artlung.com/blog/2026/11/13/heavy-toes/"/>
+    <id>https://artlung.com/blog/2026/11/15/mismatched-big-scripps/</id>
+    <title xml:lang="en-us">Scripps and mismatched fins and big waves</title>
+    <updated>2026-11-15T19:20:52.000Z</updated>
+    <published>2026-11-15T19:20:52.000Z</published>
+    <link rel="alternate" href="https://artlung.com/blog/2026/11/15/mismatched-big-scripps/"/>
     <author>
       <name>Joe Crawford</name>
       <uri>https://artlung.com</uri>
     </author>
     <summary xml:lang="en-us">Your email address will not be published. We reserve the right to remove irrelevant links.</summary>
+  </entry>
+  <entry xml:lang="en">
+    <id>https://joshbeard.com/notes/2026/fair-weather-outings/</id>
+    <title xml:lang="en">Fair Weather Outings</title>
+    <updated>2026-11-15T07:59:00.000Z</updated>
+    <published>2026-11-15T07:59:00.000Z</published>
+    <link rel="alternate" href="https://joshbeard.com/notes/2026/fair-weather-outings/"/>
+    <author>
+      <name>Josh Beard</name>
+      <uri>https://joshbeard.com</uri>
+    </author>
+    <summary xml:lang="en">As soon as I woke up this morning, I looked out the bedroom window and saw dense fog with a soft glow from the sun. I knew immediately that I was heading out on my bike. I wanted to keep it short so I could be home with the family this morning, so I took a familiar loop nearby.</summary>
+  </entry>
+  <entry xml:lang="en-gb">
+    <id>https://joshcox.co.uk/blog/im-building-a-crm-for-one-person/</id>
+    <title xml:lang="en-gb">I&apos;m building a CRM for one person</title>
+    <updated>2026-11-15T00:00:00.000Z</updated>
+    <published>2026-11-15T00:00:00.000Z</published>
+    <link rel="alternate" href="https://joshcox.co.uk/blog/im-building-a-crm-for-one-person/"/>
+    <author>
+      <name>Josh Cox</name>
+      <uri>https://joshcox.co.uk</uri>
+    </author>
+    <summary xml:lang="en-gb">Almost everything in a CRM exists because there is more than one of you. Take all of it out and what&apos;s left is small enough that I decided to build it.</summary>
+  </entry>
+  <entry xml:lang="en">
+    <id>https://joshtronic.com/2026/11/15/i-cut-my-test-suite-time-in-half/</id>
+    <title xml:lang="en">I Cut My Test Suite Time in Half by Slicing Up a CSV File</title>
+    <updated>2026-11-15T00:00:00.000Z</updated>
+    <published>2026-11-15T00:00:00.000Z</published>
+    <link rel="alternate" href="https://joshtronic.com/2026/11/15/i-cut-my-test-suite-time-in-half/"/>
+    <author>
+      <name>Josh Sherman</name>
+      <uri>https://joshtronic.com</uri>
+    </author>
+    <summary xml:lang="en">I made a confession recently on LinkedIn : I&apos;ve been running Holiday API for the last decade on spreadsheets. Not one of those fictional accounts that so many people post, I actually did run everything in a spreadsheet. It allowed me to have an admin interface without building one, and the friction was minimal but not zero. For the most part, CSV files are easy enough to parse and extract data fro</summary>
   </entry>
   <entry xml:lang="en">
     <id>https://joshuamorris.info/notes/2026/11/13/worth-wandering-the-html-review/</id>
@@ -32,11 +68,11 @@
     <summary xml:lang="en">An independent literary journal where poems become rivers, stories unfold through puzzles, memories take the shape of old computers, and a collection of mouse cursors can gather in a park. Five issues of writing, art and experimentation that remind us a webpage can be much more than a place to display words.</summary>
   </entry>
   <entry xml:lang="en-us">
-    <id>https://artlung.com/blog/2026/11/12/almost-dawn-patrol-at-ob/</id>
-    <title xml:lang="en-us">(Almost) dawn patrol at OB</title>
-    <updated>2026-11-13T05:02:05.000Z</updated>
-    <published>2026-11-13T05:02:05.000Z</published>
-    <link rel="alternate" href="https://artlung.com/blog/2026/11/12/almost-dawn-patrol-at-ob/"/>
+    <id>https://artlung.com/blog/2026/11/13/heavy-toes/</id>
+    <title xml:lang="en-us">South current so strong I couldn’t stay in one spot. I don’t think of it as fighting the ocean as much as I think of it as dancing with it. Hurts when its feet step on my toes. I don’t think I can really hurt the ocean’s toes. Metaphorically.</title>
+    <updated>2026-11-13T11:46:16.000Z</updated>
+    <published>2026-11-13T11:46:16.000Z</published>
+    <link rel="alternate" href="https://artlung.com/blog/2026/11/13/heavy-toes/"/>
     <author>
       <name>Joe Crawford</name>
       <uri>https://artlung.com</uri>
@@ -102,18 +138,6 @@
       <uri>https://joshwithers.blog</uri>
     </author>
     <summary xml:lang="en-au">Dror Poleg on artificial intelligence, tamim, and Deuteronomy 18:13: In a world of strong artificial intelligence, we must operate as if we have no privacy, as if all our actions can ultimately be exp...</summary>
-  </entry>
-  <entry>
-    <id>https://joshbeard.com/photos/2026/IMG_1941_jpeg.html</id>
-    <title>Autumn morning at Fairfax Park, Colorado Springs, Colorado. November 10, 2026. - Josh Beard</title>
-    <updated>2026-11-10T00:00:00.000Z</updated>
-    <published>2026-11-10T00:00:00.000Z</published>
-    <link rel="alternate" href="https://joshbeard.com/photos/2026/IMG_1941_jpeg.html"/>
-    <author>
-      <name>Josh Beard</name>
-      <uri>https://joshbeard.com</uri>
-    </author>
-    <summary>Autumn morning at Fairfax Park, Colorado Springs, Colorado. November 10, 2026.</summary>
   </entry>
   <entry xml:lang="en-us">
     <id>https://www.joshfinnie.com/blog/dead-internet-coming-for-your-code/</id>
