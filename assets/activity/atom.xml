@@ -2,11 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://joshternet.org/assets/activity/atom.xml</id>
   <title>Joshternet What's New</title>
-  <updated>2026-11-16T07:38:56.916Z</updated>
+  <updated>2026-11-16T23:18:46.597Z</updated>
   <link rel="self" type="application/atom+xml" href="https://joshternet.org/assets/activity/atom.xml"/>
   <link rel="alternate" type="text/html" href="https://joshternet.org/activity/"/>
   <subtitle>A selection of recent writing and creative work from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
   <generator uri="https://joshternet.org/">Joshternet views:build</generator>
+  <entry xml:lang="en-us">
+    <id>https://www.joshfinnie.com/blog/superpowers-fixes-discipline-gsd-fixes-context/</id>
+    <title xml:lang="en-us">Superpowers Fixes Discipline, GSD Fixes Context</title>
+    <updated>2026-11-16T00:00:00.000Z</updated>
+    <published>2026-11-16T00:00:00.000Z</published>
+    <link rel="alternate" href="https://www.joshfinnie.com/blog/superpowers-fixes-discipline-gsd-fixes-context/"/>
+    <author>
+      <name>Josh Finnie</name>
+      <uri>https://www.joshfinnie.com</uri>
+    </author>
+    <summary xml:lang="en-us">Superpowers and GSD Core both make coding agents more reliable, but they attack different failures. Here is where they overlap, where they split, and how to wire Superpowers skills into GSD subagents with agent_skills.</summary>
+  </entry>
   <entry xml:lang="en-us">
     <id>https://artlung.com/blog/2026/11/15/mismatched-big-scripps/</id>
     <title xml:lang="en-us">Scripps and mismatched fins and big waves</title>
@@ -29,7 +41,7 @@
       <name>Josh Beard</name>
       <uri>https://joshbeard.com</uri>
     </author>
-    <summary xml:lang="en">As soon as I woke up this morning, I looked out the bedroom window and saw dense fog with a soft glow from the sun. I knew immediately that I was heading out on my bike. I wanted to keep it short so I could be home with the family this morning, so I took a familiar loop nearby.</summary>
+    <summary xml:lang="en">Dense fog and a soft morning glow got me out for a short ride and thinking about how much I’d miss if I waited for ideal conditions.</summary>
   </entry>
   <entry xml:lang="en-gb">
     <id>https://joshcox.co.uk/blog/im-building-a-crm-for-one-person/</id>
@@ -56,16 +68,28 @@
     <summary xml:lang="en">I made a confession recently on LinkedIn : I&apos;ve been running Holiday API for the last decade on spreadsheets. Not one of those fictional accounts that so many people post, I actually did run everything in a spreadsheet. It allowed me to have an admin interface without building one, and the friction was minimal but not zero. For the most part, CSV files are easy enough to parse and extract data fro</summary>
   </entry>
   <entry xml:lang="en">
-    <id>https://joshuamorris.info/notes/2026/11/13/worth-wandering-the-html-review/</id>
-    <title xml:lang="en">Worth Wandering: The HTML Review</title>
-    <updated>2026-11-13T16:00:00.000Z</updated>
-    <published>2026-11-13T16:00:00.000Z</published>
-    <link rel="alternate" href="https://joshuamorris.info/notes/2026/11/13/worth-wandering-the-html-review/"/>
+    <id>https://joshuamorris.info/reading/2026/11/14/accelerate/</id>
+    <title xml:lang="en">Accelerate</title>
+    <updated>2026-11-14T21:10:48.000Z</updated>
+    <published>2026-11-14T21:10:48.000Z</published>
+    <link rel="alternate" href="https://joshuamorris.info/reading/2026/11/14/accelerate/"/>
     <author>
       <name>Joshua Morris</name>
       <uri>https://joshuamorris.info</uri>
     </author>
-    <summary xml:lang="en">An independent literary journal where poems become rivers, stories unfold through puzzles, memories take the shape of old computers, and a collection of mouse cursors can gather in a park. Five issues of writing, art and experimentation that remind us a webpage can be much more than a place to display words.</summary>
+    <summary xml:lang="en">Engineering performance is often discussed in terms of how quickly teams deliver features, but speed alone does not tell us much about the health of a software organization. This book examines the relationship between delivery performance, reliability, organizational practices and the ability to improve continuously. What makes the research interesting is its attempt to ground discussions about en</summary>
+  </entry>
+  <entry xml:lang="en">
+    <id>https://joshuamorris.info/reading/2026/11/14/clean-code/</id>
+    <title xml:lang="en">Clean Code</title>
+    <updated>2026-11-14T21:10:44.000Z</updated>
+    <published>2026-11-14T21:10:44.000Z</published>
+    <link rel="alternate" href="https://joshuamorris.info/reading/2026/11/14/clean-code/"/>
+    <author>
+      <name>Joshua Morris</name>
+      <uri>https://joshuamorris.info</uri>
+    </author>
+    <summary xml:lang="en">I have always believed that code should be written with the next person who needs to understand it in mind. This book explores practices that contribute to that goal, including naming, function design and recognizing unnecessary complexity. I appreciate the shared vocabulary it gives engineering teams, although I don&apos;t believe every recommendation should be followed without question. Good software</summary>
   </entry>
   <entry xml:lang="en-us">
     <id>https://artlung.com/blog/2026/11/13/heavy-toes/</id>
@@ -78,18 +102,6 @@
       <uri>https://artlung.com</uri>
     </author>
     <summary xml:lang="en-us">Your email address will not be published. We reserve the right to remove irrelevant links.</summary>
-  </entry>
-  <entry xml:lang="en">
-    <id>https://joshuamorris.info/notes/2026/11/12/is-your-website-ready-for-safaris-adaptive-dark-mode/</id>
-    <title xml:lang="en">Is Your Website Ready for Safari’s Adaptive Dark Mode?</title>
-    <updated>2026-11-12T07:30:00.000Z</updated>
-    <published>2026-11-12T07:30:00.000Z</published>
-    <link rel="alternate" href="https://joshuamorris.info/notes/2026/11/12/is-your-website-ready-for-safaris-adaptive-dark-mode/"/>
-    <author>
-      <name>Joshua Morris</name>
-      <uri>https://joshuamorris.info</uri>
-    </author>
-    <summary xml:lang="en">Safari 27.3 introduces Adaptive Dark Mode. I made JoshuaMorris.info’s existing light and dark theme support explicit in the document head and tested the result.</summary>
   </entry>
   <entry xml:lang="en">
     <id>https://www.joshmedeski.com/posts/how-to-make-your-site-llm-friendly/</id>
@@ -113,7 +125,7 @@
       <name>Josh Beard</name>
       <uri>https://joshbeard.com</uri>
     </author>
-    <summary xml:lang="en">It’s been a few weeks since I did a “longer” ride - something over 30 miles - and I’ve been itching to do it. I was sick a couple of weeks ago and have had family commitments the past few weeks, along with some bad weather conditions. Since I had Veteran’s Day off, I took advantage of it and the beautiful weather to do a long ride.</summary>
+    <summary xml:lang="en">With Veterans Day off and unusually nice weather, I put together a 46-mile loop across town, my second-longest ride yet.</summary>
   </entry>
   <entry xml:lang="en-gb">
     <id>https://joshcox.co.uk/blog/my-house-my-things-is-on-the-iphone/</id>
@@ -152,6 +164,18 @@
     <summary xml:lang="en-us">Coding models learn from public GitHub, and public GitHub is filling with untested, error-swallowing hello world apps, many written by other models. Why code quality is heading for model collapse.</summary>
   </entry>
   <entry xml:lang="en">
+    <id>https://joshgr.com/writing/steal-like-a-sith-lord/</id>
+    <title xml:lang="en">Steal Like A Sith Lord</title>
+    <updated>2026-11-09T00:00:00.000Z</updated>
+    <published>2026-11-09T00:00:00.000Z</published>
+    <link rel="alternate" href="https://joshgr.com/writing/steal-like-a-sith-lord/"/>
+    <author>
+      <name>Joshua Grant</name>
+      <uri>https://joshgr.com</uri>
+    </author>
+    <summary xml:lang="en">This is my review of the book by Austin Kleon, Steal Like an Artist . I’ll lay out the facts and present to you why I believe Kleon to be a Sith Lord.</summary>
+  </entry>
+  <entry xml:lang="en">
     <id>https://joshtronic.com/2026/11/08/introducing-cuppa/</id>
     <title xml:lang="en">Introducing Cuppa</title>
     <updated>2026-11-08T00:00:00.000Z</updated>
@@ -162,18 +186,6 @@
       <uri>https://joshtronic.com</uri>
     </author>
     <summary xml:lang="en">It wouldn&apos;t be yet another retirement tour without a focus on side hustles. I&apos;ve been focusing most of my time on the projects I&apos;ve been kicking the can on for Holiday API but have also been working on something new with my wife . The past few years, she&apos;s been dipping her toes into day trading both stocks and options. To help support her, I started to build more focused tools than what the curren</summary>
-  </entry>
-  <entry xml:lang="en-us">
-    <id>https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/</id>
-    <title xml:lang="en-us">Tailwind, Stack Overflow, and the Docs Snowball</title>
-    <updated>2026-11-07T00:00:00.000Z</updated>
-    <published>2026-11-07T00:00:00.000Z</published>
-    <link rel="alternate" href="https://www.joshfinnie.com/blog/tailwind-stack-overflow-docs-snowball/"/>
-    <author>
-      <name>Josh Finnie</name>
-      <uri>https://www.joshfinnie.com</uri>
-    </author>
-    <summary xml:lang="en-us">Tailwind&apos;s docs traffic fell 40% and Stack Overflow&apos;s questions collapsed as developers asked LLMs instead. Why that loop leaves us with worse docs, shallower skills, and models that stop learning.</summary>
   </entry>
   <entry xml:lang="en">
     <id>https://joshgr.com/writing/an-open-letter-to-ai-barons/</id>
