@@ -2,22 +2,22 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://joshternet.org/assets/activity/atom.xml</id>
   <title>Joshternet What's New</title>
-  <updated>2026-11-17T09:20:33.521Z</updated>
+  <updated>2026-11-17T22:30:12.226Z</updated>
   <link rel="self" type="application/atom+xml" href="https://joshternet.org/assets/activity/atom.xml"/>
   <link rel="alternate" type="text/html" href="https://joshternet.org/activity/"/>
   <subtitle>A selection of recent writing and creative work from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
   <generator uri="https://joshternet.org/">Joshternet views:build</generator>
   <entry xml:lang="en">
-    <id>https://artlung.com/</id>
-    <title xml:lang="en">Joe Crawford</title>
-    <updated>2026-11-17T01:38:38.000Z</updated>
-    <published>2026-11-17T01:38:38.000Z</published>
-    <link rel="alternate" href="https://artlung.com/"/>
+    <id>https://joshgr.com/writing/the-oculum/</id>
+    <title xml:lang="en">The Oculum</title>
+    <updated>2026-11-17T00:00:00.000Z</updated>
+    <published>2026-11-17T00:00:00.000Z</published>
+    <link rel="alternate" href="https://joshgr.com/writing/the-oculum/"/>
     <author>
-      <name>Joe Crawford</name>
-      <uri>https://artlung.com</uri>
+      <name>Joshua Grant</name>
+      <uri>https://joshgr.com</uri>
     </author>
-    <summary xml:lang="en">ArtLung.com is the personal website of Joe Crawford, creative web developer and artist</summary>
+    <summary xml:lang="en">Nestled in a boundless plain of pale sand, The Oculum rises like a giant sandstone turtle shell, sheltering a secretive order inside.</summary>
   </entry>
   <entry xml:lang="en-us">
     <id>https://artlung.com/blog/2026/11/16/north-pacific-big-honor/</id>
@@ -30,6 +30,18 @@
       <uri>https://artlung.com</uri>
     </author>
     <summary xml:lang="en-us">Your email address will not be published. We reserve the right to remove irrelevant links.</summary>
+  </entry>
+  <entry xml:lang="en-us">
+    <id>https://artlung.com/blog/2026/11/16/disappointing-email-of-the-day/</id>
+    <title xml:lang="en-us">Disappointing email of the day</title>
+    <updated>2026-11-16T16:24:49.000Z</updated>
+    <published>2026-11-16T16:24:49.000Z</published>
+    <link rel="alternate" href="https://artlung.com/blog/2026/11/16/disappointing-email-of-the-day/"/>
+    <author>
+      <name>Joe Crawford</name>
+      <uri>https://artlung.com</uri>
+    </author>
+    <summary xml:lang="en-us">Your ArtLung page mentions both creative coding and collecting toy robots. I thought a robot combining physical craftsmanship and AI conversation might be of personal interest. So close, and not wrong. Alas, not of personal interest. The products of the company which emailed me this are depressingly mediocre. I’m not blocking the email, or marking as spam, but I don’t plan to reply.</summary>
   </entry>
   <entry xml:lang="en-us">
     <id>https://www.joshfinnie.com/blog/superpowers-fixes-discipline-gsd-fixes-context/</id>
@@ -53,7 +65,7 @@
       <name>Josh Beard</name>
       <uri>https://joshbeard.com</uri>
     </author>
-    <summary xml:lang="en">Dense fog and a soft morning glow got me out for a short ride and thinking about how much I’d miss if I waited for ideal conditions.</summary>
+    <summary xml:lang="en">Dense fog and a soft morning glow got me out early, and thinking about how much I’d miss if I waited for ideal conditions.</summary>
   </entry>
   <entry xml:lang="en-gb">
     <id>https://joshcox.co.uk/blog/im-building-a-crm-for-one-person/</id>
@@ -186,17 +198,5 @@
       <uri>https://joshtronic.com</uri>
     </author>
     <summary xml:lang="en">It wouldn&apos;t be yet another retirement tour without a focus on side hustles. I&apos;ve been focusing most of my time on the projects I&apos;ve been kicking the can on for Holiday API but have also been working on something new with my wife . The past few years, she&apos;s been dipping her toes into day trading both stocks and options. To help support her, I started to build more focused tools than what the curren</summary>
-  </entry>
-  <entry xml:lang="en">
-    <id>https://joshgr.com/writing/an-open-letter-to-ai-barons/</id>
-    <title xml:lang="en">An Open Letter to AI Barons</title>
-    <updated>2026-11-06T00:00:00.000Z</updated>
-    <published>2026-11-06T00:00:00.000Z</published>
-    <link rel="alternate" href="https://joshgr.com/writing/an-open-letter-to-ai-barons/"/>
-    <author>
-      <name>Joshua Grant</name>
-      <uri>https://joshgr.com</uri>
-    </author>
-    <summary xml:lang="en">Congratulations! You did it! You raised the tide and now all boats are lifted. You made a cool. Good job!</summary>
   </entry>
 </feed>
