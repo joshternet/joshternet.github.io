@@ -2,11 +2,35 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://joshternet.org/assets/activity/atom.xml</id>
   <title>Joshternet What's New</title>
-  <updated>2026-11-16T23:18:46.597Z</updated>
+  <updated>2026-11-17T09:20:33.521Z</updated>
   <link rel="self" type="application/atom+xml" href="https://joshternet.org/assets/activity/atom.xml"/>
   <link rel="alternate" type="text/html" href="https://joshternet.org/activity/"/>
   <subtitle>A selection of recent writing and creative work from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
   <generator uri="https://joshternet.org/">Joshternet views:build</generator>
+  <entry xml:lang="en">
+    <id>https://artlung.com/</id>
+    <title xml:lang="en">Joe Crawford</title>
+    <updated>2026-11-17T01:38:38.000Z</updated>
+    <published>2026-11-17T01:38:38.000Z</published>
+    <link rel="alternate" href="https://artlung.com/"/>
+    <author>
+      <name>Joe Crawford</name>
+      <uri>https://artlung.com</uri>
+    </author>
+    <summary xml:lang="en">ArtLung.com is the personal website of Joe Crawford, creative web developer and artist</summary>
+  </entry>
+  <entry xml:lang="en-us">
+    <id>https://artlung.com/blog/2026/11/16/north-pacific-big-honor/</id>
+    <title xml:lang="en-us">Big sized waves across the Northern Pacific. It’s an honor to play in it.</title>
+    <updated>2026-11-16T20:14:05.000Z</updated>
+    <published>2026-11-16T20:14:05.000Z</published>
+    <link rel="alternate" href="https://artlung.com/blog/2026/11/16/north-pacific-big-honor/"/>
+    <author>
+      <name>Joe Crawford</name>
+      <uri>https://artlung.com</uri>
+    </author>
+    <summary xml:lang="en-us">Your email address will not be published. We reserve the right to remove irrelevant links.</summary>
+  </entry>
   <entry xml:lang="en-us">
     <id>https://www.joshfinnie.com/blog/superpowers-fixes-discipline-gsd-fixes-context/</id>
     <title xml:lang="en-us">Superpowers Fixes Discipline, GSD Fixes Context</title>
@@ -18,18 +42,6 @@
       <uri>https://www.joshfinnie.com</uri>
     </author>
     <summary xml:lang="en-us">Superpowers and GSD Core both make coding agents more reliable, but they attack different failures. Here is where they overlap, where they split, and how to wire Superpowers skills into GSD subagents with agent_skills.</summary>
-  </entry>
-  <entry xml:lang="en-us">
-    <id>https://artlung.com/blog/2026/11/15/mismatched-big-scripps/</id>
-    <title xml:lang="en-us">Scripps and mismatched fins and big waves</title>
-    <updated>2026-11-15T19:20:52.000Z</updated>
-    <published>2026-11-15T19:20:52.000Z</published>
-    <link rel="alternate" href="https://artlung.com/blog/2026/11/15/mismatched-big-scripps/"/>
-    <author>
-      <name>Joe Crawford</name>
-      <uri>https://artlung.com</uri>
-    </author>
-    <summary xml:lang="en-us">Your email address will not be published. We reserve the right to remove irrelevant links.</summary>
   </entry>
   <entry xml:lang="en">
     <id>https://joshbeard.com/notes/2026/fair-weather-outings/</id>
@@ -90,18 +102,6 @@
       <uri>https://joshuamorris.info</uri>
     </author>
     <summary xml:lang="en">I have always believed that code should be written with the next person who needs to understand it in mind. This book explores practices that contribute to that goal, including naming, function design and recognizing unnecessary complexity. I appreciate the shared vocabulary it gives engineering teams, although I don&apos;t believe every recommendation should be followed without question. Good software</summary>
-  </entry>
-  <entry xml:lang="en-us">
-    <id>https://artlung.com/blog/2026/11/13/heavy-toes/</id>
-    <title xml:lang="en-us">South current so strong I couldn’t stay in one spot. I don’t think of it as fighting the ocean as much as I think of it as dancing with it. Hurts when its feet step on my toes. I don’t think I can really hurt the ocean’s toes. Metaphorically.</title>
-    <updated>2026-11-13T11:46:16.000Z</updated>
-    <published>2026-11-13T11:46:16.000Z</published>
-    <link rel="alternate" href="https://artlung.com/blog/2026/11/13/heavy-toes/"/>
-    <author>
-      <name>Joe Crawford</name>
-      <uri>https://artlung.com</uri>
-    </author>
-    <summary xml:lang="en-us">Your email address will not be published. We reserve the right to remove irrelevant links.</summary>
   </entry>
   <entry xml:lang="en">
     <id>https://www.joshmedeski.com/posts/how-to-make-your-site-llm-friendly/</id>
