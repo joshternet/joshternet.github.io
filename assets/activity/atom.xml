@@ -2,11 +2,22 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://joshternet.org/assets/activity/atom.xml</id>
   <title>Joshternet What's New</title>
-  <updated>2026-11-19T08:31:42.330Z</updated>
+  <updated>2026-11-19T21:45:36.356Z</updated>
   <link rel="self" type="application/atom+xml" href="https://joshternet.org/assets/activity/atom.xml"/>
   <link rel="alternate" type="text/html" href="https://joshternet.org/activity/"/>
   <subtitle>A selection of recent writing and creative work from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
   <generator uri="https://joshternet.org/">Joshternet views:build</generator>
+  <entry xml:lang="en-us">
+    <id>https://artlung.com/blog/2026/11/19/just-as-true-then-as-now/</id>
+    <title xml:lang="en-us">Just as true then as now.</title>
+    <updated>2026-11-19T07:17:38.000Z</updated>
+    <published>2026-11-19T07:17:38.000Z</published>
+    <link rel="alternate" href="https://artlung.com/blog/2026/11/19/just-as-true-then-as-now/"/>
+    <author>
+      <name>Joe Crawford</name>
+      <uri>https://artlung.com</uri>
+    </author>
+  </entry>
   <entry xml:lang="en-us">
     <id>https://artlung.com/blog/2026/11/18/seagull-hot-dog/</id>
     <title xml:lang="en-us">Foamy. I saw a seagull eating a hot dog today. Out in the water. I went to take a photo— the gull got suspicious and flew off, still with the dog stuck in its beak.</title>
@@ -17,7 +28,18 @@
       <name>Joe Crawford</name>
       <uri>https://artlung.com</uri>
     </author>
-    <summary xml:lang="en-us">Your email address will not be published. We reserve the right to remove irrelevant links.</summary>
+  </entry>
+  <entry xml:lang="en">
+    <id>https://joshuamorris.info/notes/2026/11/18/what-it-takes-to-crawl-the-web-responsibly/</id>
+    <title xml:lang="en">What It Takes to Crawl the Web Responsibly</title>
+    <updated>2026-11-18T17:00:00.000Z</updated>
+    <published>2026-11-18T17:00:00.000Z</published>
+    <link rel="alternate" href="https://joshuamorris.info/notes/2026/11/18/what-it-takes-to-crawl-the-web-responsibly/"/>
+    <author>
+      <name>Joshua Morris</name>
+      <uri>https://joshuamorris.info</uri>
+    </author>
+    <summary xml:lang="en">A look at robots.txt, the engineering decisions behind JoshBot and why the rules governing automated access to the web are changing.</summary>
   </entry>
   <entry xml:lang="en">
     <id>https://www.joshmedeski.com/posts/one-command-saved-me-2-8m-claude-code-tokens/</id>
@@ -30,18 +52,6 @@
       <uri>https://www.joshmedeski.com</uri>
     </author>
     <summary xml:lang="en">RTK quietly filters command output before Claude Code reads it. My context stays clean, and I haven&apos;t changed a thing about how I work.</summary>
-  </entry>
-  <entry xml:lang="en-us">
-    <id>https://artlung.com/blog/2026/11/18/socialspec/</id>
-    <title xml:lang="en-us">SocialSpec Support … Why Not?</title>
-    <updated>2026-11-18T11:04:54.000Z</updated>
-    <published>2026-11-18T11:04:54.000Z</published>
-    <link rel="alternate" href="https://artlung.com/blog/2026/11/18/socialspec/"/>
-    <author>
-      <name>Joe Crawford</name>
-      <uri>https://artlung.com</uri>
-    </author>
-    <summary xml:lang="en-us">I’m in agreement with Kristof Zerbe about SocialSpec , Kristof said : If I’ve learned one thing in my long career, it’s that you should be guided by principles, but let common sense take the lead. To that end I’ve added the three suggested sidefiles (despite the anti-pattern of it) /.well-known/following.opml (basically, my blogroll) /.well-known/about.md /.well-known/contact.vcf And with that, I</summary>
   </entry>
   <entry xml:lang="en">
     <id>https://www.joshmedeski.com/posts/understanding-temporary-files-on-macos/</id>
@@ -126,18 +136,6 @@
       <uri>https://joshuamorris.info</uri>
     </author>
     <summary xml:lang="en">Engineering performance is often discussed in terms of how quickly teams deliver features, but speed alone does not tell us much about the health of a software organization. This book examines the relationship between delivery performance, reliability, organizational practices and the ability to improve continuously. What makes the research interesting is its attempt to ground discussions about en</summary>
-  </entry>
-  <entry xml:lang="en">
-    <id>https://joshuamorris.info/reading/2026/11/14/clean-code/</id>
-    <title xml:lang="en">Clean Code</title>
-    <updated>2026-11-14T21:10:44.000Z</updated>
-    <published>2026-11-14T21:10:44.000Z</published>
-    <link rel="alternate" href="https://joshuamorris.info/reading/2026/11/14/clean-code/"/>
-    <author>
-      <name>Joshua Morris</name>
-      <uri>https://joshuamorris.info</uri>
-    </author>
-    <summary xml:lang="en">I have always believed that code should be written with the next person who needs to understand it in mind. This book explores practices that contribute to that goal, including naming, function design and recognizing unnecessary complexity. I appreciate the shared vocabulary it gives engineering teams, although I don&apos;t believe every recommendation should be followed without question. Good software</summary>
   </entry>
   <entry xml:lang="en">
     <id>https://joshbeard.com/notes/2026/forty-six-across-town/</id>
