@@ -2,11 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://joshternet.org/assets/activity/atom.xml</id>
   <title>Joshternet What's New</title>
-  <updated>2026-11-21T20:24:03.519Z</updated>
+  <updated>2026-11-22T07:57:21.780Z</updated>
   <link rel="self" type="application/atom+xml" href="https://joshternet.org/assets/activity/atom.xml"/>
   <link rel="alternate" type="text/html" href="https://joshternet.org/activity/"/>
   <subtitle>A selection of recent writing and creative work from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
   <generator uri="https://joshternet.org/">Joshternet views:build</generator>
+  <entry xml:lang="en-us">
+    <id>https://artlung.com/blog/2026/11/21/trumpcare-cant-be-good/</id>
+    <title xml:lang="en-us">TrumpCare can’t be good.</title>
+    <updated>2026-11-21T15:18:06.000Z</updated>
+    <published>2026-11-21T15:18:06.000Z</published>
+    <link rel="alternate" href="https://artlung.com/blog/2026/11/21/trumpcare-cant-be-good/"/>
+    <author>
+      <name>Joe Crawford</name>
+      <uri>https://artlung.com</uri>
+    </author>
+    <summary xml:lang="en-us">In 2017 I was saying “Call if TrumpCare” ( proof 1 ) ( proof 2 ) ( proof 3 ). I saw with interest that President Donald Trump reposted a thing from Senator-Elect El-Sayed about making national healthcare a thing merely by putting his name on it. Jamelle Bouie talks risk/downside/implausibility in his short video Nah, you don’t actually want Donald Trump to sign a Medicare-for-All bill Donald Trump</summary>
+  </entry>
   <entry xml:lang="en">
     <id>https://joshuamorris.info/notes/2026/11/20/worth-wandering-floor796/</id>
     <title xml:lang="en">Worth Wandering: Floor796</title>
@@ -54,18 +66,6 @@
       <uri>https://joshgr.com</uri>
     </author>
     <summary xml:lang="en">After a 7 year hiatus, I’m finally watering Seedling. Why did it take so long?</summary>
-  </entry>
-  <entry xml:lang="en-us">
-    <id>https://artlung.com/blog/2026/11/19/at-scripps-pier-today/</id>
-    <title xml:lang="en-us">(at Scripps pier today)</title>
-    <updated>2026-11-19T19:22:30.000Z</updated>
-    <published>2026-11-19T19:22:30.000Z</published>
-    <link rel="alternate" href="https://artlung.com/blog/2026/11/19/at-scripps-pier-today/"/>
-    <author>
-      <name>Joe Crawford</name>
-      <uri>https://artlung.com</uri>
-    </author>
-    <summary xml:lang="en-us">Your email address will not be published. We reserve the right to remove irrelevant links.</summary>
   </entry>
   <entry xml:lang="en">
     <id>https://joshuamorris.info/notes/2026/11/18/what-it-takes-to-crawl-the-web-responsibly/</id>
@@ -210,17 +210,5 @@
       <uri>https://www.joshfinnie.com</uri>
     </author>
     <summary xml:lang="en-us">Coding models learn from public GitHub, and public GitHub is filling with untested, error-swallowing hello world apps, many written by other models. Why code quality is heading for model collapse.</summary>
-  </entry>
-  <entry xml:lang="en">
-    <id>https://joshtronic.com/2026/11/08/introducing-cuppa/</id>
-    <title xml:lang="en">Introducing Cuppa</title>
-    <updated>2026-11-08T00:00:00.000Z</updated>
-    <published>2026-11-08T00:00:00.000Z</published>
-    <link rel="alternate" href="https://joshtronic.com/2026/11/08/introducing-cuppa/"/>
-    <author>
-      <name>Josh Sherman</name>
-      <uri>https://joshtronic.com</uri>
-    </author>
-    <summary xml:lang="en">It wouldn&apos;t be yet another retirement tour without a focus on side hustles. I&apos;ve been focusing most of my time on the projects I&apos;ve been kicking the can on for Holiday API but have also been working on something new with my wife . The past few years, she&apos;s been dipping her toes into day trading both stocks and options. To help support her, I started to build more focused tools than what the curren</summary>
   </entry>
 </feed>
