@@ -2,11 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://joshternet.org/assets/activity/atom.xml</id>
   <title>Joshternet What's New</title>
-  <updated>2026-11-22T20:47:49.223Z</updated>
+  <updated>2026-11-23T08:52:52.455Z</updated>
   <link rel="self" type="application/atom+xml" href="https://joshternet.org/assets/activity/atom.xml"/>
   <link rel="alternate" type="text/html" href="https://joshternet.org/activity/"/>
   <subtitle>A selection of recent writing and creative work from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
   <generator uri="https://joshternet.org/">Joshternet views:build</generator>
+  <entry xml:lang="en-us">
+    <id>https://artlung.com/blog/2026/11/22/life-death-sea-thankful/</id>
+    <title xml:lang="en-us">Life and death at the sea. Cycles. It’s a week to be thankful.</title>
+    <updated>2026-11-22T20:13:41.000Z</updated>
+    <published>2026-11-22T20:13:41.000Z</published>
+    <link rel="alternate" href="https://artlung.com/blog/2026/11/22/life-death-sea-thankful/"/>
+    <author>
+      <name>Joe Crawford</name>
+      <uri>https://artlung.com</uri>
+    </author>
+    <summary xml:lang="en-us">Your email address will not be published. We reserve the right to remove irrelevant links.</summary>
+  </entry>
   <entry xml:lang="en-us">
     <id>https://artlung.com/blog/2026/11/22/knowember-2026/</id>
     <title xml:lang="en-us">Knowember 2026</title>
@@ -19,17 +31,17 @@
     </author>
     <summary xml:lang="en-us">A photo? This can be a photo of you, your hometown, your pet, a drawing that represents you, or a photo that captures something that’s meaningful to you. This is a photo from the 7:30am a week ago. It’s looking out at the Ocean Beach pier. I went in the water after that. The ocean is sort of my church, and gym. It is deeply meaningful to me. There are plenty of photos here, and every week there’s</summary>
   </entry>
-  <entry xml:lang="en-us">
-    <id>https://artlung.com/blog/2026/11/21/trumpcare-cant-be-good/</id>
-    <title xml:lang="en-us">TrumpCare can’t be good.</title>
-    <updated>2026-11-21T15:18:06.000Z</updated>
-    <published>2026-11-21T15:18:06.000Z</published>
-    <link rel="alternate" href="https://artlung.com/blog/2026/11/21/trumpcare-cant-be-good/"/>
+  <entry xml:lang="en">
+    <id>https://joshtronic.com/2026/11/22/eleventy-rebuilt-rust/</id>
+    <title xml:lang="en">How I Rebuilt Eleventy in Rust with AI in One Week</title>
+    <updated>2026-11-22T00:00:00.000Z</updated>
+    <published>2026-11-22T00:00:00.000Z</published>
+    <link rel="alternate" href="https://joshtronic.com/2026/11/22/eleventy-rebuilt-rust/"/>
     <author>
-      <name>Joe Crawford</name>
-      <uri>https://artlung.com</uri>
+      <name>Josh Sherman</name>
+      <uri>https://joshtronic.com</uri>
     </author>
-    <summary xml:lang="en-us">In 2017 I was saying “Call if TrumpCare” ( proof 1 ) ( proof 2 ) ( proof 3 ). I saw with interest that President Donald Trump reposted a thing from Senator-Elect El-Sayed about making national healthcare a thing merely by putting his name on it. Jamelle Bouie talks risk/downside/implausibility in his short video Nah, you don’t actually want Donald Trump to sign a Medicare-for-All bill Donald Trump</summary>
+    <summary xml:lang="en">I&apos;m sick and tired of all of the cool kids porting things in Rust, so I&apos;ve decided to be as unoriginal as possible and jump on the bandwagon. Keep in mind, I&apos;ve never written a line of Rust and for a recent project, Cuppa, I opted for Go over Rust. This clearly positions me as an expert on porting things to Rust, change my mind. While I like Eleventy (11ty), I&apos;m highly suspicious of it being acqui</summary>
   </entry>
   <entry xml:lang="en">
     <id>https://joshuamorris.info/notes/2026/11/20/worth-wandering-floor796/</id>
