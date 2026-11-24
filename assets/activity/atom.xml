@@ -2,23 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://joshternet.org/assets/activity/atom.xml</id>
   <title>Joshternet What's New</title>
-  <updated>2026-11-24T11:06:29.558Z</updated>
+  <updated>2026-11-24T23:29:41.668Z</updated>
   <link rel="self" type="application/atom+xml" href="https://joshternet.org/assets/activity/atom.xml"/>
   <link rel="alternate" type="text/html" href="https://joshternet.org/activity/"/>
   <subtitle>A selection of recent writing and creative work from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
   <generator uri="https://joshternet.org/">Joshternet views:build</generator>
-  <entry xml:lang="en-us">
-    <id>https://artlung.com/blog/2026/11/23/on-unreliable-narrators/</id>
-    <title xml:lang="en-us">On unreliable narrators</title>
-    <updated>2026-11-23T09:09:41.000Z</updated>
-    <published>2026-11-23T09:09:41.000Z</published>
-    <link rel="alternate" href="https://artlung.com/blog/2026/11/23/on-unreliable-narrators/"/>
-    <author>
-      <name>Joe Crawford</name>
-      <uri>https://artlung.com</uri>
-    </author>
-    <summary xml:lang="en-us">One of the most valuable things in my life was to encounter, in medical progress (SOAP) notes, the concept that a patient or family member could be an “unreliable narrator.” We still write the story down, but we demand receipts and data to support it. Donald Trump? Decades of data supports him as a person who makes claims which are unsupported. It’s not amazing he doesn’t poker? He only ever bluff</summary>
-  </entry>
   <entry xml:lang="en-us">
     <id>https://peira.dev/articles/proxmox-guide-word-for-word-test/</id>
     <title xml:lang="en-us">I Tested My Own Proxmox Guide Word for Word. Eight Chapters Broke.</title>
@@ -30,18 +18,6 @@
       <uri>https://peira.dev</uri>
     </author>
     <summary xml:lang="en-us">My Proxmox guide was marked verified. Then I tested it word for word against two blank labs, and every chapter I covered broke. Here&apos;s what failed.</summary>
-  </entry>
-  <entry xml:lang="en-us">
-    <id>https://artlung.com/blog/2026/11/22/life-death-sea-thankful/</id>
-    <title xml:lang="en-us">Life and death at the sea. Cycles. It’s a week to be thankful.</title>
-    <updated>2026-11-22T20:13:41.000Z</updated>
-    <published>2026-11-22T20:13:41.000Z</published>
-    <link rel="alternate" href="https://artlung.com/blog/2026/11/22/life-death-sea-thankful/"/>
-    <author>
-      <name>Joe Crawford</name>
-      <uri>https://artlung.com</uri>
-    </author>
-    <summary xml:lang="en-us">Your email address will not be published. We reserve the right to remove irrelevant links.</summary>
   </entry>
   <entry xml:lang="en">
     <id>https://joshtronic.com/2026/11/22/eleventy-rebuilt-rust/</id>
@@ -210,17 +186,5 @@
       <uri>https://joshcox.co.uk</uri>
     </author>
     <summary xml:lang="en-gb">The iPhone app is out, on the same purchase as the Mac. £19.99 for both, once, and your house syncs through your own iCloud rather than a server of mine.</summary>
-  </entry>
-  <entry xml:lang="en-au">
-    <id>https://joshwithers.blog/2026/11/11/dror-poleg-on-artificial-intelligence-tamim-and-deuteronomy.html</id>
-    <title xml:lang="en-au">Dror Poleg on artificial intelligence, tamim, and Deuteronomy 18:13: In a world of strong artificial...</title>
-    <updated>2026-11-10T22:19:07.000Z</updated>
-    <published>2026-11-10T22:19:07.000Z</published>
-    <link rel="alternate" href="https://joshwithers.blog/2026/11/11/dror-poleg-on-artificial-intelligence-tamim-and-deuteronomy.html"/>
-    <author>
-      <name>Josh Withers Blog</name>
-      <uri>https://joshwithers.blog</uri>
-    </author>
-    <summary xml:lang="en-au">Dror Poleg on artificial intelligence, tamim, and Deuteronomy 18:13: In a world of strong artificial intelligence, we must operate as if we have no privacy, as if all our actions can ultimately be exp...</summary>
   </entry>
 </feed>
