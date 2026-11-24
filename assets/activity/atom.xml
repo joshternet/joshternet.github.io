@@ -2,11 +2,35 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://joshternet.org/assets/activity/atom.xml</id>
   <title>Joshternet What's New</title>
-  <updated>2026-11-23T08:52:52.455Z</updated>
+  <updated>2026-11-24T11:06:29.558Z</updated>
   <link rel="self" type="application/atom+xml" href="https://joshternet.org/assets/activity/atom.xml"/>
   <link rel="alternate" type="text/html" href="https://joshternet.org/activity/"/>
   <subtitle>A selection of recent writing and creative work from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
   <generator uri="https://joshternet.org/">Joshternet views:build</generator>
+  <entry xml:lang="en-us">
+    <id>https://artlung.com/blog/2026/11/23/on-unreliable-narrators/</id>
+    <title xml:lang="en-us">On unreliable narrators</title>
+    <updated>2026-11-23T09:09:41.000Z</updated>
+    <published>2026-11-23T09:09:41.000Z</published>
+    <link rel="alternate" href="https://artlung.com/blog/2026/11/23/on-unreliable-narrators/"/>
+    <author>
+      <name>Joe Crawford</name>
+      <uri>https://artlung.com</uri>
+    </author>
+    <summary xml:lang="en-us">One of the most valuable things in my life was to encounter, in medical progress (SOAP) notes, the concept that a patient or family member could be an “unreliable narrator.” We still write the story down, but we demand receipts and data to support it. Donald Trump? Decades of data supports him as a person who makes claims which are unsupported. It’s not amazing he doesn’t poker? He only ever bluff</summary>
+  </entry>
+  <entry xml:lang="en-us">
+    <id>https://peira.dev/articles/proxmox-guide-word-for-word-test/</id>
+    <title xml:lang="en-us">I Tested My Own Proxmox Guide Word for Word. Eight Chapters Broke.</title>
+    <updated>2026-11-23T00:00:00.000Z</updated>
+    <published>2026-11-23T00:00:00.000Z</published>
+    <link rel="alternate" href="https://peira.dev/articles/proxmox-guide-word-for-word-test/"/>
+    <author>
+      <name>Josh Hall</name>
+      <uri>https://peira.dev</uri>
+    </author>
+    <summary xml:lang="en-us">My Proxmox guide was marked verified. Then I tested it word for word against two blank labs, and every chapter I covered broke. Here&apos;s what failed.</summary>
+  </entry>
   <entry xml:lang="en-us">
     <id>https://artlung.com/blog/2026/11/22/life-death-sea-thankful/</id>
     <title xml:lang="en-us">Life and death at the sea. Cycles. It’s a week to be thankful.</title>
@@ -18,18 +42,6 @@
       <uri>https://artlung.com</uri>
     </author>
     <summary xml:lang="en-us">Your email address will not be published. We reserve the right to remove irrelevant links.</summary>
-  </entry>
-  <entry xml:lang="en-us">
-    <id>https://artlung.com/blog/2026/11/22/knowember-2026/</id>
-    <title xml:lang="en-us">Knowember 2026</title>
-    <updated>2026-11-22T09:12:20.000Z</updated>
-    <published>2026-11-22T09:12:20.000Z</published>
-    <link rel="alternate" href="https://artlung.com/blog/2026/11/22/knowember-2026/"/>
-    <author>
-      <name>Joe Crawford</name>
-      <uri>https://artlung.com</uri>
-    </author>
-    <summary xml:lang="en-us">A photo? This can be a photo of you, your hometown, your pet, a drawing that represents you, or a photo that captures something that’s meaningful to you. This is a photo from the 7:30am a week ago. It’s looking out at the Ocean Beach pier. I went in the water after that. The ocean is sort of my church, and gym. It is deeply meaningful to me. There are plenty of photos here, and every week there’s</summary>
   </entry>
   <entry xml:lang="en">
     <id>https://joshtronic.com/2026/11/22/eleventy-rebuilt-rust/</id>
@@ -210,17 +222,5 @@
       <uri>https://joshwithers.blog</uri>
     </author>
     <summary xml:lang="en-au">Dror Poleg on artificial intelligence, tamim, and Deuteronomy 18:13: In a world of strong artificial intelligence, we must operate as if we have no privacy, as if all our actions can ultimately be exp...</summary>
-  </entry>
-  <entry xml:lang="en-us">
-    <id>https://www.joshfinnie.com/blog/dead-internet-coming-for-your-code/</id>
-    <title xml:lang="en-us">The Dead Internet Is Coming for Your Code</title>
-    <updated>2026-11-10T00:00:00.000Z</updated>
-    <published>2026-11-10T00:00:00.000Z</published>
-    <link rel="alternate" href="https://www.joshfinnie.com/blog/dead-internet-coming-for-your-code/"/>
-    <author>
-      <name>Josh Finnie</name>
-      <uri>https://www.joshfinnie.com</uri>
-    </author>
-    <summary xml:lang="en-us">Coding models learn from public GitHub, and public GitHub is filling with untested, error-swallowing hello world apps, many written by other models. Why code quality is heading for model collapse.</summary>
   </entry>
 </feed>
