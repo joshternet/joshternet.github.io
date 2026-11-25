@@ -2,11 +2,35 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://joshternet.org/assets/activity/atom.xml</id>
   <title>Joshternet What's New</title>
-  <updated>2026-11-24T23:29:41.668Z</updated>
+  <updated>2026-11-25T09:39:36.140Z</updated>
   <link rel="self" type="application/atom+xml" href="https://joshternet.org/assets/activity/atom.xml"/>
   <link rel="alternate" type="text/html" href="https://joshternet.org/activity/"/>
   <subtitle>A selection of recent writing and creative work from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
   <generator uri="https://joshternet.org/">Joshternet views:build</generator>
+  <entry xml:lang="en-us">
+    <id>https://artlung.com/blog/2026/11/24/closed-joint-low-tide/</id>
+    <title xml:lang="en-us">Closed the joint down (at very low tide)</title>
+    <updated>2026-11-24T19:01:27.000Z</updated>
+    <published>2026-11-24T19:01:27.000Z</published>
+    <link rel="alternate" href="https://artlung.com/blog/2026/11/24/closed-joint-low-tide/"/>
+    <author>
+      <name>Joe Crawford</name>
+      <uri>https://artlung.com</uri>
+    </author>
+    <summary xml:lang="en-us">Your email address will not be published. We reserve the right to remove irrelevant links.</summary>
+  </entry>
+  <entry xml:lang="en-us">
+    <id>https://artlung.com/blog/2026/11/24/signed-open-web-advocacy-letter/</id>
+    <title xml:lang="en-us">Signed Open Web Advocacy Letter</title>
+    <updated>2026-11-24T08:29:58.000Z</updated>
+    <published>2026-11-24T08:29:58.000Z</published>
+    <link rel="alternate" href="https://artlung.com/blog/2026/11/24/signed-open-web-advocacy-letter/"/>
+    <author>
+      <name>Joe Crawford</name>
+      <uri>https://artlung.com</uri>
+    </author>
+    <summary xml:lang="en-us">https://action.open-web-advocacy.org/ We, the undersigned businesses and civil society organisations that rely on and work to sustain the web to reach and serve our customers, write to request the European Commission immediately move to enforce the Digital Markets Act (DMA) regarding iOS browsers . Without the start of formal proceedings, further delays will entrench Apple’s control, deepen depend</summary>
+  </entry>
   <entry xml:lang="en-us">
     <id>https://peira.dev/articles/proxmox-guide-word-for-word-test/</id>
     <title xml:lang="en-us">I Tested My Own Proxmox Guide Word for Word. Eight Chapters Broke.</title>
@@ -162,29 +186,5 @@
       <uri>https://joshtronic.com</uri>
     </author>
     <summary xml:lang="en">I made a confession recently on LinkedIn : I&apos;ve been running Holiday API for the last decade on spreadsheets. Not one of those fictional accounts that so many people post, I actually did run everything in a spreadsheet. It allowed me to have an admin interface without building one, and the friction was minimal but not zero. For the most part, CSV files are easy enough to parse and extract data fro</summary>
-  </entry>
-  <entry xml:lang="en">
-    <id>https://joshbeard.com/notes/2026/forty-six-across-town/</id>
-    <title xml:lang="en">Veteran&apos;s Day 46 Mile Ride</title>
-    <updated>2026-11-11T09:19:00.000Z</updated>
-    <published>2026-11-11T09:19:00.000Z</published>
-    <link rel="alternate" href="https://joshbeard.com/notes/2026/forty-six-across-town/"/>
-    <author>
-      <name>Josh Beard</name>
-      <uri>https://joshbeard.com</uri>
-    </author>
-    <summary xml:lang="en">With Veterans Day off and unusually nice weather, I put together a 46-mile loop across town, my second-longest ride yet.</summary>
-  </entry>
-  <entry xml:lang="en-gb">
-    <id>https://joshcox.co.uk/blog/my-house-my-things-is-on-the-iphone/</id>
-    <title xml:lang="en-gb">My House, My Things is on the iPhone</title>
-    <updated>2026-11-11T00:00:00.000Z</updated>
-    <published>2026-11-11T00:00:00.000Z</published>
-    <link rel="alternate" href="https://joshcox.co.uk/blog/my-house-my-things-is-on-the-iphone/"/>
-    <author>
-      <name>Josh Cox</name>
-      <uri>https://joshcox.co.uk</uri>
-    </author>
-    <summary xml:lang="en-gb">The iPhone app is out, on the same purchase as the Mac. £19.99 for both, once, and your house syncs through your own iCloud rather than a server of mine.</summary>
   </entry>
 </feed>
