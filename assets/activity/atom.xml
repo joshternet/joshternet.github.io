@@ -2,11 +2,35 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://joshternet.org/assets/activity/atom.xml</id>
   <title>Joshternet What's New</title>
-  <updated>2026-11-27T09:45:17.148Z</updated>
+  <updated>2026-11-27T22:40:31.187Z</updated>
   <link rel="self" type="application/atom+xml" href="https://joshternet.org/assets/activity/atom.xml"/>
   <link rel="alternate" type="text/html" href="https://joshternet.org/activity/"/>
   <subtitle>A selection of recent writing and creative work from independent websites participating in the Joshternet. Entries link to the original publishers.</subtitle>
   <generator uri="https://joshternet.org/">Joshternet views:build</generator>
+  <entry xml:lang="en">
+    <id>https://joshmuller.ca/docs/ai-finance-spreadsheet/</id>
+    <title xml:lang="en">AI Finance Spreadsheet</title>
+    <updated>2026-11-27T18:00:00.000Z</updated>
+    <published>2026-11-27T18:00:00.000Z</published>
+    <link rel="alternate" href="https://joshmuller.ca/docs/ai-finance-spreadsheet/"/>
+    <author>
+      <name>Josh Müller</name>
+      <uri>https://joshmuller.ca</uri>
+    </author>
+    <summary xml:lang="en">A free personal finance prompt for any AI with Google Sheets, by Span AI Solutions · Version 1.0 · November 2026 Created by Josh Müller ( @theJoshMuller ) and Kamila Buitrago ( @theKamilaBuitrago ) · spanaisolutions.com This prompt turns an AI chat into a personal finance assistant that writes to a Google Sheet. It works with ChatGPT, Claude, Gemini, Grok, Hermes, an always-on agent such as Muse,</summary>
+  </entry>
+  <entry>
+    <id>https://joshbeard.com/photos/2026/IMG_2069_jpeg.html</id>
+    <title>Pikes Peak Greenway Trail, Colorado Springs, Colorado. November 27, 2026. - Josh Beard</title>
+    <updated>2026-11-27T12:31:00.000Z</updated>
+    <published>2026-11-27T12:31:00.000Z</published>
+    <link rel="alternate" href="https://joshbeard.com/photos/2026/IMG_2069_jpeg.html"/>
+    <author>
+      <name>Josh Beard</name>
+      <uri>https://joshbeard.com</uri>
+    </author>
+    <summary>Pikes Peak Greenway Trail, Colorado Springs, Colorado. November 27, 2026.</summary>
+  </entry>
   <entry xml:lang="en-us">
     <id>https://artlung.com/blog/2026/11/26/pre-turkey-scripps/</id>
     <title xml:lang="en-us">Pre-Turkey Scripps. Thankful for family and love and care and survival. One day at a time.</title>
@@ -17,7 +41,6 @@
       <name>Joe Crawford</name>
       <uri>https://artlung.com</uri>
     </author>
-    <summary xml:lang="en-us">Your email address will not be published. We reserve the right to remove irrelevant links.</summary>
   </entry>
   <entry xml:lang="en">
     <id>https://joshuamorris.info/notes/2026/11/26/let-the-web-speak-markdown/</id>
@@ -29,7 +52,7 @@
       <name>Joshua Morris</name>
       <uri>https://joshuamorris.info</uri>
     </author>
-    <summary xml:lang="en">You can now read my website in Markdown. Try the article that started this conversation, then follow a link and keep reading in the format you chose.</summary>
+    <summary xml:lang="en">In October I wrote about how easy Markdown ought to be to open, then published the article as HTML. The same addresses can answer as Markdown now—so a shared bookmark identifies the writing, and each of us can choose how it looks.</summary>
   </entry>
   <entry xml:lang="en-us">
     <id>https://artlung.com/blog/2026/11/25/ocean-end-over-end-calif/</id>
